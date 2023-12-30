@@ -58,11 +58,13 @@ public final class HybridMonitorSlsTaskSlsProcessConfigExpress {
 
         @CustomType.Setter
         public Builder alias(@Nullable String alias) {
+
             this.alias = alias;
             return this;
         }
         @CustomType.Setter
         public Builder express(@Nullable String express) {
+
             this.express = express;
             return this;
         }

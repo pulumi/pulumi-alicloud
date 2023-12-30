@@ -5,6 +5,7 @@ package com.pulumi.alicloud.fc.outputs;
 
 import com.pulumi.alicloud.fc.outputs.GetServicesServiceNasConfigMountPoint;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.util.List;
 import java.util.Objects;
@@ -72,12 +73,18 @@ public final class GetServicesServiceNasConfig {
 
         @CustomType.Setter
         public Builder groupId(Integer groupId) {
-            this.groupId = Objects.requireNonNull(groupId);
+            if (groupId == null) {
+              throw new MissingRequiredPropertyException("GetServicesServiceNasConfig", "groupId");
+            }
+            this.groupId = groupId;
             return this;
         }
         @CustomType.Setter
         public Builder mountPoints(List<GetServicesServiceNasConfigMountPoint> mountPoints) {
-            this.mountPoints = Objects.requireNonNull(mountPoints);
+            if (mountPoints == null) {
+              throw new MissingRequiredPropertyException("GetServicesServiceNasConfig", "mountPoints");
+            }
+            this.mountPoints = mountPoints;
             return this;
         }
         public Builder mountPoints(GetServicesServiceNasConfigMountPoint... mountPoints) {
@@ -85,7 +92,10 @@ public final class GetServicesServiceNasConfig {
         }
         @CustomType.Setter
         public Builder userId(Integer userId) {
-            this.userId = Objects.requireNonNull(userId);
+            if (userId == null) {
+              throw new MissingRequiredPropertyException("GetServicesServiceNasConfig", "userId");
+            }
+            this.userId = userId;
             return this;
         }
         public GetServicesServiceNasConfig build() {

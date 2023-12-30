@@ -5,6 +5,7 @@ package com.pulumi.alicloud.polardb;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -113,7 +114,9 @@ public final class GlobalDatabaseNetworkArgs extends com.pulumi.resources.Resour
         }
 
         public GlobalDatabaseNetworkArgs build() {
-            $.dbClusterId = Objects.requireNonNull($.dbClusterId, "expected parameter 'dbClusterId' to be non-null");
+            if ($.dbClusterId == null) {
+                throw new MissingRequiredPropertyException("GlobalDatabaseNetworkArgs", "dbClusterId");
+            }
             return $;
         }
     }

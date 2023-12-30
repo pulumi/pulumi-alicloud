@@ -13,6 +13,7 @@ import com.pulumi.alicloud.alb.outputs.RuleRuleConditionResponseHeaderConfig;
 import com.pulumi.alicloud.alb.outputs.RuleRuleConditionResponseStatusCodeConfig;
 import com.pulumi.alicloud.alb.outputs.RuleRuleConditionSourceIpConfig;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -179,52 +180,64 @@ public final class RuleRuleCondition {
 
         @CustomType.Setter
         public Builder cookieConfig(@Nullable RuleRuleConditionCookieConfig cookieConfig) {
+
             this.cookieConfig = cookieConfig;
             return this;
         }
         @CustomType.Setter
         public Builder headerConfig(@Nullable RuleRuleConditionHeaderConfig headerConfig) {
+
             this.headerConfig = headerConfig;
             return this;
         }
         @CustomType.Setter
         public Builder hostConfig(@Nullable RuleRuleConditionHostConfig hostConfig) {
+
             this.hostConfig = hostConfig;
             return this;
         }
         @CustomType.Setter
         public Builder methodConfig(@Nullable RuleRuleConditionMethodConfig methodConfig) {
+
             this.methodConfig = methodConfig;
             return this;
         }
         @CustomType.Setter
         public Builder pathConfig(@Nullable RuleRuleConditionPathConfig pathConfig) {
+
             this.pathConfig = pathConfig;
             return this;
         }
         @CustomType.Setter
         public Builder queryStringConfig(@Nullable RuleRuleConditionQueryStringConfig queryStringConfig) {
+
             this.queryStringConfig = queryStringConfig;
             return this;
         }
         @CustomType.Setter
         public Builder responseHeaderConfig(@Nullable RuleRuleConditionResponseHeaderConfig responseHeaderConfig) {
+
             this.responseHeaderConfig = responseHeaderConfig;
             return this;
         }
         @CustomType.Setter
         public Builder responseStatusCodeConfig(@Nullable RuleRuleConditionResponseStatusCodeConfig responseStatusCodeConfig) {
+
             this.responseStatusCodeConfig = responseStatusCodeConfig;
             return this;
         }
         @CustomType.Setter
         public Builder sourceIpConfig(@Nullable RuleRuleConditionSourceIpConfig sourceIpConfig) {
+
             this.sourceIpConfig = sourceIpConfig;
             return this;
         }
         @CustomType.Setter
         public Builder type(String type) {
-            this.type = Objects.requireNonNull(type);
+            if (type == null) {
+              throw new MissingRequiredPropertyException("RuleRuleCondition", "type");
+            }
+            this.type = type;
             return this;
         }
         public RuleRuleCondition build() {

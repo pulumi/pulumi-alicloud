@@ -86,21 +86,25 @@ public final class SearchIndexSchemaIndexSortSorter {
 
         @CustomType.Setter
         public Builder fieldName(@Nullable String fieldName) {
+
             this.fieldName = fieldName;
             return this;
         }
         @CustomType.Setter
         public Builder mode(@Nullable String mode) {
+
             this.mode = mode;
             return this;
         }
         @CustomType.Setter
         public Builder order(@Nullable String order) {
+
             this.order = order;
             return this;
         }
         @CustomType.Setter
         public Builder sorterType(@Nullable String sorterType) {
+
             this.sorterType = sorterType;
             return this;
         }

@@ -10,6 +10,7 @@ import com.pulumi.alicloud.emrv2.inputs.ClusterNodeGroupSubscriptionConfigArgs;
 import com.pulumi.alicloud.emrv2.inputs.ClusterNodeGroupSystemDiskArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -652,12 +653,24 @@ public final class ClusterNodeGroupArgs extends com.pulumi.resources.ResourceArg
         }
 
         public ClusterNodeGroupArgs build() {
-            $.dataDisks = Objects.requireNonNull($.dataDisks, "expected parameter 'dataDisks' to be non-null");
-            $.instanceTypes = Objects.requireNonNull($.instanceTypes, "expected parameter 'instanceTypes' to be non-null");
-            $.nodeCount = Objects.requireNonNull($.nodeCount, "expected parameter 'nodeCount' to be non-null");
-            $.nodeGroupName = Objects.requireNonNull($.nodeGroupName, "expected parameter 'nodeGroupName' to be non-null");
-            $.nodeGroupType = Objects.requireNonNull($.nodeGroupType, "expected parameter 'nodeGroupType' to be non-null");
-            $.systemDisk = Objects.requireNonNull($.systemDisk, "expected parameter 'systemDisk' to be non-null");
+            if ($.dataDisks == null) {
+                throw new MissingRequiredPropertyException("ClusterNodeGroupArgs", "dataDisks");
+            }
+            if ($.instanceTypes == null) {
+                throw new MissingRequiredPropertyException("ClusterNodeGroupArgs", "instanceTypes");
+            }
+            if ($.nodeCount == null) {
+                throw new MissingRequiredPropertyException("ClusterNodeGroupArgs", "nodeCount");
+            }
+            if ($.nodeGroupName == null) {
+                throw new MissingRequiredPropertyException("ClusterNodeGroupArgs", "nodeGroupName");
+            }
+            if ($.nodeGroupType == null) {
+                throw new MissingRequiredPropertyException("ClusterNodeGroupArgs", "nodeGroupType");
+            }
+            if ($.systemDisk == null) {
+                throw new MissingRequiredPropertyException("ClusterNodeGroupArgs", "systemDisk");
+            }
             return $;
         }
     }

@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.hbr.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -42,7 +43,10 @@ public final class GetReplicationVaultRegionsRegion {
 
         @CustomType.Setter
         public Builder replicationRegionId(String replicationRegionId) {
-            this.replicationRegionId = Objects.requireNonNull(replicationRegionId);
+            if (replicationRegionId == null) {
+              throw new MissingRequiredPropertyException("GetReplicationVaultRegionsRegion", "replicationRegionId");
+            }
+            this.replicationRegionId = replicationRegionId;
             return this;
         }
         public GetReplicationVaultRegionsRegion build() {

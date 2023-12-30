@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.oos.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -184,7 +185,9 @@ public final class GetApplicationGroupsPlainArgs extends com.pulumi.resources.In
         }
 
         public GetApplicationGroupsPlainArgs build() {
-            $.applicationName = Objects.requireNonNull($.applicationName, "expected parameter 'applicationName' to be non-null");
+            if ($.applicationName == null) {
+                throw new MissingRequiredPropertyException("GetApplicationGroupsPlainArgs", "applicationName");
+            }
             return $;
         }
     }

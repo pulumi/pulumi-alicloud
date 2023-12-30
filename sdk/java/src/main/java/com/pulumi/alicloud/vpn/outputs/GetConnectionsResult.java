@@ -5,6 +5,7 @@ package com.pulumi.alicloud.vpn.outputs;
 
 import com.pulumi.alicloud.vpn.outputs.GetConnectionsConnection;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -128,7 +129,10 @@ public final class GetConnectionsResult {
 
         @CustomType.Setter
         public Builder connections(List<GetConnectionsConnection> connections) {
-            this.connections = Objects.requireNonNull(connections);
+            if (connections == null) {
+              throw new MissingRequiredPropertyException("GetConnectionsResult", "connections");
+            }
+            this.connections = connections;
             return this;
         }
         public Builder connections(GetConnectionsConnection... connections) {
@@ -136,17 +140,24 @@ public final class GetConnectionsResult {
         }
         @CustomType.Setter
         public Builder customerGatewayId(@Nullable String customerGatewayId) {
+
             this.customerGatewayId = customerGatewayId;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetConnectionsResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder ids(List<String> ids) {
-            this.ids = Objects.requireNonNull(ids);
+            if (ids == null) {
+              throw new MissingRequiredPropertyException("GetConnectionsResult", "ids");
+            }
+            this.ids = ids;
             return this;
         }
         public Builder ids(String... ids) {
@@ -154,12 +165,16 @@ public final class GetConnectionsResult {
         }
         @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
+
             this.nameRegex = nameRegex;
             return this;
         }
         @CustomType.Setter
         public Builder names(List<String> names) {
-            this.names = Objects.requireNonNull(names);
+            if (names == null) {
+              throw new MissingRequiredPropertyException("GetConnectionsResult", "names");
+            }
+            this.names = names;
             return this;
         }
         public Builder names(String... names) {
@@ -167,11 +182,13 @@ public final class GetConnectionsResult {
         }
         @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
+
             this.outputFile = outputFile;
             return this;
         }
         @CustomType.Setter
         public Builder vpnGatewayId(@Nullable String vpnGatewayId) {
+
             this.vpnGatewayId = vpnGatewayId;
             return this;
         }

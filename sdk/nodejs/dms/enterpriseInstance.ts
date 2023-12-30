@@ -246,7 +246,7 @@ export class EnterpriseInstance extends pulumi.CustomResource {
     /**
      * Whether to enable cross-instance query. Valid values: `0` not open, `1` open.
      */
-    public readonly useDsql!: pulumi.Output<number | undefined>;
+    public readonly useDsql!: pulumi.Output<number>;
     /**
      * VPC ID. This value must be passed when the value of InstanceSource is VPC dedicated line IDC.
      */

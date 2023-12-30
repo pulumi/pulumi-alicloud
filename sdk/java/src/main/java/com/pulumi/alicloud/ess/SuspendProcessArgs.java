@@ -5,6 +5,7 @@ package com.pulumi.alicloud.ess;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -111,8 +112,12 @@ public final class SuspendProcessArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         public SuspendProcessArgs build() {
-            $.process = Objects.requireNonNull($.process, "expected parameter 'process' to be non-null");
-            $.scalingGroupId = Objects.requireNonNull($.scalingGroupId, "expected parameter 'scalingGroupId' to be non-null");
+            if ($.process == null) {
+                throw new MissingRequiredPropertyException("SuspendProcessArgs", "process");
+            }
+            if ($.scalingGroupId == null) {
+                throw new MissingRequiredPropertyException("SuspendProcessArgs", "scalingGroupId");
+            }
             return $;
         }
     }

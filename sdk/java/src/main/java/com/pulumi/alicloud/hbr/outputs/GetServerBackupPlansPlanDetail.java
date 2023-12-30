@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.hbr.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -171,22 +172,34 @@ public final class GetServerBackupPlansPlanDetail {
 
         @CustomType.Setter
         public Builder appConsistent(Boolean appConsistent) {
-            this.appConsistent = Objects.requireNonNull(appConsistent);
+            if (appConsistent == null) {
+              throw new MissingRequiredPropertyException("GetServerBackupPlansPlanDetail", "appConsistent");
+            }
+            this.appConsistent = appConsistent;
             return this;
         }
         @CustomType.Setter
         public Builder destinationRegionId(String destinationRegionId) {
-            this.destinationRegionId = Objects.requireNonNull(destinationRegionId);
+            if (destinationRegionId == null) {
+              throw new MissingRequiredPropertyException("GetServerBackupPlansPlanDetail", "destinationRegionId");
+            }
+            this.destinationRegionId = destinationRegionId;
             return this;
         }
         @CustomType.Setter
         public Builder destinationRetention(Integer destinationRetention) {
-            this.destinationRetention = Objects.requireNonNull(destinationRetention);
+            if (destinationRetention == null) {
+              throw new MissingRequiredPropertyException("GetServerBackupPlansPlanDetail", "destinationRetention");
+            }
+            this.destinationRetention = destinationRetention;
             return this;
         }
         @CustomType.Setter
         public Builder diskIdLists(List<String> diskIdLists) {
-            this.diskIdLists = Objects.requireNonNull(diskIdLists);
+            if (diskIdLists == null) {
+              throw new MissingRequiredPropertyException("GetServerBackupPlansPlanDetail", "diskIdLists");
+            }
+            this.diskIdLists = diskIdLists;
             return this;
         }
         public Builder diskIdLists(String... diskIdLists) {
@@ -194,32 +207,50 @@ public final class GetServerBackupPlansPlanDetail {
         }
         @CustomType.Setter
         public Builder doCopy(Boolean doCopy) {
-            this.doCopy = Objects.requireNonNull(doCopy);
+            if (doCopy == null) {
+              throw new MissingRequiredPropertyException("GetServerBackupPlansPlanDetail", "doCopy");
+            }
+            this.doCopy = doCopy;
             return this;
         }
         @CustomType.Setter
         public Builder enableFsFreeze(Boolean enableFsFreeze) {
-            this.enableFsFreeze = Objects.requireNonNull(enableFsFreeze);
+            if (enableFsFreeze == null) {
+              throw new MissingRequiredPropertyException("GetServerBackupPlansPlanDetail", "enableFsFreeze");
+            }
+            this.enableFsFreeze = enableFsFreeze;
             return this;
         }
         @CustomType.Setter
         public Builder postScriptPath(String postScriptPath) {
-            this.postScriptPath = Objects.requireNonNull(postScriptPath);
+            if (postScriptPath == null) {
+              throw new MissingRequiredPropertyException("GetServerBackupPlansPlanDetail", "postScriptPath");
+            }
+            this.postScriptPath = postScriptPath;
             return this;
         }
         @CustomType.Setter
         public Builder preScriptPath(String preScriptPath) {
-            this.preScriptPath = Objects.requireNonNull(preScriptPath);
+            if (preScriptPath == null) {
+              throw new MissingRequiredPropertyException("GetServerBackupPlansPlanDetail", "preScriptPath");
+            }
+            this.preScriptPath = preScriptPath;
             return this;
         }
         @CustomType.Setter
         public Builder snapshotGroup(Boolean snapshotGroup) {
-            this.snapshotGroup = Objects.requireNonNull(snapshotGroup);
+            if (snapshotGroup == null) {
+              throw new MissingRequiredPropertyException("GetServerBackupPlansPlanDetail", "snapshotGroup");
+            }
+            this.snapshotGroup = snapshotGroup;
             return this;
         }
         @CustomType.Setter
         public Builder timeoutInSeconds(Integer timeoutInSeconds) {
-            this.timeoutInSeconds = Objects.requireNonNull(timeoutInSeconds);
+            if (timeoutInSeconds == null) {
+              throw new MissingRequiredPropertyException("GetServerBackupPlansPlanDetail", "timeoutInSeconds");
+            }
+            this.timeoutInSeconds = timeoutInSeconds;
             return this;
         }
         public GetServerBackupPlansPlanDetail build() {

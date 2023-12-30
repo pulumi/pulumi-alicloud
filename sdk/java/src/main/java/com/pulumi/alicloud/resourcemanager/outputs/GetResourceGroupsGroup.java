@@ -5,6 +5,7 @@ package com.pulumi.alicloud.resourcemanager.outputs;
 
 import com.pulumi.alicloud.resourcemanager.outputs.GetResourceGroupsGroupRegionStatus;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -128,27 +129,42 @@ public final class GetResourceGroupsGroup {
 
         @CustomType.Setter
         public Builder accountId(String accountId) {
-            this.accountId = Objects.requireNonNull(accountId);
+            if (accountId == null) {
+              throw new MissingRequiredPropertyException("GetResourceGroupsGroup", "accountId");
+            }
+            this.accountId = accountId;
             return this;
         }
         @CustomType.Setter
         public Builder displayName(String displayName) {
-            this.displayName = Objects.requireNonNull(displayName);
+            if (displayName == null) {
+              throw new MissingRequiredPropertyException("GetResourceGroupsGroup", "displayName");
+            }
+            this.displayName = displayName;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetResourceGroupsGroup", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetResourceGroupsGroup", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder regionStatuses(List<GetResourceGroupsGroupRegionStatus> regionStatuses) {
-            this.regionStatuses = Objects.requireNonNull(regionStatuses);
+            if (regionStatuses == null) {
+              throw new MissingRequiredPropertyException("GetResourceGroupsGroup", "regionStatuses");
+            }
+            this.regionStatuses = regionStatuses;
             return this;
         }
         public Builder regionStatuses(GetResourceGroupsGroupRegionStatus... regionStatuses) {
@@ -156,12 +172,18 @@ public final class GetResourceGroupsGroup {
         }
         @CustomType.Setter
         public Builder resourceGroupName(String resourceGroupName) {
-            this.resourceGroupName = Objects.requireNonNull(resourceGroupName);
+            if (resourceGroupName == null) {
+              throw new MissingRequiredPropertyException("GetResourceGroupsGroup", "resourceGroupName");
+            }
+            this.resourceGroupName = resourceGroupName;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetResourceGroupsGroup", "status");
+            }
+            this.status = status;
             return this;
         }
         public GetResourceGroupsGroup build() {

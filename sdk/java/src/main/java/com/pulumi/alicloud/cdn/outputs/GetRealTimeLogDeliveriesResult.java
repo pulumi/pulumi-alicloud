@@ -5,6 +5,7 @@ package com.pulumi.alicloud.cdn.outputs;
 
 import com.pulumi.alicloud.cdn.outputs.GetRealTimeLogDeliveriesDelivery;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -70,7 +71,10 @@ public final class GetRealTimeLogDeliveriesResult {
 
         @CustomType.Setter
         public Builder deliveries(List<GetRealTimeLogDeliveriesDelivery> deliveries) {
-            this.deliveries = Objects.requireNonNull(deliveries);
+            if (deliveries == null) {
+              throw new MissingRequiredPropertyException("GetRealTimeLogDeliveriesResult", "deliveries");
+            }
+            this.deliveries = deliveries;
             return this;
         }
         public Builder deliveries(GetRealTimeLogDeliveriesDelivery... deliveries) {
@@ -78,21 +82,29 @@ public final class GetRealTimeLogDeliveriesResult {
         }
         @CustomType.Setter
         public Builder domain(String domain) {
-            this.domain = Objects.requireNonNull(domain);
+            if (domain == null) {
+              throw new MissingRequiredPropertyException("GetRealTimeLogDeliveriesResult", "domain");
+            }
+            this.domain = domain;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetRealTimeLogDeliveriesResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
+
             this.outputFile = outputFile;
             return this;
         }
         @CustomType.Setter
         public Builder status(@Nullable String status) {
+
             this.status = status;
             return this;
         }

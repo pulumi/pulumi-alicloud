@@ -5,6 +5,7 @@ package com.pulumi.alicloud.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -93,7 +94,9 @@ public final class GetFileCrc64ChecksumArgs extends com.pulumi.resources.InvokeA
         }
 
         public GetFileCrc64ChecksumArgs build() {
-            $.filename = Objects.requireNonNull($.filename, "expected parameter 'filename' to be non-null");
+            if ($.filename == null) {
+                throw new MissingRequiredPropertyException("GetFileCrc64ChecksumArgs", "filename");
+            }
             return $;
         }
     }

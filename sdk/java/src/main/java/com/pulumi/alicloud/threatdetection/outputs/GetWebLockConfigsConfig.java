@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.threatdetection.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -168,52 +169,82 @@ public final class GetWebLockConfigsConfig {
 
         @CustomType.Setter
         public Builder defenceMode(String defenceMode) {
-            this.defenceMode = Objects.requireNonNull(defenceMode);
+            if (defenceMode == null) {
+              throw new MissingRequiredPropertyException("GetWebLockConfigsConfig", "defenceMode");
+            }
+            this.defenceMode = defenceMode;
             return this;
         }
         @CustomType.Setter
         public Builder dir(String dir) {
-            this.dir = Objects.requireNonNull(dir);
+            if (dir == null) {
+              throw new MissingRequiredPropertyException("GetWebLockConfigsConfig", "dir");
+            }
+            this.dir = dir;
             return this;
         }
         @CustomType.Setter
         public Builder exclusiveDir(String exclusiveDir) {
-            this.exclusiveDir = Objects.requireNonNull(exclusiveDir);
+            if (exclusiveDir == null) {
+              throw new MissingRequiredPropertyException("GetWebLockConfigsConfig", "exclusiveDir");
+            }
+            this.exclusiveDir = exclusiveDir;
             return this;
         }
         @CustomType.Setter
         public Builder exclusiveFile(String exclusiveFile) {
-            this.exclusiveFile = Objects.requireNonNull(exclusiveFile);
+            if (exclusiveFile == null) {
+              throw new MissingRequiredPropertyException("GetWebLockConfigsConfig", "exclusiveFile");
+            }
+            this.exclusiveFile = exclusiveFile;
             return this;
         }
         @CustomType.Setter
         public Builder exclusiveFileType(String exclusiveFileType) {
-            this.exclusiveFileType = Objects.requireNonNull(exclusiveFileType);
+            if (exclusiveFileType == null) {
+              throw new MissingRequiredPropertyException("GetWebLockConfigsConfig", "exclusiveFileType");
+            }
+            this.exclusiveFileType = exclusiveFileType;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetWebLockConfigsConfig", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder inclusiveFileType(String inclusiveFileType) {
-            this.inclusiveFileType = Objects.requireNonNull(inclusiveFileType);
+            if (inclusiveFileType == null) {
+              throw new MissingRequiredPropertyException("GetWebLockConfigsConfig", "inclusiveFileType");
+            }
+            this.inclusiveFileType = inclusiveFileType;
             return this;
         }
         @CustomType.Setter
         public Builder localBackupDir(String localBackupDir) {
-            this.localBackupDir = Objects.requireNonNull(localBackupDir);
+            if (localBackupDir == null) {
+              throw new MissingRequiredPropertyException("GetWebLockConfigsConfig", "localBackupDir");
+            }
+            this.localBackupDir = localBackupDir;
             return this;
         }
         @CustomType.Setter
         public Builder mode(String mode) {
-            this.mode = Objects.requireNonNull(mode);
+            if (mode == null) {
+              throw new MissingRequiredPropertyException("GetWebLockConfigsConfig", "mode");
+            }
+            this.mode = mode;
             return this;
         }
         @CustomType.Setter
         public Builder uuid(String uuid) {
-            this.uuid = Objects.requireNonNull(uuid);
+            if (uuid == null) {
+              throw new MissingRequiredPropertyException("GetWebLockConfigsConfig", "uuid");
+            }
+            this.uuid = uuid;
             return this;
         }
         public GetWebLockConfigsConfig build() {

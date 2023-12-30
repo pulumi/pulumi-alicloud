@@ -5,6 +5,7 @@ package com.pulumi.alicloud.ga;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -150,8 +151,12 @@ public final class AclEntryAttachmentArgs extends com.pulumi.resources.ResourceA
         }
 
         public AclEntryAttachmentArgs build() {
-            $.aclId = Objects.requireNonNull($.aclId, "expected parameter 'aclId' to be non-null");
-            $.entry = Objects.requireNonNull($.entry, "expected parameter 'entry' to be non-null");
+            if ($.aclId == null) {
+                throw new MissingRequiredPropertyException("AclEntryAttachmentArgs", "aclId");
+            }
+            if ($.entry == null) {
+                throw new MissingRequiredPropertyException("AclEntryAttachmentArgs", "entry");
+            }
             return $;
         }
     }

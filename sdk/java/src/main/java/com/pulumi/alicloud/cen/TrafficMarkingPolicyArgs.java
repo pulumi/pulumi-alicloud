@@ -5,6 +5,7 @@ package com.pulumi.alicloud.cen;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -263,9 +264,15 @@ public final class TrafficMarkingPolicyArgs extends com.pulumi.resources.Resourc
         }
 
         public TrafficMarkingPolicyArgs build() {
-            $.markingDscp = Objects.requireNonNull($.markingDscp, "expected parameter 'markingDscp' to be non-null");
-            $.priority = Objects.requireNonNull($.priority, "expected parameter 'priority' to be non-null");
-            $.transitRouterId = Objects.requireNonNull($.transitRouterId, "expected parameter 'transitRouterId' to be non-null");
+            if ($.markingDscp == null) {
+                throw new MissingRequiredPropertyException("TrafficMarkingPolicyArgs", "markingDscp");
+            }
+            if ($.priority == null) {
+                throw new MissingRequiredPropertyException("TrafficMarkingPolicyArgs", "priority");
+            }
+            if ($.transitRouterId == null) {
+                throw new MissingRequiredPropertyException("TrafficMarkingPolicyArgs", "transitRouterId");
+            }
             return $;
         }
     }

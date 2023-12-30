@@ -5,6 +5,7 @@ package com.pulumi.alicloud.vpc;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.Object;
@@ -543,11 +544,21 @@ public final class TrafficMirrorSessionArgs extends com.pulumi.resources.Resourc
         }
 
         public TrafficMirrorSessionArgs build() {
-            $.priority = Objects.requireNonNull($.priority, "expected parameter 'priority' to be non-null");
-            $.trafficMirrorFilterId = Objects.requireNonNull($.trafficMirrorFilterId, "expected parameter 'trafficMirrorFilterId' to be non-null");
-            $.trafficMirrorSourceIds = Objects.requireNonNull($.trafficMirrorSourceIds, "expected parameter 'trafficMirrorSourceIds' to be non-null");
-            $.trafficMirrorTargetId = Objects.requireNonNull($.trafficMirrorTargetId, "expected parameter 'trafficMirrorTargetId' to be non-null");
-            $.trafficMirrorTargetType = Objects.requireNonNull($.trafficMirrorTargetType, "expected parameter 'trafficMirrorTargetType' to be non-null");
+            if ($.priority == null) {
+                throw new MissingRequiredPropertyException("TrafficMirrorSessionArgs", "priority");
+            }
+            if ($.trafficMirrorFilterId == null) {
+                throw new MissingRequiredPropertyException("TrafficMirrorSessionArgs", "trafficMirrorFilterId");
+            }
+            if ($.trafficMirrorSourceIds == null) {
+                throw new MissingRequiredPropertyException("TrafficMirrorSessionArgs", "trafficMirrorSourceIds");
+            }
+            if ($.trafficMirrorTargetId == null) {
+                throw new MissingRequiredPropertyException("TrafficMirrorSessionArgs", "trafficMirrorTargetId");
+            }
+            if ($.trafficMirrorTargetType == null) {
+                throw new MissingRequiredPropertyException("TrafficMirrorSessionArgs", "trafficMirrorTargetType");
+            }
             return $;
         }
     }

@@ -5,6 +5,7 @@ package com.pulumi.alicloud.ecs.outputs;
 
 import com.pulumi.alicloud.ecs.outputs.GetEcsInvocationsInvocation;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -95,22 +96,30 @@ public final class GetEcsInvocationsResult {
 
         @CustomType.Setter
         public Builder commandId(@Nullable String commandId) {
+
             this.commandId = commandId;
             return this;
         }
         @CustomType.Setter
         public Builder contentEncoding(@Nullable String contentEncoding) {
+
             this.contentEncoding = contentEncoding;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetEcsInvocationsResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder ids(List<String> ids) {
-            this.ids = Objects.requireNonNull(ids);
+            if (ids == null) {
+              throw new MissingRequiredPropertyException("GetEcsInvocationsResult", "ids");
+            }
+            this.ids = ids;
             return this;
         }
         public Builder ids(String... ids) {
@@ -118,7 +127,10 @@ public final class GetEcsInvocationsResult {
         }
         @CustomType.Setter
         public Builder invocations(List<GetEcsInvocationsInvocation> invocations) {
-            this.invocations = Objects.requireNonNull(invocations);
+            if (invocations == null) {
+              throw new MissingRequiredPropertyException("GetEcsInvocationsResult", "invocations");
+            }
+            this.invocations = invocations;
             return this;
         }
         public Builder invocations(GetEcsInvocationsInvocation... invocations) {
@@ -126,21 +138,25 @@ public final class GetEcsInvocationsResult {
         }
         @CustomType.Setter
         public Builder invokeStatus(@Nullable String invokeStatus) {
+
             this.invokeStatus = invokeStatus;
             return this;
         }
         @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
+
             this.outputFile = outputFile;
             return this;
         }
         @CustomType.Setter
         public Builder pageNumber(@Nullable Integer pageNumber) {
+
             this.pageNumber = pageNumber;
             return this;
         }
         @CustomType.Setter
         public Builder pageSize(@Nullable Integer pageSize) {
+
             this.pageSize = pageSize;
             return this;
         }

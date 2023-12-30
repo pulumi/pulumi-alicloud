@@ -5,6 +5,7 @@ package com.pulumi.alicloud.cloudstoragegateway;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -224,9 +225,15 @@ public final class ExpressSyncArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public ExpressSyncArgs build() {
-            $.bucketName = Objects.requireNonNull($.bucketName, "expected parameter 'bucketName' to be non-null");
-            $.bucketRegion = Objects.requireNonNull($.bucketRegion, "expected parameter 'bucketRegion' to be non-null");
-            $.expressSyncName = Objects.requireNonNull($.expressSyncName, "expected parameter 'expressSyncName' to be non-null");
+            if ($.bucketName == null) {
+                throw new MissingRequiredPropertyException("ExpressSyncArgs", "bucketName");
+            }
+            if ($.bucketRegion == null) {
+                throw new MissingRequiredPropertyException("ExpressSyncArgs", "bucketRegion");
+            }
+            if ($.expressSyncName == null) {
+                throw new MissingRequiredPropertyException("ExpressSyncArgs", "expressSyncName");
+            }
             return $;
         }
     }

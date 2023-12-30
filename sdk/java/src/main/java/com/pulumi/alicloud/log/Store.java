@@ -20,10 +20,12 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * The log store is a unit in Log Service to collect, store, and query the log data. Each log store belongs to a project,
- * and each project can create multiple Logstores. [Refer to details](https://www.alibabacloud.com/help/doc-detail/48874.htm)
+ * Provides a SLS Log Store resource.
+ * 
+ * For information about SLS Log Store and how to use it, see [What is Log Store](https://www.alibabacloud.com/help/doc-detail/48874.htm).
  * 
  * &gt; **NOTE:** Available since v1.0.0.
+ * 
  * ## Example Usage
  * 
  * Basic Usage
@@ -149,10 +151,10 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Log store can be imported using the id, e.g.
+ * SLS Log Store can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:log/store:Store example tf-log:tf-log-store
+ *  $ pulumi import alicloud:log/store:Store example &lt;project_name&gt;:&lt;logstore_name&gt;
  * ```
  * 
  */
@@ -187,46 +189,74 @@ public class Store extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.autoSplit);
     }
     /**
-     * Determines whether to enable Web Tracking. Default `false`.
+     * Log library creation time. Unix timestamp format that represents the number of seconds from 1970-1-1 00:00:00 UTC calculation.
+     * 
+     */
+    @Export(name="createTime", refs={Integer.class}, tree="[0]")
+    private Output<Integer> createTime;
+
+    /**
+     * @return Log library creation time. Unix timestamp format that represents the number of seconds from 1970-1-1 00:00:00 UTC calculation.
+     * 
+     */
+    public Output<Integer> createTime() {
+        return this.createTime;
+    }
+    /**
+     * Whether open webtracking. webtracking network tracing, support the collection of HTML log, H5, Ios and android platforms.
      * 
      */
     @Export(name="enableWebTracking", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> enableWebTracking;
 
     /**
-     * @return Determines whether to enable Web Tracking. Default `false`.
+     * @return Whether open webtracking. webtracking network tracing, support the collection of HTML log, H5, Ios and android platforms.
      * 
      */
     public Output<Optional<Boolean>> enableWebTracking() {
         return Codegen.optional(this.enableWebTracking);
     }
     /**
-     * Encrypted storage of data, providing data static protection capability, `encrypt_conf` can be updated since 1.188.0+ (only `enable` change is supported when updating logstore). See `encrypt_conf` below.
+     * Encrypted storage of data, providing data static protection capability, encrypt_conf can be updated since 1.188.0 (only enable change is supported when updating logstore). See `encrypt_conf` below.
      * 
      */
     @Export(name="encryptConf", refs={StoreEncryptConf.class}, tree="[0]")
-    private Output</* @Nullable */ StoreEncryptConf> encryptConf;
+    private Output<StoreEncryptConf> encryptConf;
 
     /**
-     * @return Encrypted storage of data, providing data static protection capability, `encrypt_conf` can be updated since 1.188.0+ (only `enable` change is supported when updating logstore). See `encrypt_conf` below.
+     * @return Encrypted storage of data, providing data static protection capability, encrypt_conf can be updated since 1.188.0 (only enable change is supported when updating logstore). See `encrypt_conf` below.
      * 
      */
-    public Output<Optional<StoreEncryptConf>> encryptConf() {
-        return Codegen.optional(this.encryptConf);
+    public Output<StoreEncryptConf> encryptConf() {
+        return this.encryptConf;
     }
     /**
-     * The ttl of hot storage. Default to `30`, at least `30`, hot storage ttl must be less than ttl.
+     * The ttl of hot storage. Default to 30, at least 30, hot storage ttl must be less than ttl.
      * 
      */
     @Export(name="hotTtl", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> hotTtl;
 
     /**
-     * @return The ttl of hot storage. Default to `30`, at least `30`, hot storage ttl must be less than ttl.
+     * @return The ttl of hot storage. Default to 30, at least 30, hot storage ttl must be less than ttl.
      * 
      */
     public Output<Optional<Integer>> hotTtl() {
         return Codegen.optional(this.hotTtl);
+    }
+    /**
+     * The log store, which is unique in the same project. You need to specify one of the attributes: `logstore_name`, `name`.
+     * 
+     */
+    @Export(name="logstoreName", refs={String.class}, tree="[0]")
+    private Output<String> logstoreName;
+
+    /**
+     * @return The log store, which is unique in the same project. You need to specify one of the attributes: `logstore_name`, `name`.
+     * 
+     */
+    public Output<String> logstoreName() {
+        return this.logstoreName;
     }
     /**
      * The maximum number of shards for automatic split, which is in the range of 1 to 256. You must specify this parameter when autoSplit is true.
@@ -243,70 +273,92 @@ public class Store extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.maxSplitShardCount);
     }
     /**
-     * The mode of storage. Default to `standard`, must be `standard` or `query`.
+     * The mode of storage. Default to `standard`, must be `standard` or `query`, `lite`.
      * 
      */
     @Export(name="mode", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> mode;
+    private Output<String> mode;
 
     /**
-     * @return The mode of storage. Default to `standard`, must be `standard` or `query`.
+     * @return The mode of storage. Default to `standard`, must be `standard` or `query`, `lite`.
      * 
      */
-    public Output<Optional<String>> mode() {
-        return Codegen.optional(this.mode);
+    public Output<String> mode() {
+        return this.mode;
     }
     /**
-     * The log store, which is unique in the same project.
+     * . Field &#39;name&#39; has been deprecated from provider version 1.215.0. New field &#39;logstore_name&#39; instead.
+     * 
+     * @deprecated
+     * Field &#39;name&#39; has been deprecated since provider version 1.215.0. New field &#39;logstore_name&#39; instead.
      * 
      */
+    @Deprecated /* Field 'name' has been deprecated since provider version 1.215.0. New field 'logstore_name' instead. */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return The log store, which is unique in the same project.
+     * @return . Field &#39;name&#39; has been deprecated from provider version 1.215.0. New field &#39;logstore_name&#39; instead.
      * 
      */
     public Output<String> name() {
         return this.name;
     }
     /**
-     * The project name to the log store belongs.
+     * . Field &#39;project&#39; has been deprecated from provider version 1.215.0. New field &#39;project_name&#39; instead.
+     * 
+     * @deprecated
+     * Field &#39;project&#39; has been deprecated since provider version 1.215.0. New field &#39;project_name&#39; instead.
      * 
      */
+    @Deprecated /* Field 'project' has been deprecated since provider version 1.215.0. New field 'project_name' instead. */
     @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
-     * @return The project name to the log store belongs.
+     * @return . Field &#39;project&#39; has been deprecated from provider version 1.215.0. New field &#39;project_name&#39; instead.
      * 
      */
     public Output<String> project() {
         return this.project;
     }
     /**
-     * The data retention time (in days). Valid values: [1-3650]. Default to `30`. Log store data will be stored permanently when the value is `3650`.
+     * The project name to the log store belongs. You need to specify one of the attributes: `project_name`, `project`.
+     * 
+     */
+    @Export(name="projectName", refs={String.class}, tree="[0]")
+    private Output<String> projectName;
+
+    /**
+     * @return The project name to the log store belongs. You need to specify one of the attributes: `project_name`, `project`.
+     * 
+     */
+    public Output<String> projectName() {
+        return this.projectName;
+    }
+    /**
+     * The data retention time (in days). Valid values: [1-3650]. Default to 30. Log store data will be stored permanently when the value is 3650.
      * 
      */
     @Export(name="retentionPeriod", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> retentionPeriod;
 
     /**
-     * @return The data retention time (in days). Valid values: [1-3650]. Default to `30`. Log store data will be stored permanently when the value is `3650`.
+     * @return The data retention time (in days). Valid values: [1-3650]. Default to 30. Log store data will be stored permanently when the value is 3650.
      * 
      */
     public Output<Optional<Integer>> retentionPeriod() {
         return Codegen.optional(this.retentionPeriod);
     }
     /**
-     * The number of shards in this log store. Default to 2. You can modify it by &#34;Split&#34; or &#34;Merge&#34; operations. [Refer to details](https://www.alibabacloud.com/help/doc-detail/28976.htm)
+     * The number of shards in this log store. Default to 2. You can modify it by &#34;Split&#34; or &#34;Merge&#34; operations. [Refer to details](https://www.alibabacloud.com/help/zh/sls/product-overview/shard).
      * 
      */
     @Export(name="shardCount", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> shardCount;
 
     /**
-     * @return The number of shards in this log store. Default to 2. You can modify it by &#34;Split&#34; or &#34;Merge&#34; operations. [Refer to details](https://www.alibabacloud.com/help/doc-detail/28976.htm)
+     * @return The number of shards in this log store. Default to 2. You can modify it by &#34;Split&#34; or &#34;Merge&#34; operations. [Refer to details](https://www.alibabacloud.com/help/zh/sls/product-overview/shard).
      * 
      */
     public Output<Optional<Integer>> shardCount() {
@@ -329,12 +381,16 @@ public class Store extends com.pulumi.resources.CustomResource {
     /**
      * Determines whether store type is metric. `Metrics` means metric store, empty means log store.
      * 
+     * The following arguments will be discarded. Please use new fields as soon as possible:
+     * 
      */
     @Export(name="telemetryType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> telemetryType;
 
     /**
      * @return Determines whether store type is metric. `Metrics` means metric store, empty means log store.
+     * 
+     * The following arguments will be discarded. Please use new fields as soon as possible:
      * 
      */
     public Output<Optional<String>> telemetryType() {
@@ -353,7 +409,7 @@ public class Store extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public Store(String name, StoreArgs args) {
+    public Store(String name, @Nullable StoreArgs args) {
         this(name, args, null);
     }
     /**
@@ -362,7 +418,7 @@ public class Store extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public Store(String name, StoreArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public Store(String name, @Nullable StoreArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("alicloud:log/store:Store", name, args == null ? StoreArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
     }
 

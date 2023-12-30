@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.cs.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -56,12 +57,18 @@ public final class GetManagedKubernetesClustersClusterLogConfig {
 
         @CustomType.Setter
         public Builder project(String project) {
-            this.project = Objects.requireNonNull(project);
+            if (project == null) {
+              throw new MissingRequiredPropertyException("GetManagedKubernetesClustersClusterLogConfig", "project");
+            }
+            this.project = project;
             return this;
         }
         @CustomType.Setter
         public Builder type(String type) {
-            this.type = Objects.requireNonNull(type);
+            if (type == null) {
+              throw new MissingRequiredPropertyException("GetManagedKubernetesClustersClusterLogConfig", "type");
+            }
+            this.type = type;
             return this;
         }
         public GetManagedKubernetesClustersClusterLogConfig build() {

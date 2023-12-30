@@ -6,6 +6,7 @@ package com.pulumi.alicloud.arms.outputs;
 import com.pulumi.alicloud.arms.outputs.GetPrometheusAlertRulesRuleAnnotation;
 import com.pulumi.alicloud.arms.outputs.GetPrometheusAlertRulesRuleLabel;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -214,7 +215,10 @@ public final class GetPrometheusAlertRulesRule {
 
         @CustomType.Setter
         public Builder annotations(List<GetPrometheusAlertRulesRuleAnnotation> annotations) {
-            this.annotations = Objects.requireNonNull(annotations);
+            if (annotations == null) {
+              throw new MissingRequiredPropertyException("GetPrometheusAlertRulesRule", "annotations");
+            }
+            this.annotations = annotations;
             return this;
         }
         public Builder annotations(GetPrometheusAlertRulesRuleAnnotation... annotations) {
@@ -222,32 +226,50 @@ public final class GetPrometheusAlertRulesRule {
         }
         @CustomType.Setter
         public Builder clusterId(String clusterId) {
-            this.clusterId = Objects.requireNonNull(clusterId);
+            if (clusterId == null) {
+              throw new MissingRequiredPropertyException("GetPrometheusAlertRulesRule", "clusterId");
+            }
+            this.clusterId = clusterId;
             return this;
         }
         @CustomType.Setter
         public Builder dispatchRuleId(String dispatchRuleId) {
-            this.dispatchRuleId = Objects.requireNonNull(dispatchRuleId);
+            if (dispatchRuleId == null) {
+              throw new MissingRequiredPropertyException("GetPrometheusAlertRulesRule", "dispatchRuleId");
+            }
+            this.dispatchRuleId = dispatchRuleId;
             return this;
         }
         @CustomType.Setter
         public Builder duration(String duration) {
-            this.duration = Objects.requireNonNull(duration);
+            if (duration == null) {
+              throw new MissingRequiredPropertyException("GetPrometheusAlertRulesRule", "duration");
+            }
+            this.duration = duration;
             return this;
         }
         @CustomType.Setter
         public Builder expression(String expression) {
-            this.expression = Objects.requireNonNull(expression);
+            if (expression == null) {
+              throw new MissingRequiredPropertyException("GetPrometheusAlertRulesRule", "expression");
+            }
+            this.expression = expression;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetPrometheusAlertRulesRule", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder labels(List<GetPrometheusAlertRulesRuleLabel> labels) {
-            this.labels = Objects.requireNonNull(labels);
+            if (labels == null) {
+              throw new MissingRequiredPropertyException("GetPrometheusAlertRulesRule", "labels");
+            }
+            this.labels = labels;
             return this;
         }
         public Builder labels(GetPrometheusAlertRulesRuleLabel... labels) {
@@ -255,32 +277,50 @@ public final class GetPrometheusAlertRulesRule {
         }
         @CustomType.Setter
         public Builder message(String message) {
-            this.message = Objects.requireNonNull(message);
+            if (message == null) {
+              throw new MissingRequiredPropertyException("GetPrometheusAlertRulesRule", "message");
+            }
+            this.message = message;
             return this;
         }
         @CustomType.Setter
         public Builder notifyType(String notifyType) {
-            this.notifyType = Objects.requireNonNull(notifyType);
+            if (notifyType == null) {
+              throw new MissingRequiredPropertyException("GetPrometheusAlertRulesRule", "notifyType");
+            }
+            this.notifyType = notifyType;
             return this;
         }
         @CustomType.Setter
         public Builder prometheusAlertRuleId(String prometheusAlertRuleId) {
-            this.prometheusAlertRuleId = Objects.requireNonNull(prometheusAlertRuleId);
+            if (prometheusAlertRuleId == null) {
+              throw new MissingRequiredPropertyException("GetPrometheusAlertRulesRule", "prometheusAlertRuleId");
+            }
+            this.prometheusAlertRuleId = prometheusAlertRuleId;
             return this;
         }
         @CustomType.Setter
         public Builder prometheusAlertRuleName(String prometheusAlertRuleName) {
-            this.prometheusAlertRuleName = Objects.requireNonNull(prometheusAlertRuleName);
+            if (prometheusAlertRuleName == null) {
+              throw new MissingRequiredPropertyException("GetPrometheusAlertRulesRule", "prometheusAlertRuleName");
+            }
+            this.prometheusAlertRuleName = prometheusAlertRuleName;
             return this;
         }
         @CustomType.Setter
         public Builder status(Integer status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetPrometheusAlertRulesRule", "status");
+            }
+            this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder type(String type) {
-            this.type = Objects.requireNonNull(type);
+            if (type == null) {
+              throw new MissingRequiredPropertyException("GetPrometheusAlertRulesRule", "type");
+            }
+            this.type = type;
             return this;
         }
         public GetPrometheusAlertRulesRule build() {

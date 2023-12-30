@@ -5,6 +5,7 @@ package com.pulumi.alicloud.cms.outputs;
 
 import com.pulumi.alicloud.cms.outputs.GetMetricRuleBlackListsList;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -161,17 +162,24 @@ public final class GetMetricRuleBlackListsResult {
 
         @CustomType.Setter
         public Builder category(@Nullable String category) {
+
             this.category = category;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetMetricRuleBlackListsResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder ids(List<String> ids) {
-            this.ids = Objects.requireNonNull(ids);
+            if (ids == null) {
+              throw new MissingRequiredPropertyException("GetMetricRuleBlackListsResult", "ids");
+            }
+            this.ids = ids;
             return this;
         }
         public Builder ids(String... ids) {
@@ -179,7 +187,10 @@ public final class GetMetricRuleBlackListsResult {
         }
         @CustomType.Setter
         public Builder lists(List<GetMetricRuleBlackListsList> lists) {
-            this.lists = Objects.requireNonNull(lists);
+            if (lists == null) {
+              throw new MissingRequiredPropertyException("GetMetricRuleBlackListsResult", "lists");
+            }
+            this.lists = lists;
             return this;
         }
         public Builder lists(GetMetricRuleBlackListsList... lists) {
@@ -187,17 +198,22 @@ public final class GetMetricRuleBlackListsResult {
         }
         @CustomType.Setter
         public Builder metricRuleBlackListId(@Nullable String metricRuleBlackListId) {
+
             this.metricRuleBlackListId = metricRuleBlackListId;
             return this;
         }
         @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
+
             this.nameRegex = nameRegex;
             return this;
         }
         @CustomType.Setter
         public Builder names(List<String> names) {
-            this.names = Objects.requireNonNull(names);
+            if (names == null) {
+              throw new MissingRequiredPropertyException("GetMetricRuleBlackListsResult", "names");
+            }
+            this.names = names;
             return this;
         }
         public Builder names(String... names) {
@@ -205,26 +221,31 @@ public final class GetMetricRuleBlackListsResult {
         }
         @CustomType.Setter
         public Builder namespace(@Nullable String namespace) {
+
             this.namespace = namespace;
             return this;
         }
         @CustomType.Setter
         public Builder order(@Nullable Integer order) {
+
             this.order = order;
             return this;
         }
         @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
+
             this.outputFile = outputFile;
             return this;
         }
         @CustomType.Setter
         public Builder pageNumber(@Nullable Integer pageNumber) {
+
             this.pageNumber = pageNumber;
             return this;
         }
         @CustomType.Setter
         public Builder pageSize(@Nullable Integer pageSize) {
+
             this.pageSize = pageSize;
             return this;
         }

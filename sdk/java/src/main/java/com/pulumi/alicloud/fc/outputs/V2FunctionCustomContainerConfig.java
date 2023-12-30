@@ -101,26 +101,31 @@ public final class V2FunctionCustomContainerConfig {
 
         @CustomType.Setter
         public Builder accelerationType(@Nullable String accelerationType) {
+
             this.accelerationType = accelerationType;
             return this;
         }
         @CustomType.Setter
         public Builder args(@Nullable String args) {
+
             this.args = args;
             return this;
         }
         @CustomType.Setter
         public Builder command(@Nullable String command) {
+
             this.command = command;
             return this;
         }
         @CustomType.Setter
         public Builder image(@Nullable String image) {
+
             this.image = image;
             return this;
         }
         @CustomType.Setter
         public Builder webServerMode(@Nullable Boolean webServerMode) {
+
             this.webServerMode = webServerMode;
             return this;
         }

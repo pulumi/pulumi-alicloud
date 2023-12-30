@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.cloudstoragegateway.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -64,32 +65,50 @@ public final class GetStorageBundlesBundle {
 
         @CustomType.Setter
         public Builder createTime(String createTime) {
-            this.createTime = Objects.requireNonNull(createTime);
+            if (createTime == null) {
+              throw new MissingRequiredPropertyException("GetStorageBundlesBundle", "createTime");
+            }
+            this.createTime = createTime;
             return this;
         }
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetStorageBundlesBundle", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetStorageBundlesBundle", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder location(String location) {
-            this.location = Objects.requireNonNull(location);
+            if (location == null) {
+              throw new MissingRequiredPropertyException("GetStorageBundlesBundle", "location");
+            }
+            this.location = location;
             return this;
         }
         @CustomType.Setter
         public Builder storageBundleId(String storageBundleId) {
-            this.storageBundleId = Objects.requireNonNull(storageBundleId);
+            if (storageBundleId == null) {
+              throw new MissingRequiredPropertyException("GetStorageBundlesBundle", "storageBundleId");
+            }
+            this.storageBundleId = storageBundleId;
             return this;
         }
         @CustomType.Setter
         public Builder storageBundleName(String storageBundleName) {
-            this.storageBundleName = Objects.requireNonNull(storageBundleName);
+            if (storageBundleName == null) {
+              throw new MissingRequiredPropertyException("GetStorageBundlesBundle", "storageBundleName");
+            }
+            this.storageBundleName = storageBundleName;
             return this;
         }
         public GetStorageBundlesBundle build() {

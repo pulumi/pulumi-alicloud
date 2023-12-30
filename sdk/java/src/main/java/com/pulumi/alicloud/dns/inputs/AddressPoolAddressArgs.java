@@ -5,6 +5,7 @@ package com.pulumi.alicloud.dns.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -225,9 +226,15 @@ public final class AddressPoolAddressArgs extends com.pulumi.resources.ResourceA
         }
 
         public AddressPoolAddressArgs build() {
-            $.address = Objects.requireNonNull($.address, "expected parameter 'address' to be non-null");
-            $.attributeInfo = Objects.requireNonNull($.attributeInfo, "expected parameter 'attributeInfo' to be non-null");
-            $.mode = Objects.requireNonNull($.mode, "expected parameter 'mode' to be non-null");
+            if ($.address == null) {
+                throw new MissingRequiredPropertyException("AddressPoolAddressArgs", "address");
+            }
+            if ($.attributeInfo == null) {
+                throw new MissingRequiredPropertyException("AddressPoolAddressArgs", "attributeInfo");
+            }
+            if ($.mode == null) {
+                throw new MissingRequiredPropertyException("AddressPoolAddressArgs", "mode");
+            }
             return $;
         }
     }

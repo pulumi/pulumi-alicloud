@@ -5,6 +5,7 @@ package com.pulumi.alicloud.dns;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -279,9 +280,15 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public InstanceArgs build() {
-            $.dnsSecurity = Objects.requireNonNull($.dnsSecurity, "expected parameter 'dnsSecurity' to be non-null");
-            $.domainNumbers = Objects.requireNonNull($.domainNumbers, "expected parameter 'domainNumbers' to be non-null");
-            $.versionCode = Objects.requireNonNull($.versionCode, "expected parameter 'versionCode' to be non-null");
+            if ($.dnsSecurity == null) {
+                throw new MissingRequiredPropertyException("InstanceArgs", "dnsSecurity");
+            }
+            if ($.domainNumbers == null) {
+                throw new MissingRequiredPropertyException("InstanceArgs", "domainNumbers");
+            }
+            if ($.versionCode == null) {
+                throw new MissingRequiredPropertyException("InstanceArgs", "versionCode");
+            }
             return $;
         }
     }

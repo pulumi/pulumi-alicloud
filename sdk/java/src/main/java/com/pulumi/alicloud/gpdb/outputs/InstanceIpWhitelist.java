@@ -74,16 +74,19 @@ public final class InstanceIpWhitelist {
 
         @CustomType.Setter
         public Builder ipGroupAttribute(@Nullable String ipGroupAttribute) {
+
             this.ipGroupAttribute = ipGroupAttribute;
             return this;
         }
         @CustomType.Setter
         public Builder ipGroupName(@Nullable String ipGroupName) {
+
             this.ipGroupName = ipGroupName;
             return this;
         }
         @CustomType.Setter
         public Builder securityIpList(@Nullable String securityIpList) {
+
             this.securityIpList = securityIpList;
             return this;
         }

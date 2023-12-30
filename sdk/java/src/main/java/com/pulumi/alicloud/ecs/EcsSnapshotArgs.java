@@ -5,6 +5,7 @@ package com.pulumi.alicloud.ecs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.Object;
@@ -474,7 +475,9 @@ public final class EcsSnapshotArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public EcsSnapshotArgs build() {
-            $.diskId = Objects.requireNonNull($.diskId, "expected parameter 'diskId' to be non-null");
+            if ($.diskId == null) {
+                throw new MissingRequiredPropertyException("EcsSnapshotArgs", "diskId");
+            }
             return $;
         }
     }

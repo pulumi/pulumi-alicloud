@@ -5,6 +5,7 @@ package com.pulumi.alicloud.ga.outputs;
 
 import com.pulumi.alicloud.ga.outputs.GetCustomRoutingEndpointGroupDestinationsCustomRoutingEndpointGroupDestination;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -169,12 +170,18 @@ public final class GetCustomRoutingEndpointGroupDestinationsResult {
 
         @CustomType.Setter
         public Builder acceleratorId(String acceleratorId) {
-            this.acceleratorId = Objects.requireNonNull(acceleratorId);
+            if (acceleratorId == null) {
+              throw new MissingRequiredPropertyException("GetCustomRoutingEndpointGroupDestinationsResult", "acceleratorId");
+            }
+            this.acceleratorId = acceleratorId;
             return this;
         }
         @CustomType.Setter
         public Builder customRoutingEndpointGroupDestinations(List<GetCustomRoutingEndpointGroupDestinationsCustomRoutingEndpointGroupDestination> customRoutingEndpointGroupDestinations) {
-            this.customRoutingEndpointGroupDestinations = Objects.requireNonNull(customRoutingEndpointGroupDestinations);
+            if (customRoutingEndpointGroupDestinations == null) {
+              throw new MissingRequiredPropertyException("GetCustomRoutingEndpointGroupDestinationsResult", "customRoutingEndpointGroupDestinations");
+            }
+            this.customRoutingEndpointGroupDestinations = customRoutingEndpointGroupDestinations;
             return this;
         }
         public Builder customRoutingEndpointGroupDestinations(GetCustomRoutingEndpointGroupDestinationsCustomRoutingEndpointGroupDestination... customRoutingEndpointGroupDestinations) {
@@ -182,22 +189,30 @@ public final class GetCustomRoutingEndpointGroupDestinationsResult {
         }
         @CustomType.Setter
         public Builder endpointGroupId(@Nullable String endpointGroupId) {
+
             this.endpointGroupId = endpointGroupId;
             return this;
         }
         @CustomType.Setter
         public Builder fromPort(@Nullable Integer fromPort) {
+
             this.fromPort = fromPort;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetCustomRoutingEndpointGroupDestinationsResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder ids(List<String> ids) {
-            this.ids = Objects.requireNonNull(ids);
+            if (ids == null) {
+              throw new MissingRequiredPropertyException("GetCustomRoutingEndpointGroupDestinationsResult", "ids");
+            }
+            this.ids = ids;
             return this;
         }
         public Builder ids(String... ids) {
@@ -205,26 +220,31 @@ public final class GetCustomRoutingEndpointGroupDestinationsResult {
         }
         @CustomType.Setter
         public Builder listenerId(@Nullable String listenerId) {
+
             this.listenerId = listenerId;
             return this;
         }
         @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
+
             this.outputFile = outputFile;
             return this;
         }
         @CustomType.Setter
         public Builder pageNumber(@Nullable Integer pageNumber) {
+
             this.pageNumber = pageNumber;
             return this;
         }
         @CustomType.Setter
         public Builder pageSize(@Nullable Integer pageSize) {
+
             this.pageSize = pageSize;
             return this;
         }
         @CustomType.Setter
         public Builder protocols(@Nullable List<String> protocols) {
+
             this.protocols = protocols;
             return this;
         }
@@ -233,6 +253,7 @@ public final class GetCustomRoutingEndpointGroupDestinationsResult {
         }
         @CustomType.Setter
         public Builder toPort(@Nullable Integer toPort) {
+
             this.toPort = toPort;
             return this;
         }

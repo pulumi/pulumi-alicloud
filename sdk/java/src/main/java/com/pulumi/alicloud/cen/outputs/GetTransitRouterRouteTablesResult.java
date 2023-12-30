@@ -5,6 +5,7 @@ package com.pulumi.alicloud.cen.outputs;
 
 import com.pulumi.alicloud.cen.outputs.GetTransitRouterRouteTablesTable;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -138,12 +139,18 @@ public final class GetTransitRouterRouteTablesResult {
 
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetTransitRouterRouteTablesResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder ids(List<String> ids) {
-            this.ids = Objects.requireNonNull(ids);
+            if (ids == null) {
+              throw new MissingRequiredPropertyException("GetTransitRouterRouteTablesResult", "ids");
+            }
+            this.ids = ids;
             return this;
         }
         public Builder ids(String... ids) {
@@ -151,12 +158,16 @@ public final class GetTransitRouterRouteTablesResult {
         }
         @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
+
             this.nameRegex = nameRegex;
             return this;
         }
         @CustomType.Setter
         public Builder names(List<String> names) {
-            this.names = Objects.requireNonNull(names);
+            if (names == null) {
+              throw new MissingRequiredPropertyException("GetTransitRouterRouteTablesResult", "names");
+            }
+            this.names = names;
             return this;
         }
         public Builder names(String... names) {
@@ -164,17 +175,22 @@ public final class GetTransitRouterRouteTablesResult {
         }
         @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
+
             this.outputFile = outputFile;
             return this;
         }
         @CustomType.Setter
         public Builder status(@Nullable String status) {
+
             this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder tables(List<GetTransitRouterRouteTablesTable> tables) {
-            this.tables = Objects.requireNonNull(tables);
+            if (tables == null) {
+              throw new MissingRequiredPropertyException("GetTransitRouterRouteTablesResult", "tables");
+            }
+            this.tables = tables;
             return this;
         }
         public Builder tables(GetTransitRouterRouteTablesTable... tables) {
@@ -182,11 +198,15 @@ public final class GetTransitRouterRouteTablesResult {
         }
         @CustomType.Setter
         public Builder transitRouterId(String transitRouterId) {
-            this.transitRouterId = Objects.requireNonNull(transitRouterId);
+            if (transitRouterId == null) {
+              throw new MissingRequiredPropertyException("GetTransitRouterRouteTablesResult", "transitRouterId");
+            }
+            this.transitRouterId = transitRouterId;
             return this;
         }
         @CustomType.Setter
         public Builder transitRouterRouteTableIds(@Nullable List<String> transitRouterRouteTableIds) {
+
             this.transitRouterRouteTableIds = transitRouterRouteTableIds;
             return this;
         }
@@ -195,6 +215,7 @@ public final class GetTransitRouterRouteTablesResult {
         }
         @CustomType.Setter
         public Builder transitRouterRouteTableNames(@Nullable List<String> transitRouterRouteTableNames) {
+
             this.transitRouterRouteTableNames = transitRouterRouteTableNames;
             return this;
         }
@@ -203,6 +224,7 @@ public final class GetTransitRouterRouteTablesResult {
         }
         @CustomType.Setter
         public Builder transitRouterRouteTableStatus(@Nullable String transitRouterRouteTableStatus) {
+
             this.transitRouterRouteTableStatus = transitRouterRouteTableStatus;
             return this;
         }

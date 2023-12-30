@@ -5,6 +5,7 @@ package com.pulumi.alicloud.log;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Object;
 import java.lang.String;
 import java.util.List;
@@ -237,8 +238,12 @@ public final class AuditArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public AuditArgs build() {
-            $.aliuid = Objects.requireNonNull($.aliuid, "expected parameter 'aliuid' to be non-null");
-            $.displayName = Objects.requireNonNull($.displayName, "expected parameter 'displayName' to be non-null");
+            if ($.aliuid == null) {
+                throw new MissingRequiredPropertyException("AuditArgs", "aliuid");
+            }
+            if ($.displayName == null) {
+                throw new MissingRequiredPropertyException("AuditArgs", "displayName");
+            }
             return $;
         }
     }

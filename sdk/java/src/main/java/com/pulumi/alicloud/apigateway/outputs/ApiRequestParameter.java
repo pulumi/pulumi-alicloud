@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.apigateway.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -142,42 +143,62 @@ public final class ApiRequestParameter {
 
         @CustomType.Setter
         public Builder defaultValue(@Nullable String defaultValue) {
+
             this.defaultValue = defaultValue;
             return this;
         }
         @CustomType.Setter
         public Builder description(@Nullable String description) {
+
             this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder in(String in) {
-            this.in = Objects.requireNonNull(in);
+            if (in == null) {
+              throw new MissingRequiredPropertyException("ApiRequestParameter", "in");
+            }
+            this.in = in;
             return this;
         }
         @CustomType.Setter
         public Builder inService(String inService) {
-            this.inService = Objects.requireNonNull(inService);
+            if (inService == null) {
+              throw new MissingRequiredPropertyException("ApiRequestParameter", "inService");
+            }
+            this.inService = inService;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("ApiRequestParameter", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder nameService(String nameService) {
-            this.nameService = Objects.requireNonNull(nameService);
+            if (nameService == null) {
+              throw new MissingRequiredPropertyException("ApiRequestParameter", "nameService");
+            }
+            this.nameService = nameService;
             return this;
         }
         @CustomType.Setter
         public Builder required(String required) {
-            this.required = Objects.requireNonNull(required);
+            if (required == null) {
+              throw new MissingRequiredPropertyException("ApiRequestParameter", "required");
+            }
+            this.required = required;
             return this;
         }
         @CustomType.Setter
         public Builder type(String type) {
-            this.type = Objects.requireNonNull(type);
+            if (type == null) {
+              throw new MissingRequiredPropertyException("ApiRequestParameter", "type");
+            }
+            this.type = type;
             return this;
         }
         public ApiRequestParameter build() {

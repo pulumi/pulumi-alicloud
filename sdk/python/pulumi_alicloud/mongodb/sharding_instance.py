@@ -1436,7 +1436,7 @@ class ShardingInstance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="vswitchId")
-    def vswitch_id(self) -> pulumi.Output[Optional[str]]:
+    def vswitch_id(self) -> pulumi.Output[str]:
         """
         The virtual switch ID to launch DB instances in one VPC.
         """

@@ -58,11 +58,13 @@ public final class DirectorySamlIdentityProviderConfiguration {
 
         @CustomType.Setter
         public Builder encodedMetadataDocument(@Nullable String encodedMetadataDocument) {
+
             this.encodedMetadataDocument = encodedMetadataDocument;
             return this;
         }
         @CustomType.Setter
         public Builder ssoStatus(@Nullable String ssoStatus) {
+
             this.ssoStatus = ssoStatus;
             return this;
         }

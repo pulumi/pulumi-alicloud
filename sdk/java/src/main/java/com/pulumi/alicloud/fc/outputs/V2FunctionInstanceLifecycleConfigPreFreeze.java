@@ -59,11 +59,13 @@ public final class V2FunctionInstanceLifecycleConfigPreFreeze {
 
         @CustomType.Setter
         public Builder handler(@Nullable String handler) {
+
             this.handler = handler;
             return this;
         }
         @CustomType.Setter
         public Builder timeout(@Nullable Integer timeout) {
+
             this.timeout = timeout;
             return this;
         }

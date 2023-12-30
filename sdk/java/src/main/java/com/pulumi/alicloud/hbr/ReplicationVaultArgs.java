@@ -5,6 +5,7 @@ package com.pulumi.alicloud.hbr;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -224,9 +225,15 @@ public final class ReplicationVaultArgs extends com.pulumi.resources.ResourceArg
         }
 
         public ReplicationVaultArgs build() {
-            $.replicationSourceRegionId = Objects.requireNonNull($.replicationSourceRegionId, "expected parameter 'replicationSourceRegionId' to be non-null");
-            $.replicationSourceVaultId = Objects.requireNonNull($.replicationSourceVaultId, "expected parameter 'replicationSourceVaultId' to be non-null");
-            $.vaultName = Objects.requireNonNull($.vaultName, "expected parameter 'vaultName' to be non-null");
+            if ($.replicationSourceRegionId == null) {
+                throw new MissingRequiredPropertyException("ReplicationVaultArgs", "replicationSourceRegionId");
+            }
+            if ($.replicationSourceVaultId == null) {
+                throw new MissingRequiredPropertyException("ReplicationVaultArgs", "replicationSourceVaultId");
+            }
+            if ($.vaultName == null) {
+                throw new MissingRequiredPropertyException("ReplicationVaultArgs", "vaultName");
+            }
             return $;
         }
     }

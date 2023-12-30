@@ -10,10 +10,12 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Log
 {
     /// <summary>
-    /// The log store is a unit in Log Service to collect, store, and query the log data. Each log store belongs to a project,
-    /// and each project can create multiple Logstores. [Refer to details](https://www.alibabacloud.com/help/doc-detail/48874.htm)
+    /// Provides a SLS Log Store resource.
+    /// 
+    /// For information about SLS Log Store and how to use it, see [What is Log Store](https://www.alibabacloud.com/help/doc-detail/48874.htm).
     /// 
     /// &gt; **NOTE:** Available since v1.0.0.
+    /// 
     /// ## Example Usage
     /// 
     /// Basic Usage
@@ -111,10 +113,10 @@ namespace Pulumi.AliCloud.Log
     /// 
     /// ## Import
     /// 
-    /// Log store can be imported using the id, e.g.
+    /// SLS Log Store can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:log/store:Store example tf-log:tf-log-store
+    ///  $ pulumi import alicloud:log/store:Store example &lt;project_name&gt;:&lt;logstore_name&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:log/store:Store")]
@@ -133,22 +135,34 @@ namespace Pulumi.AliCloud.Log
         public Output<bool?> AutoSplit { get; private set; } = null!;
 
         /// <summary>
-        /// Determines whether to enable Web Tracking. Default `false`.
+        /// Log library creation time. Unix timestamp format that represents the number of seconds from 1970-1-1 00:00:00 UTC calculation.
+        /// </summary>
+        [Output("createTime")]
+        public Output<int> CreateTime { get; private set; } = null!;
+
+        /// <summary>
+        /// Whether open webtracking. webtracking network tracing, support the collection of HTML log, H5, Ios and android platforms.
         /// </summary>
         [Output("enableWebTracking")]
         public Output<bool?> EnableWebTracking { get; private set; } = null!;
 
         /// <summary>
-        /// Encrypted storage of data, providing data static protection capability, `encrypt_conf` can be updated since 1.188.0+ (only `enable` change is supported when updating logstore). See `encrypt_conf` below.
+        /// Encrypted storage of data, providing data static protection capability, encrypt_conf can be updated since 1.188.0 (only enable change is supported when updating logstore). See `encrypt_conf` below.
         /// </summary>
         [Output("encryptConf")]
-        public Output<Outputs.StoreEncryptConf?> EncryptConf { get; private set; } = null!;
+        public Output<Outputs.StoreEncryptConf> EncryptConf { get; private set; } = null!;
 
         /// <summary>
-        /// The ttl of hot storage. Default to `30`, at least `30`, hot storage ttl must be less than ttl.
+        /// The ttl of hot storage. Default to 30, at least 30, hot storage ttl must be less than ttl.
         /// </summary>
         [Output("hotTtl")]
         public Output<int?> HotTtl { get; private set; } = null!;
+
+        /// <summary>
+        /// The log store, which is unique in the same project. You need to specify one of the attributes: `logstore_name`, `name`.
+        /// </summary>
+        [Output("logstoreName")]
+        public Output<string> LogstoreName { get; private set; } = null!;
 
         /// <summary>
         /// The maximum number of shards for automatic split, which is in the range of 1 to 256. You must specify this parameter when autoSplit is true.
@@ -157,31 +171,37 @@ namespace Pulumi.AliCloud.Log
         public Output<int?> MaxSplitShardCount { get; private set; } = null!;
 
         /// <summary>
-        /// The mode of storage. Default to `standard`, must be `standard` or `query`.
+        /// The mode of storage. Default to `standard`, must be `standard` or `query`, `lite`.
         /// </summary>
         [Output("mode")]
-        public Output<string?> Mode { get; private set; } = null!;
+        public Output<string> Mode { get; private set; } = null!;
 
         /// <summary>
-        /// The log store, which is unique in the same project.
+        /// . Field 'name' has been deprecated from provider version 1.215.0. New field 'logstore_name' instead.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The project name to the log store belongs.
+        /// . Field 'project' has been deprecated from provider version 1.215.0. New field 'project_name' instead.
         /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// The data retention time (in days). Valid values: [1-3650]. Default to `30`. Log store data will be stored permanently when the value is `3650`.
+        /// The project name to the log store belongs. You need to specify one of the attributes: `project_name`, `project`.
+        /// </summary>
+        [Output("projectName")]
+        public Output<string> ProjectName { get; private set; } = null!;
+
+        /// <summary>
+        /// The data retention time (in days). Valid values: [1-3650]. Default to 30. Log store data will be stored permanently when the value is 3650.
         /// </summary>
         [Output("retentionPeriod")]
         public Output<int?> RetentionPeriod { get; private set; } = null!;
 
         /// <summary>
-        /// The number of shards in this log store. Default to 2. You can modify it by "Split" or "Merge" operations. [Refer to details](https://www.alibabacloud.com/help/doc-detail/28976.htm)
+        /// The number of shards in this log store. Default to 2. You can modify it by "Split" or "Merge" operations. [Refer to details](https://www.alibabacloud.com/help/zh/sls/product-overview/shard).
         /// </summary>
         [Output("shardCount")]
         public Output<int?> ShardCount { get; private set; } = null!;
@@ -194,6 +214,8 @@ namespace Pulumi.AliCloud.Log
 
         /// <summary>
         /// Determines whether store type is metric. `Metrics` means metric store, empty means log store.
+        /// 
+        /// The following arguments will be discarded. Please use new fields as soon as possible:
         /// </summary>
         [Output("telemetryType")]
         public Output<string?> TelemetryType { get; private set; } = null!;
@@ -206,7 +228,7 @@ namespace Pulumi.AliCloud.Log
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public Store(string name, StoreArgs args, CustomResourceOptions? options = null)
+        public Store(string name, StoreArgs? args = null, CustomResourceOptions? options = null)
             : base("alicloud:log/store:Store", name, args ?? new StoreArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -257,22 +279,28 @@ namespace Pulumi.AliCloud.Log
         public Input<bool>? AutoSplit { get; set; }
 
         /// <summary>
-        /// Determines whether to enable Web Tracking. Default `false`.
+        /// Whether open webtracking. webtracking network tracing, support the collection of HTML log, H5, Ios and android platforms.
         /// </summary>
         [Input("enableWebTracking")]
         public Input<bool>? EnableWebTracking { get; set; }
 
         /// <summary>
-        /// Encrypted storage of data, providing data static protection capability, `encrypt_conf` can be updated since 1.188.0+ (only `enable` change is supported when updating logstore). See `encrypt_conf` below.
+        /// Encrypted storage of data, providing data static protection capability, encrypt_conf can be updated since 1.188.0 (only enable change is supported when updating logstore). See `encrypt_conf` below.
         /// </summary>
         [Input("encryptConf")]
         public Input<Inputs.StoreEncryptConfArgs>? EncryptConf { get; set; }
 
         /// <summary>
-        /// The ttl of hot storage. Default to `30`, at least `30`, hot storage ttl must be less than ttl.
+        /// The ttl of hot storage. Default to 30, at least 30, hot storage ttl must be less than ttl.
         /// </summary>
         [Input("hotTtl")]
         public Input<int>? HotTtl { get; set; }
+
+        /// <summary>
+        /// The log store, which is unique in the same project. You need to specify one of the attributes: `logstore_name`, `name`.
+        /// </summary>
+        [Input("logstoreName")]
+        public Input<string>? LogstoreName { get; set; }
 
         /// <summary>
         /// The maximum number of shards for automatic split, which is in the range of 1 to 256. You must specify this parameter when autoSplit is true.
@@ -281,37 +309,45 @@ namespace Pulumi.AliCloud.Log
         public Input<int>? MaxSplitShardCount { get; set; }
 
         /// <summary>
-        /// The mode of storage. Default to `standard`, must be `standard` or `query`.
+        /// The mode of storage. Default to `standard`, must be `standard` or `query`, `lite`.
         /// </summary>
         [Input("mode")]
         public Input<string>? Mode { get; set; }
 
         /// <summary>
-        /// The log store, which is unique in the same project.
+        /// . Field 'name' has been deprecated from provider version 1.215.0. New field 'logstore_name' instead.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The project name to the log store belongs.
+        /// . Field 'project' has been deprecated from provider version 1.215.0. New field 'project_name' instead.
         /// </summary>
-        [Input("project", required: true)]
-        public Input<string> Project { get; set; } = null!;
+        [Input("project")]
+        public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// The data retention time (in days). Valid values: [1-3650]. Default to `30`. Log store data will be stored permanently when the value is `3650`.
+        /// The project name to the log store belongs. You need to specify one of the attributes: `project_name`, `project`.
+        /// </summary>
+        [Input("projectName")]
+        public Input<string>? ProjectName { get; set; }
+
+        /// <summary>
+        /// The data retention time (in days). Valid values: [1-3650]. Default to 30. Log store data will be stored permanently when the value is 3650.
         /// </summary>
         [Input("retentionPeriod")]
         public Input<int>? RetentionPeriod { get; set; }
 
         /// <summary>
-        /// The number of shards in this log store. Default to 2. You can modify it by "Split" or "Merge" operations. [Refer to details](https://www.alibabacloud.com/help/doc-detail/28976.htm)
+        /// The number of shards in this log store. Default to 2. You can modify it by "Split" or "Merge" operations. [Refer to details](https://www.alibabacloud.com/help/zh/sls/product-overview/shard).
         /// </summary>
         [Input("shardCount")]
         public Input<int>? ShardCount { get; set; }
 
         /// <summary>
         /// Determines whether store type is metric. `Metrics` means metric store, empty means log store.
+        /// 
+        /// The following arguments will be discarded. Please use new fields as soon as possible:
         /// </summary>
         [Input("telemetryType")]
         public Input<string>? TelemetryType { get; set; }
@@ -337,22 +373,34 @@ namespace Pulumi.AliCloud.Log
         public Input<bool>? AutoSplit { get; set; }
 
         /// <summary>
-        /// Determines whether to enable Web Tracking. Default `false`.
+        /// Log library creation time. Unix timestamp format that represents the number of seconds from 1970-1-1 00:00:00 UTC calculation.
+        /// </summary>
+        [Input("createTime")]
+        public Input<int>? CreateTime { get; set; }
+
+        /// <summary>
+        /// Whether open webtracking. webtracking network tracing, support the collection of HTML log, H5, Ios and android platforms.
         /// </summary>
         [Input("enableWebTracking")]
         public Input<bool>? EnableWebTracking { get; set; }
 
         /// <summary>
-        /// Encrypted storage of data, providing data static protection capability, `encrypt_conf` can be updated since 1.188.0+ (only `enable` change is supported when updating logstore). See `encrypt_conf` below.
+        /// Encrypted storage of data, providing data static protection capability, encrypt_conf can be updated since 1.188.0 (only enable change is supported when updating logstore). See `encrypt_conf` below.
         /// </summary>
         [Input("encryptConf")]
         public Input<Inputs.StoreEncryptConfGetArgs>? EncryptConf { get; set; }
 
         /// <summary>
-        /// The ttl of hot storage. Default to `30`, at least `30`, hot storage ttl must be less than ttl.
+        /// The ttl of hot storage. Default to 30, at least 30, hot storage ttl must be less than ttl.
         /// </summary>
         [Input("hotTtl")]
         public Input<int>? HotTtl { get; set; }
+
+        /// <summary>
+        /// The log store, which is unique in the same project. You need to specify one of the attributes: `logstore_name`, `name`.
+        /// </summary>
+        [Input("logstoreName")]
+        public Input<string>? LogstoreName { get; set; }
 
         /// <summary>
         /// The maximum number of shards for automatic split, which is in the range of 1 to 256. You must specify this parameter when autoSplit is true.
@@ -361,31 +409,37 @@ namespace Pulumi.AliCloud.Log
         public Input<int>? MaxSplitShardCount { get; set; }
 
         /// <summary>
-        /// The mode of storage. Default to `standard`, must be `standard` or `query`.
+        /// The mode of storage. Default to `standard`, must be `standard` or `query`, `lite`.
         /// </summary>
         [Input("mode")]
         public Input<string>? Mode { get; set; }
 
         /// <summary>
-        /// The log store, which is unique in the same project.
+        /// . Field 'name' has been deprecated from provider version 1.215.0. New field 'logstore_name' instead.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The project name to the log store belongs.
+        /// . Field 'project' has been deprecated from provider version 1.215.0. New field 'project_name' instead.
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// The data retention time (in days). Valid values: [1-3650]. Default to `30`. Log store data will be stored permanently when the value is `3650`.
+        /// The project name to the log store belongs. You need to specify one of the attributes: `project_name`, `project`.
+        /// </summary>
+        [Input("projectName")]
+        public Input<string>? ProjectName { get; set; }
+
+        /// <summary>
+        /// The data retention time (in days). Valid values: [1-3650]. Default to 30. Log store data will be stored permanently when the value is 3650.
         /// </summary>
         [Input("retentionPeriod")]
         public Input<int>? RetentionPeriod { get; set; }
 
         /// <summary>
-        /// The number of shards in this log store. Default to 2. You can modify it by "Split" or "Merge" operations. [Refer to details](https://www.alibabacloud.com/help/doc-detail/28976.htm)
+        /// The number of shards in this log store. Default to 2. You can modify it by "Split" or "Merge" operations. [Refer to details](https://www.alibabacloud.com/help/zh/sls/product-overview/shard).
         /// </summary>
         [Input("shardCount")]
         public Input<int>? ShardCount { get; set; }
@@ -404,6 +458,8 @@ namespace Pulumi.AliCloud.Log
 
         /// <summary>
         /// Determines whether store type is metric. `Metrics` means metric store, empty means log store.
+        /// 
+        /// The following arguments will be discarded. Please use new fields as soon as possible:
         /// </summary>
         [Input("telemetryType")]
         public Input<string>? TelemetryType { get; set; }

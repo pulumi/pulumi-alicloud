@@ -6,6 +6,7 @@ package com.pulumi.alicloud.eci;
 import com.pulumi.alicloud.eci.inputs.VirtualNodeTaintArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Object;
 import java.lang.String;
@@ -424,9 +425,15 @@ public final class VirtualNodeArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public VirtualNodeArgs build() {
-            $.kubeConfig = Objects.requireNonNull($.kubeConfig, "expected parameter 'kubeConfig' to be non-null");
-            $.securityGroupId = Objects.requireNonNull($.securityGroupId, "expected parameter 'securityGroupId' to be non-null");
-            $.vswitchId = Objects.requireNonNull($.vswitchId, "expected parameter 'vswitchId' to be non-null");
+            if ($.kubeConfig == null) {
+                throw new MissingRequiredPropertyException("VirtualNodeArgs", "kubeConfig");
+            }
+            if ($.securityGroupId == null) {
+                throw new MissingRequiredPropertyException("VirtualNodeArgs", "securityGroupId");
+            }
+            if ($.vswitchId == null) {
+                throw new MissingRequiredPropertyException("VirtualNodeArgs", "vswitchId");
+            }
             return $;
         }
     }

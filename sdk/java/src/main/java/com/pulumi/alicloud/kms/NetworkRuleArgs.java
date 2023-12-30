@@ -5,6 +5,7 @@ package com.pulumi.alicloud.kms;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -161,7 +162,9 @@ public final class NetworkRuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public NetworkRuleArgs build() {
-            $.sourcePrivateIps = Objects.requireNonNull($.sourcePrivateIps, "expected parameter 'sourcePrivateIps' to be non-null");
+            if ($.sourcePrivateIps == null) {
+                throw new MissingRequiredPropertyException("NetworkRuleArgs", "sourcePrivateIps");
+            }
             return $;
         }
     }

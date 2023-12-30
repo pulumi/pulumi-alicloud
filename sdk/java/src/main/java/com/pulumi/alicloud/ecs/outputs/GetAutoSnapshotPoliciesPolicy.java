@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.ecs.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.Object;
@@ -215,37 +216,58 @@ public final class GetAutoSnapshotPoliciesPolicy {
 
         @CustomType.Setter
         public Builder autoSnapshotPolicyId(String autoSnapshotPolicyId) {
-            this.autoSnapshotPolicyId = Objects.requireNonNull(autoSnapshotPolicyId);
+            if (autoSnapshotPolicyId == null) {
+              throw new MissingRequiredPropertyException("GetAutoSnapshotPoliciesPolicy", "autoSnapshotPolicyId");
+            }
+            this.autoSnapshotPolicyId = autoSnapshotPolicyId;
             return this;
         }
         @CustomType.Setter
         public Builder copiedSnapshotsRetentionDays(Integer copiedSnapshotsRetentionDays) {
-            this.copiedSnapshotsRetentionDays = Objects.requireNonNull(copiedSnapshotsRetentionDays);
+            if (copiedSnapshotsRetentionDays == null) {
+              throw new MissingRequiredPropertyException("GetAutoSnapshotPoliciesPolicy", "copiedSnapshotsRetentionDays");
+            }
+            this.copiedSnapshotsRetentionDays = copiedSnapshotsRetentionDays;
             return this;
         }
         @CustomType.Setter
         public Builder diskNums(Integer diskNums) {
-            this.diskNums = Objects.requireNonNull(diskNums);
+            if (diskNums == null) {
+              throw new MissingRequiredPropertyException("GetAutoSnapshotPoliciesPolicy", "diskNums");
+            }
+            this.diskNums = diskNums;
             return this;
         }
         @CustomType.Setter
         public Builder enableCrossRegionCopy(Boolean enableCrossRegionCopy) {
-            this.enableCrossRegionCopy = Objects.requireNonNull(enableCrossRegionCopy);
+            if (enableCrossRegionCopy == null) {
+              throw new MissingRequiredPropertyException("GetAutoSnapshotPoliciesPolicy", "enableCrossRegionCopy");
+            }
+            this.enableCrossRegionCopy = enableCrossRegionCopy;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetAutoSnapshotPoliciesPolicy", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetAutoSnapshotPoliciesPolicy", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder repeatWeekdays(List<String> repeatWeekdays) {
-            this.repeatWeekdays = Objects.requireNonNull(repeatWeekdays);
+            if (repeatWeekdays == null) {
+              throw new MissingRequiredPropertyException("GetAutoSnapshotPoliciesPolicy", "repeatWeekdays");
+            }
+            this.repeatWeekdays = repeatWeekdays;
             return this;
         }
         public Builder repeatWeekdays(String... repeatWeekdays) {
@@ -253,22 +275,34 @@ public final class GetAutoSnapshotPoliciesPolicy {
         }
         @CustomType.Setter
         public Builder retentionDays(Integer retentionDays) {
-            this.retentionDays = Objects.requireNonNull(retentionDays);
+            if (retentionDays == null) {
+              throw new MissingRequiredPropertyException("GetAutoSnapshotPoliciesPolicy", "retentionDays");
+            }
+            this.retentionDays = retentionDays;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetAutoSnapshotPoliciesPolicy", "status");
+            }
+            this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder tags(Map<String,Object> tags) {
-            this.tags = Objects.requireNonNull(tags);
+            if (tags == null) {
+              throw new MissingRequiredPropertyException("GetAutoSnapshotPoliciesPolicy", "tags");
+            }
+            this.tags = tags;
             return this;
         }
         @CustomType.Setter
         public Builder targetCopyRegions(List<String> targetCopyRegions) {
-            this.targetCopyRegions = Objects.requireNonNull(targetCopyRegions);
+            if (targetCopyRegions == null) {
+              throw new MissingRequiredPropertyException("GetAutoSnapshotPoliciesPolicy", "targetCopyRegions");
+            }
+            this.targetCopyRegions = targetCopyRegions;
             return this;
         }
         public Builder targetCopyRegions(String... targetCopyRegions) {
@@ -276,7 +310,10 @@ public final class GetAutoSnapshotPoliciesPolicy {
         }
         @CustomType.Setter
         public Builder timePoints(List<String> timePoints) {
-            this.timePoints = Objects.requireNonNull(timePoints);
+            if (timePoints == null) {
+              throw new MissingRequiredPropertyException("GetAutoSnapshotPoliciesPolicy", "timePoints");
+            }
+            this.timePoints = timePoints;
             return this;
         }
         public Builder timePoints(String... timePoints) {
@@ -284,7 +321,10 @@ public final class GetAutoSnapshotPoliciesPolicy {
         }
         @CustomType.Setter
         public Builder volumeNums(Integer volumeNums) {
-            this.volumeNums = Objects.requireNonNull(volumeNums);
+            if (volumeNums == null) {
+              throw new MissingRequiredPropertyException("GetAutoSnapshotPoliciesPolicy", "volumeNums");
+            }
+            this.volumeNums = volumeNums;
             return this;
         }
         public GetAutoSnapshotPoliciesPolicy build() {

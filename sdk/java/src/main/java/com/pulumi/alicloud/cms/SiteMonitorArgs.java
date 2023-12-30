@@ -6,6 +6,7 @@ package com.pulumi.alicloud.cms;
 import com.pulumi.alicloud.cms.inputs.SiteMonitorIspCityArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -321,9 +322,15 @@ public final class SiteMonitorArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public SiteMonitorArgs build() {
-            $.address = Objects.requireNonNull($.address, "expected parameter 'address' to be non-null");
-            $.taskName = Objects.requireNonNull($.taskName, "expected parameter 'taskName' to be non-null");
-            $.taskType = Objects.requireNonNull($.taskType, "expected parameter 'taskType' to be non-null");
+            if ($.address == null) {
+                throw new MissingRequiredPropertyException("SiteMonitorArgs", "address");
+            }
+            if ($.taskName == null) {
+                throw new MissingRequiredPropertyException("SiteMonitorArgs", "taskName");
+            }
+            if ($.taskType == null) {
+                throw new MissingRequiredPropertyException("SiteMonitorArgs", "taskType");
+            }
             return $;
         }
     }

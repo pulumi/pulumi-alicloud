@@ -29,21 +29,21 @@ namespace Pulumi.AliCloud.AliKafka
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var defaultZones = AliCloud.GetZones.Invoke(new()
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "terraform-example";
+    ///     var defaultNetworks = AliCloud.Vpc.GetNetworks.Invoke(new()
     ///     {
-    ///         AvailableResourceCreation = "VSwitch",
+    ///         NameRegex = "^default-NODELETING$",
     ///     });
     /// 
-    ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
+    ///     var defaultSwitches = AliCloud.Vpc.GetSwitches.Invoke(new()
     ///     {
-    ///         CidrBlock = "172.16.0.0/12",
+    ///         VpcId = defaultNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
     ///     });
     /// 
-    ///     var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new()
+    ///     var defaultSecurityGroup = new AliCloud.Ecs.SecurityGroup("defaultSecurityGroup", new()
     ///     {
-    ///         VpcId = defaultNetwork.Id,
-    ///         CidrBlock = "172.16.0.0/24",
-    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///         VpcId = defaultNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
     ///     });
     /// 
     ///     var defaultInstance = new AliCloud.AliKafka.Instance("defaultInstance", new()
@@ -53,17 +53,18 @@ namespace Pulumi.AliCloud.AliKafka
     ///         DiskSize = 500,
     ///         DeployType = 5,
     ///         IoMax = 20,
-    ///         VswitchId = defaultSwitch.Id,
+    ///         VswitchId = defaultSwitches.Apply(getSwitchesResult =&gt; getSwitchesResult.Ids[0]),
+    ///         SecurityGroup = defaultSecurityGroup.Id,
     ///     });
     /// 
     ///     var defaultTopic = new AliCloud.AliKafka.Topic("defaultTopic", new()
     ///     {
+    ///         Remark = "alicloud_alikafka_topic_remark",
     ///         InstanceId = defaultInstance.Id,
-    ///         TopicName = "example-topic",
+    ///         TopicName = name,
     ///         LocalTopic = false,
     ///         CompactTopic = false,
-    ///         PartitionNum = 12,
-    ///         Remark = "dafault_kafka_topic_remark",
+    ///         PartitionNum = 6,
     ///     });
     /// 
     /// });
@@ -117,7 +118,7 @@ namespace Pulumi.AliCloud.AliKafka
         public Output<ImmutableDictionary<string, object>?> Tags { get; private set; } = null!;
 
         /// <summary>
-        /// Name of the topic. Two topics on a single instance cannot have the same name. The length cannot exceed 64 characters.
+        /// Name of the topic. Two topics on a single instance cannot have the same name. The length cannot exceed 249 characters.
         /// </summary>
         [Output("topic")]
         public Output<string> TopicName { get; private set; } = null!;
@@ -211,7 +212,7 @@ namespace Pulumi.AliCloud.AliKafka
         }
 
         /// <summary>
-        /// Name of the topic. Two topics on a single instance cannot have the same name. The length cannot exceed 64 characters.
+        /// Name of the topic. Two topics on a single instance cannot have the same name. The length cannot exceed 249 characters.
         /// </summary>
         [Input("topic", required: true)]
         public Input<string> TopicName { get; set; } = null!;
@@ -267,7 +268,7 @@ namespace Pulumi.AliCloud.AliKafka
         }
 
         /// <summary>
-        /// Name of the topic. Two topics on a single instance cannot have the same name. The length cannot exceed 64 characters.
+        /// Name of the topic. Two topics on a single instance cannot have the same name. The length cannot exceed 249 characters.
         /// </summary>
         [Input("topic")]
         public Input<string>? TopicName { get; set; }

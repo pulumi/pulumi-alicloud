@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.bss.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -197,8 +198,12 @@ public final class GetOpenApiPricingModulesPlainArgs extends com.pulumi.resource
         }
 
         public GetOpenApiPricingModulesPlainArgs build() {
-            $.productCode = Objects.requireNonNull($.productCode, "expected parameter 'productCode' to be non-null");
-            $.subscriptionType = Objects.requireNonNull($.subscriptionType, "expected parameter 'subscriptionType' to be non-null");
+            if ($.productCode == null) {
+                throw new MissingRequiredPropertyException("GetOpenApiPricingModulesPlainArgs", "productCode");
+            }
+            if ($.subscriptionType == null) {
+                throw new MissingRequiredPropertyException("GetOpenApiPricingModulesPlainArgs", "subscriptionType");
+            }
             return $;
         }
     }

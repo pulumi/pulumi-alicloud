@@ -60,6 +60,21 @@ public final class EciScalingConfigurationState extends com.pulumi.resources.Res
     }
 
     /**
+     * The duration in seconds relative to the startTime that the job may be active before the system tries to terminate it.
+     * 
+     */
+    @Import(name="activeDeadlineSeconds")
+    private @Nullable Output<Integer> activeDeadlineSeconds;
+
+    /**
+     * @return The duration in seconds relative to the startTime that the job may be active before the system tries to terminate it.
+     * 
+     */
+    public Optional<Output<Integer>> activeDeadlineSeconds() {
+        return Optional.ofNullable(this.activeDeadlineSeconds);
+    }
+
+    /**
      * Whether create eip automatically.
      * 
      */
@@ -72,6 +87,21 @@ public final class EciScalingConfigurationState extends com.pulumi.resources.Res
      */
     public Optional<Output<Boolean>> autoCreateEip() {
         return Optional.ofNullable(this.autoCreateEip);
+    }
+
+    /**
+     * Whether to automatically match the image cache.
+     * 
+     */
+    @Import(name="autoMatchImageCache")
+    private @Nullable Output<Boolean> autoMatchImageCache;
+
+    /**
+     * @return Whether to automatically match the image cache.
+     * 
+     */
+    public Optional<Output<Boolean>> autoMatchImageCache() {
+        return Optional.ofNullable(this.autoMatchImageCache);
     }
 
     /**
@@ -197,6 +227,21 @@ public final class EciScalingConfigurationState extends com.pulumi.resources.Res
     }
 
     /**
+     * The size of ephemeral storage.
+     * 
+     */
+    @Import(name="ephemeralStorage")
+    private @Nullable Output<Integer> ephemeralStorage;
+
+    /**
+     * @return The size of ephemeral storage.
+     * 
+     */
+    public Optional<Output<Integer>> ephemeralStorage() {
+        return Optional.ofNullable(this.ephemeralStorage);
+    }
+
+    /**
      * The eci scaling configuration will be deleted forcibly with deleting its scaling group.
      * Default to false.
      * 
@@ -261,6 +306,21 @@ public final class EciScalingConfigurationState extends com.pulumi.resources.Res
     }
 
     /**
+     * The ID of image cache.
+     * 
+     */
+    @Import(name="imageSnapshotId")
+    private @Nullable Output<String> imageSnapshotId;
+
+    /**
+     * @return The ID of image cache.
+     * 
+     */
+    public Optional<Output<String>> imageSnapshotId() {
+        return Optional.ofNullable(this.imageSnapshotId);
+    }
+
+    /**
      * Ingress bandwidth.
      * 
      */
@@ -288,6 +348,36 @@ public final class EciScalingConfigurationState extends com.pulumi.resources.Res
      */
     public Optional<Output<List<EciScalingConfigurationInitContainerArgs>>> initContainers() {
         return Optional.ofNullable(this.initContainers);
+    }
+
+    /**
+     * Number of IPv6 addresses.
+     * 
+     */
+    @Import(name="ipv6AddressCount")
+    private @Nullable Output<Integer> ipv6AddressCount;
+
+    /**
+     * @return Number of IPv6 addresses.
+     * 
+     */
+    public Optional<Output<Integer>> ipv6AddressCount() {
+        return Optional.ofNullable(this.ipv6AddressCount);
+    }
+
+    /**
+     * The weight of an ECI instance attached to the Server Group.
+     * 
+     */
+    @Import(name="loadBalancerWeight")
+    private @Nullable Output<Integer> loadBalancerWeight;
+
+    /**
+     * @return The weight of an ECI instance attached to the Server Group.
+     * 
+     */
+    public Optional<Output<Integer>> loadBalancerWeight() {
+        return Optional.ofNullable(this.loadBalancerWeight);
     }
 
     /**
@@ -459,6 +549,21 @@ public final class EciScalingConfigurationState extends com.pulumi.resources.Res
     }
 
     /**
+     * The program&#39;s buffering time before closing.
+     * 
+     */
+    @Import(name="terminationGracePeriodSeconds")
+    private @Nullable Output<Integer> terminationGracePeriodSeconds;
+
+    /**
+     * @return The program&#39;s buffering time before closing.
+     * 
+     */
+    public Optional<Output<Integer>> terminationGracePeriodSeconds() {
+        return Optional.ofNullable(this.terminationGracePeriodSeconds);
+    }
+
+    /**
      * The list of volumes. See `volumes` below for details.
      * 
      */
@@ -478,7 +583,9 @@ public final class EciScalingConfigurationState extends com.pulumi.resources.Res
     private EciScalingConfigurationState(EciScalingConfigurationState $) {
         this.acrRegistryInfos = $.acrRegistryInfos;
         this.active = $.active;
+        this.activeDeadlineSeconds = $.activeDeadlineSeconds;
         this.autoCreateEip = $.autoCreateEip;
+        this.autoMatchImageCache = $.autoMatchImageCache;
         this.containerGroupName = $.containerGroupName;
         this.containers = $.containers;
         this.cpu = $.cpu;
@@ -487,12 +594,16 @@ public final class EciScalingConfigurationState extends com.pulumi.resources.Res
         this.egressBandwidth = $.egressBandwidth;
         this.eipBandwidth = $.eipBandwidth;
         this.enableSls = $.enableSls;
+        this.ephemeralStorage = $.ephemeralStorage;
         this.forceDelete = $.forceDelete;
         this.hostAliases = $.hostAliases;
         this.hostName = $.hostName;
         this.imageRegistryCredentials = $.imageRegistryCredentials;
+        this.imageSnapshotId = $.imageSnapshotId;
         this.ingressBandwidth = $.ingressBandwidth;
         this.initContainers = $.initContainers;
+        this.ipv6AddressCount = $.ipv6AddressCount;
+        this.loadBalancerWeight = $.loadBalancerWeight;
         this.memory = $.memory;
         this.ramRoleName = $.ramRoleName;
         this.resourceGroupId = $.resourceGroupId;
@@ -503,6 +614,7 @@ public final class EciScalingConfigurationState extends com.pulumi.resources.Res
         this.spotPriceLimit = $.spotPriceLimit;
         this.spotStrategy = $.spotStrategy;
         this.tags = $.tags;
+        this.terminationGracePeriodSeconds = $.terminationGracePeriodSeconds;
         this.volumes = $.volumes;
     }
 
@@ -579,6 +691,27 @@ public final class EciScalingConfigurationState extends com.pulumi.resources.Res
         }
 
         /**
+         * @param activeDeadlineSeconds The duration in seconds relative to the startTime that the job may be active before the system tries to terminate it.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder activeDeadlineSeconds(@Nullable Output<Integer> activeDeadlineSeconds) {
+            $.activeDeadlineSeconds = activeDeadlineSeconds;
+            return this;
+        }
+
+        /**
+         * @param activeDeadlineSeconds The duration in seconds relative to the startTime that the job may be active before the system tries to terminate it.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder activeDeadlineSeconds(Integer activeDeadlineSeconds) {
+            return activeDeadlineSeconds(Output.of(activeDeadlineSeconds));
+        }
+
+        /**
          * @param autoCreateEip Whether create eip automatically.
          * 
          * @return builder
@@ -597,6 +730,27 @@ public final class EciScalingConfigurationState extends com.pulumi.resources.Res
          */
         public Builder autoCreateEip(Boolean autoCreateEip) {
             return autoCreateEip(Output.of(autoCreateEip));
+        }
+
+        /**
+         * @param autoMatchImageCache Whether to automatically match the image cache.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder autoMatchImageCache(@Nullable Output<Boolean> autoMatchImageCache) {
+            $.autoMatchImageCache = autoMatchImageCache;
+            return this;
+        }
+
+        /**
+         * @param autoMatchImageCache Whether to automatically match the image cache.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder autoMatchImageCache(Boolean autoMatchImageCache) {
+            return autoMatchImageCache(Output.of(autoMatchImageCache));
         }
 
         /**
@@ -780,6 +934,27 @@ public final class EciScalingConfigurationState extends com.pulumi.resources.Res
         }
 
         /**
+         * @param ephemeralStorage The size of ephemeral storage.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ephemeralStorage(@Nullable Output<Integer> ephemeralStorage) {
+            $.ephemeralStorage = ephemeralStorage;
+            return this;
+        }
+
+        /**
+         * @param ephemeralStorage The size of ephemeral storage.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ephemeralStorage(Integer ephemeralStorage) {
+            return ephemeralStorage(Output.of(ephemeralStorage));
+        }
+
+        /**
          * @param forceDelete The eci scaling configuration will be deleted forcibly with deleting its scaling group.
          * Default to false.
          * 
@@ -889,6 +1064,27 @@ public final class EciScalingConfigurationState extends com.pulumi.resources.Res
         }
 
         /**
+         * @param imageSnapshotId The ID of image cache.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder imageSnapshotId(@Nullable Output<String> imageSnapshotId) {
+            $.imageSnapshotId = imageSnapshotId;
+            return this;
+        }
+
+        /**
+         * @param imageSnapshotId The ID of image cache.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder imageSnapshotId(String imageSnapshotId) {
+            return imageSnapshotId(Output.of(imageSnapshotId));
+        }
+
+        /**
          * @param ingressBandwidth Ingress bandwidth.
          * 
          * @return builder
@@ -938,6 +1134,48 @@ public final class EciScalingConfigurationState extends com.pulumi.resources.Res
          */
         public Builder initContainers(EciScalingConfigurationInitContainerArgs... initContainers) {
             return initContainers(List.of(initContainers));
+        }
+
+        /**
+         * @param ipv6AddressCount Number of IPv6 addresses.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipv6AddressCount(@Nullable Output<Integer> ipv6AddressCount) {
+            $.ipv6AddressCount = ipv6AddressCount;
+            return this;
+        }
+
+        /**
+         * @param ipv6AddressCount Number of IPv6 addresses.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipv6AddressCount(Integer ipv6AddressCount) {
+            return ipv6AddressCount(Output.of(ipv6AddressCount));
+        }
+
+        /**
+         * @param loadBalancerWeight The weight of an ECI instance attached to the Server Group.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder loadBalancerWeight(@Nullable Output<Integer> loadBalancerWeight) {
+            $.loadBalancerWeight = loadBalancerWeight;
+            return this;
+        }
+
+        /**
+         * @param loadBalancerWeight The weight of an ECI instance attached to the Server Group.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder loadBalancerWeight(Integer loadBalancerWeight) {
+            return loadBalancerWeight(Output.of(loadBalancerWeight));
         }
 
         /**
@@ -1166,6 +1404,27 @@ public final class EciScalingConfigurationState extends com.pulumi.resources.Res
          */
         public Builder tags(Map<String,Object> tags) {
             return tags(Output.of(tags));
+        }
+
+        /**
+         * @param terminationGracePeriodSeconds The program&#39;s buffering time before closing.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder terminationGracePeriodSeconds(@Nullable Output<Integer> terminationGracePeriodSeconds) {
+            $.terminationGracePeriodSeconds = terminationGracePeriodSeconds;
+            return this;
+        }
+
+        /**
+         * @param terminationGracePeriodSeconds The program&#39;s buffering time before closing.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder terminationGracePeriodSeconds(Integer terminationGracePeriodSeconds) {
+            return terminationGracePeriodSeconds(Output.of(terminationGracePeriodSeconds));
         }
 
         /**

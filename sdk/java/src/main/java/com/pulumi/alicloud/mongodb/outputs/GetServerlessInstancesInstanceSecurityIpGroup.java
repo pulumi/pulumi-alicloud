@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.mongodb.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -70,17 +71,26 @@ public final class GetServerlessInstancesInstanceSecurityIpGroup {
 
         @CustomType.Setter
         public Builder securityIpGroupAttribute(String securityIpGroupAttribute) {
-            this.securityIpGroupAttribute = Objects.requireNonNull(securityIpGroupAttribute);
+            if (securityIpGroupAttribute == null) {
+              throw new MissingRequiredPropertyException("GetServerlessInstancesInstanceSecurityIpGroup", "securityIpGroupAttribute");
+            }
+            this.securityIpGroupAttribute = securityIpGroupAttribute;
             return this;
         }
         @CustomType.Setter
         public Builder securityIpGroupName(String securityIpGroupName) {
-            this.securityIpGroupName = Objects.requireNonNull(securityIpGroupName);
+            if (securityIpGroupName == null) {
+              throw new MissingRequiredPropertyException("GetServerlessInstancesInstanceSecurityIpGroup", "securityIpGroupName");
+            }
+            this.securityIpGroupName = securityIpGroupName;
             return this;
         }
         @CustomType.Setter
         public Builder securityIpList(String securityIpList) {
-            this.securityIpList = Objects.requireNonNull(securityIpList);
+            if (securityIpList == null) {
+              throw new MissingRequiredPropertyException("GetServerlessInstancesInstanceSecurityIpGroup", "securityIpList");
+            }
+            this.securityIpList = securityIpList;
             return this;
         }
         public GetServerlessInstancesInstanceSecurityIpGroup build() {

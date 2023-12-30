@@ -5,6 +5,7 @@ package com.pulumi.alicloud.clickhouse;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -199,9 +200,15 @@ public final class BackupPolicyArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public BackupPolicyArgs build() {
-            $.dbClusterId = Objects.requireNonNull($.dbClusterId, "expected parameter 'dbClusterId' to be non-null");
-            $.preferredBackupPeriods = Objects.requireNonNull($.preferredBackupPeriods, "expected parameter 'preferredBackupPeriods' to be non-null");
-            $.preferredBackupTime = Objects.requireNonNull($.preferredBackupTime, "expected parameter 'preferredBackupTime' to be non-null");
+            if ($.dbClusterId == null) {
+                throw new MissingRequiredPropertyException("BackupPolicyArgs", "dbClusterId");
+            }
+            if ($.preferredBackupPeriods == null) {
+                throw new MissingRequiredPropertyException("BackupPolicyArgs", "preferredBackupPeriods");
+            }
+            if ($.preferredBackupTime == null) {
+                throw new MissingRequiredPropertyException("BackupPolicyArgs", "preferredBackupTime");
+            }
             return $;
         }
     }

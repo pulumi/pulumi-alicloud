@@ -7,6 +7,7 @@ import com.pulumi.alicloud.sae.inputs.GreyTagRouteDubboRuleArgs;
 import com.pulumi.alicloud.sae.inputs.GreyTagRouteScRuleArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -247,8 +248,12 @@ public final class GreyTagRouteArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public GreyTagRouteArgs build() {
-            $.appId = Objects.requireNonNull($.appId, "expected parameter 'appId' to be non-null");
-            $.greyTagRouteName = Objects.requireNonNull($.greyTagRouteName, "expected parameter 'greyTagRouteName' to be non-null");
+            if ($.appId == null) {
+                throw new MissingRequiredPropertyException("GreyTagRouteArgs", "appId");
+            }
+            if ($.greyTagRouteName == null) {
+                throw new MissingRequiredPropertyException("GreyTagRouteArgs", "greyTagRouteName");
+            }
             return $;
         }
     }

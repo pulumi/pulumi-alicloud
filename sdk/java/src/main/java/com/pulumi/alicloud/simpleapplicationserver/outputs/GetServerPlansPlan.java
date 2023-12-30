@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.simpleapplicationserver.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -141,42 +142,66 @@ public final class GetServerPlansPlan {
 
         @CustomType.Setter
         public Builder bandwidth(Integer bandwidth) {
-            this.bandwidth = Objects.requireNonNull(bandwidth);
+            if (bandwidth == null) {
+              throw new MissingRequiredPropertyException("GetServerPlansPlan", "bandwidth");
+            }
+            this.bandwidth = bandwidth;
             return this;
         }
         @CustomType.Setter
         public Builder core(Integer core) {
-            this.core = Objects.requireNonNull(core);
+            if (core == null) {
+              throw new MissingRequiredPropertyException("GetServerPlansPlan", "core");
+            }
+            this.core = core;
             return this;
         }
         @CustomType.Setter
         public Builder diskSize(Integer diskSize) {
-            this.diskSize = Objects.requireNonNull(diskSize);
+            if (diskSize == null) {
+              throw new MissingRequiredPropertyException("GetServerPlansPlan", "diskSize");
+            }
+            this.diskSize = diskSize;
             return this;
         }
         @CustomType.Setter
         public Builder flow(Integer flow) {
-            this.flow = Objects.requireNonNull(flow);
+            if (flow == null) {
+              throw new MissingRequiredPropertyException("GetServerPlansPlan", "flow");
+            }
+            this.flow = flow;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetServerPlansPlan", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder memory(Integer memory) {
-            this.memory = Objects.requireNonNull(memory);
+            if (memory == null) {
+              throw new MissingRequiredPropertyException("GetServerPlansPlan", "memory");
+            }
+            this.memory = memory;
             return this;
         }
         @CustomType.Setter
         public Builder planId(String planId) {
-            this.planId = Objects.requireNonNull(planId);
+            if (planId == null) {
+              throw new MissingRequiredPropertyException("GetServerPlansPlan", "planId");
+            }
+            this.planId = planId;
             return this;
         }
         @CustomType.Setter
         public Builder supportPlatform(String supportPlatform) {
-            this.supportPlatform = Objects.requireNonNull(supportPlatform);
+            if (supportPlatform == null) {
+              throw new MissingRequiredPropertyException("GetServerPlansPlan", "supportPlatform");
+            }
+            this.supportPlatform = supportPlatform;
             return this;
         }
         public GetServerPlansPlan build() {

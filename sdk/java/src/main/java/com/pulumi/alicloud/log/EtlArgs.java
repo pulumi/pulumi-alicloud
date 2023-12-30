@@ -6,6 +6,7 @@ package com.pulumi.alicloud.log;
 import com.pulumi.alicloud.log.inputs.EtlEtlSinkArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.Object;
 import java.lang.String;
@@ -905,12 +906,24 @@ public final class EtlArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public EtlArgs build() {
-            $.displayName = Objects.requireNonNull($.displayName, "expected parameter 'displayName' to be non-null");
-            $.etlName = Objects.requireNonNull($.etlName, "expected parameter 'etlName' to be non-null");
-            $.etlSinks = Objects.requireNonNull($.etlSinks, "expected parameter 'etlSinks' to be non-null");
-            $.logstore = Objects.requireNonNull($.logstore, "expected parameter 'logstore' to be non-null");
-            $.project = Objects.requireNonNull($.project, "expected parameter 'project' to be non-null");
-            $.script = Objects.requireNonNull($.script, "expected parameter 'script' to be non-null");
+            if ($.displayName == null) {
+                throw new MissingRequiredPropertyException("EtlArgs", "displayName");
+            }
+            if ($.etlName == null) {
+                throw new MissingRequiredPropertyException("EtlArgs", "etlName");
+            }
+            if ($.etlSinks == null) {
+                throw new MissingRequiredPropertyException("EtlArgs", "etlSinks");
+            }
+            if ($.logstore == null) {
+                throw new MissingRequiredPropertyException("EtlArgs", "logstore");
+            }
+            if ($.project == null) {
+                throw new MissingRequiredPropertyException("EtlArgs", "project");
+            }
+            if ($.script == null) {
+                throw new MissingRequiredPropertyException("EtlArgs", "script");
+            }
             return $;
         }
     }

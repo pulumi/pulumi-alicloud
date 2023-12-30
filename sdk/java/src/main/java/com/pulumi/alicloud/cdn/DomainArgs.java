@@ -12,6 +12,7 @@ import com.pulumi.alicloud.cdn.inputs.DomainParameterFilterConfigArgs;
 import com.pulumi.alicloud.cdn.inputs.DomainReferConfigArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -822,8 +823,12 @@ public final class DomainArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public DomainArgs build() {
-            $.cdnType = Objects.requireNonNull($.cdnType, "expected parameter 'cdnType' to be non-null");
-            $.domainName = Objects.requireNonNull($.domainName, "expected parameter 'domainName' to be non-null");
+            if ($.cdnType == null) {
+                throw new MissingRequiredPropertyException("DomainArgs", "cdnType");
+            }
+            if ($.domainName == null) {
+                throw new MissingRequiredPropertyException("DomainArgs", "domainName");
+            }
             return $;
         }
     }

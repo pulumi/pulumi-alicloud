@@ -5,6 +5,7 @@ package com.pulumi.alicloud.bastionhost.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -485,11 +486,21 @@ public final class InstanceLdapAuthServerArgs extends com.pulumi.resources.Resou
         }
 
         public InstanceLdapAuthServerArgs build() {
-            $.account = Objects.requireNonNull($.account, "expected parameter 'account' to be non-null");
-            $.baseDn = Objects.requireNonNull($.baseDn, "expected parameter 'baseDn' to be non-null");
-            $.password = Objects.requireNonNull($.password, "expected parameter 'password' to be non-null");
-            $.port = Objects.requireNonNull($.port, "expected parameter 'port' to be non-null");
-            $.server = Objects.requireNonNull($.server, "expected parameter 'server' to be non-null");
+            if ($.account == null) {
+                throw new MissingRequiredPropertyException("InstanceLdapAuthServerArgs", "account");
+            }
+            if ($.baseDn == null) {
+                throw new MissingRequiredPropertyException("InstanceLdapAuthServerArgs", "baseDn");
+            }
+            if ($.password == null) {
+                throw new MissingRequiredPropertyException("InstanceLdapAuthServerArgs", "password");
+            }
+            if ($.port == null) {
+                throw new MissingRequiredPropertyException("InstanceLdapAuthServerArgs", "port");
+            }
+            if ($.server == null) {
+                throw new MissingRequiredPropertyException("InstanceLdapAuthServerArgs", "server");
+            }
             return $;
         }
     }

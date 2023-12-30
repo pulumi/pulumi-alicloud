@@ -5,6 +5,7 @@ package com.pulumi.alicloud.ecs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -270,7 +271,9 @@ public final class StorageCapacityUnitArgs extends com.pulumi.resources.Resource
         }
 
         public StorageCapacityUnitArgs build() {
-            $.capacity = Objects.requireNonNull($.capacity, "expected parameter 'capacity' to be non-null");
+            if ($.capacity == null) {
+                throw new MissingRequiredPropertyException("StorageCapacityUnitArgs", "capacity");
+            }
             return $;
         }
     }

@@ -10,6 +10,7 @@ import com.pulumi.alicloud.oss.inputs.BucketReplicationProgressArgs;
 import com.pulumi.alicloud.oss.inputs.BucketReplicationSourceSelectionCriteriaArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -377,8 +378,12 @@ public final class BucketReplicationArgs extends com.pulumi.resources.ResourceAr
         }
 
         public BucketReplicationArgs build() {
-            $.bucket = Objects.requireNonNull($.bucket, "expected parameter 'bucket' to be non-null");
-            $.destination = Objects.requireNonNull($.destination, "expected parameter 'destination' to be non-null");
+            if ($.bucket == null) {
+                throw new MissingRequiredPropertyException("BucketReplicationArgs", "bucket");
+            }
+            if ($.destination == null) {
+                throw new MissingRequiredPropertyException("BucketReplicationArgs", "destination");
+            }
             return $;
         }
     }

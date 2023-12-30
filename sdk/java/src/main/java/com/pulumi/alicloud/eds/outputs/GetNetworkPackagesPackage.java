@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.eds.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -170,17 +171,26 @@ public final class GetNetworkPackagesPackage {
 
         @CustomType.Setter
         public Builder bandwidth(Integer bandwidth) {
-            this.bandwidth = Objects.requireNonNull(bandwidth);
+            if (bandwidth == null) {
+              throw new MissingRequiredPropertyException("GetNetworkPackagesPackage", "bandwidth");
+            }
+            this.bandwidth = bandwidth;
             return this;
         }
         @CustomType.Setter
         public Builder createTime(String createTime) {
-            this.createTime = Objects.requireNonNull(createTime);
+            if (createTime == null) {
+              throw new MissingRequiredPropertyException("GetNetworkPackagesPackage", "createTime");
+            }
+            this.createTime = createTime;
             return this;
         }
         @CustomType.Setter
         public Builder eipAddresses(List<String> eipAddresses) {
-            this.eipAddresses = Objects.requireNonNull(eipAddresses);
+            if (eipAddresses == null) {
+              throw new MissingRequiredPropertyException("GetNetworkPackagesPackage", "eipAddresses");
+            }
+            this.eipAddresses = eipAddresses;
             return this;
         }
         public Builder eipAddresses(String... eipAddresses) {
@@ -188,37 +198,58 @@ public final class GetNetworkPackagesPackage {
         }
         @CustomType.Setter
         public Builder expiredTime(String expiredTime) {
-            this.expiredTime = Objects.requireNonNull(expiredTime);
+            if (expiredTime == null) {
+              throw new MissingRequiredPropertyException("GetNetworkPackagesPackage", "expiredTime");
+            }
+            this.expiredTime = expiredTime;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetNetworkPackagesPackage", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder internetChargeType(String internetChargeType) {
-            this.internetChargeType = Objects.requireNonNull(internetChargeType);
+            if (internetChargeType == null) {
+              throw new MissingRequiredPropertyException("GetNetworkPackagesPackage", "internetChargeType");
+            }
+            this.internetChargeType = internetChargeType;
             return this;
         }
         @CustomType.Setter
         public Builder networkPackageId(String networkPackageId) {
-            this.networkPackageId = Objects.requireNonNull(networkPackageId);
+            if (networkPackageId == null) {
+              throw new MissingRequiredPropertyException("GetNetworkPackagesPackage", "networkPackageId");
+            }
+            this.networkPackageId = networkPackageId;
             return this;
         }
         @CustomType.Setter
         public Builder officeSiteId(String officeSiteId) {
-            this.officeSiteId = Objects.requireNonNull(officeSiteId);
+            if (officeSiteId == null) {
+              throw new MissingRequiredPropertyException("GetNetworkPackagesPackage", "officeSiteId");
+            }
+            this.officeSiteId = officeSiteId;
             return this;
         }
         @CustomType.Setter
         public Builder officeSiteName(String officeSiteName) {
-            this.officeSiteName = Objects.requireNonNull(officeSiteName);
+            if (officeSiteName == null) {
+              throw new MissingRequiredPropertyException("GetNetworkPackagesPackage", "officeSiteName");
+            }
+            this.officeSiteName = officeSiteName;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetNetworkPackagesPackage", "status");
+            }
+            this.status = status;
             return this;
         }
         public GetNetworkPackagesPackage build() {

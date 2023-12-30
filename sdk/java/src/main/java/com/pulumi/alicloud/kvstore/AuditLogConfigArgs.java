@@ -5,6 +5,7 @@ package com.pulumi.alicloud.kvstore;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -176,7 +177,9 @@ public final class AuditLogConfigArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         public AuditLogConfigArgs build() {
-            $.instanceId = Objects.requireNonNull($.instanceId, "expected parameter 'instanceId' to be non-null");
+            if ($.instanceId == null) {
+                throw new MissingRequiredPropertyException("AuditLogConfigArgs", "instanceId");
+            }
             return $;
         }
     }

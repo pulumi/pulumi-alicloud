@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.cs.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -115,31 +116,43 @@ public final class GetKubernetesPermissionPermission {
 
         @CustomType.Setter
         public Builder isOwner(@Nullable Boolean isOwner) {
+
             this.isOwner = isOwner;
             return this;
         }
         @CustomType.Setter
         public Builder isRamRole(@Nullable Boolean isRamRole) {
+
             this.isRamRole = isRamRole;
             return this;
         }
         @CustomType.Setter
         public Builder resourceId(String resourceId) {
-            this.resourceId = Objects.requireNonNull(resourceId);
+            if (resourceId == null) {
+              throw new MissingRequiredPropertyException("GetKubernetesPermissionPermission", "resourceId");
+            }
+            this.resourceId = resourceId;
             return this;
         }
         @CustomType.Setter
         public Builder resourceType(String resourceType) {
-            this.resourceType = Objects.requireNonNull(resourceType);
+            if (resourceType == null) {
+              throw new MissingRequiredPropertyException("GetKubernetesPermissionPermission", "resourceType");
+            }
+            this.resourceType = resourceType;
             return this;
         }
         @CustomType.Setter
         public Builder roleName(String roleName) {
-            this.roleName = Objects.requireNonNull(roleName);
+            if (roleName == null) {
+              throw new MissingRequiredPropertyException("GetKubernetesPermissionPermission", "roleName");
+            }
+            this.roleName = roleName;
             return this;
         }
         @CustomType.Setter
         public Builder roleType(@Nullable String roleType) {
+
             this.roleType = roleType;
             return this;
         }

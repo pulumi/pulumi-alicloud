@@ -89,16 +89,19 @@ public final class ApplicationPvtzDiscoverySvc {
 
         @CustomType.Setter
         public Builder enable(@Nullable Boolean enable) {
+
             this.enable = enable;
             return this;
         }
         @CustomType.Setter
         public Builder namespaceId(@Nullable String namespaceId) {
+
             this.namespaceId = namespaceId;
             return this;
         }
         @CustomType.Setter
         public Builder portProtocols(@Nullable List<ApplicationPvtzDiscoverySvcPortProtocol> portProtocols) {
+
             this.portProtocols = portProtocols;
             return this;
         }
@@ -107,6 +110,7 @@ public final class ApplicationPvtzDiscoverySvc {
         }
         @CustomType.Setter
         public Builder serviceName(@Nullable String serviceName) {
+
             this.serviceName = serviceName;
             return this;
         }

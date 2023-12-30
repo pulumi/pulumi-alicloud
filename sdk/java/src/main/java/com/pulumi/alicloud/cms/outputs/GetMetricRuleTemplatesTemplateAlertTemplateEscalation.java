@@ -7,6 +7,7 @@ import com.pulumi.alicloud.cms.outputs.GetMetricRuleTemplatesTemplateAlertTempla
 import com.pulumi.alicloud.cms.outputs.GetMetricRuleTemplatesTemplateAlertTemplateEscalationInfo;
 import com.pulumi.alicloud.cms.outputs.GetMetricRuleTemplatesTemplateAlertTemplateEscalationWarn;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.util.List;
 import java.util.Objects;
 
@@ -73,7 +74,10 @@ public final class GetMetricRuleTemplatesTemplateAlertTemplateEscalation {
 
         @CustomType.Setter
         public Builder criticals(List<GetMetricRuleTemplatesTemplateAlertTemplateEscalationCritical> criticals) {
-            this.criticals = Objects.requireNonNull(criticals);
+            if (criticals == null) {
+              throw new MissingRequiredPropertyException("GetMetricRuleTemplatesTemplateAlertTemplateEscalation", "criticals");
+            }
+            this.criticals = criticals;
             return this;
         }
         public Builder criticals(GetMetricRuleTemplatesTemplateAlertTemplateEscalationCritical... criticals) {
@@ -81,7 +85,10 @@ public final class GetMetricRuleTemplatesTemplateAlertTemplateEscalation {
         }
         @CustomType.Setter
         public Builder infos(List<GetMetricRuleTemplatesTemplateAlertTemplateEscalationInfo> infos) {
-            this.infos = Objects.requireNonNull(infos);
+            if (infos == null) {
+              throw new MissingRequiredPropertyException("GetMetricRuleTemplatesTemplateAlertTemplateEscalation", "infos");
+            }
+            this.infos = infos;
             return this;
         }
         public Builder infos(GetMetricRuleTemplatesTemplateAlertTemplateEscalationInfo... infos) {
@@ -89,7 +96,10 @@ public final class GetMetricRuleTemplatesTemplateAlertTemplateEscalation {
         }
         @CustomType.Setter
         public Builder warns(List<GetMetricRuleTemplatesTemplateAlertTemplateEscalationWarn> warns) {
-            this.warns = Objects.requireNonNull(warns);
+            if (warns == null) {
+              throw new MissingRequiredPropertyException("GetMetricRuleTemplatesTemplateAlertTemplateEscalation", "warns");
+            }
+            this.warns = warns;
             return this;
         }
         public Builder warns(GetMetricRuleTemplatesTemplateAlertTemplateEscalationWarn... warns) {

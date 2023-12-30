@@ -8,6 +8,7 @@ import com.pulumi.alicloud.vpn.outputs.GetConnectionsConnectionIpsecConfig;
 import com.pulumi.alicloud.vpn.outputs.GetConnectionsConnectionVcoHealthCheck;
 import com.pulumi.alicloud.vpn.outputs.GetConnectionsConnectionVpnBgpConfig;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -221,36 +222,55 @@ public final class GetConnectionsConnection {
 
         @CustomType.Setter
         public Builder createTime(String createTime) {
-            this.createTime = Objects.requireNonNull(createTime);
+            if (createTime == null) {
+              throw new MissingRequiredPropertyException("GetConnectionsConnection", "createTime");
+            }
+            this.createTime = createTime;
             return this;
         }
         @CustomType.Setter
         public Builder customerGatewayId(String customerGatewayId) {
-            this.customerGatewayId = Objects.requireNonNull(customerGatewayId);
+            if (customerGatewayId == null) {
+              throw new MissingRequiredPropertyException("GetConnectionsConnection", "customerGatewayId");
+            }
+            this.customerGatewayId = customerGatewayId;
             return this;
         }
         @CustomType.Setter
         public Builder effectImmediately(Boolean effectImmediately) {
-            this.effectImmediately = Objects.requireNonNull(effectImmediately);
+            if (effectImmediately == null) {
+              throw new MissingRequiredPropertyException("GetConnectionsConnection", "effectImmediately");
+            }
+            this.effectImmediately = effectImmediately;
             return this;
         }
         @CustomType.Setter
         public Builder enableDpd(Boolean enableDpd) {
-            this.enableDpd = Objects.requireNonNull(enableDpd);
+            if (enableDpd == null) {
+              throw new MissingRequiredPropertyException("GetConnectionsConnection", "enableDpd");
+            }
+            this.enableDpd = enableDpd;
             return this;
         }
         @CustomType.Setter
         public Builder enableNatTraversal(Boolean enableNatTraversal) {
-            this.enableNatTraversal = Objects.requireNonNull(enableNatTraversal);
+            if (enableNatTraversal == null) {
+              throw new MissingRequiredPropertyException("GetConnectionsConnection", "enableNatTraversal");
+            }
+            this.enableNatTraversal = enableNatTraversal;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetConnectionsConnection", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder ikeConfigs(@Nullable List<GetConnectionsConnectionIkeConfig> ikeConfigs) {
+
             this.ikeConfigs = ikeConfigs;
             return this;
         }
@@ -259,6 +279,7 @@ public final class GetConnectionsConnection {
         }
         @CustomType.Setter
         public Builder ipsecConfigs(@Nullable List<GetConnectionsConnectionIpsecConfig> ipsecConfigs) {
+
             this.ipsecConfigs = ipsecConfigs;
             return this;
         }
@@ -267,26 +288,39 @@ public final class GetConnectionsConnection {
         }
         @CustomType.Setter
         public Builder localSubnet(String localSubnet) {
-            this.localSubnet = Objects.requireNonNull(localSubnet);
+            if (localSubnet == null) {
+              throw new MissingRequiredPropertyException("GetConnectionsConnection", "localSubnet");
+            }
+            this.localSubnet = localSubnet;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetConnectionsConnection", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder remoteSubnet(String remoteSubnet) {
-            this.remoteSubnet = Objects.requireNonNull(remoteSubnet);
+            if (remoteSubnet == null) {
+              throw new MissingRequiredPropertyException("GetConnectionsConnection", "remoteSubnet");
+            }
+            this.remoteSubnet = remoteSubnet;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetConnectionsConnection", "status");
+            }
+            this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder vcoHealthChecks(@Nullable List<GetConnectionsConnectionVcoHealthCheck> vcoHealthChecks) {
+
             this.vcoHealthChecks = vcoHealthChecks;
             return this;
         }
@@ -295,6 +329,7 @@ public final class GetConnectionsConnection {
         }
         @CustomType.Setter
         public Builder vpnBgpConfigs(@Nullable List<GetConnectionsConnectionVpnBgpConfig> vpnBgpConfigs) {
+
             this.vpnBgpConfigs = vpnBgpConfigs;
             return this;
         }
@@ -303,7 +338,10 @@ public final class GetConnectionsConnection {
         }
         @CustomType.Setter
         public Builder vpnGatewayId(String vpnGatewayId) {
-            this.vpnGatewayId = Objects.requireNonNull(vpnGatewayId);
+            if (vpnGatewayId == null) {
+              throw new MissingRequiredPropertyException("GetConnectionsConnection", "vpnGatewayId");
+            }
+            this.vpnGatewayId = vpnGatewayId;
             return this;
         }
         public GetConnectionsConnection build() {

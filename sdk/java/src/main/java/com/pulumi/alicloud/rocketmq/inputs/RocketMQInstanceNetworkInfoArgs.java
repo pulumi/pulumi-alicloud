@@ -8,6 +8,7 @@ import com.pulumi.alicloud.rocketmq.inputs.RocketMQInstanceNetworkInfoInternetIn
 import com.pulumi.alicloud.rocketmq.inputs.RocketMQInstanceNetworkInfoVpcInfoArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -163,8 +164,12 @@ public final class RocketMQInstanceNetworkInfoArgs extends com.pulumi.resources.
         }
 
         public RocketMQInstanceNetworkInfoArgs build() {
-            $.internetInfo = Objects.requireNonNull($.internetInfo, "expected parameter 'internetInfo' to be non-null");
-            $.vpcInfo = Objects.requireNonNull($.vpcInfo, "expected parameter 'vpcInfo' to be non-null");
+            if ($.internetInfo == null) {
+                throw new MissingRequiredPropertyException("RocketMQInstanceNetworkInfoArgs", "internetInfo");
+            }
+            if ($.vpcInfo == null) {
+                throw new MissingRequiredPropertyException("RocketMQInstanceNetworkInfoArgs", "vpcInfo");
+            }
             return $;
         }
     }

@@ -44,6 +44,7 @@ public final class ClusterApplication {
 
         @CustomType.Setter
         public Builder tag(@Nullable String tag) {
+
             this.tag = tag;
             return this;
         }

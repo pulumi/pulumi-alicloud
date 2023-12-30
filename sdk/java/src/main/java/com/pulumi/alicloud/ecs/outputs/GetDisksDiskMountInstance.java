@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.ecs.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -62,17 +63,26 @@ public final class GetDisksDiskMountInstance {
 
         @CustomType.Setter
         public Builder attachedTime(String attachedTime) {
-            this.attachedTime = Objects.requireNonNull(attachedTime);
+            if (attachedTime == null) {
+              throw new MissingRequiredPropertyException("GetDisksDiskMountInstance", "attachedTime");
+            }
+            this.attachedTime = attachedTime;
             return this;
         }
         @CustomType.Setter
         public Builder device(String device) {
-            this.device = Objects.requireNonNull(device);
+            if (device == null) {
+              throw new MissingRequiredPropertyException("GetDisksDiskMountInstance", "device");
+            }
+            this.device = device;
             return this;
         }
         @CustomType.Setter
         public Builder instanceId(String instanceId) {
-            this.instanceId = Objects.requireNonNull(instanceId);
+            if (instanceId == null) {
+              throw new MissingRequiredPropertyException("GetDisksDiskMountInstance", "instanceId");
+            }
+            this.instanceId = instanceId;
             return this;
         }
         public GetDisksDiskMountInstance build() {

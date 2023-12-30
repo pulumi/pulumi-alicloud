@@ -100,26 +100,31 @@ public final class EventRuleMnsParameter {
 
         @CustomType.Setter
         public Builder arn(@Nullable String arn) {
+
             this.arn = arn;
             return this;
         }
         @CustomType.Setter
         public Builder mnsParametersId(@Nullable String mnsParametersId) {
+
             this.mnsParametersId = mnsParametersId;
             return this;
         }
         @CustomType.Setter
         public Builder queue(@Nullable String queue) {
+
             this.queue = queue;
             return this;
         }
         @CustomType.Setter
         public Builder region(@Nullable String region) {
+
             this.region = region;
             return this;
         }
         @CustomType.Setter
         public Builder topic(@Nullable String topic) {
+
             this.topic = topic;
             return this;
         }

@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.sae.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -84,22 +85,34 @@ public final class GetNamespacesNamespace {
 
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetNamespacesNamespace", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder namespaceDescription(String namespaceDescription) {
-            this.namespaceDescription = Objects.requireNonNull(namespaceDescription);
+            if (namespaceDescription == null) {
+              throw new MissingRequiredPropertyException("GetNamespacesNamespace", "namespaceDescription");
+            }
+            this.namespaceDescription = namespaceDescription;
             return this;
         }
         @CustomType.Setter
         public Builder namespaceId(String namespaceId) {
-            this.namespaceId = Objects.requireNonNull(namespaceId);
+            if (namespaceId == null) {
+              throw new MissingRequiredPropertyException("GetNamespacesNamespace", "namespaceId");
+            }
+            this.namespaceId = namespaceId;
             return this;
         }
         @CustomType.Setter
         public Builder namespaceName(String namespaceName) {
-            this.namespaceName = Objects.requireNonNull(namespaceName);
+            if (namespaceName == null) {
+              throw new MissingRequiredPropertyException("GetNamespacesNamespace", "namespaceName");
+            }
+            this.namespaceName = namespaceName;
             return this;
         }
         public GetNamespacesNamespace build() {

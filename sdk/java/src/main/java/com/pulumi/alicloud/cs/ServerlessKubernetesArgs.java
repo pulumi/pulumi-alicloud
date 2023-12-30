@@ -7,6 +7,7 @@ import com.pulumi.alicloud.cs.inputs.ServerlessKubernetesAddonArgs;
 import com.pulumi.alicloud.cs.inputs.ServerlessKubernetesRrsaMetadataArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Object;
 import java.lang.String;
@@ -1258,7 +1259,9 @@ public final class ServerlessKubernetesArgs extends com.pulumi.resources.Resourc
         }
 
         public ServerlessKubernetesArgs build() {
-            $.vpcId = Objects.requireNonNull($.vpcId, "expected parameter 'vpcId' to be non-null");
+            if ($.vpcId == null) {
+                throw new MissingRequiredPropertyException("ServerlessKubernetesArgs", "vpcId");
+            }
             return $;
         }
     }

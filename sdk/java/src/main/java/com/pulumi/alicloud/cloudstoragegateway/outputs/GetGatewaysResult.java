@@ -5,6 +5,7 @@ package com.pulumi.alicloud.cloudstoragegateway.outputs;
 
 import com.pulumi.alicloud.cloudstoragegateway.outputs.GetGatewaysGateway;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -107,7 +108,10 @@ public final class GetGatewaysResult {
 
         @CustomType.Setter
         public Builder gateways(List<GetGatewaysGateway> gateways) {
-            this.gateways = Objects.requireNonNull(gateways);
+            if (gateways == null) {
+              throw new MissingRequiredPropertyException("GetGatewaysResult", "gateways");
+            }
+            this.gateways = gateways;
             return this;
         }
         public Builder gateways(GetGatewaysGateway... gateways) {
@@ -115,12 +119,18 @@ public final class GetGatewaysResult {
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetGatewaysResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder ids(List<String> ids) {
-            this.ids = Objects.requireNonNull(ids);
+            if (ids == null) {
+              throw new MissingRequiredPropertyException("GetGatewaysResult", "ids");
+            }
+            this.ids = ids;
             return this;
         }
         public Builder ids(String... ids) {
@@ -128,12 +138,16 @@ public final class GetGatewaysResult {
         }
         @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
+
             this.nameRegex = nameRegex;
             return this;
         }
         @CustomType.Setter
         public Builder names(List<String> names) {
-            this.names = Objects.requireNonNull(names);
+            if (names == null) {
+              throw new MissingRequiredPropertyException("GetGatewaysResult", "names");
+            }
+            this.names = names;
             return this;
         }
         public Builder names(String... names) {
@@ -141,32 +155,42 @@ public final class GetGatewaysResult {
         }
         @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
+
             this.outputFile = outputFile;
             return this;
         }
         @CustomType.Setter
         public Builder pageNumber(@Nullable Integer pageNumber) {
+
             this.pageNumber = pageNumber;
             return this;
         }
         @CustomType.Setter
         public Builder pageSize(@Nullable Integer pageSize) {
+
             this.pageSize = pageSize;
             return this;
         }
         @CustomType.Setter
         public Builder status(@Nullable String status) {
+
             this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder storageBundleId(String storageBundleId) {
-            this.storageBundleId = Objects.requireNonNull(storageBundleId);
+            if (storageBundleId == null) {
+              throw new MissingRequiredPropertyException("GetGatewaysResult", "storageBundleId");
+            }
+            this.storageBundleId = storageBundleId;
             return this;
         }
         @CustomType.Setter
         public Builder totalCount(Integer totalCount) {
-            this.totalCount = Objects.requireNonNull(totalCount);
+            if (totalCount == null) {
+              throw new MissingRequiredPropertyException("GetGatewaysResult", "totalCount");
+            }
+            this.totalCount = totalCount;
             return this;
         }
         public GetGatewaysResult build() {

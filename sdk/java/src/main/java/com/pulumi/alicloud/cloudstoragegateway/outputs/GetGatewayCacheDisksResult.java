@@ -5,6 +5,7 @@ package com.pulumi.alicloud.cloudstoragegateway.outputs;
 
 import com.pulumi.alicloud.cloudstoragegateway.outputs.GetGatewayCacheDisksDisk;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -77,7 +78,10 @@ public final class GetGatewayCacheDisksResult {
 
         @CustomType.Setter
         public Builder disks(List<GetGatewayCacheDisksDisk> disks) {
-            this.disks = Objects.requireNonNull(disks);
+            if (disks == null) {
+              throw new MissingRequiredPropertyException("GetGatewayCacheDisksResult", "disks");
+            }
+            this.disks = disks;
             return this;
         }
         public Builder disks(GetGatewayCacheDisksDisk... disks) {
@@ -85,17 +89,26 @@ public final class GetGatewayCacheDisksResult {
         }
         @CustomType.Setter
         public Builder gatewayId(String gatewayId) {
-            this.gatewayId = Objects.requireNonNull(gatewayId);
+            if (gatewayId == null) {
+              throw new MissingRequiredPropertyException("GetGatewayCacheDisksResult", "gatewayId");
+            }
+            this.gatewayId = gatewayId;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetGatewayCacheDisksResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder ids(List<String> ids) {
-            this.ids = Objects.requireNonNull(ids);
+            if (ids == null) {
+              throw new MissingRequiredPropertyException("GetGatewayCacheDisksResult", "ids");
+            }
+            this.ids = ids;
             return this;
         }
         public Builder ids(String... ids) {
@@ -103,11 +116,13 @@ public final class GetGatewayCacheDisksResult {
         }
         @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
+
             this.outputFile = outputFile;
             return this;
         }
         @CustomType.Setter
         public Builder status(@Nullable Integer status) {
+
             this.status = status;
             return this;
         }

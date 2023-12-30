@@ -20,30 +20,31 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const defaultZones = alicloud.getZones({
- *     availableResourceCreation: "VSwitch",
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "terraform-example";
+ * const defaultNetworks = alicloud.vpc.getNetworks({
+ *     nameRegex: "^default-NODELETING$",
  * });
- * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {cidrBlock: "172.16.0.0/12"});
- * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
- *     vpcId: defaultNetwork.id,
- *     cidrBlock: "172.16.0.0/24",
- *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
- * });
+ * const defaultSwitches = defaultNetworks.then(defaultNetworks => alicloud.vpc.getSwitches({
+ *     vpcId: defaultNetworks.ids?.[0],
+ * }));
+ * const defaultSecurityGroup = new alicloud.ecs.SecurityGroup("defaultSecurityGroup", {vpcId: defaultNetworks.then(defaultNetworks => defaultNetworks.ids?.[0])});
  * const defaultInstance = new alicloud.alikafka.Instance("defaultInstance", {
  *     partitionNum: 50,
  *     diskType: 1,
  *     diskSize: 500,
  *     deployType: 5,
  *     ioMax: 20,
- *     vswitchId: defaultSwitch.id,
+ *     vswitchId: defaultSwitches.then(defaultSwitches => defaultSwitches.ids?.[0]),
+ *     securityGroup: defaultSecurityGroup.id,
  * });
  * const defaultTopic = new alicloud.alikafka.Topic("defaultTopic", {
+ *     remark: "alicloud_alikafka_topic_remark",
  *     instanceId: defaultInstance.id,
- *     topic: "example-topic",
+ *     topic: name,
  *     localTopic: false,
  *     compactTopic: false,
- *     partitionNum: 12,
- *     remark: "dafault_kafka_topic_remark",
+ *     partitionNum: 6,
  * });
  * ```
  *
@@ -108,7 +109,7 @@ export class Topic extends pulumi.CustomResource {
      */
     public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
     /**
-     * Name of the topic. Two topics on a single instance cannot have the same name. The length cannot exceed 64 characters.
+     * Name of the topic. Two topics on a single instance cannot have the same name. The length cannot exceed 249 characters.
      */
     public readonly topic!: pulumi.Output<string>;
 
@@ -185,7 +186,7 @@ export interface TopicState {
      */
     tags?: pulumi.Input<{[key: string]: any}>;
     /**
-     * Name of the topic. Two topics on a single instance cannot have the same name. The length cannot exceed 64 characters.
+     * Name of the topic. Two topics on a single instance cannot have the same name. The length cannot exceed 249 characters.
      */
     topic?: pulumi.Input<string>;
 }
@@ -219,7 +220,7 @@ export interface TopicArgs {
      */
     tags?: pulumi.Input<{[key: string]: any}>;
     /**
-     * Name of the topic. Two topics on a single instance cannot have the same name. The length cannot exceed 64 characters.
+     * Name of the topic. Two topics on a single instance cannot have the same name. The length cannot exceed 249 characters.
      */
     topic: pulumi.Input<string>;
 }

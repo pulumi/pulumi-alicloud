@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.log.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Map;
@@ -58,12 +59,18 @@ public final class AlertSeverityConfiguration {
 
         @CustomType.Setter
         public Builder evalCondition(Map<String,String> evalCondition) {
-            this.evalCondition = Objects.requireNonNull(evalCondition);
+            if (evalCondition == null) {
+              throw new MissingRequiredPropertyException("AlertSeverityConfiguration", "evalCondition");
+            }
+            this.evalCondition = evalCondition;
             return this;
         }
         @CustomType.Setter
         public Builder severity(Integer severity) {
-            this.severity = Objects.requireNonNull(severity);
+            if (severity == null) {
+              throw new MissingRequiredPropertyException("AlertSeverityConfiguration", "severity");
+            }
+            this.severity = severity;
             return this;
         }
         public AlertSeverityConfiguration build() {

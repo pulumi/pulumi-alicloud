@@ -6,6 +6,7 @@ package com.pulumi.alicloud.rocketmq;
 import com.pulumi.alicloud.rocketmq.inputs.ConsumerGroupConsumeRetryPolicyArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -225,9 +226,15 @@ public final class ConsumerGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public ConsumerGroupArgs build() {
-            $.consumeRetryPolicy = Objects.requireNonNull($.consumeRetryPolicy, "expected parameter 'consumeRetryPolicy' to be non-null");
-            $.consumerGroupId = Objects.requireNonNull($.consumerGroupId, "expected parameter 'consumerGroupId' to be non-null");
-            $.instanceId = Objects.requireNonNull($.instanceId, "expected parameter 'instanceId' to be non-null");
+            if ($.consumeRetryPolicy == null) {
+                throw new MissingRequiredPropertyException("ConsumerGroupArgs", "consumeRetryPolicy");
+            }
+            if ($.consumerGroupId == null) {
+                throw new MissingRequiredPropertyException("ConsumerGroupArgs", "consumerGroupId");
+            }
+            if ($.instanceId == null) {
+                throw new MissingRequiredPropertyException("ConsumerGroupArgs", "instanceId");
+            }
             return $;
         }
     }

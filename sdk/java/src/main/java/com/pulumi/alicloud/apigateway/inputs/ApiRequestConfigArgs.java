@@ -5,6 +5,7 @@ package com.pulumi.alicloud.apigateway.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -224,10 +225,18 @@ public final class ApiRequestConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         public ApiRequestConfigArgs build() {
-            $.method = Objects.requireNonNull($.method, "expected parameter 'method' to be non-null");
-            $.mode = Objects.requireNonNull($.mode, "expected parameter 'mode' to be non-null");
-            $.path = Objects.requireNonNull($.path, "expected parameter 'path' to be non-null");
-            $.protocol = Objects.requireNonNull($.protocol, "expected parameter 'protocol' to be non-null");
+            if ($.method == null) {
+                throw new MissingRequiredPropertyException("ApiRequestConfigArgs", "method");
+            }
+            if ($.mode == null) {
+                throw new MissingRequiredPropertyException("ApiRequestConfigArgs", "mode");
+            }
+            if ($.path == null) {
+                throw new MissingRequiredPropertyException("ApiRequestConfigArgs", "path");
+            }
+            if ($.protocol == null) {
+                throw new MissingRequiredPropertyException("ApiRequestConfigArgs", "protocol");
+            }
             return $;
         }
     }

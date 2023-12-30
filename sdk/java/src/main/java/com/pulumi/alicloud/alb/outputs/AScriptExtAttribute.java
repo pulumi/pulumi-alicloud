@@ -58,11 +58,13 @@ public final class AScriptExtAttribute {
 
         @CustomType.Setter
         public Builder attributeKey(@Nullable String attributeKey) {
+
             this.attributeKey = attributeKey;
             return this;
         }
         @CustomType.Setter
         public Builder attributeValue(@Nullable String attributeValue) {
+
             this.attributeValue = attributeValue;
             return this;
         }

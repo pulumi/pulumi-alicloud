@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.cms.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -126,37 +127,58 @@ public final class GetNamespacesNamespace {
 
         @CustomType.Setter
         public Builder createTime(String createTime) {
-            this.createTime = Objects.requireNonNull(createTime);
+            if (createTime == null) {
+              throw new MissingRequiredPropertyException("GetNamespacesNamespace", "createTime");
+            }
+            this.createTime = createTime;
             return this;
         }
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetNamespacesNamespace", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetNamespacesNamespace", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder modifyTime(String modifyTime) {
-            this.modifyTime = Objects.requireNonNull(modifyTime);
+            if (modifyTime == null) {
+              throw new MissingRequiredPropertyException("GetNamespacesNamespace", "modifyTime");
+            }
+            this.modifyTime = modifyTime;
             return this;
         }
         @CustomType.Setter
         public Builder namespace(String namespace) {
-            this.namespace = Objects.requireNonNull(namespace);
+            if (namespace == null) {
+              throw new MissingRequiredPropertyException("GetNamespacesNamespace", "namespace");
+            }
+            this.namespace = namespace;
             return this;
         }
         @CustomType.Setter
         public Builder namespaceId(String namespaceId) {
-            this.namespaceId = Objects.requireNonNull(namespaceId);
+            if (namespaceId == null) {
+              throw new MissingRequiredPropertyException("GetNamespacesNamespace", "namespaceId");
+            }
+            this.namespaceId = namespaceId;
             return this;
         }
         @CustomType.Setter
         public Builder specification(String specification) {
-            this.specification = Objects.requireNonNull(specification);
+            if (specification == null) {
+              throw new MissingRequiredPropertyException("GetNamespacesNamespace", "specification");
+            }
+            this.specification = specification;
             return this;
         }
         public GetNamespacesNamespace build() {

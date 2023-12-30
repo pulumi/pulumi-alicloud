@@ -307,7 +307,7 @@ namespace Pulumi.AliCloud.Dms
         /// Whether to enable cross-instance query. Valid values: `0` not open, `1` open.
         /// </summary>
         [Output("useDsql")]
-        public Output<int?> UseDsql { get; private set; } = null!;
+        public Output<int> UseDsql { get; private set; } = null!;
 
         /// <summary>
         /// VPC ID. This value must be passed when the value of InstanceSource is VPC dedicated line IDC.

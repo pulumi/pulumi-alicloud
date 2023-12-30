@@ -5,6 +5,7 @@ package com.pulumi.alicloud.arms.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -148,9 +149,15 @@ public final class DispatchRuleNotifyRuleNotifyObjectArgs extends com.pulumi.res
         }
 
         public DispatchRuleNotifyRuleNotifyObjectArgs build() {
-            $.name = Objects.requireNonNull($.name, "expected parameter 'name' to be non-null");
-            $.notifyObjectId = Objects.requireNonNull($.notifyObjectId, "expected parameter 'notifyObjectId' to be non-null");
-            $.notifyType = Objects.requireNonNull($.notifyType, "expected parameter 'notifyType' to be non-null");
+            if ($.name == null) {
+                throw new MissingRequiredPropertyException("DispatchRuleNotifyRuleNotifyObjectArgs", "name");
+            }
+            if ($.notifyObjectId == null) {
+                throw new MissingRequiredPropertyException("DispatchRuleNotifyRuleNotifyObjectArgs", "notifyObjectId");
+            }
+            if ($.notifyType == null) {
+                throw new MissingRequiredPropertyException("DispatchRuleNotifyRuleNotifyObjectArgs", "notifyType");
+            }
             return $;
         }
     }

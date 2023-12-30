@@ -114,31 +114,37 @@ public final class ClusterBootstrapAction {
 
         @CustomType.Setter
         public Builder arg(@Nullable String arg) {
+
             this.arg = arg;
             return this;
         }
         @CustomType.Setter
         public Builder executionFailStrategy(@Nullable String executionFailStrategy) {
+
             this.executionFailStrategy = executionFailStrategy;
             return this;
         }
         @CustomType.Setter
         public Builder executionMoment(@Nullable String executionMoment) {
+
             this.executionMoment = executionMoment;
             return this;
         }
         @CustomType.Setter
         public Builder executionTarget(@Nullable String executionTarget) {
+
             this.executionTarget = executionTarget;
             return this;
         }
         @CustomType.Setter
         public Builder name(@Nullable String name) {
+
             this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder path(@Nullable String path) {
+
             this.path = path;
             return this;
         }

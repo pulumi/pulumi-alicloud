@@ -6,6 +6,7 @@ package com.pulumi.alicloud.ots.outputs;
 import com.pulumi.alicloud.ots.outputs.GetTablesTableDefinedColumn;
 import com.pulumi.alicloud.ots.outputs.GetTablesTablePrimaryKey;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -122,7 +123,10 @@ public final class GetTablesTable {
 
         @CustomType.Setter
         public Builder definedColumns(List<GetTablesTableDefinedColumn> definedColumns) {
-            this.definedColumns = Objects.requireNonNull(definedColumns);
+            if (definedColumns == null) {
+              throw new MissingRequiredPropertyException("GetTablesTable", "definedColumns");
+            }
+            this.definedColumns = definedColumns;
             return this;
         }
         public Builder definedColumns(GetTablesTableDefinedColumn... definedColumns) {
@@ -130,22 +134,34 @@ public final class GetTablesTable {
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetTablesTable", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder instanceName(String instanceName) {
-            this.instanceName = Objects.requireNonNull(instanceName);
+            if (instanceName == null) {
+              throw new MissingRequiredPropertyException("GetTablesTable", "instanceName");
+            }
+            this.instanceName = instanceName;
             return this;
         }
         @CustomType.Setter
         public Builder maxVersion(Integer maxVersion) {
-            this.maxVersion = Objects.requireNonNull(maxVersion);
+            if (maxVersion == null) {
+              throw new MissingRequiredPropertyException("GetTablesTable", "maxVersion");
+            }
+            this.maxVersion = maxVersion;
             return this;
         }
         @CustomType.Setter
         public Builder primaryKeys(List<GetTablesTablePrimaryKey> primaryKeys) {
-            this.primaryKeys = Objects.requireNonNull(primaryKeys);
+            if (primaryKeys == null) {
+              throw new MissingRequiredPropertyException("GetTablesTable", "primaryKeys");
+            }
+            this.primaryKeys = primaryKeys;
             return this;
         }
         public Builder primaryKeys(GetTablesTablePrimaryKey... primaryKeys) {
@@ -153,12 +169,18 @@ public final class GetTablesTable {
         }
         @CustomType.Setter
         public Builder tableName(String tableName) {
-            this.tableName = Objects.requireNonNull(tableName);
+            if (tableName == null) {
+              throw new MissingRequiredPropertyException("GetTablesTable", "tableName");
+            }
+            this.tableName = tableName;
             return this;
         }
         @CustomType.Setter
         public Builder timeToLive(Integer timeToLive) {
-            this.timeToLive = Objects.requireNonNull(timeToLive);
+            if (timeToLive == null) {
+              throw new MissingRequiredPropertyException("GetTablesTable", "timeToLive");
+            }
+            this.timeToLive = timeToLive;
             return this;
         }
         public GetTablesTable build() {

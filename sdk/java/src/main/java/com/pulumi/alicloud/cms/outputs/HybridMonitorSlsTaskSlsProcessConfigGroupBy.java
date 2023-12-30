@@ -58,11 +58,13 @@ public final class HybridMonitorSlsTaskSlsProcessConfigGroupBy {
 
         @CustomType.Setter
         public Builder alias(@Nullable String alias) {
+
             this.alias = alias;
             return this;
         }
         @CustomType.Setter
         public Builder slsKeyName(@Nullable String slsKeyName) {
+
             this.slsKeyName = slsKeyName;
             return this;
         }

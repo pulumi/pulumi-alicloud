@@ -5,6 +5,7 @@ package com.pulumi.alicloud.vpc;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -111,8 +112,12 @@ public final class BgpNetworkArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public BgpNetworkArgs build() {
-            $.dstCidrBlock = Objects.requireNonNull($.dstCidrBlock, "expected parameter 'dstCidrBlock' to be non-null");
-            $.routerId = Objects.requireNonNull($.routerId, "expected parameter 'routerId' to be non-null");
+            if ($.dstCidrBlock == null) {
+                throw new MissingRequiredPropertyException("BgpNetworkArgs", "dstCidrBlock");
+            }
+            if ($.routerId == null) {
+                throw new MissingRequiredPropertyException("BgpNetworkArgs", "routerId");
+            }
             return $;
         }
     }

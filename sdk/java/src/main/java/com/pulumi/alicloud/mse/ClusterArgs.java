@@ -5,6 +5,7 @@ package com.pulumi.alicloud.mse;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -643,12 +644,24 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public ClusterArgs build() {
-            $.clusterSpecification = Objects.requireNonNull($.clusterSpecification, "expected parameter 'clusterSpecification' to be non-null");
-            $.clusterType = Objects.requireNonNull($.clusterType, "expected parameter 'clusterType' to be non-null");
-            $.clusterVersion = Objects.requireNonNull($.clusterVersion, "expected parameter 'clusterVersion' to be non-null");
-            $.instanceCount = Objects.requireNonNull($.instanceCount, "expected parameter 'instanceCount' to be non-null");
-            $.netType = Objects.requireNonNull($.netType, "expected parameter 'netType' to be non-null");
-            $.pubNetworkFlow = Objects.requireNonNull($.pubNetworkFlow, "expected parameter 'pubNetworkFlow' to be non-null");
+            if ($.clusterSpecification == null) {
+                throw new MissingRequiredPropertyException("ClusterArgs", "clusterSpecification");
+            }
+            if ($.clusterType == null) {
+                throw new MissingRequiredPropertyException("ClusterArgs", "clusterType");
+            }
+            if ($.clusterVersion == null) {
+                throw new MissingRequiredPropertyException("ClusterArgs", "clusterVersion");
+            }
+            if ($.instanceCount == null) {
+                throw new MissingRequiredPropertyException("ClusterArgs", "instanceCount");
+            }
+            if ($.netType == null) {
+                throw new MissingRequiredPropertyException("ClusterArgs", "netType");
+            }
+            if ($.pubNetworkFlow == null) {
+                throw new MissingRequiredPropertyException("ClusterArgs", "pubNetworkFlow");
+            }
             return $;
         }
     }

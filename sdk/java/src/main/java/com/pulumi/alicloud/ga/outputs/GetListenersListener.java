@@ -6,6 +6,7 @@ package com.pulumi.alicloud.ga.outputs;
 import com.pulumi.alicloud.ga.outputs.GetListenersListenerCertificate;
 import com.pulumi.alicloud.ga.outputs.GetListenersListenerPortRange;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -157,7 +158,10 @@ public final class GetListenersListener {
 
         @CustomType.Setter
         public Builder certificates(List<GetListenersListenerCertificate> certificates) {
-            this.certificates = Objects.requireNonNull(certificates);
+            if (certificates == null) {
+              throw new MissingRequiredPropertyException("GetListenersListener", "certificates");
+            }
+            this.certificates = certificates;
             return this;
         }
         public Builder certificates(GetListenersListenerCertificate... certificates) {
@@ -165,32 +169,50 @@ public final class GetListenersListener {
         }
         @CustomType.Setter
         public Builder clientAffinity(String clientAffinity) {
-            this.clientAffinity = Objects.requireNonNull(clientAffinity);
+            if (clientAffinity == null) {
+              throw new MissingRequiredPropertyException("GetListenersListener", "clientAffinity");
+            }
+            this.clientAffinity = clientAffinity;
             return this;
         }
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetListenersListener", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetListenersListener", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder listenerId(String listenerId) {
-            this.listenerId = Objects.requireNonNull(listenerId);
+            if (listenerId == null) {
+              throw new MissingRequiredPropertyException("GetListenersListener", "listenerId");
+            }
+            this.listenerId = listenerId;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetListenersListener", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder portRanges(List<GetListenersListenerPortRange> portRanges) {
-            this.portRanges = Objects.requireNonNull(portRanges);
+            if (portRanges == null) {
+              throw new MissingRequiredPropertyException("GetListenersListener", "portRanges");
+            }
+            this.portRanges = portRanges;
             return this;
         }
         public Builder portRanges(GetListenersListenerPortRange... portRanges) {
@@ -198,12 +220,18 @@ public final class GetListenersListener {
         }
         @CustomType.Setter
         public Builder protocol(String protocol) {
-            this.protocol = Objects.requireNonNull(protocol);
+            if (protocol == null) {
+              throw new MissingRequiredPropertyException("GetListenersListener", "protocol");
+            }
+            this.protocol = protocol;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetListenersListener", "status");
+            }
+            this.status = status;
             return this;
         }
         public GetListenersListener build() {

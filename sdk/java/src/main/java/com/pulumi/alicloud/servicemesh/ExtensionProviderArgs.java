@@ -5,6 +5,7 @@ package com.pulumi.alicloud.servicemesh;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -185,10 +186,18 @@ public final class ExtensionProviderArgs extends com.pulumi.resources.ResourceAr
         }
 
         public ExtensionProviderArgs build() {
-            $.config = Objects.requireNonNull($.config, "expected parameter 'config' to be non-null");
-            $.extensionProviderName = Objects.requireNonNull($.extensionProviderName, "expected parameter 'extensionProviderName' to be non-null");
-            $.serviceMeshId = Objects.requireNonNull($.serviceMeshId, "expected parameter 'serviceMeshId' to be non-null");
-            $.type = Objects.requireNonNull($.type, "expected parameter 'type' to be non-null");
+            if ($.config == null) {
+                throw new MissingRequiredPropertyException("ExtensionProviderArgs", "config");
+            }
+            if ($.extensionProviderName == null) {
+                throw new MissingRequiredPropertyException("ExtensionProviderArgs", "extensionProviderName");
+            }
+            if ($.serviceMeshId == null) {
+                throw new MissingRequiredPropertyException("ExtensionProviderArgs", "serviceMeshId");
+            }
+            if ($.type == null) {
+                throw new MissingRequiredPropertyException("ExtensionProviderArgs", "type");
+            }
             return $;
         }
     }

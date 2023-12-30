@@ -5,6 +5,7 @@ package com.pulumi.alicloud.ebs.outputs;
 
 import com.pulumi.alicloud.ebs.outputs.GetRegionsRegionZone;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -58,12 +59,18 @@ public final class GetRegionsRegion {
 
         @CustomType.Setter
         public Builder regionId(String regionId) {
-            this.regionId = Objects.requireNonNull(regionId);
+            if (regionId == null) {
+              throw new MissingRequiredPropertyException("GetRegionsRegion", "regionId");
+            }
+            this.regionId = regionId;
             return this;
         }
         @CustomType.Setter
         public Builder zones(List<GetRegionsRegionZone> zones) {
-            this.zones = Objects.requireNonNull(zones);
+            if (zones == null) {
+              throw new MissingRequiredPropertyException("GetRegionsRegion", "zones");
+            }
+            this.zones = zones;
             return this;
         }
         public Builder zones(GetRegionsRegionZone... zones) {

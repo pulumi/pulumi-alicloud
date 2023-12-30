@@ -6,6 +6,7 @@ package com.pulumi.alicloud.rds;
 import com.pulumi.alicloud.rds.inputs.DbInstanceEndpointNodeItemArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -310,12 +311,24 @@ public final class DbInstanceEndpointArgs extends com.pulumi.resources.ResourceA
         }
 
         public DbInstanceEndpointArgs build() {
-            $.connectionStringPrefix = Objects.requireNonNull($.connectionStringPrefix, "expected parameter 'connectionStringPrefix' to be non-null");
-            $.dbInstanceId = Objects.requireNonNull($.dbInstanceId, "expected parameter 'dbInstanceId' to be non-null");
-            $.nodeItems = Objects.requireNonNull($.nodeItems, "expected parameter 'nodeItems' to be non-null");
-            $.port = Objects.requireNonNull($.port, "expected parameter 'port' to be non-null");
-            $.vpcId = Objects.requireNonNull($.vpcId, "expected parameter 'vpcId' to be non-null");
-            $.vswitchId = Objects.requireNonNull($.vswitchId, "expected parameter 'vswitchId' to be non-null");
+            if ($.connectionStringPrefix == null) {
+                throw new MissingRequiredPropertyException("DbInstanceEndpointArgs", "connectionStringPrefix");
+            }
+            if ($.dbInstanceId == null) {
+                throw new MissingRequiredPropertyException("DbInstanceEndpointArgs", "dbInstanceId");
+            }
+            if ($.nodeItems == null) {
+                throw new MissingRequiredPropertyException("DbInstanceEndpointArgs", "nodeItems");
+            }
+            if ($.port == null) {
+                throw new MissingRequiredPropertyException("DbInstanceEndpointArgs", "port");
+            }
+            if ($.vpcId == null) {
+                throw new MissingRequiredPropertyException("DbInstanceEndpointArgs", "vpcId");
+            }
+            if ($.vswitchId == null) {
+                throw new MissingRequiredPropertyException("DbInstanceEndpointArgs", "vswitchId");
+            }
             return $;
         }
     }

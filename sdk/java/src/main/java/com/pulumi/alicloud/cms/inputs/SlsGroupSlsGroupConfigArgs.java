@@ -5,6 +5,7 @@ package com.pulumi.alicloud.cms.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -187,9 +188,15 @@ public final class SlsGroupSlsGroupConfigArgs extends com.pulumi.resources.Resou
         }
 
         public SlsGroupSlsGroupConfigArgs build() {
-            $.slsLogstore = Objects.requireNonNull($.slsLogstore, "expected parameter 'slsLogstore' to be non-null");
-            $.slsProject = Objects.requireNonNull($.slsProject, "expected parameter 'slsProject' to be non-null");
-            $.slsRegion = Objects.requireNonNull($.slsRegion, "expected parameter 'slsRegion' to be non-null");
+            if ($.slsLogstore == null) {
+                throw new MissingRequiredPropertyException("SlsGroupSlsGroupConfigArgs", "slsLogstore");
+            }
+            if ($.slsProject == null) {
+                throw new MissingRequiredPropertyException("SlsGroupSlsGroupConfigArgs", "slsProject");
+            }
+            if ($.slsRegion == null) {
+                throw new MissingRequiredPropertyException("SlsGroupSlsGroupConfigArgs", "slsRegion");
+            }
             return $;
         }
     }

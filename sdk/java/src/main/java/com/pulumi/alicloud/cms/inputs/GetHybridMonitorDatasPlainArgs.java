@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.cms.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -200,10 +201,18 @@ public final class GetHybridMonitorDatasPlainArgs extends com.pulumi.resources.I
         }
 
         public GetHybridMonitorDatasPlainArgs build() {
-            $.end = Objects.requireNonNull($.end, "expected parameter 'end' to be non-null");
-            $.namespace = Objects.requireNonNull($.namespace, "expected parameter 'namespace' to be non-null");
-            $.promSql = Objects.requireNonNull($.promSql, "expected parameter 'promSql' to be non-null");
-            $.start = Objects.requireNonNull($.start, "expected parameter 'start' to be non-null");
+            if ($.end == null) {
+                throw new MissingRequiredPropertyException("GetHybridMonitorDatasPlainArgs", "end");
+            }
+            if ($.namespace == null) {
+                throw new MissingRequiredPropertyException("GetHybridMonitorDatasPlainArgs", "namespace");
+            }
+            if ($.promSql == null) {
+                throw new MissingRequiredPropertyException("GetHybridMonitorDatasPlainArgs", "promSql");
+            }
+            if ($.start == null) {
+                throw new MissingRequiredPropertyException("GetHybridMonitorDatasPlainArgs", "start");
+            }
             return $;
         }
     }

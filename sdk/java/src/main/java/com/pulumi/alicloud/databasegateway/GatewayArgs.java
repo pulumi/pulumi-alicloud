@@ -5,6 +5,7 @@ package com.pulumi.alicloud.databasegateway;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -113,7 +114,9 @@ public final class GatewayArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public GatewayArgs build() {
-            $.gatewayName = Objects.requireNonNull($.gatewayName, "expected parameter 'gatewayName' to be non-null");
+            if ($.gatewayName == null) {
+                throw new MissingRequiredPropertyException("GatewayArgs", "gatewayName");
+            }
             return $;
         }
     }

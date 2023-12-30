@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.vpc.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -196,62 +197,98 @@ public final class GetIpv6AddressesAddress {
 
         @CustomType.Setter
         public Builder associatedInstanceId(String associatedInstanceId) {
-            this.associatedInstanceId = Objects.requireNonNull(associatedInstanceId);
+            if (associatedInstanceId == null) {
+              throw new MissingRequiredPropertyException("GetIpv6AddressesAddress", "associatedInstanceId");
+            }
+            this.associatedInstanceId = associatedInstanceId;
             return this;
         }
         @CustomType.Setter
         public Builder associatedInstanceType(String associatedInstanceType) {
-            this.associatedInstanceType = Objects.requireNonNull(associatedInstanceType);
+            if (associatedInstanceType == null) {
+              throw new MissingRequiredPropertyException("GetIpv6AddressesAddress", "associatedInstanceType");
+            }
+            this.associatedInstanceType = associatedInstanceType;
             return this;
         }
         @CustomType.Setter
         public Builder createTime(String createTime) {
-            this.createTime = Objects.requireNonNull(createTime);
+            if (createTime == null) {
+              throw new MissingRequiredPropertyException("GetIpv6AddressesAddress", "createTime");
+            }
+            this.createTime = createTime;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetIpv6AddressesAddress", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder ipv6Address(String ipv6Address) {
-            this.ipv6Address = Objects.requireNonNull(ipv6Address);
+            if (ipv6Address == null) {
+              throw new MissingRequiredPropertyException("GetIpv6AddressesAddress", "ipv6Address");
+            }
+            this.ipv6Address = ipv6Address;
             return this;
         }
         @CustomType.Setter
         public Builder ipv6AddressId(String ipv6AddressId) {
-            this.ipv6AddressId = Objects.requireNonNull(ipv6AddressId);
+            if (ipv6AddressId == null) {
+              throw new MissingRequiredPropertyException("GetIpv6AddressesAddress", "ipv6AddressId");
+            }
+            this.ipv6AddressId = ipv6AddressId;
             return this;
         }
         @CustomType.Setter
         public Builder ipv6AddressName(String ipv6AddressName) {
-            this.ipv6AddressName = Objects.requireNonNull(ipv6AddressName);
+            if (ipv6AddressName == null) {
+              throw new MissingRequiredPropertyException("GetIpv6AddressesAddress", "ipv6AddressName");
+            }
+            this.ipv6AddressName = ipv6AddressName;
             return this;
         }
         @CustomType.Setter
         public Builder ipv6GatewayId(String ipv6GatewayId) {
-            this.ipv6GatewayId = Objects.requireNonNull(ipv6GatewayId);
+            if (ipv6GatewayId == null) {
+              throw new MissingRequiredPropertyException("GetIpv6AddressesAddress", "ipv6GatewayId");
+            }
+            this.ipv6GatewayId = ipv6GatewayId;
             return this;
         }
         @CustomType.Setter
         public Builder networkType(String networkType) {
-            this.networkType = Objects.requireNonNull(networkType);
+            if (networkType == null) {
+              throw new MissingRequiredPropertyException("GetIpv6AddressesAddress", "networkType");
+            }
+            this.networkType = networkType;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetIpv6AddressesAddress", "status");
+            }
+            this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder vpcId(String vpcId) {
-            this.vpcId = Objects.requireNonNull(vpcId);
+            if (vpcId == null) {
+              throw new MissingRequiredPropertyException("GetIpv6AddressesAddress", "vpcId");
+            }
+            this.vpcId = vpcId;
             return this;
         }
         @CustomType.Setter
         public Builder vswitchId(String vswitchId) {
-            this.vswitchId = Objects.requireNonNull(vswitchId);
+            if (vswitchId == null) {
+              throw new MissingRequiredPropertyException("GetIpv6AddressesAddress", "vswitchId");
+            }
+            this.vswitchId = vswitchId;
             return this;
         }
         public GetIpv6AddressesAddress build() {

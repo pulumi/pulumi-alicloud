@@ -5,6 +5,7 @@ package com.pulumi.alicloud.emr.outputs;
 
 import com.pulumi.alicloud.emr.outputs.GetClustersClusterSoftwareInfoSoftware;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -72,17 +73,26 @@ public final class GetClustersClusterSoftwareInfo {
 
         @CustomType.Setter
         public Builder clusterType(String clusterType) {
-            this.clusterType = Objects.requireNonNull(clusterType);
+            if (clusterType == null) {
+              throw new MissingRequiredPropertyException("GetClustersClusterSoftwareInfo", "clusterType");
+            }
+            this.clusterType = clusterType;
             return this;
         }
         @CustomType.Setter
         public Builder emrVer(String emrVer) {
-            this.emrVer = Objects.requireNonNull(emrVer);
+            if (emrVer == null) {
+              throw new MissingRequiredPropertyException("GetClustersClusterSoftwareInfo", "emrVer");
+            }
+            this.emrVer = emrVer;
             return this;
         }
         @CustomType.Setter
         public Builder softwares(List<GetClustersClusterSoftwareInfoSoftware> softwares) {
-            this.softwares = Objects.requireNonNull(softwares);
+            if (softwares == null) {
+              throw new MissingRequiredPropertyException("GetClustersClusterSoftwareInfo", "softwares");
+            }
+            this.softwares = softwares;
             return this;
         }
         public Builder softwares(GetClustersClusterSoftwareInfoSoftware... softwares) {

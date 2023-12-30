@@ -5,6 +5,7 @@ package com.pulumi.alicloud.vpc.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -224,7 +225,9 @@ public final class GetRouteEntriesArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         public GetRouteEntriesArgs build() {
-            $.routeTableId = Objects.requireNonNull($.routeTableId, "expected parameter 'routeTableId' to be non-null");
+            if ($.routeTableId == null) {
+                throw new MissingRequiredPropertyException("GetRouteEntriesArgs", "routeTableId");
+            }
             return $;
         }
     }

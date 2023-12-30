@@ -6,6 +6,7 @@ package com.pulumi.alicloud.kms;
 import com.pulumi.alicloud.kms.inputs.InstanceBindVpcArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -479,13 +480,27 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public InstanceArgs build() {
-            $.keyNum = Objects.requireNonNull($.keyNum, "expected parameter 'keyNum' to be non-null");
-            $.secretNum = Objects.requireNonNull($.secretNum, "expected parameter 'secretNum' to be non-null");
-            $.spec = Objects.requireNonNull($.spec, "expected parameter 'spec' to be non-null");
-            $.vpcId = Objects.requireNonNull($.vpcId, "expected parameter 'vpcId' to be non-null");
-            $.vpcNum = Objects.requireNonNull($.vpcNum, "expected parameter 'vpcNum' to be non-null");
-            $.vswitchIds = Objects.requireNonNull($.vswitchIds, "expected parameter 'vswitchIds' to be non-null");
-            $.zoneIds = Objects.requireNonNull($.zoneIds, "expected parameter 'zoneIds' to be non-null");
+            if ($.keyNum == null) {
+                throw new MissingRequiredPropertyException("InstanceArgs", "keyNum");
+            }
+            if ($.secretNum == null) {
+                throw new MissingRequiredPropertyException("InstanceArgs", "secretNum");
+            }
+            if ($.spec == null) {
+                throw new MissingRequiredPropertyException("InstanceArgs", "spec");
+            }
+            if ($.vpcId == null) {
+                throw new MissingRequiredPropertyException("InstanceArgs", "vpcId");
+            }
+            if ($.vpcNum == null) {
+                throw new MissingRequiredPropertyException("InstanceArgs", "vpcNum");
+            }
+            if ($.vswitchIds == null) {
+                throw new MissingRequiredPropertyException("InstanceArgs", "vswitchIds");
+            }
+            if ($.zoneIds == null) {
+                throw new MissingRequiredPropertyException("InstanceArgs", "zoneIds");
+            }
             return $;
         }
     }

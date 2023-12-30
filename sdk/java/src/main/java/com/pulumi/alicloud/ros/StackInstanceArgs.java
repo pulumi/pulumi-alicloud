@@ -6,6 +6,7 @@ package com.pulumi.alicloud.ros;
 import com.pulumi.alicloud.ros.inputs.StackInstanceParameterOverrideArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -348,9 +349,15 @@ public final class StackInstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public StackInstanceArgs build() {
-            $.stackGroupName = Objects.requireNonNull($.stackGroupName, "expected parameter 'stackGroupName' to be non-null");
-            $.stackInstanceAccountId = Objects.requireNonNull($.stackInstanceAccountId, "expected parameter 'stackInstanceAccountId' to be non-null");
-            $.stackInstanceRegionId = Objects.requireNonNull($.stackInstanceRegionId, "expected parameter 'stackInstanceRegionId' to be non-null");
+            if ($.stackGroupName == null) {
+                throw new MissingRequiredPropertyException("StackInstanceArgs", "stackGroupName");
+            }
+            if ($.stackInstanceAccountId == null) {
+                throw new MissingRequiredPropertyException("StackInstanceArgs", "stackInstanceAccountId");
+            }
+            if ($.stackInstanceRegionId == null) {
+                throw new MissingRequiredPropertyException("StackInstanceArgs", "stackInstanceRegionId");
+            }
             return $;
         }
     }

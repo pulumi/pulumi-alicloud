@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.cms.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -57,7 +58,10 @@ public final class GetEventRulesRuleEventPatternKeywordFilter {
 
         @CustomType.Setter
         public Builder keyWords(List<String> keyWords) {
-            this.keyWords = Objects.requireNonNull(keyWords);
+            if (keyWords == null) {
+              throw new MissingRequiredPropertyException("GetEventRulesRuleEventPatternKeywordFilter", "keyWords");
+            }
+            this.keyWords = keyWords;
             return this;
         }
         public Builder keyWords(String... keyWords) {
@@ -65,7 +69,10 @@ public final class GetEventRulesRuleEventPatternKeywordFilter {
         }
         @CustomType.Setter
         public Builder relation(String relation) {
-            this.relation = Objects.requireNonNull(relation);
+            if (relation == null) {
+              throw new MissingRequiredPropertyException("GetEventRulesRuleEventPatternKeywordFilter", "relation");
+            }
+            this.relation = relation;
             return this;
         }
         public GetEventRulesRuleEventPatternKeywordFilter build() {

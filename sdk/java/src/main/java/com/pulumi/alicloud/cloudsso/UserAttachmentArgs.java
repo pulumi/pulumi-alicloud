@@ -5,6 +5,7 @@ package com.pulumi.alicloud.cloudsso;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -148,9 +149,15 @@ public final class UserAttachmentArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         public UserAttachmentArgs build() {
-            $.directoryId = Objects.requireNonNull($.directoryId, "expected parameter 'directoryId' to be non-null");
-            $.groupId = Objects.requireNonNull($.groupId, "expected parameter 'groupId' to be non-null");
-            $.userId = Objects.requireNonNull($.userId, "expected parameter 'userId' to be non-null");
+            if ($.directoryId == null) {
+                throw new MissingRequiredPropertyException("UserAttachmentArgs", "directoryId");
+            }
+            if ($.groupId == null) {
+                throw new MissingRequiredPropertyException("UserAttachmentArgs", "groupId");
+            }
+            if ($.userId == null) {
+                throw new MissingRequiredPropertyException("UserAttachmentArgs", "userId");
+            }
             return $;
         }
     }

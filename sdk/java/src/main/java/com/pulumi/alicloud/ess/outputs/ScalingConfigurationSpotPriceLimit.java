@@ -59,11 +59,13 @@ public final class ScalingConfigurationSpotPriceLimit {
 
         @CustomType.Setter
         public Builder instanceType(@Nullable String instanceType) {
+
             this.instanceType = instanceType;
             return this;
         }
         @CustomType.Setter
         public Builder priceLimit(@Nullable Double priceLimit) {
+
             this.priceLimit = priceLimit;
             return this;
         }

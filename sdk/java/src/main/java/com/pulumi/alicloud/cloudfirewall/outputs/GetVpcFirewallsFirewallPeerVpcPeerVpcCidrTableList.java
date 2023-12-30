@@ -5,6 +5,7 @@ package com.pulumi.alicloud.cloudfirewall.outputs;
 
 import com.pulumi.alicloud.cloudfirewall.outputs.GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryList;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -58,7 +59,10 @@ public final class GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableList {
 
         @CustomType.Setter
         public Builder peerRouteEntryLists(List<GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryList> peerRouteEntryLists) {
-            this.peerRouteEntryLists = Objects.requireNonNull(peerRouteEntryLists);
+            if (peerRouteEntryLists == null) {
+              throw new MissingRequiredPropertyException("GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableList", "peerRouteEntryLists");
+            }
+            this.peerRouteEntryLists = peerRouteEntryLists;
             return this;
         }
         public Builder peerRouteEntryLists(GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryList... peerRouteEntryLists) {
@@ -66,7 +70,10 @@ public final class GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableList {
         }
         @CustomType.Setter
         public Builder peerRouteTableId(String peerRouteTableId) {
-            this.peerRouteTableId = Objects.requireNonNull(peerRouteTableId);
+            if (peerRouteTableId == null) {
+              throw new MissingRequiredPropertyException("GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableList", "peerRouteTableId");
+            }
+            this.peerRouteTableId = peerRouteTableId;
             return this;
         }
         public GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableList build() {

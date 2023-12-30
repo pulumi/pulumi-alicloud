@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.dcdn.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -71,17 +72,26 @@ public final class GetWafRulesWafRuleRateLimitStatus {
 
         @CustomType.Setter
         public Builder code(String code) {
-            this.code = Objects.requireNonNull(code);
+            if (code == null) {
+              throw new MissingRequiredPropertyException("GetWafRulesWafRuleRateLimitStatus", "code");
+            }
+            this.code = code;
             return this;
         }
         @CustomType.Setter
         public Builder count(Integer count) {
-            this.count = Objects.requireNonNull(count);
+            if (count == null) {
+              throw new MissingRequiredPropertyException("GetWafRulesWafRuleRateLimitStatus", "count");
+            }
+            this.count = count;
             return this;
         }
         @CustomType.Setter
         public Builder ratio(Integer ratio) {
-            this.ratio = Objects.requireNonNull(ratio);
+            if (ratio == null) {
+              throw new MissingRequiredPropertyException("GetWafRulesWafRuleRateLimitStatus", "ratio");
+            }
+            this.ratio = ratio;
             return this;
         }
         public GetWafRulesWafRuleRateLimitStatus build() {

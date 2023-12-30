@@ -5,6 +5,7 @@ package com.pulumi.alicloud.ddos.outputs;
 
 import com.pulumi.alicloud.ddos.outputs.GetDdosCooDomainResourcesResourceProxyType;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -284,7 +285,10 @@ public final class GetDdosCooDomainResourcesResource {
 
         @CustomType.Setter
         public Builder blackLists(List<String> blackLists) {
-            this.blackLists = Objects.requireNonNull(blackLists);
+            if (blackLists == null) {
+              throw new MissingRequiredPropertyException("GetDdosCooDomainResourcesResource", "blackLists");
+            }
+            this.blackLists = blackLists;
             return this;
         }
         public Builder blackLists(String... blackLists) {
@@ -292,47 +296,74 @@ public final class GetDdosCooDomainResourcesResource {
         }
         @CustomType.Setter
         public Builder ccEnabled(Boolean ccEnabled) {
-            this.ccEnabled = Objects.requireNonNull(ccEnabled);
+            if (ccEnabled == null) {
+              throw new MissingRequiredPropertyException("GetDdosCooDomainResourcesResource", "ccEnabled");
+            }
+            this.ccEnabled = ccEnabled;
             return this;
         }
         @CustomType.Setter
         public Builder ccRuleEnabled(Boolean ccRuleEnabled) {
-            this.ccRuleEnabled = Objects.requireNonNull(ccRuleEnabled);
+            if (ccRuleEnabled == null) {
+              throw new MissingRequiredPropertyException("GetDdosCooDomainResourcesResource", "ccRuleEnabled");
+            }
+            this.ccRuleEnabled = ccRuleEnabled;
             return this;
         }
         @CustomType.Setter
         public Builder ccTemplate(String ccTemplate) {
-            this.ccTemplate = Objects.requireNonNull(ccTemplate);
+            if (ccTemplate == null) {
+              throw new MissingRequiredPropertyException("GetDdosCooDomainResourcesResource", "ccTemplate");
+            }
+            this.ccTemplate = ccTemplate;
             return this;
         }
         @CustomType.Setter
         public Builder certName(String certName) {
-            this.certName = Objects.requireNonNull(certName);
+            if (certName == null) {
+              throw new MissingRequiredPropertyException("GetDdosCooDomainResourcesResource", "certName");
+            }
+            this.certName = certName;
             return this;
         }
         @CustomType.Setter
         public Builder domain(String domain) {
-            this.domain = Objects.requireNonNull(domain);
+            if (domain == null) {
+              throw new MissingRequiredPropertyException("GetDdosCooDomainResourcesResource", "domain");
+            }
+            this.domain = domain;
             return this;
         }
         @CustomType.Setter
         public Builder http2Enable(Boolean http2Enable) {
-            this.http2Enable = Objects.requireNonNull(http2Enable);
+            if (http2Enable == null) {
+              throw new MissingRequiredPropertyException("GetDdosCooDomainResourcesResource", "http2Enable");
+            }
+            this.http2Enable = http2Enable;
             return this;
         }
         @CustomType.Setter
         public Builder httpsExt(String httpsExt) {
-            this.httpsExt = Objects.requireNonNull(httpsExt);
+            if (httpsExt == null) {
+              throw new MissingRequiredPropertyException("GetDdosCooDomainResourcesResource", "httpsExt");
+            }
+            this.httpsExt = httpsExt;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetDdosCooDomainResourcesResource", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder instanceIds(List<String> instanceIds) {
-            this.instanceIds = Objects.requireNonNull(instanceIds);
+            if (instanceIds == null) {
+              throw new MissingRequiredPropertyException("GetDdosCooDomainResourcesResource", "instanceIds");
+            }
+            this.instanceIds = instanceIds;
             return this;
         }
         public Builder instanceIds(String... instanceIds) {
@@ -340,17 +371,26 @@ public final class GetDdosCooDomainResourcesResource {
         }
         @CustomType.Setter
         public Builder policyMode(String policyMode) {
-            this.policyMode = Objects.requireNonNull(policyMode);
+            if (policyMode == null) {
+              throw new MissingRequiredPropertyException("GetDdosCooDomainResourcesResource", "policyMode");
+            }
+            this.policyMode = policyMode;
             return this;
         }
         @CustomType.Setter
         public Builder proxyEnabled(Boolean proxyEnabled) {
-            this.proxyEnabled = Objects.requireNonNull(proxyEnabled);
+            if (proxyEnabled == null) {
+              throw new MissingRequiredPropertyException("GetDdosCooDomainResourcesResource", "proxyEnabled");
+            }
+            this.proxyEnabled = proxyEnabled;
             return this;
         }
         @CustomType.Setter
         public Builder proxyTypes(List<GetDdosCooDomainResourcesResourceProxyType> proxyTypes) {
-            this.proxyTypes = Objects.requireNonNull(proxyTypes);
+            if (proxyTypes == null) {
+              throw new MissingRequiredPropertyException("GetDdosCooDomainResourcesResource", "proxyTypes");
+            }
+            this.proxyTypes = proxyTypes;
             return this;
         }
         public Builder proxyTypes(GetDdosCooDomainResourcesResourceProxyType... proxyTypes) {
@@ -358,7 +398,10 @@ public final class GetDdosCooDomainResourcesResource {
         }
         @CustomType.Setter
         public Builder realServers(List<String> realServers) {
-            this.realServers = Objects.requireNonNull(realServers);
+            if (realServers == null) {
+              throw new MissingRequiredPropertyException("GetDdosCooDomainResourcesResource", "realServers");
+            }
+            this.realServers = realServers;
             return this;
         }
         public Builder realServers(String... realServers) {
@@ -366,22 +409,34 @@ public final class GetDdosCooDomainResourcesResource {
         }
         @CustomType.Setter
         public Builder rsType(Integer rsType) {
-            this.rsType = Objects.requireNonNull(rsType);
+            if (rsType == null) {
+              throw new MissingRequiredPropertyException("GetDdosCooDomainResourcesResource", "rsType");
+            }
+            this.rsType = rsType;
             return this;
         }
         @CustomType.Setter
         public Builder sslCiphers(String sslCiphers) {
-            this.sslCiphers = Objects.requireNonNull(sslCiphers);
+            if (sslCiphers == null) {
+              throw new MissingRequiredPropertyException("GetDdosCooDomainResourcesResource", "sslCiphers");
+            }
+            this.sslCiphers = sslCiphers;
             return this;
         }
         @CustomType.Setter
         public Builder sslProtocols(String sslProtocols) {
-            this.sslProtocols = Objects.requireNonNull(sslProtocols);
+            if (sslProtocols == null) {
+              throw new MissingRequiredPropertyException("GetDdosCooDomainResourcesResource", "sslProtocols");
+            }
+            this.sslProtocols = sslProtocols;
             return this;
         }
         @CustomType.Setter
         public Builder whiteLists(List<String> whiteLists) {
-            this.whiteLists = Objects.requireNonNull(whiteLists);
+            if (whiteLists == null) {
+              throw new MissingRequiredPropertyException("GetDdosCooDomainResourcesResource", "whiteLists");
+            }
+            this.whiteLists = whiteLists;
             return this;
         }
         public Builder whiteLists(String... whiteLists) {

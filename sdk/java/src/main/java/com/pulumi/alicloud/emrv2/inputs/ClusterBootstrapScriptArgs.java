@@ -6,6 +6,7 @@ package com.pulumi.alicloud.emrv2.inputs;
 import com.pulumi.alicloud.emrv2.inputs.ClusterBootstrapScriptNodeSelectorArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -300,12 +301,24 @@ public final class ClusterBootstrapScriptArgs extends com.pulumi.resources.Resou
         }
 
         public ClusterBootstrapScriptArgs build() {
-            $.executionFailStrategy = Objects.requireNonNull($.executionFailStrategy, "expected parameter 'executionFailStrategy' to be non-null");
-            $.executionMoment = Objects.requireNonNull($.executionMoment, "expected parameter 'executionMoment' to be non-null");
-            $.nodeSelector = Objects.requireNonNull($.nodeSelector, "expected parameter 'nodeSelector' to be non-null");
-            $.scriptArgs = Objects.requireNonNull($.scriptArgs, "expected parameter 'scriptArgs' to be non-null");
-            $.scriptName = Objects.requireNonNull($.scriptName, "expected parameter 'scriptName' to be non-null");
-            $.scriptPath = Objects.requireNonNull($.scriptPath, "expected parameter 'scriptPath' to be non-null");
+            if ($.executionFailStrategy == null) {
+                throw new MissingRequiredPropertyException("ClusterBootstrapScriptArgs", "executionFailStrategy");
+            }
+            if ($.executionMoment == null) {
+                throw new MissingRequiredPropertyException("ClusterBootstrapScriptArgs", "executionMoment");
+            }
+            if ($.nodeSelector == null) {
+                throw new MissingRequiredPropertyException("ClusterBootstrapScriptArgs", "nodeSelector");
+            }
+            if ($.scriptArgs == null) {
+                throw new MissingRequiredPropertyException("ClusterBootstrapScriptArgs", "scriptArgs");
+            }
+            if ($.scriptName == null) {
+                throw new MissingRequiredPropertyException("ClusterBootstrapScriptArgs", "scriptName");
+            }
+            if ($.scriptPath == null) {
+                throw new MissingRequiredPropertyException("ClusterBootstrapScriptArgs", "scriptPath");
+            }
             return $;
         }
     }

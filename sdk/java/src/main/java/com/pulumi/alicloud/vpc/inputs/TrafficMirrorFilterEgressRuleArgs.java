@@ -5,6 +5,7 @@ package com.pulumi.alicloud.vpc.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -348,8 +349,12 @@ public final class TrafficMirrorFilterEgressRuleArgs extends com.pulumi.resource
         }
 
         public TrafficMirrorFilterEgressRuleArgs build() {
-            $.action = Objects.requireNonNull($.action, "expected parameter 'action' to be non-null");
-            $.protocol = Objects.requireNonNull($.protocol, "expected parameter 'protocol' to be non-null");
+            if ($.action == null) {
+                throw new MissingRequiredPropertyException("TrafficMirrorFilterEgressRuleArgs", "action");
+            }
+            if ($.protocol == null) {
+                throw new MissingRequiredPropertyException("TrafficMirrorFilterEgressRuleArgs", "protocol");
+            }
             return $;
         }
     }

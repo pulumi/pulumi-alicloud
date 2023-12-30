@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.ros.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -42,7 +43,10 @@ public final class GetTemplateScratchesScratchStack {
 
         @CustomType.Setter
         public Builder stackId(String stackId) {
-            this.stackId = Objects.requireNonNull(stackId);
+            if (stackId == null) {
+              throw new MissingRequiredPropertyException("GetTemplateScratchesScratchStack", "stackId");
+            }
+            this.stackId = stackId;
             return this;
         }
         public GetTemplateScratchesScratchStack build() {

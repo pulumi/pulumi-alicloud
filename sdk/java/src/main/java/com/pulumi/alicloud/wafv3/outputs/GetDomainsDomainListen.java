@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.wafv3.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -227,17 +228,26 @@ public final class GetDomainsDomainListen {
 
         @CustomType.Setter
         public Builder certId(String certId) {
-            this.certId = Objects.requireNonNull(certId);
+            if (certId == null) {
+              throw new MissingRequiredPropertyException("GetDomainsDomainListen", "certId");
+            }
+            this.certId = certId;
             return this;
         }
         @CustomType.Setter
         public Builder cipherSuite(Integer cipherSuite) {
-            this.cipherSuite = Objects.requireNonNull(cipherSuite);
+            if (cipherSuite == null) {
+              throw new MissingRequiredPropertyException("GetDomainsDomainListen", "cipherSuite");
+            }
+            this.cipherSuite = cipherSuite;
             return this;
         }
         @CustomType.Setter
         public Builder customCiphers(List<String> customCiphers) {
-            this.customCiphers = Objects.requireNonNull(customCiphers);
+            if (customCiphers == null) {
+              throw new MissingRequiredPropertyException("GetDomainsDomainListen", "customCiphers");
+            }
+            this.customCiphers = customCiphers;
             return this;
         }
         public Builder customCiphers(String... customCiphers) {
@@ -245,27 +255,42 @@ public final class GetDomainsDomainListen {
         }
         @CustomType.Setter
         public Builder enableTlsv3(Boolean enableTlsv3) {
-            this.enableTlsv3 = Objects.requireNonNull(enableTlsv3);
+            if (enableTlsv3 == null) {
+              throw new MissingRequiredPropertyException("GetDomainsDomainListen", "enableTlsv3");
+            }
+            this.enableTlsv3 = enableTlsv3;
             return this;
         }
         @CustomType.Setter
         public Builder exclusiveIp(Boolean exclusiveIp) {
-            this.exclusiveIp = Objects.requireNonNull(exclusiveIp);
+            if (exclusiveIp == null) {
+              throw new MissingRequiredPropertyException("GetDomainsDomainListen", "exclusiveIp");
+            }
+            this.exclusiveIp = exclusiveIp;
             return this;
         }
         @CustomType.Setter
         public Builder focusHttps(Boolean focusHttps) {
-            this.focusHttps = Objects.requireNonNull(focusHttps);
+            if (focusHttps == null) {
+              throw new MissingRequiredPropertyException("GetDomainsDomainListen", "focusHttps");
+            }
+            this.focusHttps = focusHttps;
             return this;
         }
         @CustomType.Setter
         public Builder http2Enabled(Boolean http2Enabled) {
-            this.http2Enabled = Objects.requireNonNull(http2Enabled);
+            if (http2Enabled == null) {
+              throw new MissingRequiredPropertyException("GetDomainsDomainListen", "http2Enabled");
+            }
+            this.http2Enabled = http2Enabled;
             return this;
         }
         @CustomType.Setter
         public Builder httpPorts(List<Integer> httpPorts) {
-            this.httpPorts = Objects.requireNonNull(httpPorts);
+            if (httpPorts == null) {
+              throw new MissingRequiredPropertyException("GetDomainsDomainListen", "httpPorts");
+            }
+            this.httpPorts = httpPorts;
             return this;
         }
         public Builder httpPorts(Integer... httpPorts) {
@@ -273,7 +298,10 @@ public final class GetDomainsDomainListen {
         }
         @CustomType.Setter
         public Builder httpsPorts(List<Integer> httpsPorts) {
-            this.httpsPorts = Objects.requireNonNull(httpsPorts);
+            if (httpsPorts == null) {
+              throw new MissingRequiredPropertyException("GetDomainsDomainListen", "httpsPorts");
+            }
+            this.httpsPorts = httpsPorts;
             return this;
         }
         public Builder httpsPorts(Integer... httpsPorts) {
@@ -281,27 +309,42 @@ public final class GetDomainsDomainListen {
         }
         @CustomType.Setter
         public Builder ipv6Enabled(Boolean ipv6Enabled) {
-            this.ipv6Enabled = Objects.requireNonNull(ipv6Enabled);
+            if (ipv6Enabled == null) {
+              throw new MissingRequiredPropertyException("GetDomainsDomainListen", "ipv6Enabled");
+            }
+            this.ipv6Enabled = ipv6Enabled;
             return this;
         }
         @CustomType.Setter
         public Builder protectionResource(String protectionResource) {
-            this.protectionResource = Objects.requireNonNull(protectionResource);
+            if (protectionResource == null) {
+              throw new MissingRequiredPropertyException("GetDomainsDomainListen", "protectionResource");
+            }
+            this.protectionResource = protectionResource;
             return this;
         }
         @CustomType.Setter
         public Builder tlsVersion(String tlsVersion) {
-            this.tlsVersion = Objects.requireNonNull(tlsVersion);
+            if (tlsVersion == null) {
+              throw new MissingRequiredPropertyException("GetDomainsDomainListen", "tlsVersion");
+            }
+            this.tlsVersion = tlsVersion;
             return this;
         }
         @CustomType.Setter
         public Builder xffHeaderMode(Integer xffHeaderMode) {
-            this.xffHeaderMode = Objects.requireNonNull(xffHeaderMode);
+            if (xffHeaderMode == null) {
+              throw new MissingRequiredPropertyException("GetDomainsDomainListen", "xffHeaderMode");
+            }
+            this.xffHeaderMode = xffHeaderMode;
             return this;
         }
         @CustomType.Setter
         public Builder xffHeaders(List<String> xffHeaders) {
-            this.xffHeaders = Objects.requireNonNull(xffHeaders);
+            if (xffHeaders == null) {
+              throw new MissingRequiredPropertyException("GetDomainsDomainListen", "xffHeaders");
+            }
+            this.xffHeaders = xffHeaders;
             return this;
         }
         public Builder xffHeaders(String... xffHeaders) {

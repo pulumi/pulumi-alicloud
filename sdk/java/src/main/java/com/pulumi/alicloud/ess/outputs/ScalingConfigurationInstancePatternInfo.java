@@ -88,21 +88,25 @@ public final class ScalingConfigurationInstancePatternInfo {
 
         @CustomType.Setter
         public Builder cores(@Nullable Integer cores) {
+
             this.cores = cores;
             return this;
         }
         @CustomType.Setter
         public Builder instanceFamilyLevel(@Nullable String instanceFamilyLevel) {
+
             this.instanceFamilyLevel = instanceFamilyLevel;
             return this;
         }
         @CustomType.Setter
         public Builder maxPrice(@Nullable Double maxPrice) {
+
             this.maxPrice = maxPrice;
             return this;
         }
         @CustomType.Setter
         public Builder memory(@Nullable Double memory) {
+
             this.memory = memory;
             return this;
         }

@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.scdn.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -56,12 +57,18 @@ public final class DomainConfigFunctionArg {
 
         @CustomType.Setter
         public Builder argName(String argName) {
-            this.argName = Objects.requireNonNull(argName);
+            if (argName == null) {
+              throw new MissingRequiredPropertyException("DomainConfigFunctionArg", "argName");
+            }
+            this.argName = argName;
             return this;
         }
         @CustomType.Setter
         public Builder argValue(String argValue) {
-            this.argValue = Objects.requireNonNull(argValue);
+            if (argValue == null) {
+              throw new MissingRequiredPropertyException("DomainConfigFunctionArg", "argValue");
+            }
+            this.argValue = argValue;
             return this;
         }
         public DomainConfigFunctionArg build() {

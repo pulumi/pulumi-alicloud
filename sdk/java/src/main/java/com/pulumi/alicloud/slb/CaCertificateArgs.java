@@ -5,6 +5,7 @@ package com.pulumi.alicloud.slb;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
@@ -242,7 +243,9 @@ public final class CaCertificateArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public CaCertificateArgs build() {
-            $.caCertificate = Objects.requireNonNull($.caCertificate, "expected parameter 'caCertificate' to be non-null");
+            if ($.caCertificate == null) {
+                throw new MissingRequiredPropertyException("CaCertificateArgs", "caCertificate");
+            }
             return $;
         }
     }

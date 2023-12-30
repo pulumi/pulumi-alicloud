@@ -6,6 +6,7 @@ package com.pulumi.alicloud.resourcemanager.outputs;
 import com.pulumi.alicloud.resourcemanager.outputs.GetAccountDeletionCheckTaskAbandonAbleCheck;
 import com.pulumi.alicloud.resourcemanager.outputs.GetAccountDeletionCheckTaskNotAllowReason;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -108,7 +109,10 @@ public final class GetAccountDeletionCheckTaskResult {
 
         @CustomType.Setter
         public Builder abandonAbleChecks(List<GetAccountDeletionCheckTaskAbandonAbleCheck> abandonAbleChecks) {
-            this.abandonAbleChecks = Objects.requireNonNull(abandonAbleChecks);
+            if (abandonAbleChecks == null) {
+              throw new MissingRequiredPropertyException("GetAccountDeletionCheckTaskResult", "abandonAbleChecks");
+            }
+            this.abandonAbleChecks = abandonAbleChecks;
             return this;
         }
         public Builder abandonAbleChecks(GetAccountDeletionCheckTaskAbandonAbleCheck... abandonAbleChecks) {
@@ -116,22 +120,34 @@ public final class GetAccountDeletionCheckTaskResult {
         }
         @CustomType.Setter
         public Builder accountId(String accountId) {
-            this.accountId = Objects.requireNonNull(accountId);
+            if (accountId == null) {
+              throw new MissingRequiredPropertyException("GetAccountDeletionCheckTaskResult", "accountId");
+            }
+            this.accountId = accountId;
             return this;
         }
         @CustomType.Setter
         public Builder allowDelete(Boolean allowDelete) {
-            this.allowDelete = Objects.requireNonNull(allowDelete);
+            if (allowDelete == null) {
+              throw new MissingRequiredPropertyException("GetAccountDeletionCheckTaskResult", "allowDelete");
+            }
+            this.allowDelete = allowDelete;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetAccountDeletionCheckTaskResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder notAllowReasons(List<GetAccountDeletionCheckTaskNotAllowReason> notAllowReasons) {
-            this.notAllowReasons = Objects.requireNonNull(notAllowReasons);
+            if (notAllowReasons == null) {
+              throw new MissingRequiredPropertyException("GetAccountDeletionCheckTaskResult", "notAllowReasons");
+            }
+            this.notAllowReasons = notAllowReasons;
             return this;
         }
         public Builder notAllowReasons(GetAccountDeletionCheckTaskNotAllowReason... notAllowReasons) {
@@ -139,7 +155,10 @@ public final class GetAccountDeletionCheckTaskResult {
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetAccountDeletionCheckTaskResult", "status");
+            }
+            this.status = status;
             return this;
         }
         public GetAccountDeletionCheckTaskResult build() {

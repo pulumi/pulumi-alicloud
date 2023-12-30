@@ -5,6 +5,7 @@ package com.pulumi.alicloud.kvstore.outputs;
 
 import com.pulumi.alicloud.kvstore.outputs.GetConnectionsConnection;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -80,7 +81,10 @@ public final class GetConnectionsResult {
 
         @CustomType.Setter
         public Builder connections(List<GetConnectionsConnection> connections) {
-            this.connections = Objects.requireNonNull(connections);
+            if (connections == null) {
+              throw new MissingRequiredPropertyException("GetConnectionsResult", "connections");
+            }
+            this.connections = connections;
             return this;
         }
         public Builder connections(GetConnectionsConnection... connections) {
@@ -88,16 +92,23 @@ public final class GetConnectionsResult {
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetConnectionsResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder ids(String ids) {
-            this.ids = Objects.requireNonNull(ids);
+            if (ids == null) {
+              throw new MissingRequiredPropertyException("GetConnectionsResult", "ids");
+            }
+            this.ids = ids;
             return this;
         }
         @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
+
             this.outputFile = outputFile;
             return this;
         }

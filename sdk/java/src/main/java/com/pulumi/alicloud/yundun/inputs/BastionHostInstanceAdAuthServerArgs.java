@@ -5,6 +5,7 @@ package com.pulumi.alicloud.yundun.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -245,13 +246,27 @@ public final class BastionHostInstanceAdAuthServerArgs extends com.pulumi.resour
         }
 
         public BastionHostInstanceAdAuthServerArgs build() {
-            $.account = Objects.requireNonNull($.account, "expected parameter 'account' to be non-null");
-            $.baseDn = Objects.requireNonNull($.baseDn, "expected parameter 'baseDn' to be non-null");
-            $.domain = Objects.requireNonNull($.domain, "expected parameter 'domain' to be non-null");
-            $.isSsl = Objects.requireNonNull($.isSsl, "expected parameter 'isSsl' to be non-null");
-            $.password = Objects.requireNonNull($.password, "expected parameter 'password' to be non-null");
-            $.port = Objects.requireNonNull($.port, "expected parameter 'port' to be non-null");
-            $.server = Objects.requireNonNull($.server, "expected parameter 'server' to be non-null");
+            if ($.account == null) {
+                throw new MissingRequiredPropertyException("BastionHostInstanceAdAuthServerArgs", "account");
+            }
+            if ($.baseDn == null) {
+                throw new MissingRequiredPropertyException("BastionHostInstanceAdAuthServerArgs", "baseDn");
+            }
+            if ($.domain == null) {
+                throw new MissingRequiredPropertyException("BastionHostInstanceAdAuthServerArgs", "domain");
+            }
+            if ($.isSsl == null) {
+                throw new MissingRequiredPropertyException("BastionHostInstanceAdAuthServerArgs", "isSsl");
+            }
+            if ($.password == null) {
+                throw new MissingRequiredPropertyException("BastionHostInstanceAdAuthServerArgs", "password");
+            }
+            if ($.port == null) {
+                throw new MissingRequiredPropertyException("BastionHostInstanceAdAuthServerArgs", "port");
+            }
+            if ($.server == null) {
+                throw new MissingRequiredPropertyException("BastionHostInstanceAdAuthServerArgs", "server");
+            }
             return $;
         }
     }

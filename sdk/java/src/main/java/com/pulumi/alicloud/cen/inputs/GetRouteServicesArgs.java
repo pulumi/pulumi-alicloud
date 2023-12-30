@@ -5,6 +5,7 @@ package com.pulumi.alicloud.cen.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -298,7 +299,9 @@ public final class GetRouteServicesArgs extends com.pulumi.resources.InvokeArgs 
         }
 
         public GetRouteServicesArgs build() {
-            $.cenId = Objects.requireNonNull($.cenId, "expected parameter 'cenId' to be non-null");
+            if ($.cenId == null) {
+                throw new MissingRequiredPropertyException("GetRouteServicesArgs", "cenId");
+            }
             return $;
         }
     }

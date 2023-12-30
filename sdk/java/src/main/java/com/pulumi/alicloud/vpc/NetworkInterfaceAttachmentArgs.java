@@ -5,6 +5,7 @@ package com.pulumi.alicloud.vpc;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -148,8 +149,12 @@ public final class NetworkInterfaceAttachmentArgs extends com.pulumi.resources.R
         }
 
         public NetworkInterfaceAttachmentArgs build() {
-            $.instanceId = Objects.requireNonNull($.instanceId, "expected parameter 'instanceId' to be non-null");
-            $.networkInterfaceId = Objects.requireNonNull($.networkInterfaceId, "expected parameter 'networkInterfaceId' to be non-null");
+            if ($.instanceId == null) {
+                throw new MissingRequiredPropertyException("NetworkInterfaceAttachmentArgs", "instanceId");
+            }
+            if ($.networkInterfaceId == null) {
+                throw new MissingRequiredPropertyException("NetworkInterfaceAttachmentArgs", "networkInterfaceId");
+            }
             return $;
         }
     }

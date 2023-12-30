@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.eds.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -183,57 +184,90 @@ public final class GetCommandsCommandInvokeDesktop {
 
         @CustomType.Setter
         public Builder desktopId(String desktopId) {
-            this.desktopId = Objects.requireNonNull(desktopId);
+            if (desktopId == null) {
+              throw new MissingRequiredPropertyException("GetCommandsCommandInvokeDesktop", "desktopId");
+            }
+            this.desktopId = desktopId;
             return this;
         }
         @CustomType.Setter
         public Builder dropped(Integer dropped) {
-            this.dropped = Objects.requireNonNull(dropped);
+            if (dropped == null) {
+              throw new MissingRequiredPropertyException("GetCommandsCommandInvokeDesktop", "dropped");
+            }
+            this.dropped = dropped;
             return this;
         }
         @CustomType.Setter
         public Builder errorCode(String errorCode) {
-            this.errorCode = Objects.requireNonNull(errorCode);
+            if (errorCode == null) {
+              throw new MissingRequiredPropertyException("GetCommandsCommandInvokeDesktop", "errorCode");
+            }
+            this.errorCode = errorCode;
             return this;
         }
         @CustomType.Setter
         public Builder errorInfo(String errorInfo) {
-            this.errorInfo = Objects.requireNonNull(errorInfo);
+            if (errorInfo == null) {
+              throw new MissingRequiredPropertyException("GetCommandsCommandInvokeDesktop", "errorInfo");
+            }
+            this.errorInfo = errorInfo;
             return this;
         }
         @CustomType.Setter
         public Builder exitCode(String exitCode) {
-            this.exitCode = Objects.requireNonNull(exitCode);
+            if (exitCode == null) {
+              throw new MissingRequiredPropertyException("GetCommandsCommandInvokeDesktop", "exitCode");
+            }
+            this.exitCode = exitCode;
             return this;
         }
         @CustomType.Setter
         public Builder finishTime(String finishTime) {
-            this.finishTime = Objects.requireNonNull(finishTime);
+            if (finishTime == null) {
+              throw new MissingRequiredPropertyException("GetCommandsCommandInvokeDesktop", "finishTime");
+            }
+            this.finishTime = finishTime;
             return this;
         }
         @CustomType.Setter
         public Builder invocationStatus(String invocationStatus) {
-            this.invocationStatus = Objects.requireNonNull(invocationStatus);
+            if (invocationStatus == null) {
+              throw new MissingRequiredPropertyException("GetCommandsCommandInvokeDesktop", "invocationStatus");
+            }
+            this.invocationStatus = invocationStatus;
             return this;
         }
         @CustomType.Setter
         public Builder output(String output) {
-            this.output = Objects.requireNonNull(output);
+            if (output == null) {
+              throw new MissingRequiredPropertyException("GetCommandsCommandInvokeDesktop", "output");
+            }
+            this.output = output;
             return this;
         }
         @CustomType.Setter
         public Builder repeats(Integer repeats) {
-            this.repeats = Objects.requireNonNull(repeats);
+            if (repeats == null) {
+              throw new MissingRequiredPropertyException("GetCommandsCommandInvokeDesktop", "repeats");
+            }
+            this.repeats = repeats;
             return this;
         }
         @CustomType.Setter
         public Builder startTime(String startTime) {
-            this.startTime = Objects.requireNonNull(startTime);
+            if (startTime == null) {
+              throw new MissingRequiredPropertyException("GetCommandsCommandInvokeDesktop", "startTime");
+            }
+            this.startTime = startTime;
             return this;
         }
         @CustomType.Setter
         public Builder stopTime(String stopTime) {
-            this.stopTime = Objects.requireNonNull(stopTime);
+            if (stopTime == null) {
+              throw new MissingRequiredPropertyException("GetCommandsCommandInvokeDesktop", "stopTime");
+            }
+            this.stopTime = stopTime;
             return this;
         }
         public GetCommandsCommandInvokeDesktop build() {

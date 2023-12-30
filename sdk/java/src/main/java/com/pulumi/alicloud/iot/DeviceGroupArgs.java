@@ -5,6 +5,7 @@ package com.pulumi.alicloud.iot;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -187,7 +188,9 @@ public final class DeviceGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public DeviceGroupArgs build() {
-            $.groupName = Objects.requireNonNull($.groupName, "expected parameter 'groupName' to be non-null");
+            if ($.groupName == null) {
+                throw new MissingRequiredPropertyException("DeviceGroupArgs", "groupName");
+            }
             return $;
         }
     }

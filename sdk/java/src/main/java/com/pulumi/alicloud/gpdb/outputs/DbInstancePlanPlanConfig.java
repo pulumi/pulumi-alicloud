@@ -89,21 +89,25 @@ public final class DbInstancePlanPlanConfig {
 
         @CustomType.Setter
         public Builder pause(@Nullable DbInstancePlanPlanConfigPause pause) {
+
             this.pause = pause;
             return this;
         }
         @CustomType.Setter
         public Builder resume(@Nullable DbInstancePlanPlanConfigResume resume) {
+
             this.resume = resume;
             return this;
         }
         @CustomType.Setter
         public Builder scaleIn(@Nullable DbInstancePlanPlanConfigScaleIn scaleIn) {
+
             this.scaleIn = scaleIn;
             return this;
         }
         @CustomType.Setter
         public Builder scaleOut(@Nullable DbInstancePlanPlanConfigScaleOut scaleOut) {
+
             this.scaleOut = scaleOut;
             return this;
         }

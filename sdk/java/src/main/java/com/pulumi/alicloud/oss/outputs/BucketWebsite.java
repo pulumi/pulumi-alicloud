@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.oss.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -58,12 +59,16 @@ public final class BucketWebsite {
 
         @CustomType.Setter
         public Builder errorDocument(@Nullable String errorDocument) {
+
             this.errorDocument = errorDocument;
             return this;
         }
         @CustomType.Setter
         public Builder indexDocument(String indexDocument) {
-            this.indexDocument = Objects.requireNonNull(indexDocument);
+            if (indexDocument == null) {
+              throw new MissingRequiredPropertyException("BucketWebsite", "indexDocument");
+            }
+            this.indexDocument = indexDocument;
             return this;
         }
         public BucketWebsite build() {

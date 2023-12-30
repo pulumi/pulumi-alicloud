@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.servicemesh.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -113,32 +114,50 @@ public final class GetServiceMeshesMeshMeshConfigOpa {
 
         @CustomType.Setter
         public Builder enabled(Boolean enabled) {
-            this.enabled = Objects.requireNonNull(enabled);
+            if (enabled == null) {
+              throw new MissingRequiredPropertyException("GetServiceMeshesMeshMeshConfigOpa", "enabled");
+            }
+            this.enabled = enabled;
             return this;
         }
         @CustomType.Setter
         public Builder limitCpu(String limitCpu) {
-            this.limitCpu = Objects.requireNonNull(limitCpu);
+            if (limitCpu == null) {
+              throw new MissingRequiredPropertyException("GetServiceMeshesMeshMeshConfigOpa", "limitCpu");
+            }
+            this.limitCpu = limitCpu;
             return this;
         }
         @CustomType.Setter
         public Builder limitMemory(String limitMemory) {
-            this.limitMemory = Objects.requireNonNull(limitMemory);
+            if (limitMemory == null) {
+              throw new MissingRequiredPropertyException("GetServiceMeshesMeshMeshConfigOpa", "limitMemory");
+            }
+            this.limitMemory = limitMemory;
             return this;
         }
         @CustomType.Setter
         public Builder logLevel(String logLevel) {
-            this.logLevel = Objects.requireNonNull(logLevel);
+            if (logLevel == null) {
+              throw new MissingRequiredPropertyException("GetServiceMeshesMeshMeshConfigOpa", "logLevel");
+            }
+            this.logLevel = logLevel;
             return this;
         }
         @CustomType.Setter
         public Builder requestCpu(String requestCpu) {
-            this.requestCpu = Objects.requireNonNull(requestCpu);
+            if (requestCpu == null) {
+              throw new MissingRequiredPropertyException("GetServiceMeshesMeshMeshConfigOpa", "requestCpu");
+            }
+            this.requestCpu = requestCpu;
             return this;
         }
         @CustomType.Setter
         public Builder requestMemory(String requestMemory) {
-            this.requestMemory = Objects.requireNonNull(requestMemory);
+            if (requestMemory == null) {
+              throw new MissingRequiredPropertyException("GetServiceMeshesMeshMeshConfigOpa", "requestMemory");
+            }
+            this.requestMemory = requestMemory;
             return this;
         }
         public GetServiceMeshesMeshMeshConfigOpa build() {

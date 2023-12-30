@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.rds.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -360,112 +361,178 @@ public final class GetCrossRegionBackupsBackup {
 
         @CustomType.Setter
         public Builder backupEndTime(String backupEndTime) {
-            this.backupEndTime = Objects.requireNonNull(backupEndTime);
+            if (backupEndTime == null) {
+              throw new MissingRequiredPropertyException("GetCrossRegionBackupsBackup", "backupEndTime");
+            }
+            this.backupEndTime = backupEndTime;
             return this;
         }
         @CustomType.Setter
         public Builder backupMethod(String backupMethod) {
-            this.backupMethod = Objects.requireNonNull(backupMethod);
+            if (backupMethod == null) {
+              throw new MissingRequiredPropertyException("GetCrossRegionBackupsBackup", "backupMethod");
+            }
+            this.backupMethod = backupMethod;
             return this;
         }
         @CustomType.Setter
         public Builder backupSetScale(String backupSetScale) {
-            this.backupSetScale = Objects.requireNonNull(backupSetScale);
+            if (backupSetScale == null) {
+              throw new MissingRequiredPropertyException("GetCrossRegionBackupsBackup", "backupSetScale");
+            }
+            this.backupSetScale = backupSetScale;
             return this;
         }
         @CustomType.Setter
         public Builder backupSetStatus(Integer backupSetStatus) {
-            this.backupSetStatus = Objects.requireNonNull(backupSetStatus);
+            if (backupSetStatus == null) {
+              throw new MissingRequiredPropertyException("GetCrossRegionBackupsBackup", "backupSetStatus");
+            }
+            this.backupSetStatus = backupSetStatus;
             return this;
         }
         @CustomType.Setter
         public Builder backupStartTime(String backupStartTime) {
-            this.backupStartTime = Objects.requireNonNull(backupStartTime);
+            if (backupStartTime == null) {
+              throw new MissingRequiredPropertyException("GetCrossRegionBackupsBackup", "backupStartTime");
+            }
+            this.backupStartTime = backupStartTime;
             return this;
         }
         @CustomType.Setter
         public Builder backupType(String backupType) {
-            this.backupType = Objects.requireNonNull(backupType);
+            if (backupType == null) {
+              throw new MissingRequiredPropertyException("GetCrossRegionBackupsBackup", "backupType");
+            }
+            this.backupType = backupType;
             return this;
         }
         @CustomType.Setter
         public Builder category(String category) {
-            this.category = Objects.requireNonNull(category);
+            if (category == null) {
+              throw new MissingRequiredPropertyException("GetCrossRegionBackupsBackup", "category");
+            }
+            this.category = category;
             return this;
         }
         @CustomType.Setter
         public Builder consistentTime(String consistentTime) {
-            this.consistentTime = Objects.requireNonNull(consistentTime);
+            if (consistentTime == null) {
+              throw new MissingRequiredPropertyException("GetCrossRegionBackupsBackup", "consistentTime");
+            }
+            this.consistentTime = consistentTime;
             return this;
         }
         @CustomType.Setter
         public Builder crossBackupDownloadLink(String crossBackupDownloadLink) {
-            this.crossBackupDownloadLink = Objects.requireNonNull(crossBackupDownloadLink);
+            if (crossBackupDownloadLink == null) {
+              throw new MissingRequiredPropertyException("GetCrossRegionBackupsBackup", "crossBackupDownloadLink");
+            }
+            this.crossBackupDownloadLink = crossBackupDownloadLink;
             return this;
         }
         @CustomType.Setter
         public Builder crossBackupId(String crossBackupId) {
-            this.crossBackupId = Objects.requireNonNull(crossBackupId);
+            if (crossBackupId == null) {
+              throw new MissingRequiredPropertyException("GetCrossRegionBackupsBackup", "crossBackupId");
+            }
+            this.crossBackupId = crossBackupId;
             return this;
         }
         @CustomType.Setter
         public Builder crossBackupRegion(String crossBackupRegion) {
-            this.crossBackupRegion = Objects.requireNonNull(crossBackupRegion);
+            if (crossBackupRegion == null) {
+              throw new MissingRequiredPropertyException("GetCrossRegionBackupsBackup", "crossBackupRegion");
+            }
+            this.crossBackupRegion = crossBackupRegion;
             return this;
         }
         @CustomType.Setter
         public Builder crossBackupSetFile(String crossBackupSetFile) {
-            this.crossBackupSetFile = Objects.requireNonNull(crossBackupSetFile);
+            if (crossBackupSetFile == null) {
+              throw new MissingRequiredPropertyException("GetCrossRegionBackupsBackup", "crossBackupSetFile");
+            }
+            this.crossBackupSetFile = crossBackupSetFile;
             return this;
         }
         @CustomType.Setter
         public Builder crossBackupSetLocation(String crossBackupSetLocation) {
-            this.crossBackupSetLocation = Objects.requireNonNull(crossBackupSetLocation);
+            if (crossBackupSetLocation == null) {
+              throw new MissingRequiredPropertyException("GetCrossRegionBackupsBackup", "crossBackupSetLocation");
+            }
+            this.crossBackupSetLocation = crossBackupSetLocation;
             return this;
         }
         @CustomType.Setter
         public Builder crossBackupSetSize(Integer crossBackupSetSize) {
-            this.crossBackupSetSize = Objects.requireNonNull(crossBackupSetSize);
+            if (crossBackupSetSize == null) {
+              throw new MissingRequiredPropertyException("GetCrossRegionBackupsBackup", "crossBackupSetSize");
+            }
+            this.crossBackupSetSize = crossBackupSetSize;
             return this;
         }
         @CustomType.Setter
         public Builder dbInstanceStorageType(String dbInstanceStorageType) {
-            this.dbInstanceStorageType = Objects.requireNonNull(dbInstanceStorageType);
+            if (dbInstanceStorageType == null) {
+              throw new MissingRequiredPropertyException("GetCrossRegionBackupsBackup", "dbInstanceStorageType");
+            }
+            this.dbInstanceStorageType = dbInstanceStorageType;
             return this;
         }
         @CustomType.Setter
         public Builder engine(String engine) {
-            this.engine = Objects.requireNonNull(engine);
+            if (engine == null) {
+              throw new MissingRequiredPropertyException("GetCrossRegionBackupsBackup", "engine");
+            }
+            this.engine = engine;
             return this;
         }
         @CustomType.Setter
         public Builder engineVersion(String engineVersion) {
-            this.engineVersion = Objects.requireNonNull(engineVersion);
+            if (engineVersion == null) {
+              throw new MissingRequiredPropertyException("GetCrossRegionBackupsBackup", "engineVersion");
+            }
+            this.engineVersion = engineVersion;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetCrossRegionBackupsBackup", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder instanceId(Integer instanceId) {
-            this.instanceId = Objects.requireNonNull(instanceId);
+            if (instanceId == null) {
+              throw new MissingRequiredPropertyException("GetCrossRegionBackupsBackup", "instanceId");
+            }
+            this.instanceId = instanceId;
             return this;
         }
         @CustomType.Setter
         public Builder recoveryBeginTime(String recoveryBeginTime) {
-            this.recoveryBeginTime = Objects.requireNonNull(recoveryBeginTime);
+            if (recoveryBeginTime == null) {
+              throw new MissingRequiredPropertyException("GetCrossRegionBackupsBackup", "recoveryBeginTime");
+            }
+            this.recoveryBeginTime = recoveryBeginTime;
             return this;
         }
         @CustomType.Setter
         public Builder recoveryEndTime(String recoveryEndTime) {
-            this.recoveryEndTime = Objects.requireNonNull(recoveryEndTime);
+            if (recoveryEndTime == null) {
+              throw new MissingRequiredPropertyException("GetCrossRegionBackupsBackup", "recoveryEndTime");
+            }
+            this.recoveryEndTime = recoveryEndTime;
             return this;
         }
         @CustomType.Setter
         public Builder restoreRegions(List<String> restoreRegions) {
-            this.restoreRegions = Objects.requireNonNull(restoreRegions);
+            if (restoreRegions == null) {
+              throw new MissingRequiredPropertyException("GetCrossRegionBackupsBackup", "restoreRegions");
+            }
+            this.restoreRegions = restoreRegions;
             return this;
         }
         public Builder restoreRegions(String... restoreRegions) {

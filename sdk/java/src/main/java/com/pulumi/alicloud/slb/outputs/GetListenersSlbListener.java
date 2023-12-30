@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.slb.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -582,202 +583,322 @@ public final class GetListenersSlbListener {
 
         @CustomType.Setter
         public Builder backendPort(Integer backendPort) {
-            this.backendPort = Objects.requireNonNull(backendPort);
+            if (backendPort == null) {
+              throw new MissingRequiredPropertyException("GetListenersSlbListener", "backendPort");
+            }
+            this.backendPort = backendPort;
             return this;
         }
         @CustomType.Setter
         public Builder bandwidth(Integer bandwidth) {
-            this.bandwidth = Objects.requireNonNull(bandwidth);
+            if (bandwidth == null) {
+              throw new MissingRequiredPropertyException("GetListenersSlbListener", "bandwidth");
+            }
+            this.bandwidth = bandwidth;
             return this;
         }
         @CustomType.Setter
         public Builder caCertificateId(String caCertificateId) {
-            this.caCertificateId = Objects.requireNonNull(caCertificateId);
+            if (caCertificateId == null) {
+              throw new MissingRequiredPropertyException("GetListenersSlbListener", "caCertificateId");
+            }
+            this.caCertificateId = caCertificateId;
             return this;
         }
         @CustomType.Setter
         public Builder cookie(String cookie) {
-            this.cookie = Objects.requireNonNull(cookie);
+            if (cookie == null) {
+              throw new MissingRequiredPropertyException("GetListenersSlbListener", "cookie");
+            }
+            this.cookie = cookie;
             return this;
         }
         @CustomType.Setter
         public Builder cookieTimeout(Integer cookieTimeout) {
-            this.cookieTimeout = Objects.requireNonNull(cookieTimeout);
+            if (cookieTimeout == null) {
+              throw new MissingRequiredPropertyException("GetListenersSlbListener", "cookieTimeout");
+            }
+            this.cookieTimeout = cookieTimeout;
             return this;
         }
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetListenersSlbListener", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder enableHttp2(String enableHttp2) {
-            this.enableHttp2 = Objects.requireNonNull(enableHttp2);
+            if (enableHttp2 == null) {
+              throw new MissingRequiredPropertyException("GetListenersSlbListener", "enableHttp2");
+            }
+            this.enableHttp2 = enableHttp2;
             return this;
         }
         @CustomType.Setter
         public Builder establishedTimeout(Integer establishedTimeout) {
-            this.establishedTimeout = Objects.requireNonNull(establishedTimeout);
+            if (establishedTimeout == null) {
+              throw new MissingRequiredPropertyException("GetListenersSlbListener", "establishedTimeout");
+            }
+            this.establishedTimeout = establishedTimeout;
             return this;
         }
         @CustomType.Setter
         public Builder frontendPort(Integer frontendPort) {
-            this.frontendPort = Objects.requireNonNull(frontendPort);
+            if (frontendPort == null) {
+              throw new MissingRequiredPropertyException("GetListenersSlbListener", "frontendPort");
+            }
+            this.frontendPort = frontendPort;
             return this;
         }
         @CustomType.Setter
         public Builder gzip(String gzip) {
-            this.gzip = Objects.requireNonNull(gzip);
+            if (gzip == null) {
+              throw new MissingRequiredPropertyException("GetListenersSlbListener", "gzip");
+            }
+            this.gzip = gzip;
             return this;
         }
         @CustomType.Setter
         public Builder healthCheck(String healthCheck) {
-            this.healthCheck = Objects.requireNonNull(healthCheck);
+            if (healthCheck == null) {
+              throw new MissingRequiredPropertyException("GetListenersSlbListener", "healthCheck");
+            }
+            this.healthCheck = healthCheck;
             return this;
         }
         @CustomType.Setter
         public Builder healthCheckConnectPort(Integer healthCheckConnectPort) {
-            this.healthCheckConnectPort = Objects.requireNonNull(healthCheckConnectPort);
+            if (healthCheckConnectPort == null) {
+              throw new MissingRequiredPropertyException("GetListenersSlbListener", "healthCheckConnectPort");
+            }
+            this.healthCheckConnectPort = healthCheckConnectPort;
             return this;
         }
         @CustomType.Setter
         public Builder healthCheckConnectTimeout(Integer healthCheckConnectTimeout) {
-            this.healthCheckConnectTimeout = Objects.requireNonNull(healthCheckConnectTimeout);
+            if (healthCheckConnectTimeout == null) {
+              throw new MissingRequiredPropertyException("GetListenersSlbListener", "healthCheckConnectTimeout");
+            }
+            this.healthCheckConnectTimeout = healthCheckConnectTimeout;
             return this;
         }
         @CustomType.Setter
         public Builder healthCheckDomain(String healthCheckDomain) {
-            this.healthCheckDomain = Objects.requireNonNull(healthCheckDomain);
+            if (healthCheckDomain == null) {
+              throw new MissingRequiredPropertyException("GetListenersSlbListener", "healthCheckDomain");
+            }
+            this.healthCheckDomain = healthCheckDomain;
             return this;
         }
         @CustomType.Setter
         public Builder healthCheckHttpCode(String healthCheckHttpCode) {
-            this.healthCheckHttpCode = Objects.requireNonNull(healthCheckHttpCode);
+            if (healthCheckHttpCode == null) {
+              throw new MissingRequiredPropertyException("GetListenersSlbListener", "healthCheckHttpCode");
+            }
+            this.healthCheckHttpCode = healthCheckHttpCode;
             return this;
         }
         @CustomType.Setter
         public Builder healthCheckInterval(Integer healthCheckInterval) {
-            this.healthCheckInterval = Objects.requireNonNull(healthCheckInterval);
+            if (healthCheckInterval == null) {
+              throw new MissingRequiredPropertyException("GetListenersSlbListener", "healthCheckInterval");
+            }
+            this.healthCheckInterval = healthCheckInterval;
             return this;
         }
         @CustomType.Setter
         public Builder healthCheckTimeout(Integer healthCheckTimeout) {
-            this.healthCheckTimeout = Objects.requireNonNull(healthCheckTimeout);
+            if (healthCheckTimeout == null) {
+              throw new MissingRequiredPropertyException("GetListenersSlbListener", "healthCheckTimeout");
+            }
+            this.healthCheckTimeout = healthCheckTimeout;
             return this;
         }
         @CustomType.Setter
         public Builder healthCheckType(String healthCheckType) {
-            this.healthCheckType = Objects.requireNonNull(healthCheckType);
+            if (healthCheckType == null) {
+              throw new MissingRequiredPropertyException("GetListenersSlbListener", "healthCheckType");
+            }
+            this.healthCheckType = healthCheckType;
             return this;
         }
         @CustomType.Setter
         public Builder healthCheckUri(String healthCheckUri) {
-            this.healthCheckUri = Objects.requireNonNull(healthCheckUri);
+            if (healthCheckUri == null) {
+              throw new MissingRequiredPropertyException("GetListenersSlbListener", "healthCheckUri");
+            }
+            this.healthCheckUri = healthCheckUri;
             return this;
         }
         @CustomType.Setter
         public Builder healthyThreshold(Integer healthyThreshold) {
-            this.healthyThreshold = Objects.requireNonNull(healthyThreshold);
+            if (healthyThreshold == null) {
+              throw new MissingRequiredPropertyException("GetListenersSlbListener", "healthyThreshold");
+            }
+            this.healthyThreshold = healthyThreshold;
             return this;
         }
         @CustomType.Setter
         public Builder idleTimeout(Integer idleTimeout) {
-            this.idleTimeout = Objects.requireNonNull(idleTimeout);
+            if (idleTimeout == null) {
+              throw new MissingRequiredPropertyException("GetListenersSlbListener", "idleTimeout");
+            }
+            this.idleTimeout = idleTimeout;
             return this;
         }
         @CustomType.Setter
         public Builder masterSlaveServerGroupId(String masterSlaveServerGroupId) {
-            this.masterSlaveServerGroupId = Objects.requireNonNull(masterSlaveServerGroupId);
+            if (masterSlaveServerGroupId == null) {
+              throw new MissingRequiredPropertyException("GetListenersSlbListener", "masterSlaveServerGroupId");
+            }
+            this.masterSlaveServerGroupId = masterSlaveServerGroupId;
             return this;
         }
         @CustomType.Setter
         public Builder persistenceTimeout(Integer persistenceTimeout) {
-            this.persistenceTimeout = Objects.requireNonNull(persistenceTimeout);
+            if (persistenceTimeout == null) {
+              throw new MissingRequiredPropertyException("GetListenersSlbListener", "persistenceTimeout");
+            }
+            this.persistenceTimeout = persistenceTimeout;
             return this;
         }
         @CustomType.Setter
         public Builder protocol(String protocol) {
-            this.protocol = Objects.requireNonNull(protocol);
+            if (protocol == null) {
+              throw new MissingRequiredPropertyException("GetListenersSlbListener", "protocol");
+            }
+            this.protocol = protocol;
             return this;
         }
         @CustomType.Setter
         public Builder proxyProtocolV2Enabled(Boolean proxyProtocolV2Enabled) {
-            this.proxyProtocolV2Enabled = Objects.requireNonNull(proxyProtocolV2Enabled);
+            if (proxyProtocolV2Enabled == null) {
+              throw new MissingRequiredPropertyException("GetListenersSlbListener", "proxyProtocolV2Enabled");
+            }
+            this.proxyProtocolV2Enabled = proxyProtocolV2Enabled;
             return this;
         }
         @CustomType.Setter
         public Builder requestTimeout(Integer requestTimeout) {
-            this.requestTimeout = Objects.requireNonNull(requestTimeout);
+            if (requestTimeout == null) {
+              throw new MissingRequiredPropertyException("GetListenersSlbListener", "requestTimeout");
+            }
+            this.requestTimeout = requestTimeout;
             return this;
         }
         @CustomType.Setter
         public Builder scheduler(String scheduler) {
-            this.scheduler = Objects.requireNonNull(scheduler);
+            if (scheduler == null) {
+              throw new MissingRequiredPropertyException("GetListenersSlbListener", "scheduler");
+            }
+            this.scheduler = scheduler;
             return this;
         }
         @CustomType.Setter
         public Builder securityStatus(String securityStatus) {
-            this.securityStatus = Objects.requireNonNull(securityStatus);
+            if (securityStatus == null) {
+              throw new MissingRequiredPropertyException("GetListenersSlbListener", "securityStatus");
+            }
+            this.securityStatus = securityStatus;
             return this;
         }
         @CustomType.Setter
         public Builder serverCertificateId(String serverCertificateId) {
-            this.serverCertificateId = Objects.requireNonNull(serverCertificateId);
+            if (serverCertificateId == null) {
+              throw new MissingRequiredPropertyException("GetListenersSlbListener", "serverCertificateId");
+            }
+            this.serverCertificateId = serverCertificateId;
             return this;
         }
         @CustomType.Setter
         public Builder serverGroupId(String serverGroupId) {
-            this.serverGroupId = Objects.requireNonNull(serverGroupId);
+            if (serverGroupId == null) {
+              throw new MissingRequiredPropertyException("GetListenersSlbListener", "serverGroupId");
+            }
+            this.serverGroupId = serverGroupId;
             return this;
         }
         @CustomType.Setter
         public Builder sslCertificateId(String sslCertificateId) {
-            this.sslCertificateId = Objects.requireNonNull(sslCertificateId);
+            if (sslCertificateId == null) {
+              throw new MissingRequiredPropertyException("GetListenersSlbListener", "sslCertificateId");
+            }
+            this.sslCertificateId = sslCertificateId;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetListenersSlbListener", "status");
+            }
+            this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder stickySession(String stickySession) {
-            this.stickySession = Objects.requireNonNull(stickySession);
+            if (stickySession == null) {
+              throw new MissingRequiredPropertyException("GetListenersSlbListener", "stickySession");
+            }
+            this.stickySession = stickySession;
             return this;
         }
         @CustomType.Setter
         public Builder stickySessionType(String stickySessionType) {
-            this.stickySessionType = Objects.requireNonNull(stickySessionType);
+            if (stickySessionType == null) {
+              throw new MissingRequiredPropertyException("GetListenersSlbListener", "stickySessionType");
+            }
+            this.stickySessionType = stickySessionType;
             return this;
         }
         @CustomType.Setter
         public Builder tlsCipherPolicy(String tlsCipherPolicy) {
-            this.tlsCipherPolicy = Objects.requireNonNull(tlsCipherPolicy);
+            if (tlsCipherPolicy == null) {
+              throw new MissingRequiredPropertyException("GetListenersSlbListener", "tlsCipherPolicy");
+            }
+            this.tlsCipherPolicy = tlsCipherPolicy;
             return this;
         }
         @CustomType.Setter
         public Builder unhealthyThreshold(Integer unhealthyThreshold) {
-            this.unhealthyThreshold = Objects.requireNonNull(unhealthyThreshold);
+            if (unhealthyThreshold == null) {
+              throw new MissingRequiredPropertyException("GetListenersSlbListener", "unhealthyThreshold");
+            }
+            this.unhealthyThreshold = unhealthyThreshold;
             return this;
         }
         @CustomType.Setter
         public Builder xForwardedFor(String xForwardedFor) {
-            this.xForwardedFor = Objects.requireNonNull(xForwardedFor);
+            if (xForwardedFor == null) {
+              throw new MissingRequiredPropertyException("GetListenersSlbListener", "xForwardedFor");
+            }
+            this.xForwardedFor = xForwardedFor;
             return this;
         }
         @CustomType.Setter
         public Builder xForwardedForSlbId(String xForwardedForSlbId) {
-            this.xForwardedForSlbId = Objects.requireNonNull(xForwardedForSlbId);
+            if (xForwardedForSlbId == null) {
+              throw new MissingRequiredPropertyException("GetListenersSlbListener", "xForwardedForSlbId");
+            }
+            this.xForwardedForSlbId = xForwardedForSlbId;
             return this;
         }
         @CustomType.Setter
         public Builder xForwardedForSlbIp(String xForwardedForSlbIp) {
-            this.xForwardedForSlbIp = Objects.requireNonNull(xForwardedForSlbIp);
+            if (xForwardedForSlbIp == null) {
+              throw new MissingRequiredPropertyException("GetListenersSlbListener", "xForwardedForSlbIp");
+            }
+            this.xForwardedForSlbIp = xForwardedForSlbIp;
             return this;
         }
         @CustomType.Setter
         public Builder xForwardedForSlbProto(String xForwardedForSlbProto) {
-            this.xForwardedForSlbProto = Objects.requireNonNull(xForwardedForSlbProto);
+            if (xForwardedForSlbProto == null) {
+              throw new MissingRequiredPropertyException("GetListenersSlbListener", "xForwardedForSlbProto");
+            }
+            this.xForwardedForSlbProto = xForwardedForSlbProto;
             return this;
         }
         public GetListenersSlbListener build() {

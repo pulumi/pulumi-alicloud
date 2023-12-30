@@ -116,16 +116,19 @@ public final class GreyTagRouteDubboRule {
 
         @CustomType.Setter
         public Builder condition(@Nullable String condition) {
+
             this.condition = condition;
             return this;
         }
         @CustomType.Setter
         public Builder group(@Nullable String group) {
+
             this.group = group;
             return this;
         }
         @CustomType.Setter
         public Builder items(@Nullable List<GreyTagRouteDubboRuleItem> items) {
+
             this.items = items;
             return this;
         }
@@ -134,16 +137,19 @@ public final class GreyTagRouteDubboRule {
         }
         @CustomType.Setter
         public Builder methodName(@Nullable String methodName) {
+
             this.methodName = methodName;
             return this;
         }
         @CustomType.Setter
         public Builder serviceName(@Nullable String serviceName) {
+
             this.serviceName = serviceName;
             return this;
         }
         @CustomType.Setter
         public Builder version(@Nullable String version) {
+
             this.version = version;
             return this;
         }

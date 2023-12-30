@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.cs.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -238,7 +239,9 @@ public final class GetRegistryEnterpriseSyncRulesPlainArgs extends com.pulumi.re
         }
 
         public GetRegistryEnterpriseSyncRulesPlainArgs build() {
-            $.instanceId = Objects.requireNonNull($.instanceId, "expected parameter 'instanceId' to be non-null");
+            if ($.instanceId == null) {
+                throw new MissingRequiredPropertyException("GetRegistryEnterpriseSyncRulesPlainArgs", "instanceId");
+            }
             return $;
         }
     }

@@ -5,6 +5,7 @@ package com.pulumi.alicloud.polardb.outputs;
 
 import com.pulumi.alicloud.polardb.outputs.GetAccountsAccountDatabasePrivilege;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -114,32 +115,50 @@ public final class GetAccountsAccount {
 
         @CustomType.Setter
         public Builder accountDescription(String accountDescription) {
-            this.accountDescription = Objects.requireNonNull(accountDescription);
+            if (accountDescription == null) {
+              throw new MissingRequiredPropertyException("GetAccountsAccount", "accountDescription");
+            }
+            this.accountDescription = accountDescription;
             return this;
         }
         @CustomType.Setter
         public Builder accountLockState(String accountLockState) {
-            this.accountLockState = Objects.requireNonNull(accountLockState);
+            if (accountLockState == null) {
+              throw new MissingRequiredPropertyException("GetAccountsAccount", "accountLockState");
+            }
+            this.accountLockState = accountLockState;
             return this;
         }
         @CustomType.Setter
         public Builder accountName(String accountName) {
-            this.accountName = Objects.requireNonNull(accountName);
+            if (accountName == null) {
+              throw new MissingRequiredPropertyException("GetAccountsAccount", "accountName");
+            }
+            this.accountName = accountName;
             return this;
         }
         @CustomType.Setter
         public Builder accountStatus(String accountStatus) {
-            this.accountStatus = Objects.requireNonNull(accountStatus);
+            if (accountStatus == null) {
+              throw new MissingRequiredPropertyException("GetAccountsAccount", "accountStatus");
+            }
+            this.accountStatus = accountStatus;
             return this;
         }
         @CustomType.Setter
         public Builder accountType(String accountType) {
-            this.accountType = Objects.requireNonNull(accountType);
+            if (accountType == null) {
+              throw new MissingRequiredPropertyException("GetAccountsAccount", "accountType");
+            }
+            this.accountType = accountType;
             return this;
         }
         @CustomType.Setter
         public Builder databasePrivileges(List<GetAccountsAccountDatabasePrivilege> databasePrivileges) {
-            this.databasePrivileges = Objects.requireNonNull(databasePrivileges);
+            if (databasePrivileges == null) {
+              throw new MissingRequiredPropertyException("GetAccountsAccount", "databasePrivileges");
+            }
+            this.databasePrivileges = databasePrivileges;
             return this;
         }
         public Builder databasePrivileges(GetAccountsAccountDatabasePrivilege... databasePrivileges) {

@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.servicecatalog.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -56,12 +57,18 @@ public final class GetLaunchOptionsOptionConstraintSummary {
 
         @CustomType.Setter
         public Builder constraintType(String constraintType) {
-            this.constraintType = Objects.requireNonNull(constraintType);
+            if (constraintType == null) {
+              throw new MissingRequiredPropertyException("GetLaunchOptionsOptionConstraintSummary", "constraintType");
+            }
+            this.constraintType = constraintType;
             return this;
         }
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetLaunchOptionsOptionConstraintSummary", "description");
+            }
+            this.description = description;
             return this;
         }
         public GetLaunchOptionsOptionConstraintSummary build() {

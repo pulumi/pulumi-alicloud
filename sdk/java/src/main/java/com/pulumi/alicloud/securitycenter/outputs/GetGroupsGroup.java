@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.securitycenter.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -85,22 +86,34 @@ public final class GetGroupsGroup {
 
         @CustomType.Setter
         public Builder groupFlag(Integer groupFlag) {
-            this.groupFlag = Objects.requireNonNull(groupFlag);
+            if (groupFlag == null) {
+              throw new MissingRequiredPropertyException("GetGroupsGroup", "groupFlag");
+            }
+            this.groupFlag = groupFlag;
             return this;
         }
         @CustomType.Setter
         public Builder groupId(String groupId) {
-            this.groupId = Objects.requireNonNull(groupId);
+            if (groupId == null) {
+              throw new MissingRequiredPropertyException("GetGroupsGroup", "groupId");
+            }
+            this.groupId = groupId;
             return this;
         }
         @CustomType.Setter
         public Builder groupName(String groupName) {
-            this.groupName = Objects.requireNonNull(groupName);
+            if (groupName == null) {
+              throw new MissingRequiredPropertyException("GetGroupsGroup", "groupName");
+            }
+            this.groupName = groupName;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetGroupsGroup", "id");
+            }
+            this.id = id;
             return this;
         }
         public GetGroupsGroup build() {

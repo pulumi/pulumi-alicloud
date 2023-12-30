@@ -16,34 +16,39 @@ __all__ = ['StoreArgs', 'Store']
 @pulumi.input_type
 class StoreArgs:
     def __init__(__self__, *,
-                 project: pulumi.Input[str],
                  append_meta: Optional[pulumi.Input[bool]] = None,
                  auto_split: Optional[pulumi.Input[bool]] = None,
                  enable_web_tracking: Optional[pulumi.Input[bool]] = None,
                  encrypt_conf: Optional[pulumi.Input['StoreEncryptConfArgs']] = None,
                  hot_ttl: Optional[pulumi.Input[int]] = None,
+                 logstore_name: Optional[pulumi.Input[str]] = None,
                  max_split_shard_count: Optional[pulumi.Input[int]] = None,
                  mode: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 project_name: Optional[pulumi.Input[str]] = None,
                  retention_period: Optional[pulumi.Input[int]] = None,
                  shard_count: Optional[pulumi.Input[int]] = None,
                  telemetry_type: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Store resource.
-        :param pulumi.Input[str] project: The project name to the log store belongs.
         :param pulumi.Input[bool] append_meta: Determines whether to append log meta automatically. The meta includes log receive time and client IP address. Default to `true`.
         :param pulumi.Input[bool] auto_split: Determines whether to automatically split a shard. Default to `false`.
-        :param pulumi.Input[bool] enable_web_tracking: Determines whether to enable Web Tracking. Default `false`.
-        :param pulumi.Input['StoreEncryptConfArgs'] encrypt_conf: Encrypted storage of data, providing data static protection capability, `encrypt_conf` can be updated since 1.188.0+ (only `enable` change is supported when updating logstore). See `encrypt_conf` below.
-        :param pulumi.Input[int] hot_ttl: The ttl of hot storage. Default to `30`, at least `30`, hot storage ttl must be less than ttl.
+        :param pulumi.Input[bool] enable_web_tracking: Whether open webtracking. webtracking network tracing, support the collection of HTML log, H5, Ios and android platforms.
+        :param pulumi.Input['StoreEncryptConfArgs'] encrypt_conf: Encrypted storage of data, providing data static protection capability, encrypt_conf can be updated since 1.188.0 (only enable change is supported when updating logstore). See `encrypt_conf` below.
+        :param pulumi.Input[int] hot_ttl: The ttl of hot storage. Default to 30, at least 30, hot storage ttl must be less than ttl.
+        :param pulumi.Input[str] logstore_name: The log store, which is unique in the same project. You need to specify one of the attributes: `logstore_name`, `name`.
         :param pulumi.Input[int] max_split_shard_count: The maximum number of shards for automatic split, which is in the range of 1 to 256. You must specify this parameter when autoSplit is true.
-        :param pulumi.Input[str] mode: The mode of storage. Default to `standard`, must be `standard` or `query`.
-        :param pulumi.Input[str] name: The log store, which is unique in the same project.
-        :param pulumi.Input[int] retention_period: The data retention time (in days). Valid values: [1-3650]. Default to `30`. Log store data will be stored permanently when the value is `3650`.
-        :param pulumi.Input[int] shard_count: The number of shards in this log store. Default to 2. You can modify it by "Split" or "Merge" operations. [Refer to details](https://www.alibabacloud.com/help/doc-detail/28976.htm)
+        :param pulumi.Input[str] mode: The mode of storage. Default to `standard`, must be `standard` or `query`, `lite`.
+        :param pulumi.Input[str] name: . Field 'name' has been deprecated from provider version 1.215.0. New field 'logstore_name' instead.
+        :param pulumi.Input[str] project: . Field 'project' has been deprecated from provider version 1.215.0. New field 'project_name' instead.
+        :param pulumi.Input[str] project_name: The project name to the log store belongs. You need to specify one of the attributes: `project_name`, `project`.
+        :param pulumi.Input[int] retention_period: The data retention time (in days). Valid values: [1-3650]. Default to 30. Log store data will be stored permanently when the value is 3650.
+        :param pulumi.Input[int] shard_count: The number of shards in this log store. Default to 2. You can modify it by "Split" or "Merge" operations. [Refer to details](https://www.alibabacloud.com/help/zh/sls/product-overview/shard).
         :param pulumi.Input[str] telemetry_type: Determines whether store type is metric. `Metrics` means metric store, empty means log store.
+               
+               The following arguments will be discarded. Please use new fields as soon as possible:
         """
-        pulumi.set(__self__, "project", project)
         if append_meta is not None:
             pulumi.set(__self__, "append_meta", append_meta)
         if auto_split is not None:
@@ -54,30 +59,30 @@ class StoreArgs:
             pulumi.set(__self__, "encrypt_conf", encrypt_conf)
         if hot_ttl is not None:
             pulumi.set(__self__, "hot_ttl", hot_ttl)
+        if logstore_name is not None:
+            pulumi.set(__self__, "logstore_name", logstore_name)
         if max_split_shard_count is not None:
             pulumi.set(__self__, "max_split_shard_count", max_split_shard_count)
         if mode is not None:
             pulumi.set(__self__, "mode", mode)
         if name is not None:
+            warnings.warn("""Field 'name' has been deprecated since provider version 1.215.0. New field 'logstore_name' instead.""", DeprecationWarning)
+            pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated since provider version 1.215.0. New field 'logstore_name' instead.""")
+        if name is not None:
             pulumi.set(__self__, "name", name)
+        if project is not None:
+            warnings.warn("""Field 'project' has been deprecated since provider version 1.215.0. New field 'project_name' instead.""", DeprecationWarning)
+            pulumi.log.warn("""project is deprecated: Field 'project' has been deprecated since provider version 1.215.0. New field 'project_name' instead.""")
+        if project is not None:
+            pulumi.set(__self__, "project", project)
+        if project_name is not None:
+            pulumi.set(__self__, "project_name", project_name)
         if retention_period is not None:
             pulumi.set(__self__, "retention_period", retention_period)
         if shard_count is not None:
             pulumi.set(__self__, "shard_count", shard_count)
         if telemetry_type is not None:
             pulumi.set(__self__, "telemetry_type", telemetry_type)
-
-    @property
-    @pulumi.getter
-    def project(self) -> pulumi.Input[str]:
-        """
-        The project name to the log store belongs.
-        """
-        return pulumi.get(self, "project")
-
-    @project.setter
-    def project(self, value: pulumi.Input[str]):
-        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="appendMeta")
@@ -107,7 +112,7 @@ class StoreArgs:
     @pulumi.getter(name="enableWebTracking")
     def enable_web_tracking(self) -> Optional[pulumi.Input[bool]]:
         """
-        Determines whether to enable Web Tracking. Default `false`.
+        Whether open webtracking. webtracking network tracing, support the collection of HTML log, H5, Ios and android platforms.
         """
         return pulumi.get(self, "enable_web_tracking")
 
@@ -119,7 +124,7 @@ class StoreArgs:
     @pulumi.getter(name="encryptConf")
     def encrypt_conf(self) -> Optional[pulumi.Input['StoreEncryptConfArgs']]:
         """
-        Encrypted storage of data, providing data static protection capability, `encrypt_conf` can be updated since 1.188.0+ (only `enable` change is supported when updating logstore). See `encrypt_conf` below.
+        Encrypted storage of data, providing data static protection capability, encrypt_conf can be updated since 1.188.0 (only enable change is supported when updating logstore). See `encrypt_conf` below.
         """
         return pulumi.get(self, "encrypt_conf")
 
@@ -131,13 +136,25 @@ class StoreArgs:
     @pulumi.getter(name="hotTtl")
     def hot_ttl(self) -> Optional[pulumi.Input[int]]:
         """
-        The ttl of hot storage. Default to `30`, at least `30`, hot storage ttl must be less than ttl.
+        The ttl of hot storage. Default to 30, at least 30, hot storage ttl must be less than ttl.
         """
         return pulumi.get(self, "hot_ttl")
 
     @hot_ttl.setter
     def hot_ttl(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "hot_ttl", value)
+
+    @property
+    @pulumi.getter(name="logstoreName")
+    def logstore_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The log store, which is unique in the same project. You need to specify one of the attributes: `logstore_name`, `name`.
+        """
+        return pulumi.get(self, "logstore_name")
+
+    @logstore_name.setter
+    def logstore_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "logstore_name", value)
 
     @property
     @pulumi.getter(name="maxSplitShardCount")
@@ -155,7 +172,7 @@ class StoreArgs:
     @pulumi.getter
     def mode(self) -> Optional[pulumi.Input[str]]:
         """
-        The mode of storage. Default to `standard`, must be `standard` or `query`.
+        The mode of storage. Default to `standard`, must be `standard` or `query`, `lite`.
         """
         return pulumi.get(self, "mode")
 
@@ -167,8 +184,11 @@ class StoreArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The log store, which is unique in the same project.
+        . Field 'name' has been deprecated from provider version 1.215.0. New field 'logstore_name' instead.
         """
+        warnings.warn("""Field 'name' has been deprecated since provider version 1.215.0. New field 'logstore_name' instead.""", DeprecationWarning)
+        pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated since provider version 1.215.0. New field 'logstore_name' instead.""")
+
         return pulumi.get(self, "name")
 
     @name.setter
@@ -176,10 +196,37 @@ class StoreArgs:
         pulumi.set(self, "name", value)
 
     @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        """
+        . Field 'project' has been deprecated from provider version 1.215.0. New field 'project_name' instead.
+        """
+        warnings.warn("""Field 'project' has been deprecated since provider version 1.215.0. New field 'project_name' instead.""", DeprecationWarning)
+        pulumi.log.warn("""project is deprecated: Field 'project' has been deprecated since provider version 1.215.0. New field 'project_name' instead.""")
+
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter(name="projectName")
+    def project_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The project name to the log store belongs. You need to specify one of the attributes: `project_name`, `project`.
+        """
+        return pulumi.get(self, "project_name")
+
+    @project_name.setter
+    def project_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project_name", value)
+
+    @property
     @pulumi.getter(name="retentionPeriod")
     def retention_period(self) -> Optional[pulumi.Input[int]]:
         """
-        The data retention time (in days). Valid values: [1-3650]. Default to `30`. Log store data will be stored permanently when the value is `3650`.
+        The data retention time (in days). Valid values: [1-3650]. Default to 30. Log store data will be stored permanently when the value is 3650.
         """
         return pulumi.get(self, "retention_period")
 
@@ -191,7 +238,7 @@ class StoreArgs:
     @pulumi.getter(name="shardCount")
     def shard_count(self) -> Optional[pulumi.Input[int]]:
         """
-        The number of shards in this log store. Default to 2. You can modify it by "Split" or "Merge" operations. [Refer to details](https://www.alibabacloud.com/help/doc-detail/28976.htm)
+        The number of shards in this log store. Default to 2. You can modify it by "Split" or "Merge" operations. [Refer to details](https://www.alibabacloud.com/help/zh/sls/product-overview/shard).
         """
         return pulumi.get(self, "shard_count")
 
@@ -204,6 +251,8 @@ class StoreArgs:
     def telemetry_type(self) -> Optional[pulumi.Input[str]]:
         """
         Determines whether store type is metric. `Metrics` means metric store, empty means log store.
+
+        The following arguments will be discarded. Please use new fields as soon as possible:
         """
         return pulumi.get(self, "telemetry_type")
 
@@ -217,13 +266,16 @@ class _StoreState:
     def __init__(__self__, *,
                  append_meta: Optional[pulumi.Input[bool]] = None,
                  auto_split: Optional[pulumi.Input[bool]] = None,
+                 create_time: Optional[pulumi.Input[int]] = None,
                  enable_web_tracking: Optional[pulumi.Input[bool]] = None,
                  encrypt_conf: Optional[pulumi.Input['StoreEncryptConfArgs']] = None,
                  hot_ttl: Optional[pulumi.Input[int]] = None,
+                 logstore_name: Optional[pulumi.Input[str]] = None,
                  max_split_shard_count: Optional[pulumi.Input[int]] = None,
                  mode: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 project_name: Optional[pulumi.Input[str]] = None,
                  retention_period: Optional[pulumi.Input[int]] = None,
                  shard_count: Optional[pulumi.Input[int]] = None,
                  shards: Optional[pulumi.Input[Sequence[pulumi.Input['StoreShardArgs']]]] = None,
@@ -232,36 +284,53 @@ class _StoreState:
         Input properties used for looking up and filtering Store resources.
         :param pulumi.Input[bool] append_meta: Determines whether to append log meta automatically. The meta includes log receive time and client IP address. Default to `true`.
         :param pulumi.Input[bool] auto_split: Determines whether to automatically split a shard. Default to `false`.
-        :param pulumi.Input[bool] enable_web_tracking: Determines whether to enable Web Tracking. Default `false`.
-        :param pulumi.Input['StoreEncryptConfArgs'] encrypt_conf: Encrypted storage of data, providing data static protection capability, `encrypt_conf` can be updated since 1.188.0+ (only `enable` change is supported when updating logstore). See `encrypt_conf` below.
-        :param pulumi.Input[int] hot_ttl: The ttl of hot storage. Default to `30`, at least `30`, hot storage ttl must be less than ttl.
+        :param pulumi.Input[int] create_time: Log library creation time. Unix timestamp format that represents the number of seconds from 1970-1-1 00:00:00 UTC calculation.
+        :param pulumi.Input[bool] enable_web_tracking: Whether open webtracking. webtracking network tracing, support the collection of HTML log, H5, Ios and android platforms.
+        :param pulumi.Input['StoreEncryptConfArgs'] encrypt_conf: Encrypted storage of data, providing data static protection capability, encrypt_conf can be updated since 1.188.0 (only enable change is supported when updating logstore). See `encrypt_conf` below.
+        :param pulumi.Input[int] hot_ttl: The ttl of hot storage. Default to 30, at least 30, hot storage ttl must be less than ttl.
+        :param pulumi.Input[str] logstore_name: The log store, which is unique in the same project. You need to specify one of the attributes: `logstore_name`, `name`.
         :param pulumi.Input[int] max_split_shard_count: The maximum number of shards for automatic split, which is in the range of 1 to 256. You must specify this parameter when autoSplit is true.
-        :param pulumi.Input[str] mode: The mode of storage. Default to `standard`, must be `standard` or `query`.
-        :param pulumi.Input[str] name: The log store, which is unique in the same project.
-        :param pulumi.Input[str] project: The project name to the log store belongs.
-        :param pulumi.Input[int] retention_period: The data retention time (in days). Valid values: [1-3650]. Default to `30`. Log store data will be stored permanently when the value is `3650`.
-        :param pulumi.Input[int] shard_count: The number of shards in this log store. Default to 2. You can modify it by "Split" or "Merge" operations. [Refer to details](https://www.alibabacloud.com/help/doc-detail/28976.htm)
+        :param pulumi.Input[str] mode: The mode of storage. Default to `standard`, must be `standard` or `query`, `lite`.
+        :param pulumi.Input[str] name: . Field 'name' has been deprecated from provider version 1.215.0. New field 'logstore_name' instead.
+        :param pulumi.Input[str] project: . Field 'project' has been deprecated from provider version 1.215.0. New field 'project_name' instead.
+        :param pulumi.Input[str] project_name: The project name to the log store belongs. You need to specify one of the attributes: `project_name`, `project`.
+        :param pulumi.Input[int] retention_period: The data retention time (in days). Valid values: [1-3650]. Default to 30. Log store data will be stored permanently when the value is 3650.
+        :param pulumi.Input[int] shard_count: The number of shards in this log store. Default to 2. You can modify it by "Split" or "Merge" operations. [Refer to details](https://www.alibabacloud.com/help/zh/sls/product-overview/shard).
         :param pulumi.Input[Sequence[pulumi.Input['StoreShardArgs']]] shards: The shard attribute.
         :param pulumi.Input[str] telemetry_type: Determines whether store type is metric. `Metrics` means metric store, empty means log store.
+               
+               The following arguments will be discarded. Please use new fields as soon as possible:
         """
         if append_meta is not None:
             pulumi.set(__self__, "append_meta", append_meta)
         if auto_split is not None:
             pulumi.set(__self__, "auto_split", auto_split)
+        if create_time is not None:
+            pulumi.set(__self__, "create_time", create_time)
         if enable_web_tracking is not None:
             pulumi.set(__self__, "enable_web_tracking", enable_web_tracking)
         if encrypt_conf is not None:
             pulumi.set(__self__, "encrypt_conf", encrypt_conf)
         if hot_ttl is not None:
             pulumi.set(__self__, "hot_ttl", hot_ttl)
+        if logstore_name is not None:
+            pulumi.set(__self__, "logstore_name", logstore_name)
         if max_split_shard_count is not None:
             pulumi.set(__self__, "max_split_shard_count", max_split_shard_count)
         if mode is not None:
             pulumi.set(__self__, "mode", mode)
         if name is not None:
+            warnings.warn("""Field 'name' has been deprecated since provider version 1.215.0. New field 'logstore_name' instead.""", DeprecationWarning)
+            pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated since provider version 1.215.0. New field 'logstore_name' instead.""")
+        if name is not None:
             pulumi.set(__self__, "name", name)
         if project is not None:
+            warnings.warn("""Field 'project' has been deprecated since provider version 1.215.0. New field 'project_name' instead.""", DeprecationWarning)
+            pulumi.log.warn("""project is deprecated: Field 'project' has been deprecated since provider version 1.215.0. New field 'project_name' instead.""")
+        if project is not None:
             pulumi.set(__self__, "project", project)
+        if project_name is not None:
+            pulumi.set(__self__, "project_name", project_name)
         if retention_period is not None:
             pulumi.set(__self__, "retention_period", retention_period)
         if shard_count is not None:
@@ -296,10 +365,22 @@ class _StoreState:
         pulumi.set(self, "auto_split", value)
 
     @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> Optional[pulumi.Input[int]]:
+        """
+        Log library creation time. Unix timestamp format that represents the number of seconds from 1970-1-1 00:00:00 UTC calculation.
+        """
+        return pulumi.get(self, "create_time")
+
+    @create_time.setter
+    def create_time(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "create_time", value)
+
+    @property
     @pulumi.getter(name="enableWebTracking")
     def enable_web_tracking(self) -> Optional[pulumi.Input[bool]]:
         """
-        Determines whether to enable Web Tracking. Default `false`.
+        Whether open webtracking. webtracking network tracing, support the collection of HTML log, H5, Ios and android platforms.
         """
         return pulumi.get(self, "enable_web_tracking")
 
@@ -311,7 +392,7 @@ class _StoreState:
     @pulumi.getter(name="encryptConf")
     def encrypt_conf(self) -> Optional[pulumi.Input['StoreEncryptConfArgs']]:
         """
-        Encrypted storage of data, providing data static protection capability, `encrypt_conf` can be updated since 1.188.0+ (only `enable` change is supported when updating logstore). See `encrypt_conf` below.
+        Encrypted storage of data, providing data static protection capability, encrypt_conf can be updated since 1.188.0 (only enable change is supported when updating logstore). See `encrypt_conf` below.
         """
         return pulumi.get(self, "encrypt_conf")
 
@@ -323,13 +404,25 @@ class _StoreState:
     @pulumi.getter(name="hotTtl")
     def hot_ttl(self) -> Optional[pulumi.Input[int]]:
         """
-        The ttl of hot storage. Default to `30`, at least `30`, hot storage ttl must be less than ttl.
+        The ttl of hot storage. Default to 30, at least 30, hot storage ttl must be less than ttl.
         """
         return pulumi.get(self, "hot_ttl")
 
     @hot_ttl.setter
     def hot_ttl(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "hot_ttl", value)
+
+    @property
+    @pulumi.getter(name="logstoreName")
+    def logstore_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The log store, which is unique in the same project. You need to specify one of the attributes: `logstore_name`, `name`.
+        """
+        return pulumi.get(self, "logstore_name")
+
+    @logstore_name.setter
+    def logstore_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "logstore_name", value)
 
     @property
     @pulumi.getter(name="maxSplitShardCount")
@@ -347,7 +440,7 @@ class _StoreState:
     @pulumi.getter
     def mode(self) -> Optional[pulumi.Input[str]]:
         """
-        The mode of storage. Default to `standard`, must be `standard` or `query`.
+        The mode of storage. Default to `standard`, must be `standard` or `query`, `lite`.
         """
         return pulumi.get(self, "mode")
 
@@ -359,8 +452,11 @@ class _StoreState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The log store, which is unique in the same project.
+        . Field 'name' has been deprecated from provider version 1.215.0. New field 'logstore_name' instead.
         """
+        warnings.warn("""Field 'name' has been deprecated since provider version 1.215.0. New field 'logstore_name' instead.""", DeprecationWarning)
+        pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated since provider version 1.215.0. New field 'logstore_name' instead.""")
+
         return pulumi.get(self, "name")
 
     @name.setter
@@ -371,8 +467,11 @@ class _StoreState:
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
         """
-        The project name to the log store belongs.
+        . Field 'project' has been deprecated from provider version 1.215.0. New field 'project_name' instead.
         """
+        warnings.warn("""Field 'project' has been deprecated since provider version 1.215.0. New field 'project_name' instead.""", DeprecationWarning)
+        pulumi.log.warn("""project is deprecated: Field 'project' has been deprecated since provider version 1.215.0. New field 'project_name' instead.""")
+
         return pulumi.get(self, "project")
 
     @project.setter
@@ -380,10 +479,22 @@ class _StoreState:
         pulumi.set(self, "project", value)
 
     @property
+    @pulumi.getter(name="projectName")
+    def project_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The project name to the log store belongs. You need to specify one of the attributes: `project_name`, `project`.
+        """
+        return pulumi.get(self, "project_name")
+
+    @project_name.setter
+    def project_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project_name", value)
+
+    @property
     @pulumi.getter(name="retentionPeriod")
     def retention_period(self) -> Optional[pulumi.Input[int]]:
         """
-        The data retention time (in days). Valid values: [1-3650]. Default to `30`. Log store data will be stored permanently when the value is `3650`.
+        The data retention time (in days). Valid values: [1-3650]. Default to 30. Log store data will be stored permanently when the value is 3650.
         """
         return pulumi.get(self, "retention_period")
 
@@ -395,7 +506,7 @@ class _StoreState:
     @pulumi.getter(name="shardCount")
     def shard_count(self) -> Optional[pulumi.Input[int]]:
         """
-        The number of shards in this log store. Default to 2. You can modify it by "Split" or "Merge" operations. [Refer to details](https://www.alibabacloud.com/help/doc-detail/28976.htm)
+        The number of shards in this log store. Default to 2. You can modify it by "Split" or "Merge" operations. [Refer to details](https://www.alibabacloud.com/help/zh/sls/product-overview/shard).
         """
         return pulumi.get(self, "shard_count")
 
@@ -420,6 +531,8 @@ class _StoreState:
     def telemetry_type(self) -> Optional[pulumi.Input[str]]:
         """
         Determines whether store type is metric. `Metrics` means metric store, empty means log store.
+
+        The following arguments will be discarded. Please use new fields as soon as possible:
         """
         return pulumi.get(self, "telemetry_type")
 
@@ -438,19 +551,23 @@ class Store(pulumi.CustomResource):
                  enable_web_tracking: Optional[pulumi.Input[bool]] = None,
                  encrypt_conf: Optional[pulumi.Input[pulumi.InputType['StoreEncryptConfArgs']]] = None,
                  hot_ttl: Optional[pulumi.Input[int]] = None,
+                 logstore_name: Optional[pulumi.Input[str]] = None,
                  max_split_shard_count: Optional[pulumi.Input[int]] = None,
                  mode: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 project_name: Optional[pulumi.Input[str]] = None,
                  retention_period: Optional[pulumi.Input[int]] = None,
                  shard_count: Optional[pulumi.Input[int]] = None,
                  telemetry_type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        The log store is a unit in Log Service to collect, store, and query the log data. Each log store belongs to a project,
-        and each project can create multiple Logstores. [Refer to details](https://www.alibabacloud.com/help/doc-detail/48874.htm)
+        Provides a SLS Log Store resource.
+
+        For information about SLS Log Store and how to use it, see [What is Log Store](https://www.alibabacloud.com/help/doc-detail/48874.htm).
 
         > **NOTE:** Available since v1.0.0.
+
         ## Example Usage
 
         Basic Usage
@@ -514,38 +631,44 @@ class Store(pulumi.CustomResource):
 
         ## Import
 
-        Log store can be imported using the id, e.g.
+        SLS Log Store can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:log/store:Store example tf-log:tf-log-store
+         $ pulumi import alicloud:log/store:Store example <project_name>:<logstore_name>
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] append_meta: Determines whether to append log meta automatically. The meta includes log receive time and client IP address. Default to `true`.
         :param pulumi.Input[bool] auto_split: Determines whether to automatically split a shard. Default to `false`.
-        :param pulumi.Input[bool] enable_web_tracking: Determines whether to enable Web Tracking. Default `false`.
-        :param pulumi.Input[pulumi.InputType['StoreEncryptConfArgs']] encrypt_conf: Encrypted storage of data, providing data static protection capability, `encrypt_conf` can be updated since 1.188.0+ (only `enable` change is supported when updating logstore). See `encrypt_conf` below.
-        :param pulumi.Input[int] hot_ttl: The ttl of hot storage. Default to `30`, at least `30`, hot storage ttl must be less than ttl.
+        :param pulumi.Input[bool] enable_web_tracking: Whether open webtracking. webtracking network tracing, support the collection of HTML log, H5, Ios and android platforms.
+        :param pulumi.Input[pulumi.InputType['StoreEncryptConfArgs']] encrypt_conf: Encrypted storage of data, providing data static protection capability, encrypt_conf can be updated since 1.188.0 (only enable change is supported when updating logstore). See `encrypt_conf` below.
+        :param pulumi.Input[int] hot_ttl: The ttl of hot storage. Default to 30, at least 30, hot storage ttl must be less than ttl.
+        :param pulumi.Input[str] logstore_name: The log store, which is unique in the same project. You need to specify one of the attributes: `logstore_name`, `name`.
         :param pulumi.Input[int] max_split_shard_count: The maximum number of shards for automatic split, which is in the range of 1 to 256. You must specify this parameter when autoSplit is true.
-        :param pulumi.Input[str] mode: The mode of storage. Default to `standard`, must be `standard` or `query`.
-        :param pulumi.Input[str] name: The log store, which is unique in the same project.
-        :param pulumi.Input[str] project: The project name to the log store belongs.
-        :param pulumi.Input[int] retention_period: The data retention time (in days). Valid values: [1-3650]. Default to `30`. Log store data will be stored permanently when the value is `3650`.
-        :param pulumi.Input[int] shard_count: The number of shards in this log store. Default to 2. You can modify it by "Split" or "Merge" operations. [Refer to details](https://www.alibabacloud.com/help/doc-detail/28976.htm)
+        :param pulumi.Input[str] mode: The mode of storage. Default to `standard`, must be `standard` or `query`, `lite`.
+        :param pulumi.Input[str] name: . Field 'name' has been deprecated from provider version 1.215.0. New field 'logstore_name' instead.
+        :param pulumi.Input[str] project: . Field 'project' has been deprecated from provider version 1.215.0. New field 'project_name' instead.
+        :param pulumi.Input[str] project_name: The project name to the log store belongs. You need to specify one of the attributes: `project_name`, `project`.
+        :param pulumi.Input[int] retention_period: The data retention time (in days). Valid values: [1-3650]. Default to 30. Log store data will be stored permanently when the value is 3650.
+        :param pulumi.Input[int] shard_count: The number of shards in this log store. Default to 2. You can modify it by "Split" or "Merge" operations. [Refer to details](https://www.alibabacloud.com/help/zh/sls/product-overview/shard).
         :param pulumi.Input[str] telemetry_type: Determines whether store type is metric. `Metrics` means metric store, empty means log store.
+               
+               The following arguments will be discarded. Please use new fields as soon as possible:
         """
         ...
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: StoreArgs,
+                 args: Optional[StoreArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        The log store is a unit in Log Service to collect, store, and query the log data. Each log store belongs to a project,
-        and each project can create multiple Logstores. [Refer to details](https://www.alibabacloud.com/help/doc-detail/48874.htm)
+        Provides a SLS Log Store resource.
+
+        For information about SLS Log Store and how to use it, see [What is Log Store](https://www.alibabacloud.com/help/doc-detail/48874.htm).
 
         > **NOTE:** Available since v1.0.0.
+
         ## Example Usage
 
         Basic Usage
@@ -609,10 +732,10 @@ class Store(pulumi.CustomResource):
 
         ## Import
 
-        Log store can be imported using the id, e.g.
+        SLS Log Store can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:log/store:Store example tf-log:tf-log-store
+         $ pulumi import alicloud:log/store:Store example <project_name>:<logstore_name>
         ```
 
         :param str resource_name: The name of the resource.
@@ -635,10 +758,12 @@ class Store(pulumi.CustomResource):
                  enable_web_tracking: Optional[pulumi.Input[bool]] = None,
                  encrypt_conf: Optional[pulumi.Input[pulumi.InputType['StoreEncryptConfArgs']]] = None,
                  hot_ttl: Optional[pulumi.Input[int]] = None,
+                 logstore_name: Optional[pulumi.Input[str]] = None,
                  max_split_shard_count: Optional[pulumi.Input[int]] = None,
                  mode: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 project_name: Optional[pulumi.Input[str]] = None,
                  retention_period: Optional[pulumi.Input[int]] = None,
                  shard_count: Optional[pulumi.Input[int]] = None,
                  telemetry_type: Optional[pulumi.Input[str]] = None,
@@ -656,15 +781,16 @@ class Store(pulumi.CustomResource):
             __props__.__dict__["enable_web_tracking"] = enable_web_tracking
             __props__.__dict__["encrypt_conf"] = encrypt_conf
             __props__.__dict__["hot_ttl"] = hot_ttl
+            __props__.__dict__["logstore_name"] = logstore_name
             __props__.__dict__["max_split_shard_count"] = max_split_shard_count
             __props__.__dict__["mode"] = mode
             __props__.__dict__["name"] = name
-            if project is None and not opts.urn:
-                raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
+            __props__.__dict__["project_name"] = project_name
             __props__.__dict__["retention_period"] = retention_period
             __props__.__dict__["shard_count"] = shard_count
             __props__.__dict__["telemetry_type"] = telemetry_type
+            __props__.__dict__["create_time"] = None
             __props__.__dict__["shards"] = None
         super(Store, __self__).__init__(
             'alicloud:log/store:Store',
@@ -678,13 +804,16 @@ class Store(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             append_meta: Optional[pulumi.Input[bool]] = None,
             auto_split: Optional[pulumi.Input[bool]] = None,
+            create_time: Optional[pulumi.Input[int]] = None,
             enable_web_tracking: Optional[pulumi.Input[bool]] = None,
             encrypt_conf: Optional[pulumi.Input[pulumi.InputType['StoreEncryptConfArgs']]] = None,
             hot_ttl: Optional[pulumi.Input[int]] = None,
+            logstore_name: Optional[pulumi.Input[str]] = None,
             max_split_shard_count: Optional[pulumi.Input[int]] = None,
             mode: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
+            project_name: Optional[pulumi.Input[str]] = None,
             retention_period: Optional[pulumi.Input[int]] = None,
             shard_count: Optional[pulumi.Input[int]] = None,
             shards: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['StoreShardArgs']]]]] = None,
@@ -698,17 +827,22 @@ class Store(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] append_meta: Determines whether to append log meta automatically. The meta includes log receive time and client IP address. Default to `true`.
         :param pulumi.Input[bool] auto_split: Determines whether to automatically split a shard. Default to `false`.
-        :param pulumi.Input[bool] enable_web_tracking: Determines whether to enable Web Tracking. Default `false`.
-        :param pulumi.Input[pulumi.InputType['StoreEncryptConfArgs']] encrypt_conf: Encrypted storage of data, providing data static protection capability, `encrypt_conf` can be updated since 1.188.0+ (only `enable` change is supported when updating logstore). See `encrypt_conf` below.
-        :param pulumi.Input[int] hot_ttl: The ttl of hot storage. Default to `30`, at least `30`, hot storage ttl must be less than ttl.
+        :param pulumi.Input[int] create_time: Log library creation time. Unix timestamp format that represents the number of seconds from 1970-1-1 00:00:00 UTC calculation.
+        :param pulumi.Input[bool] enable_web_tracking: Whether open webtracking. webtracking network tracing, support the collection of HTML log, H5, Ios and android platforms.
+        :param pulumi.Input[pulumi.InputType['StoreEncryptConfArgs']] encrypt_conf: Encrypted storage of data, providing data static protection capability, encrypt_conf can be updated since 1.188.0 (only enable change is supported when updating logstore). See `encrypt_conf` below.
+        :param pulumi.Input[int] hot_ttl: The ttl of hot storage. Default to 30, at least 30, hot storage ttl must be less than ttl.
+        :param pulumi.Input[str] logstore_name: The log store, which is unique in the same project. You need to specify one of the attributes: `logstore_name`, `name`.
         :param pulumi.Input[int] max_split_shard_count: The maximum number of shards for automatic split, which is in the range of 1 to 256. You must specify this parameter when autoSplit is true.
-        :param pulumi.Input[str] mode: The mode of storage. Default to `standard`, must be `standard` or `query`.
-        :param pulumi.Input[str] name: The log store, which is unique in the same project.
-        :param pulumi.Input[str] project: The project name to the log store belongs.
-        :param pulumi.Input[int] retention_period: The data retention time (in days). Valid values: [1-3650]. Default to `30`. Log store data will be stored permanently when the value is `3650`.
-        :param pulumi.Input[int] shard_count: The number of shards in this log store. Default to 2. You can modify it by "Split" or "Merge" operations. [Refer to details](https://www.alibabacloud.com/help/doc-detail/28976.htm)
+        :param pulumi.Input[str] mode: The mode of storage. Default to `standard`, must be `standard` or `query`, `lite`.
+        :param pulumi.Input[str] name: . Field 'name' has been deprecated from provider version 1.215.0. New field 'logstore_name' instead.
+        :param pulumi.Input[str] project: . Field 'project' has been deprecated from provider version 1.215.0. New field 'project_name' instead.
+        :param pulumi.Input[str] project_name: The project name to the log store belongs. You need to specify one of the attributes: `project_name`, `project`.
+        :param pulumi.Input[int] retention_period: The data retention time (in days). Valid values: [1-3650]. Default to 30. Log store data will be stored permanently when the value is 3650.
+        :param pulumi.Input[int] shard_count: The number of shards in this log store. Default to 2. You can modify it by "Split" or "Merge" operations. [Refer to details](https://www.alibabacloud.com/help/zh/sls/product-overview/shard).
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['StoreShardArgs']]]] shards: The shard attribute.
         :param pulumi.Input[str] telemetry_type: Determines whether store type is metric. `Metrics` means metric store, empty means log store.
+               
+               The following arguments will be discarded. Please use new fields as soon as possible:
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -716,13 +850,16 @@ class Store(pulumi.CustomResource):
 
         __props__.__dict__["append_meta"] = append_meta
         __props__.__dict__["auto_split"] = auto_split
+        __props__.__dict__["create_time"] = create_time
         __props__.__dict__["enable_web_tracking"] = enable_web_tracking
         __props__.__dict__["encrypt_conf"] = encrypt_conf
         __props__.__dict__["hot_ttl"] = hot_ttl
+        __props__.__dict__["logstore_name"] = logstore_name
         __props__.__dict__["max_split_shard_count"] = max_split_shard_count
         __props__.__dict__["mode"] = mode
         __props__.__dict__["name"] = name
         __props__.__dict__["project"] = project
+        __props__.__dict__["project_name"] = project_name
         __props__.__dict__["retention_period"] = retention_period
         __props__.__dict__["shard_count"] = shard_count
         __props__.__dict__["shards"] = shards
@@ -746,18 +883,26 @@ class Store(pulumi.CustomResource):
         return pulumi.get(self, "auto_split")
 
     @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> pulumi.Output[int]:
+        """
+        Log library creation time. Unix timestamp format that represents the number of seconds from 1970-1-1 00:00:00 UTC calculation.
+        """
+        return pulumi.get(self, "create_time")
+
+    @property
     @pulumi.getter(name="enableWebTracking")
     def enable_web_tracking(self) -> pulumi.Output[Optional[bool]]:
         """
-        Determines whether to enable Web Tracking. Default `false`.
+        Whether open webtracking. webtracking network tracing, support the collection of HTML log, H5, Ios and android platforms.
         """
         return pulumi.get(self, "enable_web_tracking")
 
     @property
     @pulumi.getter(name="encryptConf")
-    def encrypt_conf(self) -> pulumi.Output[Optional['outputs.StoreEncryptConf']]:
+    def encrypt_conf(self) -> pulumi.Output['outputs.StoreEncryptConf']:
         """
-        Encrypted storage of data, providing data static protection capability, `encrypt_conf` can be updated since 1.188.0+ (only `enable` change is supported when updating logstore). See `encrypt_conf` below.
+        Encrypted storage of data, providing data static protection capability, encrypt_conf can be updated since 1.188.0 (only enable change is supported when updating logstore). See `encrypt_conf` below.
         """
         return pulumi.get(self, "encrypt_conf")
 
@@ -765,9 +910,17 @@ class Store(pulumi.CustomResource):
     @pulumi.getter(name="hotTtl")
     def hot_ttl(self) -> pulumi.Output[Optional[int]]:
         """
-        The ttl of hot storage. Default to `30`, at least `30`, hot storage ttl must be less than ttl.
+        The ttl of hot storage. Default to 30, at least 30, hot storage ttl must be less than ttl.
         """
         return pulumi.get(self, "hot_ttl")
+
+    @property
+    @pulumi.getter(name="logstoreName")
+    def logstore_name(self) -> pulumi.Output[str]:
+        """
+        The log store, which is unique in the same project. You need to specify one of the attributes: `logstore_name`, `name`.
+        """
+        return pulumi.get(self, "logstore_name")
 
     @property
     @pulumi.getter(name="maxSplitShardCount")
@@ -779,9 +932,9 @@ class Store(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def mode(self) -> pulumi.Output[Optional[str]]:
+    def mode(self) -> pulumi.Output[str]:
         """
-        The mode of storage. Default to `standard`, must be `standard` or `query`.
+        The mode of storage. Default to `standard`, must be `standard` or `query`, `lite`.
         """
         return pulumi.get(self, "mode")
 
@@ -789,23 +942,37 @@ class Store(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        The log store, which is unique in the same project.
+        . Field 'name' has been deprecated from provider version 1.215.0. New field 'logstore_name' instead.
         """
+        warnings.warn("""Field 'name' has been deprecated since provider version 1.215.0. New field 'logstore_name' instead.""", DeprecationWarning)
+        pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated since provider version 1.215.0. New field 'logstore_name' instead.""")
+
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
     def project(self) -> pulumi.Output[str]:
         """
-        The project name to the log store belongs.
+        . Field 'project' has been deprecated from provider version 1.215.0. New field 'project_name' instead.
         """
+        warnings.warn("""Field 'project' has been deprecated since provider version 1.215.0. New field 'project_name' instead.""", DeprecationWarning)
+        pulumi.log.warn("""project is deprecated: Field 'project' has been deprecated since provider version 1.215.0. New field 'project_name' instead.""")
+
         return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter(name="projectName")
+    def project_name(self) -> pulumi.Output[str]:
+        """
+        The project name to the log store belongs. You need to specify one of the attributes: `project_name`, `project`.
+        """
+        return pulumi.get(self, "project_name")
 
     @property
     @pulumi.getter(name="retentionPeriod")
     def retention_period(self) -> pulumi.Output[Optional[int]]:
         """
-        The data retention time (in days). Valid values: [1-3650]. Default to `30`. Log store data will be stored permanently when the value is `3650`.
+        The data retention time (in days). Valid values: [1-3650]. Default to 30. Log store data will be stored permanently when the value is 3650.
         """
         return pulumi.get(self, "retention_period")
 
@@ -813,7 +980,7 @@ class Store(pulumi.CustomResource):
     @pulumi.getter(name="shardCount")
     def shard_count(self) -> pulumi.Output[Optional[int]]:
         """
-        The number of shards in this log store. Default to 2. You can modify it by "Split" or "Merge" operations. [Refer to details](https://www.alibabacloud.com/help/doc-detail/28976.htm)
+        The number of shards in this log store. Default to 2. You can modify it by "Split" or "Merge" operations. [Refer to details](https://www.alibabacloud.com/help/zh/sls/product-overview/shard).
         """
         return pulumi.get(self, "shard_count")
 
@@ -830,6 +997,8 @@ class Store(pulumi.CustomResource):
     def telemetry_type(self) -> pulumi.Output[Optional[str]]:
         """
         Determines whether store type is metric. `Metrics` means metric store, empty means log store.
+
+        The following arguments will be discarded. Please use new fields as soon as possible:
         """
         return pulumi.get(self, "telemetry_type")
 

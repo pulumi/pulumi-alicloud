@@ -5,6 +5,7 @@ package com.pulumi.alicloud.ga;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -111,8 +112,12 @@ public final class BasicAccelerateIpArgs extends com.pulumi.resources.ResourceAr
         }
 
         public BasicAccelerateIpArgs build() {
-            $.acceleratorId = Objects.requireNonNull($.acceleratorId, "expected parameter 'acceleratorId' to be non-null");
-            $.ipSetId = Objects.requireNonNull($.ipSetId, "expected parameter 'ipSetId' to be non-null");
+            if ($.acceleratorId == null) {
+                throw new MissingRequiredPropertyException("BasicAccelerateIpArgs", "acceleratorId");
+            }
+            if ($.ipSetId == null) {
+                throw new MissingRequiredPropertyException("BasicAccelerateIpArgs", "ipSetId");
+            }
             return $;
         }
     }

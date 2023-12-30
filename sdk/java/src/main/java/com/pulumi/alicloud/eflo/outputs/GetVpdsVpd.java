@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.eflo.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -140,42 +141,66 @@ public final class GetVpdsVpd {
 
         @CustomType.Setter
         public Builder cidr(String cidr) {
-            this.cidr = Objects.requireNonNull(cidr);
+            if (cidr == null) {
+              throw new MissingRequiredPropertyException("GetVpdsVpd", "cidr");
+            }
+            this.cidr = cidr;
             return this;
         }
         @CustomType.Setter
         public Builder createTime(String createTime) {
-            this.createTime = Objects.requireNonNull(createTime);
+            if (createTime == null) {
+              throw new MissingRequiredPropertyException("GetVpdsVpd", "createTime");
+            }
+            this.createTime = createTime;
             return this;
         }
         @CustomType.Setter
         public Builder gmtModified(String gmtModified) {
-            this.gmtModified = Objects.requireNonNull(gmtModified);
+            if (gmtModified == null) {
+              throw new MissingRequiredPropertyException("GetVpdsVpd", "gmtModified");
+            }
+            this.gmtModified = gmtModified;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetVpdsVpd", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder resourceGroupId(String resourceGroupId) {
-            this.resourceGroupId = Objects.requireNonNull(resourceGroupId);
+            if (resourceGroupId == null) {
+              throw new MissingRequiredPropertyException("GetVpdsVpd", "resourceGroupId");
+            }
+            this.resourceGroupId = resourceGroupId;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetVpdsVpd", "status");
+            }
+            this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder vpdId(String vpdId) {
-            this.vpdId = Objects.requireNonNull(vpdId);
+            if (vpdId == null) {
+              throw new MissingRequiredPropertyException("GetVpdsVpd", "vpdId");
+            }
+            this.vpdId = vpdId;
             return this;
         }
         @CustomType.Setter
         public Builder vpdName(String vpdName) {
-            this.vpdName = Objects.requireNonNull(vpdName);
+            if (vpdName == null) {
+              throw new MissingRequiredPropertyException("GetVpdsVpd", "vpdName");
+            }
+            this.vpdName = vpdName;
             return this;
         }
         public GetVpdsVpd build() {

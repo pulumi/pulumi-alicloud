@@ -78,16 +78,19 @@ public final class RuleRuleActionInsertHeaderConfig {
 
         @CustomType.Setter
         public Builder key(@Nullable String key) {
+
             this.key = key;
             return this;
         }
         @CustomType.Setter
         public Builder value(@Nullable String value) {
+
             this.value = value;
             return this;
         }
         @CustomType.Setter
         public Builder valueType(@Nullable String valueType) {
+
             this.valueType = valueType;
             return this;
         }

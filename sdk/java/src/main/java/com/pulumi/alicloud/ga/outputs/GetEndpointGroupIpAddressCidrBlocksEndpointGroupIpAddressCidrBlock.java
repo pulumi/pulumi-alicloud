@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.ga.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -71,12 +72,18 @@ public final class GetEndpointGroupIpAddressCidrBlocksEndpointGroupIpAddressCidr
 
         @CustomType.Setter
         public Builder endpointGroupRegion(String endpointGroupRegion) {
-            this.endpointGroupRegion = Objects.requireNonNull(endpointGroupRegion);
+            if (endpointGroupRegion == null) {
+              throw new MissingRequiredPropertyException("GetEndpointGroupIpAddressCidrBlocksEndpointGroupIpAddressCidrBlock", "endpointGroupRegion");
+            }
+            this.endpointGroupRegion = endpointGroupRegion;
             return this;
         }
         @CustomType.Setter
         public Builder ipAddressCidrBlocks(List<String> ipAddressCidrBlocks) {
-            this.ipAddressCidrBlocks = Objects.requireNonNull(ipAddressCidrBlocks);
+            if (ipAddressCidrBlocks == null) {
+              throw new MissingRequiredPropertyException("GetEndpointGroupIpAddressCidrBlocksEndpointGroupIpAddressCidrBlock", "ipAddressCidrBlocks");
+            }
+            this.ipAddressCidrBlocks = ipAddressCidrBlocks;
             return this;
         }
         public Builder ipAddressCidrBlocks(String... ipAddressCidrBlocks) {
@@ -84,7 +91,10 @@ public final class GetEndpointGroupIpAddressCidrBlocksEndpointGroupIpAddressCidr
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetEndpointGroupIpAddressCidrBlocksEndpointGroupIpAddressCidrBlock", "status");
+            }
+            this.status = status;
             return this;
         }
         public GetEndpointGroupIpAddressCidrBlocksEndpointGroupIpAddressCidrBlock build() {

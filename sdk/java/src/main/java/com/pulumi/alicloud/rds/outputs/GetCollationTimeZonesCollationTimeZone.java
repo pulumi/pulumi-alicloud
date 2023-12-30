@@ -72,16 +72,19 @@ public final class GetCollationTimeZonesCollationTimeZone {
 
         @CustomType.Setter
         public Builder description(@Nullable String description) {
+
             this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder standardTimeOffset(@Nullable String standardTimeOffset) {
+
             this.standardTimeOffset = standardTimeOffset;
             return this;
         }
         @CustomType.Setter
         public Builder timeZone(@Nullable String timeZone) {
+
             this.timeZone = timeZone;
             return this;
         }

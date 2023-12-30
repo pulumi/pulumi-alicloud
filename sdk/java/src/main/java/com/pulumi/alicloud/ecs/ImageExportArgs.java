@@ -5,6 +5,7 @@ package com.pulumi.alicloud.ecs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -150,8 +151,12 @@ public final class ImageExportArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public ImageExportArgs build() {
-            $.imageId = Objects.requireNonNull($.imageId, "expected parameter 'imageId' to be non-null");
-            $.ossBucket = Objects.requireNonNull($.ossBucket, "expected parameter 'ossBucket' to be non-null");
+            if ($.imageId == null) {
+                throw new MissingRequiredPropertyException("ImageExportArgs", "imageId");
+            }
+            if ($.ossBucket == null) {
+                throw new MissingRequiredPropertyException("ImageExportArgs", "ossBucket");
+            }
             return $;
         }
     }

@@ -5,6 +5,7 @@ package com.pulumi.alicloud.eventbridge;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -113,7 +114,9 @@ public final class EventBusArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public EventBusArgs build() {
-            $.eventBusName = Objects.requireNonNull($.eventBusName, "expected parameter 'eventBusName' to be non-null");
+            if ($.eventBusName == null) {
+                throw new MissingRequiredPropertyException("EventBusArgs", "eventBusName");
+            }
             return $;
         }
     }

@@ -72,16 +72,19 @@ public final class DbInstancePlanPlanConfigScaleOut {
 
         @CustomType.Setter
         public Builder executeTime(@Nullable String executeTime) {
+
             this.executeTime = executeTime;
             return this;
         }
         @CustomType.Setter
         public Builder planCronTime(@Nullable String planCronTime) {
+
             this.planCronTime = planCronTime;
             return this;
         }
         @CustomType.Setter
         public Builder segmentNodeNum(@Nullable String segmentNodeNum) {
+
             this.segmentNodeNum = segmentNodeNum;
             return this;
         }

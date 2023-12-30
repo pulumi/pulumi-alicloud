@@ -5,6 +5,7 @@ package com.pulumi.alicloud.cfg.outputs;
 
 import com.pulumi.alicloud.cfg.outputs.GetCompliancePacksPackConfigRuleConfigRuleParameter;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -72,12 +73,18 @@ public final class GetCompliancePacksPackConfigRule {
 
         @CustomType.Setter
         public Builder configRuleId(String configRuleId) {
-            this.configRuleId = Objects.requireNonNull(configRuleId);
+            if (configRuleId == null) {
+              throw new MissingRequiredPropertyException("GetCompliancePacksPackConfigRule", "configRuleId");
+            }
+            this.configRuleId = configRuleId;
             return this;
         }
         @CustomType.Setter
         public Builder configRuleParameters(List<GetCompliancePacksPackConfigRuleConfigRuleParameter> configRuleParameters) {
-            this.configRuleParameters = Objects.requireNonNull(configRuleParameters);
+            if (configRuleParameters == null) {
+              throw new MissingRequiredPropertyException("GetCompliancePacksPackConfigRule", "configRuleParameters");
+            }
+            this.configRuleParameters = configRuleParameters;
             return this;
         }
         public Builder configRuleParameters(GetCompliancePacksPackConfigRuleConfigRuleParameter... configRuleParameters) {
@@ -85,7 +92,10 @@ public final class GetCompliancePacksPackConfigRule {
         }
         @CustomType.Setter
         public Builder managedRuleIdentifier(String managedRuleIdentifier) {
-            this.managedRuleIdentifier = Objects.requireNonNull(managedRuleIdentifier);
+            if (managedRuleIdentifier == null) {
+              throw new MissingRequiredPropertyException("GetCompliancePacksPackConfigRule", "managedRuleIdentifier");
+            }
+            this.managedRuleIdentifier = managedRuleIdentifier;
             return this;
         }
         public GetCompliancePacksPackConfigRule build() {

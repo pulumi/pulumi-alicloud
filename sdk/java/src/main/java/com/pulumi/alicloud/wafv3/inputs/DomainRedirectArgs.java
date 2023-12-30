@@ -6,6 +6,7 @@ package com.pulumi.alicloud.wafv3.inputs;
 import com.pulumi.alicloud.wafv3.inputs.DomainRedirectRequestHeaderArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -606,7 +607,9 @@ public final class DomainRedirectArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         public DomainRedirectArgs build() {
-            $.loadbalance = Objects.requireNonNull($.loadbalance, "expected parameter 'loadbalance' to be non-null");
+            if ($.loadbalance == null) {
+                throw new MissingRequiredPropertyException("DomainRedirectArgs", "loadbalance");
+            }
             return $;
         }
     }

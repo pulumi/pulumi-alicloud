@@ -5,6 +5,7 @@ package com.pulumi.alicloud.edas;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -113,7 +114,9 @@ public final class K8sClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public K8sClusterArgs build() {
-            $.csClusterId = Objects.requireNonNull($.csClusterId, "expected parameter 'csClusterId' to be non-null");
+            if ($.csClusterId == null) {
+                throw new MissingRequiredPropertyException("K8sClusterArgs", "csClusterId");
+            }
             return $;
         }
     }

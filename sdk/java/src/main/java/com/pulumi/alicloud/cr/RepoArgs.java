@@ -5,6 +5,7 @@ package com.pulumi.alicloud.cr;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -224,9 +225,15 @@ public final class RepoArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public RepoArgs build() {
-            $.namespace = Objects.requireNonNull($.namespace, "expected parameter 'namespace' to be non-null");
-            $.repoType = Objects.requireNonNull($.repoType, "expected parameter 'repoType' to be non-null");
-            $.summary = Objects.requireNonNull($.summary, "expected parameter 'summary' to be non-null");
+            if ($.namespace == null) {
+                throw new MissingRequiredPropertyException("RepoArgs", "namespace");
+            }
+            if ($.repoType == null) {
+                throw new MissingRequiredPropertyException("RepoArgs", "repoType");
+            }
+            if ($.summary == null) {
+                throw new MissingRequiredPropertyException("RepoArgs", "summary");
+            }
             return $;
         }
     }

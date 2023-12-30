@@ -6,6 +6,7 @@ package com.pulumi.alicloud.actiontrail.outputs;
 import com.pulumi.alicloud.actiontrail.outputs.GetTrailsActiontrail;
 import com.pulumi.alicloud.actiontrail.outputs.GetTrailsTrail;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -150,7 +151,10 @@ public final class GetTrailsResult {
 
         @CustomType.Setter
         public Builder actiontrails(List<GetTrailsActiontrail> actiontrails) {
-            this.actiontrails = Objects.requireNonNull(actiontrails);
+            if (actiontrails == null) {
+              throw new MissingRequiredPropertyException("GetTrailsResult", "actiontrails");
+            }
+            this.actiontrails = actiontrails;
             return this;
         }
         public Builder actiontrails(GetTrailsActiontrail... actiontrails) {
@@ -158,12 +162,18 @@ public final class GetTrailsResult {
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetTrailsResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder ids(List<String> ids) {
-            this.ids = Objects.requireNonNull(ids);
+            if (ids == null) {
+              throw new MissingRequiredPropertyException("GetTrailsResult", "ids");
+            }
+            this.ids = ids;
             return this;
         }
         public Builder ids(String... ids) {
@@ -171,22 +181,28 @@ public final class GetTrailsResult {
         }
         @CustomType.Setter
         public Builder includeOrganizationTrail(@Nullable Boolean includeOrganizationTrail) {
+
             this.includeOrganizationTrail = includeOrganizationTrail;
             return this;
         }
         @CustomType.Setter
         public Builder includeShadowTrails(@Nullable Boolean includeShadowTrails) {
+
             this.includeShadowTrails = includeShadowTrails;
             return this;
         }
         @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
+
             this.nameRegex = nameRegex;
             return this;
         }
         @CustomType.Setter
         public Builder names(List<String> names) {
-            this.names = Objects.requireNonNull(names);
+            if (names == null) {
+              throw new MissingRequiredPropertyException("GetTrailsResult", "names");
+            }
+            this.names = names;
             return this;
         }
         public Builder names(String... names) {
@@ -194,17 +210,22 @@ public final class GetTrailsResult {
         }
         @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
+
             this.outputFile = outputFile;
             return this;
         }
         @CustomType.Setter
         public Builder status(@Nullable String status) {
+
             this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder trails(List<GetTrailsTrail> trails) {
-            this.trails = Objects.requireNonNull(trails);
+            if (trails == null) {
+              throw new MissingRequiredPropertyException("GetTrailsResult", "trails");
+            }
+            this.trails = trails;
             return this;
         }
         public Builder trails(GetTrailsTrail... trails) {

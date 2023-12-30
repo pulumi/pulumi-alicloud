@@ -73,16 +73,19 @@ public final class ApplicationUpdateStrategyV2BatchUpdate {
 
         @CustomType.Setter
         public Builder batch(@Nullable Integer batch) {
+
             this.batch = batch;
             return this;
         }
         @CustomType.Setter
         public Builder batchWaitTime(@Nullable Integer batchWaitTime) {
+
             this.batchWaitTime = batchWaitTime;
             return this;
         }
         @CustomType.Setter
         public Builder releaseType(@Nullable String releaseType) {
+
             this.releaseType = releaseType;
             return this;
         }

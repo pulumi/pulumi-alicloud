@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.adb.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.Object;
 import java.lang.String;
@@ -422,182 +423,290 @@ public final class GetClustersCluster {
 
         @CustomType.Setter
         public Builder autoRenewPeriod(Integer autoRenewPeriod) {
-            this.autoRenewPeriod = Objects.requireNonNull(autoRenewPeriod);
+            if (autoRenewPeriod == null) {
+              throw new MissingRequiredPropertyException("GetClustersCluster", "autoRenewPeriod");
+            }
+            this.autoRenewPeriod = autoRenewPeriod;
             return this;
         }
         @CustomType.Setter
         public Builder chargeType(String chargeType) {
-            this.chargeType = Objects.requireNonNull(chargeType);
+            if (chargeType == null) {
+              throw new MissingRequiredPropertyException("GetClustersCluster", "chargeType");
+            }
+            this.chargeType = chargeType;
             return this;
         }
         @CustomType.Setter
         public Builder commodityCode(String commodityCode) {
-            this.commodityCode = Objects.requireNonNull(commodityCode);
+            if (commodityCode == null) {
+              throw new MissingRequiredPropertyException("GetClustersCluster", "commodityCode");
+            }
+            this.commodityCode = commodityCode;
             return this;
         }
         @CustomType.Setter
         public Builder computeResource(String computeResource) {
-            this.computeResource = Objects.requireNonNull(computeResource);
+            if (computeResource == null) {
+              throw new MissingRequiredPropertyException("GetClustersCluster", "computeResource");
+            }
+            this.computeResource = computeResource;
             return this;
         }
         @CustomType.Setter
         public Builder connectionString(String connectionString) {
-            this.connectionString = Objects.requireNonNull(connectionString);
+            if (connectionString == null) {
+              throw new MissingRequiredPropertyException("GetClustersCluster", "connectionString");
+            }
+            this.connectionString = connectionString;
             return this;
         }
         @CustomType.Setter
         public Builder createTime(String createTime) {
-            this.createTime = Objects.requireNonNull(createTime);
+            if (createTime == null) {
+              throw new MissingRequiredPropertyException("GetClustersCluster", "createTime");
+            }
+            this.createTime = createTime;
             return this;
         }
         @CustomType.Setter
         public Builder dbClusterCategory(String dbClusterCategory) {
-            this.dbClusterCategory = Objects.requireNonNull(dbClusterCategory);
+            if (dbClusterCategory == null) {
+              throw new MissingRequiredPropertyException("GetClustersCluster", "dbClusterCategory");
+            }
+            this.dbClusterCategory = dbClusterCategory;
             return this;
         }
         @CustomType.Setter
         public Builder dbClusterId(String dbClusterId) {
-            this.dbClusterId = Objects.requireNonNull(dbClusterId);
+            if (dbClusterId == null) {
+              throw new MissingRequiredPropertyException("GetClustersCluster", "dbClusterId");
+            }
+            this.dbClusterId = dbClusterId;
             return this;
         }
         @CustomType.Setter
         public Builder dbClusterNetworkType(String dbClusterNetworkType) {
-            this.dbClusterNetworkType = Objects.requireNonNull(dbClusterNetworkType);
+            if (dbClusterNetworkType == null) {
+              throw new MissingRequiredPropertyException("GetClustersCluster", "dbClusterNetworkType");
+            }
+            this.dbClusterNetworkType = dbClusterNetworkType;
             return this;
         }
         @CustomType.Setter
         public Builder dbClusterType(String dbClusterType) {
-            this.dbClusterType = Objects.requireNonNull(dbClusterType);
+            if (dbClusterType == null) {
+              throw new MissingRequiredPropertyException("GetClustersCluster", "dbClusterType");
+            }
+            this.dbClusterType = dbClusterType;
             return this;
         }
         @CustomType.Setter
         public Builder dbClusterVersion(String dbClusterVersion) {
-            this.dbClusterVersion = Objects.requireNonNull(dbClusterVersion);
+            if (dbClusterVersion == null) {
+              throw new MissingRequiredPropertyException("GetClustersCluster", "dbClusterVersion");
+            }
+            this.dbClusterVersion = dbClusterVersion;
             return this;
         }
         @CustomType.Setter
         public Builder dbNodeClass(String dbNodeClass) {
-            this.dbNodeClass = Objects.requireNonNull(dbNodeClass);
+            if (dbNodeClass == null) {
+              throw new MissingRequiredPropertyException("GetClustersCluster", "dbNodeClass");
+            }
+            this.dbNodeClass = dbNodeClass;
             return this;
         }
         @CustomType.Setter
         public Builder dbNodeCount(Integer dbNodeCount) {
-            this.dbNodeCount = Objects.requireNonNull(dbNodeCount);
+            if (dbNodeCount == null) {
+              throw new MissingRequiredPropertyException("GetClustersCluster", "dbNodeCount");
+            }
+            this.dbNodeCount = dbNodeCount;
             return this;
         }
         @CustomType.Setter
         public Builder dbNodeStorage(Integer dbNodeStorage) {
-            this.dbNodeStorage = Objects.requireNonNull(dbNodeStorage);
+            if (dbNodeStorage == null) {
+              throw new MissingRequiredPropertyException("GetClustersCluster", "dbNodeStorage");
+            }
+            this.dbNodeStorage = dbNodeStorage;
             return this;
         }
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetClustersCluster", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder diskType(String diskType) {
-            this.diskType = Objects.requireNonNull(diskType);
+            if (diskType == null) {
+              throw new MissingRequiredPropertyException("GetClustersCluster", "diskType");
+            }
+            this.diskType = diskType;
             return this;
         }
         @CustomType.Setter
         public Builder dtsJobId(String dtsJobId) {
-            this.dtsJobId = Objects.requireNonNull(dtsJobId);
+            if (dtsJobId == null) {
+              throw new MissingRequiredPropertyException("GetClustersCluster", "dtsJobId");
+            }
+            this.dtsJobId = dtsJobId;
             return this;
         }
         @CustomType.Setter
         public Builder elasticIoResource(Integer elasticIoResource) {
-            this.elasticIoResource = Objects.requireNonNull(elasticIoResource);
+            if (elasticIoResource == null) {
+              throw new MissingRequiredPropertyException("GetClustersCluster", "elasticIoResource");
+            }
+            this.elasticIoResource = elasticIoResource;
             return this;
         }
         @CustomType.Setter
         public Builder engine(String engine) {
-            this.engine = Objects.requireNonNull(engine);
+            if (engine == null) {
+              throw new MissingRequiredPropertyException("GetClustersCluster", "engine");
+            }
+            this.engine = engine;
             return this;
         }
         @CustomType.Setter
         public Builder engineVersion(String engineVersion) {
-            this.engineVersion = Objects.requireNonNull(engineVersion);
+            if (engineVersion == null) {
+              throw new MissingRequiredPropertyException("GetClustersCluster", "engineVersion");
+            }
+            this.engineVersion = engineVersion;
             return this;
         }
         @CustomType.Setter
         public Builder executorCount(String executorCount) {
-            this.executorCount = Objects.requireNonNull(executorCount);
+            if (executorCount == null) {
+              throw new MissingRequiredPropertyException("GetClustersCluster", "executorCount");
+            }
+            this.executorCount = executorCount;
             return this;
         }
         @CustomType.Setter
         public Builder expireTime(String expireTime) {
-            this.expireTime = Objects.requireNonNull(expireTime);
+            if (expireTime == null) {
+              throw new MissingRequiredPropertyException("GetClustersCluster", "expireTime");
+            }
+            this.expireTime = expireTime;
             return this;
         }
         @CustomType.Setter
         public Builder expired(String expired) {
-            this.expired = Objects.requireNonNull(expired);
+            if (expired == null) {
+              throw new MissingRequiredPropertyException("GetClustersCluster", "expired");
+            }
+            this.expired = expired;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetClustersCluster", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder lockMode(String lockMode) {
-            this.lockMode = Objects.requireNonNull(lockMode);
+            if (lockMode == null) {
+              throw new MissingRequiredPropertyException("GetClustersCluster", "lockMode");
+            }
+            this.lockMode = lockMode;
             return this;
         }
         @CustomType.Setter
         public Builder lockReason(String lockReason) {
-            this.lockReason = Objects.requireNonNull(lockReason);
+            if (lockReason == null) {
+              throw new MissingRequiredPropertyException("GetClustersCluster", "lockReason");
+            }
+            this.lockReason = lockReason;
             return this;
         }
         @CustomType.Setter
         public Builder maintainTime(String maintainTime) {
-            this.maintainTime = Objects.requireNonNull(maintainTime);
+            if (maintainTime == null) {
+              throw new MissingRequiredPropertyException("GetClustersCluster", "maintainTime");
+            }
+            this.maintainTime = maintainTime;
             return this;
         }
         @CustomType.Setter
         public Builder mode(String mode) {
-            this.mode = Objects.requireNonNull(mode);
+            if (mode == null) {
+              throw new MissingRequiredPropertyException("GetClustersCluster", "mode");
+            }
+            this.mode = mode;
             return this;
         }
         @CustomType.Setter
         public Builder networkType(String networkType) {
-            this.networkType = Objects.requireNonNull(networkType);
+            if (networkType == null) {
+              throw new MissingRequiredPropertyException("GetClustersCluster", "networkType");
+            }
+            this.networkType = networkType;
             return this;
         }
         @CustomType.Setter
         public Builder paymentType(String paymentType) {
-            this.paymentType = Objects.requireNonNull(paymentType);
+            if (paymentType == null) {
+              throw new MissingRequiredPropertyException("GetClustersCluster", "paymentType");
+            }
+            this.paymentType = paymentType;
             return this;
         }
         @CustomType.Setter
         public Builder port(Integer port) {
-            this.port = Objects.requireNonNull(port);
+            if (port == null) {
+              throw new MissingRequiredPropertyException("GetClustersCluster", "port");
+            }
+            this.port = port;
             return this;
         }
         @CustomType.Setter
         public Builder rdsInstanceId(String rdsInstanceId) {
-            this.rdsInstanceId = Objects.requireNonNull(rdsInstanceId);
+            if (rdsInstanceId == null) {
+              throw new MissingRequiredPropertyException("GetClustersCluster", "rdsInstanceId");
+            }
+            this.rdsInstanceId = rdsInstanceId;
             return this;
         }
         @CustomType.Setter
         public Builder regionId(String regionId) {
-            this.regionId = Objects.requireNonNull(regionId);
+            if (regionId == null) {
+              throw new MissingRequiredPropertyException("GetClustersCluster", "regionId");
+            }
+            this.regionId = regionId;
             return this;
         }
         @CustomType.Setter
         public Builder renewalStatus(String renewalStatus) {
-            this.renewalStatus = Objects.requireNonNull(renewalStatus);
+            if (renewalStatus == null) {
+              throw new MissingRequiredPropertyException("GetClustersCluster", "renewalStatus");
+            }
+            this.renewalStatus = renewalStatus;
             return this;
         }
         @CustomType.Setter
         public Builder resourceGroupId(String resourceGroupId) {
-            this.resourceGroupId = Objects.requireNonNull(resourceGroupId);
+            if (resourceGroupId == null) {
+              throw new MissingRequiredPropertyException("GetClustersCluster", "resourceGroupId");
+            }
+            this.resourceGroupId = resourceGroupId;
             return this;
         }
         @CustomType.Setter
         public Builder securityIps(List<String> securityIps) {
-            this.securityIps = Objects.requireNonNull(securityIps);
+            if (securityIps == null) {
+              throw new MissingRequiredPropertyException("GetClustersCluster", "securityIps");
+            }
+            this.securityIps = securityIps;
             return this;
         }
         public Builder securityIps(String... securityIps) {
@@ -605,37 +714,58 @@ public final class GetClustersCluster {
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetClustersCluster", "status");
+            }
+            this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder storageResource(String storageResource) {
-            this.storageResource = Objects.requireNonNull(storageResource);
+            if (storageResource == null) {
+              throw new MissingRequiredPropertyException("GetClustersCluster", "storageResource");
+            }
+            this.storageResource = storageResource;
             return this;
         }
         @CustomType.Setter
         public Builder tags(Map<String,Object> tags) {
-            this.tags = Objects.requireNonNull(tags);
+            if (tags == null) {
+              throw new MissingRequiredPropertyException("GetClustersCluster", "tags");
+            }
+            this.tags = tags;
             return this;
         }
         @CustomType.Setter
         public Builder vpcCloudInstanceId(String vpcCloudInstanceId) {
-            this.vpcCloudInstanceId = Objects.requireNonNull(vpcCloudInstanceId);
+            if (vpcCloudInstanceId == null) {
+              throw new MissingRequiredPropertyException("GetClustersCluster", "vpcCloudInstanceId");
+            }
+            this.vpcCloudInstanceId = vpcCloudInstanceId;
             return this;
         }
         @CustomType.Setter
         public Builder vpcId(String vpcId) {
-            this.vpcId = Objects.requireNonNull(vpcId);
+            if (vpcId == null) {
+              throw new MissingRequiredPropertyException("GetClustersCluster", "vpcId");
+            }
+            this.vpcId = vpcId;
             return this;
         }
         @CustomType.Setter
         public Builder vswitchId(String vswitchId) {
-            this.vswitchId = Objects.requireNonNull(vswitchId);
+            if (vswitchId == null) {
+              throw new MissingRequiredPropertyException("GetClustersCluster", "vswitchId");
+            }
+            this.vswitchId = vswitchId;
             return this;
         }
         @CustomType.Setter
         public Builder zoneId(String zoneId) {
-            this.zoneId = Objects.requireNonNull(zoneId);
+            if (zoneId == null) {
+              throw new MissingRequiredPropertyException("GetClustersCluster", "zoneId");
+            }
+            this.zoneId = zoneId;
             return this;
         }
         public GetClustersCluster build() {

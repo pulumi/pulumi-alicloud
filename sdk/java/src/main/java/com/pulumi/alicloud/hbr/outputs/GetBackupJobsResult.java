@@ -6,6 +6,7 @@ package com.pulumi.alicloud.hbr.outputs;
 import com.pulumi.alicloud.hbr.outputs.GetBackupJobsFilter;
 import com.pulumi.alicloud.hbr.outputs.GetBackupJobsJob;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -89,6 +90,7 @@ public final class GetBackupJobsResult {
 
         @CustomType.Setter
         public Builder filters(@Nullable List<GetBackupJobsFilter> filters) {
+
             this.filters = filters;
             return this;
         }
@@ -97,12 +99,18 @@ public final class GetBackupJobsResult {
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetBackupJobsResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder ids(List<String> ids) {
-            this.ids = Objects.requireNonNull(ids);
+            if (ids == null) {
+              throw new MissingRequiredPropertyException("GetBackupJobsResult", "ids");
+            }
+            this.ids = ids;
             return this;
         }
         public Builder ids(String... ids) {
@@ -110,7 +118,10 @@ public final class GetBackupJobsResult {
         }
         @CustomType.Setter
         public Builder jobs(List<GetBackupJobsJob> jobs) {
-            this.jobs = Objects.requireNonNull(jobs);
+            if (jobs == null) {
+              throw new MissingRequiredPropertyException("GetBackupJobsResult", "jobs");
+            }
+            this.jobs = jobs;
             return this;
         }
         public Builder jobs(GetBackupJobsJob... jobs) {
@@ -118,21 +129,27 @@ public final class GetBackupJobsResult {
         }
         @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
+
             this.outputFile = outputFile;
             return this;
         }
         @CustomType.Setter
         public Builder sortDirection(@Nullable String sortDirection) {
+
             this.sortDirection = sortDirection;
             return this;
         }
         @CustomType.Setter
         public Builder sourceType(String sourceType) {
-            this.sourceType = Objects.requireNonNull(sourceType);
+            if (sourceType == null) {
+              throw new MissingRequiredPropertyException("GetBackupJobsResult", "sourceType");
+            }
+            this.sourceType = sourceType;
             return this;
         }
         @CustomType.Setter
         public Builder status(@Nullable String status) {
+
             this.status = status;
             return this;
         }

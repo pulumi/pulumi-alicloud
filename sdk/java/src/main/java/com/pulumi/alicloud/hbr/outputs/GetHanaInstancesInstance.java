@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.hbr.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -212,67 +213,106 @@ public final class GetHanaInstancesInstance {
 
         @CustomType.Setter
         public Builder alertSetting(String alertSetting) {
-            this.alertSetting = Objects.requireNonNull(alertSetting);
+            if (alertSetting == null) {
+              throw new MissingRequiredPropertyException("GetHanaInstancesInstance", "alertSetting");
+            }
+            this.alertSetting = alertSetting;
             return this;
         }
         @CustomType.Setter
         public Builder hanaInstanceId(String hanaInstanceId) {
-            this.hanaInstanceId = Objects.requireNonNull(hanaInstanceId);
+            if (hanaInstanceId == null) {
+              throw new MissingRequiredPropertyException("GetHanaInstancesInstance", "hanaInstanceId");
+            }
+            this.hanaInstanceId = hanaInstanceId;
             return this;
         }
         @CustomType.Setter
         public Builder hanaName(String hanaName) {
-            this.hanaName = Objects.requireNonNull(hanaName);
+            if (hanaName == null) {
+              throw new MissingRequiredPropertyException("GetHanaInstancesInstance", "hanaName");
+            }
+            this.hanaName = hanaName;
             return this;
         }
         @CustomType.Setter
         public Builder host(String host) {
-            this.host = Objects.requireNonNull(host);
+            if (host == null) {
+              throw new MissingRequiredPropertyException("GetHanaInstancesInstance", "host");
+            }
+            this.host = host;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetHanaInstancesInstance", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder instanceNumber(Integer instanceNumber) {
-            this.instanceNumber = Objects.requireNonNull(instanceNumber);
+            if (instanceNumber == null) {
+              throw new MissingRequiredPropertyException("GetHanaInstancesInstance", "instanceNumber");
+            }
+            this.instanceNumber = instanceNumber;
             return this;
         }
         @CustomType.Setter
         public Builder resourceGroupId(String resourceGroupId) {
-            this.resourceGroupId = Objects.requireNonNull(resourceGroupId);
+            if (resourceGroupId == null) {
+              throw new MissingRequiredPropertyException("GetHanaInstancesInstance", "resourceGroupId");
+            }
+            this.resourceGroupId = resourceGroupId;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetHanaInstancesInstance", "status");
+            }
+            this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder statusMessage(String statusMessage) {
-            this.statusMessage = Objects.requireNonNull(statusMessage);
+            if (statusMessage == null) {
+              throw new MissingRequiredPropertyException("GetHanaInstancesInstance", "statusMessage");
+            }
+            this.statusMessage = statusMessage;
             return this;
         }
         @CustomType.Setter
         public Builder useSsl(Boolean useSsl) {
-            this.useSsl = Objects.requireNonNull(useSsl);
+            if (useSsl == null) {
+              throw new MissingRequiredPropertyException("GetHanaInstancesInstance", "useSsl");
+            }
+            this.useSsl = useSsl;
             return this;
         }
         @CustomType.Setter
         public Builder userName(String userName) {
-            this.userName = Objects.requireNonNull(userName);
+            if (userName == null) {
+              throw new MissingRequiredPropertyException("GetHanaInstancesInstance", "userName");
+            }
+            this.userName = userName;
             return this;
         }
         @CustomType.Setter
         public Builder validateCertificate(Boolean validateCertificate) {
-            this.validateCertificate = Objects.requireNonNull(validateCertificate);
+            if (validateCertificate == null) {
+              throw new MissingRequiredPropertyException("GetHanaInstancesInstance", "validateCertificate");
+            }
+            this.validateCertificate = validateCertificate;
             return this;
         }
         @CustomType.Setter
         public Builder vaultId(String vaultId) {
-            this.vaultId = Objects.requireNonNull(vaultId);
+            if (vaultId == null) {
+              throw new MissingRequiredPropertyException("GetHanaInstancesInstance", "vaultId");
+            }
+            this.vaultId = vaultId;
             return this;
         }
         public GetHanaInstancesInstance build() {

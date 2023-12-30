@@ -48,16 +48,19 @@ public final class DomainPage404Config {
 
         @CustomType.Setter
         public Builder customPageUrl(@Nullable String customPageUrl) {
+
             this.customPageUrl = customPageUrl;
             return this;
         }
         @CustomType.Setter
         public Builder errorCode(@Nullable String errorCode) {
+
             this.errorCode = errorCode;
             return this;
         }
         @CustomType.Setter
         public Builder pageType(@Nullable String pageType) {
+
             this.pageType = pageType;
             return this;
         }

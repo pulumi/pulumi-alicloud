@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.databasefilesystem.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -42,7 +43,10 @@ public final class GetInstancesInstanceEcsList {
 
         @CustomType.Setter
         public Builder ecsId(String ecsId) {
-            this.ecsId = Objects.requireNonNull(ecsId);
+            if (ecsId == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstanceEcsList", "ecsId");
+            }
+            this.ecsId = ecsId;
             return this;
         }
         public GetInstancesInstanceEcsList build() {

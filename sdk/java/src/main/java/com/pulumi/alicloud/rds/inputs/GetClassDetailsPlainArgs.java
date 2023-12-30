@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.rds.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -180,10 +181,18 @@ public final class GetClassDetailsPlainArgs extends com.pulumi.resources.InvokeA
         }
 
         public GetClassDetailsPlainArgs build() {
-            $.classCode = Objects.requireNonNull($.classCode, "expected parameter 'classCode' to be non-null");
-            $.commodityCode = Objects.requireNonNull($.commodityCode, "expected parameter 'commodityCode' to be non-null");
-            $.engine = Objects.requireNonNull($.engine, "expected parameter 'engine' to be non-null");
-            $.engineVersion = Objects.requireNonNull($.engineVersion, "expected parameter 'engineVersion' to be non-null");
+            if ($.classCode == null) {
+                throw new MissingRequiredPropertyException("GetClassDetailsPlainArgs", "classCode");
+            }
+            if ($.commodityCode == null) {
+                throw new MissingRequiredPropertyException("GetClassDetailsPlainArgs", "commodityCode");
+            }
+            if ($.engine == null) {
+                throw new MissingRequiredPropertyException("GetClassDetailsPlainArgs", "engine");
+            }
+            if ($.engineVersion == null) {
+                throw new MissingRequiredPropertyException("GetClassDetailsPlainArgs", "engineVersion");
+            }
             return $;
         }
     }

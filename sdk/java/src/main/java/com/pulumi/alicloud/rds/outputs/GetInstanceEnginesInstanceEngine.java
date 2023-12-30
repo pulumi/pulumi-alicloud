@@ -5,6 +5,7 @@ package com.pulumi.alicloud.rds.outputs;
 
 import com.pulumi.alicloud.rds.outputs.GetInstanceEnginesInstanceEngineZoneId;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -86,22 +87,34 @@ public final class GetInstanceEnginesInstanceEngine {
 
         @CustomType.Setter
         public Builder category(String category) {
-            this.category = Objects.requireNonNull(category);
+            if (category == null) {
+              throw new MissingRequiredPropertyException("GetInstanceEnginesInstanceEngine", "category");
+            }
+            this.category = category;
             return this;
         }
         @CustomType.Setter
         public Builder engine(String engine) {
-            this.engine = Objects.requireNonNull(engine);
+            if (engine == null) {
+              throw new MissingRequiredPropertyException("GetInstanceEnginesInstanceEngine", "engine");
+            }
+            this.engine = engine;
             return this;
         }
         @CustomType.Setter
         public Builder engineVersion(String engineVersion) {
-            this.engineVersion = Objects.requireNonNull(engineVersion);
+            if (engineVersion == null) {
+              throw new MissingRequiredPropertyException("GetInstanceEnginesInstanceEngine", "engineVersion");
+            }
+            this.engineVersion = engineVersion;
             return this;
         }
         @CustomType.Setter
         public Builder zoneIds(List<GetInstanceEnginesInstanceEngineZoneId> zoneIds) {
-            this.zoneIds = Objects.requireNonNull(zoneIds);
+            if (zoneIds == null) {
+              throw new MissingRequiredPropertyException("GetInstanceEnginesInstanceEngine", "zoneIds");
+            }
+            this.zoneIds = zoneIds;
             return this;
         }
         public Builder zoneIds(GetInstanceEnginesInstanceEngineZoneId... zoneIds) {

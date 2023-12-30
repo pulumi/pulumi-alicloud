@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.vpc.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -168,52 +169,82 @@ public final class GetVpcFlowLogsLog {
 
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetVpcFlowLogsLog", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder flowLogId(String flowLogId) {
-            this.flowLogId = Objects.requireNonNull(flowLogId);
+            if (flowLogId == null) {
+              throw new MissingRequiredPropertyException("GetVpcFlowLogsLog", "flowLogId");
+            }
+            this.flowLogId = flowLogId;
             return this;
         }
         @CustomType.Setter
         public Builder flowLogName(String flowLogName) {
-            this.flowLogName = Objects.requireNonNull(flowLogName);
+            if (flowLogName == null) {
+              throw new MissingRequiredPropertyException("GetVpcFlowLogsLog", "flowLogName");
+            }
+            this.flowLogName = flowLogName;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetVpcFlowLogsLog", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder logStoreName(String logStoreName) {
-            this.logStoreName = Objects.requireNonNull(logStoreName);
+            if (logStoreName == null) {
+              throw new MissingRequiredPropertyException("GetVpcFlowLogsLog", "logStoreName");
+            }
+            this.logStoreName = logStoreName;
             return this;
         }
         @CustomType.Setter
         public Builder projectName(String projectName) {
-            this.projectName = Objects.requireNonNull(projectName);
+            if (projectName == null) {
+              throw new MissingRequiredPropertyException("GetVpcFlowLogsLog", "projectName");
+            }
+            this.projectName = projectName;
             return this;
         }
         @CustomType.Setter
         public Builder resourceId(String resourceId) {
-            this.resourceId = Objects.requireNonNull(resourceId);
+            if (resourceId == null) {
+              throw new MissingRequiredPropertyException("GetVpcFlowLogsLog", "resourceId");
+            }
+            this.resourceId = resourceId;
             return this;
         }
         @CustomType.Setter
         public Builder resourceType(String resourceType) {
-            this.resourceType = Objects.requireNonNull(resourceType);
+            if (resourceType == null) {
+              throw new MissingRequiredPropertyException("GetVpcFlowLogsLog", "resourceType");
+            }
+            this.resourceType = resourceType;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetVpcFlowLogsLog", "status");
+            }
+            this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder trafficType(String trafficType) {
-            this.trafficType = Objects.requireNonNull(trafficType);
+            if (trafficType == null) {
+              throw new MissingRequiredPropertyException("GetVpcFlowLogsLog", "trafficType");
+            }
+            this.trafficType = trafficType;
             return this;
         }
         public GetVpcFlowLogsLog build() {

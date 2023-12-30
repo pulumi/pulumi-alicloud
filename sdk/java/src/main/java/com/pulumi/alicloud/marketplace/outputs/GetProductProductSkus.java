@@ -6,6 +6,7 @@ package com.pulumi.alicloud.marketplace.outputs;
 import com.pulumi.alicloud.marketplace.outputs.GetProductProductSkusImage;
 import com.pulumi.alicloud.marketplace.outputs.GetProductProductSkusPackageVersion;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -87,7 +88,10 @@ public final class GetProductProductSkus {
 
         @CustomType.Setter
         public Builder images(List<GetProductProductSkusImage> images) {
-            this.images = Objects.requireNonNull(images);
+            if (images == null) {
+              throw new MissingRequiredPropertyException("GetProductProductSkus", "images");
+            }
+            this.images = images;
             return this;
         }
         public Builder images(GetProductProductSkusImage... images) {
@@ -95,7 +99,10 @@ public final class GetProductProductSkus {
         }
         @CustomType.Setter
         public Builder packageVersions(List<GetProductProductSkusPackageVersion> packageVersions) {
-            this.packageVersions = Objects.requireNonNull(packageVersions);
+            if (packageVersions == null) {
+              throw new MissingRequiredPropertyException("GetProductProductSkus", "packageVersions");
+            }
+            this.packageVersions = packageVersions;
             return this;
         }
         public Builder packageVersions(GetProductProductSkusPackageVersion... packageVersions) {
@@ -103,12 +110,18 @@ public final class GetProductProductSkus {
         }
         @CustomType.Setter
         public Builder skuCode(String skuCode) {
-            this.skuCode = Objects.requireNonNull(skuCode);
+            if (skuCode == null) {
+              throw new MissingRequiredPropertyException("GetProductProductSkus", "skuCode");
+            }
+            this.skuCode = skuCode;
             return this;
         }
         @CustomType.Setter
         public Builder skuName(String skuName) {
-            this.skuName = Objects.requireNonNull(skuName);
+            if (skuName == null) {
+              throw new MissingRequiredPropertyException("GetProductProductSkus", "skuName");
+            }
+            this.skuName = skuName;
             return this;
         }
         public GetProductProductSkus build() {

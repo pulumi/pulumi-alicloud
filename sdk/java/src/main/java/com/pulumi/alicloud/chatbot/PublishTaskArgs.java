@@ -5,6 +5,7 @@ package com.pulumi.alicloud.chatbot;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -161,7 +162,9 @@ public final class PublishTaskArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public PublishTaskArgs build() {
-            $.bizType = Objects.requireNonNull($.bizType, "expected parameter 'bizType' to be non-null");
+            if ($.bizType == null) {
+                throw new MissingRequiredPropertyException("PublishTaskArgs", "bizType");
+            }
             return $;
         }
     }

@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.dms.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -188,62 +189,98 @@ public final class GetEnterpriseProxyAccessesAccess {
 
         @CustomType.Setter
         public Builder accessId(String accessId) {
-            this.accessId = Objects.requireNonNull(accessId);
+            if (accessId == null) {
+              throw new MissingRequiredPropertyException("GetEnterpriseProxyAccessesAccess", "accessId");
+            }
+            this.accessId = accessId;
             return this;
         }
         @CustomType.Setter
         public Builder accessSecret(String accessSecret) {
-            this.accessSecret = Objects.requireNonNull(accessSecret);
+            if (accessSecret == null) {
+              throw new MissingRequiredPropertyException("GetEnterpriseProxyAccessesAccess", "accessSecret");
+            }
+            this.accessSecret = accessSecret;
             return this;
         }
         @CustomType.Setter
         public Builder createTime(String createTime) {
-            this.createTime = Objects.requireNonNull(createTime);
+            if (createTime == null) {
+              throw new MissingRequiredPropertyException("GetEnterpriseProxyAccessesAccess", "createTime");
+            }
+            this.createTime = createTime;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetEnterpriseProxyAccessesAccess", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder indepAccount(String indepAccount) {
-            this.indepAccount = Objects.requireNonNull(indepAccount);
+            if (indepAccount == null) {
+              throw new MissingRequiredPropertyException("GetEnterpriseProxyAccessesAccess", "indepAccount");
+            }
+            this.indepAccount = indepAccount;
             return this;
         }
         @CustomType.Setter
         public Builder instanceId(String instanceId) {
-            this.instanceId = Objects.requireNonNull(instanceId);
+            if (instanceId == null) {
+              throw new MissingRequiredPropertyException("GetEnterpriseProxyAccessesAccess", "instanceId");
+            }
+            this.instanceId = instanceId;
             return this;
         }
         @CustomType.Setter
         public Builder originInfo(String originInfo) {
-            this.originInfo = Objects.requireNonNull(originInfo);
+            if (originInfo == null) {
+              throw new MissingRequiredPropertyException("GetEnterpriseProxyAccessesAccess", "originInfo");
+            }
+            this.originInfo = originInfo;
             return this;
         }
         @CustomType.Setter
         public Builder proxyAccessId(String proxyAccessId) {
-            this.proxyAccessId = Objects.requireNonNull(proxyAccessId);
+            if (proxyAccessId == null) {
+              throw new MissingRequiredPropertyException("GetEnterpriseProxyAccessesAccess", "proxyAccessId");
+            }
+            this.proxyAccessId = proxyAccessId;
             return this;
         }
         @CustomType.Setter
         public Builder proxyId(String proxyId) {
-            this.proxyId = Objects.requireNonNull(proxyId);
+            if (proxyId == null) {
+              throw new MissingRequiredPropertyException("GetEnterpriseProxyAccessesAccess", "proxyId");
+            }
+            this.proxyId = proxyId;
             return this;
         }
         @CustomType.Setter
         public Builder userId(String userId) {
-            this.userId = Objects.requireNonNull(userId);
+            if (userId == null) {
+              throw new MissingRequiredPropertyException("GetEnterpriseProxyAccessesAccess", "userId");
+            }
+            this.userId = userId;
             return this;
         }
         @CustomType.Setter
         public Builder userName(String userName) {
-            this.userName = Objects.requireNonNull(userName);
+            if (userName == null) {
+              throw new MissingRequiredPropertyException("GetEnterpriseProxyAccessesAccess", "userName");
+            }
+            this.userName = userName;
             return this;
         }
         @CustomType.Setter
         public Builder userUid(String userUid) {
-            this.userUid = Objects.requireNonNull(userUid);
+            if (userUid == null) {
+              throw new MissingRequiredPropertyException("GetEnterpriseProxyAccessesAccess", "userUid");
+            }
+            this.userUid = userUid;
             return this;
         }
         public GetEnterpriseProxyAccessesAccess build() {

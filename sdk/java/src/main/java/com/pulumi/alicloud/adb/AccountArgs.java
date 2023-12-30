@@ -5,6 +5,7 @@ package com.pulumi.alicloud.adb;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
@@ -263,8 +264,12 @@ public final class AccountArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public AccountArgs build() {
-            $.accountName = Objects.requireNonNull($.accountName, "expected parameter 'accountName' to be non-null");
-            $.dbClusterId = Objects.requireNonNull($.dbClusterId, "expected parameter 'dbClusterId' to be non-null");
+            if ($.accountName == null) {
+                throw new MissingRequiredPropertyException("AccountArgs", "accountName");
+            }
+            if ($.dbClusterId == null) {
+                throw new MissingRequiredPropertyException("AccountArgs", "dbClusterId");
+            }
             return $;
         }
     }

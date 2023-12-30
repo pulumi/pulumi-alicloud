@@ -60,6 +60,7 @@ public final class FirewallVpcFirewallCenLocalVpcVpcCidrTableList {
 
         @CustomType.Setter
         public Builder routeEntryLists(@Nullable List<FirewallVpcFirewallCenLocalVpcVpcCidrTableListRouteEntryList> routeEntryLists) {
+
             this.routeEntryLists = routeEntryLists;
             return this;
         }
@@ -68,6 +69,7 @@ public final class FirewallVpcFirewallCenLocalVpcVpcCidrTableList {
         }
         @CustomType.Setter
         public Builder routeTableId(@Nullable String routeTableId) {
+
             this.routeTableId = routeTableId;
             return this;
         }

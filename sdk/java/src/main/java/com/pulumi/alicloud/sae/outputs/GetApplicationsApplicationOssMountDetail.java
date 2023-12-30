@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.sae.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -85,22 +86,34 @@ public final class GetApplicationsApplicationOssMountDetail {
 
         @CustomType.Setter
         public Builder bucketName(String bucketName) {
-            this.bucketName = Objects.requireNonNull(bucketName);
+            if (bucketName == null) {
+              throw new MissingRequiredPropertyException("GetApplicationsApplicationOssMountDetail", "bucketName");
+            }
+            this.bucketName = bucketName;
             return this;
         }
         @CustomType.Setter
         public Builder bucketPath(String bucketPath) {
-            this.bucketPath = Objects.requireNonNull(bucketPath);
+            if (bucketPath == null) {
+              throw new MissingRequiredPropertyException("GetApplicationsApplicationOssMountDetail", "bucketPath");
+            }
+            this.bucketPath = bucketPath;
             return this;
         }
         @CustomType.Setter
         public Builder mountPath(String mountPath) {
-            this.mountPath = Objects.requireNonNull(mountPath);
+            if (mountPath == null) {
+              throw new MissingRequiredPropertyException("GetApplicationsApplicationOssMountDetail", "mountPath");
+            }
+            this.mountPath = mountPath;
             return this;
         }
         @CustomType.Setter
         public Builder readOnly(Boolean readOnly) {
-            this.readOnly = Objects.requireNonNull(readOnly);
+            if (readOnly == null) {
+              throw new MissingRequiredPropertyException("GetApplicationsApplicationOssMountDetail", "readOnly");
+            }
+            this.readOnly = readOnly;
             return this;
         }
         public GetApplicationsApplicationOssMountDetail build() {

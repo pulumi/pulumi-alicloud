@@ -5,6 +5,7 @@ package com.pulumi.alicloud.simpleapplicationserver;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -411,9 +412,15 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public InstanceArgs build() {
-            $.imageId = Objects.requireNonNull($.imageId, "expected parameter 'imageId' to be non-null");
-            $.period = Objects.requireNonNull($.period, "expected parameter 'period' to be non-null");
-            $.planId = Objects.requireNonNull($.planId, "expected parameter 'planId' to be non-null");
+            if ($.imageId == null) {
+                throw new MissingRequiredPropertyException("InstanceArgs", "imageId");
+            }
+            if ($.period == null) {
+                throw new MissingRequiredPropertyException("InstanceArgs", "period");
+            }
+            if ($.planId == null) {
+                throw new MissingRequiredPropertyException("InstanceArgs", "planId");
+            }
             return $;
         }
     }

@@ -86,21 +86,25 @@ public final class LoadBalancerZoneMappingLoadBalancerAddress {
 
         @CustomType.Setter
         public Builder address(@Nullable String address) {
+
             this.address = address;
             return this;
         }
         @CustomType.Setter
         public Builder allocationId(@Nullable String allocationId) {
+
             this.allocationId = allocationId;
             return this;
         }
         @CustomType.Setter
         public Builder eipType(@Nullable String eipType) {
+
             this.eipType = eipType;
             return this;
         }
         @CustomType.Setter
         public Builder ipv6Address(@Nullable String ipv6Address) {
+
             this.ipv6Address = ipv6Address;
             return this;
         }

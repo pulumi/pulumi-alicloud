@@ -5,6 +5,7 @@ package com.pulumi.alicloud.cms.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -111,8 +112,12 @@ public final class SiteMonitorIspCityArgs extends com.pulumi.resources.ResourceA
         }
 
         public SiteMonitorIspCityArgs build() {
-            $.city = Objects.requireNonNull($.city, "expected parameter 'city' to be non-null");
-            $.isp = Objects.requireNonNull($.isp, "expected parameter 'isp' to be non-null");
+            if ($.city == null) {
+                throw new MissingRequiredPropertyException("SiteMonitorIspCityArgs", "city");
+            }
+            if ($.isp == null) {
+                throw new MissingRequiredPropertyException("SiteMonitorIspCityArgs", "isp");
+            }
             return $;
         }
     }

@@ -5,6 +5,7 @@ package com.pulumi.alicloud.kms;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -161,8 +162,12 @@ public final class ApplicationAccessPointArgs extends com.pulumi.resources.Resou
         }
 
         public ApplicationAccessPointArgs build() {
-            $.applicationAccessPointName = Objects.requireNonNull($.applicationAccessPointName, "expected parameter 'applicationAccessPointName' to be non-null");
-            $.policies = Objects.requireNonNull($.policies, "expected parameter 'policies' to be non-null");
+            if ($.applicationAccessPointName == null) {
+                throw new MissingRequiredPropertyException("ApplicationAccessPointArgs", "applicationAccessPointName");
+            }
+            if ($.policies == null) {
+                throw new MissingRequiredPropertyException("ApplicationAccessPointArgs", "policies");
+            }
             return $;
         }
     }

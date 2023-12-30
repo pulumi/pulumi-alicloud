@@ -8,6 +8,7 @@ import com.pulumi.alicloud.ess.inputs.ScalingConfigurationInstancePatternInfoArg
 import com.pulumi.alicloud.ess.inputs.ScalingConfigurationSpotPriceLimitArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.Object;
@@ -1775,7 +1776,9 @@ public final class ScalingConfigurationArgs extends com.pulumi.resources.Resourc
         }
 
         public ScalingConfigurationArgs build() {
-            $.scalingGroupId = Objects.requireNonNull($.scalingGroupId, "expected parameter 'scalingGroupId' to be non-null");
+            if ($.scalingGroupId == null) {
+                throw new MissingRequiredPropertyException("ScalingConfigurationArgs", "scalingGroupId");
+            }
             return $;
         }
     }

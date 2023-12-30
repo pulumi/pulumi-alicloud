@@ -214,66 +214,79 @@ public final class NodePoolKubeletConfiguration {
 
         @CustomType.Setter
         public Builder cpuManagerPolicy(@Nullable String cpuManagerPolicy) {
+
             this.cpuManagerPolicy = cpuManagerPolicy;
             return this;
         }
         @CustomType.Setter
         public Builder eventBurst(@Nullable String eventBurst) {
+
             this.eventBurst = eventBurst;
             return this;
         }
         @CustomType.Setter
         public Builder eventRecordQps(@Nullable String eventRecordQps) {
+
             this.eventRecordQps = eventRecordQps;
             return this;
         }
         @CustomType.Setter
         public Builder evictionHard(@Nullable Map<String,Object> evictionHard) {
+
             this.evictionHard = evictionHard;
             return this;
         }
         @CustomType.Setter
         public Builder evictionSoft(@Nullable Map<String,Object> evictionSoft) {
+
             this.evictionSoft = evictionSoft;
             return this;
         }
         @CustomType.Setter
         public Builder evictionSoftGracePeriod(@Nullable Map<String,Object> evictionSoftGracePeriod) {
+
             this.evictionSoftGracePeriod = evictionSoftGracePeriod;
             return this;
         }
         @CustomType.Setter
         public Builder kubeApiBurst(@Nullable String kubeApiBurst) {
+
             this.kubeApiBurst = kubeApiBurst;
             return this;
         }
         @CustomType.Setter
         public Builder kubeApiQps(@Nullable String kubeApiQps) {
+
             this.kubeApiQps = kubeApiQps;
             return this;
         }
         @CustomType.Setter
         public Builder kubeReserved(@Nullable Map<String,Object> kubeReserved) {
+
             this.kubeReserved = kubeReserved;
             return this;
         }
         @CustomType.Setter
         public Builder registryBurst(@Nullable String registryBurst) {
+
             this.registryBurst = registryBurst;
             return this;
         }
         @CustomType.Setter
         public Builder registryPullQps(@Nullable String registryPullQps) {
+
             this.registryPullQps = registryPullQps;
             return this;
         }
         @CustomType.Setter
         public Builder serializeImagePulls(@Nullable String serializeImagePulls) {
+
             this.serializeImagePulls = serializeImagePulls;
             return this;
         }
         @CustomType.Setter
         public Builder systemReserved(@Nullable Map<String,Object> systemReserved) {
+
             this.systemReserved = systemReserved;
             return this;
         }

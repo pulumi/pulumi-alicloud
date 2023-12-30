@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.ros.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -239,7 +240,9 @@ public final class GetChangeSetsPlainArgs extends com.pulumi.resources.InvokeArg
         }
 
         public GetChangeSetsPlainArgs build() {
-            $.stackId = Objects.requireNonNull($.stackId, "expected parameter 'stackId' to be non-null");
+            if ($.stackId == null) {
+                throw new MissingRequiredPropertyException("GetChangeSetsPlainArgs", "stackId");
+            }
             return $;
         }
     }

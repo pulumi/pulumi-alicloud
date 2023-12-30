@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.cen.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -126,37 +127,58 @@ public final class GetInterRegionTrafficQosPoliciesPolicy {
 
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetInterRegionTrafficQosPoliciesPolicy", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder interRegionTrafficQosPolicyDescription(String interRegionTrafficQosPolicyDescription) {
-            this.interRegionTrafficQosPolicyDescription = Objects.requireNonNull(interRegionTrafficQosPolicyDescription);
+            if (interRegionTrafficQosPolicyDescription == null) {
+              throw new MissingRequiredPropertyException("GetInterRegionTrafficQosPoliciesPolicy", "interRegionTrafficQosPolicyDescription");
+            }
+            this.interRegionTrafficQosPolicyDescription = interRegionTrafficQosPolicyDescription;
             return this;
         }
         @CustomType.Setter
         public Builder interRegionTrafficQosPolicyId(String interRegionTrafficQosPolicyId) {
-            this.interRegionTrafficQosPolicyId = Objects.requireNonNull(interRegionTrafficQosPolicyId);
+            if (interRegionTrafficQosPolicyId == null) {
+              throw new MissingRequiredPropertyException("GetInterRegionTrafficQosPoliciesPolicy", "interRegionTrafficQosPolicyId");
+            }
+            this.interRegionTrafficQosPolicyId = interRegionTrafficQosPolicyId;
             return this;
         }
         @CustomType.Setter
         public Builder interRegionTrafficQosPolicyName(String interRegionTrafficQosPolicyName) {
-            this.interRegionTrafficQosPolicyName = Objects.requireNonNull(interRegionTrafficQosPolicyName);
+            if (interRegionTrafficQosPolicyName == null) {
+              throw new MissingRequiredPropertyException("GetInterRegionTrafficQosPoliciesPolicy", "interRegionTrafficQosPolicyName");
+            }
+            this.interRegionTrafficQosPolicyName = interRegionTrafficQosPolicyName;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetInterRegionTrafficQosPoliciesPolicy", "status");
+            }
+            this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder transitRouterAttachmentId(String transitRouterAttachmentId) {
-            this.transitRouterAttachmentId = Objects.requireNonNull(transitRouterAttachmentId);
+            if (transitRouterAttachmentId == null) {
+              throw new MissingRequiredPropertyException("GetInterRegionTrafficQosPoliciesPolicy", "transitRouterAttachmentId");
+            }
+            this.transitRouterAttachmentId = transitRouterAttachmentId;
             return this;
         }
         @CustomType.Setter
         public Builder transitRouterId(String transitRouterId) {
-            this.transitRouterId = Objects.requireNonNull(transitRouterId);
+            if (transitRouterId == null) {
+              throw new MissingRequiredPropertyException("GetInterRegionTrafficQosPoliciesPolicy", "transitRouterId");
+            }
+            this.transitRouterId = transitRouterId;
             return this;
         }
         public GetInterRegionTrafficQosPoliciesPolicy build() {

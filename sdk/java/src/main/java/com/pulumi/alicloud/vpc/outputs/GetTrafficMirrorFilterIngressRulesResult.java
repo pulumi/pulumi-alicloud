@@ -5,6 +5,7 @@ package com.pulumi.alicloud.vpc.outputs;
 
 import com.pulumi.alicloud.vpc.outputs.GetTrafficMirrorFilterIngressRulesRule;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -76,12 +77,18 @@ public final class GetTrafficMirrorFilterIngressRulesResult {
 
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetTrafficMirrorFilterIngressRulesResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder ids(List<String> ids) {
-            this.ids = Objects.requireNonNull(ids);
+            if (ids == null) {
+              throw new MissingRequiredPropertyException("GetTrafficMirrorFilterIngressRulesResult", "ids");
+            }
+            this.ids = ids;
             return this;
         }
         public Builder ids(String... ids) {
@@ -89,12 +96,16 @@ public final class GetTrafficMirrorFilterIngressRulesResult {
         }
         @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
+
             this.outputFile = outputFile;
             return this;
         }
         @CustomType.Setter
         public Builder rules(List<GetTrafficMirrorFilterIngressRulesRule> rules) {
-            this.rules = Objects.requireNonNull(rules);
+            if (rules == null) {
+              throw new MissingRequiredPropertyException("GetTrafficMirrorFilterIngressRulesResult", "rules");
+            }
+            this.rules = rules;
             return this;
         }
         public Builder rules(GetTrafficMirrorFilterIngressRulesRule... rules) {
@@ -102,12 +113,16 @@ public final class GetTrafficMirrorFilterIngressRulesResult {
         }
         @CustomType.Setter
         public Builder status(@Nullable String status) {
+
             this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder trafficMirrorFilterId(String trafficMirrorFilterId) {
-            this.trafficMirrorFilterId = Objects.requireNonNull(trafficMirrorFilterId);
+            if (trafficMirrorFilterId == null) {
+              throw new MissingRequiredPropertyException("GetTrafficMirrorFilterIngressRulesResult", "trafficMirrorFilterId");
+            }
+            this.trafficMirrorFilterId = trafficMirrorFilterId;
             return this;
         }
         public GetTrafficMirrorFilterIngressRulesResult build() {

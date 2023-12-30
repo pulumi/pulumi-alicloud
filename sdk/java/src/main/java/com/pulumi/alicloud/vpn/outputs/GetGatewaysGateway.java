@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.vpn.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -253,82 +254,130 @@ public final class GetGatewaysGateway {
 
         @CustomType.Setter
         public Builder autoPropagate(String autoPropagate) {
-            this.autoPropagate = Objects.requireNonNull(autoPropagate);
+            if (autoPropagate == null) {
+              throw new MissingRequiredPropertyException("GetGatewaysGateway", "autoPropagate");
+            }
+            this.autoPropagate = autoPropagate;
             return this;
         }
         @CustomType.Setter
         public Builder businessStatus(String businessStatus) {
-            this.businessStatus = Objects.requireNonNull(businessStatus);
+            if (businessStatus == null) {
+              throw new MissingRequiredPropertyException("GetGatewaysGateway", "businessStatus");
+            }
+            this.businessStatus = businessStatus;
             return this;
         }
         @CustomType.Setter
         public Builder createTime(String createTime) {
-            this.createTime = Objects.requireNonNull(createTime);
+            if (createTime == null) {
+              throw new MissingRequiredPropertyException("GetGatewaysGateway", "createTime");
+            }
+            this.createTime = createTime;
             return this;
         }
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetGatewaysGateway", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder enableIpsec(String enableIpsec) {
-            this.enableIpsec = Objects.requireNonNull(enableIpsec);
+            if (enableIpsec == null) {
+              throw new MissingRequiredPropertyException("GetGatewaysGateway", "enableIpsec");
+            }
+            this.enableIpsec = enableIpsec;
             return this;
         }
         @CustomType.Setter
         public Builder enableSsl(String enableSsl) {
-            this.enableSsl = Objects.requireNonNull(enableSsl);
+            if (enableSsl == null) {
+              throw new MissingRequiredPropertyException("GetGatewaysGateway", "enableSsl");
+            }
+            this.enableSsl = enableSsl;
             return this;
         }
         @CustomType.Setter
         public Builder endTime(String endTime) {
-            this.endTime = Objects.requireNonNull(endTime);
+            if (endTime == null) {
+              throw new MissingRequiredPropertyException("GetGatewaysGateway", "endTime");
+            }
+            this.endTime = endTime;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetGatewaysGateway", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder instanceChargeType(String instanceChargeType) {
-            this.instanceChargeType = Objects.requireNonNull(instanceChargeType);
+            if (instanceChargeType == null) {
+              throw new MissingRequiredPropertyException("GetGatewaysGateway", "instanceChargeType");
+            }
+            this.instanceChargeType = instanceChargeType;
             return this;
         }
         @CustomType.Setter
         public Builder internetIp(String internetIp) {
-            this.internetIp = Objects.requireNonNull(internetIp);
+            if (internetIp == null) {
+              throw new MissingRequiredPropertyException("GetGatewaysGateway", "internetIp");
+            }
+            this.internetIp = internetIp;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetGatewaysGateway", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder networkType(String networkType) {
-            this.networkType = Objects.requireNonNull(networkType);
+            if (networkType == null) {
+              throw new MissingRequiredPropertyException("GetGatewaysGateway", "networkType");
+            }
+            this.networkType = networkType;
             return this;
         }
         @CustomType.Setter
         public Builder specification(String specification) {
-            this.specification = Objects.requireNonNull(specification);
+            if (specification == null) {
+              throw new MissingRequiredPropertyException("GetGatewaysGateway", "specification");
+            }
+            this.specification = specification;
             return this;
         }
         @CustomType.Setter
         public Builder sslConnections(Integer sslConnections) {
-            this.sslConnections = Objects.requireNonNull(sslConnections);
+            if (sslConnections == null) {
+              throw new MissingRequiredPropertyException("GetGatewaysGateway", "sslConnections");
+            }
+            this.sslConnections = sslConnections;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetGatewaysGateway", "status");
+            }
+            this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder vpcId(String vpcId) {
-            this.vpcId = Objects.requireNonNull(vpcId);
+            if (vpcId == null) {
+              throw new MissingRequiredPropertyException("GetGatewaysGateway", "vpcId");
+            }
+            this.vpcId = vpcId;
             return this;
         }
         public GetGatewaysGateway build() {

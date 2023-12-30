@@ -5,6 +5,7 @@ package com.pulumi.alicloud.eipanycast;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.Object;
 import java.lang.String;
@@ -338,7 +339,9 @@ public final class AnycastEipAddressArgs extends com.pulumi.resources.ResourceAr
         }
 
         public AnycastEipAddressArgs build() {
-            $.serviceLocation = Objects.requireNonNull($.serviceLocation, "expected parameter 'serviceLocation' to be non-null");
+            if ($.serviceLocation == null) {
+                throw new MissingRequiredPropertyException("AnycastEipAddressArgs", "serviceLocation");
+            }
             return $;
         }
     }

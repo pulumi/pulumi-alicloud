@@ -7,6 +7,7 @@ import com.pulumi.alicloud.ecs.outputs.GetEcsLaunchTemplatesTemplateDataDisk;
 import com.pulumi.alicloud.ecs.outputs.GetEcsLaunchTemplatesTemplateNetworkInterface;
 import com.pulumi.alicloud.ecs.outputs.GetEcsLaunchTemplatesTemplateSystemDisk;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Double;
 import java.lang.Integer;
@@ -639,17 +640,26 @@ public final class GetEcsLaunchTemplatesTemplate {
 
         @CustomType.Setter
         public Builder autoReleaseTime(String autoReleaseTime) {
-            this.autoReleaseTime = Objects.requireNonNull(autoReleaseTime);
+            if (autoReleaseTime == null) {
+              throw new MissingRequiredPropertyException("GetEcsLaunchTemplatesTemplate", "autoReleaseTime");
+            }
+            this.autoReleaseTime = autoReleaseTime;
             return this;
         }
         @CustomType.Setter
         public Builder createdBy(String createdBy) {
-            this.createdBy = Objects.requireNonNull(createdBy);
+            if (createdBy == null) {
+              throw new MissingRequiredPropertyException("GetEcsLaunchTemplatesTemplate", "createdBy");
+            }
+            this.createdBy = createdBy;
             return this;
         }
         @CustomType.Setter
         public Builder dataDisks(List<GetEcsLaunchTemplatesTemplateDataDisk> dataDisks) {
-            this.dataDisks = Objects.requireNonNull(dataDisks);
+            if (dataDisks == null) {
+              throw new MissingRequiredPropertyException("GetEcsLaunchTemplatesTemplate", "dataDisks");
+            }
+            this.dataDisks = dataDisks;
             return this;
         }
         public Builder dataDisks(GetEcsLaunchTemplatesTemplateDataDisk... dataDisks) {
@@ -657,107 +667,170 @@ public final class GetEcsLaunchTemplatesTemplate {
         }
         @CustomType.Setter
         public Builder defaultVersionNumber(Integer defaultVersionNumber) {
-            this.defaultVersionNumber = Objects.requireNonNull(defaultVersionNumber);
+            if (defaultVersionNumber == null) {
+              throw new MissingRequiredPropertyException("GetEcsLaunchTemplatesTemplate", "defaultVersionNumber");
+            }
+            this.defaultVersionNumber = defaultVersionNumber;
             return this;
         }
         @CustomType.Setter
         public Builder deploymentSetId(String deploymentSetId) {
-            this.deploymentSetId = Objects.requireNonNull(deploymentSetId);
+            if (deploymentSetId == null) {
+              throw new MissingRequiredPropertyException("GetEcsLaunchTemplatesTemplate", "deploymentSetId");
+            }
+            this.deploymentSetId = deploymentSetId;
             return this;
         }
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetEcsLaunchTemplatesTemplate", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder enableVmOsConfig(Boolean enableVmOsConfig) {
-            this.enableVmOsConfig = Objects.requireNonNull(enableVmOsConfig);
+            if (enableVmOsConfig == null) {
+              throw new MissingRequiredPropertyException("GetEcsLaunchTemplatesTemplate", "enableVmOsConfig");
+            }
+            this.enableVmOsConfig = enableVmOsConfig;
             return this;
         }
         @CustomType.Setter
         public Builder hostName(String hostName) {
-            this.hostName = Objects.requireNonNull(hostName);
+            if (hostName == null) {
+              throw new MissingRequiredPropertyException("GetEcsLaunchTemplatesTemplate", "hostName");
+            }
+            this.hostName = hostName;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetEcsLaunchTemplatesTemplate", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder imageId(String imageId) {
-            this.imageId = Objects.requireNonNull(imageId);
+            if (imageId == null) {
+              throw new MissingRequiredPropertyException("GetEcsLaunchTemplatesTemplate", "imageId");
+            }
+            this.imageId = imageId;
             return this;
         }
         @CustomType.Setter
         public Builder imageOwnerAlias(String imageOwnerAlias) {
-            this.imageOwnerAlias = Objects.requireNonNull(imageOwnerAlias);
+            if (imageOwnerAlias == null) {
+              throw new MissingRequiredPropertyException("GetEcsLaunchTemplatesTemplate", "imageOwnerAlias");
+            }
+            this.imageOwnerAlias = imageOwnerAlias;
             return this;
         }
         @CustomType.Setter
         public Builder instanceChargeType(String instanceChargeType) {
-            this.instanceChargeType = Objects.requireNonNull(instanceChargeType);
+            if (instanceChargeType == null) {
+              throw new MissingRequiredPropertyException("GetEcsLaunchTemplatesTemplate", "instanceChargeType");
+            }
+            this.instanceChargeType = instanceChargeType;
             return this;
         }
         @CustomType.Setter
         public Builder instanceName(String instanceName) {
-            this.instanceName = Objects.requireNonNull(instanceName);
+            if (instanceName == null) {
+              throw new MissingRequiredPropertyException("GetEcsLaunchTemplatesTemplate", "instanceName");
+            }
+            this.instanceName = instanceName;
             return this;
         }
         @CustomType.Setter
         public Builder instanceType(String instanceType) {
-            this.instanceType = Objects.requireNonNull(instanceType);
+            if (instanceType == null) {
+              throw new MissingRequiredPropertyException("GetEcsLaunchTemplatesTemplate", "instanceType");
+            }
+            this.instanceType = instanceType;
             return this;
         }
         @CustomType.Setter
         public Builder internetChargeType(String internetChargeType) {
-            this.internetChargeType = Objects.requireNonNull(internetChargeType);
+            if (internetChargeType == null) {
+              throw new MissingRequiredPropertyException("GetEcsLaunchTemplatesTemplate", "internetChargeType");
+            }
+            this.internetChargeType = internetChargeType;
             return this;
         }
         @CustomType.Setter
         public Builder internetMaxBandwidthIn(Integer internetMaxBandwidthIn) {
-            this.internetMaxBandwidthIn = Objects.requireNonNull(internetMaxBandwidthIn);
+            if (internetMaxBandwidthIn == null) {
+              throw new MissingRequiredPropertyException("GetEcsLaunchTemplatesTemplate", "internetMaxBandwidthIn");
+            }
+            this.internetMaxBandwidthIn = internetMaxBandwidthIn;
             return this;
         }
         @CustomType.Setter
         public Builder internetMaxBandwidthOut(Integer internetMaxBandwidthOut) {
-            this.internetMaxBandwidthOut = Objects.requireNonNull(internetMaxBandwidthOut);
+            if (internetMaxBandwidthOut == null) {
+              throw new MissingRequiredPropertyException("GetEcsLaunchTemplatesTemplate", "internetMaxBandwidthOut");
+            }
+            this.internetMaxBandwidthOut = internetMaxBandwidthOut;
             return this;
         }
         @CustomType.Setter
         public Builder ioOptimized(String ioOptimized) {
-            this.ioOptimized = Objects.requireNonNull(ioOptimized);
+            if (ioOptimized == null) {
+              throw new MissingRequiredPropertyException("GetEcsLaunchTemplatesTemplate", "ioOptimized");
+            }
+            this.ioOptimized = ioOptimized;
             return this;
         }
         @CustomType.Setter
         public Builder keyPairName(String keyPairName) {
-            this.keyPairName = Objects.requireNonNull(keyPairName);
+            if (keyPairName == null) {
+              throw new MissingRequiredPropertyException("GetEcsLaunchTemplatesTemplate", "keyPairName");
+            }
+            this.keyPairName = keyPairName;
             return this;
         }
         @CustomType.Setter
         public Builder latestVersionNumber(Integer latestVersionNumber) {
-            this.latestVersionNumber = Objects.requireNonNull(latestVersionNumber);
+            if (latestVersionNumber == null) {
+              throw new MissingRequiredPropertyException("GetEcsLaunchTemplatesTemplate", "latestVersionNumber");
+            }
+            this.latestVersionNumber = latestVersionNumber;
             return this;
         }
         @CustomType.Setter
         public Builder launchTemplateId(String launchTemplateId) {
-            this.launchTemplateId = Objects.requireNonNull(launchTemplateId);
+            if (launchTemplateId == null) {
+              throw new MissingRequiredPropertyException("GetEcsLaunchTemplatesTemplate", "launchTemplateId");
+            }
+            this.launchTemplateId = launchTemplateId;
             return this;
         }
         @CustomType.Setter
         public Builder launchTemplateName(String launchTemplateName) {
-            this.launchTemplateName = Objects.requireNonNull(launchTemplateName);
+            if (launchTemplateName == null) {
+              throw new MissingRequiredPropertyException("GetEcsLaunchTemplatesTemplate", "launchTemplateName");
+            }
+            this.launchTemplateName = launchTemplateName;
             return this;
         }
         @CustomType.Setter
         public Builder modifiedTime(String modifiedTime) {
-            this.modifiedTime = Objects.requireNonNull(modifiedTime);
+            if (modifiedTime == null) {
+              throw new MissingRequiredPropertyException("GetEcsLaunchTemplatesTemplate", "modifiedTime");
+            }
+            this.modifiedTime = modifiedTime;
             return this;
         }
         @CustomType.Setter
         public Builder networkInterfaces(List<GetEcsLaunchTemplatesTemplateNetworkInterface> networkInterfaces) {
-            this.networkInterfaces = Objects.requireNonNull(networkInterfaces);
+            if (networkInterfaces == null) {
+              throw new MissingRequiredPropertyException("GetEcsLaunchTemplatesTemplate", "networkInterfaces");
+            }
+            this.networkInterfaces = networkInterfaces;
             return this;
         }
         public Builder networkInterfaces(GetEcsLaunchTemplatesTemplateNetworkInterface... networkInterfaces) {
@@ -765,47 +838,74 @@ public final class GetEcsLaunchTemplatesTemplate {
         }
         @CustomType.Setter
         public Builder networkType(String networkType) {
-            this.networkType = Objects.requireNonNull(networkType);
+            if (networkType == null) {
+              throw new MissingRequiredPropertyException("GetEcsLaunchTemplatesTemplate", "networkType");
+            }
+            this.networkType = networkType;
             return this;
         }
         @CustomType.Setter
         public Builder passwordInherit(Boolean passwordInherit) {
-            this.passwordInherit = Objects.requireNonNull(passwordInherit);
+            if (passwordInherit == null) {
+              throw new MissingRequiredPropertyException("GetEcsLaunchTemplatesTemplate", "passwordInherit");
+            }
+            this.passwordInherit = passwordInherit;
             return this;
         }
         @CustomType.Setter
         public Builder period(Integer period) {
-            this.period = Objects.requireNonNull(period);
+            if (period == null) {
+              throw new MissingRequiredPropertyException("GetEcsLaunchTemplatesTemplate", "period");
+            }
+            this.period = period;
             return this;
         }
         @CustomType.Setter
         public Builder privateIpAddress(String privateIpAddress) {
-            this.privateIpAddress = Objects.requireNonNull(privateIpAddress);
+            if (privateIpAddress == null) {
+              throw new MissingRequiredPropertyException("GetEcsLaunchTemplatesTemplate", "privateIpAddress");
+            }
+            this.privateIpAddress = privateIpAddress;
             return this;
         }
         @CustomType.Setter
         public Builder ramRoleName(String ramRoleName) {
-            this.ramRoleName = Objects.requireNonNull(ramRoleName);
+            if (ramRoleName == null) {
+              throw new MissingRequiredPropertyException("GetEcsLaunchTemplatesTemplate", "ramRoleName");
+            }
+            this.ramRoleName = ramRoleName;
             return this;
         }
         @CustomType.Setter
         public Builder resourceGroupId(String resourceGroupId) {
-            this.resourceGroupId = Objects.requireNonNull(resourceGroupId);
+            if (resourceGroupId == null) {
+              throw new MissingRequiredPropertyException("GetEcsLaunchTemplatesTemplate", "resourceGroupId");
+            }
+            this.resourceGroupId = resourceGroupId;
             return this;
         }
         @CustomType.Setter
         public Builder securityEnhancementStrategy(String securityEnhancementStrategy) {
-            this.securityEnhancementStrategy = Objects.requireNonNull(securityEnhancementStrategy);
+            if (securityEnhancementStrategy == null) {
+              throw new MissingRequiredPropertyException("GetEcsLaunchTemplatesTemplate", "securityEnhancementStrategy");
+            }
+            this.securityEnhancementStrategy = securityEnhancementStrategy;
             return this;
         }
         @CustomType.Setter
         public Builder securityGroupId(String securityGroupId) {
-            this.securityGroupId = Objects.requireNonNull(securityGroupId);
+            if (securityGroupId == null) {
+              throw new MissingRequiredPropertyException("GetEcsLaunchTemplatesTemplate", "securityGroupId");
+            }
+            this.securityGroupId = securityGroupId;
             return this;
         }
         @CustomType.Setter
         public Builder securityGroupIds(List<String> securityGroupIds) {
-            this.securityGroupIds = Objects.requireNonNull(securityGroupIds);
+            if (securityGroupIds == null) {
+              throw new MissingRequiredPropertyException("GetEcsLaunchTemplatesTemplate", "securityGroupIds");
+            }
+            this.securityGroupIds = securityGroupIds;
             return this;
         }
         public Builder securityGroupIds(String... securityGroupIds) {
@@ -813,22 +913,34 @@ public final class GetEcsLaunchTemplatesTemplate {
         }
         @CustomType.Setter
         public Builder spotDuration(String spotDuration) {
-            this.spotDuration = Objects.requireNonNull(spotDuration);
+            if (spotDuration == null) {
+              throw new MissingRequiredPropertyException("GetEcsLaunchTemplatesTemplate", "spotDuration");
+            }
+            this.spotDuration = spotDuration;
             return this;
         }
         @CustomType.Setter
         public Builder spotPriceLimit(Double spotPriceLimit) {
-            this.spotPriceLimit = Objects.requireNonNull(spotPriceLimit);
+            if (spotPriceLimit == null) {
+              throw new MissingRequiredPropertyException("GetEcsLaunchTemplatesTemplate", "spotPriceLimit");
+            }
+            this.spotPriceLimit = spotPriceLimit;
             return this;
         }
         @CustomType.Setter
         public Builder spotStrategy(String spotStrategy) {
-            this.spotStrategy = Objects.requireNonNull(spotStrategy);
+            if (spotStrategy == null) {
+              throw new MissingRequiredPropertyException("GetEcsLaunchTemplatesTemplate", "spotStrategy");
+            }
+            this.spotStrategy = spotStrategy;
             return this;
         }
         @CustomType.Setter
         public Builder systemDisks(List<GetEcsLaunchTemplatesTemplateSystemDisk> systemDisks) {
-            this.systemDisks = Objects.requireNonNull(systemDisks);
+            if (systemDisks == null) {
+              throw new MissingRequiredPropertyException("GetEcsLaunchTemplatesTemplate", "systemDisks");
+            }
+            this.systemDisks = systemDisks;
             return this;
         }
         public Builder systemDisks(GetEcsLaunchTemplatesTemplateSystemDisk... systemDisks) {
@@ -836,32 +948,50 @@ public final class GetEcsLaunchTemplatesTemplate {
         }
         @CustomType.Setter
         public Builder templateTags(Map<String,Object> templateTags) {
-            this.templateTags = Objects.requireNonNull(templateTags);
+            if (templateTags == null) {
+              throw new MissingRequiredPropertyException("GetEcsLaunchTemplatesTemplate", "templateTags");
+            }
+            this.templateTags = templateTags;
             return this;
         }
         @CustomType.Setter
         public Builder userData(String userData) {
-            this.userData = Objects.requireNonNull(userData);
+            if (userData == null) {
+              throw new MissingRequiredPropertyException("GetEcsLaunchTemplatesTemplate", "userData");
+            }
+            this.userData = userData;
             return this;
         }
         @CustomType.Setter
         public Builder versionDescription(String versionDescription) {
-            this.versionDescription = Objects.requireNonNull(versionDescription);
+            if (versionDescription == null) {
+              throw new MissingRequiredPropertyException("GetEcsLaunchTemplatesTemplate", "versionDescription");
+            }
+            this.versionDescription = versionDescription;
             return this;
         }
         @CustomType.Setter
         public Builder vpcId(String vpcId) {
-            this.vpcId = Objects.requireNonNull(vpcId);
+            if (vpcId == null) {
+              throw new MissingRequiredPropertyException("GetEcsLaunchTemplatesTemplate", "vpcId");
+            }
+            this.vpcId = vpcId;
             return this;
         }
         @CustomType.Setter
         public Builder vswitchId(String vswitchId) {
-            this.vswitchId = Objects.requireNonNull(vswitchId);
+            if (vswitchId == null) {
+              throw new MissingRequiredPropertyException("GetEcsLaunchTemplatesTemplate", "vswitchId");
+            }
+            this.vswitchId = vswitchId;
             return this;
         }
         @CustomType.Setter
         public Builder zoneId(String zoneId) {
-            this.zoneId = Objects.requireNonNull(zoneId);
+            if (zoneId == null) {
+              throw new MissingRequiredPropertyException("GetEcsLaunchTemplatesTemplate", "zoneId");
+            }
+            this.zoneId = zoneId;
             return this;
         }
         public GetEcsLaunchTemplatesTemplate build() {

@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.ecs.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.Object;
@@ -364,132 +365,210 @@ public final class GetEcsSnapshotsSnapshot {
 
         @CustomType.Setter
         public Builder category(String category) {
-            this.category = Objects.requireNonNull(category);
+            if (category == null) {
+              throw new MissingRequiredPropertyException("GetEcsSnapshotsSnapshot", "category");
+            }
+            this.category = category;
             return this;
         }
         @CustomType.Setter
         public Builder creationTime(String creationTime) {
-            this.creationTime = Objects.requireNonNull(creationTime);
+            if (creationTime == null) {
+              throw new MissingRequiredPropertyException("GetEcsSnapshotsSnapshot", "creationTime");
+            }
+            this.creationTime = creationTime;
             return this;
         }
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetEcsSnapshotsSnapshot", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder diskId(String diskId) {
-            this.diskId = Objects.requireNonNull(diskId);
+            if (diskId == null) {
+              throw new MissingRequiredPropertyException("GetEcsSnapshotsSnapshot", "diskId");
+            }
+            this.diskId = diskId;
             return this;
         }
         @CustomType.Setter
         public Builder encrypted(Boolean encrypted) {
-            this.encrypted = Objects.requireNonNull(encrypted);
+            if (encrypted == null) {
+              throw new MissingRequiredPropertyException("GetEcsSnapshotsSnapshot", "encrypted");
+            }
+            this.encrypted = encrypted;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetEcsSnapshotsSnapshot", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder instantAccess(Boolean instantAccess) {
-            this.instantAccess = Objects.requireNonNull(instantAccess);
+            if (instantAccess == null) {
+              throw new MissingRequiredPropertyException("GetEcsSnapshotsSnapshot", "instantAccess");
+            }
+            this.instantAccess = instantAccess;
             return this;
         }
         @CustomType.Setter
         public Builder instantAccessRetentionDays(Integer instantAccessRetentionDays) {
-            this.instantAccessRetentionDays = Objects.requireNonNull(instantAccessRetentionDays);
+            if (instantAccessRetentionDays == null) {
+              throw new MissingRequiredPropertyException("GetEcsSnapshotsSnapshot", "instantAccessRetentionDays");
+            }
+            this.instantAccessRetentionDays = instantAccessRetentionDays;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetEcsSnapshotsSnapshot", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder productCode(String productCode) {
-            this.productCode = Objects.requireNonNull(productCode);
+            if (productCode == null) {
+              throw new MissingRequiredPropertyException("GetEcsSnapshotsSnapshot", "productCode");
+            }
+            this.productCode = productCode;
             return this;
         }
         @CustomType.Setter
         public Builder progress(String progress) {
-            this.progress = Objects.requireNonNull(progress);
+            if (progress == null) {
+              throw new MissingRequiredPropertyException("GetEcsSnapshotsSnapshot", "progress");
+            }
+            this.progress = progress;
             return this;
         }
         @CustomType.Setter
         public Builder remainTime(Integer remainTime) {
-            this.remainTime = Objects.requireNonNull(remainTime);
+            if (remainTime == null) {
+              throw new MissingRequiredPropertyException("GetEcsSnapshotsSnapshot", "remainTime");
+            }
+            this.remainTime = remainTime;
             return this;
         }
         @CustomType.Setter
         public Builder resourceGroupId(String resourceGroupId) {
-            this.resourceGroupId = Objects.requireNonNull(resourceGroupId);
+            if (resourceGroupId == null) {
+              throw new MissingRequiredPropertyException("GetEcsSnapshotsSnapshot", "resourceGroupId");
+            }
+            this.resourceGroupId = resourceGroupId;
             return this;
         }
         @CustomType.Setter
         public Builder retentionDays(Integer retentionDays) {
-            this.retentionDays = Objects.requireNonNull(retentionDays);
+            if (retentionDays == null) {
+              throw new MissingRequiredPropertyException("GetEcsSnapshotsSnapshot", "retentionDays");
+            }
+            this.retentionDays = retentionDays;
             return this;
         }
         @CustomType.Setter
         public Builder snapshotId(String snapshotId) {
-            this.snapshotId = Objects.requireNonNull(snapshotId);
+            if (snapshotId == null) {
+              throw new MissingRequiredPropertyException("GetEcsSnapshotsSnapshot", "snapshotId");
+            }
+            this.snapshotId = snapshotId;
             return this;
         }
         @CustomType.Setter
         public Builder snapshotName(String snapshotName) {
-            this.snapshotName = Objects.requireNonNull(snapshotName);
+            if (snapshotName == null) {
+              throw new MissingRequiredPropertyException("GetEcsSnapshotsSnapshot", "snapshotName");
+            }
+            this.snapshotName = snapshotName;
             return this;
         }
         @CustomType.Setter
         public Builder snapshotSn(String snapshotSn) {
-            this.snapshotSn = Objects.requireNonNull(snapshotSn);
+            if (snapshotSn == null) {
+              throw new MissingRequiredPropertyException("GetEcsSnapshotsSnapshot", "snapshotSn");
+            }
+            this.snapshotSn = snapshotSn;
             return this;
         }
         @CustomType.Setter
         public Builder snapshotType(String snapshotType) {
-            this.snapshotType = Objects.requireNonNull(snapshotType);
+            if (snapshotType == null) {
+              throw new MissingRequiredPropertyException("GetEcsSnapshotsSnapshot", "snapshotType");
+            }
+            this.snapshotType = snapshotType;
             return this;
         }
         @CustomType.Setter
         public Builder sourceDiskId(String sourceDiskId) {
-            this.sourceDiskId = Objects.requireNonNull(sourceDiskId);
+            if (sourceDiskId == null) {
+              throw new MissingRequiredPropertyException("GetEcsSnapshotsSnapshot", "sourceDiskId");
+            }
+            this.sourceDiskId = sourceDiskId;
             return this;
         }
         @CustomType.Setter
         public Builder sourceDiskSize(String sourceDiskSize) {
-            this.sourceDiskSize = Objects.requireNonNull(sourceDiskSize);
+            if (sourceDiskSize == null) {
+              throw new MissingRequiredPropertyException("GetEcsSnapshotsSnapshot", "sourceDiskSize");
+            }
+            this.sourceDiskSize = sourceDiskSize;
             return this;
         }
         @CustomType.Setter
         public Builder sourceDiskType(String sourceDiskType) {
-            this.sourceDiskType = Objects.requireNonNull(sourceDiskType);
+            if (sourceDiskType == null) {
+              throw new MissingRequiredPropertyException("GetEcsSnapshotsSnapshot", "sourceDiskType");
+            }
+            this.sourceDiskType = sourceDiskType;
             return this;
         }
         @CustomType.Setter
         public Builder sourceStorageType(String sourceStorageType) {
-            this.sourceStorageType = Objects.requireNonNull(sourceStorageType);
+            if (sourceStorageType == null) {
+              throw new MissingRequiredPropertyException("GetEcsSnapshotsSnapshot", "sourceStorageType");
+            }
+            this.sourceStorageType = sourceStorageType;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetEcsSnapshotsSnapshot", "status");
+            }
+            this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder tags(Map<String,Object> tags) {
-            this.tags = Objects.requireNonNull(tags);
+            if (tags == null) {
+              throw new MissingRequiredPropertyException("GetEcsSnapshotsSnapshot", "tags");
+            }
+            this.tags = tags;
             return this;
         }
         @CustomType.Setter
         public Builder type(String type) {
-            this.type = Objects.requireNonNull(type);
+            if (type == null) {
+              throw new MissingRequiredPropertyException("GetEcsSnapshotsSnapshot", "type");
+            }
+            this.type = type;
             return this;
         }
         @CustomType.Setter
         public Builder usage(String usage) {
-            this.usage = Objects.requireNonNull(usage);
+            if (usage == null) {
+              throw new MissingRequiredPropertyException("GetEcsSnapshotsSnapshot", "usage");
+            }
+            this.usage = usage;
             return this;
         }
         public GetEcsSnapshotsSnapshot build() {

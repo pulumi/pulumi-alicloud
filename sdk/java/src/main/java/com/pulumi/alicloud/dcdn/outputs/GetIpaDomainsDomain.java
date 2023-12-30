@@ -5,6 +5,7 @@ package com.pulumi.alicloud.dcdn.outputs;
 
 import com.pulumi.alicloud.dcdn.outputs.GetIpaDomainsDomainSource;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -198,47 +199,74 @@ public final class GetIpaDomainsDomain {
 
         @CustomType.Setter
         public Builder certName(String certName) {
-            this.certName = Objects.requireNonNull(certName);
+            if (certName == null) {
+              throw new MissingRequiredPropertyException("GetIpaDomainsDomain", "certName");
+            }
+            this.certName = certName;
             return this;
         }
         @CustomType.Setter
         public Builder cname(String cname) {
-            this.cname = Objects.requireNonNull(cname);
+            if (cname == null) {
+              throw new MissingRequiredPropertyException("GetIpaDomainsDomain", "cname");
+            }
+            this.cname = cname;
             return this;
         }
         @CustomType.Setter
         public Builder createTime(String createTime) {
-            this.createTime = Objects.requireNonNull(createTime);
+            if (createTime == null) {
+              throw new MissingRequiredPropertyException("GetIpaDomainsDomain", "createTime");
+            }
+            this.createTime = createTime;
             return this;
         }
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetIpaDomainsDomain", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder domainName(String domainName) {
-            this.domainName = Objects.requireNonNull(domainName);
+            if (domainName == null) {
+              throw new MissingRequiredPropertyException("GetIpaDomainsDomain", "domainName");
+            }
+            this.domainName = domainName;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetIpaDomainsDomain", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder resourceGroupId(String resourceGroupId) {
-            this.resourceGroupId = Objects.requireNonNull(resourceGroupId);
+            if (resourceGroupId == null) {
+              throw new MissingRequiredPropertyException("GetIpaDomainsDomain", "resourceGroupId");
+            }
+            this.resourceGroupId = resourceGroupId;
             return this;
         }
         @CustomType.Setter
         public Builder scope(String scope) {
-            this.scope = Objects.requireNonNull(scope);
+            if (scope == null) {
+              throw new MissingRequiredPropertyException("GetIpaDomainsDomain", "scope");
+            }
+            this.scope = scope;
             return this;
         }
         @CustomType.Setter
         public Builder sources(List<GetIpaDomainsDomainSource> sources) {
-            this.sources = Objects.requireNonNull(sources);
+            if (sources == null) {
+              throw new MissingRequiredPropertyException("GetIpaDomainsDomain", "sources");
+            }
+            this.sources = sources;
             return this;
         }
         public Builder sources(GetIpaDomainsDomainSource... sources) {
@@ -246,17 +274,26 @@ public final class GetIpaDomainsDomain {
         }
         @CustomType.Setter
         public Builder sslProtocol(String sslProtocol) {
-            this.sslProtocol = Objects.requireNonNull(sslProtocol);
+            if (sslProtocol == null) {
+              throw new MissingRequiredPropertyException("GetIpaDomainsDomain", "sslProtocol");
+            }
+            this.sslProtocol = sslProtocol;
             return this;
         }
         @CustomType.Setter
         public Builder sslPub(String sslPub) {
-            this.sslPub = Objects.requireNonNull(sslPub);
+            if (sslPub == null) {
+              throw new MissingRequiredPropertyException("GetIpaDomainsDomain", "sslPub");
+            }
+            this.sslPub = sslPub;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetIpaDomainsDomain", "status");
+            }
+            this.status = status;
             return this;
         }
         public GetIpaDomainsDomain build() {

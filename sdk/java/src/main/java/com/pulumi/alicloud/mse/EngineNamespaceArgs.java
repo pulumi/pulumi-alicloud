@@ -5,6 +5,7 @@ package com.pulumi.alicloud.mse;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -187,9 +188,15 @@ public final class EngineNamespaceArgs extends com.pulumi.resources.ResourceArgs
         }
 
         public EngineNamespaceArgs build() {
-            $.clusterId = Objects.requireNonNull($.clusterId, "expected parameter 'clusterId' to be non-null");
-            $.namespaceId = Objects.requireNonNull($.namespaceId, "expected parameter 'namespaceId' to be non-null");
-            $.namespaceShowName = Objects.requireNonNull($.namespaceShowName, "expected parameter 'namespaceShowName' to be non-null");
+            if ($.clusterId == null) {
+                throw new MissingRequiredPropertyException("EngineNamespaceArgs", "clusterId");
+            }
+            if ($.namespaceId == null) {
+                throw new MissingRequiredPropertyException("EngineNamespaceArgs", "namespaceId");
+            }
+            if ($.namespaceShowName == null) {
+                throw new MissingRequiredPropertyException("EngineNamespaceArgs", "namespaceShowName");
+            }
             return $;
         }
     }

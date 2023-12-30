@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.fnf.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -140,42 +141,66 @@ public final class GetExecutionsExecution {
 
         @CustomType.Setter
         public Builder executionName(String executionName) {
-            this.executionName = Objects.requireNonNull(executionName);
+            if (executionName == null) {
+              throw new MissingRequiredPropertyException("GetExecutionsExecution", "executionName");
+            }
+            this.executionName = executionName;
             return this;
         }
         @CustomType.Setter
         public Builder flowName(String flowName) {
-            this.flowName = Objects.requireNonNull(flowName);
+            if (flowName == null) {
+              throw new MissingRequiredPropertyException("GetExecutionsExecution", "flowName");
+            }
+            this.flowName = flowName;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetExecutionsExecution", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder input(String input) {
-            this.input = Objects.requireNonNull(input);
+            if (input == null) {
+              throw new MissingRequiredPropertyException("GetExecutionsExecution", "input");
+            }
+            this.input = input;
             return this;
         }
         @CustomType.Setter
         public Builder output(String output) {
-            this.output = Objects.requireNonNull(output);
+            if (output == null) {
+              throw new MissingRequiredPropertyException("GetExecutionsExecution", "output");
+            }
+            this.output = output;
             return this;
         }
         @CustomType.Setter
         public Builder startedTime(String startedTime) {
-            this.startedTime = Objects.requireNonNull(startedTime);
+            if (startedTime == null) {
+              throw new MissingRequiredPropertyException("GetExecutionsExecution", "startedTime");
+            }
+            this.startedTime = startedTime;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetExecutionsExecution", "status");
+            }
+            this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder stoppedTime(String stoppedTime) {
-            this.stoppedTime = Objects.requireNonNull(stoppedTime);
+            if (stoppedTime == null) {
+              throw new MissingRequiredPropertyException("GetExecutionsExecution", "stoppedTime");
+            }
+            this.stoppedTime = stoppedTime;
             return this;
         }
         public GetExecutionsExecution build() {

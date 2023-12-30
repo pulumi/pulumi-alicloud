@@ -72,16 +72,19 @@ public final class ProvisionedProductOutput {
 
         @CustomType.Setter
         public Builder description(@Nullable String description) {
+
             this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder outputKey(@Nullable String outputKey) {
+
             this.outputKey = outputKey;
             return this;
         }
         @CustomType.Setter
         public Builder outputValue(@Nullable String outputValue) {
+
             this.outputValue = outputValue;
             return this;
         }

@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.apigateway.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -98,27 +99,42 @@ public final class GetLogConfigsConfig {
 
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetLogConfigsConfig", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder logType(String logType) {
-            this.logType = Objects.requireNonNull(logType);
+            if (logType == null) {
+              throw new MissingRequiredPropertyException("GetLogConfigsConfig", "logType");
+            }
+            this.logType = logType;
             return this;
         }
         @CustomType.Setter
         public Builder regionId(String regionId) {
-            this.regionId = Objects.requireNonNull(regionId);
+            if (regionId == null) {
+              throw new MissingRequiredPropertyException("GetLogConfigsConfig", "regionId");
+            }
+            this.regionId = regionId;
             return this;
         }
         @CustomType.Setter
         public Builder slsLogStore(String slsLogStore) {
-            this.slsLogStore = Objects.requireNonNull(slsLogStore);
+            if (slsLogStore == null) {
+              throw new MissingRequiredPropertyException("GetLogConfigsConfig", "slsLogStore");
+            }
+            this.slsLogStore = slsLogStore;
             return this;
         }
         @CustomType.Setter
         public Builder slsProject(String slsProject) {
-            this.slsProject = Objects.requireNonNull(slsProject);
+            if (slsProject == null) {
+              throw new MissingRequiredPropertyException("GetLogConfigsConfig", "slsProject");
+            }
+            this.slsProject = slsProject;
             return this;
         }
         public GetLogConfigsConfig build() {

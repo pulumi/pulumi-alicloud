@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.ecs.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -184,57 +185,90 @@ public final class GetActivationsActivation {
 
         @CustomType.Setter
         public Builder activationId(String activationId) {
-            this.activationId = Objects.requireNonNull(activationId);
+            if (activationId == null) {
+              throw new MissingRequiredPropertyException("GetActivationsActivation", "activationId");
+            }
+            this.activationId = activationId;
             return this;
         }
         @CustomType.Setter
         public Builder createTime(String createTime) {
-            this.createTime = Objects.requireNonNull(createTime);
+            if (createTime == null) {
+              throw new MissingRequiredPropertyException("GetActivationsActivation", "createTime");
+            }
+            this.createTime = createTime;
             return this;
         }
         @CustomType.Setter
         public Builder deregisteredCount(Integer deregisteredCount) {
-            this.deregisteredCount = Objects.requireNonNull(deregisteredCount);
+            if (deregisteredCount == null) {
+              throw new MissingRequiredPropertyException("GetActivationsActivation", "deregisteredCount");
+            }
+            this.deregisteredCount = deregisteredCount;
             return this;
         }
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetActivationsActivation", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder disabled(Boolean disabled) {
-            this.disabled = Objects.requireNonNull(disabled);
+            if (disabled == null) {
+              throw new MissingRequiredPropertyException("GetActivationsActivation", "disabled");
+            }
+            this.disabled = disabled;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetActivationsActivation", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder instanceCount(Integer instanceCount) {
-            this.instanceCount = Objects.requireNonNull(instanceCount);
+            if (instanceCount == null) {
+              throw new MissingRequiredPropertyException("GetActivationsActivation", "instanceCount");
+            }
+            this.instanceCount = instanceCount;
             return this;
         }
         @CustomType.Setter
         public Builder instanceName(String instanceName) {
-            this.instanceName = Objects.requireNonNull(instanceName);
+            if (instanceName == null) {
+              throw new MissingRequiredPropertyException("GetActivationsActivation", "instanceName");
+            }
+            this.instanceName = instanceName;
             return this;
         }
         @CustomType.Setter
         public Builder ipAddressRange(String ipAddressRange) {
-            this.ipAddressRange = Objects.requireNonNull(ipAddressRange);
+            if (ipAddressRange == null) {
+              throw new MissingRequiredPropertyException("GetActivationsActivation", "ipAddressRange");
+            }
+            this.ipAddressRange = ipAddressRange;
             return this;
         }
         @CustomType.Setter
         public Builder registeredCount(Integer registeredCount) {
-            this.registeredCount = Objects.requireNonNull(registeredCount);
+            if (registeredCount == null) {
+              throw new MissingRequiredPropertyException("GetActivationsActivation", "registeredCount");
+            }
+            this.registeredCount = registeredCount;
             return this;
         }
         @CustomType.Setter
         public Builder timeToLiveInHours(Integer timeToLiveInHours) {
-            this.timeToLiveInHours = Objects.requireNonNull(timeToLiveInHours);
+            if (timeToLiveInHours == null) {
+              throw new MissingRequiredPropertyException("GetActivationsActivation", "timeToLiveInHours");
+            }
+            this.timeToLiveInHours = timeToLiveInHours;
             return this;
         }
         public GetActivationsActivation build() {

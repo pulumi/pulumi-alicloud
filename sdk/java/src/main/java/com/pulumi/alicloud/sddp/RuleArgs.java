@@ -5,6 +5,7 @@ package com.pulumi.alicloud.sddp;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -595,9 +596,15 @@ public final class RuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public RuleArgs build() {
-            $.category = Objects.requireNonNull($.category, "expected parameter 'category' to be non-null");
-            $.content = Objects.requireNonNull($.content, "expected parameter 'content' to be non-null");
-            $.ruleName = Objects.requireNonNull($.ruleName, "expected parameter 'ruleName' to be non-null");
+            if ($.category == null) {
+                throw new MissingRequiredPropertyException("RuleArgs", "category");
+            }
+            if ($.content == null) {
+                throw new MissingRequiredPropertyException("RuleArgs", "content");
+            }
+            if ($.ruleName == null) {
+                throw new MissingRequiredPropertyException("RuleArgs", "ruleName");
+            }
             return $;
         }
     }

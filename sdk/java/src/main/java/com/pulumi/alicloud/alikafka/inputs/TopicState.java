@@ -110,14 +110,14 @@ public final class TopicState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Name of the topic. Two topics on a single instance cannot have the same name. The length cannot exceed 64 characters.
+     * Name of the topic. Two topics on a single instance cannot have the same name. The length cannot exceed 249 characters.
      * 
      */
     @Import(name="topic")
     private @Nullable Output<String> topic;
 
     /**
-     * @return Name of the topic. Two topics on a single instance cannot have the same name. The length cannot exceed 64 characters.
+     * @return Name of the topic. Two topics on a single instance cannot have the same name. The length cannot exceed 249 characters.
      * 
      */
     public Optional<Output<String>> topic() {
@@ -281,7 +281,7 @@ public final class TopicState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param topic Name of the topic. Two topics on a single instance cannot have the same name. The length cannot exceed 64 characters.
+         * @param topic Name of the topic. Two topics on a single instance cannot have the same name. The length cannot exceed 249 characters.
          * 
          * @return builder
          * 
@@ -292,7 +292,7 @@ public final class TopicState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param topic Name of the topic. Two topics on a single instance cannot have the same name. The length cannot exceed 64 characters.
+         * @param topic Name of the topic. Two topics on a single instance cannot have the same name. The length cannot exceed 249 characters.
          * 
          * @return builder
          * 

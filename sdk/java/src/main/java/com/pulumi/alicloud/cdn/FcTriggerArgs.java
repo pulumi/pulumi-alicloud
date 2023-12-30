@@ -5,6 +5,7 @@ package com.pulumi.alicloud.cdn;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -298,12 +299,24 @@ public final class FcTriggerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public FcTriggerArgs build() {
-            $.eventMetaName = Objects.requireNonNull($.eventMetaName, "expected parameter 'eventMetaName' to be non-null");
-            $.eventMetaVersion = Objects.requireNonNull($.eventMetaVersion, "expected parameter 'eventMetaVersion' to be non-null");
-            $.notes = Objects.requireNonNull($.notes, "expected parameter 'notes' to be non-null");
-            $.roleArn = Objects.requireNonNull($.roleArn, "expected parameter 'roleArn' to be non-null");
-            $.sourceArn = Objects.requireNonNull($.sourceArn, "expected parameter 'sourceArn' to be non-null");
-            $.triggerArn = Objects.requireNonNull($.triggerArn, "expected parameter 'triggerArn' to be non-null");
+            if ($.eventMetaName == null) {
+                throw new MissingRequiredPropertyException("FcTriggerArgs", "eventMetaName");
+            }
+            if ($.eventMetaVersion == null) {
+                throw new MissingRequiredPropertyException("FcTriggerArgs", "eventMetaVersion");
+            }
+            if ($.notes == null) {
+                throw new MissingRequiredPropertyException("FcTriggerArgs", "notes");
+            }
+            if ($.roleArn == null) {
+                throw new MissingRequiredPropertyException("FcTriggerArgs", "roleArn");
+            }
+            if ($.sourceArn == null) {
+                throw new MissingRequiredPropertyException("FcTriggerArgs", "sourceArn");
+            }
+            if ($.triggerArn == null) {
+                throw new MissingRequiredPropertyException("FcTriggerArgs", "triggerArn");
+            }
             return $;
         }
     }

@@ -5,6 +5,7 @@ package com.pulumi.alicloud.vpc;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.Object;
@@ -105,18 +106,14 @@ public final class PeerConnectionArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Whether to PreCheck only this request. Value:
-     * - **true**: The check request is sent without creating a VPC peer-to-peer connection. Check items include whether required parameters, request format, and business restrictions are filled in. If the check does not pass, the corresponding error is returned. If the check passes, the error code &#39;DryRunOperation&#39; is returned &#39;.
-     * - **false** (default): A normal request is sent. After checking, the HTTP 2xx status code is returned and the operation is performed directly.
+     * Whether to PreCheck only this request. Default value: `false`. Valid values:
      * 
      */
     @Import(name="dryRun")
     private @Nullable Output<Boolean> dryRun;
 
     /**
-     * @return Whether to PreCheck only this request. Value:
-     * - **true**: The check request is sent without creating a VPC peer-to-peer connection. Check items include whether required parameters, request format, and business restrictions are filled in. If the check does not pass, the corresponding error is returned. If the check passes, the error code &#39;DryRunOperation&#39; is returned &#39;.
-     * - **false** (default): A normal request is sent. After checking, the HTTP 2xx status code is returned and the operation is performed directly.
+     * @return Whether to PreCheck only this request. Default value: `false`. Valid values:
      * 
      */
     public Optional<Output<Boolean>> dryRun() {
@@ -124,14 +121,14 @@ public final class PeerConnectionArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The name of the resource. The name of the resource. The name must be 2 to 128 characters in length, and must start with a letter. It can contain digits, underscores (_), and hyphens (-).
+     * The name of the VPC peer connection. The name of the resource. The name must be 2 to 128 characters in length, and must start with a letter. It can contain digits, underscores (_), and hyphens (-).
      * 
      */
     @Import(name="peerConnectionName")
     private @Nullable Output<String> peerConnectionName;
 
     /**
-     * @return The name of the resource. The name of the resource. The name must be 2 to 128 characters in length, and must start with a letter. It can contain digits, underscores (_), and hyphens (-).
+     * @return The name of the VPC peer connection. The name of the resource. The name must be 2 to 128 characters in length, and must start with a letter. It can contain digits, underscores (_), and hyphens (-).
      * 
      */
     public Optional<Output<String>> peerConnectionName() {
@@ -154,14 +151,14 @@ public final class PeerConnectionArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The status of the resource.
+     * The status of the VPC peer connection.
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return The status of the resource.
+     * @return The status of the VPC peer connection.
      * 
      */
     public Optional<Output<String>> status() {
@@ -169,14 +166,14 @@ public final class PeerConnectionArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The tags of PrefixList.
+     * A mapping of tags to assign to the resource.
      * 
      */
     @Import(name="tags")
     private @Nullable Output<Map<String,Object>> tags;
 
     /**
-     * @return The tags of PrefixList.
+     * @return A mapping of tags to assign to the resource.
      * 
      */
     public Optional<Output<Map<String,Object>>> tags() {
@@ -184,14 +181,14 @@ public final class PeerConnectionArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * You must create a VPC ID on the initiator of a VPC peer connection.
+     * The ID of the requester VPC.
      * 
      */
     @Import(name="vpcId", required=true)
     private Output<String> vpcId;
 
     /**
-     * @return You must create a VPC ID on the initiator of a VPC peer connection.
+     * @return The ID of the requester VPC.
      * 
      */
     public Output<String> vpcId() {
@@ -348,9 +345,7 @@ public final class PeerConnectionArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param dryRun Whether to PreCheck only this request. Value:
-         * - **true**: The check request is sent without creating a VPC peer-to-peer connection. Check items include whether required parameters, request format, and business restrictions are filled in. If the check does not pass, the corresponding error is returned. If the check passes, the error code &#39;DryRunOperation&#39; is returned &#39;.
-         * - **false** (default): A normal request is sent. After checking, the HTTP 2xx status code is returned and the operation is performed directly.
+         * @param dryRun Whether to PreCheck only this request. Default value: `false`. Valid values:
          * 
          * @return builder
          * 
@@ -361,9 +356,7 @@ public final class PeerConnectionArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param dryRun Whether to PreCheck only this request. Value:
-         * - **true**: The check request is sent without creating a VPC peer-to-peer connection. Check items include whether required parameters, request format, and business restrictions are filled in. If the check does not pass, the corresponding error is returned. If the check passes, the error code &#39;DryRunOperation&#39; is returned &#39;.
-         * - **false** (default): A normal request is sent. After checking, the HTTP 2xx status code is returned and the operation is performed directly.
+         * @param dryRun Whether to PreCheck only this request. Default value: `false`. Valid values:
          * 
          * @return builder
          * 
@@ -373,7 +366,7 @@ public final class PeerConnectionArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param peerConnectionName The name of the resource. The name of the resource. The name must be 2 to 128 characters in length, and must start with a letter. It can contain digits, underscores (_), and hyphens (-).
+         * @param peerConnectionName The name of the VPC peer connection. The name of the resource. The name must be 2 to 128 characters in length, and must start with a letter. It can contain digits, underscores (_), and hyphens (-).
          * 
          * @return builder
          * 
@@ -384,7 +377,7 @@ public final class PeerConnectionArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param peerConnectionName The name of the resource. The name of the resource. The name must be 2 to 128 characters in length, and must start with a letter. It can contain digits, underscores (_), and hyphens (-).
+         * @param peerConnectionName The name of the VPC peer connection. The name of the resource. The name must be 2 to 128 characters in length, and must start with a letter. It can contain digits, underscores (_), and hyphens (-).
          * 
          * @return builder
          * 
@@ -415,7 +408,7 @@ public final class PeerConnectionArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param status The status of the resource.
+         * @param status The status of the VPC peer connection.
          * 
          * @return builder
          * 
@@ -426,7 +419,7 @@ public final class PeerConnectionArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param status The status of the resource.
+         * @param status The status of the VPC peer connection.
          * 
          * @return builder
          * 
@@ -436,7 +429,7 @@ public final class PeerConnectionArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param tags The tags of PrefixList.
+         * @param tags A mapping of tags to assign to the resource.
          * 
          * @return builder
          * 
@@ -447,7 +440,7 @@ public final class PeerConnectionArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param tags The tags of PrefixList.
+         * @param tags A mapping of tags to assign to the resource.
          * 
          * @return builder
          * 
@@ -457,7 +450,7 @@ public final class PeerConnectionArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param vpcId You must create a VPC ID on the initiator of a VPC peer connection.
+         * @param vpcId The ID of the requester VPC.
          * 
          * @return builder
          * 
@@ -468,7 +461,7 @@ public final class PeerConnectionArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param vpcId You must create a VPC ID on the initiator of a VPC peer connection.
+         * @param vpcId The ID of the requester VPC.
          * 
          * @return builder
          * 
@@ -478,9 +471,15 @@ public final class PeerConnectionArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         public PeerConnectionArgs build() {
-            $.acceptingRegionId = Objects.requireNonNull($.acceptingRegionId, "expected parameter 'acceptingRegionId' to be non-null");
-            $.acceptingVpcId = Objects.requireNonNull($.acceptingVpcId, "expected parameter 'acceptingVpcId' to be non-null");
-            $.vpcId = Objects.requireNonNull($.vpcId, "expected parameter 'vpcId' to be non-null");
+            if ($.acceptingRegionId == null) {
+                throw new MissingRequiredPropertyException("PeerConnectionArgs", "acceptingRegionId");
+            }
+            if ($.acceptingVpcId == null) {
+                throw new MissingRequiredPropertyException("PeerConnectionArgs", "acceptingVpcId");
+            }
+            if ($.vpcId == null) {
+                throw new MissingRequiredPropertyException("PeerConnectionArgs", "vpcId");
+            }
             return $;
         }
     }

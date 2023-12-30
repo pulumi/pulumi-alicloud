@@ -5,6 +5,7 @@ package com.pulumi.alicloud.resourcemanager;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -222,11 +223,21 @@ public final class PolicyAttachmentArgs extends com.pulumi.resources.ResourceArg
         }
 
         public PolicyAttachmentArgs build() {
-            $.policyName = Objects.requireNonNull($.policyName, "expected parameter 'policyName' to be non-null");
-            $.policyType = Objects.requireNonNull($.policyType, "expected parameter 'policyType' to be non-null");
-            $.principalName = Objects.requireNonNull($.principalName, "expected parameter 'principalName' to be non-null");
-            $.principalType = Objects.requireNonNull($.principalType, "expected parameter 'principalType' to be non-null");
-            $.resourceGroupId = Objects.requireNonNull($.resourceGroupId, "expected parameter 'resourceGroupId' to be non-null");
+            if ($.policyName == null) {
+                throw new MissingRequiredPropertyException("PolicyAttachmentArgs", "policyName");
+            }
+            if ($.policyType == null) {
+                throw new MissingRequiredPropertyException("PolicyAttachmentArgs", "policyType");
+            }
+            if ($.principalName == null) {
+                throw new MissingRequiredPropertyException("PolicyAttachmentArgs", "principalName");
+            }
+            if ($.principalType == null) {
+                throw new MissingRequiredPropertyException("PolicyAttachmentArgs", "principalType");
+            }
+            if ($.resourceGroupId == null) {
+                throw new MissingRequiredPropertyException("PolicyAttachmentArgs", "resourceGroupId");
+            }
             return $;
         }
     }

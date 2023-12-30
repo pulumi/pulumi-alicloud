@@ -5,6 +5,7 @@ package com.pulumi.alicloud.cs.outputs;
 
 import com.pulumi.alicloud.cs.outputs.GetKubernetesPermissionPermission;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -73,11 +74,15 @@ public final class GetKubernetesPermissionResult {
 
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetKubernetesPermissionResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder permissions(@Nullable List<GetKubernetesPermissionPermission> permissions) {
+
             this.permissions = permissions;
             return this;
         }
@@ -86,7 +91,10 @@ public final class GetKubernetesPermissionResult {
         }
         @CustomType.Setter
         public Builder uid(String uid) {
-            this.uid = Objects.requireNonNull(uid);
+            if (uid == null) {
+              throw new MissingRequiredPropertyException("GetKubernetesPermissionResult", "uid");
+            }
+            this.uid = uid;
             return this;
         }
         public GetKubernetesPermissionResult build() {

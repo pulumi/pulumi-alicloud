@@ -6,6 +6,7 @@ package com.pulumi.alicloud.ecs.outputs;
 import com.pulumi.alicloud.ecs.outputs.GetDisksDisk;
 import com.pulumi.alicloud.ecs.outputs.GetDisksOperationLock;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.Object;
@@ -339,6 +340,7 @@ public final class GetDisksResult {
 
         @CustomType.Setter
         public Builder additionalAttributes(@Nullable List<String> additionalAttributes) {
+
             this.additionalAttributes = additionalAttributes;
             return this;
         }
@@ -347,42 +349,52 @@ public final class GetDisksResult {
         }
         @CustomType.Setter
         public Builder autoSnapshotPolicyId(@Nullable String autoSnapshotPolicyId) {
+
             this.autoSnapshotPolicyId = autoSnapshotPolicyId;
             return this;
         }
         @CustomType.Setter
         public Builder availabilityZone(@Nullable String availabilityZone) {
+
             this.availabilityZone = availabilityZone;
             return this;
         }
         @CustomType.Setter
         public Builder category(@Nullable String category) {
+
             this.category = category;
             return this;
         }
         @CustomType.Setter
         public Builder deleteAutoSnapshot(@Nullable Boolean deleteAutoSnapshot) {
+
             this.deleteAutoSnapshot = deleteAutoSnapshot;
             return this;
         }
         @CustomType.Setter
         public Builder deleteWithInstance(@Nullable Boolean deleteWithInstance) {
+
             this.deleteWithInstance = deleteWithInstance;
             return this;
         }
         @CustomType.Setter
         public Builder diskName(@Nullable String diskName) {
+
             this.diskName = diskName;
             return this;
         }
         @CustomType.Setter
         public Builder diskType(@Nullable String diskType) {
+
             this.diskType = diskType;
             return this;
         }
         @CustomType.Setter
         public Builder disks(List<GetDisksDisk> disks) {
-            this.disks = Objects.requireNonNull(disks);
+            if (disks == null) {
+              throw new MissingRequiredPropertyException("GetDisksResult", "disks");
+            }
+            this.disks = disks;
             return this;
         }
         public Builder disks(GetDisksDisk... disks) {
@@ -390,37 +402,48 @@ public final class GetDisksResult {
         }
         @CustomType.Setter
         public Builder dryRun(@Nullable Boolean dryRun) {
+
             this.dryRun = dryRun;
             return this;
         }
         @CustomType.Setter
         public Builder enableAutoSnapshot(@Nullable Boolean enableAutoSnapshot) {
+
             this.enableAutoSnapshot = enableAutoSnapshot;
             return this;
         }
         @CustomType.Setter
         public Builder enableAutomatedSnapshotPolicy(@Nullable Boolean enableAutomatedSnapshotPolicy) {
+
             this.enableAutomatedSnapshotPolicy = enableAutomatedSnapshotPolicy;
             return this;
         }
         @CustomType.Setter
         public Builder enableShared(@Nullable Boolean enableShared) {
+
             this.enableShared = enableShared;
             return this;
         }
         @CustomType.Setter
         public Builder encrypted(@Nullable String encrypted) {
+
             this.encrypted = encrypted;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetDisksResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder ids(List<String> ids) {
-            this.ids = Objects.requireNonNull(ids);
+            if (ids == null) {
+              throw new MissingRequiredPropertyException("GetDisksResult", "ids");
+            }
+            this.ids = ids;
             return this;
         }
         public Builder ids(String... ids) {
@@ -428,22 +451,28 @@ public final class GetDisksResult {
         }
         @CustomType.Setter
         public Builder instanceId(@Nullable String instanceId) {
+
             this.instanceId = instanceId;
             return this;
         }
         @CustomType.Setter
         public Builder kmsKeyId(@Nullable String kmsKeyId) {
+
             this.kmsKeyId = kmsKeyId;
             return this;
         }
         @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
+
             this.nameRegex = nameRegex;
             return this;
         }
         @CustomType.Setter
         public Builder names(List<String> names) {
-            this.names = Objects.requireNonNull(names);
+            if (names == null) {
+              throw new MissingRequiredPropertyException("GetDisksResult", "names");
+            }
+            this.names = names;
             return this;
         }
         public Builder names(String... names) {
@@ -451,6 +480,7 @@ public final class GetDisksResult {
         }
         @CustomType.Setter
         public Builder operationLocks(@Nullable List<GetDisksOperationLock> operationLocks) {
+
             this.operationLocks = operationLocks;
             return this;
         }
@@ -459,61 +489,75 @@ public final class GetDisksResult {
         }
         @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
+
             this.outputFile = outputFile;
             return this;
         }
         @CustomType.Setter
         public Builder pageNumber(@Nullable Integer pageNumber) {
+
             this.pageNumber = pageNumber;
             return this;
         }
         @CustomType.Setter
         public Builder pageSize(@Nullable Integer pageSize) {
+
             this.pageSize = pageSize;
             return this;
         }
         @CustomType.Setter
         public Builder paymentType(@Nullable String paymentType) {
+
             this.paymentType = paymentType;
             return this;
         }
         @CustomType.Setter
         public Builder portable(@Nullable Boolean portable) {
+
             this.portable = portable;
             return this;
         }
         @CustomType.Setter
         public Builder resourceGroupId(@Nullable String resourceGroupId) {
+
             this.resourceGroupId = resourceGroupId;
             return this;
         }
         @CustomType.Setter
         public Builder snapshotId(@Nullable String snapshotId) {
+
             this.snapshotId = snapshotId;
             return this;
         }
         @CustomType.Setter
         public Builder status(@Nullable String status) {
+
             this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder tags(@Nullable Map<String,Object> tags) {
+
             this.tags = tags;
             return this;
         }
         @CustomType.Setter
         public Builder totalCount(Integer totalCount) {
-            this.totalCount = Objects.requireNonNull(totalCount);
+            if (totalCount == null) {
+              throw new MissingRequiredPropertyException("GetDisksResult", "totalCount");
+            }
+            this.totalCount = totalCount;
             return this;
         }
         @CustomType.Setter
         public Builder type(@Nullable String type) {
+
             this.type = type;
             return this;
         }
         @CustomType.Setter
         public Builder zoneId(@Nullable String zoneId) {
+
             this.zoneId = zoneId;
             return this;
         }

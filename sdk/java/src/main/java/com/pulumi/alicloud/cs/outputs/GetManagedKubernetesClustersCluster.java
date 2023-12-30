@@ -7,6 +7,7 @@ import com.pulumi.alicloud.cs.outputs.GetManagedKubernetesClustersClusterConnect
 import com.pulumi.alicloud.cs.outputs.GetManagedKubernetesClustersClusterLogConfig;
 import com.pulumi.alicloud.cs.outputs.GetManagedKubernetesClustersClusterWorkerNode;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -292,37 +293,58 @@ public final class GetManagedKubernetesClustersCluster {
 
         @CustomType.Setter
         public Builder availabilityZone(String availabilityZone) {
-            this.availabilityZone = Objects.requireNonNull(availabilityZone);
+            if (availabilityZone == null) {
+              throw new MissingRequiredPropertyException("GetManagedKubernetesClustersCluster", "availabilityZone");
+            }
+            this.availabilityZone = availabilityZone;
             return this;
         }
         @CustomType.Setter
         public Builder clusterNetworkType(String clusterNetworkType) {
-            this.clusterNetworkType = Objects.requireNonNull(clusterNetworkType);
+            if (clusterNetworkType == null) {
+              throw new MissingRequiredPropertyException("GetManagedKubernetesClustersCluster", "clusterNetworkType");
+            }
+            this.clusterNetworkType = clusterNetworkType;
             return this;
         }
         @CustomType.Setter
         public Builder connections(GetManagedKubernetesClustersClusterConnections connections) {
-            this.connections = Objects.requireNonNull(connections);
+            if (connections == null) {
+              throw new MissingRequiredPropertyException("GetManagedKubernetesClustersCluster", "connections");
+            }
+            this.connections = connections;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetManagedKubernetesClustersCluster", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder imageId(String imageId) {
-            this.imageId = Objects.requireNonNull(imageId);
+            if (imageId == null) {
+              throw new MissingRequiredPropertyException("GetManagedKubernetesClustersCluster", "imageId");
+            }
+            this.imageId = imageId;
             return this;
         }
         @CustomType.Setter
         public Builder keyName(String keyName) {
-            this.keyName = Objects.requireNonNull(keyName);
+            if (keyName == null) {
+              throw new MissingRequiredPropertyException("GetManagedKubernetesClustersCluster", "keyName");
+            }
+            this.keyName = keyName;
             return this;
         }
         @CustomType.Setter
         public Builder logConfigs(List<GetManagedKubernetesClustersClusterLogConfig> logConfigs) {
-            this.logConfigs = Objects.requireNonNull(logConfigs);
+            if (logConfigs == null) {
+              throw new MissingRequiredPropertyException("GetManagedKubernetesClustersCluster", "logConfigs");
+            }
+            this.logConfigs = logConfigs;
             return this;
         }
         public Builder logConfigs(GetManagedKubernetesClustersClusterLogConfig... logConfigs) {
@@ -330,42 +352,66 @@ public final class GetManagedKubernetesClustersCluster {
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetManagedKubernetesClustersCluster", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder natGatewayId(String natGatewayId) {
-            this.natGatewayId = Objects.requireNonNull(natGatewayId);
+            if (natGatewayId == null) {
+              throw new MissingRequiredPropertyException("GetManagedKubernetesClustersCluster", "natGatewayId");
+            }
+            this.natGatewayId = natGatewayId;
             return this;
         }
         @CustomType.Setter
         public Builder podCidr(String podCidr) {
-            this.podCidr = Objects.requireNonNull(podCidr);
+            if (podCidr == null) {
+              throw new MissingRequiredPropertyException("GetManagedKubernetesClustersCluster", "podCidr");
+            }
+            this.podCidr = podCidr;
             return this;
         }
         @CustomType.Setter
         public Builder securityGroupId(String securityGroupId) {
-            this.securityGroupId = Objects.requireNonNull(securityGroupId);
+            if (securityGroupId == null) {
+              throw new MissingRequiredPropertyException("GetManagedKubernetesClustersCluster", "securityGroupId");
+            }
+            this.securityGroupId = securityGroupId;
             return this;
         }
         @CustomType.Setter
         public Builder serviceCidr(String serviceCidr) {
-            this.serviceCidr = Objects.requireNonNull(serviceCidr);
+            if (serviceCidr == null) {
+              throw new MissingRequiredPropertyException("GetManagedKubernetesClustersCluster", "serviceCidr");
+            }
+            this.serviceCidr = serviceCidr;
             return this;
         }
         @CustomType.Setter
         public Builder slbInternetEnabled(Boolean slbInternetEnabled) {
-            this.slbInternetEnabled = Objects.requireNonNull(slbInternetEnabled);
+            if (slbInternetEnabled == null) {
+              throw new MissingRequiredPropertyException("GetManagedKubernetesClustersCluster", "slbInternetEnabled");
+            }
+            this.slbInternetEnabled = slbInternetEnabled;
             return this;
         }
         @CustomType.Setter
         public Builder vpcId(String vpcId) {
-            this.vpcId = Objects.requireNonNull(vpcId);
+            if (vpcId == null) {
+              throw new MissingRequiredPropertyException("GetManagedKubernetesClustersCluster", "vpcId");
+            }
+            this.vpcId = vpcId;
             return this;
         }
         @CustomType.Setter
         public Builder vswitchIds(List<String> vswitchIds) {
-            this.vswitchIds = Objects.requireNonNull(vswitchIds);
+            if (vswitchIds == null) {
+              throw new MissingRequiredPropertyException("GetManagedKubernetesClustersCluster", "vswitchIds");
+            }
+            this.vswitchIds = vswitchIds;
             return this;
         }
         public Builder vswitchIds(String... vswitchIds) {
@@ -373,42 +419,66 @@ public final class GetManagedKubernetesClustersCluster {
         }
         @CustomType.Setter
         public Builder workerAutoRenew(Boolean workerAutoRenew) {
-            this.workerAutoRenew = Objects.requireNonNull(workerAutoRenew);
+            if (workerAutoRenew == null) {
+              throw new MissingRequiredPropertyException("GetManagedKubernetesClustersCluster", "workerAutoRenew");
+            }
+            this.workerAutoRenew = workerAutoRenew;
             return this;
         }
         @CustomType.Setter
         public Builder workerAutoRenewPeriod(Integer workerAutoRenewPeriod) {
-            this.workerAutoRenewPeriod = Objects.requireNonNull(workerAutoRenewPeriod);
+            if (workerAutoRenewPeriod == null) {
+              throw new MissingRequiredPropertyException("GetManagedKubernetesClustersCluster", "workerAutoRenewPeriod");
+            }
+            this.workerAutoRenewPeriod = workerAutoRenewPeriod;
             return this;
         }
         @CustomType.Setter
         public Builder workerDataDiskCategory(String workerDataDiskCategory) {
-            this.workerDataDiskCategory = Objects.requireNonNull(workerDataDiskCategory);
+            if (workerDataDiskCategory == null) {
+              throw new MissingRequiredPropertyException("GetManagedKubernetesClustersCluster", "workerDataDiskCategory");
+            }
+            this.workerDataDiskCategory = workerDataDiskCategory;
             return this;
         }
         @CustomType.Setter
         public Builder workerDataDiskSize(Integer workerDataDiskSize) {
-            this.workerDataDiskSize = Objects.requireNonNull(workerDataDiskSize);
+            if (workerDataDiskSize == null) {
+              throw new MissingRequiredPropertyException("GetManagedKubernetesClustersCluster", "workerDataDiskSize");
+            }
+            this.workerDataDiskSize = workerDataDiskSize;
             return this;
         }
         @CustomType.Setter
         public Builder workerDiskCategory(String workerDiskCategory) {
-            this.workerDiskCategory = Objects.requireNonNull(workerDiskCategory);
+            if (workerDiskCategory == null) {
+              throw new MissingRequiredPropertyException("GetManagedKubernetesClustersCluster", "workerDiskCategory");
+            }
+            this.workerDiskCategory = workerDiskCategory;
             return this;
         }
         @CustomType.Setter
         public Builder workerDiskSize(Integer workerDiskSize) {
-            this.workerDiskSize = Objects.requireNonNull(workerDiskSize);
+            if (workerDiskSize == null) {
+              throw new MissingRequiredPropertyException("GetManagedKubernetesClustersCluster", "workerDiskSize");
+            }
+            this.workerDiskSize = workerDiskSize;
             return this;
         }
         @CustomType.Setter
         public Builder workerInstanceChargeType(String workerInstanceChargeType) {
-            this.workerInstanceChargeType = Objects.requireNonNull(workerInstanceChargeType);
+            if (workerInstanceChargeType == null) {
+              throw new MissingRequiredPropertyException("GetManagedKubernetesClustersCluster", "workerInstanceChargeType");
+            }
+            this.workerInstanceChargeType = workerInstanceChargeType;
             return this;
         }
         @CustomType.Setter
         public Builder workerInstanceTypes(List<String> workerInstanceTypes) {
-            this.workerInstanceTypes = Objects.requireNonNull(workerInstanceTypes);
+            if (workerInstanceTypes == null) {
+              throw new MissingRequiredPropertyException("GetManagedKubernetesClustersCluster", "workerInstanceTypes");
+            }
+            this.workerInstanceTypes = workerInstanceTypes;
             return this;
         }
         public Builder workerInstanceTypes(String... workerInstanceTypes) {
@@ -416,7 +486,10 @@ public final class GetManagedKubernetesClustersCluster {
         }
         @CustomType.Setter
         public Builder workerNodes(List<GetManagedKubernetesClustersClusterWorkerNode> workerNodes) {
-            this.workerNodes = Objects.requireNonNull(workerNodes);
+            if (workerNodes == null) {
+              throw new MissingRequiredPropertyException("GetManagedKubernetesClustersCluster", "workerNodes");
+            }
+            this.workerNodes = workerNodes;
             return this;
         }
         public Builder workerNodes(GetManagedKubernetesClustersClusterWorkerNode... workerNodes) {
@@ -424,7 +497,10 @@ public final class GetManagedKubernetesClustersCluster {
         }
         @CustomType.Setter
         public Builder workerNumbers(List<Integer> workerNumbers) {
-            this.workerNumbers = Objects.requireNonNull(workerNumbers);
+            if (workerNumbers == null) {
+              throw new MissingRequiredPropertyException("GetManagedKubernetesClustersCluster", "workerNumbers");
+            }
+            this.workerNumbers = workerNumbers;
             return this;
         }
         public Builder workerNumbers(Integer... workerNumbers) {
@@ -432,12 +508,18 @@ public final class GetManagedKubernetesClustersCluster {
         }
         @CustomType.Setter
         public Builder workerPeriod(Integer workerPeriod) {
-            this.workerPeriod = Objects.requireNonNull(workerPeriod);
+            if (workerPeriod == null) {
+              throw new MissingRequiredPropertyException("GetManagedKubernetesClustersCluster", "workerPeriod");
+            }
+            this.workerPeriod = workerPeriod;
             return this;
         }
         @CustomType.Setter
         public Builder workerPeriodUnit(String workerPeriodUnit) {
-            this.workerPeriodUnit = Objects.requireNonNull(workerPeriodUnit);
+            if (workerPeriodUnit == null) {
+              throw new MissingRequiredPropertyException("GetManagedKubernetesClustersCluster", "workerPeriodUnit");
+            }
+            this.workerPeriodUnit = workerPeriodUnit;
             return this;
         }
         public GetManagedKubernetesClustersCluster build() {

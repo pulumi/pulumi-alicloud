@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.cen.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -155,47 +156,74 @@ public final class GetTransitRouterPrefixListAssociationsAssociation {
 
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetTransitRouterPrefixListAssociationsAssociation", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder nextHop(String nextHop) {
-            this.nextHop = Objects.requireNonNull(nextHop);
+            if (nextHop == null) {
+              throw new MissingRequiredPropertyException("GetTransitRouterPrefixListAssociationsAssociation", "nextHop");
+            }
+            this.nextHop = nextHop;
             return this;
         }
         @CustomType.Setter
         public Builder nextHopInstanceId(String nextHopInstanceId) {
-            this.nextHopInstanceId = Objects.requireNonNull(nextHopInstanceId);
+            if (nextHopInstanceId == null) {
+              throw new MissingRequiredPropertyException("GetTransitRouterPrefixListAssociationsAssociation", "nextHopInstanceId");
+            }
+            this.nextHopInstanceId = nextHopInstanceId;
             return this;
         }
         @CustomType.Setter
         public Builder nextHopType(String nextHopType) {
-            this.nextHopType = Objects.requireNonNull(nextHopType);
+            if (nextHopType == null) {
+              throw new MissingRequiredPropertyException("GetTransitRouterPrefixListAssociationsAssociation", "nextHopType");
+            }
+            this.nextHopType = nextHopType;
             return this;
         }
         @CustomType.Setter
         public Builder ownerUid(Integer ownerUid) {
-            this.ownerUid = Objects.requireNonNull(ownerUid);
+            if (ownerUid == null) {
+              throw new MissingRequiredPropertyException("GetTransitRouterPrefixListAssociationsAssociation", "ownerUid");
+            }
+            this.ownerUid = ownerUid;
             return this;
         }
         @CustomType.Setter
         public Builder prefixListId(String prefixListId) {
-            this.prefixListId = Objects.requireNonNull(prefixListId);
+            if (prefixListId == null) {
+              throw new MissingRequiredPropertyException("GetTransitRouterPrefixListAssociationsAssociation", "prefixListId");
+            }
+            this.prefixListId = prefixListId;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetTransitRouterPrefixListAssociationsAssociation", "status");
+            }
+            this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder transitRouterId(String transitRouterId) {
-            this.transitRouterId = Objects.requireNonNull(transitRouterId);
+            if (transitRouterId == null) {
+              throw new MissingRequiredPropertyException("GetTransitRouterPrefixListAssociationsAssociation", "transitRouterId");
+            }
+            this.transitRouterId = transitRouterId;
             return this;
         }
         @CustomType.Setter
         public Builder transitRouterTableId(String transitRouterTableId) {
-            this.transitRouterTableId = Objects.requireNonNull(transitRouterTableId);
+            if (transitRouterTableId == null) {
+              throw new MissingRequiredPropertyException("GetTransitRouterPrefixListAssociationsAssociation", "transitRouterTableId");
+            }
+            this.transitRouterTableId = transitRouterTableId;
             return this;
         }
         public GetTransitRouterPrefixListAssociationsAssociation build() {

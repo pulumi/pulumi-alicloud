@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -84,22 +85,34 @@ public final class GetNestServiceInstancesServiceInstanceServiceServiceInfo {
 
         @CustomType.Setter
         public Builder image(String image) {
-            this.image = Objects.requireNonNull(image);
+            if (image == null) {
+              throw new MissingRequiredPropertyException("GetNestServiceInstancesServiceInstanceServiceServiceInfo", "image");
+            }
+            this.image = image;
             return this;
         }
         @CustomType.Setter
         public Builder locale(String locale) {
-            this.locale = Objects.requireNonNull(locale);
+            if (locale == null) {
+              throw new MissingRequiredPropertyException("GetNestServiceInstancesServiceInstanceServiceServiceInfo", "locale");
+            }
+            this.locale = locale;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetNestServiceInstancesServiceInstanceServiceServiceInfo", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder shortDescription(String shortDescription) {
-            this.shortDescription = Objects.requireNonNull(shortDescription);
+            if (shortDescription == null) {
+              throw new MissingRequiredPropertyException("GetNestServiceInstancesServiceInstanceServiceServiceInfo", "shortDescription");
+            }
+            this.shortDescription = shortDescription;
             return this;
         }
         public GetNestServiceInstancesServiceInstanceServiceServiceInfo build() {

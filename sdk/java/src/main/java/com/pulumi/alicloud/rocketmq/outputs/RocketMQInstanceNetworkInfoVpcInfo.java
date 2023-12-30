@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.rocketmq.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -56,12 +57,18 @@ public final class RocketMQInstanceNetworkInfoVpcInfo {
 
         @CustomType.Setter
         public Builder vpcId(String vpcId) {
-            this.vpcId = Objects.requireNonNull(vpcId);
+            if (vpcId == null) {
+              throw new MissingRequiredPropertyException("RocketMQInstanceNetworkInfoVpcInfo", "vpcId");
+            }
+            this.vpcId = vpcId;
             return this;
         }
         @CustomType.Setter
         public Builder vswitchId(String vswitchId) {
-            this.vswitchId = Objects.requireNonNull(vswitchId);
+            if (vswitchId == null) {
+              throw new MissingRequiredPropertyException("RocketMQInstanceNetworkInfoVpcInfo", "vswitchId");
+            }
+            this.vswitchId = vswitchId;
             return this;
         }
         public RocketMQInstanceNetworkInfoVpcInfo build() {

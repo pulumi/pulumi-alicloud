@@ -5,6 +5,7 @@ package com.pulumi.alicloud.rds.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -111,8 +112,12 @@ public final class RdsParameterGroupParamDetailArgs extends com.pulumi.resources
         }
 
         public RdsParameterGroupParamDetailArgs build() {
-            $.paramName = Objects.requireNonNull($.paramName, "expected parameter 'paramName' to be non-null");
-            $.paramValue = Objects.requireNonNull($.paramValue, "expected parameter 'paramValue' to be non-null");
+            if ($.paramName == null) {
+                throw new MissingRequiredPropertyException("RdsParameterGroupParamDetailArgs", "paramName");
+            }
+            if ($.paramValue == null) {
+                throw new MissingRequiredPropertyException("RdsParameterGroupParamDetailArgs", "paramValue");
+            }
             return $;
         }
     }

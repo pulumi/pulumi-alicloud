@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.dms.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -268,57 +269,90 @@ public final class GetEnterpriseDatabasesDatabase {
 
         @CustomType.Setter
         public Builder catalogName(String catalogName) {
-            this.catalogName = Objects.requireNonNull(catalogName);
+            if (catalogName == null) {
+              throw new MissingRequiredPropertyException("GetEnterpriseDatabasesDatabase", "catalogName");
+            }
+            this.catalogName = catalogName;
             return this;
         }
         @CustomType.Setter
         public Builder databaseId(String databaseId) {
-            this.databaseId = Objects.requireNonNull(databaseId);
+            if (databaseId == null) {
+              throw new MissingRequiredPropertyException("GetEnterpriseDatabasesDatabase", "databaseId");
+            }
+            this.databaseId = databaseId;
             return this;
         }
         @CustomType.Setter
         public Builder dbType(String dbType) {
-            this.dbType = Objects.requireNonNull(dbType);
+            if (dbType == null) {
+              throw new MissingRequiredPropertyException("GetEnterpriseDatabasesDatabase", "dbType");
+            }
+            this.dbType = dbType;
             return this;
         }
         @CustomType.Setter
         public Builder dbaId(String dbaId) {
-            this.dbaId = Objects.requireNonNull(dbaId);
+            if (dbaId == null) {
+              throw new MissingRequiredPropertyException("GetEnterpriseDatabasesDatabase", "dbaId");
+            }
+            this.dbaId = dbaId;
             return this;
         }
         @CustomType.Setter
         public Builder dbaName(String dbaName) {
-            this.dbaName = Objects.requireNonNull(dbaName);
+            if (dbaName == null) {
+              throw new MissingRequiredPropertyException("GetEnterpriseDatabasesDatabase", "dbaName");
+            }
+            this.dbaName = dbaName;
             return this;
         }
         @CustomType.Setter
         public Builder encoding(String encoding) {
-            this.encoding = Objects.requireNonNull(encoding);
+            if (encoding == null) {
+              throw new MissingRequiredPropertyException("GetEnterpriseDatabasesDatabase", "encoding");
+            }
+            this.encoding = encoding;
             return this;
         }
         @CustomType.Setter
         public Builder envType(String envType) {
-            this.envType = Objects.requireNonNull(envType);
+            if (envType == null) {
+              throw new MissingRequiredPropertyException("GetEnterpriseDatabasesDatabase", "envType");
+            }
+            this.envType = envType;
             return this;
         }
         @CustomType.Setter
         public Builder host(String host) {
-            this.host = Objects.requireNonNull(host);
+            if (host == null) {
+              throw new MissingRequiredPropertyException("GetEnterpriseDatabasesDatabase", "host");
+            }
+            this.host = host;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetEnterpriseDatabasesDatabase", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder instanceId(String instanceId) {
-            this.instanceId = Objects.requireNonNull(instanceId);
+            if (instanceId == null) {
+              throw new MissingRequiredPropertyException("GetEnterpriseDatabasesDatabase", "instanceId");
+            }
+            this.instanceId = instanceId;
             return this;
         }
         @CustomType.Setter
         public Builder ownerIdLists(List<String> ownerIdLists) {
-            this.ownerIdLists = Objects.requireNonNull(ownerIdLists);
+            if (ownerIdLists == null) {
+              throw new MissingRequiredPropertyException("GetEnterpriseDatabasesDatabase", "ownerIdLists");
+            }
+            this.ownerIdLists = ownerIdLists;
             return this;
         }
         public Builder ownerIdLists(String... ownerIdLists) {
@@ -326,7 +360,10 @@ public final class GetEnterpriseDatabasesDatabase {
         }
         @CustomType.Setter
         public Builder ownerNameLists(List<String> ownerNameLists) {
-            this.ownerNameLists = Objects.requireNonNull(ownerNameLists);
+            if (ownerNameLists == null) {
+              throw new MissingRequiredPropertyException("GetEnterpriseDatabasesDatabase", "ownerNameLists");
+            }
+            this.ownerNameLists = ownerNameLists;
             return this;
         }
         public Builder ownerNameLists(String... ownerNameLists) {
@@ -334,27 +371,42 @@ public final class GetEnterpriseDatabasesDatabase {
         }
         @CustomType.Setter
         public Builder port(Integer port) {
-            this.port = Objects.requireNonNull(port);
+            if (port == null) {
+              throw new MissingRequiredPropertyException("GetEnterpriseDatabasesDatabase", "port");
+            }
+            this.port = port;
             return this;
         }
         @CustomType.Setter
         public Builder schemaName(String schemaName) {
-            this.schemaName = Objects.requireNonNull(schemaName);
+            if (schemaName == null) {
+              throw new MissingRequiredPropertyException("GetEnterpriseDatabasesDatabase", "schemaName");
+            }
+            this.schemaName = schemaName;
             return this;
         }
         @CustomType.Setter
         public Builder searchName(String searchName) {
-            this.searchName = Objects.requireNonNull(searchName);
+            if (searchName == null) {
+              throw new MissingRequiredPropertyException("GetEnterpriseDatabasesDatabase", "searchName");
+            }
+            this.searchName = searchName;
             return this;
         }
         @CustomType.Setter
         public Builder sid(String sid) {
-            this.sid = Objects.requireNonNull(sid);
+            if (sid == null) {
+              throw new MissingRequiredPropertyException("GetEnterpriseDatabasesDatabase", "sid");
+            }
+            this.sid = sid;
             return this;
         }
         @CustomType.Setter
         public Builder state(String state) {
-            this.state = Objects.requireNonNull(state);
+            if (state == null) {
+              throw new MissingRequiredPropertyException("GetEnterpriseDatabasesDatabase", "state");
+            }
+            this.state = state;
             return this;
         }
         public GetEnterpriseDatabasesDatabase build() {

@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.expressconnect.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -157,7 +158,9 @@ public final class GetGrantRuleToCensPlainArgs extends com.pulumi.resources.Invo
         }
 
         public GetGrantRuleToCensPlainArgs build() {
-            $.instanceId = Objects.requireNonNull($.instanceId, "expected parameter 'instanceId' to be non-null");
+            if ($.instanceId == null) {
+                throw new MissingRequiredPropertyException("GetGrantRuleToCensPlainArgs", "instanceId");
+            }
             return $;
         }
     }

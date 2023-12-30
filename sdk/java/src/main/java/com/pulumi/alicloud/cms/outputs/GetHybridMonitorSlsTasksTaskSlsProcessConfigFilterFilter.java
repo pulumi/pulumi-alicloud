@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.cms.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -70,17 +71,26 @@ public final class GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterFilter {
 
         @CustomType.Setter
         public Builder operator(String operator) {
-            this.operator = Objects.requireNonNull(operator);
+            if (operator == null) {
+              throw new MissingRequiredPropertyException("GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterFilter", "operator");
+            }
+            this.operator = operator;
             return this;
         }
         @CustomType.Setter
         public Builder slsKeyName(String slsKeyName) {
-            this.slsKeyName = Objects.requireNonNull(slsKeyName);
+            if (slsKeyName == null) {
+              throw new MissingRequiredPropertyException("GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterFilter", "slsKeyName");
+            }
+            this.slsKeyName = slsKeyName;
             return this;
         }
         @CustomType.Setter
         public Builder value(String value) {
-            this.value = Objects.requireNonNull(value);
+            if (value == null) {
+              throw new MissingRequiredPropertyException("GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterFilter", "value");
+            }
+            this.value = value;
             return this;
         }
         public GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterFilter build() {

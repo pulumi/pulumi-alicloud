@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.adb.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -133,37 +134,58 @@ public final class GetResourceGroupsGroup {
 
         @CustomType.Setter
         public Builder createTime(String createTime) {
-            this.createTime = Objects.requireNonNull(createTime);
+            if (createTime == null) {
+              throw new MissingRequiredPropertyException("GetResourceGroupsGroup", "createTime");
+            }
+            this.createTime = createTime;
             return this;
         }
         @CustomType.Setter
         public Builder dbClusterId(String dbClusterId) {
-            this.dbClusterId = Objects.requireNonNull(dbClusterId);
+            if (dbClusterId == null) {
+              throw new MissingRequiredPropertyException("GetResourceGroupsGroup", "dbClusterId");
+            }
+            this.dbClusterId = dbClusterId;
             return this;
         }
         @CustomType.Setter
         public Builder groupName(String groupName) {
-            this.groupName = Objects.requireNonNull(groupName);
+            if (groupName == null) {
+              throw new MissingRequiredPropertyException("GetResourceGroupsGroup", "groupName");
+            }
+            this.groupName = groupName;
             return this;
         }
         @CustomType.Setter
         public Builder groupType(String groupType) {
-            this.groupType = Objects.requireNonNull(groupType);
+            if (groupType == null) {
+              throw new MissingRequiredPropertyException("GetResourceGroupsGroup", "groupType");
+            }
+            this.groupType = groupType;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetResourceGroupsGroup", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder nodeNum(Integer nodeNum) {
-            this.nodeNum = Objects.requireNonNull(nodeNum);
+            if (nodeNum == null) {
+              throw new MissingRequiredPropertyException("GetResourceGroupsGroup", "nodeNum");
+            }
+            this.nodeNum = nodeNum;
             return this;
         }
         @CustomType.Setter
         public Builder user(String user) {
-            this.user = Objects.requireNonNull(user);
+            if (user == null) {
+              throw new MissingRequiredPropertyException("GetResourceGroupsGroup", "user");
+            }
+            this.user = user;
             return this;
         }
         public GetResourceGroupsGroup build() {

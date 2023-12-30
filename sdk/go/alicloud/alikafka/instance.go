@@ -14,11 +14,11 @@ import (
 
 // ## Import
 //
-// ALIKAFKA instance can be imported using the id, e.g.
+// AliKafka instance can be imported using the id, e.g.
 //
 // ```sh
 //
-//	$ pulumi import alicloud:alikafka/instance:Instance instance alikafka_post-cn-123455abc
+//	$ pulumi import alicloud:alikafka/instance:Instance instance <id>
 //
 // ```
 type Instance struct {
@@ -38,20 +38,30 @@ type Instance struct {
 	EipMax pulumi.IntOutput `pulumi:"eipMax"`
 	// The EndPoint to access the kafka instance.
 	EndPoint pulumi.StringOutput `pulumi:"endPoint"`
+	// (Available since v1.214.1) The number of available groups.
+	GroupLeft pulumi.IntOutput `pulumi:"groupLeft"`
+	// (Available since v1.214.1) The number of used groups.
+	GroupUsed pulumi.IntOutput `pulumi:"groupUsed"`
 	// The max value of io of the instance. When modify this value, it only support adjust to a greater value.
 	IoMax pulumi.IntOutput `pulumi:"ioMax"`
 	// The traffic specification of the instance. We recommend that you configure this parameter.
 	// - You should specify one of the `ioMax` and `ioMaxSpec` parameters, and `ioMaxSpec` is recommended.
 	// - For more information about the valid values, see [Billing](https://www.alibabacloud.com/help/en/message-queue-for-apache-kafka/latest/billing-overview).
 	IoMaxSpec pulumi.StringOutput `pulumi:"ioMaxSpec"`
+	// (Available since v1.214.1) The method that you use to purchase partitions.
+	IsPartitionBuy pulumi.IntOutput `pulumi:"isPartitionBuy"`
 	// The ID of the key that is used to encrypt data on standard SSDs in the region of the instance.
 	KmsKeyId pulumi.StringPtrOutput `pulumi:"kmsKeyId"`
 	// Name of your Kafka instance. The length should between 3 and 64 characters. If not set, will use instance id as instance name.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The paid type of the instance. Support two type, "PrePaid": pre paid type instance, "PostPaid": post paid type instance. Default is PostPaid. When modify this value, it only support adjust from post pay to pre pay.
 	PaidType pulumi.StringPtrOutput `pulumi:"paidType"`
+	// (Available since v1.214.1) The number of available partitions.
+	PartitionLeft pulumi.IntOutput `pulumi:"partitionLeft"`
 	// The number of partitions.
 	PartitionNum pulumi.IntPtrOutput `pulumi:"partitionNum"`
+	// (Available since v1.214.1) The number of used partitions.
+	PartitionUsed pulumi.IntOutput `pulumi:"partitionUsed"`
 	// The ID of security group for this instance. If the security group is empty, system will create a default one.
 	SecurityGroup pulumi.StringOutput `pulumi:"securityGroup"`
 	// The zones among which you want to deploy the instance.
@@ -70,21 +80,23 @@ type Instance struct {
 	ServiceVersion pulumi.StringOutput `pulumi:"serviceVersion"`
 	// The spec type of the instance. Support two type, "normal": normal version instance, "professional": professional version instance. Default is normal. When modify this value, it only support adjust from normal to professional. Note only pre paid type instance support professional specific type.
 	SpecType pulumi.StringPtrOutput `pulumi:"specType"`
-	// The status of the instance. Valid values:
-	// - 0: pending
-	// - 1: deploying
-	// - 5: running
-	// - 15: expired
+	// The status of the instance.
 	Status pulumi.IntOutput `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.MapOutput `pulumi:"tags"`
+	// (Available since v1.214.1) The number of available topics.
+	TopicLeft pulumi.IntOutput `pulumi:"topicLeft"`
+	// (Available since v1.214.1) The number of purchased topics.
+	TopicNumOfBuy pulumi.IntOutput `pulumi:"topicNumOfBuy"`
 	// The max num of topic can be creation of the instance.
 	// It has been deprecated since version 1.194.0 and using `partitionNum` instead.
 	// Currently, its value only can be set to 50 when creating it, and finally depends on `partitionNum` value: <`topicQuota`> = 1000 + <`partitionNum`>.
 	// Therefore, you can update it by updating the `partitionNum`, and it is the only updating path.
 	//
-	// Deprecated: Attribute 'topic_quota' has been deprecated since 1.194.0 and it will be removed in the next future. Using new attribute 'partition_num' instead.
+	// Deprecated: Attribute `topic_quota` has been deprecated since 1.194.0 and it will be removed in the next future. Using new attribute `partition_num` instead.
 	TopicQuota pulumi.IntOutput `pulumi:"topicQuota"`
+	// (Available since v1.214.1) The number of used topics.
+	TopicUsed pulumi.IntOutput `pulumi:"topicUsed"`
 	// The VPC ID of the instance.
 	VpcId pulumi.StringOutput `pulumi:"vpcId"`
 	// The ID of attaching vswitch to instance.
@@ -149,20 +161,30 @@ type instanceState struct {
 	EipMax *int `pulumi:"eipMax"`
 	// The EndPoint to access the kafka instance.
 	EndPoint *string `pulumi:"endPoint"`
+	// (Available since v1.214.1) The number of available groups.
+	GroupLeft *int `pulumi:"groupLeft"`
+	// (Available since v1.214.1) The number of used groups.
+	GroupUsed *int `pulumi:"groupUsed"`
 	// The max value of io of the instance. When modify this value, it only support adjust to a greater value.
 	IoMax *int `pulumi:"ioMax"`
 	// The traffic specification of the instance. We recommend that you configure this parameter.
 	// - You should specify one of the `ioMax` and `ioMaxSpec` parameters, and `ioMaxSpec` is recommended.
 	// - For more information about the valid values, see [Billing](https://www.alibabacloud.com/help/en/message-queue-for-apache-kafka/latest/billing-overview).
 	IoMaxSpec *string `pulumi:"ioMaxSpec"`
+	// (Available since v1.214.1) The method that you use to purchase partitions.
+	IsPartitionBuy *int `pulumi:"isPartitionBuy"`
 	// The ID of the key that is used to encrypt data on standard SSDs in the region of the instance.
 	KmsKeyId *string `pulumi:"kmsKeyId"`
 	// Name of your Kafka instance. The length should between 3 and 64 characters. If not set, will use instance id as instance name.
 	Name *string `pulumi:"name"`
 	// The paid type of the instance. Support two type, "PrePaid": pre paid type instance, "PostPaid": post paid type instance. Default is PostPaid. When modify this value, it only support adjust from post pay to pre pay.
 	PaidType *string `pulumi:"paidType"`
+	// (Available since v1.214.1) The number of available partitions.
+	PartitionLeft *int `pulumi:"partitionLeft"`
 	// The number of partitions.
 	PartitionNum *int `pulumi:"partitionNum"`
+	// (Available since v1.214.1) The number of used partitions.
+	PartitionUsed *int `pulumi:"partitionUsed"`
 	// The ID of security group for this instance. If the security group is empty, system will create a default one.
 	SecurityGroup *string `pulumi:"securityGroup"`
 	// The zones among which you want to deploy the instance.
@@ -181,21 +203,23 @@ type instanceState struct {
 	ServiceVersion *string `pulumi:"serviceVersion"`
 	// The spec type of the instance. Support two type, "normal": normal version instance, "professional": professional version instance. Default is normal. When modify this value, it only support adjust from normal to professional. Note only pre paid type instance support professional specific type.
 	SpecType *string `pulumi:"specType"`
-	// The status of the instance. Valid values:
-	// - 0: pending
-	// - 1: deploying
-	// - 5: running
-	// - 15: expired
+	// The status of the instance.
 	Status *int `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
 	Tags map[string]interface{} `pulumi:"tags"`
+	// (Available since v1.214.1) The number of available topics.
+	TopicLeft *int `pulumi:"topicLeft"`
+	// (Available since v1.214.1) The number of purchased topics.
+	TopicNumOfBuy *int `pulumi:"topicNumOfBuy"`
 	// The max num of topic can be creation of the instance.
 	// It has been deprecated since version 1.194.0 and using `partitionNum` instead.
 	// Currently, its value only can be set to 50 when creating it, and finally depends on `partitionNum` value: <`topicQuota`> = 1000 + <`partitionNum`>.
 	// Therefore, you can update it by updating the `partitionNum`, and it is the only updating path.
 	//
-	// Deprecated: Attribute 'topic_quota' has been deprecated since 1.194.0 and it will be removed in the next future. Using new attribute 'partition_num' instead.
+	// Deprecated: Attribute `topic_quota` has been deprecated since 1.194.0 and it will be removed in the next future. Using new attribute `partition_num` instead.
 	TopicQuota *int `pulumi:"topicQuota"`
+	// (Available since v1.214.1) The number of used topics.
+	TopicUsed *int `pulumi:"topicUsed"`
 	// The VPC ID of the instance.
 	VpcId *string `pulumi:"vpcId"`
 	// The ID of attaching vswitch to instance.
@@ -219,20 +243,30 @@ type InstanceState struct {
 	EipMax pulumi.IntPtrInput
 	// The EndPoint to access the kafka instance.
 	EndPoint pulumi.StringPtrInput
+	// (Available since v1.214.1) The number of available groups.
+	GroupLeft pulumi.IntPtrInput
+	// (Available since v1.214.1) The number of used groups.
+	GroupUsed pulumi.IntPtrInput
 	// The max value of io of the instance. When modify this value, it only support adjust to a greater value.
 	IoMax pulumi.IntPtrInput
 	// The traffic specification of the instance. We recommend that you configure this parameter.
 	// - You should specify one of the `ioMax` and `ioMaxSpec` parameters, and `ioMaxSpec` is recommended.
 	// - For more information about the valid values, see [Billing](https://www.alibabacloud.com/help/en/message-queue-for-apache-kafka/latest/billing-overview).
 	IoMaxSpec pulumi.StringPtrInput
+	// (Available since v1.214.1) The method that you use to purchase partitions.
+	IsPartitionBuy pulumi.IntPtrInput
 	// The ID of the key that is used to encrypt data on standard SSDs in the region of the instance.
 	KmsKeyId pulumi.StringPtrInput
 	// Name of your Kafka instance. The length should between 3 and 64 characters. If not set, will use instance id as instance name.
 	Name pulumi.StringPtrInput
 	// The paid type of the instance. Support two type, "PrePaid": pre paid type instance, "PostPaid": post paid type instance. Default is PostPaid. When modify this value, it only support adjust from post pay to pre pay.
 	PaidType pulumi.StringPtrInput
+	// (Available since v1.214.1) The number of available partitions.
+	PartitionLeft pulumi.IntPtrInput
 	// The number of partitions.
 	PartitionNum pulumi.IntPtrInput
+	// (Available since v1.214.1) The number of used partitions.
+	PartitionUsed pulumi.IntPtrInput
 	// The ID of security group for this instance. If the security group is empty, system will create a default one.
 	SecurityGroup pulumi.StringPtrInput
 	// The zones among which you want to deploy the instance.
@@ -251,21 +285,23 @@ type InstanceState struct {
 	ServiceVersion pulumi.StringPtrInput
 	// The spec type of the instance. Support two type, "normal": normal version instance, "professional": professional version instance. Default is normal. When modify this value, it only support adjust from normal to professional. Note only pre paid type instance support professional specific type.
 	SpecType pulumi.StringPtrInput
-	// The status of the instance. Valid values:
-	// - 0: pending
-	// - 1: deploying
-	// - 5: running
-	// - 15: expired
+	// The status of the instance.
 	Status pulumi.IntPtrInput
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.MapInput
+	// (Available since v1.214.1) The number of available topics.
+	TopicLeft pulumi.IntPtrInput
+	// (Available since v1.214.1) The number of purchased topics.
+	TopicNumOfBuy pulumi.IntPtrInput
 	// The max num of topic can be creation of the instance.
 	// It has been deprecated since version 1.194.0 and using `partitionNum` instead.
 	// Currently, its value only can be set to 50 when creating it, and finally depends on `partitionNum` value: <`topicQuota`> = 1000 + <`partitionNum`>.
 	// Therefore, you can update it by updating the `partitionNum`, and it is the only updating path.
 	//
-	// Deprecated: Attribute 'topic_quota' has been deprecated since 1.194.0 and it will be removed in the next future. Using new attribute 'partition_num' instead.
+	// Deprecated: Attribute `topic_quota` has been deprecated since 1.194.0 and it will be removed in the next future. Using new attribute `partition_num` instead.
 	TopicQuota pulumi.IntPtrInput
+	// (Available since v1.214.1) The number of used topics.
+	TopicUsed pulumi.IntPtrInput
 	// The VPC ID of the instance.
 	VpcId pulumi.StringPtrInput
 	// The ID of attaching vswitch to instance.
@@ -330,7 +366,7 @@ type instanceArgs struct {
 	// Currently, its value only can be set to 50 when creating it, and finally depends on `partitionNum` value: <`topicQuota`> = 1000 + <`partitionNum`>.
 	// Therefore, you can update it by updating the `partitionNum`, and it is the only updating path.
 	//
-	// Deprecated: Attribute 'topic_quota' has been deprecated since 1.194.0 and it will be removed in the next future. Using new attribute 'partition_num' instead.
+	// Deprecated: Attribute `topic_quota` has been deprecated since 1.194.0 and it will be removed in the next future. Using new attribute `partition_num` instead.
 	TopicQuota *int `pulumi:"topicQuota"`
 	// The VPC ID of the instance.
 	VpcId *string `pulumi:"vpcId"`
@@ -393,7 +429,7 @@ type InstanceArgs struct {
 	// Currently, its value only can be set to 50 when creating it, and finally depends on `partitionNum` value: <`topicQuota`> = 1000 + <`partitionNum`>.
 	// Therefore, you can update it by updating the `partitionNum`, and it is the only updating path.
 	//
-	// Deprecated: Attribute 'topic_quota' has been deprecated since 1.194.0 and it will be removed in the next future. Using new attribute 'partition_num' instead.
+	// Deprecated: Attribute `topic_quota` has been deprecated since 1.194.0 and it will be removed in the next future. Using new attribute `partition_num` instead.
 	TopicQuota pulumi.IntPtrInput
 	// The VPC ID of the instance.
 	VpcId pulumi.StringPtrInput
@@ -522,6 +558,16 @@ func (o InstanceOutput) EndPoint() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.EndPoint }).(pulumi.StringOutput)
 }
 
+// (Available since v1.214.1) The number of available groups.
+func (o InstanceOutput) GroupLeft() pulumi.IntOutput {
+	return o.ApplyT(func(v *Instance) pulumi.IntOutput { return v.GroupLeft }).(pulumi.IntOutput)
+}
+
+// (Available since v1.214.1) The number of used groups.
+func (o InstanceOutput) GroupUsed() pulumi.IntOutput {
+	return o.ApplyT(func(v *Instance) pulumi.IntOutput { return v.GroupUsed }).(pulumi.IntOutput)
+}
+
 // The max value of io of the instance. When modify this value, it only support adjust to a greater value.
 func (o InstanceOutput) IoMax() pulumi.IntOutput {
 	return o.ApplyT(func(v *Instance) pulumi.IntOutput { return v.IoMax }).(pulumi.IntOutput)
@@ -532,6 +578,11 @@ func (o InstanceOutput) IoMax() pulumi.IntOutput {
 // - For more information about the valid values, see [Billing](https://www.alibabacloud.com/help/en/message-queue-for-apache-kafka/latest/billing-overview).
 func (o InstanceOutput) IoMaxSpec() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.IoMaxSpec }).(pulumi.StringOutput)
+}
+
+// (Available since v1.214.1) The method that you use to purchase partitions.
+func (o InstanceOutput) IsPartitionBuy() pulumi.IntOutput {
+	return o.ApplyT(func(v *Instance) pulumi.IntOutput { return v.IsPartitionBuy }).(pulumi.IntOutput)
 }
 
 // The ID of the key that is used to encrypt data on standard SSDs in the region of the instance.
@@ -549,9 +600,19 @@ func (o InstanceOutput) PaidType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.PaidType }).(pulumi.StringPtrOutput)
 }
 
+// (Available since v1.214.1) The number of available partitions.
+func (o InstanceOutput) PartitionLeft() pulumi.IntOutput {
+	return o.ApplyT(func(v *Instance) pulumi.IntOutput { return v.PartitionLeft }).(pulumi.IntOutput)
+}
+
 // The number of partitions.
 func (o InstanceOutput) PartitionNum() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.IntPtrOutput { return v.PartitionNum }).(pulumi.IntPtrOutput)
+}
+
+// (Available since v1.214.1) The number of used partitions.
+func (o InstanceOutput) PartitionUsed() pulumi.IntOutput {
+	return o.ApplyT(func(v *Instance) pulumi.IntOutput { return v.PartitionUsed }).(pulumi.IntOutput)
 }
 
 // The ID of security group for this instance. If the security group is empty, system will create a default one.
@@ -584,11 +645,7 @@ func (o InstanceOutput) SpecType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.SpecType }).(pulumi.StringPtrOutput)
 }
 
-// The status of the instance. Valid values:
-// - 0: pending
-// - 1: deploying
-// - 5: running
-// - 15: expired
+// The status of the instance.
 func (o InstanceOutput) Status() pulumi.IntOutput {
 	return o.ApplyT(func(v *Instance) pulumi.IntOutput { return v.Status }).(pulumi.IntOutput)
 }
@@ -598,14 +655,29 @@ func (o InstanceOutput) Tags() pulumi.MapOutput {
 	return o.ApplyT(func(v *Instance) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
 }
 
+// (Available since v1.214.1) The number of available topics.
+func (o InstanceOutput) TopicLeft() pulumi.IntOutput {
+	return o.ApplyT(func(v *Instance) pulumi.IntOutput { return v.TopicLeft }).(pulumi.IntOutput)
+}
+
+// (Available since v1.214.1) The number of purchased topics.
+func (o InstanceOutput) TopicNumOfBuy() pulumi.IntOutput {
+	return o.ApplyT(func(v *Instance) pulumi.IntOutput { return v.TopicNumOfBuy }).(pulumi.IntOutput)
+}
+
 // The max num of topic can be creation of the instance.
 // It has been deprecated since version 1.194.0 and using `partitionNum` instead.
 // Currently, its value only can be set to 50 when creating it, and finally depends on `partitionNum` value: <`topicQuota`> = 1000 + <`partitionNum`>.
 // Therefore, you can update it by updating the `partitionNum`, and it is the only updating path.
 //
-// Deprecated: Attribute 'topic_quota' has been deprecated since 1.194.0 and it will be removed in the next future. Using new attribute 'partition_num' instead.
+// Deprecated: Attribute `topic_quota` has been deprecated since 1.194.0 and it will be removed in the next future. Using new attribute `partition_num` instead.
 func (o InstanceOutput) TopicQuota() pulumi.IntOutput {
 	return o.ApplyT(func(v *Instance) pulumi.IntOutput { return v.TopicQuota }).(pulumi.IntOutput)
+}
+
+// (Available since v1.214.1) The number of used topics.
+func (o InstanceOutput) TopicUsed() pulumi.IntOutput {
+	return o.ApplyT(func(v *Instance) pulumi.IntOutput { return v.TopicUsed }).(pulumi.IntOutput)
 }
 
 // The VPC ID of the instance.

@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.sae.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -56,12 +57,18 @@ public final class GetApplicationsApplicationMountDesc {
 
         @CustomType.Setter
         public Builder mountPath(String mountPath) {
-            this.mountPath = Objects.requireNonNull(mountPath);
+            if (mountPath == null) {
+              throw new MissingRequiredPropertyException("GetApplicationsApplicationMountDesc", "mountPath");
+            }
+            this.mountPath = mountPath;
             return this;
         }
         @CustomType.Setter
         public Builder nasPath(String nasPath) {
-            this.nasPath = Objects.requireNonNull(nasPath);
+            if (nasPath == null) {
+              throw new MissingRequiredPropertyException("GetApplicationsApplicationMountDesc", "nasPath");
+            }
+            this.nasPath = nasPath;
             return this;
         }
         public GetApplicationsApplicationMountDesc build() {

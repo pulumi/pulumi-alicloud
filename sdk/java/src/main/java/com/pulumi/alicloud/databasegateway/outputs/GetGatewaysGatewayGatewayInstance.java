@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.databasegateway.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -168,52 +169,82 @@ public final class GetGatewaysGatewayGatewayInstance {
 
         @CustomType.Setter
         public Builder connectEndpointType(String connectEndpointType) {
-            this.connectEndpointType = Objects.requireNonNull(connectEndpointType);
+            if (connectEndpointType == null) {
+              throw new MissingRequiredPropertyException("GetGatewaysGatewayGatewayInstance", "connectEndpointType");
+            }
+            this.connectEndpointType = connectEndpointType;
             return this;
         }
         @CustomType.Setter
         public Builder currentDaemonVersion(String currentDaemonVersion) {
-            this.currentDaemonVersion = Objects.requireNonNull(currentDaemonVersion);
+            if (currentDaemonVersion == null) {
+              throw new MissingRequiredPropertyException("GetGatewaysGatewayGatewayInstance", "currentDaemonVersion");
+            }
+            this.currentDaemonVersion = currentDaemonVersion;
             return this;
         }
         @CustomType.Setter
         public Builder currentVersion(String currentVersion) {
-            this.currentVersion = Objects.requireNonNull(currentVersion);
+            if (currentVersion == null) {
+              throw new MissingRequiredPropertyException("GetGatewaysGatewayGatewayInstance", "currentVersion");
+            }
+            this.currentVersion = currentVersion;
             return this;
         }
         @CustomType.Setter
         public Builder endPoint(String endPoint) {
-            this.endPoint = Objects.requireNonNull(endPoint);
+            if (endPoint == null) {
+              throw new MissingRequiredPropertyException("GetGatewaysGatewayGatewayInstance", "endPoint");
+            }
+            this.endPoint = endPoint;
             return this;
         }
         @CustomType.Setter
         public Builder gatewayInstanceId(String gatewayInstanceId) {
-            this.gatewayInstanceId = Objects.requireNonNull(gatewayInstanceId);
+            if (gatewayInstanceId == null) {
+              throw new MissingRequiredPropertyException("GetGatewaysGatewayGatewayInstance", "gatewayInstanceId");
+            }
+            this.gatewayInstanceId = gatewayInstanceId;
             return this;
         }
         @CustomType.Setter
         public Builder gatewayInstanceStatus(String gatewayInstanceStatus) {
-            this.gatewayInstanceStatus = Objects.requireNonNull(gatewayInstanceStatus);
+            if (gatewayInstanceStatus == null) {
+              throw new MissingRequiredPropertyException("GetGatewaysGatewayGatewayInstance", "gatewayInstanceStatus");
+            }
+            this.gatewayInstanceStatus = gatewayInstanceStatus;
             return this;
         }
         @CustomType.Setter
         public Builder lastUpdateTime(String lastUpdateTime) {
-            this.lastUpdateTime = Objects.requireNonNull(lastUpdateTime);
+            if (lastUpdateTime == null) {
+              throw new MissingRequiredPropertyException("GetGatewaysGatewayGatewayInstance", "lastUpdateTime");
+            }
+            this.lastUpdateTime = lastUpdateTime;
             return this;
         }
         @CustomType.Setter
         public Builder localIp(String localIp) {
-            this.localIp = Objects.requireNonNull(localIp);
+            if (localIp == null) {
+              throw new MissingRequiredPropertyException("GetGatewaysGatewayGatewayInstance", "localIp");
+            }
+            this.localIp = localIp;
             return this;
         }
         @CustomType.Setter
         public Builder message(String message) {
-            this.message = Objects.requireNonNull(message);
+            if (message == null) {
+              throw new MissingRequiredPropertyException("GetGatewaysGatewayGatewayInstance", "message");
+            }
+            this.message = message;
             return this;
         }
         @CustomType.Setter
         public Builder outputIp(String outputIp) {
-            this.outputIp = Objects.requireNonNull(outputIp);
+            if (outputIp == null) {
+              throw new MissingRequiredPropertyException("GetGatewaysGatewayGatewayInstance", "outputIp");
+            }
+            this.outputIp = outputIp;
             return this;
         }
         public GetGatewaysGatewayGatewayInstance build() {

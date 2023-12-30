@@ -5,6 +5,7 @@ package com.pulumi.alicloud.elasticsearch;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.Object;
@@ -1342,12 +1343,24 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public InstanceArgs build() {
-            $.dataNodeAmount = Objects.requireNonNull($.dataNodeAmount, "expected parameter 'dataNodeAmount' to be non-null");
-            $.dataNodeDiskSize = Objects.requireNonNull($.dataNodeDiskSize, "expected parameter 'dataNodeDiskSize' to be non-null");
-            $.dataNodeDiskType = Objects.requireNonNull($.dataNodeDiskType, "expected parameter 'dataNodeDiskType' to be non-null");
-            $.dataNodeSpec = Objects.requireNonNull($.dataNodeSpec, "expected parameter 'dataNodeSpec' to be non-null");
-            $.version = Objects.requireNonNull($.version, "expected parameter 'version' to be non-null");
-            $.vswitchId = Objects.requireNonNull($.vswitchId, "expected parameter 'vswitchId' to be non-null");
+            if ($.dataNodeAmount == null) {
+                throw new MissingRequiredPropertyException("InstanceArgs", "dataNodeAmount");
+            }
+            if ($.dataNodeDiskSize == null) {
+                throw new MissingRequiredPropertyException("InstanceArgs", "dataNodeDiskSize");
+            }
+            if ($.dataNodeDiskType == null) {
+                throw new MissingRequiredPropertyException("InstanceArgs", "dataNodeDiskType");
+            }
+            if ($.dataNodeSpec == null) {
+                throw new MissingRequiredPropertyException("InstanceArgs", "dataNodeSpec");
+            }
+            if ($.version == null) {
+                throw new MissingRequiredPropertyException("InstanceArgs", "version");
+            }
+            if ($.vswitchId == null) {
+                throw new MissingRequiredPropertyException("InstanceArgs", "vswitchId");
+            }
             return $;
         }
     }

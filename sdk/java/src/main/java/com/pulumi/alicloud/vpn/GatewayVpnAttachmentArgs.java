@@ -9,6 +9,7 @@ import com.pulumi.alicloud.vpn.inputs.GatewayVpnAttachmentIkeConfigArgs;
 import com.pulumi.alicloud.vpn.inputs.GatewayVpnAttachmentIpsecConfigArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -488,9 +489,15 @@ public final class GatewayVpnAttachmentArgs extends com.pulumi.resources.Resourc
         }
 
         public GatewayVpnAttachmentArgs build() {
-            $.customerGatewayId = Objects.requireNonNull($.customerGatewayId, "expected parameter 'customerGatewayId' to be non-null");
-            $.localSubnet = Objects.requireNonNull($.localSubnet, "expected parameter 'localSubnet' to be non-null");
-            $.remoteSubnet = Objects.requireNonNull($.remoteSubnet, "expected parameter 'remoteSubnet' to be non-null");
+            if ($.customerGatewayId == null) {
+                throw new MissingRequiredPropertyException("GatewayVpnAttachmentArgs", "customerGatewayId");
+            }
+            if ($.localSubnet == null) {
+                throw new MissingRequiredPropertyException("GatewayVpnAttachmentArgs", "localSubnet");
+            }
+            if ($.remoteSubnet == null) {
+                throw new MissingRequiredPropertyException("GatewayVpnAttachmentArgs", "remoteSubnet");
+            }
             return $;
         }
     }

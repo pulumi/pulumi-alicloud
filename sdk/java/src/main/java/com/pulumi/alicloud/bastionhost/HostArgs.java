@@ -5,6 +5,7 @@ package com.pulumi.alicloud.bastionhost;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -409,11 +410,21 @@ public final class HostArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public HostArgs build() {
-            $.activeAddressType = Objects.requireNonNull($.activeAddressType, "expected parameter 'activeAddressType' to be non-null");
-            $.hostName = Objects.requireNonNull($.hostName, "expected parameter 'hostName' to be non-null");
-            $.instanceId = Objects.requireNonNull($.instanceId, "expected parameter 'instanceId' to be non-null");
-            $.osType = Objects.requireNonNull($.osType, "expected parameter 'osType' to be non-null");
-            $.source = Objects.requireNonNull($.source, "expected parameter 'source' to be non-null");
+            if ($.activeAddressType == null) {
+                throw new MissingRequiredPropertyException("HostArgs", "activeAddressType");
+            }
+            if ($.hostName == null) {
+                throw new MissingRequiredPropertyException("HostArgs", "hostName");
+            }
+            if ($.instanceId == null) {
+                throw new MissingRequiredPropertyException("HostArgs", "instanceId");
+            }
+            if ($.osType == null) {
+                throw new MissingRequiredPropertyException("HostArgs", "osType");
+            }
+            if ($.source == null) {
+                throw new MissingRequiredPropertyException("HostArgs", "source");
+            }
             return $;
         }
     }

@@ -6,6 +6,7 @@ package com.pulumi.alicloud.edas.inputs;
 import com.pulumi.alicloud.edas.inputs.K8sSlbAttachmentSlbConfigPortMappingServicePortArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -151,8 +152,12 @@ public final class K8sSlbAttachmentSlbConfigPortMappingArgs extends com.pulumi.r
         }
 
         public K8sSlbAttachmentSlbConfigPortMappingArgs build() {
-            $.loadbalancerProtocol = Objects.requireNonNull($.loadbalancerProtocol, "expected parameter 'loadbalancerProtocol' to be non-null");
-            $.servicePort = Objects.requireNonNull($.servicePort, "expected parameter 'servicePort' to be non-null");
+            if ($.loadbalancerProtocol == null) {
+                throw new MissingRequiredPropertyException("K8sSlbAttachmentSlbConfigPortMappingArgs", "loadbalancerProtocol");
+            }
+            if ($.servicePort == null) {
+                throw new MissingRequiredPropertyException("K8sSlbAttachmentSlbConfigPortMappingArgs", "servicePort");
+            }
             return $;
         }
     }

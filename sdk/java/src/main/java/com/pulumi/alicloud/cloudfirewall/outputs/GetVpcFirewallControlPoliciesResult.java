@@ -5,6 +5,7 @@ package com.pulumi.alicloud.cloudfirewall.outputs;
 
 import com.pulumi.alicloud.cloudfirewall.outputs.GetVpcFirewallControlPoliciesPolicy;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -138,32 +139,42 @@ public final class GetVpcFirewallControlPoliciesResult {
 
         @CustomType.Setter
         public Builder aclAction(@Nullable String aclAction) {
+
             this.aclAction = aclAction;
             return this;
         }
         @CustomType.Setter
         public Builder aclUuid(@Nullable String aclUuid) {
+
             this.aclUuid = aclUuid;
             return this;
         }
         @CustomType.Setter
         public Builder description(@Nullable String description) {
+
             this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder destination(@Nullable String destination) {
+
             this.destination = destination;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetVpcFirewallControlPoliciesResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder ids(List<String> ids) {
-            this.ids = Objects.requireNonNull(ids);
+            if (ids == null) {
+              throw new MissingRequiredPropertyException("GetVpcFirewallControlPoliciesResult", "ids");
+            }
+            this.ids = ids;
             return this;
         }
         public Builder ids(String... ids) {
@@ -171,32 +182,40 @@ public final class GetVpcFirewallControlPoliciesResult {
         }
         @CustomType.Setter
         public Builder lang(@Nullable String lang) {
+
             this.lang = lang;
             return this;
         }
         @CustomType.Setter
         public Builder memberUid(@Nullable String memberUid) {
+
             this.memberUid = memberUid;
             return this;
         }
         @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
+
             this.outputFile = outputFile;
             return this;
         }
         @CustomType.Setter
         public Builder pageNumber(@Nullable Integer pageNumber) {
+
             this.pageNumber = pageNumber;
             return this;
         }
         @CustomType.Setter
         public Builder pageSize(@Nullable Integer pageSize) {
+
             this.pageSize = pageSize;
             return this;
         }
         @CustomType.Setter
         public Builder policies(List<GetVpcFirewallControlPoliciesPolicy> policies) {
-            this.policies = Objects.requireNonNull(policies);
+            if (policies == null) {
+              throw new MissingRequiredPropertyException("GetVpcFirewallControlPoliciesResult", "policies");
+            }
+            this.policies = policies;
             return this;
         }
         public Builder policies(GetVpcFirewallControlPoliciesPolicy... policies) {
@@ -204,22 +223,28 @@ public final class GetVpcFirewallControlPoliciesResult {
         }
         @CustomType.Setter
         public Builder proto(@Nullable String proto) {
+
             this.proto = proto;
             return this;
         }
         @CustomType.Setter
         public Builder release(@Nullable Boolean release) {
+
             this.release = release;
             return this;
         }
         @CustomType.Setter
         public Builder source(@Nullable String source) {
+
             this.source = source;
             return this;
         }
         @CustomType.Setter
         public Builder vpcFirewallId(String vpcFirewallId) {
-            this.vpcFirewallId = Objects.requireNonNull(vpcFirewallId);
+            if (vpcFirewallId == null) {
+              throw new MissingRequiredPropertyException("GetVpcFirewallControlPoliciesResult", "vpcFirewallId");
+            }
+            this.vpcFirewallId = vpcFirewallId;
             return this;
         }
         public GetVpcFirewallControlPoliciesResult build() {

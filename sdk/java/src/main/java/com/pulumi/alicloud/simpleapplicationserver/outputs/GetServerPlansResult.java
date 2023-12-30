@@ -5,6 +5,7 @@ package com.pulumi.alicloud.simpleapplicationserver.outputs;
 
 import com.pulumi.alicloud.simpleapplicationserver.outputs.GetServerPlansPlan;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -101,32 +102,42 @@ public final class GetServerPlansResult {
 
         @CustomType.Setter
         public Builder bandwidth(@Nullable Integer bandwidth) {
+
             this.bandwidth = bandwidth;
             return this;
         }
         @CustomType.Setter
         public Builder core(@Nullable Integer core) {
+
             this.core = core;
             return this;
         }
         @CustomType.Setter
         public Builder diskSize(@Nullable Integer diskSize) {
+
             this.diskSize = diskSize;
             return this;
         }
         @CustomType.Setter
         public Builder flow(@Nullable Integer flow) {
+
             this.flow = flow;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetServerPlansResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder ids(List<String> ids) {
-            this.ids = Objects.requireNonNull(ids);
+            if (ids == null) {
+              throw new MissingRequiredPropertyException("GetServerPlansResult", "ids");
+            }
+            this.ids = ids;
             return this;
         }
         public Builder ids(String... ids) {
@@ -134,17 +145,22 @@ public final class GetServerPlansResult {
         }
         @CustomType.Setter
         public Builder memory(@Nullable Integer memory) {
+
             this.memory = memory;
             return this;
         }
         @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
+
             this.outputFile = outputFile;
             return this;
         }
         @CustomType.Setter
         public Builder plans(List<GetServerPlansPlan> plans) {
-            this.plans = Objects.requireNonNull(plans);
+            if (plans == null) {
+              throw new MissingRequiredPropertyException("GetServerPlansResult", "plans");
+            }
+            this.plans = plans;
             return this;
         }
         public Builder plans(GetServerPlansPlan... plans) {
@@ -152,6 +168,7 @@ public final class GetServerPlansResult {
         }
         @CustomType.Setter
         public Builder platform(@Nullable String platform) {
+
             this.platform = platform;
             return this;
         }

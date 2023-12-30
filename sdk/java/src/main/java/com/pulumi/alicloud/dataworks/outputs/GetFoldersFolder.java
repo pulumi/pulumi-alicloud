@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.dataworks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -76,22 +77,34 @@ public final class GetFoldersFolder {
 
         @CustomType.Setter
         public Builder folderId(String folderId) {
-            this.folderId = Objects.requireNonNull(folderId);
+            if (folderId == null) {
+              throw new MissingRequiredPropertyException("GetFoldersFolder", "folderId");
+            }
+            this.folderId = folderId;
             return this;
         }
         @CustomType.Setter
         public Builder folderPath(String folderPath) {
-            this.folderPath = Objects.requireNonNull(folderPath);
+            if (folderPath == null) {
+              throw new MissingRequiredPropertyException("GetFoldersFolder", "folderPath");
+            }
+            this.folderPath = folderPath;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetFoldersFolder", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder projectId(String projectId) {
-            this.projectId = Objects.requireNonNull(projectId);
+            if (projectId == null) {
+              throw new MissingRequiredPropertyException("GetFoldersFolder", "projectId");
+            }
+            this.projectId = projectId;
             return this;
         }
         public GetFoldersFolder build() {

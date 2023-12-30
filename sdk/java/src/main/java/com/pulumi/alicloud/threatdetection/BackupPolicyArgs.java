@@ -5,6 +5,7 @@ package com.pulumi.alicloud.threatdetection;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -235,10 +236,18 @@ public final class BackupPolicyArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public BackupPolicyArgs build() {
-            $.backupPolicyName = Objects.requireNonNull($.backupPolicyName, "expected parameter 'backupPolicyName' to be non-null");
-            $.policy = Objects.requireNonNull($.policy, "expected parameter 'policy' to be non-null");
-            $.policyVersion = Objects.requireNonNull($.policyVersion, "expected parameter 'policyVersion' to be non-null");
-            $.uuidLists = Objects.requireNonNull($.uuidLists, "expected parameter 'uuidLists' to be non-null");
+            if ($.backupPolicyName == null) {
+                throw new MissingRequiredPropertyException("BackupPolicyArgs", "backupPolicyName");
+            }
+            if ($.policy == null) {
+                throw new MissingRequiredPropertyException("BackupPolicyArgs", "policy");
+            }
+            if ($.policyVersion == null) {
+                throw new MissingRequiredPropertyException("BackupPolicyArgs", "policyVersion");
+            }
+            if ($.uuidLists == null) {
+                throw new MissingRequiredPropertyException("BackupPolicyArgs", "uuidLists");
+            }
             return $;
         }
     }

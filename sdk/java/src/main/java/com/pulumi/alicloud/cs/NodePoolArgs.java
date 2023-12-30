@@ -14,6 +14,7 @@ import com.pulumi.alicloud.cs.inputs.NodePoolSpotPriceLimitArgs;
 import com.pulumi.alicloud.cs.inputs.NodePoolTaintArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.Object;
@@ -2330,9 +2331,15 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public NodePoolArgs build() {
-            $.clusterId = Objects.requireNonNull($.clusterId, "expected parameter 'clusterId' to be non-null");
-            $.instanceTypes = Objects.requireNonNull($.instanceTypes, "expected parameter 'instanceTypes' to be non-null");
-            $.vswitchIds = Objects.requireNonNull($.vswitchIds, "expected parameter 'vswitchIds' to be non-null");
+            if ($.clusterId == null) {
+                throw new MissingRequiredPropertyException("NodePoolArgs", "clusterId");
+            }
+            if ($.instanceTypes == null) {
+                throw new MissingRequiredPropertyException("NodePoolArgs", "instanceTypes");
+            }
+            if ($.vswitchIds == null) {
+                throw new MissingRequiredPropertyException("NodePoolArgs", "vswitchIds");
+            }
             return $;
         }
     }

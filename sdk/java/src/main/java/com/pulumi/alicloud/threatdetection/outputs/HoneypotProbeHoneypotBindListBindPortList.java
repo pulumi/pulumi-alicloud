@@ -101,26 +101,31 @@ public final class HoneypotProbeHoneypotBindListBindPortList {
 
         @CustomType.Setter
         public Builder bindPort(@Nullable Boolean bindPort) {
+
             this.bindPort = bindPort;
             return this;
         }
         @CustomType.Setter
         public Builder endPort(@Nullable Integer endPort) {
+
             this.endPort = endPort;
             return this;
         }
         @CustomType.Setter
         public Builder fixed(@Nullable Boolean fixed) {
+
             this.fixed = fixed;
             return this;
         }
         @CustomType.Setter
         public Builder startPort(@Nullable Integer startPort) {
+
             this.startPort = startPort;
             return this;
         }
         @CustomType.Setter
         public Builder targetPort(@Nullable Integer targetPort) {
+
             this.targetPort = targetPort;
             return this;
         }

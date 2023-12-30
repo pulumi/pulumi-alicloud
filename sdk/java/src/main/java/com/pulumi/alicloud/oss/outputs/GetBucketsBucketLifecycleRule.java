@@ -5,6 +5,7 @@ package com.pulumi.alicloud.oss.outputs;
 
 import com.pulumi.alicloud.oss.outputs.GetBucketsBucketLifecycleRuleExpiration;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -86,22 +87,34 @@ public final class GetBucketsBucketLifecycleRule {
 
         @CustomType.Setter
         public Builder enabled(Boolean enabled) {
-            this.enabled = Objects.requireNonNull(enabled);
+            if (enabled == null) {
+              throw new MissingRequiredPropertyException("GetBucketsBucketLifecycleRule", "enabled");
+            }
+            this.enabled = enabled;
             return this;
         }
         @CustomType.Setter
         public Builder expiration(GetBucketsBucketLifecycleRuleExpiration expiration) {
-            this.expiration = Objects.requireNonNull(expiration);
+            if (expiration == null) {
+              throw new MissingRequiredPropertyException("GetBucketsBucketLifecycleRule", "expiration");
+            }
+            this.expiration = expiration;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetBucketsBucketLifecycleRule", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder prefix(String prefix) {
-            this.prefix = Objects.requireNonNull(prefix);
+            if (prefix == null) {
+              throw new MissingRequiredPropertyException("GetBucketsBucketLifecycleRule", "prefix");
+            }
+            this.prefix = prefix;
             return this;
         }
         public GetBucketsBucketLifecycleRule build() {

@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.resourcemanager.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -98,27 +99,42 @@ public final class GetResourceSharesShare {
 
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetResourceSharesShare", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder resourceShareId(String resourceShareId) {
-            this.resourceShareId = Objects.requireNonNull(resourceShareId);
+            if (resourceShareId == null) {
+              throw new MissingRequiredPropertyException("GetResourceSharesShare", "resourceShareId");
+            }
+            this.resourceShareId = resourceShareId;
             return this;
         }
         @CustomType.Setter
         public Builder resourceShareName(String resourceShareName) {
-            this.resourceShareName = Objects.requireNonNull(resourceShareName);
+            if (resourceShareName == null) {
+              throw new MissingRequiredPropertyException("GetResourceSharesShare", "resourceShareName");
+            }
+            this.resourceShareName = resourceShareName;
             return this;
         }
         @CustomType.Setter
         public Builder resourceShareOwner(String resourceShareOwner) {
-            this.resourceShareOwner = Objects.requireNonNull(resourceShareOwner);
+            if (resourceShareOwner == null) {
+              throw new MissingRequiredPropertyException("GetResourceSharesShare", "resourceShareOwner");
+            }
+            this.resourceShareOwner = resourceShareOwner;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetResourceSharesShare", "status");
+            }
+            this.status = status;
             return this;
         }
         public GetResourceSharesShare build() {

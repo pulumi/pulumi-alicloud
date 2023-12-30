@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.ros.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -58,12 +59,16 @@ public final class StackParameter {
 
         @CustomType.Setter
         public Builder parameterKey(@Nullable String parameterKey) {
+
             this.parameterKey = parameterKey;
             return this;
         }
         @CustomType.Setter
         public Builder parameterValue(String parameterValue) {
-            this.parameterValue = Objects.requireNonNull(parameterValue);
+            if (parameterValue == null) {
+              throw new MissingRequiredPropertyException("StackParameter", "parameterValue");
+            }
+            this.parameterValue = parameterValue;
             return this;
         }
         public StackParameter build() {

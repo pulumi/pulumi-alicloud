@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.rocketmq.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.Object;
@@ -200,62 +201,98 @@ public final class GetTopicsTopic {
 
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetTopicsTopic", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder independentNaming(Boolean independentNaming) {
-            this.independentNaming = Objects.requireNonNull(independentNaming);
+            if (independentNaming == null) {
+              throw new MissingRequiredPropertyException("GetTopicsTopic", "independentNaming");
+            }
+            this.independentNaming = independentNaming;
             return this;
         }
         @CustomType.Setter
         public Builder instanceId(String instanceId) {
-            this.instanceId = Objects.requireNonNull(instanceId);
+            if (instanceId == null) {
+              throw new MissingRequiredPropertyException("GetTopicsTopic", "instanceId");
+            }
+            this.instanceId = instanceId;
             return this;
         }
         @CustomType.Setter
         public Builder messageType(Integer messageType) {
-            this.messageType = Objects.requireNonNull(messageType);
+            if (messageType == null) {
+              throw new MissingRequiredPropertyException("GetTopicsTopic", "messageType");
+            }
+            this.messageType = messageType;
             return this;
         }
         @CustomType.Setter
         public Builder owner(String owner) {
-            this.owner = Objects.requireNonNull(owner);
+            if (owner == null) {
+              throw new MissingRequiredPropertyException("GetTopicsTopic", "owner");
+            }
+            this.owner = owner;
             return this;
         }
         @CustomType.Setter
         public Builder perm(Integer perm) {
-            this.perm = Objects.requireNonNull(perm);
+            if (perm == null) {
+              throw new MissingRequiredPropertyException("GetTopicsTopic", "perm");
+            }
+            this.perm = perm;
             return this;
         }
         @CustomType.Setter
         public Builder relation(Integer relation) {
-            this.relation = Objects.requireNonNull(relation);
+            if (relation == null) {
+              throw new MissingRequiredPropertyException("GetTopicsTopic", "relation");
+            }
+            this.relation = relation;
             return this;
         }
         @CustomType.Setter
         public Builder relationName(String relationName) {
-            this.relationName = Objects.requireNonNull(relationName);
+            if (relationName == null) {
+              throw new MissingRequiredPropertyException("GetTopicsTopic", "relationName");
+            }
+            this.relationName = relationName;
             return this;
         }
         @CustomType.Setter
         public Builder remark(String remark) {
-            this.remark = Objects.requireNonNull(remark);
+            if (remark == null) {
+              throw new MissingRequiredPropertyException("GetTopicsTopic", "remark");
+            }
+            this.remark = remark;
             return this;
         }
         @CustomType.Setter
         public Builder tags(Map<String,Object> tags) {
-            this.tags = Objects.requireNonNull(tags);
+            if (tags == null) {
+              throw new MissingRequiredPropertyException("GetTopicsTopic", "tags");
+            }
+            this.tags = tags;
             return this;
         }
         @CustomType.Setter
         public Builder topic(String topic) {
-            this.topic = Objects.requireNonNull(topic);
+            if (topic == null) {
+              throw new MissingRequiredPropertyException("GetTopicsTopic", "topic");
+            }
+            this.topic = topic;
             return this;
         }
         @CustomType.Setter
         public Builder topicName(String topicName) {
-            this.topicName = Objects.requireNonNull(topicName);
+            if (topicName == null) {
+              throw new MissingRequiredPropertyException("GetTopicsTopic", "topicName");
+            }
+            this.topicName = topicName;
             return this;
         }
         public GetTopicsTopic build() {

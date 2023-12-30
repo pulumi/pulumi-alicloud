@@ -5,6 +5,7 @@ package com.pulumi.alicloud.cassandra;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -515,11 +516,21 @@ public final class DataCenterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public DataCenterArgs build() {
-            $.clusterId = Objects.requireNonNull($.clusterId, "expected parameter 'clusterId' to be non-null");
-            $.instanceType = Objects.requireNonNull($.instanceType, "expected parameter 'instanceType' to be non-null");
-            $.nodeCount = Objects.requireNonNull($.nodeCount, "expected parameter 'nodeCount' to be non-null");
-            $.payType = Objects.requireNonNull($.payType, "expected parameter 'payType' to be non-null");
-            $.vswitchId = Objects.requireNonNull($.vswitchId, "expected parameter 'vswitchId' to be non-null");
+            if ($.clusterId == null) {
+                throw new MissingRequiredPropertyException("DataCenterArgs", "clusterId");
+            }
+            if ($.instanceType == null) {
+                throw new MissingRequiredPropertyException("DataCenterArgs", "instanceType");
+            }
+            if ($.nodeCount == null) {
+                throw new MissingRequiredPropertyException("DataCenterArgs", "nodeCount");
+            }
+            if ($.payType == null) {
+                throw new MissingRequiredPropertyException("DataCenterArgs", "payType");
+            }
+            if ($.vswitchId == null) {
+                throw new MissingRequiredPropertyException("DataCenterArgs", "vswitchId");
+            }
             return $;
         }
     }

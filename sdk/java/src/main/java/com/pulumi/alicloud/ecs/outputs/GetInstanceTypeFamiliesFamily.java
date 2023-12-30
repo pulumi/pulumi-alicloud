@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.ecs.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -71,17 +72,26 @@ public final class GetInstanceTypeFamiliesFamily {
 
         @CustomType.Setter
         public Builder generation(String generation) {
-            this.generation = Objects.requireNonNull(generation);
+            if (generation == null) {
+              throw new MissingRequiredPropertyException("GetInstanceTypeFamiliesFamily", "generation");
+            }
+            this.generation = generation;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetInstanceTypeFamiliesFamily", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder zoneIds(List<String> zoneIds) {
-            this.zoneIds = Objects.requireNonNull(zoneIds);
+            if (zoneIds == null) {
+              throw new MissingRequiredPropertyException("GetInstanceTypeFamiliesFamily", "zoneIds");
+            }
+            this.zoneIds = zoneIds;
             return this;
         }
         public Builder zoneIds(String... zoneIds) {

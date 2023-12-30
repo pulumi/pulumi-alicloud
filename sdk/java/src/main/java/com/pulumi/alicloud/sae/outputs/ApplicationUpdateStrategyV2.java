@@ -59,11 +59,13 @@ public final class ApplicationUpdateStrategyV2 {
 
         @CustomType.Setter
         public Builder batchUpdate(@Nullable ApplicationUpdateStrategyV2BatchUpdate batchUpdate) {
+
             this.batchUpdate = batchUpdate;
             return this;
         }
         @CustomType.Setter
         public Builder type(@Nullable String type) {
+
             this.type = type;
             return this;
         }

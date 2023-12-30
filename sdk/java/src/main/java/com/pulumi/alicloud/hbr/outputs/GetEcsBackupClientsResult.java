@@ -5,6 +5,7 @@ package com.pulumi.alicloud.hbr.outputs;
 
 import com.pulumi.alicloud.hbr.outputs.GetEcsBackupClientsClient;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -76,7 +77,10 @@ public final class GetEcsBackupClientsResult {
 
         @CustomType.Setter
         public Builder clients(List<GetEcsBackupClientsClient> clients) {
-            this.clients = Objects.requireNonNull(clients);
+            if (clients == null) {
+              throw new MissingRequiredPropertyException("GetEcsBackupClientsResult", "clients");
+            }
+            this.clients = clients;
             return this;
         }
         public Builder clients(GetEcsBackupClientsClient... clients) {
@@ -84,12 +88,18 @@ public final class GetEcsBackupClientsResult {
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetEcsBackupClientsResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder ids(List<String> ids) {
-            this.ids = Objects.requireNonNull(ids);
+            if (ids == null) {
+              throw new MissingRequiredPropertyException("GetEcsBackupClientsResult", "ids");
+            }
+            this.ids = ids;
             return this;
         }
         public Builder ids(String... ids) {
@@ -97,6 +107,7 @@ public final class GetEcsBackupClientsResult {
         }
         @CustomType.Setter
         public Builder instanceIds(@Nullable List<String> instanceIds) {
+
             this.instanceIds = instanceIds;
             return this;
         }
@@ -105,11 +116,13 @@ public final class GetEcsBackupClientsResult {
         }
         @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
+
             this.outputFile = outputFile;
             return this;
         }
         @CustomType.Setter
         public Builder status(@Nullable String status) {
+
             this.status = status;
             return this;
         }

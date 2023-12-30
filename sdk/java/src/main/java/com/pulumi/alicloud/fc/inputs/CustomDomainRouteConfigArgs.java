@@ -5,6 +5,7 @@ package com.pulumi.alicloud.fc.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -235,9 +236,15 @@ public final class CustomDomainRouteConfigArgs extends com.pulumi.resources.Reso
         }
 
         public CustomDomainRouteConfigArgs build() {
-            $.functionName = Objects.requireNonNull($.functionName, "expected parameter 'functionName' to be non-null");
-            $.path = Objects.requireNonNull($.path, "expected parameter 'path' to be non-null");
-            $.serviceName = Objects.requireNonNull($.serviceName, "expected parameter 'serviceName' to be non-null");
+            if ($.functionName == null) {
+                throw new MissingRequiredPropertyException("CustomDomainRouteConfigArgs", "functionName");
+            }
+            if ($.path == null) {
+                throw new MissingRequiredPropertyException("CustomDomainRouteConfigArgs", "path");
+            }
+            if ($.serviceName == null) {
+                throw new MissingRequiredPropertyException("CustomDomainRouteConfigArgs", "serviceName");
+            }
             return $;
         }
     }

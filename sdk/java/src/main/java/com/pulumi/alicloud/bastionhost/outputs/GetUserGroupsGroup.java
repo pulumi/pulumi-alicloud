@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.bastionhost.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -98,27 +99,42 @@ public final class GetUserGroupsGroup {
 
         @CustomType.Setter
         public Builder comment(String comment) {
-            this.comment = Objects.requireNonNull(comment);
+            if (comment == null) {
+              throw new MissingRequiredPropertyException("GetUserGroupsGroup", "comment");
+            }
+            this.comment = comment;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetUserGroupsGroup", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder instanceId(String instanceId) {
-            this.instanceId = Objects.requireNonNull(instanceId);
+            if (instanceId == null) {
+              throw new MissingRequiredPropertyException("GetUserGroupsGroup", "instanceId");
+            }
+            this.instanceId = instanceId;
             return this;
         }
         @CustomType.Setter
         public Builder userGroupId(String userGroupId) {
-            this.userGroupId = Objects.requireNonNull(userGroupId);
+            if (userGroupId == null) {
+              throw new MissingRequiredPropertyException("GetUserGroupsGroup", "userGroupId");
+            }
+            this.userGroupId = userGroupId;
             return this;
         }
         @CustomType.Setter
         public Builder userGroupName(String userGroupName) {
-            this.userGroupName = Objects.requireNonNull(userGroupName);
+            if (userGroupName == null) {
+              throw new MissingRequiredPropertyException("GetUserGroupsGroup", "userGroupName");
+            }
+            this.userGroupName = userGroupName;
             return this;
         }
         public GetUserGroupsGroup build() {

@@ -60,11 +60,13 @@ public final class RuleRuleActionForwardGroupConfig {
 
         @CustomType.Setter
         public Builder serverGroupStickySession(@Nullable RuleRuleActionForwardGroupConfigServerGroupStickySession serverGroupStickySession) {
+
             this.serverGroupStickySession = serverGroupStickySession;
             return this;
         }
         @CustomType.Setter
         public Builder serverGroupTuples(@Nullable List<RuleRuleActionForwardGroupConfigServerGroupTuple> serverGroupTuples) {
+
             this.serverGroupTuples = serverGroupTuples;
             return this;
         }

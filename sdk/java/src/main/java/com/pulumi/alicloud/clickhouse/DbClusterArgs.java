@@ -6,6 +6,7 @@ package com.pulumi.alicloud.clickhouse;
 import com.pulumi.alicloud.clickhouse.inputs.DbClusterDbClusterAccessWhiteListArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -763,14 +764,30 @@ public final class DbClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public DbClusterArgs build() {
-            $.category = Objects.requireNonNull($.category, "expected parameter 'category' to be non-null");
-            $.dbClusterClass = Objects.requireNonNull($.dbClusterClass, "expected parameter 'dbClusterClass' to be non-null");
-            $.dbClusterNetworkType = Objects.requireNonNull($.dbClusterNetworkType, "expected parameter 'dbClusterNetworkType' to be non-null");
-            $.dbClusterVersion = Objects.requireNonNull($.dbClusterVersion, "expected parameter 'dbClusterVersion' to be non-null");
-            $.dbNodeGroupCount = Objects.requireNonNull($.dbNodeGroupCount, "expected parameter 'dbNodeGroupCount' to be non-null");
-            $.dbNodeStorage = Objects.requireNonNull($.dbNodeStorage, "expected parameter 'dbNodeStorage' to be non-null");
-            $.paymentType = Objects.requireNonNull($.paymentType, "expected parameter 'paymentType' to be non-null");
-            $.storageType = Objects.requireNonNull($.storageType, "expected parameter 'storageType' to be non-null");
+            if ($.category == null) {
+                throw new MissingRequiredPropertyException("DbClusterArgs", "category");
+            }
+            if ($.dbClusterClass == null) {
+                throw new MissingRequiredPropertyException("DbClusterArgs", "dbClusterClass");
+            }
+            if ($.dbClusterNetworkType == null) {
+                throw new MissingRequiredPropertyException("DbClusterArgs", "dbClusterNetworkType");
+            }
+            if ($.dbClusterVersion == null) {
+                throw new MissingRequiredPropertyException("DbClusterArgs", "dbClusterVersion");
+            }
+            if ($.dbNodeGroupCount == null) {
+                throw new MissingRequiredPropertyException("DbClusterArgs", "dbNodeGroupCount");
+            }
+            if ($.dbNodeStorage == null) {
+                throw new MissingRequiredPropertyException("DbClusterArgs", "dbNodeStorage");
+            }
+            if ($.paymentType == null) {
+                throw new MissingRequiredPropertyException("DbClusterArgs", "paymentType");
+            }
+            if ($.storageType == null) {
+                throw new MissingRequiredPropertyException("DbClusterArgs", "storageType");
+            }
             return $;
         }
     }

@@ -7,6 +7,7 @@ import com.pulumi.alicloud.fc.outputs.GetServicesServiceLogConfig;
 import com.pulumi.alicloud.fc.outputs.GetServicesServiceNasConfig;
 import com.pulumi.alicloud.fc.outputs.GetServicesServiceVpcConfig;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -172,52 +173,82 @@ public final class GetServicesService {
 
         @CustomType.Setter
         public Builder creationTime(String creationTime) {
-            this.creationTime = Objects.requireNonNull(creationTime);
+            if (creationTime == null) {
+              throw new MissingRequiredPropertyException("GetServicesService", "creationTime");
+            }
+            this.creationTime = creationTime;
             return this;
         }
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetServicesService", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetServicesService", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder internetAccess(Boolean internetAccess) {
-            this.internetAccess = Objects.requireNonNull(internetAccess);
+            if (internetAccess == null) {
+              throw new MissingRequiredPropertyException("GetServicesService", "internetAccess");
+            }
+            this.internetAccess = internetAccess;
             return this;
         }
         @CustomType.Setter
         public Builder lastModificationTime(String lastModificationTime) {
-            this.lastModificationTime = Objects.requireNonNull(lastModificationTime);
+            if (lastModificationTime == null) {
+              throw new MissingRequiredPropertyException("GetServicesService", "lastModificationTime");
+            }
+            this.lastModificationTime = lastModificationTime;
             return this;
         }
         @CustomType.Setter
         public Builder logConfig(GetServicesServiceLogConfig logConfig) {
-            this.logConfig = Objects.requireNonNull(logConfig);
+            if (logConfig == null) {
+              throw new MissingRequiredPropertyException("GetServicesService", "logConfig");
+            }
+            this.logConfig = logConfig;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetServicesService", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder nasConfig(GetServicesServiceNasConfig nasConfig) {
-            this.nasConfig = Objects.requireNonNull(nasConfig);
+            if (nasConfig == null) {
+              throw new MissingRequiredPropertyException("GetServicesService", "nasConfig");
+            }
+            this.nasConfig = nasConfig;
             return this;
         }
         @CustomType.Setter
         public Builder role(String role) {
-            this.role = Objects.requireNonNull(role);
+            if (role == null) {
+              throw new MissingRequiredPropertyException("GetServicesService", "role");
+            }
+            this.role = role;
             return this;
         }
         @CustomType.Setter
         public Builder vpcConfig(GetServicesServiceVpcConfig vpcConfig) {
-            this.vpcConfig = Objects.requireNonNull(vpcConfig);
+            if (vpcConfig == null) {
+              throw new MissingRequiredPropertyException("GetServicesService", "vpcConfig");
+            }
+            this.vpcConfig = vpcConfig;
             return this;
         }
         public GetServicesService build() {

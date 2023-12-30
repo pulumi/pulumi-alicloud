@@ -5,6 +5,7 @@ package com.pulumi.alicloud.log;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -373,13 +374,27 @@ public final class IngestionArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public IngestionArgs build() {
-            $.displayName = Objects.requireNonNull($.displayName, "expected parameter 'displayName' to be non-null");
-            $.ingestionName = Objects.requireNonNull($.ingestionName, "expected parameter 'ingestionName' to be non-null");
-            $.interval = Objects.requireNonNull($.interval, "expected parameter 'interval' to be non-null");
-            $.logstore = Objects.requireNonNull($.logstore, "expected parameter 'logstore' to be non-null");
-            $.project = Objects.requireNonNull($.project, "expected parameter 'project' to be non-null");
-            $.runImmediately = Objects.requireNonNull($.runImmediately, "expected parameter 'runImmediately' to be non-null");
-            $.source = Objects.requireNonNull($.source, "expected parameter 'source' to be non-null");
+            if ($.displayName == null) {
+                throw new MissingRequiredPropertyException("IngestionArgs", "displayName");
+            }
+            if ($.ingestionName == null) {
+                throw new MissingRequiredPropertyException("IngestionArgs", "ingestionName");
+            }
+            if ($.interval == null) {
+                throw new MissingRequiredPropertyException("IngestionArgs", "interval");
+            }
+            if ($.logstore == null) {
+                throw new MissingRequiredPropertyException("IngestionArgs", "logstore");
+            }
+            if ($.project == null) {
+                throw new MissingRequiredPropertyException("IngestionArgs", "project");
+            }
+            if ($.runImmediately == null) {
+                throw new MissingRequiredPropertyException("IngestionArgs", "runImmediately");
+            }
+            if ($.source == null) {
+                throw new MissingRequiredPropertyException("IngestionArgs", "source");
+            }
             return $;
         }
     }

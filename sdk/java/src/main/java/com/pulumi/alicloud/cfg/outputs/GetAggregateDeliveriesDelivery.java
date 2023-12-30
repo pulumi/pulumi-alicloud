@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.cfg.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -240,77 +241,122 @@ public final class GetAggregateDeliveriesDelivery {
 
         @CustomType.Setter
         public Builder accountId(String accountId) {
-            this.accountId = Objects.requireNonNull(accountId);
+            if (accountId == null) {
+              throw new MissingRequiredPropertyException("GetAggregateDeliveriesDelivery", "accountId");
+            }
+            this.accountId = accountId;
             return this;
         }
         @CustomType.Setter
         public Builder aggregatorId(String aggregatorId) {
-            this.aggregatorId = Objects.requireNonNull(aggregatorId);
+            if (aggregatorId == null) {
+              throw new MissingRequiredPropertyException("GetAggregateDeliveriesDelivery", "aggregatorId");
+            }
+            this.aggregatorId = aggregatorId;
             return this;
         }
         @CustomType.Setter
         public Builder configurationItemChangeNotification(Boolean configurationItemChangeNotification) {
-            this.configurationItemChangeNotification = Objects.requireNonNull(configurationItemChangeNotification);
+            if (configurationItemChangeNotification == null) {
+              throw new MissingRequiredPropertyException("GetAggregateDeliveriesDelivery", "configurationItemChangeNotification");
+            }
+            this.configurationItemChangeNotification = configurationItemChangeNotification;
             return this;
         }
         @CustomType.Setter
         public Builder configurationSnapshot(Boolean configurationSnapshot) {
-            this.configurationSnapshot = Objects.requireNonNull(configurationSnapshot);
+            if (configurationSnapshot == null) {
+              throw new MissingRequiredPropertyException("GetAggregateDeliveriesDelivery", "configurationSnapshot");
+            }
+            this.configurationSnapshot = configurationSnapshot;
             return this;
         }
         @CustomType.Setter
         public Builder deliveryChannelAssumeRoleArn(String deliveryChannelAssumeRoleArn) {
-            this.deliveryChannelAssumeRoleArn = Objects.requireNonNull(deliveryChannelAssumeRoleArn);
+            if (deliveryChannelAssumeRoleArn == null) {
+              throw new MissingRequiredPropertyException("GetAggregateDeliveriesDelivery", "deliveryChannelAssumeRoleArn");
+            }
+            this.deliveryChannelAssumeRoleArn = deliveryChannelAssumeRoleArn;
             return this;
         }
         @CustomType.Setter
         public Builder deliveryChannelCondition(String deliveryChannelCondition) {
-            this.deliveryChannelCondition = Objects.requireNonNull(deliveryChannelCondition);
+            if (deliveryChannelCondition == null) {
+              throw new MissingRequiredPropertyException("GetAggregateDeliveriesDelivery", "deliveryChannelCondition");
+            }
+            this.deliveryChannelCondition = deliveryChannelCondition;
             return this;
         }
         @CustomType.Setter
         public Builder deliveryChannelId(String deliveryChannelId) {
-            this.deliveryChannelId = Objects.requireNonNull(deliveryChannelId);
+            if (deliveryChannelId == null) {
+              throw new MissingRequiredPropertyException("GetAggregateDeliveriesDelivery", "deliveryChannelId");
+            }
+            this.deliveryChannelId = deliveryChannelId;
             return this;
         }
         @CustomType.Setter
         public Builder deliveryChannelName(String deliveryChannelName) {
-            this.deliveryChannelName = Objects.requireNonNull(deliveryChannelName);
+            if (deliveryChannelName == null) {
+              throw new MissingRequiredPropertyException("GetAggregateDeliveriesDelivery", "deliveryChannelName");
+            }
+            this.deliveryChannelName = deliveryChannelName;
             return this;
         }
         @CustomType.Setter
         public Builder deliveryChannelTargetArn(String deliveryChannelTargetArn) {
-            this.deliveryChannelTargetArn = Objects.requireNonNull(deliveryChannelTargetArn);
+            if (deliveryChannelTargetArn == null) {
+              throw new MissingRequiredPropertyException("GetAggregateDeliveriesDelivery", "deliveryChannelTargetArn");
+            }
+            this.deliveryChannelTargetArn = deliveryChannelTargetArn;
             return this;
         }
         @CustomType.Setter
         public Builder deliveryChannelType(String deliveryChannelType) {
-            this.deliveryChannelType = Objects.requireNonNull(deliveryChannelType);
+            if (deliveryChannelType == null) {
+              throw new MissingRequiredPropertyException("GetAggregateDeliveriesDelivery", "deliveryChannelType");
+            }
+            this.deliveryChannelType = deliveryChannelType;
             return this;
         }
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetAggregateDeliveriesDelivery", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetAggregateDeliveriesDelivery", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder nonCompliantNotification(Boolean nonCompliantNotification) {
-            this.nonCompliantNotification = Objects.requireNonNull(nonCompliantNotification);
+            if (nonCompliantNotification == null) {
+              throw new MissingRequiredPropertyException("GetAggregateDeliveriesDelivery", "nonCompliantNotification");
+            }
+            this.nonCompliantNotification = nonCompliantNotification;
             return this;
         }
         @CustomType.Setter
         public Builder oversizedDataOssTargetArn(String oversizedDataOssTargetArn) {
-            this.oversizedDataOssTargetArn = Objects.requireNonNull(oversizedDataOssTargetArn);
+            if (oversizedDataOssTargetArn == null) {
+              throw new MissingRequiredPropertyException("GetAggregateDeliveriesDelivery", "oversizedDataOssTargetArn");
+            }
+            this.oversizedDataOssTargetArn = oversizedDataOssTargetArn;
             return this;
         }
         @CustomType.Setter
         public Builder status(Integer status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetAggregateDeliveriesDelivery", "status");
+            }
+            this.status = status;
             return this;
         }
         public GetAggregateDeliveriesDelivery build() {

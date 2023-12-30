@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.expressconnect.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -478,162 +479,258 @@ public final class GetVirtualBorderRoutersRouter {
 
         @CustomType.Setter
         public Builder accessPointId(String accessPointId) {
-            this.accessPointId = Objects.requireNonNull(accessPointId);
+            if (accessPointId == null) {
+              throw new MissingRequiredPropertyException("GetVirtualBorderRoutersRouter", "accessPointId");
+            }
+            this.accessPointId = accessPointId;
             return this;
         }
         @CustomType.Setter
         public Builder activationTime(String activationTime) {
-            this.activationTime = Objects.requireNonNull(activationTime);
+            if (activationTime == null) {
+              throw new MissingRequiredPropertyException("GetVirtualBorderRoutersRouter", "activationTime");
+            }
+            this.activationTime = activationTime;
             return this;
         }
         @CustomType.Setter
         public Builder circuitCode(String circuitCode) {
-            this.circuitCode = Objects.requireNonNull(circuitCode);
+            if (circuitCode == null) {
+              throw new MissingRequiredPropertyException("GetVirtualBorderRoutersRouter", "circuitCode");
+            }
+            this.circuitCode = circuitCode;
             return this;
         }
         @CustomType.Setter
         public Builder cloudBoxInstanceId(String cloudBoxInstanceId) {
-            this.cloudBoxInstanceId = Objects.requireNonNull(cloudBoxInstanceId);
+            if (cloudBoxInstanceId == null) {
+              throw new MissingRequiredPropertyException("GetVirtualBorderRoutersRouter", "cloudBoxInstanceId");
+            }
+            this.cloudBoxInstanceId = cloudBoxInstanceId;
             return this;
         }
         @CustomType.Setter
         public Builder createTime(String createTime) {
-            this.createTime = Objects.requireNonNull(createTime);
+            if (createTime == null) {
+              throw new MissingRequiredPropertyException("GetVirtualBorderRoutersRouter", "createTime");
+            }
+            this.createTime = createTime;
             return this;
         }
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetVirtualBorderRoutersRouter", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder detectMultiplier(Integer detectMultiplier) {
-            this.detectMultiplier = Objects.requireNonNull(detectMultiplier);
+            if (detectMultiplier == null) {
+              throw new MissingRequiredPropertyException("GetVirtualBorderRoutersRouter", "detectMultiplier");
+            }
+            this.detectMultiplier = detectMultiplier;
             return this;
         }
         @CustomType.Setter
         public Builder eccId(String eccId) {
-            this.eccId = Objects.requireNonNull(eccId);
+            if (eccId == null) {
+              throw new MissingRequiredPropertyException("GetVirtualBorderRoutersRouter", "eccId");
+            }
+            this.eccId = eccId;
             return this;
         }
         @CustomType.Setter
         public Builder enableIpv6(Boolean enableIpv6) {
-            this.enableIpv6 = Objects.requireNonNull(enableIpv6);
+            if (enableIpv6 == null) {
+              throw new MissingRequiredPropertyException("GetVirtualBorderRoutersRouter", "enableIpv6");
+            }
+            this.enableIpv6 = enableIpv6;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetVirtualBorderRoutersRouter", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder localGatewayIp(String localGatewayIp) {
-            this.localGatewayIp = Objects.requireNonNull(localGatewayIp);
+            if (localGatewayIp == null) {
+              throw new MissingRequiredPropertyException("GetVirtualBorderRoutersRouter", "localGatewayIp");
+            }
+            this.localGatewayIp = localGatewayIp;
             return this;
         }
         @CustomType.Setter
         public Builder localIpv6GatewayIp(String localIpv6GatewayIp) {
-            this.localIpv6GatewayIp = Objects.requireNonNull(localIpv6GatewayIp);
+            if (localIpv6GatewayIp == null) {
+              throw new MissingRequiredPropertyException("GetVirtualBorderRoutersRouter", "localIpv6GatewayIp");
+            }
+            this.localIpv6GatewayIp = localIpv6GatewayIp;
             return this;
         }
         @CustomType.Setter
         public Builder minRxInterval(Integer minRxInterval) {
-            this.minRxInterval = Objects.requireNonNull(minRxInterval);
+            if (minRxInterval == null) {
+              throw new MissingRequiredPropertyException("GetVirtualBorderRoutersRouter", "minRxInterval");
+            }
+            this.minRxInterval = minRxInterval;
             return this;
         }
         @CustomType.Setter
         public Builder minTxInterval(Integer minTxInterval) {
-            this.minTxInterval = Objects.requireNonNull(minTxInterval);
+            if (minTxInterval == null) {
+              throw new MissingRequiredPropertyException("GetVirtualBorderRoutersRouter", "minTxInterval");
+            }
+            this.minTxInterval = minTxInterval;
             return this;
         }
         @CustomType.Setter
         public Builder paymentVbrExpireTime(String paymentVbrExpireTime) {
-            this.paymentVbrExpireTime = Objects.requireNonNull(paymentVbrExpireTime);
+            if (paymentVbrExpireTime == null) {
+              throw new MissingRequiredPropertyException("GetVirtualBorderRoutersRouter", "paymentVbrExpireTime");
+            }
+            this.paymentVbrExpireTime = paymentVbrExpireTime;
             return this;
         }
         @CustomType.Setter
         public Builder peerGatewayIp(String peerGatewayIp) {
-            this.peerGatewayIp = Objects.requireNonNull(peerGatewayIp);
+            if (peerGatewayIp == null) {
+              throw new MissingRequiredPropertyException("GetVirtualBorderRoutersRouter", "peerGatewayIp");
+            }
+            this.peerGatewayIp = peerGatewayIp;
             return this;
         }
         @CustomType.Setter
         public Builder peerIpv6GatewayIp(String peerIpv6GatewayIp) {
-            this.peerIpv6GatewayIp = Objects.requireNonNull(peerIpv6GatewayIp);
+            if (peerIpv6GatewayIp == null) {
+              throw new MissingRequiredPropertyException("GetVirtualBorderRoutersRouter", "peerIpv6GatewayIp");
+            }
+            this.peerIpv6GatewayIp = peerIpv6GatewayIp;
             return this;
         }
         @CustomType.Setter
         public Builder peeringIpv6SubnetMask(String peeringIpv6SubnetMask) {
-            this.peeringIpv6SubnetMask = Objects.requireNonNull(peeringIpv6SubnetMask);
+            if (peeringIpv6SubnetMask == null) {
+              throw new MissingRequiredPropertyException("GetVirtualBorderRoutersRouter", "peeringIpv6SubnetMask");
+            }
+            this.peeringIpv6SubnetMask = peeringIpv6SubnetMask;
             return this;
         }
         @CustomType.Setter
         public Builder peeringSubnetMask(String peeringSubnetMask) {
-            this.peeringSubnetMask = Objects.requireNonNull(peeringSubnetMask);
+            if (peeringSubnetMask == null) {
+              throw new MissingRequiredPropertyException("GetVirtualBorderRoutersRouter", "peeringSubnetMask");
+            }
+            this.peeringSubnetMask = peeringSubnetMask;
             return this;
         }
         @CustomType.Setter
         public Builder physicalConnectionBusinessStatus(String physicalConnectionBusinessStatus) {
-            this.physicalConnectionBusinessStatus = Objects.requireNonNull(physicalConnectionBusinessStatus);
+            if (physicalConnectionBusinessStatus == null) {
+              throw new MissingRequiredPropertyException("GetVirtualBorderRoutersRouter", "physicalConnectionBusinessStatus");
+            }
+            this.physicalConnectionBusinessStatus = physicalConnectionBusinessStatus;
             return this;
         }
         @CustomType.Setter
         public Builder physicalConnectionId(String physicalConnectionId) {
-            this.physicalConnectionId = Objects.requireNonNull(physicalConnectionId);
+            if (physicalConnectionId == null) {
+              throw new MissingRequiredPropertyException("GetVirtualBorderRoutersRouter", "physicalConnectionId");
+            }
+            this.physicalConnectionId = physicalConnectionId;
             return this;
         }
         @CustomType.Setter
         public Builder physicalConnectionOwnerUid(String physicalConnectionOwnerUid) {
-            this.physicalConnectionOwnerUid = Objects.requireNonNull(physicalConnectionOwnerUid);
+            if (physicalConnectionOwnerUid == null) {
+              throw new MissingRequiredPropertyException("GetVirtualBorderRoutersRouter", "physicalConnectionOwnerUid");
+            }
+            this.physicalConnectionOwnerUid = physicalConnectionOwnerUid;
             return this;
         }
         @CustomType.Setter
         public Builder physicalConnectionStatus(String physicalConnectionStatus) {
-            this.physicalConnectionStatus = Objects.requireNonNull(physicalConnectionStatus);
+            if (physicalConnectionStatus == null) {
+              throw new MissingRequiredPropertyException("GetVirtualBorderRoutersRouter", "physicalConnectionStatus");
+            }
+            this.physicalConnectionStatus = physicalConnectionStatus;
             return this;
         }
         @CustomType.Setter
         public Builder recoveryTime(String recoveryTime) {
-            this.recoveryTime = Objects.requireNonNull(recoveryTime);
+            if (recoveryTime == null) {
+              throw new MissingRequiredPropertyException("GetVirtualBorderRoutersRouter", "recoveryTime");
+            }
+            this.recoveryTime = recoveryTime;
             return this;
         }
         @CustomType.Setter
         public Builder routeTableId(String routeTableId) {
-            this.routeTableId = Objects.requireNonNull(routeTableId);
+            if (routeTableId == null) {
+              throw new MissingRequiredPropertyException("GetVirtualBorderRoutersRouter", "routeTableId");
+            }
+            this.routeTableId = routeTableId;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetVirtualBorderRoutersRouter", "status");
+            }
+            this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder terminationTime(String terminationTime) {
-            this.terminationTime = Objects.requireNonNull(terminationTime);
+            if (terminationTime == null) {
+              throw new MissingRequiredPropertyException("GetVirtualBorderRoutersRouter", "terminationTime");
+            }
+            this.terminationTime = terminationTime;
             return this;
         }
         @CustomType.Setter
         public Builder type(String type) {
-            this.type = Objects.requireNonNull(type);
+            if (type == null) {
+              throw new MissingRequiredPropertyException("GetVirtualBorderRoutersRouter", "type");
+            }
+            this.type = type;
             return this;
         }
         @CustomType.Setter
         public Builder virtualBorderRouterId(String virtualBorderRouterId) {
-            this.virtualBorderRouterId = Objects.requireNonNull(virtualBorderRouterId);
+            if (virtualBorderRouterId == null) {
+              throw new MissingRequiredPropertyException("GetVirtualBorderRoutersRouter", "virtualBorderRouterId");
+            }
+            this.virtualBorderRouterId = virtualBorderRouterId;
             return this;
         }
         @CustomType.Setter
         public Builder virtualBorderRouterName(String virtualBorderRouterName) {
-            this.virtualBorderRouterName = Objects.requireNonNull(virtualBorderRouterName);
+            if (virtualBorderRouterName == null) {
+              throw new MissingRequiredPropertyException("GetVirtualBorderRoutersRouter", "virtualBorderRouterName");
+            }
+            this.virtualBorderRouterName = virtualBorderRouterName;
             return this;
         }
         @CustomType.Setter
         public Builder vlanId(Integer vlanId) {
-            this.vlanId = Objects.requireNonNull(vlanId);
+            if (vlanId == null) {
+              throw new MissingRequiredPropertyException("GetVirtualBorderRoutersRouter", "vlanId");
+            }
+            this.vlanId = vlanId;
             return this;
         }
         @CustomType.Setter
         public Builder vlanInterfaceId(String vlanInterfaceId) {
-            this.vlanInterfaceId = Objects.requireNonNull(vlanInterfaceId);
+            if (vlanInterfaceId == null) {
+              throw new MissingRequiredPropertyException("GetVirtualBorderRoutersRouter", "vlanInterfaceId");
+            }
+            this.vlanInterfaceId = vlanInterfaceId;
             return this;
         }
         public GetVirtualBorderRoutersRouter build() {

@@ -73,6 +73,7 @@ public final class V2FunctionCustomDns {
 
         @CustomType.Setter
         public Builder dnsOptions(@Nullable List<V2FunctionCustomDnsDnsOption> dnsOptions) {
+
             this.dnsOptions = dnsOptions;
             return this;
         }
@@ -81,6 +82,7 @@ public final class V2FunctionCustomDns {
         }
         @CustomType.Setter
         public Builder nameServers(@Nullable List<String> nameServers) {
+
             this.nameServers = nameServers;
             return this;
         }
@@ -89,6 +91,7 @@ public final class V2FunctionCustomDns {
         }
         @CustomType.Setter
         public Builder searches(@Nullable List<String> searches) {
+
             this.searches = searches;
             return this;
         }

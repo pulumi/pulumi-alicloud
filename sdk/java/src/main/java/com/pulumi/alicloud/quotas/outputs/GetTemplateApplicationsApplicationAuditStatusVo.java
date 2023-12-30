@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.quotas.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -57,12 +58,18 @@ public final class GetTemplateApplicationsApplicationAuditStatusVo {
 
         @CustomType.Setter
         public Builder count(Integer count) {
-            this.count = Objects.requireNonNull(count);
+            if (count == null) {
+              throw new MissingRequiredPropertyException("GetTemplateApplicationsApplicationAuditStatusVo", "count");
+            }
+            this.count = count;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetTemplateApplicationsApplicationAuditStatusVo", "status");
+            }
+            this.status = status;
             return this;
         }
         public GetTemplateApplicationsApplicationAuditStatusVo build() {

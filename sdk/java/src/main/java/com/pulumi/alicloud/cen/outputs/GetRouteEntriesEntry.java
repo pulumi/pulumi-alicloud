@@ -5,6 +5,7 @@ package com.pulumi.alicloud.cen.outputs;
 
 import com.pulumi.alicloud.cen.outputs.GetRouteEntriesEntryConflict;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -143,12 +144,18 @@ public final class GetRouteEntriesEntry {
 
         @CustomType.Setter
         public Builder cidrBlock(String cidrBlock) {
-            this.cidrBlock = Objects.requireNonNull(cidrBlock);
+            if (cidrBlock == null) {
+              throw new MissingRequiredPropertyException("GetRouteEntriesEntry", "cidrBlock");
+            }
+            this.cidrBlock = cidrBlock;
             return this;
         }
         @CustomType.Setter
         public Builder conflicts(List<GetRouteEntriesEntryConflict> conflicts) {
-            this.conflicts = Objects.requireNonNull(conflicts);
+            if (conflicts == null) {
+              throw new MissingRequiredPropertyException("GetRouteEntriesEntry", "conflicts");
+            }
+            this.conflicts = conflicts;
             return this;
         }
         public Builder conflicts(GetRouteEntriesEntryConflict... conflicts) {
@@ -156,32 +163,50 @@ public final class GetRouteEntriesEntry {
         }
         @CustomType.Setter
         public Builder nextHopId(String nextHopId) {
-            this.nextHopId = Objects.requireNonNull(nextHopId);
+            if (nextHopId == null) {
+              throw new MissingRequiredPropertyException("GetRouteEntriesEntry", "nextHopId");
+            }
+            this.nextHopId = nextHopId;
             return this;
         }
         @CustomType.Setter
         public Builder nextHopType(String nextHopType) {
-            this.nextHopType = Objects.requireNonNull(nextHopType);
+            if (nextHopType == null) {
+              throw new MissingRequiredPropertyException("GetRouteEntriesEntry", "nextHopType");
+            }
+            this.nextHopType = nextHopType;
             return this;
         }
         @CustomType.Setter
         public Builder operationalMode(Boolean operationalMode) {
-            this.operationalMode = Objects.requireNonNull(operationalMode);
+            if (operationalMode == null) {
+              throw new MissingRequiredPropertyException("GetRouteEntriesEntry", "operationalMode");
+            }
+            this.operationalMode = operationalMode;
             return this;
         }
         @CustomType.Setter
         public Builder publishStatus(String publishStatus) {
-            this.publishStatus = Objects.requireNonNull(publishStatus);
+            if (publishStatus == null) {
+              throw new MissingRequiredPropertyException("GetRouteEntriesEntry", "publishStatus");
+            }
+            this.publishStatus = publishStatus;
             return this;
         }
         @CustomType.Setter
         public Builder routeTableId(String routeTableId) {
-            this.routeTableId = Objects.requireNonNull(routeTableId);
+            if (routeTableId == null) {
+              throw new MissingRequiredPropertyException("GetRouteEntriesEntry", "routeTableId");
+            }
+            this.routeTableId = routeTableId;
             return this;
         }
         @CustomType.Setter
         public Builder routeType(String routeType) {
-            this.routeType = Objects.requireNonNull(routeType);
+            if (routeType == null) {
+              throw new MissingRequiredPropertyException("GetRouteEntriesEntry", "routeType");
+            }
+            this.routeType = routeType;
             return this;
         }
         public GetRouteEntriesEntry build() {

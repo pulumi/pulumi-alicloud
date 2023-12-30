@@ -25389,6 +25389,20 @@ export namespace ess {
          */
         readinessProbeTimeoutSeconds?: number;
         /**
+         * Grant certain permissions to processes within container. Optional values:
+         * - NET_ADMIN: Allow network management tasks to be performed.
+         * - NET_RAW: Allow raw sockets.
+         */
+        securityContextCapabilityAdds?: string[];
+        /**
+         * Mounts the container's root filesystem as read-only.
+         */
+        securityContextReadOnlyRootFileSystem?: boolean;
+        /**
+         * Specifies user ID  under which all processes run.
+         */
+        securityContextRunAsUser?: number;
+        /**
          * The structure of volumeMounts. 
          * See `volumeMounts` below for details.
          */
@@ -25400,6 +25414,11 @@ export namespace ess {
     }
 
     export interface EciScalingConfigurationContainerEnvironmentVar {
+        /**
+         * Environment variable value reference. Optional values: 
+         * - status.podIP: IP of pod.
+         */
+        fieldRefFieldPath?: string;
         /**
          * The name of the variable. The name can be 1 to 128 characters in length and can contain letters,
          * digits, and underscores (_). It cannot start with a digit.
@@ -25510,6 +25529,20 @@ export namespace ess {
          */
         ports?: outputs.ess.EciScalingConfigurationInitContainerPort[];
         /**
+         * Grant certain permissions to processes within container. Optional values:
+         * - NET_ADMIN: Allow network management tasks to be performed.
+         * - NET_RAW: Allow raw sockets.
+         */
+        securityContextCapabilityAdds?: string[];
+        /**
+         * Mounts the container's root filesystem as read-only.
+         */
+        securityContextReadOnlyRootFileSystem?: boolean;
+        /**
+         * Specifies user ID  under which all processes run.
+         */
+        securityContextRunAsUser?: number;
+        /**
          * The structure of volumeMounts. See `volumeMounts` below for details.
          */
         volumeMounts?: outputs.ess.EciScalingConfigurationInitContainerVolumeMount[];
@@ -25520,6 +25553,11 @@ export namespace ess {
     }
 
     export interface EciScalingConfigurationInitContainerEnvironmentVar {
+        /**
+         * Environment variable value reference. Optional values: 
+         * - status.podIP: IP of pod.
+         */
+        fieldRefFieldPath?: string;
         /**
          * The name of the variable. The name can be 1 to 128 characters in length and can contain letters,
          * digits, and underscores (_). It cannot start with a digit.
@@ -32154,25 +32192,22 @@ export namespace log {
 
     export interface StoreEncryptConf {
         /**
-         * enable encryption. Default `false`
+         * Enable encryption. Default false.
          */
-        enable?: boolean;
+        enable: boolean;
         /**
-         * Supported encryption type, only supports `default(AES)`,` m4`
+         * Supported encryption type, only supports `default`(AES), `m4`.
          */
-        encryptType?: string;
+        encryptType: string;
         /**
-         * User bring your own key (BYOK) encryption [Refer to details](https://www.alibabacloud.com/help/zh/doc-detail/187853.htm), the format is as follows. See `userCmkInfo` below.
-         * ```typescript
-         * import * as pulumi from "@pulumi/pulumi";
-         * ```
+         * User bring your own key (BYOK) encryption Refer to details, the format is as follows. See userCmkInfo below. `{ "cmkKeyId": "yourCmkKeyId", "arn": "yourRoleArn", "regionId": "youCmkRegionId" }`. See `userCmkInfo` below.
          */
-        userCmkInfo?: outputs.log.StoreEncryptConfUserCmkInfo;
+        userCmkInfo: outputs.log.StoreEncryptConfUserCmkInfo;
     }
 
     export interface StoreEncryptConfUserCmkInfo {
         /**
-         * role arn.
+         * Role arn.
          */
         arn: string;
         /**
@@ -32180,7 +32215,7 @@ export namespace log {
          */
         cmkKeyId: string;
         /**
-         * Region id where the  user master key id is located.
+         * Region id where the user master key id is located.
          */
         regionId: string;
     }

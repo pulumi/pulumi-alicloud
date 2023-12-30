@@ -5,6 +5,7 @@ package com.pulumi.alicloud.oss.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -82,7 +83,9 @@ public final class BucketReplicationEncryptionConfigurationArgs extends com.pulu
         }
 
         public BucketReplicationEncryptionConfigurationArgs build() {
-            $.replicaKmsKeyId = Objects.requireNonNull($.replicaKmsKeyId, "expected parameter 'replicaKmsKeyId' to be non-null");
+            if ($.replicaKmsKeyId == null) {
+                throw new MissingRequiredPropertyException("BucketReplicationEncryptionConfigurationArgs", "replicaKmsKeyId");
+            }
             return $;
         }
     }

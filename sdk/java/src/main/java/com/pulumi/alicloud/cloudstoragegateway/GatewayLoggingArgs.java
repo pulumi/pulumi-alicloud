@@ -5,6 +5,7 @@ package com.pulumi.alicloud.cloudstoragegateway;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -187,9 +188,15 @@ public final class GatewayLoggingArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         public GatewayLoggingArgs build() {
-            $.gatewayId = Objects.requireNonNull($.gatewayId, "expected parameter 'gatewayId' to be non-null");
-            $.slsLogstore = Objects.requireNonNull($.slsLogstore, "expected parameter 'slsLogstore' to be non-null");
-            $.slsProject = Objects.requireNonNull($.slsProject, "expected parameter 'slsProject' to be non-null");
+            if ($.gatewayId == null) {
+                throw new MissingRequiredPropertyException("GatewayLoggingArgs", "gatewayId");
+            }
+            if ($.slsLogstore == null) {
+                throw new MissingRequiredPropertyException("GatewayLoggingArgs", "slsLogstore");
+            }
+            if ($.slsProject == null) {
+                throw new MissingRequiredPropertyException("GatewayLoggingArgs", "slsProject");
+            }
             return $;
         }
     }

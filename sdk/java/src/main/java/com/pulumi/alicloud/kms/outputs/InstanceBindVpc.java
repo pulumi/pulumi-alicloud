@@ -87,21 +87,25 @@ public final class InstanceBindVpc {
 
         @CustomType.Setter
         public Builder regionId(@Nullable String regionId) {
+
             this.regionId = regionId;
             return this;
         }
         @CustomType.Setter
         public Builder vpcId(@Nullable String vpcId) {
+
             this.vpcId = vpcId;
             return this;
         }
         @CustomType.Setter
         public Builder vpcOwnerId(@Nullable Integer vpcOwnerId) {
+
             this.vpcOwnerId = vpcOwnerId;
             return this;
         }
         @CustomType.Setter
         public Builder vswitchId(@Nullable String vswitchId) {
+
             this.vswitchId = vswitchId;
             return this;
         }

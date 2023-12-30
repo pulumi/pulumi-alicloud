@@ -5,6 +5,7 @@ package com.pulumi.alicloud.threatdetection;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -367,11 +368,21 @@ public final class ClientFileProtectArgs extends com.pulumi.resources.ResourceAr
         }
 
         public ClientFileProtectArgs build() {
-            $.fileOps = Objects.requireNonNull($.fileOps, "expected parameter 'fileOps' to be non-null");
-            $.filePaths = Objects.requireNonNull($.filePaths, "expected parameter 'filePaths' to be non-null");
-            $.procPaths = Objects.requireNonNull($.procPaths, "expected parameter 'procPaths' to be non-null");
-            $.ruleAction = Objects.requireNonNull($.ruleAction, "expected parameter 'ruleAction' to be non-null");
-            $.ruleName = Objects.requireNonNull($.ruleName, "expected parameter 'ruleName' to be non-null");
+            if ($.fileOps == null) {
+                throw new MissingRequiredPropertyException("ClientFileProtectArgs", "fileOps");
+            }
+            if ($.filePaths == null) {
+                throw new MissingRequiredPropertyException("ClientFileProtectArgs", "filePaths");
+            }
+            if ($.procPaths == null) {
+                throw new MissingRequiredPropertyException("ClientFileProtectArgs", "procPaths");
+            }
+            if ($.ruleAction == null) {
+                throw new MissingRequiredPropertyException("ClientFileProtectArgs", "ruleAction");
+            }
+            if ($.ruleName == null) {
+                throw new MissingRequiredPropertyException("ClientFileProtectArgs", "ruleName");
+            }
             return $;
         }
     }

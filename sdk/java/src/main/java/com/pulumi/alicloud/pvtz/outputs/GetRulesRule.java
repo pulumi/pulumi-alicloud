@@ -6,6 +6,7 @@ package com.pulumi.alicloud.pvtz.outputs;
 import com.pulumi.alicloud.pvtz.outputs.GetRulesRuleBindVpc;
 import com.pulumi.alicloud.pvtz.outputs.GetRulesRuleForwardIp;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -163,7 +164,10 @@ public final class GetRulesRule {
 
         @CustomType.Setter
         public Builder bindVpcs(List<GetRulesRuleBindVpc> bindVpcs) {
-            this.bindVpcs = Objects.requireNonNull(bindVpcs);
+            if (bindVpcs == null) {
+              throw new MissingRequiredPropertyException("GetRulesRule", "bindVpcs");
+            }
+            this.bindVpcs = bindVpcs;
             return this;
         }
         public Builder bindVpcs(GetRulesRuleBindVpc... bindVpcs) {
@@ -171,22 +175,34 @@ public final class GetRulesRule {
         }
         @CustomType.Setter
         public Builder createTime(String createTime) {
-            this.createTime = Objects.requireNonNull(createTime);
+            if (createTime == null) {
+              throw new MissingRequiredPropertyException("GetRulesRule", "createTime");
+            }
+            this.createTime = createTime;
             return this;
         }
         @CustomType.Setter
         public Builder endpointId(String endpointId) {
-            this.endpointId = Objects.requireNonNull(endpointId);
+            if (endpointId == null) {
+              throw new MissingRequiredPropertyException("GetRulesRule", "endpointId");
+            }
+            this.endpointId = endpointId;
             return this;
         }
         @CustomType.Setter
         public Builder endpointName(String endpointName) {
-            this.endpointName = Objects.requireNonNull(endpointName);
+            if (endpointName == null) {
+              throw new MissingRequiredPropertyException("GetRulesRule", "endpointName");
+            }
+            this.endpointName = endpointName;
             return this;
         }
         @CustomType.Setter
         public Builder forwardIps(List<GetRulesRuleForwardIp> forwardIps) {
-            this.forwardIps = Objects.requireNonNull(forwardIps);
+            if (forwardIps == null) {
+              throw new MissingRequiredPropertyException("GetRulesRule", "forwardIps");
+            }
+            this.forwardIps = forwardIps;
             return this;
         }
         public Builder forwardIps(GetRulesRuleForwardIp... forwardIps) {
@@ -194,27 +210,42 @@ public final class GetRulesRule {
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetRulesRule", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder ruleId(String ruleId) {
-            this.ruleId = Objects.requireNonNull(ruleId);
+            if (ruleId == null) {
+              throw new MissingRequiredPropertyException("GetRulesRule", "ruleId");
+            }
+            this.ruleId = ruleId;
             return this;
         }
         @CustomType.Setter
         public Builder ruleName(String ruleName) {
-            this.ruleName = Objects.requireNonNull(ruleName);
+            if (ruleName == null) {
+              throw new MissingRequiredPropertyException("GetRulesRule", "ruleName");
+            }
+            this.ruleName = ruleName;
             return this;
         }
         @CustomType.Setter
         public Builder type(String type) {
-            this.type = Objects.requireNonNull(type);
+            if (type == null) {
+              throw new MissingRequiredPropertyException("GetRulesRule", "type");
+            }
+            this.type = type;
             return this;
         }
         @CustomType.Setter
         public Builder zoneName(String zoneName) {
-            this.zoneName = Objects.requireNonNull(zoneName);
+            if (zoneName == null) {
+              throw new MissingRequiredPropertyException("GetRulesRule", "zoneName");
+            }
+            this.zoneName = zoneName;
             return this;
         }
         public GetRulesRule build() {

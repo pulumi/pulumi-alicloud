@@ -6,6 +6,7 @@ package com.pulumi.alicloud.cloudfirewall.outputs;
 import com.pulumi.alicloud.cloudfirewall.outputs.GetVpcFirewallsFirewallLocalVpc;
 import com.pulumi.alicloud.cloudfirewall.outputs.GetVpcFirewallsFirewallPeerVpc;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -158,22 +159,34 @@ public final class GetVpcFirewallsFirewall {
 
         @CustomType.Setter
         public Builder bandwidth(Integer bandwidth) {
-            this.bandwidth = Objects.requireNonNull(bandwidth);
+            if (bandwidth == null) {
+              throw new MissingRequiredPropertyException("GetVpcFirewallsFirewall", "bandwidth");
+            }
+            this.bandwidth = bandwidth;
             return this;
         }
         @CustomType.Setter
         public Builder connectType(String connectType) {
-            this.connectType = Objects.requireNonNull(connectType);
+            if (connectType == null) {
+              throw new MissingRequiredPropertyException("GetVpcFirewallsFirewall", "connectType");
+            }
+            this.connectType = connectType;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetVpcFirewallsFirewall", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder localVpcs(List<GetVpcFirewallsFirewallLocalVpc> localVpcs) {
-            this.localVpcs = Objects.requireNonNull(localVpcs);
+            if (localVpcs == null) {
+              throw new MissingRequiredPropertyException("GetVpcFirewallsFirewall", "localVpcs");
+            }
+            this.localVpcs = localVpcs;
             return this;
         }
         public Builder localVpcs(GetVpcFirewallsFirewallLocalVpc... localVpcs) {
@@ -181,7 +194,10 @@ public final class GetVpcFirewallsFirewall {
         }
         @CustomType.Setter
         public Builder peerVpcs(List<GetVpcFirewallsFirewallPeerVpc> peerVpcs) {
-            this.peerVpcs = Objects.requireNonNull(peerVpcs);
+            if (peerVpcs == null) {
+              throw new MissingRequiredPropertyException("GetVpcFirewallsFirewall", "peerVpcs");
+            }
+            this.peerVpcs = peerVpcs;
             return this;
         }
         public Builder peerVpcs(GetVpcFirewallsFirewallPeerVpc... peerVpcs) {
@@ -189,22 +205,34 @@ public final class GetVpcFirewallsFirewall {
         }
         @CustomType.Setter
         public Builder regionStatus(String regionStatus) {
-            this.regionStatus = Objects.requireNonNull(regionStatus);
+            if (regionStatus == null) {
+              throw new MissingRequiredPropertyException("GetVpcFirewallsFirewall", "regionStatus");
+            }
+            this.regionStatus = regionStatus;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetVpcFirewallsFirewall", "status");
+            }
+            this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder vpcFirewallId(String vpcFirewallId) {
-            this.vpcFirewallId = Objects.requireNonNull(vpcFirewallId);
+            if (vpcFirewallId == null) {
+              throw new MissingRequiredPropertyException("GetVpcFirewallsFirewall", "vpcFirewallId");
+            }
+            this.vpcFirewallId = vpcFirewallId;
             return this;
         }
         @CustomType.Setter
         public Builder vpcFirewallName(String vpcFirewallName) {
-            this.vpcFirewallName = Objects.requireNonNull(vpcFirewallName);
+            if (vpcFirewallName == null) {
+              throw new MissingRequiredPropertyException("GetVpcFirewallsFirewall", "vpcFirewallName");
+            }
+            this.vpcFirewallName = vpcFirewallName;
             return this;
         }
         public GetVpcFirewallsFirewall build() {

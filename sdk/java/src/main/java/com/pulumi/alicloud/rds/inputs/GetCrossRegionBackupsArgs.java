@@ -5,6 +5,7 @@ package com.pulumi.alicloud.rds.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -383,7 +384,9 @@ public final class GetCrossRegionBackupsArgs extends com.pulumi.resources.Invoke
         }
 
         public GetCrossRegionBackupsArgs build() {
-            $.dbInstanceId = Objects.requireNonNull($.dbInstanceId, "expected parameter 'dbInstanceId' to be non-null");
+            if ($.dbInstanceId == null) {
+                throw new MissingRequiredPropertyException("GetCrossRegionBackupsArgs", "dbInstanceId");
+            }
             return $;
         }
     }

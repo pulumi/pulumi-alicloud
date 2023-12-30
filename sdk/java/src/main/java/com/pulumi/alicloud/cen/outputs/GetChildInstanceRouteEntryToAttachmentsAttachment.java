@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.cen.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -126,37 +127,58 @@ public final class GetChildInstanceRouteEntryToAttachmentsAttachment {
 
         @CustomType.Setter
         public Builder cenId(String cenId) {
-            this.cenId = Objects.requireNonNull(cenId);
+            if (cenId == null) {
+              throw new MissingRequiredPropertyException("GetChildInstanceRouteEntryToAttachmentsAttachment", "cenId");
+            }
+            this.cenId = cenId;
             return this;
         }
         @CustomType.Setter
         public Builder childInstanceRouteTableId(String childInstanceRouteTableId) {
-            this.childInstanceRouteTableId = Objects.requireNonNull(childInstanceRouteTableId);
+            if (childInstanceRouteTableId == null) {
+              throw new MissingRequiredPropertyException("GetChildInstanceRouteEntryToAttachmentsAttachment", "childInstanceRouteTableId");
+            }
+            this.childInstanceRouteTableId = childInstanceRouteTableId;
             return this;
         }
         @CustomType.Setter
         public Builder destinationCidrBlock(String destinationCidrBlock) {
-            this.destinationCidrBlock = Objects.requireNonNull(destinationCidrBlock);
+            if (destinationCidrBlock == null) {
+              throw new MissingRequiredPropertyException("GetChildInstanceRouteEntryToAttachmentsAttachment", "destinationCidrBlock");
+            }
+            this.destinationCidrBlock = destinationCidrBlock;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetChildInstanceRouteEntryToAttachmentsAttachment", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder serviceType(String serviceType) {
-            this.serviceType = Objects.requireNonNull(serviceType);
+            if (serviceType == null) {
+              throw new MissingRequiredPropertyException("GetChildInstanceRouteEntryToAttachmentsAttachment", "serviceType");
+            }
+            this.serviceType = serviceType;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetChildInstanceRouteEntryToAttachmentsAttachment", "status");
+            }
+            this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder transitRouterAttachmentId(String transitRouterAttachmentId) {
-            this.transitRouterAttachmentId = Objects.requireNonNull(transitRouterAttachmentId);
+            if (transitRouterAttachmentId == null) {
+              throw new MissingRequiredPropertyException("GetChildInstanceRouteEntryToAttachmentsAttachment", "transitRouterAttachmentId");
+            }
+            this.transitRouterAttachmentId = transitRouterAttachmentId;
             return this;
         }
         public GetChildInstanceRouteEntryToAttachmentsAttachment build() {

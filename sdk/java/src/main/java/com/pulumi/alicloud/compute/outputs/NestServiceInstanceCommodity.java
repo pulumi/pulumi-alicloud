@@ -59,11 +59,13 @@ public final class NestServiceInstanceCommodity {
 
         @CustomType.Setter
         public Builder payPeriod(@Nullable Integer payPeriod) {
+
             this.payPeriod = payPeriod;
             return this;
         }
         @CustomType.Setter
         public Builder payPeriodUnit(@Nullable String payPeriodUnit) {
+
             this.payPeriodUnit = payPeriodUnit;
             return this;
         }

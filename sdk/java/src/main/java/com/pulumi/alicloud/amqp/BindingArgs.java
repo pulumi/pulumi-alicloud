@@ -5,6 +5,7 @@ package com.pulumi.alicloud.amqp;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -334,12 +335,24 @@ public final class BindingArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public BindingArgs build() {
-            $.bindingKey = Objects.requireNonNull($.bindingKey, "expected parameter 'bindingKey' to be non-null");
-            $.bindingType = Objects.requireNonNull($.bindingType, "expected parameter 'bindingType' to be non-null");
-            $.destinationName = Objects.requireNonNull($.destinationName, "expected parameter 'destinationName' to be non-null");
-            $.instanceId = Objects.requireNonNull($.instanceId, "expected parameter 'instanceId' to be non-null");
-            $.sourceExchange = Objects.requireNonNull($.sourceExchange, "expected parameter 'sourceExchange' to be non-null");
-            $.virtualHostName = Objects.requireNonNull($.virtualHostName, "expected parameter 'virtualHostName' to be non-null");
+            if ($.bindingKey == null) {
+                throw new MissingRequiredPropertyException("BindingArgs", "bindingKey");
+            }
+            if ($.bindingType == null) {
+                throw new MissingRequiredPropertyException("BindingArgs", "bindingType");
+            }
+            if ($.destinationName == null) {
+                throw new MissingRequiredPropertyException("BindingArgs", "destinationName");
+            }
+            if ($.instanceId == null) {
+                throw new MissingRequiredPropertyException("BindingArgs", "instanceId");
+            }
+            if ($.sourceExchange == null) {
+                throw new MissingRequiredPropertyException("BindingArgs", "sourceExchange");
+            }
+            if ($.virtualHostName == null) {
+                throw new MissingRequiredPropertyException("BindingArgs", "virtualHostName");
+            }
             return $;
         }
     }

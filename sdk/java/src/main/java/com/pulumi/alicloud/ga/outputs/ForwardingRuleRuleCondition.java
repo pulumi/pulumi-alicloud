@@ -6,6 +6,7 @@ package com.pulumi.alicloud.ga.outputs;
 import com.pulumi.alicloud.ga.outputs.ForwardingRuleRuleConditionHostConfig;
 import com.pulumi.alicloud.ga.outputs.ForwardingRuleRuleConditionPathConfig;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -75,6 +76,7 @@ public final class ForwardingRuleRuleCondition {
 
         @CustomType.Setter
         public Builder hostConfigs(@Nullable List<ForwardingRuleRuleConditionHostConfig> hostConfigs) {
+
             this.hostConfigs = hostConfigs;
             return this;
         }
@@ -83,12 +85,16 @@ public final class ForwardingRuleRuleCondition {
         }
         @CustomType.Setter
         public Builder pathConfig(@Nullable ForwardingRuleRuleConditionPathConfig pathConfig) {
+
             this.pathConfig = pathConfig;
             return this;
         }
         @CustomType.Setter
         public Builder ruleConditionType(String ruleConditionType) {
-            this.ruleConditionType = Objects.requireNonNull(ruleConditionType);
+            if (ruleConditionType == null) {
+              throw new MissingRequiredPropertyException("ForwardingRuleRuleCondition", "ruleConditionType");
+            }
+            this.ruleConditionType = ruleConditionType;
             return this;
         }
         public ForwardingRuleRuleCondition build() {

@@ -58,6 +58,7 @@ public final class V2FunctionCustomRuntimeConfig {
 
         @CustomType.Setter
         public Builder args(@Nullable List<String> args) {
+
             this.args = args;
             return this;
         }
@@ -66,6 +67,7 @@ public final class V2FunctionCustomRuntimeConfig {
         }
         @CustomType.Setter
         public Builder commands(@Nullable List<String> commands) {
+
             this.commands = commands;
             return this;
         }

@@ -5,6 +5,7 @@ package com.pulumi.alicloud.yundun;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.Object;
 import java.lang.String;
@@ -268,10 +269,18 @@ public final class DBAuditInstanceArgs extends com.pulumi.resources.ResourceArgs
         }
 
         public DBAuditInstanceArgs build() {
-            $.description = Objects.requireNonNull($.description, "expected parameter 'description' to be non-null");
-            $.period = Objects.requireNonNull($.period, "expected parameter 'period' to be non-null");
-            $.planCode = Objects.requireNonNull($.planCode, "expected parameter 'planCode' to be non-null");
-            $.vswitchId = Objects.requireNonNull($.vswitchId, "expected parameter 'vswitchId' to be non-null");
+            if ($.description == null) {
+                throw new MissingRequiredPropertyException("DBAuditInstanceArgs", "description");
+            }
+            if ($.period == null) {
+                throw new MissingRequiredPropertyException("DBAuditInstanceArgs", "period");
+            }
+            if ($.planCode == null) {
+                throw new MissingRequiredPropertyException("DBAuditInstanceArgs", "planCode");
+            }
+            if ($.vswitchId == null) {
+                throw new MissingRequiredPropertyException("DBAuditInstanceArgs", "vswitchId");
+            }
             return $;
         }
     }

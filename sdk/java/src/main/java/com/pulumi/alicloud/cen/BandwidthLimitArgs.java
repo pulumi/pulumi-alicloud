@@ -5,6 +5,7 @@ package com.pulumi.alicloud.cen;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -168,9 +169,15 @@ public final class BandwidthLimitArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         public BandwidthLimitArgs build() {
-            $.bandwidthLimit = Objects.requireNonNull($.bandwidthLimit, "expected parameter 'bandwidthLimit' to be non-null");
-            $.instanceId = Objects.requireNonNull($.instanceId, "expected parameter 'instanceId' to be non-null");
-            $.regionIds = Objects.requireNonNull($.regionIds, "expected parameter 'regionIds' to be non-null");
+            if ($.bandwidthLimit == null) {
+                throw new MissingRequiredPropertyException("BandwidthLimitArgs", "bandwidthLimit");
+            }
+            if ($.instanceId == null) {
+                throw new MissingRequiredPropertyException("BandwidthLimitArgs", "instanceId");
+            }
+            if ($.regionIds == null) {
+                throw new MissingRequiredPropertyException("BandwidthLimitArgs", "regionIds");
+            }
             return $;
         }
     }

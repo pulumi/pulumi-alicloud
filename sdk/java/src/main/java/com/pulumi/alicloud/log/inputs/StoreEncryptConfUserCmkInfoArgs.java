@@ -7,6 +7,8 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class StoreEncryptConfUserCmkInfoArgs extends com.pulumi.resources.ResourceArgs {
@@ -14,48 +16,48 @@ public final class StoreEncryptConfUserCmkInfoArgs extends com.pulumi.resources.
     public static final StoreEncryptConfUserCmkInfoArgs Empty = new StoreEncryptConfUserCmkInfoArgs();
 
     /**
-     * role arn.
+     * Role arn.
      * 
      */
-    @Import(name="arn", required=true)
-    private Output<String> arn;
+    @Import(name="arn")
+    private @Nullable Output<String> arn;
 
     /**
-     * @return role arn.
+     * @return Role arn.
      * 
      */
-    public Output<String> arn() {
-        return this.arn;
+    public Optional<Output<String>> arn() {
+        return Optional.ofNullable(this.arn);
     }
 
     /**
      * User master key id.
      * 
      */
-    @Import(name="cmkKeyId", required=true)
-    private Output<String> cmkKeyId;
+    @Import(name="cmkKeyId")
+    private @Nullable Output<String> cmkKeyId;
 
     /**
      * @return User master key id.
      * 
      */
-    public Output<String> cmkKeyId() {
-        return this.cmkKeyId;
+    public Optional<Output<String>> cmkKeyId() {
+        return Optional.ofNullable(this.cmkKeyId);
     }
 
     /**
-     * Region id where the  user master key id is located.
+     * Region id where the user master key id is located.
      * 
      */
-    @Import(name="regionId", required=true)
-    private Output<String> regionId;
+    @Import(name="regionId")
+    private @Nullable Output<String> regionId;
 
     /**
-     * @return Region id where the  user master key id is located.
+     * @return Region id where the user master key id is located.
      * 
      */
-    public Output<String> regionId() {
-        return this.regionId;
+    public Optional<Output<String>> regionId() {
+        return Optional.ofNullable(this.regionId);
     }
 
     private StoreEncryptConfUserCmkInfoArgs() {}
@@ -85,18 +87,18 @@ public final class StoreEncryptConfUserCmkInfoArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param arn role arn.
+         * @param arn Role arn.
          * 
          * @return builder
          * 
          */
-        public Builder arn(Output<String> arn) {
+        public Builder arn(@Nullable Output<String> arn) {
             $.arn = arn;
             return this;
         }
 
         /**
-         * @param arn role arn.
+         * @param arn Role arn.
          * 
          * @return builder
          * 
@@ -111,7 +113,7 @@ public final class StoreEncryptConfUserCmkInfoArgs extends com.pulumi.resources.
          * @return builder
          * 
          */
-        public Builder cmkKeyId(Output<String> cmkKeyId) {
+        public Builder cmkKeyId(@Nullable Output<String> cmkKeyId) {
             $.cmkKeyId = cmkKeyId;
             return this;
         }
@@ -127,18 +129,18 @@ public final class StoreEncryptConfUserCmkInfoArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param regionId Region id where the  user master key id is located.
+         * @param regionId Region id where the user master key id is located.
          * 
          * @return builder
          * 
          */
-        public Builder regionId(Output<String> regionId) {
+        public Builder regionId(@Nullable Output<String> regionId) {
             $.regionId = regionId;
             return this;
         }
 
         /**
-         * @param regionId Region id where the  user master key id is located.
+         * @param regionId Region id where the user master key id is located.
          * 
          * @return builder
          * 
@@ -148,9 +150,6 @@ public final class StoreEncryptConfUserCmkInfoArgs extends com.pulumi.resources.
         }
 
         public StoreEncryptConfUserCmkInfoArgs build() {
-            $.arn = Objects.requireNonNull($.arn, "expected parameter 'arn' to be non-null");
-            $.cmkKeyId = Objects.requireNonNull($.cmkKeyId, "expected parameter 'cmkKeyId' to be non-null");
-            $.regionId = Objects.requireNonNull($.regionId, "expected parameter 'regionId' to be non-null");
             return $;
         }
     }

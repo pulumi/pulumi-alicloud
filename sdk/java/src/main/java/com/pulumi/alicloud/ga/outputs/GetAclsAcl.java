@@ -5,6 +5,7 @@ package com.pulumi.alicloud.ga.outputs;
 
 import com.pulumi.alicloud.ga.outputs.GetAclsAclAclEntry;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -114,7 +115,10 @@ public final class GetAclsAcl {
 
         @CustomType.Setter
         public Builder aclEntries(List<GetAclsAclAclEntry> aclEntries) {
-            this.aclEntries = Objects.requireNonNull(aclEntries);
+            if (aclEntries == null) {
+              throw new MissingRequiredPropertyException("GetAclsAcl", "aclEntries");
+            }
+            this.aclEntries = aclEntries;
             return this;
         }
         public Builder aclEntries(GetAclsAclAclEntry... aclEntries) {
@@ -122,27 +126,42 @@ public final class GetAclsAcl {
         }
         @CustomType.Setter
         public Builder aclId(String aclId) {
-            this.aclId = Objects.requireNonNull(aclId);
+            if (aclId == null) {
+              throw new MissingRequiredPropertyException("GetAclsAcl", "aclId");
+            }
+            this.aclId = aclId;
             return this;
         }
         @CustomType.Setter
         public Builder aclName(String aclName) {
-            this.aclName = Objects.requireNonNull(aclName);
+            if (aclName == null) {
+              throw new MissingRequiredPropertyException("GetAclsAcl", "aclName");
+            }
+            this.aclName = aclName;
             return this;
         }
         @CustomType.Setter
         public Builder addressIpVersion(String addressIpVersion) {
-            this.addressIpVersion = Objects.requireNonNull(addressIpVersion);
+            if (addressIpVersion == null) {
+              throw new MissingRequiredPropertyException("GetAclsAcl", "addressIpVersion");
+            }
+            this.addressIpVersion = addressIpVersion;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetAclsAcl", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetAclsAcl", "status");
+            }
+            this.status = status;
             return this;
         }
         public GetAclsAcl build() {

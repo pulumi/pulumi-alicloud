@@ -44,6 +44,7 @@ public final class RuleTargetDeadLetterQueue {
 
         @CustomType.Setter
         public Builder arn(@Nullable String arn) {
+
             this.arn = arn;
             return this;
         }

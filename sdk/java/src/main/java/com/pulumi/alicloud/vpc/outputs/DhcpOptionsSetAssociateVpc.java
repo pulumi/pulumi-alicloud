@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.vpc.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -58,12 +59,16 @@ public final class DhcpOptionsSetAssociateVpc {
 
         @CustomType.Setter
         public Builder associateStatus(@Nullable String associateStatus) {
+
             this.associateStatus = associateStatus;
             return this;
         }
         @CustomType.Setter
         public Builder vpcId(String vpcId) {
-            this.vpcId = Objects.requireNonNull(vpcId);
+            if (vpcId == null) {
+              throw new MissingRequiredPropertyException("DhcpOptionsSetAssociateVpc", "vpcId");
+            }
+            this.vpcId = vpcId;
             return this;
         }
         public DhcpOptionsSetAssociateVpc build() {

@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.threatdetection.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -143,42 +144,66 @@ public final class GetAntiBruteForceRulesRule {
 
         @CustomType.Setter
         public Builder antiBruteForceRuleId(String antiBruteForceRuleId) {
-            this.antiBruteForceRuleId = Objects.requireNonNull(antiBruteForceRuleId);
+            if (antiBruteForceRuleId == null) {
+              throw new MissingRequiredPropertyException("GetAntiBruteForceRulesRule", "antiBruteForceRuleId");
+            }
+            this.antiBruteForceRuleId = antiBruteForceRuleId;
             return this;
         }
         @CustomType.Setter
         public Builder antiBruteForceRuleName(String antiBruteForceRuleName) {
-            this.antiBruteForceRuleName = Objects.requireNonNull(antiBruteForceRuleName);
+            if (antiBruteForceRuleName == null) {
+              throw new MissingRequiredPropertyException("GetAntiBruteForceRulesRule", "antiBruteForceRuleName");
+            }
+            this.antiBruteForceRuleName = antiBruteForceRuleName;
             return this;
         }
         @CustomType.Setter
         public Builder defaultRule(Boolean defaultRule) {
-            this.defaultRule = Objects.requireNonNull(defaultRule);
+            if (defaultRule == null) {
+              throw new MissingRequiredPropertyException("GetAntiBruteForceRulesRule", "defaultRule");
+            }
+            this.defaultRule = defaultRule;
             return this;
         }
         @CustomType.Setter
         public Builder failCount(Integer failCount) {
-            this.failCount = Objects.requireNonNull(failCount);
+            if (failCount == null) {
+              throw new MissingRequiredPropertyException("GetAntiBruteForceRulesRule", "failCount");
+            }
+            this.failCount = failCount;
             return this;
         }
         @CustomType.Setter
         public Builder forbiddenTime(Integer forbiddenTime) {
-            this.forbiddenTime = Objects.requireNonNull(forbiddenTime);
+            if (forbiddenTime == null) {
+              throw new MissingRequiredPropertyException("GetAntiBruteForceRulesRule", "forbiddenTime");
+            }
+            this.forbiddenTime = forbiddenTime;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetAntiBruteForceRulesRule", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder span(Integer span) {
-            this.span = Objects.requireNonNull(span);
+            if (span == null) {
+              throw new MissingRequiredPropertyException("GetAntiBruteForceRulesRule", "span");
+            }
+            this.span = span;
             return this;
         }
         @CustomType.Setter
         public Builder uuidLists(List<String> uuidLists) {
-            this.uuidLists = Objects.requireNonNull(uuidLists);
+            if (uuidLists == null) {
+              throw new MissingRequiredPropertyException("GetAntiBruteForceRulesRule", "uuidLists");
+            }
+            this.uuidLists = uuidLists;
             return this;
         }
         public Builder uuidLists(String... uuidLists) {

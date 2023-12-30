@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.slb.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -70,17 +71,26 @@ public final class GetDomainExtensionsExtension {
 
         @CustomType.Setter
         public Builder domain(String domain) {
-            this.domain = Objects.requireNonNull(domain);
+            if (domain == null) {
+              throw new MissingRequiredPropertyException("GetDomainExtensionsExtension", "domain");
+            }
+            this.domain = domain;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetDomainExtensionsExtension", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder serverCertificateId(String serverCertificateId) {
-            this.serverCertificateId = Objects.requireNonNull(serverCertificateId);
+            if (serverCertificateId == null) {
+              throw new MissingRequiredPropertyException("GetDomainExtensionsExtension", "serverCertificateId");
+            }
+            this.serverCertificateId = serverCertificateId;
             return this;
         }
         public GetDomainExtensionsExtension build() {

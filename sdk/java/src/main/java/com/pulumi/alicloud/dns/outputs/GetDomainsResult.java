@@ -5,6 +5,7 @@ package com.pulumi.alicloud.dns.outputs;
 
 import com.pulumi.alicloud.dns.outputs.GetDomainsDomain;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Object;
 import java.lang.String;
@@ -215,17 +216,22 @@ public final class GetDomainsResult {
 
         @CustomType.Setter
         public Builder aliDomain(@Nullable Boolean aliDomain) {
+
             this.aliDomain = aliDomain;
             return this;
         }
         @CustomType.Setter
         public Builder domainNameRegex(@Nullable String domainNameRegex) {
+
             this.domainNameRegex = domainNameRegex;
             return this;
         }
         @CustomType.Setter
         public Builder domains(List<GetDomainsDomain> domains) {
-            this.domains = Objects.requireNonNull(domains);
+            if (domains == null) {
+              throw new MissingRequiredPropertyException("GetDomainsResult", "domains");
+            }
+            this.domains = domains;
             return this;
         }
         public Builder domains(GetDomainsDomain... domains) {
@@ -233,27 +239,36 @@ public final class GetDomainsResult {
         }
         @CustomType.Setter
         public Builder enableDetails(@Nullable Boolean enableDetails) {
+
             this.enableDetails = enableDetails;
             return this;
         }
         @CustomType.Setter
         public Builder groupId(@Nullable String groupId) {
+
             this.groupId = groupId;
             return this;
         }
         @CustomType.Setter
         public Builder groupNameRegex(@Nullable String groupNameRegex) {
+
             this.groupNameRegex = groupNameRegex;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetDomainsResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder ids(List<String> ids) {
-            this.ids = Objects.requireNonNull(ids);
+            if (ids == null) {
+              throw new MissingRequiredPropertyException("GetDomainsResult", "ids");
+            }
+            this.ids = ids;
             return this;
         }
         public Builder ids(String... ids) {
@@ -261,22 +276,28 @@ public final class GetDomainsResult {
         }
         @CustomType.Setter
         public Builder instanceId(@Nullable String instanceId) {
+
             this.instanceId = instanceId;
             return this;
         }
         @CustomType.Setter
         public Builder keyWord(@Nullable String keyWord) {
+
             this.keyWord = keyWord;
             return this;
         }
         @CustomType.Setter
         public Builder lang(@Nullable String lang) {
+
             this.lang = lang;
             return this;
         }
         @CustomType.Setter
         public Builder names(List<String> names) {
-            this.names = Objects.requireNonNull(names);
+            if (names == null) {
+              throw new MissingRequiredPropertyException("GetDomainsResult", "names");
+            }
+            this.names = names;
             return this;
         }
         public Builder names(String... names) {
@@ -284,31 +305,37 @@ public final class GetDomainsResult {
         }
         @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
+
             this.outputFile = outputFile;
             return this;
         }
         @CustomType.Setter
         public Builder resourceGroupId(@Nullable String resourceGroupId) {
+
             this.resourceGroupId = resourceGroupId;
             return this;
         }
         @CustomType.Setter
         public Builder searchMode(@Nullable String searchMode) {
+
             this.searchMode = searchMode;
             return this;
         }
         @CustomType.Setter
         public Builder starmark(@Nullable Boolean starmark) {
+
             this.starmark = starmark;
             return this;
         }
         @CustomType.Setter
         public Builder tags(@Nullable Map<String,Object> tags) {
+
             this.tags = tags;
             return this;
         }
         @CustomType.Setter
         public Builder versionCode(@Nullable String versionCode) {
+
             this.versionCode = versionCode;
             return this;
         }

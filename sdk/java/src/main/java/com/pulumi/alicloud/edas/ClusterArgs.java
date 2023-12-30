@@ -5,6 +5,7 @@ package com.pulumi.alicloud.edas;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -225,9 +226,15 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public ClusterArgs build() {
-            $.clusterName = Objects.requireNonNull($.clusterName, "expected parameter 'clusterName' to be non-null");
-            $.clusterType = Objects.requireNonNull($.clusterType, "expected parameter 'clusterType' to be non-null");
-            $.networkMode = Objects.requireNonNull($.networkMode, "expected parameter 'networkMode' to be non-null");
+            if ($.clusterName == null) {
+                throw new MissingRequiredPropertyException("ClusterArgs", "clusterName");
+            }
+            if ($.clusterType == null) {
+                throw new MissingRequiredPropertyException("ClusterArgs", "clusterType");
+            }
+            if ($.networkMode == null) {
+                throw new MissingRequiredPropertyException("ClusterArgs", "networkMode");
+            }
             return $;
         }
     }

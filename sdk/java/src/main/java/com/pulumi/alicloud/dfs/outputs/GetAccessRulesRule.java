@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.dfs.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -141,42 +142,66 @@ public final class GetAccessRulesRule {
 
         @CustomType.Setter
         public Builder accessGroupId(String accessGroupId) {
-            this.accessGroupId = Objects.requireNonNull(accessGroupId);
+            if (accessGroupId == null) {
+              throw new MissingRequiredPropertyException("GetAccessRulesRule", "accessGroupId");
+            }
+            this.accessGroupId = accessGroupId;
             return this;
         }
         @CustomType.Setter
         public Builder accessRuleId(String accessRuleId) {
-            this.accessRuleId = Objects.requireNonNull(accessRuleId);
+            if (accessRuleId == null) {
+              throw new MissingRequiredPropertyException("GetAccessRulesRule", "accessRuleId");
+            }
+            this.accessRuleId = accessRuleId;
             return this;
         }
         @CustomType.Setter
         public Builder createTime(String createTime) {
-            this.createTime = Objects.requireNonNull(createTime);
+            if (createTime == null) {
+              throw new MissingRequiredPropertyException("GetAccessRulesRule", "createTime");
+            }
+            this.createTime = createTime;
             return this;
         }
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetAccessRulesRule", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetAccessRulesRule", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder networkSegment(String networkSegment) {
-            this.networkSegment = Objects.requireNonNull(networkSegment);
+            if (networkSegment == null) {
+              throw new MissingRequiredPropertyException("GetAccessRulesRule", "networkSegment");
+            }
+            this.networkSegment = networkSegment;
             return this;
         }
         @CustomType.Setter
         public Builder priority(Integer priority) {
-            this.priority = Objects.requireNonNull(priority);
+            if (priority == null) {
+              throw new MissingRequiredPropertyException("GetAccessRulesRule", "priority");
+            }
+            this.priority = priority;
             return this;
         }
         @CustomType.Setter
         public Builder rwAccessType(String rwAccessType) {
-            this.rwAccessType = Objects.requireNonNull(rwAccessType);
+            if (rwAccessType == null) {
+              throw new MissingRequiredPropertyException("GetAccessRulesRule", "rwAccessType");
+            }
+            this.rwAccessType = rwAccessType;
             return this;
         }
         public GetAccessRulesRule build() {

@@ -5,6 +5,7 @@ package com.pulumi.alicloud.cen;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -193,10 +194,18 @@ public final class PrivateZoneArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public PrivateZoneArgs build() {
-            $.accessRegionId = Objects.requireNonNull($.accessRegionId, "expected parameter 'accessRegionId' to be non-null");
-            $.cenId = Objects.requireNonNull($.cenId, "expected parameter 'cenId' to be non-null");
-            $.hostRegionId = Objects.requireNonNull($.hostRegionId, "expected parameter 'hostRegionId' to be non-null");
-            $.hostVpcId = Objects.requireNonNull($.hostVpcId, "expected parameter 'hostVpcId' to be non-null");
+            if ($.accessRegionId == null) {
+                throw new MissingRequiredPropertyException("PrivateZoneArgs", "accessRegionId");
+            }
+            if ($.cenId == null) {
+                throw new MissingRequiredPropertyException("PrivateZoneArgs", "cenId");
+            }
+            if ($.hostRegionId == null) {
+                throw new MissingRequiredPropertyException("PrivateZoneArgs", "hostRegionId");
+            }
+            if ($.hostVpcId == null) {
+                throw new MissingRequiredPropertyException("PrivateZoneArgs", "hostVpcId");
+            }
             return $;
         }
     }

@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.vpc.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -84,22 +85,34 @@ public final class GetBgpNetworksNetwork {
 
         @CustomType.Setter
         public Builder dstCidrBlock(String dstCidrBlock) {
-            this.dstCidrBlock = Objects.requireNonNull(dstCidrBlock);
+            if (dstCidrBlock == null) {
+              throw new MissingRequiredPropertyException("GetBgpNetworksNetwork", "dstCidrBlock");
+            }
+            this.dstCidrBlock = dstCidrBlock;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetBgpNetworksNetwork", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder routerId(String routerId) {
-            this.routerId = Objects.requireNonNull(routerId);
+            if (routerId == null) {
+              throw new MissingRequiredPropertyException("GetBgpNetworksNetwork", "routerId");
+            }
+            this.routerId = routerId;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetBgpNetworksNetwork", "status");
+            }
+            this.status = status;
             return this;
         }
         public GetBgpNetworksNetwork build() {

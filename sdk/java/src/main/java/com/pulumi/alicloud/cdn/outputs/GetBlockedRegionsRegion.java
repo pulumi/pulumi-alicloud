@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.cdn.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -70,17 +71,26 @@ public final class GetBlockedRegionsRegion {
 
         @CustomType.Setter
         public Builder continent(String continent) {
-            this.continent = Objects.requireNonNull(continent);
+            if (continent == null) {
+              throw new MissingRequiredPropertyException("GetBlockedRegionsRegion", "continent");
+            }
+            this.continent = continent;
             return this;
         }
         @CustomType.Setter
         public Builder countriesAndRegions(String countriesAndRegions) {
-            this.countriesAndRegions = Objects.requireNonNull(countriesAndRegions);
+            if (countriesAndRegions == null) {
+              throw new MissingRequiredPropertyException("GetBlockedRegionsRegion", "countriesAndRegions");
+            }
+            this.countriesAndRegions = countriesAndRegions;
             return this;
         }
         @CustomType.Setter
         public Builder countriesAndRegionsName(String countriesAndRegionsName) {
-            this.countriesAndRegionsName = Objects.requireNonNull(countriesAndRegionsName);
+            if (countriesAndRegionsName == null) {
+              throw new MissingRequiredPropertyException("GetBlockedRegionsRegion", "countriesAndRegionsName");
+            }
+            this.countriesAndRegionsName = countriesAndRegionsName;
             return this;
         }
         public GetBlockedRegionsRegion build() {

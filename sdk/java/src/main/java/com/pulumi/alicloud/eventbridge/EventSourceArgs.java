@@ -5,6 +5,7 @@ package com.pulumi.alicloud.eventbridge;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Object;
 import java.lang.String;
@@ -316,8 +317,12 @@ public final class EventSourceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public EventSourceArgs build() {
-            $.eventBusName = Objects.requireNonNull($.eventBusName, "expected parameter 'eventBusName' to be non-null");
-            $.eventSourceName = Objects.requireNonNull($.eventSourceName, "expected parameter 'eventSourceName' to be non-null");
+            if ($.eventBusName == null) {
+                throw new MissingRequiredPropertyException("EventSourceArgs", "eventBusName");
+            }
+            if ($.eventSourceName == null) {
+                throw new MissingRequiredPropertyException("EventSourceArgs", "eventSourceName");
+            }
             return $;
         }
     }

@@ -72,16 +72,19 @@ public final class ConnectionAuthParametersOauthParametersOauthHttpParametersBod
 
         @CustomType.Setter
         public Builder isValueSecret(@Nullable String isValueSecret) {
+
             this.isValueSecret = isValueSecret;
             return this;
         }
         @CustomType.Setter
         public Builder key(@Nullable String key) {
+
             this.key = key;
             return this;
         }
         @CustomType.Setter
         public Builder value(@Nullable String value) {
+
             this.value = value;
             return this;
         }

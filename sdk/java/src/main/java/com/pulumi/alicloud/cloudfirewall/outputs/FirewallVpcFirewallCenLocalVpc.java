@@ -6,6 +6,7 @@ package com.pulumi.alicloud.cloudfirewall.outputs;
 import com.pulumi.alicloud.cloudfirewall.outputs.FirewallVpcFirewallCenLocalVpcEniList;
 import com.pulumi.alicloud.cloudfirewall.outputs.FirewallVpcFirewallCenLocalVpcVpcCidrTableList;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -271,16 +272,19 @@ public final class FirewallVpcFirewallCenLocalVpc {
 
         @CustomType.Setter
         public Builder attachmentId(@Nullable String attachmentId) {
+
             this.attachmentId = attachmentId;
             return this;
         }
         @CustomType.Setter
         public Builder attachmentName(@Nullable String attachmentName) {
+
             this.attachmentName = attachmentName;
             return this;
         }
         @CustomType.Setter
         public Builder defendCidrLists(@Nullable List<String> defendCidrLists) {
+
             this.defendCidrLists = defendCidrLists;
             return this;
         }
@@ -289,6 +293,7 @@ public final class FirewallVpcFirewallCenLocalVpc {
         }
         @CustomType.Setter
         public Builder eniLists(@Nullable List<FirewallVpcFirewallCenLocalVpcEniList> eniLists) {
+
             this.eniLists = eniLists;
             return this;
         }
@@ -297,56 +302,69 @@ public final class FirewallVpcFirewallCenLocalVpc {
         }
         @CustomType.Setter
         public Builder manualVswitchId(@Nullable String manualVswitchId) {
+
             this.manualVswitchId = manualVswitchId;
             return this;
         }
         @CustomType.Setter
         public Builder networkInstanceId(String networkInstanceId) {
-            this.networkInstanceId = Objects.requireNonNull(networkInstanceId);
+            if (networkInstanceId == null) {
+              throw new MissingRequiredPropertyException("FirewallVpcFirewallCenLocalVpc", "networkInstanceId");
+            }
+            this.networkInstanceId = networkInstanceId;
             return this;
         }
         @CustomType.Setter
         public Builder networkInstanceName(@Nullable String networkInstanceName) {
+
             this.networkInstanceName = networkInstanceName;
             return this;
         }
         @CustomType.Setter
         public Builder networkInstanceType(@Nullable String networkInstanceType) {
+
             this.networkInstanceType = networkInstanceType;
             return this;
         }
         @CustomType.Setter
         public Builder ownerId(@Nullable String ownerId) {
+
             this.ownerId = ownerId;
             return this;
         }
         @CustomType.Setter
         public Builder regionNo(@Nullable String regionNo) {
+
             this.regionNo = regionNo;
             return this;
         }
         @CustomType.Setter
         public Builder routeMode(@Nullable String routeMode) {
+
             this.routeMode = routeMode;
             return this;
         }
         @CustomType.Setter
         public Builder supportManualMode(@Nullable String supportManualMode) {
+
             this.supportManualMode = supportManualMode;
             return this;
         }
         @CustomType.Setter
         public Builder transitRouterId(@Nullable String transitRouterId) {
+
             this.transitRouterId = transitRouterId;
             return this;
         }
         @CustomType.Setter
         public Builder transitRouterType(@Nullable String transitRouterType) {
+
             this.transitRouterType = transitRouterType;
             return this;
         }
         @CustomType.Setter
         public Builder vpcCidrTableLists(@Nullable List<FirewallVpcFirewallCenLocalVpcVpcCidrTableList> vpcCidrTableLists) {
+
             this.vpcCidrTableLists = vpcCidrTableLists;
             return this;
         }
@@ -355,11 +373,13 @@ public final class FirewallVpcFirewallCenLocalVpc {
         }
         @CustomType.Setter
         public Builder vpcId(@Nullable String vpcId) {
+
             this.vpcId = vpcId;
             return this;
         }
         @CustomType.Setter
         public Builder vpcName(@Nullable String vpcName) {
+
             this.vpcName = vpcName;
             return this;
         }

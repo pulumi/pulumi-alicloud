@@ -5,6 +5,7 @@ package com.pulumi.alicloud.apigateway.outputs;
 
 import com.pulumi.alicloud.apigateway.outputs.GetLogConfigsConfig;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -70,7 +71,10 @@ public final class GetLogConfigsResult {
 
         @CustomType.Setter
         public Builder configs(List<GetLogConfigsConfig> configs) {
-            this.configs = Objects.requireNonNull(configs);
+            if (configs == null) {
+              throw new MissingRequiredPropertyException("GetLogConfigsResult", "configs");
+            }
+            this.configs = configs;
             return this;
         }
         public Builder configs(GetLogConfigsConfig... configs) {
@@ -78,12 +82,18 @@ public final class GetLogConfigsResult {
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetLogConfigsResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder ids(List<String> ids) {
-            this.ids = Objects.requireNonNull(ids);
+            if (ids == null) {
+              throw new MissingRequiredPropertyException("GetLogConfigsResult", "ids");
+            }
+            this.ids = ids;
             return this;
         }
         public Builder ids(String... ids) {
@@ -91,11 +101,13 @@ public final class GetLogConfigsResult {
         }
         @CustomType.Setter
         public Builder logType(@Nullable String logType) {
+
             this.logType = logType;
             return this;
         }
         @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
+
             this.outputFile = outputFile;
             return this;
         }

@@ -5,6 +5,7 @@ package com.pulumi.alicloud.quotas.outputs;
 
 import com.pulumi.alicloud.quotas.outputs.GetApplicationInfosApplicationDimension;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Double;
 import java.lang.Integer;
 import java.lang.String;
@@ -128,27 +129,42 @@ public final class GetApplicationInfosApplication {
 
         @CustomType.Setter
         public Builder applicationId(String applicationId) {
-            this.applicationId = Objects.requireNonNull(applicationId);
+            if (applicationId == null) {
+              throw new MissingRequiredPropertyException("GetApplicationInfosApplication", "applicationId");
+            }
+            this.applicationId = applicationId;
             return this;
         }
         @CustomType.Setter
         public Builder approveValue(String approveValue) {
-            this.approveValue = Objects.requireNonNull(approveValue);
+            if (approveValue == null) {
+              throw new MissingRequiredPropertyException("GetApplicationInfosApplication", "approveValue");
+            }
+            this.approveValue = approveValue;
             return this;
         }
         @CustomType.Setter
         public Builder auditReason(String auditReason) {
-            this.auditReason = Objects.requireNonNull(auditReason);
+            if (auditReason == null) {
+              throw new MissingRequiredPropertyException("GetApplicationInfosApplication", "auditReason");
+            }
+            this.auditReason = auditReason;
             return this;
         }
         @CustomType.Setter
         public Builder desireValue(Double desireValue) {
-            this.desireValue = Objects.requireNonNull(desireValue);
+            if (desireValue == null) {
+              throw new MissingRequiredPropertyException("GetApplicationInfosApplication", "desireValue");
+            }
+            this.desireValue = desireValue;
             return this;
         }
         @CustomType.Setter
         public Builder dimensions(List<GetApplicationInfosApplicationDimension> dimensions) {
-            this.dimensions = Objects.requireNonNull(dimensions);
+            if (dimensions == null) {
+              throw new MissingRequiredPropertyException("GetApplicationInfosApplication", "dimensions");
+            }
+            this.dimensions = dimensions;
             return this;
         }
         public Builder dimensions(GetApplicationInfosApplicationDimension... dimensions) {
@@ -156,57 +172,90 @@ public final class GetApplicationInfosApplication {
         }
         @CustomType.Setter
         public Builder effectiveTime(String effectiveTime) {
-            this.effectiveTime = Objects.requireNonNull(effectiveTime);
+            if (effectiveTime == null) {
+              throw new MissingRequiredPropertyException("GetApplicationInfosApplication", "effectiveTime");
+            }
+            this.effectiveTime = effectiveTime;
             return this;
         }
         @CustomType.Setter
         public Builder expireTime(String expireTime) {
-            this.expireTime = Objects.requireNonNull(expireTime);
+            if (expireTime == null) {
+              throw new MissingRequiredPropertyException("GetApplicationInfosApplication", "expireTime");
+            }
+            this.expireTime = expireTime;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetApplicationInfosApplication", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder noticeType(Integer noticeType) {
-            this.noticeType = Objects.requireNonNull(noticeType);
+            if (noticeType == null) {
+              throw new MissingRequiredPropertyException("GetApplicationInfosApplication", "noticeType");
+            }
+            this.noticeType = noticeType;
             return this;
         }
         @CustomType.Setter
         public Builder productCode(String productCode) {
-            this.productCode = Objects.requireNonNull(productCode);
+            if (productCode == null) {
+              throw new MissingRequiredPropertyException("GetApplicationInfosApplication", "productCode");
+            }
+            this.productCode = productCode;
             return this;
         }
         @CustomType.Setter
         public Builder quotaActionCode(String quotaActionCode) {
-            this.quotaActionCode = Objects.requireNonNull(quotaActionCode);
+            if (quotaActionCode == null) {
+              throw new MissingRequiredPropertyException("GetApplicationInfosApplication", "quotaActionCode");
+            }
+            this.quotaActionCode = quotaActionCode;
             return this;
         }
         @CustomType.Setter
         public Builder quotaDescription(String quotaDescription) {
-            this.quotaDescription = Objects.requireNonNull(quotaDescription);
+            if (quotaDescription == null) {
+              throw new MissingRequiredPropertyException("GetApplicationInfosApplication", "quotaDescription");
+            }
+            this.quotaDescription = quotaDescription;
             return this;
         }
         @CustomType.Setter
         public Builder quotaName(String quotaName) {
-            this.quotaName = Objects.requireNonNull(quotaName);
+            if (quotaName == null) {
+              throw new MissingRequiredPropertyException("GetApplicationInfosApplication", "quotaName");
+            }
+            this.quotaName = quotaName;
             return this;
         }
         @CustomType.Setter
         public Builder quotaUnit(String quotaUnit) {
-            this.quotaUnit = Objects.requireNonNull(quotaUnit);
+            if (quotaUnit == null) {
+              throw new MissingRequiredPropertyException("GetApplicationInfosApplication", "quotaUnit");
+            }
+            this.quotaUnit = quotaUnit;
             return this;
         }
         @CustomType.Setter
         public Builder reason(String reason) {
-            this.reason = Objects.requireNonNull(reason);
+            if (reason == null) {
+              throw new MissingRequiredPropertyException("GetApplicationInfosApplication", "reason");
+            }
+            this.reason = reason;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetApplicationInfosApplication", "status");
+            }
+            this.status = status;
             return this;
         }
         public GetApplicationInfosApplication build() {

@@ -5,6 +5,7 @@ package com.pulumi.alicloud.ga.outputs;
 
 import com.pulumi.alicloud.ga.outputs.ForwardingRuleRuleActionForwardGroupConfig;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -90,21 +91,29 @@ public final class ForwardingRuleRuleAction {
 
         @CustomType.Setter
         public Builder forwardGroupConfig(@Nullable ForwardingRuleRuleActionForwardGroupConfig forwardGroupConfig) {
+
             this.forwardGroupConfig = forwardGroupConfig;
             return this;
         }
         @CustomType.Setter
         public Builder order(Integer order) {
-            this.order = Objects.requireNonNull(order);
+            if (order == null) {
+              throw new MissingRequiredPropertyException("ForwardingRuleRuleAction", "order");
+            }
+            this.order = order;
             return this;
         }
         @CustomType.Setter
         public Builder ruleActionType(String ruleActionType) {
-            this.ruleActionType = Objects.requireNonNull(ruleActionType);
+            if (ruleActionType == null) {
+              throw new MissingRequiredPropertyException("ForwardingRuleRuleAction", "ruleActionType");
+            }
+            this.ruleActionType = ruleActionType;
             return this;
         }
         @CustomType.Setter
         public Builder ruleActionValue(@Nullable String ruleActionValue) {
+
             this.ruleActionValue = ruleActionValue;
             return this;
         }

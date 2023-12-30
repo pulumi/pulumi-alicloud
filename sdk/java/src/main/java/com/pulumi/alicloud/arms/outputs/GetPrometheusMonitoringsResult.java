@@ -5,6 +5,7 @@ package com.pulumi.alicloud.arms.outputs;
 
 import com.pulumi.alicloud.arms.outputs.GetPrometheusMonitoringsPrometheusMonitoring;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -134,17 +135,26 @@ public final class GetPrometheusMonitoringsResult {
 
         @CustomType.Setter
         public Builder clusterId(String clusterId) {
-            this.clusterId = Objects.requireNonNull(clusterId);
+            if (clusterId == null) {
+              throw new MissingRequiredPropertyException("GetPrometheusMonitoringsResult", "clusterId");
+            }
+            this.clusterId = clusterId;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetPrometheusMonitoringsResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder ids(List<String> ids) {
-            this.ids = Objects.requireNonNull(ids);
+            if (ids == null) {
+              throw new MissingRequiredPropertyException("GetPrometheusMonitoringsResult", "ids");
+            }
+            this.ids = ids;
             return this;
         }
         public Builder ids(String... ids) {
@@ -152,12 +162,16 @@ public final class GetPrometheusMonitoringsResult {
         }
         @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
+
             this.nameRegex = nameRegex;
             return this;
         }
         @CustomType.Setter
         public Builder names(List<String> names) {
-            this.names = Objects.requireNonNull(names);
+            if (names == null) {
+              throw new MissingRequiredPropertyException("GetPrometheusMonitoringsResult", "names");
+            }
+            this.names = names;
             return this;
         }
         public Builder names(String... names) {
@@ -165,12 +179,16 @@ public final class GetPrometheusMonitoringsResult {
         }
         @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
+
             this.outputFile = outputFile;
             return this;
         }
         @CustomType.Setter
         public Builder prometheusMonitorings(List<GetPrometheusMonitoringsPrometheusMonitoring> prometheusMonitorings) {
-            this.prometheusMonitorings = Objects.requireNonNull(prometheusMonitorings);
+            if (prometheusMonitorings == null) {
+              throw new MissingRequiredPropertyException("GetPrometheusMonitoringsResult", "prometheusMonitorings");
+            }
+            this.prometheusMonitorings = prometheusMonitorings;
             return this;
         }
         public Builder prometheusMonitorings(GetPrometheusMonitoringsPrometheusMonitoring... prometheusMonitorings) {
@@ -178,11 +196,13 @@ public final class GetPrometheusMonitoringsResult {
         }
         @CustomType.Setter
         public Builder status(@Nullable String status) {
+
             this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder type(@Nullable String type) {
+
             this.type = type;
             return this;
         }

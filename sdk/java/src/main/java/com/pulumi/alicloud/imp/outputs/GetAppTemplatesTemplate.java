@@ -5,6 +5,7 @@ package com.pulumi.alicloud.imp.outputs;
 
 import com.pulumi.alicloud.imp.outputs.GetAppTemplatesTemplateConfigList;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -198,22 +199,34 @@ public final class GetAppTemplatesTemplate {
 
         @CustomType.Setter
         public Builder appTemplateCreator(String appTemplateCreator) {
-            this.appTemplateCreator = Objects.requireNonNull(appTemplateCreator);
+            if (appTemplateCreator == null) {
+              throw new MissingRequiredPropertyException("GetAppTemplatesTemplate", "appTemplateCreator");
+            }
+            this.appTemplateCreator = appTemplateCreator;
             return this;
         }
         @CustomType.Setter
         public Builder appTemplateId(String appTemplateId) {
-            this.appTemplateId = Objects.requireNonNull(appTemplateId);
+            if (appTemplateId == null) {
+              throw new MissingRequiredPropertyException("GetAppTemplatesTemplate", "appTemplateId");
+            }
+            this.appTemplateId = appTemplateId;
             return this;
         }
         @CustomType.Setter
         public Builder appTemplateName(String appTemplateName) {
-            this.appTemplateName = Objects.requireNonNull(appTemplateName);
+            if (appTemplateName == null) {
+              throw new MissingRequiredPropertyException("GetAppTemplatesTemplate", "appTemplateName");
+            }
+            this.appTemplateName = appTemplateName;
             return this;
         }
         @CustomType.Setter
         public Builder componentLists(List<String> componentLists) {
-            this.componentLists = Objects.requireNonNull(componentLists);
+            if (componentLists == null) {
+              throw new MissingRequiredPropertyException("GetAppTemplatesTemplate", "componentLists");
+            }
+            this.componentLists = componentLists;
             return this;
         }
         public Builder componentLists(String... componentLists) {
@@ -221,7 +234,10 @@ public final class GetAppTemplatesTemplate {
         }
         @CustomType.Setter
         public Builder configLists(List<GetAppTemplatesTemplateConfigList> configLists) {
-            this.configLists = Objects.requireNonNull(configLists);
+            if (configLists == null) {
+              throw new MissingRequiredPropertyException("GetAppTemplatesTemplate", "configLists");
+            }
+            this.configLists = configLists;
             return this;
         }
         public Builder configLists(GetAppTemplatesTemplateConfigList... configLists) {
@@ -229,37 +245,58 @@ public final class GetAppTemplatesTemplate {
         }
         @CustomType.Setter
         public Builder createTime(String createTime) {
-            this.createTime = Objects.requireNonNull(createTime);
+            if (createTime == null) {
+              throw new MissingRequiredPropertyException("GetAppTemplatesTemplate", "createTime");
+            }
+            this.createTime = createTime;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetAppTemplatesTemplate", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder integrationMode(String integrationMode) {
-            this.integrationMode = Objects.requireNonNull(integrationMode);
+            if (integrationMode == null) {
+              throw new MissingRequiredPropertyException("GetAppTemplatesTemplate", "integrationMode");
+            }
+            this.integrationMode = integrationMode;
             return this;
         }
         @CustomType.Setter
         public Builder scene(String scene) {
-            this.scene = Objects.requireNonNull(scene);
+            if (scene == null) {
+              throw new MissingRequiredPropertyException("GetAppTemplatesTemplate", "scene");
+            }
+            this.scene = scene;
             return this;
         }
         @CustomType.Setter
         public Builder sdkInfo(String sdkInfo) {
-            this.sdkInfo = Objects.requireNonNull(sdkInfo);
+            if (sdkInfo == null) {
+              throw new MissingRequiredPropertyException("GetAppTemplatesTemplate", "sdkInfo");
+            }
+            this.sdkInfo = sdkInfo;
             return this;
         }
         @CustomType.Setter
         public Builder standardRoomInfo(String standardRoomInfo) {
-            this.standardRoomInfo = Objects.requireNonNull(standardRoomInfo);
+            if (standardRoomInfo == null) {
+              throw new MissingRequiredPropertyException("GetAppTemplatesTemplate", "standardRoomInfo");
+            }
+            this.standardRoomInfo = standardRoomInfo;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetAppTemplatesTemplate", "status");
+            }
+            this.status = status;
             return this;
         }
         public GetAppTemplatesTemplate build() {

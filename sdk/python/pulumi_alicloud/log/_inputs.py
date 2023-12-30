@@ -1018,12 +1018,9 @@ class StoreEncryptConfArgs:
                  encrypt_type: Optional[pulumi.Input[str]] = None,
                  user_cmk_info: Optional[pulumi.Input['StoreEncryptConfUserCmkInfoArgs']] = None):
         """
-        :param pulumi.Input[bool] enable: enable encryption. Default `false`
-        :param pulumi.Input[str] encrypt_type: Supported encryption type, only supports `default(AES)`,` m4`
-        :param pulumi.Input['StoreEncryptConfUserCmkInfoArgs'] user_cmk_info: User bring your own key (BYOK) encryption [Refer to details](https://www.alibabacloud.com/help/zh/doc-detail/187853.htm), the format is as follows. See `user_cmk_info` below.
-               ```python
-               import pulumi
-               ```
+        :param pulumi.Input[bool] enable: Enable encryption. Default false.
+        :param pulumi.Input[str] encrypt_type: Supported encryption type, only supports `default`(AES), `m4`.
+        :param pulumi.Input['StoreEncryptConfUserCmkInfoArgs'] user_cmk_info: User bring your own key (BYOK) encryption Refer to details, the format is as follows. See user_cmk_info below. `{ "cmk_key_id": "your_cmk_key_id", "arn": "your_role_arn", "region_id": "you_cmk_region_id" }`. See `user_cmk_info` below.
         """
         if enable is not None:
             pulumi.set(__self__, "enable", enable)
@@ -1036,7 +1033,7 @@ class StoreEncryptConfArgs:
     @pulumi.getter
     def enable(self) -> Optional[pulumi.Input[bool]]:
         """
-        enable encryption. Default `false`
+        Enable encryption. Default false.
         """
         return pulumi.get(self, "enable")
 
@@ -1048,7 +1045,7 @@ class StoreEncryptConfArgs:
     @pulumi.getter(name="encryptType")
     def encrypt_type(self) -> Optional[pulumi.Input[str]]:
         """
-        Supported encryption type, only supports `default(AES)`,` m4`
+        Supported encryption type, only supports `default`(AES), `m4`.
         """
         return pulumi.get(self, "encrypt_type")
 
@@ -1060,10 +1057,7 @@ class StoreEncryptConfArgs:
     @pulumi.getter(name="userCmkInfo")
     def user_cmk_info(self) -> Optional[pulumi.Input['StoreEncryptConfUserCmkInfoArgs']]:
         """
-        User bring your own key (BYOK) encryption [Refer to details](https://www.alibabacloud.com/help/zh/doc-detail/187853.htm), the format is as follows. See `user_cmk_info` below.
-        ```python
-        import pulumi
-        ```
+        User bring your own key (BYOK) encryption Refer to details, the format is as follows. See user_cmk_info below. `{ "cmk_key_id": "your_cmk_key_id", "arn": "your_role_arn", "region_id": "you_cmk_region_id" }`. See `user_cmk_info` below.
         """
         return pulumi.get(self, "user_cmk_info")
 
@@ -1075,52 +1069,55 @@ class StoreEncryptConfArgs:
 @pulumi.input_type
 class StoreEncryptConfUserCmkInfoArgs:
     def __init__(__self__, *,
-                 arn: pulumi.Input[str],
-                 cmk_key_id: pulumi.Input[str],
-                 region_id: pulumi.Input[str]):
+                 arn: Optional[pulumi.Input[str]] = None,
+                 cmk_key_id: Optional[pulumi.Input[str]] = None,
+                 region_id: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] arn: role arn.
+        :param pulumi.Input[str] arn: Role arn.
         :param pulumi.Input[str] cmk_key_id: User master key id.
-        :param pulumi.Input[str] region_id: Region id where the  user master key id is located.
+        :param pulumi.Input[str] region_id: Region id where the user master key id is located.
         """
-        pulumi.set(__self__, "arn", arn)
-        pulumi.set(__self__, "cmk_key_id", cmk_key_id)
-        pulumi.set(__self__, "region_id", region_id)
+        if arn is not None:
+            pulumi.set(__self__, "arn", arn)
+        if cmk_key_id is not None:
+            pulumi.set(__self__, "cmk_key_id", cmk_key_id)
+        if region_id is not None:
+            pulumi.set(__self__, "region_id", region_id)
 
     @property
     @pulumi.getter
-    def arn(self) -> pulumi.Input[str]:
+    def arn(self) -> Optional[pulumi.Input[str]]:
         """
-        role arn.
+        Role arn.
         """
         return pulumi.get(self, "arn")
 
     @arn.setter
-    def arn(self, value: pulumi.Input[str]):
+    def arn(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "arn", value)
 
     @property
     @pulumi.getter(name="cmkKeyId")
-    def cmk_key_id(self) -> pulumi.Input[str]:
+    def cmk_key_id(self) -> Optional[pulumi.Input[str]]:
         """
         User master key id.
         """
         return pulumi.get(self, "cmk_key_id")
 
     @cmk_key_id.setter
-    def cmk_key_id(self, value: pulumi.Input[str]):
+    def cmk_key_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "cmk_key_id", value)
 
     @property
     @pulumi.getter(name="regionId")
-    def region_id(self) -> pulumi.Input[str]:
+    def region_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Region id where the  user master key id is located.
+        Region id where the user master key id is located.
         """
         return pulumi.get(self, "region_id")
 
     @region_id.setter
-    def region_id(self, value: pulumi.Input[str]):
+    def region_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "region_id", value)
 
 

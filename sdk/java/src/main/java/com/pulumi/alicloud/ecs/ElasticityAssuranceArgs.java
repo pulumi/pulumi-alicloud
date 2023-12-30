@@ -5,6 +5,7 @@ package com.pulumi.alicloud.ecs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.Object;
 import java.lang.String;
@@ -505,9 +506,15 @@ public final class ElasticityAssuranceArgs extends com.pulumi.resources.Resource
         }
 
         public ElasticityAssuranceArgs build() {
-            $.instanceAmount = Objects.requireNonNull($.instanceAmount, "expected parameter 'instanceAmount' to be non-null");
-            $.instanceType = Objects.requireNonNull($.instanceType, "expected parameter 'instanceType' to be non-null");
-            $.zoneIds = Objects.requireNonNull($.zoneIds, "expected parameter 'zoneIds' to be non-null");
+            if ($.instanceAmount == null) {
+                throw new MissingRequiredPropertyException("ElasticityAssuranceArgs", "instanceAmount");
+            }
+            if ($.instanceType == null) {
+                throw new MissingRequiredPropertyException("ElasticityAssuranceArgs", "instanceType");
+            }
+            if ($.zoneIds == null) {
+                throw new MissingRequiredPropertyException("ElasticityAssuranceArgs", "zoneIds");
+            }
             return $;
         }
     }

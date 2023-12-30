@@ -5,6 +5,7 @@ package com.pulumi.alicloud.edas;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -196,8 +197,12 @@ public final class NamespaceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public NamespaceArgs build() {
-            $.namespaceLogicalId = Objects.requireNonNull($.namespaceLogicalId, "expected parameter 'namespaceLogicalId' to be non-null");
-            $.namespaceName = Objects.requireNonNull($.namespaceName, "expected parameter 'namespaceName' to be non-null");
+            if ($.namespaceLogicalId == null) {
+                throw new MissingRequiredPropertyException("NamespaceArgs", "namespaceLogicalId");
+            }
+            if ($.namespaceName == null) {
+                throw new MissingRequiredPropertyException("NamespaceArgs", "namespaceName");
+            }
             return $;
         }
     }

@@ -7,6 +7,7 @@ import com.pulumi.alicloud.eventbridge.inputs.ConnectionAuthParametersArgs;
 import com.pulumi.alicloud.eventbridge.inputs.ConnectionNetworkParametersArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -189,8 +190,12 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public ConnectionArgs build() {
-            $.connectionName = Objects.requireNonNull($.connectionName, "expected parameter 'connectionName' to be non-null");
-            $.networkParameters = Objects.requireNonNull($.networkParameters, "expected parameter 'networkParameters' to be non-null");
+            if ($.connectionName == null) {
+                throw new MissingRequiredPropertyException("ConnectionArgs", "connectionName");
+            }
+            if ($.networkParameters == null) {
+                throw new MissingRequiredPropertyException("ConnectionArgs", "networkParameters");
+            }
             return $;
         }
     }

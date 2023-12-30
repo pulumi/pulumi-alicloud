@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.ga.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -56,12 +57,18 @@ public final class GetAclsAclAclEntry {
 
         @CustomType.Setter
         public Builder entry(String entry) {
-            this.entry = Objects.requireNonNull(entry);
+            if (entry == null) {
+              throw new MissingRequiredPropertyException("GetAclsAclAclEntry", "entry");
+            }
+            this.entry = entry;
             return this;
         }
         @CustomType.Setter
         public Builder entryDescription(String entryDescription) {
-            this.entryDescription = Objects.requireNonNull(entryDescription);
+            if (entryDescription == null) {
+              throw new MissingRequiredPropertyException("GetAclsAclAclEntry", "entryDescription");
+            }
+            this.entryDescription = entryDescription;
             return this;
         }
         public GetAclsAclAclEntry build() {

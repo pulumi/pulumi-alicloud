@@ -5,6 +5,7 @@ package com.pulumi.alicloud.log.outputs;
 
 import com.pulumi.alicloud.log.outputs.StoreIndexFieldSearchJsonKey;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -145,26 +146,31 @@ public final class StoreIndexFieldSearch {
 
         @CustomType.Setter
         public Builder alias(@Nullable String alias) {
+
             this.alias = alias;
             return this;
         }
         @CustomType.Setter
         public Builder caseSensitive(@Nullable Boolean caseSensitive) {
+
             this.caseSensitive = caseSensitive;
             return this;
         }
         @CustomType.Setter
         public Builder enableAnalytics(@Nullable Boolean enableAnalytics) {
+
             this.enableAnalytics = enableAnalytics;
             return this;
         }
         @CustomType.Setter
         public Builder includeChinese(@Nullable Boolean includeChinese) {
+
             this.includeChinese = includeChinese;
             return this;
         }
         @CustomType.Setter
         public Builder jsonKeys(@Nullable List<StoreIndexFieldSearchJsonKey> jsonKeys) {
+
             this.jsonKeys = jsonKeys;
             return this;
         }
@@ -173,16 +179,21 @@ public final class StoreIndexFieldSearch {
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("StoreIndexFieldSearch", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder token(@Nullable String token) {
+
             this.token = token;
             return this;
         }
         @CustomType.Setter
         public Builder type(@Nullable String type) {
+
             this.type = type;
             return this;
         }

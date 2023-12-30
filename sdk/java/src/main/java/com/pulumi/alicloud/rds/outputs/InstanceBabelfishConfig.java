@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.rds.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -84,22 +85,34 @@ public final class InstanceBabelfishConfig {
 
         @CustomType.Setter
         public Builder babelfishEnabled(String babelfishEnabled) {
-            this.babelfishEnabled = Objects.requireNonNull(babelfishEnabled);
+            if (babelfishEnabled == null) {
+              throw new MissingRequiredPropertyException("InstanceBabelfishConfig", "babelfishEnabled");
+            }
+            this.babelfishEnabled = babelfishEnabled;
             return this;
         }
         @CustomType.Setter
         public Builder masterUserPassword(String masterUserPassword) {
-            this.masterUserPassword = Objects.requireNonNull(masterUserPassword);
+            if (masterUserPassword == null) {
+              throw new MissingRequiredPropertyException("InstanceBabelfishConfig", "masterUserPassword");
+            }
+            this.masterUserPassword = masterUserPassword;
             return this;
         }
         @CustomType.Setter
         public Builder masterUsername(String masterUsername) {
-            this.masterUsername = Objects.requireNonNull(masterUsername);
+            if (masterUsername == null) {
+              throw new MissingRequiredPropertyException("InstanceBabelfishConfig", "masterUsername");
+            }
+            this.masterUsername = masterUsername;
             return this;
         }
         @CustomType.Setter
         public Builder migrationMode(String migrationMode) {
-            this.migrationMode = Objects.requireNonNull(migrationMode);
+            if (migrationMode == null) {
+              throw new MissingRequiredPropertyException("InstanceBabelfishConfig", "migrationMode");
+            }
+            this.migrationMode = migrationMode;
             return this;
         }
         public InstanceBabelfishConfig build() {

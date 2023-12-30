@@ -5,6 +5,7 @@ package com.pulumi.alicloud.ess;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.Object;
@@ -1025,8 +1026,12 @@ public final class ScalingGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public ScalingGroupArgs build() {
-            $.maxSize = Objects.requireNonNull($.maxSize, "expected parameter 'maxSize' to be non-null");
-            $.minSize = Objects.requireNonNull($.minSize, "expected parameter 'minSize' to be non-null");
+            if ($.maxSize == null) {
+                throw new MissingRequiredPropertyException("ScalingGroupArgs", "maxSize");
+            }
+            if ($.minSize == null) {
+                throw new MissingRequiredPropertyException("ScalingGroupArgs", "minSize");
+            }
             return $;
         }
     }

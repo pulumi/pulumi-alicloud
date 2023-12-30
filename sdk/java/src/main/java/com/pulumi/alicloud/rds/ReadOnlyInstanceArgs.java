@@ -6,6 +6,7 @@ package com.pulumi.alicloud.rds;
 import com.pulumi.alicloud.rds.inputs.ReadOnlyInstanceParameterArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.Object;
@@ -1740,10 +1741,18 @@ public final class ReadOnlyInstanceArgs extends com.pulumi.resources.ResourceArg
         }
 
         public ReadOnlyInstanceArgs build() {
-            $.engineVersion = Objects.requireNonNull($.engineVersion, "expected parameter 'engineVersion' to be non-null");
-            $.instanceStorage = Objects.requireNonNull($.instanceStorage, "expected parameter 'instanceStorage' to be non-null");
-            $.instanceType = Objects.requireNonNull($.instanceType, "expected parameter 'instanceType' to be non-null");
-            $.masterDbInstanceId = Objects.requireNonNull($.masterDbInstanceId, "expected parameter 'masterDbInstanceId' to be non-null");
+            if ($.engineVersion == null) {
+                throw new MissingRequiredPropertyException("ReadOnlyInstanceArgs", "engineVersion");
+            }
+            if ($.instanceStorage == null) {
+                throw new MissingRequiredPropertyException("ReadOnlyInstanceArgs", "instanceStorage");
+            }
+            if ($.instanceType == null) {
+                throw new MissingRequiredPropertyException("ReadOnlyInstanceArgs", "instanceType");
+            }
+            if ($.masterDbInstanceId == null) {
+                throw new MissingRequiredPropertyException("ReadOnlyInstanceArgs", "masterDbInstanceId");
+            }
             return $;
         }
     }

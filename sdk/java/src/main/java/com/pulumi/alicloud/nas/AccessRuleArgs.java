@@ -5,6 +5,7 @@ package com.pulumi.alicloud.nas;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -225,8 +226,12 @@ public final class AccessRuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public AccessRuleArgs build() {
-            $.accessGroupName = Objects.requireNonNull($.accessGroupName, "expected parameter 'accessGroupName' to be non-null");
-            $.sourceCidrIp = Objects.requireNonNull($.sourceCidrIp, "expected parameter 'sourceCidrIp' to be non-null");
+            if ($.accessGroupName == null) {
+                throw new MissingRequiredPropertyException("AccessRuleArgs", "accessGroupName");
+            }
+            if ($.sourceCidrIp == null) {
+                throw new MissingRequiredPropertyException("AccessRuleArgs", "sourceCidrIp");
+            }
             return $;
         }
     }

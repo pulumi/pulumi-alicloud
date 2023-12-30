@@ -59,11 +59,13 @@ public final class TemplateApplicationsQuotaApplicationDetailPeriod {
 
         @CustomType.Setter
         public Builder periodUnit(@Nullable String periodUnit) {
+
             this.periodUnit = periodUnit;
             return this;
         }
         @CustomType.Setter
         public Builder periodValue(@Nullable Integer periodValue) {
+
             this.periodValue = periodValue;
             return this;
         }

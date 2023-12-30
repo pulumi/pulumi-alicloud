@@ -5,6 +5,7 @@ package com.pulumi.alicloud.fc.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -111,8 +112,12 @@ public final class ServiceNasConfigMountPointArgs extends com.pulumi.resources.R
         }
 
         public ServiceNasConfigMountPointArgs build() {
-            $.mountDir = Objects.requireNonNull($.mountDir, "expected parameter 'mountDir' to be non-null");
-            $.serverAddr = Objects.requireNonNull($.serverAddr, "expected parameter 'serverAddr' to be non-null");
+            if ($.mountDir == null) {
+                throw new MissingRequiredPropertyException("ServiceNasConfigMountPointArgs", "mountDir");
+            }
+            if ($.serverAddr == null) {
+                throw new MissingRequiredPropertyException("ServiceNasConfigMountPointArgs", "serverAddr");
+            }
             return $;
         }
     }

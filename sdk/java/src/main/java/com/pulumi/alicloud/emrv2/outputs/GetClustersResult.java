@@ -5,6 +5,7 @@ package com.pulumi.alicloud.emrv2.outputs;
 
 import com.pulumi.alicloud.emrv2.outputs.GetClustersCluster;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.Object;
 import java.lang.String;
@@ -133,11 +134,13 @@ public final class GetClustersResult {
 
         @CustomType.Setter
         public Builder clusterName(@Nullable String clusterName) {
+
             this.clusterName = clusterName;
             return this;
         }
         @CustomType.Setter
         public Builder clusterStates(@Nullable List<String> clusterStates) {
+
             this.clusterStates = clusterStates;
             return this;
         }
@@ -146,6 +149,7 @@ public final class GetClustersResult {
         }
         @CustomType.Setter
         public Builder clusterTypes(@Nullable List<String> clusterTypes) {
+
             this.clusterTypes = clusterTypes;
             return this;
         }
@@ -154,7 +158,10 @@ public final class GetClustersResult {
         }
         @CustomType.Setter
         public Builder clusters(List<GetClustersCluster> clusters) {
-            this.clusters = Objects.requireNonNull(clusters);
+            if (clusters == null) {
+              throw new MissingRequiredPropertyException("GetClustersResult", "clusters");
+            }
+            this.clusters = clusters;
             return this;
         }
         public Builder clusters(GetClustersCluster... clusters) {
@@ -162,12 +169,18 @@ public final class GetClustersResult {
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetClustersResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder ids(List<String> ids) {
-            this.ids = Objects.requireNonNull(ids);
+            if (ids == null) {
+              throw new MissingRequiredPropertyException("GetClustersResult", "ids");
+            }
+            this.ids = ids;
             return this;
         }
         public Builder ids(String... ids) {
@@ -175,17 +188,22 @@ public final class GetClustersResult {
         }
         @CustomType.Setter
         public Builder maxResults(@Nullable Integer maxResults) {
+
             this.maxResults = maxResults;
             return this;
         }
         @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
+
             this.nameRegex = nameRegex;
             return this;
         }
         @CustomType.Setter
         public Builder names(List<String> names) {
-            this.names = Objects.requireNonNull(names);
+            if (names == null) {
+              throw new MissingRequiredPropertyException("GetClustersResult", "names");
+            }
+            this.names = names;
             return this;
         }
         public Builder names(String... names) {
@@ -193,16 +211,19 @@ public final class GetClustersResult {
         }
         @CustomType.Setter
         public Builder nextToken(@Nullable String nextToken) {
+
             this.nextToken = nextToken;
             return this;
         }
         @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
+
             this.outputFile = outputFile;
             return this;
         }
         @CustomType.Setter
         public Builder paymentTypes(@Nullable List<String> paymentTypes) {
+
             this.paymentTypes = paymentTypes;
             return this;
         }
@@ -211,17 +232,22 @@ public final class GetClustersResult {
         }
         @CustomType.Setter
         public Builder resourceGroupId(@Nullable String resourceGroupId) {
+
             this.resourceGroupId = resourceGroupId;
             return this;
         }
         @CustomType.Setter
         public Builder tags(@Nullable Map<String,Object> tags) {
+
             this.tags = tags;
             return this;
         }
         @CustomType.Setter
         public Builder totalCount(Integer totalCount) {
-            this.totalCount = Objects.requireNonNull(totalCount);
+            if (totalCount == null) {
+              throw new MissingRequiredPropertyException("GetClustersResult", "totalCount");
+            }
+            this.totalCount = totalCount;
             return this;
         }
         public GetClustersResult build() {

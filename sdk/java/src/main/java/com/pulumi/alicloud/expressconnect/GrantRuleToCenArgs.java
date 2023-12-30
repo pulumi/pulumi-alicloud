@@ -5,6 +5,7 @@ package com.pulumi.alicloud.expressconnect;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -149,9 +150,15 @@ public final class GrantRuleToCenArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         public GrantRuleToCenArgs build() {
-            $.cenId = Objects.requireNonNull($.cenId, "expected parameter 'cenId' to be non-null");
-            $.cenOwnerId = Objects.requireNonNull($.cenOwnerId, "expected parameter 'cenOwnerId' to be non-null");
-            $.instanceId = Objects.requireNonNull($.instanceId, "expected parameter 'instanceId' to be non-null");
+            if ($.cenId == null) {
+                throw new MissingRequiredPropertyException("GrantRuleToCenArgs", "cenId");
+            }
+            if ($.cenOwnerId == null) {
+                throw new MissingRequiredPropertyException("GrantRuleToCenArgs", "cenOwnerId");
+            }
+            if ($.instanceId == null) {
+                throw new MissingRequiredPropertyException("GrantRuleToCenArgs", "instanceId");
+            }
             return $;
         }
     }

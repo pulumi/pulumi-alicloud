@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.resourcemanager.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -140,42 +141,66 @@ public final class GetPolicyAttachmentsAttachment {
 
         @CustomType.Setter
         public Builder attachDate(String attachDate) {
-            this.attachDate = Objects.requireNonNull(attachDate);
+            if (attachDate == null) {
+              throw new MissingRequiredPropertyException("GetPolicyAttachmentsAttachment", "attachDate");
+            }
+            this.attachDate = attachDate;
             return this;
         }
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetPolicyAttachmentsAttachment", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetPolicyAttachmentsAttachment", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder policyName(String policyName) {
-            this.policyName = Objects.requireNonNull(policyName);
+            if (policyName == null) {
+              throw new MissingRequiredPropertyException("GetPolicyAttachmentsAttachment", "policyName");
+            }
+            this.policyName = policyName;
             return this;
         }
         @CustomType.Setter
         public Builder policyType(String policyType) {
-            this.policyType = Objects.requireNonNull(policyType);
+            if (policyType == null) {
+              throw new MissingRequiredPropertyException("GetPolicyAttachmentsAttachment", "policyType");
+            }
+            this.policyType = policyType;
             return this;
         }
         @CustomType.Setter
         public Builder principalName(String principalName) {
-            this.principalName = Objects.requireNonNull(principalName);
+            if (principalName == null) {
+              throw new MissingRequiredPropertyException("GetPolicyAttachmentsAttachment", "principalName");
+            }
+            this.principalName = principalName;
             return this;
         }
         @CustomType.Setter
         public Builder principalType(String principalType) {
-            this.principalType = Objects.requireNonNull(principalType);
+            if (principalType == null) {
+              throw new MissingRequiredPropertyException("GetPolicyAttachmentsAttachment", "principalType");
+            }
+            this.principalType = principalType;
             return this;
         }
         @CustomType.Setter
         public Builder resourceGroupId(String resourceGroupId) {
-            this.resourceGroupId = Objects.requireNonNull(resourceGroupId);
+            if (resourceGroupId == null) {
+              throw new MissingRequiredPropertyException("GetPolicyAttachmentsAttachment", "resourceGroupId");
+            }
+            this.resourceGroupId = resourceGroupId;
             return this;
         }
         public GetPolicyAttachmentsAttachment build() {

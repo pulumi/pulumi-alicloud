@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.resourcemanager.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -84,22 +85,34 @@ public final class GetSharedTargetsTarget {
 
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetSharedTargetsTarget", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder resourceShareId(String resourceShareId) {
-            this.resourceShareId = Objects.requireNonNull(resourceShareId);
+            if (resourceShareId == null) {
+              throw new MissingRequiredPropertyException("GetSharedTargetsTarget", "resourceShareId");
+            }
+            this.resourceShareId = resourceShareId;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetSharedTargetsTarget", "status");
+            }
+            this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder targetId(String targetId) {
-            this.targetId = Objects.requireNonNull(targetId);
+            if (targetId == null) {
+              throw new MissingRequiredPropertyException("GetSharedTargetsTarget", "targetId");
+            }
+            this.targetId = targetId;
             return this;
         }
         public GetSharedTargetsTarget build() {

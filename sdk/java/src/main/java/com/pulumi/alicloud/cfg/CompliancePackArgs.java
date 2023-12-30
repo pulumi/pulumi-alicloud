@@ -7,6 +7,7 @@ import com.pulumi.alicloud.cfg.inputs.CompliancePackConfigRuleArgs;
 import com.pulumi.alicloud.cfg.inputs.CompliancePackConfigRuleIdArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -305,9 +306,15 @@ public final class CompliancePackArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         public CompliancePackArgs build() {
-            $.compliancePackName = Objects.requireNonNull($.compliancePackName, "expected parameter 'compliancePackName' to be non-null");
-            $.description = Objects.requireNonNull($.description, "expected parameter 'description' to be non-null");
-            $.riskLevel = Objects.requireNonNull($.riskLevel, "expected parameter 'riskLevel' to be non-null");
+            if ($.compliancePackName == null) {
+                throw new MissingRequiredPropertyException("CompliancePackArgs", "compliancePackName");
+            }
+            if ($.description == null) {
+                throw new MissingRequiredPropertyException("CompliancePackArgs", "description");
+            }
+            if ($.riskLevel == null) {
+                throw new MissingRequiredPropertyException("CompliancePackArgs", "riskLevel");
+            }
             return $;
         }
     }

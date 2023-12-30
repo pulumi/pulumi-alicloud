@@ -5,6 +5,7 @@ package com.pulumi.alicloud.rds;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.Object;
 import java.lang.String;
@@ -264,8 +265,12 @@ public final class ReadWriteSplittingConnectionArgs extends com.pulumi.resources
         }
 
         public ReadWriteSplittingConnectionArgs build() {
-            $.distributionType = Objects.requireNonNull($.distributionType, "expected parameter 'distributionType' to be non-null");
-            $.instanceId = Objects.requireNonNull($.instanceId, "expected parameter 'instanceId' to be non-null");
+            if ($.distributionType == null) {
+                throw new MissingRequiredPropertyException("ReadWriteSplittingConnectionArgs", "distributionType");
+            }
+            if ($.instanceId == null) {
+                throw new MissingRequiredPropertyException("ReadWriteSplittingConnectionArgs", "instanceId");
+            }
             return $;
         }
     }

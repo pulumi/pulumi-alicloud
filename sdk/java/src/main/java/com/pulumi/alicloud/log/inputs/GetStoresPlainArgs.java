@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.log.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -143,7 +144,9 @@ public final class GetStoresPlainArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         public GetStoresPlainArgs build() {
-            $.project = Objects.requireNonNull($.project, "expected parameter 'project' to be non-null");
+            if ($.project == null) {
+                throw new MissingRequiredPropertyException("GetStoresPlainArgs", "project");
+            }
             return $;
         }
     }

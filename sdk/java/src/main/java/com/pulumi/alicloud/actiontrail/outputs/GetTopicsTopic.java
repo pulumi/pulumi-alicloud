@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.actiontrail.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.Object;
@@ -187,57 +188,88 @@ public final class GetTopicsTopic {
 
         @CustomType.Setter
         public Builder compactTopic(Boolean compactTopic) {
-            this.compactTopic = Objects.requireNonNull(compactTopic);
+            if (compactTopic == null) {
+              throw new MissingRequiredPropertyException("GetTopicsTopic", "compactTopic");
+            }
+            this.compactTopic = compactTopic;
             return this;
         }
         @CustomType.Setter
         public Builder createTime(String createTime) {
-            this.createTime = Objects.requireNonNull(createTime);
+            if (createTime == null) {
+              throw new MissingRequiredPropertyException("GetTopicsTopic", "createTime");
+            }
+            this.createTime = createTime;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetTopicsTopic", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder instanceId(String instanceId) {
-            this.instanceId = Objects.requireNonNull(instanceId);
+            if (instanceId == null) {
+              throw new MissingRequiredPropertyException("GetTopicsTopic", "instanceId");
+            }
+            this.instanceId = instanceId;
             return this;
         }
         @CustomType.Setter
         public Builder localTopic(Boolean localTopic) {
-            this.localTopic = Objects.requireNonNull(localTopic);
+            if (localTopic == null) {
+              throw new MissingRequiredPropertyException("GetTopicsTopic", "localTopic");
+            }
+            this.localTopic = localTopic;
             return this;
         }
         @CustomType.Setter
         public Builder partitionNum(Integer partitionNum) {
-            this.partitionNum = Objects.requireNonNull(partitionNum);
+            if (partitionNum == null) {
+              throw new MissingRequiredPropertyException("GetTopicsTopic", "partitionNum");
+            }
+            this.partitionNum = partitionNum;
             return this;
         }
         @CustomType.Setter
         public Builder remark(String remark) {
-            this.remark = Objects.requireNonNull(remark);
+            if (remark == null) {
+              throw new MissingRequiredPropertyException("GetTopicsTopic", "remark");
+            }
+            this.remark = remark;
             return this;
         }
         @CustomType.Setter
         public Builder status(Integer status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetTopicsTopic", "status");
+            }
+            this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder statusName(String statusName) {
-            this.statusName = Objects.requireNonNull(statusName);
+            if (statusName == null) {
+              throw new MissingRequiredPropertyException("GetTopicsTopic", "statusName");
+            }
+            this.statusName = statusName;
             return this;
         }
         @CustomType.Setter
         public Builder tags(@Nullable Map<String,Object> tags) {
+
             this.tags = tags;
             return this;
         }
         @CustomType.Setter
         public Builder topic(String topic) {
-            this.topic = Objects.requireNonNull(topic);
+            if (topic == null) {
+              throw new MissingRequiredPropertyException("GetTopicsTopic", "topic");
+            }
+            this.topic = topic;
             return this;
         }
         public GetTopicsTopic build() {

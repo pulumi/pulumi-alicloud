@@ -5,6 +5,7 @@ package com.pulumi.alicloud.dcdn;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -185,10 +186,18 @@ public final class WafPolicyArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public WafPolicyArgs build() {
-            $.defenseScene = Objects.requireNonNull($.defenseScene, "expected parameter 'defenseScene' to be non-null");
-            $.policyName = Objects.requireNonNull($.policyName, "expected parameter 'policyName' to be non-null");
-            $.policyType = Objects.requireNonNull($.policyType, "expected parameter 'policyType' to be non-null");
-            $.status = Objects.requireNonNull($.status, "expected parameter 'status' to be non-null");
+            if ($.defenseScene == null) {
+                throw new MissingRequiredPropertyException("WafPolicyArgs", "defenseScene");
+            }
+            if ($.policyName == null) {
+                throw new MissingRequiredPropertyException("WafPolicyArgs", "policyName");
+            }
+            if ($.policyType == null) {
+                throw new MissingRequiredPropertyException("WafPolicyArgs", "policyType");
+            }
+            if ($.status == null) {
+                throw new MissingRequiredPropertyException("WafPolicyArgs", "status");
+            }
             return $;
         }
     }

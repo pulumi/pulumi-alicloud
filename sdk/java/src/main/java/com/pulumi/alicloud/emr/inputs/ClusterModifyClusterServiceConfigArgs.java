@@ -5,6 +5,7 @@ package com.pulumi.alicloud.emr.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -384,8 +385,12 @@ public final class ClusterModifyClusterServiceConfigArgs extends com.pulumi.reso
         }
 
         public ClusterModifyClusterServiceConfigArgs build() {
-            $.configParams = Objects.requireNonNull($.configParams, "expected parameter 'configParams' to be non-null");
-            $.serviceName = Objects.requireNonNull($.serviceName, "expected parameter 'serviceName' to be non-null");
+            if ($.configParams == null) {
+                throw new MissingRequiredPropertyException("ClusterModifyClusterServiceConfigArgs", "configParams");
+            }
+            if ($.serviceName == null) {
+                throw new MissingRequiredPropertyException("ClusterModifyClusterServiceConfigArgs", "serviceName");
+            }
             return $;
         }
     }

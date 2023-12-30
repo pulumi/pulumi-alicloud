@@ -172,26 +172,31 @@ public final class ClusterAdditionalVolume {
 
         @CustomType.Setter
         public Builder jobQueue(@Nullable String jobQueue) {
+
             this.jobQueue = jobQueue;
             return this;
         }
         @CustomType.Setter
         public Builder localDirectory(@Nullable String localDirectory) {
+
             this.localDirectory = localDirectory;
             return this;
         }
         @CustomType.Setter
         public Builder location(@Nullable String location) {
+
             this.location = location;
             return this;
         }
         @CustomType.Setter
         public Builder remoteDirectory(@Nullable String remoteDirectory) {
+
             this.remoteDirectory = remoteDirectory;
             return this;
         }
         @CustomType.Setter
         public Builder roles(@Nullable List<ClusterAdditionalVolumeRole> roles) {
+
             this.roles = roles;
             return this;
         }
@@ -200,26 +205,31 @@ public final class ClusterAdditionalVolume {
         }
         @CustomType.Setter
         public Builder volumeId(@Nullable String volumeId) {
+
             this.volumeId = volumeId;
             return this;
         }
         @CustomType.Setter
         public Builder volumeMountOption(@Nullable String volumeMountOption) {
+
             this.volumeMountOption = volumeMountOption;
             return this;
         }
         @CustomType.Setter
         public Builder volumeMountpoint(@Nullable String volumeMountpoint) {
+
             this.volumeMountpoint = volumeMountpoint;
             return this;
         }
         @CustomType.Setter
         public Builder volumeProtocol(@Nullable String volumeProtocol) {
+
             this.volumeProtocol = volumeProtocol;
             return this;
         }
         @CustomType.Setter
         public Builder volumeType(@Nullable String volumeType) {
+
             this.volumeType = volumeType;
             return this;
         }

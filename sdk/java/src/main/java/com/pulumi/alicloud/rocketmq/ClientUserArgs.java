@@ -5,6 +5,7 @@ package com.pulumi.alicloud.rocketmq;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.Object;
 import java.lang.String;
@@ -338,9 +339,15 @@ public final class ClientUserArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public ClientUserArgs build() {
-            $.bandwidth = Objects.requireNonNull($.bandwidth, "expected parameter 'bandwidth' to be non-null");
-            $.sagId = Objects.requireNonNull($.sagId, "expected parameter 'sagId' to be non-null");
-            $.userMail = Objects.requireNonNull($.userMail, "expected parameter 'userMail' to be non-null");
+            if ($.bandwidth == null) {
+                throw new MissingRequiredPropertyException("ClientUserArgs", "bandwidth");
+            }
+            if ($.sagId == null) {
+                throw new MissingRequiredPropertyException("ClientUserArgs", "sagId");
+            }
+            if ($.userMail == null) {
+                throw new MissingRequiredPropertyException("ClientUserArgs", "userMail");
+            }
             return $;
         }
     }

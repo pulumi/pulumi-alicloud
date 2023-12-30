@@ -5,6 +5,7 @@ package com.pulumi.alicloud.dfs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -298,11 +299,21 @@ public final class MountPointArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public MountPointArgs build() {
-            $.accessGroupId = Objects.requireNonNull($.accessGroupId, "expected parameter 'accessGroupId' to be non-null");
-            $.fileSystemId = Objects.requireNonNull($.fileSystemId, "expected parameter 'fileSystemId' to be non-null");
-            $.networkType = Objects.requireNonNull($.networkType, "expected parameter 'networkType' to be non-null");
-            $.vpcId = Objects.requireNonNull($.vpcId, "expected parameter 'vpcId' to be non-null");
-            $.vswitchId = Objects.requireNonNull($.vswitchId, "expected parameter 'vswitchId' to be non-null");
+            if ($.accessGroupId == null) {
+                throw new MissingRequiredPropertyException("MountPointArgs", "accessGroupId");
+            }
+            if ($.fileSystemId == null) {
+                throw new MissingRequiredPropertyException("MountPointArgs", "fileSystemId");
+            }
+            if ($.networkType == null) {
+                throw new MissingRequiredPropertyException("MountPointArgs", "networkType");
+            }
+            if ($.vpcId == null) {
+                throw new MissingRequiredPropertyException("MountPointArgs", "vpcId");
+            }
+            if ($.vswitchId == null) {
+                throw new MissingRequiredPropertyException("MountPointArgs", "vswitchId");
+            }
             return $;
         }
     }

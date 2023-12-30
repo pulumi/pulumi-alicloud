@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.emr.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -56,12 +57,18 @@ public final class GetClustersClusterHostPoolInfo {
 
         @CustomType.Setter
         public Builder hpBizId(String hpBizId) {
-            this.hpBizId = Objects.requireNonNull(hpBizId);
+            if (hpBizId == null) {
+              throw new MissingRequiredPropertyException("GetClustersClusterHostPoolInfo", "hpBizId");
+            }
+            this.hpBizId = hpBizId;
             return this;
         }
         @CustomType.Setter
         public Builder hpName(String hpName) {
-            this.hpName = Objects.requireNonNull(hpName);
+            if (hpName == null) {
+              throw new MissingRequiredPropertyException("GetClustersClusterHostPoolInfo", "hpName");
+            }
+            this.hpName = hpName;
             return this;
         }
         public GetClustersClusterHostPoolInfo build() {

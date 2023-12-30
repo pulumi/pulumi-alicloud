@@ -6,6 +6,7 @@ package com.pulumi.alicloud.eventbridge;
 import com.pulumi.alicloud.eventbridge.inputs.RuleTargetArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -273,10 +274,18 @@ public final class RuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public RuleArgs build() {
-            $.eventBusName = Objects.requireNonNull($.eventBusName, "expected parameter 'eventBusName' to be non-null");
-            $.filterPattern = Objects.requireNonNull($.filterPattern, "expected parameter 'filterPattern' to be non-null");
-            $.ruleName = Objects.requireNonNull($.ruleName, "expected parameter 'ruleName' to be non-null");
-            $.targets = Objects.requireNonNull($.targets, "expected parameter 'targets' to be non-null");
+            if ($.eventBusName == null) {
+                throw new MissingRequiredPropertyException("RuleArgs", "eventBusName");
+            }
+            if ($.filterPattern == null) {
+                throw new MissingRequiredPropertyException("RuleArgs", "filterPattern");
+            }
+            if ($.ruleName == null) {
+                throw new MissingRequiredPropertyException("RuleArgs", "ruleName");
+            }
+            if ($.targets == null) {
+                throw new MissingRequiredPropertyException("RuleArgs", "targets");
+            }
             return $;
         }
     }

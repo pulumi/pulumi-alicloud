@@ -6,6 +6,7 @@ package com.pulumi.alicloud.eds.outputs;
 import com.pulumi.alicloud.eds.outputs.GetBundlesBundleDesktopTypeAttribute;
 import com.pulumi.alicloud.eds.outputs.GetBundlesBundleDisk;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -171,32 +172,50 @@ public final class GetBundlesBundle {
 
         @CustomType.Setter
         public Builder bundleId(String bundleId) {
-            this.bundleId = Objects.requireNonNull(bundleId);
+            if (bundleId == null) {
+              throw new MissingRequiredPropertyException("GetBundlesBundle", "bundleId");
+            }
+            this.bundleId = bundleId;
             return this;
         }
         @CustomType.Setter
         public Builder bundleName(String bundleName) {
-            this.bundleName = Objects.requireNonNull(bundleName);
+            if (bundleName == null) {
+              throw new MissingRequiredPropertyException("GetBundlesBundle", "bundleName");
+            }
+            this.bundleName = bundleName;
             return this;
         }
         @CustomType.Setter
         public Builder bundleType(String bundleType) {
-            this.bundleType = Objects.requireNonNull(bundleType);
+            if (bundleType == null) {
+              throw new MissingRequiredPropertyException("GetBundlesBundle", "bundleType");
+            }
+            this.bundleType = bundleType;
             return this;
         }
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetBundlesBundle", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder desktopType(String desktopType) {
-            this.desktopType = Objects.requireNonNull(desktopType);
+            if (desktopType == null) {
+              throw new MissingRequiredPropertyException("GetBundlesBundle", "desktopType");
+            }
+            this.desktopType = desktopType;
             return this;
         }
         @CustomType.Setter
         public Builder desktopTypeAttributes(List<GetBundlesBundleDesktopTypeAttribute> desktopTypeAttributes) {
-            this.desktopTypeAttributes = Objects.requireNonNull(desktopTypeAttributes);
+            if (desktopTypeAttributes == null) {
+              throw new MissingRequiredPropertyException("GetBundlesBundle", "desktopTypeAttributes");
+            }
+            this.desktopTypeAttributes = desktopTypeAttributes;
             return this;
         }
         public Builder desktopTypeAttributes(GetBundlesBundleDesktopTypeAttribute... desktopTypeAttributes) {
@@ -204,7 +223,10 @@ public final class GetBundlesBundle {
         }
         @CustomType.Setter
         public Builder disks(List<GetBundlesBundleDisk> disks) {
-            this.disks = Objects.requireNonNull(disks);
+            if (disks == null) {
+              throw new MissingRequiredPropertyException("GetBundlesBundle", "disks");
+            }
+            this.disks = disks;
             return this;
         }
         public Builder disks(GetBundlesBundleDisk... disks) {
@@ -212,17 +234,26 @@ public final class GetBundlesBundle {
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetBundlesBundle", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder imageId(String imageId) {
-            this.imageId = Objects.requireNonNull(imageId);
+            if (imageId == null) {
+              throw new MissingRequiredPropertyException("GetBundlesBundle", "imageId");
+            }
+            this.imageId = imageId;
             return this;
         }
         @CustomType.Setter
         public Builder osType(String osType) {
-            this.osType = Objects.requireNonNull(osType);
+            if (osType == null) {
+              throw new MissingRequiredPropertyException("GetBundlesBundle", "osType");
+            }
+            this.osType = osType;
             return this;
         }
         public GetBundlesBundle build() {

@@ -5,6 +5,7 @@ package com.pulumi.alicloud.dns.outputs;
 
 import com.pulumi.alicloud.dns.outputs.GetAlidnsDomainsDomainRecordLine;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.Object;
@@ -340,12 +341,18 @@ public final class GetAlidnsDomainsDomain {
 
         @CustomType.Setter
         public Builder aliDomain(Boolean aliDomain) {
-            this.aliDomain = Objects.requireNonNull(aliDomain);
+            if (aliDomain == null) {
+              throw new MissingRequiredPropertyException("GetAlidnsDomainsDomain", "aliDomain");
+            }
+            this.aliDomain = aliDomain;
             return this;
         }
         @CustomType.Setter
         public Builder availableTtls(List<Integer> availableTtls) {
-            this.availableTtls = Objects.requireNonNull(availableTtls);
+            if (availableTtls == null) {
+              throw new MissingRequiredPropertyException("GetAlidnsDomainsDomain", "availableTtls");
+            }
+            this.availableTtls = availableTtls;
             return this;
         }
         public Builder availableTtls(Integer... availableTtls) {
@@ -353,7 +360,10 @@ public final class GetAlidnsDomainsDomain {
         }
         @CustomType.Setter
         public Builder dnsServers(List<String> dnsServers) {
-            this.dnsServers = Objects.requireNonNull(dnsServers);
+            if (dnsServers == null) {
+              throw new MissingRequiredPropertyException("GetAlidnsDomainsDomain", "dnsServers");
+            }
+            this.dnsServers = dnsServers;
             return this;
         }
         public Builder dnsServers(String... dnsServers) {
@@ -361,67 +371,106 @@ public final class GetAlidnsDomainsDomain {
         }
         @CustomType.Setter
         public Builder domainId(String domainId) {
-            this.domainId = Objects.requireNonNull(domainId);
+            if (domainId == null) {
+              throw new MissingRequiredPropertyException("GetAlidnsDomainsDomain", "domainId");
+            }
+            this.domainId = domainId;
             return this;
         }
         @CustomType.Setter
         public Builder domainName(String domainName) {
-            this.domainName = Objects.requireNonNull(domainName);
+            if (domainName == null) {
+              throw new MissingRequiredPropertyException("GetAlidnsDomainsDomain", "domainName");
+            }
+            this.domainName = domainName;
             return this;
         }
         @CustomType.Setter
         public Builder groupId(String groupId) {
-            this.groupId = Objects.requireNonNull(groupId);
+            if (groupId == null) {
+              throw new MissingRequiredPropertyException("GetAlidnsDomainsDomain", "groupId");
+            }
+            this.groupId = groupId;
             return this;
         }
         @CustomType.Setter
         public Builder groupName(String groupName) {
-            this.groupName = Objects.requireNonNull(groupName);
+            if (groupName == null) {
+              throw new MissingRequiredPropertyException("GetAlidnsDomainsDomain", "groupName");
+            }
+            this.groupName = groupName;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetAlidnsDomainsDomain", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder inBlackHole(Boolean inBlackHole) {
-            this.inBlackHole = Objects.requireNonNull(inBlackHole);
+            if (inBlackHole == null) {
+              throw new MissingRequiredPropertyException("GetAlidnsDomainsDomain", "inBlackHole");
+            }
+            this.inBlackHole = inBlackHole;
             return this;
         }
         @CustomType.Setter
         public Builder inClean(Boolean inClean) {
-            this.inClean = Objects.requireNonNull(inClean);
+            if (inClean == null) {
+              throw new MissingRequiredPropertyException("GetAlidnsDomainsDomain", "inClean");
+            }
+            this.inClean = inClean;
             return this;
         }
         @CustomType.Setter
         public Builder instanceId(String instanceId) {
-            this.instanceId = Objects.requireNonNull(instanceId);
+            if (instanceId == null) {
+              throw new MissingRequiredPropertyException("GetAlidnsDomainsDomain", "instanceId");
+            }
+            this.instanceId = instanceId;
             return this;
         }
         @CustomType.Setter
         public Builder lineType(String lineType) {
-            this.lineType = Objects.requireNonNull(lineType);
+            if (lineType == null) {
+              throw new MissingRequiredPropertyException("GetAlidnsDomainsDomain", "lineType");
+            }
+            this.lineType = lineType;
             return this;
         }
         @CustomType.Setter
         public Builder minTtl(Integer minTtl) {
-            this.minTtl = Objects.requireNonNull(minTtl);
+            if (minTtl == null) {
+              throw new MissingRequiredPropertyException("GetAlidnsDomainsDomain", "minTtl");
+            }
+            this.minTtl = minTtl;
             return this;
         }
         @CustomType.Setter
         public Builder punyCode(String punyCode) {
-            this.punyCode = Objects.requireNonNull(punyCode);
+            if (punyCode == null) {
+              throw new MissingRequiredPropertyException("GetAlidnsDomainsDomain", "punyCode");
+            }
+            this.punyCode = punyCode;
             return this;
         }
         @CustomType.Setter
         public Builder recordLineTreeJson(String recordLineTreeJson) {
-            this.recordLineTreeJson = Objects.requireNonNull(recordLineTreeJson);
+            if (recordLineTreeJson == null) {
+              throw new MissingRequiredPropertyException("GetAlidnsDomainsDomain", "recordLineTreeJson");
+            }
+            this.recordLineTreeJson = recordLineTreeJson;
             return this;
         }
         @CustomType.Setter
         public Builder recordLines(List<GetAlidnsDomainsDomainRecordLine> recordLines) {
-            this.recordLines = Objects.requireNonNull(recordLines);
+            if (recordLines == null) {
+              throw new MissingRequiredPropertyException("GetAlidnsDomainsDomain", "recordLines");
+            }
+            this.recordLines = recordLines;
             return this;
         }
         public Builder recordLines(GetAlidnsDomainsDomainRecordLine... recordLines) {
@@ -429,37 +478,58 @@ public final class GetAlidnsDomainsDomain {
         }
         @CustomType.Setter
         public Builder regionLines(Boolean regionLines) {
-            this.regionLines = Objects.requireNonNull(regionLines);
+            if (regionLines == null) {
+              throw new MissingRequiredPropertyException("GetAlidnsDomainsDomain", "regionLines");
+            }
+            this.regionLines = regionLines;
             return this;
         }
         @CustomType.Setter
         public Builder remark(String remark) {
-            this.remark = Objects.requireNonNull(remark);
+            if (remark == null) {
+              throw new MissingRequiredPropertyException("GetAlidnsDomainsDomain", "remark");
+            }
+            this.remark = remark;
             return this;
         }
         @CustomType.Setter
         public Builder resourceGroupId(String resourceGroupId) {
-            this.resourceGroupId = Objects.requireNonNull(resourceGroupId);
+            if (resourceGroupId == null) {
+              throw new MissingRequiredPropertyException("GetAlidnsDomainsDomain", "resourceGroupId");
+            }
+            this.resourceGroupId = resourceGroupId;
             return this;
         }
         @CustomType.Setter
         public Builder slaveDns(Boolean slaveDns) {
-            this.slaveDns = Objects.requireNonNull(slaveDns);
+            if (slaveDns == null) {
+              throw new MissingRequiredPropertyException("GetAlidnsDomainsDomain", "slaveDns");
+            }
+            this.slaveDns = slaveDns;
             return this;
         }
         @CustomType.Setter
         public Builder tags(Map<String,Object> tags) {
-            this.tags = Objects.requireNonNull(tags);
+            if (tags == null) {
+              throw new MissingRequiredPropertyException("GetAlidnsDomainsDomain", "tags");
+            }
+            this.tags = tags;
             return this;
         }
         @CustomType.Setter
         public Builder versionCode(String versionCode) {
-            this.versionCode = Objects.requireNonNull(versionCode);
+            if (versionCode == null) {
+              throw new MissingRequiredPropertyException("GetAlidnsDomainsDomain", "versionCode");
+            }
+            this.versionCode = versionCode;
             return this;
         }
         @CustomType.Setter
         public Builder versionName(String versionName) {
-            this.versionName = Objects.requireNonNull(versionName);
+            if (versionName == null) {
+              throw new MissingRequiredPropertyException("GetAlidnsDomainsDomain", "versionName");
+            }
+            this.versionName = versionName;
             return this;
         }
         public GetAlidnsDomainsDomain build() {

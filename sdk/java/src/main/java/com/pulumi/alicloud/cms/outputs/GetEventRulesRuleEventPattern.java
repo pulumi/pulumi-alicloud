@@ -5,6 +5,7 @@ package com.pulumi.alicloud.cms.outputs;
 
 import com.pulumi.alicloud.cms.outputs.GetEventRulesRuleEventPatternKeywordFilter;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -114,7 +115,10 @@ public final class GetEventRulesRuleEventPattern {
 
         @CustomType.Setter
         public Builder eventTypeLists(List<String> eventTypeLists) {
-            this.eventTypeLists = Objects.requireNonNull(eventTypeLists);
+            if (eventTypeLists == null) {
+              throw new MissingRequiredPropertyException("GetEventRulesRuleEventPattern", "eventTypeLists");
+            }
+            this.eventTypeLists = eventTypeLists;
             return this;
         }
         public Builder eventTypeLists(String... eventTypeLists) {
@@ -122,7 +126,10 @@ public final class GetEventRulesRuleEventPattern {
         }
         @CustomType.Setter
         public Builder keywordFilters(List<GetEventRulesRuleEventPatternKeywordFilter> keywordFilters) {
-            this.keywordFilters = Objects.requireNonNull(keywordFilters);
+            if (keywordFilters == null) {
+              throw new MissingRequiredPropertyException("GetEventRulesRuleEventPattern", "keywordFilters");
+            }
+            this.keywordFilters = keywordFilters;
             return this;
         }
         public Builder keywordFilters(GetEventRulesRuleEventPatternKeywordFilter... keywordFilters) {
@@ -130,7 +137,10 @@ public final class GetEventRulesRuleEventPattern {
         }
         @CustomType.Setter
         public Builder levelLists(List<String> levelLists) {
-            this.levelLists = Objects.requireNonNull(levelLists);
+            if (levelLists == null) {
+              throw new MissingRequiredPropertyException("GetEventRulesRuleEventPattern", "levelLists");
+            }
+            this.levelLists = levelLists;
             return this;
         }
         public Builder levelLists(String... levelLists) {
@@ -138,7 +148,10 @@ public final class GetEventRulesRuleEventPattern {
         }
         @CustomType.Setter
         public Builder nameLists(List<String> nameLists) {
-            this.nameLists = Objects.requireNonNull(nameLists);
+            if (nameLists == null) {
+              throw new MissingRequiredPropertyException("GetEventRulesRuleEventPattern", "nameLists");
+            }
+            this.nameLists = nameLists;
             return this;
         }
         public Builder nameLists(String... nameLists) {
@@ -146,12 +159,18 @@ public final class GetEventRulesRuleEventPattern {
         }
         @CustomType.Setter
         public Builder product(String product) {
-            this.product = Objects.requireNonNull(product);
+            if (product == null) {
+              throw new MissingRequiredPropertyException("GetEventRulesRuleEventPattern", "product");
+            }
+            this.product = product;
             return this;
         }
         @CustomType.Setter
         public Builder sqlFilter(String sqlFilter) {
-            this.sqlFilter = Objects.requireNonNull(sqlFilter);
+            if (sqlFilter == null) {
+              throw new MissingRequiredPropertyException("GetEventRulesRuleEventPattern", "sqlFilter");
+            }
+            this.sqlFilter = sqlFilter;
             return this;
         }
         public GetEventRulesRuleEventPattern build() {

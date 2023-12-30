@@ -5,6 +5,7 @@ package com.pulumi.alicloud.rds.outputs;
 
 import com.pulumi.alicloud.rds.outputs.GetInstanceEnginesInstanceEngine;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -147,32 +148,42 @@ public final class GetInstanceEnginesResult {
 
         @CustomType.Setter
         public Builder category(@Nullable String category) {
+
             this.category = category;
             return this;
         }
         @CustomType.Setter
         public Builder dbInstanceStorageType(@Nullable String dbInstanceStorageType) {
+
             this.dbInstanceStorageType = dbInstanceStorageType;
             return this;
         }
         @CustomType.Setter
         public Builder engine(@Nullable String engine) {
+
             this.engine = engine;
             return this;
         }
         @CustomType.Setter
         public Builder engineVersion(@Nullable String engineVersion) {
+
             this.engineVersion = engineVersion;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetInstanceEnginesResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder ids(List<String> ids) {
-            this.ids = Objects.requireNonNull(ids);
+            if (ids == null) {
+              throw new MissingRequiredPropertyException("GetInstanceEnginesResult", "ids");
+            }
+            this.ids = ids;
             return this;
         }
         public Builder ids(String... ids) {
@@ -180,12 +191,16 @@ public final class GetInstanceEnginesResult {
         }
         @CustomType.Setter
         public Builder instanceChargeType(@Nullable String instanceChargeType) {
+
             this.instanceChargeType = instanceChargeType;
             return this;
         }
         @CustomType.Setter
         public Builder instanceEngines(List<GetInstanceEnginesInstanceEngine> instanceEngines) {
-            this.instanceEngines = Objects.requireNonNull(instanceEngines);
+            if (instanceEngines == null) {
+              throw new MissingRequiredPropertyException("GetInstanceEnginesResult", "instanceEngines");
+            }
+            this.instanceEngines = instanceEngines;
             return this;
         }
         public Builder instanceEngines(GetInstanceEnginesInstanceEngine... instanceEngines) {
@@ -193,16 +208,19 @@ public final class GetInstanceEnginesResult {
         }
         @CustomType.Setter
         public Builder multiZone(@Nullable Boolean multiZone) {
+
             this.multiZone = multiZone;
             return this;
         }
         @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
+
             this.outputFile = outputFile;
             return this;
         }
         @CustomType.Setter
         public Builder zoneId(@Nullable String zoneId) {
+
             this.zoneId = zoneId;
             return this;
         }

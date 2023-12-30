@@ -5,6 +5,7 @@ package com.pulumi.alicloud.marketplace.outputs;
 
 import com.pulumi.alicloud.marketplace.outputs.GetProductProduct;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -72,22 +73,32 @@ public final class GetProductResult {
 
         @CustomType.Setter
         public Builder availableRegion(@Nullable String availableRegion) {
+
             this.availableRegion = availableRegion;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetProductResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder productCode(String productCode) {
-            this.productCode = Objects.requireNonNull(productCode);
+            if (productCode == null) {
+              throw new MissingRequiredPropertyException("GetProductResult", "productCode");
+            }
+            this.productCode = productCode;
             return this;
         }
         @CustomType.Setter
         public Builder products(List<GetProductProduct> products) {
-            this.products = Objects.requireNonNull(products);
+            if (products == null) {
+              throw new MissingRequiredPropertyException("GetProductResult", "products");
+            }
+            this.products = products;
             return this;
         }
         public Builder products(GetProductProduct... products) {

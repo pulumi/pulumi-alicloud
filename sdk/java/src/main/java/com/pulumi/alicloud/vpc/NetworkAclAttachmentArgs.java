@@ -6,6 +6,7 @@ package com.pulumi.alicloud.vpc;
 import com.pulumi.alicloud.vpc.inputs.NetworkAclAttachmentResourceArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -123,8 +124,12 @@ public final class NetworkAclAttachmentArgs extends com.pulumi.resources.Resourc
         }
 
         public NetworkAclAttachmentArgs build() {
-            $.networkAclId = Objects.requireNonNull($.networkAclId, "expected parameter 'networkAclId' to be non-null");
-            $.resources = Objects.requireNonNull($.resources, "expected parameter 'resources' to be non-null");
+            if ($.networkAclId == null) {
+                throw new MissingRequiredPropertyException("NetworkAclAttachmentArgs", "networkAclId");
+            }
+            if ($.resources == null) {
+                throw new MissingRequiredPropertyException("NetworkAclAttachmentArgs", "resources");
+            }
             return $;
         }
     }

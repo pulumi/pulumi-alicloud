@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.apigateway.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -70,17 +71,26 @@ public final class ApiSystemParameter {
 
         @CustomType.Setter
         public Builder in(String in) {
-            this.in = Objects.requireNonNull(in);
+            if (in == null) {
+              throw new MissingRequiredPropertyException("ApiSystemParameter", "in");
+            }
+            this.in = in;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("ApiSystemParameter", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder nameService(String nameService) {
-            this.nameService = Objects.requireNonNull(nameService);
+            if (nameService == null) {
+              throw new MissingRequiredPropertyException("ApiSystemParameter", "nameService");
+            }
+            this.nameService = nameService;
             return this;
         }
         public ApiSystemParameter build() {

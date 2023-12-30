@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.resourcemanager.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -196,62 +197,98 @@ public final class GetAccountsAccount {
 
         @CustomType.Setter
         public Builder accountId(String accountId) {
-            this.accountId = Objects.requireNonNull(accountId);
+            if (accountId == null) {
+              throw new MissingRequiredPropertyException("GetAccountsAccount", "accountId");
+            }
+            this.accountId = accountId;
             return this;
         }
         @CustomType.Setter
         public Builder accountName(String accountName) {
-            this.accountName = Objects.requireNonNull(accountName);
+            if (accountName == null) {
+              throw new MissingRequiredPropertyException("GetAccountsAccount", "accountName");
+            }
+            this.accountName = accountName;
             return this;
         }
         @CustomType.Setter
         public Builder displayName(String displayName) {
-            this.displayName = Objects.requireNonNull(displayName);
+            if (displayName == null) {
+              throw new MissingRequiredPropertyException("GetAccountsAccount", "displayName");
+            }
+            this.displayName = displayName;
             return this;
         }
         @CustomType.Setter
         public Builder folderId(String folderId) {
-            this.folderId = Objects.requireNonNull(folderId);
+            if (folderId == null) {
+              throw new MissingRequiredPropertyException("GetAccountsAccount", "folderId");
+            }
+            this.folderId = folderId;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetAccountsAccount", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder joinMethod(String joinMethod) {
-            this.joinMethod = Objects.requireNonNull(joinMethod);
+            if (joinMethod == null) {
+              throw new MissingRequiredPropertyException("GetAccountsAccount", "joinMethod");
+            }
+            this.joinMethod = joinMethod;
             return this;
         }
         @CustomType.Setter
         public Builder joinTime(String joinTime) {
-            this.joinTime = Objects.requireNonNull(joinTime);
+            if (joinTime == null) {
+              throw new MissingRequiredPropertyException("GetAccountsAccount", "joinTime");
+            }
+            this.joinTime = joinTime;
             return this;
         }
         @CustomType.Setter
         public Builder modifyTime(String modifyTime) {
-            this.modifyTime = Objects.requireNonNull(modifyTime);
+            if (modifyTime == null) {
+              throw new MissingRequiredPropertyException("GetAccountsAccount", "modifyTime");
+            }
+            this.modifyTime = modifyTime;
             return this;
         }
         @CustomType.Setter
         public Builder payerAccountId(String payerAccountId) {
-            this.payerAccountId = Objects.requireNonNull(payerAccountId);
+            if (payerAccountId == null) {
+              throw new MissingRequiredPropertyException("GetAccountsAccount", "payerAccountId");
+            }
+            this.payerAccountId = payerAccountId;
             return this;
         }
         @CustomType.Setter
         public Builder resourceDirectoryId(String resourceDirectoryId) {
-            this.resourceDirectoryId = Objects.requireNonNull(resourceDirectoryId);
+            if (resourceDirectoryId == null) {
+              throw new MissingRequiredPropertyException("GetAccountsAccount", "resourceDirectoryId");
+            }
+            this.resourceDirectoryId = resourceDirectoryId;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetAccountsAccount", "status");
+            }
+            this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder type(String type) {
-            this.type = Objects.requireNonNull(type);
+            if (type == null) {
+              throw new MissingRequiredPropertyException("GetAccountsAccount", "type");
+            }
+            this.type = type;
             return this;
         }
         public GetAccountsAccount build() {

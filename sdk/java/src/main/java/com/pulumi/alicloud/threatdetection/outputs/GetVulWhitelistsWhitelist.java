@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.threatdetection.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -98,27 +99,42 @@ public final class GetVulWhitelistsWhitelist {
 
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetVulWhitelistsWhitelist", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder reason(String reason) {
-            this.reason = Objects.requireNonNull(reason);
+            if (reason == null) {
+              throw new MissingRequiredPropertyException("GetVulWhitelistsWhitelist", "reason");
+            }
+            this.reason = reason;
             return this;
         }
         @CustomType.Setter
         public Builder targetInfo(String targetInfo) {
-            this.targetInfo = Objects.requireNonNull(targetInfo);
+            if (targetInfo == null) {
+              throw new MissingRequiredPropertyException("GetVulWhitelistsWhitelist", "targetInfo");
+            }
+            this.targetInfo = targetInfo;
             return this;
         }
         @CustomType.Setter
         public Builder vulWhitelistId(String vulWhitelistId) {
-            this.vulWhitelistId = Objects.requireNonNull(vulWhitelistId);
+            if (vulWhitelistId == null) {
+              throw new MissingRequiredPropertyException("GetVulWhitelistsWhitelist", "vulWhitelistId");
+            }
+            this.vulWhitelistId = vulWhitelistId;
             return this;
         }
         @CustomType.Setter
         public Builder whitelist(String whitelist) {
-            this.whitelist = Objects.requireNonNull(whitelist);
+            if (whitelist == null) {
+              throw new MissingRequiredPropertyException("GetVulWhitelistsWhitelist", "whitelist");
+            }
+            this.whitelist = whitelist;
             return this;
         }
         public GetVulWhitelistsWhitelist build() {

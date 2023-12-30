@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.actiontrail.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -112,32 +113,50 @@ public final class GetSaslAclsAcl {
 
         @CustomType.Setter
         public Builder aclOperationType(String aclOperationType) {
-            this.aclOperationType = Objects.requireNonNull(aclOperationType);
+            if (aclOperationType == null) {
+              throw new MissingRequiredPropertyException("GetSaslAclsAcl", "aclOperationType");
+            }
+            this.aclOperationType = aclOperationType;
             return this;
         }
         @CustomType.Setter
         public Builder aclResourceName(String aclResourceName) {
-            this.aclResourceName = Objects.requireNonNull(aclResourceName);
+            if (aclResourceName == null) {
+              throw new MissingRequiredPropertyException("GetSaslAclsAcl", "aclResourceName");
+            }
+            this.aclResourceName = aclResourceName;
             return this;
         }
         @CustomType.Setter
         public Builder aclResourcePatternType(String aclResourcePatternType) {
-            this.aclResourcePatternType = Objects.requireNonNull(aclResourcePatternType);
+            if (aclResourcePatternType == null) {
+              throw new MissingRequiredPropertyException("GetSaslAclsAcl", "aclResourcePatternType");
+            }
+            this.aclResourcePatternType = aclResourcePatternType;
             return this;
         }
         @CustomType.Setter
         public Builder aclResourceType(String aclResourceType) {
-            this.aclResourceType = Objects.requireNonNull(aclResourceType);
+            if (aclResourceType == null) {
+              throw new MissingRequiredPropertyException("GetSaslAclsAcl", "aclResourceType");
+            }
+            this.aclResourceType = aclResourceType;
             return this;
         }
         @CustomType.Setter
         public Builder host(String host) {
-            this.host = Objects.requireNonNull(host);
+            if (host == null) {
+              throw new MissingRequiredPropertyException("GetSaslAclsAcl", "host");
+            }
+            this.host = host;
             return this;
         }
         @CustomType.Setter
         public Builder username(String username) {
-            this.username = Objects.requireNonNull(username);
+            if (username == null) {
+              throw new MissingRequiredPropertyException("GetSaslAclsAcl", "username");
+            }
+            this.username = username;
             return this;
         }
         public GetSaslAclsAcl build() {

@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.threatdetection.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -142,42 +143,66 @@ public final class GetBackupPoliciesPolicy {
 
         @CustomType.Setter
         public Builder backupPolicyId(Integer backupPolicyId) {
-            this.backupPolicyId = Objects.requireNonNull(backupPolicyId);
+            if (backupPolicyId == null) {
+              throw new MissingRequiredPropertyException("GetBackupPoliciesPolicy", "backupPolicyId");
+            }
+            this.backupPolicyId = backupPolicyId;
             return this;
         }
         @CustomType.Setter
         public Builder backupPolicyName(String backupPolicyName) {
-            this.backupPolicyName = Objects.requireNonNull(backupPolicyName);
+            if (backupPolicyName == null) {
+              throw new MissingRequiredPropertyException("GetBackupPoliciesPolicy", "backupPolicyName");
+            }
+            this.backupPolicyName = backupPolicyName;
             return this;
         }
         @CustomType.Setter
         public Builder id(Integer id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetBackupPoliciesPolicy", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder policy(String policy) {
-            this.policy = Objects.requireNonNull(policy);
+            if (policy == null) {
+              throw new MissingRequiredPropertyException("GetBackupPoliciesPolicy", "policy");
+            }
+            this.policy = policy;
             return this;
         }
         @CustomType.Setter
         public Builder policyRegionId(String policyRegionId) {
-            this.policyRegionId = Objects.requireNonNull(policyRegionId);
+            if (policyRegionId == null) {
+              throw new MissingRequiredPropertyException("GetBackupPoliciesPolicy", "policyRegionId");
+            }
+            this.policyRegionId = policyRegionId;
             return this;
         }
         @CustomType.Setter
         public Builder policyVersion(String policyVersion) {
-            this.policyVersion = Objects.requireNonNull(policyVersion);
+            if (policyVersion == null) {
+              throw new MissingRequiredPropertyException("GetBackupPoliciesPolicy", "policyVersion");
+            }
+            this.policyVersion = policyVersion;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetBackupPoliciesPolicy", "status");
+            }
+            this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder uuidLists(List<String> uuidLists) {
-            this.uuidLists = Objects.requireNonNull(uuidLists);
+            if (uuidLists == null) {
+              throw new MissingRequiredPropertyException("GetBackupPoliciesPolicy", "uuidLists");
+            }
+            this.uuidLists = uuidLists;
             return this;
         }
         public Builder uuidLists(String... uuidLists) {

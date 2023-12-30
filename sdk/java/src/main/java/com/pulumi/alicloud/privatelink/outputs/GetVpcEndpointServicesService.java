@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.privatelink.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -156,47 +157,74 @@ public final class GetVpcEndpointServicesService {
 
         @CustomType.Setter
         public Builder autoAcceptConnection(Boolean autoAcceptConnection) {
-            this.autoAcceptConnection = Objects.requireNonNull(autoAcceptConnection);
+            if (autoAcceptConnection == null) {
+              throw new MissingRequiredPropertyException("GetVpcEndpointServicesService", "autoAcceptConnection");
+            }
+            this.autoAcceptConnection = autoAcceptConnection;
             return this;
         }
         @CustomType.Setter
         public Builder connectBandwidth(Integer connectBandwidth) {
-            this.connectBandwidth = Objects.requireNonNull(connectBandwidth);
+            if (connectBandwidth == null) {
+              throw new MissingRequiredPropertyException("GetVpcEndpointServicesService", "connectBandwidth");
+            }
+            this.connectBandwidth = connectBandwidth;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetVpcEndpointServicesService", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder serviceBusinessStatus(String serviceBusinessStatus) {
-            this.serviceBusinessStatus = Objects.requireNonNull(serviceBusinessStatus);
+            if (serviceBusinessStatus == null) {
+              throw new MissingRequiredPropertyException("GetVpcEndpointServicesService", "serviceBusinessStatus");
+            }
+            this.serviceBusinessStatus = serviceBusinessStatus;
             return this;
         }
         @CustomType.Setter
         public Builder serviceDescription(String serviceDescription) {
-            this.serviceDescription = Objects.requireNonNull(serviceDescription);
+            if (serviceDescription == null) {
+              throw new MissingRequiredPropertyException("GetVpcEndpointServicesService", "serviceDescription");
+            }
+            this.serviceDescription = serviceDescription;
             return this;
         }
         @CustomType.Setter
         public Builder serviceDomain(String serviceDomain) {
-            this.serviceDomain = Objects.requireNonNull(serviceDomain);
+            if (serviceDomain == null) {
+              throw new MissingRequiredPropertyException("GetVpcEndpointServicesService", "serviceDomain");
+            }
+            this.serviceDomain = serviceDomain;
             return this;
         }
         @CustomType.Setter
         public Builder serviceId(String serviceId) {
-            this.serviceId = Objects.requireNonNull(serviceId);
+            if (serviceId == null) {
+              throw new MissingRequiredPropertyException("GetVpcEndpointServicesService", "serviceId");
+            }
+            this.serviceId = serviceId;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetVpcEndpointServicesService", "status");
+            }
+            this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder vpcEndpointServiceName(String vpcEndpointServiceName) {
-            this.vpcEndpointServiceName = Objects.requireNonNull(vpcEndpointServiceName);
+            if (vpcEndpointServiceName == null) {
+              throw new MissingRequiredPropertyException("GetVpcEndpointServicesService", "vpcEndpointServiceName");
+            }
+            this.vpcEndpointServiceName = vpcEndpointServiceName;
             return this;
         }
         public GetVpcEndpointServicesService build() {

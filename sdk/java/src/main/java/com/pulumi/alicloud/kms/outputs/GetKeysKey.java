@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.kms.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -280,92 +281,146 @@ public final class GetKeysKey {
 
         @CustomType.Setter
         public Builder arn(String arn) {
-            this.arn = Objects.requireNonNull(arn);
+            if (arn == null) {
+              throw new MissingRequiredPropertyException("GetKeysKey", "arn");
+            }
+            this.arn = arn;
             return this;
         }
         @CustomType.Setter
         public Builder automaticRotation(String automaticRotation) {
-            this.automaticRotation = Objects.requireNonNull(automaticRotation);
+            if (automaticRotation == null) {
+              throw new MissingRequiredPropertyException("GetKeysKey", "automaticRotation");
+            }
+            this.automaticRotation = automaticRotation;
             return this;
         }
         @CustomType.Setter
         public Builder creationDate(String creationDate) {
-            this.creationDate = Objects.requireNonNull(creationDate);
+            if (creationDate == null) {
+              throw new MissingRequiredPropertyException("GetKeysKey", "creationDate");
+            }
+            this.creationDate = creationDate;
             return this;
         }
         @CustomType.Setter
         public Builder creator(String creator) {
-            this.creator = Objects.requireNonNull(creator);
+            if (creator == null) {
+              throw new MissingRequiredPropertyException("GetKeysKey", "creator");
+            }
+            this.creator = creator;
             return this;
         }
         @CustomType.Setter
         public Builder deleteDate(String deleteDate) {
-            this.deleteDate = Objects.requireNonNull(deleteDate);
+            if (deleteDate == null) {
+              throw new MissingRequiredPropertyException("GetKeysKey", "deleteDate");
+            }
+            this.deleteDate = deleteDate;
             return this;
         }
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetKeysKey", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetKeysKey", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder keyId(String keyId) {
-            this.keyId = Objects.requireNonNull(keyId);
+            if (keyId == null) {
+              throw new MissingRequiredPropertyException("GetKeysKey", "keyId");
+            }
+            this.keyId = keyId;
             return this;
         }
         @CustomType.Setter
         public Builder keySpec(String keySpec) {
-            this.keySpec = Objects.requireNonNull(keySpec);
+            if (keySpec == null) {
+              throw new MissingRequiredPropertyException("GetKeysKey", "keySpec");
+            }
+            this.keySpec = keySpec;
             return this;
         }
         @CustomType.Setter
         public Builder keyUsage(String keyUsage) {
-            this.keyUsage = Objects.requireNonNull(keyUsage);
+            if (keyUsage == null) {
+              throw new MissingRequiredPropertyException("GetKeysKey", "keyUsage");
+            }
+            this.keyUsage = keyUsage;
             return this;
         }
         @CustomType.Setter
         public Builder lastRotationDate(String lastRotationDate) {
-            this.lastRotationDate = Objects.requireNonNull(lastRotationDate);
+            if (lastRotationDate == null) {
+              throw new MissingRequiredPropertyException("GetKeysKey", "lastRotationDate");
+            }
+            this.lastRotationDate = lastRotationDate;
             return this;
         }
         @CustomType.Setter
         public Builder materialExpireTime(String materialExpireTime) {
-            this.materialExpireTime = Objects.requireNonNull(materialExpireTime);
+            if (materialExpireTime == null) {
+              throw new MissingRequiredPropertyException("GetKeysKey", "materialExpireTime");
+            }
+            this.materialExpireTime = materialExpireTime;
             return this;
         }
         @CustomType.Setter
         public Builder nextRotationDate(String nextRotationDate) {
-            this.nextRotationDate = Objects.requireNonNull(nextRotationDate);
+            if (nextRotationDate == null) {
+              throw new MissingRequiredPropertyException("GetKeysKey", "nextRotationDate");
+            }
+            this.nextRotationDate = nextRotationDate;
             return this;
         }
         @CustomType.Setter
         public Builder origin(String origin) {
-            this.origin = Objects.requireNonNull(origin);
+            if (origin == null) {
+              throw new MissingRequiredPropertyException("GetKeysKey", "origin");
+            }
+            this.origin = origin;
             return this;
         }
         @CustomType.Setter
         public Builder primaryKeyVersion(String primaryKeyVersion) {
-            this.primaryKeyVersion = Objects.requireNonNull(primaryKeyVersion);
+            if (primaryKeyVersion == null) {
+              throw new MissingRequiredPropertyException("GetKeysKey", "primaryKeyVersion");
+            }
+            this.primaryKeyVersion = primaryKeyVersion;
             return this;
         }
         @CustomType.Setter
         public Builder protectionLevel(String protectionLevel) {
-            this.protectionLevel = Objects.requireNonNull(protectionLevel);
+            if (protectionLevel == null) {
+              throw new MissingRequiredPropertyException("GetKeysKey", "protectionLevel");
+            }
+            this.protectionLevel = protectionLevel;
             return this;
         }
         @CustomType.Setter
         public Builder rotationInterval(String rotationInterval) {
-            this.rotationInterval = Objects.requireNonNull(rotationInterval);
+            if (rotationInterval == null) {
+              throw new MissingRequiredPropertyException("GetKeysKey", "rotationInterval");
+            }
+            this.rotationInterval = rotationInterval;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetKeysKey", "status");
+            }
+            this.status = status;
             return this;
         }
         public GetKeysKey build() {

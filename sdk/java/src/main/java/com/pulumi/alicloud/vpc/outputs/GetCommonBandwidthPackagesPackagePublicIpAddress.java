@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.vpc.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -46,17 +47,26 @@ public final class GetCommonBandwidthPackagesPackagePublicIpAddress {
 
         @CustomType.Setter
         public Builder allocationId(String allocationId) {
-            this.allocationId = Objects.requireNonNull(allocationId);
+            if (allocationId == null) {
+              throw new MissingRequiredPropertyException("GetCommonBandwidthPackagesPackagePublicIpAddress", "allocationId");
+            }
+            this.allocationId = allocationId;
             return this;
         }
         @CustomType.Setter
         public Builder bandwidthPackageIpRelationStatus(String bandwidthPackageIpRelationStatus) {
-            this.bandwidthPackageIpRelationStatus = Objects.requireNonNull(bandwidthPackageIpRelationStatus);
+            if (bandwidthPackageIpRelationStatus == null) {
+              throw new MissingRequiredPropertyException("GetCommonBandwidthPackagesPackagePublicIpAddress", "bandwidthPackageIpRelationStatus");
+            }
+            this.bandwidthPackageIpRelationStatus = bandwidthPackageIpRelationStatus;
             return this;
         }
         @CustomType.Setter
         public Builder ipAddress(String ipAddress) {
-            this.ipAddress = Objects.requireNonNull(ipAddress);
+            if (ipAddress == null) {
+              throw new MissingRequiredPropertyException("GetCommonBandwidthPackagesPackagePublicIpAddress", "ipAddress");
+            }
+            this.ipAddress = ipAddress;
             return this;
         }
         public GetCommonBandwidthPackagesPackagePublicIpAddress build() {

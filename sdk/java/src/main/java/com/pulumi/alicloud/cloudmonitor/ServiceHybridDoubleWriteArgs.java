@@ -5,6 +5,7 @@ package com.pulumi.alicloud.cloudmonitor;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -185,10 +186,18 @@ public final class ServiceHybridDoubleWriteArgs extends com.pulumi.resources.Res
         }
 
         public ServiceHybridDoubleWriteArgs build() {
-            $.namespace = Objects.requireNonNull($.namespace, "expected parameter 'namespace' to be non-null");
-            $.sourceNamespace = Objects.requireNonNull($.sourceNamespace, "expected parameter 'sourceNamespace' to be non-null");
-            $.sourceUserId = Objects.requireNonNull($.sourceUserId, "expected parameter 'sourceUserId' to be non-null");
-            $.userId = Objects.requireNonNull($.userId, "expected parameter 'userId' to be non-null");
+            if ($.namespace == null) {
+                throw new MissingRequiredPropertyException("ServiceHybridDoubleWriteArgs", "namespace");
+            }
+            if ($.sourceNamespace == null) {
+                throw new MissingRequiredPropertyException("ServiceHybridDoubleWriteArgs", "sourceNamespace");
+            }
+            if ($.sourceUserId == null) {
+                throw new MissingRequiredPropertyException("ServiceHybridDoubleWriteArgs", "sourceUserId");
+            }
+            if ($.userId == null) {
+                throw new MissingRequiredPropertyException("ServiceHybridDoubleWriteArgs", "userId");
+            }
             return $;
         }
     }

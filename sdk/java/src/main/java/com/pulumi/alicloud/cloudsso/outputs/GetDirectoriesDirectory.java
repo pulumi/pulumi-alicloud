@@ -6,6 +6,7 @@ package com.pulumi.alicloud.cloudsso.outputs;
 import com.pulumi.alicloud.cloudsso.outputs.GetDirectoriesDirectorySamlIdentityProviderConfiguration;
 import com.pulumi.alicloud.cloudsso.outputs.GetDirectoriesDirectoryTask;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -157,37 +158,58 @@ public final class GetDirectoriesDirectory {
 
         @CustomType.Setter
         public Builder createTime(String createTime) {
-            this.createTime = Objects.requireNonNull(createTime);
+            if (createTime == null) {
+              throw new MissingRequiredPropertyException("GetDirectoriesDirectory", "createTime");
+            }
+            this.createTime = createTime;
             return this;
         }
         @CustomType.Setter
         public Builder directoryId(String directoryId) {
-            this.directoryId = Objects.requireNonNull(directoryId);
+            if (directoryId == null) {
+              throw new MissingRequiredPropertyException("GetDirectoriesDirectory", "directoryId");
+            }
+            this.directoryId = directoryId;
             return this;
         }
         @CustomType.Setter
         public Builder directoryName(String directoryName) {
-            this.directoryName = Objects.requireNonNull(directoryName);
+            if (directoryName == null) {
+              throw new MissingRequiredPropertyException("GetDirectoriesDirectory", "directoryName");
+            }
+            this.directoryName = directoryName;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetDirectoriesDirectory", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder mfaAuthenticationStatus(String mfaAuthenticationStatus) {
-            this.mfaAuthenticationStatus = Objects.requireNonNull(mfaAuthenticationStatus);
+            if (mfaAuthenticationStatus == null) {
+              throw new MissingRequiredPropertyException("GetDirectoriesDirectory", "mfaAuthenticationStatus");
+            }
+            this.mfaAuthenticationStatus = mfaAuthenticationStatus;
             return this;
         }
         @CustomType.Setter
         public Builder region(String region) {
-            this.region = Objects.requireNonNull(region);
+            if (region == null) {
+              throw new MissingRequiredPropertyException("GetDirectoriesDirectory", "region");
+            }
+            this.region = region;
             return this;
         }
         @CustomType.Setter
         public Builder samlIdentityProviderConfigurations(List<GetDirectoriesDirectorySamlIdentityProviderConfiguration> samlIdentityProviderConfigurations) {
-            this.samlIdentityProviderConfigurations = Objects.requireNonNull(samlIdentityProviderConfigurations);
+            if (samlIdentityProviderConfigurations == null) {
+              throw new MissingRequiredPropertyException("GetDirectoriesDirectory", "samlIdentityProviderConfigurations");
+            }
+            this.samlIdentityProviderConfigurations = samlIdentityProviderConfigurations;
             return this;
         }
         public Builder samlIdentityProviderConfigurations(GetDirectoriesDirectorySamlIdentityProviderConfiguration... samlIdentityProviderConfigurations) {
@@ -195,12 +217,18 @@ public final class GetDirectoriesDirectory {
         }
         @CustomType.Setter
         public Builder scimSynchronizationStatus(String scimSynchronizationStatus) {
-            this.scimSynchronizationStatus = Objects.requireNonNull(scimSynchronizationStatus);
+            if (scimSynchronizationStatus == null) {
+              throw new MissingRequiredPropertyException("GetDirectoriesDirectory", "scimSynchronizationStatus");
+            }
+            this.scimSynchronizationStatus = scimSynchronizationStatus;
             return this;
         }
         @CustomType.Setter
         public Builder tasks(List<GetDirectoriesDirectoryTask> tasks) {
-            this.tasks = Objects.requireNonNull(tasks);
+            if (tasks == null) {
+              throw new MissingRequiredPropertyException("GetDirectoriesDirectory", "tasks");
+            }
+            this.tasks = tasks;
             return this;
         }
         public Builder tasks(GetDirectoriesDirectoryTask... tasks) {

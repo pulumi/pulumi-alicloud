@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.eventbridge.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -211,7 +212,9 @@ public final class GetRulesPlainArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         public GetRulesPlainArgs build() {
-            $.eventBusName = Objects.requireNonNull($.eventBusName, "expected parameter 'eventBusName' to be non-null");
+            if ($.eventBusName == null) {
+                throw new MissingRequiredPropertyException("GetRulesPlainArgs", "eventBusName");
+            }
             return $;
         }
     }

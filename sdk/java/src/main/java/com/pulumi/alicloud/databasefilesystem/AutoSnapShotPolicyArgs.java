@@ -5,6 +5,7 @@ package com.pulumi.alicloud.databasefilesystem;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -207,10 +208,18 @@ public final class AutoSnapShotPolicyArgs extends com.pulumi.resources.ResourceA
         }
 
         public AutoSnapShotPolicyArgs build() {
-            $.policyName = Objects.requireNonNull($.policyName, "expected parameter 'policyName' to be non-null");
-            $.repeatWeekdays = Objects.requireNonNull($.repeatWeekdays, "expected parameter 'repeatWeekdays' to be non-null");
-            $.retentionDays = Objects.requireNonNull($.retentionDays, "expected parameter 'retentionDays' to be non-null");
-            $.timePoints = Objects.requireNonNull($.timePoints, "expected parameter 'timePoints' to be non-null");
+            if ($.policyName == null) {
+                throw new MissingRequiredPropertyException("AutoSnapShotPolicyArgs", "policyName");
+            }
+            if ($.repeatWeekdays == null) {
+                throw new MissingRequiredPropertyException("AutoSnapShotPolicyArgs", "repeatWeekdays");
+            }
+            if ($.retentionDays == null) {
+                throw new MissingRequiredPropertyException("AutoSnapShotPolicyArgs", "retentionDays");
+            }
+            if ($.timePoints == null) {
+                throw new MissingRequiredPropertyException("AutoSnapShotPolicyArgs", "timePoints");
+            }
             return $;
         }
     }

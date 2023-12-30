@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.emrv2.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -142,41 +143,57 @@ public final class ClusterApplicationConfig {
 
         @CustomType.Setter
         public Builder applicationName(String applicationName) {
-            this.applicationName = Objects.requireNonNull(applicationName);
+            if (applicationName == null) {
+              throw new MissingRequiredPropertyException("ClusterApplicationConfig", "applicationName");
+            }
+            this.applicationName = applicationName;
             return this;
         }
         @CustomType.Setter
         public Builder configDescription(@Nullable String configDescription) {
+
             this.configDescription = configDescription;
             return this;
         }
         @CustomType.Setter
         public Builder configFileName(String configFileName) {
-            this.configFileName = Objects.requireNonNull(configFileName);
+            if (configFileName == null) {
+              throw new MissingRequiredPropertyException("ClusterApplicationConfig", "configFileName");
+            }
+            this.configFileName = configFileName;
             return this;
         }
         @CustomType.Setter
         public Builder configItemKey(String configItemKey) {
-            this.configItemKey = Objects.requireNonNull(configItemKey);
+            if (configItemKey == null) {
+              throw new MissingRequiredPropertyException("ClusterApplicationConfig", "configItemKey");
+            }
+            this.configItemKey = configItemKey;
             return this;
         }
         @CustomType.Setter
         public Builder configItemValue(String configItemValue) {
-            this.configItemValue = Objects.requireNonNull(configItemValue);
+            if (configItemValue == null) {
+              throw new MissingRequiredPropertyException("ClusterApplicationConfig", "configItemValue");
+            }
+            this.configItemValue = configItemValue;
             return this;
         }
         @CustomType.Setter
         public Builder configScope(@Nullable String configScope) {
+
             this.configScope = configScope;
             return this;
         }
         @CustomType.Setter
         public Builder nodeGroupId(@Nullable String nodeGroupId) {
+
             this.nodeGroupId = nodeGroupId;
             return this;
         }
         @CustomType.Setter
         public Builder nodeGroupName(@Nullable String nodeGroupName) {
+
             this.nodeGroupName = nodeGroupName;
             return this;
         }

@@ -5,6 +5,7 @@ package com.pulumi.alicloud.cen;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -559,9 +560,15 @@ public final class TransitRouterPeerAttachmentArgs extends com.pulumi.resources.
         }
 
         public TransitRouterPeerAttachmentArgs build() {
-            $.cenId = Objects.requireNonNull($.cenId, "expected parameter 'cenId' to be non-null");
-            $.peerTransitRouterId = Objects.requireNonNull($.peerTransitRouterId, "expected parameter 'peerTransitRouterId' to be non-null");
-            $.peerTransitRouterRegionId = Objects.requireNonNull($.peerTransitRouterRegionId, "expected parameter 'peerTransitRouterRegionId' to be non-null");
+            if ($.cenId == null) {
+                throw new MissingRequiredPropertyException("TransitRouterPeerAttachmentArgs", "cenId");
+            }
+            if ($.peerTransitRouterId == null) {
+                throw new MissingRequiredPropertyException("TransitRouterPeerAttachmentArgs", "peerTransitRouterId");
+            }
+            if ($.peerTransitRouterRegionId == null) {
+                throw new MissingRequiredPropertyException("TransitRouterPeerAttachmentArgs", "peerTransitRouterRegionId");
+            }
             return $;
         }
     }

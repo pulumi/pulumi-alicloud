@@ -21,10 +21,10 @@ import javax.annotation.Nullable;
 /**
  * ## Import
  * 
- * ALIKAFKA instance can be imported using the id, e.g.
+ * AliKafka instance can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:alikafka/instance:Instance instance alikafka_post-cn-123455abc
+ *  $ pulumi import alicloud:alikafka/instance:Instance instance &lt;id&gt;
  * ```
  * 
  */
@@ -119,6 +119,34 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.endPoint;
     }
     /**
+     * (Available since v1.214.1) The number of available groups.
+     * 
+     */
+    @Export(name="groupLeft", refs={Integer.class}, tree="[0]")
+    private Output<Integer> groupLeft;
+
+    /**
+     * @return (Available since v1.214.1) The number of available groups.
+     * 
+     */
+    public Output<Integer> groupLeft() {
+        return this.groupLeft;
+    }
+    /**
+     * (Available since v1.214.1) The number of used groups.
+     * 
+     */
+    @Export(name="groupUsed", refs={Integer.class}, tree="[0]")
+    private Output<Integer> groupUsed;
+
+    /**
+     * @return (Available since v1.214.1) The number of used groups.
+     * 
+     */
+    public Output<Integer> groupUsed() {
+        return this.groupUsed;
+    }
+    /**
      * The max value of io of the instance. When modify this value, it only support adjust to a greater value.
      * 
      */
@@ -149,6 +177,20 @@ public class Instance extends com.pulumi.resources.CustomResource {
      */
     public Output<String> ioMaxSpec() {
         return this.ioMaxSpec;
+    }
+    /**
+     * (Available since v1.214.1) The method that you use to purchase partitions.
+     * 
+     */
+    @Export(name="isPartitionBuy", refs={Integer.class}, tree="[0]")
+    private Output<Integer> isPartitionBuy;
+
+    /**
+     * @return (Available since v1.214.1) The method that you use to purchase partitions.
+     * 
+     */
+    public Output<Integer> isPartitionBuy() {
+        return this.isPartitionBuy;
     }
     /**
      * The ID of the key that is used to encrypt data on standard SSDs in the region of the instance.
@@ -193,6 +235,20 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.paidType);
     }
     /**
+     * (Available since v1.214.1) The number of available partitions.
+     * 
+     */
+    @Export(name="partitionLeft", refs={Integer.class}, tree="[0]")
+    private Output<Integer> partitionLeft;
+
+    /**
+     * @return (Available since v1.214.1) The number of available partitions.
+     * 
+     */
+    public Output<Integer> partitionLeft() {
+        return this.partitionLeft;
+    }
+    /**
      * The number of partitions.
      * 
      */
@@ -205,6 +261,20 @@ public class Instance extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<Integer>> partitionNum() {
         return Codegen.optional(this.partitionNum);
+    }
+    /**
+     * (Available since v1.214.1) The number of used partitions.
+     * 
+     */
+    @Export(name="partitionUsed", refs={Integer.class}, tree="[0]")
+    private Output<Integer> partitionUsed;
+
+    /**
+     * @return (Available since v1.214.1) The number of used partitions.
+     * 
+     */
+    public Output<Integer> partitionUsed() {
+        return this.partitionUsed;
     }
     /**
      * The ID of security group for this instance. If the security group is empty, system will create a default one.
@@ -283,22 +353,14 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.specType);
     }
     /**
-     * The status of the instance. Valid values:
-     * - 0: pending
-     * - 1: deploying
-     * - 5: running
-     * - 15: expired
+     * The status of the instance.
      * 
      */
     @Export(name="status", refs={Integer.class}, tree="[0]")
     private Output<Integer> status;
 
     /**
-     * @return The status of the instance. Valid values:
-     * - 0: pending
-     * - 1: deploying
-     * - 5: running
-     * - 15: expired
+     * @return The status of the instance.
      * 
      */
     public Output<Integer> status() {
@@ -319,16 +381,44 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.tags);
     }
     /**
+     * (Available since v1.214.1) The number of available topics.
+     * 
+     */
+    @Export(name="topicLeft", refs={Integer.class}, tree="[0]")
+    private Output<Integer> topicLeft;
+
+    /**
+     * @return (Available since v1.214.1) The number of available topics.
+     * 
+     */
+    public Output<Integer> topicLeft() {
+        return this.topicLeft;
+    }
+    /**
+     * (Available since v1.214.1) The number of purchased topics.
+     * 
+     */
+    @Export(name="topicNumOfBuy", refs={Integer.class}, tree="[0]")
+    private Output<Integer> topicNumOfBuy;
+
+    /**
+     * @return (Available since v1.214.1) The number of purchased topics.
+     * 
+     */
+    public Output<Integer> topicNumOfBuy() {
+        return this.topicNumOfBuy;
+    }
+    /**
      * The max num of topic can be creation of the instance.
      * It has been deprecated since version 1.194.0 and using `partition_num` instead.
      * Currently, its value only can be set to 50 when creating it, and finally depends on `partition_num` value: &lt;`topic_quota`&gt; = 1000 + &lt;`partition_num`&gt;.
      * Therefore, you can update it by updating the `partition_num`, and it is the only updating path.
      * 
      * @deprecated
-     * Attribute &#39;topic_quota&#39; has been deprecated since 1.194.0 and it will be removed in the next future. Using new attribute &#39;partition_num&#39; instead.
+     * Attribute `topic_quota` has been deprecated since 1.194.0 and it will be removed in the next future. Using new attribute `partition_num` instead.
      * 
      */
-    @Deprecated /* Attribute 'topic_quota' has been deprecated since 1.194.0 and it will be removed in the next future. Using new attribute 'partition_num' instead. */
+    @Deprecated /* Attribute `topic_quota` has been deprecated since 1.194.0 and it will be removed in the next future. Using new attribute `partition_num` instead. */
     @Export(name="topicQuota", refs={Integer.class}, tree="[0]")
     private Output<Integer> topicQuota;
 
@@ -341,6 +431,20 @@ public class Instance extends com.pulumi.resources.CustomResource {
      */
     public Output<Integer> topicQuota() {
         return this.topicQuota;
+    }
+    /**
+     * (Available since v1.214.1) The number of used topics.
+     * 
+     */
+    @Export(name="topicUsed", refs={Integer.class}, tree="[0]")
+    private Output<Integer> topicUsed;
+
+    /**
+     * @return (Available since v1.214.1) The number of used topics.
+     * 
+     */
+    public Output<Integer> topicUsed() {
+        return this.topicUsed;
     }
     /**
      * The VPC ID of the instance.

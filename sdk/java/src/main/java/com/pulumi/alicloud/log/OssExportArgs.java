@@ -6,6 +6,7 @@ package com.pulumi.alicloud.log;
 import com.pulumi.alicloud.log.inputs.OssExportConfigColumnArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -992,15 +993,33 @@ public final class OssExportArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public OssExportArgs build() {
-            $.bucket = Objects.requireNonNull($.bucket, "expected parameter 'bucket' to be non-null");
-            $.bufferInterval = Objects.requireNonNull($.bufferInterval, "expected parameter 'bufferInterval' to be non-null");
-            $.bufferSize = Objects.requireNonNull($.bufferSize, "expected parameter 'bufferSize' to be non-null");
-            $.contentType = Objects.requireNonNull($.contentType, "expected parameter 'contentType' to be non-null");
-            $.exportName = Objects.requireNonNull($.exportName, "expected parameter 'exportName' to be non-null");
-            $.logstoreName = Objects.requireNonNull($.logstoreName, "expected parameter 'logstoreName' to be non-null");
-            $.pathFormat = Objects.requireNonNull($.pathFormat, "expected parameter 'pathFormat' to be non-null");
-            $.projectName = Objects.requireNonNull($.projectName, "expected parameter 'projectName' to be non-null");
-            $.timeZone = Objects.requireNonNull($.timeZone, "expected parameter 'timeZone' to be non-null");
+            if ($.bucket == null) {
+                throw new MissingRequiredPropertyException("OssExportArgs", "bucket");
+            }
+            if ($.bufferInterval == null) {
+                throw new MissingRequiredPropertyException("OssExportArgs", "bufferInterval");
+            }
+            if ($.bufferSize == null) {
+                throw new MissingRequiredPropertyException("OssExportArgs", "bufferSize");
+            }
+            if ($.contentType == null) {
+                throw new MissingRequiredPropertyException("OssExportArgs", "contentType");
+            }
+            if ($.exportName == null) {
+                throw new MissingRequiredPropertyException("OssExportArgs", "exportName");
+            }
+            if ($.logstoreName == null) {
+                throw new MissingRequiredPropertyException("OssExportArgs", "logstoreName");
+            }
+            if ($.pathFormat == null) {
+                throw new MissingRequiredPropertyException("OssExportArgs", "pathFormat");
+            }
+            if ($.projectName == null) {
+                throw new MissingRequiredPropertyException("OssExportArgs", "projectName");
+            }
+            if ($.timeZone == null) {
+                throw new MissingRequiredPropertyException("OssExportArgs", "timeZone");
+            }
             return $;
         }
     }

@@ -87,21 +87,25 @@ public final class LoadBalancerIntranetIntranet {
 
         @CustomType.Setter
         public Builder httpsCertId(@Nullable String httpsCertId) {
+
             this.httpsCertId = httpsCertId;
             return this;
         }
         @CustomType.Setter
         public Builder port(@Nullable Integer port) {
+
             this.port = port;
             return this;
         }
         @CustomType.Setter
         public Builder protocol(@Nullable String protocol) {
+
             this.protocol = protocol;
             return this;
         }
         @CustomType.Setter
         public Builder targetPort(@Nullable Integer targetPort) {
+
             this.targetPort = targetPort;
             return this;
         }

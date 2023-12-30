@@ -5,6 +5,7 @@ package com.pulumi.alicloud.cfg;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -431,8 +432,12 @@ public final class DeliveryArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public DeliveryArgs build() {
-            $.deliveryChannelTargetArn = Objects.requireNonNull($.deliveryChannelTargetArn, "expected parameter 'deliveryChannelTargetArn' to be non-null");
-            $.deliveryChannelType = Objects.requireNonNull($.deliveryChannelType, "expected parameter 'deliveryChannelType' to be non-null");
+            if ($.deliveryChannelTargetArn == null) {
+                throw new MissingRequiredPropertyException("DeliveryArgs", "deliveryChannelTargetArn");
+            }
+            if ($.deliveryChannelType == null) {
+                throw new MissingRequiredPropertyException("DeliveryArgs", "deliveryChannelType");
+            }
             return $;
         }
     }

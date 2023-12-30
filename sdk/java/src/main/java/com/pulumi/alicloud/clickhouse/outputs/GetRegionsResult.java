@@ -5,6 +5,7 @@ package com.pulumi.alicloud.clickhouse.outputs;
 
 import com.pulumi.alicloud.clickhouse.outputs.GetRegionsRegion;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -71,27 +72,36 @@ public final class GetRegionsResult {
 
         @CustomType.Setter
         public Builder current(@Nullable Boolean current) {
+
             this.current = current;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetRegionsResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
+
             this.outputFile = outputFile;
             return this;
         }
         @CustomType.Setter
         public Builder regionId(@Nullable String regionId) {
+
             this.regionId = regionId;
             return this;
         }
         @CustomType.Setter
         public Builder regions(List<GetRegionsRegion> regions) {
-            this.regions = Objects.requireNonNull(regions);
+            if (regions == null) {
+              throw new MissingRequiredPropertyException("GetRegionsResult", "regions");
+            }
+            this.regions = regions;
             return this;
         }
         public Builder regions(GetRegionsRegion... regions) {

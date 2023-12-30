@@ -6,6 +6,7 @@ package com.pulumi.alicloud.edas;
 import com.pulumi.alicloud.edas.inputs.K8sSlbAttachmentSlbConfigArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -125,7 +126,9 @@ public final class K8sSlbAttachmentArgs extends com.pulumi.resources.ResourceArg
         }
 
         public K8sSlbAttachmentArgs build() {
-            $.appId = Objects.requireNonNull($.appId, "expected parameter 'appId' to be non-null");
+            if ($.appId == null) {
+                throw new MissingRequiredPropertyException("K8sSlbAttachmentArgs", "appId");
+            }
             return $;
         }
     }

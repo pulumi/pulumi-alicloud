@@ -5,6 +5,7 @@ package com.pulumi.alicloud.cfg.outputs;
 
 import com.pulumi.alicloud.cfg.outputs.GetAggregatorsAggregatorAggregatorAccount;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -142,12 +143,18 @@ public final class GetAggregatorsAggregator {
 
         @CustomType.Setter
         public Builder accountId(String accountId) {
-            this.accountId = Objects.requireNonNull(accountId);
+            if (accountId == null) {
+              throw new MissingRequiredPropertyException("GetAggregatorsAggregator", "accountId");
+            }
+            this.accountId = accountId;
             return this;
         }
         @CustomType.Setter
         public Builder aggregatorAccounts(List<GetAggregatorsAggregatorAggregatorAccount> aggregatorAccounts) {
-            this.aggregatorAccounts = Objects.requireNonNull(aggregatorAccounts);
+            if (aggregatorAccounts == null) {
+              throw new MissingRequiredPropertyException("GetAggregatorsAggregator", "aggregatorAccounts");
+            }
+            this.aggregatorAccounts = aggregatorAccounts;
             return this;
         }
         public Builder aggregatorAccounts(GetAggregatorsAggregatorAggregatorAccount... aggregatorAccounts) {
@@ -155,32 +162,50 @@ public final class GetAggregatorsAggregator {
         }
         @CustomType.Setter
         public Builder aggregatorId(String aggregatorId) {
-            this.aggregatorId = Objects.requireNonNull(aggregatorId);
+            if (aggregatorId == null) {
+              throw new MissingRequiredPropertyException("GetAggregatorsAggregator", "aggregatorId");
+            }
+            this.aggregatorId = aggregatorId;
             return this;
         }
         @CustomType.Setter
         public Builder aggregatorName(String aggregatorName) {
-            this.aggregatorName = Objects.requireNonNull(aggregatorName);
+            if (aggregatorName == null) {
+              throw new MissingRequiredPropertyException("GetAggregatorsAggregator", "aggregatorName");
+            }
+            this.aggregatorName = aggregatorName;
             return this;
         }
         @CustomType.Setter
         public Builder aggregatorType(String aggregatorType) {
-            this.aggregatorType = Objects.requireNonNull(aggregatorType);
+            if (aggregatorType == null) {
+              throw new MissingRequiredPropertyException("GetAggregatorsAggregator", "aggregatorType");
+            }
+            this.aggregatorType = aggregatorType;
             return this;
         }
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetAggregatorsAggregator", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetAggregatorsAggregator", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetAggregatorsAggregator", "status");
+            }
+            this.status = status;
             return this;
         }
         public GetAggregatorsAggregator build() {

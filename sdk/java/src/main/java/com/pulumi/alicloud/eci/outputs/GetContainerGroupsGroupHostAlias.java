@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.eci.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -57,7 +58,10 @@ public final class GetContainerGroupsGroupHostAlias {
 
         @CustomType.Setter
         public Builder hostnames(List<String> hostnames) {
-            this.hostnames = Objects.requireNonNull(hostnames);
+            if (hostnames == null) {
+              throw new MissingRequiredPropertyException("GetContainerGroupsGroupHostAlias", "hostnames");
+            }
+            this.hostnames = hostnames;
             return this;
         }
         public Builder hostnames(String... hostnames) {
@@ -65,7 +69,10 @@ public final class GetContainerGroupsGroupHostAlias {
         }
         @CustomType.Setter
         public Builder ip(String ip) {
-            this.ip = Objects.requireNonNull(ip);
+            if (ip == null) {
+              throw new MissingRequiredPropertyException("GetContainerGroupsGroupHostAlias", "ip");
+            }
+            this.ip = ip;
             return this;
         }
         public GetContainerGroupsGroupHostAlias build() {

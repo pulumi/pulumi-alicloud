@@ -5,6 +5,7 @@ package com.pulumi.alicloud.emrv2.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -188,8 +189,12 @@ public final class ClusterNodeGroupSystemDiskArgs extends com.pulumi.resources.R
         }
 
         public ClusterNodeGroupSystemDiskArgs build() {
-            $.category = Objects.requireNonNull($.category, "expected parameter 'category' to be non-null");
-            $.size = Objects.requireNonNull($.size, "expected parameter 'size' to be non-null");
+            if ($.category == null) {
+                throw new MissingRequiredPropertyException("ClusterNodeGroupSystemDiskArgs", "category");
+            }
+            if ($.size == null) {
+                throw new MissingRequiredPropertyException("ClusterNodeGroupSystemDiskArgs", "size");
+            }
             return $;
         }
     }

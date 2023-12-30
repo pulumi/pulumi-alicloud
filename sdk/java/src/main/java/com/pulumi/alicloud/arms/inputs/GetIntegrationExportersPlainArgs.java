@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.arms.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -157,8 +158,12 @@ public final class GetIntegrationExportersPlainArgs extends com.pulumi.resources
         }
 
         public GetIntegrationExportersPlainArgs build() {
-            $.clusterId = Objects.requireNonNull($.clusterId, "expected parameter 'clusterId' to be non-null");
-            $.integrationType = Objects.requireNonNull($.integrationType, "expected parameter 'integrationType' to be non-null");
+            if ($.clusterId == null) {
+                throw new MissingRequiredPropertyException("GetIntegrationExportersPlainArgs", "clusterId");
+            }
+            if ($.integrationType == null) {
+                throw new MissingRequiredPropertyException("GetIntegrationExportersPlainArgs", "integrationType");
+            }
             return $;
         }
     }

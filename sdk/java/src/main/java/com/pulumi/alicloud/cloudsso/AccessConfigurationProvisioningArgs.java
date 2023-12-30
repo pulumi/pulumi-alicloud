@@ -5,6 +5,7 @@ package com.pulumi.alicloud.cloudsso;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -224,10 +225,18 @@ public final class AccessConfigurationProvisioningArgs extends com.pulumi.resour
         }
 
         public AccessConfigurationProvisioningArgs build() {
-            $.accessConfigurationId = Objects.requireNonNull($.accessConfigurationId, "expected parameter 'accessConfigurationId' to be non-null");
-            $.directoryId = Objects.requireNonNull($.directoryId, "expected parameter 'directoryId' to be non-null");
-            $.targetId = Objects.requireNonNull($.targetId, "expected parameter 'targetId' to be non-null");
-            $.targetType = Objects.requireNonNull($.targetType, "expected parameter 'targetType' to be non-null");
+            if ($.accessConfigurationId == null) {
+                throw new MissingRequiredPropertyException("AccessConfigurationProvisioningArgs", "accessConfigurationId");
+            }
+            if ($.directoryId == null) {
+                throw new MissingRequiredPropertyException("AccessConfigurationProvisioningArgs", "directoryId");
+            }
+            if ($.targetId == null) {
+                throw new MissingRequiredPropertyException("AccessConfigurationProvisioningArgs", "targetId");
+            }
+            if ($.targetType == null) {
+                throw new MissingRequiredPropertyException("AccessConfigurationProvisioningArgs", "targetType");
+            }
             return $;
         }
     }

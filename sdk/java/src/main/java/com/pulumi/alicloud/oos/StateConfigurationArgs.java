@@ -5,6 +5,7 @@ package com.pulumi.alicloud.oos;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
@@ -411,10 +412,18 @@ public final class StateConfigurationArgs extends com.pulumi.resources.ResourceA
         }
 
         public StateConfigurationArgs build() {
-            $.scheduleExpression = Objects.requireNonNull($.scheduleExpression, "expected parameter 'scheduleExpression' to be non-null");
-            $.scheduleType = Objects.requireNonNull($.scheduleType, "expected parameter 'scheduleType' to be non-null");
-            $.targets = Objects.requireNonNull($.targets, "expected parameter 'targets' to be non-null");
-            $.templateName = Objects.requireNonNull($.templateName, "expected parameter 'templateName' to be non-null");
+            if ($.scheduleExpression == null) {
+                throw new MissingRequiredPropertyException("StateConfigurationArgs", "scheduleExpression");
+            }
+            if ($.scheduleType == null) {
+                throw new MissingRequiredPropertyException("StateConfigurationArgs", "scheduleType");
+            }
+            if ($.targets == null) {
+                throw new MissingRequiredPropertyException("StateConfigurationArgs", "targets");
+            }
+            if ($.templateName == null) {
+                throw new MissingRequiredPropertyException("StateConfigurationArgs", "templateName");
+            }
             return $;
         }
     }

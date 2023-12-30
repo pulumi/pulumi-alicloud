@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.cfg.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -114,27 +115,42 @@ public final class GetConfigurationRecordersRecorder {
 
         @CustomType.Setter
         public Builder accountId(String accountId) {
-            this.accountId = Objects.requireNonNull(accountId);
+            if (accountId == null) {
+              throw new MissingRequiredPropertyException("GetConfigurationRecordersRecorder", "accountId");
+            }
+            this.accountId = accountId;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetConfigurationRecordersRecorder", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder organizationEnableStatus(String organizationEnableStatus) {
-            this.organizationEnableStatus = Objects.requireNonNull(organizationEnableStatus);
+            if (organizationEnableStatus == null) {
+              throw new MissingRequiredPropertyException("GetConfigurationRecordersRecorder", "organizationEnableStatus");
+            }
+            this.organizationEnableStatus = organizationEnableStatus;
             return this;
         }
         @CustomType.Setter
         public Builder organizationMasterId(Integer organizationMasterId) {
-            this.organizationMasterId = Objects.requireNonNull(organizationMasterId);
+            if (organizationMasterId == null) {
+              throw new MissingRequiredPropertyException("GetConfigurationRecordersRecorder", "organizationMasterId");
+            }
+            this.organizationMasterId = organizationMasterId;
             return this;
         }
         @CustomType.Setter
         public Builder resourceTypes(List<String> resourceTypes) {
-            this.resourceTypes = Objects.requireNonNull(resourceTypes);
+            if (resourceTypes == null) {
+              throw new MissingRequiredPropertyException("GetConfigurationRecordersRecorder", "resourceTypes");
+            }
+            this.resourceTypes = resourceTypes;
             return this;
         }
         public Builder resourceTypes(String... resourceTypes) {
@@ -142,7 +158,10 @@ public final class GetConfigurationRecordersRecorder {
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetConfigurationRecordersRecorder", "status");
+            }
+            this.status = status;
             return this;
         }
         public GetConfigurationRecordersRecorder build() {

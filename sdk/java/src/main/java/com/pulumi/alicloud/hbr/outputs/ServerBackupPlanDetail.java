@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.hbr.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -173,21 +174,27 @@ public final class ServerBackupPlanDetail {
 
         @CustomType.Setter
         public Builder appConsistent(Boolean appConsistent) {
-            this.appConsistent = Objects.requireNonNull(appConsistent);
+            if (appConsistent == null) {
+              throw new MissingRequiredPropertyException("ServerBackupPlanDetail", "appConsistent");
+            }
+            this.appConsistent = appConsistent;
             return this;
         }
         @CustomType.Setter
         public Builder destinationRegionId(@Nullable String destinationRegionId) {
+
             this.destinationRegionId = destinationRegionId;
             return this;
         }
         @CustomType.Setter
         public Builder destinationRetention(@Nullable Integer destinationRetention) {
+
             this.destinationRetention = destinationRetention;
             return this;
         }
         @CustomType.Setter
         public Builder diskIdLists(@Nullable List<String> diskIdLists) {
+
             this.diskIdLists = diskIdLists;
             return this;
         }
@@ -196,31 +203,39 @@ public final class ServerBackupPlanDetail {
         }
         @CustomType.Setter
         public Builder doCopy(@Nullable Boolean doCopy) {
+
             this.doCopy = doCopy;
             return this;
         }
         @CustomType.Setter
         public Builder enableFsFreeze(@Nullable Boolean enableFsFreeze) {
+
             this.enableFsFreeze = enableFsFreeze;
             return this;
         }
         @CustomType.Setter
         public Builder postScriptPath(@Nullable String postScriptPath) {
+
             this.postScriptPath = postScriptPath;
             return this;
         }
         @CustomType.Setter
         public Builder preScriptPath(@Nullable String preScriptPath) {
+
             this.preScriptPath = preScriptPath;
             return this;
         }
         @CustomType.Setter
         public Builder snapshotGroup(Boolean snapshotGroup) {
-            this.snapshotGroup = Objects.requireNonNull(snapshotGroup);
+            if (snapshotGroup == null) {
+              throw new MissingRequiredPropertyException("ServerBackupPlanDetail", "snapshotGroup");
+            }
+            this.snapshotGroup = snapshotGroup;
             return this;
         }
         @CustomType.Setter
         public Builder timeoutInSeconds(@Nullable Integer timeoutInSeconds) {
+
             this.timeoutInSeconds = timeoutInSeconds;
             return this;
         }

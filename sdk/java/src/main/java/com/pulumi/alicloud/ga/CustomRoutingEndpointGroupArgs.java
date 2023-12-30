@@ -5,6 +5,7 @@ package com.pulumi.alicloud.ga;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -224,9 +225,15 @@ public final class CustomRoutingEndpointGroupArgs extends com.pulumi.resources.R
         }
 
         public CustomRoutingEndpointGroupArgs build() {
-            $.acceleratorId = Objects.requireNonNull($.acceleratorId, "expected parameter 'acceleratorId' to be non-null");
-            $.endpointGroupRegion = Objects.requireNonNull($.endpointGroupRegion, "expected parameter 'endpointGroupRegion' to be non-null");
-            $.listenerId = Objects.requireNonNull($.listenerId, "expected parameter 'listenerId' to be non-null");
+            if ($.acceleratorId == null) {
+                throw new MissingRequiredPropertyException("CustomRoutingEndpointGroupArgs", "acceleratorId");
+            }
+            if ($.endpointGroupRegion == null) {
+                throw new MissingRequiredPropertyException("CustomRoutingEndpointGroupArgs", "endpointGroupRegion");
+            }
+            if ($.listenerId == null) {
+                throw new MissingRequiredPropertyException("CustomRoutingEndpointGroupArgs", "listenerId");
+            }
             return $;
         }
     }

@@ -5,6 +5,7 @@ package com.pulumi.alicloud.clickhouse.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -113,7 +114,9 @@ public final class GetBackupPoliciesArgs extends com.pulumi.resources.InvokeArgs
         }
 
         public GetBackupPoliciesArgs build() {
-            $.dbClusterId = Objects.requireNonNull($.dbClusterId, "expected parameter 'dbClusterId' to be non-null");
+            if ($.dbClusterId == null) {
+                throw new MissingRequiredPropertyException("GetBackupPoliciesArgs", "dbClusterId");
+            }
             return $;
         }
     }

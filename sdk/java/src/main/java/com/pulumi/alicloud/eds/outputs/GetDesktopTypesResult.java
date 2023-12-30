@@ -5,6 +5,7 @@ package com.pulumi.alicloud.eds.outputs;
 
 import com.pulumi.alicloud.eds.outputs.GetDesktopTypesType;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Double;
 import java.lang.Integer;
 import java.lang.String;
@@ -96,22 +97,30 @@ public final class GetDesktopTypesResult {
 
         @CustomType.Setter
         public Builder cpuCount(@Nullable Integer cpuCount) {
+
             this.cpuCount = cpuCount;
             return this;
         }
         @CustomType.Setter
         public Builder gpuCount(@Nullable Double gpuCount) {
+
             this.gpuCount = gpuCount;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetDesktopTypesResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder ids(List<String> ids) {
-            this.ids = Objects.requireNonNull(ids);
+            if (ids == null) {
+              throw new MissingRequiredPropertyException("GetDesktopTypesResult", "ids");
+            }
+            this.ids = ids;
             return this;
         }
         public Builder ids(String... ids) {
@@ -119,27 +128,34 @@ public final class GetDesktopTypesResult {
         }
         @CustomType.Setter
         public Builder instanceTypeFamily(@Nullable String instanceTypeFamily) {
+
             this.instanceTypeFamily = instanceTypeFamily;
             return this;
         }
         @CustomType.Setter
         public Builder memorySize(@Nullable Integer memorySize) {
+
             this.memorySize = memorySize;
             return this;
         }
         @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
+
             this.outputFile = outputFile;
             return this;
         }
         @CustomType.Setter
         public Builder status(@Nullable String status) {
+
             this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder types(List<GetDesktopTypesType> types) {
-            this.types = Objects.requireNonNull(types);
+            if (types == null) {
+              throw new MissingRequiredPropertyException("GetDesktopTypesResult", "types");
+            }
+            this.types = types;
             return this;
         }
         public Builder types(GetDesktopTypesType... types) {

@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.cen.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -141,42 +142,66 @@ public final class GetTransitRouterCidrsCidr {
 
         @CustomType.Setter
         public Builder cidr(String cidr) {
-            this.cidr = Objects.requireNonNull(cidr);
+            if (cidr == null) {
+              throw new MissingRequiredPropertyException("GetTransitRouterCidrsCidr", "cidr");
+            }
+            this.cidr = cidr;
             return this;
         }
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetTransitRouterCidrsCidr", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder family(String family) {
-            this.family = Objects.requireNonNull(family);
+            if (family == null) {
+              throw new MissingRequiredPropertyException("GetTransitRouterCidrsCidr", "family");
+            }
+            this.family = family;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetTransitRouterCidrsCidr", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder publishCidrRoute(Boolean publishCidrRoute) {
-            this.publishCidrRoute = Objects.requireNonNull(publishCidrRoute);
+            if (publishCidrRoute == null) {
+              throw new MissingRequiredPropertyException("GetTransitRouterCidrsCidr", "publishCidrRoute");
+            }
+            this.publishCidrRoute = publishCidrRoute;
             return this;
         }
         @CustomType.Setter
         public Builder transitRouterCidrId(String transitRouterCidrId) {
-            this.transitRouterCidrId = Objects.requireNonNull(transitRouterCidrId);
+            if (transitRouterCidrId == null) {
+              throw new MissingRequiredPropertyException("GetTransitRouterCidrsCidr", "transitRouterCidrId");
+            }
+            this.transitRouterCidrId = transitRouterCidrId;
             return this;
         }
         @CustomType.Setter
         public Builder transitRouterCidrName(String transitRouterCidrName) {
-            this.transitRouterCidrName = Objects.requireNonNull(transitRouterCidrName);
+            if (transitRouterCidrName == null) {
+              throw new MissingRequiredPropertyException("GetTransitRouterCidrsCidr", "transitRouterCidrName");
+            }
+            this.transitRouterCidrName = transitRouterCidrName;
             return this;
         }
         @CustomType.Setter
         public Builder transitRouterId(String transitRouterId) {
-            this.transitRouterId = Objects.requireNonNull(transitRouterId);
+            if (transitRouterId == null) {
+              throw new MissingRequiredPropertyException("GetTransitRouterCidrsCidr", "transitRouterId");
+            }
+            this.transitRouterId = transitRouterId;
             return this;
         }
         public GetTransitRouterCidrsCidr build() {

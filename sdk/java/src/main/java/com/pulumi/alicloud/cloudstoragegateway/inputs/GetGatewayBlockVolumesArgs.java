@@ -5,6 +5,7 @@ package com.pulumi.alicloud.cloudstoragegateway.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -236,7 +237,9 @@ public final class GetGatewayBlockVolumesArgs extends com.pulumi.resources.Invok
         }
 
         public GetGatewayBlockVolumesArgs build() {
-            $.gatewayId = Objects.requireNonNull($.gatewayId, "expected parameter 'gatewayId' to be non-null");
+            if ($.gatewayId == null) {
+                throw new MissingRequiredPropertyException("GetGatewayBlockVolumesArgs", "gatewayId");
+            }
             return $;
         }
     }

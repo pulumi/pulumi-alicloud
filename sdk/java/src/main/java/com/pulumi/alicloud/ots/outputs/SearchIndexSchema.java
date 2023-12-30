@@ -7,6 +7,7 @@ import com.pulumi.alicloud.ots.outputs.SearchIndexSchemaFieldSchema;
 import com.pulumi.alicloud.ots.outputs.SearchIndexSchemaIndexSetting;
 import com.pulumi.alicloud.ots.outputs.SearchIndexSchemaIndexSort;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.util.List;
 import java.util.Objects;
 import javax.annotation.Nullable;
@@ -74,7 +75,10 @@ public final class SearchIndexSchema {
 
         @CustomType.Setter
         public Builder fieldSchemas(List<SearchIndexSchemaFieldSchema> fieldSchemas) {
-            this.fieldSchemas = Objects.requireNonNull(fieldSchemas);
+            if (fieldSchemas == null) {
+              throw new MissingRequiredPropertyException("SearchIndexSchema", "fieldSchemas");
+            }
+            this.fieldSchemas = fieldSchemas;
             return this;
         }
         public Builder fieldSchemas(SearchIndexSchemaFieldSchema... fieldSchemas) {
@@ -82,6 +86,7 @@ public final class SearchIndexSchema {
         }
         @CustomType.Setter
         public Builder indexSettings(@Nullable List<SearchIndexSchemaIndexSetting> indexSettings) {
+
             this.indexSettings = indexSettings;
             return this;
         }
@@ -90,6 +95,7 @@ public final class SearchIndexSchema {
         }
         @CustomType.Setter
         public Builder indexSorts(@Nullable List<SearchIndexSchemaIndexSort> indexSorts) {
+
             this.indexSorts = indexSorts;
             return this;
         }

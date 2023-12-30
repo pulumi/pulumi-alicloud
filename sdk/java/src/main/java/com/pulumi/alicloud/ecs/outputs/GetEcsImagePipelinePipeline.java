@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.ecs.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.Object;
@@ -286,7 +287,10 @@ public final class GetEcsImagePipelinePipeline {
 
         @CustomType.Setter
         public Builder addAccounts(List<String> addAccounts) {
-            this.addAccounts = Objects.requireNonNull(addAccounts);
+            if (addAccounts == null) {
+              throw new MissingRequiredPropertyException("GetEcsImagePipelinePipeline", "addAccounts");
+            }
+            this.addAccounts = addAccounts;
             return this;
         }
         public Builder addAccounts(String... addAccounts) {
@@ -294,82 +298,128 @@ public final class GetEcsImagePipelinePipeline {
         }
         @CustomType.Setter
         public Builder baseImage(String baseImage) {
-            this.baseImage = Objects.requireNonNull(baseImage);
+            if (baseImage == null) {
+              throw new MissingRequiredPropertyException("GetEcsImagePipelinePipeline", "baseImage");
+            }
+            this.baseImage = baseImage;
             return this;
         }
         @CustomType.Setter
         public Builder baseImageType(String baseImageType) {
-            this.baseImageType = Objects.requireNonNull(baseImageType);
+            if (baseImageType == null) {
+              throw new MissingRequiredPropertyException("GetEcsImagePipelinePipeline", "baseImageType");
+            }
+            this.baseImageType = baseImageType;
             return this;
         }
         @CustomType.Setter
         public Builder buildContent(String buildContent) {
-            this.buildContent = Objects.requireNonNull(buildContent);
+            if (buildContent == null) {
+              throw new MissingRequiredPropertyException("GetEcsImagePipelinePipeline", "buildContent");
+            }
+            this.buildContent = buildContent;
             return this;
         }
         @CustomType.Setter
         public Builder creationTime(String creationTime) {
-            this.creationTime = Objects.requireNonNull(creationTime);
+            if (creationTime == null) {
+              throw new MissingRequiredPropertyException("GetEcsImagePipelinePipeline", "creationTime");
+            }
+            this.creationTime = creationTime;
             return this;
         }
         @CustomType.Setter
         public Builder deleteInstanceOnFailure(Boolean deleteInstanceOnFailure) {
-            this.deleteInstanceOnFailure = Objects.requireNonNull(deleteInstanceOnFailure);
+            if (deleteInstanceOnFailure == null) {
+              throw new MissingRequiredPropertyException("GetEcsImagePipelinePipeline", "deleteInstanceOnFailure");
+            }
+            this.deleteInstanceOnFailure = deleteInstanceOnFailure;
             return this;
         }
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetEcsImagePipelinePipeline", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetEcsImagePipelinePipeline", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder imageName(String imageName) {
-            this.imageName = Objects.requireNonNull(imageName);
+            if (imageName == null) {
+              throw new MissingRequiredPropertyException("GetEcsImagePipelinePipeline", "imageName");
+            }
+            this.imageName = imageName;
             return this;
         }
         @CustomType.Setter
         public Builder imagePipelineId(String imagePipelineId) {
-            this.imagePipelineId = Objects.requireNonNull(imagePipelineId);
+            if (imagePipelineId == null) {
+              throw new MissingRequiredPropertyException("GetEcsImagePipelinePipeline", "imagePipelineId");
+            }
+            this.imagePipelineId = imagePipelineId;
             return this;
         }
         @CustomType.Setter
         public Builder instanceType(String instanceType) {
-            this.instanceType = Objects.requireNonNull(instanceType);
+            if (instanceType == null) {
+              throw new MissingRequiredPropertyException("GetEcsImagePipelinePipeline", "instanceType");
+            }
+            this.instanceType = instanceType;
             return this;
         }
         @CustomType.Setter
         public Builder internetMaxBandwidthOut(Integer internetMaxBandwidthOut) {
-            this.internetMaxBandwidthOut = Objects.requireNonNull(internetMaxBandwidthOut);
+            if (internetMaxBandwidthOut == null) {
+              throw new MissingRequiredPropertyException("GetEcsImagePipelinePipeline", "internetMaxBandwidthOut");
+            }
+            this.internetMaxBandwidthOut = internetMaxBandwidthOut;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetEcsImagePipelinePipeline", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder resourceGroupId(String resourceGroupId) {
-            this.resourceGroupId = Objects.requireNonNull(resourceGroupId);
+            if (resourceGroupId == null) {
+              throw new MissingRequiredPropertyException("GetEcsImagePipelinePipeline", "resourceGroupId");
+            }
+            this.resourceGroupId = resourceGroupId;
             return this;
         }
         @CustomType.Setter
         public Builder systemDiskSize(Integer systemDiskSize) {
-            this.systemDiskSize = Objects.requireNonNull(systemDiskSize);
+            if (systemDiskSize == null) {
+              throw new MissingRequiredPropertyException("GetEcsImagePipelinePipeline", "systemDiskSize");
+            }
+            this.systemDiskSize = systemDiskSize;
             return this;
         }
         @CustomType.Setter
         public Builder tags(@Nullable Map<String,Object> tags) {
+
             this.tags = tags;
             return this;
         }
         @CustomType.Setter
         public Builder toRegionIds(List<String> toRegionIds) {
-            this.toRegionIds = Objects.requireNonNull(toRegionIds);
+            if (toRegionIds == null) {
+              throw new MissingRequiredPropertyException("GetEcsImagePipelinePipeline", "toRegionIds");
+            }
+            this.toRegionIds = toRegionIds;
             return this;
         }
         public Builder toRegionIds(String... toRegionIds) {
@@ -377,7 +427,10 @@ public final class GetEcsImagePipelinePipeline {
         }
         @CustomType.Setter
         public Builder vswitchId(String vswitchId) {
-            this.vswitchId = Objects.requireNonNull(vswitchId);
+            if (vswitchId == null) {
+              throw new MissingRequiredPropertyException("GetEcsImagePipelinePipeline", "vswitchId");
+            }
+            this.vswitchId = vswitchId;
             return this;
         }
         public GetEcsImagePipelinePipeline build() {

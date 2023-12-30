@@ -5,6 +5,7 @@ package com.pulumi.alicloud.oos;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -272,9 +273,15 @@ public final class PatchBaselineArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public PatchBaselineArgs build() {
-            $.approvalRules = Objects.requireNonNull($.approvalRules, "expected parameter 'approvalRules' to be non-null");
-            $.operationSystem = Objects.requireNonNull($.operationSystem, "expected parameter 'operationSystem' to be non-null");
-            $.patchBaselineName = Objects.requireNonNull($.patchBaselineName, "expected parameter 'patchBaselineName' to be non-null");
+            if ($.approvalRules == null) {
+                throw new MissingRequiredPropertyException("PatchBaselineArgs", "approvalRules");
+            }
+            if ($.operationSystem == null) {
+                throw new MissingRequiredPropertyException("PatchBaselineArgs", "operationSystem");
+            }
+            if ($.patchBaselineName == null) {
+                throw new MissingRequiredPropertyException("PatchBaselineArgs", "patchBaselineName");
+            }
             return $;
         }
     }

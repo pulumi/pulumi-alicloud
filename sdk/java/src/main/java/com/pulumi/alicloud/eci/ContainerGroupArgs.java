@@ -13,6 +13,7 @@ import com.pulumi.alicloud.eci.inputs.ContainerGroupInitContainerArgs;
 import com.pulumi.alicloud.eci.inputs.ContainerGroupVolumeArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Double;
 import java.lang.Integer;
@@ -1050,10 +1051,18 @@ public final class ContainerGroupArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         public ContainerGroupArgs build() {
-            $.containerGroupName = Objects.requireNonNull($.containerGroupName, "expected parameter 'containerGroupName' to be non-null");
-            $.containers = Objects.requireNonNull($.containers, "expected parameter 'containers' to be non-null");
-            $.securityGroupId = Objects.requireNonNull($.securityGroupId, "expected parameter 'securityGroupId' to be non-null");
-            $.vswitchId = Objects.requireNonNull($.vswitchId, "expected parameter 'vswitchId' to be non-null");
+            if ($.containerGroupName == null) {
+                throw new MissingRequiredPropertyException("ContainerGroupArgs", "containerGroupName");
+            }
+            if ($.containers == null) {
+                throw new MissingRequiredPropertyException("ContainerGroupArgs", "containers");
+            }
+            if ($.securityGroupId == null) {
+                throw new MissingRequiredPropertyException("ContainerGroupArgs", "securityGroupId");
+            }
+            if ($.vswitchId == null) {
+                throw new MissingRequiredPropertyException("ContainerGroupArgs", "vswitchId");
+            }
             return $;
         }
     }

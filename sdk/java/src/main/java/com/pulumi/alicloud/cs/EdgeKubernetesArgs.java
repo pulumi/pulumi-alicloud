@@ -9,6 +9,7 @@ import com.pulumi.alicloud.cs.inputs.EdgeKubernetesRuntimeArgs;
 import com.pulumi.alicloud.cs.inputs.EdgeKubernetesWorkerDataDiskArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.Object;
@@ -1618,9 +1619,15 @@ public final class EdgeKubernetesArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         public EdgeKubernetesArgs build() {
-            $.workerInstanceTypes = Objects.requireNonNull($.workerInstanceTypes, "expected parameter 'workerInstanceTypes' to be non-null");
-            $.workerNumber = Objects.requireNonNull($.workerNumber, "expected parameter 'workerNumber' to be non-null");
-            $.workerVswitchIds = Objects.requireNonNull($.workerVswitchIds, "expected parameter 'workerVswitchIds' to be non-null");
+            if ($.workerInstanceTypes == null) {
+                throw new MissingRequiredPropertyException("EdgeKubernetesArgs", "workerInstanceTypes");
+            }
+            if ($.workerNumber == null) {
+                throw new MissingRequiredPropertyException("EdgeKubernetesArgs", "workerNumber");
+            }
+            if ($.workerVswitchIds == null) {
+                throw new MissingRequiredPropertyException("EdgeKubernetesArgs", "workerVswitchIds");
+            }
             return $;
         }
     }

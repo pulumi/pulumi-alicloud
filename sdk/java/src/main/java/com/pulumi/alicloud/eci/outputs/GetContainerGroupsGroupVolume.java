@@ -5,6 +5,7 @@ package com.pulumi.alicloud.eci.outputs;
 
 import com.pulumi.alicloud.eci.outputs.GetContainerGroupsGroupVolumeConfigFileVolumeConfigFileToPath;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -185,7 +186,10 @@ public final class GetContainerGroupsGroupVolume {
 
         @CustomType.Setter
         public Builder configFileVolumeConfigFileToPaths(List<GetContainerGroupsGroupVolumeConfigFileVolumeConfigFileToPath> configFileVolumeConfigFileToPaths) {
-            this.configFileVolumeConfigFileToPaths = Objects.requireNonNull(configFileVolumeConfigFileToPaths);
+            if (configFileVolumeConfigFileToPaths == null) {
+              throw new MissingRequiredPropertyException("GetContainerGroupsGroupVolume", "configFileVolumeConfigFileToPaths");
+            }
+            this.configFileVolumeConfigFileToPaths = configFileVolumeConfigFileToPaths;
             return this;
         }
         public Builder configFileVolumeConfigFileToPaths(GetContainerGroupsGroupVolumeConfigFileVolumeConfigFileToPath... configFileVolumeConfigFileToPaths) {
@@ -193,52 +197,82 @@ public final class GetContainerGroupsGroupVolume {
         }
         @CustomType.Setter
         public Builder diskVolumeDiskId(String diskVolumeDiskId) {
-            this.diskVolumeDiskId = Objects.requireNonNull(diskVolumeDiskId);
+            if (diskVolumeDiskId == null) {
+              throw new MissingRequiredPropertyException("GetContainerGroupsGroupVolume", "diskVolumeDiskId");
+            }
+            this.diskVolumeDiskId = diskVolumeDiskId;
             return this;
         }
         @CustomType.Setter
         public Builder diskVolumeFsType(String diskVolumeFsType) {
-            this.diskVolumeFsType = Objects.requireNonNull(diskVolumeFsType);
+            if (diskVolumeFsType == null) {
+              throw new MissingRequiredPropertyException("GetContainerGroupsGroupVolume", "diskVolumeFsType");
+            }
+            this.diskVolumeFsType = diskVolumeFsType;
             return this;
         }
         @CustomType.Setter
         public Builder flexVolumeDriver(String flexVolumeDriver) {
-            this.flexVolumeDriver = Objects.requireNonNull(flexVolumeDriver);
+            if (flexVolumeDriver == null) {
+              throw new MissingRequiredPropertyException("GetContainerGroupsGroupVolume", "flexVolumeDriver");
+            }
+            this.flexVolumeDriver = flexVolumeDriver;
             return this;
         }
         @CustomType.Setter
         public Builder flexVolumeFsType(String flexVolumeFsType) {
-            this.flexVolumeFsType = Objects.requireNonNull(flexVolumeFsType);
+            if (flexVolumeFsType == null) {
+              throw new MissingRequiredPropertyException("GetContainerGroupsGroupVolume", "flexVolumeFsType");
+            }
+            this.flexVolumeFsType = flexVolumeFsType;
             return this;
         }
         @CustomType.Setter
         public Builder flexVolumeOptions(String flexVolumeOptions) {
-            this.flexVolumeOptions = Objects.requireNonNull(flexVolumeOptions);
+            if (flexVolumeOptions == null) {
+              throw new MissingRequiredPropertyException("GetContainerGroupsGroupVolume", "flexVolumeOptions");
+            }
+            this.flexVolumeOptions = flexVolumeOptions;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetContainerGroupsGroupVolume", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder nfsVolumePath(String nfsVolumePath) {
-            this.nfsVolumePath = Objects.requireNonNull(nfsVolumePath);
+            if (nfsVolumePath == null) {
+              throw new MissingRequiredPropertyException("GetContainerGroupsGroupVolume", "nfsVolumePath");
+            }
+            this.nfsVolumePath = nfsVolumePath;
             return this;
         }
         @CustomType.Setter
         public Builder nfsVolumeReadOnly(Boolean nfsVolumeReadOnly) {
-            this.nfsVolumeReadOnly = Objects.requireNonNull(nfsVolumeReadOnly);
+            if (nfsVolumeReadOnly == null) {
+              throw new MissingRequiredPropertyException("GetContainerGroupsGroupVolume", "nfsVolumeReadOnly");
+            }
+            this.nfsVolumeReadOnly = nfsVolumeReadOnly;
             return this;
         }
         @CustomType.Setter
         public Builder nfsVolumeServer(String nfsVolumeServer) {
-            this.nfsVolumeServer = Objects.requireNonNull(nfsVolumeServer);
+            if (nfsVolumeServer == null) {
+              throw new MissingRequiredPropertyException("GetContainerGroupsGroupVolume", "nfsVolumeServer");
+            }
+            this.nfsVolumeServer = nfsVolumeServer;
             return this;
         }
         @CustomType.Setter
         public Builder type(String type) {
-            this.type = Objects.requireNonNull(type);
+            if (type == null) {
+              throw new MissingRequiredPropertyException("GetContainerGroupsGroupVolume", "type");
+            }
+            this.type = type;
             return this;
         }
         public GetContainerGroupsGroupVolume build() {

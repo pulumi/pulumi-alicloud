@@ -5,6 +5,7 @@ package com.pulumi.alicloud.ga;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -298,8 +299,12 @@ public final class BasicEndpointGroupArgs extends com.pulumi.resources.ResourceA
         }
 
         public BasicEndpointGroupArgs build() {
-            $.acceleratorId = Objects.requireNonNull($.acceleratorId, "expected parameter 'acceleratorId' to be non-null");
-            $.endpointGroupRegion = Objects.requireNonNull($.endpointGroupRegion, "expected parameter 'endpointGroupRegion' to be non-null");
+            if ($.acceleratorId == null) {
+                throw new MissingRequiredPropertyException("BasicEndpointGroupArgs", "acceleratorId");
+            }
+            if ($.endpointGroupRegion == null) {
+                throw new MissingRequiredPropertyException("BasicEndpointGroupArgs", "endpointGroupRegion");
+            }
             return $;
         }
     }

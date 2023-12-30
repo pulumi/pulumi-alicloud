@@ -5,6 +5,7 @@ package com.pulumi.alicloud.log.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Map;
@@ -113,8 +114,12 @@ public final class AlertSeverityConfigurationArgs extends com.pulumi.resources.R
         }
 
         public AlertSeverityConfigurationArgs build() {
-            $.evalCondition = Objects.requireNonNull($.evalCondition, "expected parameter 'evalCondition' to be non-null");
-            $.severity = Objects.requireNonNull($.severity, "expected parameter 'severity' to be non-null");
+            if ($.evalCondition == null) {
+                throw new MissingRequiredPropertyException("AlertSeverityConfigurationArgs", "evalCondition");
+            }
+            if ($.severity == null) {
+                throw new MissingRequiredPropertyException("AlertSeverityConfigurationArgs", "severity");
+            }
             return $;
         }
     }

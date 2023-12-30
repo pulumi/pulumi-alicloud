@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.cdn.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -61,26 +62,37 @@ public final class DomainCacheConfig {
 
         @CustomType.Setter
         public Builder cacheContent(String cacheContent) {
-            this.cacheContent = Objects.requireNonNull(cacheContent);
+            if (cacheContent == null) {
+              throw new MissingRequiredPropertyException("DomainCacheConfig", "cacheContent");
+            }
+            this.cacheContent = cacheContent;
             return this;
         }
         @CustomType.Setter
         public Builder cacheId(@Nullable String cacheId) {
+
             this.cacheId = cacheId;
             return this;
         }
         @CustomType.Setter
         public Builder cacheType(String cacheType) {
-            this.cacheType = Objects.requireNonNull(cacheType);
+            if (cacheType == null) {
+              throw new MissingRequiredPropertyException("DomainCacheConfig", "cacheType");
+            }
+            this.cacheType = cacheType;
             return this;
         }
         @CustomType.Setter
         public Builder ttl(Integer ttl) {
-            this.ttl = Objects.requireNonNull(ttl);
+            if (ttl == null) {
+              throw new MissingRequiredPropertyException("DomainCacheConfig", "ttl");
+            }
+            this.ttl = ttl;
             return this;
         }
         @CustomType.Setter
         public Builder weight(@Nullable Integer weight) {
+
             this.weight = weight;
             return this;
         }

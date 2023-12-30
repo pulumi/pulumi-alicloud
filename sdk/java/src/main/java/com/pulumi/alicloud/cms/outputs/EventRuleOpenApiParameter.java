@@ -128,36 +128,43 @@ public final class EventRuleOpenApiParameter {
 
         @CustomType.Setter
         public Builder action(@Nullable String action) {
+
             this.action = action;
             return this;
         }
         @CustomType.Setter
         public Builder arn(@Nullable String arn) {
+
             this.arn = arn;
             return this;
         }
         @CustomType.Setter
         public Builder openApiParametersId(@Nullable String openApiParametersId) {
+
             this.openApiParametersId = openApiParametersId;
             return this;
         }
         @CustomType.Setter
         public Builder product(@Nullable String product) {
+
             this.product = product;
             return this;
         }
         @CustomType.Setter
         public Builder region(@Nullable String region) {
+
             this.region = region;
             return this;
         }
         @CustomType.Setter
         public Builder role(@Nullable String role) {
+
             this.role = role;
             return this;
         }
         @CustomType.Setter
         public Builder version(@Nullable String version) {
+
             this.version = version;
             return this;
         }

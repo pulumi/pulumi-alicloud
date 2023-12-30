@@ -6,6 +6,7 @@ package com.pulumi.alicloud.rds.inputs;
 import com.pulumi.alicloud.rds.inputs.GetInstanceClassInfosInfoArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -292,8 +293,12 @@ public final class GetInstanceClassInfosArgs extends com.pulumi.resources.Invoke
         }
 
         public GetInstanceClassInfosArgs build() {
-            $.commodityCode = Objects.requireNonNull($.commodityCode, "expected parameter 'commodityCode' to be non-null");
-            $.orderType = Objects.requireNonNull($.orderType, "expected parameter 'orderType' to be non-null");
+            if ($.commodityCode == null) {
+                throw new MissingRequiredPropertyException("GetInstanceClassInfosArgs", "commodityCode");
+            }
+            if ($.orderType == null) {
+                throw new MissingRequiredPropertyException("GetInstanceClassInfosArgs", "orderType");
+            }
             return $;
         }
     }

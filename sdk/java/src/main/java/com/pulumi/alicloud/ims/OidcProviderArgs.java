@@ -5,6 +5,7 @@ package com.pulumi.alicloud.ims;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -283,8 +284,12 @@ public final class OidcProviderArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public OidcProviderArgs build() {
-            $.issuerUrl = Objects.requireNonNull($.issuerUrl, "expected parameter 'issuerUrl' to be non-null");
-            $.oidcProviderName = Objects.requireNonNull($.oidcProviderName, "expected parameter 'oidcProviderName' to be non-null");
+            if ($.issuerUrl == null) {
+                throw new MissingRequiredPropertyException("OidcProviderArgs", "issuerUrl");
+            }
+            if ($.oidcProviderName == null) {
+                throw new MissingRequiredPropertyException("OidcProviderArgs", "oidcProviderName");
+            }
             return $;
         }
     }

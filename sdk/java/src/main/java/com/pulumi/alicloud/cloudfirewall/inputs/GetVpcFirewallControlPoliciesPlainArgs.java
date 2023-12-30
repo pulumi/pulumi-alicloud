@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.cloudfirewall.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -401,7 +402,9 @@ public final class GetVpcFirewallControlPoliciesPlainArgs extends com.pulumi.res
         }
 
         public GetVpcFirewallControlPoliciesPlainArgs build() {
-            $.vpcFirewallId = Objects.requireNonNull($.vpcFirewallId, "expected parameter 'vpcFirewallId' to be non-null");
+            if ($.vpcFirewallId == null) {
+                throw new MissingRequiredPropertyException("GetVpcFirewallControlPoliciesPlainArgs", "vpcFirewallId");
+            }
             return $;
         }
     }

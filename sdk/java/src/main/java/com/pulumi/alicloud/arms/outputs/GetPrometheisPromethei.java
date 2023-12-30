@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.arms.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
@@ -310,102 +311,162 @@ public final class GetPrometheisPromethei {
 
         @CustomType.Setter
         public Builder authToken(String authToken) {
-            this.authToken = Objects.requireNonNull(authToken);
+            if (authToken == null) {
+              throw new MissingRequiredPropertyException("GetPrometheisPromethei", "authToken");
+            }
+            this.authToken = authToken;
             return this;
         }
         @CustomType.Setter
         public Builder clusterId(String clusterId) {
-            this.clusterId = Objects.requireNonNull(clusterId);
+            if (clusterId == null) {
+              throw new MissingRequiredPropertyException("GetPrometheisPromethei", "clusterId");
+            }
+            this.clusterId = clusterId;
             return this;
         }
         @CustomType.Setter
         public Builder clusterName(String clusterName) {
-            this.clusterName = Objects.requireNonNull(clusterName);
+            if (clusterName == null) {
+              throw new MissingRequiredPropertyException("GetPrometheisPromethei", "clusterName");
+            }
+            this.clusterName = clusterName;
             return this;
         }
         @CustomType.Setter
         public Builder clusterType(String clusterType) {
-            this.clusterType = Objects.requireNonNull(clusterType);
+            if (clusterType == null) {
+              throw new MissingRequiredPropertyException("GetPrometheisPromethei", "clusterType");
+            }
+            this.clusterType = clusterType;
             return this;
         }
         @CustomType.Setter
         public Builder grafanaInstanceId(String grafanaInstanceId) {
-            this.grafanaInstanceId = Objects.requireNonNull(grafanaInstanceId);
+            if (grafanaInstanceId == null) {
+              throw new MissingRequiredPropertyException("GetPrometheisPromethei", "grafanaInstanceId");
+            }
+            this.grafanaInstanceId = grafanaInstanceId;
             return this;
         }
         @CustomType.Setter
         public Builder httpApiInterUrl(String httpApiInterUrl) {
-            this.httpApiInterUrl = Objects.requireNonNull(httpApiInterUrl);
+            if (httpApiInterUrl == null) {
+              throw new MissingRequiredPropertyException("GetPrometheisPromethei", "httpApiInterUrl");
+            }
+            this.httpApiInterUrl = httpApiInterUrl;
             return this;
         }
         @CustomType.Setter
         public Builder httpApiIntraUrl(String httpApiIntraUrl) {
-            this.httpApiIntraUrl = Objects.requireNonNull(httpApiIntraUrl);
+            if (httpApiIntraUrl == null) {
+              throw new MissingRequiredPropertyException("GetPrometheisPromethei", "httpApiIntraUrl");
+            }
+            this.httpApiIntraUrl = httpApiIntraUrl;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetPrometheisPromethei", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder pushGateWayInterUrl(String pushGateWayInterUrl) {
-            this.pushGateWayInterUrl = Objects.requireNonNull(pushGateWayInterUrl);
+            if (pushGateWayInterUrl == null) {
+              throw new MissingRequiredPropertyException("GetPrometheisPromethei", "pushGateWayInterUrl");
+            }
+            this.pushGateWayInterUrl = pushGateWayInterUrl;
             return this;
         }
         @CustomType.Setter
         public Builder pushGateWayIntraUrl(String pushGateWayIntraUrl) {
-            this.pushGateWayIntraUrl = Objects.requireNonNull(pushGateWayIntraUrl);
+            if (pushGateWayIntraUrl == null) {
+              throw new MissingRequiredPropertyException("GetPrometheisPromethei", "pushGateWayIntraUrl");
+            }
+            this.pushGateWayIntraUrl = pushGateWayIntraUrl;
             return this;
         }
         @CustomType.Setter
         public Builder remoteReadInterUrl(String remoteReadInterUrl) {
-            this.remoteReadInterUrl = Objects.requireNonNull(remoteReadInterUrl);
+            if (remoteReadInterUrl == null) {
+              throw new MissingRequiredPropertyException("GetPrometheisPromethei", "remoteReadInterUrl");
+            }
+            this.remoteReadInterUrl = remoteReadInterUrl;
             return this;
         }
         @CustomType.Setter
         public Builder remoteReadIntraUrl(String remoteReadIntraUrl) {
-            this.remoteReadIntraUrl = Objects.requireNonNull(remoteReadIntraUrl);
+            if (remoteReadIntraUrl == null) {
+              throw new MissingRequiredPropertyException("GetPrometheisPromethei", "remoteReadIntraUrl");
+            }
+            this.remoteReadIntraUrl = remoteReadIntraUrl;
             return this;
         }
         @CustomType.Setter
         public Builder remoteWriteInterUrl(String remoteWriteInterUrl) {
-            this.remoteWriteInterUrl = Objects.requireNonNull(remoteWriteInterUrl);
+            if (remoteWriteInterUrl == null) {
+              throw new MissingRequiredPropertyException("GetPrometheisPromethei", "remoteWriteInterUrl");
+            }
+            this.remoteWriteInterUrl = remoteWriteInterUrl;
             return this;
         }
         @CustomType.Setter
         public Builder remoteWriteIntraUrl(String remoteWriteIntraUrl) {
-            this.remoteWriteIntraUrl = Objects.requireNonNull(remoteWriteIntraUrl);
+            if (remoteWriteIntraUrl == null) {
+              throw new MissingRequiredPropertyException("GetPrometheisPromethei", "remoteWriteIntraUrl");
+            }
+            this.remoteWriteIntraUrl = remoteWriteIntraUrl;
             return this;
         }
         @CustomType.Setter
         public Builder resourceGroupId(String resourceGroupId) {
-            this.resourceGroupId = Objects.requireNonNull(resourceGroupId);
+            if (resourceGroupId == null) {
+              throw new MissingRequiredPropertyException("GetPrometheisPromethei", "resourceGroupId");
+            }
+            this.resourceGroupId = resourceGroupId;
             return this;
         }
         @CustomType.Setter
         public Builder securityGroupId(String securityGroupId) {
-            this.securityGroupId = Objects.requireNonNull(securityGroupId);
+            if (securityGroupId == null) {
+              throw new MissingRequiredPropertyException("GetPrometheisPromethei", "securityGroupId");
+            }
+            this.securityGroupId = securityGroupId;
             return this;
         }
         @CustomType.Setter
         public Builder subClustersJson(String subClustersJson) {
-            this.subClustersJson = Objects.requireNonNull(subClustersJson);
+            if (subClustersJson == null) {
+              throw new MissingRequiredPropertyException("GetPrometheisPromethei", "subClustersJson");
+            }
+            this.subClustersJson = subClustersJson;
             return this;
         }
         @CustomType.Setter
         public Builder tags(Map<String,Object> tags) {
-            this.tags = Objects.requireNonNull(tags);
+            if (tags == null) {
+              throw new MissingRequiredPropertyException("GetPrometheisPromethei", "tags");
+            }
+            this.tags = tags;
             return this;
         }
         @CustomType.Setter
         public Builder vpcId(String vpcId) {
-            this.vpcId = Objects.requireNonNull(vpcId);
+            if (vpcId == null) {
+              throw new MissingRequiredPropertyException("GetPrometheisPromethei", "vpcId");
+            }
+            this.vpcId = vpcId;
             return this;
         }
         @CustomType.Setter
         public Builder vswitchId(String vswitchId) {
-            this.vswitchId = Objects.requireNonNull(vswitchId);
+            if (vswitchId == null) {
+              throw new MissingRequiredPropertyException("GetPrometheisPromethei", "vswitchId");
+            }
+            this.vswitchId = vswitchId;
             return this;
         }
         public GetPrometheisPromethei build() {

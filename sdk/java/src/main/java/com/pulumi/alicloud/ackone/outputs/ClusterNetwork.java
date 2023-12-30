@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.ackone.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -72,6 +73,7 @@ public final class ClusterNetwork {
 
         @CustomType.Setter
         public Builder securityGroupIds(@Nullable List<String> securityGroupIds) {
+
             this.securityGroupIds = securityGroupIds;
             return this;
         }
@@ -80,12 +82,18 @@ public final class ClusterNetwork {
         }
         @CustomType.Setter
         public Builder vpcId(String vpcId) {
-            this.vpcId = Objects.requireNonNull(vpcId);
+            if (vpcId == null) {
+              throw new MissingRequiredPropertyException("ClusterNetwork", "vpcId");
+            }
+            this.vpcId = vpcId;
             return this;
         }
         @CustomType.Setter
         public Builder vswitches(List<String> vswitches) {
-            this.vswitches = Objects.requireNonNull(vswitches);
+            if (vswitches == null) {
+              throw new MissingRequiredPropertyException("ClusterNetwork", "vswitches");
+            }
+            this.vswitches = vswitches;
             return this;
         }
         public Builder vswitches(String... vswitches) {

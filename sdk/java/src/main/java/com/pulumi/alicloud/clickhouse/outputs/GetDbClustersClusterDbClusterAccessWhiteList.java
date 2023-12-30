@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.clickhouse.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -70,17 +71,26 @@ public final class GetDbClustersClusterDbClusterAccessWhiteList {
 
         @CustomType.Setter
         public Builder dbClusterIpArrayAttribute(String dbClusterIpArrayAttribute) {
-            this.dbClusterIpArrayAttribute = Objects.requireNonNull(dbClusterIpArrayAttribute);
+            if (dbClusterIpArrayAttribute == null) {
+              throw new MissingRequiredPropertyException("GetDbClustersClusterDbClusterAccessWhiteList", "dbClusterIpArrayAttribute");
+            }
+            this.dbClusterIpArrayAttribute = dbClusterIpArrayAttribute;
             return this;
         }
         @CustomType.Setter
         public Builder dbClusterIpArrayName(String dbClusterIpArrayName) {
-            this.dbClusterIpArrayName = Objects.requireNonNull(dbClusterIpArrayName);
+            if (dbClusterIpArrayName == null) {
+              throw new MissingRequiredPropertyException("GetDbClustersClusterDbClusterAccessWhiteList", "dbClusterIpArrayName");
+            }
+            this.dbClusterIpArrayName = dbClusterIpArrayName;
             return this;
         }
         @CustomType.Setter
         public Builder securityIpList(String securityIpList) {
-            this.securityIpList = Objects.requireNonNull(securityIpList);
+            if (securityIpList == null) {
+              throw new MissingRequiredPropertyException("GetDbClustersClusterDbClusterAccessWhiteList", "securityIpList");
+            }
+            this.securityIpList = securityIpList;
             return this;
         }
         public GetDbClustersClusterDbClusterAccessWhiteList build() {

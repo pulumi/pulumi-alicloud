@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.nas.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -156,32 +157,50 @@ public final class GetAutoSnapshotPoliciesPolicy {
 
         @CustomType.Setter
         public Builder autoSnapshotPolicyId(String autoSnapshotPolicyId) {
-            this.autoSnapshotPolicyId = Objects.requireNonNull(autoSnapshotPolicyId);
+            if (autoSnapshotPolicyId == null) {
+              throw new MissingRequiredPropertyException("GetAutoSnapshotPoliciesPolicy", "autoSnapshotPolicyId");
+            }
+            this.autoSnapshotPolicyId = autoSnapshotPolicyId;
             return this;
         }
         @CustomType.Setter
         public Builder autoSnapshotPolicyName(String autoSnapshotPolicyName) {
-            this.autoSnapshotPolicyName = Objects.requireNonNull(autoSnapshotPolicyName);
+            if (autoSnapshotPolicyName == null) {
+              throw new MissingRequiredPropertyException("GetAutoSnapshotPoliciesPolicy", "autoSnapshotPolicyName");
+            }
+            this.autoSnapshotPolicyName = autoSnapshotPolicyName;
             return this;
         }
         @CustomType.Setter
         public Builder createTime(String createTime) {
-            this.createTime = Objects.requireNonNull(createTime);
+            if (createTime == null) {
+              throw new MissingRequiredPropertyException("GetAutoSnapshotPoliciesPolicy", "createTime");
+            }
+            this.createTime = createTime;
             return this;
         }
         @CustomType.Setter
         public Builder fileSystemNums(Integer fileSystemNums) {
-            this.fileSystemNums = Objects.requireNonNull(fileSystemNums);
+            if (fileSystemNums == null) {
+              throw new MissingRequiredPropertyException("GetAutoSnapshotPoliciesPolicy", "fileSystemNums");
+            }
+            this.fileSystemNums = fileSystemNums;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetAutoSnapshotPoliciesPolicy", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder repeatWeekdays(List<String> repeatWeekdays) {
-            this.repeatWeekdays = Objects.requireNonNull(repeatWeekdays);
+            if (repeatWeekdays == null) {
+              throw new MissingRequiredPropertyException("GetAutoSnapshotPoliciesPolicy", "repeatWeekdays");
+            }
+            this.repeatWeekdays = repeatWeekdays;
             return this;
         }
         public Builder repeatWeekdays(String... repeatWeekdays) {
@@ -189,17 +208,26 @@ public final class GetAutoSnapshotPoliciesPolicy {
         }
         @CustomType.Setter
         public Builder retentionDays(Integer retentionDays) {
-            this.retentionDays = Objects.requireNonNull(retentionDays);
+            if (retentionDays == null) {
+              throw new MissingRequiredPropertyException("GetAutoSnapshotPoliciesPolicy", "retentionDays");
+            }
+            this.retentionDays = retentionDays;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetAutoSnapshotPoliciesPolicy", "status");
+            }
+            this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder timePoints(List<String> timePoints) {
-            this.timePoints = Objects.requireNonNull(timePoints);
+            if (timePoints == null) {
+              throw new MissingRequiredPropertyException("GetAutoSnapshotPoliciesPolicy", "timePoints");
+            }
+            this.timePoints = timePoints;
             return this;
         }
         public Builder timePoints(String... timePoints) {

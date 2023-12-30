@@ -5,6 +5,7 @@ package com.pulumi.alicloud.pvtz;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -451,9 +452,15 @@ public final class ZoneRecordArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public ZoneRecordArgs build() {
-            $.type = Objects.requireNonNull($.type, "expected parameter 'type' to be non-null");
-            $.value = Objects.requireNonNull($.value, "expected parameter 'value' to be non-null");
-            $.zoneId = Objects.requireNonNull($.zoneId, "expected parameter 'zoneId' to be non-null");
+            if ($.type == null) {
+                throw new MissingRequiredPropertyException("ZoneRecordArgs", "type");
+            }
+            if ($.value == null) {
+                throw new MissingRequiredPropertyException("ZoneRecordArgs", "value");
+            }
+            if ($.zoneId == null) {
+                throw new MissingRequiredPropertyException("ZoneRecordArgs", "zoneId");
+            }
             return $;
         }
     }

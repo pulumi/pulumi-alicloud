@@ -5,6 +5,7 @@ package com.pulumi.alicloud.cfg;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.Object;
 import java.lang.String;
@@ -775,10 +776,18 @@ public final class RuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public RuleArgs build() {
-            $.riskLevel = Objects.requireNonNull($.riskLevel, "expected parameter 'riskLevel' to be non-null");
-            $.ruleName = Objects.requireNonNull($.ruleName, "expected parameter 'ruleName' to be non-null");
-            $.sourceIdentifier = Objects.requireNonNull($.sourceIdentifier, "expected parameter 'sourceIdentifier' to be non-null");
-            $.sourceOwner = Objects.requireNonNull($.sourceOwner, "expected parameter 'sourceOwner' to be non-null");
+            if ($.riskLevel == null) {
+                throw new MissingRequiredPropertyException("RuleArgs", "riskLevel");
+            }
+            if ($.ruleName == null) {
+                throw new MissingRequiredPropertyException("RuleArgs", "ruleName");
+            }
+            if ($.sourceIdentifier == null) {
+                throw new MissingRequiredPropertyException("RuleArgs", "sourceIdentifier");
+            }
+            if ($.sourceOwner == null) {
+                throw new MissingRequiredPropertyException("RuleArgs", "sourceOwner");
+            }
             return $;
         }
     }

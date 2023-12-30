@@ -58,11 +58,13 @@ public final class BucketReplicationProgress {
 
         @CustomType.Setter
         public Builder historicalObject(@Nullable String historicalObject) {
+
             this.historicalObject = historicalObject;
             return this;
         }
         @CustomType.Setter
         public Builder newObject(@Nullable String newObject) {
+
             this.newObject = newObject;
             return this;
         }

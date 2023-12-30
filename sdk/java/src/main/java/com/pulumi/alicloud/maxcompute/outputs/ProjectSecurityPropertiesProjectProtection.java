@@ -59,11 +59,13 @@ public final class ProjectSecurityPropertiesProjectProtection {
 
         @CustomType.Setter
         public Builder exceptionPolicy(@Nullable String exceptionPolicy) {
+
             this.exceptionPolicy = exceptionPolicy;
             return this;
         }
         @CustomType.Setter("protected")
         public Builder protected_(@Nullable Boolean protected_) {
+
             this.protected_ = protected_;
             return this;
         }

@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.edas.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -155,47 +156,74 @@ public final class GetDeployGroupsGroup {
 
         @CustomType.Setter
         public Builder appId(String appId) {
-            this.appId = Objects.requireNonNull(appId);
+            if (appId == null) {
+              throw new MissingRequiredPropertyException("GetDeployGroupsGroup", "appId");
+            }
+            this.appId = appId;
             return this;
         }
         @CustomType.Setter
         public Builder appVersionId(String appVersionId) {
-            this.appVersionId = Objects.requireNonNull(appVersionId);
+            if (appVersionId == null) {
+              throw new MissingRequiredPropertyException("GetDeployGroupsGroup", "appVersionId");
+            }
+            this.appVersionId = appVersionId;
             return this;
         }
         @CustomType.Setter
         public Builder clusterId(String clusterId) {
-            this.clusterId = Objects.requireNonNull(clusterId);
+            if (clusterId == null) {
+              throw new MissingRequiredPropertyException("GetDeployGroupsGroup", "clusterId");
+            }
+            this.clusterId = clusterId;
             return this;
         }
         @CustomType.Setter
         public Builder createTime(Integer createTime) {
-            this.createTime = Objects.requireNonNull(createTime);
+            if (createTime == null) {
+              throw new MissingRequiredPropertyException("GetDeployGroupsGroup", "createTime");
+            }
+            this.createTime = createTime;
             return this;
         }
         @CustomType.Setter
         public Builder groupId(String groupId) {
-            this.groupId = Objects.requireNonNull(groupId);
+            if (groupId == null) {
+              throw new MissingRequiredPropertyException("GetDeployGroupsGroup", "groupId");
+            }
+            this.groupId = groupId;
             return this;
         }
         @CustomType.Setter
         public Builder groupName(String groupName) {
-            this.groupName = Objects.requireNonNull(groupName);
+            if (groupName == null) {
+              throw new MissingRequiredPropertyException("GetDeployGroupsGroup", "groupName");
+            }
+            this.groupName = groupName;
             return this;
         }
         @CustomType.Setter
         public Builder groupType(Integer groupType) {
-            this.groupType = Objects.requireNonNull(groupType);
+            if (groupType == null) {
+              throw new MissingRequiredPropertyException("GetDeployGroupsGroup", "groupType");
+            }
+            this.groupType = groupType;
             return this;
         }
         @CustomType.Setter
         public Builder packageVersionId(String packageVersionId) {
-            this.packageVersionId = Objects.requireNonNull(packageVersionId);
+            if (packageVersionId == null) {
+              throw new MissingRequiredPropertyException("GetDeployGroupsGroup", "packageVersionId");
+            }
+            this.packageVersionId = packageVersionId;
             return this;
         }
         @CustomType.Setter
         public Builder updateTime(Integer updateTime) {
-            this.updateTime = Objects.requireNonNull(updateTime);
+            if (updateTime == null) {
+              throw new MissingRequiredPropertyException("GetDeployGroupsGroup", "updateTime");
+            }
+            this.updateTime = updateTime;
             return this;
         }
         public GetDeployGroupsGroup build() {

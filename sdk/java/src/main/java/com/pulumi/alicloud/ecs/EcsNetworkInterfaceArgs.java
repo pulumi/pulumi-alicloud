@@ -5,6 +5,7 @@ package com.pulumi.alicloud.ecs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.Object;
 import java.lang.String;
@@ -894,7 +895,9 @@ public final class EcsNetworkInterfaceArgs extends com.pulumi.resources.Resource
         }
 
         public EcsNetworkInterfaceArgs build() {
-            $.vswitchId = Objects.requireNonNull($.vswitchId, "expected parameter 'vswitchId' to be non-null");
+            if ($.vswitchId == null) {
+                throw new MissingRequiredPropertyException("EcsNetworkInterfaceArgs", "vswitchId");
+            }
             return $;
         }
     }

@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.cs.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -99,27 +100,42 @@ public final class GetKubernetesAddonsAddon {
 
         @CustomType.Setter
         public Builder currentConfig(String currentConfig) {
-            this.currentConfig = Objects.requireNonNull(currentConfig);
+            if (currentConfig == null) {
+              throw new MissingRequiredPropertyException("GetKubernetesAddonsAddon", "currentConfig");
+            }
+            this.currentConfig = currentConfig;
             return this;
         }
         @CustomType.Setter
         public Builder currentVersion(String currentVersion) {
-            this.currentVersion = Objects.requireNonNull(currentVersion);
+            if (currentVersion == null) {
+              throw new MissingRequiredPropertyException("GetKubernetesAddonsAddon", "currentVersion");
+            }
+            this.currentVersion = currentVersion;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetKubernetesAddonsAddon", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder nextVersion(String nextVersion) {
-            this.nextVersion = Objects.requireNonNull(nextVersion);
+            if (nextVersion == null) {
+              throw new MissingRequiredPropertyException("GetKubernetesAddonsAddon", "nextVersion");
+            }
+            this.nextVersion = nextVersion;
             return this;
         }
         @CustomType.Setter
         public Builder required(Boolean required) {
-            this.required = Objects.requireNonNull(required);
+            if (required == null) {
+              throw new MissingRequiredPropertyException("GetKubernetesAddonsAddon", "required");
+            }
+            this.required = required;
             return this;
         }
         public GetKubernetesAddonsAddon build() {

@@ -5,6 +5,7 @@ package com.pulumi.alicloud.dns.outputs;
 
 import com.pulumi.alicloud.dns.outputs.GetCustomLinesLineIpSegmentList;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -114,32 +115,50 @@ public final class GetCustomLinesLine {
 
         @CustomType.Setter
         public Builder code(String code) {
-            this.code = Objects.requireNonNull(code);
+            if (code == null) {
+              throw new MissingRequiredPropertyException("GetCustomLinesLine", "code");
+            }
+            this.code = code;
             return this;
         }
         @CustomType.Setter
         public Builder customLineId(String customLineId) {
-            this.customLineId = Objects.requireNonNull(customLineId);
+            if (customLineId == null) {
+              throw new MissingRequiredPropertyException("GetCustomLinesLine", "customLineId");
+            }
+            this.customLineId = customLineId;
             return this;
         }
         @CustomType.Setter
         public Builder customLineName(String customLineName) {
-            this.customLineName = Objects.requireNonNull(customLineName);
+            if (customLineName == null) {
+              throw new MissingRequiredPropertyException("GetCustomLinesLine", "customLineName");
+            }
+            this.customLineName = customLineName;
             return this;
         }
         @CustomType.Setter
         public Builder domainName(String domainName) {
-            this.domainName = Objects.requireNonNull(domainName);
+            if (domainName == null) {
+              throw new MissingRequiredPropertyException("GetCustomLinesLine", "domainName");
+            }
+            this.domainName = domainName;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetCustomLinesLine", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder ipSegmentLists(List<GetCustomLinesLineIpSegmentList> ipSegmentLists) {
-            this.ipSegmentLists = Objects.requireNonNull(ipSegmentLists);
+            if (ipSegmentLists == null) {
+              throw new MissingRequiredPropertyException("GetCustomLinesLine", "ipSegmentLists");
+            }
+            this.ipSegmentLists = ipSegmentLists;
             return this;
         }
         public Builder ipSegmentLists(GetCustomLinesLineIpSegmentList... ipSegmentLists) {

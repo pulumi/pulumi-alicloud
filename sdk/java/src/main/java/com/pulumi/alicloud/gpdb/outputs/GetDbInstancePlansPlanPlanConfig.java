@@ -8,6 +8,7 @@ import com.pulumi.alicloud.gpdb.outputs.GetDbInstancePlansPlanPlanConfigResume;
 import com.pulumi.alicloud.gpdb.outputs.GetDbInstancePlansPlanPlanConfigScaleIn;
 import com.pulumi.alicloud.gpdb.outputs.GetDbInstancePlansPlanPlanConfigScaleOut;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.util.List;
 import java.util.Objects;
 
@@ -88,7 +89,10 @@ public final class GetDbInstancePlansPlanPlanConfig {
 
         @CustomType.Setter
         public Builder pauses(List<GetDbInstancePlansPlanPlanConfigPause> pauses) {
-            this.pauses = Objects.requireNonNull(pauses);
+            if (pauses == null) {
+              throw new MissingRequiredPropertyException("GetDbInstancePlansPlanPlanConfig", "pauses");
+            }
+            this.pauses = pauses;
             return this;
         }
         public Builder pauses(GetDbInstancePlansPlanPlanConfigPause... pauses) {
@@ -96,7 +100,10 @@ public final class GetDbInstancePlansPlanPlanConfig {
         }
         @CustomType.Setter
         public Builder resumes(List<GetDbInstancePlansPlanPlanConfigResume> resumes) {
-            this.resumes = Objects.requireNonNull(resumes);
+            if (resumes == null) {
+              throw new MissingRequiredPropertyException("GetDbInstancePlansPlanPlanConfig", "resumes");
+            }
+            this.resumes = resumes;
             return this;
         }
         public Builder resumes(GetDbInstancePlansPlanPlanConfigResume... resumes) {
@@ -104,7 +111,10 @@ public final class GetDbInstancePlansPlanPlanConfig {
         }
         @CustomType.Setter
         public Builder scaleIns(List<GetDbInstancePlansPlanPlanConfigScaleIn> scaleIns) {
-            this.scaleIns = Objects.requireNonNull(scaleIns);
+            if (scaleIns == null) {
+              throw new MissingRequiredPropertyException("GetDbInstancePlansPlanPlanConfig", "scaleIns");
+            }
+            this.scaleIns = scaleIns;
             return this;
         }
         public Builder scaleIns(GetDbInstancePlansPlanPlanConfigScaleIn... scaleIns) {
@@ -112,7 +122,10 @@ public final class GetDbInstancePlansPlanPlanConfig {
         }
         @CustomType.Setter
         public Builder scaleOuts(List<GetDbInstancePlansPlanPlanConfigScaleOut> scaleOuts) {
-            this.scaleOuts = Objects.requireNonNull(scaleOuts);
+            if (scaleOuts == null) {
+              throw new MissingRequiredPropertyException("GetDbInstancePlansPlanPlanConfig", "scaleOuts");
+            }
+            this.scaleOuts = scaleOuts;
             return this;
         }
         public Builder scaleOuts(GetDbInstancePlansPlanPlanConfigScaleOut... scaleOuts) {

@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.ros.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -70,17 +71,26 @@ public final class GetRegionsRegion {
 
         @CustomType.Setter
         public Builder localName(String localName) {
-            this.localName = Objects.requireNonNull(localName);
+            if (localName == null) {
+              throw new MissingRequiredPropertyException("GetRegionsRegion", "localName");
+            }
+            this.localName = localName;
             return this;
         }
         @CustomType.Setter
         public Builder regionEndpoint(String regionEndpoint) {
-            this.regionEndpoint = Objects.requireNonNull(regionEndpoint);
+            if (regionEndpoint == null) {
+              throw new MissingRequiredPropertyException("GetRegionsRegion", "regionEndpoint");
+            }
+            this.regionEndpoint = regionEndpoint;
             return this;
         }
         @CustomType.Setter
         public Builder regionId(String regionId) {
-            this.regionId = Objects.requireNonNull(regionId);
+            if (regionId == null) {
+              throw new MissingRequiredPropertyException("GetRegionsRegion", "regionId");
+            }
+            this.regionId = regionId;
             return this;
         }
         public GetRegionsRegion build() {

@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.ebs.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -42,7 +43,10 @@ public final class GetRegionsRegionZone {
 
         @CustomType.Setter
         public Builder zoneId(String zoneId) {
-            this.zoneId = Objects.requireNonNull(zoneId);
+            if (zoneId == null) {
+              throw new MissingRequiredPropertyException("GetRegionsRegionZone", "zoneId");
+            }
+            this.zoneId = zoneId;
             return this;
         }
         public GetRegionsRegionZone build() {

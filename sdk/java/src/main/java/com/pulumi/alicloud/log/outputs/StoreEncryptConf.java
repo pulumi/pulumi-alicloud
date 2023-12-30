@@ -14,82 +14,38 @@ import javax.annotation.Nullable;
 @CustomType
 public final class StoreEncryptConf {
     /**
-     * @return enable encryption. Default `false`
+     * @return Enable encryption. Default false.
      * 
      */
     private @Nullable Boolean enable;
     /**
-     * @return Supported encryption type, only supports `default(AES)`,`  m4 `
+     * @return Supported encryption type, only supports `default`(AES), `m4`.
      * 
      */
     private @Nullable String encryptType;
     /**
-     * @return User bring your own key (BYOK) encryption [Refer to details](https://www.alibabacloud.com/help/zh/doc-detail/187853.htm), the format is as follows. See `user_cmk_info` below.
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *     }
-     * }
-     * ```
+     * @return User bring your own key (BYOK) encryption Refer to details, the format is as follows. See user_cmk_info below. `{ &#34;cmk_key_id&#34;: &#34;your_cmk_key_id&#34;, &#34;arn&#34;: &#34;your_role_arn&#34;, &#34;region_id&#34;: &#34;you_cmk_region_id&#34; }`. See `user_cmk_info` below.
      * 
      */
     private @Nullable StoreEncryptConfUserCmkInfo userCmkInfo;
 
     private StoreEncryptConf() {}
     /**
-     * @return enable encryption. Default `false`
+     * @return Enable encryption. Default false.
      * 
      */
     public Optional<Boolean> enable() {
         return Optional.ofNullable(this.enable);
     }
     /**
-     * @return Supported encryption type, only supports `default(AES)`,`  m4 `
+     * @return Supported encryption type, only supports `default`(AES), `m4`.
      * 
      */
     public Optional<String> encryptType() {
         return Optional.ofNullable(this.encryptType);
     }
     /**
-     * @return User bring your own key (BYOK) encryption [Refer to details](https://www.alibabacloud.com/help/zh/doc-detail/187853.htm), the format is as follows. See `user_cmk_info` below.
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *     }
-     * }
-     * ```
+     * @return User bring your own key (BYOK) encryption Refer to details, the format is as follows. See user_cmk_info below. `{ &#34;cmk_key_id&#34;: &#34;your_cmk_key_id&#34;, &#34;arn&#34;: &#34;your_role_arn&#34;, &#34;region_id&#34;: &#34;you_cmk_region_id&#34; }`. See `user_cmk_info` below.
      * 
      */
     public Optional<StoreEncryptConfUserCmkInfo> userCmkInfo() {
@@ -118,16 +74,19 @@ public final class StoreEncryptConf {
 
         @CustomType.Setter
         public Builder enable(@Nullable Boolean enable) {
+
             this.enable = enable;
             return this;
         }
         @CustomType.Setter
         public Builder encryptType(@Nullable String encryptType) {
+
             this.encryptType = encryptType;
             return this;
         }
         @CustomType.Setter
         public Builder userCmkInfo(@Nullable StoreEncryptConfUserCmkInfo userCmkInfo) {
+
             this.userCmkInfo = userCmkInfo;
             return this;
         }

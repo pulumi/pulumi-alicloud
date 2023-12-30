@@ -5,6 +5,7 @@ package com.pulumi.alicloud.ros.outputs;
 
 import com.pulumi.alicloud.ros.outputs.GetStacksStack;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Object;
 import java.lang.String;
@@ -115,17 +116,24 @@ public final class GetStacksResult {
 
         @CustomType.Setter
         public Builder enableDetails(@Nullable Boolean enableDetails) {
+
             this.enableDetails = enableDetails;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetStacksResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder ids(List<String> ids) {
-            this.ids = Objects.requireNonNull(ids);
+            if (ids == null) {
+              throw new MissingRequiredPropertyException("GetStacksResult", "ids");
+            }
+            this.ids = ids;
             return this;
         }
         public Builder ids(String... ids) {
@@ -133,12 +141,16 @@ public final class GetStacksResult {
         }
         @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
+
             this.nameRegex = nameRegex;
             return this;
         }
         @CustomType.Setter
         public Builder names(List<String> names) {
-            this.names = Objects.requireNonNull(names);
+            if (names == null) {
+              throw new MissingRequiredPropertyException("GetStacksResult", "names");
+            }
+            this.names = names;
             return this;
         }
         public Builder names(String... names) {
@@ -146,27 +158,34 @@ public final class GetStacksResult {
         }
         @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
+
             this.outputFile = outputFile;
             return this;
         }
         @CustomType.Setter
         public Builder parentStackId(@Nullable String parentStackId) {
+
             this.parentStackId = parentStackId;
             return this;
         }
         @CustomType.Setter
         public Builder showNestedStack(@Nullable Boolean showNestedStack) {
+
             this.showNestedStack = showNestedStack;
             return this;
         }
         @CustomType.Setter
         public Builder stackName(@Nullable String stackName) {
+
             this.stackName = stackName;
             return this;
         }
         @CustomType.Setter
         public Builder stacks(List<GetStacksStack> stacks) {
-            this.stacks = Objects.requireNonNull(stacks);
+            if (stacks == null) {
+              throw new MissingRequiredPropertyException("GetStacksResult", "stacks");
+            }
+            this.stacks = stacks;
             return this;
         }
         public Builder stacks(GetStacksStack... stacks) {
@@ -174,11 +193,13 @@ public final class GetStacksResult {
         }
         @CustomType.Setter
         public Builder status(@Nullable String status) {
+
             this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder tags(@Nullable Map<String,Object> tags) {
+
             this.tags = tags;
             return this;
         }

@@ -5,6 +5,7 @@ package com.pulumi.alicloud.vpc.outputs;
 
 import com.pulumi.alicloud.vpc.outputs.GetNetworksVpc;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.Object;
@@ -228,32 +229,42 @@ public final class GetNetworksResult {
 
         @CustomType.Setter
         public Builder cidrBlock(@Nullable String cidrBlock) {
+
             this.cidrBlock = cidrBlock;
             return this;
         }
         @CustomType.Setter
         public Builder dhcpOptionsSetId(@Nullable String dhcpOptionsSetId) {
+
             this.dhcpOptionsSetId = dhcpOptionsSetId;
             return this;
         }
         @CustomType.Setter
         public Builder dryRun(@Nullable Boolean dryRun) {
+
             this.dryRun = dryRun;
             return this;
         }
         @CustomType.Setter
         public Builder enableDetails(@Nullable Boolean enableDetails) {
+
             this.enableDetails = enableDetails;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetNetworksResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder ids(List<String> ids) {
-            this.ids = Objects.requireNonNull(ids);
+            if (ids == null) {
+              throw new MissingRequiredPropertyException("GetNetworksResult", "ids");
+            }
+            this.ids = ids;
             return this;
         }
         public Builder ids(String... ids) {
@@ -261,17 +272,22 @@ public final class GetNetworksResult {
         }
         @CustomType.Setter
         public Builder isDefault(@Nullable Boolean isDefault) {
+
             this.isDefault = isDefault;
             return this;
         }
         @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
+
             this.nameRegex = nameRegex;
             return this;
         }
         @CustomType.Setter
         public Builder names(List<String> names) {
-            this.names = Objects.requireNonNull(names);
+            if (names == null) {
+              throw new MissingRequiredPropertyException("GetNetworksResult", "names");
+            }
+            this.names = names;
             return this;
         }
         public Builder names(String... names) {
@@ -279,52 +295,66 @@ public final class GetNetworksResult {
         }
         @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
+
             this.outputFile = outputFile;
             return this;
         }
         @CustomType.Setter
         public Builder pageNumber(@Nullable Integer pageNumber) {
+
             this.pageNumber = pageNumber;
             return this;
         }
         @CustomType.Setter
         public Builder pageSize(@Nullable Integer pageSize) {
+
             this.pageSize = pageSize;
             return this;
         }
         @CustomType.Setter
         public Builder resourceGroupId(@Nullable String resourceGroupId) {
+
             this.resourceGroupId = resourceGroupId;
             return this;
         }
         @CustomType.Setter
         public Builder status(@Nullable String status) {
+
             this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder tags(@Nullable Map<String,Object> tags) {
+
             this.tags = tags;
             return this;
         }
         @CustomType.Setter
         public Builder totalCount(Integer totalCount) {
-            this.totalCount = Objects.requireNonNull(totalCount);
+            if (totalCount == null) {
+              throw new MissingRequiredPropertyException("GetNetworksResult", "totalCount");
+            }
+            this.totalCount = totalCount;
             return this;
         }
         @CustomType.Setter
         public Builder vpcName(@Nullable String vpcName) {
+
             this.vpcName = vpcName;
             return this;
         }
         @CustomType.Setter
         public Builder vpcOwnerId(@Nullable Integer vpcOwnerId) {
+
             this.vpcOwnerId = vpcOwnerId;
             return this;
         }
         @CustomType.Setter
         public Builder vpcs(List<GetNetworksVpc> vpcs) {
-            this.vpcs = Objects.requireNonNull(vpcs);
+            if (vpcs == null) {
+              throw new MissingRequiredPropertyException("GetNetworksResult", "vpcs");
+            }
+            this.vpcs = vpcs;
             return this;
         }
         public Builder vpcs(GetNetworksVpc... vpcs) {
@@ -332,6 +362,7 @@ public final class GetNetworksResult {
         }
         @CustomType.Setter
         public Builder vswitchId(@Nullable String vswitchId) {
+
             this.vswitchId = vswitchId;
             return this;
         }

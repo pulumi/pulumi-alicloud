@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.dms.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -162,27 +163,42 @@ public final class GetEnterpriseUsersUser {
 
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetEnterpriseUsersUser", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder mobile(String mobile) {
-            this.mobile = Objects.requireNonNull(mobile);
+            if (mobile == null) {
+              throw new MissingRequiredPropertyException("GetEnterpriseUsersUser", "mobile");
+            }
+            this.mobile = mobile;
             return this;
         }
         @CustomType.Setter
         public Builder nickName(String nickName) {
-            this.nickName = Objects.requireNonNull(nickName);
+            if (nickName == null) {
+              throw new MissingRequiredPropertyException("GetEnterpriseUsersUser", "nickName");
+            }
+            this.nickName = nickName;
             return this;
         }
         @CustomType.Setter
         public Builder parentUid(Integer parentUid) {
-            this.parentUid = Objects.requireNonNull(parentUid);
+            if (parentUid == null) {
+              throw new MissingRequiredPropertyException("GetEnterpriseUsersUser", "parentUid");
+            }
+            this.parentUid = parentUid;
             return this;
         }
         @CustomType.Setter
         public Builder roleIds(List<Integer> roleIds) {
-            this.roleIds = Objects.requireNonNull(roleIds);
+            if (roleIds == null) {
+              throw new MissingRequiredPropertyException("GetEnterpriseUsersUser", "roleIds");
+            }
+            this.roleIds = roleIds;
             return this;
         }
         public Builder roleIds(Integer... roleIds) {
@@ -190,7 +206,10 @@ public final class GetEnterpriseUsersUser {
         }
         @CustomType.Setter
         public Builder roleNames(List<String> roleNames) {
-            this.roleNames = Objects.requireNonNull(roleNames);
+            if (roleNames == null) {
+              throw new MissingRequiredPropertyException("GetEnterpriseUsersUser", "roleNames");
+            }
+            this.roleNames = roleNames;
             return this;
         }
         public Builder roleNames(String... roleNames) {
@@ -198,22 +217,34 @@ public final class GetEnterpriseUsersUser {
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetEnterpriseUsersUser", "status");
+            }
+            this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder uid(String uid) {
-            this.uid = Objects.requireNonNull(uid);
+            if (uid == null) {
+              throw new MissingRequiredPropertyException("GetEnterpriseUsersUser", "uid");
+            }
+            this.uid = uid;
             return this;
         }
         @CustomType.Setter
         public Builder userId(String userId) {
-            this.userId = Objects.requireNonNull(userId);
+            if (userId == null) {
+              throw new MissingRequiredPropertyException("GetEnterpriseUsersUser", "userId");
+            }
+            this.userId = userId;
             return this;
         }
         @CustomType.Setter
         public Builder userName(String userName) {
-            this.userName = Objects.requireNonNull(userName);
+            if (userName == null) {
+              throw new MissingRequiredPropertyException("GetEnterpriseUsersUser", "userName");
+            }
+            this.userName = userName;
             return this;
         }
         public GetEnterpriseUsersUser build() {

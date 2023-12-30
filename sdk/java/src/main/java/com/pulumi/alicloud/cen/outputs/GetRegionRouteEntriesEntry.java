@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.cen.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -98,27 +99,42 @@ public final class GetRegionRouteEntriesEntry {
 
         @CustomType.Setter
         public Builder cidrBlock(String cidrBlock) {
-            this.cidrBlock = Objects.requireNonNull(cidrBlock);
+            if (cidrBlock == null) {
+              throw new MissingRequiredPropertyException("GetRegionRouteEntriesEntry", "cidrBlock");
+            }
+            this.cidrBlock = cidrBlock;
             return this;
         }
         @CustomType.Setter
         public Builder nextHopId(String nextHopId) {
-            this.nextHopId = Objects.requireNonNull(nextHopId);
+            if (nextHopId == null) {
+              throw new MissingRequiredPropertyException("GetRegionRouteEntriesEntry", "nextHopId");
+            }
+            this.nextHopId = nextHopId;
             return this;
         }
         @CustomType.Setter
         public Builder nextHopRegionId(String nextHopRegionId) {
-            this.nextHopRegionId = Objects.requireNonNull(nextHopRegionId);
+            if (nextHopRegionId == null) {
+              throw new MissingRequiredPropertyException("GetRegionRouteEntriesEntry", "nextHopRegionId");
+            }
+            this.nextHopRegionId = nextHopRegionId;
             return this;
         }
         @CustomType.Setter
         public Builder nextHopType(String nextHopType) {
-            this.nextHopType = Objects.requireNonNull(nextHopType);
+            if (nextHopType == null) {
+              throw new MissingRequiredPropertyException("GetRegionRouteEntriesEntry", "nextHopType");
+            }
+            this.nextHopType = nextHopType;
             return this;
         }
         @CustomType.Setter
         public Builder type(String type) {
-            this.type = Objects.requireNonNull(type);
+            if (type == null) {
+              throw new MissingRequiredPropertyException("GetRegionRouteEntriesEntry", "type");
+            }
+            this.type = type;
             return this;
         }
         public GetRegionRouteEntriesEntry build() {

@@ -5,6 +5,7 @@ package com.pulumi.alicloud.brain;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -150,8 +151,12 @@ public final class IndustrialPidProjectArgs extends com.pulumi.resources.Resourc
         }
 
         public IndustrialPidProjectArgs build() {
-            $.pidOrganizationId = Objects.requireNonNull($.pidOrganizationId, "expected parameter 'pidOrganizationId' to be non-null");
-            $.pidProjectName = Objects.requireNonNull($.pidProjectName, "expected parameter 'pidProjectName' to be non-null");
+            if ($.pidOrganizationId == null) {
+                throw new MissingRequiredPropertyException("IndustrialPidProjectArgs", "pidOrganizationId");
+            }
+            if ($.pidProjectName == null) {
+                throw new MissingRequiredPropertyException("IndustrialPidProjectArgs", "pidProjectName");
+            }
             return $;
         }
     }

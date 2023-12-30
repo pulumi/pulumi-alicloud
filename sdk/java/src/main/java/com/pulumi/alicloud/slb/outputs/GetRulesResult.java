@@ -5,6 +5,7 @@ package com.pulumi.alicloud.slb.outputs;
 
 import com.pulumi.alicloud.slb.outputs.GetRulesSlbRule;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -113,17 +114,26 @@ public final class GetRulesResult {
 
         @CustomType.Setter
         public Builder frontendPort(Integer frontendPort) {
-            this.frontendPort = Objects.requireNonNull(frontendPort);
+            if (frontendPort == null) {
+              throw new MissingRequiredPropertyException("GetRulesResult", "frontendPort");
+            }
+            this.frontendPort = frontendPort;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetRulesResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder ids(List<String> ids) {
-            this.ids = Objects.requireNonNull(ids);
+            if (ids == null) {
+              throw new MissingRequiredPropertyException("GetRulesResult", "ids");
+            }
+            this.ids = ids;
             return this;
         }
         public Builder ids(String... ids) {
@@ -131,17 +141,24 @@ public final class GetRulesResult {
         }
         @CustomType.Setter
         public Builder loadBalancerId(String loadBalancerId) {
-            this.loadBalancerId = Objects.requireNonNull(loadBalancerId);
+            if (loadBalancerId == null) {
+              throw new MissingRequiredPropertyException("GetRulesResult", "loadBalancerId");
+            }
+            this.loadBalancerId = loadBalancerId;
             return this;
         }
         @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
+
             this.nameRegex = nameRegex;
             return this;
         }
         @CustomType.Setter
         public Builder names(List<String> names) {
-            this.names = Objects.requireNonNull(names);
+            if (names == null) {
+              throw new MissingRequiredPropertyException("GetRulesResult", "names");
+            }
+            this.names = names;
             return this;
         }
         public Builder names(String... names) {
@@ -149,12 +166,16 @@ public final class GetRulesResult {
         }
         @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
+
             this.outputFile = outputFile;
             return this;
         }
         @CustomType.Setter
         public Builder slbRules(List<GetRulesSlbRule> slbRules) {
-            this.slbRules = Objects.requireNonNull(slbRules);
+            if (slbRules == null) {
+              throw new MissingRequiredPropertyException("GetRulesResult", "slbRules");
+            }
+            this.slbRules = slbRules;
             return this;
         }
         public Builder slbRules(GetRulesSlbRule... slbRules) {

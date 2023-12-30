@@ -68,11 +68,13 @@ public final class NetworkIpv6CidrBlock {
 
         @CustomType.Setter
         public Builder ipv6CidrBlock(@Nullable String ipv6CidrBlock) {
+
             this.ipv6CidrBlock = ipv6CidrBlock;
             return this;
         }
         @CustomType.Setter
         public Builder ipv6Isp(@Nullable String ipv6Isp) {
+
             this.ipv6Isp = ipv6Isp;
             return this;
         }

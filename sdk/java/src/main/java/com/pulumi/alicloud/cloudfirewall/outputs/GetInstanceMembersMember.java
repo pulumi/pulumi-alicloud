@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.cloudfirewall.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -119,37 +120,58 @@ public final class GetInstanceMembersMember {
 
         @CustomType.Setter
         public Builder createTime(Integer createTime) {
-            this.createTime = Objects.requireNonNull(createTime);
+            if (createTime == null) {
+              throw new MissingRequiredPropertyException("GetInstanceMembersMember", "createTime");
+            }
+            this.createTime = createTime;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetInstanceMembersMember", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder memberDesc(String memberDesc) {
-            this.memberDesc = Objects.requireNonNull(memberDesc);
+            if (memberDesc == null) {
+              throw new MissingRequiredPropertyException("GetInstanceMembersMember", "memberDesc");
+            }
+            this.memberDesc = memberDesc;
             return this;
         }
         @CustomType.Setter
         public Builder memberDisplayName(String memberDisplayName) {
-            this.memberDisplayName = Objects.requireNonNull(memberDisplayName);
+            if (memberDisplayName == null) {
+              throw new MissingRequiredPropertyException("GetInstanceMembersMember", "memberDisplayName");
+            }
+            this.memberDisplayName = memberDisplayName;
             return this;
         }
         @CustomType.Setter
         public Builder memberUid(String memberUid) {
-            this.memberUid = Objects.requireNonNull(memberUid);
+            if (memberUid == null) {
+              throw new MissingRequiredPropertyException("GetInstanceMembersMember", "memberUid");
+            }
+            this.memberUid = memberUid;
             return this;
         }
         @CustomType.Setter
         public Builder modifyTime(Integer modifyTime) {
-            this.modifyTime = Objects.requireNonNull(modifyTime);
+            if (modifyTime == null) {
+              throw new MissingRequiredPropertyException("GetInstanceMembersMember", "modifyTime");
+            }
+            this.modifyTime = modifyTime;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetInstanceMembersMember", "status");
+            }
+            this.status = status;
             return this;
         }
         public GetInstanceMembersMember build() {

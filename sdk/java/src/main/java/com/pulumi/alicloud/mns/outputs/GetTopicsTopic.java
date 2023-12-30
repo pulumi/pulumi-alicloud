@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.mns.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -86,22 +87,34 @@ public final class GetTopicsTopic {
 
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetTopicsTopic", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder loggingEnabled(Boolean loggingEnabled) {
-            this.loggingEnabled = Objects.requireNonNull(loggingEnabled);
+            if (loggingEnabled == null) {
+              throw new MissingRequiredPropertyException("GetTopicsTopic", "loggingEnabled");
+            }
+            this.loggingEnabled = loggingEnabled;
             return this;
         }
         @CustomType.Setter
         public Builder maximumMessageSize(Integer maximumMessageSize) {
-            this.maximumMessageSize = Objects.requireNonNull(maximumMessageSize);
+            if (maximumMessageSize == null) {
+              throw new MissingRequiredPropertyException("GetTopicsTopic", "maximumMessageSize");
+            }
+            this.maximumMessageSize = maximumMessageSize;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetTopicsTopic", "name");
+            }
+            this.name = name;
             return this;
         }
         public GetTopicsTopic build() {

@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.cddc.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -70,17 +71,26 @@ public final class GetDedicatedHostAccountsAccount {
 
         @CustomType.Setter
         public Builder accountName(String accountName) {
-            this.accountName = Objects.requireNonNull(accountName);
+            if (accountName == null) {
+              throw new MissingRequiredPropertyException("GetDedicatedHostAccountsAccount", "accountName");
+            }
+            this.accountName = accountName;
             return this;
         }
         @CustomType.Setter
         public Builder dedicatedHostId(String dedicatedHostId) {
-            this.dedicatedHostId = Objects.requireNonNull(dedicatedHostId);
+            if (dedicatedHostId == null) {
+              throw new MissingRequiredPropertyException("GetDedicatedHostAccountsAccount", "dedicatedHostId");
+            }
+            this.dedicatedHostId = dedicatedHostId;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetDedicatedHostAccountsAccount", "id");
+            }
+            this.id = id;
             return this;
         }
         public GetDedicatedHostAccountsAccount build() {

@@ -5,6 +5,7 @@ package com.pulumi.alicloud.cloudfirewall.outputs;
 
 import com.pulumi.alicloud.cloudfirewall.outputs.FirewallVpcFirewallLocalVpcLocalVpcCidrTableList;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -130,17 +131,22 @@ public final class FirewallVpcFirewallLocalVpc {
 
         @CustomType.Setter
         public Builder eniId(@Nullable String eniId) {
+
             this.eniId = eniId;
             return this;
         }
         @CustomType.Setter
         public Builder eniPrivateIpAddress(@Nullable String eniPrivateIpAddress) {
+
             this.eniPrivateIpAddress = eniPrivateIpAddress;
             return this;
         }
         @CustomType.Setter
         public Builder localVpcCidrTableLists(List<FirewallVpcFirewallLocalVpcLocalVpcCidrTableList> localVpcCidrTableLists) {
-            this.localVpcCidrTableLists = Objects.requireNonNull(localVpcCidrTableLists);
+            if (localVpcCidrTableLists == null) {
+              throw new MissingRequiredPropertyException("FirewallVpcFirewallLocalVpc", "localVpcCidrTableLists");
+            }
+            this.localVpcCidrTableLists = localVpcCidrTableLists;
             return this;
         }
         public Builder localVpcCidrTableLists(FirewallVpcFirewallLocalVpcLocalVpcCidrTableList... localVpcCidrTableLists) {
@@ -148,21 +154,29 @@ public final class FirewallVpcFirewallLocalVpc {
         }
         @CustomType.Setter
         public Builder regionNo(String regionNo) {
-            this.regionNo = Objects.requireNonNull(regionNo);
+            if (regionNo == null) {
+              throw new MissingRequiredPropertyException("FirewallVpcFirewallLocalVpc", "regionNo");
+            }
+            this.regionNo = regionNo;
             return this;
         }
         @CustomType.Setter
         public Builder routerInterfaceId(@Nullable String routerInterfaceId) {
+
             this.routerInterfaceId = routerInterfaceId;
             return this;
         }
         @CustomType.Setter
         public Builder vpcId(String vpcId) {
-            this.vpcId = Objects.requireNonNull(vpcId);
+            if (vpcId == null) {
+              throw new MissingRequiredPropertyException("FirewallVpcFirewallLocalVpc", "vpcId");
+            }
+            this.vpcId = vpcId;
             return this;
         }
         @CustomType.Setter
         public Builder vpcName(@Nullable String vpcName) {
+
             this.vpcName = vpcName;
             return this;
         }

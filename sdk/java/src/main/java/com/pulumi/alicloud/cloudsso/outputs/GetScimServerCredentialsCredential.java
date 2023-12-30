@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.cloudsso.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -140,42 +141,66 @@ public final class GetScimServerCredentialsCredential {
 
         @CustomType.Setter
         public Builder createTime(String createTime) {
-            this.createTime = Objects.requireNonNull(createTime);
+            if (createTime == null) {
+              throw new MissingRequiredPropertyException("GetScimServerCredentialsCredential", "createTime");
+            }
+            this.createTime = createTime;
             return this;
         }
         @CustomType.Setter
         public Builder credentialId(String credentialId) {
-            this.credentialId = Objects.requireNonNull(credentialId);
+            if (credentialId == null) {
+              throw new MissingRequiredPropertyException("GetScimServerCredentialsCredential", "credentialId");
+            }
+            this.credentialId = credentialId;
             return this;
         }
         @CustomType.Setter
         public Builder credentialSecret(String credentialSecret) {
-            this.credentialSecret = Objects.requireNonNull(credentialSecret);
+            if (credentialSecret == null) {
+              throw new MissingRequiredPropertyException("GetScimServerCredentialsCredential", "credentialSecret");
+            }
+            this.credentialSecret = credentialSecret;
             return this;
         }
         @CustomType.Setter
         public Builder credentialType(String credentialType) {
-            this.credentialType = Objects.requireNonNull(credentialType);
+            if (credentialType == null) {
+              throw new MissingRequiredPropertyException("GetScimServerCredentialsCredential", "credentialType");
+            }
+            this.credentialType = credentialType;
             return this;
         }
         @CustomType.Setter
         public Builder directoryId(String directoryId) {
-            this.directoryId = Objects.requireNonNull(directoryId);
+            if (directoryId == null) {
+              throw new MissingRequiredPropertyException("GetScimServerCredentialsCredential", "directoryId");
+            }
+            this.directoryId = directoryId;
             return this;
         }
         @CustomType.Setter
         public Builder expireTime(String expireTime) {
-            this.expireTime = Objects.requireNonNull(expireTime);
+            if (expireTime == null) {
+              throw new MissingRequiredPropertyException("GetScimServerCredentialsCredential", "expireTime");
+            }
+            this.expireTime = expireTime;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetScimServerCredentialsCredential", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetScimServerCredentialsCredential", "status");
+            }
+            this.status = status;
             return this;
         }
         public GetScimServerCredentialsCredential build() {

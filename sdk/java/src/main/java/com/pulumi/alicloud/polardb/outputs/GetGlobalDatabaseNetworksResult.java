@@ -5,6 +5,7 @@ package com.pulumi.alicloud.polardb.outputs;
 
 import com.pulumi.alicloud.polardb.outputs.GetGlobalDatabaseNetworksNetwork;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -141,27 +142,36 @@ public final class GetGlobalDatabaseNetworksResult {
 
         @CustomType.Setter
         public Builder dbClusterId(@Nullable String dbClusterId) {
+
             this.dbClusterId = dbClusterId;
             return this;
         }
         @CustomType.Setter
         public Builder description(@Nullable String description) {
+
             this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder gdnId(@Nullable String gdnId) {
+
             this.gdnId = gdnId;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetGlobalDatabaseNetworksResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder ids(List<String> ids) {
-            this.ids = Objects.requireNonNull(ids);
+            if (ids == null) {
+              throw new MissingRequiredPropertyException("GetGlobalDatabaseNetworksResult", "ids");
+            }
+            this.ids = ids;
             return this;
         }
         public Builder ids(String... ids) {
@@ -169,7 +179,10 @@ public final class GetGlobalDatabaseNetworksResult {
         }
         @CustomType.Setter
         public Builder networks(List<GetGlobalDatabaseNetworksNetwork> networks) {
-            this.networks = Objects.requireNonNull(networks);
+            if (networks == null) {
+              throw new MissingRequiredPropertyException("GetGlobalDatabaseNetworksResult", "networks");
+            }
+            this.networks = networks;
             return this;
         }
         public Builder networks(GetGlobalDatabaseNetworksNetwork... networks) {
@@ -177,21 +190,25 @@ public final class GetGlobalDatabaseNetworksResult {
         }
         @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
+
             this.outputFile = outputFile;
             return this;
         }
         @CustomType.Setter
         public Builder pageNumber(@Nullable Integer pageNumber) {
+
             this.pageNumber = pageNumber;
             return this;
         }
         @CustomType.Setter
         public Builder pageSize(@Nullable Integer pageSize) {
+
             this.pageSize = pageSize;
             return this;
         }
         @CustomType.Setter
         public Builder status(@Nullable String status) {
+
             this.status = status;
             return this;
         }

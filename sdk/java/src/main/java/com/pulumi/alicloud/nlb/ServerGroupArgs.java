@@ -6,6 +6,7 @@ package com.pulumi.alicloud.nlb;
 import com.pulumi.alicloud.nlb.inputs.ServerGroupHealthCheckArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.Object;
@@ -488,9 +489,15 @@ public final class ServerGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public ServerGroupArgs build() {
-            $.healthCheck = Objects.requireNonNull($.healthCheck, "expected parameter 'healthCheck' to be non-null");
-            $.serverGroupName = Objects.requireNonNull($.serverGroupName, "expected parameter 'serverGroupName' to be non-null");
-            $.vpcId = Objects.requireNonNull($.vpcId, "expected parameter 'vpcId' to be non-null");
+            if ($.healthCheck == null) {
+                throw new MissingRequiredPropertyException("ServerGroupArgs", "healthCheck");
+            }
+            if ($.serverGroupName == null) {
+                throw new MissingRequiredPropertyException("ServerGroupArgs", "serverGroupName");
+            }
+            if ($.vpcId == null) {
+                throw new MissingRequiredPropertyException("ServerGroupArgs", "vpcId");
+            }
             return $;
         }
     }

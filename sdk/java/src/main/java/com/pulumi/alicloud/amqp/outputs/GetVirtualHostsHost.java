@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.amqp.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -70,17 +71,26 @@ public final class GetVirtualHostsHost {
 
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetVirtualHostsHost", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder instanceId(String instanceId) {
-            this.instanceId = Objects.requireNonNull(instanceId);
+            if (instanceId == null) {
+              throw new MissingRequiredPropertyException("GetVirtualHostsHost", "instanceId");
+            }
+            this.instanceId = instanceId;
             return this;
         }
         @CustomType.Setter
         public Builder virtualHostName(String virtualHostName) {
-            this.virtualHostName = Objects.requireNonNull(virtualHostName);
+            if (virtualHostName == null) {
+              throw new MissingRequiredPropertyException("GetVirtualHostsHost", "virtualHostName");
+            }
+            this.virtualHostName = virtualHostName;
             return this;
         }
         public GetVirtualHostsHost build() {

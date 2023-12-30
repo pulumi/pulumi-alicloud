@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.eventbridge.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -84,22 +85,34 @@ public final class GetEventBusesBus {
 
         @CustomType.Setter
         public Builder createTime(String createTime) {
-            this.createTime = Objects.requireNonNull(createTime);
+            if (createTime == null) {
+              throw new MissingRequiredPropertyException("GetEventBusesBus", "createTime");
+            }
+            this.createTime = createTime;
             return this;
         }
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetEventBusesBus", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder eventBusName(String eventBusName) {
-            this.eventBusName = Objects.requireNonNull(eventBusName);
+            if (eventBusName == null) {
+              throw new MissingRequiredPropertyException("GetEventBusesBus", "eventBusName");
+            }
+            this.eventBusName = eventBusName;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetEventBusesBus", "id");
+            }
+            this.id = id;
             return this;
         }
         public GetEventBusesBus build() {

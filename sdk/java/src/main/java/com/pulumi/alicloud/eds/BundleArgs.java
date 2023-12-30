@@ -5,6 +5,7 @@ package com.pulumi.alicloud.eds;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -394,10 +395,18 @@ public final class BundleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public BundleArgs build() {
-            $.desktopType = Objects.requireNonNull($.desktopType, "expected parameter 'desktopType' to be non-null");
-            $.imageId = Objects.requireNonNull($.imageId, "expected parameter 'imageId' to be non-null");
-            $.rootDiskSizeGib = Objects.requireNonNull($.rootDiskSizeGib, "expected parameter 'rootDiskSizeGib' to be non-null");
-            $.userDiskSizeGibs = Objects.requireNonNull($.userDiskSizeGibs, "expected parameter 'userDiskSizeGibs' to be non-null");
+            if ($.desktopType == null) {
+                throw new MissingRequiredPropertyException("BundleArgs", "desktopType");
+            }
+            if ($.imageId == null) {
+                throw new MissingRequiredPropertyException("BundleArgs", "imageId");
+            }
+            if ($.rootDiskSizeGib == null) {
+                throw new MissingRequiredPropertyException("BundleArgs", "rootDiskSizeGib");
+            }
+            if ($.userDiskSizeGibs == null) {
+                throw new MissingRequiredPropertyException("BundleArgs", "userDiskSizeGibs");
+            }
             return $;
         }
     }

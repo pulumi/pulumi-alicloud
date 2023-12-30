@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.cfg.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -57,12 +58,18 @@ public final class GetRulesRuleCompliance {
 
         @CustomType.Setter
         public Builder complianceType(String complianceType) {
-            this.complianceType = Objects.requireNonNull(complianceType);
+            if (complianceType == null) {
+              throw new MissingRequiredPropertyException("GetRulesRuleCompliance", "complianceType");
+            }
+            this.complianceType = complianceType;
             return this;
         }
         @CustomType.Setter
         public Builder count(Integer count) {
-            this.count = Objects.requireNonNull(count);
+            if (count == null) {
+              throw new MissingRequiredPropertyException("GetRulesRuleCompliance", "count");
+            }
+            this.count = count;
             return this;
         }
         public GetRulesRuleCompliance build() {

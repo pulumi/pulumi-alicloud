@@ -6,6 +6,7 @@ package com.pulumi.alicloud.realtimecompute.inputs;
 import com.pulumi.alicloud.realtimecompute.inputs.VvpInstanceStorageOssArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.util.Objects;
 
 
@@ -74,7 +75,9 @@ public final class VvpInstanceStorageArgs extends com.pulumi.resources.ResourceA
         }
 
         public VvpInstanceStorageArgs build() {
-            $.oss = Objects.requireNonNull($.oss, "expected parameter 'oss' to be non-null");
+            if ($.oss == null) {
+                throw new MissingRequiredPropertyException("VvpInstanceStorageArgs", "oss");
+            }
             return $;
         }
     }

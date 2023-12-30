@@ -5,6 +5,7 @@ package com.pulumi.alicloud.cr.outputs;
 
 import com.pulumi.alicloud.cr.outputs.GetChainsChainChainConfig;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -170,7 +171,10 @@ public final class GetChainsChain {
 
         @CustomType.Setter
         public Builder chainConfigs(List<GetChainsChainChainConfig> chainConfigs) {
-            this.chainConfigs = Objects.requireNonNull(chainConfigs);
+            if (chainConfigs == null) {
+              throw new MissingRequiredPropertyException("GetChainsChain", "chainConfigs");
+            }
+            this.chainConfigs = chainConfigs;
             return this;
         }
         public Builder chainConfigs(GetChainsChainChainConfig... chainConfigs) {
@@ -178,47 +182,74 @@ public final class GetChainsChain {
         }
         @CustomType.Setter
         public Builder chainId(String chainId) {
-            this.chainId = Objects.requireNonNull(chainId);
+            if (chainId == null) {
+              throw new MissingRequiredPropertyException("GetChainsChain", "chainId");
+            }
+            this.chainId = chainId;
             return this;
         }
         @CustomType.Setter
         public Builder chainName(String chainName) {
-            this.chainName = Objects.requireNonNull(chainName);
+            if (chainName == null) {
+              throw new MissingRequiredPropertyException("GetChainsChain", "chainName");
+            }
+            this.chainName = chainName;
             return this;
         }
         @CustomType.Setter
         public Builder createTime(String createTime) {
-            this.createTime = Objects.requireNonNull(createTime);
+            if (createTime == null) {
+              throw new MissingRequiredPropertyException("GetChainsChain", "createTime");
+            }
+            this.createTime = createTime;
             return this;
         }
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetChainsChain", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetChainsChain", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder instanceId(String instanceId) {
-            this.instanceId = Objects.requireNonNull(instanceId);
+            if (instanceId == null) {
+              throw new MissingRequiredPropertyException("GetChainsChain", "instanceId");
+            }
+            this.instanceId = instanceId;
             return this;
         }
         @CustomType.Setter
         public Builder modifiedTime(String modifiedTime) {
-            this.modifiedTime = Objects.requireNonNull(modifiedTime);
+            if (modifiedTime == null) {
+              throw new MissingRequiredPropertyException("GetChainsChain", "modifiedTime");
+            }
+            this.modifiedTime = modifiedTime;
             return this;
         }
         @CustomType.Setter
         public Builder scopeId(String scopeId) {
-            this.scopeId = Objects.requireNonNull(scopeId);
+            if (scopeId == null) {
+              throw new MissingRequiredPropertyException("GetChainsChain", "scopeId");
+            }
+            this.scopeId = scopeId;
             return this;
         }
         @CustomType.Setter
         public Builder scopeType(String scopeType) {
-            this.scopeType = Objects.requireNonNull(scopeType);
+            if (scopeType == null) {
+              throw new MissingRequiredPropertyException("GetChainsChain", "scopeType");
+            }
+            this.scopeType = scopeType;
             return this;
         }
         public GetChainsChain build() {

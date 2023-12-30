@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.oss.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -102,27 +103,34 @@ public final class BucketLifecycleRuleTransition {
 
         @CustomType.Setter
         public Builder createdBeforeDate(@Nullable String createdBeforeDate) {
+
             this.createdBeforeDate = createdBeforeDate;
             return this;
         }
         @CustomType.Setter
         public Builder days(@Nullable Integer days) {
+
             this.days = days;
             return this;
         }
         @CustomType.Setter
         public Builder isAccessTime(@Nullable Boolean isAccessTime) {
+
             this.isAccessTime = isAccessTime;
             return this;
         }
         @CustomType.Setter
         public Builder returnToStdWhenVisit(@Nullable Boolean returnToStdWhenVisit) {
+
             this.returnToStdWhenVisit = returnToStdWhenVisit;
             return this;
         }
         @CustomType.Setter
         public Builder storageClass(String storageClass) {
-            this.storageClass = Objects.requireNonNull(storageClass);
+            if (storageClass == null) {
+              throw new MissingRequiredPropertyException("BucketLifecycleRuleTransition", "storageClass");
+            }
+            this.storageClass = storageClass;
             return this;
         }
         public BucketLifecycleRuleTransition build() {

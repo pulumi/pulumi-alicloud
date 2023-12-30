@@ -5,6 +5,7 @@ package com.pulumi.alicloud.cfg.outputs;
 
 import com.pulumi.alicloud.cfg.outputs.GetAggregateConfigRulesRuleCompliance;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.Object;
 import java.lang.String;
@@ -361,27 +362,42 @@ public final class GetAggregateConfigRulesRule {
 
         @CustomType.Setter
         public Builder accountId(String accountId) {
-            this.accountId = Objects.requireNonNull(accountId);
+            if (accountId == null) {
+              throw new MissingRequiredPropertyException("GetAggregateConfigRulesRule", "accountId");
+            }
+            this.accountId = accountId;
             return this;
         }
         @CustomType.Setter
         public Builder aggregateConfigRuleName(String aggregateConfigRuleName) {
-            this.aggregateConfigRuleName = Objects.requireNonNull(aggregateConfigRuleName);
+            if (aggregateConfigRuleName == null) {
+              throw new MissingRequiredPropertyException("GetAggregateConfigRulesRule", "aggregateConfigRuleName");
+            }
+            this.aggregateConfigRuleName = aggregateConfigRuleName;
             return this;
         }
         @CustomType.Setter
         public Builder aggregatorId(String aggregatorId) {
-            this.aggregatorId = Objects.requireNonNull(aggregatorId);
+            if (aggregatorId == null) {
+              throw new MissingRequiredPropertyException("GetAggregateConfigRulesRule", "aggregatorId");
+            }
+            this.aggregatorId = aggregatorId;
             return this;
         }
         @CustomType.Setter
         public Builder compliancePackId(String compliancePackId) {
-            this.compliancePackId = Objects.requireNonNull(compliancePackId);
+            if (compliancePackId == null) {
+              throw new MissingRequiredPropertyException("GetAggregateConfigRulesRule", "compliancePackId");
+            }
+            this.compliancePackId = compliancePackId;
             return this;
         }
         @CustomType.Setter
         public Builder compliances(List<GetAggregateConfigRulesRuleCompliance> compliances) {
-            this.compliances = Objects.requireNonNull(compliances);
+            if (compliances == null) {
+              throw new MissingRequiredPropertyException("GetAggregateConfigRulesRule", "compliances");
+            }
+            this.compliances = compliances;
             return this;
         }
         public Builder compliances(GetAggregateConfigRulesRuleCompliance... compliances) {
@@ -389,67 +405,106 @@ public final class GetAggregateConfigRulesRule {
         }
         @CustomType.Setter
         public Builder configRuleArn(String configRuleArn) {
-            this.configRuleArn = Objects.requireNonNull(configRuleArn);
+            if (configRuleArn == null) {
+              throw new MissingRequiredPropertyException("GetAggregateConfigRulesRule", "configRuleArn");
+            }
+            this.configRuleArn = configRuleArn;
             return this;
         }
         @CustomType.Setter
         public Builder configRuleId(String configRuleId) {
-            this.configRuleId = Objects.requireNonNull(configRuleId);
+            if (configRuleId == null) {
+              throw new MissingRequiredPropertyException("GetAggregateConfigRulesRule", "configRuleId");
+            }
+            this.configRuleId = configRuleId;
             return this;
         }
         @CustomType.Setter
         public Builder configRuleTriggerTypes(String configRuleTriggerTypes) {
-            this.configRuleTriggerTypes = Objects.requireNonNull(configRuleTriggerTypes);
+            if (configRuleTriggerTypes == null) {
+              throw new MissingRequiredPropertyException("GetAggregateConfigRulesRule", "configRuleTriggerTypes");
+            }
+            this.configRuleTriggerTypes = configRuleTriggerTypes;
             return this;
         }
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetAggregateConfigRulesRule", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder eventSource(String eventSource) {
-            this.eventSource = Objects.requireNonNull(eventSource);
+            if (eventSource == null) {
+              throw new MissingRequiredPropertyException("GetAggregateConfigRulesRule", "eventSource");
+            }
+            this.eventSource = eventSource;
             return this;
         }
         @CustomType.Setter
         public Builder excludeResourceIdsScope(String excludeResourceIdsScope) {
-            this.excludeResourceIdsScope = Objects.requireNonNull(excludeResourceIdsScope);
+            if (excludeResourceIdsScope == null) {
+              throw new MissingRequiredPropertyException("GetAggregateConfigRulesRule", "excludeResourceIdsScope");
+            }
+            this.excludeResourceIdsScope = excludeResourceIdsScope;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetAggregateConfigRulesRule", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder inputParameters(Map<String,Object> inputParameters) {
-            this.inputParameters = Objects.requireNonNull(inputParameters);
+            if (inputParameters == null) {
+              throw new MissingRequiredPropertyException("GetAggregateConfigRulesRule", "inputParameters");
+            }
+            this.inputParameters = inputParameters;
             return this;
         }
         @CustomType.Setter
         public Builder maximumExecutionFrequency(String maximumExecutionFrequency) {
-            this.maximumExecutionFrequency = Objects.requireNonNull(maximumExecutionFrequency);
+            if (maximumExecutionFrequency == null) {
+              throw new MissingRequiredPropertyException("GetAggregateConfigRulesRule", "maximumExecutionFrequency");
+            }
+            this.maximumExecutionFrequency = maximumExecutionFrequency;
             return this;
         }
         @CustomType.Setter
         public Builder modifiedTimestamp(String modifiedTimestamp) {
-            this.modifiedTimestamp = Objects.requireNonNull(modifiedTimestamp);
+            if (modifiedTimestamp == null) {
+              throw new MissingRequiredPropertyException("GetAggregateConfigRulesRule", "modifiedTimestamp");
+            }
+            this.modifiedTimestamp = modifiedTimestamp;
             return this;
         }
         @CustomType.Setter
         public Builder regionIdsScope(String regionIdsScope) {
-            this.regionIdsScope = Objects.requireNonNull(regionIdsScope);
+            if (regionIdsScope == null) {
+              throw new MissingRequiredPropertyException("GetAggregateConfigRulesRule", "regionIdsScope");
+            }
+            this.regionIdsScope = regionIdsScope;
             return this;
         }
         @CustomType.Setter
         public Builder resourceGroupIdsScope(String resourceGroupIdsScope) {
-            this.resourceGroupIdsScope = Objects.requireNonNull(resourceGroupIdsScope);
+            if (resourceGroupIdsScope == null) {
+              throw new MissingRequiredPropertyException("GetAggregateConfigRulesRule", "resourceGroupIdsScope");
+            }
+            this.resourceGroupIdsScope = resourceGroupIdsScope;
             return this;
         }
         @CustomType.Setter
         public Builder resourceTypesScopes(List<String> resourceTypesScopes) {
-            this.resourceTypesScopes = Objects.requireNonNull(resourceTypesScopes);
+            if (resourceTypesScopes == null) {
+              throw new MissingRequiredPropertyException("GetAggregateConfigRulesRule", "resourceTypesScopes");
+            }
+            this.resourceTypesScopes = resourceTypesScopes;
             return this;
         }
         public Builder resourceTypesScopes(String... resourceTypesScopes) {
@@ -457,32 +512,50 @@ public final class GetAggregateConfigRulesRule {
         }
         @CustomType.Setter
         public Builder riskLevel(Integer riskLevel) {
-            this.riskLevel = Objects.requireNonNull(riskLevel);
+            if (riskLevel == null) {
+              throw new MissingRequiredPropertyException("GetAggregateConfigRulesRule", "riskLevel");
+            }
+            this.riskLevel = riskLevel;
             return this;
         }
         @CustomType.Setter
         public Builder sourceIdentifier(String sourceIdentifier) {
-            this.sourceIdentifier = Objects.requireNonNull(sourceIdentifier);
+            if (sourceIdentifier == null) {
+              throw new MissingRequiredPropertyException("GetAggregateConfigRulesRule", "sourceIdentifier");
+            }
+            this.sourceIdentifier = sourceIdentifier;
             return this;
         }
         @CustomType.Setter
         public Builder sourceOwner(String sourceOwner) {
-            this.sourceOwner = Objects.requireNonNull(sourceOwner);
+            if (sourceOwner == null) {
+              throw new MissingRequiredPropertyException("GetAggregateConfigRulesRule", "sourceOwner");
+            }
+            this.sourceOwner = sourceOwner;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetAggregateConfigRulesRule", "status");
+            }
+            this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder tagKeyScope(String tagKeyScope) {
-            this.tagKeyScope = Objects.requireNonNull(tagKeyScope);
+            if (tagKeyScope == null) {
+              throw new MissingRequiredPropertyException("GetAggregateConfigRulesRule", "tagKeyScope");
+            }
+            this.tagKeyScope = tagKeyScope;
             return this;
         }
         @CustomType.Setter
         public Builder tagValueScope(String tagValueScope) {
-            this.tagValueScope = Objects.requireNonNull(tagValueScope);
+            if (tagValueScope == null) {
+              throw new MissingRequiredPropertyException("GetAggregateConfigRulesRule", "tagValueScope");
+            }
+            this.tagValueScope = tagValueScope;
             return this;
         }
         public GetAggregateConfigRulesRule build() {

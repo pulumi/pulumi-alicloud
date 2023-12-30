@@ -6,6 +6,7 @@ package com.pulumi.alicloud.arms.inputs;
 import com.pulumi.alicloud.arms.inputs.DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.util.List;
 import java.util.Objects;
 
@@ -85,7 +86,9 @@ public final class DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroup
         }
 
         public DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupArgs build() {
-            $.labelMatchExpressions = Objects.requireNonNull($.labelMatchExpressions, "expected parameter 'labelMatchExpressions' to be non-null");
+            if ($.labelMatchExpressions == null) {
+                throw new MissingRequiredPropertyException("DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupArgs", "labelMatchExpressions");
+            }
             return $;
         }
     }

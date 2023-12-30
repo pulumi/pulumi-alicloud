@@ -5,6 +5,7 @@ package com.pulumi.alicloud.edas.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -149,9 +150,15 @@ public final class K8sSlbAttachmentSlbConfigPortMappingServicePortArgs extends c
         }
 
         public K8sSlbAttachmentSlbConfigPortMappingServicePortArgs build() {
-            $.port = Objects.requireNonNull($.port, "expected parameter 'port' to be non-null");
-            $.protocol = Objects.requireNonNull($.protocol, "expected parameter 'protocol' to be non-null");
-            $.targetPort = Objects.requireNonNull($.targetPort, "expected parameter 'targetPort' to be non-null");
+            if ($.port == null) {
+                throw new MissingRequiredPropertyException("K8sSlbAttachmentSlbConfigPortMappingServicePortArgs", "port");
+            }
+            if ($.protocol == null) {
+                throw new MissingRequiredPropertyException("K8sSlbAttachmentSlbConfigPortMappingServicePortArgs", "protocol");
+            }
+            if ($.targetPort == null) {
+                throw new MissingRequiredPropertyException("K8sSlbAttachmentSlbConfigPortMappingServicePortArgs", "targetPort");
+            }
             return $;
         }
     }

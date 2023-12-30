@@ -100,26 +100,31 @@ public final class ServiceMeshMeshConfigProxy {
 
         @CustomType.Setter
         public Builder clusterDomain(@Nullable String clusterDomain) {
+
             this.clusterDomain = clusterDomain;
             return this;
         }
         @CustomType.Setter
         public Builder limitCpu(@Nullable String limitCpu) {
+
             this.limitCpu = limitCpu;
             return this;
         }
         @CustomType.Setter
         public Builder limitMemory(@Nullable String limitMemory) {
+
             this.limitMemory = limitMemory;
             return this;
         }
         @CustomType.Setter
         public Builder requestCpu(@Nullable String requestCpu) {
+
             this.requestCpu = requestCpu;
             return this;
         }
         @CustomType.Setter
         public Builder requestMemory(@Nullable String requestMemory) {
+
             this.requestMemory = requestMemory;
             return this;
         }

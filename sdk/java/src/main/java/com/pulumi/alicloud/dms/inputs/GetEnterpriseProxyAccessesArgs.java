@@ -5,6 +5,7 @@ package com.pulumi.alicloud.dms.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -179,7 +180,9 @@ public final class GetEnterpriseProxyAccessesArgs extends com.pulumi.resources.I
         }
 
         public GetEnterpriseProxyAccessesArgs build() {
-            $.proxyId = Objects.requireNonNull($.proxyId, "expected parameter 'proxyId' to be non-null");
+            if ($.proxyId == null) {
+                throw new MissingRequiredPropertyException("GetEnterpriseProxyAccessesArgs", "proxyId");
+            }
             return $;
         }
     }

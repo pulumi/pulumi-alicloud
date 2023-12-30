@@ -87,21 +87,25 @@ public final class ApplicationScalingRuleScalingRuleTimerSchedule {
 
         @CustomType.Setter
         public Builder atTime(@Nullable String atTime) {
+
             this.atTime = atTime;
             return this;
         }
         @CustomType.Setter
         public Builder maxReplicas(@Nullable Integer maxReplicas) {
+
             this.maxReplicas = maxReplicas;
             return this;
         }
         @CustomType.Setter
         public Builder minReplicas(@Nullable Integer minReplicas) {
+
             this.minReplicas = minReplicas;
             return this;
         }
         @CustomType.Setter
         public Builder targetReplicas(@Nullable Integer targetReplicas) {
+
             this.targetReplicas = targetReplicas;
             return this;
         }

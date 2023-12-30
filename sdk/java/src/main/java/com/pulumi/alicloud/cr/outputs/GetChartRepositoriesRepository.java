@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.cr.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -140,42 +141,66 @@ public final class GetChartRepositoriesRepository {
 
         @CustomType.Setter
         public Builder chartRepositoryId(String chartRepositoryId) {
-            this.chartRepositoryId = Objects.requireNonNull(chartRepositoryId);
+            if (chartRepositoryId == null) {
+              throw new MissingRequiredPropertyException("GetChartRepositoriesRepository", "chartRepositoryId");
+            }
+            this.chartRepositoryId = chartRepositoryId;
             return this;
         }
         @CustomType.Setter
         public Builder createTime(String createTime) {
-            this.createTime = Objects.requireNonNull(createTime);
+            if (createTime == null) {
+              throw new MissingRequiredPropertyException("GetChartRepositoriesRepository", "createTime");
+            }
+            this.createTime = createTime;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetChartRepositoriesRepository", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder instanceId(String instanceId) {
-            this.instanceId = Objects.requireNonNull(instanceId);
+            if (instanceId == null) {
+              throw new MissingRequiredPropertyException("GetChartRepositoriesRepository", "instanceId");
+            }
+            this.instanceId = instanceId;
             return this;
         }
         @CustomType.Setter
         public Builder repoName(String repoName) {
-            this.repoName = Objects.requireNonNull(repoName);
+            if (repoName == null) {
+              throw new MissingRequiredPropertyException("GetChartRepositoriesRepository", "repoName");
+            }
+            this.repoName = repoName;
             return this;
         }
         @CustomType.Setter
         public Builder repoNamespaceName(String repoNamespaceName) {
-            this.repoNamespaceName = Objects.requireNonNull(repoNamespaceName);
+            if (repoNamespaceName == null) {
+              throw new MissingRequiredPropertyException("GetChartRepositoriesRepository", "repoNamespaceName");
+            }
+            this.repoNamespaceName = repoNamespaceName;
             return this;
         }
         @CustomType.Setter
         public Builder repoType(String repoType) {
-            this.repoType = Objects.requireNonNull(repoType);
+            if (repoType == null) {
+              throw new MissingRequiredPropertyException("GetChartRepositoriesRepository", "repoType");
+            }
+            this.repoType = repoType;
             return this;
         }
         @CustomType.Setter
         public Builder summary(String summary) {
-            this.summary = Objects.requireNonNull(summary);
+            if (summary == null) {
+              throw new MissingRequiredPropertyException("GetChartRepositoriesRepository", "summary");
+            }
+            this.summary = summary;
             return this;
         }
         public GetChartRepositoriesRepository build() {

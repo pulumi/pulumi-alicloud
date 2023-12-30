@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.vpc.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -183,57 +184,90 @@ public final class GetPeerConnectionsConnection {
 
         @CustomType.Setter
         public Builder acceptingAliUid(Integer acceptingAliUid) {
-            this.acceptingAliUid = Objects.requireNonNull(acceptingAliUid);
+            if (acceptingAliUid == null) {
+              throw new MissingRequiredPropertyException("GetPeerConnectionsConnection", "acceptingAliUid");
+            }
+            this.acceptingAliUid = acceptingAliUid;
             return this;
         }
         @CustomType.Setter
         public Builder acceptingRegionId(String acceptingRegionId) {
-            this.acceptingRegionId = Objects.requireNonNull(acceptingRegionId);
+            if (acceptingRegionId == null) {
+              throw new MissingRequiredPropertyException("GetPeerConnectionsConnection", "acceptingRegionId");
+            }
+            this.acceptingRegionId = acceptingRegionId;
             return this;
         }
         @CustomType.Setter
         public Builder acceptingVpcId(String acceptingVpcId) {
-            this.acceptingVpcId = Objects.requireNonNull(acceptingVpcId);
+            if (acceptingVpcId == null) {
+              throw new MissingRequiredPropertyException("GetPeerConnectionsConnection", "acceptingVpcId");
+            }
+            this.acceptingVpcId = acceptingVpcId;
             return this;
         }
         @CustomType.Setter
         public Builder bandwidth(Integer bandwidth) {
-            this.bandwidth = Objects.requireNonNull(bandwidth);
+            if (bandwidth == null) {
+              throw new MissingRequiredPropertyException("GetPeerConnectionsConnection", "bandwidth");
+            }
+            this.bandwidth = bandwidth;
             return this;
         }
         @CustomType.Setter
         public Builder createTime(String createTime) {
-            this.createTime = Objects.requireNonNull(createTime);
+            if (createTime == null) {
+              throw new MissingRequiredPropertyException("GetPeerConnectionsConnection", "createTime");
+            }
+            this.createTime = createTime;
             return this;
         }
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetPeerConnectionsConnection", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetPeerConnectionsConnection", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder peerConnectionId(String peerConnectionId) {
-            this.peerConnectionId = Objects.requireNonNull(peerConnectionId);
+            if (peerConnectionId == null) {
+              throw new MissingRequiredPropertyException("GetPeerConnectionsConnection", "peerConnectionId");
+            }
+            this.peerConnectionId = peerConnectionId;
             return this;
         }
         @CustomType.Setter
         public Builder peerConnectionName(String peerConnectionName) {
-            this.peerConnectionName = Objects.requireNonNull(peerConnectionName);
+            if (peerConnectionName == null) {
+              throw new MissingRequiredPropertyException("GetPeerConnectionsConnection", "peerConnectionName");
+            }
+            this.peerConnectionName = peerConnectionName;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetPeerConnectionsConnection", "status");
+            }
+            this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder vpcId(String vpcId) {
-            this.vpcId = Objects.requireNonNull(vpcId);
+            if (vpcId == null) {
+              throw new MissingRequiredPropertyException("GetPeerConnectionsConnection", "vpcId");
+            }
+            this.vpcId = vpcId;
             return this;
         }
         public GetPeerConnectionsConnection build() {

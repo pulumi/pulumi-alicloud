@@ -6,6 +6,7 @@ package com.pulumi.alicloud.adb;
 import com.pulumi.alicloud.adb.inputs.LakeAccountAccountPrivilegeArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -273,9 +274,15 @@ public final class LakeAccountArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public LakeAccountArgs build() {
-            $.accountName = Objects.requireNonNull($.accountName, "expected parameter 'accountName' to be non-null");
-            $.accountPassword = Objects.requireNonNull($.accountPassword, "expected parameter 'accountPassword' to be non-null");
-            $.dbClusterId = Objects.requireNonNull($.dbClusterId, "expected parameter 'dbClusterId' to be non-null");
+            if ($.accountName == null) {
+                throw new MissingRequiredPropertyException("LakeAccountArgs", "accountName");
+            }
+            if ($.accountPassword == null) {
+                throw new MissingRequiredPropertyException("LakeAccountArgs", "accountPassword");
+            }
+            if ($.dbClusterId == null) {
+                throw new MissingRequiredPropertyException("LakeAccountArgs", "dbClusterId");
+            }
             return $;
         }
     }

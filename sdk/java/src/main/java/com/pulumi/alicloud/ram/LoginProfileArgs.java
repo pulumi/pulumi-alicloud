@@ -5,6 +5,7 @@ package com.pulumi.alicloud.ram;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -188,8 +189,12 @@ public final class LoginProfileArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public LoginProfileArgs build() {
-            $.password = Objects.requireNonNull($.password, "expected parameter 'password' to be non-null");
-            $.userName = Objects.requireNonNull($.userName, "expected parameter 'userName' to be non-null");
+            if ($.password == null) {
+                throw new MissingRequiredPropertyException("LoginProfileArgs", "password");
+            }
+            if ($.userName == null) {
+                throw new MissingRequiredPropertyException("LoginProfileArgs", "userName");
+            }
             return $;
         }
     }

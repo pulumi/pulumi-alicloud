@@ -129,8 +129,12 @@ type EciScalingConfiguration struct {
 	// Whether active current eci scaling configuration in the specified scaling group. Note that only
 	// one configuration can be active. Default to `false`.
 	Active pulumi.BoolPtrOutput `pulumi:"active"`
+	// The duration in seconds relative to the startTime that the job may be active before the system tries to terminate it.
+	ActiveDeadlineSeconds pulumi.IntPtrOutput `pulumi:"activeDeadlineSeconds"`
 	// Whether create eip automatically.
 	AutoCreateEip pulumi.BoolPtrOutput `pulumi:"autoCreateEip"`
+	// Whether to automatically match the image cache.
+	AutoMatchImageCache pulumi.BoolPtrOutput `pulumi:"autoMatchImageCache"`
 	// The name of the container group.
 	ContainerGroupName pulumi.StringPtrOutput `pulumi:"containerGroupName"`
 	// The list of containers. See `containers` below for details.
@@ -148,6 +152,8 @@ type EciScalingConfiguration struct {
 	EipBandwidth pulumi.IntPtrOutput `pulumi:"eipBandwidth"`
 	// Enable sls log service.
 	EnableSls pulumi.BoolPtrOutput `pulumi:"enableSls"`
+	// The size of ephemeral storage.
+	EphemeralStorage pulumi.IntPtrOutput `pulumi:"ephemeralStorage"`
 	// The eci scaling configuration will be deleted forcibly with deleting its scaling group.
 	// Default to false.
 	ForceDelete pulumi.BoolPtrOutput `pulumi:"forceDelete"`
@@ -158,10 +164,16 @@ type EciScalingConfiguration struct {
 	// The image registry credential.   See `imageRegistryCredentials` below for
 	// details.
 	ImageRegistryCredentials EciScalingConfigurationImageRegistryCredentialArrayOutput `pulumi:"imageRegistryCredentials"`
+	// The ID of image cache.
+	ImageSnapshotId pulumi.StringPtrOutput `pulumi:"imageSnapshotId"`
 	// Ingress bandwidth.
 	IngressBandwidth pulumi.IntPtrOutput `pulumi:"ingressBandwidth"`
 	// The list of initContainers. See `initContainers` below for details.
 	InitContainers EciScalingConfigurationInitContainerArrayOutput `pulumi:"initContainers"`
+	// Number of IPv6 addresses.
+	Ipv6AddressCount pulumi.IntPtrOutput `pulumi:"ipv6AddressCount"`
+	// The weight of an ECI instance attached to the Server Group.
+	LoadBalancerWeight pulumi.IntPtrOutput `pulumi:"loadBalancerWeight"`
 	// The amount of memory resources allocated to the container group.
 	Memory pulumi.Float64PtrOutput `pulumi:"memory"`
 	// The RAM role that the container group assumes. ECI and ECS share the same RAM role.
@@ -191,6 +203,8 @@ type EciScalingConfiguration struct {
 	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "http://", or "https://" It can be
 	//   a null string.
 	Tags pulumi.MapOutput `pulumi:"tags"`
+	// The program's buffering time before closing.
+	TerminationGracePeriodSeconds pulumi.IntPtrOutput `pulumi:"terminationGracePeriodSeconds"`
 	// The list of volumes. See `volumes` below for details.
 	Volumes EciScalingConfigurationVolumeArrayOutput `pulumi:"volumes"`
 }
@@ -233,8 +247,12 @@ type eciScalingConfigurationState struct {
 	// Whether active current eci scaling configuration in the specified scaling group. Note that only
 	// one configuration can be active. Default to `false`.
 	Active *bool `pulumi:"active"`
+	// The duration in seconds relative to the startTime that the job may be active before the system tries to terminate it.
+	ActiveDeadlineSeconds *int `pulumi:"activeDeadlineSeconds"`
 	// Whether create eip automatically.
 	AutoCreateEip *bool `pulumi:"autoCreateEip"`
+	// Whether to automatically match the image cache.
+	AutoMatchImageCache *bool `pulumi:"autoMatchImageCache"`
 	// The name of the container group.
 	ContainerGroupName *string `pulumi:"containerGroupName"`
 	// The list of containers. See `containers` below for details.
@@ -252,6 +270,8 @@ type eciScalingConfigurationState struct {
 	EipBandwidth *int `pulumi:"eipBandwidth"`
 	// Enable sls log service.
 	EnableSls *bool `pulumi:"enableSls"`
+	// The size of ephemeral storage.
+	EphemeralStorage *int `pulumi:"ephemeralStorage"`
 	// The eci scaling configuration will be deleted forcibly with deleting its scaling group.
 	// Default to false.
 	ForceDelete *bool `pulumi:"forceDelete"`
@@ -262,10 +282,16 @@ type eciScalingConfigurationState struct {
 	// The image registry credential.   See `imageRegistryCredentials` below for
 	// details.
 	ImageRegistryCredentials []EciScalingConfigurationImageRegistryCredential `pulumi:"imageRegistryCredentials"`
+	// The ID of image cache.
+	ImageSnapshotId *string `pulumi:"imageSnapshotId"`
 	// Ingress bandwidth.
 	IngressBandwidth *int `pulumi:"ingressBandwidth"`
 	// The list of initContainers. See `initContainers` below for details.
 	InitContainers []EciScalingConfigurationInitContainer `pulumi:"initContainers"`
+	// Number of IPv6 addresses.
+	Ipv6AddressCount *int `pulumi:"ipv6AddressCount"`
+	// The weight of an ECI instance attached to the Server Group.
+	LoadBalancerWeight *int `pulumi:"loadBalancerWeight"`
 	// The amount of memory resources allocated to the container group.
 	Memory *float64 `pulumi:"memory"`
 	// The RAM role that the container group assumes. ECI and ECS share the same RAM role.
@@ -295,6 +321,8 @@ type eciScalingConfigurationState struct {
 	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "http://", or "https://" It can be
 	//   a null string.
 	Tags map[string]interface{} `pulumi:"tags"`
+	// The program's buffering time before closing.
+	TerminationGracePeriodSeconds *int `pulumi:"terminationGracePeriodSeconds"`
 	// The list of volumes. See `volumes` below for details.
 	Volumes []EciScalingConfigurationVolume `pulumi:"volumes"`
 }
@@ -305,8 +333,12 @@ type EciScalingConfigurationState struct {
 	// Whether active current eci scaling configuration in the specified scaling group. Note that only
 	// one configuration can be active. Default to `false`.
 	Active pulumi.BoolPtrInput
+	// The duration in seconds relative to the startTime that the job may be active before the system tries to terminate it.
+	ActiveDeadlineSeconds pulumi.IntPtrInput
 	// Whether create eip automatically.
 	AutoCreateEip pulumi.BoolPtrInput
+	// Whether to automatically match the image cache.
+	AutoMatchImageCache pulumi.BoolPtrInput
 	// The name of the container group.
 	ContainerGroupName pulumi.StringPtrInput
 	// The list of containers. See `containers` below for details.
@@ -324,6 +356,8 @@ type EciScalingConfigurationState struct {
 	EipBandwidth pulumi.IntPtrInput
 	// Enable sls log service.
 	EnableSls pulumi.BoolPtrInput
+	// The size of ephemeral storage.
+	EphemeralStorage pulumi.IntPtrInput
 	// The eci scaling configuration will be deleted forcibly with deleting its scaling group.
 	// Default to false.
 	ForceDelete pulumi.BoolPtrInput
@@ -334,10 +368,16 @@ type EciScalingConfigurationState struct {
 	// The image registry credential.   See `imageRegistryCredentials` below for
 	// details.
 	ImageRegistryCredentials EciScalingConfigurationImageRegistryCredentialArrayInput
+	// The ID of image cache.
+	ImageSnapshotId pulumi.StringPtrInput
 	// Ingress bandwidth.
 	IngressBandwidth pulumi.IntPtrInput
 	// The list of initContainers. See `initContainers` below for details.
 	InitContainers EciScalingConfigurationInitContainerArrayInput
+	// Number of IPv6 addresses.
+	Ipv6AddressCount pulumi.IntPtrInput
+	// The weight of an ECI instance attached to the Server Group.
+	LoadBalancerWeight pulumi.IntPtrInput
 	// The amount of memory resources allocated to the container group.
 	Memory pulumi.Float64PtrInput
 	// The RAM role that the container group assumes. ECI and ECS share the same RAM role.
@@ -367,6 +407,8 @@ type EciScalingConfigurationState struct {
 	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "http://", or "https://" It can be
 	//   a null string.
 	Tags pulumi.MapInput
+	// The program's buffering time before closing.
+	TerminationGracePeriodSeconds pulumi.IntPtrInput
 	// The list of volumes. See `volumes` below for details.
 	Volumes EciScalingConfigurationVolumeArrayInput
 }
@@ -381,8 +423,12 @@ type eciScalingConfigurationArgs struct {
 	// Whether active current eci scaling configuration in the specified scaling group. Note that only
 	// one configuration can be active. Default to `false`.
 	Active *bool `pulumi:"active"`
+	// The duration in seconds relative to the startTime that the job may be active before the system tries to terminate it.
+	ActiveDeadlineSeconds *int `pulumi:"activeDeadlineSeconds"`
 	// Whether create eip automatically.
 	AutoCreateEip *bool `pulumi:"autoCreateEip"`
+	// Whether to automatically match the image cache.
+	AutoMatchImageCache *bool `pulumi:"autoMatchImageCache"`
 	// The name of the container group.
 	ContainerGroupName *string `pulumi:"containerGroupName"`
 	// The list of containers. See `containers` below for details.
@@ -400,6 +446,8 @@ type eciScalingConfigurationArgs struct {
 	EipBandwidth *int `pulumi:"eipBandwidth"`
 	// Enable sls log service.
 	EnableSls *bool `pulumi:"enableSls"`
+	// The size of ephemeral storage.
+	EphemeralStorage *int `pulumi:"ephemeralStorage"`
 	// The eci scaling configuration will be deleted forcibly with deleting its scaling group.
 	// Default to false.
 	ForceDelete *bool `pulumi:"forceDelete"`
@@ -410,10 +458,16 @@ type eciScalingConfigurationArgs struct {
 	// The image registry credential.   See `imageRegistryCredentials` below for
 	// details.
 	ImageRegistryCredentials []EciScalingConfigurationImageRegistryCredential `pulumi:"imageRegistryCredentials"`
+	// The ID of image cache.
+	ImageSnapshotId *string `pulumi:"imageSnapshotId"`
 	// Ingress bandwidth.
 	IngressBandwidth *int `pulumi:"ingressBandwidth"`
 	// The list of initContainers. See `initContainers` below for details.
 	InitContainers []EciScalingConfigurationInitContainer `pulumi:"initContainers"`
+	// Number of IPv6 addresses.
+	Ipv6AddressCount *int `pulumi:"ipv6AddressCount"`
+	// The weight of an ECI instance attached to the Server Group.
+	LoadBalancerWeight *int `pulumi:"loadBalancerWeight"`
 	// The amount of memory resources allocated to the container group.
 	Memory *float64 `pulumi:"memory"`
 	// The RAM role that the container group assumes. ECI and ECS share the same RAM role.
@@ -443,6 +497,8 @@ type eciScalingConfigurationArgs struct {
 	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "http://", or "https://" It can be
 	//   a null string.
 	Tags map[string]interface{} `pulumi:"tags"`
+	// The program's buffering time before closing.
+	TerminationGracePeriodSeconds *int `pulumi:"terminationGracePeriodSeconds"`
 	// The list of volumes. See `volumes` below for details.
 	Volumes []EciScalingConfigurationVolume `pulumi:"volumes"`
 }
@@ -454,8 +510,12 @@ type EciScalingConfigurationArgs struct {
 	// Whether active current eci scaling configuration in the specified scaling group. Note that only
 	// one configuration can be active. Default to `false`.
 	Active pulumi.BoolPtrInput
+	// The duration in seconds relative to the startTime that the job may be active before the system tries to terminate it.
+	ActiveDeadlineSeconds pulumi.IntPtrInput
 	// Whether create eip automatically.
 	AutoCreateEip pulumi.BoolPtrInput
+	// Whether to automatically match the image cache.
+	AutoMatchImageCache pulumi.BoolPtrInput
 	// The name of the container group.
 	ContainerGroupName pulumi.StringPtrInput
 	// The list of containers. See `containers` below for details.
@@ -473,6 +533,8 @@ type EciScalingConfigurationArgs struct {
 	EipBandwidth pulumi.IntPtrInput
 	// Enable sls log service.
 	EnableSls pulumi.BoolPtrInput
+	// The size of ephemeral storage.
+	EphemeralStorage pulumi.IntPtrInput
 	// The eci scaling configuration will be deleted forcibly with deleting its scaling group.
 	// Default to false.
 	ForceDelete pulumi.BoolPtrInput
@@ -483,10 +545,16 @@ type EciScalingConfigurationArgs struct {
 	// The image registry credential.   See `imageRegistryCredentials` below for
 	// details.
 	ImageRegistryCredentials EciScalingConfigurationImageRegistryCredentialArrayInput
+	// The ID of image cache.
+	ImageSnapshotId pulumi.StringPtrInput
 	// Ingress bandwidth.
 	IngressBandwidth pulumi.IntPtrInput
 	// The list of initContainers. See `initContainers` below for details.
 	InitContainers EciScalingConfigurationInitContainerArrayInput
+	// Number of IPv6 addresses.
+	Ipv6AddressCount pulumi.IntPtrInput
+	// The weight of an ECI instance attached to the Server Group.
+	LoadBalancerWeight pulumi.IntPtrInput
 	// The amount of memory resources allocated to the container group.
 	Memory pulumi.Float64PtrInput
 	// The RAM role that the container group assumes. ECI and ECS share the same RAM role.
@@ -516,6 +584,8 @@ type EciScalingConfigurationArgs struct {
 	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "http://", or "https://" It can be
 	//   a null string.
 	Tags pulumi.MapInput
+	// The program's buffering time before closing.
+	TerminationGracePeriodSeconds pulumi.IntPtrInput
 	// The list of volumes. See `volumes` below for details.
 	Volumes EciScalingConfigurationVolumeArrayInput
 }
@@ -620,9 +690,19 @@ func (o EciScalingConfigurationOutput) Active() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *EciScalingConfiguration) pulumi.BoolPtrOutput { return v.Active }).(pulumi.BoolPtrOutput)
 }
 
+// The duration in seconds relative to the startTime that the job may be active before the system tries to terminate it.
+func (o EciScalingConfigurationOutput) ActiveDeadlineSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *EciScalingConfiguration) pulumi.IntPtrOutput { return v.ActiveDeadlineSeconds }).(pulumi.IntPtrOutput)
+}
+
 // Whether create eip automatically.
 func (o EciScalingConfigurationOutput) AutoCreateEip() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *EciScalingConfiguration) pulumi.BoolPtrOutput { return v.AutoCreateEip }).(pulumi.BoolPtrOutput)
+}
+
+// Whether to automatically match the image cache.
+func (o EciScalingConfigurationOutput) AutoMatchImageCache() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *EciScalingConfiguration) pulumi.BoolPtrOutput { return v.AutoMatchImageCache }).(pulumi.BoolPtrOutput)
 }
 
 // The name of the container group.
@@ -666,6 +746,11 @@ func (o EciScalingConfigurationOutput) EnableSls() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *EciScalingConfiguration) pulumi.BoolPtrOutput { return v.EnableSls }).(pulumi.BoolPtrOutput)
 }
 
+// The size of ephemeral storage.
+func (o EciScalingConfigurationOutput) EphemeralStorage() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *EciScalingConfiguration) pulumi.IntPtrOutput { return v.EphemeralStorage }).(pulumi.IntPtrOutput)
+}
+
 // The eci scaling configuration will be deleted forcibly with deleting its scaling group.
 // Default to false.
 func (o EciScalingConfigurationOutput) ForceDelete() pulumi.BoolPtrOutput {
@@ -690,6 +775,11 @@ func (o EciScalingConfigurationOutput) ImageRegistryCredentials() EciScalingConf
 	}).(EciScalingConfigurationImageRegistryCredentialArrayOutput)
 }
 
+// The ID of image cache.
+func (o EciScalingConfigurationOutput) ImageSnapshotId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EciScalingConfiguration) pulumi.StringPtrOutput { return v.ImageSnapshotId }).(pulumi.StringPtrOutput)
+}
+
 // Ingress bandwidth.
 func (o EciScalingConfigurationOutput) IngressBandwidth() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *EciScalingConfiguration) pulumi.IntPtrOutput { return v.IngressBandwidth }).(pulumi.IntPtrOutput)
@@ -700,6 +790,16 @@ func (o EciScalingConfigurationOutput) InitContainers() EciScalingConfigurationI
 	return o.ApplyT(func(v *EciScalingConfiguration) EciScalingConfigurationInitContainerArrayOutput {
 		return v.InitContainers
 	}).(EciScalingConfigurationInitContainerArrayOutput)
+}
+
+// Number of IPv6 addresses.
+func (o EciScalingConfigurationOutput) Ipv6AddressCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *EciScalingConfiguration) pulumi.IntPtrOutput { return v.Ipv6AddressCount }).(pulumi.IntPtrOutput)
+}
+
+// The weight of an ECI instance attached to the Server Group.
+func (o EciScalingConfigurationOutput) LoadBalancerWeight() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *EciScalingConfiguration) pulumi.IntPtrOutput { return v.LoadBalancerWeight }).(pulumi.IntPtrOutput)
 }
 
 // The amount of memory resources allocated to the container group.
@@ -759,6 +859,11 @@ func (o EciScalingConfigurationOutput) SpotStrategy() pulumi.StringPtrOutput {
 //     a null string.
 func (o EciScalingConfigurationOutput) Tags() pulumi.MapOutput {
 	return o.ApplyT(func(v *EciScalingConfiguration) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+}
+
+// The program's buffering time before closing.
+func (o EciScalingConfigurationOutput) TerminationGracePeriodSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *EciScalingConfiguration) pulumi.IntPtrOutput { return v.TerminationGracePeriodSeconds }).(pulumi.IntPtrOutput)
 }
 
 // The list of volumes. See `volumes` below for details.

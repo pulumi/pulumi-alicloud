@@ -5,6 +5,7 @@ package com.pulumi.alicloud.ecs.outputs;
 
 import com.pulumi.alicloud.ecs.outputs.GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacity;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Object;
 import java.lang.String;
 import java.util.List;
@@ -158,7 +159,10 @@ public final class GetEcsDedicatedHostClustersCluster {
 
         @CustomType.Setter
         public Builder dedicatedHostClusterCapacities(List<GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacity> dedicatedHostClusterCapacities) {
-            this.dedicatedHostClusterCapacities = Objects.requireNonNull(dedicatedHostClusterCapacities);
+            if (dedicatedHostClusterCapacities == null) {
+              throw new MissingRequiredPropertyException("GetEcsDedicatedHostClustersCluster", "dedicatedHostClusterCapacities");
+            }
+            this.dedicatedHostClusterCapacities = dedicatedHostClusterCapacities;
             return this;
         }
         public Builder dedicatedHostClusterCapacities(GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacity... dedicatedHostClusterCapacities) {
@@ -166,17 +170,26 @@ public final class GetEcsDedicatedHostClustersCluster {
         }
         @CustomType.Setter
         public Builder dedicatedHostClusterId(String dedicatedHostClusterId) {
-            this.dedicatedHostClusterId = Objects.requireNonNull(dedicatedHostClusterId);
+            if (dedicatedHostClusterId == null) {
+              throw new MissingRequiredPropertyException("GetEcsDedicatedHostClustersCluster", "dedicatedHostClusterId");
+            }
+            this.dedicatedHostClusterId = dedicatedHostClusterId;
             return this;
         }
         @CustomType.Setter
         public Builder dedicatedHostClusterName(String dedicatedHostClusterName) {
-            this.dedicatedHostClusterName = Objects.requireNonNull(dedicatedHostClusterName);
+            if (dedicatedHostClusterName == null) {
+              throw new MissingRequiredPropertyException("GetEcsDedicatedHostClustersCluster", "dedicatedHostClusterName");
+            }
+            this.dedicatedHostClusterName = dedicatedHostClusterName;
             return this;
         }
         @CustomType.Setter
         public Builder dedicatedHostIds(List<String> dedicatedHostIds) {
-            this.dedicatedHostIds = Objects.requireNonNull(dedicatedHostIds);
+            if (dedicatedHostIds == null) {
+              throw new MissingRequiredPropertyException("GetEcsDedicatedHostClustersCluster", "dedicatedHostIds");
+            }
+            this.dedicatedHostIds = dedicatedHostIds;
             return this;
         }
         public Builder dedicatedHostIds(String... dedicatedHostIds) {
@@ -184,27 +197,42 @@ public final class GetEcsDedicatedHostClustersCluster {
         }
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetEcsDedicatedHostClustersCluster", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetEcsDedicatedHostClustersCluster", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder resourceGroupId(String resourceGroupId) {
-            this.resourceGroupId = Objects.requireNonNull(resourceGroupId);
+            if (resourceGroupId == null) {
+              throw new MissingRequiredPropertyException("GetEcsDedicatedHostClustersCluster", "resourceGroupId");
+            }
+            this.resourceGroupId = resourceGroupId;
             return this;
         }
         @CustomType.Setter
         public Builder tags(Map<String,Object> tags) {
-            this.tags = Objects.requireNonNull(tags);
+            if (tags == null) {
+              throw new MissingRequiredPropertyException("GetEcsDedicatedHostClustersCluster", "tags");
+            }
+            this.tags = tags;
             return this;
         }
         @CustomType.Setter
         public Builder zoneId(String zoneId) {
-            this.zoneId = Objects.requireNonNull(zoneId);
+            if (zoneId == null) {
+              throw new MissingRequiredPropertyException("GetEcsDedicatedHostClustersCluster", "zoneId");
+            }
+            this.zoneId = zoneId;
             return this;
         }
         public GetEcsDedicatedHostClustersCluster build() {

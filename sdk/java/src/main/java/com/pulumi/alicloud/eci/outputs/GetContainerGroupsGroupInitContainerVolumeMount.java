@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.eci.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -71,17 +72,26 @@ public final class GetContainerGroupsGroupInitContainerVolumeMount {
 
         @CustomType.Setter
         public Builder mountPath(String mountPath) {
-            this.mountPath = Objects.requireNonNull(mountPath);
+            if (mountPath == null) {
+              throw new MissingRequiredPropertyException("GetContainerGroupsGroupInitContainerVolumeMount", "mountPath");
+            }
+            this.mountPath = mountPath;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetContainerGroupsGroupInitContainerVolumeMount", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder readOnly(Boolean readOnly) {
-            this.readOnly = Objects.requireNonNull(readOnly);
+            if (readOnly == null) {
+              throw new MissingRequiredPropertyException("GetContainerGroupsGroupInitContainerVolumeMount", "readOnly");
+            }
+            this.readOnly = readOnly;
             return this;
         }
         public GetContainerGroupsGroupInitContainerVolumeMount build() {

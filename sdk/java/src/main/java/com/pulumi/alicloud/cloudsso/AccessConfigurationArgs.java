@@ -6,6 +6,7 @@ package com.pulumi.alicloud.cloudsso;
 import com.pulumi.alicloud.cloudsso.inputs.AccessConfigurationPermissionPolicyArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -320,8 +321,12 @@ public final class AccessConfigurationArgs extends com.pulumi.resources.Resource
         }
 
         public AccessConfigurationArgs build() {
-            $.accessConfigurationName = Objects.requireNonNull($.accessConfigurationName, "expected parameter 'accessConfigurationName' to be non-null");
-            $.directoryId = Objects.requireNonNull($.directoryId, "expected parameter 'directoryId' to be non-null");
+            if ($.accessConfigurationName == null) {
+                throw new MissingRequiredPropertyException("AccessConfigurationArgs", "accessConfigurationName");
+            }
+            if ($.directoryId == null) {
+                throw new MissingRequiredPropertyException("AccessConfigurationArgs", "directoryId");
+            }
             return $;
         }
     }

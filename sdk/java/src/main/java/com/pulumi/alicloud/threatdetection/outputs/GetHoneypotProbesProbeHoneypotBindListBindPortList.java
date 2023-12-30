@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.threatdetection.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.util.Objects;
@@ -99,27 +100,42 @@ public final class GetHoneypotProbesProbeHoneypotBindListBindPortList {
 
         @CustomType.Setter
         public Builder bindPort(Boolean bindPort) {
-            this.bindPort = Objects.requireNonNull(bindPort);
+            if (bindPort == null) {
+              throw new MissingRequiredPropertyException("GetHoneypotProbesProbeHoneypotBindListBindPortList", "bindPort");
+            }
+            this.bindPort = bindPort;
             return this;
         }
         @CustomType.Setter
         public Builder endPort(Integer endPort) {
-            this.endPort = Objects.requireNonNull(endPort);
+            if (endPort == null) {
+              throw new MissingRequiredPropertyException("GetHoneypotProbesProbeHoneypotBindListBindPortList", "endPort");
+            }
+            this.endPort = endPort;
             return this;
         }
         @CustomType.Setter
         public Builder fixed(Boolean fixed) {
-            this.fixed = Objects.requireNonNull(fixed);
+            if (fixed == null) {
+              throw new MissingRequiredPropertyException("GetHoneypotProbesProbeHoneypotBindListBindPortList", "fixed");
+            }
+            this.fixed = fixed;
             return this;
         }
         @CustomType.Setter
         public Builder startPort(Integer startPort) {
-            this.startPort = Objects.requireNonNull(startPort);
+            if (startPort == null) {
+              throw new MissingRequiredPropertyException("GetHoneypotProbesProbeHoneypotBindListBindPortList", "startPort");
+            }
+            this.startPort = startPort;
             return this;
         }
         @CustomType.Setter
         public Builder targetPort(Integer targetPort) {
-            this.targetPort = Objects.requireNonNull(targetPort);
+            if (targetPort == null) {
+              throw new MissingRequiredPropertyException("GetHoneypotProbesProbeHoneypotBindListBindPortList", "targetPort");
+            }
+            this.targetPort = targetPort;
             return this;
         }
         public GetHoneypotProbesProbeHoneypotBindListBindPortList build() {

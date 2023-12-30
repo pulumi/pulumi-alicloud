@@ -5,6 +5,7 @@ package com.pulumi.alicloud.waf;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -245,10 +246,18 @@ public final class ProtectionModuleArgs extends com.pulumi.resources.ResourceArg
         }
 
         public ProtectionModuleArgs build() {
-            $.defenseType = Objects.requireNonNull($.defenseType, "expected parameter 'defenseType' to be non-null");
-            $.domain = Objects.requireNonNull($.domain, "expected parameter 'domain' to be non-null");
-            $.instanceId = Objects.requireNonNull($.instanceId, "expected parameter 'instanceId' to be non-null");
-            $.mode = Objects.requireNonNull($.mode, "expected parameter 'mode' to be non-null");
+            if ($.defenseType == null) {
+                throw new MissingRequiredPropertyException("ProtectionModuleArgs", "defenseType");
+            }
+            if ($.domain == null) {
+                throw new MissingRequiredPropertyException("ProtectionModuleArgs", "domain");
+            }
+            if ($.instanceId == null) {
+                throw new MissingRequiredPropertyException("ProtectionModuleArgs", "instanceId");
+            }
+            if ($.mode == null) {
+                throw new MissingRequiredPropertyException("ProtectionModuleArgs", "mode");
+            }
             return $;
         }
     }

@@ -35,8 +35,14 @@ import javax.annotation.Nullable;
  * import com.pulumi.alicloud.ProviderArgs;
  * import com.pulumi.alicloud.cen.Instance;
  * import com.pulumi.alicloud.cen.InstanceArgs;
+ * import com.pulumi.alicloud.cen.BandwidthPackage;
+ * import com.pulumi.alicloud.cen.BandwidthPackageArgs;
+ * import com.pulumi.alicloud.cen.BandwidthPackageAttachment;
+ * import com.pulumi.alicloud.cen.BandwidthPackageAttachmentArgs;
  * import com.pulumi.alicloud.cen.TransitRouter;
  * import com.pulumi.alicloud.cen.TransitRouterArgs;
+ * import com.pulumi.alicloud.cen.TransitRouterPeerAttachment;
+ * import com.pulumi.alicloud.cen.TransitRouterPeerAttachmentArgs;
  * import com.pulumi.alicloud.cen.TransitRouterMulticastDomain;
  * import com.pulumi.alicloud.cen.TransitRouterMulticastDomainArgs;
  * import com.pulumi.alicloud.cen.TransitRouterMulticastDomainPeerMember;
@@ -57,51 +63,77 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf_example&#34;);
- *         final var defaultRegion = config.get(&#34;defaultRegion&#34;).orElse(&#34;cn-hangzhou&#34;);
- *         final var peerRegion = config.get(&#34;peerRegion&#34;).orElse(&#34;cn-beijing&#34;);
  *         var hz = new Provider(&#34;hz&#34;, ProviderArgs.builder()        
- *             .region(defaultRegion)
+ *             .region(&#34;cn-hangzhou&#34;)
  *             .build());
  * 
- *         var bj = new Provider(&#34;bj&#34;, ProviderArgs.builder()        
- *             .region(peerRegion)
+ *         var qd = new Provider(&#34;qd&#34;, ProviderArgs.builder()        
+ *             .region(&#34;cn-qingdao&#34;)
  *             .build());
  * 
  *         var defaultInstance = new Instance(&#34;defaultInstance&#34;, InstanceArgs.builder()        
  *             .cenInstanceName(name)
- *             .protectionLevel(&#34;REDUCED&#34;)
+ *             .build());
+ * 
+ *         var defaultBandwidthPackage = new BandwidthPackage(&#34;defaultBandwidthPackage&#34;, BandwidthPackageArgs.builder()        
+ *             .bandwidth(5)
+ *             .cenBandwidthPackageName(name)
+ *             .geographicRegionAId(&#34;China&#34;)
+ *             .geographicRegionBId(&#34;China&#34;)
+ *             .build());
+ * 
+ *         var defaultBandwidthPackageAttachment = new BandwidthPackageAttachment(&#34;defaultBandwidthPackageAttachment&#34;, BandwidthPackageAttachmentArgs.builder()        
+ *             .instanceId(defaultInstance.id())
+ *             .bandwidthPackageId(defaultBandwidthPackage.id())
  *             .build());
  * 
  *         var defaultTransitRouter = new TransitRouter(&#34;defaultTransitRouter&#34;, TransitRouterArgs.builder()        
- *             .cenId(defaultInstance.id())
+ *             .cenId(defaultBandwidthPackageAttachment.instanceId())
+ *             .supportMulticast(true)
  *             .build(), CustomResourceOptions.builder()
  *                 .provider(alicloud.hz())
  *                 .build());
  * 
  *         var peerTransitRouter = new TransitRouter(&#34;peerTransitRouter&#34;, TransitRouterArgs.builder()        
- *             .cenId(defaultTransitRouter.cenId())
+ *             .cenId(defaultBandwidthPackageAttachment.instanceId())
+ *             .supportMulticast(true)
  *             .build(), CustomResourceOptions.builder()
- *                 .provider(alicloud.bj())
+ *                 .provider(alicloud.qd())
+ *                 .build());
+ * 
+ *         var defaultTransitRouterPeerAttachment = new TransitRouterPeerAttachment(&#34;defaultTransitRouterPeerAttachment&#34;, TransitRouterPeerAttachmentArgs.builder()        
+ *             .cenId(defaultBandwidthPackageAttachment.instanceId())
+ *             .transitRouterId(defaultTransitRouter.transitRouterId())
+ *             .peerTransitRouterId(peerTransitRouter.transitRouterId())
+ *             .peerTransitRouterRegionId(&#34;cn-qingdao&#34;)
+ *             .cenBandwidthPackageId(defaultBandwidthPackageAttachment.bandwidthPackageId())
+ *             .bandwidth(5)
+ *             .transitRouterAttachmentDescription(name)
+ *             .transitRouterAttachmentName(name)
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(alicloud.hz())
  *                 .build());
  * 
  *         var defaultTransitRouterMulticastDomain = new TransitRouterMulticastDomain(&#34;defaultTransitRouterMulticastDomain&#34;, TransitRouterMulticastDomainArgs.builder()        
- *             .transitRouterId(defaultTransitRouter.transitRouterId())
+ *             .transitRouterId(defaultTransitRouterPeerAttachment.transitRouterId())
  *             .transitRouterMulticastDomainName(name)
+ *             .transitRouterMulticastDomainDescription(name)
  *             .build(), CustomResourceOptions.builder()
  *                 .provider(alicloud.hz())
  *                 .build());
  * 
  *         var peerTransitRouterMulticastDomain = new TransitRouterMulticastDomain(&#34;peerTransitRouterMulticastDomain&#34;, TransitRouterMulticastDomainArgs.builder()        
- *             .transitRouterId(peerTransitRouter.transitRouterId())
+ *             .transitRouterId(defaultTransitRouterPeerAttachment.peerTransitRouterId())
  *             .transitRouterMulticastDomainName(name)
+ *             .transitRouterMulticastDomainDescription(name)
  *             .build(), CustomResourceOptions.builder()
- *                 .provider(alicloud.bj())
+ *                 .provider(alicloud.qd())
  *                 .build());
  * 
  *         var defaultTransitRouterMulticastDomainPeerMember = new TransitRouterMulticastDomainPeerMember(&#34;defaultTransitRouterMulticastDomainPeerMember&#34;, TransitRouterMulticastDomainPeerMemberArgs.builder()        
- *             .peerTransitRouterMulticastDomainId(peerTransitRouterMulticastDomain.id())
  *             .transitRouterMulticastDomainId(defaultTransitRouterMulticastDomain.id())
- *             .groupIpAddress(&#34;239.1.1.1&#34;)
+ *             .peerTransitRouterMulticastDomainId(peerTransitRouterMulticastDomain.id())
+ *             .groupIpAddress(&#34;224.0.0.1&#34;)
  *             .build(), CustomResourceOptions.builder()
  *                 .provider(alicloud.hz())
  *                 .build());

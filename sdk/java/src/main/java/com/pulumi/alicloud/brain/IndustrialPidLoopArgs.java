@@ -5,6 +5,7 @@ package com.pulumi.alicloud.brain;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -299,12 +300,24 @@ public final class IndustrialPidLoopArgs extends com.pulumi.resources.ResourceAr
         }
 
         public IndustrialPidLoopArgs build() {
-            $.pidLoopConfiguration = Objects.requireNonNull($.pidLoopConfiguration, "expected parameter 'pidLoopConfiguration' to be non-null");
-            $.pidLoopDcsType = Objects.requireNonNull($.pidLoopDcsType, "expected parameter 'pidLoopDcsType' to be non-null");
-            $.pidLoopIsCrucial = Objects.requireNonNull($.pidLoopIsCrucial, "expected parameter 'pidLoopIsCrucial' to be non-null");
-            $.pidLoopName = Objects.requireNonNull($.pidLoopName, "expected parameter 'pidLoopName' to be non-null");
-            $.pidLoopType = Objects.requireNonNull($.pidLoopType, "expected parameter 'pidLoopType' to be non-null");
-            $.pidProjectId = Objects.requireNonNull($.pidProjectId, "expected parameter 'pidProjectId' to be non-null");
+            if ($.pidLoopConfiguration == null) {
+                throw new MissingRequiredPropertyException("IndustrialPidLoopArgs", "pidLoopConfiguration");
+            }
+            if ($.pidLoopDcsType == null) {
+                throw new MissingRequiredPropertyException("IndustrialPidLoopArgs", "pidLoopDcsType");
+            }
+            if ($.pidLoopIsCrucial == null) {
+                throw new MissingRequiredPropertyException("IndustrialPidLoopArgs", "pidLoopIsCrucial");
+            }
+            if ($.pidLoopName == null) {
+                throw new MissingRequiredPropertyException("IndustrialPidLoopArgs", "pidLoopName");
+            }
+            if ($.pidLoopType == null) {
+                throw new MissingRequiredPropertyException("IndustrialPidLoopArgs", "pidLoopType");
+            }
+            if ($.pidProjectId == null) {
+                throw new MissingRequiredPropertyException("IndustrialPidLoopArgs", "pidProjectId");
+            }
             return $;
         }
     }

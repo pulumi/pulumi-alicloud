@@ -5,6 +5,7 @@ package com.pulumi.alicloud.directmail;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -150,8 +151,12 @@ public final class ReceiversArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public ReceiversArgs build() {
-            $.receiversAlias = Objects.requireNonNull($.receiversAlias, "expected parameter 'receiversAlias' to be non-null");
-            $.receiversName = Objects.requireNonNull($.receiversName, "expected parameter 'receiversName' to be non-null");
+            if ($.receiversAlias == null) {
+                throw new MissingRequiredPropertyException("ReceiversArgs", "receiversAlias");
+            }
+            if ($.receiversName == null) {
+                throw new MissingRequiredPropertyException("ReceiversArgs", "receiversName");
+            }
             return $;
         }
     }

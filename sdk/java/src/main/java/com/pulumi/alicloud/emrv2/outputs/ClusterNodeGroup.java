@@ -9,6 +9,7 @@ import com.pulumi.alicloud.emrv2.outputs.ClusterNodeGroupSpotBidPrice;
 import com.pulumi.alicloud.emrv2.outputs.ClusterNodeGroupSubscriptionConfig;
 import com.pulumi.alicloud.emrv2.outputs.ClusterNodeGroupSystemDisk;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -248,6 +249,7 @@ public final class ClusterNodeGroup {
 
         @CustomType.Setter
         public Builder additionalSecurityGroupIds(@Nullable List<String> additionalSecurityGroupIds) {
+
             this.additionalSecurityGroupIds = additionalSecurityGroupIds;
             return this;
         }
@@ -256,12 +258,16 @@ public final class ClusterNodeGroup {
         }
         @CustomType.Setter
         public Builder costOptimizedConfig(@Nullable ClusterNodeGroupCostOptimizedConfig costOptimizedConfig) {
+
             this.costOptimizedConfig = costOptimizedConfig;
             return this;
         }
         @CustomType.Setter
         public Builder dataDisks(List<ClusterNodeGroupDataDisk> dataDisks) {
-            this.dataDisks = Objects.requireNonNull(dataDisks);
+            if (dataDisks == null) {
+              throw new MissingRequiredPropertyException("ClusterNodeGroup", "dataDisks");
+            }
+            this.dataDisks = dataDisks;
             return this;
         }
         public Builder dataDisks(ClusterNodeGroupDataDisk... dataDisks) {
@@ -269,12 +275,16 @@ public final class ClusterNodeGroup {
         }
         @CustomType.Setter
         public Builder gracefulShutdown(@Nullable Boolean gracefulShutdown) {
+
             this.gracefulShutdown = gracefulShutdown;
             return this;
         }
         @CustomType.Setter
         public Builder instanceTypes(List<String> instanceTypes) {
-            this.instanceTypes = Objects.requireNonNull(instanceTypes);
+            if (instanceTypes == null) {
+              throw new MissingRequiredPropertyException("ClusterNodeGroup", "instanceTypes");
+            }
+            this.instanceTypes = instanceTypes;
             return this;
         }
         public Builder instanceTypes(String... instanceTypes) {
@@ -282,26 +292,37 @@ public final class ClusterNodeGroup {
         }
         @CustomType.Setter
         public Builder nodeCount(Integer nodeCount) {
-            this.nodeCount = Objects.requireNonNull(nodeCount);
+            if (nodeCount == null) {
+              throw new MissingRequiredPropertyException("ClusterNodeGroup", "nodeCount");
+            }
+            this.nodeCount = nodeCount;
             return this;
         }
         @CustomType.Setter
         public Builder nodeGroupName(String nodeGroupName) {
-            this.nodeGroupName = Objects.requireNonNull(nodeGroupName);
+            if (nodeGroupName == null) {
+              throw new MissingRequiredPropertyException("ClusterNodeGroup", "nodeGroupName");
+            }
+            this.nodeGroupName = nodeGroupName;
             return this;
         }
         @CustomType.Setter
         public Builder nodeGroupType(String nodeGroupType) {
-            this.nodeGroupType = Objects.requireNonNull(nodeGroupType);
+            if (nodeGroupType == null) {
+              throw new MissingRequiredPropertyException("ClusterNodeGroup", "nodeGroupType");
+            }
+            this.nodeGroupType = nodeGroupType;
             return this;
         }
         @CustomType.Setter
         public Builder paymentType(@Nullable String paymentType) {
+
             this.paymentType = paymentType;
             return this;
         }
         @CustomType.Setter
         public Builder spotBidPrices(@Nullable List<ClusterNodeGroupSpotBidPrice> spotBidPrices) {
+
             this.spotBidPrices = spotBidPrices;
             return this;
         }
@@ -310,21 +331,27 @@ public final class ClusterNodeGroup {
         }
         @CustomType.Setter
         public Builder spotInstanceRemedy(@Nullable Boolean spotInstanceRemedy) {
+
             this.spotInstanceRemedy = spotInstanceRemedy;
             return this;
         }
         @CustomType.Setter
         public Builder subscriptionConfig(@Nullable ClusterNodeGroupSubscriptionConfig subscriptionConfig) {
+
             this.subscriptionConfig = subscriptionConfig;
             return this;
         }
         @CustomType.Setter
         public Builder systemDisk(ClusterNodeGroupSystemDisk systemDisk) {
-            this.systemDisk = Objects.requireNonNull(systemDisk);
+            if (systemDisk == null) {
+              throw new MissingRequiredPropertyException("ClusterNodeGroup", "systemDisk");
+            }
+            this.systemDisk = systemDisk;
             return this;
         }
         @CustomType.Setter
         public Builder vswitchIds(@Nullable List<String> vswitchIds) {
+
             this.vswitchIds = vswitchIds;
             return this;
         }
@@ -333,6 +360,7 @@ public final class ClusterNodeGroup {
         }
         @CustomType.Setter
         public Builder withPublicIp(@Nullable Boolean withPublicIp) {
+
             this.withPublicIp = withPublicIp;
             return this;
         }

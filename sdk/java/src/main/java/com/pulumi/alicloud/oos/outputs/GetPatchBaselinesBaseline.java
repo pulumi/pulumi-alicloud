@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.oos.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -197,62 +198,98 @@ public final class GetPatchBaselinesBaseline {
 
         @CustomType.Setter
         public Builder approvalRules(String approvalRules) {
-            this.approvalRules = Objects.requireNonNull(approvalRules);
+            if (approvalRules == null) {
+              throw new MissingRequiredPropertyException("GetPatchBaselinesBaseline", "approvalRules");
+            }
+            this.approvalRules = approvalRules;
             return this;
         }
         @CustomType.Setter
         public Builder createTime(String createTime) {
-            this.createTime = Objects.requireNonNull(createTime);
+            if (createTime == null) {
+              throw new MissingRequiredPropertyException("GetPatchBaselinesBaseline", "createTime");
+            }
+            this.createTime = createTime;
             return this;
         }
         @CustomType.Setter
         public Builder createdBy(String createdBy) {
-            this.createdBy = Objects.requireNonNull(createdBy);
+            if (createdBy == null) {
+              throw new MissingRequiredPropertyException("GetPatchBaselinesBaseline", "createdBy");
+            }
+            this.createdBy = createdBy;
             return this;
         }
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetPatchBaselinesBaseline", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetPatchBaselinesBaseline", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder isDefault(Boolean isDefault) {
-            this.isDefault = Objects.requireNonNull(isDefault);
+            if (isDefault == null) {
+              throw new MissingRequiredPropertyException("GetPatchBaselinesBaseline", "isDefault");
+            }
+            this.isDefault = isDefault;
             return this;
         }
         @CustomType.Setter
         public Builder operationSystem(String operationSystem) {
-            this.operationSystem = Objects.requireNonNull(operationSystem);
+            if (operationSystem == null) {
+              throw new MissingRequiredPropertyException("GetPatchBaselinesBaseline", "operationSystem");
+            }
+            this.operationSystem = operationSystem;
             return this;
         }
         @CustomType.Setter
         public Builder patchBaselineId(String patchBaselineId) {
-            this.patchBaselineId = Objects.requireNonNull(patchBaselineId);
+            if (patchBaselineId == null) {
+              throw new MissingRequiredPropertyException("GetPatchBaselinesBaseline", "patchBaselineId");
+            }
+            this.patchBaselineId = patchBaselineId;
             return this;
         }
         @CustomType.Setter
         public Builder patchBaselineName(String patchBaselineName) {
-            this.patchBaselineName = Objects.requireNonNull(patchBaselineName);
+            if (patchBaselineName == null) {
+              throw new MissingRequiredPropertyException("GetPatchBaselinesBaseline", "patchBaselineName");
+            }
+            this.patchBaselineName = patchBaselineName;
             return this;
         }
         @CustomType.Setter
         public Builder shareType(String shareType) {
-            this.shareType = Objects.requireNonNull(shareType);
+            if (shareType == null) {
+              throw new MissingRequiredPropertyException("GetPatchBaselinesBaseline", "shareType");
+            }
+            this.shareType = shareType;
             return this;
         }
         @CustomType.Setter
         public Builder updatedBy(String updatedBy) {
-            this.updatedBy = Objects.requireNonNull(updatedBy);
+            if (updatedBy == null) {
+              throw new MissingRequiredPropertyException("GetPatchBaselinesBaseline", "updatedBy");
+            }
+            this.updatedBy = updatedBy;
             return this;
         }
         @CustomType.Setter
         public Builder updatedDate(String updatedDate) {
-            this.updatedDate = Objects.requireNonNull(updatedDate);
+            if (updatedDate == null) {
+              throw new MissingRequiredPropertyException("GetPatchBaselinesBaseline", "updatedDate");
+            }
+            this.updatedDate = updatedDate;
             return this;
         }
         public GetPatchBaselinesBaseline build() {

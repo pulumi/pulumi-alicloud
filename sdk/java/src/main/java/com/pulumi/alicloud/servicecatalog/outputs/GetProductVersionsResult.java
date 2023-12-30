@@ -6,6 +6,7 @@ package com.pulumi.alicloud.servicecatalog.outputs;
 import com.pulumi.alicloud.servicecatalog.outputs.GetProductVersionsProductVersion;
 import com.pulumi.alicloud.servicecatalog.outputs.GetProductVersionsVersion;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -132,17 +133,24 @@ public final class GetProductVersionsResult {
 
         @CustomType.Setter
         public Builder enableDetails(@Nullable Boolean enableDetails) {
+
             this.enableDetails = enableDetails;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetProductVersionsResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder ids(List<String> ids) {
-            this.ids = Objects.requireNonNull(ids);
+            if (ids == null) {
+              throw new MissingRequiredPropertyException("GetProductVersionsResult", "ids");
+            }
+            this.ids = ids;
             return this;
         }
         public Builder ids(String... ids) {
@@ -150,12 +158,16 @@ public final class GetProductVersionsResult {
         }
         @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
+
             this.nameRegex = nameRegex;
             return this;
         }
         @CustomType.Setter
         public Builder names(List<String> names) {
-            this.names = Objects.requireNonNull(names);
+            if (names == null) {
+              throw new MissingRequiredPropertyException("GetProductVersionsResult", "names");
+            }
+            this.names = names;
             return this;
         }
         public Builder names(String... names) {
@@ -163,17 +175,24 @@ public final class GetProductVersionsResult {
         }
         @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
+
             this.outputFile = outputFile;
             return this;
         }
         @CustomType.Setter
         public Builder productId(String productId) {
-            this.productId = Objects.requireNonNull(productId);
+            if (productId == null) {
+              throw new MissingRequiredPropertyException("GetProductVersionsResult", "productId");
+            }
+            this.productId = productId;
             return this;
         }
         @CustomType.Setter
         public Builder productVersions(List<GetProductVersionsProductVersion> productVersions) {
-            this.productVersions = Objects.requireNonNull(productVersions);
+            if (productVersions == null) {
+              throw new MissingRequiredPropertyException("GetProductVersionsResult", "productVersions");
+            }
+            this.productVersions = productVersions;
             return this;
         }
         public Builder productVersions(GetProductVersionsProductVersion... productVersions) {
@@ -181,7 +200,10 @@ public final class GetProductVersionsResult {
         }
         @CustomType.Setter
         public Builder versions(List<GetProductVersionsVersion> versions) {
-            this.versions = Objects.requireNonNull(versions);
+            if (versions == null) {
+              throw new MissingRequiredPropertyException("GetProductVersionsResult", "versions");
+            }
+            this.versions = versions;
             return this;
         }
         public Builder versions(GetProductVersionsVersion... versions) {

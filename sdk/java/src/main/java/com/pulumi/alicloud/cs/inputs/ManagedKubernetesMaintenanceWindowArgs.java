@@ -5,6 +5,7 @@ package com.pulumi.alicloud.cs.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -282,10 +283,18 @@ public final class ManagedKubernetesMaintenanceWindowArgs extends com.pulumi.res
         }
 
         public ManagedKubernetesMaintenanceWindowArgs build() {
-            $.duration = Objects.requireNonNull($.duration, "expected parameter 'duration' to be non-null");
-            $.enable = Objects.requireNonNull($.enable, "expected parameter 'enable' to be non-null");
-            $.maintenanceTime = Objects.requireNonNull($.maintenanceTime, "expected parameter 'maintenanceTime' to be non-null");
-            $.weeklyPeriod = Objects.requireNonNull($.weeklyPeriod, "expected parameter 'weeklyPeriod' to be non-null");
+            if ($.duration == null) {
+                throw new MissingRequiredPropertyException("ManagedKubernetesMaintenanceWindowArgs", "duration");
+            }
+            if ($.enable == null) {
+                throw new MissingRequiredPropertyException("ManagedKubernetesMaintenanceWindowArgs", "enable");
+            }
+            if ($.maintenanceTime == null) {
+                throw new MissingRequiredPropertyException("ManagedKubernetesMaintenanceWindowArgs", "maintenanceTime");
+            }
+            if ($.weeklyPeriod == null) {
+                throw new MissingRequiredPropertyException("ManagedKubernetesMaintenanceWindowArgs", "weeklyPeriod");
+            }
             return $;
         }
     }

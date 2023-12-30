@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.resourcemanager.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -141,42 +142,66 @@ public final class GetControlPoliciesPolicy {
 
         @CustomType.Setter
         public Builder attachmentCount(Integer attachmentCount) {
-            this.attachmentCount = Objects.requireNonNull(attachmentCount);
+            if (attachmentCount == null) {
+              throw new MissingRequiredPropertyException("GetControlPoliciesPolicy", "attachmentCount");
+            }
+            this.attachmentCount = attachmentCount;
             return this;
         }
         @CustomType.Setter
         public Builder controlPolicyName(String controlPolicyName) {
-            this.controlPolicyName = Objects.requireNonNull(controlPolicyName);
+            if (controlPolicyName == null) {
+              throw new MissingRequiredPropertyException("GetControlPoliciesPolicy", "controlPolicyName");
+            }
+            this.controlPolicyName = controlPolicyName;
             return this;
         }
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetControlPoliciesPolicy", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder effectScope(String effectScope) {
-            this.effectScope = Objects.requireNonNull(effectScope);
+            if (effectScope == null) {
+              throw new MissingRequiredPropertyException("GetControlPoliciesPolicy", "effectScope");
+            }
+            this.effectScope = effectScope;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetControlPoliciesPolicy", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder policyDocument(String policyDocument) {
-            this.policyDocument = Objects.requireNonNull(policyDocument);
+            if (policyDocument == null) {
+              throw new MissingRequiredPropertyException("GetControlPoliciesPolicy", "policyDocument");
+            }
+            this.policyDocument = policyDocument;
             return this;
         }
         @CustomType.Setter
         public Builder policyId(String policyId) {
-            this.policyId = Objects.requireNonNull(policyId);
+            if (policyId == null) {
+              throw new MissingRequiredPropertyException("GetControlPoliciesPolicy", "policyId");
+            }
+            this.policyId = policyId;
             return this;
         }
         @CustomType.Setter
         public Builder policyType(String policyType) {
-            this.policyType = Objects.requireNonNull(policyType);
+            if (policyType == null) {
+              throw new MissingRequiredPropertyException("GetControlPoliciesPolicy", "policyType");
+            }
+            this.policyType = policyType;
             return this;
         }
         public GetControlPoliciesPolicy build() {

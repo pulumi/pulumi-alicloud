@@ -6,6 +6,7 @@ package com.pulumi.alicloud.gpdb;
 import com.pulumi.alicloud.gpdb.inputs.InstanceIpWhitelistArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.Object;
@@ -1456,10 +1457,18 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public InstanceArgs build() {
-            $.dbInstanceMode = Objects.requireNonNull($.dbInstanceMode, "expected parameter 'dbInstanceMode' to be non-null");
-            $.engine = Objects.requireNonNull($.engine, "expected parameter 'engine' to be non-null");
-            $.engineVersion = Objects.requireNonNull($.engineVersion, "expected parameter 'engineVersion' to be non-null");
-            $.vswitchId = Objects.requireNonNull($.vswitchId, "expected parameter 'vswitchId' to be non-null");
+            if ($.dbInstanceMode == null) {
+                throw new MissingRequiredPropertyException("InstanceArgs", "dbInstanceMode");
+            }
+            if ($.engine == null) {
+                throw new MissingRequiredPropertyException("InstanceArgs", "engine");
+            }
+            if ($.engineVersion == null) {
+                throw new MissingRequiredPropertyException("InstanceArgs", "engineVersion");
+            }
+            if ($.vswitchId == null) {
+                throw new MissingRequiredPropertyException("InstanceArgs", "vswitchId");
+            }
             return $;
         }
     }

@@ -5,6 +5,7 @@ package com.pulumi.alicloud.marketplace.outputs;
 
 import com.pulumi.alicloud.marketplace.outputs.GetProductProductSkus;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -86,22 +87,34 @@ public final class GetProductProduct {
 
         @CustomType.Setter
         public Builder code(String code) {
-            this.code = Objects.requireNonNull(code);
+            if (code == null) {
+              throw new MissingRequiredPropertyException("GetProductProduct", "code");
+            }
+            this.code = code;
             return this;
         }
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetProductProduct", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetProductProduct", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder skuses(List<GetProductProductSkus> skuses) {
-            this.skuses = Objects.requireNonNull(skuses);
+            if (skuses == null) {
+              throw new MissingRequiredPropertyException("GetProductProduct", "skuses");
+            }
+            this.skuses = skuses;
             return this;
         }
         public Builder skuses(GetProductProductSkus... skuses) {

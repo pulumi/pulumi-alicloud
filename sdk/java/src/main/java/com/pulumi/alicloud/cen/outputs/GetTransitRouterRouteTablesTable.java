@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.cen.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -104,32 +105,50 @@ public final class GetTransitRouterRouteTablesTable {
 
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetTransitRouterRouteTablesTable", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetTransitRouterRouteTablesTable", "status");
+            }
+            this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder transitRouterRouteTableDescription(String transitRouterRouteTableDescription) {
-            this.transitRouterRouteTableDescription = Objects.requireNonNull(transitRouterRouteTableDescription);
+            if (transitRouterRouteTableDescription == null) {
+              throw new MissingRequiredPropertyException("GetTransitRouterRouteTablesTable", "transitRouterRouteTableDescription");
+            }
+            this.transitRouterRouteTableDescription = transitRouterRouteTableDescription;
             return this;
         }
         @CustomType.Setter
         public Builder transitRouterRouteTableId(String transitRouterRouteTableId) {
-            this.transitRouterRouteTableId = Objects.requireNonNull(transitRouterRouteTableId);
+            if (transitRouterRouteTableId == null) {
+              throw new MissingRequiredPropertyException("GetTransitRouterRouteTablesTable", "transitRouterRouteTableId");
+            }
+            this.transitRouterRouteTableId = transitRouterRouteTableId;
             return this;
         }
         @CustomType.Setter
         public Builder transitRouterRouteTableName(String transitRouterRouteTableName) {
-            this.transitRouterRouteTableName = Objects.requireNonNull(transitRouterRouteTableName);
+            if (transitRouterRouteTableName == null) {
+              throw new MissingRequiredPropertyException("GetTransitRouterRouteTablesTable", "transitRouterRouteTableName");
+            }
+            this.transitRouterRouteTableName = transitRouterRouteTableName;
             return this;
         }
         @CustomType.Setter
         public Builder transitRouterRouteTableType(String transitRouterRouteTableType) {
-            this.transitRouterRouteTableType = Objects.requireNonNull(transitRouterRouteTableType);
+            if (transitRouterRouteTableType == null) {
+              throw new MissingRequiredPropertyException("GetTransitRouterRouteTablesTable", "transitRouterRouteTableType");
+            }
+            this.transitRouterRouteTableType = transitRouterRouteTableType;
             return this;
         }
         public GetTransitRouterRouteTablesTable build() {

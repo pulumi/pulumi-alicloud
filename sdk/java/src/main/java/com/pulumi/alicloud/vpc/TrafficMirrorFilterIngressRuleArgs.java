@@ -5,6 +5,7 @@ package com.pulumi.alicloud.vpc;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -443,11 +444,21 @@ public final class TrafficMirrorFilterIngressRuleArgs extends com.pulumi.resourc
         }
 
         public TrafficMirrorFilterIngressRuleArgs build() {
-            $.destinationCidrBlock = Objects.requireNonNull($.destinationCidrBlock, "expected parameter 'destinationCidrBlock' to be non-null");
-            $.priority = Objects.requireNonNull($.priority, "expected parameter 'priority' to be non-null");
-            $.protocol = Objects.requireNonNull($.protocol, "expected parameter 'protocol' to be non-null");
-            $.sourceCidrBlock = Objects.requireNonNull($.sourceCidrBlock, "expected parameter 'sourceCidrBlock' to be non-null");
-            $.trafficMirrorFilterId = Objects.requireNonNull($.trafficMirrorFilterId, "expected parameter 'trafficMirrorFilterId' to be non-null");
+            if ($.destinationCidrBlock == null) {
+                throw new MissingRequiredPropertyException("TrafficMirrorFilterIngressRuleArgs", "destinationCidrBlock");
+            }
+            if ($.priority == null) {
+                throw new MissingRequiredPropertyException("TrafficMirrorFilterIngressRuleArgs", "priority");
+            }
+            if ($.protocol == null) {
+                throw new MissingRequiredPropertyException("TrafficMirrorFilterIngressRuleArgs", "protocol");
+            }
+            if ($.sourceCidrBlock == null) {
+                throw new MissingRequiredPropertyException("TrafficMirrorFilterIngressRuleArgs", "sourceCidrBlock");
+            }
+            if ($.trafficMirrorFilterId == null) {
+                throw new MissingRequiredPropertyException("TrafficMirrorFilterIngressRuleArgs", "trafficMirrorFilterId");
+            }
             return $;
         }
     }

@@ -5,6 +5,7 @@ package com.pulumi.alicloud.threatdetection.outputs;
 
 import com.pulumi.alicloud.threatdetection.outputs.GetHoneypotProbesProbeHoneypotBindListBindPortList;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -50,7 +51,10 @@ public final class GetHoneypotProbesProbeHoneypotBindList {
 
         @CustomType.Setter
         public Builder bindPortLists(List<GetHoneypotProbesProbeHoneypotBindListBindPortList> bindPortLists) {
-            this.bindPortLists = Objects.requireNonNull(bindPortLists);
+            if (bindPortLists == null) {
+              throw new MissingRequiredPropertyException("GetHoneypotProbesProbeHoneypotBindList", "bindPortLists");
+            }
+            this.bindPortLists = bindPortLists;
             return this;
         }
         public Builder bindPortLists(GetHoneypotProbesProbeHoneypotBindListBindPortList... bindPortLists) {
@@ -58,7 +62,10 @@ public final class GetHoneypotProbesProbeHoneypotBindList {
         }
         @CustomType.Setter
         public Builder honeypotId(String honeypotId) {
-            this.honeypotId = Objects.requireNonNull(honeypotId);
+            if (honeypotId == null) {
+              throw new MissingRequiredPropertyException("GetHoneypotProbesProbeHoneypotBindList", "honeypotId");
+            }
+            this.honeypotId = honeypotId;
             return this;
         }
         public GetHoneypotProbesProbeHoneypotBindList build() {

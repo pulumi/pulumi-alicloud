@@ -208,7 +208,7 @@ export class ShardingInstance extends pulumi.CustomResource {
     /**
      * The virtual switch ID to launch DB instances in one VPC.
      */
-    public readonly vswitchId!: pulumi.Output<string | undefined>;
+    public readonly vswitchId!: pulumi.Output<string>;
     /**
      * The Zone to launch the DB instance. MongoDB sharding instance does not support multiple-zone.
      * If it is a multi-zone and `vswitchId` is specified, the vswitch must in one of them.

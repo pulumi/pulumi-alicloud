@@ -5,6 +5,7 @@ package com.pulumi.alicloud.vpc;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -397,12 +398,24 @@ public final class ForwardEntryArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public ForwardEntryArgs build() {
-            $.externalIp = Objects.requireNonNull($.externalIp, "expected parameter 'externalIp' to be non-null");
-            $.externalPort = Objects.requireNonNull($.externalPort, "expected parameter 'externalPort' to be non-null");
-            $.forwardTableId = Objects.requireNonNull($.forwardTableId, "expected parameter 'forwardTableId' to be non-null");
-            $.internalIp = Objects.requireNonNull($.internalIp, "expected parameter 'internalIp' to be non-null");
-            $.internalPort = Objects.requireNonNull($.internalPort, "expected parameter 'internalPort' to be non-null");
-            $.ipProtocol = Objects.requireNonNull($.ipProtocol, "expected parameter 'ipProtocol' to be non-null");
+            if ($.externalIp == null) {
+                throw new MissingRequiredPropertyException("ForwardEntryArgs", "externalIp");
+            }
+            if ($.externalPort == null) {
+                throw new MissingRequiredPropertyException("ForwardEntryArgs", "externalPort");
+            }
+            if ($.forwardTableId == null) {
+                throw new MissingRequiredPropertyException("ForwardEntryArgs", "forwardTableId");
+            }
+            if ($.internalIp == null) {
+                throw new MissingRequiredPropertyException("ForwardEntryArgs", "internalIp");
+            }
+            if ($.internalPort == null) {
+                throw new MissingRequiredPropertyException("ForwardEntryArgs", "internalPort");
+            }
+            if ($.ipProtocol == null) {
+                throw new MissingRequiredPropertyException("ForwardEntryArgs", "ipProtocol");
+            }
             return $;
         }
     }

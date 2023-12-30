@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.ots.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -127,7 +128,10 @@ public final class GetSecondaryIndexesIndex {
 
         @CustomType.Setter
         public Builder definedColumns(List<String> definedColumns) {
-            this.definedColumns = Objects.requireNonNull(definedColumns);
+            if (definedColumns == null) {
+              throw new MissingRequiredPropertyException("GetSecondaryIndexesIndex", "definedColumns");
+            }
+            this.definedColumns = definedColumns;
             return this;
         }
         public Builder definedColumns(String... definedColumns) {
@@ -135,27 +139,42 @@ public final class GetSecondaryIndexesIndex {
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetSecondaryIndexesIndex", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder indexName(String indexName) {
-            this.indexName = Objects.requireNonNull(indexName);
+            if (indexName == null) {
+              throw new MissingRequiredPropertyException("GetSecondaryIndexesIndex", "indexName");
+            }
+            this.indexName = indexName;
             return this;
         }
         @CustomType.Setter
         public Builder indexType(String indexType) {
-            this.indexType = Objects.requireNonNull(indexType);
+            if (indexType == null) {
+              throw new MissingRequiredPropertyException("GetSecondaryIndexesIndex", "indexType");
+            }
+            this.indexType = indexType;
             return this;
         }
         @CustomType.Setter
         public Builder instanceName(String instanceName) {
-            this.instanceName = Objects.requireNonNull(instanceName);
+            if (instanceName == null) {
+              throw new MissingRequiredPropertyException("GetSecondaryIndexesIndex", "instanceName");
+            }
+            this.instanceName = instanceName;
             return this;
         }
         @CustomType.Setter
         public Builder primaryKeys(List<String> primaryKeys) {
-            this.primaryKeys = Objects.requireNonNull(primaryKeys);
+            if (primaryKeys == null) {
+              throw new MissingRequiredPropertyException("GetSecondaryIndexesIndex", "primaryKeys");
+            }
+            this.primaryKeys = primaryKeys;
             return this;
         }
         public Builder primaryKeys(String... primaryKeys) {
@@ -163,7 +182,10 @@ public final class GetSecondaryIndexesIndex {
         }
         @CustomType.Setter
         public Builder tableName(String tableName) {
-            this.tableName = Objects.requireNonNull(tableName);
+            if (tableName == null) {
+              throw new MissingRequiredPropertyException("GetSecondaryIndexesIndex", "tableName");
+            }
+            this.tableName = tableName;
             return this;
         }
         public GetSecondaryIndexesIndex build() {

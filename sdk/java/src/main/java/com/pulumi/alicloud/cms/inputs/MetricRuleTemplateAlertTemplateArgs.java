@@ -6,6 +6,7 @@ package com.pulumi.alicloud.cms.inputs;
 import com.pulumi.alicloud.cms.inputs.MetricRuleTemplateAlertTemplateEscalationsArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -278,10 +279,18 @@ public final class MetricRuleTemplateAlertTemplateArgs extends com.pulumi.resour
         }
 
         public MetricRuleTemplateAlertTemplateArgs build() {
-            $.category = Objects.requireNonNull($.category, "expected parameter 'category' to be non-null");
-            $.metricName = Objects.requireNonNull($.metricName, "expected parameter 'metricName' to be non-null");
-            $.namespace = Objects.requireNonNull($.namespace, "expected parameter 'namespace' to be non-null");
-            $.ruleName = Objects.requireNonNull($.ruleName, "expected parameter 'ruleName' to be non-null");
+            if ($.category == null) {
+                throw new MissingRequiredPropertyException("MetricRuleTemplateAlertTemplateArgs", "category");
+            }
+            if ($.metricName == null) {
+                throw new MissingRequiredPropertyException("MetricRuleTemplateAlertTemplateArgs", "metricName");
+            }
+            if ($.namespace == null) {
+                throw new MissingRequiredPropertyException("MetricRuleTemplateAlertTemplateArgs", "namespace");
+            }
+            if ($.ruleName == null) {
+                throw new MissingRequiredPropertyException("MetricRuleTemplateAlertTemplateArgs", "ruleName");
+            }
             return $;
         }
     }

@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.servicecatalog.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -40,12 +41,18 @@ public final class GetProvisionedProductsProductParameter {
 
         @CustomType.Setter
         public Builder parameterKey(String parameterKey) {
-            this.parameterKey = Objects.requireNonNull(parameterKey);
+            if (parameterKey == null) {
+              throw new MissingRequiredPropertyException("GetProvisionedProductsProductParameter", "parameterKey");
+            }
+            this.parameterKey = parameterKey;
             return this;
         }
         @CustomType.Setter
         public Builder parameterValue(String parameterValue) {
-            this.parameterValue = Objects.requireNonNull(parameterValue);
+            if (parameterValue == null) {
+              throw new MissingRequiredPropertyException("GetProvisionedProductsProductParameter", "parameterValue");
+            }
+            this.parameterValue = parameterValue;
             return this;
         }
         public GetProvisionedProductsProductParameter build() {

@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.threatdetection.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -73,16 +74,21 @@ public final class HoneypotPresetMeta {
 
         @CustomType.Setter
         public Builder burp(String burp) {
-            this.burp = Objects.requireNonNull(burp);
+            if (burp == null) {
+              throw new MissingRequiredPropertyException("HoneypotPresetMeta", "burp");
+            }
+            this.burp = burp;
             return this;
         }
         @CustomType.Setter
         public Builder portraitOption(@Nullable Boolean portraitOption) {
+
             this.portraitOption = portraitOption;
             return this;
         }
         @CustomType.Setter
         public Builder trojanGit(@Nullable String trojanGit) {
+
             this.trojanGit = trojanGit;
             return this;
         }

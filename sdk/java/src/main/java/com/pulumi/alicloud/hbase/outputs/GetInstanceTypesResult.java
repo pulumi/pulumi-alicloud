@@ -7,6 +7,7 @@ import com.pulumi.alicloud.hbase.outputs.GetInstanceTypesCoreInstanceType;
 import com.pulumi.alicloud.hbase.outputs.GetInstanceTypesMasterInstanceType;
 import com.pulumi.alicloud.hbase.outputs.GetInstanceTypesType;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -176,12 +177,16 @@ public final class GetInstanceTypesResult {
 
         @CustomType.Setter
         public Builder chargeType(@Nullable String chargeType) {
+
             this.chargeType = chargeType;
             return this;
         }
         @CustomType.Setter
         public Builder coreInstanceTypes(List<GetInstanceTypesCoreInstanceType> coreInstanceTypes) {
-            this.coreInstanceTypes = Objects.requireNonNull(coreInstanceTypes);
+            if (coreInstanceTypes == null) {
+              throw new MissingRequiredPropertyException("GetInstanceTypesResult", "coreInstanceTypes");
+            }
+            this.coreInstanceTypes = coreInstanceTypes;
             return this;
         }
         public Builder coreInstanceTypes(GetInstanceTypesCoreInstanceType... coreInstanceTypes) {
@@ -189,22 +194,30 @@ public final class GetInstanceTypesResult {
         }
         @CustomType.Setter
         public Builder diskType(@Nullable String diskType) {
+
             this.diskType = diskType;
             return this;
         }
         @CustomType.Setter
         public Builder engine(@Nullable String engine) {
+
             this.engine = engine;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetInstanceTypesResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder ids(List<String> ids) {
-            this.ids = Objects.requireNonNull(ids);
+            if (ids == null) {
+              throw new MissingRequiredPropertyException("GetInstanceTypesResult", "ids");
+            }
+            this.ids = ids;
             return this;
         }
         public Builder ids(String... ids) {
@@ -212,12 +225,16 @@ public final class GetInstanceTypesResult {
         }
         @CustomType.Setter
         public Builder instanceType(@Nullable String instanceType) {
+
             this.instanceType = instanceType;
             return this;
         }
         @CustomType.Setter
         public Builder masterInstanceTypes(List<GetInstanceTypesMasterInstanceType> masterInstanceTypes) {
-            this.masterInstanceTypes = Objects.requireNonNull(masterInstanceTypes);
+            if (masterInstanceTypes == null) {
+              throw new MissingRequiredPropertyException("GetInstanceTypesResult", "masterInstanceTypes");
+            }
+            this.masterInstanceTypes = masterInstanceTypes;
             return this;
         }
         public Builder masterInstanceTypes(GetInstanceTypesMasterInstanceType... masterInstanceTypes) {
@@ -225,17 +242,22 @@ public final class GetInstanceTypesResult {
         }
         @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
+
             this.outputFile = outputFile;
             return this;
         }
         @CustomType.Setter
         public Builder regionId(@Nullable String regionId) {
+
             this.regionId = regionId;
             return this;
         }
         @CustomType.Setter
         public Builder types(List<GetInstanceTypesType> types) {
-            this.types = Objects.requireNonNull(types);
+            if (types == null) {
+              throw new MissingRequiredPropertyException("GetInstanceTypesResult", "types");
+            }
+            this.types = types;
             return this;
         }
         public Builder types(GetInstanceTypesType... types) {
@@ -243,11 +265,13 @@ public final class GetInstanceTypesResult {
         }
         @CustomType.Setter
         public Builder version(@Nullable String version) {
+
             this.version = version;
             return this;
         }
         @CustomType.Setter
         public Builder zoneId(@Nullable String zoneId) {
+
             this.zoneId = zoneId;
             return this;
         }

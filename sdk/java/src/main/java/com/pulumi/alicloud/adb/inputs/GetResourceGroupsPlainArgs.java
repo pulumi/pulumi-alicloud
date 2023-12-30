@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.adb.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -157,7 +158,9 @@ public final class GetResourceGroupsPlainArgs extends com.pulumi.resources.Invok
         }
 
         public GetResourceGroupsPlainArgs build() {
-            $.dbClusterId = Objects.requireNonNull($.dbClusterId, "expected parameter 'dbClusterId' to be non-null");
+            if ($.dbClusterId == null) {
+                throw new MissingRequiredPropertyException("GetResourceGroupsPlainArgs", "dbClusterId");
+            }
             return $;
         }
     }

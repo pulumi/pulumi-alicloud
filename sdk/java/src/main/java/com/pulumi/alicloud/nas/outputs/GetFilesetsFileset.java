@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.nas.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -140,42 +141,66 @@ public final class GetFilesetsFileset {
 
         @CustomType.Setter
         public Builder createTime(String createTime) {
-            this.createTime = Objects.requireNonNull(createTime);
+            if (createTime == null) {
+              throw new MissingRequiredPropertyException("GetFilesetsFileset", "createTime");
+            }
+            this.createTime = createTime;
             return this;
         }
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetFilesetsFileset", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder fileSystemId(String fileSystemId) {
-            this.fileSystemId = Objects.requireNonNull(fileSystemId);
+            if (fileSystemId == null) {
+              throw new MissingRequiredPropertyException("GetFilesetsFileset", "fileSystemId");
+            }
+            this.fileSystemId = fileSystemId;
             return this;
         }
         @CustomType.Setter
         public Builder fileSystemPath(String fileSystemPath) {
-            this.fileSystemPath = Objects.requireNonNull(fileSystemPath);
+            if (fileSystemPath == null) {
+              throw new MissingRequiredPropertyException("GetFilesetsFileset", "fileSystemPath");
+            }
+            this.fileSystemPath = fileSystemPath;
             return this;
         }
         @CustomType.Setter
         public Builder filesetId(String filesetId) {
-            this.filesetId = Objects.requireNonNull(filesetId);
+            if (filesetId == null) {
+              throw new MissingRequiredPropertyException("GetFilesetsFileset", "filesetId");
+            }
+            this.filesetId = filesetId;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetFilesetsFileset", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetFilesetsFileset", "status");
+            }
+            this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder updateTime(String updateTime) {
-            this.updateTime = Objects.requireNonNull(updateTime);
+            if (updateTime == null) {
+              throw new MissingRequiredPropertyException("GetFilesetsFileset", "updateTime");
+            }
+            this.updateTime = updateTime;
             return this;
         }
         public GetFilesetsFileset build() {

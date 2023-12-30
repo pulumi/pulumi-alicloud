@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.cr.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -86,22 +87,32 @@ public final class GetChainsChainChainConfigNodeNodeConfigDenyPolicy {
 
         @CustomType.Setter
         public Builder action(@Nullable String action) {
+
             this.action = action;
             return this;
         }
         @CustomType.Setter
         public Builder issueCount(String issueCount) {
-            this.issueCount = Objects.requireNonNull(issueCount);
+            if (issueCount == null) {
+              throw new MissingRequiredPropertyException("GetChainsChainChainConfigNodeNodeConfigDenyPolicy", "issueCount");
+            }
+            this.issueCount = issueCount;
             return this;
         }
         @CustomType.Setter
         public Builder issueLevel(String issueLevel) {
-            this.issueLevel = Objects.requireNonNull(issueLevel);
+            if (issueLevel == null) {
+              throw new MissingRequiredPropertyException("GetChainsChainChainConfigNodeNodeConfigDenyPolicy", "issueLevel");
+            }
+            this.issueLevel = issueLevel;
             return this;
         }
         @CustomType.Setter
         public Builder logic(String logic) {
-            this.logic = Objects.requireNonNull(logic);
+            if (logic == null) {
+              throw new MissingRequiredPropertyException("GetChainsChainChainConfigNodeNodeConfigDenyPolicy", "logic");
+            }
+            this.logic = logic;
             return this;
         }
         public GetChainsChainChainConfigNodeNodeConfigDenyPolicy build() {

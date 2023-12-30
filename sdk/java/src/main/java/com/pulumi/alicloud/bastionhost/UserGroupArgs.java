@@ -5,6 +5,7 @@ package com.pulumi.alicloud.bastionhost;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -150,8 +151,12 @@ public final class UserGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public UserGroupArgs build() {
-            $.instanceId = Objects.requireNonNull($.instanceId, "expected parameter 'instanceId' to be non-null");
-            $.userGroupName = Objects.requireNonNull($.userGroupName, "expected parameter 'userGroupName' to be non-null");
+            if ($.instanceId == null) {
+                throw new MissingRequiredPropertyException("UserGroupArgs", "instanceId");
+            }
+            if ($.userGroupName == null) {
+                throw new MissingRequiredPropertyException("UserGroupArgs", "userGroupName");
+            }
             return $;
         }
     }

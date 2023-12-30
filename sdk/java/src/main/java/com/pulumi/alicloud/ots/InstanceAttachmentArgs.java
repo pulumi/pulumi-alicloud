@@ -5,6 +5,7 @@ package com.pulumi.alicloud.ots;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -148,9 +149,15 @@ public final class InstanceAttachmentArgs extends com.pulumi.resources.ResourceA
         }
 
         public InstanceAttachmentArgs build() {
-            $.instanceName = Objects.requireNonNull($.instanceName, "expected parameter 'instanceName' to be non-null");
-            $.vpcName = Objects.requireNonNull($.vpcName, "expected parameter 'vpcName' to be non-null");
-            $.vswitchId = Objects.requireNonNull($.vswitchId, "expected parameter 'vswitchId' to be non-null");
+            if ($.instanceName == null) {
+                throw new MissingRequiredPropertyException("InstanceAttachmentArgs", "instanceName");
+            }
+            if ($.vpcName == null) {
+                throw new MissingRequiredPropertyException("InstanceAttachmentArgs", "vpcName");
+            }
+            if ($.vswitchId == null) {
+                throw new MissingRequiredPropertyException("InstanceAttachmentArgs", "vswitchId");
+            }
             return $;
         }
     }

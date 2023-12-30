@@ -5,6 +5,7 @@ package com.pulumi.alicloud.dts;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -1187,15 +1188,33 @@ public final class MigrationJobArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public MigrationJobArgs build() {
-            $.dataInitialization = Objects.requireNonNull($.dataInitialization, "expected parameter 'dataInitialization' to be non-null");
-            $.dataSynchronization = Objects.requireNonNull($.dataSynchronization, "expected parameter 'dataSynchronization' to be non-null");
-            $.dbList = Objects.requireNonNull($.dbList, "expected parameter 'dbList' to be non-null");
-            $.destinationEndpointEngineName = Objects.requireNonNull($.destinationEndpointEngineName, "expected parameter 'destinationEndpointEngineName' to be non-null");
-            $.destinationEndpointInstanceType = Objects.requireNonNull($.destinationEndpointInstanceType, "expected parameter 'destinationEndpointInstanceType' to be non-null");
-            $.dtsInstanceId = Objects.requireNonNull($.dtsInstanceId, "expected parameter 'dtsInstanceId' to be non-null");
-            $.sourceEndpointEngineName = Objects.requireNonNull($.sourceEndpointEngineName, "expected parameter 'sourceEndpointEngineName' to be non-null");
-            $.sourceEndpointInstanceType = Objects.requireNonNull($.sourceEndpointInstanceType, "expected parameter 'sourceEndpointInstanceType' to be non-null");
-            $.structureInitialization = Objects.requireNonNull($.structureInitialization, "expected parameter 'structureInitialization' to be non-null");
+            if ($.dataInitialization == null) {
+                throw new MissingRequiredPropertyException("MigrationJobArgs", "dataInitialization");
+            }
+            if ($.dataSynchronization == null) {
+                throw new MissingRequiredPropertyException("MigrationJobArgs", "dataSynchronization");
+            }
+            if ($.dbList == null) {
+                throw new MissingRequiredPropertyException("MigrationJobArgs", "dbList");
+            }
+            if ($.destinationEndpointEngineName == null) {
+                throw new MissingRequiredPropertyException("MigrationJobArgs", "destinationEndpointEngineName");
+            }
+            if ($.destinationEndpointInstanceType == null) {
+                throw new MissingRequiredPropertyException("MigrationJobArgs", "destinationEndpointInstanceType");
+            }
+            if ($.dtsInstanceId == null) {
+                throw new MissingRequiredPropertyException("MigrationJobArgs", "dtsInstanceId");
+            }
+            if ($.sourceEndpointEngineName == null) {
+                throw new MissingRequiredPropertyException("MigrationJobArgs", "sourceEndpointEngineName");
+            }
+            if ($.sourceEndpointInstanceType == null) {
+                throw new MissingRequiredPropertyException("MigrationJobArgs", "sourceEndpointInstanceType");
+            }
+            if ($.structureInitialization == null) {
+                throw new MissingRequiredPropertyException("MigrationJobArgs", "structureInitialization");
+            }
             return $;
         }
     }

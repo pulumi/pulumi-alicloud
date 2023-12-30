@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.dcdn.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -56,12 +57,18 @@ public final class GetWafDomainsDomainDefenseScene {
 
         @CustomType.Setter
         public Builder defenseScene(String defenseScene) {
-            this.defenseScene = Objects.requireNonNull(defenseScene);
+            if (defenseScene == null) {
+              throw new MissingRequiredPropertyException("GetWafDomainsDomainDefenseScene", "defenseScene");
+            }
+            this.defenseScene = defenseScene;
             return this;
         }
         @CustomType.Setter
         public Builder policyId(String policyId) {
-            this.policyId = Objects.requireNonNull(policyId);
+            if (policyId == null) {
+              throw new MissingRequiredPropertyException("GetWafDomainsDomainDefenseScene", "policyId");
+            }
+            this.policyId = policyId;
             return this;
         }
         public GetWafDomainsDomainDefenseScene build() {

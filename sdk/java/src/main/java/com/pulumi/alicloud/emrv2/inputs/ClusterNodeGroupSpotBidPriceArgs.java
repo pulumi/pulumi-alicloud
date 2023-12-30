@@ -5,6 +5,7 @@ package com.pulumi.alicloud.emrv2.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -112,8 +113,12 @@ public final class ClusterNodeGroupSpotBidPriceArgs extends com.pulumi.resources
         }
 
         public ClusterNodeGroupSpotBidPriceArgs build() {
-            $.bidPrice = Objects.requireNonNull($.bidPrice, "expected parameter 'bidPrice' to be non-null");
-            $.instanceType = Objects.requireNonNull($.instanceType, "expected parameter 'instanceType' to be non-null");
+            if ($.bidPrice == null) {
+                throw new MissingRequiredPropertyException("ClusterNodeGroupSpotBidPriceArgs", "bidPrice");
+            }
+            if ($.instanceType == null) {
+                throw new MissingRequiredPropertyException("ClusterNodeGroupSpotBidPriceArgs", "instanceType");
+            }
             return $;
         }
     }

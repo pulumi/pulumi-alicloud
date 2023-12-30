@@ -5,6 +5,7 @@ package com.pulumi.alicloud.ga;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -229,8 +230,12 @@ public final class IpSetArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public IpSetArgs build() {
-            $.accelerateRegionId = Objects.requireNonNull($.accelerateRegionId, "expected parameter 'accelerateRegionId' to be non-null");
-            $.acceleratorId = Objects.requireNonNull($.acceleratorId, "expected parameter 'acceleratorId' to be non-null");
+            if ($.accelerateRegionId == null) {
+                throw new MissingRequiredPropertyException("IpSetArgs", "accelerateRegionId");
+            }
+            if ($.acceleratorId == null) {
+                throw new MissingRequiredPropertyException("IpSetArgs", "acceleratorId");
+            }
             return $;
         }
     }

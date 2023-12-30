@@ -72,16 +72,19 @@ public final class HybridMonitorSlsTaskSlsProcessConfigFilterFilter {
 
         @CustomType.Setter
         public Builder operator(@Nullable String operator) {
+
             this.operator = operator;
             return this;
         }
         @CustomType.Setter
         public Builder slsKeyName(@Nullable String slsKeyName) {
+
             this.slsKeyName = slsKeyName;
             return this;
         }
         @CustomType.Setter
         public Builder value(@Nullable String value) {
+
             this.value = value;
             return this;
         }

@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.polardb.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -42,7 +43,10 @@ public final class GetNodeClassesClassSupportedEngineAvailableResource {
 
         @CustomType.Setter
         public Builder dbNodeClass(String dbNodeClass) {
-            this.dbNodeClass = Objects.requireNonNull(dbNodeClass);
+            if (dbNodeClass == null) {
+              throw new MissingRequiredPropertyException("GetNodeClassesClassSupportedEngineAvailableResource", "dbNodeClass");
+            }
+            this.dbNodeClass = dbNodeClass;
             return this;
         }
         public GetNodeClassesClassSupportedEngineAvailableResource build() {

@@ -101,26 +101,31 @@ public final class OtsBackupPlanRule {
 
         @CustomType.Setter
         public Builder backupType(@Nullable String backupType) {
+
             this.backupType = backupType;
             return this;
         }
         @CustomType.Setter
         public Builder disabled(@Nullable Boolean disabled) {
+
             this.disabled = disabled;
             return this;
         }
         @CustomType.Setter
         public Builder retention(@Nullable String retention) {
+
             this.retention = retention;
             return this;
         }
         @CustomType.Setter
         public Builder ruleName(@Nullable String ruleName) {
+
             this.ruleName = ruleName;
             return this;
         }
         @CustomType.Setter
         public Builder schedule(@Nullable String schedule) {
+
             this.schedule = schedule;
             return this;
         }

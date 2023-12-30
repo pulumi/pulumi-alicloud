@@ -5,6 +5,7 @@ package com.pulumi.alicloud.ecs.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -224,7 +225,9 @@ public final class EcsInstanceSetNetworkInterfaceArgs extends com.pulumi.resourc
         }
 
         public EcsInstanceSetNetworkInterfaceArgs build() {
-            $.securityGroupId = Objects.requireNonNull($.securityGroupId, "expected parameter 'securityGroupId' to be non-null");
+            if ($.securityGroupId == null) {
+                throw new MissingRequiredPropertyException("EcsInstanceSetNetworkInterfaceArgs", "securityGroupId");
+            }
             return $;
         }
     }

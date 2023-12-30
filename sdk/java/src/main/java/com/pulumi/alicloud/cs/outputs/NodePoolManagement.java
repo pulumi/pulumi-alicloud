@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.cs.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.util.Objects;
@@ -101,26 +102,33 @@ public final class NodePoolManagement {
 
         @CustomType.Setter
         public Builder autoRepair(@Nullable Boolean autoRepair) {
+
             this.autoRepair = autoRepair;
             return this;
         }
         @CustomType.Setter
         public Builder autoUpgrade(@Nullable Boolean autoUpgrade) {
+
             this.autoUpgrade = autoUpgrade;
             return this;
         }
         @CustomType.Setter
         public Builder maxUnavailable(Integer maxUnavailable) {
-            this.maxUnavailable = Objects.requireNonNull(maxUnavailable);
+            if (maxUnavailable == null) {
+              throw new MissingRequiredPropertyException("NodePoolManagement", "maxUnavailable");
+            }
+            this.maxUnavailable = maxUnavailable;
             return this;
         }
         @CustomType.Setter
         public Builder surge(@Nullable Integer surge) {
+
             this.surge = surge;
             return this;
         }
         @CustomType.Setter
         public Builder surgePercentage(@Nullable Integer surgePercentage) {
+
             this.surgePercentage = surgePercentage;
             return this;
         }

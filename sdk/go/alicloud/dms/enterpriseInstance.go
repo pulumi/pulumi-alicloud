@@ -228,7 +228,7 @@ type EnterpriseInstance struct {
 	// The tenant ID.
 	Tid pulumi.IntPtrOutput `pulumi:"tid"`
 	// Whether to enable cross-instance query. Valid values: `0` not open, `1` open.
-	UseDsql pulumi.IntPtrOutput `pulumi:"useDsql"`
+	UseDsql pulumi.IntOutput `pulumi:"useDsql"`
 	// VPC ID. This value must be passed when the value of InstanceSource is VPC dedicated line IDC.
 	VpcId pulumi.StringPtrOutput `pulumi:"vpcId"`
 }
@@ -781,8 +781,8 @@ func (o EnterpriseInstanceOutput) Tid() pulumi.IntPtrOutput {
 }
 
 // Whether to enable cross-instance query. Valid values: `0` not open, `1` open.
-func (o EnterpriseInstanceOutput) UseDsql() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *EnterpriseInstance) pulumi.IntPtrOutput { return v.UseDsql }).(pulumi.IntPtrOutput)
+func (o EnterpriseInstanceOutput) UseDsql() pulumi.IntOutput {
+	return o.ApplyT(func(v *EnterpriseInstance) pulumi.IntOutput { return v.UseDsql }).(pulumi.IntOutput)
 }
 
 // VPC ID. This value must be passed when the value of InstanceSource is VPC dedicated line IDC.

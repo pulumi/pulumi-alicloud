@@ -6,6 +6,7 @@ package com.pulumi.alicloud.ros;
 import com.pulumi.alicloud.ros.inputs.StackGroupParameterArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -495,7 +496,9 @@ public final class StackGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public StackGroupArgs build() {
-            $.stackGroupName = Objects.requireNonNull($.stackGroupName, "expected parameter 'stackGroupName' to be non-null");
+            if ($.stackGroupName == null) {
+                throw new MissingRequiredPropertyException("StackGroupArgs", "stackGroupName");
+            }
             return $;
         }
     }

@@ -5,6 +5,7 @@ package com.pulumi.alicloud.vpn;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -349,9 +350,15 @@ public final class SslVpnServerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public SslVpnServerArgs build() {
-            $.clientIpPool = Objects.requireNonNull($.clientIpPool, "expected parameter 'clientIpPool' to be non-null");
-            $.localSubnet = Objects.requireNonNull($.localSubnet, "expected parameter 'localSubnet' to be non-null");
-            $.vpnGatewayId = Objects.requireNonNull($.vpnGatewayId, "expected parameter 'vpnGatewayId' to be non-null");
+            if ($.clientIpPool == null) {
+                throw new MissingRequiredPropertyException("SslVpnServerArgs", "clientIpPool");
+            }
+            if ($.localSubnet == null) {
+                throw new MissingRequiredPropertyException("SslVpnServerArgs", "localSubnet");
+            }
+            if ($.vpnGatewayId == null) {
+                throw new MissingRequiredPropertyException("SslVpnServerArgs", "vpnGatewayId");
+            }
             return $;
         }
     }

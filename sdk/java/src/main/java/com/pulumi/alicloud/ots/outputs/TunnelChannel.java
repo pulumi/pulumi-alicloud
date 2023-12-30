@@ -101,26 +101,31 @@ public final class TunnelChannel {
 
         @CustomType.Setter
         public Builder channelId(@Nullable String channelId) {
+
             this.channelId = channelId;
             return this;
         }
         @CustomType.Setter
         public Builder channelRpo(@Nullable Integer channelRpo) {
+
             this.channelRpo = channelRpo;
             return this;
         }
         @CustomType.Setter
         public Builder channelStatus(@Nullable String channelStatus) {
+
             this.channelStatus = channelStatus;
             return this;
         }
         @CustomType.Setter
         public Builder channelType(@Nullable String channelType) {
+
             this.channelType = channelType;
             return this;
         }
         @CustomType.Setter
         public Builder clientId(@Nullable String clientId) {
+
             this.clientId = clientId;
             return this;
         }

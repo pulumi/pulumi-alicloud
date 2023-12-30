@@ -5,6 +5,7 @@ package com.pulumi.alicloud.ecs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.Object;
@@ -320,9 +321,15 @@ public final class SnapshotPolicyArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         public SnapshotPolicyArgs build() {
-            $.repeatWeekdays = Objects.requireNonNull($.repeatWeekdays, "expected parameter 'repeatWeekdays' to be non-null");
-            $.retentionDays = Objects.requireNonNull($.retentionDays, "expected parameter 'retentionDays' to be non-null");
-            $.timePoints = Objects.requireNonNull($.timePoints, "expected parameter 'timePoints' to be non-null");
+            if ($.repeatWeekdays == null) {
+                throw new MissingRequiredPropertyException("SnapshotPolicyArgs", "repeatWeekdays");
+            }
+            if ($.retentionDays == null) {
+                throw new MissingRequiredPropertyException("SnapshotPolicyArgs", "retentionDays");
+            }
+            if ($.timePoints == null) {
+                throw new MissingRequiredPropertyException("SnapshotPolicyArgs", "timePoints");
+            }
             return $;
         }
     }

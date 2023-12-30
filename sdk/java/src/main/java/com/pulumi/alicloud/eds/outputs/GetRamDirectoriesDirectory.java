@@ -6,6 +6,7 @@ package com.pulumi.alicloud.eds.outputs;
 import com.pulumi.alicloud.eds.outputs.GetRamDirectoriesDirectoryAdConnector;
 import com.pulumi.alicloud.eds.outputs.GetRamDirectoriesDirectoryLog;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -410,7 +411,10 @@ public final class GetRamDirectoriesDirectory {
 
         @CustomType.Setter
         public Builder adConnectors(List<GetRamDirectoriesDirectoryAdConnector> adConnectors) {
-            this.adConnectors = Objects.requireNonNull(adConnectors);
+            if (adConnectors == null) {
+              throw new MissingRequiredPropertyException("GetRamDirectoriesDirectory", "adConnectors");
+            }
+            this.adConnectors = adConnectors;
             return this;
         }
         public Builder adConnectors(GetRamDirectoriesDirectoryAdConnector... adConnectors) {
@@ -418,32 +422,50 @@ public final class GetRamDirectoriesDirectory {
         }
         @CustomType.Setter
         public Builder createTime(String createTime) {
-            this.createTime = Objects.requireNonNull(createTime);
+            if (createTime == null) {
+              throw new MissingRequiredPropertyException("GetRamDirectoriesDirectory", "createTime");
+            }
+            this.createTime = createTime;
             return this;
         }
         @CustomType.Setter
         public Builder customSecurityGroupId(String customSecurityGroupId) {
-            this.customSecurityGroupId = Objects.requireNonNull(customSecurityGroupId);
+            if (customSecurityGroupId == null) {
+              throw new MissingRequiredPropertyException("GetRamDirectoriesDirectory", "customSecurityGroupId");
+            }
+            this.customSecurityGroupId = customSecurityGroupId;
             return this;
         }
         @CustomType.Setter
         public Builder desktopAccessType(String desktopAccessType) {
-            this.desktopAccessType = Objects.requireNonNull(desktopAccessType);
+            if (desktopAccessType == null) {
+              throw new MissingRequiredPropertyException("GetRamDirectoriesDirectory", "desktopAccessType");
+            }
+            this.desktopAccessType = desktopAccessType;
             return this;
         }
         @CustomType.Setter
         public Builder desktopVpcEndpoint(String desktopVpcEndpoint) {
-            this.desktopVpcEndpoint = Objects.requireNonNull(desktopVpcEndpoint);
+            if (desktopVpcEndpoint == null) {
+              throw new MissingRequiredPropertyException("GetRamDirectoriesDirectory", "desktopVpcEndpoint");
+            }
+            this.desktopVpcEndpoint = desktopVpcEndpoint;
             return this;
         }
         @CustomType.Setter
         public Builder directoryType(String directoryType) {
-            this.directoryType = Objects.requireNonNull(directoryType);
+            if (directoryType == null) {
+              throw new MissingRequiredPropertyException("GetRamDirectoriesDirectory", "directoryType");
+            }
+            this.directoryType = directoryType;
             return this;
         }
         @CustomType.Setter
         public Builder dnsAddresses(List<String> dnsAddresses) {
-            this.dnsAddresses = Objects.requireNonNull(dnsAddresses);
+            if (dnsAddresses == null) {
+              throw new MissingRequiredPropertyException("GetRamDirectoriesDirectory", "dnsAddresses");
+            }
+            this.dnsAddresses = dnsAddresses;
             return this;
         }
         public Builder dnsAddresses(String... dnsAddresses) {
@@ -451,42 +473,66 @@ public final class GetRamDirectoriesDirectory {
         }
         @CustomType.Setter
         public Builder dnsUserName(String dnsUserName) {
-            this.dnsUserName = Objects.requireNonNull(dnsUserName);
+            if (dnsUserName == null) {
+              throw new MissingRequiredPropertyException("GetRamDirectoriesDirectory", "dnsUserName");
+            }
+            this.dnsUserName = dnsUserName;
             return this;
         }
         @CustomType.Setter
         public Builder domainName(String domainName) {
-            this.domainName = Objects.requireNonNull(domainName);
+            if (domainName == null) {
+              throw new MissingRequiredPropertyException("GetRamDirectoriesDirectory", "domainName");
+            }
+            this.domainName = domainName;
             return this;
         }
         @CustomType.Setter
         public Builder domainPassword(String domainPassword) {
-            this.domainPassword = Objects.requireNonNull(domainPassword);
+            if (domainPassword == null) {
+              throw new MissingRequiredPropertyException("GetRamDirectoriesDirectory", "domainPassword");
+            }
+            this.domainPassword = domainPassword;
             return this;
         }
         @CustomType.Setter
         public Builder domainUserName(String domainUserName) {
-            this.domainUserName = Objects.requireNonNull(domainUserName);
+            if (domainUserName == null) {
+              throw new MissingRequiredPropertyException("GetRamDirectoriesDirectory", "domainUserName");
+            }
+            this.domainUserName = domainUserName;
             return this;
         }
         @CustomType.Setter
         public Builder enableAdminAccess(Boolean enableAdminAccess) {
-            this.enableAdminAccess = Objects.requireNonNull(enableAdminAccess);
+            if (enableAdminAccess == null) {
+              throw new MissingRequiredPropertyException("GetRamDirectoriesDirectory", "enableAdminAccess");
+            }
+            this.enableAdminAccess = enableAdminAccess;
             return this;
         }
         @CustomType.Setter
         public Builder enableCrossDesktopAccess(Boolean enableCrossDesktopAccess) {
-            this.enableCrossDesktopAccess = Objects.requireNonNull(enableCrossDesktopAccess);
+            if (enableCrossDesktopAccess == null) {
+              throw new MissingRequiredPropertyException("GetRamDirectoriesDirectory", "enableCrossDesktopAccess");
+            }
+            this.enableCrossDesktopAccess = enableCrossDesktopAccess;
             return this;
         }
         @CustomType.Setter
         public Builder enableInternetAccess(Boolean enableInternetAccess) {
-            this.enableInternetAccess = Objects.requireNonNull(enableInternetAccess);
+            if (enableInternetAccess == null) {
+              throw new MissingRequiredPropertyException("GetRamDirectoriesDirectory", "enableInternetAccess");
+            }
+            this.enableInternetAccess = enableInternetAccess;
             return this;
         }
         @CustomType.Setter
         public Builder fileSystemIds(List<String> fileSystemIds) {
-            this.fileSystemIds = Objects.requireNonNull(fileSystemIds);
+            if (fileSystemIds == null) {
+              throw new MissingRequiredPropertyException("GetRamDirectoriesDirectory", "fileSystemIds");
+            }
+            this.fileSystemIds = fileSystemIds;
             return this;
         }
         public Builder fileSystemIds(String... fileSystemIds) {
@@ -494,12 +540,18 @@ public final class GetRamDirectoriesDirectory {
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetRamDirectoriesDirectory", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder logs(List<GetRamDirectoriesDirectoryLog> logs) {
-            this.logs = Objects.requireNonNull(logs);
+            if (logs == null) {
+              throw new MissingRequiredPropertyException("GetRamDirectoriesDirectory", "logs");
+            }
+            this.logs = logs;
             return this;
         }
         public Builder logs(GetRamDirectoriesDirectoryLog... logs) {
@@ -507,32 +559,50 @@ public final class GetRamDirectoriesDirectory {
         }
         @CustomType.Setter
         public Builder mfaEnabled(Boolean mfaEnabled) {
-            this.mfaEnabled = Objects.requireNonNull(mfaEnabled);
+            if (mfaEnabled == null) {
+              throw new MissingRequiredPropertyException("GetRamDirectoriesDirectory", "mfaEnabled");
+            }
+            this.mfaEnabled = mfaEnabled;
             return this;
         }
         @CustomType.Setter
         public Builder ramDirectoryId(String ramDirectoryId) {
-            this.ramDirectoryId = Objects.requireNonNull(ramDirectoryId);
+            if (ramDirectoryId == null) {
+              throw new MissingRequiredPropertyException("GetRamDirectoriesDirectory", "ramDirectoryId");
+            }
+            this.ramDirectoryId = ramDirectoryId;
             return this;
         }
         @CustomType.Setter
         public Builder ramDirectoryName(String ramDirectoryName) {
-            this.ramDirectoryName = Objects.requireNonNull(ramDirectoryName);
+            if (ramDirectoryName == null) {
+              throw new MissingRequiredPropertyException("GetRamDirectoriesDirectory", "ramDirectoryName");
+            }
+            this.ramDirectoryName = ramDirectoryName;
             return this;
         }
         @CustomType.Setter
         public Builder ssoEnabled(Boolean ssoEnabled) {
-            this.ssoEnabled = Objects.requireNonNull(ssoEnabled);
+            if (ssoEnabled == null) {
+              throw new MissingRequiredPropertyException("GetRamDirectoriesDirectory", "ssoEnabled");
+            }
+            this.ssoEnabled = ssoEnabled;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetRamDirectoriesDirectory", "status");
+            }
+            this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder subDnsAddresses(List<String> subDnsAddresses) {
-            this.subDnsAddresses = Objects.requireNonNull(subDnsAddresses);
+            if (subDnsAddresses == null) {
+              throw new MissingRequiredPropertyException("GetRamDirectoriesDirectory", "subDnsAddresses");
+            }
+            this.subDnsAddresses = subDnsAddresses;
             return this;
         }
         public Builder subDnsAddresses(String... subDnsAddresses) {
@@ -540,22 +610,34 @@ public final class GetRamDirectoriesDirectory {
         }
         @CustomType.Setter
         public Builder subDomainName(String subDomainName) {
-            this.subDomainName = Objects.requireNonNull(subDomainName);
+            if (subDomainName == null) {
+              throw new MissingRequiredPropertyException("GetRamDirectoriesDirectory", "subDomainName");
+            }
+            this.subDomainName = subDomainName;
             return this;
         }
         @CustomType.Setter
         public Builder trustPassword(String trustPassword) {
-            this.trustPassword = Objects.requireNonNull(trustPassword);
+            if (trustPassword == null) {
+              throw new MissingRequiredPropertyException("GetRamDirectoriesDirectory", "trustPassword");
+            }
+            this.trustPassword = trustPassword;
             return this;
         }
         @CustomType.Setter
         public Builder vpcId(String vpcId) {
-            this.vpcId = Objects.requireNonNull(vpcId);
+            if (vpcId == null) {
+              throw new MissingRequiredPropertyException("GetRamDirectoriesDirectory", "vpcId");
+            }
+            this.vpcId = vpcId;
             return this;
         }
         @CustomType.Setter
         public Builder vswitchIds(List<String> vswitchIds) {
-            this.vswitchIds = Objects.requireNonNull(vswitchIds);
+            if (vswitchIds == null) {
+              throw new MissingRequiredPropertyException("GetRamDirectoriesDirectory", "vswitchIds");
+            }
+            this.vswitchIds = vswitchIds;
             return this;
         }
         public Builder vswitchIds(String... vswitchIds) {

@@ -6,6 +6,7 @@ package com.pulumi.alicloud.slb.outputs;
 import com.pulumi.alicloud.slb.outputs.GetAclsAclEntryList;
 import com.pulumi.alicloud.slb.outputs.GetAclsAclRelatedListener;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Object;
 import java.lang.String;
 import java.util.List;
@@ -124,7 +125,10 @@ public final class GetAclsAcl {
 
         @CustomType.Setter
         public Builder entryLists(List<GetAclsAclEntryList> entryLists) {
-            this.entryLists = Objects.requireNonNull(entryLists);
+            if (entryLists == null) {
+              throw new MissingRequiredPropertyException("GetAclsAcl", "entryLists");
+            }
+            this.entryLists = entryLists;
             return this;
         }
         public Builder entryLists(GetAclsAclEntryList... entryLists) {
@@ -132,22 +136,34 @@ public final class GetAclsAcl {
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetAclsAcl", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder ipVersion(String ipVersion) {
-            this.ipVersion = Objects.requireNonNull(ipVersion);
+            if (ipVersion == null) {
+              throw new MissingRequiredPropertyException("GetAclsAcl", "ipVersion");
+            }
+            this.ipVersion = ipVersion;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetAclsAcl", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder relatedListeners(List<GetAclsAclRelatedListener> relatedListeners) {
-            this.relatedListeners = Objects.requireNonNull(relatedListeners);
+            if (relatedListeners == null) {
+              throw new MissingRequiredPropertyException("GetAclsAcl", "relatedListeners");
+            }
+            this.relatedListeners = relatedListeners;
             return this;
         }
         public Builder relatedListeners(GetAclsAclRelatedListener... relatedListeners) {
@@ -155,11 +171,15 @@ public final class GetAclsAcl {
         }
         @CustomType.Setter
         public Builder resourceGroupId(String resourceGroupId) {
-            this.resourceGroupId = Objects.requireNonNull(resourceGroupId);
+            if (resourceGroupId == null) {
+              throw new MissingRequiredPropertyException("GetAclsAcl", "resourceGroupId");
+            }
+            this.resourceGroupId = resourceGroupId;
             return this;
         }
         @CustomType.Setter
         public Builder tags(@Nullable Map<String,Object> tags) {
+
             this.tags = tags;
             return this;
         }

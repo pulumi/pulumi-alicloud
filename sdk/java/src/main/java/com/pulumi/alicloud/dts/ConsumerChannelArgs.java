@@ -5,6 +5,7 @@ package com.pulumi.alicloud.dts;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -185,10 +186,18 @@ public final class ConsumerChannelArgs extends com.pulumi.resources.ResourceArgs
         }
 
         public ConsumerChannelArgs build() {
-            $.consumerGroupName = Objects.requireNonNull($.consumerGroupName, "expected parameter 'consumerGroupName' to be non-null");
-            $.consumerGroupPassword = Objects.requireNonNull($.consumerGroupPassword, "expected parameter 'consumerGroupPassword' to be non-null");
-            $.consumerGroupUserName = Objects.requireNonNull($.consumerGroupUserName, "expected parameter 'consumerGroupUserName' to be non-null");
-            $.dtsInstanceId = Objects.requireNonNull($.dtsInstanceId, "expected parameter 'dtsInstanceId' to be non-null");
+            if ($.consumerGroupName == null) {
+                throw new MissingRequiredPropertyException("ConsumerChannelArgs", "consumerGroupName");
+            }
+            if ($.consumerGroupPassword == null) {
+                throw new MissingRequiredPropertyException("ConsumerChannelArgs", "consumerGroupPassword");
+            }
+            if ($.consumerGroupUserName == null) {
+                throw new MissingRequiredPropertyException("ConsumerChannelArgs", "consumerGroupUserName");
+            }
+            if ($.dtsInstanceId == null) {
+                throw new MissingRequiredPropertyException("ConsumerChannelArgs", "dtsInstanceId");
+            }
             return $;
         }
     }

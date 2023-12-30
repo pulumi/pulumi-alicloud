@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.ecs.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
@@ -143,41 +144,63 @@ public final class GetEcsSnapshotGroupsGroup {
 
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetEcsSnapshotGroupsGroup", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetEcsSnapshotGroupsGroup", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder instanceId(String instanceId) {
-            this.instanceId = Objects.requireNonNull(instanceId);
+            if (instanceId == null) {
+              throw new MissingRequiredPropertyException("GetEcsSnapshotGroupsGroup", "instanceId");
+            }
+            this.instanceId = instanceId;
             return this;
         }
         @CustomType.Setter
         public Builder resourceGroupId(String resourceGroupId) {
-            this.resourceGroupId = Objects.requireNonNull(resourceGroupId);
+            if (resourceGroupId == null) {
+              throw new MissingRequiredPropertyException("GetEcsSnapshotGroupsGroup", "resourceGroupId");
+            }
+            this.resourceGroupId = resourceGroupId;
             return this;
         }
         @CustomType.Setter
         public Builder snapshotGroupId(String snapshotGroupId) {
-            this.snapshotGroupId = Objects.requireNonNull(snapshotGroupId);
+            if (snapshotGroupId == null) {
+              throw new MissingRequiredPropertyException("GetEcsSnapshotGroupsGroup", "snapshotGroupId");
+            }
+            this.snapshotGroupId = snapshotGroupId;
             return this;
         }
         @CustomType.Setter
         public Builder snapshotGroupName(String snapshotGroupName) {
-            this.snapshotGroupName = Objects.requireNonNull(snapshotGroupName);
+            if (snapshotGroupName == null) {
+              throw new MissingRequiredPropertyException("GetEcsSnapshotGroupsGroup", "snapshotGroupName");
+            }
+            this.snapshotGroupName = snapshotGroupName;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetEcsSnapshotGroupsGroup", "status");
+            }
+            this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder tags(@Nullable Map<String,Object> tags) {
+
             this.tags = tags;
             return this;
         }

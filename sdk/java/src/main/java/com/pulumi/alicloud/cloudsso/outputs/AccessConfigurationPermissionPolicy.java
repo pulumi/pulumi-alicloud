@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.cloudsso.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -72,17 +73,24 @@ public final class AccessConfigurationPermissionPolicy {
 
         @CustomType.Setter
         public Builder permissionPolicyDocument(@Nullable String permissionPolicyDocument) {
+
             this.permissionPolicyDocument = permissionPolicyDocument;
             return this;
         }
         @CustomType.Setter
         public Builder permissionPolicyName(String permissionPolicyName) {
-            this.permissionPolicyName = Objects.requireNonNull(permissionPolicyName);
+            if (permissionPolicyName == null) {
+              throw new MissingRequiredPropertyException("AccessConfigurationPermissionPolicy", "permissionPolicyName");
+            }
+            this.permissionPolicyName = permissionPolicyName;
             return this;
         }
         @CustomType.Setter
         public Builder permissionPolicyType(String permissionPolicyType) {
-            this.permissionPolicyType = Objects.requireNonNull(permissionPolicyType);
+            if (permissionPolicyType == null) {
+              throw new MissingRequiredPropertyException("AccessConfigurationPermissionPolicy", "permissionPolicyType");
+            }
+            this.permissionPolicyType = permissionPolicyType;
             return this;
         }
         public AccessConfigurationPermissionPolicy build() {

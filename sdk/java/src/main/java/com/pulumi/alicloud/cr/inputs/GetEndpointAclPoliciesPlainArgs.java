@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.cr.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -157,8 +158,12 @@ public final class GetEndpointAclPoliciesPlainArgs extends com.pulumi.resources.
         }
 
         public GetEndpointAclPoliciesPlainArgs build() {
-            $.endpointType = Objects.requireNonNull($.endpointType, "expected parameter 'endpointType' to be non-null");
-            $.instanceId = Objects.requireNonNull($.instanceId, "expected parameter 'instanceId' to be non-null");
+            if ($.endpointType == null) {
+                throw new MissingRequiredPropertyException("GetEndpointAclPoliciesPlainArgs", "endpointType");
+            }
+            if ($.instanceId == null) {
+                throw new MissingRequiredPropertyException("GetEndpointAclPoliciesPlainArgs", "instanceId");
+            }
             return $;
         }
     }

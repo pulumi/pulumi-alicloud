@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.resourcemanager.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -63,7 +64,9 @@ public final class GetAccountDeletionCheckTaskPlainArgs extends com.pulumi.resou
         }
 
         public GetAccountDeletionCheckTaskPlainArgs build() {
-            $.accountId = Objects.requireNonNull($.accountId, "expected parameter 'accountId' to be non-null");
+            if ($.accountId == null) {
+                throw new MissingRequiredPropertyException("GetAccountDeletionCheckTaskPlainArgs", "accountId");
+            }
             return $;
         }
     }

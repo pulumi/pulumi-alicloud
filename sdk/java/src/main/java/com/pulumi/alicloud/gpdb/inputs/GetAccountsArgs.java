@@ -5,6 +5,7 @@ package com.pulumi.alicloud.gpdb.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -235,7 +236,9 @@ public final class GetAccountsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         public GetAccountsArgs build() {
-            $.dbInstanceId = Objects.requireNonNull($.dbInstanceId, "expected parameter 'dbInstanceId' to be non-null");
+            if ($.dbInstanceId == null) {
+                throw new MissingRequiredPropertyException("GetAccountsArgs", "dbInstanceId");
+            }
             return $;
         }
     }

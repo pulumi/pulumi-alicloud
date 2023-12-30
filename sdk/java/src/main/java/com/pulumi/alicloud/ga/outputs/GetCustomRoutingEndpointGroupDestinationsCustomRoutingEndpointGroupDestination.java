@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.ga.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -142,37 +143,58 @@ public final class GetCustomRoutingEndpointGroupDestinationsCustomRoutingEndpoin
 
         @CustomType.Setter
         public Builder acceleratorId(String acceleratorId) {
-            this.acceleratorId = Objects.requireNonNull(acceleratorId);
+            if (acceleratorId == null) {
+              throw new MissingRequiredPropertyException("GetCustomRoutingEndpointGroupDestinationsCustomRoutingEndpointGroupDestination", "acceleratorId");
+            }
+            this.acceleratorId = acceleratorId;
             return this;
         }
         @CustomType.Setter
         public Builder customRoutingEndpointGroupDestinationId(String customRoutingEndpointGroupDestinationId) {
-            this.customRoutingEndpointGroupDestinationId = Objects.requireNonNull(customRoutingEndpointGroupDestinationId);
+            if (customRoutingEndpointGroupDestinationId == null) {
+              throw new MissingRequiredPropertyException("GetCustomRoutingEndpointGroupDestinationsCustomRoutingEndpointGroupDestination", "customRoutingEndpointGroupDestinationId");
+            }
+            this.customRoutingEndpointGroupDestinationId = customRoutingEndpointGroupDestinationId;
             return this;
         }
         @CustomType.Setter
         public Builder endpointGroupId(String endpointGroupId) {
-            this.endpointGroupId = Objects.requireNonNull(endpointGroupId);
+            if (endpointGroupId == null) {
+              throw new MissingRequiredPropertyException("GetCustomRoutingEndpointGroupDestinationsCustomRoutingEndpointGroupDestination", "endpointGroupId");
+            }
+            this.endpointGroupId = endpointGroupId;
             return this;
         }
         @CustomType.Setter
         public Builder fromPort(Integer fromPort) {
-            this.fromPort = Objects.requireNonNull(fromPort);
+            if (fromPort == null) {
+              throw new MissingRequiredPropertyException("GetCustomRoutingEndpointGroupDestinationsCustomRoutingEndpointGroupDestination", "fromPort");
+            }
+            this.fromPort = fromPort;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetCustomRoutingEndpointGroupDestinationsCustomRoutingEndpointGroupDestination", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder listenerId(String listenerId) {
-            this.listenerId = Objects.requireNonNull(listenerId);
+            if (listenerId == null) {
+              throw new MissingRequiredPropertyException("GetCustomRoutingEndpointGroupDestinationsCustomRoutingEndpointGroupDestination", "listenerId");
+            }
+            this.listenerId = listenerId;
             return this;
         }
         @CustomType.Setter
         public Builder protocols(List<String> protocols) {
-            this.protocols = Objects.requireNonNull(protocols);
+            if (protocols == null) {
+              throw new MissingRequiredPropertyException("GetCustomRoutingEndpointGroupDestinationsCustomRoutingEndpointGroupDestination", "protocols");
+            }
+            this.protocols = protocols;
             return this;
         }
         public Builder protocols(String... protocols) {
@@ -180,7 +202,10 @@ public final class GetCustomRoutingEndpointGroupDestinationsCustomRoutingEndpoin
         }
         @CustomType.Setter
         public Builder toPort(Integer toPort) {
-            this.toPort = Objects.requireNonNull(toPort);
+            if (toPort == null) {
+              throw new MissingRequiredPropertyException("GetCustomRoutingEndpointGroupDestinationsCustomRoutingEndpointGroupDestination", "toPort");
+            }
+            this.toPort = toPort;
             return this;
         }
         public GetCustomRoutingEndpointGroupDestinationsCustomRoutingEndpointGroupDestination build() {

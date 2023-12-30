@@ -5,6 +5,7 @@ package com.pulumi.alicloud.vpc;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
@@ -300,8 +301,12 @@ public final class GatewayEndpointArgs extends com.pulumi.resources.ResourceArgs
         }
 
         public GatewayEndpointArgs build() {
-            $.serviceName = Objects.requireNonNull($.serviceName, "expected parameter 'serviceName' to be non-null");
-            $.vpcId = Objects.requireNonNull($.vpcId, "expected parameter 'vpcId' to be non-null");
+            if ($.serviceName == null) {
+                throw new MissingRequiredPropertyException("GatewayEndpointArgs", "serviceName");
+            }
+            if ($.vpcId == null) {
+                throw new MissingRequiredPropertyException("GatewayEndpointArgs", "vpcId");
+            }
             return $;
         }
     }

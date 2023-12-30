@@ -1596,7 +1596,7 @@ class EnterpriseInstance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="useDsql")
-    def use_dsql(self) -> pulumi.Output[Optional[int]]:
+    def use_dsql(self) -> pulumi.Output[int]:
         """
         Whether to enable cross-instance query. Valid values: `0` not open, `1` open.
         """

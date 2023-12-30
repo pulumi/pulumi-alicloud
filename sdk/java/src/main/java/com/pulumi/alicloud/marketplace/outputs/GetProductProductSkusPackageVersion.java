@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.marketplace.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -56,12 +57,18 @@ public final class GetProductProductSkusPackageVersion {
 
         @CustomType.Setter
         public Builder packageName(String packageName) {
-            this.packageName = Objects.requireNonNull(packageName);
+            if (packageName == null) {
+              throw new MissingRequiredPropertyException("GetProductProductSkusPackageVersion", "packageName");
+            }
+            this.packageName = packageName;
             return this;
         }
         @CustomType.Setter
         public Builder packageVersion(String packageVersion) {
-            this.packageVersion = Objects.requireNonNull(packageVersion);
+            if (packageVersion == null) {
+              throw new MissingRequiredPropertyException("GetProductProductSkusPackageVersion", "packageVersion");
+            }
+            this.packageVersion = packageVersion;
             return this;
         }
         public GetProductProductSkusPackageVersion build() {

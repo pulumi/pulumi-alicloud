@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.hbase.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -71,17 +72,26 @@ public final class GetInstanceTypesMasterInstanceType {
 
         @CustomType.Setter
         public Builder cpuSize(Integer cpuSize) {
-            this.cpuSize = Objects.requireNonNull(cpuSize);
+            if (cpuSize == null) {
+              throw new MissingRequiredPropertyException("GetInstanceTypesMasterInstanceType", "cpuSize");
+            }
+            this.cpuSize = cpuSize;
             return this;
         }
         @CustomType.Setter
         public Builder instanceType(String instanceType) {
-            this.instanceType = Objects.requireNonNull(instanceType);
+            if (instanceType == null) {
+              throw new MissingRequiredPropertyException("GetInstanceTypesMasterInstanceType", "instanceType");
+            }
+            this.instanceType = instanceType;
             return this;
         }
         @CustomType.Setter
         public Builder memSize(Integer memSize) {
-            this.memSize = Objects.requireNonNull(memSize);
+            if (memSize == null) {
+              throw new MissingRequiredPropertyException("GetInstanceTypesMasterInstanceType", "memSize");
+            }
+            this.memSize = memSize;
             return this;
         }
         public GetInstanceTypesMasterInstanceType build() {

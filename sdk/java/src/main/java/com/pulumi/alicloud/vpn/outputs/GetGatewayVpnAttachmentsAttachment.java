@@ -8,6 +8,7 @@ import com.pulumi.alicloud.vpn.outputs.GetGatewayVpnAttachmentsAttachmentHealthC
 import com.pulumi.alicloud.vpn.outputs.GetGatewayVpnAttachmentsAttachmentIkeConfig;
 import com.pulumi.alicloud.vpn.outputs.GetGatewayVpnAttachmentsAttachmentIpsecConfig;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -258,7 +259,10 @@ public final class GetGatewayVpnAttachmentsAttachment {
 
         @CustomType.Setter
         public Builder bgpConfigs(List<GetGatewayVpnAttachmentsAttachmentBgpConfig> bgpConfigs) {
-            this.bgpConfigs = Objects.requireNonNull(bgpConfigs);
+            if (bgpConfigs == null) {
+              throw new MissingRequiredPropertyException("GetGatewayVpnAttachmentsAttachment", "bgpConfigs");
+            }
+            this.bgpConfigs = bgpConfigs;
             return this;
         }
         public Builder bgpConfigs(GetGatewayVpnAttachmentsAttachmentBgpConfig... bgpConfigs) {
@@ -266,27 +270,42 @@ public final class GetGatewayVpnAttachmentsAttachment {
         }
         @CustomType.Setter
         public Builder connectionStatus(String connectionStatus) {
-            this.connectionStatus = Objects.requireNonNull(connectionStatus);
+            if (connectionStatus == null) {
+              throw new MissingRequiredPropertyException("GetGatewayVpnAttachmentsAttachment", "connectionStatus");
+            }
+            this.connectionStatus = connectionStatus;
             return this;
         }
         @CustomType.Setter
         public Builder createTime(String createTime) {
-            this.createTime = Objects.requireNonNull(createTime);
+            if (createTime == null) {
+              throw new MissingRequiredPropertyException("GetGatewayVpnAttachmentsAttachment", "createTime");
+            }
+            this.createTime = createTime;
             return this;
         }
         @CustomType.Setter
         public Builder customerGatewayId(String customerGatewayId) {
-            this.customerGatewayId = Objects.requireNonNull(customerGatewayId);
+            if (customerGatewayId == null) {
+              throw new MissingRequiredPropertyException("GetGatewayVpnAttachmentsAttachment", "customerGatewayId");
+            }
+            this.customerGatewayId = customerGatewayId;
             return this;
         }
         @CustomType.Setter
         public Builder effectImmediately(Boolean effectImmediately) {
-            this.effectImmediately = Objects.requireNonNull(effectImmediately);
+            if (effectImmediately == null) {
+              throw new MissingRequiredPropertyException("GetGatewayVpnAttachmentsAttachment", "effectImmediately");
+            }
+            this.effectImmediately = effectImmediately;
             return this;
         }
         @CustomType.Setter
         public Builder healthCheckConfigs(List<GetGatewayVpnAttachmentsAttachmentHealthCheckConfig> healthCheckConfigs) {
-            this.healthCheckConfigs = Objects.requireNonNull(healthCheckConfigs);
+            if (healthCheckConfigs == null) {
+              throw new MissingRequiredPropertyException("GetGatewayVpnAttachmentsAttachment", "healthCheckConfigs");
+            }
+            this.healthCheckConfigs = healthCheckConfigs;
             return this;
         }
         public Builder healthCheckConfigs(GetGatewayVpnAttachmentsAttachmentHealthCheckConfig... healthCheckConfigs) {
@@ -294,12 +313,18 @@ public final class GetGatewayVpnAttachmentsAttachment {
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetGatewayVpnAttachmentsAttachment", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder ikeConfigs(List<GetGatewayVpnAttachmentsAttachmentIkeConfig> ikeConfigs) {
-            this.ikeConfigs = Objects.requireNonNull(ikeConfigs);
+            if (ikeConfigs == null) {
+              throw new MissingRequiredPropertyException("GetGatewayVpnAttachmentsAttachment", "ikeConfigs");
+            }
+            this.ikeConfigs = ikeConfigs;
             return this;
         }
         public Builder ikeConfigs(GetGatewayVpnAttachmentsAttachmentIkeConfig... ikeConfigs) {
@@ -307,12 +332,18 @@ public final class GetGatewayVpnAttachmentsAttachment {
         }
         @CustomType.Setter
         public Builder internetIp(String internetIp) {
-            this.internetIp = Objects.requireNonNull(internetIp);
+            if (internetIp == null) {
+              throw new MissingRequiredPropertyException("GetGatewayVpnAttachmentsAttachment", "internetIp");
+            }
+            this.internetIp = internetIp;
             return this;
         }
         @CustomType.Setter
         public Builder ipsecConfigs(List<GetGatewayVpnAttachmentsAttachmentIpsecConfig> ipsecConfigs) {
-            this.ipsecConfigs = Objects.requireNonNull(ipsecConfigs);
+            if (ipsecConfigs == null) {
+              throw new MissingRequiredPropertyException("GetGatewayVpnAttachmentsAttachment", "ipsecConfigs");
+            }
+            this.ipsecConfigs = ipsecConfigs;
             return this;
         }
         public Builder ipsecConfigs(GetGatewayVpnAttachmentsAttachmentIpsecConfig... ipsecConfigs) {
@@ -320,32 +351,50 @@ public final class GetGatewayVpnAttachmentsAttachment {
         }
         @CustomType.Setter
         public Builder localSubnet(String localSubnet) {
-            this.localSubnet = Objects.requireNonNull(localSubnet);
+            if (localSubnet == null) {
+              throw new MissingRequiredPropertyException("GetGatewayVpnAttachmentsAttachment", "localSubnet");
+            }
+            this.localSubnet = localSubnet;
             return this;
         }
         @CustomType.Setter
         public Builder networkType(String networkType) {
-            this.networkType = Objects.requireNonNull(networkType);
+            if (networkType == null) {
+              throw new MissingRequiredPropertyException("GetGatewayVpnAttachmentsAttachment", "networkType");
+            }
+            this.networkType = networkType;
             return this;
         }
         @CustomType.Setter
         public Builder remoteSubnet(String remoteSubnet) {
-            this.remoteSubnet = Objects.requireNonNull(remoteSubnet);
+            if (remoteSubnet == null) {
+              throw new MissingRequiredPropertyException("GetGatewayVpnAttachmentsAttachment", "remoteSubnet");
+            }
+            this.remoteSubnet = remoteSubnet;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetGatewayVpnAttachmentsAttachment", "status");
+            }
+            this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder vpnAttachmentName(String vpnAttachmentName) {
-            this.vpnAttachmentName = Objects.requireNonNull(vpnAttachmentName);
+            if (vpnAttachmentName == null) {
+              throw new MissingRequiredPropertyException("GetGatewayVpnAttachmentsAttachment", "vpnAttachmentName");
+            }
+            this.vpnAttachmentName = vpnAttachmentName;
             return this;
         }
         @CustomType.Setter
         public Builder vpnConnectionId(String vpnConnectionId) {
-            this.vpnConnectionId = Objects.requireNonNull(vpnConnectionId);
+            if (vpnConnectionId == null) {
+              throw new MissingRequiredPropertyException("GetGatewayVpnAttachmentsAttachment", "vpnConnectionId");
+            }
+            this.vpnConnectionId = vpnConnectionId;
             return this;
         }
         public GetGatewayVpnAttachmentsAttachment build() {

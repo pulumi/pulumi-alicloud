@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.cms.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -203,52 +204,82 @@ public final class GetAlarmContactsContact {
 
         @CustomType.Setter
         public Builder alarmContactName(String alarmContactName) {
-            this.alarmContactName = Objects.requireNonNull(alarmContactName);
+            if (alarmContactName == null) {
+              throw new MissingRequiredPropertyException("GetAlarmContactsContact", "alarmContactName");
+            }
+            this.alarmContactName = alarmContactName;
             return this;
         }
         @CustomType.Setter
         public Builder channelsAliim(String channelsAliim) {
-            this.channelsAliim = Objects.requireNonNull(channelsAliim);
+            if (channelsAliim == null) {
+              throw new MissingRequiredPropertyException("GetAlarmContactsContact", "channelsAliim");
+            }
+            this.channelsAliim = channelsAliim;
             return this;
         }
         @CustomType.Setter
         public Builder channelsDingWebHook(String channelsDingWebHook) {
-            this.channelsDingWebHook = Objects.requireNonNull(channelsDingWebHook);
+            if (channelsDingWebHook == null) {
+              throw new MissingRequiredPropertyException("GetAlarmContactsContact", "channelsDingWebHook");
+            }
+            this.channelsDingWebHook = channelsDingWebHook;
             return this;
         }
         @CustomType.Setter
         public Builder channelsMail(String channelsMail) {
-            this.channelsMail = Objects.requireNonNull(channelsMail);
+            if (channelsMail == null) {
+              throw new MissingRequiredPropertyException("GetAlarmContactsContact", "channelsMail");
+            }
+            this.channelsMail = channelsMail;
             return this;
         }
         @CustomType.Setter
         public Builder channelsSms(String channelsSms) {
-            this.channelsSms = Objects.requireNonNull(channelsSms);
+            if (channelsSms == null) {
+              throw new MissingRequiredPropertyException("GetAlarmContactsContact", "channelsSms");
+            }
+            this.channelsSms = channelsSms;
             return this;
         }
         @CustomType.Setter
         public Builder channelsStateAliim(String channelsStateAliim) {
-            this.channelsStateAliim = Objects.requireNonNull(channelsStateAliim);
+            if (channelsStateAliim == null) {
+              throw new MissingRequiredPropertyException("GetAlarmContactsContact", "channelsStateAliim");
+            }
+            this.channelsStateAliim = channelsStateAliim;
             return this;
         }
         @CustomType.Setter
         public Builder channelsStateDingWebHook(String channelsStateDingWebHook) {
-            this.channelsStateDingWebHook = Objects.requireNonNull(channelsStateDingWebHook);
+            if (channelsStateDingWebHook == null) {
+              throw new MissingRequiredPropertyException("GetAlarmContactsContact", "channelsStateDingWebHook");
+            }
+            this.channelsStateDingWebHook = channelsStateDingWebHook;
             return this;
         }
         @CustomType.Setter
         public Builder channelsStateMail(String channelsStateMail) {
-            this.channelsStateMail = Objects.requireNonNull(channelsStateMail);
+            if (channelsStateMail == null) {
+              throw new MissingRequiredPropertyException("GetAlarmContactsContact", "channelsStateMail");
+            }
+            this.channelsStateMail = channelsStateMail;
             return this;
         }
         @CustomType.Setter
         public Builder channelsStatusSms(String channelsStatusSms) {
-            this.channelsStatusSms = Objects.requireNonNull(channelsStatusSms);
+            if (channelsStatusSms == null) {
+              throw new MissingRequiredPropertyException("GetAlarmContactsContact", "channelsStatusSms");
+            }
+            this.channelsStatusSms = channelsStatusSms;
             return this;
         }
         @CustomType.Setter
         public Builder contactGroups(List<String> contactGroups) {
-            this.contactGroups = Objects.requireNonNull(contactGroups);
+            if (contactGroups == null) {
+              throw new MissingRequiredPropertyException("GetAlarmContactsContact", "contactGroups");
+            }
+            this.contactGroups = contactGroups;
             return this;
         }
         public Builder contactGroups(String... contactGroups) {
@@ -256,17 +287,26 @@ public final class GetAlarmContactsContact {
         }
         @CustomType.Setter
         public Builder describe(String describe) {
-            this.describe = Objects.requireNonNull(describe);
+            if (describe == null) {
+              throw new MissingRequiredPropertyException("GetAlarmContactsContact", "describe");
+            }
+            this.describe = describe;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetAlarmContactsContact", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder lang(String lang) {
-            this.lang = Objects.requireNonNull(lang);
+            if (lang == null) {
+              throw new MissingRequiredPropertyException("GetAlarmContactsContact", "lang");
+            }
+            this.lang = lang;
             return this;
         }
         public GetAlarmContactsContact build() {

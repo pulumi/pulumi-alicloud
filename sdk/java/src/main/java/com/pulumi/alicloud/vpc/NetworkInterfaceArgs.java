@@ -5,6 +5,7 @@ package com.pulumi.alicloud.vpc;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.Object;
 import java.lang.String;
@@ -670,7 +671,9 @@ public final class NetworkInterfaceArgs extends com.pulumi.resources.ResourceArg
         }
 
         public NetworkInterfaceArgs build() {
-            $.vswitchId = Objects.requireNonNull($.vswitchId, "expected parameter 'vswitchId' to be non-null");
+            if ($.vswitchId == null) {
+                throw new MissingRequiredPropertyException("NetworkInterfaceArgs", "vswitchId");
+            }
             return $;
         }
     }

@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.ram.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -211,67 +212,106 @@ public final class GetPoliciesPolicy {
 
         @CustomType.Setter
         public Builder attachmentCount(Integer attachmentCount) {
-            this.attachmentCount = Objects.requireNonNull(attachmentCount);
+            if (attachmentCount == null) {
+              throw new MissingRequiredPropertyException("GetPoliciesPolicy", "attachmentCount");
+            }
+            this.attachmentCount = attachmentCount;
             return this;
         }
         @CustomType.Setter
         public Builder createDate(String createDate) {
-            this.createDate = Objects.requireNonNull(createDate);
+            if (createDate == null) {
+              throw new MissingRequiredPropertyException("GetPoliciesPolicy", "createDate");
+            }
+            this.createDate = createDate;
             return this;
         }
         @CustomType.Setter
         public Builder defaultVersion(String defaultVersion) {
-            this.defaultVersion = Objects.requireNonNull(defaultVersion);
+            if (defaultVersion == null) {
+              throw new MissingRequiredPropertyException("GetPoliciesPolicy", "defaultVersion");
+            }
+            this.defaultVersion = defaultVersion;
             return this;
         }
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetPoliciesPolicy", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder document(String document) {
-            this.document = Objects.requireNonNull(document);
+            if (document == null) {
+              throw new MissingRequiredPropertyException("GetPoliciesPolicy", "document");
+            }
+            this.document = document;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetPoliciesPolicy", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetPoliciesPolicy", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder policyDocument(String policyDocument) {
-            this.policyDocument = Objects.requireNonNull(policyDocument);
+            if (policyDocument == null) {
+              throw new MissingRequiredPropertyException("GetPoliciesPolicy", "policyDocument");
+            }
+            this.policyDocument = policyDocument;
             return this;
         }
         @CustomType.Setter
         public Builder policyName(String policyName) {
-            this.policyName = Objects.requireNonNull(policyName);
+            if (policyName == null) {
+              throw new MissingRequiredPropertyException("GetPoliciesPolicy", "policyName");
+            }
+            this.policyName = policyName;
             return this;
         }
         @CustomType.Setter
         public Builder type(String type) {
-            this.type = Objects.requireNonNull(type);
+            if (type == null) {
+              throw new MissingRequiredPropertyException("GetPoliciesPolicy", "type");
+            }
+            this.type = type;
             return this;
         }
         @CustomType.Setter
         public Builder updateDate(String updateDate) {
-            this.updateDate = Objects.requireNonNull(updateDate);
+            if (updateDate == null) {
+              throw new MissingRequiredPropertyException("GetPoliciesPolicy", "updateDate");
+            }
+            this.updateDate = updateDate;
             return this;
         }
         @CustomType.Setter
         public Builder userName(String userName) {
-            this.userName = Objects.requireNonNull(userName);
+            if (userName == null) {
+              throw new MissingRequiredPropertyException("GetPoliciesPolicy", "userName");
+            }
+            this.userName = userName;
             return this;
         }
         @CustomType.Setter
         public Builder versionId(String versionId) {
-            this.versionId = Objects.requireNonNull(versionId);
+            if (versionId == null) {
+              throw new MissingRequiredPropertyException("GetPoliciesPolicy", "versionId");
+            }
+            this.versionId = versionId;
             return this;
         }
         public GetPoliciesPolicy build() {

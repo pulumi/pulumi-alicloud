@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -91,8 +92,12 @@ public final class GetMscSubContactVerificationMessagePlainArgs extends com.pulu
         }
 
         public GetMscSubContactVerificationMessagePlainArgs build() {
-            $.contactId = Objects.requireNonNull($.contactId, "expected parameter 'contactId' to be non-null");
-            $.type = Objects.requireNonNull($.type, "expected parameter 'type' to be non-null");
+            if ($.contactId == null) {
+                throw new MissingRequiredPropertyException("GetMscSubContactVerificationMessagePlainArgs", "contactId");
+            }
+            if ($.type == null) {
+                throw new MissingRequiredPropertyException("GetMscSubContactVerificationMessagePlainArgs", "type");
+            }
             return $;
         }
     }

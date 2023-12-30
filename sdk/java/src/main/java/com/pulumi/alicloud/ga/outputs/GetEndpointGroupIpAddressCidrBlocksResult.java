@@ -5,6 +5,7 @@ package com.pulumi.alicloud.ga.outputs;
 
 import com.pulumi.alicloud.ga.outputs.GetEndpointGroupIpAddressCidrBlocksEndpointGroupIpAddressCidrBlock;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -80,7 +81,10 @@ public final class GetEndpointGroupIpAddressCidrBlocksResult {
 
         @CustomType.Setter
         public Builder endpointGroupIpAddressCidrBlocks(List<GetEndpointGroupIpAddressCidrBlocksEndpointGroupIpAddressCidrBlock> endpointGroupIpAddressCidrBlocks) {
-            this.endpointGroupIpAddressCidrBlocks = Objects.requireNonNull(endpointGroupIpAddressCidrBlocks);
+            if (endpointGroupIpAddressCidrBlocks == null) {
+              throw new MissingRequiredPropertyException("GetEndpointGroupIpAddressCidrBlocksResult", "endpointGroupIpAddressCidrBlocks");
+            }
+            this.endpointGroupIpAddressCidrBlocks = endpointGroupIpAddressCidrBlocks;
             return this;
         }
         public Builder endpointGroupIpAddressCidrBlocks(GetEndpointGroupIpAddressCidrBlocksEndpointGroupIpAddressCidrBlock... endpointGroupIpAddressCidrBlocks) {
@@ -88,16 +92,23 @@ public final class GetEndpointGroupIpAddressCidrBlocksResult {
         }
         @CustomType.Setter
         public Builder endpointGroupRegion(String endpointGroupRegion) {
-            this.endpointGroupRegion = Objects.requireNonNull(endpointGroupRegion);
+            if (endpointGroupRegion == null) {
+              throw new MissingRequiredPropertyException("GetEndpointGroupIpAddressCidrBlocksResult", "endpointGroupRegion");
+            }
+            this.endpointGroupRegion = endpointGroupRegion;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetEndpointGroupIpAddressCidrBlocksResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
+
             this.outputFile = outputFile;
             return this;
         }

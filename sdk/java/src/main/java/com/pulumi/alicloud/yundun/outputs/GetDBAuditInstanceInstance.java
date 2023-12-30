@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.yundun.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Object;
 import java.lang.String;
@@ -86,47 +87,72 @@ public final class GetDBAuditInstanceInstance {
 
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetDBAuditInstanceInstance", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetDBAuditInstanceInstance", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder instanceStatus(String instanceStatus) {
-            this.instanceStatus = Objects.requireNonNull(instanceStatus);
+            if (instanceStatus == null) {
+              throw new MissingRequiredPropertyException("GetDBAuditInstanceInstance", "instanceStatus");
+            }
+            this.instanceStatus = instanceStatus;
             return this;
         }
         @CustomType.Setter
         public Builder licenseCode(String licenseCode) {
-            this.licenseCode = Objects.requireNonNull(licenseCode);
+            if (licenseCode == null) {
+              throw new MissingRequiredPropertyException("GetDBAuditInstanceInstance", "licenseCode");
+            }
+            this.licenseCode = licenseCode;
             return this;
         }
         @CustomType.Setter
         public Builder privateDomain(String privateDomain) {
-            this.privateDomain = Objects.requireNonNull(privateDomain);
+            if (privateDomain == null) {
+              throw new MissingRequiredPropertyException("GetDBAuditInstanceInstance", "privateDomain");
+            }
+            this.privateDomain = privateDomain;
             return this;
         }
         @CustomType.Setter
         public Builder publicDomain(String publicDomain) {
-            this.publicDomain = Objects.requireNonNull(publicDomain);
+            if (publicDomain == null) {
+              throw new MissingRequiredPropertyException("GetDBAuditInstanceInstance", "publicDomain");
+            }
+            this.publicDomain = publicDomain;
             return this;
         }
         @CustomType.Setter
         public Builder publicNetworkAccess(Boolean publicNetworkAccess) {
-            this.publicNetworkAccess = Objects.requireNonNull(publicNetworkAccess);
+            if (publicNetworkAccess == null) {
+              throw new MissingRequiredPropertyException("GetDBAuditInstanceInstance", "publicNetworkAccess");
+            }
+            this.publicNetworkAccess = publicNetworkAccess;
             return this;
         }
         @CustomType.Setter
         public Builder tags(@Nullable Map<String,Object> tags) {
+
             this.tags = tags;
             return this;
         }
         @CustomType.Setter
         public Builder userVswitchId(String userVswitchId) {
-            this.userVswitchId = Objects.requireNonNull(userVswitchId);
+            if (userVswitchId == null) {
+              throw new MissingRequiredPropertyException("GetDBAuditInstanceInstance", "userVswitchId");
+            }
+            this.userVswitchId = userVswitchId;
             return this;
         }
         public GetDBAuditInstanceInstance build() {

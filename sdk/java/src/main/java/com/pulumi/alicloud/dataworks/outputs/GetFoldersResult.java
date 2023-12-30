@@ -5,6 +5,7 @@ package com.pulumi.alicloud.dataworks.outputs;
 
 import com.pulumi.alicloud.dataworks.outputs.GetFoldersFolder;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -76,7 +77,10 @@ public final class GetFoldersResult {
 
         @CustomType.Setter
         public Builder folders(List<GetFoldersFolder> folders) {
-            this.folders = Objects.requireNonNull(folders);
+            if (folders == null) {
+              throw new MissingRequiredPropertyException("GetFoldersResult", "folders");
+            }
+            this.folders = folders;
             return this;
         }
         public Builder folders(GetFoldersFolder... folders) {
@@ -84,12 +88,18 @@ public final class GetFoldersResult {
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetFoldersResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder ids(List<String> ids) {
-            this.ids = Objects.requireNonNull(ids);
+            if (ids == null) {
+              throw new MissingRequiredPropertyException("GetFoldersResult", "ids");
+            }
+            this.ids = ids;
             return this;
         }
         public Builder ids(String... ids) {
@@ -97,17 +107,24 @@ public final class GetFoldersResult {
         }
         @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
+
             this.outputFile = outputFile;
             return this;
         }
         @CustomType.Setter
         public Builder parentFolderPath(String parentFolderPath) {
-            this.parentFolderPath = Objects.requireNonNull(parentFolderPath);
+            if (parentFolderPath == null) {
+              throw new MissingRequiredPropertyException("GetFoldersResult", "parentFolderPath");
+            }
+            this.parentFolderPath = parentFolderPath;
             return this;
         }
         @CustomType.Setter
         public Builder projectId(String projectId) {
-            this.projectId = Objects.requireNonNull(projectId);
+            if (projectId == null) {
+              throw new MissingRequiredPropertyException("GetFoldersResult", "projectId");
+            }
+            this.projectId = projectId;
             return this;
         }
         public GetFoldersResult build() {

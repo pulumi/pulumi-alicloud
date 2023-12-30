@@ -5,6 +5,7 @@ package com.pulumi.alicloud.videosurveillance;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -336,11 +337,21 @@ public final class SystemGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public SystemGroupArgs build() {
-            $.groupName = Objects.requireNonNull($.groupName, "expected parameter 'groupName' to be non-null");
-            $.inProtocol = Objects.requireNonNull($.inProtocol, "expected parameter 'inProtocol' to be non-null");
-            $.outProtocol = Objects.requireNonNull($.outProtocol, "expected parameter 'outProtocol' to be non-null");
-            $.playDomain = Objects.requireNonNull($.playDomain, "expected parameter 'playDomain' to be non-null");
-            $.pushDomain = Objects.requireNonNull($.pushDomain, "expected parameter 'pushDomain' to be non-null");
+            if ($.groupName == null) {
+                throw new MissingRequiredPropertyException("SystemGroupArgs", "groupName");
+            }
+            if ($.inProtocol == null) {
+                throw new MissingRequiredPropertyException("SystemGroupArgs", "inProtocol");
+            }
+            if ($.outProtocol == null) {
+                throw new MissingRequiredPropertyException("SystemGroupArgs", "outProtocol");
+            }
+            if ($.playDomain == null) {
+                throw new MissingRequiredPropertyException("SystemGroupArgs", "playDomain");
+            }
+            if ($.pushDomain == null) {
+                throw new MissingRequiredPropertyException("SystemGroupArgs", "pushDomain");
+            }
             return $;
         }
     }

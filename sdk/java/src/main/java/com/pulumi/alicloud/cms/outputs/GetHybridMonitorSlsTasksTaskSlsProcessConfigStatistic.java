@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.cms.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -98,27 +99,42 @@ public final class GetHybridMonitorSlsTasksTaskSlsProcessConfigStatistic {
 
         @CustomType.Setter
         public Builder alias(String alias) {
-            this.alias = Objects.requireNonNull(alias);
+            if (alias == null) {
+              throw new MissingRequiredPropertyException("GetHybridMonitorSlsTasksTaskSlsProcessConfigStatistic", "alias");
+            }
+            this.alias = alias;
             return this;
         }
         @CustomType.Setter
         public Builder function(String function) {
-            this.function = Objects.requireNonNull(function);
+            if (function == null) {
+              throw new MissingRequiredPropertyException("GetHybridMonitorSlsTasksTaskSlsProcessConfigStatistic", "function");
+            }
+            this.function = function;
             return this;
         }
         @CustomType.Setter
         public Builder parameterOne(String parameterOne) {
-            this.parameterOne = Objects.requireNonNull(parameterOne);
+            if (parameterOne == null) {
+              throw new MissingRequiredPropertyException("GetHybridMonitorSlsTasksTaskSlsProcessConfigStatistic", "parameterOne");
+            }
+            this.parameterOne = parameterOne;
             return this;
         }
         @CustomType.Setter
         public Builder parameterTwo(String parameterTwo) {
-            this.parameterTwo = Objects.requireNonNull(parameterTwo);
+            if (parameterTwo == null) {
+              throw new MissingRequiredPropertyException("GetHybridMonitorSlsTasksTaskSlsProcessConfigStatistic", "parameterTwo");
+            }
+            this.parameterTwo = parameterTwo;
             return this;
         }
         @CustomType.Setter
         public Builder slsKeyName(String slsKeyName) {
-            this.slsKeyName = Objects.requireNonNull(slsKeyName);
+            if (slsKeyName == null) {
+              throw new MissingRequiredPropertyException("GetHybridMonitorSlsTasksTaskSlsProcessConfigStatistic", "slsKeyName");
+            }
+            this.slsKeyName = slsKeyName;
             return this;
         }
         public GetHybridMonitorSlsTasksTaskSlsProcessConfigStatistic build() {

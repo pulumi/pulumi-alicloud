@@ -58,11 +58,13 @@ public final class EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPath
 
         @CustomType.Setter
         public Builder content(@Nullable String content) {
+
             this.content = content;
             return this;
         }
         @CustomType.Setter
         public Builder path(@Nullable String path) {
+
             this.path = path;
             return this;
         }

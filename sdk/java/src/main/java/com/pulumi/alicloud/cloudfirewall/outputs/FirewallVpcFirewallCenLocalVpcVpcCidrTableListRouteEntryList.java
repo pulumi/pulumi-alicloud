@@ -58,11 +58,13 @@ public final class FirewallVpcFirewallCenLocalVpcVpcCidrTableListRouteEntryList 
 
         @CustomType.Setter
         public Builder destinationCidr(@Nullable String destinationCidr) {
+
             this.destinationCidr = destinationCidr;
             return this;
         }
         @CustomType.Setter
         public Builder nextHopInstanceId(@Nullable String nextHopInstanceId) {
+
             this.nextHopInstanceId = nextHopInstanceId;
             return this;
         }

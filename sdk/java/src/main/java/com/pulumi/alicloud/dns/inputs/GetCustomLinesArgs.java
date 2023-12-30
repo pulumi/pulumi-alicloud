@@ -5,6 +5,7 @@ package com.pulumi.alicloud.dns.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -273,7 +274,9 @@ public final class GetCustomLinesArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         public GetCustomLinesArgs build() {
-            $.domainName = Objects.requireNonNull($.domainName, "expected parameter 'domainName' to be non-null");
+            if ($.domainName == null) {
+                throw new MissingRequiredPropertyException("GetCustomLinesArgs", "domainName");
+            }
             return $;
         }
     }

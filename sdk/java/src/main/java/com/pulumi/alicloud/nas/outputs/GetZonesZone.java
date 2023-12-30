@@ -5,6 +5,7 @@ package com.pulumi.alicloud.nas.outputs;
 
 import com.pulumi.alicloud.nas.outputs.GetZonesZoneInstanceType;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -58,7 +59,10 @@ public final class GetZonesZone {
 
         @CustomType.Setter
         public Builder instanceTypes(List<GetZonesZoneInstanceType> instanceTypes) {
-            this.instanceTypes = Objects.requireNonNull(instanceTypes);
+            if (instanceTypes == null) {
+              throw new MissingRequiredPropertyException("GetZonesZone", "instanceTypes");
+            }
+            this.instanceTypes = instanceTypes;
             return this;
         }
         public Builder instanceTypes(GetZonesZoneInstanceType... instanceTypes) {
@@ -66,7 +70,10 @@ public final class GetZonesZone {
         }
         @CustomType.Setter
         public Builder zoneId(String zoneId) {
-            this.zoneId = Objects.requireNonNull(zoneId);
+            if (zoneId == null) {
+              throw new MissingRequiredPropertyException("GetZonesZone", "zoneId");
+            }
+            this.zoneId = zoneId;
             return this;
         }
         public GetZonesZone build() {

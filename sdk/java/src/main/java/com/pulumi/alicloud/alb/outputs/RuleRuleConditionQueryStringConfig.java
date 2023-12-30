@@ -44,6 +44,7 @@ public final class RuleRuleConditionQueryStringConfig {
 
         @CustomType.Setter
         public Builder values(@Nullable List<RuleRuleConditionQueryStringConfigValue> values) {
+
             this.values = values;
             return this;
         }

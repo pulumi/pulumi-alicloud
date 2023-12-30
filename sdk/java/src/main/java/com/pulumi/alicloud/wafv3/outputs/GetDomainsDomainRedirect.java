@@ -5,6 +5,7 @@ package com.pulumi.alicloud.wafv3.outputs;
 
 import com.pulumi.alicloud.wafv3.outputs.GetDomainsDomainRedirectRequestHeader;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -214,7 +215,10 @@ public final class GetDomainsDomainRedirect {
 
         @CustomType.Setter
         public Builder backends(List<String> backends) {
-            this.backends = Objects.requireNonNull(backends);
+            if (backends == null) {
+              throw new MissingRequiredPropertyException("GetDomainsDomainRedirect", "backends");
+            }
+            this.backends = backends;
             return this;
         }
         public Builder backends(String... backends) {
@@ -222,42 +226,66 @@ public final class GetDomainsDomainRedirect {
         }
         @CustomType.Setter
         public Builder connectTimeout(Integer connectTimeout) {
-            this.connectTimeout = Objects.requireNonNull(connectTimeout);
+            if (connectTimeout == null) {
+              throw new MissingRequiredPropertyException("GetDomainsDomainRedirect", "connectTimeout");
+            }
+            this.connectTimeout = connectTimeout;
             return this;
         }
         @CustomType.Setter
         public Builder focusHttpBackend(Boolean focusHttpBackend) {
-            this.focusHttpBackend = Objects.requireNonNull(focusHttpBackend);
+            if (focusHttpBackend == null) {
+              throw new MissingRequiredPropertyException("GetDomainsDomainRedirect", "focusHttpBackend");
+            }
+            this.focusHttpBackend = focusHttpBackend;
             return this;
         }
         @CustomType.Setter
         public Builder keepalive(Boolean keepalive) {
-            this.keepalive = Objects.requireNonNull(keepalive);
+            if (keepalive == null) {
+              throw new MissingRequiredPropertyException("GetDomainsDomainRedirect", "keepalive");
+            }
+            this.keepalive = keepalive;
             return this;
         }
         @CustomType.Setter
         public Builder keepaliveRequests(Integer keepaliveRequests) {
-            this.keepaliveRequests = Objects.requireNonNull(keepaliveRequests);
+            if (keepaliveRequests == null) {
+              throw new MissingRequiredPropertyException("GetDomainsDomainRedirect", "keepaliveRequests");
+            }
+            this.keepaliveRequests = keepaliveRequests;
             return this;
         }
         @CustomType.Setter
         public Builder keepaliveTimeout(Integer keepaliveTimeout) {
-            this.keepaliveTimeout = Objects.requireNonNull(keepaliveTimeout);
+            if (keepaliveTimeout == null) {
+              throw new MissingRequiredPropertyException("GetDomainsDomainRedirect", "keepaliveTimeout");
+            }
+            this.keepaliveTimeout = keepaliveTimeout;
             return this;
         }
         @CustomType.Setter
         public Builder loadbalance(String loadbalance) {
-            this.loadbalance = Objects.requireNonNull(loadbalance);
+            if (loadbalance == null) {
+              throw new MissingRequiredPropertyException("GetDomainsDomainRedirect", "loadbalance");
+            }
+            this.loadbalance = loadbalance;
             return this;
         }
         @CustomType.Setter
         public Builder readTimeout(Integer readTimeout) {
-            this.readTimeout = Objects.requireNonNull(readTimeout);
+            if (readTimeout == null) {
+              throw new MissingRequiredPropertyException("GetDomainsDomainRedirect", "readTimeout");
+            }
+            this.readTimeout = readTimeout;
             return this;
         }
         @CustomType.Setter
         public Builder requestHeaders(List<GetDomainsDomainRedirectRequestHeader> requestHeaders) {
-            this.requestHeaders = Objects.requireNonNull(requestHeaders);
+            if (requestHeaders == null) {
+              throw new MissingRequiredPropertyException("GetDomainsDomainRedirect", "requestHeaders");
+            }
+            this.requestHeaders = requestHeaders;
             return this;
         }
         public Builder requestHeaders(GetDomainsDomainRedirectRequestHeader... requestHeaders) {
@@ -265,22 +293,34 @@ public final class GetDomainsDomainRedirect {
         }
         @CustomType.Setter
         public Builder retry(Boolean retry) {
-            this.retry = Objects.requireNonNull(retry);
+            if (retry == null) {
+              throw new MissingRequiredPropertyException("GetDomainsDomainRedirect", "retry");
+            }
+            this.retry = retry;
             return this;
         }
         @CustomType.Setter
         public Builder sniEnabled(Boolean sniEnabled) {
-            this.sniEnabled = Objects.requireNonNull(sniEnabled);
+            if (sniEnabled == null) {
+              throw new MissingRequiredPropertyException("GetDomainsDomainRedirect", "sniEnabled");
+            }
+            this.sniEnabled = sniEnabled;
             return this;
         }
         @CustomType.Setter
         public Builder sniHost(String sniHost) {
-            this.sniHost = Objects.requireNonNull(sniHost);
+            if (sniHost == null) {
+              throw new MissingRequiredPropertyException("GetDomainsDomainRedirect", "sniHost");
+            }
+            this.sniHost = sniHost;
             return this;
         }
         @CustomType.Setter
         public Builder writeTimeout(Integer writeTimeout) {
-            this.writeTimeout = Objects.requireNonNull(writeTimeout);
+            if (writeTimeout == null) {
+              throw new MissingRequiredPropertyException("GetDomainsDomainRedirect", "writeTimeout");
+            }
+            this.writeTimeout = writeTimeout;
             return this;
         }
         public GetDomainsDomainRedirect build() {

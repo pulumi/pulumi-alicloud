@@ -5,6 +5,7 @@ package com.pulumi.alicloud.hbr.outputs;
 
 import com.pulumi.alicloud.hbr.outputs.GetServerBackupPlansPlanDetail;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -157,12 +158,18 @@ public final class GetServerBackupPlansPlan {
 
         @CustomType.Setter
         public Builder createTime(String createTime) {
-            this.createTime = Objects.requireNonNull(createTime);
+            if (createTime == null) {
+              throw new MissingRequiredPropertyException("GetServerBackupPlansPlan", "createTime");
+            }
+            this.createTime = createTime;
             return this;
         }
         @CustomType.Setter
         public Builder details(List<GetServerBackupPlansPlanDetail> details) {
-            this.details = Objects.requireNonNull(details);
+            if (details == null) {
+              throw new MissingRequiredPropertyException("GetServerBackupPlansPlan", "details");
+            }
+            this.details = details;
             return this;
         }
         public Builder details(GetServerBackupPlansPlanDetail... details) {
@@ -170,37 +177,58 @@ public final class GetServerBackupPlansPlan {
         }
         @CustomType.Setter
         public Builder disabled(Boolean disabled) {
-            this.disabled = Objects.requireNonNull(disabled);
+            if (disabled == null) {
+              throw new MissingRequiredPropertyException("GetServerBackupPlansPlan", "disabled");
+            }
+            this.disabled = disabled;
             return this;
         }
         @CustomType.Setter
         public Builder ecsServerBackupPlanId(String ecsServerBackupPlanId) {
-            this.ecsServerBackupPlanId = Objects.requireNonNull(ecsServerBackupPlanId);
+            if (ecsServerBackupPlanId == null) {
+              throw new MissingRequiredPropertyException("GetServerBackupPlansPlan", "ecsServerBackupPlanId");
+            }
+            this.ecsServerBackupPlanId = ecsServerBackupPlanId;
             return this;
         }
         @CustomType.Setter
         public Builder ecsServerBackupPlanName(String ecsServerBackupPlanName) {
-            this.ecsServerBackupPlanName = Objects.requireNonNull(ecsServerBackupPlanName);
+            if (ecsServerBackupPlanName == null) {
+              throw new MissingRequiredPropertyException("GetServerBackupPlansPlan", "ecsServerBackupPlanName");
+            }
+            this.ecsServerBackupPlanName = ecsServerBackupPlanName;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetServerBackupPlansPlan", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder instanceId(String instanceId) {
-            this.instanceId = Objects.requireNonNull(instanceId);
+            if (instanceId == null) {
+              throw new MissingRequiredPropertyException("GetServerBackupPlansPlan", "instanceId");
+            }
+            this.instanceId = instanceId;
             return this;
         }
         @CustomType.Setter
         public Builder retention(String retention) {
-            this.retention = Objects.requireNonNull(retention);
+            if (retention == null) {
+              throw new MissingRequiredPropertyException("GetServerBackupPlansPlan", "retention");
+            }
+            this.retention = retention;
             return this;
         }
         @CustomType.Setter
         public Builder schedule(String schedule) {
-            this.schedule = Objects.requireNonNull(schedule);
+            if (schedule == null) {
+              throw new MissingRequiredPropertyException("GetServerBackupPlansPlan", "schedule");
+            }
+            this.schedule = schedule;
             return this;
         }
         public GetServerBackupPlansPlan build() {

@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.tag.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -70,17 +71,26 @@ public final class GetMetaTagsTag {
 
         @CustomType.Setter
         public Builder category(String category) {
-            this.category = Objects.requireNonNull(category);
+            if (category == null) {
+              throw new MissingRequiredPropertyException("GetMetaTagsTag", "category");
+            }
+            this.category = category;
             return this;
         }
         @CustomType.Setter
         public Builder keyName(String keyName) {
-            this.keyName = Objects.requireNonNull(keyName);
+            if (keyName == null) {
+              throw new MissingRequiredPropertyException("GetMetaTagsTag", "keyName");
+            }
+            this.keyName = keyName;
             return this;
         }
         @CustomType.Setter
         public Builder valueName(String valueName) {
-            this.valueName = Objects.requireNonNull(valueName);
+            if (valueName == null) {
+              throw new MissingRequiredPropertyException("GetMetaTagsTag", "valueName");
+            }
+            this.valueName = valueName;
             return this;
         }
         public GetMetaTagsTag build() {

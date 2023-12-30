@@ -59,11 +59,13 @@ public final class RuleRuleActionForwardGroupConfigServerGroupTuple {
 
         @CustomType.Setter
         public Builder serverGroupId(@Nullable String serverGroupId) {
+
             this.serverGroupId = serverGroupId;
             return this;
         }
         @CustomType.Setter
         public Builder weight(@Nullable Integer weight) {
+
             this.weight = weight;
             return this;
         }

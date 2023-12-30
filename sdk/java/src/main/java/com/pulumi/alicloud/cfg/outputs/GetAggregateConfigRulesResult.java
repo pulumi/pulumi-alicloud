@@ -5,6 +5,7 @@ package com.pulumi.alicloud.cfg.outputs;
 
 import com.pulumi.alicloud.cfg.outputs.GetAggregateConfigRulesRule;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -156,27 +157,38 @@ public final class GetAggregateConfigRulesResult {
 
         @CustomType.Setter
         public Builder aggregateConfigRuleName(@Nullable String aggregateConfigRuleName) {
+
             this.aggregateConfigRuleName = aggregateConfigRuleName;
             return this;
         }
         @CustomType.Setter
         public Builder aggregatorId(String aggregatorId) {
-            this.aggregatorId = Objects.requireNonNull(aggregatorId);
+            if (aggregatorId == null) {
+              throw new MissingRequiredPropertyException("GetAggregateConfigRulesResult", "aggregatorId");
+            }
+            this.aggregatorId = aggregatorId;
             return this;
         }
         @CustomType.Setter
         public Builder enableDetails(@Nullable Boolean enableDetails) {
+
             this.enableDetails = enableDetails;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetAggregateConfigRulesResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder ids(List<String> ids) {
-            this.ids = Objects.requireNonNull(ids);
+            if (ids == null) {
+              throw new MissingRequiredPropertyException("GetAggregateConfigRulesResult", "ids");
+            }
+            this.ids = ids;
             return this;
         }
         public Builder ids(String... ids) {
@@ -184,12 +196,16 @@ public final class GetAggregateConfigRulesResult {
         }
         @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
+
             this.nameRegex = nameRegex;
             return this;
         }
         @CustomType.Setter
         public Builder names(List<String> names) {
-            this.names = Objects.requireNonNull(names);
+            if (names == null) {
+              throw new MissingRequiredPropertyException("GetAggregateConfigRulesResult", "names");
+            }
+            this.names = names;
             return this;
         }
         public Builder names(String... names) {
@@ -197,17 +213,22 @@ public final class GetAggregateConfigRulesResult {
         }
         @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
+
             this.outputFile = outputFile;
             return this;
         }
         @CustomType.Setter
         public Builder riskLevel(@Nullable Integer riskLevel) {
+
             this.riskLevel = riskLevel;
             return this;
         }
         @CustomType.Setter
         public Builder rules(List<GetAggregateConfigRulesRule> rules) {
-            this.rules = Objects.requireNonNull(rules);
+            if (rules == null) {
+              throw new MissingRequiredPropertyException("GetAggregateConfigRulesResult", "rules");
+            }
+            this.rules = rules;
             return this;
         }
         public Builder rules(GetAggregateConfigRulesRule... rules) {
@@ -215,6 +236,7 @@ public final class GetAggregateConfigRulesResult {
         }
         @CustomType.Setter
         public Builder status(@Nullable String status) {
+
             this.status = status;
             return this;
         }

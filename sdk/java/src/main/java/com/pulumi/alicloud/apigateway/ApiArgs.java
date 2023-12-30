@@ -13,6 +13,7 @@ import com.pulumi.alicloud.apigateway.inputs.ApiRequestParameterArgs;
 import com.pulumi.alicloud.apigateway.inputs.ApiSystemParameterArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -644,11 +645,21 @@ public final class ApiArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public ApiArgs build() {
-            $.authType = Objects.requireNonNull($.authType, "expected parameter 'authType' to be non-null");
-            $.description = Objects.requireNonNull($.description, "expected parameter 'description' to be non-null");
-            $.groupId = Objects.requireNonNull($.groupId, "expected parameter 'groupId' to be non-null");
-            $.requestConfig = Objects.requireNonNull($.requestConfig, "expected parameter 'requestConfig' to be non-null");
-            $.serviceType = Objects.requireNonNull($.serviceType, "expected parameter 'serviceType' to be non-null");
+            if ($.authType == null) {
+                throw new MissingRequiredPropertyException("ApiArgs", "authType");
+            }
+            if ($.description == null) {
+                throw new MissingRequiredPropertyException("ApiArgs", "description");
+            }
+            if ($.groupId == null) {
+                throw new MissingRequiredPropertyException("ApiArgs", "groupId");
+            }
+            if ($.requestConfig == null) {
+                throw new MissingRequiredPropertyException("ApiArgs", "requestConfig");
+            }
+            if ($.serviceType == null) {
+                throw new MissingRequiredPropertyException("ApiArgs", "serviceType");
+            }
             return $;
         }
     }

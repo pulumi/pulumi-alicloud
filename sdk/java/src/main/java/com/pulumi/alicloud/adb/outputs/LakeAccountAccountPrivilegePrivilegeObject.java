@@ -72,16 +72,19 @@ public final class LakeAccountAccountPrivilegePrivilegeObject {
 
         @CustomType.Setter
         public Builder column(@Nullable String column) {
+
             this.column = column;
             return this;
         }
         @CustomType.Setter
         public Builder database(@Nullable String database) {
+
             this.database = database;
             return this;
         }
         @CustomType.Setter
         public Builder table(@Nullable String table) {
+
             this.table = table;
             return this;
         }

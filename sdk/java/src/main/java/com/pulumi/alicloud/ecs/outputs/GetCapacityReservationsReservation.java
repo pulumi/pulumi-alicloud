@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.ecs.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Object;
 import java.lang.String;
 import java.util.List;
@@ -284,92 +285,144 @@ public final class GetCapacityReservationsReservation {
 
         @CustomType.Setter
         public Builder capacityReservationId(String capacityReservationId) {
-            this.capacityReservationId = Objects.requireNonNull(capacityReservationId);
+            if (capacityReservationId == null) {
+              throw new MissingRequiredPropertyException("GetCapacityReservationsReservation", "capacityReservationId");
+            }
+            this.capacityReservationId = capacityReservationId;
             return this;
         }
         @CustomType.Setter
         public Builder capacityReservationName(String capacityReservationName) {
-            this.capacityReservationName = Objects.requireNonNull(capacityReservationName);
+            if (capacityReservationName == null) {
+              throw new MissingRequiredPropertyException("GetCapacityReservationsReservation", "capacityReservationName");
+            }
+            this.capacityReservationName = capacityReservationName;
             return this;
         }
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetCapacityReservationsReservation", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder endTime(String endTime) {
-            this.endTime = Objects.requireNonNull(endTime);
+            if (endTime == null) {
+              throw new MissingRequiredPropertyException("GetCapacityReservationsReservation", "endTime");
+            }
+            this.endTime = endTime;
             return this;
         }
         @CustomType.Setter
         public Builder endTimeType(String endTimeType) {
-            this.endTimeType = Objects.requireNonNull(endTimeType);
+            if (endTimeType == null) {
+              throw new MissingRequiredPropertyException("GetCapacityReservationsReservation", "endTimeType");
+            }
+            this.endTimeType = endTimeType;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetCapacityReservationsReservation", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder instanceAmount(String instanceAmount) {
-            this.instanceAmount = Objects.requireNonNull(instanceAmount);
+            if (instanceAmount == null) {
+              throw new MissingRequiredPropertyException("GetCapacityReservationsReservation", "instanceAmount");
+            }
+            this.instanceAmount = instanceAmount;
             return this;
         }
         @CustomType.Setter
         public Builder instanceType(String instanceType) {
-            this.instanceType = Objects.requireNonNull(instanceType);
+            if (instanceType == null) {
+              throw new MissingRequiredPropertyException("GetCapacityReservationsReservation", "instanceType");
+            }
+            this.instanceType = instanceType;
             return this;
         }
         @CustomType.Setter
         public Builder matchCriteria(String matchCriteria) {
-            this.matchCriteria = Objects.requireNonNull(matchCriteria);
+            if (matchCriteria == null) {
+              throw new MissingRequiredPropertyException("GetCapacityReservationsReservation", "matchCriteria");
+            }
+            this.matchCriteria = matchCriteria;
             return this;
         }
         @CustomType.Setter
         public Builder paymentType(String paymentType) {
-            this.paymentType = Objects.requireNonNull(paymentType);
+            if (paymentType == null) {
+              throw new MissingRequiredPropertyException("GetCapacityReservationsReservation", "paymentType");
+            }
+            this.paymentType = paymentType;
             return this;
         }
         @CustomType.Setter
         public Builder platform(String platform) {
-            this.platform = Objects.requireNonNull(platform);
+            if (platform == null) {
+              throw new MissingRequiredPropertyException("GetCapacityReservationsReservation", "platform");
+            }
+            this.platform = platform;
             return this;
         }
         @CustomType.Setter
         public Builder resourceGroupId(String resourceGroupId) {
-            this.resourceGroupId = Objects.requireNonNull(resourceGroupId);
+            if (resourceGroupId == null) {
+              throw new MissingRequiredPropertyException("GetCapacityReservationsReservation", "resourceGroupId");
+            }
+            this.resourceGroupId = resourceGroupId;
             return this;
         }
         @CustomType.Setter
         public Builder startTime(String startTime) {
-            this.startTime = Objects.requireNonNull(startTime);
+            if (startTime == null) {
+              throw new MissingRequiredPropertyException("GetCapacityReservationsReservation", "startTime");
+            }
+            this.startTime = startTime;
             return this;
         }
         @CustomType.Setter
         public Builder startTimeType(String startTimeType) {
-            this.startTimeType = Objects.requireNonNull(startTimeType);
+            if (startTimeType == null) {
+              throw new MissingRequiredPropertyException("GetCapacityReservationsReservation", "startTimeType");
+            }
+            this.startTimeType = startTimeType;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetCapacityReservationsReservation", "status");
+            }
+            this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder tags(@Nullable Map<String,Object> tags) {
+
             this.tags = tags;
             return this;
         }
         @CustomType.Setter
         public Builder timeSlot(String timeSlot) {
-            this.timeSlot = Objects.requireNonNull(timeSlot);
+            if (timeSlot == null) {
+              throw new MissingRequiredPropertyException("GetCapacityReservationsReservation", "timeSlot");
+            }
+            this.timeSlot = timeSlot;
             return this;
         }
         @CustomType.Setter
         public Builder zoneIds(List<String> zoneIds) {
-            this.zoneIds = Objects.requireNonNull(zoneIds);
+            if (zoneIds == null) {
+              throw new MissingRequiredPropertyException("GetCapacityReservationsReservation", "zoneIds");
+            }
+            this.zoneIds = zoneIds;
             return this;
         }
         public Builder zoneIds(String... zoneIds) {

@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.simpleapplicationserver.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -112,32 +113,50 @@ public final class GetServerFirewallRulesRule {
 
         @CustomType.Setter
         public Builder firewallRuleId(String firewallRuleId) {
-            this.firewallRuleId = Objects.requireNonNull(firewallRuleId);
+            if (firewallRuleId == null) {
+              throw new MissingRequiredPropertyException("GetServerFirewallRulesRule", "firewallRuleId");
+            }
+            this.firewallRuleId = firewallRuleId;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetServerFirewallRulesRule", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder instanceId(String instanceId) {
-            this.instanceId = Objects.requireNonNull(instanceId);
+            if (instanceId == null) {
+              throw new MissingRequiredPropertyException("GetServerFirewallRulesRule", "instanceId");
+            }
+            this.instanceId = instanceId;
             return this;
         }
         @CustomType.Setter
         public Builder port(String port) {
-            this.port = Objects.requireNonNull(port);
+            if (port == null) {
+              throw new MissingRequiredPropertyException("GetServerFirewallRulesRule", "port");
+            }
+            this.port = port;
             return this;
         }
         @CustomType.Setter
         public Builder remark(String remark) {
-            this.remark = Objects.requireNonNull(remark);
+            if (remark == null) {
+              throw new MissingRequiredPropertyException("GetServerFirewallRulesRule", "remark");
+            }
+            this.remark = remark;
             return this;
         }
         @CustomType.Setter
         public Builder ruleProtocol(String ruleProtocol) {
-            this.ruleProtocol = Objects.requireNonNull(ruleProtocol);
+            if (ruleProtocol == null) {
+              throw new MissingRequiredPropertyException("GetServerFirewallRulesRule", "ruleProtocol");
+            }
+            this.ruleProtocol = ruleProtocol;
             return this;
         }
         public GetServerFirewallRulesRule build() {

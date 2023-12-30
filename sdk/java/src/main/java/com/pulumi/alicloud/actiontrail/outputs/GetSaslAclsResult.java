@@ -5,6 +5,7 @@ package com.pulumi.alicloud.actiontrail.outputs;
 
 import com.pulumi.alicloud.actiontrail.outputs.GetSaslAclsAcl;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -114,17 +115,26 @@ public final class GetSaslAclsResult {
 
         @CustomType.Setter
         public Builder aclResourceName(String aclResourceName) {
-            this.aclResourceName = Objects.requireNonNull(aclResourceName);
+            if (aclResourceName == null) {
+              throw new MissingRequiredPropertyException("GetSaslAclsResult", "aclResourceName");
+            }
+            this.aclResourceName = aclResourceName;
             return this;
         }
         @CustomType.Setter
         public Builder aclResourceType(String aclResourceType) {
-            this.aclResourceType = Objects.requireNonNull(aclResourceType);
+            if (aclResourceType == null) {
+              throw new MissingRequiredPropertyException("GetSaslAclsResult", "aclResourceType");
+            }
+            this.aclResourceType = aclResourceType;
             return this;
         }
         @CustomType.Setter
         public Builder acls(List<GetSaslAclsAcl> acls) {
-            this.acls = Objects.requireNonNull(acls);
+            if (acls == null) {
+              throw new MissingRequiredPropertyException("GetSaslAclsResult", "acls");
+            }
+            this.acls = acls;
             return this;
         }
         public Builder acls(GetSaslAclsAcl... acls) {
@@ -132,22 +142,32 @@ public final class GetSaslAclsResult {
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetSaslAclsResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder instanceId(String instanceId) {
-            this.instanceId = Objects.requireNonNull(instanceId);
+            if (instanceId == null) {
+              throw new MissingRequiredPropertyException("GetSaslAclsResult", "instanceId");
+            }
+            this.instanceId = instanceId;
             return this;
         }
         @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
+
             this.outputFile = outputFile;
             return this;
         }
         @CustomType.Setter
         public Builder username(String username) {
-            this.username = Objects.requireNonNull(username);
+            if (username == null) {
+              throw new MissingRequiredPropertyException("GetSaslAclsResult", "username");
+            }
+            this.username = username;
             return this;
         }
         public GetSaslAclsResult build() {

@@ -5,6 +5,7 @@ package com.pulumi.alicloud.apigateway;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -188,8 +189,12 @@ public final class BackendArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public BackendArgs build() {
-            $.backendName = Objects.requireNonNull($.backendName, "expected parameter 'backendName' to be non-null");
-            $.backendType = Objects.requireNonNull($.backendType, "expected parameter 'backendType' to be non-null");
+            if ($.backendName == null) {
+                throw new MissingRequiredPropertyException("BackendArgs", "backendName");
+            }
+            if ($.backendType == null) {
+                throw new MissingRequiredPropertyException("BackendArgs", "backendType");
+            }
             return $;
         }
     }

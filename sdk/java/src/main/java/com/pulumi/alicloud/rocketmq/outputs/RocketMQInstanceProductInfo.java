@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.rocketmq.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Double;
 import java.lang.Integer;
@@ -103,26 +104,33 @@ public final class RocketMQInstanceProductInfo {
 
         @CustomType.Setter
         public Builder autoScaling(@Nullable Boolean autoScaling) {
+
             this.autoScaling = autoScaling;
             return this;
         }
         @CustomType.Setter
         public Builder messageRetentionTime(@Nullable Integer messageRetentionTime) {
+
             this.messageRetentionTime = messageRetentionTime;
             return this;
         }
         @CustomType.Setter
         public Builder msgProcessSpec(String msgProcessSpec) {
-            this.msgProcessSpec = Objects.requireNonNull(msgProcessSpec);
+            if (msgProcessSpec == null) {
+              throw new MissingRequiredPropertyException("RocketMQInstanceProductInfo", "msgProcessSpec");
+            }
+            this.msgProcessSpec = msgProcessSpec;
             return this;
         }
         @CustomType.Setter
         public Builder sendReceiveRatio(@Nullable Double sendReceiveRatio) {
+
             this.sendReceiveRatio = sendReceiveRatio;
             return this;
         }
         @CustomType.Setter
         public Builder supportAutoScaling(@Nullable Boolean supportAutoScaling) {
+
             this.supportAutoScaling = supportAutoScaling;
             return this;
         }

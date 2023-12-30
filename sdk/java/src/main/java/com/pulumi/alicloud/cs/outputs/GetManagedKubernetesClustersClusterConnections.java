@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.cs.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -84,22 +85,34 @@ public final class GetManagedKubernetesClustersClusterConnections {
 
         @CustomType.Setter
         public Builder apiServerInternet(String apiServerInternet) {
-            this.apiServerInternet = Objects.requireNonNull(apiServerInternet);
+            if (apiServerInternet == null) {
+              throw new MissingRequiredPropertyException("GetManagedKubernetesClustersClusterConnections", "apiServerInternet");
+            }
+            this.apiServerInternet = apiServerInternet;
             return this;
         }
         @CustomType.Setter
         public Builder apiServerIntranet(String apiServerIntranet) {
-            this.apiServerIntranet = Objects.requireNonNull(apiServerIntranet);
+            if (apiServerIntranet == null) {
+              throw new MissingRequiredPropertyException("GetManagedKubernetesClustersClusterConnections", "apiServerIntranet");
+            }
+            this.apiServerIntranet = apiServerIntranet;
             return this;
         }
         @CustomType.Setter
         public Builder masterPublicIp(String masterPublicIp) {
-            this.masterPublicIp = Objects.requireNonNull(masterPublicIp);
+            if (masterPublicIp == null) {
+              throw new MissingRequiredPropertyException("GetManagedKubernetesClustersClusterConnections", "masterPublicIp");
+            }
+            this.masterPublicIp = masterPublicIp;
             return this;
         }
         @CustomType.Setter
         public Builder serviceDomain(String serviceDomain) {
-            this.serviceDomain = Objects.requireNonNull(serviceDomain);
+            if (serviceDomain == null) {
+              throw new MissingRequiredPropertyException("GetManagedKubernetesClustersClusterConnections", "serviceDomain");
+            }
+            this.serviceDomain = serviceDomain;
             return this;
         }
         public GetManagedKubernetesClustersClusterConnections build() {

@@ -5,6 +5,7 @@ package com.pulumi.alicloud.ecs.outputs;
 
 import com.pulumi.alicloud.ecs.outputs.GetEcsNetworkInterfacesInterfaceAssociatedPublicIp;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.Object;
@@ -404,7 +405,10 @@ public final class GetEcsNetworkInterfacesInterface {
 
         @CustomType.Setter
         public Builder associatedPublicIps(List<GetEcsNetworkInterfacesInterfaceAssociatedPublicIp> associatedPublicIps) {
-            this.associatedPublicIps = Objects.requireNonNull(associatedPublicIps);
+            if (associatedPublicIps == null) {
+              throw new MissingRequiredPropertyException("GetEcsNetworkInterfacesInterface", "associatedPublicIps");
+            }
+            this.associatedPublicIps = associatedPublicIps;
             return this;
         }
         public Builder associatedPublicIps(GetEcsNetworkInterfacesInterfaceAssociatedPublicIp... associatedPublicIps) {
@@ -412,67 +416,106 @@ public final class GetEcsNetworkInterfacesInterface {
         }
         @CustomType.Setter
         public Builder creationTime(String creationTime) {
-            this.creationTime = Objects.requireNonNull(creationTime);
+            if (creationTime == null) {
+              throw new MissingRequiredPropertyException("GetEcsNetworkInterfacesInterface", "creationTime");
+            }
+            this.creationTime = creationTime;
             return this;
         }
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetEcsNetworkInterfacesInterface", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetEcsNetworkInterfacesInterface", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder instanceId(String instanceId) {
-            this.instanceId = Objects.requireNonNull(instanceId);
+            if (instanceId == null) {
+              throw new MissingRequiredPropertyException("GetEcsNetworkInterfacesInterface", "instanceId");
+            }
+            this.instanceId = instanceId;
             return this;
         }
         @CustomType.Setter
         public Builder mac(String mac) {
-            this.mac = Objects.requireNonNull(mac);
+            if (mac == null) {
+              throw new MissingRequiredPropertyException("GetEcsNetworkInterfacesInterface", "mac");
+            }
+            this.mac = mac;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetEcsNetworkInterfacesInterface", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder networkInterfaceId(String networkInterfaceId) {
-            this.networkInterfaceId = Objects.requireNonNull(networkInterfaceId);
+            if (networkInterfaceId == null) {
+              throw new MissingRequiredPropertyException("GetEcsNetworkInterfacesInterface", "networkInterfaceId");
+            }
+            this.networkInterfaceId = networkInterfaceId;
             return this;
         }
         @CustomType.Setter
         public Builder networkInterfaceName(String networkInterfaceName) {
-            this.networkInterfaceName = Objects.requireNonNull(networkInterfaceName);
+            if (networkInterfaceName == null) {
+              throw new MissingRequiredPropertyException("GetEcsNetworkInterfacesInterface", "networkInterfaceName");
+            }
+            this.networkInterfaceName = networkInterfaceName;
             return this;
         }
         @CustomType.Setter
         public Builder networkInterfaceTrafficMode(String networkInterfaceTrafficMode) {
-            this.networkInterfaceTrafficMode = Objects.requireNonNull(networkInterfaceTrafficMode);
+            if (networkInterfaceTrafficMode == null) {
+              throw new MissingRequiredPropertyException("GetEcsNetworkInterfacesInterface", "networkInterfaceTrafficMode");
+            }
+            this.networkInterfaceTrafficMode = networkInterfaceTrafficMode;
             return this;
         }
         @CustomType.Setter
         public Builder ownerId(String ownerId) {
-            this.ownerId = Objects.requireNonNull(ownerId);
+            if (ownerId == null) {
+              throw new MissingRequiredPropertyException("GetEcsNetworkInterfacesInterface", "ownerId");
+            }
+            this.ownerId = ownerId;
             return this;
         }
         @CustomType.Setter
         public Builder primaryIpAddress(String primaryIpAddress) {
-            this.primaryIpAddress = Objects.requireNonNull(primaryIpAddress);
+            if (primaryIpAddress == null) {
+              throw new MissingRequiredPropertyException("GetEcsNetworkInterfacesInterface", "primaryIpAddress");
+            }
+            this.primaryIpAddress = primaryIpAddress;
             return this;
         }
         @CustomType.Setter
         public Builder privateIp(String privateIp) {
-            this.privateIp = Objects.requireNonNull(privateIp);
+            if (privateIp == null) {
+              throw new MissingRequiredPropertyException("GetEcsNetworkInterfacesInterface", "privateIp");
+            }
+            this.privateIp = privateIp;
             return this;
         }
         @CustomType.Setter
         public Builder privateIpAddresses(List<String> privateIpAddresses) {
-            this.privateIpAddresses = Objects.requireNonNull(privateIpAddresses);
+            if (privateIpAddresses == null) {
+              throw new MissingRequiredPropertyException("GetEcsNetworkInterfacesInterface", "privateIpAddresses");
+            }
+            this.privateIpAddresses = privateIpAddresses;
             return this;
         }
         public Builder privateIpAddresses(String... privateIpAddresses) {
@@ -480,7 +523,10 @@ public final class GetEcsNetworkInterfacesInterface {
         }
         @CustomType.Setter
         public Builder privateIps(List<String> privateIps) {
-            this.privateIps = Objects.requireNonNull(privateIps);
+            if (privateIps == null) {
+              throw new MissingRequiredPropertyException("GetEcsNetworkInterfacesInterface", "privateIps");
+            }
+            this.privateIps = privateIps;
             return this;
         }
         public Builder privateIps(String... privateIps) {
@@ -488,17 +534,26 @@ public final class GetEcsNetworkInterfacesInterface {
         }
         @CustomType.Setter
         public Builder queueNumber(Integer queueNumber) {
-            this.queueNumber = Objects.requireNonNull(queueNumber);
+            if (queueNumber == null) {
+              throw new MissingRequiredPropertyException("GetEcsNetworkInterfacesInterface", "queueNumber");
+            }
+            this.queueNumber = queueNumber;
             return this;
         }
         @CustomType.Setter
         public Builder resourceGroupId(String resourceGroupId) {
-            this.resourceGroupId = Objects.requireNonNull(resourceGroupId);
+            if (resourceGroupId == null) {
+              throw new MissingRequiredPropertyException("GetEcsNetworkInterfacesInterface", "resourceGroupId");
+            }
+            this.resourceGroupId = resourceGroupId;
             return this;
         }
         @CustomType.Setter
         public Builder securityGroupIds(List<String> securityGroupIds) {
-            this.securityGroupIds = Objects.requireNonNull(securityGroupIds);
+            if (securityGroupIds == null) {
+              throw new MissingRequiredPropertyException("GetEcsNetworkInterfacesInterface", "securityGroupIds");
+            }
+            this.securityGroupIds = securityGroupIds;
             return this;
         }
         public Builder securityGroupIds(String... securityGroupIds) {
@@ -506,7 +561,10 @@ public final class GetEcsNetworkInterfacesInterface {
         }
         @CustomType.Setter
         public Builder securityGroups(List<String> securityGroups) {
-            this.securityGroups = Objects.requireNonNull(securityGroups);
+            if (securityGroups == null) {
+              throw new MissingRequiredPropertyException("GetEcsNetworkInterfacesInterface", "securityGroups");
+            }
+            this.securityGroups = securityGroups;
             return this;
         }
         public Builder securityGroups(String... securityGroups) {
@@ -514,42 +572,66 @@ public final class GetEcsNetworkInterfacesInterface {
         }
         @CustomType.Setter
         public Builder serviceId(Integer serviceId) {
-            this.serviceId = Objects.requireNonNull(serviceId);
+            if (serviceId == null) {
+              throw new MissingRequiredPropertyException("GetEcsNetworkInterfacesInterface", "serviceId");
+            }
+            this.serviceId = serviceId;
             return this;
         }
         @CustomType.Setter
         public Builder serviceManaged(Boolean serviceManaged) {
-            this.serviceManaged = Objects.requireNonNull(serviceManaged);
+            if (serviceManaged == null) {
+              throw new MissingRequiredPropertyException("GetEcsNetworkInterfacesInterface", "serviceManaged");
+            }
+            this.serviceManaged = serviceManaged;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetEcsNetworkInterfacesInterface", "status");
+            }
+            this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder tags(Map<String,Object> tags) {
-            this.tags = Objects.requireNonNull(tags);
+            if (tags == null) {
+              throw new MissingRequiredPropertyException("GetEcsNetworkInterfacesInterface", "tags");
+            }
+            this.tags = tags;
             return this;
         }
         @CustomType.Setter
         public Builder type(String type) {
-            this.type = Objects.requireNonNull(type);
+            if (type == null) {
+              throw new MissingRequiredPropertyException("GetEcsNetworkInterfacesInterface", "type");
+            }
+            this.type = type;
             return this;
         }
         @CustomType.Setter
         public Builder vpcId(String vpcId) {
-            this.vpcId = Objects.requireNonNull(vpcId);
+            if (vpcId == null) {
+              throw new MissingRequiredPropertyException("GetEcsNetworkInterfacesInterface", "vpcId");
+            }
+            this.vpcId = vpcId;
             return this;
         }
         @CustomType.Setter
         public Builder vswitchId(String vswitchId) {
-            this.vswitchId = Objects.requireNonNull(vswitchId);
+            if (vswitchId == null) {
+              throw new MissingRequiredPropertyException("GetEcsNetworkInterfacesInterface", "vswitchId");
+            }
+            this.vswitchId = vswitchId;
             return this;
         }
         @CustomType.Setter
         public Builder zoneId(String zoneId) {
-            this.zoneId = Objects.requireNonNull(zoneId);
+            if (zoneId == null) {
+              throw new MissingRequiredPropertyException("GetEcsNetworkInterfacesInterface", "zoneId");
+            }
+            this.zoneId = zoneId;
             return this;
         }
         public GetEcsNetworkInterfacesInterface build() {

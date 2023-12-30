@@ -5,6 +5,7 @@ package com.pulumi.alicloud.cms.outputs;
 
 import com.pulumi.alicloud.cms.outputs.GetGroupMetricRulesRuleEscalation;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -298,32 +299,50 @@ public final class GetGroupMetricRulesRule {
 
         @CustomType.Setter
         public Builder contactGroups(String contactGroups) {
-            this.contactGroups = Objects.requireNonNull(contactGroups);
+            if (contactGroups == null) {
+              throw new MissingRequiredPropertyException("GetGroupMetricRulesRule", "contactGroups");
+            }
+            this.contactGroups = contactGroups;
             return this;
         }
         @CustomType.Setter
         public Builder dimensions(String dimensions) {
-            this.dimensions = Objects.requireNonNull(dimensions);
+            if (dimensions == null) {
+              throw new MissingRequiredPropertyException("GetGroupMetricRulesRule", "dimensions");
+            }
+            this.dimensions = dimensions;
             return this;
         }
         @CustomType.Setter
         public Builder effectiveInterval(String effectiveInterval) {
-            this.effectiveInterval = Objects.requireNonNull(effectiveInterval);
+            if (effectiveInterval == null) {
+              throw new MissingRequiredPropertyException("GetGroupMetricRulesRule", "effectiveInterval");
+            }
+            this.effectiveInterval = effectiveInterval;
             return this;
         }
         @CustomType.Setter
         public Builder emailSubject(String emailSubject) {
-            this.emailSubject = Objects.requireNonNull(emailSubject);
+            if (emailSubject == null) {
+              throw new MissingRequiredPropertyException("GetGroupMetricRulesRule", "emailSubject");
+            }
+            this.emailSubject = emailSubject;
             return this;
         }
         @CustomType.Setter
         public Builder enableState(Boolean enableState) {
-            this.enableState = Objects.requireNonNull(enableState);
+            if (enableState == null) {
+              throw new MissingRequiredPropertyException("GetGroupMetricRulesRule", "enableState");
+            }
+            this.enableState = enableState;
             return this;
         }
         @CustomType.Setter
         public Builder escalations(List<GetGroupMetricRulesRuleEscalation> escalations) {
-            this.escalations = Objects.requireNonNull(escalations);
+            if (escalations == null) {
+              throw new MissingRequiredPropertyException("GetGroupMetricRulesRule", "escalations");
+            }
+            this.escalations = escalations;
             return this;
         }
         public Builder escalations(GetGroupMetricRulesRuleEscalation... escalations) {
@@ -331,67 +350,106 @@ public final class GetGroupMetricRulesRule {
         }
         @CustomType.Setter
         public Builder groupId(String groupId) {
-            this.groupId = Objects.requireNonNull(groupId);
+            if (groupId == null) {
+              throw new MissingRequiredPropertyException("GetGroupMetricRulesRule", "groupId");
+            }
+            this.groupId = groupId;
             return this;
         }
         @CustomType.Setter
         public Builder groupMetricRuleName(String groupMetricRuleName) {
-            this.groupMetricRuleName = Objects.requireNonNull(groupMetricRuleName);
+            if (groupMetricRuleName == null) {
+              throw new MissingRequiredPropertyException("GetGroupMetricRulesRule", "groupMetricRuleName");
+            }
+            this.groupMetricRuleName = groupMetricRuleName;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetGroupMetricRulesRule", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder metricName(String metricName) {
-            this.metricName = Objects.requireNonNull(metricName);
+            if (metricName == null) {
+              throw new MissingRequiredPropertyException("GetGroupMetricRulesRule", "metricName");
+            }
+            this.metricName = metricName;
             return this;
         }
         @CustomType.Setter
         public Builder namespace(String namespace) {
-            this.namespace = Objects.requireNonNull(namespace);
+            if (namespace == null) {
+              throw new MissingRequiredPropertyException("GetGroupMetricRulesRule", "namespace");
+            }
+            this.namespace = namespace;
             return this;
         }
         @CustomType.Setter
         public Builder noEffectiveInterval(String noEffectiveInterval) {
-            this.noEffectiveInterval = Objects.requireNonNull(noEffectiveInterval);
+            if (noEffectiveInterval == null) {
+              throw new MissingRequiredPropertyException("GetGroupMetricRulesRule", "noEffectiveInterval");
+            }
+            this.noEffectiveInterval = noEffectiveInterval;
             return this;
         }
         @CustomType.Setter
         public Builder period(Integer period) {
-            this.period = Objects.requireNonNull(period);
+            if (period == null) {
+              throw new MissingRequiredPropertyException("GetGroupMetricRulesRule", "period");
+            }
+            this.period = period;
             return this;
         }
         @CustomType.Setter
         public Builder resources(String resources) {
-            this.resources = Objects.requireNonNull(resources);
+            if (resources == null) {
+              throw new MissingRequiredPropertyException("GetGroupMetricRulesRule", "resources");
+            }
+            this.resources = resources;
             return this;
         }
         @CustomType.Setter
         public Builder ruleId(String ruleId) {
-            this.ruleId = Objects.requireNonNull(ruleId);
+            if (ruleId == null) {
+              throw new MissingRequiredPropertyException("GetGroupMetricRulesRule", "ruleId");
+            }
+            this.ruleId = ruleId;
             return this;
         }
         @CustomType.Setter
         public Builder silenceTime(Integer silenceTime) {
-            this.silenceTime = Objects.requireNonNull(silenceTime);
+            if (silenceTime == null) {
+              throw new MissingRequiredPropertyException("GetGroupMetricRulesRule", "silenceTime");
+            }
+            this.silenceTime = silenceTime;
             return this;
         }
         @CustomType.Setter
         public Builder sourceType(String sourceType) {
-            this.sourceType = Objects.requireNonNull(sourceType);
+            if (sourceType == null) {
+              throw new MissingRequiredPropertyException("GetGroupMetricRulesRule", "sourceType");
+            }
+            this.sourceType = sourceType;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetGroupMetricRulesRule", "status");
+            }
+            this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder webhook(String webhook) {
-            this.webhook = Objects.requireNonNull(webhook);
+            if (webhook == null) {
+              throw new MissingRequiredPropertyException("GetGroupMetricRulesRule", "webhook");
+            }
+            this.webhook = webhook;
             return this;
         }
         public GetGroupMetricRulesRule build() {

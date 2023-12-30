@@ -60,6 +60,7 @@ public final class DomainResourceProxyType {
 
         @CustomType.Setter
         public Builder proxyPorts(@Nullable List<Integer> proxyPorts) {
+
             this.proxyPorts = proxyPorts;
             return this;
         }
@@ -68,6 +69,7 @@ public final class DomainResourceProxyType {
         }
         @CustomType.Setter
         public Builder proxyType(@Nullable String proxyType) {
+
             this.proxyType = proxyType;
             return this;
         }

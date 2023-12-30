@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.rds.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -78,7 +79,9 @@ public final class GetCharacterSetNamesPlainArgs extends com.pulumi.resources.In
         }
 
         public GetCharacterSetNamesPlainArgs build() {
-            $.engine = Objects.requireNonNull($.engine, "expected parameter 'engine' to be non-null");
+            if ($.engine == null) {
+                throw new MissingRequiredPropertyException("GetCharacterSetNamesPlainArgs", "engine");
+            }
             return $;
         }
     }

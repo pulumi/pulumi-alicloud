@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.log.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -72,17 +73,24 @@ public final class AlertPolicyConfiguration {
 
         @CustomType.Setter
         public Builder actionPolicyId(@Nullable String actionPolicyId) {
+
             this.actionPolicyId = actionPolicyId;
             return this;
         }
         @CustomType.Setter
         public Builder alertPolicyId(String alertPolicyId) {
-            this.alertPolicyId = Objects.requireNonNull(alertPolicyId);
+            if (alertPolicyId == null) {
+              throw new MissingRequiredPropertyException("AlertPolicyConfiguration", "alertPolicyId");
+            }
+            this.alertPolicyId = alertPolicyId;
             return this;
         }
         @CustomType.Setter
         public Builder repeatInterval(String repeatInterval) {
-            this.repeatInterval = Objects.requireNonNull(repeatInterval);
+            if (repeatInterval == null) {
+              throw new MissingRequiredPropertyException("AlertPolicyConfiguration", "repeatInterval");
+            }
+            this.repeatInterval = repeatInterval;
             return this;
         }
         public AlertPolicyConfiguration build() {

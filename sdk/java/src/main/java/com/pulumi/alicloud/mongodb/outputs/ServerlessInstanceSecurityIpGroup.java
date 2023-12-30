@@ -72,16 +72,19 @@ public final class ServerlessInstanceSecurityIpGroup {
 
         @CustomType.Setter
         public Builder securityIpGroupAttribute(@Nullable String securityIpGroupAttribute) {
+
             this.securityIpGroupAttribute = securityIpGroupAttribute;
             return this;
         }
         @CustomType.Setter
         public Builder securityIpGroupName(@Nullable String securityIpGroupName) {
+
             this.securityIpGroupName = securityIpGroupName;
             return this;
         }
         @CustomType.Setter
         public Builder securityIpList(@Nullable String securityIpList) {
+
             this.securityIpList = securityIpList;
             return this;
         }

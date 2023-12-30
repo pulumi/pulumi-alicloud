@@ -44,6 +44,7 @@ public final class GetDedicatedHostsOperationLock {
 
         @CustomType.Setter
         public Builder lockReason(@Nullable String lockReason) {
+
             this.lockReason = lockReason;
             return this;
         }

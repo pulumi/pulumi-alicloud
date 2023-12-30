@@ -5,6 +5,7 @@ package com.pulumi.alicloud.ecs.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -224,9 +225,15 @@ public final class AutoProvisioningGroupLaunchTemplateConfigArgs extends com.pul
         }
 
         public AutoProvisioningGroupLaunchTemplateConfigArgs build() {
-            $.maxPrice = Objects.requireNonNull($.maxPrice, "expected parameter 'maxPrice' to be non-null");
-            $.vswitchId = Objects.requireNonNull($.vswitchId, "expected parameter 'vswitchId' to be non-null");
-            $.weightedCapacity = Objects.requireNonNull($.weightedCapacity, "expected parameter 'weightedCapacity' to be non-null");
+            if ($.maxPrice == null) {
+                throw new MissingRequiredPropertyException("AutoProvisioningGroupLaunchTemplateConfigArgs", "maxPrice");
+            }
+            if ($.vswitchId == null) {
+                throw new MissingRequiredPropertyException("AutoProvisioningGroupLaunchTemplateConfigArgs", "vswitchId");
+            }
+            if ($.weightedCapacity == null) {
+                throw new MissingRequiredPropertyException("AutoProvisioningGroupLaunchTemplateConfigArgs", "weightedCapacity");
+            }
             return $;
         }
     }

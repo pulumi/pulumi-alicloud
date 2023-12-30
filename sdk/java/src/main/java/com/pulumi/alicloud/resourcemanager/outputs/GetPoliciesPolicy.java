@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.resourcemanager.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -127,37 +128,58 @@ public final class GetPoliciesPolicy {
 
         @CustomType.Setter
         public Builder attachmentCount(Integer attachmentCount) {
-            this.attachmentCount = Objects.requireNonNull(attachmentCount);
+            if (attachmentCount == null) {
+              throw new MissingRequiredPropertyException("GetPoliciesPolicy", "attachmentCount");
+            }
+            this.attachmentCount = attachmentCount;
             return this;
         }
         @CustomType.Setter
         public Builder defaultVersion(String defaultVersion) {
-            this.defaultVersion = Objects.requireNonNull(defaultVersion);
+            if (defaultVersion == null) {
+              throw new MissingRequiredPropertyException("GetPoliciesPolicy", "defaultVersion");
+            }
+            this.defaultVersion = defaultVersion;
             return this;
         }
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetPoliciesPolicy", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetPoliciesPolicy", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder policyName(String policyName) {
-            this.policyName = Objects.requireNonNull(policyName);
+            if (policyName == null) {
+              throw new MissingRequiredPropertyException("GetPoliciesPolicy", "policyName");
+            }
+            this.policyName = policyName;
             return this;
         }
         @CustomType.Setter
         public Builder policyType(String policyType) {
-            this.policyType = Objects.requireNonNull(policyType);
+            if (policyType == null) {
+              throw new MissingRequiredPropertyException("GetPoliciesPolicy", "policyType");
+            }
+            this.policyType = policyType;
             return this;
         }
         @CustomType.Setter
         public Builder updateDate(String updateDate) {
-            this.updateDate = Objects.requireNonNull(updateDate);
+            if (updateDate == null) {
+              throw new MissingRequiredPropertyException("GetPoliciesPolicy", "updateDate");
+            }
+            this.updateDate = updateDate;
             return this;
         }
         public GetPoliciesPolicy build() {

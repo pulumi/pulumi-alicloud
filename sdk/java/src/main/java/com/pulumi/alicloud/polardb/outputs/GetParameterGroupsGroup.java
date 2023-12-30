@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.polardb.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -169,52 +170,82 @@ public final class GetParameterGroupsGroup {
 
         @CustomType.Setter
         public Builder createTime(String createTime) {
-            this.createTime = Objects.requireNonNull(createTime);
+            if (createTime == null) {
+              throw new MissingRequiredPropertyException("GetParameterGroupsGroup", "createTime");
+            }
+            this.createTime = createTime;
             return this;
         }
         @CustomType.Setter
         public Builder dbType(String dbType) {
-            this.dbType = Objects.requireNonNull(dbType);
+            if (dbType == null) {
+              throw new MissingRequiredPropertyException("GetParameterGroupsGroup", "dbType");
+            }
+            this.dbType = dbType;
             return this;
         }
         @CustomType.Setter
         public Builder dbVersion(String dbVersion) {
-            this.dbVersion = Objects.requireNonNull(dbVersion);
+            if (dbVersion == null) {
+              throw new MissingRequiredPropertyException("GetParameterGroupsGroup", "dbVersion");
+            }
+            this.dbVersion = dbVersion;
             return this;
         }
         @CustomType.Setter
         public Builder forceRestart(String forceRestart) {
-            this.forceRestart = Objects.requireNonNull(forceRestart);
+            if (forceRestart == null) {
+              throw new MissingRequiredPropertyException("GetParameterGroupsGroup", "forceRestart");
+            }
+            this.forceRestart = forceRestart;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetParameterGroupsGroup", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder parameterCounts(Integer parameterCounts) {
-            this.parameterCounts = Objects.requireNonNull(parameterCounts);
+            if (parameterCounts == null) {
+              throw new MissingRequiredPropertyException("GetParameterGroupsGroup", "parameterCounts");
+            }
+            this.parameterCounts = parameterCounts;
             return this;
         }
         @CustomType.Setter
         public Builder parameterGroupDesc(String parameterGroupDesc) {
-            this.parameterGroupDesc = Objects.requireNonNull(parameterGroupDesc);
+            if (parameterGroupDesc == null) {
+              throw new MissingRequiredPropertyException("GetParameterGroupsGroup", "parameterGroupDesc");
+            }
+            this.parameterGroupDesc = parameterGroupDesc;
             return this;
         }
         @CustomType.Setter
         public Builder parameterGroupId(String parameterGroupId) {
-            this.parameterGroupId = Objects.requireNonNull(parameterGroupId);
+            if (parameterGroupId == null) {
+              throw new MissingRequiredPropertyException("GetParameterGroupsGroup", "parameterGroupId");
+            }
+            this.parameterGroupId = parameterGroupId;
             return this;
         }
         @CustomType.Setter
         public Builder parameterGroupName(String parameterGroupName) {
-            this.parameterGroupName = Objects.requireNonNull(parameterGroupName);
+            if (parameterGroupName == null) {
+              throw new MissingRequiredPropertyException("GetParameterGroupsGroup", "parameterGroupName");
+            }
+            this.parameterGroupName = parameterGroupName;
             return this;
         }
         @CustomType.Setter
         public Builder parameterGroupType(String parameterGroupType) {
-            this.parameterGroupType = Objects.requireNonNull(parameterGroupType);
+            if (parameterGroupType == null) {
+              throw new MissingRequiredPropertyException("GetParameterGroupsGroup", "parameterGroupType");
+            }
+            this.parameterGroupType = parameterGroupType;
             return this;
         }
         public GetParameterGroupsGroup build() {

@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.eds.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -112,32 +113,50 @@ public final class GetAdConnectorDirectoriesDirectoryAdConnector {
 
         @CustomType.Setter
         public Builder adConnectorAddress(String adConnectorAddress) {
-            this.adConnectorAddress = Objects.requireNonNull(adConnectorAddress);
+            if (adConnectorAddress == null) {
+              throw new MissingRequiredPropertyException("GetAdConnectorDirectoriesDirectoryAdConnector", "adConnectorAddress");
+            }
+            this.adConnectorAddress = adConnectorAddress;
             return this;
         }
         @CustomType.Setter
         public Builder connectorStatus(String connectorStatus) {
-            this.connectorStatus = Objects.requireNonNull(connectorStatus);
+            if (connectorStatus == null) {
+              throw new MissingRequiredPropertyException("GetAdConnectorDirectoriesDirectoryAdConnector", "connectorStatus");
+            }
+            this.connectorStatus = connectorStatus;
             return this;
         }
         @CustomType.Setter
         public Builder networkInterfaceId(String networkInterfaceId) {
-            this.networkInterfaceId = Objects.requireNonNull(networkInterfaceId);
+            if (networkInterfaceId == null) {
+              throw new MissingRequiredPropertyException("GetAdConnectorDirectoriesDirectoryAdConnector", "networkInterfaceId");
+            }
+            this.networkInterfaceId = networkInterfaceId;
             return this;
         }
         @CustomType.Setter
         public Builder specification(String specification) {
-            this.specification = Objects.requireNonNull(specification);
+            if (specification == null) {
+              throw new MissingRequiredPropertyException("GetAdConnectorDirectoriesDirectoryAdConnector", "specification");
+            }
+            this.specification = specification;
             return this;
         }
         @CustomType.Setter
         public Builder trustKey(String trustKey) {
-            this.trustKey = Objects.requireNonNull(trustKey);
+            if (trustKey == null) {
+              throw new MissingRequiredPropertyException("GetAdConnectorDirectoriesDirectoryAdConnector", "trustKey");
+            }
+            this.trustKey = trustKey;
             return this;
         }
         @CustomType.Setter
         public Builder vswitchId(String vswitchId) {
-            this.vswitchId = Objects.requireNonNull(vswitchId);
+            if (vswitchId == null) {
+              throw new MissingRequiredPropertyException("GetAdConnectorDirectoriesDirectoryAdConnector", "vswitchId");
+            }
+            this.vswitchId = vswitchId;
             return this;
         }
         public GetAdConnectorDirectoriesDirectoryAdConnector build() {

@@ -5,6 +5,7 @@ package com.pulumi.alicloud.ecs.outputs;
 
 import com.pulumi.alicloud.ecs.outputs.GetInstanceTypeFamiliesFamily;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -104,7 +105,10 @@ public final class GetInstanceTypeFamiliesResult {
 
         @CustomType.Setter
         public Builder families(List<GetInstanceTypeFamiliesFamily> families) {
-            this.families = Objects.requireNonNull(families);
+            if (families == null) {
+              throw new MissingRequiredPropertyException("GetInstanceTypeFamiliesResult", "families");
+            }
+            this.families = families;
             return this;
         }
         public Builder families(GetInstanceTypeFamiliesFamily... families) {
@@ -112,17 +116,24 @@ public final class GetInstanceTypeFamiliesResult {
         }
         @CustomType.Setter
         public Builder generation(@Nullable String generation) {
+
             this.generation = generation;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetInstanceTypeFamiliesResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder ids(List<String> ids) {
-            this.ids = Objects.requireNonNull(ids);
+            if (ids == null) {
+              throw new MissingRequiredPropertyException("GetInstanceTypeFamiliesResult", "ids");
+            }
+            this.ids = ids;
             return this;
         }
         public Builder ids(String... ids) {
@@ -130,21 +141,25 @@ public final class GetInstanceTypeFamiliesResult {
         }
         @CustomType.Setter
         public Builder instanceChargeType(@Nullable String instanceChargeType) {
+
             this.instanceChargeType = instanceChargeType;
             return this;
         }
         @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
+
             this.outputFile = outputFile;
             return this;
         }
         @CustomType.Setter
         public Builder spotStrategy(@Nullable String spotStrategy) {
+
             this.spotStrategy = spotStrategy;
             return this;
         }
         @CustomType.Setter
         public Builder zoneId(@Nullable String zoneId) {
+
             this.zoneId = zoneId;
             return this;
         }

@@ -5,6 +5,7 @@ package com.pulumi.alicloud.cddc;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.Object;
@@ -536,11 +537,21 @@ public final class DedicatedHostArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public DedicatedHostArgs build() {
-            $.dedicatedHostGroupId = Objects.requireNonNull($.dedicatedHostGroupId, "expected parameter 'dedicatedHostGroupId' to be non-null");
-            $.hostClass = Objects.requireNonNull($.hostClass, "expected parameter 'hostClass' to be non-null");
-            $.paymentType = Objects.requireNonNull($.paymentType, "expected parameter 'paymentType' to be non-null");
-            $.vswitchId = Objects.requireNonNull($.vswitchId, "expected parameter 'vswitchId' to be non-null");
-            $.zoneId = Objects.requireNonNull($.zoneId, "expected parameter 'zoneId' to be non-null");
+            if ($.dedicatedHostGroupId == null) {
+                throw new MissingRequiredPropertyException("DedicatedHostArgs", "dedicatedHostGroupId");
+            }
+            if ($.hostClass == null) {
+                throw new MissingRequiredPropertyException("DedicatedHostArgs", "hostClass");
+            }
+            if ($.paymentType == null) {
+                throw new MissingRequiredPropertyException("DedicatedHostArgs", "paymentType");
+            }
+            if ($.vswitchId == null) {
+                throw new MissingRequiredPropertyException("DedicatedHostArgs", "vswitchId");
+            }
+            if ($.zoneId == null) {
+                throw new MissingRequiredPropertyException("DedicatedHostArgs", "zoneId");
+            }
             return $;
         }
     }

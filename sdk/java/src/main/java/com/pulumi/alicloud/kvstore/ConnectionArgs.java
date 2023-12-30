@@ -5,6 +5,7 @@ package com.pulumi.alicloud.kvstore;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -148,9 +149,15 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public ConnectionArgs build() {
-            $.connectionStringPrefix = Objects.requireNonNull($.connectionStringPrefix, "expected parameter 'connectionStringPrefix' to be non-null");
-            $.instanceId = Objects.requireNonNull($.instanceId, "expected parameter 'instanceId' to be non-null");
-            $.port = Objects.requireNonNull($.port, "expected parameter 'port' to be non-null");
+            if ($.connectionStringPrefix == null) {
+                throw new MissingRequiredPropertyException("ConnectionArgs", "connectionStringPrefix");
+            }
+            if ($.instanceId == null) {
+                throw new MissingRequiredPropertyException("ConnectionArgs", "instanceId");
+            }
+            if ($.port == null) {
+                throw new MissingRequiredPropertyException("ConnectionArgs", "port");
+            }
             return $;
         }
     }

@@ -5,6 +5,7 @@ package com.pulumi.alicloud.log.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -536,9 +537,15 @@ public final class AlertQueryListArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         public AlertQueryListArgs build() {
-            $.end = Objects.requireNonNull($.end, "expected parameter 'end' to be non-null");
-            $.query = Objects.requireNonNull($.query, "expected parameter 'query' to be non-null");
-            $.start = Objects.requireNonNull($.start, "expected parameter 'start' to be non-null");
+            if ($.end == null) {
+                throw new MissingRequiredPropertyException("AlertQueryListArgs", "end");
+            }
+            if ($.query == null) {
+                throw new MissingRequiredPropertyException("AlertQueryListArgs", "query");
+            }
+            if ($.start == null) {
+                throw new MissingRequiredPropertyException("AlertQueryListArgs", "start");
+            }
             return $;
         }
     }

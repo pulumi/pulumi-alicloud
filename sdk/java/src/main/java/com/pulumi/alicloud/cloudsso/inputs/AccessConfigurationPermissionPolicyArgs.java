@@ -5,6 +5,7 @@ package com.pulumi.alicloud.cloudsso.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -150,8 +151,12 @@ public final class AccessConfigurationPermissionPolicyArgs extends com.pulumi.re
         }
 
         public AccessConfigurationPermissionPolicyArgs build() {
-            $.permissionPolicyName = Objects.requireNonNull($.permissionPolicyName, "expected parameter 'permissionPolicyName' to be non-null");
-            $.permissionPolicyType = Objects.requireNonNull($.permissionPolicyType, "expected parameter 'permissionPolicyType' to be non-null");
+            if ($.permissionPolicyName == null) {
+                throw new MissingRequiredPropertyException("AccessConfigurationPermissionPolicyArgs", "permissionPolicyName");
+            }
+            if ($.permissionPolicyType == null) {
+                throw new MissingRequiredPropertyException("AccessConfigurationPermissionPolicyArgs", "permissionPolicyType");
+            }
             return $;
         }
     }

@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.vpc.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -212,67 +213,106 @@ public final class GetSslVpnServersServer {
 
         @CustomType.Setter
         public Builder cipher(String cipher) {
-            this.cipher = Objects.requireNonNull(cipher);
+            if (cipher == null) {
+              throw new MissingRequiredPropertyException("GetSslVpnServersServer", "cipher");
+            }
+            this.cipher = cipher;
             return this;
         }
         @CustomType.Setter
         public Builder clientIpPool(String clientIpPool) {
-            this.clientIpPool = Objects.requireNonNull(clientIpPool);
+            if (clientIpPool == null) {
+              throw new MissingRequiredPropertyException("GetSslVpnServersServer", "clientIpPool");
+            }
+            this.clientIpPool = clientIpPool;
             return this;
         }
         @CustomType.Setter
         public Builder compress(Boolean compress) {
-            this.compress = Objects.requireNonNull(compress);
+            if (compress == null) {
+              throw new MissingRequiredPropertyException("GetSslVpnServersServer", "compress");
+            }
+            this.compress = compress;
             return this;
         }
         @CustomType.Setter
         public Builder connections(Integer connections) {
-            this.connections = Objects.requireNonNull(connections);
+            if (connections == null) {
+              throw new MissingRequiredPropertyException("GetSslVpnServersServer", "connections");
+            }
+            this.connections = connections;
             return this;
         }
         @CustomType.Setter
         public Builder createTime(String createTime) {
-            this.createTime = Objects.requireNonNull(createTime);
+            if (createTime == null) {
+              throw new MissingRequiredPropertyException("GetSslVpnServersServer", "createTime");
+            }
+            this.createTime = createTime;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetSslVpnServersServer", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder internetIp(String internetIp) {
-            this.internetIp = Objects.requireNonNull(internetIp);
+            if (internetIp == null) {
+              throw new MissingRequiredPropertyException("GetSslVpnServersServer", "internetIp");
+            }
+            this.internetIp = internetIp;
             return this;
         }
         @CustomType.Setter
         public Builder localSubnet(String localSubnet) {
-            this.localSubnet = Objects.requireNonNull(localSubnet);
+            if (localSubnet == null) {
+              throw new MissingRequiredPropertyException("GetSslVpnServersServer", "localSubnet");
+            }
+            this.localSubnet = localSubnet;
             return this;
         }
         @CustomType.Setter
         public Builder maxConnections(Integer maxConnections) {
-            this.maxConnections = Objects.requireNonNull(maxConnections);
+            if (maxConnections == null) {
+              throw new MissingRequiredPropertyException("GetSslVpnServersServer", "maxConnections");
+            }
+            this.maxConnections = maxConnections;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetSslVpnServersServer", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder port(Integer port) {
-            this.port = Objects.requireNonNull(port);
+            if (port == null) {
+              throw new MissingRequiredPropertyException("GetSslVpnServersServer", "port");
+            }
+            this.port = port;
             return this;
         }
         @CustomType.Setter
         public Builder proto(String proto) {
-            this.proto = Objects.requireNonNull(proto);
+            if (proto == null) {
+              throw new MissingRequiredPropertyException("GetSslVpnServersServer", "proto");
+            }
+            this.proto = proto;
             return this;
         }
         @CustomType.Setter
         public Builder vpnGatewayId(String vpnGatewayId) {
-            this.vpnGatewayId = Objects.requireNonNull(vpnGatewayId);
+            if (vpnGatewayId == null) {
+              throw new MissingRequiredPropertyException("GetSslVpnServersServer", "vpnGatewayId");
+            }
+            this.vpnGatewayId = vpnGatewayId;
             return this;
         }
         public GetSslVpnServersServer build() {

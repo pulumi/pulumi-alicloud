@@ -5,6 +5,7 @@ package com.pulumi.alicloud.cr;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -151,8 +152,12 @@ public final class NamespaceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public NamespaceArgs build() {
-            $.autoCreate = Objects.requireNonNull($.autoCreate, "expected parameter 'autoCreate' to be non-null");
-            $.defaultVisibility = Objects.requireNonNull($.defaultVisibility, "expected parameter 'defaultVisibility' to be non-null");
+            if ($.autoCreate == null) {
+                throw new MissingRequiredPropertyException("NamespaceArgs", "autoCreate");
+            }
+            if ($.defaultVisibility == null) {
+                throw new MissingRequiredPropertyException("NamespaceArgs", "defaultVisibility");
+            }
             return $;
         }
     }

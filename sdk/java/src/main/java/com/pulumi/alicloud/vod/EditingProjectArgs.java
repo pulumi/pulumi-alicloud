@@ -5,6 +5,7 @@ package com.pulumi.alicloud.vod;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -224,7 +225,9 @@ public final class EditingProjectArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         public EditingProjectArgs build() {
-            $.title = Objects.requireNonNull($.title, "expected parameter 'title' to be non-null");
+            if ($.title == null) {
+                throw new MissingRequiredPropertyException("EditingProjectArgs", "title");
+            }
             return $;
         }
     }

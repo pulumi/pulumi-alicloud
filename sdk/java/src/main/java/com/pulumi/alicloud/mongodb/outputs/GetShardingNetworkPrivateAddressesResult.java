@@ -5,6 +5,7 @@ package com.pulumi.alicloud.mongodb.outputs;
 
 import com.pulumi.alicloud.mongodb.outputs.GetShardingNetworkPrivateAddressesAddress;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -76,7 +77,10 @@ public final class GetShardingNetworkPrivateAddressesResult {
 
         @CustomType.Setter
         public Builder addresses(List<GetShardingNetworkPrivateAddressesAddress> addresses) {
-            this.addresses = Objects.requireNonNull(addresses);
+            if (addresses == null) {
+              throw new MissingRequiredPropertyException("GetShardingNetworkPrivateAddressesResult", "addresses");
+            }
+            this.addresses = addresses;
             return this;
         }
         public Builder addresses(GetShardingNetworkPrivateAddressesAddress... addresses) {
@@ -84,26 +88,35 @@ public final class GetShardingNetworkPrivateAddressesResult {
         }
         @CustomType.Setter
         public Builder dbInstanceId(String dbInstanceId) {
-            this.dbInstanceId = Objects.requireNonNull(dbInstanceId);
+            if (dbInstanceId == null) {
+              throw new MissingRequiredPropertyException("GetShardingNetworkPrivateAddressesResult", "dbInstanceId");
+            }
+            this.dbInstanceId = dbInstanceId;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetShardingNetworkPrivateAddressesResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder nodeId(@Nullable String nodeId) {
+
             this.nodeId = nodeId;
             return this;
         }
         @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
+
             this.outputFile = outputFile;
             return this;
         }
         @CustomType.Setter
         public Builder role(@Nullable String role) {
+
             this.role = role;
             return this;
         }

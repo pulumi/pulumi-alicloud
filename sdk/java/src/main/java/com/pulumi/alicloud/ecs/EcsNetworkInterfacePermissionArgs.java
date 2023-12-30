@@ -5,6 +5,7 @@ package com.pulumi.alicloud.ecs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -188,9 +189,15 @@ public final class EcsNetworkInterfacePermissionArgs extends com.pulumi.resource
         }
 
         public EcsNetworkInterfacePermissionArgs build() {
-            $.accountId = Objects.requireNonNull($.accountId, "expected parameter 'accountId' to be non-null");
-            $.networkInterfaceId = Objects.requireNonNull($.networkInterfaceId, "expected parameter 'networkInterfaceId' to be non-null");
-            $.permission = Objects.requireNonNull($.permission, "expected parameter 'permission' to be non-null");
+            if ($.accountId == null) {
+                throw new MissingRequiredPropertyException("EcsNetworkInterfacePermissionArgs", "accountId");
+            }
+            if ($.networkInterfaceId == null) {
+                throw new MissingRequiredPropertyException("EcsNetworkInterfacePermissionArgs", "networkInterfaceId");
+            }
+            if ($.permission == null) {
+                throw new MissingRequiredPropertyException("EcsNetworkInterfacePermissionArgs", "permission");
+            }
             return $;
         }
     }

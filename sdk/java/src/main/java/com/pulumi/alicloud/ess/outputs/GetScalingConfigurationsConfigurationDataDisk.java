@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.ess.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -114,32 +115,50 @@ public final class GetScalingConfigurationsConfigurationDataDisk {
 
         @CustomType.Setter
         public Builder category(String category) {
-            this.category = Objects.requireNonNull(category);
+            if (category == null) {
+              throw new MissingRequiredPropertyException("GetScalingConfigurationsConfigurationDataDisk", "category");
+            }
+            this.category = category;
             return this;
         }
         @CustomType.Setter
         public Builder deleteWithInstance(Boolean deleteWithInstance) {
-            this.deleteWithInstance = Objects.requireNonNull(deleteWithInstance);
+            if (deleteWithInstance == null) {
+              throw new MissingRequiredPropertyException("GetScalingConfigurationsConfigurationDataDisk", "deleteWithInstance");
+            }
+            this.deleteWithInstance = deleteWithInstance;
             return this;
         }
         @CustomType.Setter
         public Builder device(String device) {
-            this.device = Objects.requireNonNull(device);
+            if (device == null) {
+              throw new MissingRequiredPropertyException("GetScalingConfigurationsConfigurationDataDisk", "device");
+            }
+            this.device = device;
             return this;
         }
         @CustomType.Setter
         public Builder performanceLevel(String performanceLevel) {
-            this.performanceLevel = Objects.requireNonNull(performanceLevel);
+            if (performanceLevel == null) {
+              throw new MissingRequiredPropertyException("GetScalingConfigurationsConfigurationDataDisk", "performanceLevel");
+            }
+            this.performanceLevel = performanceLevel;
             return this;
         }
         @CustomType.Setter
         public Builder size(Integer size) {
-            this.size = Objects.requireNonNull(size);
+            if (size == null) {
+              throw new MissingRequiredPropertyException("GetScalingConfigurationsConfigurationDataDisk", "size");
+            }
+            this.size = size;
             return this;
         }
         @CustomType.Setter
         public Builder snapshotId(String snapshotId) {
-            this.snapshotId = Objects.requireNonNull(snapshotId);
+            if (snapshotId == null) {
+              throw new MissingRequiredPropertyException("GetScalingConfigurationsConfigurationDataDisk", "snapshotId");
+            }
+            this.snapshotId = snapshotId;
             return this;
         }
         public GetScalingConfigurationsConfigurationDataDisk build() {

@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.nas.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -127,32 +128,50 @@ public final class GetLifecyclePoliciesPolicy {
 
         @CustomType.Setter
         public Builder createTime(String createTime) {
-            this.createTime = Objects.requireNonNull(createTime);
+            if (createTime == null) {
+              throw new MissingRequiredPropertyException("GetLifecyclePoliciesPolicy", "createTime");
+            }
+            this.createTime = createTime;
             return this;
         }
         @CustomType.Setter
         public Builder fileSystemId(String fileSystemId) {
-            this.fileSystemId = Objects.requireNonNull(fileSystemId);
+            if (fileSystemId == null) {
+              throw new MissingRequiredPropertyException("GetLifecyclePoliciesPolicy", "fileSystemId");
+            }
+            this.fileSystemId = fileSystemId;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetLifecyclePoliciesPolicy", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder lifecyclePolicyName(String lifecyclePolicyName) {
-            this.lifecyclePolicyName = Objects.requireNonNull(lifecyclePolicyName);
+            if (lifecyclePolicyName == null) {
+              throw new MissingRequiredPropertyException("GetLifecyclePoliciesPolicy", "lifecyclePolicyName");
+            }
+            this.lifecyclePolicyName = lifecyclePolicyName;
             return this;
         }
         @CustomType.Setter
         public Builder lifecycleRuleName(String lifecycleRuleName) {
-            this.lifecycleRuleName = Objects.requireNonNull(lifecycleRuleName);
+            if (lifecycleRuleName == null) {
+              throw new MissingRequiredPropertyException("GetLifecyclePoliciesPolicy", "lifecycleRuleName");
+            }
+            this.lifecycleRuleName = lifecycleRuleName;
             return this;
         }
         @CustomType.Setter
         public Builder paths(List<String> paths) {
-            this.paths = Objects.requireNonNull(paths);
+            if (paths == null) {
+              throw new MissingRequiredPropertyException("GetLifecyclePoliciesPolicy", "paths");
+            }
+            this.paths = paths;
             return this;
         }
         public Builder paths(String... paths) {
@@ -160,7 +179,10 @@ public final class GetLifecyclePoliciesPolicy {
         }
         @CustomType.Setter
         public Builder storageType(String storageType) {
-            this.storageType = Objects.requireNonNull(storageType);
+            if (storageType == null) {
+              throw new MissingRequiredPropertyException("GetLifecyclePoliciesPolicy", "storageType");
+            }
+            this.storageType = storageType;
             return this;
         }
         public GetLifecyclePoliciesPolicy build() {

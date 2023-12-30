@@ -5,6 +5,7 @@ package com.pulumi.alicloud.cen.outputs;
 
 import com.pulumi.alicloud.cen.outputs.GetTransitRoutersTransitRouter;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -140,16 +141,23 @@ public final class GetTransitRoutersResult {
 
         @CustomType.Setter
         public Builder cenId(String cenId) {
-            this.cenId = Objects.requireNonNull(cenId);
+            if (cenId == null) {
+              throw new MissingRequiredPropertyException("GetTransitRoutersResult", "cenId");
+            }
+            this.cenId = cenId;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetTransitRoutersResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder ids(@Nullable List<String> ids) {
+
             this.ids = ids;
             return this;
         }
@@ -158,12 +166,16 @@ public final class GetTransitRoutersResult {
         }
         @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
+
             this.nameRegex = nameRegex;
             return this;
         }
         @CustomType.Setter
         public Builder names(List<String> names) {
-            this.names = Objects.requireNonNull(names);
+            if (names == null) {
+              throw new MissingRequiredPropertyException("GetTransitRoutersResult", "names");
+            }
+            this.names = names;
             return this;
         }
         public Builder names(String... names) {
@@ -171,21 +183,25 @@ public final class GetTransitRoutersResult {
         }
         @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
+
             this.outputFile = outputFile;
             return this;
         }
         @CustomType.Setter
         public Builder status(@Nullable String status) {
+
             this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder transitRouterId(@Nullable String transitRouterId) {
+
             this.transitRouterId = transitRouterId;
             return this;
         }
         @CustomType.Setter
         public Builder transitRouterIds(@Nullable List<String> transitRouterIds) {
+
             this.transitRouterIds = transitRouterIds;
             return this;
         }
@@ -194,7 +210,10 @@ public final class GetTransitRoutersResult {
         }
         @CustomType.Setter
         public Builder transitRouters(List<GetTransitRoutersTransitRouter> transitRouters) {
-            this.transitRouters = Objects.requireNonNull(transitRouters);
+            if (transitRouters == null) {
+              throw new MissingRequiredPropertyException("GetTransitRoutersResult", "transitRouters");
+            }
+            this.transitRouters = transitRouters;
             return this;
         }
         public Builder transitRouters(GetTransitRoutersTransitRouter... transitRouters) {

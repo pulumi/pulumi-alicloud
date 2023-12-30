@@ -5,6 +5,7 @@ package com.pulumi.alicloud.cr.outputs;
 
 import com.pulumi.alicloud.cr.outputs.GetChainsChainChainConfigNodeNodeConfig;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -73,12 +74,18 @@ public final class GetChainsChainChainConfigNode {
 
         @CustomType.Setter
         public Builder enable(Boolean enable) {
-            this.enable = Objects.requireNonNull(enable);
+            if (enable == null) {
+              throw new MissingRequiredPropertyException("GetChainsChainChainConfigNode", "enable");
+            }
+            this.enable = enable;
             return this;
         }
         @CustomType.Setter
         public Builder nodeConfigs(List<GetChainsChainChainConfigNodeNodeConfig> nodeConfigs) {
-            this.nodeConfigs = Objects.requireNonNull(nodeConfigs);
+            if (nodeConfigs == null) {
+              throw new MissingRequiredPropertyException("GetChainsChainChainConfigNode", "nodeConfigs");
+            }
+            this.nodeConfigs = nodeConfigs;
             return this;
         }
         public Builder nodeConfigs(GetChainsChainChainConfigNodeNodeConfig... nodeConfigs) {
@@ -86,7 +93,10 @@ public final class GetChainsChainChainConfigNode {
         }
         @CustomType.Setter
         public Builder nodeName(String nodeName) {
-            this.nodeName = Objects.requireNonNull(nodeName);
+            if (nodeName == null) {
+              throw new MissingRequiredPropertyException("GetChainsChainChainConfigNode", "nodeName");
+            }
+            this.nodeName = nodeName;
             return this;
         }
         public GetChainsChainChainConfigNode build() {

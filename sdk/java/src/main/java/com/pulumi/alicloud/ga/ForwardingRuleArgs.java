@@ -7,6 +7,7 @@ import com.pulumi.alicloud.ga.inputs.ForwardingRuleRuleActionArgs;
 import com.pulumi.alicloud.ga.inputs.ForwardingRuleRuleConditionArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -285,10 +286,18 @@ public final class ForwardingRuleArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         public ForwardingRuleArgs build() {
-            $.acceleratorId = Objects.requireNonNull($.acceleratorId, "expected parameter 'acceleratorId' to be non-null");
-            $.listenerId = Objects.requireNonNull($.listenerId, "expected parameter 'listenerId' to be non-null");
-            $.ruleActions = Objects.requireNonNull($.ruleActions, "expected parameter 'ruleActions' to be non-null");
-            $.ruleConditions = Objects.requireNonNull($.ruleConditions, "expected parameter 'ruleConditions' to be non-null");
+            if ($.acceleratorId == null) {
+                throw new MissingRequiredPropertyException("ForwardingRuleArgs", "acceleratorId");
+            }
+            if ($.listenerId == null) {
+                throw new MissingRequiredPropertyException("ForwardingRuleArgs", "listenerId");
+            }
+            if ($.ruleActions == null) {
+                throw new MissingRequiredPropertyException("ForwardingRuleArgs", "ruleActions");
+            }
+            if ($.ruleConditions == null) {
+                throw new MissingRequiredPropertyException("ForwardingRuleArgs", "ruleConditions");
+            }
             return $;
         }
     }

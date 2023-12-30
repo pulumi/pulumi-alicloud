@@ -5,6 +5,7 @@ package com.pulumi.alicloud.waf;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -261,8 +262,12 @@ public final class CertificateArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public CertificateArgs build() {
-            $.domain = Objects.requireNonNull($.domain, "expected parameter 'domain' to be non-null");
-            $.instanceId = Objects.requireNonNull($.instanceId, "expected parameter 'instanceId' to be non-null");
+            if ($.domain == null) {
+                throw new MissingRequiredPropertyException("CertificateArgs", "domain");
+            }
+            if ($.instanceId == null) {
+                throw new MissingRequiredPropertyException("CertificateArgs", "instanceId");
+            }
             return $;
         }
     }

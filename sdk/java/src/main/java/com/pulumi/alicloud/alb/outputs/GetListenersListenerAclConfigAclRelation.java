@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.alb.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -56,12 +57,18 @@ public final class GetListenersListenerAclConfigAclRelation {
 
         @CustomType.Setter
         public Builder aclId(String aclId) {
-            this.aclId = Objects.requireNonNull(aclId);
+            if (aclId == null) {
+              throw new MissingRequiredPropertyException("GetListenersListenerAclConfigAclRelation", "aclId");
+            }
+            this.aclId = aclId;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetListenersListenerAclConfigAclRelation", "status");
+            }
+            this.status = status;
             return this;
         }
         public GetListenersListenerAclConfigAclRelation build() {

@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.emrv2.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -102,27 +103,36 @@ public final class ClusterSubscriptionConfig {
 
         @CustomType.Setter
         public Builder autoRenew(@Nullable Boolean autoRenew) {
+
             this.autoRenew = autoRenew;
             return this;
         }
         @CustomType.Setter
         public Builder autoRenewDuration(@Nullable Integer autoRenewDuration) {
+
             this.autoRenewDuration = autoRenewDuration;
             return this;
         }
         @CustomType.Setter
         public Builder autoRenewDurationUnit(@Nullable String autoRenewDurationUnit) {
+
             this.autoRenewDurationUnit = autoRenewDurationUnit;
             return this;
         }
         @CustomType.Setter
         public Builder paymentDuration(Integer paymentDuration) {
-            this.paymentDuration = Objects.requireNonNull(paymentDuration);
+            if (paymentDuration == null) {
+              throw new MissingRequiredPropertyException("ClusterSubscriptionConfig", "paymentDuration");
+            }
+            this.paymentDuration = paymentDuration;
             return this;
         }
         @CustomType.Setter
         public Builder paymentDurationUnit(String paymentDurationUnit) {
-            this.paymentDurationUnit = Objects.requireNonNull(paymentDurationUnit);
+            if (paymentDurationUnit == null) {
+              throw new MissingRequiredPropertyException("ClusterSubscriptionConfig", "paymentDurationUnit");
+            }
+            this.paymentDurationUnit = paymentDurationUnit;
             return this;
         }
         public ClusterSubscriptionConfig build() {

@@ -5,6 +5,7 @@ package com.pulumi.alicloud.eci.outputs;
 
 import com.pulumi.alicloud.eci.outputs.GetVirtualNodesNodeEvent;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.Object;
 import java.lang.String;
@@ -277,22 +278,34 @@ public final class GetVirtualNodesNode {
 
         @CustomType.Setter
         public Builder cpu(Integer cpu) {
-            this.cpu = Objects.requireNonNull(cpu);
+            if (cpu == null) {
+              throw new MissingRequiredPropertyException("GetVirtualNodesNode", "cpu");
+            }
+            this.cpu = cpu;
             return this;
         }
         @CustomType.Setter
         public Builder createTime(String createTime) {
-            this.createTime = Objects.requireNonNull(createTime);
+            if (createTime == null) {
+              throw new MissingRequiredPropertyException("GetVirtualNodesNode", "createTime");
+            }
+            this.createTime = createTime;
             return this;
         }
         @CustomType.Setter
         public Builder eniInstanceId(String eniInstanceId) {
-            this.eniInstanceId = Objects.requireNonNull(eniInstanceId);
+            if (eniInstanceId == null) {
+              throw new MissingRequiredPropertyException("GetVirtualNodesNode", "eniInstanceId");
+            }
+            this.eniInstanceId = eniInstanceId;
             return this;
         }
         @CustomType.Setter
         public Builder events(List<GetVirtualNodesNodeEvent> events) {
-            this.events = Objects.requireNonNull(events);
+            if (events == null) {
+              throw new MissingRequiredPropertyException("GetVirtualNodesNode", "events");
+            }
+            this.events = events;
             return this;
         }
         public Builder events(GetVirtualNodesNodeEvent... events) {
@@ -300,72 +313,114 @@ public final class GetVirtualNodesNode {
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetVirtualNodesNode", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder internetIp(String internetIp) {
-            this.internetIp = Objects.requireNonNull(internetIp);
+            if (internetIp == null) {
+              throw new MissingRequiredPropertyException("GetVirtualNodesNode", "internetIp");
+            }
+            this.internetIp = internetIp;
             return this;
         }
         @CustomType.Setter
         public Builder intranetIp(String intranetIp) {
-            this.intranetIp = Objects.requireNonNull(intranetIp);
+            if (intranetIp == null) {
+              throw new MissingRequiredPropertyException("GetVirtualNodesNode", "intranetIp");
+            }
+            this.intranetIp = intranetIp;
             return this;
         }
         @CustomType.Setter
         public Builder memory(Integer memory) {
-            this.memory = Objects.requireNonNull(memory);
+            if (memory == null) {
+              throw new MissingRequiredPropertyException("GetVirtualNodesNode", "memory");
+            }
+            this.memory = memory;
             return this;
         }
         @CustomType.Setter
         public Builder ramRoleName(String ramRoleName) {
-            this.ramRoleName = Objects.requireNonNull(ramRoleName);
+            if (ramRoleName == null) {
+              throw new MissingRequiredPropertyException("GetVirtualNodesNode", "ramRoleName");
+            }
+            this.ramRoleName = ramRoleName;
             return this;
         }
         @CustomType.Setter
         public Builder resourceGroupId(String resourceGroupId) {
-            this.resourceGroupId = Objects.requireNonNull(resourceGroupId);
+            if (resourceGroupId == null) {
+              throw new MissingRequiredPropertyException("GetVirtualNodesNode", "resourceGroupId");
+            }
+            this.resourceGroupId = resourceGroupId;
             return this;
         }
         @CustomType.Setter
         public Builder securityGroupId(String securityGroupId) {
-            this.securityGroupId = Objects.requireNonNull(securityGroupId);
+            if (securityGroupId == null) {
+              throw new MissingRequiredPropertyException("GetVirtualNodesNode", "securityGroupId");
+            }
+            this.securityGroupId = securityGroupId;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetVirtualNodesNode", "status");
+            }
+            this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder tags(Map<String,Object> tags) {
-            this.tags = Objects.requireNonNull(tags);
+            if (tags == null) {
+              throw new MissingRequiredPropertyException("GetVirtualNodesNode", "tags");
+            }
+            this.tags = tags;
             return this;
         }
         @CustomType.Setter
         public Builder virtualNodeId(String virtualNodeId) {
-            this.virtualNodeId = Objects.requireNonNull(virtualNodeId);
+            if (virtualNodeId == null) {
+              throw new MissingRequiredPropertyException("GetVirtualNodesNode", "virtualNodeId");
+            }
+            this.virtualNodeId = virtualNodeId;
             return this;
         }
         @CustomType.Setter
         public Builder virtualNodeName(String virtualNodeName) {
-            this.virtualNodeName = Objects.requireNonNull(virtualNodeName);
+            if (virtualNodeName == null) {
+              throw new MissingRequiredPropertyException("GetVirtualNodesNode", "virtualNodeName");
+            }
+            this.virtualNodeName = virtualNodeName;
             return this;
         }
         @CustomType.Setter
         public Builder vpcId(String vpcId) {
-            this.vpcId = Objects.requireNonNull(vpcId);
+            if (vpcId == null) {
+              throw new MissingRequiredPropertyException("GetVirtualNodesNode", "vpcId");
+            }
+            this.vpcId = vpcId;
             return this;
         }
         @CustomType.Setter
         public Builder vswitchId(String vswitchId) {
-            this.vswitchId = Objects.requireNonNull(vswitchId);
+            if (vswitchId == null) {
+              throw new MissingRequiredPropertyException("GetVirtualNodesNode", "vswitchId");
+            }
+            this.vswitchId = vswitchId;
             return this;
         }
         @CustomType.Setter
         public Builder zoneId(String zoneId) {
-            this.zoneId = Objects.requireNonNull(zoneId);
+            if (zoneId == null) {
+              throw new MissingRequiredPropertyException("GetVirtualNodesNode", "zoneId");
+            }
+            this.zoneId = zoneId;
             return this;
         }
         public GetVirtualNodesNode build() {

@@ -5,6 +5,7 @@ package com.pulumi.alicloud.vpc;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -111,8 +112,12 @@ public final class GatewayEndpointRouteTableAttachmentArgs extends com.pulumi.re
         }
 
         public GatewayEndpointRouteTableAttachmentArgs build() {
-            $.gatewayEndpointId = Objects.requireNonNull($.gatewayEndpointId, "expected parameter 'gatewayEndpointId' to be non-null");
-            $.routeTableId = Objects.requireNonNull($.routeTableId, "expected parameter 'routeTableId' to be non-null");
+            if ($.gatewayEndpointId == null) {
+                throw new MissingRequiredPropertyException("GatewayEndpointRouteTableAttachmentArgs", "gatewayEndpointId");
+            }
+            if ($.routeTableId == null) {
+                throw new MissingRequiredPropertyException("GatewayEndpointRouteTableAttachmentArgs", "routeTableId");
+            }
             return $;
         }
     }

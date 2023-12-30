@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.ddos.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -211,7 +212,9 @@ public final class GetDdosBgpIpsPlainArgs extends com.pulumi.resources.InvokeArg
         }
 
         public GetDdosBgpIpsPlainArgs build() {
-            $.instanceId = Objects.requireNonNull($.instanceId, "expected parameter 'instanceId' to be non-null");
+            if ($.instanceId == null) {
+                throw new MissingRequiredPropertyException("GetDdosBgpIpsPlainArgs", "instanceId");
+            }
             return $;
         }
     }

@@ -5,6 +5,7 @@ package com.pulumi.alicloud.ga.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.util.Objects;
 
@@ -111,8 +112,12 @@ public final class ListenerPortRangeArgs extends com.pulumi.resources.ResourceAr
         }
 
         public ListenerPortRangeArgs build() {
-            $.fromPort = Objects.requireNonNull($.fromPort, "expected parameter 'fromPort' to be non-null");
-            $.toPort = Objects.requireNonNull($.toPort, "expected parameter 'toPort' to be non-null");
+            if ($.fromPort == null) {
+                throw new MissingRequiredPropertyException("ListenerPortRangeArgs", "fromPort");
+            }
+            if ($.toPort == null) {
+                throw new MissingRequiredPropertyException("ListenerPortRangeArgs", "toPort");
+            }
             return $;
         }
     }

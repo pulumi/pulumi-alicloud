@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.maxcompute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -57,12 +58,18 @@ public final class GetProjectsProjectSecurityPropertiesProjectProtection {
 
         @CustomType.Setter
         public Builder exceptionPolicy(String exceptionPolicy) {
-            this.exceptionPolicy = Objects.requireNonNull(exceptionPolicy);
+            if (exceptionPolicy == null) {
+              throw new MissingRequiredPropertyException("GetProjectsProjectSecurityPropertiesProjectProtection", "exceptionPolicy");
+            }
+            this.exceptionPolicy = exceptionPolicy;
             return this;
         }
         @CustomType.Setter("protected")
         public Builder protected_(Boolean protected_) {
-            this.protected_ = Objects.requireNonNull(protected_);
+            if (protected_ == null) {
+              throw new MissingRequiredPropertyException("GetProjectsProjectSecurityPropertiesProjectProtection", "protected_");
+            }
+            this.protected_ = protected_;
             return this;
         }
         public GetProjectsProjectSecurityPropertiesProjectProtection build() {

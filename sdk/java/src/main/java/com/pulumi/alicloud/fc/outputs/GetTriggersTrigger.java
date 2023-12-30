@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.fc.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -140,42 +141,66 @@ public final class GetTriggersTrigger {
 
         @CustomType.Setter
         public Builder config(String config) {
-            this.config = Objects.requireNonNull(config);
+            if (config == null) {
+              throw new MissingRequiredPropertyException("GetTriggersTrigger", "config");
+            }
+            this.config = config;
             return this;
         }
         @CustomType.Setter
         public Builder creationTime(String creationTime) {
-            this.creationTime = Objects.requireNonNull(creationTime);
+            if (creationTime == null) {
+              throw new MissingRequiredPropertyException("GetTriggersTrigger", "creationTime");
+            }
+            this.creationTime = creationTime;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetTriggersTrigger", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder invocationRole(String invocationRole) {
-            this.invocationRole = Objects.requireNonNull(invocationRole);
+            if (invocationRole == null) {
+              throw new MissingRequiredPropertyException("GetTriggersTrigger", "invocationRole");
+            }
+            this.invocationRole = invocationRole;
             return this;
         }
         @CustomType.Setter
         public Builder lastModificationTime(String lastModificationTime) {
-            this.lastModificationTime = Objects.requireNonNull(lastModificationTime);
+            if (lastModificationTime == null) {
+              throw new MissingRequiredPropertyException("GetTriggersTrigger", "lastModificationTime");
+            }
+            this.lastModificationTime = lastModificationTime;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetTriggersTrigger", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder sourceArn(String sourceArn) {
-            this.sourceArn = Objects.requireNonNull(sourceArn);
+            if (sourceArn == null) {
+              throw new MissingRequiredPropertyException("GetTriggersTrigger", "sourceArn");
+            }
+            this.sourceArn = sourceArn;
             return this;
         }
         @CustomType.Setter
         public Builder type(String type) {
-            this.type = Objects.requireNonNull(type);
+            if (type == null) {
+              throw new MissingRequiredPropertyException("GetTriggersTrigger", "type");
+            }
+            this.type = type;
             return this;
         }
         public GetTriggersTrigger build() {

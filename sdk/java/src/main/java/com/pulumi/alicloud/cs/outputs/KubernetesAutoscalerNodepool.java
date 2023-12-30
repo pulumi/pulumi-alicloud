@@ -72,16 +72,19 @@ public final class KubernetesAutoscalerNodepool {
 
         @CustomType.Setter
         public Builder id(@Nullable String id) {
+
             this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder labels(@Nullable String labels) {
+
             this.labels = labels;
             return this;
         }
         @CustomType.Setter
         public Builder taints(@Nullable String taints) {
+
             this.taints = taints;
             return this;
         }

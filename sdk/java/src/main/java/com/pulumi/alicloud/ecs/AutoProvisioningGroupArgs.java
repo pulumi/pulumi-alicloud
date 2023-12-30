@@ -6,6 +6,7 @@ package com.pulumi.alicloud.ecs;
 import com.pulumi.alicloud.ecs.inputs.AutoProvisioningGroupLaunchTemplateConfigArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Double;
 import java.lang.Integer;
@@ -794,9 +795,15 @@ public final class AutoProvisioningGroupArgs extends com.pulumi.resources.Resour
         }
 
         public AutoProvisioningGroupArgs build() {
-            $.launchTemplateConfigs = Objects.requireNonNull($.launchTemplateConfigs, "expected parameter 'launchTemplateConfigs' to be non-null");
-            $.launchTemplateId = Objects.requireNonNull($.launchTemplateId, "expected parameter 'launchTemplateId' to be non-null");
-            $.totalTargetCapacity = Objects.requireNonNull($.totalTargetCapacity, "expected parameter 'totalTargetCapacity' to be non-null");
+            if ($.launchTemplateConfigs == null) {
+                throw new MissingRequiredPropertyException("AutoProvisioningGroupArgs", "launchTemplateConfigs");
+            }
+            if ($.launchTemplateId == null) {
+                throw new MissingRequiredPropertyException("AutoProvisioningGroupArgs", "launchTemplateId");
+            }
+            if ($.totalTargetCapacity == null) {
+                throw new MissingRequiredPropertyException("AutoProvisioningGroupArgs", "totalTargetCapacity");
+            }
             return $;
         }
     }

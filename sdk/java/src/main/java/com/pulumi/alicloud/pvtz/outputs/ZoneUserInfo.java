@@ -59,6 +59,7 @@ public final class ZoneUserInfo {
 
         @CustomType.Setter
         public Builder regionIds(@Nullable List<String> regionIds) {
+
             this.regionIds = regionIds;
             return this;
         }
@@ -67,6 +68,7 @@ public final class ZoneUserInfo {
         }
         @CustomType.Setter
         public Builder userId(@Nullable String userId) {
+
             this.userId = userId;
             return this;
         }

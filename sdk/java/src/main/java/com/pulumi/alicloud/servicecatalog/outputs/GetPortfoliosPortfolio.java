@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.servicecatalog.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -126,37 +127,58 @@ public final class GetPortfoliosPortfolio {
 
         @CustomType.Setter
         public Builder createTime(String createTime) {
-            this.createTime = Objects.requireNonNull(createTime);
+            if (createTime == null) {
+              throw new MissingRequiredPropertyException("GetPortfoliosPortfolio", "createTime");
+            }
+            this.createTime = createTime;
             return this;
         }
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetPortfoliosPortfolio", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetPortfoliosPortfolio", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder portfolioArn(String portfolioArn) {
-            this.portfolioArn = Objects.requireNonNull(portfolioArn);
+            if (portfolioArn == null) {
+              throw new MissingRequiredPropertyException("GetPortfoliosPortfolio", "portfolioArn");
+            }
+            this.portfolioArn = portfolioArn;
             return this;
         }
         @CustomType.Setter
         public Builder portfolioId(String portfolioId) {
-            this.portfolioId = Objects.requireNonNull(portfolioId);
+            if (portfolioId == null) {
+              throw new MissingRequiredPropertyException("GetPortfoliosPortfolio", "portfolioId");
+            }
+            this.portfolioId = portfolioId;
             return this;
         }
         @CustomType.Setter
         public Builder portfolioName(String portfolioName) {
-            this.portfolioName = Objects.requireNonNull(portfolioName);
+            if (portfolioName == null) {
+              throw new MissingRequiredPropertyException("GetPortfoliosPortfolio", "portfolioName");
+            }
+            this.portfolioName = portfolioName;
             return this;
         }
         @CustomType.Setter
         public Builder providerName(String providerName) {
-            this.providerName = Objects.requireNonNull(providerName);
+            if (providerName == null) {
+              throw new MissingRequiredPropertyException("GetPortfoliosPortfolio", "providerName");
+            }
+            this.providerName = providerName;
             return this;
         }
         public GetPortfoliosPortfolio build() {

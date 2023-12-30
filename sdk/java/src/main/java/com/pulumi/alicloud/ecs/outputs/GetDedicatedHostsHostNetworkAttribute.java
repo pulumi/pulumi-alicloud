@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.ecs.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.util.Objects;
 
@@ -56,12 +57,18 @@ public final class GetDedicatedHostsHostNetworkAttribute {
 
         @CustomType.Setter
         public Builder slbUdpTimeout(Integer slbUdpTimeout) {
-            this.slbUdpTimeout = Objects.requireNonNull(slbUdpTimeout);
+            if (slbUdpTimeout == null) {
+              throw new MissingRequiredPropertyException("GetDedicatedHostsHostNetworkAttribute", "slbUdpTimeout");
+            }
+            this.slbUdpTimeout = slbUdpTimeout;
             return this;
         }
         @CustomType.Setter
         public Builder udpTimeout(Integer udpTimeout) {
-            this.udpTimeout = Objects.requireNonNull(udpTimeout);
+            if (udpTimeout == null) {
+              throw new MissingRequiredPropertyException("GetDedicatedHostsHostNetworkAttribute", "udpTimeout");
+            }
+            this.udpTimeout = udpTimeout;
             return this;
         }
         public GetDedicatedHostsHostNetworkAttribute build() {

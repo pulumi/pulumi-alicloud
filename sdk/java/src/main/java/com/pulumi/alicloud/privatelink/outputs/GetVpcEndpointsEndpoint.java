@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.privatelink.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -212,42 +213,66 @@ public final class GetVpcEndpointsEndpoint {
 
         @CustomType.Setter
         public Builder bandwidth(Integer bandwidth) {
-            this.bandwidth = Objects.requireNonNull(bandwidth);
+            if (bandwidth == null) {
+              throw new MissingRequiredPropertyException("GetVpcEndpointsEndpoint", "bandwidth");
+            }
+            this.bandwidth = bandwidth;
             return this;
         }
         @CustomType.Setter
         public Builder connectionStatus(String connectionStatus) {
-            this.connectionStatus = Objects.requireNonNull(connectionStatus);
+            if (connectionStatus == null) {
+              throw new MissingRequiredPropertyException("GetVpcEndpointsEndpoint", "connectionStatus");
+            }
+            this.connectionStatus = connectionStatus;
             return this;
         }
         @CustomType.Setter
         public Builder endpointBusinessStatus(String endpointBusinessStatus) {
-            this.endpointBusinessStatus = Objects.requireNonNull(endpointBusinessStatus);
+            if (endpointBusinessStatus == null) {
+              throw new MissingRequiredPropertyException("GetVpcEndpointsEndpoint", "endpointBusinessStatus");
+            }
+            this.endpointBusinessStatus = endpointBusinessStatus;
             return this;
         }
         @CustomType.Setter
         public Builder endpointDescription(String endpointDescription) {
-            this.endpointDescription = Objects.requireNonNull(endpointDescription);
+            if (endpointDescription == null) {
+              throw new MissingRequiredPropertyException("GetVpcEndpointsEndpoint", "endpointDescription");
+            }
+            this.endpointDescription = endpointDescription;
             return this;
         }
         @CustomType.Setter
         public Builder endpointDomain(String endpointDomain) {
-            this.endpointDomain = Objects.requireNonNull(endpointDomain);
+            if (endpointDomain == null) {
+              throw new MissingRequiredPropertyException("GetVpcEndpointsEndpoint", "endpointDomain");
+            }
+            this.endpointDomain = endpointDomain;
             return this;
         }
         @CustomType.Setter
         public Builder endpointId(String endpointId) {
-            this.endpointId = Objects.requireNonNull(endpointId);
+            if (endpointId == null) {
+              throw new MissingRequiredPropertyException("GetVpcEndpointsEndpoint", "endpointId");
+            }
+            this.endpointId = endpointId;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetVpcEndpointsEndpoint", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder securityGroupIds(List<String> securityGroupIds) {
-            this.securityGroupIds = Objects.requireNonNull(securityGroupIds);
+            if (securityGroupIds == null) {
+              throw new MissingRequiredPropertyException("GetVpcEndpointsEndpoint", "securityGroupIds");
+            }
+            this.securityGroupIds = securityGroupIds;
             return this;
         }
         public Builder securityGroupIds(String... securityGroupIds) {
@@ -255,27 +280,42 @@ public final class GetVpcEndpointsEndpoint {
         }
         @CustomType.Setter
         public Builder serviceId(String serviceId) {
-            this.serviceId = Objects.requireNonNull(serviceId);
+            if (serviceId == null) {
+              throw new MissingRequiredPropertyException("GetVpcEndpointsEndpoint", "serviceId");
+            }
+            this.serviceId = serviceId;
             return this;
         }
         @CustomType.Setter
         public Builder serviceName(String serviceName) {
-            this.serviceName = Objects.requireNonNull(serviceName);
+            if (serviceName == null) {
+              throw new MissingRequiredPropertyException("GetVpcEndpointsEndpoint", "serviceName");
+            }
+            this.serviceName = serviceName;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetVpcEndpointsEndpoint", "status");
+            }
+            this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder vpcEndpointName(String vpcEndpointName) {
-            this.vpcEndpointName = Objects.requireNonNull(vpcEndpointName);
+            if (vpcEndpointName == null) {
+              throw new MissingRequiredPropertyException("GetVpcEndpointsEndpoint", "vpcEndpointName");
+            }
+            this.vpcEndpointName = vpcEndpointName;
             return this;
         }
         @CustomType.Setter
         public Builder vpcId(String vpcId) {
-            this.vpcId = Objects.requireNonNull(vpcId);
+            if (vpcId == null) {
+              throw new MissingRequiredPropertyException("GetVpcEndpointsEndpoint", "vpcId");
+            }
+            this.vpcId = vpcId;
             return this;
         }
         public GetVpcEndpointsEndpoint build() {

@@ -87,6 +87,7 @@ public final class ContainerGroupAcrRegistryInfo {
 
         @CustomType.Setter
         public Builder domains(@Nullable List<String> domains) {
+
             this.domains = domains;
             return this;
         }
@@ -95,16 +96,19 @@ public final class ContainerGroupAcrRegistryInfo {
         }
         @CustomType.Setter
         public Builder instanceId(@Nullable String instanceId) {
+
             this.instanceId = instanceId;
             return this;
         }
         @CustomType.Setter
         public Builder instanceName(@Nullable String instanceName) {
+
             this.instanceName = instanceName;
             return this;
         }
         @CustomType.Setter
         public Builder regionId(@Nullable String regionId) {
+
             this.regionId = regionId;
             return this;
         }

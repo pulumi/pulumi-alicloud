@@ -7,6 +7,7 @@ import com.pulumi.alicloud.arms.inputs.PrometheusAlertRuleAnnotationArgs;
 import com.pulumi.alicloud.arms.inputs.PrometheusAlertRuleLabelArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -432,11 +433,21 @@ public final class PrometheusAlertRuleArgs extends com.pulumi.resources.Resource
         }
 
         public PrometheusAlertRuleArgs build() {
-            $.clusterId = Objects.requireNonNull($.clusterId, "expected parameter 'clusterId' to be non-null");
-            $.duration = Objects.requireNonNull($.duration, "expected parameter 'duration' to be non-null");
-            $.expression = Objects.requireNonNull($.expression, "expected parameter 'expression' to be non-null");
-            $.message = Objects.requireNonNull($.message, "expected parameter 'message' to be non-null");
-            $.prometheusAlertRuleName = Objects.requireNonNull($.prometheusAlertRuleName, "expected parameter 'prometheusAlertRuleName' to be non-null");
+            if ($.clusterId == null) {
+                throw new MissingRequiredPropertyException("PrometheusAlertRuleArgs", "clusterId");
+            }
+            if ($.duration == null) {
+                throw new MissingRequiredPropertyException("PrometheusAlertRuleArgs", "duration");
+            }
+            if ($.expression == null) {
+                throw new MissingRequiredPropertyException("PrometheusAlertRuleArgs", "expression");
+            }
+            if ($.message == null) {
+                throw new MissingRequiredPropertyException("PrometheusAlertRuleArgs", "message");
+            }
+            if ($.prometheusAlertRuleName == null) {
+                throw new MissingRequiredPropertyException("PrometheusAlertRuleArgs", "prometheusAlertRuleName");
+            }
             return $;
         }
     }

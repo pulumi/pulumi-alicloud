@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.mse.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -113,32 +114,50 @@ public final class GetZnodesZnode {
 
         @CustomType.Setter
         public Builder clusterId(String clusterId) {
-            this.clusterId = Objects.requireNonNull(clusterId);
+            if (clusterId == null) {
+              throw new MissingRequiredPropertyException("GetZnodesZnode", "clusterId");
+            }
+            this.clusterId = clusterId;
             return this;
         }
         @CustomType.Setter
         public Builder data(String data) {
-            this.data = Objects.requireNonNull(data);
+            if (data == null) {
+              throw new MissingRequiredPropertyException("GetZnodesZnode", "data");
+            }
+            this.data = data;
             return this;
         }
         @CustomType.Setter
         public Builder dir(Boolean dir) {
-            this.dir = Objects.requireNonNull(dir);
+            if (dir == null) {
+              throw new MissingRequiredPropertyException("GetZnodesZnode", "dir");
+            }
+            this.dir = dir;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetZnodesZnode", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder path(String path) {
-            this.path = Objects.requireNonNull(path);
+            if (path == null) {
+              throw new MissingRequiredPropertyException("GetZnodesZnode", "path");
+            }
+            this.path = path;
             return this;
         }
         @CustomType.Setter
         public Builder znodeName(String znodeName) {
-            this.znodeName = Objects.requireNonNull(znodeName);
+            if (znodeName == null) {
+              throw new MissingRequiredPropertyException("GetZnodesZnode", "znodeName");
+            }
+            this.znodeName = znodeName;
             return this;
         }
         public GetZnodesZnode build() {

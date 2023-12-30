@@ -5,6 +5,7 @@ package com.pulumi.alicloud;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -372,7 +373,9 @@ public final class MscSubSubscriptionArgs extends com.pulumi.resources.ResourceA
         }
 
         public MscSubSubscriptionArgs build() {
-            $.itemName = Objects.requireNonNull($.itemName, "expected parameter 'itemName' to be non-null");
+            if ($.itemName == null) {
+                throw new MissingRequiredPropertyException("MscSubSubscriptionArgs", "itemName");
+            }
             return $;
         }
     }

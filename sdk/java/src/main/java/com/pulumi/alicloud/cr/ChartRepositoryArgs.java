@@ -5,6 +5,7 @@ package com.pulumi.alicloud.cr;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -224,9 +225,15 @@ public final class ChartRepositoryArgs extends com.pulumi.resources.ResourceArgs
         }
 
         public ChartRepositoryArgs build() {
-            $.instanceId = Objects.requireNonNull($.instanceId, "expected parameter 'instanceId' to be non-null");
-            $.repoName = Objects.requireNonNull($.repoName, "expected parameter 'repoName' to be non-null");
-            $.repoNamespaceName = Objects.requireNonNull($.repoNamespaceName, "expected parameter 'repoNamespaceName' to be non-null");
+            if ($.instanceId == null) {
+                throw new MissingRequiredPropertyException("ChartRepositoryArgs", "instanceId");
+            }
+            if ($.repoName == null) {
+                throw new MissingRequiredPropertyException("ChartRepositoryArgs", "repoName");
+            }
+            if ($.repoNamespaceName == null) {
+                throw new MissingRequiredPropertyException("ChartRepositoryArgs", "repoNamespaceName");
+            }
             return $;
         }
     }

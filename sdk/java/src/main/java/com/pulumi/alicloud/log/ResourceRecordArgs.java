@@ -5,6 +5,7 @@ package com.pulumi.alicloud.log;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -185,10 +186,18 @@ public final class ResourceRecordArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         public ResourceRecordArgs build() {
-            $.recordId = Objects.requireNonNull($.recordId, "expected parameter 'recordId' to be non-null");
-            $.resourceName = Objects.requireNonNull($.resourceName, "expected parameter 'resourceName' to be non-null");
-            $.tag = Objects.requireNonNull($.tag, "expected parameter 'tag' to be non-null");
-            $.value = Objects.requireNonNull($.value, "expected parameter 'value' to be non-null");
+            if ($.recordId == null) {
+                throw new MissingRequiredPropertyException("ResourceRecordArgs", "recordId");
+            }
+            if ($.resourceName == null) {
+                throw new MissingRequiredPropertyException("ResourceRecordArgs", "resourceName");
+            }
+            if ($.tag == null) {
+                throw new MissingRequiredPropertyException("ResourceRecordArgs", "tag");
+            }
+            if ($.value == null) {
+                throw new MissingRequiredPropertyException("ResourceRecordArgs", "value");
+            }
             return $;
         }
     }

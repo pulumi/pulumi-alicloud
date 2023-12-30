@@ -5,6 +5,7 @@ package com.pulumi.alicloud.alb.outputs;
 
 import com.pulumi.alicloud.alb.outputs.GetListenersListenerDefaultActionForwardGroupConfigServerGroupTuple;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.util.List;
 import java.util.Objects;
 
@@ -43,7 +44,10 @@ public final class GetListenersListenerDefaultActionForwardGroupConfig {
 
         @CustomType.Setter
         public Builder serverGroupTuples(List<GetListenersListenerDefaultActionForwardGroupConfigServerGroupTuple> serverGroupTuples) {
-            this.serverGroupTuples = Objects.requireNonNull(serverGroupTuples);
+            if (serverGroupTuples == null) {
+              throw new MissingRequiredPropertyException("GetListenersListenerDefaultActionForwardGroupConfig", "serverGroupTuples");
+            }
+            this.serverGroupTuples = serverGroupTuples;
             return this;
         }
         public Builder serverGroupTuples(GetListenersListenerDefaultActionForwardGroupConfigServerGroupTuple... serverGroupTuples) {

@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.ga.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -112,32 +113,50 @@ public final class GetBasicAccelerateIpsIp {
 
         @CustomType.Setter
         public Builder accelerateIpAddress(String accelerateIpAddress) {
-            this.accelerateIpAddress = Objects.requireNonNull(accelerateIpAddress);
+            if (accelerateIpAddress == null) {
+              throw new MissingRequiredPropertyException("GetBasicAccelerateIpsIp", "accelerateIpAddress");
+            }
+            this.accelerateIpAddress = accelerateIpAddress;
             return this;
         }
         @CustomType.Setter
         public Builder accelerateIpId(String accelerateIpId) {
-            this.accelerateIpId = Objects.requireNonNull(accelerateIpId);
+            if (accelerateIpId == null) {
+              throw new MissingRequiredPropertyException("GetBasicAccelerateIpsIp", "accelerateIpId");
+            }
+            this.accelerateIpId = accelerateIpId;
             return this;
         }
         @CustomType.Setter
         public Builder acceleratorId(String acceleratorId) {
-            this.acceleratorId = Objects.requireNonNull(acceleratorId);
+            if (acceleratorId == null) {
+              throw new MissingRequiredPropertyException("GetBasicAccelerateIpsIp", "acceleratorId");
+            }
+            this.acceleratorId = acceleratorId;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetBasicAccelerateIpsIp", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder ipSetId(String ipSetId) {
-            this.ipSetId = Objects.requireNonNull(ipSetId);
+            if (ipSetId == null) {
+              throw new MissingRequiredPropertyException("GetBasicAccelerateIpsIp", "ipSetId");
+            }
+            this.ipSetId = ipSetId;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetBasicAccelerateIpsIp", "status");
+            }
+            this.status = status;
             return this;
         }
         public GetBasicAccelerateIpsIp build() {

@@ -6,6 +6,7 @@ package com.pulumi.alicloud.rds.outputs;
 import com.pulumi.alicloud.rds.outputs.GetInstanceClassesInstanceClassStorageRange;
 import com.pulumi.alicloud.rds.outputs.GetInstanceClassesInstanceClassZoneId;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -79,22 +80,34 @@ public final class GetInstanceClassesInstanceClass {
 
         @CustomType.Setter
         public Builder instanceClass(String instanceClass) {
-            this.instanceClass = Objects.requireNonNull(instanceClass);
+            if (instanceClass == null) {
+              throw new MissingRequiredPropertyException("GetInstanceClassesInstanceClass", "instanceClass");
+            }
+            this.instanceClass = instanceClass;
             return this;
         }
         @CustomType.Setter
         public Builder price(String price) {
-            this.price = Objects.requireNonNull(price);
+            if (price == null) {
+              throw new MissingRequiredPropertyException("GetInstanceClassesInstanceClass", "price");
+            }
+            this.price = price;
             return this;
         }
         @CustomType.Setter
         public Builder storageRange(GetInstanceClassesInstanceClassStorageRange storageRange) {
-            this.storageRange = Objects.requireNonNull(storageRange);
+            if (storageRange == null) {
+              throw new MissingRequiredPropertyException("GetInstanceClassesInstanceClass", "storageRange");
+            }
+            this.storageRange = storageRange;
             return this;
         }
         @CustomType.Setter
         public Builder zoneIds(List<GetInstanceClassesInstanceClassZoneId> zoneIds) {
-            this.zoneIds = Objects.requireNonNull(zoneIds);
+            if (zoneIds == null) {
+              throw new MissingRequiredPropertyException("GetInstanceClassesInstanceClass", "zoneIds");
+            }
+            this.zoneIds = zoneIds;
             return this;
         }
         public Builder zoneIds(GetInstanceClassesInstanceClassZoneId... zoneIds) {

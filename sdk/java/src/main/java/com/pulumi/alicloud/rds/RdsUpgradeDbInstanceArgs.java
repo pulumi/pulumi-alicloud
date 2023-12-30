@@ -7,6 +7,7 @@ import com.pulumi.alicloud.rds.inputs.RdsUpgradeDbInstanceParameterArgs;
 import com.pulumi.alicloud.rds.inputs.RdsUpgradeDbInstancePgHbaConfArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -2328,15 +2329,33 @@ public final class RdsUpgradeDbInstanceArgs extends com.pulumi.resources.Resourc
         }
 
         public RdsUpgradeDbInstanceArgs build() {
-            $.collectStatMode = Objects.requireNonNull($.collectStatMode, "expected parameter 'collectStatMode' to be non-null");
-            $.dbInstanceClass = Objects.requireNonNull($.dbInstanceClass, "expected parameter 'dbInstanceClass' to be non-null");
-            $.dbInstanceStorage = Objects.requireNonNull($.dbInstanceStorage, "expected parameter 'dbInstanceStorage' to be non-null");
-            $.dbInstanceStorageType = Objects.requireNonNull($.dbInstanceStorageType, "expected parameter 'dbInstanceStorageType' to be non-null");
-            $.instanceNetworkType = Objects.requireNonNull($.instanceNetworkType, "expected parameter 'instanceNetworkType' to be non-null");
-            $.paymentType = Objects.requireNonNull($.paymentType, "expected parameter 'paymentType' to be non-null");
-            $.sourceDbInstanceId = Objects.requireNonNull($.sourceDbInstanceId, "expected parameter 'sourceDbInstanceId' to be non-null");
-            $.switchOver = Objects.requireNonNull($.switchOver, "expected parameter 'switchOver' to be non-null");
-            $.targetMajorVersion = Objects.requireNonNull($.targetMajorVersion, "expected parameter 'targetMajorVersion' to be non-null");
+            if ($.collectStatMode == null) {
+                throw new MissingRequiredPropertyException("RdsUpgradeDbInstanceArgs", "collectStatMode");
+            }
+            if ($.dbInstanceClass == null) {
+                throw new MissingRequiredPropertyException("RdsUpgradeDbInstanceArgs", "dbInstanceClass");
+            }
+            if ($.dbInstanceStorage == null) {
+                throw new MissingRequiredPropertyException("RdsUpgradeDbInstanceArgs", "dbInstanceStorage");
+            }
+            if ($.dbInstanceStorageType == null) {
+                throw new MissingRequiredPropertyException("RdsUpgradeDbInstanceArgs", "dbInstanceStorageType");
+            }
+            if ($.instanceNetworkType == null) {
+                throw new MissingRequiredPropertyException("RdsUpgradeDbInstanceArgs", "instanceNetworkType");
+            }
+            if ($.paymentType == null) {
+                throw new MissingRequiredPropertyException("RdsUpgradeDbInstanceArgs", "paymentType");
+            }
+            if ($.sourceDbInstanceId == null) {
+                throw new MissingRequiredPropertyException("RdsUpgradeDbInstanceArgs", "sourceDbInstanceId");
+            }
+            if ($.switchOver == null) {
+                throw new MissingRequiredPropertyException("RdsUpgradeDbInstanceArgs", "switchOver");
+            }
+            if ($.targetMajorVersion == null) {
+                throw new MissingRequiredPropertyException("RdsUpgradeDbInstanceArgs", "targetMajorVersion");
+            }
             return $;
         }
     }

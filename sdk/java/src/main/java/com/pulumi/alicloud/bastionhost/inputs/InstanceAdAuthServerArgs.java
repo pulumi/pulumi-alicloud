@@ -5,6 +5,7 @@ package com.pulumi.alicloud.bastionhost.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -485,13 +486,27 @@ public final class InstanceAdAuthServerArgs extends com.pulumi.resources.Resourc
         }
 
         public InstanceAdAuthServerArgs build() {
-            $.account = Objects.requireNonNull($.account, "expected parameter 'account' to be non-null");
-            $.baseDn = Objects.requireNonNull($.baseDn, "expected parameter 'baseDn' to be non-null");
-            $.domain = Objects.requireNonNull($.domain, "expected parameter 'domain' to be non-null");
-            $.isSsl = Objects.requireNonNull($.isSsl, "expected parameter 'isSsl' to be non-null");
-            $.password = Objects.requireNonNull($.password, "expected parameter 'password' to be non-null");
-            $.port = Objects.requireNonNull($.port, "expected parameter 'port' to be non-null");
-            $.server = Objects.requireNonNull($.server, "expected parameter 'server' to be non-null");
+            if ($.account == null) {
+                throw new MissingRequiredPropertyException("InstanceAdAuthServerArgs", "account");
+            }
+            if ($.baseDn == null) {
+                throw new MissingRequiredPropertyException("InstanceAdAuthServerArgs", "baseDn");
+            }
+            if ($.domain == null) {
+                throw new MissingRequiredPropertyException("InstanceAdAuthServerArgs", "domain");
+            }
+            if ($.isSsl == null) {
+                throw new MissingRequiredPropertyException("InstanceAdAuthServerArgs", "isSsl");
+            }
+            if ($.password == null) {
+                throw new MissingRequiredPropertyException("InstanceAdAuthServerArgs", "password");
+            }
+            if ($.port == null) {
+                throw new MissingRequiredPropertyException("InstanceAdAuthServerArgs", "port");
+            }
+            if ($.server == null) {
+                throw new MissingRequiredPropertyException("InstanceAdAuthServerArgs", "server");
+            }
             return $;
         }
     }

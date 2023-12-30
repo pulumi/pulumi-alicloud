@@ -5,6 +5,7 @@ package com.pulumi.alicloud.nas;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -233,11 +234,21 @@ public final class LifecyclePolicyArgs extends com.pulumi.resources.ResourceArgs
         }
 
         public LifecyclePolicyArgs build() {
-            $.fileSystemId = Objects.requireNonNull($.fileSystemId, "expected parameter 'fileSystemId' to be non-null");
-            $.lifecyclePolicyName = Objects.requireNonNull($.lifecyclePolicyName, "expected parameter 'lifecyclePolicyName' to be non-null");
-            $.lifecycleRuleName = Objects.requireNonNull($.lifecycleRuleName, "expected parameter 'lifecycleRuleName' to be non-null");
-            $.paths = Objects.requireNonNull($.paths, "expected parameter 'paths' to be non-null");
-            $.storageType = Objects.requireNonNull($.storageType, "expected parameter 'storageType' to be non-null");
+            if ($.fileSystemId == null) {
+                throw new MissingRequiredPropertyException("LifecyclePolicyArgs", "fileSystemId");
+            }
+            if ($.lifecyclePolicyName == null) {
+                throw new MissingRequiredPropertyException("LifecyclePolicyArgs", "lifecyclePolicyName");
+            }
+            if ($.lifecycleRuleName == null) {
+                throw new MissingRequiredPropertyException("LifecyclePolicyArgs", "lifecycleRuleName");
+            }
+            if ($.paths == null) {
+                throw new MissingRequiredPropertyException("LifecyclePolicyArgs", "paths");
+            }
+            if ($.storageType == null) {
+                throw new MissingRequiredPropertyException("LifecyclePolicyArgs", "storageType");
+            }
             return $;
         }
     }

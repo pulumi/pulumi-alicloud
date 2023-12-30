@@ -211,6 +211,14 @@ type EciScalingConfigurationContainer struct {
 	ReadinessProbeTcpSocketPort *int `pulumi:"readinessProbeTcpSocketPort"`
 	// The timeout period for the readiness probe. Unit: seconds. Default value: 1. Minimum value: 1.
 	ReadinessProbeTimeoutSeconds *int `pulumi:"readinessProbeTimeoutSeconds"`
+	// Grant certain permissions to processes within container. Optional values:
+	// - NET_ADMIN: Allow network management tasks to be performed.
+	// - NET_RAW: Allow raw sockets.
+	SecurityContextCapabilityAdds []string `pulumi:"securityContextCapabilityAdds"`
+	// Mounts the container's root filesystem as read-only.
+	SecurityContextReadOnlyRootFileSystem *bool `pulumi:"securityContextReadOnlyRootFileSystem"`
+	// Specifies user ID  under which all processes run.
+	SecurityContextRunAsUser *int `pulumi:"securityContextRunAsUser"`
 	// The structure of volumeMounts.
 	// See `volumeMounts` below for details.
 	VolumeMounts []EciScalingConfigurationContainerVolumeMount `pulumi:"volumeMounts"`
@@ -291,6 +299,14 @@ type EciScalingConfigurationContainerArgs struct {
 	ReadinessProbeTcpSocketPort pulumi.IntPtrInput `pulumi:"readinessProbeTcpSocketPort"`
 	// The timeout period for the readiness probe. Unit: seconds. Default value: 1. Minimum value: 1.
 	ReadinessProbeTimeoutSeconds pulumi.IntPtrInput `pulumi:"readinessProbeTimeoutSeconds"`
+	// Grant certain permissions to processes within container. Optional values:
+	// - NET_ADMIN: Allow network management tasks to be performed.
+	// - NET_RAW: Allow raw sockets.
+	SecurityContextCapabilityAdds pulumi.StringArrayInput `pulumi:"securityContextCapabilityAdds"`
+	// Mounts the container's root filesystem as read-only.
+	SecurityContextReadOnlyRootFileSystem pulumi.BoolPtrInput `pulumi:"securityContextReadOnlyRootFileSystem"`
+	// Specifies user ID  under which all processes run.
+	SecurityContextRunAsUser pulumi.IntPtrInput `pulumi:"securityContextRunAsUser"`
 	// The structure of volumeMounts.
 	// See `volumeMounts` below for details.
 	VolumeMounts EciScalingConfigurationContainerVolumeMountArrayInput `pulumi:"volumeMounts"`
@@ -502,6 +518,23 @@ func (o EciScalingConfigurationContainerOutput) ReadinessProbeTimeoutSeconds() p
 	return o.ApplyT(func(v EciScalingConfigurationContainer) *int { return v.ReadinessProbeTimeoutSeconds }).(pulumi.IntPtrOutput)
 }
 
+// Grant certain permissions to processes within container. Optional values:
+// - NET_ADMIN: Allow network management tasks to be performed.
+// - NET_RAW: Allow raw sockets.
+func (o EciScalingConfigurationContainerOutput) SecurityContextCapabilityAdds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v EciScalingConfigurationContainer) []string { return v.SecurityContextCapabilityAdds }).(pulumi.StringArrayOutput)
+}
+
+// Mounts the container's root filesystem as read-only.
+func (o EciScalingConfigurationContainerOutput) SecurityContextReadOnlyRootFileSystem() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v EciScalingConfigurationContainer) *bool { return v.SecurityContextReadOnlyRootFileSystem }).(pulumi.BoolPtrOutput)
+}
+
+// Specifies user ID  under which all processes run.
+func (o EciScalingConfigurationContainerOutput) SecurityContextRunAsUser() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v EciScalingConfigurationContainer) *int { return v.SecurityContextRunAsUser }).(pulumi.IntPtrOutput)
+}
+
 // The structure of volumeMounts.
 // See `volumeMounts` below for details.
 func (o EciScalingConfigurationContainerOutput) VolumeMounts() EciScalingConfigurationContainerVolumeMountArrayOutput {
@@ -536,6 +569,9 @@ func (o EciScalingConfigurationContainerArrayOutput) Index(i pulumi.IntInput) Ec
 }
 
 type EciScalingConfigurationContainerEnvironmentVar struct {
+	// Environment variable value reference. Optional values:
+	// - status.podIP: IP of pod.
+	FieldRefFieldPath *string `pulumi:"fieldRefFieldPath"`
 	// The name of the variable. The name can be 1 to 128 characters in length and can contain letters,
 	// digits, and underscores (_). It cannot start with a digit.
 	Key *string `pulumi:"key"`
@@ -555,6 +591,9 @@ type EciScalingConfigurationContainerEnvironmentVarInput interface {
 }
 
 type EciScalingConfigurationContainerEnvironmentVarArgs struct {
+	// Environment variable value reference. Optional values:
+	// - status.podIP: IP of pod.
+	FieldRefFieldPath pulumi.StringPtrInput `pulumi:"fieldRefFieldPath"`
 	// The name of the variable. The name can be 1 to 128 characters in length and can contain letters,
 	// digits, and underscores (_). It cannot start with a digit.
 	Key pulumi.StringPtrInput `pulumi:"key"`
@@ -611,6 +650,12 @@ func (o EciScalingConfigurationContainerEnvironmentVarOutput) ToEciScalingConfig
 
 func (o EciScalingConfigurationContainerEnvironmentVarOutput) ToEciScalingConfigurationContainerEnvironmentVarOutputWithContext(ctx context.Context) EciScalingConfigurationContainerEnvironmentVarOutput {
 	return o
+}
+
+// Environment variable value reference. Optional values:
+// - status.podIP: IP of pod.
+func (o EciScalingConfigurationContainerEnvironmentVarOutput) FieldRefFieldPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EciScalingConfigurationContainerEnvironmentVar) *string { return v.FieldRefFieldPath }).(pulumi.StringPtrOutput)
 }
 
 // The name of the variable. The name can be 1 to 128 characters in length and can contain letters,
@@ -1120,6 +1165,14 @@ type EciScalingConfigurationInitContainer struct {
 	Name *string `pulumi:"name"`
 	// The structure of port. See `ports` below for details.
 	Ports []EciScalingConfigurationInitContainerPort `pulumi:"ports"`
+	// Grant certain permissions to processes within container. Optional values:
+	// - NET_ADMIN: Allow network management tasks to be performed.
+	// - NET_RAW: Allow raw sockets.
+	SecurityContextCapabilityAdds []string `pulumi:"securityContextCapabilityAdds"`
+	// Mounts the container's root filesystem as read-only.
+	SecurityContextReadOnlyRootFileSystem *bool `pulumi:"securityContextReadOnlyRootFileSystem"`
+	// Specifies user ID  under which all processes run.
+	SecurityContextRunAsUser *int `pulumi:"securityContextRunAsUser"`
 	// The structure of volumeMounts. See `volumeMounts` below for details.
 	VolumeMounts []EciScalingConfigurationInitContainerVolumeMount `pulumi:"volumeMounts"`
 	// The working directory of the container.
@@ -1159,6 +1212,14 @@ type EciScalingConfigurationInitContainerArgs struct {
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// The structure of port. See `ports` below for details.
 	Ports EciScalingConfigurationInitContainerPortArrayInput `pulumi:"ports"`
+	// Grant certain permissions to processes within container. Optional values:
+	// - NET_ADMIN: Allow network management tasks to be performed.
+	// - NET_RAW: Allow raw sockets.
+	SecurityContextCapabilityAdds pulumi.StringArrayInput `pulumi:"securityContextCapabilityAdds"`
+	// Mounts the container's root filesystem as read-only.
+	SecurityContextReadOnlyRootFileSystem pulumi.BoolPtrInput `pulumi:"securityContextReadOnlyRootFileSystem"`
+	// Specifies user ID  under which all processes run.
+	SecurityContextRunAsUser pulumi.IntPtrInput `pulumi:"securityContextRunAsUser"`
 	// The structure of volumeMounts. See `volumeMounts` below for details.
 	VolumeMounts EciScalingConfigurationInitContainerVolumeMountArrayInput `pulumi:"volumeMounts"`
 	// The working directory of the container.
@@ -1271,6 +1332,23 @@ func (o EciScalingConfigurationInitContainerOutput) Ports() EciScalingConfigurat
 	}).(EciScalingConfigurationInitContainerPortArrayOutput)
 }
 
+// Grant certain permissions to processes within container. Optional values:
+// - NET_ADMIN: Allow network management tasks to be performed.
+// - NET_RAW: Allow raw sockets.
+func (o EciScalingConfigurationInitContainerOutput) SecurityContextCapabilityAdds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v EciScalingConfigurationInitContainer) []string { return v.SecurityContextCapabilityAdds }).(pulumi.StringArrayOutput)
+}
+
+// Mounts the container's root filesystem as read-only.
+func (o EciScalingConfigurationInitContainerOutput) SecurityContextReadOnlyRootFileSystem() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v EciScalingConfigurationInitContainer) *bool { return v.SecurityContextReadOnlyRootFileSystem }).(pulumi.BoolPtrOutput)
+}
+
+// Specifies user ID  under which all processes run.
+func (o EciScalingConfigurationInitContainerOutput) SecurityContextRunAsUser() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v EciScalingConfigurationInitContainer) *int { return v.SecurityContextRunAsUser }).(pulumi.IntPtrOutput)
+}
+
 // The structure of volumeMounts. See `volumeMounts` below for details.
 func (o EciScalingConfigurationInitContainerOutput) VolumeMounts() EciScalingConfigurationInitContainerVolumeMountArrayOutput {
 	return o.ApplyT(func(v EciScalingConfigurationInitContainer) []EciScalingConfigurationInitContainerVolumeMount {
@@ -1304,6 +1382,9 @@ func (o EciScalingConfigurationInitContainerArrayOutput) Index(i pulumi.IntInput
 }
 
 type EciScalingConfigurationInitContainerEnvironmentVar struct {
+	// Environment variable value reference. Optional values:
+	// - status.podIP: IP of pod.
+	FieldRefFieldPath *string `pulumi:"fieldRefFieldPath"`
 	// The name of the variable. The name can be 1 to 128 characters in length and can contain letters,
 	// digits, and underscores (_). It cannot start with a digit.
 	Key *string `pulumi:"key"`
@@ -1323,6 +1404,9 @@ type EciScalingConfigurationInitContainerEnvironmentVarInput interface {
 }
 
 type EciScalingConfigurationInitContainerEnvironmentVarArgs struct {
+	// Environment variable value reference. Optional values:
+	// - status.podIP: IP of pod.
+	FieldRefFieldPath pulumi.StringPtrInput `pulumi:"fieldRefFieldPath"`
 	// The name of the variable. The name can be 1 to 128 characters in length and can contain letters,
 	// digits, and underscores (_). It cannot start with a digit.
 	Key pulumi.StringPtrInput `pulumi:"key"`
@@ -1379,6 +1463,12 @@ func (o EciScalingConfigurationInitContainerEnvironmentVarOutput) ToEciScalingCo
 
 func (o EciScalingConfigurationInitContainerEnvironmentVarOutput) ToEciScalingConfigurationInitContainerEnvironmentVarOutputWithContext(ctx context.Context) EciScalingConfigurationInitContainerEnvironmentVarOutput {
 	return o
+}
+
+// Environment variable value reference. Optional values:
+// - status.podIP: IP of pod.
+func (o EciScalingConfigurationInitContainerEnvironmentVarOutput) FieldRefFieldPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EciScalingConfigurationInitContainerEnvironmentVar) *string { return v.FieldRefFieldPath }).(pulumi.StringPtrOutput)
 }
 
 // The name of the variable. The name can be 1 to 128 characters in length and can contain letters,

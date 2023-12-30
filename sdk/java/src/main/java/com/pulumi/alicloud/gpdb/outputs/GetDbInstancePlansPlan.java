@@ -5,6 +5,7 @@ package com.pulumi.alicloud.gpdb.outputs;
 
 import com.pulumi.alicloud.gpdb.outputs.GetDbInstancePlansPlanPlanConfig;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -162,17 +163,26 @@ public final class GetDbInstancePlansPlan {
 
         @CustomType.Setter
         public Builder dbInstancePlanName(String dbInstancePlanName) {
-            this.dbInstancePlanName = Objects.requireNonNull(dbInstancePlanName);
+            if (dbInstancePlanName == null) {
+              throw new MissingRequiredPropertyException("GetDbInstancePlansPlan", "dbInstancePlanName");
+            }
+            this.dbInstancePlanName = dbInstancePlanName;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetDbInstancePlansPlan", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder planConfigs(List<GetDbInstancePlansPlanPlanConfig> planConfigs) {
-            this.planConfigs = Objects.requireNonNull(planConfigs);
+            if (planConfigs == null) {
+              throw new MissingRequiredPropertyException("GetDbInstancePlansPlan", "planConfigs");
+            }
+            this.planConfigs = planConfigs;
             return this;
         }
         public Builder planConfigs(GetDbInstancePlansPlanPlanConfig... planConfigs) {
@@ -180,37 +190,58 @@ public final class GetDbInstancePlansPlan {
         }
         @CustomType.Setter
         public Builder planDesc(String planDesc) {
-            this.planDesc = Objects.requireNonNull(planDesc);
+            if (planDesc == null) {
+              throw new MissingRequiredPropertyException("GetDbInstancePlansPlan", "planDesc");
+            }
+            this.planDesc = planDesc;
             return this;
         }
         @CustomType.Setter
         public Builder planEndDate(String planEndDate) {
-            this.planEndDate = Objects.requireNonNull(planEndDate);
+            if (planEndDate == null) {
+              throw new MissingRequiredPropertyException("GetDbInstancePlansPlan", "planEndDate");
+            }
+            this.planEndDate = planEndDate;
             return this;
         }
         @CustomType.Setter
         public Builder planId(String planId) {
-            this.planId = Objects.requireNonNull(planId);
+            if (planId == null) {
+              throw new MissingRequiredPropertyException("GetDbInstancePlansPlan", "planId");
+            }
+            this.planId = planId;
             return this;
         }
         @CustomType.Setter
         public Builder planScheduleType(String planScheduleType) {
-            this.planScheduleType = Objects.requireNonNull(planScheduleType);
+            if (planScheduleType == null) {
+              throw new MissingRequiredPropertyException("GetDbInstancePlansPlan", "planScheduleType");
+            }
+            this.planScheduleType = planScheduleType;
             return this;
         }
         @CustomType.Setter
         public Builder planStartDate(String planStartDate) {
-            this.planStartDate = Objects.requireNonNull(planStartDate);
+            if (planStartDate == null) {
+              throw new MissingRequiredPropertyException("GetDbInstancePlansPlan", "planStartDate");
+            }
+            this.planStartDate = planStartDate;
             return this;
         }
         @CustomType.Setter
         public Builder planType(String planType) {
-            this.planType = Objects.requireNonNull(planType);
+            if (planType == null) {
+              throw new MissingRequiredPropertyException("GetDbInstancePlansPlan", "planType");
+            }
+            this.planType = planType;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetDbInstancePlansPlan", "status");
+            }
+            this.status = status;
             return this;
         }
         public GetDbInstancePlansPlan build() {

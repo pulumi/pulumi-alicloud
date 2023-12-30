@@ -5,6 +5,7 @@ package com.pulumi.alicloud.dns.outputs;
 
 import com.pulumi.alicloud.dns.outputs.GetAccessStrategiesStrategy;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -101,17 +102,24 @@ public final class GetAccessStrategiesResult {
 
         @CustomType.Setter
         public Builder enableDetails(@Nullable Boolean enableDetails) {
+
             this.enableDetails = enableDetails;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetAccessStrategiesResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder ids(List<String> ids) {
-            this.ids = Objects.requireNonNull(ids);
+            if (ids == null) {
+              throw new MissingRequiredPropertyException("GetAccessStrategiesResult", "ids");
+            }
+            this.ids = ids;
             return this;
         }
         public Builder ids(String... ids) {
@@ -119,22 +127,30 @@ public final class GetAccessStrategiesResult {
         }
         @CustomType.Setter
         public Builder instanceId(String instanceId) {
-            this.instanceId = Objects.requireNonNull(instanceId);
+            if (instanceId == null) {
+              throw new MissingRequiredPropertyException("GetAccessStrategiesResult", "instanceId");
+            }
+            this.instanceId = instanceId;
             return this;
         }
         @CustomType.Setter
         public Builder lang(@Nullable String lang) {
+
             this.lang = lang;
             return this;
         }
         @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
+
             this.nameRegex = nameRegex;
             return this;
         }
         @CustomType.Setter
         public Builder names(List<String> names) {
-            this.names = Objects.requireNonNull(names);
+            if (names == null) {
+              throw new MissingRequiredPropertyException("GetAccessStrategiesResult", "names");
+            }
+            this.names = names;
             return this;
         }
         public Builder names(String... names) {
@@ -142,12 +158,16 @@ public final class GetAccessStrategiesResult {
         }
         @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
+
             this.outputFile = outputFile;
             return this;
         }
         @CustomType.Setter
         public Builder strategies(List<GetAccessStrategiesStrategy> strategies) {
-            this.strategies = Objects.requireNonNull(strategies);
+            if (strategies == null) {
+              throw new MissingRequiredPropertyException("GetAccessStrategiesResult", "strategies");
+            }
+            this.strategies = strategies;
             return this;
         }
         public Builder strategies(GetAccessStrategiesStrategy... strategies) {
@@ -155,7 +175,10 @@ public final class GetAccessStrategiesResult {
         }
         @CustomType.Setter
         public Builder strategyMode(String strategyMode) {
-            this.strategyMode = Objects.requireNonNull(strategyMode);
+            if (strategyMode == null) {
+              throw new MissingRequiredPropertyException("GetAccessStrategiesResult", "strategyMode");
+            }
+            this.strategyMode = strategyMode;
             return this;
         }
         public GetAccessStrategiesResult build() {

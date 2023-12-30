@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.nas.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -211,67 +212,106 @@ public final class GetDataFlowsFlow {
 
         @CustomType.Setter
         public Builder createTime(String createTime) {
-            this.createTime = Objects.requireNonNull(createTime);
+            if (createTime == null) {
+              throw new MissingRequiredPropertyException("GetDataFlowsFlow", "createTime");
+            }
+            this.createTime = createTime;
             return this;
         }
         @CustomType.Setter
         public Builder dataFlowId(String dataFlowId) {
-            this.dataFlowId = Objects.requireNonNull(dataFlowId);
+            if (dataFlowId == null) {
+              throw new MissingRequiredPropertyException("GetDataFlowsFlow", "dataFlowId");
+            }
+            this.dataFlowId = dataFlowId;
             return this;
         }
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetDataFlowsFlow", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder errorMessage(String errorMessage) {
-            this.errorMessage = Objects.requireNonNull(errorMessage);
+            if (errorMessage == null) {
+              throw new MissingRequiredPropertyException("GetDataFlowsFlow", "errorMessage");
+            }
+            this.errorMessage = errorMessage;
             return this;
         }
         @CustomType.Setter
         public Builder fileSystemId(String fileSystemId) {
-            this.fileSystemId = Objects.requireNonNull(fileSystemId);
+            if (fileSystemId == null) {
+              throw new MissingRequiredPropertyException("GetDataFlowsFlow", "fileSystemId");
+            }
+            this.fileSystemId = fileSystemId;
             return this;
         }
         @CustomType.Setter
         public Builder fileSystemPath(String fileSystemPath) {
-            this.fileSystemPath = Objects.requireNonNull(fileSystemPath);
+            if (fileSystemPath == null) {
+              throw new MissingRequiredPropertyException("GetDataFlowsFlow", "fileSystemPath");
+            }
+            this.fileSystemPath = fileSystemPath;
             return this;
         }
         @CustomType.Setter
         public Builder fsetDescription(String fsetDescription) {
-            this.fsetDescription = Objects.requireNonNull(fsetDescription);
+            if (fsetDescription == null) {
+              throw new MissingRequiredPropertyException("GetDataFlowsFlow", "fsetDescription");
+            }
+            this.fsetDescription = fsetDescription;
             return this;
         }
         @CustomType.Setter
         public Builder fsetId(String fsetId) {
-            this.fsetId = Objects.requireNonNull(fsetId);
+            if (fsetId == null) {
+              throw new MissingRequiredPropertyException("GetDataFlowsFlow", "fsetId");
+            }
+            this.fsetId = fsetId;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetDataFlowsFlow", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder sourceSecurityType(String sourceSecurityType) {
-            this.sourceSecurityType = Objects.requireNonNull(sourceSecurityType);
+            if (sourceSecurityType == null) {
+              throw new MissingRequiredPropertyException("GetDataFlowsFlow", "sourceSecurityType");
+            }
+            this.sourceSecurityType = sourceSecurityType;
             return this;
         }
         @CustomType.Setter
         public Builder sourceStorage(String sourceStorage) {
-            this.sourceStorage = Objects.requireNonNull(sourceStorage);
+            if (sourceStorage == null) {
+              throw new MissingRequiredPropertyException("GetDataFlowsFlow", "sourceStorage");
+            }
+            this.sourceStorage = sourceStorage;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetDataFlowsFlow", "status");
+            }
+            this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder throughput(Integer throughput) {
-            this.throughput = Objects.requireNonNull(throughput);
+            if (throughput == null) {
+              throw new MissingRequiredPropertyException("GetDataFlowsFlow", "throughput");
+            }
+            this.throughput = throughput;
             return this;
         }
         public GetDataFlowsFlow build() {

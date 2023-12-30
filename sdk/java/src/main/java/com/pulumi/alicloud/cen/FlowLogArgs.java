@@ -5,6 +5,7 @@ package com.pulumi.alicloud.cen;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -261,9 +262,15 @@ public final class FlowLogArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public FlowLogArgs build() {
-            $.cenId = Objects.requireNonNull($.cenId, "expected parameter 'cenId' to be non-null");
-            $.logStoreName = Objects.requireNonNull($.logStoreName, "expected parameter 'logStoreName' to be non-null");
-            $.projectName = Objects.requireNonNull($.projectName, "expected parameter 'projectName' to be non-null");
+            if ($.cenId == null) {
+                throw new MissingRequiredPropertyException("FlowLogArgs", "cenId");
+            }
+            if ($.logStoreName == null) {
+                throw new MissingRequiredPropertyException("FlowLogArgs", "logStoreName");
+            }
+            if ($.projectName == null) {
+                throw new MissingRequiredPropertyException("FlowLogArgs", "projectName");
+            }
             return $;
         }
     }

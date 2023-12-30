@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.dts.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -127,37 +128,58 @@ public final class GetConsumerChannelsChannel {
 
         @CustomType.Setter
         public Builder consumerGroupId(String consumerGroupId) {
-            this.consumerGroupId = Objects.requireNonNull(consumerGroupId);
+            if (consumerGroupId == null) {
+              throw new MissingRequiredPropertyException("GetConsumerChannelsChannel", "consumerGroupId");
+            }
+            this.consumerGroupId = consumerGroupId;
             return this;
         }
         @CustomType.Setter
         public Builder consumerGroupName(String consumerGroupName) {
-            this.consumerGroupName = Objects.requireNonNull(consumerGroupName);
+            if (consumerGroupName == null) {
+              throw new MissingRequiredPropertyException("GetConsumerChannelsChannel", "consumerGroupName");
+            }
+            this.consumerGroupName = consumerGroupName;
             return this;
         }
         @CustomType.Setter
         public Builder consumerGroupUserName(String consumerGroupUserName) {
-            this.consumerGroupUserName = Objects.requireNonNull(consumerGroupUserName);
+            if (consumerGroupUserName == null) {
+              throw new MissingRequiredPropertyException("GetConsumerChannelsChannel", "consumerGroupUserName");
+            }
+            this.consumerGroupUserName = consumerGroupUserName;
             return this;
         }
         @CustomType.Setter
         public Builder consumptionCheckpoint(String consumptionCheckpoint) {
-            this.consumptionCheckpoint = Objects.requireNonNull(consumptionCheckpoint);
+            if (consumptionCheckpoint == null) {
+              throw new MissingRequiredPropertyException("GetConsumerChannelsChannel", "consumptionCheckpoint");
+            }
+            this.consumptionCheckpoint = consumptionCheckpoint;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetConsumerChannelsChannel", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder messageDelay(Integer messageDelay) {
-            this.messageDelay = Objects.requireNonNull(messageDelay);
+            if (messageDelay == null) {
+              throw new MissingRequiredPropertyException("GetConsumerChannelsChannel", "messageDelay");
+            }
+            this.messageDelay = messageDelay;
             return this;
         }
         @CustomType.Setter
         public Builder unconsumedData(Integer unconsumedData) {
-            this.unconsumedData = Objects.requireNonNull(unconsumedData);
+            if (unconsumedData == null) {
+              throw new MissingRequiredPropertyException("GetConsumerChannelsChannel", "unconsumedData");
+            }
+            this.unconsumedData = unconsumedData;
             return this;
         }
         public GetConsumerChannelsChannel build() {

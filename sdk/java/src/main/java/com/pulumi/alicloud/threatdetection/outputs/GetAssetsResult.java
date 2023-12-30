@@ -5,6 +5,7 @@ package com.pulumi.alicloud.threatdetection.outputs;
 
 import com.pulumi.alicloud.threatdetection.outputs.GetAssetsAsset;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -124,7 +125,10 @@ public final class GetAssetsResult {
 
         @CustomType.Setter
         public Builder assets(List<GetAssetsAsset> assets) {
-            this.assets = Objects.requireNonNull(assets);
+            if (assets == null) {
+              throw new MissingRequiredPropertyException("GetAssetsResult", "assets");
+            }
+            this.assets = assets;
             return this;
         }
         public Builder assets(GetAssetsAsset... assets) {
@@ -132,17 +136,24 @@ public final class GetAssetsResult {
         }
         @CustomType.Setter
         public Builder criteria(@Nullable String criteria) {
+
             this.criteria = criteria;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetAssetsResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder ids(List<String> ids) {
-            this.ids = Objects.requireNonNull(ids);
+            if (ids == null) {
+              throw new MissingRequiredPropertyException("GetAssetsResult", "ids");
+            }
+            this.ids = ids;
             return this;
         }
         public Builder ids(String... ids) {
@@ -150,36 +161,43 @@ public final class GetAssetsResult {
         }
         @CustomType.Setter
         public Builder importance(@Nullable Integer importance) {
+
             this.importance = importance;
             return this;
         }
         @CustomType.Setter
         public Builder logicalExp(@Nullable String logicalExp) {
+
             this.logicalExp = logicalExp;
             return this;
         }
         @CustomType.Setter
         public Builder machineTypes(@Nullable String machineTypes) {
+
             this.machineTypes = machineTypes;
             return this;
         }
         @CustomType.Setter
         public Builder noGroupTrace(@Nullable Boolean noGroupTrace) {
+
             this.noGroupTrace = noGroupTrace;
             return this;
         }
         @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
+
             this.outputFile = outputFile;
             return this;
         }
         @CustomType.Setter
         public Builder pageNumber(@Nullable Integer pageNumber) {
+
             this.pageNumber = pageNumber;
             return this;
         }
         @CustomType.Setter
         public Builder pageSize(@Nullable Integer pageSize) {
+
             this.pageSize = pageSize;
             return this;
         }

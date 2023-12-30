@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.eci.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -127,37 +128,58 @@ public final class GetVirtualNodesNodeEvent {
 
         @CustomType.Setter
         public Builder count(Integer count) {
-            this.count = Objects.requireNonNull(count);
+            if (count == null) {
+              throw new MissingRequiredPropertyException("GetVirtualNodesNodeEvent", "count");
+            }
+            this.count = count;
             return this;
         }
         @CustomType.Setter
         public Builder firstTimestamp(String firstTimestamp) {
-            this.firstTimestamp = Objects.requireNonNull(firstTimestamp);
+            if (firstTimestamp == null) {
+              throw new MissingRequiredPropertyException("GetVirtualNodesNodeEvent", "firstTimestamp");
+            }
+            this.firstTimestamp = firstTimestamp;
             return this;
         }
         @CustomType.Setter
         public Builder lastTimestamp(String lastTimestamp) {
-            this.lastTimestamp = Objects.requireNonNull(lastTimestamp);
+            if (lastTimestamp == null) {
+              throw new MissingRequiredPropertyException("GetVirtualNodesNodeEvent", "lastTimestamp");
+            }
+            this.lastTimestamp = lastTimestamp;
             return this;
         }
         @CustomType.Setter
         public Builder message(String message) {
-            this.message = Objects.requireNonNull(message);
+            if (message == null) {
+              throw new MissingRequiredPropertyException("GetVirtualNodesNodeEvent", "message");
+            }
+            this.message = message;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetVirtualNodesNodeEvent", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder reason(String reason) {
-            this.reason = Objects.requireNonNull(reason);
+            if (reason == null) {
+              throw new MissingRequiredPropertyException("GetVirtualNodesNodeEvent", "reason");
+            }
+            this.reason = reason;
             return this;
         }
         @CustomType.Setter
         public Builder type(String type) {
-            this.type = Objects.requireNonNull(type);
+            if (type == null) {
+              throw new MissingRequiredPropertyException("GetVirtualNodesNodeEvent", "type");
+            }
+            this.type = type;
             return this;
         }
         public GetVirtualNodesNodeEvent build() {

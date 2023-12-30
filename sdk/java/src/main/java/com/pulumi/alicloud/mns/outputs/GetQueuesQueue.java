@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.mns.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -127,37 +128,58 @@ public final class GetQueuesQueue {
 
         @CustomType.Setter
         public Builder delaySeconds(Integer delaySeconds) {
-            this.delaySeconds = Objects.requireNonNull(delaySeconds);
+            if (delaySeconds == null) {
+              throw new MissingRequiredPropertyException("GetQueuesQueue", "delaySeconds");
+            }
+            this.delaySeconds = delaySeconds;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetQueuesQueue", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder maximumMessageSize(Integer maximumMessageSize) {
-            this.maximumMessageSize = Objects.requireNonNull(maximumMessageSize);
+            if (maximumMessageSize == null) {
+              throw new MissingRequiredPropertyException("GetQueuesQueue", "maximumMessageSize");
+            }
+            this.maximumMessageSize = maximumMessageSize;
             return this;
         }
         @CustomType.Setter
         public Builder messageRetentionPeriod(Integer messageRetentionPeriod) {
-            this.messageRetentionPeriod = Objects.requireNonNull(messageRetentionPeriod);
+            if (messageRetentionPeriod == null) {
+              throw new MissingRequiredPropertyException("GetQueuesQueue", "messageRetentionPeriod");
+            }
+            this.messageRetentionPeriod = messageRetentionPeriod;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetQueuesQueue", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder pollingWaitSeconds(Integer pollingWaitSeconds) {
-            this.pollingWaitSeconds = Objects.requireNonNull(pollingWaitSeconds);
+            if (pollingWaitSeconds == null) {
+              throw new MissingRequiredPropertyException("GetQueuesQueue", "pollingWaitSeconds");
+            }
+            this.pollingWaitSeconds = pollingWaitSeconds;
             return this;
         }
         @CustomType.Setter
         public Builder visibilityTimeouts(Integer visibilityTimeouts) {
-            this.visibilityTimeouts = Objects.requireNonNull(visibilityTimeouts);
+            if (visibilityTimeouts == null) {
+              throw new MissingRequiredPropertyException("GetQueuesQueue", "visibilityTimeouts");
+            }
+            this.visibilityTimeouts = visibilityTimeouts;
             return this;
         }
         public GetQueuesQueue build() {

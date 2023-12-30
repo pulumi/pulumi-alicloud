@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.vpc.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Object;
 import java.lang.String;
@@ -354,32 +355,50 @@ public final class GetNatGatewaysGateway {
 
         @CustomType.Setter
         public Builder businessStatus(String businessStatus) {
-            this.businessStatus = Objects.requireNonNull(businessStatus);
+            if (businessStatus == null) {
+              throw new MissingRequiredPropertyException("GetNatGatewaysGateway", "businessStatus");
+            }
+            this.businessStatus = businessStatus;
             return this;
         }
         @CustomType.Setter
         public Builder deletionProtection(Boolean deletionProtection) {
-            this.deletionProtection = Objects.requireNonNull(deletionProtection);
+            if (deletionProtection == null) {
+              throw new MissingRequiredPropertyException("GetNatGatewaysGateway", "deletionProtection");
+            }
+            this.deletionProtection = deletionProtection;
             return this;
         }
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetNatGatewaysGateway", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder ecsMetricEnabled(Boolean ecsMetricEnabled) {
-            this.ecsMetricEnabled = Objects.requireNonNull(ecsMetricEnabled);
+            if (ecsMetricEnabled == null) {
+              throw new MissingRequiredPropertyException("GetNatGatewaysGateway", "ecsMetricEnabled");
+            }
+            this.ecsMetricEnabled = ecsMetricEnabled;
             return this;
         }
         @CustomType.Setter
         public Builder expiredTime(String expiredTime) {
-            this.expiredTime = Objects.requireNonNull(expiredTime);
+            if (expiredTime == null) {
+              throw new MissingRequiredPropertyException("GetNatGatewaysGateway", "expiredTime");
+            }
+            this.expiredTime = expiredTime;
             return this;
         }
         @CustomType.Setter
         public Builder forwardTableIds(List<String> forwardTableIds) {
-            this.forwardTableIds = Objects.requireNonNull(forwardTableIds);
+            if (forwardTableIds == null) {
+              throw new MissingRequiredPropertyException("GetNatGatewaysGateway", "forwardTableIds");
+            }
+            this.forwardTableIds = forwardTableIds;
             return this;
         }
         public Builder forwardTableIds(String... forwardTableIds) {
@@ -387,17 +406,26 @@ public final class GetNatGatewaysGateway {
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetNatGatewaysGateway", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder internetChargeType(String internetChargeType) {
-            this.internetChargeType = Objects.requireNonNull(internetChargeType);
+            if (internetChargeType == null) {
+              throw new MissingRequiredPropertyException("GetNatGatewaysGateway", "internetChargeType");
+            }
+            this.internetChargeType = internetChargeType;
             return this;
         }
         @CustomType.Setter
         public Builder ipLists(List<String> ipLists) {
-            this.ipLists = Objects.requireNonNull(ipLists);
+            if (ipLists == null) {
+              throw new MissingRequiredPropertyException("GetNatGatewaysGateway", "ipLists");
+            }
+            this.ipLists = ipLists;
             return this;
         }
         public Builder ipLists(String... ipLists) {
@@ -405,42 +433,66 @@ public final class GetNatGatewaysGateway {
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetNatGatewaysGateway", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder natGatewayId(String natGatewayId) {
-            this.natGatewayId = Objects.requireNonNull(natGatewayId);
+            if (natGatewayId == null) {
+              throw new MissingRequiredPropertyException("GetNatGatewaysGateway", "natGatewayId");
+            }
+            this.natGatewayId = natGatewayId;
             return this;
         }
         @CustomType.Setter
         public Builder natGatewayName(String natGatewayName) {
-            this.natGatewayName = Objects.requireNonNull(natGatewayName);
+            if (natGatewayName == null) {
+              throw new MissingRequiredPropertyException("GetNatGatewaysGateway", "natGatewayName");
+            }
+            this.natGatewayName = natGatewayName;
             return this;
         }
         @CustomType.Setter
         public Builder natType(String natType) {
-            this.natType = Objects.requireNonNull(natType);
+            if (natType == null) {
+              throw new MissingRequiredPropertyException("GetNatGatewaysGateway", "natType");
+            }
+            this.natType = natType;
             return this;
         }
         @CustomType.Setter
         public Builder networkType(String networkType) {
-            this.networkType = Objects.requireNonNull(networkType);
+            if (networkType == null) {
+              throw new MissingRequiredPropertyException("GetNatGatewaysGateway", "networkType");
+            }
+            this.networkType = networkType;
             return this;
         }
         @CustomType.Setter
         public Builder paymentType(String paymentType) {
-            this.paymentType = Objects.requireNonNull(paymentType);
+            if (paymentType == null) {
+              throw new MissingRequiredPropertyException("GetNatGatewaysGateway", "paymentType");
+            }
+            this.paymentType = paymentType;
             return this;
         }
         @CustomType.Setter
         public Builder resourceGroupId(String resourceGroupId) {
-            this.resourceGroupId = Objects.requireNonNull(resourceGroupId);
+            if (resourceGroupId == null) {
+              throw new MissingRequiredPropertyException("GetNatGatewaysGateway", "resourceGroupId");
+            }
+            this.resourceGroupId = resourceGroupId;
             return this;
         }
         @CustomType.Setter
         public Builder snatTableIds(List<String> snatTableIds) {
-            this.snatTableIds = Objects.requireNonNull(snatTableIds);
+            if (snatTableIds == null) {
+              throw new MissingRequiredPropertyException("GetNatGatewaysGateway", "snatTableIds");
+            }
+            this.snatTableIds = snatTableIds;
             return this;
         }
         public Builder snatTableIds(String... snatTableIds) {
@@ -448,32 +500,50 @@ public final class GetNatGatewaysGateway {
         }
         @CustomType.Setter
         public Builder spec(String spec) {
-            this.spec = Objects.requireNonNull(spec);
+            if (spec == null) {
+              throw new MissingRequiredPropertyException("GetNatGatewaysGateway", "spec");
+            }
+            this.spec = spec;
             return this;
         }
         @CustomType.Setter
         public Builder specification(String specification) {
-            this.specification = Objects.requireNonNull(specification);
+            if (specification == null) {
+              throw new MissingRequiredPropertyException("GetNatGatewaysGateway", "specification");
+            }
+            this.specification = specification;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetNatGatewaysGateway", "status");
+            }
+            this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder tags(Map<String,Object> tags) {
-            this.tags = Objects.requireNonNull(tags);
+            if (tags == null) {
+              throw new MissingRequiredPropertyException("GetNatGatewaysGateway", "tags");
+            }
+            this.tags = tags;
             return this;
         }
         @CustomType.Setter
         public Builder vpcId(String vpcId) {
-            this.vpcId = Objects.requireNonNull(vpcId);
+            if (vpcId == null) {
+              throw new MissingRequiredPropertyException("GetNatGatewaysGateway", "vpcId");
+            }
+            this.vpcId = vpcId;
             return this;
         }
         @CustomType.Setter
         public Builder vswitchId(String vswitchId) {
-            this.vswitchId = Objects.requireNonNull(vswitchId);
+            if (vswitchId == null) {
+              throw new MissingRequiredPropertyException("GetNatGatewaysGateway", "vswitchId");
+            }
+            this.vswitchId = vswitchId;
             return this;
         }
         public GetNatGatewaysGateway build() {

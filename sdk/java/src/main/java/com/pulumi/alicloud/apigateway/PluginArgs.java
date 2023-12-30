@@ -5,6 +5,7 @@ package com.pulumi.alicloud.apigateway;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
@@ -250,9 +251,15 @@ public final class PluginArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public PluginArgs build() {
-            $.pluginData = Objects.requireNonNull($.pluginData, "expected parameter 'pluginData' to be non-null");
-            $.pluginName = Objects.requireNonNull($.pluginName, "expected parameter 'pluginName' to be non-null");
-            $.pluginType = Objects.requireNonNull($.pluginType, "expected parameter 'pluginType' to be non-null");
+            if ($.pluginData == null) {
+                throw new MissingRequiredPropertyException("PluginArgs", "pluginData");
+            }
+            if ($.pluginName == null) {
+                throw new MissingRequiredPropertyException("PluginArgs", "pluginName");
+            }
+            if ($.pluginType == null) {
+                throw new MissingRequiredPropertyException("PluginArgs", "pluginType");
+            }
             return $;
         }
     }

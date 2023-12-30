@@ -5,6 +5,7 @@ package com.pulumi.alicloud.alb.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -74,7 +75,9 @@ public final class LoadBalancerLoadBalancerBillingConfigArgs extends com.pulumi.
         }
 
         public LoadBalancerLoadBalancerBillingConfigArgs build() {
-            $.payType = Objects.requireNonNull($.payType, "expected parameter 'payType' to be non-null");
+            if ($.payType == null) {
+                throw new MissingRequiredPropertyException("LoadBalancerLoadBalancerBillingConfigArgs", "payType");
+            }
             return $;
         }
     }

@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.dfs.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -141,42 +142,66 @@ public final class GetAccessGroupsGroup {
 
         @CustomType.Setter
         public Builder accessGroupId(String accessGroupId) {
-            this.accessGroupId = Objects.requireNonNull(accessGroupId);
+            if (accessGroupId == null) {
+              throw new MissingRequiredPropertyException("GetAccessGroupsGroup", "accessGroupId");
+            }
+            this.accessGroupId = accessGroupId;
             return this;
         }
         @CustomType.Setter
         public Builder accessGroupName(String accessGroupName) {
-            this.accessGroupName = Objects.requireNonNull(accessGroupName);
+            if (accessGroupName == null) {
+              throw new MissingRequiredPropertyException("GetAccessGroupsGroup", "accessGroupName");
+            }
+            this.accessGroupName = accessGroupName;
             return this;
         }
         @CustomType.Setter
         public Builder createTime(String createTime) {
-            this.createTime = Objects.requireNonNull(createTime);
+            if (createTime == null) {
+              throw new MissingRequiredPropertyException("GetAccessGroupsGroup", "createTime");
+            }
+            this.createTime = createTime;
             return this;
         }
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetAccessGroupsGroup", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetAccessGroupsGroup", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder mountPointCount(Integer mountPointCount) {
-            this.mountPointCount = Objects.requireNonNull(mountPointCount);
+            if (mountPointCount == null) {
+              throw new MissingRequiredPropertyException("GetAccessGroupsGroup", "mountPointCount");
+            }
+            this.mountPointCount = mountPointCount;
             return this;
         }
         @CustomType.Setter
         public Builder networkType(String networkType) {
-            this.networkType = Objects.requireNonNull(networkType);
+            if (networkType == null) {
+              throw new MissingRequiredPropertyException("GetAccessGroupsGroup", "networkType");
+            }
+            this.networkType = networkType;
             return this;
         }
         @CustomType.Setter
         public Builder ruleCount(Integer ruleCount) {
-            this.ruleCount = Objects.requireNonNull(ruleCount);
+            if (ruleCount == null) {
+              throw new MissingRequiredPropertyException("GetAccessGroupsGroup", "ruleCount");
+            }
+            this.ruleCount = ruleCount;
             return this;
         }
         public GetAccessGroupsGroup build() {

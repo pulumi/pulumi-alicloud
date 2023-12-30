@@ -5,6 +5,7 @@ package com.pulumi.alicloud.dts;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -558,11 +559,21 @@ public final class SynchronizationInstanceArgs extends com.pulumi.resources.Reso
         }
 
         public SynchronizationInstanceArgs build() {
-            $.destinationEndpointEngineName = Objects.requireNonNull($.destinationEndpointEngineName, "expected parameter 'destinationEndpointEngineName' to be non-null");
-            $.destinationEndpointRegion = Objects.requireNonNull($.destinationEndpointRegion, "expected parameter 'destinationEndpointRegion' to be non-null");
-            $.paymentType = Objects.requireNonNull($.paymentType, "expected parameter 'paymentType' to be non-null");
-            $.sourceEndpointEngineName = Objects.requireNonNull($.sourceEndpointEngineName, "expected parameter 'sourceEndpointEngineName' to be non-null");
-            $.sourceEndpointRegion = Objects.requireNonNull($.sourceEndpointRegion, "expected parameter 'sourceEndpointRegion' to be non-null");
+            if ($.destinationEndpointEngineName == null) {
+                throw new MissingRequiredPropertyException("SynchronizationInstanceArgs", "destinationEndpointEngineName");
+            }
+            if ($.destinationEndpointRegion == null) {
+                throw new MissingRequiredPropertyException("SynchronizationInstanceArgs", "destinationEndpointRegion");
+            }
+            if ($.paymentType == null) {
+                throw new MissingRequiredPropertyException("SynchronizationInstanceArgs", "paymentType");
+            }
+            if ($.sourceEndpointEngineName == null) {
+                throw new MissingRequiredPropertyException("SynchronizationInstanceArgs", "sourceEndpointEngineName");
+            }
+            if ($.sourceEndpointRegion == null) {
+                throw new MissingRequiredPropertyException("SynchronizationInstanceArgs", "sourceEndpointRegion");
+            }
             return $;
         }
     }

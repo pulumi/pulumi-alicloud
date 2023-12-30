@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.resourcemanager.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -85,22 +86,34 @@ public final class GetPolicyVersionsVersion {
 
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetPolicyVersionsVersion", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder isDefaultVersion(Boolean isDefaultVersion) {
-            this.isDefaultVersion = Objects.requireNonNull(isDefaultVersion);
+            if (isDefaultVersion == null) {
+              throw new MissingRequiredPropertyException("GetPolicyVersionsVersion", "isDefaultVersion");
+            }
+            this.isDefaultVersion = isDefaultVersion;
             return this;
         }
         @CustomType.Setter
         public Builder policyDocument(String policyDocument) {
-            this.policyDocument = Objects.requireNonNull(policyDocument);
+            if (policyDocument == null) {
+              throw new MissingRequiredPropertyException("GetPolicyVersionsVersion", "policyDocument");
+            }
+            this.policyDocument = policyDocument;
             return this;
         }
         @CustomType.Setter
         public Builder versionId(String versionId) {
-            this.versionId = Objects.requireNonNull(versionId);
+            if (versionId == null) {
+              throw new MissingRequiredPropertyException("GetPolicyVersionsVersion", "versionId");
+            }
+            this.versionId = versionId;
             return this;
         }
         public GetPolicyVersionsVersion build() {

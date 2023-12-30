@@ -5,6 +5,7 @@ package com.pulumi.alicloud.emr.outputs;
 
 import com.pulumi.alicloud.emr.outputs.GetClustersClusterAccessInfoZkLink;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.util.List;
 import java.util.Objects;
 
@@ -43,7 +44,10 @@ public final class GetClustersClusterAccessInfo {
 
         @CustomType.Setter
         public Builder zkLinks(List<GetClustersClusterAccessInfoZkLink> zkLinks) {
-            this.zkLinks = Objects.requireNonNull(zkLinks);
+            if (zkLinks == null) {
+              throw new MissingRequiredPropertyException("GetClustersClusterAccessInfo", "zkLinks");
+            }
+            this.zkLinks = zkLinks;
             return this;
         }
         public Builder zkLinks(GetClustersClusterAccessInfoZkLink... zkLinks) {

@@ -5,6 +5,7 @@ package com.pulumi.alicloud.adb;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -603,13 +604,27 @@ public final class DBClusterLakeVersionArgs extends com.pulumi.resources.Resourc
         }
 
         public DBClusterLakeVersionArgs build() {
-            $.computeResource = Objects.requireNonNull($.computeResource, "expected parameter 'computeResource' to be non-null");
-            $.dbClusterVersion = Objects.requireNonNull($.dbClusterVersion, "expected parameter 'dbClusterVersion' to be non-null");
-            $.paymentType = Objects.requireNonNull($.paymentType, "expected parameter 'paymentType' to be non-null");
-            $.storageResource = Objects.requireNonNull($.storageResource, "expected parameter 'storageResource' to be non-null");
-            $.vpcId = Objects.requireNonNull($.vpcId, "expected parameter 'vpcId' to be non-null");
-            $.vswitchId = Objects.requireNonNull($.vswitchId, "expected parameter 'vswitchId' to be non-null");
-            $.zoneId = Objects.requireNonNull($.zoneId, "expected parameter 'zoneId' to be non-null");
+            if ($.computeResource == null) {
+                throw new MissingRequiredPropertyException("DBClusterLakeVersionArgs", "computeResource");
+            }
+            if ($.dbClusterVersion == null) {
+                throw new MissingRequiredPropertyException("DBClusterLakeVersionArgs", "dbClusterVersion");
+            }
+            if ($.paymentType == null) {
+                throw new MissingRequiredPropertyException("DBClusterLakeVersionArgs", "paymentType");
+            }
+            if ($.storageResource == null) {
+                throw new MissingRequiredPropertyException("DBClusterLakeVersionArgs", "storageResource");
+            }
+            if ($.vpcId == null) {
+                throw new MissingRequiredPropertyException("DBClusterLakeVersionArgs", "vpcId");
+            }
+            if ($.vswitchId == null) {
+                throw new MissingRequiredPropertyException("DBClusterLakeVersionArgs", "vswitchId");
+            }
+            if ($.zoneId == null) {
+                throw new MissingRequiredPropertyException("DBClusterLakeVersionArgs", "zoneId");
+            }
             return $;
         }
     }

@@ -5,6 +5,7 @@ package com.pulumi.alicloud.apigateway;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -187,9 +188,15 @@ public final class ModelArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public ModelArgs build() {
-            $.groupId = Objects.requireNonNull($.groupId, "expected parameter 'groupId' to be non-null");
-            $.modelName = Objects.requireNonNull($.modelName, "expected parameter 'modelName' to be non-null");
-            $.schema = Objects.requireNonNull($.schema, "expected parameter 'schema' to be non-null");
+            if ($.groupId == null) {
+                throw new MissingRequiredPropertyException("ModelArgs", "groupId");
+            }
+            if ($.modelName == null) {
+                throw new MissingRequiredPropertyException("ModelArgs", "modelName");
+            }
+            if ($.schema == null) {
+                throw new MissingRequiredPropertyException("ModelArgs", "schema");
+            }
             return $;
         }
     }

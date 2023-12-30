@@ -5,6 +5,7 @@ package com.pulumi.alicloud.cs.outputs;
 
 import com.pulumi.alicloud.cs.outputs.GetRegistryEnterpriseSyncRulesRule;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -156,12 +157,18 @@ public final class GetRegistryEnterpriseSyncRulesResult {
 
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetRegistryEnterpriseSyncRulesResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder ids(List<String> ids) {
-            this.ids = Objects.requireNonNull(ids);
+            if (ids == null) {
+              throw new MissingRequiredPropertyException("GetRegistryEnterpriseSyncRulesResult", "ids");
+            }
+            this.ids = ids;
             return this;
         }
         public Builder ids(String... ids) {
@@ -169,17 +176,24 @@ public final class GetRegistryEnterpriseSyncRulesResult {
         }
         @CustomType.Setter
         public Builder instanceId(String instanceId) {
-            this.instanceId = Objects.requireNonNull(instanceId);
+            if (instanceId == null) {
+              throw new MissingRequiredPropertyException("GetRegistryEnterpriseSyncRulesResult", "instanceId");
+            }
+            this.instanceId = instanceId;
             return this;
         }
         @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
+
             this.nameRegex = nameRegex;
             return this;
         }
         @CustomType.Setter
         public Builder names(List<String> names) {
-            this.names = Objects.requireNonNull(names);
+            if (names == null) {
+              throw new MissingRequiredPropertyException("GetRegistryEnterpriseSyncRulesResult", "names");
+            }
+            this.names = names;
             return this;
         }
         public Builder names(String... names) {
@@ -187,22 +201,28 @@ public final class GetRegistryEnterpriseSyncRulesResult {
         }
         @CustomType.Setter
         public Builder namespaceName(@Nullable String namespaceName) {
+
             this.namespaceName = namespaceName;
             return this;
         }
         @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
+
             this.outputFile = outputFile;
             return this;
         }
         @CustomType.Setter
         public Builder repoName(@Nullable String repoName) {
+
             this.repoName = repoName;
             return this;
         }
         @CustomType.Setter
         public Builder rules(List<GetRegistryEnterpriseSyncRulesRule> rules) {
-            this.rules = Objects.requireNonNull(rules);
+            if (rules == null) {
+              throw new MissingRequiredPropertyException("GetRegistryEnterpriseSyncRulesResult", "rules");
+            }
+            this.rules = rules;
             return this;
         }
         public Builder rules(GetRegistryEnterpriseSyncRulesRule... rules) {
@@ -210,6 +230,7 @@ public final class GetRegistryEnterpriseSyncRulesResult {
         }
         @CustomType.Setter
         public Builder targetInstanceId(@Nullable String targetInstanceId) {
+
             this.targetInstanceId = targetInstanceId;
             return this;
         }

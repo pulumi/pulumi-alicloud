@@ -59,11 +59,13 @@ public final class RuleCompliance {
 
         @CustomType.Setter
         public Builder complianceType(@Nullable String complianceType) {
+
             this.complianceType = complianceType;
             return this;
         }
         @CustomType.Setter
         public Builder count(@Nullable Integer count) {
+
             this.count = count;
             return this;
         }

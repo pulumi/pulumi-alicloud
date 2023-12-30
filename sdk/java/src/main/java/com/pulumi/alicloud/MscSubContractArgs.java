@@ -5,6 +5,7 @@ package com.pulumi.alicloud;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -193,10 +194,18 @@ public final class MscSubContractArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         public MscSubContractArgs build() {
-            $.contactName = Objects.requireNonNull($.contactName, "expected parameter 'contactName' to be non-null");
-            $.email = Objects.requireNonNull($.email, "expected parameter 'email' to be non-null");
-            $.mobile = Objects.requireNonNull($.mobile, "expected parameter 'mobile' to be non-null");
-            $.position = Objects.requireNonNull($.position, "expected parameter 'position' to be non-null");
+            if ($.contactName == null) {
+                throw new MissingRequiredPropertyException("MscSubContractArgs", "contactName");
+            }
+            if ($.email == null) {
+                throw new MissingRequiredPropertyException("MscSubContractArgs", "email");
+            }
+            if ($.mobile == null) {
+                throw new MissingRequiredPropertyException("MscSubContractArgs", "mobile");
+            }
+            if ($.position == null) {
+                throw new MissingRequiredPropertyException("MscSubContractArgs", "position");
+            }
             return $;
         }
     }

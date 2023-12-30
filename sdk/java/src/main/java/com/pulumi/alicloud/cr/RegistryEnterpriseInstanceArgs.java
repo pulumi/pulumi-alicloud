@@ -5,6 +5,7 @@ package com.pulumi.alicloud.cr;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.Object;
 import java.lang.String;
@@ -412,8 +413,12 @@ public final class RegistryEnterpriseInstanceArgs extends com.pulumi.resources.R
         }
 
         public RegistryEnterpriseInstanceArgs build() {
-            $.instanceName = Objects.requireNonNull($.instanceName, "expected parameter 'instanceName' to be non-null");
-            $.instanceType = Objects.requireNonNull($.instanceType, "expected parameter 'instanceType' to be non-null");
+            if ($.instanceName == null) {
+                throw new MissingRequiredPropertyException("RegistryEnterpriseInstanceArgs", "instanceName");
+            }
+            if ($.instanceType == null) {
+                throw new MissingRequiredPropertyException("RegistryEnterpriseInstanceArgs", "instanceType");
+            }
             return $;
         }
     }

@@ -5,6 +5,7 @@ package com.pulumi.alicloud.directmail.outputs;
 
 import com.pulumi.alicloud.directmail.outputs.GetMailAddressesAddress;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -82,7 +83,10 @@ public final class GetMailAddressesResult {
 
         @CustomType.Setter
         public Builder addresses(List<GetMailAddressesAddress> addresses) {
-            this.addresses = Objects.requireNonNull(addresses);
+            if (addresses == null) {
+              throw new MissingRequiredPropertyException("GetMailAddressesResult", "addresses");
+            }
+            this.addresses = addresses;
             return this;
         }
         public Builder addresses(GetMailAddressesAddress... addresses) {
@@ -90,12 +94,18 @@ public final class GetMailAddressesResult {
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetMailAddressesResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder ids(List<String> ids) {
-            this.ids = Objects.requireNonNull(ids);
+            if (ids == null) {
+              throw new MissingRequiredPropertyException("GetMailAddressesResult", "ids");
+            }
+            this.ids = ids;
             return this;
         }
         public Builder ids(String... ids) {
@@ -103,21 +113,25 @@ public final class GetMailAddressesResult {
         }
         @CustomType.Setter
         public Builder keyWord(@Nullable String keyWord) {
+
             this.keyWord = keyWord;
             return this;
         }
         @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
+
             this.outputFile = outputFile;
             return this;
         }
         @CustomType.Setter
         public Builder sendtype(@Nullable String sendtype) {
+
             this.sendtype = sendtype;
             return this;
         }
         @CustomType.Setter
         public Builder status(@Nullable String status) {
+
             this.status = status;
             return this;
         }

@@ -86,21 +86,25 @@ public final class ChainChainConfigNodeNodeConfigDenyPolicy {
 
         @CustomType.Setter
         public Builder action(@Nullable String action) {
+
             this.action = action;
             return this;
         }
         @CustomType.Setter
         public Builder issueCount(@Nullable String issueCount) {
+
             this.issueCount = issueCount;
             return this;
         }
         @CustomType.Setter
         public Builder issueLevel(@Nullable String issueLevel) {
+
             this.issueLevel = issueLevel;
             return this;
         }
         @CustomType.Setter
         public Builder logic(@Nullable String logic) {
+
             this.logic = logic;
             return this;
         }

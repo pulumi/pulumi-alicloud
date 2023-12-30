@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.emr.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -99,27 +100,42 @@ public final class GetClustersClusterHostGroupListNodeDiskInfo {
 
         @CustomType.Setter
         public Builder device(String device) {
-            this.device = Objects.requireNonNull(device);
+            if (device == null) {
+              throw new MissingRequiredPropertyException("GetClustersClusterHostGroupListNodeDiskInfo", "device");
+            }
+            this.device = device;
             return this;
         }
         @CustomType.Setter
         public Builder diskId(String diskId) {
-            this.diskId = Objects.requireNonNull(diskId);
+            if (diskId == null) {
+              throw new MissingRequiredPropertyException("GetClustersClusterHostGroupListNodeDiskInfo", "diskId");
+            }
+            this.diskId = diskId;
             return this;
         }
         @CustomType.Setter
         public Builder diskName(String diskName) {
-            this.diskName = Objects.requireNonNull(diskName);
+            if (diskName == null) {
+              throw new MissingRequiredPropertyException("GetClustersClusterHostGroupListNodeDiskInfo", "diskName");
+            }
+            this.diskName = diskName;
             return this;
         }
         @CustomType.Setter
         public Builder size(Integer size) {
-            this.size = Objects.requireNonNull(size);
+            if (size == null) {
+              throw new MissingRequiredPropertyException("GetClustersClusterHostGroupListNodeDiskInfo", "size");
+            }
+            this.size = size;
             return this;
         }
         @CustomType.Setter
         public Builder type(String type) {
-            this.type = Objects.requireNonNull(type);
+            if (type == null) {
+              throw new MissingRequiredPropertyException("GetClustersClusterHostGroupListNodeDiskInfo", "type");
+            }
+            this.type = type;
             return this;
         }
         public GetClustersClusterHostGroupListNodeDiskInfo build() {

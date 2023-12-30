@@ -6,6 +6,7 @@ package com.pulumi.alicloud.fc.inputs;
 import com.pulumi.alicloud.fc.inputs.ServiceNasConfigMountPointArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.util.List;
 import java.util.Objects;
@@ -160,9 +161,15 @@ public final class ServiceNasConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         public ServiceNasConfigArgs build() {
-            $.groupId = Objects.requireNonNull($.groupId, "expected parameter 'groupId' to be non-null");
-            $.mountPoints = Objects.requireNonNull($.mountPoints, "expected parameter 'mountPoints' to be non-null");
-            $.userId = Objects.requireNonNull($.userId, "expected parameter 'userId' to be non-null");
+            if ($.groupId == null) {
+                throw new MissingRequiredPropertyException("ServiceNasConfigArgs", "groupId");
+            }
+            if ($.mountPoints == null) {
+                throw new MissingRequiredPropertyException("ServiceNasConfigArgs", "mountPoints");
+            }
+            if ($.userId == null) {
+                throw new MissingRequiredPropertyException("ServiceNasConfigArgs", "userId");
+            }
             return $;
         }
     }

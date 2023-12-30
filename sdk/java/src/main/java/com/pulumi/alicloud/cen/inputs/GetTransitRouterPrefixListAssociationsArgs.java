@@ -5,6 +5,7 @@ package com.pulumi.alicloud.cen.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -344,8 +345,12 @@ public final class GetTransitRouterPrefixListAssociationsArgs extends com.pulumi
         }
 
         public GetTransitRouterPrefixListAssociationsArgs build() {
-            $.transitRouterId = Objects.requireNonNull($.transitRouterId, "expected parameter 'transitRouterId' to be non-null");
-            $.transitRouterTableId = Objects.requireNonNull($.transitRouterTableId, "expected parameter 'transitRouterTableId' to be non-null");
+            if ($.transitRouterId == null) {
+                throw new MissingRequiredPropertyException("GetTransitRouterPrefixListAssociationsArgs", "transitRouterId");
+            }
+            if ($.transitRouterTableId == null) {
+                throw new MissingRequiredPropertyException("GetTransitRouterPrefixListAssociationsArgs", "transitRouterTableId");
+            }
             return $;
         }
     }

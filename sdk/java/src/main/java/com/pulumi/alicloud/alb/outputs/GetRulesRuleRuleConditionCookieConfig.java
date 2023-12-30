@@ -5,6 +5,7 @@ package com.pulumi.alicloud.alb.outputs;
 
 import com.pulumi.alicloud.alb.outputs.GetRulesRuleRuleConditionCookieConfigValue;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.util.List;
 import java.util.Objects;
 
@@ -43,7 +44,10 @@ public final class GetRulesRuleRuleConditionCookieConfig {
 
         @CustomType.Setter
         public Builder values(List<GetRulesRuleRuleConditionCookieConfigValue> values) {
-            this.values = Objects.requireNonNull(values);
+            if (values == null) {
+              throw new MissingRequiredPropertyException("GetRulesRuleRuleConditionCookieConfig", "values");
+            }
+            this.values = values;
             return this;
         }
         public Builder values(GetRulesRuleRuleConditionCookieConfigValue... values) {

@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.vpc.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -140,42 +141,66 @@ public final class GetIpv6EgressRulesRule {
 
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetIpv6EgressRulesRule", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetIpv6EgressRulesRule", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder instanceId(String instanceId) {
-            this.instanceId = Objects.requireNonNull(instanceId);
+            if (instanceId == null) {
+              throw new MissingRequiredPropertyException("GetIpv6EgressRulesRule", "instanceId");
+            }
+            this.instanceId = instanceId;
             return this;
         }
         @CustomType.Setter
         public Builder instanceType(String instanceType) {
-            this.instanceType = Objects.requireNonNull(instanceType);
+            if (instanceType == null) {
+              throw new MissingRequiredPropertyException("GetIpv6EgressRulesRule", "instanceType");
+            }
+            this.instanceType = instanceType;
             return this;
         }
         @CustomType.Setter
         public Builder ipv6EgressRuleId(String ipv6EgressRuleId) {
-            this.ipv6EgressRuleId = Objects.requireNonNull(ipv6EgressRuleId);
+            if (ipv6EgressRuleId == null) {
+              throw new MissingRequiredPropertyException("GetIpv6EgressRulesRule", "ipv6EgressRuleId");
+            }
+            this.ipv6EgressRuleId = ipv6EgressRuleId;
             return this;
         }
         @CustomType.Setter
         public Builder ipv6EgressRuleName(String ipv6EgressRuleName) {
-            this.ipv6EgressRuleName = Objects.requireNonNull(ipv6EgressRuleName);
+            if (ipv6EgressRuleName == null) {
+              throw new MissingRequiredPropertyException("GetIpv6EgressRulesRule", "ipv6EgressRuleName");
+            }
+            this.ipv6EgressRuleName = ipv6EgressRuleName;
             return this;
         }
         @CustomType.Setter
         public Builder ipv6GatewayId(String ipv6GatewayId) {
-            this.ipv6GatewayId = Objects.requireNonNull(ipv6GatewayId);
+            if (ipv6GatewayId == null) {
+              throw new MissingRequiredPropertyException("GetIpv6EgressRulesRule", "ipv6GatewayId");
+            }
+            this.ipv6GatewayId = ipv6GatewayId;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetIpv6EgressRulesRule", "status");
+            }
+            this.status = status;
             return this;
         }
         public GetIpv6EgressRulesRule build() {

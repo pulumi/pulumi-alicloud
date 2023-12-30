@@ -87,21 +87,25 @@ public final class ServiceMeshLoadBalancer {
 
         @CustomType.Setter
         public Builder apiServerLoadbalancerId(@Nullable String apiServerLoadbalancerId) {
+
             this.apiServerLoadbalancerId = apiServerLoadbalancerId;
             return this;
         }
         @CustomType.Setter
         public Builder apiServerPublicEip(@Nullable Boolean apiServerPublicEip) {
+
             this.apiServerPublicEip = apiServerPublicEip;
             return this;
         }
         @CustomType.Setter
         public Builder pilotPublicEip(@Nullable Boolean pilotPublicEip) {
+
             this.pilotPublicEip = pilotPublicEip;
             return this;
         }
         @CustomType.Setter
         public Builder pilotPublicLoadbalancerId(@Nullable String pilotPublicLoadbalancerId) {
+
             this.pilotPublicLoadbalancerId = pilotPublicLoadbalancerId;
             return this;
         }

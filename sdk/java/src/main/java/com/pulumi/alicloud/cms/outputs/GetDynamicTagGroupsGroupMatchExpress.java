@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.cms.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -56,12 +57,18 @@ public final class GetDynamicTagGroupsGroupMatchExpress {
 
         @CustomType.Setter
         public Builder tagValue(String tagValue) {
-            this.tagValue = Objects.requireNonNull(tagValue);
+            if (tagValue == null) {
+              throw new MissingRequiredPropertyException("GetDynamicTagGroupsGroupMatchExpress", "tagValue");
+            }
+            this.tagValue = tagValue;
             return this;
         }
         @CustomType.Setter
         public Builder tagValueMatchFunction(String tagValueMatchFunction) {
-            this.tagValueMatchFunction = Objects.requireNonNull(tagValueMatchFunction);
+            if (tagValueMatchFunction == null) {
+              throw new MissingRequiredPropertyException("GetDynamicTagGroupsGroupMatchExpress", "tagValueMatchFunction");
+            }
+            this.tagValueMatchFunction = tagValueMatchFunction;
             return this;
         }
         public GetDynamicTagGroupsGroupMatchExpress build() {

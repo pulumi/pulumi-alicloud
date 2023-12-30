@@ -5,6 +5,7 @@ package com.pulumi.alicloud.bastionhost;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -150,8 +151,12 @@ public final class HostGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public HostGroupArgs build() {
-            $.hostGroupName = Objects.requireNonNull($.hostGroupName, "expected parameter 'hostGroupName' to be non-null");
-            $.instanceId = Objects.requireNonNull($.instanceId, "expected parameter 'instanceId' to be non-null");
+            if ($.hostGroupName == null) {
+                throw new MissingRequiredPropertyException("HostGroupArgs", "hostGroupName");
+            }
+            if ($.instanceId == null) {
+                throw new MissingRequiredPropertyException("HostGroupArgs", "instanceId");
+            }
             return $;
         }
     }

@@ -5,6 +5,7 @@ package com.pulumi.alicloud.mhub;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -298,9 +299,15 @@ public final class AppArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public AppArgs build() {
-            $.appName = Objects.requireNonNull($.appName, "expected parameter 'appName' to be non-null");
-            $.productId = Objects.requireNonNull($.productId, "expected parameter 'productId' to be non-null");
-            $.type = Objects.requireNonNull($.type, "expected parameter 'type' to be non-null");
+            if ($.appName == null) {
+                throw new MissingRequiredPropertyException("AppArgs", "appName");
+            }
+            if ($.productId == null) {
+                throw new MissingRequiredPropertyException("AppArgs", "productId");
+            }
+            if ($.type == null) {
+                throw new MissingRequiredPropertyException("AppArgs", "type");
+            }
             return $;
         }
     }

@@ -5,6 +5,7 @@ package com.pulumi.alicloud.cen;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -164,9 +165,15 @@ public final class RouteEntryArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public RouteEntryArgs build() {
-            $.cidrBlock = Objects.requireNonNull($.cidrBlock, "expected parameter 'cidrBlock' to be non-null");
-            $.instanceId = Objects.requireNonNull($.instanceId, "expected parameter 'instanceId' to be non-null");
-            $.routeTableId = Objects.requireNonNull($.routeTableId, "expected parameter 'routeTableId' to be non-null");
+            if ($.cidrBlock == null) {
+                throw new MissingRequiredPropertyException("RouteEntryArgs", "cidrBlock");
+            }
+            if ($.instanceId == null) {
+                throw new MissingRequiredPropertyException("RouteEntryArgs", "instanceId");
+            }
+            if ($.routeTableId == null) {
+                throw new MissingRequiredPropertyException("RouteEntryArgs", "routeTableId");
+            }
             return $;
         }
     }

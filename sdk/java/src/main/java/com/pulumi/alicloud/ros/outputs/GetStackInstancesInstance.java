@@ -5,6 +5,7 @@ package com.pulumi.alicloud.ros.outputs;
 
 import com.pulumi.alicloud.ros.outputs.GetStackInstancesInstanceParameterOverride;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -156,12 +157,18 @@ public final class GetStackInstancesInstance {
 
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetStackInstancesInstance", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder parameterOverrides(List<GetStackInstancesInstanceParameterOverride> parameterOverrides) {
-            this.parameterOverrides = Objects.requireNonNull(parameterOverrides);
+            if (parameterOverrides == null) {
+              throw new MissingRequiredPropertyException("GetStackInstancesInstance", "parameterOverrides");
+            }
+            this.parameterOverrides = parameterOverrides;
             return this;
         }
         public Builder parameterOverrides(GetStackInstancesInstanceParameterOverride... parameterOverrides) {
@@ -169,37 +176,58 @@ public final class GetStackInstancesInstance {
         }
         @CustomType.Setter
         public Builder stackGroupId(String stackGroupId) {
-            this.stackGroupId = Objects.requireNonNull(stackGroupId);
+            if (stackGroupId == null) {
+              throw new MissingRequiredPropertyException("GetStackInstancesInstance", "stackGroupId");
+            }
+            this.stackGroupId = stackGroupId;
             return this;
         }
         @CustomType.Setter
         public Builder stackGroupName(String stackGroupName) {
-            this.stackGroupName = Objects.requireNonNull(stackGroupName);
+            if (stackGroupName == null) {
+              throw new MissingRequiredPropertyException("GetStackInstancesInstance", "stackGroupName");
+            }
+            this.stackGroupName = stackGroupName;
             return this;
         }
         @CustomType.Setter
         public Builder stackId(String stackId) {
-            this.stackId = Objects.requireNonNull(stackId);
+            if (stackId == null) {
+              throw new MissingRequiredPropertyException("GetStackInstancesInstance", "stackId");
+            }
+            this.stackId = stackId;
             return this;
         }
         @CustomType.Setter
         public Builder stackInstanceAccountId(String stackInstanceAccountId) {
-            this.stackInstanceAccountId = Objects.requireNonNull(stackInstanceAccountId);
+            if (stackInstanceAccountId == null) {
+              throw new MissingRequiredPropertyException("GetStackInstancesInstance", "stackInstanceAccountId");
+            }
+            this.stackInstanceAccountId = stackInstanceAccountId;
             return this;
         }
         @CustomType.Setter
         public Builder stackInstanceRegionId(String stackInstanceRegionId) {
-            this.stackInstanceRegionId = Objects.requireNonNull(stackInstanceRegionId);
+            if (stackInstanceRegionId == null) {
+              throw new MissingRequiredPropertyException("GetStackInstancesInstance", "stackInstanceRegionId");
+            }
+            this.stackInstanceRegionId = stackInstanceRegionId;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetStackInstancesInstance", "status");
+            }
+            this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder statusReason(String statusReason) {
-            this.statusReason = Objects.requireNonNull(statusReason);
+            if (statusReason == null) {
+              throw new MissingRequiredPropertyException("GetStackInstancesInstance", "statusReason");
+            }
+            this.statusReason = statusReason;
             return this;
         }
         public GetStackInstancesInstance build() {

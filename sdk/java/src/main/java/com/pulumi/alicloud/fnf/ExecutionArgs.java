@@ -5,6 +5,7 @@ package com.pulumi.alicloud.fnf;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -187,8 +188,12 @@ public final class ExecutionArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public ExecutionArgs build() {
-            $.executionName = Objects.requireNonNull($.executionName, "expected parameter 'executionName' to be non-null");
-            $.flowName = Objects.requireNonNull($.flowName, "expected parameter 'flowName' to be non-null");
+            if ($.executionName == null) {
+                throw new MissingRequiredPropertyException("ExecutionArgs", "executionName");
+            }
+            if ($.flowName == null) {
+                throw new MissingRequiredPropertyException("ExecutionArgs", "flowName");
+            }
             return $;
         }
     }

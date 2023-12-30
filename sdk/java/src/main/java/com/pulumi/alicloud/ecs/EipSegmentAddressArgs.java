@@ -5,6 +5,7 @@ package com.pulumi.alicloud.ecs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -276,7 +277,9 @@ public final class EipSegmentAddressArgs extends com.pulumi.resources.ResourceAr
         }
 
         public EipSegmentAddressArgs build() {
-            $.eipMask = Objects.requireNonNull($.eipMask, "expected parameter 'eipMask' to be non-null");
+            if ($.eipMask == null) {
+                throw new MissingRequiredPropertyException("EipSegmentAddressArgs", "eipMask");
+            }
             return $;
         }
     }

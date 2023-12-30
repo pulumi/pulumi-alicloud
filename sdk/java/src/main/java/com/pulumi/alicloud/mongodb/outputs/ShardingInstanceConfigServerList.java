@@ -143,41 +143,49 @@ public final class ShardingInstanceConfigServerList {
 
         @CustomType.Setter
         public Builder connectString(@Nullable String connectString) {
+
             this.connectString = connectString;
             return this;
         }
         @CustomType.Setter
         public Builder maxConnections(@Nullable Integer maxConnections) {
+
             this.maxConnections = maxConnections;
             return this;
         }
         @CustomType.Setter
         public Builder maxIops(@Nullable Integer maxIops) {
+
             this.maxIops = maxIops;
             return this;
         }
         @CustomType.Setter
         public Builder nodeClass(@Nullable String nodeClass) {
+
             this.nodeClass = nodeClass;
             return this;
         }
         @CustomType.Setter
         public Builder nodeDescription(@Nullable String nodeDescription) {
+
             this.nodeDescription = nodeDescription;
             return this;
         }
         @CustomType.Setter
         public Builder nodeId(@Nullable String nodeId) {
+
             this.nodeId = nodeId;
             return this;
         }
         @CustomType.Setter
         public Builder nodeStorage(@Nullable Integer nodeStorage) {
+
             this.nodeStorage = nodeStorage;
             return this;
         }
         @CustomType.Setter
         public Builder port(@Nullable Integer port) {
+
             this.port = port;
             return this;
         }

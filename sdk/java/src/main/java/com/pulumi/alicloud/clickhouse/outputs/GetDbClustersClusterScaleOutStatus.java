@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.clickhouse.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -56,12 +57,18 @@ public final class GetDbClustersClusterScaleOutStatus {
 
         @CustomType.Setter
         public Builder progress(String progress) {
-            this.progress = Objects.requireNonNull(progress);
+            if (progress == null) {
+              throw new MissingRequiredPropertyException("GetDbClustersClusterScaleOutStatus", "progress");
+            }
+            this.progress = progress;
             return this;
         }
         @CustomType.Setter
         public Builder ratio(String ratio) {
-            this.ratio = Objects.requireNonNull(ratio);
+            if (ratio == null) {
+              throw new MissingRequiredPropertyException("GetDbClustersClusterScaleOutStatus", "ratio");
+            }
+            this.ratio = ratio;
             return this;
         }
         public GetDbClustersClusterScaleOutStatus build() {

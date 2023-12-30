@@ -59,6 +59,7 @@ public final class ContainerGroupHostAlias {
 
         @CustomType.Setter
         public Builder hostnames(@Nullable List<String> hostnames) {
+
             this.hostnames = hostnames;
             return this;
         }
@@ -67,6 +68,7 @@ public final class ContainerGroupHostAlias {
         }
         @CustomType.Setter
         public Builder ip(@Nullable String ip) {
+
             this.ip = ip;
             return this;
         }

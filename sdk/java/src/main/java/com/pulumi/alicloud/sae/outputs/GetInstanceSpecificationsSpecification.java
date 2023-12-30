@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.sae.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -128,37 +129,58 @@ public final class GetInstanceSpecificationsSpecification {
 
         @CustomType.Setter
         public Builder cpu(Integer cpu) {
-            this.cpu = Objects.requireNonNull(cpu);
+            if (cpu == null) {
+              throw new MissingRequiredPropertyException("GetInstanceSpecificationsSpecification", "cpu");
+            }
+            this.cpu = cpu;
             return this;
         }
         @CustomType.Setter
         public Builder enable(Boolean enable) {
-            this.enable = Objects.requireNonNull(enable);
+            if (enable == null) {
+              throw new MissingRequiredPropertyException("GetInstanceSpecificationsSpecification", "enable");
+            }
+            this.enable = enable;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetInstanceSpecificationsSpecification", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder instanceSpecificationId(String instanceSpecificationId) {
-            this.instanceSpecificationId = Objects.requireNonNull(instanceSpecificationId);
+            if (instanceSpecificationId == null) {
+              throw new MissingRequiredPropertyException("GetInstanceSpecificationsSpecification", "instanceSpecificationId");
+            }
+            this.instanceSpecificationId = instanceSpecificationId;
             return this;
         }
         @CustomType.Setter
         public Builder memory(Integer memory) {
-            this.memory = Objects.requireNonNull(memory);
+            if (memory == null) {
+              throw new MissingRequiredPropertyException("GetInstanceSpecificationsSpecification", "memory");
+            }
+            this.memory = memory;
             return this;
         }
         @CustomType.Setter
         public Builder specInfo(String specInfo) {
-            this.specInfo = Objects.requireNonNull(specInfo);
+            if (specInfo == null) {
+              throw new MissingRequiredPropertyException("GetInstanceSpecificationsSpecification", "specInfo");
+            }
+            this.specInfo = specInfo;
             return this;
         }
         @CustomType.Setter
         public Builder version(Integer version) {
-            this.version = Objects.requireNonNull(version);
+            if (version == null) {
+              throw new MissingRequiredPropertyException("GetInstanceSpecificationsSpecification", "version");
+            }
+            this.version = version;
             return this;
         }
         public GetInstanceSpecificationsSpecification build() {

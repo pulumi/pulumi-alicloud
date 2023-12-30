@@ -7,6 +7,7 @@ import com.pulumi.alicloud.realtimecompute.inputs.VvpInstanceResourceSpecArgs;
 import com.pulumi.alicloud.realtimecompute.inputs.VvpInstanceStorageArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.Object;
 import java.lang.String;
@@ -462,12 +463,24 @@ public final class VvpInstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public VvpInstanceArgs build() {
-            $.paymentType = Objects.requireNonNull($.paymentType, "expected parameter 'paymentType' to be non-null");
-            $.storage = Objects.requireNonNull($.storage, "expected parameter 'storage' to be non-null");
-            $.vpcId = Objects.requireNonNull($.vpcId, "expected parameter 'vpcId' to be non-null");
-            $.vswitchIds = Objects.requireNonNull($.vswitchIds, "expected parameter 'vswitchIds' to be non-null");
-            $.vvpInstanceName = Objects.requireNonNull($.vvpInstanceName, "expected parameter 'vvpInstanceName' to be non-null");
-            $.zoneId = Objects.requireNonNull($.zoneId, "expected parameter 'zoneId' to be non-null");
+            if ($.paymentType == null) {
+                throw new MissingRequiredPropertyException("VvpInstanceArgs", "paymentType");
+            }
+            if ($.storage == null) {
+                throw new MissingRequiredPropertyException("VvpInstanceArgs", "storage");
+            }
+            if ($.vpcId == null) {
+                throw new MissingRequiredPropertyException("VvpInstanceArgs", "vpcId");
+            }
+            if ($.vswitchIds == null) {
+                throw new MissingRequiredPropertyException("VvpInstanceArgs", "vswitchIds");
+            }
+            if ($.vvpInstanceName == null) {
+                throw new MissingRequiredPropertyException("VvpInstanceArgs", "vvpInstanceName");
+            }
+            if ($.zoneId == null) {
+                throw new MissingRequiredPropertyException("VvpInstanceArgs", "zoneId");
+            }
             return $;
         }
     }

@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.vpc.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -155,47 +156,74 @@ public final class GetIpv4GatewaysGateway {
 
         @CustomType.Setter
         public Builder createTime(String createTime) {
-            this.createTime = Objects.requireNonNull(createTime);
+            if (createTime == null) {
+              throw new MissingRequiredPropertyException("GetIpv4GatewaysGateway", "createTime");
+            }
+            this.createTime = createTime;
             return this;
         }
         @CustomType.Setter
         public Builder enabled(Boolean enabled) {
-            this.enabled = Objects.requireNonNull(enabled);
+            if (enabled == null) {
+              throw new MissingRequiredPropertyException("GetIpv4GatewaysGateway", "enabled");
+            }
+            this.enabled = enabled;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetIpv4GatewaysGateway", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder ipv4GatewayDescription(String ipv4GatewayDescription) {
-            this.ipv4GatewayDescription = Objects.requireNonNull(ipv4GatewayDescription);
+            if (ipv4GatewayDescription == null) {
+              throw new MissingRequiredPropertyException("GetIpv4GatewaysGateway", "ipv4GatewayDescription");
+            }
+            this.ipv4GatewayDescription = ipv4GatewayDescription;
             return this;
         }
         @CustomType.Setter
         public Builder ipv4GatewayId(String ipv4GatewayId) {
-            this.ipv4GatewayId = Objects.requireNonNull(ipv4GatewayId);
+            if (ipv4GatewayId == null) {
+              throw new MissingRequiredPropertyException("GetIpv4GatewaysGateway", "ipv4GatewayId");
+            }
+            this.ipv4GatewayId = ipv4GatewayId;
             return this;
         }
         @CustomType.Setter
         public Builder ipv4GatewayName(String ipv4GatewayName) {
-            this.ipv4GatewayName = Objects.requireNonNull(ipv4GatewayName);
+            if (ipv4GatewayName == null) {
+              throw new MissingRequiredPropertyException("GetIpv4GatewaysGateway", "ipv4GatewayName");
+            }
+            this.ipv4GatewayName = ipv4GatewayName;
             return this;
         }
         @CustomType.Setter
         public Builder ipv4GatewayRouteTableId(String ipv4GatewayRouteTableId) {
-            this.ipv4GatewayRouteTableId = Objects.requireNonNull(ipv4GatewayRouteTableId);
+            if (ipv4GatewayRouteTableId == null) {
+              throw new MissingRequiredPropertyException("GetIpv4GatewaysGateway", "ipv4GatewayRouteTableId");
+            }
+            this.ipv4GatewayRouteTableId = ipv4GatewayRouteTableId;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetIpv4GatewaysGateway", "status");
+            }
+            this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder vpcId(String vpcId) {
-            this.vpcId = Objects.requireNonNull(vpcId);
+            if (vpcId == null) {
+              throw new MissingRequiredPropertyException("GetIpv4GatewaysGateway", "vpcId");
+            }
+            this.vpcId = vpcId;
             return this;
         }
         public GetIpv4GatewaysGateway build() {

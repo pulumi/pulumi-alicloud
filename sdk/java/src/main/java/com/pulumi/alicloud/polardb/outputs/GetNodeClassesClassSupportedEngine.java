@@ -5,6 +5,7 @@ package com.pulumi.alicloud.polardb.outputs;
 
 import com.pulumi.alicloud.polardb.outputs.GetNodeClassesClassSupportedEngineAvailableResource;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -58,7 +59,10 @@ public final class GetNodeClassesClassSupportedEngine {
 
         @CustomType.Setter
         public Builder availableResources(List<GetNodeClassesClassSupportedEngineAvailableResource> availableResources) {
-            this.availableResources = Objects.requireNonNull(availableResources);
+            if (availableResources == null) {
+              throw new MissingRequiredPropertyException("GetNodeClassesClassSupportedEngine", "availableResources");
+            }
+            this.availableResources = availableResources;
             return this;
         }
         public Builder availableResources(GetNodeClassesClassSupportedEngineAvailableResource... availableResources) {
@@ -66,7 +70,10 @@ public final class GetNodeClassesClassSupportedEngine {
         }
         @CustomType.Setter
         public Builder engine(String engine) {
-            this.engine = Objects.requireNonNull(engine);
+            if (engine == null) {
+              throw new MissingRequiredPropertyException("GetNodeClassesClassSupportedEngine", "engine");
+            }
+            this.engine = engine;
             return this;
         }
         public GetNodeClassesClassSupportedEngine build() {

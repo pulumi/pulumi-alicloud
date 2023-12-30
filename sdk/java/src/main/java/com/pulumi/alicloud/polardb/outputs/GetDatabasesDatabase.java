@@ -5,6 +5,7 @@ package com.pulumi.alicloud.polardb.outputs;
 
 import com.pulumi.alicloud.polardb.outputs.GetDatabasesDatabaseAccount;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -114,7 +115,10 @@ public final class GetDatabasesDatabase {
 
         @CustomType.Setter
         public Builder accounts(List<GetDatabasesDatabaseAccount> accounts) {
-            this.accounts = Objects.requireNonNull(accounts);
+            if (accounts == null) {
+              throw new MissingRequiredPropertyException("GetDatabasesDatabase", "accounts");
+            }
+            this.accounts = accounts;
             return this;
         }
         public Builder accounts(GetDatabasesDatabaseAccount... accounts) {
@@ -122,27 +126,42 @@ public final class GetDatabasesDatabase {
         }
         @CustomType.Setter
         public Builder characterSetName(String characterSetName) {
-            this.characterSetName = Objects.requireNonNull(characterSetName);
+            if (characterSetName == null) {
+              throw new MissingRequiredPropertyException("GetDatabasesDatabase", "characterSetName");
+            }
+            this.characterSetName = characterSetName;
             return this;
         }
         @CustomType.Setter
         public Builder dbDescription(String dbDescription) {
-            this.dbDescription = Objects.requireNonNull(dbDescription);
+            if (dbDescription == null) {
+              throw new MissingRequiredPropertyException("GetDatabasesDatabase", "dbDescription");
+            }
+            this.dbDescription = dbDescription;
             return this;
         }
         @CustomType.Setter
         public Builder dbName(String dbName) {
-            this.dbName = Objects.requireNonNull(dbName);
+            if (dbName == null) {
+              throw new MissingRequiredPropertyException("GetDatabasesDatabase", "dbName");
+            }
+            this.dbName = dbName;
             return this;
         }
         @CustomType.Setter
         public Builder dbStatus(String dbStatus) {
-            this.dbStatus = Objects.requireNonNull(dbStatus);
+            if (dbStatus == null) {
+              throw new MissingRequiredPropertyException("GetDatabasesDatabase", "dbStatus");
+            }
+            this.dbStatus = dbStatus;
             return this;
         }
         @CustomType.Setter
         public Builder engine(String engine) {
-            this.engine = Objects.requireNonNull(engine);
+            if (engine == null) {
+              throw new MissingRequiredPropertyException("GetDatabasesDatabase", "engine");
+            }
+            this.engine = engine;
             return this;
         }
         public GetDatabasesDatabase build() {

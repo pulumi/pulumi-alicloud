@@ -7,6 +7,7 @@ import com.pulumi.alicloud.ess.outputs.EciScalingConfigurationContainerEnvironme
 import com.pulumi.alicloud.ess.outputs.EciScalingConfigurationContainerPort;
 import com.pulumi.alicloud.ess.outputs.EciScalingConfigurationContainerVolumeMount;
 import com.pulumi.core.annotations.CustomType;
+import java.lang.Boolean;
 import java.lang.Double;
 import java.lang.Integer;
 import java.lang.String;
@@ -168,6 +169,23 @@ public final class EciScalingConfigurationContainer {
      * 
      */
     private @Nullable Integer readinessProbeTimeoutSeconds;
+    /**
+     * @return Grant certain permissions to processes within container. Optional values:
+     * - NET_ADMIN: Allow network management tasks to be performed.
+     * - NET_RAW: Allow raw sockets.
+     * 
+     */
+    private @Nullable List<String> securityContextCapabilityAdds;
+    /**
+     * @return Mounts the container&#39;s root filesystem as read-only.
+     * 
+     */
+    private @Nullable Boolean securityContextReadOnlyRootFileSystem;
+    /**
+     * @return Specifies user ID  under which all processes run.
+     * 
+     */
+    private @Nullable Integer securityContextRunAsUser;
     /**
      * @return The structure of volumeMounts.
      * See `volume_mounts` below for details.
@@ -393,6 +411,29 @@ public final class EciScalingConfigurationContainer {
         return Optional.ofNullable(this.readinessProbeTimeoutSeconds);
     }
     /**
+     * @return Grant certain permissions to processes within container. Optional values:
+     * - NET_ADMIN: Allow network management tasks to be performed.
+     * - NET_RAW: Allow raw sockets.
+     * 
+     */
+    public List<String> securityContextCapabilityAdds() {
+        return this.securityContextCapabilityAdds == null ? List.of() : this.securityContextCapabilityAdds;
+    }
+    /**
+     * @return Mounts the container&#39;s root filesystem as read-only.
+     * 
+     */
+    public Optional<Boolean> securityContextReadOnlyRootFileSystem() {
+        return Optional.ofNullable(this.securityContextReadOnlyRootFileSystem);
+    }
+    /**
+     * @return Specifies user ID  under which all processes run.
+     * 
+     */
+    public Optional<Integer> securityContextRunAsUser() {
+        return Optional.ofNullable(this.securityContextRunAsUser);
+    }
+    /**
      * @return The structure of volumeMounts.
      * See `volume_mounts` below for details.
      * 
@@ -447,6 +488,9 @@ public final class EciScalingConfigurationContainer {
         private @Nullable Integer readinessProbeSuccessThreshold;
         private @Nullable Integer readinessProbeTcpSocketPort;
         private @Nullable Integer readinessProbeTimeoutSeconds;
+        private @Nullable List<String> securityContextCapabilityAdds;
+        private @Nullable Boolean securityContextReadOnlyRootFileSystem;
+        private @Nullable Integer securityContextRunAsUser;
         private @Nullable List<EciScalingConfigurationContainerVolumeMount> volumeMounts;
         private @Nullable String workingDir;
         public Builder() {}
@@ -482,12 +526,16 @@ public final class EciScalingConfigurationContainer {
     	      this.readinessProbeSuccessThreshold = defaults.readinessProbeSuccessThreshold;
     	      this.readinessProbeTcpSocketPort = defaults.readinessProbeTcpSocketPort;
     	      this.readinessProbeTimeoutSeconds = defaults.readinessProbeTimeoutSeconds;
+    	      this.securityContextCapabilityAdds = defaults.securityContextCapabilityAdds;
+    	      this.securityContextReadOnlyRootFileSystem = defaults.securityContextReadOnlyRootFileSystem;
+    	      this.securityContextRunAsUser = defaults.securityContextRunAsUser;
     	      this.volumeMounts = defaults.volumeMounts;
     	      this.workingDir = defaults.workingDir;
         }
 
         @CustomType.Setter
         public Builder args(@Nullable List<String> args) {
+
             this.args = args;
             return this;
         }
@@ -496,6 +544,7 @@ public final class EciScalingConfigurationContainer {
         }
         @CustomType.Setter
         public Builder commands(@Nullable List<String> commands) {
+
             this.commands = commands;
             return this;
         }
@@ -504,11 +553,13 @@ public final class EciScalingConfigurationContainer {
         }
         @CustomType.Setter
         public Builder cpu(@Nullable Double cpu) {
+
             this.cpu = cpu;
             return this;
         }
         @CustomType.Setter
         public Builder environmentVars(@Nullable List<EciScalingConfigurationContainerEnvironmentVar> environmentVars) {
+
             this.environmentVars = environmentVars;
             return this;
         }
@@ -517,21 +568,25 @@ public final class EciScalingConfigurationContainer {
         }
         @CustomType.Setter
         public Builder gpu(@Nullable Integer gpu) {
+
             this.gpu = gpu;
             return this;
         }
         @CustomType.Setter
         public Builder image(@Nullable String image) {
+
             this.image = image;
             return this;
         }
         @CustomType.Setter
         public Builder imagePullPolicy(@Nullable String imagePullPolicy) {
+
             this.imagePullPolicy = imagePullPolicy;
             return this;
         }
         @CustomType.Setter
         public Builder livenessProbeExecCommands(@Nullable List<String> livenessProbeExecCommands) {
+
             this.livenessProbeExecCommands = livenessProbeExecCommands;
             return this;
         }
@@ -540,61 +595,73 @@ public final class EciScalingConfigurationContainer {
         }
         @CustomType.Setter
         public Builder livenessProbeFailureThreshold(@Nullable Integer livenessProbeFailureThreshold) {
+
             this.livenessProbeFailureThreshold = livenessProbeFailureThreshold;
             return this;
         }
         @CustomType.Setter
         public Builder livenessProbeHttpGetPath(@Nullable String livenessProbeHttpGetPath) {
+
             this.livenessProbeHttpGetPath = livenessProbeHttpGetPath;
             return this;
         }
         @CustomType.Setter
         public Builder livenessProbeHttpGetPort(@Nullable Integer livenessProbeHttpGetPort) {
+
             this.livenessProbeHttpGetPort = livenessProbeHttpGetPort;
             return this;
         }
         @CustomType.Setter
         public Builder livenessProbeHttpGetScheme(@Nullable String livenessProbeHttpGetScheme) {
+
             this.livenessProbeHttpGetScheme = livenessProbeHttpGetScheme;
             return this;
         }
         @CustomType.Setter
         public Builder livenessProbeInitialDelaySeconds(@Nullable Integer livenessProbeInitialDelaySeconds) {
+
             this.livenessProbeInitialDelaySeconds = livenessProbeInitialDelaySeconds;
             return this;
         }
         @CustomType.Setter
         public Builder livenessProbePeriodSeconds(@Nullable Integer livenessProbePeriodSeconds) {
+
             this.livenessProbePeriodSeconds = livenessProbePeriodSeconds;
             return this;
         }
         @CustomType.Setter
         public Builder livenessProbeSuccessThreshold(@Nullable Integer livenessProbeSuccessThreshold) {
+
             this.livenessProbeSuccessThreshold = livenessProbeSuccessThreshold;
             return this;
         }
         @CustomType.Setter
         public Builder livenessProbeTcpSocketPort(@Nullable Integer livenessProbeTcpSocketPort) {
+
             this.livenessProbeTcpSocketPort = livenessProbeTcpSocketPort;
             return this;
         }
         @CustomType.Setter
         public Builder livenessProbeTimeoutSeconds(@Nullable Integer livenessProbeTimeoutSeconds) {
+
             this.livenessProbeTimeoutSeconds = livenessProbeTimeoutSeconds;
             return this;
         }
         @CustomType.Setter
         public Builder memory(@Nullable Double memory) {
+
             this.memory = memory;
             return this;
         }
         @CustomType.Setter
         public Builder name(@Nullable String name) {
+
             this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder ports(@Nullable List<EciScalingConfigurationContainerPort> ports) {
+
             this.ports = ports;
             return this;
         }
@@ -603,6 +670,7 @@ public final class EciScalingConfigurationContainer {
         }
         @CustomType.Setter
         public Builder readinessProbeExecCommands(@Nullable List<String> readinessProbeExecCommands) {
+
             this.readinessProbeExecCommands = readinessProbeExecCommands;
             return this;
         }
@@ -611,51 +679,82 @@ public final class EciScalingConfigurationContainer {
         }
         @CustomType.Setter
         public Builder readinessProbeFailureThreshold(@Nullable Integer readinessProbeFailureThreshold) {
+
             this.readinessProbeFailureThreshold = readinessProbeFailureThreshold;
             return this;
         }
         @CustomType.Setter
         public Builder readinessProbeHttpGetPath(@Nullable String readinessProbeHttpGetPath) {
+
             this.readinessProbeHttpGetPath = readinessProbeHttpGetPath;
             return this;
         }
         @CustomType.Setter
         public Builder readinessProbeHttpGetPort(@Nullable Integer readinessProbeHttpGetPort) {
+
             this.readinessProbeHttpGetPort = readinessProbeHttpGetPort;
             return this;
         }
         @CustomType.Setter
         public Builder readinessProbeHttpGetScheme(@Nullable String readinessProbeHttpGetScheme) {
+
             this.readinessProbeHttpGetScheme = readinessProbeHttpGetScheme;
             return this;
         }
         @CustomType.Setter
         public Builder readinessProbeInitialDelaySeconds(@Nullable Integer readinessProbeInitialDelaySeconds) {
+
             this.readinessProbeInitialDelaySeconds = readinessProbeInitialDelaySeconds;
             return this;
         }
         @CustomType.Setter
         public Builder readinessProbePeriodSeconds(@Nullable Integer readinessProbePeriodSeconds) {
+
             this.readinessProbePeriodSeconds = readinessProbePeriodSeconds;
             return this;
         }
         @CustomType.Setter
         public Builder readinessProbeSuccessThreshold(@Nullable Integer readinessProbeSuccessThreshold) {
+
             this.readinessProbeSuccessThreshold = readinessProbeSuccessThreshold;
             return this;
         }
         @CustomType.Setter
         public Builder readinessProbeTcpSocketPort(@Nullable Integer readinessProbeTcpSocketPort) {
+
             this.readinessProbeTcpSocketPort = readinessProbeTcpSocketPort;
             return this;
         }
         @CustomType.Setter
         public Builder readinessProbeTimeoutSeconds(@Nullable Integer readinessProbeTimeoutSeconds) {
+
             this.readinessProbeTimeoutSeconds = readinessProbeTimeoutSeconds;
             return this;
         }
         @CustomType.Setter
+        public Builder securityContextCapabilityAdds(@Nullable List<String> securityContextCapabilityAdds) {
+
+            this.securityContextCapabilityAdds = securityContextCapabilityAdds;
+            return this;
+        }
+        public Builder securityContextCapabilityAdds(String... securityContextCapabilityAdds) {
+            return securityContextCapabilityAdds(List.of(securityContextCapabilityAdds));
+        }
+        @CustomType.Setter
+        public Builder securityContextReadOnlyRootFileSystem(@Nullable Boolean securityContextReadOnlyRootFileSystem) {
+
+            this.securityContextReadOnlyRootFileSystem = securityContextReadOnlyRootFileSystem;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder securityContextRunAsUser(@Nullable Integer securityContextRunAsUser) {
+
+            this.securityContextRunAsUser = securityContextRunAsUser;
+            return this;
+        }
+        @CustomType.Setter
         public Builder volumeMounts(@Nullable List<EciScalingConfigurationContainerVolumeMount> volumeMounts) {
+
             this.volumeMounts = volumeMounts;
             return this;
         }
@@ -664,6 +763,7 @@ public final class EciScalingConfigurationContainer {
         }
         @CustomType.Setter
         public Builder workingDir(@Nullable String workingDir) {
+
             this.workingDir = workingDir;
             return this;
         }
@@ -699,6 +799,9 @@ public final class EciScalingConfigurationContainer {
             _resultValue.readinessProbeSuccessThreshold = readinessProbeSuccessThreshold;
             _resultValue.readinessProbeTcpSocketPort = readinessProbeTcpSocketPort;
             _resultValue.readinessProbeTimeoutSeconds = readinessProbeTimeoutSeconds;
+            _resultValue.securityContextCapabilityAdds = securityContextCapabilityAdds;
+            _resultValue.securityContextReadOnlyRootFileSystem = securityContextReadOnlyRootFileSystem;
+            _resultValue.securityContextRunAsUser = securityContextRunAsUser;
             _resultValue.volumeMounts = volumeMounts;
             _resultValue.workingDir = workingDir;
             return _resultValue;

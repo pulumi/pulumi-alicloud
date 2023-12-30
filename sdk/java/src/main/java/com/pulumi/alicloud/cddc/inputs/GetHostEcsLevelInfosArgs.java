@@ -5,6 +5,7 @@ package com.pulumi.alicloud.cddc.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -224,9 +225,15 @@ public final class GetHostEcsLevelInfosArgs extends com.pulumi.resources.InvokeA
         }
 
         public GetHostEcsLevelInfosArgs build() {
-            $.dbType = Objects.requireNonNull($.dbType, "expected parameter 'dbType' to be non-null");
-            $.storageType = Objects.requireNonNull($.storageType, "expected parameter 'storageType' to be non-null");
-            $.zoneId = Objects.requireNonNull($.zoneId, "expected parameter 'zoneId' to be non-null");
+            if ($.dbType == null) {
+                throw new MissingRequiredPropertyException("GetHostEcsLevelInfosArgs", "dbType");
+            }
+            if ($.storageType == null) {
+                throw new MissingRequiredPropertyException("GetHostEcsLevelInfosArgs", "storageType");
+            }
+            if ($.zoneId == null) {
+                throw new MissingRequiredPropertyException("GetHostEcsLevelInfosArgs", "zoneId");
+            }
             return $;
         }
     }

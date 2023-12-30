@@ -5,6 +5,7 @@ package com.pulumi.alicloud.nlb.outputs;
 
 import com.pulumi.alicloud.nlb.outputs.GetServerGroupsGroupHealthCheck;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.Object;
@@ -258,22 +259,34 @@ public final class GetServerGroupsGroup {
 
         @CustomType.Setter
         public Builder addressIpVersion(String addressIpVersion) {
-            this.addressIpVersion = Objects.requireNonNull(addressIpVersion);
+            if (addressIpVersion == null) {
+              throw new MissingRequiredPropertyException("GetServerGroupsGroup", "addressIpVersion");
+            }
+            this.addressIpVersion = addressIpVersion;
             return this;
         }
         @CustomType.Setter
         public Builder connectionDrain(Boolean connectionDrain) {
-            this.connectionDrain = Objects.requireNonNull(connectionDrain);
+            if (connectionDrain == null) {
+              throw new MissingRequiredPropertyException("GetServerGroupsGroup", "connectionDrain");
+            }
+            this.connectionDrain = connectionDrain;
             return this;
         }
         @CustomType.Setter
         public Builder connectionDrainTimeout(Integer connectionDrainTimeout) {
-            this.connectionDrainTimeout = Objects.requireNonNull(connectionDrainTimeout);
+            if (connectionDrainTimeout == null) {
+              throw new MissingRequiredPropertyException("GetServerGroupsGroup", "connectionDrainTimeout");
+            }
+            this.connectionDrainTimeout = connectionDrainTimeout;
             return this;
         }
         @CustomType.Setter
         public Builder healthChecks(List<GetServerGroupsGroupHealthCheck> healthChecks) {
-            this.healthChecks = Objects.requireNonNull(healthChecks);
+            if (healthChecks == null) {
+              throw new MissingRequiredPropertyException("GetServerGroupsGroup", "healthChecks");
+            }
+            this.healthChecks = healthChecks;
             return this;
         }
         public Builder healthChecks(GetServerGroupsGroupHealthCheck... healthChecks) {
@@ -281,22 +294,34 @@ public final class GetServerGroupsGroup {
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetServerGroupsGroup", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder preserveClientIpEnabled(Boolean preserveClientIpEnabled) {
-            this.preserveClientIpEnabled = Objects.requireNonNull(preserveClientIpEnabled);
+            if (preserveClientIpEnabled == null) {
+              throw new MissingRequiredPropertyException("GetServerGroupsGroup", "preserveClientIpEnabled");
+            }
+            this.preserveClientIpEnabled = preserveClientIpEnabled;
             return this;
         }
         @CustomType.Setter
         public Builder protocol(String protocol) {
-            this.protocol = Objects.requireNonNull(protocol);
+            if (protocol == null) {
+              throw new MissingRequiredPropertyException("GetServerGroupsGroup", "protocol");
+            }
+            this.protocol = protocol;
             return this;
         }
         @CustomType.Setter
         public Builder relatedLoadBalancerIds(List<String> relatedLoadBalancerIds) {
-            this.relatedLoadBalancerIds = Objects.requireNonNull(relatedLoadBalancerIds);
+            if (relatedLoadBalancerIds == null) {
+              throw new MissingRequiredPropertyException("GetServerGroupsGroup", "relatedLoadBalancerIds");
+            }
+            this.relatedLoadBalancerIds = relatedLoadBalancerIds;
             return this;
         }
         public Builder relatedLoadBalancerIds(String... relatedLoadBalancerIds) {
@@ -304,42 +329,66 @@ public final class GetServerGroupsGroup {
         }
         @CustomType.Setter
         public Builder resourceGroupId(String resourceGroupId) {
-            this.resourceGroupId = Objects.requireNonNull(resourceGroupId);
+            if (resourceGroupId == null) {
+              throw new MissingRequiredPropertyException("GetServerGroupsGroup", "resourceGroupId");
+            }
+            this.resourceGroupId = resourceGroupId;
             return this;
         }
         @CustomType.Setter
         public Builder scheduler(String scheduler) {
-            this.scheduler = Objects.requireNonNull(scheduler);
+            if (scheduler == null) {
+              throw new MissingRequiredPropertyException("GetServerGroupsGroup", "scheduler");
+            }
+            this.scheduler = scheduler;
             return this;
         }
         @CustomType.Setter
         public Builder serverCount(Integer serverCount) {
-            this.serverCount = Objects.requireNonNull(serverCount);
+            if (serverCount == null) {
+              throw new MissingRequiredPropertyException("GetServerGroupsGroup", "serverCount");
+            }
+            this.serverCount = serverCount;
             return this;
         }
         @CustomType.Setter
         public Builder serverGroupName(String serverGroupName) {
-            this.serverGroupName = Objects.requireNonNull(serverGroupName);
+            if (serverGroupName == null) {
+              throw new MissingRequiredPropertyException("GetServerGroupsGroup", "serverGroupName");
+            }
+            this.serverGroupName = serverGroupName;
             return this;
         }
         @CustomType.Setter
         public Builder serverGroupType(String serverGroupType) {
-            this.serverGroupType = Objects.requireNonNull(serverGroupType);
+            if (serverGroupType == null) {
+              throw new MissingRequiredPropertyException("GetServerGroupsGroup", "serverGroupType");
+            }
+            this.serverGroupType = serverGroupType;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetServerGroupsGroup", "status");
+            }
+            this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder tags(Map<String,Object> tags) {
-            this.tags = Objects.requireNonNull(tags);
+            if (tags == null) {
+              throw new MissingRequiredPropertyException("GetServerGroupsGroup", "tags");
+            }
+            this.tags = tags;
             return this;
         }
         @CustomType.Setter
         public Builder vpcId(String vpcId) {
-            this.vpcId = Objects.requireNonNull(vpcId);
+            if (vpcId == null) {
+              throw new MissingRequiredPropertyException("GetServerGroupsGroup", "vpcId");
+            }
+            this.vpcId = vpcId;
             return this;
         }
         public GetServerGroupsGroup build() {

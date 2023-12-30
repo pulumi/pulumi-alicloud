@@ -5,6 +5,7 @@ package com.pulumi.alicloud.cloudconnect;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -188,7 +189,9 @@ public final class NetworkArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public NetworkArgs build() {
-            $.isDefault = Objects.requireNonNull($.isDefault, "expected parameter 'isDefault' to be non-null");
+            if ($.isDefault == null) {
+                throw new MissingRequiredPropertyException("NetworkArgs", "isDefault");
+            }
             return $;
         }
     }

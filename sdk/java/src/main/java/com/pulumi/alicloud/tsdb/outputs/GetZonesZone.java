@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.tsdb.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -70,17 +71,26 @@ public final class GetZonesZone {
 
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetZonesZone", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder localName(String localName) {
-            this.localName = Objects.requireNonNull(localName);
+            if (localName == null) {
+              throw new MissingRequiredPropertyException("GetZonesZone", "localName");
+            }
+            this.localName = localName;
             return this;
         }
         @CustomType.Setter
         public Builder zoneId(String zoneId) {
-            this.zoneId = Objects.requireNonNull(zoneId);
+            if (zoneId == null) {
+              throw new MissingRequiredPropertyException("GetZonesZone", "zoneId");
+            }
+            this.zoneId = zoneId;
             return this;
         }
         public GetZonesZone build() {

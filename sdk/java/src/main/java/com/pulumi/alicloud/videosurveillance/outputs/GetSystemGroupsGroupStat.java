@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.videosurveillance.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -84,22 +85,34 @@ public final class GetSystemGroupsGroupStat {
 
         @CustomType.Setter
         public Builder deviceNum(String deviceNum) {
-            this.deviceNum = Objects.requireNonNull(deviceNum);
+            if (deviceNum == null) {
+              throw new MissingRequiredPropertyException("GetSystemGroupsGroupStat", "deviceNum");
+            }
+            this.deviceNum = deviceNum;
             return this;
         }
         @CustomType.Setter
         public Builder iedNum(String iedNum) {
-            this.iedNum = Objects.requireNonNull(iedNum);
+            if (iedNum == null) {
+              throw new MissingRequiredPropertyException("GetSystemGroupsGroupStat", "iedNum");
+            }
+            this.iedNum = iedNum;
             return this;
         }
         @CustomType.Setter
         public Builder ipcNum(String ipcNum) {
-            this.ipcNum = Objects.requireNonNull(ipcNum);
+            if (ipcNum == null) {
+              throw new MissingRequiredPropertyException("GetSystemGroupsGroupStat", "ipcNum");
+            }
+            this.ipcNum = ipcNum;
             return this;
         }
         @CustomType.Setter
         public Builder platformNum(String platformNum) {
-            this.platformNum = Objects.requireNonNull(platformNum);
+            if (platformNum == null) {
+              throw new MissingRequiredPropertyException("GetSystemGroupsGroupStat", "platformNum");
+            }
+            this.platformNum = platformNum;
             return this;
         }
         public GetSystemGroupsGroupStat build() {

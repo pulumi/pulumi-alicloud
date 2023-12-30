@@ -5,6 +5,7 @@ package com.pulumi.alicloud.ess;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -171,9 +172,15 @@ public final class NotificationArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public NotificationArgs build() {
-            $.notificationArn = Objects.requireNonNull($.notificationArn, "expected parameter 'notificationArn' to be non-null");
-            $.notificationTypes = Objects.requireNonNull($.notificationTypes, "expected parameter 'notificationTypes' to be non-null");
-            $.scalingGroupId = Objects.requireNonNull($.scalingGroupId, "expected parameter 'scalingGroupId' to be non-null");
+            if ($.notificationArn == null) {
+                throw new MissingRequiredPropertyException("NotificationArgs", "notificationArn");
+            }
+            if ($.notificationTypes == null) {
+                throw new MissingRequiredPropertyException("NotificationArgs", "notificationTypes");
+            }
+            if ($.scalingGroupId == null) {
+                throw new MissingRequiredPropertyException("NotificationArgs", "scalingGroupId");
+            }
             return $;
         }
     }

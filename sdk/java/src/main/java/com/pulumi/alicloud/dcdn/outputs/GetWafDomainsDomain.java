@@ -5,6 +5,7 @@ package com.pulumi.alicloud.dcdn.outputs;
 
 import com.pulumi.alicloud.dcdn.outputs.GetWafDomainsDomainDefenseScene;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -86,12 +87,18 @@ public final class GetWafDomainsDomain {
 
         @CustomType.Setter
         public Builder clientIpTag(String clientIpTag) {
-            this.clientIpTag = Objects.requireNonNull(clientIpTag);
+            if (clientIpTag == null) {
+              throw new MissingRequiredPropertyException("GetWafDomainsDomain", "clientIpTag");
+            }
+            this.clientIpTag = clientIpTag;
             return this;
         }
         @CustomType.Setter
         public Builder defenseScenes(List<GetWafDomainsDomainDefenseScene> defenseScenes) {
-            this.defenseScenes = Objects.requireNonNull(defenseScenes);
+            if (defenseScenes == null) {
+              throw new MissingRequiredPropertyException("GetWafDomainsDomain", "defenseScenes");
+            }
+            this.defenseScenes = defenseScenes;
             return this;
         }
         public Builder defenseScenes(GetWafDomainsDomainDefenseScene... defenseScenes) {
@@ -99,12 +106,18 @@ public final class GetWafDomainsDomain {
         }
         @CustomType.Setter
         public Builder domainName(String domainName) {
-            this.domainName = Objects.requireNonNull(domainName);
+            if (domainName == null) {
+              throw new MissingRequiredPropertyException("GetWafDomainsDomain", "domainName");
+            }
+            this.domainName = domainName;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetWafDomainsDomain", "id");
+            }
+            this.id = id;
             return this;
         }
         public GetWafDomainsDomain build() {

@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.servicecatalog.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -169,52 +170,82 @@ public final class GetProductVersionsVersion {
 
         @CustomType.Setter
         public Builder active(Boolean active) {
-            this.active = Objects.requireNonNull(active);
+            if (active == null) {
+              throw new MissingRequiredPropertyException("GetProductVersionsVersion", "active");
+            }
+            this.active = active;
             return this;
         }
         @CustomType.Setter
         public Builder createTime(String createTime) {
-            this.createTime = Objects.requireNonNull(createTime);
+            if (createTime == null) {
+              throw new MissingRequiredPropertyException("GetProductVersionsVersion", "createTime");
+            }
+            this.createTime = createTime;
             return this;
         }
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetProductVersionsVersion", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder guidance(String guidance) {
-            this.guidance = Objects.requireNonNull(guidance);
+            if (guidance == null) {
+              throw new MissingRequiredPropertyException("GetProductVersionsVersion", "guidance");
+            }
+            this.guidance = guidance;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetProductVersionsVersion", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder productId(String productId) {
-            this.productId = Objects.requireNonNull(productId);
+            if (productId == null) {
+              throw new MissingRequiredPropertyException("GetProductVersionsVersion", "productId");
+            }
+            this.productId = productId;
             return this;
         }
         @CustomType.Setter
         public Builder productVersionId(String productVersionId) {
-            this.productVersionId = Objects.requireNonNull(productVersionId);
+            if (productVersionId == null) {
+              throw new MissingRequiredPropertyException("GetProductVersionsVersion", "productVersionId");
+            }
+            this.productVersionId = productVersionId;
             return this;
         }
         @CustomType.Setter
         public Builder productVersionName(String productVersionName) {
-            this.productVersionName = Objects.requireNonNull(productVersionName);
+            if (productVersionName == null) {
+              throw new MissingRequiredPropertyException("GetProductVersionsVersion", "productVersionName");
+            }
+            this.productVersionName = productVersionName;
             return this;
         }
         @CustomType.Setter
         public Builder templateType(String templateType) {
-            this.templateType = Objects.requireNonNull(templateType);
+            if (templateType == null) {
+              throw new MissingRequiredPropertyException("GetProductVersionsVersion", "templateType");
+            }
+            this.templateType = templateType;
             return this;
         }
         @CustomType.Setter
         public Builder templateUrl(String templateUrl) {
-            this.templateUrl = Objects.requireNonNull(templateUrl);
+            if (templateUrl == null) {
+              throw new MissingRequiredPropertyException("GetProductVersionsVersion", "templateUrl");
+            }
+            this.templateUrl = templateUrl;
             return this;
         }
         public GetProductVersionsVersion build() {

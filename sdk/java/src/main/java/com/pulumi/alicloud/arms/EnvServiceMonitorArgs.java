@@ -5,6 +5,7 @@ package com.pulumi.alicloud.arms;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -150,8 +151,12 @@ public final class EnvServiceMonitorArgs extends com.pulumi.resources.ResourceAr
         }
 
         public EnvServiceMonitorArgs build() {
-            $.configYaml = Objects.requireNonNull($.configYaml, "expected parameter 'configYaml' to be non-null");
-            $.environmentId = Objects.requireNonNull($.environmentId, "expected parameter 'environmentId' to be non-null");
+            if ($.configYaml == null) {
+                throw new MissingRequiredPropertyException("EnvServiceMonitorArgs", "configYaml");
+            }
+            if ($.environmentId == null) {
+                throw new MissingRequiredPropertyException("EnvServiceMonitorArgs", "environmentId");
+            }
             return $;
         }
     }

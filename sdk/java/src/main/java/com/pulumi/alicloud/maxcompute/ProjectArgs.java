@@ -8,6 +8,7 @@ import com.pulumi.alicloud.maxcompute.inputs.ProjectPropertiesArgs;
 import com.pulumi.alicloud.maxcompute.inputs.ProjectSecurityPropertiesArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -301,7 +302,9 @@ public final class ProjectArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public ProjectArgs build() {
-            $.projectName = Objects.requireNonNull($.projectName, "expected parameter 'projectName' to be non-null");
+            if ($.projectName == null) {
+                throw new MissingRequiredPropertyException("ProjectArgs", "projectName");
+            }
             return $;
         }
     }

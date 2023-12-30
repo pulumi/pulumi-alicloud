@@ -5,6 +5,7 @@ package com.pulumi.alicloud.cddc.outputs;
 
 import com.pulumi.alicloud.cddc.outputs.GetHostEcsLevelInfosInfo;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -82,22 +83,32 @@ public final class GetHostEcsLevelInfosResult {
 
         @CustomType.Setter
         public Builder dbType(String dbType) {
-            this.dbType = Objects.requireNonNull(dbType);
+            if (dbType == null) {
+              throw new MissingRequiredPropertyException("GetHostEcsLevelInfosResult", "dbType");
+            }
+            this.dbType = dbType;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetHostEcsLevelInfosResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder imageCategory(@Nullable String imageCategory) {
+
             this.imageCategory = imageCategory;
             return this;
         }
         @CustomType.Setter
         public Builder infos(List<GetHostEcsLevelInfosInfo> infos) {
-            this.infos = Objects.requireNonNull(infos);
+            if (infos == null) {
+              throw new MissingRequiredPropertyException("GetHostEcsLevelInfosResult", "infos");
+            }
+            this.infos = infos;
             return this;
         }
         public Builder infos(GetHostEcsLevelInfosInfo... infos) {
@@ -105,17 +116,24 @@ public final class GetHostEcsLevelInfosResult {
         }
         @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
+
             this.outputFile = outputFile;
             return this;
         }
         @CustomType.Setter
         public Builder storageType(String storageType) {
-            this.storageType = Objects.requireNonNull(storageType);
+            if (storageType == null) {
+              throw new MissingRequiredPropertyException("GetHostEcsLevelInfosResult", "storageType");
+            }
+            this.storageType = storageType;
             return this;
         }
         @CustomType.Setter
         public Builder zoneId(String zoneId) {
-            this.zoneId = Objects.requireNonNull(zoneId);
+            if (zoneId == null) {
+              throw new MissingRequiredPropertyException("GetHostEcsLevelInfosResult", "zoneId");
+            }
+            this.zoneId = zoneId;
             return this;
         }
         public GetHostEcsLevelInfosResult build() {

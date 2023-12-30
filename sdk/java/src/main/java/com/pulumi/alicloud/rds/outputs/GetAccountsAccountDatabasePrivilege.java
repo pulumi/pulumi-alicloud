@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.rds.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -70,17 +71,26 @@ public final class GetAccountsAccountDatabasePrivilege {
 
         @CustomType.Setter
         public Builder accountPrivilege(String accountPrivilege) {
-            this.accountPrivilege = Objects.requireNonNull(accountPrivilege);
+            if (accountPrivilege == null) {
+              throw new MissingRequiredPropertyException("GetAccountsAccountDatabasePrivilege", "accountPrivilege");
+            }
+            this.accountPrivilege = accountPrivilege;
             return this;
         }
         @CustomType.Setter
         public Builder accountPrivilegeDetail(String accountPrivilegeDetail) {
-            this.accountPrivilegeDetail = Objects.requireNonNull(accountPrivilegeDetail);
+            if (accountPrivilegeDetail == null) {
+              throw new MissingRequiredPropertyException("GetAccountsAccountDatabasePrivilege", "accountPrivilegeDetail");
+            }
+            this.accountPrivilegeDetail = accountPrivilegeDetail;
             return this;
         }
         @CustomType.Setter
         public Builder dbName(String dbName) {
-            this.dbName = Objects.requireNonNull(dbName);
+            if (dbName == null) {
+              throw new MissingRequiredPropertyException("GetAccountsAccountDatabasePrivilege", "dbName");
+            }
+            this.dbName = dbName;
             return this;
         }
         public GetAccountsAccountDatabasePrivilege build() {

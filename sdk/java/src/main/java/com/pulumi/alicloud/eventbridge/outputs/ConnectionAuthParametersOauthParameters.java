@@ -88,21 +88,25 @@ public final class ConnectionAuthParametersOauthParameters {
 
         @CustomType.Setter
         public Builder authorizationEndpoint(@Nullable String authorizationEndpoint) {
+
             this.authorizationEndpoint = authorizationEndpoint;
             return this;
         }
         @CustomType.Setter
         public Builder clientParameters(@Nullable ConnectionAuthParametersOauthParametersClientParameters clientParameters) {
+
             this.clientParameters = clientParameters;
             return this;
         }
         @CustomType.Setter
         public Builder httpMethod(@Nullable String httpMethod) {
+
             this.httpMethod = httpMethod;
             return this;
         }
         @CustomType.Setter
         public Builder oauthHttpParameters(@Nullable ConnectionAuthParametersOauthParametersOauthHttpParameters oauthHttpParameters) {
+
             this.oauthHttpParameters = oauthHttpParameters;
             return this;
         }

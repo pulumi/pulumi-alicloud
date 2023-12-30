@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.ess.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -155,47 +156,74 @@ public final class GetScalingRulesRule {
 
         @CustomType.Setter
         public Builder adjustmentType(String adjustmentType) {
-            this.adjustmentType = Objects.requireNonNull(adjustmentType);
+            if (adjustmentType == null) {
+              throw new MissingRequiredPropertyException("GetScalingRulesRule", "adjustmentType");
+            }
+            this.adjustmentType = adjustmentType;
             return this;
         }
         @CustomType.Setter
         public Builder adjustmentValue(Integer adjustmentValue) {
-            this.adjustmentValue = Objects.requireNonNull(adjustmentValue);
+            if (adjustmentValue == null) {
+              throw new MissingRequiredPropertyException("GetScalingRulesRule", "adjustmentValue");
+            }
+            this.adjustmentValue = adjustmentValue;
             return this;
         }
         @CustomType.Setter
         public Builder cooldown(Integer cooldown) {
-            this.cooldown = Objects.requireNonNull(cooldown);
+            if (cooldown == null) {
+              throw new MissingRequiredPropertyException("GetScalingRulesRule", "cooldown");
+            }
+            this.cooldown = cooldown;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetScalingRulesRule", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder minAdjustmentMagnitude(Integer minAdjustmentMagnitude) {
-            this.minAdjustmentMagnitude = Objects.requireNonNull(minAdjustmentMagnitude);
+            if (minAdjustmentMagnitude == null) {
+              throw new MissingRequiredPropertyException("GetScalingRulesRule", "minAdjustmentMagnitude");
+            }
+            this.minAdjustmentMagnitude = minAdjustmentMagnitude;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetScalingRulesRule", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder scalingGroupId(String scalingGroupId) {
-            this.scalingGroupId = Objects.requireNonNull(scalingGroupId);
+            if (scalingGroupId == null) {
+              throw new MissingRequiredPropertyException("GetScalingRulesRule", "scalingGroupId");
+            }
+            this.scalingGroupId = scalingGroupId;
             return this;
         }
         @CustomType.Setter
         public Builder scalingRuleAri(String scalingRuleAri) {
-            this.scalingRuleAri = Objects.requireNonNull(scalingRuleAri);
+            if (scalingRuleAri == null) {
+              throw new MissingRequiredPropertyException("GetScalingRulesRule", "scalingRuleAri");
+            }
+            this.scalingRuleAri = scalingRuleAri;
             return this;
         }
         @CustomType.Setter
         public Builder type(String type) {
-            this.type = Objects.requireNonNull(type);
+            if (type == null) {
+              throw new MissingRequiredPropertyException("GetScalingRulesRule", "type");
+            }
+            this.type = type;
             return this;
         }
         public GetScalingRulesRule build() {

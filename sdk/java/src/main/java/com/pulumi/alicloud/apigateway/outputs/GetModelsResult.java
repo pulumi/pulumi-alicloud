@@ -5,6 +5,7 @@ package com.pulumi.alicloud.apigateway.outputs;
 
 import com.pulumi.alicloud.apigateway.outputs.GetModelsModel;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -133,17 +134,26 @@ public final class GetModelsResult {
 
         @CustomType.Setter
         public Builder groupId(String groupId) {
-            this.groupId = Objects.requireNonNull(groupId);
+            if (groupId == null) {
+              throw new MissingRequiredPropertyException("GetModelsResult", "groupId");
+            }
+            this.groupId = groupId;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetModelsResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder ids(List<String> ids) {
-            this.ids = Objects.requireNonNull(ids);
+            if (ids == null) {
+              throw new MissingRequiredPropertyException("GetModelsResult", "ids");
+            }
+            this.ids = ids;
             return this;
         }
         public Builder ids(String... ids) {
@@ -151,12 +161,16 @@ public final class GetModelsResult {
         }
         @CustomType.Setter
         public Builder modelName(@Nullable String modelName) {
+
             this.modelName = modelName;
             return this;
         }
         @CustomType.Setter
         public Builder models(List<GetModelsModel> models) {
-            this.models = Objects.requireNonNull(models);
+            if (models == null) {
+              throw new MissingRequiredPropertyException("GetModelsResult", "models");
+            }
+            this.models = models;
             return this;
         }
         public Builder models(GetModelsModel... models) {
@@ -164,12 +178,16 @@ public final class GetModelsResult {
         }
         @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
+
             this.nameRegex = nameRegex;
             return this;
         }
         @CustomType.Setter
         public Builder names(List<String> names) {
-            this.names = Objects.requireNonNull(names);
+            if (names == null) {
+              throw new MissingRequiredPropertyException("GetModelsResult", "names");
+            }
+            this.names = names;
             return this;
         }
         public Builder names(String... names) {
@@ -177,16 +195,19 @@ public final class GetModelsResult {
         }
         @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
+
             this.outputFile = outputFile;
             return this;
         }
         @CustomType.Setter
         public Builder pageNumber(@Nullable Integer pageNumber) {
+
             this.pageNumber = pageNumber;
             return this;
         }
         @CustomType.Setter
         public Builder pageSize(@Nullable Integer pageSize) {
+
             this.pageSize = pageSize;
             return this;
         }

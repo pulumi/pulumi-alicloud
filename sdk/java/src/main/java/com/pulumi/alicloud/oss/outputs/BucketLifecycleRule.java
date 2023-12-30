@@ -10,6 +10,7 @@ import com.pulumi.alicloud.oss.outputs.BucketLifecycleRuleNoncurrentVersionExpir
 import com.pulumi.alicloud.oss.outputs.BucketLifecycleRuleNoncurrentVersionTransition;
 import com.pulumi.alicloud.oss.outputs.BucketLifecycleRuleTransition;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Object;
 import java.lang.String;
@@ -184,6 +185,7 @@ public final class BucketLifecycleRule {
 
         @CustomType.Setter
         public Builder abortMultipartUploads(@Nullable List<BucketLifecycleRuleAbortMultipartUpload> abortMultipartUploads) {
+
             this.abortMultipartUploads = abortMultipartUploads;
             return this;
         }
@@ -192,11 +194,15 @@ public final class BucketLifecycleRule {
         }
         @CustomType.Setter
         public Builder enabled(Boolean enabled) {
-            this.enabled = Objects.requireNonNull(enabled);
+            if (enabled == null) {
+              throw new MissingRequiredPropertyException("BucketLifecycleRule", "enabled");
+            }
+            this.enabled = enabled;
             return this;
         }
         @CustomType.Setter
         public Builder expirations(@Nullable List<BucketLifecycleRuleExpiration> expirations) {
+
             this.expirations = expirations;
             return this;
         }
@@ -205,16 +211,19 @@ public final class BucketLifecycleRule {
         }
         @CustomType.Setter
         public Builder filter(@Nullable BucketLifecycleRuleFilter filter) {
+
             this.filter = filter;
             return this;
         }
         @CustomType.Setter
         public Builder id(@Nullable String id) {
+
             this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder noncurrentVersionExpirations(@Nullable List<BucketLifecycleRuleNoncurrentVersionExpiration> noncurrentVersionExpirations) {
+
             this.noncurrentVersionExpirations = noncurrentVersionExpirations;
             return this;
         }
@@ -223,6 +232,7 @@ public final class BucketLifecycleRule {
         }
         @CustomType.Setter
         public Builder noncurrentVersionTransitions(@Nullable List<BucketLifecycleRuleNoncurrentVersionTransition> noncurrentVersionTransitions) {
+
             this.noncurrentVersionTransitions = noncurrentVersionTransitions;
             return this;
         }
@@ -231,16 +241,19 @@ public final class BucketLifecycleRule {
         }
         @CustomType.Setter
         public Builder prefix(@Nullable String prefix) {
+
             this.prefix = prefix;
             return this;
         }
         @CustomType.Setter
         public Builder tags(@Nullable Map<String,Object> tags) {
+
             this.tags = tags;
             return this;
         }
         @CustomType.Setter
         public Builder transitions(@Nullable List<BucketLifecycleRuleTransition> transitions) {
+
             this.transitions = transitions;
             return this;
         }

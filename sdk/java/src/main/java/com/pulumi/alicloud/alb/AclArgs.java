@@ -6,6 +6,7 @@ package com.pulumi.alicloud.alb;
 import com.pulumi.alicloud.alb.inputs.AclAclEntryArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Object;
 import java.lang.String;
@@ -264,7 +265,9 @@ public final class AclArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public AclArgs build() {
-            $.aclName = Objects.requireNonNull($.aclName, "expected parameter 'aclName' to be non-null");
+            if ($.aclName == null) {
+                throw new MissingRequiredPropertyException("AclArgs", "aclName");
+            }
             return $;
         }
     }

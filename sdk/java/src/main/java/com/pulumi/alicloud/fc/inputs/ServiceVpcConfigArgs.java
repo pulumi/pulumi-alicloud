@@ -5,6 +5,7 @@ package com.pulumi.alicloud.fc.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -161,8 +162,12 @@ public final class ServiceVpcConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         public ServiceVpcConfigArgs build() {
-            $.securityGroupId = Objects.requireNonNull($.securityGroupId, "expected parameter 'securityGroupId' to be non-null");
-            $.vswitchIds = Objects.requireNonNull($.vswitchIds, "expected parameter 'vswitchIds' to be non-null");
+            if ($.securityGroupId == null) {
+                throw new MissingRequiredPropertyException("ServiceVpcConfigArgs", "securityGroupId");
+            }
+            if ($.vswitchIds == null) {
+                throw new MissingRequiredPropertyException("ServiceVpcConfigArgs", "vswitchIds");
+            }
             return $;
         }
     }

@@ -6,6 +6,7 @@ package com.pulumi.alicloud.quotas.outputs;
 import com.pulumi.alicloud.quotas.outputs.GetQuotasDimension;
 import com.pulumi.alicloud.quotas.outputs.GetQuotasQuota;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -125,6 +126,7 @@ public final class GetQuotasResult {
 
         @CustomType.Setter
         public Builder dimensions(@Nullable List<GetQuotasDimension> dimensions) {
+
             this.dimensions = dimensions;
             return this;
         }
@@ -133,17 +135,24 @@ public final class GetQuotasResult {
         }
         @CustomType.Setter
         public Builder groupCode(@Nullable String groupCode) {
+
             this.groupCode = groupCode;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetQuotasResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder ids(List<String> ids) {
-            this.ids = Objects.requireNonNull(ids);
+            if (ids == null) {
+              throw new MissingRequiredPropertyException("GetQuotasResult", "ids");
+            }
+            this.ids = ids;
             return this;
         }
         public Builder ids(String... ids) {
@@ -151,17 +160,22 @@ public final class GetQuotasResult {
         }
         @CustomType.Setter
         public Builder keyWord(@Nullable String keyWord) {
+
             this.keyWord = keyWord;
             return this;
         }
         @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
+
             this.nameRegex = nameRegex;
             return this;
         }
         @CustomType.Setter
         public Builder names(List<String> names) {
-            this.names = Objects.requireNonNull(names);
+            if (names == null) {
+              throw new MissingRequiredPropertyException("GetQuotasResult", "names");
+            }
+            this.names = names;
             return this;
         }
         public Builder names(String... names) {
@@ -169,27 +183,36 @@ public final class GetQuotasResult {
         }
         @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
+
             this.outputFile = outputFile;
             return this;
         }
         @CustomType.Setter
         public Builder productCode(String productCode) {
-            this.productCode = Objects.requireNonNull(productCode);
+            if (productCode == null) {
+              throw new MissingRequiredPropertyException("GetQuotasResult", "productCode");
+            }
+            this.productCode = productCode;
             return this;
         }
         @CustomType.Setter
         public Builder quotaActionCode(@Nullable String quotaActionCode) {
+
             this.quotaActionCode = quotaActionCode;
             return this;
         }
         @CustomType.Setter
         public Builder quotaCategory(@Nullable String quotaCategory) {
+
             this.quotaCategory = quotaCategory;
             return this;
         }
         @CustomType.Setter
         public Builder quotas(List<GetQuotasQuota> quotas) {
-            this.quotas = Objects.requireNonNull(quotas);
+            if (quotas == null) {
+              throw new MissingRequiredPropertyException("GetQuotasResult", "quotas");
+            }
+            this.quotas = quotas;
             return this;
         }
         public Builder quotas(GetQuotasQuota... quotas) {
@@ -197,11 +220,13 @@ public final class GetQuotasResult {
         }
         @CustomType.Setter
         public Builder sortField(@Nullable String sortField) {
+
             this.sortField = sortField;
             return this;
         }
         @CustomType.Setter
         public Builder sortOrder(@Nullable String sortOrder) {
+
             this.sortOrder = sortOrder;
             return this;
         }

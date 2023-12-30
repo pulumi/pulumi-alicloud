@@ -12,6 +12,12 @@ import javax.annotation.Nullable;
 @CustomType
 public final class EciScalingConfigurationContainerEnvironmentVar {
     /**
+     * @return Environment variable value reference. Optional values:
+     * - status.podIP: IP of pod.
+     * 
+     */
+    private @Nullable String fieldRefFieldPath;
+    /**
      * @return The name of the variable. The name can be 1 to 128 characters in length and can contain letters,
      * digits, and underscores (_). It cannot start with a digit.
      * 
@@ -24,6 +30,14 @@ public final class EciScalingConfigurationContainerEnvironmentVar {
     private @Nullable String value;
 
     private EciScalingConfigurationContainerEnvironmentVar() {}
+    /**
+     * @return Environment variable value reference. Optional values:
+     * - status.podIP: IP of pod.
+     * 
+     */
+    public Optional<String> fieldRefFieldPath() {
+        return Optional.ofNullable(this.fieldRefFieldPath);
+    }
     /**
      * @return The name of the variable. The name can be 1 to 128 characters in length and can contain letters,
      * digits, and underscores (_). It cannot start with a digit.
@@ -49,27 +63,38 @@ public final class EciScalingConfigurationContainerEnvironmentVar {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable String fieldRefFieldPath;
         private @Nullable String key;
         private @Nullable String value;
         public Builder() {}
         public Builder(EciScalingConfigurationContainerEnvironmentVar defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.fieldRefFieldPath = defaults.fieldRefFieldPath;
     	      this.key = defaults.key;
     	      this.value = defaults.value;
         }
 
         @CustomType.Setter
+        public Builder fieldRefFieldPath(@Nullable String fieldRefFieldPath) {
+
+            this.fieldRefFieldPath = fieldRefFieldPath;
+            return this;
+        }
+        @CustomType.Setter
         public Builder key(@Nullable String key) {
+
             this.key = key;
             return this;
         }
         @CustomType.Setter
         public Builder value(@Nullable String value) {
+
             this.value = value;
             return this;
         }
         public EciScalingConfigurationContainerEnvironmentVar build() {
             final var _resultValue = new EciScalingConfigurationContainerEnvironmentVar();
+            _resultValue.fieldRefFieldPath = fieldRefFieldPath;
             _resultValue.key = key;
             _resultValue.value = value;
             return _resultValue;

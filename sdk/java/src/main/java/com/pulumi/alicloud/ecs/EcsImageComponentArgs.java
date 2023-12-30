@@ -5,6 +5,7 @@ package com.pulumi.alicloud.ecs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
@@ -300,7 +301,9 @@ public final class EcsImageComponentArgs extends com.pulumi.resources.ResourceAr
         }
 
         public EcsImageComponentArgs build() {
-            $.content = Objects.requireNonNull($.content, "expected parameter 'content' to be non-null");
+            if ($.content == null) {
+                throw new MissingRequiredPropertyException("EcsImageComponentArgs", "content");
+            }
             return $;
         }
     }

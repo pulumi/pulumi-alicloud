@@ -59,11 +59,13 @@ public final class ServiceMeshMeshConfigPilot {
 
         @CustomType.Setter
         public Builder http10Enabled(@Nullable Boolean http10Enabled) {
+
             this.http10Enabled = http10Enabled;
             return this;
         }
         @CustomType.Setter
         public Builder traceSampling(@Nullable Double traceSampling) {
+
             this.traceSampling = traceSampling;
             return this;
         }

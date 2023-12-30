@@ -5,6 +5,7 @@ package com.pulumi.alicloud.emr.outputs;
 
 import com.pulumi.alicloud.emr.outputs.GetClustersClusterHostGroupListNode;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -241,72 +242,114 @@ public final class GetClustersClusterHostGroupList {
 
         @CustomType.Setter
         public Builder bandWidth(String bandWidth) {
-            this.bandWidth = Objects.requireNonNull(bandWidth);
+            if (bandWidth == null) {
+              throw new MissingRequiredPropertyException("GetClustersClusterHostGroupList", "bandWidth");
+            }
+            this.bandWidth = bandWidth;
             return this;
         }
         @CustomType.Setter
         public Builder chargeType(String chargeType) {
-            this.chargeType = Objects.requireNonNull(chargeType);
+            if (chargeType == null) {
+              throw new MissingRequiredPropertyException("GetClustersClusterHostGroupList", "chargeType");
+            }
+            this.chargeType = chargeType;
             return this;
         }
         @CustomType.Setter
         public Builder cpuCore(Integer cpuCore) {
-            this.cpuCore = Objects.requireNonNull(cpuCore);
+            if (cpuCore == null) {
+              throw new MissingRequiredPropertyException("GetClustersClusterHostGroupList", "cpuCore");
+            }
+            this.cpuCore = cpuCore;
             return this;
         }
         @CustomType.Setter
         public Builder diskCapacity(Integer diskCapacity) {
-            this.diskCapacity = Objects.requireNonNull(diskCapacity);
+            if (diskCapacity == null) {
+              throw new MissingRequiredPropertyException("GetClustersClusterHostGroupList", "diskCapacity");
+            }
+            this.diskCapacity = diskCapacity;
             return this;
         }
         @CustomType.Setter
         public Builder diskCount(Integer diskCount) {
-            this.diskCount = Objects.requireNonNull(diskCount);
+            if (diskCount == null) {
+              throw new MissingRequiredPropertyException("GetClustersClusterHostGroupList", "diskCount");
+            }
+            this.diskCount = diskCount;
             return this;
         }
         @CustomType.Setter
         public Builder diskType(String diskType) {
-            this.diskType = Objects.requireNonNull(diskType);
+            if (diskType == null) {
+              throw new MissingRequiredPropertyException("GetClustersClusterHostGroupList", "diskType");
+            }
+            this.diskType = diskType;
             return this;
         }
         @CustomType.Setter
         public Builder hostGroupChangeType(String hostGroupChangeType) {
-            this.hostGroupChangeType = Objects.requireNonNull(hostGroupChangeType);
+            if (hostGroupChangeType == null) {
+              throw new MissingRequiredPropertyException("GetClustersClusterHostGroupList", "hostGroupChangeType");
+            }
+            this.hostGroupChangeType = hostGroupChangeType;
             return this;
         }
         @CustomType.Setter
         public Builder hostGroupId(String hostGroupId) {
-            this.hostGroupId = Objects.requireNonNull(hostGroupId);
+            if (hostGroupId == null) {
+              throw new MissingRequiredPropertyException("GetClustersClusterHostGroupList", "hostGroupId");
+            }
+            this.hostGroupId = hostGroupId;
             return this;
         }
         @CustomType.Setter
         public Builder hostGroupName(String hostGroupName) {
-            this.hostGroupName = Objects.requireNonNull(hostGroupName);
+            if (hostGroupName == null) {
+              throw new MissingRequiredPropertyException("GetClustersClusterHostGroupList", "hostGroupName");
+            }
+            this.hostGroupName = hostGroupName;
             return this;
         }
         @CustomType.Setter
         public Builder hostGroupType(String hostGroupType) {
-            this.hostGroupType = Objects.requireNonNull(hostGroupType);
+            if (hostGroupType == null) {
+              throw new MissingRequiredPropertyException("GetClustersClusterHostGroupList", "hostGroupType");
+            }
+            this.hostGroupType = hostGroupType;
             return this;
         }
         @CustomType.Setter
         public Builder instanceType(String instanceType) {
-            this.instanceType = Objects.requireNonNull(instanceType);
+            if (instanceType == null) {
+              throw new MissingRequiredPropertyException("GetClustersClusterHostGroupList", "instanceType");
+            }
+            this.instanceType = instanceType;
             return this;
         }
         @CustomType.Setter
         public Builder memoryCapacity(Integer memoryCapacity) {
-            this.memoryCapacity = Objects.requireNonNull(memoryCapacity);
+            if (memoryCapacity == null) {
+              throw new MissingRequiredPropertyException("GetClustersClusterHostGroupList", "memoryCapacity");
+            }
+            this.memoryCapacity = memoryCapacity;
             return this;
         }
         @CustomType.Setter
         public Builder nodeCount(Integer nodeCount) {
-            this.nodeCount = Objects.requireNonNull(nodeCount);
+            if (nodeCount == null) {
+              throw new MissingRequiredPropertyException("GetClustersClusterHostGroupList", "nodeCount");
+            }
+            this.nodeCount = nodeCount;
             return this;
         }
         @CustomType.Setter
         public Builder nodes(List<GetClustersClusterHostGroupListNode> nodes) {
-            this.nodes = Objects.requireNonNull(nodes);
+            if (nodes == null) {
+              throw new MissingRequiredPropertyException("GetClustersClusterHostGroupList", "nodes");
+            }
+            this.nodes = nodes;
             return this;
         }
         public Builder nodes(GetClustersClusterHostGroupListNode... nodes) {
@@ -314,7 +357,10 @@ public final class GetClustersClusterHostGroupList {
         }
         @CustomType.Setter
         public Builder period(String period) {
-            this.period = Objects.requireNonNull(period);
+            if (period == null) {
+              throw new MissingRequiredPropertyException("GetClustersClusterHostGroupList", "period");
+            }
+            this.period = period;
             return this;
         }
         public GetClustersClusterHostGroupList build() {

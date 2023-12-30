@@ -5,6 +5,7 @@ package com.pulumi.alicloud.dms.outputs;
 
 import com.pulumi.alicloud.dms.outputs.GetEnterpriseProxiesProxy;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -70,12 +71,18 @@ public final class GetEnterpriseProxiesResult {
 
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetEnterpriseProxiesResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder ids(List<String> ids) {
-            this.ids = Objects.requireNonNull(ids);
+            if (ids == null) {
+              throw new MissingRequiredPropertyException("GetEnterpriseProxiesResult", "ids");
+            }
+            this.ids = ids;
             return this;
         }
         public Builder ids(String... ids) {
@@ -83,12 +90,16 @@ public final class GetEnterpriseProxiesResult {
         }
         @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
+
             this.outputFile = outputFile;
             return this;
         }
         @CustomType.Setter
         public Builder proxies(List<GetEnterpriseProxiesProxy> proxies) {
-            this.proxies = Objects.requireNonNull(proxies);
+            if (proxies == null) {
+              throw new MissingRequiredPropertyException("GetEnterpriseProxiesResult", "proxies");
+            }
+            this.proxies = proxies;
             return this;
         }
         public Builder proxies(GetEnterpriseProxiesProxy... proxies) {
@@ -96,6 +107,7 @@ public final class GetEnterpriseProxiesResult {
         }
         @CustomType.Setter
         public Builder tid(@Nullable String tid) {
+
             this.tid = tid;
             return this;
         }

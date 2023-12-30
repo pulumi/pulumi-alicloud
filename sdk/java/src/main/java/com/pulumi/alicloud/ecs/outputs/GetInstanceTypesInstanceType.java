@@ -7,6 +7,7 @@ import com.pulumi.alicloud.ecs.outputs.GetInstanceTypesInstanceTypeBurstableInst
 import com.pulumi.alicloud.ecs.outputs.GetInstanceTypesInstanceTypeGpu;
 import com.pulumi.alicloud.ecs.outputs.GetInstanceTypesInstanceTypeLocalStorage;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Double;
 import java.lang.Integer;
 import java.lang.String;
@@ -198,7 +199,10 @@ public final class GetInstanceTypesInstanceType {
 
         @CustomType.Setter
         public Builder availabilityZones(List<String> availabilityZones) {
-            this.availabilityZones = Objects.requireNonNull(availabilityZones);
+            if (availabilityZones == null) {
+              throw new MissingRequiredPropertyException("GetInstanceTypesInstanceType", "availabilityZones");
+            }
+            this.availabilityZones = availabilityZones;
             return this;
         }
         public Builder availabilityZones(String... availabilityZones) {
@@ -206,52 +210,82 @@ public final class GetInstanceTypesInstanceType {
         }
         @CustomType.Setter
         public Builder burstableInstance(GetInstanceTypesInstanceTypeBurstableInstance burstableInstance) {
-            this.burstableInstance = Objects.requireNonNull(burstableInstance);
+            if (burstableInstance == null) {
+              throw new MissingRequiredPropertyException("GetInstanceTypesInstanceType", "burstableInstance");
+            }
+            this.burstableInstance = burstableInstance;
             return this;
         }
         @CustomType.Setter
         public Builder cpuCoreCount(Integer cpuCoreCount) {
-            this.cpuCoreCount = Objects.requireNonNull(cpuCoreCount);
+            if (cpuCoreCount == null) {
+              throw new MissingRequiredPropertyException("GetInstanceTypesInstanceType", "cpuCoreCount");
+            }
+            this.cpuCoreCount = cpuCoreCount;
             return this;
         }
         @CustomType.Setter
         public Builder eniAmount(Integer eniAmount) {
-            this.eniAmount = Objects.requireNonNull(eniAmount);
+            if (eniAmount == null) {
+              throw new MissingRequiredPropertyException("GetInstanceTypesInstanceType", "eniAmount");
+            }
+            this.eniAmount = eniAmount;
             return this;
         }
         @CustomType.Setter
         public Builder family(String family) {
-            this.family = Objects.requireNonNull(family);
+            if (family == null) {
+              throw new MissingRequiredPropertyException("GetInstanceTypesInstanceType", "family");
+            }
+            this.family = family;
             return this;
         }
         @CustomType.Setter
         public Builder gpu(GetInstanceTypesInstanceTypeGpu gpu) {
-            this.gpu = Objects.requireNonNull(gpu);
+            if (gpu == null) {
+              throw new MissingRequiredPropertyException("GetInstanceTypesInstanceType", "gpu");
+            }
+            this.gpu = gpu;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetInstanceTypesInstanceType", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder localStorage(GetInstanceTypesInstanceTypeLocalStorage localStorage) {
-            this.localStorage = Objects.requireNonNull(localStorage);
+            if (localStorage == null) {
+              throw new MissingRequiredPropertyException("GetInstanceTypesInstanceType", "localStorage");
+            }
+            this.localStorage = localStorage;
             return this;
         }
         @CustomType.Setter
         public Builder memorySize(Double memorySize) {
-            this.memorySize = Objects.requireNonNull(memorySize);
+            if (memorySize == null) {
+              throw new MissingRequiredPropertyException("GetInstanceTypesInstanceType", "memorySize");
+            }
+            this.memorySize = memorySize;
             return this;
         }
         @CustomType.Setter
         public Builder nvmeSupport(String nvmeSupport) {
-            this.nvmeSupport = Objects.requireNonNull(nvmeSupport);
+            if (nvmeSupport == null) {
+              throw new MissingRequiredPropertyException("GetInstanceTypesInstanceType", "nvmeSupport");
+            }
+            this.nvmeSupport = nvmeSupport;
             return this;
         }
         @CustomType.Setter
         public Builder price(String price) {
-            this.price = Objects.requireNonNull(price);
+            if (price == null) {
+              throw new MissingRequiredPropertyException("GetInstanceTypesInstanceType", "price");
+            }
+            this.price = price;
             return this;
         }
         public GetInstanceTypesInstanceType build() {

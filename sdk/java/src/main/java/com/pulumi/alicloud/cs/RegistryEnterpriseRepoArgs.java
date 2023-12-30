@@ -5,6 +5,7 @@ package com.pulumi.alicloud.cs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -261,10 +262,18 @@ public final class RegistryEnterpriseRepoArgs extends com.pulumi.resources.Resou
         }
 
         public RegistryEnterpriseRepoArgs build() {
-            $.instanceId = Objects.requireNonNull($.instanceId, "expected parameter 'instanceId' to be non-null");
-            $.namespace = Objects.requireNonNull($.namespace, "expected parameter 'namespace' to be non-null");
-            $.repoType = Objects.requireNonNull($.repoType, "expected parameter 'repoType' to be non-null");
-            $.summary = Objects.requireNonNull($.summary, "expected parameter 'summary' to be non-null");
+            if ($.instanceId == null) {
+                throw new MissingRequiredPropertyException("RegistryEnterpriseRepoArgs", "instanceId");
+            }
+            if ($.namespace == null) {
+                throw new MissingRequiredPropertyException("RegistryEnterpriseRepoArgs", "namespace");
+            }
+            if ($.repoType == null) {
+                throw new MissingRequiredPropertyException("RegistryEnterpriseRepoArgs", "repoType");
+            }
+            if ($.summary == null) {
+                throw new MissingRequiredPropertyException("RegistryEnterpriseRepoArgs", "summary");
+            }
             return $;
         }
     }

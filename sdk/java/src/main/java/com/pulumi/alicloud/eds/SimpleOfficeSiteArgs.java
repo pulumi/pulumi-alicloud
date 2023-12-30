@@ -5,6 +5,7 @@ package com.pulumi.alicloud.eds;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -480,7 +481,9 @@ public final class SimpleOfficeSiteArgs extends com.pulumi.resources.ResourceArg
         }
 
         public SimpleOfficeSiteArgs build() {
-            $.cidrBlock = Objects.requireNonNull($.cidrBlock, "expected parameter 'cidrBlock' to be non-null");
+            if ($.cidrBlock == null) {
+                throw new MissingRequiredPropertyException("SimpleOfficeSiteArgs", "cidrBlock");
+            }
             return $;
         }
     }

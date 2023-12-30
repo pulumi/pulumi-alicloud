@@ -6,6 +6,7 @@ package com.pulumi.alicloud.ecs.outputs;
 import com.pulumi.alicloud.ecs.outputs.GetEcsDisksDiskMountInstance;
 import com.pulumi.alicloud.ecs.outputs.GetEcsDisksDiskOperationLock;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.Object;
@@ -555,132 +556,210 @@ public final class GetEcsDisksDisk {
 
         @CustomType.Setter
         public Builder attachedTime(String attachedTime) {
-            this.attachedTime = Objects.requireNonNull(attachedTime);
+            if (attachedTime == null) {
+              throw new MissingRequiredPropertyException("GetEcsDisksDisk", "attachedTime");
+            }
+            this.attachedTime = attachedTime;
             return this;
         }
         @CustomType.Setter
         public Builder autoSnapshotPolicyId(String autoSnapshotPolicyId) {
-            this.autoSnapshotPolicyId = Objects.requireNonNull(autoSnapshotPolicyId);
+            if (autoSnapshotPolicyId == null) {
+              throw new MissingRequiredPropertyException("GetEcsDisksDisk", "autoSnapshotPolicyId");
+            }
+            this.autoSnapshotPolicyId = autoSnapshotPolicyId;
             return this;
         }
         @CustomType.Setter
         public Builder availabilityZone(String availabilityZone) {
-            this.availabilityZone = Objects.requireNonNull(availabilityZone);
+            if (availabilityZone == null) {
+              throw new MissingRequiredPropertyException("GetEcsDisksDisk", "availabilityZone");
+            }
+            this.availabilityZone = availabilityZone;
             return this;
         }
         @CustomType.Setter
         public Builder category(String category) {
-            this.category = Objects.requireNonNull(category);
+            if (category == null) {
+              throw new MissingRequiredPropertyException("GetEcsDisksDisk", "category");
+            }
+            this.category = category;
             return this;
         }
         @CustomType.Setter
         public Builder creationTime(String creationTime) {
-            this.creationTime = Objects.requireNonNull(creationTime);
+            if (creationTime == null) {
+              throw new MissingRequiredPropertyException("GetEcsDisksDisk", "creationTime");
+            }
+            this.creationTime = creationTime;
             return this;
         }
         @CustomType.Setter
         public Builder deleteAutoSnapshot(Boolean deleteAutoSnapshot) {
-            this.deleteAutoSnapshot = Objects.requireNonNull(deleteAutoSnapshot);
+            if (deleteAutoSnapshot == null) {
+              throw new MissingRequiredPropertyException("GetEcsDisksDisk", "deleteAutoSnapshot");
+            }
+            this.deleteAutoSnapshot = deleteAutoSnapshot;
             return this;
         }
         @CustomType.Setter
         public Builder deleteWithInstance(Boolean deleteWithInstance) {
-            this.deleteWithInstance = Objects.requireNonNull(deleteWithInstance);
+            if (deleteWithInstance == null) {
+              throw new MissingRequiredPropertyException("GetEcsDisksDisk", "deleteWithInstance");
+            }
+            this.deleteWithInstance = deleteWithInstance;
             return this;
         }
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetEcsDisksDisk", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder detachedTime(String detachedTime) {
-            this.detachedTime = Objects.requireNonNull(detachedTime);
+            if (detachedTime == null) {
+              throw new MissingRequiredPropertyException("GetEcsDisksDisk", "detachedTime");
+            }
+            this.detachedTime = detachedTime;
             return this;
         }
         @CustomType.Setter
         public Builder device(String device) {
-            this.device = Objects.requireNonNull(device);
+            if (device == null) {
+              throw new MissingRequiredPropertyException("GetEcsDisksDisk", "device");
+            }
+            this.device = device;
             return this;
         }
         @CustomType.Setter
         public Builder diskId(String diskId) {
-            this.diskId = Objects.requireNonNull(diskId);
+            if (diskId == null) {
+              throw new MissingRequiredPropertyException("GetEcsDisksDisk", "diskId");
+            }
+            this.diskId = diskId;
             return this;
         }
         @CustomType.Setter
         public Builder diskName(String diskName) {
-            this.diskName = Objects.requireNonNull(diskName);
+            if (diskName == null) {
+              throw new MissingRequiredPropertyException("GetEcsDisksDisk", "diskName");
+            }
+            this.diskName = diskName;
             return this;
         }
         @CustomType.Setter
         public Builder diskType(String diskType) {
-            this.diskType = Objects.requireNonNull(diskType);
+            if (diskType == null) {
+              throw new MissingRequiredPropertyException("GetEcsDisksDisk", "diskType");
+            }
+            this.diskType = diskType;
             return this;
         }
         @CustomType.Setter
         public Builder enableAutoSnapshot(Boolean enableAutoSnapshot) {
-            this.enableAutoSnapshot = Objects.requireNonNull(enableAutoSnapshot);
+            if (enableAutoSnapshot == null) {
+              throw new MissingRequiredPropertyException("GetEcsDisksDisk", "enableAutoSnapshot");
+            }
+            this.enableAutoSnapshot = enableAutoSnapshot;
             return this;
         }
         @CustomType.Setter
         public Builder enableAutomatedSnapshotPolicy(Boolean enableAutomatedSnapshotPolicy) {
-            this.enableAutomatedSnapshotPolicy = Objects.requireNonNull(enableAutomatedSnapshotPolicy);
+            if (enableAutomatedSnapshotPolicy == null) {
+              throw new MissingRequiredPropertyException("GetEcsDisksDisk", "enableAutomatedSnapshotPolicy");
+            }
+            this.enableAutomatedSnapshotPolicy = enableAutomatedSnapshotPolicy;
             return this;
         }
         @CustomType.Setter
         public Builder encrypted(String encrypted) {
-            this.encrypted = Objects.requireNonNull(encrypted);
+            if (encrypted == null) {
+              throw new MissingRequiredPropertyException("GetEcsDisksDisk", "encrypted");
+            }
+            this.encrypted = encrypted;
             return this;
         }
         @CustomType.Setter
         public Builder expiredTime(String expiredTime) {
-            this.expiredTime = Objects.requireNonNull(expiredTime);
+            if (expiredTime == null) {
+              throw new MissingRequiredPropertyException("GetEcsDisksDisk", "expiredTime");
+            }
+            this.expiredTime = expiredTime;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetEcsDisksDisk", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder imageId(String imageId) {
-            this.imageId = Objects.requireNonNull(imageId);
+            if (imageId == null) {
+              throw new MissingRequiredPropertyException("GetEcsDisksDisk", "imageId");
+            }
+            this.imageId = imageId;
             return this;
         }
         @CustomType.Setter
         public Builder instanceId(String instanceId) {
-            this.instanceId = Objects.requireNonNull(instanceId);
+            if (instanceId == null) {
+              throw new MissingRequiredPropertyException("GetEcsDisksDisk", "instanceId");
+            }
+            this.instanceId = instanceId;
             return this;
         }
         @CustomType.Setter
         public Builder iops(Integer iops) {
-            this.iops = Objects.requireNonNull(iops);
+            if (iops == null) {
+              throw new MissingRequiredPropertyException("GetEcsDisksDisk", "iops");
+            }
+            this.iops = iops;
             return this;
         }
         @CustomType.Setter
         public Builder iopsRead(Integer iopsRead) {
-            this.iopsRead = Objects.requireNonNull(iopsRead);
+            if (iopsRead == null) {
+              throw new MissingRequiredPropertyException("GetEcsDisksDisk", "iopsRead");
+            }
+            this.iopsRead = iopsRead;
             return this;
         }
         @CustomType.Setter
         public Builder iopsWrite(Integer iopsWrite) {
-            this.iopsWrite = Objects.requireNonNull(iopsWrite);
+            if (iopsWrite == null) {
+              throw new MissingRequiredPropertyException("GetEcsDisksDisk", "iopsWrite");
+            }
+            this.iopsWrite = iopsWrite;
             return this;
         }
         @CustomType.Setter
         public Builder kmsKeyId(String kmsKeyId) {
-            this.kmsKeyId = Objects.requireNonNull(kmsKeyId);
+            if (kmsKeyId == null) {
+              throw new MissingRequiredPropertyException("GetEcsDisksDisk", "kmsKeyId");
+            }
+            this.kmsKeyId = kmsKeyId;
             return this;
         }
         @CustomType.Setter
         public Builder mountInstanceNum(Integer mountInstanceNum) {
-            this.mountInstanceNum = Objects.requireNonNull(mountInstanceNum);
+            if (mountInstanceNum == null) {
+              throw new MissingRequiredPropertyException("GetEcsDisksDisk", "mountInstanceNum");
+            }
+            this.mountInstanceNum = mountInstanceNum;
             return this;
         }
         @CustomType.Setter
         public Builder mountInstances(List<GetEcsDisksDiskMountInstance> mountInstances) {
-            this.mountInstances = Objects.requireNonNull(mountInstances);
+            if (mountInstances == null) {
+              throw new MissingRequiredPropertyException("GetEcsDisksDisk", "mountInstances");
+            }
+            this.mountInstances = mountInstances;
             return this;
         }
         public Builder mountInstances(GetEcsDisksDiskMountInstance... mountInstances) {
@@ -688,12 +767,18 @@ public final class GetEcsDisksDisk {
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetEcsDisksDisk", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder operationLocks(List<GetEcsDisksDiskOperationLock> operationLocks) {
-            this.operationLocks = Objects.requireNonNull(operationLocks);
+            if (operationLocks == null) {
+              throw new MissingRequiredPropertyException("GetEcsDisksDisk", "operationLocks");
+            }
+            this.operationLocks = operationLocks;
             return this;
         }
         public Builder operationLocks(GetEcsDisksDiskOperationLock... operationLocks) {
@@ -701,62 +786,98 @@ public final class GetEcsDisksDisk {
         }
         @CustomType.Setter
         public Builder paymentType(String paymentType) {
-            this.paymentType = Objects.requireNonNull(paymentType);
+            if (paymentType == null) {
+              throw new MissingRequiredPropertyException("GetEcsDisksDisk", "paymentType");
+            }
+            this.paymentType = paymentType;
             return this;
         }
         @CustomType.Setter
         public Builder performanceLevel(String performanceLevel) {
-            this.performanceLevel = Objects.requireNonNull(performanceLevel);
+            if (performanceLevel == null) {
+              throw new MissingRequiredPropertyException("GetEcsDisksDisk", "performanceLevel");
+            }
+            this.performanceLevel = performanceLevel;
             return this;
         }
         @CustomType.Setter
         public Builder portable(Boolean portable) {
-            this.portable = Objects.requireNonNull(portable);
+            if (portable == null) {
+              throw new MissingRequiredPropertyException("GetEcsDisksDisk", "portable");
+            }
+            this.portable = portable;
             return this;
         }
         @CustomType.Setter
         public Builder productCode(String productCode) {
-            this.productCode = Objects.requireNonNull(productCode);
+            if (productCode == null) {
+              throw new MissingRequiredPropertyException("GetEcsDisksDisk", "productCode");
+            }
+            this.productCode = productCode;
             return this;
         }
         @CustomType.Setter
         public Builder regionId(String regionId) {
-            this.regionId = Objects.requireNonNull(regionId);
+            if (regionId == null) {
+              throw new MissingRequiredPropertyException("GetEcsDisksDisk", "regionId");
+            }
+            this.regionId = regionId;
             return this;
         }
         @CustomType.Setter
         public Builder resourceGroupId(String resourceGroupId) {
-            this.resourceGroupId = Objects.requireNonNull(resourceGroupId);
+            if (resourceGroupId == null) {
+              throw new MissingRequiredPropertyException("GetEcsDisksDisk", "resourceGroupId");
+            }
+            this.resourceGroupId = resourceGroupId;
             return this;
         }
         @CustomType.Setter
         public Builder size(Integer size) {
-            this.size = Objects.requireNonNull(size);
+            if (size == null) {
+              throw new MissingRequiredPropertyException("GetEcsDisksDisk", "size");
+            }
+            this.size = size;
             return this;
         }
         @CustomType.Setter
         public Builder snapshotId(String snapshotId) {
-            this.snapshotId = Objects.requireNonNull(snapshotId);
+            if (snapshotId == null) {
+              throw new MissingRequiredPropertyException("GetEcsDisksDisk", "snapshotId");
+            }
+            this.snapshotId = snapshotId;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetEcsDisksDisk", "status");
+            }
+            this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder tags(Map<String,Object> tags) {
-            this.tags = Objects.requireNonNull(tags);
+            if (tags == null) {
+              throw new MissingRequiredPropertyException("GetEcsDisksDisk", "tags");
+            }
+            this.tags = tags;
             return this;
         }
         @CustomType.Setter
         public Builder type(String type) {
-            this.type = Objects.requireNonNull(type);
+            if (type == null) {
+              throw new MissingRequiredPropertyException("GetEcsDisksDisk", "type");
+            }
+            this.type = type;
             return this;
         }
         @CustomType.Setter
         public Builder zoneId(String zoneId) {
-            this.zoneId = Objects.requireNonNull(zoneId);
+            if (zoneId == null) {
+              throw new MissingRequiredPropertyException("GetEcsDisksDisk", "zoneId");
+            }
+            this.zoneId = zoneId;
             return this;
         }
         public GetEcsDisksDisk build() {

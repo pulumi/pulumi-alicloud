@@ -5,6 +5,7 @@ package com.pulumi.alicloud.ga;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -111,8 +112,12 @@ public final class BandwidthPackageAttachmentArgs extends com.pulumi.resources.R
         }
 
         public BandwidthPackageAttachmentArgs build() {
-            $.acceleratorId = Objects.requireNonNull($.acceleratorId, "expected parameter 'acceleratorId' to be non-null");
-            $.bandwidthPackageId = Objects.requireNonNull($.bandwidthPackageId, "expected parameter 'bandwidthPackageId' to be non-null");
+            if ($.acceleratorId == null) {
+                throw new MissingRequiredPropertyException("BandwidthPackageAttachmentArgs", "acceleratorId");
+            }
+            if ($.bandwidthPackageId == null) {
+                throw new MissingRequiredPropertyException("BandwidthPackageAttachmentArgs", "bandwidthPackageId");
+            }
             return $;
         }
     }

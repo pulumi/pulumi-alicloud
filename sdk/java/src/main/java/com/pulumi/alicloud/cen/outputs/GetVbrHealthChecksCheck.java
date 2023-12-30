@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.cen.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -141,42 +142,66 @@ public final class GetVbrHealthChecksCheck {
 
         @CustomType.Setter
         public Builder cenId(String cenId) {
-            this.cenId = Objects.requireNonNull(cenId);
+            if (cenId == null) {
+              throw new MissingRequiredPropertyException("GetVbrHealthChecksCheck", "cenId");
+            }
+            this.cenId = cenId;
             return this;
         }
         @CustomType.Setter
         public Builder healthCheckInterval(Integer healthCheckInterval) {
-            this.healthCheckInterval = Objects.requireNonNull(healthCheckInterval);
+            if (healthCheckInterval == null) {
+              throw new MissingRequiredPropertyException("GetVbrHealthChecksCheck", "healthCheckInterval");
+            }
+            this.healthCheckInterval = healthCheckInterval;
             return this;
         }
         @CustomType.Setter
         public Builder healthCheckSourceIp(String healthCheckSourceIp) {
-            this.healthCheckSourceIp = Objects.requireNonNull(healthCheckSourceIp);
+            if (healthCheckSourceIp == null) {
+              throw new MissingRequiredPropertyException("GetVbrHealthChecksCheck", "healthCheckSourceIp");
+            }
+            this.healthCheckSourceIp = healthCheckSourceIp;
             return this;
         }
         @CustomType.Setter
         public Builder healthCheckTargetIp(String healthCheckTargetIp) {
-            this.healthCheckTargetIp = Objects.requireNonNull(healthCheckTargetIp);
+            if (healthCheckTargetIp == null) {
+              throw new MissingRequiredPropertyException("GetVbrHealthChecksCheck", "healthCheckTargetIp");
+            }
+            this.healthCheckTargetIp = healthCheckTargetIp;
             return this;
         }
         @CustomType.Setter
         public Builder healthyThreshold(Integer healthyThreshold) {
-            this.healthyThreshold = Objects.requireNonNull(healthyThreshold);
+            if (healthyThreshold == null) {
+              throw new MissingRequiredPropertyException("GetVbrHealthChecksCheck", "healthyThreshold");
+            }
+            this.healthyThreshold = healthyThreshold;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetVbrHealthChecksCheck", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder vbrInstanceId(String vbrInstanceId) {
-            this.vbrInstanceId = Objects.requireNonNull(vbrInstanceId);
+            if (vbrInstanceId == null) {
+              throw new MissingRequiredPropertyException("GetVbrHealthChecksCheck", "vbrInstanceId");
+            }
+            this.vbrInstanceId = vbrInstanceId;
             return this;
         }
         @CustomType.Setter
         public Builder vbrInstanceRegionId(String vbrInstanceRegionId) {
-            this.vbrInstanceRegionId = Objects.requireNonNull(vbrInstanceRegionId);
+            if (vbrInstanceRegionId == null) {
+              throw new MissingRequiredPropertyException("GetVbrHealthChecksCheck", "vbrInstanceRegionId");
+            }
+            this.vbrInstanceRegionId = vbrInstanceRegionId;
             return this;
         }
         public GetVbrHealthChecksCheck build() {

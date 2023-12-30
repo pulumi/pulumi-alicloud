@@ -5,6 +5,7 @@ package com.pulumi.alicloud.oos.outputs;
 
 import com.pulumi.alicloud.oos.outputs.GetExecutionsExecution;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Object;
 import java.lang.String;
@@ -173,27 +174,34 @@ public final class GetExecutionsResult {
 
         @CustomType.Setter
         public Builder category(@Nullable String category) {
+
             this.category = category;
             return this;
         }
         @CustomType.Setter
         public Builder endDate(@Nullable String endDate) {
+
             this.endDate = endDate;
             return this;
         }
         @CustomType.Setter
         public Builder endDateAfter(@Nullable String endDateAfter) {
+
             this.endDateAfter = endDateAfter;
             return this;
         }
         @CustomType.Setter
         public Builder executedBy(@Nullable String executedBy) {
+
             this.executedBy = executedBy;
             return this;
         }
         @CustomType.Setter
         public Builder executions(List<GetExecutionsExecution> executions) {
-            this.executions = Objects.requireNonNull(executions);
+            if (executions == null) {
+              throw new MissingRequiredPropertyException("GetExecutionsResult", "executions");
+            }
+            this.executions = executions;
             return this;
         }
         public Builder executions(GetExecutionsExecution... executions) {
@@ -201,12 +209,18 @@ public final class GetExecutionsResult {
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetExecutionsResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder ids(List<String> ids) {
-            this.ids = Objects.requireNonNull(ids);
+            if (ids == null) {
+              throw new MissingRequiredPropertyException("GetExecutionsResult", "ids");
+            }
+            this.ids = ids;
             return this;
         }
         public Builder ids(String... ids) {
@@ -214,61 +228,73 @@ public final class GetExecutionsResult {
         }
         @CustomType.Setter
         public Builder includeChildExecution(@Nullable Boolean includeChildExecution) {
+
             this.includeChildExecution = includeChildExecution;
             return this;
         }
         @CustomType.Setter
         public Builder mode(@Nullable String mode) {
+
             this.mode = mode;
             return this;
         }
         @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
+
             this.outputFile = outputFile;
             return this;
         }
         @CustomType.Setter
         public Builder parentExecutionId(@Nullable String parentExecutionId) {
+
             this.parentExecutionId = parentExecutionId;
             return this;
         }
         @CustomType.Setter
         public Builder ramRole(@Nullable String ramRole) {
+
             this.ramRole = ramRole;
             return this;
         }
         @CustomType.Setter
         public Builder sortField(@Nullable String sortField) {
+
             this.sortField = sortField;
             return this;
         }
         @CustomType.Setter
         public Builder sortOrder(@Nullable String sortOrder) {
+
             this.sortOrder = sortOrder;
             return this;
         }
         @CustomType.Setter
         public Builder startDateAfter(@Nullable String startDateAfter) {
+
             this.startDateAfter = startDateAfter;
             return this;
         }
         @CustomType.Setter
         public Builder startDateBefore(@Nullable String startDateBefore) {
+
             this.startDateBefore = startDateBefore;
             return this;
         }
         @CustomType.Setter
         public Builder status(@Nullable String status) {
+
             this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder tags(@Nullable Map<String,Object> tags) {
+
             this.tags = tags;
             return this;
         }
         @CustomType.Setter
         public Builder templateName(@Nullable String templateName) {
+
             this.templateName = templateName;
             return this;
         }

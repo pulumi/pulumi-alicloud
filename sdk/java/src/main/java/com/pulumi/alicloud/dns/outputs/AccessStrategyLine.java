@@ -44,6 +44,7 @@ public final class AccessStrategyLine {
 
         @CustomType.Setter
         public Builder lineCode(@Nullable String lineCode) {
+
             this.lineCode = lineCode;
             return this;
         }

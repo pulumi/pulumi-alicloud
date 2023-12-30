@@ -5,6 +5,7 @@ package com.pulumi.alicloud.cen;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -262,10 +263,18 @@ public final class TransitRouterPrefixListAssociationArgs extends com.pulumi.res
         }
 
         public TransitRouterPrefixListAssociationArgs build() {
-            $.nextHop = Objects.requireNonNull($.nextHop, "expected parameter 'nextHop' to be non-null");
-            $.prefixListId = Objects.requireNonNull($.prefixListId, "expected parameter 'prefixListId' to be non-null");
-            $.transitRouterId = Objects.requireNonNull($.transitRouterId, "expected parameter 'transitRouterId' to be non-null");
-            $.transitRouterTableId = Objects.requireNonNull($.transitRouterTableId, "expected parameter 'transitRouterTableId' to be non-null");
+            if ($.nextHop == null) {
+                throw new MissingRequiredPropertyException("TransitRouterPrefixListAssociationArgs", "nextHop");
+            }
+            if ($.prefixListId == null) {
+                throw new MissingRequiredPropertyException("TransitRouterPrefixListAssociationArgs", "prefixListId");
+            }
+            if ($.transitRouterId == null) {
+                throw new MissingRequiredPropertyException("TransitRouterPrefixListAssociationArgs", "transitRouterId");
+            }
+            if ($.transitRouterTableId == null) {
+                throw new MissingRequiredPropertyException("TransitRouterPrefixListAssociationArgs", "transitRouterTableId");
+            }
             return $;
         }
     }

@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.vpc.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -296,97 +297,154 @@ public final class GetBgpPeersPeer {
 
         @CustomType.Setter
         public Builder authKey(String authKey) {
-            this.authKey = Objects.requireNonNull(authKey);
+            if (authKey == null) {
+              throw new MissingRequiredPropertyException("GetBgpPeersPeer", "authKey");
+            }
+            this.authKey = authKey;
             return this;
         }
         @CustomType.Setter
         public Builder bfdMultiHop(Integer bfdMultiHop) {
-            this.bfdMultiHop = Objects.requireNonNull(bfdMultiHop);
+            if (bfdMultiHop == null) {
+              throw new MissingRequiredPropertyException("GetBgpPeersPeer", "bfdMultiHop");
+            }
+            this.bfdMultiHop = bfdMultiHop;
             return this;
         }
         @CustomType.Setter
         public Builder bgpGroupId(String bgpGroupId) {
-            this.bgpGroupId = Objects.requireNonNull(bgpGroupId);
+            if (bgpGroupId == null) {
+              throw new MissingRequiredPropertyException("GetBgpPeersPeer", "bgpGroupId");
+            }
+            this.bgpGroupId = bgpGroupId;
             return this;
         }
         @CustomType.Setter
         public Builder bgpPeerId(String bgpPeerId) {
-            this.bgpPeerId = Objects.requireNonNull(bgpPeerId);
+            if (bgpPeerId == null) {
+              throw new MissingRequiredPropertyException("GetBgpPeersPeer", "bgpPeerId");
+            }
+            this.bgpPeerId = bgpPeerId;
             return this;
         }
         @CustomType.Setter
         public Builder bgpPeerName(String bgpPeerName) {
-            this.bgpPeerName = Objects.requireNonNull(bgpPeerName);
+            if (bgpPeerName == null) {
+              throw new MissingRequiredPropertyException("GetBgpPeersPeer", "bgpPeerName");
+            }
+            this.bgpPeerName = bgpPeerName;
             return this;
         }
         @CustomType.Setter
         public Builder bgpStatus(String bgpStatus) {
-            this.bgpStatus = Objects.requireNonNull(bgpStatus);
+            if (bgpStatus == null) {
+              throw new MissingRequiredPropertyException("GetBgpPeersPeer", "bgpStatus");
+            }
+            this.bgpStatus = bgpStatus;
             return this;
         }
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetBgpPeersPeer", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder enableBfd(Boolean enableBfd) {
-            this.enableBfd = Objects.requireNonNull(enableBfd);
+            if (enableBfd == null) {
+              throw new MissingRequiredPropertyException("GetBgpPeersPeer", "enableBfd");
+            }
+            this.enableBfd = enableBfd;
             return this;
         }
         @CustomType.Setter
         public Builder hold(String hold) {
-            this.hold = Objects.requireNonNull(hold);
+            if (hold == null) {
+              throw new MissingRequiredPropertyException("GetBgpPeersPeer", "hold");
+            }
+            this.hold = hold;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetBgpPeersPeer", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder ipVersion(String ipVersion) {
-            this.ipVersion = Objects.requireNonNull(ipVersion);
+            if (ipVersion == null) {
+              throw new MissingRequiredPropertyException("GetBgpPeersPeer", "ipVersion");
+            }
+            this.ipVersion = ipVersion;
             return this;
         }
         @CustomType.Setter
         public Builder isFake(Boolean isFake) {
-            this.isFake = Objects.requireNonNull(isFake);
+            if (isFake == null) {
+              throw new MissingRequiredPropertyException("GetBgpPeersPeer", "isFake");
+            }
+            this.isFake = isFake;
             return this;
         }
         @CustomType.Setter
         public Builder keepalive(String keepalive) {
-            this.keepalive = Objects.requireNonNull(keepalive);
+            if (keepalive == null) {
+              throw new MissingRequiredPropertyException("GetBgpPeersPeer", "keepalive");
+            }
+            this.keepalive = keepalive;
             return this;
         }
         @CustomType.Setter
         public Builder localAsn(String localAsn) {
-            this.localAsn = Objects.requireNonNull(localAsn);
+            if (localAsn == null) {
+              throw new MissingRequiredPropertyException("GetBgpPeersPeer", "localAsn");
+            }
+            this.localAsn = localAsn;
             return this;
         }
         @CustomType.Setter
         public Builder peerAsn(String peerAsn) {
-            this.peerAsn = Objects.requireNonNull(peerAsn);
+            if (peerAsn == null) {
+              throw new MissingRequiredPropertyException("GetBgpPeersPeer", "peerAsn");
+            }
+            this.peerAsn = peerAsn;
             return this;
         }
         @CustomType.Setter
         public Builder peerIpAddress(String peerIpAddress) {
-            this.peerIpAddress = Objects.requireNonNull(peerIpAddress);
+            if (peerIpAddress == null) {
+              throw new MissingRequiredPropertyException("GetBgpPeersPeer", "peerIpAddress");
+            }
+            this.peerIpAddress = peerIpAddress;
             return this;
         }
         @CustomType.Setter
         public Builder routeLimit(String routeLimit) {
-            this.routeLimit = Objects.requireNonNull(routeLimit);
+            if (routeLimit == null) {
+              throw new MissingRequiredPropertyException("GetBgpPeersPeer", "routeLimit");
+            }
+            this.routeLimit = routeLimit;
             return this;
         }
         @CustomType.Setter
         public Builder routerId(String routerId) {
-            this.routerId = Objects.requireNonNull(routerId);
+            if (routerId == null) {
+              throw new MissingRequiredPropertyException("GetBgpPeersPeer", "routerId");
+            }
+            this.routerId = routerId;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetBgpPeersPeer", "status");
+            }
+            this.status = status;
             return this;
         }
         public GetBgpPeersPeer build() {

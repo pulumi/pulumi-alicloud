@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.vpc.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -113,32 +114,50 @@ public final class GetSslVpnClientCertsCert {
 
         @CustomType.Setter
         public Builder createTime(String createTime) {
-            this.createTime = Objects.requireNonNull(createTime);
+            if (createTime == null) {
+              throw new MissingRequiredPropertyException("GetSslVpnClientCertsCert", "createTime");
+            }
+            this.createTime = createTime;
             return this;
         }
         @CustomType.Setter
         public Builder endTime(Integer endTime) {
-            this.endTime = Objects.requireNonNull(endTime);
+            if (endTime == null) {
+              throw new MissingRequiredPropertyException("GetSslVpnClientCertsCert", "endTime");
+            }
+            this.endTime = endTime;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetSslVpnClientCertsCert", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetSslVpnClientCertsCert", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder sslVpnServerId(String sslVpnServerId) {
-            this.sslVpnServerId = Objects.requireNonNull(sslVpnServerId);
+            if (sslVpnServerId == null) {
+              throw new MissingRequiredPropertyException("GetSslVpnClientCertsCert", "sslVpnServerId");
+            }
+            this.sslVpnServerId = sslVpnServerId;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetSslVpnClientCertsCert", "status");
+            }
+            this.status = status;
             return this;
         }
         public GetSslVpnClientCertsCert build() {

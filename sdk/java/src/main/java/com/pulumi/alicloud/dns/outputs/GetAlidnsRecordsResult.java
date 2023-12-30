@@ -5,6 +5,7 @@ package com.pulumi.alicloud.dns.outputs;
 
 import com.pulumi.alicloud.dns.outputs.GetAlidnsRecordsRecord;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -203,27 +204,38 @@ public final class GetAlidnsRecordsResult {
 
         @CustomType.Setter
         public Builder direction(@Nullable String direction) {
+
             this.direction = direction;
             return this;
         }
         @CustomType.Setter
         public Builder domainName(String domainName) {
-            this.domainName = Objects.requireNonNull(domainName);
+            if (domainName == null) {
+              throw new MissingRequiredPropertyException("GetAlidnsRecordsResult", "domainName");
+            }
+            this.domainName = domainName;
             return this;
         }
         @CustomType.Setter
         public Builder groupId(@Nullable Integer groupId) {
+
             this.groupId = groupId;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetAlidnsRecordsResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder ids(List<String> ids) {
-            this.ids = Objects.requireNonNull(ids);
+            if (ids == null) {
+              throw new MissingRequiredPropertyException("GetAlidnsRecordsResult", "ids");
+            }
+            this.ids = ids;
             return this;
         }
         public Builder ids(String... ids) {
@@ -231,32 +243,40 @@ public final class GetAlidnsRecordsResult {
         }
         @CustomType.Setter
         public Builder keyWord(@Nullable String keyWord) {
+
             this.keyWord = keyWord;
             return this;
         }
         @CustomType.Setter
         public Builder lang(@Nullable String lang) {
+
             this.lang = lang;
             return this;
         }
         @CustomType.Setter
         public Builder line(@Nullable String line) {
+
             this.line = line;
             return this;
         }
         @CustomType.Setter
         public Builder orderBy(@Nullable String orderBy) {
+
             this.orderBy = orderBy;
             return this;
         }
         @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
+
             this.outputFile = outputFile;
             return this;
         }
         @CustomType.Setter
         public Builder records(List<GetAlidnsRecordsRecord> records) {
-            this.records = Objects.requireNonNull(records);
+            if (records == null) {
+              throw new MissingRequiredPropertyException("GetAlidnsRecordsResult", "records");
+            }
+            this.records = records;
             return this;
         }
         public Builder records(GetAlidnsRecordsRecord... records) {
@@ -264,41 +284,49 @@ public final class GetAlidnsRecordsResult {
         }
         @CustomType.Setter
         public Builder rrKeyWord(@Nullable String rrKeyWord) {
+
             this.rrKeyWord = rrKeyWord;
             return this;
         }
         @CustomType.Setter
         public Builder rrRegex(@Nullable String rrRegex) {
+
             this.rrRegex = rrRegex;
             return this;
         }
         @CustomType.Setter
         public Builder searchMode(@Nullable String searchMode) {
+
             this.searchMode = searchMode;
             return this;
         }
         @CustomType.Setter
         public Builder status(@Nullable String status) {
+
             this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder type(@Nullable String type) {
+
             this.type = type;
             return this;
         }
         @CustomType.Setter
         public Builder typeKeyWord(@Nullable String typeKeyWord) {
+
             this.typeKeyWord = typeKeyWord;
             return this;
         }
         @CustomType.Setter
         public Builder valueKeyWord(@Nullable String valueKeyWord) {
+
             this.valueKeyWord = valueKeyWord;
             return this;
         }
         @CustomType.Setter
         public Builder valueRegex(@Nullable String valueRegex) {
+
             this.valueRegex = valueRegex;
             return this;
         }

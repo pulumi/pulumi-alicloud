@@ -5,6 +5,7 @@ package com.pulumi.alicloud.fc.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -148,9 +149,15 @@ public final class CustomDomainCertConfigArgs extends com.pulumi.resources.Resou
         }
 
         public CustomDomainCertConfigArgs build() {
-            $.certName = Objects.requireNonNull($.certName, "expected parameter 'certName' to be non-null");
-            $.certificate = Objects.requireNonNull($.certificate, "expected parameter 'certificate' to be non-null");
-            $.privateKey = Objects.requireNonNull($.privateKey, "expected parameter 'privateKey' to be non-null");
+            if ($.certName == null) {
+                throw new MissingRequiredPropertyException("CustomDomainCertConfigArgs", "certName");
+            }
+            if ($.certificate == null) {
+                throw new MissingRequiredPropertyException("CustomDomainCertConfigArgs", "certificate");
+            }
+            if ($.privateKey == null) {
+                throw new MissingRequiredPropertyException("CustomDomainCertConfigArgs", "privateKey");
+            }
             return $;
         }
     }

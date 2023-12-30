@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.cloudfirewall.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -367,42 +368,66 @@ public final class GetVpcFirewallControlPoliciesPolicy {
 
         @CustomType.Setter
         public Builder aclAction(String aclAction) {
-            this.aclAction = Objects.requireNonNull(aclAction);
+            if (aclAction == null) {
+              throw new MissingRequiredPropertyException("GetVpcFirewallControlPoliciesPolicy", "aclAction");
+            }
+            this.aclAction = aclAction;
             return this;
         }
         @CustomType.Setter
         public Builder aclUuid(String aclUuid) {
-            this.aclUuid = Objects.requireNonNull(aclUuid);
+            if (aclUuid == null) {
+              throw new MissingRequiredPropertyException("GetVpcFirewallControlPoliciesPolicy", "aclUuid");
+            }
+            this.aclUuid = aclUuid;
             return this;
         }
         @CustomType.Setter
         public Builder applicationId(String applicationId) {
-            this.applicationId = Objects.requireNonNull(applicationId);
+            if (applicationId == null) {
+              throw new MissingRequiredPropertyException("GetVpcFirewallControlPoliciesPolicy", "applicationId");
+            }
+            this.applicationId = applicationId;
             return this;
         }
         @CustomType.Setter
         public Builder applicationName(String applicationName) {
-            this.applicationName = Objects.requireNonNull(applicationName);
+            if (applicationName == null) {
+              throw new MissingRequiredPropertyException("GetVpcFirewallControlPoliciesPolicy", "applicationName");
+            }
+            this.applicationName = applicationName;
             return this;
         }
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetVpcFirewallControlPoliciesPolicy", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder destPort(String destPort) {
-            this.destPort = Objects.requireNonNull(destPort);
+            if (destPort == null) {
+              throw new MissingRequiredPropertyException("GetVpcFirewallControlPoliciesPolicy", "destPort");
+            }
+            this.destPort = destPort;
             return this;
         }
         @CustomType.Setter
         public Builder destPortGroup(String destPortGroup) {
-            this.destPortGroup = Objects.requireNonNull(destPortGroup);
+            if (destPortGroup == null) {
+              throw new MissingRequiredPropertyException("GetVpcFirewallControlPoliciesPolicy", "destPortGroup");
+            }
+            this.destPortGroup = destPortGroup;
             return this;
         }
         @CustomType.Setter
         public Builder destPortGroupPorts(List<String> destPortGroupPorts) {
-            this.destPortGroupPorts = Objects.requireNonNull(destPortGroupPorts);
+            if (destPortGroupPorts == null) {
+              throw new MissingRequiredPropertyException("GetVpcFirewallControlPoliciesPolicy", "destPortGroupPorts");
+            }
+            this.destPortGroupPorts = destPortGroupPorts;
             return this;
         }
         public Builder destPortGroupPorts(String... destPortGroupPorts) {
@@ -410,17 +435,26 @@ public final class GetVpcFirewallControlPoliciesPolicy {
         }
         @CustomType.Setter
         public Builder destPortType(String destPortType) {
-            this.destPortType = Objects.requireNonNull(destPortType);
+            if (destPortType == null) {
+              throw new MissingRequiredPropertyException("GetVpcFirewallControlPoliciesPolicy", "destPortType");
+            }
+            this.destPortType = destPortType;
             return this;
         }
         @CustomType.Setter
         public Builder destination(String destination) {
-            this.destination = Objects.requireNonNull(destination);
+            if (destination == null) {
+              throw new MissingRequiredPropertyException("GetVpcFirewallControlPoliciesPolicy", "destination");
+            }
+            this.destination = destination;
             return this;
         }
         @CustomType.Setter
         public Builder destinationGroupCidrs(List<String> destinationGroupCidrs) {
-            this.destinationGroupCidrs = Objects.requireNonNull(destinationGroupCidrs);
+            if (destinationGroupCidrs == null) {
+              throw new MissingRequiredPropertyException("GetVpcFirewallControlPoliciesPolicy", "destinationGroupCidrs");
+            }
+            this.destinationGroupCidrs = destinationGroupCidrs;
             return this;
         }
         public Builder destinationGroupCidrs(String... destinationGroupCidrs) {
@@ -428,52 +462,82 @@ public final class GetVpcFirewallControlPoliciesPolicy {
         }
         @CustomType.Setter
         public Builder destinationGroupType(String destinationGroupType) {
-            this.destinationGroupType = Objects.requireNonNull(destinationGroupType);
+            if (destinationGroupType == null) {
+              throw new MissingRequiredPropertyException("GetVpcFirewallControlPoliciesPolicy", "destinationGroupType");
+            }
+            this.destinationGroupType = destinationGroupType;
             return this;
         }
         @CustomType.Setter
         public Builder destinationType(String destinationType) {
-            this.destinationType = Objects.requireNonNull(destinationType);
+            if (destinationType == null) {
+              throw new MissingRequiredPropertyException("GetVpcFirewallControlPoliciesPolicy", "destinationType");
+            }
+            this.destinationType = destinationType;
             return this;
         }
         @CustomType.Setter
         public Builder hitTimes(Integer hitTimes) {
-            this.hitTimes = Objects.requireNonNull(hitTimes);
+            if (hitTimes == null) {
+              throw new MissingRequiredPropertyException("GetVpcFirewallControlPoliciesPolicy", "hitTimes");
+            }
+            this.hitTimes = hitTimes;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetVpcFirewallControlPoliciesPolicy", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder memberUid(String memberUid) {
-            this.memberUid = Objects.requireNonNull(memberUid);
+            if (memberUid == null) {
+              throw new MissingRequiredPropertyException("GetVpcFirewallControlPoliciesPolicy", "memberUid");
+            }
+            this.memberUid = memberUid;
             return this;
         }
         @CustomType.Setter
         public Builder order(Integer order) {
-            this.order = Objects.requireNonNull(order);
+            if (order == null) {
+              throw new MissingRequiredPropertyException("GetVpcFirewallControlPoliciesPolicy", "order");
+            }
+            this.order = order;
             return this;
         }
         @CustomType.Setter
         public Builder proto(String proto) {
-            this.proto = Objects.requireNonNull(proto);
+            if (proto == null) {
+              throw new MissingRequiredPropertyException("GetVpcFirewallControlPoliciesPolicy", "proto");
+            }
+            this.proto = proto;
             return this;
         }
         @CustomType.Setter
         public Builder release(Boolean release) {
-            this.release = Objects.requireNonNull(release);
+            if (release == null) {
+              throw new MissingRequiredPropertyException("GetVpcFirewallControlPoliciesPolicy", "release");
+            }
+            this.release = release;
             return this;
         }
         @CustomType.Setter
         public Builder source(String source) {
-            this.source = Objects.requireNonNull(source);
+            if (source == null) {
+              throw new MissingRequiredPropertyException("GetVpcFirewallControlPoliciesPolicy", "source");
+            }
+            this.source = source;
             return this;
         }
         @CustomType.Setter
         public Builder sourceGroupCidrs(List<String> sourceGroupCidrs) {
-            this.sourceGroupCidrs = Objects.requireNonNull(sourceGroupCidrs);
+            if (sourceGroupCidrs == null) {
+              throw new MissingRequiredPropertyException("GetVpcFirewallControlPoliciesPolicy", "sourceGroupCidrs");
+            }
+            this.sourceGroupCidrs = sourceGroupCidrs;
             return this;
         }
         public Builder sourceGroupCidrs(String... sourceGroupCidrs) {
@@ -481,17 +545,26 @@ public final class GetVpcFirewallControlPoliciesPolicy {
         }
         @CustomType.Setter
         public Builder sourceGroupType(String sourceGroupType) {
-            this.sourceGroupType = Objects.requireNonNull(sourceGroupType);
+            if (sourceGroupType == null) {
+              throw new MissingRequiredPropertyException("GetVpcFirewallControlPoliciesPolicy", "sourceGroupType");
+            }
+            this.sourceGroupType = sourceGroupType;
             return this;
         }
         @CustomType.Setter
         public Builder sourceType(String sourceType) {
-            this.sourceType = Objects.requireNonNull(sourceType);
+            if (sourceType == null) {
+              throw new MissingRequiredPropertyException("GetVpcFirewallControlPoliciesPolicy", "sourceType");
+            }
+            this.sourceType = sourceType;
             return this;
         }
         @CustomType.Setter
         public Builder vpcFirewallId(String vpcFirewallId) {
-            this.vpcFirewallId = Objects.requireNonNull(vpcFirewallId);
+            if (vpcFirewallId == null) {
+              throw new MissingRequiredPropertyException("GetVpcFirewallControlPoliciesPolicy", "vpcFirewallId");
+            }
+            this.vpcFirewallId = vpcFirewallId;
             return this;
         }
         public GetVpcFirewallControlPoliciesPolicy build() {

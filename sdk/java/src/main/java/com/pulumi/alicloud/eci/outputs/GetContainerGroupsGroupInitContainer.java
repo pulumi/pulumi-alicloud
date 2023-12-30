@@ -7,6 +7,7 @@ import com.pulumi.alicloud.eci.outputs.GetContainerGroupsGroupInitContainerEnvir
 import com.pulumi.alicloud.eci.outputs.GetContainerGroupsGroupInitContainerPort;
 import com.pulumi.alicloud.eci.outputs.GetContainerGroupsGroupInitContainerVolumeMount;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Double;
 import java.lang.Integer;
@@ -231,7 +232,10 @@ public final class GetContainerGroupsGroupInitContainer {
 
         @CustomType.Setter
         public Builder args(List<String> args) {
-            this.args = Objects.requireNonNull(args);
+            if (args == null) {
+              throw new MissingRequiredPropertyException("GetContainerGroupsGroupInitContainer", "args");
+            }
+            this.args = args;
             return this;
         }
         public Builder args(String... args) {
@@ -239,7 +243,10 @@ public final class GetContainerGroupsGroupInitContainer {
         }
         @CustomType.Setter
         public Builder commands(List<String> commands) {
-            this.commands = Objects.requireNonNull(commands);
+            if (commands == null) {
+              throw new MissingRequiredPropertyException("GetContainerGroupsGroupInitContainer", "commands");
+            }
+            this.commands = commands;
             return this;
         }
         public Builder commands(String... commands) {
@@ -247,12 +254,18 @@ public final class GetContainerGroupsGroupInitContainer {
         }
         @CustomType.Setter
         public Builder cpu(Double cpu) {
-            this.cpu = Objects.requireNonNull(cpu);
+            if (cpu == null) {
+              throw new MissingRequiredPropertyException("GetContainerGroupsGroupInitContainer", "cpu");
+            }
+            this.cpu = cpu;
             return this;
         }
         @CustomType.Setter
         public Builder environmentVars(List<GetContainerGroupsGroupInitContainerEnvironmentVar> environmentVars) {
-            this.environmentVars = Objects.requireNonNull(environmentVars);
+            if (environmentVars == null) {
+              throw new MissingRequiredPropertyException("GetContainerGroupsGroupInitContainer", "environmentVars");
+            }
+            this.environmentVars = environmentVars;
             return this;
         }
         public Builder environmentVars(GetContainerGroupsGroupInitContainerEnvironmentVar... environmentVars) {
@@ -260,32 +273,50 @@ public final class GetContainerGroupsGroupInitContainer {
         }
         @CustomType.Setter
         public Builder gpu(Integer gpu) {
-            this.gpu = Objects.requireNonNull(gpu);
+            if (gpu == null) {
+              throw new MissingRequiredPropertyException("GetContainerGroupsGroupInitContainer", "gpu");
+            }
+            this.gpu = gpu;
             return this;
         }
         @CustomType.Setter
         public Builder image(String image) {
-            this.image = Objects.requireNonNull(image);
+            if (image == null) {
+              throw new MissingRequiredPropertyException("GetContainerGroupsGroupInitContainer", "image");
+            }
+            this.image = image;
             return this;
         }
         @CustomType.Setter
         public Builder imagePullPolicy(String imagePullPolicy) {
-            this.imagePullPolicy = Objects.requireNonNull(imagePullPolicy);
+            if (imagePullPolicy == null) {
+              throw new MissingRequiredPropertyException("GetContainerGroupsGroupInitContainer", "imagePullPolicy");
+            }
+            this.imagePullPolicy = imagePullPolicy;
             return this;
         }
         @CustomType.Setter
         public Builder memory(Double memory) {
-            this.memory = Objects.requireNonNull(memory);
+            if (memory == null) {
+              throw new MissingRequiredPropertyException("GetContainerGroupsGroupInitContainer", "memory");
+            }
+            this.memory = memory;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetContainerGroupsGroupInitContainer", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder ports(List<GetContainerGroupsGroupInitContainerPort> ports) {
-            this.ports = Objects.requireNonNull(ports);
+            if (ports == null) {
+              throw new MissingRequiredPropertyException("GetContainerGroupsGroupInitContainer", "ports");
+            }
+            this.ports = ports;
             return this;
         }
         public Builder ports(GetContainerGroupsGroupInitContainerPort... ports) {
@@ -293,17 +324,26 @@ public final class GetContainerGroupsGroupInitContainer {
         }
         @CustomType.Setter
         public Builder ready(Boolean ready) {
-            this.ready = Objects.requireNonNull(ready);
+            if (ready == null) {
+              throw new MissingRequiredPropertyException("GetContainerGroupsGroupInitContainer", "ready");
+            }
+            this.ready = ready;
             return this;
         }
         @CustomType.Setter
         public Builder restartCount(Integer restartCount) {
-            this.restartCount = Objects.requireNonNull(restartCount);
+            if (restartCount == null) {
+              throw new MissingRequiredPropertyException("GetContainerGroupsGroupInitContainer", "restartCount");
+            }
+            this.restartCount = restartCount;
             return this;
         }
         @CustomType.Setter
         public Builder volumeMounts(List<GetContainerGroupsGroupInitContainerVolumeMount> volumeMounts) {
-            this.volumeMounts = Objects.requireNonNull(volumeMounts);
+            if (volumeMounts == null) {
+              throw new MissingRequiredPropertyException("GetContainerGroupsGroupInitContainer", "volumeMounts");
+            }
+            this.volumeMounts = volumeMounts;
             return this;
         }
         public Builder volumeMounts(GetContainerGroupsGroupInitContainerVolumeMount... volumeMounts) {
@@ -311,7 +351,10 @@ public final class GetContainerGroupsGroupInitContainer {
         }
         @CustomType.Setter
         public Builder workingDir(String workingDir) {
-            this.workingDir = Objects.requireNonNull(workingDir);
+            if (workingDir == null) {
+              throw new MissingRequiredPropertyException("GetContainerGroupsGroupInitContainer", "workingDir");
+            }
+            this.workingDir = workingDir;
             return this;
         }
         public GetContainerGroupsGroupInitContainer build() {

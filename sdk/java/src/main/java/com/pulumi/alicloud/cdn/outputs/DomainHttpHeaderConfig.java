@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.cdn.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -48,17 +49,24 @@ public final class DomainHttpHeaderConfig {
 
         @CustomType.Setter
         public Builder headerId(@Nullable String headerId) {
+
             this.headerId = headerId;
             return this;
         }
         @CustomType.Setter
         public Builder headerKey(String headerKey) {
-            this.headerKey = Objects.requireNonNull(headerKey);
+            if (headerKey == null) {
+              throw new MissingRequiredPropertyException("DomainHttpHeaderConfig", "headerKey");
+            }
+            this.headerKey = headerKey;
             return this;
         }
         @CustomType.Setter
         public Builder headerValue(String headerValue) {
-            this.headerValue = Objects.requireNonNull(headerValue);
+            if (headerValue == null) {
+              throw new MissingRequiredPropertyException("DomainHttpHeaderConfig", "headerValue");
+            }
+            this.headerValue = headerValue;
             return this;
         }
         public DomainHttpHeaderConfig build() {

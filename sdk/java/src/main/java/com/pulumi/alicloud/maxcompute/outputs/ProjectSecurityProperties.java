@@ -129,36 +129,43 @@ public final class ProjectSecurityProperties {
 
         @CustomType.Setter
         public Builder enableDownloadPrivilege(@Nullable Boolean enableDownloadPrivilege) {
+
             this.enableDownloadPrivilege = enableDownloadPrivilege;
             return this;
         }
         @CustomType.Setter
         public Builder labelSecurity(@Nullable Boolean labelSecurity) {
+
             this.labelSecurity = labelSecurity;
             return this;
         }
         @CustomType.Setter
         public Builder objectCreatorHasAccessPermission(@Nullable Boolean objectCreatorHasAccessPermission) {
+
             this.objectCreatorHasAccessPermission = objectCreatorHasAccessPermission;
             return this;
         }
         @CustomType.Setter
         public Builder objectCreatorHasGrantPermission(@Nullable Boolean objectCreatorHasGrantPermission) {
+
             this.objectCreatorHasGrantPermission = objectCreatorHasGrantPermission;
             return this;
         }
         @CustomType.Setter
         public Builder projectProtection(@Nullable ProjectSecurityPropertiesProjectProtection projectProtection) {
+
             this.projectProtection = projectProtection;
             return this;
         }
         @CustomType.Setter
         public Builder usingAcl(@Nullable Boolean usingAcl) {
+
             this.usingAcl = usingAcl;
             return this;
         }
         @CustomType.Setter
         public Builder usingPolicy(@Nullable Boolean usingPolicy) {
+
             this.usingPolicy = usingPolicy;
             return this;
         }

@@ -6,6 +6,7 @@ package com.pulumi.alicloud.databasefilesystem;
 import com.pulumi.alicloud.databasefilesystem.inputs.InstanceEcsListArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.Object;
@@ -760,9 +761,15 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public InstanceArgs build() {
-            $.category = Objects.requireNonNull($.category, "expected parameter 'category' to be non-null");
-            $.size = Objects.requireNonNull($.size, "expected parameter 'size' to be non-null");
-            $.zoneId = Objects.requireNonNull($.zoneId, "expected parameter 'zoneId' to be non-null");
+            if ($.category == null) {
+                throw new MissingRequiredPropertyException("InstanceArgs", "category");
+            }
+            if ($.size == null) {
+                throw new MissingRequiredPropertyException("InstanceArgs", "size");
+            }
+            if ($.zoneId == null) {
+                throw new MissingRequiredPropertyException("InstanceArgs", "zoneId");
+            }
             return $;
         }
     }

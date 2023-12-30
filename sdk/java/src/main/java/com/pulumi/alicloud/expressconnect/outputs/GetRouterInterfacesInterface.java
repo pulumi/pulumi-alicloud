@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.expressconnect.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -554,192 +555,306 @@ public final class GetRouterInterfacesInterface {
 
         @CustomType.Setter
         public Builder accessPointId(String accessPointId) {
-            this.accessPointId = Objects.requireNonNull(accessPointId);
+            if (accessPointId == null) {
+              throw new MissingRequiredPropertyException("GetRouterInterfacesInterface", "accessPointId");
+            }
+            this.accessPointId = accessPointId;
             return this;
         }
         @CustomType.Setter
         public Builder bandwidth(Integer bandwidth) {
-            this.bandwidth = Objects.requireNonNull(bandwidth);
+            if (bandwidth == null) {
+              throw new MissingRequiredPropertyException("GetRouterInterfacesInterface", "bandwidth");
+            }
+            this.bandwidth = bandwidth;
             return this;
         }
         @CustomType.Setter
         public Builder businessStatus(String businessStatus) {
-            this.businessStatus = Objects.requireNonNull(businessStatus);
+            if (businessStatus == null) {
+              throw new MissingRequiredPropertyException("GetRouterInterfacesInterface", "businessStatus");
+            }
+            this.businessStatus = businessStatus;
             return this;
         }
         @CustomType.Setter
         public Builder connectedTime(String connectedTime) {
-            this.connectedTime = Objects.requireNonNull(connectedTime);
+            if (connectedTime == null) {
+              throw new MissingRequiredPropertyException("GetRouterInterfacesInterface", "connectedTime");
+            }
+            this.connectedTime = connectedTime;
             return this;
         }
         @CustomType.Setter
         public Builder createTime(String createTime) {
-            this.createTime = Objects.requireNonNull(createTime);
+            if (createTime == null) {
+              throw new MissingRequiredPropertyException("GetRouterInterfacesInterface", "createTime");
+            }
+            this.createTime = createTime;
             return this;
         }
         @CustomType.Setter
         public Builder crossBorder(Boolean crossBorder) {
-            this.crossBorder = Objects.requireNonNull(crossBorder);
+            if (crossBorder == null) {
+              throw new MissingRequiredPropertyException("GetRouterInterfacesInterface", "crossBorder");
+            }
+            this.crossBorder = crossBorder;
             return this;
         }
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetRouterInterfacesInterface", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder endTime(String endTime) {
-            this.endTime = Objects.requireNonNull(endTime);
+            if (endTime == null) {
+              throw new MissingRequiredPropertyException("GetRouterInterfacesInterface", "endTime");
+            }
+            this.endTime = endTime;
             return this;
         }
         @CustomType.Setter
         public Builder hasReservationData(String hasReservationData) {
-            this.hasReservationData = Objects.requireNonNull(hasReservationData);
+            if (hasReservationData == null) {
+              throw new MissingRequiredPropertyException("GetRouterInterfacesInterface", "hasReservationData");
+            }
+            this.hasReservationData = hasReservationData;
             return this;
         }
         @CustomType.Setter
         public Builder hcRate(Integer hcRate) {
-            this.hcRate = Objects.requireNonNull(hcRate);
+            if (hcRate == null) {
+              throw new MissingRequiredPropertyException("GetRouterInterfacesInterface", "hcRate");
+            }
+            this.hcRate = hcRate;
             return this;
         }
         @CustomType.Setter
         public Builder hcThreshold(String hcThreshold) {
-            this.hcThreshold = Objects.requireNonNull(hcThreshold);
+            if (hcThreshold == null) {
+              throw new MissingRequiredPropertyException("GetRouterInterfacesInterface", "hcThreshold");
+            }
+            this.hcThreshold = hcThreshold;
             return this;
         }
         @CustomType.Setter
         public Builder healthCheckSourceIp(String healthCheckSourceIp) {
-            this.healthCheckSourceIp = Objects.requireNonNull(healthCheckSourceIp);
+            if (healthCheckSourceIp == null) {
+              throw new MissingRequiredPropertyException("GetRouterInterfacesInterface", "healthCheckSourceIp");
+            }
+            this.healthCheckSourceIp = healthCheckSourceIp;
             return this;
         }
         @CustomType.Setter
         public Builder healthCheckTargetIp(String healthCheckTargetIp) {
-            this.healthCheckTargetIp = Objects.requireNonNull(healthCheckTargetIp);
+            if (healthCheckTargetIp == null) {
+              throw new MissingRequiredPropertyException("GetRouterInterfacesInterface", "healthCheckTargetIp");
+            }
+            this.healthCheckTargetIp = healthCheckTargetIp;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetRouterInterfacesInterface", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder oppositeAccessPointId(String oppositeAccessPointId) {
-            this.oppositeAccessPointId = Objects.requireNonNull(oppositeAccessPointId);
+            if (oppositeAccessPointId == null) {
+              throw new MissingRequiredPropertyException("GetRouterInterfacesInterface", "oppositeAccessPointId");
+            }
+            this.oppositeAccessPointId = oppositeAccessPointId;
             return this;
         }
         @CustomType.Setter
         public Builder oppositeBandwidth(Integer oppositeBandwidth) {
-            this.oppositeBandwidth = Objects.requireNonNull(oppositeBandwidth);
+            if (oppositeBandwidth == null) {
+              throw new MissingRequiredPropertyException("GetRouterInterfacesInterface", "oppositeBandwidth");
+            }
+            this.oppositeBandwidth = oppositeBandwidth;
             return this;
         }
         @CustomType.Setter
         public Builder oppositeInterfaceBusinessStatus(String oppositeInterfaceBusinessStatus) {
-            this.oppositeInterfaceBusinessStatus = Objects.requireNonNull(oppositeInterfaceBusinessStatus);
+            if (oppositeInterfaceBusinessStatus == null) {
+              throw new MissingRequiredPropertyException("GetRouterInterfacesInterface", "oppositeInterfaceBusinessStatus");
+            }
+            this.oppositeInterfaceBusinessStatus = oppositeInterfaceBusinessStatus;
             return this;
         }
         @CustomType.Setter
         public Builder oppositeInterfaceId(String oppositeInterfaceId) {
-            this.oppositeInterfaceId = Objects.requireNonNull(oppositeInterfaceId);
+            if (oppositeInterfaceId == null) {
+              throw new MissingRequiredPropertyException("GetRouterInterfacesInterface", "oppositeInterfaceId");
+            }
+            this.oppositeInterfaceId = oppositeInterfaceId;
             return this;
         }
         @CustomType.Setter
         public Builder oppositeInterfaceOwnerId(String oppositeInterfaceOwnerId) {
-            this.oppositeInterfaceOwnerId = Objects.requireNonNull(oppositeInterfaceOwnerId);
+            if (oppositeInterfaceOwnerId == null) {
+              throw new MissingRequiredPropertyException("GetRouterInterfacesInterface", "oppositeInterfaceOwnerId");
+            }
+            this.oppositeInterfaceOwnerId = oppositeInterfaceOwnerId;
             return this;
         }
         @CustomType.Setter
         public Builder oppositeInterfaceSpec(String oppositeInterfaceSpec) {
-            this.oppositeInterfaceSpec = Objects.requireNonNull(oppositeInterfaceSpec);
+            if (oppositeInterfaceSpec == null) {
+              throw new MissingRequiredPropertyException("GetRouterInterfacesInterface", "oppositeInterfaceSpec");
+            }
+            this.oppositeInterfaceSpec = oppositeInterfaceSpec;
             return this;
         }
         @CustomType.Setter
         public Builder oppositeInterfaceStatus(String oppositeInterfaceStatus) {
-            this.oppositeInterfaceStatus = Objects.requireNonNull(oppositeInterfaceStatus);
+            if (oppositeInterfaceStatus == null) {
+              throw new MissingRequiredPropertyException("GetRouterInterfacesInterface", "oppositeInterfaceStatus");
+            }
+            this.oppositeInterfaceStatus = oppositeInterfaceStatus;
             return this;
         }
         @CustomType.Setter
         public Builder oppositeRegionId(String oppositeRegionId) {
-            this.oppositeRegionId = Objects.requireNonNull(oppositeRegionId);
+            if (oppositeRegionId == null) {
+              throw new MissingRequiredPropertyException("GetRouterInterfacesInterface", "oppositeRegionId");
+            }
+            this.oppositeRegionId = oppositeRegionId;
             return this;
         }
         @CustomType.Setter
         public Builder oppositeRouterId(String oppositeRouterId) {
-            this.oppositeRouterId = Objects.requireNonNull(oppositeRouterId);
+            if (oppositeRouterId == null) {
+              throw new MissingRequiredPropertyException("GetRouterInterfacesInterface", "oppositeRouterId");
+            }
+            this.oppositeRouterId = oppositeRouterId;
             return this;
         }
         @CustomType.Setter
         public Builder oppositeRouterType(String oppositeRouterType) {
-            this.oppositeRouterType = Objects.requireNonNull(oppositeRouterType);
+            if (oppositeRouterType == null) {
+              throw new MissingRequiredPropertyException("GetRouterInterfacesInterface", "oppositeRouterType");
+            }
+            this.oppositeRouterType = oppositeRouterType;
             return this;
         }
         @CustomType.Setter
         public Builder oppositeVpcInstanceId(String oppositeVpcInstanceId) {
-            this.oppositeVpcInstanceId = Objects.requireNonNull(oppositeVpcInstanceId);
+            if (oppositeVpcInstanceId == null) {
+              throw new MissingRequiredPropertyException("GetRouterInterfacesInterface", "oppositeVpcInstanceId");
+            }
+            this.oppositeVpcInstanceId = oppositeVpcInstanceId;
             return this;
         }
         @CustomType.Setter
         public Builder paymentType(String paymentType) {
-            this.paymentType = Objects.requireNonNull(paymentType);
+            if (paymentType == null) {
+              throw new MissingRequiredPropertyException("GetRouterInterfacesInterface", "paymentType");
+            }
+            this.paymentType = paymentType;
             return this;
         }
         @CustomType.Setter
         public Builder reservationActiveTime(String reservationActiveTime) {
-            this.reservationActiveTime = Objects.requireNonNull(reservationActiveTime);
+            if (reservationActiveTime == null) {
+              throw new MissingRequiredPropertyException("GetRouterInterfacesInterface", "reservationActiveTime");
+            }
+            this.reservationActiveTime = reservationActiveTime;
             return this;
         }
         @CustomType.Setter
         public Builder reservationBandwidth(String reservationBandwidth) {
-            this.reservationBandwidth = Objects.requireNonNull(reservationBandwidth);
+            if (reservationBandwidth == null) {
+              throw new MissingRequiredPropertyException("GetRouterInterfacesInterface", "reservationBandwidth");
+            }
+            this.reservationBandwidth = reservationBandwidth;
             return this;
         }
         @CustomType.Setter
         public Builder reservationInternetChargeType(String reservationInternetChargeType) {
-            this.reservationInternetChargeType = Objects.requireNonNull(reservationInternetChargeType);
+            if (reservationInternetChargeType == null) {
+              throw new MissingRequiredPropertyException("GetRouterInterfacesInterface", "reservationInternetChargeType");
+            }
+            this.reservationInternetChargeType = reservationInternetChargeType;
             return this;
         }
         @CustomType.Setter
         public Builder reservationOrderType(String reservationOrderType) {
-            this.reservationOrderType = Objects.requireNonNull(reservationOrderType);
+            if (reservationOrderType == null) {
+              throw new MissingRequiredPropertyException("GetRouterInterfacesInterface", "reservationOrderType");
+            }
+            this.reservationOrderType = reservationOrderType;
             return this;
         }
         @CustomType.Setter
         public Builder role(String role) {
-            this.role = Objects.requireNonNull(role);
+            if (role == null) {
+              throw new MissingRequiredPropertyException("GetRouterInterfacesInterface", "role");
+            }
+            this.role = role;
             return this;
         }
         @CustomType.Setter
         public Builder routerId(String routerId) {
-            this.routerId = Objects.requireNonNull(routerId);
+            if (routerId == null) {
+              throw new MissingRequiredPropertyException("GetRouterInterfacesInterface", "routerId");
+            }
+            this.routerId = routerId;
             return this;
         }
         @CustomType.Setter
         public Builder routerInterfaceId(String routerInterfaceId) {
-            this.routerInterfaceId = Objects.requireNonNull(routerInterfaceId);
+            if (routerInterfaceId == null) {
+              throw new MissingRequiredPropertyException("GetRouterInterfacesInterface", "routerInterfaceId");
+            }
+            this.routerInterfaceId = routerInterfaceId;
             return this;
         }
         @CustomType.Setter
         public Builder routerInterfaceName(String routerInterfaceName) {
-            this.routerInterfaceName = Objects.requireNonNull(routerInterfaceName);
+            if (routerInterfaceName == null) {
+              throw new MissingRequiredPropertyException("GetRouterInterfacesInterface", "routerInterfaceName");
+            }
+            this.routerInterfaceName = routerInterfaceName;
             return this;
         }
         @CustomType.Setter
         public Builder routerType(String routerType) {
-            this.routerType = Objects.requireNonNull(routerType);
+            if (routerType == null) {
+              throw new MissingRequiredPropertyException("GetRouterInterfacesInterface", "routerType");
+            }
+            this.routerType = routerType;
             return this;
         }
         @CustomType.Setter
         public Builder spec(String spec) {
-            this.spec = Objects.requireNonNull(spec);
+            if (spec == null) {
+              throw new MissingRequiredPropertyException("GetRouterInterfacesInterface", "spec");
+            }
+            this.spec = spec;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetRouterInterfacesInterface", "status");
+            }
+            this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder vpcInstanceId(String vpcInstanceId) {
-            this.vpcInstanceId = Objects.requireNonNull(vpcInstanceId);
+            if (vpcInstanceId == null) {
+              throw new MissingRequiredPropertyException("GetRouterInterfacesInterface", "vpcInstanceId");
+            }
+            this.vpcInstanceId = vpcInstanceId;
             return this;
         }
         public GetRouterInterfacesInterface build() {

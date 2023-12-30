@@ -48,16 +48,19 @@ public final class OpenApiImageCacheImageRegistryCredential {
 
         @CustomType.Setter
         public Builder password(@Nullable String password) {
+
             this.password = password;
             return this;
         }
         @CustomType.Setter
         public Builder server(@Nullable String server) {
+
             this.server = server;
             return this;
         }
         @CustomType.Setter
         public Builder userName(@Nullable String userName) {
+
             this.userName = userName;
             return this;
         }

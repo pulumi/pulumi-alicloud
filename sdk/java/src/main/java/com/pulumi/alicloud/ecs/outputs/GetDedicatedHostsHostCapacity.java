@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.ecs.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Double;
 import java.lang.Integer;
 import java.lang.String;
@@ -156,47 +157,74 @@ public final class GetDedicatedHostsHostCapacity {
 
         @CustomType.Setter
         public Builder availableLocalStorage(Integer availableLocalStorage) {
-            this.availableLocalStorage = Objects.requireNonNull(availableLocalStorage);
+            if (availableLocalStorage == null) {
+              throw new MissingRequiredPropertyException("GetDedicatedHostsHostCapacity", "availableLocalStorage");
+            }
+            this.availableLocalStorage = availableLocalStorage;
             return this;
         }
         @CustomType.Setter
         public Builder availableMemory(Double availableMemory) {
-            this.availableMemory = Objects.requireNonNull(availableMemory);
+            if (availableMemory == null) {
+              throw new MissingRequiredPropertyException("GetDedicatedHostsHostCapacity", "availableMemory");
+            }
+            this.availableMemory = availableMemory;
             return this;
         }
         @CustomType.Setter
         public Builder availableVcpus(Integer availableVcpus) {
-            this.availableVcpus = Objects.requireNonNull(availableVcpus);
+            if (availableVcpus == null) {
+              throw new MissingRequiredPropertyException("GetDedicatedHostsHostCapacity", "availableVcpus");
+            }
+            this.availableVcpus = availableVcpus;
             return this;
         }
         @CustomType.Setter
         public Builder availableVgpus(Integer availableVgpus) {
-            this.availableVgpus = Objects.requireNonNull(availableVgpus);
+            if (availableVgpus == null) {
+              throw new MissingRequiredPropertyException("GetDedicatedHostsHostCapacity", "availableVgpus");
+            }
+            this.availableVgpus = availableVgpus;
             return this;
         }
         @CustomType.Setter
         public Builder localStorageCategory(String localStorageCategory) {
-            this.localStorageCategory = Objects.requireNonNull(localStorageCategory);
+            if (localStorageCategory == null) {
+              throw new MissingRequiredPropertyException("GetDedicatedHostsHostCapacity", "localStorageCategory");
+            }
+            this.localStorageCategory = localStorageCategory;
             return this;
         }
         @CustomType.Setter
         public Builder totalLocalStorage(Integer totalLocalStorage) {
-            this.totalLocalStorage = Objects.requireNonNull(totalLocalStorage);
+            if (totalLocalStorage == null) {
+              throw new MissingRequiredPropertyException("GetDedicatedHostsHostCapacity", "totalLocalStorage");
+            }
+            this.totalLocalStorage = totalLocalStorage;
             return this;
         }
         @CustomType.Setter
         public Builder totalMemory(Double totalMemory) {
-            this.totalMemory = Objects.requireNonNull(totalMemory);
+            if (totalMemory == null) {
+              throw new MissingRequiredPropertyException("GetDedicatedHostsHostCapacity", "totalMemory");
+            }
+            this.totalMemory = totalMemory;
             return this;
         }
         @CustomType.Setter
         public Builder totalVcpus(Integer totalVcpus) {
-            this.totalVcpus = Objects.requireNonNull(totalVcpus);
+            if (totalVcpus == null) {
+              throw new MissingRequiredPropertyException("GetDedicatedHostsHostCapacity", "totalVcpus");
+            }
+            this.totalVcpus = totalVcpus;
             return this;
         }
         @CustomType.Setter
         public Builder totalVgpus(Integer totalVgpus) {
-            this.totalVgpus = Objects.requireNonNull(totalVgpus);
+            if (totalVgpus == null) {
+              throw new MissingRequiredPropertyException("GetDedicatedHostsHostCapacity", "totalVgpus");
+            }
+            this.totalVgpus = totalVgpus;
             return this;
         }
         public GetDedicatedHostsHostCapacity build() {

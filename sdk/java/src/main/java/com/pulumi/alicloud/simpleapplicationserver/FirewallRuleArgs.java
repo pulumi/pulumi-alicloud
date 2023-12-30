@@ -5,6 +5,7 @@ package com.pulumi.alicloud.simpleapplicationserver;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -187,9 +188,15 @@ public final class FirewallRuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public FirewallRuleArgs build() {
-            $.instanceId = Objects.requireNonNull($.instanceId, "expected parameter 'instanceId' to be non-null");
-            $.port = Objects.requireNonNull($.port, "expected parameter 'port' to be non-null");
-            $.ruleProtocol = Objects.requireNonNull($.ruleProtocol, "expected parameter 'ruleProtocol' to be non-null");
+            if ($.instanceId == null) {
+                throw new MissingRequiredPropertyException("FirewallRuleArgs", "instanceId");
+            }
+            if ($.port == null) {
+                throw new MissingRequiredPropertyException("FirewallRuleArgs", "port");
+            }
+            if ($.ruleProtocol == null) {
+                throw new MissingRequiredPropertyException("FirewallRuleArgs", "ruleProtocol");
+            }
             return $;
         }
     }

@@ -5,6 +5,7 @@ package com.pulumi.alicloud.cdn.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -95,7 +96,9 @@ public final class DomainReferConfigArgs extends com.pulumi.resources.ResourceAr
         }
 
         public DomainReferConfigArgs build() {
-            $.referLists = Objects.requireNonNull($.referLists, "expected parameter 'referLists' to be non-null");
+            if ($.referLists == null) {
+                throw new MissingRequiredPropertyException("DomainReferConfigArgs", "referLists");
+            }
             return $;
         }
     }

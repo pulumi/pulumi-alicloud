@@ -5,6 +5,7 @@ package com.pulumi.alicloud.lindorm;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.Object;
@@ -1595,9 +1596,15 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public InstanceArgs build() {
-            $.diskCategory = Objects.requireNonNull($.diskCategory, "expected parameter 'diskCategory' to be non-null");
-            $.paymentType = Objects.requireNonNull($.paymentType, "expected parameter 'paymentType' to be non-null");
-            $.vswitchId = Objects.requireNonNull($.vswitchId, "expected parameter 'vswitchId' to be non-null");
+            if ($.diskCategory == null) {
+                throw new MissingRequiredPropertyException("InstanceArgs", "diskCategory");
+            }
+            if ($.paymentType == null) {
+                throw new MissingRequiredPropertyException("InstanceArgs", "paymentType");
+            }
+            if ($.vswitchId == null) {
+                throw new MissingRequiredPropertyException("InstanceArgs", "vswitchId");
+            }
             return $;
         }
     }

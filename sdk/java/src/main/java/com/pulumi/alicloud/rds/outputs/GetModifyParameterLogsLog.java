@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.rds.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -102,27 +103,42 @@ public final class GetModifyParameterLogsLog {
 
         @CustomType.Setter
         public Builder modifyTime(String modifyTime) {
-            this.modifyTime = Objects.requireNonNull(modifyTime);
+            if (modifyTime == null) {
+              throw new MissingRequiredPropertyException("GetModifyParameterLogsLog", "modifyTime");
+            }
+            this.modifyTime = modifyTime;
             return this;
         }
         @CustomType.Setter
         public Builder newParameterValue(String newParameterValue) {
-            this.newParameterValue = Objects.requireNonNull(newParameterValue);
+            if (newParameterValue == null) {
+              throw new MissingRequiredPropertyException("GetModifyParameterLogsLog", "newParameterValue");
+            }
+            this.newParameterValue = newParameterValue;
             return this;
         }
         @CustomType.Setter
         public Builder oldParameterValue(String oldParameterValue) {
-            this.oldParameterValue = Objects.requireNonNull(oldParameterValue);
+            if (oldParameterValue == null) {
+              throw new MissingRequiredPropertyException("GetModifyParameterLogsLog", "oldParameterValue");
+            }
+            this.oldParameterValue = oldParameterValue;
             return this;
         }
         @CustomType.Setter
         public Builder parameterName(String parameterName) {
-            this.parameterName = Objects.requireNonNull(parameterName);
+            if (parameterName == null) {
+              throw new MissingRequiredPropertyException("GetModifyParameterLogsLog", "parameterName");
+            }
+            this.parameterName = parameterName;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetModifyParameterLogsLog", "status");
+            }
+            this.status = status;
             return this;
         }
         public GetModifyParameterLogsLog build() {

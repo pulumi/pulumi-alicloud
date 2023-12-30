@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.cen.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Object;
 import java.lang.String;
 import java.util.List;
@@ -171,7 +172,10 @@ public final class GetInstancesInstance {
 
         @CustomType.Setter
         public Builder cenBandwidthPackageIds(List<String> cenBandwidthPackageIds) {
-            this.cenBandwidthPackageIds = Objects.requireNonNull(cenBandwidthPackageIds);
+            if (cenBandwidthPackageIds == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstance", "cenBandwidthPackageIds");
+            }
+            this.cenBandwidthPackageIds = cenBandwidthPackageIds;
             return this;
         }
         public Builder cenBandwidthPackageIds(String... cenBandwidthPackageIds) {
@@ -179,47 +183,74 @@ public final class GetInstancesInstance {
         }
         @CustomType.Setter
         public Builder cenId(String cenId) {
-            this.cenId = Objects.requireNonNull(cenId);
+            if (cenId == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstance", "cenId");
+            }
+            this.cenId = cenId;
             return this;
         }
         @CustomType.Setter
         public Builder cenInstanceName(String cenInstanceName) {
-            this.cenInstanceName = Objects.requireNonNull(cenInstanceName);
+            if (cenInstanceName == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstance", "cenInstanceName");
+            }
+            this.cenInstanceName = cenInstanceName;
             return this;
         }
         @CustomType.Setter
         public Builder createTime(String createTime) {
-            this.createTime = Objects.requireNonNull(createTime);
+            if (createTime == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstance", "createTime");
+            }
+            this.createTime = createTime;
             return this;
         }
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstance", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstance", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstance", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder protectionLevel(String protectionLevel) {
-            this.protectionLevel = Objects.requireNonNull(protectionLevel);
+            if (protectionLevel == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstance", "protectionLevel");
+            }
+            this.protectionLevel = protectionLevel;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstance", "status");
+            }
+            this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder tags(Map<String,Object> tags) {
-            this.tags = Objects.requireNonNull(tags);
+            if (tags == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstance", "tags");
+            }
+            this.tags = tags;
             return this;
         }
         public GetInstancesInstance build() {

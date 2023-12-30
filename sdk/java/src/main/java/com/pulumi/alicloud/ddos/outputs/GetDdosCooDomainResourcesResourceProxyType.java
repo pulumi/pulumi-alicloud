@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.ddos.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -58,7 +59,10 @@ public final class GetDdosCooDomainResourcesResourceProxyType {
 
         @CustomType.Setter
         public Builder proxyPorts(List<Integer> proxyPorts) {
-            this.proxyPorts = Objects.requireNonNull(proxyPorts);
+            if (proxyPorts == null) {
+              throw new MissingRequiredPropertyException("GetDdosCooDomainResourcesResourceProxyType", "proxyPorts");
+            }
+            this.proxyPorts = proxyPorts;
             return this;
         }
         public Builder proxyPorts(Integer... proxyPorts) {
@@ -66,7 +70,10 @@ public final class GetDdosCooDomainResourcesResourceProxyType {
         }
         @CustomType.Setter
         public Builder proxyType(String proxyType) {
-            this.proxyType = Objects.requireNonNull(proxyType);
+            if (proxyType == null) {
+              throw new MissingRequiredPropertyException("GetDdosCooDomainResourcesResourceProxyType", "proxyType");
+            }
+            this.proxyType = proxyType;
             return this;
         }
         public GetDdosCooDomainResourcesResourceProxyType build() {

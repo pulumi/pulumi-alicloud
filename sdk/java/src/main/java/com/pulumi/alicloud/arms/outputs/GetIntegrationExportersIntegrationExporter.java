@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.arms.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -155,47 +156,74 @@ public final class GetIntegrationExportersIntegrationExporter {
 
         @CustomType.Setter
         public Builder clusterId(String clusterId) {
-            this.clusterId = Objects.requireNonNull(clusterId);
+            if (clusterId == null) {
+              throw new MissingRequiredPropertyException("GetIntegrationExportersIntegrationExporter", "clusterId");
+            }
+            this.clusterId = clusterId;
             return this;
         }
         @CustomType.Setter
         public Builder exporterType(String exporterType) {
-            this.exporterType = Objects.requireNonNull(exporterType);
+            if (exporterType == null) {
+              throw new MissingRequiredPropertyException("GetIntegrationExportersIntegrationExporter", "exporterType");
+            }
+            this.exporterType = exporterType;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetIntegrationExportersIntegrationExporter", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder instanceId(Integer instanceId) {
-            this.instanceId = Objects.requireNonNull(instanceId);
+            if (instanceId == null) {
+              throw new MissingRequiredPropertyException("GetIntegrationExportersIntegrationExporter", "instanceId");
+            }
+            this.instanceId = instanceId;
             return this;
         }
         @CustomType.Setter
         public Builder instanceName(String instanceName) {
-            this.instanceName = Objects.requireNonNull(instanceName);
+            if (instanceName == null) {
+              throw new MissingRequiredPropertyException("GetIntegrationExportersIntegrationExporter", "instanceName");
+            }
+            this.instanceName = instanceName;
             return this;
         }
         @CustomType.Setter
         public Builder integrationType(String integrationType) {
-            this.integrationType = Objects.requireNonNull(integrationType);
+            if (integrationType == null) {
+              throw new MissingRequiredPropertyException("GetIntegrationExportersIntegrationExporter", "integrationType");
+            }
+            this.integrationType = integrationType;
             return this;
         }
         @CustomType.Setter
         public Builder param(String param) {
-            this.param = Objects.requireNonNull(param);
+            if (param == null) {
+              throw new MissingRequiredPropertyException("GetIntegrationExportersIntegrationExporter", "param");
+            }
+            this.param = param;
             return this;
         }
         @CustomType.Setter
         public Builder target(String target) {
-            this.target = Objects.requireNonNull(target);
+            if (target == null) {
+              throw new MissingRequiredPropertyException("GetIntegrationExportersIntegrationExporter", "target");
+            }
+            this.target = target;
             return this;
         }
         @CustomType.Setter
         public Builder version(String version) {
-            this.version = Objects.requireNonNull(version);
+            if (version == null) {
+              throw new MissingRequiredPropertyException("GetIntegrationExportersIntegrationExporter", "version");
+            }
+            this.version = version;
             return this;
         }
         public GetIntegrationExportersIntegrationExporter build() {

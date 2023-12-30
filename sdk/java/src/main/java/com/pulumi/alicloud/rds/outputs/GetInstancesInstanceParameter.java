@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.rds.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -112,32 +113,50 @@ public final class GetInstancesInstanceParameter {
 
         @CustomType.Setter
         public Builder checkingCode(String checkingCode) {
-            this.checkingCode = Objects.requireNonNull(checkingCode);
+            if (checkingCode == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstanceParameter", "checkingCode");
+            }
+            this.checkingCode = checkingCode;
             return this;
         }
         @CustomType.Setter
         public Builder forceModify(String forceModify) {
-            this.forceModify = Objects.requireNonNull(forceModify);
+            if (forceModify == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstanceParameter", "forceModify");
+            }
+            this.forceModify = forceModify;
             return this;
         }
         @CustomType.Setter
         public Builder forceRestart(String forceRestart) {
-            this.forceRestart = Objects.requireNonNull(forceRestart);
+            if (forceRestart == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstanceParameter", "forceRestart");
+            }
+            this.forceRestart = forceRestart;
             return this;
         }
         @CustomType.Setter
         public Builder parameterDescription(String parameterDescription) {
-            this.parameterDescription = Objects.requireNonNull(parameterDescription);
+            if (parameterDescription == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstanceParameter", "parameterDescription");
+            }
+            this.parameterDescription = parameterDescription;
             return this;
         }
         @CustomType.Setter
         public Builder parameterName(String parameterName) {
-            this.parameterName = Objects.requireNonNull(parameterName);
+            if (parameterName == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstanceParameter", "parameterName");
+            }
+            this.parameterName = parameterName;
             return this;
         }
         @CustomType.Setter
         public Builder parameterValue(String parameterValue) {
-            this.parameterValue = Objects.requireNonNull(parameterValue);
+            if (parameterValue == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstanceParameter", "parameterValue");
+            }
+            this.parameterValue = parameterValue;
             return this;
         }
         public GetInstancesInstanceParameter build() {

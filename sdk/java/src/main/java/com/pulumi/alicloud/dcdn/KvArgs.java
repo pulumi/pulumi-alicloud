@@ -5,6 +5,7 @@ package com.pulumi.alicloud.dcdn;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -148,9 +149,15 @@ public final class KvArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public KvArgs build() {
-            $.key = Objects.requireNonNull($.key, "expected parameter 'key' to be non-null");
-            $.namespace = Objects.requireNonNull($.namespace, "expected parameter 'namespace' to be non-null");
-            $.value = Objects.requireNonNull($.value, "expected parameter 'value' to be non-null");
+            if ($.key == null) {
+                throw new MissingRequiredPropertyException("KvArgs", "key");
+            }
+            if ($.namespace == null) {
+                throw new MissingRequiredPropertyException("KvArgs", "namespace");
+            }
+            if ($.value == null) {
+                throw new MissingRequiredPropertyException("KvArgs", "value");
+            }
             return $;
         }
     }

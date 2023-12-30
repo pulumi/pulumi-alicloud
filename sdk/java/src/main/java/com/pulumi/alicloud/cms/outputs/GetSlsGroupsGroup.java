@@ -5,6 +5,7 @@ package com.pulumi.alicloud.cms.outputs;
 
 import com.pulumi.alicloud.cms.outputs.GetSlsGroupsGroupSlsGroupConfig;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -100,17 +101,26 @@ public final class GetSlsGroupsGroup {
 
         @CustomType.Setter
         public Builder createTime(String createTime) {
-            this.createTime = Objects.requireNonNull(createTime);
+            if (createTime == null) {
+              throw new MissingRequiredPropertyException("GetSlsGroupsGroup", "createTime");
+            }
+            this.createTime = createTime;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetSlsGroupsGroup", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder slsGroupConfigs(List<GetSlsGroupsGroupSlsGroupConfig> slsGroupConfigs) {
-            this.slsGroupConfigs = Objects.requireNonNull(slsGroupConfigs);
+            if (slsGroupConfigs == null) {
+              throw new MissingRequiredPropertyException("GetSlsGroupsGroup", "slsGroupConfigs");
+            }
+            this.slsGroupConfigs = slsGroupConfigs;
             return this;
         }
         public Builder slsGroupConfigs(GetSlsGroupsGroupSlsGroupConfig... slsGroupConfigs) {
@@ -118,12 +128,18 @@ public final class GetSlsGroupsGroup {
         }
         @CustomType.Setter
         public Builder slsGroupDescription(String slsGroupDescription) {
-            this.slsGroupDescription = Objects.requireNonNull(slsGroupDescription);
+            if (slsGroupDescription == null) {
+              throw new MissingRequiredPropertyException("GetSlsGroupsGroup", "slsGroupDescription");
+            }
+            this.slsGroupDescription = slsGroupDescription;
             return this;
         }
         @CustomType.Setter
         public Builder slsGroupName(String slsGroupName) {
-            this.slsGroupName = Objects.requireNonNull(slsGroupName);
+            if (slsGroupName == null) {
+              throw new MissingRequiredPropertyException("GetSlsGroupsGroup", "slsGroupName");
+            }
+            this.slsGroupName = slsGroupName;
             return this;
         }
         public GetSlsGroupsGroup build() {

@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.eipanycast.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -84,22 +85,34 @@ public final class GetAnycastEipAddressesAddressAnycastEipBindInfoList {
 
         @CustomType.Setter
         public Builder bindInstanceId(String bindInstanceId) {
-            this.bindInstanceId = Objects.requireNonNull(bindInstanceId);
+            if (bindInstanceId == null) {
+              throw new MissingRequiredPropertyException("GetAnycastEipAddressesAddressAnycastEipBindInfoList", "bindInstanceId");
+            }
+            this.bindInstanceId = bindInstanceId;
             return this;
         }
         @CustomType.Setter
         public Builder bindInstanceRegionId(String bindInstanceRegionId) {
-            this.bindInstanceRegionId = Objects.requireNonNull(bindInstanceRegionId);
+            if (bindInstanceRegionId == null) {
+              throw new MissingRequiredPropertyException("GetAnycastEipAddressesAddressAnycastEipBindInfoList", "bindInstanceRegionId");
+            }
+            this.bindInstanceRegionId = bindInstanceRegionId;
             return this;
         }
         @CustomType.Setter
         public Builder bindInstanceType(String bindInstanceType) {
-            this.bindInstanceType = Objects.requireNonNull(bindInstanceType);
+            if (bindInstanceType == null) {
+              throw new MissingRequiredPropertyException("GetAnycastEipAddressesAddressAnycastEipBindInfoList", "bindInstanceType");
+            }
+            this.bindInstanceType = bindInstanceType;
             return this;
         }
         @CustomType.Setter
         public Builder bindTime(String bindTime) {
-            this.bindTime = Objects.requireNonNull(bindTime);
+            if (bindTime == null) {
+              throw new MissingRequiredPropertyException("GetAnycastEipAddressesAddressAnycastEipBindInfoList", "bindTime");
+            }
+            this.bindTime = bindTime;
             return this;
         }
         public GetAnycastEipAddressesAddressAnycastEipBindInfoList build() {

@@ -5,6 +5,7 @@ package com.pulumi.alicloud.sae.outputs;
 
 import com.pulumi.alicloud.sae.outputs.GetConfigMapsMap;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -82,12 +83,18 @@ public final class GetConfigMapsResult {
 
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetConfigMapsResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder ids(List<String> ids) {
-            this.ids = Objects.requireNonNull(ids);
+            if (ids == null) {
+              throw new MissingRequiredPropertyException("GetConfigMapsResult", "ids");
+            }
+            this.ids = ids;
             return this;
         }
         public Builder ids(String... ids) {
@@ -95,7 +102,10 @@ public final class GetConfigMapsResult {
         }
         @CustomType.Setter
         public Builder maps(List<GetConfigMapsMap> maps) {
-            this.maps = Objects.requireNonNull(maps);
+            if (maps == null) {
+              throw new MissingRequiredPropertyException("GetConfigMapsResult", "maps");
+            }
+            this.maps = maps;
             return this;
         }
         public Builder maps(GetConfigMapsMap... maps) {
@@ -103,12 +113,16 @@ public final class GetConfigMapsResult {
         }
         @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
+
             this.nameRegex = nameRegex;
             return this;
         }
         @CustomType.Setter
         public Builder names(List<String> names) {
-            this.names = Objects.requireNonNull(names);
+            if (names == null) {
+              throw new MissingRequiredPropertyException("GetConfigMapsResult", "names");
+            }
+            this.names = names;
             return this;
         }
         public Builder names(String... names) {
@@ -116,11 +130,15 @@ public final class GetConfigMapsResult {
         }
         @CustomType.Setter
         public Builder namespaceId(String namespaceId) {
-            this.namespaceId = Objects.requireNonNull(namespaceId);
+            if (namespaceId == null) {
+              throw new MissingRequiredPropertyException("GetConfigMapsResult", "namespaceId");
+            }
+            this.namespaceId = namespaceId;
             return this;
         }
         @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
+
             this.outputFile = outputFile;
             return this;
         }

@@ -212,6 +212,7 @@ public final class EciScalingConfigurationVolume {
 
         @CustomType.Setter
         public Builder configFileVolumeConfigFileToPaths(@Nullable List<EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPath> configFileVolumeConfigFileToPaths) {
+
             this.configFileVolumeConfigFileToPaths = configFileVolumeConfigFileToPaths;
             return this;
         }
@@ -220,56 +221,67 @@ public final class EciScalingConfigurationVolume {
         }
         @CustomType.Setter
         public Builder diskVolumeDiskId(@Nullable String diskVolumeDiskId) {
+
             this.diskVolumeDiskId = diskVolumeDiskId;
             return this;
         }
         @CustomType.Setter
         public Builder diskVolumeDiskSize(@Nullable Integer diskVolumeDiskSize) {
+
             this.diskVolumeDiskSize = diskVolumeDiskSize;
             return this;
         }
         @CustomType.Setter
         public Builder diskVolumeFsType(@Nullable String diskVolumeFsType) {
+
             this.diskVolumeFsType = diskVolumeFsType;
             return this;
         }
         @CustomType.Setter
         public Builder flexVolumeDriver(@Nullable String flexVolumeDriver) {
+
             this.flexVolumeDriver = flexVolumeDriver;
             return this;
         }
         @CustomType.Setter
         public Builder flexVolumeFsType(@Nullable String flexVolumeFsType) {
+
             this.flexVolumeFsType = flexVolumeFsType;
             return this;
         }
         @CustomType.Setter
         public Builder flexVolumeOptions(@Nullable String flexVolumeOptions) {
+
             this.flexVolumeOptions = flexVolumeOptions;
             return this;
         }
         @CustomType.Setter
         public Builder name(@Nullable String name) {
+
             this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder nfsVolumePath(@Nullable String nfsVolumePath) {
+
             this.nfsVolumePath = nfsVolumePath;
             return this;
         }
         @CustomType.Setter
         public Builder nfsVolumeReadOnly(@Nullable Boolean nfsVolumeReadOnly) {
+
             this.nfsVolumeReadOnly = nfsVolumeReadOnly;
             return this;
         }
         @CustomType.Setter
         public Builder nfsVolumeServer(@Nullable String nfsVolumeServer) {
+
             this.nfsVolumeServer = nfsVolumeServer;
             return this;
         }
         @CustomType.Setter
         public Builder type(@Nullable String type) {
+
             this.type = type;
             return this;
         }

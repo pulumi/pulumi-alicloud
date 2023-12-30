@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.ga.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -92,7 +93,9 @@ public final class GetEndpointGroupIpAddressCidrBlocksPlainArgs extends com.pulu
         }
 
         public GetEndpointGroupIpAddressCidrBlocksPlainArgs build() {
-            $.endpointGroupRegion = Objects.requireNonNull($.endpointGroupRegion, "expected parameter 'endpointGroupRegion' to be non-null");
+            if ($.endpointGroupRegion == null) {
+                throw new MissingRequiredPropertyException("GetEndpointGroupIpAddressCidrBlocksPlainArgs", "endpointGroupRegion");
+            }
             return $;
         }
     }

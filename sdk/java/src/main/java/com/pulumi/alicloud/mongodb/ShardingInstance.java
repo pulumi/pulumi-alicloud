@@ -474,14 +474,14 @@ public class ShardingInstance extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="vswitchId", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> vswitchId;
+    private Output<String> vswitchId;
 
     /**
      * @return The virtual switch ID to launch DB instances in one VPC.
      * 
      */
-    public Output<Optional<String>> vswitchId() {
-        return Codegen.optional(this.vswitchId);
+    public Output<String> vswitchId() {
+        return this.vswitchId;
     }
     /**
      * The Zone to launch the DB instance. MongoDB sharding instance does not support multiple-zone.

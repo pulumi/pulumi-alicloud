@@ -5,6 +5,7 @@ package com.pulumi.alicloud.cen.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -252,7 +253,9 @@ public final class GetTransitRouterVpnAttachmentsArgs extends com.pulumi.resourc
         }
 
         public GetTransitRouterVpnAttachmentsArgs build() {
-            $.cenId = Objects.requireNonNull($.cenId, "expected parameter 'cenId' to be non-null");
+            if ($.cenId == null) {
+                throw new MissingRequiredPropertyException("GetTransitRouterVpnAttachmentsArgs", "cenId");
+            }
             return $;
         }
     }

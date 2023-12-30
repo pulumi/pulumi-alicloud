@@ -5,6 +5,7 @@ package com.pulumi.alicloud.cfg.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -273,7 +274,9 @@ public final class GetAggregateCompliancePacksArgs extends com.pulumi.resources.
         }
 
         public GetAggregateCompliancePacksArgs build() {
-            $.aggregatorId = Objects.requireNonNull($.aggregatorId, "expected parameter 'aggregatorId' to be non-null");
+            if ($.aggregatorId == null) {
+                throw new MissingRequiredPropertyException("GetAggregateCompliancePacksArgs", "aggregatorId");
+            }
             return $;
         }
     }

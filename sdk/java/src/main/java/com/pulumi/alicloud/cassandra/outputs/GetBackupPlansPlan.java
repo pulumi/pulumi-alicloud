@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.cassandra.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -142,42 +143,66 @@ public final class GetBackupPlansPlan {
 
         @CustomType.Setter
         public Builder active(Boolean active) {
-            this.active = Objects.requireNonNull(active);
+            if (active == null) {
+              throw new MissingRequiredPropertyException("GetBackupPlansPlan", "active");
+            }
+            this.active = active;
             return this;
         }
         @CustomType.Setter
         public Builder backupPeriod(String backupPeriod) {
-            this.backupPeriod = Objects.requireNonNull(backupPeriod);
+            if (backupPeriod == null) {
+              throw new MissingRequiredPropertyException("GetBackupPlansPlan", "backupPeriod");
+            }
+            this.backupPeriod = backupPeriod;
             return this;
         }
         @CustomType.Setter
         public Builder backupTime(String backupTime) {
-            this.backupTime = Objects.requireNonNull(backupTime);
+            if (backupTime == null) {
+              throw new MissingRequiredPropertyException("GetBackupPlansPlan", "backupTime");
+            }
+            this.backupTime = backupTime;
             return this;
         }
         @CustomType.Setter
         public Builder clusterId(String clusterId) {
-            this.clusterId = Objects.requireNonNull(clusterId);
+            if (clusterId == null) {
+              throw new MissingRequiredPropertyException("GetBackupPlansPlan", "clusterId");
+            }
+            this.clusterId = clusterId;
             return this;
         }
         @CustomType.Setter
         public Builder createTime(String createTime) {
-            this.createTime = Objects.requireNonNull(createTime);
+            if (createTime == null) {
+              throw new MissingRequiredPropertyException("GetBackupPlansPlan", "createTime");
+            }
+            this.createTime = createTime;
             return this;
         }
         @CustomType.Setter
         public Builder dataCenterId(String dataCenterId) {
-            this.dataCenterId = Objects.requireNonNull(dataCenterId);
+            if (dataCenterId == null) {
+              throw new MissingRequiredPropertyException("GetBackupPlansPlan", "dataCenterId");
+            }
+            this.dataCenterId = dataCenterId;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetBackupPlansPlan", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder retentionPeriod(Integer retentionPeriod) {
-            this.retentionPeriod = Objects.requireNonNull(retentionPeriod);
+            if (retentionPeriod == null) {
+              throw new MissingRequiredPropertyException("GetBackupPlansPlan", "retentionPeriod");
+            }
+            this.retentionPeriod = retentionPeriod;
             return this;
         }
         public GetBackupPlansPlan build() {

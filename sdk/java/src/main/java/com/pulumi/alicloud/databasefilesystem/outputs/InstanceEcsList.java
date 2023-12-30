@@ -48,6 +48,7 @@ public final class InstanceEcsList {
 
         @CustomType.Setter
         public Builder ecsId(@Nullable String ecsId) {
+
             this.ecsId = ecsId;
             return this;
         }

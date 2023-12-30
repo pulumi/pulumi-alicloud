@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.sddp.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -183,57 +184,90 @@ public final class GetDataLimitsLimit {
 
         @CustomType.Setter
         public Builder auditStatus(Integer auditStatus) {
-            this.auditStatus = Objects.requireNonNull(auditStatus);
+            if (auditStatus == null) {
+              throw new MissingRequiredPropertyException("GetDataLimitsLimit", "auditStatus");
+            }
+            this.auditStatus = auditStatus;
             return this;
         }
         @CustomType.Setter
         public Builder checkStatus(Integer checkStatus) {
-            this.checkStatus = Objects.requireNonNull(checkStatus);
+            if (checkStatus == null) {
+              throw new MissingRequiredPropertyException("GetDataLimitsLimit", "checkStatus");
+            }
+            this.checkStatus = checkStatus;
             return this;
         }
         @CustomType.Setter
         public Builder dataLimitId(String dataLimitId) {
-            this.dataLimitId = Objects.requireNonNull(dataLimitId);
+            if (dataLimitId == null) {
+              throw new MissingRequiredPropertyException("GetDataLimitsLimit", "dataLimitId");
+            }
+            this.dataLimitId = dataLimitId;
             return this;
         }
         @CustomType.Setter
         public Builder engineType(String engineType) {
-            this.engineType = Objects.requireNonNull(engineType);
+            if (engineType == null) {
+              throw new MissingRequiredPropertyException("GetDataLimitsLimit", "engineType");
+            }
+            this.engineType = engineType;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetDataLimitsLimit", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder localName(String localName) {
-            this.localName = Objects.requireNonNull(localName);
+            if (localName == null) {
+              throw new MissingRequiredPropertyException("GetDataLimitsLimit", "localName");
+            }
+            this.localName = localName;
             return this;
         }
         @CustomType.Setter
         public Builder logStoreDay(Integer logStoreDay) {
-            this.logStoreDay = Objects.requireNonNull(logStoreDay);
+            if (logStoreDay == null) {
+              throw new MissingRequiredPropertyException("GetDataLimitsLimit", "logStoreDay");
+            }
+            this.logStoreDay = logStoreDay;
             return this;
         }
         @CustomType.Setter
         public Builder parentId(String parentId) {
-            this.parentId = Objects.requireNonNull(parentId);
+            if (parentId == null) {
+              throw new MissingRequiredPropertyException("GetDataLimitsLimit", "parentId");
+            }
+            this.parentId = parentId;
             return this;
         }
         @CustomType.Setter
         public Builder port(Integer port) {
-            this.port = Objects.requireNonNull(port);
+            if (port == null) {
+              throw new MissingRequiredPropertyException("GetDataLimitsLimit", "port");
+            }
+            this.port = port;
             return this;
         }
         @CustomType.Setter
         public Builder resourceType(String resourceType) {
-            this.resourceType = Objects.requireNonNull(resourceType);
+            if (resourceType == null) {
+              throw new MissingRequiredPropertyException("GetDataLimitsLimit", "resourceType");
+            }
+            this.resourceType = resourceType;
             return this;
         }
         @CustomType.Setter
         public Builder userName(String userName) {
-            this.userName = Objects.requireNonNull(userName);
+            if (userName == null) {
+              throw new MissingRequiredPropertyException("GetDataLimitsLimit", "userName");
+            }
+            this.userName = userName;
             return this;
         }
         public GetDataLimitsLimit build() {

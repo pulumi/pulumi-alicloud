@@ -6,6 +6,7 @@ package com.pulumi.alicloud.ots;
 import com.pulumi.alicloud.ots.inputs.SearchIndexSchemaArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -241,10 +242,18 @@ public final class SearchIndexArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public SearchIndexArgs build() {
-            $.indexName = Objects.requireNonNull($.indexName, "expected parameter 'indexName' to be non-null");
-            $.instanceName = Objects.requireNonNull($.instanceName, "expected parameter 'instanceName' to be non-null");
-            $.schemas = Objects.requireNonNull($.schemas, "expected parameter 'schemas' to be non-null");
-            $.tableName = Objects.requireNonNull($.tableName, "expected parameter 'tableName' to be non-null");
+            if ($.indexName == null) {
+                throw new MissingRequiredPropertyException("SearchIndexArgs", "indexName");
+            }
+            if ($.instanceName == null) {
+                throw new MissingRequiredPropertyException("SearchIndexArgs", "instanceName");
+            }
+            if ($.schemas == null) {
+                throw new MissingRequiredPropertyException("SearchIndexArgs", "schemas");
+            }
+            if ($.tableName == null) {
+                throw new MissingRequiredPropertyException("SearchIndexArgs", "tableName");
+            }
             return $;
         }
     }

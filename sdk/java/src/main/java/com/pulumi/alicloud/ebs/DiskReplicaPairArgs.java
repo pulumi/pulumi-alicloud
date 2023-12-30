@@ -5,6 +5,7 @@ package com.pulumi.alicloud.ebs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -520,11 +521,21 @@ public final class DiskReplicaPairArgs extends com.pulumi.resources.ResourceArgs
         }
 
         public DiskReplicaPairArgs build() {
-            $.destinationDiskId = Objects.requireNonNull($.destinationDiskId, "expected parameter 'destinationDiskId' to be non-null");
-            $.destinationRegionId = Objects.requireNonNull($.destinationRegionId, "expected parameter 'destinationRegionId' to be non-null");
-            $.destinationZoneId = Objects.requireNonNull($.destinationZoneId, "expected parameter 'destinationZoneId' to be non-null");
-            $.diskId = Objects.requireNonNull($.diskId, "expected parameter 'diskId' to be non-null");
-            $.sourceZoneId = Objects.requireNonNull($.sourceZoneId, "expected parameter 'sourceZoneId' to be non-null");
+            if ($.destinationDiskId == null) {
+                throw new MissingRequiredPropertyException("DiskReplicaPairArgs", "destinationDiskId");
+            }
+            if ($.destinationRegionId == null) {
+                throw new MissingRequiredPropertyException("DiskReplicaPairArgs", "destinationRegionId");
+            }
+            if ($.destinationZoneId == null) {
+                throw new MissingRequiredPropertyException("DiskReplicaPairArgs", "destinationZoneId");
+            }
+            if ($.diskId == null) {
+                throw new MissingRequiredPropertyException("DiskReplicaPairArgs", "diskId");
+            }
+            if ($.sourceZoneId == null) {
+                throw new MissingRequiredPropertyException("DiskReplicaPairArgs", "sourceZoneId");
+            }
             return $;
         }
     }

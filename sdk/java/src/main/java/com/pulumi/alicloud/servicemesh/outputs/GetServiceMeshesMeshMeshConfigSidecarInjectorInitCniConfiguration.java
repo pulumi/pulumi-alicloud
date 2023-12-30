@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.servicemesh.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -57,12 +58,18 @@ public final class GetServiceMeshesMeshMeshConfigSidecarInjectorInitCniConfigura
 
         @CustomType.Setter
         public Builder enabled(Boolean enabled) {
-            this.enabled = Objects.requireNonNull(enabled);
+            if (enabled == null) {
+              throw new MissingRequiredPropertyException("GetServiceMeshesMeshMeshConfigSidecarInjectorInitCniConfiguration", "enabled");
+            }
+            this.enabled = enabled;
             return this;
         }
         @CustomType.Setter
         public Builder excludeNamespaces(String excludeNamespaces) {
-            this.excludeNamespaces = Objects.requireNonNull(excludeNamespaces);
+            if (excludeNamespaces == null) {
+              throw new MissingRequiredPropertyException("GetServiceMeshesMeshMeshConfigSidecarInjectorInitCniConfiguration", "excludeNamespaces");
+            }
+            this.excludeNamespaces = excludeNamespaces;
             return this;
         }
         public GetServiceMeshesMeshMeshConfigSidecarInjectorInitCniConfiguration build() {

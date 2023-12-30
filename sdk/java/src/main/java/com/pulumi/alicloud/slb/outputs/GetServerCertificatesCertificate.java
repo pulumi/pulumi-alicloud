@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.slb.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.Object;
@@ -231,67 +232,104 @@ public final class GetServerCertificatesCertificate {
 
         @CustomType.Setter
         public Builder alicloudCertificateId(String alicloudCertificateId) {
-            this.alicloudCertificateId = Objects.requireNonNull(alicloudCertificateId);
+            if (alicloudCertificateId == null) {
+              throw new MissingRequiredPropertyException("GetServerCertificatesCertificate", "alicloudCertificateId");
+            }
+            this.alicloudCertificateId = alicloudCertificateId;
             return this;
         }
         @CustomType.Setter
         public Builder alicloudCertificateName(String alicloudCertificateName) {
-            this.alicloudCertificateName = Objects.requireNonNull(alicloudCertificateName);
+            if (alicloudCertificateName == null) {
+              throw new MissingRequiredPropertyException("GetServerCertificatesCertificate", "alicloudCertificateName");
+            }
+            this.alicloudCertificateName = alicloudCertificateName;
             return this;
         }
         @CustomType.Setter
         public Builder commonName(String commonName) {
-            this.commonName = Objects.requireNonNull(commonName);
+            if (commonName == null) {
+              throw new MissingRequiredPropertyException("GetServerCertificatesCertificate", "commonName");
+            }
+            this.commonName = commonName;
             return this;
         }
         @CustomType.Setter
         public Builder createdTime(String createdTime) {
-            this.createdTime = Objects.requireNonNull(createdTime);
+            if (createdTime == null) {
+              throw new MissingRequiredPropertyException("GetServerCertificatesCertificate", "createdTime");
+            }
+            this.createdTime = createdTime;
             return this;
         }
         @CustomType.Setter
         public Builder createdTimestamp(Integer createdTimestamp) {
-            this.createdTimestamp = Objects.requireNonNull(createdTimestamp);
+            if (createdTimestamp == null) {
+              throw new MissingRequiredPropertyException("GetServerCertificatesCertificate", "createdTimestamp");
+            }
+            this.createdTimestamp = createdTimestamp;
             return this;
         }
         @CustomType.Setter
         public Builder expiredTime(String expiredTime) {
-            this.expiredTime = Objects.requireNonNull(expiredTime);
+            if (expiredTime == null) {
+              throw new MissingRequiredPropertyException("GetServerCertificatesCertificate", "expiredTime");
+            }
+            this.expiredTime = expiredTime;
             return this;
         }
         @CustomType.Setter
         public Builder expiredTimestamp(Integer expiredTimestamp) {
-            this.expiredTimestamp = Objects.requireNonNull(expiredTimestamp);
+            if (expiredTimestamp == null) {
+              throw new MissingRequiredPropertyException("GetServerCertificatesCertificate", "expiredTimestamp");
+            }
+            this.expiredTimestamp = expiredTimestamp;
             return this;
         }
         @CustomType.Setter
         public Builder fingerprint(String fingerprint) {
-            this.fingerprint = Objects.requireNonNull(fingerprint);
+            if (fingerprint == null) {
+              throw new MissingRequiredPropertyException("GetServerCertificatesCertificate", "fingerprint");
+            }
+            this.fingerprint = fingerprint;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetServerCertificatesCertificate", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder isAlicloudCertificate(Boolean isAlicloudCertificate) {
-            this.isAlicloudCertificate = Objects.requireNonNull(isAlicloudCertificate);
+            if (isAlicloudCertificate == null) {
+              throw new MissingRequiredPropertyException("GetServerCertificatesCertificate", "isAlicloudCertificate");
+            }
+            this.isAlicloudCertificate = isAlicloudCertificate;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetServerCertificatesCertificate", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder resourceGroupId(@Nullable String resourceGroupId) {
+
             this.resourceGroupId = resourceGroupId;
             return this;
         }
         @CustomType.Setter
         public Builder subjectAlternativeNames(List<String> subjectAlternativeNames) {
-            this.subjectAlternativeNames = Objects.requireNonNull(subjectAlternativeNames);
+            if (subjectAlternativeNames == null) {
+              throw new MissingRequiredPropertyException("GetServerCertificatesCertificate", "subjectAlternativeNames");
+            }
+            this.subjectAlternativeNames = subjectAlternativeNames;
             return this;
         }
         public Builder subjectAlternativeNames(String... subjectAlternativeNames) {
@@ -299,6 +337,7 @@ public final class GetServerCertificatesCertificate {
         }
         @CustomType.Setter
         public Builder tags(@Nullable Map<String,Object> tags) {
+
             this.tags = tags;
             return this;
         }

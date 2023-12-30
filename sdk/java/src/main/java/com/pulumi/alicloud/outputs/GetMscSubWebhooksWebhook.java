@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -84,22 +85,34 @@ public final class GetMscSubWebhooksWebhook {
 
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetMscSubWebhooksWebhook", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder serverUrl(String serverUrl) {
-            this.serverUrl = Objects.requireNonNull(serverUrl);
+            if (serverUrl == null) {
+              throw new MissingRequiredPropertyException("GetMscSubWebhooksWebhook", "serverUrl");
+            }
+            this.serverUrl = serverUrl;
             return this;
         }
         @CustomType.Setter
         public Builder webhookId(String webhookId) {
-            this.webhookId = Objects.requireNonNull(webhookId);
+            if (webhookId == null) {
+              throw new MissingRequiredPropertyException("GetMscSubWebhooksWebhook", "webhookId");
+            }
+            this.webhookId = webhookId;
             return this;
         }
         @CustomType.Setter
         public Builder webhookName(String webhookName) {
-            this.webhookName = Objects.requireNonNull(webhookName);
+            if (webhookName == null) {
+              throw new MissingRequiredPropertyException("GetMscSubWebhooksWebhook", "webhookName");
+            }
+            this.webhookName = webhookName;
             return this;
         }
         public GetMscSubWebhooksWebhook build() {

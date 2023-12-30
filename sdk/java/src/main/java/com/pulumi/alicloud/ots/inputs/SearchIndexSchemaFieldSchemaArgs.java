@@ -5,6 +5,7 @@ package com.pulumi.alicloud.ots.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -299,8 +300,12 @@ public final class SearchIndexSchemaFieldSchemaArgs extends com.pulumi.resources
         }
 
         public SearchIndexSchemaFieldSchemaArgs build() {
-            $.fieldName = Objects.requireNonNull($.fieldName, "expected parameter 'fieldName' to be non-null");
-            $.fieldType = Objects.requireNonNull($.fieldType, "expected parameter 'fieldType' to be non-null");
+            if ($.fieldName == null) {
+                throw new MissingRequiredPropertyException("SearchIndexSchemaFieldSchemaArgs", "fieldName");
+            }
+            if ($.fieldType == null) {
+                throw new MissingRequiredPropertyException("SearchIndexSchemaFieldSchemaArgs", "fieldType");
+            }
             return $;
         }
     }

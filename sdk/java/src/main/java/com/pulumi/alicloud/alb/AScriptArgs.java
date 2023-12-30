@@ -6,6 +6,7 @@ package com.pulumi.alicloud.alb;
 import com.pulumi.alicloud.alb.inputs.AScriptExtAttributeArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -311,11 +312,21 @@ public final class AScriptArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public AScriptArgs build() {
-            $.ascriptName = Objects.requireNonNull($.ascriptName, "expected parameter 'ascriptName' to be non-null");
-            $.enabled = Objects.requireNonNull($.enabled, "expected parameter 'enabled' to be non-null");
-            $.listenerId = Objects.requireNonNull($.listenerId, "expected parameter 'listenerId' to be non-null");
-            $.position = Objects.requireNonNull($.position, "expected parameter 'position' to be non-null");
-            $.scriptContent = Objects.requireNonNull($.scriptContent, "expected parameter 'scriptContent' to be non-null");
+            if ($.ascriptName == null) {
+                throw new MissingRequiredPropertyException("AScriptArgs", "ascriptName");
+            }
+            if ($.enabled == null) {
+                throw new MissingRequiredPropertyException("AScriptArgs", "enabled");
+            }
+            if ($.listenerId == null) {
+                throw new MissingRequiredPropertyException("AScriptArgs", "listenerId");
+            }
+            if ($.position == null) {
+                throw new MissingRequiredPropertyException("AScriptArgs", "position");
+            }
+            if ($.scriptContent == null) {
+                throw new MissingRequiredPropertyException("AScriptArgs", "scriptContent");
+            }
             return $;
         }
     }

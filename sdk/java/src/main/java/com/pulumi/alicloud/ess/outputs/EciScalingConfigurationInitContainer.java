@@ -7,6 +7,7 @@ import com.pulumi.alicloud.ess.outputs.EciScalingConfigurationInitContainerEnvir
 import com.pulumi.alicloud.ess.outputs.EciScalingConfigurationInitContainerPort;
 import com.pulumi.alicloud.ess.outputs.EciScalingConfigurationInitContainerVolumeMount;
 import com.pulumi.core.annotations.CustomType;
+import java.lang.Boolean;
 import java.lang.Double;
 import java.lang.Integer;
 import java.lang.String;
@@ -68,6 +69,23 @@ public final class EciScalingConfigurationInitContainer {
      * 
      */
     private @Nullable List<EciScalingConfigurationInitContainerPort> ports;
+    /**
+     * @return Grant certain permissions to processes within container. Optional values:
+     * - NET_ADMIN: Allow network management tasks to be performed.
+     * - NET_RAW: Allow raw sockets.
+     * 
+     */
+    private @Nullable List<String> securityContextCapabilityAdds;
+    /**
+     * @return Mounts the container&#39;s root filesystem as read-only.
+     * 
+     */
+    private @Nullable Boolean securityContextReadOnlyRootFileSystem;
+    /**
+     * @return Specifies user ID  under which all processes run.
+     * 
+     */
+    private @Nullable Integer securityContextRunAsUser;
     /**
      * @return The structure of volumeMounts. See `volume_mounts` below for details.
      * 
@@ -152,6 +170,29 @@ public final class EciScalingConfigurationInitContainer {
         return this.ports == null ? List.of() : this.ports;
     }
     /**
+     * @return Grant certain permissions to processes within container. Optional values:
+     * - NET_ADMIN: Allow network management tasks to be performed.
+     * - NET_RAW: Allow raw sockets.
+     * 
+     */
+    public List<String> securityContextCapabilityAdds() {
+        return this.securityContextCapabilityAdds == null ? List.of() : this.securityContextCapabilityAdds;
+    }
+    /**
+     * @return Mounts the container&#39;s root filesystem as read-only.
+     * 
+     */
+    public Optional<Boolean> securityContextReadOnlyRootFileSystem() {
+        return Optional.ofNullable(this.securityContextReadOnlyRootFileSystem);
+    }
+    /**
+     * @return Specifies user ID  under which all processes run.
+     * 
+     */
+    public Optional<Integer> securityContextRunAsUser() {
+        return Optional.ofNullable(this.securityContextRunAsUser);
+    }
+    /**
      * @return The structure of volumeMounts. See `volume_mounts` below for details.
      * 
      */
@@ -185,6 +226,9 @@ public final class EciScalingConfigurationInitContainer {
         private @Nullable Double memory;
         private @Nullable String name;
         private @Nullable List<EciScalingConfigurationInitContainerPort> ports;
+        private @Nullable List<String> securityContextCapabilityAdds;
+        private @Nullable Boolean securityContextReadOnlyRootFileSystem;
+        private @Nullable Integer securityContextRunAsUser;
         private @Nullable List<EciScalingConfigurationInitContainerVolumeMount> volumeMounts;
         private @Nullable String workingDir;
         public Builder() {}
@@ -200,12 +244,16 @@ public final class EciScalingConfigurationInitContainer {
     	      this.memory = defaults.memory;
     	      this.name = defaults.name;
     	      this.ports = defaults.ports;
+    	      this.securityContextCapabilityAdds = defaults.securityContextCapabilityAdds;
+    	      this.securityContextReadOnlyRootFileSystem = defaults.securityContextReadOnlyRootFileSystem;
+    	      this.securityContextRunAsUser = defaults.securityContextRunAsUser;
     	      this.volumeMounts = defaults.volumeMounts;
     	      this.workingDir = defaults.workingDir;
         }
 
         @CustomType.Setter
         public Builder args(@Nullable List<String> args) {
+
             this.args = args;
             return this;
         }
@@ -214,6 +262,7 @@ public final class EciScalingConfigurationInitContainer {
         }
         @CustomType.Setter
         public Builder commands(@Nullable List<String> commands) {
+
             this.commands = commands;
             return this;
         }
@@ -222,11 +271,13 @@ public final class EciScalingConfigurationInitContainer {
         }
         @CustomType.Setter
         public Builder cpu(@Nullable Double cpu) {
+
             this.cpu = cpu;
             return this;
         }
         @CustomType.Setter
         public Builder environmentVars(@Nullable List<EciScalingConfigurationInitContainerEnvironmentVar> environmentVars) {
+
             this.environmentVars = environmentVars;
             return this;
         }
@@ -235,31 +286,37 @@ public final class EciScalingConfigurationInitContainer {
         }
         @CustomType.Setter
         public Builder gpu(@Nullable Integer gpu) {
+
             this.gpu = gpu;
             return this;
         }
         @CustomType.Setter
         public Builder image(@Nullable String image) {
+
             this.image = image;
             return this;
         }
         @CustomType.Setter
         public Builder imagePullPolicy(@Nullable String imagePullPolicy) {
+
             this.imagePullPolicy = imagePullPolicy;
             return this;
         }
         @CustomType.Setter
         public Builder memory(@Nullable Double memory) {
+
             this.memory = memory;
             return this;
         }
         @CustomType.Setter
         public Builder name(@Nullable String name) {
+
             this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder ports(@Nullable List<EciScalingConfigurationInitContainerPort> ports) {
+
             this.ports = ports;
             return this;
         }
@@ -267,7 +324,29 @@ public final class EciScalingConfigurationInitContainer {
             return ports(List.of(ports));
         }
         @CustomType.Setter
+        public Builder securityContextCapabilityAdds(@Nullable List<String> securityContextCapabilityAdds) {
+
+            this.securityContextCapabilityAdds = securityContextCapabilityAdds;
+            return this;
+        }
+        public Builder securityContextCapabilityAdds(String... securityContextCapabilityAdds) {
+            return securityContextCapabilityAdds(List.of(securityContextCapabilityAdds));
+        }
+        @CustomType.Setter
+        public Builder securityContextReadOnlyRootFileSystem(@Nullable Boolean securityContextReadOnlyRootFileSystem) {
+
+            this.securityContextReadOnlyRootFileSystem = securityContextReadOnlyRootFileSystem;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder securityContextRunAsUser(@Nullable Integer securityContextRunAsUser) {
+
+            this.securityContextRunAsUser = securityContextRunAsUser;
+            return this;
+        }
+        @CustomType.Setter
         public Builder volumeMounts(@Nullable List<EciScalingConfigurationInitContainerVolumeMount> volumeMounts) {
+
             this.volumeMounts = volumeMounts;
             return this;
         }
@@ -276,6 +355,7 @@ public final class EciScalingConfigurationInitContainer {
         }
         @CustomType.Setter
         public Builder workingDir(@Nullable String workingDir) {
+
             this.workingDir = workingDir;
             return this;
         }
@@ -291,6 +371,9 @@ public final class EciScalingConfigurationInitContainer {
             _resultValue.memory = memory;
             _resultValue.name = name;
             _resultValue.ports = ports;
+            _resultValue.securityContextCapabilityAdds = securityContextCapabilityAdds;
+            _resultValue.securityContextReadOnlyRootFileSystem = securityContextReadOnlyRootFileSystem;
+            _resultValue.securityContextRunAsUser = securityContextRunAsUser;
             _resultValue.volumeMounts = volumeMounts;
             _resultValue.workingDir = workingDir;
             return _resultValue;

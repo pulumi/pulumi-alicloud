@@ -73,16 +73,19 @@ public final class IngressDefaultRule {
 
         @CustomType.Setter
         public Builder appId(@Nullable String appId) {
+
             this.appId = appId;
             return this;
         }
         @CustomType.Setter
         public Builder appName(@Nullable String appName) {
+
             this.appName = appName;
             return this;
         }
         @CustomType.Setter
         public Builder containerPort(@Nullable Integer containerPort) {
+
             this.containerPort = containerPort;
             return this;
         }

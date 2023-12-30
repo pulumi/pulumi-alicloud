@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.log.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -220,66 +221,85 @@ public final class AlertQueryList {
 
         @CustomType.Setter
         public Builder chartTitle(@Nullable String chartTitle) {
+
             this.chartTitle = chartTitle;
             return this;
         }
         @CustomType.Setter
         public Builder dashboardId(@Nullable String dashboardId) {
+
             this.dashboardId = dashboardId;
             return this;
         }
         @CustomType.Setter
         public Builder end(String end) {
-            this.end = Objects.requireNonNull(end);
+            if (end == null) {
+              throw new MissingRequiredPropertyException("AlertQueryList", "end");
+            }
+            this.end = end;
             return this;
         }
         @CustomType.Setter
         public Builder logstore(@Nullable String logstore) {
+
             this.logstore = logstore;
             return this;
         }
         @CustomType.Setter
         public Builder powerSqlMode(@Nullable String powerSqlMode) {
+
             this.powerSqlMode = powerSqlMode;
             return this;
         }
         @CustomType.Setter
         public Builder project(@Nullable String project) {
+
             this.project = project;
             return this;
         }
         @CustomType.Setter
         public Builder query(String query) {
-            this.query = Objects.requireNonNull(query);
+            if (query == null) {
+              throw new MissingRequiredPropertyException("AlertQueryList", "query");
+            }
+            this.query = query;
             return this;
         }
         @CustomType.Setter
         public Builder region(@Nullable String region) {
+
             this.region = region;
             return this;
         }
         @CustomType.Setter
         public Builder roleArn(@Nullable String roleArn) {
+
             this.roleArn = roleArn;
             return this;
         }
         @CustomType.Setter
         public Builder start(String start) {
-            this.start = Objects.requireNonNull(start);
+            if (start == null) {
+              throw new MissingRequiredPropertyException("AlertQueryList", "start");
+            }
+            this.start = start;
             return this;
         }
         @CustomType.Setter
         public Builder store(@Nullable String store) {
+
             this.store = store;
             return this;
         }
         @CustomType.Setter
         public Builder storeType(@Nullable String storeType) {
+
             this.storeType = storeType;
             return this;
         }
         @CustomType.Setter
         public Builder timeSpanType(@Nullable String timeSpanType) {
+
             this.timeSpanType = timeSpanType;
             return this;
         }

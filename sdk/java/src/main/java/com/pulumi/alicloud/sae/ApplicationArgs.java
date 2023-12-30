@@ -17,6 +17,7 @@ import com.pulumi.alicloud.sae.inputs.ApplicationTomcatConfigV2Args;
 import com.pulumi.alicloud.sae.inputs.ApplicationUpdateStrategyV2Args;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.Object;
@@ -2839,9 +2840,15 @@ public final class ApplicationArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public ApplicationArgs build() {
-            $.appName = Objects.requireNonNull($.appName, "expected parameter 'appName' to be non-null");
-            $.packageType = Objects.requireNonNull($.packageType, "expected parameter 'packageType' to be non-null");
-            $.replicas = Objects.requireNonNull($.replicas, "expected parameter 'replicas' to be non-null");
+            if ($.appName == null) {
+                throw new MissingRequiredPropertyException("ApplicationArgs", "appName");
+            }
+            if ($.packageType == null) {
+                throw new MissingRequiredPropertyException("ApplicationArgs", "packageType");
+            }
+            if ($.replicas == null) {
+                throw new MissingRequiredPropertyException("ApplicationArgs", "replicas");
+            }
             return $;
         }
     }

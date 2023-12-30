@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.mse.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -140,42 +141,66 @@ public final class GetGatewaysGatewaySlbList {
 
         @CustomType.Setter
         public Builder associateId(String associateId) {
-            this.associateId = Objects.requireNonNull(associateId);
+            if (associateId == null) {
+              throw new MissingRequiredPropertyException("GetGatewaysGatewaySlbList", "associateId");
+            }
+            this.associateId = associateId;
             return this;
         }
         @CustomType.Setter
         public Builder gatewaySlbMode(String gatewaySlbMode) {
-            this.gatewaySlbMode = Objects.requireNonNull(gatewaySlbMode);
+            if (gatewaySlbMode == null) {
+              throw new MissingRequiredPropertyException("GetGatewaysGatewaySlbList", "gatewaySlbMode");
+            }
+            this.gatewaySlbMode = gatewaySlbMode;
             return this;
         }
         @CustomType.Setter
         public Builder gatewaySlbStatus(String gatewaySlbStatus) {
-            this.gatewaySlbStatus = Objects.requireNonNull(gatewaySlbStatus);
+            if (gatewaySlbStatus == null) {
+              throw new MissingRequiredPropertyException("GetGatewaysGatewaySlbList", "gatewaySlbStatus");
+            }
+            this.gatewaySlbStatus = gatewaySlbStatus;
             return this;
         }
         @CustomType.Setter
         public Builder gmtCreate(String gmtCreate) {
-            this.gmtCreate = Objects.requireNonNull(gmtCreate);
+            if (gmtCreate == null) {
+              throw new MissingRequiredPropertyException("GetGatewaysGatewaySlbList", "gmtCreate");
+            }
+            this.gmtCreate = gmtCreate;
             return this;
         }
         @CustomType.Setter
         public Builder slbId(String slbId) {
-            this.slbId = Objects.requireNonNull(slbId);
+            if (slbId == null) {
+              throw new MissingRequiredPropertyException("GetGatewaysGatewaySlbList", "slbId");
+            }
+            this.slbId = slbId;
             return this;
         }
         @CustomType.Setter
         public Builder slbIp(String slbIp) {
-            this.slbIp = Objects.requireNonNull(slbIp);
+            if (slbIp == null) {
+              throw new MissingRequiredPropertyException("GetGatewaysGatewaySlbList", "slbIp");
+            }
+            this.slbIp = slbIp;
             return this;
         }
         @CustomType.Setter
         public Builder slbPort(String slbPort) {
-            this.slbPort = Objects.requireNonNull(slbPort);
+            if (slbPort == null) {
+              throw new MissingRequiredPropertyException("GetGatewaysGatewaySlbList", "slbPort");
+            }
+            this.slbPort = slbPort;
             return this;
         }
         @CustomType.Setter
         public Builder type(String type) {
-            this.type = Objects.requireNonNull(type);
+            if (type == null) {
+              throw new MissingRequiredPropertyException("GetGatewaysGatewaySlbList", "type");
+            }
+            this.type = type;
             return this;
         }
         public GetGatewaysGatewaySlbList build() {

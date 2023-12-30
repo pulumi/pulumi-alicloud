@@ -72,16 +72,19 @@ public final class EventRuleContactParameter {
 
         @CustomType.Setter
         public Builder contactGroupName(@Nullable String contactGroupName) {
+
             this.contactGroupName = contactGroupName;
             return this;
         }
         @CustomType.Setter
         public Builder contactParametersId(@Nullable String contactParametersId) {
+
             this.contactParametersId = contactParametersId;
             return this;
         }
         @CustomType.Setter
         public Builder level(@Nullable String level) {
+
             this.level = level;
             return this;
         }

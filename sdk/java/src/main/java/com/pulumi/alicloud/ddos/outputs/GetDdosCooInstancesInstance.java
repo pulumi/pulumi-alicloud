@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.ddos.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -253,82 +254,130 @@ public final class GetDdosCooInstancesInstance {
 
         @CustomType.Setter
         public Builder bandwidth(Integer bandwidth) {
-            this.bandwidth = Objects.requireNonNull(bandwidth);
+            if (bandwidth == null) {
+              throw new MissingRequiredPropertyException("GetDdosCooInstancesInstance", "bandwidth");
+            }
+            this.bandwidth = bandwidth;
             return this;
         }
         @CustomType.Setter
         public Builder baseBandwidth(Integer baseBandwidth) {
-            this.baseBandwidth = Objects.requireNonNull(baseBandwidth);
+            if (baseBandwidth == null) {
+              throw new MissingRequiredPropertyException("GetDdosCooInstancesInstance", "baseBandwidth");
+            }
+            this.baseBandwidth = baseBandwidth;
             return this;
         }
         @CustomType.Setter
         public Builder createTime(Integer createTime) {
-            this.createTime = Objects.requireNonNull(createTime);
+            if (createTime == null) {
+              throw new MissingRequiredPropertyException("GetDdosCooInstancesInstance", "createTime");
+            }
+            this.createTime = createTime;
             return this;
         }
         @CustomType.Setter
         public Builder debtStatus(Integer debtStatus) {
-            this.debtStatus = Objects.requireNonNull(debtStatus);
+            if (debtStatus == null) {
+              throw new MissingRequiredPropertyException("GetDdosCooInstancesInstance", "debtStatus");
+            }
+            this.debtStatus = debtStatus;
             return this;
         }
         @CustomType.Setter
         public Builder domainCount(Integer domainCount) {
-            this.domainCount = Objects.requireNonNull(domainCount);
+            if (domainCount == null) {
+              throw new MissingRequiredPropertyException("GetDdosCooInstancesInstance", "domainCount");
+            }
+            this.domainCount = domainCount;
             return this;
         }
         @CustomType.Setter
         public Builder edition(Integer edition) {
-            this.edition = Objects.requireNonNull(edition);
+            if (edition == null) {
+              throw new MissingRequiredPropertyException("GetDdosCooInstancesInstance", "edition");
+            }
+            this.edition = edition;
             return this;
         }
         @CustomType.Setter
         public Builder enabled(Integer enabled) {
-            this.enabled = Objects.requireNonNull(enabled);
+            if (enabled == null) {
+              throw new MissingRequiredPropertyException("GetDdosCooInstancesInstance", "enabled");
+            }
+            this.enabled = enabled;
             return this;
         }
         @CustomType.Setter
         public Builder expireTime(Integer expireTime) {
-            this.expireTime = Objects.requireNonNull(expireTime);
+            if (expireTime == null) {
+              throw new MissingRequiredPropertyException("GetDdosCooInstancesInstance", "expireTime");
+            }
+            this.expireTime = expireTime;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetDdosCooInstancesInstance", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder ipMode(String ipMode) {
-            this.ipMode = Objects.requireNonNull(ipMode);
+            if (ipMode == null) {
+              throw new MissingRequiredPropertyException("GetDdosCooInstancesInstance", "ipMode");
+            }
+            this.ipMode = ipMode;
             return this;
         }
         @CustomType.Setter
         public Builder ipVersion(String ipVersion) {
-            this.ipVersion = Objects.requireNonNull(ipVersion);
+            if (ipVersion == null) {
+              throw new MissingRequiredPropertyException("GetDdosCooInstancesInstance", "ipVersion");
+            }
+            this.ipVersion = ipVersion;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetDdosCooInstancesInstance", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder portCount(Integer portCount) {
-            this.portCount = Objects.requireNonNull(portCount);
+            if (portCount == null) {
+              throw new MissingRequiredPropertyException("GetDdosCooInstancesInstance", "portCount");
+            }
+            this.portCount = portCount;
             return this;
         }
         @CustomType.Setter
         public Builder remark(String remark) {
-            this.remark = Objects.requireNonNull(remark);
+            if (remark == null) {
+              throw new MissingRequiredPropertyException("GetDdosCooInstancesInstance", "remark");
+            }
+            this.remark = remark;
             return this;
         }
         @CustomType.Setter
         public Builder serviceBandwidth(Integer serviceBandwidth) {
-            this.serviceBandwidth = Objects.requireNonNull(serviceBandwidth);
+            if (serviceBandwidth == null) {
+              throw new MissingRequiredPropertyException("GetDdosCooInstancesInstance", "serviceBandwidth");
+            }
+            this.serviceBandwidth = serviceBandwidth;
             return this;
         }
         @CustomType.Setter
         public Builder status(Integer status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetDdosCooInstancesInstance", "status");
+            }
+            this.status = status;
             return this;
         }
         public GetDdosCooInstancesInstance build() {

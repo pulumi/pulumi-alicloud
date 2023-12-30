@@ -5,6 +5,7 @@ package com.pulumi.alicloud.cs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -307,10 +308,18 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public ClusterArgs build() {
-            $.cidrBlock = Objects.requireNonNull($.cidrBlock, "expected parameter 'cidrBlock' to be non-null");
-            $.instanceType = Objects.requireNonNull($.instanceType, "expected parameter 'instanceType' to be non-null");
-            $.password = Objects.requireNonNull($.password, "expected parameter 'password' to be non-null");
-            $.vswitchId = Objects.requireNonNull($.vswitchId, "expected parameter 'vswitchId' to be non-null");
+            if ($.cidrBlock == null) {
+                throw new MissingRequiredPropertyException("ClusterArgs", "cidrBlock");
+            }
+            if ($.instanceType == null) {
+                throw new MissingRequiredPropertyException("ClusterArgs", "instanceType");
+            }
+            if ($.password == null) {
+                throw new MissingRequiredPropertyException("ClusterArgs", "password");
+            }
+            if ($.vswitchId == null) {
+                throw new MissingRequiredPropertyException("ClusterArgs", "vswitchId");
+            }
             return $;
         }
     }

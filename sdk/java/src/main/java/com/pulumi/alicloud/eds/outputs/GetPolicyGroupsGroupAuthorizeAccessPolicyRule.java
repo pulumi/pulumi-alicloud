@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.eds.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -56,12 +57,18 @@ public final class GetPolicyGroupsGroupAuthorizeAccessPolicyRule {
 
         @CustomType.Setter
         public Builder cidrIp(String cidrIp) {
-            this.cidrIp = Objects.requireNonNull(cidrIp);
+            if (cidrIp == null) {
+              throw new MissingRequiredPropertyException("GetPolicyGroupsGroupAuthorizeAccessPolicyRule", "cidrIp");
+            }
+            this.cidrIp = cidrIp;
             return this;
         }
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetPolicyGroupsGroupAuthorizeAccessPolicyRule", "description");
+            }
+            this.description = description;
             return this;
         }
         public GetPolicyGroupsGroupAuthorizeAccessPolicyRule build() {

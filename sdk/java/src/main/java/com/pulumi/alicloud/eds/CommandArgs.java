@@ -5,6 +5,7 @@ package com.pulumi.alicloud.eds;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -224,9 +225,15 @@ public final class CommandArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public CommandArgs build() {
-            $.commandContent = Objects.requireNonNull($.commandContent, "expected parameter 'commandContent' to be non-null");
-            $.commandType = Objects.requireNonNull($.commandType, "expected parameter 'commandType' to be non-null");
-            $.desktopId = Objects.requireNonNull($.desktopId, "expected parameter 'desktopId' to be non-null");
+            if ($.commandContent == null) {
+                throw new MissingRequiredPropertyException("CommandArgs", "commandContent");
+            }
+            if ($.commandType == null) {
+                throw new MissingRequiredPropertyException("CommandArgs", "commandType");
+            }
+            if ($.desktopId == null) {
+                throw new MissingRequiredPropertyException("CommandArgs", "desktopId");
+            }
             return $;
         }
     }

@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.emr.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -70,17 +71,26 @@ public final class ClusterMetaStoreConf {
 
         @CustomType.Setter
         public Builder dbPassword(String dbPassword) {
-            this.dbPassword = Objects.requireNonNull(dbPassword);
+            if (dbPassword == null) {
+              throw new MissingRequiredPropertyException("ClusterMetaStoreConf", "dbPassword");
+            }
+            this.dbPassword = dbPassword;
             return this;
         }
         @CustomType.Setter
         public Builder dbUrl(String dbUrl) {
-            this.dbUrl = Objects.requireNonNull(dbUrl);
+            if (dbUrl == null) {
+              throw new MissingRequiredPropertyException("ClusterMetaStoreConf", "dbUrl");
+            }
+            this.dbUrl = dbUrl;
             return this;
         }
         @CustomType.Setter
         public Builder dbUserName(String dbUserName) {
-            this.dbUserName = Objects.requireNonNull(dbUserName);
+            if (dbUserName == null) {
+              throw new MissingRequiredPropertyException("ClusterMetaStoreConf", "dbUserName");
+            }
+            this.dbUserName = dbUserName;
             return this;
         }
         public ClusterMetaStoreConf build() {

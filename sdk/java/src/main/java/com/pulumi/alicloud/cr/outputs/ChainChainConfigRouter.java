@@ -59,6 +59,7 @@ public final class ChainChainConfigRouter {
 
         @CustomType.Setter
         public Builder froms(@Nullable List<ChainChainConfigRouterFrom> froms) {
+
             this.froms = froms;
             return this;
         }
@@ -67,6 +68,7 @@ public final class ChainChainConfigRouter {
         }
         @CustomType.Setter
         public Builder tos(@Nullable List<ChainChainConfigRouterTo> tos) {
+
             this.tos = tos;
             return this;
         }

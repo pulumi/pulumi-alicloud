@@ -58,11 +58,13 @@ public final class RuleRuleActionTrafficLimitConfig {
 
         @CustomType.Setter
         public Builder perIpQps(@Nullable Integer perIpQps) {
+
             this.perIpQps = perIpQps;
             return this;
         }
         @CustomType.Setter
         public Builder qps(@Nullable Integer qps) {
+
             this.qps = qps;
             return this;
         }

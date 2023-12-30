@@ -5,6 +5,7 @@ package com.pulumi.alicloud.cen.outputs;
 
 import com.pulumi.alicloud.cen.outputs.GetTransitRouterVpnAttachmentsAttachmentZone;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -183,62 +184,98 @@ public final class GetTransitRouterVpnAttachmentsAttachment {
 
         @CustomType.Setter
         public Builder autoPublishRouteEnabled(Boolean autoPublishRouteEnabled) {
-            this.autoPublishRouteEnabled = Objects.requireNonNull(autoPublishRouteEnabled);
+            if (autoPublishRouteEnabled == null) {
+              throw new MissingRequiredPropertyException("GetTransitRouterVpnAttachmentsAttachment", "autoPublishRouteEnabled");
+            }
+            this.autoPublishRouteEnabled = autoPublishRouteEnabled;
             return this;
         }
         @CustomType.Setter
         public Builder createTime(String createTime) {
-            this.createTime = Objects.requireNonNull(createTime);
+            if (createTime == null) {
+              throw new MissingRequiredPropertyException("GetTransitRouterVpnAttachmentsAttachment", "createTime");
+            }
+            this.createTime = createTime;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetTransitRouterVpnAttachmentsAttachment", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder resourceType(String resourceType) {
-            this.resourceType = Objects.requireNonNull(resourceType);
+            if (resourceType == null) {
+              throw new MissingRequiredPropertyException("GetTransitRouterVpnAttachmentsAttachment", "resourceType");
+            }
+            this.resourceType = resourceType;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetTransitRouterVpnAttachmentsAttachment", "status");
+            }
+            this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder transitRouterAttachmentDescription(String transitRouterAttachmentDescription) {
-            this.transitRouterAttachmentDescription = Objects.requireNonNull(transitRouterAttachmentDescription);
+            if (transitRouterAttachmentDescription == null) {
+              throw new MissingRequiredPropertyException("GetTransitRouterVpnAttachmentsAttachment", "transitRouterAttachmentDescription");
+            }
+            this.transitRouterAttachmentDescription = transitRouterAttachmentDescription;
             return this;
         }
         @CustomType.Setter
         public Builder transitRouterAttachmentId(String transitRouterAttachmentId) {
-            this.transitRouterAttachmentId = Objects.requireNonNull(transitRouterAttachmentId);
+            if (transitRouterAttachmentId == null) {
+              throw new MissingRequiredPropertyException("GetTransitRouterVpnAttachmentsAttachment", "transitRouterAttachmentId");
+            }
+            this.transitRouterAttachmentId = transitRouterAttachmentId;
             return this;
         }
         @CustomType.Setter
         public Builder transitRouterAttachmentName(String transitRouterAttachmentName) {
-            this.transitRouterAttachmentName = Objects.requireNonNull(transitRouterAttachmentName);
+            if (transitRouterAttachmentName == null) {
+              throw new MissingRequiredPropertyException("GetTransitRouterVpnAttachmentsAttachment", "transitRouterAttachmentName");
+            }
+            this.transitRouterAttachmentName = transitRouterAttachmentName;
             return this;
         }
         @CustomType.Setter
         public Builder transitRouterId(String transitRouterId) {
-            this.transitRouterId = Objects.requireNonNull(transitRouterId);
+            if (transitRouterId == null) {
+              throw new MissingRequiredPropertyException("GetTransitRouterVpnAttachmentsAttachment", "transitRouterId");
+            }
+            this.transitRouterId = transitRouterId;
             return this;
         }
         @CustomType.Setter
         public Builder vpnId(String vpnId) {
-            this.vpnId = Objects.requireNonNull(vpnId);
+            if (vpnId == null) {
+              throw new MissingRequiredPropertyException("GetTransitRouterVpnAttachmentsAttachment", "vpnId");
+            }
+            this.vpnId = vpnId;
             return this;
         }
         @CustomType.Setter
         public Builder vpnOwnerId(String vpnOwnerId) {
-            this.vpnOwnerId = Objects.requireNonNull(vpnOwnerId);
+            if (vpnOwnerId == null) {
+              throw new MissingRequiredPropertyException("GetTransitRouterVpnAttachmentsAttachment", "vpnOwnerId");
+            }
+            this.vpnOwnerId = vpnOwnerId;
             return this;
         }
         @CustomType.Setter
         public Builder zones(List<GetTransitRouterVpnAttachmentsAttachmentZone> zones) {
-            this.zones = Objects.requireNonNull(zones);
+            if (zones == null) {
+              throw new MissingRequiredPropertyException("GetTransitRouterVpnAttachmentsAttachment", "zones");
+            }
+            this.zones = zones;
             return this;
         }
         public Builder zones(GetTransitRouterVpnAttachmentsAttachmentZone... zones) {

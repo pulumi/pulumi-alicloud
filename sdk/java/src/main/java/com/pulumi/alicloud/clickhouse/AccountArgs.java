@@ -5,6 +5,7 @@ package com.pulumi.alicloud.clickhouse;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -410,9 +411,15 @@ public final class AccountArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public AccountArgs build() {
-            $.accountName = Objects.requireNonNull($.accountName, "expected parameter 'accountName' to be non-null");
-            $.accountPassword = Objects.requireNonNull($.accountPassword, "expected parameter 'accountPassword' to be non-null");
-            $.dbClusterId = Objects.requireNonNull($.dbClusterId, "expected parameter 'dbClusterId' to be non-null");
+            if ($.accountName == null) {
+                throw new MissingRequiredPropertyException("AccountArgs", "accountName");
+            }
+            if ($.accountPassword == null) {
+                throw new MissingRequiredPropertyException("AccountArgs", "accountPassword");
+            }
+            if ($.dbClusterId == null) {
+                throw new MissingRequiredPropertyException("AccountArgs", "dbClusterId");
+            }
             return $;
         }
     }

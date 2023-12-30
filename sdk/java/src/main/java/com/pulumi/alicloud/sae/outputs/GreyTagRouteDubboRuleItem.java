@@ -101,26 +101,31 @@ public final class GreyTagRouteDubboRuleItem {
 
         @CustomType.Setter
         public Builder cond(@Nullable String cond) {
+
             this.cond = cond;
             return this;
         }
         @CustomType.Setter
         public Builder expr(@Nullable String expr) {
+
             this.expr = expr;
             return this;
         }
         @CustomType.Setter
         public Builder index(@Nullable Integer index) {
+
             this.index = index;
             return this;
         }
         @CustomType.Setter
         public Builder operator(@Nullable String operator) {
+
             this.operator = operator;
             return this;
         }
         @CustomType.Setter
         public Builder value(@Nullable String value) {
+
             this.value = value;
             return this;
         }

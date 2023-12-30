@@ -5,6 +5,7 @@ package com.pulumi.alicloud.vod.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -187,9 +188,15 @@ public final class DomainSourceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public DomainSourceArgs build() {
-            $.sourceContent = Objects.requireNonNull($.sourceContent, "expected parameter 'sourceContent' to be non-null");
-            $.sourcePort = Objects.requireNonNull($.sourcePort, "expected parameter 'sourcePort' to be non-null");
-            $.sourceType = Objects.requireNonNull($.sourceType, "expected parameter 'sourceType' to be non-null");
+            if ($.sourceContent == null) {
+                throw new MissingRequiredPropertyException("DomainSourceArgs", "sourceContent");
+            }
+            if ($.sourcePort == null) {
+                throw new MissingRequiredPropertyException("DomainSourceArgs", "sourcePort");
+            }
+            if ($.sourceType == null) {
+                throw new MissingRequiredPropertyException("DomainSourceArgs", "sourceType");
+            }
             return $;
         }
     }

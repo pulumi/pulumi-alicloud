@@ -5,6 +5,7 @@ package com.pulumi.alicloud.ga.outputs;
 
 import com.pulumi.alicloud.ga.outputs.GetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicyPortRange;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -142,42 +143,66 @@ public final class GetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointT
 
         @CustomType.Setter
         public Builder acceleratorId(String acceleratorId) {
-            this.acceleratorId = Objects.requireNonNull(acceleratorId);
+            if (acceleratorId == null) {
+              throw new MissingRequiredPropertyException("GetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicy", "acceleratorId");
+            }
+            this.acceleratorId = acceleratorId;
             return this;
         }
         @CustomType.Setter
         public Builder address(String address) {
-            this.address = Objects.requireNonNull(address);
+            if (address == null) {
+              throw new MissingRequiredPropertyException("GetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicy", "address");
+            }
+            this.address = address;
             return this;
         }
         @CustomType.Setter
         public Builder customRoutingEndpointTrafficPolicyId(String customRoutingEndpointTrafficPolicyId) {
-            this.customRoutingEndpointTrafficPolicyId = Objects.requireNonNull(customRoutingEndpointTrafficPolicyId);
+            if (customRoutingEndpointTrafficPolicyId == null) {
+              throw new MissingRequiredPropertyException("GetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicy", "customRoutingEndpointTrafficPolicyId");
+            }
+            this.customRoutingEndpointTrafficPolicyId = customRoutingEndpointTrafficPolicyId;
             return this;
         }
         @CustomType.Setter
         public Builder endpointGroupId(String endpointGroupId) {
-            this.endpointGroupId = Objects.requireNonNull(endpointGroupId);
+            if (endpointGroupId == null) {
+              throw new MissingRequiredPropertyException("GetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicy", "endpointGroupId");
+            }
+            this.endpointGroupId = endpointGroupId;
             return this;
         }
         @CustomType.Setter
         public Builder endpointId(String endpointId) {
-            this.endpointId = Objects.requireNonNull(endpointId);
+            if (endpointId == null) {
+              throw new MissingRequiredPropertyException("GetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicy", "endpointId");
+            }
+            this.endpointId = endpointId;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicy", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder listenerId(String listenerId) {
-            this.listenerId = Objects.requireNonNull(listenerId);
+            if (listenerId == null) {
+              throw new MissingRequiredPropertyException("GetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicy", "listenerId");
+            }
+            this.listenerId = listenerId;
             return this;
         }
         @CustomType.Setter
         public Builder portRanges(List<GetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicyPortRange> portRanges) {
-            this.portRanges = Objects.requireNonNull(portRanges);
+            if (portRanges == null) {
+              throw new MissingRequiredPropertyException("GetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicy", "portRanges");
+            }
+            this.portRanges = portRanges;
             return this;
         }
         public Builder portRanges(GetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicyPortRange... portRanges) {

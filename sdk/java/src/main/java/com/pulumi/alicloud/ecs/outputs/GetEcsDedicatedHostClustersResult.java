@@ -5,6 +5,7 @@ package com.pulumi.alicloud.ecs.outputs;
 
 import com.pulumi.alicloud.ecs.outputs.GetEcsDedicatedHostClustersCluster;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Object;
 import java.lang.String;
 import java.util.List;
@@ -102,7 +103,10 @@ public final class GetEcsDedicatedHostClustersResult {
 
         @CustomType.Setter
         public Builder clusters(List<GetEcsDedicatedHostClustersCluster> clusters) {
-            this.clusters = Objects.requireNonNull(clusters);
+            if (clusters == null) {
+              throw new MissingRequiredPropertyException("GetEcsDedicatedHostClustersResult", "clusters");
+            }
+            this.clusters = clusters;
             return this;
         }
         public Builder clusters(GetEcsDedicatedHostClustersCluster... clusters) {
@@ -110,6 +114,7 @@ public final class GetEcsDedicatedHostClustersResult {
         }
         @CustomType.Setter
         public Builder dedicatedHostClusterIds(@Nullable List<String> dedicatedHostClusterIds) {
+
             this.dedicatedHostClusterIds = dedicatedHostClusterIds;
             return this;
         }
@@ -118,17 +123,24 @@ public final class GetEcsDedicatedHostClustersResult {
         }
         @CustomType.Setter
         public Builder dedicatedHostClusterName(@Nullable String dedicatedHostClusterName) {
+
             this.dedicatedHostClusterName = dedicatedHostClusterName;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetEcsDedicatedHostClustersResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder ids(List<String> ids) {
-            this.ids = Objects.requireNonNull(ids);
+            if (ids == null) {
+              throw new MissingRequiredPropertyException("GetEcsDedicatedHostClustersResult", "ids");
+            }
+            this.ids = ids;
             return this;
         }
         public Builder ids(String... ids) {
@@ -136,12 +148,16 @@ public final class GetEcsDedicatedHostClustersResult {
         }
         @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
+
             this.nameRegex = nameRegex;
             return this;
         }
         @CustomType.Setter
         public Builder names(List<String> names) {
-            this.names = Objects.requireNonNull(names);
+            if (names == null) {
+              throw new MissingRequiredPropertyException("GetEcsDedicatedHostClustersResult", "names");
+            }
+            this.names = names;
             return this;
         }
         public Builder names(String... names) {
@@ -149,16 +165,19 @@ public final class GetEcsDedicatedHostClustersResult {
         }
         @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
+
             this.outputFile = outputFile;
             return this;
         }
         @CustomType.Setter
         public Builder tags(@Nullable Map<String,Object> tags) {
+
             this.tags = tags;
             return this;
         }
         @CustomType.Setter
         public Builder zoneId(@Nullable String zoneId) {
+
             this.zoneId = zoneId;
             return this;
         }

@@ -5,6 +5,7 @@ package com.pulumi.alicloud.emr.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -148,9 +149,15 @@ public final class ClusterMetaStoreConfArgs extends com.pulumi.resources.Resourc
         }
 
         public ClusterMetaStoreConfArgs build() {
-            $.dbPassword = Objects.requireNonNull($.dbPassword, "expected parameter 'dbPassword' to be non-null");
-            $.dbUrl = Objects.requireNonNull($.dbUrl, "expected parameter 'dbUrl' to be non-null");
-            $.dbUserName = Objects.requireNonNull($.dbUserName, "expected parameter 'dbUserName' to be non-null");
+            if ($.dbPassword == null) {
+                throw new MissingRequiredPropertyException("ClusterMetaStoreConfArgs", "dbPassword");
+            }
+            if ($.dbUrl == null) {
+                throw new MissingRequiredPropertyException("ClusterMetaStoreConfArgs", "dbUrl");
+            }
+            if ($.dbUserName == null) {
+                throw new MissingRequiredPropertyException("ClusterMetaStoreConfArgs", "dbUserName");
+            }
             return $;
         }
     }

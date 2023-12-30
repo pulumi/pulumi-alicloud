@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.slb.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -56,12 +57,18 @@ public final class GetZonesZoneSupportedResource {
 
         @CustomType.Setter
         public Builder addressIpVersion(String addressIpVersion) {
-            this.addressIpVersion = Objects.requireNonNull(addressIpVersion);
+            if (addressIpVersion == null) {
+              throw new MissingRequiredPropertyException("GetZonesZoneSupportedResource", "addressIpVersion");
+            }
+            this.addressIpVersion = addressIpVersion;
             return this;
         }
         @CustomType.Setter
         public Builder addressType(String addressType) {
-            this.addressType = Objects.requireNonNull(addressType);
+            if (addressType == null) {
+              throw new MissingRequiredPropertyException("GetZonesZoneSupportedResource", "addressType");
+            }
+            this.addressType = addressType;
             return this;
         }
         public GetZonesZoneSupportedResource build() {

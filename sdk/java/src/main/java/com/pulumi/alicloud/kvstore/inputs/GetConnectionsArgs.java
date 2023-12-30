@@ -5,6 +5,7 @@ package com.pulumi.alicloud.kvstore.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -113,7 +114,9 @@ public final class GetConnectionsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         public GetConnectionsArgs build() {
-            $.ids = Objects.requireNonNull($.ids, "expected parameter 'ids' to be non-null");
+            if ($.ids == null) {
+                throw new MissingRequiredPropertyException("GetConnectionsArgs", "ids");
+            }
             return $;
         }
     }

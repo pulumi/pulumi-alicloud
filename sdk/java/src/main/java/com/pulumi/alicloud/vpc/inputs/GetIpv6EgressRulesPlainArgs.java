@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.vpc.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -238,7 +239,9 @@ public final class GetIpv6EgressRulesPlainArgs extends com.pulumi.resources.Invo
         }
 
         public GetIpv6EgressRulesPlainArgs build() {
-            $.ipv6GatewayId = Objects.requireNonNull($.ipv6GatewayId, "expected parameter 'ipv6GatewayId' to be non-null");
+            if ($.ipv6GatewayId == null) {
+                throw new MissingRequiredPropertyException("GetIpv6EgressRulesPlainArgs", "ipv6GatewayId");
+            }
             return $;
         }
     }

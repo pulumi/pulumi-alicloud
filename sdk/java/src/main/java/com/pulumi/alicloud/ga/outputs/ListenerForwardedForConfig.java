@@ -100,26 +100,31 @@ public final class ListenerForwardedForConfig {
 
         @CustomType.Setter
         public Builder forwardedForGaApEnabled(@Nullable Boolean forwardedForGaApEnabled) {
+
             this.forwardedForGaApEnabled = forwardedForGaApEnabled;
             return this;
         }
         @CustomType.Setter
         public Builder forwardedForGaIdEnabled(@Nullable Boolean forwardedForGaIdEnabled) {
+
             this.forwardedForGaIdEnabled = forwardedForGaIdEnabled;
             return this;
         }
         @CustomType.Setter
         public Builder forwardedForPortEnabled(@Nullable Boolean forwardedForPortEnabled) {
+
             this.forwardedForPortEnabled = forwardedForPortEnabled;
             return this;
         }
         @CustomType.Setter
         public Builder forwardedForProtoEnabled(@Nullable Boolean forwardedForProtoEnabled) {
+
             this.forwardedForProtoEnabled = forwardedForProtoEnabled;
             return this;
         }
         @CustomType.Setter
         public Builder realIpEnabled(@Nullable Boolean realIpEnabled) {
+
             this.realIpEnabled = realIpEnabled;
             return this;
         }

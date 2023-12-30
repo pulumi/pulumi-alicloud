@@ -5,6 +5,7 @@ package com.pulumi.alicloud.ens;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -187,8 +188,12 @@ public final class SnapshotArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public SnapshotArgs build() {
-            $.diskId = Objects.requireNonNull($.diskId, "expected parameter 'diskId' to be non-null");
-            $.ensRegionId = Objects.requireNonNull($.ensRegionId, "expected parameter 'ensRegionId' to be non-null");
+            if ($.diskId == null) {
+                throw new MissingRequiredPropertyException("SnapshotArgs", "diskId");
+            }
+            if ($.ensRegionId == null) {
+                throw new MissingRequiredPropertyException("SnapshotArgs", "ensRegionId");
+            }
             return $;
         }
     }

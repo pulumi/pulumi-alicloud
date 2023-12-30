@@ -5,6 +5,7 @@ package com.pulumi.alicloud.threatdetection;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -372,11 +373,21 @@ public final class WebLockConfigArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public WebLockConfigArgs build() {
-            $.defenceMode = Objects.requireNonNull($.defenceMode, "expected parameter 'defenceMode' to be non-null");
-            $.dir = Objects.requireNonNull($.dir, "expected parameter 'dir' to be non-null");
-            $.localBackupDir = Objects.requireNonNull($.localBackupDir, "expected parameter 'localBackupDir' to be non-null");
-            $.mode = Objects.requireNonNull($.mode, "expected parameter 'mode' to be non-null");
-            $.uuid = Objects.requireNonNull($.uuid, "expected parameter 'uuid' to be non-null");
+            if ($.defenceMode == null) {
+                throw new MissingRequiredPropertyException("WebLockConfigArgs", "defenceMode");
+            }
+            if ($.dir == null) {
+                throw new MissingRequiredPropertyException("WebLockConfigArgs", "dir");
+            }
+            if ($.localBackupDir == null) {
+                throw new MissingRequiredPropertyException("WebLockConfigArgs", "localBackupDir");
+            }
+            if ($.mode == null) {
+                throw new MissingRequiredPropertyException("WebLockConfigArgs", "mode");
+            }
+            if ($.uuid == null) {
+                throw new MissingRequiredPropertyException("WebLockConfigArgs", "uuid");
+            }
             return $;
         }
     }

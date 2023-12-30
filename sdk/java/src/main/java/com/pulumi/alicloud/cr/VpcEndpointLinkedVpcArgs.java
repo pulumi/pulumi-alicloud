@@ -5,6 +5,7 @@ package com.pulumi.alicloud.cr;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -225,10 +226,18 @@ public final class VpcEndpointLinkedVpcArgs extends com.pulumi.resources.Resourc
         }
 
         public VpcEndpointLinkedVpcArgs build() {
-            $.instanceId = Objects.requireNonNull($.instanceId, "expected parameter 'instanceId' to be non-null");
-            $.moduleName = Objects.requireNonNull($.moduleName, "expected parameter 'moduleName' to be non-null");
-            $.vpcId = Objects.requireNonNull($.vpcId, "expected parameter 'vpcId' to be non-null");
-            $.vswitchId = Objects.requireNonNull($.vswitchId, "expected parameter 'vswitchId' to be non-null");
+            if ($.instanceId == null) {
+                throw new MissingRequiredPropertyException("VpcEndpointLinkedVpcArgs", "instanceId");
+            }
+            if ($.moduleName == null) {
+                throw new MissingRequiredPropertyException("VpcEndpointLinkedVpcArgs", "moduleName");
+            }
+            if ($.vpcId == null) {
+                throw new MissingRequiredPropertyException("VpcEndpointLinkedVpcArgs", "vpcId");
+            }
+            if ($.vswitchId == null) {
+                throw new MissingRequiredPropertyException("VpcEndpointLinkedVpcArgs", "vswitchId");
+            }
             return $;
         }
     }

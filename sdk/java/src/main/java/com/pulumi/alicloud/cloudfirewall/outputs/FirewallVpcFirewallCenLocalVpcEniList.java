@@ -58,11 +58,13 @@ public final class FirewallVpcFirewallCenLocalVpcEniList {
 
         @CustomType.Setter
         public Builder eniId(@Nullable String eniId) {
+
             this.eniId = eniId;
             return this;
         }
         @CustomType.Setter
         public Builder eniPrivateIpAddress(@Nullable String eniPrivateIpAddress) {
+
             this.eniPrivateIpAddress = eniPrivateIpAddress;
             return this;
         }

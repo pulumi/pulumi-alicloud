@@ -59,11 +59,13 @@ public final class ServiceMeshMeshConfigPrometheus {
 
         @CustomType.Setter
         public Builder externalUrl(@Nullable String externalUrl) {
+
             this.externalUrl = externalUrl;
             return this;
         }
         @CustomType.Setter
         public Builder useExternal(@Nullable Boolean useExternal) {
+
             this.useExternal = useExternal;
             return this;
         }

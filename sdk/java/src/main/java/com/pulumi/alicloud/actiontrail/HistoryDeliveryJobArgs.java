@@ -5,6 +5,7 @@ package com.pulumi.alicloud.actiontrail;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -74,7 +75,9 @@ public final class HistoryDeliveryJobArgs extends com.pulumi.resources.ResourceA
         }
 
         public HistoryDeliveryJobArgs build() {
-            $.trailName = Objects.requireNonNull($.trailName, "expected parameter 'trailName' to be non-null");
+            if ($.trailName == null) {
+                throw new MissingRequiredPropertyException("HistoryDeliveryJobArgs", "trailName");
+            }
             return $;
         }
     }

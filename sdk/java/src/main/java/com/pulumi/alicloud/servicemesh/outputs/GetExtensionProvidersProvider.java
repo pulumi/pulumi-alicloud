@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.servicemesh.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -98,27 +99,42 @@ public final class GetExtensionProvidersProvider {
 
         @CustomType.Setter
         public Builder config(String config) {
-            this.config = Objects.requireNonNull(config);
+            if (config == null) {
+              throw new MissingRequiredPropertyException("GetExtensionProvidersProvider", "config");
+            }
+            this.config = config;
             return this;
         }
         @CustomType.Setter
         public Builder extensionProviderName(String extensionProviderName) {
-            this.extensionProviderName = Objects.requireNonNull(extensionProviderName);
+            if (extensionProviderName == null) {
+              throw new MissingRequiredPropertyException("GetExtensionProvidersProvider", "extensionProviderName");
+            }
+            this.extensionProviderName = extensionProviderName;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetExtensionProvidersProvider", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder serviceMeshId(String serviceMeshId) {
-            this.serviceMeshId = Objects.requireNonNull(serviceMeshId);
+            if (serviceMeshId == null) {
+              throw new MissingRequiredPropertyException("GetExtensionProvidersProvider", "serviceMeshId");
+            }
+            this.serviceMeshId = serviceMeshId;
             return this;
         }
         @CustomType.Setter
         public Builder type(String type) {
-            this.type = Objects.requireNonNull(type);
+            if (type == null) {
+              throw new MissingRequiredPropertyException("GetExtensionProvidersProvider", "type");
+            }
+            this.type = type;
             return this;
         }
         public GetExtensionProvidersProvider build() {

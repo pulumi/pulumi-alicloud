@@ -13,28 +13,19 @@ namespace Pulumi.AliCloud.Log.Inputs
     public sealed class StoreEncryptConfArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// enable encryption. Default `false`
+        /// Enable encryption. Default false.
         /// </summary>
         [Input("enable")]
         public Input<bool>? Enable { get; set; }
 
         /// <summary>
-        /// Supported encryption type, only supports `default(AES)`,` m4`
+        /// Supported encryption type, only supports `default`(AES), `m4`.
         /// </summary>
         [Input("encryptType")]
         public Input<string>? EncryptType { get; set; }
 
         /// <summary>
-        /// User bring your own key (BYOK) encryption [Refer to details](https://www.alibabacloud.com/help/zh/doc-detail/187853.htm), the format is as follows. See `user_cmk_info` below.
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        /// });
-        /// ```
+        /// User bring your own key (BYOK) encryption Refer to details, the format is as follows. See user_cmk_info below. `{ "cmk_key_id": "your_cmk_key_id", "arn": "your_role_arn", "region_id": "you_cmk_region_id" }`. See `user_cmk_info` below.
         /// </summary>
         [Input("userCmkInfo")]
         public Input<Inputs.StoreEncryptConfUserCmkInfoArgs>? UserCmkInfo { get; set; }

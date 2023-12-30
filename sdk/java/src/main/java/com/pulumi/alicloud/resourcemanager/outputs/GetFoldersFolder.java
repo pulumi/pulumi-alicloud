@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.resourcemanager.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -84,22 +85,34 @@ public final class GetFoldersFolder {
 
         @CustomType.Setter
         public Builder folderId(String folderId) {
-            this.folderId = Objects.requireNonNull(folderId);
+            if (folderId == null) {
+              throw new MissingRequiredPropertyException("GetFoldersFolder", "folderId");
+            }
+            this.folderId = folderId;
             return this;
         }
         @CustomType.Setter
         public Builder folderName(String folderName) {
-            this.folderName = Objects.requireNonNull(folderName);
+            if (folderName == null) {
+              throw new MissingRequiredPropertyException("GetFoldersFolder", "folderName");
+            }
+            this.folderName = folderName;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetFoldersFolder", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder parentFolderId(String parentFolderId) {
-            this.parentFolderId = Objects.requireNonNull(parentFolderId);
+            if (parentFolderId == null) {
+              throw new MissingRequiredPropertyException("GetFoldersFolder", "parentFolderId");
+            }
+            this.parentFolderId = parentFolderId;
             return this;
         }
         public GetFoldersFolder build() {

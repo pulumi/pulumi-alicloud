@@ -5,6 +5,7 @@ package com.pulumi.alicloud.arms;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
@@ -312,8 +313,12 @@ public final class EnvironmentArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public EnvironmentArgs build() {
-            $.environmentSubType = Objects.requireNonNull($.environmentSubType, "expected parameter 'environmentSubType' to be non-null");
-            $.environmentType = Objects.requireNonNull($.environmentType, "expected parameter 'environmentType' to be non-null");
+            if ($.environmentSubType == null) {
+                throw new MissingRequiredPropertyException("EnvironmentArgs", "environmentSubType");
+            }
+            if ($.environmentType == null) {
+                throw new MissingRequiredPropertyException("EnvironmentArgs", "environmentType");
+            }
             return $;
         }
     }

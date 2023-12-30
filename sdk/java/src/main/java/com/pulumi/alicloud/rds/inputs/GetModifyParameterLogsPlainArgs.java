@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.rds.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -146,9 +147,15 @@ public final class GetModifyParameterLogsPlainArgs extends com.pulumi.resources.
         }
 
         public GetModifyParameterLogsPlainArgs build() {
-            $.dbInstanceId = Objects.requireNonNull($.dbInstanceId, "expected parameter 'dbInstanceId' to be non-null");
-            $.endTime = Objects.requireNonNull($.endTime, "expected parameter 'endTime' to be non-null");
-            $.startTime = Objects.requireNonNull($.startTime, "expected parameter 'startTime' to be non-null");
+            if ($.dbInstanceId == null) {
+                throw new MissingRequiredPropertyException("GetModifyParameterLogsPlainArgs", "dbInstanceId");
+            }
+            if ($.endTime == null) {
+                throw new MissingRequiredPropertyException("GetModifyParameterLogsPlainArgs", "endTime");
+            }
+            if ($.startTime == null) {
+                throw new MissingRequiredPropertyException("GetModifyParameterLogsPlainArgs", "startTime");
+            }
             return $;
         }
     }

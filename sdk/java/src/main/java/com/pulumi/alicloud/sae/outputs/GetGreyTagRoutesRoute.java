@@ -6,6 +6,7 @@ package com.pulumi.alicloud.sae.outputs;
 import com.pulumi.alicloud.sae.outputs.GetGreyTagRoutesRouteDubboRule;
 import com.pulumi.alicloud.sae.outputs.GetGreyTagRoutesRouteScRule;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -101,12 +102,18 @@ public final class GetGreyTagRoutesRoute {
 
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetGreyTagRoutesRoute", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder dubboRules(List<GetGreyTagRoutesRouteDubboRule> dubboRules) {
-            this.dubboRules = Objects.requireNonNull(dubboRules);
+            if (dubboRules == null) {
+              throw new MissingRequiredPropertyException("GetGreyTagRoutesRoute", "dubboRules");
+            }
+            this.dubboRules = dubboRules;
             return this;
         }
         public Builder dubboRules(GetGreyTagRoutesRouteDubboRule... dubboRules) {
@@ -114,17 +121,26 @@ public final class GetGreyTagRoutesRoute {
         }
         @CustomType.Setter
         public Builder greyTagRouteName(String greyTagRouteName) {
-            this.greyTagRouteName = Objects.requireNonNull(greyTagRouteName);
+            if (greyTagRouteName == null) {
+              throw new MissingRequiredPropertyException("GetGreyTagRoutesRoute", "greyTagRouteName");
+            }
+            this.greyTagRouteName = greyTagRouteName;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetGreyTagRoutesRoute", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder scRules(List<GetGreyTagRoutesRouteScRule> scRules) {
-            this.scRules = Objects.requireNonNull(scRules);
+            if (scRules == null) {
+              throw new MissingRequiredPropertyException("GetGreyTagRoutesRoute", "scRules");
+            }
+            this.scRules = scRules;
             return this;
         }
         public Builder scRules(GetGreyTagRoutesRouteScRule... scRules) {

@@ -6,6 +6,7 @@ package com.pulumi.alicloud.ga;
 import com.pulumi.alicloud.ga.inputs.AclAclEntryArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Object;
 import java.lang.String;
@@ -259,7 +260,9 @@ public final class AclArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public AclArgs build() {
-            $.addressIpVersion = Objects.requireNonNull($.addressIpVersion, "expected parameter 'addressIpVersion' to be non-null");
+            if ($.addressIpVersion == null) {
+                throw new MissingRequiredPropertyException("AclArgs", "addressIpVersion");
+            }
             return $;
         }
     }

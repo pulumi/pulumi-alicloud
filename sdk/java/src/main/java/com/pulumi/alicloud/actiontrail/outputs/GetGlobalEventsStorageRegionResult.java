@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.actiontrail.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -48,12 +49,18 @@ public final class GetGlobalEventsStorageRegionResult {
 
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetGlobalEventsStorageRegionResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder storageRegion(String storageRegion) {
-            this.storageRegion = Objects.requireNonNull(storageRegion);
+            if (storageRegion == null) {
+              throw new MissingRequiredPropertyException("GetGlobalEventsStorageRegionResult", "storageRegion");
+            }
+            this.storageRegion = storageRegion;
             return this;
         }
         public GetGlobalEventsStorageRegionResult build() {

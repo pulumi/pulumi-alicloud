@@ -6,6 +6,7 @@ package com.pulumi.alicloud.ga.outputs;
 import com.pulumi.alicloud.ga.outputs.GetForwardingRulesForwardingRuleRuleAction;
 import com.pulumi.alicloud.ga.outputs.GetForwardingRulesForwardingRuleRuleCondition;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -156,37 +157,58 @@ public final class GetForwardingRulesForwardingRule {
 
         @CustomType.Setter
         public Builder forwardingRuleId(String forwardingRuleId) {
-            this.forwardingRuleId = Objects.requireNonNull(forwardingRuleId);
+            if (forwardingRuleId == null) {
+              throw new MissingRequiredPropertyException("GetForwardingRulesForwardingRule", "forwardingRuleId");
+            }
+            this.forwardingRuleId = forwardingRuleId;
             return this;
         }
         @CustomType.Setter
         public Builder forwardingRuleName(String forwardingRuleName) {
-            this.forwardingRuleName = Objects.requireNonNull(forwardingRuleName);
+            if (forwardingRuleName == null) {
+              throw new MissingRequiredPropertyException("GetForwardingRulesForwardingRule", "forwardingRuleName");
+            }
+            this.forwardingRuleName = forwardingRuleName;
             return this;
         }
         @CustomType.Setter
         public Builder forwardingRuleStatus(String forwardingRuleStatus) {
-            this.forwardingRuleStatus = Objects.requireNonNull(forwardingRuleStatus);
+            if (forwardingRuleStatus == null) {
+              throw new MissingRequiredPropertyException("GetForwardingRulesForwardingRule", "forwardingRuleStatus");
+            }
+            this.forwardingRuleStatus = forwardingRuleStatus;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetForwardingRulesForwardingRule", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder listenerId(String listenerId) {
-            this.listenerId = Objects.requireNonNull(listenerId);
+            if (listenerId == null) {
+              throw new MissingRequiredPropertyException("GetForwardingRulesForwardingRule", "listenerId");
+            }
+            this.listenerId = listenerId;
             return this;
         }
         @CustomType.Setter
         public Builder priority(Integer priority) {
-            this.priority = Objects.requireNonNull(priority);
+            if (priority == null) {
+              throw new MissingRequiredPropertyException("GetForwardingRulesForwardingRule", "priority");
+            }
+            this.priority = priority;
             return this;
         }
         @CustomType.Setter
         public Builder ruleActions(List<GetForwardingRulesForwardingRuleRuleAction> ruleActions) {
-            this.ruleActions = Objects.requireNonNull(ruleActions);
+            if (ruleActions == null) {
+              throw new MissingRequiredPropertyException("GetForwardingRulesForwardingRule", "ruleActions");
+            }
+            this.ruleActions = ruleActions;
             return this;
         }
         public Builder ruleActions(GetForwardingRulesForwardingRuleRuleAction... ruleActions) {
@@ -194,7 +216,10 @@ public final class GetForwardingRulesForwardingRule {
         }
         @CustomType.Setter
         public Builder ruleConditions(List<GetForwardingRulesForwardingRuleRuleCondition> ruleConditions) {
-            this.ruleConditions = Objects.requireNonNull(ruleConditions);
+            if (ruleConditions == null) {
+              throw new MissingRequiredPropertyException("GetForwardingRulesForwardingRule", "ruleConditions");
+            }
+            this.ruleConditions = ruleConditions;
             return this;
         }
         public Builder ruleConditions(GetForwardingRulesForwardingRuleRuleCondition... ruleConditions) {

@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.ecs.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -211,67 +212,106 @@ public final class GetSecurityGroupRulesRule {
 
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetSecurityGroupRulesRule", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder destCidrIp(String destCidrIp) {
-            this.destCidrIp = Objects.requireNonNull(destCidrIp);
+            if (destCidrIp == null) {
+              throw new MissingRequiredPropertyException("GetSecurityGroupRulesRule", "destCidrIp");
+            }
+            this.destCidrIp = destCidrIp;
             return this;
         }
         @CustomType.Setter
         public Builder destGroupId(String destGroupId) {
-            this.destGroupId = Objects.requireNonNull(destGroupId);
+            if (destGroupId == null) {
+              throw new MissingRequiredPropertyException("GetSecurityGroupRulesRule", "destGroupId");
+            }
+            this.destGroupId = destGroupId;
             return this;
         }
         @CustomType.Setter
         public Builder destGroupOwnerAccount(String destGroupOwnerAccount) {
-            this.destGroupOwnerAccount = Objects.requireNonNull(destGroupOwnerAccount);
+            if (destGroupOwnerAccount == null) {
+              throw new MissingRequiredPropertyException("GetSecurityGroupRulesRule", "destGroupOwnerAccount");
+            }
+            this.destGroupOwnerAccount = destGroupOwnerAccount;
             return this;
         }
         @CustomType.Setter
         public Builder direction(String direction) {
-            this.direction = Objects.requireNonNull(direction);
+            if (direction == null) {
+              throw new MissingRequiredPropertyException("GetSecurityGroupRulesRule", "direction");
+            }
+            this.direction = direction;
             return this;
         }
         @CustomType.Setter
         public Builder ipProtocol(String ipProtocol) {
-            this.ipProtocol = Objects.requireNonNull(ipProtocol);
+            if (ipProtocol == null) {
+              throw new MissingRequiredPropertyException("GetSecurityGroupRulesRule", "ipProtocol");
+            }
+            this.ipProtocol = ipProtocol;
             return this;
         }
         @CustomType.Setter
         public Builder nicType(String nicType) {
-            this.nicType = Objects.requireNonNull(nicType);
+            if (nicType == null) {
+              throw new MissingRequiredPropertyException("GetSecurityGroupRulesRule", "nicType");
+            }
+            this.nicType = nicType;
             return this;
         }
         @CustomType.Setter
         public Builder policy(String policy) {
-            this.policy = Objects.requireNonNull(policy);
+            if (policy == null) {
+              throw new MissingRequiredPropertyException("GetSecurityGroupRulesRule", "policy");
+            }
+            this.policy = policy;
             return this;
         }
         @CustomType.Setter
         public Builder portRange(String portRange) {
-            this.portRange = Objects.requireNonNull(portRange);
+            if (portRange == null) {
+              throw new MissingRequiredPropertyException("GetSecurityGroupRulesRule", "portRange");
+            }
+            this.portRange = portRange;
             return this;
         }
         @CustomType.Setter
         public Builder priority(Integer priority) {
-            this.priority = Objects.requireNonNull(priority);
+            if (priority == null) {
+              throw new MissingRequiredPropertyException("GetSecurityGroupRulesRule", "priority");
+            }
+            this.priority = priority;
             return this;
         }
         @CustomType.Setter
         public Builder sourceCidrIp(String sourceCidrIp) {
-            this.sourceCidrIp = Objects.requireNonNull(sourceCidrIp);
+            if (sourceCidrIp == null) {
+              throw new MissingRequiredPropertyException("GetSecurityGroupRulesRule", "sourceCidrIp");
+            }
+            this.sourceCidrIp = sourceCidrIp;
             return this;
         }
         @CustomType.Setter
         public Builder sourceGroupId(String sourceGroupId) {
-            this.sourceGroupId = Objects.requireNonNull(sourceGroupId);
+            if (sourceGroupId == null) {
+              throw new MissingRequiredPropertyException("GetSecurityGroupRulesRule", "sourceGroupId");
+            }
+            this.sourceGroupId = sourceGroupId;
             return this;
         }
         @CustomType.Setter
         public Builder sourceGroupOwnerAccount(String sourceGroupOwnerAccount) {
-            this.sourceGroupOwnerAccount = Objects.requireNonNull(sourceGroupOwnerAccount);
+            if (sourceGroupOwnerAccount == null) {
+              throw new MissingRequiredPropertyException("GetSecurityGroupRulesRule", "sourceGroupOwnerAccount");
+            }
+            this.sourceGroupOwnerAccount = sourceGroupOwnerAccount;
             return this;
         }
         public GetSecurityGroupRulesRule build() {

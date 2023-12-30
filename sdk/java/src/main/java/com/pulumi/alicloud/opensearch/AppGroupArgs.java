@@ -7,6 +7,7 @@ import com.pulumi.alicloud.opensearch.inputs.AppGroupOrderArgs;
 import com.pulumi.alicloud.opensearch.inputs.AppGroupQuotaArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -385,10 +386,18 @@ public final class AppGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public AppGroupArgs build() {
-            $.appGroupName = Objects.requireNonNull($.appGroupName, "expected parameter 'appGroupName' to be non-null");
-            $.paymentType = Objects.requireNonNull($.paymentType, "expected parameter 'paymentType' to be non-null");
-            $.quota = Objects.requireNonNull($.quota, "expected parameter 'quota' to be non-null");
-            $.type = Objects.requireNonNull($.type, "expected parameter 'type' to be non-null");
+            if ($.appGroupName == null) {
+                throw new MissingRequiredPropertyException("AppGroupArgs", "appGroupName");
+            }
+            if ($.paymentType == null) {
+                throw new MissingRequiredPropertyException("AppGroupArgs", "paymentType");
+            }
+            if ($.quota == null) {
+                throw new MissingRequiredPropertyException("AppGroupArgs", "quota");
+            }
+            if ($.type == null) {
+                throw new MissingRequiredPropertyException("AppGroupArgs", "type");
+            }
             return $;
         }
     }

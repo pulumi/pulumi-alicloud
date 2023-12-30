@@ -5,6 +5,7 @@ package com.pulumi.alicloud.cms;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -306,8 +307,12 @@ public final class AlarmContactArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public AlarmContactArgs build() {
-            $.alarmContactName = Objects.requireNonNull($.alarmContactName, "expected parameter 'alarmContactName' to be non-null");
-            $.describe = Objects.requireNonNull($.describe, "expected parameter 'describe' to be non-null");
+            if ($.alarmContactName == null) {
+                throw new MissingRequiredPropertyException("AlarmContactArgs", "alarmContactName");
+            }
+            if ($.describe == null) {
+                throw new MissingRequiredPropertyException("AlarmContactArgs", "describe");
+            }
             return $;
         }
     }

@@ -5,6 +5,7 @@ package com.pulumi.alicloud.edas;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -262,10 +263,18 @@ public final class SlbAttachmentArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public SlbAttachmentArgs build() {
-            $.appId = Objects.requireNonNull($.appId, "expected parameter 'appId' to be non-null");
-            $.slbId = Objects.requireNonNull($.slbId, "expected parameter 'slbId' to be non-null");
-            $.slbIp = Objects.requireNonNull($.slbIp, "expected parameter 'slbIp' to be non-null");
-            $.type = Objects.requireNonNull($.type, "expected parameter 'type' to be non-null");
+            if ($.appId == null) {
+                throw new MissingRequiredPropertyException("SlbAttachmentArgs", "appId");
+            }
+            if ($.slbId == null) {
+                throw new MissingRequiredPropertyException("SlbAttachmentArgs", "slbId");
+            }
+            if ($.slbIp == null) {
+                throw new MissingRequiredPropertyException("SlbAttachmentArgs", "slbIp");
+            }
+            if ($.type == null) {
+                throw new MissingRequiredPropertyException("SlbAttachmentArgs", "type");
+            }
             return $;
         }
     }

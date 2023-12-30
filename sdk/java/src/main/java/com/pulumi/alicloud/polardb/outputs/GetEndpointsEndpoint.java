@@ -5,6 +5,7 @@ package com.pulumi.alicloud.polardb.outputs;
 
 import com.pulumi.alicloud.polardb.outputs.GetEndpointsEndpointAddressItem;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -128,7 +129,10 @@ public final class GetEndpointsEndpoint {
 
         @CustomType.Setter
         public Builder addressItems(List<GetEndpointsEndpointAddressItem> addressItems) {
-            this.addressItems = Objects.requireNonNull(addressItems);
+            if (addressItems == null) {
+              throw new MissingRequiredPropertyException("GetEndpointsEndpoint", "addressItems");
+            }
+            this.addressItems = addressItems;
             return this;
         }
         public Builder addressItems(GetEndpointsEndpointAddressItem... addressItems) {
@@ -136,32 +140,50 @@ public final class GetEndpointsEndpoint {
         }
         @CustomType.Setter
         public Builder autoAddNewNodes(String autoAddNewNodes) {
-            this.autoAddNewNodes = Objects.requireNonNull(autoAddNewNodes);
+            if (autoAddNewNodes == null) {
+              throw new MissingRequiredPropertyException("GetEndpointsEndpoint", "autoAddNewNodes");
+            }
+            this.autoAddNewNodes = autoAddNewNodes;
             return this;
         }
         @CustomType.Setter
         public Builder dbEndpointId(String dbEndpointId) {
-            this.dbEndpointId = Objects.requireNonNull(dbEndpointId);
+            if (dbEndpointId == null) {
+              throw new MissingRequiredPropertyException("GetEndpointsEndpoint", "dbEndpointId");
+            }
+            this.dbEndpointId = dbEndpointId;
             return this;
         }
         @CustomType.Setter
         public Builder endpointConfig(String endpointConfig) {
-            this.endpointConfig = Objects.requireNonNull(endpointConfig);
+            if (endpointConfig == null) {
+              throw new MissingRequiredPropertyException("GetEndpointsEndpoint", "endpointConfig");
+            }
+            this.endpointConfig = endpointConfig;
             return this;
         }
         @CustomType.Setter
         public Builder endpointType(String endpointType) {
-            this.endpointType = Objects.requireNonNull(endpointType);
+            if (endpointType == null) {
+              throw new MissingRequiredPropertyException("GetEndpointsEndpoint", "endpointType");
+            }
+            this.endpointType = endpointType;
             return this;
         }
         @CustomType.Setter
         public Builder nodes(String nodes) {
-            this.nodes = Objects.requireNonNull(nodes);
+            if (nodes == null) {
+              throw new MissingRequiredPropertyException("GetEndpointsEndpoint", "nodes");
+            }
+            this.nodes = nodes;
             return this;
         }
         @CustomType.Setter
         public Builder readWriteMode(String readWriteMode) {
-            this.readWriteMode = Objects.requireNonNull(readWriteMode);
+            if (readWriteMode == null) {
+              throw new MissingRequiredPropertyException("GetEndpointsEndpoint", "readWriteMode");
+            }
+            this.readWriteMode = readWriteMode;
             return this;
         }
         public GetEndpointsEndpoint build() {

@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.cdn.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -112,32 +113,50 @@ public final class GetRealTimeLogDeliveriesDelivery {
 
         @CustomType.Setter
         public Builder domain(String domain) {
-            this.domain = Objects.requireNonNull(domain);
+            if (domain == null) {
+              throw new MissingRequiredPropertyException("GetRealTimeLogDeliveriesDelivery", "domain");
+            }
+            this.domain = domain;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetRealTimeLogDeliveriesDelivery", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder logstore(String logstore) {
-            this.logstore = Objects.requireNonNull(logstore);
+            if (logstore == null) {
+              throw new MissingRequiredPropertyException("GetRealTimeLogDeliveriesDelivery", "logstore");
+            }
+            this.logstore = logstore;
             return this;
         }
         @CustomType.Setter
         public Builder project(String project) {
-            this.project = Objects.requireNonNull(project);
+            if (project == null) {
+              throw new MissingRequiredPropertyException("GetRealTimeLogDeliveriesDelivery", "project");
+            }
+            this.project = project;
             return this;
         }
         @CustomType.Setter
         public Builder slsRegion(String slsRegion) {
-            this.slsRegion = Objects.requireNonNull(slsRegion);
+            if (slsRegion == null) {
+              throw new MissingRequiredPropertyException("GetRealTimeLogDeliveriesDelivery", "slsRegion");
+            }
+            this.slsRegion = slsRegion;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetRealTimeLogDeliveriesDelivery", "status");
+            }
+            this.status = status;
             return this;
         }
         public GetRealTimeLogDeliveriesDelivery build() {

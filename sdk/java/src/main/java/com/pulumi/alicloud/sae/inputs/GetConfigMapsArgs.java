@@ -5,6 +5,7 @@ package com.pulumi.alicloud.sae.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -198,7 +199,9 @@ public final class GetConfigMapsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         public GetConfigMapsArgs build() {
-            $.namespaceId = Objects.requireNonNull($.namespaceId, "expected parameter 'namespaceId' to be non-null");
+            if ($.namespaceId == null) {
+                throw new MissingRequiredPropertyException("GetConfigMapsArgs", "namespaceId");
+            }
             return $;
         }
     }

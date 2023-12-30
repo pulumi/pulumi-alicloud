@@ -5,6 +5,7 @@ package com.pulumi.alicloud.dns;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -336,10 +337,18 @@ public final class DdosBgpInstanceArgs extends com.pulumi.resources.ResourceArgs
         }
 
         public DdosBgpInstanceArgs build() {
-            $.bandwidth = Objects.requireNonNull($.bandwidth, "expected parameter 'bandwidth' to be non-null");
-            $.ipCount = Objects.requireNonNull($.ipCount, "expected parameter 'ipCount' to be non-null");
-            $.ipType = Objects.requireNonNull($.ipType, "expected parameter 'ipType' to be non-null");
-            $.normalBandwidth = Objects.requireNonNull($.normalBandwidth, "expected parameter 'normalBandwidth' to be non-null");
+            if ($.bandwidth == null) {
+                throw new MissingRequiredPropertyException("DdosBgpInstanceArgs", "bandwidth");
+            }
+            if ($.ipCount == null) {
+                throw new MissingRequiredPropertyException("DdosBgpInstanceArgs", "ipCount");
+            }
+            if ($.ipType == null) {
+                throw new MissingRequiredPropertyException("DdosBgpInstanceArgs", "ipType");
+            }
+            if ($.normalBandwidth == null) {
+                throw new MissingRequiredPropertyException("DdosBgpInstanceArgs", "normalBandwidth");
+            }
             return $;
         }
     }

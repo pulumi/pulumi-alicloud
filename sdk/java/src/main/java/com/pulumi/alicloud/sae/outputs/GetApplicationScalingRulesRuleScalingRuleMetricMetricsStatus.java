@@ -6,6 +6,7 @@ package com.pulumi.alicloud.sae.outputs;
 import com.pulumi.alicloud.sae.outputs.GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusCurrentMetric;
 import com.pulumi.alicloud.sae.outputs.GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusNextScaleMetric;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -144,7 +145,10 @@ public final class GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatus 
 
         @CustomType.Setter
         public Builder currentMetrics(List<GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusCurrentMetric> currentMetrics) {
-            this.currentMetrics = Objects.requireNonNull(currentMetrics);
+            if (currentMetrics == null) {
+              throw new MissingRequiredPropertyException("GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatus", "currentMetrics");
+            }
+            this.currentMetrics = currentMetrics;
             return this;
         }
         public Builder currentMetrics(GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusCurrentMetric... currentMetrics) {
@@ -152,32 +156,50 @@ public final class GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatus 
         }
         @CustomType.Setter
         public Builder currentReplicas(Integer currentReplicas) {
-            this.currentReplicas = Objects.requireNonNull(currentReplicas);
+            if (currentReplicas == null) {
+              throw new MissingRequiredPropertyException("GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatus", "currentReplicas");
+            }
+            this.currentReplicas = currentReplicas;
             return this;
         }
         @CustomType.Setter
         public Builder desiredReplicas(Integer desiredReplicas) {
-            this.desiredReplicas = Objects.requireNonNull(desiredReplicas);
+            if (desiredReplicas == null) {
+              throw new MissingRequiredPropertyException("GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatus", "desiredReplicas");
+            }
+            this.desiredReplicas = desiredReplicas;
             return this;
         }
         @CustomType.Setter
         public Builder lastScaleTime(String lastScaleTime) {
-            this.lastScaleTime = Objects.requireNonNull(lastScaleTime);
+            if (lastScaleTime == null) {
+              throw new MissingRequiredPropertyException("GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatus", "lastScaleTime");
+            }
+            this.lastScaleTime = lastScaleTime;
             return this;
         }
         @CustomType.Setter
         public Builder maxReplicas(Integer maxReplicas) {
-            this.maxReplicas = Objects.requireNonNull(maxReplicas);
+            if (maxReplicas == null) {
+              throw new MissingRequiredPropertyException("GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatus", "maxReplicas");
+            }
+            this.maxReplicas = maxReplicas;
             return this;
         }
         @CustomType.Setter
         public Builder minReplicas(Integer minReplicas) {
-            this.minReplicas = Objects.requireNonNull(minReplicas);
+            if (minReplicas == null) {
+              throw new MissingRequiredPropertyException("GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatus", "minReplicas");
+            }
+            this.minReplicas = minReplicas;
             return this;
         }
         @CustomType.Setter
         public Builder nextScaleMetrics(List<GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusNextScaleMetric> nextScaleMetrics) {
-            this.nextScaleMetrics = Objects.requireNonNull(nextScaleMetrics);
+            if (nextScaleMetrics == null) {
+              throw new MissingRequiredPropertyException("GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatus", "nextScaleMetrics");
+            }
+            this.nextScaleMetrics = nextScaleMetrics;
             return this;
         }
         public Builder nextScaleMetrics(GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusNextScaleMetric... nextScaleMetrics) {
@@ -185,7 +207,10 @@ public final class GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatus 
         }
         @CustomType.Setter
         public Builder nextScaleTimePeriod(Integer nextScaleTimePeriod) {
-            this.nextScaleTimePeriod = Objects.requireNonNull(nextScaleTimePeriod);
+            if (nextScaleTimePeriod == null) {
+              throw new MissingRequiredPropertyException("GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatus", "nextScaleTimePeriod");
+            }
+            this.nextScaleTimePeriod = nextScaleTimePeriod;
             return this;
         }
         public GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatus build() {

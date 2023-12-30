@@ -203,6 +203,7 @@ public final class ServerGroupHealthCheckConfig {
 
         @CustomType.Setter
         public Builder healthCheckCodes(@Nullable List<String> healthCheckCodes) {
+
             this.healthCheckCodes = healthCheckCodes;
             return this;
         }
@@ -211,56 +212,67 @@ public final class ServerGroupHealthCheckConfig {
         }
         @CustomType.Setter
         public Builder healthCheckConnectPort(@Nullable Integer healthCheckConnectPort) {
+
             this.healthCheckConnectPort = healthCheckConnectPort;
             return this;
         }
         @CustomType.Setter
         public Builder healthCheckEnabled(@Nullable Boolean healthCheckEnabled) {
+
             this.healthCheckEnabled = healthCheckEnabled;
             return this;
         }
         @CustomType.Setter
         public Builder healthCheckHost(@Nullable String healthCheckHost) {
+
             this.healthCheckHost = healthCheckHost;
             return this;
         }
         @CustomType.Setter
         public Builder healthCheckHttpVersion(@Nullable String healthCheckHttpVersion) {
+
             this.healthCheckHttpVersion = healthCheckHttpVersion;
             return this;
         }
         @CustomType.Setter
         public Builder healthCheckInterval(@Nullable Integer healthCheckInterval) {
+
             this.healthCheckInterval = healthCheckInterval;
             return this;
         }
         @CustomType.Setter
         public Builder healthCheckMethod(@Nullable String healthCheckMethod) {
+
             this.healthCheckMethod = healthCheckMethod;
             return this;
         }
         @CustomType.Setter
         public Builder healthCheckPath(@Nullable String healthCheckPath) {
+
             this.healthCheckPath = healthCheckPath;
             return this;
         }
         @CustomType.Setter
         public Builder healthCheckProtocol(@Nullable String healthCheckProtocol) {
+
             this.healthCheckProtocol = healthCheckProtocol;
             return this;
         }
         @CustomType.Setter
         public Builder healthCheckTimeout(@Nullable Integer healthCheckTimeout) {
+
             this.healthCheckTimeout = healthCheckTimeout;
             return this;
         }
         @CustomType.Setter
         public Builder healthyThreshold(@Nullable Integer healthyThreshold) {
+
             this.healthyThreshold = healthyThreshold;
             return this;
         }
         @CustomType.Setter
         public Builder unhealthyThreshold(@Nullable Integer unhealthyThreshold) {
+
             this.unhealthyThreshold = unhealthyThreshold;
             return this;
         }

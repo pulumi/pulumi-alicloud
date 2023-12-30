@@ -5,6 +5,7 @@ package com.pulumi.alicloud.scdn.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -237,10 +238,18 @@ public final class DomainSourceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public DomainSourceArgs build() {
-            $.content = Objects.requireNonNull($.content, "expected parameter 'content' to be non-null");
-            $.port = Objects.requireNonNull($.port, "expected parameter 'port' to be non-null");
-            $.priority = Objects.requireNonNull($.priority, "expected parameter 'priority' to be non-null");
-            $.type = Objects.requireNonNull($.type, "expected parameter 'type' to be non-null");
+            if ($.content == null) {
+                throw new MissingRequiredPropertyException("DomainSourceArgs", "content");
+            }
+            if ($.port == null) {
+                throw new MissingRequiredPropertyException("DomainSourceArgs", "port");
+            }
+            if ($.priority == null) {
+                throw new MissingRequiredPropertyException("DomainSourceArgs", "priority");
+            }
+            if ($.type == null) {
+                throw new MissingRequiredPropertyException("DomainSourceArgs", "type");
+            }
             return $;
         }
     }

@@ -5,6 +5,7 @@ package com.pulumi.alicloud.eci.outputs;
 
 import com.pulumi.alicloud.eci.outputs.GetContainerGroupsGroupEciSecurityContextSysctl;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.util.List;
 import java.util.Objects;
 
@@ -43,7 +44,10 @@ public final class GetContainerGroupsGroupEciSecurityContext {
 
         @CustomType.Setter
         public Builder sysctls(List<GetContainerGroupsGroupEciSecurityContextSysctl> sysctls) {
-            this.sysctls = Objects.requireNonNull(sysctls);
+            if (sysctls == null) {
+              throw new MissingRequiredPropertyException("GetContainerGroupsGroupEciSecurityContext", "sysctls");
+            }
+            this.sysctls = sysctls;
             return this;
         }
         public Builder sysctls(GetContainerGroupsGroupEciSecurityContextSysctl... sysctls) {

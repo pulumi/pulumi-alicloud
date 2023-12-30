@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.dns.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -239,8 +240,12 @@ public final class GetAccessStrategiesPlainArgs extends com.pulumi.resources.Inv
         }
 
         public GetAccessStrategiesPlainArgs build() {
-            $.instanceId = Objects.requireNonNull($.instanceId, "expected parameter 'instanceId' to be non-null");
-            $.strategyMode = Objects.requireNonNull($.strategyMode, "expected parameter 'strategyMode' to be non-null");
+            if ($.instanceId == null) {
+                throw new MissingRequiredPropertyException("GetAccessStrategiesPlainArgs", "instanceId");
+            }
+            if ($.strategyMode == null) {
+                throw new MissingRequiredPropertyException("GetAccessStrategiesPlainArgs", "strategyMode");
+            }
             return $;
         }
     }

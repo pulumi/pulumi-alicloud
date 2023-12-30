@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.cfg.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -155,47 +156,74 @@ public final class GetDeliveryChannelsChannel {
 
         @CustomType.Setter
         public Builder deliveryChannelAssumeRoleArn(String deliveryChannelAssumeRoleArn) {
-            this.deliveryChannelAssumeRoleArn = Objects.requireNonNull(deliveryChannelAssumeRoleArn);
+            if (deliveryChannelAssumeRoleArn == null) {
+              throw new MissingRequiredPropertyException("GetDeliveryChannelsChannel", "deliveryChannelAssumeRoleArn");
+            }
+            this.deliveryChannelAssumeRoleArn = deliveryChannelAssumeRoleArn;
             return this;
         }
         @CustomType.Setter
         public Builder deliveryChannelCondition(String deliveryChannelCondition) {
-            this.deliveryChannelCondition = Objects.requireNonNull(deliveryChannelCondition);
+            if (deliveryChannelCondition == null) {
+              throw new MissingRequiredPropertyException("GetDeliveryChannelsChannel", "deliveryChannelCondition");
+            }
+            this.deliveryChannelCondition = deliveryChannelCondition;
             return this;
         }
         @CustomType.Setter
         public Builder deliveryChannelId(String deliveryChannelId) {
-            this.deliveryChannelId = Objects.requireNonNull(deliveryChannelId);
+            if (deliveryChannelId == null) {
+              throw new MissingRequiredPropertyException("GetDeliveryChannelsChannel", "deliveryChannelId");
+            }
+            this.deliveryChannelId = deliveryChannelId;
             return this;
         }
         @CustomType.Setter
         public Builder deliveryChannelName(String deliveryChannelName) {
-            this.deliveryChannelName = Objects.requireNonNull(deliveryChannelName);
+            if (deliveryChannelName == null) {
+              throw new MissingRequiredPropertyException("GetDeliveryChannelsChannel", "deliveryChannelName");
+            }
+            this.deliveryChannelName = deliveryChannelName;
             return this;
         }
         @CustomType.Setter
         public Builder deliveryChannelTargetArn(String deliveryChannelTargetArn) {
-            this.deliveryChannelTargetArn = Objects.requireNonNull(deliveryChannelTargetArn);
+            if (deliveryChannelTargetArn == null) {
+              throw new MissingRequiredPropertyException("GetDeliveryChannelsChannel", "deliveryChannelTargetArn");
+            }
+            this.deliveryChannelTargetArn = deliveryChannelTargetArn;
             return this;
         }
         @CustomType.Setter
         public Builder deliveryChannelType(String deliveryChannelType) {
-            this.deliveryChannelType = Objects.requireNonNull(deliveryChannelType);
+            if (deliveryChannelType == null) {
+              throw new MissingRequiredPropertyException("GetDeliveryChannelsChannel", "deliveryChannelType");
+            }
+            this.deliveryChannelType = deliveryChannelType;
             return this;
         }
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetDeliveryChannelsChannel", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetDeliveryChannelsChannel", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder status(Integer status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetDeliveryChannelsChannel", "status");
+            }
+            this.status = status;
             return this;
         }
         public GetDeliveryChannelsChannel build() {

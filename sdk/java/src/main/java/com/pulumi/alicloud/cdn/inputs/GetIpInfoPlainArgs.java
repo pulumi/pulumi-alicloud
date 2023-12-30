@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.cdn.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -63,7 +64,9 @@ public final class GetIpInfoPlainArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         public GetIpInfoPlainArgs build() {
-            $.ip = Objects.requireNonNull($.ip, "expected parameter 'ip' to be non-null");
+            if ($.ip == null) {
+                throw new MissingRequiredPropertyException("GetIpInfoPlainArgs", "ip");
+            }
             return $;
         }
     }

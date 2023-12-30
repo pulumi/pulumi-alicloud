@@ -5,6 +5,7 @@ package com.pulumi.alicloud.expressconnect.outputs;
 
 import com.pulumi.alicloud.expressconnect.outputs.GetAccessPointsPoint;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -82,12 +83,18 @@ public final class GetAccessPointsResult {
 
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetAccessPointsResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder ids(List<String> ids) {
-            this.ids = Objects.requireNonNull(ids);
+            if (ids == null) {
+              throw new MissingRequiredPropertyException("GetAccessPointsResult", "ids");
+            }
+            this.ids = ids;
             return this;
         }
         public Builder ids(String... ids) {
@@ -95,12 +102,16 @@ public final class GetAccessPointsResult {
         }
         @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
+
             this.nameRegex = nameRegex;
             return this;
         }
         @CustomType.Setter
         public Builder names(List<String> names) {
-            this.names = Objects.requireNonNull(names);
+            if (names == null) {
+              throw new MissingRequiredPropertyException("GetAccessPointsResult", "names");
+            }
+            this.names = names;
             return this;
         }
         public Builder names(String... names) {
@@ -108,12 +119,16 @@ public final class GetAccessPointsResult {
         }
         @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
+
             this.outputFile = outputFile;
             return this;
         }
         @CustomType.Setter
         public Builder points(List<GetAccessPointsPoint> points) {
-            this.points = Objects.requireNonNull(points);
+            if (points == null) {
+              throw new MissingRequiredPropertyException("GetAccessPointsResult", "points");
+            }
+            this.points = points;
             return this;
         }
         public Builder points(GetAccessPointsPoint... points) {
@@ -121,6 +136,7 @@ public final class GetAccessPointsResult {
         }
         @CustomType.Setter
         public Builder status(@Nullable String status) {
+
             this.status = status;
             return this;
         }

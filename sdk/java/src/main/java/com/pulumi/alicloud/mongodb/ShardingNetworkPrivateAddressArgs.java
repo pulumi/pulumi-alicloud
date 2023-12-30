@@ -5,6 +5,7 @@ package com.pulumi.alicloud.mongodb;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -244,9 +245,15 @@ public final class ShardingNetworkPrivateAddressArgs extends com.pulumi.resource
         }
 
         public ShardingNetworkPrivateAddressArgs build() {
-            $.dbInstanceId = Objects.requireNonNull($.dbInstanceId, "expected parameter 'dbInstanceId' to be non-null");
-            $.nodeId = Objects.requireNonNull($.nodeId, "expected parameter 'nodeId' to be non-null");
-            $.zoneId = Objects.requireNonNull($.zoneId, "expected parameter 'zoneId' to be non-null");
+            if ($.dbInstanceId == null) {
+                throw new MissingRequiredPropertyException("ShardingNetworkPrivateAddressArgs", "dbInstanceId");
+            }
+            if ($.nodeId == null) {
+                throw new MissingRequiredPropertyException("ShardingNetworkPrivateAddressArgs", "nodeId");
+            }
+            if ($.zoneId == null) {
+                throw new MissingRequiredPropertyException("ShardingNetworkPrivateAddressArgs", "zoneId");
+            }
             return $;
         }
     }

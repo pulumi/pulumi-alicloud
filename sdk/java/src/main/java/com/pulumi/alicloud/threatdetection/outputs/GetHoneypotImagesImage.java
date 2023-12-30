@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.threatdetection.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -168,52 +169,82 @@ public final class GetHoneypotImagesImage {
 
         @CustomType.Setter
         public Builder honeypotImageDisplayName(String honeypotImageDisplayName) {
-            this.honeypotImageDisplayName = Objects.requireNonNull(honeypotImageDisplayName);
+            if (honeypotImageDisplayName == null) {
+              throw new MissingRequiredPropertyException("GetHoneypotImagesImage", "honeypotImageDisplayName");
+            }
+            this.honeypotImageDisplayName = honeypotImageDisplayName;
             return this;
         }
         @CustomType.Setter
         public Builder honeypotImageId(String honeypotImageId) {
-            this.honeypotImageId = Objects.requireNonNull(honeypotImageId);
+            if (honeypotImageId == null) {
+              throw new MissingRequiredPropertyException("GetHoneypotImagesImage", "honeypotImageId");
+            }
+            this.honeypotImageId = honeypotImageId;
             return this;
         }
         @CustomType.Setter
         public Builder honeypotImageName(String honeypotImageName) {
-            this.honeypotImageName = Objects.requireNonNull(honeypotImageName);
+            if (honeypotImageName == null) {
+              throw new MissingRequiredPropertyException("GetHoneypotImagesImage", "honeypotImageName");
+            }
+            this.honeypotImageName = honeypotImageName;
             return this;
         }
         @CustomType.Setter
         public Builder honeypotImageType(String honeypotImageType) {
-            this.honeypotImageType = Objects.requireNonNull(honeypotImageType);
+            if (honeypotImageType == null) {
+              throw new MissingRequiredPropertyException("GetHoneypotImagesImage", "honeypotImageType");
+            }
+            this.honeypotImageType = honeypotImageType;
             return this;
         }
         @CustomType.Setter
         public Builder honeypotImageVersion(String honeypotImageVersion) {
-            this.honeypotImageVersion = Objects.requireNonNull(honeypotImageVersion);
+            if (honeypotImageVersion == null) {
+              throw new MissingRequiredPropertyException("GetHoneypotImagesImage", "honeypotImageVersion");
+            }
+            this.honeypotImageVersion = honeypotImageVersion;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetHoneypotImagesImage", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder multiports(String multiports) {
-            this.multiports = Objects.requireNonNull(multiports);
+            if (multiports == null) {
+              throw new MissingRequiredPropertyException("GetHoneypotImagesImage", "multiports");
+            }
+            this.multiports = multiports;
             return this;
         }
         @CustomType.Setter
         public Builder proto(String proto) {
-            this.proto = Objects.requireNonNull(proto);
+            if (proto == null) {
+              throw new MissingRequiredPropertyException("GetHoneypotImagesImage", "proto");
+            }
+            this.proto = proto;
             return this;
         }
         @CustomType.Setter
         public Builder servicePort(String servicePort) {
-            this.servicePort = Objects.requireNonNull(servicePort);
+            if (servicePort == null) {
+              throw new MissingRequiredPropertyException("GetHoneypotImagesImage", "servicePort");
+            }
+            this.servicePort = servicePort;
             return this;
         }
         @CustomType.Setter
         public Builder template(String template) {
-            this.template = Objects.requireNonNull(template);
+            if (template == null) {
+              throw new MissingRequiredPropertyException("GetHoneypotImagesImage", "template");
+            }
+            this.template = template;
             return this;
         }
         public GetHoneypotImagesImage build() {

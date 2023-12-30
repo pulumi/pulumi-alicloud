@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.servicemesh.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -84,22 +85,34 @@ public final class GetServiceMeshesMeshEndpoint {
 
         @CustomType.Setter
         public Builder intranetApiServerEndpoint(String intranetApiServerEndpoint) {
-            this.intranetApiServerEndpoint = Objects.requireNonNull(intranetApiServerEndpoint);
+            if (intranetApiServerEndpoint == null) {
+              throw new MissingRequiredPropertyException("GetServiceMeshesMeshEndpoint", "intranetApiServerEndpoint");
+            }
+            this.intranetApiServerEndpoint = intranetApiServerEndpoint;
             return this;
         }
         @CustomType.Setter
         public Builder intranetPilotEndpoint(String intranetPilotEndpoint) {
-            this.intranetPilotEndpoint = Objects.requireNonNull(intranetPilotEndpoint);
+            if (intranetPilotEndpoint == null) {
+              throw new MissingRequiredPropertyException("GetServiceMeshesMeshEndpoint", "intranetPilotEndpoint");
+            }
+            this.intranetPilotEndpoint = intranetPilotEndpoint;
             return this;
         }
         @CustomType.Setter
         public Builder publicApiServerEndpoint(String publicApiServerEndpoint) {
-            this.publicApiServerEndpoint = Objects.requireNonNull(publicApiServerEndpoint);
+            if (publicApiServerEndpoint == null) {
+              throw new MissingRequiredPropertyException("GetServiceMeshesMeshEndpoint", "publicApiServerEndpoint");
+            }
+            this.publicApiServerEndpoint = publicApiServerEndpoint;
             return this;
         }
         @CustomType.Setter
         public Builder publicPilotEndpoint(String publicPilotEndpoint) {
-            this.publicPilotEndpoint = Objects.requireNonNull(publicPilotEndpoint);
+            if (publicPilotEndpoint == null) {
+              throw new MissingRequiredPropertyException("GetServiceMeshesMeshEndpoint", "publicPilotEndpoint");
+            }
+            this.publicPilotEndpoint = publicPilotEndpoint;
             return this;
         }
         public GetServiceMeshesMeshEndpoint build() {

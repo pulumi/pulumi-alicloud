@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.oss.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -56,12 +57,18 @@ public final class GetBucketsBucketLogging {
 
         @CustomType.Setter
         public Builder targetBucket(String targetBucket) {
-            this.targetBucket = Objects.requireNonNull(targetBucket);
+            if (targetBucket == null) {
+              throw new MissingRequiredPropertyException("GetBucketsBucketLogging", "targetBucket");
+            }
+            this.targetBucket = targetBucket;
             return this;
         }
         @CustomType.Setter
         public Builder targetPrefix(String targetPrefix) {
-            this.targetPrefix = Objects.requireNonNull(targetPrefix);
+            if (targetPrefix == null) {
+              throw new MissingRequiredPropertyException("GetBucketsBucketLogging", "targetPrefix");
+            }
+            this.targetPrefix = targetPrefix;
             return this;
         }
         public GetBucketsBucketLogging build() {

@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.amqp.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -140,42 +141,66 @@ public final class GetBindingsBinding {
 
         @CustomType.Setter
         public Builder argument(String argument) {
-            this.argument = Objects.requireNonNull(argument);
+            if (argument == null) {
+              throw new MissingRequiredPropertyException("GetBindingsBinding", "argument");
+            }
+            this.argument = argument;
             return this;
         }
         @CustomType.Setter
         public Builder bindingKey(String bindingKey) {
-            this.bindingKey = Objects.requireNonNull(bindingKey);
+            if (bindingKey == null) {
+              throw new MissingRequiredPropertyException("GetBindingsBinding", "bindingKey");
+            }
+            this.bindingKey = bindingKey;
             return this;
         }
         @CustomType.Setter
         public Builder bindingType(String bindingType) {
-            this.bindingType = Objects.requireNonNull(bindingType);
+            if (bindingType == null) {
+              throw new MissingRequiredPropertyException("GetBindingsBinding", "bindingType");
+            }
+            this.bindingType = bindingType;
             return this;
         }
         @CustomType.Setter
         public Builder destinationName(String destinationName) {
-            this.destinationName = Objects.requireNonNull(destinationName);
+            if (destinationName == null) {
+              throw new MissingRequiredPropertyException("GetBindingsBinding", "destinationName");
+            }
+            this.destinationName = destinationName;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetBindingsBinding", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder instanceId(String instanceId) {
-            this.instanceId = Objects.requireNonNull(instanceId);
+            if (instanceId == null) {
+              throw new MissingRequiredPropertyException("GetBindingsBinding", "instanceId");
+            }
+            this.instanceId = instanceId;
             return this;
         }
         @CustomType.Setter
         public Builder sourceExchange(String sourceExchange) {
-            this.sourceExchange = Objects.requireNonNull(sourceExchange);
+            if (sourceExchange == null) {
+              throw new MissingRequiredPropertyException("GetBindingsBinding", "sourceExchange");
+            }
+            this.sourceExchange = sourceExchange;
             return this;
         }
         @CustomType.Setter
         public Builder virtualHostName(String virtualHostName) {
-            this.virtualHostName = Objects.requireNonNull(virtualHostName);
+            if (virtualHostName == null) {
+              throw new MissingRequiredPropertyException("GetBindingsBinding", "virtualHostName");
+            }
+            this.virtualHostName = virtualHostName;
             return this;
         }
         public GetBindingsBinding build() {

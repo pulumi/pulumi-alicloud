@@ -5,6 +5,7 @@ package com.pulumi.alicloud.apigateway.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -113,7 +114,9 @@ public final class ApiMockServiceConfigArgs extends com.pulumi.resources.Resourc
         }
 
         public ApiMockServiceConfigArgs build() {
-            $.result = Objects.requireNonNull($.result, "expected parameter 'result' to be non-null");
+            if ($.result == null) {
+                throw new MissingRequiredPropertyException("ApiMockServiceConfigArgs", "result");
+            }
             return $;
         }
     }

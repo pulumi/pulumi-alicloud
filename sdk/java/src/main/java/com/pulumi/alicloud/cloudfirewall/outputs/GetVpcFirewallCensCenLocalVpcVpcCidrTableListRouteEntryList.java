@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.cloudfirewall.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -56,12 +57,18 @@ public final class GetVpcFirewallCensCenLocalVpcVpcCidrTableListRouteEntryList {
 
         @CustomType.Setter
         public Builder destinationCidr(String destinationCidr) {
-            this.destinationCidr = Objects.requireNonNull(destinationCidr);
+            if (destinationCidr == null) {
+              throw new MissingRequiredPropertyException("GetVpcFirewallCensCenLocalVpcVpcCidrTableListRouteEntryList", "destinationCidr");
+            }
+            this.destinationCidr = destinationCidr;
             return this;
         }
         @CustomType.Setter
         public Builder nextHopInstanceId(String nextHopInstanceId) {
-            this.nextHopInstanceId = Objects.requireNonNull(nextHopInstanceId);
+            if (nextHopInstanceId == null) {
+              throw new MissingRequiredPropertyException("GetVpcFirewallCensCenLocalVpcVpcCidrTableListRouteEntryList", "nextHopInstanceId");
+            }
+            this.nextHopInstanceId = nextHopInstanceId;
             return this;
         }
         public GetVpcFirewallCensCenLocalVpcVpcCidrTableListRouteEntryList build() {

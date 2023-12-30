@@ -7,6 +7,7 @@ import com.pulumi.alicloud.yundun.inputs.BastionHostInstanceAdAuthServerArgs;
 import com.pulumi.alicloud.yundun.inputs.BastionHostInstanceLdapAuthServerArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.Object;
@@ -351,13 +352,27 @@ public final class BastionHostInstanceArgs extends com.pulumi.resources.Resource
         }
 
         public BastionHostInstanceArgs build() {
-            $.bandwidth = Objects.requireNonNull($.bandwidth, "expected parameter 'bandwidth' to be non-null");
-            $.description = Objects.requireNonNull($.description, "expected parameter 'description' to be non-null");
-            $.licenseCode = Objects.requireNonNull($.licenseCode, "expected parameter 'licenseCode' to be non-null");
-            $.planCode = Objects.requireNonNull($.planCode, "expected parameter 'planCode' to be non-null");
-            $.securityGroupIds = Objects.requireNonNull($.securityGroupIds, "expected parameter 'securityGroupIds' to be non-null");
-            $.storage = Objects.requireNonNull($.storage, "expected parameter 'storage' to be non-null");
-            $.vswitchId = Objects.requireNonNull($.vswitchId, "expected parameter 'vswitchId' to be non-null");
+            if ($.bandwidth == null) {
+                throw new MissingRequiredPropertyException("BastionHostInstanceArgs", "bandwidth");
+            }
+            if ($.description == null) {
+                throw new MissingRequiredPropertyException("BastionHostInstanceArgs", "description");
+            }
+            if ($.licenseCode == null) {
+                throw new MissingRequiredPropertyException("BastionHostInstanceArgs", "licenseCode");
+            }
+            if ($.planCode == null) {
+                throw new MissingRequiredPropertyException("BastionHostInstanceArgs", "planCode");
+            }
+            if ($.securityGroupIds == null) {
+                throw new MissingRequiredPropertyException("BastionHostInstanceArgs", "securityGroupIds");
+            }
+            if ($.storage == null) {
+                throw new MissingRequiredPropertyException("BastionHostInstanceArgs", "storage");
+            }
+            if ($.vswitchId == null) {
+                throw new MissingRequiredPropertyException("BastionHostInstanceArgs", "vswitchId");
+            }
             return $;
         }
     }

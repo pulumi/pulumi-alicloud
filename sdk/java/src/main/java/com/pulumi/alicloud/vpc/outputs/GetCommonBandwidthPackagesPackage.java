@@ -5,6 +5,7 @@ package com.pulumi.alicloud.vpc.outputs;
 
 import com.pulumi.alicloud.vpc.outputs.GetCommonBandwidthPackagesPackagePublicIpAddress;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -340,72 +341,114 @@ public final class GetCommonBandwidthPackagesPackage {
 
         @CustomType.Setter
         public Builder bandwidth(String bandwidth) {
-            this.bandwidth = Objects.requireNonNull(bandwidth);
+            if (bandwidth == null) {
+              throw new MissingRequiredPropertyException("GetCommonBandwidthPackagesPackage", "bandwidth");
+            }
+            this.bandwidth = bandwidth;
             return this;
         }
         @CustomType.Setter
         public Builder bandwidthPackageId(String bandwidthPackageId) {
-            this.bandwidthPackageId = Objects.requireNonNull(bandwidthPackageId);
+            if (bandwidthPackageId == null) {
+              throw new MissingRequiredPropertyException("GetCommonBandwidthPackagesPackage", "bandwidthPackageId");
+            }
+            this.bandwidthPackageId = bandwidthPackageId;
             return this;
         }
         @CustomType.Setter
         public Builder bandwidthPackageName(String bandwidthPackageName) {
-            this.bandwidthPackageName = Objects.requireNonNull(bandwidthPackageName);
+            if (bandwidthPackageName == null) {
+              throw new MissingRequiredPropertyException("GetCommonBandwidthPackagesPackage", "bandwidthPackageName");
+            }
+            this.bandwidthPackageName = bandwidthPackageName;
             return this;
         }
         @CustomType.Setter
         public Builder businessStatus(String businessStatus) {
-            this.businessStatus = Objects.requireNonNull(businessStatus);
+            if (businessStatus == null) {
+              throw new MissingRequiredPropertyException("GetCommonBandwidthPackagesPackage", "businessStatus");
+            }
+            this.businessStatus = businessStatus;
             return this;
         }
         @CustomType.Setter
         public Builder deletionProtection(Boolean deletionProtection) {
-            this.deletionProtection = Objects.requireNonNull(deletionProtection);
+            if (deletionProtection == null) {
+              throw new MissingRequiredPropertyException("GetCommonBandwidthPackagesPackage", "deletionProtection");
+            }
+            this.deletionProtection = deletionProtection;
             return this;
         }
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetCommonBandwidthPackagesPackage", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder expiredTime(String expiredTime) {
-            this.expiredTime = Objects.requireNonNull(expiredTime);
+            if (expiredTime == null) {
+              throw new MissingRequiredPropertyException("GetCommonBandwidthPackagesPackage", "expiredTime");
+            }
+            this.expiredTime = expiredTime;
             return this;
         }
         @CustomType.Setter
         public Builder hasReservationData(Boolean hasReservationData) {
-            this.hasReservationData = Objects.requireNonNull(hasReservationData);
+            if (hasReservationData == null) {
+              throw new MissingRequiredPropertyException("GetCommonBandwidthPackagesPackage", "hasReservationData");
+            }
+            this.hasReservationData = hasReservationData;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetCommonBandwidthPackagesPackage", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder internetChargeType(String internetChargeType) {
-            this.internetChargeType = Objects.requireNonNull(internetChargeType);
+            if (internetChargeType == null) {
+              throw new MissingRequiredPropertyException("GetCommonBandwidthPackagesPackage", "internetChargeType");
+            }
+            this.internetChargeType = internetChargeType;
             return this;
         }
         @CustomType.Setter
         public Builder isp(String isp) {
-            this.isp = Objects.requireNonNull(isp);
+            if (isp == null) {
+              throw new MissingRequiredPropertyException("GetCommonBandwidthPackagesPackage", "isp");
+            }
+            this.isp = isp;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetCommonBandwidthPackagesPackage", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder paymentType(String paymentType) {
-            this.paymentType = Objects.requireNonNull(paymentType);
+            if (paymentType == null) {
+              throw new MissingRequiredPropertyException("GetCommonBandwidthPackagesPackage", "paymentType");
+            }
+            this.paymentType = paymentType;
             return this;
         }
         @CustomType.Setter
         public Builder publicIpAddresses(List<GetCommonBandwidthPackagesPackagePublicIpAddress> publicIpAddresses) {
-            this.publicIpAddresses = Objects.requireNonNull(publicIpAddresses);
+            if (publicIpAddresses == null) {
+              throw new MissingRequiredPropertyException("GetCommonBandwidthPackagesPackage", "publicIpAddresses");
+            }
+            this.publicIpAddresses = publicIpAddresses;
             return this;
         }
         public Builder publicIpAddresses(GetCommonBandwidthPackagesPackagePublicIpAddress... publicIpAddresses) {
@@ -413,42 +456,66 @@ public final class GetCommonBandwidthPackagesPackage {
         }
         @CustomType.Setter
         public Builder ratio(Integer ratio) {
-            this.ratio = Objects.requireNonNull(ratio);
+            if (ratio == null) {
+              throw new MissingRequiredPropertyException("GetCommonBandwidthPackagesPackage", "ratio");
+            }
+            this.ratio = ratio;
             return this;
         }
         @CustomType.Setter
         public Builder reservationActiveTime(String reservationActiveTime) {
-            this.reservationActiveTime = Objects.requireNonNull(reservationActiveTime);
+            if (reservationActiveTime == null) {
+              throw new MissingRequiredPropertyException("GetCommonBandwidthPackagesPackage", "reservationActiveTime");
+            }
+            this.reservationActiveTime = reservationActiveTime;
             return this;
         }
         @CustomType.Setter
         public Builder reservationBandwidth(String reservationBandwidth) {
-            this.reservationBandwidth = Objects.requireNonNull(reservationBandwidth);
+            if (reservationBandwidth == null) {
+              throw new MissingRequiredPropertyException("GetCommonBandwidthPackagesPackage", "reservationBandwidth");
+            }
+            this.reservationBandwidth = reservationBandwidth;
             return this;
         }
         @CustomType.Setter
         public Builder reservationInternetChargeType(String reservationInternetChargeType) {
-            this.reservationInternetChargeType = Objects.requireNonNull(reservationInternetChargeType);
+            if (reservationInternetChargeType == null) {
+              throw new MissingRequiredPropertyException("GetCommonBandwidthPackagesPackage", "reservationInternetChargeType");
+            }
+            this.reservationInternetChargeType = reservationInternetChargeType;
             return this;
         }
         @CustomType.Setter
         public Builder reservationOrderType(String reservationOrderType) {
-            this.reservationOrderType = Objects.requireNonNull(reservationOrderType);
+            if (reservationOrderType == null) {
+              throw new MissingRequiredPropertyException("GetCommonBandwidthPackagesPackage", "reservationOrderType");
+            }
+            this.reservationOrderType = reservationOrderType;
             return this;
         }
         @CustomType.Setter
         public Builder resourceGroupId(String resourceGroupId) {
-            this.resourceGroupId = Objects.requireNonNull(resourceGroupId);
+            if (resourceGroupId == null) {
+              throw new MissingRequiredPropertyException("GetCommonBandwidthPackagesPackage", "resourceGroupId");
+            }
+            this.resourceGroupId = resourceGroupId;
             return this;
         }
         @CustomType.Setter
         public Builder serviceManaged(Integer serviceManaged) {
-            this.serviceManaged = Objects.requireNonNull(serviceManaged);
+            if (serviceManaged == null) {
+              throw new MissingRequiredPropertyException("GetCommonBandwidthPackagesPackage", "serviceManaged");
+            }
+            this.serviceManaged = serviceManaged;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetCommonBandwidthPackagesPackage", "status");
+            }
+            this.status = status;
             return this;
         }
         public GetCommonBandwidthPackagesPackage build() {

@@ -5,6 +5,7 @@ package com.pulumi.alicloud.sae.outputs;
 
 import com.pulumi.alicloud.sae.outputs.GetIngressesIngress;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -77,17 +78,24 @@ public final class GetIngressesResult {
 
         @CustomType.Setter
         public Builder enableDetails(@Nullable Boolean enableDetails) {
+
             this.enableDetails = enableDetails;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetIngressesResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder ids(List<String> ids) {
-            this.ids = Objects.requireNonNull(ids);
+            if (ids == null) {
+              throw new MissingRequiredPropertyException("GetIngressesResult", "ids");
+            }
+            this.ids = ids;
             return this;
         }
         public Builder ids(String... ids) {
@@ -95,7 +103,10 @@ public final class GetIngressesResult {
         }
         @CustomType.Setter
         public Builder ingresses(List<GetIngressesIngress> ingresses) {
-            this.ingresses = Objects.requireNonNull(ingresses);
+            if (ingresses == null) {
+              throw new MissingRequiredPropertyException("GetIngressesResult", "ingresses");
+            }
+            this.ingresses = ingresses;
             return this;
         }
         public Builder ingresses(GetIngressesIngress... ingresses) {
@@ -103,11 +114,15 @@ public final class GetIngressesResult {
         }
         @CustomType.Setter
         public Builder namespaceId(String namespaceId) {
-            this.namespaceId = Objects.requireNonNull(namespaceId);
+            if (namespaceId == null) {
+              throw new MissingRequiredPropertyException("GetIngressesResult", "namespaceId");
+            }
+            this.namespaceId = namespaceId;
             return this;
         }
         @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
+
             this.outputFile = outputFile;
             return this;
         }

@@ -119,10 +119,22 @@ namespace Pulumi.AliCloud.Ess
         public Output<bool?> Active { get; private set; } = null!;
 
         /// <summary>
+        /// The duration in seconds relative to the startTime that the job may be active before the system tries to terminate it.
+        /// </summary>
+        [Output("activeDeadlineSeconds")]
+        public Output<int?> ActiveDeadlineSeconds { get; private set; } = null!;
+
+        /// <summary>
         /// Whether create eip automatically.
         /// </summary>
         [Output("autoCreateEip")]
         public Output<bool?> AutoCreateEip { get; private set; } = null!;
+
+        /// <summary>
+        /// Whether to automatically match the image cache.
+        /// </summary>
+        [Output("autoMatchImageCache")]
+        public Output<bool?> AutoMatchImageCache { get; private set; } = null!;
 
         /// <summary>
         /// The name of the container group.
@@ -174,6 +186,12 @@ namespace Pulumi.AliCloud.Ess
         public Output<bool?> EnableSls { get; private set; } = null!;
 
         /// <summary>
+        /// The size of ephemeral storage.
+        /// </summary>
+        [Output("ephemeralStorage")]
+        public Output<int?> EphemeralStorage { get; private set; } = null!;
+
+        /// <summary>
         /// The eci scaling configuration will be deleted forcibly with deleting its scaling group.
         /// Default to false.
         /// </summary>
@@ -200,6 +218,12 @@ namespace Pulumi.AliCloud.Ess
         public Output<ImmutableArray<Outputs.EciScalingConfigurationImageRegistryCredential>> ImageRegistryCredentials { get; private set; } = null!;
 
         /// <summary>
+        /// The ID of image cache.
+        /// </summary>
+        [Output("imageSnapshotId")]
+        public Output<string?> ImageSnapshotId { get; private set; } = null!;
+
+        /// <summary>
         /// Ingress bandwidth.
         /// </summary>
         [Output("ingressBandwidth")]
@@ -210,6 +234,18 @@ namespace Pulumi.AliCloud.Ess
         /// </summary>
         [Output("initContainers")]
         public Output<ImmutableArray<Outputs.EciScalingConfigurationInitContainer>> InitContainers { get; private set; } = null!;
+
+        /// <summary>
+        /// Number of IPv6 addresses.
+        /// </summary>
+        [Output("ipv6AddressCount")]
+        public Output<int?> Ipv6AddressCount { get; private set; } = null!;
+
+        /// <summary>
+        /// The weight of an ECI instance attached to the Server Group.
+        /// </summary>
+        [Output("loadBalancerWeight")]
+        public Output<int?> LoadBalancerWeight { get; private set; } = null!;
 
         /// <summary>
         /// The amount of memory resources allocated to the container group.
@@ -279,6 +315,12 @@ namespace Pulumi.AliCloud.Ess
         /// </summary>
         [Output("tags")]
         public Output<ImmutableDictionary<string, object>?> Tags { get; private set; } = null!;
+
+        /// <summary>
+        /// The program's buffering time before closing.
+        /// </summary>
+        [Output("terminationGracePeriodSeconds")]
+        public Output<int?> TerminationGracePeriodSeconds { get; private set; } = null!;
 
         /// <summary>
         /// The list of volumes. See `volumes` below for details.
@@ -352,10 +394,22 @@ namespace Pulumi.AliCloud.Ess
         public Input<bool>? Active { get; set; }
 
         /// <summary>
+        /// The duration in seconds relative to the startTime that the job may be active before the system tries to terminate it.
+        /// </summary>
+        [Input("activeDeadlineSeconds")]
+        public Input<int>? ActiveDeadlineSeconds { get; set; }
+
+        /// <summary>
         /// Whether create eip automatically.
         /// </summary>
         [Input("autoCreateEip")]
         public Input<bool>? AutoCreateEip { get; set; }
+
+        /// <summary>
+        /// Whether to automatically match the image cache.
+        /// </summary>
+        [Input("autoMatchImageCache")]
+        public Input<bool>? AutoMatchImageCache { get; set; }
 
         /// <summary>
         /// The name of the container group.
@@ -413,6 +467,12 @@ namespace Pulumi.AliCloud.Ess
         public Input<bool>? EnableSls { get; set; }
 
         /// <summary>
+        /// The size of ephemeral storage.
+        /// </summary>
+        [Input("ephemeralStorage")]
+        public Input<int>? EphemeralStorage { get; set; }
+
+        /// <summary>
         /// The eci scaling configuration will be deleted forcibly with deleting its scaling group.
         /// Default to false.
         /// </summary>
@@ -451,6 +511,12 @@ namespace Pulumi.AliCloud.Ess
         }
 
         /// <summary>
+        /// The ID of image cache.
+        /// </summary>
+        [Input("imageSnapshotId")]
+        public Input<string>? ImageSnapshotId { get; set; }
+
+        /// <summary>
         /// Ingress bandwidth.
         /// </summary>
         [Input("ingressBandwidth")]
@@ -467,6 +533,18 @@ namespace Pulumi.AliCloud.Ess
             get => _initContainers ?? (_initContainers = new InputList<Inputs.EciScalingConfigurationInitContainerArgs>());
             set => _initContainers = value;
         }
+
+        /// <summary>
+        /// Number of IPv6 addresses.
+        /// </summary>
+        [Input("ipv6AddressCount")]
+        public Input<int>? Ipv6AddressCount { get; set; }
+
+        /// <summary>
+        /// The weight of an ECI instance attached to the Server Group.
+        /// </summary>
+        [Input("loadBalancerWeight")]
+        public Input<int>? LoadBalancerWeight { get; set; }
 
         /// <summary>
         /// The amount of memory resources allocated to the container group.
@@ -543,6 +621,12 @@ namespace Pulumi.AliCloud.Ess
             set => _tags = value;
         }
 
+        /// <summary>
+        /// The program's buffering time before closing.
+        /// </summary>
+        [Input("terminationGracePeriodSeconds")]
+        public Input<int>? TerminationGracePeriodSeconds { get; set; }
+
         [Input("volumes")]
         private InputList<Inputs.EciScalingConfigurationVolumeArgs>? _volumes;
 
@@ -583,10 +667,22 @@ namespace Pulumi.AliCloud.Ess
         public Input<bool>? Active { get; set; }
 
         /// <summary>
+        /// The duration in seconds relative to the startTime that the job may be active before the system tries to terminate it.
+        /// </summary>
+        [Input("activeDeadlineSeconds")]
+        public Input<int>? ActiveDeadlineSeconds { get; set; }
+
+        /// <summary>
         /// Whether create eip automatically.
         /// </summary>
         [Input("autoCreateEip")]
         public Input<bool>? AutoCreateEip { get; set; }
+
+        /// <summary>
+        /// Whether to automatically match the image cache.
+        /// </summary>
+        [Input("autoMatchImageCache")]
+        public Input<bool>? AutoMatchImageCache { get; set; }
 
         /// <summary>
         /// The name of the container group.
@@ -644,6 +740,12 @@ namespace Pulumi.AliCloud.Ess
         public Input<bool>? EnableSls { get; set; }
 
         /// <summary>
+        /// The size of ephemeral storage.
+        /// </summary>
+        [Input("ephemeralStorage")]
+        public Input<int>? EphemeralStorage { get; set; }
+
+        /// <summary>
         /// The eci scaling configuration will be deleted forcibly with deleting its scaling group.
         /// Default to false.
         /// </summary>
@@ -682,6 +784,12 @@ namespace Pulumi.AliCloud.Ess
         }
 
         /// <summary>
+        /// The ID of image cache.
+        /// </summary>
+        [Input("imageSnapshotId")]
+        public Input<string>? ImageSnapshotId { get; set; }
+
+        /// <summary>
         /// Ingress bandwidth.
         /// </summary>
         [Input("ingressBandwidth")]
@@ -698,6 +806,18 @@ namespace Pulumi.AliCloud.Ess
             get => _initContainers ?? (_initContainers = new InputList<Inputs.EciScalingConfigurationInitContainerGetArgs>());
             set => _initContainers = value;
         }
+
+        /// <summary>
+        /// Number of IPv6 addresses.
+        /// </summary>
+        [Input("ipv6AddressCount")]
+        public Input<int>? Ipv6AddressCount { get; set; }
+
+        /// <summary>
+        /// The weight of an ECI instance attached to the Server Group.
+        /// </summary>
+        [Input("loadBalancerWeight")]
+        public Input<int>? LoadBalancerWeight { get; set; }
 
         /// <summary>
         /// The amount of memory resources allocated to the container group.
@@ -773,6 +893,12 @@ namespace Pulumi.AliCloud.Ess
             get => _tags ?? (_tags = new InputMap<object>());
             set => _tags = value;
         }
+
+        /// <summary>
+        /// The program's buffering time before closing.
+        /// </summary>
+        [Input("terminationGracePeriodSeconds")]
+        public Input<int>? TerminationGracePeriodSeconds { get; set; }
 
         [Input("volumes")]
         private InputList<Inputs.EciScalingConfigurationVolumeGetArgs>? _volumes;

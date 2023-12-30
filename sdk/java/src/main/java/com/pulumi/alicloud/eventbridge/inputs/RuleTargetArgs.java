@@ -7,6 +7,7 @@ import com.pulumi.alicloud.eventbridge.inputs.RuleTargetDeadLetterQueueArgs;
 import com.pulumi.alicloud.eventbridge.inputs.RuleTargetParamListArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -278,10 +279,18 @@ public final class RuleTargetArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public RuleTargetArgs build() {
-            $.endpoint = Objects.requireNonNull($.endpoint, "expected parameter 'endpoint' to be non-null");
-            $.paramLists = Objects.requireNonNull($.paramLists, "expected parameter 'paramLists' to be non-null");
-            $.targetId = Objects.requireNonNull($.targetId, "expected parameter 'targetId' to be non-null");
-            $.type = Objects.requireNonNull($.type, "expected parameter 'type' to be non-null");
+            if ($.endpoint == null) {
+                throw new MissingRequiredPropertyException("RuleTargetArgs", "endpoint");
+            }
+            if ($.paramLists == null) {
+                throw new MissingRequiredPropertyException("RuleTargetArgs", "paramLists");
+            }
+            if ($.targetId == null) {
+                throw new MissingRequiredPropertyException("RuleTargetArgs", "targetId");
+            }
+            if ($.type == null) {
+                throw new MissingRequiredPropertyException("RuleTargetArgs", "type");
+            }
             return $;
         }
     }

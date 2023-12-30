@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.dcdn.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -155,47 +156,74 @@ public final class GetWafPoliciesPolicy {
 
         @CustomType.Setter
         public Builder dcdnWafPolicyId(String dcdnWafPolicyId) {
-            this.dcdnWafPolicyId = Objects.requireNonNull(dcdnWafPolicyId);
+            if (dcdnWafPolicyId == null) {
+              throw new MissingRequiredPropertyException("GetWafPoliciesPolicy", "dcdnWafPolicyId");
+            }
+            this.dcdnWafPolicyId = dcdnWafPolicyId;
             return this;
         }
         @CustomType.Setter
         public Builder defenseScene(String defenseScene) {
-            this.defenseScene = Objects.requireNonNull(defenseScene);
+            if (defenseScene == null) {
+              throw new MissingRequiredPropertyException("GetWafPoliciesPolicy", "defenseScene");
+            }
+            this.defenseScene = defenseScene;
             return this;
         }
         @CustomType.Setter
         public Builder domainCount(Integer domainCount) {
-            this.domainCount = Objects.requireNonNull(domainCount);
+            if (domainCount == null) {
+              throw new MissingRequiredPropertyException("GetWafPoliciesPolicy", "domainCount");
+            }
+            this.domainCount = domainCount;
             return this;
         }
         @CustomType.Setter
         public Builder gmtModified(String gmtModified) {
-            this.gmtModified = Objects.requireNonNull(gmtModified);
+            if (gmtModified == null) {
+              throw new MissingRequiredPropertyException("GetWafPoliciesPolicy", "gmtModified");
+            }
+            this.gmtModified = gmtModified;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetWafPoliciesPolicy", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder policyName(String policyName) {
-            this.policyName = Objects.requireNonNull(policyName);
+            if (policyName == null) {
+              throw new MissingRequiredPropertyException("GetWafPoliciesPolicy", "policyName");
+            }
+            this.policyName = policyName;
             return this;
         }
         @CustomType.Setter
         public Builder policyType(String policyType) {
-            this.policyType = Objects.requireNonNull(policyType);
+            if (policyType == null) {
+              throw new MissingRequiredPropertyException("GetWafPoliciesPolicy", "policyType");
+            }
+            this.policyType = policyType;
             return this;
         }
         @CustomType.Setter
         public Builder ruleCount(String ruleCount) {
-            this.ruleCount = Objects.requireNonNull(ruleCount);
+            if (ruleCount == null) {
+              throw new MissingRequiredPropertyException("GetWafPoliciesPolicy", "ruleCount");
+            }
+            this.ruleCount = ruleCount;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetWafPoliciesPolicy", "status");
+            }
+            this.status = status;
             return this;
         }
         public GetWafPoliciesPolicy build() {

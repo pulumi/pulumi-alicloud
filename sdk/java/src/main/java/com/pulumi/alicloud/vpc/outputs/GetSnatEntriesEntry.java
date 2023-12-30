@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.vpc.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -126,37 +127,58 @@ public final class GetSnatEntriesEntry {
 
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetSnatEntriesEntry", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder snatEntryId(String snatEntryId) {
-            this.snatEntryId = Objects.requireNonNull(snatEntryId);
+            if (snatEntryId == null) {
+              throw new MissingRequiredPropertyException("GetSnatEntriesEntry", "snatEntryId");
+            }
+            this.snatEntryId = snatEntryId;
             return this;
         }
         @CustomType.Setter
         public Builder snatEntryName(String snatEntryName) {
-            this.snatEntryName = Objects.requireNonNull(snatEntryName);
+            if (snatEntryName == null) {
+              throw new MissingRequiredPropertyException("GetSnatEntriesEntry", "snatEntryName");
+            }
+            this.snatEntryName = snatEntryName;
             return this;
         }
         @CustomType.Setter
         public Builder snatIp(String snatIp) {
-            this.snatIp = Objects.requireNonNull(snatIp);
+            if (snatIp == null) {
+              throw new MissingRequiredPropertyException("GetSnatEntriesEntry", "snatIp");
+            }
+            this.snatIp = snatIp;
             return this;
         }
         @CustomType.Setter
         public Builder sourceCidr(String sourceCidr) {
-            this.sourceCidr = Objects.requireNonNull(sourceCidr);
+            if (sourceCidr == null) {
+              throw new MissingRequiredPropertyException("GetSnatEntriesEntry", "sourceCidr");
+            }
+            this.sourceCidr = sourceCidr;
             return this;
         }
         @CustomType.Setter
         public Builder sourceVswitchId(String sourceVswitchId) {
-            this.sourceVswitchId = Objects.requireNonNull(sourceVswitchId);
+            if (sourceVswitchId == null) {
+              throw new MissingRequiredPropertyException("GetSnatEntriesEntry", "sourceVswitchId");
+            }
+            this.sourceVswitchId = sourceVswitchId;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetSnatEntriesEntry", "status");
+            }
+            this.status = status;
             return this;
         }
         public GetSnatEntriesEntry build() {

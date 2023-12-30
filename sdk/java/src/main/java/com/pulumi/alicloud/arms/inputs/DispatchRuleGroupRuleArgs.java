@@ -5,6 +5,7 @@ package com.pulumi.alicloud.arms.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -236,9 +237,15 @@ public final class DispatchRuleGroupRuleArgs extends com.pulumi.resources.Resour
         }
 
         public DispatchRuleGroupRuleArgs build() {
-            $.groupInterval = Objects.requireNonNull($.groupInterval, "expected parameter 'groupInterval' to be non-null");
-            $.groupWaitTime = Objects.requireNonNull($.groupWaitTime, "expected parameter 'groupWaitTime' to be non-null");
-            $.groupingFields = Objects.requireNonNull($.groupingFields, "expected parameter 'groupingFields' to be non-null");
+            if ($.groupInterval == null) {
+                throw new MissingRequiredPropertyException("DispatchRuleGroupRuleArgs", "groupInterval");
+            }
+            if ($.groupWaitTime == null) {
+                throw new MissingRequiredPropertyException("DispatchRuleGroupRuleArgs", "groupWaitTime");
+            }
+            if ($.groupingFields == null) {
+                throw new MissingRequiredPropertyException("DispatchRuleGroupRuleArgs", "groupingFields");
+            }
             return $;
         }
     }

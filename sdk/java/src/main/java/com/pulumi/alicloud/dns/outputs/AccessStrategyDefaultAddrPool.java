@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.dns.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -59,11 +60,15 @@ public final class AccessStrategyDefaultAddrPool {
 
         @CustomType.Setter
         public Builder addrPoolId(String addrPoolId) {
-            this.addrPoolId = Objects.requireNonNull(addrPoolId);
+            if (addrPoolId == null) {
+              throw new MissingRequiredPropertyException("AccessStrategyDefaultAddrPool", "addrPoolId");
+            }
+            this.addrPoolId = addrPoolId;
             return this;
         }
         @CustomType.Setter
         public Builder lbaWeight(@Nullable Integer lbaWeight) {
+
             this.lbaWeight = lbaWeight;
             return this;
         }

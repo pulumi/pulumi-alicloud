@@ -5,6 +5,7 @@ package com.pulumi.alicloud.ecs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -188,8 +189,12 @@ public final class EcsNetworkInterfaceAttachmentArgs extends com.pulumi.resource
         }
 
         public EcsNetworkInterfaceAttachmentArgs build() {
-            $.instanceId = Objects.requireNonNull($.instanceId, "expected parameter 'instanceId' to be non-null");
-            $.networkInterfaceId = Objects.requireNonNull($.networkInterfaceId, "expected parameter 'networkInterfaceId' to be non-null");
+            if ($.instanceId == null) {
+                throw new MissingRequiredPropertyException("EcsNetworkInterfaceAttachmentArgs", "instanceId");
+            }
+            if ($.networkInterfaceId == null) {
+                throw new MissingRequiredPropertyException("EcsNetworkInterfaceAttachmentArgs", "networkInterfaceId");
+            }
             return $;
         }
     }

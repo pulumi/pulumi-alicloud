@@ -5,6 +5,7 @@ package com.pulumi.alicloud.datahub;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.Object;
 import java.lang.String;
@@ -329,7 +330,9 @@ public final class TopicArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public TopicArgs build() {
-            $.projectName = Objects.requireNonNull($.projectName, "expected parameter 'projectName' to be non-null");
+            if ($.projectName == null) {
+                throw new MissingRequiredPropertyException("TopicArgs", "projectName");
+            }
             return $;
         }
     }

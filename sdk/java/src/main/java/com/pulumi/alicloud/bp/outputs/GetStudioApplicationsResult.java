@@ -5,6 +5,7 @@ package com.pulumi.alicloud.bp.outputs;
 
 import com.pulumi.alicloud.bp.outputs.GetStudioApplicationsApplication;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -139,7 +140,10 @@ public final class GetStudioApplicationsResult {
 
         @CustomType.Setter
         public Builder applications(List<GetStudioApplicationsApplication> applications) {
-            this.applications = Objects.requireNonNull(applications);
+            if (applications == null) {
+              throw new MissingRequiredPropertyException("GetStudioApplicationsResult", "applications");
+            }
+            this.applications = applications;
             return this;
         }
         public Builder applications(GetStudioApplicationsApplication... applications) {
@@ -147,12 +151,18 @@ public final class GetStudioApplicationsResult {
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetStudioApplicationsResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder ids(List<String> ids) {
-            this.ids = Objects.requireNonNull(ids);
+            if (ids == null) {
+              throw new MissingRequiredPropertyException("GetStudioApplicationsResult", "ids");
+            }
+            this.ids = ids;
             return this;
         }
         public Builder ids(String... ids) {
@@ -160,22 +170,28 @@ public final class GetStudioApplicationsResult {
         }
         @CustomType.Setter
         public Builder keyword(@Nullable String keyword) {
+
             this.keyword = keyword;
             return this;
         }
         @CustomType.Setter
         public Builder maxResults(@Nullable Integer maxResults) {
+
             this.maxResults = maxResults;
             return this;
         }
         @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
+
             this.nameRegex = nameRegex;
             return this;
         }
         @CustomType.Setter
         public Builder names(List<String> names) {
-            this.names = Objects.requireNonNull(names);
+            if (names == null) {
+              throw new MissingRequiredPropertyException("GetStudioApplicationsResult", "names");
+            }
+            this.names = names;
             return this;
         }
         public Builder names(String... names) {
@@ -183,21 +199,25 @@ public final class GetStudioApplicationsResult {
         }
         @CustomType.Setter
         public Builder orderType(@Nullable Integer orderType) {
+
             this.orderType = orderType;
             return this;
         }
         @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
+
             this.outputFile = outputFile;
             return this;
         }
         @CustomType.Setter
         public Builder resourceGroupId(@Nullable String resourceGroupId) {
+
             this.resourceGroupId = resourceGroupId;
             return this;
         }
         @CustomType.Setter
         public Builder status(@Nullable String status) {
+
             this.status = status;
             return this;
         }

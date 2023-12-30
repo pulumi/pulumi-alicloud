@@ -9,6 +9,7 @@ import com.pulumi.alicloud.ros.outputs.GetTemplateScratchesScratchSourceResource
 import com.pulumi.alicloud.ros.outputs.GetTemplateScratchesScratchSourceTag;
 import com.pulumi.alicloud.ros.outputs.GetTemplateScratchesScratchStack;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -202,27 +203,42 @@ public final class GetTemplateScratchesScratch {
 
         @CustomType.Setter
         public Builder createTime(String createTime) {
-            this.createTime = Objects.requireNonNull(createTime);
+            if (createTime == null) {
+              throw new MissingRequiredPropertyException("GetTemplateScratchesScratch", "createTime");
+            }
+            this.createTime = createTime;
             return this;
         }
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetTemplateScratchesScratch", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetTemplateScratchesScratch", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder logicalIdStrategy(String logicalIdStrategy) {
-            this.logicalIdStrategy = Objects.requireNonNull(logicalIdStrategy);
+            if (logicalIdStrategy == null) {
+              throw new MissingRequiredPropertyException("GetTemplateScratchesScratch", "logicalIdStrategy");
+            }
+            this.logicalIdStrategy = logicalIdStrategy;
             return this;
         }
         @CustomType.Setter
         public Builder preferenceParameters(List<GetTemplateScratchesScratchPreferenceParameter> preferenceParameters) {
-            this.preferenceParameters = Objects.requireNonNull(preferenceParameters);
+            if (preferenceParameters == null) {
+              throw new MissingRequiredPropertyException("GetTemplateScratchesScratch", "preferenceParameters");
+            }
+            this.preferenceParameters = preferenceParameters;
             return this;
         }
         public Builder preferenceParameters(GetTemplateScratchesScratchPreferenceParameter... preferenceParameters) {
@@ -230,7 +246,10 @@ public final class GetTemplateScratchesScratch {
         }
         @CustomType.Setter
         public Builder sourceResourceGroups(List<GetTemplateScratchesScratchSourceResourceGroup> sourceResourceGroups) {
-            this.sourceResourceGroups = Objects.requireNonNull(sourceResourceGroups);
+            if (sourceResourceGroups == null) {
+              throw new MissingRequiredPropertyException("GetTemplateScratchesScratch", "sourceResourceGroups");
+            }
+            this.sourceResourceGroups = sourceResourceGroups;
             return this;
         }
         public Builder sourceResourceGroups(GetTemplateScratchesScratchSourceResourceGroup... sourceResourceGroups) {
@@ -238,7 +257,10 @@ public final class GetTemplateScratchesScratch {
         }
         @CustomType.Setter
         public Builder sourceResources(List<GetTemplateScratchesScratchSourceResource> sourceResources) {
-            this.sourceResources = Objects.requireNonNull(sourceResources);
+            if (sourceResources == null) {
+              throw new MissingRequiredPropertyException("GetTemplateScratchesScratch", "sourceResources");
+            }
+            this.sourceResources = sourceResources;
             return this;
         }
         public Builder sourceResources(GetTemplateScratchesScratchSourceResource... sourceResources) {
@@ -246,7 +268,10 @@ public final class GetTemplateScratchesScratch {
         }
         @CustomType.Setter
         public Builder sourceTags(List<GetTemplateScratchesScratchSourceTag> sourceTags) {
-            this.sourceTags = Objects.requireNonNull(sourceTags);
+            if (sourceTags == null) {
+              throw new MissingRequiredPropertyException("GetTemplateScratchesScratch", "sourceTags");
+            }
+            this.sourceTags = sourceTags;
             return this;
         }
         public Builder sourceTags(GetTemplateScratchesScratchSourceTag... sourceTags) {
@@ -254,7 +279,10 @@ public final class GetTemplateScratchesScratch {
         }
         @CustomType.Setter
         public Builder stacks(List<GetTemplateScratchesScratchStack> stacks) {
-            this.stacks = Objects.requireNonNull(stacks);
+            if (stacks == null) {
+              throw new MissingRequiredPropertyException("GetTemplateScratchesScratch", "stacks");
+            }
+            this.stacks = stacks;
             return this;
         }
         public Builder stacks(GetTemplateScratchesScratchStack... stacks) {
@@ -262,17 +290,26 @@ public final class GetTemplateScratchesScratch {
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetTemplateScratchesScratch", "status");
+            }
+            this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder templateScratchId(String templateScratchId) {
-            this.templateScratchId = Objects.requireNonNull(templateScratchId);
+            if (templateScratchId == null) {
+              throw new MissingRequiredPropertyException("GetTemplateScratchesScratch", "templateScratchId");
+            }
+            this.templateScratchId = templateScratchId;
             return this;
         }
         @CustomType.Setter
         public Builder templateScratchType(String templateScratchType) {
-            this.templateScratchType = Objects.requireNonNull(templateScratchType);
+            if (templateScratchType == null) {
+              throw new MissingRequiredPropertyException("GetTemplateScratchesScratch", "templateScratchType");
+            }
+            this.templateScratchType = templateScratchType;
             return this;
         }
         public GetTemplateScratchesScratch build() {

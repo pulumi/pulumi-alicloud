@@ -5,6 +5,7 @@ package com.pulumi.alicloud.eflo;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -150,8 +151,12 @@ public final class VpdArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public VpdArgs build() {
-            $.cidr = Objects.requireNonNull($.cidr, "expected parameter 'cidr' to be non-null");
-            $.vpdName = Objects.requireNonNull($.vpdName, "expected parameter 'vpdName' to be non-null");
+            if ($.cidr == null) {
+                throw new MissingRequiredPropertyException("VpdArgs", "cidr");
+            }
+            if ($.vpdName == null) {
+                throw new MissingRequiredPropertyException("VpdArgs", "vpdName");
+            }
             return $;
         }
     }

@@ -6,6 +6,7 @@ package com.pulumi.alicloud.clickhouse.outputs;
 import com.pulumi.alicloud.clickhouse.outputs.GetDbClustersClusterDbClusterAccessWhiteList;
 import com.pulumi.alicloud.clickhouse.outputs.GetDbClustersClusterScaleOutStatus;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -571,42 +572,66 @@ public final class GetDbClustersCluster {
 
         @CustomType.Setter
         public Builder aliUid(String aliUid) {
-            this.aliUid = Objects.requireNonNull(aliUid);
+            if (aliUid == null) {
+              throw new MissingRequiredPropertyException("GetDbClustersCluster", "aliUid");
+            }
+            this.aliUid = aliUid;
             return this;
         }
         @CustomType.Setter
         public Builder bid(String bid) {
-            this.bid = Objects.requireNonNull(bid);
+            if (bid == null) {
+              throw new MissingRequiredPropertyException("GetDbClustersCluster", "bid");
+            }
+            this.bid = bid;
             return this;
         }
         @CustomType.Setter
         public Builder category(String category) {
-            this.category = Objects.requireNonNull(category);
+            if (category == null) {
+              throw new MissingRequiredPropertyException("GetDbClustersCluster", "category");
+            }
+            this.category = category;
             return this;
         }
         @CustomType.Setter
         public Builder commodityCode(String commodityCode) {
-            this.commodityCode = Objects.requireNonNull(commodityCode);
+            if (commodityCode == null) {
+              throw new MissingRequiredPropertyException("GetDbClustersCluster", "commodityCode");
+            }
+            this.commodityCode = commodityCode;
             return this;
         }
         @CustomType.Setter
         public Builder connectionString(String connectionString) {
-            this.connectionString = Objects.requireNonNull(connectionString);
+            if (connectionString == null) {
+              throw new MissingRequiredPropertyException("GetDbClustersCluster", "connectionString");
+            }
+            this.connectionString = connectionString;
             return this;
         }
         @CustomType.Setter
         public Builder controlVersion(String controlVersion) {
-            this.controlVersion = Objects.requireNonNull(controlVersion);
+            if (controlVersion == null) {
+              throw new MissingRequiredPropertyException("GetDbClustersCluster", "controlVersion");
+            }
+            this.controlVersion = controlVersion;
             return this;
         }
         @CustomType.Setter
         public Builder createTime(String createTime) {
-            this.createTime = Objects.requireNonNull(createTime);
+            if (createTime == null) {
+              throw new MissingRequiredPropertyException("GetDbClustersCluster", "createTime");
+            }
+            this.createTime = createTime;
             return this;
         }
         @CustomType.Setter
         public Builder dbClusterAccessWhiteLists(List<GetDbClustersClusterDbClusterAccessWhiteList> dbClusterAccessWhiteLists) {
-            this.dbClusterAccessWhiteLists = Objects.requireNonNull(dbClusterAccessWhiteLists);
+            if (dbClusterAccessWhiteLists == null) {
+              throw new MissingRequiredPropertyException("GetDbClustersCluster", "dbClusterAccessWhiteLists");
+            }
+            this.dbClusterAccessWhiteLists = dbClusterAccessWhiteLists;
             return this;
         }
         public Builder dbClusterAccessWhiteLists(GetDbClustersClusterDbClusterAccessWhiteList... dbClusterAccessWhiteLists) {
@@ -614,112 +639,178 @@ public final class GetDbClustersCluster {
         }
         @CustomType.Setter
         public Builder dbClusterDescription(String dbClusterDescription) {
-            this.dbClusterDescription = Objects.requireNonNull(dbClusterDescription);
+            if (dbClusterDescription == null) {
+              throw new MissingRequiredPropertyException("GetDbClustersCluster", "dbClusterDescription");
+            }
+            this.dbClusterDescription = dbClusterDescription;
             return this;
         }
         @CustomType.Setter
         public Builder dbClusterId(String dbClusterId) {
-            this.dbClusterId = Objects.requireNonNull(dbClusterId);
+            if (dbClusterId == null) {
+              throw new MissingRequiredPropertyException("GetDbClustersCluster", "dbClusterId");
+            }
+            this.dbClusterId = dbClusterId;
             return this;
         }
         @CustomType.Setter
         public Builder dbClusterNetworkType(String dbClusterNetworkType) {
-            this.dbClusterNetworkType = Objects.requireNonNull(dbClusterNetworkType);
+            if (dbClusterNetworkType == null) {
+              throw new MissingRequiredPropertyException("GetDbClustersCluster", "dbClusterNetworkType");
+            }
+            this.dbClusterNetworkType = dbClusterNetworkType;
             return this;
         }
         @CustomType.Setter
         public Builder dbClusterType(String dbClusterType) {
-            this.dbClusterType = Objects.requireNonNull(dbClusterType);
+            if (dbClusterType == null) {
+              throw new MissingRequiredPropertyException("GetDbClustersCluster", "dbClusterType");
+            }
+            this.dbClusterType = dbClusterType;
             return this;
         }
         @CustomType.Setter
         public Builder dbNodeClass(String dbNodeClass) {
-            this.dbNodeClass = Objects.requireNonNull(dbNodeClass);
+            if (dbNodeClass == null) {
+              throw new MissingRequiredPropertyException("GetDbClustersCluster", "dbNodeClass");
+            }
+            this.dbNodeClass = dbNodeClass;
             return this;
         }
         @CustomType.Setter
         public Builder dbNodeCount(String dbNodeCount) {
-            this.dbNodeCount = Objects.requireNonNull(dbNodeCount);
+            if (dbNodeCount == null) {
+              throw new MissingRequiredPropertyException("GetDbClustersCluster", "dbNodeCount");
+            }
+            this.dbNodeCount = dbNodeCount;
             return this;
         }
         @CustomType.Setter
         public Builder dbNodeStorage(String dbNodeStorage) {
-            this.dbNodeStorage = Objects.requireNonNull(dbNodeStorage);
+            if (dbNodeStorage == null) {
+              throw new MissingRequiredPropertyException("GetDbClustersCluster", "dbNodeStorage");
+            }
+            this.dbNodeStorage = dbNodeStorage;
             return this;
         }
         @CustomType.Setter
         public Builder encryptionKey(String encryptionKey) {
-            this.encryptionKey = Objects.requireNonNull(encryptionKey);
+            if (encryptionKey == null) {
+              throw new MissingRequiredPropertyException("GetDbClustersCluster", "encryptionKey");
+            }
+            this.encryptionKey = encryptionKey;
             return this;
         }
         @CustomType.Setter
         public Builder encryptionType(String encryptionType) {
-            this.encryptionType = Objects.requireNonNull(encryptionType);
+            if (encryptionType == null) {
+              throw new MissingRequiredPropertyException("GetDbClustersCluster", "encryptionType");
+            }
+            this.encryptionType = encryptionType;
             return this;
         }
         @CustomType.Setter
         public Builder engine(String engine) {
-            this.engine = Objects.requireNonNull(engine);
+            if (engine == null) {
+              throw new MissingRequiredPropertyException("GetDbClustersCluster", "engine");
+            }
+            this.engine = engine;
             return this;
         }
         @CustomType.Setter
         public Builder engineVersion(String engineVersion) {
-            this.engineVersion = Objects.requireNonNull(engineVersion);
+            if (engineVersion == null) {
+              throw new MissingRequiredPropertyException("GetDbClustersCluster", "engineVersion");
+            }
+            this.engineVersion = engineVersion;
             return this;
         }
         @CustomType.Setter
         public Builder expireTime(String expireTime) {
-            this.expireTime = Objects.requireNonNull(expireTime);
+            if (expireTime == null) {
+              throw new MissingRequiredPropertyException("GetDbClustersCluster", "expireTime");
+            }
+            this.expireTime = expireTime;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetDbClustersCluster", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder isExpired(String isExpired) {
-            this.isExpired = Objects.requireNonNull(isExpired);
+            if (isExpired == null) {
+              throw new MissingRequiredPropertyException("GetDbClustersCluster", "isExpired");
+            }
+            this.isExpired = isExpired;
             return this;
         }
         @CustomType.Setter
         public Builder lockMode(String lockMode) {
-            this.lockMode = Objects.requireNonNull(lockMode);
+            if (lockMode == null) {
+              throw new MissingRequiredPropertyException("GetDbClustersCluster", "lockMode");
+            }
+            this.lockMode = lockMode;
             return this;
         }
         @CustomType.Setter
         public Builder lockReason(String lockReason) {
-            this.lockReason = Objects.requireNonNull(lockReason);
+            if (lockReason == null) {
+              throw new MissingRequiredPropertyException("GetDbClustersCluster", "lockReason");
+            }
+            this.lockReason = lockReason;
             return this;
         }
         @CustomType.Setter
         public Builder maintainTime(String maintainTime) {
-            this.maintainTime = Objects.requireNonNull(maintainTime);
+            if (maintainTime == null) {
+              throw new MissingRequiredPropertyException("GetDbClustersCluster", "maintainTime");
+            }
+            this.maintainTime = maintainTime;
             return this;
         }
         @CustomType.Setter
         public Builder paymentType(String paymentType) {
-            this.paymentType = Objects.requireNonNull(paymentType);
+            if (paymentType == null) {
+              throw new MissingRequiredPropertyException("GetDbClustersCluster", "paymentType");
+            }
+            this.paymentType = paymentType;
             return this;
         }
         @CustomType.Setter
         public Builder port(Integer port) {
-            this.port = Objects.requireNonNull(port);
+            if (port == null) {
+              throw new MissingRequiredPropertyException("GetDbClustersCluster", "port");
+            }
+            this.port = port;
             return this;
         }
         @CustomType.Setter
         public Builder publicConnectionString(String publicConnectionString) {
-            this.publicConnectionString = Objects.requireNonNull(publicConnectionString);
+            if (publicConnectionString == null) {
+              throw new MissingRequiredPropertyException("GetDbClustersCluster", "publicConnectionString");
+            }
+            this.publicConnectionString = publicConnectionString;
             return this;
         }
         @CustomType.Setter
         public Builder publicPort(String publicPort) {
-            this.publicPort = Objects.requireNonNull(publicPort);
+            if (publicPort == null) {
+              throw new MissingRequiredPropertyException("GetDbClustersCluster", "publicPort");
+            }
+            this.publicPort = publicPort;
             return this;
         }
         @CustomType.Setter
         public Builder scaleOutStatuses(List<GetDbClustersClusterScaleOutStatus> scaleOutStatuses) {
-            this.scaleOutStatuses = Objects.requireNonNull(scaleOutStatuses);
+            if (scaleOutStatuses == null) {
+              throw new MissingRequiredPropertyException("GetDbClustersCluster", "scaleOutStatuses");
+            }
+            this.scaleOutStatuses = scaleOutStatuses;
             return this;
         }
         public Builder scaleOutStatuses(GetDbClustersClusterScaleOutStatus... scaleOutStatuses) {
@@ -727,47 +818,74 @@ public final class GetDbClustersCluster {
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetDbClustersCluster", "status");
+            }
+            this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder storageType(String storageType) {
-            this.storageType = Objects.requireNonNull(storageType);
+            if (storageType == null) {
+              throw new MissingRequiredPropertyException("GetDbClustersCluster", "storageType");
+            }
+            this.storageType = storageType;
             return this;
         }
         @CustomType.Setter
         public Builder supportBackup(Integer supportBackup) {
-            this.supportBackup = Objects.requireNonNull(supportBackup);
+            if (supportBackup == null) {
+              throw new MissingRequiredPropertyException("GetDbClustersCluster", "supportBackup");
+            }
+            this.supportBackup = supportBackup;
             return this;
         }
         @CustomType.Setter
         public Builder supportHttpsPort(Boolean supportHttpsPort) {
-            this.supportHttpsPort = Objects.requireNonNull(supportHttpsPort);
+            if (supportHttpsPort == null) {
+              throw new MissingRequiredPropertyException("GetDbClustersCluster", "supportHttpsPort");
+            }
+            this.supportHttpsPort = supportHttpsPort;
             return this;
         }
         @CustomType.Setter
         public Builder supportMysqlPort(Boolean supportMysqlPort) {
-            this.supportMysqlPort = Objects.requireNonNull(supportMysqlPort);
+            if (supportMysqlPort == null) {
+              throw new MissingRequiredPropertyException("GetDbClustersCluster", "supportMysqlPort");
+            }
+            this.supportMysqlPort = supportMysqlPort;
             return this;
         }
         @CustomType.Setter
         public Builder vpcCloudInstanceId(String vpcCloudInstanceId) {
-            this.vpcCloudInstanceId = Objects.requireNonNull(vpcCloudInstanceId);
+            if (vpcCloudInstanceId == null) {
+              throw new MissingRequiredPropertyException("GetDbClustersCluster", "vpcCloudInstanceId");
+            }
+            this.vpcCloudInstanceId = vpcCloudInstanceId;
             return this;
         }
         @CustomType.Setter
         public Builder vpcId(String vpcId) {
-            this.vpcId = Objects.requireNonNull(vpcId);
+            if (vpcId == null) {
+              throw new MissingRequiredPropertyException("GetDbClustersCluster", "vpcId");
+            }
+            this.vpcId = vpcId;
             return this;
         }
         @CustomType.Setter
         public Builder vswitchId(String vswitchId) {
-            this.vswitchId = Objects.requireNonNull(vswitchId);
+            if (vswitchId == null) {
+              throw new MissingRequiredPropertyException("GetDbClustersCluster", "vswitchId");
+            }
+            this.vswitchId = vswitchId;
             return this;
         }
         @CustomType.Setter
         public Builder zoneId(String zoneId) {
-            this.zoneId = Objects.requireNonNull(zoneId);
+            if (zoneId == null) {
+              throw new MissingRequiredPropertyException("GetDbClustersCluster", "zoneId");
+            }
+            this.zoneId = zoneId;
             return this;
         }
         public GetDbClustersCluster build() {

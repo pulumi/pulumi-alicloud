@@ -5,6 +5,7 @@ package com.pulumi.alicloud.cfg.outputs;
 
 import com.pulumi.alicloud.cfg.outputs.GetConfigurationRecordersRecorder;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -66,17 +67,24 @@ public final class GetConfigurationRecordersResult {
 
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetConfigurationRecordersResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
+
             this.outputFile = outputFile;
             return this;
         }
         @CustomType.Setter
         public Builder recorders(List<GetConfigurationRecordersRecorder> recorders) {
-            this.recorders = Objects.requireNonNull(recorders);
+            if (recorders == null) {
+              throw new MissingRequiredPropertyException("GetConfigurationRecordersResult", "recorders");
+            }
+            this.recorders = recorders;
             return this;
         }
         public Builder recorders(GetConfigurationRecordersRecorder... recorders) {

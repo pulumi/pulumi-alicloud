@@ -5,6 +5,7 @@ package com.pulumi.alicloud.cloudfirewall;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -653,16 +654,36 @@ public final class FirewallVpcFirewallControlPolicyArgs extends com.pulumi.resou
         }
 
         public FirewallVpcFirewallControlPolicyArgs build() {
-            $.aclAction = Objects.requireNonNull($.aclAction, "expected parameter 'aclAction' to be non-null");
-            $.applicationName = Objects.requireNonNull($.applicationName, "expected parameter 'applicationName' to be non-null");
-            $.description = Objects.requireNonNull($.description, "expected parameter 'description' to be non-null");
-            $.destination = Objects.requireNonNull($.destination, "expected parameter 'destination' to be non-null");
-            $.destinationType = Objects.requireNonNull($.destinationType, "expected parameter 'destinationType' to be non-null");
-            $.order = Objects.requireNonNull($.order, "expected parameter 'order' to be non-null");
-            $.proto = Objects.requireNonNull($.proto, "expected parameter 'proto' to be non-null");
-            $.source = Objects.requireNonNull($.source, "expected parameter 'source' to be non-null");
-            $.sourceType = Objects.requireNonNull($.sourceType, "expected parameter 'sourceType' to be non-null");
-            $.vpcFirewallId = Objects.requireNonNull($.vpcFirewallId, "expected parameter 'vpcFirewallId' to be non-null");
+            if ($.aclAction == null) {
+                throw new MissingRequiredPropertyException("FirewallVpcFirewallControlPolicyArgs", "aclAction");
+            }
+            if ($.applicationName == null) {
+                throw new MissingRequiredPropertyException("FirewallVpcFirewallControlPolicyArgs", "applicationName");
+            }
+            if ($.description == null) {
+                throw new MissingRequiredPropertyException("FirewallVpcFirewallControlPolicyArgs", "description");
+            }
+            if ($.destination == null) {
+                throw new MissingRequiredPropertyException("FirewallVpcFirewallControlPolicyArgs", "destination");
+            }
+            if ($.destinationType == null) {
+                throw new MissingRequiredPropertyException("FirewallVpcFirewallControlPolicyArgs", "destinationType");
+            }
+            if ($.order == null) {
+                throw new MissingRequiredPropertyException("FirewallVpcFirewallControlPolicyArgs", "order");
+            }
+            if ($.proto == null) {
+                throw new MissingRequiredPropertyException("FirewallVpcFirewallControlPolicyArgs", "proto");
+            }
+            if ($.source == null) {
+                throw new MissingRequiredPropertyException("FirewallVpcFirewallControlPolicyArgs", "source");
+            }
+            if ($.sourceType == null) {
+                throw new MissingRequiredPropertyException("FirewallVpcFirewallControlPolicyArgs", "sourceType");
+            }
+            if ($.vpcFirewallId == null) {
+                throw new MissingRequiredPropertyException("FirewallVpcFirewallControlPolicyArgs", "vpcFirewallId");
+            }
             return $;
         }
     }

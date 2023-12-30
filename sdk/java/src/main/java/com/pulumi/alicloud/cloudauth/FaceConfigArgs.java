@@ -5,6 +5,7 @@ package com.pulumi.alicloud.cloudauth;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -111,8 +112,12 @@ public final class FaceConfigArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public FaceConfigArgs build() {
-            $.bizName = Objects.requireNonNull($.bizName, "expected parameter 'bizName' to be non-null");
-            $.bizType = Objects.requireNonNull($.bizType, "expected parameter 'bizType' to be non-null");
+            if ($.bizName == null) {
+                throw new MissingRequiredPropertyException("FaceConfigArgs", "bizName");
+            }
+            if ($.bizType == null) {
+                throw new MissingRequiredPropertyException("FaceConfigArgs", "bizType");
+            }
             return $;
         }
     }

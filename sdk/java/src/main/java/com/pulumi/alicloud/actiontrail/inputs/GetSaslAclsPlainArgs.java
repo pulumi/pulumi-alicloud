@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.actiontrail.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -173,10 +174,18 @@ public final class GetSaslAclsPlainArgs extends com.pulumi.resources.InvokeArgs 
         }
 
         public GetSaslAclsPlainArgs build() {
-            $.aclResourceName = Objects.requireNonNull($.aclResourceName, "expected parameter 'aclResourceName' to be non-null");
-            $.aclResourceType = Objects.requireNonNull($.aclResourceType, "expected parameter 'aclResourceType' to be non-null");
-            $.instanceId = Objects.requireNonNull($.instanceId, "expected parameter 'instanceId' to be non-null");
-            $.username = Objects.requireNonNull($.username, "expected parameter 'username' to be non-null");
+            if ($.aclResourceName == null) {
+                throw new MissingRequiredPropertyException("GetSaslAclsPlainArgs", "aclResourceName");
+            }
+            if ($.aclResourceType == null) {
+                throw new MissingRequiredPropertyException("GetSaslAclsPlainArgs", "aclResourceType");
+            }
+            if ($.instanceId == null) {
+                throw new MissingRequiredPropertyException("GetSaslAclsPlainArgs", "instanceId");
+            }
+            if ($.username == null) {
+                throw new MissingRequiredPropertyException("GetSaslAclsPlainArgs", "username");
+            }
             return $;
         }
     }

@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.amqp.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -226,72 +227,114 @@ public final class GetInstancesInstance {
 
         @CustomType.Setter
         public Builder createTime(String createTime) {
-            this.createTime = Objects.requireNonNull(createTime);
+            if (createTime == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstance", "createTime");
+            }
+            this.createTime = createTime;
             return this;
         }
         @CustomType.Setter
         public Builder expireTime(String expireTime) {
-            this.expireTime = Objects.requireNonNull(expireTime);
+            if (expireTime == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstance", "expireTime");
+            }
+            this.expireTime = expireTime;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstance", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder instanceId(String instanceId) {
-            this.instanceId = Objects.requireNonNull(instanceId);
+            if (instanceId == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstance", "instanceId");
+            }
+            this.instanceId = instanceId;
             return this;
         }
         @CustomType.Setter
         public Builder instanceName(String instanceName) {
-            this.instanceName = Objects.requireNonNull(instanceName);
+            if (instanceName == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstance", "instanceName");
+            }
+            this.instanceName = instanceName;
             return this;
         }
         @CustomType.Setter
         public Builder instanceType(String instanceType) {
-            this.instanceType = Objects.requireNonNull(instanceType);
+            if (instanceType == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstance", "instanceType");
+            }
+            this.instanceType = instanceType;
             return this;
         }
         @CustomType.Setter
         public Builder paymentType(String paymentType) {
-            this.paymentType = Objects.requireNonNull(paymentType);
+            if (paymentType == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstance", "paymentType");
+            }
+            this.paymentType = paymentType;
             return this;
         }
         @CustomType.Setter
         public Builder privateEndPoint(String privateEndPoint) {
-            this.privateEndPoint = Objects.requireNonNull(privateEndPoint);
+            if (privateEndPoint == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstance", "privateEndPoint");
+            }
+            this.privateEndPoint = privateEndPoint;
             return this;
         }
         @CustomType.Setter
         public Builder publicEndpoint(String publicEndpoint) {
-            this.publicEndpoint = Objects.requireNonNull(publicEndpoint);
+            if (publicEndpoint == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstance", "publicEndpoint");
+            }
+            this.publicEndpoint = publicEndpoint;
             return this;
         }
         @CustomType.Setter
         public Builder renewalDuration(Integer renewalDuration) {
-            this.renewalDuration = Objects.requireNonNull(renewalDuration);
+            if (renewalDuration == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstance", "renewalDuration");
+            }
+            this.renewalDuration = renewalDuration;
             return this;
         }
         @CustomType.Setter
         public Builder renewalDurationUnit(String renewalDurationUnit) {
-            this.renewalDurationUnit = Objects.requireNonNull(renewalDurationUnit);
+            if (renewalDurationUnit == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstance", "renewalDurationUnit");
+            }
+            this.renewalDurationUnit = renewalDurationUnit;
             return this;
         }
         @CustomType.Setter
         public Builder renewalStatus(String renewalStatus) {
-            this.renewalStatus = Objects.requireNonNull(renewalStatus);
+            if (renewalStatus == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstance", "renewalStatus");
+            }
+            this.renewalStatus = renewalStatus;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstance", "status");
+            }
+            this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder supportEip(Boolean supportEip) {
-            this.supportEip = Objects.requireNonNull(supportEip);
+            if (supportEip == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstance", "supportEip");
+            }
+            this.supportEip = supportEip;
             return this;
         }
         public GetInstancesInstance build() {

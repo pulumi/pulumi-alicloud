@@ -86,21 +86,25 @@ public final class ManagedKubernetesConnections {
 
         @CustomType.Setter
         public Builder apiServerInternet(@Nullable String apiServerInternet) {
+
             this.apiServerInternet = apiServerInternet;
             return this;
         }
         @CustomType.Setter
         public Builder apiServerIntranet(@Nullable String apiServerIntranet) {
+
             this.apiServerIntranet = apiServerIntranet;
             return this;
         }
         @CustomType.Setter
         public Builder masterPublicIp(@Nullable String masterPublicIp) {
+
             this.masterPublicIp = masterPublicIp;
             return this;
         }
         @CustomType.Setter
         public Builder serviceDomain(@Nullable String serviceDomain) {
+
             this.serviceDomain = serviceDomain;
             return this;
         }

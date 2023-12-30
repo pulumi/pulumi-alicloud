@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.cen.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -226,72 +227,114 @@ public final class GetTransitRouterPeerAttachmentsAttachment {
 
         @CustomType.Setter
         public Builder autoPublishRouteEnabled(Boolean autoPublishRouteEnabled) {
-            this.autoPublishRouteEnabled = Objects.requireNonNull(autoPublishRouteEnabled);
+            if (autoPublishRouteEnabled == null) {
+              throw new MissingRequiredPropertyException("GetTransitRouterPeerAttachmentsAttachment", "autoPublishRouteEnabled");
+            }
+            this.autoPublishRouteEnabled = autoPublishRouteEnabled;
             return this;
         }
         @CustomType.Setter
         public Builder bandwidth(Integer bandwidth) {
-            this.bandwidth = Objects.requireNonNull(bandwidth);
+            if (bandwidth == null) {
+              throw new MissingRequiredPropertyException("GetTransitRouterPeerAttachmentsAttachment", "bandwidth");
+            }
+            this.bandwidth = bandwidth;
             return this;
         }
         @CustomType.Setter
         public Builder cenBandwidthPackageId(String cenBandwidthPackageId) {
-            this.cenBandwidthPackageId = Objects.requireNonNull(cenBandwidthPackageId);
+            if (cenBandwidthPackageId == null) {
+              throw new MissingRequiredPropertyException("GetTransitRouterPeerAttachmentsAttachment", "cenBandwidthPackageId");
+            }
+            this.cenBandwidthPackageId = cenBandwidthPackageId;
             return this;
         }
         @CustomType.Setter
         public Builder geographicSpanId(String geographicSpanId) {
-            this.geographicSpanId = Objects.requireNonNull(geographicSpanId);
+            if (geographicSpanId == null) {
+              throw new MissingRequiredPropertyException("GetTransitRouterPeerAttachmentsAttachment", "geographicSpanId");
+            }
+            this.geographicSpanId = geographicSpanId;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetTransitRouterPeerAttachmentsAttachment", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder peerTransitRouterId(String peerTransitRouterId) {
-            this.peerTransitRouterId = Objects.requireNonNull(peerTransitRouterId);
+            if (peerTransitRouterId == null) {
+              throw new MissingRequiredPropertyException("GetTransitRouterPeerAttachmentsAttachment", "peerTransitRouterId");
+            }
+            this.peerTransitRouterId = peerTransitRouterId;
             return this;
         }
         @CustomType.Setter
         public Builder peerTransitRouterOwnerId(String peerTransitRouterOwnerId) {
-            this.peerTransitRouterOwnerId = Objects.requireNonNull(peerTransitRouterOwnerId);
+            if (peerTransitRouterOwnerId == null) {
+              throw new MissingRequiredPropertyException("GetTransitRouterPeerAttachmentsAttachment", "peerTransitRouterOwnerId");
+            }
+            this.peerTransitRouterOwnerId = peerTransitRouterOwnerId;
             return this;
         }
         @CustomType.Setter
         public Builder peerTransitRouterRegionId(String peerTransitRouterRegionId) {
-            this.peerTransitRouterRegionId = Objects.requireNonNull(peerTransitRouterRegionId);
+            if (peerTransitRouterRegionId == null) {
+              throw new MissingRequiredPropertyException("GetTransitRouterPeerAttachmentsAttachment", "peerTransitRouterRegionId");
+            }
+            this.peerTransitRouterRegionId = peerTransitRouterRegionId;
             return this;
         }
         @CustomType.Setter
         public Builder resourceType(String resourceType) {
-            this.resourceType = Objects.requireNonNull(resourceType);
+            if (resourceType == null) {
+              throw new MissingRequiredPropertyException("GetTransitRouterPeerAttachmentsAttachment", "resourceType");
+            }
+            this.resourceType = resourceType;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetTransitRouterPeerAttachmentsAttachment", "status");
+            }
+            this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder transitRouterAttachmentDescription(String transitRouterAttachmentDescription) {
-            this.transitRouterAttachmentDescription = Objects.requireNonNull(transitRouterAttachmentDescription);
+            if (transitRouterAttachmentDescription == null) {
+              throw new MissingRequiredPropertyException("GetTransitRouterPeerAttachmentsAttachment", "transitRouterAttachmentDescription");
+            }
+            this.transitRouterAttachmentDescription = transitRouterAttachmentDescription;
             return this;
         }
         @CustomType.Setter
         public Builder transitRouterAttachmentId(String transitRouterAttachmentId) {
-            this.transitRouterAttachmentId = Objects.requireNonNull(transitRouterAttachmentId);
+            if (transitRouterAttachmentId == null) {
+              throw new MissingRequiredPropertyException("GetTransitRouterPeerAttachmentsAttachment", "transitRouterAttachmentId");
+            }
+            this.transitRouterAttachmentId = transitRouterAttachmentId;
             return this;
         }
         @CustomType.Setter
         public Builder transitRouterAttachmentName(String transitRouterAttachmentName) {
-            this.transitRouterAttachmentName = Objects.requireNonNull(transitRouterAttachmentName);
+            if (transitRouterAttachmentName == null) {
+              throw new MissingRequiredPropertyException("GetTransitRouterPeerAttachmentsAttachment", "transitRouterAttachmentName");
+            }
+            this.transitRouterAttachmentName = transitRouterAttachmentName;
             return this;
         }
         @CustomType.Setter
         public Builder transitRouterId(String transitRouterId) {
-            this.transitRouterId = Objects.requireNonNull(transitRouterId);
+            if (transitRouterId == null) {
+              throw new MissingRequiredPropertyException("GetTransitRouterPeerAttachmentsAttachment", "transitRouterId");
+            }
+            this.transitRouterId = transitRouterId;
             return this;
         }
         public GetTransitRouterPeerAttachmentsAttachment build() {

@@ -5,6 +5,7 @@ package com.pulumi.alicloud.vpc;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -225,7 +226,9 @@ public final class NatIpCidrArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public NatIpCidrArgs build() {
-            $.natGatewayId = Objects.requireNonNull($.natGatewayId, "expected parameter 'natGatewayId' to be non-null");
+            if ($.natGatewayId == null) {
+                throw new MissingRequiredPropertyException("NatIpCidrArgs", "natGatewayId");
+            }
             return $;
         }
     }

@@ -6,6 +6,7 @@ package com.pulumi.alicloud.fc;
 import com.pulumi.alicloud.fc.inputs.FunctionCustomContainerConfigArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.Object;
 import java.lang.String;
@@ -798,9 +799,15 @@ public final class FunctionArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public FunctionArgs build() {
-            $.handler = Objects.requireNonNull($.handler, "expected parameter 'handler' to be non-null");
-            $.runtime = Objects.requireNonNull($.runtime, "expected parameter 'runtime' to be non-null");
-            $.service = Objects.requireNonNull($.service, "expected parameter 'service' to be non-null");
+            if ($.handler == null) {
+                throw new MissingRequiredPropertyException("FunctionArgs", "handler");
+            }
+            if ($.runtime == null) {
+                throw new MissingRequiredPropertyException("FunctionArgs", "runtime");
+            }
+            if ($.service == null) {
+                throw new MissingRequiredPropertyException("FunctionArgs", "service");
+            }
             return $;
         }
     }

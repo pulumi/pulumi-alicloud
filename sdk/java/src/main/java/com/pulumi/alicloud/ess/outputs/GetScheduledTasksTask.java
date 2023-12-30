@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.ess.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -174,62 +175,98 @@ public final class GetScheduledTasksTask {
 
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetScheduledTasksTask", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetScheduledTasksTask", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder launchExpirationTime(Integer launchExpirationTime) {
-            this.launchExpirationTime = Objects.requireNonNull(launchExpirationTime);
+            if (launchExpirationTime == null) {
+              throw new MissingRequiredPropertyException("GetScheduledTasksTask", "launchExpirationTime");
+            }
+            this.launchExpirationTime = launchExpirationTime;
             return this;
         }
         @CustomType.Setter
         public Builder launchTime(String launchTime) {
-            this.launchTime = Objects.requireNonNull(launchTime);
+            if (launchTime == null) {
+              throw new MissingRequiredPropertyException("GetScheduledTasksTask", "launchTime");
+            }
+            this.launchTime = launchTime;
             return this;
         }
         @CustomType.Setter
         public Builder maxValue(Integer maxValue) {
-            this.maxValue = Objects.requireNonNull(maxValue);
+            if (maxValue == null) {
+              throw new MissingRequiredPropertyException("GetScheduledTasksTask", "maxValue");
+            }
+            this.maxValue = maxValue;
             return this;
         }
         @CustomType.Setter
         public Builder minValue(Integer minValue) {
-            this.minValue = Objects.requireNonNull(minValue);
+            if (minValue == null) {
+              throw new MissingRequiredPropertyException("GetScheduledTasksTask", "minValue");
+            }
+            this.minValue = minValue;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetScheduledTasksTask", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder recurrenceEndTime(String recurrenceEndTime) {
-            this.recurrenceEndTime = Objects.requireNonNull(recurrenceEndTime);
+            if (recurrenceEndTime == null) {
+              throw new MissingRequiredPropertyException("GetScheduledTasksTask", "recurrenceEndTime");
+            }
+            this.recurrenceEndTime = recurrenceEndTime;
             return this;
         }
         @CustomType.Setter
         public Builder recurrenceType(String recurrenceType) {
-            this.recurrenceType = Objects.requireNonNull(recurrenceType);
+            if (recurrenceType == null) {
+              throw new MissingRequiredPropertyException("GetScheduledTasksTask", "recurrenceType");
+            }
+            this.recurrenceType = recurrenceType;
             return this;
         }
         @CustomType.Setter
         public Builder recurrenceValue(String recurrenceValue) {
-            this.recurrenceValue = Objects.requireNonNull(recurrenceValue);
+            if (recurrenceValue == null) {
+              throw new MissingRequiredPropertyException("GetScheduledTasksTask", "recurrenceValue");
+            }
+            this.recurrenceValue = recurrenceValue;
             return this;
         }
         @CustomType.Setter
         public Builder scheduledAction(String scheduledAction) {
-            this.scheduledAction = Objects.requireNonNull(scheduledAction);
+            if (scheduledAction == null) {
+              throw new MissingRequiredPropertyException("GetScheduledTasksTask", "scheduledAction");
+            }
+            this.scheduledAction = scheduledAction;
             return this;
         }
         @CustomType.Setter
         public Builder taskEnabled(Boolean taskEnabled) {
-            this.taskEnabled = Objects.requireNonNull(taskEnabled);
+            if (taskEnabled == null) {
+              throw new MissingRequiredPropertyException("GetScheduledTasksTask", "taskEnabled");
+            }
+            this.taskEnabled = taskEnabled;
             return this;
         }
         public GetScheduledTasksTask build() {

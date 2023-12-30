@@ -6,6 +6,7 @@ package com.pulumi.alicloud.cen;
 import com.pulumi.alicloud.cen.inputs.TransitRouterVpcAttachmentZoneMappingArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Object;
 import java.lang.String;
@@ -609,9 +610,15 @@ public final class TransitRouterVpcAttachmentArgs extends com.pulumi.resources.R
         }
 
         public TransitRouterVpcAttachmentArgs build() {
-            $.cenId = Objects.requireNonNull($.cenId, "expected parameter 'cenId' to be non-null");
-            $.vpcId = Objects.requireNonNull($.vpcId, "expected parameter 'vpcId' to be non-null");
-            $.zoneMappings = Objects.requireNonNull($.zoneMappings, "expected parameter 'zoneMappings' to be non-null");
+            if ($.cenId == null) {
+                throw new MissingRequiredPropertyException("TransitRouterVpcAttachmentArgs", "cenId");
+            }
+            if ($.vpcId == null) {
+                throw new MissingRequiredPropertyException("TransitRouterVpcAttachmentArgs", "vpcId");
+            }
+            if ($.zoneMappings == null) {
+                throw new MissingRequiredPropertyException("TransitRouterVpcAttachmentArgs", "zoneMappings");
+            }
             return $;
         }
     }

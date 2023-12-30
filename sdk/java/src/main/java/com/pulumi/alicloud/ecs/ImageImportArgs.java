@@ -6,6 +6,7 @@ package com.pulumi.alicloud.ecs;
 import com.pulumi.alicloud.ecs.inputs.ImageImportDiskDeviceMappingArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -318,7 +319,9 @@ public final class ImageImportArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public ImageImportArgs build() {
-            $.diskDeviceMappings = Objects.requireNonNull($.diskDeviceMappings, "expected parameter 'diskDeviceMappings' to be non-null");
+            if ($.diskDeviceMappings == null) {
+                throw new MissingRequiredPropertyException("ImageImportArgs", "diskDeviceMappings");
+            }
             return $;
         }
     }

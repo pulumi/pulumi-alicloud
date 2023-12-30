@@ -5,6 +5,7 @@ package com.pulumi.alicloud.dfs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -150,8 +151,12 @@ public final class AccessGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public AccessGroupArgs build() {
-            $.accessGroupName = Objects.requireNonNull($.accessGroupName, "expected parameter 'accessGroupName' to be non-null");
-            $.networkType = Objects.requireNonNull($.networkType, "expected parameter 'networkType' to be non-null");
+            if ($.accessGroupName == null) {
+                throw new MissingRequiredPropertyException("AccessGroupArgs", "accessGroupName");
+            }
+            if ($.networkType == null) {
+                throw new MissingRequiredPropertyException("AccessGroupArgs", "networkType");
+            }
             return $;
         }
     }

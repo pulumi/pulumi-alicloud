@@ -6,6 +6,7 @@ package com.pulumi.alicloud.ga;
 import com.pulumi.alicloud.ga.inputs.CustomRoutingEndpointTrafficPolicyPortRangeArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -162,8 +163,12 @@ public final class CustomRoutingEndpointTrafficPolicyArgs extends com.pulumi.res
         }
 
         public CustomRoutingEndpointTrafficPolicyArgs build() {
-            $.address = Objects.requireNonNull($.address, "expected parameter 'address' to be non-null");
-            $.endpointId = Objects.requireNonNull($.endpointId, "expected parameter 'endpointId' to be non-null");
+            if ($.address == null) {
+                throw new MissingRequiredPropertyException("CustomRoutingEndpointTrafficPolicyArgs", "address");
+            }
+            if ($.endpointId == null) {
+                throw new MissingRequiredPropertyException("CustomRoutingEndpointTrafficPolicyArgs", "endpointId");
+            }
             return $;
         }
     }

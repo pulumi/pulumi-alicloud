@@ -5,6 +5,7 @@ package com.pulumi.alicloud.cen.outputs;
 
 import com.pulumi.alicloud.cen.outputs.GetTransitRouteTableAggregationsTransitRouteTableAggregation;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -134,12 +135,18 @@ public final class GetTransitRouteTableAggregationsResult {
 
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetTransitRouteTableAggregationsResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder ids(List<String> ids) {
-            this.ids = Objects.requireNonNull(ids);
+            if (ids == null) {
+              throw new MissingRequiredPropertyException("GetTransitRouteTableAggregationsResult", "ids");
+            }
+            this.ids = ids;
             return this;
         }
         public Builder ids(String... ids) {
@@ -147,12 +154,16 @@ public final class GetTransitRouteTableAggregationsResult {
         }
         @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
+
             this.nameRegex = nameRegex;
             return this;
         }
         @CustomType.Setter
         public Builder names(List<String> names) {
-            this.names = Objects.requireNonNull(names);
+            if (names == null) {
+              throw new MissingRequiredPropertyException("GetTransitRouteTableAggregationsResult", "names");
+            }
+            this.names = names;
             return this;
         }
         public Builder names(String... names) {
@@ -160,22 +171,28 @@ public final class GetTransitRouteTableAggregationsResult {
         }
         @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
+
             this.outputFile = outputFile;
             return this;
         }
         @CustomType.Setter
         public Builder status(@Nullable String status) {
+
             this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder transitRouteTableAggregationCidr(@Nullable String transitRouteTableAggregationCidr) {
+
             this.transitRouteTableAggregationCidr = transitRouteTableAggregationCidr;
             return this;
         }
         @CustomType.Setter
         public Builder transitRouteTableAggregations(List<GetTransitRouteTableAggregationsTransitRouteTableAggregation> transitRouteTableAggregations) {
-            this.transitRouteTableAggregations = Objects.requireNonNull(transitRouteTableAggregations);
+            if (transitRouteTableAggregations == null) {
+              throw new MissingRequiredPropertyException("GetTransitRouteTableAggregationsResult", "transitRouteTableAggregations");
+            }
+            this.transitRouteTableAggregations = transitRouteTableAggregations;
             return this;
         }
         public Builder transitRouteTableAggregations(GetTransitRouteTableAggregationsTransitRouteTableAggregation... transitRouteTableAggregations) {
@@ -183,7 +200,10 @@ public final class GetTransitRouteTableAggregationsResult {
         }
         @CustomType.Setter
         public Builder transitRouteTableId(String transitRouteTableId) {
-            this.transitRouteTableId = Objects.requireNonNull(transitRouteTableId);
+            if (transitRouteTableId == null) {
+              throw new MissingRequiredPropertyException("GetTransitRouteTableAggregationsResult", "transitRouteTableId");
+            }
+            this.transitRouteTableId = transitRouteTableId;
             return this;
         }
         public GetTransitRouteTableAggregationsResult build() {

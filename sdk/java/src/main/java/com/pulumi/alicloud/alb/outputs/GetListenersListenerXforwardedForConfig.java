@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.alb.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -211,67 +212,106 @@ public final class GetListenersListenerXforwardedForConfig {
 
         @CustomType.Setter
         public Builder xforwardedforclientcertIssuerdnalias(String xforwardedforclientcertIssuerdnalias) {
-            this.xforwardedforclientcertIssuerdnalias = Objects.requireNonNull(xforwardedforclientcertIssuerdnalias);
+            if (xforwardedforclientcertIssuerdnalias == null) {
+              throw new MissingRequiredPropertyException("GetListenersListenerXforwardedForConfig", "xforwardedforclientcertIssuerdnalias");
+            }
+            this.xforwardedforclientcertIssuerdnalias = xforwardedforclientcertIssuerdnalias;
             return this;
         }
         @CustomType.Setter
         public Builder xforwardedforclientcertIssuerdnenabled(Boolean xforwardedforclientcertIssuerdnenabled) {
-            this.xforwardedforclientcertIssuerdnenabled = Objects.requireNonNull(xforwardedforclientcertIssuerdnenabled);
+            if (xforwardedforclientcertIssuerdnenabled == null) {
+              throw new MissingRequiredPropertyException("GetListenersListenerXforwardedForConfig", "xforwardedforclientcertIssuerdnenabled");
+            }
+            this.xforwardedforclientcertIssuerdnenabled = xforwardedforclientcertIssuerdnenabled;
             return this;
         }
         @CustomType.Setter
         public Builder xforwardedforclientcertclientverifyalias(String xforwardedforclientcertclientverifyalias) {
-            this.xforwardedforclientcertclientverifyalias = Objects.requireNonNull(xforwardedforclientcertclientverifyalias);
+            if (xforwardedforclientcertclientverifyalias == null) {
+              throw new MissingRequiredPropertyException("GetListenersListenerXforwardedForConfig", "xforwardedforclientcertclientverifyalias");
+            }
+            this.xforwardedforclientcertclientverifyalias = xforwardedforclientcertclientverifyalias;
             return this;
         }
         @CustomType.Setter
         public Builder xforwardedforclientcertclientverifyenabled(Boolean xforwardedforclientcertclientverifyenabled) {
-            this.xforwardedforclientcertclientverifyenabled = Objects.requireNonNull(xforwardedforclientcertclientverifyenabled);
+            if (xforwardedforclientcertclientverifyenabled == null) {
+              throw new MissingRequiredPropertyException("GetListenersListenerXforwardedForConfig", "xforwardedforclientcertclientverifyenabled");
+            }
+            this.xforwardedforclientcertclientverifyenabled = xforwardedforclientcertclientverifyenabled;
             return this;
         }
         @CustomType.Setter
         public Builder xforwardedforclientcertfingerprintalias(String xforwardedforclientcertfingerprintalias) {
-            this.xforwardedforclientcertfingerprintalias = Objects.requireNonNull(xforwardedforclientcertfingerprintalias);
+            if (xforwardedforclientcertfingerprintalias == null) {
+              throw new MissingRequiredPropertyException("GetListenersListenerXforwardedForConfig", "xforwardedforclientcertfingerprintalias");
+            }
+            this.xforwardedforclientcertfingerprintalias = xforwardedforclientcertfingerprintalias;
             return this;
         }
         @CustomType.Setter
         public Builder xforwardedforclientcertfingerprintenabled(Boolean xforwardedforclientcertfingerprintenabled) {
-            this.xforwardedforclientcertfingerprintenabled = Objects.requireNonNull(xforwardedforclientcertfingerprintenabled);
+            if (xforwardedforclientcertfingerprintenabled == null) {
+              throw new MissingRequiredPropertyException("GetListenersListenerXforwardedForConfig", "xforwardedforclientcertfingerprintenabled");
+            }
+            this.xforwardedforclientcertfingerprintenabled = xforwardedforclientcertfingerprintenabled;
             return this;
         }
         @CustomType.Setter
         public Builder xforwardedforclientcertsubjectdnalias(String xforwardedforclientcertsubjectdnalias) {
-            this.xforwardedforclientcertsubjectdnalias = Objects.requireNonNull(xforwardedforclientcertsubjectdnalias);
+            if (xforwardedforclientcertsubjectdnalias == null) {
+              throw new MissingRequiredPropertyException("GetListenersListenerXforwardedForConfig", "xforwardedforclientcertsubjectdnalias");
+            }
+            this.xforwardedforclientcertsubjectdnalias = xforwardedforclientcertsubjectdnalias;
             return this;
         }
         @CustomType.Setter
         public Builder xforwardedforclientcertsubjectdnenabled(Boolean xforwardedforclientcertsubjectdnenabled) {
-            this.xforwardedforclientcertsubjectdnenabled = Objects.requireNonNull(xforwardedforclientcertsubjectdnenabled);
+            if (xforwardedforclientcertsubjectdnenabled == null) {
+              throw new MissingRequiredPropertyException("GetListenersListenerXforwardedForConfig", "xforwardedforclientcertsubjectdnenabled");
+            }
+            this.xforwardedforclientcertsubjectdnenabled = xforwardedforclientcertsubjectdnenabled;
             return this;
         }
         @CustomType.Setter
         public Builder xforwardedforclientsrcportenabled(Boolean xforwardedforclientsrcportenabled) {
-            this.xforwardedforclientsrcportenabled = Objects.requireNonNull(xforwardedforclientsrcportenabled);
+            if (xforwardedforclientsrcportenabled == null) {
+              throw new MissingRequiredPropertyException("GetListenersListenerXforwardedForConfig", "xforwardedforclientsrcportenabled");
+            }
+            this.xforwardedforclientsrcportenabled = xforwardedforclientsrcportenabled;
             return this;
         }
         @CustomType.Setter
         public Builder xforwardedforenabled(Boolean xforwardedforenabled) {
-            this.xforwardedforenabled = Objects.requireNonNull(xforwardedforenabled);
+            if (xforwardedforenabled == null) {
+              throw new MissingRequiredPropertyException("GetListenersListenerXforwardedForConfig", "xforwardedforenabled");
+            }
+            this.xforwardedforenabled = xforwardedforenabled;
             return this;
         }
         @CustomType.Setter
         public Builder xforwardedforprotoenabled(Boolean xforwardedforprotoenabled) {
-            this.xforwardedforprotoenabled = Objects.requireNonNull(xforwardedforprotoenabled);
+            if (xforwardedforprotoenabled == null) {
+              throw new MissingRequiredPropertyException("GetListenersListenerXforwardedForConfig", "xforwardedforprotoenabled");
+            }
+            this.xforwardedforprotoenabled = xforwardedforprotoenabled;
             return this;
         }
         @CustomType.Setter
         public Builder xforwardedforslbidenabled(Boolean xforwardedforslbidenabled) {
-            this.xforwardedforslbidenabled = Objects.requireNonNull(xforwardedforslbidenabled);
+            if (xforwardedforslbidenabled == null) {
+              throw new MissingRequiredPropertyException("GetListenersListenerXforwardedForConfig", "xforwardedforslbidenabled");
+            }
+            this.xforwardedforslbidenabled = xforwardedforslbidenabled;
             return this;
         }
         @CustomType.Setter
         public Builder xforwardedforslbportenabled(Boolean xforwardedforslbportenabled) {
-            this.xforwardedforslbportenabled = Objects.requireNonNull(xforwardedforslbportenabled);
+            if (xforwardedforslbportenabled == null) {
+              throw new MissingRequiredPropertyException("GetListenersListenerXforwardedForConfig", "xforwardedforslbportenabled");
+            }
+            this.xforwardedforslbportenabled = xforwardedforslbportenabled;
             return this;
         }
         public GetListenersListenerXforwardedForConfig build() {

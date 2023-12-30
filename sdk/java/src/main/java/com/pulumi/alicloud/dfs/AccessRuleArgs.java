@@ -5,6 +5,7 @@ package com.pulumi.alicloud.dfs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -225,10 +226,18 @@ public final class AccessRuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public AccessRuleArgs build() {
-            $.accessGroupId = Objects.requireNonNull($.accessGroupId, "expected parameter 'accessGroupId' to be non-null");
-            $.networkSegment = Objects.requireNonNull($.networkSegment, "expected parameter 'networkSegment' to be non-null");
-            $.priority = Objects.requireNonNull($.priority, "expected parameter 'priority' to be non-null");
-            $.rwAccessType = Objects.requireNonNull($.rwAccessType, "expected parameter 'rwAccessType' to be non-null");
+            if ($.accessGroupId == null) {
+                throw new MissingRequiredPropertyException("AccessRuleArgs", "accessGroupId");
+            }
+            if ($.networkSegment == null) {
+                throw new MissingRequiredPropertyException("AccessRuleArgs", "networkSegment");
+            }
+            if ($.priority == null) {
+                throw new MissingRequiredPropertyException("AccessRuleArgs", "priority");
+            }
+            if ($.rwAccessType == null) {
+                throw new MissingRequiredPropertyException("AccessRuleArgs", "rwAccessType");
+            }
             return $;
         }
     }

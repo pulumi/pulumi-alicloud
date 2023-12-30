@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.dbs.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -408,137 +409,218 @@ public final class GetBackupPlansPlan {
 
         @CustomType.Setter
         public Builder backupGatewayId(String backupGatewayId) {
-            this.backupGatewayId = Objects.requireNonNull(backupGatewayId);
+            if (backupGatewayId == null) {
+              throw new MissingRequiredPropertyException("GetBackupPlansPlan", "backupGatewayId");
+            }
+            this.backupGatewayId = backupGatewayId;
             return this;
         }
         @CustomType.Setter
         public Builder backupMethod(String backupMethod) {
-            this.backupMethod = Objects.requireNonNull(backupMethod);
+            if (backupMethod == null) {
+              throw new MissingRequiredPropertyException("GetBackupPlansPlan", "backupMethod");
+            }
+            this.backupMethod = backupMethod;
             return this;
         }
         @CustomType.Setter
         public Builder backupObjects(String backupObjects) {
-            this.backupObjects = Objects.requireNonNull(backupObjects);
+            if (backupObjects == null) {
+              throw new MissingRequiredPropertyException("GetBackupPlansPlan", "backupObjects");
+            }
+            this.backupObjects = backupObjects;
             return this;
         }
         @CustomType.Setter
         public Builder backupPeriod(String backupPeriod) {
-            this.backupPeriod = Objects.requireNonNull(backupPeriod);
+            if (backupPeriod == null) {
+              throw new MissingRequiredPropertyException("GetBackupPlansPlan", "backupPeriod");
+            }
+            this.backupPeriod = backupPeriod;
             return this;
         }
         @CustomType.Setter
         public Builder backupPlanId(String backupPlanId) {
-            this.backupPlanId = Objects.requireNonNull(backupPlanId);
+            if (backupPlanId == null) {
+              throw new MissingRequiredPropertyException("GetBackupPlansPlan", "backupPlanId");
+            }
+            this.backupPlanId = backupPlanId;
             return this;
         }
         @CustomType.Setter
         public Builder backupPlanName(String backupPlanName) {
-            this.backupPlanName = Objects.requireNonNull(backupPlanName);
+            if (backupPlanName == null) {
+              throw new MissingRequiredPropertyException("GetBackupPlansPlan", "backupPlanName");
+            }
+            this.backupPlanName = backupPlanName;
             return this;
         }
         @CustomType.Setter
         public Builder backupRetentionPeriod(Integer backupRetentionPeriod) {
-            this.backupRetentionPeriod = Objects.requireNonNull(backupRetentionPeriod);
+            if (backupRetentionPeriod == null) {
+              throw new MissingRequiredPropertyException("GetBackupPlansPlan", "backupRetentionPeriod");
+            }
+            this.backupRetentionPeriod = backupRetentionPeriod;
             return this;
         }
         @CustomType.Setter
         public Builder backupStartTime(String backupStartTime) {
-            this.backupStartTime = Objects.requireNonNull(backupStartTime);
+            if (backupStartTime == null) {
+              throw new MissingRequiredPropertyException("GetBackupPlansPlan", "backupStartTime");
+            }
+            this.backupStartTime = backupStartTime;
             return this;
         }
         @CustomType.Setter
         public Builder backupStorageType(String backupStorageType) {
-            this.backupStorageType = Objects.requireNonNull(backupStorageType);
+            if (backupStorageType == null) {
+              throw new MissingRequiredPropertyException("GetBackupPlansPlan", "backupStorageType");
+            }
+            this.backupStorageType = backupStorageType;
             return this;
         }
         @CustomType.Setter
         public Builder crossAliyunId(String crossAliyunId) {
-            this.crossAliyunId = Objects.requireNonNull(crossAliyunId);
+            if (crossAliyunId == null) {
+              throw new MissingRequiredPropertyException("GetBackupPlansPlan", "crossAliyunId");
+            }
+            this.crossAliyunId = crossAliyunId;
             return this;
         }
         @CustomType.Setter
         public Builder crossRoleName(String crossRoleName) {
-            this.crossRoleName = Objects.requireNonNull(crossRoleName);
+            if (crossRoleName == null) {
+              throw new MissingRequiredPropertyException("GetBackupPlansPlan", "crossRoleName");
+            }
+            this.crossRoleName = crossRoleName;
             return this;
         }
         @CustomType.Setter
         public Builder databaseType(String databaseType) {
-            this.databaseType = Objects.requireNonNull(databaseType);
+            if (databaseType == null) {
+              throw new MissingRequiredPropertyException("GetBackupPlansPlan", "databaseType");
+            }
+            this.databaseType = databaseType;
             return this;
         }
         @CustomType.Setter
         public Builder duplicationArchivePeriod(Integer duplicationArchivePeriod) {
-            this.duplicationArchivePeriod = Objects.requireNonNull(duplicationArchivePeriod);
+            if (duplicationArchivePeriod == null) {
+              throw new MissingRequiredPropertyException("GetBackupPlansPlan", "duplicationArchivePeriod");
+            }
+            this.duplicationArchivePeriod = duplicationArchivePeriod;
             return this;
         }
         @CustomType.Setter
         public Builder duplicationInfrequentAccessPeriod(Integer duplicationInfrequentAccessPeriod) {
-            this.duplicationInfrequentAccessPeriod = Objects.requireNonNull(duplicationInfrequentAccessPeriod);
+            if (duplicationInfrequentAccessPeriod == null) {
+              throw new MissingRequiredPropertyException("GetBackupPlansPlan", "duplicationInfrequentAccessPeriod");
+            }
+            this.duplicationInfrequentAccessPeriod = duplicationInfrequentAccessPeriod;
             return this;
         }
         @CustomType.Setter
         public Builder enableBackupLog(Boolean enableBackupLog) {
-            this.enableBackupLog = Objects.requireNonNull(enableBackupLog);
+            if (enableBackupLog == null) {
+              throw new MissingRequiredPropertyException("GetBackupPlansPlan", "enableBackupLog");
+            }
+            this.enableBackupLog = enableBackupLog;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetBackupPlansPlan", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder instanceClass(String instanceClass) {
-            this.instanceClass = Objects.requireNonNull(instanceClass);
+            if (instanceClass == null) {
+              throw new MissingRequiredPropertyException("GetBackupPlansPlan", "instanceClass");
+            }
+            this.instanceClass = instanceClass;
             return this;
         }
         @CustomType.Setter
         public Builder ossBucketName(String ossBucketName) {
-            this.ossBucketName = Objects.requireNonNull(ossBucketName);
+            if (ossBucketName == null) {
+              throw new MissingRequiredPropertyException("GetBackupPlansPlan", "ossBucketName");
+            }
+            this.ossBucketName = ossBucketName;
             return this;
         }
         @CustomType.Setter
         public Builder paymentType(String paymentType) {
-            this.paymentType = Objects.requireNonNull(paymentType);
+            if (paymentType == null) {
+              throw new MissingRequiredPropertyException("GetBackupPlansPlan", "paymentType");
+            }
+            this.paymentType = paymentType;
             return this;
         }
         @CustomType.Setter
         public Builder resourceGroupId(String resourceGroupId) {
-            this.resourceGroupId = Objects.requireNonNull(resourceGroupId);
+            if (resourceGroupId == null) {
+              throw new MissingRequiredPropertyException("GetBackupPlansPlan", "resourceGroupId");
+            }
+            this.resourceGroupId = resourceGroupId;
             return this;
         }
         @CustomType.Setter
         public Builder sourceEndpointDatabaseName(String sourceEndpointDatabaseName) {
-            this.sourceEndpointDatabaseName = Objects.requireNonNull(sourceEndpointDatabaseName);
+            if (sourceEndpointDatabaseName == null) {
+              throw new MissingRequiredPropertyException("GetBackupPlansPlan", "sourceEndpointDatabaseName");
+            }
+            this.sourceEndpointDatabaseName = sourceEndpointDatabaseName;
             return this;
         }
         @CustomType.Setter
         public Builder sourceEndpointInstanceId(String sourceEndpointInstanceId) {
-            this.sourceEndpointInstanceId = Objects.requireNonNull(sourceEndpointInstanceId);
+            if (sourceEndpointInstanceId == null) {
+              throw new MissingRequiredPropertyException("GetBackupPlansPlan", "sourceEndpointInstanceId");
+            }
+            this.sourceEndpointInstanceId = sourceEndpointInstanceId;
             return this;
         }
         @CustomType.Setter
         public Builder sourceEndpointInstanceType(String sourceEndpointInstanceType) {
-            this.sourceEndpointInstanceType = Objects.requireNonNull(sourceEndpointInstanceType);
+            if (sourceEndpointInstanceType == null) {
+              throw new MissingRequiredPropertyException("GetBackupPlansPlan", "sourceEndpointInstanceType");
+            }
+            this.sourceEndpointInstanceType = sourceEndpointInstanceType;
             return this;
         }
         @CustomType.Setter
         public Builder sourceEndpointRegion(String sourceEndpointRegion) {
-            this.sourceEndpointRegion = Objects.requireNonNull(sourceEndpointRegion);
+            if (sourceEndpointRegion == null) {
+              throw new MissingRequiredPropertyException("GetBackupPlansPlan", "sourceEndpointRegion");
+            }
+            this.sourceEndpointRegion = sourceEndpointRegion;
             return this;
         }
         @CustomType.Setter
         public Builder sourceEndpointSid(String sourceEndpointSid) {
-            this.sourceEndpointSid = Objects.requireNonNull(sourceEndpointSid);
+            if (sourceEndpointSid == null) {
+              throw new MissingRequiredPropertyException("GetBackupPlansPlan", "sourceEndpointSid");
+            }
+            this.sourceEndpointSid = sourceEndpointSid;
             return this;
         }
         @CustomType.Setter
         public Builder sourceEndpointUserName(String sourceEndpointUserName) {
-            this.sourceEndpointUserName = Objects.requireNonNull(sourceEndpointUserName);
+            if (sourceEndpointUserName == null) {
+              throw new MissingRequiredPropertyException("GetBackupPlansPlan", "sourceEndpointUserName");
+            }
+            this.sourceEndpointUserName = sourceEndpointUserName;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetBackupPlansPlan", "status");
+            }
+            this.status = status;
             return this;
         }
         public GetBackupPlansPlan build() {

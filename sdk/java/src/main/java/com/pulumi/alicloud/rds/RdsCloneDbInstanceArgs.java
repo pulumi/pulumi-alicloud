@@ -8,6 +8,7 @@ import com.pulumi.alicloud.rds.inputs.RdsCloneDbInstancePgHbaConfArgs;
 import com.pulumi.alicloud.rds.inputs.RdsCloneDbInstanceServerlessConfigArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -2622,9 +2623,15 @@ public final class RdsCloneDbInstanceArgs extends com.pulumi.resources.ResourceA
         }
 
         public RdsCloneDbInstanceArgs build() {
-            $.dbInstanceStorageType = Objects.requireNonNull($.dbInstanceStorageType, "expected parameter 'dbInstanceStorageType' to be non-null");
-            $.paymentType = Objects.requireNonNull($.paymentType, "expected parameter 'paymentType' to be non-null");
-            $.sourceDbInstanceId = Objects.requireNonNull($.sourceDbInstanceId, "expected parameter 'sourceDbInstanceId' to be non-null");
+            if ($.dbInstanceStorageType == null) {
+                throw new MissingRequiredPropertyException("RdsCloneDbInstanceArgs", "dbInstanceStorageType");
+            }
+            if ($.paymentType == null) {
+                throw new MissingRequiredPropertyException("RdsCloneDbInstanceArgs", "paymentType");
+            }
+            if ($.sourceDbInstanceId == null) {
+                throw new MissingRequiredPropertyException("RdsCloneDbInstanceArgs", "sourceDbInstanceId");
+            }
             return $;
         }
     }

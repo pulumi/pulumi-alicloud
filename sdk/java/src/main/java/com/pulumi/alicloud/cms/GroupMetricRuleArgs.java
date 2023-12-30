@@ -7,6 +7,7 @@ import com.pulumi.alicloud.cms.inputs.GroupMetricRuleEscalationsArgs;
 import com.pulumi.alicloud.cms.inputs.GroupMetricRuleTargetArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -682,12 +683,24 @@ public final class GroupMetricRuleArgs extends com.pulumi.resources.ResourceArgs
         }
 
         public GroupMetricRuleArgs build() {
-            $.escalations = Objects.requireNonNull($.escalations, "expected parameter 'escalations' to be non-null");
-            $.groupId = Objects.requireNonNull($.groupId, "expected parameter 'groupId' to be non-null");
-            $.groupMetricRuleName = Objects.requireNonNull($.groupMetricRuleName, "expected parameter 'groupMetricRuleName' to be non-null");
-            $.metricName = Objects.requireNonNull($.metricName, "expected parameter 'metricName' to be non-null");
-            $.namespace = Objects.requireNonNull($.namespace, "expected parameter 'namespace' to be non-null");
-            $.ruleId = Objects.requireNonNull($.ruleId, "expected parameter 'ruleId' to be non-null");
+            if ($.escalations == null) {
+                throw new MissingRequiredPropertyException("GroupMetricRuleArgs", "escalations");
+            }
+            if ($.groupId == null) {
+                throw new MissingRequiredPropertyException("GroupMetricRuleArgs", "groupId");
+            }
+            if ($.groupMetricRuleName == null) {
+                throw new MissingRequiredPropertyException("GroupMetricRuleArgs", "groupMetricRuleName");
+            }
+            if ($.metricName == null) {
+                throw new MissingRequiredPropertyException("GroupMetricRuleArgs", "metricName");
+            }
+            if ($.namespace == null) {
+                throw new MissingRequiredPropertyException("GroupMetricRuleArgs", "namespace");
+            }
+            if ($.ruleId == null) {
+                throw new MissingRequiredPropertyException("GroupMetricRuleArgs", "ruleId");
+            }
             return $;
         }
     }

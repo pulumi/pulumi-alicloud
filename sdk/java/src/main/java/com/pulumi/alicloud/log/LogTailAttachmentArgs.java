@@ -5,6 +5,7 @@ package com.pulumi.alicloud.log;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -148,9 +149,15 @@ public final class LogTailAttachmentArgs extends com.pulumi.resources.ResourceAr
         }
 
         public LogTailAttachmentArgs build() {
-            $.logtailConfigName = Objects.requireNonNull($.logtailConfigName, "expected parameter 'logtailConfigName' to be non-null");
-            $.machineGroupName = Objects.requireNonNull($.machineGroupName, "expected parameter 'machineGroupName' to be non-null");
-            $.project = Objects.requireNonNull($.project, "expected parameter 'project' to be non-null");
+            if ($.logtailConfigName == null) {
+                throw new MissingRequiredPropertyException("LogTailAttachmentArgs", "logtailConfigName");
+            }
+            if ($.machineGroupName == null) {
+                throw new MissingRequiredPropertyException("LogTailAttachmentArgs", "machineGroupName");
+            }
+            if ($.project == null) {
+                throw new MissingRequiredPropertyException("LogTailAttachmentArgs", "project");
+            }
             return $;
         }
     }

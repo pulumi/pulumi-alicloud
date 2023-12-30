@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.simpleapplicationserver.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -98,27 +99,42 @@ public final class GetServerCustomImagesImage {
 
         @CustomType.Setter
         public Builder customImageId(String customImageId) {
-            this.customImageId = Objects.requireNonNull(customImageId);
+            if (customImageId == null) {
+              throw new MissingRequiredPropertyException("GetServerCustomImagesImage", "customImageId");
+            }
+            this.customImageId = customImageId;
             return this;
         }
         @CustomType.Setter
         public Builder customImageName(String customImageName) {
-            this.customImageName = Objects.requireNonNull(customImageName);
+            if (customImageName == null) {
+              throw new MissingRequiredPropertyException("GetServerCustomImagesImage", "customImageName");
+            }
+            this.customImageName = customImageName;
             return this;
         }
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetServerCustomImagesImage", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetServerCustomImagesImage", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder platform(String platform) {
-            this.platform = Objects.requireNonNull(platform);
+            if (platform == null) {
+              throw new MissingRequiredPropertyException("GetServerCustomImagesImage", "platform");
+            }
+            this.platform = platform;
             return this;
         }
         public GetServerCustomImagesImage build() {

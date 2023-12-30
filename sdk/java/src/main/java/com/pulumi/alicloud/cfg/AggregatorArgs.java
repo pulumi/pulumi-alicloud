@@ -6,6 +6,7 @@ package com.pulumi.alicloud.cfg;
 import com.pulumi.alicloud.cfg.inputs.AggregatorAggregatorAccountArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -199,8 +200,12 @@ public final class AggregatorArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public AggregatorArgs build() {
-            $.aggregatorName = Objects.requireNonNull($.aggregatorName, "expected parameter 'aggregatorName' to be non-null");
-            $.description = Objects.requireNonNull($.description, "expected parameter 'description' to be non-null");
+            if ($.aggregatorName == null) {
+                throw new MissingRequiredPropertyException("AggregatorArgs", "aggregatorName");
+            }
+            if ($.description == null) {
+                throw new MissingRequiredPropertyException("AggregatorArgs", "description");
+            }
             return $;
         }
     }

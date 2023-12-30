@@ -59,11 +59,13 @@ public final class GetBucketsBucketLifecycleRuleExpiration {
 
         @CustomType.Setter
         public Builder date(@Nullable String date) {
+
             this.date = date;
             return this;
         }
         @CustomType.Setter
         public Builder days(@Nullable Integer days) {
+
             this.days = days;
             return this;
         }

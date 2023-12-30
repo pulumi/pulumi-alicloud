@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.resourcemanager.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -141,42 +142,66 @@ public final class GetRolesRole {
 
         @CustomType.Setter
         public Builder arn(String arn) {
-            this.arn = Objects.requireNonNull(arn);
+            if (arn == null) {
+              throw new MissingRequiredPropertyException("GetRolesRole", "arn");
+            }
+            this.arn = arn;
             return this;
         }
         @CustomType.Setter
         public Builder assumeRolePolicyDocument(String assumeRolePolicyDocument) {
-            this.assumeRolePolicyDocument = Objects.requireNonNull(assumeRolePolicyDocument);
+            if (assumeRolePolicyDocument == null) {
+              throw new MissingRequiredPropertyException("GetRolesRole", "assumeRolePolicyDocument");
+            }
+            this.assumeRolePolicyDocument = assumeRolePolicyDocument;
             return this;
         }
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetRolesRole", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetRolesRole", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder maxSessionDuration(Integer maxSessionDuration) {
-            this.maxSessionDuration = Objects.requireNonNull(maxSessionDuration);
+            if (maxSessionDuration == null) {
+              throw new MissingRequiredPropertyException("GetRolesRole", "maxSessionDuration");
+            }
+            this.maxSessionDuration = maxSessionDuration;
             return this;
         }
         @CustomType.Setter
         public Builder roleId(String roleId) {
-            this.roleId = Objects.requireNonNull(roleId);
+            if (roleId == null) {
+              throw new MissingRequiredPropertyException("GetRolesRole", "roleId");
+            }
+            this.roleId = roleId;
             return this;
         }
         @CustomType.Setter
         public Builder roleName(String roleName) {
-            this.roleName = Objects.requireNonNull(roleName);
+            if (roleName == null) {
+              throw new MissingRequiredPropertyException("GetRolesRole", "roleName");
+            }
+            this.roleName = roleName;
             return this;
         }
         @CustomType.Setter
         public Builder updateDate(String updateDate) {
-            this.updateDate = Objects.requireNonNull(updateDate);
+            if (updateDate == null) {
+              throw new MissingRequiredPropertyException("GetRolesRole", "updateDate");
+            }
+            this.updateDate = updateDate;
             return this;
         }
         public GetRolesRole build() {

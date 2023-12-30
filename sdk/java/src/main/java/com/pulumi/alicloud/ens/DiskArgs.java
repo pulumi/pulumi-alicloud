@@ -5,6 +5,7 @@ package com.pulumi.alicloud.ens;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -353,9 +354,15 @@ public final class DiskArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public DiskArgs build() {
-            $.category = Objects.requireNonNull($.category, "expected parameter 'category' to be non-null");
-            $.ensRegionId = Objects.requireNonNull($.ensRegionId, "expected parameter 'ensRegionId' to be non-null");
-            $.paymentType = Objects.requireNonNull($.paymentType, "expected parameter 'paymentType' to be non-null");
+            if ($.category == null) {
+                throw new MissingRequiredPropertyException("DiskArgs", "category");
+            }
+            if ($.ensRegionId == null) {
+                throw new MissingRequiredPropertyException("DiskArgs", "ensRegionId");
+            }
+            if ($.paymentType == null) {
+                throw new MissingRequiredPropertyException("DiskArgs", "paymentType");
+            }
             return $;
         }
     }

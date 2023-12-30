@@ -174,6 +174,12 @@ class EciScalingConfigurationContainer(dict):
             suggest = "readiness_probe_tcp_socket_port"
         elif key == "readinessProbeTimeoutSeconds":
             suggest = "readiness_probe_timeout_seconds"
+        elif key == "securityContextCapabilityAdds":
+            suggest = "security_context_capability_adds"
+        elif key == "securityContextReadOnlyRootFileSystem":
+            suggest = "security_context_read_only_root_file_system"
+        elif key == "securityContextRunAsUser":
+            suggest = "security_context_run_as_user"
         elif key == "volumeMounts":
             suggest = "volume_mounts"
         elif key == "workingDir":
@@ -221,6 +227,9 @@ class EciScalingConfigurationContainer(dict):
                  readiness_probe_success_threshold: Optional[int] = None,
                  readiness_probe_tcp_socket_port: Optional[int] = None,
                  readiness_probe_timeout_seconds: Optional[int] = None,
+                 security_context_capability_adds: Optional[Sequence[str]] = None,
+                 security_context_read_only_root_file_system: Optional[bool] = None,
+                 security_context_run_as_user: Optional[int] = None,
                  volume_mounts: Optional[Sequence['outputs.EciScalingConfigurationContainerVolumeMount']] = None,
                  working_dir: Optional[str] = None):
         """
@@ -255,6 +264,11 @@ class EciScalingConfigurationContainer(dict):
         :param int readiness_probe_success_threshold: The minimum number of consecutive successes for the readiness probe to be considered successful after having failed. Default value: 1. Set the value to 1.
         :param int readiness_probe_tcp_socket_port: The port detected by Transmission Control Protocol (TCP) sockets when you use TCP sockets to perform readiness probes.
         :param int readiness_probe_timeout_seconds: The timeout period for the readiness probe. Unit: seconds. Default value: 1. Minimum value: 1.
+        :param Sequence[str] security_context_capability_adds: Grant certain permissions to processes within container. Optional values:
+               - NET_ADMIN: Allow network management tasks to be performed.
+               - NET_RAW: Allow raw sockets.
+        :param bool security_context_read_only_root_file_system: Mounts the container's root filesystem as read-only.
+        :param int security_context_run_as_user: Specifies user ID  under which all processes run.
         :param Sequence['EciScalingConfigurationContainerVolumeMountArgs'] volume_mounts: The structure of volumeMounts. 
                See `volume_mounts` below for details.
         :param str working_dir: The working directory of the container.
@@ -319,6 +333,12 @@ class EciScalingConfigurationContainer(dict):
             pulumi.set(__self__, "readiness_probe_tcp_socket_port", readiness_probe_tcp_socket_port)
         if readiness_probe_timeout_seconds is not None:
             pulumi.set(__self__, "readiness_probe_timeout_seconds", readiness_probe_timeout_seconds)
+        if security_context_capability_adds is not None:
+            pulumi.set(__self__, "security_context_capability_adds", security_context_capability_adds)
+        if security_context_read_only_root_file_system is not None:
+            pulumi.set(__self__, "security_context_read_only_root_file_system", security_context_read_only_root_file_system)
+        if security_context_run_as_user is not None:
+            pulumi.set(__self__, "security_context_run_as_user", security_context_run_as_user)
         if volume_mounts is not None:
             pulumi.set(__self__, "volume_mounts", volume_mounts)
         if working_dir is not None:
@@ -566,6 +586,32 @@ class EciScalingConfigurationContainer(dict):
         return pulumi.get(self, "readiness_probe_timeout_seconds")
 
     @property
+    @pulumi.getter(name="securityContextCapabilityAdds")
+    def security_context_capability_adds(self) -> Optional[Sequence[str]]:
+        """
+        Grant certain permissions to processes within container. Optional values:
+        - NET_ADMIN: Allow network management tasks to be performed.
+        - NET_RAW: Allow raw sockets.
+        """
+        return pulumi.get(self, "security_context_capability_adds")
+
+    @property
+    @pulumi.getter(name="securityContextReadOnlyRootFileSystem")
+    def security_context_read_only_root_file_system(self) -> Optional[bool]:
+        """
+        Mounts the container's root filesystem as read-only.
+        """
+        return pulumi.get(self, "security_context_read_only_root_file_system")
+
+    @property
+    @pulumi.getter(name="securityContextRunAsUser")
+    def security_context_run_as_user(self) -> Optional[int]:
+        """
+        Specifies user ID  under which all processes run.
+        """
+        return pulumi.get(self, "security_context_run_as_user")
+
+    @property
     @pulumi.getter(name="volumeMounts")
     def volume_mounts(self) -> Optional[Sequence['outputs.EciScalingConfigurationContainerVolumeMount']]:
         """
@@ -585,18 +631,49 @@ class EciScalingConfigurationContainer(dict):
 
 @pulumi.output_type
 class EciScalingConfigurationContainerEnvironmentVar(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "fieldRefFieldPath":
+            suggest = "field_ref_field_path"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in EciScalingConfigurationContainerEnvironmentVar. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        EciScalingConfigurationContainerEnvironmentVar.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        EciScalingConfigurationContainerEnvironmentVar.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
+                 field_ref_field_path: Optional[str] = None,
                  key: Optional[str] = None,
                  value: Optional[str] = None):
         """
+        :param str field_ref_field_path: Environment variable value reference. Optional values: 
+               - status.podIP: IP of pod.
         :param str key: The name of the variable. The name can be 1 to 128 characters in length and can contain letters,
                digits, and underscores (_). It cannot start with a digit.
         :param str value: The value of the variable. The value can be 0 to 256 characters in length.
         """
+        if field_ref_field_path is not None:
+            pulumi.set(__self__, "field_ref_field_path", field_ref_field_path)
         if key is not None:
             pulumi.set(__self__, "key", key)
         if value is not None:
             pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter(name="fieldRefFieldPath")
+    def field_ref_field_path(self) -> Optional[str]:
+        """
+        Environment variable value reference. Optional values: 
+        - status.podIP: IP of pod.
+        """
+        return pulumi.get(self, "field_ref_field_path")
 
     @property
     @pulumi.getter
@@ -800,6 +877,12 @@ class EciScalingConfigurationInitContainer(dict):
             suggest = "environment_vars"
         elif key == "imagePullPolicy":
             suggest = "image_pull_policy"
+        elif key == "securityContextCapabilityAdds":
+            suggest = "security_context_capability_adds"
+        elif key == "securityContextReadOnlyRootFileSystem":
+            suggest = "security_context_read_only_root_file_system"
+        elif key == "securityContextRunAsUser":
+            suggest = "security_context_run_as_user"
         elif key == "volumeMounts":
             suggest = "volume_mounts"
         elif key == "workingDir":
@@ -827,6 +910,9 @@ class EciScalingConfigurationInitContainer(dict):
                  memory: Optional[float] = None,
                  name: Optional[str] = None,
                  ports: Optional[Sequence['outputs.EciScalingConfigurationInitContainerPort']] = None,
+                 security_context_capability_adds: Optional[Sequence[str]] = None,
+                 security_context_read_only_root_file_system: Optional[bool] = None,
+                 security_context_run_as_user: Optional[int] = None,
                  volume_mounts: Optional[Sequence['outputs.EciScalingConfigurationInitContainerVolumeMount']] = None,
                  working_dir: Optional[str] = None):
         """
@@ -841,6 +927,11 @@ class EciScalingConfigurationInitContainer(dict):
         :param float memory: The amount of memory resources allocated to the container.
         :param str name: The name of the mounted volume.
         :param Sequence['EciScalingConfigurationInitContainerPortArgs'] ports: The structure of port. See `ports` below for details.
+        :param Sequence[str] security_context_capability_adds: Grant certain permissions to processes within container. Optional values:
+               - NET_ADMIN: Allow network management tasks to be performed.
+               - NET_RAW: Allow raw sockets.
+        :param bool security_context_read_only_root_file_system: Mounts the container's root filesystem as read-only.
+        :param int security_context_run_as_user: Specifies user ID  under which all processes run.
         :param Sequence['EciScalingConfigurationInitContainerVolumeMountArgs'] volume_mounts: The structure of volumeMounts. See `volume_mounts` below for details.
         :param str working_dir: The working directory of the container.
         """
@@ -864,6 +955,12 @@ class EciScalingConfigurationInitContainer(dict):
             pulumi.set(__self__, "name", name)
         if ports is not None:
             pulumi.set(__self__, "ports", ports)
+        if security_context_capability_adds is not None:
+            pulumi.set(__self__, "security_context_capability_adds", security_context_capability_adds)
+        if security_context_read_only_root_file_system is not None:
+            pulumi.set(__self__, "security_context_read_only_root_file_system", security_context_read_only_root_file_system)
+        if security_context_run_as_user is not None:
+            pulumi.set(__self__, "security_context_run_as_user", security_context_run_as_user)
         if volume_mounts is not None:
             pulumi.set(__self__, "volume_mounts", volume_mounts)
         if working_dir is not None:
@@ -951,6 +1048,32 @@ class EciScalingConfigurationInitContainer(dict):
         return pulumi.get(self, "ports")
 
     @property
+    @pulumi.getter(name="securityContextCapabilityAdds")
+    def security_context_capability_adds(self) -> Optional[Sequence[str]]:
+        """
+        Grant certain permissions to processes within container. Optional values:
+        - NET_ADMIN: Allow network management tasks to be performed.
+        - NET_RAW: Allow raw sockets.
+        """
+        return pulumi.get(self, "security_context_capability_adds")
+
+    @property
+    @pulumi.getter(name="securityContextReadOnlyRootFileSystem")
+    def security_context_read_only_root_file_system(self) -> Optional[bool]:
+        """
+        Mounts the container's root filesystem as read-only.
+        """
+        return pulumi.get(self, "security_context_read_only_root_file_system")
+
+    @property
+    @pulumi.getter(name="securityContextRunAsUser")
+    def security_context_run_as_user(self) -> Optional[int]:
+        """
+        Specifies user ID  under which all processes run.
+        """
+        return pulumi.get(self, "security_context_run_as_user")
+
+    @property
     @pulumi.getter(name="volumeMounts")
     def volume_mounts(self) -> Optional[Sequence['outputs.EciScalingConfigurationInitContainerVolumeMount']]:
         """
@@ -969,18 +1092,49 @@ class EciScalingConfigurationInitContainer(dict):
 
 @pulumi.output_type
 class EciScalingConfigurationInitContainerEnvironmentVar(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "fieldRefFieldPath":
+            suggest = "field_ref_field_path"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in EciScalingConfigurationInitContainerEnvironmentVar. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        EciScalingConfigurationInitContainerEnvironmentVar.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        EciScalingConfigurationInitContainerEnvironmentVar.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
+                 field_ref_field_path: Optional[str] = None,
                  key: Optional[str] = None,
                  value: Optional[str] = None):
         """
+        :param str field_ref_field_path: Environment variable value reference. Optional values: 
+               - status.podIP: IP of pod.
         :param str key: The name of the variable. The name can be 1 to 128 characters in length and can contain letters,
                digits, and underscores (_). It cannot start with a digit.
         :param str value: The value of the variable. The value can be 0 to 256 characters in length.
         """
+        if field_ref_field_path is not None:
+            pulumi.set(__self__, "field_ref_field_path", field_ref_field_path)
         if key is not None:
             pulumi.set(__self__, "key", key)
         if value is not None:
             pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter(name="fieldRefFieldPath")
+    def field_ref_field_path(self) -> Optional[str]:
+        """
+        Environment variable value reference. Optional values: 
+        - status.podIP: IP of pod.
+        """
+        return pulumi.get(self, "field_ref_field_path")
 
     @property
     @pulumi.getter

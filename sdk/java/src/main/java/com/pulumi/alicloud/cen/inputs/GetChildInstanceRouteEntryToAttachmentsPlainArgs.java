@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.cen.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -211,8 +212,12 @@ public final class GetChildInstanceRouteEntryToAttachmentsPlainArgs extends com.
         }
 
         public GetChildInstanceRouteEntryToAttachmentsPlainArgs build() {
-            $.childInstanceRouteTableId = Objects.requireNonNull($.childInstanceRouteTableId, "expected parameter 'childInstanceRouteTableId' to be non-null");
-            $.transitRouterAttachmentId = Objects.requireNonNull($.transitRouterAttachmentId, "expected parameter 'transitRouterAttachmentId' to be non-null");
+            if ($.childInstanceRouteTableId == null) {
+                throw new MissingRequiredPropertyException("GetChildInstanceRouteEntryToAttachmentsPlainArgs", "childInstanceRouteTableId");
+            }
+            if ($.transitRouterAttachmentId == null) {
+                throw new MissingRequiredPropertyException("GetChildInstanceRouteEntryToAttachmentsPlainArgs", "transitRouterAttachmentId");
+            }
             return $;
         }
     }

@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.cen.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -157,7 +158,9 @@ public final class GetInterRegionTrafficQosQueuesPlainArgs extends com.pulumi.re
         }
 
         public GetInterRegionTrafficQosQueuesPlainArgs build() {
-            $.trafficQosPolicyId = Objects.requireNonNull($.trafficQosPolicyId, "expected parameter 'trafficQosPolicyId' to be non-null");
+            if ($.trafficQosPolicyId == null) {
+                throw new MissingRequiredPropertyException("GetInterRegionTrafficQosQueuesPlainArgs", "trafficQosPolicyId");
+            }
             return $;
         }
     }

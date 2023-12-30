@@ -5,6 +5,7 @@ package com.pulumi.alicloud.emrv2.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.util.Objects;
 
@@ -148,9 +149,15 @@ public final class ClusterNodeGroupCostOptimizedConfigArgs extends com.pulumi.re
         }
 
         public ClusterNodeGroupCostOptimizedConfigArgs build() {
-            $.onDemandBaseCapacity = Objects.requireNonNull($.onDemandBaseCapacity, "expected parameter 'onDemandBaseCapacity' to be non-null");
-            $.onDemandPercentageAboveBaseCapacity = Objects.requireNonNull($.onDemandPercentageAboveBaseCapacity, "expected parameter 'onDemandPercentageAboveBaseCapacity' to be non-null");
-            $.spotInstancePools = Objects.requireNonNull($.spotInstancePools, "expected parameter 'spotInstancePools' to be non-null");
+            if ($.onDemandBaseCapacity == null) {
+                throw new MissingRequiredPropertyException("ClusterNodeGroupCostOptimizedConfigArgs", "onDemandBaseCapacity");
+            }
+            if ($.onDemandPercentageAboveBaseCapacity == null) {
+                throw new MissingRequiredPropertyException("ClusterNodeGroupCostOptimizedConfigArgs", "onDemandPercentageAboveBaseCapacity");
+            }
+            if ($.spotInstancePools == null) {
+                throw new MissingRequiredPropertyException("ClusterNodeGroupCostOptimizedConfigArgs", "spotInstancePools");
+            }
             return $;
         }
     }

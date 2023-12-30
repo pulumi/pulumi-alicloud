@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.cr.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -141,42 +142,66 @@ public final class GetVpcEndpointLinkedVpcsVpcEndpointLinkedVpc {
 
         @CustomType.Setter
         public Builder defaultAccess(Boolean defaultAccess) {
-            this.defaultAccess = Objects.requireNonNull(defaultAccess);
+            if (defaultAccess == null) {
+              throw new MissingRequiredPropertyException("GetVpcEndpointLinkedVpcsVpcEndpointLinkedVpc", "defaultAccess");
+            }
+            this.defaultAccess = defaultAccess;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetVpcEndpointLinkedVpcsVpcEndpointLinkedVpc", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder instanceId(String instanceId) {
-            this.instanceId = Objects.requireNonNull(instanceId);
+            if (instanceId == null) {
+              throw new MissingRequiredPropertyException("GetVpcEndpointLinkedVpcsVpcEndpointLinkedVpc", "instanceId");
+            }
+            this.instanceId = instanceId;
             return this;
         }
         @CustomType.Setter
         public Builder ip(String ip) {
-            this.ip = Objects.requireNonNull(ip);
+            if (ip == null) {
+              throw new MissingRequiredPropertyException("GetVpcEndpointLinkedVpcsVpcEndpointLinkedVpc", "ip");
+            }
+            this.ip = ip;
             return this;
         }
         @CustomType.Setter
         public Builder moduleName(String moduleName) {
-            this.moduleName = Objects.requireNonNull(moduleName);
+            if (moduleName == null) {
+              throw new MissingRequiredPropertyException("GetVpcEndpointLinkedVpcsVpcEndpointLinkedVpc", "moduleName");
+            }
+            this.moduleName = moduleName;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetVpcEndpointLinkedVpcsVpcEndpointLinkedVpc", "status");
+            }
+            this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder vpcId(String vpcId) {
-            this.vpcId = Objects.requireNonNull(vpcId);
+            if (vpcId == null) {
+              throw new MissingRequiredPropertyException("GetVpcEndpointLinkedVpcsVpcEndpointLinkedVpc", "vpcId");
+            }
+            this.vpcId = vpcId;
             return this;
         }
         @CustomType.Setter
         public Builder vswitchId(String vswitchId) {
-            this.vswitchId = Objects.requireNonNull(vswitchId);
+            if (vswitchId == null) {
+              throw new MissingRequiredPropertyException("GetVpcEndpointLinkedVpcsVpcEndpointLinkedVpc", "vswitchId");
+            }
+            this.vswitchId = vswitchId;
             return this;
         }
         public GetVpcEndpointLinkedVpcsVpcEndpointLinkedVpc build() {

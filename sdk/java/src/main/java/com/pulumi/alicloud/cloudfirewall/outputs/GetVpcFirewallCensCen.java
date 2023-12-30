@@ -5,6 +5,7 @@ package com.pulumi.alicloud.cloudfirewall.outputs;
 
 import com.pulumi.alicloud.cloudfirewall.outputs.GetVpcFirewallCensCenLocalVpc;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -142,22 +143,34 @@ public final class GetVpcFirewallCensCen {
 
         @CustomType.Setter
         public Builder cenId(String cenId) {
-            this.cenId = Objects.requireNonNull(cenId);
+            if (cenId == null) {
+              throw new MissingRequiredPropertyException("GetVpcFirewallCensCen", "cenId");
+            }
+            this.cenId = cenId;
             return this;
         }
         @CustomType.Setter
         public Builder connectType(String connectType) {
-            this.connectType = Objects.requireNonNull(connectType);
+            if (connectType == null) {
+              throw new MissingRequiredPropertyException("GetVpcFirewallCensCen", "connectType");
+            }
+            this.connectType = connectType;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetVpcFirewallCensCen", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder localVpcs(List<GetVpcFirewallCensCenLocalVpc> localVpcs) {
-            this.localVpcs = Objects.requireNonNull(localVpcs);
+            if (localVpcs == null) {
+              throw new MissingRequiredPropertyException("GetVpcFirewallCensCen", "localVpcs");
+            }
+            this.localVpcs = localVpcs;
             return this;
         }
         public Builder localVpcs(GetVpcFirewallCensCenLocalVpc... localVpcs) {
@@ -165,22 +178,34 @@ public final class GetVpcFirewallCensCen {
         }
         @CustomType.Setter
         public Builder networkInstanceId(String networkInstanceId) {
-            this.networkInstanceId = Objects.requireNonNull(networkInstanceId);
+            if (networkInstanceId == null) {
+              throw new MissingRequiredPropertyException("GetVpcFirewallCensCen", "networkInstanceId");
+            }
+            this.networkInstanceId = networkInstanceId;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetVpcFirewallCensCen", "status");
+            }
+            this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder vpcFirewallId(String vpcFirewallId) {
-            this.vpcFirewallId = Objects.requireNonNull(vpcFirewallId);
+            if (vpcFirewallId == null) {
+              throw new MissingRequiredPropertyException("GetVpcFirewallCensCen", "vpcFirewallId");
+            }
+            this.vpcFirewallId = vpcFirewallId;
             return this;
         }
         @CustomType.Setter
         public Builder vpcFirewallName(String vpcFirewallName) {
-            this.vpcFirewallName = Objects.requireNonNull(vpcFirewallName);
+            if (vpcFirewallName == null) {
+              throw new MissingRequiredPropertyException("GetVpcFirewallCensCen", "vpcFirewallName");
+            }
+            this.vpcFirewallName = vpcFirewallName;
             return this;
         }
         public GetVpcFirewallCensCen build() {

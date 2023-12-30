@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.cddc.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -159,41 +160,55 @@ public final class DedicatedPropreHostEcsClassList {
 
         @CustomType.Setter
         public Builder dataDiskPerformanceLevel(@Nullable String dataDiskPerformanceLevel) {
+
             this.dataDiskPerformanceLevel = dataDiskPerformanceLevel;
             return this;
         }
         @CustomType.Setter
         public Builder diskCapacity(@Nullable Integer diskCapacity) {
+
             this.diskCapacity = diskCapacity;
             return this;
         }
         @CustomType.Setter
         public Builder diskCount(@Nullable Integer diskCount) {
+
             this.diskCount = diskCount;
             return this;
         }
         @CustomType.Setter
         public Builder diskType(@Nullable String diskType) {
+
             this.diskType = diskType;
             return this;
         }
         @CustomType.Setter
         public Builder instanceType(String instanceType) {
-            this.instanceType = Objects.requireNonNull(instanceType);
+            if (instanceType == null) {
+              throw new MissingRequiredPropertyException("DedicatedPropreHostEcsClassList", "instanceType");
+            }
+            this.instanceType = instanceType;
             return this;
         }
         @CustomType.Setter
         public Builder sysDiskCapacity(Integer sysDiskCapacity) {
-            this.sysDiskCapacity = Objects.requireNonNull(sysDiskCapacity);
+            if (sysDiskCapacity == null) {
+              throw new MissingRequiredPropertyException("DedicatedPropreHostEcsClassList", "sysDiskCapacity");
+            }
+            this.sysDiskCapacity = sysDiskCapacity;
             return this;
         }
         @CustomType.Setter
         public Builder sysDiskType(String sysDiskType) {
-            this.sysDiskType = Objects.requireNonNull(sysDiskType);
+            if (sysDiskType == null) {
+              throw new MissingRequiredPropertyException("DedicatedPropreHostEcsClassList", "sysDiskType");
+            }
+            this.sysDiskType = sysDiskType;
             return this;
         }
         @CustomType.Setter
         public Builder systemDiskPerformanceLevel(@Nullable String systemDiskPerformanceLevel) {
+
             this.systemDiskPerformanceLevel = systemDiskPerformanceLevel;
             return this;
         }

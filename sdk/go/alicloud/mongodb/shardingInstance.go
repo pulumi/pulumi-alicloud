@@ -168,7 +168,7 @@ type ShardingInstance struct {
 	// The ID of the VPC. > **NOTE:** This parameter is valid only when NetworkType is set to VPC.
 	VpcId pulumi.StringOutput `pulumi:"vpcId"`
 	// The virtual switch ID to launch DB instances in one VPC.
-	VswitchId pulumi.StringPtrOutput `pulumi:"vswitchId"`
+	VswitchId pulumi.StringOutput `pulumi:"vswitchId"`
 	// The Zone to launch the DB instance. MongoDB sharding instance does not support multiple-zone.
 	// If it is a multi-zone and `vswitchId` is specified, the vswitch must in one of them.
 	ZoneId pulumi.StringPtrOutput `pulumi:"zoneId"`
@@ -663,8 +663,8 @@ func (o ShardingInstanceOutput) VpcId() pulumi.StringOutput {
 }
 
 // The virtual switch ID to launch DB instances in one VPC.
-func (o ShardingInstanceOutput) VswitchId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ShardingInstance) pulumi.StringPtrOutput { return v.VswitchId }).(pulumi.StringPtrOutput)
+func (o ShardingInstanceOutput) VswitchId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ShardingInstance) pulumi.StringOutput { return v.VswitchId }).(pulumi.StringOutput)
 }
 
 // The Zone to launch the DB instance. MongoDB sharding instance does not support multiple-zone.

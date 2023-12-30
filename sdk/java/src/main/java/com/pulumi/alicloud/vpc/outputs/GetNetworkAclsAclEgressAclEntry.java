@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.vpc.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -112,32 +113,50 @@ public final class GetNetworkAclsAclEgressAclEntry {
 
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetNetworkAclsAclEgressAclEntry", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder destinationCidrIp(String destinationCidrIp) {
-            this.destinationCidrIp = Objects.requireNonNull(destinationCidrIp);
+            if (destinationCidrIp == null) {
+              throw new MissingRequiredPropertyException("GetNetworkAclsAclEgressAclEntry", "destinationCidrIp");
+            }
+            this.destinationCidrIp = destinationCidrIp;
             return this;
         }
         @CustomType.Setter
         public Builder networkAclEntryName(String networkAclEntryName) {
-            this.networkAclEntryName = Objects.requireNonNull(networkAclEntryName);
+            if (networkAclEntryName == null) {
+              throw new MissingRequiredPropertyException("GetNetworkAclsAclEgressAclEntry", "networkAclEntryName");
+            }
+            this.networkAclEntryName = networkAclEntryName;
             return this;
         }
         @CustomType.Setter
         public Builder policy(String policy) {
-            this.policy = Objects.requireNonNull(policy);
+            if (policy == null) {
+              throw new MissingRequiredPropertyException("GetNetworkAclsAclEgressAclEntry", "policy");
+            }
+            this.policy = policy;
             return this;
         }
         @CustomType.Setter
         public Builder port(String port) {
-            this.port = Objects.requireNonNull(port);
+            if (port == null) {
+              throw new MissingRequiredPropertyException("GetNetworkAclsAclEgressAclEntry", "port");
+            }
+            this.port = port;
             return this;
         }
         @CustomType.Setter
         public Builder protocol(String protocol) {
-            this.protocol = Objects.requireNonNull(protocol);
+            if (protocol == null) {
+              throw new MissingRequiredPropertyException("GetNetworkAclsAclEgressAclEntry", "protocol");
+            }
+            this.protocol = protocol;
             return this;
         }
         public GetNetworkAclsAclEgressAclEntry build() {

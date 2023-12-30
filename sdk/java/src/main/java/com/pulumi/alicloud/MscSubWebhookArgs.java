@@ -5,6 +5,7 @@ package com.pulumi.alicloud;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -111,8 +112,12 @@ public final class MscSubWebhookArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public MscSubWebhookArgs build() {
-            $.serverUrl = Objects.requireNonNull($.serverUrl, "expected parameter 'serverUrl' to be non-null");
-            $.webhookName = Objects.requireNonNull($.webhookName, "expected parameter 'webhookName' to be non-null");
+            if ($.serverUrl == null) {
+                throw new MissingRequiredPropertyException("MscSubWebhookArgs", "serverUrl");
+            }
+            if ($.webhookName == null) {
+                throw new MissingRequiredPropertyException("MscSubWebhookArgs", "webhookName");
+            }
             return $;
         }
     }

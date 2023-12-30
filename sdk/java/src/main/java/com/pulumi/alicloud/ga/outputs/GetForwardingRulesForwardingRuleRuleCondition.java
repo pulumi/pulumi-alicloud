@@ -6,6 +6,7 @@ package com.pulumi.alicloud.ga.outputs;
 import com.pulumi.alicloud.ga.outputs.GetForwardingRulesForwardingRuleRuleConditionHostConfig;
 import com.pulumi.alicloud.ga.outputs.GetForwardingRulesForwardingRuleRuleConditionPathConfig;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -49,7 +50,10 @@ public final class GetForwardingRulesForwardingRuleRuleCondition {
 
         @CustomType.Setter
         public Builder hostConfigs(List<GetForwardingRulesForwardingRuleRuleConditionHostConfig> hostConfigs) {
-            this.hostConfigs = Objects.requireNonNull(hostConfigs);
+            if (hostConfigs == null) {
+              throw new MissingRequiredPropertyException("GetForwardingRulesForwardingRuleRuleCondition", "hostConfigs");
+            }
+            this.hostConfigs = hostConfigs;
             return this;
         }
         public Builder hostConfigs(GetForwardingRulesForwardingRuleRuleConditionHostConfig... hostConfigs) {
@@ -57,7 +61,10 @@ public final class GetForwardingRulesForwardingRuleRuleCondition {
         }
         @CustomType.Setter
         public Builder pathConfigs(List<GetForwardingRulesForwardingRuleRuleConditionPathConfig> pathConfigs) {
-            this.pathConfigs = Objects.requireNonNull(pathConfigs);
+            if (pathConfigs == null) {
+              throw new MissingRequiredPropertyException("GetForwardingRulesForwardingRuleRuleCondition", "pathConfigs");
+            }
+            this.pathConfigs = pathConfigs;
             return this;
         }
         public Builder pathConfigs(GetForwardingRulesForwardingRuleRuleConditionPathConfig... pathConfigs) {
@@ -65,7 +72,10 @@ public final class GetForwardingRulesForwardingRuleRuleCondition {
         }
         @CustomType.Setter
         public Builder ruleConditionType(String ruleConditionType) {
-            this.ruleConditionType = Objects.requireNonNull(ruleConditionType);
+            if (ruleConditionType == null) {
+              throw new MissingRequiredPropertyException("GetForwardingRulesForwardingRuleRuleCondition", "ruleConditionType");
+            }
+            this.ruleConditionType = ruleConditionType;
             return this;
         }
         public GetForwardingRulesForwardingRuleRuleCondition build() {

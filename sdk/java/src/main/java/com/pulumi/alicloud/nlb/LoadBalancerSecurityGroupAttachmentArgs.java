@@ -5,6 +5,7 @@ package com.pulumi.alicloud.nlb;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -151,8 +152,12 @@ public final class LoadBalancerSecurityGroupAttachmentArgs extends com.pulumi.re
         }
 
         public LoadBalancerSecurityGroupAttachmentArgs build() {
-            $.loadBalancerId = Objects.requireNonNull($.loadBalancerId, "expected parameter 'loadBalancerId' to be non-null");
-            $.securityGroupId = Objects.requireNonNull($.securityGroupId, "expected parameter 'securityGroupId' to be non-null");
+            if ($.loadBalancerId == null) {
+                throw new MissingRequiredPropertyException("LoadBalancerSecurityGroupAttachmentArgs", "loadBalancerId");
+            }
+            if ($.securityGroupId == null) {
+                throw new MissingRequiredPropertyException("LoadBalancerSecurityGroupAttachmentArgs", "securityGroupId");
+            }
             return $;
         }
     }

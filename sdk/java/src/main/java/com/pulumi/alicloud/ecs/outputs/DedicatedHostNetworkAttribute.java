@@ -58,11 +58,13 @@ public final class DedicatedHostNetworkAttribute {
 
         @CustomType.Setter
         public Builder slbUdpTimeout(@Nullable Integer slbUdpTimeout) {
+
             this.slbUdpTimeout = slbUdpTimeout;
             return this;
         }
         @CustomType.Setter
         public Builder udpTimeout(@Nullable Integer udpTimeout) {
+
             this.udpTimeout = udpTimeout;
             return this;
         }

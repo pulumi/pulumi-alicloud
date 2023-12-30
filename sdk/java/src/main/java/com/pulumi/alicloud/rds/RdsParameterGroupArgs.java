@@ -6,6 +6,7 @@ package com.pulumi.alicloud.rds;
 import com.pulumi.alicloud.rds.inputs.RdsParameterGroupParamDetailArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -236,10 +237,18 @@ public final class RdsParameterGroupArgs extends com.pulumi.resources.ResourceAr
         }
 
         public RdsParameterGroupArgs build() {
-            $.engine = Objects.requireNonNull($.engine, "expected parameter 'engine' to be non-null");
-            $.engineVersion = Objects.requireNonNull($.engineVersion, "expected parameter 'engineVersion' to be non-null");
-            $.paramDetails = Objects.requireNonNull($.paramDetails, "expected parameter 'paramDetails' to be non-null");
-            $.parameterGroupName = Objects.requireNonNull($.parameterGroupName, "expected parameter 'parameterGroupName' to be non-null");
+            if ($.engine == null) {
+                throw new MissingRequiredPropertyException("RdsParameterGroupArgs", "engine");
+            }
+            if ($.engineVersion == null) {
+                throw new MissingRequiredPropertyException("RdsParameterGroupArgs", "engineVersion");
+            }
+            if ($.paramDetails == null) {
+                throw new MissingRequiredPropertyException("RdsParameterGroupArgs", "paramDetails");
+            }
+            if ($.parameterGroupName == null) {
+                throw new MissingRequiredPropertyException("RdsParameterGroupArgs", "parameterGroupName");
+            }
             return $;
         }
     }

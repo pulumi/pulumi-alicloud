@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.hbr.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -342,7 +343,9 @@ public final class GetRestoreJobsPlainArgs extends com.pulumi.resources.InvokeAr
         }
 
         public GetRestoreJobsPlainArgs build() {
-            $.restoreType = Objects.requireNonNull($.restoreType, "expected parameter 'restoreType' to be non-null");
+            if ($.restoreType == null) {
+                throw new MissingRequiredPropertyException("GetRestoreJobsPlainArgs", "restoreType");
+            }
             return $;
         }
     }

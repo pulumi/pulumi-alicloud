@@ -5,6 +5,7 @@ package com.pulumi.alicloud.vpn;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -187,7 +188,9 @@ public final class CustomerGatewayArgs extends com.pulumi.resources.ResourceArgs
         }
 
         public CustomerGatewayArgs build() {
-            $.ipAddress = Objects.requireNonNull($.ipAddress, "expected parameter 'ipAddress' to be non-null");
+            if ($.ipAddress == null) {
+                throw new MissingRequiredPropertyException("CustomerGatewayArgs", "ipAddress");
+            }
             return $;
         }
     }

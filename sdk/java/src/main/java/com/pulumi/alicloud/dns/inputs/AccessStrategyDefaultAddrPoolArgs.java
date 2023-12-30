@@ -5,6 +5,7 @@ package com.pulumi.alicloud.dns.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -114,7 +115,9 @@ public final class AccessStrategyDefaultAddrPoolArgs extends com.pulumi.resource
         }
 
         public AccessStrategyDefaultAddrPoolArgs build() {
-            $.addrPoolId = Objects.requireNonNull($.addrPoolId, "expected parameter 'addrPoolId' to be non-null");
+            if ($.addrPoolId == null) {
+                throw new MissingRequiredPropertyException("AccessStrategyDefaultAddrPoolArgs", "addrPoolId");
+            }
             return $;
         }
     }

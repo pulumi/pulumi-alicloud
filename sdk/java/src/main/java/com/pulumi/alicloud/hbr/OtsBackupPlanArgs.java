@@ -7,6 +7,7 @@ import com.pulumi.alicloud.hbr.inputs.OtsBackupPlanOtsDetailArgs;
 import com.pulumi.alicloud.hbr.inputs.OtsBackupPlanRuleArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -524,9 +525,15 @@ public final class OtsBackupPlanArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public OtsBackupPlanArgs build() {
-            $.backupType = Objects.requireNonNull($.backupType, "expected parameter 'backupType' to be non-null");
-            $.otsBackupPlanName = Objects.requireNonNull($.otsBackupPlanName, "expected parameter 'otsBackupPlanName' to be non-null");
-            $.retention = Objects.requireNonNull($.retention, "expected parameter 'retention' to be non-null");
+            if ($.backupType == null) {
+                throw new MissingRequiredPropertyException("OtsBackupPlanArgs", "backupType");
+            }
+            if ($.otsBackupPlanName == null) {
+                throw new MissingRequiredPropertyException("OtsBackupPlanArgs", "otsBackupPlanName");
+            }
+            if ($.retention == null) {
+                throw new MissingRequiredPropertyException("OtsBackupPlanArgs", "retention");
+            }
             return $;
         }
     }

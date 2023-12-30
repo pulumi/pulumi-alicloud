@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.dns.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -56,12 +57,18 @@ public final class CustomLineIpSegmentList {
 
         @CustomType.Setter
         public Builder endIp(String endIp) {
-            this.endIp = Objects.requireNonNull(endIp);
+            if (endIp == null) {
+              throw new MissingRequiredPropertyException("CustomLineIpSegmentList", "endIp");
+            }
+            this.endIp = endIp;
             return this;
         }
         @CustomType.Setter
         public Builder startIp(String startIp) {
-            this.startIp = Objects.requireNonNull(startIp);
+            if (startIp == null) {
+              throw new MissingRequiredPropertyException("CustomLineIpSegmentList", "startIp");
+            }
+            this.startIp = startIp;
             return this;
         }
         public CustomLineIpSegmentList build() {

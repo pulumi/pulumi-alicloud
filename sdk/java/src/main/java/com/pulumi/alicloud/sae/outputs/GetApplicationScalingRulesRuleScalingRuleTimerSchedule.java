@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.sae.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -85,22 +86,34 @@ public final class GetApplicationScalingRulesRuleScalingRuleTimerSchedule {
 
         @CustomType.Setter
         public Builder atTime(String atTime) {
-            this.atTime = Objects.requireNonNull(atTime);
+            if (atTime == null) {
+              throw new MissingRequiredPropertyException("GetApplicationScalingRulesRuleScalingRuleTimerSchedule", "atTime");
+            }
+            this.atTime = atTime;
             return this;
         }
         @CustomType.Setter
         public Builder maxReplicas(Integer maxReplicas) {
-            this.maxReplicas = Objects.requireNonNull(maxReplicas);
+            if (maxReplicas == null) {
+              throw new MissingRequiredPropertyException("GetApplicationScalingRulesRuleScalingRuleTimerSchedule", "maxReplicas");
+            }
+            this.maxReplicas = maxReplicas;
             return this;
         }
         @CustomType.Setter
         public Builder minReplicas(Integer minReplicas) {
-            this.minReplicas = Objects.requireNonNull(minReplicas);
+            if (minReplicas == null) {
+              throw new MissingRequiredPropertyException("GetApplicationScalingRulesRuleScalingRuleTimerSchedule", "minReplicas");
+            }
+            this.minReplicas = minReplicas;
             return this;
         }
         @CustomType.Setter
         public Builder targetReplicas(Integer targetReplicas) {
-            this.targetReplicas = Objects.requireNonNull(targetReplicas);
+            if (targetReplicas == null) {
+              throw new MissingRequiredPropertyException("GetApplicationScalingRulesRuleScalingRuleTimerSchedule", "targetReplicas");
+            }
+            this.targetReplicas = targetReplicas;
             return this;
         }
         public GetApplicationScalingRulesRuleScalingRuleTimerSchedule build() {

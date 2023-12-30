@@ -10,6 +10,7 @@ import com.pulumi.alicloud.emr.inputs.ClusterMetaStoreConfArgs;
 import com.pulumi.alicloud.emr.inputs.ClusterModifyClusterServiceConfigArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.Object;
@@ -1088,9 +1089,15 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public ClusterArgs build() {
-            $.clusterType = Objects.requireNonNull($.clusterType, "expected parameter 'clusterType' to be non-null");
-            $.emrVer = Objects.requireNonNull($.emrVer, "expected parameter 'emrVer' to be non-null");
-            $.zoneId = Objects.requireNonNull($.zoneId, "expected parameter 'zoneId' to be non-null");
+            if ($.clusterType == null) {
+                throw new MissingRequiredPropertyException("ClusterArgs", "clusterType");
+            }
+            if ($.emrVer == null) {
+                throw new MissingRequiredPropertyException("ClusterArgs", "emrVer");
+            }
+            if ($.zoneId == null) {
+                throw new MissingRequiredPropertyException("ClusterArgs", "zoneId");
+            }
             return $;
         }
     }

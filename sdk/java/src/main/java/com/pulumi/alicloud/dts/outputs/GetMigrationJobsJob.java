@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.dts.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -449,152 +450,242 @@ public final class GetMigrationJobsJob {
 
         @CustomType.Setter
         public Builder dataInitialization(Boolean dataInitialization) {
-            this.dataInitialization = Objects.requireNonNull(dataInitialization);
+            if (dataInitialization == null) {
+              throw new MissingRequiredPropertyException("GetMigrationJobsJob", "dataInitialization");
+            }
+            this.dataInitialization = dataInitialization;
             return this;
         }
         @CustomType.Setter
         public Builder dataSynchronization(Boolean dataSynchronization) {
-            this.dataSynchronization = Objects.requireNonNull(dataSynchronization);
+            if (dataSynchronization == null) {
+              throw new MissingRequiredPropertyException("GetMigrationJobsJob", "dataSynchronization");
+            }
+            this.dataSynchronization = dataSynchronization;
             return this;
         }
         @CustomType.Setter
         public Builder dbList(String dbList) {
-            this.dbList = Objects.requireNonNull(dbList);
+            if (dbList == null) {
+              throw new MissingRequiredPropertyException("GetMigrationJobsJob", "dbList");
+            }
+            this.dbList = dbList;
             return this;
         }
         @CustomType.Setter
         public Builder destinationEndpointDataBaseName(String destinationEndpointDataBaseName) {
-            this.destinationEndpointDataBaseName = Objects.requireNonNull(destinationEndpointDataBaseName);
+            if (destinationEndpointDataBaseName == null) {
+              throw new MissingRequiredPropertyException("GetMigrationJobsJob", "destinationEndpointDataBaseName");
+            }
+            this.destinationEndpointDataBaseName = destinationEndpointDataBaseName;
             return this;
         }
         @CustomType.Setter
         public Builder destinationEndpointEngineName(String destinationEndpointEngineName) {
-            this.destinationEndpointEngineName = Objects.requireNonNull(destinationEndpointEngineName);
+            if (destinationEndpointEngineName == null) {
+              throw new MissingRequiredPropertyException("GetMigrationJobsJob", "destinationEndpointEngineName");
+            }
+            this.destinationEndpointEngineName = destinationEndpointEngineName;
             return this;
         }
         @CustomType.Setter
         public Builder destinationEndpointInstanceId(String destinationEndpointInstanceId) {
-            this.destinationEndpointInstanceId = Objects.requireNonNull(destinationEndpointInstanceId);
+            if (destinationEndpointInstanceId == null) {
+              throw new MissingRequiredPropertyException("GetMigrationJobsJob", "destinationEndpointInstanceId");
+            }
+            this.destinationEndpointInstanceId = destinationEndpointInstanceId;
             return this;
         }
         @CustomType.Setter
         public Builder destinationEndpointInstanceType(String destinationEndpointInstanceType) {
-            this.destinationEndpointInstanceType = Objects.requireNonNull(destinationEndpointInstanceType);
+            if (destinationEndpointInstanceType == null) {
+              throw new MissingRequiredPropertyException("GetMigrationJobsJob", "destinationEndpointInstanceType");
+            }
+            this.destinationEndpointInstanceType = destinationEndpointInstanceType;
             return this;
         }
         @CustomType.Setter
         public Builder destinationEndpointIp(String destinationEndpointIp) {
-            this.destinationEndpointIp = Objects.requireNonNull(destinationEndpointIp);
+            if (destinationEndpointIp == null) {
+              throw new MissingRequiredPropertyException("GetMigrationJobsJob", "destinationEndpointIp");
+            }
+            this.destinationEndpointIp = destinationEndpointIp;
             return this;
         }
         @CustomType.Setter
         public Builder destinationEndpointOracleSid(String destinationEndpointOracleSid) {
-            this.destinationEndpointOracleSid = Objects.requireNonNull(destinationEndpointOracleSid);
+            if (destinationEndpointOracleSid == null) {
+              throw new MissingRequiredPropertyException("GetMigrationJobsJob", "destinationEndpointOracleSid");
+            }
+            this.destinationEndpointOracleSid = destinationEndpointOracleSid;
             return this;
         }
         @CustomType.Setter
         public Builder destinationEndpointPort(String destinationEndpointPort) {
-            this.destinationEndpointPort = Objects.requireNonNull(destinationEndpointPort);
+            if (destinationEndpointPort == null) {
+              throw new MissingRequiredPropertyException("GetMigrationJobsJob", "destinationEndpointPort");
+            }
+            this.destinationEndpointPort = destinationEndpointPort;
             return this;
         }
         @CustomType.Setter
         public Builder destinationEndpointRegion(String destinationEndpointRegion) {
-            this.destinationEndpointRegion = Objects.requireNonNull(destinationEndpointRegion);
+            if (destinationEndpointRegion == null) {
+              throw new MissingRequiredPropertyException("GetMigrationJobsJob", "destinationEndpointRegion");
+            }
+            this.destinationEndpointRegion = destinationEndpointRegion;
             return this;
         }
         @CustomType.Setter
         public Builder destinationEndpointUserName(String destinationEndpointUserName) {
-            this.destinationEndpointUserName = Objects.requireNonNull(destinationEndpointUserName);
+            if (destinationEndpointUserName == null) {
+              throw new MissingRequiredPropertyException("GetMigrationJobsJob", "destinationEndpointUserName");
+            }
+            this.destinationEndpointUserName = destinationEndpointUserName;
             return this;
         }
         @CustomType.Setter
         public Builder dtsInstanceId(String dtsInstanceId) {
-            this.dtsInstanceId = Objects.requireNonNull(dtsInstanceId);
+            if (dtsInstanceId == null) {
+              throw new MissingRequiredPropertyException("GetMigrationJobsJob", "dtsInstanceId");
+            }
+            this.dtsInstanceId = dtsInstanceId;
             return this;
         }
         @CustomType.Setter
         public Builder dtsJobId(String dtsJobId) {
-            this.dtsJobId = Objects.requireNonNull(dtsJobId);
+            if (dtsJobId == null) {
+              throw new MissingRequiredPropertyException("GetMigrationJobsJob", "dtsJobId");
+            }
+            this.dtsJobId = dtsJobId;
             return this;
         }
         @CustomType.Setter
         public Builder dtsJobName(String dtsJobName) {
-            this.dtsJobName = Objects.requireNonNull(dtsJobName);
+            if (dtsJobName == null) {
+              throw new MissingRequiredPropertyException("GetMigrationJobsJob", "dtsJobName");
+            }
+            this.dtsJobName = dtsJobName;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetMigrationJobsJob", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder paymentType(String paymentType) {
-            this.paymentType = Objects.requireNonNull(paymentType);
+            if (paymentType == null) {
+              throw new MissingRequiredPropertyException("GetMigrationJobsJob", "paymentType");
+            }
+            this.paymentType = paymentType;
             return this;
         }
         @CustomType.Setter
         public Builder sourceEndpointDatabaseName(String sourceEndpointDatabaseName) {
-            this.sourceEndpointDatabaseName = Objects.requireNonNull(sourceEndpointDatabaseName);
+            if (sourceEndpointDatabaseName == null) {
+              throw new MissingRequiredPropertyException("GetMigrationJobsJob", "sourceEndpointDatabaseName");
+            }
+            this.sourceEndpointDatabaseName = sourceEndpointDatabaseName;
             return this;
         }
         @CustomType.Setter
         public Builder sourceEndpointEngineName(String sourceEndpointEngineName) {
-            this.sourceEndpointEngineName = Objects.requireNonNull(sourceEndpointEngineName);
+            if (sourceEndpointEngineName == null) {
+              throw new MissingRequiredPropertyException("GetMigrationJobsJob", "sourceEndpointEngineName");
+            }
+            this.sourceEndpointEngineName = sourceEndpointEngineName;
             return this;
         }
         @CustomType.Setter
         public Builder sourceEndpointInstanceId(String sourceEndpointInstanceId) {
-            this.sourceEndpointInstanceId = Objects.requireNonNull(sourceEndpointInstanceId);
+            if (sourceEndpointInstanceId == null) {
+              throw new MissingRequiredPropertyException("GetMigrationJobsJob", "sourceEndpointInstanceId");
+            }
+            this.sourceEndpointInstanceId = sourceEndpointInstanceId;
             return this;
         }
         @CustomType.Setter
         public Builder sourceEndpointInstanceType(String sourceEndpointInstanceType) {
-            this.sourceEndpointInstanceType = Objects.requireNonNull(sourceEndpointInstanceType);
+            if (sourceEndpointInstanceType == null) {
+              throw new MissingRequiredPropertyException("GetMigrationJobsJob", "sourceEndpointInstanceType");
+            }
+            this.sourceEndpointInstanceType = sourceEndpointInstanceType;
             return this;
         }
         @CustomType.Setter
         public Builder sourceEndpointIp(String sourceEndpointIp) {
-            this.sourceEndpointIp = Objects.requireNonNull(sourceEndpointIp);
+            if (sourceEndpointIp == null) {
+              throw new MissingRequiredPropertyException("GetMigrationJobsJob", "sourceEndpointIp");
+            }
+            this.sourceEndpointIp = sourceEndpointIp;
             return this;
         }
         @CustomType.Setter
         public Builder sourceEndpointOracleSid(String sourceEndpointOracleSid) {
-            this.sourceEndpointOracleSid = Objects.requireNonNull(sourceEndpointOracleSid);
+            if (sourceEndpointOracleSid == null) {
+              throw new MissingRequiredPropertyException("GetMigrationJobsJob", "sourceEndpointOracleSid");
+            }
+            this.sourceEndpointOracleSid = sourceEndpointOracleSid;
             return this;
         }
         @CustomType.Setter
         public Builder sourceEndpointOwnerId(String sourceEndpointOwnerId) {
-            this.sourceEndpointOwnerId = Objects.requireNonNull(sourceEndpointOwnerId);
+            if (sourceEndpointOwnerId == null) {
+              throw new MissingRequiredPropertyException("GetMigrationJobsJob", "sourceEndpointOwnerId");
+            }
+            this.sourceEndpointOwnerId = sourceEndpointOwnerId;
             return this;
         }
         @CustomType.Setter
         public Builder sourceEndpointPort(String sourceEndpointPort) {
-            this.sourceEndpointPort = Objects.requireNonNull(sourceEndpointPort);
+            if (sourceEndpointPort == null) {
+              throw new MissingRequiredPropertyException("GetMigrationJobsJob", "sourceEndpointPort");
+            }
+            this.sourceEndpointPort = sourceEndpointPort;
             return this;
         }
         @CustomType.Setter
         public Builder sourceEndpointRegion(String sourceEndpointRegion) {
-            this.sourceEndpointRegion = Objects.requireNonNull(sourceEndpointRegion);
+            if (sourceEndpointRegion == null) {
+              throw new MissingRequiredPropertyException("GetMigrationJobsJob", "sourceEndpointRegion");
+            }
+            this.sourceEndpointRegion = sourceEndpointRegion;
             return this;
         }
         @CustomType.Setter
         public Builder sourceEndpointRole(String sourceEndpointRole) {
-            this.sourceEndpointRole = Objects.requireNonNull(sourceEndpointRole);
+            if (sourceEndpointRole == null) {
+              throw new MissingRequiredPropertyException("GetMigrationJobsJob", "sourceEndpointRole");
+            }
+            this.sourceEndpointRole = sourceEndpointRole;
             return this;
         }
         @CustomType.Setter
         public Builder sourceEndpointUserName(String sourceEndpointUserName) {
-            this.sourceEndpointUserName = Objects.requireNonNull(sourceEndpointUserName);
+            if (sourceEndpointUserName == null) {
+              throw new MissingRequiredPropertyException("GetMigrationJobsJob", "sourceEndpointUserName");
+            }
+            this.sourceEndpointUserName = sourceEndpointUserName;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetMigrationJobsJob", "status");
+            }
+            this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder structureInitialization(Boolean structureInitialization) {
-            this.structureInitialization = Objects.requireNonNull(structureInitialization);
+            if (structureInitialization == null) {
+              throw new MissingRequiredPropertyException("GetMigrationJobsJob", "structureInitialization");
+            }
+            this.structureInitialization = structureInitialization;
             return this;
         }
         public GetMigrationJobsJob build() {

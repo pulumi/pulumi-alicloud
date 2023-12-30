@@ -6,6 +6,7 @@ package com.pulumi.alicloud.slb;
 import com.pulumi.alicloud.slb.inputs.MasterSlaveServerGroupServerArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -200,7 +201,9 @@ public final class MasterSlaveServerGroupArgs extends com.pulumi.resources.Resou
         }
 
         public MasterSlaveServerGroupArgs build() {
-            $.loadBalancerId = Objects.requireNonNull($.loadBalancerId, "expected parameter 'loadBalancerId' to be non-null");
+            if ($.loadBalancerId == null) {
+                throw new MissingRequiredPropertyException("MasterSlaveServerGroupArgs", "loadBalancerId");
+            }
             return $;
         }
     }

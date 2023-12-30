@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.dns.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -124,42 +125,66 @@ public final class GetInstancesInstance {
 
         @CustomType.Setter
         public Builder dnsSecurity(String dnsSecurity) {
-            this.dnsSecurity = Objects.requireNonNull(dnsSecurity);
+            if (dnsSecurity == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstance", "dnsSecurity");
+            }
+            this.dnsSecurity = dnsSecurity;
             return this;
         }
         @CustomType.Setter
         public Builder domain(String domain) {
-            this.domain = Objects.requireNonNull(domain);
+            if (domain == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstance", "domain");
+            }
+            this.domain = domain;
             return this;
         }
         @CustomType.Setter
         public Builder domainNumbers(String domainNumbers) {
-            this.domainNumbers = Objects.requireNonNull(domainNumbers);
+            if (domainNumbers == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstance", "domainNumbers");
+            }
+            this.domainNumbers = domainNumbers;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstance", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder instanceId(String instanceId) {
-            this.instanceId = Objects.requireNonNull(instanceId);
+            if (instanceId == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstance", "instanceId");
+            }
+            this.instanceId = instanceId;
             return this;
         }
         @CustomType.Setter
         public Builder paymentType(String paymentType) {
-            this.paymentType = Objects.requireNonNull(paymentType);
+            if (paymentType == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstance", "paymentType");
+            }
+            this.paymentType = paymentType;
             return this;
         }
         @CustomType.Setter
         public Builder versionCode(String versionCode) {
-            this.versionCode = Objects.requireNonNull(versionCode);
+            if (versionCode == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstance", "versionCode");
+            }
+            this.versionCode = versionCode;
             return this;
         }
         @CustomType.Setter
         public Builder versionName(String versionName) {
-            this.versionName = Objects.requireNonNull(versionName);
+            if (versionName == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstance", "versionName");
+            }
+            this.versionName = versionName;
             return this;
         }
         public GetInstancesInstance build() {

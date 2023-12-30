@@ -5,6 +5,7 @@ package com.pulumi.alicloud.rds;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -222,9 +223,15 @@ public final class AccountPrivilegeArgs extends com.pulumi.resources.ResourceArg
         }
 
         public AccountPrivilegeArgs build() {
-            $.accountName = Objects.requireNonNull($.accountName, "expected parameter 'accountName' to be non-null");
-            $.dbNames = Objects.requireNonNull($.dbNames, "expected parameter 'dbNames' to be non-null");
-            $.instanceId = Objects.requireNonNull($.instanceId, "expected parameter 'instanceId' to be non-null");
+            if ($.accountName == null) {
+                throw new MissingRequiredPropertyException("AccountPrivilegeArgs", "accountName");
+            }
+            if ($.dbNames == null) {
+                throw new MissingRequiredPropertyException("AccountPrivilegeArgs", "dbNames");
+            }
+            if ($.instanceId == null) {
+                throw new MissingRequiredPropertyException("AccountPrivilegeArgs", "instanceId");
+            }
             return $;
         }
     }

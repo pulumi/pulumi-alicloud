@@ -5,6 +5,7 @@ package com.pulumi.alicloud.ess;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -230,10 +231,18 @@ public final class AlbServerGroupAttachmentArgs extends com.pulumi.resources.Res
         }
 
         public AlbServerGroupAttachmentArgs build() {
-            $.albServerGroupId = Objects.requireNonNull($.albServerGroupId, "expected parameter 'albServerGroupId' to be non-null");
-            $.port = Objects.requireNonNull($.port, "expected parameter 'port' to be non-null");
-            $.scalingGroupId = Objects.requireNonNull($.scalingGroupId, "expected parameter 'scalingGroupId' to be non-null");
-            $.weight = Objects.requireNonNull($.weight, "expected parameter 'weight' to be non-null");
+            if ($.albServerGroupId == null) {
+                throw new MissingRequiredPropertyException("AlbServerGroupAttachmentArgs", "albServerGroupId");
+            }
+            if ($.port == null) {
+                throw new MissingRequiredPropertyException("AlbServerGroupAttachmentArgs", "port");
+            }
+            if ($.scalingGroupId == null) {
+                throw new MissingRequiredPropertyException("AlbServerGroupAttachmentArgs", "scalingGroupId");
+            }
+            if ($.weight == null) {
+                throw new MissingRequiredPropertyException("AlbServerGroupAttachmentArgs", "weight");
+            }
             return $;
         }
     }

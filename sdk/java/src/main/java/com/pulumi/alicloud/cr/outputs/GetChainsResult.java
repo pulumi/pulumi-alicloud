@@ -5,6 +5,7 @@ package com.pulumi.alicloud.cr.outputs;
 
 import com.pulumi.alicloud.cr.outputs.GetChainsChain;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -133,7 +134,10 @@ public final class GetChainsResult {
 
         @CustomType.Setter
         public Builder chains(List<GetChainsChain> chains) {
-            this.chains = Objects.requireNonNull(chains);
+            if (chains == null) {
+              throw new MissingRequiredPropertyException("GetChainsResult", "chains");
+            }
+            this.chains = chains;
             return this;
         }
         public Builder chains(GetChainsChain... chains) {
@@ -141,17 +145,24 @@ public final class GetChainsResult {
         }
         @CustomType.Setter
         public Builder enableDetails(@Nullable Boolean enableDetails) {
+
             this.enableDetails = enableDetails;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetChainsResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder ids(List<String> ids) {
-            this.ids = Objects.requireNonNull(ids);
+            if (ids == null) {
+              throw new MissingRequiredPropertyException("GetChainsResult", "ids");
+            }
+            this.ids = ids;
             return this;
         }
         public Builder ids(String... ids) {
@@ -159,17 +170,24 @@ public final class GetChainsResult {
         }
         @CustomType.Setter
         public Builder instanceId(String instanceId) {
-            this.instanceId = Objects.requireNonNull(instanceId);
+            if (instanceId == null) {
+              throw new MissingRequiredPropertyException("GetChainsResult", "instanceId");
+            }
+            this.instanceId = instanceId;
             return this;
         }
         @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
+
             this.nameRegex = nameRegex;
             return this;
         }
         @CustomType.Setter
         public Builder names(List<String> names) {
-            this.names = Objects.requireNonNull(names);
+            if (names == null) {
+              throw new MissingRequiredPropertyException("GetChainsResult", "names");
+            }
+            this.names = names;
             return this;
         }
         public Builder names(String... names) {
@@ -177,16 +195,19 @@ public final class GetChainsResult {
         }
         @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
+
             this.outputFile = outputFile;
             return this;
         }
         @CustomType.Setter
         public Builder repoName(@Nullable String repoName) {
+
             this.repoName = repoName;
             return this;
         }
         @CustomType.Setter
         public Builder repoNamespaceName(@Nullable String repoNamespaceName) {
+
             this.repoNamespaceName = repoNamespaceName;
             return this;
         }

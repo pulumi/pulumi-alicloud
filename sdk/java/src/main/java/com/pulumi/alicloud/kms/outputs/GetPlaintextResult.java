@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.kms.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -84,27 +85,40 @@ public final class GetPlaintextResult {
 
         @CustomType.Setter
         public Builder ciphertextBlob(String ciphertextBlob) {
-            this.ciphertextBlob = Objects.requireNonNull(ciphertextBlob);
+            if (ciphertextBlob == null) {
+              throw new MissingRequiredPropertyException("GetPlaintextResult", "ciphertextBlob");
+            }
+            this.ciphertextBlob = ciphertextBlob;
             return this;
         }
         @CustomType.Setter
         public Builder encryptionContext(@Nullable Map<String,String> encryptionContext) {
+
             this.encryptionContext = encryptionContext;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetPlaintextResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder keyId(String keyId) {
-            this.keyId = Objects.requireNonNull(keyId);
+            if (keyId == null) {
+              throw new MissingRequiredPropertyException("GetPlaintextResult", "keyId");
+            }
+            this.keyId = keyId;
             return this;
         }
         @CustomType.Setter
         public Builder plaintext(String plaintext) {
-            this.plaintext = Objects.requireNonNull(plaintext);
+            if (plaintext == null) {
+              throw new MissingRequiredPropertyException("GetPlaintextResult", "plaintext");
+            }
+            this.plaintext = plaintext;
             return this;
         }
         public GetPlaintextResult build() {

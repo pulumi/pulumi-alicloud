@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.fc.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -99,12 +100,18 @@ public final class GetCustomDomainsDomainRouteConfig {
 
         @CustomType.Setter
         public Builder functionName(String functionName) {
-            this.functionName = Objects.requireNonNull(functionName);
+            if (functionName == null) {
+              throw new MissingRequiredPropertyException("GetCustomDomainsDomainRouteConfig", "functionName");
+            }
+            this.functionName = functionName;
             return this;
         }
         @CustomType.Setter
         public Builder methods(List<String> methods) {
-            this.methods = Objects.requireNonNull(methods);
+            if (methods == null) {
+              throw new MissingRequiredPropertyException("GetCustomDomainsDomainRouteConfig", "methods");
+            }
+            this.methods = methods;
             return this;
         }
         public Builder methods(String... methods) {
@@ -112,17 +119,26 @@ public final class GetCustomDomainsDomainRouteConfig {
         }
         @CustomType.Setter
         public Builder path(String path) {
-            this.path = Objects.requireNonNull(path);
+            if (path == null) {
+              throw new MissingRequiredPropertyException("GetCustomDomainsDomainRouteConfig", "path");
+            }
+            this.path = path;
             return this;
         }
         @CustomType.Setter
         public Builder qualifier(String qualifier) {
-            this.qualifier = Objects.requireNonNull(qualifier);
+            if (qualifier == null) {
+              throw new MissingRequiredPropertyException("GetCustomDomainsDomainRouteConfig", "qualifier");
+            }
+            this.qualifier = qualifier;
             return this;
         }
         @CustomType.Setter
         public Builder serviceName(String serviceName) {
-            this.serviceName = Objects.requireNonNull(serviceName);
+            if (serviceName == null) {
+              throw new MissingRequiredPropertyException("GetCustomDomainsDomainRouteConfig", "serviceName");
+            }
+            this.serviceName = serviceName;
             return this;
         }
         public GetCustomDomainsDomainRouteConfig build() {

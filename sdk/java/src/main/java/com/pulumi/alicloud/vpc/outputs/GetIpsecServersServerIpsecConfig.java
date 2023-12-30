@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.vpc.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -85,22 +86,34 @@ public final class GetIpsecServersServerIpsecConfig {
 
         @CustomType.Setter
         public Builder ipsecAuthAlg(String ipsecAuthAlg) {
-            this.ipsecAuthAlg = Objects.requireNonNull(ipsecAuthAlg);
+            if (ipsecAuthAlg == null) {
+              throw new MissingRequiredPropertyException("GetIpsecServersServerIpsecConfig", "ipsecAuthAlg");
+            }
+            this.ipsecAuthAlg = ipsecAuthAlg;
             return this;
         }
         @CustomType.Setter
         public Builder ipsecEncAlg(String ipsecEncAlg) {
-            this.ipsecEncAlg = Objects.requireNonNull(ipsecEncAlg);
+            if (ipsecEncAlg == null) {
+              throw new MissingRequiredPropertyException("GetIpsecServersServerIpsecConfig", "ipsecEncAlg");
+            }
+            this.ipsecEncAlg = ipsecEncAlg;
             return this;
         }
         @CustomType.Setter
         public Builder ipsecLifetime(Integer ipsecLifetime) {
-            this.ipsecLifetime = Objects.requireNonNull(ipsecLifetime);
+            if (ipsecLifetime == null) {
+              throw new MissingRequiredPropertyException("GetIpsecServersServerIpsecConfig", "ipsecLifetime");
+            }
+            this.ipsecLifetime = ipsecLifetime;
             return this;
         }
         @CustomType.Setter
         public Builder ipsecPfs(String ipsecPfs) {
-            this.ipsecPfs = Objects.requireNonNull(ipsecPfs);
+            if (ipsecPfs == null) {
+              throw new MissingRequiredPropertyException("GetIpsecServersServerIpsecConfig", "ipsecPfs");
+            }
+            this.ipsecPfs = ipsecPfs;
             return this;
         }
         public GetIpsecServersServerIpsecConfig build() {

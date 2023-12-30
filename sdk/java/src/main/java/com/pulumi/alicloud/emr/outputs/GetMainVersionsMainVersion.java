@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.emr.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -71,7 +72,10 @@ public final class GetMainVersionsMainVersion {
 
         @CustomType.Setter
         public Builder clusterTypes(List<String> clusterTypes) {
-            this.clusterTypes = Objects.requireNonNull(clusterTypes);
+            if (clusterTypes == null) {
+              throw new MissingRequiredPropertyException("GetMainVersionsMainVersion", "clusterTypes");
+            }
+            this.clusterTypes = clusterTypes;
             return this;
         }
         public Builder clusterTypes(String... clusterTypes) {
@@ -79,12 +83,18 @@ public final class GetMainVersionsMainVersion {
         }
         @CustomType.Setter
         public Builder emrVersion(String emrVersion) {
-            this.emrVersion = Objects.requireNonNull(emrVersion);
+            if (emrVersion == null) {
+              throw new MissingRequiredPropertyException("GetMainVersionsMainVersion", "emrVersion");
+            }
+            this.emrVersion = emrVersion;
             return this;
         }
         @CustomType.Setter
         public Builder imageId(String imageId) {
-            this.imageId = Objects.requireNonNull(imageId);
+            if (imageId == null) {
+              throw new MissingRequiredPropertyException("GetMainVersionsMainVersion", "imageId");
+            }
+            this.imageId = imageId;
             return this;
         }
         public GetMainVersionsMainVersion build() {

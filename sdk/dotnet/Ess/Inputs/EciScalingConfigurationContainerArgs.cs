@@ -229,6 +229,32 @@ namespace Pulumi.AliCloud.Ess.Inputs
         [Input("readinessProbeTimeoutSeconds")]
         public Input<int>? ReadinessProbeTimeoutSeconds { get; set; }
 
+        [Input("securityContextCapabilityAdds")]
+        private InputList<string>? _securityContextCapabilityAdds;
+
+        /// <summary>
+        /// Grant certain permissions to processes within container. Optional values:
+        /// - NET_ADMIN: Allow network management tasks to be performed.
+        /// - NET_RAW: Allow raw sockets.
+        /// </summary>
+        public InputList<string> SecurityContextCapabilityAdds
+        {
+            get => _securityContextCapabilityAdds ?? (_securityContextCapabilityAdds = new InputList<string>());
+            set => _securityContextCapabilityAdds = value;
+        }
+
+        /// <summary>
+        /// Mounts the container's root filesystem as read-only.
+        /// </summary>
+        [Input("securityContextReadOnlyRootFileSystem")]
+        public Input<bool>? SecurityContextReadOnlyRootFileSystem { get; set; }
+
+        /// <summary>
+        /// Specifies user ID  under which all processes run.
+        /// </summary>
+        [Input("securityContextRunAsUser")]
+        public Input<int>? SecurityContextRunAsUser { get; set; }
+
         [Input("volumeMounts")]
         private InputList<Inputs.EciScalingConfigurationContainerVolumeMountArgs>? _volumeMounts;
 

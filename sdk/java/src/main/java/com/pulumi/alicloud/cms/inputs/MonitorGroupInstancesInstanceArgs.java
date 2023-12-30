@@ -5,6 +5,7 @@ package com.pulumi.alicloud.cms.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -185,10 +186,18 @@ public final class MonitorGroupInstancesInstanceArgs extends com.pulumi.resource
         }
 
         public MonitorGroupInstancesInstanceArgs build() {
-            $.category = Objects.requireNonNull($.category, "expected parameter 'category' to be non-null");
-            $.instanceId = Objects.requireNonNull($.instanceId, "expected parameter 'instanceId' to be non-null");
-            $.instanceName = Objects.requireNonNull($.instanceName, "expected parameter 'instanceName' to be non-null");
-            $.regionId = Objects.requireNonNull($.regionId, "expected parameter 'regionId' to be non-null");
+            if ($.category == null) {
+                throw new MissingRequiredPropertyException("MonitorGroupInstancesInstanceArgs", "category");
+            }
+            if ($.instanceId == null) {
+                throw new MissingRequiredPropertyException("MonitorGroupInstancesInstanceArgs", "instanceId");
+            }
+            if ($.instanceName == null) {
+                throw new MissingRequiredPropertyException("MonitorGroupInstancesInstanceArgs", "instanceName");
+            }
+            if ($.regionId == null) {
+                throw new MissingRequiredPropertyException("MonitorGroupInstancesInstanceArgs", "regionId");
+            }
             return $;
         }
     }

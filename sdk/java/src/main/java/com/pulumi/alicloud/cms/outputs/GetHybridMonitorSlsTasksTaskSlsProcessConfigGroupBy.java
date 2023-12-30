@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.cms.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -56,12 +57,18 @@ public final class GetHybridMonitorSlsTasksTaskSlsProcessConfigGroupBy {
 
         @CustomType.Setter
         public Builder alias(String alias) {
-            this.alias = Objects.requireNonNull(alias);
+            if (alias == null) {
+              throw new MissingRequiredPropertyException("GetHybridMonitorSlsTasksTaskSlsProcessConfigGroupBy", "alias");
+            }
+            this.alias = alias;
             return this;
         }
         @CustomType.Setter
         public Builder slsKeyName(String slsKeyName) {
-            this.slsKeyName = Objects.requireNonNull(slsKeyName);
+            if (slsKeyName == null) {
+              throw new MissingRequiredPropertyException("GetHybridMonitorSlsTasksTaskSlsProcessConfigGroupBy", "slsKeyName");
+            }
+            this.slsKeyName = slsKeyName;
             return this;
         }
         public GetHybridMonitorSlsTasksTaskSlsProcessConfigGroupBy build() {

@@ -5,6 +5,7 @@ package com.pulumi.alicloud.hbr.outputs;
 
 import com.pulumi.alicloud.hbr.outputs.GetBackupJobsJobOtsDetail;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -471,117 +472,186 @@ public final class GetBackupJobsJob {
 
         @CustomType.Setter
         public Builder actualBytes(String actualBytes) {
-            this.actualBytes = Objects.requireNonNull(actualBytes);
+            if (actualBytes == null) {
+              throw new MissingRequiredPropertyException("GetBackupJobsJob", "actualBytes");
+            }
+            this.actualBytes = actualBytes;
             return this;
         }
         @CustomType.Setter
         public Builder actualItems(String actualItems) {
-            this.actualItems = Objects.requireNonNull(actualItems);
+            if (actualItems == null) {
+              throw new MissingRequiredPropertyException("GetBackupJobsJob", "actualItems");
+            }
+            this.actualItems = actualItems;
             return this;
         }
         @CustomType.Setter
         public Builder backJobName(String backJobName) {
-            this.backJobName = Objects.requireNonNull(backJobName);
+            if (backJobName == null) {
+              throw new MissingRequiredPropertyException("GetBackupJobsJob", "backJobName");
+            }
+            this.backJobName = backJobName;
             return this;
         }
         @CustomType.Setter
         public Builder backupJobId(String backupJobId) {
-            this.backupJobId = Objects.requireNonNull(backupJobId);
+            if (backupJobId == null) {
+              throw new MissingRequiredPropertyException("GetBackupJobsJob", "backupJobId");
+            }
+            this.backupJobId = backupJobId;
             return this;
         }
         @CustomType.Setter
         public Builder backupType(String backupType) {
-            this.backupType = Objects.requireNonNull(backupType);
+            if (backupType == null) {
+              throw new MissingRequiredPropertyException("GetBackupJobsJob", "backupType");
+            }
+            this.backupType = backupType;
             return this;
         }
         @CustomType.Setter
         public Builder bucket(String bucket) {
-            this.bucket = Objects.requireNonNull(bucket);
+            if (bucket == null) {
+              throw new MissingRequiredPropertyException("GetBackupJobsJob", "bucket");
+            }
+            this.bucket = bucket;
             return this;
         }
         @CustomType.Setter
         public Builder bytesDone(String bytesDone) {
-            this.bytesDone = Objects.requireNonNull(bytesDone);
+            if (bytesDone == null) {
+              throw new MissingRequiredPropertyException("GetBackupJobsJob", "bytesDone");
+            }
+            this.bytesDone = bytesDone;
             return this;
         }
         @CustomType.Setter
         public Builder bytesTotal(String bytesTotal) {
-            this.bytesTotal = Objects.requireNonNull(bytesTotal);
+            if (bytesTotal == null) {
+              throw new MissingRequiredPropertyException("GetBackupJobsJob", "bytesTotal");
+            }
+            this.bytesTotal = bytesTotal;
             return this;
         }
         @CustomType.Setter
         public Builder completeTime(String completeTime) {
-            this.completeTime = Objects.requireNonNull(completeTime);
+            if (completeTime == null) {
+              throw new MissingRequiredPropertyException("GetBackupJobsJob", "completeTime");
+            }
+            this.completeTime = completeTime;
             return this;
         }
         @CustomType.Setter
         public Builder createTime(String createTime) {
-            this.createTime = Objects.requireNonNull(createTime);
+            if (createTime == null) {
+              throw new MissingRequiredPropertyException("GetBackupJobsJob", "createTime");
+            }
+            this.createTime = createTime;
             return this;
         }
         @CustomType.Setter
         public Builder crossAccountRoleName(String crossAccountRoleName) {
-            this.crossAccountRoleName = Objects.requireNonNull(crossAccountRoleName);
+            if (crossAccountRoleName == null) {
+              throw new MissingRequiredPropertyException("GetBackupJobsJob", "crossAccountRoleName");
+            }
+            this.crossAccountRoleName = crossAccountRoleName;
             return this;
         }
         @CustomType.Setter
         public Builder crossAccountType(String crossAccountType) {
-            this.crossAccountType = Objects.requireNonNull(crossAccountType);
+            if (crossAccountType == null) {
+              throw new MissingRequiredPropertyException("GetBackupJobsJob", "crossAccountType");
+            }
+            this.crossAccountType = crossAccountType;
             return this;
         }
         @CustomType.Setter
         public Builder crossAccountUserId(Integer crossAccountUserId) {
-            this.crossAccountUserId = Objects.requireNonNull(crossAccountUserId);
+            if (crossAccountUserId == null) {
+              throw new MissingRequiredPropertyException("GetBackupJobsJob", "crossAccountUserId");
+            }
+            this.crossAccountUserId = crossAccountUserId;
             return this;
         }
         @CustomType.Setter
         public Builder errorMessage(String errorMessage) {
-            this.errorMessage = Objects.requireNonNull(errorMessage);
+            if (errorMessage == null) {
+              throw new MissingRequiredPropertyException("GetBackupJobsJob", "errorMessage");
+            }
+            this.errorMessage = errorMessage;
             return this;
         }
         @CustomType.Setter
         public Builder exclude(String exclude) {
-            this.exclude = Objects.requireNonNull(exclude);
+            if (exclude == null) {
+              throw new MissingRequiredPropertyException("GetBackupJobsJob", "exclude");
+            }
+            this.exclude = exclude;
             return this;
         }
         @CustomType.Setter
         public Builder fileSystemId(String fileSystemId) {
-            this.fileSystemId = Objects.requireNonNull(fileSystemId);
+            if (fileSystemId == null) {
+              throw new MissingRequiredPropertyException("GetBackupJobsJob", "fileSystemId");
+            }
+            this.fileSystemId = fileSystemId;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetBackupJobsJob", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder include(String include) {
-            this.include = Objects.requireNonNull(include);
+            if (include == null) {
+              throw new MissingRequiredPropertyException("GetBackupJobsJob", "include");
+            }
+            this.include = include;
             return this;
         }
         @CustomType.Setter
         public Builder instanceId(String instanceId) {
-            this.instanceId = Objects.requireNonNull(instanceId);
+            if (instanceId == null) {
+              throw new MissingRequiredPropertyException("GetBackupJobsJob", "instanceId");
+            }
+            this.instanceId = instanceId;
             return this;
         }
         @CustomType.Setter
         public Builder itemsDone(String itemsDone) {
-            this.itemsDone = Objects.requireNonNull(itemsDone);
+            if (itemsDone == null) {
+              throw new MissingRequiredPropertyException("GetBackupJobsJob", "itemsDone");
+            }
+            this.itemsDone = itemsDone;
             return this;
         }
         @CustomType.Setter
         public Builder itemsTotal(String itemsTotal) {
-            this.itemsTotal = Objects.requireNonNull(itemsTotal);
+            if (itemsTotal == null) {
+              throw new MissingRequiredPropertyException("GetBackupJobsJob", "itemsTotal");
+            }
+            this.itemsTotal = itemsTotal;
             return this;
         }
         @CustomType.Setter
         public Builder nasCreateTime(String nasCreateTime) {
-            this.nasCreateTime = Objects.requireNonNull(nasCreateTime);
+            if (nasCreateTime == null) {
+              throw new MissingRequiredPropertyException("GetBackupJobsJob", "nasCreateTime");
+            }
+            this.nasCreateTime = nasCreateTime;
             return this;
         }
         @CustomType.Setter
         public Builder otsDetails(List<GetBackupJobsJobOtsDetail> otsDetails) {
-            this.otsDetails = Objects.requireNonNull(otsDetails);
+            if (otsDetails == null) {
+              throw new MissingRequiredPropertyException("GetBackupJobsJob", "otsDetails");
+            }
+            this.otsDetails = otsDetails;
             return this;
         }
         public Builder otsDetails(GetBackupJobsJobOtsDetail... otsDetails) {
@@ -589,7 +659,10 @@ public final class GetBackupJobsJob {
         }
         @CustomType.Setter
         public Builder paths(List<String> paths) {
-            this.paths = Objects.requireNonNull(paths);
+            if (paths == null) {
+              throw new MissingRequiredPropertyException("GetBackupJobsJob", "paths");
+            }
+            this.paths = paths;
             return this;
         }
         public Builder paths(String... paths) {
@@ -597,42 +670,66 @@ public final class GetBackupJobsJob {
         }
         @CustomType.Setter
         public Builder planId(String planId) {
-            this.planId = Objects.requireNonNull(planId);
+            if (planId == null) {
+              throw new MissingRequiredPropertyException("GetBackupJobsJob", "planId");
+            }
+            this.planId = planId;
             return this;
         }
         @CustomType.Setter
         public Builder prefix(String prefix) {
-            this.prefix = Objects.requireNonNull(prefix);
+            if (prefix == null) {
+              throw new MissingRequiredPropertyException("GetBackupJobsJob", "prefix");
+            }
+            this.prefix = prefix;
             return this;
         }
         @CustomType.Setter
         public Builder progress(String progress) {
-            this.progress = Objects.requireNonNull(progress);
+            if (progress == null) {
+              throw new MissingRequiredPropertyException("GetBackupJobsJob", "progress");
+            }
+            this.progress = progress;
             return this;
         }
         @CustomType.Setter
         public Builder sourceType(String sourceType) {
-            this.sourceType = Objects.requireNonNull(sourceType);
+            if (sourceType == null) {
+              throw new MissingRequiredPropertyException("GetBackupJobsJob", "sourceType");
+            }
+            this.sourceType = sourceType;
             return this;
         }
         @CustomType.Setter
         public Builder startTime(String startTime) {
-            this.startTime = Objects.requireNonNull(startTime);
+            if (startTime == null) {
+              throw new MissingRequiredPropertyException("GetBackupJobsJob", "startTime");
+            }
+            this.startTime = startTime;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetBackupJobsJob", "status");
+            }
+            this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder updatedTime(String updatedTime) {
-            this.updatedTime = Objects.requireNonNull(updatedTime);
+            if (updatedTime == null) {
+              throw new MissingRequiredPropertyException("GetBackupJobsJob", "updatedTime");
+            }
+            this.updatedTime = updatedTime;
             return this;
         }
         @CustomType.Setter
         public Builder vaultId(String vaultId) {
-            this.vaultId = Objects.requireNonNull(vaultId);
+            if (vaultId == null) {
+              throw new MissingRequiredPropertyException("GetBackupJobsJob", "vaultId");
+            }
+            this.vaultId = vaultId;
             return this;
         }
         public GetBackupJobsJob build() {

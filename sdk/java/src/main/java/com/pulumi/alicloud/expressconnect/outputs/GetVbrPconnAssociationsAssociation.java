@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.expressconnect.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -212,67 +213,106 @@ public final class GetVbrPconnAssociationsAssociation {
 
         @CustomType.Setter
         public Builder circuitCode(String circuitCode) {
-            this.circuitCode = Objects.requireNonNull(circuitCode);
+            if (circuitCode == null) {
+              throw new MissingRequiredPropertyException("GetVbrPconnAssociationsAssociation", "circuitCode");
+            }
+            this.circuitCode = circuitCode;
             return this;
         }
         @CustomType.Setter
         public Builder enableIpv6(Boolean enableIpv6) {
-            this.enableIpv6 = Objects.requireNonNull(enableIpv6);
+            if (enableIpv6 == null) {
+              throw new MissingRequiredPropertyException("GetVbrPconnAssociationsAssociation", "enableIpv6");
+            }
+            this.enableIpv6 = enableIpv6;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetVbrPconnAssociationsAssociation", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder localGatewayIp(String localGatewayIp) {
-            this.localGatewayIp = Objects.requireNonNull(localGatewayIp);
+            if (localGatewayIp == null) {
+              throw new MissingRequiredPropertyException("GetVbrPconnAssociationsAssociation", "localGatewayIp");
+            }
+            this.localGatewayIp = localGatewayIp;
             return this;
         }
         @CustomType.Setter
         public Builder localIpv6GatewayIp(String localIpv6GatewayIp) {
-            this.localIpv6GatewayIp = Objects.requireNonNull(localIpv6GatewayIp);
+            if (localIpv6GatewayIp == null) {
+              throw new MissingRequiredPropertyException("GetVbrPconnAssociationsAssociation", "localIpv6GatewayIp");
+            }
+            this.localIpv6GatewayIp = localIpv6GatewayIp;
             return this;
         }
         @CustomType.Setter
         public Builder peerGatewayIp(String peerGatewayIp) {
-            this.peerGatewayIp = Objects.requireNonNull(peerGatewayIp);
+            if (peerGatewayIp == null) {
+              throw new MissingRequiredPropertyException("GetVbrPconnAssociationsAssociation", "peerGatewayIp");
+            }
+            this.peerGatewayIp = peerGatewayIp;
             return this;
         }
         @CustomType.Setter
         public Builder peerIpv6GatewayIp(String peerIpv6GatewayIp) {
-            this.peerIpv6GatewayIp = Objects.requireNonNull(peerIpv6GatewayIp);
+            if (peerIpv6GatewayIp == null) {
+              throw new MissingRequiredPropertyException("GetVbrPconnAssociationsAssociation", "peerIpv6GatewayIp");
+            }
+            this.peerIpv6GatewayIp = peerIpv6GatewayIp;
             return this;
         }
         @CustomType.Setter
         public Builder peeringIpv6SubnetMask(String peeringIpv6SubnetMask) {
-            this.peeringIpv6SubnetMask = Objects.requireNonNull(peeringIpv6SubnetMask);
+            if (peeringIpv6SubnetMask == null) {
+              throw new MissingRequiredPropertyException("GetVbrPconnAssociationsAssociation", "peeringIpv6SubnetMask");
+            }
+            this.peeringIpv6SubnetMask = peeringIpv6SubnetMask;
             return this;
         }
         @CustomType.Setter
         public Builder peeringSubnetMask(String peeringSubnetMask) {
-            this.peeringSubnetMask = Objects.requireNonNull(peeringSubnetMask);
+            if (peeringSubnetMask == null) {
+              throw new MissingRequiredPropertyException("GetVbrPconnAssociationsAssociation", "peeringSubnetMask");
+            }
+            this.peeringSubnetMask = peeringSubnetMask;
             return this;
         }
         @CustomType.Setter
         public Builder physicalConnectionId(String physicalConnectionId) {
-            this.physicalConnectionId = Objects.requireNonNull(physicalConnectionId);
+            if (physicalConnectionId == null) {
+              throw new MissingRequiredPropertyException("GetVbrPconnAssociationsAssociation", "physicalConnectionId");
+            }
+            this.physicalConnectionId = physicalConnectionId;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetVbrPconnAssociationsAssociation", "status");
+            }
+            this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder vbrId(String vbrId) {
-            this.vbrId = Objects.requireNonNull(vbrId);
+            if (vbrId == null) {
+              throw new MissingRequiredPropertyException("GetVbrPconnAssociationsAssociation", "vbrId");
+            }
+            this.vbrId = vbrId;
             return this;
         }
         @CustomType.Setter
         public Builder vlanId(Integer vlanId) {
-            this.vlanId = Objects.requireNonNull(vlanId);
+            if (vlanId == null) {
+              throw new MissingRequiredPropertyException("GetVbrPconnAssociationsAssociation", "vlanId");
+            }
+            this.vlanId = vlanId;
             return this;
         }
         public GetVbrPconnAssociationsAssociation build() {

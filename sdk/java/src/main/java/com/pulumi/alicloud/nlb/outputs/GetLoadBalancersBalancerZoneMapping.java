@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.nlb.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -126,37 +127,58 @@ public final class GetLoadBalancersBalancerZoneMapping {
 
         @CustomType.Setter
         public Builder allocationId(String allocationId) {
-            this.allocationId = Objects.requireNonNull(allocationId);
+            if (allocationId == null) {
+              throw new MissingRequiredPropertyException("GetLoadBalancersBalancerZoneMapping", "allocationId");
+            }
+            this.allocationId = allocationId;
             return this;
         }
         @CustomType.Setter
         public Builder eniId(String eniId) {
-            this.eniId = Objects.requireNonNull(eniId);
+            if (eniId == null) {
+              throw new MissingRequiredPropertyException("GetLoadBalancersBalancerZoneMapping", "eniId");
+            }
+            this.eniId = eniId;
             return this;
         }
         @CustomType.Setter
         public Builder ipv6Address(String ipv6Address) {
-            this.ipv6Address = Objects.requireNonNull(ipv6Address);
+            if (ipv6Address == null) {
+              throw new MissingRequiredPropertyException("GetLoadBalancersBalancerZoneMapping", "ipv6Address");
+            }
+            this.ipv6Address = ipv6Address;
             return this;
         }
         @CustomType.Setter
         public Builder privateIpv4Address(String privateIpv4Address) {
-            this.privateIpv4Address = Objects.requireNonNull(privateIpv4Address);
+            if (privateIpv4Address == null) {
+              throw new MissingRequiredPropertyException("GetLoadBalancersBalancerZoneMapping", "privateIpv4Address");
+            }
+            this.privateIpv4Address = privateIpv4Address;
             return this;
         }
         @CustomType.Setter
         public Builder publicIpv4Address(String publicIpv4Address) {
-            this.publicIpv4Address = Objects.requireNonNull(publicIpv4Address);
+            if (publicIpv4Address == null) {
+              throw new MissingRequiredPropertyException("GetLoadBalancersBalancerZoneMapping", "publicIpv4Address");
+            }
+            this.publicIpv4Address = publicIpv4Address;
             return this;
         }
         @CustomType.Setter
         public Builder vswitchId(String vswitchId) {
-            this.vswitchId = Objects.requireNonNull(vswitchId);
+            if (vswitchId == null) {
+              throw new MissingRequiredPropertyException("GetLoadBalancersBalancerZoneMapping", "vswitchId");
+            }
+            this.vswitchId = vswitchId;
             return this;
         }
         @CustomType.Setter
         public Builder zoneId(String zoneId) {
-            this.zoneId = Objects.requireNonNull(zoneId);
+            if (zoneId == null) {
+              throw new MissingRequiredPropertyException("GetLoadBalancersBalancerZoneMapping", "zoneId");
+            }
+            this.zoneId = zoneId;
             return this;
         }
         public GetLoadBalancersBalancerZoneMapping build() {

@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.eci.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -70,17 +71,26 @@ public final class ContainerGroupImageRegistryCredential {
 
         @CustomType.Setter
         public Builder password(String password) {
-            this.password = Objects.requireNonNull(password);
+            if (password == null) {
+              throw new MissingRequiredPropertyException("ContainerGroupImageRegistryCredential", "password");
+            }
+            this.password = password;
             return this;
         }
         @CustomType.Setter
         public Builder server(String server) {
-            this.server = Objects.requireNonNull(server);
+            if (server == null) {
+              throw new MissingRequiredPropertyException("ContainerGroupImageRegistryCredential", "server");
+            }
+            this.server = server;
             return this;
         }
         @CustomType.Setter
         public Builder userName(String userName) {
-            this.userName = Objects.requireNonNull(userName);
+            if (userName == null) {
+              throw new MissingRequiredPropertyException("ContainerGroupImageRegistryCredential", "userName");
+            }
+            this.userName = userName;
             return this;
         }
         public ContainerGroupImageRegistryCredential build() {

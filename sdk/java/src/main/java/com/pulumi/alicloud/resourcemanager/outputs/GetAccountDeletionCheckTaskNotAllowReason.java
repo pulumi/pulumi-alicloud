@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.resourcemanager.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -70,17 +71,26 @@ public final class GetAccountDeletionCheckTaskNotAllowReason {
 
         @CustomType.Setter
         public Builder checkId(String checkId) {
-            this.checkId = Objects.requireNonNull(checkId);
+            if (checkId == null) {
+              throw new MissingRequiredPropertyException("GetAccountDeletionCheckTaskNotAllowReason", "checkId");
+            }
+            this.checkId = checkId;
             return this;
         }
         @CustomType.Setter
         public Builder checkName(String checkName) {
-            this.checkName = Objects.requireNonNull(checkName);
+            if (checkName == null) {
+              throw new MissingRequiredPropertyException("GetAccountDeletionCheckTaskNotAllowReason", "checkName");
+            }
+            this.checkName = checkName;
             return this;
         }
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetAccountDeletionCheckTaskNotAllowReason", "description");
+            }
+            this.description = description;
             return this;
         }
         public GetAccountDeletionCheckTaskNotAllowReason build() {

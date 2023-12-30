@@ -35,23 +35,22 @@ namespace Pulumi.AliCloud.BastionHost
     ///         AvailableResourceCreation = "VSwitch",
     ///     });
     /// 
-    ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
+    ///     var defaultNetworks = AliCloud.Vpc.GetNetworks.Invoke(new()
     ///     {
-    ///         VpcName = name,
+    ///         NameRegex = "^default-NODELETING$",
     ///         CidrBlock = "10.4.0.0/16",
     ///     });
     /// 
-    ///     var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new()
+    ///     var defaultSwitches = AliCloud.Vpc.GetSwitches.Invoke(new()
     ///     {
-    ///         VswitchName = name,
     ///         CidrBlock = "10.4.0.0/24",
-    ///         VpcId = defaultNetwork.Id,
+    ///         VpcId = defaultNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
     ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
     ///     });
     /// 
     ///     var defaultSecurityGroup = new AliCloud.Ecs.SecurityGroup("defaultSecurityGroup", new()
     ///     {
-    ///         VpcId = defaultNetwork.Id,
+    ///         VpcId = defaultNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
     ///     });
     /// 
     ///     var defaultInstance = new AliCloud.BastionHost.Instance("defaultInstance", new()
@@ -62,7 +61,7 @@ namespace Pulumi.AliCloud.BastionHost
     ///         Storage = "5",
     ///         Bandwidth = "5",
     ///         Period = 1,
-    ///         VswitchId = defaultSwitch.Id,
+    ///         VswitchId = defaultSwitches.Apply(getSwitchesResult =&gt; getSwitchesResult.Ids[0]),
     ///         SecurityGroupIds = new[]
     ///         {
     ///             defaultSecurityGroup.Id,

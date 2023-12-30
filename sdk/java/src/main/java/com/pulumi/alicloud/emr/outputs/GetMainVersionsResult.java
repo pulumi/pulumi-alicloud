@@ -5,6 +5,7 @@ package com.pulumi.alicloud.emr.outputs;
 
 import com.pulumi.alicloud.emr.outputs.GetMainVersionsMainVersion;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -100,6 +101,7 @@ public final class GetMainVersionsResult {
 
         @CustomType.Setter
         public Builder clusterTypes(@Nullable List<String> clusterTypes) {
+
             this.clusterTypes = clusterTypes;
             return this;
         }
@@ -108,17 +110,24 @@ public final class GetMainVersionsResult {
         }
         @CustomType.Setter
         public Builder emrVersion(@Nullable String emrVersion) {
+
             this.emrVersion = emrVersion;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetMainVersionsResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder ids(List<String> ids) {
-            this.ids = Objects.requireNonNull(ids);
+            if (ids == null) {
+              throw new MissingRequiredPropertyException("GetMainVersionsResult", "ids");
+            }
+            this.ids = ids;
             return this;
         }
         public Builder ids(String... ids) {
@@ -126,7 +135,10 @@ public final class GetMainVersionsResult {
         }
         @CustomType.Setter
         public Builder mainVersions(List<GetMainVersionsMainVersion> mainVersions) {
-            this.mainVersions = Objects.requireNonNull(mainVersions);
+            if (mainVersions == null) {
+              throw new MissingRequiredPropertyException("GetMainVersionsResult", "mainVersions");
+            }
+            this.mainVersions = mainVersions;
             return this;
         }
         public Builder mainVersions(GetMainVersionsMainVersion... mainVersions) {
@@ -134,6 +146,7 @@ public final class GetMainVersionsResult {
         }
         @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
+
             this.outputFile = outputFile;
             return this;
         }

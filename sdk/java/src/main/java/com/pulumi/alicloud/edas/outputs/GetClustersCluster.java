@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.edas.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -211,67 +212,106 @@ public final class GetClustersCluster {
 
         @CustomType.Setter
         public Builder clusterId(String clusterId) {
-            this.clusterId = Objects.requireNonNull(clusterId);
+            if (clusterId == null) {
+              throw new MissingRequiredPropertyException("GetClustersCluster", "clusterId");
+            }
+            this.clusterId = clusterId;
             return this;
         }
         @CustomType.Setter
         public Builder clusterName(String clusterName) {
-            this.clusterName = Objects.requireNonNull(clusterName);
+            if (clusterName == null) {
+              throw new MissingRequiredPropertyException("GetClustersCluster", "clusterName");
+            }
+            this.clusterName = clusterName;
             return this;
         }
         @CustomType.Setter
         public Builder clusterType(Integer clusterType) {
-            this.clusterType = Objects.requireNonNull(clusterType);
+            if (clusterType == null) {
+              throw new MissingRequiredPropertyException("GetClustersCluster", "clusterType");
+            }
+            this.clusterType = clusterType;
             return this;
         }
         @CustomType.Setter
         public Builder cpu(Integer cpu) {
-            this.cpu = Objects.requireNonNull(cpu);
+            if (cpu == null) {
+              throw new MissingRequiredPropertyException("GetClustersCluster", "cpu");
+            }
+            this.cpu = cpu;
             return this;
         }
         @CustomType.Setter
         public Builder cpuUsed(Integer cpuUsed) {
-            this.cpuUsed = Objects.requireNonNull(cpuUsed);
+            if (cpuUsed == null) {
+              throw new MissingRequiredPropertyException("GetClustersCluster", "cpuUsed");
+            }
+            this.cpuUsed = cpuUsed;
             return this;
         }
         @CustomType.Setter
         public Builder createTime(Integer createTime) {
-            this.createTime = Objects.requireNonNull(createTime);
+            if (createTime == null) {
+              throw new MissingRequiredPropertyException("GetClustersCluster", "createTime");
+            }
+            this.createTime = createTime;
             return this;
         }
         @CustomType.Setter
         public Builder mem(Integer mem) {
-            this.mem = Objects.requireNonNull(mem);
+            if (mem == null) {
+              throw new MissingRequiredPropertyException("GetClustersCluster", "mem");
+            }
+            this.mem = mem;
             return this;
         }
         @CustomType.Setter
         public Builder memUsed(Integer memUsed) {
-            this.memUsed = Objects.requireNonNull(memUsed);
+            if (memUsed == null) {
+              throw new MissingRequiredPropertyException("GetClustersCluster", "memUsed");
+            }
+            this.memUsed = memUsed;
             return this;
         }
         @CustomType.Setter
         public Builder networkMode(Integer networkMode) {
-            this.networkMode = Objects.requireNonNull(networkMode);
+            if (networkMode == null) {
+              throw new MissingRequiredPropertyException("GetClustersCluster", "networkMode");
+            }
+            this.networkMode = networkMode;
             return this;
         }
         @CustomType.Setter
         public Builder nodeNum(Integer nodeNum) {
-            this.nodeNum = Objects.requireNonNull(nodeNum);
+            if (nodeNum == null) {
+              throw new MissingRequiredPropertyException("GetClustersCluster", "nodeNum");
+            }
+            this.nodeNum = nodeNum;
             return this;
         }
         @CustomType.Setter
         public Builder regionId(String regionId) {
-            this.regionId = Objects.requireNonNull(regionId);
+            if (regionId == null) {
+              throw new MissingRequiredPropertyException("GetClustersCluster", "regionId");
+            }
+            this.regionId = regionId;
             return this;
         }
         @CustomType.Setter
         public Builder updateTime(Integer updateTime) {
-            this.updateTime = Objects.requireNonNull(updateTime);
+            if (updateTime == null) {
+              throw new MissingRequiredPropertyException("GetClustersCluster", "updateTime");
+            }
+            this.updateTime = updateTime;
             return this;
         }
         @CustomType.Setter
         public Builder vpcId(String vpcId) {
-            this.vpcId = Objects.requireNonNull(vpcId);
+            if (vpcId == null) {
+              throw new MissingRequiredPropertyException("GetClustersCluster", "vpcId");
+            }
+            this.vpcId = vpcId;
             return this;
         }
         public GetClustersCluster build() {

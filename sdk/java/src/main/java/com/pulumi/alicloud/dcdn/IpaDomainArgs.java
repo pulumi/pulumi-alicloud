@@ -6,6 +6,7 @@ package com.pulumi.alicloud.dcdn;
 import com.pulumi.alicloud.dcdn.inputs.IpaDomainSourceArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -236,8 +237,12 @@ public final class IpaDomainArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public IpaDomainArgs build() {
-            $.domainName = Objects.requireNonNull($.domainName, "expected parameter 'domainName' to be non-null");
-            $.sources = Objects.requireNonNull($.sources, "expected parameter 'sources' to be non-null");
+            if ($.domainName == null) {
+                throw new MissingRequiredPropertyException("IpaDomainArgs", "domainName");
+            }
+            if ($.sources == null) {
+                throw new MissingRequiredPropertyException("IpaDomainArgs", "sources");
+            }
             return $;
         }
     }

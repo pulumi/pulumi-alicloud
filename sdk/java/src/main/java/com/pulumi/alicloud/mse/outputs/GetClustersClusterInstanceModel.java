@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.mse.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -84,42 +85,66 @@ public final class GetClustersClusterInstanceModel {
 
         @CustomType.Setter
         public Builder healthStatus(String healthStatus) {
-            this.healthStatus = Objects.requireNonNull(healthStatus);
+            if (healthStatus == null) {
+              throw new MissingRequiredPropertyException("GetClustersClusterInstanceModel", "healthStatus");
+            }
+            this.healthStatus = healthStatus;
             return this;
         }
         @CustomType.Setter
         public Builder instanceType(String instanceType) {
-            this.instanceType = Objects.requireNonNull(instanceType);
+            if (instanceType == null) {
+              throw new MissingRequiredPropertyException("GetClustersClusterInstanceModel", "instanceType");
+            }
+            this.instanceType = instanceType;
             return this;
         }
         @CustomType.Setter
         public Builder internetIp(String internetIp) {
-            this.internetIp = Objects.requireNonNull(internetIp);
+            if (internetIp == null) {
+              throw new MissingRequiredPropertyException("GetClustersClusterInstanceModel", "internetIp");
+            }
+            this.internetIp = internetIp;
             return this;
         }
         @CustomType.Setter
         public Builder ip(String ip) {
-            this.ip = Objects.requireNonNull(ip);
+            if (ip == null) {
+              throw new MissingRequiredPropertyException("GetClustersClusterInstanceModel", "ip");
+            }
+            this.ip = ip;
             return this;
         }
         @CustomType.Setter
         public Builder podName(String podName) {
-            this.podName = Objects.requireNonNull(podName);
+            if (podName == null) {
+              throw new MissingRequiredPropertyException("GetClustersClusterInstanceModel", "podName");
+            }
+            this.podName = podName;
             return this;
         }
         @CustomType.Setter
         public Builder role(String role) {
-            this.role = Objects.requireNonNull(role);
+            if (role == null) {
+              throw new MissingRequiredPropertyException("GetClustersClusterInstanceModel", "role");
+            }
+            this.role = role;
             return this;
         }
         @CustomType.Setter
         public Builder singleTunnelVip(String singleTunnelVip) {
-            this.singleTunnelVip = Objects.requireNonNull(singleTunnelVip);
+            if (singleTunnelVip == null) {
+              throw new MissingRequiredPropertyException("GetClustersClusterInstanceModel", "singleTunnelVip");
+            }
+            this.singleTunnelVip = singleTunnelVip;
             return this;
         }
         @CustomType.Setter
         public Builder vip(String vip) {
-            this.vip = Objects.requireNonNull(vip);
+            if (vip == null) {
+              throw new MissingRequiredPropertyException("GetClustersClusterInstanceModel", "vip");
+            }
+            this.vip = vip;
             return this;
         }
         public GetClustersClusterInstanceModel build() {

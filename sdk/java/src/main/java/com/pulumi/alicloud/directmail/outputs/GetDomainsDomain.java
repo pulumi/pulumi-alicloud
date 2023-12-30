@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.directmail.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -308,102 +309,162 @@ public final class GetDomainsDomain {
 
         @CustomType.Setter
         public Builder cnameAuthStatus(String cnameAuthStatus) {
-            this.cnameAuthStatus = Objects.requireNonNull(cnameAuthStatus);
+            if (cnameAuthStatus == null) {
+              throw new MissingRequiredPropertyException("GetDomainsDomain", "cnameAuthStatus");
+            }
+            this.cnameAuthStatus = cnameAuthStatus;
             return this;
         }
         @CustomType.Setter
         public Builder cnameConfirmStatus(String cnameConfirmStatus) {
-            this.cnameConfirmStatus = Objects.requireNonNull(cnameConfirmStatus);
+            if (cnameConfirmStatus == null) {
+              throw new MissingRequiredPropertyException("GetDomainsDomain", "cnameConfirmStatus");
+            }
+            this.cnameConfirmStatus = cnameConfirmStatus;
             return this;
         }
         @CustomType.Setter
         public Builder cnameRecord(String cnameRecord) {
-            this.cnameRecord = Objects.requireNonNull(cnameRecord);
+            if (cnameRecord == null) {
+              throw new MissingRequiredPropertyException("GetDomainsDomain", "cnameRecord");
+            }
+            this.cnameRecord = cnameRecord;
             return this;
         }
         @CustomType.Setter
         public Builder createTime(String createTime) {
-            this.createTime = Objects.requireNonNull(createTime);
+            if (createTime == null) {
+              throw new MissingRequiredPropertyException("GetDomainsDomain", "createTime");
+            }
+            this.createTime = createTime;
             return this;
         }
         @CustomType.Setter
         public Builder defaultDomain(String defaultDomain) {
-            this.defaultDomain = Objects.requireNonNull(defaultDomain);
+            if (defaultDomain == null) {
+              throw new MissingRequiredPropertyException("GetDomainsDomain", "defaultDomain");
+            }
+            this.defaultDomain = defaultDomain;
             return this;
         }
         @CustomType.Setter
         public Builder dnsMx(String dnsMx) {
-            this.dnsMx = Objects.requireNonNull(dnsMx);
+            if (dnsMx == null) {
+              throw new MissingRequiredPropertyException("GetDomainsDomain", "dnsMx");
+            }
+            this.dnsMx = dnsMx;
             return this;
         }
         @CustomType.Setter
         public Builder dnsSpf(String dnsSpf) {
-            this.dnsSpf = Objects.requireNonNull(dnsSpf);
+            if (dnsSpf == null) {
+              throw new MissingRequiredPropertyException("GetDomainsDomain", "dnsSpf");
+            }
+            this.dnsSpf = dnsSpf;
             return this;
         }
         @CustomType.Setter
         public Builder dnsTxt(String dnsTxt) {
-            this.dnsTxt = Objects.requireNonNull(dnsTxt);
+            if (dnsTxt == null) {
+              throw new MissingRequiredPropertyException("GetDomainsDomain", "dnsTxt");
+            }
+            this.dnsTxt = dnsTxt;
             return this;
         }
         @CustomType.Setter
         public Builder domainId(String domainId) {
-            this.domainId = Objects.requireNonNull(domainId);
+            if (domainId == null) {
+              throw new MissingRequiredPropertyException("GetDomainsDomain", "domainId");
+            }
+            this.domainId = domainId;
             return this;
         }
         @CustomType.Setter
         public Builder domainName(String domainName) {
-            this.domainName = Objects.requireNonNull(domainName);
+            if (domainName == null) {
+              throw new MissingRequiredPropertyException("GetDomainsDomain", "domainName");
+            }
+            this.domainName = domainName;
             return this;
         }
         @CustomType.Setter
         public Builder domainType(String domainType) {
-            this.domainType = Objects.requireNonNull(domainType);
+            if (domainType == null) {
+              throw new MissingRequiredPropertyException("GetDomainsDomain", "domainType");
+            }
+            this.domainType = domainType;
             return this;
         }
         @CustomType.Setter
         public Builder icpStatus(String icpStatus) {
-            this.icpStatus = Objects.requireNonNull(icpStatus);
+            if (icpStatus == null) {
+              throw new MissingRequiredPropertyException("GetDomainsDomain", "icpStatus");
+            }
+            this.icpStatus = icpStatus;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetDomainsDomain", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder mxAuthStatus(String mxAuthStatus) {
-            this.mxAuthStatus = Objects.requireNonNull(mxAuthStatus);
+            if (mxAuthStatus == null) {
+              throw new MissingRequiredPropertyException("GetDomainsDomain", "mxAuthStatus");
+            }
+            this.mxAuthStatus = mxAuthStatus;
             return this;
         }
         @CustomType.Setter
         public Builder mxRecord(String mxRecord) {
-            this.mxRecord = Objects.requireNonNull(mxRecord);
+            if (mxRecord == null) {
+              throw new MissingRequiredPropertyException("GetDomainsDomain", "mxRecord");
+            }
+            this.mxRecord = mxRecord;
             return this;
         }
         @CustomType.Setter
         public Builder spfAuthStatus(String spfAuthStatus) {
-            this.spfAuthStatus = Objects.requireNonNull(spfAuthStatus);
+            if (spfAuthStatus == null) {
+              throw new MissingRequiredPropertyException("GetDomainsDomain", "spfAuthStatus");
+            }
+            this.spfAuthStatus = spfAuthStatus;
             return this;
         }
         @CustomType.Setter
         public Builder spfRecord(String spfRecord) {
-            this.spfRecord = Objects.requireNonNull(spfRecord);
+            if (spfRecord == null) {
+              throw new MissingRequiredPropertyException("GetDomainsDomain", "spfRecord");
+            }
+            this.spfRecord = spfRecord;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetDomainsDomain", "status");
+            }
+            this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder tlDomainName(String tlDomainName) {
-            this.tlDomainName = Objects.requireNonNull(tlDomainName);
+            if (tlDomainName == null) {
+              throw new MissingRequiredPropertyException("GetDomainsDomain", "tlDomainName");
+            }
+            this.tlDomainName = tlDomainName;
             return this;
         }
         @CustomType.Setter
         public Builder tracefRecord(String tracefRecord) {
-            this.tracefRecord = Objects.requireNonNull(tracefRecord);
+            if (tracefRecord == null) {
+              throw new MissingRequiredPropertyException("GetDomainsDomain", "tracefRecord");
+            }
+            this.tracefRecord = tracefRecord;
             return this;
         }
         public GetDomainsDomain build() {

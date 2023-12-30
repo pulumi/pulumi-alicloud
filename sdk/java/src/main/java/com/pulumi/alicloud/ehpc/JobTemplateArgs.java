@@ -5,6 +5,7 @@ package com.pulumi.alicloud.ehpc;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -670,8 +671,12 @@ public final class JobTemplateArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public JobTemplateArgs build() {
-            $.commandLine = Objects.requireNonNull($.commandLine, "expected parameter 'commandLine' to be non-null");
-            $.jobTemplateName = Objects.requireNonNull($.jobTemplateName, "expected parameter 'jobTemplateName' to be non-null");
+            if ($.commandLine == null) {
+                throw new MissingRequiredPropertyException("JobTemplateArgs", "commandLine");
+            }
+            if ($.jobTemplateName == null) {
+                throw new MissingRequiredPropertyException("JobTemplateArgs", "jobTemplateName");
+            }
             return $;
         }
     }

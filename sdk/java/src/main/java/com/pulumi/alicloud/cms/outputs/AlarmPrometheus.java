@@ -89,21 +89,25 @@ public final class AlarmPrometheus {
 
         @CustomType.Setter
         public Builder annotations(@Nullable Map<String,Object> annotations) {
+
             this.annotations = annotations;
             return this;
         }
         @CustomType.Setter
         public Builder level(@Nullable String level) {
+
             this.level = level;
             return this;
         }
         @CustomType.Setter
         public Builder promQl(@Nullable String promQl) {
+
             this.promQl = promQl;
             return this;
         }
         @CustomType.Setter
         public Builder times(@Nullable Integer times) {
+
             this.times = times;
             return this;
         }

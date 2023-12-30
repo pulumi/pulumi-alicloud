@@ -5,6 +5,7 @@ package com.pulumi.alicloud.rds.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -356,12 +357,24 @@ public final class RdsUpgradeDbInstancePgHbaConfArgs extends com.pulumi.resource
         }
 
         public RdsUpgradeDbInstancePgHbaConfArgs build() {
-            $.address = Objects.requireNonNull($.address, "expected parameter 'address' to be non-null");
-            $.database = Objects.requireNonNull($.database, "expected parameter 'database' to be non-null");
-            $.method = Objects.requireNonNull($.method, "expected parameter 'method' to be non-null");
-            $.priorityId = Objects.requireNonNull($.priorityId, "expected parameter 'priorityId' to be non-null");
-            $.type = Objects.requireNonNull($.type, "expected parameter 'type' to be non-null");
-            $.user = Objects.requireNonNull($.user, "expected parameter 'user' to be non-null");
+            if ($.address == null) {
+                throw new MissingRequiredPropertyException("RdsUpgradeDbInstancePgHbaConfArgs", "address");
+            }
+            if ($.database == null) {
+                throw new MissingRequiredPropertyException("RdsUpgradeDbInstancePgHbaConfArgs", "database");
+            }
+            if ($.method == null) {
+                throw new MissingRequiredPropertyException("RdsUpgradeDbInstancePgHbaConfArgs", "method");
+            }
+            if ($.priorityId == null) {
+                throw new MissingRequiredPropertyException("RdsUpgradeDbInstancePgHbaConfArgs", "priorityId");
+            }
+            if ($.type == null) {
+                throw new MissingRequiredPropertyException("RdsUpgradeDbInstancePgHbaConfArgs", "type");
+            }
+            if ($.user == null) {
+                throw new MissingRequiredPropertyException("RdsUpgradeDbInstancePgHbaConfArgs", "user");
+            }
             return $;
         }
     }

@@ -5,6 +5,7 @@ package com.pulumi.alicloud.hbr.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -422,8 +423,12 @@ public final class ServerBackupPlanDetailArgs extends com.pulumi.resources.Resou
         }
 
         public ServerBackupPlanDetailArgs build() {
-            $.appConsistent = Objects.requireNonNull($.appConsistent, "expected parameter 'appConsistent' to be non-null");
-            $.snapshotGroup = Objects.requireNonNull($.snapshotGroup, "expected parameter 'snapshotGroup' to be non-null");
+            if ($.appConsistent == null) {
+                throw new MissingRequiredPropertyException("ServerBackupPlanDetailArgs", "appConsistent");
+            }
+            if ($.snapshotGroup == null) {
+                throw new MissingRequiredPropertyException("ServerBackupPlanDetailArgs", "snapshotGroup");
+            }
             return $;
         }
     }

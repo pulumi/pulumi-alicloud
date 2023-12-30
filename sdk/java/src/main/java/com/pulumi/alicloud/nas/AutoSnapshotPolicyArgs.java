@@ -5,6 +5,7 @@ package com.pulumi.alicloud.nas;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -249,8 +250,12 @@ public final class AutoSnapshotPolicyArgs extends com.pulumi.resources.ResourceA
         }
 
         public AutoSnapshotPolicyArgs build() {
-            $.repeatWeekdays = Objects.requireNonNull($.repeatWeekdays, "expected parameter 'repeatWeekdays' to be non-null");
-            $.timePoints = Objects.requireNonNull($.timePoints, "expected parameter 'timePoints' to be non-null");
+            if ($.repeatWeekdays == null) {
+                throw new MissingRequiredPropertyException("AutoSnapshotPolicyArgs", "repeatWeekdays");
+            }
+            if ($.timePoints == null) {
+                throw new MissingRequiredPropertyException("AutoSnapshotPolicyArgs", "timePoints");
+            }
             return $;
         }
     }

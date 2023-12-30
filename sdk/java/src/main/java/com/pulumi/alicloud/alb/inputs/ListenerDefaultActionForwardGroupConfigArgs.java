@@ -6,6 +6,7 @@ package com.pulumi.alicloud.alb.inputs;
 import com.pulumi.alicloud.alb.inputs.ListenerDefaultActionForwardGroupConfigServerGroupTupleArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.util.List;
 import java.util.Objects;
 
@@ -85,7 +86,9 @@ public final class ListenerDefaultActionForwardGroupConfigArgs extends com.pulum
         }
 
         public ListenerDefaultActionForwardGroupConfigArgs build() {
-            $.serverGroupTuples = Objects.requireNonNull($.serverGroupTuples, "expected parameter 'serverGroupTuples' to be non-null");
+            if ($.serverGroupTuples == null) {
+                throw new MissingRequiredPropertyException("ListenerDefaultActionForwardGroupConfigArgs", "serverGroupTuples");
+            }
             return $;
         }
     }

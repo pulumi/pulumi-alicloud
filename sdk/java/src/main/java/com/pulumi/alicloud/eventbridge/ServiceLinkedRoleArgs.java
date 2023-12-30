@@ -5,6 +5,7 @@ package com.pulumi.alicloud.eventbridge;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -82,7 +83,9 @@ public final class ServiceLinkedRoleArgs extends com.pulumi.resources.ResourceAr
         }
 
         public ServiceLinkedRoleArgs build() {
-            $.productName = Objects.requireNonNull($.productName, "expected parameter 'productName' to be non-null");
+            if ($.productName == null) {
+                throw new MissingRequiredPropertyException("ServiceLinkedRoleArgs", "productName");
+            }
             return $;
         }
     }

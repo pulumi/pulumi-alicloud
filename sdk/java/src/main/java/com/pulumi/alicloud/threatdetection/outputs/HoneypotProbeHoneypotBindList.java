@@ -60,6 +60,7 @@ public final class HoneypotProbeHoneypotBindList {
 
         @CustomType.Setter
         public Builder bindPortLists(@Nullable List<HoneypotProbeHoneypotBindListBindPortList> bindPortLists) {
+
             this.bindPortLists = bindPortLists;
             return this;
         }
@@ -68,6 +69,7 @@ public final class HoneypotProbeHoneypotBindList {
         }
         @CustomType.Setter
         public Builder honeypotId(@Nullable String honeypotId) {
+
             this.honeypotId = honeypotId;
             return this;
         }

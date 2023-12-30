@@ -5,6 +5,7 @@ package com.pulumi.alicloud.cloudconnect;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -148,9 +149,15 @@ public final class NetworkGrantArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public NetworkGrantArgs build() {
-            $.ccnId = Objects.requireNonNull($.ccnId, "expected parameter 'ccnId' to be non-null");
-            $.cenId = Objects.requireNonNull($.cenId, "expected parameter 'cenId' to be non-null");
-            $.cenUid = Objects.requireNonNull($.cenUid, "expected parameter 'cenUid' to be non-null");
+            if ($.ccnId == null) {
+                throw new MissingRequiredPropertyException("NetworkGrantArgs", "ccnId");
+            }
+            if ($.cenId == null) {
+                throw new MissingRequiredPropertyException("NetworkGrantArgs", "cenId");
+            }
+            if ($.cenUid == null) {
+                throw new MissingRequiredPropertyException("NetworkGrantArgs", "cenUid");
+            }
             return $;
         }
     }

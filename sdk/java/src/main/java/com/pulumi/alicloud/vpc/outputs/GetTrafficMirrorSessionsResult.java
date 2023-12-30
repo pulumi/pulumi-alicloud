@@ -5,6 +5,7 @@ package com.pulumi.alicloud.vpc.outputs;
 
 import com.pulumi.alicloud.vpc.outputs.GetTrafficMirrorSessionsSession;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -120,17 +121,24 @@ public final class GetTrafficMirrorSessionsResult {
 
         @CustomType.Setter
         public Builder enabled(@Nullable Boolean enabled) {
+
             this.enabled = enabled;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetTrafficMirrorSessionsResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder ids(List<String> ids) {
-            this.ids = Objects.requireNonNull(ids);
+            if (ids == null) {
+              throw new MissingRequiredPropertyException("GetTrafficMirrorSessionsResult", "ids");
+            }
+            this.ids = ids;
             return this;
         }
         public Builder ids(String... ids) {
@@ -138,12 +146,16 @@ public final class GetTrafficMirrorSessionsResult {
         }
         @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
+
             this.nameRegex = nameRegex;
             return this;
         }
         @CustomType.Setter
         public Builder names(List<String> names) {
-            this.names = Objects.requireNonNull(names);
+            if (names == null) {
+              throw new MissingRequiredPropertyException("GetTrafficMirrorSessionsResult", "names");
+            }
+            this.names = names;
             return this;
         }
         public Builder names(String... names) {
@@ -151,17 +163,22 @@ public final class GetTrafficMirrorSessionsResult {
         }
         @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
+
             this.outputFile = outputFile;
             return this;
         }
         @CustomType.Setter
         public Builder priority(@Nullable Integer priority) {
+
             this.priority = priority;
             return this;
         }
         @CustomType.Setter
         public Builder sessions(List<GetTrafficMirrorSessionsSession> sessions) {
-            this.sessions = Objects.requireNonNull(sessions);
+            if (sessions == null) {
+              throw new MissingRequiredPropertyException("GetTrafficMirrorSessionsResult", "sessions");
+            }
+            this.sessions = sessions;
             return this;
         }
         public Builder sessions(GetTrafficMirrorSessionsSession... sessions) {
@@ -169,26 +186,31 @@ public final class GetTrafficMirrorSessionsResult {
         }
         @CustomType.Setter
         public Builder status(@Nullable String status) {
+
             this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder trafficMirrorFilterId(@Nullable String trafficMirrorFilterId) {
+
             this.trafficMirrorFilterId = trafficMirrorFilterId;
             return this;
         }
         @CustomType.Setter
         public Builder trafficMirrorSessionName(@Nullable String trafficMirrorSessionName) {
+
             this.trafficMirrorSessionName = trafficMirrorSessionName;
             return this;
         }
         @CustomType.Setter
         public Builder trafficMirrorSourceId(@Nullable String trafficMirrorSourceId) {
+
             this.trafficMirrorSourceId = trafficMirrorSourceId;
             return this;
         }
         @CustomType.Setter
         public Builder trafficMirrorTargetId(@Nullable String trafficMirrorTargetId) {
+
             this.trafficMirrorTargetId = trafficMirrorTargetId;
             return this;
         }

@@ -6,6 +6,7 @@ package com.pulumi.alicloud.ga.outputs;
 import com.pulumi.alicloud.ga.outputs.GetAcceleratorsAcceleratorBasicBandwidthPackage;
 import com.pulumi.alicloud.ga.outputs.GetAcceleratorsAcceleratorCrossDomainBandwidthPackage;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -228,17 +229,26 @@ public final class GetAcceleratorsAccelerator {
 
         @CustomType.Setter
         public Builder acceleratorId(String acceleratorId) {
-            this.acceleratorId = Objects.requireNonNull(acceleratorId);
+            if (acceleratorId == null) {
+              throw new MissingRequiredPropertyException("GetAcceleratorsAccelerator", "acceleratorId");
+            }
+            this.acceleratorId = acceleratorId;
             return this;
         }
         @CustomType.Setter
         public Builder acceleratorName(String acceleratorName) {
-            this.acceleratorName = Objects.requireNonNull(acceleratorName);
+            if (acceleratorName == null) {
+              throw new MissingRequiredPropertyException("GetAcceleratorsAccelerator", "acceleratorName");
+            }
+            this.acceleratorName = acceleratorName;
             return this;
         }
         @CustomType.Setter
         public Builder basicBandwidthPackages(List<GetAcceleratorsAcceleratorBasicBandwidthPackage> basicBandwidthPackages) {
-            this.basicBandwidthPackages = Objects.requireNonNull(basicBandwidthPackages);
+            if (basicBandwidthPackages == null) {
+              throw new MissingRequiredPropertyException("GetAcceleratorsAccelerator", "basicBandwidthPackages");
+            }
+            this.basicBandwidthPackages = basicBandwidthPackages;
             return this;
         }
         public Builder basicBandwidthPackages(GetAcceleratorsAcceleratorBasicBandwidthPackage... basicBandwidthPackages) {
@@ -246,12 +256,18 @@ public final class GetAcceleratorsAccelerator {
         }
         @CustomType.Setter
         public Builder cenId(String cenId) {
-            this.cenId = Objects.requireNonNull(cenId);
+            if (cenId == null) {
+              throw new MissingRequiredPropertyException("GetAcceleratorsAccelerator", "cenId");
+            }
+            this.cenId = cenId;
             return this;
         }
         @CustomType.Setter
         public Builder crossDomainBandwidthPackages(List<GetAcceleratorsAcceleratorCrossDomainBandwidthPackage> crossDomainBandwidthPackages) {
-            this.crossDomainBandwidthPackages = Objects.requireNonNull(crossDomainBandwidthPackages);
+            if (crossDomainBandwidthPackages == null) {
+              throw new MissingRequiredPropertyException("GetAcceleratorsAccelerator", "crossDomainBandwidthPackages");
+            }
+            this.crossDomainBandwidthPackages = crossDomainBandwidthPackages;
             return this;
         }
         public Builder crossDomainBandwidthPackages(GetAcceleratorsAcceleratorCrossDomainBandwidthPackage... crossDomainBandwidthPackages) {
@@ -259,47 +275,74 @@ public final class GetAcceleratorsAccelerator {
         }
         @CustomType.Setter
         public Builder ddosId(String ddosId) {
-            this.ddosId = Objects.requireNonNull(ddosId);
+            if (ddosId == null) {
+              throw new MissingRequiredPropertyException("GetAcceleratorsAccelerator", "ddosId");
+            }
+            this.ddosId = ddosId;
             return this;
         }
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetAcceleratorsAccelerator", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder dnsName(String dnsName) {
-            this.dnsName = Objects.requireNonNull(dnsName);
+            if (dnsName == null) {
+              throw new MissingRequiredPropertyException("GetAcceleratorsAccelerator", "dnsName");
+            }
+            this.dnsName = dnsName;
             return this;
         }
         @CustomType.Setter
         public Builder expiredTime(Integer expiredTime) {
-            this.expiredTime = Objects.requireNonNull(expiredTime);
+            if (expiredTime == null) {
+              throw new MissingRequiredPropertyException("GetAcceleratorsAccelerator", "expiredTime");
+            }
+            this.expiredTime = expiredTime;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetAcceleratorsAccelerator", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder paymentType(String paymentType) {
-            this.paymentType = Objects.requireNonNull(paymentType);
+            if (paymentType == null) {
+              throw new MissingRequiredPropertyException("GetAcceleratorsAccelerator", "paymentType");
+            }
+            this.paymentType = paymentType;
             return this;
         }
         @CustomType.Setter
         public Builder secondDnsName(String secondDnsName) {
-            this.secondDnsName = Objects.requireNonNull(secondDnsName);
+            if (secondDnsName == null) {
+              throw new MissingRequiredPropertyException("GetAcceleratorsAccelerator", "secondDnsName");
+            }
+            this.secondDnsName = secondDnsName;
             return this;
         }
         @CustomType.Setter
         public Builder spec(String spec) {
-            this.spec = Objects.requireNonNull(spec);
+            if (spec == null) {
+              throw new MissingRequiredPropertyException("GetAcceleratorsAccelerator", "spec");
+            }
+            this.spec = spec;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetAcceleratorsAccelerator", "status");
+            }
+            this.status = status;
             return this;
         }
         public GetAcceleratorsAccelerator build() {

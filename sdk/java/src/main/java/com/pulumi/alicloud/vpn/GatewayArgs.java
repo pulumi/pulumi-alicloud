@@ -5,6 +5,7 @@ package com.pulumi.alicloud.vpn;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.Object;
@@ -565,8 +566,12 @@ public final class GatewayArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public GatewayArgs build() {
-            $.bandwidth = Objects.requireNonNull($.bandwidth, "expected parameter 'bandwidth' to be non-null");
-            $.vpcId = Objects.requireNonNull($.vpcId, "expected parameter 'vpcId' to be non-null");
+            if ($.bandwidth == null) {
+                throw new MissingRequiredPropertyException("GatewayArgs", "bandwidth");
+            }
+            if ($.vpcId == null) {
+                throw new MissingRequiredPropertyException("GatewayArgs", "vpcId");
+            }
             return $;
         }
     }

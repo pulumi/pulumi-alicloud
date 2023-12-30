@@ -6,6 +6,7 @@ package com.pulumi.alicloud.waf;
 import com.pulumi.alicloud.waf.inputs.DomainLogHeaderArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -751,8 +752,12 @@ public final class DomainArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public DomainArgs build() {
-            $.instanceId = Objects.requireNonNull($.instanceId, "expected parameter 'instanceId' to be non-null");
-            $.isAccessProduct = Objects.requireNonNull($.isAccessProduct, "expected parameter 'isAccessProduct' to be non-null");
+            if ($.instanceId == null) {
+                throw new MissingRequiredPropertyException("DomainArgs", "instanceId");
+            }
+            if ($.isAccessProduct == null) {
+                throw new MissingRequiredPropertyException("DomainArgs", "isAccessProduct");
+            }
             return $;
         }
     }

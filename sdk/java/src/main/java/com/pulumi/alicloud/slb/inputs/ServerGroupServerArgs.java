@@ -5,6 +5,7 @@ package com.pulumi.alicloud.slb.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -199,8 +200,12 @@ public final class ServerGroupServerArgs extends com.pulumi.resources.ResourceAr
         }
 
         public ServerGroupServerArgs build() {
-            $.port = Objects.requireNonNull($.port, "expected parameter 'port' to be non-null");
-            $.serverIds = Objects.requireNonNull($.serverIds, "expected parameter 'serverIds' to be non-null");
+            if ($.port == null) {
+                throw new MissingRequiredPropertyException("ServerGroupServerArgs", "port");
+            }
+            if ($.serverIds == null) {
+                throw new MissingRequiredPropertyException("ServerGroupServerArgs", "serverIds");
+            }
             return $;
         }
     }

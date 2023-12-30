@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.slb.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -99,27 +100,42 @@ public final class GetApplicationLoadBalancersBalancerListenerPortsAndProtocol {
 
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetApplicationLoadBalancersBalancerListenerPortsAndProtocol", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder forwardPort(Integer forwardPort) {
-            this.forwardPort = Objects.requireNonNull(forwardPort);
+            if (forwardPort == null) {
+              throw new MissingRequiredPropertyException("GetApplicationLoadBalancersBalancerListenerPortsAndProtocol", "forwardPort");
+            }
+            this.forwardPort = forwardPort;
             return this;
         }
         @CustomType.Setter
         public Builder listenerForward(String listenerForward) {
-            this.listenerForward = Objects.requireNonNull(listenerForward);
+            if (listenerForward == null) {
+              throw new MissingRequiredPropertyException("GetApplicationLoadBalancersBalancerListenerPortsAndProtocol", "listenerForward");
+            }
+            this.listenerForward = listenerForward;
             return this;
         }
         @CustomType.Setter
         public Builder listenerPort(Integer listenerPort) {
-            this.listenerPort = Objects.requireNonNull(listenerPort);
+            if (listenerPort == null) {
+              throw new MissingRequiredPropertyException("GetApplicationLoadBalancersBalancerListenerPortsAndProtocol", "listenerPort");
+            }
+            this.listenerPort = listenerPort;
             return this;
         }
         @CustomType.Setter
         public Builder listenerProtocol(String listenerProtocol) {
-            this.listenerProtocol = Objects.requireNonNull(listenerProtocol);
+            if (listenerProtocol == null) {
+              throw new MissingRequiredPropertyException("GetApplicationLoadBalancersBalancerListenerPortsAndProtocol", "listenerProtocol");
+            }
+            this.listenerProtocol = listenerProtocol;
             return this;
         }
         public GetApplicationLoadBalancersBalancerListenerPortsAndProtocol build() {

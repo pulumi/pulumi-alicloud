@@ -154,41 +154,49 @@ public final class DomainNewCertificateConfig {
 
         @CustomType.Setter
         public Builder certId(@Nullable String certId) {
+
             this.certId = certId;
             return this;
         }
         @CustomType.Setter
         public Builder certName(@Nullable String certName) {
+
             this.certName = certName;
             return this;
         }
         @CustomType.Setter
         public Builder certRegion(@Nullable String certRegion) {
+
             this.certRegion = certRegion;
             return this;
         }
         @CustomType.Setter
         public Builder certType(@Nullable String certType) {
+
             this.certType = certType;
             return this;
         }
         @CustomType.Setter
         public Builder forceSet(@Nullable String forceSet) {
+
             this.forceSet = forceSet;
             return this;
         }
         @CustomType.Setter
         public Builder privateKey(@Nullable String privateKey) {
+
             this.privateKey = privateKey;
             return this;
         }
         @CustomType.Setter
         public Builder serverCertificate(@Nullable String serverCertificate) {
+
             this.serverCertificate = serverCertificate;
             return this;
         }
         @CustomType.Setter
         public Builder serverCertificateStatus(@Nullable String serverCertificateStatus) {
+
             this.serverCertificateStatus = serverCertificateStatus;
             return this;
         }

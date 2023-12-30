@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.threatdetection.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -155,42 +156,66 @@ public final class GetHoneyPotsPot {
 
         @CustomType.Setter
         public Builder honeypotId(String honeypotId) {
-            this.honeypotId = Objects.requireNonNull(honeypotId);
+            if (honeypotId == null) {
+              throw new MissingRequiredPropertyException("GetHoneyPotsPot", "honeypotId");
+            }
+            this.honeypotId = honeypotId;
             return this;
         }
         @CustomType.Setter
         public Builder honeypotImageId(String honeypotImageId) {
-            this.honeypotImageId = Objects.requireNonNull(honeypotImageId);
+            if (honeypotImageId == null) {
+              throw new MissingRequiredPropertyException("GetHoneyPotsPot", "honeypotImageId");
+            }
+            this.honeypotImageId = honeypotImageId;
             return this;
         }
         @CustomType.Setter
         public Builder honeypotImageName(String honeypotImageName) {
-            this.honeypotImageName = Objects.requireNonNull(honeypotImageName);
+            if (honeypotImageName == null) {
+              throw new MissingRequiredPropertyException("GetHoneyPotsPot", "honeypotImageName");
+            }
+            this.honeypotImageName = honeypotImageName;
             return this;
         }
         @CustomType.Setter
         public Builder honeypotName(String honeypotName) {
-            this.honeypotName = Objects.requireNonNull(honeypotName);
+            if (honeypotName == null) {
+              throw new MissingRequiredPropertyException("GetHoneyPotsPot", "honeypotName");
+            }
+            this.honeypotName = honeypotName;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetHoneyPotsPot", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder nodeId(String nodeId) {
-            this.nodeId = Objects.requireNonNull(nodeId);
+            if (nodeId == null) {
+              throw new MissingRequiredPropertyException("GetHoneyPotsPot", "nodeId");
+            }
+            this.nodeId = nodeId;
             return this;
         }
         @CustomType.Setter
         public Builder presetId(String presetId) {
-            this.presetId = Objects.requireNonNull(presetId);
+            if (presetId == null) {
+              throw new MissingRequiredPropertyException("GetHoneyPotsPot", "presetId");
+            }
+            this.presetId = presetId;
             return this;
         }
         @CustomType.Setter
         public Builder states(List<String> states) {
-            this.states = Objects.requireNonNull(states);
+            if (states == null) {
+              throw new MissingRequiredPropertyException("GetHoneyPotsPot", "states");
+            }
+            this.states = states;
             return this;
         }
         public Builder states(String... states) {
@@ -198,7 +223,10 @@ public final class GetHoneyPotsPot {
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetHoneyPotsPot", "status");
+            }
+            this.status = status;
             return this;
         }
         public GetHoneyPotsPot build() {

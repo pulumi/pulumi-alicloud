@@ -5,6 +5,7 @@ package com.pulumi.alicloud.dfs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -336,11 +337,21 @@ public final class FileSystemArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public FileSystemArgs build() {
-            $.fileSystemName = Objects.requireNonNull($.fileSystemName, "expected parameter 'fileSystemName' to be non-null");
-            $.protocolType = Objects.requireNonNull($.protocolType, "expected parameter 'protocolType' to be non-null");
-            $.spaceCapacity = Objects.requireNonNull($.spaceCapacity, "expected parameter 'spaceCapacity' to be non-null");
-            $.storageType = Objects.requireNonNull($.storageType, "expected parameter 'storageType' to be non-null");
-            $.zoneId = Objects.requireNonNull($.zoneId, "expected parameter 'zoneId' to be non-null");
+            if ($.fileSystemName == null) {
+                throw new MissingRequiredPropertyException("FileSystemArgs", "fileSystemName");
+            }
+            if ($.protocolType == null) {
+                throw new MissingRequiredPropertyException("FileSystemArgs", "protocolType");
+            }
+            if ($.spaceCapacity == null) {
+                throw new MissingRequiredPropertyException("FileSystemArgs", "spaceCapacity");
+            }
+            if ($.storageType == null) {
+                throw new MissingRequiredPropertyException("FileSystemArgs", "storageType");
+            }
+            if ($.zoneId == null) {
+                throw new MissingRequiredPropertyException("FileSystemArgs", "zoneId");
+            }
             return $;
         }
     }

@@ -72,16 +72,19 @@ public final class DbClusterDbClusterAccessWhiteList {
 
         @CustomType.Setter
         public Builder dbClusterIpArrayAttribute(@Nullable String dbClusterIpArrayAttribute) {
+
             this.dbClusterIpArrayAttribute = dbClusterIpArrayAttribute;
             return this;
         }
         @CustomType.Setter
         public Builder dbClusterIpArrayName(@Nullable String dbClusterIpArrayName) {
+
             this.dbClusterIpArrayName = dbClusterIpArrayName;
             return this;
         }
         @CustomType.Setter
         public Builder securityIpList(@Nullable String securityIpList) {
+
             this.securityIpList = securityIpList;
             return this;
         }

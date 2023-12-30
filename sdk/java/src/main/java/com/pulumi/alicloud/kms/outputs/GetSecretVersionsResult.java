@@ -5,6 +5,7 @@ package com.pulumi.alicloud.kms.outputs;
 
 import com.pulumi.alicloud.kms.outputs.GetSecretVersionsVersion;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -113,17 +114,24 @@ public final class GetSecretVersionsResult {
 
         @CustomType.Setter
         public Builder enableDetails(@Nullable Boolean enableDetails) {
+
             this.enableDetails = enableDetails;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetSecretVersionsResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder ids(List<String> ids) {
-            this.ids = Objects.requireNonNull(ids);
+            if (ids == null) {
+              throw new MissingRequiredPropertyException("GetSecretVersionsResult", "ids");
+            }
+            this.ids = ids;
             return this;
         }
         public Builder ids(String... ids) {
@@ -131,27 +139,36 @@ public final class GetSecretVersionsResult {
         }
         @CustomType.Setter
         public Builder includeDeprecated(@Nullable String includeDeprecated) {
+
             this.includeDeprecated = includeDeprecated;
             return this;
         }
         @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
+
             this.outputFile = outputFile;
             return this;
         }
         @CustomType.Setter
         public Builder secretName(String secretName) {
-            this.secretName = Objects.requireNonNull(secretName);
+            if (secretName == null) {
+              throw new MissingRequiredPropertyException("GetSecretVersionsResult", "secretName");
+            }
+            this.secretName = secretName;
             return this;
         }
         @CustomType.Setter
         public Builder versionStage(@Nullable String versionStage) {
+
             this.versionStage = versionStage;
             return this;
         }
         @CustomType.Setter
         public Builder versions(List<GetSecretVersionsVersion> versions) {
-            this.versions = Objects.requireNonNull(versions);
+            if (versions == null) {
+              throw new MissingRequiredPropertyException("GetSecretVersionsResult", "versions");
+            }
+            this.versions = versions;
             return this;
         }
         public Builder versions(GetSecretVersionsVersion... versions) {

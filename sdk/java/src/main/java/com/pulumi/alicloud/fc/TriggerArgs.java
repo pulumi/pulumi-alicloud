@@ -5,6 +5,7 @@ package com.pulumi.alicloud.fc;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -388,9 +389,15 @@ public final class TriggerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public TriggerArgs build() {
-            $.function = Objects.requireNonNull($.function, "expected parameter 'function' to be non-null");
-            $.service = Objects.requireNonNull($.service, "expected parameter 'service' to be non-null");
-            $.type = Objects.requireNonNull($.type, "expected parameter 'type' to be non-null");
+            if ($.function == null) {
+                throw new MissingRequiredPropertyException("TriggerArgs", "function");
+            }
+            if ($.service == null) {
+                throw new MissingRequiredPropertyException("TriggerArgs", "service");
+            }
+            if ($.type == null) {
+                throw new MissingRequiredPropertyException("TriggerArgs", "type");
+            }
             return $;
         }
     }

@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.fc.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -70,17 +71,26 @@ public final class GetFunctionsFunctionCustomContainerConfig {
 
         @CustomType.Setter
         public Builder args(String args) {
-            this.args = Objects.requireNonNull(args);
+            if (args == null) {
+              throw new MissingRequiredPropertyException("GetFunctionsFunctionCustomContainerConfig", "args");
+            }
+            this.args = args;
             return this;
         }
         @CustomType.Setter
         public Builder command(String command) {
-            this.command = Objects.requireNonNull(command);
+            if (command == null) {
+              throw new MissingRequiredPropertyException("GetFunctionsFunctionCustomContainerConfig", "command");
+            }
+            this.command = command;
             return this;
         }
         @CustomType.Setter
         public Builder image(String image) {
-            this.image = Objects.requireNonNull(image);
+            if (image == null) {
+              throw new MissingRequiredPropertyException("GetFunctionsFunctionCustomContainerConfig", "image");
+            }
+            this.image = image;
             return this;
         }
         public GetFunctionsFunctionCustomContainerConfig build() {

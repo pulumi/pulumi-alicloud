@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.mongodb.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -85,22 +86,34 @@ public final class GetInstancesInstanceShard {
 
         @CustomType.Setter("class")
         public Builder class_(String class_) {
-            this.class_ = Objects.requireNonNull(class_);
+            if (class_ == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstanceShard", "class_");
+            }
+            this.class_ = class_;
             return this;
         }
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstanceShard", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder nodeId(String nodeId) {
-            this.nodeId = Objects.requireNonNull(nodeId);
+            if (nodeId == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstanceShard", "nodeId");
+            }
+            this.nodeId = nodeId;
             return this;
         }
         @CustomType.Setter
         public Builder storage(Integer storage) {
-            this.storage = Objects.requireNonNull(storage);
+            if (storage == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstanceShard", "storage");
+            }
+            this.storage = storage;
             return this;
         }
         public GetInstancesInstanceShard build() {

@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.nas.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -127,37 +128,58 @@ public final class GetAccessGroupsGroup {
 
         @CustomType.Setter
         public Builder accessGroupName(String accessGroupName) {
-            this.accessGroupName = Objects.requireNonNull(accessGroupName);
+            if (accessGroupName == null) {
+              throw new MissingRequiredPropertyException("GetAccessGroupsGroup", "accessGroupName");
+            }
+            this.accessGroupName = accessGroupName;
             return this;
         }
         @CustomType.Setter
         public Builder accessGroupType(String accessGroupType) {
-            this.accessGroupType = Objects.requireNonNull(accessGroupType);
+            if (accessGroupType == null) {
+              throw new MissingRequiredPropertyException("GetAccessGroupsGroup", "accessGroupType");
+            }
+            this.accessGroupType = accessGroupType;
             return this;
         }
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetAccessGroupsGroup", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetAccessGroupsGroup", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder mountTargetCount(Integer mountTargetCount) {
-            this.mountTargetCount = Objects.requireNonNull(mountTargetCount);
+            if (mountTargetCount == null) {
+              throw new MissingRequiredPropertyException("GetAccessGroupsGroup", "mountTargetCount");
+            }
+            this.mountTargetCount = mountTargetCount;
             return this;
         }
         @CustomType.Setter
         public Builder ruleCount(Integer ruleCount) {
-            this.ruleCount = Objects.requireNonNull(ruleCount);
+            if (ruleCount == null) {
+              throw new MissingRequiredPropertyException("GetAccessGroupsGroup", "ruleCount");
+            }
+            this.ruleCount = ruleCount;
             return this;
         }
         @CustomType.Setter
         public Builder type(String type) {
-            this.type = Objects.requireNonNull(type);
+            if (type == null) {
+              throw new MissingRequiredPropertyException("GetAccessGroupsGroup", "type");
+            }
+            this.type = type;
             return this;
         }
         public GetAccessGroupsGroup build() {

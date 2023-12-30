@@ -74,16 +74,19 @@ public final class MetricRuleTemplateAlertTemplateEscalations {
 
         @CustomType.Setter
         public Builder critical(@Nullable MetricRuleTemplateAlertTemplateEscalationsCritical critical) {
+
             this.critical = critical;
             return this;
         }
         @CustomType.Setter
         public Builder info(@Nullable MetricRuleTemplateAlertTemplateEscalationsInfo info) {
+
             this.info = info;
             return this;
         }
         @CustomType.Setter
         public Builder warn(@Nullable MetricRuleTemplateAlertTemplateEscalationsWarn warn) {
+
             this.warn = warn;
             return this;
         }

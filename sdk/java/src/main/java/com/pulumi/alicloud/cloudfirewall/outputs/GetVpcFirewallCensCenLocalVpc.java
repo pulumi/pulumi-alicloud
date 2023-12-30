@@ -6,6 +6,7 @@ package com.pulumi.alicloud.cloudfirewall.outputs;
 import com.pulumi.alicloud.cloudfirewall.outputs.GetVpcFirewallCensCenLocalVpcEniList;
 import com.pulumi.alicloud.cloudfirewall.outputs.GetVpcFirewallCensCenLocalVpcVpcCidrTableList;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -229,17 +230,26 @@ public final class GetVpcFirewallCensCenLocalVpc {
 
         @CustomType.Setter
         public Builder attachmentId(String attachmentId) {
-            this.attachmentId = Objects.requireNonNull(attachmentId);
+            if (attachmentId == null) {
+              throw new MissingRequiredPropertyException("GetVpcFirewallCensCenLocalVpc", "attachmentId");
+            }
+            this.attachmentId = attachmentId;
             return this;
         }
         @CustomType.Setter
         public Builder attachmentName(String attachmentName) {
-            this.attachmentName = Objects.requireNonNull(attachmentName);
+            if (attachmentName == null) {
+              throw new MissingRequiredPropertyException("GetVpcFirewallCensCenLocalVpc", "attachmentName");
+            }
+            this.attachmentName = attachmentName;
             return this;
         }
         @CustomType.Setter
         public Builder defendCidrLists(List<String> defendCidrLists) {
-            this.defendCidrLists = Objects.requireNonNull(defendCidrLists);
+            if (defendCidrLists == null) {
+              throw new MissingRequiredPropertyException("GetVpcFirewallCensCenLocalVpc", "defendCidrLists");
+            }
+            this.defendCidrLists = defendCidrLists;
             return this;
         }
         public Builder defendCidrLists(String... defendCidrLists) {
@@ -247,7 +257,10 @@ public final class GetVpcFirewallCensCenLocalVpc {
         }
         @CustomType.Setter
         public Builder eniLists(List<GetVpcFirewallCensCenLocalVpcEniList> eniLists) {
-            this.eniLists = Objects.requireNonNull(eniLists);
+            if (eniLists == null) {
+              throw new MissingRequiredPropertyException("GetVpcFirewallCensCenLocalVpc", "eniLists");
+            }
+            this.eniLists = eniLists;
             return this;
         }
         public Builder eniLists(GetVpcFirewallCensCenLocalVpcEniList... eniLists) {
@@ -255,57 +268,90 @@ public final class GetVpcFirewallCensCenLocalVpc {
         }
         @CustomType.Setter
         public Builder manualVswitchId(String manualVswitchId) {
-            this.manualVswitchId = Objects.requireNonNull(manualVswitchId);
+            if (manualVswitchId == null) {
+              throw new MissingRequiredPropertyException("GetVpcFirewallCensCenLocalVpc", "manualVswitchId");
+            }
+            this.manualVswitchId = manualVswitchId;
             return this;
         }
         @CustomType.Setter
         public Builder networkInstanceId(String networkInstanceId) {
-            this.networkInstanceId = Objects.requireNonNull(networkInstanceId);
+            if (networkInstanceId == null) {
+              throw new MissingRequiredPropertyException("GetVpcFirewallCensCenLocalVpc", "networkInstanceId");
+            }
+            this.networkInstanceId = networkInstanceId;
             return this;
         }
         @CustomType.Setter
         public Builder networkInstanceName(String networkInstanceName) {
-            this.networkInstanceName = Objects.requireNonNull(networkInstanceName);
+            if (networkInstanceName == null) {
+              throw new MissingRequiredPropertyException("GetVpcFirewallCensCenLocalVpc", "networkInstanceName");
+            }
+            this.networkInstanceName = networkInstanceName;
             return this;
         }
         @CustomType.Setter
         public Builder networkInstanceType(String networkInstanceType) {
-            this.networkInstanceType = Objects.requireNonNull(networkInstanceType);
+            if (networkInstanceType == null) {
+              throw new MissingRequiredPropertyException("GetVpcFirewallCensCenLocalVpc", "networkInstanceType");
+            }
+            this.networkInstanceType = networkInstanceType;
             return this;
         }
         @CustomType.Setter
         public Builder ownerId(String ownerId) {
-            this.ownerId = Objects.requireNonNull(ownerId);
+            if (ownerId == null) {
+              throw new MissingRequiredPropertyException("GetVpcFirewallCensCenLocalVpc", "ownerId");
+            }
+            this.ownerId = ownerId;
             return this;
         }
         @CustomType.Setter
         public Builder regionNo(String regionNo) {
-            this.regionNo = Objects.requireNonNull(regionNo);
+            if (regionNo == null) {
+              throw new MissingRequiredPropertyException("GetVpcFirewallCensCenLocalVpc", "regionNo");
+            }
+            this.regionNo = regionNo;
             return this;
         }
         @CustomType.Setter
         public Builder routeMode(String routeMode) {
-            this.routeMode = Objects.requireNonNull(routeMode);
+            if (routeMode == null) {
+              throw new MissingRequiredPropertyException("GetVpcFirewallCensCenLocalVpc", "routeMode");
+            }
+            this.routeMode = routeMode;
             return this;
         }
         @CustomType.Setter
         public Builder supportManualMode(String supportManualMode) {
-            this.supportManualMode = Objects.requireNonNull(supportManualMode);
+            if (supportManualMode == null) {
+              throw new MissingRequiredPropertyException("GetVpcFirewallCensCenLocalVpc", "supportManualMode");
+            }
+            this.supportManualMode = supportManualMode;
             return this;
         }
         @CustomType.Setter
         public Builder transitRouterId(String transitRouterId) {
-            this.transitRouterId = Objects.requireNonNull(transitRouterId);
+            if (transitRouterId == null) {
+              throw new MissingRequiredPropertyException("GetVpcFirewallCensCenLocalVpc", "transitRouterId");
+            }
+            this.transitRouterId = transitRouterId;
             return this;
         }
         @CustomType.Setter
         public Builder transitRouterType(String transitRouterType) {
-            this.transitRouterType = Objects.requireNonNull(transitRouterType);
+            if (transitRouterType == null) {
+              throw new MissingRequiredPropertyException("GetVpcFirewallCensCenLocalVpc", "transitRouterType");
+            }
+            this.transitRouterType = transitRouterType;
             return this;
         }
         @CustomType.Setter
         public Builder vpcCidrTableLists(List<GetVpcFirewallCensCenLocalVpcVpcCidrTableList> vpcCidrTableLists) {
-            this.vpcCidrTableLists = Objects.requireNonNull(vpcCidrTableLists);
+            if (vpcCidrTableLists == null) {
+              throw new MissingRequiredPropertyException("GetVpcFirewallCensCenLocalVpc", "vpcCidrTableLists");
+            }
+            this.vpcCidrTableLists = vpcCidrTableLists;
             return this;
         }
         public Builder vpcCidrTableLists(GetVpcFirewallCensCenLocalVpcVpcCidrTableList... vpcCidrTableLists) {
@@ -313,12 +359,18 @@ public final class GetVpcFirewallCensCenLocalVpc {
         }
         @CustomType.Setter
         public Builder vpcId(String vpcId) {
-            this.vpcId = Objects.requireNonNull(vpcId);
+            if (vpcId == null) {
+              throw new MissingRequiredPropertyException("GetVpcFirewallCensCenLocalVpc", "vpcId");
+            }
+            this.vpcId = vpcId;
             return this;
         }
         @CustomType.Setter
         public Builder vpcName(String vpcName) {
-            this.vpcName = Objects.requireNonNull(vpcName);
+            if (vpcName == null) {
+              throw new MissingRequiredPropertyException("GetVpcFirewallCensCenLocalVpc", "vpcName");
+            }
+            this.vpcName = vpcName;
             return this;
         }
         public GetVpcFirewallCensCenLocalVpc build() {

@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.cen.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -99,27 +100,42 @@ public final class GetBandwidthLimitsLimit {
 
         @CustomType.Setter
         public Builder bandwidthLimit(Integer bandwidthLimit) {
-            this.bandwidthLimit = Objects.requireNonNull(bandwidthLimit);
+            if (bandwidthLimit == null) {
+              throw new MissingRequiredPropertyException("GetBandwidthLimitsLimit", "bandwidthLimit");
+            }
+            this.bandwidthLimit = bandwidthLimit;
             return this;
         }
         @CustomType.Setter
         public Builder instanceId(String instanceId) {
-            this.instanceId = Objects.requireNonNull(instanceId);
+            if (instanceId == null) {
+              throw new MissingRequiredPropertyException("GetBandwidthLimitsLimit", "instanceId");
+            }
+            this.instanceId = instanceId;
             return this;
         }
         @CustomType.Setter
         public Builder localRegionId(String localRegionId) {
-            this.localRegionId = Objects.requireNonNull(localRegionId);
+            if (localRegionId == null) {
+              throw new MissingRequiredPropertyException("GetBandwidthLimitsLimit", "localRegionId");
+            }
+            this.localRegionId = localRegionId;
             return this;
         }
         @CustomType.Setter
         public Builder oppositeRegionId(String oppositeRegionId) {
-            this.oppositeRegionId = Objects.requireNonNull(oppositeRegionId);
+            if (oppositeRegionId == null) {
+              throw new MissingRequiredPropertyException("GetBandwidthLimitsLimit", "oppositeRegionId");
+            }
+            this.oppositeRegionId = oppositeRegionId;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetBandwidthLimitsLimit", "status");
+            }
+            this.status = status;
             return this;
         }
         public GetBandwidthLimitsLimit build() {

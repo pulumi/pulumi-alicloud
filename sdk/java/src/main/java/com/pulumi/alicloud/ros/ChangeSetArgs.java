@@ -6,6 +6,7 @@ package com.pulumi.alicloud.ros;
 import com.pulumi.alicloud.ros.inputs.ChangeSetParameterArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -729,7 +730,9 @@ public final class ChangeSetArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public ChangeSetArgs build() {
-            $.changeSetName = Objects.requireNonNull($.changeSetName, "expected parameter 'changeSetName' to be non-null");
+            if ($.changeSetName == null) {
+                throw new MissingRequiredPropertyException("ChangeSetArgs", "changeSetName");
+            }
             return $;
         }
     }

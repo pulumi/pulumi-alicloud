@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.message.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -240,77 +241,122 @@ public final class GetServiceQueuesQueue {
 
         @CustomType.Setter
         public Builder activeMessages(Integer activeMessages) {
-            this.activeMessages = Objects.requireNonNull(activeMessages);
+            if (activeMessages == null) {
+              throw new MissingRequiredPropertyException("GetServiceQueuesQueue", "activeMessages");
+            }
+            this.activeMessages = activeMessages;
             return this;
         }
         @CustomType.Setter
         public Builder createTime(Integer createTime) {
-            this.createTime = Objects.requireNonNull(createTime);
+            if (createTime == null) {
+              throw new MissingRequiredPropertyException("GetServiceQueuesQueue", "createTime");
+            }
+            this.createTime = createTime;
             return this;
         }
         @CustomType.Setter
         public Builder delayMessages(Integer delayMessages) {
-            this.delayMessages = Objects.requireNonNull(delayMessages);
+            if (delayMessages == null) {
+              throw new MissingRequiredPropertyException("GetServiceQueuesQueue", "delayMessages");
+            }
+            this.delayMessages = delayMessages;
             return this;
         }
         @CustomType.Setter
         public Builder delaySeconds(Integer delaySeconds) {
-            this.delaySeconds = Objects.requireNonNull(delaySeconds);
+            if (delaySeconds == null) {
+              throw new MissingRequiredPropertyException("GetServiceQueuesQueue", "delaySeconds");
+            }
+            this.delaySeconds = delaySeconds;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetServiceQueuesQueue", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder inactiveMessages(Integer inactiveMessages) {
-            this.inactiveMessages = Objects.requireNonNull(inactiveMessages);
+            if (inactiveMessages == null) {
+              throw new MissingRequiredPropertyException("GetServiceQueuesQueue", "inactiveMessages");
+            }
+            this.inactiveMessages = inactiveMessages;
             return this;
         }
         @CustomType.Setter
         public Builder lastModifyTime(Integer lastModifyTime) {
-            this.lastModifyTime = Objects.requireNonNull(lastModifyTime);
+            if (lastModifyTime == null) {
+              throw new MissingRequiredPropertyException("GetServiceQueuesQueue", "lastModifyTime");
+            }
+            this.lastModifyTime = lastModifyTime;
             return this;
         }
         @CustomType.Setter
         public Builder loggingEnabled(Boolean loggingEnabled) {
-            this.loggingEnabled = Objects.requireNonNull(loggingEnabled);
+            if (loggingEnabled == null) {
+              throw new MissingRequiredPropertyException("GetServiceQueuesQueue", "loggingEnabled");
+            }
+            this.loggingEnabled = loggingEnabled;
             return this;
         }
         @CustomType.Setter
         public Builder maximumMessageSize(Integer maximumMessageSize) {
-            this.maximumMessageSize = Objects.requireNonNull(maximumMessageSize);
+            if (maximumMessageSize == null) {
+              throw new MissingRequiredPropertyException("GetServiceQueuesQueue", "maximumMessageSize");
+            }
+            this.maximumMessageSize = maximumMessageSize;
             return this;
         }
         @CustomType.Setter
         public Builder messageRetentionPeriod(Integer messageRetentionPeriod) {
-            this.messageRetentionPeriod = Objects.requireNonNull(messageRetentionPeriod);
+            if (messageRetentionPeriod == null) {
+              throw new MissingRequiredPropertyException("GetServiceQueuesQueue", "messageRetentionPeriod");
+            }
+            this.messageRetentionPeriod = messageRetentionPeriod;
             return this;
         }
         @CustomType.Setter
         public Builder pollingWaitSeconds(Integer pollingWaitSeconds) {
-            this.pollingWaitSeconds = Objects.requireNonNull(pollingWaitSeconds);
+            if (pollingWaitSeconds == null) {
+              throw new MissingRequiredPropertyException("GetServiceQueuesQueue", "pollingWaitSeconds");
+            }
+            this.pollingWaitSeconds = pollingWaitSeconds;
             return this;
         }
         @CustomType.Setter
         public Builder queueInternalUrl(String queueInternalUrl) {
-            this.queueInternalUrl = Objects.requireNonNull(queueInternalUrl);
+            if (queueInternalUrl == null) {
+              throw new MissingRequiredPropertyException("GetServiceQueuesQueue", "queueInternalUrl");
+            }
+            this.queueInternalUrl = queueInternalUrl;
             return this;
         }
         @CustomType.Setter
         public Builder queueName(String queueName) {
-            this.queueName = Objects.requireNonNull(queueName);
+            if (queueName == null) {
+              throw new MissingRequiredPropertyException("GetServiceQueuesQueue", "queueName");
+            }
+            this.queueName = queueName;
             return this;
         }
         @CustomType.Setter
         public Builder queueUrl(String queueUrl) {
-            this.queueUrl = Objects.requireNonNull(queueUrl);
+            if (queueUrl == null) {
+              throw new MissingRequiredPropertyException("GetServiceQueuesQueue", "queueUrl");
+            }
+            this.queueUrl = queueUrl;
             return this;
         }
         @CustomType.Setter
         public Builder visibilityTimeout(Integer visibilityTimeout) {
-            this.visibilityTimeout = Objects.requireNonNull(visibilityTimeout);
+            if (visibilityTimeout == null) {
+              throw new MissingRequiredPropertyException("GetServiceQueuesQueue", "visibilityTimeout");
+            }
+            this.visibilityTimeout = visibilityTimeout;
             return this;
         }
         public GetServiceQueuesQueue build() {

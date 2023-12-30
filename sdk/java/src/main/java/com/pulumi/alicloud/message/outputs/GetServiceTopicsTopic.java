@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.message.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -170,52 +171,82 @@ public final class GetServiceTopicsTopic {
 
         @CustomType.Setter
         public Builder createTime(Integer createTime) {
-            this.createTime = Objects.requireNonNull(createTime);
+            if (createTime == null) {
+              throw new MissingRequiredPropertyException("GetServiceTopicsTopic", "createTime");
+            }
+            this.createTime = createTime;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetServiceTopicsTopic", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder lastModifyTime(Integer lastModifyTime) {
-            this.lastModifyTime = Objects.requireNonNull(lastModifyTime);
+            if (lastModifyTime == null) {
+              throw new MissingRequiredPropertyException("GetServiceTopicsTopic", "lastModifyTime");
+            }
+            this.lastModifyTime = lastModifyTime;
             return this;
         }
         @CustomType.Setter
         public Builder loggingEnabled(Boolean loggingEnabled) {
-            this.loggingEnabled = Objects.requireNonNull(loggingEnabled);
+            if (loggingEnabled == null) {
+              throw new MissingRequiredPropertyException("GetServiceTopicsTopic", "loggingEnabled");
+            }
+            this.loggingEnabled = loggingEnabled;
             return this;
         }
         @CustomType.Setter
         public Builder maxMessageSize(Integer maxMessageSize) {
-            this.maxMessageSize = Objects.requireNonNull(maxMessageSize);
+            if (maxMessageSize == null) {
+              throw new MissingRequiredPropertyException("GetServiceTopicsTopic", "maxMessageSize");
+            }
+            this.maxMessageSize = maxMessageSize;
             return this;
         }
         @CustomType.Setter
         public Builder messageCount(Integer messageCount) {
-            this.messageCount = Objects.requireNonNull(messageCount);
+            if (messageCount == null) {
+              throw new MissingRequiredPropertyException("GetServiceTopicsTopic", "messageCount");
+            }
+            this.messageCount = messageCount;
             return this;
         }
         @CustomType.Setter
         public Builder messageRetentionPeriod(Integer messageRetentionPeriod) {
-            this.messageRetentionPeriod = Objects.requireNonNull(messageRetentionPeriod);
+            if (messageRetentionPeriod == null) {
+              throw new MissingRequiredPropertyException("GetServiceTopicsTopic", "messageRetentionPeriod");
+            }
+            this.messageRetentionPeriod = messageRetentionPeriod;
             return this;
         }
         @CustomType.Setter
         public Builder topicInnerUrl(String topicInnerUrl) {
-            this.topicInnerUrl = Objects.requireNonNull(topicInnerUrl);
+            if (topicInnerUrl == null) {
+              throw new MissingRequiredPropertyException("GetServiceTopicsTopic", "topicInnerUrl");
+            }
+            this.topicInnerUrl = topicInnerUrl;
             return this;
         }
         @CustomType.Setter
         public Builder topicName(String topicName) {
-            this.topicName = Objects.requireNonNull(topicName);
+            if (topicName == null) {
+              throw new MissingRequiredPropertyException("GetServiceTopicsTopic", "topicName");
+            }
+            this.topicName = topicName;
             return this;
         }
         @CustomType.Setter
         public Builder topicUrl(String topicUrl) {
-            this.topicUrl = Objects.requireNonNull(topicUrl);
+            if (topicUrl == null) {
+              throw new MissingRequiredPropertyException("GetServiceTopicsTopic", "topicUrl");
+            }
+            this.topicUrl = topicUrl;
             return this;
         }
         public GetServiceTopicsTopic build() {

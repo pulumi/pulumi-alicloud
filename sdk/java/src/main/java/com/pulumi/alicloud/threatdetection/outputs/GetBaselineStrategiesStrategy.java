@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.threatdetection.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -161,52 +162,82 @@ public final class GetBaselineStrategiesStrategy {
 
         @CustomType.Setter
         public Builder baselineStrategyId(String baselineStrategyId) {
-            this.baselineStrategyId = Objects.requireNonNull(baselineStrategyId);
+            if (baselineStrategyId == null) {
+              throw new MissingRequiredPropertyException("GetBaselineStrategiesStrategy", "baselineStrategyId");
+            }
+            this.baselineStrategyId = baselineStrategyId;
             return this;
         }
         @CustomType.Setter
         public Builder baselineStrategyName(String baselineStrategyName) {
-            this.baselineStrategyName = Objects.requireNonNull(baselineStrategyName);
+            if (baselineStrategyName == null) {
+              throw new MissingRequiredPropertyException("GetBaselineStrategiesStrategy", "baselineStrategyName");
+            }
+            this.baselineStrategyName = baselineStrategyName;
             return this;
         }
         @CustomType.Setter
         public Builder customType(String customType) {
-            this.customType = Objects.requireNonNull(customType);
+            if (customType == null) {
+              throw new MissingRequiredPropertyException("GetBaselineStrategiesStrategy", "customType");
+            }
+            this.customType = customType;
             return this;
         }
         @CustomType.Setter
         public Builder cycleDays(Integer cycleDays) {
-            this.cycleDays = Objects.requireNonNull(cycleDays);
+            if (cycleDays == null) {
+              throw new MissingRequiredPropertyException("GetBaselineStrategiesStrategy", "cycleDays");
+            }
+            this.cycleDays = cycleDays;
             return this;
         }
         @CustomType.Setter
         public Builder cycleStartTime(Integer cycleStartTime) {
-            this.cycleStartTime = Objects.requireNonNull(cycleStartTime);
+            if (cycleStartTime == null) {
+              throw new MissingRequiredPropertyException("GetBaselineStrategiesStrategy", "cycleStartTime");
+            }
+            this.cycleStartTime = cycleStartTime;
             return this;
         }
         @CustomType.Setter
         public Builder endTime(String endTime) {
-            this.endTime = Objects.requireNonNull(endTime);
+            if (endTime == null) {
+              throw new MissingRequiredPropertyException("GetBaselineStrategiesStrategy", "endTime");
+            }
+            this.endTime = endTime;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetBaselineStrategiesStrategy", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder riskSubTypeName(String riskSubTypeName) {
-            this.riskSubTypeName = Objects.requireNonNull(riskSubTypeName);
+            if (riskSubTypeName == null) {
+              throw new MissingRequiredPropertyException("GetBaselineStrategiesStrategy", "riskSubTypeName");
+            }
+            this.riskSubTypeName = riskSubTypeName;
             return this;
         }
         @CustomType.Setter
         public Builder startTime(String startTime) {
-            this.startTime = Objects.requireNonNull(startTime);
+            if (startTime == null) {
+              throw new MissingRequiredPropertyException("GetBaselineStrategiesStrategy", "startTime");
+            }
+            this.startTime = startTime;
             return this;
         }
         @CustomType.Setter
         public Builder targetType(String targetType) {
-            this.targetType = Objects.requireNonNull(targetType);
+            if (targetType == null) {
+              throw new MissingRequiredPropertyException("GetBaselineStrategiesStrategy", "targetType");
+            }
+            this.targetType = targetType;
             return this;
         }
         public GetBaselineStrategiesStrategy build() {

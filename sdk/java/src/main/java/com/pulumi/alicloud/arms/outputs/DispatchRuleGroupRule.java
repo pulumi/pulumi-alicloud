@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.arms.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -102,22 +103,32 @@ public final class DispatchRuleGroupRule {
 
         @CustomType.Setter
         public Builder groupId(@Nullable Integer groupId) {
+
             this.groupId = groupId;
             return this;
         }
         @CustomType.Setter
         public Builder groupInterval(Integer groupInterval) {
-            this.groupInterval = Objects.requireNonNull(groupInterval);
+            if (groupInterval == null) {
+              throw new MissingRequiredPropertyException("DispatchRuleGroupRule", "groupInterval");
+            }
+            this.groupInterval = groupInterval;
             return this;
         }
         @CustomType.Setter
         public Builder groupWaitTime(Integer groupWaitTime) {
-            this.groupWaitTime = Objects.requireNonNull(groupWaitTime);
+            if (groupWaitTime == null) {
+              throw new MissingRequiredPropertyException("DispatchRuleGroupRule", "groupWaitTime");
+            }
+            this.groupWaitTime = groupWaitTime;
             return this;
         }
         @CustomType.Setter
         public Builder groupingFields(List<String> groupingFields) {
-            this.groupingFields = Objects.requireNonNull(groupingFields);
+            if (groupingFields == null) {
+              throw new MissingRequiredPropertyException("DispatchRuleGroupRule", "groupingFields");
+            }
+            this.groupingFields = groupingFields;
             return this;
         }
         public Builder groupingFields(String... groupingFields) {
@@ -125,6 +136,7 @@ public final class DispatchRuleGroupRule {
         }
         @CustomType.Setter
         public Builder repeatInterval(@Nullable Integer repeatInterval) {
+
             this.repeatInterval = repeatInterval;
             return this;
         }

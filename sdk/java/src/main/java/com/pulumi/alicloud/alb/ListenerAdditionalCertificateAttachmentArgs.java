@@ -5,6 +5,7 @@ package com.pulumi.alicloud.alb;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -111,8 +112,12 @@ public final class ListenerAdditionalCertificateAttachmentArgs extends com.pulum
         }
 
         public ListenerAdditionalCertificateAttachmentArgs build() {
-            $.certificateId = Objects.requireNonNull($.certificateId, "expected parameter 'certificateId' to be non-null");
-            $.listenerId = Objects.requireNonNull($.listenerId, "expected parameter 'listenerId' to be non-null");
+            if ($.certificateId == null) {
+                throw new MissingRequiredPropertyException("ListenerAdditionalCertificateAttachmentArgs", "certificateId");
+            }
+            if ($.listenerId == null) {
+                throw new MissingRequiredPropertyException("ListenerAdditionalCertificateAttachmentArgs", "listenerId");
+            }
             return $;
         }
     }

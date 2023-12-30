@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.ecs.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -169,52 +170,82 @@ public final class GetEcsStorageCapacityUnitsUnit {
 
         @CustomType.Setter
         public Builder allocationStatus(String allocationStatus) {
-            this.allocationStatus = Objects.requireNonNull(allocationStatus);
+            if (allocationStatus == null) {
+              throw new MissingRequiredPropertyException("GetEcsStorageCapacityUnitsUnit", "allocationStatus");
+            }
+            this.allocationStatus = allocationStatus;
             return this;
         }
         @CustomType.Setter
         public Builder capacity(Integer capacity) {
-            this.capacity = Objects.requireNonNull(capacity);
+            if (capacity == null) {
+              throw new MissingRequiredPropertyException("GetEcsStorageCapacityUnitsUnit", "capacity");
+            }
+            this.capacity = capacity;
             return this;
         }
         @CustomType.Setter
         public Builder createTime(String createTime) {
-            this.createTime = Objects.requireNonNull(createTime);
+            if (createTime == null) {
+              throw new MissingRequiredPropertyException("GetEcsStorageCapacityUnitsUnit", "createTime");
+            }
+            this.createTime = createTime;
             return this;
         }
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetEcsStorageCapacityUnitsUnit", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder expiredTime(String expiredTime) {
-            this.expiredTime = Objects.requireNonNull(expiredTime);
+            if (expiredTime == null) {
+              throw new MissingRequiredPropertyException("GetEcsStorageCapacityUnitsUnit", "expiredTime");
+            }
+            this.expiredTime = expiredTime;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetEcsStorageCapacityUnitsUnit", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder startTime(String startTime) {
-            this.startTime = Objects.requireNonNull(startTime);
+            if (startTime == null) {
+              throw new MissingRequiredPropertyException("GetEcsStorageCapacityUnitsUnit", "startTime");
+            }
+            this.startTime = startTime;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetEcsStorageCapacityUnitsUnit", "status");
+            }
+            this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder storageCapacityUnitId(String storageCapacityUnitId) {
-            this.storageCapacityUnitId = Objects.requireNonNull(storageCapacityUnitId);
+            if (storageCapacityUnitId == null) {
+              throw new MissingRequiredPropertyException("GetEcsStorageCapacityUnitsUnit", "storageCapacityUnitId");
+            }
+            this.storageCapacityUnitId = storageCapacityUnitId;
             return this;
         }
         @CustomType.Setter
         public Builder storageCapacityUnitName(String storageCapacityUnitName) {
-            this.storageCapacityUnitName = Objects.requireNonNull(storageCapacityUnitName);
+            if (storageCapacityUnitName == null) {
+              throw new MissingRequiredPropertyException("GetEcsStorageCapacityUnitsUnit", "storageCapacityUnitName");
+            }
+            this.storageCapacityUnitName = storageCapacityUnitName;
             return this;
         }
         public GetEcsStorageCapacityUnitsUnit build() {

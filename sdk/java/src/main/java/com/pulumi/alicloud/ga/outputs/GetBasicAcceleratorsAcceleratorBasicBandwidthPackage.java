@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.ga.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -71,17 +72,26 @@ public final class GetBasicAcceleratorsAcceleratorBasicBandwidthPackage {
 
         @CustomType.Setter
         public Builder bandwidth(Integer bandwidth) {
-            this.bandwidth = Objects.requireNonNull(bandwidth);
+            if (bandwidth == null) {
+              throw new MissingRequiredPropertyException("GetBasicAcceleratorsAcceleratorBasicBandwidthPackage", "bandwidth");
+            }
+            this.bandwidth = bandwidth;
             return this;
         }
         @CustomType.Setter
         public Builder bandwidthType(String bandwidthType) {
-            this.bandwidthType = Objects.requireNonNull(bandwidthType);
+            if (bandwidthType == null) {
+              throw new MissingRequiredPropertyException("GetBasicAcceleratorsAcceleratorBasicBandwidthPackage", "bandwidthType");
+            }
+            this.bandwidthType = bandwidthType;
             return this;
         }
         @CustomType.Setter
         public Builder instanceId(String instanceId) {
-            this.instanceId = Objects.requireNonNull(instanceId);
+            if (instanceId == null) {
+              throw new MissingRequiredPropertyException("GetBasicAcceleratorsAcceleratorBasicBandwidthPackage", "instanceId");
+            }
+            this.instanceId = instanceId;
             return this;
         }
         public GetBasicAcceleratorsAcceleratorBasicBandwidthPackage build() {

@@ -5,6 +5,7 @@ package com.pulumi.alicloud.cassandra.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -198,7 +199,9 @@ public final class GetDataCentersArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         public GetDataCentersArgs build() {
-            $.clusterId = Objects.requireNonNull($.clusterId, "expected parameter 'clusterId' to be non-null");
+            if ($.clusterId == null) {
+                throw new MissingRequiredPropertyException("GetDataCentersArgs", "clusterId");
+            }
             return $;
         }
     }

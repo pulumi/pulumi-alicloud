@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.bastionhost.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -98,27 +99,42 @@ public final class GetHostShareKeysKey {
 
         @CustomType.Setter
         public Builder hostShareKeyId(String hostShareKeyId) {
-            this.hostShareKeyId = Objects.requireNonNull(hostShareKeyId);
+            if (hostShareKeyId == null) {
+              throw new MissingRequiredPropertyException("GetHostShareKeysKey", "hostShareKeyId");
+            }
+            this.hostShareKeyId = hostShareKeyId;
             return this;
         }
         @CustomType.Setter
         public Builder hostShareKeyName(String hostShareKeyName) {
-            this.hostShareKeyName = Objects.requireNonNull(hostShareKeyName);
+            if (hostShareKeyName == null) {
+              throw new MissingRequiredPropertyException("GetHostShareKeysKey", "hostShareKeyName");
+            }
+            this.hostShareKeyName = hostShareKeyName;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetHostShareKeysKey", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder instanceId(String instanceId) {
-            this.instanceId = Objects.requireNonNull(instanceId);
+            if (instanceId == null) {
+              throw new MissingRequiredPropertyException("GetHostShareKeysKey", "instanceId");
+            }
+            this.instanceId = instanceId;
             return this;
         }
         @CustomType.Setter
         public Builder privateKeyFingerPrint(String privateKeyFingerPrint) {
-            this.privateKeyFingerPrint = Objects.requireNonNull(privateKeyFingerPrint);
+            if (privateKeyFingerPrint == null) {
+              throw new MissingRequiredPropertyException("GetHostShareKeysKey", "privateKeyFingerPrint");
+            }
+            this.privateKeyFingerPrint = privateKeyFingerPrint;
             return this;
         }
         public GetHostShareKeysKey build() {

@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.cr.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -157,7 +158,9 @@ public final class GetChartNamespacesPlainArgs extends com.pulumi.resources.Invo
         }
 
         public GetChartNamespacesPlainArgs build() {
-            $.instanceId = Objects.requireNonNull($.instanceId, "expected parameter 'instanceId' to be non-null");
+            if ($.instanceId == null) {
+                throw new MissingRequiredPropertyException("GetChartNamespacesPlainArgs", "instanceId");
+            }
             return $;
         }
     }

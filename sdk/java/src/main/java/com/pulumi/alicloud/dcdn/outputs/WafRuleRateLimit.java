@@ -116,31 +116,37 @@ public final class WafRuleRateLimit {
 
         @CustomType.Setter
         public Builder interval(@Nullable Integer interval) {
+
             this.interval = interval;
             return this;
         }
         @CustomType.Setter
         public Builder status(@Nullable WafRuleRateLimitStatus status) {
+
             this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder subKey(@Nullable String subKey) {
+
             this.subKey = subKey;
             return this;
         }
         @CustomType.Setter
         public Builder target(@Nullable String target) {
+
             this.target = target;
             return this;
         }
         @CustomType.Setter
         public Builder threshold(@Nullable Integer threshold) {
+
             this.threshold = threshold;
             return this;
         }
         @CustomType.Setter
         public Builder ttl(@Nullable Integer ttl) {
+
             this.ttl = ttl;
             return this;
         }

@@ -5,6 +5,7 @@ package com.pulumi.alicloud.tsdb;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -497,10 +498,18 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public InstanceArgs build() {
-            $.instanceClass = Objects.requireNonNull($.instanceClass, "expected parameter 'instanceClass' to be non-null");
-            $.instanceStorage = Objects.requireNonNull($.instanceStorage, "expected parameter 'instanceStorage' to be non-null");
-            $.paymentType = Objects.requireNonNull($.paymentType, "expected parameter 'paymentType' to be non-null");
-            $.vswitchId = Objects.requireNonNull($.vswitchId, "expected parameter 'vswitchId' to be non-null");
+            if ($.instanceClass == null) {
+                throw new MissingRequiredPropertyException("InstanceArgs", "instanceClass");
+            }
+            if ($.instanceStorage == null) {
+                throw new MissingRequiredPropertyException("InstanceArgs", "instanceStorage");
+            }
+            if ($.paymentType == null) {
+                throw new MissingRequiredPropertyException("InstanceArgs", "paymentType");
+            }
+            if ($.vswitchId == null) {
+                throw new MissingRequiredPropertyException("InstanceArgs", "vswitchId");
+            }
             return $;
         }
     }

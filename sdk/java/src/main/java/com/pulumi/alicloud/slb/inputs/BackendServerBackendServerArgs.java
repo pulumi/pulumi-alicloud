@@ -5,6 +5,7 @@ package com.pulumi.alicloud.slb.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -108,8 +109,12 @@ public final class BackendServerBackendServerArgs extends com.pulumi.resources.R
         }
 
         public BackendServerBackendServerArgs build() {
-            $.serverId = Objects.requireNonNull($.serverId, "expected parameter 'serverId' to be non-null");
-            $.weight = Objects.requireNonNull($.weight, "expected parameter 'weight' to be non-null");
+            if ($.serverId == null) {
+                throw new MissingRequiredPropertyException("BackendServerBackendServerArgs", "serverId");
+            }
+            if ($.weight == null) {
+                throw new MissingRequiredPropertyException("BackendServerBackendServerArgs", "weight");
+            }
             return $;
         }
     }

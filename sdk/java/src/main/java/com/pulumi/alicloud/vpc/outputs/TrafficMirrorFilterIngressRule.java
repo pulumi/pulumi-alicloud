@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.vpc.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -151,41 +152,53 @@ public final class TrafficMirrorFilterIngressRule {
 
         @CustomType.Setter
         public Builder action(String action) {
-            this.action = Objects.requireNonNull(action);
+            if (action == null) {
+              throw new MissingRequiredPropertyException("TrafficMirrorFilterIngressRule", "action");
+            }
+            this.action = action;
             return this;
         }
         @CustomType.Setter
         public Builder destinationCidrBlock(@Nullable String destinationCidrBlock) {
+
             this.destinationCidrBlock = destinationCidrBlock;
             return this;
         }
         @CustomType.Setter
         public Builder destinationPortRange(@Nullable String destinationPortRange) {
+
             this.destinationPortRange = destinationPortRange;
             return this;
         }
         @CustomType.Setter
         public Builder priority(@Nullable Integer priority) {
+
             this.priority = priority;
             return this;
         }
         @CustomType.Setter
         public Builder protocol(String protocol) {
-            this.protocol = Objects.requireNonNull(protocol);
+            if (protocol == null) {
+              throw new MissingRequiredPropertyException("TrafficMirrorFilterIngressRule", "protocol");
+            }
+            this.protocol = protocol;
             return this;
         }
         @CustomType.Setter
         public Builder sourceCidrBlock(@Nullable String sourceCidrBlock) {
+
             this.sourceCidrBlock = sourceCidrBlock;
             return this;
         }
         @CustomType.Setter
         public Builder sourcePortRange(@Nullable String sourcePortRange) {
+
             this.sourcePortRange = sourcePortRange;
             return this;
         }
         @CustomType.Setter
         public Builder trafficMirrorFilterRuleStatus(@Nullable String trafficMirrorFilterRuleStatus) {
+
             this.trafficMirrorFilterRuleStatus = trafficMirrorFilterRuleStatus;
             return this;
         }

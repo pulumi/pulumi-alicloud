@@ -5,6 +5,7 @@ package com.pulumi.alicloud.privatelink.outputs;
 
 import com.pulumi.alicloud.privatelink.outputs.GetVpcEndpointServiceResourcesResource;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -70,12 +71,18 @@ public final class GetVpcEndpointServiceResourcesResult {
 
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetVpcEndpointServiceResourcesResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder ids(List<String> ids) {
-            this.ids = Objects.requireNonNull(ids);
+            if (ids == null) {
+              throw new MissingRequiredPropertyException("GetVpcEndpointServiceResourcesResult", "ids");
+            }
+            this.ids = ids;
             return this;
         }
         public Builder ids(String... ids) {
@@ -83,12 +90,16 @@ public final class GetVpcEndpointServiceResourcesResult {
         }
         @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
+
             this.outputFile = outputFile;
             return this;
         }
         @CustomType.Setter
         public Builder resources(List<GetVpcEndpointServiceResourcesResource> resources) {
-            this.resources = Objects.requireNonNull(resources);
+            if (resources == null) {
+              throw new MissingRequiredPropertyException("GetVpcEndpointServiceResourcesResult", "resources");
+            }
+            this.resources = resources;
             return this;
         }
         public Builder resources(GetVpcEndpointServiceResourcesResource... resources) {
@@ -96,7 +107,10 @@ public final class GetVpcEndpointServiceResourcesResult {
         }
         @CustomType.Setter
         public Builder serviceId(String serviceId) {
-            this.serviceId = Objects.requireNonNull(serviceId);
+            if (serviceId == null) {
+              throw new MissingRequiredPropertyException("GetVpcEndpointServiceResourcesResult", "serviceId");
+            }
+            this.serviceId = serviceId;
             return this;
         }
         public GetVpcEndpointServiceResourcesResult build() {

@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.alb.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -57,12 +58,18 @@ public final class GetListenersListenerQuicConfig {
 
         @CustomType.Setter
         public Builder quicListenerId(String quicListenerId) {
-            this.quicListenerId = Objects.requireNonNull(quicListenerId);
+            if (quicListenerId == null) {
+              throw new MissingRequiredPropertyException("GetListenersListenerQuicConfig", "quicListenerId");
+            }
+            this.quicListenerId = quicListenerId;
             return this;
         }
         @CustomType.Setter
         public Builder quicUpgradeEnabled(Boolean quicUpgradeEnabled) {
-            this.quicUpgradeEnabled = Objects.requireNonNull(quicUpgradeEnabled);
+            if (quicUpgradeEnabled == null) {
+              throw new MissingRequiredPropertyException("GetListenersListenerQuicConfig", "quicUpgradeEnabled");
+            }
+            this.quicUpgradeEnabled = quicUpgradeEnabled;
             return this;
         }
         public GetListenersListenerQuicConfig build() {

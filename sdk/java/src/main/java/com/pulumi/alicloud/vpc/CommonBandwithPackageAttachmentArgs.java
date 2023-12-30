@@ -5,6 +5,7 @@ package com.pulumi.alicloud.vpc;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -225,8 +226,12 @@ public final class CommonBandwithPackageAttachmentArgs extends com.pulumi.resour
         }
 
         public CommonBandwithPackageAttachmentArgs build() {
-            $.bandwidthPackageId = Objects.requireNonNull($.bandwidthPackageId, "expected parameter 'bandwidthPackageId' to be non-null");
-            $.instanceId = Objects.requireNonNull($.instanceId, "expected parameter 'instanceId' to be non-null");
+            if ($.bandwidthPackageId == null) {
+                throw new MissingRequiredPropertyException("CommonBandwithPackageAttachmentArgs", "bandwidthPackageId");
+            }
+            if ($.instanceId == null) {
+                throw new MissingRequiredPropertyException("CommonBandwithPackageAttachmentArgs", "instanceId");
+            }
             return $;
         }
     }

@@ -557,14 +557,14 @@ public class EnterpriseInstance extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="useDsql", refs={Integer.class}, tree="[0]")
-    private Output</* @Nullable */ Integer> useDsql;
+    private Output<Integer> useDsql;
 
     /**
      * @return Whether to enable cross-instance query. Valid values: `0` not open, `1` open.
      * 
      */
-    public Output<Optional<Integer>> useDsql() {
-        return Codegen.optional(this.useDsql);
+    public Output<Integer> useDsql() {
+        return this.useDsql;
     }
     /**
      * VPC ID. This value must be passed when the value of InstanceSource is VPC dedicated line IDC.

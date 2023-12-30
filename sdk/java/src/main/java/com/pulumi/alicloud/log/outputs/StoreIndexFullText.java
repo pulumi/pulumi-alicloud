@@ -73,16 +73,19 @@ public final class StoreIndexFullText {
 
         @CustomType.Setter
         public Builder caseSensitive(@Nullable Boolean caseSensitive) {
+
             this.caseSensitive = caseSensitive;
             return this;
         }
         @CustomType.Setter
         public Builder includeChinese(@Nullable Boolean includeChinese) {
+
             this.includeChinese = includeChinese;
             return this;
         }
         @CustomType.Setter
         public Builder token(@Nullable String token) {
+
             this.token = token;
             return this;
         }

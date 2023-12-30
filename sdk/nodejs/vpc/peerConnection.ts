@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Provides a VPC Peer Connection resource. Vpc peer connection.
+ * Provides a VPC Peer Connection resource.
  *
  * For information about VPC Peer Connection and how to use it, see [What is Peer Connection](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/createvpcpeer).
  *
@@ -106,7 +106,7 @@ export class PeerConnection extends pulumi.CustomResource {
      */
     public readonly bandwidth!: pulumi.Output<number>;
     /**
-     * The creation time of the VPC peer connection. Use UTC time in the format' YYYY-MM-DDThh:mm:ssZ '.
+     * The creation time of the VPC peer connection. Use UTC time in the format `YYYY-MM-DDThh:mm:ssZ`.
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
@@ -114,13 +114,11 @@ export class PeerConnection extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * Whether to PreCheck only this request. Value:
-     * - **true**: The check request is sent without creating a VPC peer-to-peer connection. Check items include whether required parameters, request format, and business restrictions are filled in. If the check does not pass, the corresponding error is returned. If the check passes, the error code 'DryRunOperation' is returned '.
-     * - **false** (default): A normal request is sent. After checking, the HTTP 2xx status code is returned and the operation is performed directly.
+     * Whether to PreCheck only this request. Default value: `false`. Valid values:
      */
     public readonly dryRun!: pulumi.Output<boolean | undefined>;
     /**
-     * The name of the resource. The name of the resource. The name must be 2 to 128 characters in length, and must start with a letter. It can contain digits, underscores (_), and hyphens (-).
+     * The name of the VPC peer connection. The name of the resource. The name must be 2 to 128 characters in length, and must start with a letter. It can contain digits, underscores (_), and hyphens (-).
      */
     public readonly peerConnectionName!: pulumi.Output<string | undefined>;
     /**
@@ -128,15 +126,15 @@ export class PeerConnection extends pulumi.CustomResource {
      */
     public readonly resourceGroupId!: pulumi.Output<string>;
     /**
-     * The status of the resource.
+     * The status of the VPC peer connection.
      */
     public readonly status!: pulumi.Output<string>;
     /**
-     * The tags of PrefixList.
+     * A mapping of tags to assign to the resource.
      */
     public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
     /**
-     * You must create a VPC ID on the initiator of a VPC peer connection.
+     * The ID of the requester VPC.
      */
     public readonly vpcId!: pulumi.Output<string>;
 
@@ -220,7 +218,7 @@ export interface PeerConnectionState {
      */
     bandwidth?: pulumi.Input<number>;
     /**
-     * The creation time of the VPC peer connection. Use UTC time in the format' YYYY-MM-DDThh:mm:ssZ '.
+     * The creation time of the VPC peer connection. Use UTC time in the format `YYYY-MM-DDThh:mm:ssZ`.
      */
     createTime?: pulumi.Input<string>;
     /**
@@ -228,13 +226,11 @@ export interface PeerConnectionState {
      */
     description?: pulumi.Input<string>;
     /**
-     * Whether to PreCheck only this request. Value:
-     * - **true**: The check request is sent without creating a VPC peer-to-peer connection. Check items include whether required parameters, request format, and business restrictions are filled in. If the check does not pass, the corresponding error is returned. If the check passes, the error code 'DryRunOperation' is returned '.
-     * - **false** (default): A normal request is sent. After checking, the HTTP 2xx status code is returned and the operation is performed directly.
+     * Whether to PreCheck only this request. Default value: `false`. Valid values:
      */
     dryRun?: pulumi.Input<boolean>;
     /**
-     * The name of the resource. The name of the resource. The name must be 2 to 128 characters in length, and must start with a letter. It can contain digits, underscores (_), and hyphens (-).
+     * The name of the VPC peer connection. The name of the resource. The name must be 2 to 128 characters in length, and must start with a letter. It can contain digits, underscores (_), and hyphens (-).
      */
     peerConnectionName?: pulumi.Input<string>;
     /**
@@ -242,15 +238,15 @@ export interface PeerConnectionState {
      */
     resourceGroupId?: pulumi.Input<string>;
     /**
-     * The status of the resource.
+     * The status of the VPC peer connection.
      */
     status?: pulumi.Input<string>;
     /**
-     * The tags of PrefixList.
+     * A mapping of tags to assign to the resource.
      */
     tags?: pulumi.Input<{[key: string]: any}>;
     /**
-     * You must create a VPC ID on the initiator of a VPC peer connection.
+     * The ID of the requester VPC.
      */
     vpcId?: pulumi.Input<string>;
 }
@@ -285,13 +281,11 @@ export interface PeerConnectionArgs {
      */
     description?: pulumi.Input<string>;
     /**
-     * Whether to PreCheck only this request. Value:
-     * - **true**: The check request is sent without creating a VPC peer-to-peer connection. Check items include whether required parameters, request format, and business restrictions are filled in. If the check does not pass, the corresponding error is returned. If the check passes, the error code 'DryRunOperation' is returned '.
-     * - **false** (default): A normal request is sent. After checking, the HTTP 2xx status code is returned and the operation is performed directly.
+     * Whether to PreCheck only this request. Default value: `false`. Valid values:
      */
     dryRun?: pulumi.Input<boolean>;
     /**
-     * The name of the resource. The name of the resource. The name must be 2 to 128 characters in length, and must start with a letter. It can contain digits, underscores (_), and hyphens (-).
+     * The name of the VPC peer connection. The name of the resource. The name must be 2 to 128 characters in length, and must start with a letter. It can contain digits, underscores (_), and hyphens (-).
      */
     peerConnectionName?: pulumi.Input<string>;
     /**
@@ -299,15 +293,15 @@ export interface PeerConnectionArgs {
      */
     resourceGroupId?: pulumi.Input<string>;
     /**
-     * The status of the resource.
+     * The status of the VPC peer connection.
      */
     status?: pulumi.Input<string>;
     /**
-     * The tags of PrefixList.
+     * A mapping of tags to assign to the resource.
      */
     tags?: pulumi.Input<{[key: string]: any}>;
     /**
-     * You must create a VPC ID on the initiator of a VPC peer connection.
+     * The ID of the requester VPC.
      */
     vpcId: pulumi.Input<string>;
 }

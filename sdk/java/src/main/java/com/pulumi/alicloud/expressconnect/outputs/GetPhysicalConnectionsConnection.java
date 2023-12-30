@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.expressconnect.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -392,132 +393,210 @@ public final class GetPhysicalConnectionsConnection {
 
         @CustomType.Setter
         public Builder accessPointId(String accessPointId) {
-            this.accessPointId = Objects.requireNonNull(accessPointId);
+            if (accessPointId == null) {
+              throw new MissingRequiredPropertyException("GetPhysicalConnectionsConnection", "accessPointId");
+            }
+            this.accessPointId = accessPointId;
             return this;
         }
         @CustomType.Setter
         public Builder adLocation(String adLocation) {
-            this.adLocation = Objects.requireNonNull(adLocation);
+            if (adLocation == null) {
+              throw new MissingRequiredPropertyException("GetPhysicalConnectionsConnection", "adLocation");
+            }
+            this.adLocation = adLocation;
             return this;
         }
         @CustomType.Setter
         public Builder bandwidth(String bandwidth) {
-            this.bandwidth = Objects.requireNonNull(bandwidth);
+            if (bandwidth == null) {
+              throw new MissingRequiredPropertyException("GetPhysicalConnectionsConnection", "bandwidth");
+            }
+            this.bandwidth = bandwidth;
             return this;
         }
         @CustomType.Setter
         public Builder businessStatus(String businessStatus) {
-            this.businessStatus = Objects.requireNonNull(businessStatus);
+            if (businessStatus == null) {
+              throw new MissingRequiredPropertyException("GetPhysicalConnectionsConnection", "businessStatus");
+            }
+            this.businessStatus = businessStatus;
             return this;
         }
         @CustomType.Setter
         public Builder circuitCode(String circuitCode) {
-            this.circuitCode = Objects.requireNonNull(circuitCode);
+            if (circuitCode == null) {
+              throw new MissingRequiredPropertyException("GetPhysicalConnectionsConnection", "circuitCode");
+            }
+            this.circuitCode = circuitCode;
             return this;
         }
         @CustomType.Setter
         public Builder createTime(String createTime) {
-            this.createTime = Objects.requireNonNull(createTime);
+            if (createTime == null) {
+              throw new MissingRequiredPropertyException("GetPhysicalConnectionsConnection", "createTime");
+            }
+            this.createTime = createTime;
             return this;
         }
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetPhysicalConnectionsConnection", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder enabledTime(String enabledTime) {
-            this.enabledTime = Objects.requireNonNull(enabledTime);
+            if (enabledTime == null) {
+              throw new MissingRequiredPropertyException("GetPhysicalConnectionsConnection", "enabledTime");
+            }
+            this.enabledTime = enabledTime;
             return this;
         }
         @CustomType.Setter
         public Builder endTime(String endTime) {
-            this.endTime = Objects.requireNonNull(endTime);
+            if (endTime == null) {
+              throw new MissingRequiredPropertyException("GetPhysicalConnectionsConnection", "endTime");
+            }
+            this.endTime = endTime;
             return this;
         }
         @CustomType.Setter
         public Builder hasReservationData(String hasReservationData) {
-            this.hasReservationData = Objects.requireNonNull(hasReservationData);
+            if (hasReservationData == null) {
+              throw new MissingRequiredPropertyException("GetPhysicalConnectionsConnection", "hasReservationData");
+            }
+            this.hasReservationData = hasReservationData;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetPhysicalConnectionsConnection", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder lineOperator(String lineOperator) {
-            this.lineOperator = Objects.requireNonNull(lineOperator);
+            if (lineOperator == null) {
+              throw new MissingRequiredPropertyException("GetPhysicalConnectionsConnection", "lineOperator");
+            }
+            this.lineOperator = lineOperator;
             return this;
         }
         @CustomType.Setter
         public Builder loaStatus(String loaStatus) {
-            this.loaStatus = Objects.requireNonNull(loaStatus);
+            if (loaStatus == null) {
+              throw new MissingRequiredPropertyException("GetPhysicalConnectionsConnection", "loaStatus");
+            }
+            this.loaStatus = loaStatus;
             return this;
         }
         @CustomType.Setter
         public Builder paymentType(String paymentType) {
-            this.paymentType = Objects.requireNonNull(paymentType);
+            if (paymentType == null) {
+              throw new MissingRequiredPropertyException("GetPhysicalConnectionsConnection", "paymentType");
+            }
+            this.paymentType = paymentType;
             return this;
         }
         @CustomType.Setter
         public Builder peerLocation(String peerLocation) {
-            this.peerLocation = Objects.requireNonNull(peerLocation);
+            if (peerLocation == null) {
+              throw new MissingRequiredPropertyException("GetPhysicalConnectionsConnection", "peerLocation");
+            }
+            this.peerLocation = peerLocation;
             return this;
         }
         @CustomType.Setter
         public Builder physicalConnectionId(String physicalConnectionId) {
-            this.physicalConnectionId = Objects.requireNonNull(physicalConnectionId);
+            if (physicalConnectionId == null) {
+              throw new MissingRequiredPropertyException("GetPhysicalConnectionsConnection", "physicalConnectionId");
+            }
+            this.physicalConnectionId = physicalConnectionId;
             return this;
         }
         @CustomType.Setter
         public Builder physicalConnectionName(String physicalConnectionName) {
-            this.physicalConnectionName = Objects.requireNonNull(physicalConnectionName);
+            if (physicalConnectionName == null) {
+              throw new MissingRequiredPropertyException("GetPhysicalConnectionsConnection", "physicalConnectionName");
+            }
+            this.physicalConnectionName = physicalConnectionName;
             return this;
         }
         @CustomType.Setter
         public Builder portNumber(String portNumber) {
-            this.portNumber = Objects.requireNonNull(portNumber);
+            if (portNumber == null) {
+              throw new MissingRequiredPropertyException("GetPhysicalConnectionsConnection", "portNumber");
+            }
+            this.portNumber = portNumber;
             return this;
         }
         @CustomType.Setter
         public Builder portType(String portType) {
-            this.portType = Objects.requireNonNull(portType);
+            if (portType == null) {
+              throw new MissingRequiredPropertyException("GetPhysicalConnectionsConnection", "portType");
+            }
+            this.portType = portType;
             return this;
         }
         @CustomType.Setter
         public Builder redundantPhysicalConnectionId(String redundantPhysicalConnectionId) {
-            this.redundantPhysicalConnectionId = Objects.requireNonNull(redundantPhysicalConnectionId);
+            if (redundantPhysicalConnectionId == null) {
+              throw new MissingRequiredPropertyException("GetPhysicalConnectionsConnection", "redundantPhysicalConnectionId");
+            }
+            this.redundantPhysicalConnectionId = redundantPhysicalConnectionId;
             return this;
         }
         @CustomType.Setter
         public Builder reservationActiveTime(String reservationActiveTime) {
-            this.reservationActiveTime = Objects.requireNonNull(reservationActiveTime);
+            if (reservationActiveTime == null) {
+              throw new MissingRequiredPropertyException("GetPhysicalConnectionsConnection", "reservationActiveTime");
+            }
+            this.reservationActiveTime = reservationActiveTime;
             return this;
         }
         @CustomType.Setter
         public Builder reservationInternetChargeType(String reservationInternetChargeType) {
-            this.reservationInternetChargeType = Objects.requireNonNull(reservationInternetChargeType);
+            if (reservationInternetChargeType == null) {
+              throw new MissingRequiredPropertyException("GetPhysicalConnectionsConnection", "reservationInternetChargeType");
+            }
+            this.reservationInternetChargeType = reservationInternetChargeType;
             return this;
         }
         @CustomType.Setter
         public Builder reservationOrderType(String reservationOrderType) {
-            this.reservationOrderType = Objects.requireNonNull(reservationOrderType);
+            if (reservationOrderType == null) {
+              throw new MissingRequiredPropertyException("GetPhysicalConnectionsConnection", "reservationOrderType");
+            }
+            this.reservationOrderType = reservationOrderType;
             return this;
         }
         @CustomType.Setter
         public Builder spec(String spec) {
-            this.spec = Objects.requireNonNull(spec);
+            if (spec == null) {
+              throw new MissingRequiredPropertyException("GetPhysicalConnectionsConnection", "spec");
+            }
+            this.spec = spec;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetPhysicalConnectionsConnection", "status");
+            }
+            this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder type(String type) {
-            this.type = Objects.requireNonNull(type);
+            if (type == null) {
+              throw new MissingRequiredPropertyException("GetPhysicalConnectionsConnection", "type");
+            }
+            this.type = type;
             return this;
         }
         public GetPhysicalConnectionsConnection build() {

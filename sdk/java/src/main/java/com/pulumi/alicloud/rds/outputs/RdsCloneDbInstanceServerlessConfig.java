@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.rds.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Double;
 import java.util.Objects;
@@ -113,21 +114,29 @@ public final class RdsCloneDbInstanceServerlessConfig {
 
         @CustomType.Setter
         public Builder autoPause(@Nullable Boolean autoPause) {
+
             this.autoPause = autoPause;
             return this;
         }
         @CustomType.Setter
         public Builder maxCapacity(Double maxCapacity) {
-            this.maxCapacity = Objects.requireNonNull(maxCapacity);
+            if (maxCapacity == null) {
+              throw new MissingRequiredPropertyException("RdsCloneDbInstanceServerlessConfig", "maxCapacity");
+            }
+            this.maxCapacity = maxCapacity;
             return this;
         }
         @CustomType.Setter
         public Builder minCapacity(Double minCapacity) {
-            this.minCapacity = Objects.requireNonNull(minCapacity);
+            if (minCapacity == null) {
+              throw new MissingRequiredPropertyException("RdsCloneDbInstanceServerlessConfig", "minCapacity");
+            }
+            this.minCapacity = minCapacity;
             return this;
         }
         @CustomType.Setter
         public Builder switchForce(@Nullable Boolean switchForce) {
+
             this.switchForce = switchForce;
             return this;
         }

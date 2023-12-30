@@ -7,6 +7,7 @@ import com.pulumi.alicloud.sae.inputs.IngressDefaultRuleArgs;
 import com.pulumi.alicloud.sae.inputs.IngressRuleArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -423,10 +424,18 @@ public final class IngressArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public IngressArgs build() {
-            $.listenerPort = Objects.requireNonNull($.listenerPort, "expected parameter 'listenerPort' to be non-null");
-            $.namespaceId = Objects.requireNonNull($.namespaceId, "expected parameter 'namespaceId' to be non-null");
-            $.rules = Objects.requireNonNull($.rules, "expected parameter 'rules' to be non-null");
-            $.slbId = Objects.requireNonNull($.slbId, "expected parameter 'slbId' to be non-null");
+            if ($.listenerPort == null) {
+                throw new MissingRequiredPropertyException("IngressArgs", "listenerPort");
+            }
+            if ($.namespaceId == null) {
+                throw new MissingRequiredPropertyException("IngressArgs", "namespaceId");
+            }
+            if ($.rules == null) {
+                throw new MissingRequiredPropertyException("IngressArgs", "rules");
+            }
+            if ($.slbId == null) {
+                throw new MissingRequiredPropertyException("IngressArgs", "slbId");
+            }
             return $;
         }
     }

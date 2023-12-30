@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.nlb.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -325,17 +326,26 @@ public final class GetListenersListener {
 
         @CustomType.Setter
         public Builder alpnEnabled(Boolean alpnEnabled) {
-            this.alpnEnabled = Objects.requireNonNull(alpnEnabled);
+            if (alpnEnabled == null) {
+              throw new MissingRequiredPropertyException("GetListenersListener", "alpnEnabled");
+            }
+            this.alpnEnabled = alpnEnabled;
             return this;
         }
         @CustomType.Setter
         public Builder alpnPolicy(String alpnPolicy) {
-            this.alpnPolicy = Objects.requireNonNull(alpnPolicy);
+            if (alpnPolicy == null) {
+              throw new MissingRequiredPropertyException("GetListenersListener", "alpnPolicy");
+            }
+            this.alpnPolicy = alpnPolicy;
             return this;
         }
         @CustomType.Setter
         public Builder caCertificateIds(List<String> caCertificateIds) {
-            this.caCertificateIds = Objects.requireNonNull(caCertificateIds);
+            if (caCertificateIds == null) {
+              throw new MissingRequiredPropertyException("GetListenersListener", "caCertificateIds");
+            }
+            this.caCertificateIds = caCertificateIds;
             return this;
         }
         public Builder caCertificateIds(String... caCertificateIds) {
@@ -343,12 +353,18 @@ public final class GetListenersListener {
         }
         @CustomType.Setter
         public Builder caEnabled(Boolean caEnabled) {
-            this.caEnabled = Objects.requireNonNull(caEnabled);
+            if (caEnabled == null) {
+              throw new MissingRequiredPropertyException("GetListenersListener", "caEnabled");
+            }
+            this.caEnabled = caEnabled;
             return this;
         }
         @CustomType.Setter
         public Builder certificateIds(List<String> certificateIds) {
-            this.certificateIds = Objects.requireNonNull(certificateIds);
+            if (certificateIds == null) {
+              throw new MissingRequiredPropertyException("GetListenersListener", "certificateIds");
+            }
+            this.certificateIds = certificateIds;
             return this;
         }
         public Builder certificateIds(String... certificateIds) {
@@ -356,82 +372,130 @@ public final class GetListenersListener {
         }
         @CustomType.Setter
         public Builder cps(Integer cps) {
-            this.cps = Objects.requireNonNull(cps);
+            if (cps == null) {
+              throw new MissingRequiredPropertyException("GetListenersListener", "cps");
+            }
+            this.cps = cps;
             return this;
         }
         @CustomType.Setter
         public Builder endPort(String endPort) {
-            this.endPort = Objects.requireNonNull(endPort);
+            if (endPort == null) {
+              throw new MissingRequiredPropertyException("GetListenersListener", "endPort");
+            }
+            this.endPort = endPort;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetListenersListener", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder idleTimeout(Integer idleTimeout) {
-            this.idleTimeout = Objects.requireNonNull(idleTimeout);
+            if (idleTimeout == null) {
+              throw new MissingRequiredPropertyException("GetListenersListener", "idleTimeout");
+            }
+            this.idleTimeout = idleTimeout;
             return this;
         }
         @CustomType.Setter
         public Builder listenerDescription(String listenerDescription) {
-            this.listenerDescription = Objects.requireNonNull(listenerDescription);
+            if (listenerDescription == null) {
+              throw new MissingRequiredPropertyException("GetListenersListener", "listenerDescription");
+            }
+            this.listenerDescription = listenerDescription;
             return this;
         }
         @CustomType.Setter
         public Builder listenerId(String listenerId) {
-            this.listenerId = Objects.requireNonNull(listenerId);
+            if (listenerId == null) {
+              throw new MissingRequiredPropertyException("GetListenersListener", "listenerId");
+            }
+            this.listenerId = listenerId;
             return this;
         }
         @CustomType.Setter
         public Builder listenerPort(Integer listenerPort) {
-            this.listenerPort = Objects.requireNonNull(listenerPort);
+            if (listenerPort == null) {
+              throw new MissingRequiredPropertyException("GetListenersListener", "listenerPort");
+            }
+            this.listenerPort = listenerPort;
             return this;
         }
         @CustomType.Setter
         public Builder listenerProtocol(String listenerProtocol) {
-            this.listenerProtocol = Objects.requireNonNull(listenerProtocol);
+            if (listenerProtocol == null) {
+              throw new MissingRequiredPropertyException("GetListenersListener", "listenerProtocol");
+            }
+            this.listenerProtocol = listenerProtocol;
             return this;
         }
         @CustomType.Setter
         public Builder loadBalancerId(String loadBalancerId) {
-            this.loadBalancerId = Objects.requireNonNull(loadBalancerId);
+            if (loadBalancerId == null) {
+              throw new MissingRequiredPropertyException("GetListenersListener", "loadBalancerId");
+            }
+            this.loadBalancerId = loadBalancerId;
             return this;
         }
         @CustomType.Setter
         public Builder mss(Integer mss) {
-            this.mss = Objects.requireNonNull(mss);
+            if (mss == null) {
+              throw new MissingRequiredPropertyException("GetListenersListener", "mss");
+            }
+            this.mss = mss;
             return this;
         }
         @CustomType.Setter
         public Builder proxyProtocolEnabled(Boolean proxyProtocolEnabled) {
-            this.proxyProtocolEnabled = Objects.requireNonNull(proxyProtocolEnabled);
+            if (proxyProtocolEnabled == null) {
+              throw new MissingRequiredPropertyException("GetListenersListener", "proxyProtocolEnabled");
+            }
+            this.proxyProtocolEnabled = proxyProtocolEnabled;
             return this;
         }
         @CustomType.Setter
         public Builder secSensorEnabled(Boolean secSensorEnabled) {
-            this.secSensorEnabled = Objects.requireNonNull(secSensorEnabled);
+            if (secSensorEnabled == null) {
+              throw new MissingRequiredPropertyException("GetListenersListener", "secSensorEnabled");
+            }
+            this.secSensorEnabled = secSensorEnabled;
             return this;
         }
         @CustomType.Setter
         public Builder securityPolicyId(String securityPolicyId) {
-            this.securityPolicyId = Objects.requireNonNull(securityPolicyId);
+            if (securityPolicyId == null) {
+              throw new MissingRequiredPropertyException("GetListenersListener", "securityPolicyId");
+            }
+            this.securityPolicyId = securityPolicyId;
             return this;
         }
         @CustomType.Setter
         public Builder serverGroupId(String serverGroupId) {
-            this.serverGroupId = Objects.requireNonNull(serverGroupId);
+            if (serverGroupId == null) {
+              throw new MissingRequiredPropertyException("GetListenersListener", "serverGroupId");
+            }
+            this.serverGroupId = serverGroupId;
             return this;
         }
         @CustomType.Setter
         public Builder startPort(String startPort) {
-            this.startPort = Objects.requireNonNull(startPort);
+            if (startPort == null) {
+              throw new MissingRequiredPropertyException("GetListenersListener", "startPort");
+            }
+            this.startPort = startPort;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetListenersListener", "status");
+            }
+            this.status = status;
             return this;
         }
         public GetListenersListener build() {

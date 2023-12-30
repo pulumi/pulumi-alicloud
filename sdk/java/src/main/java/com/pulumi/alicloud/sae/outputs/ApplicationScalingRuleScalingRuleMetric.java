@@ -104,11 +104,13 @@ public final class ApplicationScalingRuleScalingRuleMetric {
 
         @CustomType.Setter
         public Builder maxReplicas(@Nullable Integer maxReplicas) {
+
             this.maxReplicas = maxReplicas;
             return this;
         }
         @CustomType.Setter
         public Builder metrics(@Nullable List<ApplicationScalingRuleScalingRuleMetricMetric> metrics) {
+
             this.metrics = metrics;
             return this;
         }
@@ -117,16 +119,19 @@ public final class ApplicationScalingRuleScalingRuleMetric {
         }
         @CustomType.Setter
         public Builder minReplicas(@Nullable Integer minReplicas) {
+
             this.minReplicas = minReplicas;
             return this;
         }
         @CustomType.Setter
         public Builder scaleDownRules(@Nullable ApplicationScalingRuleScalingRuleMetricScaleDownRules scaleDownRules) {
+
             this.scaleDownRules = scaleDownRules;
             return this;
         }
         @CustomType.Setter
         public Builder scaleUpRules(@Nullable ApplicationScalingRuleScalingRuleMetricScaleUpRules scaleUpRules) {
+
             this.scaleUpRules = scaleUpRules;
             return this;
         }

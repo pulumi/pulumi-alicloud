@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.rocketmq.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.Object;
@@ -228,72 +229,114 @@ public final class GetInstancesInstance {
 
         @CustomType.Setter
         public Builder httpInternalEndpoint(String httpInternalEndpoint) {
-            this.httpInternalEndpoint = Objects.requireNonNull(httpInternalEndpoint);
+            if (httpInternalEndpoint == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstance", "httpInternalEndpoint");
+            }
+            this.httpInternalEndpoint = httpInternalEndpoint;
             return this;
         }
         @CustomType.Setter
         public Builder httpInternetEndpoint(String httpInternetEndpoint) {
-            this.httpInternetEndpoint = Objects.requireNonNull(httpInternetEndpoint);
+            if (httpInternetEndpoint == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstance", "httpInternetEndpoint");
+            }
+            this.httpInternetEndpoint = httpInternetEndpoint;
             return this;
         }
         @CustomType.Setter
         public Builder httpInternetSecureEndpoint(String httpInternetSecureEndpoint) {
-            this.httpInternetSecureEndpoint = Objects.requireNonNull(httpInternetSecureEndpoint);
+            if (httpInternetSecureEndpoint == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstance", "httpInternetSecureEndpoint");
+            }
+            this.httpInternetSecureEndpoint = httpInternetSecureEndpoint;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstance", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder independentNaming(Boolean independentNaming) {
-            this.independentNaming = Objects.requireNonNull(independentNaming);
+            if (independentNaming == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstance", "independentNaming");
+            }
+            this.independentNaming = independentNaming;
             return this;
         }
         @CustomType.Setter
         public Builder instanceId(String instanceId) {
-            this.instanceId = Objects.requireNonNull(instanceId);
+            if (instanceId == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstance", "instanceId");
+            }
+            this.instanceId = instanceId;
             return this;
         }
         @CustomType.Setter
         public Builder instanceName(String instanceName) {
-            this.instanceName = Objects.requireNonNull(instanceName);
+            if (instanceName == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstance", "instanceName");
+            }
+            this.instanceName = instanceName;
             return this;
         }
         @CustomType.Setter
         public Builder instanceStatus(Integer instanceStatus) {
-            this.instanceStatus = Objects.requireNonNull(instanceStatus);
+            if (instanceStatus == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstance", "instanceStatus");
+            }
+            this.instanceStatus = instanceStatus;
             return this;
         }
         @CustomType.Setter
         public Builder instanceType(Integer instanceType) {
-            this.instanceType = Objects.requireNonNull(instanceType);
+            if (instanceType == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstance", "instanceType");
+            }
+            this.instanceType = instanceType;
             return this;
         }
         @CustomType.Setter
         public Builder releaseTime(String releaseTime) {
-            this.releaseTime = Objects.requireNonNull(releaseTime);
+            if (releaseTime == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstance", "releaseTime");
+            }
+            this.releaseTime = releaseTime;
             return this;
         }
         @CustomType.Setter
         public Builder remark(String remark) {
-            this.remark = Objects.requireNonNull(remark);
+            if (remark == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstance", "remark");
+            }
+            this.remark = remark;
             return this;
         }
         @CustomType.Setter
         public Builder status(Integer status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstance", "status");
+            }
+            this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder tags(Map<String,Object> tags) {
-            this.tags = Objects.requireNonNull(tags);
+            if (tags == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstance", "tags");
+            }
+            this.tags = tags;
             return this;
         }
         @CustomType.Setter
         public Builder tcpEndpoint(String tcpEndpoint) {
-            this.tcpEndpoint = Objects.requireNonNull(tcpEndpoint);
+            if (tcpEndpoint == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstance", "tcpEndpoint");
+            }
+            this.tcpEndpoint = tcpEndpoint;
             return this;
         }
         public GetInstancesInstance build() {

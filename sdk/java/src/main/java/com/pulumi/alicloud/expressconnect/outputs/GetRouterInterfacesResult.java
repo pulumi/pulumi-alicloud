@@ -6,6 +6,7 @@ package com.pulumi.alicloud.expressconnect.outputs;
 import com.pulumi.alicloud.expressconnect.outputs.GetRouterInterfacesFilter;
 import com.pulumi.alicloud.expressconnect.outputs.GetRouterInterfacesInterface;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -126,6 +127,7 @@ public final class GetRouterInterfacesResult {
 
         @CustomType.Setter
         public Builder filters(@Nullable List<GetRouterInterfacesFilter> filters) {
+
             this.filters = filters;
             return this;
         }
@@ -134,12 +136,18 @@ public final class GetRouterInterfacesResult {
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetRouterInterfacesResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder ids(List<String> ids) {
-            this.ids = Objects.requireNonNull(ids);
+            if (ids == null) {
+              throw new MissingRequiredPropertyException("GetRouterInterfacesResult", "ids");
+            }
+            this.ids = ids;
             return this;
         }
         public Builder ids(String... ids) {
@@ -147,12 +155,16 @@ public final class GetRouterInterfacesResult {
         }
         @CustomType.Setter
         public Builder includeReservationData(@Nullable String includeReservationData) {
+
             this.includeReservationData = includeReservationData;
             return this;
         }
         @CustomType.Setter
         public Builder interfaces(List<GetRouterInterfacesInterface> interfaces) {
-            this.interfaces = Objects.requireNonNull(interfaces);
+            if (interfaces == null) {
+              throw new MissingRequiredPropertyException("GetRouterInterfacesResult", "interfaces");
+            }
+            this.interfaces = interfaces;
             return this;
         }
         public Builder interfaces(GetRouterInterfacesInterface... interfaces) {
@@ -160,12 +172,16 @@ public final class GetRouterInterfacesResult {
         }
         @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
+
             this.nameRegex = nameRegex;
             return this;
         }
         @CustomType.Setter
         public Builder names(List<String> names) {
-            this.names = Objects.requireNonNull(names);
+            if (names == null) {
+              throw new MissingRequiredPropertyException("GetRouterInterfacesResult", "names");
+            }
+            this.names = names;
             return this;
         }
         public Builder names(String... names) {
@@ -173,16 +189,19 @@ public final class GetRouterInterfacesResult {
         }
         @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
+
             this.outputFile = outputFile;
             return this;
         }
         @CustomType.Setter
         public Builder pageNumber(@Nullable Integer pageNumber) {
+
             this.pageNumber = pageNumber;
             return this;
         }
         @CustomType.Setter
         public Builder pageSize(@Nullable Integer pageSize) {
+
             this.pageSize = pageSize;
             return this;
         }

@@ -5,6 +5,7 @@ package com.pulumi.alicloud.threatdetection;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -185,10 +186,18 @@ public final class HoneyPotArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public HoneyPotArgs build() {
-            $.honeypotImageId = Objects.requireNonNull($.honeypotImageId, "expected parameter 'honeypotImageId' to be non-null");
-            $.honeypotImageName = Objects.requireNonNull($.honeypotImageName, "expected parameter 'honeypotImageName' to be non-null");
-            $.honeypotName = Objects.requireNonNull($.honeypotName, "expected parameter 'honeypotName' to be non-null");
-            $.nodeId = Objects.requireNonNull($.nodeId, "expected parameter 'nodeId' to be non-null");
+            if ($.honeypotImageId == null) {
+                throw new MissingRequiredPropertyException("HoneyPotArgs", "honeypotImageId");
+            }
+            if ($.honeypotImageName == null) {
+                throw new MissingRequiredPropertyException("HoneyPotArgs", "honeypotImageName");
+            }
+            if ($.honeypotName == null) {
+                throw new MissingRequiredPropertyException("HoneyPotArgs", "honeypotName");
+            }
+            if ($.nodeId == null) {
+                throw new MissingRequiredPropertyException("HoneyPotArgs", "nodeId");
+            }
             return $;
         }
     }

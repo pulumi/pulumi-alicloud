@@ -59,11 +59,13 @@ public final class V2FunctionInstanceLifecycleConfig {
 
         @CustomType.Setter
         public Builder preFreeze(@Nullable V2FunctionInstanceLifecycleConfigPreFreeze preFreeze) {
+
             this.preFreeze = preFreeze;
             return this;
         }
         @CustomType.Setter
         public Builder preStop(@Nullable V2FunctionInstanceLifecycleConfigPreStop preStop) {
+
             this.preStop = preStop;
             return this;
         }

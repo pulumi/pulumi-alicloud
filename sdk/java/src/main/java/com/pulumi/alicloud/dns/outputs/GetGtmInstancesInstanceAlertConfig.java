@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.dns.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -85,22 +86,34 @@ public final class GetGtmInstancesInstanceAlertConfig {
 
         @CustomType.Setter
         public Builder dingtalkNotice(Boolean dingtalkNotice) {
-            this.dingtalkNotice = Objects.requireNonNull(dingtalkNotice);
+            if (dingtalkNotice == null) {
+              throw new MissingRequiredPropertyException("GetGtmInstancesInstanceAlertConfig", "dingtalkNotice");
+            }
+            this.dingtalkNotice = dingtalkNotice;
             return this;
         }
         @CustomType.Setter
         public Builder emailNotice(Boolean emailNotice) {
-            this.emailNotice = Objects.requireNonNull(emailNotice);
+            if (emailNotice == null) {
+              throw new MissingRequiredPropertyException("GetGtmInstancesInstanceAlertConfig", "emailNotice");
+            }
+            this.emailNotice = emailNotice;
             return this;
         }
         @CustomType.Setter
         public Builder noticeType(String noticeType) {
-            this.noticeType = Objects.requireNonNull(noticeType);
+            if (noticeType == null) {
+              throw new MissingRequiredPropertyException("GetGtmInstancesInstanceAlertConfig", "noticeType");
+            }
+            this.noticeType = noticeType;
             return this;
         }
         @CustomType.Setter
         public Builder smsNotice(Boolean smsNotice) {
-            this.smsNotice = Objects.requireNonNull(smsNotice);
+            if (smsNotice == null) {
+              throw new MissingRequiredPropertyException("GetGtmInstancesInstanceAlertConfig", "smsNotice");
+            }
+            this.smsNotice = smsNotice;
             return this;
         }
         public GetGtmInstancesInstanceAlertConfig build() {

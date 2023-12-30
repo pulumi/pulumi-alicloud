@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.polardb.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -70,17 +71,26 @@ public final class GetDatabasesDatabaseAccount {
 
         @CustomType.Setter
         public Builder accountName(String accountName) {
-            this.accountName = Objects.requireNonNull(accountName);
+            if (accountName == null) {
+              throw new MissingRequiredPropertyException("GetDatabasesDatabaseAccount", "accountName");
+            }
+            this.accountName = accountName;
             return this;
         }
         @CustomType.Setter
         public Builder accountStatus(String accountStatus) {
-            this.accountStatus = Objects.requireNonNull(accountStatus);
+            if (accountStatus == null) {
+              throw new MissingRequiredPropertyException("GetDatabasesDatabaseAccount", "accountStatus");
+            }
+            this.accountStatus = accountStatus;
             return this;
         }
         @CustomType.Setter
         public Builder privilegeStatus(String privilegeStatus) {
-            this.privilegeStatus = Objects.requireNonNull(privilegeStatus);
+            if (privilegeStatus == null) {
+              throw new MissingRequiredPropertyException("GetDatabasesDatabaseAccount", "privilegeStatus");
+            }
+            this.privilegeStatus = privilegeStatus;
             return this;
         }
         public GetDatabasesDatabaseAccount build() {

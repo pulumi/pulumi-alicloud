@@ -100,26 +100,31 @@ public final class EventRuleSlsParameter {
 
         @CustomType.Setter
         public Builder arn(@Nullable String arn) {
+
             this.arn = arn;
             return this;
         }
         @CustomType.Setter
         public Builder logStore(@Nullable String logStore) {
+
             this.logStore = logStore;
             return this;
         }
         @CustomType.Setter
         public Builder project(@Nullable String project) {
+
             this.project = project;
             return this;
         }
         @CustomType.Setter
         public Builder region(@Nullable String region) {
+
             this.region = region;
             return this;
         }
         @CustomType.Setter
         public Builder slsParametersId(@Nullable String slsParametersId) {
+
             this.slsParametersId = slsParametersId;
             return this;
         }

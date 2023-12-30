@@ -5,6 +5,7 @@ package com.pulumi.alicloud.cloudfirewall.outputs;
 
 import com.pulumi.alicloud.cloudfirewall.outputs.FirewallVpcFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryList;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -58,7 +59,10 @@ public final class FirewallVpcFirewallLocalVpcLocalVpcCidrTableList {
 
         @CustomType.Setter
         public Builder localRouteEntryLists(List<FirewallVpcFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryList> localRouteEntryLists) {
-            this.localRouteEntryLists = Objects.requireNonNull(localRouteEntryLists);
+            if (localRouteEntryLists == null) {
+              throw new MissingRequiredPropertyException("FirewallVpcFirewallLocalVpcLocalVpcCidrTableList", "localRouteEntryLists");
+            }
+            this.localRouteEntryLists = localRouteEntryLists;
             return this;
         }
         public Builder localRouteEntryLists(FirewallVpcFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryList... localRouteEntryLists) {
@@ -66,7 +70,10 @@ public final class FirewallVpcFirewallLocalVpcLocalVpcCidrTableList {
         }
         @CustomType.Setter
         public Builder localRouteTableId(String localRouteTableId) {
-            this.localRouteTableId = Objects.requireNonNull(localRouteTableId);
+            if (localRouteTableId == null) {
+              throw new MissingRequiredPropertyException("FirewallVpcFirewallLocalVpcLocalVpcCidrTableList", "localRouteTableId");
+            }
+            this.localRouteTableId = localRouteTableId;
             return this;
         }
         public FirewallVpcFirewallLocalVpcLocalVpcCidrTableList build() {

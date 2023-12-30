@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.expressconnect.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -56,12 +57,18 @@ public final class GetAccessPointsPointAccessPointFeatureModel {
 
         @CustomType.Setter
         public Builder featureKey(String featureKey) {
-            this.featureKey = Objects.requireNonNull(featureKey);
+            if (featureKey == null) {
+              throw new MissingRequiredPropertyException("GetAccessPointsPointAccessPointFeatureModel", "featureKey");
+            }
+            this.featureKey = featureKey;
             return this;
         }
         @CustomType.Setter
         public Builder featureValue(String featureValue) {
-            this.featureValue = Objects.requireNonNull(featureValue);
+            if (featureValue == null) {
+              throw new MissingRequiredPropertyException("GetAccessPointsPointAccessPointFeatureModel", "featureValue");
+            }
+            this.featureValue = featureValue;
             return this;
         }
         public GetAccessPointsPointAccessPointFeatureModel build() {

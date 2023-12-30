@@ -5,6 +5,7 @@ package com.pulumi.alicloud.rds.outputs;
 
 import com.pulumi.alicloud.rds.outputs.GetInstanceClassInfosInfo;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -98,22 +99,32 @@ public final class GetInstanceClassInfosResult {
 
         @CustomType.Setter
         public Builder commodityCode(String commodityCode) {
-            this.commodityCode = Objects.requireNonNull(commodityCode);
+            if (commodityCode == null) {
+              throw new MissingRequiredPropertyException("GetInstanceClassInfosResult", "commodityCode");
+            }
+            this.commodityCode = commodityCode;
             return this;
         }
         @CustomType.Setter
         public Builder dbInstanceId(@Nullable String dbInstanceId) {
+
             this.dbInstanceId = dbInstanceId;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetInstanceClassInfosResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder ids(List<String> ids) {
-            this.ids = Objects.requireNonNull(ids);
+            if (ids == null) {
+              throw new MissingRequiredPropertyException("GetInstanceClassInfosResult", "ids");
+            }
+            this.ids = ids;
             return this;
         }
         public Builder ids(String... ids) {
@@ -121,6 +132,7 @@ public final class GetInstanceClassInfosResult {
         }
         @CustomType.Setter
         public Builder infos(@Nullable List<GetInstanceClassInfosInfo> infos) {
+
             this.infos = infos;
             return this;
         }
@@ -129,11 +141,15 @@ public final class GetInstanceClassInfosResult {
         }
         @CustomType.Setter
         public Builder orderType(String orderType) {
-            this.orderType = Objects.requireNonNull(orderType);
+            if (orderType == null) {
+              throw new MissingRequiredPropertyException("GetInstanceClassInfosResult", "orderType");
+            }
+            this.orderType = orderType;
             return this;
         }
         @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
+
             this.outputFile = outputFile;
             return this;
         }

@@ -5,6 +5,7 @@ package com.pulumi.alicloud.sae.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -199,7 +200,9 @@ public final class GetIngressesArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         public GetIngressesArgs build() {
-            $.namespaceId = Objects.requireNonNull($.namespaceId, "expected parameter 'namespaceId' to be non-null");
+            if ($.namespaceId == null) {
+                throw new MissingRequiredPropertyException("GetIngressesArgs", "namespaceId");
+            }
             return $;
         }
     }

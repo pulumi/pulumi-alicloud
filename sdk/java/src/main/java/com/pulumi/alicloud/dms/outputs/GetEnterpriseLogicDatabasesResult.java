@@ -5,6 +5,7 @@ package com.pulumi.alicloud.dms.outputs;
 
 import com.pulumi.alicloud.dms.outputs.GetEnterpriseLogicDatabasesDatabase;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -80,7 +81,10 @@ public final class GetEnterpriseLogicDatabasesResult {
 
         @CustomType.Setter
         public Builder databases(List<GetEnterpriseLogicDatabasesDatabase> databases) {
-            this.databases = Objects.requireNonNull(databases);
+            if (databases == null) {
+              throw new MissingRequiredPropertyException("GetEnterpriseLogicDatabasesResult", "databases");
+            }
+            this.databases = databases;
             return this;
         }
         public Builder databases(GetEnterpriseLogicDatabasesDatabase... databases) {
@@ -88,12 +92,18 @@ public final class GetEnterpriseLogicDatabasesResult {
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetEnterpriseLogicDatabasesResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder ids(List<String> ids) {
-            this.ids = Objects.requireNonNull(ids);
+            if (ids == null) {
+              throw new MissingRequiredPropertyException("GetEnterpriseLogicDatabasesResult", "ids");
+            }
+            this.ids = ids;
             return this;
         }
         public Builder ids(String... ids) {
@@ -101,6 +111,7 @@ public final class GetEnterpriseLogicDatabasesResult {
         }
         @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
+
             this.outputFile = outputFile;
             return this;
         }

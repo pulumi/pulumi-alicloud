@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.kvstore.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -166,57 +167,90 @@ public final class GetConnectionsConnection {
 
         @CustomType.Setter
         public Builder connectionString(String connectionString) {
-            this.connectionString = Objects.requireNonNull(connectionString);
+            if (connectionString == null) {
+              throw new MissingRequiredPropertyException("GetConnectionsConnection", "connectionString");
+            }
+            this.connectionString = connectionString;
             return this;
         }
         @CustomType.Setter
         public Builder dbInstanceNetType(String dbInstanceNetType) {
-            this.dbInstanceNetType = Objects.requireNonNull(dbInstanceNetType);
+            if (dbInstanceNetType == null) {
+              throw new MissingRequiredPropertyException("GetConnectionsConnection", "dbInstanceNetType");
+            }
+            this.dbInstanceNetType = dbInstanceNetType;
             return this;
         }
         @CustomType.Setter
         public Builder expiredTime(String expiredTime) {
-            this.expiredTime = Objects.requireNonNull(expiredTime);
+            if (expiredTime == null) {
+              throw new MissingRequiredPropertyException("GetConnectionsConnection", "expiredTime");
+            }
+            this.expiredTime = expiredTime;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetConnectionsConnection", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder instanceId(String instanceId) {
-            this.instanceId = Objects.requireNonNull(instanceId);
+            if (instanceId == null) {
+              throw new MissingRequiredPropertyException("GetConnectionsConnection", "instanceId");
+            }
+            this.instanceId = instanceId;
             return this;
         }
         @CustomType.Setter
         public Builder ipAddress(String ipAddress) {
-            this.ipAddress = Objects.requireNonNull(ipAddress);
+            if (ipAddress == null) {
+              throw new MissingRequiredPropertyException("GetConnectionsConnection", "ipAddress");
+            }
+            this.ipAddress = ipAddress;
             return this;
         }
         @CustomType.Setter
         public Builder port(String port) {
-            this.port = Objects.requireNonNull(port);
+            if (port == null) {
+              throw new MissingRequiredPropertyException("GetConnectionsConnection", "port");
+            }
+            this.port = port;
             return this;
         }
         @CustomType.Setter
         public Builder upgradeable(String upgradeable) {
-            this.upgradeable = Objects.requireNonNull(upgradeable);
+            if (upgradeable == null) {
+              throw new MissingRequiredPropertyException("GetConnectionsConnection", "upgradeable");
+            }
+            this.upgradeable = upgradeable;
             return this;
         }
         @CustomType.Setter
         public Builder vpcId(String vpcId) {
-            this.vpcId = Objects.requireNonNull(vpcId);
+            if (vpcId == null) {
+              throw new MissingRequiredPropertyException("GetConnectionsConnection", "vpcId");
+            }
+            this.vpcId = vpcId;
             return this;
         }
         @CustomType.Setter
         public Builder vpcInstanceId(String vpcInstanceId) {
-            this.vpcInstanceId = Objects.requireNonNull(vpcInstanceId);
+            if (vpcInstanceId == null) {
+              throw new MissingRequiredPropertyException("GetConnectionsConnection", "vpcInstanceId");
+            }
+            this.vpcInstanceId = vpcInstanceId;
             return this;
         }
         @CustomType.Setter
         public Builder vswitchId(String vswitchId) {
-            this.vswitchId = Objects.requireNonNull(vswitchId);
+            if (vswitchId == null) {
+              throw new MissingRequiredPropertyException("GetConnectionsConnection", "vswitchId");
+            }
+            this.vswitchId = vswitchId;
             return this;
         }
         public GetConnectionsConnection build() {

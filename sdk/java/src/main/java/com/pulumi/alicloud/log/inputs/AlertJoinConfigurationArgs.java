@@ -5,6 +5,7 @@ package com.pulumi.alicloud.log.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -111,8 +112,12 @@ public final class AlertJoinConfigurationArgs extends com.pulumi.resources.Resou
         }
 
         public AlertJoinConfigurationArgs build() {
-            $.condition = Objects.requireNonNull($.condition, "expected parameter 'condition' to be non-null");
-            $.type = Objects.requireNonNull($.type, "expected parameter 'type' to be non-null");
+            if ($.condition == null) {
+                throw new MissingRequiredPropertyException("AlertJoinConfigurationArgs", "condition");
+            }
+            if ($.type == null) {
+                throw new MissingRequiredPropertyException("AlertJoinConfigurationArgs", "type");
+            }
             return $;
         }
     }

@@ -6,6 +6,7 @@ package com.pulumi.alicloud.ros;
 import com.pulumi.alicloud.ros.inputs.StackParameterArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.Object;
@@ -815,7 +816,9 @@ public final class StackArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public StackArgs build() {
-            $.stackName = Objects.requireNonNull($.stackName, "expected parameter 'stackName' to be non-null");
+            if ($.stackName == null) {
+                throw new MissingRequiredPropertyException("StackArgs", "stackName");
+            }
             return $;
         }
     }

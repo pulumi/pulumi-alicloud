@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.rds.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -126,37 +127,58 @@ public final class GetSlotsSlot {
 
         @CustomType.Setter
         public Builder database(String database) {
-            this.database = Objects.requireNonNull(database);
+            if (database == null) {
+              throw new MissingRequiredPropertyException("GetSlotsSlot", "database");
+            }
+            this.database = database;
             return this;
         }
         @CustomType.Setter
         public Builder plugin(String plugin) {
-            this.plugin = Objects.requireNonNull(plugin);
+            if (plugin == null) {
+              throw new MissingRequiredPropertyException("GetSlotsSlot", "plugin");
+            }
+            this.plugin = plugin;
             return this;
         }
         @CustomType.Setter
         public Builder slotName(String slotName) {
-            this.slotName = Objects.requireNonNull(slotName);
+            if (slotName == null) {
+              throw new MissingRequiredPropertyException("GetSlotsSlot", "slotName");
+            }
+            this.slotName = slotName;
             return this;
         }
         @CustomType.Setter
         public Builder slotStatus(String slotStatus) {
-            this.slotStatus = Objects.requireNonNull(slotStatus);
+            if (slotStatus == null) {
+              throw new MissingRequiredPropertyException("GetSlotsSlot", "slotStatus");
+            }
+            this.slotStatus = slotStatus;
             return this;
         }
         @CustomType.Setter
         public Builder slotType(String slotType) {
-            this.slotType = Objects.requireNonNull(slotType);
+            if (slotType == null) {
+              throw new MissingRequiredPropertyException("GetSlotsSlot", "slotType");
+            }
+            this.slotType = slotType;
             return this;
         }
         @CustomType.Setter
         public Builder temporary(String temporary) {
-            this.temporary = Objects.requireNonNull(temporary);
+            if (temporary == null) {
+              throw new MissingRequiredPropertyException("GetSlotsSlot", "temporary");
+            }
+            this.temporary = temporary;
             return this;
         }
         @CustomType.Setter
         public Builder walDelay(String walDelay) {
-            this.walDelay = Objects.requireNonNull(walDelay);
+            if (walDelay == null) {
+              throw new MissingRequiredPropertyException("GetSlotsSlot", "walDelay");
+            }
+            this.walDelay = walDelay;
             return this;
         }
         public GetSlotsSlot build() {

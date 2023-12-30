@@ -59,11 +59,13 @@ public final class BucketLifecycleRuleFilterNot {
 
         @CustomType.Setter
         public Builder prefix(@Nullable String prefix) {
+
             this.prefix = prefix;
             return this;
         }
         @CustomType.Setter
         public Builder tag(@Nullable BucketLifecycleRuleFilterNotTag tag) {
+
             this.tag = tag;
             return this;
         }

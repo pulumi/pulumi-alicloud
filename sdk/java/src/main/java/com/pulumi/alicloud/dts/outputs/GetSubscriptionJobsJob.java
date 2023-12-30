@@ -5,6 +5,7 @@ package com.pulumi.alicloud.dts.outputs;
 
 import com.pulumi.alicloud.dts.outputs.GetSubscriptionJobsJobSubscriptionHost;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Object;
 import java.lang.String;
@@ -425,122 +426,194 @@ public final class GetSubscriptionJobsJob {
 
         @CustomType.Setter
         public Builder checkpoint(String checkpoint) {
-            this.checkpoint = Objects.requireNonNull(checkpoint);
+            if (checkpoint == null) {
+              throw new MissingRequiredPropertyException("GetSubscriptionJobsJob", "checkpoint");
+            }
+            this.checkpoint = checkpoint;
             return this;
         }
         @CustomType.Setter
         public Builder createTime(String createTime) {
-            this.createTime = Objects.requireNonNull(createTime);
+            if (createTime == null) {
+              throw new MissingRequiredPropertyException("GetSubscriptionJobsJob", "createTime");
+            }
+            this.createTime = createTime;
             return this;
         }
         @CustomType.Setter
         public Builder dbList(String dbList) {
-            this.dbList = Objects.requireNonNull(dbList);
+            if (dbList == null) {
+              throw new MissingRequiredPropertyException("GetSubscriptionJobsJob", "dbList");
+            }
+            this.dbList = dbList;
             return this;
         }
         @CustomType.Setter
         public Builder dtsInstanceId(String dtsInstanceId) {
-            this.dtsInstanceId = Objects.requireNonNull(dtsInstanceId);
+            if (dtsInstanceId == null) {
+              throw new MissingRequiredPropertyException("GetSubscriptionJobsJob", "dtsInstanceId");
+            }
+            this.dtsInstanceId = dtsInstanceId;
             return this;
         }
         @CustomType.Setter
         public Builder dtsJobId(String dtsJobId) {
-            this.dtsJobId = Objects.requireNonNull(dtsJobId);
+            if (dtsJobId == null) {
+              throw new MissingRequiredPropertyException("GetSubscriptionJobsJob", "dtsJobId");
+            }
+            this.dtsJobId = dtsJobId;
             return this;
         }
         @CustomType.Setter
         public Builder dtsJobName(String dtsJobName) {
-            this.dtsJobName = Objects.requireNonNull(dtsJobName);
+            if (dtsJobName == null) {
+              throw new MissingRequiredPropertyException("GetSubscriptionJobsJob", "dtsJobName");
+            }
+            this.dtsJobName = dtsJobName;
             return this;
         }
         @CustomType.Setter
         public Builder expireTime(String expireTime) {
-            this.expireTime = Objects.requireNonNull(expireTime);
+            if (expireTime == null) {
+              throw new MissingRequiredPropertyException("GetSubscriptionJobsJob", "expireTime");
+            }
+            this.expireTime = expireTime;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetSubscriptionJobsJob", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder paymentType(String paymentType) {
-            this.paymentType = Objects.requireNonNull(paymentType);
+            if (paymentType == null) {
+              throw new MissingRequiredPropertyException("GetSubscriptionJobsJob", "paymentType");
+            }
+            this.paymentType = paymentType;
             return this;
         }
         @CustomType.Setter
         public Builder sourceEndpointDatabaseName(String sourceEndpointDatabaseName) {
-            this.sourceEndpointDatabaseName = Objects.requireNonNull(sourceEndpointDatabaseName);
+            if (sourceEndpointDatabaseName == null) {
+              throw new MissingRequiredPropertyException("GetSubscriptionJobsJob", "sourceEndpointDatabaseName");
+            }
+            this.sourceEndpointDatabaseName = sourceEndpointDatabaseName;
             return this;
         }
         @CustomType.Setter
         public Builder sourceEndpointEngineName(String sourceEndpointEngineName) {
-            this.sourceEndpointEngineName = Objects.requireNonNull(sourceEndpointEngineName);
+            if (sourceEndpointEngineName == null) {
+              throw new MissingRequiredPropertyException("GetSubscriptionJobsJob", "sourceEndpointEngineName");
+            }
+            this.sourceEndpointEngineName = sourceEndpointEngineName;
             return this;
         }
         @CustomType.Setter
         public Builder sourceEndpointInstanceId(String sourceEndpointInstanceId) {
-            this.sourceEndpointInstanceId = Objects.requireNonNull(sourceEndpointInstanceId);
+            if (sourceEndpointInstanceId == null) {
+              throw new MissingRequiredPropertyException("GetSubscriptionJobsJob", "sourceEndpointInstanceId");
+            }
+            this.sourceEndpointInstanceId = sourceEndpointInstanceId;
             return this;
         }
         @CustomType.Setter
         public Builder sourceEndpointInstanceType(String sourceEndpointInstanceType) {
-            this.sourceEndpointInstanceType = Objects.requireNonNull(sourceEndpointInstanceType);
+            if (sourceEndpointInstanceType == null) {
+              throw new MissingRequiredPropertyException("GetSubscriptionJobsJob", "sourceEndpointInstanceType");
+            }
+            this.sourceEndpointInstanceType = sourceEndpointInstanceType;
             return this;
         }
         @CustomType.Setter
         public Builder sourceEndpointIp(String sourceEndpointIp) {
-            this.sourceEndpointIp = Objects.requireNonNull(sourceEndpointIp);
+            if (sourceEndpointIp == null) {
+              throw new MissingRequiredPropertyException("GetSubscriptionJobsJob", "sourceEndpointIp");
+            }
+            this.sourceEndpointIp = sourceEndpointIp;
             return this;
         }
         @CustomType.Setter
         public Builder sourceEndpointOracleSid(String sourceEndpointOracleSid) {
-            this.sourceEndpointOracleSid = Objects.requireNonNull(sourceEndpointOracleSid);
+            if (sourceEndpointOracleSid == null) {
+              throw new MissingRequiredPropertyException("GetSubscriptionJobsJob", "sourceEndpointOracleSid");
+            }
+            this.sourceEndpointOracleSid = sourceEndpointOracleSid;
             return this;
         }
         @CustomType.Setter
         public Builder sourceEndpointOwnerId(String sourceEndpointOwnerId) {
-            this.sourceEndpointOwnerId = Objects.requireNonNull(sourceEndpointOwnerId);
+            if (sourceEndpointOwnerId == null) {
+              throw new MissingRequiredPropertyException("GetSubscriptionJobsJob", "sourceEndpointOwnerId");
+            }
+            this.sourceEndpointOwnerId = sourceEndpointOwnerId;
             return this;
         }
         @CustomType.Setter
         public Builder sourceEndpointPort(String sourceEndpointPort) {
-            this.sourceEndpointPort = Objects.requireNonNull(sourceEndpointPort);
+            if (sourceEndpointPort == null) {
+              throw new MissingRequiredPropertyException("GetSubscriptionJobsJob", "sourceEndpointPort");
+            }
+            this.sourceEndpointPort = sourceEndpointPort;
             return this;
         }
         @CustomType.Setter
         public Builder sourceEndpointRegion(String sourceEndpointRegion) {
-            this.sourceEndpointRegion = Objects.requireNonNull(sourceEndpointRegion);
+            if (sourceEndpointRegion == null) {
+              throw new MissingRequiredPropertyException("GetSubscriptionJobsJob", "sourceEndpointRegion");
+            }
+            this.sourceEndpointRegion = sourceEndpointRegion;
             return this;
         }
         @CustomType.Setter
         public Builder sourceEndpointRole(String sourceEndpointRole) {
-            this.sourceEndpointRole = Objects.requireNonNull(sourceEndpointRole);
+            if (sourceEndpointRole == null) {
+              throw new MissingRequiredPropertyException("GetSubscriptionJobsJob", "sourceEndpointRole");
+            }
+            this.sourceEndpointRole = sourceEndpointRole;
             return this;
         }
         @CustomType.Setter
         public Builder sourceEndpointUserName(String sourceEndpointUserName) {
-            this.sourceEndpointUserName = Objects.requireNonNull(sourceEndpointUserName);
+            if (sourceEndpointUserName == null) {
+              throw new MissingRequiredPropertyException("GetSubscriptionJobsJob", "sourceEndpointUserName");
+            }
+            this.sourceEndpointUserName = sourceEndpointUserName;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetSubscriptionJobsJob", "status");
+            }
+            this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder subscriptionDataTypeDdl(Boolean subscriptionDataTypeDdl) {
-            this.subscriptionDataTypeDdl = Objects.requireNonNull(subscriptionDataTypeDdl);
+            if (subscriptionDataTypeDdl == null) {
+              throw new MissingRequiredPropertyException("GetSubscriptionJobsJob", "subscriptionDataTypeDdl");
+            }
+            this.subscriptionDataTypeDdl = subscriptionDataTypeDdl;
             return this;
         }
         @CustomType.Setter
         public Builder subscriptionDataTypeDml(Boolean subscriptionDataTypeDml) {
-            this.subscriptionDataTypeDml = Objects.requireNonNull(subscriptionDataTypeDml);
+            if (subscriptionDataTypeDml == null) {
+              throw new MissingRequiredPropertyException("GetSubscriptionJobsJob", "subscriptionDataTypeDml");
+            }
+            this.subscriptionDataTypeDml = subscriptionDataTypeDml;
             return this;
         }
         @CustomType.Setter
         public Builder subscriptionHosts(List<GetSubscriptionJobsJobSubscriptionHost> subscriptionHosts) {
-            this.subscriptionHosts = Objects.requireNonNull(subscriptionHosts);
+            if (subscriptionHosts == null) {
+              throw new MissingRequiredPropertyException("GetSubscriptionJobsJob", "subscriptionHosts");
+            }
+            this.subscriptionHosts = subscriptionHosts;
             return this;
         }
         public Builder subscriptionHosts(GetSubscriptionJobsJobSubscriptionHost... subscriptionHosts) {
@@ -548,22 +621,34 @@ public final class GetSubscriptionJobsJob {
         }
         @CustomType.Setter
         public Builder subscriptionInstanceNetworkType(String subscriptionInstanceNetworkType) {
-            this.subscriptionInstanceNetworkType = Objects.requireNonNull(subscriptionInstanceNetworkType);
+            if (subscriptionInstanceNetworkType == null) {
+              throw new MissingRequiredPropertyException("GetSubscriptionJobsJob", "subscriptionInstanceNetworkType");
+            }
+            this.subscriptionInstanceNetworkType = subscriptionInstanceNetworkType;
             return this;
         }
         @CustomType.Setter
         public Builder subscriptionInstanceVpcId(String subscriptionInstanceVpcId) {
-            this.subscriptionInstanceVpcId = Objects.requireNonNull(subscriptionInstanceVpcId);
+            if (subscriptionInstanceVpcId == null) {
+              throw new MissingRequiredPropertyException("GetSubscriptionJobsJob", "subscriptionInstanceVpcId");
+            }
+            this.subscriptionInstanceVpcId = subscriptionInstanceVpcId;
             return this;
         }
         @CustomType.Setter
         public Builder subscriptionInstanceVswitchId(String subscriptionInstanceVswitchId) {
-            this.subscriptionInstanceVswitchId = Objects.requireNonNull(subscriptionInstanceVswitchId);
+            if (subscriptionInstanceVswitchId == null) {
+              throw new MissingRequiredPropertyException("GetSubscriptionJobsJob", "subscriptionInstanceVswitchId");
+            }
+            this.subscriptionInstanceVswitchId = subscriptionInstanceVswitchId;
             return this;
         }
         @CustomType.Setter
         public Builder tags(Map<String,Object> tags) {
-            this.tags = Objects.requireNonNull(tags);
+            if (tags == null) {
+              throw new MissingRequiredPropertyException("GetSubscriptionJobsJob", "tags");
+            }
+            this.tags = tags;
             return this;
         }
         public GetSubscriptionJobsJob build() {

@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.config.inputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -61,26 +62,33 @@ public final class AssumeRole {
 
         @CustomType.Setter
         public Builder externalId(@Nullable String externalId) {
+
             this.externalId = externalId;
             return this;
         }
         @CustomType.Setter
         public Builder policy(@Nullable String policy) {
+
             this.policy = policy;
             return this;
         }
         @CustomType.Setter
         public Builder roleArn(String roleArn) {
-            this.roleArn = Objects.requireNonNull(roleArn);
+            if (roleArn == null) {
+              throw new MissingRequiredPropertyException("AssumeRole", "roleArn");
+            }
+            this.roleArn = roleArn;
             return this;
         }
         @CustomType.Setter
         public Builder sessionExpiration(@Nullable Integer sessionExpiration) {
+
             this.sessionExpiration = sessionExpiration;
             return this;
         }
         @CustomType.Setter
         public Builder sessionName(@Nullable String sessionName) {
+
             this.sessionName = sessionName;
             return this;
         }

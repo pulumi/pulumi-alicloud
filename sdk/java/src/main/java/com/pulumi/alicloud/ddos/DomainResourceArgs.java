@@ -6,6 +6,7 @@ package com.pulumi.alicloud.ddos;
 import com.pulumi.alicloud.ddos.inputs.DomainResourceProxyTypeArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -342,11 +343,21 @@ public final class DomainResourceArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         public DomainResourceArgs build() {
-            $.domain = Objects.requireNonNull($.domain, "expected parameter 'domain' to be non-null");
-            $.instanceIds = Objects.requireNonNull($.instanceIds, "expected parameter 'instanceIds' to be non-null");
-            $.proxyTypes = Objects.requireNonNull($.proxyTypes, "expected parameter 'proxyTypes' to be non-null");
-            $.realServers = Objects.requireNonNull($.realServers, "expected parameter 'realServers' to be non-null");
-            $.rsType = Objects.requireNonNull($.rsType, "expected parameter 'rsType' to be non-null");
+            if ($.domain == null) {
+                throw new MissingRequiredPropertyException("DomainResourceArgs", "domain");
+            }
+            if ($.instanceIds == null) {
+                throw new MissingRequiredPropertyException("DomainResourceArgs", "instanceIds");
+            }
+            if ($.proxyTypes == null) {
+                throw new MissingRequiredPropertyException("DomainResourceArgs", "proxyTypes");
+            }
+            if ($.realServers == null) {
+                throw new MissingRequiredPropertyException("DomainResourceArgs", "realServers");
+            }
+            if ($.rsType == null) {
+                throw new MissingRequiredPropertyException("DomainResourceArgs", "rsType");
+            }
             return $;
         }
     }

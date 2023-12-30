@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.slb.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.Object;
 import java.lang.String;
@@ -185,57 +186,90 @@ public final class GetCaCertificatesCertificate {
 
         @CustomType.Setter
         public Builder caCertificateId(String caCertificateId) {
-            this.caCertificateId = Objects.requireNonNull(caCertificateId);
+            if (caCertificateId == null) {
+              throw new MissingRequiredPropertyException("GetCaCertificatesCertificate", "caCertificateId");
+            }
+            this.caCertificateId = caCertificateId;
             return this;
         }
         @CustomType.Setter
         public Builder caCertificateName(String caCertificateName) {
-            this.caCertificateName = Objects.requireNonNull(caCertificateName);
+            if (caCertificateName == null) {
+              throw new MissingRequiredPropertyException("GetCaCertificatesCertificate", "caCertificateName");
+            }
+            this.caCertificateName = caCertificateName;
             return this;
         }
         @CustomType.Setter
         public Builder commonName(String commonName) {
-            this.commonName = Objects.requireNonNull(commonName);
+            if (commonName == null) {
+              throw new MissingRequiredPropertyException("GetCaCertificatesCertificate", "commonName");
+            }
+            this.commonName = commonName;
             return this;
         }
         @CustomType.Setter
         public Builder createdTimestamp(Integer createdTimestamp) {
-            this.createdTimestamp = Objects.requireNonNull(createdTimestamp);
+            if (createdTimestamp == null) {
+              throw new MissingRequiredPropertyException("GetCaCertificatesCertificate", "createdTimestamp");
+            }
+            this.createdTimestamp = createdTimestamp;
             return this;
         }
         @CustomType.Setter
         public Builder expiredTime(String expiredTime) {
-            this.expiredTime = Objects.requireNonNull(expiredTime);
+            if (expiredTime == null) {
+              throw new MissingRequiredPropertyException("GetCaCertificatesCertificate", "expiredTime");
+            }
+            this.expiredTime = expiredTime;
             return this;
         }
         @CustomType.Setter
         public Builder expiredTimestamp(Integer expiredTimestamp) {
-            this.expiredTimestamp = Objects.requireNonNull(expiredTimestamp);
+            if (expiredTimestamp == null) {
+              throw new MissingRequiredPropertyException("GetCaCertificatesCertificate", "expiredTimestamp");
+            }
+            this.expiredTimestamp = expiredTimestamp;
             return this;
         }
         @CustomType.Setter
         public Builder fingerprint(String fingerprint) {
-            this.fingerprint = Objects.requireNonNull(fingerprint);
+            if (fingerprint == null) {
+              throw new MissingRequiredPropertyException("GetCaCertificatesCertificate", "fingerprint");
+            }
+            this.fingerprint = fingerprint;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetCaCertificatesCertificate", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetCaCertificatesCertificate", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder resourceGroupId(String resourceGroupId) {
-            this.resourceGroupId = Objects.requireNonNull(resourceGroupId);
+            if (resourceGroupId == null) {
+              throw new MissingRequiredPropertyException("GetCaCertificatesCertificate", "resourceGroupId");
+            }
+            this.resourceGroupId = resourceGroupId;
             return this;
         }
         @CustomType.Setter
         public Builder tags(Map<String,Object> tags) {
-            this.tags = Objects.requireNonNull(tags);
+            if (tags == null) {
+              throw new MissingRequiredPropertyException("GetCaCertificatesCertificate", "tags");
+            }
+            this.tags = tags;
             return this;
         }
         public GetCaCertificatesCertificate build() {

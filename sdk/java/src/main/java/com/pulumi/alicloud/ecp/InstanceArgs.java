@@ -5,6 +5,7 @@ package com.pulumi.alicloud.ecp;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -702,10 +703,18 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public InstanceArgs build() {
-            $.imageId = Objects.requireNonNull($.imageId, "expected parameter 'imageId' to be non-null");
-            $.instanceType = Objects.requireNonNull($.instanceType, "expected parameter 'instanceType' to be non-null");
-            $.securityGroupId = Objects.requireNonNull($.securityGroupId, "expected parameter 'securityGroupId' to be non-null");
-            $.vswitchId = Objects.requireNonNull($.vswitchId, "expected parameter 'vswitchId' to be non-null");
+            if ($.imageId == null) {
+                throw new MissingRequiredPropertyException("InstanceArgs", "imageId");
+            }
+            if ($.instanceType == null) {
+                throw new MissingRequiredPropertyException("InstanceArgs", "instanceType");
+            }
+            if ($.securityGroupId == null) {
+                throw new MissingRequiredPropertyException("InstanceArgs", "securityGroupId");
+            }
+            if ($.vswitchId == null) {
+                throw new MissingRequiredPropertyException("InstanceArgs", "vswitchId");
+            }
             return $;
         }
     }

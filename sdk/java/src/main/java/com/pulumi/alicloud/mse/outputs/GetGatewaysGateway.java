@@ -5,6 +5,7 @@ package com.pulumi.alicloud.mse.outputs;
 
 import com.pulumi.alicloud.mse.outputs.GetGatewaysGatewaySlbList;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -184,37 +185,58 @@ public final class GetGatewaysGateway {
 
         @CustomType.Setter
         public Builder backupVswitchId(String backupVswitchId) {
-            this.backupVswitchId = Objects.requireNonNull(backupVswitchId);
+            if (backupVswitchId == null) {
+              throw new MissingRequiredPropertyException("GetGatewaysGateway", "backupVswitchId");
+            }
+            this.backupVswitchId = backupVswitchId;
             return this;
         }
         @CustomType.Setter
         public Builder gatewayName(String gatewayName) {
-            this.gatewayName = Objects.requireNonNull(gatewayName);
+            if (gatewayName == null) {
+              throw new MissingRequiredPropertyException("GetGatewaysGateway", "gatewayName");
+            }
+            this.gatewayName = gatewayName;
             return this;
         }
         @CustomType.Setter
         public Builder gatewayUniqueId(String gatewayUniqueId) {
-            this.gatewayUniqueId = Objects.requireNonNull(gatewayUniqueId);
+            if (gatewayUniqueId == null) {
+              throw new MissingRequiredPropertyException("GetGatewaysGateway", "gatewayUniqueId");
+            }
+            this.gatewayUniqueId = gatewayUniqueId;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetGatewaysGateway", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder paymentType(String paymentType) {
-            this.paymentType = Objects.requireNonNull(paymentType);
+            if (paymentType == null) {
+              throw new MissingRequiredPropertyException("GetGatewaysGateway", "paymentType");
+            }
+            this.paymentType = paymentType;
             return this;
         }
         @CustomType.Setter
         public Builder replica(String replica) {
-            this.replica = Objects.requireNonNull(replica);
+            if (replica == null) {
+              throw new MissingRequiredPropertyException("GetGatewaysGateway", "replica");
+            }
+            this.replica = replica;
             return this;
         }
         @CustomType.Setter
         public Builder slbLists(List<GetGatewaysGatewaySlbList> slbLists) {
-            this.slbLists = Objects.requireNonNull(slbLists);
+            if (slbLists == null) {
+              throw new MissingRequiredPropertyException("GetGatewaysGateway", "slbLists");
+            }
+            this.slbLists = slbLists;
             return this;
         }
         public Builder slbLists(GetGatewaysGatewaySlbList... slbLists) {
@@ -222,22 +244,34 @@ public final class GetGatewaysGateway {
         }
         @CustomType.Setter
         public Builder spec(String spec) {
-            this.spec = Objects.requireNonNull(spec);
+            if (spec == null) {
+              throw new MissingRequiredPropertyException("GetGatewaysGateway", "spec");
+            }
+            this.spec = spec;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetGatewaysGateway", "status");
+            }
+            this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder vpcId(String vpcId) {
-            this.vpcId = Objects.requireNonNull(vpcId);
+            if (vpcId == null) {
+              throw new MissingRequiredPropertyException("GetGatewaysGateway", "vpcId");
+            }
+            this.vpcId = vpcId;
             return this;
         }
         @CustomType.Setter
         public Builder vswitchId(String vswitchId) {
-            this.vswitchId = Objects.requireNonNull(vswitchId);
+            if (vswitchId == null) {
+              throw new MissingRequiredPropertyException("GetGatewaysGateway", "vswitchId");
+            }
+            this.vswitchId = vswitchId;
             return this;
         }
         public GetGatewaysGateway build() {

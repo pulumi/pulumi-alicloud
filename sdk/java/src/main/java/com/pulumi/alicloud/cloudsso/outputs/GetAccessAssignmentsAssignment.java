@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.cloudsso.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -182,57 +183,90 @@ public final class GetAccessAssignmentsAssignment {
 
         @CustomType.Setter
         public Builder accessConfigurationId(String accessConfigurationId) {
-            this.accessConfigurationId = Objects.requireNonNull(accessConfigurationId);
+            if (accessConfigurationId == null) {
+              throw new MissingRequiredPropertyException("GetAccessAssignmentsAssignment", "accessConfigurationId");
+            }
+            this.accessConfigurationId = accessConfigurationId;
             return this;
         }
         @CustomType.Setter
         public Builder accessConfigurationName(String accessConfigurationName) {
-            this.accessConfigurationName = Objects.requireNonNull(accessConfigurationName);
+            if (accessConfigurationName == null) {
+              throw new MissingRequiredPropertyException("GetAccessAssignmentsAssignment", "accessConfigurationName");
+            }
+            this.accessConfigurationName = accessConfigurationName;
             return this;
         }
         @CustomType.Setter
         public Builder directoryId(String directoryId) {
-            this.directoryId = Objects.requireNonNull(directoryId);
+            if (directoryId == null) {
+              throw new MissingRequiredPropertyException("GetAccessAssignmentsAssignment", "directoryId");
+            }
+            this.directoryId = directoryId;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetAccessAssignmentsAssignment", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder principalId(String principalId) {
-            this.principalId = Objects.requireNonNull(principalId);
+            if (principalId == null) {
+              throw new MissingRequiredPropertyException("GetAccessAssignmentsAssignment", "principalId");
+            }
+            this.principalId = principalId;
             return this;
         }
         @CustomType.Setter
         public Builder principalName(String principalName) {
-            this.principalName = Objects.requireNonNull(principalName);
+            if (principalName == null) {
+              throw new MissingRequiredPropertyException("GetAccessAssignmentsAssignment", "principalName");
+            }
+            this.principalName = principalName;
             return this;
         }
         @CustomType.Setter
         public Builder principalType(String principalType) {
-            this.principalType = Objects.requireNonNull(principalType);
+            if (principalType == null) {
+              throw new MissingRequiredPropertyException("GetAccessAssignmentsAssignment", "principalType");
+            }
+            this.principalType = principalType;
             return this;
         }
         @CustomType.Setter
         public Builder targetId(String targetId) {
-            this.targetId = Objects.requireNonNull(targetId);
+            if (targetId == null) {
+              throw new MissingRequiredPropertyException("GetAccessAssignmentsAssignment", "targetId");
+            }
+            this.targetId = targetId;
             return this;
         }
         @CustomType.Setter
         public Builder targetName(String targetName) {
-            this.targetName = Objects.requireNonNull(targetName);
+            if (targetName == null) {
+              throw new MissingRequiredPropertyException("GetAccessAssignmentsAssignment", "targetName");
+            }
+            this.targetName = targetName;
             return this;
         }
         @CustomType.Setter
         public Builder targetPathName(String targetPathName) {
-            this.targetPathName = Objects.requireNonNull(targetPathName);
+            if (targetPathName == null) {
+              throw new MissingRequiredPropertyException("GetAccessAssignmentsAssignment", "targetPathName");
+            }
+            this.targetPathName = targetPathName;
             return this;
         }
         @CustomType.Setter
         public Builder targetType(String targetType) {
-            this.targetType = Objects.requireNonNull(targetType);
+            if (targetType == null) {
+              throw new MissingRequiredPropertyException("GetAccessAssignmentsAssignment", "targetType");
+            }
+            this.targetType = targetType;
             return this;
         }
         public GetAccessAssignmentsAssignment build() {

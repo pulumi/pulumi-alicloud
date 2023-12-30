@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.log.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -101,11 +102,15 @@ public final class AlertNotificationList {
 
         @CustomType.Setter
         public Builder content(String content) {
-            this.content = Objects.requireNonNull(content);
+            if (content == null) {
+              throw new MissingRequiredPropertyException("AlertNotificationList", "content");
+            }
+            this.content = content;
             return this;
         }
         @CustomType.Setter
         public Builder emailLists(@Nullable List<String> emailLists) {
+
             this.emailLists = emailLists;
             return this;
         }
@@ -114,6 +119,7 @@ public final class AlertNotificationList {
         }
         @CustomType.Setter
         public Builder mobileLists(@Nullable List<String> mobileLists) {
+
             this.mobileLists = mobileLists;
             return this;
         }
@@ -122,12 +128,16 @@ public final class AlertNotificationList {
         }
         @CustomType.Setter
         public Builder serviceUri(@Nullable String serviceUri) {
+
             this.serviceUri = serviceUri;
             return this;
         }
         @CustomType.Setter
         public Builder type(String type) {
-            this.type = Objects.requireNonNull(type);
+            if (type == null) {
+              throw new MissingRequiredPropertyException("AlertNotificationList", "type");
+            }
+            this.type = type;
             return this;
         }
         public AlertNotificationList build() {

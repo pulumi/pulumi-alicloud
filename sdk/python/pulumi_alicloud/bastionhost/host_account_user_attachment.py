@@ -179,15 +179,12 @@ class HostAccountUserAttachment(pulumi.CustomResource):
         if name is None:
             name = "tf_example"
         default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
-        default_network = alicloud.vpc.Network("defaultNetwork",
-            vpc_name=name,
+        default_networks = alicloud.vpc.get_networks(name_regex="^default-NODELETING$",
             cidr_block="10.4.0.0/16")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
-            vswitch_name=name,
-            cidr_block="10.4.0.0/24",
-            vpc_id=default_network.id,
+        default_switches = alicloud.vpc.get_switches(cidr_block="10.4.0.0/24",
+            vpc_id=default_networks.ids[0],
             zone_id=default_zones.zones[0].id)
-        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
+        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_networks.ids[0])
         default_instance = alicloud.bastionhost.Instance("defaultInstance",
             description=name,
             license_code="bhah_ent_50_asset",
@@ -195,7 +192,7 @@ class HostAccountUserAttachment(pulumi.CustomResource):
             storage="5",
             bandwidth="5",
             period=1,
-            vswitch_id=default_switch.id,
+            vswitch_id=default_switches.ids[0],
             security_group_ids=[default_security_group.id])
         default_host = alicloud.bastionhost.Host("defaultHost",
             instance_id=default_instance.id,
@@ -263,15 +260,12 @@ class HostAccountUserAttachment(pulumi.CustomResource):
         if name is None:
             name = "tf_example"
         default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
-        default_network = alicloud.vpc.Network("defaultNetwork",
-            vpc_name=name,
+        default_networks = alicloud.vpc.get_networks(name_regex="^default-NODELETING$",
             cidr_block="10.4.0.0/16")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
-            vswitch_name=name,
-            cidr_block="10.4.0.0/24",
-            vpc_id=default_network.id,
+        default_switches = alicloud.vpc.get_switches(cidr_block="10.4.0.0/24",
+            vpc_id=default_networks.ids[0],
             zone_id=default_zones.zones[0].id)
-        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
+        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_networks.ids[0])
         default_instance = alicloud.bastionhost.Instance("defaultInstance",
             description=name,
             license_code="bhah_ent_50_asset",
@@ -279,7 +273,7 @@ class HostAccountUserAttachment(pulumi.CustomResource):
             storage="5",
             bandwidth="5",
             period=1,
-            vswitch_id=default_switch.id,
+            vswitch_id=default_switches.ids[0],
             security_group_ids=[default_security_group.id])
         default_host = alicloud.bastionhost.Host("defaultHost",
             instance_id=default_instance.id,

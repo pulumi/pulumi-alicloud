@@ -14,6 +14,7 @@ import com.pulumi.alicloud.alb.inputs.RuleRuleActionTrafficLimitConfigArgs;
 import com.pulumi.alicloud.alb.inputs.RuleRuleActionTrafficMirrorConfigArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -468,8 +469,12 @@ public final class RuleRuleActionArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         public RuleRuleActionArgs build() {
-            $.order = Objects.requireNonNull($.order, "expected parameter 'order' to be non-null");
-            $.type = Objects.requireNonNull($.type, "expected parameter 'type' to be non-null");
+            if ($.order == null) {
+                throw new MissingRequiredPropertyException("RuleRuleActionArgs", "order");
+            }
+            if ($.type == null) {
+                throw new MissingRequiredPropertyException("RuleRuleActionArgs", "type");
+            }
             return $;
         }
     }

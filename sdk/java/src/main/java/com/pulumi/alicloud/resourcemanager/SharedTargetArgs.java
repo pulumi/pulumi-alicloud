@@ -5,6 +5,7 @@ package com.pulumi.alicloud.resourcemanager;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -111,8 +112,12 @@ public final class SharedTargetArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public SharedTargetArgs build() {
-            $.resourceShareId = Objects.requireNonNull($.resourceShareId, "expected parameter 'resourceShareId' to be non-null");
-            $.targetId = Objects.requireNonNull($.targetId, "expected parameter 'targetId' to be non-null");
+            if ($.resourceShareId == null) {
+                throw new MissingRequiredPropertyException("SharedTargetArgs", "resourceShareId");
+            }
+            if ($.targetId == null) {
+                throw new MissingRequiredPropertyException("SharedTargetArgs", "targetId");
+            }
             return $;
         }
     }

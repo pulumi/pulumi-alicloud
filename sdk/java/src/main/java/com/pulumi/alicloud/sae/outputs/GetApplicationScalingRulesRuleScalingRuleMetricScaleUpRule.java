@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.sae.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.util.Objects;
@@ -71,17 +72,26 @@ public final class GetApplicationScalingRulesRuleScalingRuleMetricScaleUpRule {
 
         @CustomType.Setter
         public Builder disabled(Boolean disabled) {
-            this.disabled = Objects.requireNonNull(disabled);
+            if (disabled == null) {
+              throw new MissingRequiredPropertyException("GetApplicationScalingRulesRuleScalingRuleMetricScaleUpRule", "disabled");
+            }
+            this.disabled = disabled;
             return this;
         }
         @CustomType.Setter
         public Builder stabilizationWindowSeconds(Integer stabilizationWindowSeconds) {
-            this.stabilizationWindowSeconds = Objects.requireNonNull(stabilizationWindowSeconds);
+            if (stabilizationWindowSeconds == null) {
+              throw new MissingRequiredPropertyException("GetApplicationScalingRulesRuleScalingRuleMetricScaleUpRule", "stabilizationWindowSeconds");
+            }
+            this.stabilizationWindowSeconds = stabilizationWindowSeconds;
             return this;
         }
         @CustomType.Setter
         public Builder step(Integer step) {
-            this.step = Objects.requireNonNull(step);
+            if (step == null) {
+              throw new MissingRequiredPropertyException("GetApplicationScalingRulesRuleScalingRuleMetricScaleUpRule", "step");
+            }
+            this.step = step;
             return this;
         }
         public GetApplicationScalingRulesRuleScalingRuleMetricScaleUpRule build() {

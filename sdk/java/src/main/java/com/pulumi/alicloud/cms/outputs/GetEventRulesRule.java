@@ -5,6 +5,7 @@ package com.pulumi.alicloud.cms.outputs;
 
 import com.pulumi.alicloud.cms.outputs.GetEventRulesRuleEventPattern;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -143,12 +144,18 @@ public final class GetEventRulesRule {
 
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetEventRulesRule", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder eventPatterns(List<GetEventRulesRuleEventPattern> eventPatterns) {
-            this.eventPatterns = Objects.requireNonNull(eventPatterns);
+            if (eventPatterns == null) {
+              throw new MissingRequiredPropertyException("GetEventRulesRule", "eventPatterns");
+            }
+            this.eventPatterns = eventPatterns;
             return this;
         }
         public Builder eventPatterns(GetEventRulesRuleEventPattern... eventPatterns) {
@@ -156,32 +163,50 @@ public final class GetEventRulesRule {
         }
         @CustomType.Setter
         public Builder eventRuleName(String eventRuleName) {
-            this.eventRuleName = Objects.requireNonNull(eventRuleName);
+            if (eventRuleName == null) {
+              throw new MissingRequiredPropertyException("GetEventRulesRule", "eventRuleName");
+            }
+            this.eventRuleName = eventRuleName;
             return this;
         }
         @CustomType.Setter
         public Builder eventType(String eventType) {
-            this.eventType = Objects.requireNonNull(eventType);
+            if (eventType == null) {
+              throw new MissingRequiredPropertyException("GetEventRulesRule", "eventType");
+            }
+            this.eventType = eventType;
             return this;
         }
         @CustomType.Setter
         public Builder groupId(String groupId) {
-            this.groupId = Objects.requireNonNull(groupId);
+            if (groupId == null) {
+              throw new MissingRequiredPropertyException("GetEventRulesRule", "groupId");
+            }
+            this.groupId = groupId;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetEventRulesRule", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder silenceTime(Integer silenceTime) {
-            this.silenceTime = Objects.requireNonNull(silenceTime);
+            if (silenceTime == null) {
+              throw new MissingRequiredPropertyException("GetEventRulesRule", "silenceTime");
+            }
+            this.silenceTime = silenceTime;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetEventRulesRule", "status");
+            }
+            this.status = status;
             return this;
         }
         public GetEventRulesRule build() {

@@ -5,6 +5,7 @@ package com.pulumi.alicloud.cloudsso.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -236,7 +237,9 @@ public final class GetAccessConfigurationsArgs extends com.pulumi.resources.Invo
         }
 
         public GetAccessConfigurationsArgs build() {
-            $.directoryId = Objects.requireNonNull($.directoryId, "expected parameter 'directoryId' to be non-null");
+            if ($.directoryId == null) {
+                throw new MissingRequiredPropertyException("GetAccessConfigurationsArgs", "directoryId");
+            }
             return $;
         }
     }

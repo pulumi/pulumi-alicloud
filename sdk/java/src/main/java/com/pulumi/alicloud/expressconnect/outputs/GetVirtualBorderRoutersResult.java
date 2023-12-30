@@ -6,6 +6,7 @@ package com.pulumi.alicloud.expressconnect.outputs;
 import com.pulumi.alicloud.expressconnect.outputs.GetVirtualBorderRoutersFilter;
 import com.pulumi.alicloud.expressconnect.outputs.GetVirtualBorderRoutersRouter;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -89,6 +90,7 @@ public final class GetVirtualBorderRoutersResult {
 
         @CustomType.Setter
         public Builder filters(@Nullable List<GetVirtualBorderRoutersFilter> filters) {
+
             this.filters = filters;
             return this;
         }
@@ -97,12 +99,18 @@ public final class GetVirtualBorderRoutersResult {
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetVirtualBorderRoutersResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder ids(List<String> ids) {
-            this.ids = Objects.requireNonNull(ids);
+            if (ids == null) {
+              throw new MissingRequiredPropertyException("GetVirtualBorderRoutersResult", "ids");
+            }
+            this.ids = ids;
             return this;
         }
         public Builder ids(String... ids) {
@@ -110,12 +118,16 @@ public final class GetVirtualBorderRoutersResult {
         }
         @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
+
             this.nameRegex = nameRegex;
             return this;
         }
         @CustomType.Setter
         public Builder names(List<String> names) {
-            this.names = Objects.requireNonNull(names);
+            if (names == null) {
+              throw new MissingRequiredPropertyException("GetVirtualBorderRoutersResult", "names");
+            }
+            this.names = names;
             return this;
         }
         public Builder names(String... names) {
@@ -123,12 +135,16 @@ public final class GetVirtualBorderRoutersResult {
         }
         @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
+
             this.outputFile = outputFile;
             return this;
         }
         @CustomType.Setter
         public Builder routers(List<GetVirtualBorderRoutersRouter> routers) {
-            this.routers = Objects.requireNonNull(routers);
+            if (routers == null) {
+              throw new MissingRequiredPropertyException("GetVirtualBorderRoutersResult", "routers");
+            }
+            this.routers = routers;
             return this;
         }
         public Builder routers(GetVirtualBorderRoutersRouter... routers) {
@@ -136,6 +152,7 @@ public final class GetVirtualBorderRoutersResult {
         }
         @CustomType.Setter
         public Builder status(@Nullable String status) {
+
             this.status = status;
             return this;
         }

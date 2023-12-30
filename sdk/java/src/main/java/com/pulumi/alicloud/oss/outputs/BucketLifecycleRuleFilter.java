@@ -73,16 +73,19 @@ public final class BucketLifecycleRuleFilter {
 
         @CustomType.Setter
         public Builder not(@Nullable BucketLifecycleRuleFilterNot not) {
+
             this.not = not;
             return this;
         }
         @CustomType.Setter
         public Builder objectSizeGreaterThan(@Nullable Integer objectSizeGreaterThan) {
+
             this.objectSizeGreaterThan = objectSizeGreaterThan;
             return this;
         }
         @CustomType.Setter
         public Builder objectSizeLessThan(@Nullable Integer objectSizeLessThan) {
+
             this.objectSizeLessThan = objectSizeLessThan;
             return this;
         }

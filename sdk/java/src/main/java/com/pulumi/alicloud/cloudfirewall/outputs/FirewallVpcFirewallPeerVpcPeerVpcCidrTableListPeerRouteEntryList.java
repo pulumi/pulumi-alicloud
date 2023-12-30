@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.cloudfirewall.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -56,12 +57,18 @@ public final class FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryL
 
         @CustomType.Setter
         public Builder peerDestinationCidr(String peerDestinationCidr) {
-            this.peerDestinationCidr = Objects.requireNonNull(peerDestinationCidr);
+            if (peerDestinationCidr == null) {
+              throw new MissingRequiredPropertyException("FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryList", "peerDestinationCidr");
+            }
+            this.peerDestinationCidr = peerDestinationCidr;
             return this;
         }
         @CustomType.Setter
         public Builder peerNextHopInstanceId(String peerNextHopInstanceId) {
-            this.peerNextHopInstanceId = Objects.requireNonNull(peerNextHopInstanceId);
+            if (peerNextHopInstanceId == null) {
+              throw new MissingRequiredPropertyException("FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryList", "peerNextHopInstanceId");
+            }
+            this.peerNextHopInstanceId = peerNextHopInstanceId;
             return this;
         }
         public FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryList build() {

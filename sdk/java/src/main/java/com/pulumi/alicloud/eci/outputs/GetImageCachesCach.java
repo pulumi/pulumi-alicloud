@@ -5,6 +5,7 @@ package com.pulumi.alicloud.eci.outputs;
 
 import com.pulumi.alicloud.eci.outputs.GetImageCachesCachEvent;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -170,12 +171,18 @@ public final class GetImageCachesCach {
 
         @CustomType.Setter
         public Builder containerGroupId(String containerGroupId) {
-            this.containerGroupId = Objects.requireNonNull(containerGroupId);
+            if (containerGroupId == null) {
+              throw new MissingRequiredPropertyException("GetImageCachesCach", "containerGroupId");
+            }
+            this.containerGroupId = containerGroupId;
             return this;
         }
         @CustomType.Setter
         public Builder events(List<GetImageCachesCachEvent> events) {
-            this.events = Objects.requireNonNull(events);
+            if (events == null) {
+              throw new MissingRequiredPropertyException("GetImageCachesCach", "events");
+            }
+            this.events = events;
             return this;
         }
         public Builder events(GetImageCachesCachEvent... events) {
@@ -183,27 +190,42 @@ public final class GetImageCachesCach {
         }
         @CustomType.Setter
         public Builder expireDateTime(String expireDateTime) {
-            this.expireDateTime = Objects.requireNonNull(expireDateTime);
+            if (expireDateTime == null) {
+              throw new MissingRequiredPropertyException("GetImageCachesCach", "expireDateTime");
+            }
+            this.expireDateTime = expireDateTime;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetImageCachesCach", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder imageCacheId(String imageCacheId) {
-            this.imageCacheId = Objects.requireNonNull(imageCacheId);
+            if (imageCacheId == null) {
+              throw new MissingRequiredPropertyException("GetImageCachesCach", "imageCacheId");
+            }
+            this.imageCacheId = imageCacheId;
             return this;
         }
         @CustomType.Setter
         public Builder imageCacheName(String imageCacheName) {
-            this.imageCacheName = Objects.requireNonNull(imageCacheName);
+            if (imageCacheName == null) {
+              throw new MissingRequiredPropertyException("GetImageCachesCach", "imageCacheName");
+            }
+            this.imageCacheName = imageCacheName;
             return this;
         }
         @CustomType.Setter
         public Builder images(List<String> images) {
-            this.images = Objects.requireNonNull(images);
+            if (images == null) {
+              throw new MissingRequiredPropertyException("GetImageCachesCach", "images");
+            }
+            this.images = images;
             return this;
         }
         public Builder images(String... images) {
@@ -211,17 +233,26 @@ public final class GetImageCachesCach {
         }
         @CustomType.Setter
         public Builder progress(String progress) {
-            this.progress = Objects.requireNonNull(progress);
+            if (progress == null) {
+              throw new MissingRequiredPropertyException("GetImageCachesCach", "progress");
+            }
+            this.progress = progress;
             return this;
         }
         @CustomType.Setter
         public Builder snapshotId(String snapshotId) {
-            this.snapshotId = Objects.requireNonNull(snapshotId);
+            if (snapshotId == null) {
+              throw new MissingRequiredPropertyException("GetImageCachesCach", "snapshotId");
+            }
+            this.snapshotId = snapshotId;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetImageCachesCach", "status");
+            }
+            this.status = status;
             return this;
         }
         public GetImageCachesCach build() {

@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.cdn.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -119,7 +120,9 @@ public final class GetRealTimeLogDeliveriesPlainArgs extends com.pulumi.resource
         }
 
         public GetRealTimeLogDeliveriesPlainArgs build() {
-            $.domain = Objects.requireNonNull($.domain, "expected parameter 'domain' to be non-null");
+            if ($.domain == null) {
+                throw new MissingRequiredPropertyException("GetRealTimeLogDeliveriesPlainArgs", "domain");
+            }
             return $;
         }
     }

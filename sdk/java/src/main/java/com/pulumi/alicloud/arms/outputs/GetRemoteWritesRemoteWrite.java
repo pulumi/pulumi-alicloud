@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.arms.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -84,22 +85,34 @@ public final class GetRemoteWritesRemoteWrite {
 
         @CustomType.Setter
         public Builder clusterId(String clusterId) {
-            this.clusterId = Objects.requireNonNull(clusterId);
+            if (clusterId == null) {
+              throw new MissingRequiredPropertyException("GetRemoteWritesRemoteWrite", "clusterId");
+            }
+            this.clusterId = clusterId;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetRemoteWritesRemoteWrite", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder remoteWriteName(String remoteWriteName) {
-            this.remoteWriteName = Objects.requireNonNull(remoteWriteName);
+            if (remoteWriteName == null) {
+              throw new MissingRequiredPropertyException("GetRemoteWritesRemoteWrite", "remoteWriteName");
+            }
+            this.remoteWriteName = remoteWriteName;
             return this;
         }
         @CustomType.Setter
         public Builder remoteWriteYaml(String remoteWriteYaml) {
-            this.remoteWriteYaml = Objects.requireNonNull(remoteWriteYaml);
+            if (remoteWriteYaml == null) {
+              throw new MissingRequiredPropertyException("GetRemoteWritesRemoteWrite", "remoteWriteYaml");
+            }
+            this.remoteWriteYaml = remoteWriteYaml;
             return this;
         }
         public GetRemoteWritesRemoteWrite build() {

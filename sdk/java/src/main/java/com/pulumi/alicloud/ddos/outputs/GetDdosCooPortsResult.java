@@ -5,6 +5,7 @@ package com.pulumi.alicloud.ddos.outputs;
 
 import com.pulumi.alicloud.ddos.outputs.GetDdosCooPortsPort;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -82,22 +83,30 @@ public final class GetDdosCooPortsResult {
 
         @CustomType.Setter
         public Builder frontendPort(@Nullable String frontendPort) {
+
             this.frontendPort = frontendPort;
             return this;
         }
         @CustomType.Setter
         public Builder frontendProtocol(@Nullable String frontendProtocol) {
+
             this.frontendProtocol = frontendProtocol;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetDdosCooPortsResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder ids(List<String> ids) {
-            this.ids = Objects.requireNonNull(ids);
+            if (ids == null) {
+              throw new MissingRequiredPropertyException("GetDdosCooPortsResult", "ids");
+            }
+            this.ids = ids;
             return this;
         }
         public Builder ids(String... ids) {
@@ -105,17 +114,24 @@ public final class GetDdosCooPortsResult {
         }
         @CustomType.Setter
         public Builder instanceId(String instanceId) {
-            this.instanceId = Objects.requireNonNull(instanceId);
+            if (instanceId == null) {
+              throw new MissingRequiredPropertyException("GetDdosCooPortsResult", "instanceId");
+            }
+            this.instanceId = instanceId;
             return this;
         }
         @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
+
             this.outputFile = outputFile;
             return this;
         }
         @CustomType.Setter
         public Builder ports(List<GetDdosCooPortsPort> ports) {
-            this.ports = Objects.requireNonNull(ports);
+            if (ports == null) {
+              throw new MissingRequiredPropertyException("GetDdosCooPortsResult", "ports");
+            }
+            this.ports = ports;
             return this;
         }
         public Builder ports(GetDdosCooPortsPort... ports) {

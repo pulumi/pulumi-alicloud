@@ -5,6 +5,7 @@ package com.pulumi.alicloud.opensearch.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -216,9 +217,15 @@ public final class AppGroupQuotaArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public AppGroupQuotaArgs build() {
-            $.computeResource = Objects.requireNonNull($.computeResource, "expected parameter 'computeResource' to be non-null");
-            $.docSize = Objects.requireNonNull($.docSize, "expected parameter 'docSize' to be non-null");
-            $.spec = Objects.requireNonNull($.spec, "expected parameter 'spec' to be non-null");
+            if ($.computeResource == null) {
+                throw new MissingRequiredPropertyException("AppGroupQuotaArgs", "computeResource");
+            }
+            if ($.docSize == null) {
+                throw new MissingRequiredPropertyException("AppGroupQuotaArgs", "docSize");
+            }
+            if ($.spec == null) {
+                throw new MissingRequiredPropertyException("AppGroupQuotaArgs", "spec");
+            }
             return $;
         }
     }

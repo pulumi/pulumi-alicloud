@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.cen.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -57,7 +58,10 @@ public final class GetTransitRouterAvailableResourcesResource {
 
         @CustomType.Setter
         public Builder masterZones(List<String> masterZones) {
-            this.masterZones = Objects.requireNonNull(masterZones);
+            if (masterZones == null) {
+              throw new MissingRequiredPropertyException("GetTransitRouterAvailableResourcesResource", "masterZones");
+            }
+            this.masterZones = masterZones;
             return this;
         }
         public Builder masterZones(String... masterZones) {
@@ -65,7 +69,10 @@ public final class GetTransitRouterAvailableResourcesResource {
         }
         @CustomType.Setter
         public Builder slaveZones(List<String> slaveZones) {
-            this.slaveZones = Objects.requireNonNull(slaveZones);
+            if (slaveZones == null) {
+              throw new MissingRequiredPropertyException("GetTransitRouterAvailableResourcesResource", "slaveZones");
+            }
+            this.slaveZones = slaveZones;
             return this;
         }
         public Builder slaveZones(String... slaveZones) {

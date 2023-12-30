@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.hbr.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -393,132 +394,210 @@ public final class GetEcsBackupClientsClient {
 
         @CustomType.Setter
         public Builder archType(String archType) {
-            this.archType = Objects.requireNonNull(archType);
+            if (archType == null) {
+              throw new MissingRequiredPropertyException("GetEcsBackupClientsClient", "archType");
+            }
+            this.archType = archType;
             return this;
         }
         @CustomType.Setter
         public Builder backupStatus(String backupStatus) {
-            this.backupStatus = Objects.requireNonNull(backupStatus);
+            if (backupStatus == null) {
+              throw new MissingRequiredPropertyException("GetEcsBackupClientsClient", "backupStatus");
+            }
+            this.backupStatus = backupStatus;
             return this;
         }
         @CustomType.Setter
         public Builder clientType(String clientType) {
-            this.clientType = Objects.requireNonNull(clientType);
+            if (clientType == null) {
+              throw new MissingRequiredPropertyException("GetEcsBackupClientsClient", "clientType");
+            }
+            this.clientType = clientType;
             return this;
         }
         @CustomType.Setter
         public Builder clientVersion(String clientVersion) {
-            this.clientVersion = Objects.requireNonNull(clientVersion);
+            if (clientVersion == null) {
+              throw new MissingRequiredPropertyException("GetEcsBackupClientsClient", "clientVersion");
+            }
+            this.clientVersion = clientVersion;
             return this;
         }
         @CustomType.Setter
         public Builder createTime(String createTime) {
-            this.createTime = Objects.requireNonNull(createTime);
+            if (createTime == null) {
+              throw new MissingRequiredPropertyException("GetEcsBackupClientsClient", "createTime");
+            }
+            this.createTime = createTime;
             return this;
         }
         @CustomType.Setter
         public Builder dataNetworkType(String dataNetworkType) {
-            this.dataNetworkType = Objects.requireNonNull(dataNetworkType);
+            if (dataNetworkType == null) {
+              throw new MissingRequiredPropertyException("GetEcsBackupClientsClient", "dataNetworkType");
+            }
+            this.dataNetworkType = dataNetworkType;
             return this;
         }
         @CustomType.Setter
         public Builder dataProxySetting(String dataProxySetting) {
-            this.dataProxySetting = Objects.requireNonNull(dataProxySetting);
+            if (dataProxySetting == null) {
+              throw new MissingRequiredPropertyException("GetEcsBackupClientsClient", "dataProxySetting");
+            }
+            this.dataProxySetting = dataProxySetting;
             return this;
         }
         @CustomType.Setter
         public Builder ecsBackupClientId(String ecsBackupClientId) {
-            this.ecsBackupClientId = Objects.requireNonNull(ecsBackupClientId);
+            if (ecsBackupClientId == null) {
+              throw new MissingRequiredPropertyException("GetEcsBackupClientsClient", "ecsBackupClientId");
+            }
+            this.ecsBackupClientId = ecsBackupClientId;
             return this;
         }
         @CustomType.Setter
         public Builder hostname(String hostname) {
-            this.hostname = Objects.requireNonNull(hostname);
+            if (hostname == null) {
+              throw new MissingRequiredPropertyException("GetEcsBackupClientsClient", "hostname");
+            }
+            this.hostname = hostname;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetEcsBackupClientsClient", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder instanceId(String instanceId) {
-            this.instanceId = Objects.requireNonNull(instanceId);
+            if (instanceId == null) {
+              throw new MissingRequiredPropertyException("GetEcsBackupClientsClient", "instanceId");
+            }
+            this.instanceId = instanceId;
             return this;
         }
         @CustomType.Setter
         public Builder instanceName(String instanceName) {
-            this.instanceName = Objects.requireNonNull(instanceName);
+            if (instanceName == null) {
+              throw new MissingRequiredPropertyException("GetEcsBackupClientsClient", "instanceName");
+            }
+            this.instanceName = instanceName;
             return this;
         }
         @CustomType.Setter
         public Builder lastHeartBeatTime(String lastHeartBeatTime) {
-            this.lastHeartBeatTime = Objects.requireNonNull(lastHeartBeatTime);
+            if (lastHeartBeatTime == null) {
+              throw new MissingRequiredPropertyException("GetEcsBackupClientsClient", "lastHeartBeatTime");
+            }
+            this.lastHeartBeatTime = lastHeartBeatTime;
             return this;
         }
         @CustomType.Setter
         public Builder maxClientVersion(String maxClientVersion) {
-            this.maxClientVersion = Objects.requireNonNull(maxClientVersion);
+            if (maxClientVersion == null) {
+              throw new MissingRequiredPropertyException("GetEcsBackupClientsClient", "maxClientVersion");
+            }
+            this.maxClientVersion = maxClientVersion;
             return this;
         }
         @CustomType.Setter
         public Builder maxCpuCore(String maxCpuCore) {
-            this.maxCpuCore = Objects.requireNonNull(maxCpuCore);
+            if (maxCpuCore == null) {
+              throw new MissingRequiredPropertyException("GetEcsBackupClientsClient", "maxCpuCore");
+            }
+            this.maxCpuCore = maxCpuCore;
             return this;
         }
         @CustomType.Setter
         public Builder maxWorker(String maxWorker) {
-            this.maxWorker = Objects.requireNonNull(maxWorker);
+            if (maxWorker == null) {
+              throw new MissingRequiredPropertyException("GetEcsBackupClientsClient", "maxWorker");
+            }
+            this.maxWorker = maxWorker;
             return this;
         }
         @CustomType.Setter
         public Builder osType(String osType) {
-            this.osType = Objects.requireNonNull(osType);
+            if (osType == null) {
+              throw new MissingRequiredPropertyException("GetEcsBackupClientsClient", "osType");
+            }
+            this.osType = osType;
             return this;
         }
         @CustomType.Setter
         public Builder privateIpv4(String privateIpv4) {
-            this.privateIpv4 = Objects.requireNonNull(privateIpv4);
+            if (privateIpv4 == null) {
+              throw new MissingRequiredPropertyException("GetEcsBackupClientsClient", "privateIpv4");
+            }
+            this.privateIpv4 = privateIpv4;
             return this;
         }
         @CustomType.Setter
         public Builder proxyHost(String proxyHost) {
-            this.proxyHost = Objects.requireNonNull(proxyHost);
+            if (proxyHost == null) {
+              throw new MissingRequiredPropertyException("GetEcsBackupClientsClient", "proxyHost");
+            }
+            this.proxyHost = proxyHost;
             return this;
         }
         @CustomType.Setter
         public Builder proxyPassword(String proxyPassword) {
-            this.proxyPassword = Objects.requireNonNull(proxyPassword);
+            if (proxyPassword == null) {
+              throw new MissingRequiredPropertyException("GetEcsBackupClientsClient", "proxyPassword");
+            }
+            this.proxyPassword = proxyPassword;
             return this;
         }
         @CustomType.Setter
         public Builder proxyPort(String proxyPort) {
-            this.proxyPort = Objects.requireNonNull(proxyPort);
+            if (proxyPort == null) {
+              throw new MissingRequiredPropertyException("GetEcsBackupClientsClient", "proxyPort");
+            }
+            this.proxyPort = proxyPort;
             return this;
         }
         @CustomType.Setter
         public Builder proxyUser(String proxyUser) {
-            this.proxyUser = Objects.requireNonNull(proxyUser);
+            if (proxyUser == null) {
+              throw new MissingRequiredPropertyException("GetEcsBackupClientsClient", "proxyUser");
+            }
+            this.proxyUser = proxyUser;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetEcsBackupClientsClient", "status");
+            }
+            this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder updatedTime(String updatedTime) {
-            this.updatedTime = Objects.requireNonNull(updatedTime);
+            if (updatedTime == null) {
+              throw new MissingRequiredPropertyException("GetEcsBackupClientsClient", "updatedTime");
+            }
+            this.updatedTime = updatedTime;
             return this;
         }
         @CustomType.Setter
         public Builder useHttps(Boolean useHttps) {
-            this.useHttps = Objects.requireNonNull(useHttps);
+            if (useHttps == null) {
+              throw new MissingRequiredPropertyException("GetEcsBackupClientsClient", "useHttps");
+            }
+            this.useHttps = useHttps;
             return this;
         }
         @CustomType.Setter
         public Builder zoneId(String zoneId) {
-            this.zoneId = Objects.requireNonNull(zoneId);
+            if (zoneId == null) {
+              throw new MissingRequiredPropertyException("GetEcsBackupClientsClient", "zoneId");
+            }
+            this.zoneId = zoneId;
             return this;
         }
         public GetEcsBackupClientsClient build() {

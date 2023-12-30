@@ -5,6 +5,7 @@ package com.pulumi.alicloud.cs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -188,9 +189,15 @@ public final class RegistryEnterpriseNamespaceArgs extends com.pulumi.resources.
         }
 
         public RegistryEnterpriseNamespaceArgs build() {
-            $.autoCreate = Objects.requireNonNull($.autoCreate, "expected parameter 'autoCreate' to be non-null");
-            $.defaultVisibility = Objects.requireNonNull($.defaultVisibility, "expected parameter 'defaultVisibility' to be non-null");
-            $.instanceId = Objects.requireNonNull($.instanceId, "expected parameter 'instanceId' to be non-null");
+            if ($.autoCreate == null) {
+                throw new MissingRequiredPropertyException("RegistryEnterpriseNamespaceArgs", "autoCreate");
+            }
+            if ($.defaultVisibility == null) {
+                throw new MissingRequiredPropertyException("RegistryEnterpriseNamespaceArgs", "defaultVisibility");
+            }
+            if ($.instanceId == null) {
+                throw new MissingRequiredPropertyException("RegistryEnterpriseNamespaceArgs", "instanceId");
+            }
             return $;
         }
     }

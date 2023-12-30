@@ -5,6 +5,7 @@ package com.pulumi.alicloud.vpn;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -113,7 +114,9 @@ public final class SslVpnClientCertArgs extends com.pulumi.resources.ResourceArg
         }
 
         public SslVpnClientCertArgs build() {
-            $.sslVpnServerId = Objects.requireNonNull($.sslVpnServerId, "expected parameter 'sslVpnServerId' to be non-null");
+            if ($.sslVpnServerId == null) {
+                throw new MissingRequiredPropertyException("SslVpnClientCertArgs", "sslVpnServerId");
+            }
             return $;
         }
     }

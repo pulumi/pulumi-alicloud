@@ -5,6 +5,7 @@ package com.pulumi.alicloud.cloudfirewall.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -111,8 +112,12 @@ public final class FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryL
         }
 
         public FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListArgs build() {
-            $.peerDestinationCidr = Objects.requireNonNull($.peerDestinationCidr, "expected parameter 'peerDestinationCidr' to be non-null");
-            $.peerNextHopInstanceId = Objects.requireNonNull($.peerNextHopInstanceId, "expected parameter 'peerNextHopInstanceId' to be non-null");
+            if ($.peerDestinationCidr == null) {
+                throw new MissingRequiredPropertyException("FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListArgs", "peerDestinationCidr");
+            }
+            if ($.peerNextHopInstanceId == null) {
+                throw new MissingRequiredPropertyException("FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListArgs", "peerNextHopInstanceId");
+            }
             return $;
         }
     }

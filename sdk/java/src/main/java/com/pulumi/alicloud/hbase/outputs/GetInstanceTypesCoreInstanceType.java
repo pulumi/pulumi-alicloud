@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.hbase.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -155,47 +156,74 @@ public final class GetInstanceTypesCoreInstanceType {
 
         @CustomType.Setter
         public Builder category(String category) {
-            this.category = Objects.requireNonNull(category);
+            if (category == null) {
+              throw new MissingRequiredPropertyException("GetInstanceTypesCoreInstanceType", "category");
+            }
+            this.category = category;
             return this;
         }
         @CustomType.Setter
         public Builder cpuSize(Integer cpuSize) {
-            this.cpuSize = Objects.requireNonNull(cpuSize);
+            if (cpuSize == null) {
+              throw new MissingRequiredPropertyException("GetInstanceTypesCoreInstanceType", "cpuSize");
+            }
+            this.cpuSize = cpuSize;
             return this;
         }
         @CustomType.Setter
         public Builder engine(String engine) {
-            this.engine = Objects.requireNonNull(engine);
+            if (engine == null) {
+              throw new MissingRequiredPropertyException("GetInstanceTypesCoreInstanceType", "engine");
+            }
+            this.engine = engine;
             return this;
         }
         @CustomType.Setter
         public Builder instanceType(String instanceType) {
-            this.instanceType = Objects.requireNonNull(instanceType);
+            if (instanceType == null) {
+              throw new MissingRequiredPropertyException("GetInstanceTypesCoreInstanceType", "instanceType");
+            }
+            this.instanceType = instanceType;
             return this;
         }
         @CustomType.Setter
         public Builder maxCoreCount(Integer maxCoreCount) {
-            this.maxCoreCount = Objects.requireNonNull(maxCoreCount);
+            if (maxCoreCount == null) {
+              throw new MissingRequiredPropertyException("GetInstanceTypesCoreInstanceType", "maxCoreCount");
+            }
+            this.maxCoreCount = maxCoreCount;
             return this;
         }
         @CustomType.Setter
         public Builder memSize(Integer memSize) {
-            this.memSize = Objects.requireNonNull(memSize);
+            if (memSize == null) {
+              throw new MissingRequiredPropertyException("GetInstanceTypesCoreInstanceType", "memSize");
+            }
+            this.memSize = memSize;
             return this;
         }
         @CustomType.Setter
         public Builder storageType(String storageType) {
-            this.storageType = Objects.requireNonNull(storageType);
+            if (storageType == null) {
+              throw new MissingRequiredPropertyException("GetInstanceTypesCoreInstanceType", "storageType");
+            }
+            this.storageType = storageType;
             return this;
         }
         @CustomType.Setter
         public Builder version(String version) {
-            this.version = Objects.requireNonNull(version);
+            if (version == null) {
+              throw new MissingRequiredPropertyException("GetInstanceTypesCoreInstanceType", "version");
+            }
+            this.version = version;
             return this;
         }
         @CustomType.Setter
         public Builder zone(String zone) {
-            this.zone = Objects.requireNonNull(zone);
+            if (zone == null) {
+              throw new MissingRequiredPropertyException("GetInstanceTypesCoreInstanceType", "zone");
+            }
+            this.zone = zone;
             return this;
         }
         public GetInstanceTypesCoreInstanceType build() {

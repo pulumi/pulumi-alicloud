@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.ecs.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -171,37 +172,58 @@ public final class GetCommandsCommand {
 
         @CustomType.Setter
         public Builder commandContent(String commandContent) {
-            this.commandContent = Objects.requireNonNull(commandContent);
+            if (commandContent == null) {
+              throw new MissingRequiredPropertyException("GetCommandsCommand", "commandContent");
+            }
+            this.commandContent = commandContent;
             return this;
         }
         @CustomType.Setter
         public Builder commandId(String commandId) {
-            this.commandId = Objects.requireNonNull(commandId);
+            if (commandId == null) {
+              throw new MissingRequiredPropertyException("GetCommandsCommand", "commandId");
+            }
+            this.commandId = commandId;
             return this;
         }
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetCommandsCommand", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder enableParameter(Boolean enableParameter) {
-            this.enableParameter = Objects.requireNonNull(enableParameter);
+            if (enableParameter == null) {
+              throw new MissingRequiredPropertyException("GetCommandsCommand", "enableParameter");
+            }
+            this.enableParameter = enableParameter;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetCommandsCommand", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetCommandsCommand", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder parameterNames(List<String> parameterNames) {
-            this.parameterNames = Objects.requireNonNull(parameterNames);
+            if (parameterNames == null) {
+              throw new MissingRequiredPropertyException("GetCommandsCommand", "parameterNames");
+            }
+            this.parameterNames = parameterNames;
             return this;
         }
         public Builder parameterNames(String... parameterNames) {
@@ -209,17 +231,26 @@ public final class GetCommandsCommand {
         }
         @CustomType.Setter
         public Builder timeout(Integer timeout) {
-            this.timeout = Objects.requireNonNull(timeout);
+            if (timeout == null) {
+              throw new MissingRequiredPropertyException("GetCommandsCommand", "timeout");
+            }
+            this.timeout = timeout;
             return this;
         }
         @CustomType.Setter
         public Builder type(String type) {
-            this.type = Objects.requireNonNull(type);
+            if (type == null) {
+              throw new MissingRequiredPropertyException("GetCommandsCommand", "type");
+            }
+            this.type = type;
             return this;
         }
         @CustomType.Setter
         public Builder workingDir(String workingDir) {
-            this.workingDir = Objects.requireNonNull(workingDir);
+            if (workingDir == null) {
+              throw new MissingRequiredPropertyException("GetCommandsCommand", "workingDir");
+            }
+            this.workingDir = workingDir;
             return this;
         }
         public GetCommandsCommand build() {

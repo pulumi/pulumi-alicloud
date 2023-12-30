@@ -6,6 +6,7 @@ package com.pulumi.alicloud.dcdn;
 import com.pulumi.alicloud.dcdn.inputs.ErEnvConfArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -151,7 +152,9 @@ public final class ErArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public ErArgs build() {
-            $.erName = Objects.requireNonNull($.erName, "expected parameter 'erName' to be non-null");
+            if ($.erName == null) {
+                throw new MissingRequiredPropertyException("ErArgs", "erName");
+            }
             return $;
         }
     }

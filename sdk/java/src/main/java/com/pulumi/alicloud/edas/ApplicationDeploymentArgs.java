@@ -5,6 +5,7 @@ package com.pulumi.alicloud.edas;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -187,9 +188,15 @@ public final class ApplicationDeploymentArgs extends com.pulumi.resources.Resour
         }
 
         public ApplicationDeploymentArgs build() {
-            $.appId = Objects.requireNonNull($.appId, "expected parameter 'appId' to be non-null");
-            $.groupId = Objects.requireNonNull($.groupId, "expected parameter 'groupId' to be non-null");
-            $.warUrl = Objects.requireNonNull($.warUrl, "expected parameter 'warUrl' to be non-null");
+            if ($.appId == null) {
+                throw new MissingRequiredPropertyException("ApplicationDeploymentArgs", "appId");
+            }
+            if ($.groupId == null) {
+                throw new MissingRequiredPropertyException("ApplicationDeploymentArgs", "groupId");
+            }
+            if ($.warUrl == null) {
+                throw new MissingRequiredPropertyException("ApplicationDeploymentArgs", "warUrl");
+            }
             return $;
         }
     }

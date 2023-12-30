@@ -5,6 +5,7 @@ package com.pulumi.alicloud.alikafka;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
@@ -263,8 +264,12 @@ public final class SaslUserArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public SaslUserArgs build() {
-            $.instanceId = Objects.requireNonNull($.instanceId, "expected parameter 'instanceId' to be non-null");
-            $.username = Objects.requireNonNull($.username, "expected parameter 'username' to be non-null");
+            if ($.instanceId == null) {
+                throw new MissingRequiredPropertyException("SaslUserArgs", "instanceId");
+            }
+            if ($.username == null) {
+                throw new MissingRequiredPropertyException("SaslUserArgs", "username");
+            }
             return $;
         }
     }

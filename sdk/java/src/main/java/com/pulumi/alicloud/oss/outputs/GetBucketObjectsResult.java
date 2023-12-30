@@ -5,6 +5,7 @@ package com.pulumi.alicloud.oss.outputs;
 
 import com.pulumi.alicloud.oss.outputs.GetBucketObjectsObject;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -84,27 +85,38 @@ public final class GetBucketObjectsResult {
 
         @CustomType.Setter
         public Builder bucketName(String bucketName) {
-            this.bucketName = Objects.requireNonNull(bucketName);
+            if (bucketName == null) {
+              throw new MissingRequiredPropertyException("GetBucketObjectsResult", "bucketName");
+            }
+            this.bucketName = bucketName;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetBucketObjectsResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder keyPrefix(@Nullable String keyPrefix) {
+
             this.keyPrefix = keyPrefix;
             return this;
         }
         @CustomType.Setter
         public Builder keyRegex(@Nullable String keyRegex) {
+
             this.keyRegex = keyRegex;
             return this;
         }
         @CustomType.Setter
         public Builder objects(List<GetBucketObjectsObject> objects) {
-            this.objects = Objects.requireNonNull(objects);
+            if (objects == null) {
+              throw new MissingRequiredPropertyException("GetBucketObjectsResult", "objects");
+            }
+            this.objects = objects;
             return this;
         }
         public Builder objects(GetBucketObjectsObject... objects) {
@@ -112,6 +124,7 @@ public final class GetBucketObjectsResult {
         }
         @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
+
             this.outputFile = outputFile;
             return this;
         }

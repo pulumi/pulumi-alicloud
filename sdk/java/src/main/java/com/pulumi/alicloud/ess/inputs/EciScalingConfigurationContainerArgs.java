@@ -8,6 +8,7 @@ import com.pulumi.alicloud.ess.inputs.EciScalingConfigurationContainerPortArgs;
 import com.pulumi.alicloud.ess.inputs.EciScalingConfigurationContainerVolumeMountArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
 import java.lang.Double;
 import java.lang.Integer;
 import java.lang.String;
@@ -474,6 +475,55 @@ public final class EciScalingConfigurationContainerArgs extends com.pulumi.resou
     }
 
     /**
+     * Grant certain permissions to processes within container. Optional values:
+     * - NET_ADMIN: Allow network management tasks to be performed.
+     * - NET_RAW: Allow raw sockets.
+     * 
+     */
+    @Import(name="securityContextCapabilityAdds")
+    private @Nullable Output<List<String>> securityContextCapabilityAdds;
+
+    /**
+     * @return Grant certain permissions to processes within container. Optional values:
+     * - NET_ADMIN: Allow network management tasks to be performed.
+     * - NET_RAW: Allow raw sockets.
+     * 
+     */
+    public Optional<Output<List<String>>> securityContextCapabilityAdds() {
+        return Optional.ofNullable(this.securityContextCapabilityAdds);
+    }
+
+    /**
+     * Mounts the container&#39;s root filesystem as read-only.
+     * 
+     */
+    @Import(name="securityContextReadOnlyRootFileSystem")
+    private @Nullable Output<Boolean> securityContextReadOnlyRootFileSystem;
+
+    /**
+     * @return Mounts the container&#39;s root filesystem as read-only.
+     * 
+     */
+    public Optional<Output<Boolean>> securityContextReadOnlyRootFileSystem() {
+        return Optional.ofNullable(this.securityContextReadOnlyRootFileSystem);
+    }
+
+    /**
+     * Specifies user ID  under which all processes run.
+     * 
+     */
+    @Import(name="securityContextRunAsUser")
+    private @Nullable Output<Integer> securityContextRunAsUser;
+
+    /**
+     * @return Specifies user ID  under which all processes run.
+     * 
+     */
+    public Optional<Output<Integer>> securityContextRunAsUser() {
+        return Optional.ofNullable(this.securityContextRunAsUser);
+    }
+
+    /**
      * The structure of volumeMounts.
      * See `volume_mounts` below for details.
      * 
@@ -538,6 +588,9 @@ public final class EciScalingConfigurationContainerArgs extends com.pulumi.resou
         this.readinessProbeSuccessThreshold = $.readinessProbeSuccessThreshold;
         this.readinessProbeTcpSocketPort = $.readinessProbeTcpSocketPort;
         this.readinessProbeTimeoutSeconds = $.readinessProbeTimeoutSeconds;
+        this.securityContextCapabilityAdds = $.securityContextCapabilityAdds;
+        this.securityContextReadOnlyRootFileSystem = $.securityContextReadOnlyRootFileSystem;
+        this.securityContextRunAsUser = $.securityContextRunAsUser;
         this.volumeMounts = $.volumeMounts;
         this.workingDir = $.workingDir;
     }
@@ -1251,6 +1304,85 @@ public final class EciScalingConfigurationContainerArgs extends com.pulumi.resou
          */
         public Builder readinessProbeTimeoutSeconds(Integer readinessProbeTimeoutSeconds) {
             return readinessProbeTimeoutSeconds(Output.of(readinessProbeTimeoutSeconds));
+        }
+
+        /**
+         * @param securityContextCapabilityAdds Grant certain permissions to processes within container. Optional values:
+         * - NET_ADMIN: Allow network management tasks to be performed.
+         * - NET_RAW: Allow raw sockets.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder securityContextCapabilityAdds(@Nullable Output<List<String>> securityContextCapabilityAdds) {
+            $.securityContextCapabilityAdds = securityContextCapabilityAdds;
+            return this;
+        }
+
+        /**
+         * @param securityContextCapabilityAdds Grant certain permissions to processes within container. Optional values:
+         * - NET_ADMIN: Allow network management tasks to be performed.
+         * - NET_RAW: Allow raw sockets.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder securityContextCapabilityAdds(List<String> securityContextCapabilityAdds) {
+            return securityContextCapabilityAdds(Output.of(securityContextCapabilityAdds));
+        }
+
+        /**
+         * @param securityContextCapabilityAdds Grant certain permissions to processes within container. Optional values:
+         * - NET_ADMIN: Allow network management tasks to be performed.
+         * - NET_RAW: Allow raw sockets.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder securityContextCapabilityAdds(String... securityContextCapabilityAdds) {
+            return securityContextCapabilityAdds(List.of(securityContextCapabilityAdds));
+        }
+
+        /**
+         * @param securityContextReadOnlyRootFileSystem Mounts the container&#39;s root filesystem as read-only.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder securityContextReadOnlyRootFileSystem(@Nullable Output<Boolean> securityContextReadOnlyRootFileSystem) {
+            $.securityContextReadOnlyRootFileSystem = securityContextReadOnlyRootFileSystem;
+            return this;
+        }
+
+        /**
+         * @param securityContextReadOnlyRootFileSystem Mounts the container&#39;s root filesystem as read-only.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder securityContextReadOnlyRootFileSystem(Boolean securityContextReadOnlyRootFileSystem) {
+            return securityContextReadOnlyRootFileSystem(Output.of(securityContextReadOnlyRootFileSystem));
+        }
+
+        /**
+         * @param securityContextRunAsUser Specifies user ID  under which all processes run.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder securityContextRunAsUser(@Nullable Output<Integer> securityContextRunAsUser) {
+            $.securityContextRunAsUser = securityContextRunAsUser;
+            return this;
+        }
+
+        /**
+         * @param securityContextRunAsUser Specifies user ID  under which all processes run.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder securityContextRunAsUser(Integer securityContextRunAsUser) {
+            return securityContextRunAsUser(Output.of(securityContextRunAsUser));
         }
 
         /**

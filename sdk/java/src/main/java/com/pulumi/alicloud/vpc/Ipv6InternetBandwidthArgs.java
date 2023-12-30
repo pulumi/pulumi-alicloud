@@ -5,6 +5,7 @@ package com.pulumi.alicloud.vpc;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -188,9 +189,15 @@ public final class Ipv6InternetBandwidthArgs extends com.pulumi.resources.Resour
         }
 
         public Ipv6InternetBandwidthArgs build() {
-            $.bandwidth = Objects.requireNonNull($.bandwidth, "expected parameter 'bandwidth' to be non-null");
-            $.ipv6AddressId = Objects.requireNonNull($.ipv6AddressId, "expected parameter 'ipv6AddressId' to be non-null");
-            $.ipv6GatewayId = Objects.requireNonNull($.ipv6GatewayId, "expected parameter 'ipv6GatewayId' to be non-null");
+            if ($.bandwidth == null) {
+                throw new MissingRequiredPropertyException("Ipv6InternetBandwidthArgs", "bandwidth");
+            }
+            if ($.ipv6AddressId == null) {
+                throw new MissingRequiredPropertyException("Ipv6InternetBandwidthArgs", "ipv6AddressId");
+            }
+            if ($.ipv6GatewayId == null) {
+                throw new MissingRequiredPropertyException("Ipv6InternetBandwidthArgs", "ipv6GatewayId");
+            }
             return $;
         }
     }

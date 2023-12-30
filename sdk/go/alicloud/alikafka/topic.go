@@ -28,53 +28,58 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/alikafka"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			defaultZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
-//				AvailableResourceCreation: pulumi.StringRef("VSwitch"),
+//			cfg := config.New(ctx, "")
+//			name := "terraform-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			defaultNetworks, err := vpc.GetNetworks(ctx, &vpc.GetNetworksArgs{
+//				NameRegex: pulumi.StringRef("^default-NODELETING$"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
-//				CidrBlock: pulumi.String("172.16.0.0/12"),
-//			})
+//			defaultSwitches, err := vpc.GetSwitches(ctx, &vpc.GetSwitchesArgs{
+//				VpcId: pulumi.StringRef(defaultNetworks.Ids[0]),
+//			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
-//				VpcId:     defaultNetwork.ID(),
-//				CidrBlock: pulumi.String("172.16.0.0/24"),
-//				ZoneId:    *pulumi.String(defaultZones.Zones[0].Id),
+//			defaultSecurityGroup, err := ecs.NewSecurityGroup(ctx, "defaultSecurityGroup", &ecs.SecurityGroupArgs{
+//				VpcId: *pulumi.String(defaultNetworks.Ids[0]),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			defaultInstance, err := alikafka.NewInstance(ctx, "defaultInstance", &alikafka.InstanceArgs{
-//				PartitionNum: pulumi.Int(50),
-//				DiskType:     pulumi.Int(1),
-//				DiskSize:     pulumi.Int(500),
-//				DeployType:   pulumi.Int(5),
-//				IoMax:        pulumi.Int(20),
-//				VswitchId:    defaultSwitch.ID(),
+//				PartitionNum:  pulumi.Int(50),
+//				DiskType:      pulumi.Int(1),
+//				DiskSize:      pulumi.Int(500),
+//				DeployType:    pulumi.Int(5),
+//				IoMax:         pulumi.Int(20),
+//				VswitchId:     *pulumi.String(defaultSwitches.Ids[0]),
+//				SecurityGroup: defaultSecurityGroup.ID(),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = alikafka.NewTopic(ctx, "defaultTopic", &alikafka.TopicArgs{
+//				Remark:       pulumi.String("alicloud_alikafka_topic_remark"),
 //				InstanceId:   defaultInstance.ID(),
-//				Topic:        pulumi.String("example-topic"),
+//				Topic:        pulumi.String(name),
 //				LocalTopic:   pulumi.Bool(false),
 //				CompactTopic: pulumi.Bool(false),
-//				PartitionNum: pulumi.Int(12),
-//				Remark:       pulumi.String("dafault_kafka_topic_remark"),
+//				PartitionNum: pulumi.Int(6),
 //			})
 //			if err != nil {
 //				return err
@@ -109,7 +114,7 @@ type Topic struct {
 	Remark pulumi.StringOutput `pulumi:"remark"`
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.MapOutput `pulumi:"tags"`
-	// Name of the topic. Two topics on a single instance cannot have the same name. The length cannot exceed 64 characters.
+	// Name of the topic. Two topics on a single instance cannot have the same name. The length cannot exceed 249 characters.
 	Topic pulumi.StringOutput `pulumi:"topic"`
 }
 
@@ -164,7 +169,7 @@ type topicState struct {
 	Remark *string `pulumi:"remark"`
 	// A mapping of tags to assign to the resource.
 	Tags map[string]interface{} `pulumi:"tags"`
-	// Name of the topic. Two topics on a single instance cannot have the same name. The length cannot exceed 64 characters.
+	// Name of the topic. Two topics on a single instance cannot have the same name. The length cannot exceed 249 characters.
 	Topic *string `pulumi:"topic"`
 }
 
@@ -181,7 +186,7 @@ type TopicState struct {
 	Remark pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.MapInput
-	// Name of the topic. Two topics on a single instance cannot have the same name. The length cannot exceed 64 characters.
+	// Name of the topic. Two topics on a single instance cannot have the same name. The length cannot exceed 249 characters.
 	Topic pulumi.StringPtrInput
 }
 
@@ -202,7 +207,7 @@ type topicArgs struct {
 	Remark string `pulumi:"remark"`
 	// A mapping of tags to assign to the resource.
 	Tags map[string]interface{} `pulumi:"tags"`
-	// Name of the topic. Two topics on a single instance cannot have the same name. The length cannot exceed 64 characters.
+	// Name of the topic. Two topics on a single instance cannot have the same name. The length cannot exceed 249 characters.
 	Topic string `pulumi:"topic"`
 }
 
@@ -220,7 +225,7 @@ type TopicArgs struct {
 	Remark pulumi.StringInput
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.MapInput
-	// Name of the topic. Two topics on a single instance cannot have the same name. The length cannot exceed 64 characters.
+	// Name of the topic. Two topics on a single instance cannot have the same name. The length cannot exceed 249 characters.
 	Topic pulumi.StringInput
 }
 
@@ -341,7 +346,7 @@ func (o TopicOutput) Tags() pulumi.MapOutput {
 	return o.ApplyT(func(v *Topic) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
 }
 
-// Name of the topic. Two topics on a single instance cannot have the same name. The length cannot exceed 64 characters.
+// Name of the topic. Two topics on a single instance cannot have the same name. The length cannot exceed 249 characters.
 func (o TopicOutput) Topic() pulumi.StringOutput {
 	return o.ApplyT(func(v *Topic) pulumi.StringOutput { return v.Topic }).(pulumi.StringOutput)
 }

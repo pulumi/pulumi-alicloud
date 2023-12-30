@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.ros.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Object;
 import java.lang.String;
 import java.util.List;
@@ -59,12 +60,18 @@ public final class GetTemplateScratchesScratchSourceTag {
 
         @CustomType.Setter
         public Builder resourceTags(Map<String,Object> resourceTags) {
-            this.resourceTags = Objects.requireNonNull(resourceTags);
+            if (resourceTags == null) {
+              throw new MissingRequiredPropertyException("GetTemplateScratchesScratchSourceTag", "resourceTags");
+            }
+            this.resourceTags = resourceTags;
             return this;
         }
         @CustomType.Setter
         public Builder resourceTypeFilters(List<String> resourceTypeFilters) {
-            this.resourceTypeFilters = Objects.requireNonNull(resourceTypeFilters);
+            if (resourceTypeFilters == null) {
+              throw new MissingRequiredPropertyException("GetTemplateScratchesScratchSourceTag", "resourceTypeFilters");
+            }
+            this.resourceTypeFilters = resourceTypeFilters;
             return this;
         }
         public Builder resourceTypeFilters(String... resourceTypeFilters) {

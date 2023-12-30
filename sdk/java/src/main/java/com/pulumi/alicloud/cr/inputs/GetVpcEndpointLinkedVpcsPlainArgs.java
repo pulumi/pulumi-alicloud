@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.cr.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -184,8 +185,12 @@ public final class GetVpcEndpointLinkedVpcsPlainArgs extends com.pulumi.resource
         }
 
         public GetVpcEndpointLinkedVpcsPlainArgs build() {
-            $.instanceId = Objects.requireNonNull($.instanceId, "expected parameter 'instanceId' to be non-null");
-            $.moduleName = Objects.requireNonNull($.moduleName, "expected parameter 'moduleName' to be non-null");
+            if ($.instanceId == null) {
+                throw new MissingRequiredPropertyException("GetVpcEndpointLinkedVpcsPlainArgs", "instanceId");
+            }
+            if ($.moduleName == null) {
+                throw new MissingRequiredPropertyException("GetVpcEndpointLinkedVpcsPlainArgs", "moduleName");
+            }
             return $;
         }
     }

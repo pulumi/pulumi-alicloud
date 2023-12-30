@@ -5,6 +5,7 @@ package com.pulumi.alicloud.rds;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -148,9 +149,15 @@ public final class DbNodeArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public DbNodeArgs build() {
-            $.classCode = Objects.requireNonNull($.classCode, "expected parameter 'classCode' to be non-null");
-            $.dbInstanceId = Objects.requireNonNull($.dbInstanceId, "expected parameter 'dbInstanceId' to be non-null");
-            $.zoneId = Objects.requireNonNull($.zoneId, "expected parameter 'zoneId' to be non-null");
+            if ($.classCode == null) {
+                throw new MissingRequiredPropertyException("DbNodeArgs", "classCode");
+            }
+            if ($.dbInstanceId == null) {
+                throw new MissingRequiredPropertyException("DbNodeArgs", "dbInstanceId");
+            }
+            if ($.zoneId == null) {
+                throw new MissingRequiredPropertyException("DbNodeArgs", "zoneId");
+            }
             return $;
         }
     }

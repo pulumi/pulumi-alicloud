@@ -6,6 +6,7 @@ package com.pulumi.alicloud.fc;
 import com.pulumi.alicloud.fc.inputs.FunctionAsyncInvokeConfigDestinationConfigArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -301,8 +302,12 @@ public final class FunctionAsyncInvokeConfigArgs extends com.pulumi.resources.Re
         }
 
         public FunctionAsyncInvokeConfigArgs build() {
-            $.functionName = Objects.requireNonNull($.functionName, "expected parameter 'functionName' to be non-null");
-            $.serviceName = Objects.requireNonNull($.serviceName, "expected parameter 'serviceName' to be non-null");
+            if ($.functionName == null) {
+                throw new MissingRequiredPropertyException("FunctionAsyncInvokeConfigArgs", "functionName");
+            }
+            if ($.serviceName == null) {
+                throw new MissingRequiredPropertyException("FunctionAsyncInvokeConfigArgs", "serviceName");
+            }
             return $;
         }
     }

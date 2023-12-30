@@ -5,6 +5,7 @@ package com.pulumi.alicloud.outputs;
 
 import com.pulumi.alicloud.outputs.GetZonesZone;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -149,42 +150,54 @@ public final class GetZonesResult {
 
         @CustomType.Setter
         public Builder availableDiskCategory(@Nullable String availableDiskCategory) {
+
             this.availableDiskCategory = availableDiskCategory;
             return this;
         }
         @CustomType.Setter
         public Builder availableInstanceType(@Nullable String availableInstanceType) {
+
             this.availableInstanceType = availableInstanceType;
             return this;
         }
         @CustomType.Setter
         public Builder availableResourceCreation(@Nullable String availableResourceCreation) {
+
             this.availableResourceCreation = availableResourceCreation;
             return this;
         }
         @CustomType.Setter
         public Builder availableSlbAddressIpVersion(@Nullable String availableSlbAddressIpVersion) {
+
             this.availableSlbAddressIpVersion = availableSlbAddressIpVersion;
             return this;
         }
         @CustomType.Setter
         public Builder availableSlbAddressType(@Nullable String availableSlbAddressType) {
+
             this.availableSlbAddressType = availableSlbAddressType;
             return this;
         }
         @CustomType.Setter
         public Builder enableDetails(@Nullable Boolean enableDetails) {
+
             this.enableDetails = enableDetails;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetZonesResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder ids(List<String> ids) {
-            this.ids = Objects.requireNonNull(ids);
+            if (ids == null) {
+              throw new MissingRequiredPropertyException("GetZonesResult", "ids");
+            }
+            this.ids = ids;
             return this;
         }
         public Builder ids(String... ids) {
@@ -192,32 +205,40 @@ public final class GetZonesResult {
         }
         @CustomType.Setter
         public Builder instanceChargeType(@Nullable String instanceChargeType) {
+
             this.instanceChargeType = instanceChargeType;
             return this;
         }
         @CustomType.Setter
         public Builder multi(@Nullable Boolean multi) {
+
             this.multi = multi;
             return this;
         }
         @CustomType.Setter
         public Builder networkType(@Nullable String networkType) {
+
             this.networkType = networkType;
             return this;
         }
         @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
+
             this.outputFile = outputFile;
             return this;
         }
         @CustomType.Setter
         public Builder spotStrategy(@Nullable String spotStrategy) {
+
             this.spotStrategy = spotStrategy;
             return this;
         }
         @CustomType.Setter
         public Builder zones(List<GetZonesZone> zones) {
-            this.zones = Objects.requireNonNull(zones);
+            if (zones == null) {
+              throw new MissingRequiredPropertyException("GetZonesResult", "zones");
+            }
+            this.zones = zones;
             return this;
         }
         public Builder zones(GetZonesZone... zones) {

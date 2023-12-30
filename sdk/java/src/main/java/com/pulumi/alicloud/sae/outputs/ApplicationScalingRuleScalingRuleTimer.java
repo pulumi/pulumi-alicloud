@@ -88,21 +88,25 @@ public final class ApplicationScalingRuleScalingRuleTimer {
 
         @CustomType.Setter
         public Builder beginDate(@Nullable String beginDate) {
+
             this.beginDate = beginDate;
             return this;
         }
         @CustomType.Setter
         public Builder endDate(@Nullable String endDate) {
+
             this.endDate = endDate;
             return this;
         }
         @CustomType.Setter
         public Builder period(@Nullable String period) {
+
             this.period = period;
             return this;
         }
         @CustomType.Setter
         public Builder schedules(@Nullable List<ApplicationScalingRuleScalingRuleTimerSchedule> schedules) {
+
             this.schedules = schedules;
             return this;
         }

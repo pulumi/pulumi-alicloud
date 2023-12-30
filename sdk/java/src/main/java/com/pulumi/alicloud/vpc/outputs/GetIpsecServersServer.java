@@ -6,6 +6,7 @@ package com.pulumi.alicloud.vpc.outputs;
 import com.pulumi.alicloud.vpc.outputs.GetIpsecServersServerIkeConfig;
 import com.pulumi.alicloud.vpc.outputs.GetIpsecServersServerIpsecConfig;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -271,32 +272,50 @@ public final class GetIpsecServersServer {
 
         @CustomType.Setter
         public Builder clientIpPool(String clientIpPool) {
-            this.clientIpPool = Objects.requireNonNull(clientIpPool);
+            if (clientIpPool == null) {
+              throw new MissingRequiredPropertyException("GetIpsecServersServer", "clientIpPool");
+            }
+            this.clientIpPool = clientIpPool;
             return this;
         }
         @CustomType.Setter
         public Builder createTime(String createTime) {
-            this.createTime = Objects.requireNonNull(createTime);
+            if (createTime == null) {
+              throw new MissingRequiredPropertyException("GetIpsecServersServer", "createTime");
+            }
+            this.createTime = createTime;
             return this;
         }
         @CustomType.Setter
         public Builder effectImmediately(Boolean effectImmediately) {
-            this.effectImmediately = Objects.requireNonNull(effectImmediately);
+            if (effectImmediately == null) {
+              throw new MissingRequiredPropertyException("GetIpsecServersServer", "effectImmediately");
+            }
+            this.effectImmediately = effectImmediately;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetIpsecServersServer", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder idaasInstanceId(String idaasInstanceId) {
-            this.idaasInstanceId = Objects.requireNonNull(idaasInstanceId);
+            if (idaasInstanceId == null) {
+              throw new MissingRequiredPropertyException("GetIpsecServersServer", "idaasInstanceId");
+            }
+            this.idaasInstanceId = idaasInstanceId;
             return this;
         }
         @CustomType.Setter
         public Builder ikeConfigs(List<GetIpsecServersServerIkeConfig> ikeConfigs) {
-            this.ikeConfigs = Objects.requireNonNull(ikeConfigs);
+            if (ikeConfigs == null) {
+              throw new MissingRequiredPropertyException("GetIpsecServersServer", "ikeConfigs");
+            }
+            this.ikeConfigs = ikeConfigs;
             return this;
         }
         public Builder ikeConfigs(GetIpsecServersServerIkeConfig... ikeConfigs) {
@@ -304,12 +323,18 @@ public final class GetIpsecServersServer {
         }
         @CustomType.Setter
         public Builder internetIp(String internetIp) {
-            this.internetIp = Objects.requireNonNull(internetIp);
+            if (internetIp == null) {
+              throw new MissingRequiredPropertyException("GetIpsecServersServer", "internetIp");
+            }
+            this.internetIp = internetIp;
             return this;
         }
         @CustomType.Setter
         public Builder ipsecConfigs(List<GetIpsecServersServerIpsecConfig> ipsecConfigs) {
-            this.ipsecConfigs = Objects.requireNonNull(ipsecConfigs);
+            if (ipsecConfigs == null) {
+              throw new MissingRequiredPropertyException("GetIpsecServersServer", "ipsecConfigs");
+            }
+            this.ipsecConfigs = ipsecConfigs;
             return this;
         }
         public Builder ipsecConfigs(GetIpsecServersServerIpsecConfig... ipsecConfigs) {
@@ -317,47 +342,74 @@ public final class GetIpsecServersServer {
         }
         @CustomType.Setter
         public Builder ipsecServerId(String ipsecServerId) {
-            this.ipsecServerId = Objects.requireNonNull(ipsecServerId);
+            if (ipsecServerId == null) {
+              throw new MissingRequiredPropertyException("GetIpsecServersServer", "ipsecServerId");
+            }
+            this.ipsecServerId = ipsecServerId;
             return this;
         }
         @CustomType.Setter
         public Builder ipsecServerName(String ipsecServerName) {
-            this.ipsecServerName = Objects.requireNonNull(ipsecServerName);
+            if (ipsecServerName == null) {
+              throw new MissingRequiredPropertyException("GetIpsecServersServer", "ipsecServerName");
+            }
+            this.ipsecServerName = ipsecServerName;
             return this;
         }
         @CustomType.Setter
         public Builder localSubnet(String localSubnet) {
-            this.localSubnet = Objects.requireNonNull(localSubnet);
+            if (localSubnet == null) {
+              throw new MissingRequiredPropertyException("GetIpsecServersServer", "localSubnet");
+            }
+            this.localSubnet = localSubnet;
             return this;
         }
         @CustomType.Setter
         public Builder maxConnections(Integer maxConnections) {
-            this.maxConnections = Objects.requireNonNull(maxConnections);
+            if (maxConnections == null) {
+              throw new MissingRequiredPropertyException("GetIpsecServersServer", "maxConnections");
+            }
+            this.maxConnections = maxConnections;
             return this;
         }
         @CustomType.Setter
         public Builder multiFactorAuthEnabled(Boolean multiFactorAuthEnabled) {
-            this.multiFactorAuthEnabled = Objects.requireNonNull(multiFactorAuthEnabled);
+            if (multiFactorAuthEnabled == null) {
+              throw new MissingRequiredPropertyException("GetIpsecServersServer", "multiFactorAuthEnabled");
+            }
+            this.multiFactorAuthEnabled = multiFactorAuthEnabled;
             return this;
         }
         @CustomType.Setter
         public Builder onlineClientCount(Integer onlineClientCount) {
-            this.onlineClientCount = Objects.requireNonNull(onlineClientCount);
+            if (onlineClientCount == null) {
+              throw new MissingRequiredPropertyException("GetIpsecServersServer", "onlineClientCount");
+            }
+            this.onlineClientCount = onlineClientCount;
             return this;
         }
         @CustomType.Setter
         public Builder psk(String psk) {
-            this.psk = Objects.requireNonNull(psk);
+            if (psk == null) {
+              throw new MissingRequiredPropertyException("GetIpsecServersServer", "psk");
+            }
+            this.psk = psk;
             return this;
         }
         @CustomType.Setter
         public Builder pskEnabled(Boolean pskEnabled) {
-            this.pskEnabled = Objects.requireNonNull(pskEnabled);
+            if (pskEnabled == null) {
+              throw new MissingRequiredPropertyException("GetIpsecServersServer", "pskEnabled");
+            }
+            this.pskEnabled = pskEnabled;
             return this;
         }
         @CustomType.Setter
         public Builder vpnGatewayId(String vpnGatewayId) {
-            this.vpnGatewayId = Objects.requireNonNull(vpnGatewayId);
+            if (vpnGatewayId == null) {
+              throw new MissingRequiredPropertyException("GetIpsecServersServer", "vpnGatewayId");
+            }
+            this.vpnGatewayId = vpnGatewayId;
             return this;
         }
         public GetIpsecServersServer build() {

@@ -5,6 +5,7 @@ package com.pulumi.alicloud.hbr.outputs;
 
 import com.pulumi.alicloud.hbr.outputs.GetHanaBackupClientsHanaBackupClient;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -141,17 +142,22 @@ public final class GetHanaBackupClientsResult {
 
         @CustomType.Setter
         public Builder clientId(@Nullable String clientId) {
+
             this.clientId = clientId;
             return this;
         }
         @CustomType.Setter
         public Builder clusterId(@Nullable String clusterId) {
+
             this.clusterId = clusterId;
             return this;
         }
         @CustomType.Setter
         public Builder hanaBackupClients(List<GetHanaBackupClientsHanaBackupClient> hanaBackupClients) {
-            this.hanaBackupClients = Objects.requireNonNull(hanaBackupClients);
+            if (hanaBackupClients == null) {
+              throw new MissingRequiredPropertyException("GetHanaBackupClientsResult", "hanaBackupClients");
+            }
+            this.hanaBackupClients = hanaBackupClients;
             return this;
         }
         public Builder hanaBackupClients(GetHanaBackupClientsHanaBackupClient... hanaBackupClients) {
@@ -159,12 +165,18 @@ public final class GetHanaBackupClientsResult {
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetHanaBackupClientsResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder ids(List<String> ids) {
-            this.ids = Objects.requireNonNull(ids);
+            if (ids == null) {
+              throw new MissingRequiredPropertyException("GetHanaBackupClientsResult", "ids");
+            }
+            this.ids = ids;
             return this;
         }
         public Builder ids(String... ids) {
@@ -172,27 +184,34 @@ public final class GetHanaBackupClientsResult {
         }
         @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
+
             this.outputFile = outputFile;
             return this;
         }
         @CustomType.Setter
         public Builder pageNumber(@Nullable Integer pageNumber) {
+
             this.pageNumber = pageNumber;
             return this;
         }
         @CustomType.Setter
         public Builder pageSize(@Nullable Integer pageSize) {
+
             this.pageSize = pageSize;
             return this;
         }
         @CustomType.Setter
         public Builder status(@Nullable String status) {
+
             this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder vaultId(String vaultId) {
-            this.vaultId = Objects.requireNonNull(vaultId);
+            if (vaultId == null) {
+              throw new MissingRequiredPropertyException("GetHanaBackupClientsResult", "vaultId");
+            }
+            this.vaultId = vaultId;
             return this;
         }
         public GetHanaBackupClientsResult build() {

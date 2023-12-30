@@ -5,6 +5,7 @@ package com.pulumi.alicloud.vpc;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -224,8 +225,12 @@ public final class SnatEntryArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public SnatEntryArgs build() {
-            $.snatIp = Objects.requireNonNull($.snatIp, "expected parameter 'snatIp' to be non-null");
-            $.snatTableId = Objects.requireNonNull($.snatTableId, "expected parameter 'snatTableId' to be non-null");
+            if ($.snatIp == null) {
+                throw new MissingRequiredPropertyException("SnatEntryArgs", "snatIp");
+            }
+            if ($.snatTableId == null) {
+                throw new MissingRequiredPropertyException("SnatEntryArgs", "snatTableId");
+            }
             return $;
         }
     }

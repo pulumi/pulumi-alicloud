@@ -5,6 +5,7 @@ package com.pulumi.alicloud.databasegateway.outputs;
 
 import com.pulumi.alicloud.databasegateway.outputs.GetGatewaysGatewayGatewayInstance;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -162,17 +163,26 @@ public final class GetGatewaysGateway {
 
         @CustomType.Setter
         public Builder createTime(String createTime) {
-            this.createTime = Objects.requireNonNull(createTime);
+            if (createTime == null) {
+              throw new MissingRequiredPropertyException("GetGatewaysGateway", "createTime");
+            }
+            this.createTime = createTime;
             return this;
         }
         @CustomType.Setter
         public Builder gatewayDesc(String gatewayDesc) {
-            this.gatewayDesc = Objects.requireNonNull(gatewayDesc);
+            if (gatewayDesc == null) {
+              throw new MissingRequiredPropertyException("GetGatewaysGateway", "gatewayDesc");
+            }
+            this.gatewayDesc = gatewayDesc;
             return this;
         }
         @CustomType.Setter
         public Builder gatewayInstances(List<GetGatewaysGatewayGatewayInstance> gatewayInstances) {
-            this.gatewayInstances = Objects.requireNonNull(gatewayInstances);
+            if (gatewayInstances == null) {
+              throw new MissingRequiredPropertyException("GetGatewaysGateway", "gatewayInstances");
+            }
+            this.gatewayInstances = gatewayInstances;
             return this;
         }
         public Builder gatewayInstances(GetGatewaysGatewayGatewayInstance... gatewayInstances) {
@@ -180,37 +190,58 @@ public final class GetGatewaysGateway {
         }
         @CustomType.Setter
         public Builder gatewayName(String gatewayName) {
-            this.gatewayName = Objects.requireNonNull(gatewayName);
+            if (gatewayName == null) {
+              throw new MissingRequiredPropertyException("GetGatewaysGateway", "gatewayName");
+            }
+            this.gatewayName = gatewayName;
             return this;
         }
         @CustomType.Setter
         public Builder hosts(String hosts) {
-            this.hosts = Objects.requireNonNull(hosts);
+            if (hosts == null) {
+              throw new MissingRequiredPropertyException("GetGatewaysGateway", "hosts");
+            }
+            this.hosts = hosts;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetGatewaysGateway", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder modifiedTime(String modifiedTime) {
-            this.modifiedTime = Objects.requireNonNull(modifiedTime);
+            if (modifiedTime == null) {
+              throw new MissingRequiredPropertyException("GetGatewaysGateway", "modifiedTime");
+            }
+            this.modifiedTime = modifiedTime;
             return this;
         }
         @CustomType.Setter
         public Builder parentId(String parentId) {
-            this.parentId = Objects.requireNonNull(parentId);
+            if (parentId == null) {
+              throw new MissingRequiredPropertyException("GetGatewaysGateway", "parentId");
+            }
+            this.parentId = parentId;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetGatewaysGateway", "status");
+            }
+            this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder userId(String userId) {
-            this.userId = Objects.requireNonNull(userId);
+            if (userId == null) {
+              throw new MissingRequiredPropertyException("GetGatewaysGateway", "userId");
+            }
+            this.userId = userId;
             return this;
         }
         public GetGatewaysGateway build() {

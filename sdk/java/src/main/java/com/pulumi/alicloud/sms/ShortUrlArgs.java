@@ -5,6 +5,7 @@ package com.pulumi.alicloud.sms;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -149,9 +150,15 @@ public final class ShortUrlArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public ShortUrlArgs build() {
-            $.effectiveDays = Objects.requireNonNull($.effectiveDays, "expected parameter 'effectiveDays' to be non-null");
-            $.shortUrlName = Objects.requireNonNull($.shortUrlName, "expected parameter 'shortUrlName' to be non-null");
-            $.sourceUrl = Objects.requireNonNull($.sourceUrl, "expected parameter 'sourceUrl' to be non-null");
+            if ($.effectiveDays == null) {
+                throw new MissingRequiredPropertyException("ShortUrlArgs", "effectiveDays");
+            }
+            if ($.shortUrlName == null) {
+                throw new MissingRequiredPropertyException("ShortUrlArgs", "shortUrlName");
+            }
+            if ($.sourceUrl == null) {
+                throw new MissingRequiredPropertyException("ShortUrlArgs", "sourceUrl");
+            }
             return $;
         }
     }

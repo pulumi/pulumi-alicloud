@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.vpn.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -128,37 +129,58 @@ public final class GetGatewayVpnAttachmentsAttachmentHealthCheckConfig {
 
         @CustomType.Setter
         public Builder dip(String dip) {
-            this.dip = Objects.requireNonNull(dip);
+            if (dip == null) {
+              throw new MissingRequiredPropertyException("GetGatewayVpnAttachmentsAttachmentHealthCheckConfig", "dip");
+            }
+            this.dip = dip;
             return this;
         }
         @CustomType.Setter
         public Builder enable(Boolean enable) {
-            this.enable = Objects.requireNonNull(enable);
+            if (enable == null) {
+              throw new MissingRequiredPropertyException("GetGatewayVpnAttachmentsAttachmentHealthCheckConfig", "enable");
+            }
+            this.enable = enable;
             return this;
         }
         @CustomType.Setter
         public Builder interval(Integer interval) {
-            this.interval = Objects.requireNonNull(interval);
+            if (interval == null) {
+              throw new MissingRequiredPropertyException("GetGatewayVpnAttachmentsAttachmentHealthCheckConfig", "interval");
+            }
+            this.interval = interval;
             return this;
         }
         @CustomType.Setter
         public Builder policy(String policy) {
-            this.policy = Objects.requireNonNull(policy);
+            if (policy == null) {
+              throw new MissingRequiredPropertyException("GetGatewayVpnAttachmentsAttachmentHealthCheckConfig", "policy");
+            }
+            this.policy = policy;
             return this;
         }
         @CustomType.Setter
         public Builder retry(Integer retry) {
-            this.retry = Objects.requireNonNull(retry);
+            if (retry == null) {
+              throw new MissingRequiredPropertyException("GetGatewayVpnAttachmentsAttachmentHealthCheckConfig", "retry");
+            }
+            this.retry = retry;
             return this;
         }
         @CustomType.Setter
         public Builder sip(String sip) {
-            this.sip = Objects.requireNonNull(sip);
+            if (sip == null) {
+              throw new MissingRequiredPropertyException("GetGatewayVpnAttachmentsAttachmentHealthCheckConfig", "sip");
+            }
+            this.sip = sip;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetGatewayVpnAttachmentsAttachmentHealthCheckConfig", "status");
+            }
+            this.status = status;
             return this;
         }
         public GetGatewayVpnAttachmentsAttachmentHealthCheckConfig build() {

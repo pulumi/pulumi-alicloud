@@ -5,6 +5,7 @@ package com.pulumi.alicloud.ga.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -272,7 +273,9 @@ public final class GetBasicAccelerateIpsArgs extends com.pulumi.resources.Invoke
         }
 
         public GetBasicAccelerateIpsArgs build() {
-            $.ipSetId = Objects.requireNonNull($.ipSetId, "expected parameter 'ipSetId' to be non-null");
+            if ($.ipSetId == null) {
+                throw new MissingRequiredPropertyException("GetBasicAccelerateIpsArgs", "ipSetId");
+            }
             return $;
         }
     }

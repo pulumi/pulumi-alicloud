@@ -5,6 +5,7 @@ package com.pulumi.alicloud.dts;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.Object;
 import java.lang.String;
@@ -412,11 +413,21 @@ public final class MigrationInstanceArgs extends com.pulumi.resources.ResourceAr
         }
 
         public MigrationInstanceArgs build() {
-            $.destinationEndpointEngineName = Objects.requireNonNull($.destinationEndpointEngineName, "expected parameter 'destinationEndpointEngineName' to be non-null");
-            $.destinationEndpointRegion = Objects.requireNonNull($.destinationEndpointRegion, "expected parameter 'destinationEndpointRegion' to be non-null");
-            $.paymentType = Objects.requireNonNull($.paymentType, "expected parameter 'paymentType' to be non-null");
-            $.sourceEndpointEngineName = Objects.requireNonNull($.sourceEndpointEngineName, "expected parameter 'sourceEndpointEngineName' to be non-null");
-            $.sourceEndpointRegion = Objects.requireNonNull($.sourceEndpointRegion, "expected parameter 'sourceEndpointRegion' to be non-null");
+            if ($.destinationEndpointEngineName == null) {
+                throw new MissingRequiredPropertyException("MigrationInstanceArgs", "destinationEndpointEngineName");
+            }
+            if ($.destinationEndpointRegion == null) {
+                throw new MissingRequiredPropertyException("MigrationInstanceArgs", "destinationEndpointRegion");
+            }
+            if ($.paymentType == null) {
+                throw new MissingRequiredPropertyException("MigrationInstanceArgs", "paymentType");
+            }
+            if ($.sourceEndpointEngineName == null) {
+                throw new MissingRequiredPropertyException("MigrationInstanceArgs", "sourceEndpointEngineName");
+            }
+            if ($.sourceEndpointRegion == null) {
+                throw new MissingRequiredPropertyException("MigrationInstanceArgs", "sourceEndpointRegion");
+            }
             return $;
         }
     }

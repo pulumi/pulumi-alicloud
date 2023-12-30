@@ -5,6 +5,7 @@ package com.pulumi.alicloud.ros.outputs;
 
 import com.pulumi.alicloud.ros.outputs.GetStacksStackParameter;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.Object;
@@ -286,32 +287,50 @@ public final class GetStacksStack {
 
         @CustomType.Setter
         public Builder deletionProtection(String deletionProtection) {
-            this.deletionProtection = Objects.requireNonNull(deletionProtection);
+            if (deletionProtection == null) {
+              throw new MissingRequiredPropertyException("GetStacksStack", "deletionProtection");
+            }
+            this.deletionProtection = deletionProtection;
             return this;
         }
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetStacksStack", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder disableRollback(Boolean disableRollback) {
-            this.disableRollback = Objects.requireNonNull(disableRollback);
+            if (disableRollback == null) {
+              throw new MissingRequiredPropertyException("GetStacksStack", "disableRollback");
+            }
+            this.disableRollback = disableRollback;
             return this;
         }
         @CustomType.Setter
         public Builder driftDetectionTime(String driftDetectionTime) {
-            this.driftDetectionTime = Objects.requireNonNull(driftDetectionTime);
+            if (driftDetectionTime == null) {
+              throw new MissingRequiredPropertyException("GetStacksStack", "driftDetectionTime");
+            }
+            this.driftDetectionTime = driftDetectionTime;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetStacksStack", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder parameters(List<GetStacksStackParameter> parameters) {
-            this.parameters = Objects.requireNonNull(parameters);
+            if (parameters == null) {
+              throw new MissingRequiredPropertyException("GetStacksStack", "parameters");
+            }
+            this.parameters = parameters;
             return this;
         }
         public Builder parameters(GetStacksStackParameter... parameters) {
@@ -319,62 +338,98 @@ public final class GetStacksStack {
         }
         @CustomType.Setter
         public Builder parentStackId(String parentStackId) {
-            this.parentStackId = Objects.requireNonNull(parentStackId);
+            if (parentStackId == null) {
+              throw new MissingRequiredPropertyException("GetStacksStack", "parentStackId");
+            }
+            this.parentStackId = parentStackId;
             return this;
         }
         @CustomType.Setter
         public Builder ramRoleName(String ramRoleName) {
-            this.ramRoleName = Objects.requireNonNull(ramRoleName);
+            if (ramRoleName == null) {
+              throw new MissingRequiredPropertyException("GetStacksStack", "ramRoleName");
+            }
+            this.ramRoleName = ramRoleName;
             return this;
         }
         @CustomType.Setter
         public Builder rootStackId(String rootStackId) {
-            this.rootStackId = Objects.requireNonNull(rootStackId);
+            if (rootStackId == null) {
+              throw new MissingRequiredPropertyException("GetStacksStack", "rootStackId");
+            }
+            this.rootStackId = rootStackId;
             return this;
         }
         @CustomType.Setter
         public Builder stackDriftStatus(String stackDriftStatus) {
-            this.stackDriftStatus = Objects.requireNonNull(stackDriftStatus);
+            if (stackDriftStatus == null) {
+              throw new MissingRequiredPropertyException("GetStacksStack", "stackDriftStatus");
+            }
+            this.stackDriftStatus = stackDriftStatus;
             return this;
         }
         @CustomType.Setter
         public Builder stackId(String stackId) {
-            this.stackId = Objects.requireNonNull(stackId);
+            if (stackId == null) {
+              throw new MissingRequiredPropertyException("GetStacksStack", "stackId");
+            }
+            this.stackId = stackId;
             return this;
         }
         @CustomType.Setter
         public Builder stackName(String stackName) {
-            this.stackName = Objects.requireNonNull(stackName);
+            if (stackName == null) {
+              throw new MissingRequiredPropertyException("GetStacksStack", "stackName");
+            }
+            this.stackName = stackName;
             return this;
         }
         @CustomType.Setter
         public Builder stackPolicyBody(String stackPolicyBody) {
-            this.stackPolicyBody = Objects.requireNonNull(stackPolicyBody);
+            if (stackPolicyBody == null) {
+              throw new MissingRequiredPropertyException("GetStacksStack", "stackPolicyBody");
+            }
+            this.stackPolicyBody = stackPolicyBody;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetStacksStack", "status");
+            }
+            this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder statusReason(String statusReason) {
-            this.statusReason = Objects.requireNonNull(statusReason);
+            if (statusReason == null) {
+              throw new MissingRequiredPropertyException("GetStacksStack", "statusReason");
+            }
+            this.statusReason = statusReason;
             return this;
         }
         @CustomType.Setter
         public Builder tags(Map<String,Object> tags) {
-            this.tags = Objects.requireNonNull(tags);
+            if (tags == null) {
+              throw new MissingRequiredPropertyException("GetStacksStack", "tags");
+            }
+            this.tags = tags;
             return this;
         }
         @CustomType.Setter
         public Builder templateDescription(String templateDescription) {
-            this.templateDescription = Objects.requireNonNull(templateDescription);
+            if (templateDescription == null) {
+              throw new MissingRequiredPropertyException("GetStacksStack", "templateDescription");
+            }
+            this.templateDescription = templateDescription;
             return this;
         }
         @CustomType.Setter
         public Builder timeoutInMinutes(Integer timeoutInMinutes) {
-            this.timeoutInMinutes = Objects.requireNonNull(timeoutInMinutes);
+            if (timeoutInMinutes == null) {
+              throw new MissingRequiredPropertyException("GetStacksStack", "timeoutInMinutes");
+            }
+            this.timeoutInMinutes = timeoutInMinutes;
             return this;
         }
         public GetStacksStack build() {

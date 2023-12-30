@@ -48,16 +48,19 @@ public final class DomainCertificateConfig {
 
         @CustomType.Setter
         public Builder privateKey(@Nullable String privateKey) {
+
             this.privateKey = privateKey;
             return this;
         }
         @CustomType.Setter
         public Builder serverCertificate(@Nullable String serverCertificate) {
+
             this.serverCertificate = serverCertificate;
             return this;
         }
         @CustomType.Setter
         public Builder serverCertificateStatus(@Nullable String serverCertificateStatus) {
+
             this.serverCertificateStatus = serverCertificateStatus;
             return this;
         }

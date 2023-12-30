@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.emrv2.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.util.Objects;
 
@@ -70,17 +71,26 @@ public final class ClusterNodeGroupCostOptimizedConfig {
 
         @CustomType.Setter
         public Builder onDemandBaseCapacity(Integer onDemandBaseCapacity) {
-            this.onDemandBaseCapacity = Objects.requireNonNull(onDemandBaseCapacity);
+            if (onDemandBaseCapacity == null) {
+              throw new MissingRequiredPropertyException("ClusterNodeGroupCostOptimizedConfig", "onDemandBaseCapacity");
+            }
+            this.onDemandBaseCapacity = onDemandBaseCapacity;
             return this;
         }
         @CustomType.Setter
         public Builder onDemandPercentageAboveBaseCapacity(Integer onDemandPercentageAboveBaseCapacity) {
-            this.onDemandPercentageAboveBaseCapacity = Objects.requireNonNull(onDemandPercentageAboveBaseCapacity);
+            if (onDemandPercentageAboveBaseCapacity == null) {
+              throw new MissingRequiredPropertyException("ClusterNodeGroupCostOptimizedConfig", "onDemandPercentageAboveBaseCapacity");
+            }
+            this.onDemandPercentageAboveBaseCapacity = onDemandPercentageAboveBaseCapacity;
             return this;
         }
         @CustomType.Setter
         public Builder spotInstancePools(Integer spotInstancePools) {
-            this.spotInstancePools = Objects.requireNonNull(spotInstancePools);
+            if (spotInstancePools == null) {
+              throw new MissingRequiredPropertyException("ClusterNodeGroupCostOptimizedConfig", "spotInstancePools");
+            }
+            this.spotInstancePools = spotInstancePools;
             return this;
         }
         public ClusterNodeGroupCostOptimizedConfig build() {

@@ -5,6 +5,7 @@ package com.pulumi.alicloud.cassandra;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.Object;
@@ -769,11 +770,21 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public ClusterArgs build() {
-            $.instanceType = Objects.requireNonNull($.instanceType, "expected parameter 'instanceType' to be non-null");
-            $.majorVersion = Objects.requireNonNull($.majorVersion, "expected parameter 'majorVersion' to be non-null");
-            $.nodeCount = Objects.requireNonNull($.nodeCount, "expected parameter 'nodeCount' to be non-null");
-            $.payType = Objects.requireNonNull($.payType, "expected parameter 'payType' to be non-null");
-            $.vswitchId = Objects.requireNonNull($.vswitchId, "expected parameter 'vswitchId' to be non-null");
+            if ($.instanceType == null) {
+                throw new MissingRequiredPropertyException("ClusterArgs", "instanceType");
+            }
+            if ($.majorVersion == null) {
+                throw new MissingRequiredPropertyException("ClusterArgs", "majorVersion");
+            }
+            if ($.nodeCount == null) {
+                throw new MissingRequiredPropertyException("ClusterArgs", "nodeCount");
+            }
+            if ($.payType == null) {
+                throw new MissingRequiredPropertyException("ClusterArgs", "payType");
+            }
+            if ($.vswitchId == null) {
+                throw new MissingRequiredPropertyException("ClusterArgs", "vswitchId");
+            }
             return $;
         }
     }

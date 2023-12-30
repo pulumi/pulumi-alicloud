@@ -6,6 +6,7 @@ package com.pulumi.alicloud.graphdatabase;
 import com.pulumi.alicloud.graphdatabase.inputs.DbInstanceDbInstanceIpArrayArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -496,13 +497,27 @@ public final class DbInstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public DbInstanceArgs build() {
-            $.dbInstanceCategory = Objects.requireNonNull($.dbInstanceCategory, "expected parameter 'dbInstanceCategory' to be non-null");
-            $.dbInstanceNetworkType = Objects.requireNonNull($.dbInstanceNetworkType, "expected parameter 'dbInstanceNetworkType' to be non-null");
-            $.dbInstanceStorageType = Objects.requireNonNull($.dbInstanceStorageType, "expected parameter 'dbInstanceStorageType' to be non-null");
-            $.dbNodeClass = Objects.requireNonNull($.dbNodeClass, "expected parameter 'dbNodeClass' to be non-null");
-            $.dbNodeStorage = Objects.requireNonNull($.dbNodeStorage, "expected parameter 'dbNodeStorage' to be non-null");
-            $.dbVersion = Objects.requireNonNull($.dbVersion, "expected parameter 'dbVersion' to be non-null");
-            $.paymentType = Objects.requireNonNull($.paymentType, "expected parameter 'paymentType' to be non-null");
+            if ($.dbInstanceCategory == null) {
+                throw new MissingRequiredPropertyException("DbInstanceArgs", "dbInstanceCategory");
+            }
+            if ($.dbInstanceNetworkType == null) {
+                throw new MissingRequiredPropertyException("DbInstanceArgs", "dbInstanceNetworkType");
+            }
+            if ($.dbInstanceStorageType == null) {
+                throw new MissingRequiredPropertyException("DbInstanceArgs", "dbInstanceStorageType");
+            }
+            if ($.dbNodeClass == null) {
+                throw new MissingRequiredPropertyException("DbInstanceArgs", "dbNodeClass");
+            }
+            if ($.dbNodeStorage == null) {
+                throw new MissingRequiredPropertyException("DbInstanceArgs", "dbNodeStorage");
+            }
+            if ($.dbVersion == null) {
+                throw new MissingRequiredPropertyException("DbInstanceArgs", "dbVersion");
+            }
+            if ($.paymentType == null) {
+                throw new MissingRequiredPropertyException("DbInstanceArgs", "paymentType");
+            }
             return $;
         }
     }

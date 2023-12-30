@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.ehpc.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -40,12 +41,18 @@ public final class GetClustersClusterPostInstallScript {
 
         @CustomType.Setter
         public Builder args(String args) {
-            this.args = Objects.requireNonNull(args);
+            if (args == null) {
+              throw new MissingRequiredPropertyException("GetClustersClusterPostInstallScript", "args");
+            }
+            this.args = args;
             return this;
         }
         @CustomType.Setter
         public Builder url(String url) {
-            this.url = Objects.requireNonNull(url);
+            if (url == null) {
+              throw new MissingRequiredPropertyException("GetClustersClusterPostInstallScript", "url");
+            }
+            this.url = url;
             return this;
         }
         public GetClustersClusterPostInstallScript build() {

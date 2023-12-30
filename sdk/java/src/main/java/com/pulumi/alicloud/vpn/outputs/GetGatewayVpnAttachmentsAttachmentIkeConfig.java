@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.vpn.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -154,47 +155,74 @@ public final class GetGatewayVpnAttachmentsAttachmentIkeConfig {
 
         @CustomType.Setter
         public Builder ikeAuthAlg(String ikeAuthAlg) {
-            this.ikeAuthAlg = Objects.requireNonNull(ikeAuthAlg);
+            if (ikeAuthAlg == null) {
+              throw new MissingRequiredPropertyException("GetGatewayVpnAttachmentsAttachmentIkeConfig", "ikeAuthAlg");
+            }
+            this.ikeAuthAlg = ikeAuthAlg;
             return this;
         }
         @CustomType.Setter
         public Builder ikeEncAlg(String ikeEncAlg) {
-            this.ikeEncAlg = Objects.requireNonNull(ikeEncAlg);
+            if (ikeEncAlg == null) {
+              throw new MissingRequiredPropertyException("GetGatewayVpnAttachmentsAttachmentIkeConfig", "ikeEncAlg");
+            }
+            this.ikeEncAlg = ikeEncAlg;
             return this;
         }
         @CustomType.Setter
         public Builder ikeLifetime(String ikeLifetime) {
-            this.ikeLifetime = Objects.requireNonNull(ikeLifetime);
+            if (ikeLifetime == null) {
+              throw new MissingRequiredPropertyException("GetGatewayVpnAttachmentsAttachmentIkeConfig", "ikeLifetime");
+            }
+            this.ikeLifetime = ikeLifetime;
             return this;
         }
         @CustomType.Setter
         public Builder ikeMode(String ikeMode) {
-            this.ikeMode = Objects.requireNonNull(ikeMode);
+            if (ikeMode == null) {
+              throw new MissingRequiredPropertyException("GetGatewayVpnAttachmentsAttachmentIkeConfig", "ikeMode");
+            }
+            this.ikeMode = ikeMode;
             return this;
         }
         @CustomType.Setter
         public Builder ikePfs(String ikePfs) {
-            this.ikePfs = Objects.requireNonNull(ikePfs);
+            if (ikePfs == null) {
+              throw new MissingRequiredPropertyException("GetGatewayVpnAttachmentsAttachmentIkeConfig", "ikePfs");
+            }
+            this.ikePfs = ikePfs;
             return this;
         }
         @CustomType.Setter
         public Builder ikeVersion(String ikeVersion) {
-            this.ikeVersion = Objects.requireNonNull(ikeVersion);
+            if (ikeVersion == null) {
+              throw new MissingRequiredPropertyException("GetGatewayVpnAttachmentsAttachmentIkeConfig", "ikeVersion");
+            }
+            this.ikeVersion = ikeVersion;
             return this;
         }
         @CustomType.Setter
         public Builder localId(String localId) {
-            this.localId = Objects.requireNonNull(localId);
+            if (localId == null) {
+              throw new MissingRequiredPropertyException("GetGatewayVpnAttachmentsAttachmentIkeConfig", "localId");
+            }
+            this.localId = localId;
             return this;
         }
         @CustomType.Setter
         public Builder psk(String psk) {
-            this.psk = Objects.requireNonNull(psk);
+            if (psk == null) {
+              throw new MissingRequiredPropertyException("GetGatewayVpnAttachmentsAttachmentIkeConfig", "psk");
+            }
+            this.psk = psk;
             return this;
         }
         @CustomType.Setter
         public Builder remoteId(String remoteId) {
-            this.remoteId = Objects.requireNonNull(remoteId);
+            if (remoteId == null) {
+              throw new MissingRequiredPropertyException("GetGatewayVpnAttachmentsAttachmentIkeConfig", "remoteId");
+            }
+            this.remoteId = remoteId;
             return this;
         }
         public GetGatewayVpnAttachmentsAttachmentIkeConfig build() {

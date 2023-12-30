@@ -74,6 +74,7 @@ public final class ConnectionAuthParametersOauthParametersOauthHttpParameters {
 
         @CustomType.Setter
         public Builder bodyParameters(@Nullable List<ConnectionAuthParametersOauthParametersOauthHttpParametersBodyParameter> bodyParameters) {
+
             this.bodyParameters = bodyParameters;
             return this;
         }
@@ -82,6 +83,7 @@ public final class ConnectionAuthParametersOauthParametersOauthHttpParameters {
         }
         @CustomType.Setter
         public Builder headerParameters(@Nullable List<ConnectionAuthParametersOauthParametersOauthHttpParametersHeaderParameter> headerParameters) {
+
             this.headerParameters = headerParameters;
             return this;
         }
@@ -90,6 +92,7 @@ public final class ConnectionAuthParametersOauthParametersOauthHttpParameters {
         }
         @CustomType.Setter
         public Builder queryStringParameters(@Nullable List<ConnectionAuthParametersOauthParametersOauthHttpParametersQueryStringParameter> queryStringParameters) {
+
             this.queryStringParameters = queryStringParameters;
             return this;
         }

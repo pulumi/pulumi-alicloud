@@ -5,6 +5,7 @@ package com.pulumi.alicloud.threatdetection;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -415,12 +416,24 @@ public final class OssScanConfigArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public OssScanConfigArgs build() {
-            $.bucketNameLists = Objects.requireNonNull($.bucketNameLists, "expected parameter 'bucketNameLists' to be non-null");
-            $.enable = Objects.requireNonNull($.enable, "expected parameter 'enable' to be non-null");
-            $.endTime = Objects.requireNonNull($.endTime, "expected parameter 'endTime' to be non-null");
-            $.keySuffixLists = Objects.requireNonNull($.keySuffixLists, "expected parameter 'keySuffixLists' to be non-null");
-            $.scanDayLists = Objects.requireNonNull($.scanDayLists, "expected parameter 'scanDayLists' to be non-null");
-            $.startTime = Objects.requireNonNull($.startTime, "expected parameter 'startTime' to be non-null");
+            if ($.bucketNameLists == null) {
+                throw new MissingRequiredPropertyException("OssScanConfigArgs", "bucketNameLists");
+            }
+            if ($.enable == null) {
+                throw new MissingRequiredPropertyException("OssScanConfigArgs", "enable");
+            }
+            if ($.endTime == null) {
+                throw new MissingRequiredPropertyException("OssScanConfigArgs", "endTime");
+            }
+            if ($.keySuffixLists == null) {
+                throw new MissingRequiredPropertyException("OssScanConfigArgs", "keySuffixLists");
+            }
+            if ($.scanDayLists == null) {
+                throw new MissingRequiredPropertyException("OssScanConfigArgs", "scanDayLists");
+            }
+            if ($.startTime == null) {
+                throw new MissingRequiredPropertyException("OssScanConfigArgs", "startTime");
+            }
             return $;
         }
     }

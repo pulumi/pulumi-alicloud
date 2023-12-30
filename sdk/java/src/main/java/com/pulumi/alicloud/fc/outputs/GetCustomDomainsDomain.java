@@ -6,6 +6,7 @@ package com.pulumi.alicloud.fc.outputs;
 import com.pulumi.alicloud.fc.outputs.GetCustomDomainsDomainCertConfig;
 import com.pulumi.alicloud.fc.outputs.GetCustomDomainsDomainRouteConfig;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -157,47 +158,74 @@ public final class GetCustomDomainsDomain {
 
         @CustomType.Setter
         public Builder accountId(String accountId) {
-            this.accountId = Objects.requireNonNull(accountId);
+            if (accountId == null) {
+              throw new MissingRequiredPropertyException("GetCustomDomainsDomain", "accountId");
+            }
+            this.accountId = accountId;
             return this;
         }
         @CustomType.Setter
         public Builder apiVersion(String apiVersion) {
-            this.apiVersion = Objects.requireNonNull(apiVersion);
+            if (apiVersion == null) {
+              throw new MissingRequiredPropertyException("GetCustomDomainsDomain", "apiVersion");
+            }
+            this.apiVersion = apiVersion;
             return this;
         }
         @CustomType.Setter
         public Builder certConfig(GetCustomDomainsDomainCertConfig certConfig) {
-            this.certConfig = Objects.requireNonNull(certConfig);
+            if (certConfig == null) {
+              throw new MissingRequiredPropertyException("GetCustomDomainsDomain", "certConfig");
+            }
+            this.certConfig = certConfig;
             return this;
         }
         @CustomType.Setter
         public Builder createdTime(String createdTime) {
-            this.createdTime = Objects.requireNonNull(createdTime);
+            if (createdTime == null) {
+              throw new MissingRequiredPropertyException("GetCustomDomainsDomain", "createdTime");
+            }
+            this.createdTime = createdTime;
             return this;
         }
         @CustomType.Setter
         public Builder domainName(String domainName) {
-            this.domainName = Objects.requireNonNull(domainName);
+            if (domainName == null) {
+              throw new MissingRequiredPropertyException("GetCustomDomainsDomain", "domainName");
+            }
+            this.domainName = domainName;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetCustomDomainsDomain", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder lastModifiedTime(String lastModifiedTime) {
-            this.lastModifiedTime = Objects.requireNonNull(lastModifiedTime);
+            if (lastModifiedTime == null) {
+              throw new MissingRequiredPropertyException("GetCustomDomainsDomain", "lastModifiedTime");
+            }
+            this.lastModifiedTime = lastModifiedTime;
             return this;
         }
         @CustomType.Setter
         public Builder protocol(String protocol) {
-            this.protocol = Objects.requireNonNull(protocol);
+            if (protocol == null) {
+              throw new MissingRequiredPropertyException("GetCustomDomainsDomain", "protocol");
+            }
+            this.protocol = protocol;
             return this;
         }
         @CustomType.Setter
         public Builder routeConfigs(List<GetCustomDomainsDomainRouteConfig> routeConfigs) {
-            this.routeConfigs = Objects.requireNonNull(routeConfigs);
+            if (routeConfigs == null) {
+              throw new MissingRequiredPropertyException("GetCustomDomainsDomain", "routeConfigs");
+            }
+            this.routeConfigs = routeConfigs;
             return this;
         }
         public Builder routeConfigs(GetCustomDomainsDomainRouteConfig... routeConfigs) {

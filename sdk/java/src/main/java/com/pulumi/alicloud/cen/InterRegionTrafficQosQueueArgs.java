@@ -5,6 +5,7 @@ package com.pulumi.alicloud.cen;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -236,9 +237,15 @@ public final class InterRegionTrafficQosQueueArgs extends com.pulumi.resources.R
         }
 
         public InterRegionTrafficQosQueueArgs build() {
-            $.dscps = Objects.requireNonNull($.dscps, "expected parameter 'dscps' to be non-null");
-            $.remainBandwidthPercent = Objects.requireNonNull($.remainBandwidthPercent, "expected parameter 'remainBandwidthPercent' to be non-null");
-            $.trafficQosPolicyId = Objects.requireNonNull($.trafficQosPolicyId, "expected parameter 'trafficQosPolicyId' to be non-null");
+            if ($.dscps == null) {
+                throw new MissingRequiredPropertyException("InterRegionTrafficQosQueueArgs", "dscps");
+            }
+            if ($.remainBandwidthPercent == null) {
+                throw new MissingRequiredPropertyException("InterRegionTrafficQosQueueArgs", "remainBandwidthPercent");
+            }
+            if ($.trafficQosPolicyId == null) {
+                throw new MissingRequiredPropertyException("InterRegionTrafficQosQueueArgs", "trafficQosPolicyId");
+            }
             return $;
         }
     }

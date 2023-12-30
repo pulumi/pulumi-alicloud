@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.cs.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -133,22 +134,34 @@ public final class ManagedKubernetesMaintenanceWindow {
 
         @CustomType.Setter
         public Builder duration(String duration) {
-            this.duration = Objects.requireNonNull(duration);
+            if (duration == null) {
+              throw new MissingRequiredPropertyException("ManagedKubernetesMaintenanceWindow", "duration");
+            }
+            this.duration = duration;
             return this;
         }
         @CustomType.Setter
         public Builder enable(Boolean enable) {
-            this.enable = Objects.requireNonNull(enable);
+            if (enable == null) {
+              throw new MissingRequiredPropertyException("ManagedKubernetesMaintenanceWindow", "enable");
+            }
+            this.enable = enable;
             return this;
         }
         @CustomType.Setter
         public Builder maintenanceTime(String maintenanceTime) {
-            this.maintenanceTime = Objects.requireNonNull(maintenanceTime);
+            if (maintenanceTime == null) {
+              throw new MissingRequiredPropertyException("ManagedKubernetesMaintenanceWindow", "maintenanceTime");
+            }
+            this.maintenanceTime = maintenanceTime;
             return this;
         }
         @CustomType.Setter
         public Builder weeklyPeriod(String weeklyPeriod) {
-            this.weeklyPeriod = Objects.requireNonNull(weeklyPeriod);
+            if (weeklyPeriod == null) {
+              throw new MissingRequiredPropertyException("ManagedKubernetesMaintenanceWindow", "weeklyPeriod");
+            }
+            this.weeklyPeriod = weeklyPeriod;
             return this;
         }
         public ManagedKubernetesMaintenanceWindow build() {

@@ -5,6 +5,7 @@ package com.pulumi.alicloud.cms.outputs;
 
 import com.pulumi.alicloud.cms.outputs.GetMetricRuleBlackListsListMetric;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -219,37 +220,58 @@ public final class GetMetricRuleBlackListsList {
 
         @CustomType.Setter
         public Builder category(String category) {
-            this.category = Objects.requireNonNull(category);
+            if (category == null) {
+              throw new MissingRequiredPropertyException("GetMetricRuleBlackListsList", "category");
+            }
+            this.category = category;
             return this;
         }
         @CustomType.Setter
         public Builder createTime(String createTime) {
-            this.createTime = Objects.requireNonNull(createTime);
+            if (createTime == null) {
+              throw new MissingRequiredPropertyException("GetMetricRuleBlackListsList", "createTime");
+            }
+            this.createTime = createTime;
             return this;
         }
         @CustomType.Setter
         public Builder effectiveTime(String effectiveTime) {
-            this.effectiveTime = Objects.requireNonNull(effectiveTime);
+            if (effectiveTime == null) {
+              throw new MissingRequiredPropertyException("GetMetricRuleBlackListsList", "effectiveTime");
+            }
+            this.effectiveTime = effectiveTime;
             return this;
         }
         @CustomType.Setter
         public Builder enableEndTime(String enableEndTime) {
-            this.enableEndTime = Objects.requireNonNull(enableEndTime);
+            if (enableEndTime == null) {
+              throw new MissingRequiredPropertyException("GetMetricRuleBlackListsList", "enableEndTime");
+            }
+            this.enableEndTime = enableEndTime;
             return this;
         }
         @CustomType.Setter
         public Builder enableStartTime(String enableStartTime) {
-            this.enableStartTime = Objects.requireNonNull(enableStartTime);
+            if (enableStartTime == null) {
+              throw new MissingRequiredPropertyException("GetMetricRuleBlackListsList", "enableStartTime");
+            }
+            this.enableStartTime = enableStartTime;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetMetricRuleBlackListsList", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder instances(List<String> instances) {
-            this.instances = Objects.requireNonNull(instances);
+            if (instances == null) {
+              throw new MissingRequiredPropertyException("GetMetricRuleBlackListsList", "instances");
+            }
+            this.instances = instances;
             return this;
         }
         public Builder instances(String... instances) {
@@ -257,22 +279,34 @@ public final class GetMetricRuleBlackListsList {
         }
         @CustomType.Setter
         public Builder isEnable(Boolean isEnable) {
-            this.isEnable = Objects.requireNonNull(isEnable);
+            if (isEnable == null) {
+              throw new MissingRequiredPropertyException("GetMetricRuleBlackListsList", "isEnable");
+            }
+            this.isEnable = isEnable;
             return this;
         }
         @CustomType.Setter
         public Builder metricRuleBlackListId(String metricRuleBlackListId) {
-            this.metricRuleBlackListId = Objects.requireNonNull(metricRuleBlackListId);
+            if (metricRuleBlackListId == null) {
+              throw new MissingRequiredPropertyException("GetMetricRuleBlackListsList", "metricRuleBlackListId");
+            }
+            this.metricRuleBlackListId = metricRuleBlackListId;
             return this;
         }
         @CustomType.Setter
         public Builder metricRuleBlackListName(String metricRuleBlackListName) {
-            this.metricRuleBlackListName = Objects.requireNonNull(metricRuleBlackListName);
+            if (metricRuleBlackListName == null) {
+              throw new MissingRequiredPropertyException("GetMetricRuleBlackListsList", "metricRuleBlackListName");
+            }
+            this.metricRuleBlackListName = metricRuleBlackListName;
             return this;
         }
         @CustomType.Setter
         public Builder metrics(List<GetMetricRuleBlackListsListMetric> metrics) {
-            this.metrics = Objects.requireNonNull(metrics);
+            if (metrics == null) {
+              throw new MissingRequiredPropertyException("GetMetricRuleBlackListsList", "metrics");
+            }
+            this.metrics = metrics;
             return this;
         }
         public Builder metrics(GetMetricRuleBlackListsListMetric... metrics) {
@@ -280,17 +314,26 @@ public final class GetMetricRuleBlackListsList {
         }
         @CustomType.Setter
         public Builder namespace(String namespace) {
-            this.namespace = Objects.requireNonNull(namespace);
+            if (namespace == null) {
+              throw new MissingRequiredPropertyException("GetMetricRuleBlackListsList", "namespace");
+            }
+            this.namespace = namespace;
             return this;
         }
         @CustomType.Setter
         public Builder scopeType(String scopeType) {
-            this.scopeType = Objects.requireNonNull(scopeType);
+            if (scopeType == null) {
+              throw new MissingRequiredPropertyException("GetMetricRuleBlackListsList", "scopeType");
+            }
+            this.scopeType = scopeType;
             return this;
         }
         @CustomType.Setter
         public Builder scopeValues(List<String> scopeValues) {
-            this.scopeValues = Objects.requireNonNull(scopeValues);
+            if (scopeValues == null) {
+              throw new MissingRequiredPropertyException("GetMetricRuleBlackListsList", "scopeValues");
+            }
+            this.scopeValues = scopeValues;
             return this;
         }
         public Builder scopeValues(String... scopeValues) {

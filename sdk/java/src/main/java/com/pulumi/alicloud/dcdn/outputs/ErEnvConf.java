@@ -584,186 +584,223 @@ public final class ErEnvConf {
 
         @CustomType.Setter
         public Builder presetCanaryAnhui(@Nullable ErEnvConfPresetCanaryAnhui presetCanaryAnhui) {
+
             this.presetCanaryAnhui = presetCanaryAnhui;
             return this;
         }
         @CustomType.Setter
         public Builder presetCanaryBeijing(@Nullable ErEnvConfPresetCanaryBeijing presetCanaryBeijing) {
+
             this.presetCanaryBeijing = presetCanaryBeijing;
             return this;
         }
         @CustomType.Setter
         public Builder presetCanaryChongqing(@Nullable ErEnvConfPresetCanaryChongqing presetCanaryChongqing) {
+
             this.presetCanaryChongqing = presetCanaryChongqing;
             return this;
         }
         @CustomType.Setter
         public Builder presetCanaryFujian(@Nullable ErEnvConfPresetCanaryFujian presetCanaryFujian) {
+
             this.presetCanaryFujian = presetCanaryFujian;
             return this;
         }
         @CustomType.Setter
         public Builder presetCanaryGansu(@Nullable ErEnvConfPresetCanaryGansu presetCanaryGansu) {
+
             this.presetCanaryGansu = presetCanaryGansu;
             return this;
         }
         @CustomType.Setter
         public Builder presetCanaryGuangdong(@Nullable ErEnvConfPresetCanaryGuangdong presetCanaryGuangdong) {
+
             this.presetCanaryGuangdong = presetCanaryGuangdong;
             return this;
         }
         @CustomType.Setter
         public Builder presetCanaryGuangxi(@Nullable ErEnvConfPresetCanaryGuangxi presetCanaryGuangxi) {
+
             this.presetCanaryGuangxi = presetCanaryGuangxi;
             return this;
         }
         @CustomType.Setter
         public Builder presetCanaryGuizhou(@Nullable ErEnvConfPresetCanaryGuizhou presetCanaryGuizhou) {
+
             this.presetCanaryGuizhou = presetCanaryGuizhou;
             return this;
         }
         @CustomType.Setter
         public Builder presetCanaryHainan(@Nullable ErEnvConfPresetCanaryHainan presetCanaryHainan) {
+
             this.presetCanaryHainan = presetCanaryHainan;
             return this;
         }
         @CustomType.Setter
         public Builder presetCanaryHebei(@Nullable ErEnvConfPresetCanaryHebei presetCanaryHebei) {
+
             this.presetCanaryHebei = presetCanaryHebei;
             return this;
         }
         @CustomType.Setter
         public Builder presetCanaryHeilongjiang(@Nullable ErEnvConfPresetCanaryHeilongjiang presetCanaryHeilongjiang) {
+
             this.presetCanaryHeilongjiang = presetCanaryHeilongjiang;
             return this;
         }
         @CustomType.Setter
         public Builder presetCanaryHenan(@Nullable ErEnvConfPresetCanaryHenan presetCanaryHenan) {
+
             this.presetCanaryHenan = presetCanaryHenan;
             return this;
         }
         @CustomType.Setter
         public Builder presetCanaryHongKong(@Nullable ErEnvConfPresetCanaryHongKong presetCanaryHongKong) {
+
             this.presetCanaryHongKong = presetCanaryHongKong;
             return this;
         }
         @CustomType.Setter
         public Builder presetCanaryHubei(@Nullable ErEnvConfPresetCanaryHubei presetCanaryHubei) {
+
             this.presetCanaryHubei = presetCanaryHubei;
             return this;
         }
         @CustomType.Setter
         public Builder presetCanaryHunan(@Nullable ErEnvConfPresetCanaryHunan presetCanaryHunan) {
+
             this.presetCanaryHunan = presetCanaryHunan;
             return this;
         }
         @CustomType.Setter
         public Builder presetCanaryJiangsu(@Nullable ErEnvConfPresetCanaryJiangsu presetCanaryJiangsu) {
+
             this.presetCanaryJiangsu = presetCanaryJiangsu;
             return this;
         }
         @CustomType.Setter
         public Builder presetCanaryJiangxi(@Nullable ErEnvConfPresetCanaryJiangxi presetCanaryJiangxi) {
+
             this.presetCanaryJiangxi = presetCanaryJiangxi;
             return this;
         }
         @CustomType.Setter
         public Builder presetCanaryJilin(@Nullable ErEnvConfPresetCanaryJilin presetCanaryJilin) {
+
             this.presetCanaryJilin = presetCanaryJilin;
             return this;
         }
         @CustomType.Setter
         public Builder presetCanaryLiaoning(@Nullable ErEnvConfPresetCanaryLiaoning presetCanaryLiaoning) {
+
             this.presetCanaryLiaoning = presetCanaryLiaoning;
             return this;
         }
         @CustomType.Setter
         public Builder presetCanaryMacau(@Nullable ErEnvConfPresetCanaryMacau presetCanaryMacau) {
+
             this.presetCanaryMacau = presetCanaryMacau;
             return this;
         }
         @CustomType.Setter
         public Builder presetCanaryNeimenggu(@Nullable ErEnvConfPresetCanaryNeimenggu presetCanaryNeimenggu) {
+
             this.presetCanaryNeimenggu = presetCanaryNeimenggu;
             return this;
         }
         @CustomType.Setter
         public Builder presetCanaryNingxia(@Nullable ErEnvConfPresetCanaryNingxia presetCanaryNingxia) {
+
             this.presetCanaryNingxia = presetCanaryNingxia;
             return this;
         }
         @CustomType.Setter
         public Builder presetCanaryOverseas(@Nullable ErEnvConfPresetCanaryOverseas presetCanaryOverseas) {
+
             this.presetCanaryOverseas = presetCanaryOverseas;
             return this;
         }
         @CustomType.Setter
         public Builder presetCanaryQinghai(@Nullable ErEnvConfPresetCanaryQinghai presetCanaryQinghai) {
+
             this.presetCanaryQinghai = presetCanaryQinghai;
             return this;
         }
         @CustomType.Setter
         public Builder presetCanaryShaanxi(@Nullable ErEnvConfPresetCanaryShaanxi presetCanaryShaanxi) {
+
             this.presetCanaryShaanxi = presetCanaryShaanxi;
             return this;
         }
         @CustomType.Setter
         public Builder presetCanaryShandong(@Nullable ErEnvConfPresetCanaryShandong presetCanaryShandong) {
+
             this.presetCanaryShandong = presetCanaryShandong;
             return this;
         }
         @CustomType.Setter
         public Builder presetCanaryShanghai(@Nullable ErEnvConfPresetCanaryShanghai presetCanaryShanghai) {
+
             this.presetCanaryShanghai = presetCanaryShanghai;
             return this;
         }
         @CustomType.Setter
         public Builder presetCanaryShanxi(@Nullable ErEnvConfPresetCanaryShanxi presetCanaryShanxi) {
+
             this.presetCanaryShanxi = presetCanaryShanxi;
             return this;
         }
         @CustomType.Setter
         public Builder presetCanarySichuan(@Nullable ErEnvConfPresetCanarySichuan presetCanarySichuan) {
+
             this.presetCanarySichuan = presetCanarySichuan;
             return this;
         }
         @CustomType.Setter
         public Builder presetCanaryTaiwan(@Nullable ErEnvConfPresetCanaryTaiwan presetCanaryTaiwan) {
+
             this.presetCanaryTaiwan = presetCanaryTaiwan;
             return this;
         }
         @CustomType.Setter
         public Builder presetCanaryTianjin(@Nullable ErEnvConfPresetCanaryTianjin presetCanaryTianjin) {
+
             this.presetCanaryTianjin = presetCanaryTianjin;
             return this;
         }
         @CustomType.Setter
         public Builder presetCanaryXinjiang(@Nullable ErEnvConfPresetCanaryXinjiang presetCanaryXinjiang) {
+
             this.presetCanaryXinjiang = presetCanaryXinjiang;
             return this;
         }
         @CustomType.Setter
         public Builder presetCanaryXizang(@Nullable ErEnvConfPresetCanaryXizang presetCanaryXizang) {
+
             this.presetCanaryXizang = presetCanaryXizang;
             return this;
         }
         @CustomType.Setter
         public Builder presetCanaryYunnan(@Nullable ErEnvConfPresetCanaryYunnan presetCanaryYunnan) {
+
             this.presetCanaryYunnan = presetCanaryYunnan;
             return this;
         }
         @CustomType.Setter
         public Builder presetCanaryZhejiang(@Nullable ErEnvConfPresetCanaryZhejiang presetCanaryZhejiang) {
+
             this.presetCanaryZhejiang = presetCanaryZhejiang;
             return this;
         }
         @CustomType.Setter
         public Builder production(@Nullable ErEnvConfProduction production) {
+
             this.production = production;
             return this;
         }
         @CustomType.Setter
         public Builder staging(@Nullable ErEnvConfStaging staging) {
+
             this.staging = staging;
             return this;
         }

@@ -5,6 +5,7 @@ package com.pulumi.alicloud.vpc;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -111,8 +112,12 @@ public final class RouteTableAttachmentArgs extends com.pulumi.resources.Resourc
         }
 
         public RouteTableAttachmentArgs build() {
-            $.routeTableId = Objects.requireNonNull($.routeTableId, "expected parameter 'routeTableId' to be non-null");
-            $.vswitchId = Objects.requireNonNull($.vswitchId, "expected parameter 'vswitchId' to be non-null");
+            if ($.routeTableId == null) {
+                throw new MissingRequiredPropertyException("RouteTableAttachmentArgs", "routeTableId");
+            }
+            if ($.vswitchId == null) {
+                throw new MissingRequiredPropertyException("RouteTableAttachmentArgs", "vswitchId");
+            }
             return $;
         }
     }

@@ -9,6 +9,7 @@ import com.pulumi.alicloud.servicemesh.inputs.ServiceMeshMeshConfigArgs;
 import com.pulumi.alicloud.servicemesh.inputs.ServiceMeshNetworkArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Object;
 import java.lang.String;
@@ -554,7 +555,9 @@ public final class ServiceMeshArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public ServiceMeshArgs build() {
-            $.network = Objects.requireNonNull($.network, "expected parameter 'network' to be non-null");
+            if ($.network == null) {
+                throw new MissingRequiredPropertyException("ServiceMeshArgs", "network");
+            }
             return $;
         }
     }

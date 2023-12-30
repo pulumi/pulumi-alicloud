@@ -5,6 +5,7 @@ package com.pulumi.alicloud.nlb.outputs;
 
 import com.pulumi.alicloud.nlb.outputs.GetLoadBalancersBalancer;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Object;
 import java.lang.String;
 import java.util.List;
@@ -144,17 +145,22 @@ public final class GetLoadBalancersResult {
 
         @CustomType.Setter
         public Builder addressIpVersion(@Nullable String addressIpVersion) {
+
             this.addressIpVersion = addressIpVersion;
             return this;
         }
         @CustomType.Setter
         public Builder addressType(@Nullable String addressType) {
+
             this.addressType = addressType;
             return this;
         }
         @CustomType.Setter
         public Builder balancers(List<GetLoadBalancersBalancer> balancers) {
-            this.balancers = Objects.requireNonNull(balancers);
+            if (balancers == null) {
+              throw new MissingRequiredPropertyException("GetLoadBalancersResult", "balancers");
+            }
+            this.balancers = balancers;
             return this;
         }
         public Builder balancers(GetLoadBalancersBalancer... balancers) {
@@ -162,17 +168,24 @@ public final class GetLoadBalancersResult {
         }
         @CustomType.Setter
         public Builder dnsName(@Nullable String dnsName) {
+
             this.dnsName = dnsName;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetLoadBalancersResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder ids(List<String> ids) {
-            this.ids = Objects.requireNonNull(ids);
+            if (ids == null) {
+              throw new MissingRequiredPropertyException("GetLoadBalancersResult", "ids");
+            }
+            this.ids = ids;
             return this;
         }
         public Builder ids(String... ids) {
@@ -180,16 +193,19 @@ public final class GetLoadBalancersResult {
         }
         @CustomType.Setter
         public Builder ipv6AddressType(@Nullable String ipv6AddressType) {
+
             this.ipv6AddressType = ipv6AddressType;
             return this;
         }
         @CustomType.Setter
         public Builder loadBalancerBusinessStatus(@Nullable String loadBalancerBusinessStatus) {
+
             this.loadBalancerBusinessStatus = loadBalancerBusinessStatus;
             return this;
         }
         @CustomType.Setter
         public Builder loadBalancerNames(@Nullable List<String> loadBalancerNames) {
+
             this.loadBalancerNames = loadBalancerNames;
             return this;
         }
@@ -198,12 +214,16 @@ public final class GetLoadBalancersResult {
         }
         @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
+
             this.nameRegex = nameRegex;
             return this;
         }
         @CustomType.Setter
         public Builder names(List<String> names) {
-            this.names = Objects.requireNonNull(names);
+            if (names == null) {
+              throw new MissingRequiredPropertyException("GetLoadBalancersResult", "names");
+            }
+            this.names = names;
             return this;
         }
         public Builder names(String... names) {
@@ -211,26 +231,31 @@ public final class GetLoadBalancersResult {
         }
         @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
+
             this.outputFile = outputFile;
             return this;
         }
         @CustomType.Setter
         public Builder resourceGroupId(@Nullable String resourceGroupId) {
+
             this.resourceGroupId = resourceGroupId;
             return this;
         }
         @CustomType.Setter
         public Builder status(@Nullable String status) {
+
             this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder tags(@Nullable Map<String,Object> tags) {
+
             this.tags = tags;
             return this;
         }
         @CustomType.Setter
         public Builder vpcIds(@Nullable List<String> vpcIds) {
+
             this.vpcIds = vpcIds;
             return this;
         }
@@ -239,6 +264,7 @@ public final class GetLoadBalancersResult {
         }
         @CustomType.Setter
         public Builder zoneId(@Nullable String zoneId) {
+
             this.zoneId = zoneId;
             return this;
         }

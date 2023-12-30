@@ -5,6 +5,7 @@ package com.pulumi.alicloud.cms;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -150,8 +151,12 @@ public final class HybridMonitorFcTaskArgs extends com.pulumi.resources.Resource
         }
 
         public HybridMonitorFcTaskArgs build() {
-            $.namespace = Objects.requireNonNull($.namespace, "expected parameter 'namespace' to be non-null");
-            $.yarmConfig = Objects.requireNonNull($.yarmConfig, "expected parameter 'yarmConfig' to be non-null");
+            if ($.namespace == null) {
+                throw new MissingRequiredPropertyException("HybridMonitorFcTaskArgs", "namespace");
+            }
+            if ($.yarmConfig == null) {
+                throw new MissingRequiredPropertyException("HybridMonitorFcTaskArgs", "yarmConfig");
+            }
             return $;
         }
     }

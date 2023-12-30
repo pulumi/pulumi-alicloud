@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.alb.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -56,12 +57,18 @@ public final class LoadBalancerAccessLogConfig {
 
         @CustomType.Setter
         public Builder logProject(String logProject) {
-            this.logProject = Objects.requireNonNull(logProject);
+            if (logProject == null) {
+              throw new MissingRequiredPropertyException("LoadBalancerAccessLogConfig", "logProject");
+            }
+            this.logProject = logProject;
             return this;
         }
         @CustomType.Setter
         public Builder logStore(String logStore) {
-            this.logStore = Objects.requireNonNull(logStore);
+            if (logStore == null) {
+              throw new MissingRequiredPropertyException("LoadBalancerAccessLogConfig", "logStore");
+            }
+            this.logStore = logStore;
             return this;
         }
         public LoadBalancerAccessLogConfig build() {

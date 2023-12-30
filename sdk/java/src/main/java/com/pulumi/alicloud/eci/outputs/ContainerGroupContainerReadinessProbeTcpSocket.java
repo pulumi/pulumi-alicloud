@@ -44,6 +44,7 @@ public final class ContainerGroupContainerReadinessProbeTcpSocket {
 
         @CustomType.Setter
         public Builder port(@Nullable Integer port) {
+
             this.port = port;
             return this;
         }

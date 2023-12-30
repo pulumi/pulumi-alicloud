@@ -5,6 +5,7 @@ package com.pulumi.alicloud.alikafka;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
@@ -189,8 +190,12 @@ public final class ConsumerGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public ConsumerGroupArgs build() {
-            $.consumerId = Objects.requireNonNull($.consumerId, "expected parameter 'consumerId' to be non-null");
-            $.instanceId = Objects.requireNonNull($.instanceId, "expected parameter 'instanceId' to be non-null");
+            if ($.consumerId == null) {
+                throw new MissingRequiredPropertyException("ConsumerGroupArgs", "consumerId");
+            }
+            if ($.instanceId == null) {
+                throw new MissingRequiredPropertyException("ConsumerGroupArgs", "instanceId");
+            }
             return $;
         }
     }

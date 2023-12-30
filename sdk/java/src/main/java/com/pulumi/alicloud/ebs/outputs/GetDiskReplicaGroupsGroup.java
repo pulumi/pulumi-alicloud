@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.ebs.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -245,82 +246,130 @@ public final class GetDiskReplicaGroupsGroup {
 
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetDiskReplicaGroupsGroup", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder destinationRegionId(String destinationRegionId) {
-            this.destinationRegionId = Objects.requireNonNull(destinationRegionId);
+            if (destinationRegionId == null) {
+              throw new MissingRequiredPropertyException("GetDiskReplicaGroupsGroup", "destinationRegionId");
+            }
+            this.destinationRegionId = destinationRegionId;
             return this;
         }
         @CustomType.Setter
         public Builder destinationZoneId(String destinationZoneId) {
-            this.destinationZoneId = Objects.requireNonNull(destinationZoneId);
+            if (destinationZoneId == null) {
+              throw new MissingRequiredPropertyException("GetDiskReplicaGroupsGroup", "destinationZoneId");
+            }
+            this.destinationZoneId = destinationZoneId;
             return this;
         }
         @CustomType.Setter
         public Builder groupName(String groupName) {
-            this.groupName = Objects.requireNonNull(groupName);
+            if (groupName == null) {
+              throw new MissingRequiredPropertyException("GetDiskReplicaGroupsGroup", "groupName");
+            }
+            this.groupName = groupName;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetDiskReplicaGroupsGroup", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder lastRecoverPoint(String lastRecoverPoint) {
-            this.lastRecoverPoint = Objects.requireNonNull(lastRecoverPoint);
+            if (lastRecoverPoint == null) {
+              throw new MissingRequiredPropertyException("GetDiskReplicaGroupsGroup", "lastRecoverPoint");
+            }
+            this.lastRecoverPoint = lastRecoverPoint;
             return this;
         }
         @CustomType.Setter
         public Builder primaryRegion(String primaryRegion) {
-            this.primaryRegion = Objects.requireNonNull(primaryRegion);
+            if (primaryRegion == null) {
+              throw new MissingRequiredPropertyException("GetDiskReplicaGroupsGroup", "primaryRegion");
+            }
+            this.primaryRegion = primaryRegion;
             return this;
         }
         @CustomType.Setter
         public Builder primaryZone(String primaryZone) {
-            this.primaryZone = Objects.requireNonNull(primaryZone);
+            if (primaryZone == null) {
+              throw new MissingRequiredPropertyException("GetDiskReplicaGroupsGroup", "primaryZone");
+            }
+            this.primaryZone = primaryZone;
             return this;
         }
         @CustomType.Setter
         public Builder replicaGroupId(String replicaGroupId) {
-            this.replicaGroupId = Objects.requireNonNull(replicaGroupId);
+            if (replicaGroupId == null) {
+              throw new MissingRequiredPropertyException("GetDiskReplicaGroupsGroup", "replicaGroupId");
+            }
+            this.replicaGroupId = replicaGroupId;
             return this;
         }
         @CustomType.Setter
         public Builder rpo(Integer rpo) {
-            this.rpo = Objects.requireNonNull(rpo);
+            if (rpo == null) {
+              throw new MissingRequiredPropertyException("GetDiskReplicaGroupsGroup", "rpo");
+            }
+            this.rpo = rpo;
             return this;
         }
         @CustomType.Setter
         public Builder site(String site) {
-            this.site = Objects.requireNonNull(site);
+            if (site == null) {
+              throw new MissingRequiredPropertyException("GetDiskReplicaGroupsGroup", "site");
+            }
+            this.site = site;
             return this;
         }
         @CustomType.Setter
         public Builder sourceRegionId(String sourceRegionId) {
-            this.sourceRegionId = Objects.requireNonNull(sourceRegionId);
+            if (sourceRegionId == null) {
+              throw new MissingRequiredPropertyException("GetDiskReplicaGroupsGroup", "sourceRegionId");
+            }
+            this.sourceRegionId = sourceRegionId;
             return this;
         }
         @CustomType.Setter
         public Builder sourceZoneId(String sourceZoneId) {
-            this.sourceZoneId = Objects.requireNonNull(sourceZoneId);
+            if (sourceZoneId == null) {
+              throw new MissingRequiredPropertyException("GetDiskReplicaGroupsGroup", "sourceZoneId");
+            }
+            this.sourceZoneId = sourceZoneId;
             return this;
         }
         @CustomType.Setter
         public Builder standbyRegion(String standbyRegion) {
-            this.standbyRegion = Objects.requireNonNull(standbyRegion);
+            if (standbyRegion == null) {
+              throw new MissingRequiredPropertyException("GetDiskReplicaGroupsGroup", "standbyRegion");
+            }
+            this.standbyRegion = standbyRegion;
             return this;
         }
         @CustomType.Setter
         public Builder standbyZone(String standbyZone) {
-            this.standbyZone = Objects.requireNonNull(standbyZone);
+            if (standbyZone == null) {
+              throw new MissingRequiredPropertyException("GetDiskReplicaGroupsGroup", "standbyZone");
+            }
+            this.standbyZone = standbyZone;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetDiskReplicaGroupsGroup", "status");
+            }
+            this.status = status;
             return this;
         }
         public GetDiskReplicaGroupsGroup build() {

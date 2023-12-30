@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.alb.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.util.Objects;
 
@@ -42,7 +43,10 @@ public final class GetRulesRuleRuleActionTrafficLimitConfig {
 
         @CustomType.Setter
         public Builder qps(Integer qps) {
-            this.qps = Objects.requireNonNull(qps);
+            if (qps == null) {
+              throw new MissingRequiredPropertyException("GetRulesRuleRuleActionTrafficLimitConfig", "qps");
+            }
+            this.qps = qps;
             return this;
         }
         public GetRulesRuleRuleActionTrafficLimitConfig build() {

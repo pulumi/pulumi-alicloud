@@ -13,6 +13,7 @@ import com.pulumi.alicloud.servicemesh.outputs.GetServiceMeshesMeshMeshConfigPro
 import com.pulumi.alicloud.servicemesh.outputs.GetServiceMeshesMeshMeshConfigProxy;
 import com.pulumi.alicloud.servicemesh.outputs.GetServiceMeshesMeshMeshConfigSidecarInjector;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -249,7 +250,10 @@ public final class GetServiceMeshesMeshMeshConfig {
 
         @CustomType.Setter
         public Builder accessLogs(List<GetServiceMeshesMeshMeshConfigAccessLog> accessLogs) {
-            this.accessLogs = Objects.requireNonNull(accessLogs);
+            if (accessLogs == null) {
+              throw new MissingRequiredPropertyException("GetServiceMeshesMeshMeshConfig", "accessLogs");
+            }
+            this.accessLogs = accessLogs;
             return this;
         }
         public Builder accessLogs(GetServiceMeshesMeshMeshConfigAccessLog... accessLogs) {
@@ -257,7 +261,10 @@ public final class GetServiceMeshesMeshMeshConfig {
         }
         @CustomType.Setter
         public Builder audits(List<GetServiceMeshesMeshMeshConfigAudit> audits) {
-            this.audits = Objects.requireNonNull(audits);
+            if (audits == null) {
+              throw new MissingRequiredPropertyException("GetServiceMeshesMeshMeshConfig", "audits");
+            }
+            this.audits = audits;
             return this;
         }
         public Builder audits(GetServiceMeshesMeshMeshConfigAudit... audits) {
@@ -265,7 +272,10 @@ public final class GetServiceMeshesMeshMeshConfig {
         }
         @CustomType.Setter
         public Builder controlPlaneLogs(List<GetServiceMeshesMeshMeshConfigControlPlaneLog> controlPlaneLogs) {
-            this.controlPlaneLogs = Objects.requireNonNull(controlPlaneLogs);
+            if (controlPlaneLogs == null) {
+              throw new MissingRequiredPropertyException("GetServiceMeshesMeshMeshConfig", "controlPlaneLogs");
+            }
+            this.controlPlaneLogs = controlPlaneLogs;
             return this;
         }
         public Builder controlPlaneLogs(GetServiceMeshesMeshMeshConfigControlPlaneLog... controlPlaneLogs) {
@@ -273,22 +283,34 @@ public final class GetServiceMeshesMeshMeshConfig {
         }
         @CustomType.Setter
         public Builder customizedZipkin(Boolean customizedZipkin) {
-            this.customizedZipkin = Objects.requireNonNull(customizedZipkin);
+            if (customizedZipkin == null) {
+              throw new MissingRequiredPropertyException("GetServiceMeshesMeshMeshConfig", "customizedZipkin");
+            }
+            this.customizedZipkin = customizedZipkin;
             return this;
         }
         @CustomType.Setter
         public Builder enableLocalityLb(Boolean enableLocalityLb) {
-            this.enableLocalityLb = Objects.requireNonNull(enableLocalityLb);
+            if (enableLocalityLb == null) {
+              throw new MissingRequiredPropertyException("GetServiceMeshesMeshMeshConfig", "enableLocalityLb");
+            }
+            this.enableLocalityLb = enableLocalityLb;
             return this;
         }
         @CustomType.Setter
         public Builder includeIpRanges(String includeIpRanges) {
-            this.includeIpRanges = Objects.requireNonNull(includeIpRanges);
+            if (includeIpRanges == null) {
+              throw new MissingRequiredPropertyException("GetServiceMeshesMeshMeshConfig", "includeIpRanges");
+            }
+            this.includeIpRanges = includeIpRanges;
             return this;
         }
         @CustomType.Setter
         public Builder kialis(List<GetServiceMeshesMeshMeshConfigKiali> kialis) {
-            this.kialis = Objects.requireNonNull(kialis);
+            if (kialis == null) {
+              throw new MissingRequiredPropertyException("GetServiceMeshesMeshMeshConfig", "kialis");
+            }
+            this.kialis = kialis;
             return this;
         }
         public Builder kialis(GetServiceMeshesMeshMeshConfigKiali... kialis) {
@@ -296,7 +318,10 @@ public final class GetServiceMeshesMeshMeshConfig {
         }
         @CustomType.Setter
         public Builder opas(List<GetServiceMeshesMeshMeshConfigOpa> opas) {
-            this.opas = Objects.requireNonNull(opas);
+            if (opas == null) {
+              throw new MissingRequiredPropertyException("GetServiceMeshesMeshMeshConfig", "opas");
+            }
+            this.opas = opas;
             return this;
         }
         public Builder opas(GetServiceMeshesMeshMeshConfigOpa... opas) {
@@ -304,12 +329,18 @@ public final class GetServiceMeshesMeshMeshConfig {
         }
         @CustomType.Setter
         public Builder outboundTrafficPolicy(String outboundTrafficPolicy) {
-            this.outboundTrafficPolicy = Objects.requireNonNull(outboundTrafficPolicy);
+            if (outboundTrafficPolicy == null) {
+              throw new MissingRequiredPropertyException("GetServiceMeshesMeshMeshConfig", "outboundTrafficPolicy");
+            }
+            this.outboundTrafficPolicy = outboundTrafficPolicy;
             return this;
         }
         @CustomType.Setter
         public Builder pilots(List<GetServiceMeshesMeshMeshConfigPilot> pilots) {
-            this.pilots = Objects.requireNonNull(pilots);
+            if (pilots == null) {
+              throw new MissingRequiredPropertyException("GetServiceMeshesMeshMeshConfig", "pilots");
+            }
+            this.pilots = pilots;
             return this;
         }
         public Builder pilots(GetServiceMeshesMeshMeshConfigPilot... pilots) {
@@ -317,7 +348,10 @@ public final class GetServiceMeshesMeshMeshConfig {
         }
         @CustomType.Setter
         public Builder prometheuses(List<GetServiceMeshesMeshMeshConfigPrometheus> prometheuses) {
-            this.prometheuses = Objects.requireNonNull(prometheuses);
+            if (prometheuses == null) {
+              throw new MissingRequiredPropertyException("GetServiceMeshesMeshMeshConfig", "prometheuses");
+            }
+            this.prometheuses = prometheuses;
             return this;
         }
         public Builder prometheuses(GetServiceMeshesMeshMeshConfigPrometheus... prometheuses) {
@@ -325,7 +359,10 @@ public final class GetServiceMeshesMeshMeshConfig {
         }
         @CustomType.Setter
         public Builder proxies(List<GetServiceMeshesMeshMeshConfigProxy> proxies) {
-            this.proxies = Objects.requireNonNull(proxies);
+            if (proxies == null) {
+              throw new MissingRequiredPropertyException("GetServiceMeshesMeshMeshConfig", "proxies");
+            }
+            this.proxies = proxies;
             return this;
         }
         public Builder proxies(GetServiceMeshesMeshMeshConfigProxy... proxies) {
@@ -333,7 +370,10 @@ public final class GetServiceMeshesMeshMeshConfig {
         }
         @CustomType.Setter
         public Builder sidecarInjectors(List<GetServiceMeshesMeshMeshConfigSidecarInjector> sidecarInjectors) {
-            this.sidecarInjectors = Objects.requireNonNull(sidecarInjectors);
+            if (sidecarInjectors == null) {
+              throw new MissingRequiredPropertyException("GetServiceMeshesMeshMeshConfig", "sidecarInjectors");
+            }
+            this.sidecarInjectors = sidecarInjectors;
             return this;
         }
         public Builder sidecarInjectors(GetServiceMeshesMeshMeshConfigSidecarInjector... sidecarInjectors) {
@@ -341,12 +381,18 @@ public final class GetServiceMeshesMeshMeshConfig {
         }
         @CustomType.Setter
         public Builder telemetry(Boolean telemetry) {
-            this.telemetry = Objects.requireNonNull(telemetry);
+            if (telemetry == null) {
+              throw new MissingRequiredPropertyException("GetServiceMeshesMeshMeshConfig", "telemetry");
+            }
+            this.telemetry = telemetry;
             return this;
         }
         @CustomType.Setter
         public Builder tracing(Boolean tracing) {
-            this.tracing = Objects.requireNonNull(tracing);
+            if (tracing == null) {
+              throw new MissingRequiredPropertyException("GetServiceMeshesMeshMeshConfig", "tracing");
+            }
+            this.tracing = tracing;
             return this;
         }
         public GetServiceMeshesMeshMeshConfig build() {

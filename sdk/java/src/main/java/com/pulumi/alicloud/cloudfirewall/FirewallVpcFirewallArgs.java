@@ -7,6 +7,7 @@ import com.pulumi.alicloud.cloudfirewall.inputs.FirewallVpcFirewallLocalVpcArgs;
 import com.pulumi.alicloud.cloudfirewall.inputs.FirewallVpcFirewallPeerVpcArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -263,10 +264,18 @@ public final class FirewallVpcFirewallArgs extends com.pulumi.resources.Resource
         }
 
         public FirewallVpcFirewallArgs build() {
-            $.localVpc = Objects.requireNonNull($.localVpc, "expected parameter 'localVpc' to be non-null");
-            $.peerVpc = Objects.requireNonNull($.peerVpc, "expected parameter 'peerVpc' to be non-null");
-            $.status = Objects.requireNonNull($.status, "expected parameter 'status' to be non-null");
-            $.vpcFirewallName = Objects.requireNonNull($.vpcFirewallName, "expected parameter 'vpcFirewallName' to be non-null");
+            if ($.localVpc == null) {
+                throw new MissingRequiredPropertyException("FirewallVpcFirewallArgs", "localVpc");
+            }
+            if ($.peerVpc == null) {
+                throw new MissingRequiredPropertyException("FirewallVpcFirewallArgs", "peerVpc");
+            }
+            if ($.status == null) {
+                throw new MissingRequiredPropertyException("FirewallVpcFirewallArgs", "status");
+            }
+            if ($.vpcFirewallName == null) {
+                throw new MissingRequiredPropertyException("FirewallVpcFirewallArgs", "vpcFirewallName");
+            }
             return $;
         }
     }

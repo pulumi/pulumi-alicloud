@@ -5,6 +5,7 @@ package com.pulumi.alicloud.log.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -150,8 +151,12 @@ public final class AlertPolicyConfigurationArgs extends com.pulumi.resources.Res
         }
 
         public AlertPolicyConfigurationArgs build() {
-            $.alertPolicyId = Objects.requireNonNull($.alertPolicyId, "expected parameter 'alertPolicyId' to be non-null");
-            $.repeatInterval = Objects.requireNonNull($.repeatInterval, "expected parameter 'repeatInterval' to be non-null");
+            if ($.alertPolicyId == null) {
+                throw new MissingRequiredPropertyException("AlertPolicyConfigurationArgs", "alertPolicyId");
+            }
+            if ($.repeatInterval == null) {
+                throw new MissingRequiredPropertyException("AlertPolicyConfigurationArgs", "repeatInterval");
+            }
             return $;
         }
     }

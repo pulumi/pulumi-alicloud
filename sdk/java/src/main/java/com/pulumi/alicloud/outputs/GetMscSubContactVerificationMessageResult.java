@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -69,22 +70,34 @@ public final class GetMscSubContactVerificationMessageResult {
 
         @CustomType.Setter
         public Builder contactId(String contactId) {
-            this.contactId = Objects.requireNonNull(contactId);
+            if (contactId == null) {
+              throw new MissingRequiredPropertyException("GetMscSubContactVerificationMessageResult", "contactId");
+            }
+            this.contactId = contactId;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetMscSubContactVerificationMessageResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetMscSubContactVerificationMessageResult", "status");
+            }
+            this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder type(Integer type) {
-            this.type = Objects.requireNonNull(type);
+            if (type == null) {
+              throw new MissingRequiredPropertyException("GetMscSubContactVerificationMessageResult", "type");
+            }
+            this.type = type;
             return this;
         }
         public GetMscSubContactVerificationMessageResult build() {

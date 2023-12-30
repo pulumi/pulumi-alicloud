@@ -6,6 +6,7 @@ package com.pulumi.alicloud.eds.outputs;
 import com.pulumi.alicloud.eds.outputs.GetAdConnectorOfficeSitesSiteAdConnector;
 import com.pulumi.alicloud.eds.outputs.GetAdConnectorOfficeSitesSiteLog;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -453,12 +454,18 @@ public final class GetAdConnectorOfficeSitesSite {
 
         @CustomType.Setter
         public Builder adConnectorOfficeSiteName(String adConnectorOfficeSiteName) {
-            this.adConnectorOfficeSiteName = Objects.requireNonNull(adConnectorOfficeSiteName);
+            if (adConnectorOfficeSiteName == null) {
+              throw new MissingRequiredPropertyException("GetAdConnectorOfficeSitesSite", "adConnectorOfficeSiteName");
+            }
+            this.adConnectorOfficeSiteName = adConnectorOfficeSiteName;
             return this;
         }
         @CustomType.Setter
         public Builder adConnectors(List<GetAdConnectorOfficeSitesSiteAdConnector> adConnectors) {
-            this.adConnectors = Objects.requireNonNull(adConnectors);
+            if (adConnectors == null) {
+              throw new MissingRequiredPropertyException("GetAdConnectorOfficeSitesSite", "adConnectors");
+            }
+            this.adConnectors = adConnectors;
             return this;
         }
         public Builder adConnectors(GetAdConnectorOfficeSitesSiteAdConnector... adConnectors) {
@@ -466,42 +473,66 @@ public final class GetAdConnectorOfficeSitesSite {
         }
         @CustomType.Setter
         public Builder bandwidth(Integer bandwidth) {
-            this.bandwidth = Objects.requireNonNull(bandwidth);
+            if (bandwidth == null) {
+              throw new MissingRequiredPropertyException("GetAdConnectorOfficeSitesSite", "bandwidth");
+            }
+            this.bandwidth = bandwidth;
             return this;
         }
         @CustomType.Setter
         public Builder cenId(String cenId) {
-            this.cenId = Objects.requireNonNull(cenId);
+            if (cenId == null) {
+              throw new MissingRequiredPropertyException("GetAdConnectorOfficeSitesSite", "cenId");
+            }
+            this.cenId = cenId;
             return this;
         }
         @CustomType.Setter
         public Builder cidrBlock(String cidrBlock) {
-            this.cidrBlock = Objects.requireNonNull(cidrBlock);
+            if (cidrBlock == null) {
+              throw new MissingRequiredPropertyException("GetAdConnectorOfficeSitesSite", "cidrBlock");
+            }
+            this.cidrBlock = cidrBlock;
             return this;
         }
         @CustomType.Setter
         public Builder createTime(String createTime) {
-            this.createTime = Objects.requireNonNull(createTime);
+            if (createTime == null) {
+              throw new MissingRequiredPropertyException("GetAdConnectorOfficeSitesSite", "createTime");
+            }
+            this.createTime = createTime;
             return this;
         }
         @CustomType.Setter
         public Builder customSecurityGroupId(String customSecurityGroupId) {
-            this.customSecurityGroupId = Objects.requireNonNull(customSecurityGroupId);
+            if (customSecurityGroupId == null) {
+              throw new MissingRequiredPropertyException("GetAdConnectorOfficeSitesSite", "customSecurityGroupId");
+            }
+            this.customSecurityGroupId = customSecurityGroupId;
             return this;
         }
         @CustomType.Setter
         public Builder desktopAccessType(String desktopAccessType) {
-            this.desktopAccessType = Objects.requireNonNull(desktopAccessType);
+            if (desktopAccessType == null) {
+              throw new MissingRequiredPropertyException("GetAdConnectorOfficeSitesSite", "desktopAccessType");
+            }
+            this.desktopAccessType = desktopAccessType;
             return this;
         }
         @CustomType.Setter
         public Builder desktopVpcEndpoint(String desktopVpcEndpoint) {
-            this.desktopVpcEndpoint = Objects.requireNonNull(desktopVpcEndpoint);
+            if (desktopVpcEndpoint == null) {
+              throw new MissingRequiredPropertyException("GetAdConnectorOfficeSitesSite", "desktopVpcEndpoint");
+            }
+            this.desktopVpcEndpoint = desktopVpcEndpoint;
             return this;
         }
         @CustomType.Setter
         public Builder dnsAddresses(List<String> dnsAddresses) {
-            this.dnsAddresses = Objects.requireNonNull(dnsAddresses);
+            if (dnsAddresses == null) {
+              throw new MissingRequiredPropertyException("GetAdConnectorOfficeSitesSite", "dnsAddresses");
+            }
+            this.dnsAddresses = dnsAddresses;
             return this;
         }
         public Builder dnsAddresses(String... dnsAddresses) {
@@ -509,37 +540,58 @@ public final class GetAdConnectorOfficeSitesSite {
         }
         @CustomType.Setter
         public Builder dnsUserName(String dnsUserName) {
-            this.dnsUserName = Objects.requireNonNull(dnsUserName);
+            if (dnsUserName == null) {
+              throw new MissingRequiredPropertyException("GetAdConnectorOfficeSitesSite", "dnsUserName");
+            }
+            this.dnsUserName = dnsUserName;
             return this;
         }
         @CustomType.Setter
         public Builder domainName(String domainName) {
-            this.domainName = Objects.requireNonNull(domainName);
+            if (domainName == null) {
+              throw new MissingRequiredPropertyException("GetAdConnectorOfficeSitesSite", "domainName");
+            }
+            this.domainName = domainName;
             return this;
         }
         @CustomType.Setter
         public Builder domainUserName(String domainUserName) {
-            this.domainUserName = Objects.requireNonNull(domainUserName);
+            if (domainUserName == null) {
+              throw new MissingRequiredPropertyException("GetAdConnectorOfficeSitesSite", "domainUserName");
+            }
+            this.domainUserName = domainUserName;
             return this;
         }
         @CustomType.Setter
         public Builder enableAdminAccess(Boolean enableAdminAccess) {
-            this.enableAdminAccess = Objects.requireNonNull(enableAdminAccess);
+            if (enableAdminAccess == null) {
+              throw new MissingRequiredPropertyException("GetAdConnectorOfficeSitesSite", "enableAdminAccess");
+            }
+            this.enableAdminAccess = enableAdminAccess;
             return this;
         }
         @CustomType.Setter
         public Builder enableCrossDesktopAccess(Boolean enableCrossDesktopAccess) {
-            this.enableCrossDesktopAccess = Objects.requireNonNull(enableCrossDesktopAccess);
+            if (enableCrossDesktopAccess == null) {
+              throw new MissingRequiredPropertyException("GetAdConnectorOfficeSitesSite", "enableCrossDesktopAccess");
+            }
+            this.enableCrossDesktopAccess = enableCrossDesktopAccess;
             return this;
         }
         @CustomType.Setter
         public Builder enableInternetAccess(Boolean enableInternetAccess) {
-            this.enableInternetAccess = Objects.requireNonNull(enableInternetAccess);
+            if (enableInternetAccess == null) {
+              throw new MissingRequiredPropertyException("GetAdConnectorOfficeSitesSite", "enableInternetAccess");
+            }
+            this.enableInternetAccess = enableInternetAccess;
             return this;
         }
         @CustomType.Setter
         public Builder fileSystemIds(List<String> fileSystemIds) {
-            this.fileSystemIds = Objects.requireNonNull(fileSystemIds);
+            if (fileSystemIds == null) {
+              throw new MissingRequiredPropertyException("GetAdConnectorOfficeSitesSite", "fileSystemIds");
+            }
+            this.fileSystemIds = fileSystemIds;
             return this;
         }
         public Builder fileSystemIds(String... fileSystemIds) {
@@ -547,12 +599,18 @@ public final class GetAdConnectorOfficeSitesSite {
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetAdConnectorOfficeSitesSite", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder logs(List<GetAdConnectorOfficeSitesSiteLog> logs) {
-            this.logs = Objects.requireNonNull(logs);
+            if (logs == null) {
+              throw new MissingRequiredPropertyException("GetAdConnectorOfficeSitesSite", "logs");
+            }
+            this.logs = logs;
             return this;
         }
         public Builder logs(GetAdConnectorOfficeSitesSiteLog... logs) {
@@ -560,37 +618,58 @@ public final class GetAdConnectorOfficeSitesSite {
         }
         @CustomType.Setter
         public Builder mfaEnabled(Boolean mfaEnabled) {
-            this.mfaEnabled = Objects.requireNonNull(mfaEnabled);
+            if (mfaEnabled == null) {
+              throw new MissingRequiredPropertyException("GetAdConnectorOfficeSitesSite", "mfaEnabled");
+            }
+            this.mfaEnabled = mfaEnabled;
             return this;
         }
         @CustomType.Setter
         public Builder networkPackageId(String networkPackageId) {
-            this.networkPackageId = Objects.requireNonNull(networkPackageId);
+            if (networkPackageId == null) {
+              throw new MissingRequiredPropertyException("GetAdConnectorOfficeSitesSite", "networkPackageId");
+            }
+            this.networkPackageId = networkPackageId;
             return this;
         }
         @CustomType.Setter
         public Builder officeSiteId(String officeSiteId) {
-            this.officeSiteId = Objects.requireNonNull(officeSiteId);
+            if (officeSiteId == null) {
+              throw new MissingRequiredPropertyException("GetAdConnectorOfficeSitesSite", "officeSiteId");
+            }
+            this.officeSiteId = officeSiteId;
             return this;
         }
         @CustomType.Setter
         public Builder officeSiteType(String officeSiteType) {
-            this.officeSiteType = Objects.requireNonNull(officeSiteType);
+            if (officeSiteType == null) {
+              throw new MissingRequiredPropertyException("GetAdConnectorOfficeSitesSite", "officeSiteType");
+            }
+            this.officeSiteType = officeSiteType;
             return this;
         }
         @CustomType.Setter
         public Builder ssoEnabled(Boolean ssoEnabled) {
-            this.ssoEnabled = Objects.requireNonNull(ssoEnabled);
+            if (ssoEnabled == null) {
+              throw new MissingRequiredPropertyException("GetAdConnectorOfficeSitesSite", "ssoEnabled");
+            }
+            this.ssoEnabled = ssoEnabled;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetAdConnectorOfficeSitesSite", "status");
+            }
+            this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder subDomainDnsAddresses(List<String> subDomainDnsAddresses) {
-            this.subDomainDnsAddresses = Objects.requireNonNull(subDomainDnsAddresses);
+            if (subDomainDnsAddresses == null) {
+              throw new MissingRequiredPropertyException("GetAdConnectorOfficeSitesSite", "subDomainDnsAddresses");
+            }
+            this.subDomainDnsAddresses = subDomainDnsAddresses;
             return this;
         }
         public Builder subDomainDnsAddresses(String... subDomainDnsAddresses) {
@@ -598,22 +677,34 @@ public final class GetAdConnectorOfficeSitesSite {
         }
         @CustomType.Setter
         public Builder subDomainName(String subDomainName) {
-            this.subDomainName = Objects.requireNonNull(subDomainName);
+            if (subDomainName == null) {
+              throw new MissingRequiredPropertyException("GetAdConnectorOfficeSitesSite", "subDomainName");
+            }
+            this.subDomainName = subDomainName;
             return this;
         }
         @CustomType.Setter
         public Builder trustPassword(String trustPassword) {
-            this.trustPassword = Objects.requireNonNull(trustPassword);
+            if (trustPassword == null) {
+              throw new MissingRequiredPropertyException("GetAdConnectorOfficeSitesSite", "trustPassword");
+            }
+            this.trustPassword = trustPassword;
             return this;
         }
         @CustomType.Setter
         public Builder vpcId(String vpcId) {
-            this.vpcId = Objects.requireNonNull(vpcId);
+            if (vpcId == null) {
+              throw new MissingRequiredPropertyException("GetAdConnectorOfficeSitesSite", "vpcId");
+            }
+            this.vpcId = vpcId;
             return this;
         }
         @CustomType.Setter
         public Builder vswitchIds(List<String> vswitchIds) {
-            this.vswitchIds = Objects.requireNonNull(vswitchIds);
+            if (vswitchIds == null) {
+              throw new MissingRequiredPropertyException("GetAdConnectorOfficeSitesSite", "vswitchIds");
+            }
+            this.vswitchIds = vswitchIds;
             return this;
         }
         public Builder vswitchIds(String... vswitchIds) {

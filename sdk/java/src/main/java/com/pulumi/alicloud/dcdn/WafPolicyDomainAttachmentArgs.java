@@ -5,6 +5,7 @@ package com.pulumi.alicloud.dcdn;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -111,8 +112,12 @@ public final class WafPolicyDomainAttachmentArgs extends com.pulumi.resources.Re
         }
 
         public WafPolicyDomainAttachmentArgs build() {
-            $.domainName = Objects.requireNonNull($.domainName, "expected parameter 'domainName' to be non-null");
-            $.policyId = Objects.requireNonNull($.policyId, "expected parameter 'policyId' to be non-null");
+            if ($.domainName == null) {
+                throw new MissingRequiredPropertyException("WafPolicyDomainAttachmentArgs", "domainName");
+            }
+            if ($.policyId == null) {
+                throw new MissingRequiredPropertyException("WafPolicyDomainAttachmentArgs", "policyId");
+            }
             return $;
         }
     }

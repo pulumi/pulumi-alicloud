@@ -11,6 +11,7 @@ import com.pulumi.alicloud.oss.outputs.GetBucketsBucketServerSideEncryptionRule;
 import com.pulumi.alicloud.oss.outputs.GetBucketsBucketVersioning;
 import com.pulumi.alicloud.oss.outputs.GetBucketsBucketWebsite;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Object;
 import java.lang.String;
 import java.util.List;
@@ -284,12 +285,18 @@ public final class GetBucketsBucket {
 
         @CustomType.Setter
         public Builder acl(String acl) {
-            this.acl = Objects.requireNonNull(acl);
+            if (acl == null) {
+              throw new MissingRequiredPropertyException("GetBucketsBucket", "acl");
+            }
+            this.acl = acl;
             return this;
         }
         @CustomType.Setter
         public Builder corsRules(List<GetBucketsBucketCorsRule> corsRules) {
-            this.corsRules = Objects.requireNonNull(corsRules);
+            if (corsRules == null) {
+              throw new MissingRequiredPropertyException("GetBucketsBucket", "corsRules");
+            }
+            this.corsRules = corsRules;
             return this;
         }
         public Builder corsRules(GetBucketsBucketCorsRule... corsRules) {
@@ -297,22 +304,34 @@ public final class GetBucketsBucket {
         }
         @CustomType.Setter
         public Builder creationDate(String creationDate) {
-            this.creationDate = Objects.requireNonNull(creationDate);
+            if (creationDate == null) {
+              throw new MissingRequiredPropertyException("GetBucketsBucket", "creationDate");
+            }
+            this.creationDate = creationDate;
             return this;
         }
         @CustomType.Setter
         public Builder extranetEndpoint(String extranetEndpoint) {
-            this.extranetEndpoint = Objects.requireNonNull(extranetEndpoint);
+            if (extranetEndpoint == null) {
+              throw new MissingRequiredPropertyException("GetBucketsBucket", "extranetEndpoint");
+            }
+            this.extranetEndpoint = extranetEndpoint;
             return this;
         }
         @CustomType.Setter
         public Builder intranetEndpoint(String intranetEndpoint) {
-            this.intranetEndpoint = Objects.requireNonNull(intranetEndpoint);
+            if (intranetEndpoint == null) {
+              throw new MissingRequiredPropertyException("GetBucketsBucket", "intranetEndpoint");
+            }
+            this.intranetEndpoint = intranetEndpoint;
             return this;
         }
         @CustomType.Setter
         public Builder lifecycleRules(List<GetBucketsBucketLifecycleRule> lifecycleRules) {
-            this.lifecycleRules = Objects.requireNonNull(lifecycleRules);
+            if (lifecycleRules == null) {
+              throw new MissingRequiredPropertyException("GetBucketsBucket", "lifecycleRules");
+            }
+            this.lifecycleRules = lifecycleRules;
             return this;
         }
         public Builder lifecycleRules(GetBucketsBucketLifecycleRule... lifecycleRules) {
@@ -320,62 +339,96 @@ public final class GetBucketsBucket {
         }
         @CustomType.Setter
         public Builder location(String location) {
-            this.location = Objects.requireNonNull(location);
+            if (location == null) {
+              throw new MissingRequiredPropertyException("GetBucketsBucket", "location");
+            }
+            this.location = location;
             return this;
         }
         @CustomType.Setter
         public Builder logging(GetBucketsBucketLogging logging) {
-            this.logging = Objects.requireNonNull(logging);
+            if (logging == null) {
+              throw new MissingRequiredPropertyException("GetBucketsBucket", "logging");
+            }
+            this.logging = logging;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetBucketsBucket", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder owner(String owner) {
-            this.owner = Objects.requireNonNull(owner);
+            if (owner == null) {
+              throw new MissingRequiredPropertyException("GetBucketsBucket", "owner");
+            }
+            this.owner = owner;
             return this;
         }
         @CustomType.Setter
         public Builder policy(@Nullable String policy) {
+
             this.policy = policy;
             return this;
         }
         @CustomType.Setter
         public Builder redundancyType(String redundancyType) {
-            this.redundancyType = Objects.requireNonNull(redundancyType);
+            if (redundancyType == null) {
+              throw new MissingRequiredPropertyException("GetBucketsBucket", "redundancyType");
+            }
+            this.redundancyType = redundancyType;
             return this;
         }
         @CustomType.Setter
         public Builder refererConfig(GetBucketsBucketRefererConfig refererConfig) {
-            this.refererConfig = Objects.requireNonNull(refererConfig);
+            if (refererConfig == null) {
+              throw new MissingRequiredPropertyException("GetBucketsBucket", "refererConfig");
+            }
+            this.refererConfig = refererConfig;
             return this;
         }
         @CustomType.Setter
         public Builder serverSideEncryptionRule(GetBucketsBucketServerSideEncryptionRule serverSideEncryptionRule) {
-            this.serverSideEncryptionRule = Objects.requireNonNull(serverSideEncryptionRule);
+            if (serverSideEncryptionRule == null) {
+              throw new MissingRequiredPropertyException("GetBucketsBucket", "serverSideEncryptionRule");
+            }
+            this.serverSideEncryptionRule = serverSideEncryptionRule;
             return this;
         }
         @CustomType.Setter
         public Builder storageClass(String storageClass) {
-            this.storageClass = Objects.requireNonNull(storageClass);
+            if (storageClass == null) {
+              throw new MissingRequiredPropertyException("GetBucketsBucket", "storageClass");
+            }
+            this.storageClass = storageClass;
             return this;
         }
         @CustomType.Setter
         public Builder tags(Map<String,Object> tags) {
-            this.tags = Objects.requireNonNull(tags);
+            if (tags == null) {
+              throw new MissingRequiredPropertyException("GetBucketsBucket", "tags");
+            }
+            this.tags = tags;
             return this;
         }
         @CustomType.Setter
         public Builder versioning(GetBucketsBucketVersioning versioning) {
-            this.versioning = Objects.requireNonNull(versioning);
+            if (versioning == null) {
+              throw new MissingRequiredPropertyException("GetBucketsBucket", "versioning");
+            }
+            this.versioning = versioning;
             return this;
         }
         @CustomType.Setter
         public Builder website(GetBucketsBucketWebsite website) {
-            this.website = Objects.requireNonNull(website);
+            if (website == null) {
+              throw new MissingRequiredPropertyException("GetBucketsBucket", "website");
+            }
+            this.website = website;
             return this;
         }
         public GetBucketsBucket build() {

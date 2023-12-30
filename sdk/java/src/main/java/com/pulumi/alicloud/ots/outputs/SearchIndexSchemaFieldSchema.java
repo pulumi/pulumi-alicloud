@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.ots.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -129,36 +130,47 @@ public final class SearchIndexSchemaFieldSchema {
 
         @CustomType.Setter
         public Builder analyzer(@Nullable String analyzer) {
+
             this.analyzer = analyzer;
             return this;
         }
         @CustomType.Setter
         public Builder enableSortAndAgg(@Nullable Boolean enableSortAndAgg) {
+
             this.enableSortAndAgg = enableSortAndAgg;
             return this;
         }
         @CustomType.Setter
         public Builder fieldName(String fieldName) {
-            this.fieldName = Objects.requireNonNull(fieldName);
+            if (fieldName == null) {
+              throw new MissingRequiredPropertyException("SearchIndexSchemaFieldSchema", "fieldName");
+            }
+            this.fieldName = fieldName;
             return this;
         }
         @CustomType.Setter
         public Builder fieldType(String fieldType) {
-            this.fieldType = Objects.requireNonNull(fieldType);
+            if (fieldType == null) {
+              throw new MissingRequiredPropertyException("SearchIndexSchemaFieldSchema", "fieldType");
+            }
+            this.fieldType = fieldType;
             return this;
         }
         @CustomType.Setter
         public Builder index(@Nullable Boolean index) {
+
             this.index = index;
             return this;
         }
         @CustomType.Setter
         public Builder isArray(@Nullable Boolean isArray) {
+
             this.isArray = isArray;
             return this;
         }
         @CustomType.Setter
         public Builder store(@Nullable Boolean store) {
+
             this.store = store;
             return this;
         }

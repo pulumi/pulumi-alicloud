@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.mongodb.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -70,17 +71,26 @@ public final class GetAuditPoliciesPolicy {
 
         @CustomType.Setter
         public Builder auditStatus(String auditStatus) {
-            this.auditStatus = Objects.requireNonNull(auditStatus);
+            if (auditStatus == null) {
+              throw new MissingRequiredPropertyException("GetAuditPoliciesPolicy", "auditStatus");
+            }
+            this.auditStatus = auditStatus;
             return this;
         }
         @CustomType.Setter
         public Builder dbInstanceId(String dbInstanceId) {
-            this.dbInstanceId = Objects.requireNonNull(dbInstanceId);
+            if (dbInstanceId == null) {
+              throw new MissingRequiredPropertyException("GetAuditPoliciesPolicy", "dbInstanceId");
+            }
+            this.dbInstanceId = dbInstanceId;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetAuditPoliciesPolicy", "id");
+            }
+            this.id = id;
             return this;
         }
         public GetAuditPoliciesPolicy build() {

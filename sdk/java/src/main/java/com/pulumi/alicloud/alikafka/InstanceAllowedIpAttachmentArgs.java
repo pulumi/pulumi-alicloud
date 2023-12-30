@@ -5,6 +5,7 @@ package com.pulumi.alicloud.alikafka;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -193,10 +194,18 @@ public final class InstanceAllowedIpAttachmentArgs extends com.pulumi.resources.
         }
 
         public InstanceAllowedIpAttachmentArgs build() {
-            $.allowedIp = Objects.requireNonNull($.allowedIp, "expected parameter 'allowedIp' to be non-null");
-            $.allowedType = Objects.requireNonNull($.allowedType, "expected parameter 'allowedType' to be non-null");
-            $.instanceId = Objects.requireNonNull($.instanceId, "expected parameter 'instanceId' to be non-null");
-            $.portRange = Objects.requireNonNull($.portRange, "expected parameter 'portRange' to be non-null");
+            if ($.allowedIp == null) {
+                throw new MissingRequiredPropertyException("InstanceAllowedIpAttachmentArgs", "allowedIp");
+            }
+            if ($.allowedType == null) {
+                throw new MissingRequiredPropertyException("InstanceAllowedIpAttachmentArgs", "allowedType");
+            }
+            if ($.instanceId == null) {
+                throw new MissingRequiredPropertyException("InstanceAllowedIpAttachmentArgs", "instanceId");
+            }
+            if ($.portRange == null) {
+                throw new MissingRequiredPropertyException("InstanceAllowedIpAttachmentArgs", "portRange");
+            }
             return $;
         }
     }

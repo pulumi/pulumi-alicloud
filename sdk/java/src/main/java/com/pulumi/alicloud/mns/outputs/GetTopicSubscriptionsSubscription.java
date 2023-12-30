@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.mns.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -126,37 +127,58 @@ public final class GetTopicSubscriptionsSubscription {
 
         @CustomType.Setter
         public Builder endpoint(String endpoint) {
-            this.endpoint = Objects.requireNonNull(endpoint);
+            if (endpoint == null) {
+              throw new MissingRequiredPropertyException("GetTopicSubscriptionsSubscription", "endpoint");
+            }
+            this.endpoint = endpoint;
             return this;
         }
         @CustomType.Setter
         public Builder filterTag(String filterTag) {
-            this.filterTag = Objects.requireNonNull(filterTag);
+            if (filterTag == null) {
+              throw new MissingRequiredPropertyException("GetTopicSubscriptionsSubscription", "filterTag");
+            }
+            this.filterTag = filterTag;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetTopicSubscriptionsSubscription", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetTopicSubscriptionsSubscription", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder notifyContentFormat(String notifyContentFormat) {
-            this.notifyContentFormat = Objects.requireNonNull(notifyContentFormat);
+            if (notifyContentFormat == null) {
+              throw new MissingRequiredPropertyException("GetTopicSubscriptionsSubscription", "notifyContentFormat");
+            }
+            this.notifyContentFormat = notifyContentFormat;
             return this;
         }
         @CustomType.Setter
         public Builder notifyStrategy(String notifyStrategy) {
-            this.notifyStrategy = Objects.requireNonNull(notifyStrategy);
+            if (notifyStrategy == null) {
+              throw new MissingRequiredPropertyException("GetTopicSubscriptionsSubscription", "notifyStrategy");
+            }
+            this.notifyStrategy = notifyStrategy;
             return this;
         }
         @CustomType.Setter
         public Builder topicName(String topicName) {
-            this.topicName = Objects.requireNonNull(topicName);
+            if (topicName == null) {
+              throw new MissingRequiredPropertyException("GetTopicSubscriptionsSubscription", "topicName");
+            }
+            this.topicName = topicName;
             return this;
         }
         public GetTopicSubscriptionsSubscription build() {

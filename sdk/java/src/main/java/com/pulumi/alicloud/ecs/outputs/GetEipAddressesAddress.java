@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.ecs.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Object;
 import java.lang.String;
@@ -466,17 +467,26 @@ public final class GetEipAddressesAddress {
 
         @CustomType.Setter
         public Builder addressName(String addressName) {
-            this.addressName = Objects.requireNonNull(addressName);
+            if (addressName == null) {
+              throw new MissingRequiredPropertyException("GetEipAddressesAddress", "addressName");
+            }
+            this.addressName = addressName;
             return this;
         }
         @CustomType.Setter
         public Builder allocationId(String allocationId) {
-            this.allocationId = Objects.requireNonNull(allocationId);
+            if (allocationId == null) {
+              throw new MissingRequiredPropertyException("GetEipAddressesAddress", "allocationId");
+            }
+            this.allocationId = allocationId;
             return this;
         }
         @CustomType.Setter
         public Builder availableRegions(List<String> availableRegions) {
-            this.availableRegions = Objects.requireNonNull(availableRegions);
+            if (availableRegions == null) {
+              throw new MissingRequiredPropertyException("GetEipAddressesAddress", "availableRegions");
+            }
+            this.availableRegions = availableRegions;
             return this;
         }
         public Builder availableRegions(String... availableRegions) {
@@ -484,92 +494,146 @@ public final class GetEipAddressesAddress {
         }
         @CustomType.Setter
         public Builder bandwidth(String bandwidth) {
-            this.bandwidth = Objects.requireNonNull(bandwidth);
+            if (bandwidth == null) {
+              throw new MissingRequiredPropertyException("GetEipAddressesAddress", "bandwidth");
+            }
+            this.bandwidth = bandwidth;
             return this;
         }
         @CustomType.Setter
         public Builder bandwidthPackageBandwidth(String bandwidthPackageBandwidth) {
-            this.bandwidthPackageBandwidth = Objects.requireNonNull(bandwidthPackageBandwidth);
+            if (bandwidthPackageBandwidth == null) {
+              throw new MissingRequiredPropertyException("GetEipAddressesAddress", "bandwidthPackageBandwidth");
+            }
+            this.bandwidthPackageBandwidth = bandwidthPackageBandwidth;
             return this;
         }
         @CustomType.Setter
         public Builder bandwidthPackageId(String bandwidthPackageId) {
-            this.bandwidthPackageId = Objects.requireNonNull(bandwidthPackageId);
+            if (bandwidthPackageId == null) {
+              throw new MissingRequiredPropertyException("GetEipAddressesAddress", "bandwidthPackageId");
+            }
+            this.bandwidthPackageId = bandwidthPackageId;
             return this;
         }
         @CustomType.Setter
         public Builder bandwidthPackageType(String bandwidthPackageType) {
-            this.bandwidthPackageType = Objects.requireNonNull(bandwidthPackageType);
+            if (bandwidthPackageType == null) {
+              throw new MissingRequiredPropertyException("GetEipAddressesAddress", "bandwidthPackageType");
+            }
+            this.bandwidthPackageType = bandwidthPackageType;
             return this;
         }
         @CustomType.Setter
         public Builder createTime(String createTime) {
-            this.createTime = Objects.requireNonNull(createTime);
+            if (createTime == null) {
+              throw new MissingRequiredPropertyException("GetEipAddressesAddress", "createTime");
+            }
+            this.createTime = createTime;
             return this;
         }
         @CustomType.Setter
         public Builder deletionProtection(Boolean deletionProtection) {
-            this.deletionProtection = Objects.requireNonNull(deletionProtection);
+            if (deletionProtection == null) {
+              throw new MissingRequiredPropertyException("GetEipAddressesAddress", "deletionProtection");
+            }
+            this.deletionProtection = deletionProtection;
             return this;
         }
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetEipAddressesAddress", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder expiredTime(String expiredTime) {
-            this.expiredTime = Objects.requireNonNull(expiredTime);
+            if (expiredTime == null) {
+              throw new MissingRequiredPropertyException("GetEipAddressesAddress", "expiredTime");
+            }
+            this.expiredTime = expiredTime;
             return this;
         }
         @CustomType.Setter
         public Builder hasReservationData(String hasReservationData) {
-            this.hasReservationData = Objects.requireNonNull(hasReservationData);
+            if (hasReservationData == null) {
+              throw new MissingRequiredPropertyException("GetEipAddressesAddress", "hasReservationData");
+            }
+            this.hasReservationData = hasReservationData;
             return this;
         }
         @CustomType.Setter
         public Builder hdMonitorStatus(String hdMonitorStatus) {
-            this.hdMonitorStatus = Objects.requireNonNull(hdMonitorStatus);
+            if (hdMonitorStatus == null) {
+              throw new MissingRequiredPropertyException("GetEipAddressesAddress", "hdMonitorStatus");
+            }
+            this.hdMonitorStatus = hdMonitorStatus;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetEipAddressesAddress", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder instanceId(String instanceId) {
-            this.instanceId = Objects.requireNonNull(instanceId);
+            if (instanceId == null) {
+              throw new MissingRequiredPropertyException("GetEipAddressesAddress", "instanceId");
+            }
+            this.instanceId = instanceId;
             return this;
         }
         @CustomType.Setter
         public Builder instanceRegionId(String instanceRegionId) {
-            this.instanceRegionId = Objects.requireNonNull(instanceRegionId);
+            if (instanceRegionId == null) {
+              throw new MissingRequiredPropertyException("GetEipAddressesAddress", "instanceRegionId");
+            }
+            this.instanceRegionId = instanceRegionId;
             return this;
         }
         @CustomType.Setter
         public Builder instanceType(String instanceType) {
-            this.instanceType = Objects.requireNonNull(instanceType);
+            if (instanceType == null) {
+              throw new MissingRequiredPropertyException("GetEipAddressesAddress", "instanceType");
+            }
+            this.instanceType = instanceType;
             return this;
         }
         @CustomType.Setter
         public Builder internetChargeType(String internetChargeType) {
-            this.internetChargeType = Objects.requireNonNull(internetChargeType);
+            if (internetChargeType == null) {
+              throw new MissingRequiredPropertyException("GetEipAddressesAddress", "internetChargeType");
+            }
+            this.internetChargeType = internetChargeType;
             return this;
         }
         @CustomType.Setter
         public Builder ipAddress(String ipAddress) {
-            this.ipAddress = Objects.requireNonNull(ipAddress);
+            if (ipAddress == null) {
+              throw new MissingRequiredPropertyException("GetEipAddressesAddress", "ipAddress");
+            }
+            this.ipAddress = ipAddress;
             return this;
         }
         @CustomType.Setter
         public Builder isp(String isp) {
-            this.isp = Objects.requireNonNull(isp);
+            if (isp == null) {
+              throw new MissingRequiredPropertyException("GetEipAddressesAddress", "isp");
+            }
+            this.isp = isp;
             return this;
         }
         @CustomType.Setter
         public Builder operationLocks(List<String> operationLocks) {
-            this.operationLocks = Objects.requireNonNull(operationLocks);
+            if (operationLocks == null) {
+              throw new MissingRequiredPropertyException("GetEipAddressesAddress", "operationLocks");
+            }
+            this.operationLocks = operationLocks;
             return this;
         }
         public Builder operationLocks(String... operationLocks) {
@@ -577,52 +641,82 @@ public final class GetEipAddressesAddress {
         }
         @CustomType.Setter
         public Builder paymentType(String paymentType) {
-            this.paymentType = Objects.requireNonNull(paymentType);
+            if (paymentType == null) {
+              throw new MissingRequiredPropertyException("GetEipAddressesAddress", "paymentType");
+            }
+            this.paymentType = paymentType;
             return this;
         }
         @CustomType.Setter
         public Builder reservationActiveTime(String reservationActiveTime) {
-            this.reservationActiveTime = Objects.requireNonNull(reservationActiveTime);
+            if (reservationActiveTime == null) {
+              throw new MissingRequiredPropertyException("GetEipAddressesAddress", "reservationActiveTime");
+            }
+            this.reservationActiveTime = reservationActiveTime;
             return this;
         }
         @CustomType.Setter
         public Builder reservationBandwidth(String reservationBandwidth) {
-            this.reservationBandwidth = Objects.requireNonNull(reservationBandwidth);
+            if (reservationBandwidth == null) {
+              throw new MissingRequiredPropertyException("GetEipAddressesAddress", "reservationBandwidth");
+            }
+            this.reservationBandwidth = reservationBandwidth;
             return this;
         }
         @CustomType.Setter
         public Builder reservationInternetChargeType(String reservationInternetChargeType) {
-            this.reservationInternetChargeType = Objects.requireNonNull(reservationInternetChargeType);
+            if (reservationInternetChargeType == null) {
+              throw new MissingRequiredPropertyException("GetEipAddressesAddress", "reservationInternetChargeType");
+            }
+            this.reservationInternetChargeType = reservationInternetChargeType;
             return this;
         }
         @CustomType.Setter
         public Builder reservationOrderType(String reservationOrderType) {
-            this.reservationOrderType = Objects.requireNonNull(reservationOrderType);
+            if (reservationOrderType == null) {
+              throw new MissingRequiredPropertyException("GetEipAddressesAddress", "reservationOrderType");
+            }
+            this.reservationOrderType = reservationOrderType;
             return this;
         }
         @CustomType.Setter
         public Builder resourceGroupId(String resourceGroupId) {
-            this.resourceGroupId = Objects.requireNonNull(resourceGroupId);
+            if (resourceGroupId == null) {
+              throw new MissingRequiredPropertyException("GetEipAddressesAddress", "resourceGroupId");
+            }
+            this.resourceGroupId = resourceGroupId;
             return this;
         }
         @CustomType.Setter
         public Builder secondLimited(Boolean secondLimited) {
-            this.secondLimited = Objects.requireNonNull(secondLimited);
+            if (secondLimited == null) {
+              throw new MissingRequiredPropertyException("GetEipAddressesAddress", "secondLimited");
+            }
+            this.secondLimited = secondLimited;
             return this;
         }
         @CustomType.Setter
         public Builder segmentInstanceId(String segmentInstanceId) {
-            this.segmentInstanceId = Objects.requireNonNull(segmentInstanceId);
+            if (segmentInstanceId == null) {
+              throw new MissingRequiredPropertyException("GetEipAddressesAddress", "segmentInstanceId");
+            }
+            this.segmentInstanceId = segmentInstanceId;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetEipAddressesAddress", "status");
+            }
+            this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder tags(Map<String,Object> tags) {
-            this.tags = Objects.requireNonNull(tags);
+            if (tags == null) {
+              throw new MissingRequiredPropertyException("GetEipAddressesAddress", "tags");
+            }
+            this.tags = tags;
             return this;
         }
         public GetEipAddressesAddress build() {

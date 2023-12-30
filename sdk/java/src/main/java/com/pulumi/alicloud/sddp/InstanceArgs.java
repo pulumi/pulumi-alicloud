@@ -5,6 +5,7 @@ package com.pulumi.alicloud.sddp;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -558,13 +559,27 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public InstanceArgs build() {
-            $.paymentType = Objects.requireNonNull($.paymentType, "expected parameter 'paymentType' to be non-null");
-            $.period = Objects.requireNonNull($.period, "expected parameter 'period' to be non-null");
-            $.sdCbool = Objects.requireNonNull($.sdCbool, "expected parameter 'sdCbool' to be non-null");
-            $.sdc = Objects.requireNonNull($.sdc, "expected parameter 'sdc' to be non-null");
-            $.sddpVersion = Objects.requireNonNull($.sddpVersion, "expected parameter 'sddpVersion' to be non-null");
-            $.udCbool = Objects.requireNonNull($.udCbool, "expected parameter 'udCbool' to be non-null");
-            $.udc = Objects.requireNonNull($.udc, "expected parameter 'udc' to be non-null");
+            if ($.paymentType == null) {
+                throw new MissingRequiredPropertyException("InstanceArgs", "paymentType");
+            }
+            if ($.period == null) {
+                throw new MissingRequiredPropertyException("InstanceArgs", "period");
+            }
+            if ($.sdCbool == null) {
+                throw new MissingRequiredPropertyException("InstanceArgs", "sdCbool");
+            }
+            if ($.sdc == null) {
+                throw new MissingRequiredPropertyException("InstanceArgs", "sdc");
+            }
+            if ($.sddpVersion == null) {
+                throw new MissingRequiredPropertyException("InstanceArgs", "sddpVersion");
+            }
+            if ($.udCbool == null) {
+                throw new MissingRequiredPropertyException("InstanceArgs", "udCbool");
+            }
+            if ($.udc == null) {
+                throw new MissingRequiredPropertyException("InstanceArgs", "udc");
+            }
             return $;
         }
     }

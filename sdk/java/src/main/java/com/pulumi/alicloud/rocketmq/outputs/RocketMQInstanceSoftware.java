@@ -72,16 +72,19 @@ public final class RocketMQInstanceSoftware {
 
         @CustomType.Setter
         public Builder maintainTime(@Nullable String maintainTime) {
+
             this.maintainTime = maintainTime;
             return this;
         }
         @CustomType.Setter
         public Builder softwareVersion(@Nullable String softwareVersion) {
+
             this.softwareVersion = softwareVersion;
             return this;
         }
         @CustomType.Setter
         public Builder upgradeMethod(@Nullable String upgradeMethod) {
+
             this.upgradeMethod = upgradeMethod;
             return this;
         }

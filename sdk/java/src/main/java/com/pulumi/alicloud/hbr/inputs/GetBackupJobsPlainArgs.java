@@ -5,6 +5,7 @@ package com.pulumi.alicloud.hbr.inputs;
 
 import com.pulumi.alicloud.hbr.inputs.GetBackupJobsFilter;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -202,7 +203,9 @@ public final class GetBackupJobsPlainArgs extends com.pulumi.resources.InvokeArg
         }
 
         public GetBackupJobsPlainArgs build() {
-            $.sourceType = Objects.requireNonNull($.sourceType, "expected parameter 'sourceType' to be non-null");
+            if ($.sourceType == null) {
+                throw new MissingRequiredPropertyException("GetBackupJobsPlainArgs", "sourceType");
+            }
             return $;
         }
     }

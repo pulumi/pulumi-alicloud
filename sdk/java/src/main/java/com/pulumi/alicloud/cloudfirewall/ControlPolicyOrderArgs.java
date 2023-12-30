@@ -5,6 +5,7 @@ package com.pulumi.alicloud.cloudfirewall;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -151,8 +152,12 @@ public final class ControlPolicyOrderArgs extends com.pulumi.resources.ResourceA
         }
 
         public ControlPolicyOrderArgs build() {
-            $.aclUuid = Objects.requireNonNull($.aclUuid, "expected parameter 'aclUuid' to be non-null");
-            $.direction = Objects.requireNonNull($.direction, "expected parameter 'direction' to be non-null");
+            if ($.aclUuid == null) {
+                throw new MissingRequiredPropertyException("ControlPolicyOrderArgs", "aclUuid");
+            }
+            if ($.direction == null) {
+                throw new MissingRequiredPropertyException("ControlPolicyOrderArgs", "direction");
+            }
             return $;
         }
     }

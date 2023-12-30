@@ -117,31 +117,37 @@ public final class ApplicationLivenessV2 {
 
         @CustomType.Setter
         public Builder exec(@Nullable ApplicationLivenessV2Exec exec) {
+
             this.exec = exec;
             return this;
         }
         @CustomType.Setter
         public Builder httpGet(@Nullable ApplicationLivenessV2HttpGet httpGet) {
+
             this.httpGet = httpGet;
             return this;
         }
         @CustomType.Setter
         public Builder initialDelaySeconds(@Nullable Integer initialDelaySeconds) {
+
             this.initialDelaySeconds = initialDelaySeconds;
             return this;
         }
         @CustomType.Setter
         public Builder periodSeconds(@Nullable Integer periodSeconds) {
+
             this.periodSeconds = periodSeconds;
             return this;
         }
         @CustomType.Setter
         public Builder tcpSocket(@Nullable ApplicationLivenessV2TcpSocket tcpSocket) {
+
             this.tcpSocket = tcpSocket;
             return this;
         }
         @CustomType.Setter
         public Builder timeoutSeconds(@Nullable Integer timeoutSeconds) {
+
             this.timeoutSeconds = timeoutSeconds;
             return this;
         }

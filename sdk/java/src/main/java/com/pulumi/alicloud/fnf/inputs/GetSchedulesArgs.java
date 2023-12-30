@@ -5,6 +5,7 @@ package com.pulumi.alicloud.fnf.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -236,7 +237,9 @@ public final class GetSchedulesArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         public GetSchedulesArgs build() {
-            $.flowName = Objects.requireNonNull($.flowName, "expected parameter 'flowName' to be non-null");
+            if ($.flowName == null) {
+                throw new MissingRequiredPropertyException("GetSchedulesArgs", "flowName");
+            }
             return $;
         }
     }

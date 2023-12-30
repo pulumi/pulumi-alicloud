@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.ram.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -71,7 +72,10 @@ public final class PolicyStatement {
 
         @CustomType.Setter
         public Builder actions(List<String> actions) {
-            this.actions = Objects.requireNonNull(actions);
+            if (actions == null) {
+              throw new MissingRequiredPropertyException("PolicyStatement", "actions");
+            }
+            this.actions = actions;
             return this;
         }
         public Builder actions(String... actions) {
@@ -79,12 +83,18 @@ public final class PolicyStatement {
         }
         @CustomType.Setter
         public Builder effect(String effect) {
-            this.effect = Objects.requireNonNull(effect);
+            if (effect == null) {
+              throw new MissingRequiredPropertyException("PolicyStatement", "effect");
+            }
+            this.effect = effect;
             return this;
         }
         @CustomType.Setter
         public Builder resources(List<String> resources) {
-            this.resources = Objects.requireNonNull(resources);
+            if (resources == null) {
+              throw new MissingRequiredPropertyException("PolicyStatement", "resources");
+            }
+            this.resources = resources;
             return this;
         }
         public Builder resources(String... resources) {

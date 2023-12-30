@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.eflo.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -202,62 +203,98 @@ public final class GetSubnetsSubnet {
 
         @CustomType.Setter
         public Builder cidr(String cidr) {
-            this.cidr = Objects.requireNonNull(cidr);
+            if (cidr == null) {
+              throw new MissingRequiredPropertyException("GetSubnetsSubnet", "cidr");
+            }
+            this.cidr = cidr;
             return this;
         }
         @CustomType.Setter
         public Builder createTime(String createTime) {
-            this.createTime = Objects.requireNonNull(createTime);
+            if (createTime == null) {
+              throw new MissingRequiredPropertyException("GetSubnetsSubnet", "createTime");
+            }
+            this.createTime = createTime;
             return this;
         }
         @CustomType.Setter
         public Builder gmtModified(String gmtModified) {
-            this.gmtModified = Objects.requireNonNull(gmtModified);
+            if (gmtModified == null) {
+              throw new MissingRequiredPropertyException("GetSubnetsSubnet", "gmtModified");
+            }
+            this.gmtModified = gmtModified;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetSubnetsSubnet", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder message(String message) {
-            this.message = Objects.requireNonNull(message);
+            if (message == null) {
+              throw new MissingRequiredPropertyException("GetSubnetsSubnet", "message");
+            }
+            this.message = message;
             return this;
         }
         @CustomType.Setter
         public Builder resourceGroupId(String resourceGroupId) {
-            this.resourceGroupId = Objects.requireNonNull(resourceGroupId);
+            if (resourceGroupId == null) {
+              throw new MissingRequiredPropertyException("GetSubnetsSubnet", "resourceGroupId");
+            }
+            this.resourceGroupId = resourceGroupId;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetSubnetsSubnet", "status");
+            }
+            this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder subnetId(String subnetId) {
-            this.subnetId = Objects.requireNonNull(subnetId);
+            if (subnetId == null) {
+              throw new MissingRequiredPropertyException("GetSubnetsSubnet", "subnetId");
+            }
+            this.subnetId = subnetId;
             return this;
         }
         @CustomType.Setter
         public Builder subnetName(String subnetName) {
-            this.subnetName = Objects.requireNonNull(subnetName);
+            if (subnetName == null) {
+              throw new MissingRequiredPropertyException("GetSubnetsSubnet", "subnetName");
+            }
+            this.subnetName = subnetName;
             return this;
         }
         @CustomType.Setter
         public Builder type(String type) {
-            this.type = Objects.requireNonNull(type);
+            if (type == null) {
+              throw new MissingRequiredPropertyException("GetSubnetsSubnet", "type");
+            }
+            this.type = type;
             return this;
         }
         @CustomType.Setter
         public Builder vpdId(String vpdId) {
-            this.vpdId = Objects.requireNonNull(vpdId);
+            if (vpdId == null) {
+              throw new MissingRequiredPropertyException("GetSubnetsSubnet", "vpdId");
+            }
+            this.vpdId = vpdId;
             return this;
         }
         @CustomType.Setter
         public Builder zoneId(String zoneId) {
-            this.zoneId = Objects.requireNonNull(zoneId);
+            if (zoneId == null) {
+              throw new MissingRequiredPropertyException("GetSubnetsSubnet", "zoneId");
+            }
+            this.zoneId = zoneId;
             return this;
         }
         public GetSubnetsSubnet build() {

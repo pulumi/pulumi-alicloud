@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.actiontrail.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -135,57 +136,90 @@ public final class GetTrailsDeprecatedTrail {
 
         @CustomType.Setter
         public Builder eventRw(String eventRw) {
-            this.eventRw = Objects.requireNonNull(eventRw);
+            if (eventRw == null) {
+              throw new MissingRequiredPropertyException("GetTrailsDeprecatedTrail", "eventRw");
+            }
+            this.eventRw = eventRw;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetTrailsDeprecatedTrail", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder isOrganizationTrail(Boolean isOrganizationTrail) {
-            this.isOrganizationTrail = Objects.requireNonNull(isOrganizationTrail);
+            if (isOrganizationTrail == null) {
+              throw new MissingRequiredPropertyException("GetTrailsDeprecatedTrail", "isOrganizationTrail");
+            }
+            this.isOrganizationTrail = isOrganizationTrail;
             return this;
         }
         @CustomType.Setter
         public Builder ossBucketName(String ossBucketName) {
-            this.ossBucketName = Objects.requireNonNull(ossBucketName);
+            if (ossBucketName == null) {
+              throw new MissingRequiredPropertyException("GetTrailsDeprecatedTrail", "ossBucketName");
+            }
+            this.ossBucketName = ossBucketName;
             return this;
         }
         @CustomType.Setter
         public Builder ossKeyPrefix(String ossKeyPrefix) {
-            this.ossKeyPrefix = Objects.requireNonNull(ossKeyPrefix);
+            if (ossKeyPrefix == null) {
+              throw new MissingRequiredPropertyException("GetTrailsDeprecatedTrail", "ossKeyPrefix");
+            }
+            this.ossKeyPrefix = ossKeyPrefix;
             return this;
         }
         @CustomType.Setter
         public Builder ossWriteRoleArn(String ossWriteRoleArn) {
-            this.ossWriteRoleArn = Objects.requireNonNull(ossWriteRoleArn);
+            if (ossWriteRoleArn == null) {
+              throw new MissingRequiredPropertyException("GetTrailsDeprecatedTrail", "ossWriteRoleArn");
+            }
+            this.ossWriteRoleArn = ossWriteRoleArn;
             return this;
         }
         @CustomType.Setter
         public Builder slsProjectArn(String slsProjectArn) {
-            this.slsProjectArn = Objects.requireNonNull(slsProjectArn);
+            if (slsProjectArn == null) {
+              throw new MissingRequiredPropertyException("GetTrailsDeprecatedTrail", "slsProjectArn");
+            }
+            this.slsProjectArn = slsProjectArn;
             return this;
         }
         @CustomType.Setter
         public Builder slsWriteRoleArn(String slsWriteRoleArn) {
-            this.slsWriteRoleArn = Objects.requireNonNull(slsWriteRoleArn);
+            if (slsWriteRoleArn == null) {
+              throw new MissingRequiredPropertyException("GetTrailsDeprecatedTrail", "slsWriteRoleArn");
+            }
+            this.slsWriteRoleArn = slsWriteRoleArn;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetTrailsDeprecatedTrail", "status");
+            }
+            this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder trailName(String trailName) {
-            this.trailName = Objects.requireNonNull(trailName);
+            if (trailName == null) {
+              throw new MissingRequiredPropertyException("GetTrailsDeprecatedTrail", "trailName");
+            }
+            this.trailName = trailName;
             return this;
         }
         @CustomType.Setter
         public Builder trailRegion(String trailRegion) {
-            this.trailRegion = Objects.requireNonNull(trailRegion);
+            if (trailRegion == null) {
+              throw new MissingRequiredPropertyException("GetTrailsDeprecatedTrail", "trailRegion");
+            }
+            this.trailRegion = trailRegion;
             return this;
         }
         public GetTrailsDeprecatedTrail build() {

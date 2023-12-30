@@ -5,6 +5,7 @@ package com.pulumi.alicloud.arms;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -148,9 +149,15 @@ public final class EnvFeatureArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public EnvFeatureArgs build() {
-            $.envFeatureName = Objects.requireNonNull($.envFeatureName, "expected parameter 'envFeatureName' to be non-null");
-            $.environmentId = Objects.requireNonNull($.environmentId, "expected parameter 'environmentId' to be non-null");
-            $.featureVersion = Objects.requireNonNull($.featureVersion, "expected parameter 'featureVersion' to be non-null");
+            if ($.envFeatureName == null) {
+                throw new MissingRequiredPropertyException("EnvFeatureArgs", "envFeatureName");
+            }
+            if ($.environmentId == null) {
+                throw new MissingRequiredPropertyException("EnvFeatureArgs", "environmentId");
+            }
+            if ($.featureVersion == null) {
+                throw new MissingRequiredPropertyException("EnvFeatureArgs", "featureVersion");
+            }
             return $;
         }
     }

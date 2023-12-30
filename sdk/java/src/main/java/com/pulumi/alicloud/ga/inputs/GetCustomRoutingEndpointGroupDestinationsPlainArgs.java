@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.ga.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -302,7 +303,9 @@ public final class GetCustomRoutingEndpointGroupDestinationsPlainArgs extends co
         }
 
         public GetCustomRoutingEndpointGroupDestinationsPlainArgs build() {
-            $.acceleratorId = Objects.requireNonNull($.acceleratorId, "expected parameter 'acceleratorId' to be non-null");
+            if ($.acceleratorId == null) {
+                throw new MissingRequiredPropertyException("GetCustomRoutingEndpointGroupDestinationsPlainArgs", "acceleratorId");
+            }
             return $;
         }
     }

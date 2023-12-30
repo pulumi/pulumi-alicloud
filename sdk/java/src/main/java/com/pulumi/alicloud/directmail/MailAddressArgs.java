@@ -5,6 +5,7 @@ package com.pulumi.alicloud.directmail;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -187,8 +188,12 @@ public final class MailAddressArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public MailAddressArgs build() {
-            $.accountName = Objects.requireNonNull($.accountName, "expected parameter 'accountName' to be non-null");
-            $.sendtype = Objects.requireNonNull($.sendtype, "expected parameter 'sendtype' to be non-null");
+            if ($.accountName == null) {
+                throw new MissingRequiredPropertyException("MailAddressArgs", "accountName");
+            }
+            if ($.sendtype == null) {
+                throw new MissingRequiredPropertyException("MailAddressArgs", "sendtype");
+            }
             return $;
         }
     }

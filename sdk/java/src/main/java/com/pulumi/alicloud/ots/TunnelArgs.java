@@ -5,6 +5,7 @@ package com.pulumi.alicloud.ots;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -185,10 +186,18 @@ public final class TunnelArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public TunnelArgs build() {
-            $.instanceName = Objects.requireNonNull($.instanceName, "expected parameter 'instanceName' to be non-null");
-            $.tableName = Objects.requireNonNull($.tableName, "expected parameter 'tableName' to be non-null");
-            $.tunnelName = Objects.requireNonNull($.tunnelName, "expected parameter 'tunnelName' to be non-null");
-            $.tunnelType = Objects.requireNonNull($.tunnelType, "expected parameter 'tunnelType' to be non-null");
+            if ($.instanceName == null) {
+                throw new MissingRequiredPropertyException("TunnelArgs", "instanceName");
+            }
+            if ($.tableName == null) {
+                throw new MissingRequiredPropertyException("TunnelArgs", "tableName");
+            }
+            if ($.tunnelName == null) {
+                throw new MissingRequiredPropertyException("TunnelArgs", "tunnelName");
+            }
+            if ($.tunnelType == null) {
+                throw new MissingRequiredPropertyException("TunnelArgs", "tunnelType");
+            }
             return $;
         }
     }

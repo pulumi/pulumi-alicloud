@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.cen.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -141,42 +142,66 @@ public final class GetInstanceAttachmentsAttachment {
 
         @CustomType.Setter
         public Builder childInstanceAttachTime(String childInstanceAttachTime) {
-            this.childInstanceAttachTime = Objects.requireNonNull(childInstanceAttachTime);
+            if (childInstanceAttachTime == null) {
+              throw new MissingRequiredPropertyException("GetInstanceAttachmentsAttachment", "childInstanceAttachTime");
+            }
+            this.childInstanceAttachTime = childInstanceAttachTime;
             return this;
         }
         @CustomType.Setter
         public Builder childInstanceId(String childInstanceId) {
-            this.childInstanceId = Objects.requireNonNull(childInstanceId);
+            if (childInstanceId == null) {
+              throw new MissingRequiredPropertyException("GetInstanceAttachmentsAttachment", "childInstanceId");
+            }
+            this.childInstanceId = childInstanceId;
             return this;
         }
         @CustomType.Setter
         public Builder childInstanceOwnerId(Integer childInstanceOwnerId) {
-            this.childInstanceOwnerId = Objects.requireNonNull(childInstanceOwnerId);
+            if (childInstanceOwnerId == null) {
+              throw new MissingRequiredPropertyException("GetInstanceAttachmentsAttachment", "childInstanceOwnerId");
+            }
+            this.childInstanceOwnerId = childInstanceOwnerId;
             return this;
         }
         @CustomType.Setter
         public Builder childInstanceRegionId(String childInstanceRegionId) {
-            this.childInstanceRegionId = Objects.requireNonNull(childInstanceRegionId);
+            if (childInstanceRegionId == null) {
+              throw new MissingRequiredPropertyException("GetInstanceAttachmentsAttachment", "childInstanceRegionId");
+            }
+            this.childInstanceRegionId = childInstanceRegionId;
             return this;
         }
         @CustomType.Setter
         public Builder childInstanceType(String childInstanceType) {
-            this.childInstanceType = Objects.requireNonNull(childInstanceType);
+            if (childInstanceType == null) {
+              throw new MissingRequiredPropertyException("GetInstanceAttachmentsAttachment", "childInstanceType");
+            }
+            this.childInstanceType = childInstanceType;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetInstanceAttachmentsAttachment", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder instanceId(String instanceId) {
-            this.instanceId = Objects.requireNonNull(instanceId);
+            if (instanceId == null) {
+              throw new MissingRequiredPropertyException("GetInstanceAttachmentsAttachment", "instanceId");
+            }
+            this.instanceId = instanceId;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetInstanceAttachmentsAttachment", "status");
+            }
+            this.status = status;
             return this;
         }
         public GetInstanceAttachmentsAttachment build() {

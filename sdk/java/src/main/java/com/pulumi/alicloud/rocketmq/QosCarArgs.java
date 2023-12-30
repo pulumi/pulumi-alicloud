@@ -5,6 +5,7 @@ package com.pulumi.alicloud.rocketmq;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -410,9 +411,15 @@ public final class QosCarArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public QosCarArgs build() {
-            $.limitType = Objects.requireNonNull($.limitType, "expected parameter 'limitType' to be non-null");
-            $.priority = Objects.requireNonNull($.priority, "expected parameter 'priority' to be non-null");
-            $.qosId = Objects.requireNonNull($.qosId, "expected parameter 'qosId' to be non-null");
+            if ($.limitType == null) {
+                throw new MissingRequiredPropertyException("QosCarArgs", "limitType");
+            }
+            if ($.priority == null) {
+                throw new MissingRequiredPropertyException("QosCarArgs", "priority");
+            }
+            if ($.qosId == null) {
+                throw new MissingRequiredPropertyException("QosCarArgs", "qosId");
+            }
             return $;
         }
     }

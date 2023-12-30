@@ -5,6 +5,7 @@ package com.pulumi.alicloud.ecs.outputs;
 
 import com.pulumi.alicloud.ecs.outputs.GetEcsKeyPairsKeyPairInstance;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Object;
 import java.lang.String;
 import java.util.List;
@@ -122,17 +123,26 @@ public final class GetEcsKeyPairsKeyPair {
 
         @CustomType.Setter
         public Builder fingerPrint(String fingerPrint) {
-            this.fingerPrint = Objects.requireNonNull(fingerPrint);
+            if (fingerPrint == null) {
+              throw new MissingRequiredPropertyException("GetEcsKeyPairsKeyPair", "fingerPrint");
+            }
+            this.fingerPrint = fingerPrint;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetEcsKeyPairsKeyPair", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder instances(List<GetEcsKeyPairsKeyPairInstance> instances) {
-            this.instances = Objects.requireNonNull(instances);
+            if (instances == null) {
+              throw new MissingRequiredPropertyException("GetEcsKeyPairsKeyPair", "instances");
+            }
+            this.instances = instances;
             return this;
         }
         public Builder instances(GetEcsKeyPairsKeyPairInstance... instances) {
@@ -140,22 +150,34 @@ public final class GetEcsKeyPairsKeyPair {
         }
         @CustomType.Setter
         public Builder keyName(String keyName) {
-            this.keyName = Objects.requireNonNull(keyName);
+            if (keyName == null) {
+              throw new MissingRequiredPropertyException("GetEcsKeyPairsKeyPair", "keyName");
+            }
+            this.keyName = keyName;
             return this;
         }
         @CustomType.Setter
         public Builder keyPairName(String keyPairName) {
-            this.keyPairName = Objects.requireNonNull(keyPairName);
+            if (keyPairName == null) {
+              throw new MissingRequiredPropertyException("GetEcsKeyPairsKeyPair", "keyPairName");
+            }
+            this.keyPairName = keyPairName;
             return this;
         }
         @CustomType.Setter
         public Builder resourceGroupId(String resourceGroupId) {
-            this.resourceGroupId = Objects.requireNonNull(resourceGroupId);
+            if (resourceGroupId == null) {
+              throw new MissingRequiredPropertyException("GetEcsKeyPairsKeyPair", "resourceGroupId");
+            }
+            this.resourceGroupId = resourceGroupId;
             return this;
         }
         @CustomType.Setter
         public Builder tags(Map<String,Object> tags) {
-            this.tags = Objects.requireNonNull(tags);
+            if (tags == null) {
+              throw new MissingRequiredPropertyException("GetEcsKeyPairsKeyPair", "tags");
+            }
+            this.tags = tags;
             return this;
         }
         public GetEcsKeyPairsKeyPair build() {

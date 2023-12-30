@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.cms.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.Object;
 import java.lang.String;
@@ -200,12 +201,18 @@ public final class GetMonitorGroupsGroup {
 
         @CustomType.Setter
         public Builder bindUrl(String bindUrl) {
-            this.bindUrl = Objects.requireNonNull(bindUrl);
+            if (bindUrl == null) {
+              throw new MissingRequiredPropertyException("GetMonitorGroupsGroup", "bindUrl");
+            }
+            this.bindUrl = bindUrl;
             return this;
         }
         @CustomType.Setter
         public Builder contactGroups(List<String> contactGroups) {
-            this.contactGroups = Objects.requireNonNull(contactGroups);
+            if (contactGroups == null) {
+              throw new MissingRequiredPropertyException("GetMonitorGroupsGroup", "contactGroups");
+            }
+            this.contactGroups = contactGroups;
             return this;
         }
         public Builder contactGroups(String... contactGroups) {
@@ -213,47 +220,74 @@ public final class GetMonitorGroupsGroup {
         }
         @CustomType.Setter
         public Builder dynamicTagRuleId(String dynamicTagRuleId) {
-            this.dynamicTagRuleId = Objects.requireNonNull(dynamicTagRuleId);
+            if (dynamicTagRuleId == null) {
+              throw new MissingRequiredPropertyException("GetMonitorGroupsGroup", "dynamicTagRuleId");
+            }
+            this.dynamicTagRuleId = dynamicTagRuleId;
             return this;
         }
         @CustomType.Setter
         public Builder gmtCreate(Integer gmtCreate) {
-            this.gmtCreate = Objects.requireNonNull(gmtCreate);
+            if (gmtCreate == null) {
+              throw new MissingRequiredPropertyException("GetMonitorGroupsGroup", "gmtCreate");
+            }
+            this.gmtCreate = gmtCreate;
             return this;
         }
         @CustomType.Setter
         public Builder gmtModified(Integer gmtModified) {
-            this.gmtModified = Objects.requireNonNull(gmtModified);
+            if (gmtModified == null) {
+              throw new MissingRequiredPropertyException("GetMonitorGroupsGroup", "gmtModified");
+            }
+            this.gmtModified = gmtModified;
             return this;
         }
         @CustomType.Setter
         public Builder groupId(String groupId) {
-            this.groupId = Objects.requireNonNull(groupId);
+            if (groupId == null) {
+              throw new MissingRequiredPropertyException("GetMonitorGroupsGroup", "groupId");
+            }
+            this.groupId = groupId;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetMonitorGroupsGroup", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder monitorGroupName(String monitorGroupName) {
-            this.monitorGroupName = Objects.requireNonNull(monitorGroupName);
+            if (monitorGroupName == null) {
+              throw new MissingRequiredPropertyException("GetMonitorGroupsGroup", "monitorGroupName");
+            }
+            this.monitorGroupName = monitorGroupName;
             return this;
         }
         @CustomType.Setter
         public Builder serviceId(String serviceId) {
-            this.serviceId = Objects.requireNonNull(serviceId);
+            if (serviceId == null) {
+              throw new MissingRequiredPropertyException("GetMonitorGroupsGroup", "serviceId");
+            }
+            this.serviceId = serviceId;
             return this;
         }
         @CustomType.Setter
         public Builder tags(Map<String,Object> tags) {
-            this.tags = Objects.requireNonNull(tags);
+            if (tags == null) {
+              throw new MissingRequiredPropertyException("GetMonitorGroupsGroup", "tags");
+            }
+            this.tags = tags;
             return this;
         }
         @CustomType.Setter
         public Builder templateIds(List<String> templateIds) {
-            this.templateIds = Objects.requireNonNull(templateIds);
+            if (templateIds == null) {
+              throw new MissingRequiredPropertyException("GetMonitorGroupsGroup", "templateIds");
+            }
+            this.templateIds = templateIds;
             return this;
         }
         public Builder templateIds(String... templateIds) {
@@ -261,7 +295,10 @@ public final class GetMonitorGroupsGroup {
         }
         @CustomType.Setter
         public Builder type(String type) {
-            this.type = Objects.requireNonNull(type);
+            if (type == null) {
+              throw new MissingRequiredPropertyException("GetMonitorGroupsGroup", "type");
+            }
+            this.type = type;
             return this;
         }
         public GetMonitorGroupsGroup build() {

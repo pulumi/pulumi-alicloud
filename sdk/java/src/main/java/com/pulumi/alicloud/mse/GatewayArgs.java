@@ -5,6 +5,7 @@ package com.pulumi.alicloud.mse;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -411,10 +412,18 @@ public final class GatewayArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public GatewayArgs build() {
-            $.replica = Objects.requireNonNull($.replica, "expected parameter 'replica' to be non-null");
-            $.spec = Objects.requireNonNull($.spec, "expected parameter 'spec' to be non-null");
-            $.vpcId = Objects.requireNonNull($.vpcId, "expected parameter 'vpcId' to be non-null");
-            $.vswitchId = Objects.requireNonNull($.vswitchId, "expected parameter 'vswitchId' to be non-null");
+            if ($.replica == null) {
+                throw new MissingRequiredPropertyException("GatewayArgs", "replica");
+            }
+            if ($.spec == null) {
+                throw new MissingRequiredPropertyException("GatewayArgs", "spec");
+            }
+            if ($.vpcId == null) {
+                throw new MissingRequiredPropertyException("GatewayArgs", "vpcId");
+            }
+            if ($.vswitchId == null) {
+                throw new MissingRequiredPropertyException("GatewayArgs", "vswitchId");
+            }
             return $;
         }
     }

@@ -5,6 +5,7 @@ package com.pulumi.alicloud.cloudsso.outputs;
 
 import com.pulumi.alicloud.cloudsso.outputs.GetAccessAssignmentsAssignment;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -94,12 +95,16 @@ public final class GetAccessAssignmentsResult {
 
         @CustomType.Setter
         public Builder accessConfigurationId(@Nullable String accessConfigurationId) {
+
             this.accessConfigurationId = accessConfigurationId;
             return this;
         }
         @CustomType.Setter
         public Builder assignments(List<GetAccessAssignmentsAssignment> assignments) {
-            this.assignments = Objects.requireNonNull(assignments);
+            if (assignments == null) {
+              throw new MissingRequiredPropertyException("GetAccessAssignmentsResult", "assignments");
+            }
+            this.assignments = assignments;
             return this;
         }
         public Builder assignments(GetAccessAssignmentsAssignment... assignments) {
@@ -107,17 +112,26 @@ public final class GetAccessAssignmentsResult {
         }
         @CustomType.Setter
         public Builder directoryId(String directoryId) {
-            this.directoryId = Objects.requireNonNull(directoryId);
+            if (directoryId == null) {
+              throw new MissingRequiredPropertyException("GetAccessAssignmentsResult", "directoryId");
+            }
+            this.directoryId = directoryId;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetAccessAssignmentsResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder ids(List<String> ids) {
-            this.ids = Objects.requireNonNull(ids);
+            if (ids == null) {
+              throw new MissingRequiredPropertyException("GetAccessAssignmentsResult", "ids");
+            }
+            this.ids = ids;
             return this;
         }
         public Builder ids(String... ids) {
@@ -125,21 +139,25 @@ public final class GetAccessAssignmentsResult {
         }
         @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
+
             this.outputFile = outputFile;
             return this;
         }
         @CustomType.Setter
         public Builder principalType(@Nullable String principalType) {
+
             this.principalType = principalType;
             return this;
         }
         @CustomType.Setter
         public Builder targetId(@Nullable String targetId) {
+
             this.targetId = targetId;
             return this;
         }
         @CustomType.Setter
         public Builder targetType(@Nullable String targetType) {
+
             this.targetType = targetType;
             return this;
         }

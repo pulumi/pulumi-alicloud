@@ -5,6 +5,7 @@ package com.pulumi.alicloud.eventbridge.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -187,7 +188,9 @@ public final class ConnectionNetworkParametersArgs extends com.pulumi.resources.
         }
 
         public ConnectionNetworkParametersArgs build() {
-            $.networkType = Objects.requireNonNull($.networkType, "expected parameter 'networkType' to be non-null");
+            if ($.networkType == null) {
+                throw new MissingRequiredPropertyException("ConnectionNetworkParametersArgs", "networkType");
+            }
             return $;
         }
     }

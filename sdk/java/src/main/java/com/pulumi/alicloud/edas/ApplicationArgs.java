@@ -5,6 +5,7 @@ package com.pulumi.alicloud.edas;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -458,9 +459,15 @@ public final class ApplicationArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public ApplicationArgs build() {
-            $.applicationName = Objects.requireNonNull($.applicationName, "expected parameter 'applicationName' to be non-null");
-            $.clusterId = Objects.requireNonNull($.clusterId, "expected parameter 'clusterId' to be non-null");
-            $.packageType = Objects.requireNonNull($.packageType, "expected parameter 'packageType' to be non-null");
+            if ($.applicationName == null) {
+                throw new MissingRequiredPropertyException("ApplicationArgs", "applicationName");
+            }
+            if ($.clusterId == null) {
+                throw new MissingRequiredPropertyException("ApplicationArgs", "clusterId");
+            }
+            if ($.packageType == null) {
+                throw new MissingRequiredPropertyException("ApplicationArgs", "packageType");
+            }
             return $;
         }
     }

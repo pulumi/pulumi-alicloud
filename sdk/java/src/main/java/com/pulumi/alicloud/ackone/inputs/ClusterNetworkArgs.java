@@ -5,6 +5,7 @@ package com.pulumi.alicloud.ackone.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -171,8 +172,12 @@ public final class ClusterNetworkArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         public ClusterNetworkArgs build() {
-            $.vpcId = Objects.requireNonNull($.vpcId, "expected parameter 'vpcId' to be non-null");
-            $.vswitches = Objects.requireNonNull($.vswitches, "expected parameter 'vswitches' to be non-null");
+            if ($.vpcId == null) {
+                throw new MissingRequiredPropertyException("ClusterNetworkArgs", "vpcId");
+            }
+            if ($.vswitches == null) {
+                throw new MissingRequiredPropertyException("ClusterNetworkArgs", "vswitches");
+            }
             return $;
         }
     }

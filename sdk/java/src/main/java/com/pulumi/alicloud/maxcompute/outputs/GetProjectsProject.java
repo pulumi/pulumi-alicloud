@@ -7,6 +7,7 @@ import com.pulumi.alicloud.maxcompute.outputs.GetProjectsProjectIpWhiteList;
 import com.pulumi.alicloud.maxcompute.outputs.GetProjectsProjectProperties;
 import com.pulumi.alicloud.maxcompute.outputs.GetProjectsProjectSecurityProperties;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -163,52 +164,82 @@ public final class GetProjectsProject {
 
         @CustomType.Setter
         public Builder comment(String comment) {
-            this.comment = Objects.requireNonNull(comment);
+            if (comment == null) {
+              throw new MissingRequiredPropertyException("GetProjectsProject", "comment");
+            }
+            this.comment = comment;
             return this;
         }
         @CustomType.Setter
         public Builder defaultQuota(String defaultQuota) {
-            this.defaultQuota = Objects.requireNonNull(defaultQuota);
+            if (defaultQuota == null) {
+              throw new MissingRequiredPropertyException("GetProjectsProject", "defaultQuota");
+            }
+            this.defaultQuota = defaultQuota;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetProjectsProject", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder ipWhiteList(GetProjectsProjectIpWhiteList ipWhiteList) {
-            this.ipWhiteList = Objects.requireNonNull(ipWhiteList);
+            if (ipWhiteList == null) {
+              throw new MissingRequiredPropertyException("GetProjectsProject", "ipWhiteList");
+            }
+            this.ipWhiteList = ipWhiteList;
             return this;
         }
         @CustomType.Setter
         public Builder owner(String owner) {
-            this.owner = Objects.requireNonNull(owner);
+            if (owner == null) {
+              throw new MissingRequiredPropertyException("GetProjectsProject", "owner");
+            }
+            this.owner = owner;
             return this;
         }
         @CustomType.Setter
         public Builder projectName(String projectName) {
-            this.projectName = Objects.requireNonNull(projectName);
+            if (projectName == null) {
+              throw new MissingRequiredPropertyException("GetProjectsProject", "projectName");
+            }
+            this.projectName = projectName;
             return this;
         }
         @CustomType.Setter
         public Builder properties(GetProjectsProjectProperties properties) {
-            this.properties = Objects.requireNonNull(properties);
+            if (properties == null) {
+              throw new MissingRequiredPropertyException("GetProjectsProject", "properties");
+            }
+            this.properties = properties;
             return this;
         }
         @CustomType.Setter
         public Builder securityProperties(GetProjectsProjectSecurityProperties securityProperties) {
-            this.securityProperties = Objects.requireNonNull(securityProperties);
+            if (securityProperties == null) {
+              throw new MissingRequiredPropertyException("GetProjectsProject", "securityProperties");
+            }
+            this.securityProperties = securityProperties;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetProjectsProject", "status");
+            }
+            this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder type(String type) {
-            this.type = Objects.requireNonNull(type);
+            if (type == null) {
+              throw new MissingRequiredPropertyException("GetProjectsProject", "type");
+            }
+            this.type = type;
             return this;
         }
         public GetProjectsProject build() {

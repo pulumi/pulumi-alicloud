@@ -25,7 +25,7 @@ class TopicArgs:
         The set of arguments for constructing a Topic resource.
         :param pulumi.Input[str] instance_id: InstanceId of your Kafka resource, the topic will create in this instance.
         :param pulumi.Input[str] remark: This attribute is a concise description of topic. The length cannot exceed 64.
-        :param pulumi.Input[str] topic: Name of the topic. Two topics on a single instance cannot have the same name. The length cannot exceed 64 characters.
+        :param pulumi.Input[str] topic: Name of the topic. Two topics on a single instance cannot have the same name. The length cannot exceed 249 characters.
         :param pulumi.Input[bool] compact_topic: Whether the topic is compactTopic or not. Compact topic must be a localTopic.
         :param pulumi.Input[bool] local_topic: Whether the topic is localTopic or not.
         :param pulumi.Input[int] partition_num: The number of partitions of the topic. The number should between 1 and 48.
@@ -71,7 +71,7 @@ class TopicArgs:
     @pulumi.getter
     def topic(self) -> pulumi.Input[str]:
         """
-        Name of the topic. Two topics on a single instance cannot have the same name. The length cannot exceed 64 characters.
+        Name of the topic. Two topics on a single instance cannot have the same name. The length cannot exceed 249 characters.
         """
         return pulumi.get(self, "topic")
 
@@ -146,7 +146,7 @@ class _TopicState:
         :param pulumi.Input[int] partition_num: The number of partitions of the topic. The number should between 1 and 48.
         :param pulumi.Input[str] remark: This attribute is a concise description of topic. The length cannot exceed 64.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
-        :param pulumi.Input[str] topic: Name of the topic. Two topics on a single instance cannot have the same name. The length cannot exceed 64 characters.
+        :param pulumi.Input[str] topic: Name of the topic. Two topics on a single instance cannot have the same name. The length cannot exceed 249 characters.
         """
         if compact_topic is not None:
             pulumi.set(__self__, "compact_topic", compact_topic)
@@ -239,7 +239,7 @@ class _TopicState:
     @pulumi.getter
     def topic(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of the topic. Two topics on a single instance cannot have the same name. The length cannot exceed 64 characters.
+        Name of the topic. Two topics on a single instance cannot have the same name. The length cannot exceed 249 characters.
         """
         return pulumi.get(self, "topic")
 
@@ -277,26 +277,28 @@ class Topic(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
-        default_network = alicloud.vpc.Network("defaultNetwork", cidr_block="172.16.0.0/12")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
-            vpc_id=default_network.id,
-            cidr_block="172.16.0.0/24",
-            zone_id=default_zones.zones[0].id)
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default_networks = alicloud.vpc.get_networks(name_regex="^default-NODELETING$")
+        default_switches = alicloud.vpc.get_switches(vpc_id=default_networks.ids[0])
+        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_networks.ids[0])
         default_instance = alicloud.alikafka.Instance("defaultInstance",
             partition_num=50,
             disk_type=1,
             disk_size=500,
             deploy_type=5,
             io_max=20,
-            vswitch_id=default_switch.id)
+            vswitch_id=default_switches.ids[0],
+            security_group=default_security_group.id)
         default_topic = alicloud.alikafka.Topic("defaultTopic",
+            remark="alicloud_alikafka_topic_remark",
             instance_id=default_instance.id,
-            topic="example-topic",
+            topic=name,
             local_topic=False,
             compact_topic=False,
-            partition_num=12,
-            remark="dafault_kafka_topic_remark")
+            partition_num=6)
         ```
 
         ## Import
@@ -315,7 +317,7 @@ class Topic(pulumi.CustomResource):
         :param pulumi.Input[int] partition_num: The number of partitions of the topic. The number should between 1 and 48.
         :param pulumi.Input[str] remark: This attribute is a concise description of topic. The length cannot exceed 64.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
-        :param pulumi.Input[str] topic: Name of the topic. Two topics on a single instance cannot have the same name. The length cannot exceed 64 characters.
+        :param pulumi.Input[str] topic: Name of the topic. Two topics on a single instance cannot have the same name. The length cannot exceed 249 characters.
         """
         ...
     @overload
@@ -339,26 +341,28 @@ class Topic(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
-        default_network = alicloud.vpc.Network("defaultNetwork", cidr_block="172.16.0.0/12")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
-            vpc_id=default_network.id,
-            cidr_block="172.16.0.0/24",
-            zone_id=default_zones.zones[0].id)
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default_networks = alicloud.vpc.get_networks(name_regex="^default-NODELETING$")
+        default_switches = alicloud.vpc.get_switches(vpc_id=default_networks.ids[0])
+        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_networks.ids[0])
         default_instance = alicloud.alikafka.Instance("defaultInstance",
             partition_num=50,
             disk_type=1,
             disk_size=500,
             deploy_type=5,
             io_max=20,
-            vswitch_id=default_switch.id)
+            vswitch_id=default_switches.ids[0],
+            security_group=default_security_group.id)
         default_topic = alicloud.alikafka.Topic("defaultTopic",
+            remark="alicloud_alikafka_topic_remark",
             instance_id=default_instance.id,
-            topic="example-topic",
+            topic=name,
             local_topic=False,
             compact_topic=False,
-            partition_num=12,
-            remark="dafault_kafka_topic_remark")
+            partition_num=6)
         ```
 
         ## Import
@@ -443,7 +447,7 @@ class Topic(pulumi.CustomResource):
         :param pulumi.Input[int] partition_num: The number of partitions of the topic. The number should between 1 and 48.
         :param pulumi.Input[str] remark: This attribute is a concise description of topic. The length cannot exceed 64.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
-        :param pulumi.Input[str] topic: Name of the topic. Two topics on a single instance cannot have the same name. The length cannot exceed 64 characters.
+        :param pulumi.Input[str] topic: Name of the topic. Two topics on a single instance cannot have the same name. The length cannot exceed 249 characters.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -510,7 +514,7 @@ class Topic(pulumi.CustomResource):
     @pulumi.getter
     def topic(self) -> pulumi.Output[str]:
         """
-        Name of the topic. Two topics on a single instance cannot have the same name. The length cannot exceed 64 characters.
+        Name of the topic. Two topics on a single instance cannot have the same name. The length cannot exceed 249 characters.
         """
         return pulumi.get(self, "topic")
 

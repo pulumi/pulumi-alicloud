@@ -44,6 +44,7 @@ public final class ChainChainConfigNodeNodeConfig {
 
         @CustomType.Setter
         public Builder denyPolicies(@Nullable List<ChainChainConfigNodeNodeConfigDenyPolicy> denyPolicies) {
+
             this.denyPolicies = denyPolicies;
             return this;
         }

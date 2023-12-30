@@ -5,6 +5,7 @@ package com.pulumi.alicloud.cloudstoragegateway;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -1262,12 +1263,24 @@ public final class GatewayFileShareArgs extends com.pulumi.resources.ResourceArg
         }
 
         public GatewayFileShareArgs build() {
-            $.gatewayFileShareName = Objects.requireNonNull($.gatewayFileShareName, "expected parameter 'gatewayFileShareName' to be non-null");
-            $.gatewayId = Objects.requireNonNull($.gatewayId, "expected parameter 'gatewayId' to be non-null");
-            $.localPath = Objects.requireNonNull($.localPath, "expected parameter 'localPath' to be non-null");
-            $.ossBucketName = Objects.requireNonNull($.ossBucketName, "expected parameter 'ossBucketName' to be non-null");
-            $.ossEndpoint = Objects.requireNonNull($.ossEndpoint, "expected parameter 'ossEndpoint' to be non-null");
-            $.protocol = Objects.requireNonNull($.protocol, "expected parameter 'protocol' to be non-null");
+            if ($.gatewayFileShareName == null) {
+                throw new MissingRequiredPropertyException("GatewayFileShareArgs", "gatewayFileShareName");
+            }
+            if ($.gatewayId == null) {
+                throw new MissingRequiredPropertyException("GatewayFileShareArgs", "gatewayId");
+            }
+            if ($.localPath == null) {
+                throw new MissingRequiredPropertyException("GatewayFileShareArgs", "localPath");
+            }
+            if ($.ossBucketName == null) {
+                throw new MissingRequiredPropertyException("GatewayFileShareArgs", "ossBucketName");
+            }
+            if ($.ossEndpoint == null) {
+                throw new MissingRequiredPropertyException("GatewayFileShareArgs", "ossEndpoint");
+            }
+            if ($.protocol == null) {
+                throw new MissingRequiredPropertyException("GatewayFileShareArgs", "protocol");
+            }
             return $;
         }
     }

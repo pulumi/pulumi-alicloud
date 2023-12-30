@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.dns.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -52,22 +53,34 @@ public final class GetDomainsDomainRecordLine {
 
         @CustomType.Setter
         public Builder fatherCode(String fatherCode) {
-            this.fatherCode = Objects.requireNonNull(fatherCode);
+            if (fatherCode == null) {
+              throw new MissingRequiredPropertyException("GetDomainsDomainRecordLine", "fatherCode");
+            }
+            this.fatherCode = fatherCode;
             return this;
         }
         @CustomType.Setter
         public Builder lineCode(String lineCode) {
-            this.lineCode = Objects.requireNonNull(lineCode);
+            if (lineCode == null) {
+              throw new MissingRequiredPropertyException("GetDomainsDomainRecordLine", "lineCode");
+            }
+            this.lineCode = lineCode;
             return this;
         }
         @CustomType.Setter
         public Builder lineDisplayName(String lineDisplayName) {
-            this.lineDisplayName = Objects.requireNonNull(lineDisplayName);
+            if (lineDisplayName == null) {
+              throw new MissingRequiredPropertyException("GetDomainsDomainRecordLine", "lineDisplayName");
+            }
+            this.lineDisplayName = lineDisplayName;
             return this;
         }
         @CustomType.Setter
         public Builder lineName(String lineName) {
-            this.lineName = Objects.requireNonNull(lineName);
+            if (lineName == null) {
+              throw new MissingRequiredPropertyException("GetDomainsDomainRecordLine", "lineName");
+            }
+            this.lineName = lineName;
             return this;
         }
         public GetDomainsDomainRecordLine build() {

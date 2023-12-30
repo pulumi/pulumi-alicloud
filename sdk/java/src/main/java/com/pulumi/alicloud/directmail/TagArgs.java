@@ -5,6 +5,7 @@ package com.pulumi.alicloud.directmail;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -74,7 +75,9 @@ public final class TagArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public TagArgs build() {
-            $.tagName = Objects.requireNonNull($.tagName, "expected parameter 'tagName' to be non-null");
+            if ($.tagName == null) {
+                throw new MissingRequiredPropertyException("TagArgs", "tagName");
+            }
             return $;
         }
     }

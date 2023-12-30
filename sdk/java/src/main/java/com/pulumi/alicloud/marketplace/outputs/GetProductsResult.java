@@ -5,6 +5,7 @@ package com.pulumi.alicloud.marketplace.outputs;
 
 import com.pulumi.alicloud.marketplace.outputs.GetProductsProduct;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Double;
 import java.lang.String;
 import java.util.List;
@@ -153,17 +154,24 @@ public final class GetProductsResult {
 
         @CustomType.Setter
         public Builder categoryId(@Nullable String categoryId) {
+
             this.categoryId = categoryId;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetProductsResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder ids(List<String> ids) {
-            this.ids = Objects.requireNonNull(ids);
+            if (ids == null) {
+              throw new MissingRequiredPropertyException("GetProductsResult", "ids");
+            }
+            this.ids = ids;
             return this;
         }
         public Builder ids(String... ids) {
@@ -171,22 +179,28 @@ public final class GetProductsResult {
         }
         @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
+
             this.nameRegex = nameRegex;
             return this;
         }
         @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
+
             this.outputFile = outputFile;
             return this;
         }
         @CustomType.Setter
         public Builder productType(@Nullable String productType) {
+
             this.productType = productType;
             return this;
         }
         @CustomType.Setter
         public Builder products(List<GetProductsProduct> products) {
-            this.products = Objects.requireNonNull(products);
+            if (products == null) {
+              throw new MissingRequiredPropertyException("GetProductsResult", "products");
+            }
+            this.products = products;
             return this;
         }
         public Builder products(GetProductsProduct... products) {
@@ -194,26 +208,31 @@ public final class GetProductsResult {
         }
         @CustomType.Setter
         public Builder searchTerm(@Nullable String searchTerm) {
+
             this.searchTerm = searchTerm;
             return this;
         }
         @CustomType.Setter
         public Builder sort(@Nullable String sort) {
+
             this.sort = sort;
             return this;
         }
         @CustomType.Setter
         public Builder suggestedPrice(@Nullable Double suggestedPrice) {
+
             this.suggestedPrice = suggestedPrice;
             return this;
         }
         @CustomType.Setter
         public Builder supplierId(@Nullable String supplierId) {
+
             this.supplierId = supplierId;
             return this;
         }
         @CustomType.Setter
         public Builder supplierNameKeyword(@Nullable String supplierNameKeyword) {
+
             this.supplierNameKeyword = supplierNameKeyword;
             return this;
         }
