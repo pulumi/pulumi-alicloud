@@ -3519,6 +3519,9 @@
                                 "readiness_probe_exec_commands": {
                                     "maxItemsOne": false
                                 },
+                                "security_context_capability_adds": {
+                                    "maxItemsOne": false
+                                },
                                 "volume_mounts": {
                                     "maxItemsOne": false
                                 }
@@ -3552,6 +3555,9 @@
                                     "maxItemsOne": false
                                 },
                                 "ports": {
+                                    "maxItemsOne": false
+                                },
+                                "security_context_capability_adds": {
                                     "maxItemsOne": false
                                 },
                                 "volume_mounts": {
@@ -21275,16 +21281,24 @@
                 "diskType": "disk_type",
                 "eipMax": "eip_max",
                 "endPoint": "end_point",
+                "groupLeft": "group_left",
+                "groupUsed": "group_used",
                 "ioMax": "io_max",
                 "ioMaxSpec": "io_max_spec",
+                "isPartitionBuy": "is_partition_buy",
                 "kmsKeyId": "kms_key_id",
                 "paidType": "paid_type",
+                "partitionLeft": "partition_left",
                 "partitionNum": "partition_num",
+                "partitionUsed": "partition_used",
                 "securityGroup": "security_group",
                 "selectedZones": "selected_zones",
                 "serviceVersion": "service_version",
                 "specType": "spec_type",
+                "topicLeft": "topic_left",
+                "topicNumOfBuy": "topic_num_of_buy",
                 "topicQuota": "topic_quota",
+                "topicUsed": "topic_used",
                 "vpcId": "vpc_id",
                 "vswitchId": "vswitch_id",
                 "zoneId": "zone_id"
@@ -31540,8 +31554,14 @@
                 "readinessProbeSuccessThreshold": "readiness_probe_success_threshold",
                 "readinessProbeTcpSocketPort": "readiness_probe_tcp_socket_port",
                 "readinessProbeTimeoutSeconds": "readiness_probe_timeout_seconds",
+                "securityContextCapabilityAdds": "security_context_capability_adds",
+                "securityContextReadOnlyRootFileSystem": "security_context_read_only_root_file_system",
+                "securityContextRunAsUser": "security_context_run_as_user",
                 "volumeMounts": "volume_mounts",
                 "workingDir": "working_dir"
+            },
+            "alicloud:ess/EciScalingConfigurationContainerEnvironmentVar:EciScalingConfigurationContainerEnvironmentVar": {
+                "fieldRefFieldPath": "field_ref_field_path"
             },
             "alicloud:ess/EciScalingConfigurationContainerVolumeMount:EciScalingConfigurationContainerVolumeMount": {
                 "mountPath": "mount_path",
@@ -31550,8 +31570,14 @@
             "alicloud:ess/EciScalingConfigurationInitContainer:EciScalingConfigurationInitContainer": {
                 "environmentVars": "environment_vars",
                 "imagePullPolicy": "image_pull_policy",
+                "securityContextCapabilityAdds": "security_context_capability_adds",
+                "securityContextReadOnlyRootFileSystem": "security_context_read_only_root_file_system",
+                "securityContextRunAsUser": "security_context_run_as_user",
                 "volumeMounts": "volume_mounts",
                 "workingDir": "working_dir"
+            },
+            "alicloud:ess/EciScalingConfigurationInitContainerEnvironmentVar:EciScalingConfigurationInitContainerEnvironmentVar": {
+                "fieldRefFieldPath": "field_ref_field_path"
             },
             "alicloud:ess/EciScalingConfigurationInitContainerVolumeMount:EciScalingConfigurationInitContainerVolumeMount": {
                 "mountPath": "mount_path",
@@ -31616,18 +31642,24 @@
             },
             "alicloud:ess/eciScalingConfiguration:EciScalingConfiguration": {
                 "acrRegistryInfos": "acr_registry_infos",
+                "activeDeadlineSeconds": "active_deadline_seconds",
                 "autoCreateEip": "auto_create_eip",
+                "autoMatchImageCache": "auto_match_image_cache",
                 "containerGroupName": "container_group_name",
                 "dnsPolicy": "dns_policy",
                 "egressBandwidth": "egress_bandwidth",
                 "eipBandwidth": "eip_bandwidth",
                 "enableSls": "enable_sls",
+                "ephemeralStorage": "ephemeral_storage",
                 "forceDelete": "force_delete",
                 "hostAliases": "host_aliases",
                 "hostName": "host_name",
                 "imageRegistryCredentials": "image_registry_credentials",
+                "imageSnapshotId": "image_snapshot_id",
                 "ingressBandwidth": "ingress_bandwidth",
                 "initContainers": "init_containers",
+                "ipv6AddressCount": "ipv6_address_count",
+                "loadBalancerWeight": "load_balancer_weight",
                 "ramRoleName": "ram_role_name",
                 "resourceGroupId": "resource_group_id",
                 "restartPolicy": "restart_policy",
@@ -31635,7 +31667,8 @@
                 "scalingGroupId": "scaling_group_id",
                 "securityGroupId": "security_group_id",
                 "spotPriceLimit": "spot_price_limit",
-                "spotStrategy": "spot_strategy"
+                "spotStrategy": "spot_strategy",
+                "terminationGracePeriodSeconds": "termination_grace_period_seconds"
             },
             "alicloud:ess/getAlarms:getAlarms": {
                 "metricType": "metric_type",
@@ -34885,10 +34918,13 @@
             "alicloud:log/store:Store": {
                 "appendMeta": "append_meta",
                 "autoSplit": "auto_split",
+                "createTime": "create_time",
                 "enableWebTracking": "enable_web_tracking",
                 "encryptConf": "encrypt_conf",
                 "hotTtl": "hot_ttl",
+                "logstoreName": "logstore_name",
                 "maxSplitShardCount": "max_split_shard_count",
+                "projectName": "project_name",
                 "retentionPeriod": "retention_period",
                 "shardCount": "shard_count",
                 "telemetryType": "telemetry_type"
