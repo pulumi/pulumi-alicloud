@@ -16,20 +16,23 @@ package alicloud
 
 import (
 	"fmt"
-	// embed is used to store bridge-metadata.json in the compiled binary
-	_ "embed"
 	"path/filepath"
 	"strings"
 	"unicode"
 
+	// embed is used to store bridge-metadata.json in the compiled binary
+	_ "embed"
+
 	"github.com/aliyun/terraform-provider-alicloud/alicloud"
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
-	"github.com/pulumi/pulumi-alicloud/provider/v3/pkg/version"
+
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/x"
 	shimv1 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v1"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/tokens"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/util/contract"
+
+	"github.com/pulumi/pulumi-alicloud/provider/v3/pkg/version"
 )
 
 // all of the AliCloud token components used below.
