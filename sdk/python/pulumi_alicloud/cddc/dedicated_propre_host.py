@@ -23,6 +23,7 @@ class DedicatedPropreHostArgs:
                  security_group_id: pulumi.Input[str],
                  vpc_id: pulumi.Input[str],
                  vswitch_id: pulumi.Input[str],
+                 auto_pay: Optional[pulumi.Input[bool]] = None,
                  auto_renew: Optional[pulumi.Input[str]] = None,
                  dedicated_host_group_id: Optional[pulumi.Input[str]] = None,
                  ecs_deployment_set_id: Optional[pulumi.Input[str]] = None,
@@ -30,11 +31,17 @@ class DedicatedPropreHostArgs:
                  ecs_instance_name: Optional[pulumi.Input[str]] = None,
                  ecs_unique_suffix: Optional[pulumi.Input[str]] = None,
                  image_id: Optional[pulumi.Input[str]] = None,
+                 internet_charge_type: Optional[pulumi.Input[str]] = None,
+                 internet_max_bandwidth_out: Optional[pulumi.Input[int]] = None,
                  key_pair_name: Optional[pulumi.Input[str]] = None,
                  os_password: Optional[pulumi.Input[str]] = None,
                  password_inherit: Optional[pulumi.Input[str]] = None,
                  period: Optional[pulumi.Input[str]] = None,
-                 period_type: Optional[pulumi.Input[str]] = None):
+                 period_type: Optional[pulumi.Input[str]] = None,
+                 resource_group_id: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 user_data: Optional[pulumi.Input[str]] = None,
+                 user_data_encoded: Optional[pulumi.Input[bool]] = None):
         """
         The set of arguments for constructing a DedicatedPropreHost resource.
         :param pulumi.Input[Sequence[pulumi.Input['DedicatedPropreHostEcsClassListArgs']]] ecs_class_lists: ECS specifications. See `ecs_class_list` below.
@@ -48,12 +55,13 @@ class DedicatedPropreHostArgs:
         :param pulumi.Input[str] security_group_id: The ID of the security group.
         :param pulumi.Input[str] vpc_id: VPCID of the VPC.
         :param pulumi.Input[str] vswitch_id: The ID of the virtual switch.
+        :param pulumi.Input[bool] auto_pay: Whether to pay automatically when the host is created.
         :param pulumi.Input[str] auto_renew: Whether to enable automatic renewal. Valid values:
                - **true**: On
                - **false** (default): Off
         :param pulumi.Input[str] dedicated_host_group_id: You have a dedicated cluster ID.
         :param pulumi.Input[str] ecs_deployment_set_id: The ID of the cloud server deployment set.
-        :param pulumi.Input[str] ecs_host_name: Windows system: length of 2 to 15 characters, allowing the use of upper and lower case letters, numbers. You cannot use only numbers.Other operating systems (such as Linux): the length of 2 to 64 characters, allowing the use of dot (.) to separate characters into multiple segments, each segment allows the use of upper and lower case letters, numbers, but can not use continuous dot (.). Cannot start or end with a dot (.).
+        :param pulumi.Input[str] ecs_host_name: Windows system: length of 2 to 15 characters, allowing the use of upper and lower case letters, numbers. You cannot use only numbers. Other operating systems (such as Linux): the length of 2 to 64 characters, allowing the use of dot (.) to separate characters into multiple segments, each segment allows the use of upper and lower case letters, numbers, but can not use continuous dot (.). Cannot start or end with a dot (.).
         :param pulumi.Input[str] ecs_instance_name: The instance name. It must be 2 to 128 characters in length and must start with an uppercase or lowercase letter or a Chinese character. It cannot start with http:// or https. Can contain Chinese, English, numbers, half-width colons (:), underscores (_), half-width periods (.), or dashes (-). The default value is the InstanceId of the instance.
         :param pulumi.Input[str] ecs_unique_suffix: Whether to automatically add an ordered suffix for HostName and InstanceName when creating multiple instances. The ordered suffix starts from 001 and cannot exceed 999. Value Description:
                - **true**: added.
@@ -61,6 +69,8 @@ class DedicatedPropreHostArgs:
                When the HostName or InstanceName is set according to the specified sorting format, and the naming suffix name_suffix is not set, that is, when the naming format is name_prefix[begin_number,bits], the UniqueSuffix does not take effect, and the names are only sorted according to the specified order.
         :param pulumi.Input[str] image_id: The ID of the custom image.
                > **NOTE:**  If you need to use the default image, you do not need to fill it in.
+        :param pulumi.Input[str] internet_charge_type: Network billing type. Value range: PayByBandwidth: Billing based on fixed bandwidth. PayByTraffic: charges by using the flow meter.
+        :param pulumi.Input[int] internet_max_bandwidth_out: The maximum outbound bandwidth of the public network, in Mbit/s. Value range: 0~100.  Default value: 0. When set to greater than 0, a public IP is automatically created.
         :param pulumi.Input[str] key_pair_name: The key pair name.
         :param pulumi.Input[str] os_password: Host login password, which can be set later. The password must meet the following requirements:
                - Length is 8~30 characters.
@@ -73,6 +83,10 @@ class DedicatedPropreHostArgs:
                > **NOTE:**  If the default password of the image is used, the **OSPassword** parameter is not required.
         :param pulumi.Input[str] period: Duration of purchase.
         :param pulumi.Input[str] period_type: The subscription type. Currently, only **Monthly** (subscription) is supported.
+        :param pulumi.Input[str] resource_group_id: The ID of the resource group.
+        :param pulumi.Input[Mapping[str, Any]] tags: Host tag information.
+        :param pulumi.Input[str] user_data: User-defined script data. The maximum size of the original data is 16kB.
+        :param pulumi.Input[bool] user_data_encoded: Whether custom data is encoded in Base64 format.
         """
         pulumi.set(__self__, "ecs_class_lists", ecs_class_lists)
         pulumi.set(__self__, "ecs_zone_id", ecs_zone_id)
@@ -81,6 +95,8 @@ class DedicatedPropreHostArgs:
         pulumi.set(__self__, "security_group_id", security_group_id)
         pulumi.set(__self__, "vpc_id", vpc_id)
         pulumi.set(__self__, "vswitch_id", vswitch_id)
+        if auto_pay is not None:
+            pulumi.set(__self__, "auto_pay", auto_pay)
         if auto_renew is not None:
             pulumi.set(__self__, "auto_renew", auto_renew)
         if dedicated_host_group_id is not None:
@@ -95,6 +111,10 @@ class DedicatedPropreHostArgs:
             pulumi.set(__self__, "ecs_unique_suffix", ecs_unique_suffix)
         if image_id is not None:
             pulumi.set(__self__, "image_id", image_id)
+        if internet_charge_type is not None:
+            pulumi.set(__self__, "internet_charge_type", internet_charge_type)
+        if internet_max_bandwidth_out is not None:
+            pulumi.set(__self__, "internet_max_bandwidth_out", internet_max_bandwidth_out)
         if key_pair_name is not None:
             pulumi.set(__self__, "key_pair_name", key_pair_name)
         if os_password is not None:
@@ -105,6 +125,14 @@ class DedicatedPropreHostArgs:
             pulumi.set(__self__, "period", period)
         if period_type is not None:
             pulumi.set(__self__, "period_type", period_type)
+        if resource_group_id is not None:
+            pulumi.set(__self__, "resource_group_id", resource_group_id)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+        if user_data is not None:
+            pulumi.set(__self__, "user_data", user_data)
+        if user_data_encoded is not None:
+            pulumi.set(__self__, "user_data_encoded", user_data_encoded)
 
     @property
     @pulumi.getter(name="ecsClassLists")
@@ -195,6 +223,18 @@ class DedicatedPropreHostArgs:
         pulumi.set(self, "vswitch_id", value)
 
     @property
+    @pulumi.getter(name="autoPay")
+    def auto_pay(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to pay automatically when the host is created.
+        """
+        return pulumi.get(self, "auto_pay")
+
+    @auto_pay.setter
+    def auto_pay(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "auto_pay", value)
+
+    @property
     @pulumi.getter(name="autoRenew")
     def auto_renew(self) -> Optional[pulumi.Input[str]]:
         """
@@ -236,7 +276,7 @@ class DedicatedPropreHostArgs:
     @pulumi.getter(name="ecsHostName")
     def ecs_host_name(self) -> Optional[pulumi.Input[str]]:
         """
-        Windows system: length of 2 to 15 characters, allowing the use of upper and lower case letters, numbers. You cannot use only numbers.Other operating systems (such as Linux): the length of 2 to 64 characters, allowing the use of dot (.) to separate characters into multiple segments, each segment allows the use of upper and lower case letters, numbers, but can not use continuous dot (.). Cannot start or end with a dot (.).
+        Windows system: length of 2 to 15 characters, allowing the use of upper and lower case letters, numbers. You cannot use only numbers. Other operating systems (such as Linux): the length of 2 to 64 characters, allowing the use of dot (.) to separate characters into multiple segments, each segment allows the use of upper and lower case letters, numbers, but can not use continuous dot (.). Cannot start or end with a dot (.).
         """
         return pulumi.get(self, "ecs_host_name")
 
@@ -283,6 +323,30 @@ class DedicatedPropreHostArgs:
     @image_id.setter
     def image_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "image_id", value)
+
+    @property
+    @pulumi.getter(name="internetChargeType")
+    def internet_charge_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Network billing type. Value range: PayByBandwidth: Billing based on fixed bandwidth. PayByTraffic: charges by using the flow meter.
+        """
+        return pulumi.get(self, "internet_charge_type")
+
+    @internet_charge_type.setter
+    def internet_charge_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "internet_charge_type", value)
+
+    @property
+    @pulumi.getter(name="internetMaxBandwidthOut")
+    def internet_max_bandwidth_out(self) -> Optional[pulumi.Input[int]]:
+        """
+        The maximum outbound bandwidth of the public network, in Mbit/s. Value range: 0~100.  Default value: 0. When set to greater than 0, a public IP is automatically created.
+        """
+        return pulumi.get(self, "internet_max_bandwidth_out")
+
+    @internet_max_bandwidth_out.setter
+    def internet_max_bandwidth_out(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "internet_max_bandwidth_out", value)
 
     @property
     @pulumi.getter(name="keyPairName")
@@ -351,10 +415,59 @@ class DedicatedPropreHostArgs:
     def period_type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "period_type", value)
 
+    @property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the resource group.
+        """
+        return pulumi.get(self, "resource_group_id")
+
+    @resource_group_id.setter
+    def resource_group_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "resource_group_id", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        Host tag information.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "tags", value)
+
+    @property
+    @pulumi.getter(name="userData")
+    def user_data(self) -> Optional[pulumi.Input[str]]:
+        """
+        User-defined script data. The maximum size of the original data is 16kB.
+        """
+        return pulumi.get(self, "user_data")
+
+    @user_data.setter
+    def user_data(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "user_data", value)
+
+    @property
+    @pulumi.getter(name="userDataEncoded")
+    def user_data_encoded(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether custom data is encoded in Base64 format.
+        """
+        return pulumi.get(self, "user_data_encoded")
+
+    @user_data_encoded.setter
+    def user_data_encoded(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "user_data_encoded", value)
+
 
 @pulumi.input_type
 class _DedicatedPropreHostState:
     def __init__(__self__, *,
+                 auto_pay: Optional[pulumi.Input[bool]] = None,
                  auto_renew: Optional[pulumi.Input[str]] = None,
                  dedicated_host_group_id: Optional[pulumi.Input[str]] = None,
                  ecs_class_lists: Optional[pulumi.Input[Sequence[pulumi.Input['DedicatedPropreHostEcsClassListArgs']]]] = None,
@@ -366,24 +479,31 @@ class _DedicatedPropreHostState:
                  ecs_zone_id: Optional[pulumi.Input[str]] = None,
                  engine: Optional[pulumi.Input[str]] = None,
                  image_id: Optional[pulumi.Input[str]] = None,
+                 internet_charge_type: Optional[pulumi.Input[str]] = None,
+                 internet_max_bandwidth_out: Optional[pulumi.Input[int]] = None,
                  key_pair_name: Optional[pulumi.Input[str]] = None,
                  os_password: Optional[pulumi.Input[str]] = None,
                  password_inherit: Optional[pulumi.Input[str]] = None,
                  payment_type: Optional[pulumi.Input[str]] = None,
                  period: Optional[pulumi.Input[str]] = None,
                  period_type: Optional[pulumi.Input[str]] = None,
+                 resource_group_id: Optional[pulumi.Input[str]] = None,
                  security_group_id: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 user_data: Optional[pulumi.Input[str]] = None,
+                 user_data_encoded: Optional[pulumi.Input[bool]] = None,
                  vpc_id: Optional[pulumi.Input[str]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering DedicatedPropreHost resources.
+        :param pulumi.Input[bool] auto_pay: Whether to pay automatically when the host is created.
         :param pulumi.Input[str] auto_renew: Whether to enable automatic renewal. Valid values:
                - **true**: On
                - **false** (default): Off
         :param pulumi.Input[str] dedicated_host_group_id: You have a dedicated cluster ID.
         :param pulumi.Input[Sequence[pulumi.Input['DedicatedPropreHostEcsClassListArgs']]] ecs_class_lists: ECS specifications. See `ecs_class_list` below.
         :param pulumi.Input[str] ecs_deployment_set_id: The ID of the cloud server deployment set.
-        :param pulumi.Input[str] ecs_host_name: Windows system: length of 2 to 15 characters, allowing the use of upper and lower case letters, numbers. You cannot use only numbers.Other operating systems (such as Linux): the length of 2 to 64 characters, allowing the use of dot (.) to separate characters into multiple segments, each segment allows the use of upper and lower case letters, numbers, but can not use continuous dot (.). Cannot start or end with a dot (.).
+        :param pulumi.Input[str] ecs_host_name: Windows system: length of 2 to 15 characters, allowing the use of upper and lower case letters, numbers. You cannot use only numbers. Other operating systems (such as Linux): the length of 2 to 64 characters, allowing the use of dot (.) to separate characters into multiple segments, each segment allows the use of upper and lower case letters, numbers, but can not use continuous dot (.). Cannot start or end with a dot (.).
         :param pulumi.Input[str] ecs_instance_id: ECS instance ID.
         :param pulumi.Input[str] ecs_instance_name: The instance name. It must be 2 to 128 characters in length and must start with an uppercase or lowercase letter or a Chinese character. It cannot start with http:// or https. Can contain Chinese, English, numbers, half-width colons (:), underscores (_), half-width periods (.), or dashes (-). The default value is the InstanceId of the instance.
         :param pulumi.Input[str] ecs_unique_suffix: Whether to automatically add an ordered suffix for HostName and InstanceName when creating multiple instances. The ordered suffix starts from 001 and cannot exceed 999. Value Description:
@@ -398,6 +518,8 @@ class _DedicatedPropreHostState:
                Must be consistent with the parent resource cluster engine attributes.
         :param pulumi.Input[str] image_id: The ID of the custom image.
                > **NOTE:**  If you need to use the default image, you do not need to fill it in.
+        :param pulumi.Input[str] internet_charge_type: Network billing type. Value range: PayByBandwidth: Billing based on fixed bandwidth. PayByTraffic: charges by using the flow meter.
+        :param pulumi.Input[int] internet_max_bandwidth_out: The maximum outbound bandwidth of the public network, in Mbit/s. Value range: 0~100.  Default value: 0. When set to greater than 0, a public IP is automatically created.
         :param pulumi.Input[str] key_pair_name: The key pair name.
         :param pulumi.Input[str] os_password: Host login password, which can be set later. The password must meet the following requirements:
                - Length is 8~30 characters.
@@ -411,10 +533,16 @@ class _DedicatedPropreHostState:
         :param pulumi.Input[str] payment_type: The Payment type. Currently, only **Subscription** is supported.
         :param pulumi.Input[str] period: Duration of purchase.
         :param pulumi.Input[str] period_type: The subscription type. Currently, only **Monthly** (subscription) is supported.
+        :param pulumi.Input[str] resource_group_id: The ID of the resource group.
         :param pulumi.Input[str] security_group_id: The ID of the security group.
+        :param pulumi.Input[Mapping[str, Any]] tags: Host tag information.
+        :param pulumi.Input[str] user_data: User-defined script data. The maximum size of the original data is 16kB.
+        :param pulumi.Input[bool] user_data_encoded: Whether custom data is encoded in Base64 format.
         :param pulumi.Input[str] vpc_id: VPCID of the VPC.
         :param pulumi.Input[str] vswitch_id: The ID of the virtual switch.
         """
+        if auto_pay is not None:
+            pulumi.set(__self__, "auto_pay", auto_pay)
         if auto_renew is not None:
             pulumi.set(__self__, "auto_renew", auto_renew)
         if dedicated_host_group_id is not None:
@@ -437,6 +565,10 @@ class _DedicatedPropreHostState:
             pulumi.set(__self__, "engine", engine)
         if image_id is not None:
             pulumi.set(__self__, "image_id", image_id)
+        if internet_charge_type is not None:
+            pulumi.set(__self__, "internet_charge_type", internet_charge_type)
+        if internet_max_bandwidth_out is not None:
+            pulumi.set(__self__, "internet_max_bandwidth_out", internet_max_bandwidth_out)
         if key_pair_name is not None:
             pulumi.set(__self__, "key_pair_name", key_pair_name)
         if os_password is not None:
@@ -449,12 +581,32 @@ class _DedicatedPropreHostState:
             pulumi.set(__self__, "period", period)
         if period_type is not None:
             pulumi.set(__self__, "period_type", period_type)
+        if resource_group_id is not None:
+            pulumi.set(__self__, "resource_group_id", resource_group_id)
         if security_group_id is not None:
             pulumi.set(__self__, "security_group_id", security_group_id)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+        if user_data is not None:
+            pulumi.set(__self__, "user_data", user_data)
+        if user_data_encoded is not None:
+            pulumi.set(__self__, "user_data_encoded", user_data_encoded)
         if vpc_id is not None:
             pulumi.set(__self__, "vpc_id", vpc_id)
         if vswitch_id is not None:
             pulumi.set(__self__, "vswitch_id", vswitch_id)
+
+    @property
+    @pulumi.getter(name="autoPay")
+    def auto_pay(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to pay automatically when the host is created.
+        """
+        return pulumi.get(self, "auto_pay")
+
+    @auto_pay.setter
+    def auto_pay(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "auto_pay", value)
 
     @property
     @pulumi.getter(name="autoRenew")
@@ -510,7 +662,7 @@ class _DedicatedPropreHostState:
     @pulumi.getter(name="ecsHostName")
     def ecs_host_name(self) -> Optional[pulumi.Input[str]]:
         """
-        Windows system: length of 2 to 15 characters, allowing the use of upper and lower case letters, numbers. You cannot use only numbers.Other operating systems (such as Linux): the length of 2 to 64 characters, allowing the use of dot (.) to separate characters into multiple segments, each segment allows the use of upper and lower case letters, numbers, but can not use continuous dot (.). Cannot start or end with a dot (.).
+        Windows system: length of 2 to 15 characters, allowing the use of upper and lower case letters, numbers. You cannot use only numbers. Other operating systems (such as Linux): the length of 2 to 64 characters, allowing the use of dot (.) to separate characters into multiple segments, each segment allows the use of upper and lower case letters, numbers, but can not use continuous dot (.). Cannot start or end with a dot (.).
         """
         return pulumi.get(self, "ecs_host_name")
 
@@ -599,6 +751,30 @@ class _DedicatedPropreHostState:
         pulumi.set(self, "image_id", value)
 
     @property
+    @pulumi.getter(name="internetChargeType")
+    def internet_charge_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Network billing type. Value range: PayByBandwidth: Billing based on fixed bandwidth. PayByTraffic: charges by using the flow meter.
+        """
+        return pulumi.get(self, "internet_charge_type")
+
+    @internet_charge_type.setter
+    def internet_charge_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "internet_charge_type", value)
+
+    @property
+    @pulumi.getter(name="internetMaxBandwidthOut")
+    def internet_max_bandwidth_out(self) -> Optional[pulumi.Input[int]]:
+        """
+        The maximum outbound bandwidth of the public network, in Mbit/s. Value range: 0~100.  Default value: 0. When set to greater than 0, a public IP is automatically created.
+        """
+        return pulumi.get(self, "internet_max_bandwidth_out")
+
+    @internet_max_bandwidth_out.setter
+    def internet_max_bandwidth_out(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "internet_max_bandwidth_out", value)
+
+    @property
     @pulumi.getter(name="keyPairName")
     def key_pair_name(self) -> Optional[pulumi.Input[str]]:
         """
@@ -678,6 +854,18 @@ class _DedicatedPropreHostState:
         pulumi.set(self, "period_type", value)
 
     @property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the resource group.
+        """
+        return pulumi.get(self, "resource_group_id")
+
+    @resource_group_id.setter
+    def resource_group_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "resource_group_id", value)
+
+    @property
     @pulumi.getter(name="securityGroupId")
     def security_group_id(self) -> Optional[pulumi.Input[str]]:
         """
@@ -688,6 +876,42 @@ class _DedicatedPropreHostState:
     @security_group_id.setter
     def security_group_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "security_group_id", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        Host tag information.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "tags", value)
+
+    @property
+    @pulumi.getter(name="userData")
+    def user_data(self) -> Optional[pulumi.Input[str]]:
+        """
+        User-defined script data. The maximum size of the original data is 16kB.
+        """
+        return pulumi.get(self, "user_data")
+
+    @user_data.setter
+    def user_data(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "user_data", value)
+
+    @property
+    @pulumi.getter(name="userDataEncoded")
+    def user_data_encoded(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether custom data is encoded in Base64 format.
+        """
+        return pulumi.get(self, "user_data_encoded")
+
+    @user_data_encoded.setter
+    def user_data_encoded(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "user_data_encoded", value)
 
     @property
     @pulumi.getter(name="vpcId")
@@ -719,6 +943,7 @@ class DedicatedPropreHost(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 auto_pay: Optional[pulumi.Input[bool]] = None,
                  auto_renew: Optional[pulumi.Input[str]] = None,
                  dedicated_host_group_id: Optional[pulumi.Input[str]] = None,
                  ecs_class_lists: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DedicatedPropreHostEcsClassListArgs']]]]] = None,
@@ -729,13 +954,19 @@ class DedicatedPropreHost(pulumi.CustomResource):
                  ecs_zone_id: Optional[pulumi.Input[str]] = None,
                  engine: Optional[pulumi.Input[str]] = None,
                  image_id: Optional[pulumi.Input[str]] = None,
+                 internet_charge_type: Optional[pulumi.Input[str]] = None,
+                 internet_max_bandwidth_out: Optional[pulumi.Input[int]] = None,
                  key_pair_name: Optional[pulumi.Input[str]] = None,
                  os_password: Optional[pulumi.Input[str]] = None,
                  password_inherit: Optional[pulumi.Input[str]] = None,
                  payment_type: Optional[pulumi.Input[str]] = None,
                  period: Optional[pulumi.Input[str]] = None,
                  period_type: Optional[pulumi.Input[str]] = None,
+                 resource_group_id: Optional[pulumi.Input[str]] = None,
                  security_group_id: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 user_data: Optional[pulumi.Input[str]] = None,
+                 user_data_encoded: Optional[pulumi.Input[bool]] = None,
                  vpc_id: Optional[pulumi.Input[str]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -750,13 +981,14 @@ class DedicatedPropreHost(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[bool] auto_pay: Whether to pay automatically when the host is created.
         :param pulumi.Input[str] auto_renew: Whether to enable automatic renewal. Valid values:
                - **true**: On
                - **false** (default): Off
         :param pulumi.Input[str] dedicated_host_group_id: You have a dedicated cluster ID.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DedicatedPropreHostEcsClassListArgs']]]] ecs_class_lists: ECS specifications. See `ecs_class_list` below.
         :param pulumi.Input[str] ecs_deployment_set_id: The ID of the cloud server deployment set.
-        :param pulumi.Input[str] ecs_host_name: Windows system: length of 2 to 15 characters, allowing the use of upper and lower case letters, numbers. You cannot use only numbers.Other operating systems (such as Linux): the length of 2 to 64 characters, allowing the use of dot (.) to separate characters into multiple segments, each segment allows the use of upper and lower case letters, numbers, but can not use continuous dot (.). Cannot start or end with a dot (.).
+        :param pulumi.Input[str] ecs_host_name: Windows system: length of 2 to 15 characters, allowing the use of upper and lower case letters, numbers. You cannot use only numbers. Other operating systems (such as Linux): the length of 2 to 64 characters, allowing the use of dot (.) to separate characters into multiple segments, each segment allows the use of upper and lower case letters, numbers, but can not use continuous dot (.). Cannot start or end with a dot (.).
         :param pulumi.Input[str] ecs_instance_name: The instance name. It must be 2 to 128 characters in length and must start with an uppercase or lowercase letter or a Chinese character. It cannot start with http:// or https. Can contain Chinese, English, numbers, half-width colons (:), underscores (_), half-width periods (.), or dashes (-). The default value is the InstanceId of the instance.
         :param pulumi.Input[str] ecs_unique_suffix: Whether to automatically add an ordered suffix for HostName and InstanceName when creating multiple instances. The ordered suffix starts from 001 and cannot exceed 999. Value Description:
                - **true**: added.
@@ -770,6 +1002,8 @@ class DedicatedPropreHost(pulumi.CustomResource):
                Must be consistent with the parent resource cluster engine attributes.
         :param pulumi.Input[str] image_id: The ID of the custom image.
                > **NOTE:**  If you need to use the default image, you do not need to fill it in.
+        :param pulumi.Input[str] internet_charge_type: Network billing type. Value range: PayByBandwidth: Billing based on fixed bandwidth. PayByTraffic: charges by using the flow meter.
+        :param pulumi.Input[int] internet_max_bandwidth_out: The maximum outbound bandwidth of the public network, in Mbit/s. Value range: 0~100.  Default value: 0. When set to greater than 0, a public IP is automatically created.
         :param pulumi.Input[str] key_pair_name: The key pair name.
         :param pulumi.Input[str] os_password: Host login password, which can be set later. The password must meet the following requirements:
                - Length is 8~30 characters.
@@ -783,7 +1017,11 @@ class DedicatedPropreHost(pulumi.CustomResource):
         :param pulumi.Input[str] payment_type: The Payment type. Currently, only **Subscription** is supported.
         :param pulumi.Input[str] period: Duration of purchase.
         :param pulumi.Input[str] period_type: The subscription type. Currently, only **Monthly** (subscription) is supported.
+        :param pulumi.Input[str] resource_group_id: The ID of the resource group.
         :param pulumi.Input[str] security_group_id: The ID of the security group.
+        :param pulumi.Input[Mapping[str, Any]] tags: Host tag information.
+        :param pulumi.Input[str] user_data: User-defined script data. The maximum size of the original data is 16kB.
+        :param pulumi.Input[bool] user_data_encoded: Whether custom data is encoded in Base64 format.
         :param pulumi.Input[str] vpc_id: VPCID of the VPC.
         :param pulumi.Input[str] vswitch_id: The ID of the virtual switch.
         """
@@ -817,6 +1055,7 @@ class DedicatedPropreHost(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 auto_pay: Optional[pulumi.Input[bool]] = None,
                  auto_renew: Optional[pulumi.Input[str]] = None,
                  dedicated_host_group_id: Optional[pulumi.Input[str]] = None,
                  ecs_class_lists: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DedicatedPropreHostEcsClassListArgs']]]]] = None,
@@ -827,13 +1066,19 @@ class DedicatedPropreHost(pulumi.CustomResource):
                  ecs_zone_id: Optional[pulumi.Input[str]] = None,
                  engine: Optional[pulumi.Input[str]] = None,
                  image_id: Optional[pulumi.Input[str]] = None,
+                 internet_charge_type: Optional[pulumi.Input[str]] = None,
+                 internet_max_bandwidth_out: Optional[pulumi.Input[int]] = None,
                  key_pair_name: Optional[pulumi.Input[str]] = None,
                  os_password: Optional[pulumi.Input[str]] = None,
                  password_inherit: Optional[pulumi.Input[str]] = None,
                  payment_type: Optional[pulumi.Input[str]] = None,
                  period: Optional[pulumi.Input[str]] = None,
                  period_type: Optional[pulumi.Input[str]] = None,
+                 resource_group_id: Optional[pulumi.Input[str]] = None,
                  security_group_id: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 user_data: Optional[pulumi.Input[str]] = None,
+                 user_data_encoded: Optional[pulumi.Input[bool]] = None,
                  vpc_id: Optional[pulumi.Input[str]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -845,6 +1090,7 @@ class DedicatedPropreHost(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = DedicatedPropreHostArgs.__new__(DedicatedPropreHostArgs)
 
+            __props__.__dict__["auto_pay"] = auto_pay
             __props__.__dict__["auto_renew"] = auto_renew
             __props__.__dict__["dedicated_host_group_id"] = dedicated_host_group_id
             if ecs_class_lists is None and not opts.urn:
@@ -861,6 +1107,8 @@ class DedicatedPropreHost(pulumi.CustomResource):
                 raise TypeError("Missing required property 'engine'")
             __props__.__dict__["engine"] = engine
             __props__.__dict__["image_id"] = image_id
+            __props__.__dict__["internet_charge_type"] = internet_charge_type
+            __props__.__dict__["internet_max_bandwidth_out"] = internet_max_bandwidth_out
             __props__.__dict__["key_pair_name"] = key_pair_name
             __props__.__dict__["os_password"] = os_password
             __props__.__dict__["password_inherit"] = password_inherit
@@ -869,9 +1117,13 @@ class DedicatedPropreHost(pulumi.CustomResource):
             __props__.__dict__["payment_type"] = payment_type
             __props__.__dict__["period"] = period
             __props__.__dict__["period_type"] = period_type
+            __props__.__dict__["resource_group_id"] = resource_group_id
             if security_group_id is None and not opts.urn:
                 raise TypeError("Missing required property 'security_group_id'")
             __props__.__dict__["security_group_id"] = security_group_id
+            __props__.__dict__["tags"] = tags
+            __props__.__dict__["user_data"] = user_data
+            __props__.__dict__["user_data_encoded"] = user_data_encoded
             if vpc_id is None and not opts.urn:
                 raise TypeError("Missing required property 'vpc_id'")
             __props__.__dict__["vpc_id"] = vpc_id
@@ -889,6 +1141,7 @@ class DedicatedPropreHost(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            auto_pay: Optional[pulumi.Input[bool]] = None,
             auto_renew: Optional[pulumi.Input[str]] = None,
             dedicated_host_group_id: Optional[pulumi.Input[str]] = None,
             ecs_class_lists: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DedicatedPropreHostEcsClassListArgs']]]]] = None,
@@ -900,13 +1153,19 @@ class DedicatedPropreHost(pulumi.CustomResource):
             ecs_zone_id: Optional[pulumi.Input[str]] = None,
             engine: Optional[pulumi.Input[str]] = None,
             image_id: Optional[pulumi.Input[str]] = None,
+            internet_charge_type: Optional[pulumi.Input[str]] = None,
+            internet_max_bandwidth_out: Optional[pulumi.Input[int]] = None,
             key_pair_name: Optional[pulumi.Input[str]] = None,
             os_password: Optional[pulumi.Input[str]] = None,
             password_inherit: Optional[pulumi.Input[str]] = None,
             payment_type: Optional[pulumi.Input[str]] = None,
             period: Optional[pulumi.Input[str]] = None,
             period_type: Optional[pulumi.Input[str]] = None,
+            resource_group_id: Optional[pulumi.Input[str]] = None,
             security_group_id: Optional[pulumi.Input[str]] = None,
+            tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            user_data: Optional[pulumi.Input[str]] = None,
+            user_data_encoded: Optional[pulumi.Input[bool]] = None,
             vpc_id: Optional[pulumi.Input[str]] = None,
             vswitch_id: Optional[pulumi.Input[str]] = None) -> 'DedicatedPropreHost':
         """
@@ -916,13 +1175,14 @@ class DedicatedPropreHost(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[bool] auto_pay: Whether to pay automatically when the host is created.
         :param pulumi.Input[str] auto_renew: Whether to enable automatic renewal. Valid values:
                - **true**: On
                - **false** (default): Off
         :param pulumi.Input[str] dedicated_host_group_id: You have a dedicated cluster ID.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DedicatedPropreHostEcsClassListArgs']]]] ecs_class_lists: ECS specifications. See `ecs_class_list` below.
         :param pulumi.Input[str] ecs_deployment_set_id: The ID of the cloud server deployment set.
-        :param pulumi.Input[str] ecs_host_name: Windows system: length of 2 to 15 characters, allowing the use of upper and lower case letters, numbers. You cannot use only numbers.Other operating systems (such as Linux): the length of 2 to 64 characters, allowing the use of dot (.) to separate characters into multiple segments, each segment allows the use of upper and lower case letters, numbers, but can not use continuous dot (.). Cannot start or end with a dot (.).
+        :param pulumi.Input[str] ecs_host_name: Windows system: length of 2 to 15 characters, allowing the use of upper and lower case letters, numbers. You cannot use only numbers. Other operating systems (such as Linux): the length of 2 to 64 characters, allowing the use of dot (.) to separate characters into multiple segments, each segment allows the use of upper and lower case letters, numbers, but can not use continuous dot (.). Cannot start or end with a dot (.).
         :param pulumi.Input[str] ecs_instance_id: ECS instance ID.
         :param pulumi.Input[str] ecs_instance_name: The instance name. It must be 2 to 128 characters in length and must start with an uppercase or lowercase letter or a Chinese character. It cannot start with http:// or https. Can contain Chinese, English, numbers, half-width colons (:), underscores (_), half-width periods (.), or dashes (-). The default value is the InstanceId of the instance.
         :param pulumi.Input[str] ecs_unique_suffix: Whether to automatically add an ordered suffix for HostName and InstanceName when creating multiple instances. The ordered suffix starts from 001 and cannot exceed 999. Value Description:
@@ -937,6 +1197,8 @@ class DedicatedPropreHost(pulumi.CustomResource):
                Must be consistent with the parent resource cluster engine attributes.
         :param pulumi.Input[str] image_id: The ID of the custom image.
                > **NOTE:**  If you need to use the default image, you do not need to fill it in.
+        :param pulumi.Input[str] internet_charge_type: Network billing type. Value range: PayByBandwidth: Billing based on fixed bandwidth. PayByTraffic: charges by using the flow meter.
+        :param pulumi.Input[int] internet_max_bandwidth_out: The maximum outbound bandwidth of the public network, in Mbit/s. Value range: 0~100.  Default value: 0. When set to greater than 0, a public IP is automatically created.
         :param pulumi.Input[str] key_pair_name: The key pair name.
         :param pulumi.Input[str] os_password: Host login password, which can be set later. The password must meet the following requirements:
                - Length is 8~30 characters.
@@ -950,7 +1212,11 @@ class DedicatedPropreHost(pulumi.CustomResource):
         :param pulumi.Input[str] payment_type: The Payment type. Currently, only **Subscription** is supported.
         :param pulumi.Input[str] period: Duration of purchase.
         :param pulumi.Input[str] period_type: The subscription type. Currently, only **Monthly** (subscription) is supported.
+        :param pulumi.Input[str] resource_group_id: The ID of the resource group.
         :param pulumi.Input[str] security_group_id: The ID of the security group.
+        :param pulumi.Input[Mapping[str, Any]] tags: Host tag information.
+        :param pulumi.Input[str] user_data: User-defined script data. The maximum size of the original data is 16kB.
+        :param pulumi.Input[bool] user_data_encoded: Whether custom data is encoded in Base64 format.
         :param pulumi.Input[str] vpc_id: VPCID of the VPC.
         :param pulumi.Input[str] vswitch_id: The ID of the virtual switch.
         """
@@ -958,6 +1224,7 @@ class DedicatedPropreHost(pulumi.CustomResource):
 
         __props__ = _DedicatedPropreHostState.__new__(_DedicatedPropreHostState)
 
+        __props__.__dict__["auto_pay"] = auto_pay
         __props__.__dict__["auto_renew"] = auto_renew
         __props__.__dict__["dedicated_host_group_id"] = dedicated_host_group_id
         __props__.__dict__["ecs_class_lists"] = ecs_class_lists
@@ -969,16 +1236,30 @@ class DedicatedPropreHost(pulumi.CustomResource):
         __props__.__dict__["ecs_zone_id"] = ecs_zone_id
         __props__.__dict__["engine"] = engine
         __props__.__dict__["image_id"] = image_id
+        __props__.__dict__["internet_charge_type"] = internet_charge_type
+        __props__.__dict__["internet_max_bandwidth_out"] = internet_max_bandwidth_out
         __props__.__dict__["key_pair_name"] = key_pair_name
         __props__.__dict__["os_password"] = os_password
         __props__.__dict__["password_inherit"] = password_inherit
         __props__.__dict__["payment_type"] = payment_type
         __props__.__dict__["period"] = period
         __props__.__dict__["period_type"] = period_type
+        __props__.__dict__["resource_group_id"] = resource_group_id
         __props__.__dict__["security_group_id"] = security_group_id
+        __props__.__dict__["tags"] = tags
+        __props__.__dict__["user_data"] = user_data
+        __props__.__dict__["user_data_encoded"] = user_data_encoded
         __props__.__dict__["vpc_id"] = vpc_id
         __props__.__dict__["vswitch_id"] = vswitch_id
         return DedicatedPropreHost(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="autoPay")
+    def auto_pay(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Whether to pay automatically when the host is created.
+        """
+        return pulumi.get(self, "auto_pay")
 
     @property
     @pulumi.getter(name="autoRenew")
@@ -1018,7 +1299,7 @@ class DedicatedPropreHost(pulumi.CustomResource):
     @pulumi.getter(name="ecsHostName")
     def ecs_host_name(self) -> pulumi.Output[Optional[str]]:
         """
-        Windows system: length of 2 to 15 characters, allowing the use of upper and lower case letters, numbers. You cannot use only numbers.Other operating systems (such as Linux): the length of 2 to 64 characters, allowing the use of dot (.) to separate characters into multiple segments, each segment allows the use of upper and lower case letters, numbers, but can not use continuous dot (.). Cannot start or end with a dot (.).
+        Windows system: length of 2 to 15 characters, allowing the use of upper and lower case letters, numbers. You cannot use only numbers. Other operating systems (such as Linux): the length of 2 to 64 characters, allowing the use of dot (.) to separate characters into multiple segments, each segment allows the use of upper and lower case letters, numbers, but can not use continuous dot (.). Cannot start or end with a dot (.).
         """
         return pulumi.get(self, "ecs_host_name")
 
@@ -1079,6 +1360,22 @@ class DedicatedPropreHost(pulumi.CustomResource):
         return pulumi.get(self, "image_id")
 
     @property
+    @pulumi.getter(name="internetChargeType")
+    def internet_charge_type(self) -> pulumi.Output[Optional[str]]:
+        """
+        Network billing type. Value range: PayByBandwidth: Billing based on fixed bandwidth. PayByTraffic: charges by using the flow meter.
+        """
+        return pulumi.get(self, "internet_charge_type")
+
+    @property
+    @pulumi.getter(name="internetMaxBandwidthOut")
+    def internet_max_bandwidth_out(self) -> pulumi.Output[Optional[int]]:
+        """
+        The maximum outbound bandwidth of the public network, in Mbit/s. Value range: 0~100.  Default value: 0. When set to greater than 0, a public IP is automatically created.
+        """
+        return pulumi.get(self, "internet_max_bandwidth_out")
+
+    @property
     @pulumi.getter(name="keyPairName")
     def key_pair_name(self) -> pulumi.Output[Optional[str]]:
         """
@@ -1134,12 +1431,44 @@ class DedicatedPropreHost(pulumi.CustomResource):
         return pulumi.get(self, "period_type")
 
     @property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> pulumi.Output[str]:
+        """
+        The ID of the resource group.
+        """
+        return pulumi.get(self, "resource_group_id")
+
+    @property
     @pulumi.getter(name="securityGroupId")
     def security_group_id(self) -> pulumi.Output[str]:
         """
         The ID of the security group.
         """
         return pulumi.get(self, "security_group_id")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+        """
+        Host tag information.
+        """
+        return pulumi.get(self, "tags")
+
+    @property
+    @pulumi.getter(name="userData")
+    def user_data(self) -> pulumi.Output[Optional[str]]:
+        """
+        User-defined script data. The maximum size of the original data is 16kB.
+        """
+        return pulumi.get(self, "user_data")
+
+    @property
+    @pulumi.getter(name="userDataEncoded")
+    def user_data_encoded(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Whether custom data is encoded in Base64 format.
+        """
+        return pulumi.get(self, "user_data_encoded")
 
     @property
     @pulumi.getter(name="vpcId")

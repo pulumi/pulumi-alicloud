@@ -12,6 +12,7 @@ from .. import _utilities
 __all__ = [
     'AssumeRole',
     'Endpoints',
+    'SignVersion',
 ]
 
 @pulumi.output_type
@@ -1093,5 +1094,26 @@ class Endpoints(dict):
     @pulumi.getter(name="wafOpenapi")
     def waf_openapi(self) -> Optional[str]:
         return pulumi.get(self, "waf_openapi")
+
+
+@pulumi.output_type
+class SignVersion(dict):
+    def __init__(__self__, *,
+                 oss: Optional[str] = None,
+                 sls: Optional[str] = None):
+        if oss is not None:
+            pulumi.set(__self__, "oss", oss)
+        if sls is not None:
+            pulumi.set(__self__, "sls", sls)
+
+    @property
+    @pulumi.getter
+    def oss(self) -> Optional[str]:
+        return pulumi.get(self, "oss")
+
+    @property
+    @pulumi.getter
+    def sls(self) -> Optional[str]:
+        return pulumi.get(self, "sls")
 
 

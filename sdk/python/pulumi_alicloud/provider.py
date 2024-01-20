@@ -37,6 +37,7 @@ class ProviderArgs:
                  security_token: Optional[pulumi.Input[str]] = None,
                  security_transport: Optional[pulumi.Input[str]] = None,
                  shared_credentials_file: Optional[pulumi.Input[str]] = None,
+                 sign_version: Optional[pulumi.Input['ProviderSignVersionArgs']] = None,
                  skip_region_validation: Optional[pulumi.Input[bool]] = None,
                  source_ip: Optional[pulumi.Input[str]] = None):
         """
@@ -125,6 +126,8 @@ class ProviderArgs:
             pulumi.set(__self__, "security_transport", security_transport)
         if shared_credentials_file is not None:
             pulumi.set(__self__, "shared_credentials_file", shared_credentials_file)
+        if sign_version is not None:
+            pulumi.set(__self__, "sign_version", sign_version)
         if skip_region_validation is not None:
             pulumi.set(__self__, "skip_region_validation", skip_region_validation)
         if source_ip is not None:
@@ -387,6 +390,15 @@ class ProviderArgs:
         pulumi.set(self, "shared_credentials_file", value)
 
     @property
+    @pulumi.getter(name="signVersion")
+    def sign_version(self) -> Optional[pulumi.Input['ProviderSignVersionArgs']]:
+        return pulumi.get(self, "sign_version")
+
+    @sign_version.setter
+    def sign_version(self, value: Optional[pulumi.Input['ProviderSignVersionArgs']]):
+        pulumi.set(self, "sign_version", value)
+
+    @property
     @pulumi.getter(name="skipRegionValidation")
     def skip_region_validation(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -439,6 +451,7 @@ class Provider(pulumi.ProviderResource):
                  security_token: Optional[pulumi.Input[str]] = None,
                  security_transport: Optional[pulumi.Input[str]] = None,
                  shared_credentials_file: Optional[pulumi.Input[str]] = None,
+                 sign_version: Optional[pulumi.Input[pulumi.InputType['ProviderSignVersionArgs']]] = None,
                  skip_region_validation: Optional[pulumi.Input[bool]] = None,
                  source_ip: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -521,6 +534,7 @@ class Provider(pulumi.ProviderResource):
                  security_token: Optional[pulumi.Input[str]] = None,
                  security_transport: Optional[pulumi.Input[str]] = None,
                  shared_credentials_file: Optional[pulumi.Input[str]] = None,
+                 sign_version: Optional[pulumi.Input[pulumi.InputType['ProviderSignVersionArgs']]] = None,
                  skip_region_validation: Optional[pulumi.Input[bool]] = None,
                  source_ip: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -560,6 +574,7 @@ class Provider(pulumi.ProviderResource):
             __props__.__dict__["security_token"] = security_token
             __props__.__dict__["security_transport"] = security_transport
             __props__.__dict__["shared_credentials_file"] = shared_credentials_file
+            __props__.__dict__["sign_version"] = pulumi.Output.from_input(sign_version).apply(pulumi.runtime.to_json) if sign_version is not None else None
             __props__.__dict__["skip_region_validation"] = pulumi.Output.from_input(skip_region_validation).apply(pulumi.runtime.to_json) if skip_region_validation is not None else None
             __props__.__dict__["source_ip"] = source_ip
         super(Provider, __self__).__init__(

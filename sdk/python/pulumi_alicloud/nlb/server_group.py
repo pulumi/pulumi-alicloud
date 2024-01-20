@@ -16,12 +16,14 @@ __all__ = ['ServerGroupArgs', 'ServerGroup']
 @pulumi.input_type
 class ServerGroupArgs:
     def __init__(__self__, *,
-                 health_check: pulumi.Input['ServerGroupHealthCheckArgs'],
                  server_group_name: pulumi.Input[str],
                  vpc_id: pulumi.Input[str],
                  address_ip_version: Optional[pulumi.Input[str]] = None,
+                 any_port_enabled: Optional[pulumi.Input[bool]] = None,
                  connection_drain: Optional[pulumi.Input[bool]] = None,
+                 connection_drain_enabled: Optional[pulumi.Input[bool]] = None,
                  connection_drain_timeout: Optional[pulumi.Input[int]] = None,
+                 health_check: Optional[pulumi.Input['ServerGroupHealthCheckArgs']] = None,
                  preserve_client_ip_enabled: Optional[pulumi.Input[bool]] = None,
                  protocol: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
@@ -30,28 +32,53 @@ class ServerGroupArgs:
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None):
         """
         The set of arguments for constructing a ServerGroup resource.
-        :param pulumi.Input['ServerGroupHealthCheckArgs'] health_check: HealthCheck. See `health_check` below.
-        :param pulumi.Input[str] server_group_name: The name of the server group. The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
-        :param pulumi.Input[str] vpc_id: The id of the vpc.
-        :param pulumi.Input[str] address_ip_version: The protocol version. Valid values: `Ipv4` (default), `DualStack`.
-        :param pulumi.Input[bool] connection_drain: Specifies whether to enable connection draining.
-        :param pulumi.Input[int] connection_drain_timeout: The timeout period of connection draining. Unit: seconds. Valid values: 10 to 900.
-        :param pulumi.Input[bool] preserve_client_ip_enabled: Indicates whether client address retention is enabled.
-        :param pulumi.Input[str] protocol: The backend protocol. Valid values: `TCP` (default), `UDP`, and `TCPSSL`.
-        :param pulumi.Input[str] resource_group_id: The ID of the resource group to which the security group belongs.
-        :param pulumi.Input[str] scheduler: The routing algorithm. Valid values:
-        :param pulumi.Input[str] server_group_type: The type of the server group. Valid values:
-        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[str] server_group_name: The name of the server group.
+        :param pulumi.Input[str] vpc_id: The ID of the VPC to which the server group belongs.
+               
+               The following arguments will be discarded. Please use new fields as soon as possible:
+        :param pulumi.Input[str] address_ip_version: Protocol version. Value:
+               - **ipv4**:IPv4 type.
+               - **DualStack**: Double Stack type.
+        :param pulumi.Input[bool] any_port_enabled: Full port forwarding.
+        :param pulumi.Input[bool] connection_drain: . Field 'connection_drain' has been deprecated from provider version 1.214.0. New field 'connection_drain_enabled' instead.
+        :param pulumi.Input[bool] connection_drain_enabled: Whether to open the connection gracefully interrupted. Value:
+               - **true**: on.
+               - **false**: closed.
+        :param pulumi.Input[int] connection_drain_timeout: Set the connection elegant interrupt timeout. Unit: seconds. Valid values: **10** ~ **900**.
+        :param pulumi.Input['ServerGroupHealthCheckArgs'] health_check: Health check configuration information. See `health_check` below.
+        :param pulumi.Input[bool] preserve_client_ip_enabled: Whether to enable the client address retention function. Value:
+               - **true**: on.
+               - **false**: closed.
+               > **NOTE:**  special instructions: When **AddressIPVersion** is of the **ipv4** type, the default value is **true**. **Addrestipversion** can only be **false** when the value of **ipv6** is **ipv6**, and can be **true** when supported by the underlying layer * *.
+        :param pulumi.Input[str] protocol: The backend Forwarding Protocol. Valid values: **TCP**, **UDP**, or **TCPSSL**.
+        :param pulumi.Input[str] resource_group_id: The ID of the resource group to which the server group belongs.
+        :param pulumi.Input[str] scheduler: Scheduling algorithm. Value:
+               - **Wrr**: Weighted polling. The higher the weight of the backend server, the higher the probability of being polled.
+               - **Rr**: polls external requests are distributed to backend servers in sequence according to the access order. sch: Source IP hash: The same source address is scheduled to the same backend server.
+               - **Tch**: Quadruple hash, based on the consistent hash of the Quad (source IP, Destination IP, source port, and destination port), the same stream is scheduled to the same backend server.
+               - **Qch**: a QUIC ID hash that allows you to hash requests with the same QUIC ID to the same backend server.
+        :param pulumi.Input[str] server_group_type: Server group type. Value:
+               - **Instance**: The server type. You can add **Ecs**, **Ens**, and **Eci** instances to the server group.
+               - **Ip**: Ip address type. You can add Ip addresses to a server group of this type.
+        :param pulumi.Input[Mapping[str, Any]] tags: Label.
         """
-        pulumi.set(__self__, "health_check", health_check)
         pulumi.set(__self__, "server_group_name", server_group_name)
         pulumi.set(__self__, "vpc_id", vpc_id)
         if address_ip_version is not None:
             pulumi.set(__self__, "address_ip_version", address_ip_version)
+        if any_port_enabled is not None:
+            pulumi.set(__self__, "any_port_enabled", any_port_enabled)
+        if connection_drain is not None:
+            warnings.warn("""Field 'connection_drain' has been deprecated since provider version 1.214.0. New field 'connection_drain_enabled' instead.""", DeprecationWarning)
+            pulumi.log.warn("""connection_drain is deprecated: Field 'connection_drain' has been deprecated since provider version 1.214.0. New field 'connection_drain_enabled' instead.""")
         if connection_drain is not None:
             pulumi.set(__self__, "connection_drain", connection_drain)
+        if connection_drain_enabled is not None:
+            pulumi.set(__self__, "connection_drain_enabled", connection_drain_enabled)
         if connection_drain_timeout is not None:
             pulumi.set(__self__, "connection_drain_timeout", connection_drain_timeout)
+        if health_check is not None:
+            pulumi.set(__self__, "health_check", health_check)
         if preserve_client_ip_enabled is not None:
             pulumi.set(__self__, "preserve_client_ip_enabled", preserve_client_ip_enabled)
         if protocol is not None:
@@ -66,22 +93,10 @@ class ServerGroupArgs:
             pulumi.set(__self__, "tags", tags)
 
     @property
-    @pulumi.getter(name="healthCheck")
-    def health_check(self) -> pulumi.Input['ServerGroupHealthCheckArgs']:
-        """
-        HealthCheck. See `health_check` below.
-        """
-        return pulumi.get(self, "health_check")
-
-    @health_check.setter
-    def health_check(self, value: pulumi.Input['ServerGroupHealthCheckArgs']):
-        pulumi.set(self, "health_check", value)
-
-    @property
     @pulumi.getter(name="serverGroupName")
     def server_group_name(self) -> pulumi.Input[str]:
         """
-        The name of the server group. The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
+        The name of the server group.
         """
         return pulumi.get(self, "server_group_name")
 
@@ -93,7 +108,9 @@ class ServerGroupArgs:
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> pulumi.Input[str]:
         """
-        The id of the vpc.
+        The ID of the VPC to which the server group belongs.
+
+        The following arguments will be discarded. Please use new fields as soon as possible:
         """
         return pulumi.get(self, "vpc_id")
 
@@ -105,7 +122,9 @@ class ServerGroupArgs:
     @pulumi.getter(name="addressIpVersion")
     def address_ip_version(self) -> Optional[pulumi.Input[str]]:
         """
-        The protocol version. Valid values: `Ipv4` (default), `DualStack`.
+        Protocol version. Value:
+        - **ipv4**:IPv4 type.
+        - **DualStack**: Double Stack type.
         """
         return pulumi.get(self, "address_ip_version")
 
@@ -114,11 +133,26 @@ class ServerGroupArgs:
         pulumi.set(self, "address_ip_version", value)
 
     @property
+    @pulumi.getter(name="anyPortEnabled")
+    def any_port_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Full port forwarding.
+        """
+        return pulumi.get(self, "any_port_enabled")
+
+    @any_port_enabled.setter
+    def any_port_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "any_port_enabled", value)
+
+    @property
     @pulumi.getter(name="connectionDrain")
     def connection_drain(self) -> Optional[pulumi.Input[bool]]:
         """
-        Specifies whether to enable connection draining.
+        . Field 'connection_drain' has been deprecated from provider version 1.214.0. New field 'connection_drain_enabled' instead.
         """
+        warnings.warn("""Field 'connection_drain' has been deprecated since provider version 1.214.0. New field 'connection_drain_enabled' instead.""", DeprecationWarning)
+        pulumi.log.warn("""connection_drain is deprecated: Field 'connection_drain' has been deprecated since provider version 1.214.0. New field 'connection_drain_enabled' instead.""")
+
         return pulumi.get(self, "connection_drain")
 
     @connection_drain.setter
@@ -126,10 +160,24 @@ class ServerGroupArgs:
         pulumi.set(self, "connection_drain", value)
 
     @property
+    @pulumi.getter(name="connectionDrainEnabled")
+    def connection_drain_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to open the connection gracefully interrupted. Value:
+        - **true**: on.
+        - **false**: closed.
+        """
+        return pulumi.get(self, "connection_drain_enabled")
+
+    @connection_drain_enabled.setter
+    def connection_drain_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "connection_drain_enabled", value)
+
+    @property
     @pulumi.getter(name="connectionDrainTimeout")
     def connection_drain_timeout(self) -> Optional[pulumi.Input[int]]:
         """
-        The timeout period of connection draining. Unit: seconds. Valid values: 10 to 900.
+        Set the connection elegant interrupt timeout. Unit: seconds. Valid values: **10** ~ **900**.
         """
         return pulumi.get(self, "connection_drain_timeout")
 
@@ -138,10 +186,25 @@ class ServerGroupArgs:
         pulumi.set(self, "connection_drain_timeout", value)
 
     @property
+    @pulumi.getter(name="healthCheck")
+    def health_check(self) -> Optional[pulumi.Input['ServerGroupHealthCheckArgs']]:
+        """
+        Health check configuration information. See `health_check` below.
+        """
+        return pulumi.get(self, "health_check")
+
+    @health_check.setter
+    def health_check(self, value: Optional[pulumi.Input['ServerGroupHealthCheckArgs']]):
+        pulumi.set(self, "health_check", value)
+
+    @property
     @pulumi.getter(name="preserveClientIpEnabled")
     def preserve_client_ip_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        Indicates whether client address retention is enabled.
+        Whether to enable the client address retention function. Value:
+        - **true**: on.
+        - **false**: closed.
+        > **NOTE:**  special instructions: When **AddressIPVersion** is of the **ipv4** type, the default value is **true**. **Addrestipversion** can only be **false** when the value of **ipv6** is **ipv6**, and can be **true** when supported by the underlying layer * *.
         """
         return pulumi.get(self, "preserve_client_ip_enabled")
 
@@ -153,7 +216,7 @@ class ServerGroupArgs:
     @pulumi.getter
     def protocol(self) -> Optional[pulumi.Input[str]]:
         """
-        The backend protocol. Valid values: `TCP` (default), `UDP`, and `TCPSSL`.
+        The backend Forwarding Protocol. Valid values: **TCP**, **UDP**, or **TCPSSL**.
         """
         return pulumi.get(self, "protocol")
 
@@ -165,7 +228,7 @@ class ServerGroupArgs:
     @pulumi.getter(name="resourceGroupId")
     def resource_group_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID of the resource group to which the security group belongs.
+        The ID of the resource group to which the server group belongs.
         """
         return pulumi.get(self, "resource_group_id")
 
@@ -177,7 +240,11 @@ class ServerGroupArgs:
     @pulumi.getter
     def scheduler(self) -> Optional[pulumi.Input[str]]:
         """
-        The routing algorithm. Valid values:
+        Scheduling algorithm. Value:
+        - **Wrr**: Weighted polling. The higher the weight of the backend server, the higher the probability of being polled.
+        - **Rr**: polls external requests are distributed to backend servers in sequence according to the access order. sch: Source IP hash: The same source address is scheduled to the same backend server.
+        - **Tch**: Quadruple hash, based on the consistent hash of the Quad (source IP, Destination IP, source port, and destination port), the same stream is scheduled to the same backend server.
+        - **Qch**: a QUIC ID hash that allows you to hash requests with the same QUIC ID to the same backend server.
         """
         return pulumi.get(self, "scheduler")
 
@@ -189,7 +256,9 @@ class ServerGroupArgs:
     @pulumi.getter(name="serverGroupType")
     def server_group_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The type of the server group. Valid values:
+        Server group type. Value:
+        - **Instance**: The server type. You can add **Ecs**, **Ens**, and **Eci** instances to the server group.
+        - **Ip**: Ip address type. You can add Ip addresses to a server group of this type.
         """
         return pulumi.get(self, "server_group_type")
 
@@ -201,7 +270,7 @@ class ServerGroupArgs:
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
         """
-        A mapping of tags to assign to the resource.
+        Label.
         """
         return pulumi.get(self, "tags")
 
@@ -214,7 +283,9 @@ class ServerGroupArgs:
 class _ServerGroupState:
     def __init__(__self__, *,
                  address_ip_version: Optional[pulumi.Input[str]] = None,
+                 any_port_enabled: Optional[pulumi.Input[bool]] = None,
                  connection_drain: Optional[pulumi.Input[bool]] = None,
+                 connection_drain_enabled: Optional[pulumi.Input[bool]] = None,
                  connection_drain_timeout: Optional[pulumi.Input[int]] = None,
                  health_check: Optional[pulumi.Input['ServerGroupHealthCheckArgs']] = None,
                  preserve_client_ip_enabled: Optional[pulumi.Input[bool]] = None,
@@ -228,24 +299,48 @@ class _ServerGroupState:
                  vpc_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering ServerGroup resources.
-        :param pulumi.Input[str] address_ip_version: The protocol version. Valid values: `Ipv4` (default), `DualStack`.
-        :param pulumi.Input[bool] connection_drain: Specifies whether to enable connection draining.
-        :param pulumi.Input[int] connection_drain_timeout: The timeout period of connection draining. Unit: seconds. Valid values: 10 to 900.
-        :param pulumi.Input['ServerGroupHealthCheckArgs'] health_check: HealthCheck. See `health_check` below.
-        :param pulumi.Input[bool] preserve_client_ip_enabled: Indicates whether client address retention is enabled.
-        :param pulumi.Input[str] protocol: The backend protocol. Valid values: `TCP` (default), `UDP`, and `TCPSSL`.
-        :param pulumi.Input[str] resource_group_id: The ID of the resource group to which the security group belongs.
-        :param pulumi.Input[str] scheduler: The routing algorithm. Valid values:
-        :param pulumi.Input[str] server_group_name: The name of the server group. The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
-        :param pulumi.Input[str] server_group_type: The type of the server group. Valid values:
-        :param pulumi.Input[str] status: The status of the resource.
-        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
-        :param pulumi.Input[str] vpc_id: The id of the vpc.
+        :param pulumi.Input[str] address_ip_version: Protocol version. Value:
+               - **ipv4**:IPv4 type.
+               - **DualStack**: Double Stack type.
+        :param pulumi.Input[bool] any_port_enabled: Full port forwarding.
+        :param pulumi.Input[bool] connection_drain: . Field 'connection_drain' has been deprecated from provider version 1.214.0. New field 'connection_drain_enabled' instead.
+        :param pulumi.Input[bool] connection_drain_enabled: Whether to open the connection gracefully interrupted. Value:
+               - **true**: on.
+               - **false**: closed.
+        :param pulumi.Input[int] connection_drain_timeout: Set the connection elegant interrupt timeout. Unit: seconds. Valid values: **10** ~ **900**.
+        :param pulumi.Input['ServerGroupHealthCheckArgs'] health_check: Health check configuration information. See `health_check` below.
+        :param pulumi.Input[bool] preserve_client_ip_enabled: Whether to enable the client address retention function. Value:
+               - **true**: on.
+               - **false**: closed.
+               > **NOTE:**  special instructions: When **AddressIPVersion** is of the **ipv4** type, the default value is **true**. **Addrestipversion** can only be **false** when the value of **ipv6** is **ipv6**, and can be **true** when supported by the underlying layer * *.
+        :param pulumi.Input[str] protocol: The backend Forwarding Protocol. Valid values: **TCP**, **UDP**, or **TCPSSL**.
+        :param pulumi.Input[str] resource_group_id: The ID of the resource group to which the server group belongs.
+        :param pulumi.Input[str] scheduler: Scheduling algorithm. Value:
+               - **Wrr**: Weighted polling. The higher the weight of the backend server, the higher the probability of being polled.
+               - **Rr**: polls external requests are distributed to backend servers in sequence according to the access order. sch: Source IP hash: The same source address is scheduled to the same backend server.
+               - **Tch**: Quadruple hash, based on the consistent hash of the Quad (source IP, Destination IP, source port, and destination port), the same stream is scheduled to the same backend server.
+               - **Qch**: a QUIC ID hash that allows you to hash requests with the same QUIC ID to the same backend server.
+        :param pulumi.Input[str] server_group_name: The name of the server group.
+        :param pulumi.Input[str] server_group_type: Server group type. Value:
+               - **Instance**: The server type. You can add **Ecs**, **Ens**, and **Eci** instances to the server group.
+               - **Ip**: Ip address type. You can add Ip addresses to a server group of this type.
+        :param pulumi.Input[str] status: Server group status. Value:
+        :param pulumi.Input[Mapping[str, Any]] tags: Label.
+        :param pulumi.Input[str] vpc_id: The ID of the VPC to which the server group belongs.
+               
+               The following arguments will be discarded. Please use new fields as soon as possible:
         """
         if address_ip_version is not None:
             pulumi.set(__self__, "address_ip_version", address_ip_version)
+        if any_port_enabled is not None:
+            pulumi.set(__self__, "any_port_enabled", any_port_enabled)
+        if connection_drain is not None:
+            warnings.warn("""Field 'connection_drain' has been deprecated since provider version 1.214.0. New field 'connection_drain_enabled' instead.""", DeprecationWarning)
+            pulumi.log.warn("""connection_drain is deprecated: Field 'connection_drain' has been deprecated since provider version 1.214.0. New field 'connection_drain_enabled' instead.""")
         if connection_drain is not None:
             pulumi.set(__self__, "connection_drain", connection_drain)
+        if connection_drain_enabled is not None:
+            pulumi.set(__self__, "connection_drain_enabled", connection_drain_enabled)
         if connection_drain_timeout is not None:
             pulumi.set(__self__, "connection_drain_timeout", connection_drain_timeout)
         if health_check is not None:
@@ -273,7 +368,9 @@ class _ServerGroupState:
     @pulumi.getter(name="addressIpVersion")
     def address_ip_version(self) -> Optional[pulumi.Input[str]]:
         """
-        The protocol version. Valid values: `Ipv4` (default), `DualStack`.
+        Protocol version. Value:
+        - **ipv4**:IPv4 type.
+        - **DualStack**: Double Stack type.
         """
         return pulumi.get(self, "address_ip_version")
 
@@ -282,11 +379,26 @@ class _ServerGroupState:
         pulumi.set(self, "address_ip_version", value)
 
     @property
+    @pulumi.getter(name="anyPortEnabled")
+    def any_port_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Full port forwarding.
+        """
+        return pulumi.get(self, "any_port_enabled")
+
+    @any_port_enabled.setter
+    def any_port_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "any_port_enabled", value)
+
+    @property
     @pulumi.getter(name="connectionDrain")
     def connection_drain(self) -> Optional[pulumi.Input[bool]]:
         """
-        Specifies whether to enable connection draining.
+        . Field 'connection_drain' has been deprecated from provider version 1.214.0. New field 'connection_drain_enabled' instead.
         """
+        warnings.warn("""Field 'connection_drain' has been deprecated since provider version 1.214.0. New field 'connection_drain_enabled' instead.""", DeprecationWarning)
+        pulumi.log.warn("""connection_drain is deprecated: Field 'connection_drain' has been deprecated since provider version 1.214.0. New field 'connection_drain_enabled' instead.""")
+
         return pulumi.get(self, "connection_drain")
 
     @connection_drain.setter
@@ -294,10 +406,24 @@ class _ServerGroupState:
         pulumi.set(self, "connection_drain", value)
 
     @property
+    @pulumi.getter(name="connectionDrainEnabled")
+    def connection_drain_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to open the connection gracefully interrupted. Value:
+        - **true**: on.
+        - **false**: closed.
+        """
+        return pulumi.get(self, "connection_drain_enabled")
+
+    @connection_drain_enabled.setter
+    def connection_drain_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "connection_drain_enabled", value)
+
+    @property
     @pulumi.getter(name="connectionDrainTimeout")
     def connection_drain_timeout(self) -> Optional[pulumi.Input[int]]:
         """
-        The timeout period of connection draining. Unit: seconds. Valid values: 10 to 900.
+        Set the connection elegant interrupt timeout. Unit: seconds. Valid values: **10** ~ **900**.
         """
         return pulumi.get(self, "connection_drain_timeout")
 
@@ -309,7 +435,7 @@ class _ServerGroupState:
     @pulumi.getter(name="healthCheck")
     def health_check(self) -> Optional[pulumi.Input['ServerGroupHealthCheckArgs']]:
         """
-        HealthCheck. See `health_check` below.
+        Health check configuration information. See `health_check` below.
         """
         return pulumi.get(self, "health_check")
 
@@ -321,7 +447,10 @@ class _ServerGroupState:
     @pulumi.getter(name="preserveClientIpEnabled")
     def preserve_client_ip_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        Indicates whether client address retention is enabled.
+        Whether to enable the client address retention function. Value:
+        - **true**: on.
+        - **false**: closed.
+        > **NOTE:**  special instructions: When **AddressIPVersion** is of the **ipv4** type, the default value is **true**. **Addrestipversion** can only be **false** when the value of **ipv6** is **ipv6**, and can be **true** when supported by the underlying layer * *.
         """
         return pulumi.get(self, "preserve_client_ip_enabled")
 
@@ -333,7 +462,7 @@ class _ServerGroupState:
     @pulumi.getter
     def protocol(self) -> Optional[pulumi.Input[str]]:
         """
-        The backend protocol. Valid values: `TCP` (default), `UDP`, and `TCPSSL`.
+        The backend Forwarding Protocol. Valid values: **TCP**, **UDP**, or **TCPSSL**.
         """
         return pulumi.get(self, "protocol")
 
@@ -345,7 +474,7 @@ class _ServerGroupState:
     @pulumi.getter(name="resourceGroupId")
     def resource_group_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID of the resource group to which the security group belongs.
+        The ID of the resource group to which the server group belongs.
         """
         return pulumi.get(self, "resource_group_id")
 
@@ -357,7 +486,11 @@ class _ServerGroupState:
     @pulumi.getter
     def scheduler(self) -> Optional[pulumi.Input[str]]:
         """
-        The routing algorithm. Valid values:
+        Scheduling algorithm. Value:
+        - **Wrr**: Weighted polling. The higher the weight of the backend server, the higher the probability of being polled.
+        - **Rr**: polls external requests are distributed to backend servers in sequence according to the access order. sch: Source IP hash: The same source address is scheduled to the same backend server.
+        - **Tch**: Quadruple hash, based on the consistent hash of the Quad (source IP, Destination IP, source port, and destination port), the same stream is scheduled to the same backend server.
+        - **Qch**: a QUIC ID hash that allows you to hash requests with the same QUIC ID to the same backend server.
         """
         return pulumi.get(self, "scheduler")
 
@@ -369,7 +502,7 @@ class _ServerGroupState:
     @pulumi.getter(name="serverGroupName")
     def server_group_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the server group. The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
+        The name of the server group.
         """
         return pulumi.get(self, "server_group_name")
 
@@ -381,7 +514,9 @@ class _ServerGroupState:
     @pulumi.getter(name="serverGroupType")
     def server_group_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The type of the server group. Valid values:
+        Server group type. Value:
+        - **Instance**: The server type. You can add **Ecs**, **Ens**, and **Eci** instances to the server group.
+        - **Ip**: Ip address type. You can add Ip addresses to a server group of this type.
         """
         return pulumi.get(self, "server_group_type")
 
@@ -393,7 +528,7 @@ class _ServerGroupState:
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[str]]:
         """
-        The status of the resource.
+        Server group status. Value:
         """
         return pulumi.get(self, "status")
 
@@ -405,7 +540,7 @@ class _ServerGroupState:
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
         """
-        A mapping of tags to assign to the resource.
+        Label.
         """
         return pulumi.get(self, "tags")
 
@@ -417,7 +552,9 @@ class _ServerGroupState:
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The id of the vpc.
+        The ID of the VPC to which the server group belongs.
+
+        The following arguments will be discarded. Please use new fields as soon as possible:
         """
         return pulumi.get(self, "vpc_id")
 
@@ -432,7 +569,9 @@ class ServerGroup(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  address_ip_version: Optional[pulumi.Input[str]] = None,
+                 any_port_enabled: Optional[pulumi.Input[bool]] = None,
                  connection_drain: Optional[pulumi.Input[bool]] = None,
+                 connection_drain_enabled: Optional[pulumi.Input[bool]] = None,
                  connection_drain_timeout: Optional[pulumi.Input[int]] = None,
                  health_check: Optional[pulumi.Input[pulumi.InputType['ServerGroupHealthCheckArgs']]] = None,
                  preserve_client_ip_enabled: Optional[pulumi.Input[bool]] = None,
@@ -508,18 +647,35 @@ class ServerGroup(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] address_ip_version: The protocol version. Valid values: `Ipv4` (default), `DualStack`.
-        :param pulumi.Input[bool] connection_drain: Specifies whether to enable connection draining.
-        :param pulumi.Input[int] connection_drain_timeout: The timeout period of connection draining. Unit: seconds. Valid values: 10 to 900.
-        :param pulumi.Input[pulumi.InputType['ServerGroupHealthCheckArgs']] health_check: HealthCheck. See `health_check` below.
-        :param pulumi.Input[bool] preserve_client_ip_enabled: Indicates whether client address retention is enabled.
-        :param pulumi.Input[str] protocol: The backend protocol. Valid values: `TCP` (default), `UDP`, and `TCPSSL`.
-        :param pulumi.Input[str] resource_group_id: The ID of the resource group to which the security group belongs.
-        :param pulumi.Input[str] scheduler: The routing algorithm. Valid values:
-        :param pulumi.Input[str] server_group_name: The name of the server group. The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
-        :param pulumi.Input[str] server_group_type: The type of the server group. Valid values:
-        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
-        :param pulumi.Input[str] vpc_id: The id of the vpc.
+        :param pulumi.Input[str] address_ip_version: Protocol version. Value:
+               - **ipv4**:IPv4 type.
+               - **DualStack**: Double Stack type.
+        :param pulumi.Input[bool] any_port_enabled: Full port forwarding.
+        :param pulumi.Input[bool] connection_drain: . Field 'connection_drain' has been deprecated from provider version 1.214.0. New field 'connection_drain_enabled' instead.
+        :param pulumi.Input[bool] connection_drain_enabled: Whether to open the connection gracefully interrupted. Value:
+               - **true**: on.
+               - **false**: closed.
+        :param pulumi.Input[int] connection_drain_timeout: Set the connection elegant interrupt timeout. Unit: seconds. Valid values: **10** ~ **900**.
+        :param pulumi.Input[pulumi.InputType['ServerGroupHealthCheckArgs']] health_check: Health check configuration information. See `health_check` below.
+        :param pulumi.Input[bool] preserve_client_ip_enabled: Whether to enable the client address retention function. Value:
+               - **true**: on.
+               - **false**: closed.
+               > **NOTE:**  special instructions: When **AddressIPVersion** is of the **ipv4** type, the default value is **true**. **Addrestipversion** can only be **false** when the value of **ipv6** is **ipv6**, and can be **true** when supported by the underlying layer * *.
+        :param pulumi.Input[str] protocol: The backend Forwarding Protocol. Valid values: **TCP**, **UDP**, or **TCPSSL**.
+        :param pulumi.Input[str] resource_group_id: The ID of the resource group to which the server group belongs.
+        :param pulumi.Input[str] scheduler: Scheduling algorithm. Value:
+               - **Wrr**: Weighted polling. The higher the weight of the backend server, the higher the probability of being polled.
+               - **Rr**: polls external requests are distributed to backend servers in sequence according to the access order. sch: Source IP hash: The same source address is scheduled to the same backend server.
+               - **Tch**: Quadruple hash, based on the consistent hash of the Quad (source IP, Destination IP, source port, and destination port), the same stream is scheduled to the same backend server.
+               - **Qch**: a QUIC ID hash that allows you to hash requests with the same QUIC ID to the same backend server.
+        :param pulumi.Input[str] server_group_name: The name of the server group.
+        :param pulumi.Input[str] server_group_type: Server group type. Value:
+               - **Instance**: The server type. You can add **Ecs**, **Ens**, and **Eci** instances to the server group.
+               - **Ip**: Ip address type. You can add Ip addresses to a server group of this type.
+        :param pulumi.Input[Mapping[str, Any]] tags: Label.
+        :param pulumi.Input[str] vpc_id: The ID of the VPC to which the server group belongs.
+               
+               The following arguments will be discarded. Please use new fields as soon as possible:
         """
         ...
     @overload
@@ -605,7 +761,9 @@ class ServerGroup(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  address_ip_version: Optional[pulumi.Input[str]] = None,
+                 any_port_enabled: Optional[pulumi.Input[bool]] = None,
                  connection_drain: Optional[pulumi.Input[bool]] = None,
+                 connection_drain_enabled: Optional[pulumi.Input[bool]] = None,
                  connection_drain_timeout: Optional[pulumi.Input[int]] = None,
                  health_check: Optional[pulumi.Input[pulumi.InputType['ServerGroupHealthCheckArgs']]] = None,
                  preserve_client_ip_enabled: Optional[pulumi.Input[bool]] = None,
@@ -626,10 +784,10 @@ class ServerGroup(pulumi.CustomResource):
             __props__ = ServerGroupArgs.__new__(ServerGroupArgs)
 
             __props__.__dict__["address_ip_version"] = address_ip_version
+            __props__.__dict__["any_port_enabled"] = any_port_enabled
             __props__.__dict__["connection_drain"] = connection_drain
+            __props__.__dict__["connection_drain_enabled"] = connection_drain_enabled
             __props__.__dict__["connection_drain_timeout"] = connection_drain_timeout
-            if health_check is None and not opts.urn:
-                raise TypeError("Missing required property 'health_check'")
             __props__.__dict__["health_check"] = health_check
             __props__.__dict__["preserve_client_ip_enabled"] = preserve_client_ip_enabled
             __props__.__dict__["protocol"] = protocol
@@ -655,7 +813,9 @@ class ServerGroup(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             address_ip_version: Optional[pulumi.Input[str]] = None,
+            any_port_enabled: Optional[pulumi.Input[bool]] = None,
             connection_drain: Optional[pulumi.Input[bool]] = None,
+            connection_drain_enabled: Optional[pulumi.Input[bool]] = None,
             connection_drain_timeout: Optional[pulumi.Input[int]] = None,
             health_check: Optional[pulumi.Input[pulumi.InputType['ServerGroupHealthCheckArgs']]] = None,
             preserve_client_ip_enabled: Optional[pulumi.Input[bool]] = None,
@@ -674,26 +834,45 @@ class ServerGroup(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] address_ip_version: The protocol version. Valid values: `Ipv4` (default), `DualStack`.
-        :param pulumi.Input[bool] connection_drain: Specifies whether to enable connection draining.
-        :param pulumi.Input[int] connection_drain_timeout: The timeout period of connection draining. Unit: seconds. Valid values: 10 to 900.
-        :param pulumi.Input[pulumi.InputType['ServerGroupHealthCheckArgs']] health_check: HealthCheck. See `health_check` below.
-        :param pulumi.Input[bool] preserve_client_ip_enabled: Indicates whether client address retention is enabled.
-        :param pulumi.Input[str] protocol: The backend protocol. Valid values: `TCP` (default), `UDP`, and `TCPSSL`.
-        :param pulumi.Input[str] resource_group_id: The ID of the resource group to which the security group belongs.
-        :param pulumi.Input[str] scheduler: The routing algorithm. Valid values:
-        :param pulumi.Input[str] server_group_name: The name of the server group. The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
-        :param pulumi.Input[str] server_group_type: The type of the server group. Valid values:
-        :param pulumi.Input[str] status: The status of the resource.
-        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
-        :param pulumi.Input[str] vpc_id: The id of the vpc.
+        :param pulumi.Input[str] address_ip_version: Protocol version. Value:
+               - **ipv4**:IPv4 type.
+               - **DualStack**: Double Stack type.
+        :param pulumi.Input[bool] any_port_enabled: Full port forwarding.
+        :param pulumi.Input[bool] connection_drain: . Field 'connection_drain' has been deprecated from provider version 1.214.0. New field 'connection_drain_enabled' instead.
+        :param pulumi.Input[bool] connection_drain_enabled: Whether to open the connection gracefully interrupted. Value:
+               - **true**: on.
+               - **false**: closed.
+        :param pulumi.Input[int] connection_drain_timeout: Set the connection elegant interrupt timeout. Unit: seconds. Valid values: **10** ~ **900**.
+        :param pulumi.Input[pulumi.InputType['ServerGroupHealthCheckArgs']] health_check: Health check configuration information. See `health_check` below.
+        :param pulumi.Input[bool] preserve_client_ip_enabled: Whether to enable the client address retention function. Value:
+               - **true**: on.
+               - **false**: closed.
+               > **NOTE:**  special instructions: When **AddressIPVersion** is of the **ipv4** type, the default value is **true**. **Addrestipversion** can only be **false** when the value of **ipv6** is **ipv6**, and can be **true** when supported by the underlying layer * *.
+        :param pulumi.Input[str] protocol: The backend Forwarding Protocol. Valid values: **TCP**, **UDP**, or **TCPSSL**.
+        :param pulumi.Input[str] resource_group_id: The ID of the resource group to which the server group belongs.
+        :param pulumi.Input[str] scheduler: Scheduling algorithm. Value:
+               - **Wrr**: Weighted polling. The higher the weight of the backend server, the higher the probability of being polled.
+               - **Rr**: polls external requests are distributed to backend servers in sequence according to the access order. sch: Source IP hash: The same source address is scheduled to the same backend server.
+               - **Tch**: Quadruple hash, based on the consistent hash of the Quad (source IP, Destination IP, source port, and destination port), the same stream is scheduled to the same backend server.
+               - **Qch**: a QUIC ID hash that allows you to hash requests with the same QUIC ID to the same backend server.
+        :param pulumi.Input[str] server_group_name: The name of the server group.
+        :param pulumi.Input[str] server_group_type: Server group type. Value:
+               - **Instance**: The server type. You can add **Ecs**, **Ens**, and **Eci** instances to the server group.
+               - **Ip**: Ip address type. You can add Ip addresses to a server group of this type.
+        :param pulumi.Input[str] status: Server group status. Value:
+        :param pulumi.Input[Mapping[str, Any]] tags: Label.
+        :param pulumi.Input[str] vpc_id: The ID of the VPC to which the server group belongs.
+               
+               The following arguments will be discarded. Please use new fields as soon as possible:
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _ServerGroupState.__new__(_ServerGroupState)
 
         __props__.__dict__["address_ip_version"] = address_ip_version
+        __props__.__dict__["any_port_enabled"] = any_port_enabled
         __props__.__dict__["connection_drain"] = connection_drain
+        __props__.__dict__["connection_drain_enabled"] = connection_drain_enabled
         __props__.__dict__["connection_drain_timeout"] = connection_drain_timeout
         __props__.__dict__["health_check"] = health_check
         __props__.__dict__["preserve_client_ip_enabled"] = preserve_client_ip_enabled
@@ -711,23 +890,46 @@ class ServerGroup(pulumi.CustomResource):
     @pulumi.getter(name="addressIpVersion")
     def address_ip_version(self) -> pulumi.Output[str]:
         """
-        The protocol version. Valid values: `Ipv4` (default), `DualStack`.
+        Protocol version. Value:
+        - **ipv4**:IPv4 type.
+        - **DualStack**: Double Stack type.
         """
         return pulumi.get(self, "address_ip_version")
+
+    @property
+    @pulumi.getter(name="anyPortEnabled")
+    def any_port_enabled(self) -> pulumi.Output[bool]:
+        """
+        Full port forwarding.
+        """
+        return pulumi.get(self, "any_port_enabled")
 
     @property
     @pulumi.getter(name="connectionDrain")
     def connection_drain(self) -> pulumi.Output[bool]:
         """
-        Specifies whether to enable connection draining.
+        . Field 'connection_drain' has been deprecated from provider version 1.214.0. New field 'connection_drain_enabled' instead.
         """
+        warnings.warn("""Field 'connection_drain' has been deprecated since provider version 1.214.0. New field 'connection_drain_enabled' instead.""", DeprecationWarning)
+        pulumi.log.warn("""connection_drain is deprecated: Field 'connection_drain' has been deprecated since provider version 1.214.0. New field 'connection_drain_enabled' instead.""")
+
         return pulumi.get(self, "connection_drain")
+
+    @property
+    @pulumi.getter(name="connectionDrainEnabled")
+    def connection_drain_enabled(self) -> pulumi.Output[bool]:
+        """
+        Whether to open the connection gracefully interrupted. Value:
+        - **true**: on.
+        - **false**: closed.
+        """
+        return pulumi.get(self, "connection_drain_enabled")
 
     @property
     @pulumi.getter(name="connectionDrainTimeout")
     def connection_drain_timeout(self) -> pulumi.Output[int]:
         """
-        The timeout period of connection draining. Unit: seconds. Valid values: 10 to 900.
+        Set the connection elegant interrupt timeout. Unit: seconds. Valid values: **10** ~ **900**.
         """
         return pulumi.get(self, "connection_drain_timeout")
 
@@ -735,7 +937,7 @@ class ServerGroup(pulumi.CustomResource):
     @pulumi.getter(name="healthCheck")
     def health_check(self) -> pulumi.Output['outputs.ServerGroupHealthCheck']:
         """
-        HealthCheck. See `health_check` below.
+        Health check configuration information. See `health_check` below.
         """
         return pulumi.get(self, "health_check")
 
@@ -743,7 +945,10 @@ class ServerGroup(pulumi.CustomResource):
     @pulumi.getter(name="preserveClientIpEnabled")
     def preserve_client_ip_enabled(self) -> pulumi.Output[bool]:
         """
-        Indicates whether client address retention is enabled.
+        Whether to enable the client address retention function. Value:
+        - **true**: on.
+        - **false**: closed.
+        > **NOTE:**  special instructions: When **AddressIPVersion** is of the **ipv4** type, the default value is **true**. **Addrestipversion** can only be **false** when the value of **ipv6** is **ipv6**, and can be **true** when supported by the underlying layer * *.
         """
         return pulumi.get(self, "preserve_client_ip_enabled")
 
@@ -751,7 +956,7 @@ class ServerGroup(pulumi.CustomResource):
     @pulumi.getter
     def protocol(self) -> pulumi.Output[str]:
         """
-        The backend protocol. Valid values: `TCP` (default), `UDP`, and `TCPSSL`.
+        The backend Forwarding Protocol. Valid values: **TCP**, **UDP**, or **TCPSSL**.
         """
         return pulumi.get(self, "protocol")
 
@@ -759,7 +964,7 @@ class ServerGroup(pulumi.CustomResource):
     @pulumi.getter(name="resourceGroupId")
     def resource_group_id(self) -> pulumi.Output[str]:
         """
-        The ID of the resource group to which the security group belongs.
+        The ID of the resource group to which the server group belongs.
         """
         return pulumi.get(self, "resource_group_id")
 
@@ -767,7 +972,11 @@ class ServerGroup(pulumi.CustomResource):
     @pulumi.getter
     def scheduler(self) -> pulumi.Output[str]:
         """
-        The routing algorithm. Valid values:
+        Scheduling algorithm. Value:
+        - **Wrr**: Weighted polling. The higher the weight of the backend server, the higher the probability of being polled.
+        - **Rr**: polls external requests are distributed to backend servers in sequence according to the access order. sch: Source IP hash: The same source address is scheduled to the same backend server.
+        - **Tch**: Quadruple hash, based on the consistent hash of the Quad (source IP, Destination IP, source port, and destination port), the same stream is scheduled to the same backend server.
+        - **Qch**: a QUIC ID hash that allows you to hash requests with the same QUIC ID to the same backend server.
         """
         return pulumi.get(self, "scheduler")
 
@@ -775,7 +984,7 @@ class ServerGroup(pulumi.CustomResource):
     @pulumi.getter(name="serverGroupName")
     def server_group_name(self) -> pulumi.Output[str]:
         """
-        The name of the server group. The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
+        The name of the server group.
         """
         return pulumi.get(self, "server_group_name")
 
@@ -783,7 +992,9 @@ class ServerGroup(pulumi.CustomResource):
     @pulumi.getter(name="serverGroupType")
     def server_group_type(self) -> pulumi.Output[str]:
         """
-        The type of the server group. Valid values:
+        Server group type. Value:
+        - **Instance**: The server type. You can add **Ecs**, **Ens**, and **Eci** instances to the server group.
+        - **Ip**: Ip address type. You can add Ip addresses to a server group of this type.
         """
         return pulumi.get(self, "server_group_type")
 
@@ -791,7 +1002,7 @@ class ServerGroup(pulumi.CustomResource):
     @pulumi.getter
     def status(self) -> pulumi.Output[str]:
         """
-        The status of the resource.
+        Server group status. Value:
         """
         return pulumi.get(self, "status")
 
@@ -799,7 +1010,7 @@ class ServerGroup(pulumi.CustomResource):
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
         """
-        A mapping of tags to assign to the resource.
+        Label.
         """
         return pulumi.get(self, "tags")
 
@@ -807,7 +1018,9 @@ class ServerGroup(pulumi.CustomResource):
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> pulumi.Output[str]:
         """
-        The id of the vpc.
+        The ID of the VPC to which the server group belongs.
+
+        The following arguments will be discarded. Please use new fields as soon as possible:
         """
         return pulumi.get(self, "vpc_id")
 

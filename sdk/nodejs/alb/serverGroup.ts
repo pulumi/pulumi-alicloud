@@ -7,10 +7,9 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * Provides a ALB Server Group resource.
+ * Provides an ALB Server Group resource.
  *
- * For information about ALB Server Group and how to use it,
- * see [What is Server Group](https://www.alibabacloud.com/help/en/slb/application-load-balancer/developer-reference/api-alb-2020-06-16-createservergroup).
+ * For information about ALB Server Group and how to use it, see [What is Server Group](https://www.alibabacloud.com/help/en/slb/application-load-balancer/developer-reference/api-alb-2020-06-16-createservergroup).
  *
  * > **NOTE:** Available since v1.131.0.
  *
@@ -24,6 +23,7 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "terraform-example";
+ * const exampleResourceGroups = alicloud.resourcemanager.getResourceGroups({});
  * const exampleZones = alicloud.getZones({
  *     availableResourceCreation: "Instance",
  * });
@@ -36,7 +36,6 @@ import * as utilities from "../utilities";
  *     nameRegex: "^ubuntu_[0-9]+_[0-9]+_x64*",
  *     owners: "system",
  * });
- * const exampleResourceGroups = alicloud.resourcemanager.getResourceGroups({});
  * const exampleNetwork = new alicloud.vpc.Network("exampleNetwork", {
  *     vpcName: name,
  *     cidrBlock: "10.4.0.0/16",
@@ -64,6 +63,11 @@ import * as utilities from "../utilities";
  *     vpcId: exampleNetwork.id,
  *     serverGroupName: name,
  *     resourceGroupId: exampleResourceGroups.then(exampleResourceGroups => exampleResourceGroups.groups?.[0]?.id),
+ *     stickySessionConfig: {
+ *         stickySessionEnabled: true,
+ *         cookie: "tf-example",
+ *         stickySessionType: "Server",
+ *     },
  *     healthCheckConfig: {
  *         healthCheckConnectPort: 46325,
  *         healthCheckEnabled: true,
@@ -82,14 +86,6 @@ import * as utilities from "../utilities";
  *         healthyThreshold: 3,
  *         unhealthyThreshold: 3,
  *     },
- *     stickySessionConfig: {
- *         stickySessionEnabled: true,
- *         cookie: "tf-example",
- *         stickySessionType: "Server",
- *     },
- *     tags: {
- *         Created: "TF",
- *     },
  *     servers: [{
  *         description: name,
  *         port: 80,
@@ -98,6 +94,9 @@ import * as utilities from "../utilities";
  *         serverType: "Ecs",
  *         weight: 10,
  *     }],
+ *     tags: {
+ *         Created: "TF",
+ *     },
  * });
  * ```
  *
@@ -142,11 +141,11 @@ export class ServerGroup extends pulumi.CustomResource {
      */
     public readonly dryRun!: pulumi.Output<boolean | undefined>;
     /**
-     * The configuration of health checks. See `healthCheckConfig` below for details.
+     * The configuration of health checks. See `healthCheckConfig` below.
      */
-    public readonly healthCheckConfig!: pulumi.Output<outputs.alb.ServerGroupHealthCheckConfig | undefined>;
+    public readonly healthCheckConfig!: pulumi.Output<outputs.alb.ServerGroupHealthCheckConfig>;
     /**
-     * The server protocol. Valid values: ` HTTPS`, `HTTP`.
+     * The server protocol. Valid values: ` HTTP`, `HTTPS`, `gRPC`. While `serverGroupType` is `Fc` this parameter will not take effect. From version 1.215.0, `protocol` can be set to `gRPC`.
      */
     public readonly protocol!: pulumi.Output<string>;
     /**
@@ -154,35 +153,35 @@ export class ServerGroup extends pulumi.CustomResource {
      */
     public readonly resourceGroupId!: pulumi.Output<string>;
     /**
-     * The scheduling algorithm. Valid values: ` Sch`, ` Wlc`, `Wrr`.
+     * The scheduling algorithm. Valid values: ` Sch`, ` Wlc`, `Wrr`. **NOTE:** This parameter takes effect when the `serverGroupType` parameter is set to `Instance` or `Ip`.
      */
     public readonly scheduler!: pulumi.Output<string>;
     /**
-     * The name of the resource.
+     * The name of the server group.
      */
-    public readonly serverGroupName!: pulumi.Output<string | undefined>;
+    public readonly serverGroupName!: pulumi.Output<string>;
     /**
-     * The type of the server group. Valid values:
+     * The type of the server group. Default value: `Instance`. Valid values:
      */
     public readonly serverGroupType!: pulumi.Output<string>;
     /**
-     * The backend server. See `servers` below for details.
+     * The backend servers. See `servers` below.
      */
     public readonly servers!: pulumi.Output<outputs.alb.ServerGroupServer[] | undefined>;
     /**
-     * The status of the backend server. Valid values:
+     * The status of the backend server.
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
     /**
-     * The configuration of the sticky session. See `stickySessionConfig` below for details.
+     * The configuration of session persistence. See `stickySessionConfig` below.
      */
-    public readonly stickySessionConfig!: pulumi.Output<outputs.alb.ServerGroupStickySessionConfig | undefined>;
+    public readonly stickySessionConfig!: pulumi.Output<outputs.alb.ServerGroupStickySessionConfig>;
     /**
      * A mapping of tags to assign to the resource.
      */
     public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
     /**
-     * The ID of the VPC that you want to access.
+     * The ID of the VPC that you want to access. **NOTE:** This parameter takes effect when the `serverGroupType` parameter is set to `Instance` or `Ip`.
      */
     public readonly vpcId!: pulumi.Output<string | undefined>;
 
@@ -193,7 +192,7 @@ export class ServerGroup extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args?: ServerGroupArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, args: ServerGroupArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ServerGroupArgs | ServerGroupState, opts?: pulumi.CustomResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
@@ -213,6 +212,12 @@ export class ServerGroup extends pulumi.CustomResource {
             resourceInputs["vpcId"] = state ? state.vpcId : undefined;
         } else {
             const args = argsOrState as ServerGroupArgs | undefined;
+            if ((!args || args.healthCheckConfig === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'healthCheckConfig'");
+            }
+            if ((!args || args.serverGroupName === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'serverGroupName'");
+            }
             resourceInputs["dryRun"] = args ? args.dryRun : undefined;
             resourceInputs["healthCheckConfig"] = args ? args.healthCheckConfig : undefined;
             resourceInputs["protocol"] = args ? args.protocol : undefined;
@@ -240,11 +245,11 @@ export interface ServerGroupState {
      */
     dryRun?: pulumi.Input<boolean>;
     /**
-     * The configuration of health checks. See `healthCheckConfig` below for details.
+     * The configuration of health checks. See `healthCheckConfig` below.
      */
     healthCheckConfig?: pulumi.Input<inputs.alb.ServerGroupHealthCheckConfig>;
     /**
-     * The server protocol. Valid values: ` HTTPS`, `HTTP`.
+     * The server protocol. Valid values: ` HTTP`, `HTTPS`, `gRPC`. While `serverGroupType` is `Fc` this parameter will not take effect. From version 1.215.0, `protocol` can be set to `gRPC`.
      */
     protocol?: pulumi.Input<string>;
     /**
@@ -252,27 +257,27 @@ export interface ServerGroupState {
      */
     resourceGroupId?: pulumi.Input<string>;
     /**
-     * The scheduling algorithm. Valid values: ` Sch`, ` Wlc`, `Wrr`.
+     * The scheduling algorithm. Valid values: ` Sch`, ` Wlc`, `Wrr`. **NOTE:** This parameter takes effect when the `serverGroupType` parameter is set to `Instance` or `Ip`.
      */
     scheduler?: pulumi.Input<string>;
     /**
-     * The name of the resource.
+     * The name of the server group.
      */
     serverGroupName?: pulumi.Input<string>;
     /**
-     * The type of the server group. Valid values:
+     * The type of the server group. Default value: `Instance`. Valid values:
      */
     serverGroupType?: pulumi.Input<string>;
     /**
-     * The backend server. See `servers` below for details.
+     * The backend servers. See `servers` below.
      */
     servers?: pulumi.Input<pulumi.Input<inputs.alb.ServerGroupServer>[]>;
     /**
-     * The status of the backend server. Valid values:
+     * The status of the backend server.
      */
     status?: pulumi.Input<string>;
     /**
-     * The configuration of the sticky session. See `stickySessionConfig` below for details.
+     * The configuration of session persistence. See `stickySessionConfig` below.
      */
     stickySessionConfig?: pulumi.Input<inputs.alb.ServerGroupStickySessionConfig>;
     /**
@@ -280,7 +285,7 @@ export interface ServerGroupState {
      */
     tags?: pulumi.Input<{[key: string]: any}>;
     /**
-     * The ID of the VPC that you want to access.
+     * The ID of the VPC that you want to access. **NOTE:** This parameter takes effect when the `serverGroupType` parameter is set to `Instance` or `Ip`.
      */
     vpcId?: pulumi.Input<string>;
 }
@@ -294,11 +299,11 @@ export interface ServerGroupArgs {
      */
     dryRun?: pulumi.Input<boolean>;
     /**
-     * The configuration of health checks. See `healthCheckConfig` below for details.
+     * The configuration of health checks. See `healthCheckConfig` below.
      */
-    healthCheckConfig?: pulumi.Input<inputs.alb.ServerGroupHealthCheckConfig>;
+    healthCheckConfig: pulumi.Input<inputs.alb.ServerGroupHealthCheckConfig>;
     /**
-     * The server protocol. Valid values: ` HTTPS`, `HTTP`.
+     * The server protocol. Valid values: ` HTTP`, `HTTPS`, `gRPC`. While `serverGroupType` is `Fc` this parameter will not take effect. From version 1.215.0, `protocol` can be set to `gRPC`.
      */
     protocol?: pulumi.Input<string>;
     /**
@@ -306,23 +311,23 @@ export interface ServerGroupArgs {
      */
     resourceGroupId?: pulumi.Input<string>;
     /**
-     * The scheduling algorithm. Valid values: ` Sch`, ` Wlc`, `Wrr`.
+     * The scheduling algorithm. Valid values: ` Sch`, ` Wlc`, `Wrr`. **NOTE:** This parameter takes effect when the `serverGroupType` parameter is set to `Instance` or `Ip`.
      */
     scheduler?: pulumi.Input<string>;
     /**
-     * The name of the resource.
+     * The name of the server group.
      */
-    serverGroupName?: pulumi.Input<string>;
+    serverGroupName: pulumi.Input<string>;
     /**
-     * The type of the server group. Valid values:
+     * The type of the server group. Default value: `Instance`. Valid values:
      */
     serverGroupType?: pulumi.Input<string>;
     /**
-     * The backend server. See `servers` below for details.
+     * The backend servers. See `servers` below.
      */
     servers?: pulumi.Input<pulumi.Input<inputs.alb.ServerGroupServer>[]>;
     /**
-     * The configuration of the sticky session. See `stickySessionConfig` below for details.
+     * The configuration of session persistence. See `stickySessionConfig` below.
      */
     stickySessionConfig?: pulumi.Input<inputs.alb.ServerGroupStickySessionConfig>;
     /**
@@ -330,7 +335,7 @@ export interface ServerGroupArgs {
      */
     tags?: pulumi.Input<{[key: string]: any}>;
     /**
-     * The ID of the VPC that you want to access.
+     * The ID of the VPC that you want to access. **NOTE:** This parameter takes effect when the `serverGroupType` parameter is set to `Instance` or `Ip`.
      */
     vpcId?: pulumi.Input<string>;
 }

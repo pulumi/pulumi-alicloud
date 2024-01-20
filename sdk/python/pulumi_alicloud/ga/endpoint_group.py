@@ -23,6 +23,7 @@ class EndpointGroupArgs:
                  description: Optional[pulumi.Input[str]] = None,
                  endpoint_group_type: Optional[pulumi.Input[str]] = None,
                  endpoint_request_protocol: Optional[pulumi.Input[str]] = None,
+                 health_check_enabled: Optional[pulumi.Input[bool]] = None,
                  health_check_interval_seconds: Optional[pulumi.Input[int]] = None,
                  health_check_path: Optional[pulumi.Input[str]] = None,
                  health_check_port: Optional[pulumi.Input[int]] = None,
@@ -43,6 +44,7 @@ class EndpointGroupArgs:
                > **NOTE:** Only the listening instance of HTTP or HTTPS protocol supports the creation of virtual terminal node group.
         :param pulumi.Input[str] endpoint_request_protocol: The endpoint request protocol. Valid values: `HTTP`, `HTTPS`.
                > **NOTE:** This item is only supported when creating terminal node group for listening instance of HTTP or HTTPS protocol. For the listening instance of HTTP protocol, the back-end service protocol supports and only supports HTTP.
+        :param pulumi.Input[bool] health_check_enabled: Specifies whether to enable the health check feature. Valid values:
         :param pulumi.Input[int] health_check_interval_seconds: The interval between two consecutive health checks. Unit: seconds.
         :param pulumi.Input[str] health_check_path: The path specified as the destination of the targets for health checks.
         :param pulumi.Input[int] health_check_port: The port that is used for health checks.
@@ -64,6 +66,8 @@ class EndpointGroupArgs:
             pulumi.set(__self__, "endpoint_group_type", endpoint_group_type)
         if endpoint_request_protocol is not None:
             pulumi.set(__self__, "endpoint_request_protocol", endpoint_request_protocol)
+        if health_check_enabled is not None:
+            pulumi.set(__self__, "health_check_enabled", health_check_enabled)
         if health_check_interval_seconds is not None:
             pulumi.set(__self__, "health_check_interval_seconds", health_check_interval_seconds)
         if health_check_path is not None:
@@ -168,6 +172,18 @@ class EndpointGroupArgs:
     @endpoint_request_protocol.setter
     def endpoint_request_protocol(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "endpoint_request_protocol", value)
+
+    @property
+    @pulumi.getter(name="healthCheckEnabled")
+    def health_check_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Specifies whether to enable the health check feature. Valid values:
+        """
+        return pulumi.get(self, "health_check_enabled")
+
+    @health_check_enabled.setter
+    def health_check_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "health_check_enabled", value)
 
     @property
     @pulumi.getter(name="healthCheckIntervalSeconds")
@@ -289,6 +305,7 @@ class _EndpointGroupState:
                  endpoint_group_region: Optional[pulumi.Input[str]] = None,
                  endpoint_group_type: Optional[pulumi.Input[str]] = None,
                  endpoint_request_protocol: Optional[pulumi.Input[str]] = None,
+                 health_check_enabled: Optional[pulumi.Input[bool]] = None,
                  health_check_interval_seconds: Optional[pulumi.Input[int]] = None,
                  health_check_path: Optional[pulumi.Input[str]] = None,
                  health_check_port: Optional[pulumi.Input[int]] = None,
@@ -311,6 +328,7 @@ class _EndpointGroupState:
                > **NOTE:** Only the listening instance of HTTP or HTTPS protocol supports the creation of virtual terminal node group.
         :param pulumi.Input[str] endpoint_request_protocol: The endpoint request protocol. Valid values: `HTTP`, `HTTPS`.
                > **NOTE:** This item is only supported when creating terminal node group for listening instance of HTTP or HTTPS protocol. For the listening instance of HTTP protocol, the back-end service protocol supports and only supports HTTP.
+        :param pulumi.Input[bool] health_check_enabled: Specifies whether to enable the health check feature. Valid values:
         :param pulumi.Input[int] health_check_interval_seconds: The interval between two consecutive health checks. Unit: seconds.
         :param pulumi.Input[str] health_check_path: The path specified as the destination of the targets for health checks.
         :param pulumi.Input[int] health_check_port: The port that is used for health checks.
@@ -338,6 +356,8 @@ class _EndpointGroupState:
             pulumi.set(__self__, "endpoint_group_type", endpoint_group_type)
         if endpoint_request_protocol is not None:
             pulumi.set(__self__, "endpoint_request_protocol", endpoint_request_protocol)
+        if health_check_enabled is not None:
+            pulumi.set(__self__, "health_check_enabled", health_check_enabled)
         if health_check_interval_seconds is not None:
             pulumi.set(__self__, "health_check_interval_seconds", health_check_interval_seconds)
         if health_check_path is not None:
@@ -446,6 +466,18 @@ class _EndpointGroupState:
     @endpoint_request_protocol.setter
     def endpoint_request_protocol(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "endpoint_request_protocol", value)
+
+    @property
+    @pulumi.getter(name="healthCheckEnabled")
+    def health_check_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Specifies whether to enable the health check feature. Valid values:
+        """
+        return pulumi.get(self, "health_check_enabled")
+
+    @health_check_enabled.setter
+    def health_check_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "health_check_enabled", value)
 
     @property
     @pulumi.getter(name="healthCheckIntervalSeconds")
@@ -592,6 +624,7 @@ class EndpointGroup(pulumi.CustomResource):
                  endpoint_group_region: Optional[pulumi.Input[str]] = None,
                  endpoint_group_type: Optional[pulumi.Input[str]] = None,
                  endpoint_request_protocol: Optional[pulumi.Input[str]] = None,
+                 health_check_enabled: Optional[pulumi.Input[bool]] = None,
                  health_check_interval_seconds: Optional[pulumi.Input[int]] = None,
                  health_check_path: Optional[pulumi.Input[str]] = None,
                  health_check_port: Optional[pulumi.Input[int]] = None,
@@ -604,20 +637,6 @@ class EndpointGroup(pulumi.CustomResource):
                  traffic_percentage: Optional[pulumi.Input[int]] = None,
                  __props__=None):
         """
-        Provides a Global Accelerator (GA) Endpoint Group resource.
-
-        For information about Global Accelerator (GA) Endpoint Group and how to use it, see [What is Endpoint Group](https://www.alibabacloud.com/help/en/global-accelerator/latest/api-ga-2019-11-20-createendpointgroup).
-
-        > **NOTE:** Available since v1.113.0.
-
-        > **NOTE:** Listeners that use different protocols support different types of endpoint groups:
-
-        * For a TCP or UDP listener, you can create only one default endpoint group.
-        * For an HTTP or HTTPS listener, you can create one default endpoint group and one virtual endpoint group. By default, you can create only one virtual endpoint group.
-          * A default endpoint group refers to the endpoint group that you configure when you create an HTTP or HTTPS listener.
-          * A virtual endpoint group refers to the endpoint group that you can create on the Endpoint Group page after you create a listener.
-        * After you create a virtual endpoint group for an HTTP or HTTPS listener, you can create a forwarding rule and associate the forwarding rule with the virtual endpoint group. Then, the HTTP or HTTPS listener forwards requests with different destination domain names or paths to the default or virtual endpoint group based on the forwarding rule. This way, you can use one Global Accelerator (GA) instance to accelerate access to multiple domain names or paths. For more information about how to create a forwarding rule, see [Manage forwarding rules](https://www.alibabacloud.com/help/en/doc-detail/204224.htm).
-
         ## Example Usage
 
         Basic Usage
@@ -694,6 +713,7 @@ class EndpointGroup(pulumi.CustomResource):
                > **NOTE:** Only the listening instance of HTTP or HTTPS protocol supports the creation of virtual terminal node group.
         :param pulumi.Input[str] endpoint_request_protocol: The endpoint request protocol. Valid values: `HTTP`, `HTTPS`.
                > **NOTE:** This item is only supported when creating terminal node group for listening instance of HTTP or HTTPS protocol. For the listening instance of HTTP protocol, the back-end service protocol supports and only supports HTTP.
+        :param pulumi.Input[bool] health_check_enabled: Specifies whether to enable the health check feature. Valid values:
         :param pulumi.Input[int] health_check_interval_seconds: The interval between two consecutive health checks. Unit: seconds.
         :param pulumi.Input[str] health_check_path: The path specified as the destination of the targets for health checks.
         :param pulumi.Input[int] health_check_port: The port that is used for health checks.
@@ -713,20 +733,6 @@ class EndpointGroup(pulumi.CustomResource):
                  args: EndpointGroupArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a Global Accelerator (GA) Endpoint Group resource.
-
-        For information about Global Accelerator (GA) Endpoint Group and how to use it, see [What is Endpoint Group](https://www.alibabacloud.com/help/en/global-accelerator/latest/api-ga-2019-11-20-createendpointgroup).
-
-        > **NOTE:** Available since v1.113.0.
-
-        > **NOTE:** Listeners that use different protocols support different types of endpoint groups:
-
-        * For a TCP or UDP listener, you can create only one default endpoint group.
-        * For an HTTP or HTTPS listener, you can create one default endpoint group and one virtual endpoint group. By default, you can create only one virtual endpoint group.
-          * A default endpoint group refers to the endpoint group that you configure when you create an HTTP or HTTPS listener.
-          * A virtual endpoint group refers to the endpoint group that you can create on the Endpoint Group page after you create a listener.
-        * After you create a virtual endpoint group for an HTTP or HTTPS listener, you can create a forwarding rule and associate the forwarding rule with the virtual endpoint group. Then, the HTTP or HTTPS listener forwards requests with different destination domain names or paths to the default or virtual endpoint group based on the forwarding rule. This way, you can use one Global Accelerator (GA) instance to accelerate access to multiple domain names or paths. For more information about how to create a forwarding rule, see [Manage forwarding rules](https://www.alibabacloud.com/help/en/doc-detail/204224.htm).
-
         ## Example Usage
 
         Basic Usage
@@ -814,6 +820,7 @@ class EndpointGroup(pulumi.CustomResource):
                  endpoint_group_region: Optional[pulumi.Input[str]] = None,
                  endpoint_group_type: Optional[pulumi.Input[str]] = None,
                  endpoint_request_protocol: Optional[pulumi.Input[str]] = None,
+                 health_check_enabled: Optional[pulumi.Input[bool]] = None,
                  health_check_interval_seconds: Optional[pulumi.Input[int]] = None,
                  health_check_path: Optional[pulumi.Input[str]] = None,
                  health_check_port: Optional[pulumi.Input[int]] = None,
@@ -845,6 +852,7 @@ class EndpointGroup(pulumi.CustomResource):
             __props__.__dict__["endpoint_group_region"] = endpoint_group_region
             __props__.__dict__["endpoint_group_type"] = endpoint_group_type
             __props__.__dict__["endpoint_request_protocol"] = endpoint_request_protocol
+            __props__.__dict__["health_check_enabled"] = health_check_enabled
             __props__.__dict__["health_check_interval_seconds"] = health_check_interval_seconds
             __props__.__dict__["health_check_path"] = health_check_path
             __props__.__dict__["health_check_port"] = health_check_port
@@ -876,6 +884,7 @@ class EndpointGroup(pulumi.CustomResource):
             endpoint_group_region: Optional[pulumi.Input[str]] = None,
             endpoint_group_type: Optional[pulumi.Input[str]] = None,
             endpoint_request_protocol: Optional[pulumi.Input[str]] = None,
+            health_check_enabled: Optional[pulumi.Input[bool]] = None,
             health_check_interval_seconds: Optional[pulumi.Input[int]] = None,
             health_check_path: Optional[pulumi.Input[str]] = None,
             health_check_port: Optional[pulumi.Input[int]] = None,
@@ -903,6 +912,7 @@ class EndpointGroup(pulumi.CustomResource):
                > **NOTE:** Only the listening instance of HTTP or HTTPS protocol supports the creation of virtual terminal node group.
         :param pulumi.Input[str] endpoint_request_protocol: The endpoint request protocol. Valid values: `HTTP`, `HTTPS`.
                > **NOTE:** This item is only supported when creating terminal node group for listening instance of HTTP or HTTPS protocol. For the listening instance of HTTP protocol, the back-end service protocol supports and only supports HTTP.
+        :param pulumi.Input[bool] health_check_enabled: Specifies whether to enable the health check feature. Valid values:
         :param pulumi.Input[int] health_check_interval_seconds: The interval between two consecutive health checks. Unit: seconds.
         :param pulumi.Input[str] health_check_path: The path specified as the destination of the targets for health checks.
         :param pulumi.Input[int] health_check_port: The port that is used for health checks.
@@ -927,6 +937,7 @@ class EndpointGroup(pulumi.CustomResource):
         __props__.__dict__["endpoint_group_region"] = endpoint_group_region
         __props__.__dict__["endpoint_group_type"] = endpoint_group_type
         __props__.__dict__["endpoint_request_protocol"] = endpoint_request_protocol
+        __props__.__dict__["health_check_enabled"] = health_check_enabled
         __props__.__dict__["health_check_interval_seconds"] = health_check_interval_seconds
         __props__.__dict__["health_check_path"] = health_check_path
         __props__.__dict__["health_check_port"] = health_check_port
@@ -997,6 +1008,14 @@ class EndpointGroup(pulumi.CustomResource):
         > **NOTE:** This item is only supported when creating terminal node group for listening instance of HTTP or HTTPS protocol. For the listening instance of HTTP protocol, the back-end service protocol supports and only supports HTTP.
         """
         return pulumi.get(self, "endpoint_request_protocol")
+
+    @property
+    @pulumi.getter(name="healthCheckEnabled")
+    def health_check_enabled(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Specifies whether to enable the health check feature. Valid values:
+        """
+        return pulumi.get(self, "health_check_enabled")
 
     @property
     @pulumi.getter(name="healthCheckIntervalSeconds")

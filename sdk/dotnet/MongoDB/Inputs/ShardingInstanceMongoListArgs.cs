@@ -13,25 +13,25 @@ namespace Pulumi.AliCloud.MongoDB.Inputs
     public sealed class ShardingInstanceMongoListArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Mongo node connection string.
+        /// The connection address of the Config Server node.
         /// </summary>
         [Input("connectString")]
         public Input<string>? ConnectString { get; set; }
 
         /// <summary>
-        /// Node specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
+        /// The instance type of the mongo node. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
         /// </summary>
         [Input("nodeClass", required: true)]
         public Input<string> NodeClass { get; set; } = null!;
 
         /// <summary>
-        /// The ID of the mongo-node.
+        /// The ID of the Config Server node.
         /// </summary>
         [Input("nodeId")]
         public Input<string>? NodeId { get; set; }
 
         /// <summary>
-        /// Mongo node port.
+        /// The connection port of the Config Server node.
         /// </summary>
         [Input("port")]
         public Input<int>? Port { get; set; }

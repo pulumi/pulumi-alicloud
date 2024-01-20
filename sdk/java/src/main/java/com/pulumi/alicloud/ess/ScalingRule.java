@@ -6,6 +6,7 @@ package com.pulumi.alicloud.ess;
 import com.pulumi.alicloud.Utilities;
 import com.pulumi.alicloud.ess.ScalingRuleArgs;
 import com.pulumi.alicloud.ess.inputs.ScalingRuleState;
+import com.pulumi.alicloud.ess.outputs.ScalingRuleAlarmDimension;
 import com.pulumi.alicloud.ess.outputs.ScalingRuleStepAdjustment;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
@@ -33,6 +34,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.random.RandomInteger;
+ * import com.pulumi.random.RandomIntegerArgs;
  * import com.pulumi.alicloud.AlicloudFunctions;
  * import com.pulumi.alicloud.inputs.GetZonesArgs;
  * import com.pulumi.alicloud.ecs.EcsFunctions;
@@ -52,6 +55,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.alicloud.ess.ScalingConfigurationArgs;
  * import com.pulumi.alicloud.ess.ScalingRule;
  * import com.pulumi.alicloud.ess.ScalingRuleArgs;
+ * import com.pulumi.codegen.internal.KeyedValue;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -65,8 +69,14 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;terraform-example&#34;);
+ *         for (var i = 0; i &lt; (1 == true); i++) {
+ *             new RandomInteger(&#34;defaultRandomInteger-&#34; + i, RandomIntegerArgs.builder()            
+ *                 .max(99999)
+ *                 .min(10000)
+ *                 .build());
+ * 
+ *         
+ * }
  *         final var defaultZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
  *             .availableDiskCategory(&#34;cloud_efficiency&#34;)
  *             .availableResourceCreation(&#34;VSwitch&#34;)
@@ -92,7 +102,7 @@ import javax.annotation.Nullable;
  *             .vpcId(defaultNetwork.id())
  *             .cidrBlock(&#34;172.16.0.0/24&#34;)
  *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
- *             .vswitchName(name)
+ *             .vswitchName(defaultRandomInteger.result().applyValue(result -&gt; String.format(&#34;terraform-example-%s&#34;, result)))
  *             .build());
  * 
  *         var defaultSecurityGroup = new SecurityGroup(&#34;defaultSecurityGroup&#34;, SecurityGroupArgs.builder()        
@@ -113,7 +123,7 @@ import javax.annotation.Nullable;
  *         var defaultScalingGroup = new ScalingGroup(&#34;defaultScalingGroup&#34;, ScalingGroupArgs.builder()        
  *             .minSize(1)
  *             .maxSize(1)
- *             .scalingGroupName(name)
+ *             .scalingGroupName(defaultRandomInteger.result().applyValue(result -&gt; String.format(&#34;terraform-example-%s&#34;, result)))
  *             .vswitchIds(defaultSwitch.id())
  *             .removalPolicies(            
  *                 &#34;OldestInstance&#34;,
@@ -192,6 +202,20 @@ public class ScalingRule extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<Integer>> adjustmentValue() {
         return Codegen.optional(this.adjustmentValue);
+    }
+    /**
+     * AlarmDimension for StepScalingRule. See `alarm_dimension` below.
+     * 
+     */
+    @Export(name="alarmDimension", refs={ScalingRuleAlarmDimension.class}, tree="[0]")
+    private Output</* @Nullable */ ScalingRuleAlarmDimension> alarmDimension;
+
+    /**
+     * @return AlarmDimension for StepScalingRule. See `alarm_dimension` below.
+     * 
+     */
+    public Output<Optional<ScalingRuleAlarmDimension>> alarmDimension() {
+        return Codegen.optional(this.alarmDimension);
     }
     /**
      * The unique identifier of the scaling rule.

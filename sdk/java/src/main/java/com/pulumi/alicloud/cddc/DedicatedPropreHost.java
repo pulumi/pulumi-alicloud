@@ -11,8 +11,12 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
+import java.lang.Boolean;
+import java.lang.Integer;
+import java.lang.Object;
 import java.lang.String;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
@@ -28,6 +32,20 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="alicloud:cddc/dedicatedPropreHost:DedicatedPropreHost")
 public class DedicatedPropreHost extends com.pulumi.resources.CustomResource {
+    /**
+     * Whether to pay automatically when the host is created.
+     * 
+     */
+    @Export(name="autoPay", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> autoPay;
+
+    /**
+     * @return Whether to pay automatically when the host is created.
+     * 
+     */
+    public Output<Optional<Boolean>> autoPay() {
+        return Codegen.optional(this.autoPay);
+    }
     /**
      * Whether to enable automatic renewal. Valid values:
      * - **true**: On
@@ -89,14 +107,14 @@ public class DedicatedPropreHost extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.ecsDeploymentSetId);
     }
     /**
-     * Windows system: length of 2 to 15 characters, allowing the use of upper and lower case letters, numbers. You cannot use only numbers.Other operating systems (such as Linux): the length of 2 to 64 characters, allowing the use of dot (.) to separate characters into multiple segments, each segment allows the use of upper and lower case letters, numbers, but can not use continuous dot (.). Cannot start or end with a dot (.).
+     * Windows system: length of 2 to 15 characters, allowing the use of upper and lower case letters, numbers. You cannot use only numbers. Other operating systems (such as Linux): the length of 2 to 64 characters, allowing the use of dot (.) to separate characters into multiple segments, each segment allows the use of upper and lower case letters, numbers, but can not use continuous dot (.). Cannot start or end with a dot (.).
      * 
      */
     @Export(name="ecsHostName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> ecsHostName;
 
     /**
-     * @return Windows system: length of 2 to 15 characters, allowing the use of upper and lower case letters, numbers. You cannot use only numbers.Other operating systems (such as Linux): the length of 2 to 64 characters, allowing the use of dot (.) to separate characters into multiple segments, each segment allows the use of upper and lower case letters, numbers, but can not use continuous dot (.). Cannot start or end with a dot (.).
+     * @return Windows system: length of 2 to 15 characters, allowing the use of upper and lower case letters, numbers. You cannot use only numbers. Other operating systems (such as Linux): the length of 2 to 64 characters, allowing the use of dot (.) to separate characters into multiple segments, each segment allows the use of upper and lower case letters, numbers, but can not use continuous dot (.). Cannot start or end with a dot (.).
      * 
      */
     public Output<Optional<String>> ecsHostName() {
@@ -203,6 +221,34 @@ public class DedicatedPropreHost extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.imageId);
     }
     /**
+     * Network billing type. Value range: PayByBandwidth: Billing based on fixed bandwidth. PayByTraffic: charges by using the flow meter.
+     * 
+     */
+    @Export(name="internetChargeType", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> internetChargeType;
+
+    /**
+     * @return Network billing type. Value range: PayByBandwidth: Billing based on fixed bandwidth. PayByTraffic: charges by using the flow meter.
+     * 
+     */
+    public Output<Optional<String>> internetChargeType() {
+        return Codegen.optional(this.internetChargeType);
+    }
+    /**
+     * The maximum outbound bandwidth of the public network, in Mbit/s. Value range: 0~100.  Default value: 0. When set to greater than 0, a public IP is automatically created.
+     * 
+     */
+    @Export(name="internetMaxBandwidthOut", refs={Integer.class}, tree="[0]")
+    private Output</* @Nullable */ Integer> internetMaxBandwidthOut;
+
+    /**
+     * @return The maximum outbound bandwidth of the public network, in Mbit/s. Value range: 0~100.  Default value: 0. When set to greater than 0, a public IP is automatically created.
+     * 
+     */
+    public Output<Optional<Integer>> internetMaxBandwidthOut() {
+        return Codegen.optional(this.internetMaxBandwidthOut);
+    }
+    /**
      * The key pair name.
      * 
      */
@@ -301,6 +347,20 @@ public class DedicatedPropreHost extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.periodType);
     }
     /**
+     * The ID of the resource group.
+     * 
+     */
+    @Export(name="resourceGroupId", refs={String.class}, tree="[0]")
+    private Output<String> resourceGroupId;
+
+    /**
+     * @return The ID of the resource group.
+     * 
+     */
+    public Output<String> resourceGroupId() {
+        return this.resourceGroupId;
+    }
+    /**
      * The ID of the security group.
      * 
      */
@@ -313,6 +373,48 @@ public class DedicatedPropreHost extends com.pulumi.resources.CustomResource {
      */
     public Output<String> securityGroupId() {
         return this.securityGroupId;
+    }
+    /**
+     * Host tag information.
+     * 
+     */
+    @Export(name="tags", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
+    private Output</* @Nullable */ Map<String,Object>> tags;
+
+    /**
+     * @return Host tag information.
+     * 
+     */
+    public Output<Optional<Map<String,Object>>> tags() {
+        return Codegen.optional(this.tags);
+    }
+    /**
+     * User-defined script data. The maximum size of the original data is 16kB.
+     * 
+     */
+    @Export(name="userData", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> userData;
+
+    /**
+     * @return User-defined script data. The maximum size of the original data is 16kB.
+     * 
+     */
+    public Output<Optional<String>> userData() {
+        return Codegen.optional(this.userData);
+    }
+    /**
+     * Whether custom data is encoded in Base64 format.
+     * 
+     */
+    @Export(name="userDataEncoded", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> userDataEncoded;
+
+    /**
+     * @return Whether custom data is encoded in Base64 format.
+     * 
+     */
+    public Output<Optional<Boolean>> userDataEncoded() {
+        return Codegen.optional(this.userDataEncoded);
     }
     /**
      * VPCID of the VPC.

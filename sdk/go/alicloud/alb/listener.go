@@ -72,6 +72,8 @@ type Listener struct {
 	SecurityPolicyId pulumi.StringOutput `pulumi:"securityPolicyId"`
 	// The state of the listener. Valid Values: `Running` Or `Stopped`. Valid values: `Running`: The listener is running. `Stopped`: The listener is stopped.
 	Status pulumi.StringOutput `pulumi:"status"`
+	// A mapping of tags to assign to the resource.
+	Tags pulumi.MapOutput `pulumi:"tags"`
 	// The `xForwardFor` Related Attribute Configuration. See `xForwardedForConfig` below for details. **NOTE:** The attribute is valid when the attribute `listenerProtocol` is `HTTPS`.
 	XForwardedForConfig ListenerXForwardedForConfigOutput `pulumi:"xForwardedForConfig"`
 }
@@ -157,6 +159,8 @@ type listenerState struct {
 	SecurityPolicyId *string `pulumi:"securityPolicyId"`
 	// The state of the listener. Valid Values: `Running` Or `Stopped`. Valid values: `Running`: The listener is running. `Stopped`: The listener is stopped.
 	Status *string `pulumi:"status"`
+	// A mapping of tags to assign to the resource.
+	Tags map[string]interface{} `pulumi:"tags"`
 	// The `xForwardFor` Related Attribute Configuration. See `xForwardedForConfig` below for details. **NOTE:** The attribute is valid when the attribute `listenerProtocol` is `HTTPS`.
 	XForwardedForConfig *ListenerXForwardedForConfig `pulumi:"xForwardedForConfig"`
 }
@@ -204,6 +208,8 @@ type ListenerState struct {
 	SecurityPolicyId pulumi.StringPtrInput
 	// The state of the listener. Valid Values: `Running` Or `Stopped`. Valid values: `Running`: The listener is running. `Stopped`: The listener is stopped.
 	Status pulumi.StringPtrInput
+	// A mapping of tags to assign to the resource.
+	Tags pulumi.MapInput
 	// The `xForwardFor` Related Attribute Configuration. See `xForwardedForConfig` below for details. **NOTE:** The attribute is valid when the attribute `listenerProtocol` is `HTTPS`.
 	XForwardedForConfig ListenerXForwardedForConfigPtrInput
 }
@@ -255,6 +261,8 @@ type listenerArgs struct {
 	SecurityPolicyId *string `pulumi:"securityPolicyId"`
 	// The state of the listener. Valid Values: `Running` Or `Stopped`. Valid values: `Running`: The listener is running. `Stopped`: The listener is stopped.
 	Status *string `pulumi:"status"`
+	// A mapping of tags to assign to the resource.
+	Tags map[string]interface{} `pulumi:"tags"`
 	// The `xForwardFor` Related Attribute Configuration. See `xForwardedForConfig` below for details. **NOTE:** The attribute is valid when the attribute `listenerProtocol` is `HTTPS`.
 	XForwardedForConfig *ListenerXForwardedForConfig `pulumi:"xForwardedForConfig"`
 }
@@ -303,6 +311,8 @@ type ListenerArgs struct {
 	SecurityPolicyId pulumi.StringPtrInput
 	// The state of the listener. Valid Values: `Running` Or `Stopped`. Valid values: `Running`: The listener is running. `Stopped`: The listener is stopped.
 	Status pulumi.StringPtrInput
+	// A mapping of tags to assign to the resource.
+	Tags pulumi.MapInput
 	// The `xForwardFor` Related Attribute Configuration. See `xForwardedForConfig` below for details. **NOTE:** The attribute is valid when the attribute `listenerProtocol` is `HTTPS`.
 	XForwardedForConfig ListenerXForwardedForConfigPtrInput
 }
@@ -485,6 +495,11 @@ func (o ListenerOutput) SecurityPolicyId() pulumi.StringOutput {
 // The state of the listener. Valid Values: `Running` Or `Stopped`. Valid values: `Running`: The listener is running. `Stopped`: The listener is stopped.
 func (o ListenerOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *Listener) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+// A mapping of tags to assign to the resource.
+func (o ListenerOutput) Tags() pulumi.MapOutput {
+	return o.ApplyT(func(v *Listener) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
 }
 
 // The `xForwardFor` Related Attribute Configuration. See `xForwardedForConfig` below for details. **NOTE:** The attribute is valid when the attribute `listenerProtocol` is `HTTPS`.

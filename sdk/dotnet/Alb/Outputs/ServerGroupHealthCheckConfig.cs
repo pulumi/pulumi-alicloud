@@ -14,52 +14,53 @@ namespace Pulumi.AliCloud.Alb.Outputs
     public sealed class ServerGroupHealthCheckConfig
     {
         /// <summary>
-        /// The status code for a successful health check.  Multiple status codes can be specified as a list. Valid values: `http_2xx`, `http_3xx`, `http_4xx`, and `http_5xx`. Default value: `http_2xx`. **NOTE:** This
-        /// parameter exists if the `HealthCheckProtocol` parameter is set to `HTTP`.
+        /// The HTTP status codes that are used to indicate whether the backend server passes the health check. Valid values:
+        /// - If `health_check_protocol` is set to `HTTP` or `HTTPS`. Valid values: `http_2xx`, `http_3xx`, `http_4xx`, and `http_5xx`. Default value: `http_2xx`.
+        /// - If `health_check_protocol` is set to `gRPC`. Valid values: `0` to `99`. Default value: `0`.
         /// </summary>
         public readonly ImmutableArray<string> HealthCheckCodes;
         /// <summary>
-        /// The port of the backend server that is used for health checks. Valid values: `0` to `65535`. Default value: `0`. A value of 0 indicates that a backend server port is used for health checks.
+        /// The backend port that is used for health checks. Default value: `0`. Valid values: `0` to `65535`. A value of 0 indicates that a backend server port is used for health checks.
         /// </summary>
         public readonly int? HealthCheckConnectPort;
         /// <summary>
-        /// Indicates whether health checks are enabled. Valid values: `true`, `false`. Default value: `true`.
+        /// Specifies whether to enable the health check feature. Valid values: `true`, `false`.
         /// </summary>
-        public readonly bool? HealthCheckEnabled;
+        public readonly bool HealthCheckEnabled;
         /// <summary>
         /// The domain name that is used for health checks.
         /// </summary>
         public readonly string? HealthCheckHost;
         /// <summary>
-        /// HTTP protocol version. Valid values: `HTTP1.0` and `HTTP1.1`. Default value: `HTTP1.1`. **NOTE:** This parameter exists if the `HealthCheckProtocol` parameter is set to `HTTP`.
+        /// The version of the HTTP protocol. Default value: `HTTP1.1`. Valid values: `HTTP1.0` and `HTTP1.1`. **NOTE:** This parameter takes effect only when `health_check_protocol` is set to `HTTP` or `HTTPS`.
         /// </summary>
         public readonly string? HealthCheckHttpVersion;
         /// <summary>
-        /// The time interval between two consecutive health checks. Unit: seconds. Valid values: `1` to `50`. Default value: `2`.
+        /// The interval at which health checks are performed. Unit: seconds. Default value: `2`. Valid values: `1` to `50`.
         /// </summary>
         public readonly int? HealthCheckInterval;
         /// <summary>
-        /// Health check method. Valid values: `GET` and `HEAD`. Default: `GET`. **NOTE:** This parameter exists if the `HealthCheckProtocol` parameter is set to `HTTP`.
+        /// The HTTP method that is used for health checks. Default value: `GET`. Valid values: `GET`, `POST`, `HEAD`. **NOTE:** This parameter takes effect only when `health_check_protocol` is set to `HTTP`, `HTTPS`, or `gRPC`. From version 1.215.0, `health_check_method` can be set to `POST`.
         /// </summary>
         public readonly string? HealthCheckMethod;
         /// <summary>
-        /// The forwarding rule path of health checks. **NOTE:** This parameter exists if the `HealthCheckProtocol` parameter is set to `HTTP`.
+        /// The path that is used for health checks. **NOTE:** This parameter takes effect only when `health_check_protocol` is set to `HTTP` or `HTTPS`.
         /// </summary>
         public readonly string? HealthCheckPath;
         /// <summary>
-        /// Health check protocol. Valid values: `HTTP` and `TCP`, `HTTPS`.
+        /// The protocol that is used for health checks. Valid values: `HTTP`, `HTTPS`, `TCP` and `gRPC`.
         /// </summary>
         public readonly string? HealthCheckProtocol;
         /// <summary>
-        /// The timeout period of a health check response. If a backend Elastic Compute Service (ECS) instance does not send an expected response within the specified period of time, the ECS instance is considered unhealthy. Unit: seconds. Valid values: 1 to 300. Default value: 5. **NOTE:** If the value of the `HealthCHeckTimeout` parameter is smaller than that of the `HealthCheckInterval` parameter, the value of the `HealthCHeckTimeout` parameter is ignored and the value of the `HealthCheckInterval` parameter is regarded as the timeout period.
+        /// The timeout period for a health check response. If a backend Elastic Compute Service (ECS) instance does not send an expected response within the specified period of time, the ECS instance is considered unhealthy. Unit: seconds. Default value: `5`. Valid values: `1` to `300`. **NOTE:** If the value of `health_check_timeout` is smaller than the value of `health_check_interval`, the value of `health_check_timeout` is ignored and the value of `health_check_interval` is used.
         /// </summary>
         public readonly int? HealthCheckTimeout;
         /// <summary>
-        /// The number of health checks that an unhealthy backend server must pass consecutively before it is declared healthy. In this case, the health check state is changed from fail to success. Valid values: 2 to 10. Default value: 3.
+        /// The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy. Default value: `3`. Valid values: `2` to `10`.
         /// </summary>
         public readonly int? HealthyThreshold;
         /// <summary>
-        /// The number of consecutive health checks that a healthy backend server must consecutively fail before it is declared unhealthy. In this case, the health check state is changed from success to fail. Valid values: `2` to `10`. Default value: `3`.
+        /// The number of times that a healthy backend server must consecutively fail health checks before it is declared unhealthy. Default value: `3`. Valid values: `2` to `10`.
         /// </summary>
         public readonly int? UnhealthyThreshold;
 
@@ -69,7 +70,7 @@ namespace Pulumi.AliCloud.Alb.Outputs
 
             int? healthCheckConnectPort,
 
-            bool? healthCheckEnabled,
+            bool healthCheckEnabled,
 
             string? healthCheckHost,
 

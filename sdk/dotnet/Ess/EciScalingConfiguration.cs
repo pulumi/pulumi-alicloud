@@ -25,11 +25,20 @@ namespace Pulumi.AliCloud.Ess
     /// using System.Linq;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
+    /// using Random = Pulumi.Random;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var config = new Config();
-    ///     var name = config.Get("name") ?? "terraform-example";
+    ///     var defaultRandomInteger = new List&lt;Random.RandomInteger&gt;();
+    ///     for (var rangeIndex = 0; rangeIndex &lt; 2; rangeIndex++)
+    ///     {
+    ///         var range = new { Value = rangeIndex };
+    ///         defaultRandomInteger.Add(new Random.RandomInteger($"defaultRandomInteger-{range.Value}", new()
+    ///         {
+    ///             Max = 99999,
+    ///             Min = 10000,
+    ///         }));
+    ///     }
     ///     var defaultZones = AliCloud.GetZones.Invoke(new()
     ///     {
     ///         AvailableDiskCategory = "cloud_efficiency",
@@ -38,7 +47,7 @@ namespace Pulumi.AliCloud.Ess
     /// 
     ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
     ///     {
-    ///         VpcName = name,
+    ///         VpcName = defaultRandomInteger[0].Result.Apply(result =&gt; $"terraform-example-{result}"),
     ///         CidrBlock = "172.16.0.0/16",
     ///     });
     /// 
@@ -47,7 +56,7 @@ namespace Pulumi.AliCloud.Ess
     ///         VpcId = defaultNetwork.Id,
     ///         CidrBlock = "172.16.0.0/24",
     ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
-    ///         VswitchName = name,
+    ///         VswitchName = defaultRandomInteger[0].Result.Apply(result =&gt; $"terraform-example-{result}"),
     ///     });
     /// 
     ///     var defaultSecurityGroup = new AliCloud.Ecs.SecurityGroup("defaultSecurityGroup", new()
@@ -59,7 +68,7 @@ namespace Pulumi.AliCloud.Ess
     ///     {
     ///         MinSize = 0,
     ///         MaxSize = 1,
-    ///         ScalingGroupName = name,
+    ///         ScalingGroupName = defaultRandomInteger[0].Result.Apply(result =&gt; $"terraform-example-{result}"),
     ///         RemovalPolicies = new[]
     ///         {
     ///             "OldestInstance",

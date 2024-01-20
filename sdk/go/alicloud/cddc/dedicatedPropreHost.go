@@ -24,6 +24,8 @@ import (
 type DedicatedPropreHost struct {
 	pulumi.CustomResourceState
 
+	// Whether to pay automatically when the host is created.
+	AutoPay pulumi.BoolPtrOutput `pulumi:"autoPay"`
 	// Whether to enable automatic renewal. Valid values:
 	// - **true**: On
 	// - **false** (default): Off
@@ -34,7 +36,7 @@ type DedicatedPropreHost struct {
 	EcsClassLists DedicatedPropreHostEcsClassListArrayOutput `pulumi:"ecsClassLists"`
 	// The ID of the cloud server deployment set.
 	EcsDeploymentSetId pulumi.StringPtrOutput `pulumi:"ecsDeploymentSetId"`
-	// Windows system: length of 2 to 15 characters, allowing the use of upper and lower case letters, numbers. You cannot use only numbers.Other operating systems (such as Linux): the length of 2 to 64 characters, allowing the use of dot (.) to separate characters into multiple segments, each segment allows the use of upper and lower case letters, numbers, but can not use continuous dot (.). Cannot start or end with a dot (.).
+	// Windows system: length of 2 to 15 characters, allowing the use of upper and lower case letters, numbers. You cannot use only numbers. Other operating systems (such as Linux): the length of 2 to 64 characters, allowing the use of dot (.) to separate characters into multiple segments, each segment allows the use of upper and lower case letters, numbers, but can not use continuous dot (.). Cannot start or end with a dot (.).
 	EcsHostName pulumi.StringPtrOutput `pulumi:"ecsHostName"`
 	// ECS instance ID.
 	EcsInstanceId pulumi.StringOutput `pulumi:"ecsInstanceId"`
@@ -56,6 +58,10 @@ type DedicatedPropreHost struct {
 	// The ID of the custom image.
 	// > **NOTE:**  If you need to use the default image, you do not need to fill it in.
 	ImageId pulumi.StringPtrOutput `pulumi:"imageId"`
+	// Network billing type. Value range: PayByBandwidth: Billing based on fixed bandwidth. PayByTraffic: charges by using the flow meter.
+	InternetChargeType pulumi.StringPtrOutput `pulumi:"internetChargeType"`
+	// The maximum outbound bandwidth of the public network, in Mbit/s. Value range: 0~100.  Default value: 0. When set to greater than 0, a public IP is automatically created.
+	InternetMaxBandwidthOut pulumi.IntPtrOutput `pulumi:"internetMaxBandwidthOut"`
 	// The key pair name.
 	KeyPairName pulumi.StringPtrOutput `pulumi:"keyPairName"`
 	// Host login password, which can be set later. The password must meet the following requirements:
@@ -75,8 +81,16 @@ type DedicatedPropreHost struct {
 	Period pulumi.StringPtrOutput `pulumi:"period"`
 	// The subscription type. Currently, only **Monthly** (subscription) is supported.
 	PeriodType pulumi.StringPtrOutput `pulumi:"periodType"`
+	// The ID of the resource group.
+	ResourceGroupId pulumi.StringOutput `pulumi:"resourceGroupId"`
 	// The ID of the security group.
 	SecurityGroupId pulumi.StringOutput `pulumi:"securityGroupId"`
+	// Host tag information.
+	Tags pulumi.MapOutput `pulumi:"tags"`
+	// User-defined script data. The maximum size of the original data is 16kB.
+	UserData pulumi.StringPtrOutput `pulumi:"userData"`
+	// Whether custom data is encoded in Base64 format.
+	UserDataEncoded pulumi.BoolPtrOutput `pulumi:"userDataEncoded"`
 	// VPCID of the VPC.
 	VpcId pulumi.StringOutput `pulumi:"vpcId"`
 	// The ID of the virtual switch.
@@ -134,6 +148,8 @@ func GetDedicatedPropreHost(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering DedicatedPropreHost resources.
 type dedicatedPropreHostState struct {
+	// Whether to pay automatically when the host is created.
+	AutoPay *bool `pulumi:"autoPay"`
 	// Whether to enable automatic renewal. Valid values:
 	// - **true**: On
 	// - **false** (default): Off
@@ -144,7 +160,7 @@ type dedicatedPropreHostState struct {
 	EcsClassLists []DedicatedPropreHostEcsClassList `pulumi:"ecsClassLists"`
 	// The ID of the cloud server deployment set.
 	EcsDeploymentSetId *string `pulumi:"ecsDeploymentSetId"`
-	// Windows system: length of 2 to 15 characters, allowing the use of upper and lower case letters, numbers. You cannot use only numbers.Other operating systems (such as Linux): the length of 2 to 64 characters, allowing the use of dot (.) to separate characters into multiple segments, each segment allows the use of upper and lower case letters, numbers, but can not use continuous dot (.). Cannot start or end with a dot (.).
+	// Windows system: length of 2 to 15 characters, allowing the use of upper and lower case letters, numbers. You cannot use only numbers. Other operating systems (such as Linux): the length of 2 to 64 characters, allowing the use of dot (.) to separate characters into multiple segments, each segment allows the use of upper and lower case letters, numbers, but can not use continuous dot (.). Cannot start or end with a dot (.).
 	EcsHostName *string `pulumi:"ecsHostName"`
 	// ECS instance ID.
 	EcsInstanceId *string `pulumi:"ecsInstanceId"`
@@ -166,6 +182,10 @@ type dedicatedPropreHostState struct {
 	// The ID of the custom image.
 	// > **NOTE:**  If you need to use the default image, you do not need to fill it in.
 	ImageId *string `pulumi:"imageId"`
+	// Network billing type. Value range: PayByBandwidth: Billing based on fixed bandwidth. PayByTraffic: charges by using the flow meter.
+	InternetChargeType *string `pulumi:"internetChargeType"`
+	// The maximum outbound bandwidth of the public network, in Mbit/s. Value range: 0~100.  Default value: 0. When set to greater than 0, a public IP is automatically created.
+	InternetMaxBandwidthOut *int `pulumi:"internetMaxBandwidthOut"`
 	// The key pair name.
 	KeyPairName *string `pulumi:"keyPairName"`
 	// Host login password, which can be set later. The password must meet the following requirements:
@@ -185,8 +205,16 @@ type dedicatedPropreHostState struct {
 	Period *string `pulumi:"period"`
 	// The subscription type. Currently, only **Monthly** (subscription) is supported.
 	PeriodType *string `pulumi:"periodType"`
+	// The ID of the resource group.
+	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// The ID of the security group.
 	SecurityGroupId *string `pulumi:"securityGroupId"`
+	// Host tag information.
+	Tags map[string]interface{} `pulumi:"tags"`
+	// User-defined script data. The maximum size of the original data is 16kB.
+	UserData *string `pulumi:"userData"`
+	// Whether custom data is encoded in Base64 format.
+	UserDataEncoded *bool `pulumi:"userDataEncoded"`
 	// VPCID of the VPC.
 	VpcId *string `pulumi:"vpcId"`
 	// The ID of the virtual switch.
@@ -194,6 +222,8 @@ type dedicatedPropreHostState struct {
 }
 
 type DedicatedPropreHostState struct {
+	// Whether to pay automatically when the host is created.
+	AutoPay pulumi.BoolPtrInput
 	// Whether to enable automatic renewal. Valid values:
 	// - **true**: On
 	// - **false** (default): Off
@@ -204,7 +234,7 @@ type DedicatedPropreHostState struct {
 	EcsClassLists DedicatedPropreHostEcsClassListArrayInput
 	// The ID of the cloud server deployment set.
 	EcsDeploymentSetId pulumi.StringPtrInput
-	// Windows system: length of 2 to 15 characters, allowing the use of upper and lower case letters, numbers. You cannot use only numbers.Other operating systems (such as Linux): the length of 2 to 64 characters, allowing the use of dot (.) to separate characters into multiple segments, each segment allows the use of upper and lower case letters, numbers, but can not use continuous dot (.). Cannot start or end with a dot (.).
+	// Windows system: length of 2 to 15 characters, allowing the use of upper and lower case letters, numbers. You cannot use only numbers. Other operating systems (such as Linux): the length of 2 to 64 characters, allowing the use of dot (.) to separate characters into multiple segments, each segment allows the use of upper and lower case letters, numbers, but can not use continuous dot (.). Cannot start or end with a dot (.).
 	EcsHostName pulumi.StringPtrInput
 	// ECS instance ID.
 	EcsInstanceId pulumi.StringPtrInput
@@ -226,6 +256,10 @@ type DedicatedPropreHostState struct {
 	// The ID of the custom image.
 	// > **NOTE:**  If you need to use the default image, you do not need to fill it in.
 	ImageId pulumi.StringPtrInput
+	// Network billing type. Value range: PayByBandwidth: Billing based on fixed bandwidth. PayByTraffic: charges by using the flow meter.
+	InternetChargeType pulumi.StringPtrInput
+	// The maximum outbound bandwidth of the public network, in Mbit/s. Value range: 0~100.  Default value: 0. When set to greater than 0, a public IP is automatically created.
+	InternetMaxBandwidthOut pulumi.IntPtrInput
 	// The key pair name.
 	KeyPairName pulumi.StringPtrInput
 	// Host login password, which can be set later. The password must meet the following requirements:
@@ -245,8 +279,16 @@ type DedicatedPropreHostState struct {
 	Period pulumi.StringPtrInput
 	// The subscription type. Currently, only **Monthly** (subscription) is supported.
 	PeriodType pulumi.StringPtrInput
+	// The ID of the resource group.
+	ResourceGroupId pulumi.StringPtrInput
 	// The ID of the security group.
 	SecurityGroupId pulumi.StringPtrInput
+	// Host tag information.
+	Tags pulumi.MapInput
+	// User-defined script data. The maximum size of the original data is 16kB.
+	UserData pulumi.StringPtrInput
+	// Whether custom data is encoded in Base64 format.
+	UserDataEncoded pulumi.BoolPtrInput
 	// VPCID of the VPC.
 	VpcId pulumi.StringPtrInput
 	// The ID of the virtual switch.
@@ -258,6 +300,8 @@ func (DedicatedPropreHostState) ElementType() reflect.Type {
 }
 
 type dedicatedPropreHostArgs struct {
+	// Whether to pay automatically when the host is created.
+	AutoPay *bool `pulumi:"autoPay"`
 	// Whether to enable automatic renewal. Valid values:
 	// - **true**: On
 	// - **false** (default): Off
@@ -268,7 +312,7 @@ type dedicatedPropreHostArgs struct {
 	EcsClassLists []DedicatedPropreHostEcsClassList `pulumi:"ecsClassLists"`
 	// The ID of the cloud server deployment set.
 	EcsDeploymentSetId *string `pulumi:"ecsDeploymentSetId"`
-	// Windows system: length of 2 to 15 characters, allowing the use of upper and lower case letters, numbers. You cannot use only numbers.Other operating systems (such as Linux): the length of 2 to 64 characters, allowing the use of dot (.) to separate characters into multiple segments, each segment allows the use of upper and lower case letters, numbers, but can not use continuous dot (.). Cannot start or end with a dot (.).
+	// Windows system: length of 2 to 15 characters, allowing the use of upper and lower case letters, numbers. You cannot use only numbers. Other operating systems (such as Linux): the length of 2 to 64 characters, allowing the use of dot (.) to separate characters into multiple segments, each segment allows the use of upper and lower case letters, numbers, but can not use continuous dot (.). Cannot start or end with a dot (.).
 	EcsHostName *string `pulumi:"ecsHostName"`
 	// The instance name. It must be 2 to 128 characters in length and must start with an uppercase or lowercase letter or a Chinese character. It cannot start with http:// or https. Can contain Chinese, English, numbers, half-width colons (:), underscores (_), half-width periods (.), or dashes (-). The default value is the InstanceId of the instance.
 	EcsInstanceName *string `pulumi:"ecsInstanceName"`
@@ -288,6 +332,10 @@ type dedicatedPropreHostArgs struct {
 	// The ID of the custom image.
 	// > **NOTE:**  If you need to use the default image, you do not need to fill it in.
 	ImageId *string `pulumi:"imageId"`
+	// Network billing type. Value range: PayByBandwidth: Billing based on fixed bandwidth. PayByTraffic: charges by using the flow meter.
+	InternetChargeType *string `pulumi:"internetChargeType"`
+	// The maximum outbound bandwidth of the public network, in Mbit/s. Value range: 0~100.  Default value: 0. When set to greater than 0, a public IP is automatically created.
+	InternetMaxBandwidthOut *int `pulumi:"internetMaxBandwidthOut"`
 	// The key pair name.
 	KeyPairName *string `pulumi:"keyPairName"`
 	// Host login password, which can be set later. The password must meet the following requirements:
@@ -307,8 +355,16 @@ type dedicatedPropreHostArgs struct {
 	Period *string `pulumi:"period"`
 	// The subscription type. Currently, only **Monthly** (subscription) is supported.
 	PeriodType *string `pulumi:"periodType"`
+	// The ID of the resource group.
+	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// The ID of the security group.
 	SecurityGroupId string `pulumi:"securityGroupId"`
+	// Host tag information.
+	Tags map[string]interface{} `pulumi:"tags"`
+	// User-defined script data. The maximum size of the original data is 16kB.
+	UserData *string `pulumi:"userData"`
+	// Whether custom data is encoded in Base64 format.
+	UserDataEncoded *bool `pulumi:"userDataEncoded"`
 	// VPCID of the VPC.
 	VpcId string `pulumi:"vpcId"`
 	// The ID of the virtual switch.
@@ -317,6 +373,8 @@ type dedicatedPropreHostArgs struct {
 
 // The set of arguments for constructing a DedicatedPropreHost resource.
 type DedicatedPropreHostArgs struct {
+	// Whether to pay automatically when the host is created.
+	AutoPay pulumi.BoolPtrInput
 	// Whether to enable automatic renewal. Valid values:
 	// - **true**: On
 	// - **false** (default): Off
@@ -327,7 +385,7 @@ type DedicatedPropreHostArgs struct {
 	EcsClassLists DedicatedPropreHostEcsClassListArrayInput
 	// The ID of the cloud server deployment set.
 	EcsDeploymentSetId pulumi.StringPtrInput
-	// Windows system: length of 2 to 15 characters, allowing the use of upper and lower case letters, numbers. You cannot use only numbers.Other operating systems (such as Linux): the length of 2 to 64 characters, allowing the use of dot (.) to separate characters into multiple segments, each segment allows the use of upper and lower case letters, numbers, but can not use continuous dot (.). Cannot start or end with a dot (.).
+	// Windows system: length of 2 to 15 characters, allowing the use of upper and lower case letters, numbers. You cannot use only numbers. Other operating systems (such as Linux): the length of 2 to 64 characters, allowing the use of dot (.) to separate characters into multiple segments, each segment allows the use of upper and lower case letters, numbers, but can not use continuous dot (.). Cannot start or end with a dot (.).
 	EcsHostName pulumi.StringPtrInput
 	// The instance name. It must be 2 to 128 characters in length and must start with an uppercase or lowercase letter or a Chinese character. It cannot start with http:// or https. Can contain Chinese, English, numbers, half-width colons (:), underscores (_), half-width periods (.), or dashes (-). The default value is the InstanceId of the instance.
 	EcsInstanceName pulumi.StringPtrInput
@@ -347,6 +405,10 @@ type DedicatedPropreHostArgs struct {
 	// The ID of the custom image.
 	// > **NOTE:**  If you need to use the default image, you do not need to fill it in.
 	ImageId pulumi.StringPtrInput
+	// Network billing type. Value range: PayByBandwidth: Billing based on fixed bandwidth. PayByTraffic: charges by using the flow meter.
+	InternetChargeType pulumi.StringPtrInput
+	// The maximum outbound bandwidth of the public network, in Mbit/s. Value range: 0~100.  Default value: 0. When set to greater than 0, a public IP is automatically created.
+	InternetMaxBandwidthOut pulumi.IntPtrInput
 	// The key pair name.
 	KeyPairName pulumi.StringPtrInput
 	// Host login password, which can be set later. The password must meet the following requirements:
@@ -366,8 +428,16 @@ type DedicatedPropreHostArgs struct {
 	Period pulumi.StringPtrInput
 	// The subscription type. Currently, only **Monthly** (subscription) is supported.
 	PeriodType pulumi.StringPtrInput
+	// The ID of the resource group.
+	ResourceGroupId pulumi.StringPtrInput
 	// The ID of the security group.
 	SecurityGroupId pulumi.StringInput
+	// Host tag information.
+	Tags pulumi.MapInput
+	// User-defined script data. The maximum size of the original data is 16kB.
+	UserData pulumi.StringPtrInput
+	// Whether custom data is encoded in Base64 format.
+	UserDataEncoded pulumi.BoolPtrInput
 	// VPCID of the VPC.
 	VpcId pulumi.StringInput
 	// The ID of the virtual switch.
@@ -461,6 +531,11 @@ func (o DedicatedPropreHostOutput) ToDedicatedPropreHostOutputWithContext(ctx co
 	return o
 }
 
+// Whether to pay automatically when the host is created.
+func (o DedicatedPropreHostOutput) AutoPay() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DedicatedPropreHost) pulumi.BoolPtrOutput { return v.AutoPay }).(pulumi.BoolPtrOutput)
+}
+
 // Whether to enable automatic renewal. Valid values:
 // - **true**: On
 // - **false** (default): Off
@@ -483,7 +558,7 @@ func (o DedicatedPropreHostOutput) EcsDeploymentSetId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DedicatedPropreHost) pulumi.StringPtrOutput { return v.EcsDeploymentSetId }).(pulumi.StringPtrOutput)
 }
 
-// Windows system: length of 2 to 15 characters, allowing the use of upper and lower case letters, numbers. You cannot use only numbers.Other operating systems (such as Linux): the length of 2 to 64 characters, allowing the use of dot (.) to separate characters into multiple segments, each segment allows the use of upper and lower case letters, numbers, but can not use continuous dot (.). Cannot start or end with a dot (.).
+// Windows system: length of 2 to 15 characters, allowing the use of upper and lower case letters, numbers. You cannot use only numbers. Other operating systems (such as Linux): the length of 2 to 64 characters, allowing the use of dot (.) to separate characters into multiple segments, each segment allows the use of upper and lower case letters, numbers, but can not use continuous dot (.). Cannot start or end with a dot (.).
 func (o DedicatedPropreHostOutput) EcsHostName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DedicatedPropreHost) pulumi.StringPtrOutput { return v.EcsHostName }).(pulumi.StringPtrOutput)
 }
@@ -526,6 +601,16 @@ func (o DedicatedPropreHostOutput) ImageId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DedicatedPropreHost) pulumi.StringPtrOutput { return v.ImageId }).(pulumi.StringPtrOutput)
 }
 
+// Network billing type. Value range: PayByBandwidth: Billing based on fixed bandwidth. PayByTraffic: charges by using the flow meter.
+func (o DedicatedPropreHostOutput) InternetChargeType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DedicatedPropreHost) pulumi.StringPtrOutput { return v.InternetChargeType }).(pulumi.StringPtrOutput)
+}
+
+// The maximum outbound bandwidth of the public network, in Mbit/s. Value range: 0~100.  Default value: 0. When set to greater than 0, a public IP is automatically created.
+func (o DedicatedPropreHostOutput) InternetMaxBandwidthOut() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *DedicatedPropreHost) pulumi.IntPtrOutput { return v.InternetMaxBandwidthOut }).(pulumi.IntPtrOutput)
+}
+
 // The key pair name.
 func (o DedicatedPropreHostOutput) KeyPairName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DedicatedPropreHost) pulumi.StringPtrOutput { return v.KeyPairName }).(pulumi.StringPtrOutput)
@@ -563,9 +648,29 @@ func (o DedicatedPropreHostOutput) PeriodType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DedicatedPropreHost) pulumi.StringPtrOutput { return v.PeriodType }).(pulumi.StringPtrOutput)
 }
 
+// The ID of the resource group.
+func (o DedicatedPropreHostOutput) ResourceGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v *DedicatedPropreHost) pulumi.StringOutput { return v.ResourceGroupId }).(pulumi.StringOutput)
+}
+
 // The ID of the security group.
 func (o DedicatedPropreHostOutput) SecurityGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v *DedicatedPropreHost) pulumi.StringOutput { return v.SecurityGroupId }).(pulumi.StringOutput)
+}
+
+// Host tag information.
+func (o DedicatedPropreHostOutput) Tags() pulumi.MapOutput {
+	return o.ApplyT(func(v *DedicatedPropreHost) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+}
+
+// User-defined script data. The maximum size of the original data is 16kB.
+func (o DedicatedPropreHostOutput) UserData() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DedicatedPropreHost) pulumi.StringPtrOutput { return v.UserData }).(pulumi.StringPtrOutput)
+}
+
+// Whether custom data is encoded in Base64 format.
+func (o DedicatedPropreHostOutput) UserDataEncoded() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DedicatedPropreHost) pulumi.BoolPtrOutput { return v.UserDataEncoded }).(pulumi.BoolPtrOutput)
 }
 
 // VPCID of the VPC.

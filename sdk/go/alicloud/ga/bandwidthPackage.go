@@ -78,7 +78,7 @@ type BandwidthPackage struct {
 	// The bandwidth type of the bandwidth. Valid values: `Advanced`, `Basic`, `Enhanced`. If `type` is set to `Basic`, this parameter is required.
 	// > **NOTE:** At present, only basic can be configured to enhanced, but not enhanced and advanced to other types of accelerated bandwidth.
 	BandwidthType pulumi.StringPtrOutput `pulumi:"bandwidthType"`
-	// The billing type. Valid values: `PayBy95`, `PayByTraffic`.
+	// The billing type. Valid values: `PayBy95`, `PayByTraffic`. **NOTE:** `billingType` is valid only when `paymentType` is set to `PayAsYouGo`.
 	BillingType pulumi.StringPtrOutput `pulumi:"billingType"`
 	// Interworking area A of cross domain acceleration package. Only international stations support returning this parameter. Default value: `China-mainland`.
 	CbnGeographicRegionIda pulumi.StringOutput `pulumi:"cbnGeographicRegionIda"`
@@ -92,7 +92,7 @@ type BandwidthPackage struct {
 	PaymentType pulumi.StringPtrOutput `pulumi:"paymentType"`
 	// The code of the coupon. **NOTE:** The `promotionOptionNo` takes effect only for accounts registered on the international site (alibabacloud.com).
 	PromotionOptionNo pulumi.StringPtrOutput `pulumi:"promotionOptionNo"`
-	// The minimum percentage for the pay-by-95th-percentile metering method. Valid values: `30` to `100`.
+	// The minimum percentage for the pay-by-95th-percentile metering method. Valid values: `30` to `100`. **NOTE:** `ratio` is valid only when `billingType` is set to `PayBy95`.
 	Ratio pulumi.IntPtrOutput `pulumi:"ratio"`
 	// Whether to renew a bandwidth packet. automatically or not. Valid values:
 	RenewalStatus pulumi.StringOutput `pulumi:"renewalStatus"`
@@ -153,7 +153,7 @@ type bandwidthPackageState struct {
 	// The bandwidth type of the bandwidth. Valid values: `Advanced`, `Basic`, `Enhanced`. If `type` is set to `Basic`, this parameter is required.
 	// > **NOTE:** At present, only basic can be configured to enhanced, but not enhanced and advanced to other types of accelerated bandwidth.
 	BandwidthType *string `pulumi:"bandwidthType"`
-	// The billing type. Valid values: `PayBy95`, `PayByTraffic`.
+	// The billing type. Valid values: `PayBy95`, `PayByTraffic`. **NOTE:** `billingType` is valid only when `paymentType` is set to `PayAsYouGo`.
 	BillingType *string `pulumi:"billingType"`
 	// Interworking area A of cross domain acceleration package. Only international stations support returning this parameter. Default value: `China-mainland`.
 	CbnGeographicRegionIda *string `pulumi:"cbnGeographicRegionIda"`
@@ -167,7 +167,7 @@ type bandwidthPackageState struct {
 	PaymentType *string `pulumi:"paymentType"`
 	// The code of the coupon. **NOTE:** The `promotionOptionNo` takes effect only for accounts registered on the international site (alibabacloud.com).
 	PromotionOptionNo *string `pulumi:"promotionOptionNo"`
-	// The minimum percentage for the pay-by-95th-percentile metering method. Valid values: `30` to `100`.
+	// The minimum percentage for the pay-by-95th-percentile metering method. Valid values: `30` to `100`. **NOTE:** `ratio` is valid only when `billingType` is set to `PayBy95`.
 	Ratio *int `pulumi:"ratio"`
 	// Whether to renew a bandwidth packet. automatically or not. Valid values:
 	RenewalStatus *string `pulumi:"renewalStatus"`
@@ -193,7 +193,7 @@ type BandwidthPackageState struct {
 	// The bandwidth type of the bandwidth. Valid values: `Advanced`, `Basic`, `Enhanced`. If `type` is set to `Basic`, this parameter is required.
 	// > **NOTE:** At present, only basic can be configured to enhanced, but not enhanced and advanced to other types of accelerated bandwidth.
 	BandwidthType pulumi.StringPtrInput
-	// The billing type. Valid values: `PayBy95`, `PayByTraffic`.
+	// The billing type. Valid values: `PayBy95`, `PayByTraffic`. **NOTE:** `billingType` is valid only when `paymentType` is set to `PayAsYouGo`.
 	BillingType pulumi.StringPtrInput
 	// Interworking area A of cross domain acceleration package. Only international stations support returning this parameter. Default value: `China-mainland`.
 	CbnGeographicRegionIda pulumi.StringPtrInput
@@ -207,7 +207,7 @@ type BandwidthPackageState struct {
 	PaymentType pulumi.StringPtrInput
 	// The code of the coupon. **NOTE:** The `promotionOptionNo` takes effect only for accounts registered on the international site (alibabacloud.com).
 	PromotionOptionNo pulumi.StringPtrInput
-	// The minimum percentage for the pay-by-95th-percentile metering method. Valid values: `30` to `100`.
+	// The minimum percentage for the pay-by-95th-percentile metering method. Valid values: `30` to `100`. **NOTE:** `ratio` is valid only when `billingType` is set to `PayBy95`.
 	Ratio pulumi.IntPtrInput
 	// Whether to renew a bandwidth packet. automatically or not. Valid values:
 	RenewalStatus pulumi.StringPtrInput
@@ -237,7 +237,7 @@ type bandwidthPackageArgs struct {
 	// The bandwidth type of the bandwidth. Valid values: `Advanced`, `Basic`, `Enhanced`. If `type` is set to `Basic`, this parameter is required.
 	// > **NOTE:** At present, only basic can be configured to enhanced, but not enhanced and advanced to other types of accelerated bandwidth.
 	BandwidthType *string `pulumi:"bandwidthType"`
-	// The billing type. Valid values: `PayBy95`, `PayByTraffic`.
+	// The billing type. Valid values: `PayBy95`, `PayByTraffic`. **NOTE:** `billingType` is valid only when `paymentType` is set to `PayAsYouGo`.
 	BillingType *string `pulumi:"billingType"`
 	// Interworking area A of cross domain acceleration package. Only international stations support returning this parameter. Default value: `China-mainland`.
 	CbnGeographicRegionIda *string `pulumi:"cbnGeographicRegionIda"`
@@ -251,7 +251,7 @@ type bandwidthPackageArgs struct {
 	PaymentType *string `pulumi:"paymentType"`
 	// The code of the coupon. **NOTE:** The `promotionOptionNo` takes effect only for accounts registered on the international site (alibabacloud.com).
 	PromotionOptionNo *string `pulumi:"promotionOptionNo"`
-	// The minimum percentage for the pay-by-95th-percentile metering method. Valid values: `30` to `100`.
+	// The minimum percentage for the pay-by-95th-percentile metering method. Valid values: `30` to `100`. **NOTE:** `ratio` is valid only when `billingType` is set to `PayBy95`.
 	Ratio *int `pulumi:"ratio"`
 	// Whether to renew a bandwidth packet. automatically or not. Valid values:
 	RenewalStatus *string `pulumi:"renewalStatus"`
@@ -276,7 +276,7 @@ type BandwidthPackageArgs struct {
 	// The bandwidth type of the bandwidth. Valid values: `Advanced`, `Basic`, `Enhanced`. If `type` is set to `Basic`, this parameter is required.
 	// > **NOTE:** At present, only basic can be configured to enhanced, but not enhanced and advanced to other types of accelerated bandwidth.
 	BandwidthType pulumi.StringPtrInput
-	// The billing type. Valid values: `PayBy95`, `PayByTraffic`.
+	// The billing type. Valid values: `PayBy95`, `PayByTraffic`. **NOTE:** `billingType` is valid only when `paymentType` is set to `PayAsYouGo`.
 	BillingType pulumi.StringPtrInput
 	// Interworking area A of cross domain acceleration package. Only international stations support returning this parameter. Default value: `China-mainland`.
 	CbnGeographicRegionIda pulumi.StringPtrInput
@@ -290,7 +290,7 @@ type BandwidthPackageArgs struct {
 	PaymentType pulumi.StringPtrInput
 	// The code of the coupon. **NOTE:** The `promotionOptionNo` takes effect only for accounts registered on the international site (alibabacloud.com).
 	PromotionOptionNo pulumi.StringPtrInput
-	// The minimum percentage for the pay-by-95th-percentile metering method. Valid values: `30` to `100`.
+	// The minimum percentage for the pay-by-95th-percentile metering method. Valid values: `30` to `100`. **NOTE:** `ratio` is valid only when `billingType` is set to `PayBy95`.
 	Ratio pulumi.IntPtrInput
 	// Whether to renew a bandwidth packet. automatically or not. Valid values:
 	RenewalStatus pulumi.StringPtrInput
@@ -418,7 +418,7 @@ func (o BandwidthPackageOutput) BandwidthType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BandwidthPackage) pulumi.StringPtrOutput { return v.BandwidthType }).(pulumi.StringPtrOutput)
 }
 
-// The billing type. Valid values: `PayBy95`, `PayByTraffic`.
+// The billing type. Valid values: `PayBy95`, `PayByTraffic`. **NOTE:** `billingType` is valid only when `paymentType` is set to `PayAsYouGo`.
 func (o BandwidthPackageOutput) BillingType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BandwidthPackage) pulumi.StringPtrOutput { return v.BillingType }).(pulumi.StringPtrOutput)
 }
@@ -453,7 +453,7 @@ func (o BandwidthPackageOutput) PromotionOptionNo() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BandwidthPackage) pulumi.StringPtrOutput { return v.PromotionOptionNo }).(pulumi.StringPtrOutput)
 }
 
-// The minimum percentage for the pay-by-95th-percentile metering method. Valid values: `30` to `100`.
+// The minimum percentage for the pay-by-95th-percentile metering method. Valid values: `30` to `100`. **NOTE:** `ratio` is valid only when `billingType` is set to `PayBy95`.
 func (o BandwidthPackageOutput) Ratio() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *BandwidthPackage) pulumi.IntPtrOutput { return v.Ratio }).(pulumi.IntPtrOutput)
 }

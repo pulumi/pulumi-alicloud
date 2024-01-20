@@ -3,14 +3,21 @@
 
 package com.pulumi.alicloud.eci.outputs;
 
+import com.pulumi.alicloud.eci.outputs.ContainerGroupInitContainerEnvironmentVarFieldRef;
 import com.pulumi.core.annotations.CustomType;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
 @CustomType
 public final class ContainerGroupInitContainerEnvironmentVar {
+    /**
+     * @return The reference of the environment variable. See `field_ref` below.
+     * 
+     */
+    private @Nullable List<ContainerGroupInitContainerEnvironmentVarFieldRef> fieldReves;
     /**
      * @return The name of the variable. The name can be 1 to 128 characters in length and can contain letters, digits, and underscores (_). It cannot start with a digit.
      * 
@@ -23,6 +30,13 @@ public final class ContainerGroupInitContainerEnvironmentVar {
     private @Nullable String value;
 
     private ContainerGroupInitContainerEnvironmentVar() {}
+    /**
+     * @return The reference of the environment variable. See `field_ref` below.
+     * 
+     */
+    public List<ContainerGroupInitContainerEnvironmentVarFieldRef> fieldReves() {
+        return this.fieldReves == null ? List.of() : this.fieldReves;
+    }
     /**
      * @return The name of the variable. The name can be 1 to 128 characters in length and can contain letters, digits, and underscores (_). It cannot start with a digit.
      * 
@@ -47,15 +61,26 @@ public final class ContainerGroupInitContainerEnvironmentVar {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable List<ContainerGroupInitContainerEnvironmentVarFieldRef> fieldReves;
         private @Nullable String key;
         private @Nullable String value;
         public Builder() {}
         public Builder(ContainerGroupInitContainerEnvironmentVar defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.fieldReves = defaults.fieldReves;
     	      this.key = defaults.key;
     	      this.value = defaults.value;
         }
 
+        @CustomType.Setter
+        public Builder fieldReves(@Nullable List<ContainerGroupInitContainerEnvironmentVarFieldRef> fieldReves) {
+
+            this.fieldReves = fieldReves;
+            return this;
+        }
+        public Builder fieldReves(ContainerGroupInitContainerEnvironmentVarFieldRef... fieldReves) {
+            return fieldReves(List.of(fieldReves));
+        }
         @CustomType.Setter
         public Builder key(@Nullable String key) {
 
@@ -70,6 +95,7 @@ public final class ContainerGroupInitContainerEnvironmentVar {
         }
         public ContainerGroupInitContainerEnvironmentVar build() {
             final var _resultValue = new ContainerGroupInitContainerEnvironmentVar();
+            _resultValue.fieldReves = fieldReves;
             _resultValue.key = key;
             _resultValue.value = value;
             return _resultValue;

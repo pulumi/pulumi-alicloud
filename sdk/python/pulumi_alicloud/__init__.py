@@ -851,6 +851,14 @@ _utilities.register(
  },
  {
   "pkg": "alicloud",
+  "mod": "arms/grafanaWorkspace",
+  "fqn": "pulumi_alicloud.arms",
+  "classes": {
+   "alicloud:arms/grafanaWorkspace:GrafanaWorkspace": "GrafanaWorkspace"
+  }
+ },
+ {
+  "pkg": "alicloud",
   "mod": "arms/integrationExporter",
   "fqn": "pulumi_alicloud.arms",
   "classes": {
@@ -887,6 +895,14 @@ _utilities.register(
   "fqn": "pulumi_alicloud.arms",
   "classes": {
    "alicloud:arms/remoteWrite:RemoteWrite": "RemoteWrite"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "arms/syntheticTask",
+  "fqn": "pulumi_alicloud.arms",
+  "classes": {
+   "alicloud:arms/syntheticTask:SyntheticTask": "SyntheticTask"
   }
  },
  {
@@ -1623,6 +1639,22 @@ _utilities.register(
   "fqn": "pulumi_alicloud.cloudfirewall",
   "classes": {
    "alicloud:cloudfirewall/instanceMember:InstanceMember": "InstanceMember"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "cloudmonitor/serviceBasicPublic",
+  "fqn": "pulumi_alicloud.cloudmonitor",
+  "classes": {
+   "alicloud:cloudmonitor/serviceBasicPublic:ServiceBasicPublic": "ServiceBasicPublic"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "cloudmonitor/serviceEnterprisePublic",
+  "fqn": "pulumi_alicloud.cloudmonitor",
+  "classes": {
+   "alicloud:cloudmonitor/serviceEnterprisePublic:ServiceEnterprisePublic": "ServiceEnterprisePublic"
   }
  },
  {
@@ -2707,6 +2739,38 @@ _utilities.register(
  },
  {
   "pkg": "alicloud",
+  "mod": "ebs/enterpriseSnapshotPolicy",
+  "fqn": "pulumi_alicloud.ebs",
+  "classes": {
+   "alicloud:ebs/enterpriseSnapshotPolicy:EnterpriseSnapshotPolicy": "EnterpriseSnapshotPolicy"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "ebs/enterpriseSnapshotPolicyAttachment",
+  "fqn": "pulumi_alicloud.ebs",
+  "classes": {
+   "alicloud:ebs/enterpriseSnapshotPolicyAttachment:EnterpriseSnapshotPolicyAttachment": "EnterpriseSnapshotPolicyAttachment"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "ebs/replicaGroupDrill",
+  "fqn": "pulumi_alicloud.ebs",
+  "classes": {
+   "alicloud:ebs/replicaGroupDrill:ReplicaGroupDrill": "ReplicaGroupDrill"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "ebs/replicaPairDrill",
+  "fqn": "pulumi_alicloud.ebs",
+  "classes": {
+   "alicloud:ebs/replicaPairDrill:ReplicaPairDrill": "ReplicaPairDrill"
+  }
+ },
+ {
+  "pkg": "alicloud",
   "mod": "eci/containerGroup",
   "fqn": "pulumi_alicloud.eci",
   "classes": {
@@ -3647,6 +3711,14 @@ _utilities.register(
   "fqn": "pulumi_alicloud.eventbridge",
   "classes": {
    "alicloud:eventbridge/slr:Slr": "Slr"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "expressconnect/ecFailoverTestJob",
+  "fqn": "pulumi_alicloud.expressconnect",
+  "classes": {
+   "alicloud:expressconnect/ecFailoverTestJob:EcFailoverTestJob": "EcFailoverTestJob"
   }
  },
  {

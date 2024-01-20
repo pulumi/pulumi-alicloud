@@ -948,11 +948,68 @@ func (o EndpointsArrayOutput) Index(i pulumi.IntInput) EndpointsOutput {
 	}).(EndpointsOutput)
 }
 
+type SignVersion struct {
+	Oss *string `pulumi:"oss"`
+	Sls *string `pulumi:"sls"`
+}
+
+// SignVersionInput is an input type that accepts SignVersionArgs and SignVersionOutput values.
+// You can construct a concrete instance of `SignVersionInput` via:
+//
+//	SignVersionArgs{...}
+type SignVersionInput interface {
+	pulumi.Input
+
+	ToSignVersionOutput() SignVersionOutput
+	ToSignVersionOutputWithContext(context.Context) SignVersionOutput
+}
+
+type SignVersionArgs struct {
+	Oss pulumi.StringPtrInput `pulumi:"oss"`
+	Sls pulumi.StringPtrInput `pulumi:"sls"`
+}
+
+func (SignVersionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SignVersion)(nil)).Elem()
+}
+
+func (i SignVersionArgs) ToSignVersionOutput() SignVersionOutput {
+	return i.ToSignVersionOutputWithContext(context.Background())
+}
+
+func (i SignVersionArgs) ToSignVersionOutputWithContext(ctx context.Context) SignVersionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SignVersionOutput)
+}
+
+type SignVersionOutput struct{ *pulumi.OutputState }
+
+func (SignVersionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SignVersion)(nil)).Elem()
+}
+
+func (o SignVersionOutput) ToSignVersionOutput() SignVersionOutput {
+	return o
+}
+
+func (o SignVersionOutput) ToSignVersionOutputWithContext(ctx context.Context) SignVersionOutput {
+	return o
+}
+
+func (o SignVersionOutput) Oss() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SignVersion) *string { return v.Oss }).(pulumi.StringPtrOutput)
+}
+
+func (o SignVersionOutput) Sls() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SignVersion) *string { return v.Sls }).(pulumi.StringPtrOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AssumeRoleInput)(nil)).Elem(), AssumeRoleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EndpointsInput)(nil)).Elem(), EndpointsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EndpointsArrayInput)(nil)).Elem(), EndpointsArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SignVersionInput)(nil)).Elem(), SignVersionArgs{})
 	pulumi.RegisterOutputType(AssumeRoleOutput{})
 	pulumi.RegisterOutputType(EndpointsOutput{})
 	pulumi.RegisterOutputType(EndpointsArrayOutput{})
+	pulumi.RegisterOutputType(SignVersionOutput{})
 }

@@ -64,7 +64,7 @@ import javax.annotation.Nullable;
  * Ga Accelerator can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:ga/accelerator:Accelerator example &lt;accelerator_id&gt;
+ *  $ pulumi import alicloud:ga/accelerator:Accelerator example &lt;id&gt;
  * ```
  * 
  */
@@ -89,14 +89,14 @@ public class Accelerator extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="autoRenewDuration", refs={Integer.class}, tree="[0]")
-    private Output</* @Nullable */ Integer> autoRenewDuration;
+    private Output<Integer> autoRenewDuration;
 
     /**
      * @return Auto renewal period of an instance, in the unit of month. The value range is 1-12.
      * 
      */
-    public Output<Optional<Integer>> autoRenewDuration() {
-        return Codegen.optional(this.autoRenewDuration);
+    public Output<Integer> autoRenewDuration() {
+        return this.autoRenewDuration;
     }
     /**
      * Use coupons to pay bills automatically. Default value: `false`. Valid values:
@@ -127,14 +127,14 @@ public class Accelerator extends com.pulumi.resources.CustomResource {
         return this.bandwidthBillingType;
     }
     /**
-     * The type of cross-border acceleration. Default value: `bgpPro`. Valid values: `bgpPro`, `private`.
+     * The type of cross-border acceleration. Default value: `bgpPro`. Valid values: `bgpPro`, `private`. **NOTE:** `cross_border_mode` is valid only when `cross_border_status` is set to `true`.
      * 
      */
     @Export(name="crossBorderMode", refs={String.class}, tree="[0]")
     private Output<String> crossBorderMode;
 
     /**
-     * @return The type of cross-border acceleration. Default value: `bgpPro`. Valid values: `bgpPro`, `private`.
+     * @return The type of cross-border acceleration. Default value: `bgpPro`. Valid values: `bgpPro`, `private`. **NOTE:** `cross_border_mode` is valid only when `cross_border_status` is set to `true`.
      * 
      */
     public Output<String> crossBorderMode() {

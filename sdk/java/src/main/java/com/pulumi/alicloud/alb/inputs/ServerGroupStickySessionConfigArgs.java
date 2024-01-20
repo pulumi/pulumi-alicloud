@@ -18,16 +18,14 @@ public final class ServerGroupStickySessionConfigArgs extends com.pulumi.resourc
     public static final ServerGroupStickySessionConfigArgs Empty = new ServerGroupStickySessionConfigArgs();
 
     /**
-     * the cookie that is configured on the server. **NOTE:** This parameter exists if the `StickySession`
-     * parameter is set to `On` and the `StickySessionType` parameter is set to `server`.
+     * The cookie to be configured on the server. **NOTE:** This parameter takes effect when the `sticky_session_enabled` parameter is set to `true` and the `sticky_session_type` parameter is set to `Server`.
      * 
      */
     @Import(name="cookie")
     private @Nullable Output<String> cookie;
 
     /**
-     * @return the cookie that is configured on the server. **NOTE:** This parameter exists if the `StickySession`
-     * parameter is set to `On` and the `StickySessionType` parameter is set to `server`.
+     * @return The cookie to be configured on the server. **NOTE:** This parameter takes effect when the `sticky_session_enabled` parameter is set to `true` and the `sticky_session_type` parameter is set to `Server`.
      * 
      */
     public Optional<Output<String>> cookie() {
@@ -35,16 +33,14 @@ public final class ServerGroupStickySessionConfigArgs extends com.pulumi.resourc
     }
 
     /**
-     * The timeout period of a cookie. The timeout period of a cookie. Unit: seconds. Valid values: `1`
-     * to `86400`. Default value: `1000`.
+     * The timeout period of a cookie. Unit: seconds. Default value: `1000`. Valid values: `1` to `86400`. **NOTE:** This parameter takes effect when the `sticky_session_enabled` parameter is set to `true` and the `sticky_session_type` parameter is set to `Insert`.
      * 
      */
     @Import(name="cookieTimeout")
     private @Nullable Output<Integer> cookieTimeout;
 
     /**
-     * @return The timeout period of a cookie. The timeout period of a cookie. Unit: seconds. Valid values: `1`
-     * to `86400`. Default value: `1000`.
+     * @return The timeout period of a cookie. Unit: seconds. Default value: `1000`. Valid values: `1` to `86400`. **NOTE:** This parameter takes effect when the `sticky_session_enabled` parameter is set to `true` and the `sticky_session_type` parameter is set to `Insert`.
      * 
      */
     public Optional<Output<Integer>> cookieTimeout() {
@@ -52,16 +48,14 @@ public final class ServerGroupStickySessionConfigArgs extends com.pulumi.resourc
     }
 
     /**
-     * Indicates whether sticky session is enabled. Values: `true` and `false`. Default
-     * value: `false`.  **NOTE:** This parameter exists if the `StickySession` parameter is set to `On`.
+     * Specifies whether to enable session persistence. Default value: `false`. Valid values: `true`, `false`. **NOTE:** This parameter takes effect when the `server_group_type` parameter is set to `Instance` or `Ip`.
      * 
      */
     @Import(name="stickySessionEnabled")
     private @Nullable Output<Boolean> stickySessionEnabled;
 
     /**
-     * @return Indicates whether sticky session is enabled. Values: `true` and `false`. Default
-     * value: `false`.  **NOTE:** This parameter exists if the `StickySession` parameter is set to `On`.
+     * @return Specifies whether to enable session persistence. Default value: `false`. Valid values: `true`, `false`. **NOTE:** This parameter takes effect when the `server_group_type` parameter is set to `Instance` or `Ip`.
      * 
      */
     public Optional<Output<Boolean>> stickySessionEnabled() {
@@ -69,14 +63,14 @@ public final class ServerGroupStickySessionConfigArgs extends com.pulumi.resourc
     }
 
     /**
-     * The method that is used to handle a cookie. Values: `Server` and `Insert`.
+     * The method that is used to handle a cookie. Valid values: `Server`, `Insert`.
      * 
      */
     @Import(name="stickySessionType")
     private @Nullable Output<String> stickySessionType;
 
     /**
-     * @return The method that is used to handle a cookie. Values: `Server` and `Insert`.
+     * @return The method that is used to handle a cookie. Valid values: `Server`, `Insert`.
      * 
      */
     public Optional<Output<String>> stickySessionType() {
@@ -111,8 +105,7 @@ public final class ServerGroupStickySessionConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param cookie the cookie that is configured on the server. **NOTE:** This parameter exists if the `StickySession`
-         * parameter is set to `On` and the `StickySessionType` parameter is set to `server`.
+         * @param cookie The cookie to be configured on the server. **NOTE:** This parameter takes effect when the `sticky_session_enabled` parameter is set to `true` and the `sticky_session_type` parameter is set to `Server`.
          * 
          * @return builder
          * 
@@ -123,8 +116,7 @@ public final class ServerGroupStickySessionConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param cookie the cookie that is configured on the server. **NOTE:** This parameter exists if the `StickySession`
-         * parameter is set to `On` and the `StickySessionType` parameter is set to `server`.
+         * @param cookie The cookie to be configured on the server. **NOTE:** This parameter takes effect when the `sticky_session_enabled` parameter is set to `true` and the `sticky_session_type` parameter is set to `Server`.
          * 
          * @return builder
          * 
@@ -134,8 +126,7 @@ public final class ServerGroupStickySessionConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param cookieTimeout The timeout period of a cookie. The timeout period of a cookie. Unit: seconds. Valid values: `1`
-         * to `86400`. Default value: `1000`.
+         * @param cookieTimeout The timeout period of a cookie. Unit: seconds. Default value: `1000`. Valid values: `1` to `86400`. **NOTE:** This parameter takes effect when the `sticky_session_enabled` parameter is set to `true` and the `sticky_session_type` parameter is set to `Insert`.
          * 
          * @return builder
          * 
@@ -146,8 +137,7 @@ public final class ServerGroupStickySessionConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param cookieTimeout The timeout period of a cookie. The timeout period of a cookie. Unit: seconds. Valid values: `1`
-         * to `86400`. Default value: `1000`.
+         * @param cookieTimeout The timeout period of a cookie. Unit: seconds. Default value: `1000`. Valid values: `1` to `86400`. **NOTE:** This parameter takes effect when the `sticky_session_enabled` parameter is set to `true` and the `sticky_session_type` parameter is set to `Insert`.
          * 
          * @return builder
          * 
@@ -157,8 +147,7 @@ public final class ServerGroupStickySessionConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param stickySessionEnabled Indicates whether sticky session is enabled. Values: `true` and `false`. Default
-         * value: `false`.  **NOTE:** This parameter exists if the `StickySession` parameter is set to `On`.
+         * @param stickySessionEnabled Specifies whether to enable session persistence. Default value: `false`. Valid values: `true`, `false`. **NOTE:** This parameter takes effect when the `server_group_type` parameter is set to `Instance` or `Ip`.
          * 
          * @return builder
          * 
@@ -169,8 +158,7 @@ public final class ServerGroupStickySessionConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param stickySessionEnabled Indicates whether sticky session is enabled. Values: `true` and `false`. Default
-         * value: `false`.  **NOTE:** This parameter exists if the `StickySession` parameter is set to `On`.
+         * @param stickySessionEnabled Specifies whether to enable session persistence. Default value: `false`. Valid values: `true`, `false`. **NOTE:** This parameter takes effect when the `server_group_type` parameter is set to `Instance` or `Ip`.
          * 
          * @return builder
          * 
@@ -180,7 +168,7 @@ public final class ServerGroupStickySessionConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param stickySessionType The method that is used to handle a cookie. Values: `Server` and `Insert`.
+         * @param stickySessionType The method that is used to handle a cookie. Valid values: `Server`, `Insert`.
          * 
          * @return builder
          * 
@@ -191,7 +179,7 @@ public final class ServerGroupStickySessionConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param stickySessionType The method that is used to handle a cookie. Values: `Server` and `Insert`.
+         * @param stickySessionType The method that is used to handle a cookie. Valid values: `Server`, `Insert`.
          * 
          * @return builder
          * 

@@ -95,6 +95,11 @@ export const getRemoteWrites: typeof import("./getRemoteWrites").getRemoteWrites
 export const getRemoteWritesOutput: typeof import("./getRemoteWrites").getRemoteWritesOutput = null as any;
 utilities.lazyLoad(exports, ["getRemoteWrites","getRemoteWritesOutput"], () => require("./getRemoteWrites"));
 
+export { GrafanaWorkspaceArgs, GrafanaWorkspaceState } from "./grafanaWorkspace";
+export type GrafanaWorkspace = import("./grafanaWorkspace").GrafanaWorkspace;
+export const GrafanaWorkspace: typeof import("./grafanaWorkspace").GrafanaWorkspace = null as any;
+utilities.lazyLoad(exports, ["GrafanaWorkspace"], () => require("./grafanaWorkspace"));
+
 export { IntegrationExporterArgs, IntegrationExporterState } from "./integrationExporter";
 export type IntegrationExporter = import("./integrationExporter").IntegrationExporter;
 export const IntegrationExporter: typeof import("./integrationExporter").IntegrationExporter = null as any;
@@ -120,6 +125,11 @@ export type RemoteWrite = import("./remoteWrite").RemoteWrite;
 export const RemoteWrite: typeof import("./remoteWrite").RemoteWrite = null as any;
 utilities.lazyLoad(exports, ["RemoteWrite"], () => require("./remoteWrite"));
 
+export { SyntheticTaskArgs, SyntheticTaskState } from "./syntheticTask";
+export type SyntheticTask = import("./syntheticTask").SyntheticTask;
+export const SyntheticTask: typeof import("./syntheticTask").SyntheticTask = null as any;
+utilities.lazyLoad(exports, ["SyntheticTask"], () => require("./syntheticTask"));
+
 
 const _module = {
     version: utilities.getVersion(),
@@ -143,6 +153,8 @@ const _module = {
                 return new EnvServiceMonitor(name, <any>undefined, { urn })
             case "alicloud:arms/environment:Environment":
                 return new Environment(name, <any>undefined, { urn })
+            case "alicloud:arms/grafanaWorkspace:GrafanaWorkspace":
+                return new GrafanaWorkspace(name, <any>undefined, { urn })
             case "alicloud:arms/integrationExporter:IntegrationExporter":
                 return new IntegrationExporter(name, <any>undefined, { urn })
             case "alicloud:arms/prometheus:Prometheus":
@@ -153,6 +165,8 @@ const _module = {
                 return new PrometheusMonitoring(name, <any>undefined, { urn })
             case "alicloud:arms/remoteWrite:RemoteWrite":
                 return new RemoteWrite(name, <any>undefined, { urn })
+            case "alicloud:arms/syntheticTask:SyntheticTask":
+                return new SyntheticTask(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
@@ -167,8 +181,10 @@ pulumi.runtime.registerResourceModule("alicloud", "arms/envFeature", _module)
 pulumi.runtime.registerResourceModule("alicloud", "arms/envPodMonitor", _module)
 pulumi.runtime.registerResourceModule("alicloud", "arms/envServiceMonitor", _module)
 pulumi.runtime.registerResourceModule("alicloud", "arms/environment", _module)
+pulumi.runtime.registerResourceModule("alicloud", "arms/grafanaWorkspace", _module)
 pulumi.runtime.registerResourceModule("alicloud", "arms/integrationExporter", _module)
 pulumi.runtime.registerResourceModule("alicloud", "arms/prometheus", _module)
 pulumi.runtime.registerResourceModule("alicloud", "arms/prometheusAlertRule", _module)
 pulumi.runtime.registerResourceModule("alicloud", "arms/prometheusMonitoring", _module)
 pulumi.runtime.registerResourceModule("alicloud", "arms/remoteWrite", _module)
+pulumi.runtime.registerResourceModule("alicloud", "arms/syntheticTask", _module)

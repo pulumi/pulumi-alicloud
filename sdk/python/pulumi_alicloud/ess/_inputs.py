@@ -28,6 +28,7 @@ __all__ = [
     'ScalingConfigurationSpotPriceLimitArgs',
     'ScalingGroupVServerGroupsVserverGroupArgs',
     'ScalingGroupVServerGroupsVserverGroupVserverAttributeArgs',
+    'ScalingRuleAlarmDimensionArgs',
     'ScalingRuleStepAdjustmentArgs',
 ]
 
@@ -1982,6 +1983,45 @@ class ScalingGroupVServerGroupsVserverGroupVserverAttributeArgs:
     @weight.setter
     def weight(self, value: pulumi.Input[int]):
         pulumi.set(self, "weight", value)
+
+
+@pulumi.input_type
+class ScalingRuleAlarmDimensionArgs:
+    def __init__(__self__, *,
+                 dimension_key: Optional[pulumi.Input[str]] = None,
+                 dimension_value: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] dimension_key: The dimension key of the metric.
+        :param pulumi.Input[str] dimension_value: The dimension value of the metric.
+        """
+        if dimension_key is not None:
+            pulumi.set(__self__, "dimension_key", dimension_key)
+        if dimension_value is not None:
+            pulumi.set(__self__, "dimension_value", dimension_value)
+
+    @property
+    @pulumi.getter(name="dimensionKey")
+    def dimension_key(self) -> Optional[pulumi.Input[str]]:
+        """
+        The dimension key of the metric.
+        """
+        return pulumi.get(self, "dimension_key")
+
+    @dimension_key.setter
+    def dimension_key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "dimension_key", value)
+
+    @property
+    @pulumi.getter(name="dimensionValue")
+    def dimension_value(self) -> Optional[pulumi.Input[str]]:
+        """
+        The dimension value of the metric.
+        """
+        return pulumi.get(self, "dimension_value")
+
+    @dimension_value.setter
+    def dimension_value(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "dimension_value", value)
 
 
 @pulumi.input_type

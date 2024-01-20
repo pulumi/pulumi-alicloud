@@ -146,18 +146,25 @@ class ServerGroupHealthCheckArgs:
                  http_check_method: Optional[pulumi.Input[str]] = None,
                  unhealthy_threshold: Optional[pulumi.Input[int]] = None):
         """
-        :param pulumi.Input[int] health_check_connect_port: The backend port that is used for health checks. Valid values: 0 to 65535. Default value: 0. If you set the value to 0, the port of a backend server is used for health checks.
-        :param pulumi.Input[int] health_check_connect_timeout: The maximum timeout period of a health check response. Unit: seconds. Valid values: 1 to 300. Default value: 5.
-        :param pulumi.Input[str] health_check_domain: The domain name that is used for health checks. Valid values:
-               - `$SERVER_IP`: the private IP address of a backend server.
-        :param pulumi.Input[bool] health_check_enabled: Specifies whether to enable health checks.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] health_check_http_codes: The HTTP status codes to return to health checks. Separate multiple HTTP status codes with commas (,). Valid values: http_2xx (default), http_3xx, http_4xx, and http_5xx. **Note:** This parameter takes effect only if `health_check_type` is set to `http`.
-        :param pulumi.Input[int] health_check_interval: The interval between two consecutive health checks. Unit: seconds. Valid values: 5 to 5000. Default value: 10.
-        :param pulumi.Input[str] health_check_type: The protocol that is used for health checks. Valid values: `TCP` (default) and `HTTP`.
-        :param pulumi.Input[str] health_check_url: The path to which health check requests are sent. The path must be 1 to 80 characters in length, and can contain only letters, digits, and the following special characters: `- / . % ? # & =`. It can also contain the following extended characters: `_ ; ~ ! ( ) * [ ] @ $ ^ : ' , +`. The path must start with a forward slash (/). **Note:** This parameter takes effect only if `health_check_type` is set to `http`.
-        :param pulumi.Input[int] healthy_threshold: The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy. In this case, the health status is changed from fail to success. Valid values: 2 to 10. Default value: 2.
-        :param pulumi.Input[str] http_check_method: The HTTP method that is used for health checks. Valid values: `GET` and `HEAD`. **Note:** This parameter takes effect only if `health_check_type` is set to `http`.
-        :param pulumi.Input[int] unhealthy_threshold: The number of times that a healthy backend server must consecutively fail health checks before it is declared unhealthy. In this case, the health status is changed from success to fail. Valid values: 2 to 10. Default value: 2.
+        :param pulumi.Input[int] health_check_connect_port: The port of the backend server for health checks. Valid values: **0** ~ **65535**. **0** indicates that the port of the backend server is used for health check.
+        :param pulumi.Input[int] health_check_connect_timeout: Maximum timeout for health check responses. Unit: seconds. Valid values: **1** ~ **300**.
+        :param pulumi.Input[str] health_check_domain: The domain name used for health check. Valid values:
+               - **$SERVER_IP**: uses the intranet IP of the backend server.
+               - **domain**: Specify a specific domain name. The length is limited to 1 to 80 characters. Only lowercase letters, numbers, dashes (-), and half-width periods (.) can be used.
+               > **NOTE:**  This parameter takes effect only when **HealthCheckType** is **HTTP**.
+        :param pulumi.Input[bool] health_check_enabled: Whether to enable health check. Valid values:
+               - **true**: on.
+               - **false**: closed.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] health_check_http_codes: Health status return code. Multiple status codes are separated by commas (,). Valid values: **http\\_2xx**, **http\\_3xx**, **http\\_4xx**, and **http\\_5xx**.
+               > **NOTE:**  This parameter takes effect only when **HealthCheckType** is **HTTP**.
+        :param pulumi.Input[int] health_check_interval: Time interval of health examination. Unit: seconds.Valid values: **5** ~ **50**.
+        :param pulumi.Input[str] health_check_type: Health check protocol. Valid values: **TCP** or **HTTP**.
+        :param pulumi.Input[str] health_check_url: Health check path.
+               > **NOTE:**  This parameter takes effect only when **HealthCheckType** is **HTTP**.
+        :param pulumi.Input[int] healthy_threshold: After the health check is successful, the health check status of the backend server is determined from **failed** to **successful * *.Valid values: **2** to **10 * *.
+        :param pulumi.Input[str] http_check_method: The health check method. Valid values: **GET** or **HEAD**.
+               > **NOTE:**  This parameter takes effect only when **HealthCheckType** is **HTTP**.
+        :param pulumi.Input[int] unhealthy_threshold: After the health check fails for many times in a row, the health check status of the backend server is determined from **Success** to **Failure**. Valid values: **2** to **10**.
         """
         if health_check_connect_port is not None:
             pulumi.set(__self__, "health_check_connect_port", health_check_connect_port)
@@ -186,7 +193,7 @@ class ServerGroupHealthCheckArgs:
     @pulumi.getter(name="healthCheckConnectPort")
     def health_check_connect_port(self) -> Optional[pulumi.Input[int]]:
         """
-        The backend port that is used for health checks. Valid values: 0 to 65535. Default value: 0. If you set the value to 0, the port of a backend server is used for health checks.
+        The port of the backend server for health checks. Valid values: **0** ~ **65535**. **0** indicates that the port of the backend server is used for health check.
         """
         return pulumi.get(self, "health_check_connect_port")
 
@@ -198,7 +205,7 @@ class ServerGroupHealthCheckArgs:
     @pulumi.getter(name="healthCheckConnectTimeout")
     def health_check_connect_timeout(self) -> Optional[pulumi.Input[int]]:
         """
-        The maximum timeout period of a health check response. Unit: seconds. Valid values: 1 to 300. Default value: 5.
+        Maximum timeout for health check responses. Unit: seconds. Valid values: **1** ~ **300**.
         """
         return pulumi.get(self, "health_check_connect_timeout")
 
@@ -210,8 +217,10 @@ class ServerGroupHealthCheckArgs:
     @pulumi.getter(name="healthCheckDomain")
     def health_check_domain(self) -> Optional[pulumi.Input[str]]:
         """
-        The domain name that is used for health checks. Valid values:
-        - `$SERVER_IP`: the private IP address of a backend server.
+        The domain name used for health check. Valid values:
+        - **$SERVER_IP**: uses the intranet IP of the backend server.
+        - **domain**: Specify a specific domain name. The length is limited to 1 to 80 characters. Only lowercase letters, numbers, dashes (-), and half-width periods (.) can be used.
+        > **NOTE:**  This parameter takes effect only when **HealthCheckType** is **HTTP**.
         """
         return pulumi.get(self, "health_check_domain")
 
@@ -223,7 +232,9 @@ class ServerGroupHealthCheckArgs:
     @pulumi.getter(name="healthCheckEnabled")
     def health_check_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        Specifies whether to enable health checks.
+        Whether to enable health check. Valid values:
+        - **true**: on.
+        - **false**: closed.
         """
         return pulumi.get(self, "health_check_enabled")
 
@@ -235,7 +246,8 @@ class ServerGroupHealthCheckArgs:
     @pulumi.getter(name="healthCheckHttpCodes")
     def health_check_http_codes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        The HTTP status codes to return to health checks. Separate multiple HTTP status codes with commas (,). Valid values: http_2xx (default), http_3xx, http_4xx, and http_5xx. **Note:** This parameter takes effect only if `health_check_type` is set to `http`.
+        Health status return code. Multiple status codes are separated by commas (,). Valid values: **http\\_2xx**, **http\\_3xx**, **http\\_4xx**, and **http\\_5xx**.
+        > **NOTE:**  This parameter takes effect only when **HealthCheckType** is **HTTP**.
         """
         return pulumi.get(self, "health_check_http_codes")
 
@@ -247,7 +259,7 @@ class ServerGroupHealthCheckArgs:
     @pulumi.getter(name="healthCheckInterval")
     def health_check_interval(self) -> Optional[pulumi.Input[int]]:
         """
-        The interval between two consecutive health checks. Unit: seconds. Valid values: 5 to 5000. Default value: 10.
+        Time interval of health examination. Unit: seconds.Valid values: **5** ~ **50**.
         """
         return pulumi.get(self, "health_check_interval")
 
@@ -259,7 +271,7 @@ class ServerGroupHealthCheckArgs:
     @pulumi.getter(name="healthCheckType")
     def health_check_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The protocol that is used for health checks. Valid values: `TCP` (default) and `HTTP`.
+        Health check protocol. Valid values: **TCP** or **HTTP**.
         """
         return pulumi.get(self, "health_check_type")
 
@@ -271,7 +283,8 @@ class ServerGroupHealthCheckArgs:
     @pulumi.getter(name="healthCheckUrl")
     def health_check_url(self) -> Optional[pulumi.Input[str]]:
         """
-        The path to which health check requests are sent. The path must be 1 to 80 characters in length, and can contain only letters, digits, and the following special characters: `- / . % ? # & =`. It can also contain the following extended characters: `_ ; ~ ! ( ) * [ ] @ $ ^ : ' , +`. The path must start with a forward slash (/). **Note:** This parameter takes effect only if `health_check_type` is set to `http`.
+        Health check path.
+        > **NOTE:**  This parameter takes effect only when **HealthCheckType** is **HTTP**.
         """
         return pulumi.get(self, "health_check_url")
 
@@ -283,7 +296,7 @@ class ServerGroupHealthCheckArgs:
     @pulumi.getter(name="healthyThreshold")
     def healthy_threshold(self) -> Optional[pulumi.Input[int]]:
         """
-        The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy. In this case, the health status is changed from fail to success. Valid values: 2 to 10. Default value: 2.
+        After the health check is successful, the health check status of the backend server is determined from **failed** to **successful * *.Valid values: **2** to **10 * *.
         """
         return pulumi.get(self, "healthy_threshold")
 
@@ -295,7 +308,8 @@ class ServerGroupHealthCheckArgs:
     @pulumi.getter(name="httpCheckMethod")
     def http_check_method(self) -> Optional[pulumi.Input[str]]:
         """
-        The HTTP method that is used for health checks. Valid values: `GET` and `HEAD`. **Note:** This parameter takes effect only if `health_check_type` is set to `http`.
+        The health check method. Valid values: **GET** or **HEAD**.
+        > **NOTE:**  This parameter takes effect only when **HealthCheckType** is **HTTP**.
         """
         return pulumi.get(self, "http_check_method")
 
@@ -307,7 +321,7 @@ class ServerGroupHealthCheckArgs:
     @pulumi.getter(name="unhealthyThreshold")
     def unhealthy_threshold(self) -> Optional[pulumi.Input[int]]:
         """
-        The number of times that a healthy backend server must consecutively fail health checks before it is declared unhealthy. In this case, the health status is changed from success to fail. Valid values: 2 to 10. Default value: 2.
+        After the health check fails for many times in a row, the health check status of the backend server is determined from **Success** to **Failure**. Valid values: **2** to **10**.
         """
         return pulumi.get(self, "unhealthy_threshold")
 

@@ -5,6 +5,7 @@ package com.pulumi.alicloud;
 
 import com.pulumi.alicloud.inputs.ProviderAssumeRoleArgs;
 import com.pulumi.alicloud.inputs.ProviderEndpointArgs;
+import com.pulumi.alicloud.inputs.ProviderSignVersionArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.core.internal.Codegen;
@@ -343,6 +344,13 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.sharedCredentialsFile);
     }
 
+    @Import(name="signVersion", json=true)
+    private @Nullable Output<ProviderSignVersionArgs> signVersion;
+
+    public Optional<Output<ProviderSignVersionArgs>> signVersion() {
+        return Optional.ofNullable(this.signVersion);
+    }
+
     /**
      * Skip static validation of region ID. Used by users of alternative AlibabaCloud-like APIs or users w/ access to regions
      * that are not public (yet).
@@ -400,6 +408,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         this.securityToken = $.securityToken;
         this.securityTransport = $.securityTransport;
         this.sharedCredentialsFile = $.sharedCredentialsFile;
+        this.signVersion = $.signVersion;
         this.skipRegionValidation = $.skipRegionValidation;
         this.sourceIp = $.sourceIp;
     }
@@ -862,6 +871,15 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder sharedCredentialsFile(String sharedCredentialsFile) {
             return sharedCredentialsFile(Output.of(sharedCredentialsFile));
+        }
+
+        public Builder signVersion(@Nullable Output<ProviderSignVersionArgs> signVersion) {
+            $.signVersion = signVersion;
+            return this;
+        }
+
+        public Builder signVersion(ProviderSignVersionArgs signVersion) {
+            return signVersion(Output.of(signVersion));
         }
 
         /**

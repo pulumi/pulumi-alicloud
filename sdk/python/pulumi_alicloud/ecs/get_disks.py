@@ -417,7 +417,7 @@ def get_disks(additional_attributes: Optional[Sequence[str]] = None,
 
 
     :param str availability_zone: Availability zone of the disk.
-    :param str category: Disk category. Possible values: `cloud` (basic cloud disk), `cloud_efficiency` (ultra cloud disk), `ephemeral_ssd` (local SSD cloud disk), `cloud_ssd` (SSD cloud disk), and `cloud_essd` (ESSD cloud disk).
+    :param str category: Disk category. Possible values: `cloud` (basic cloud disk), `cloud_efficiency` (ultra cloud disk), `ephemeral_ssd` (local SSD cloud disk), `cloud_ssd` (SSD cloud disk), and `cloud_essd` (ESSD cloud disk), `cloud_essd_entry`.
     :param str encrypted: Indicate whether the disk is encrypted or not. Possible values: `on` and `off`.
     :param Sequence[str] ids: A list of disks IDs.
     :param str instance_id: Filter the results by the specified ECS instance ID.
@@ -555,7 +555,7 @@ def get_disks_output(additional_attributes: Optional[pulumi.Input[Optional[Seque
 
 
     :param str availability_zone: Availability zone of the disk.
-    :param str category: Disk category. Possible values: `cloud` (basic cloud disk), `cloud_efficiency` (ultra cloud disk), `ephemeral_ssd` (local SSD cloud disk), `cloud_ssd` (SSD cloud disk), and `cloud_essd` (ESSD cloud disk).
+    :param str category: Disk category. Possible values: `cloud` (basic cloud disk), `cloud_efficiency` (ultra cloud disk), `ephemeral_ssd` (local SSD cloud disk), `cloud_ssd` (SSD cloud disk), and `cloud_essd` (ESSD cloud disk), `cloud_essd_entry`.
     :param str encrypted: Indicate whether the disk is encrypted or not. Possible values: `on` and `off`.
     :param Sequence[str] ids: A list of disks IDs.
     :param str instance_id: Filter the results by the specified ECS instance ID.

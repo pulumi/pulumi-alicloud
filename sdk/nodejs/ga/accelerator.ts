@@ -31,7 +31,7 @@ import * as utilities from "../utilities";
  * Ga Accelerator can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:ga/accelerator:Accelerator example <accelerator_id>
+ *  $ pulumi import alicloud:ga/accelerator:Accelerator example <id>
  * ```
  */
 export class Accelerator extends pulumi.CustomResource {
@@ -69,7 +69,7 @@ export class Accelerator extends pulumi.CustomResource {
     /**
      * Auto renewal period of an instance, in the unit of month. The value range is 1-12.
      */
-    public readonly autoRenewDuration!: pulumi.Output<number | undefined>;
+    public readonly autoRenewDuration!: pulumi.Output<number>;
     /**
      * Use coupons to pay bills automatically. Default value: `false`. Valid values:
      */
@@ -79,7 +79,7 @@ export class Accelerator extends pulumi.CustomResource {
      */
     public readonly bandwidthBillingType!: pulumi.Output<string>;
     /**
-     * The type of cross-border acceleration. Default value: `bgpPro`. Valid values: `bgpPro`, `private`.
+     * The type of cross-border acceleration. Default value: `bgpPro`. Valid values: `bgpPro`, `private`. **NOTE:** `crossBorderMode` is valid only when `crossBorderStatus` is set to `true`.
      */
     public readonly crossBorderMode!: pulumi.Output<string>;
     /**
@@ -197,7 +197,7 @@ export interface AcceleratorState {
      */
     bandwidthBillingType?: pulumi.Input<string>;
     /**
-     * The type of cross-border acceleration. Default value: `bgpPro`. Valid values: `bgpPro`, `private`.
+     * The type of cross-border acceleration. Default value: `bgpPro`. Valid values: `bgpPro`, `private`. **NOTE:** `crossBorderMode` is valid only when `crossBorderStatus` is set to `true`.
      */
     crossBorderMode?: pulumi.Input<string>;
     /**
@@ -265,7 +265,7 @@ export interface AcceleratorArgs {
      */
     bandwidthBillingType?: pulumi.Input<string>;
     /**
-     * The type of cross-border acceleration. Default value: `bgpPro`. Valid values: `bgpPro`, `private`.
+     * The type of cross-border acceleration. Default value: `bgpPro`. Valid values: `bgpPro`, `private`. **NOTE:** `crossBorderMode` is valid only when `crossBorderStatus` is set to `true`.
      */
     crossBorderMode?: pulumi.Input<string>;
     /**

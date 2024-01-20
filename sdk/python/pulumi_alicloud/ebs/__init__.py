@@ -8,8 +8,13 @@ import typing
 from .dedicated_block_storage_cluster import *
 from .disk_replica_group import *
 from .disk_replica_pair import *
+from .enterprise_snapshot_policy import *
+from .enterprise_snapshot_policy_attachment import *
 from .get_dedicated_block_storage_clusters import *
 from .get_disk_replica_groups import *
 from .get_disk_replica_pairs import *
 from .get_regions import *
+from .replica_group_drill import *
+from .replica_pair_drill import *
+from ._inputs import *
 from . import outputs

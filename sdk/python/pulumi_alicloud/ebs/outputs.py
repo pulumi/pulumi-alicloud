@@ -11,12 +11,338 @@ from .. import _utilities
 from . import outputs
 
 __all__ = [
+    'EnterpriseSnapshotPolicyCrossRegionCopyInfo',
+    'EnterpriseSnapshotPolicyCrossRegionCopyInfoRegion',
+    'EnterpriseSnapshotPolicyRetainRule',
+    'EnterpriseSnapshotPolicySchedule',
+    'EnterpriseSnapshotPolicySpecialRetainRules',
+    'EnterpriseSnapshotPolicySpecialRetainRulesRule',
+    'EnterpriseSnapshotPolicyStorageRule',
     'GetDedicatedBlockStorageClustersClusterResult',
     'GetDiskReplicaGroupsGroupResult',
     'GetDiskReplicaPairsPairResult',
     'GetRegionsRegionResult',
     'GetRegionsRegionZoneResult',
 ]
+
+@pulumi.output_type
+class EnterpriseSnapshotPolicyCrossRegionCopyInfo(dict):
+    def __init__(__self__, *,
+                 enabled: Optional[bool] = None,
+                 regions: Optional[Sequence['outputs.EnterpriseSnapshotPolicyCrossRegionCopyInfoRegion']] = None):
+        """
+        :param bool enabled: Enable Snapshot replication.
+        :param Sequence['EnterpriseSnapshotPolicyCrossRegionCopyInfoRegionArgs'] regions: Destination region for Snapshot replication. See `regions` below.
+        """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if regions is not None:
+            pulumi.set(__self__, "regions", regions)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[bool]:
+        """
+        Enable Snapshot replication.
+        """
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter
+    def regions(self) -> Optional[Sequence['outputs.EnterpriseSnapshotPolicyCrossRegionCopyInfoRegion']]:
+        """
+        Destination region for Snapshot replication. See `regions` below.
+        """
+        return pulumi.get(self, "regions")
+
+
+@pulumi.output_type
+class EnterpriseSnapshotPolicyCrossRegionCopyInfoRegion(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "regionId":
+            suggest = "region_id"
+        elif key == "retainDays":
+            suggest = "retain_days"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in EnterpriseSnapshotPolicyCrossRegionCopyInfoRegion. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        EnterpriseSnapshotPolicyCrossRegionCopyInfoRegion.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        EnterpriseSnapshotPolicyCrossRegionCopyInfoRegion.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 region_id: Optional[str] = None,
+                 retain_days: Optional[int] = None):
+        """
+        :param str region_id: Destination region ID.
+        :param int retain_days: Number of days of snapshot retention for replication.
+        """
+        if region_id is not None:
+            pulumi.set(__self__, "region_id", region_id)
+        if retain_days is not None:
+            pulumi.set(__self__, "retain_days", retain_days)
+
+    @property
+    @pulumi.getter(name="regionId")
+    def region_id(self) -> Optional[str]:
+        """
+        Destination region ID.
+        """
+        return pulumi.get(self, "region_id")
+
+    @property
+    @pulumi.getter(name="retainDays")
+    def retain_days(self) -> Optional[int]:
+        """
+        Number of days of snapshot retention for replication.
+        """
+        return pulumi.get(self, "retain_days")
+
+
+@pulumi.output_type
+class EnterpriseSnapshotPolicyRetainRule(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "timeInterval":
+            suggest = "time_interval"
+        elif key == "timeUnit":
+            suggest = "time_unit"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in EnterpriseSnapshotPolicyRetainRule. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        EnterpriseSnapshotPolicyRetainRule.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        EnterpriseSnapshotPolicyRetainRule.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 number: Optional[int] = None,
+                 time_interval: Optional[int] = None,
+                 time_unit: Optional[str] = None):
+        """
+        :param int number: Retention based on counting method.
+        :param int time_interval: Time unit.
+        :param str time_unit: Time-based retention.
+        """
+        if number is not None:
+            pulumi.set(__self__, "number", number)
+        if time_interval is not None:
+            pulumi.set(__self__, "time_interval", time_interval)
+        if time_unit is not None:
+            pulumi.set(__self__, "time_unit", time_unit)
+
+    @property
+    @pulumi.getter
+    def number(self) -> Optional[int]:
+        """
+        Retention based on counting method.
+        """
+        return pulumi.get(self, "number")
+
+    @property
+    @pulumi.getter(name="timeInterval")
+    def time_interval(self) -> Optional[int]:
+        """
+        Time unit.
+        """
+        return pulumi.get(self, "time_interval")
+
+    @property
+    @pulumi.getter(name="timeUnit")
+    def time_unit(self) -> Optional[str]:
+        """
+        Time-based retention.
+        """
+        return pulumi.get(self, "time_unit")
+
+
+@pulumi.output_type
+class EnterpriseSnapshotPolicySchedule(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "cronExpression":
+            suggest = "cron_expression"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in EnterpriseSnapshotPolicySchedule. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        EnterpriseSnapshotPolicySchedule.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        EnterpriseSnapshotPolicySchedule.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 cron_expression: str):
+        """
+        :param str cron_expression: CronTab expression.
+        """
+        pulumi.set(__self__, "cron_expression", cron_expression)
+
+    @property
+    @pulumi.getter(name="cronExpression")
+    def cron_expression(self) -> str:
+        """
+        CronTab expression.
+        """
+        return pulumi.get(self, "cron_expression")
+
+
+@pulumi.output_type
+class EnterpriseSnapshotPolicySpecialRetainRules(dict):
+    def __init__(__self__, *,
+                 enabled: Optional[bool] = None,
+                 rules: Optional[Sequence['outputs.EnterpriseSnapshotPolicySpecialRetainRulesRule']] = None):
+        """
+        :param bool enabled: Whether special reservations are enabled. Value range:
+               - true
+               - false.
+        :param Sequence['EnterpriseSnapshotPolicySpecialRetainRulesRuleArgs'] rules: List of special retention rules. See `rules` below.
+        """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if rules is not None:
+            pulumi.set(__self__, "rules", rules)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[bool]:
+        """
+        Whether special reservations are enabled. Value range:
+        - true
+        - false.
+        """
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter
+    def rules(self) -> Optional[Sequence['outputs.EnterpriseSnapshotPolicySpecialRetainRulesRule']]:
+        """
+        List of special retention rules. See `rules` below.
+        """
+        return pulumi.get(self, "rules")
+
+
+@pulumi.output_type
+class EnterpriseSnapshotPolicySpecialRetainRulesRule(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "specialPeriodUnit":
+            suggest = "special_period_unit"
+        elif key == "timeInterval":
+            suggest = "time_interval"
+        elif key == "timeUnit":
+            suggest = "time_unit"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in EnterpriseSnapshotPolicySpecialRetainRulesRule. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        EnterpriseSnapshotPolicySpecialRetainRulesRule.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        EnterpriseSnapshotPolicySpecialRetainRulesRule.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 special_period_unit: Optional[str] = None,
+                 time_interval: Optional[int] = None,
+                 time_unit: Optional[str] = None):
+        """
+        :param str special_period_unit: The cycle unit of the special reserved snapshot. If the value is set to WEEKS, the first snapshot of each week is reserved. The retention time is determined by TimeUnit and TimeInterval. The value range is:
+               - WEEKS
+               - MONTHS
+               - YEARS.
+        :param int time_interval: Time unit.
+        :param str time_unit: Time-based retention.
+        """
+        if special_period_unit is not None:
+            pulumi.set(__self__, "special_period_unit", special_period_unit)
+        if time_interval is not None:
+            pulumi.set(__self__, "time_interval", time_interval)
+        if time_unit is not None:
+            pulumi.set(__self__, "time_unit", time_unit)
+
+    @property
+    @pulumi.getter(name="specialPeriodUnit")
+    def special_period_unit(self) -> Optional[str]:
+        """
+        The cycle unit of the special reserved snapshot. If the value is set to WEEKS, the first snapshot of each week is reserved. The retention time is determined by TimeUnit and TimeInterval. The value range is:
+        - WEEKS
+        - MONTHS
+        - YEARS.
+        """
+        return pulumi.get(self, "special_period_unit")
+
+    @property
+    @pulumi.getter(name="timeInterval")
+    def time_interval(self) -> Optional[int]:
+        """
+        Time unit.
+        """
+        return pulumi.get(self, "time_interval")
+
+    @property
+    @pulumi.getter(name="timeUnit")
+    def time_unit(self) -> Optional[str]:
+        """
+        Time-based retention.
+        """
+        return pulumi.get(self, "time_unit")
+
+
+@pulumi.output_type
+class EnterpriseSnapshotPolicyStorageRule(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "enableImmediateAccess":
+            suggest = "enable_immediate_access"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in EnterpriseSnapshotPolicyStorageRule. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        EnterpriseSnapshotPolicyStorageRule.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        EnterpriseSnapshotPolicyStorageRule.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 enable_immediate_access: Optional[bool] = None):
+        """
+        :param bool enable_immediate_access: Snapshot speed available.
+        """
+        if enable_immediate_access is not None:
+            pulumi.set(__self__, "enable_immediate_access", enable_immediate_access)
+
+    @property
+    @pulumi.getter(name="enableImmediateAccess")
+    def enable_immediate_access(self) -> Optional[bool]:
+        """
+        Snapshot speed available.
+        """
+        return pulumi.get(self, "enable_immediate_access")
+
 
 @pulumi.output_type
 class GetDedicatedBlockStorageClustersClusterResult(dict):

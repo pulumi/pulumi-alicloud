@@ -3,9 +3,11 @@
 
 package com.pulumi.alicloud.eci.inputs;
 
+import com.pulumi.alicloud.eci.inputs.ContainerGroupInitContainerEnvironmentVarFieldRefArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -14,6 +16,21 @@ import javax.annotation.Nullable;
 public final class ContainerGroupInitContainerEnvironmentVarArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final ContainerGroupInitContainerEnvironmentVarArgs Empty = new ContainerGroupInitContainerEnvironmentVarArgs();
+
+    /**
+     * The reference of the environment variable. See `field_ref` below.
+     * 
+     */
+    @Import(name="fieldReves")
+    private @Nullable Output<List<ContainerGroupInitContainerEnvironmentVarFieldRefArgs>> fieldReves;
+
+    /**
+     * @return The reference of the environment variable. See `field_ref` below.
+     * 
+     */
+    public Optional<Output<List<ContainerGroupInitContainerEnvironmentVarFieldRefArgs>>> fieldReves() {
+        return Optional.ofNullable(this.fieldReves);
+    }
 
     /**
      * The name of the variable. The name can be 1 to 128 characters in length and can contain letters, digits, and underscores (_). It cannot start with a digit.
@@ -48,6 +65,7 @@ public final class ContainerGroupInitContainerEnvironmentVarArgs extends com.pul
     private ContainerGroupInitContainerEnvironmentVarArgs() {}
 
     private ContainerGroupInitContainerEnvironmentVarArgs(ContainerGroupInitContainerEnvironmentVarArgs $) {
+        this.fieldReves = $.fieldReves;
         this.key = $.key;
         this.value = $.value;
     }
@@ -68,6 +86,37 @@ public final class ContainerGroupInitContainerEnvironmentVarArgs extends com.pul
 
         public Builder(ContainerGroupInitContainerEnvironmentVarArgs defaults) {
             $ = new ContainerGroupInitContainerEnvironmentVarArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param fieldReves The reference of the environment variable. See `field_ref` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder fieldReves(@Nullable Output<List<ContainerGroupInitContainerEnvironmentVarFieldRefArgs>> fieldReves) {
+            $.fieldReves = fieldReves;
+            return this;
+        }
+
+        /**
+         * @param fieldReves The reference of the environment variable. See `field_ref` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder fieldReves(List<ContainerGroupInitContainerEnvironmentVarFieldRefArgs> fieldReves) {
+            return fieldReves(Output.of(fieldReves));
+        }
+
+        /**
+         * @param fieldReves The reference of the environment variable. See `field_ref` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder fieldReves(ContainerGroupInitContainerEnvironmentVarFieldRefArgs... fieldReves) {
+            return fieldReves(List.of(fieldReves));
         }
 
         /**

@@ -165,28 +165,35 @@ func (o LoadBalancerZoneMappingArrayOutput) Index(i pulumi.IntInput) LoadBalance
 }
 
 type ServerGroupHealthCheck struct {
-	// The backend port that is used for health checks. Valid values: 0 to 65535. Default value: 0. If you set the value to 0, the port of a backend server is used for health checks.
+	// The port of the backend server for health checks. Valid values: **0** ~ **65535**. **0** indicates that the port of the backend server is used for health check.
 	HealthCheckConnectPort *int `pulumi:"healthCheckConnectPort"`
-	// The maximum timeout period of a health check response. Unit: seconds. Valid values: 1 to 300. Default value: 5.
+	// Maximum timeout for health check responses. Unit: seconds. Valid values: **1** ~ **300**.
 	HealthCheckConnectTimeout *int `pulumi:"healthCheckConnectTimeout"`
-	// The domain name that is used for health checks. Valid values:
-	// - `$SERVER_IP`: the private IP address of a backend server.
+	// The domain name used for health check. Valid values:
+	// - **$SERVER_IP**: uses the intranet IP of the backend server.
+	// - **domain**: Specify a specific domain name. The length is limited to 1 to 80 characters. Only lowercase letters, numbers, dashes (-), and half-width periods (.) can be used.
+	// > **NOTE:**  This parameter takes effect only when **HealthCheckType** is **HTTP**.
 	HealthCheckDomain *string `pulumi:"healthCheckDomain"`
-	// Specifies whether to enable health checks.
+	// Whether to enable health check. Valid values:
+	// - **true**: on.
+	// - **false**: closed.
 	HealthCheckEnabled *bool `pulumi:"healthCheckEnabled"`
-	// The HTTP status codes to return to health checks. Separate multiple HTTP status codes with commas (,). Valid values: http2xx (default), http_3xx, http_4xx, and http_5xx. **Note:** This parameter takes effect only if `healthCheckType` is set to `http`.
+	// Health status return code. Multiple status codes are separated by commas (,). Valid values: **http\_2xx**, **http\_3xx**, **http\_4xx**, and **http\_5xx**.
+	// > **NOTE:**  This parameter takes effect only when **HealthCheckType** is **HTTP**.
 	HealthCheckHttpCodes []string `pulumi:"healthCheckHttpCodes"`
-	// The interval between two consecutive health checks. Unit: seconds. Valid values: 5 to 5000. Default value: 10.
+	// Time interval of health examination. Unit: seconds.Valid values: **5** ~ **50**.
 	HealthCheckInterval *int `pulumi:"healthCheckInterval"`
-	// The protocol that is used for health checks. Valid values: `TCP` (default) and `HTTP`.
+	// Health check protocol. Valid values: **TCP** or **HTTP**.
 	HealthCheckType *string `pulumi:"healthCheckType"`
-	// The path to which health check requests are sent. The path must be 1 to 80 characters in length, and can contain only letters, digits, and the following special characters: `- / . % ? # & =`. It can also contain the following extended characters: `_ ; ~ ! ( ) * [ ] @ $ ^ : ' , +`. The path must start with a forward slash (/). **Note:** This parameter takes effect only if `healthCheckType` is set to `http`.
+	// Health check path.
+	// > **NOTE:**  This parameter takes effect only when **HealthCheckType** is **HTTP**.
 	HealthCheckUrl *string `pulumi:"healthCheckUrl"`
-	// The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy. In this case, the health status is changed from fail to success. Valid values: 2 to 10. Default value: 2.
+	// After the health check is successful, the health check status of the backend server is determined from **failed** to **successful * *.Valid values: **2** to **10 * *.
 	HealthyThreshold *int `pulumi:"healthyThreshold"`
-	// The HTTP method that is used for health checks. Valid values: `GET` and `HEAD`. **Note:** This parameter takes effect only if `healthCheckType` is set to `http`.
+	// The health check method. Valid values: **GET** or **HEAD**.
+	// > **NOTE:**  This parameter takes effect only when **HealthCheckType** is **HTTP**.
 	HttpCheckMethod *string `pulumi:"httpCheckMethod"`
-	// The number of times that a healthy backend server must consecutively fail health checks before it is declared unhealthy. In this case, the health status is changed from success to fail. Valid values: 2 to 10. Default value: 2.
+	// After the health check fails for many times in a row, the health check status of the backend server is determined from **Success** to **Failure**. Valid values: **2** to **10**.
 	UnhealthyThreshold *int `pulumi:"unhealthyThreshold"`
 }
 
@@ -202,28 +209,35 @@ type ServerGroupHealthCheckInput interface {
 }
 
 type ServerGroupHealthCheckArgs struct {
-	// The backend port that is used for health checks. Valid values: 0 to 65535. Default value: 0. If you set the value to 0, the port of a backend server is used for health checks.
+	// The port of the backend server for health checks. Valid values: **0** ~ **65535**. **0** indicates that the port of the backend server is used for health check.
 	HealthCheckConnectPort pulumi.IntPtrInput `pulumi:"healthCheckConnectPort"`
-	// The maximum timeout period of a health check response. Unit: seconds. Valid values: 1 to 300. Default value: 5.
+	// Maximum timeout for health check responses. Unit: seconds. Valid values: **1** ~ **300**.
 	HealthCheckConnectTimeout pulumi.IntPtrInput `pulumi:"healthCheckConnectTimeout"`
-	// The domain name that is used for health checks. Valid values:
-	// - `$SERVER_IP`: the private IP address of a backend server.
+	// The domain name used for health check. Valid values:
+	// - **$SERVER_IP**: uses the intranet IP of the backend server.
+	// - **domain**: Specify a specific domain name. The length is limited to 1 to 80 characters. Only lowercase letters, numbers, dashes (-), and half-width periods (.) can be used.
+	// > **NOTE:**  This parameter takes effect only when **HealthCheckType** is **HTTP**.
 	HealthCheckDomain pulumi.StringPtrInput `pulumi:"healthCheckDomain"`
-	// Specifies whether to enable health checks.
+	// Whether to enable health check. Valid values:
+	// - **true**: on.
+	// - **false**: closed.
 	HealthCheckEnabled pulumi.BoolPtrInput `pulumi:"healthCheckEnabled"`
-	// The HTTP status codes to return to health checks. Separate multiple HTTP status codes with commas (,). Valid values: http2xx (default), http_3xx, http_4xx, and http_5xx. **Note:** This parameter takes effect only if `healthCheckType` is set to `http`.
+	// Health status return code. Multiple status codes are separated by commas (,). Valid values: **http\_2xx**, **http\_3xx**, **http\_4xx**, and **http\_5xx**.
+	// > **NOTE:**  This parameter takes effect only when **HealthCheckType** is **HTTP**.
 	HealthCheckHttpCodes pulumi.StringArrayInput `pulumi:"healthCheckHttpCodes"`
-	// The interval between two consecutive health checks. Unit: seconds. Valid values: 5 to 5000. Default value: 10.
+	// Time interval of health examination. Unit: seconds.Valid values: **5** ~ **50**.
 	HealthCheckInterval pulumi.IntPtrInput `pulumi:"healthCheckInterval"`
-	// The protocol that is used for health checks. Valid values: `TCP` (default) and `HTTP`.
+	// Health check protocol. Valid values: **TCP** or **HTTP**.
 	HealthCheckType pulumi.StringPtrInput `pulumi:"healthCheckType"`
-	// The path to which health check requests are sent. The path must be 1 to 80 characters in length, and can contain only letters, digits, and the following special characters: `- / . % ? # & =`. It can also contain the following extended characters: `_ ; ~ ! ( ) * [ ] @ $ ^ : ' , +`. The path must start with a forward slash (/). **Note:** This parameter takes effect only if `healthCheckType` is set to `http`.
+	// Health check path.
+	// > **NOTE:**  This parameter takes effect only when **HealthCheckType** is **HTTP**.
 	HealthCheckUrl pulumi.StringPtrInput `pulumi:"healthCheckUrl"`
-	// The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy. In this case, the health status is changed from fail to success. Valid values: 2 to 10. Default value: 2.
+	// After the health check is successful, the health check status of the backend server is determined from **failed** to **successful * *.Valid values: **2** to **10 * *.
 	HealthyThreshold pulumi.IntPtrInput `pulumi:"healthyThreshold"`
-	// The HTTP method that is used for health checks. Valid values: `GET` and `HEAD`. **Note:** This parameter takes effect only if `healthCheckType` is set to `http`.
+	// The health check method. Valid values: **GET** or **HEAD**.
+	// > **NOTE:**  This parameter takes effect only when **HealthCheckType** is **HTTP**.
 	HttpCheckMethod pulumi.StringPtrInput `pulumi:"httpCheckMethod"`
-	// The number of times that a healthy backend server must consecutively fail health checks before it is declared unhealthy. In this case, the health status is changed from success to fail. Valid values: 2 to 10. Default value: 2.
+	// After the health check fails for many times in a row, the health check status of the backend server is determined from **Success** to **Failure**. Valid values: **2** to **10**.
 	UnhealthyThreshold pulumi.IntPtrInput `pulumi:"unhealthyThreshold"`
 }
 
@@ -304,58 +318,65 @@ func (o ServerGroupHealthCheckOutput) ToServerGroupHealthCheckPtrOutputWithConte
 	}).(ServerGroupHealthCheckPtrOutput)
 }
 
-// The backend port that is used for health checks. Valid values: 0 to 65535. Default value: 0. If you set the value to 0, the port of a backend server is used for health checks.
+// The port of the backend server for health checks. Valid values: **0** ~ **65535**. **0** indicates that the port of the backend server is used for health check.
 func (o ServerGroupHealthCheckOutput) HealthCheckConnectPort() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ServerGroupHealthCheck) *int { return v.HealthCheckConnectPort }).(pulumi.IntPtrOutput)
 }
 
-// The maximum timeout period of a health check response. Unit: seconds. Valid values: 1 to 300. Default value: 5.
+// Maximum timeout for health check responses. Unit: seconds. Valid values: **1** ~ **300**.
 func (o ServerGroupHealthCheckOutput) HealthCheckConnectTimeout() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ServerGroupHealthCheck) *int { return v.HealthCheckConnectTimeout }).(pulumi.IntPtrOutput)
 }
 
-// The domain name that is used for health checks. Valid values:
-// - `$SERVER_IP`: the private IP address of a backend server.
+// The domain name used for health check. Valid values:
+// - **$SERVER_IP**: uses the intranet IP of the backend server.
+// - **domain**: Specify a specific domain name. The length is limited to 1 to 80 characters. Only lowercase letters, numbers, dashes (-), and half-width periods (.) can be used.
+// > **NOTE:**  This parameter takes effect only when **HealthCheckType** is **HTTP**.
 func (o ServerGroupHealthCheckOutput) HealthCheckDomain() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServerGroupHealthCheck) *string { return v.HealthCheckDomain }).(pulumi.StringPtrOutput)
 }
 
-// Specifies whether to enable health checks.
+// Whether to enable health check. Valid values:
+// - **true**: on.
+// - **false**: closed.
 func (o ServerGroupHealthCheckOutput) HealthCheckEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ServerGroupHealthCheck) *bool { return v.HealthCheckEnabled }).(pulumi.BoolPtrOutput)
 }
 
-// The HTTP status codes to return to health checks. Separate multiple HTTP status codes with commas (,). Valid values: http2xx (default), http_3xx, http_4xx, and http_5xx. **Note:** This parameter takes effect only if `healthCheckType` is set to `http`.
+// Health status return code. Multiple status codes are separated by commas (,). Valid values: **http\_2xx**, **http\_3xx**, **http\_4xx**, and **http\_5xx**.
+// > **NOTE:**  This parameter takes effect only when **HealthCheckType** is **HTTP**.
 func (o ServerGroupHealthCheckOutput) HealthCheckHttpCodes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ServerGroupHealthCheck) []string { return v.HealthCheckHttpCodes }).(pulumi.StringArrayOutput)
 }
 
-// The interval between two consecutive health checks. Unit: seconds. Valid values: 5 to 5000. Default value: 10.
+// Time interval of health examination. Unit: seconds.Valid values: **5** ~ **50**.
 func (o ServerGroupHealthCheckOutput) HealthCheckInterval() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ServerGroupHealthCheck) *int { return v.HealthCheckInterval }).(pulumi.IntPtrOutput)
 }
 
-// The protocol that is used for health checks. Valid values: `TCP` (default) and `HTTP`.
+// Health check protocol. Valid values: **TCP** or **HTTP**.
 func (o ServerGroupHealthCheckOutput) HealthCheckType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServerGroupHealthCheck) *string { return v.HealthCheckType }).(pulumi.StringPtrOutput)
 }
 
-// The path to which health check requests are sent. The path must be 1 to 80 characters in length, and can contain only letters, digits, and the following special characters: `- / . % ? # & =`. It can also contain the following extended characters: `_ ; ~ ! ( ) * [ ] @ $ ^ : ' , +`. The path must start with a forward slash (/). **Note:** This parameter takes effect only if `healthCheckType` is set to `http`.
+// Health check path.
+// > **NOTE:**  This parameter takes effect only when **HealthCheckType** is **HTTP**.
 func (o ServerGroupHealthCheckOutput) HealthCheckUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServerGroupHealthCheck) *string { return v.HealthCheckUrl }).(pulumi.StringPtrOutput)
 }
 
-// The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy. In this case, the health status is changed from fail to success. Valid values: 2 to 10. Default value: 2.
+// After the health check is successful, the health check status of the backend server is determined from **failed** to **successful * *.Valid values: **2** to **10 * *.
 func (o ServerGroupHealthCheckOutput) HealthyThreshold() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ServerGroupHealthCheck) *int { return v.HealthyThreshold }).(pulumi.IntPtrOutput)
 }
 
-// The HTTP method that is used for health checks. Valid values: `GET` and `HEAD`. **Note:** This parameter takes effect only if `healthCheckType` is set to `http`.
+// The health check method. Valid values: **GET** or **HEAD**.
+// > **NOTE:**  This parameter takes effect only when **HealthCheckType** is **HTTP**.
 func (o ServerGroupHealthCheckOutput) HttpCheckMethod() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServerGroupHealthCheck) *string { return v.HttpCheckMethod }).(pulumi.StringPtrOutput)
 }
 
-// The number of times that a healthy backend server must consecutively fail health checks before it is declared unhealthy. In this case, the health status is changed from success to fail. Valid values: 2 to 10. Default value: 2.
+// After the health check fails for many times in a row, the health check status of the backend server is determined from **Success** to **Failure**. Valid values: **2** to **10**.
 func (o ServerGroupHealthCheckOutput) UnhealthyThreshold() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ServerGroupHealthCheck) *int { return v.UnhealthyThreshold }).(pulumi.IntPtrOutput)
 }
@@ -384,7 +405,7 @@ func (o ServerGroupHealthCheckPtrOutput) Elem() ServerGroupHealthCheckOutput {
 	}).(ServerGroupHealthCheckOutput)
 }
 
-// The backend port that is used for health checks. Valid values: 0 to 65535. Default value: 0. If you set the value to 0, the port of a backend server is used for health checks.
+// The port of the backend server for health checks. Valid values: **0** ~ **65535**. **0** indicates that the port of the backend server is used for health check.
 func (o ServerGroupHealthCheckPtrOutput) HealthCheckConnectPort() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ServerGroupHealthCheck) *int {
 		if v == nil {
@@ -394,7 +415,7 @@ func (o ServerGroupHealthCheckPtrOutput) HealthCheckConnectPort() pulumi.IntPtrO
 	}).(pulumi.IntPtrOutput)
 }
 
-// The maximum timeout period of a health check response. Unit: seconds. Valid values: 1 to 300. Default value: 5.
+// Maximum timeout for health check responses. Unit: seconds. Valid values: **1** ~ **300**.
 func (o ServerGroupHealthCheckPtrOutput) HealthCheckConnectTimeout() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ServerGroupHealthCheck) *int {
 		if v == nil {
@@ -404,8 +425,10 @@ func (o ServerGroupHealthCheckPtrOutput) HealthCheckConnectTimeout() pulumi.IntP
 	}).(pulumi.IntPtrOutput)
 }
 
-// The domain name that is used for health checks. Valid values:
-// - `$SERVER_IP`: the private IP address of a backend server.
+// The domain name used for health check. Valid values:
+// - **$SERVER_IP**: uses the intranet IP of the backend server.
+// - **domain**: Specify a specific domain name. The length is limited to 1 to 80 characters. Only lowercase letters, numbers, dashes (-), and half-width periods (.) can be used.
+// > **NOTE:**  This parameter takes effect only when **HealthCheckType** is **HTTP**.
 func (o ServerGroupHealthCheckPtrOutput) HealthCheckDomain() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServerGroupHealthCheck) *string {
 		if v == nil {
@@ -415,7 +438,9 @@ func (o ServerGroupHealthCheckPtrOutput) HealthCheckDomain() pulumi.StringPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
-// Specifies whether to enable health checks.
+// Whether to enable health check. Valid values:
+// - **true**: on.
+// - **false**: closed.
 func (o ServerGroupHealthCheckPtrOutput) HealthCheckEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ServerGroupHealthCheck) *bool {
 		if v == nil {
@@ -425,7 +450,8 @@ func (o ServerGroupHealthCheckPtrOutput) HealthCheckEnabled() pulumi.BoolPtrOutp
 	}).(pulumi.BoolPtrOutput)
 }
 
-// The HTTP status codes to return to health checks. Separate multiple HTTP status codes with commas (,). Valid values: http2xx (default), http_3xx, http_4xx, and http_5xx. **Note:** This parameter takes effect only if `healthCheckType` is set to `http`.
+// Health status return code. Multiple status codes are separated by commas (,). Valid values: **http\_2xx**, **http\_3xx**, **http\_4xx**, and **http\_5xx**.
+// > **NOTE:**  This parameter takes effect only when **HealthCheckType** is **HTTP**.
 func (o ServerGroupHealthCheckPtrOutput) HealthCheckHttpCodes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ServerGroupHealthCheck) []string {
 		if v == nil {
@@ -435,7 +461,7 @@ func (o ServerGroupHealthCheckPtrOutput) HealthCheckHttpCodes() pulumi.StringArr
 	}).(pulumi.StringArrayOutput)
 }
 
-// The interval between two consecutive health checks. Unit: seconds. Valid values: 5 to 5000. Default value: 10.
+// Time interval of health examination. Unit: seconds.Valid values: **5** ~ **50**.
 func (o ServerGroupHealthCheckPtrOutput) HealthCheckInterval() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ServerGroupHealthCheck) *int {
 		if v == nil {
@@ -445,7 +471,7 @@ func (o ServerGroupHealthCheckPtrOutput) HealthCheckInterval() pulumi.IntPtrOutp
 	}).(pulumi.IntPtrOutput)
 }
 
-// The protocol that is used for health checks. Valid values: `TCP` (default) and `HTTP`.
+// Health check protocol. Valid values: **TCP** or **HTTP**.
 func (o ServerGroupHealthCheckPtrOutput) HealthCheckType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServerGroupHealthCheck) *string {
 		if v == nil {
@@ -455,7 +481,8 @@ func (o ServerGroupHealthCheckPtrOutput) HealthCheckType() pulumi.StringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
-// The path to which health check requests are sent. The path must be 1 to 80 characters in length, and can contain only letters, digits, and the following special characters: `- / . % ? # & =`. It can also contain the following extended characters: `_ ; ~ ! ( ) * [ ] @ $ ^ : ' , +`. The path must start with a forward slash (/). **Note:** This parameter takes effect only if `healthCheckType` is set to `http`.
+// Health check path.
+// > **NOTE:**  This parameter takes effect only when **HealthCheckType** is **HTTP**.
 func (o ServerGroupHealthCheckPtrOutput) HealthCheckUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServerGroupHealthCheck) *string {
 		if v == nil {
@@ -465,7 +492,7 @@ func (o ServerGroupHealthCheckPtrOutput) HealthCheckUrl() pulumi.StringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
-// The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy. In this case, the health status is changed from fail to success. Valid values: 2 to 10. Default value: 2.
+// After the health check is successful, the health check status of the backend server is determined from **failed** to **successful * *.Valid values: **2** to **10 * *.
 func (o ServerGroupHealthCheckPtrOutput) HealthyThreshold() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ServerGroupHealthCheck) *int {
 		if v == nil {
@@ -475,7 +502,8 @@ func (o ServerGroupHealthCheckPtrOutput) HealthyThreshold() pulumi.IntPtrOutput 
 	}).(pulumi.IntPtrOutput)
 }
 
-// The HTTP method that is used for health checks. Valid values: `GET` and `HEAD`. **Note:** This parameter takes effect only if `healthCheckType` is set to `http`.
+// The health check method. Valid values: **GET** or **HEAD**.
+// > **NOTE:**  This parameter takes effect only when **HealthCheckType** is **HTTP**.
 func (o ServerGroupHealthCheckPtrOutput) HttpCheckMethod() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServerGroupHealthCheck) *string {
 		if v == nil {
@@ -485,7 +513,7 @@ func (o ServerGroupHealthCheckPtrOutput) HttpCheckMethod() pulumi.StringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
-// The number of times that a healthy backend server must consecutively fail health checks before it is declared unhealthy. In this case, the health status is changed from success to fail. Valid values: 2 to 10. Default value: 2.
+// After the health check fails for many times in a row, the health check status of the backend server is determined from **Success** to **Failure**. Valid values: **2** to **10**.
 func (o ServerGroupHealthCheckPtrOutput) UnhealthyThreshold() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ServerGroupHealthCheck) *int {
 		if v == nil {

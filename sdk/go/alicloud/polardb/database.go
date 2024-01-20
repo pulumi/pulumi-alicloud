@@ -14,7 +14,7 @@ import (
 
 // Provides a PolarDB database resource. A database deployed in a PolarDB cluster. A PolarDB cluster can own multiple databases.
 //
-// > **NOTE:** Available in v1.66.0+.
+// > **NOTE:** Available since v1.66.0.
 //
 // ## Example Usage
 //
@@ -35,6 +35,7 @@ import (
 //				DbType:    pulumi.StringRef("MySQL"),
 //				DbVersion: pulumi.StringRef("8.0"),
 //				PayType:   "PostPaid",
+//				Category:  pulumi.StringRef("Normal"),
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -91,6 +92,8 @@ import (
 type Database struct {
 	pulumi.CustomResourceState
 
+	// Account name authorized to access the database. Only supports PostgreSQL.
+	AccountName pulumi.StringPtrOutput `pulumi:"accountName"`
 	// Character set. The value range is limited to the following: [ utf8, gbk, latin1, utf8mb4, Chinese_PRC_CI_AS, Chinese_PRC_CS_AS, SQL_Latin1_General_CP1_CI_AS, SQL_Latin1_General_CP1_CS_AS, Chinese_PRC_BIN ], default is "utf8" \(`utf8mb4` only supports versions 5.5 and 5.6\).
 	CharacterSetName pulumi.StringPtrOutput `pulumi:"characterSetName"`
 	// The Id of cluster that can run database.
@@ -137,6 +140,8 @@ func GetDatabase(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Database resources.
 type databaseState struct {
+	// Account name authorized to access the database. Only supports PostgreSQL.
+	AccountName *string `pulumi:"accountName"`
 	// Character set. The value range is limited to the following: [ utf8, gbk, latin1, utf8mb4, Chinese_PRC_CI_AS, Chinese_PRC_CS_AS, SQL_Latin1_General_CP1_CI_AS, SQL_Latin1_General_CP1_CS_AS, Chinese_PRC_BIN ], default is "utf8" \(`utf8mb4` only supports versions 5.5 and 5.6\).
 	CharacterSetName *string `pulumi:"characterSetName"`
 	// The Id of cluster that can run database.
@@ -148,6 +153,8 @@ type databaseState struct {
 }
 
 type DatabaseState struct {
+	// Account name authorized to access the database. Only supports PostgreSQL.
+	AccountName pulumi.StringPtrInput
 	// Character set. The value range is limited to the following: [ utf8, gbk, latin1, utf8mb4, Chinese_PRC_CI_AS, Chinese_PRC_CS_AS, SQL_Latin1_General_CP1_CI_AS, SQL_Latin1_General_CP1_CS_AS, Chinese_PRC_BIN ], default is "utf8" \(`utf8mb4` only supports versions 5.5 and 5.6\).
 	CharacterSetName pulumi.StringPtrInput
 	// The Id of cluster that can run database.
@@ -163,6 +170,8 @@ func (DatabaseState) ElementType() reflect.Type {
 }
 
 type databaseArgs struct {
+	// Account name authorized to access the database. Only supports PostgreSQL.
+	AccountName *string `pulumi:"accountName"`
 	// Character set. The value range is limited to the following: [ utf8, gbk, latin1, utf8mb4, Chinese_PRC_CI_AS, Chinese_PRC_CS_AS, SQL_Latin1_General_CP1_CI_AS, SQL_Latin1_General_CP1_CS_AS, Chinese_PRC_BIN ], default is "utf8" \(`utf8mb4` only supports versions 5.5 and 5.6\).
 	CharacterSetName *string `pulumi:"characterSetName"`
 	// The Id of cluster that can run database.
@@ -175,6 +184,8 @@ type databaseArgs struct {
 
 // The set of arguments for constructing a Database resource.
 type DatabaseArgs struct {
+	// Account name authorized to access the database. Only supports PostgreSQL.
+	AccountName pulumi.StringPtrInput
 	// Character set. The value range is limited to the following: [ utf8, gbk, latin1, utf8mb4, Chinese_PRC_CI_AS, Chinese_PRC_CS_AS, SQL_Latin1_General_CP1_CI_AS, SQL_Latin1_General_CP1_CS_AS, Chinese_PRC_BIN ], default is "utf8" \(`utf8mb4` only supports versions 5.5 and 5.6\).
 	CharacterSetName pulumi.StringPtrInput
 	// The Id of cluster that can run database.
@@ -270,6 +281,11 @@ func (o DatabaseOutput) ToDatabaseOutput() DatabaseOutput {
 
 func (o DatabaseOutput) ToDatabaseOutputWithContext(ctx context.Context) DatabaseOutput {
 	return o
+}
+
+// Account name authorized to access the database. Only supports PostgreSQL.
+func (o DatabaseOutput) AccountName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Database) pulumi.StringPtrOutput { return v.AccountName }).(pulumi.StringPtrOutput)
 }
 
 // Character set. The value range is limited to the following: [ utf8, gbk, latin1, utf8mb4, Chinese_PRC_CI_AS, Chinese_PRC_CS_AS, SQL_Latin1_General_CP1_CI_AS, SQL_Latin1_General_CP1_CS_AS, Chinese_PRC_BIN ], default is "utf8" \(`utf8mb4` only supports versions 5.5 and 5.6\).

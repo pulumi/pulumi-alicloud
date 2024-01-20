@@ -144,6 +144,11 @@ export interface ProviderEndpoint {
     waf?: pulumi.Input<string>;
     wafOpenapi?: pulumi.Input<string>;
 }
+
+export interface ProviderSignVersion {
+    oss?: pulumi.Input<string>;
+    sls?: pulumi.Input<string>;
+}
 export namespace ackone {
     export interface ClusterNetwork {
         /**
@@ -815,63 +820,64 @@ export namespace alb {
 
     export interface ServerGroupHealthCheckConfig {
         /**
-         * The status code for a successful health check.  Multiple status codes can be specified as a list. Valid values: `http2xx`, `http3xx`, `http4xx`, and `http5xx`. Default value: `http2xx`. **NOTE:** This
-         * parameter exists if the `HealthCheckProtocol` parameter is set to `HTTP`.
+         * The HTTP status codes that are used to indicate whether the backend server passes the health check. Valid values:
+         * - If `healthCheckProtocol` is set to `HTTP` or `HTTPS`. Valid values: `http2xx`, `http3xx`, `http4xx`, and `http5xx`. Default value: `http2xx`.
+         * - If `healthCheckProtocol` is set to `gRPC`. Valid values: `0` to `99`. Default value: `0`.
          */
         healthCheckCodes?: pulumi.Input<pulumi.Input<string>[]>;
         /**
-         * The port of the backend server that is used for health checks. Valid values: `0` to `65535`. Default value: `0`. A value of 0 indicates that a backend server port is used for health checks.
+         * The backend port that is used for health checks. Default value: `0`. Valid values: `0` to `65535`. A value of 0 indicates that a backend server port is used for health checks.
          */
         healthCheckConnectPort?: pulumi.Input<number>;
         /**
-         * Indicates whether health checks are enabled. Valid values: `true`, `false`. Default value: `true`.
+         * Specifies whether to enable the health check feature. Valid values: `true`, `false`.
          */
-        healthCheckEnabled?: pulumi.Input<boolean>;
+        healthCheckEnabled: pulumi.Input<boolean>;
         /**
          * The domain name that is used for health checks.
          */
         healthCheckHost?: pulumi.Input<string>;
         /**
-         * HTTP protocol version. Valid values: `HTTP1.0` and `HTTP1.1`. Default value: `HTTP1.1`. **NOTE:** This parameter exists if the `HealthCheckProtocol` parameter is set to `HTTP`.
+         * The version of the HTTP protocol. Default value: `HTTP1.1`. Valid values: `HTTP1.0` and `HTTP1.1`. **NOTE:** This parameter takes effect only when `healthCheckProtocol` is set to `HTTP` or `HTTPS`.
          */
         healthCheckHttpVersion?: pulumi.Input<string>;
         /**
-         * The time interval between two consecutive health checks. Unit: seconds. Valid values: `1` to `50`. Default value: `2`.
+         * The interval at which health checks are performed. Unit: seconds. Default value: `2`. Valid values: `1` to `50`.
          */
         healthCheckInterval?: pulumi.Input<number>;
         /**
-         * Health check method. Valid values: `GET` and `HEAD`. Default: `GET`. **NOTE:** This parameter exists if the `HealthCheckProtocol` parameter is set to `HTTP`.
+         * The HTTP method that is used for health checks. Default value: `GET`. Valid values: `GET`, `POST`, `HEAD`. **NOTE:** This parameter takes effect only when `healthCheckProtocol` is set to `HTTP`, `HTTPS`, or `gRPC`. From version 1.215.0, `healthCheckMethod` can be set to `POST`.
          */
         healthCheckMethod?: pulumi.Input<string>;
         /**
-         * The forwarding rule path of health checks. **NOTE:** This parameter exists if the `HealthCheckProtocol` parameter is set to `HTTP`.
+         * The path that is used for health checks. **NOTE:** This parameter takes effect only when `healthCheckProtocol` is set to `HTTP` or `HTTPS`.
          */
         healthCheckPath?: pulumi.Input<string>;
         /**
-         * Health check protocol. Valid values: `HTTP` and `TCP`, `HTTPS`.
+         * The protocol that is used for health checks. Valid values: `HTTP`, `HTTPS`, `TCP` and `gRPC`.
          */
         healthCheckProtocol?: pulumi.Input<string>;
         /**
-         * The timeout period of a health check response. If a backend Elastic Compute Service (ECS) instance does not send an expected response within the specified period of time, the ECS instance is considered unhealthy. Unit: seconds. Valid values: 1 to 300. Default value: 5. **NOTE:** If the value of the `HealthCHeckTimeout` parameter is smaller than that of the `HealthCheckInterval` parameter, the value of the `HealthCHeckTimeout` parameter is ignored and the value of the `HealthCheckInterval` parameter is regarded as the timeout period.
+         * The timeout period for a health check response. If a backend Elastic Compute Service (ECS) instance does not send an expected response within the specified period of time, the ECS instance is considered unhealthy. Unit: seconds. Default value: `5`. Valid values: `1` to `300`. **NOTE:** If the value of `healthCheckTimeout` is smaller than the value of `healthCheckInterval`, the value of `healthCheckTimeout` is ignored and the value of `healthCheckInterval` is used.
          */
         healthCheckTimeout?: pulumi.Input<number>;
         /**
-         * The number of health checks that an unhealthy backend server must pass consecutively before it is declared healthy. In this case, the health check state is changed from fail to success. Valid values: 2 to 10. Default value: 3.
+         * The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy. Default value: `3`. Valid values: `2` to `10`.
          */
         healthyThreshold?: pulumi.Input<number>;
         /**
-         * The number of consecutive health checks that a healthy backend server must consecutively fail before it is declared unhealthy. In this case, the health check state is changed from success to fail. Valid values: `2` to `10`. Default value: `3`.
+         * The number of times that a healthy backend server must consecutively fail health checks before it is declared unhealthy. Default value: `3`. Valid values: `2` to `10`.
          */
         unhealthyThreshold?: pulumi.Input<number>;
     }
 
     export interface ServerGroupServer {
         /**
-         * The description of the server.
+         * The description of the backend server.
          */
         description?: pulumi.Input<string>;
         /**
-         * The port that is used by the server. Valid values: `1` to `65535`. **Note:** This parameter is required if the `serverType` parameter is set to `Ecs`, `Eni`, `Eci`, or `Ip`. You do not need to configure this parameter if you set `serverType` to `Fc`.
+         * The port used by the backend server. Valid values: `1` to `65535`. **Note:** This parameter is required if the `serverType` parameter is set to `Ecs`, `Eni`, `Eci`, or `Ip`. You do not need to configure this parameter if you set `serverType` to `Fc`.
          */
         port?: pulumi.Input<number>;
         /**
@@ -890,43 +896,34 @@ export namespace alb {
          */
         serverIp?: pulumi.Input<string>;
         /**
-         * The type of the server. The type of the server. Valid values: 
-         * - Ecs: an ECS instance.
-         * - Eni: an ENI.
-         * - Eci: an elastic container instance.
-         * - Ip(Available in v1.194.0+): an IP address.
-         * - fc(Available in v1.194.0+): a function.
+         * The type of the server. The type of the server. Valid values:
          */
         serverType: pulumi.Input<string>;
         /**
-         * The status of the backend server. Valid values:
+         * The status of the backend server.
          */
         status?: pulumi.Input<string>;
         /**
-         * The weight of the server. Valid values: `0` to `100`. Default value: `100`. If the value is set to `0`, no
-         * requests are forwarded to the server. **Note:** You do not need to set this parameter if you set `serverType` to `Fc`.
+         * The weight of the server. Default value: `100`. Valid values: `0` to `100`. If the value is set to `0`, no requests are forwarded to the server. **Note:** You do not need to set this parameter if you set `serverType` to `Fc`.
          */
         weight?: pulumi.Input<number>;
     }
 
     export interface ServerGroupStickySessionConfig {
         /**
-         * the cookie that is configured on the server. **NOTE:** This parameter exists if the `StickySession`
-         * parameter is set to `On` and the `StickySessionType` parameter is set to `server`.
+         * The cookie to be configured on the server. **NOTE:** This parameter takes effect when the `stickySessionEnabled` parameter is set to `true` and the `stickySessionType` parameter is set to `Server`.
          */
         cookie?: pulumi.Input<string>;
         /**
-         * The timeout period of a cookie. The timeout period of a cookie. Unit: seconds. Valid values: `1`
-         * to `86400`. Default value: `1000`.
+         * The timeout period of a cookie. Unit: seconds. Default value: `1000`. Valid values: `1` to `86400`. **NOTE:** This parameter takes effect when the `stickySessionEnabled` parameter is set to `true` and the `stickySessionType` parameter is set to `Insert`.
          */
         cookieTimeout?: pulumi.Input<number>;
         /**
-         * Indicates whether sticky session is enabled. Values: `true` and `false`. Default
-         * value: `false`.  **NOTE:** This parameter exists if the `StickySession` parameter is set to `On`.
+         * Specifies whether to enable session persistence. Default value: `false`. Valid values: `true`, `false`. **NOTE:** This parameter takes effect when the `serverGroupType` parameter is set to `Instance` or `Ip`.
          */
         stickySessionEnabled?: pulumi.Input<boolean>;
         /**
-         * The method that is used to handle a cookie. Values: `Server` and `Insert`.
+         * The method that is used to handle a cookie. Valid values: `Server`, `Insert`.
          */
         stickySessionType?: pulumi.Input<string>;
     }
@@ -1219,6 +1216,484 @@ export namespace arms {
          * The value of the label.
          */
         value?: pulumi.Input<string>;
+    }
+
+    export interface SyntheticTaskAvailableAssertion {
+        /**
+         * Expected value.
+         */
+        expect: pulumi.Input<string>;
+        /**
+         * Condition: gt: greater than; gte: greater than or equal to; lt: less than; te: less than or equal to; eq: equal to; neq: not equal to; ctn: contains; nctn: does not contain; exist: exists; n_exist: does not exist; belong: belongs to; reg_match: regular matching.
+         */
+        operator: pulumi.Input<string>;
+        /**
+         * Check the target. If the target is HttpResCode, HttpResBody, or httpressetime, you do not need to specify the target. If the target is HttpResHead, you need to specify the key in the header. If the target is HttpResHead, you need to use jsonPath.
+         */
+        target?: pulumi.Input<string>;
+        /**
+         * Assertion type, including: httpresead, httpresead, HttpResBody, HttpResBodyJson, httpressetime, IcmpPackLoss (packet loss rate), IcmpPackMaxLatency (maximum packet delay ms), icmppackwebscreen, fmppackavglatency (average delay rendering), TraceRouteHops (number of hops), dnsarecname, websiteOnload (full load time), see the supplement below for specific use.
+         */
+        type: pulumi.Input<string>;
+    }
+
+    export interface SyntheticTaskCommonSetting {
+        /**
+         * Custom host. See `customHost` below.
+         */
+        customHost?: pulumi.Input<inputs.arms.SyntheticTaskCommonSettingCustomHost>;
+        /**
+         * IpType.
+         */
+        ipType?: pulumi.Input<number>;
+        /**
+         * Whether to enable link tracking.
+         */
+        isOpenTrace?: pulumi.Input<boolean>;
+        /**
+         * Whether the monitoring samples are evenly distributed:
+         * - 0: No
+         * 1: Yes.
+         */
+        monitorSamples?: pulumi.Input<number>;
+        /**
+         * Link trace client type:
+         * - 0:ARMS Agent
+         * - 1:OpenTelemetry
+         * - 2:Jaeger.
+         */
+        traceClientType?: pulumi.Input<number>;
+        /**
+         * The link data is reported to the region.
+         */
+        xtraceRegion?: pulumi.Input<string>;
+    }
+
+    export interface SyntheticTaskCommonSettingCustomHost {
+        /**
+         * The host list. See `hosts` below.
+         */
+        hosts: pulumi.Input<pulumi.Input<inputs.arms.SyntheticTaskCommonSettingCustomHostHost>[]>;
+        /**
+         * Selection method:
+         * - 0: Random
+         * - 1: Polling.
+         */
+        selectType: pulumi.Input<number>;
+    }
+
+    export interface SyntheticTaskCommonSettingCustomHostHost {
+        /**
+         * Domain Name.
+         */
+        domain: pulumi.Input<string>;
+        /**
+         * IpType.
+         */
+        ipType: pulumi.Input<number>;
+        /**
+         * The IP list.
+         */
+        ips: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface SyntheticTaskCustomPeriod {
+        /**
+         * End hours, 0-24.
+         */
+        endHour?: pulumi.Input<number>;
+        /**
+         * Starting hours, 0-24.
+         */
+        startHour?: pulumi.Input<number>;
+    }
+
+    export interface SyntheticTaskMonitor {
+        /**
+         * The city code of monitor.
+         */
+        cityCode: pulumi.Input<string>;
+        /**
+         * The type of monitor.
+         */
+        clientType: pulumi.Input<number>;
+        /**
+         * The operator code of monitor.
+         */
+        operatorCode: pulumi.Input<string>;
+    }
+
+    export interface SyntheticTaskMonitorConf {
+        /**
+         * HTTP(S) task configuration information. See `apiHttp` below.
+         */
+        apiHttp?: pulumi.Input<inputs.arms.SyntheticTaskMonitorConfApiHttp>;
+        /**
+         * File download type task configuration. See `fileDownload` below.
+         */
+        fileDownload?: pulumi.Input<inputs.arms.SyntheticTaskMonitorConfFileDownload>;
+        /**
+         * The configuration parameters of the DNS dial test. Required when TaskType is 3. See `netDns` below.
+         */
+        netDns?: pulumi.Input<inputs.arms.SyntheticTaskMonitorConfNetDns>;
+        /**
+         * ICMP dialing configuration parameters. Required when TaskType is 1. See `netIcmp` below.
+         */
+        netIcmp?: pulumi.Input<inputs.arms.SyntheticTaskMonitorConfNetIcmp>;
+        /**
+         * The configuration parameters of TCP dial test. Required when TaskType is 2. See `netTcp` below.
+         */
+        netTcp?: pulumi.Input<inputs.arms.SyntheticTaskMonitorConfNetTcp>;
+        /**
+         * Streaming Media Dial Test Configuration. See `stream` below.
+         */
+        stream?: pulumi.Input<inputs.arms.SyntheticTaskMonitorConfStream>;
+        /**
+         * Website speed measurement type task configuration. See `website` below.
+         */
+        website?: pulumi.Input<inputs.arms.SyntheticTaskMonitorConfWebsite>;
+    }
+
+    export interface SyntheticTaskMonitorConfApiHttp {
+        /**
+         * Connection timeout, in ms. Default 5000. Optional range: 1000-300000ms.
+         */
+        connectTimeout?: pulumi.Input<number>;
+        /**
+         * HTTP method, GET or POST.
+         */
+        method?: pulumi.Input<string>;
+        /**
+         * HTTP request body. See `requestBody` below.
+         */
+        requestBody?: pulumi.Input<inputs.arms.SyntheticTaskMonitorConfApiHttpRequestBody>;
+        /**
+         * HTTP request header.
+         */
+        requestHeaders?: pulumi.Input<{[key: string]: any}>;
+        /**
+         * The target URL.
+         */
+        targetUrl: pulumi.Input<string>;
+        /**
+         * TCP dial test timeout. The unit is milliseconds (ms), the minimum value is 1000, the maximum value is 300000, and the default value is 20000.
+         */
+        timeout?: pulumi.Input<number>;
+    }
+
+    export interface SyntheticTaskMonitorConfApiHttpRequestBody {
+        /**
+         * The request body content, in JSON string format. When the type is text/plain,application/json,application/xml,text/html, the content can be converted to a JSON string.
+         */
+        content?: pulumi.Input<string>;
+        /**
+         * Assertion type, including: httpresead, httpresead, HttpResBody, HttpResBodyJson, httpressetime, IcmpPackLoss (packet loss rate), IcmpPackMaxLatency (maximum packet delay ms), icmppackwebscreen, fmppackavglatency (average delay rendering), TraceRouteHops (number of hops), dnsarecname, websiteOnload (full load time), see the supplement below for specific use.
+         */
+        type?: pulumi.Input<string>;
+    }
+
+    export interface SyntheticTaskMonitorConfFileDownload {
+        /**
+         * Connection timeout time, in ms. Default 5000. Optional range: 1000-120000ms.
+         */
+        connectionTimeout?: pulumi.Input<number>;
+        /**
+         * Custom header, in JSON Map format.
+         */
+        customHeaderContent?: pulumi.Input<{[key: string]: any}>;
+        /**
+         * Download the kernel.
+         * - 1:curl
+         * - 0:WinInet
+         * Default 1.
+         */
+        downloadKernel?: pulumi.Input<number>;
+        /**
+         * Ignore CA Certificate authorization error 0: Do not ignore, 1: ignore, default 1.
+         */
+        ignoreCertificateAuthError?: pulumi.Input<number>;
+        /**
+         * Ignore certificate revocation error 0: Do not ignore, 1: ignore, default 1.
+         */
+        ignoreCertificateCanceledError?: pulumi.Input<number>;
+        /**
+         * Ignore certificate expiration error 0: not ignored, 1: Ignored, default 1.
+         */
+        ignoreCertificateOutOfDateError?: pulumi.Input<number>;
+        /**
+         * The certificate status error is ignored. 0: Do not ignore, 1: IGNORE. The default value is 1.
+         */
+        ignoreCertificateStatusError?: pulumi.Input<number>;
+        /**
+         * The certificate cannot be trusted and ignored. 0: Do not ignore, 1: IGNORE. The default value is 1.
+         */
+        ignoreCertificateUntrustworthyError?: pulumi.Input<number>;
+        /**
+         * Ignore certificate usage error 0: Do not ignore, 1: ignore, default 1.
+         */
+        ignoreCertificateUsingError?: pulumi.Input<number>;
+        /**
+         * Invalid host error ignored, 0: not ignored, 1: Ignored, default 1.
+         */
+        ignoreInvalidHostError?: pulumi.Input<number>;
+        /**
+         * Monitoring timeout, in ms. Not required, 20000 by default.
+         */
+        monitorTimeout?: pulumi.Input<number>;
+        /**
+         * Quick agreement
+         * - 1:http1
+         * - 2:http2
+         * - 3:http3
+         * Default 1.
+         */
+        quickProtocol?: pulumi.Input<number>;
+        /**
+         * When redirection occurs, whether to continue browsing, 0-No, 1-Yes, the default is 1.
+         */
+        redirection?: pulumi.Input<number>;
+        /**
+         * The target URL.
+         */
+        targetUrl: pulumi.Input<string>;
+        /**
+         * The transmission size, in KB. The default value is 2048KB. The transmission size of the downloaded file must be between 1 and 20480KB.
+         */
+        transmissionSize?: pulumi.Input<number>;
+        /**
+         * Verify keywords.
+         */
+        validateKeywords?: pulumi.Input<string>;
+        /**
+         * The verification method.
+         * - 0: Do not validate
+         * - 1: Validation string
+         * - 2:MD5 validation.
+         */
+        verifyWay?: pulumi.Input<number>;
+        /**
+         * DNS hijack whitelist. Match rules support IP, IP wildcard, subnet mask, and CNAME. Multiple match rules can be filled in. Multiple match rules are separated by vertical bars (|). For example, www.aliyun.com:203.0.3.55 | 203.3.44.67 indicates that all other IP addresses under the www.aliyun.com domain except 203.0.3.55 and 203.3.44.67 are hijacked.
+         */
+        whiteList?: pulumi.Input<string>;
+    }
+
+    export interface SyntheticTaskMonitorConfNetDns {
+        /**
+         * The IP address type of the DNS server.
+         * - 0 (default):ipv4
+         * - 1:ipv6
+         * 2: Automatic.
+         */
+        dnsServerIpType?: pulumi.Input<number>;
+        /**
+         * The IP address of the NS server. The default value is 114.114.114.114.
+         */
+        nsServer?: pulumi.Input<string>;
+        /**
+         * DNS query method.
+         * - 0 (default): Recursive
+         * - 1: Iteration.
+         */
+        queryMethod?: pulumi.Input<number>;
+        /**
+         * The target URL.
+         */
+        targetUrl: pulumi.Input<string>;
+        /**
+         * TCP dial test timeout. The unit is milliseconds (ms), the minimum value is 1000, the maximum value is 300000, and the default value is 20000.
+         */
+        timeout?: pulumi.Input<number>;
+    }
+
+    export interface SyntheticTaskMonitorConfNetIcmp {
+        /**
+         * The interval between TCP connections. The unit is milliseconds (ms), the minimum value is 200, the maximum value is 10000, and the default value is 200.
+         */
+        interval?: pulumi.Input<number>;
+        /**
+         * Number of ICMP(Ping) packets sent. The minimum value is 1, the maximum value is 50, and the default is 4.
+         */
+        packageNum?: pulumi.Input<number>;
+        /**
+         * The size of the sent ICMP(Ping) packet. The unit is byte. The ICMP(PING) packet size is limited to 32, 64, 128, 256, 512, 1024, 1080, and 1450.
+         */
+        packageSize?: pulumi.Input<number>;
+        /**
+         * Whether to split ICMP(Ping) packets. The default is true.
+         */
+        splitPackage?: pulumi.Input<boolean>;
+        /**
+         * The target URL.
+         */
+        targetUrl: pulumi.Input<string>;
+        /**
+         * TCP dial test timeout. The unit is milliseconds (ms), the minimum value is 1000, the maximum value is 300000, and the default value is 20000.
+         */
+        timeout?: pulumi.Input<number>;
+        /**
+         * Whether to enable tracert. The default is true.
+         */
+        tracertEnable?: pulumi.Input<boolean>;
+        /**
+         * The maximum number of hops for tracert. The minimum value is 1, the maximum value is 128, and the default value is 20.
+         */
+        tracertNumMax?: pulumi.Input<number>;
+        /**
+         * The time-out of tracert. The unit is milliseconds (ms), the minimum value is 1000, the maximum value is 300000, and the default value is 60000.
+         */
+        tracertTimeout?: pulumi.Input<number>;
+    }
+
+    export interface SyntheticTaskMonitorConfNetTcp {
+        /**
+         * The number of TCP connections established. The minimum value is 1, the maximum value is 16, and the default is 4.
+         */
+        connectTimes?: pulumi.Input<number>;
+        /**
+         * The interval between TCP connections. The unit is milliseconds (ms), the minimum value is 200, the maximum value is 10000, and the default value is 200.
+         */
+        interval?: pulumi.Input<number>;
+        /**
+         * The target URL.
+         */
+        targetUrl: pulumi.Input<string>;
+        /**
+         * TCP dial test timeout. The unit is milliseconds (ms), the minimum value is 1000, the maximum value is 300000, and the default value is 20000.
+         */
+        timeout?: pulumi.Input<number>;
+        /**
+         * Whether to enable tracert. The default is true.
+         */
+        tracertEnable?: pulumi.Input<boolean>;
+        /**
+         * The maximum number of hops for tracert. The minimum value is 1, the maximum value is 128, and the default value is 20.
+         */
+        tracertNumMax?: pulumi.Input<number>;
+        /**
+         * The time-out of tracert. The unit is milliseconds (ms), the minimum value is 1000, the maximum value is 300000, and the default value is 60000.
+         */
+        tracertTimeout?: pulumi.Input<number>;
+    }
+
+    export interface SyntheticTaskMonitorConfStream {
+        /**
+         * Custom header, in JSON Map format.
+         */
+        customHeaderContent?: pulumi.Input<{[key: string]: any}>;
+        /**
+         * Player, do not pass the default 12.
+         * - 12:VLC
+         * - 2:FlashPlayer.
+         */
+        playerType?: pulumi.Input<number>;
+        /**
+         * Resource address type:
+         * - 1: Resource address.
+         * - 0: page address, not 0 by default.
+         */
+        streamAddressType?: pulumi.Input<number>;
+        /**
+         * Monitoring duration, in seconds, up to 60s, not 60 by default.
+         */
+        streamMonitorTimeout?: pulumi.Input<number>;
+        /**
+         * Audio and video flags: 0-video, 1-audio.
+         */
+        streamType?: pulumi.Input<number>;
+        /**
+         * The target URL.
+         */
+        targetUrl?: pulumi.Input<string>;
+        /**
+         * DNS hijack whitelist. Match rules support IP, IP wildcard, subnet mask, and CNAME. Multiple match rules can be filled in. Multiple match rules are separated by vertical bars (|). For example, www.aliyun.com:203.0.3.55 | 203.3.44.67 indicates that all other IP addresses under the www.aliyun.com domain except 203.0.3.55 and 203.3.44.67 are hijacked.
+         */
+        whiteList?: pulumi.Input<string>;
+    }
+
+    export interface SyntheticTaskMonitorConfWebsite {
+        /**
+         * Whether to support automatic scrolling screen, loading page.
+         * - 0 (default): No
+         * 1: Yes.
+         */
+        automaticScrolling?: pulumi.Input<number>;
+        /**
+         * Custom header.
+         * - 0 (default): Off
+         * - 1: Modify the first package
+         * - 2: Modify all packages.
+         */
+        customHeader?: pulumi.Input<number>;
+        /**
+         * Custom header, in JSON Map format.
+         */
+        customHeaderContent?: pulumi.Input<{[key: string]: any}>;
+        /**
+         * Whether to disable caching.
+         * - 0: not disabled
+         * - 1 (default): Disabled.
+         */
+        disableCache?: pulumi.Input<number>;
+        /**
+         * The Accept-Encoding field is used to determine whether to Accept compressed files. 0-do not disable, 1-disable, the default is 0.
+         */
+        disableCompression?: pulumi.Input<number>;
+        /**
+         * When a domain name (such as www.aliyun.com) is resolved, if the resolved IP address or CNAME is not in the DNS hijacking white list, the user will fail to access or return a target IP address that is not Aliyun. If the IP or CNAME in the resolution result is in the DNS white list, it will be determined that DNS hijacking has not occurred.  Fill in the format: Domain name: matching rules. Match rules support IP, IP wildcard, subnet mask, and CNAME. Multiple match rules can be filled in. Multiple match rules are separated by vertical bars (|). For example, www.aliyun.com:203.0.3.55 | 203.3.44.67 indicates that all other IP addresses under the www.aliyun.com domain except 203.0.3.55 and 203.3.44.67 are hijacked.
+         */
+        dnsHijackWhitelist?: pulumi.Input<string>;
+        /**
+         * If an element configured in the element blacklist appears during page loading, the element is not requested to be loaded.
+         */
+        elementBlacklist?: pulumi.Input<string>;
+        /**
+         * Whether to filter invalid IP parameters. 0: filter, 1: do not filter. The default value is 0.
+         */
+        filterInvalidIp?: pulumi.Input<number>;
+        /**
+         * Identify elements: Set the total number of elements on the Browse page.
+         */
+        flowHijackJumpTimes?: pulumi.Input<number>;
+        /**
+         * Hijacking ID: Set the matching key information. Enter the hijacking keyword or key element, with an asterisk (*) allowed.
+         */
+        flowHijackLogo?: pulumi.Input<string>;
+        /**
+         * Whether to ignore certificate errors during certificate verification in SSL Handshake and continue browsing. 0-do not ignore, 1-ignore. The default value is 1.
+         */
+        ignoreCertificateError?: pulumi.Input<number>;
+        /**
+         * Monitoring timeout, in ms. Not required, 20000 by default.
+         */
+        monitorTimeout?: pulumi.Input<number>;
+        /**
+         * Monitoring the page appears to be tampered with elements other than the domain settings that belong to the page. Common manifestations are pop-up advertisements, floating advertisements, jumps, etc.  Fill in the format: Domain name: Element. You can fill multiple elements separated by a vertical bar (|). For example, www.aliyun.com:|/cc/bb/a.gif |/vv/bb/cc.jpg indicates that all the other elements of the www.aliyun.com domain name except the basic document,/cc/bb/a.gif, and/vv/bb/cc.jpg are tampered.
+         */
+        pageTamper?: pulumi.Input<string>;
+        /**
+         * When redirection occurs, whether to continue browsing, 0-No, 1-Yes, the default is 1.
+         */
+        redirection?: pulumi.Input<number>;
+        /**
+         * The slow element threshold, in ms, is 5000 by default and can be selected from 1 to 300000ms.
+         */
+        slowElementThreshold?: pulumi.Input<number>;
+        /**
+         * The target URL.
+         */
+        targetUrl: pulumi.Input<string>;
+        /**
+         * The verification string is an arbitrary string in the source code of the monitoring page. If the source code returned by the client contains any of the blacklisted strings, 650 error is returned. Multiple strings are separated by a vertical bar (|).
+         */
+        verifyStringBlacklist?: pulumi.Input<string>;
+        /**
+         * The verification string is an arbitrary string in the source code of the monitoring page. The source code returned by the client must contain all the strings in the whitelist. Otherwise, 650 error is returned. Multiple strings are separated by a vertical bar (|).
+         */
+        verifyStringWhitelist?: pulumi.Input<string>;
+        /**
+         * The maximum waiting time, in ms, is 5000 by default and can be selected from 5000 ms to 300000ms.
+         */
+        waitCompletionTime?: pulumi.Input<number>;
     }
 }
 
@@ -4425,6 +4900,88 @@ export namespace eais {
 }
 
 export namespace ebs {
+    export interface EnterpriseSnapshotPolicyCrossRegionCopyInfo {
+        /**
+         * Enable Snapshot replication.
+         */
+        enabled?: pulumi.Input<boolean>;
+        /**
+         * Destination region for Snapshot replication. See `regions` below.
+         */
+        regions?: pulumi.Input<pulumi.Input<inputs.ebs.EnterpriseSnapshotPolicyCrossRegionCopyInfoRegion>[]>;
+    }
+
+    export interface EnterpriseSnapshotPolicyCrossRegionCopyInfoRegion {
+        /**
+         * Destination region ID.
+         */
+        regionId?: pulumi.Input<string>;
+        /**
+         * Number of days of snapshot retention for replication.
+         */
+        retainDays?: pulumi.Input<number>;
+    }
+
+    export interface EnterpriseSnapshotPolicyRetainRule {
+        /**
+         * Retention based on counting method.
+         */
+        number?: pulumi.Input<number>;
+        /**
+         * Time unit.
+         */
+        timeInterval?: pulumi.Input<number>;
+        /**
+         * Time-based retention.
+         */
+        timeUnit?: pulumi.Input<string>;
+    }
+
+    export interface EnterpriseSnapshotPolicySchedule {
+        /**
+         * CronTab expression.
+         */
+        cronExpression: pulumi.Input<string>;
+    }
+
+    export interface EnterpriseSnapshotPolicySpecialRetainRules {
+        /**
+         * Whether special reservations are enabled. Value range:
+         * - true
+         * - false.
+         */
+        enabled?: pulumi.Input<boolean>;
+        /**
+         * List of special retention rules. See `rules` below.
+         */
+        rules?: pulumi.Input<pulumi.Input<inputs.ebs.EnterpriseSnapshotPolicySpecialRetainRulesRule>[]>;
+    }
+
+    export interface EnterpriseSnapshotPolicySpecialRetainRulesRule {
+        /**
+         * The cycle unit of the special reserved snapshot. If the value is set to WEEKS, the first snapshot of each week is reserved. The retention time is determined by TimeUnit and TimeInterval. The value range is:
+         * - WEEKS
+         * - MONTHS
+         * - YEARS.
+         */
+        specialPeriodUnit?: pulumi.Input<string>;
+        /**
+         * Time unit.
+         */
+        timeInterval?: pulumi.Input<number>;
+        /**
+         * Time-based retention.
+         */
+        timeUnit?: pulumi.Input<string>;
+    }
+
+    export interface EnterpriseSnapshotPolicyStorageRule {
+        /**
+         * Snapshot speed available.
+         */
+        enableImmediateAccess?: pulumi.Input<boolean>;
+    }
+
 }
 
 export namespace eci {
@@ -4505,6 +5062,10 @@ export namespace eci {
          */
         restartCount?: pulumi.Input<number>;
         /**
+         * The security context of the container. See `securityContext` below.
+         */
+        securityContexts?: pulumi.Input<pulumi.Input<inputs.eci.ContainerGroupContainerSecurityContext>[]>;
+        /**
          * The structure of volumeMounts. See `volumeMounts` below.
          */
         volumeMounts?: pulumi.Input<pulumi.Input<inputs.eci.ContainerGroupContainerVolumeMount>[]>;
@@ -4516,6 +5077,10 @@ export namespace eci {
 
     export interface ContainerGroupContainerEnvironmentVar {
         /**
+         * The reference of the environment variable. See `fieldRef` below.
+         */
+        fieldReves?: pulumi.Input<pulumi.Input<inputs.eci.ContainerGroupContainerEnvironmentVarFieldRef>[]>;
+        /**
          * The name of the variable. The name can be 1 to 128 characters in length and can contain letters, digits, and underscores (_). It cannot start with a digit.
          */
         key?: pulumi.Input<string>;
@@ -4523,6 +5088,13 @@ export namespace eci {
          * The value of the variable. The value can be 0 to 256 characters in length.
          */
         value?: pulumi.Input<string>;
+    }
+
+    export interface ContainerGroupContainerEnvironmentVarFieldRef {
+        /**
+         * The path of the reference.
+         */
+        fieldPath?: pulumi.Input<string>;
     }
 
     export interface ContainerGroupContainerLivenessProbe {
@@ -4664,6 +5236,24 @@ export namespace eci {
         port?: pulumi.Input<number>;
     }
 
+    export interface ContainerGroupContainerSecurityContext {
+        /**
+         * The permissions that you want to grant to the processes in the containers. See `capability` below.
+         */
+        capabilities?: pulumi.Input<pulumi.Input<inputs.eci.ContainerGroupContainerSecurityContextCapability>[]>;
+        /**
+         * The ID of the user who runs the container.
+         */
+        runAsUser?: pulumi.Input<number>;
+    }
+
+    export interface ContainerGroupContainerSecurityContextCapability {
+        /**
+         * The permissions that you want to grant to the processes in the containers.
+         */
+        adds?: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
     export interface ContainerGroupContainerVolumeMount {
         /**
          * The directory of the mounted volume. Data under this directory will be overwritten by the data in the volume.
@@ -4695,24 +5285,6 @@ export namespace eci {
     }
 
     export interface ContainerGroupDnsConfigOption {
-        /**
-         * The name of the mounted volume.
-         */
-        name?: pulumi.Input<string>;
-        /**
-         * The value of the variable. The value can be 0 to 256 characters in length.
-         */
-        value?: pulumi.Input<string>;
-    }
-
-    export interface ContainerGroupEciSecurityContext {
-        /**
-         * Sysctls hold a list of namespaced sysctls used for the pod. Pods with unsupported sysctls (by the container runtime) might fail to launch. See `sysctls` below.
-         */
-        sysctls?: pulumi.Input<pulumi.Input<inputs.eci.ContainerGroupEciSecurityContextSysctl>[]>;
-    }
-
-    export interface ContainerGroupEciSecurityContextSysctl {
         /**
          * The name of the mounted volume.
          */
@@ -4799,6 +5371,10 @@ export namespace eci {
          */
         restartCount?: pulumi.Input<number>;
         /**
+         * The security context of the container. See `securityContext` below.
+         */
+        securityContexts?: pulumi.Input<pulumi.Input<inputs.eci.ContainerGroupInitContainerSecurityContext>[]>;
+        /**
          * The structure of volumeMounts. See `volumeMounts` below.
          */
         volumeMounts?: pulumi.Input<pulumi.Input<inputs.eci.ContainerGroupInitContainerVolumeMount>[]>;
@@ -4810,6 +5386,10 @@ export namespace eci {
 
     export interface ContainerGroupInitContainerEnvironmentVar {
         /**
+         * The reference of the environment variable. See `fieldRef` below.
+         */
+        fieldReves?: pulumi.Input<pulumi.Input<inputs.eci.ContainerGroupInitContainerEnvironmentVarFieldRef>[]>;
+        /**
          * The name of the variable. The name can be 1 to 128 characters in length and can contain letters, digits, and underscores (_). It cannot start with a digit.
          */
         key?: pulumi.Input<string>;
@@ -4817,6 +5397,13 @@ export namespace eci {
          * The value of the variable. The value can be 0 to 256 characters in length.
          */
         value?: pulumi.Input<string>;
+    }
+
+    export interface ContainerGroupInitContainerEnvironmentVarFieldRef {
+        /**
+         * The path of the reference.
+         */
+        fieldPath?: pulumi.Input<string>;
     }
 
     export interface ContainerGroupInitContainerPort {
@@ -4828,6 +5415,24 @@ export namespace eci {
          * The type of the protocol. Valid values: `TCP` and `UDP`.
          */
         protocol?: pulumi.Input<string>;
+    }
+
+    export interface ContainerGroupInitContainerSecurityContext {
+        /**
+         * The permissions that you want to grant to the processes in the containers. See `capability` below.
+         */
+        capabilities?: pulumi.Input<pulumi.Input<inputs.eci.ContainerGroupInitContainerSecurityContextCapability>[]>;
+        /**
+         * The ID of the user who runs the container.
+         */
+        runAsUser?: pulumi.Input<number>;
+    }
+
+    export interface ContainerGroupInitContainerSecurityContextCapability {
+        /**
+         * The permissions that you want to grant to the processes in the containers.
+         */
+        adds?: pulumi.Input<pulumi.Input<string>[]>;
     }
 
     export interface ContainerGroupInitContainerVolumeMount {
@@ -4843,6 +5448,24 @@ export namespace eci {
          * Specifies whether the volume is read-only. Default value: `false`.
          */
         readOnly?: pulumi.Input<boolean>;
+    }
+
+    export interface ContainerGroupSecurityContext {
+        /**
+         * Sysctls hold a list of namespaced sysctls used for the pod. Pods with unsupported sysctls (by the container runtime) might fail to launch. See `sysctl` below.
+         */
+        sysctls?: pulumi.Input<pulumi.Input<inputs.eci.ContainerGroupSecurityContextSysctl>[]>;
+    }
+
+    export interface ContainerGroupSecurityContextSysctl {
+        /**
+         * The name of the mounted volume.
+         */
+        name?: pulumi.Input<string>;
+        /**
+         * The value of the variable. The value can be 0 to 256 characters in length.
+         */
+        value?: pulumi.Input<string>;
     }
 
     export interface ContainerGroupVolume {
@@ -6649,6 +7272,17 @@ export namespace ess {
         weight: pulumi.Input<number>;
     }
 
+    export interface ScalingRuleAlarmDimension {
+        /**
+         * The dimension key of the metric.
+         */
+        dimensionKey?: pulumi.Input<string>;
+        /**
+         * The dimension value of the metric.
+         */
+        dimensionValue?: pulumi.Input<string>;
+    }
+
     export interface ScalingRuleStepAdjustment {
         /**
          * The lower bound of step.
@@ -8358,7 +8992,7 @@ export namespace mongodb {
          */
         maxIops?: pulumi.Input<number>;
         /**
-         * The node class of the Config Server node.
+         * The instance type of the mongo node. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
          */
         nodeClass?: pulumi.Input<string>;
         /**
@@ -8370,7 +9004,9 @@ export namespace mongodb {
          */
         nodeId?: pulumi.Input<string>;
         /**
-         * The node storage of the Config Server node.
+         * The storage space of the shard node.
+         * - Custom storage space; value range: [10, 1,000]
+         * - 10-GB increments. Unit: GB.
          */
         nodeStorage?: pulumi.Input<number>;
         /**
@@ -8381,39 +9017,40 @@ export namespace mongodb {
 
     export interface ShardingInstanceMongoList {
         /**
-         * Mongo node connection string.
+         * The connection address of the Config Server node.
          */
         connectString?: pulumi.Input<string>;
         /**
-         * Node specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
+         * The instance type of the mongo node. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
          */
         nodeClass: pulumi.Input<string>;
         /**
-         * The ID of the mongo-node.
+         * The ID of the Config Server node.
          */
         nodeId?: pulumi.Input<string>;
         /**
-         * Mongo node port.
+         * The connection port of the Config Server node.
          */
         port?: pulumi.Input<number>;
     }
 
     export interface ShardingInstanceShardList {
         /**
-         * Node specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
+         * The instance type of the shard node. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
          */
         nodeClass: pulumi.Input<string>;
         /**
-         * The ID of the shard-node.
+         * The ID of the Config Server node.
          */
         nodeId?: pulumi.Input<string>;
         /**
+         * The storage space of the shard node.
          * - Custom storage space; value range: [10, 1,000]
          * - 10-GB increments. Unit: GB.
          */
         nodeStorage: pulumi.Input<number>;
         /**
-         * The number of read-only nodes in shard node. Valid values: 0 to 5. Default value: 0.
+         * The number of read-only nodes in shard node Default value: `0`. Valid values: `0` to `5`.
          */
         readonlyReplicas?: pulumi.Input<number>;
     }
@@ -8580,48 +9217,55 @@ export namespace nlb {
 
     export interface ServerGroupHealthCheck {
         /**
-         * The backend port that is used for health checks. Valid values: 0 to 65535. Default value: 0. If you set the value to 0, the port of a backend server is used for health checks.
+         * The port of the backend server for health checks. Valid values: **0** ~ **65535**. **0** indicates that the port of the backend server is used for health check.
          */
         healthCheckConnectPort?: pulumi.Input<number>;
         /**
-         * The maximum timeout period of a health check response. Unit: seconds. Valid values: 1 to 300. Default value: 5.
+         * Maximum timeout for health check responses. Unit: seconds. Valid values: **1** ~ **300**.
          */
         healthCheckConnectTimeout?: pulumi.Input<number>;
         /**
-         * The domain name that is used for health checks. Valid values:
-         * - `$SERVER_IP`: the private IP address of a backend server.
+         * The domain name used for health check. Valid values:
+         * - **$SERVER_IP**: uses the intranet IP of the backend server.
+         * - **domain**: Specify a specific domain name. The length is limited to 1 to 80 characters. Only lowercase letters, numbers, dashes (-), and half-width periods (.) can be used.
+         * > **NOTE:**  This parameter takes effect only when **HealthCheckType** is **HTTP**.
          */
         healthCheckDomain?: pulumi.Input<string>;
         /**
-         * Specifies whether to enable health checks.
+         * Whether to enable health check. Valid values:
+         * - **true**: on.
+         * - **false**: closed.
          */
         healthCheckEnabled?: pulumi.Input<boolean>;
         /**
-         * The HTTP status codes to return to health checks. Separate multiple HTTP status codes with commas (,). Valid values: http2xx (default), http_3xx, http_4xx, and http_5xx. **Note:** This parameter takes effect only if `healthCheckType` is set to `http`.
+         * Health status return code. Multiple status codes are separated by commas (,). Valid values: **http\_2xx**, **http\_3xx**, **http\_4xx**, and **http\_5xx**.
+         * > **NOTE:**  This parameter takes effect only when **HealthCheckType** is **HTTP**.
          */
         healthCheckHttpCodes?: pulumi.Input<pulumi.Input<string>[]>;
         /**
-         * The interval between two consecutive health checks. Unit: seconds. Valid values: 5 to 5000. Default value: 10.
+         * Time interval of health examination. Unit: seconds.Valid values: **5** ~ **50**.
          */
         healthCheckInterval?: pulumi.Input<number>;
         /**
-         * The protocol that is used for health checks. Valid values: `TCP` (default) and `HTTP`.
+         * Health check protocol. Valid values: **TCP** or **HTTP**.
          */
         healthCheckType?: pulumi.Input<string>;
         /**
-         * The path to which health check requests are sent. The path must be 1 to 80 characters in length, and can contain only letters, digits, and the following special characters: `- / . % ? # & =`. It can also contain the following extended characters: `_ ; ~ ! ( ) * [ ] @ $ ^ : ' , +`. The path must start with a forward slash (/). **Note:** This parameter takes effect only if `healthCheckType` is set to `http`.
+         * Health check path.
+         * > **NOTE:**  This parameter takes effect only when **HealthCheckType** is **HTTP**.
          */
         healthCheckUrl?: pulumi.Input<string>;
         /**
-         * The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy. In this case, the health status is changed from fail to success. Valid values: 2 to 10. Default value: 2.
+         * After the health check is successful, the health check status of the backend server is determined from **failed** to **successful * *.Valid values: **2** to **10 * *.
          */
         healthyThreshold?: pulumi.Input<number>;
         /**
-         * The HTTP method that is used for health checks. Valid values: `GET` and `HEAD`. **Note:** This parameter takes effect only if `healthCheckType` is set to `http`.
+         * The health check method. Valid values: **GET** or **HEAD**.
+         * > **NOTE:**  This parameter takes effect only when **HealthCheckType** is **HTTP**.
          */
         httpCheckMethod?: pulumi.Input<string>;
         /**
-         * The number of times that a healthy backend server must consecutively fail health checks before it is declared unhealthy. In this case, the health status is changed from success to fail. Valid values: 2 to 10. Default value: 2.
+         * After the health check fails for many times in a row, the health check status of the backend server is determined from **Success** to **Failure**. Valid values: **2** to **10**.
          */
         unhealthyThreshold?: pulumi.Input<number>;
     }

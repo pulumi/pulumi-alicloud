@@ -110,182 +110,244 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:nlb/serverGroup:ServerGroup")
 public class ServerGroup extends com.pulumi.resources.CustomResource {
     /**
-     * The protocol version. Valid values: `Ipv4` (default), `DualStack`.
+     * Protocol version. Value:
+     * - **ipv4**:IPv4 type.
+     * - **DualStack**: Double Stack type.
      * 
      */
     @Export(name="addressIpVersion", refs={String.class}, tree="[0]")
     private Output<String> addressIpVersion;
 
     /**
-     * @return The protocol version. Valid values: `Ipv4` (default), `DualStack`.
+     * @return Protocol version. Value:
+     * - **ipv4**:IPv4 type.
+     * - **DualStack**: Double Stack type.
      * 
      */
     public Output<String> addressIpVersion() {
         return this.addressIpVersion;
     }
     /**
-     * Specifies whether to enable connection draining.
+     * Full port forwarding.
      * 
      */
+    @Export(name="anyPortEnabled", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> anyPortEnabled;
+
+    /**
+     * @return Full port forwarding.
+     * 
+     */
+    public Output<Boolean> anyPortEnabled() {
+        return this.anyPortEnabled;
+    }
+    /**
+     * . Field &#39;connection_drain&#39; has been deprecated from provider version 1.214.0. New field &#39;connection_drain_enabled&#39; instead.
+     * 
+     * @deprecated
+     * Field &#39;connection_drain&#39; has been deprecated since provider version 1.214.0. New field &#39;connection_drain_enabled&#39; instead.
+     * 
+     */
+    @Deprecated /* Field 'connection_drain' has been deprecated since provider version 1.214.0. New field 'connection_drain_enabled' instead. */
     @Export(name="connectionDrain", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> connectionDrain;
 
     /**
-     * @return Specifies whether to enable connection draining.
+     * @return . Field &#39;connection_drain&#39; has been deprecated from provider version 1.214.0. New field &#39;connection_drain_enabled&#39; instead.
      * 
      */
     public Output<Boolean> connectionDrain() {
         return this.connectionDrain;
     }
     /**
-     * The timeout period of connection draining. Unit: seconds. Valid values: 10 to 900.
+     * Whether to open the connection gracefully interrupted. Value:
+     * - **true**: on.
+     * - **false**: closed.
+     * 
+     */
+    @Export(name="connectionDrainEnabled", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> connectionDrainEnabled;
+
+    /**
+     * @return Whether to open the connection gracefully interrupted. Value:
+     * - **true**: on.
+     * - **false**: closed.
+     * 
+     */
+    public Output<Boolean> connectionDrainEnabled() {
+        return this.connectionDrainEnabled;
+    }
+    /**
+     * Set the connection elegant interrupt timeout. Unit: seconds. Valid values: **10** ~ **900**.
      * 
      */
     @Export(name="connectionDrainTimeout", refs={Integer.class}, tree="[0]")
     private Output<Integer> connectionDrainTimeout;
 
     /**
-     * @return The timeout period of connection draining. Unit: seconds. Valid values: 10 to 900.
+     * @return Set the connection elegant interrupt timeout. Unit: seconds. Valid values: **10** ~ **900**.
      * 
      */
     public Output<Integer> connectionDrainTimeout() {
         return this.connectionDrainTimeout;
     }
     /**
-     * HealthCheck. See `health_check` below.
+     * Health check configuration information. See `health_check` below.
      * 
      */
     @Export(name="healthCheck", refs={ServerGroupHealthCheck.class}, tree="[0]")
     private Output<ServerGroupHealthCheck> healthCheck;
 
     /**
-     * @return HealthCheck. See `health_check` below.
+     * @return Health check configuration information. See `health_check` below.
      * 
      */
     public Output<ServerGroupHealthCheck> healthCheck() {
         return this.healthCheck;
     }
     /**
-     * Indicates whether client address retention is enabled.
+     * Whether to enable the client address retention function. Value:
+     * - **true**: on.
+     * - **false**: closed.
+     * &gt; **NOTE:**  special instructions: When **AddressIPVersion** is of the **ipv4** type, the default value is **true**. **Addrestipversion** can only be **false** when the value of **ipv6** is **ipv6**, and can be **true** when supported by the underlying layer * *.
      * 
      */
     @Export(name="preserveClientIpEnabled", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> preserveClientIpEnabled;
 
     /**
-     * @return Indicates whether client address retention is enabled.
+     * @return Whether to enable the client address retention function. Value:
+     * - **true**: on.
+     * - **false**: closed.
+     * &gt; **NOTE:**  special instructions: When **AddressIPVersion** is of the **ipv4** type, the default value is **true**. **Addrestipversion** can only be **false** when the value of **ipv6** is **ipv6**, and can be **true** when supported by the underlying layer * *.
      * 
      */
     public Output<Boolean> preserveClientIpEnabled() {
         return this.preserveClientIpEnabled;
     }
     /**
-     * The backend protocol. Valid values: `TCP` (default), `UDP`, and `TCPSSL`.
+     * The backend Forwarding Protocol. Valid values: **TCP**, **UDP**, or **TCPSSL**.
      * 
      */
     @Export(name="protocol", refs={String.class}, tree="[0]")
     private Output<String> protocol;
 
     /**
-     * @return The backend protocol. Valid values: `TCP` (default), `UDP`, and `TCPSSL`.
+     * @return The backend Forwarding Protocol. Valid values: **TCP**, **UDP**, or **TCPSSL**.
      * 
      */
     public Output<String> protocol() {
         return this.protocol;
     }
     /**
-     * The ID of the resource group to which the security group belongs.
+     * The ID of the resource group to which the server group belongs.
      * 
      */
     @Export(name="resourceGroupId", refs={String.class}, tree="[0]")
     private Output<String> resourceGroupId;
 
     /**
-     * @return The ID of the resource group to which the security group belongs.
+     * @return The ID of the resource group to which the server group belongs.
      * 
      */
     public Output<String> resourceGroupId() {
         return this.resourceGroupId;
     }
     /**
-     * The routing algorithm. Valid values:
+     * Scheduling algorithm. Value:
+     * - **Wrr**: Weighted polling. The higher the weight of the backend server, the higher the probability of being polled.
+     * - **Rr**: polls external requests are distributed to backend servers in sequence according to the access order. sch: Source IP hash: The same source address is scheduled to the same backend server.
+     * - **Tch**: Quadruple hash, based on the consistent hash of the Quad (source IP, Destination IP, source port, and destination port), the same stream is scheduled to the same backend server.
+     * - **Qch**: a QUIC ID hash that allows you to hash requests with the same QUIC ID to the same backend server.
      * 
      */
     @Export(name="scheduler", refs={String.class}, tree="[0]")
     private Output<String> scheduler;
 
     /**
-     * @return The routing algorithm. Valid values:
+     * @return Scheduling algorithm. Value:
+     * - **Wrr**: Weighted polling. The higher the weight of the backend server, the higher the probability of being polled.
+     * - **Rr**: polls external requests are distributed to backend servers in sequence according to the access order. sch: Source IP hash: The same source address is scheduled to the same backend server.
+     * - **Tch**: Quadruple hash, based on the consistent hash of the Quad (source IP, Destination IP, source port, and destination port), the same stream is scheduled to the same backend server.
+     * - **Qch**: a QUIC ID hash that allows you to hash requests with the same QUIC ID to the same backend server.
      * 
      */
     public Output<String> scheduler() {
         return this.scheduler;
     }
     /**
-     * The name of the server group. The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
+     * The name of the server group.
      * 
      */
     @Export(name="serverGroupName", refs={String.class}, tree="[0]")
     private Output<String> serverGroupName;
 
     /**
-     * @return The name of the server group. The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
+     * @return The name of the server group.
      * 
      */
     public Output<String> serverGroupName() {
         return this.serverGroupName;
     }
     /**
-     * The type of the server group. Valid values:
+     * Server group type. Value:
+     * - **Instance**: The server type. You can add **Ecs**, **Ens**, and **Eci** instances to the server group.
+     * - **Ip**: Ip address type. You can add Ip addresses to a server group of this type.
      * 
      */
     @Export(name="serverGroupType", refs={String.class}, tree="[0]")
     private Output<String> serverGroupType;
 
     /**
-     * @return The type of the server group. Valid values:
+     * @return Server group type. Value:
+     * - **Instance**: The server type. You can add **Ecs**, **Ens**, and **Eci** instances to the server group.
+     * - **Ip**: Ip address type. You can add Ip addresses to a server group of this type.
      * 
      */
     public Output<String> serverGroupType() {
         return this.serverGroupType;
     }
     /**
-     * The status of the resource.
+     * Server group status. Value:
      * 
      */
     @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
-     * @return The status of the resource.
+     * @return Server group status. Value:
      * 
      */
     public Output<String> status() {
         return this.status;
     }
     /**
-     * A mapping of tags to assign to the resource.
+     * Label.
      * 
      */
     @Export(name="tags", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,Object>> tags;
 
     /**
-     * @return A mapping of tags to assign to the resource.
+     * @return Label.
      * 
      */
     public Output<Optional<Map<String,Object>>> tags() {
         return Codegen.optional(this.tags);
     }
     /**
-     * The id of the vpc.
+     * The ID of the VPC to which the server group belongs.
+     * 
+     * The following arguments will be discarded. Please use new fields as soon as possible:
      * 
      */
     @Export(name="vpcId", refs={String.class}, tree="[0]")
     private Output<String> vpcId;
 
     /**
-     * @return The id of the vpc.
+     * @return The ID of the VPC to which the server group belongs.
+     * 
+     * The following arguments will be discarded. Please use new fields as soon as possible:
      * 
      */
     public Output<String> vpcId() {

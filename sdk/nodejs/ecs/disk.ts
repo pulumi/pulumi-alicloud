@@ -75,7 +75,7 @@ export class Disk extends pulumi.CustomResource {
      */
     public readonly availabilityZone!: pulumi.Output<string>;
     /**
-     * Category of the disk. Valid values are `cloud`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`. Default is `cloudEfficiency`.
+     * Category of the disk. Valid values are `cloud`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloudEssdEntry`. Default is `cloudEfficiency`.
      */
     public readonly category!: pulumi.Output<string | undefined>;
     /**
@@ -226,7 +226,7 @@ export interface DiskState {
      */
     availabilityZone?: pulumi.Input<string>;
     /**
-     * Category of the disk. Valid values are `cloud`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`. Default is `cloudEfficiency`.
+     * Category of the disk. Valid values are `cloud`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloudEssdEntry`. Default is `cloudEfficiency`.
      */
     category?: pulumi.Input<string>;
     /**
@@ -307,7 +307,7 @@ export interface DiskArgs {
      */
     availabilityZone?: pulumi.Input<string>;
     /**
-     * Category of the disk. Valid values are `cloud`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`. Default is `cloudEfficiency`.
+     * Category of the disk. Valid values are `cloud`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloudEssdEntry`. Default is `cloudEfficiency`.
      */
     category?: pulumi.Input<string>;
     /**

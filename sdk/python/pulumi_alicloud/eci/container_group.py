@@ -25,7 +25,6 @@ class ContainerGroupArgs:
                  auto_match_image_cache: Optional[pulumi.Input[bool]] = None,
                  cpu: Optional[pulumi.Input[float]] = None,
                  dns_config: Optional[pulumi.Input['ContainerGroupDnsConfigArgs']] = None,
-                 eci_security_context: Optional[pulumi.Input['ContainerGroupEciSecurityContextArgs']] = None,
                  eip_bandwidth: Optional[pulumi.Input[int]] = None,
                  eip_instance_id: Optional[pulumi.Input[str]] = None,
                  host_aliases: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupHostAliasArgs']]]] = None,
@@ -38,6 +37,7 @@ class ContainerGroupArgs:
                  ram_role_name: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  restart_policy: Optional[pulumi.Input[str]] = None,
+                 security_context: Optional[pulumi.Input['ContainerGroupSecurityContextArgs']] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  volumes: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupVolumeArgs']]]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None):
@@ -53,7 +53,6 @@ class ContainerGroupArgs:
         :param pulumi.Input[bool] auto_match_image_cache: Specifies whether to automatically match the image cache. Default value: `false`. Valid values: `true` and `false`.
         :param pulumi.Input[float] cpu: The amount of CPU resources allocated to the container group.
         :param pulumi.Input['ContainerGroupDnsConfigArgs'] dns_config: The structure of dnsConfig. See `dns_config` below.
-        :param pulumi.Input['ContainerGroupEciSecurityContextArgs'] eci_security_context: The security context of the container group. See `eci_security_context` below.
         :param pulumi.Input[int] eip_bandwidth: The bandwidth of the EIP. Default value: `5`.
         :param pulumi.Input[str] eip_instance_id: The ID of the elastic IP address (EIP).
         :param pulumi.Input[Sequence[pulumi.Input['ContainerGroupHostAliasArgs']]] host_aliases: HostAliases. See `host_aliases` below.
@@ -66,6 +65,7 @@ class ContainerGroupArgs:
         :param pulumi.Input[str] ram_role_name: The RAM role that the container group assumes. ECI and ECS share the same RAM role.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group. **NOTE:** From version 1.208.0, `resource_group_id` can be modified.
         :param pulumi.Input[str] restart_policy: The restart policy of the container group. Valid values: `Always`, `Never`, `OnFailure`.
+        :param pulumi.Input['ContainerGroupSecurityContextArgs'] security_context: The security context of the container group. See `security_context` below.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
                - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
                - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
@@ -86,8 +86,6 @@ class ContainerGroupArgs:
             pulumi.set(__self__, "cpu", cpu)
         if dns_config is not None:
             pulumi.set(__self__, "dns_config", dns_config)
-        if eci_security_context is not None:
-            pulumi.set(__self__, "eci_security_context", eci_security_context)
         if eip_bandwidth is not None:
             pulumi.set(__self__, "eip_bandwidth", eip_bandwidth)
         if eip_instance_id is not None:
@@ -112,6 +110,8 @@ class ContainerGroupArgs:
             pulumi.set(__self__, "resource_group_id", resource_group_id)
         if restart_policy is not None:
             pulumi.set(__self__, "restart_policy", restart_policy)
+        if security_context is not None:
+            pulumi.set(__self__, "security_context", security_context)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
         if volumes is not None:
@@ -227,18 +227,6 @@ class ContainerGroupArgs:
     @dns_config.setter
     def dns_config(self, value: Optional[pulumi.Input['ContainerGroupDnsConfigArgs']]):
         pulumi.set(self, "dns_config", value)
-
-    @property
-    @pulumi.getter(name="eciSecurityContext")
-    def eci_security_context(self) -> Optional[pulumi.Input['ContainerGroupEciSecurityContextArgs']]:
-        """
-        The security context of the container group. See `eci_security_context` below.
-        """
-        return pulumi.get(self, "eci_security_context")
-
-    @eci_security_context.setter
-    def eci_security_context(self, value: Optional[pulumi.Input['ContainerGroupEciSecurityContextArgs']]):
-        pulumi.set(self, "eci_security_context", value)
 
     @property
     @pulumi.getter(name="eipBandwidth")
@@ -385,6 +373,18 @@ class ContainerGroupArgs:
         pulumi.set(self, "restart_policy", value)
 
     @property
+    @pulumi.getter(name="securityContext")
+    def security_context(self) -> Optional[pulumi.Input['ContainerGroupSecurityContextArgs']]:
+        """
+        The security context of the container group. See `security_context` below.
+        """
+        return pulumi.get(self, "security_context")
+
+    @security_context.setter
+    def security_context(self, value: Optional[pulumi.Input['ContainerGroupSecurityContextArgs']]):
+        pulumi.set(self, "security_context", value)
+
+    @property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
         """
@@ -433,7 +433,6 @@ class _ContainerGroupState:
                  containers: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupContainerArgs']]]] = None,
                  cpu: Optional[pulumi.Input[float]] = None,
                  dns_config: Optional[pulumi.Input['ContainerGroupDnsConfigArgs']] = None,
-                 eci_security_context: Optional[pulumi.Input['ContainerGroupEciSecurityContextArgs']] = None,
                  eip_bandwidth: Optional[pulumi.Input[int]] = None,
                  eip_instance_id: Optional[pulumi.Input[str]] = None,
                  host_aliases: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupHostAliasArgs']]]] = None,
@@ -448,6 +447,7 @@ class _ContainerGroupState:
                  ram_role_name: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  restart_policy: Optional[pulumi.Input[str]] = None,
+                 security_context: Optional[pulumi.Input['ContainerGroupSecurityContextArgs']] = None,
                  security_group_id: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
@@ -463,7 +463,6 @@ class _ContainerGroupState:
         :param pulumi.Input[Sequence[pulumi.Input['ContainerGroupContainerArgs']]] containers: The list of containers. See `containers` below.
         :param pulumi.Input[float] cpu: The amount of CPU resources allocated to the container group.
         :param pulumi.Input['ContainerGroupDnsConfigArgs'] dns_config: The structure of dnsConfig. See `dns_config` below.
-        :param pulumi.Input['ContainerGroupEciSecurityContextArgs'] eci_security_context: The security context of the container group. See `eci_security_context` below.
         :param pulumi.Input[int] eip_bandwidth: The bandwidth of the EIP. Default value: `5`.
         :param pulumi.Input[str] eip_instance_id: The ID of the elastic IP address (EIP).
         :param pulumi.Input[Sequence[pulumi.Input['ContainerGroupHostAliasArgs']]] host_aliases: HostAliases. See `host_aliases` below.
@@ -478,6 +477,7 @@ class _ContainerGroupState:
         :param pulumi.Input[str] ram_role_name: The RAM role that the container group assumes. ECI and ECS share the same RAM role.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group. **NOTE:** From version 1.208.0, `resource_group_id` can be modified.
         :param pulumi.Input[str] restart_policy: The restart policy of the container group. Valid values: `Always`, `Never`, `OnFailure`.
+        :param pulumi.Input['ContainerGroupSecurityContextArgs'] security_context: The security context of the container group. See `security_context` below.
         :param pulumi.Input[str] security_group_id: The ID of the security group to which the container group belongs. Container groups within the same security group can access each other.
         :param pulumi.Input[str] status: The status of container group.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
@@ -502,8 +502,6 @@ class _ContainerGroupState:
             pulumi.set(__self__, "cpu", cpu)
         if dns_config is not None:
             pulumi.set(__self__, "dns_config", dns_config)
-        if eci_security_context is not None:
-            pulumi.set(__self__, "eci_security_context", eci_security_context)
         if eip_bandwidth is not None:
             pulumi.set(__self__, "eip_bandwidth", eip_bandwidth)
         if eip_instance_id is not None:
@@ -532,6 +530,8 @@ class _ContainerGroupState:
             pulumi.set(__self__, "resource_group_id", resource_group_id)
         if restart_policy is not None:
             pulumi.set(__self__, "restart_policy", restart_policy)
+        if security_context is not None:
+            pulumi.set(__self__, "security_context", security_context)
         if security_group_id is not None:
             pulumi.set(__self__, "security_group_id", security_group_id)
         if status is not None:
@@ -628,18 +628,6 @@ class _ContainerGroupState:
     @dns_config.setter
     def dns_config(self, value: Optional[pulumi.Input['ContainerGroupDnsConfigArgs']]):
         pulumi.set(self, "dns_config", value)
-
-    @property
-    @pulumi.getter(name="eciSecurityContext")
-    def eci_security_context(self) -> Optional[pulumi.Input['ContainerGroupEciSecurityContextArgs']]:
-        """
-        The security context of the container group. See `eci_security_context` below.
-        """
-        return pulumi.get(self, "eci_security_context")
-
-    @eci_security_context.setter
-    def eci_security_context(self, value: Optional[pulumi.Input['ContainerGroupEciSecurityContextArgs']]):
-        pulumi.set(self, "eci_security_context", value)
 
     @property
     @pulumi.getter(name="eipBandwidth")
@@ -810,6 +798,18 @@ class _ContainerGroupState:
         pulumi.set(self, "restart_policy", value)
 
     @property
+    @pulumi.getter(name="securityContext")
+    def security_context(self) -> Optional[pulumi.Input['ContainerGroupSecurityContextArgs']]:
+        """
+        The security context of the container group. See `security_context` below.
+        """
+        return pulumi.get(self, "security_context")
+
+    @security_context.setter
+    def security_context(self, value: Optional[pulumi.Input['ContainerGroupSecurityContextArgs']]):
+        pulumi.set(self, "security_context", value)
+
+    @property
     @pulumi.getter(name="securityGroupId")
     def security_group_id(self) -> Optional[pulumi.Input[str]]:
         """
@@ -897,7 +897,6 @@ class ContainerGroup(pulumi.CustomResource):
                  containers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ContainerGroupContainerArgs']]]]] = None,
                  cpu: Optional[pulumi.Input[float]] = None,
                  dns_config: Optional[pulumi.Input[pulumi.InputType['ContainerGroupDnsConfigArgs']]] = None,
-                 eci_security_context: Optional[pulumi.Input[pulumi.InputType['ContainerGroupEciSecurityContextArgs']]] = None,
                  eip_bandwidth: Optional[pulumi.Input[int]] = None,
                  eip_instance_id: Optional[pulumi.Input[str]] = None,
                  host_aliases: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ContainerGroupHostAliasArgs']]]]] = None,
@@ -910,6 +909,7 @@ class ContainerGroup(pulumi.CustomResource):
                  ram_role_name: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  restart_policy: Optional[pulumi.Input[str]] = None,
+                 security_context: Optional[pulumi.Input[pulumi.InputType['ContainerGroupSecurityContextArgs']]] = None,
                  security_group_id: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  volumes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ContainerGroupVolumeArgs']]]]] = None,
@@ -952,68 +952,58 @@ class ContainerGroup(pulumi.CustomResource):
             restart_policy="OnFailure",
             security_group_id=default_security_group.id,
             vswitch_id=default_switch.id,
+            auto_create_eip=True,
             tags={
                 "Created": "TF",
                 "For": "example",
             },
-            containers=[
-                alicloud.eci.ContainerGroupContainerArgs(
-                    image="registry-vpc.cn-beijing.aliyuncs.com/eci_open/nginx:alpine",
-                    name="nginx",
-                    working_dir="/tmp/nginx",
-                    image_pull_policy="IfNotPresent",
-                    commands=[
-                        "/bin/sh",
-                        "-c",
-                        "sleep 9999",
-                    ],
-                    volume_mounts=[alicloud.eci.ContainerGroupContainerVolumeMountArgs(
-                        mount_path="/tmp/example",
-                        read_only=False,
-                        name="empty1",
+            containers=[alicloud.eci.ContainerGroupContainerArgs(
+                image="registry.cn-beijing.aliyuncs.com/eci_open/nginx:alpine",
+                name="nginx",
+                working_dir="/tmp/nginx",
+                image_pull_policy="IfNotPresent",
+                commands=[
+                    "/bin/sh",
+                    "-c",
+                    "sleep 9999",
+                ],
+                volume_mounts=[alicloud.eci.ContainerGroupContainerVolumeMountArgs(
+                    mount_path="/tmp/example",
+                    read_only=False,
+                    name="empty1",
+                )],
+                ports=[alicloud.eci.ContainerGroupContainerPortArgs(
+                    port=80,
+                    protocol="TCP",
+                )],
+                environment_vars=[alicloud.eci.ContainerGroupContainerEnvironmentVarArgs(
+                    key="name",
+                    value="nginx",
+                )],
+                liveness_probes=[alicloud.eci.ContainerGroupContainerLivenessProbeArgs(
+                    period_seconds=5,
+                    initial_delay_seconds=5,
+                    success_threshold=1,
+                    failure_threshold=3,
+                    timeout_seconds=1,
+                    execs=[alicloud.eci.ContainerGroupContainerLivenessProbeExecArgs(
+                        commands=["cat /tmp/healthy"],
                     )],
-                    ports=[alicloud.eci.ContainerGroupContainerPortArgs(
-                        port=80,
-                        protocol="TCP",
+                )],
+                readiness_probes=[alicloud.eci.ContainerGroupContainerReadinessProbeArgs(
+                    period_seconds=5,
+                    initial_delay_seconds=5,
+                    success_threshold=1,
+                    failure_threshold=3,
+                    timeout_seconds=1,
+                    execs=[alicloud.eci.ContainerGroupContainerReadinessProbeExecArgs(
+                        commands=["cat /tmp/healthy"],
                     )],
-                    environment_vars=[alicloud.eci.ContainerGroupContainerEnvironmentVarArgs(
-                        key="name",
-                        value="nginx",
-                    )],
-                    liveness_probes=[alicloud.eci.ContainerGroupContainerLivenessProbeArgs(
-                        period_seconds=5,
-                        initial_delay_seconds=5,
-                        success_threshold=1,
-                        failure_threshold=3,
-                        timeout_seconds=1,
-                        execs=[alicloud.eci.ContainerGroupContainerLivenessProbeExecArgs(
-                            commands=["cat /tmp/healthy"],
-                        )],
-                    )],
-                    readiness_probes=[alicloud.eci.ContainerGroupContainerReadinessProbeArgs(
-                        period_seconds=5,
-                        initial_delay_seconds=5,
-                        success_threshold=1,
-                        failure_threshold=3,
-                        timeout_seconds=1,
-                        execs=[alicloud.eci.ContainerGroupContainerReadinessProbeExecArgs(
-                            commands=["cat /tmp/healthy"],
-                        )],
-                    )],
-                ),
-                alicloud.eci.ContainerGroupContainerArgs(
-                    image="registry-vpc.cn-beijing.aliyuncs.com/eci_open/centos:7",
-                    name="centos",
-                    commands=[
-                        "/bin/sh",
-                        "-c",
-                        "sleep 9999",
-                    ],
-                ),
-            ],
+                )],
+            )],
             init_containers=[alicloud.eci.ContainerGroupInitContainerArgs(
                 name="init-busybox",
-                image="registry-vpc.cn-beijing.aliyuncs.com/eci_open/busybox:1.30",
+                image="registry.cn-beijing.aliyuncs.com/eci_open/busybox:1.30",
                 image_pull_policy="IfNotPresent",
                 commands=["echo"],
                 args=["hello initcontainer"],
@@ -1047,7 +1037,6 @@ class ContainerGroup(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ContainerGroupContainerArgs']]]] containers: The list of containers. See `containers` below.
         :param pulumi.Input[float] cpu: The amount of CPU resources allocated to the container group.
         :param pulumi.Input[pulumi.InputType['ContainerGroupDnsConfigArgs']] dns_config: The structure of dnsConfig. See `dns_config` below.
-        :param pulumi.Input[pulumi.InputType['ContainerGroupEciSecurityContextArgs']] eci_security_context: The security context of the container group. See `eci_security_context` below.
         :param pulumi.Input[int] eip_bandwidth: The bandwidth of the EIP. Default value: `5`.
         :param pulumi.Input[str] eip_instance_id: The ID of the elastic IP address (EIP).
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ContainerGroupHostAliasArgs']]]] host_aliases: HostAliases. See `host_aliases` below.
@@ -1060,6 +1049,7 @@ class ContainerGroup(pulumi.CustomResource):
         :param pulumi.Input[str] ram_role_name: The RAM role that the container group assumes. ECI and ECS share the same RAM role.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group. **NOTE:** From version 1.208.0, `resource_group_id` can be modified.
         :param pulumi.Input[str] restart_policy: The restart policy of the container group. Valid values: `Always`, `Never`, `OnFailure`.
+        :param pulumi.Input[pulumi.InputType['ContainerGroupSecurityContextArgs']] security_context: The security context of the container group. See `security_context` below.
         :param pulumi.Input[str] security_group_id: The ID of the security group to which the container group belongs. Container groups within the same security group can access each other.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
                - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
@@ -1111,68 +1101,58 @@ class ContainerGroup(pulumi.CustomResource):
             restart_policy="OnFailure",
             security_group_id=default_security_group.id,
             vswitch_id=default_switch.id,
+            auto_create_eip=True,
             tags={
                 "Created": "TF",
                 "For": "example",
             },
-            containers=[
-                alicloud.eci.ContainerGroupContainerArgs(
-                    image="registry-vpc.cn-beijing.aliyuncs.com/eci_open/nginx:alpine",
-                    name="nginx",
-                    working_dir="/tmp/nginx",
-                    image_pull_policy="IfNotPresent",
-                    commands=[
-                        "/bin/sh",
-                        "-c",
-                        "sleep 9999",
-                    ],
-                    volume_mounts=[alicloud.eci.ContainerGroupContainerVolumeMountArgs(
-                        mount_path="/tmp/example",
-                        read_only=False,
-                        name="empty1",
+            containers=[alicloud.eci.ContainerGroupContainerArgs(
+                image="registry.cn-beijing.aliyuncs.com/eci_open/nginx:alpine",
+                name="nginx",
+                working_dir="/tmp/nginx",
+                image_pull_policy="IfNotPresent",
+                commands=[
+                    "/bin/sh",
+                    "-c",
+                    "sleep 9999",
+                ],
+                volume_mounts=[alicloud.eci.ContainerGroupContainerVolumeMountArgs(
+                    mount_path="/tmp/example",
+                    read_only=False,
+                    name="empty1",
+                )],
+                ports=[alicloud.eci.ContainerGroupContainerPortArgs(
+                    port=80,
+                    protocol="TCP",
+                )],
+                environment_vars=[alicloud.eci.ContainerGroupContainerEnvironmentVarArgs(
+                    key="name",
+                    value="nginx",
+                )],
+                liveness_probes=[alicloud.eci.ContainerGroupContainerLivenessProbeArgs(
+                    period_seconds=5,
+                    initial_delay_seconds=5,
+                    success_threshold=1,
+                    failure_threshold=3,
+                    timeout_seconds=1,
+                    execs=[alicloud.eci.ContainerGroupContainerLivenessProbeExecArgs(
+                        commands=["cat /tmp/healthy"],
                     )],
-                    ports=[alicloud.eci.ContainerGroupContainerPortArgs(
-                        port=80,
-                        protocol="TCP",
+                )],
+                readiness_probes=[alicloud.eci.ContainerGroupContainerReadinessProbeArgs(
+                    period_seconds=5,
+                    initial_delay_seconds=5,
+                    success_threshold=1,
+                    failure_threshold=3,
+                    timeout_seconds=1,
+                    execs=[alicloud.eci.ContainerGroupContainerReadinessProbeExecArgs(
+                        commands=["cat /tmp/healthy"],
                     )],
-                    environment_vars=[alicloud.eci.ContainerGroupContainerEnvironmentVarArgs(
-                        key="name",
-                        value="nginx",
-                    )],
-                    liveness_probes=[alicloud.eci.ContainerGroupContainerLivenessProbeArgs(
-                        period_seconds=5,
-                        initial_delay_seconds=5,
-                        success_threshold=1,
-                        failure_threshold=3,
-                        timeout_seconds=1,
-                        execs=[alicloud.eci.ContainerGroupContainerLivenessProbeExecArgs(
-                            commands=["cat /tmp/healthy"],
-                        )],
-                    )],
-                    readiness_probes=[alicloud.eci.ContainerGroupContainerReadinessProbeArgs(
-                        period_seconds=5,
-                        initial_delay_seconds=5,
-                        success_threshold=1,
-                        failure_threshold=3,
-                        timeout_seconds=1,
-                        execs=[alicloud.eci.ContainerGroupContainerReadinessProbeExecArgs(
-                            commands=["cat /tmp/healthy"],
-                        )],
-                    )],
-                ),
-                alicloud.eci.ContainerGroupContainerArgs(
-                    image="registry-vpc.cn-beijing.aliyuncs.com/eci_open/centos:7",
-                    name="centos",
-                    commands=[
-                        "/bin/sh",
-                        "-c",
-                        "sleep 9999",
-                    ],
-                ),
-            ],
+                )],
+            )],
             init_containers=[alicloud.eci.ContainerGroupInitContainerArgs(
                 name="init-busybox",
-                image="registry-vpc.cn-beijing.aliyuncs.com/eci_open/busybox:1.30",
+                image="registry.cn-beijing.aliyuncs.com/eci_open/busybox:1.30",
                 image_pull_policy="IfNotPresent",
                 commands=["echo"],
                 args=["hello initcontainer"],
@@ -1219,7 +1199,6 @@ class ContainerGroup(pulumi.CustomResource):
                  containers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ContainerGroupContainerArgs']]]]] = None,
                  cpu: Optional[pulumi.Input[float]] = None,
                  dns_config: Optional[pulumi.Input[pulumi.InputType['ContainerGroupDnsConfigArgs']]] = None,
-                 eci_security_context: Optional[pulumi.Input[pulumi.InputType['ContainerGroupEciSecurityContextArgs']]] = None,
                  eip_bandwidth: Optional[pulumi.Input[int]] = None,
                  eip_instance_id: Optional[pulumi.Input[str]] = None,
                  host_aliases: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ContainerGroupHostAliasArgs']]]]] = None,
@@ -1232,6 +1211,7 @@ class ContainerGroup(pulumi.CustomResource):
                  ram_role_name: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  restart_policy: Optional[pulumi.Input[str]] = None,
+                 security_context: Optional[pulumi.Input[pulumi.InputType['ContainerGroupSecurityContextArgs']]] = None,
                  security_group_id: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  volumes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ContainerGroupVolumeArgs']]]]] = None,
@@ -1257,7 +1237,6 @@ class ContainerGroup(pulumi.CustomResource):
             __props__.__dict__["containers"] = containers
             __props__.__dict__["cpu"] = cpu
             __props__.__dict__["dns_config"] = dns_config
-            __props__.__dict__["eci_security_context"] = eci_security_context
             __props__.__dict__["eip_bandwidth"] = eip_bandwidth
             __props__.__dict__["eip_instance_id"] = eip_instance_id
             __props__.__dict__["host_aliases"] = host_aliases
@@ -1270,6 +1249,7 @@ class ContainerGroup(pulumi.CustomResource):
             __props__.__dict__["ram_role_name"] = ram_role_name
             __props__.__dict__["resource_group_id"] = resource_group_id
             __props__.__dict__["restart_policy"] = restart_policy
+            __props__.__dict__["security_context"] = security_context
             if security_group_id is None and not opts.urn:
                 raise TypeError("Missing required property 'security_group_id'")
             __props__.__dict__["security_group_id"] = security_group_id
@@ -1299,7 +1279,6 @@ class ContainerGroup(pulumi.CustomResource):
             containers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ContainerGroupContainerArgs']]]]] = None,
             cpu: Optional[pulumi.Input[float]] = None,
             dns_config: Optional[pulumi.Input[pulumi.InputType['ContainerGroupDnsConfigArgs']]] = None,
-            eci_security_context: Optional[pulumi.Input[pulumi.InputType['ContainerGroupEciSecurityContextArgs']]] = None,
             eip_bandwidth: Optional[pulumi.Input[int]] = None,
             eip_instance_id: Optional[pulumi.Input[str]] = None,
             host_aliases: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ContainerGroupHostAliasArgs']]]]] = None,
@@ -1314,6 +1293,7 @@ class ContainerGroup(pulumi.CustomResource):
             ram_role_name: Optional[pulumi.Input[str]] = None,
             resource_group_id: Optional[pulumi.Input[str]] = None,
             restart_policy: Optional[pulumi.Input[str]] = None,
+            security_context: Optional[pulumi.Input[pulumi.InputType['ContainerGroupSecurityContextArgs']]] = None,
             security_group_id: Optional[pulumi.Input[str]] = None,
             status: Optional[pulumi.Input[str]] = None,
             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
@@ -1334,7 +1314,6 @@ class ContainerGroup(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ContainerGroupContainerArgs']]]] containers: The list of containers. See `containers` below.
         :param pulumi.Input[float] cpu: The amount of CPU resources allocated to the container group.
         :param pulumi.Input[pulumi.InputType['ContainerGroupDnsConfigArgs']] dns_config: The structure of dnsConfig. See `dns_config` below.
-        :param pulumi.Input[pulumi.InputType['ContainerGroupEciSecurityContextArgs']] eci_security_context: The security context of the container group. See `eci_security_context` below.
         :param pulumi.Input[int] eip_bandwidth: The bandwidth of the EIP. Default value: `5`.
         :param pulumi.Input[str] eip_instance_id: The ID of the elastic IP address (EIP).
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ContainerGroupHostAliasArgs']]]] host_aliases: HostAliases. See `host_aliases` below.
@@ -1349,6 +1328,7 @@ class ContainerGroup(pulumi.CustomResource):
         :param pulumi.Input[str] ram_role_name: The RAM role that the container group assumes. ECI and ECS share the same RAM role.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group. **NOTE:** From version 1.208.0, `resource_group_id` can be modified.
         :param pulumi.Input[str] restart_policy: The restart policy of the container group. Valid values: `Always`, `Never`, `OnFailure`.
+        :param pulumi.Input[pulumi.InputType['ContainerGroupSecurityContextArgs']] security_context: The security context of the container group. See `security_context` below.
         :param pulumi.Input[str] security_group_id: The ID of the security group to which the container group belongs. Container groups within the same security group can access each other.
         :param pulumi.Input[str] status: The status of container group.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
@@ -1370,7 +1350,6 @@ class ContainerGroup(pulumi.CustomResource):
         __props__.__dict__["containers"] = containers
         __props__.__dict__["cpu"] = cpu
         __props__.__dict__["dns_config"] = dns_config
-        __props__.__dict__["eci_security_context"] = eci_security_context
         __props__.__dict__["eip_bandwidth"] = eip_bandwidth
         __props__.__dict__["eip_instance_id"] = eip_instance_id
         __props__.__dict__["host_aliases"] = host_aliases
@@ -1385,6 +1364,7 @@ class ContainerGroup(pulumi.CustomResource):
         __props__.__dict__["ram_role_name"] = ram_role_name
         __props__.__dict__["resource_group_id"] = resource_group_id
         __props__.__dict__["restart_policy"] = restart_policy
+        __props__.__dict__["security_context"] = security_context
         __props__.__dict__["security_group_id"] = security_group_id
         __props__.__dict__["status"] = status
         __props__.__dict__["tags"] = tags
@@ -1448,14 +1428,6 @@ class ContainerGroup(pulumi.CustomResource):
         The structure of dnsConfig. See `dns_config` below.
         """
         return pulumi.get(self, "dns_config")
-
-    @property
-    @pulumi.getter(name="eciSecurityContext")
-    def eci_security_context(self) -> pulumi.Output[Optional['outputs.ContainerGroupEciSecurityContext']]:
-        """
-        The security context of the container group. See `eci_security_context` below.
-        """
-        return pulumi.get(self, "eci_security_context")
 
     @property
     @pulumi.getter(name="eipBandwidth")
@@ -1568,6 +1540,14 @@ class ContainerGroup(pulumi.CustomResource):
         The restart policy of the container group. Valid values: `Always`, `Never`, `OnFailure`.
         """
         return pulumi.get(self, "restart_policy")
+
+    @property
+    @pulumi.getter(name="securityContext")
+    def security_context(self) -> pulumi.Output[Optional['outputs.ContainerGroupSecurityContext']]:
+        """
+        The security context of the container group. See `security_context` below.
+        """
+        return pulumi.get(self, "security_context")
 
     @property
     @pulumi.getter(name="securityGroupId")

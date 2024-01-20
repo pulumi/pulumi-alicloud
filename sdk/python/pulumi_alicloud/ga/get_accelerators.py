@@ -48,6 +48,9 @@ class GetAcceleratorsResult:
     @property
     @pulumi.getter
     def accelerators(self) -> Sequence['outputs.GetAcceleratorsAcceleratorResult']:
+        """
+        A list of Ga Accelerators. Each element contains the following attributes:
+        """
         return pulumi.get(self, "accelerators")
 
     @property
@@ -71,6 +74,9 @@ class GetAcceleratorsResult:
     @property
     @pulumi.getter
     def names(self) -> Sequence[str]:
+        """
+        A list of Accelerator names.
+        """
         return pulumi.get(self, "names")
 
     @property
@@ -81,6 +87,9 @@ class GetAcceleratorsResult:
     @property
     @pulumi.getter
     def status(self) -> Optional[str]:
+        """
+        The status of the GA instance.
+        """
         return pulumi.get(self, "status")
 
 
@@ -107,7 +116,7 @@ def get_accelerators(ids: Optional[Sequence[str]] = None,
     """
     This data source provides the Global Accelerator (GA) Accelerators of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.111.0+.
+    > **NOTE:** Available since v1.111.0.
 
     ## Example Usage
 
@@ -117,8 +126,7 @@ def get_accelerators(ids: Optional[Sequence[str]] = None,
     import pulumi
     import pulumi_alicloud as alicloud
 
-    example = alicloud.ga.get_accelerators(ids=["example_value"],
-        name_regex="the_resource_name")
+    example = alicloud.ga.get_accelerators(name_regex="tf")
     pulumi.export("firstGaAcceleratorId", example.accelerators[0].id)
     ```
 
@@ -126,7 +134,7 @@ def get_accelerators(ids: Optional[Sequence[str]] = None,
     :param Sequence[str] ids: A list of Accelerator IDs.
     :param str name_regex: A regex string to filter results by Accelerator name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param str status: The status of the GA instance.
+    :param str status: The status of the GA instance. Valid values: `active`, `binding`, `configuring`, `deleting`, `finacialLocked`, `init`, `unbinding`.
     """
     __args__ = dict()
     __args__['ids'] = ids
@@ -155,7 +163,7 @@ def get_accelerators_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]]
     """
     This data source provides the Global Accelerator (GA) Accelerators of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.111.0+.
+    > **NOTE:** Available since v1.111.0.
 
     ## Example Usage
 
@@ -165,8 +173,7 @@ def get_accelerators_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]]
     import pulumi
     import pulumi_alicloud as alicloud
 
-    example = alicloud.ga.get_accelerators(ids=["example_value"],
-        name_regex="the_resource_name")
+    example = alicloud.ga.get_accelerators(name_regex="tf")
     pulumi.export("firstGaAcceleratorId", example.accelerators[0].id)
     ```
 
@@ -174,6 +181,6 @@ def get_accelerators_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]]
     :param Sequence[str] ids: A list of Accelerator IDs.
     :param str name_regex: A regex string to filter results by Accelerator name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param str status: The status of the GA instance.
+    :param str status: The status of the GA instance. Valid values: `active`, `binding`, `configuring`, `deleting`, `finacialLocked`, `init`, `unbinding`.
     """
     ...

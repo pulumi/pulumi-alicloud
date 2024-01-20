@@ -140,6 +140,9 @@ func GetSecurityTransport(ctx *pulumi.Context) string {
 func GetSharedCredentialsFile(ctx *pulumi.Context) string {
 	return config.Get(ctx, "alicloud:sharedCredentialsFile")
 }
+func GetSignVersion(ctx *pulumi.Context) string {
+	return config.Get(ctx, "alicloud:signVersion")
+}
 
 // Skip static validation of region ID. Used by users of alternative AlibabaCloud-like APIs or users w/ access to regions
 // that are not public (yet).

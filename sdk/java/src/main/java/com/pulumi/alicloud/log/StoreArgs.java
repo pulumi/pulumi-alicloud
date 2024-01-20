@@ -124,6 +124,21 @@ public final class StoreArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Metering mode. The default metering mode of ChargeByFunction, ChargeByDataIngest traffic mode.
+     * 
+     */
+    @Import(name="meteringMode")
+    private @Nullable Output<String> meteringMode;
+
+    /**
+     * @return Metering mode. The default metering mode of ChargeByFunction, ChargeByDataIngest traffic mode.
+     * 
+     */
+    public Optional<Output<String>> meteringMode() {
+        return Optional.ofNullable(this.meteringMode);
+    }
+
+    /**
      * The mode of storage. Default to `standard`, must be `standard` or `query`, `lite`.
      * 
      */
@@ -258,6 +273,7 @@ public final class StoreArgs extends com.pulumi.resources.ResourceArgs {
         this.hotTtl = $.hotTtl;
         this.logstoreName = $.logstoreName;
         this.maxSplitShardCount = $.maxSplitShardCount;
+        this.meteringMode = $.meteringMode;
         this.mode = $.mode;
         this.name = $.name;
         this.project = $.project;
@@ -430,6 +446,27 @@ public final class StoreArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder maxSplitShardCount(Integer maxSplitShardCount) {
             return maxSplitShardCount(Output.of(maxSplitShardCount));
+        }
+
+        /**
+         * @param meteringMode Metering mode. The default metering mode of ChargeByFunction, ChargeByDataIngest traffic mode.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder meteringMode(@Nullable Output<String> meteringMode) {
+            $.meteringMode = meteringMode;
+            return this;
+        }
+
+        /**
+         * @param meteringMode Metering mode. The default metering mode of ChargeByFunction, ChargeByDataIngest traffic mode.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder meteringMode(String meteringMode) {
+            return meteringMode(Output.of(meteringMode));
         }
 
         /**

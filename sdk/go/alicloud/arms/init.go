@@ -39,6 +39,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &EnvServiceMonitor{}
 	case "alicloud:arms/environment:Environment":
 		r = &Environment{}
+	case "alicloud:arms/grafanaWorkspace:GrafanaWorkspace":
+		r = &GrafanaWorkspace{}
 	case "alicloud:arms/integrationExporter:IntegrationExporter":
 		r = &IntegrationExporter{}
 	case "alicloud:arms/prometheus:Prometheus":
@@ -49,6 +51,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &PrometheusMonitoring{}
 	case "alicloud:arms/remoteWrite:RemoteWrite":
 		r = &RemoteWrite{}
+	case "alicloud:arms/syntheticTask:SyntheticTask":
+		r = &SyntheticTask{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -109,6 +113,11 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"alicloud",
+		"arms/grafanaWorkspace",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
 		"arms/integrationExporter",
 		&module{version},
 	)
@@ -130,6 +139,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"arms/remoteWrite",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"arms/syntheticTask",
 		&module{version},
 	)
 }

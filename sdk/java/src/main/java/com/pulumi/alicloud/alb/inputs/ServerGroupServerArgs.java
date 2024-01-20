@@ -19,14 +19,14 @@ public final class ServerGroupServerArgs extends com.pulumi.resources.ResourceAr
     public static final ServerGroupServerArgs Empty = new ServerGroupServerArgs();
 
     /**
-     * The description of the server.
+     * The description of the backend server.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return The description of the server.
+     * @return The description of the backend server.
      * 
      */
     public Optional<Output<String>> description() {
@@ -34,14 +34,14 @@ public final class ServerGroupServerArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The port that is used by the server. Valid values: `1` to `65535`. **Note:** This parameter is required if the `server_type` parameter is set to `Ecs`, `Eni`, `Eci`, or `Ip`. You do not need to configure this parameter if you set `server_type` to `Fc`.
+     * The port used by the backend server. Valid values: `1` to `65535`. **Note:** This parameter is required if the `server_type` parameter is set to `Ecs`, `Eni`, `Eci`, or `Ip`. You do not need to configure this parameter if you set `server_type` to `Fc`.
      * 
      */
     @Import(name="port")
     private @Nullable Output<Integer> port;
 
     /**
-     * @return The port that is used by the server. Valid values: `1` to `65535`. **Note:** This parameter is required if the `server_type` parameter is set to `Ecs`, `Eni`, `Eci`, or `Ip`. You do not need to configure this parameter if you set `server_type` to `Fc`.
+     * @return The port used by the backend server. Valid values: `1` to `65535`. **Note:** This parameter is required if the `server_type` parameter is set to `Ecs`, `Eni`, `Eci`, or `Ip`. You do not need to configure this parameter if you set `server_type` to `Fc`.
      * 
      */
     public Optional<Output<Integer>> port() {
@@ -101,11 +101,6 @@ public final class ServerGroupServerArgs extends com.pulumi.resources.ResourceAr
 
     /**
      * The type of the server. The type of the server. Valid values:
-     * - Ecs: an ECS instance.
-     * - Eni: an ENI.
-     * - Eci: an elastic container instance.
-     * - Ip(Available in v1.194.0+): an IP address.
-     * - fc(Available in v1.194.0+): a function.
      * 
      */
     @Import(name="serverType", required=true)
@@ -113,11 +108,6 @@ public final class ServerGroupServerArgs extends com.pulumi.resources.ResourceAr
 
     /**
      * @return The type of the server. The type of the server. Valid values:
-     * - Ecs: an ECS instance.
-     * - Eni: an ENI.
-     * - Eci: an elastic container instance.
-     * - Ip(Available in v1.194.0+): an IP address.
-     * - fc(Available in v1.194.0+): a function.
      * 
      */
     public Output<String> serverType() {
@@ -125,14 +115,14 @@ public final class ServerGroupServerArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The status of the backend server. Valid values:
+     * The status of the backend server.
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return The status of the backend server. Valid values:
+     * @return The status of the backend server.
      * 
      */
     public Optional<Output<String>> status() {
@@ -140,16 +130,14 @@ public final class ServerGroupServerArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The weight of the server. Valid values: `0` to `100`. Default value: `100`. If the value is set to `0`, no
-     * requests are forwarded to the server. **Note:** You do not need to set this parameter if you set `server_type` to `Fc`.
+     * The weight of the server. Default value: `100`. Valid values: `0` to `100`. If the value is set to `0`, no requests are forwarded to the server. **Note:** You do not need to set this parameter if you set `server_type` to `Fc`.
      * 
      */
     @Import(name="weight")
     private @Nullable Output<Integer> weight;
 
     /**
-     * @return The weight of the server. Valid values: `0` to `100`. Default value: `100`. If the value is set to `0`, no
-     * requests are forwarded to the server. **Note:** You do not need to set this parameter if you set `server_type` to `Fc`.
+     * @return The weight of the server. Default value: `100`. Valid values: `0` to `100`. If the value is set to `0`, no requests are forwarded to the server. **Note:** You do not need to set this parameter if you set `server_type` to `Fc`.
      * 
      */
     public Optional<Output<Integer>> weight() {
@@ -188,7 +176,7 @@ public final class ServerGroupServerArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param description The description of the server.
+         * @param description The description of the backend server.
          * 
          * @return builder
          * 
@@ -199,7 +187,7 @@ public final class ServerGroupServerArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param description The description of the server.
+         * @param description The description of the backend server.
          * 
          * @return builder
          * 
@@ -209,7 +197,7 @@ public final class ServerGroupServerArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param port The port that is used by the server. Valid values: `1` to `65535`. **Note:** This parameter is required if the `server_type` parameter is set to `Ecs`, `Eni`, `Eci`, or `Ip`. You do not need to configure this parameter if you set `server_type` to `Fc`.
+         * @param port The port used by the backend server. Valid values: `1` to `65535`. **Note:** This parameter is required if the `server_type` parameter is set to `Ecs`, `Eni`, `Eci`, or `Ip`. You do not need to configure this parameter if you set `server_type` to `Fc`.
          * 
          * @return builder
          * 
@@ -220,7 +208,7 @@ public final class ServerGroupServerArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param port The port that is used by the server. Valid values: `1` to `65535`. **Note:** This parameter is required if the `server_type` parameter is set to `Ecs`, `Eni`, `Eci`, or `Ip`. You do not need to configure this parameter if you set `server_type` to `Fc`.
+         * @param port The port used by the backend server. Valid values: `1` to `65535`. **Note:** This parameter is required if the `server_type` parameter is set to `Ecs`, `Eni`, `Eci`, or `Ip`. You do not need to configure this parameter if you set `server_type` to `Fc`.
          * 
          * @return builder
          * 
@@ -300,11 +288,6 @@ public final class ServerGroupServerArgs extends com.pulumi.resources.ResourceAr
 
         /**
          * @param serverType The type of the server. The type of the server. Valid values:
-         * - Ecs: an ECS instance.
-         * - Eni: an ENI.
-         * - Eci: an elastic container instance.
-         * - Ip(Available in v1.194.0+): an IP address.
-         * - fc(Available in v1.194.0+): a function.
          * 
          * @return builder
          * 
@@ -316,11 +299,6 @@ public final class ServerGroupServerArgs extends com.pulumi.resources.ResourceAr
 
         /**
          * @param serverType The type of the server. The type of the server. Valid values:
-         * - Ecs: an ECS instance.
-         * - Eni: an ENI.
-         * - Eci: an elastic container instance.
-         * - Ip(Available in v1.194.0+): an IP address.
-         * - fc(Available in v1.194.0+): a function.
          * 
          * @return builder
          * 
@@ -330,7 +308,7 @@ public final class ServerGroupServerArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param status The status of the backend server. Valid values:
+         * @param status The status of the backend server.
          * 
          * @return builder
          * 
@@ -341,7 +319,7 @@ public final class ServerGroupServerArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param status The status of the backend server. Valid values:
+         * @param status The status of the backend server.
          * 
          * @return builder
          * 
@@ -351,8 +329,7 @@ public final class ServerGroupServerArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param weight The weight of the server. Valid values: `0` to `100`. Default value: `100`. If the value is set to `0`, no
-         * requests are forwarded to the server. **Note:** You do not need to set this parameter if you set `server_type` to `Fc`.
+         * @param weight The weight of the server. Default value: `100`. Valid values: `0` to `100`. If the value is set to `0`, no requests are forwarded to the server. **Note:** You do not need to set this parameter if you set `server_type` to `Fc`.
          * 
          * @return builder
          * 
@@ -363,8 +340,7 @@ public final class ServerGroupServerArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param weight The weight of the server. Valid values: `0` to `100`. Default value: `100`. If the value is set to `0`, no
-         * requests are forwarded to the server. **Note:** You do not need to set this parameter if you set `server_type` to `Fc`.
+         * @param weight The weight of the server. Default value: `100`. Valid values: `0` to `100`. If the value is set to `0`, no requests are forwarded to the server. **Note:** You do not need to set this parameter if you set `server_type` to `Fc`.
          * 
          * @return builder
          * 

@@ -42,68 +42,58 @@ import * as utilities from "../utilities";
  *     restartPolicy: "OnFailure",
  *     securityGroupId: defaultSecurityGroup.id,
  *     vswitchId: defaultSwitch.id,
+ *     autoCreateEip: true,
  *     tags: {
  *         Created: "TF",
  *         For: "example",
  *     },
- *     containers: [
- *         {
- *             image: "registry-vpc.cn-beijing.aliyuncs.com/eci_open/nginx:alpine",
- *             name: "nginx",
- *             workingDir: "/tmp/nginx",
- *             imagePullPolicy: "IfNotPresent",
- *             commands: [
- *                 "/bin/sh",
- *                 "-c",
- *                 "sleep 9999",
- *             ],
- *             volumeMounts: [{
- *                 mountPath: "/tmp/example",
- *                 readOnly: false,
- *                 name: "empty1",
+ *     containers: [{
+ *         image: "registry.cn-beijing.aliyuncs.com/eci_open/nginx:alpine",
+ *         name: "nginx",
+ *         workingDir: "/tmp/nginx",
+ *         imagePullPolicy: "IfNotPresent",
+ *         commands: [
+ *             "/bin/sh",
+ *             "-c",
+ *             "sleep 9999",
+ *         ],
+ *         volumeMounts: [{
+ *             mountPath: "/tmp/example",
+ *             readOnly: false,
+ *             name: "empty1",
+ *         }],
+ *         ports: [{
+ *             port: 80,
+ *             protocol: "TCP",
+ *         }],
+ *         environmentVars: [{
+ *             key: "name",
+ *             value: "nginx",
+ *         }],
+ *         livenessProbes: [{
+ *             periodSeconds: 5,
+ *             initialDelaySeconds: 5,
+ *             successThreshold: 1,
+ *             failureThreshold: 3,
+ *             timeoutSeconds: 1,
+ *             execs: [{
+ *                 commands: ["cat /tmp/healthy"],
  *             }],
- *             ports: [{
- *                 port: 80,
- *                 protocol: "TCP",
+ *         }],
+ *         readinessProbes: [{
+ *             periodSeconds: 5,
+ *             initialDelaySeconds: 5,
+ *             successThreshold: 1,
+ *             failureThreshold: 3,
+ *             timeoutSeconds: 1,
+ *             execs: [{
+ *                 commands: ["cat /tmp/healthy"],
  *             }],
- *             environmentVars: [{
- *                 key: "name",
- *                 value: "nginx",
- *             }],
- *             livenessProbes: [{
- *                 periodSeconds: 5,
- *                 initialDelaySeconds: 5,
- *                 successThreshold: 1,
- *                 failureThreshold: 3,
- *                 timeoutSeconds: 1,
- *                 execs: [{
- *                     commands: ["cat /tmp/healthy"],
- *                 }],
- *             }],
- *             readinessProbes: [{
- *                 periodSeconds: 5,
- *                 initialDelaySeconds: 5,
- *                 successThreshold: 1,
- *                 failureThreshold: 3,
- *                 timeoutSeconds: 1,
- *                 execs: [{
- *                     commands: ["cat /tmp/healthy"],
- *                 }],
- *             }],
- *         },
- *         {
- *             image: "registry-vpc.cn-beijing.aliyuncs.com/eci_open/centos:7",
- *             name: "centos",
- *             commands: [
- *                 "/bin/sh",
- *                 "-c",
- *                 "sleep 9999",
- *             ],
- *         },
- *     ],
+ *         }],
+ *     }],
  *     initContainers: [{
  *         name: "init-busybox",
- *         image: "registry-vpc.cn-beijing.aliyuncs.com/eci_open/busybox:1.30",
+ *         image: "registry.cn-beijing.aliyuncs.com/eci_open/busybox:1.30",
  *         imagePullPolicy: "IfNotPresent",
  *         commands: ["echo"],
  *         args: ["hello initcontainer"],
@@ -186,10 +176,6 @@ export class ContainerGroup extends pulumi.CustomResource {
      */
     public readonly dnsConfig!: pulumi.Output<outputs.eci.ContainerGroupDnsConfig | undefined>;
     /**
-     * The security context of the container group. See `eciSecurityContext` below.
-     */
-    public readonly eciSecurityContext!: pulumi.Output<outputs.eci.ContainerGroupEciSecurityContext | undefined>;
-    /**
      * The bandwidth of the EIP. Default value: `5`.
      */
     public readonly eipBandwidth!: pulumi.Output<number | undefined>;
@@ -246,6 +232,10 @@ export class ContainerGroup extends pulumi.CustomResource {
      */
     public readonly restartPolicy!: pulumi.Output<string>;
     /**
+     * The security context of the container group. See `securityContext` below.
+     */
+    public readonly securityContext!: pulumi.Output<outputs.eci.ContainerGroupSecurityContext | undefined>;
+    /**
      * The ID of the security group to which the container group belongs. Container groups within the same security group can access each other.
      */
     public readonly securityGroupId!: pulumi.Output<string>;
@@ -293,7 +283,6 @@ export class ContainerGroup extends pulumi.CustomResource {
             resourceInputs["containers"] = state ? state.containers : undefined;
             resourceInputs["cpu"] = state ? state.cpu : undefined;
             resourceInputs["dnsConfig"] = state ? state.dnsConfig : undefined;
-            resourceInputs["eciSecurityContext"] = state ? state.eciSecurityContext : undefined;
             resourceInputs["eipBandwidth"] = state ? state.eipBandwidth : undefined;
             resourceInputs["eipInstanceId"] = state ? state.eipInstanceId : undefined;
             resourceInputs["hostAliases"] = state ? state.hostAliases : undefined;
@@ -308,6 +297,7 @@ export class ContainerGroup extends pulumi.CustomResource {
             resourceInputs["ramRoleName"] = state ? state.ramRoleName : undefined;
             resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
             resourceInputs["restartPolicy"] = state ? state.restartPolicy : undefined;
+            resourceInputs["securityContext"] = state ? state.securityContext : undefined;
             resourceInputs["securityGroupId"] = state ? state.securityGroupId : undefined;
             resourceInputs["status"] = state ? state.status : undefined;
             resourceInputs["tags"] = state ? state.tags : undefined;
@@ -335,7 +325,6 @@ export class ContainerGroup extends pulumi.CustomResource {
             resourceInputs["containers"] = args ? args.containers : undefined;
             resourceInputs["cpu"] = args ? args.cpu : undefined;
             resourceInputs["dnsConfig"] = args ? args.dnsConfig : undefined;
-            resourceInputs["eciSecurityContext"] = args ? args.eciSecurityContext : undefined;
             resourceInputs["eipBandwidth"] = args ? args.eipBandwidth : undefined;
             resourceInputs["eipInstanceId"] = args ? args.eipInstanceId : undefined;
             resourceInputs["hostAliases"] = args ? args.hostAliases : undefined;
@@ -348,6 +337,7 @@ export class ContainerGroup extends pulumi.CustomResource {
             resourceInputs["ramRoleName"] = args ? args.ramRoleName : undefined;
             resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
             resourceInputs["restartPolicy"] = args ? args.restartPolicy : undefined;
+            resourceInputs["securityContext"] = args ? args.securityContext : undefined;
             resourceInputs["securityGroupId"] = args ? args.securityGroupId : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["volumes"] = args ? args.volumes : undefined;
@@ -394,10 +384,6 @@ export interface ContainerGroupState {
      * The structure of dnsConfig. See `dnsConfig` below.
      */
     dnsConfig?: pulumi.Input<inputs.eci.ContainerGroupDnsConfig>;
-    /**
-     * The security context of the container group. See `eciSecurityContext` below.
-     */
-    eciSecurityContext?: pulumi.Input<inputs.eci.ContainerGroupEciSecurityContext>;
     /**
      * The bandwidth of the EIP. Default value: `5`.
      */
@@ -454,6 +440,10 @@ export interface ContainerGroupState {
      * The restart policy of the container group. Valid values: `Always`, `Never`, `OnFailure`.
      */
     restartPolicy?: pulumi.Input<string>;
+    /**
+     * The security context of the container group. See `securityContext` below.
+     */
+    securityContext?: pulumi.Input<inputs.eci.ContainerGroupSecurityContext>;
     /**
      * The ID of the security group to which the container group belongs. Container groups within the same security group can access each other.
      */
@@ -516,10 +506,6 @@ export interface ContainerGroupArgs {
      */
     dnsConfig?: pulumi.Input<inputs.eci.ContainerGroupDnsConfig>;
     /**
-     * The security context of the container group. See `eciSecurityContext` below.
-     */
-    eciSecurityContext?: pulumi.Input<inputs.eci.ContainerGroupEciSecurityContext>;
-    /**
      * The bandwidth of the EIP. Default value: `5`.
      */
     eipBandwidth?: pulumi.Input<number>;
@@ -567,6 +553,10 @@ export interface ContainerGroupArgs {
      * The restart policy of the container group. Valid values: `Always`, `Never`, `OnFailure`.
      */
     restartPolicy?: pulumi.Input<string>;
+    /**
+     * The security context of the container group. See `securityContext` below.
+     */
+    securityContext?: pulumi.Input<inputs.eci.ContainerGroupSecurityContext>;
     /**
      * The ID of the security group to which the container group belongs. Container groups within the same security group can access each other.
      */

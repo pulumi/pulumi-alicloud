@@ -100,6 +100,8 @@ sharedCredentialsFile: Optional[str]
 The path to the shared credentials file. If not set this defaults to ~/.aliyun/config.json
 """
 
+signVersion: Optional[str]
+
 skipRegionValidation: Optional[bool]
 """
 Skip static validation of region ID. Used by users of alternative AlibabaCloud-like APIs or users w/ access to regions

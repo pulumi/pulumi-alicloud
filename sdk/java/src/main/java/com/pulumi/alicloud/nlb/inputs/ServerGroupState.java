@@ -21,14 +21,18 @@ public final class ServerGroupState extends com.pulumi.resources.ResourceArgs {
     public static final ServerGroupState Empty = new ServerGroupState();
 
     /**
-     * The protocol version. Valid values: `Ipv4` (default), `DualStack`.
+     * Protocol version. Value:
+     * - **ipv4**:IPv4 type.
+     * - **DualStack**: Double Stack type.
      * 
      */
     @Import(name="addressIpVersion")
     private @Nullable Output<String> addressIpVersion;
 
     /**
-     * @return The protocol version. Valid values: `Ipv4` (default), `DualStack`.
+     * @return Protocol version. Value:
+     * - **ipv4**:IPv4 type.
+     * - **DualStack**: Double Stack type.
      * 
      */
     public Optional<Output<String>> addressIpVersion() {
@@ -36,29 +40,71 @@ public final class ServerGroupState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Specifies whether to enable connection draining.
+     * Full port forwarding.
      * 
      */
+    @Import(name="anyPortEnabled")
+    private @Nullable Output<Boolean> anyPortEnabled;
+
+    /**
+     * @return Full port forwarding.
+     * 
+     */
+    public Optional<Output<Boolean>> anyPortEnabled() {
+        return Optional.ofNullable(this.anyPortEnabled);
+    }
+
+    /**
+     * . Field &#39;connection_drain&#39; has been deprecated from provider version 1.214.0. New field &#39;connection_drain_enabled&#39; instead.
+     * 
+     * @deprecated
+     * Field &#39;connection_drain&#39; has been deprecated since provider version 1.214.0. New field &#39;connection_drain_enabled&#39; instead.
+     * 
+     */
+    @Deprecated /* Field 'connection_drain' has been deprecated since provider version 1.214.0. New field 'connection_drain_enabled' instead. */
     @Import(name="connectionDrain")
     private @Nullable Output<Boolean> connectionDrain;
 
     /**
-     * @return Specifies whether to enable connection draining.
+     * @return . Field &#39;connection_drain&#39; has been deprecated from provider version 1.214.0. New field &#39;connection_drain_enabled&#39; instead.
+     * 
+     * @deprecated
+     * Field &#39;connection_drain&#39; has been deprecated since provider version 1.214.0. New field &#39;connection_drain_enabled&#39; instead.
      * 
      */
+    @Deprecated /* Field 'connection_drain' has been deprecated since provider version 1.214.0. New field 'connection_drain_enabled' instead. */
     public Optional<Output<Boolean>> connectionDrain() {
         return Optional.ofNullable(this.connectionDrain);
     }
 
     /**
-     * The timeout period of connection draining. Unit: seconds. Valid values: 10 to 900.
+     * Whether to open the connection gracefully interrupted. Value:
+     * - **true**: on.
+     * - **false**: closed.
+     * 
+     */
+    @Import(name="connectionDrainEnabled")
+    private @Nullable Output<Boolean> connectionDrainEnabled;
+
+    /**
+     * @return Whether to open the connection gracefully interrupted. Value:
+     * - **true**: on.
+     * - **false**: closed.
+     * 
+     */
+    public Optional<Output<Boolean>> connectionDrainEnabled() {
+        return Optional.ofNullable(this.connectionDrainEnabled);
+    }
+
+    /**
+     * Set the connection elegant interrupt timeout. Unit: seconds. Valid values: **10** ~ **900**.
      * 
      */
     @Import(name="connectionDrainTimeout")
     private @Nullable Output<Integer> connectionDrainTimeout;
 
     /**
-     * @return The timeout period of connection draining. Unit: seconds. Valid values: 10 to 900.
+     * @return Set the connection elegant interrupt timeout. Unit: seconds. Valid values: **10** ~ **900**.
      * 
      */
     public Optional<Output<Integer>> connectionDrainTimeout() {
@@ -66,14 +112,14 @@ public final class ServerGroupState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * HealthCheck. See `health_check` below.
+     * Health check configuration information. See `health_check` below.
      * 
      */
     @Import(name="healthCheck")
     private @Nullable Output<ServerGroupHealthCheckArgs> healthCheck;
 
     /**
-     * @return HealthCheck. See `health_check` below.
+     * @return Health check configuration information. See `health_check` below.
      * 
      */
     public Optional<Output<ServerGroupHealthCheckArgs>> healthCheck() {
@@ -81,14 +127,20 @@ public final class ServerGroupState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Indicates whether client address retention is enabled.
+     * Whether to enable the client address retention function. Value:
+     * - **true**: on.
+     * - **false**: closed.
+     * &gt; **NOTE:**  special instructions: When **AddressIPVersion** is of the **ipv4** type, the default value is **true**. **Addrestipversion** can only be **false** when the value of **ipv6** is **ipv6**, and can be **true** when supported by the underlying layer * *.
      * 
      */
     @Import(name="preserveClientIpEnabled")
     private @Nullable Output<Boolean> preserveClientIpEnabled;
 
     /**
-     * @return Indicates whether client address retention is enabled.
+     * @return Whether to enable the client address retention function. Value:
+     * - **true**: on.
+     * - **false**: closed.
+     * &gt; **NOTE:**  special instructions: When **AddressIPVersion** is of the **ipv4** type, the default value is **true**. **Addrestipversion** can only be **false** when the value of **ipv6** is **ipv6**, and can be **true** when supported by the underlying layer * *.
      * 
      */
     public Optional<Output<Boolean>> preserveClientIpEnabled() {
@@ -96,14 +148,14 @@ public final class ServerGroupState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The backend protocol. Valid values: `TCP` (default), `UDP`, and `TCPSSL`.
+     * The backend Forwarding Protocol. Valid values: **TCP**, **UDP**, or **TCPSSL**.
      * 
      */
     @Import(name="protocol")
     private @Nullable Output<String> protocol;
 
     /**
-     * @return The backend protocol. Valid values: `TCP` (default), `UDP`, and `TCPSSL`.
+     * @return The backend Forwarding Protocol. Valid values: **TCP**, **UDP**, or **TCPSSL**.
      * 
      */
     public Optional<Output<String>> protocol() {
@@ -111,14 +163,14 @@ public final class ServerGroupState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The ID of the resource group to which the security group belongs.
+     * The ID of the resource group to which the server group belongs.
      * 
      */
     @Import(name="resourceGroupId")
     private @Nullable Output<String> resourceGroupId;
 
     /**
-     * @return The ID of the resource group to which the security group belongs.
+     * @return The ID of the resource group to which the server group belongs.
      * 
      */
     public Optional<Output<String>> resourceGroupId() {
@@ -126,14 +178,22 @@ public final class ServerGroupState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The routing algorithm. Valid values:
+     * Scheduling algorithm. Value:
+     * - **Wrr**: Weighted polling. The higher the weight of the backend server, the higher the probability of being polled.
+     * - **Rr**: polls external requests are distributed to backend servers in sequence according to the access order. sch: Source IP hash: The same source address is scheduled to the same backend server.
+     * - **Tch**: Quadruple hash, based on the consistent hash of the Quad (source IP, Destination IP, source port, and destination port), the same stream is scheduled to the same backend server.
+     * - **Qch**: a QUIC ID hash that allows you to hash requests with the same QUIC ID to the same backend server.
      * 
      */
     @Import(name="scheduler")
     private @Nullable Output<String> scheduler;
 
     /**
-     * @return The routing algorithm. Valid values:
+     * @return Scheduling algorithm. Value:
+     * - **Wrr**: Weighted polling. The higher the weight of the backend server, the higher the probability of being polled.
+     * - **Rr**: polls external requests are distributed to backend servers in sequence according to the access order. sch: Source IP hash: The same source address is scheduled to the same backend server.
+     * - **Tch**: Quadruple hash, based on the consistent hash of the Quad (source IP, Destination IP, source port, and destination port), the same stream is scheduled to the same backend server.
+     * - **Qch**: a QUIC ID hash that allows you to hash requests with the same QUIC ID to the same backend server.
      * 
      */
     public Optional<Output<String>> scheduler() {
@@ -141,14 +201,14 @@ public final class ServerGroupState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The name of the server group. The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
+     * The name of the server group.
      * 
      */
     @Import(name="serverGroupName")
     private @Nullable Output<String> serverGroupName;
 
     /**
-     * @return The name of the server group. The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
+     * @return The name of the server group.
      * 
      */
     public Optional<Output<String>> serverGroupName() {
@@ -156,14 +216,18 @@ public final class ServerGroupState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The type of the server group. Valid values:
+     * Server group type. Value:
+     * - **Instance**: The server type. You can add **Ecs**, **Ens**, and **Eci** instances to the server group.
+     * - **Ip**: Ip address type. You can add Ip addresses to a server group of this type.
      * 
      */
     @Import(name="serverGroupType")
     private @Nullable Output<String> serverGroupType;
 
     /**
-     * @return The type of the server group. Valid values:
+     * @return Server group type. Value:
+     * - **Instance**: The server type. You can add **Ecs**, **Ens**, and **Eci** instances to the server group.
+     * - **Ip**: Ip address type. You can add Ip addresses to a server group of this type.
      * 
      */
     public Optional<Output<String>> serverGroupType() {
@@ -171,14 +235,14 @@ public final class ServerGroupState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The status of the resource.
+     * Server group status. Value:
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return The status of the resource.
+     * @return Server group status. Value:
      * 
      */
     public Optional<Output<String>> status() {
@@ -186,14 +250,14 @@ public final class ServerGroupState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * A mapping of tags to assign to the resource.
+     * Label.
      * 
      */
     @Import(name="tags")
     private @Nullable Output<Map<String,Object>> tags;
 
     /**
-     * @return A mapping of tags to assign to the resource.
+     * @return Label.
      * 
      */
     public Optional<Output<Map<String,Object>>> tags() {
@@ -201,14 +265,18 @@ public final class ServerGroupState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The id of the vpc.
+     * The ID of the VPC to which the server group belongs.
+     * 
+     * The following arguments will be discarded. Please use new fields as soon as possible:
      * 
      */
     @Import(name="vpcId")
     private @Nullable Output<String> vpcId;
 
     /**
-     * @return The id of the vpc.
+     * @return The ID of the VPC to which the server group belongs.
+     * 
+     * The following arguments will be discarded. Please use new fields as soon as possible:
      * 
      */
     public Optional<Output<String>> vpcId() {
@@ -219,7 +287,9 @@ public final class ServerGroupState extends com.pulumi.resources.ResourceArgs {
 
     private ServerGroupState(ServerGroupState $) {
         this.addressIpVersion = $.addressIpVersion;
+        this.anyPortEnabled = $.anyPortEnabled;
         this.connectionDrain = $.connectionDrain;
+        this.connectionDrainEnabled = $.connectionDrainEnabled;
         this.connectionDrainTimeout = $.connectionDrainTimeout;
         this.healthCheck = $.healthCheck;
         this.preserveClientIpEnabled = $.preserveClientIpEnabled;
@@ -252,7 +322,9 @@ public final class ServerGroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param addressIpVersion The protocol version. Valid values: `Ipv4` (default), `DualStack`.
+         * @param addressIpVersion Protocol version. Value:
+         * - **ipv4**:IPv4 type.
+         * - **DualStack**: Double Stack type.
          * 
          * @return builder
          * 
@@ -263,7 +335,9 @@ public final class ServerGroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param addressIpVersion The protocol version. Valid values: `Ipv4` (default), `DualStack`.
+         * @param addressIpVersion Protocol version. Value:
+         * - **ipv4**:IPv4 type.
+         * - **DualStack**: Double Stack type.
          * 
          * @return builder
          * 
@@ -273,28 +347,82 @@ public final class ServerGroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param connectionDrain Specifies whether to enable connection draining.
+         * @param anyPortEnabled Full port forwarding.
          * 
          * @return builder
          * 
          */
+        public Builder anyPortEnabled(@Nullable Output<Boolean> anyPortEnabled) {
+            $.anyPortEnabled = anyPortEnabled;
+            return this;
+        }
+
+        /**
+         * @param anyPortEnabled Full port forwarding.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder anyPortEnabled(Boolean anyPortEnabled) {
+            return anyPortEnabled(Output.of(anyPortEnabled));
+        }
+
+        /**
+         * @param connectionDrain . Field &#39;connection_drain&#39; has been deprecated from provider version 1.214.0. New field &#39;connection_drain_enabled&#39; instead.
+         * 
+         * @return builder
+         * 
+         * @deprecated
+         * Field &#39;connection_drain&#39; has been deprecated since provider version 1.214.0. New field &#39;connection_drain_enabled&#39; instead.
+         * 
+         */
+        @Deprecated /* Field 'connection_drain' has been deprecated since provider version 1.214.0. New field 'connection_drain_enabled' instead. */
         public Builder connectionDrain(@Nullable Output<Boolean> connectionDrain) {
             $.connectionDrain = connectionDrain;
             return this;
         }
 
         /**
-         * @param connectionDrain Specifies whether to enable connection draining.
+         * @param connectionDrain . Field &#39;connection_drain&#39; has been deprecated from provider version 1.214.0. New field &#39;connection_drain_enabled&#39; instead.
          * 
          * @return builder
          * 
+         * @deprecated
+         * Field &#39;connection_drain&#39; has been deprecated since provider version 1.214.0. New field &#39;connection_drain_enabled&#39; instead.
+         * 
          */
+        @Deprecated /* Field 'connection_drain' has been deprecated since provider version 1.214.0. New field 'connection_drain_enabled' instead. */
         public Builder connectionDrain(Boolean connectionDrain) {
             return connectionDrain(Output.of(connectionDrain));
         }
 
         /**
-         * @param connectionDrainTimeout The timeout period of connection draining. Unit: seconds. Valid values: 10 to 900.
+         * @param connectionDrainEnabled Whether to open the connection gracefully interrupted. Value:
+         * - **true**: on.
+         * - **false**: closed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder connectionDrainEnabled(@Nullable Output<Boolean> connectionDrainEnabled) {
+            $.connectionDrainEnabled = connectionDrainEnabled;
+            return this;
+        }
+
+        /**
+         * @param connectionDrainEnabled Whether to open the connection gracefully interrupted. Value:
+         * - **true**: on.
+         * - **false**: closed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder connectionDrainEnabled(Boolean connectionDrainEnabled) {
+            return connectionDrainEnabled(Output.of(connectionDrainEnabled));
+        }
+
+        /**
+         * @param connectionDrainTimeout Set the connection elegant interrupt timeout. Unit: seconds. Valid values: **10** ~ **900**.
          * 
          * @return builder
          * 
@@ -305,7 +433,7 @@ public final class ServerGroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param connectionDrainTimeout The timeout period of connection draining. Unit: seconds. Valid values: 10 to 900.
+         * @param connectionDrainTimeout Set the connection elegant interrupt timeout. Unit: seconds. Valid values: **10** ~ **900**.
          * 
          * @return builder
          * 
@@ -315,7 +443,7 @@ public final class ServerGroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param healthCheck HealthCheck. See `health_check` below.
+         * @param healthCheck Health check configuration information. See `health_check` below.
          * 
          * @return builder
          * 
@@ -326,7 +454,7 @@ public final class ServerGroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param healthCheck HealthCheck. See `health_check` below.
+         * @param healthCheck Health check configuration information. See `health_check` below.
          * 
          * @return builder
          * 
@@ -336,7 +464,10 @@ public final class ServerGroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param preserveClientIpEnabled Indicates whether client address retention is enabled.
+         * @param preserveClientIpEnabled Whether to enable the client address retention function. Value:
+         * - **true**: on.
+         * - **false**: closed.
+         * &gt; **NOTE:**  special instructions: When **AddressIPVersion** is of the **ipv4** type, the default value is **true**. **Addrestipversion** can only be **false** when the value of **ipv6** is **ipv6**, and can be **true** when supported by the underlying layer * *.
          * 
          * @return builder
          * 
@@ -347,7 +478,10 @@ public final class ServerGroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param preserveClientIpEnabled Indicates whether client address retention is enabled.
+         * @param preserveClientIpEnabled Whether to enable the client address retention function. Value:
+         * - **true**: on.
+         * - **false**: closed.
+         * &gt; **NOTE:**  special instructions: When **AddressIPVersion** is of the **ipv4** type, the default value is **true**. **Addrestipversion** can only be **false** when the value of **ipv6** is **ipv6**, and can be **true** when supported by the underlying layer * *.
          * 
          * @return builder
          * 
@@ -357,7 +491,7 @@ public final class ServerGroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param protocol The backend protocol. Valid values: `TCP` (default), `UDP`, and `TCPSSL`.
+         * @param protocol The backend Forwarding Protocol. Valid values: **TCP**, **UDP**, or **TCPSSL**.
          * 
          * @return builder
          * 
@@ -368,7 +502,7 @@ public final class ServerGroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param protocol The backend protocol. Valid values: `TCP` (default), `UDP`, and `TCPSSL`.
+         * @param protocol The backend Forwarding Protocol. Valid values: **TCP**, **UDP**, or **TCPSSL**.
          * 
          * @return builder
          * 
@@ -378,7 +512,7 @@ public final class ServerGroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param resourceGroupId The ID of the resource group to which the security group belongs.
+         * @param resourceGroupId The ID of the resource group to which the server group belongs.
          * 
          * @return builder
          * 
@@ -389,7 +523,7 @@ public final class ServerGroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param resourceGroupId The ID of the resource group to which the security group belongs.
+         * @param resourceGroupId The ID of the resource group to which the server group belongs.
          * 
          * @return builder
          * 
@@ -399,7 +533,11 @@ public final class ServerGroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param scheduler The routing algorithm. Valid values:
+         * @param scheduler Scheduling algorithm. Value:
+         * - **Wrr**: Weighted polling. The higher the weight of the backend server, the higher the probability of being polled.
+         * - **Rr**: polls external requests are distributed to backend servers in sequence according to the access order. sch: Source IP hash: The same source address is scheduled to the same backend server.
+         * - **Tch**: Quadruple hash, based on the consistent hash of the Quad (source IP, Destination IP, source port, and destination port), the same stream is scheduled to the same backend server.
+         * - **Qch**: a QUIC ID hash that allows you to hash requests with the same QUIC ID to the same backend server.
          * 
          * @return builder
          * 
@@ -410,7 +548,11 @@ public final class ServerGroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param scheduler The routing algorithm. Valid values:
+         * @param scheduler Scheduling algorithm. Value:
+         * - **Wrr**: Weighted polling. The higher the weight of the backend server, the higher the probability of being polled.
+         * - **Rr**: polls external requests are distributed to backend servers in sequence according to the access order. sch: Source IP hash: The same source address is scheduled to the same backend server.
+         * - **Tch**: Quadruple hash, based on the consistent hash of the Quad (source IP, Destination IP, source port, and destination port), the same stream is scheduled to the same backend server.
+         * - **Qch**: a QUIC ID hash that allows you to hash requests with the same QUIC ID to the same backend server.
          * 
          * @return builder
          * 
@@ -420,7 +562,7 @@ public final class ServerGroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param serverGroupName The name of the server group. The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
+         * @param serverGroupName The name of the server group.
          * 
          * @return builder
          * 
@@ -431,7 +573,7 @@ public final class ServerGroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param serverGroupName The name of the server group. The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
+         * @param serverGroupName The name of the server group.
          * 
          * @return builder
          * 
@@ -441,7 +583,9 @@ public final class ServerGroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param serverGroupType The type of the server group. Valid values:
+         * @param serverGroupType Server group type. Value:
+         * - **Instance**: The server type. You can add **Ecs**, **Ens**, and **Eci** instances to the server group.
+         * - **Ip**: Ip address type. You can add Ip addresses to a server group of this type.
          * 
          * @return builder
          * 
@@ -452,7 +596,9 @@ public final class ServerGroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param serverGroupType The type of the server group. Valid values:
+         * @param serverGroupType Server group type. Value:
+         * - **Instance**: The server type. You can add **Ecs**, **Ens**, and **Eci** instances to the server group.
+         * - **Ip**: Ip address type. You can add Ip addresses to a server group of this type.
          * 
          * @return builder
          * 
@@ -462,7 +608,7 @@ public final class ServerGroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param status The status of the resource.
+         * @param status Server group status. Value:
          * 
          * @return builder
          * 
@@ -473,7 +619,7 @@ public final class ServerGroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param status The status of the resource.
+         * @param status Server group status. Value:
          * 
          * @return builder
          * 
@@ -483,7 +629,7 @@ public final class ServerGroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tags A mapping of tags to assign to the resource.
+         * @param tags Label.
          * 
          * @return builder
          * 
@@ -494,7 +640,7 @@ public final class ServerGroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tags A mapping of tags to assign to the resource.
+         * @param tags Label.
          * 
          * @return builder
          * 
@@ -504,7 +650,9 @@ public final class ServerGroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vpcId The id of the vpc.
+         * @param vpcId The ID of the VPC to which the server group belongs.
+         * 
+         * The following arguments will be discarded. Please use new fields as soon as possible:
          * 
          * @return builder
          * 
@@ -515,7 +663,9 @@ public final class ServerGroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vpcId The id of the vpc.
+         * @param vpcId The ID of the VPC to which the server group belongs.
+         * 
+         * The following arguments will be discarded. Please use new fields as soon as possible:
          * 
          * @return builder
          * 

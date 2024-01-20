@@ -17,6 +17,21 @@ public final class DatabaseArgs extends com.pulumi.resources.ResourceArgs {
     public static final DatabaseArgs Empty = new DatabaseArgs();
 
     /**
+     * Account name authorized to access the database. Only supports PostgreSQL.
+     * 
+     */
+    @Import(name="accountName")
+    private @Nullable Output<String> accountName;
+
+    /**
+     * @return Account name authorized to access the database. Only supports PostgreSQL.
+     * 
+     */
+    public Optional<Output<String>> accountName() {
+        return Optional.ofNullable(this.accountName);
+    }
+
+    /**
      * Character set. The value range is limited to the following: [ utf8, gbk, latin1, utf8mb4, Chinese_PRC_CI_AS, Chinese_PRC_CS_AS, SQL_Latin1_General_CP1_CI_AS, SQL_Latin1_General_CP1_CS_AS, Chinese_PRC_BIN ], default is &#34;utf8&#34; \(`utf8mb4` only supports versions 5.5 and 5.6\).
      * 
      */
@@ -79,6 +94,7 @@ public final class DatabaseArgs extends com.pulumi.resources.ResourceArgs {
     private DatabaseArgs() {}
 
     private DatabaseArgs(DatabaseArgs $) {
+        this.accountName = $.accountName;
         this.characterSetName = $.characterSetName;
         this.dbClusterId = $.dbClusterId;
         this.dbDescription = $.dbDescription;
@@ -101,6 +117,27 @@ public final class DatabaseArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder(DatabaseArgs defaults) {
             $ = new DatabaseArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param accountName Account name authorized to access the database. Only supports PostgreSQL.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder accountName(@Nullable Output<String> accountName) {
+            $.accountName = accountName;
+            return this;
+        }
+
+        /**
+         * @param accountName Account name authorized to access the database. Only supports PostgreSQL.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder accountName(String accountName) {
+            return accountName(Output.of(accountName));
         }
 
         /**

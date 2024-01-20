@@ -12,6 +12,18 @@ namespace Pulumi.AliCloud.Eci.Inputs
 
     public sealed class ContainerGroupInitContainerEnvironmentVarGetArgs : global::Pulumi.ResourceArgs
     {
+        [Input("fieldReves")]
+        private InputList<Inputs.ContainerGroupInitContainerEnvironmentVarFieldRefGetArgs>? _fieldReves;
+
+        /// <summary>
+        /// The reference of the environment variable. See `field_ref` below.
+        /// </summary>
+        public InputList<Inputs.ContainerGroupInitContainerEnvironmentVarFieldRefGetArgs> FieldReves
+        {
+            get => _fieldReves ?? (_fieldReves = new InputList<Inputs.ContainerGroupInitContainerEnvironmentVarFieldRefGetArgs>());
+            set => _fieldReves = value;
+        }
+
         /// <summary>
         /// The name of the variable. The name can be 1 to 128 characters in length and can contain letters, digits, and underscores (_). It cannot start with a digit.
         /// </summary>

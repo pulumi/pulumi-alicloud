@@ -1255,26 +1255,28 @@ class EciScalingConfiguration(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "terraform-example"
+        default_random_integer = []
+        for range in [{"value": i} for i in range(0, 2)]:
+            default_random_integer.append(random.RandomInteger(f"defaultRandomInteger-{range['value']}",
+                max=99999,
+                min=10000))
         default_zones = alicloud.get_zones(available_disk_category="cloud_efficiency",
             available_resource_creation="VSwitch")
         default_network = alicloud.vpc.Network("defaultNetwork",
-            vpc_name=name,
+            vpc_name=default_random_integer[0].result.apply(lambda result: f"terraform-example-{result}"),
             cidr_block="172.16.0.0/16")
         default_switch = alicloud.vpc.Switch("defaultSwitch",
             vpc_id=default_network.id,
             cidr_block="172.16.0.0/24",
             zone_id=default_zones.zones[0].id,
-            vswitch_name=name)
+            vswitch_name=default_random_integer[0].result.apply(lambda result: f"terraform-example-{result}"))
         default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
         default_scaling_group = alicloud.ess.ScalingGroup("defaultScalingGroup",
             min_size=0,
             max_size=1,
-            scaling_group_name=name,
+            scaling_group_name=default_random_integer[0].result.apply(lambda result: f"terraform-example-{result}"),
             removal_policies=[
                 "OldestInstance",
                 "NewestInstance",
@@ -1374,26 +1376,28 @@ class EciScalingConfiguration(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "terraform-example"
+        default_random_integer = []
+        for range in [{"value": i} for i in range(0, 2)]:
+            default_random_integer.append(random.RandomInteger(f"defaultRandomInteger-{range['value']}",
+                max=99999,
+                min=10000))
         default_zones = alicloud.get_zones(available_disk_category="cloud_efficiency",
             available_resource_creation="VSwitch")
         default_network = alicloud.vpc.Network("defaultNetwork",
-            vpc_name=name,
+            vpc_name=default_random_integer[0].result.apply(lambda result: f"terraform-example-{result}"),
             cidr_block="172.16.0.0/16")
         default_switch = alicloud.vpc.Switch("defaultSwitch",
             vpc_id=default_network.id,
             cidr_block="172.16.0.0/24",
             zone_id=default_zones.zones[0].id,
-            vswitch_name=name)
+            vswitch_name=default_random_integer[0].result.apply(lambda result: f"terraform-example-{result}"))
         default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
         default_scaling_group = alicloud.ess.ScalingGroup("defaultScalingGroup",
             min_size=0,
             max_size=1,
-            scaling_group_name=name,
+            scaling_group_name=default_random_integer[0].result.apply(lambda result: f"terraform-example-{result}"),
             removal_policies=[
                 "OldestInstance",
                 "NewestInstance",

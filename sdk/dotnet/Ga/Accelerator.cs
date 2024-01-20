@@ -43,7 +43,7 @@ namespace Pulumi.AliCloud.Ga
     /// Ga Accelerator can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:ga/accelerator:Accelerator example &lt;accelerator_id&gt;
+    ///  $ pulumi import alicloud:ga/accelerator:Accelerator example &lt;id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:ga/accelerator:Accelerator")]
@@ -59,7 +59,7 @@ namespace Pulumi.AliCloud.Ga
         /// Auto renewal period of an instance, in the unit of month. The value range is 1-12.
         /// </summary>
         [Output("autoRenewDuration")]
-        public Output<int?> AutoRenewDuration { get; private set; } = null!;
+        public Output<int> AutoRenewDuration { get; private set; } = null!;
 
         /// <summary>
         /// Use coupons to pay bills automatically. Default value: `false`. Valid values:
@@ -74,7 +74,7 @@ namespace Pulumi.AliCloud.Ga
         public Output<string> BandwidthBillingType { get; private set; } = null!;
 
         /// <summary>
-        /// The type of cross-border acceleration. Default value: `bgpPro`. Valid values: `bgpPro`, `private`.
+        /// The type of cross-border acceleration. Default value: `bgpPro`. Valid values: `bgpPro`, `private`. **NOTE:** `cross_border_mode` is valid only when `cross_border_status` is set to `true`.
         /// </summary>
         [Output("crossBorderMode")]
         public Output<string> CrossBorderMode { get; private set; } = null!;
@@ -212,7 +212,7 @@ namespace Pulumi.AliCloud.Ga
         public Input<string>? BandwidthBillingType { get; set; }
 
         /// <summary>
-        /// The type of cross-border acceleration. Default value: `bgpPro`. Valid values: `bgpPro`, `private`.
+        /// The type of cross-border acceleration. Default value: `bgpPro`. Valid values: `bgpPro`, `private`. **NOTE:** `cross_border_mode` is valid only when `cross_border_status` is set to `true`.
         /// </summary>
         [Input("crossBorderMode")]
         public Input<string>? CrossBorderMode { get; set; }
@@ -312,7 +312,7 @@ namespace Pulumi.AliCloud.Ga
         public Input<string>? BandwidthBillingType { get; set; }
 
         /// <summary>
-        /// The type of cross-border acceleration. Default value: `bgpPro`. Valid values: `bgpPro`, `private`.
+        /// The type of cross-border acceleration. Default value: `bgpPro`. Valid values: `bgpPro`, `private`. **NOTE:** `cross_border_mode` is valid only when `cross_border_status` is set to `true`.
         /// </summary>
         [Input("crossBorderMode")]
         public Input<string>? CrossBorderMode { get; set; }

@@ -22,6 +22,12 @@ namespace Pulumi.AliCloud.Cddc
     public partial class DedicatedPropreHost : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// Whether to pay automatically when the host is created.
+        /// </summary>
+        [Output("autoPay")]
+        public Output<bool?> AutoPay { get; private set; } = null!;
+
+        /// <summary>
         /// Whether to enable automatic renewal. Valid values:
         /// - **true**: On
         /// - **false** (default): Off
@@ -48,7 +54,7 @@ namespace Pulumi.AliCloud.Cddc
         public Output<string?> EcsDeploymentSetId { get; private set; } = null!;
 
         /// <summary>
-        /// Windows system: length of 2 to 15 characters, allowing the use of upper and lower case letters, numbers. You cannot use only numbers.Other operating systems (such as Linux): the length of 2 to 64 characters, allowing the use of dot (.) to separate characters into multiple segments, each segment allows the use of upper and lower case letters, numbers, but can not use continuous dot (.). Cannot start or end with a dot (.).
+        /// Windows system: length of 2 to 15 characters, allowing the use of upper and lower case letters, numbers. You cannot use only numbers. Other operating systems (such as Linux): the length of 2 to 64 characters, allowing the use of dot (.) to separate characters into multiple segments, each segment allows the use of upper and lower case letters, numbers, but can not use continuous dot (.). Cannot start or end with a dot (.).
         /// </summary>
         [Output("ecsHostName")]
         public Output<string?> EcsHostName { get; private set; } = null!;
@@ -98,6 +104,18 @@ namespace Pulumi.AliCloud.Cddc
         public Output<string?> ImageId { get; private set; } = null!;
 
         /// <summary>
+        /// Network billing type. Value range: PayByBandwidth: Billing based on fixed bandwidth. PayByTraffic: charges by using the flow meter.
+        /// </summary>
+        [Output("internetChargeType")]
+        public Output<string?> InternetChargeType { get; private set; } = null!;
+
+        /// <summary>
+        /// The maximum outbound bandwidth of the public network, in Mbit/s. Value range: 0~100.  Default value: 0. When set to greater than 0, a public IP is automatically created.
+        /// </summary>
+        [Output("internetMaxBandwidthOut")]
+        public Output<int?> InternetMaxBandwidthOut { get; private set; } = null!;
+
+        /// <summary>
         /// The key pair name.
         /// </summary>
         [Output("keyPairName")]
@@ -141,10 +159,34 @@ namespace Pulumi.AliCloud.Cddc
         public Output<string?> PeriodType { get; private set; } = null!;
 
         /// <summary>
+        /// The ID of the resource group.
+        /// </summary>
+        [Output("resourceGroupId")]
+        public Output<string> ResourceGroupId { get; private set; } = null!;
+
+        /// <summary>
         /// The ID of the security group.
         /// </summary>
         [Output("securityGroupId")]
         public Output<string> SecurityGroupId { get; private set; } = null!;
+
+        /// <summary>
+        /// Host tag information.
+        /// </summary>
+        [Output("tags")]
+        public Output<ImmutableDictionary<string, object>?> Tags { get; private set; } = null!;
+
+        /// <summary>
+        /// User-defined script data. The maximum size of the original data is 16kB.
+        /// </summary>
+        [Output("userData")]
+        public Output<string?> UserData { get; private set; } = null!;
+
+        /// <summary>
+        /// Whether custom data is encoded in Base64 format.
+        /// </summary>
+        [Output("userDataEncoded")]
+        public Output<bool?> UserDataEncoded { get; private set; } = null!;
 
         /// <summary>
         /// VPCID of the VPC.
@@ -205,6 +247,12 @@ namespace Pulumi.AliCloud.Cddc
     public sealed class DedicatedPropreHostArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Whether to pay automatically when the host is created.
+        /// </summary>
+        [Input("autoPay")]
+        public Input<bool>? AutoPay { get; set; }
+
+        /// <summary>
         /// Whether to enable automatic renewal. Valid values:
         /// - **true**: On
         /// - **false** (default): Off
@@ -237,7 +285,7 @@ namespace Pulumi.AliCloud.Cddc
         public Input<string>? EcsDeploymentSetId { get; set; }
 
         /// <summary>
-        /// Windows system: length of 2 to 15 characters, allowing the use of upper and lower case letters, numbers. You cannot use only numbers.Other operating systems (such as Linux): the length of 2 to 64 characters, allowing the use of dot (.) to separate characters into multiple segments, each segment allows the use of upper and lower case letters, numbers, but can not use continuous dot (.). Cannot start or end with a dot (.).
+        /// Windows system: length of 2 to 15 characters, allowing the use of upper and lower case letters, numbers. You cannot use only numbers. Other operating systems (such as Linux): the length of 2 to 64 characters, allowing the use of dot (.) to separate characters into multiple segments, each segment allows the use of upper and lower case letters, numbers, but can not use continuous dot (.). Cannot start or end with a dot (.).
         /// </summary>
         [Input("ecsHostName")]
         public Input<string>? EcsHostName { get; set; }
@@ -279,6 +327,18 @@ namespace Pulumi.AliCloud.Cddc
         /// </summary>
         [Input("imageId")]
         public Input<string>? ImageId { get; set; }
+
+        /// <summary>
+        /// Network billing type. Value range: PayByBandwidth: Billing based on fixed bandwidth. PayByTraffic: charges by using the flow meter.
+        /// </summary>
+        [Input("internetChargeType")]
+        public Input<string>? InternetChargeType { get; set; }
+
+        /// <summary>
+        /// The maximum outbound bandwidth of the public network, in Mbit/s. Value range: 0~100.  Default value: 0. When set to greater than 0, a public IP is automatically created.
+        /// </summary>
+        [Input("internetMaxBandwidthOut")]
+        public Input<int>? InternetMaxBandwidthOut { get; set; }
 
         /// <summary>
         /// The key pair name.
@@ -324,10 +384,40 @@ namespace Pulumi.AliCloud.Cddc
         public Input<string>? PeriodType { get; set; }
 
         /// <summary>
+        /// The ID of the resource group.
+        /// </summary>
+        [Input("resourceGroupId")]
+        public Input<string>? ResourceGroupId { get; set; }
+
+        /// <summary>
         /// The ID of the security group.
         /// </summary>
         [Input("securityGroupId", required: true)]
         public Input<string> SecurityGroupId { get; set; } = null!;
+
+        [Input("tags")]
+        private InputMap<object>? _tags;
+
+        /// <summary>
+        /// Host tag information.
+        /// </summary>
+        public InputMap<object> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<object>());
+            set => _tags = value;
+        }
+
+        /// <summary>
+        /// User-defined script data. The maximum size of the original data is 16kB.
+        /// </summary>
+        [Input("userData")]
+        public Input<string>? UserData { get; set; }
+
+        /// <summary>
+        /// Whether custom data is encoded in Base64 format.
+        /// </summary>
+        [Input("userDataEncoded")]
+        public Input<bool>? UserDataEncoded { get; set; }
 
         /// <summary>
         /// VPCID of the VPC.
@@ -349,6 +439,12 @@ namespace Pulumi.AliCloud.Cddc
 
     public sealed class DedicatedPropreHostState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Whether to pay automatically when the host is created.
+        /// </summary>
+        [Input("autoPay")]
+        public Input<bool>? AutoPay { get; set; }
+
         /// <summary>
         /// Whether to enable automatic renewal. Valid values:
         /// - **true**: On
@@ -382,7 +478,7 @@ namespace Pulumi.AliCloud.Cddc
         public Input<string>? EcsDeploymentSetId { get; set; }
 
         /// <summary>
-        /// Windows system: length of 2 to 15 characters, allowing the use of upper and lower case letters, numbers. You cannot use only numbers.Other operating systems (such as Linux): the length of 2 to 64 characters, allowing the use of dot (.) to separate characters into multiple segments, each segment allows the use of upper and lower case letters, numbers, but can not use continuous dot (.). Cannot start or end with a dot (.).
+        /// Windows system: length of 2 to 15 characters, allowing the use of upper and lower case letters, numbers. You cannot use only numbers. Other operating systems (such as Linux): the length of 2 to 64 characters, allowing the use of dot (.) to separate characters into multiple segments, each segment allows the use of upper and lower case letters, numbers, but can not use continuous dot (.). Cannot start or end with a dot (.).
         /// </summary>
         [Input("ecsHostName")]
         public Input<string>? EcsHostName { get; set; }
@@ -432,6 +528,18 @@ namespace Pulumi.AliCloud.Cddc
         public Input<string>? ImageId { get; set; }
 
         /// <summary>
+        /// Network billing type. Value range: PayByBandwidth: Billing based on fixed bandwidth. PayByTraffic: charges by using the flow meter.
+        /// </summary>
+        [Input("internetChargeType")]
+        public Input<string>? InternetChargeType { get; set; }
+
+        /// <summary>
+        /// The maximum outbound bandwidth of the public network, in Mbit/s. Value range: 0~100.  Default value: 0. When set to greater than 0, a public IP is automatically created.
+        /// </summary>
+        [Input("internetMaxBandwidthOut")]
+        public Input<int>? InternetMaxBandwidthOut { get; set; }
+
+        /// <summary>
         /// The key pair name.
         /// </summary>
         [Input("keyPairName")]
@@ -475,10 +583,40 @@ namespace Pulumi.AliCloud.Cddc
         public Input<string>? PeriodType { get; set; }
 
         /// <summary>
+        /// The ID of the resource group.
+        /// </summary>
+        [Input("resourceGroupId")]
+        public Input<string>? ResourceGroupId { get; set; }
+
+        /// <summary>
         /// The ID of the security group.
         /// </summary>
         [Input("securityGroupId")]
         public Input<string>? SecurityGroupId { get; set; }
+
+        [Input("tags")]
+        private InputMap<object>? _tags;
+
+        /// <summary>
+        /// Host tag information.
+        /// </summary>
+        public InputMap<object> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<object>());
+            set => _tags = value;
+        }
+
+        /// <summary>
+        /// User-defined script data. The maximum size of the original data is 16kB.
+        /// </summary>
+        [Input("userData")]
+        public Input<string>? UserData { get; set; }
+
+        /// <summary>
+        /// Whether custom data is encoded in Base64 format.
+        /// </summary>
+        [Input("userDataEncoded")]
+        public Input<bool>? UserDataEncoded { get; set; }
 
         /// <summary>
         /// VPCID of the VPC.

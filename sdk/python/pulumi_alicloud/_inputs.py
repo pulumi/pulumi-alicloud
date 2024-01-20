@@ -12,6 +12,7 @@ from . import _utilities
 __all__ = [
     'ProviderAssumeRoleArgs',
     'ProviderEndpointArgs',
+    'ProviderSignVersionArgs',
 ]
 
 @pulumi.input_type
@@ -1629,5 +1630,34 @@ class ProviderEndpointArgs:
     @waf_openapi.setter
     def waf_openapi(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "waf_openapi", value)
+
+
+@pulumi.input_type
+class ProviderSignVersionArgs:
+    def __init__(__self__, *,
+                 oss: Optional[pulumi.Input[str]] = None,
+                 sls: Optional[pulumi.Input[str]] = None):
+        if oss is not None:
+            pulumi.set(__self__, "oss", oss)
+        if sls is not None:
+            pulumi.set(__self__, "sls", sls)
+
+    @property
+    @pulumi.getter
+    def oss(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "oss")
+
+    @oss.setter
+    def oss(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "oss", value)
+
+    @property
+    @pulumi.getter
+    def sls(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "sls")
+
+    @sls.setter
+    def sls(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "sls", value)
 
 

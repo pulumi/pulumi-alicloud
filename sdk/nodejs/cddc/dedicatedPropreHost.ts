@@ -44,6 +44,10 @@ export class DedicatedPropreHost extends pulumi.CustomResource {
     }
 
     /**
+     * Whether to pay automatically when the host is created.
+     */
+    public readonly autoPay!: pulumi.Output<boolean | undefined>;
+    /**
      * Whether to enable automatic renewal. Valid values:
      * - **true**: On
      * - **false** (default): Off
@@ -62,7 +66,7 @@ export class DedicatedPropreHost extends pulumi.CustomResource {
      */
     public readonly ecsDeploymentSetId!: pulumi.Output<string | undefined>;
     /**
-     * Windows system: length of 2 to 15 characters, allowing the use of upper and lower case letters, numbers. You cannot use only numbers.Other operating systems (such as Linux): the length of 2 to 64 characters, allowing the use of dot (.) to separate characters into multiple segments, each segment allows the use of upper and lower case letters, numbers, but can not use continuous dot (.). Cannot start or end with a dot (.).
+     * Windows system: length of 2 to 15 characters, allowing the use of upper and lower case letters, numbers. You cannot use only numbers. Other operating systems (such as Linux): the length of 2 to 64 characters, allowing the use of dot (.) to separate characters into multiple segments, each segment allows the use of upper and lower case letters, numbers, but can not use continuous dot (.). Cannot start or end with a dot (.).
      */
     public readonly ecsHostName!: pulumi.Output<string | undefined>;
     /**
@@ -98,6 +102,14 @@ export class DedicatedPropreHost extends pulumi.CustomResource {
      */
     public readonly imageId!: pulumi.Output<string | undefined>;
     /**
+     * Network billing type. Value range: PayByBandwidth: Billing based on fixed bandwidth. PayByTraffic: charges by using the flow meter.
+     */
+    public readonly internetChargeType!: pulumi.Output<string | undefined>;
+    /**
+     * The maximum outbound bandwidth of the public network, in Mbit/s. Value range: 0~100.  Default value: 0. When set to greater than 0, a public IP is automatically created.
+     */
+    public readonly internetMaxBandwidthOut!: pulumi.Output<number | undefined>;
+    /**
      * The key pair name.
      */
     public readonly keyPairName!: pulumi.Output<string | undefined>;
@@ -129,9 +141,25 @@ export class DedicatedPropreHost extends pulumi.CustomResource {
      */
     public readonly periodType!: pulumi.Output<string | undefined>;
     /**
+     * The ID of the resource group.
+     */
+    public readonly resourceGroupId!: pulumi.Output<string>;
+    /**
      * The ID of the security group.
      */
     public readonly securityGroupId!: pulumi.Output<string>;
+    /**
+     * Host tag information.
+     */
+    public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
+    /**
+     * User-defined script data. The maximum size of the original data is 16kB.
+     */
+    public readonly userData!: pulumi.Output<string | undefined>;
+    /**
+     * Whether custom data is encoded in Base64 format.
+     */
+    public readonly userDataEncoded!: pulumi.Output<boolean | undefined>;
     /**
      * VPCID of the VPC.
      */
@@ -154,6 +182,7 @@ export class DedicatedPropreHost extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DedicatedPropreHostState | undefined;
+            resourceInputs["autoPay"] = state ? state.autoPay : undefined;
             resourceInputs["autoRenew"] = state ? state.autoRenew : undefined;
             resourceInputs["dedicatedHostGroupId"] = state ? state.dedicatedHostGroupId : undefined;
             resourceInputs["ecsClassLists"] = state ? state.ecsClassLists : undefined;
@@ -165,13 +194,19 @@ export class DedicatedPropreHost extends pulumi.CustomResource {
             resourceInputs["ecsZoneId"] = state ? state.ecsZoneId : undefined;
             resourceInputs["engine"] = state ? state.engine : undefined;
             resourceInputs["imageId"] = state ? state.imageId : undefined;
+            resourceInputs["internetChargeType"] = state ? state.internetChargeType : undefined;
+            resourceInputs["internetMaxBandwidthOut"] = state ? state.internetMaxBandwidthOut : undefined;
             resourceInputs["keyPairName"] = state ? state.keyPairName : undefined;
             resourceInputs["osPassword"] = state ? state.osPassword : undefined;
             resourceInputs["passwordInherit"] = state ? state.passwordInherit : undefined;
             resourceInputs["paymentType"] = state ? state.paymentType : undefined;
             resourceInputs["period"] = state ? state.period : undefined;
             resourceInputs["periodType"] = state ? state.periodType : undefined;
+            resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
             resourceInputs["securityGroupId"] = state ? state.securityGroupId : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["userData"] = state ? state.userData : undefined;
+            resourceInputs["userDataEncoded"] = state ? state.userDataEncoded : undefined;
             resourceInputs["vpcId"] = state ? state.vpcId : undefined;
             resourceInputs["vswitchId"] = state ? state.vswitchId : undefined;
         } else {
@@ -197,6 +232,7 @@ export class DedicatedPropreHost extends pulumi.CustomResource {
             if ((!args || args.vswitchId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'vswitchId'");
             }
+            resourceInputs["autoPay"] = args ? args.autoPay : undefined;
             resourceInputs["autoRenew"] = args ? args.autoRenew : undefined;
             resourceInputs["dedicatedHostGroupId"] = args ? args.dedicatedHostGroupId : undefined;
             resourceInputs["ecsClassLists"] = args ? args.ecsClassLists : undefined;
@@ -207,13 +243,19 @@ export class DedicatedPropreHost extends pulumi.CustomResource {
             resourceInputs["ecsZoneId"] = args ? args.ecsZoneId : undefined;
             resourceInputs["engine"] = args ? args.engine : undefined;
             resourceInputs["imageId"] = args ? args.imageId : undefined;
+            resourceInputs["internetChargeType"] = args ? args.internetChargeType : undefined;
+            resourceInputs["internetMaxBandwidthOut"] = args ? args.internetMaxBandwidthOut : undefined;
             resourceInputs["keyPairName"] = args ? args.keyPairName : undefined;
             resourceInputs["osPassword"] = args ? args.osPassword : undefined;
             resourceInputs["passwordInherit"] = args ? args.passwordInherit : undefined;
             resourceInputs["paymentType"] = args ? args.paymentType : undefined;
             resourceInputs["period"] = args ? args.period : undefined;
             resourceInputs["periodType"] = args ? args.periodType : undefined;
+            resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
             resourceInputs["securityGroupId"] = args ? args.securityGroupId : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["userData"] = args ? args.userData : undefined;
+            resourceInputs["userDataEncoded"] = args ? args.userDataEncoded : undefined;
             resourceInputs["vpcId"] = args ? args.vpcId : undefined;
             resourceInputs["vswitchId"] = args ? args.vswitchId : undefined;
             resourceInputs["ecsInstanceId"] = undefined /*out*/;
@@ -227,6 +269,10 @@ export class DedicatedPropreHost extends pulumi.CustomResource {
  * Input properties used for looking up and filtering DedicatedPropreHost resources.
  */
 export interface DedicatedPropreHostState {
+    /**
+     * Whether to pay automatically when the host is created.
+     */
+    autoPay?: pulumi.Input<boolean>;
     /**
      * Whether to enable automatic renewal. Valid values:
      * - **true**: On
@@ -246,7 +292,7 @@ export interface DedicatedPropreHostState {
      */
     ecsDeploymentSetId?: pulumi.Input<string>;
     /**
-     * Windows system: length of 2 to 15 characters, allowing the use of upper and lower case letters, numbers. You cannot use only numbers.Other operating systems (such as Linux): the length of 2 to 64 characters, allowing the use of dot (.) to separate characters into multiple segments, each segment allows the use of upper and lower case letters, numbers, but can not use continuous dot (.). Cannot start or end with a dot (.).
+     * Windows system: length of 2 to 15 characters, allowing the use of upper and lower case letters, numbers. You cannot use only numbers. Other operating systems (such as Linux): the length of 2 to 64 characters, allowing the use of dot (.) to separate characters into multiple segments, each segment allows the use of upper and lower case letters, numbers, but can not use continuous dot (.). Cannot start or end with a dot (.).
      */
     ecsHostName?: pulumi.Input<string>;
     /**
@@ -282,6 +328,14 @@ export interface DedicatedPropreHostState {
      */
     imageId?: pulumi.Input<string>;
     /**
+     * Network billing type. Value range: PayByBandwidth: Billing based on fixed bandwidth. PayByTraffic: charges by using the flow meter.
+     */
+    internetChargeType?: pulumi.Input<string>;
+    /**
+     * The maximum outbound bandwidth of the public network, in Mbit/s. Value range: 0~100.  Default value: 0. When set to greater than 0, a public IP is automatically created.
+     */
+    internetMaxBandwidthOut?: pulumi.Input<number>;
+    /**
      * The key pair name.
      */
     keyPairName?: pulumi.Input<string>;
@@ -313,9 +367,25 @@ export interface DedicatedPropreHostState {
      */
     periodType?: pulumi.Input<string>;
     /**
+     * The ID of the resource group.
+     */
+    resourceGroupId?: pulumi.Input<string>;
+    /**
      * The ID of the security group.
      */
     securityGroupId?: pulumi.Input<string>;
+    /**
+     * Host tag information.
+     */
+    tags?: pulumi.Input<{[key: string]: any}>;
+    /**
+     * User-defined script data. The maximum size of the original data is 16kB.
+     */
+    userData?: pulumi.Input<string>;
+    /**
+     * Whether custom data is encoded in Base64 format.
+     */
+    userDataEncoded?: pulumi.Input<boolean>;
     /**
      * VPCID of the VPC.
      */
@@ -330,6 +400,10 @@ export interface DedicatedPropreHostState {
  * The set of arguments for constructing a DedicatedPropreHost resource.
  */
 export interface DedicatedPropreHostArgs {
+    /**
+     * Whether to pay automatically when the host is created.
+     */
+    autoPay?: pulumi.Input<boolean>;
     /**
      * Whether to enable automatic renewal. Valid values:
      * - **true**: On
@@ -349,7 +423,7 @@ export interface DedicatedPropreHostArgs {
      */
     ecsDeploymentSetId?: pulumi.Input<string>;
     /**
-     * Windows system: length of 2 to 15 characters, allowing the use of upper and lower case letters, numbers. You cannot use only numbers.Other operating systems (such as Linux): the length of 2 to 64 characters, allowing the use of dot (.) to separate characters into multiple segments, each segment allows the use of upper and lower case letters, numbers, but can not use continuous dot (.). Cannot start or end with a dot (.).
+     * Windows system: length of 2 to 15 characters, allowing the use of upper and lower case letters, numbers. You cannot use only numbers. Other operating systems (such as Linux): the length of 2 to 64 characters, allowing the use of dot (.) to separate characters into multiple segments, each segment allows the use of upper and lower case letters, numbers, but can not use continuous dot (.). Cannot start or end with a dot (.).
      */
     ecsHostName?: pulumi.Input<string>;
     /**
@@ -380,6 +454,14 @@ export interface DedicatedPropreHostArgs {
      * > **NOTE:**  If you need to use the default image, you do not need to fill it in.
      */
     imageId?: pulumi.Input<string>;
+    /**
+     * Network billing type. Value range: PayByBandwidth: Billing based on fixed bandwidth. PayByTraffic: charges by using the flow meter.
+     */
+    internetChargeType?: pulumi.Input<string>;
+    /**
+     * The maximum outbound bandwidth of the public network, in Mbit/s. Value range: 0~100.  Default value: 0. When set to greater than 0, a public IP is automatically created.
+     */
+    internetMaxBandwidthOut?: pulumi.Input<number>;
     /**
      * The key pair name.
      */
@@ -412,9 +494,25 @@ export interface DedicatedPropreHostArgs {
      */
     periodType?: pulumi.Input<string>;
     /**
+     * The ID of the resource group.
+     */
+    resourceGroupId?: pulumi.Input<string>;
+    /**
      * The ID of the security group.
      */
     securityGroupId: pulumi.Input<string>;
+    /**
+     * Host tag information.
+     */
+    tags?: pulumi.Input<{[key: string]: any}>;
+    /**
+     * User-defined script data. The maximum size of the original data is 16kB.
+     */
+    userData?: pulumi.Input<string>;
+    /**
+     * Whether custom data is encoded in Base64 format.
+     */
+    userDataEncoded?: pulumi.Input<boolean>;
     /**
      * VPCID of the VPC.
      */

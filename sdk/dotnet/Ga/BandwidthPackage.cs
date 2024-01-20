@@ -92,7 +92,7 @@ namespace Pulumi.AliCloud.Ga
         public Output<string?> BandwidthType { get; private set; } = null!;
 
         /// <summary>
-        /// The billing type. Valid values: `PayBy95`, `PayByTraffic`.
+        /// The billing type. Valid values: `PayBy95`, `PayByTraffic`. **NOTE:** `billing_type` is valid only when `payment_type` is set to `PayAsYouGo`.
         /// </summary>
         [Output("billingType")]
         public Output<string?> BillingType { get; private set; } = null!;
@@ -134,7 +134,7 @@ namespace Pulumi.AliCloud.Ga
         public Output<string?> PromotionOptionNo { get; private set; } = null!;
 
         /// <summary>
-        /// The minimum percentage for the pay-by-95th-percentile metering method. Valid values: `30` to `100`.
+        /// The minimum percentage for the pay-by-95th-percentile metering method. Valid values: `30` to `100`. **NOTE:** `ratio` is valid only when `billing_type` is set to `PayBy95`.
         /// </summary>
         [Output("ratio")]
         public Output<int?> Ratio { get; private set; } = null!;
@@ -247,7 +247,7 @@ namespace Pulumi.AliCloud.Ga
         public Input<string>? BandwidthType { get; set; }
 
         /// <summary>
-        /// The billing type. Valid values: `PayBy95`, `PayByTraffic`.
+        /// The billing type. Valid values: `PayBy95`, `PayByTraffic`. **NOTE:** `billing_type` is valid only when `payment_type` is set to `PayAsYouGo`.
         /// </summary>
         [Input("billingType")]
         public Input<string>? BillingType { get; set; }
@@ -289,7 +289,7 @@ namespace Pulumi.AliCloud.Ga
         public Input<string>? PromotionOptionNo { get; set; }
 
         /// <summary>
-        /// The minimum percentage for the pay-by-95th-percentile metering method. Valid values: `30` to `100`.
+        /// The minimum percentage for the pay-by-95th-percentile metering method. Valid values: `30` to `100`. **NOTE:** `ratio` is valid only when `billing_type` is set to `PayBy95`.
         /// </summary>
         [Input("ratio")]
         public Input<int>? Ratio { get; set; }
@@ -364,7 +364,7 @@ namespace Pulumi.AliCloud.Ga
         public Input<string>? BandwidthType { get; set; }
 
         /// <summary>
-        /// The billing type. Valid values: `PayBy95`, `PayByTraffic`.
+        /// The billing type. Valid values: `PayBy95`, `PayByTraffic`. **NOTE:** `billing_type` is valid only when `payment_type` is set to `PayAsYouGo`.
         /// </summary>
         [Input("billingType")]
         public Input<string>? BillingType { get; set; }
@@ -406,7 +406,7 @@ namespace Pulumi.AliCloud.Ga
         public Input<string>? PromotionOptionNo { get; set; }
 
         /// <summary>
-        /// The minimum percentage for the pay-by-95th-percentile metering method. Valid values: `30` to `100`.
+        /// The minimum percentage for the pay-by-95th-percentile metering method. Valid values: `30` to `100`. **NOTE:** `ratio` is valid only when `billing_type` is set to `PayBy95`.
         /// </summary>
         [Input("ratio")]
         public Input<int>? Ratio { get; set; }

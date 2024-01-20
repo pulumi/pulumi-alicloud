@@ -14,44 +14,46 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ShardingInstanceShardList {
     /**
-     * @return Node specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
+     * @return The instance type of the shard node. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
      * 
      */
     private String nodeClass;
     /**
-     * @return The ID of the shard-node.
+     * @return The ID of the Config Server node.
      * 
      */
     private @Nullable String nodeId;
     /**
-     * @return - Custom storage space; value range: [10, 1,000]
+     * @return The storage space of the shard node.
+     * - Custom storage space; value range: [10, 1,000]
      * - 10-GB increments. Unit: GB.
      * 
      */
     private Integer nodeStorage;
     /**
-     * @return The number of read-only nodes in shard node. Valid values: 0 to 5. Default value: 0.
+     * @return The number of read-only nodes in shard node Default value: `0`. Valid values: `0` to `5`.
      * 
      */
     private @Nullable Integer readonlyReplicas;
 
     private ShardingInstanceShardList() {}
     /**
-     * @return Node specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
+     * @return The instance type of the shard node. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
      * 
      */
     public String nodeClass() {
         return this.nodeClass;
     }
     /**
-     * @return The ID of the shard-node.
+     * @return The ID of the Config Server node.
      * 
      */
     public Optional<String> nodeId() {
         return Optional.ofNullable(this.nodeId);
     }
     /**
-     * @return - Custom storage space; value range: [10, 1,000]
+     * @return The storage space of the shard node.
+     * - Custom storage space; value range: [10, 1,000]
      * - 10-GB increments. Unit: GB.
      * 
      */
@@ -59,7 +61,7 @@ public final class ShardingInstanceShardList {
         return this.nodeStorage;
     }
     /**
-     * @return The number of read-only nodes in shard node. Valid values: 0 to 5. Default value: 0.
+     * @return The number of read-only nodes in shard node Default value: `0`. Valid values: `0` to `5`.
      * 
      */
     public Optional<Integer> readonlyReplicas() {

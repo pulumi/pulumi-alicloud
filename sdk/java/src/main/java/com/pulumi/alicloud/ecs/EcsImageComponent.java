@@ -17,11 +17,11 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a ECS Image Component resource.
+ * Provides a Ecs Image Component resource.
  * 
- * For information about ECS Image Component and how to use it, see [What is Image Component](https://www.alibabacloud.com/help/en/doc-detail/200424.htm).
+ * For information about Ecs Image Component and how to use it, see [What is Image Component](https://www.alibabacloud.com/help/en/doc-detail/200424.htm).
  * 
- * &gt; **NOTE:** Available in v1.159.0+.
+ * &gt; **NOTE:** Available since v1.159.0.
  * 
  * ## Example Usage
  * 
@@ -69,7 +69,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * ECS Image Component can be imported using the id, e.g.
+ * Ecs Image Component can be imported using the id, e.g.
  * 
  * ```sh
  *  $ pulumi import alicloud:ecs/ecsImageComponent:EcsImageComponent example &lt;id&gt;
@@ -79,98 +79,112 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:ecs/ecsImageComponent:EcsImageComponent")
 public class EcsImageComponent extends com.pulumi.resources.CustomResource {
     /**
-     * The type of the image component. Only image building components are supported. Valid values: `Build`.
+     * The component type. Currently, only mirror build components are supported. Value: Build.  Default value: Build.
      * 
      */
     @Export(name="componentType", refs={String.class}, tree="[0]")
     private Output<String> componentType;
 
     /**
-     * @return The type of the image component. Only image building components are supported. Valid values: `Build`.
+     * @return The component type. Currently, only mirror build components are supported. Value: Build.  Default value: Build.
      * 
      */
     public Output<String> componentType() {
         return this.componentType;
     }
     /**
-     * The content of the image component. The content can consist of up to 127 commands.
+     * Component content.
      * 
      */
     @Export(name="content", refs={String.class}, tree="[0]")
     private Output<String> content;
 
     /**
-     * @return The content of the image component. The content can consist of up to 127 commands.
+     * @return Component content.
      * 
      */
     public Output<String> content() {
         return this.content;
     }
     /**
-     * The description of the image component. The description must be `2` to `256` characters in length and cannot start with `http://` or `https://`.
+     * Component creation time.
+     * 
+     */
+    @Export(name="createTime", refs={String.class}, tree="[0]")
+    private Output<String> createTime;
+
+    /**
+     * @return Component creation time.
+     * 
+     */
+    public Output<String> createTime() {
+        return this.createTime;
+    }
+    /**
+     * Describe the information.
      * 
      */
     @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
-     * @return The description of the image component. The description must be `2` to `256` characters in length and cannot start with `http://` or `https://`.
+     * @return Describe the information.
      * 
      */
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
     }
     /**
-     * The name of the image component. The name must be `2` to `128` characters in length. It must start with a letter and cannot start with `http://` or `https://`. It can contain letters, digits, colons (:), underscores (_), periods (.), and hyphens (-).
+     * The component name. The name must be 2 to 128 characters in length and must start with an uppercase letter or a Chinese character. It cannot start with http:// or https. Can contain Chinese, English, numbers, half-length colons (:), underscores (_), half-length periods (.), or dashes (-).  Note: If Name is not set, the return value of ImageComponentId is used by default.
      * 
      */
     @Export(name="imageComponentName", refs={String.class}, tree="[0]")
     private Output<String> imageComponentName;
 
     /**
-     * @return The name of the image component. The name must be `2` to `128` characters in length. It must start with a letter and cannot start with `http://` or `https://`. It can contain letters, digits, colons (:), underscores (_), periods (.), and hyphens (-).
+     * @return The component name. The name must be 2 to 128 characters in length and must start with an uppercase letter or a Chinese character. It cannot start with http:// or https. Can contain Chinese, English, numbers, half-length colons (:), underscores (_), half-length periods (.), or dashes (-).  Note: If Name is not set, the return value of ImageComponentId is used by default.
      * 
      */
     public Output<String> imageComponentName() {
         return this.imageComponentName;
     }
     /**
-     * The ID of the resource group to which to assign the image component.
+     * The ID of the resource group.
      * 
      */
     @Export(name="resourceGroupId", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> resourceGroupId;
+    private Output<String> resourceGroupId;
 
     /**
-     * @return The ID of the resource group to which to assign the image component.
+     * @return The ID of the resource group.
      * 
      */
-    public Output<Optional<String>> resourceGroupId() {
-        return Codegen.optional(this.resourceGroupId);
+    public Output<String> resourceGroupId() {
+        return this.resourceGroupId;
     }
     /**
-     * The operating system type supported by the image component. Only Linux is supported. Valid values: `Linux`.
+     * The operating system supported by the component. Currently, only Linux systems are supported. Value: Linux.  Default value: Linux.
      * 
      */
     @Export(name="systemType", refs={String.class}, tree="[0]")
     private Output<String> systemType;
 
     /**
-     * @return The operating system type supported by the image component. Only Linux is supported. Valid values: `Linux`.
+     * @return The operating system supported by the component. Currently, only Linux systems are supported. Value: Linux.  Default value: Linux.
      * 
      */
     public Output<String> systemType() {
         return this.systemType;
     }
     /**
-     * A mapping of tags to assign to the resource.
+     * List of label key-value pairs.
      * 
      */
     @Export(name="tags", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,Object>> tags;
 
     /**
-     * @return A mapping of tags to assign to the resource.
+     * @return List of label key-value pairs.
      * 
      */
     public Output<Optional<Map<String,Object>>> tags() {

@@ -18,14 +18,14 @@ public final class ShardingInstanceShardListArgs extends com.pulumi.resources.Re
     public static final ShardingInstanceShardListArgs Empty = new ShardingInstanceShardListArgs();
 
     /**
-     * Node specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
+     * The instance type of the shard node. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
      * 
      */
     @Import(name="nodeClass", required=true)
     private Output<String> nodeClass;
 
     /**
-     * @return Node specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
+     * @return The instance type of the shard node. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
      * 
      */
     public Output<String> nodeClass() {
@@ -33,14 +33,14 @@ public final class ShardingInstanceShardListArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * The ID of the shard-node.
+     * The ID of the Config Server node.
      * 
      */
     @Import(name="nodeId")
     private @Nullable Output<String> nodeId;
 
     /**
-     * @return The ID of the shard-node.
+     * @return The ID of the Config Server node.
      * 
      */
     public Optional<Output<String>> nodeId() {
@@ -48,6 +48,7 @@ public final class ShardingInstanceShardListArgs extends com.pulumi.resources.Re
     }
 
     /**
+     * The storage space of the shard node.
      * - Custom storage space; value range: [10, 1,000]
      * - 10-GB increments. Unit: GB.
      * 
@@ -56,7 +57,8 @@ public final class ShardingInstanceShardListArgs extends com.pulumi.resources.Re
     private Output<Integer> nodeStorage;
 
     /**
-     * @return - Custom storage space; value range: [10, 1,000]
+     * @return The storage space of the shard node.
+     * - Custom storage space; value range: [10, 1,000]
      * - 10-GB increments. Unit: GB.
      * 
      */
@@ -65,14 +67,14 @@ public final class ShardingInstanceShardListArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * The number of read-only nodes in shard node. Valid values: 0 to 5. Default value: 0.
+     * The number of read-only nodes in shard node Default value: `0`. Valid values: `0` to `5`.
      * 
      */
     @Import(name="readonlyReplicas")
     private @Nullable Output<Integer> readonlyReplicas;
 
     /**
-     * @return The number of read-only nodes in shard node. Valid values: 0 to 5. Default value: 0.
+     * @return The number of read-only nodes in shard node Default value: `0`. Valid values: `0` to `5`.
      * 
      */
     public Optional<Output<Integer>> readonlyReplicas() {
@@ -107,7 +109,7 @@ public final class ShardingInstanceShardListArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param nodeClass Node specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
+         * @param nodeClass The instance type of the shard node. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
          * 
          * @return builder
          * 
@@ -118,7 +120,7 @@ public final class ShardingInstanceShardListArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param nodeClass Node specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
+         * @param nodeClass The instance type of the shard node. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
          * 
          * @return builder
          * 
@@ -128,7 +130,7 @@ public final class ShardingInstanceShardListArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param nodeId The ID of the shard-node.
+         * @param nodeId The ID of the Config Server node.
          * 
          * @return builder
          * 
@@ -139,7 +141,7 @@ public final class ShardingInstanceShardListArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param nodeId The ID of the shard-node.
+         * @param nodeId The ID of the Config Server node.
          * 
          * @return builder
          * 
@@ -149,7 +151,8 @@ public final class ShardingInstanceShardListArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param nodeStorage - Custom storage space; value range: [10, 1,000]
+         * @param nodeStorage The storage space of the shard node.
+         * - Custom storage space; value range: [10, 1,000]
          * - 10-GB increments. Unit: GB.
          * 
          * @return builder
@@ -161,7 +164,8 @@ public final class ShardingInstanceShardListArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param nodeStorage - Custom storage space; value range: [10, 1,000]
+         * @param nodeStorage The storage space of the shard node.
+         * - Custom storage space; value range: [10, 1,000]
          * - 10-GB increments. Unit: GB.
          * 
          * @return builder
@@ -172,7 +176,7 @@ public final class ShardingInstanceShardListArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param readonlyReplicas The number of read-only nodes in shard node. Valid values: 0 to 5. Default value: 0.
+         * @param readonlyReplicas The number of read-only nodes in shard node Default value: `0`. Valid values: `0` to `5`.
          * 
          * @return builder
          * 
@@ -183,7 +187,7 @@ public final class ShardingInstanceShardListArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param readonlyReplicas The number of read-only nodes in shard node. Valid values: 0 to 5. Default value: 0.
+         * @param readonlyReplicas The number of read-only nodes in shard node Default value: `0`. Valid values: `0` to `5`.
          * 
          * @return builder
          * 

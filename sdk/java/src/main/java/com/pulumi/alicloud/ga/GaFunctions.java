@@ -254,7 +254,7 @@ public final class GaFunctions {
     /**
      * This data source provides the Global Accelerator (GA) Accelerators of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.111.0+.
+     * &gt; **NOTE:** Available since v1.111.0.
      * 
      * ## Example Usage
      * 
@@ -281,8 +281,7 @@ public final class GaFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = GaFunctions.getAccelerators(GetAcceleratorsArgs.builder()
-     *             .ids(&#34;example_value&#34;)
-     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .nameRegex(&#34;tf&#34;)
      *             .build());
      * 
      *         ctx.export(&#34;firstGaAcceleratorId&#34;, example.applyValue(getAcceleratorsResult -&gt; getAcceleratorsResult.accelerators()[0].id()));
@@ -297,7 +296,7 @@ public final class GaFunctions {
     /**
      * This data source provides the Global Accelerator (GA) Accelerators of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.111.0+.
+     * &gt; **NOTE:** Available since v1.111.0.
      * 
      * ## Example Usage
      * 
@@ -324,8 +323,7 @@ public final class GaFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = GaFunctions.getAccelerators(GetAcceleratorsArgs.builder()
-     *             .ids(&#34;example_value&#34;)
-     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .nameRegex(&#34;tf&#34;)
      *             .build());
      * 
      *         ctx.export(&#34;firstGaAcceleratorId&#34;, example.applyValue(getAcceleratorsResult -&gt; getAcceleratorsResult.accelerators()[0].id()));
@@ -340,7 +338,7 @@ public final class GaFunctions {
     /**
      * This data source provides the Global Accelerator (GA) Accelerators of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.111.0+.
+     * &gt; **NOTE:** Available since v1.111.0.
      * 
      * ## Example Usage
      * 
@@ -367,8 +365,7 @@ public final class GaFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = GaFunctions.getAccelerators(GetAcceleratorsArgs.builder()
-     *             .ids(&#34;example_value&#34;)
-     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .nameRegex(&#34;tf&#34;)
      *             .build());
      * 
      *         ctx.export(&#34;firstGaAcceleratorId&#34;, example.applyValue(getAcceleratorsResult -&gt; getAcceleratorsResult.accelerators()[0].id()));
@@ -383,7 +380,7 @@ public final class GaFunctions {
     /**
      * This data source provides the Global Accelerator (GA) Accelerators of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.111.0+.
+     * &gt; **NOTE:** Available since v1.111.0.
      * 
      * ## Example Usage
      * 
@@ -410,8 +407,7 @@ public final class GaFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = GaFunctions.getAccelerators(GetAcceleratorsArgs.builder()
-     *             .ids(&#34;example_value&#34;)
-     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .nameRegex(&#34;tf&#34;)
      *             .build());
      * 
      *         ctx.export(&#34;firstGaAcceleratorId&#34;, example.applyValue(getAcceleratorsResult -&gt; getAcceleratorsResult.accelerators()[0].id()));
@@ -426,7 +422,7 @@ public final class GaFunctions {
     /**
      * This data source provides the Global Accelerator (GA) Accelerators of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.111.0+.
+     * &gt; **NOTE:** Available since v1.111.0.
      * 
      * ## Example Usage
      * 
@@ -453,8 +449,7 @@ public final class GaFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = GaFunctions.getAccelerators(GetAcceleratorsArgs.builder()
-     *             .ids(&#34;example_value&#34;)
-     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .nameRegex(&#34;tf&#34;)
      *             .build());
      * 
      *         ctx.export(&#34;firstGaAcceleratorId&#34;, example.applyValue(getAcceleratorsResult -&gt; getAcceleratorsResult.accelerators()[0].id()));
@@ -469,7 +464,7 @@ public final class GaFunctions {
     /**
      * This data source provides the Global Accelerator (GA) Accelerators of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.111.0+.
+     * &gt; **NOTE:** Available since v1.111.0.
      * 
      * ## Example Usage
      * 
@@ -496,8 +491,7 @@ public final class GaFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = GaFunctions.getAccelerators(GetAcceleratorsArgs.builder()
-     *             .ids(&#34;example_value&#34;)
-     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .nameRegex(&#34;tf&#34;)
      *             .build());
      * 
      *         ctx.export(&#34;firstGaAcceleratorId&#34;, example.applyValue(getAcceleratorsResult -&gt; getAcceleratorsResult.accelerators()[0].id()));

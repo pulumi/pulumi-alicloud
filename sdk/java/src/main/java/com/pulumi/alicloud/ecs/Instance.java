@@ -1108,14 +1108,14 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.systemDiskAutoSnapshotPolicyId);
     }
     /**
-     * Valid values are `ephemeral_ssd`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud`, `cloud_auto`. only is used to some none I/O optimized instance. Default to `cloud_efficiency`. Valid values `cloud_auto` Available since 1.184.0+.
+     * Valid values are `ephemeral_ssd`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud`, `cloud_auto`, `cloud_essd_entry`. only is used to some none I/O optimized instance. Default to `cloud_efficiency`. Valid values `cloud_auto` Available since 1.184.0+.
      * 
      */
     @Export(name="systemDiskCategory", refs={String.class}, tree="[0]")
     private Output<String> systemDiskCategory;
 
     /**
-     * @return Valid values are `ephemeral_ssd`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud`, `cloud_auto`. only is used to some none I/O optimized instance. Default to `cloud_efficiency`. Valid values `cloud_auto` Available since 1.184.0+.
+     * @return Valid values are `ephemeral_ssd`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud`, `cloud_auto`, `cloud_essd_entry`. only is used to some none I/O optimized instance. Default to `cloud_efficiency`. Valid values `cloud_auto` Available since 1.184.0+.
      * 
      */
     public Output<String> systemDiskCategory() {

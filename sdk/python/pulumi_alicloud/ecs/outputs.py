@@ -2852,7 +2852,7 @@ class GetDisksDiskResult(dict):
         """
         :param str attached_time: Disk attachment time.
         :param str availability_zone: Availability zone of the disk.
-        :param str category: Disk category. Possible values: `cloud` (basic cloud disk), `cloud_efficiency` (ultra cloud disk), `ephemeral_ssd` (local SSD cloud disk), `cloud_ssd` (SSD cloud disk), and `cloud_essd` (ESSD cloud disk).
+        :param str category: Disk category. Possible values: `cloud` (basic cloud disk), `cloud_efficiency` (ultra cloud disk), `ephemeral_ssd` (local SSD cloud disk), `cloud_ssd` (SSD cloud disk), and `cloud_essd` (ESSD cloud disk), `cloud_essd_entry`.
         :param str creation_time: Disk creation time.
         :param str description: Disk description.
         :param str detached_time: Disk detachment time.
@@ -2944,7 +2944,7 @@ class GetDisksDiskResult(dict):
     @pulumi.getter
     def category(self) -> str:
         """
-        Disk category. Possible values: `cloud` (basic cloud disk), `cloud_efficiency` (ultra cloud disk), `ephemeral_ssd` (local SSD cloud disk), `cloud_ssd` (SSD cloud disk), and `cloud_essd` (ESSD cloud disk).
+        Disk category. Possible values: `cloud` (basic cloud disk), `cloud_efficiency` (ultra cloud disk), `ephemeral_ssd` (local SSD cloud disk), `cloud_ssd` (SSD cloud disk), and `cloud_essd` (ESSD cloud disk), `cloud_essd_entry`.
         """
         return pulumi.get(self, "category")
 

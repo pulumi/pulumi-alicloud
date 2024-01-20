@@ -232,6 +232,13 @@ namespace Pulumi.AliCloud
             set => _sharedCredentialsFile.Set(value);
         }
 
+        private static readonly __Value<Pulumi.AliCloud.Config.Types.SignVersion?> _signVersion = new __Value<Pulumi.AliCloud.Config.Types.SignVersion?>(() => __config.GetObject<Pulumi.AliCloud.Config.Types.SignVersion>("signVersion"));
+        public static Pulumi.AliCloud.Config.Types.SignVersion? SignVersion
+        {
+            get => _signVersion.Get();
+            set => _signVersion.Set(value);
+        }
+
         private static readonly __Value<bool?> _skipRegionValidation = new __Value<bool?>(() => __config.GetBoolean("skipRegionValidation"));
         /// <summary>
         /// Skip static validation of region ID. Used by users of alternative AlibabaCloud-like APIs or users w/ access to regions
@@ -396,6 +403,12 @@ namespace Pulumi.AliCloud
                 public string? Vs { get; set; } = null!;
                 public string? Waf { get; set; } = null!;
                 public string? WafOpenapi { get; set; } = null!;
+            }
+
+             public class SignVersion
+             {
+                public string? Oss { get; set; } = null!;
+                public string? Sls { get; set; } = null!;
             }
         }
     }

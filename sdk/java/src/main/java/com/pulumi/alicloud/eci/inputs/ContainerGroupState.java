@@ -6,10 +6,10 @@ package com.pulumi.alicloud.eci.inputs;
 import com.pulumi.alicloud.eci.inputs.ContainerGroupAcrRegistryInfoArgs;
 import com.pulumi.alicloud.eci.inputs.ContainerGroupContainerArgs;
 import com.pulumi.alicloud.eci.inputs.ContainerGroupDnsConfigArgs;
-import com.pulumi.alicloud.eci.inputs.ContainerGroupEciSecurityContextArgs;
 import com.pulumi.alicloud.eci.inputs.ContainerGroupHostAliasArgs;
 import com.pulumi.alicloud.eci.inputs.ContainerGroupImageRegistryCredentialArgs;
 import com.pulumi.alicloud.eci.inputs.ContainerGroupInitContainerArgs;
+import com.pulumi.alicloud.eci.inputs.ContainerGroupSecurityContextArgs;
 import com.pulumi.alicloud.eci.inputs.ContainerGroupVolumeArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
@@ -132,21 +132,6 @@ public final class ContainerGroupState extends com.pulumi.resources.ResourceArgs
      */
     public Optional<Output<ContainerGroupDnsConfigArgs>> dnsConfig() {
         return Optional.ofNullable(this.dnsConfig);
-    }
-
-    /**
-     * The security context of the container group. See `eci_security_context` below.
-     * 
-     */
-    @Import(name="eciSecurityContext")
-    private @Nullable Output<ContainerGroupEciSecurityContextArgs> eciSecurityContext;
-
-    /**
-     * @return The security context of the container group. See `eci_security_context` below.
-     * 
-     */
-    public Optional<Output<ContainerGroupEciSecurityContextArgs>> eciSecurityContext() {
-        return Optional.ofNullable(this.eciSecurityContext);
     }
 
     /**
@@ -360,6 +345,21 @@ public final class ContainerGroupState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
+     * The security context of the container group. See `security_context` below.
+     * 
+     */
+    @Import(name="securityContext")
+    private @Nullable Output<ContainerGroupSecurityContextArgs> securityContext;
+
+    /**
+     * @return The security context of the container group. See `security_context` below.
+     * 
+     */
+    public Optional<Output<ContainerGroupSecurityContextArgs>> securityContext() {
+        return Optional.ofNullable(this.securityContext);
+    }
+
+    /**
      * The ID of the security group to which the container group belongs. Container groups within the same security group can access each other.
      * 
      */
@@ -465,7 +465,6 @@ public final class ContainerGroupState extends com.pulumi.resources.ResourceArgs
         this.containers = $.containers;
         this.cpu = $.cpu;
         this.dnsConfig = $.dnsConfig;
-        this.eciSecurityContext = $.eciSecurityContext;
         this.eipBandwidth = $.eipBandwidth;
         this.eipInstanceId = $.eipInstanceId;
         this.hostAliases = $.hostAliases;
@@ -480,6 +479,7 @@ public final class ContainerGroupState extends com.pulumi.resources.ResourceArgs
         this.ramRoleName = $.ramRoleName;
         this.resourceGroupId = $.resourceGroupId;
         this.restartPolicy = $.restartPolicy;
+        this.securityContext = $.securityContext;
         this.securityGroupId = $.securityGroupId;
         this.status = $.status;
         this.tags = $.tags;
@@ -671,27 +671,6 @@ public final class ContainerGroupState extends com.pulumi.resources.ResourceArgs
          */
         public Builder dnsConfig(ContainerGroupDnsConfigArgs dnsConfig) {
             return dnsConfig(Output.of(dnsConfig));
-        }
-
-        /**
-         * @param eciSecurityContext The security context of the container group. See `eci_security_context` below.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder eciSecurityContext(@Nullable Output<ContainerGroupEciSecurityContextArgs> eciSecurityContext) {
-            $.eciSecurityContext = eciSecurityContext;
-            return this;
-        }
-
-        /**
-         * @param eciSecurityContext The security context of the container group. See `eci_security_context` below.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder eciSecurityContext(ContainerGroupEciSecurityContextArgs eciSecurityContext) {
-            return eciSecurityContext(Output.of(eciSecurityContext));
         }
 
         /**
@@ -1016,6 +995,27 @@ public final class ContainerGroupState extends com.pulumi.resources.ResourceArgs
          */
         public Builder restartPolicy(String restartPolicy) {
             return restartPolicy(Output.of(restartPolicy));
+        }
+
+        /**
+         * @param securityContext The security context of the container group. See `security_context` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder securityContext(@Nullable Output<ContainerGroupSecurityContextArgs> securityContext) {
+            $.securityContext = securityContext;
+            return this;
+        }
+
+        /**
+         * @param securityContext The security context of the container group. See `security_context` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder securityContext(ContainerGroupSecurityContextArgs securityContext) {
+            return securityContext(Output.of(securityContext));
         }
 
         /**

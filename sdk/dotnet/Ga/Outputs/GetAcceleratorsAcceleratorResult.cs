@@ -54,7 +54,7 @@ namespace Pulumi.AliCloud.Ga.Outputs
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// The Payment Typethe GA instance.
+        /// The billing method of the GA instance. Valid values: `POSTPAY`, `PREPAY`.
         /// </summary>
         public readonly string PaymentType;
         /// <summary>
@@ -66,7 +66,7 @@ namespace Pulumi.AliCloud.Ga.Outputs
         /// </summary>
         public readonly string Spec;
         /// <summary>
-        /// The status of the GA instance.
+        /// The status of the GA instance. Valid values: `active`, `binding`, `configuring`, `deleting`, `finacialLocked`, `init`, `unbinding`.
         /// </summary>
         public readonly string Status;
 

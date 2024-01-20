@@ -13,18 +13,19 @@ namespace Pulumi.AliCloud.MongoDB.Inputs
     public sealed class ShardingInstanceShardListArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Node specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
+        /// The instance type of the shard node. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
         /// </summary>
         [Input("nodeClass", required: true)]
         public Input<string> NodeClass { get; set; } = null!;
 
         /// <summary>
-        /// The ID of the shard-node.
+        /// The ID of the Config Server node.
         /// </summary>
         [Input("nodeId")]
         public Input<string>? NodeId { get; set; }
 
         /// <summary>
+        /// The storage space of the shard node.
         /// - Custom storage space; value range: [10, 1,000]
         /// - 10-GB increments. Unit: GB.
         /// </summary>
@@ -32,7 +33,7 @@ namespace Pulumi.AliCloud.MongoDB.Inputs
         public Input<int> NodeStorage { get; set; } = null!;
 
         /// <summary>
-        /// The number of read-only nodes in shard node. Valid values: 0 to 5. Default value: 0.
+        /// The number of read-only nodes in shard node Default value: `0`. Valid values: `0` to `5`.
         /// </summary>
         [Input("readonlyReplicas")]
         public Input<int>? ReadonlyReplicas { get; set; }

@@ -15,12 +15,12 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ServerGroupServer {
     /**
-     * @return The description of the server.
+     * @return The description of the backend server.
      * 
      */
     private @Nullable String description;
     /**
-     * @return The port that is used by the server. Valid values: `1` to `65535`. **Note:** This parameter is required if the `server_type` parameter is set to `Ecs`, `Eni`, `Eci`, or `Ip`. You do not need to configure this parameter if you set `server_type` to `Fc`.
+     * @return The port used by the backend server. Valid values: `1` to `65535`. **Note:** This parameter is required if the `server_type` parameter is set to `Ecs`, `Eni`, `Eci`, or `Ip`. You do not need to configure this parameter if you set `server_type` to `Fc`.
      * 
      */
     private @Nullable Integer port;
@@ -44,36 +44,30 @@ public final class ServerGroupServer {
     private @Nullable String serverIp;
     /**
      * @return The type of the server. The type of the server. Valid values:
-     * - Ecs: an ECS instance.
-     * - Eni: an ENI.
-     * - Eci: an elastic container instance.
-     * - Ip(Available in v1.194.0+): an IP address.
-     * - fc(Available in v1.194.0+): a function.
      * 
      */
     private String serverType;
     /**
-     * @return The status of the backend server. Valid values:
+     * @return The status of the backend server.
      * 
      */
     private @Nullable String status;
     /**
-     * @return The weight of the server. Valid values: `0` to `100`. Default value: `100`. If the value is set to `0`, no
-     * requests are forwarded to the server. **Note:** You do not need to set this parameter if you set `server_type` to `Fc`.
+     * @return The weight of the server. Default value: `100`. Valid values: `0` to `100`. If the value is set to `0`, no requests are forwarded to the server. **Note:** You do not need to set this parameter if you set `server_type` to `Fc`.
      * 
      */
     private @Nullable Integer weight;
 
     private ServerGroupServer() {}
     /**
-     * @return The description of the server.
+     * @return The description of the backend server.
      * 
      */
     public Optional<String> description() {
         return Optional.ofNullable(this.description);
     }
     /**
-     * @return The port that is used by the server. Valid values: `1` to `65535`. **Note:** This parameter is required if the `server_type` parameter is set to `Ecs`, `Eni`, `Eci`, or `Ip`. You do not need to configure this parameter if you set `server_type` to `Fc`.
+     * @return The port used by the backend server. Valid values: `1` to `65535`. **Note:** This parameter is required if the `server_type` parameter is set to `Ecs`, `Eni`, `Eci`, or `Ip`. You do not need to configure this parameter if you set `server_type` to `Fc`.
      * 
      */
     public Optional<Integer> port() {
@@ -105,26 +99,20 @@ public final class ServerGroupServer {
     }
     /**
      * @return The type of the server. The type of the server. Valid values:
-     * - Ecs: an ECS instance.
-     * - Eni: an ENI.
-     * - Eci: an elastic container instance.
-     * - Ip(Available in v1.194.0+): an IP address.
-     * - fc(Available in v1.194.0+): a function.
      * 
      */
     public String serverType() {
         return this.serverType;
     }
     /**
-     * @return The status of the backend server. Valid values:
+     * @return The status of the backend server.
      * 
      */
     public Optional<String> status() {
         return Optional.ofNullable(this.status);
     }
     /**
-     * @return The weight of the server. Valid values: `0` to `100`. Default value: `100`. If the value is set to `0`, no
-     * requests are forwarded to the server. **Note:** You do not need to set this parameter if you set `server_type` to `Fc`.
+     * @return The weight of the server. Default value: `100`. Valid values: `0` to `100`. If the value is set to `0`, no requests are forwarded to the server. **Note:** You do not need to set this parameter if you set `server_type` to `Fc`.
      * 
      */
     public Optional<Integer> weight() {

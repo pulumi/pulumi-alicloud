@@ -781,10 +781,10 @@ class GetAcceleratorsAcceleratorResult(dict):
         :param str dns_name: CNAME address assigned by Global Acceleration instance.
         :param int expired_time: Time when the global acceleration instance expires.
         :param str id: The ID of the Accelerator.
-        :param str payment_type: The Payment Typethe GA instance.
+        :param str payment_type: The billing method of the GA instance. Valid values: `POSTPAY`, `PREPAY`.
         :param str second_dns_name: CNAME of the Global Acceleration Linkage DDoS High Defense Instance.
         :param str spec: The instance type of the GA instance.
-        :param str status: The status of the GA instance.
+        :param str status: The status of the GA instance. Valid values: `active`, `binding`, `configuring`, `deleting`, `finacialLocked`, `init`, `unbinding`.
         """
         pulumi.set(__self__, "accelerator_id", accelerator_id)
         pulumi.set(__self__, "accelerator_name", accelerator_name)
@@ -885,7 +885,7 @@ class GetAcceleratorsAcceleratorResult(dict):
     @pulumi.getter(name="paymentType")
     def payment_type(self) -> str:
         """
-        The Payment Typethe GA instance.
+        The billing method of the GA instance. Valid values: `POSTPAY`, `PREPAY`.
         """
         return pulumi.get(self, "payment_type")
 
@@ -909,7 +909,7 @@ class GetAcceleratorsAcceleratorResult(dict):
     @pulumi.getter
     def status(self) -> str:
         """
-        The status of the GA instance.
+        The status of the GA instance. Valid values: `active`, `binding`, `configuring`, `deleting`, `finacialLocked`, `init`, `unbinding`.
         """
         return pulumi.get(self, "status")
 

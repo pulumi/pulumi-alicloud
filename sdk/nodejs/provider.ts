@@ -131,6 +131,7 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["securityToken"] = args ? args.securityToken : undefined;
             resourceInputs["securityTransport"] = args ? args.securityTransport : undefined;
             resourceInputs["sharedCredentialsFile"] = args ? args.sharedCredentialsFile : undefined;
+            resourceInputs["signVersion"] = pulumi.output(args ? args.signVersion : undefined).apply(JSON.stringify);
             resourceInputs["skipRegionValidation"] = pulumi.output(args ? args.skipRegionValidation : undefined).apply(JSON.stringify);
             resourceInputs["sourceIp"] = args ? args.sourceIp : undefined;
         }
@@ -223,6 +224,7 @@ export interface ProviderArgs {
      * The path to the shared credentials file. If not set this defaults to ~/.aliyun/config.json
      */
     sharedCredentialsFile?: pulumi.Input<string>;
+    signVersion?: pulumi.Input<inputs.ProviderSignVersion>;
     /**
      * Skip static validation of region ID. Used by users of alternative AlibabaCloud-like APIs or users w/ access to regions
      * that are not public (yet).

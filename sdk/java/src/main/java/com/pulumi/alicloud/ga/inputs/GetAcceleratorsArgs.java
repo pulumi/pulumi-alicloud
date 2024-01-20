@@ -62,14 +62,14 @@ public final class GetAcceleratorsArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * The status of the GA instance.
+     * The status of the GA instance. Valid values: `active`, `binding`, `configuring`, `deleting`, `finacialLocked`, `init`, `unbinding`.
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return The status of the GA instance.
+     * @return The status of the GA instance. Valid values: `active`, `binding`, `configuring`, `deleting`, `finacialLocked`, `init`, `unbinding`.
      * 
      */
     public Optional<Output<String>> status() {
@@ -177,7 +177,7 @@ public final class GetAcceleratorsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param status The status of the GA instance.
+         * @param status The status of the GA instance. Valid values: `active`, `binding`, `configuring`, `deleting`, `finacialLocked`, `init`, `unbinding`.
          * 
          * @return builder
          * 
@@ -188,7 +188,7 @@ public final class GetAcceleratorsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param status The status of the GA instance.
+         * @param status The status of the GA instance. Valid values: `active`, `binding`, `configuring`, `deleting`, `finacialLocked`, `init`, `unbinding`.
          * 
          * @return builder
          * 

@@ -18,14 +18,14 @@ public final class EcsImageComponentState extends com.pulumi.resources.ResourceA
     public static final EcsImageComponentState Empty = new EcsImageComponentState();
 
     /**
-     * The type of the image component. Only image building components are supported. Valid values: `Build`.
+     * The component type. Currently, only mirror build components are supported. Value: Build.  Default value: Build.
      * 
      */
     @Import(name="componentType")
     private @Nullable Output<String> componentType;
 
     /**
-     * @return The type of the image component. Only image building components are supported. Valid values: `Build`.
+     * @return The component type. Currently, only mirror build components are supported. Value: Build.  Default value: Build.
      * 
      */
     public Optional<Output<String>> componentType() {
@@ -33,14 +33,14 @@ public final class EcsImageComponentState extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The content of the image component. The content can consist of up to 127 commands.
+     * Component content.
      * 
      */
     @Import(name="content")
     private @Nullable Output<String> content;
 
     /**
-     * @return The content of the image component. The content can consist of up to 127 commands.
+     * @return Component content.
      * 
      */
     public Optional<Output<String>> content() {
@@ -48,14 +48,29 @@ public final class EcsImageComponentState extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The description of the image component. The description must be `2` to `256` characters in length and cannot start with `http://` or `https://`.
+     * Component creation time.
+     * 
+     */
+    @Import(name="createTime")
+    private @Nullable Output<String> createTime;
+
+    /**
+     * @return Component creation time.
+     * 
+     */
+    public Optional<Output<String>> createTime() {
+        return Optional.ofNullable(this.createTime);
+    }
+
+    /**
+     * Describe the information.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return The description of the image component. The description must be `2` to `256` characters in length and cannot start with `http://` or `https://`.
+     * @return Describe the information.
      * 
      */
     public Optional<Output<String>> description() {
@@ -63,14 +78,14 @@ public final class EcsImageComponentState extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The name of the image component. The name must be `2` to `128` characters in length. It must start with a letter and cannot start with `http://` or `https://`. It can contain letters, digits, colons (:), underscores (_), periods (.), and hyphens (-).
+     * The component name. The name must be 2 to 128 characters in length and must start with an uppercase letter or a Chinese character. It cannot start with http:// or https. Can contain Chinese, English, numbers, half-length colons (:), underscores (_), half-length periods (.), or dashes (-).  Note: If Name is not set, the return value of ImageComponentId is used by default.
      * 
      */
     @Import(name="imageComponentName")
     private @Nullable Output<String> imageComponentName;
 
     /**
-     * @return The name of the image component. The name must be `2` to `128` characters in length. It must start with a letter and cannot start with `http://` or `https://`. It can contain letters, digits, colons (:), underscores (_), periods (.), and hyphens (-).
+     * @return The component name. The name must be 2 to 128 characters in length and must start with an uppercase letter or a Chinese character. It cannot start with http:// or https. Can contain Chinese, English, numbers, half-length colons (:), underscores (_), half-length periods (.), or dashes (-).  Note: If Name is not set, the return value of ImageComponentId is used by default.
      * 
      */
     public Optional<Output<String>> imageComponentName() {
@@ -78,14 +93,14 @@ public final class EcsImageComponentState extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The ID of the resource group to which to assign the image component.
+     * The ID of the resource group.
      * 
      */
     @Import(name="resourceGroupId")
     private @Nullable Output<String> resourceGroupId;
 
     /**
-     * @return The ID of the resource group to which to assign the image component.
+     * @return The ID of the resource group.
      * 
      */
     public Optional<Output<String>> resourceGroupId() {
@@ -93,14 +108,14 @@ public final class EcsImageComponentState extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The operating system type supported by the image component. Only Linux is supported. Valid values: `Linux`.
+     * The operating system supported by the component. Currently, only Linux systems are supported. Value: Linux.  Default value: Linux.
      * 
      */
     @Import(name="systemType")
     private @Nullable Output<String> systemType;
 
     /**
-     * @return The operating system type supported by the image component. Only Linux is supported. Valid values: `Linux`.
+     * @return The operating system supported by the component. Currently, only Linux systems are supported. Value: Linux.  Default value: Linux.
      * 
      */
     public Optional<Output<String>> systemType() {
@@ -108,14 +123,14 @@ public final class EcsImageComponentState extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * A mapping of tags to assign to the resource.
+     * List of label key-value pairs.
      * 
      */
     @Import(name="tags")
     private @Nullable Output<Map<String,Object>> tags;
 
     /**
-     * @return A mapping of tags to assign to the resource.
+     * @return List of label key-value pairs.
      * 
      */
     public Optional<Output<Map<String,Object>>> tags() {
@@ -127,6 +142,7 @@ public final class EcsImageComponentState extends com.pulumi.resources.ResourceA
     private EcsImageComponentState(EcsImageComponentState $) {
         this.componentType = $.componentType;
         this.content = $.content;
+        this.createTime = $.createTime;
         this.description = $.description;
         this.imageComponentName = $.imageComponentName;
         this.resourceGroupId = $.resourceGroupId;
@@ -153,7 +169,7 @@ public final class EcsImageComponentState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param componentType The type of the image component. Only image building components are supported. Valid values: `Build`.
+         * @param componentType The component type. Currently, only mirror build components are supported. Value: Build.  Default value: Build.
          * 
          * @return builder
          * 
@@ -164,7 +180,7 @@ public final class EcsImageComponentState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param componentType The type of the image component. Only image building components are supported. Valid values: `Build`.
+         * @param componentType The component type. Currently, only mirror build components are supported. Value: Build.  Default value: Build.
          * 
          * @return builder
          * 
@@ -174,7 +190,7 @@ public final class EcsImageComponentState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param content The content of the image component. The content can consist of up to 127 commands.
+         * @param content Component content.
          * 
          * @return builder
          * 
@@ -185,7 +201,7 @@ public final class EcsImageComponentState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param content The content of the image component. The content can consist of up to 127 commands.
+         * @param content Component content.
          * 
          * @return builder
          * 
@@ -195,7 +211,28 @@ public final class EcsImageComponentState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param description The description of the image component. The description must be `2` to `256` characters in length and cannot start with `http://` or `https://`.
+         * @param createTime Component creation time.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createTime(@Nullable Output<String> createTime) {
+            $.createTime = createTime;
+            return this;
+        }
+
+        /**
+         * @param createTime Component creation time.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createTime(String createTime) {
+            return createTime(Output.of(createTime));
+        }
+
+        /**
+         * @param description Describe the information.
          * 
          * @return builder
          * 
@@ -206,7 +243,7 @@ public final class EcsImageComponentState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param description The description of the image component. The description must be `2` to `256` characters in length and cannot start with `http://` or `https://`.
+         * @param description Describe the information.
          * 
          * @return builder
          * 
@@ -216,7 +253,7 @@ public final class EcsImageComponentState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param imageComponentName The name of the image component. The name must be `2` to `128` characters in length. It must start with a letter and cannot start with `http://` or `https://`. It can contain letters, digits, colons (:), underscores (_), periods (.), and hyphens (-).
+         * @param imageComponentName The component name. The name must be 2 to 128 characters in length and must start with an uppercase letter or a Chinese character. It cannot start with http:// or https. Can contain Chinese, English, numbers, half-length colons (:), underscores (_), half-length periods (.), or dashes (-).  Note: If Name is not set, the return value of ImageComponentId is used by default.
          * 
          * @return builder
          * 
@@ -227,7 +264,7 @@ public final class EcsImageComponentState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param imageComponentName The name of the image component. The name must be `2` to `128` characters in length. It must start with a letter and cannot start with `http://` or `https://`. It can contain letters, digits, colons (:), underscores (_), periods (.), and hyphens (-).
+         * @param imageComponentName The component name. The name must be 2 to 128 characters in length and must start with an uppercase letter or a Chinese character. It cannot start with http:// or https. Can contain Chinese, English, numbers, half-length colons (:), underscores (_), half-length periods (.), or dashes (-).  Note: If Name is not set, the return value of ImageComponentId is used by default.
          * 
          * @return builder
          * 
@@ -237,7 +274,7 @@ public final class EcsImageComponentState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param resourceGroupId The ID of the resource group to which to assign the image component.
+         * @param resourceGroupId The ID of the resource group.
          * 
          * @return builder
          * 
@@ -248,7 +285,7 @@ public final class EcsImageComponentState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param resourceGroupId The ID of the resource group to which to assign the image component.
+         * @param resourceGroupId The ID of the resource group.
          * 
          * @return builder
          * 
@@ -258,7 +295,7 @@ public final class EcsImageComponentState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param systemType The operating system type supported by the image component. Only Linux is supported. Valid values: `Linux`.
+         * @param systemType The operating system supported by the component. Currently, only Linux systems are supported. Value: Linux.  Default value: Linux.
          * 
          * @return builder
          * 
@@ -269,7 +306,7 @@ public final class EcsImageComponentState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param systemType The operating system type supported by the image component. Only Linux is supported. Valid values: `Linux`.
+         * @param systemType The operating system supported by the component. Currently, only Linux systems are supported. Value: Linux.  Default value: Linux.
          * 
          * @return builder
          * 
@@ -279,7 +316,7 @@ public final class EcsImageComponentState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param tags A mapping of tags to assign to the resource.
+         * @param tags List of label key-value pairs.
          * 
          * @return builder
          * 
@@ -290,7 +327,7 @@ public final class EcsImageComponentState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param tags A mapping of tags to assign to the resource.
+         * @param tags List of label key-value pairs.
          * 
          * @return builder
          * 

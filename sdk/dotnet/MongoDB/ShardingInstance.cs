@@ -10,16 +10,16 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.MongoDB
 {
     /// <summary>
-    /// Provides a MongoDB sharding instance resource supports replica set instances only. the MongoDB provides stable, reliable, and automatic scalable database services.
+    /// Provides a MongoDB Sharding Instance resource supports replica set instances only. the MongoDB provides stable, reliable, and automatic scalable database services.
     /// It offers a full range of database solutions, such as disaster recovery, backup, recovery, monitoring, and alarms.
     /// You can see detail product introduction [here](https://www.alibabacloud.com/help/doc-detail/26558.htm)
     /// 
     /// &gt; **NOTE:** Available since v1.40.0.
     /// 
-    /// &gt; **NOTE:**  The following regions don't support create Classic network MongoDB sharding instance.
+    /// &gt; **NOTE:**  The following regions don't support create Classic network MongoDB Sharding Instance.
     /// [`cn-zhangjiakou`,`cn-huhehaote`,`ap-southeast-2`,`ap-southeast-3`,`ap-southeast-5`,`ap-south-1`,`me-east-1`,`ap-northeast-1`,`eu-west-1`]
     /// 
-    /// &gt; **NOTE:**  Create MongoDB Sharding instance or change instance type and storage would cost 10~20 minutes. Please make full preparation
+    /// &gt; **NOTE:**  Create MongoDB Sharding instance or change instance type and storage would cost 10~20 minutes. Please make full preparation.
     /// 
     /// ## Example Usage
     /// ### Create a Mongodb Sharding instance
@@ -56,9 +56,20 @@ namespace Pulumi.AliCloud.MongoDB
     /// 
     ///     var defaultShardingInstance = new AliCloud.MongoDB.ShardingInstance("defaultShardingInstance", new()
     ///     {
-    ///         ZoneId = zoneId,
-    ///         VswitchId = defaultSwitch.Id,
     ///         EngineVersion = "4.2",
+    ///         VswitchId = defaultSwitch.Id,
+    ///         ZoneId = zoneId,
+    ///         MongoLists = new[]
+    ///         {
+    ///             new AliCloud.MongoDB.Inputs.ShardingInstanceMongoListArgs
+    ///             {
+    ///                 NodeClass = "dds.mongos.mid",
+    ///             },
+    ///             new AliCloud.MongoDB.Inputs.ShardingInstanceMongoListArgs
+    ///             {
+    ///                 NodeClass = "dds.mongos.mid",
+    ///             },
+    ///         },
     ///         ShardLists = new[]
     ///         {
     ///             new AliCloud.MongoDB.Inputs.ShardingInstanceShardListArgs
@@ -73,17 +84,6 @@ namespace Pulumi.AliCloud.MongoDB
     ///                 ReadonlyReplicas = 1,
     ///             },
     ///         },
-    ///         MongoLists = new[]
-    ///         {
-    ///             new AliCloud.MongoDB.Inputs.ShardingInstanceMongoListArgs
-    ///             {
-    ///                 NodeClass = "dds.mongos.mid",
-    ///             },
-    ///             new AliCloud.MongoDB.Inputs.ShardingInstanceMongoListArgs
-    ///             {
-    ///                 NodeClass = "dds.mongos.mid",
-    ///             },
-    ///         },
     ///     });
     /// 
     /// });
@@ -91,11 +91,11 @@ namespace Pulumi.AliCloud.MongoDB
     /// ## Module Support
     /// 
     /// You can use to the existing mongodb-sharding module
-    /// to create a MongoDB sharding instance resource one-click.
+    /// to create a MongoDB Sharding Instance resource one-click.
     /// 
     /// ## Import
     /// 
-    /// MongoDB can be imported using the id, e.g.
+    /// MongoDB Sharding Instance can be imported using the id, e.g.
     /// 
     /// ```sh
     ///  $ pulumi import alicloud:mongodb/shardingInstance:ShardingInstance example dds-bp1291daeda44195
@@ -111,7 +111,7 @@ namespace Pulumi.AliCloud.MongoDB
         public Output<string?> AccountPassword { get; private set; } = null!;
 
         /// <summary>
-        /// Auto renew for prepaid, true of false. Default is false.
+        /// Auto renew for prepaid. Default value: `false`. Valid values: `true`, `false`.
         /// </summary>
         [Output("autoRenew")]
         public Output<bool?> AutoRenew { get; private set; } = null!;
@@ -123,13 +123,13 @@ namespace Pulumi.AliCloud.MongoDB
         public Output<ImmutableArray<string>> BackupPeriods { get; private set; } = null!;
 
         /// <summary>
-        /// MongoDB instance backup time. It is required when `backup_period` was existed. In the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. If not set, the system will return a default, like "23:00Z-24:00Z".
+        /// Sharding Instance backup time. It is required when `backup_period` was existed. In the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. If not set, the system will return a default, like "23:00Z-24:00Z".
         /// </summary>
         [Output("backupTime")]
         public Output<string> BackupTime { get; private set; } = null!;
 
         /// <summary>
-        /// The node information list of config server. See `config_server_list` below.
+        /// The information of the ConfigServer nodes.
         /// </summary>
         [Output("configServerLists")]
         public Output<ImmutableArray<Outputs.ShardingInstanceConfigServerList>> ConfigServerLists { get; private set; } = null!;
@@ -141,7 +141,7 @@ namespace Pulumi.AliCloud.MongoDB
         public Output<string> EngineVersion { get; private set; } = null!;
 
         /// <summary>
-        /// Valid values are `PrePaid`, `PostPaid`,System default to `PostPaid`. **NOTE:** It can be modified from `PostPaid` to `PrePaid` after version v1.141.0.
+        /// The billing method of the instance. Default value: `PostPaid`. Valid values: `PrePaid`, `PostPaid`. **NOTE:** It can be modified from `PostPaid` to `PrePaid` after version v1.141.0.
         /// </summary>
         [Output("instanceChargeType")]
         public Output<string> InstanceChargeType { get; private set; } = null!;
@@ -165,28 +165,25 @@ namespace Pulumi.AliCloud.MongoDB
         public Output<ImmutableArray<Outputs.ShardingInstanceMongoList>> MongoLists { get; private set; } = null!;
 
         /// <summary>
-        /// The name of DB instance. It a string of 2 to 256 characters.
+        /// The name of DB instance. It must be 2 to 256 characters in length.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The network type of the instance. Valid values:`Classic` or `VPC`. Default value: `Classic`.
+        /// The network type of the instance. Valid values:`Classic` or `VPC`.
         /// </summary>
         [Output("networkType")]
         public Output<string> NetworkType { get; private set; } = null!;
 
         /// <summary>
-        /// The type of configuration changes performed. Default value: DOWNGRADE. Valid values:
-        /// * UPGRADE: The specifications are upgraded.
-        /// * DOWNGRADE: The specifications are downgraded.
-        /// Note: This parameter is only applicable to instances when `instance_charge_type` is PrePaid.
+        /// The type of configuration changes performed. Default value: `DOWNGRADE`. Valid values:
         /// </summary>
         [Output("orderType")]
         public Output<string?> OrderType { get; private set; } = null!;
 
         /// <summary>
-        /// The duration that you will buy DB instance (in month). It is valid when instance_charge_type is `PrePaid`. Valid values: [1~9], 12, 24, 36. System default to 1.
+        /// The duration that you will buy DB instance (in month). It is valid when `instance_charge_type` is `PrePaid`. Default value: `1`. Valid values: [1~9], 12, 24, 36.
         /// </summary>
         [Output("period")]
         public Output<int> Period { get; private set; } = null!;
@@ -204,7 +201,7 @@ namespace Pulumi.AliCloud.MongoDB
         public Output<string> ResourceGroupId { get; private set; } = null!;
 
         /// <summary>
-        /// Instance data backup retention days. **NOTE:** Available in 1.42.0+.
+        /// (Available since v1.42.0) Instance data backup retention days.
         /// </summary>
         [Output("retentionPeriod")]
         public Output<int> RetentionPeriod { get; private set; } = null!;
@@ -228,7 +225,7 @@ namespace Pulumi.AliCloud.MongoDB
         public Output<ImmutableArray<Outputs.ShardingInstanceShardList>> ShardLists { get; private set; } = null!;
 
         /// <summary>
-        /// Storage engine: WiredTiger or RocksDB. System Default value: WiredTiger.
+        /// The storage engine of the instance. Default value: `WiredTiger`. Valid values: `WiredTiger`, `RocksDB`.
         /// </summary>
         [Output("storageEngine")]
         public Output<string> StorageEngine { get; private set; } = null!;
@@ -240,13 +237,13 @@ namespace Pulumi.AliCloud.MongoDB
         public Output<ImmutableDictionary<string, object>?> Tags { get; private set; } = null!;
 
         /// <summary>
-        /// The TDE(Transparent Data Encryption) status. It can be updated from version 1.160.0+.
+        /// The TDE(Transparent Data Encryption) status. It can be updated from version 1.160.0.
         /// </summary>
         [Output("tdeStatus")]
-        public Output<string?> TdeStatus { get; private set; } = null!;
+        public Output<string> TdeStatus { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the VPC. &gt; **NOTE:** This parameter is valid only when NetworkType is set to VPC.
+        /// The ID of the VPC. &gt; **NOTE:** `vpc_id` is valid only when `network_type` is set to `VPC`.
         /// </summary>
         [Output("vpcId")]
         public Output<string> VpcId { get; private set; } = null!;
@@ -258,11 +255,11 @@ namespace Pulumi.AliCloud.MongoDB
         public Output<string> VswitchId { get; private set; } = null!;
 
         /// <summary>
-        /// The Zone to launch the DB instance. MongoDB sharding instance does not support multiple-zone.
+        /// The Zone to launch the DB instance. MongoDB Sharding Instance does not support multiple-zone.
         /// If it is a multi-zone and `vswitch_id` is specified, the vswitch must in one of them.
         /// </summary>
         [Output("zoneId")]
-        public Output<string?> ZoneId { get; private set; } = null!;
+        public Output<string> ZoneId { get; private set; } = null!;
 
 
         /// <summary>
@@ -331,7 +328,7 @@ namespace Pulumi.AliCloud.MongoDB
         }
 
         /// <summary>
-        /// Auto renew for prepaid, true of false. Default is false.
+        /// Auto renew for prepaid. Default value: `false`. Valid values: `true`, `false`.
         /// </summary>
         [Input("autoRenew")]
         public Input<bool>? AutoRenew { get; set; }
@@ -349,7 +346,7 @@ namespace Pulumi.AliCloud.MongoDB
         }
 
         /// <summary>
-        /// MongoDB instance backup time. It is required when `backup_period` was existed. In the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. If not set, the system will return a default, like "23:00Z-24:00Z".
+        /// Sharding Instance backup time. It is required when `backup_period` was existed. In the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. If not set, the system will return a default, like "23:00Z-24:00Z".
         /// </summary>
         [Input("backupTime")]
         public Input<string>? BackupTime { get; set; }
@@ -361,7 +358,7 @@ namespace Pulumi.AliCloud.MongoDB
         public Input<string> EngineVersion { get; set; } = null!;
 
         /// <summary>
-        /// Valid values are `PrePaid`, `PostPaid`,System default to `PostPaid`. **NOTE:** It can be modified from `PostPaid` to `PrePaid` after version v1.141.0.
+        /// The billing method of the instance. Default value: `PostPaid`. Valid values: `PrePaid`, `PostPaid`. **NOTE:** It can be modified from `PostPaid` to `PrePaid` after version v1.141.0.
         /// </summary>
         [Input("instanceChargeType")]
         public Input<string>? InstanceChargeType { get; set; }
@@ -397,28 +394,25 @@ namespace Pulumi.AliCloud.MongoDB
         }
 
         /// <summary>
-        /// The name of DB instance. It a string of 2 to 256 characters.
+        /// The name of DB instance. It must be 2 to 256 characters in length.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The network type of the instance. Valid values:`Classic` or `VPC`. Default value: `Classic`.
+        /// The network type of the instance. Valid values:`Classic` or `VPC`.
         /// </summary>
         [Input("networkType")]
         public Input<string>? NetworkType { get; set; }
 
         /// <summary>
-        /// The type of configuration changes performed. Default value: DOWNGRADE. Valid values:
-        /// * UPGRADE: The specifications are upgraded.
-        /// * DOWNGRADE: The specifications are downgraded.
-        /// Note: This parameter is only applicable to instances when `instance_charge_type` is PrePaid.
+        /// The type of configuration changes performed. Default value: `DOWNGRADE`. Valid values:
         /// </summary>
         [Input("orderType")]
         public Input<string>? OrderType { get; set; }
 
         /// <summary>
-        /// The duration that you will buy DB instance (in month). It is valid when instance_charge_type is `PrePaid`. Valid values: [1~9], 12, 24, 36. System default to 1.
+        /// The duration that you will buy DB instance (in month). It is valid when `instance_charge_type` is `PrePaid`. Default value: `1`. Valid values: [1~9], 12, 24, 36.
         /// </summary>
         [Input("period")]
         public Input<int>? Period { get; set; }
@@ -466,7 +460,7 @@ namespace Pulumi.AliCloud.MongoDB
         }
 
         /// <summary>
-        /// Storage engine: WiredTiger or RocksDB. System Default value: WiredTiger.
+        /// The storage engine of the instance. Default value: `WiredTiger`. Valid values: `WiredTiger`, `RocksDB`.
         /// </summary>
         [Input("storageEngine")]
         public Input<string>? StorageEngine { get; set; }
@@ -484,13 +478,13 @@ namespace Pulumi.AliCloud.MongoDB
         }
 
         /// <summary>
-        /// The TDE(Transparent Data Encryption) status. It can be updated from version 1.160.0+.
+        /// The TDE(Transparent Data Encryption) status. It can be updated from version 1.160.0.
         /// </summary>
         [Input("tdeStatus")]
         public Input<string>? TdeStatus { get; set; }
 
         /// <summary>
-        /// The ID of the VPC. &gt; **NOTE:** This parameter is valid only when NetworkType is set to VPC.
+        /// The ID of the VPC. &gt; **NOTE:** `vpc_id` is valid only when `network_type` is set to `VPC`.
         /// </summary>
         [Input("vpcId")]
         public Input<string>? VpcId { get; set; }
@@ -502,7 +496,7 @@ namespace Pulumi.AliCloud.MongoDB
         public Input<string>? VswitchId { get; set; }
 
         /// <summary>
-        /// The Zone to launch the DB instance. MongoDB sharding instance does not support multiple-zone.
+        /// The Zone to launch the DB instance. MongoDB Sharding Instance does not support multiple-zone.
         /// If it is a multi-zone and `vswitch_id` is specified, the vswitch must in one of them.
         /// </summary>
         [Input("zoneId")]
@@ -533,7 +527,7 @@ namespace Pulumi.AliCloud.MongoDB
         }
 
         /// <summary>
-        /// Auto renew for prepaid, true of false. Default is false.
+        /// Auto renew for prepaid. Default value: `false`. Valid values: `true`, `false`.
         /// </summary>
         [Input("autoRenew")]
         public Input<bool>? AutoRenew { get; set; }
@@ -551,7 +545,7 @@ namespace Pulumi.AliCloud.MongoDB
         }
 
         /// <summary>
-        /// MongoDB instance backup time. It is required when `backup_period` was existed. In the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. If not set, the system will return a default, like "23:00Z-24:00Z".
+        /// Sharding Instance backup time. It is required when `backup_period` was existed. In the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. If not set, the system will return a default, like "23:00Z-24:00Z".
         /// </summary>
         [Input("backupTime")]
         public Input<string>? BackupTime { get; set; }
@@ -560,7 +554,7 @@ namespace Pulumi.AliCloud.MongoDB
         private InputList<Inputs.ShardingInstanceConfigServerListGetArgs>? _configServerLists;
 
         /// <summary>
-        /// The node information list of config server. See `config_server_list` below.
+        /// The information of the ConfigServer nodes.
         /// </summary>
         public InputList<Inputs.ShardingInstanceConfigServerListGetArgs> ConfigServerLists
         {
@@ -575,7 +569,7 @@ namespace Pulumi.AliCloud.MongoDB
         public Input<string>? EngineVersion { get; set; }
 
         /// <summary>
-        /// Valid values are `PrePaid`, `PostPaid`,System default to `PostPaid`. **NOTE:** It can be modified from `PostPaid` to `PrePaid` after version v1.141.0.
+        /// The billing method of the instance. Default value: `PostPaid`. Valid values: `PrePaid`, `PostPaid`. **NOTE:** It can be modified from `PostPaid` to `PrePaid` after version v1.141.0.
         /// </summary>
         [Input("instanceChargeType")]
         public Input<string>? InstanceChargeType { get; set; }
@@ -611,28 +605,25 @@ namespace Pulumi.AliCloud.MongoDB
         }
 
         /// <summary>
-        /// The name of DB instance. It a string of 2 to 256 characters.
+        /// The name of DB instance. It must be 2 to 256 characters in length.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The network type of the instance. Valid values:`Classic` or `VPC`. Default value: `Classic`.
+        /// The network type of the instance. Valid values:`Classic` or `VPC`.
         /// </summary>
         [Input("networkType")]
         public Input<string>? NetworkType { get; set; }
 
         /// <summary>
-        /// The type of configuration changes performed. Default value: DOWNGRADE. Valid values:
-        /// * UPGRADE: The specifications are upgraded.
-        /// * DOWNGRADE: The specifications are downgraded.
-        /// Note: This parameter is only applicable to instances when `instance_charge_type` is PrePaid.
+        /// The type of configuration changes performed. Default value: `DOWNGRADE`. Valid values:
         /// </summary>
         [Input("orderType")]
         public Input<string>? OrderType { get; set; }
 
         /// <summary>
-        /// The duration that you will buy DB instance (in month). It is valid when instance_charge_type is `PrePaid`. Valid values: [1~9], 12, 24, 36. System default to 1.
+        /// The duration that you will buy DB instance (in month). It is valid when `instance_charge_type` is `PrePaid`. Default value: `1`. Valid values: [1~9], 12, 24, 36.
         /// </summary>
         [Input("period")]
         public Input<int>? Period { get; set; }
@@ -650,7 +641,7 @@ namespace Pulumi.AliCloud.MongoDB
         public Input<string>? ResourceGroupId { get; set; }
 
         /// <summary>
-        /// Instance data backup retention days. **NOTE:** Available in 1.42.0+.
+        /// (Available since v1.42.0) Instance data backup retention days.
         /// </summary>
         [Input("retentionPeriod")]
         public Input<int>? RetentionPeriod { get; set; }
@@ -686,7 +677,7 @@ namespace Pulumi.AliCloud.MongoDB
         }
 
         /// <summary>
-        /// Storage engine: WiredTiger or RocksDB. System Default value: WiredTiger.
+        /// The storage engine of the instance. Default value: `WiredTiger`. Valid values: `WiredTiger`, `RocksDB`.
         /// </summary>
         [Input("storageEngine")]
         public Input<string>? StorageEngine { get; set; }
@@ -704,13 +695,13 @@ namespace Pulumi.AliCloud.MongoDB
         }
 
         /// <summary>
-        /// The TDE(Transparent Data Encryption) status. It can be updated from version 1.160.0+.
+        /// The TDE(Transparent Data Encryption) status. It can be updated from version 1.160.0.
         /// </summary>
         [Input("tdeStatus")]
         public Input<string>? TdeStatus { get; set; }
 
         /// <summary>
-        /// The ID of the VPC. &gt; **NOTE:** This parameter is valid only when NetworkType is set to VPC.
+        /// The ID of the VPC. &gt; **NOTE:** `vpc_id` is valid only when `network_type` is set to `VPC`.
         /// </summary>
         [Input("vpcId")]
         public Input<string>? VpcId { get; set; }
@@ -722,7 +713,7 @@ namespace Pulumi.AliCloud.MongoDB
         public Input<string>? VswitchId { get; set; }
 
         /// <summary>
-        /// The Zone to launch the DB instance. MongoDB sharding instance does not support multiple-zone.
+        /// The Zone to launch the DB instance. MongoDB Sharding Instance does not support multiple-zone.
         /// If it is a multi-zone and `vswitch_id` is specified, the vswitch must in one of them.
         /// </summary>
         [Input("zoneId")]

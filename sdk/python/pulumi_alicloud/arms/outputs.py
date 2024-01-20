@@ -19,6 +19,21 @@ __all__ = [
     'DispatchRuleNotifyRuleNotifyObject',
     'PrometheusAlertRuleAnnotation',
     'PrometheusAlertRuleLabel',
+    'SyntheticTaskAvailableAssertion',
+    'SyntheticTaskCommonSetting',
+    'SyntheticTaskCommonSettingCustomHost',
+    'SyntheticTaskCommonSettingCustomHostHost',
+    'SyntheticTaskCustomPeriod',
+    'SyntheticTaskMonitor',
+    'SyntheticTaskMonitorConf',
+    'SyntheticTaskMonitorConfApiHttp',
+    'SyntheticTaskMonitorConfApiHttpRequestBody',
+    'SyntheticTaskMonitorConfFileDownload',
+    'SyntheticTaskMonitorConfNetDns',
+    'SyntheticTaskMonitorConfNetIcmp',
+    'SyntheticTaskMonitorConfNetTcp',
+    'SyntheticTaskMonitorConfStream',
+    'SyntheticTaskMonitorConfWebsite',
     'GetAlertContactGroupsGroupResult',
     'GetAlertContactsContactResult',
     'GetDispatchRulesRuleResult',
@@ -424,6 +439,1715 @@ class PrometheusAlertRuleLabel(dict):
         The value of the label.
         """
         return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class SyntheticTaskAvailableAssertion(dict):
+    def __init__(__self__, *,
+                 expect: str,
+                 operator: str,
+                 type: str,
+                 target: Optional[str] = None):
+        """
+        :param str expect: Expected value.
+        :param str operator: Condition: gt: greater than; gte: greater than or equal to; lt: less than; te: less than or equal to; eq: equal to; neq: not equal to; ctn: contains; nctn: does not contain; exist: exists; n_exist: does not exist; belong: belongs to; reg_match: regular matching.
+        :param str type: Assertion type, including: httpresead, httpresead, HttpResBody, HttpResBodyJson, httpressetime, IcmpPackLoss (packet loss rate), IcmpPackMaxLatency (maximum packet delay ms), icmppackwebscreen, fmppackavglatency (average delay rendering), TraceRouteHops (number of hops), dnsarecname, websiteOnload (full load time), see the supplement below for specific use.
+        :param str target: Check the target. If the target is HttpResCode, HttpResBody, or httpressetime, you do not need to specify the target. If the target is HttpResHead, you need to specify the key in the header. If the target is HttpResHead, you need to use jsonPath.
+        """
+        pulumi.set(__self__, "expect", expect)
+        pulumi.set(__self__, "operator", operator)
+        pulumi.set(__self__, "type", type)
+        if target is not None:
+            pulumi.set(__self__, "target", target)
+
+    @property
+    @pulumi.getter
+    def expect(self) -> str:
+        """
+        Expected value.
+        """
+        return pulumi.get(self, "expect")
+
+    @property
+    @pulumi.getter
+    def operator(self) -> str:
+        """
+        Condition: gt: greater than; gte: greater than or equal to; lt: less than; te: less than or equal to; eq: equal to; neq: not equal to; ctn: contains; nctn: does not contain; exist: exists; n_exist: does not exist; belong: belongs to; reg_match: regular matching.
+        """
+        return pulumi.get(self, "operator")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        Assertion type, including: httpresead, httpresead, HttpResBody, HttpResBodyJson, httpressetime, IcmpPackLoss (packet loss rate), IcmpPackMaxLatency (maximum packet delay ms), icmppackwebscreen, fmppackavglatency (average delay rendering), TraceRouteHops (number of hops), dnsarecname, websiteOnload (full load time), see the supplement below for specific use.
+        """
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter
+    def target(self) -> Optional[str]:
+        """
+        Check the target. If the target is HttpResCode, HttpResBody, or httpressetime, you do not need to specify the target. If the target is HttpResHead, you need to specify the key in the header. If the target is HttpResHead, you need to use jsonPath.
+        """
+        return pulumi.get(self, "target")
+
+
+@pulumi.output_type
+class SyntheticTaskCommonSetting(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "customHost":
+            suggest = "custom_host"
+        elif key == "ipType":
+            suggest = "ip_type"
+        elif key == "isOpenTrace":
+            suggest = "is_open_trace"
+        elif key == "monitorSamples":
+            suggest = "monitor_samples"
+        elif key == "traceClientType":
+            suggest = "trace_client_type"
+        elif key == "xtraceRegion":
+            suggest = "xtrace_region"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SyntheticTaskCommonSetting. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SyntheticTaskCommonSetting.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SyntheticTaskCommonSetting.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 custom_host: Optional['outputs.SyntheticTaskCommonSettingCustomHost'] = None,
+                 ip_type: Optional[int] = None,
+                 is_open_trace: Optional[bool] = None,
+                 monitor_samples: Optional[int] = None,
+                 trace_client_type: Optional[int] = None,
+                 xtrace_region: Optional[str] = None):
+        """
+        :param 'SyntheticTaskCommonSettingCustomHostArgs' custom_host: Custom host. See `custom_host` below.
+        :param int ip_type: IpType.
+        :param bool is_open_trace: Whether to enable link tracking.
+        :param int monitor_samples: Whether the monitoring samples are evenly distributed:
+               - 0: No
+               1: Yes.
+        :param int trace_client_type: Link trace client type:
+               - 0:ARMS Agent
+               - 1:OpenTelemetry
+               - 2:Jaeger.
+        :param str xtrace_region: The link data is reported to the region.
+        """
+        if custom_host is not None:
+            pulumi.set(__self__, "custom_host", custom_host)
+        if ip_type is not None:
+            pulumi.set(__self__, "ip_type", ip_type)
+        if is_open_trace is not None:
+            pulumi.set(__self__, "is_open_trace", is_open_trace)
+        if monitor_samples is not None:
+            pulumi.set(__self__, "monitor_samples", monitor_samples)
+        if trace_client_type is not None:
+            pulumi.set(__self__, "trace_client_type", trace_client_type)
+        if xtrace_region is not None:
+            pulumi.set(__self__, "xtrace_region", xtrace_region)
+
+    @property
+    @pulumi.getter(name="customHost")
+    def custom_host(self) -> Optional['outputs.SyntheticTaskCommonSettingCustomHost']:
+        """
+        Custom host. See `custom_host` below.
+        """
+        return pulumi.get(self, "custom_host")
+
+    @property
+    @pulumi.getter(name="ipType")
+    def ip_type(self) -> Optional[int]:
+        """
+        IpType.
+        """
+        return pulumi.get(self, "ip_type")
+
+    @property
+    @pulumi.getter(name="isOpenTrace")
+    def is_open_trace(self) -> Optional[bool]:
+        """
+        Whether to enable link tracking.
+        """
+        return pulumi.get(self, "is_open_trace")
+
+    @property
+    @pulumi.getter(name="monitorSamples")
+    def monitor_samples(self) -> Optional[int]:
+        """
+        Whether the monitoring samples are evenly distributed:
+        - 0: No
+        1: Yes.
+        """
+        return pulumi.get(self, "monitor_samples")
+
+    @property
+    @pulumi.getter(name="traceClientType")
+    def trace_client_type(self) -> Optional[int]:
+        """
+        Link trace client type:
+        - 0:ARMS Agent
+        - 1:OpenTelemetry
+        - 2:Jaeger.
+        """
+        return pulumi.get(self, "trace_client_type")
+
+    @property
+    @pulumi.getter(name="xtraceRegion")
+    def xtrace_region(self) -> Optional[str]:
+        """
+        The link data is reported to the region.
+        """
+        return pulumi.get(self, "xtrace_region")
+
+
+@pulumi.output_type
+class SyntheticTaskCommonSettingCustomHost(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "selectType":
+            suggest = "select_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SyntheticTaskCommonSettingCustomHost. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SyntheticTaskCommonSettingCustomHost.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SyntheticTaskCommonSettingCustomHost.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 hosts: Sequence['outputs.SyntheticTaskCommonSettingCustomHostHost'],
+                 select_type: int):
+        """
+        :param Sequence['SyntheticTaskCommonSettingCustomHostHostArgs'] hosts: The host list. See `hosts` below.
+        :param int select_type: Selection method:
+               - 0: Random
+               - 1: Polling.
+        """
+        pulumi.set(__self__, "hosts", hosts)
+        pulumi.set(__self__, "select_type", select_type)
+
+    @property
+    @pulumi.getter
+    def hosts(self) -> Sequence['outputs.SyntheticTaskCommonSettingCustomHostHost']:
+        """
+        The host list. See `hosts` below.
+        """
+        return pulumi.get(self, "hosts")
+
+    @property
+    @pulumi.getter(name="selectType")
+    def select_type(self) -> int:
+        """
+        Selection method:
+        - 0: Random
+        - 1: Polling.
+        """
+        return pulumi.get(self, "select_type")
+
+
+@pulumi.output_type
+class SyntheticTaskCommonSettingCustomHostHost(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "ipType":
+            suggest = "ip_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SyntheticTaskCommonSettingCustomHostHost. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SyntheticTaskCommonSettingCustomHostHost.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SyntheticTaskCommonSettingCustomHostHost.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 domain: str,
+                 ip_type: int,
+                 ips: Sequence[str]):
+        """
+        :param str domain: Domain Name.
+        :param int ip_type: IpType.
+        :param Sequence[str] ips: The IP list.
+        """
+        pulumi.set(__self__, "domain", domain)
+        pulumi.set(__self__, "ip_type", ip_type)
+        pulumi.set(__self__, "ips", ips)
+
+    @property
+    @pulumi.getter
+    def domain(self) -> str:
+        """
+        Domain Name.
+        """
+        return pulumi.get(self, "domain")
+
+    @property
+    @pulumi.getter(name="ipType")
+    def ip_type(self) -> int:
+        """
+        IpType.
+        """
+        return pulumi.get(self, "ip_type")
+
+    @property
+    @pulumi.getter
+    def ips(self) -> Sequence[str]:
+        """
+        The IP list.
+        """
+        return pulumi.get(self, "ips")
+
+
+@pulumi.output_type
+class SyntheticTaskCustomPeriod(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "endHour":
+            suggest = "end_hour"
+        elif key == "startHour":
+            suggest = "start_hour"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SyntheticTaskCustomPeriod. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SyntheticTaskCustomPeriod.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SyntheticTaskCustomPeriod.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 end_hour: Optional[int] = None,
+                 start_hour: Optional[int] = None):
+        """
+        :param int end_hour: End hours, 0-24.
+        :param int start_hour: Starting hours, 0-24.
+        """
+        if end_hour is not None:
+            pulumi.set(__self__, "end_hour", end_hour)
+        if start_hour is not None:
+            pulumi.set(__self__, "start_hour", start_hour)
+
+    @property
+    @pulumi.getter(name="endHour")
+    def end_hour(self) -> Optional[int]:
+        """
+        End hours, 0-24.
+        """
+        return pulumi.get(self, "end_hour")
+
+    @property
+    @pulumi.getter(name="startHour")
+    def start_hour(self) -> Optional[int]:
+        """
+        Starting hours, 0-24.
+        """
+        return pulumi.get(self, "start_hour")
+
+
+@pulumi.output_type
+class SyntheticTaskMonitor(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "cityCode":
+            suggest = "city_code"
+        elif key == "clientType":
+            suggest = "client_type"
+        elif key == "operatorCode":
+            suggest = "operator_code"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SyntheticTaskMonitor. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SyntheticTaskMonitor.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SyntheticTaskMonitor.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 city_code: str,
+                 client_type: int,
+                 operator_code: str):
+        """
+        :param str city_code: The city code of monitor.
+        :param int client_type: The type of monitor.
+        :param str operator_code: The operator code of monitor.
+        """
+        pulumi.set(__self__, "city_code", city_code)
+        pulumi.set(__self__, "client_type", client_type)
+        pulumi.set(__self__, "operator_code", operator_code)
+
+    @property
+    @pulumi.getter(name="cityCode")
+    def city_code(self) -> str:
+        """
+        The city code of monitor.
+        """
+        return pulumi.get(self, "city_code")
+
+    @property
+    @pulumi.getter(name="clientType")
+    def client_type(self) -> int:
+        """
+        The type of monitor.
+        """
+        return pulumi.get(self, "client_type")
+
+    @property
+    @pulumi.getter(name="operatorCode")
+    def operator_code(self) -> str:
+        """
+        The operator code of monitor.
+        """
+        return pulumi.get(self, "operator_code")
+
+
+@pulumi.output_type
+class SyntheticTaskMonitorConf(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "apiHttp":
+            suggest = "api_http"
+        elif key == "fileDownload":
+            suggest = "file_download"
+        elif key == "netDns":
+            suggest = "net_dns"
+        elif key == "netIcmp":
+            suggest = "net_icmp"
+        elif key == "netTcp":
+            suggest = "net_tcp"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SyntheticTaskMonitorConf. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SyntheticTaskMonitorConf.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SyntheticTaskMonitorConf.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 api_http: Optional['outputs.SyntheticTaskMonitorConfApiHttp'] = None,
+                 file_download: Optional['outputs.SyntheticTaskMonitorConfFileDownload'] = None,
+                 net_dns: Optional['outputs.SyntheticTaskMonitorConfNetDns'] = None,
+                 net_icmp: Optional['outputs.SyntheticTaskMonitorConfNetIcmp'] = None,
+                 net_tcp: Optional['outputs.SyntheticTaskMonitorConfNetTcp'] = None,
+                 stream: Optional['outputs.SyntheticTaskMonitorConfStream'] = None,
+                 website: Optional['outputs.SyntheticTaskMonitorConfWebsite'] = None):
+        """
+        :param 'SyntheticTaskMonitorConfApiHttpArgs' api_http: HTTP(S) task configuration information. See `api_http` below.
+        :param 'SyntheticTaskMonitorConfFileDownloadArgs' file_download: File download type task configuration. See `file_download` below.
+        :param 'SyntheticTaskMonitorConfNetDnsArgs' net_dns: The configuration parameters of the DNS dial test. Required when TaskType is 3. See `net_dns` below.
+        :param 'SyntheticTaskMonitorConfNetIcmpArgs' net_icmp: ICMP dialing configuration parameters. Required when TaskType is 1. See `net_icmp` below.
+        :param 'SyntheticTaskMonitorConfNetTcpArgs' net_tcp: The configuration parameters of TCP dial test. Required when TaskType is 2. See `net_tcp` below.
+        :param 'SyntheticTaskMonitorConfStreamArgs' stream: Streaming Media Dial Test Configuration. See `stream` below.
+        :param 'SyntheticTaskMonitorConfWebsiteArgs' website: Website speed measurement type task configuration. See `website` below.
+        """
+        if api_http is not None:
+            pulumi.set(__self__, "api_http", api_http)
+        if file_download is not None:
+            pulumi.set(__self__, "file_download", file_download)
+        if net_dns is not None:
+            pulumi.set(__self__, "net_dns", net_dns)
+        if net_icmp is not None:
+            pulumi.set(__self__, "net_icmp", net_icmp)
+        if net_tcp is not None:
+            pulumi.set(__self__, "net_tcp", net_tcp)
+        if stream is not None:
+            pulumi.set(__self__, "stream", stream)
+        if website is not None:
+            pulumi.set(__self__, "website", website)
+
+    @property
+    @pulumi.getter(name="apiHttp")
+    def api_http(self) -> Optional['outputs.SyntheticTaskMonitorConfApiHttp']:
+        """
+        HTTP(S) task configuration information. See `api_http` below.
+        """
+        return pulumi.get(self, "api_http")
+
+    @property
+    @pulumi.getter(name="fileDownload")
+    def file_download(self) -> Optional['outputs.SyntheticTaskMonitorConfFileDownload']:
+        """
+        File download type task configuration. See `file_download` below.
+        """
+        return pulumi.get(self, "file_download")
+
+    @property
+    @pulumi.getter(name="netDns")
+    def net_dns(self) -> Optional['outputs.SyntheticTaskMonitorConfNetDns']:
+        """
+        The configuration parameters of the DNS dial test. Required when TaskType is 3. See `net_dns` below.
+        """
+        return pulumi.get(self, "net_dns")
+
+    @property
+    @pulumi.getter(name="netIcmp")
+    def net_icmp(self) -> Optional['outputs.SyntheticTaskMonitorConfNetIcmp']:
+        """
+        ICMP dialing configuration parameters. Required when TaskType is 1. See `net_icmp` below.
+        """
+        return pulumi.get(self, "net_icmp")
+
+    @property
+    @pulumi.getter(name="netTcp")
+    def net_tcp(self) -> Optional['outputs.SyntheticTaskMonitorConfNetTcp']:
+        """
+        The configuration parameters of TCP dial test. Required when TaskType is 2. See `net_tcp` below.
+        """
+        return pulumi.get(self, "net_tcp")
+
+    @property
+    @pulumi.getter
+    def stream(self) -> Optional['outputs.SyntheticTaskMonitorConfStream']:
+        """
+        Streaming Media Dial Test Configuration. See `stream` below.
+        """
+        return pulumi.get(self, "stream")
+
+    @property
+    @pulumi.getter
+    def website(self) -> Optional['outputs.SyntheticTaskMonitorConfWebsite']:
+        """
+        Website speed measurement type task configuration. See `website` below.
+        """
+        return pulumi.get(self, "website")
+
+
+@pulumi.output_type
+class SyntheticTaskMonitorConfApiHttp(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "targetUrl":
+            suggest = "target_url"
+        elif key == "connectTimeout":
+            suggest = "connect_timeout"
+        elif key == "requestBody":
+            suggest = "request_body"
+        elif key == "requestHeaders":
+            suggest = "request_headers"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SyntheticTaskMonitorConfApiHttp. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SyntheticTaskMonitorConfApiHttp.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SyntheticTaskMonitorConfApiHttp.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 target_url: str,
+                 connect_timeout: Optional[int] = None,
+                 method: Optional[str] = None,
+                 request_body: Optional['outputs.SyntheticTaskMonitorConfApiHttpRequestBody'] = None,
+                 request_headers: Optional[Mapping[str, Any]] = None,
+                 timeout: Optional[int] = None):
+        """
+        :param str target_url: The target URL.
+        :param int connect_timeout: Connection timeout, in ms. Default 5000. Optional range: 1000-300000ms.
+        :param str method: HTTP method, GET or POST.
+        :param 'SyntheticTaskMonitorConfApiHttpRequestBodyArgs' request_body: HTTP request body. See `request_body` below.
+        :param Mapping[str, Any] request_headers: HTTP request header.
+        :param int timeout: TCP dial test timeout. The unit is milliseconds (ms), the minimum value is 1000, the maximum value is 300000, and the default value is 20000.
+        """
+        pulumi.set(__self__, "target_url", target_url)
+        if connect_timeout is not None:
+            pulumi.set(__self__, "connect_timeout", connect_timeout)
+        if method is not None:
+            pulumi.set(__self__, "method", method)
+        if request_body is not None:
+            pulumi.set(__self__, "request_body", request_body)
+        if request_headers is not None:
+            pulumi.set(__self__, "request_headers", request_headers)
+        if timeout is not None:
+            pulumi.set(__self__, "timeout", timeout)
+
+    @property
+    @pulumi.getter(name="targetUrl")
+    def target_url(self) -> str:
+        """
+        The target URL.
+        """
+        return pulumi.get(self, "target_url")
+
+    @property
+    @pulumi.getter(name="connectTimeout")
+    def connect_timeout(self) -> Optional[int]:
+        """
+        Connection timeout, in ms. Default 5000. Optional range: 1000-300000ms.
+        """
+        return pulumi.get(self, "connect_timeout")
+
+    @property
+    @pulumi.getter
+    def method(self) -> Optional[str]:
+        """
+        HTTP method, GET or POST.
+        """
+        return pulumi.get(self, "method")
+
+    @property
+    @pulumi.getter(name="requestBody")
+    def request_body(self) -> Optional['outputs.SyntheticTaskMonitorConfApiHttpRequestBody']:
+        """
+        HTTP request body. See `request_body` below.
+        """
+        return pulumi.get(self, "request_body")
+
+    @property
+    @pulumi.getter(name="requestHeaders")
+    def request_headers(self) -> Optional[Mapping[str, Any]]:
+        """
+        HTTP request header.
+        """
+        return pulumi.get(self, "request_headers")
+
+    @property
+    @pulumi.getter
+    def timeout(self) -> Optional[int]:
+        """
+        TCP dial test timeout. The unit is milliseconds (ms), the minimum value is 1000, the maximum value is 300000, and the default value is 20000.
+        """
+        return pulumi.get(self, "timeout")
+
+
+@pulumi.output_type
+class SyntheticTaskMonitorConfApiHttpRequestBody(dict):
+    def __init__(__self__, *,
+                 content: Optional[str] = None,
+                 type: Optional[str] = None):
+        """
+        :param str content: The request body content, in JSON string format. When the type is text/plain,application/json,application/xml,text/html, the content can be converted to a JSON string.
+        :param str type: Assertion type, including: httpresead, httpresead, HttpResBody, HttpResBodyJson, httpressetime, IcmpPackLoss (packet loss rate), IcmpPackMaxLatency (maximum packet delay ms), icmppackwebscreen, fmppackavglatency (average delay rendering), TraceRouteHops (number of hops), dnsarecname, websiteOnload (full load time), see the supplement below for specific use.
+        """
+        if content is not None:
+            pulumi.set(__self__, "content", content)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def content(self) -> Optional[str]:
+        """
+        The request body content, in JSON string format. When the type is text/plain,application/json,application/xml,text/html, the content can be converted to a JSON string.
+        """
+        return pulumi.get(self, "content")
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[str]:
+        """
+        Assertion type, including: httpresead, httpresead, HttpResBody, HttpResBodyJson, httpressetime, IcmpPackLoss (packet loss rate), IcmpPackMaxLatency (maximum packet delay ms), icmppackwebscreen, fmppackavglatency (average delay rendering), TraceRouteHops (number of hops), dnsarecname, websiteOnload (full load time), see the supplement below for specific use.
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class SyntheticTaskMonitorConfFileDownload(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "targetUrl":
+            suggest = "target_url"
+        elif key == "connectionTimeout":
+            suggest = "connection_timeout"
+        elif key == "customHeaderContent":
+            suggest = "custom_header_content"
+        elif key == "downloadKernel":
+            suggest = "download_kernel"
+        elif key == "ignoreCertificateAuthError":
+            suggest = "ignore_certificate_auth_error"
+        elif key == "ignoreCertificateCanceledError":
+            suggest = "ignore_certificate_canceled_error"
+        elif key == "ignoreCertificateOutOfDateError":
+            suggest = "ignore_certificate_out_of_date_error"
+        elif key == "ignoreCertificateStatusError":
+            suggest = "ignore_certificate_status_error"
+        elif key == "ignoreCertificateUntrustworthyError":
+            suggest = "ignore_certificate_untrustworthy_error"
+        elif key == "ignoreCertificateUsingError":
+            suggest = "ignore_certificate_using_error"
+        elif key == "ignoreInvalidHostError":
+            suggest = "ignore_invalid_host_error"
+        elif key == "monitorTimeout":
+            suggest = "monitor_timeout"
+        elif key == "quickProtocol":
+            suggest = "quick_protocol"
+        elif key == "transmissionSize":
+            suggest = "transmission_size"
+        elif key == "validateKeywords":
+            suggest = "validate_keywords"
+        elif key == "verifyWay":
+            suggest = "verify_way"
+        elif key == "whiteList":
+            suggest = "white_list"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SyntheticTaskMonitorConfFileDownload. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SyntheticTaskMonitorConfFileDownload.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SyntheticTaskMonitorConfFileDownload.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 target_url: str,
+                 connection_timeout: Optional[int] = None,
+                 custom_header_content: Optional[Mapping[str, Any]] = None,
+                 download_kernel: Optional[int] = None,
+                 ignore_certificate_auth_error: Optional[int] = None,
+                 ignore_certificate_canceled_error: Optional[int] = None,
+                 ignore_certificate_out_of_date_error: Optional[int] = None,
+                 ignore_certificate_status_error: Optional[int] = None,
+                 ignore_certificate_untrustworthy_error: Optional[int] = None,
+                 ignore_certificate_using_error: Optional[int] = None,
+                 ignore_invalid_host_error: Optional[int] = None,
+                 monitor_timeout: Optional[int] = None,
+                 quick_protocol: Optional[int] = None,
+                 redirection: Optional[int] = None,
+                 transmission_size: Optional[int] = None,
+                 validate_keywords: Optional[str] = None,
+                 verify_way: Optional[int] = None,
+                 white_list: Optional[str] = None):
+        """
+        :param str target_url: The target URL.
+        :param int connection_timeout: Connection timeout time, in ms. Default 5000. Optional range: 1000-120000ms.
+        :param Mapping[str, Any] custom_header_content: Custom header, in JSON Map format.
+        :param int download_kernel: Download the kernel.
+               - 1:curl
+               - 0:WinInet
+               Default 1.
+        :param int ignore_certificate_auth_error: Ignore CA Certificate authorization error 0: Do not ignore, 1: ignore, default 1.
+        :param int ignore_certificate_canceled_error: Ignore certificate revocation error 0: Do not ignore, 1: ignore, default 1.
+        :param int ignore_certificate_out_of_date_error: Ignore certificate expiration error 0: not ignored, 1: Ignored, default 1.
+        :param int ignore_certificate_status_error: The certificate status error is ignored. 0: Do not ignore, 1: IGNORE. The default value is 1.
+        :param int ignore_certificate_untrustworthy_error: The certificate cannot be trusted and ignored. 0: Do not ignore, 1: IGNORE. The default value is 1.
+        :param int ignore_certificate_using_error: Ignore certificate usage error 0: Do not ignore, 1: ignore, default 1.
+        :param int ignore_invalid_host_error: Invalid host error ignored, 0: not ignored, 1: Ignored, default 1.
+        :param int monitor_timeout: Monitoring timeout, in ms. Not required, 20000 by default.
+        :param int quick_protocol: Quick agreement
+               - 1:http1
+               - 2:http2
+               - 3:http3
+               Default 1.
+        :param int redirection: When redirection occurs, whether to continue browsing, 0-No, 1-Yes, the default is 1.
+        :param int transmission_size: The transmission size, in KB. The default value is 2048KB. The transmission size of the downloaded file must be between 1 and 20480KB.
+        :param str validate_keywords: Verify keywords.
+        :param int verify_way: The verification method.
+               - 0: Do not validate
+               - 1: Validation string
+               - 2:MD5 validation.
+        :param str white_list: DNS hijack whitelist. Match rules support IP, IP wildcard, subnet mask, and CNAME. Multiple match rules can be filled in. Multiple match rules are separated by vertical bars (|). For example, www.aliyun.com:203.0.3.55 | 203.3.44.67 indicates that all other IP addresses under the www.aliyun.com domain except 203.0.3.55 and 203.3.44.67 are hijacked.
+        """
+        pulumi.set(__self__, "target_url", target_url)
+        if connection_timeout is not None:
+            pulumi.set(__self__, "connection_timeout", connection_timeout)
+        if custom_header_content is not None:
+            pulumi.set(__self__, "custom_header_content", custom_header_content)
+        if download_kernel is not None:
+            pulumi.set(__self__, "download_kernel", download_kernel)
+        if ignore_certificate_auth_error is not None:
+            pulumi.set(__self__, "ignore_certificate_auth_error", ignore_certificate_auth_error)
+        if ignore_certificate_canceled_error is not None:
+            pulumi.set(__self__, "ignore_certificate_canceled_error", ignore_certificate_canceled_error)
+        if ignore_certificate_out_of_date_error is not None:
+            pulumi.set(__self__, "ignore_certificate_out_of_date_error", ignore_certificate_out_of_date_error)
+        if ignore_certificate_status_error is not None:
+            pulumi.set(__self__, "ignore_certificate_status_error", ignore_certificate_status_error)
+        if ignore_certificate_untrustworthy_error is not None:
+            pulumi.set(__self__, "ignore_certificate_untrustworthy_error", ignore_certificate_untrustworthy_error)
+        if ignore_certificate_using_error is not None:
+            pulumi.set(__self__, "ignore_certificate_using_error", ignore_certificate_using_error)
+        if ignore_invalid_host_error is not None:
+            pulumi.set(__self__, "ignore_invalid_host_error", ignore_invalid_host_error)
+        if monitor_timeout is not None:
+            pulumi.set(__self__, "monitor_timeout", monitor_timeout)
+        if quick_protocol is not None:
+            pulumi.set(__self__, "quick_protocol", quick_protocol)
+        if redirection is not None:
+            pulumi.set(__self__, "redirection", redirection)
+        if transmission_size is not None:
+            pulumi.set(__self__, "transmission_size", transmission_size)
+        if validate_keywords is not None:
+            pulumi.set(__self__, "validate_keywords", validate_keywords)
+        if verify_way is not None:
+            pulumi.set(__self__, "verify_way", verify_way)
+        if white_list is not None:
+            pulumi.set(__self__, "white_list", white_list)
+
+    @property
+    @pulumi.getter(name="targetUrl")
+    def target_url(self) -> str:
+        """
+        The target URL.
+        """
+        return pulumi.get(self, "target_url")
+
+    @property
+    @pulumi.getter(name="connectionTimeout")
+    def connection_timeout(self) -> Optional[int]:
+        """
+        Connection timeout time, in ms. Default 5000. Optional range: 1000-120000ms.
+        """
+        return pulumi.get(self, "connection_timeout")
+
+    @property
+    @pulumi.getter(name="customHeaderContent")
+    def custom_header_content(self) -> Optional[Mapping[str, Any]]:
+        """
+        Custom header, in JSON Map format.
+        """
+        return pulumi.get(self, "custom_header_content")
+
+    @property
+    @pulumi.getter(name="downloadKernel")
+    def download_kernel(self) -> Optional[int]:
+        """
+        Download the kernel.
+        - 1:curl
+        - 0:WinInet
+        Default 1.
+        """
+        return pulumi.get(self, "download_kernel")
+
+    @property
+    @pulumi.getter(name="ignoreCertificateAuthError")
+    def ignore_certificate_auth_error(self) -> Optional[int]:
+        """
+        Ignore CA Certificate authorization error 0: Do not ignore, 1: ignore, default 1.
+        """
+        return pulumi.get(self, "ignore_certificate_auth_error")
+
+    @property
+    @pulumi.getter(name="ignoreCertificateCanceledError")
+    def ignore_certificate_canceled_error(self) -> Optional[int]:
+        """
+        Ignore certificate revocation error 0: Do not ignore, 1: ignore, default 1.
+        """
+        return pulumi.get(self, "ignore_certificate_canceled_error")
+
+    @property
+    @pulumi.getter(name="ignoreCertificateOutOfDateError")
+    def ignore_certificate_out_of_date_error(self) -> Optional[int]:
+        """
+        Ignore certificate expiration error 0: not ignored, 1: Ignored, default 1.
+        """
+        return pulumi.get(self, "ignore_certificate_out_of_date_error")
+
+    @property
+    @pulumi.getter(name="ignoreCertificateStatusError")
+    def ignore_certificate_status_error(self) -> Optional[int]:
+        """
+        The certificate status error is ignored. 0: Do not ignore, 1: IGNORE. The default value is 1.
+        """
+        return pulumi.get(self, "ignore_certificate_status_error")
+
+    @property
+    @pulumi.getter(name="ignoreCertificateUntrustworthyError")
+    def ignore_certificate_untrustworthy_error(self) -> Optional[int]:
+        """
+        The certificate cannot be trusted and ignored. 0: Do not ignore, 1: IGNORE. The default value is 1.
+        """
+        return pulumi.get(self, "ignore_certificate_untrustworthy_error")
+
+    @property
+    @pulumi.getter(name="ignoreCertificateUsingError")
+    def ignore_certificate_using_error(self) -> Optional[int]:
+        """
+        Ignore certificate usage error 0: Do not ignore, 1: ignore, default 1.
+        """
+        return pulumi.get(self, "ignore_certificate_using_error")
+
+    @property
+    @pulumi.getter(name="ignoreInvalidHostError")
+    def ignore_invalid_host_error(self) -> Optional[int]:
+        """
+        Invalid host error ignored, 0: not ignored, 1: Ignored, default 1.
+        """
+        return pulumi.get(self, "ignore_invalid_host_error")
+
+    @property
+    @pulumi.getter(name="monitorTimeout")
+    def monitor_timeout(self) -> Optional[int]:
+        """
+        Monitoring timeout, in ms. Not required, 20000 by default.
+        """
+        return pulumi.get(self, "monitor_timeout")
+
+    @property
+    @pulumi.getter(name="quickProtocol")
+    def quick_protocol(self) -> Optional[int]:
+        """
+        Quick agreement
+        - 1:http1
+        - 2:http2
+        - 3:http3
+        Default 1.
+        """
+        return pulumi.get(self, "quick_protocol")
+
+    @property
+    @pulumi.getter
+    def redirection(self) -> Optional[int]:
+        """
+        When redirection occurs, whether to continue browsing, 0-No, 1-Yes, the default is 1.
+        """
+        return pulumi.get(self, "redirection")
+
+    @property
+    @pulumi.getter(name="transmissionSize")
+    def transmission_size(self) -> Optional[int]:
+        """
+        The transmission size, in KB. The default value is 2048KB. The transmission size of the downloaded file must be between 1 and 20480KB.
+        """
+        return pulumi.get(self, "transmission_size")
+
+    @property
+    @pulumi.getter(name="validateKeywords")
+    def validate_keywords(self) -> Optional[str]:
+        """
+        Verify keywords.
+        """
+        return pulumi.get(self, "validate_keywords")
+
+    @property
+    @pulumi.getter(name="verifyWay")
+    def verify_way(self) -> Optional[int]:
+        """
+        The verification method.
+        - 0: Do not validate
+        - 1: Validation string
+        - 2:MD5 validation.
+        """
+        return pulumi.get(self, "verify_way")
+
+    @property
+    @pulumi.getter(name="whiteList")
+    def white_list(self) -> Optional[str]:
+        """
+        DNS hijack whitelist. Match rules support IP, IP wildcard, subnet mask, and CNAME. Multiple match rules can be filled in. Multiple match rules are separated by vertical bars (|). For example, www.aliyun.com:203.0.3.55 | 203.3.44.67 indicates that all other IP addresses under the www.aliyun.com domain except 203.0.3.55 and 203.3.44.67 are hijacked.
+        """
+        return pulumi.get(self, "white_list")
+
+
+@pulumi.output_type
+class SyntheticTaskMonitorConfNetDns(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "targetUrl":
+            suggest = "target_url"
+        elif key == "dnsServerIpType":
+            suggest = "dns_server_ip_type"
+        elif key == "nsServer":
+            suggest = "ns_server"
+        elif key == "queryMethod":
+            suggest = "query_method"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SyntheticTaskMonitorConfNetDns. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SyntheticTaskMonitorConfNetDns.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SyntheticTaskMonitorConfNetDns.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 target_url: str,
+                 dns_server_ip_type: Optional[int] = None,
+                 ns_server: Optional[str] = None,
+                 query_method: Optional[int] = None,
+                 timeout: Optional[int] = None):
+        """
+        :param str target_url: The target URL.
+        :param int dns_server_ip_type: The IP address type of the DNS server.
+               - 0 (default):ipv4
+               - 1:ipv6
+               2: Automatic.
+        :param str ns_server: The IP address of the NS server. The default value is 114.114.114.114.
+        :param int query_method: DNS query method.
+               - 0 (default): Recursive
+               - 1: Iteration.
+        :param int timeout: TCP dial test timeout. The unit is milliseconds (ms), the minimum value is 1000, the maximum value is 300000, and the default value is 20000.
+        """
+        pulumi.set(__self__, "target_url", target_url)
+        if dns_server_ip_type is not None:
+            pulumi.set(__self__, "dns_server_ip_type", dns_server_ip_type)
+        if ns_server is not None:
+            pulumi.set(__self__, "ns_server", ns_server)
+        if query_method is not None:
+            pulumi.set(__self__, "query_method", query_method)
+        if timeout is not None:
+            pulumi.set(__self__, "timeout", timeout)
+
+    @property
+    @pulumi.getter(name="targetUrl")
+    def target_url(self) -> str:
+        """
+        The target URL.
+        """
+        return pulumi.get(self, "target_url")
+
+    @property
+    @pulumi.getter(name="dnsServerIpType")
+    def dns_server_ip_type(self) -> Optional[int]:
+        """
+        The IP address type of the DNS server.
+        - 0 (default):ipv4
+        - 1:ipv6
+        2: Automatic.
+        """
+        return pulumi.get(self, "dns_server_ip_type")
+
+    @property
+    @pulumi.getter(name="nsServer")
+    def ns_server(self) -> Optional[str]:
+        """
+        The IP address of the NS server. The default value is 114.114.114.114.
+        """
+        return pulumi.get(self, "ns_server")
+
+    @property
+    @pulumi.getter(name="queryMethod")
+    def query_method(self) -> Optional[int]:
+        """
+        DNS query method.
+        - 0 (default): Recursive
+        - 1: Iteration.
+        """
+        return pulumi.get(self, "query_method")
+
+    @property
+    @pulumi.getter
+    def timeout(self) -> Optional[int]:
+        """
+        TCP dial test timeout. The unit is milliseconds (ms), the minimum value is 1000, the maximum value is 300000, and the default value is 20000.
+        """
+        return pulumi.get(self, "timeout")
+
+
+@pulumi.output_type
+class SyntheticTaskMonitorConfNetIcmp(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "targetUrl":
+            suggest = "target_url"
+        elif key == "packageNum":
+            suggest = "package_num"
+        elif key == "packageSize":
+            suggest = "package_size"
+        elif key == "splitPackage":
+            suggest = "split_package"
+        elif key == "tracertEnable":
+            suggest = "tracert_enable"
+        elif key == "tracertNumMax":
+            suggest = "tracert_num_max"
+        elif key == "tracertTimeout":
+            suggest = "tracert_timeout"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SyntheticTaskMonitorConfNetIcmp. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SyntheticTaskMonitorConfNetIcmp.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SyntheticTaskMonitorConfNetIcmp.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 target_url: str,
+                 interval: Optional[int] = None,
+                 package_num: Optional[int] = None,
+                 package_size: Optional[int] = None,
+                 split_package: Optional[bool] = None,
+                 timeout: Optional[int] = None,
+                 tracert_enable: Optional[bool] = None,
+                 tracert_num_max: Optional[int] = None,
+                 tracert_timeout: Optional[int] = None):
+        """
+        :param str target_url: The target URL.
+        :param int interval: The interval between TCP connections. The unit is milliseconds (ms), the minimum value is 200, the maximum value is 10000, and the default value is 200.
+        :param int package_num: Number of ICMP(Ping) packets sent. The minimum value is 1, the maximum value is 50, and the default is 4.
+        :param int package_size: The size of the sent ICMP(Ping) packet. The unit is byte. The ICMP(PING) packet size is limited to 32, 64, 128, 256, 512, 1024, 1080, and 1450.
+        :param bool split_package: Whether to split ICMP(Ping) packets. The default is true.
+        :param int timeout: TCP dial test timeout. The unit is milliseconds (ms), the minimum value is 1000, the maximum value is 300000, and the default value is 20000.
+        :param bool tracert_enable: Whether to enable tracert. The default is true.
+        :param int tracert_num_max: The maximum number of hops for tracert. The minimum value is 1, the maximum value is 128, and the default value is 20.
+        :param int tracert_timeout: The time-out of tracert. The unit is milliseconds (ms), the minimum value is 1000, the maximum value is 300000, and the default value is 60000.
+        """
+        pulumi.set(__self__, "target_url", target_url)
+        if interval is not None:
+            pulumi.set(__self__, "interval", interval)
+        if package_num is not None:
+            pulumi.set(__self__, "package_num", package_num)
+        if package_size is not None:
+            pulumi.set(__self__, "package_size", package_size)
+        if split_package is not None:
+            pulumi.set(__self__, "split_package", split_package)
+        if timeout is not None:
+            pulumi.set(__self__, "timeout", timeout)
+        if tracert_enable is not None:
+            pulumi.set(__self__, "tracert_enable", tracert_enable)
+        if tracert_num_max is not None:
+            pulumi.set(__self__, "tracert_num_max", tracert_num_max)
+        if tracert_timeout is not None:
+            pulumi.set(__self__, "tracert_timeout", tracert_timeout)
+
+    @property
+    @pulumi.getter(name="targetUrl")
+    def target_url(self) -> str:
+        """
+        The target URL.
+        """
+        return pulumi.get(self, "target_url")
+
+    @property
+    @pulumi.getter
+    def interval(self) -> Optional[int]:
+        """
+        The interval between TCP connections. The unit is milliseconds (ms), the minimum value is 200, the maximum value is 10000, and the default value is 200.
+        """
+        return pulumi.get(self, "interval")
+
+    @property
+    @pulumi.getter(name="packageNum")
+    def package_num(self) -> Optional[int]:
+        """
+        Number of ICMP(Ping) packets sent. The minimum value is 1, the maximum value is 50, and the default is 4.
+        """
+        return pulumi.get(self, "package_num")
+
+    @property
+    @pulumi.getter(name="packageSize")
+    def package_size(self) -> Optional[int]:
+        """
+        The size of the sent ICMP(Ping) packet. The unit is byte. The ICMP(PING) packet size is limited to 32, 64, 128, 256, 512, 1024, 1080, and 1450.
+        """
+        return pulumi.get(self, "package_size")
+
+    @property
+    @pulumi.getter(name="splitPackage")
+    def split_package(self) -> Optional[bool]:
+        """
+        Whether to split ICMP(Ping) packets. The default is true.
+        """
+        return pulumi.get(self, "split_package")
+
+    @property
+    @pulumi.getter
+    def timeout(self) -> Optional[int]:
+        """
+        TCP dial test timeout. The unit is milliseconds (ms), the minimum value is 1000, the maximum value is 300000, and the default value is 20000.
+        """
+        return pulumi.get(self, "timeout")
+
+    @property
+    @pulumi.getter(name="tracertEnable")
+    def tracert_enable(self) -> Optional[bool]:
+        """
+        Whether to enable tracert. The default is true.
+        """
+        return pulumi.get(self, "tracert_enable")
+
+    @property
+    @pulumi.getter(name="tracertNumMax")
+    def tracert_num_max(self) -> Optional[int]:
+        """
+        The maximum number of hops for tracert. The minimum value is 1, the maximum value is 128, and the default value is 20.
+        """
+        return pulumi.get(self, "tracert_num_max")
+
+    @property
+    @pulumi.getter(name="tracertTimeout")
+    def tracert_timeout(self) -> Optional[int]:
+        """
+        The time-out of tracert. The unit is milliseconds (ms), the minimum value is 1000, the maximum value is 300000, and the default value is 60000.
+        """
+        return pulumi.get(self, "tracert_timeout")
+
+
+@pulumi.output_type
+class SyntheticTaskMonitorConfNetTcp(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "targetUrl":
+            suggest = "target_url"
+        elif key == "connectTimes":
+            suggest = "connect_times"
+        elif key == "tracertEnable":
+            suggest = "tracert_enable"
+        elif key == "tracertNumMax":
+            suggest = "tracert_num_max"
+        elif key == "tracertTimeout":
+            suggest = "tracert_timeout"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SyntheticTaskMonitorConfNetTcp. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SyntheticTaskMonitorConfNetTcp.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SyntheticTaskMonitorConfNetTcp.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 target_url: str,
+                 connect_times: Optional[int] = None,
+                 interval: Optional[int] = None,
+                 timeout: Optional[int] = None,
+                 tracert_enable: Optional[bool] = None,
+                 tracert_num_max: Optional[int] = None,
+                 tracert_timeout: Optional[int] = None):
+        """
+        :param str target_url: The target URL.
+        :param int connect_times: The number of TCP connections established. The minimum value is 1, the maximum value is 16, and the default is 4.
+        :param int interval: The interval between TCP connections. The unit is milliseconds (ms), the minimum value is 200, the maximum value is 10000, and the default value is 200.
+        :param int timeout: TCP dial test timeout. The unit is milliseconds (ms), the minimum value is 1000, the maximum value is 300000, and the default value is 20000.
+        :param bool tracert_enable: Whether to enable tracert. The default is true.
+        :param int tracert_num_max: The maximum number of hops for tracert. The minimum value is 1, the maximum value is 128, and the default value is 20.
+        :param int tracert_timeout: The time-out of tracert. The unit is milliseconds (ms), the minimum value is 1000, the maximum value is 300000, and the default value is 60000.
+        """
+        pulumi.set(__self__, "target_url", target_url)
+        if connect_times is not None:
+            pulumi.set(__self__, "connect_times", connect_times)
+        if interval is not None:
+            pulumi.set(__self__, "interval", interval)
+        if timeout is not None:
+            pulumi.set(__self__, "timeout", timeout)
+        if tracert_enable is not None:
+            pulumi.set(__self__, "tracert_enable", tracert_enable)
+        if tracert_num_max is not None:
+            pulumi.set(__self__, "tracert_num_max", tracert_num_max)
+        if tracert_timeout is not None:
+            pulumi.set(__self__, "tracert_timeout", tracert_timeout)
+
+    @property
+    @pulumi.getter(name="targetUrl")
+    def target_url(self) -> str:
+        """
+        The target URL.
+        """
+        return pulumi.get(self, "target_url")
+
+    @property
+    @pulumi.getter(name="connectTimes")
+    def connect_times(self) -> Optional[int]:
+        """
+        The number of TCP connections established. The minimum value is 1, the maximum value is 16, and the default is 4.
+        """
+        return pulumi.get(self, "connect_times")
+
+    @property
+    @pulumi.getter
+    def interval(self) -> Optional[int]:
+        """
+        The interval between TCP connections. The unit is milliseconds (ms), the minimum value is 200, the maximum value is 10000, and the default value is 200.
+        """
+        return pulumi.get(self, "interval")
+
+    @property
+    @pulumi.getter
+    def timeout(self) -> Optional[int]:
+        """
+        TCP dial test timeout. The unit is milliseconds (ms), the minimum value is 1000, the maximum value is 300000, and the default value is 20000.
+        """
+        return pulumi.get(self, "timeout")
+
+    @property
+    @pulumi.getter(name="tracertEnable")
+    def tracert_enable(self) -> Optional[bool]:
+        """
+        Whether to enable tracert. The default is true.
+        """
+        return pulumi.get(self, "tracert_enable")
+
+    @property
+    @pulumi.getter(name="tracertNumMax")
+    def tracert_num_max(self) -> Optional[int]:
+        """
+        The maximum number of hops for tracert. The minimum value is 1, the maximum value is 128, and the default value is 20.
+        """
+        return pulumi.get(self, "tracert_num_max")
+
+    @property
+    @pulumi.getter(name="tracertTimeout")
+    def tracert_timeout(self) -> Optional[int]:
+        """
+        The time-out of tracert. The unit is milliseconds (ms), the minimum value is 1000, the maximum value is 300000, and the default value is 60000.
+        """
+        return pulumi.get(self, "tracert_timeout")
+
+
+@pulumi.output_type
+class SyntheticTaskMonitorConfStream(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "customHeaderContent":
+            suggest = "custom_header_content"
+        elif key == "playerType":
+            suggest = "player_type"
+        elif key == "streamAddressType":
+            suggest = "stream_address_type"
+        elif key == "streamMonitorTimeout":
+            suggest = "stream_monitor_timeout"
+        elif key == "streamType":
+            suggest = "stream_type"
+        elif key == "targetUrl":
+            suggest = "target_url"
+        elif key == "whiteList":
+            suggest = "white_list"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SyntheticTaskMonitorConfStream. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SyntheticTaskMonitorConfStream.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SyntheticTaskMonitorConfStream.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 custom_header_content: Optional[Mapping[str, Any]] = None,
+                 player_type: Optional[int] = None,
+                 stream_address_type: Optional[int] = None,
+                 stream_monitor_timeout: Optional[int] = None,
+                 stream_type: Optional[int] = None,
+                 target_url: Optional[str] = None,
+                 white_list: Optional[str] = None):
+        """
+        :param Mapping[str, Any] custom_header_content: Custom header, in JSON Map format.
+        :param int player_type: Player, do not pass the default 12.
+               - 12:VLC
+               - 2:FlashPlayer.
+        :param int stream_address_type: Resource address type:
+               - 1: Resource address.
+               - 0: page address, not 0 by default.
+        :param int stream_monitor_timeout: Monitoring duration, in seconds, up to 60s, not 60 by default.
+        :param int stream_type: Audio and video flags: 0-video, 1-audio.
+        :param str target_url: The target URL.
+        :param str white_list: DNS hijack whitelist. Match rules support IP, IP wildcard, subnet mask, and CNAME. Multiple match rules can be filled in. Multiple match rules are separated by vertical bars (|). For example, www.aliyun.com:203.0.3.55 | 203.3.44.67 indicates that all other IP addresses under the www.aliyun.com domain except 203.0.3.55 and 203.3.44.67 are hijacked.
+        """
+        if custom_header_content is not None:
+            pulumi.set(__self__, "custom_header_content", custom_header_content)
+        if player_type is not None:
+            pulumi.set(__self__, "player_type", player_type)
+        if stream_address_type is not None:
+            pulumi.set(__self__, "stream_address_type", stream_address_type)
+        if stream_monitor_timeout is not None:
+            pulumi.set(__self__, "stream_monitor_timeout", stream_monitor_timeout)
+        if stream_type is not None:
+            pulumi.set(__self__, "stream_type", stream_type)
+        if target_url is not None:
+            pulumi.set(__self__, "target_url", target_url)
+        if white_list is not None:
+            pulumi.set(__self__, "white_list", white_list)
+
+    @property
+    @pulumi.getter(name="customHeaderContent")
+    def custom_header_content(self) -> Optional[Mapping[str, Any]]:
+        """
+        Custom header, in JSON Map format.
+        """
+        return pulumi.get(self, "custom_header_content")
+
+    @property
+    @pulumi.getter(name="playerType")
+    def player_type(self) -> Optional[int]:
+        """
+        Player, do not pass the default 12.
+        - 12:VLC
+        - 2:FlashPlayer.
+        """
+        return pulumi.get(self, "player_type")
+
+    @property
+    @pulumi.getter(name="streamAddressType")
+    def stream_address_type(self) -> Optional[int]:
+        """
+        Resource address type:
+        - 1: Resource address.
+        - 0: page address, not 0 by default.
+        """
+        return pulumi.get(self, "stream_address_type")
+
+    @property
+    @pulumi.getter(name="streamMonitorTimeout")
+    def stream_monitor_timeout(self) -> Optional[int]:
+        """
+        Monitoring duration, in seconds, up to 60s, not 60 by default.
+        """
+        return pulumi.get(self, "stream_monitor_timeout")
+
+    @property
+    @pulumi.getter(name="streamType")
+    def stream_type(self) -> Optional[int]:
+        """
+        Audio and video flags: 0-video, 1-audio.
+        """
+        return pulumi.get(self, "stream_type")
+
+    @property
+    @pulumi.getter(name="targetUrl")
+    def target_url(self) -> Optional[str]:
+        """
+        The target URL.
+        """
+        return pulumi.get(self, "target_url")
+
+    @property
+    @pulumi.getter(name="whiteList")
+    def white_list(self) -> Optional[str]:
+        """
+        DNS hijack whitelist. Match rules support IP, IP wildcard, subnet mask, and CNAME. Multiple match rules can be filled in. Multiple match rules are separated by vertical bars (|). For example, www.aliyun.com:203.0.3.55 | 203.3.44.67 indicates that all other IP addresses under the www.aliyun.com domain except 203.0.3.55 and 203.3.44.67 are hijacked.
+        """
+        return pulumi.get(self, "white_list")
+
+
+@pulumi.output_type
+class SyntheticTaskMonitorConfWebsite(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "targetUrl":
+            suggest = "target_url"
+        elif key == "automaticScrolling":
+            suggest = "automatic_scrolling"
+        elif key == "customHeader":
+            suggest = "custom_header"
+        elif key == "customHeaderContent":
+            suggest = "custom_header_content"
+        elif key == "disableCache":
+            suggest = "disable_cache"
+        elif key == "disableCompression":
+            suggest = "disable_compression"
+        elif key == "dnsHijackWhitelist":
+            suggest = "dns_hijack_whitelist"
+        elif key == "elementBlacklist":
+            suggest = "element_blacklist"
+        elif key == "filterInvalidIp":
+            suggest = "filter_invalid_ip"
+        elif key == "flowHijackJumpTimes":
+            suggest = "flow_hijack_jump_times"
+        elif key == "flowHijackLogo":
+            suggest = "flow_hijack_logo"
+        elif key == "ignoreCertificateError":
+            suggest = "ignore_certificate_error"
+        elif key == "monitorTimeout":
+            suggest = "monitor_timeout"
+        elif key == "pageTamper":
+            suggest = "page_tamper"
+        elif key == "slowElementThreshold":
+            suggest = "slow_element_threshold"
+        elif key == "verifyStringBlacklist":
+            suggest = "verify_string_blacklist"
+        elif key == "verifyStringWhitelist":
+            suggest = "verify_string_whitelist"
+        elif key == "waitCompletionTime":
+            suggest = "wait_completion_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SyntheticTaskMonitorConfWebsite. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SyntheticTaskMonitorConfWebsite.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SyntheticTaskMonitorConfWebsite.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 target_url: str,
+                 automatic_scrolling: Optional[int] = None,
+                 custom_header: Optional[int] = None,
+                 custom_header_content: Optional[Mapping[str, Any]] = None,
+                 disable_cache: Optional[int] = None,
+                 disable_compression: Optional[int] = None,
+                 dns_hijack_whitelist: Optional[str] = None,
+                 element_blacklist: Optional[str] = None,
+                 filter_invalid_ip: Optional[int] = None,
+                 flow_hijack_jump_times: Optional[int] = None,
+                 flow_hijack_logo: Optional[str] = None,
+                 ignore_certificate_error: Optional[int] = None,
+                 monitor_timeout: Optional[int] = None,
+                 page_tamper: Optional[str] = None,
+                 redirection: Optional[int] = None,
+                 slow_element_threshold: Optional[int] = None,
+                 verify_string_blacklist: Optional[str] = None,
+                 verify_string_whitelist: Optional[str] = None,
+                 wait_completion_time: Optional[int] = None):
+        """
+        :param str target_url: The target URL.
+        :param int automatic_scrolling: Whether to support automatic scrolling screen, loading page.
+               - 0 (default): No
+               1: Yes.
+        :param int custom_header: Custom header.
+               - 0 (default): Off
+               - 1: Modify the first package
+               - 2: Modify all packages.
+        :param Mapping[str, Any] custom_header_content: Custom header, in JSON Map format.
+        :param int disable_cache: Whether to disable caching.
+               - 0: not disabled
+               - 1 (default): Disabled.
+        :param int disable_compression: The Accept-Encoding field is used to determine whether to Accept compressed files. 0-do not disable, 1-disable, the default is 0.
+        :param str dns_hijack_whitelist: When a domain name (such as www.aliyun.com) is resolved, if the resolved IP address or CNAME is not in the DNS hijacking white list, the user will fail to access or return a target IP address that is not Aliyun. If the IP or CNAME in the resolution result is in the DNS white list, it will be determined that DNS hijacking has not occurred.  Fill in the format: Domain name: matching rules. Match rules support IP, IP wildcard, subnet mask, and CNAME. Multiple match rules can be filled in. Multiple match rules are separated by vertical bars (|). For example, www.aliyun.com:203.0.3.55 | 203.3.44.67 indicates that all other IP addresses under the www.aliyun.com domain except 203.0.3.55 and 203.3.44.67 are hijacked.
+        :param str element_blacklist: If an element configured in the element blacklist appears during page loading, the element is not requested to be loaded.
+        :param int filter_invalid_ip: Whether to filter invalid IP parameters. 0: filter, 1: do not filter. The default value is 0.
+        :param int flow_hijack_jump_times: Identify elements: Set the total number of elements on the Browse page.
+        :param str flow_hijack_logo: Hijacking ID: Set the matching key information. Enter the hijacking keyword or key element, with an asterisk (*) allowed.
+        :param int ignore_certificate_error: Whether to ignore certificate errors during certificate verification in SSL Handshake and continue browsing. 0-do not ignore, 1-ignore. The default value is 1.
+        :param int monitor_timeout: Monitoring timeout, in ms. Not required, 20000 by default.
+        :param str page_tamper: Monitoring the page appears to be tampered with elements other than the domain settings that belong to the page. Common manifestations are pop-up advertisements, floating advertisements, jumps, etc.  Fill in the format: Domain name: Element. You can fill multiple elements separated by a vertical bar (|). For example, www.aliyun.com:|/cc/bb/a.gif |/vv/bb/cc.jpg indicates that all the other elements of the www.aliyun.com domain name except the basic document,/cc/bb/a.gif, and/vv/bb/cc.jpg are tampered.
+        :param int redirection: When redirection occurs, whether to continue browsing, 0-No, 1-Yes, the default is 1.
+        :param int slow_element_threshold: The slow element threshold, in ms, is 5000 by default and can be selected from 1 to 300000ms.
+        :param str verify_string_blacklist: The verification string is an arbitrary string in the source code of the monitoring page. If the source code returned by the client contains any of the blacklisted strings, 650 error is returned. Multiple strings are separated by a vertical bar (|).
+        :param str verify_string_whitelist: The verification string is an arbitrary string in the source code of the monitoring page. The source code returned by the client must contain all the strings in the whitelist. Otherwise, 650 error is returned. Multiple strings are separated by a vertical bar (|).
+        :param int wait_completion_time: The maximum waiting time, in ms, is 5000 by default and can be selected from 5000 ms to 300000ms.
+        """
+        pulumi.set(__self__, "target_url", target_url)
+        if automatic_scrolling is not None:
+            pulumi.set(__self__, "automatic_scrolling", automatic_scrolling)
+        if custom_header is not None:
+            pulumi.set(__self__, "custom_header", custom_header)
+        if custom_header_content is not None:
+            pulumi.set(__self__, "custom_header_content", custom_header_content)
+        if disable_cache is not None:
+            pulumi.set(__self__, "disable_cache", disable_cache)
+        if disable_compression is not None:
+            pulumi.set(__self__, "disable_compression", disable_compression)
+        if dns_hijack_whitelist is not None:
+            pulumi.set(__self__, "dns_hijack_whitelist", dns_hijack_whitelist)
+        if element_blacklist is not None:
+            pulumi.set(__self__, "element_blacklist", element_blacklist)
+        if filter_invalid_ip is not None:
+            pulumi.set(__self__, "filter_invalid_ip", filter_invalid_ip)
+        if flow_hijack_jump_times is not None:
+            pulumi.set(__self__, "flow_hijack_jump_times", flow_hijack_jump_times)
+        if flow_hijack_logo is not None:
+            pulumi.set(__self__, "flow_hijack_logo", flow_hijack_logo)
+        if ignore_certificate_error is not None:
+            pulumi.set(__self__, "ignore_certificate_error", ignore_certificate_error)
+        if monitor_timeout is not None:
+            pulumi.set(__self__, "monitor_timeout", monitor_timeout)
+        if page_tamper is not None:
+            pulumi.set(__self__, "page_tamper", page_tamper)
+        if redirection is not None:
+            pulumi.set(__self__, "redirection", redirection)
+        if slow_element_threshold is not None:
+            pulumi.set(__self__, "slow_element_threshold", slow_element_threshold)
+        if verify_string_blacklist is not None:
+            pulumi.set(__self__, "verify_string_blacklist", verify_string_blacklist)
+        if verify_string_whitelist is not None:
+            pulumi.set(__self__, "verify_string_whitelist", verify_string_whitelist)
+        if wait_completion_time is not None:
+            pulumi.set(__self__, "wait_completion_time", wait_completion_time)
+
+    @property
+    @pulumi.getter(name="targetUrl")
+    def target_url(self) -> str:
+        """
+        The target URL.
+        """
+        return pulumi.get(self, "target_url")
+
+    @property
+    @pulumi.getter(name="automaticScrolling")
+    def automatic_scrolling(self) -> Optional[int]:
+        """
+        Whether to support automatic scrolling screen, loading page.
+        - 0 (default): No
+        1: Yes.
+        """
+        return pulumi.get(self, "automatic_scrolling")
+
+    @property
+    @pulumi.getter(name="customHeader")
+    def custom_header(self) -> Optional[int]:
+        """
+        Custom header.
+        - 0 (default): Off
+        - 1: Modify the first package
+        - 2: Modify all packages.
+        """
+        return pulumi.get(self, "custom_header")
+
+    @property
+    @pulumi.getter(name="customHeaderContent")
+    def custom_header_content(self) -> Optional[Mapping[str, Any]]:
+        """
+        Custom header, in JSON Map format.
+        """
+        return pulumi.get(self, "custom_header_content")
+
+    @property
+    @pulumi.getter(name="disableCache")
+    def disable_cache(self) -> Optional[int]:
+        """
+        Whether to disable caching.
+        - 0: not disabled
+        - 1 (default): Disabled.
+        """
+        return pulumi.get(self, "disable_cache")
+
+    @property
+    @pulumi.getter(name="disableCompression")
+    def disable_compression(self) -> Optional[int]:
+        """
+        The Accept-Encoding field is used to determine whether to Accept compressed files. 0-do not disable, 1-disable, the default is 0.
+        """
+        return pulumi.get(self, "disable_compression")
+
+    @property
+    @pulumi.getter(name="dnsHijackWhitelist")
+    def dns_hijack_whitelist(self) -> Optional[str]:
+        """
+        When a domain name (such as www.aliyun.com) is resolved, if the resolved IP address or CNAME is not in the DNS hijacking white list, the user will fail to access or return a target IP address that is not Aliyun. If the IP or CNAME in the resolution result is in the DNS white list, it will be determined that DNS hijacking has not occurred.  Fill in the format: Domain name: matching rules. Match rules support IP, IP wildcard, subnet mask, and CNAME. Multiple match rules can be filled in. Multiple match rules are separated by vertical bars (|). For example, www.aliyun.com:203.0.3.55 | 203.3.44.67 indicates that all other IP addresses under the www.aliyun.com domain except 203.0.3.55 and 203.3.44.67 are hijacked.
+        """
+        return pulumi.get(self, "dns_hijack_whitelist")
+
+    @property
+    @pulumi.getter(name="elementBlacklist")
+    def element_blacklist(self) -> Optional[str]:
+        """
+        If an element configured in the element blacklist appears during page loading, the element is not requested to be loaded.
+        """
+        return pulumi.get(self, "element_blacklist")
+
+    @property
+    @pulumi.getter(name="filterInvalidIp")
+    def filter_invalid_ip(self) -> Optional[int]:
+        """
+        Whether to filter invalid IP parameters. 0: filter, 1: do not filter. The default value is 0.
+        """
+        return pulumi.get(self, "filter_invalid_ip")
+
+    @property
+    @pulumi.getter(name="flowHijackJumpTimes")
+    def flow_hijack_jump_times(self) -> Optional[int]:
+        """
+        Identify elements: Set the total number of elements on the Browse page.
+        """
+        return pulumi.get(self, "flow_hijack_jump_times")
+
+    @property
+    @pulumi.getter(name="flowHijackLogo")
+    def flow_hijack_logo(self) -> Optional[str]:
+        """
+        Hijacking ID: Set the matching key information. Enter the hijacking keyword or key element, with an asterisk (*) allowed.
+        """
+        return pulumi.get(self, "flow_hijack_logo")
+
+    @property
+    @pulumi.getter(name="ignoreCertificateError")
+    def ignore_certificate_error(self) -> Optional[int]:
+        """
+        Whether to ignore certificate errors during certificate verification in SSL Handshake and continue browsing. 0-do not ignore, 1-ignore. The default value is 1.
+        """
+        return pulumi.get(self, "ignore_certificate_error")
+
+    @property
+    @pulumi.getter(name="monitorTimeout")
+    def monitor_timeout(self) -> Optional[int]:
+        """
+        Monitoring timeout, in ms. Not required, 20000 by default.
+        """
+        return pulumi.get(self, "monitor_timeout")
+
+    @property
+    @pulumi.getter(name="pageTamper")
+    def page_tamper(self) -> Optional[str]:
+        """
+        Monitoring the page appears to be tampered with elements other than the domain settings that belong to the page. Common manifestations are pop-up advertisements, floating advertisements, jumps, etc.  Fill in the format: Domain name: Element. You can fill multiple elements separated by a vertical bar (|). For example, www.aliyun.com:|/cc/bb/a.gif |/vv/bb/cc.jpg indicates that all the other elements of the www.aliyun.com domain name except the basic document,/cc/bb/a.gif, and/vv/bb/cc.jpg are tampered.
+        """
+        return pulumi.get(self, "page_tamper")
+
+    @property
+    @pulumi.getter
+    def redirection(self) -> Optional[int]:
+        """
+        When redirection occurs, whether to continue browsing, 0-No, 1-Yes, the default is 1.
+        """
+        return pulumi.get(self, "redirection")
+
+    @property
+    @pulumi.getter(name="slowElementThreshold")
+    def slow_element_threshold(self) -> Optional[int]:
+        """
+        The slow element threshold, in ms, is 5000 by default and can be selected from 1 to 300000ms.
+        """
+        return pulumi.get(self, "slow_element_threshold")
+
+    @property
+    @pulumi.getter(name="verifyStringBlacklist")
+    def verify_string_blacklist(self) -> Optional[str]:
+        """
+        The verification string is an arbitrary string in the source code of the monitoring page. If the source code returned by the client contains any of the blacklisted strings, 650 error is returned. Multiple strings are separated by a vertical bar (|).
+        """
+        return pulumi.get(self, "verify_string_blacklist")
+
+    @property
+    @pulumi.getter(name="verifyStringWhitelist")
+    def verify_string_whitelist(self) -> Optional[str]:
+        """
+        The verification string is an arbitrary string in the source code of the monitoring page. The source code returned by the client must contain all the strings in the whitelist. Otherwise, 650 error is returned. Multiple strings are separated by a vertical bar (|).
+        """
+        return pulumi.get(self, "verify_string_whitelist")
+
+    @property
+    @pulumi.getter(name="waitCompletionTime")
+    def wait_completion_time(self) -> Optional[int]:
+        """
+        The maximum waiting time, in ms, is 5000 by default and can be selected from 5000 ms to 300000ms.
+        """
+        return pulumi.get(self, "wait_completion_time")
 
 
 @pulumi.output_type

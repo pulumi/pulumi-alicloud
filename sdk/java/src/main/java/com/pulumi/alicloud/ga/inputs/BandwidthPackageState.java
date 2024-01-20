@@ -112,14 +112,14 @@ public final class BandwidthPackageState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The billing type. Valid values: `PayBy95`, `PayByTraffic`.
+     * The billing type. Valid values: `PayBy95`, `PayByTraffic`. **NOTE:** `billing_type` is valid only when `payment_type` is set to `PayAsYouGo`.
      * 
      */
     @Import(name="billingType")
     private @Nullable Output<String> billingType;
 
     /**
-     * @return The billing type. Valid values: `PayBy95`, `PayByTraffic`.
+     * @return The billing type. Valid values: `PayBy95`, `PayByTraffic`. **NOTE:** `billing_type` is valid only when `payment_type` is set to `PayAsYouGo`.
      * 
      */
     public Optional<Output<String>> billingType() {
@@ -217,14 +217,14 @@ public final class BandwidthPackageState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The minimum percentage for the pay-by-95th-percentile metering method. Valid values: `30` to `100`.
+     * The minimum percentage for the pay-by-95th-percentile metering method. Valid values: `30` to `100`. **NOTE:** `ratio` is valid only when `billing_type` is set to `PayBy95`.
      * 
      */
     @Import(name="ratio")
     private @Nullable Output<Integer> ratio;
 
     /**
-     * @return The minimum percentage for the pay-by-95th-percentile metering method. Valid values: `30` to `100`.
+     * @return The minimum percentage for the pay-by-95th-percentile metering method. Valid values: `30` to `100`. **NOTE:** `ratio` is valid only when `billing_type` is set to `PayBy95`.
      * 
      */
     public Optional<Output<Integer>> ratio() {
@@ -461,7 +461,7 @@ public final class BandwidthPackageState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param billingType The billing type. Valid values: `PayBy95`, `PayByTraffic`.
+         * @param billingType The billing type. Valid values: `PayBy95`, `PayByTraffic`. **NOTE:** `billing_type` is valid only when `payment_type` is set to `PayAsYouGo`.
          * 
          * @return builder
          * 
@@ -472,7 +472,7 @@ public final class BandwidthPackageState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param billingType The billing type. Valid values: `PayBy95`, `PayByTraffic`.
+         * @param billingType The billing type. Valid values: `PayBy95`, `PayByTraffic`. **NOTE:** `billing_type` is valid only when `payment_type` is set to `PayAsYouGo`.
          * 
          * @return builder
          * 
@@ -608,7 +608,7 @@ public final class BandwidthPackageState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param ratio The minimum percentage for the pay-by-95th-percentile metering method. Valid values: `30` to `100`.
+         * @param ratio The minimum percentage for the pay-by-95th-percentile metering method. Valid values: `30` to `100`. **NOTE:** `ratio` is valid only when `billing_type` is set to `PayBy95`.
          * 
          * @return builder
          * 
@@ -619,7 +619,7 @@ public final class BandwidthPackageState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param ratio The minimum percentage for the pay-by-95th-percentile metering method. Valid values: `30` to `100`.
+         * @param ratio The minimum percentage for the pay-by-95th-percentile metering method. Valid values: `30` to `100`. **NOTE:** `ratio` is valid only when `billing_type` is set to `PayBy95`.
          * 
          * @return builder
          * 

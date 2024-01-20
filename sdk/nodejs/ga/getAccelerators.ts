@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Global Accelerator (GA) Accelerators of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.111.0+.
+ * > **NOTE:** Available since v1.111.0.
  *
  * ## Example Usage
  *
@@ -20,8 +20,7 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const example = alicloud.ga.getAccelerators({
- *     ids: ["example_value"],
- *     nameRegex: "the_resource_name",
+ *     nameRegex: "tf",
  * });
  * export const firstGaAcceleratorId = example.then(example => example.accelerators?.[0]?.id);
  * ```
@@ -55,7 +54,7 @@ export interface GetAcceleratorsArgs {
      */
     outputFile?: string;
     /**
-     * The status of the GA instance.
+     * The status of the GA instance. Valid values: `active`, `binding`, `configuring`, `deleting`, `finacialLocked`, `init`, `unbinding`.
      */
     status?: string;
 }
@@ -64,6 +63,9 @@ export interface GetAcceleratorsArgs {
  * A collection of values returned by getAccelerators.
  */
 export interface GetAcceleratorsResult {
+    /**
+     * A list of Ga Accelerators. Each element contains the following attributes:
+     */
     readonly accelerators: outputs.ga.GetAcceleratorsAccelerator[];
     /**
      * The provider-assigned unique ID for this managed resource.
@@ -71,14 +73,20 @@ export interface GetAcceleratorsResult {
     readonly id: string;
     readonly ids: string[];
     readonly nameRegex?: string;
+    /**
+     * A list of Accelerator names.
+     */
     readonly names: string[];
     readonly outputFile?: string;
+    /**
+     * The status of the GA instance.
+     */
     readonly status?: string;
 }
 /**
  * This data source provides the Global Accelerator (GA) Accelerators of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.111.0+.
+ * > **NOTE:** Available since v1.111.0.
  *
  * ## Example Usage
  *
@@ -89,8 +97,7 @@ export interface GetAcceleratorsResult {
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const example = alicloud.ga.getAccelerators({
- *     ids: ["example_value"],
- *     nameRegex: "the_resource_name",
+ *     nameRegex: "tf",
  * });
  * export const firstGaAcceleratorId = example.then(example => example.accelerators?.[0]?.id);
  * ```
@@ -116,7 +123,7 @@ export interface GetAcceleratorsOutputArgs {
      */
     outputFile?: pulumi.Input<string>;
     /**
-     * The status of the GA instance.
+     * The status of the GA instance. Valid values: `active`, `binding`, `configuring`, `deleting`, `finacialLocked`, `init`, `unbinding`.
      */
     status?: pulumi.Input<string>;
 }

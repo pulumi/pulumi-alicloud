@@ -14,6 +14,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetAcceleratorsResult {
+    /**
+     * @return A list of Ga Accelerators. Each element contains the following attributes:
+     * 
+     */
     private List<GetAcceleratorsAccelerator> accelerators;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -22,11 +26,23 @@ public final class GetAcceleratorsResult {
     private String id;
     private List<String> ids;
     private @Nullable String nameRegex;
+    /**
+     * @return A list of Accelerator names.
+     * 
+     */
     private List<String> names;
     private @Nullable String outputFile;
+    /**
+     * @return The status of the GA instance.
+     * 
+     */
     private @Nullable String status;
 
     private GetAcceleratorsResult() {}
+    /**
+     * @return A list of Ga Accelerators. Each element contains the following attributes:
+     * 
+     */
     public List<GetAcceleratorsAccelerator> accelerators() {
         return this.accelerators;
     }
@@ -43,12 +59,20 @@ public final class GetAcceleratorsResult {
     public Optional<String> nameRegex() {
         return Optional.ofNullable(this.nameRegex);
     }
+    /**
+     * @return A list of Accelerator names.
+     * 
+     */
     public List<String> names() {
         return this.names;
     }
     public Optional<String> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
+    /**
+     * @return The status of the GA instance.
+     * 
+     */
     public Optional<String> status() {
         return Optional.ofNullable(this.status);
     }

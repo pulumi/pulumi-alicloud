@@ -7,7 +7,7 @@ import * as utilities from "../utilities";
 /**
  * Provides a PolarDB database resource. A database deployed in a PolarDB cluster. A PolarDB cluster can own multiple databases.
  *
- * > **NOTE:** Available in v1.66.0+.
+ * > **NOTE:** Available since v1.66.0.
  *
  * ## Example Usage
  *
@@ -19,6 +19,7 @@ import * as utilities from "../utilities";
  *     dbType: "MySQL",
  *     dbVersion: "8.0",
  *     payType: "PostPaid",
+ *     category: "Normal",
  * });
  * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {
  *     vpcName: "terraform-example",
@@ -81,6 +82,10 @@ export class Database extends pulumi.CustomResource {
     }
 
     /**
+     * Account name authorized to access the database. Only supports PostgreSQL.
+     */
+    public readonly accountName!: pulumi.Output<string | undefined>;
+    /**
      * Character set. The value range is limited to the following: [ utf8, gbk, latin1, utf8mb4, Chinese_PRC_CI_AS, Chinese_PRC_CS_AS, SQL_Latin1_General_CP1_CI_AS, SQL_Latin1_General_CP1_CS_AS, Chinese_PRC_BIN ], default is "utf8" \(`utf8mb4` only supports versions 5.5 and 5.6\).
      */
     public readonly characterSetName!: pulumi.Output<string | undefined>;
@@ -110,6 +115,7 @@ export class Database extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DatabaseState | undefined;
+            resourceInputs["accountName"] = state ? state.accountName : undefined;
             resourceInputs["characterSetName"] = state ? state.characterSetName : undefined;
             resourceInputs["dbClusterId"] = state ? state.dbClusterId : undefined;
             resourceInputs["dbDescription"] = state ? state.dbDescription : undefined;
@@ -122,6 +128,7 @@ export class Database extends pulumi.CustomResource {
             if ((!args || args.dbName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'dbName'");
             }
+            resourceInputs["accountName"] = args ? args.accountName : undefined;
             resourceInputs["characterSetName"] = args ? args.characterSetName : undefined;
             resourceInputs["dbClusterId"] = args ? args.dbClusterId : undefined;
             resourceInputs["dbDescription"] = args ? args.dbDescription : undefined;
@@ -136,6 +143,10 @@ export class Database extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Database resources.
  */
 export interface DatabaseState {
+    /**
+     * Account name authorized to access the database. Only supports PostgreSQL.
+     */
+    accountName?: pulumi.Input<string>;
     /**
      * Character set. The value range is limited to the following: [ utf8, gbk, latin1, utf8mb4, Chinese_PRC_CI_AS, Chinese_PRC_CS_AS, SQL_Latin1_General_CP1_CI_AS, SQL_Latin1_General_CP1_CS_AS, Chinese_PRC_BIN ], default is "utf8" \(`utf8mb4` only supports versions 5.5 and 5.6\).
      */
@@ -158,6 +169,10 @@ export interface DatabaseState {
  * The set of arguments for constructing a Database resource.
  */
 export interface DatabaseArgs {
+    /**
+     * Account name authorized to access the database. Only supports PostgreSQL.
+     */
+    accountName?: pulumi.Input<string>;
     /**
      * Character set. The value range is limited to the following: [ utf8, gbk, latin1, utf8mb4, Chinese_PRC_CI_AS, Chinese_PRC_CS_AS, SQL_Latin1_General_CP1_CI_AS, SQL_Latin1_General_CP1_CS_AS, Chinese_PRC_BIN ], default is "utf8" \(`utf8mb4` only supports versions 5.5 and 5.6\).
      */

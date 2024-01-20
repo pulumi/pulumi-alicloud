@@ -5,6 +5,7 @@ package com.pulumi.alicloud.eci.outputs;
 
 import com.pulumi.alicloud.eci.outputs.ContainerGroupInitContainerEnvironmentVar;
 import com.pulumi.alicloud.eci.outputs.ContainerGroupInitContainerPort;
+import com.pulumi.alicloud.eci.outputs.ContainerGroupInitContainerSecurityContext;
 import com.pulumi.alicloud.eci.outputs.ContainerGroupInitContainerVolumeMount;
 import com.pulumi.core.annotations.CustomType;
 import java.lang.Boolean;
@@ -78,6 +79,11 @@ public final class ContainerGroupInitContainer {
      * 
      */
     private @Nullable Integer restartCount;
+    /**
+     * @return The security context of the container. See `security_context` below.
+     * 
+     */
+    private @Nullable List<ContainerGroupInitContainerSecurityContext> securityContexts;
     /**
      * @return The structure of volumeMounts. See `volume_mounts` below.
      * 
@@ -175,6 +181,13 @@ public final class ContainerGroupInitContainer {
         return Optional.ofNullable(this.restartCount);
     }
     /**
+     * @return The security context of the container. See `security_context` below.
+     * 
+     */
+    public List<ContainerGroupInitContainerSecurityContext> securityContexts() {
+        return this.securityContexts == null ? List.of() : this.securityContexts;
+    }
+    /**
      * @return The structure of volumeMounts. See `volume_mounts` below.
      * 
      */
@@ -210,6 +223,7 @@ public final class ContainerGroupInitContainer {
         private @Nullable List<ContainerGroupInitContainerPort> ports;
         private @Nullable Boolean ready;
         private @Nullable Integer restartCount;
+        private @Nullable List<ContainerGroupInitContainerSecurityContext> securityContexts;
         private @Nullable List<ContainerGroupInitContainerVolumeMount> volumeMounts;
         private @Nullable String workingDir;
         public Builder() {}
@@ -227,6 +241,7 @@ public final class ContainerGroupInitContainer {
     	      this.ports = defaults.ports;
     	      this.ready = defaults.ready;
     	      this.restartCount = defaults.restartCount;
+    	      this.securityContexts = defaults.securityContexts;
     	      this.volumeMounts = defaults.volumeMounts;
     	      this.workingDir = defaults.workingDir;
         }
@@ -316,6 +331,15 @@ public final class ContainerGroupInitContainer {
             return this;
         }
         @CustomType.Setter
+        public Builder securityContexts(@Nullable List<ContainerGroupInitContainerSecurityContext> securityContexts) {
+
+            this.securityContexts = securityContexts;
+            return this;
+        }
+        public Builder securityContexts(ContainerGroupInitContainerSecurityContext... securityContexts) {
+            return securityContexts(List.of(securityContexts));
+        }
+        @CustomType.Setter
         public Builder volumeMounts(@Nullable List<ContainerGroupInitContainerVolumeMount> volumeMounts) {
 
             this.volumeMounts = volumeMounts;
@@ -344,6 +368,7 @@ public final class ContainerGroupInitContainer {
             _resultValue.ports = ports;
             _resultValue.ready = ready;
             _resultValue.restartCount = restartCount;
+            _resultValue.securityContexts = securityContexts;
             _resultValue.volumeMounts = volumeMounts;
             _resultValue.workingDir = workingDir;
             return _resultValue;

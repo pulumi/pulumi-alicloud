@@ -5,11 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Provides a ECS Image Component resource.
+ * Provides a Ecs Image Component resource.
  *
- * For information about ECS Image Component and how to use it, see [What is Image Component](https://www.alibabacloud.com/help/en/doc-detail/200424.htm).
+ * For information about Ecs Image Component and how to use it, see [What is Image Component](https://www.alibabacloud.com/help/en/doc-detail/200424.htm).
  *
- * > **NOTE:** Available in v1.159.0+.
+ * > **NOTE:** Available since v1.159.0.
  *
  * ## Example Usage
  *
@@ -37,7 +37,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * ECS Image Component can be imported using the id, e.g.
+ * Ecs Image Component can be imported using the id, e.g.
  *
  * ```sh
  *  $ pulumi import alicloud:ecs/ecsImageComponent:EcsImageComponent example <id>
@@ -72,31 +72,35 @@ export class EcsImageComponent extends pulumi.CustomResource {
     }
 
     /**
-     * The type of the image component. Only image building components are supported. Valid values: `Build`.
+     * The component type. Currently, only mirror build components are supported. Value: Build.  Default value: Build.
      */
     public readonly componentType!: pulumi.Output<string>;
     /**
-     * The content of the image component. The content can consist of up to 127 commands.
+     * Component content.
      */
     public readonly content!: pulumi.Output<string>;
     /**
-     * The description of the image component. The description must be `2` to `256` characters in length and cannot start with `http://` or `https://`.
+     * Component creation time.
+     */
+    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    /**
+     * Describe the information.
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * The name of the image component. The name must be `2` to `128` characters in length. It must start with a letter and cannot start with `http://` or `https://`. It can contain letters, digits, colons (:), underscores (_), periods (.), and hyphens (-).
+     * The component name. The name must be 2 to 128 characters in length and must start with an uppercase letter or a Chinese character. It cannot start with http:// or https. Can contain Chinese, English, numbers, half-length colons (:), underscores (_), half-length periods (.), or dashes (-).  Note: If Name is not set, the return value of ImageComponentId is used by default.
      */
     public readonly imageComponentName!: pulumi.Output<string>;
     /**
-     * The ID of the resource group to which to assign the image component.
+     * The ID of the resource group.
      */
-    public readonly resourceGroupId!: pulumi.Output<string | undefined>;
+    public readonly resourceGroupId!: pulumi.Output<string>;
     /**
-     * The operating system type supported by the image component. Only Linux is supported. Valid values: `Linux`.
+     * The operating system supported by the component. Currently, only Linux systems are supported. Value: Linux.  Default value: Linux.
      */
     public readonly systemType!: pulumi.Output<string>;
     /**
-     * A mapping of tags to assign to the resource.
+     * List of label key-value pairs.
      */
     public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
 
@@ -115,6 +119,7 @@ export class EcsImageComponent extends pulumi.CustomResource {
             const state = argsOrState as EcsImageComponentState | undefined;
             resourceInputs["componentType"] = state ? state.componentType : undefined;
             resourceInputs["content"] = state ? state.content : undefined;
+            resourceInputs["createTime"] = state ? state.createTime : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["imageComponentName"] = state ? state.imageComponentName : undefined;
             resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
@@ -132,6 +137,7 @@ export class EcsImageComponent extends pulumi.CustomResource {
             resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
             resourceInputs["systemType"] = args ? args.systemType : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["createTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(EcsImageComponent.__pulumiType, name, resourceInputs, opts);
@@ -143,31 +149,35 @@ export class EcsImageComponent extends pulumi.CustomResource {
  */
 export interface EcsImageComponentState {
     /**
-     * The type of the image component. Only image building components are supported. Valid values: `Build`.
+     * The component type. Currently, only mirror build components are supported. Value: Build.  Default value: Build.
      */
     componentType?: pulumi.Input<string>;
     /**
-     * The content of the image component. The content can consist of up to 127 commands.
+     * Component content.
      */
     content?: pulumi.Input<string>;
     /**
-     * The description of the image component. The description must be `2` to `256` characters in length and cannot start with `http://` or `https://`.
+     * Component creation time.
+     */
+    createTime?: pulumi.Input<string>;
+    /**
+     * Describe the information.
      */
     description?: pulumi.Input<string>;
     /**
-     * The name of the image component. The name must be `2` to `128` characters in length. It must start with a letter and cannot start with `http://` or `https://`. It can contain letters, digits, colons (:), underscores (_), periods (.), and hyphens (-).
+     * The component name. The name must be 2 to 128 characters in length and must start with an uppercase letter or a Chinese character. It cannot start with http:// or https. Can contain Chinese, English, numbers, half-length colons (:), underscores (_), half-length periods (.), or dashes (-).  Note: If Name is not set, the return value of ImageComponentId is used by default.
      */
     imageComponentName?: pulumi.Input<string>;
     /**
-     * The ID of the resource group to which to assign the image component.
+     * The ID of the resource group.
      */
     resourceGroupId?: pulumi.Input<string>;
     /**
-     * The operating system type supported by the image component. Only Linux is supported. Valid values: `Linux`.
+     * The operating system supported by the component. Currently, only Linux systems are supported. Value: Linux.  Default value: Linux.
      */
     systemType?: pulumi.Input<string>;
     /**
-     * A mapping of tags to assign to the resource.
+     * List of label key-value pairs.
      */
     tags?: pulumi.Input<{[key: string]: any}>;
 }
@@ -177,31 +187,31 @@ export interface EcsImageComponentState {
  */
 export interface EcsImageComponentArgs {
     /**
-     * The type of the image component. Only image building components are supported. Valid values: `Build`.
+     * The component type. Currently, only mirror build components are supported. Value: Build.  Default value: Build.
      */
     componentType?: pulumi.Input<string>;
     /**
-     * The content of the image component. The content can consist of up to 127 commands.
+     * Component content.
      */
     content: pulumi.Input<string>;
     /**
-     * The description of the image component. The description must be `2` to `256` characters in length and cannot start with `http://` or `https://`.
+     * Describe the information.
      */
     description?: pulumi.Input<string>;
     /**
-     * The name of the image component. The name must be `2` to `128` characters in length. It must start with a letter and cannot start with `http://` or `https://`. It can contain letters, digits, colons (:), underscores (_), periods (.), and hyphens (-).
+     * The component name. The name must be 2 to 128 characters in length and must start with an uppercase letter or a Chinese character. It cannot start with http:// or https. Can contain Chinese, English, numbers, half-length colons (:), underscores (_), half-length periods (.), or dashes (-).  Note: If Name is not set, the return value of ImageComponentId is used by default.
      */
     imageComponentName?: pulumi.Input<string>;
     /**
-     * The ID of the resource group to which to assign the image component.
+     * The ID of the resource group.
      */
     resourceGroupId?: pulumi.Input<string>;
     /**
-     * The operating system type supported by the image component. Only Linux is supported. Valid values: `Linux`.
+     * The operating system supported by the component. Currently, only Linux systems are supported. Value: Linux.  Default value: Linux.
      */
     systemType?: pulumi.Input<string>;
     /**
-     * A mapping of tags to assign to the resource.
+     * List of label key-value pairs.
      */
     tags?: pulumi.Input<{[key: string]: any}>;
 }
