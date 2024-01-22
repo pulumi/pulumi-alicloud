@@ -171,6 +171,12 @@ namespace Pulumi.AliCloud.Log
         public Output<int?> MaxSplitShardCount { get; private set; } = null!;
 
         /// <summary>
+        /// Metering mode. The default metering mode of ChargeByFunction, ChargeByDataIngest traffic mode.
+        /// </summary>
+        [Output("meteringMode")]
+        public Output<string> MeteringMode { get; private set; } = null!;
+
+        /// <summary>
         /// The mode of storage. Default to `standard`, must be `standard` or `query`, `lite`.
         /// </summary>
         [Output("mode")]
@@ -309,6 +315,12 @@ namespace Pulumi.AliCloud.Log
         public Input<int>? MaxSplitShardCount { get; set; }
 
         /// <summary>
+        /// Metering mode. The default metering mode of ChargeByFunction, ChargeByDataIngest traffic mode.
+        /// </summary>
+        [Input("meteringMode")]
+        public Input<string>? MeteringMode { get; set; }
+
+        /// <summary>
         /// The mode of storage. Default to `standard`, must be `standard` or `query`, `lite`.
         /// </summary>
         [Input("mode")]
@@ -407,6 +419,12 @@ namespace Pulumi.AliCloud.Log
         /// </summary>
         [Input("maxSplitShardCount")]
         public Input<int>? MaxSplitShardCount { get; set; }
+
+        /// <summary>
+        /// Metering mode. The default metering mode of ChargeByFunction, ChargeByDataIngest traffic mode.
+        /// </summary>
+        [Input("meteringMode")]
+        public Input<string>? MeteringMode { get; set; }
 
         /// <summary>
         /// The mode of storage. Default to `standard`, must be `standard` or `query`, `lite`.

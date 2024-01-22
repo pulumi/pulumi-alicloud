@@ -81,7 +81,7 @@ namespace Pulumi.AliCloud.MongoDB
     /// 
     /// ## Import
     /// 
-    /// MongoDB can be imported using the id, e.g.
+    /// MongoDB instance can be imported using the id, e.g.
     /// 
     /// ```sh
     ///  $ pulumi import alicloud:mongodb/instance:Instance example dds-bp1291daeda44194
@@ -148,6 +148,12 @@ namespace Pulumi.AliCloud.MongoDB
         public Output<int> DbInstanceStorage { get; private set; } = null!;
 
         /// <summary>
+        /// The time when the changed configurations take effect. Valid values: `Immediately`, `MaintainTime`.
+        /// </summary>
+        [Output("effectiveTime")]
+        public Output<string?> EffectiveTime { get; private set; } = null!;
+
+        /// <summary>
         /// Whether to enable cloud disk encryption. Default value: `false`. Valid values: `true`, `false`.
         /// </summary>
         [Output("encrypted")]
@@ -208,7 +214,7 @@ namespace Pulumi.AliCloud.MongoDB
         public Output<string> MaintainStartTime { get; private set; } = null!;
 
         /// <summary>
-        /// The name of DB instance. It a string of 2 to 256 characters.
+        /// The name of DB instance. It must be 2 to 256 characters in length.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -232,7 +238,7 @@ namespace Pulumi.AliCloud.MongoDB
         public Output<ImmutableArray<Outputs.InstanceParameter>> Parameters { get; private set; } = null!;
 
         /// <summary>
-        /// The duration that you will buy DB instance (in month). It is valid when instance_charge_type is `PrePaid`. Default value: `1`. Valid values: [1~9], 12, 24, 36.
+        /// The duration that you will buy DB instance (in month). It is valid when `instance_charge_type` is `PrePaid`. Default value: `1`. Valid values: [1~9], 12, 24, 36.
         /// </summary>
         [Output("period")]
         public Output<int> Period { get; private set; } = null!;
@@ -483,6 +489,12 @@ namespace Pulumi.AliCloud.MongoDB
         public Input<int> DbInstanceStorage { get; set; } = null!;
 
         /// <summary>
+        /// The time when the changed configurations take effect. Valid values: `Immediately`, `MaintainTime`.
+        /// </summary>
+        [Input("effectiveTime")]
+        public Input<string>? EffectiveTime { get; set; }
+
+        /// <summary>
         /// Whether to enable cloud disk encryption. Default value: `false`. Valid values: `true`, `false`.
         /// </summary>
         [Input("encrypted")]
@@ -549,7 +561,7 @@ namespace Pulumi.AliCloud.MongoDB
         public Input<string>? MaintainStartTime { get; set; }
 
         /// <summary>
-        /// The name of DB instance. It a string of 2 to 256 characters.
+        /// The name of DB instance. It must be 2 to 256 characters in length.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -579,7 +591,7 @@ namespace Pulumi.AliCloud.MongoDB
         }
 
         /// <summary>
-        /// The duration that you will buy DB instance (in month). It is valid when instance_charge_type is `PrePaid`. Default value: `1`. Valid values: [1~9], 12, 24, 36.
+        /// The duration that you will buy DB instance (in month). It is valid when `instance_charge_type` is `PrePaid`. Default value: `1`. Valid values: [1~9], 12, 24, 36.
         /// </summary>
         [Input("period")]
         public Input<int>? Period { get; set; }
@@ -776,6 +788,12 @@ namespace Pulumi.AliCloud.MongoDB
         public Input<int>? DbInstanceStorage { get; set; }
 
         /// <summary>
+        /// The time when the changed configurations take effect. Valid values: `Immediately`, `MaintainTime`.
+        /// </summary>
+        [Input("effectiveTime")]
+        public Input<string>? EffectiveTime { get; set; }
+
+        /// <summary>
         /// Whether to enable cloud disk encryption. Default value: `false`. Valid values: `true`, `false`.
         /// </summary>
         [Input("encrypted")]
@@ -842,7 +860,7 @@ namespace Pulumi.AliCloud.MongoDB
         public Input<string>? MaintainStartTime { get; set; }
 
         /// <summary>
-        /// The name of DB instance. It a string of 2 to 256 characters.
+        /// The name of DB instance. It must be 2 to 256 characters in length.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -872,7 +890,7 @@ namespace Pulumi.AliCloud.MongoDB
         }
 
         /// <summary>
-        /// The duration that you will buy DB instance (in month). It is valid when instance_charge_type is `PrePaid`. Default value: `1`. Valid values: [1~9], 12, 24, 36.
+        /// The duration that you will buy DB instance (in month). It is valid when `instance_charge_type` is `PrePaid`. Default value: `1`. Valid values: [1~9], 12, 24, 36.
         /// </summary>
         [Input("period")]
         public Input<int>? Period { get; set; }

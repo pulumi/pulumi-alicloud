@@ -14,8 +14,10 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
+import java.lang.Object;
 import java.lang.String;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -301,6 +303,21 @@ public final class ListenerArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * A mapping of tags to assign to the resource.
+     * 
+     */
+    @Import(name="tags")
+    private @Nullable Output<Map<String,Object>> tags;
+
+    /**
+     * @return A mapping of tags to assign to the resource.
+     * 
+     */
+    public Optional<Output<Map<String,Object>>> tags() {
+        return Optional.ofNullable(this.tags);
+    }
+
+    /**
      * The `x_forward_for` Related Attribute Configuration. See `x_forwarded_for_config` below for details. **NOTE:** The attribute is valid when the attribute `listener_protocol` is `HTTPS`.
      * 
      */
@@ -335,6 +352,7 @@ public final class ListenerArgs extends com.pulumi.resources.ResourceArgs {
         this.requestTimeout = $.requestTimeout;
         this.securityPolicyId = $.securityPolicyId;
         this.status = $.status;
+        this.tags = $.tags;
         this.xForwardedForConfig = $.xForwardedForConfig;
     }
 
@@ -741,6 +759,27 @@ public final class ListenerArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder status(String status) {
             return status(Output.of(status));
+        }
+
+        /**
+         * @param tags A mapping of tags to assign to the resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(@Nullable Output<Map<String,Object>> tags) {
+            $.tags = tags;
+            return this;
+        }
+
+        /**
+         * @param tags A mapping of tags to assign to the resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(Map<String,Object> tags) {
+            return tags(Output.of(tags));
         }
 
         /**

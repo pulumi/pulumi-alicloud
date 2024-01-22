@@ -39,14 +39,14 @@ public final class ShardingInstanceState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Auto renew for prepaid, true of false. Default is false.
+     * Auto renew for prepaid. Default value: `false`. Valid values: `true`, `false`.
      * 
      */
     @Import(name="autoRenew")
     private @Nullable Output<Boolean> autoRenew;
 
     /**
-     * @return Auto renew for prepaid, true of false. Default is false.
+     * @return Auto renew for prepaid. Default value: `false`. Valid values: `true`, `false`.
      * 
      */
     public Optional<Output<Boolean>> autoRenew() {
@@ -69,14 +69,14 @@ public final class ShardingInstanceState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * MongoDB instance backup time. It is required when `backup_period` was existed. In the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. If not set, the system will return a default, like &#34;23:00Z-24:00Z&#34;.
+     * Sharding Instance backup time. It is required when `backup_period` was existed. In the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. If not set, the system will return a default, like &#34;23:00Z-24:00Z&#34;.
      * 
      */
     @Import(name="backupTime")
     private @Nullable Output<String> backupTime;
 
     /**
-     * @return MongoDB instance backup time. It is required when `backup_period` was existed. In the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. If not set, the system will return a default, like &#34;23:00Z-24:00Z&#34;.
+     * @return Sharding Instance backup time. It is required when `backup_period` was existed. In the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. If not set, the system will return a default, like &#34;23:00Z-24:00Z&#34;.
      * 
      */
     public Optional<Output<String>> backupTime() {
@@ -84,14 +84,14 @@ public final class ShardingInstanceState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The node information list of config server. See `config_server_list` below.
+     * The information of the ConfigServer nodes.
      * 
      */
     @Import(name="configServerLists")
     private @Nullable Output<List<ShardingInstanceConfigServerListArgs>> configServerLists;
 
     /**
-     * @return The node information list of config server. See `config_server_list` below.
+     * @return The information of the ConfigServer nodes.
      * 
      */
     public Optional<Output<List<ShardingInstanceConfigServerListArgs>>> configServerLists() {
@@ -114,14 +114,14 @@ public final class ShardingInstanceState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Valid values are `PrePaid`, `PostPaid`,System default to `PostPaid`. **NOTE:** It can be modified from `PostPaid` to `PrePaid` after version v1.141.0.
+     * The billing method of the instance. Default value: `PostPaid`. Valid values: `PrePaid`, `PostPaid`. **NOTE:** It can be modified from `PostPaid` to `PrePaid` after version v1.141.0.
      * 
      */
     @Import(name="instanceChargeType")
     private @Nullable Output<String> instanceChargeType;
 
     /**
-     * @return Valid values are `PrePaid`, `PostPaid`,System default to `PostPaid`. **NOTE:** It can be modified from `PostPaid` to `PrePaid` after version v1.141.0.
+     * @return The billing method of the instance. Default value: `PostPaid`. Valid values: `PrePaid`, `PostPaid`. **NOTE:** It can be modified from `PostPaid` to `PrePaid` after version v1.141.0.
      * 
      */
     public Optional<Output<String>> instanceChargeType() {
@@ -174,14 +174,14 @@ public final class ShardingInstanceState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The name of DB instance. It a string of 2 to 256 characters.
+     * The name of DB instance. It must be 2 to 256 characters in length.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The name of DB instance. It a string of 2 to 256 characters.
+     * @return The name of DB instance. It must be 2 to 256 characters in length.
      * 
      */
     public Optional<Output<String>> name() {
@@ -189,14 +189,14 @@ public final class ShardingInstanceState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The network type of the instance. Valid values:`Classic` or `VPC`. Default value: `Classic`.
+     * The network type of the instance. Valid values:`Classic` or `VPC`.
      * 
      */
     @Import(name="networkType")
     private @Nullable Output<String> networkType;
 
     /**
-     * @return The network type of the instance. Valid values:`Classic` or `VPC`. Default value: `Classic`.
+     * @return The network type of the instance. Valid values:`Classic` or `VPC`.
      * 
      */
     public Optional<Output<String>> networkType() {
@@ -204,20 +204,14 @@ public final class ShardingInstanceState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The type of configuration changes performed. Default value: DOWNGRADE. Valid values:
-     * * UPGRADE: The specifications are upgraded.
-     * * DOWNGRADE: The specifications are downgraded.
-     *   Note: This parameter is only applicable to instances when `instance_charge_type` is PrePaid.
+     * The type of configuration changes performed. Default value: `DOWNGRADE`. Valid values:
      * 
      */
     @Import(name="orderType")
     private @Nullable Output<String> orderType;
 
     /**
-     * @return The type of configuration changes performed. Default value: DOWNGRADE. Valid values:
-     * * UPGRADE: The specifications are upgraded.
-     * * DOWNGRADE: The specifications are downgraded.
-     *   Note: This parameter is only applicable to instances when `instance_charge_type` is PrePaid.
+     * @return The type of configuration changes performed. Default value: `DOWNGRADE`. Valid values:
      * 
      */
     public Optional<Output<String>> orderType() {
@@ -225,14 +219,14 @@ public final class ShardingInstanceState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The duration that you will buy DB instance (in month). It is valid when instance_charge_type is `PrePaid`. Valid values: [1~9], 12, 24, 36. System default to 1.
+     * The duration that you will buy DB instance (in month). It is valid when `instance_charge_type` is `PrePaid`. Default value: `1`. Valid values: [1~9], 12, 24, 36.
      * 
      */
     @Import(name="period")
     private @Nullable Output<Integer> period;
 
     /**
-     * @return The duration that you will buy DB instance (in month). It is valid when instance_charge_type is `PrePaid`. Valid values: [1~9], 12, 24, 36. System default to 1.
+     * @return The duration that you will buy DB instance (in month). It is valid when `instance_charge_type` is `PrePaid`. Default value: `1`. Valid values: [1~9], 12, 24, 36.
      * 
      */
     public Optional<Output<Integer>> period() {
@@ -270,14 +264,14 @@ public final class ShardingInstanceState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Instance data backup retention days. **NOTE:** Available in 1.42.0+.
+     * (Available since v1.42.0) Instance data backup retention days.
      * 
      */
     @Import(name="retentionPeriod")
     private @Nullable Output<Integer> retentionPeriod;
 
     /**
-     * @return Instance data backup retention days. **NOTE:** Available in 1.42.0+.
+     * @return (Available since v1.42.0) Instance data backup retention days.
      * 
      */
     public Optional<Output<Integer>> retentionPeriod() {
@@ -330,14 +324,14 @@ public final class ShardingInstanceState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Storage engine: WiredTiger or RocksDB. System Default value: WiredTiger.
+     * The storage engine of the instance. Default value: `WiredTiger`. Valid values: `WiredTiger`, `RocksDB`.
      * 
      */
     @Import(name="storageEngine")
     private @Nullable Output<String> storageEngine;
 
     /**
-     * @return Storage engine: WiredTiger or RocksDB. System Default value: WiredTiger.
+     * @return The storage engine of the instance. Default value: `WiredTiger`. Valid values: `WiredTiger`, `RocksDB`.
      * 
      */
     public Optional<Output<String>> storageEngine() {
@@ -360,14 +354,14 @@ public final class ShardingInstanceState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The TDE(Transparent Data Encryption) status. It can be updated from version 1.160.0+.
+     * The TDE(Transparent Data Encryption) status. It can be updated from version 1.160.0.
      * 
      */
     @Import(name="tdeStatus")
     private @Nullable Output<String> tdeStatus;
 
     /**
-     * @return The TDE(Transparent Data Encryption) status. It can be updated from version 1.160.0+.
+     * @return The TDE(Transparent Data Encryption) status. It can be updated from version 1.160.0.
      * 
      */
     public Optional<Output<String>> tdeStatus() {
@@ -375,14 +369,14 @@ public final class ShardingInstanceState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The ID of the VPC. &gt; **NOTE:** This parameter is valid only when NetworkType is set to VPC.
+     * The ID of the VPC. &gt; **NOTE:** `vpc_id` is valid only when `network_type` is set to `VPC`.
      * 
      */
     @Import(name="vpcId")
     private @Nullable Output<String> vpcId;
 
     /**
-     * @return The ID of the VPC. &gt; **NOTE:** This parameter is valid only when NetworkType is set to VPC.
+     * @return The ID of the VPC. &gt; **NOTE:** `vpc_id` is valid only when `network_type` is set to `VPC`.
      * 
      */
     public Optional<Output<String>> vpcId() {
@@ -405,7 +399,7 @@ public final class ShardingInstanceState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The Zone to launch the DB instance. MongoDB sharding instance does not support multiple-zone.
+     * The Zone to launch the DB instance. MongoDB Sharding Instance does not support multiple-zone.
      * If it is a multi-zone and `vswitch_id` is specified, the vswitch must in one of them.
      * 
      */
@@ -413,7 +407,7 @@ public final class ShardingInstanceState extends com.pulumi.resources.ResourceAr
     private @Nullable Output<String> zoneId;
 
     /**
-     * @return The Zone to launch the DB instance. MongoDB sharding instance does not support multiple-zone.
+     * @return The Zone to launch the DB instance. MongoDB Sharding Instance does not support multiple-zone.
      * If it is a multi-zone and `vswitch_id` is specified, the vswitch must in one of them.
      * 
      */
@@ -492,7 +486,7 @@ public final class ShardingInstanceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param autoRenew Auto renew for prepaid, true of false. Default is false.
+         * @param autoRenew Auto renew for prepaid. Default value: `false`. Valid values: `true`, `false`.
          * 
          * @return builder
          * 
@@ -503,7 +497,7 @@ public final class ShardingInstanceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param autoRenew Auto renew for prepaid, true of false. Default is false.
+         * @param autoRenew Auto renew for prepaid. Default value: `false`. Valid values: `true`, `false`.
          * 
          * @return builder
          * 
@@ -544,7 +538,7 @@ public final class ShardingInstanceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param backupTime MongoDB instance backup time. It is required when `backup_period` was existed. In the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. If not set, the system will return a default, like &#34;23:00Z-24:00Z&#34;.
+         * @param backupTime Sharding Instance backup time. It is required when `backup_period` was existed. In the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. If not set, the system will return a default, like &#34;23:00Z-24:00Z&#34;.
          * 
          * @return builder
          * 
@@ -555,7 +549,7 @@ public final class ShardingInstanceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param backupTime MongoDB instance backup time. It is required when `backup_period` was existed. In the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. If not set, the system will return a default, like &#34;23:00Z-24:00Z&#34;.
+         * @param backupTime Sharding Instance backup time. It is required when `backup_period` was existed. In the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. If not set, the system will return a default, like &#34;23:00Z-24:00Z&#34;.
          * 
          * @return builder
          * 
@@ -565,7 +559,7 @@ public final class ShardingInstanceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param configServerLists The node information list of config server. See `config_server_list` below.
+         * @param configServerLists The information of the ConfigServer nodes.
          * 
          * @return builder
          * 
@@ -576,7 +570,7 @@ public final class ShardingInstanceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param configServerLists The node information list of config server. See `config_server_list` below.
+         * @param configServerLists The information of the ConfigServer nodes.
          * 
          * @return builder
          * 
@@ -586,7 +580,7 @@ public final class ShardingInstanceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param configServerLists The node information list of config server. See `config_server_list` below.
+         * @param configServerLists The information of the ConfigServer nodes.
          * 
          * @return builder
          * 
@@ -617,7 +611,7 @@ public final class ShardingInstanceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param instanceChargeType Valid values are `PrePaid`, `PostPaid`,System default to `PostPaid`. **NOTE:** It can be modified from `PostPaid` to `PrePaid` after version v1.141.0.
+         * @param instanceChargeType The billing method of the instance. Default value: `PostPaid`. Valid values: `PrePaid`, `PostPaid`. **NOTE:** It can be modified from `PostPaid` to `PrePaid` after version v1.141.0.
          * 
          * @return builder
          * 
@@ -628,7 +622,7 @@ public final class ShardingInstanceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param instanceChargeType Valid values are `PrePaid`, `PostPaid`,System default to `PostPaid`. **NOTE:** It can be modified from `PostPaid` to `PrePaid` after version v1.141.0.
+         * @param instanceChargeType The billing method of the instance. Default value: `PostPaid`. Valid values: `PrePaid`, `PostPaid`. **NOTE:** It can be modified from `PostPaid` to `PrePaid` after version v1.141.0.
          * 
          * @return builder
          * 
@@ -711,7 +705,7 @@ public final class ShardingInstanceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param name The name of DB instance. It a string of 2 to 256 characters.
+         * @param name The name of DB instance. It must be 2 to 256 characters in length.
          * 
          * @return builder
          * 
@@ -722,7 +716,7 @@ public final class ShardingInstanceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param name The name of DB instance. It a string of 2 to 256 characters.
+         * @param name The name of DB instance. It must be 2 to 256 characters in length.
          * 
          * @return builder
          * 
@@ -732,7 +726,7 @@ public final class ShardingInstanceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param networkType The network type of the instance. Valid values:`Classic` or `VPC`. Default value: `Classic`.
+         * @param networkType The network type of the instance. Valid values:`Classic` or `VPC`.
          * 
          * @return builder
          * 
@@ -743,7 +737,7 @@ public final class ShardingInstanceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param networkType The network type of the instance. Valid values:`Classic` or `VPC`. Default value: `Classic`.
+         * @param networkType The network type of the instance. Valid values:`Classic` or `VPC`.
          * 
          * @return builder
          * 
@@ -753,10 +747,7 @@ public final class ShardingInstanceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param orderType The type of configuration changes performed. Default value: DOWNGRADE. Valid values:
-         * * UPGRADE: The specifications are upgraded.
-         * * DOWNGRADE: The specifications are downgraded.
-         *   Note: This parameter is only applicable to instances when `instance_charge_type` is PrePaid.
+         * @param orderType The type of configuration changes performed. Default value: `DOWNGRADE`. Valid values:
          * 
          * @return builder
          * 
@@ -767,10 +758,7 @@ public final class ShardingInstanceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param orderType The type of configuration changes performed. Default value: DOWNGRADE. Valid values:
-         * * UPGRADE: The specifications are upgraded.
-         * * DOWNGRADE: The specifications are downgraded.
-         *   Note: This parameter is only applicable to instances when `instance_charge_type` is PrePaid.
+         * @param orderType The type of configuration changes performed. Default value: `DOWNGRADE`. Valid values:
          * 
          * @return builder
          * 
@@ -780,7 +768,7 @@ public final class ShardingInstanceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param period The duration that you will buy DB instance (in month). It is valid when instance_charge_type is `PrePaid`. Valid values: [1~9], 12, 24, 36. System default to 1.
+         * @param period The duration that you will buy DB instance (in month). It is valid when `instance_charge_type` is `PrePaid`. Default value: `1`. Valid values: [1~9], 12, 24, 36.
          * 
          * @return builder
          * 
@@ -791,7 +779,7 @@ public final class ShardingInstanceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param period The duration that you will buy DB instance (in month). It is valid when instance_charge_type is `PrePaid`. Valid values: [1~9], 12, 24, 36. System default to 1.
+         * @param period The duration that you will buy DB instance (in month). It is valid when `instance_charge_type` is `PrePaid`. Default value: `1`. Valid values: [1~9], 12, 24, 36.
          * 
          * @return builder
          * 
@@ -843,7 +831,7 @@ public final class ShardingInstanceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param retentionPeriod Instance data backup retention days. **NOTE:** Available in 1.42.0+.
+         * @param retentionPeriod (Available since v1.42.0) Instance data backup retention days.
          * 
          * @return builder
          * 
@@ -854,7 +842,7 @@ public final class ShardingInstanceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param retentionPeriod Instance data backup retention days. **NOTE:** Available in 1.42.0+.
+         * @param retentionPeriod (Available since v1.42.0) Instance data backup retention days.
          * 
          * @return builder
          * 
@@ -947,7 +935,7 @@ public final class ShardingInstanceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param storageEngine Storage engine: WiredTiger or RocksDB. System Default value: WiredTiger.
+         * @param storageEngine The storage engine of the instance. Default value: `WiredTiger`. Valid values: `WiredTiger`, `RocksDB`.
          * 
          * @return builder
          * 
@@ -958,7 +946,7 @@ public final class ShardingInstanceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param storageEngine Storage engine: WiredTiger or RocksDB. System Default value: WiredTiger.
+         * @param storageEngine The storage engine of the instance. Default value: `WiredTiger`. Valid values: `WiredTiger`, `RocksDB`.
          * 
          * @return builder
          * 
@@ -989,7 +977,7 @@ public final class ShardingInstanceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param tdeStatus The TDE(Transparent Data Encryption) status. It can be updated from version 1.160.0+.
+         * @param tdeStatus The TDE(Transparent Data Encryption) status. It can be updated from version 1.160.0.
          * 
          * @return builder
          * 
@@ -1000,7 +988,7 @@ public final class ShardingInstanceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param tdeStatus The TDE(Transparent Data Encryption) status. It can be updated from version 1.160.0+.
+         * @param tdeStatus The TDE(Transparent Data Encryption) status. It can be updated from version 1.160.0.
          * 
          * @return builder
          * 
@@ -1010,7 +998,7 @@ public final class ShardingInstanceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param vpcId The ID of the VPC. &gt; **NOTE:** This parameter is valid only when NetworkType is set to VPC.
+         * @param vpcId The ID of the VPC. &gt; **NOTE:** `vpc_id` is valid only when `network_type` is set to `VPC`.
          * 
          * @return builder
          * 
@@ -1021,7 +1009,7 @@ public final class ShardingInstanceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param vpcId The ID of the VPC. &gt; **NOTE:** This parameter is valid only when NetworkType is set to VPC.
+         * @param vpcId The ID of the VPC. &gt; **NOTE:** `vpc_id` is valid only when `network_type` is set to `VPC`.
          * 
          * @return builder
          * 
@@ -1052,7 +1040,7 @@ public final class ShardingInstanceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param zoneId The Zone to launch the DB instance. MongoDB sharding instance does not support multiple-zone.
+         * @param zoneId The Zone to launch the DB instance. MongoDB Sharding Instance does not support multiple-zone.
          * If it is a multi-zone and `vswitch_id` is specified, the vswitch must in one of them.
          * 
          * @return builder
@@ -1064,7 +1052,7 @@ public final class ShardingInstanceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param zoneId The Zone to launch the DB instance. MongoDB sharding instance does not support multiple-zone.
+         * @param zoneId The Zone to launch the DB instance. MongoDB Sharding Instance does not support multiple-zone.
          * If it is a multi-zone and `vswitch_id` is specified, the vswitch must in one of them.
          * 
          * @return builder

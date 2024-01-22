@@ -7,16 +7,16 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * Provides a MongoDB sharding instance resource supports replica set instances only. the MongoDB provides stable, reliable, and automatic scalable database services.
+ * Provides a MongoDB Sharding Instance resource supports replica set instances only. the MongoDB provides stable, reliable, and automatic scalable database services.
  * It offers a full range of database solutions, such as disaster recovery, backup, recovery, monitoring, and alarms.
  * You can see detail product introduction [here](https://www.alibabacloud.com/help/doc-detail/26558.htm)
  *
  * > **NOTE:** Available since v1.40.0.
  *
- * > **NOTE:**  The following regions don't support create Classic network MongoDB sharding instance.
+ * > **NOTE:**  The following regions don't support create Classic network MongoDB Sharding Instance.
  * [`cn-zhangjiakou`,`cn-huhehaote`,`ap-southeast-2`,`ap-southeast-3`,`ap-southeast-5`,`ap-south-1`,`me-east-1`,`ap-northeast-1`,`eu-west-1`]
  *
- * > **NOTE:**  Create MongoDB Sharding instance or change instance type and storage would cost 10~20 minutes. Please make full preparation
+ * > **NOTE:**  Create MongoDB Sharding instance or change instance type and storage would cost 10~20 minutes. Please make full preparation.
  *
  * ## Example Usage
  * ### Create a Mongodb Sharding instance
@@ -41,9 +41,17 @@ import * as utilities from "../utilities";
  *     zoneId: zoneId,
  * });
  * const defaultShardingInstance = new alicloud.mongodb.ShardingInstance("defaultShardingInstance", {
- *     zoneId: zoneId,
- *     vswitchId: defaultSwitch.id,
  *     engineVersion: "4.2",
+ *     vswitchId: defaultSwitch.id,
+ *     zoneId: zoneId,
+ *     mongoLists: [
+ *         {
+ *             nodeClass: "dds.mongos.mid",
+ *         },
+ *         {
+ *             nodeClass: "dds.mongos.mid",
+ *         },
+ *     ],
  *     shardLists: [
  *         {
  *             nodeClass: "dds.shard.mid",
@@ -55,24 +63,16 @@ import * as utilities from "../utilities";
  *             readonlyReplicas: 1,
  *         },
  *     ],
- *     mongoLists: [
- *         {
- *             nodeClass: "dds.mongos.mid",
- *         },
- *         {
- *             nodeClass: "dds.mongos.mid",
- *         },
- *     ],
  * });
  * ```
  * ## Module Support
  *
  * You can use to the existing mongodb-sharding module
- * to create a MongoDB sharding instance resource one-click.
+ * to create a MongoDB Sharding Instance resource one-click.
  *
  * ## Import
  *
- * MongoDB can be imported using the id, e.g.
+ * MongoDB Sharding Instance can be imported using the id, e.g.
  *
  * ```sh
  *  $ pulumi import alicloud:mongodb/shardingInstance:ShardingInstance example dds-bp1291daeda44195
@@ -111,7 +111,7 @@ export class ShardingInstance extends pulumi.CustomResource {
      */
     public readonly accountPassword!: pulumi.Output<string | undefined>;
     /**
-     * Auto renew for prepaid, true of false. Default is false.
+     * Auto renew for prepaid. Default value: `false`. Valid values: `true`, `false`.
      */
     public readonly autoRenew!: pulumi.Output<boolean | undefined>;
     /**
@@ -119,11 +119,11 @@ export class ShardingInstance extends pulumi.CustomResource {
      */
     public readonly backupPeriods!: pulumi.Output<string[]>;
     /**
-     * MongoDB instance backup time. It is required when `backupPeriod` was existed. In the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. If not set, the system will return a default, like "23:00Z-24:00Z".
+     * Sharding Instance backup time. It is required when `backupPeriod` was existed. In the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. If not set, the system will return a default, like "23:00Z-24:00Z".
      */
     public readonly backupTime!: pulumi.Output<string>;
     /**
-     * The node information list of config server. See `configServerList` below.
+     * The information of the ConfigServer nodes.
      */
     public /*out*/ readonly configServerLists!: pulumi.Output<outputs.mongodb.ShardingInstanceConfigServerList[]>;
     /**
@@ -131,7 +131,7 @@ export class ShardingInstance extends pulumi.CustomResource {
      */
     public readonly engineVersion!: pulumi.Output<string>;
     /**
-     * Valid values are `PrePaid`, `PostPaid`,System default to `PostPaid`. **NOTE:** It can be modified from `PostPaid` to `PrePaid` after version v1.141.0.
+     * The billing method of the instance. Default value: `PostPaid`. Valid values: `PrePaid`, `PostPaid`. **NOTE:** It can be modified from `PostPaid` to `PrePaid` after version v1.141.0.
      */
     public readonly instanceChargeType!: pulumi.Output<string>;
     /**
@@ -147,22 +147,19 @@ export class ShardingInstance extends pulumi.CustomResource {
      */
     public readonly mongoLists!: pulumi.Output<outputs.mongodb.ShardingInstanceMongoList[]>;
     /**
-     * The name of DB instance. It a string of 2 to 256 characters.
+     * The name of DB instance. It must be 2 to 256 characters in length.
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * The network type of the instance. Valid values:`Classic` or `VPC`. Default value: `Classic`.
+     * The network type of the instance. Valid values:`Classic` or `VPC`.
      */
     public readonly networkType!: pulumi.Output<string>;
     /**
-     * The type of configuration changes performed. Default value: DOWNGRADE. Valid values:
-     * * UPGRADE: The specifications are upgraded.
-     * * DOWNGRADE: The specifications are downgraded.
-     * Note: This parameter is only applicable to instances when `instanceChargeType` is PrePaid.
+     * The type of configuration changes performed. Default value: `DOWNGRADE`. Valid values:
      */
     public readonly orderType!: pulumi.Output<string | undefined>;
     /**
-     * The duration that you will buy DB instance (in month). It is valid when instanceChargeType is `PrePaid`. Valid values: [1~9], 12, 24, 36. System default to 1.
+     * The duration that you will buy DB instance (in month). It is valid when `instanceChargeType` is `PrePaid`. Default value: `1`. Valid values: [1~9], 12, 24, 36.
      */
     public readonly period!: pulumi.Output<number>;
     /**
@@ -174,7 +171,7 @@ export class ShardingInstance extends pulumi.CustomResource {
      */
     public readonly resourceGroupId!: pulumi.Output<string>;
     /**
-     * Instance data backup retention days. **NOTE:** Available in 1.42.0+.
+     * (Available since v1.42.0) Instance data backup retention days.
      */
     public /*out*/ readonly retentionPeriod!: pulumi.Output<number>;
     /**
@@ -190,7 +187,7 @@ export class ShardingInstance extends pulumi.CustomResource {
      */
     public readonly shardLists!: pulumi.Output<outputs.mongodb.ShardingInstanceShardList[]>;
     /**
-     * Storage engine: WiredTiger or RocksDB. System Default value: WiredTiger.
+     * The storage engine of the instance. Default value: `WiredTiger`. Valid values: `WiredTiger`, `RocksDB`.
      */
     public readonly storageEngine!: pulumi.Output<string>;
     /**
@@ -198,11 +195,11 @@ export class ShardingInstance extends pulumi.CustomResource {
      */
     public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
     /**
-     * The TDE(Transparent Data Encryption) status. It can be updated from version 1.160.0+.
+     * The TDE(Transparent Data Encryption) status. It can be updated from version 1.160.0.
      */
-    public readonly tdeStatus!: pulumi.Output<string | undefined>;
+    public readonly tdeStatus!: pulumi.Output<string>;
     /**
-     * The ID of the VPC. > **NOTE:** This parameter is valid only when NetworkType is set to VPC.
+     * The ID of the VPC. > **NOTE:** `vpcId` is valid only when `networkType` is set to `VPC`.
      */
     public readonly vpcId!: pulumi.Output<string>;
     /**
@@ -210,10 +207,10 @@ export class ShardingInstance extends pulumi.CustomResource {
      */
     public readonly vswitchId!: pulumi.Output<string>;
     /**
-     * The Zone to launch the DB instance. MongoDB sharding instance does not support multiple-zone.
+     * The Zone to launch the DB instance. MongoDB Sharding Instance does not support multiple-zone.
      * If it is a multi-zone and `vswitchId` is specified, the vswitch must in one of them.
      */
-    public readonly zoneId!: pulumi.Output<string | undefined>;
+    public readonly zoneId!: pulumi.Output<string>;
 
     /**
      * Create a ShardingInstance resource with the given unique name, arguments, and options.
@@ -308,7 +305,7 @@ export interface ShardingInstanceState {
      */
     accountPassword?: pulumi.Input<string>;
     /**
-     * Auto renew for prepaid, true of false. Default is false.
+     * Auto renew for prepaid. Default value: `false`. Valid values: `true`, `false`.
      */
     autoRenew?: pulumi.Input<boolean>;
     /**
@@ -316,11 +313,11 @@ export interface ShardingInstanceState {
      */
     backupPeriods?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * MongoDB instance backup time. It is required when `backupPeriod` was existed. In the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. If not set, the system will return a default, like "23:00Z-24:00Z".
+     * Sharding Instance backup time. It is required when `backupPeriod` was existed. In the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. If not set, the system will return a default, like "23:00Z-24:00Z".
      */
     backupTime?: pulumi.Input<string>;
     /**
-     * The node information list of config server. See `configServerList` below.
+     * The information of the ConfigServer nodes.
      */
     configServerLists?: pulumi.Input<pulumi.Input<inputs.mongodb.ShardingInstanceConfigServerList>[]>;
     /**
@@ -328,7 +325,7 @@ export interface ShardingInstanceState {
      */
     engineVersion?: pulumi.Input<string>;
     /**
-     * Valid values are `PrePaid`, `PostPaid`,System default to `PostPaid`. **NOTE:** It can be modified from `PostPaid` to `PrePaid` after version v1.141.0.
+     * The billing method of the instance. Default value: `PostPaid`. Valid values: `PrePaid`, `PostPaid`. **NOTE:** It can be modified from `PostPaid` to `PrePaid` after version v1.141.0.
      */
     instanceChargeType?: pulumi.Input<string>;
     /**
@@ -344,22 +341,19 @@ export interface ShardingInstanceState {
      */
     mongoLists?: pulumi.Input<pulumi.Input<inputs.mongodb.ShardingInstanceMongoList>[]>;
     /**
-     * The name of DB instance. It a string of 2 to 256 characters.
+     * The name of DB instance. It must be 2 to 256 characters in length.
      */
     name?: pulumi.Input<string>;
     /**
-     * The network type of the instance. Valid values:`Classic` or `VPC`. Default value: `Classic`.
+     * The network type of the instance. Valid values:`Classic` or `VPC`.
      */
     networkType?: pulumi.Input<string>;
     /**
-     * The type of configuration changes performed. Default value: DOWNGRADE. Valid values:
-     * * UPGRADE: The specifications are upgraded.
-     * * DOWNGRADE: The specifications are downgraded.
-     * Note: This parameter is only applicable to instances when `instanceChargeType` is PrePaid.
+     * The type of configuration changes performed. Default value: `DOWNGRADE`. Valid values:
      */
     orderType?: pulumi.Input<string>;
     /**
-     * The duration that you will buy DB instance (in month). It is valid when instanceChargeType is `PrePaid`. Valid values: [1~9], 12, 24, 36. System default to 1.
+     * The duration that you will buy DB instance (in month). It is valid when `instanceChargeType` is `PrePaid`. Default value: `1`. Valid values: [1~9], 12, 24, 36.
      */
     period?: pulumi.Input<number>;
     /**
@@ -371,7 +365,7 @@ export interface ShardingInstanceState {
      */
     resourceGroupId?: pulumi.Input<string>;
     /**
-     * Instance data backup retention days. **NOTE:** Available in 1.42.0+.
+     * (Available since v1.42.0) Instance data backup retention days.
      */
     retentionPeriod?: pulumi.Input<number>;
     /**
@@ -387,7 +381,7 @@ export interface ShardingInstanceState {
      */
     shardLists?: pulumi.Input<pulumi.Input<inputs.mongodb.ShardingInstanceShardList>[]>;
     /**
-     * Storage engine: WiredTiger or RocksDB. System Default value: WiredTiger.
+     * The storage engine of the instance. Default value: `WiredTiger`. Valid values: `WiredTiger`, `RocksDB`.
      */
     storageEngine?: pulumi.Input<string>;
     /**
@@ -395,11 +389,11 @@ export interface ShardingInstanceState {
      */
     tags?: pulumi.Input<{[key: string]: any}>;
     /**
-     * The TDE(Transparent Data Encryption) status. It can be updated from version 1.160.0+.
+     * The TDE(Transparent Data Encryption) status. It can be updated from version 1.160.0.
      */
     tdeStatus?: pulumi.Input<string>;
     /**
-     * The ID of the VPC. > **NOTE:** This parameter is valid only when NetworkType is set to VPC.
+     * The ID of the VPC. > **NOTE:** `vpcId` is valid only when `networkType` is set to `VPC`.
      */
     vpcId?: pulumi.Input<string>;
     /**
@@ -407,7 +401,7 @@ export interface ShardingInstanceState {
      */
     vswitchId?: pulumi.Input<string>;
     /**
-     * The Zone to launch the DB instance. MongoDB sharding instance does not support multiple-zone.
+     * The Zone to launch the DB instance. MongoDB Sharding Instance does not support multiple-zone.
      * If it is a multi-zone and `vswitchId` is specified, the vswitch must in one of them.
      */
     zoneId?: pulumi.Input<string>;
@@ -422,7 +416,7 @@ export interface ShardingInstanceArgs {
      */
     accountPassword?: pulumi.Input<string>;
     /**
-     * Auto renew for prepaid, true of false. Default is false.
+     * Auto renew for prepaid. Default value: `false`. Valid values: `true`, `false`.
      */
     autoRenew?: pulumi.Input<boolean>;
     /**
@@ -430,7 +424,7 @@ export interface ShardingInstanceArgs {
      */
     backupPeriods?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * MongoDB instance backup time. It is required when `backupPeriod` was existed. In the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. If not set, the system will return a default, like "23:00Z-24:00Z".
+     * Sharding Instance backup time. It is required when `backupPeriod` was existed. In the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. If not set, the system will return a default, like "23:00Z-24:00Z".
      */
     backupTime?: pulumi.Input<string>;
     /**
@@ -438,7 +432,7 @@ export interface ShardingInstanceArgs {
      */
     engineVersion: pulumi.Input<string>;
     /**
-     * Valid values are `PrePaid`, `PostPaid`,System default to `PostPaid`. **NOTE:** It can be modified from `PostPaid` to `PrePaid` after version v1.141.0.
+     * The billing method of the instance. Default value: `PostPaid`. Valid values: `PrePaid`, `PostPaid`. **NOTE:** It can be modified from `PostPaid` to `PrePaid` after version v1.141.0.
      */
     instanceChargeType?: pulumi.Input<string>;
     /**
@@ -454,22 +448,19 @@ export interface ShardingInstanceArgs {
      */
     mongoLists: pulumi.Input<pulumi.Input<inputs.mongodb.ShardingInstanceMongoList>[]>;
     /**
-     * The name of DB instance. It a string of 2 to 256 characters.
+     * The name of DB instance. It must be 2 to 256 characters in length.
      */
     name?: pulumi.Input<string>;
     /**
-     * The network type of the instance. Valid values:`Classic` or `VPC`. Default value: `Classic`.
+     * The network type of the instance. Valid values:`Classic` or `VPC`.
      */
     networkType?: pulumi.Input<string>;
     /**
-     * The type of configuration changes performed. Default value: DOWNGRADE. Valid values:
-     * * UPGRADE: The specifications are upgraded.
-     * * DOWNGRADE: The specifications are downgraded.
-     * Note: This parameter is only applicable to instances when `instanceChargeType` is PrePaid.
+     * The type of configuration changes performed. Default value: `DOWNGRADE`. Valid values:
      */
     orderType?: pulumi.Input<string>;
     /**
-     * The duration that you will buy DB instance (in month). It is valid when instanceChargeType is `PrePaid`. Valid values: [1~9], 12, 24, 36. System default to 1.
+     * The duration that you will buy DB instance (in month). It is valid when `instanceChargeType` is `PrePaid`. Default value: `1`. Valid values: [1~9], 12, 24, 36.
      */
     period?: pulumi.Input<number>;
     /**
@@ -493,7 +484,7 @@ export interface ShardingInstanceArgs {
      */
     shardLists: pulumi.Input<pulumi.Input<inputs.mongodb.ShardingInstanceShardList>[]>;
     /**
-     * Storage engine: WiredTiger or RocksDB. System Default value: WiredTiger.
+     * The storage engine of the instance. Default value: `WiredTiger`. Valid values: `WiredTiger`, `RocksDB`.
      */
     storageEngine?: pulumi.Input<string>;
     /**
@@ -501,11 +492,11 @@ export interface ShardingInstanceArgs {
      */
     tags?: pulumi.Input<{[key: string]: any}>;
     /**
-     * The TDE(Transparent Data Encryption) status. It can be updated from version 1.160.0+.
+     * The TDE(Transparent Data Encryption) status. It can be updated from version 1.160.0.
      */
     tdeStatus?: pulumi.Input<string>;
     /**
-     * The ID of the VPC. > **NOTE:** This parameter is valid only when NetworkType is set to VPC.
+     * The ID of the VPC. > **NOTE:** `vpcId` is valid only when `networkType` is set to `VPC`.
      */
     vpcId?: pulumi.Input<string>;
     /**
@@ -513,7 +504,7 @@ export interface ShardingInstanceArgs {
      */
     vswitchId?: pulumi.Input<string>;
     /**
-     * The Zone to launch the DB instance. MongoDB sharding instance does not support multiple-zone.
+     * The Zone to launch the DB instance. MongoDB Sharding Instance does not support multiple-zone.
      * If it is a multi-zone and `vswitchId` is specified, the vswitch must in one of them.
      */
     zoneId?: pulumi.Input<string>;

@@ -62,7 +62,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * MongoDB can be imported using the id, e.g.
+ * MongoDB instance can be imported using the id, e.g.
  *
  * ```sh
  *  $ pulumi import alicloud:mongodb/instance:Instance example dds-bp1291daeda44194
@@ -136,6 +136,10 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly dbInstanceStorage!: pulumi.Output<number>;
     /**
+     * The time when the changed configurations take effect. Valid values: `Immediately`, `MaintainTime`.
+     */
+    public readonly effectiveTime!: pulumi.Output<string | undefined>;
+    /**
      * Whether to enable cloud disk encryption. Default value: `false`. Valid values: `true`, `false`.
      */
     public readonly encrypted!: pulumi.Output<boolean | undefined>;
@@ -176,7 +180,7 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly maintainStartTime!: pulumi.Output<string>;
     /**
-     * The name of DB instance. It a string of 2 to 256 characters.
+     * The name of DB instance. It must be 2 to 256 characters in length.
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -192,7 +196,7 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly parameters!: pulumi.Output<outputs.mongodb.InstanceParameter[]>;
     /**
-     * The duration that you will buy DB instance (in month). It is valid when instanceChargeType is `PrePaid`. Default value: `1`. Valid values: [1~9], 12, 24, 36.
+     * The duration that you will buy DB instance (in month). It is valid when `instanceChargeType` is `PrePaid`. Default value: `1`. Valid values: [1~9], 12, 24, 36.
      */
     public readonly period!: pulumi.Output<number>;
     /**
@@ -300,6 +304,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["cloudDiskEncryptionKey"] = state ? state.cloudDiskEncryptionKey : undefined;
             resourceInputs["dbInstanceClass"] = state ? state.dbInstanceClass : undefined;
             resourceInputs["dbInstanceStorage"] = state ? state.dbInstanceStorage : undefined;
+            resourceInputs["effectiveTime"] = state ? state.effectiveTime : undefined;
             resourceInputs["encrypted"] = state ? state.encrypted : undefined;
             resourceInputs["encryptionKey"] = state ? state.encryptionKey : undefined;
             resourceInputs["encryptorName"] = state ? state.encryptorName : undefined;
@@ -355,6 +360,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["cloudDiskEncryptionKey"] = args ? args.cloudDiskEncryptionKey : undefined;
             resourceInputs["dbInstanceClass"] = args ? args.dbInstanceClass : undefined;
             resourceInputs["dbInstanceStorage"] = args ? args.dbInstanceStorage : undefined;
+            resourceInputs["effectiveTime"] = args ? args.effectiveTime : undefined;
             resourceInputs["encrypted"] = args ? args.encrypted : undefined;
             resourceInputs["encryptionKey"] = args ? args.encryptionKey : undefined;
             resourceInputs["encryptorName"] = args ? args.encryptorName : undefined;
@@ -442,6 +448,10 @@ export interface InstanceState {
      */
     dbInstanceStorage?: pulumi.Input<number>;
     /**
+     * The time when the changed configurations take effect. Valid values: `Immediately`, `MaintainTime`.
+     */
+    effectiveTime?: pulumi.Input<string>;
+    /**
      * Whether to enable cloud disk encryption. Default value: `false`. Valid values: `true`, `false`.
      */
     encrypted?: pulumi.Input<boolean>;
@@ -482,7 +492,7 @@ export interface InstanceState {
      */
     maintainStartTime?: pulumi.Input<string>;
     /**
-     * The name of DB instance. It a string of 2 to 256 characters.
+     * The name of DB instance. It must be 2 to 256 characters in length.
      */
     name?: pulumi.Input<string>;
     /**
@@ -498,7 +508,7 @@ export interface InstanceState {
      */
     parameters?: pulumi.Input<pulumi.Input<inputs.mongodb.InstanceParameter>[]>;
     /**
-     * The duration that you will buy DB instance (in month). It is valid when instanceChargeType is `PrePaid`. Default value: `1`. Valid values: [1~9], 12, 24, 36.
+     * The duration that you will buy DB instance (in month). It is valid when `instanceChargeType` is `PrePaid`. Default value: `1`. Valid values: [1~9], 12, 24, 36.
      */
     period?: pulumi.Input<number>;
     /**
@@ -629,6 +639,10 @@ export interface InstanceArgs {
      */
     dbInstanceStorage: pulumi.Input<number>;
     /**
+     * The time when the changed configurations take effect. Valid values: `Immediately`, `MaintainTime`.
+     */
+    effectiveTime?: pulumi.Input<string>;
+    /**
      * Whether to enable cloud disk encryption. Default value: `false`. Valid values: `true`, `false`.
      */
     encrypted?: pulumi.Input<boolean>;
@@ -669,7 +683,7 @@ export interface InstanceArgs {
      */
     maintainStartTime?: pulumi.Input<string>;
     /**
-     * The name of DB instance. It a string of 2 to 256 characters.
+     * The name of DB instance. It must be 2 to 256 characters in length.
      */
     name?: pulumi.Input<string>;
     /**
@@ -685,7 +699,7 @@ export interface InstanceArgs {
      */
     parameters?: pulumi.Input<pulumi.Input<inputs.mongodb.InstanceParameter>[]>;
     /**
-     * The duration that you will buy DB instance (in month). It is valid when instanceChargeType is `PrePaid`. Default value: `1`. Valid values: [1~9], 12, 24, 36.
+     * The duration that you will buy DB instance (in month). It is valid when `instanceChargeType` is `PrePaid`. Default value: `1`. Valid values: [1~9], 12, 24, 36.
      */
     period?: pulumi.Input<number>;
     /**

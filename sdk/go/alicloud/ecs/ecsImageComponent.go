@@ -12,11 +12,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a ECS Image Component resource.
+// Provides a Ecs Image Component resource.
 //
-// For information about ECS Image Component and how to use it, see [What is Image Component](https://www.alibabacloud.com/help/en/doc-detail/200424.htm).
+// For information about Ecs Image Component and how to use it, see [What is Image Component](https://www.alibabacloud.com/help/en/doc-detail/200424.htm).
 //
-// > **NOTE:** Available in v1.159.0+.
+// > **NOTE:** Available since v1.159.0.
 //
 // ## Example Usage
 //
@@ -63,7 +63,7 @@ import (
 //
 // ## Import
 //
-// ECS Image Component can be imported using the id, e.g.
+// Ecs Image Component can be imported using the id, e.g.
 //
 // ```sh
 //
@@ -73,19 +73,21 @@ import (
 type EcsImageComponent struct {
 	pulumi.CustomResourceState
 
-	// The type of the image component. Only image building components are supported. Valid values: `Build`.
+	// The component type. Currently, only mirror build components are supported. Value: Build.  Default value: Build.
 	ComponentType pulumi.StringOutput `pulumi:"componentType"`
-	// The content of the image component. The content can consist of up to 127 commands.
+	// Component content.
 	Content pulumi.StringOutput `pulumi:"content"`
-	// The description of the image component. The description must be `2` to `256` characters in length and cannot start with `http://` or `https://`.
+	// Component creation time.
+	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// Describe the information.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// The name of the image component. The name must be `2` to `128` characters in length. It must start with a letter and cannot start with `http://` or `https://`. It can contain letters, digits, colons (:), underscores (_), periods (.), and hyphens (-).
+	// The component name. The name must be 2 to 128 characters in length and must start with an uppercase letter or a Chinese character. It cannot start with http:// or https. Can contain Chinese, English, numbers, half-length colons (:), underscores (_), half-length periods (.), or dashes (-).  Note: If Name is not set, the return value of ImageComponentId is used by default.
 	ImageComponentName pulumi.StringOutput `pulumi:"imageComponentName"`
-	// The ID of the resource group to which to assign the image component.
-	ResourceGroupId pulumi.StringPtrOutput `pulumi:"resourceGroupId"`
-	// The operating system type supported by the image component. Only Linux is supported. Valid values: `Linux`.
+	// The ID of the resource group.
+	ResourceGroupId pulumi.StringOutput `pulumi:"resourceGroupId"`
+	// The operating system supported by the component. Currently, only Linux systems are supported. Value: Linux.  Default value: Linux.
 	SystemType pulumi.StringOutput `pulumi:"systemType"`
-	// A mapping of tags to assign to the resource.
+	// List of label key-value pairs.
 	Tags pulumi.MapOutput `pulumi:"tags"`
 }
 
@@ -122,36 +124,40 @@ func GetEcsImageComponent(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering EcsImageComponent resources.
 type ecsImageComponentState struct {
-	// The type of the image component. Only image building components are supported. Valid values: `Build`.
+	// The component type. Currently, only mirror build components are supported. Value: Build.  Default value: Build.
 	ComponentType *string `pulumi:"componentType"`
-	// The content of the image component. The content can consist of up to 127 commands.
+	// Component content.
 	Content *string `pulumi:"content"`
-	// The description of the image component. The description must be `2` to `256` characters in length and cannot start with `http://` or `https://`.
+	// Component creation time.
+	CreateTime *string `pulumi:"createTime"`
+	// Describe the information.
 	Description *string `pulumi:"description"`
-	// The name of the image component. The name must be `2` to `128` characters in length. It must start with a letter and cannot start with `http://` or `https://`. It can contain letters, digits, colons (:), underscores (_), periods (.), and hyphens (-).
+	// The component name. The name must be 2 to 128 characters in length and must start with an uppercase letter or a Chinese character. It cannot start with http:// or https. Can contain Chinese, English, numbers, half-length colons (:), underscores (_), half-length periods (.), or dashes (-).  Note: If Name is not set, the return value of ImageComponentId is used by default.
 	ImageComponentName *string `pulumi:"imageComponentName"`
-	// The ID of the resource group to which to assign the image component.
+	// The ID of the resource group.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
-	// The operating system type supported by the image component. Only Linux is supported. Valid values: `Linux`.
+	// The operating system supported by the component. Currently, only Linux systems are supported. Value: Linux.  Default value: Linux.
 	SystemType *string `pulumi:"systemType"`
-	// A mapping of tags to assign to the resource.
+	// List of label key-value pairs.
 	Tags map[string]interface{} `pulumi:"tags"`
 }
 
 type EcsImageComponentState struct {
-	// The type of the image component. Only image building components are supported. Valid values: `Build`.
+	// The component type. Currently, only mirror build components are supported. Value: Build.  Default value: Build.
 	ComponentType pulumi.StringPtrInput
-	// The content of the image component. The content can consist of up to 127 commands.
+	// Component content.
 	Content pulumi.StringPtrInput
-	// The description of the image component. The description must be `2` to `256` characters in length and cannot start with `http://` or `https://`.
+	// Component creation time.
+	CreateTime pulumi.StringPtrInput
+	// Describe the information.
 	Description pulumi.StringPtrInput
-	// The name of the image component. The name must be `2` to `128` characters in length. It must start with a letter and cannot start with `http://` or `https://`. It can contain letters, digits, colons (:), underscores (_), periods (.), and hyphens (-).
+	// The component name. The name must be 2 to 128 characters in length and must start with an uppercase letter or a Chinese character. It cannot start with http:// or https. Can contain Chinese, English, numbers, half-length colons (:), underscores (_), half-length periods (.), or dashes (-).  Note: If Name is not set, the return value of ImageComponentId is used by default.
 	ImageComponentName pulumi.StringPtrInput
-	// The ID of the resource group to which to assign the image component.
+	// The ID of the resource group.
 	ResourceGroupId pulumi.StringPtrInput
-	// The operating system type supported by the image component. Only Linux is supported. Valid values: `Linux`.
+	// The operating system supported by the component. Currently, only Linux systems are supported. Value: Linux.  Default value: Linux.
 	SystemType pulumi.StringPtrInput
-	// A mapping of tags to assign to the resource.
+	// List of label key-value pairs.
 	Tags pulumi.MapInput
 }
 
@@ -160,37 +166,37 @@ func (EcsImageComponentState) ElementType() reflect.Type {
 }
 
 type ecsImageComponentArgs struct {
-	// The type of the image component. Only image building components are supported. Valid values: `Build`.
+	// The component type. Currently, only mirror build components are supported. Value: Build.  Default value: Build.
 	ComponentType *string `pulumi:"componentType"`
-	// The content of the image component. The content can consist of up to 127 commands.
+	// Component content.
 	Content string `pulumi:"content"`
-	// The description of the image component. The description must be `2` to `256` characters in length and cannot start with `http://` or `https://`.
+	// Describe the information.
 	Description *string `pulumi:"description"`
-	// The name of the image component. The name must be `2` to `128` characters in length. It must start with a letter and cannot start with `http://` or `https://`. It can contain letters, digits, colons (:), underscores (_), periods (.), and hyphens (-).
+	// The component name. The name must be 2 to 128 characters in length and must start with an uppercase letter or a Chinese character. It cannot start with http:// or https. Can contain Chinese, English, numbers, half-length colons (:), underscores (_), half-length periods (.), or dashes (-).  Note: If Name is not set, the return value of ImageComponentId is used by default.
 	ImageComponentName *string `pulumi:"imageComponentName"`
-	// The ID of the resource group to which to assign the image component.
+	// The ID of the resource group.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
-	// The operating system type supported by the image component. Only Linux is supported. Valid values: `Linux`.
+	// The operating system supported by the component. Currently, only Linux systems are supported. Value: Linux.  Default value: Linux.
 	SystemType *string `pulumi:"systemType"`
-	// A mapping of tags to assign to the resource.
+	// List of label key-value pairs.
 	Tags map[string]interface{} `pulumi:"tags"`
 }
 
 // The set of arguments for constructing a EcsImageComponent resource.
 type EcsImageComponentArgs struct {
-	// The type of the image component. Only image building components are supported. Valid values: `Build`.
+	// The component type. Currently, only mirror build components are supported. Value: Build.  Default value: Build.
 	ComponentType pulumi.StringPtrInput
-	// The content of the image component. The content can consist of up to 127 commands.
+	// Component content.
 	Content pulumi.StringInput
-	// The description of the image component. The description must be `2` to `256` characters in length and cannot start with `http://` or `https://`.
+	// Describe the information.
 	Description pulumi.StringPtrInput
-	// The name of the image component. The name must be `2` to `128` characters in length. It must start with a letter and cannot start with `http://` or `https://`. It can contain letters, digits, colons (:), underscores (_), periods (.), and hyphens (-).
+	// The component name. The name must be 2 to 128 characters in length and must start with an uppercase letter or a Chinese character. It cannot start with http:// or https. Can contain Chinese, English, numbers, half-length colons (:), underscores (_), half-length periods (.), or dashes (-).  Note: If Name is not set, the return value of ImageComponentId is used by default.
 	ImageComponentName pulumi.StringPtrInput
-	// The ID of the resource group to which to assign the image component.
+	// The ID of the resource group.
 	ResourceGroupId pulumi.StringPtrInput
-	// The operating system type supported by the image component. Only Linux is supported. Valid values: `Linux`.
+	// The operating system supported by the component. Currently, only Linux systems are supported. Value: Linux.  Default value: Linux.
 	SystemType pulumi.StringPtrInput
-	// A mapping of tags to assign to the resource.
+	// List of label key-value pairs.
 	Tags pulumi.MapInput
 }
 
@@ -281,37 +287,42 @@ func (o EcsImageComponentOutput) ToEcsImageComponentOutputWithContext(ctx contex
 	return o
 }
 
-// The type of the image component. Only image building components are supported. Valid values: `Build`.
+// The component type. Currently, only mirror build components are supported. Value: Build.  Default value: Build.
 func (o EcsImageComponentOutput) ComponentType() pulumi.StringOutput {
 	return o.ApplyT(func(v *EcsImageComponent) pulumi.StringOutput { return v.ComponentType }).(pulumi.StringOutput)
 }
 
-// The content of the image component. The content can consist of up to 127 commands.
+// Component content.
 func (o EcsImageComponentOutput) Content() pulumi.StringOutput {
 	return o.ApplyT(func(v *EcsImageComponent) pulumi.StringOutput { return v.Content }).(pulumi.StringOutput)
 }
 
-// The description of the image component. The description must be `2` to `256` characters in length and cannot start with `http://` or `https://`.
+// Component creation time.
+func (o EcsImageComponentOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *EcsImageComponent) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Describe the information.
 func (o EcsImageComponentOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EcsImageComponent) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// The name of the image component. The name must be `2` to `128` characters in length. It must start with a letter and cannot start with `http://` or `https://`. It can contain letters, digits, colons (:), underscores (_), periods (.), and hyphens (-).
+// The component name. The name must be 2 to 128 characters in length and must start with an uppercase letter or a Chinese character. It cannot start with http:// or https. Can contain Chinese, English, numbers, half-length colons (:), underscores (_), half-length periods (.), or dashes (-).  Note: If Name is not set, the return value of ImageComponentId is used by default.
 func (o EcsImageComponentOutput) ImageComponentName() pulumi.StringOutput {
 	return o.ApplyT(func(v *EcsImageComponent) pulumi.StringOutput { return v.ImageComponentName }).(pulumi.StringOutput)
 }
 
-// The ID of the resource group to which to assign the image component.
-func (o EcsImageComponentOutput) ResourceGroupId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *EcsImageComponent) pulumi.StringPtrOutput { return v.ResourceGroupId }).(pulumi.StringPtrOutput)
+// The ID of the resource group.
+func (o EcsImageComponentOutput) ResourceGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v *EcsImageComponent) pulumi.StringOutput { return v.ResourceGroupId }).(pulumi.StringOutput)
 }
 
-// The operating system type supported by the image component. Only Linux is supported. Valid values: `Linux`.
+// The operating system supported by the component. Currently, only Linux systems are supported. Value: Linux.  Default value: Linux.
 func (o EcsImageComponentOutput) SystemType() pulumi.StringOutput {
 	return o.ApplyT(func(v *EcsImageComponent) pulumi.StringOutput { return v.SystemType }).(pulumi.StringOutput)
 }
 
-// A mapping of tags to assign to the resource.
+// List of label key-value pairs.
 func (o EcsImageComponentOutput) Tags() pulumi.MapOutput {
 	return o.ApplyT(func(v *EcsImageComponent) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
 }

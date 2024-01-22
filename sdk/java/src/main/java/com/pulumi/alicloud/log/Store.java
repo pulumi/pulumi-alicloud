@@ -273,6 +273,20 @@ public class Store extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.maxSplitShardCount);
     }
     /**
+     * Metering mode. The default metering mode of ChargeByFunction, ChargeByDataIngest traffic mode.
+     * 
+     */
+    @Export(name="meteringMode", refs={String.class}, tree="[0]")
+    private Output<String> meteringMode;
+
+    /**
+     * @return Metering mode. The default metering mode of ChargeByFunction, ChargeByDataIngest traffic mode.
+     * 
+     */
+    public Output<String> meteringMode() {
+        return this.meteringMode;
+    }
+    /**
      * The mode of storage. Default to `standard`, must be `standard` or `query`, `lite`.
      * 
      */

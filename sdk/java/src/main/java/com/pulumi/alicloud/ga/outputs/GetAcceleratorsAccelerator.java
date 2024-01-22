@@ -65,7 +65,7 @@ public final class GetAcceleratorsAccelerator {
      */
     private String id;
     /**
-     * @return The Payment Typethe GA instance.
+     * @return The billing method of the GA instance. Valid values: `POSTPAY`, `PREPAY`.
      * 
      */
     private String paymentType;
@@ -80,7 +80,7 @@ public final class GetAcceleratorsAccelerator {
      */
     private String spec;
     /**
-     * @return The status of the GA instance.
+     * @return The status of the GA instance. Valid values: `active`, `binding`, `configuring`, `deleting`, `finacialLocked`, `init`, `unbinding`.
      * 
      */
     private String status;
@@ -157,7 +157,7 @@ public final class GetAcceleratorsAccelerator {
         return this.id;
     }
     /**
-     * @return The Payment Typethe GA instance.
+     * @return The billing method of the GA instance. Valid values: `POSTPAY`, `PREPAY`.
      * 
      */
     public String paymentType() {
@@ -178,7 +178,7 @@ public final class GetAcceleratorsAccelerator {
         return this.spec;
     }
     /**
-     * @return The status of the GA instance.
+     * @return The status of the GA instance. Valid values: `active`, `binding`, `configuring`, `deleting`, `finacialLocked`, `init`, `unbinding`.
      * 
      */
     public String status() {

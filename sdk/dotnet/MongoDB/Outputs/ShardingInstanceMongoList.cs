@@ -14,19 +14,19 @@ namespace Pulumi.AliCloud.MongoDB.Outputs
     public sealed class ShardingInstanceMongoList
     {
         /// <summary>
-        /// Mongo node connection string.
+        /// The connection address of the Config Server node.
         /// </summary>
         public readonly string? ConnectString;
         /// <summary>
-        /// Node specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
+        /// The instance type of the mongo node. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
         /// </summary>
         public readonly string NodeClass;
         /// <summary>
-        /// The ID of the mongo-node.
+        /// The ID of the Config Server node.
         /// </summary>
         public readonly string? NodeId;
         /// <summary>
-        /// Mongo node port.
+        /// The connection port of the Config Server node.
         /// </summary>
         public readonly int? Port;
 

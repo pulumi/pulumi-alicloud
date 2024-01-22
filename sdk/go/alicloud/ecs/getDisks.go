@@ -59,7 +59,7 @@ type GetDisksArgs struct {
 	//
 	// Deprecated: Field 'availability_zone' has been deprecated from provider version 1.122.0. New field 'zone_id' instead
 	AvailabilityZone *string `pulumi:"availabilityZone"`
-	// Disk category. Possible values: `cloud` (basic cloud disk), `cloudEfficiency` (ultra cloud disk), `ephemeralSsd` (local SSD cloud disk), `cloudSsd` (SSD cloud disk), and `cloudEssd` (ESSD cloud disk).
+	// Disk category. Possible values: `cloud` (basic cloud disk), `cloudEfficiency` (ultra cloud disk), `ephemeralSsd` (local SSD cloud disk), `cloudSsd` (SSD cloud disk), and `cloudEssd` (ESSD cloud disk), `cloudEssdEntry`.
 	Category                      *string `pulumi:"category"`
 	DeleteAutoSnapshot            *bool   `pulumi:"deleteAutoSnapshot"`
 	DeleteWithInstance            *bool   `pulumi:"deleteWithInstance"`
@@ -196,7 +196,7 @@ type GetDisksOutputArgs struct {
 	//
 	// Deprecated: Field 'availability_zone' has been deprecated from provider version 1.122.0. New field 'zone_id' instead
 	AvailabilityZone pulumi.StringPtrInput `pulumi:"availabilityZone"`
-	// Disk category. Possible values: `cloud` (basic cloud disk), `cloudEfficiency` (ultra cloud disk), `ephemeralSsd` (local SSD cloud disk), `cloudSsd` (SSD cloud disk), and `cloudEssd` (ESSD cloud disk).
+	// Disk category. Possible values: `cloud` (basic cloud disk), `cloudEfficiency` (ultra cloud disk), `ephemeralSsd` (local SSD cloud disk), `cloudSsd` (SSD cloud disk), and `cloudEssd` (ESSD cloud disk), `cloudEssdEntry`.
 	Category                      pulumi.StringPtrInput `pulumi:"category"`
 	DeleteAutoSnapshot            pulumi.BoolPtrInput   `pulumi:"deleteAutoSnapshot"`
 	DeleteWithInstance            pulumi.BoolPtrInput   `pulumi:"deleteWithInstance"`

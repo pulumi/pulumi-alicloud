@@ -133,7 +133,8 @@ type providerArgs struct {
 	SecurityToken     *string `pulumi:"securityToken"`
 	SecurityTransport *string `pulumi:"securityTransport"`
 	// The path to the shared credentials file. If not set this defaults to ~/.aliyun/config.json
-	SharedCredentialsFile *string `pulumi:"sharedCredentialsFile"`
+	SharedCredentialsFile *string              `pulumi:"sharedCredentialsFile"`
+	SignVersion           *ProviderSignVersion `pulumi:"signVersion"`
 	// Skip static validation of region ID. Used by users of alternative AlibabaCloud-like APIs or users w/ access to regions
 	// that are not public (yet).
 	SkipRegionValidation *bool `pulumi:"skipRegionValidation"`
@@ -187,6 +188,7 @@ type ProviderArgs struct {
 	SecurityTransport pulumi.StringPtrInput
 	// The path to the shared credentials file. If not set this defaults to ~/.aliyun/config.json
 	SharedCredentialsFile pulumi.StringPtrInput
+	SignVersion           ProviderSignVersionPtrInput
 	// Skip static validation of region ID. Used by users of alternative AlibabaCloud-like APIs or users w/ access to regions
 	// that are not public (yet).
 	SkipRegionValidation pulumi.BoolPtrInput

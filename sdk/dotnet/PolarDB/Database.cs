@@ -12,7 +12,7 @@ namespace Pulumi.AliCloud.PolarDB
     /// <summary>
     /// Provides a PolarDB database resource. A database deployed in a PolarDB cluster. A PolarDB cluster can own multiple databases.
     /// 
-    /// &gt; **NOTE:** Available in v1.66.0+.
+    /// &gt; **NOTE:** Available since v1.66.0.
     /// 
     /// ## Example Usage
     /// 
@@ -29,6 +29,7 @@ namespace Pulumi.AliCloud.PolarDB
     ///         DbType = "MySQL",
     ///         DbVersion = "8.0",
     ///         PayType = "PostPaid",
+    ///         Category = "Normal",
     ///     });
     /// 
     ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
@@ -75,6 +76,12 @@ namespace Pulumi.AliCloud.PolarDB
     [AliCloudResourceType("alicloud:polardb/database:Database")]
     public partial class Database : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// Account name authorized to access the database. Only supports PostgreSQL.
+        /// </summary>
+        [Output("accountName")]
+        public Output<string?> AccountName { get; private set; } = null!;
+
         /// <summary>
         /// Character set. The value range is limited to the following: [ utf8, gbk, latin1, utf8mb4, Chinese_PRC_CI_AS, Chinese_PRC_CS_AS, SQL_Latin1_General_CP1_CI_AS, SQL_Latin1_General_CP1_CS_AS, Chinese_PRC_BIN ], default is "utf8" \(`utf8mb4` only supports versions 5.5 and 5.6\).
         /// </summary>
@@ -146,6 +153,12 @@ namespace Pulumi.AliCloud.PolarDB
     public sealed class DatabaseArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Account name authorized to access the database. Only supports PostgreSQL.
+        /// </summary>
+        [Input("accountName")]
+        public Input<string>? AccountName { get; set; }
+
+        /// <summary>
         /// Character set. The value range is limited to the following: [ utf8, gbk, latin1, utf8mb4, Chinese_PRC_CI_AS, Chinese_PRC_CS_AS, SQL_Latin1_General_CP1_CI_AS, SQL_Latin1_General_CP1_CS_AS, Chinese_PRC_BIN ], default is "utf8" \(`utf8mb4` only supports versions 5.5 and 5.6\).
         /// </summary>
         [Input("characterSetName")]
@@ -177,6 +190,12 @@ namespace Pulumi.AliCloud.PolarDB
 
     public sealed class DatabaseState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Account name authorized to access the database. Only supports PostgreSQL.
+        /// </summary>
+        [Input("accountName")]
+        public Input<string>? AccountName { get; set; }
+
         /// <summary>
         /// Character set. The value range is limited to the following: [ utf8, gbk, latin1, utf8mb4, Chinese_PRC_CI_AS, Chinese_PRC_CS_AS, SQL_Latin1_General_CP1_CI_AS, SQL_Latin1_General_CP1_CS_AS, Chinese_PRC_BIN ], default is "utf8" \(`utf8mb4` only supports versions 5.5 and 5.6\).
         /// </summary>

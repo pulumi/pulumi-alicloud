@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Ga
         /// <summary>
         /// This data source provides the Global Accelerator (GA) Accelerators of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.111.0+.
+        /// &gt; **NOTE:** Available since v1.111.0.
         /// 
         /// {{% examples %}}
         /// ## Example Usage
@@ -32,11 +32,7 @@ namespace Pulumi.AliCloud.Ga
         /// {
         ///     var example = AliCloud.Ga.GetAccelerators.Invoke(new()
         ///     {
-        ///         Ids = new[]
-        ///         {
-        ///             "example_value",
-        ///         },
-        ///         NameRegex = "the_resource_name",
+        ///         NameRegex = "tf",
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
@@ -54,7 +50,7 @@ namespace Pulumi.AliCloud.Ga
         /// <summary>
         /// This data source provides the Global Accelerator (GA) Accelerators of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.111.0+.
+        /// &gt; **NOTE:** Available since v1.111.0.
         /// 
         /// {{% examples %}}
         /// ## Example Usage
@@ -72,11 +68,7 @@ namespace Pulumi.AliCloud.Ga
         /// {
         ///     var example = AliCloud.Ga.GetAccelerators.Invoke(new()
         ///     {
-        ///         Ids = new[]
-        ///         {
-        ///             "example_value",
-        ///         },
-        ///         NameRegex = "the_resource_name",
+        ///         NameRegex = "tf",
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
@@ -120,7 +112,7 @@ namespace Pulumi.AliCloud.Ga
         public string? OutputFile { get; set; }
 
         /// <summary>
-        /// The status of the GA instance.
+        /// The status of the GA instance. Valid values: `active`, `binding`, `configuring`, `deleting`, `finacialLocked`, `init`, `unbinding`.
         /// </summary>
         [Input("status")]
         public string? Status { get; set; }
@@ -158,7 +150,7 @@ namespace Pulumi.AliCloud.Ga
         public Input<string>? OutputFile { get; set; }
 
         /// <summary>
-        /// The status of the GA instance.
+        /// The status of the GA instance. Valid values: `active`, `binding`, `configuring`, `deleting`, `finacialLocked`, `init`, `unbinding`.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
@@ -173,6 +165,9 @@ namespace Pulumi.AliCloud.Ga
     [OutputType]
     public sealed class GetAcceleratorsResult
     {
+        /// <summary>
+        /// A list of Ga Accelerators. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetAcceleratorsAcceleratorResult> Accelerators;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
@@ -180,8 +175,14 @@ namespace Pulumi.AliCloud.Ga
         public readonly string Id;
         public readonly ImmutableArray<string> Ids;
         public readonly string? NameRegex;
+        /// <summary>
+        /// A list of Accelerator names.
+        /// </summary>
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;
+        /// <summary>
+        /// The status of the GA instance.
+        /// </summary>
         public readonly string? Status;
 
         [OutputConstructor]

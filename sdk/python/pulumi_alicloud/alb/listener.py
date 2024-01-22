@@ -33,6 +33,7 @@ class ListenerArgs:
                  request_timeout: Optional[pulumi.Input[int]] = None,
                  security_policy_id: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  x_forwarded_for_config: Optional[pulumi.Input['ListenerXForwardedForConfigArgs']] = None):
         """
         The set of arguments for constructing a Listener resource.
@@ -59,6 +60,7 @@ class ListenerArgs:
                
                > **NOTE:** The attribute is valid when the attribute `listener_protocol` is `HTTPS`.
         :param pulumi.Input[str] status: The state of the listener. Valid Values: `Running` Or `Stopped`. Valid values: `Running`: The listener is running. `Stopped`: The listener is stopped.
+        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input['ListenerXForwardedForConfigArgs'] x_forwarded_for_config: The `x_forward_for` Related Attribute Configuration. See `x_forwarded_for_config` below for details. **NOTE:** The attribute is valid when the attribute `listener_protocol` is `HTTPS`.
         """
         pulumi.set(__self__, "listener_port", listener_port)
@@ -95,6 +97,8 @@ class ListenerArgs:
             pulumi.set(__self__, "security_policy_id", security_policy_id)
         if status is not None:
             pulumi.set(__self__, "status", status)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
         if x_forwarded_for_config is not None:
             pulumi.set(__self__, "x_forwarded_for_config", x_forwarded_for_config)
 
@@ -312,6 +316,18 @@ class ListenerArgs:
         pulumi.set(self, "status", value)
 
     @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        A mapping of tags to assign to the resource.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "tags", value)
+
+    @property
     @pulumi.getter(name="xForwardedForConfig")
     def x_forwarded_for_config(self) -> Optional[pulumi.Input['ListenerXForwardedForConfigArgs']]:
         """
@@ -344,6 +360,7 @@ class _ListenerState:
                  request_timeout: Optional[pulumi.Input[int]] = None,
                  security_policy_id: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  x_forwarded_for_config: Optional[pulumi.Input['ListenerXForwardedForConfigArgs']] = None):
         """
         Input properties used for looking up and filtering Listener resources.
@@ -370,6 +387,7 @@ class _ListenerState:
                
                > **NOTE:** The attribute is valid when the attribute `listener_protocol` is `HTTPS`.
         :param pulumi.Input[str] status: The state of the listener. Valid Values: `Running` Or `Stopped`. Valid values: `Running`: The listener is running. `Stopped`: The listener is stopped.
+        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input['ListenerXForwardedForConfigArgs'] x_forwarded_for_config: The `x_forward_for` Related Attribute Configuration. See `x_forwarded_for_config` below for details. **NOTE:** The attribute is valid when the attribute `listener_protocol` is `HTTPS`.
         """
         if access_log_record_customized_headers_enabled is not None:
@@ -409,6 +427,8 @@ class _ListenerState:
             pulumi.set(__self__, "security_policy_id", security_policy_id)
         if status is not None:
             pulumi.set(__self__, "status", status)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
         if x_forwarded_for_config is not None:
             pulumi.set(__self__, "x_forwarded_for_config", x_forwarded_for_config)
 
@@ -626,6 +646,18 @@ class _ListenerState:
         pulumi.set(self, "status", value)
 
     @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        A mapping of tags to assign to the resource.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "tags", value)
+
+    @property
     @pulumi.getter(name="xForwardedForConfig")
     def x_forwarded_for_config(self) -> Optional[pulumi.Input['ListenerXForwardedForConfigArgs']]:
         """
@@ -660,6 +692,7 @@ class Listener(pulumi.CustomResource):
                  request_timeout: Optional[pulumi.Input[int]] = None,
                  security_policy_id: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  x_forwarded_for_config: Optional[pulumi.Input[pulumi.InputType['ListenerXForwardedForConfigArgs']]] = None,
                  __props__=None):
         """
@@ -702,6 +735,7 @@ class Listener(pulumi.CustomResource):
                
                > **NOTE:** The attribute is valid when the attribute `listener_protocol` is `HTTPS`.
         :param pulumi.Input[str] status: The state of the listener. Valid Values: `Running` Or `Stopped`. Valid values: `Running`: The listener is running. `Stopped`: The listener is stopped.
+        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[pulumi.InputType['ListenerXForwardedForConfigArgs']] x_forwarded_for_config: The `x_forward_for` Related Attribute Configuration. See `x_forwarded_for_config` below for details. **NOTE:** The attribute is valid when the attribute `listener_protocol` is `HTTPS`.
         """
         ...
@@ -757,6 +791,7 @@ class Listener(pulumi.CustomResource):
                  request_timeout: Optional[pulumi.Input[int]] = None,
                  security_policy_id: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  x_forwarded_for_config: Optional[pulumi.Input[pulumi.InputType['ListenerXForwardedForConfigArgs']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -790,6 +825,7 @@ class Listener(pulumi.CustomResource):
             __props__.__dict__["request_timeout"] = request_timeout
             __props__.__dict__["security_policy_id"] = security_policy_id
             __props__.__dict__["status"] = status
+            __props__.__dict__["tags"] = tags
             __props__.__dict__["x_forwarded_for_config"] = x_forwarded_for_config
         super(Listener, __self__).__init__(
             'alicloud:alb/listener:Listener',
@@ -818,6 +854,7 @@ class Listener(pulumi.CustomResource):
             request_timeout: Optional[pulumi.Input[int]] = None,
             security_policy_id: Optional[pulumi.Input[str]] = None,
             status: Optional[pulumi.Input[str]] = None,
+            tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             x_forwarded_for_config: Optional[pulumi.Input[pulumi.InputType['ListenerXForwardedForConfigArgs']]] = None) -> 'Listener':
         """
         Get an existing Listener resource's state with the given name, id, and optional extra
@@ -849,6 +886,7 @@ class Listener(pulumi.CustomResource):
                
                > **NOTE:** The attribute is valid when the attribute `listener_protocol` is `HTTPS`.
         :param pulumi.Input[str] status: The state of the listener. Valid Values: `Running` Or `Stopped`. Valid values: `Running`: The listener is running. `Stopped`: The listener is stopped.
+        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[pulumi.InputType['ListenerXForwardedForConfigArgs']] x_forwarded_for_config: The `x_forward_for` Related Attribute Configuration. See `x_forwarded_for_config` below for details. **NOTE:** The attribute is valid when the attribute `listener_protocol` is `HTTPS`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -872,6 +910,7 @@ class Listener(pulumi.CustomResource):
         __props__.__dict__["request_timeout"] = request_timeout
         __props__.__dict__["security_policy_id"] = security_policy_id
         __props__.__dict__["status"] = status
+        __props__.__dict__["tags"] = tags
         __props__.__dict__["x_forwarded_for_config"] = x_forwarded_for_config
         return Listener(resource_name, opts=opts, __props__=__props__)
 
@@ -1019,6 +1058,14 @@ class Listener(pulumi.CustomResource):
         The state of the listener. Valid Values: `Running` Or `Stopped`. Valid values: `Running`: The listener is running. `Stopped`: The listener is stopped.
         """
         return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+        """
+        A mapping of tags to assign to the resource.
+        """
+        return pulumi.get(self, "tags")
 
     @property
     @pulumi.getter(name="xForwardedForConfig")

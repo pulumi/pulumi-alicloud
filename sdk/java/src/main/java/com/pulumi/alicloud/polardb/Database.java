@@ -17,7 +17,7 @@ import javax.annotation.Nullable;
 /**
  * Provides a PolarDB database resource. A database deployed in a PolarDB cluster. A PolarDB cluster can own multiple databases.
  * 
- * &gt; **NOTE:** Available in v1.66.0+.
+ * &gt; **NOTE:** Available since v1.66.0.
  * 
  * ## Example Usage
  * ```java
@@ -53,6 +53,7 @@ import javax.annotation.Nullable;
  *             .dbType(&#34;MySQL&#34;)
  *             .dbVersion(&#34;8.0&#34;)
  *             .payType(&#34;PostPaid&#34;)
+ *             .category(&#34;Normal&#34;)
  *             .build());
  * 
  *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
@@ -96,6 +97,20 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="alicloud:polardb/database:Database")
 public class Database extends com.pulumi.resources.CustomResource {
+    /**
+     * Account name authorized to access the database. Only supports PostgreSQL.
+     * 
+     */
+    @Export(name="accountName", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> accountName;
+
+    /**
+     * @return Account name authorized to access the database. Only supports PostgreSQL.
+     * 
+     */
+    public Output<Optional<String>> accountName() {
+        return Codegen.optional(this.accountName);
+    }
     /**
      * Character set. The value range is limited to the following: [ utf8, gbk, latin1, utf8mb4, Chinese_PRC_CI_AS, Chinese_PRC_CS_AS, SQL_Latin1_General_CP1_CI_AS, SQL_Latin1_General_CP1_CS_AS, Chinese_PRC_BIN ], default is &#34;utf8&#34; \(`utf8mb4` only supports versions 5.5 and 5.6\).
      * 

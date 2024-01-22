@@ -22,10 +22,9 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a ALB Server Group resource.
+ * Provides an ALB Server Group resource.
  * 
- * For information about ALB Server Group and how to use it,
- * see [What is Server Group](https://www.alibabacloud.com/help/en/slb/application-load-balancer/developer-reference/api-alb-2020-06-16-createservergroup).
+ * For information about ALB Server Group and how to use it, see [What is Server Group](https://www.alibabacloud.com/help/en/slb/application-load-balancer/developer-reference/api-alb-2020-06-16-createservergroup).
  * 
  * &gt; **NOTE:** Available since v1.131.0.
  * 
@@ -38,13 +37,13 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+ * import com.pulumi.alicloud.resourcemanager.inputs.GetResourceGroupsArgs;
  * import com.pulumi.alicloud.AlicloudFunctions;
  * import com.pulumi.alicloud.inputs.GetZonesArgs;
  * import com.pulumi.alicloud.ecs.EcsFunctions;
  * import com.pulumi.alicloud.ecs.inputs.GetInstanceTypesArgs;
  * import com.pulumi.alicloud.ecs.inputs.GetImagesArgs;
- * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
- * import com.pulumi.alicloud.resourcemanager.inputs.GetResourceGroupsArgs;
  * import com.pulumi.alicloud.vpc.Network;
  * import com.pulumi.alicloud.vpc.NetworkArgs;
  * import com.pulumi.alicloud.vpc.Switch;
@@ -55,8 +54,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.alicloud.ecs.InstanceArgs;
  * import com.pulumi.alicloud.alb.ServerGroup;
  * import com.pulumi.alicloud.alb.ServerGroupArgs;
- * import com.pulumi.alicloud.alb.inputs.ServerGroupHealthCheckConfigArgs;
  * import com.pulumi.alicloud.alb.inputs.ServerGroupStickySessionConfigArgs;
+ * import com.pulumi.alicloud.alb.inputs.ServerGroupHealthCheckConfigArgs;
  * import com.pulumi.alicloud.alb.inputs.ServerGroupServerArgs;
  * import java.util.List;
  * import java.util.ArrayList;
@@ -73,6 +72,8 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get(&#34;name&#34;).orElse(&#34;terraform-example&#34;);
+ *         final var exampleResourceGroups = ResourcemanagerFunctions.getResourceGroups();
+ * 
  *         final var exampleZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
  *             .availableResourceCreation(&#34;Instance&#34;)
  *             .build());
@@ -87,8 +88,6 @@ import javax.annotation.Nullable;
  *             .nameRegex(&#34;^ubuntu_[0-9]+_[0-9]+_x64*&#34;)
  *             .owners(&#34;system&#34;)
  *             .build());
- * 
- *         final var exampleResourceGroups = ResourcemanagerFunctions.getResourceGroups();
  * 
  *         var exampleNetwork = new Network(&#34;exampleNetwork&#34;, NetworkArgs.builder()        
  *             .vpcName(name)
@@ -121,6 +120,11 @@ import javax.annotation.Nullable;
  *             .vpcId(exampleNetwork.id())
  *             .serverGroupName(name)
  *             .resourceGroupId(exampleResourceGroups.applyValue(getResourceGroupsResult -&gt; getResourceGroupsResult.groups()[0].id()))
+ *             .stickySessionConfig(ServerGroupStickySessionConfigArgs.builder()
+ *                 .stickySessionEnabled(true)
+ *                 .cookie(&#34;tf-example&#34;)
+ *                 .stickySessionType(&#34;Server&#34;)
+ *                 .build())
  *             .healthCheckConfig(ServerGroupHealthCheckConfigArgs.builder()
  *                 .healthCheckConnectPort(&#34;46325&#34;)
  *                 .healthCheckEnabled(true)
@@ -138,12 +142,6 @@ import javax.annotation.Nullable;
  *                 .healthyThreshold(3)
  *                 .unhealthyThreshold(3)
  *                 .build())
- *             .stickySessionConfig(ServerGroupStickySessionConfigArgs.builder()
- *                 .stickySessionEnabled(true)
- *                 .cookie(&#34;tf-example&#34;)
- *                 .stickySessionType(&#34;Server&#34;)
- *                 .build())
- *             .tags(Map.of(&#34;Created&#34;, &#34;TF&#34;))
  *             .servers(ServerGroupServerArgs.builder()
  *                 .description(name)
  *                 .port(80)
@@ -152,6 +150,7 @@ import javax.annotation.Nullable;
  *                 .serverType(&#34;Ecs&#34;)
  *                 .weight(10)
  *                 .build())
+ *             .tags(Map.of(&#34;Created&#34;, &#34;TF&#34;))
  *             .build());
  * 
  *     }
@@ -184,28 +183,28 @@ public class ServerGroup extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.dryRun);
     }
     /**
-     * The configuration of health checks. See `health_check_config` below for details.
+     * The configuration of health checks. See `health_check_config` below.
      * 
      */
     @Export(name="healthCheckConfig", refs={ServerGroupHealthCheckConfig.class}, tree="[0]")
-    private Output</* @Nullable */ ServerGroupHealthCheckConfig> healthCheckConfig;
+    private Output<ServerGroupHealthCheckConfig> healthCheckConfig;
 
     /**
-     * @return The configuration of health checks. See `health_check_config` below for details.
+     * @return The configuration of health checks. See `health_check_config` below.
      * 
      */
-    public Output<Optional<ServerGroupHealthCheckConfig>> healthCheckConfig() {
-        return Codegen.optional(this.healthCheckConfig);
+    public Output<ServerGroupHealthCheckConfig> healthCheckConfig() {
+        return this.healthCheckConfig;
     }
     /**
-     * The server protocol. Valid values: `  HTTPS `, `HTTP`.
+     * The server protocol. Valid values: `  HTTP `, `HTTPS`, `gRPC`. While `server_group_type` is `Fc` this parameter will not take effect. From version 1.215.0, `protocol` can be set to `gRPC`.
      * 
      */
     @Export(name="protocol", refs={String.class}, tree="[0]")
     private Output<String> protocol;
 
     /**
-     * @return The server protocol. Valid values: `  HTTPS `, `HTTP`.
+     * @return The server protocol. Valid values: `  HTTP `, `HTTPS`, `gRPC`. While `server_group_type` is `Fc` this parameter will not take effect. From version 1.215.0, `protocol` can be set to `gRPC`.
      * 
      */
     public Output<String> protocol() {
@@ -226,88 +225,88 @@ public class ServerGroup extends com.pulumi.resources.CustomResource {
         return this.resourceGroupId;
     }
     /**
-     * The scheduling algorithm. Valid values: `  Sch `, `  Wlc `, `Wrr`.
+     * The scheduling algorithm. Valid values: `  Sch `, `  Wlc `, `Wrr`. **NOTE:** This parameter takes effect when the `server_group_type` parameter is set to `Instance` or `Ip`.
      * 
      */
     @Export(name="scheduler", refs={String.class}, tree="[0]")
     private Output<String> scheduler;
 
     /**
-     * @return The scheduling algorithm. Valid values: `  Sch `, `  Wlc `, `Wrr`.
+     * @return The scheduling algorithm. Valid values: `  Sch `, `  Wlc `, `Wrr`. **NOTE:** This parameter takes effect when the `server_group_type` parameter is set to `Instance` or `Ip`.
      * 
      */
     public Output<String> scheduler() {
         return this.scheduler;
     }
     /**
-     * The name of the resource.
+     * The name of the server group.
      * 
      */
     @Export(name="serverGroupName", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> serverGroupName;
+    private Output<String> serverGroupName;
 
     /**
-     * @return The name of the resource.
+     * @return The name of the server group.
      * 
      */
-    public Output<Optional<String>> serverGroupName() {
-        return Codegen.optional(this.serverGroupName);
+    public Output<String> serverGroupName() {
+        return this.serverGroupName;
     }
     /**
-     * The type of the server group. Valid values:
+     * The type of the server group. Default value: `Instance`. Valid values:
      * 
      */
     @Export(name="serverGroupType", refs={String.class}, tree="[0]")
     private Output<String> serverGroupType;
 
     /**
-     * @return The type of the server group. Valid values:
+     * @return The type of the server group. Default value: `Instance`. Valid values:
      * 
      */
     public Output<String> serverGroupType() {
         return this.serverGroupType;
     }
     /**
-     * The backend server. See `servers` below for details.
+     * The backend servers. See `servers` below.
      * 
      */
     @Export(name="servers", refs={List.class,ServerGroupServer.class}, tree="[0,1]")
     private Output</* @Nullable */ List<ServerGroupServer>> servers;
 
     /**
-     * @return The backend server. See `servers` below for details.
+     * @return The backend servers. See `servers` below.
      * 
      */
     public Output<Optional<List<ServerGroupServer>>> servers() {
         return Codegen.optional(this.servers);
     }
     /**
-     * The status of the backend server. Valid values:
+     * The status of the backend server.
      * 
      */
     @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
-     * @return The status of the backend server. Valid values:
+     * @return The status of the backend server.
      * 
      */
     public Output<String> status() {
         return this.status;
     }
     /**
-     * The configuration of the sticky session. See `sticky_session_config` below for details.
+     * The configuration of session persistence. See `sticky_session_config` below.
      * 
      */
     @Export(name="stickySessionConfig", refs={ServerGroupStickySessionConfig.class}, tree="[0]")
-    private Output</* @Nullable */ ServerGroupStickySessionConfig> stickySessionConfig;
+    private Output<ServerGroupStickySessionConfig> stickySessionConfig;
 
     /**
-     * @return The configuration of the sticky session. See `sticky_session_config` below for details.
+     * @return The configuration of session persistence. See `sticky_session_config` below.
      * 
      */
-    public Output<Optional<ServerGroupStickySessionConfig>> stickySessionConfig() {
-        return Codegen.optional(this.stickySessionConfig);
+    public Output<ServerGroupStickySessionConfig> stickySessionConfig() {
+        return this.stickySessionConfig;
     }
     /**
      * A mapping of tags to assign to the resource.
@@ -324,14 +323,14 @@ public class ServerGroup extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.tags);
     }
     /**
-     * The ID of the VPC that you want to access.
+     * The ID of the VPC that you want to access. **NOTE:** This parameter takes effect when the `server_group_type` parameter is set to `Instance` or `Ip`.
      * 
      */
     @Export(name="vpcId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> vpcId;
 
     /**
-     * @return The ID of the VPC that you want to access.
+     * @return The ID of the VPC that you want to access. **NOTE:** This parameter takes effect when the `server_group_type` parameter is set to `Instance` or `Ip`.
      * 
      */
     public Output<Optional<String>> vpcId() {
@@ -350,7 +349,7 @@ public class ServerGroup extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public ServerGroup(String name, @Nullable ServerGroupArgs args) {
+    public ServerGroup(String name, ServerGroupArgs args) {
         this(name, args, null);
     }
     /**
@@ -359,7 +358,7 @@ public class ServerGroup extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public ServerGroup(String name, @Nullable ServerGroupArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public ServerGroup(String name, ServerGroupArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("alicloud:alb/serverGroup:ServerGroup", name, args == null ? ServerGroupArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
     }
 

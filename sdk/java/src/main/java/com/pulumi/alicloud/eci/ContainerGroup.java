@@ -9,10 +9,10 @@ import com.pulumi.alicloud.eci.inputs.ContainerGroupState;
 import com.pulumi.alicloud.eci.outputs.ContainerGroupAcrRegistryInfo;
 import com.pulumi.alicloud.eci.outputs.ContainerGroupContainer;
 import com.pulumi.alicloud.eci.outputs.ContainerGroupDnsConfig;
-import com.pulumi.alicloud.eci.outputs.ContainerGroupEciSecurityContext;
 import com.pulumi.alicloud.eci.outputs.ContainerGroupHostAlias;
 import com.pulumi.alicloud.eci.outputs.ContainerGroupImageRegistryCredential;
 import com.pulumi.alicloud.eci.outputs.ContainerGroupInitContainer;
+import com.pulumi.alicloud.eci.outputs.ContainerGroupSecurityContext;
 import com.pulumi.alicloud.eci.outputs.ContainerGroupVolume;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
@@ -97,65 +97,57 @@ import javax.annotation.Nullable;
  *             .restartPolicy(&#34;OnFailure&#34;)
  *             .securityGroupId(defaultSecurityGroup.id())
  *             .vswitchId(defaultSwitch.id())
+ *             .autoCreateEip(true)
  *             .tags(Map.ofEntries(
  *                 Map.entry(&#34;Created&#34;, &#34;TF&#34;),
  *                 Map.entry(&#34;For&#34;, &#34;example&#34;)
  *             ))
- *             .containers(            
- *                 ContainerGroupContainerArgs.builder()
- *                     .image(&#34;registry-vpc.cn-beijing.aliyuncs.com/eci_open/nginx:alpine&#34;)
- *                     .name(&#34;nginx&#34;)
- *                     .workingDir(&#34;/tmp/nginx&#34;)
- *                     .imagePullPolicy(&#34;IfNotPresent&#34;)
- *                     .commands(                    
- *                         &#34;/bin/sh&#34;,
- *                         &#34;-c&#34;,
- *                         &#34;sleep 9999&#34;)
- *                     .volumeMounts(ContainerGroupContainerVolumeMountArgs.builder()
- *                         .mountPath(&#34;/tmp/example&#34;)
- *                         .readOnly(false)
- *                         .name(&#34;empty1&#34;)
- *                         .build())
- *                     .ports(ContainerGroupContainerPortArgs.builder()
- *                         .port(80)
- *                         .protocol(&#34;TCP&#34;)
- *                         .build())
- *                     .environmentVars(ContainerGroupContainerEnvironmentVarArgs.builder()
- *                         .key(&#34;name&#34;)
- *                         .value(&#34;nginx&#34;)
- *                         .build())
- *                     .livenessProbes(ContainerGroupContainerLivenessProbeArgs.builder()
- *                         .periodSeconds(&#34;5&#34;)
- *                         .initialDelaySeconds(&#34;5&#34;)
- *                         .successThreshold(&#34;1&#34;)
- *                         .failureThreshold(&#34;3&#34;)
- *                         .timeoutSeconds(&#34;1&#34;)
- *                         .execs(ContainerGroupContainerLivenessProbeExecArgs.builder()
- *                             .commands(&#34;cat /tmp/healthy&#34;)
- *                             .build())
- *                         .build())
- *                     .readinessProbes(ContainerGroupContainerReadinessProbeArgs.builder()
- *                         .periodSeconds(&#34;5&#34;)
- *                         .initialDelaySeconds(&#34;5&#34;)
- *                         .successThreshold(&#34;1&#34;)
- *                         .failureThreshold(&#34;3&#34;)
- *                         .timeoutSeconds(&#34;1&#34;)
- *                         .execs(ContainerGroupContainerReadinessProbeExecArgs.builder()
- *                             .commands(&#34;cat /tmp/healthy&#34;)
- *                             .build())
- *                         .build())
- *                     .build(),
- *                 ContainerGroupContainerArgs.builder()
- *                     .image(&#34;registry-vpc.cn-beijing.aliyuncs.com/eci_open/centos:7&#34;)
- *                     .name(&#34;centos&#34;)
- *                     .commands(                    
- *                         &#34;/bin/sh&#34;,
- *                         &#34;-c&#34;,
- *                         &#34;sleep 9999&#34;)
+ *             .containers(ContainerGroupContainerArgs.builder()
+ *                 .image(&#34;registry.cn-beijing.aliyuncs.com/eci_open/nginx:alpine&#34;)
+ *                 .name(&#34;nginx&#34;)
+ *                 .workingDir(&#34;/tmp/nginx&#34;)
+ *                 .imagePullPolicy(&#34;IfNotPresent&#34;)
+ *                 .commands(                
+ *                     &#34;/bin/sh&#34;,
+ *                     &#34;-c&#34;,
+ *                     &#34;sleep 9999&#34;)
+ *                 .volumeMounts(ContainerGroupContainerVolumeMountArgs.builder()
+ *                     .mountPath(&#34;/tmp/example&#34;)
+ *                     .readOnly(false)
+ *                     .name(&#34;empty1&#34;)
  *                     .build())
+ *                 .ports(ContainerGroupContainerPortArgs.builder()
+ *                     .port(80)
+ *                     .protocol(&#34;TCP&#34;)
+ *                     .build())
+ *                 .environmentVars(ContainerGroupContainerEnvironmentVarArgs.builder()
+ *                     .key(&#34;name&#34;)
+ *                     .value(&#34;nginx&#34;)
+ *                     .build())
+ *                 .livenessProbes(ContainerGroupContainerLivenessProbeArgs.builder()
+ *                     .periodSeconds(&#34;5&#34;)
+ *                     .initialDelaySeconds(&#34;5&#34;)
+ *                     .successThreshold(&#34;1&#34;)
+ *                     .failureThreshold(&#34;3&#34;)
+ *                     .timeoutSeconds(&#34;1&#34;)
+ *                     .execs(ContainerGroupContainerLivenessProbeExecArgs.builder()
+ *                         .commands(&#34;cat /tmp/healthy&#34;)
+ *                         .build())
+ *                     .build())
+ *                 .readinessProbes(ContainerGroupContainerReadinessProbeArgs.builder()
+ *                     .periodSeconds(&#34;5&#34;)
+ *                     .initialDelaySeconds(&#34;5&#34;)
+ *                     .successThreshold(&#34;1&#34;)
+ *                     .failureThreshold(&#34;3&#34;)
+ *                     .timeoutSeconds(&#34;1&#34;)
+ *                     .execs(ContainerGroupContainerReadinessProbeExecArgs.builder()
+ *                         .commands(&#34;cat /tmp/healthy&#34;)
+ *                         .build())
+ *                     .build())
+ *                 .build())
  *             .initContainers(ContainerGroupInitContainerArgs.builder()
  *                 .name(&#34;init-busybox&#34;)
- *                 .image(&#34;registry-vpc.cn-beijing.aliyuncs.com/eci_open/busybox:1.30&#34;)
+ *                 .image(&#34;registry.cn-beijing.aliyuncs.com/eci_open/busybox:1.30&#34;)
  *                 .imagePullPolicy(&#34;IfNotPresent&#34;)
  *                 .commands(&#34;echo&#34;)
  *                 .args(&#34;hello initcontainer&#34;)
@@ -283,20 +275,6 @@ public class ContainerGroup extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<ContainerGroupDnsConfig>> dnsConfig() {
         return Codegen.optional(this.dnsConfig);
-    }
-    /**
-     * The security context of the container group. See `eci_security_context` below.
-     * 
-     */
-    @Export(name="eciSecurityContext", refs={ContainerGroupEciSecurityContext.class}, tree="[0]")
-    private Output</* @Nullable */ ContainerGroupEciSecurityContext> eciSecurityContext;
-
-    /**
-     * @return The security context of the container group. See `eci_security_context` below.
-     * 
-     */
-    public Output<Optional<ContainerGroupEciSecurityContext>> eciSecurityContext() {
-        return Codegen.optional(this.eciSecurityContext);
     }
     /**
      * The bandwidth of the EIP. Default value: `5`.
@@ -493,6 +471,20 @@ public class ContainerGroup extends com.pulumi.resources.CustomResource {
      */
     public Output<String> restartPolicy() {
         return this.restartPolicy;
+    }
+    /**
+     * The security context of the container group. See `security_context` below.
+     * 
+     */
+    @Export(name="securityContext", refs={ContainerGroupSecurityContext.class}, tree="[0]")
+    private Output</* @Nullable */ ContainerGroupSecurityContext> securityContext;
+
+    /**
+     * @return The security context of the container group. See `security_context` below.
+     * 
+     */
+    public Output<Optional<ContainerGroupSecurityContext>> securityContext() {
+        return Codegen.optional(this.securityContext);
     }
     /**
      * The ID of the security group to which the container group belongs. Container groups within the same security group can access each other.

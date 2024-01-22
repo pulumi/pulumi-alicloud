@@ -146,6 +146,10 @@ export class Store extends pulumi.CustomResource {
      */
     public readonly maxSplitShardCount!: pulumi.Output<number | undefined>;
     /**
+     * Metering mode. The default metering mode of ChargeByFunction, ChargeByDataIngest traffic mode.
+     */
+    public readonly meteringMode!: pulumi.Output<string>;
+    /**
      * The mode of storage. Default to `standard`, must be `standard` or `query`, `lite`.
      */
     public readonly mode!: pulumi.Output<string>;
@@ -205,6 +209,7 @@ export class Store extends pulumi.CustomResource {
             resourceInputs["hotTtl"] = state ? state.hotTtl : undefined;
             resourceInputs["logstoreName"] = state ? state.logstoreName : undefined;
             resourceInputs["maxSplitShardCount"] = state ? state.maxSplitShardCount : undefined;
+            resourceInputs["meteringMode"] = state ? state.meteringMode : undefined;
             resourceInputs["mode"] = state ? state.mode : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
@@ -222,6 +227,7 @@ export class Store extends pulumi.CustomResource {
             resourceInputs["hotTtl"] = args ? args.hotTtl : undefined;
             resourceInputs["logstoreName"] = args ? args.logstoreName : undefined;
             resourceInputs["maxSplitShardCount"] = args ? args.maxSplitShardCount : undefined;
+            resourceInputs["meteringMode"] = args ? args.meteringMode : undefined;
             resourceInputs["mode"] = args ? args.mode : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
@@ -273,6 +279,10 @@ export interface StoreState {
      * The maximum number of shards for automatic split, which is in the range of 1 to 256. You must specify this parameter when autoSplit is true.
      */
     maxSplitShardCount?: pulumi.Input<number>;
+    /**
+     * Metering mode. The default metering mode of ChargeByFunction, ChargeByDataIngest traffic mode.
+     */
+    meteringMode?: pulumi.Input<string>;
     /**
      * The mode of storage. Default to `standard`, must be `standard` or `query`, `lite`.
      */
@@ -345,6 +355,10 @@ export interface StoreArgs {
      * The maximum number of shards for automatic split, which is in the range of 1 to 256. You must specify this parameter when autoSplit is true.
      */
     maxSplitShardCount?: pulumi.Input<number>;
+    /**
+     * Metering mode. The default metering mode of ChargeByFunction, ChargeByDataIngest traffic mode.
+     */
+    meteringMode?: pulumi.Input<string>;
     /**
      * The mode of storage. Default to `standard`, must be `standard` or `query`, `lite`.
      */

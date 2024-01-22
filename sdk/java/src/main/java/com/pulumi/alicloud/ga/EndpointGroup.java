@@ -12,6 +12,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.Object;
 import java.lang.String;
@@ -21,20 +22,6 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a Global Accelerator (GA) Endpoint Group resource.
- * 
- * For information about Global Accelerator (GA) Endpoint Group and how to use it, see [What is Endpoint Group](https://www.alibabacloud.com/help/en/global-accelerator/latest/api-ga-2019-11-20-createendpointgroup).
- * 
- * &gt; **NOTE:** Available since v1.113.0.
- * 
- * &gt; **NOTE:** Listeners that use different protocols support different types of endpoint groups:
- * 
- * * For a TCP or UDP listener, you can create only one default endpoint group.
- * * For an HTTP or HTTPS listener, you can create one default endpoint group and one virtual endpoint group. By default, you can create only one virtual endpoint group.
- *   * A default endpoint group refers to the endpoint group that you configure when you create an HTTP or HTTPS listener.
- *   * A virtual endpoint group refers to the endpoint group that you can create on the Endpoint Group page after you create a listener.
- * * After you create a virtual endpoint group for an HTTP or HTTPS listener, you can create a forwarding rule and associate the forwarding rule with the virtual endpoint group. Then, the HTTP or HTTPS listener forwards requests with different destination domain names or paths to the default or virtual endpoint group based on the forwarding rule. This way, you can use one Global Accelerator (GA) instance to accelerate access to multiple domain names or paths. For more information about how to create a forwarding rule, see [Manage forwarding rules](https://www.alibabacloud.com/help/en/doc-detail/204224.htm).
- * 
  * ## Example Usage
  * 
  * Basic Usage
@@ -246,6 +233,20 @@ public class EndpointGroup extends com.pulumi.resources.CustomResource {
      */
     public Output<String> endpointRequestProtocol() {
         return this.endpointRequestProtocol;
+    }
+    /**
+     * Specifies whether to enable the health check feature. Valid values:
+     * 
+     */
+    @Export(name="healthCheckEnabled", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> healthCheckEnabled;
+
+    /**
+     * @return Specifies whether to enable the health check feature. Valid values:
+     * 
+     */
+    public Output<Optional<Boolean>> healthCheckEnabled() {
+        return Codegen.optional(this.healthCheckEnabled);
     }
     /**
      * The interval between two consecutive health checks. Unit: seconds.

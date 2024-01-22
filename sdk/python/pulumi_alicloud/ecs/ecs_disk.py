@@ -41,7 +41,7 @@ class EcsDiskArgs:
         """
         The set of arguments for constructing a EcsDisk resource.
         :param pulumi.Input[str] availability_zone: Field `availability_zone` has been deprecated from provider version 1.122.0. New field `zone_id` instead.
-        :param pulumi.Input[str] category: Category of the disk. Valid values are `cloud`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud_auto`. Default is `cloud_efficiency`.
+        :param pulumi.Input[str] category: Category of the disk. Valid values are `cloud`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud_auto`, `cloud_essd_entry`. Default is `cloud_efficiency`.
         :param pulumi.Input[bool] delete_auto_snapshot: Indicates whether the automatic snapshot is deleted when the disk is released. Default value: `false`.
         :param pulumi.Input[bool] delete_with_instance: Indicates whether the disk is released together with the instance. Default value: `false`.
         :param pulumi.Input[str] description: Description of the disk. This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
@@ -148,7 +148,7 @@ class EcsDiskArgs:
     @pulumi.getter
     def category(self) -> Optional[pulumi.Input[str]]:
         """
-        Category of the disk. Valid values are `cloud`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud_auto`. Default is `cloud_efficiency`.
+        Category of the disk. Valid values are `cloud`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud_auto`, `cloud_essd_entry`. Default is `cloud_efficiency`.
         """
         return pulumi.get(self, "category")
 
@@ -442,7 +442,7 @@ class _EcsDiskState:
         """
         Input properties used for looking up and filtering EcsDisk resources.
         :param pulumi.Input[str] availability_zone: Field `availability_zone` has been deprecated from provider version 1.122.0. New field `zone_id` instead.
-        :param pulumi.Input[str] category: Category of the disk. Valid values are `cloud`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud_auto`. Default is `cloud_efficiency`.
+        :param pulumi.Input[str] category: Category of the disk. Valid values are `cloud`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud_auto`, `cloud_essd_entry`. Default is `cloud_efficiency`.
         :param pulumi.Input[bool] delete_auto_snapshot: Indicates whether the automatic snapshot is deleted when the disk is released. Default value: `false`.
         :param pulumi.Input[bool] delete_with_instance: Indicates whether the disk is released together with the instance. Default value: `false`.
         :param pulumi.Input[str] description: Description of the disk. This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
@@ -552,7 +552,7 @@ class _EcsDiskState:
     @pulumi.getter
     def category(self) -> Optional[pulumi.Input[str]]:
         """
-        Category of the disk. Valid values are `cloud`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud_auto`. Default is `cloud_efficiency`.
+        Category of the disk. Valid values are `cloud`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud_auto`, `cloud_essd_entry`. Default is `cloud_efficiency`.
         """
         return pulumi.get(self, "category")
 
@@ -869,7 +869,7 @@ class EcsDisk(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] availability_zone: Field `availability_zone` has been deprecated from provider version 1.122.0. New field `zone_id` instead.
-        :param pulumi.Input[str] category: Category of the disk. Valid values are `cloud`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud_auto`. Default is `cloud_efficiency`.
+        :param pulumi.Input[str] category: Category of the disk. Valid values are `cloud`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud_auto`, `cloud_essd_entry`. Default is `cloud_efficiency`.
         :param pulumi.Input[bool] delete_auto_snapshot: Indicates whether the automatic snapshot is deleted when the disk is released. Default value: `false`.
         :param pulumi.Input[bool] delete_with_instance: Indicates whether the disk is released together with the instance. Default value: `false`.
         :param pulumi.Input[str] description: Description of the disk. This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
@@ -1024,7 +1024,7 @@ class EcsDisk(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] availability_zone: Field `availability_zone` has been deprecated from provider version 1.122.0. New field `zone_id` instead.
-        :param pulumi.Input[str] category: Category of the disk. Valid values are `cloud`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud_auto`. Default is `cloud_efficiency`.
+        :param pulumi.Input[str] category: Category of the disk. Valid values are `cloud`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud_auto`, `cloud_essd_entry`. Default is `cloud_efficiency`.
         :param pulumi.Input[bool] delete_auto_snapshot: Indicates whether the automatic snapshot is deleted when the disk is released. Default value: `false`.
         :param pulumi.Input[bool] delete_with_instance: Indicates whether the disk is released together with the instance. Default value: `false`.
         :param pulumi.Input[str] description: Description of the disk. This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
@@ -1100,7 +1100,7 @@ class EcsDisk(pulumi.CustomResource):
     @pulumi.getter
     def category(self) -> pulumi.Output[Optional[str]]:
         """
-        Category of the disk. Valid values are `cloud`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud_auto`. Default is `cloud_efficiency`.
+        Category of the disk. Valid values are `cloud`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud_auto`, `cloud_essd_entry`. Default is `cloud_efficiency`.
         """
         return pulumi.get(self, "category")
 

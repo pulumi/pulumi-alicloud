@@ -5,6 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
+export { EcFailoverTestJobArgs, EcFailoverTestJobState } from "./ecFailoverTestJob";
+export type EcFailoverTestJob = import("./ecFailoverTestJob").EcFailoverTestJob;
+export const EcFailoverTestJob: typeof import("./ecFailoverTestJob").EcFailoverTestJob = null as any;
+utilities.lazyLoad(exports, ["EcFailoverTestJob"], () => require("./ecFailoverTestJob"));
+
 export { GetAccessPointsArgs, GetAccessPointsResult, GetAccessPointsOutputArgs } from "./getAccessPoints";
 export const getAccessPoints: typeof import("./getAccessPoints").getAccessPoints = null as any;
 export const getAccessPointsOutput: typeof import("./getAccessPoints").getAccessPointsOutput = null as any;
@@ -80,6 +85,8 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "alicloud:expressconnect/ecFailoverTestJob:EcFailoverTestJob":
+                return new EcFailoverTestJob(name, <any>undefined, { urn })
             case "alicloud:expressconnect/grantRuleToCen:GrantRuleToCen":
                 return new GrantRuleToCen(name, <any>undefined, { urn })
             case "alicloud:expressconnect/physicalConnection:PhysicalConnection":
@@ -97,6 +104,7 @@ const _module = {
         }
     },
 };
+pulumi.runtime.registerResourceModule("alicloud", "expressconnect/ecFailoverTestJob", _module)
 pulumi.runtime.registerResourceModule("alicloud", "expressconnect/grantRuleToCen", _module)
 pulumi.runtime.registerResourceModule("alicloud", "expressconnect/physicalConnection", _module)
 pulumi.runtime.registerResourceModule("alicloud", "expressconnect/routerInterface", _module)

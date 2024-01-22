@@ -7,20 +7,6 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * Provides a Global Accelerator (GA) Endpoint Group resource.
- *
- * For information about Global Accelerator (GA) Endpoint Group and how to use it, see [What is Endpoint Group](https://www.alibabacloud.com/help/en/global-accelerator/latest/api-ga-2019-11-20-createendpointgroup).
- *
- * > **NOTE:** Available since v1.113.0.
- *
- * > **NOTE:** Listeners that use different protocols support different types of endpoint groups:
- *
- * * For a TCP or UDP listener, you can create only one default endpoint group.
- * * For an HTTP or HTTPS listener, you can create one default endpoint group and one virtual endpoint group. By default, you can create only one virtual endpoint group.
- *   * A default endpoint group refers to the endpoint group that you configure when you create an HTTP or HTTPS listener.
- *   * A virtual endpoint group refers to the endpoint group that you can create on the Endpoint Group page after you create a listener.
- * * After you create a virtual endpoint group for an HTTP or HTTPS listener, you can create a forwarding rule and associate the forwarding rule with the virtual endpoint group. Then, the HTTP or HTTPS listener forwards requests with different destination domain names or paths to the default or virtual endpoint group based on the forwarding rule. This way, you can use one Global Accelerator (GA) instance to accelerate access to multiple domain names or paths. For more information about how to create a forwarding rule, see [Manage forwarding rules](https://www.alibabacloud.com/help/en/doc-detail/204224.htm).
- *
  * ## Example Usage
  *
  * Basic Usage
@@ -151,6 +137,10 @@ export class EndpointGroup extends pulumi.CustomResource {
      */
     public readonly endpointRequestProtocol!: pulumi.Output<string>;
     /**
+     * Specifies whether to enable the health check feature. Valid values:
+     */
+    public readonly healthCheckEnabled!: pulumi.Output<boolean | undefined>;
+    /**
      * The interval between two consecutive health checks. Unit: seconds.
      */
     public readonly healthCheckIntervalSeconds!: pulumi.Output<number | undefined>;
@@ -216,6 +206,7 @@ export class EndpointGroup extends pulumi.CustomResource {
             resourceInputs["endpointGroupRegion"] = state ? state.endpointGroupRegion : undefined;
             resourceInputs["endpointGroupType"] = state ? state.endpointGroupType : undefined;
             resourceInputs["endpointRequestProtocol"] = state ? state.endpointRequestProtocol : undefined;
+            resourceInputs["healthCheckEnabled"] = state ? state.healthCheckEnabled : undefined;
             resourceInputs["healthCheckIntervalSeconds"] = state ? state.healthCheckIntervalSeconds : undefined;
             resourceInputs["healthCheckPath"] = state ? state.healthCheckPath : undefined;
             resourceInputs["healthCheckPort"] = state ? state.healthCheckPort : undefined;
@@ -247,6 +238,7 @@ export class EndpointGroup extends pulumi.CustomResource {
             resourceInputs["endpointGroupRegion"] = args ? args.endpointGroupRegion : undefined;
             resourceInputs["endpointGroupType"] = args ? args.endpointGroupType : undefined;
             resourceInputs["endpointRequestProtocol"] = args ? args.endpointRequestProtocol : undefined;
+            resourceInputs["healthCheckEnabled"] = args ? args.healthCheckEnabled : undefined;
             resourceInputs["healthCheckIntervalSeconds"] = args ? args.healthCheckIntervalSeconds : undefined;
             resourceInputs["healthCheckPath"] = args ? args.healthCheckPath : undefined;
             resourceInputs["healthCheckPort"] = args ? args.healthCheckPort : undefined;
@@ -299,6 +291,10 @@ export interface EndpointGroupState {
      * > **NOTE:** This item is only supported when creating terminal node group for listening instance of HTTP or HTTPS protocol. For the listening instance of HTTP protocol, the back-end service protocol supports and only supports HTTP.
      */
     endpointRequestProtocol?: pulumi.Input<string>;
+    /**
+     * Specifies whether to enable the health check feature. Valid values:
+     */
+    healthCheckEnabled?: pulumi.Input<boolean>;
     /**
      * The interval between two consecutive health checks. Unit: seconds.
      */
@@ -376,6 +372,10 @@ export interface EndpointGroupArgs {
      * > **NOTE:** This item is only supported when creating terminal node group for listening instance of HTTP or HTTPS protocol. For the listening instance of HTTP protocol, the back-end service protocol supports and only supports HTTP.
      */
     endpointRequestProtocol?: pulumi.Input<string>;
+    /**
+     * Specifies whether to enable the health check feature. Valid values:
+     */
+    healthCheckEnabled?: pulumi.Input<boolean>;
     /**
      * The interval between two consecutive health checks. Unit: seconds.
      */

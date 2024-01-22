@@ -169,6 +169,8 @@ type Store struct {
 	LogstoreName pulumi.StringOutput `pulumi:"logstoreName"`
 	// The maximum number of shards for automatic split, which is in the range of 1 to 256. You must specify this parameter when autoSplit is true.
 	MaxSplitShardCount pulumi.IntPtrOutput `pulumi:"maxSplitShardCount"`
+	// Metering mode. The default metering mode of ChargeByFunction, ChargeByDataIngest traffic mode.
+	MeteringMode pulumi.StringOutput `pulumi:"meteringMode"`
 	// The mode of storage. Default to `standard`, must be `standard` or `query`, `lite`.
 	Mode pulumi.StringOutput `pulumi:"mode"`
 	// . Field 'name' has been deprecated from provider version 1.215.0. New field 'logstore_name' instead.
@@ -239,6 +241,8 @@ type storeState struct {
 	LogstoreName *string `pulumi:"logstoreName"`
 	// The maximum number of shards for automatic split, which is in the range of 1 to 256. You must specify this parameter when autoSplit is true.
 	MaxSplitShardCount *int `pulumi:"maxSplitShardCount"`
+	// Metering mode. The default metering mode of ChargeByFunction, ChargeByDataIngest traffic mode.
+	MeteringMode *string `pulumi:"meteringMode"`
 	// The mode of storage. Default to `standard`, must be `standard` or `query`, `lite`.
 	Mode *string `pulumi:"mode"`
 	// . Field 'name' has been deprecated from provider version 1.215.0. New field 'logstore_name' instead.
@@ -280,6 +284,8 @@ type StoreState struct {
 	LogstoreName pulumi.StringPtrInput
 	// The maximum number of shards for automatic split, which is in the range of 1 to 256. You must specify this parameter when autoSplit is true.
 	MaxSplitShardCount pulumi.IntPtrInput
+	// Metering mode. The default metering mode of ChargeByFunction, ChargeByDataIngest traffic mode.
+	MeteringMode pulumi.StringPtrInput
 	// The mode of storage. Default to `standard`, must be `standard` or `query`, `lite`.
 	Mode pulumi.StringPtrInput
 	// . Field 'name' has been deprecated from provider version 1.215.0. New field 'logstore_name' instead.
@@ -323,6 +329,8 @@ type storeArgs struct {
 	LogstoreName *string `pulumi:"logstoreName"`
 	// The maximum number of shards for automatic split, which is in the range of 1 to 256. You must specify this parameter when autoSplit is true.
 	MaxSplitShardCount *int `pulumi:"maxSplitShardCount"`
+	// Metering mode. The default metering mode of ChargeByFunction, ChargeByDataIngest traffic mode.
+	MeteringMode *string `pulumi:"meteringMode"`
 	// The mode of storage. Default to `standard`, must be `standard` or `query`, `lite`.
 	Mode *string `pulumi:"mode"`
 	// . Field 'name' has been deprecated from provider version 1.215.0. New field 'logstore_name' instead.
@@ -361,6 +369,8 @@ type StoreArgs struct {
 	LogstoreName pulumi.StringPtrInput
 	// The maximum number of shards for automatic split, which is in the range of 1 to 256. You must specify this parameter when autoSplit is true.
 	MaxSplitShardCount pulumi.IntPtrInput
+	// Metering mode. The default metering mode of ChargeByFunction, ChargeByDataIngest traffic mode.
+	MeteringMode pulumi.StringPtrInput
 	// The mode of storage. Default to `standard`, must be `standard` or `query`, `lite`.
 	Mode pulumi.StringPtrInput
 	// . Field 'name' has been deprecated from provider version 1.215.0. New field 'logstore_name' instead.
@@ -508,6 +518,11 @@ func (o StoreOutput) LogstoreName() pulumi.StringOutput {
 // The maximum number of shards for automatic split, which is in the range of 1 to 256. You must specify this parameter when autoSplit is true.
 func (o StoreOutput) MaxSplitShardCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Store) pulumi.IntPtrOutput { return v.MaxSplitShardCount }).(pulumi.IntPtrOutput)
+}
+
+// Metering mode. The default metering mode of ChargeByFunction, ChargeByDataIngest traffic mode.
+func (o StoreOutput) MeteringMode() pulumi.StringOutput {
+	return o.ApplyT(func(v *Store) pulumi.StringOutput { return v.MeteringMode }).(pulumi.StringOutput)
 }
 
 // The mode of storage. Default to `standard`, must be `standard` or `query`, `lite`.

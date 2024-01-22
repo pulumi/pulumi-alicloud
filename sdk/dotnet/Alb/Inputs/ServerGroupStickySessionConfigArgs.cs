@@ -13,28 +13,25 @@ namespace Pulumi.AliCloud.Alb.Inputs
     public sealed class ServerGroupStickySessionConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// the cookie that is configured on the server. **NOTE:** This parameter exists if the `StickySession`
-        /// parameter is set to `On` and the `StickySessionType` parameter is set to `server`.
+        /// The cookie to be configured on the server. **NOTE:** This parameter takes effect when the `sticky_session_enabled` parameter is set to `true` and the `sticky_session_type` parameter is set to `Server`.
         /// </summary>
         [Input("cookie")]
         public Input<string>? Cookie { get; set; }
 
         /// <summary>
-        /// The timeout period of a cookie. The timeout period of a cookie. Unit: seconds. Valid values: `1`
-        /// to `86400`. Default value: `1000`.
+        /// The timeout period of a cookie. Unit: seconds. Default value: `1000`. Valid values: `1` to `86400`. **NOTE:** This parameter takes effect when the `sticky_session_enabled` parameter is set to `true` and the `sticky_session_type` parameter is set to `Insert`.
         /// </summary>
         [Input("cookieTimeout")]
         public Input<int>? CookieTimeout { get; set; }
 
         /// <summary>
-        /// Indicates whether sticky session is enabled. Values: `true` and `false`. Default
-        /// value: `false`.  **NOTE:** This parameter exists if the `StickySession` parameter is set to `On`.
+        /// Specifies whether to enable session persistence. Default value: `false`. Valid values: `true`, `false`. **NOTE:** This parameter takes effect when the `server_group_type` parameter is set to `Instance` or `Ip`.
         /// </summary>
         [Input("stickySessionEnabled")]
         public Input<bool>? StickySessionEnabled { get; set; }
 
         /// <summary>
-        /// The method that is used to handle a cookie. Values: `Server` and `Insert`.
+        /// The method that is used to handle a cookie. Valid values: `Server`, `Insert`.
         /// </summary>
         [Input("stickySessionType")]
         public Input<string>? StickySessionType { get; set; }

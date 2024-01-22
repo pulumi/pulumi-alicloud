@@ -34,7 +34,7 @@ class AcceleratorArgs:
         :param pulumi.Input[int] auto_renew_duration: Auto renewal period of an instance, in the unit of month. The value range is 1-12.
         :param pulumi.Input[bool] auto_use_coupon: Use coupons to pay bills automatically. Default value: `false`. Valid values:
         :param pulumi.Input[str] bandwidth_billing_type: The bandwidth billing method. Default value: `BandwidthPackage`. Valid values:
-        :param pulumi.Input[str] cross_border_mode: The type of cross-border acceleration. Default value: `bgpPro`. Valid values: `bgpPro`, `private`.
+        :param pulumi.Input[str] cross_border_mode: The type of cross-border acceleration. Default value: `bgpPro`. Valid values: `bgpPro`, `private`. **NOTE:** `cross_border_mode` is valid only when `cross_border_status` is set to `true`.
         :param pulumi.Input[bool] cross_border_status: Indicates whether cross-border acceleration is enabled. Default value: `false`. Valid values:
         :param pulumi.Input[str] description: Descriptive information of the global acceleration instance.
         :param pulumi.Input[int] duration: The subscription duration.
@@ -128,7 +128,7 @@ class AcceleratorArgs:
     @pulumi.getter(name="crossBorderMode")
     def cross_border_mode(self) -> Optional[pulumi.Input[str]]:
         """
-        The type of cross-border acceleration. Default value: `bgpPro`. Valid values: `bgpPro`, `private`.
+        The type of cross-border acceleration. Default value: `bgpPro`. Valid values: `bgpPro`, `private`. **NOTE:** `cross_border_mode` is valid only when `cross_border_status` is set to `true`.
         """
         return pulumi.get(self, "cross_border_mode")
 
@@ -271,7 +271,7 @@ class _AcceleratorState:
         :param pulumi.Input[int] auto_renew_duration: Auto renewal period of an instance, in the unit of month. The value range is 1-12.
         :param pulumi.Input[bool] auto_use_coupon: Use coupons to pay bills automatically. Default value: `false`. Valid values:
         :param pulumi.Input[str] bandwidth_billing_type: The bandwidth billing method. Default value: `BandwidthPackage`. Valid values:
-        :param pulumi.Input[str] cross_border_mode: The type of cross-border acceleration. Default value: `bgpPro`. Valid values: `bgpPro`, `private`.
+        :param pulumi.Input[str] cross_border_mode: The type of cross-border acceleration. Default value: `bgpPro`. Valid values: `bgpPro`, `private`. **NOTE:** `cross_border_mode` is valid only when `cross_border_status` is set to `true`.
         :param pulumi.Input[bool] cross_border_status: Indicates whether cross-border acceleration is enabled. Default value: `false`. Valid values:
         :param pulumi.Input[str] description: Descriptive information of the global acceleration instance.
         :param pulumi.Input[int] duration: The subscription duration.
@@ -368,7 +368,7 @@ class _AcceleratorState:
     @pulumi.getter(name="crossBorderMode")
     def cross_border_mode(self) -> Optional[pulumi.Input[str]]:
         """
-        The type of cross-border acceleration. Default value: `bgpPro`. Valid values: `bgpPro`, `private`.
+        The type of cross-border acceleration. Default value: `bgpPro`. Valid values: `bgpPro`, `private`. **NOTE:** `cross_border_mode` is valid only when `cross_border_status` is set to `true`.
         """
         return pulumi.get(self, "cross_border_mode")
 
@@ -545,7 +545,7 @@ class Accelerator(pulumi.CustomResource):
         Ga Accelerator can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:ga/accelerator:Accelerator example <accelerator_id>
+         $ pulumi import alicloud:ga/accelerator:Accelerator example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -554,7 +554,7 @@ class Accelerator(pulumi.CustomResource):
         :param pulumi.Input[int] auto_renew_duration: Auto renewal period of an instance, in the unit of month. The value range is 1-12.
         :param pulumi.Input[bool] auto_use_coupon: Use coupons to pay bills automatically. Default value: `false`. Valid values:
         :param pulumi.Input[str] bandwidth_billing_type: The bandwidth billing method. Default value: `BandwidthPackage`. Valid values:
-        :param pulumi.Input[str] cross_border_mode: The type of cross-border acceleration. Default value: `bgpPro`. Valid values: `bgpPro`, `private`.
+        :param pulumi.Input[str] cross_border_mode: The type of cross-border acceleration. Default value: `bgpPro`. Valid values: `bgpPro`, `private`. **NOTE:** `cross_border_mode` is valid only when `cross_border_status` is set to `true`.
         :param pulumi.Input[bool] cross_border_status: Indicates whether cross-border acceleration is enabled. Default value: `false`. Valid values:
         :param pulumi.Input[str] description: Descriptive information of the global acceleration instance.
         :param pulumi.Input[int] duration: The subscription duration.
@@ -599,7 +599,7 @@ class Accelerator(pulumi.CustomResource):
         Ga Accelerator can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:ga/accelerator:Accelerator example <accelerator_id>
+         $ pulumi import alicloud:ga/accelerator:Accelerator example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -691,7 +691,7 @@ class Accelerator(pulumi.CustomResource):
         :param pulumi.Input[int] auto_renew_duration: Auto renewal period of an instance, in the unit of month. The value range is 1-12.
         :param pulumi.Input[bool] auto_use_coupon: Use coupons to pay bills automatically. Default value: `false`. Valid values:
         :param pulumi.Input[str] bandwidth_billing_type: The bandwidth billing method. Default value: `BandwidthPackage`. Valid values:
-        :param pulumi.Input[str] cross_border_mode: The type of cross-border acceleration. Default value: `bgpPro`. Valid values: `bgpPro`, `private`.
+        :param pulumi.Input[str] cross_border_mode: The type of cross-border acceleration. Default value: `bgpPro`. Valid values: `bgpPro`, `private`. **NOTE:** `cross_border_mode` is valid only when `cross_border_status` is set to `true`.
         :param pulumi.Input[bool] cross_border_status: Indicates whether cross-border acceleration is enabled. Default value: `false`. Valid values:
         :param pulumi.Input[str] description: Descriptive information of the global acceleration instance.
         :param pulumi.Input[int] duration: The subscription duration.
@@ -736,7 +736,7 @@ class Accelerator(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="autoRenewDuration")
-    def auto_renew_duration(self) -> pulumi.Output[Optional[int]]:
+    def auto_renew_duration(self) -> pulumi.Output[int]:
         """
         Auto renewal period of an instance, in the unit of month. The value range is 1-12.
         """
@@ -762,7 +762,7 @@ class Accelerator(pulumi.CustomResource):
     @pulumi.getter(name="crossBorderMode")
     def cross_border_mode(self) -> pulumi.Output[str]:
         """
-        The type of cross-border acceleration. Default value: `bgpPro`. Valid values: `bgpPro`, `private`.
+        The type of cross-border acceleration. Default value: `bgpPro`. Valid values: `bgpPro`, `private`. **NOTE:** `cross_border_mode` is valid only when `cross_border_status` is set to `true`.
         """
         return pulumi.get(self, "cross_border_mode")
 

@@ -257,6 +257,9 @@ namespace Pulumi.AliCloud
         [Input("sharedCredentialsFile")]
         public Input<string>? SharedCredentialsFile { get; set; }
 
+        [Input("signVersion", json: true)]
+        public Input<Inputs.ProviderSignVersionArgs>? SignVersion { get; set; }
+
         /// <summary>
         /// Skip static validation of region ID. Used by users of alternative AlibabaCloud-like APIs or users w/ access to regions
         /// that are not public (yet).

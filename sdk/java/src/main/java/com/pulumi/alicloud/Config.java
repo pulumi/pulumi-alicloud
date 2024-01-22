@@ -5,6 +5,7 @@ package com.pulumi.alicloud;
 
 import com.pulumi.alicloud.config.inputs.AssumeRole;
 import com.pulumi.alicloud.config.inputs.Endpoints;
+import com.pulumi.alicloud.config.inputs.SignVersion;
 import com.pulumi.core.TypeShape;
 import com.pulumi.core.internal.Codegen;
 import java.lang.Boolean;
@@ -141,6 +142,9 @@ public final class Config {
  */
     public Optional<String> sharedCredentialsFile() {
         return Codegen.stringProp("sharedCredentialsFile").config(config).get();
+    }
+    public Optional<SignVersion> signVersion() {
+        return Codegen.objectProp("signVersion", SignVersion.class).config(config).get();
     }
 /**
  * Skip static validation of region ID. Used by users of alternative AlibabaCloud-like APIs or users w/ access to regions

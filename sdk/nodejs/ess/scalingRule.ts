@@ -18,9 +18,15 @@ import * as utilities from "../utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
+ * import * as random from "@pulumi/random";
  *
- * const config = new pulumi.Config();
- * const name = config.get("name") || "terraform-example";
+ * let defaultRandomInteger: random.RandomInteger | undefined;
+ * if (1 == true) {
+ *     defaultRandomInteger = new random.RandomInteger("defaultRandomInteger", {
+ *         max: 99999,
+ *         min: 10000,
+ *     });
+ * }
  * const defaultZones = alicloud.getZones({
  *     availableDiskCategory: "cloud_efficiency",
  *     availableResourceCreation: "VSwitch",
@@ -40,7 +46,7 @@ import * as utilities from "../utilities";
  *     vpcId: defaultNetwork.id,
  *     cidrBlock: "172.16.0.0/24",
  *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
- *     vswitchName: name,
+ *     vswitchName: defaultRandomInteger?.result.apply(result => `terraform-example-${result}`),
  * });
  * const defaultSecurityGroup = new alicloud.ecs.SecurityGroup("defaultSecurityGroup", {vpcId: defaultNetwork.id});
  * const defaultSecurityGroupRule = new alicloud.ecs.SecurityGroupRule("defaultSecurityGroupRule", {
@@ -56,7 +62,7 @@ import * as utilities from "../utilities";
  * const defaultScalingGroup = new alicloud.ess.ScalingGroup("defaultScalingGroup", {
  *     minSize: 1,
  *     maxSize: 1,
- *     scalingGroupName: name,
+ *     scalingGroupName: defaultRandomInteger?.result.apply(result => `terraform-example-${result}`),
  *     vswitchIds: [defaultSwitch.id],
  *     removalPolicies: [
  *         "OldestInstance",
@@ -132,6 +138,10 @@ export class ScalingRule extends pulumi.CustomResource {
      */
     public readonly adjustmentValue!: pulumi.Output<number | undefined>;
     /**
+     * AlarmDimension for StepScalingRule. See `alarmDimension` below.
+     */
+    public readonly alarmDimension!: pulumi.Output<outputs.ess.ScalingRuleAlarmDimension | undefined>;
+    /**
      * The unique identifier of the scaling rule.
      */
     public /*out*/ readonly ari!: pulumi.Output<string>;
@@ -187,6 +197,7 @@ export class ScalingRule extends pulumi.CustomResource {
             const state = argsOrState as ScalingRuleState | undefined;
             resourceInputs["adjustmentType"] = state ? state.adjustmentType : undefined;
             resourceInputs["adjustmentValue"] = state ? state.adjustmentValue : undefined;
+            resourceInputs["alarmDimension"] = state ? state.alarmDimension : undefined;
             resourceInputs["ari"] = state ? state.ari : undefined;
             resourceInputs["cooldown"] = state ? state.cooldown : undefined;
             resourceInputs["disableScaleIn"] = state ? state.disableScaleIn : undefined;
@@ -204,6 +215,7 @@ export class ScalingRule extends pulumi.CustomResource {
             }
             resourceInputs["adjustmentType"] = args ? args.adjustmentType : undefined;
             resourceInputs["adjustmentValue"] = args ? args.adjustmentValue : undefined;
+            resourceInputs["alarmDimension"] = args ? args.alarmDimension : undefined;
             resourceInputs["cooldown"] = args ? args.cooldown : undefined;
             resourceInputs["disableScaleIn"] = args ? args.disableScaleIn : undefined;
             resourceInputs["estimatedInstanceWarmup"] = args ? args.estimatedInstanceWarmup : undefined;
@@ -238,6 +250,10 @@ export interface ScalingRuleState {
      * - TotalCapacity：[0, 1000]
      */
     adjustmentValue?: pulumi.Input<number>;
+    /**
+     * AlarmDimension for StepScalingRule. See `alarmDimension` below.
+     */
+    alarmDimension?: pulumi.Input<inputs.ess.ScalingRuleAlarmDimension>;
     /**
      * The unique identifier of the scaling rule.
      */
@@ -298,6 +314,10 @@ export interface ScalingRuleArgs {
      * - TotalCapacity：[0, 1000]
      */
     adjustmentValue?: pulumi.Input<number>;
+    /**
+     * AlarmDimension for StepScalingRule. See `alarmDimension` below.
+     */
+    alarmDimension?: pulumi.Input<inputs.ess.ScalingRuleAlarmDimension>;
     /**
      * The cooldown time of the scaling rule. This parameter is applicable only to simple scaling rules. Value range: [0, 86,400], in seconds. The default value is empty，if not set, the return value will be 0, which is the default value of integer.
      */

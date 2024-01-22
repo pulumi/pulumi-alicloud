@@ -26,6 +26,7 @@ class InstanceArgs:
                  backup_retention_period: Optional[pulumi.Input[int]] = None,
                  backup_time: Optional[pulumi.Input[str]] = None,
                  cloud_disk_encryption_key: Optional[pulumi.Input[str]] = None,
+                 effective_time: Optional[pulumi.Input[str]] = None,
                  encrypted: Optional[pulumi.Input[bool]] = None,
                  encryption_key: Optional[pulumi.Input[str]] = None,
                  encryptor_name: Optional[pulumi.Input[str]] = None,
@@ -71,6 +72,7 @@ class InstanceArgs:
         :param pulumi.Input[int] backup_retention_period: The retention period of full backups.
         :param pulumi.Input[str] backup_time: MongoDB instance backup time. It is required when `backup_period` was existed. In the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. If not set, the system will return a default, like "23:00Z-24:00Z".
         :param pulumi.Input[str] cloud_disk_encryption_key: The ID of the encryption key.
+        :param pulumi.Input[str] effective_time: The time when the changed configurations take effect. Valid values: `Immediately`, `MaintainTime`.
         :param pulumi.Input[bool] encrypted: Whether to enable cloud disk encryption. Default value: `false`. Valid values: `true`, `false`.
         :param pulumi.Input[str] encryption_key: The ID of the custom key.
         :param pulumi.Input[str] encryptor_name: The encryption method. **NOTE:** `encryptor_name` is valid only when `tde_status` is set to `enabled`.
@@ -80,11 +82,11 @@ class InstanceArgs:
         :param pulumi.Input[Mapping[str, Any]] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating instance with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
         :param pulumi.Input[str] maintain_end_time: The end time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time).
         :param pulumi.Input[str] maintain_start_time: The start time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time).
-        :param pulumi.Input[str] name: The name of DB instance. It a string of 2 to 256 characters.
+        :param pulumi.Input[str] name: The name of DB instance. It must be 2 to 256 characters in length.
         :param pulumi.Input[str] network_type: The network type of the instance. Valid values:`Classic`, `VPC`.
         :param pulumi.Input[str] order_type: The type of configuration changes performed. Default value: `DOWNGRADE`. Valid values:
         :param pulumi.Input[Sequence[pulumi.Input['InstanceParameterArgs']]] parameters: Set of parameters needs to be set after mongodb instance was launched. See `parameters` below.
-        :param pulumi.Input[int] period: The duration that you will buy DB instance (in month). It is valid when instance_charge_type is `PrePaid`. Default value: `1`. Valid values: [1~9], 12, 24, 36.
+        :param pulumi.Input[int] period: The duration that you will buy DB instance (in month). It is valid when `instance_charge_type` is `PrePaid`. Default value: `1`. Valid values: [1~9], 12, 24, 36.
         :param pulumi.Input[int] readonly_replicas: The number of read-only nodes in the replica set instance. Default value: 0. Valid values: 0 to 5.
         :param pulumi.Input[int] replication_factor: Number of replica set nodes. Valid values: `1`, `3`, `5`, `7`.
         :param pulumi.Input[str] resource_group_id: The ID of the Resource Group.
@@ -121,6 +123,8 @@ class InstanceArgs:
             pulumi.set(__self__, "backup_time", backup_time)
         if cloud_disk_encryption_key is not None:
             pulumi.set(__self__, "cloud_disk_encryption_key", cloud_disk_encryption_key)
+        if effective_time is not None:
+            pulumi.set(__self__, "effective_time", effective_time)
         if encrypted is not None:
             pulumi.set(__self__, "encrypted", encrypted)
         if encryption_key is not None:
@@ -306,6 +310,18 @@ class InstanceArgs:
         pulumi.set(self, "cloud_disk_encryption_key", value)
 
     @property
+    @pulumi.getter(name="effectiveTime")
+    def effective_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        The time when the changed configurations take effect. Valid values: `Immediately`, `MaintainTime`.
+        """
+        return pulumi.get(self, "effective_time")
+
+    @effective_time.setter
+    def effective_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "effective_time", value)
+
+    @property
     @pulumi.getter
     def encrypted(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -417,7 +433,7 @@ class InstanceArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of DB instance. It a string of 2 to 256 characters.
+        The name of DB instance. It must be 2 to 256 characters in length.
         """
         return pulumi.get(self, "name")
 
@@ -465,7 +481,7 @@ class InstanceArgs:
     @pulumi.getter
     def period(self) -> Optional[pulumi.Input[int]]:
         """
-        The duration that you will buy DB instance (in month). It is valid when instance_charge_type is `PrePaid`. Default value: `1`. Valid values: [1~9], 12, 24, 36.
+        The duration that you will buy DB instance (in month). It is valid when `instance_charge_type` is `PrePaid`. Default value: `1`. Valid values: [1~9], 12, 24, 36.
         """
         return pulumi.get(self, "period")
 
@@ -680,6 +696,7 @@ class _InstanceState:
                  cloud_disk_encryption_key: Optional[pulumi.Input[str]] = None,
                  db_instance_class: Optional[pulumi.Input[str]] = None,
                  db_instance_storage: Optional[pulumi.Input[int]] = None,
+                 effective_time: Optional[pulumi.Input[str]] = None,
                  encrypted: Optional[pulumi.Input[bool]] = None,
                  encryption_key: Optional[pulumi.Input[str]] = None,
                  encryptor_name: Optional[pulumi.Input[str]] = None,
@@ -729,6 +746,7 @@ class _InstanceState:
         :param pulumi.Input[int] db_instance_storage: User-defined DB instance storage space.Unit: GB. Value range:
                - Custom storage space.
                - 10-GB increments.
+        :param pulumi.Input[str] effective_time: The time when the changed configurations take effect. Valid values: `Immediately`, `MaintainTime`.
         :param pulumi.Input[bool] encrypted: Whether to enable cloud disk encryption. Default value: `false`. Valid values: `true`, `false`.
         :param pulumi.Input[str] encryption_key: The ID of the custom key.
         :param pulumi.Input[str] encryptor_name: The encryption method. **NOTE:** `encryptor_name` is valid only when `tde_status` is set to `enabled`.
@@ -739,11 +757,11 @@ class _InstanceState:
         :param pulumi.Input[Mapping[str, Any]] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating instance with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
         :param pulumi.Input[str] maintain_end_time: The end time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time).
         :param pulumi.Input[str] maintain_start_time: The start time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time).
-        :param pulumi.Input[str] name: The name of DB instance. It a string of 2 to 256 characters.
+        :param pulumi.Input[str] name: The name of DB instance. It must be 2 to 256 characters in length.
         :param pulumi.Input[str] network_type: The network type of the instance. Valid values:`Classic`, `VPC`.
         :param pulumi.Input[str] order_type: The type of configuration changes performed. Default value: `DOWNGRADE`. Valid values:
         :param pulumi.Input[Sequence[pulumi.Input['InstanceParameterArgs']]] parameters: Set of parameters needs to be set after mongodb instance was launched. See `parameters` below.
-        :param pulumi.Input[int] period: The duration that you will buy DB instance (in month). It is valid when instance_charge_type is `PrePaid`. Default value: `1`. Valid values: [1~9], 12, 24, 36.
+        :param pulumi.Input[int] period: The duration that you will buy DB instance (in month). It is valid when `instance_charge_type` is `PrePaid`. Default value: `1`. Valid values: [1~9], 12, 24, 36.
         :param pulumi.Input[int] readonly_replicas: The number of read-only nodes in the replica set instance. Default value: 0. Valid values: 0 to 5.
         :param pulumi.Input[str] replica_set_name: The name of the mongo replica set.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceReplicaSetArgs']]] replica_sets: Replica set instance information.
@@ -785,6 +803,8 @@ class _InstanceState:
             pulumi.set(__self__, "db_instance_class", db_instance_class)
         if db_instance_storage is not None:
             pulumi.set(__self__, "db_instance_storage", db_instance_storage)
+        if effective_time is not None:
+            pulumi.set(__self__, "effective_time", effective_time)
         if encrypted is not None:
             pulumi.set(__self__, "encrypted", encrypted)
         if encryption_key is not None:
@@ -968,6 +988,18 @@ class _InstanceState:
         pulumi.set(self, "db_instance_storage", value)
 
     @property
+    @pulumi.getter(name="effectiveTime")
+    def effective_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        The time when the changed configurations take effect. Valid values: `Immediately`, `MaintainTime`.
+        """
+        return pulumi.get(self, "effective_time")
+
+    @effective_time.setter
+    def effective_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "effective_time", value)
+
+    @property
     @pulumi.getter
     def encrypted(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -1091,7 +1123,7 @@ class _InstanceState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of DB instance. It a string of 2 to 256 characters.
+        The name of DB instance. It must be 2 to 256 characters in length.
         """
         return pulumi.get(self, "name")
 
@@ -1139,7 +1171,7 @@ class _InstanceState:
     @pulumi.getter
     def period(self) -> Optional[pulumi.Input[int]]:
         """
-        The duration that you will buy DB instance (in month). It is valid when instance_charge_type is `PrePaid`. Default value: `1`. Valid values: [1~9], 12, 24, 36.
+        The duration that you will buy DB instance (in month). It is valid when `instance_charge_type` is `PrePaid`. Default value: `1`. Valid values: [1~9], 12, 24, 36.
         """
         return pulumi.get(self, "period")
 
@@ -1404,6 +1436,7 @@ class Instance(pulumi.CustomResource):
                  cloud_disk_encryption_key: Optional[pulumi.Input[str]] = None,
                  db_instance_class: Optional[pulumi.Input[str]] = None,
                  db_instance_storage: Optional[pulumi.Input[int]] = None,
+                 effective_time: Optional[pulumi.Input[str]] = None,
                  encrypted: Optional[pulumi.Input[bool]] = None,
                  encryption_key: Optional[pulumi.Input[str]] = None,
                  encryptor_name: Optional[pulumi.Input[str]] = None,
@@ -1491,7 +1524,7 @@ class Instance(pulumi.CustomResource):
 
         ## Import
 
-        MongoDB can be imported using the id, e.g.
+        MongoDB instance can be imported using the id, e.g.
 
         ```sh
          $ pulumi import alicloud:mongodb/instance:Instance example dds-bp1291daeda44194
@@ -1511,6 +1544,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[int] db_instance_storage: User-defined DB instance storage space.Unit: GB. Value range:
                - Custom storage space.
                - 10-GB increments.
+        :param pulumi.Input[str] effective_time: The time when the changed configurations take effect. Valid values: `Immediately`, `MaintainTime`.
         :param pulumi.Input[bool] encrypted: Whether to enable cloud disk encryption. Default value: `false`. Valid values: `true`, `false`.
         :param pulumi.Input[str] encryption_key: The ID of the custom key.
         :param pulumi.Input[str] encryptor_name: The encryption method. **NOTE:** `encryptor_name` is valid only when `tde_status` is set to `enabled`.
@@ -1521,11 +1555,11 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, Any]] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating instance with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
         :param pulumi.Input[str] maintain_end_time: The end time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time).
         :param pulumi.Input[str] maintain_start_time: The start time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time).
-        :param pulumi.Input[str] name: The name of DB instance. It a string of 2 to 256 characters.
+        :param pulumi.Input[str] name: The name of DB instance. It must be 2 to 256 characters in length.
         :param pulumi.Input[str] network_type: The network type of the instance. Valid values:`Classic`, `VPC`.
         :param pulumi.Input[str] order_type: The type of configuration changes performed. Default value: `DOWNGRADE`. Valid values:
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceParameterArgs']]]] parameters: Set of parameters needs to be set after mongodb instance was launched. See `parameters` below.
-        :param pulumi.Input[int] period: The duration that you will buy DB instance (in month). It is valid when instance_charge_type is `PrePaid`. Default value: `1`. Valid values: [1~9], 12, 24, 36.
+        :param pulumi.Input[int] period: The duration that you will buy DB instance (in month). It is valid when `instance_charge_type` is `PrePaid`. Default value: `1`. Valid values: [1~9], 12, 24, 36.
         :param pulumi.Input[int] readonly_replicas: The number of read-only nodes in the replica set instance. Default value: 0. Valid values: 0 to 5.
         :param pulumi.Input[int] replication_factor: Number of replica set nodes. Valid values: `1`, `3`, `5`, `7`.
         :param pulumi.Input[str] resource_group_id: The ID of the Resource Group.
@@ -1606,7 +1640,7 @@ class Instance(pulumi.CustomResource):
 
         ## Import
 
-        MongoDB can be imported using the id, e.g.
+        MongoDB instance can be imported using the id, e.g.
 
         ```sh
          $ pulumi import alicloud:mongodb/instance:Instance example dds-bp1291daeda44194
@@ -1636,6 +1670,7 @@ class Instance(pulumi.CustomResource):
                  cloud_disk_encryption_key: Optional[pulumi.Input[str]] = None,
                  db_instance_class: Optional[pulumi.Input[str]] = None,
                  db_instance_storage: Optional[pulumi.Input[int]] = None,
+                 effective_time: Optional[pulumi.Input[str]] = None,
                  encrypted: Optional[pulumi.Input[bool]] = None,
                  encryption_key: Optional[pulumi.Input[str]] = None,
                  encryptor_name: Optional[pulumi.Input[str]] = None,
@@ -1689,6 +1724,7 @@ class Instance(pulumi.CustomResource):
             if db_instance_storage is None and not opts.urn:
                 raise TypeError("Missing required property 'db_instance_storage'")
             __props__.__dict__["db_instance_storage"] = db_instance_storage
+            __props__.__dict__["effective_time"] = effective_time
             __props__.__dict__["encrypted"] = encrypted
             __props__.__dict__["encryption_key"] = encryption_key
             __props__.__dict__["encryptor_name"] = encryptor_name
@@ -1747,6 +1783,7 @@ class Instance(pulumi.CustomResource):
             cloud_disk_encryption_key: Optional[pulumi.Input[str]] = None,
             db_instance_class: Optional[pulumi.Input[str]] = None,
             db_instance_storage: Optional[pulumi.Input[int]] = None,
+            effective_time: Optional[pulumi.Input[str]] = None,
             encrypted: Optional[pulumi.Input[bool]] = None,
             encryption_key: Optional[pulumi.Input[str]] = None,
             encryptor_name: Optional[pulumi.Input[str]] = None,
@@ -1801,6 +1838,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[int] db_instance_storage: User-defined DB instance storage space.Unit: GB. Value range:
                - Custom storage space.
                - 10-GB increments.
+        :param pulumi.Input[str] effective_time: The time when the changed configurations take effect. Valid values: `Immediately`, `MaintainTime`.
         :param pulumi.Input[bool] encrypted: Whether to enable cloud disk encryption. Default value: `false`. Valid values: `true`, `false`.
         :param pulumi.Input[str] encryption_key: The ID of the custom key.
         :param pulumi.Input[str] encryptor_name: The encryption method. **NOTE:** `encryptor_name` is valid only when `tde_status` is set to `enabled`.
@@ -1811,11 +1849,11 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, Any]] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating instance with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
         :param pulumi.Input[str] maintain_end_time: The end time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time).
         :param pulumi.Input[str] maintain_start_time: The start time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time).
-        :param pulumi.Input[str] name: The name of DB instance. It a string of 2 to 256 characters.
+        :param pulumi.Input[str] name: The name of DB instance. It must be 2 to 256 characters in length.
         :param pulumi.Input[str] network_type: The network type of the instance. Valid values:`Classic`, `VPC`.
         :param pulumi.Input[str] order_type: The type of configuration changes performed. Default value: `DOWNGRADE`. Valid values:
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceParameterArgs']]]] parameters: Set of parameters needs to be set after mongodb instance was launched. See `parameters` below.
-        :param pulumi.Input[int] period: The duration that you will buy DB instance (in month). It is valid when instance_charge_type is `PrePaid`. Default value: `1`. Valid values: [1~9], 12, 24, 36.
+        :param pulumi.Input[int] period: The duration that you will buy DB instance (in month). It is valid when `instance_charge_type` is `PrePaid`. Default value: `1`. Valid values: [1~9], 12, 24, 36.
         :param pulumi.Input[int] readonly_replicas: The number of read-only nodes in the replica set instance. Default value: 0. Valid values: 0 to 5.
         :param pulumi.Input[str] replica_set_name: The name of the mongo replica set.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceReplicaSetArgs']]]] replica_sets: Replica set instance information.
@@ -1852,6 +1890,7 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["cloud_disk_encryption_key"] = cloud_disk_encryption_key
         __props__.__dict__["db_instance_class"] = db_instance_class
         __props__.__dict__["db_instance_storage"] = db_instance_storage
+        __props__.__dict__["effective_time"] = effective_time
         __props__.__dict__["encrypted"] = encrypted
         __props__.__dict__["encryption_key"] = encryption_key
         __props__.__dict__["encryptor_name"] = encryptor_name
@@ -1965,6 +2004,14 @@ class Instance(pulumi.CustomResource):
         return pulumi.get(self, "db_instance_storage")
 
     @property
+    @pulumi.getter(name="effectiveTime")
+    def effective_time(self) -> pulumi.Output[Optional[str]]:
+        """
+        The time when the changed configurations take effect. Valid values: `Immediately`, `MaintainTime`.
+        """
+        return pulumi.get(self, "effective_time")
+
+    @property
     @pulumi.getter
     def encrypted(self) -> pulumi.Output[Optional[bool]]:
         """
@@ -2048,7 +2095,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        The name of DB instance. It a string of 2 to 256 characters.
+        The name of DB instance. It must be 2 to 256 characters in length.
         """
         return pulumi.get(self, "name")
 
@@ -2080,7 +2127,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter
     def period(self) -> pulumi.Output[int]:
         """
-        The duration that you will buy DB instance (in month). It is valid when instance_charge_type is `PrePaid`. Default value: `1`. Valid values: [1~9], 12, 24, 36.
+        The duration that you will buy DB instance (in month). It is valid when `instance_charge_type` is `PrePaid`. Default value: `1`. Valid values: [1~9], 12, 24, 36.
         """
         return pulumi.get(self, "period")
 

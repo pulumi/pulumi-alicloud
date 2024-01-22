@@ -93,7 +93,7 @@ export class BandwidthPackage extends pulumi.CustomResource {
      */
     public readonly bandwidthType!: pulumi.Output<string | undefined>;
     /**
-     * The billing type. Valid values: `PayBy95`, `PayByTraffic`.
+     * The billing type. Valid values: `PayBy95`, `PayByTraffic`. **NOTE:** `billingType` is valid only when `paymentType` is set to `PayAsYouGo`.
      */
     public readonly billingType!: pulumi.Output<string | undefined>;
     /**
@@ -121,7 +121,7 @@ export class BandwidthPackage extends pulumi.CustomResource {
      */
     public readonly promotionOptionNo!: pulumi.Output<string | undefined>;
     /**
-     * The minimum percentage for the pay-by-95th-percentile metering method. Valid values: `30` to `100`.
+     * The minimum percentage for the pay-by-95th-percentile metering method. Valid values: `30` to `100`. **NOTE:** `ratio` is valid only when `billingType` is set to `PayBy95`.
      */
     public readonly ratio!: pulumi.Output<number | undefined>;
     /**
@@ -234,7 +234,7 @@ export interface BandwidthPackageState {
      */
     bandwidthType?: pulumi.Input<string>;
     /**
-     * The billing type. Valid values: `PayBy95`, `PayByTraffic`.
+     * The billing type. Valid values: `PayBy95`, `PayByTraffic`. **NOTE:** `billingType` is valid only when `paymentType` is set to `PayAsYouGo`.
      */
     billingType?: pulumi.Input<string>;
     /**
@@ -262,7 +262,7 @@ export interface BandwidthPackageState {
      */
     promotionOptionNo?: pulumi.Input<string>;
     /**
-     * The minimum percentage for the pay-by-95th-percentile metering method. Valid values: `30` to `100`.
+     * The minimum percentage for the pay-by-95th-percentile metering method. Valid values: `30` to `100`. **NOTE:** `ratio` is valid only when `billingType` is set to `PayBy95`.
      */
     ratio?: pulumi.Input<number>;
     /**
@@ -313,7 +313,7 @@ export interface BandwidthPackageArgs {
      */
     bandwidthType?: pulumi.Input<string>;
     /**
-     * The billing type. Valid values: `PayBy95`, `PayByTraffic`.
+     * The billing type. Valid values: `PayBy95`, `PayByTraffic`. **NOTE:** `billingType` is valid only when `paymentType` is set to `PayAsYouGo`.
      */
     billingType?: pulumi.Input<string>;
     /**
@@ -341,7 +341,7 @@ export interface BandwidthPackageArgs {
      */
     promotionOptionNo?: pulumi.Input<string>;
     /**
-     * The minimum percentage for the pay-by-95th-percentile metering method. Valid values: `30` to `100`.
+     * The minimum percentage for the pay-by-95th-percentile metering method. Valid values: `30` to `100`. **NOTE:** `ratio` is valid only when `billingType` is set to `PayBy95`.
      */
     ratio?: pulumi.Input<number>;
     /**

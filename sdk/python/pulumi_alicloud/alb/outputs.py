@@ -2378,12 +2378,12 @@ class ServerGroupHealthCheckConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "healthCheckCodes":
+        if key == "healthCheckEnabled":
+            suggest = "health_check_enabled"
+        elif key == "healthCheckCodes":
             suggest = "health_check_codes"
         elif key == "healthCheckConnectPort":
             suggest = "health_check_connect_port"
-        elif key == "healthCheckEnabled":
-            suggest = "health_check_enabled"
         elif key == "healthCheckHost":
             suggest = "health_check_host"
         elif key == "healthCheckHttpVersion":
@@ -2415,9 +2415,9 @@ class ServerGroupHealthCheckConfig(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 health_check_enabled: bool,
                  health_check_codes: Optional[Sequence[str]] = None,
                  health_check_connect_port: Optional[int] = None,
-                 health_check_enabled: Optional[bool] = None,
                  health_check_host: Optional[str] = None,
                  health_check_http_version: Optional[str] = None,
                  health_check_interval: Optional[int] = None,
@@ -2428,26 +2428,26 @@ class ServerGroupHealthCheckConfig(dict):
                  healthy_threshold: Optional[int] = None,
                  unhealthy_threshold: Optional[int] = None):
         """
-        :param Sequence[str] health_check_codes: The status code for a successful health check.  Multiple status codes can be specified as a list. Valid values: `http_2xx`, `http_3xx`, `http_4xx`, and `http_5xx`. Default value: `http_2xx`. **NOTE:** This
-               parameter exists if the `HealthCheckProtocol` parameter is set to `HTTP`.
-        :param int health_check_connect_port: The port of the backend server that is used for health checks. Valid values: `0` to `65535`. Default value: `0`. A value of 0 indicates that a backend server port is used for health checks.
-        :param bool health_check_enabled: Indicates whether health checks are enabled. Valid values: `true`, `false`. Default value: `true`.
+        :param bool health_check_enabled: Specifies whether to enable the health check feature. Valid values: `true`, `false`.
+        :param Sequence[str] health_check_codes: The HTTP status codes that are used to indicate whether the backend server passes the health check. Valid values:
+               - If `health_check_protocol` is set to `HTTP` or `HTTPS`. Valid values: `http_2xx`, `http_3xx`, `http_4xx`, and `http_5xx`. Default value: `http_2xx`.
+               - If `health_check_protocol` is set to `gRPC`. Valid values: `0` to `99`. Default value: `0`.
+        :param int health_check_connect_port: The backend port that is used for health checks. Default value: `0`. Valid values: `0` to `65535`. A value of 0 indicates that a backend server port is used for health checks.
         :param str health_check_host: The domain name that is used for health checks.
-        :param str health_check_http_version: HTTP protocol version. Valid values: `HTTP1.0` and `HTTP1.1`. Default value: `HTTP1.1`. **NOTE:** This parameter exists if the `HealthCheckProtocol` parameter is set to `HTTP`.
-        :param int health_check_interval: The time interval between two consecutive health checks. Unit: seconds. Valid values: `1` to `50`. Default value: `2`.
-        :param str health_check_method: Health check method. Valid values: `GET` and `HEAD`. Default: `GET`. **NOTE:** This parameter exists if the `HealthCheckProtocol` parameter is set to `HTTP`.
-        :param str health_check_path: The forwarding rule path of health checks. **NOTE:** This parameter exists if the `HealthCheckProtocol` parameter is set to `HTTP`.
-        :param str health_check_protocol: Health check protocol. Valid values: `HTTP` and `TCP`, `HTTPS`.
-        :param int health_check_timeout: The timeout period of a health check response. If a backend Elastic Compute Service (ECS) instance does not send an expected response within the specified period of time, the ECS instance is considered unhealthy. Unit: seconds. Valid values: 1 to 300. Default value: 5. **NOTE:** If the value of the `HealthCHeckTimeout` parameter is smaller than that of the `HealthCheckInterval` parameter, the value of the `HealthCHeckTimeout` parameter is ignored and the value of the `HealthCheckInterval` parameter is regarded as the timeout period.
-        :param int healthy_threshold: The number of health checks that an unhealthy backend server must pass consecutively before it is declared healthy. In this case, the health check state is changed from fail to success. Valid values: 2 to 10. Default value: 3.
-        :param int unhealthy_threshold: The number of consecutive health checks that a healthy backend server must consecutively fail before it is declared unhealthy. In this case, the health check state is changed from success to fail. Valid values: `2` to `10`. Default value: `3`.
+        :param str health_check_http_version: The version of the HTTP protocol. Default value: `HTTP1.1`. Valid values: `HTTP1.0` and `HTTP1.1`. **NOTE:** This parameter takes effect only when `health_check_protocol` is set to `HTTP` or `HTTPS`.
+        :param int health_check_interval: The interval at which health checks are performed. Unit: seconds. Default value: `2`. Valid values: `1` to `50`.
+        :param str health_check_method: The HTTP method that is used for health checks. Default value: `GET`. Valid values: `GET`, `POST`, `HEAD`. **NOTE:** This parameter takes effect only when `health_check_protocol` is set to `HTTP`, `HTTPS`, or `gRPC`. From version 1.215.0, `health_check_method` can be set to `POST`.
+        :param str health_check_path: The path that is used for health checks. **NOTE:** This parameter takes effect only when `health_check_protocol` is set to `HTTP` or `HTTPS`.
+        :param str health_check_protocol: The protocol that is used for health checks. Valid values: `HTTP`, `HTTPS`, `TCP` and `gRPC`.
+        :param int health_check_timeout: The timeout period for a health check response. If a backend Elastic Compute Service (ECS) instance does not send an expected response within the specified period of time, the ECS instance is considered unhealthy. Unit: seconds. Default value: `5`. Valid values: `1` to `300`. **NOTE:** If the value of `health_check_timeout` is smaller than the value of `health_check_interval`, the value of `health_check_timeout` is ignored and the value of `health_check_interval` is used.
+        :param int healthy_threshold: The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy. Default value: `3`. Valid values: `2` to `10`.
+        :param int unhealthy_threshold: The number of times that a healthy backend server must consecutively fail health checks before it is declared unhealthy. Default value: `3`. Valid values: `2` to `10`.
         """
+        pulumi.set(__self__, "health_check_enabled", health_check_enabled)
         if health_check_codes is not None:
             pulumi.set(__self__, "health_check_codes", health_check_codes)
         if health_check_connect_port is not None:
             pulumi.set(__self__, "health_check_connect_port", health_check_connect_port)
-        if health_check_enabled is not None:
-            pulumi.set(__self__, "health_check_enabled", health_check_enabled)
         if health_check_host is not None:
             pulumi.set(__self__, "health_check_host", health_check_host)
         if health_check_http_version is not None:
@@ -2468,11 +2468,20 @@ class ServerGroupHealthCheckConfig(dict):
             pulumi.set(__self__, "unhealthy_threshold", unhealthy_threshold)
 
     @property
+    @pulumi.getter(name="healthCheckEnabled")
+    def health_check_enabled(self) -> bool:
+        """
+        Specifies whether to enable the health check feature. Valid values: `true`, `false`.
+        """
+        return pulumi.get(self, "health_check_enabled")
+
+    @property
     @pulumi.getter(name="healthCheckCodes")
     def health_check_codes(self) -> Optional[Sequence[str]]:
         """
-        The status code for a successful health check.  Multiple status codes can be specified as a list. Valid values: `http_2xx`, `http_3xx`, `http_4xx`, and `http_5xx`. Default value: `http_2xx`. **NOTE:** This
-        parameter exists if the `HealthCheckProtocol` parameter is set to `HTTP`.
+        The HTTP status codes that are used to indicate whether the backend server passes the health check. Valid values:
+        - If `health_check_protocol` is set to `HTTP` or `HTTPS`. Valid values: `http_2xx`, `http_3xx`, `http_4xx`, and `http_5xx`. Default value: `http_2xx`.
+        - If `health_check_protocol` is set to `gRPC`. Valid values: `0` to `99`. Default value: `0`.
         """
         return pulumi.get(self, "health_check_codes")
 
@@ -2480,17 +2489,9 @@ class ServerGroupHealthCheckConfig(dict):
     @pulumi.getter(name="healthCheckConnectPort")
     def health_check_connect_port(self) -> Optional[int]:
         """
-        The port of the backend server that is used for health checks. Valid values: `0` to `65535`. Default value: `0`. A value of 0 indicates that a backend server port is used for health checks.
+        The backend port that is used for health checks. Default value: `0`. Valid values: `0` to `65535`. A value of 0 indicates that a backend server port is used for health checks.
         """
         return pulumi.get(self, "health_check_connect_port")
-
-    @property
-    @pulumi.getter(name="healthCheckEnabled")
-    def health_check_enabled(self) -> Optional[bool]:
-        """
-        Indicates whether health checks are enabled. Valid values: `true`, `false`. Default value: `true`.
-        """
-        return pulumi.get(self, "health_check_enabled")
 
     @property
     @pulumi.getter(name="healthCheckHost")
@@ -2504,7 +2505,7 @@ class ServerGroupHealthCheckConfig(dict):
     @pulumi.getter(name="healthCheckHttpVersion")
     def health_check_http_version(self) -> Optional[str]:
         """
-        HTTP protocol version. Valid values: `HTTP1.0` and `HTTP1.1`. Default value: `HTTP1.1`. **NOTE:** This parameter exists if the `HealthCheckProtocol` parameter is set to `HTTP`.
+        The version of the HTTP protocol. Default value: `HTTP1.1`. Valid values: `HTTP1.0` and `HTTP1.1`. **NOTE:** This parameter takes effect only when `health_check_protocol` is set to `HTTP` or `HTTPS`.
         """
         return pulumi.get(self, "health_check_http_version")
 
@@ -2512,7 +2513,7 @@ class ServerGroupHealthCheckConfig(dict):
     @pulumi.getter(name="healthCheckInterval")
     def health_check_interval(self) -> Optional[int]:
         """
-        The time interval between two consecutive health checks. Unit: seconds. Valid values: `1` to `50`. Default value: `2`.
+        The interval at which health checks are performed. Unit: seconds. Default value: `2`. Valid values: `1` to `50`.
         """
         return pulumi.get(self, "health_check_interval")
 
@@ -2520,7 +2521,7 @@ class ServerGroupHealthCheckConfig(dict):
     @pulumi.getter(name="healthCheckMethod")
     def health_check_method(self) -> Optional[str]:
         """
-        Health check method. Valid values: `GET` and `HEAD`. Default: `GET`. **NOTE:** This parameter exists if the `HealthCheckProtocol` parameter is set to `HTTP`.
+        The HTTP method that is used for health checks. Default value: `GET`. Valid values: `GET`, `POST`, `HEAD`. **NOTE:** This parameter takes effect only when `health_check_protocol` is set to `HTTP`, `HTTPS`, or `gRPC`. From version 1.215.0, `health_check_method` can be set to `POST`.
         """
         return pulumi.get(self, "health_check_method")
 
@@ -2528,7 +2529,7 @@ class ServerGroupHealthCheckConfig(dict):
     @pulumi.getter(name="healthCheckPath")
     def health_check_path(self) -> Optional[str]:
         """
-        The forwarding rule path of health checks. **NOTE:** This parameter exists if the `HealthCheckProtocol` parameter is set to `HTTP`.
+        The path that is used for health checks. **NOTE:** This parameter takes effect only when `health_check_protocol` is set to `HTTP` or `HTTPS`.
         """
         return pulumi.get(self, "health_check_path")
 
@@ -2536,7 +2537,7 @@ class ServerGroupHealthCheckConfig(dict):
     @pulumi.getter(name="healthCheckProtocol")
     def health_check_protocol(self) -> Optional[str]:
         """
-        Health check protocol. Valid values: `HTTP` and `TCP`, `HTTPS`.
+        The protocol that is used for health checks. Valid values: `HTTP`, `HTTPS`, `TCP` and `gRPC`.
         """
         return pulumi.get(self, "health_check_protocol")
 
@@ -2544,7 +2545,7 @@ class ServerGroupHealthCheckConfig(dict):
     @pulumi.getter(name="healthCheckTimeout")
     def health_check_timeout(self) -> Optional[int]:
         """
-        The timeout period of a health check response. If a backend Elastic Compute Service (ECS) instance does not send an expected response within the specified period of time, the ECS instance is considered unhealthy. Unit: seconds. Valid values: 1 to 300. Default value: 5. **NOTE:** If the value of the `HealthCHeckTimeout` parameter is smaller than that of the `HealthCheckInterval` parameter, the value of the `HealthCHeckTimeout` parameter is ignored and the value of the `HealthCheckInterval` parameter is regarded as the timeout period.
+        The timeout period for a health check response. If a backend Elastic Compute Service (ECS) instance does not send an expected response within the specified period of time, the ECS instance is considered unhealthy. Unit: seconds. Default value: `5`. Valid values: `1` to `300`. **NOTE:** If the value of `health_check_timeout` is smaller than the value of `health_check_interval`, the value of `health_check_timeout` is ignored and the value of `health_check_interval` is used.
         """
         return pulumi.get(self, "health_check_timeout")
 
@@ -2552,7 +2553,7 @@ class ServerGroupHealthCheckConfig(dict):
     @pulumi.getter(name="healthyThreshold")
     def healthy_threshold(self) -> Optional[int]:
         """
-        The number of health checks that an unhealthy backend server must pass consecutively before it is declared healthy. In this case, the health check state is changed from fail to success. Valid values: 2 to 10. Default value: 3.
+        The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy. Default value: `3`. Valid values: `2` to `10`.
         """
         return pulumi.get(self, "healthy_threshold")
 
@@ -2560,7 +2561,7 @@ class ServerGroupHealthCheckConfig(dict):
     @pulumi.getter(name="unhealthyThreshold")
     def unhealthy_threshold(self) -> Optional[int]:
         """
-        The number of consecutive health checks that a healthy backend server must consecutively fail before it is declared unhealthy. In this case, the health check state is changed from success to fail. Valid values: `2` to `10`. Default value: `3`.
+        The number of times that a healthy backend server must consecutively fail health checks before it is declared unhealthy. Default value: `3`. Valid values: `2` to `10`.
         """
         return pulumi.get(self, "unhealthy_threshold")
 
@@ -2604,19 +2605,13 @@ class ServerGroupServer(dict):
                - If `server_group_type` is set to `Instance`, set the parameter to the ID of an Elastic Compute Service (ECS) instance, an elastic network interface (ENI), or an elastic container instance. These backend servers are specified by Ecs, Eni, or Eci.
                - If `server_group_type` is set to `Ip`, set the parameter to an IP address specified in the server group.
                - If `server_group_type` is set to `Fc`, set the parameter to the Alibaba Cloud Resource Name (ARN) of a function specified in the server group.
-        :param str server_type: The type of the server. The type of the server. Valid values: 
-               - Ecs: an ECS instance.
-               - Eni: an ENI.
-               - Eci: an elastic container instance.
-               - Ip(Available in v1.194.0+): an IP address.
-               - fc(Available in v1.194.0+): a function.
-        :param str description: The description of the server.
-        :param int port: The port that is used by the server. Valid values: `1` to `65535`. **Note:** This parameter is required if the `server_type` parameter is set to `Ecs`, `Eni`, `Eci`, or `Ip`. You do not need to configure this parameter if you set `server_type` to `Fc`.
+        :param str server_type: The type of the server. The type of the server. Valid values:
+        :param str description: The description of the backend server.
+        :param int port: The port used by the backend server. Valid values: `1` to `65535`. **Note:** This parameter is required if the `server_type` parameter is set to `Ecs`, `Eni`, `Eci`, or `Ip`. You do not need to configure this parameter if you set `server_type` to `Fc`.
         :param bool remote_ip_enabled: Specifies whether to enable the remote IP address feature. You can specify up to 40 servers in each call. **Note:** If `server_type` is set to `Ip`, this parameter is available.
         :param str server_ip: The IP address of an Elastic Compute Service (ECS) instance, an elastic network interface (ENI), or an elastic container instance. **Note:** If `server_group_type` is set to `Fc`, you do not need to configure parameters, otherwise this attribute is required. If `server_group_type` is set to `Ip`, the value of this property is the same as the `server_id` value.
-        :param str status: The status of the backend server. Valid values:
-        :param int weight: The weight of the server. Valid values: `0` to `100`. Default value: `100`. If the value is set to `0`, no
-               requests are forwarded to the server. **Note:** You do not need to set this parameter if you set `server_type` to `Fc`.
+        :param str status: The status of the backend server.
+        :param int weight: The weight of the server. Default value: `100`. Valid values: `0` to `100`. If the value is set to `0`, no requests are forwarded to the server. **Note:** You do not need to set this parameter if you set `server_type` to `Fc`.
         """
         pulumi.set(__self__, "server_id", server_id)
         pulumi.set(__self__, "server_type", server_type)
@@ -2648,12 +2643,7 @@ class ServerGroupServer(dict):
     @pulumi.getter(name="serverType")
     def server_type(self) -> str:
         """
-        The type of the server. The type of the server. Valid values: 
-        - Ecs: an ECS instance.
-        - Eni: an ENI.
-        - Eci: an elastic container instance.
-        - Ip(Available in v1.194.0+): an IP address.
-        - fc(Available in v1.194.0+): a function.
+        The type of the server. The type of the server. Valid values:
         """
         return pulumi.get(self, "server_type")
 
@@ -2661,7 +2651,7 @@ class ServerGroupServer(dict):
     @pulumi.getter
     def description(self) -> Optional[str]:
         """
-        The description of the server.
+        The description of the backend server.
         """
         return pulumi.get(self, "description")
 
@@ -2669,7 +2659,7 @@ class ServerGroupServer(dict):
     @pulumi.getter
     def port(self) -> Optional[int]:
         """
-        The port that is used by the server. Valid values: `1` to `65535`. **Note:** This parameter is required if the `server_type` parameter is set to `Ecs`, `Eni`, `Eci`, or `Ip`. You do not need to configure this parameter if you set `server_type` to `Fc`.
+        The port used by the backend server. Valid values: `1` to `65535`. **Note:** This parameter is required if the `server_type` parameter is set to `Ecs`, `Eni`, `Eci`, or `Ip`. You do not need to configure this parameter if you set `server_type` to `Fc`.
         """
         return pulumi.get(self, "port")
 
@@ -2693,7 +2683,7 @@ class ServerGroupServer(dict):
     @pulumi.getter
     def status(self) -> Optional[str]:
         """
-        The status of the backend server. Valid values:
+        The status of the backend server.
         """
         return pulumi.get(self, "status")
 
@@ -2701,8 +2691,7 @@ class ServerGroupServer(dict):
     @pulumi.getter
     def weight(self) -> Optional[int]:
         """
-        The weight of the server. Valid values: `0` to `100`. Default value: `100`. If the value is set to `0`, no
-        requests are forwarded to the server. **Note:** You do not need to set this parameter if you set `server_type` to `Fc`.
+        The weight of the server. Default value: `100`. Valid values: `0` to `100`. If the value is set to `0`, no requests are forwarded to the server. **Note:** You do not need to set this parameter if you set `server_type` to `Fc`.
         """
         return pulumi.get(self, "weight")
 
@@ -2736,13 +2725,10 @@ class ServerGroupStickySessionConfig(dict):
                  sticky_session_enabled: Optional[bool] = None,
                  sticky_session_type: Optional[str] = None):
         """
-        :param str cookie: the cookie that is configured on the server. **NOTE:** This parameter exists if the `StickySession`
-               parameter is set to `On` and the `StickySessionType` parameter is set to `server`.
-        :param int cookie_timeout: The timeout period of a cookie. The timeout period of a cookie. Unit: seconds. Valid values: `1`
-               to `86400`. Default value: `1000`.
-        :param bool sticky_session_enabled: Indicates whether sticky session is enabled. Values: `true` and `false`. Default
-               value: `false`.  **NOTE:** This parameter exists if the `StickySession` parameter is set to `On`.
-        :param str sticky_session_type: The method that is used to handle a cookie. Values: `Server` and `Insert`.
+        :param str cookie: The cookie to be configured on the server. **NOTE:** This parameter takes effect when the `sticky_session_enabled` parameter is set to `true` and the `sticky_session_type` parameter is set to `Server`.
+        :param int cookie_timeout: The timeout period of a cookie. Unit: seconds. Default value: `1000`. Valid values: `1` to `86400`. **NOTE:** This parameter takes effect when the `sticky_session_enabled` parameter is set to `true` and the `sticky_session_type` parameter is set to `Insert`.
+        :param bool sticky_session_enabled: Specifies whether to enable session persistence. Default value: `false`. Valid values: `true`, `false`. **NOTE:** This parameter takes effect when the `server_group_type` parameter is set to `Instance` or `Ip`.
+        :param str sticky_session_type: The method that is used to handle a cookie. Valid values: `Server`, `Insert`.
         """
         if cookie is not None:
             pulumi.set(__self__, "cookie", cookie)
@@ -2757,8 +2743,7 @@ class ServerGroupStickySessionConfig(dict):
     @pulumi.getter
     def cookie(self) -> Optional[str]:
         """
-        the cookie that is configured on the server. **NOTE:** This parameter exists if the `StickySession`
-        parameter is set to `On` and the `StickySessionType` parameter is set to `server`.
+        The cookie to be configured on the server. **NOTE:** This parameter takes effect when the `sticky_session_enabled` parameter is set to `true` and the `sticky_session_type` parameter is set to `Server`.
         """
         return pulumi.get(self, "cookie")
 
@@ -2766,8 +2751,7 @@ class ServerGroupStickySessionConfig(dict):
     @pulumi.getter(name="cookieTimeout")
     def cookie_timeout(self) -> Optional[int]:
         """
-        The timeout period of a cookie. The timeout period of a cookie. Unit: seconds. Valid values: `1`
-        to `86400`. Default value: `1000`.
+        The timeout period of a cookie. Unit: seconds. Default value: `1000`. Valid values: `1` to `86400`. **NOTE:** This parameter takes effect when the `sticky_session_enabled` parameter is set to `true` and the `sticky_session_type` parameter is set to `Insert`.
         """
         return pulumi.get(self, "cookie_timeout")
 
@@ -2775,8 +2759,7 @@ class ServerGroupStickySessionConfig(dict):
     @pulumi.getter(name="stickySessionEnabled")
     def sticky_session_enabled(self) -> Optional[bool]:
         """
-        Indicates whether sticky session is enabled. Values: `true` and `false`. Default
-        value: `false`.  **NOTE:** This parameter exists if the `StickySession` parameter is set to `On`.
+        Specifies whether to enable session persistence. Default value: `false`. Valid values: `true`, `false`. **NOTE:** This parameter takes effect when the `server_group_type` parameter is set to `Instance` or `Ip`.
         """
         return pulumi.get(self, "sticky_session_enabled")
 
@@ -2784,7 +2767,7 @@ class ServerGroupStickySessionConfig(dict):
     @pulumi.getter(name="stickySessionType")
     def sticky_session_type(self) -> Optional[str]:
         """
-        The method that is used to handle a cookie. Values: `Server` and `Insert`.
+        The method that is used to handle a cookie. Valid values: `Server`, `Insert`.
         """
         return pulumi.get(self, "sticky_session_type")
 

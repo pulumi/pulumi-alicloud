@@ -14,50 +14,50 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ShardingInstanceMongoList {
     /**
-     * @return Mongo node connection string.
+     * @return The connection address of the Config Server node.
      * 
      */
     private @Nullable String connectString;
     /**
-     * @return Node specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
+     * @return The instance type of the mongo node. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
      * 
      */
     private String nodeClass;
     /**
-     * @return The ID of the mongo-node.
+     * @return The ID of the Config Server node.
      * 
      */
     private @Nullable String nodeId;
     /**
-     * @return Mongo node port.
+     * @return The connection port of the Config Server node.
      * 
      */
     private @Nullable Integer port;
 
     private ShardingInstanceMongoList() {}
     /**
-     * @return Mongo node connection string.
+     * @return The connection address of the Config Server node.
      * 
      */
     public Optional<String> connectString() {
         return Optional.ofNullable(this.connectString);
     }
     /**
-     * @return Node specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
+     * @return The instance type of the mongo node. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
      * 
      */
     public String nodeClass() {
         return this.nodeClass;
     }
     /**
-     * @return The ID of the mongo-node.
+     * @return The ID of the Config Server node.
      * 
      */
     public Optional<String> nodeId() {
         return Optional.ofNullable(this.nodeId);
     }
     /**
-     * @return Mongo node port.
+     * @return The connection port of the Config Server node.
      * 
      */
     public Optional<Integer> port() {

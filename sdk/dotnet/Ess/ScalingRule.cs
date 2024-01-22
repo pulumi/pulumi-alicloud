@@ -23,11 +23,20 @@ namespace Pulumi.AliCloud.Ess
     /// using System.Linq;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
+    /// using Random = Pulumi.Random;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var config = new Config();
-    ///     var name = config.Get("name") ?? "terraform-example";
+    ///     var defaultRandomInteger = new List&lt;Random.RandomInteger&gt;();
+    ///     for (var rangeIndex = 0; rangeIndex &lt; (1 == true); rangeIndex++)
+    ///     {
+    ///         var range = new { Value = rangeIndex };
+    ///         defaultRandomInteger.Add(new Random.RandomInteger($"defaultRandomInteger-{range.Value}", new()
+    ///         {
+    ///             Max = 99999,
+    ///             Min = 10000,
+    ///         }));
+    ///     }
     ///     var defaultZones = AliCloud.GetZones.Invoke(new()
     ///     {
     ///         AvailableDiskCategory = "cloud_efficiency",
@@ -58,7 +67,7 @@ namespace Pulumi.AliCloud.Ess
     ///         VpcId = defaultNetwork.Id,
     ///         CidrBlock = "172.16.0.0/24",
     ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
-    ///         VswitchName = name,
+    ///         VswitchName = defaultRandomInteger?.Result.Apply(result =&gt; $"terraform-example-{result}"),
     ///     });
     /// 
     ///     var defaultSecurityGroup = new AliCloud.Ecs.SecurityGroup("defaultSecurityGroup", new()
@@ -82,7 +91,7 @@ namespace Pulumi.AliCloud.Ess
     ///     {
     ///         MinSize = 1,
     ///         MaxSize = 1,
-    ///         ScalingGroupName = name,
+    ///         ScalingGroupName = defaultRandomInteger?.Result.Apply(result =&gt; $"terraform-example-{result}"),
     ///         VswitchIds = new[]
     ///         {
     ///             defaultSwitch.Id,
@@ -145,6 +154,12 @@ namespace Pulumi.AliCloud.Ess
         /// </summary>
         [Output("adjustmentValue")]
         public Output<int?> AdjustmentValue { get; private set; } = null!;
+
+        /// <summary>
+        /// AlarmDimension for StepScalingRule. See `alarm_dimension` below.
+        /// </summary>
+        [Output("alarmDimension")]
+        public Output<Outputs.ScalingRuleAlarmDimension?> AlarmDimension { get; private set; } = null!;
 
         /// <summary>
         /// The unique identifier of the scaling rule.
@@ -271,6 +286,12 @@ namespace Pulumi.AliCloud.Ess
         public Input<int>? AdjustmentValue { get; set; }
 
         /// <summary>
+        /// AlarmDimension for StepScalingRule. See `alarm_dimension` below.
+        /// </summary>
+        [Input("alarmDimension")]
+        public Input<Inputs.ScalingRuleAlarmDimensionArgs>? AlarmDimension { get; set; }
+
+        /// <summary>
         /// The cooldown time of the scaling rule. This parameter is applicable only to simple scaling rules. Value range: [0, 86,400], in seconds. The default value is empty，if not set, the return value will be 0, which is the default value of integer.
         /// </summary>
         [Input("cooldown")]
@@ -355,6 +376,12 @@ namespace Pulumi.AliCloud.Ess
         /// </summary>
         [Input("adjustmentValue")]
         public Input<int>? AdjustmentValue { get; set; }
+
+        /// <summary>
+        /// AlarmDimension for StepScalingRule. See `alarm_dimension` below.
+        /// </summary>
+        [Input("alarmDimension")]
+        public Input<Inputs.ScalingRuleAlarmDimensionGetArgs>? AlarmDimension { get; set; }
 
         /// <summary>
         /// The unique identifier of the scaling rule.

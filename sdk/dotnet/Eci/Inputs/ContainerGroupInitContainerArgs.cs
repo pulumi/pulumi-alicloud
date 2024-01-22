@@ -108,6 +108,18 @@ namespace Pulumi.AliCloud.Eci.Inputs
         [Input("restartCount")]
         public Input<int>? RestartCount { get; set; }
 
+        [Input("securityContexts")]
+        private InputList<Inputs.ContainerGroupInitContainerSecurityContextArgs>? _securityContexts;
+
+        /// <summary>
+        /// The security context of the container. See `security_context` below.
+        /// </summary>
+        public InputList<Inputs.ContainerGroupInitContainerSecurityContextArgs> SecurityContexts
+        {
+            get => _securityContexts ?? (_securityContexts = new InputList<Inputs.ContainerGroupInitContainerSecurityContextArgs>());
+            set => _securityContexts = value;
+        }
+
         [Input("volumeMounts")]
         private InputList<Inputs.ContainerGroupInitContainerVolumeMountArgs>? _volumeMounts;
 

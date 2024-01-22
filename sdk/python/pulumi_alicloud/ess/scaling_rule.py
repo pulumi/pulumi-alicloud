@@ -19,6 +19,7 @@ class ScalingRuleArgs:
                  scaling_group_id: pulumi.Input[str],
                  adjustment_type: Optional[pulumi.Input[str]] = None,
                  adjustment_value: Optional[pulumi.Input[int]] = None,
+                 alarm_dimension: Optional[pulumi.Input['ScalingRuleAlarmDimensionArgs']] = None,
                  cooldown: Optional[pulumi.Input[int]] = None,
                  disable_scale_in: Optional[pulumi.Input[bool]] = None,
                  estimated_instance_warmup: Optional[pulumi.Input[int]] = None,
@@ -38,6 +39,7 @@ class ScalingRuleArgs:
                - QuantityChangeInCapacity：(0, 500] U (-500, 0]
                - PercentChangeInCapacity：[0, 10000] U [-100, 0]
                - TotalCapacity：[0, 1000]
+        :param pulumi.Input['ScalingRuleAlarmDimensionArgs'] alarm_dimension: AlarmDimension for StepScalingRule. See `alarm_dimension` below.
         :param pulumi.Input[int] cooldown: The cooldown time of the scaling rule. This parameter is applicable only to simple scaling rules. Value range: [0, 86,400], in seconds. The default value is empty，if not set, the return value will be 0, which is the default value of integer.
         :param pulumi.Input[bool] disable_scale_in: Indicates whether scale in by the target tracking policy is disabled. Default to false.
         :param pulumi.Input[int] estimated_instance_warmup: The estimated time, in seconds, until a newly launched instance will contribute CloudMonitor metrics. Default to 300.
@@ -52,6 +54,8 @@ class ScalingRuleArgs:
             pulumi.set(__self__, "adjustment_type", adjustment_type)
         if adjustment_value is not None:
             pulumi.set(__self__, "adjustment_value", adjustment_value)
+        if alarm_dimension is not None:
+            pulumi.set(__self__, "alarm_dimension", alarm_dimension)
         if cooldown is not None:
             pulumi.set(__self__, "cooldown", cooldown)
         if disable_scale_in is not None:
@@ -110,6 +114,18 @@ class ScalingRuleArgs:
     @adjustment_value.setter
     def adjustment_value(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "adjustment_value", value)
+
+    @property
+    @pulumi.getter(name="alarmDimension")
+    def alarm_dimension(self) -> Optional[pulumi.Input['ScalingRuleAlarmDimensionArgs']]:
+        """
+        AlarmDimension for StepScalingRule. See `alarm_dimension` below.
+        """
+        return pulumi.get(self, "alarm_dimension")
+
+    @alarm_dimension.setter
+    def alarm_dimension(self, value: Optional[pulumi.Input['ScalingRuleAlarmDimensionArgs']]):
+        pulumi.set(self, "alarm_dimension", value)
 
     @property
     @pulumi.getter
@@ -213,6 +229,7 @@ class _ScalingRuleState:
     def __init__(__self__, *,
                  adjustment_type: Optional[pulumi.Input[str]] = None,
                  adjustment_value: Optional[pulumi.Input[int]] = None,
+                 alarm_dimension: Optional[pulumi.Input['ScalingRuleAlarmDimensionArgs']] = None,
                  ari: Optional[pulumi.Input[str]] = None,
                  cooldown: Optional[pulumi.Input[int]] = None,
                  disable_scale_in: Optional[pulumi.Input[bool]] = None,
@@ -233,6 +250,7 @@ class _ScalingRuleState:
                - QuantityChangeInCapacity：(0, 500] U (-500, 0]
                - PercentChangeInCapacity：[0, 10000] U [-100, 0]
                - TotalCapacity：[0, 1000]
+        :param pulumi.Input['ScalingRuleAlarmDimensionArgs'] alarm_dimension: AlarmDimension for StepScalingRule. See `alarm_dimension` below.
         :param pulumi.Input[str] ari: The unique identifier of the scaling rule.
         :param pulumi.Input[int] cooldown: The cooldown time of the scaling rule. This parameter is applicable only to simple scaling rules. Value range: [0, 86,400], in seconds. The default value is empty，if not set, the return value will be 0, which is the default value of integer.
         :param pulumi.Input[bool] disable_scale_in: Indicates whether scale in by the target tracking policy is disabled. Default to false.
@@ -248,6 +266,8 @@ class _ScalingRuleState:
             pulumi.set(__self__, "adjustment_type", adjustment_type)
         if adjustment_value is not None:
             pulumi.set(__self__, "adjustment_value", adjustment_value)
+        if alarm_dimension is not None:
+            pulumi.set(__self__, "alarm_dimension", alarm_dimension)
         if ari is not None:
             pulumi.set(__self__, "ari", ari)
         if cooldown is not None:
@@ -298,6 +318,18 @@ class _ScalingRuleState:
     @adjustment_value.setter
     def adjustment_value(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "adjustment_value", value)
+
+    @property
+    @pulumi.getter(name="alarmDimension")
+    def alarm_dimension(self) -> Optional[pulumi.Input['ScalingRuleAlarmDimensionArgs']]:
+        """
+        AlarmDimension for StepScalingRule. See `alarm_dimension` below.
+        """
+        return pulumi.get(self, "alarm_dimension")
+
+    @alarm_dimension.setter
+    def alarm_dimension(self, value: Optional[pulumi.Input['ScalingRuleAlarmDimensionArgs']]):
+        pulumi.set(self, "alarm_dimension", value)
 
     @property
     @pulumi.getter
@@ -427,6 +459,7 @@ class ScalingRule(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  adjustment_type: Optional[pulumi.Input[str]] = None,
                  adjustment_value: Optional[pulumi.Input[int]] = None,
+                 alarm_dimension: Optional[pulumi.Input[pulumi.InputType['ScalingRuleAlarmDimensionArgs']]] = None,
                  cooldown: Optional[pulumi.Input[int]] = None,
                  disable_scale_in: Optional[pulumi.Input[bool]] = None,
                  estimated_instance_warmup: Optional[pulumi.Input[int]] = None,
@@ -449,11 +482,13 @@ class ScalingRule(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "terraform-example"
+        default_random_integer = None
+        if 1 == True:
+            default_random_integer = random.RandomInteger("defaultRandomInteger",
+                max=99999,
+                min=10000)
         default_zones = alicloud.get_zones(available_disk_category="cloud_efficiency",
             available_resource_creation="VSwitch")
         default_instance_types = alicloud.ecs.get_instance_types(availability_zone=default_zones.zones[0].id,
@@ -467,7 +502,7 @@ class ScalingRule(pulumi.CustomResource):
             vpc_id=default_network.id,
             cidr_block="172.16.0.0/24",
             zone_id=default_zones.zones[0].id,
-            vswitch_name=name)
+            vswitch_name=default_random_integer.result.apply(lambda result: f"terraform-example-{result}"))
         default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
         default_security_group_rule = alicloud.ecs.SecurityGroupRule("defaultSecurityGroupRule",
             type="ingress",
@@ -481,7 +516,7 @@ class ScalingRule(pulumi.CustomResource):
         default_scaling_group = alicloud.ess.ScalingGroup("defaultScalingGroup",
             min_size=1,
             max_size=1,
-            scaling_group_name=name,
+            scaling_group_name=default_random_integer.result.apply(lambda result: f"terraform-example-{result}"),
             vswitch_ids=[default_switch.id],
             removal_policies=[
                 "OldestInstance",
@@ -521,6 +556,7 @@ class ScalingRule(pulumi.CustomResource):
                - QuantityChangeInCapacity：(0, 500] U (-500, 0]
                - PercentChangeInCapacity：[0, 10000] U [-100, 0]
                - TotalCapacity：[0, 1000]
+        :param pulumi.Input[pulumi.InputType['ScalingRuleAlarmDimensionArgs']] alarm_dimension: AlarmDimension for StepScalingRule. See `alarm_dimension` below.
         :param pulumi.Input[int] cooldown: The cooldown time of the scaling rule. This parameter is applicable only to simple scaling rules. Value range: [0, 86,400], in seconds. The default value is empty，if not set, the return value will be 0, which is the default value of integer.
         :param pulumi.Input[bool] disable_scale_in: Indicates whether scale in by the target tracking policy is disabled. Default to false.
         :param pulumi.Input[int] estimated_instance_warmup: The estimated time, in seconds, until a newly launched instance will contribute CloudMonitor metrics. Default to 300.
@@ -549,11 +585,13 @@ class ScalingRule(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "terraform-example"
+        default_random_integer = None
+        if 1 == True:
+            default_random_integer = random.RandomInteger("defaultRandomInteger",
+                max=99999,
+                min=10000)
         default_zones = alicloud.get_zones(available_disk_category="cloud_efficiency",
             available_resource_creation="VSwitch")
         default_instance_types = alicloud.ecs.get_instance_types(availability_zone=default_zones.zones[0].id,
@@ -567,7 +605,7 @@ class ScalingRule(pulumi.CustomResource):
             vpc_id=default_network.id,
             cidr_block="172.16.0.0/24",
             zone_id=default_zones.zones[0].id,
-            vswitch_name=name)
+            vswitch_name=default_random_integer.result.apply(lambda result: f"terraform-example-{result}"))
         default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
         default_security_group_rule = alicloud.ecs.SecurityGroupRule("defaultSecurityGroupRule",
             type="ingress",
@@ -581,7 +619,7 @@ class ScalingRule(pulumi.CustomResource):
         default_scaling_group = alicloud.ess.ScalingGroup("defaultScalingGroup",
             min_size=1,
             max_size=1,
-            scaling_group_name=name,
+            scaling_group_name=default_random_integer.result.apply(lambda result: f"terraform-example-{result}"),
             vswitch_ids=[default_switch.id],
             removal_policies=[
                 "OldestInstance",
@@ -628,6 +666,7 @@ class ScalingRule(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  adjustment_type: Optional[pulumi.Input[str]] = None,
                  adjustment_value: Optional[pulumi.Input[int]] = None,
+                 alarm_dimension: Optional[pulumi.Input[pulumi.InputType['ScalingRuleAlarmDimensionArgs']]] = None,
                  cooldown: Optional[pulumi.Input[int]] = None,
                  disable_scale_in: Optional[pulumi.Input[bool]] = None,
                  estimated_instance_warmup: Optional[pulumi.Input[int]] = None,
@@ -648,6 +687,7 @@ class ScalingRule(pulumi.CustomResource):
 
             __props__.__dict__["adjustment_type"] = adjustment_type
             __props__.__dict__["adjustment_value"] = adjustment_value
+            __props__.__dict__["alarm_dimension"] = alarm_dimension
             __props__.__dict__["cooldown"] = cooldown
             __props__.__dict__["disable_scale_in"] = disable_scale_in
             __props__.__dict__["estimated_instance_warmup"] = estimated_instance_warmup
@@ -672,6 +712,7 @@ class ScalingRule(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             adjustment_type: Optional[pulumi.Input[str]] = None,
             adjustment_value: Optional[pulumi.Input[int]] = None,
+            alarm_dimension: Optional[pulumi.Input[pulumi.InputType['ScalingRuleAlarmDimensionArgs']]] = None,
             ari: Optional[pulumi.Input[str]] = None,
             cooldown: Optional[pulumi.Input[int]] = None,
             disable_scale_in: Optional[pulumi.Input[bool]] = None,
@@ -697,6 +738,7 @@ class ScalingRule(pulumi.CustomResource):
                - QuantityChangeInCapacity：(0, 500] U (-500, 0]
                - PercentChangeInCapacity：[0, 10000] U [-100, 0]
                - TotalCapacity：[0, 1000]
+        :param pulumi.Input[pulumi.InputType['ScalingRuleAlarmDimensionArgs']] alarm_dimension: AlarmDimension for StepScalingRule. See `alarm_dimension` below.
         :param pulumi.Input[str] ari: The unique identifier of the scaling rule.
         :param pulumi.Input[int] cooldown: The cooldown time of the scaling rule. This parameter is applicable only to simple scaling rules. Value range: [0, 86,400], in seconds. The default value is empty，if not set, the return value will be 0, which is the default value of integer.
         :param pulumi.Input[bool] disable_scale_in: Indicates whether scale in by the target tracking policy is disabled. Default to false.
@@ -714,6 +756,7 @@ class ScalingRule(pulumi.CustomResource):
 
         __props__.__dict__["adjustment_type"] = adjustment_type
         __props__.__dict__["adjustment_value"] = adjustment_value
+        __props__.__dict__["alarm_dimension"] = alarm_dimension
         __props__.__dict__["ari"] = ari
         __props__.__dict__["cooldown"] = cooldown
         __props__.__dict__["disable_scale_in"] = disable_scale_in
@@ -747,6 +790,14 @@ class ScalingRule(pulumi.CustomResource):
         - TotalCapacity：[0, 1000]
         """
         return pulumi.get(self, "adjustment_value")
+
+    @property
+    @pulumi.getter(name="alarmDimension")
+    def alarm_dimension(self) -> pulumi.Output[Optional['outputs.ScalingRuleAlarmDimension']]:
+        """
+        AlarmDimension for StepScalingRule. See `alarm_dimension` below.
+        """
+        return pulumi.get(self, "alarm_dimension")
 
     @property
     @pulumi.getter

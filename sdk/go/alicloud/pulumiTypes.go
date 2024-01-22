@@ -1068,6 +1068,154 @@ func (o ProviderEndpointArrayOutput) Index(i pulumi.IntInput) ProviderEndpointOu
 	}).(ProviderEndpointOutput)
 }
 
+type ProviderSignVersion struct {
+	Oss *string `pulumi:"oss"`
+	Sls *string `pulumi:"sls"`
+}
+
+// ProviderSignVersionInput is an input type that accepts ProviderSignVersionArgs and ProviderSignVersionOutput values.
+// You can construct a concrete instance of `ProviderSignVersionInput` via:
+//
+//	ProviderSignVersionArgs{...}
+type ProviderSignVersionInput interface {
+	pulumi.Input
+
+	ToProviderSignVersionOutput() ProviderSignVersionOutput
+	ToProviderSignVersionOutputWithContext(context.Context) ProviderSignVersionOutput
+}
+
+type ProviderSignVersionArgs struct {
+	Oss pulumi.StringPtrInput `pulumi:"oss"`
+	Sls pulumi.StringPtrInput `pulumi:"sls"`
+}
+
+func (ProviderSignVersionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProviderSignVersion)(nil)).Elem()
+}
+
+func (i ProviderSignVersionArgs) ToProviderSignVersionOutput() ProviderSignVersionOutput {
+	return i.ToProviderSignVersionOutputWithContext(context.Background())
+}
+
+func (i ProviderSignVersionArgs) ToProviderSignVersionOutputWithContext(ctx context.Context) ProviderSignVersionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProviderSignVersionOutput)
+}
+
+func (i ProviderSignVersionArgs) ToProviderSignVersionPtrOutput() ProviderSignVersionPtrOutput {
+	return i.ToProviderSignVersionPtrOutputWithContext(context.Background())
+}
+
+func (i ProviderSignVersionArgs) ToProviderSignVersionPtrOutputWithContext(ctx context.Context) ProviderSignVersionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProviderSignVersionOutput).ToProviderSignVersionPtrOutputWithContext(ctx)
+}
+
+// ProviderSignVersionPtrInput is an input type that accepts ProviderSignVersionArgs, ProviderSignVersionPtr and ProviderSignVersionPtrOutput values.
+// You can construct a concrete instance of `ProviderSignVersionPtrInput` via:
+//
+//	        ProviderSignVersionArgs{...}
+//
+//	or:
+//
+//	        nil
+type ProviderSignVersionPtrInput interface {
+	pulumi.Input
+
+	ToProviderSignVersionPtrOutput() ProviderSignVersionPtrOutput
+	ToProviderSignVersionPtrOutputWithContext(context.Context) ProviderSignVersionPtrOutput
+}
+
+type providerSignVersionPtrType ProviderSignVersionArgs
+
+func ProviderSignVersionPtr(v *ProviderSignVersionArgs) ProviderSignVersionPtrInput {
+	return (*providerSignVersionPtrType)(v)
+}
+
+func (*providerSignVersionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ProviderSignVersion)(nil)).Elem()
+}
+
+func (i *providerSignVersionPtrType) ToProviderSignVersionPtrOutput() ProviderSignVersionPtrOutput {
+	return i.ToProviderSignVersionPtrOutputWithContext(context.Background())
+}
+
+func (i *providerSignVersionPtrType) ToProviderSignVersionPtrOutputWithContext(ctx context.Context) ProviderSignVersionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProviderSignVersionPtrOutput)
+}
+
+type ProviderSignVersionOutput struct{ *pulumi.OutputState }
+
+func (ProviderSignVersionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProviderSignVersion)(nil)).Elem()
+}
+
+func (o ProviderSignVersionOutput) ToProviderSignVersionOutput() ProviderSignVersionOutput {
+	return o
+}
+
+func (o ProviderSignVersionOutput) ToProviderSignVersionOutputWithContext(ctx context.Context) ProviderSignVersionOutput {
+	return o
+}
+
+func (o ProviderSignVersionOutput) ToProviderSignVersionPtrOutput() ProviderSignVersionPtrOutput {
+	return o.ToProviderSignVersionPtrOutputWithContext(context.Background())
+}
+
+func (o ProviderSignVersionOutput) ToProviderSignVersionPtrOutputWithContext(ctx context.Context) ProviderSignVersionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ProviderSignVersion) *ProviderSignVersion {
+		return &v
+	}).(ProviderSignVersionPtrOutput)
+}
+
+func (o ProviderSignVersionOutput) Oss() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ProviderSignVersion) *string { return v.Oss }).(pulumi.StringPtrOutput)
+}
+
+func (o ProviderSignVersionOutput) Sls() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ProviderSignVersion) *string { return v.Sls }).(pulumi.StringPtrOutput)
+}
+
+type ProviderSignVersionPtrOutput struct{ *pulumi.OutputState }
+
+func (ProviderSignVersionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ProviderSignVersion)(nil)).Elem()
+}
+
+func (o ProviderSignVersionPtrOutput) ToProviderSignVersionPtrOutput() ProviderSignVersionPtrOutput {
+	return o
+}
+
+func (o ProviderSignVersionPtrOutput) ToProviderSignVersionPtrOutputWithContext(ctx context.Context) ProviderSignVersionPtrOutput {
+	return o
+}
+
+func (o ProviderSignVersionPtrOutput) Elem() ProviderSignVersionOutput {
+	return o.ApplyT(func(v *ProviderSignVersion) ProviderSignVersion {
+		if v != nil {
+			return *v
+		}
+		var ret ProviderSignVersion
+		return ret
+	}).(ProviderSignVersionOutput)
+}
+
+func (o ProviderSignVersionPtrOutput) Oss() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ProviderSignVersion) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Oss
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ProviderSignVersionPtrOutput) Sls() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ProviderSignVersion) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Sls
+	}).(pulumi.StringPtrOutput)
+}
+
 type GetMscSubContactsContact struct {
 	// UID.
 	AccountUid string `pulumi:"accountUid"`
@@ -1873,6 +2021,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ProviderAssumeRolePtrInput)(nil)).Elem(), ProviderAssumeRoleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ProviderEndpointInput)(nil)).Elem(), ProviderEndpointArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ProviderEndpointArrayInput)(nil)).Elem(), ProviderEndpointArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ProviderSignVersionInput)(nil)).Elem(), ProviderSignVersionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ProviderSignVersionPtrInput)(nil)).Elem(), ProviderSignVersionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetMscSubContactsContactInput)(nil)).Elem(), GetMscSubContactsContactArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetMscSubContactsContactArrayInput)(nil)).Elem(), GetMscSubContactsContactArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetMscSubSubscriptionsSubscriptionInput)(nil)).Elem(), GetMscSubSubscriptionsSubscriptionArgs{})
@@ -1887,6 +2037,8 @@ func init() {
 	pulumi.RegisterOutputType(ProviderAssumeRolePtrOutput{})
 	pulumi.RegisterOutputType(ProviderEndpointOutput{})
 	pulumi.RegisterOutputType(ProviderEndpointArrayOutput{})
+	pulumi.RegisterOutputType(ProviderSignVersionOutput{})
+	pulumi.RegisterOutputType(ProviderSignVersionPtrOutput{})
 	pulumi.RegisterOutputType(GetMscSubContactsContactOutput{})
 	pulumi.RegisterOutputType(GetMscSubContactsContactArrayOutput{})
 	pulumi.RegisterOutputType(GetMscSubSubscriptionsSubscriptionOutput{})

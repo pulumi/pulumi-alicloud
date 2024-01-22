@@ -2691,6 +2691,162 @@ func (o ScalingGroupVServerGroupsVserverGroupVserverAttributeArrayOutput) Index(
 	}).(ScalingGroupVServerGroupsVserverGroupVserverAttributeOutput)
 }
 
+type ScalingRuleAlarmDimension struct {
+	// The dimension key of the metric.
+	DimensionKey *string `pulumi:"dimensionKey"`
+	// The dimension value of the metric.
+	DimensionValue *string `pulumi:"dimensionValue"`
+}
+
+// ScalingRuleAlarmDimensionInput is an input type that accepts ScalingRuleAlarmDimensionArgs and ScalingRuleAlarmDimensionOutput values.
+// You can construct a concrete instance of `ScalingRuleAlarmDimensionInput` via:
+//
+//	ScalingRuleAlarmDimensionArgs{...}
+type ScalingRuleAlarmDimensionInput interface {
+	pulumi.Input
+
+	ToScalingRuleAlarmDimensionOutput() ScalingRuleAlarmDimensionOutput
+	ToScalingRuleAlarmDimensionOutputWithContext(context.Context) ScalingRuleAlarmDimensionOutput
+}
+
+type ScalingRuleAlarmDimensionArgs struct {
+	// The dimension key of the metric.
+	DimensionKey pulumi.StringPtrInput `pulumi:"dimensionKey"`
+	// The dimension value of the metric.
+	DimensionValue pulumi.StringPtrInput `pulumi:"dimensionValue"`
+}
+
+func (ScalingRuleAlarmDimensionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ScalingRuleAlarmDimension)(nil)).Elem()
+}
+
+func (i ScalingRuleAlarmDimensionArgs) ToScalingRuleAlarmDimensionOutput() ScalingRuleAlarmDimensionOutput {
+	return i.ToScalingRuleAlarmDimensionOutputWithContext(context.Background())
+}
+
+func (i ScalingRuleAlarmDimensionArgs) ToScalingRuleAlarmDimensionOutputWithContext(ctx context.Context) ScalingRuleAlarmDimensionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ScalingRuleAlarmDimensionOutput)
+}
+
+func (i ScalingRuleAlarmDimensionArgs) ToScalingRuleAlarmDimensionPtrOutput() ScalingRuleAlarmDimensionPtrOutput {
+	return i.ToScalingRuleAlarmDimensionPtrOutputWithContext(context.Background())
+}
+
+func (i ScalingRuleAlarmDimensionArgs) ToScalingRuleAlarmDimensionPtrOutputWithContext(ctx context.Context) ScalingRuleAlarmDimensionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ScalingRuleAlarmDimensionOutput).ToScalingRuleAlarmDimensionPtrOutputWithContext(ctx)
+}
+
+// ScalingRuleAlarmDimensionPtrInput is an input type that accepts ScalingRuleAlarmDimensionArgs, ScalingRuleAlarmDimensionPtr and ScalingRuleAlarmDimensionPtrOutput values.
+// You can construct a concrete instance of `ScalingRuleAlarmDimensionPtrInput` via:
+//
+//	        ScalingRuleAlarmDimensionArgs{...}
+//
+//	or:
+//
+//	        nil
+type ScalingRuleAlarmDimensionPtrInput interface {
+	pulumi.Input
+
+	ToScalingRuleAlarmDimensionPtrOutput() ScalingRuleAlarmDimensionPtrOutput
+	ToScalingRuleAlarmDimensionPtrOutputWithContext(context.Context) ScalingRuleAlarmDimensionPtrOutput
+}
+
+type scalingRuleAlarmDimensionPtrType ScalingRuleAlarmDimensionArgs
+
+func ScalingRuleAlarmDimensionPtr(v *ScalingRuleAlarmDimensionArgs) ScalingRuleAlarmDimensionPtrInput {
+	return (*scalingRuleAlarmDimensionPtrType)(v)
+}
+
+func (*scalingRuleAlarmDimensionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ScalingRuleAlarmDimension)(nil)).Elem()
+}
+
+func (i *scalingRuleAlarmDimensionPtrType) ToScalingRuleAlarmDimensionPtrOutput() ScalingRuleAlarmDimensionPtrOutput {
+	return i.ToScalingRuleAlarmDimensionPtrOutputWithContext(context.Background())
+}
+
+func (i *scalingRuleAlarmDimensionPtrType) ToScalingRuleAlarmDimensionPtrOutputWithContext(ctx context.Context) ScalingRuleAlarmDimensionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ScalingRuleAlarmDimensionPtrOutput)
+}
+
+type ScalingRuleAlarmDimensionOutput struct{ *pulumi.OutputState }
+
+func (ScalingRuleAlarmDimensionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ScalingRuleAlarmDimension)(nil)).Elem()
+}
+
+func (o ScalingRuleAlarmDimensionOutput) ToScalingRuleAlarmDimensionOutput() ScalingRuleAlarmDimensionOutput {
+	return o
+}
+
+func (o ScalingRuleAlarmDimensionOutput) ToScalingRuleAlarmDimensionOutputWithContext(ctx context.Context) ScalingRuleAlarmDimensionOutput {
+	return o
+}
+
+func (o ScalingRuleAlarmDimensionOutput) ToScalingRuleAlarmDimensionPtrOutput() ScalingRuleAlarmDimensionPtrOutput {
+	return o.ToScalingRuleAlarmDimensionPtrOutputWithContext(context.Background())
+}
+
+func (o ScalingRuleAlarmDimensionOutput) ToScalingRuleAlarmDimensionPtrOutputWithContext(ctx context.Context) ScalingRuleAlarmDimensionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ScalingRuleAlarmDimension) *ScalingRuleAlarmDimension {
+		return &v
+	}).(ScalingRuleAlarmDimensionPtrOutput)
+}
+
+// The dimension key of the metric.
+func (o ScalingRuleAlarmDimensionOutput) DimensionKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ScalingRuleAlarmDimension) *string { return v.DimensionKey }).(pulumi.StringPtrOutput)
+}
+
+// The dimension value of the metric.
+func (o ScalingRuleAlarmDimensionOutput) DimensionValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ScalingRuleAlarmDimension) *string { return v.DimensionValue }).(pulumi.StringPtrOutput)
+}
+
+type ScalingRuleAlarmDimensionPtrOutput struct{ *pulumi.OutputState }
+
+func (ScalingRuleAlarmDimensionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ScalingRuleAlarmDimension)(nil)).Elem()
+}
+
+func (o ScalingRuleAlarmDimensionPtrOutput) ToScalingRuleAlarmDimensionPtrOutput() ScalingRuleAlarmDimensionPtrOutput {
+	return o
+}
+
+func (o ScalingRuleAlarmDimensionPtrOutput) ToScalingRuleAlarmDimensionPtrOutputWithContext(ctx context.Context) ScalingRuleAlarmDimensionPtrOutput {
+	return o
+}
+
+func (o ScalingRuleAlarmDimensionPtrOutput) Elem() ScalingRuleAlarmDimensionOutput {
+	return o.ApplyT(func(v *ScalingRuleAlarmDimension) ScalingRuleAlarmDimension {
+		if v != nil {
+			return *v
+		}
+		var ret ScalingRuleAlarmDimension
+		return ret
+	}).(ScalingRuleAlarmDimensionOutput)
+}
+
+// The dimension key of the metric.
+func (o ScalingRuleAlarmDimensionPtrOutput) DimensionKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ScalingRuleAlarmDimension) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DimensionKey
+	}).(pulumi.StringPtrOutput)
+}
+
+// The dimension value of the metric.
+func (o ScalingRuleAlarmDimensionPtrOutput) DimensionValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ScalingRuleAlarmDimension) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DimensionValue
+	}).(pulumi.StringPtrOutput)
+}
+
 type ScalingRuleStepAdjustment struct {
 	// The lower bound of step.
 	MetricIntervalLowerBound *string `pulumi:"metricIntervalLowerBound"`
@@ -4566,6 +4722,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ScalingGroupVServerGroupsVserverGroupArrayInput)(nil)).Elem(), ScalingGroupVServerGroupsVserverGroupArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ScalingGroupVServerGroupsVserverGroupVserverAttributeInput)(nil)).Elem(), ScalingGroupVServerGroupsVserverGroupVserverAttributeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ScalingGroupVServerGroupsVserverGroupVserverAttributeArrayInput)(nil)).Elem(), ScalingGroupVServerGroupsVserverGroupVserverAttributeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ScalingRuleAlarmDimensionInput)(nil)).Elem(), ScalingRuleAlarmDimensionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ScalingRuleAlarmDimensionPtrInput)(nil)).Elem(), ScalingRuleAlarmDimensionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ScalingRuleStepAdjustmentInput)(nil)).Elem(), ScalingRuleStepAdjustmentArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ScalingRuleStepAdjustmentArrayInput)(nil)).Elem(), ScalingRuleStepAdjustmentArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAlarmsAlarmInput)(nil)).Elem(), GetAlarmsAlarmArgs{})
@@ -4622,6 +4780,8 @@ func init() {
 	pulumi.RegisterOutputType(ScalingGroupVServerGroupsVserverGroupArrayOutput{})
 	pulumi.RegisterOutputType(ScalingGroupVServerGroupsVserverGroupVserverAttributeOutput{})
 	pulumi.RegisterOutputType(ScalingGroupVServerGroupsVserverGroupVserverAttributeArrayOutput{})
+	pulumi.RegisterOutputType(ScalingRuleAlarmDimensionOutput{})
+	pulumi.RegisterOutputType(ScalingRuleAlarmDimensionPtrOutput{})
 	pulumi.RegisterOutputType(ScalingRuleStepAdjustmentOutput{})
 	pulumi.RegisterOutputType(ScalingRuleStepAdjustmentArrayOutput{})
 	pulumi.RegisterOutputType(GetAlarmsAlarmOutput{})

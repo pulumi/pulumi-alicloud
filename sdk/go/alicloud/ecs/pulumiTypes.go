@@ -4714,7 +4714,7 @@ type GetDisksDisk struct {
 	AutoSnapshotPolicyId string `pulumi:"autoSnapshotPolicyId"`
 	// Availability zone of the disk.
 	AvailabilityZone string `pulumi:"availabilityZone"`
-	// Disk category. Possible values: `cloud` (basic cloud disk), `cloudEfficiency` (ultra cloud disk), `ephemeralSsd` (local SSD cloud disk), `cloudSsd` (SSD cloud disk), and `cloudEssd` (ESSD cloud disk).
+	// Disk category. Possible values: `cloud` (basic cloud disk), `cloudEfficiency` (ultra cloud disk), `ephemeralSsd` (local SSD cloud disk), `cloudSsd` (SSD cloud disk), and `cloudEssd` (ESSD cloud disk), `cloudEssdEntry`.
 	Category string `pulumi:"category"`
 	// Disk creation time.
 	CreationTime       string `pulumi:"creationTime"`
@@ -4809,7 +4809,7 @@ type GetDisksDiskArgs struct {
 	AutoSnapshotPolicyId pulumi.StringInput `pulumi:"autoSnapshotPolicyId"`
 	// Availability zone of the disk.
 	AvailabilityZone pulumi.StringInput `pulumi:"availabilityZone"`
-	// Disk category. Possible values: `cloud` (basic cloud disk), `cloudEfficiency` (ultra cloud disk), `ephemeralSsd` (local SSD cloud disk), `cloudSsd` (SSD cloud disk), and `cloudEssd` (ESSD cloud disk).
+	// Disk category. Possible values: `cloud` (basic cloud disk), `cloudEfficiency` (ultra cloud disk), `ephemeralSsd` (local SSD cloud disk), `cloudSsd` (SSD cloud disk), and `cloudEssd` (ESSD cloud disk), `cloudEssdEntry`.
 	Category pulumi.StringInput `pulumi:"category"`
 	// Disk creation time.
 	CreationTime       pulumi.StringInput `pulumi:"creationTime"`
@@ -4952,7 +4952,7 @@ func (o GetDisksDiskOutput) AvailabilityZone() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDisksDisk) string { return v.AvailabilityZone }).(pulumi.StringOutput)
 }
 
-// Disk category. Possible values: `cloud` (basic cloud disk), `cloudEfficiency` (ultra cloud disk), `ephemeralSsd` (local SSD cloud disk), `cloudSsd` (SSD cloud disk), and `cloudEssd` (ESSD cloud disk).
+// Disk category. Possible values: `cloud` (basic cloud disk), `cloudEfficiency` (ultra cloud disk), `ephemeralSsd` (local SSD cloud disk), `cloudSsd` (SSD cloud disk), and `cloudEssd` (ESSD cloud disk), `cloudEssdEntry`.
 func (o GetDisksDiskOutput) Category() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDisksDisk) string { return v.Category }).(pulumi.StringOutput)
 }

@@ -5,6 +5,7 @@
 from .. import _utilities
 import typing
 # Export this package's modules as members:
+from .ec_failover_test_job import *
 from .get_access_points import *
 from .get_grant_rule_to_cens import *
 from .get_physical_connection_service import *

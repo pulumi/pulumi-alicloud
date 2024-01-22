@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Global Accelerator (GA) Accelerators of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.111.0+.
+// > **NOTE:** Available since v1.111.0.
 //
 // ## Example Usage
 //
@@ -32,10 +32,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			example, err := ga.GetAccelerators(ctx, &ga.GetAcceleratorsArgs{
-//				Ids: []string{
-//					"example_value",
-//				},
-//				NameRegex: pulumi.StringRef("the_resource_name"),
+//				NameRegex: pulumi.StringRef("tf"),
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -64,20 +61,23 @@ type GetAcceleratorsArgs struct {
 	NameRegex *string `pulumi:"nameRegex"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
-	// The status of the GA instance.
+	// The status of the GA instance. Valid values: `active`, `binding`, `configuring`, `deleting`, `finacialLocked`, `init`, `unbinding`.
 	Status *string `pulumi:"status"`
 }
 
 // A collection of values returned by getAccelerators.
 type GetAcceleratorsResult struct {
+	// A list of Ga Accelerators. Each element contains the following attributes:
 	Accelerators []GetAcceleratorsAccelerator `pulumi:"accelerators"`
 	// The provider-assigned unique ID for this managed resource.
-	Id         string   `pulumi:"id"`
-	Ids        []string `pulumi:"ids"`
-	NameRegex  *string  `pulumi:"nameRegex"`
+	Id        string   `pulumi:"id"`
+	Ids       []string `pulumi:"ids"`
+	NameRegex *string  `pulumi:"nameRegex"`
+	// A list of Accelerator names.
 	Names      []string `pulumi:"names"`
 	OutputFile *string  `pulumi:"outputFile"`
-	Status     *string  `pulumi:"status"`
+	// The status of the GA instance.
+	Status *string `pulumi:"status"`
 }
 
 func GetAcceleratorsOutput(ctx *pulumi.Context, args GetAcceleratorsOutputArgs, opts ...pulumi.InvokeOption) GetAcceleratorsResultOutput {
@@ -101,7 +101,7 @@ type GetAcceleratorsOutputArgs struct {
 	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
-	// The status of the GA instance.
+	// The status of the GA instance. Valid values: `active`, `binding`, `configuring`, `deleting`, `finacialLocked`, `init`, `unbinding`.
 	Status pulumi.StringPtrInput `pulumi:"status"`
 }
 
@@ -124,6 +124,7 @@ func (o GetAcceleratorsResultOutput) ToGetAcceleratorsResultOutputWithContext(ct
 	return o
 }
 
+// A list of Ga Accelerators. Each element contains the following attributes:
 func (o GetAcceleratorsResultOutput) Accelerators() GetAcceleratorsAcceleratorArrayOutput {
 	return o.ApplyT(func(v GetAcceleratorsResult) []GetAcceleratorsAccelerator { return v.Accelerators }).(GetAcceleratorsAcceleratorArrayOutput)
 }
@@ -141,6 +142,7 @@ func (o GetAcceleratorsResultOutput) NameRegex() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAcceleratorsResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
 }
 
+// A list of Accelerator names.
 func (o GetAcceleratorsResultOutput) Names() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetAcceleratorsResult) []string { return v.Names }).(pulumi.StringArrayOutput)
 }
@@ -149,6 +151,7 @@ func (o GetAcceleratorsResultOutput) OutputFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAcceleratorsResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
+// The status of the GA instance.
 func (o GetAcceleratorsResultOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAcceleratorsResult) *string { return v.Status }).(pulumi.StringPtrOutput)
 }

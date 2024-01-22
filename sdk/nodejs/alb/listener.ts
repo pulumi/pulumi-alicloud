@@ -126,6 +126,10 @@ export class Listener extends pulumi.CustomResource {
      */
     public readonly status!: pulumi.Output<string>;
     /**
+     * A mapping of tags to assign to the resource.
+     */
+    public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
+    /**
      * The `xForwardFor` Related Attribute Configuration. See `xForwardedForConfig` below for details. **NOTE:** The attribute is valid when the attribute `listenerProtocol` is `HTTPS`.
      */
     public readonly xForwardedForConfig!: pulumi.Output<outputs.alb.ListenerXForwardedForConfig>;
@@ -160,6 +164,7 @@ export class Listener extends pulumi.CustomResource {
             resourceInputs["requestTimeout"] = state ? state.requestTimeout : undefined;
             resourceInputs["securityPolicyId"] = state ? state.securityPolicyId : undefined;
             resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
             resourceInputs["xForwardedForConfig"] = state ? state.xForwardedForConfig : undefined;
         } else {
             const args = argsOrState as ListenerArgs | undefined;
@@ -189,6 +194,7 @@ export class Listener extends pulumi.CustomResource {
             resourceInputs["requestTimeout"] = args ? args.requestTimeout : undefined;
             resourceInputs["securityPolicyId"] = args ? args.securityPolicyId : undefined;
             resourceInputs["status"] = args ? args.status : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["xForwardedForConfig"] = args ? args.xForwardedForConfig : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -277,6 +283,10 @@ export interface ListenerState {
      */
     status?: pulumi.Input<string>;
     /**
+     * A mapping of tags to assign to the resource.
+     */
+    tags?: pulumi.Input<{[key: string]: any}>;
+    /**
      * The `xForwardFor` Related Attribute Configuration. See `xForwardedForConfig` below for details. **NOTE:** The attribute is valid when the attribute `listenerProtocol` is `HTTPS`.
      */
     xForwardedForConfig?: pulumi.Input<inputs.alb.ListenerXForwardedForConfig>;
@@ -362,6 +372,10 @@ export interface ListenerArgs {
      * The state of the listener. Valid Values: `Running` Or `Stopped`. Valid values: `Running`: The listener is running. `Stopped`: The listener is stopped.
      */
     status?: pulumi.Input<string>;
+    /**
+     * A mapping of tags to assign to the resource.
+     */
+    tags?: pulumi.Input<{[key: string]: any}>;
     /**
      * The `xForwardFor` Related Attribute Configuration. See `xForwardedForConfig` below for details. **NOTE:** The attribute is valid when the attribute `listenerProtocol` is `HTTPS`.
      */

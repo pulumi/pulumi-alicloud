@@ -5,6 +5,16 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
+export { ServiceBasicPublicArgs, ServiceBasicPublicState } from "./serviceBasicPublic";
+export type ServiceBasicPublic = import("./serviceBasicPublic").ServiceBasicPublic;
+export const ServiceBasicPublic: typeof import("./serviceBasicPublic").ServiceBasicPublic = null as any;
+utilities.lazyLoad(exports, ["ServiceBasicPublic"], () => require("./serviceBasicPublic"));
+
+export { ServiceEnterprisePublicArgs, ServiceEnterprisePublicState } from "./serviceEnterprisePublic";
+export type ServiceEnterprisePublic = import("./serviceEnterprisePublic").ServiceEnterprisePublic;
+export const ServiceEnterprisePublic: typeof import("./serviceEnterprisePublic").ServiceEnterprisePublic = null as any;
+utilities.lazyLoad(exports, ["ServiceEnterprisePublic"], () => require("./serviceEnterprisePublic"));
+
 export { ServiceGroupMonitoringAgentProcessArgs, ServiceGroupMonitoringAgentProcessState } from "./serviceGroupMonitoringAgentProcess";
 export type ServiceGroupMonitoringAgentProcess = import("./serviceGroupMonitoringAgentProcess").ServiceGroupMonitoringAgentProcess;
 export const ServiceGroupMonitoringAgentProcess: typeof import("./serviceGroupMonitoringAgentProcess").ServiceGroupMonitoringAgentProcess = null as any;
@@ -25,6 +35,10 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "alicloud:cloudmonitor/serviceBasicPublic:ServiceBasicPublic":
+                return new ServiceBasicPublic(name, <any>undefined, { urn })
+            case "alicloud:cloudmonitor/serviceEnterprisePublic:ServiceEnterprisePublic":
+                return new ServiceEnterprisePublic(name, <any>undefined, { urn })
             case "alicloud:cloudmonitor/serviceGroupMonitoringAgentProcess:ServiceGroupMonitoringAgentProcess":
                 return new ServiceGroupMonitoringAgentProcess(name, <any>undefined, { urn })
             case "alicloud:cloudmonitor/serviceHybridDoubleWrite:ServiceHybridDoubleWrite":
@@ -36,6 +50,8 @@ const _module = {
         }
     },
 };
+pulumi.runtime.registerResourceModule("alicloud", "cloudmonitor/serviceBasicPublic", _module)
+pulumi.runtime.registerResourceModule("alicloud", "cloudmonitor/serviceEnterprisePublic", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cloudmonitor/serviceGroupMonitoringAgentProcess", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cloudmonitor/serviceHybridDoubleWrite", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cloudmonitor/serviceMonitoringAgentProcess", _module)

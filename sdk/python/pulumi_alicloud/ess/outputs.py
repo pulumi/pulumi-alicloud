@@ -29,6 +29,7 @@ __all__ = [
     'ScalingConfigurationSpotPriceLimit',
     'ScalingGroupVServerGroupsVserverGroup',
     'ScalingGroupVServerGroupsVserverGroupVserverAttribute',
+    'ScalingRuleAlarmDimension',
     'ScalingRuleStepAdjustment',
     'GetAlarmsAlarmResult',
     'GetLifecycleHooksHookResult',
@@ -1870,6 +1871,56 @@ class ScalingGroupVServerGroupsVserverGroupVserverAttribute(dict):
         The weight of an ECS instance attached to the VServer Group.
         """
         return pulumi.get(self, "weight")
+
+
+@pulumi.output_type
+class ScalingRuleAlarmDimension(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "dimensionKey":
+            suggest = "dimension_key"
+        elif key == "dimensionValue":
+            suggest = "dimension_value"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ScalingRuleAlarmDimension. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ScalingRuleAlarmDimension.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ScalingRuleAlarmDimension.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 dimension_key: Optional[str] = None,
+                 dimension_value: Optional[str] = None):
+        """
+        :param str dimension_key: The dimension key of the metric.
+        :param str dimension_value: The dimension value of the metric.
+        """
+        if dimension_key is not None:
+            pulumi.set(__self__, "dimension_key", dimension_key)
+        if dimension_value is not None:
+            pulumi.set(__self__, "dimension_value", dimension_value)
+
+    @property
+    @pulumi.getter(name="dimensionKey")
+    def dimension_key(self) -> Optional[str]:
+        """
+        The dimension key of the metric.
+        """
+        return pulumi.get(self, "dimension_key")
+
+    @property
+    @pulumi.getter(name="dimensionValue")
+    def dimension_value(self) -> Optional[str]:
+        """
+        The dimension value of the metric.
+        """
+        return pulumi.get(self, "dimension_value")
 
 
 @pulumi.output_type

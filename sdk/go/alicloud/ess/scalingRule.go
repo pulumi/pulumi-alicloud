@@ -25,21 +25,31 @@ import (
 //
 // import (
 //
+//	"fmt"
+//
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ess"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			name := "terraform-example"
-//			if param := cfg.Get("name"); param != "" {
-//				name = param
+//			var defaultRandomInteger []*random.RandomInteger
+//			for index := 0; index < 1 == true; index++ {
+//				key0 := index
+//				_ := index
+//				__res, err := random.NewRandomInteger(ctx, fmt.Sprintf("defaultRandomInteger-%v", key0), &random.RandomIntegerArgs{
+//					Max: pulumi.Int(99999),
+//					Min: pulumi.Int(10000),
+//				})
+//				if err != nil {
+//					return err
+//				}
+//				defaultRandomInteger = append(defaultRandomInteger, __res)
 //			}
 //			defaultZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
 //				AvailableDiskCategory:     pulumi.StringRef("cloud_efficiency"),
@@ -71,10 +81,12 @@ import (
 //				return err
 //			}
 //			defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
-//				VpcId:       defaultNetwork.ID(),
-//				CidrBlock:   pulumi.String("172.16.0.0/24"),
-//				ZoneId:      *pulumi.String(defaultZones.Zones[0].Id),
-//				VswitchName: pulumi.String(name),
+//				VpcId:     defaultNetwork.ID(),
+//				CidrBlock: pulumi.String("172.16.0.0/24"),
+//				ZoneId:    *pulumi.String(defaultZones.Zones[0].Id),
+//				VswitchName: defaultRandomInteger.Result.ApplyT(func(result *int) (string, error) {
+//					return fmt.Sprintf("terraform-example-%v", result), nil
+//				}).(pulumi.StringOutput),
 //			})
 //			if err != nil {
 //				return err
@@ -99,9 +111,11 @@ import (
 //				return err
 //			}
 //			defaultScalingGroup, err := ess.NewScalingGroup(ctx, "defaultScalingGroup", &ess.ScalingGroupArgs{
-//				MinSize:          pulumi.Int(1),
-//				MaxSize:          pulumi.Int(1),
-//				ScalingGroupName: pulumi.String(name),
+//				MinSize: pulumi.Int(1),
+//				MaxSize: pulumi.Int(1),
+//				ScalingGroupName: defaultRandomInteger.Result.ApplyT(func(result *int) (string, error) {
+//					return fmt.Sprintf("terraform-example-%v", result), nil
+//				}).(pulumi.StringOutput),
 //				VswitchIds: pulumi.StringArray{
 //					defaultSwitch.ID(),
 //				},
@@ -163,6 +177,8 @@ type ScalingRule struct {
 	// - PercentChangeInCapacity：[0, 10000] U [-100, 0]
 	// - TotalCapacity：[0, 1000]
 	AdjustmentValue pulumi.IntPtrOutput `pulumi:"adjustmentValue"`
+	// AlarmDimension for StepScalingRule. See `alarmDimension` below.
+	AlarmDimension ScalingRuleAlarmDimensionPtrOutput `pulumi:"alarmDimension"`
 	// The unique identifier of the scaling rule.
 	Ari pulumi.StringOutput `pulumi:"ari"`
 	// The cooldown time of the scaling rule. This parameter is applicable only to simple scaling rules. Value range: [0, 86,400], in seconds. The default value is empty，if not set, the return value will be 0, which is the default value of integer.
@@ -228,6 +244,8 @@ type scalingRuleState struct {
 	// - PercentChangeInCapacity：[0, 10000] U [-100, 0]
 	// - TotalCapacity：[0, 1000]
 	AdjustmentValue *int `pulumi:"adjustmentValue"`
+	// AlarmDimension for StepScalingRule. See `alarmDimension` below.
+	AlarmDimension *ScalingRuleAlarmDimension `pulumi:"alarmDimension"`
 	// The unique identifier of the scaling rule.
 	Ari *string `pulumi:"ari"`
 	// The cooldown time of the scaling rule. This parameter is applicable only to simple scaling rules. Value range: [0, 86,400], in seconds. The default value is empty，if not set, the return value will be 0, which is the default value of integer.
@@ -261,6 +279,8 @@ type ScalingRuleState struct {
 	// - PercentChangeInCapacity：[0, 10000] U [-100, 0]
 	// - TotalCapacity：[0, 1000]
 	AdjustmentValue pulumi.IntPtrInput
+	// AlarmDimension for StepScalingRule. See `alarmDimension` below.
+	AlarmDimension ScalingRuleAlarmDimensionPtrInput
 	// The unique identifier of the scaling rule.
 	Ari pulumi.StringPtrInput
 	// The cooldown time of the scaling rule. This parameter is applicable only to simple scaling rules. Value range: [0, 86,400], in seconds. The default value is empty，if not set, the return value will be 0, which is the default value of integer.
@@ -298,6 +318,8 @@ type scalingRuleArgs struct {
 	// - PercentChangeInCapacity：[0, 10000] U [-100, 0]
 	// - TotalCapacity：[0, 1000]
 	AdjustmentValue *int `pulumi:"adjustmentValue"`
+	// AlarmDimension for StepScalingRule. See `alarmDimension` below.
+	AlarmDimension *ScalingRuleAlarmDimension `pulumi:"alarmDimension"`
 	// The cooldown time of the scaling rule. This parameter is applicable only to simple scaling rules. Value range: [0, 86,400], in seconds. The default value is empty，if not set, the return value will be 0, which is the default value of integer.
 	Cooldown *int `pulumi:"cooldown"`
 	// Indicates whether scale in by the target tracking policy is disabled. Default to false.
@@ -330,6 +352,8 @@ type ScalingRuleArgs struct {
 	// - PercentChangeInCapacity：[0, 10000] U [-100, 0]
 	// - TotalCapacity：[0, 1000]
 	AdjustmentValue pulumi.IntPtrInput
+	// AlarmDimension for StepScalingRule. See `alarmDimension` below.
+	AlarmDimension ScalingRuleAlarmDimensionPtrInput
 	// The cooldown time of the scaling rule. This parameter is applicable only to simple scaling rules. Value range: [0, 86,400], in seconds. The default value is empty，if not set, the return value will be 0, which is the default value of integer.
 	Cooldown pulumi.IntPtrInput
 	// Indicates whether scale in by the target tracking policy is disabled. Default to false.
@@ -451,6 +475,11 @@ func (o ScalingRuleOutput) AdjustmentType() pulumi.StringPtrOutput {
 // - TotalCapacity：[0, 1000]
 func (o ScalingRuleOutput) AdjustmentValue() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ScalingRule) pulumi.IntPtrOutput { return v.AdjustmentValue }).(pulumi.IntPtrOutput)
+}
+
+// AlarmDimension for StepScalingRule. See `alarmDimension` below.
+func (o ScalingRuleOutput) AlarmDimension() ScalingRuleAlarmDimensionPtrOutput {
+	return o.ApplyT(func(v *ScalingRule) ScalingRuleAlarmDimensionPtrOutput { return v.AlarmDimension }).(ScalingRuleAlarmDimensionPtrOutput)
 }
 
 // The unique identifier of the scaling rule.

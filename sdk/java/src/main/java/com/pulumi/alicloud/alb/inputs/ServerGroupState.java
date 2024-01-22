@@ -38,14 +38,14 @@ public final class ServerGroupState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The configuration of health checks. See `health_check_config` below for details.
+     * The configuration of health checks. See `health_check_config` below.
      * 
      */
     @Import(name="healthCheckConfig")
     private @Nullable Output<ServerGroupHealthCheckConfigArgs> healthCheckConfig;
 
     /**
-     * @return The configuration of health checks. See `health_check_config` below for details.
+     * @return The configuration of health checks. See `health_check_config` below.
      * 
      */
     public Optional<Output<ServerGroupHealthCheckConfigArgs>> healthCheckConfig() {
@@ -53,14 +53,14 @@ public final class ServerGroupState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The server protocol. Valid values: `  HTTPS `, `HTTP`.
+     * The server protocol. Valid values: `  HTTP `, `HTTPS`, `gRPC`. While `server_group_type` is `Fc` this parameter will not take effect. From version 1.215.0, `protocol` can be set to `gRPC`.
      * 
      */
     @Import(name="protocol")
     private @Nullable Output<String> protocol;
 
     /**
-     * @return The server protocol. Valid values: `  HTTPS `, `HTTP`.
+     * @return The server protocol. Valid values: `  HTTP `, `HTTPS`, `gRPC`. While `server_group_type` is `Fc` this parameter will not take effect. From version 1.215.0, `protocol` can be set to `gRPC`.
      * 
      */
     public Optional<Output<String>> protocol() {
@@ -83,14 +83,14 @@ public final class ServerGroupState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The scheduling algorithm. Valid values: `  Sch `, `  Wlc `, `Wrr`.
+     * The scheduling algorithm. Valid values: `  Sch `, `  Wlc `, `Wrr`. **NOTE:** This parameter takes effect when the `server_group_type` parameter is set to `Instance` or `Ip`.
      * 
      */
     @Import(name="scheduler")
     private @Nullable Output<String> scheduler;
 
     /**
-     * @return The scheduling algorithm. Valid values: `  Sch `, `  Wlc `, `Wrr`.
+     * @return The scheduling algorithm. Valid values: `  Sch `, `  Wlc `, `Wrr`. **NOTE:** This parameter takes effect when the `server_group_type` parameter is set to `Instance` or `Ip`.
      * 
      */
     public Optional<Output<String>> scheduler() {
@@ -98,14 +98,14 @@ public final class ServerGroupState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The name of the resource.
+     * The name of the server group.
      * 
      */
     @Import(name="serverGroupName")
     private @Nullable Output<String> serverGroupName;
 
     /**
-     * @return The name of the resource.
+     * @return The name of the server group.
      * 
      */
     public Optional<Output<String>> serverGroupName() {
@@ -113,14 +113,14 @@ public final class ServerGroupState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The type of the server group. Valid values:
+     * The type of the server group. Default value: `Instance`. Valid values:
      * 
      */
     @Import(name="serverGroupType")
     private @Nullable Output<String> serverGroupType;
 
     /**
-     * @return The type of the server group. Valid values:
+     * @return The type of the server group. Default value: `Instance`. Valid values:
      * 
      */
     public Optional<Output<String>> serverGroupType() {
@@ -128,14 +128,14 @@ public final class ServerGroupState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The backend server. See `servers` below for details.
+     * The backend servers. See `servers` below.
      * 
      */
     @Import(name="servers")
     private @Nullable Output<List<ServerGroupServerArgs>> servers;
 
     /**
-     * @return The backend server. See `servers` below for details.
+     * @return The backend servers. See `servers` below.
      * 
      */
     public Optional<Output<List<ServerGroupServerArgs>>> servers() {
@@ -143,14 +143,14 @@ public final class ServerGroupState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The status of the backend server. Valid values:
+     * The status of the backend server.
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return The status of the backend server. Valid values:
+     * @return The status of the backend server.
      * 
      */
     public Optional<Output<String>> status() {
@@ -158,14 +158,14 @@ public final class ServerGroupState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The configuration of the sticky session. See `sticky_session_config` below for details.
+     * The configuration of session persistence. See `sticky_session_config` below.
      * 
      */
     @Import(name="stickySessionConfig")
     private @Nullable Output<ServerGroupStickySessionConfigArgs> stickySessionConfig;
 
     /**
-     * @return The configuration of the sticky session. See `sticky_session_config` below for details.
+     * @return The configuration of session persistence. See `sticky_session_config` below.
      * 
      */
     public Optional<Output<ServerGroupStickySessionConfigArgs>> stickySessionConfig() {
@@ -188,14 +188,14 @@ public final class ServerGroupState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The ID of the VPC that you want to access.
+     * The ID of the VPC that you want to access. **NOTE:** This parameter takes effect when the `server_group_type` parameter is set to `Instance` or `Ip`.
      * 
      */
     @Import(name="vpcId")
     private @Nullable Output<String> vpcId;
 
     /**
-     * @return The ID of the VPC that you want to access.
+     * @return The ID of the VPC that you want to access. **NOTE:** This parameter takes effect when the `server_group_type` parameter is set to `Instance` or `Ip`.
      * 
      */
     public Optional<Output<String>> vpcId() {
@@ -259,7 +259,7 @@ public final class ServerGroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param healthCheckConfig The configuration of health checks. See `health_check_config` below for details.
+         * @param healthCheckConfig The configuration of health checks. See `health_check_config` below.
          * 
          * @return builder
          * 
@@ -270,7 +270,7 @@ public final class ServerGroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param healthCheckConfig The configuration of health checks. See `health_check_config` below for details.
+         * @param healthCheckConfig The configuration of health checks. See `health_check_config` below.
          * 
          * @return builder
          * 
@@ -280,7 +280,7 @@ public final class ServerGroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param protocol The server protocol. Valid values: `  HTTPS `, `HTTP`.
+         * @param protocol The server protocol. Valid values: `  HTTP `, `HTTPS`, `gRPC`. While `server_group_type` is `Fc` this parameter will not take effect. From version 1.215.0, `protocol` can be set to `gRPC`.
          * 
          * @return builder
          * 
@@ -291,7 +291,7 @@ public final class ServerGroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param protocol The server protocol. Valid values: `  HTTPS `, `HTTP`.
+         * @param protocol The server protocol. Valid values: `  HTTP `, `HTTPS`, `gRPC`. While `server_group_type` is `Fc` this parameter will not take effect. From version 1.215.0, `protocol` can be set to `gRPC`.
          * 
          * @return builder
          * 
@@ -322,7 +322,7 @@ public final class ServerGroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param scheduler The scheduling algorithm. Valid values: `  Sch `, `  Wlc `, `Wrr`.
+         * @param scheduler The scheduling algorithm. Valid values: `  Sch `, `  Wlc `, `Wrr`. **NOTE:** This parameter takes effect when the `server_group_type` parameter is set to `Instance` or `Ip`.
          * 
          * @return builder
          * 
@@ -333,7 +333,7 @@ public final class ServerGroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param scheduler The scheduling algorithm. Valid values: `  Sch `, `  Wlc `, `Wrr`.
+         * @param scheduler The scheduling algorithm. Valid values: `  Sch `, `  Wlc `, `Wrr`. **NOTE:** This parameter takes effect when the `server_group_type` parameter is set to `Instance` or `Ip`.
          * 
          * @return builder
          * 
@@ -343,7 +343,7 @@ public final class ServerGroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param serverGroupName The name of the resource.
+         * @param serverGroupName The name of the server group.
          * 
          * @return builder
          * 
@@ -354,7 +354,7 @@ public final class ServerGroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param serverGroupName The name of the resource.
+         * @param serverGroupName The name of the server group.
          * 
          * @return builder
          * 
@@ -364,7 +364,7 @@ public final class ServerGroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param serverGroupType The type of the server group. Valid values:
+         * @param serverGroupType The type of the server group. Default value: `Instance`. Valid values:
          * 
          * @return builder
          * 
@@ -375,7 +375,7 @@ public final class ServerGroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param serverGroupType The type of the server group. Valid values:
+         * @param serverGroupType The type of the server group. Default value: `Instance`. Valid values:
          * 
          * @return builder
          * 
@@ -385,7 +385,7 @@ public final class ServerGroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param servers The backend server. See `servers` below for details.
+         * @param servers The backend servers. See `servers` below.
          * 
          * @return builder
          * 
@@ -396,7 +396,7 @@ public final class ServerGroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param servers The backend server. See `servers` below for details.
+         * @param servers The backend servers. See `servers` below.
          * 
          * @return builder
          * 
@@ -406,7 +406,7 @@ public final class ServerGroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param servers The backend server. See `servers` below for details.
+         * @param servers The backend servers. See `servers` below.
          * 
          * @return builder
          * 
@@ -416,7 +416,7 @@ public final class ServerGroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param status The status of the backend server. Valid values:
+         * @param status The status of the backend server.
          * 
          * @return builder
          * 
@@ -427,7 +427,7 @@ public final class ServerGroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param status The status of the backend server. Valid values:
+         * @param status The status of the backend server.
          * 
          * @return builder
          * 
@@ -437,7 +437,7 @@ public final class ServerGroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param stickySessionConfig The configuration of the sticky session. See `sticky_session_config` below for details.
+         * @param stickySessionConfig The configuration of session persistence. See `sticky_session_config` below.
          * 
          * @return builder
          * 
@@ -448,7 +448,7 @@ public final class ServerGroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param stickySessionConfig The configuration of the sticky session. See `sticky_session_config` below for details.
+         * @param stickySessionConfig The configuration of session persistence. See `sticky_session_config` below.
          * 
          * @return builder
          * 
@@ -479,7 +479,7 @@ public final class ServerGroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vpcId The ID of the VPC that you want to access.
+         * @param vpcId The ID of the VPC that you want to access. **NOTE:** This parameter takes effect when the `server_group_type` parameter is set to `Instance` or `Ip`.
          * 
          * @return builder
          * 
@@ -490,7 +490,7 @@ public final class ServerGroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vpcId The ID of the VPC that you want to access.
+         * @param vpcId The ID of the VPC that you want to access. **NOTE:** This parameter takes effect when the `server_group_type` parameter is set to `Instance` or `Ip`.
          * 
          * @return builder
          * 

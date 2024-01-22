@@ -75,13 +75,14 @@ import (
 //				RestartPolicy:      pulumi.String("OnFailure"),
 //				SecurityGroupId:    defaultSecurityGroup.ID(),
 //				VswitchId:          defaultSwitch.ID(),
+//				AutoCreateEip:      pulumi.Bool(true),
 //				Tags: pulumi.Map{
 //					"Created": pulumi.Any("TF"),
 //					"For":     pulumi.Any("example"),
 //				},
 //				Containers: eci.ContainerGroupContainerArray{
 //					&eci.ContainerGroupContainerArgs{
-//						Image:           pulumi.String("registry-vpc.cn-beijing.aliyuncs.com/eci_open/nginx:alpine"),
+//						Image:           pulumi.String("registry.cn-beijing.aliyuncs.com/eci_open/nginx:alpine"),
 //						Name:            pulumi.String("nginx"),
 //						WorkingDir:      pulumi.String("/tmp/nginx"),
 //						ImagePullPolicy: pulumi.String("IfNotPresent"),
@@ -142,20 +143,11 @@ import (
 //							},
 //						},
 //					},
-//					&eci.ContainerGroupContainerArgs{
-//						Image: pulumi.String("registry-vpc.cn-beijing.aliyuncs.com/eci_open/centos:7"),
-//						Name:  pulumi.String("centos"),
-//						Commands: pulumi.StringArray{
-//							pulumi.String("/bin/sh"),
-//							pulumi.String("-c"),
-//							pulumi.String("sleep 9999"),
-//						},
-//					},
 //				},
 //				InitContainers: eci.ContainerGroupInitContainerArray{
 //					&eci.ContainerGroupInitContainerArgs{
 //						Name:            pulumi.String("init-busybox"),
-//						Image:           pulumi.String("registry-vpc.cn-beijing.aliyuncs.com/eci_open/busybox:1.30"),
+//						Image:           pulumi.String("registry.cn-beijing.aliyuncs.com/eci_open/busybox:1.30"),
 //						ImagePullPolicy: pulumi.String("IfNotPresent"),
 //						Commands: pulumi.StringArray{
 //							pulumi.String("echo"),
@@ -211,8 +203,6 @@ type ContainerGroup struct {
 	Cpu pulumi.Float64Output `pulumi:"cpu"`
 	// The structure of dnsConfig. See `dnsConfig` below.
 	DnsConfig ContainerGroupDnsConfigPtrOutput `pulumi:"dnsConfig"`
-	// The security context of the container group. See `eciSecurityContext` below.
-	EciSecurityContext ContainerGroupEciSecurityContextPtrOutput `pulumi:"eciSecurityContext"`
 	// The bandwidth of the EIP. Default value: `5`.
 	EipBandwidth pulumi.IntPtrOutput `pulumi:"eipBandwidth"`
 	// The ID of the elastic IP address (EIP).
@@ -241,6 +231,8 @@ type ContainerGroup struct {
 	ResourceGroupId pulumi.StringOutput `pulumi:"resourceGroupId"`
 	// The restart policy of the container group. Valid values: `Always`, `Never`, `OnFailure`.
 	RestartPolicy pulumi.StringOutput `pulumi:"restartPolicy"`
+	// The security context of the container group. See `securityContext` below.
+	SecurityContext ContainerGroupSecurityContextPtrOutput `pulumi:"securityContext"`
 	// The ID of the security group to which the container group belongs. Container groups within the same security group can access each other.
 	SecurityGroupId pulumi.StringOutput `pulumi:"securityGroupId"`
 	// The status of container group.
@@ -314,8 +306,6 @@ type containerGroupState struct {
 	Cpu *float64 `pulumi:"cpu"`
 	// The structure of dnsConfig. See `dnsConfig` below.
 	DnsConfig *ContainerGroupDnsConfig `pulumi:"dnsConfig"`
-	// The security context of the container group. See `eciSecurityContext` below.
-	EciSecurityContext *ContainerGroupEciSecurityContext `pulumi:"eciSecurityContext"`
 	// The bandwidth of the EIP. Default value: `5`.
 	EipBandwidth *int `pulumi:"eipBandwidth"`
 	// The ID of the elastic IP address (EIP).
@@ -344,6 +334,8 @@ type containerGroupState struct {
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// The restart policy of the container group. Valid values: `Always`, `Never`, `OnFailure`.
 	RestartPolicy *string `pulumi:"restartPolicy"`
+	// The security context of the container group. See `securityContext` below.
+	SecurityContext *ContainerGroupSecurityContext `pulumi:"securityContext"`
 	// The ID of the security group to which the container group belongs. Container groups within the same security group can access each other.
 	SecurityGroupId *string `pulumi:"securityGroupId"`
 	// The status of container group.
@@ -376,8 +368,6 @@ type ContainerGroupState struct {
 	Cpu pulumi.Float64PtrInput
 	// The structure of dnsConfig. See `dnsConfig` below.
 	DnsConfig ContainerGroupDnsConfigPtrInput
-	// The security context of the container group. See `eciSecurityContext` below.
-	EciSecurityContext ContainerGroupEciSecurityContextPtrInput
 	// The bandwidth of the EIP. Default value: `5`.
 	EipBandwidth pulumi.IntPtrInput
 	// The ID of the elastic IP address (EIP).
@@ -406,6 +396,8 @@ type ContainerGroupState struct {
 	ResourceGroupId pulumi.StringPtrInput
 	// The restart policy of the container group. Valid values: `Always`, `Never`, `OnFailure`.
 	RestartPolicy pulumi.StringPtrInput
+	// The security context of the container group. See `securityContext` below.
+	SecurityContext ContainerGroupSecurityContextPtrInput
 	// The ID of the security group to which the container group belongs. Container groups within the same security group can access each other.
 	SecurityGroupId pulumi.StringPtrInput
 	// The status of container group.
@@ -442,8 +434,6 @@ type containerGroupArgs struct {
 	Cpu *float64 `pulumi:"cpu"`
 	// The structure of dnsConfig. See `dnsConfig` below.
 	DnsConfig *ContainerGroupDnsConfig `pulumi:"dnsConfig"`
-	// The security context of the container group. See `eciSecurityContext` below.
-	EciSecurityContext *ContainerGroupEciSecurityContext `pulumi:"eciSecurityContext"`
 	// The bandwidth of the EIP. Default value: `5`.
 	EipBandwidth *int `pulumi:"eipBandwidth"`
 	// The ID of the elastic IP address (EIP).
@@ -468,6 +458,8 @@ type containerGroupArgs struct {
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// The restart policy of the container group. Valid values: `Always`, `Never`, `OnFailure`.
 	RestartPolicy *string `pulumi:"restartPolicy"`
+	// The security context of the container group. See `securityContext` below.
+	SecurityContext *ContainerGroupSecurityContext `pulumi:"securityContext"`
 	// The ID of the security group to which the container group belongs. Container groups within the same security group can access each other.
 	SecurityGroupId string `pulumi:"securityGroupId"`
 	// A mapping of tags to assign to the resource.
@@ -499,8 +491,6 @@ type ContainerGroupArgs struct {
 	Cpu pulumi.Float64PtrInput
 	// The structure of dnsConfig. See `dnsConfig` below.
 	DnsConfig ContainerGroupDnsConfigPtrInput
-	// The security context of the container group. See `eciSecurityContext` below.
-	EciSecurityContext ContainerGroupEciSecurityContextPtrInput
 	// The bandwidth of the EIP. Default value: `5`.
 	EipBandwidth pulumi.IntPtrInput
 	// The ID of the elastic IP address (EIP).
@@ -525,6 +515,8 @@ type ContainerGroupArgs struct {
 	ResourceGroupId pulumi.StringPtrInput
 	// The restart policy of the container group. Valid values: `Always`, `Never`, `OnFailure`.
 	RestartPolicy pulumi.StringPtrInput
+	// The security context of the container group. See `securityContext` below.
+	SecurityContext ContainerGroupSecurityContextPtrInput
 	// The ID of the security group to which the container group belongs. Container groups within the same security group can access each other.
 	SecurityGroupId pulumi.StringInput
 	// A mapping of tags to assign to the resource.
@@ -662,11 +654,6 @@ func (o ContainerGroupOutput) DnsConfig() ContainerGroupDnsConfigPtrOutput {
 	return o.ApplyT(func(v *ContainerGroup) ContainerGroupDnsConfigPtrOutput { return v.DnsConfig }).(ContainerGroupDnsConfigPtrOutput)
 }
 
-// The security context of the container group. See `eciSecurityContext` below.
-func (o ContainerGroupOutput) EciSecurityContext() ContainerGroupEciSecurityContextPtrOutput {
-	return o.ApplyT(func(v *ContainerGroup) ContainerGroupEciSecurityContextPtrOutput { return v.EciSecurityContext }).(ContainerGroupEciSecurityContextPtrOutput)
-}
-
 // The bandwidth of the EIP. Default value: `5`.
 func (o ContainerGroupOutput) EipBandwidth() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ContainerGroup) pulumi.IntPtrOutput { return v.EipBandwidth }).(pulumi.IntPtrOutput)
@@ -737,6 +724,11 @@ func (o ContainerGroupOutput) ResourceGroupId() pulumi.StringOutput {
 // The restart policy of the container group. Valid values: `Always`, `Never`, `OnFailure`.
 func (o ContainerGroupOutput) RestartPolicy() pulumi.StringOutput {
 	return o.ApplyT(func(v *ContainerGroup) pulumi.StringOutput { return v.RestartPolicy }).(pulumi.StringOutput)
+}
+
+// The security context of the container group. See `securityContext` below.
+func (o ContainerGroupOutput) SecurityContext() ContainerGroupSecurityContextPtrOutput {
+	return o.ApplyT(func(v *ContainerGroup) ContainerGroupSecurityContextPtrOutput { return v.SecurityContext }).(ContainerGroupSecurityContextPtrOutput)
 }
 
 // The ID of the security group to which the container group belongs. Container groups within the same security group can access each other.

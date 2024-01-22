@@ -14,48 +14,55 @@ namespace Pulumi.AliCloud.Nlb.Outputs
     public sealed class ServerGroupHealthCheck
     {
         /// <summary>
-        /// The backend port that is used for health checks. Valid values: 0 to 65535. Default value: 0. If you set the value to 0, the port of a backend server is used for health checks.
+        /// The port of the backend server for health checks. Valid values: **0** ~ **65535**. **0** indicates that the port of the backend server is used for health check.
         /// </summary>
         public readonly int? HealthCheckConnectPort;
         /// <summary>
-        /// The maximum timeout period of a health check response. Unit: seconds. Valid values: 1 to 300. Default value: 5.
+        /// Maximum timeout for health check responses. Unit: seconds. Valid values: **1** ~ **300**.
         /// </summary>
         public readonly int? HealthCheckConnectTimeout;
         /// <summary>
-        /// The domain name that is used for health checks. Valid values:
-        /// - `$SERVER_IP`: the private IP address of a backend server.
+        /// The domain name used for health check. Valid values:
+        /// - **$SERVER_IP**: uses the intranet IP of the backend server.
+        /// - **domain**: Specify a specific domain name. The length is limited to 1 to 80 characters. Only lowercase letters, numbers, dashes (-), and half-width periods (.) can be used.
+        /// &gt; **NOTE:**  This parameter takes effect only when **HealthCheckType** is **HTTP**.
         /// </summary>
         public readonly string? HealthCheckDomain;
         /// <summary>
-        /// Specifies whether to enable health checks.
+        /// Whether to enable health check. Valid values:
+        /// - **true**: on.
+        /// - **false**: closed.
         /// </summary>
         public readonly bool? HealthCheckEnabled;
         /// <summary>
-        /// The HTTP status codes to return to health checks. Separate multiple HTTP status codes with commas (,). Valid values: http_2xx (default), http_3xx, http_4xx, and http_5xx. **Note:** This parameter takes effect only if `health_check_type` is set to `http`.
+        /// Health status return code. Multiple status codes are separated by commas (,). Valid values: **http\_2xx**, **http\_3xx**, **http\_4xx**, and **http\_5xx**.
+        /// &gt; **NOTE:**  This parameter takes effect only when **HealthCheckType** is **HTTP**.
         /// </summary>
         public readonly ImmutableArray<string> HealthCheckHttpCodes;
         /// <summary>
-        /// The interval between two consecutive health checks. Unit: seconds. Valid values: 5 to 5000. Default value: 10.
+        /// Time interval of health examination. Unit: seconds.Valid values: **5** ~ **50**.
         /// </summary>
         public readonly int? HealthCheckInterval;
         /// <summary>
-        /// The protocol that is used for health checks. Valid values: `TCP` (default) and `HTTP`.
+        /// Health check protocol. Valid values: **TCP** or **HTTP**.
         /// </summary>
         public readonly string? HealthCheckType;
         /// <summary>
-        /// The path to which health check requests are sent. The path must be 1 to 80 characters in length, and can contain only letters, digits, and the following special characters: `- / . % ? # &amp; =`. It can also contain the following extended characters: `_ ; ~ ! ( ) * [ ] @ $ ^ : ' , +`. The path must start with a forward slash (/). **Note:** This parameter takes effect only if `health_check_type` is set to `http`.
+        /// Health check path.
+        /// &gt; **NOTE:**  This parameter takes effect only when **HealthCheckType** is **HTTP**.
         /// </summary>
         public readonly string? HealthCheckUrl;
         /// <summary>
-        /// The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy. In this case, the health status is changed from fail to success. Valid values: 2 to 10. Default value: 2.
+        /// After the health check is successful, the health check status of the backend server is determined from **failed** to **successful * *.Valid values: **2** to **10 * *.
         /// </summary>
         public readonly int? HealthyThreshold;
         /// <summary>
-        /// The HTTP method that is used for health checks. Valid values: `GET` and `HEAD`. **Note:** This parameter takes effect only if `health_check_type` is set to `http`.
+        /// The health check method. Valid values: **GET** or **HEAD**.
+        /// &gt; **NOTE:**  This parameter takes effect only when **HealthCheckType** is **HTTP**.
         /// </summary>
         public readonly string? HttpCheckMethod;
         /// <summary>
-        /// The number of times that a healthy backend server must consecutively fail health checks before it is declared unhealthy. In this case, the health status is changed from success to fail. Valid values: 2 to 10. Default value: 2.
+        /// After the health check fails for many times in a row, the health check status of the backend server is determined from **Success** to **Failure**. Valid values: **2** to **10**.
         /// </summary>
         public readonly int? UnhealthyThreshold;
 

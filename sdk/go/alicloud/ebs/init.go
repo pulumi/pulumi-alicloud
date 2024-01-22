@@ -27,6 +27,14 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &DiskReplicaGroup{}
 	case "alicloud:ebs/diskReplicaPair:DiskReplicaPair":
 		r = &DiskReplicaPair{}
+	case "alicloud:ebs/enterpriseSnapshotPolicy:EnterpriseSnapshotPolicy":
+		r = &EnterpriseSnapshotPolicy{}
+	case "alicloud:ebs/enterpriseSnapshotPolicyAttachment:EnterpriseSnapshotPolicyAttachment":
+		r = &EnterpriseSnapshotPolicyAttachment{}
+	case "alicloud:ebs/replicaGroupDrill:ReplicaGroupDrill":
+		r = &ReplicaGroupDrill{}
+	case "alicloud:ebs/replicaPairDrill:ReplicaPairDrill":
+		r = &ReplicaPairDrill{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -53,6 +61,26 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"ebs/diskReplicaPair",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"ebs/enterpriseSnapshotPolicy",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"ebs/enterpriseSnapshotPolicyAttachment",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"ebs/replicaGroupDrill",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"ebs/replicaPairDrill",
 		&module{version},
 	)
 }

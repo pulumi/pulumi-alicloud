@@ -1792,13 +1792,13 @@ type GetAcceleratorsAccelerator struct {
 	ExpiredTime int `pulumi:"expiredTime"`
 	// The ID of the Accelerator.
 	Id string `pulumi:"id"`
-	// The Payment Typethe GA instance.
+	// The billing method of the GA instance. Valid values: `POSTPAY`, `PREPAY`.
 	PaymentType string `pulumi:"paymentType"`
 	// CNAME of the Global Acceleration Linkage DDoS High Defense Instance.
 	SecondDnsName string `pulumi:"secondDnsName"`
 	// The instance type of the GA instance.
 	Spec string `pulumi:"spec"`
-	// The status of the GA instance.
+	// The status of the GA instance. Valid values: `active`, `binding`, `configuring`, `deleting`, `finacialLocked`, `init`, `unbinding`.
 	Status string `pulumi:"status"`
 }
 
@@ -1834,13 +1834,13 @@ type GetAcceleratorsAcceleratorArgs struct {
 	ExpiredTime pulumi.IntInput `pulumi:"expiredTime"`
 	// The ID of the Accelerator.
 	Id pulumi.StringInput `pulumi:"id"`
-	// The Payment Typethe GA instance.
+	// The billing method of the GA instance. Valid values: `POSTPAY`, `PREPAY`.
 	PaymentType pulumi.StringInput `pulumi:"paymentType"`
 	// CNAME of the Global Acceleration Linkage DDoS High Defense Instance.
 	SecondDnsName pulumi.StringInput `pulumi:"secondDnsName"`
 	// The instance type of the GA instance.
 	Spec pulumi.StringInput `pulumi:"spec"`
-	// The status of the GA instance.
+	// The status of the GA instance. Valid values: `active`, `binding`, `configuring`, `deleting`, `finacialLocked`, `init`, `unbinding`.
 	Status pulumi.StringInput `pulumi:"status"`
 }
 
@@ -1949,7 +1949,7 @@ func (o GetAcceleratorsAcceleratorOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAcceleratorsAccelerator) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The Payment Typethe GA instance.
+// The billing method of the GA instance. Valid values: `POSTPAY`, `PREPAY`.
 func (o GetAcceleratorsAcceleratorOutput) PaymentType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAcceleratorsAccelerator) string { return v.PaymentType }).(pulumi.StringOutput)
 }
@@ -1964,7 +1964,7 @@ func (o GetAcceleratorsAcceleratorOutput) Spec() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAcceleratorsAccelerator) string { return v.Spec }).(pulumi.StringOutput)
 }
 
-// The status of the GA instance.
+// The status of the GA instance. Valid values: `active`, `binding`, `configuring`, `deleting`, `finacialLocked`, `init`, `unbinding`.
 func (o GetAcceleratorsAcceleratorOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAcceleratorsAccelerator) string { return v.Status }).(pulumi.StringOutput)
 }

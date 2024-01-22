@@ -164,6 +164,21 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The time when the changed configurations take effect. Valid values: `Immediately`, `MaintainTime`.
+     * 
+     */
+    @Import(name="effectiveTime")
+    private @Nullable Output<String> effectiveTime;
+
+    /**
+     * @return The time when the changed configurations take effect. Valid values: `Immediately`, `MaintainTime`.
+     * 
+     */
+    public Optional<Output<String>> effectiveTime() {
+        return Optional.ofNullable(this.effectiveTime);
+    }
+
+    /**
      * Whether to enable cloud disk encryption. Default value: `false`. Valid values: `true`, `false`.
      * 
      */
@@ -314,14 +329,14 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The name of DB instance. It a string of 2 to 256 characters.
+     * The name of DB instance. It must be 2 to 256 characters in length.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The name of DB instance. It a string of 2 to 256 characters.
+     * @return The name of DB instance. It must be 2 to 256 characters in length.
      * 
      */
     public Optional<Output<String>> name() {
@@ -374,14 +389,14 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The duration that you will buy DB instance (in month). It is valid when instance_charge_type is `PrePaid`. Default value: `1`. Valid values: [1~9], 12, 24, 36.
+     * The duration that you will buy DB instance (in month). It is valid when `instance_charge_type` is `PrePaid`. Default value: `1`. Valid values: [1~9], 12, 24, 36.
      * 
      */
     @Import(name="period")
     private @Nullable Output<Integer> period;
 
     /**
-     * @return The duration that you will buy DB instance (in month). It is valid when instance_charge_type is `PrePaid`. Default value: `1`. Valid values: [1~9], 12, 24, 36.
+     * @return The duration that you will buy DB instance (in month). It is valid when `instance_charge_type` is `PrePaid`. Default value: `1`. Valid values: [1~9], 12, 24, 36.
      * 
      */
     public Optional<Output<Integer>> period() {
@@ -644,6 +659,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         this.cloudDiskEncryptionKey = $.cloudDiskEncryptionKey;
         this.dbInstanceClass = $.dbInstanceClass;
         this.dbInstanceStorage = $.dbInstanceStorage;
+        this.effectiveTime = $.effectiveTime;
         this.encrypted = $.encrypted;
         this.encryptionKey = $.encryptionKey;
         this.encryptorName = $.encryptorName;
@@ -901,6 +917,27 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param effectiveTime The time when the changed configurations take effect. Valid values: `Immediately`, `MaintainTime`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder effectiveTime(@Nullable Output<String> effectiveTime) {
+            $.effectiveTime = effectiveTime;
+            return this;
+        }
+
+        /**
+         * @param effectiveTime The time when the changed configurations take effect. Valid values: `Immediately`, `MaintainTime`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder effectiveTime(String effectiveTime) {
+            return effectiveTime(Output.of(effectiveTime));
+        }
+
+        /**
          * @param encrypted Whether to enable cloud disk encryption. Default value: `false`. Valid values: `true`, `false`.
          * 
          * @return builder
@@ -1111,7 +1148,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The name of DB instance. It a string of 2 to 256 characters.
+         * @param name The name of DB instance. It must be 2 to 256 characters in length.
          * 
          * @return builder
          * 
@@ -1122,7 +1159,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The name of DB instance. It a string of 2 to 256 characters.
+         * @param name The name of DB instance. It must be 2 to 256 characters in length.
          * 
          * @return builder
          * 
@@ -1205,7 +1242,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param period The duration that you will buy DB instance (in month). It is valid when instance_charge_type is `PrePaid`. Default value: `1`. Valid values: [1~9], 12, 24, 36.
+         * @param period The duration that you will buy DB instance (in month). It is valid when `instance_charge_type` is `PrePaid`. Default value: `1`. Valid values: [1~9], 12, 24, 36.
          * 
          * @return builder
          * 
@@ -1216,7 +1253,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param period The duration that you will buy DB instance (in month). It is valid when instance_charge_type is `PrePaid`. Default value: `1`. Valid values: [1~9], 12, 24, 36.
+         * @param period The duration that you will buy DB instance (in month). It is valid when `instance_charge_type` is `PrePaid`. Default value: `1`. Valid values: [1~9], 12, 24, 36.
          * 
          * @return builder
          * 

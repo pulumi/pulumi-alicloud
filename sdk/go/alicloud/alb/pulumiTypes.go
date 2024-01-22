@@ -6360,30 +6360,31 @@ func (o RuleRuleConditionSourceIpConfigPtrOutput) Values() pulumi.StringArrayOut
 }
 
 type ServerGroupHealthCheckConfig struct {
-	// The status code for a successful health check.  Multiple status codes can be specified as a list. Valid values: `http2xx`, `http3xx`, `http4xx`, and `http5xx`. Default value: `http2xx`. **NOTE:** This
-	// parameter exists if the `HealthCheckProtocol` parameter is set to `HTTP`.
+	// The HTTP status codes that are used to indicate whether the backend server passes the health check. Valid values:
+	// - If `healthCheckProtocol` is set to `HTTP` or `HTTPS`. Valid values: `http2xx`, `http3xx`, `http4xx`, and `http5xx`. Default value: `http2xx`.
+	// - If `healthCheckProtocol` is set to `gRPC`. Valid values: `0` to `99`. Default value: `0`.
 	HealthCheckCodes []string `pulumi:"healthCheckCodes"`
-	// The port of the backend server that is used for health checks. Valid values: `0` to `65535`. Default value: `0`. A value of 0 indicates that a backend server port is used for health checks.
+	// The backend port that is used for health checks. Default value: `0`. Valid values: `0` to `65535`. A value of 0 indicates that a backend server port is used for health checks.
 	HealthCheckConnectPort *int `pulumi:"healthCheckConnectPort"`
-	// Indicates whether health checks are enabled. Valid values: `true`, `false`. Default value: `true`.
-	HealthCheckEnabled *bool `pulumi:"healthCheckEnabled"`
+	// Specifies whether to enable the health check feature. Valid values: `true`, `false`.
+	HealthCheckEnabled bool `pulumi:"healthCheckEnabled"`
 	// The domain name that is used for health checks.
 	HealthCheckHost *string `pulumi:"healthCheckHost"`
-	// HTTP protocol version. Valid values: `HTTP1.0` and `HTTP1.1`. Default value: `HTTP1.1`. **NOTE:** This parameter exists if the `HealthCheckProtocol` parameter is set to `HTTP`.
+	// The version of the HTTP protocol. Default value: `HTTP1.1`. Valid values: `HTTP1.0` and `HTTP1.1`. **NOTE:** This parameter takes effect only when `healthCheckProtocol` is set to `HTTP` or `HTTPS`.
 	HealthCheckHttpVersion *string `pulumi:"healthCheckHttpVersion"`
-	// The time interval between two consecutive health checks. Unit: seconds. Valid values: `1` to `50`. Default value: `2`.
+	// The interval at which health checks are performed. Unit: seconds. Default value: `2`. Valid values: `1` to `50`.
 	HealthCheckInterval *int `pulumi:"healthCheckInterval"`
-	// Health check method. Valid values: `GET` and `HEAD`. Default: `GET`. **NOTE:** This parameter exists if the `HealthCheckProtocol` parameter is set to `HTTP`.
+	// The HTTP method that is used for health checks. Default value: `GET`. Valid values: `GET`, `POST`, `HEAD`. **NOTE:** This parameter takes effect only when `healthCheckProtocol` is set to `HTTP`, `HTTPS`, or `gRPC`. From version 1.215.0, `healthCheckMethod` can be set to `POST`.
 	HealthCheckMethod *string `pulumi:"healthCheckMethod"`
-	// The forwarding rule path of health checks. **NOTE:** This parameter exists if the `HealthCheckProtocol` parameter is set to `HTTP`.
+	// The path that is used for health checks. **NOTE:** This parameter takes effect only when `healthCheckProtocol` is set to `HTTP` or `HTTPS`.
 	HealthCheckPath *string `pulumi:"healthCheckPath"`
-	// Health check protocol. Valid values: `HTTP` and `TCP`, `HTTPS`.
+	// The protocol that is used for health checks. Valid values: `HTTP`, `HTTPS`, `TCP` and `gRPC`.
 	HealthCheckProtocol *string `pulumi:"healthCheckProtocol"`
-	// The timeout period of a health check response. If a backend Elastic Compute Service (ECS) instance does not send an expected response within the specified period of time, the ECS instance is considered unhealthy. Unit: seconds. Valid values: 1 to 300. Default value: 5. **NOTE:** If the value of the `HealthCHeckTimeout` parameter is smaller than that of the `HealthCheckInterval` parameter, the value of the `HealthCHeckTimeout` parameter is ignored and the value of the `HealthCheckInterval` parameter is regarded as the timeout period.
+	// The timeout period for a health check response. If a backend Elastic Compute Service (ECS) instance does not send an expected response within the specified period of time, the ECS instance is considered unhealthy. Unit: seconds. Default value: `5`. Valid values: `1` to `300`. **NOTE:** If the value of `healthCheckTimeout` is smaller than the value of `healthCheckInterval`, the value of `healthCheckTimeout` is ignored and the value of `healthCheckInterval` is used.
 	HealthCheckTimeout *int `pulumi:"healthCheckTimeout"`
-	// The number of health checks that an unhealthy backend server must pass consecutively before it is declared healthy. In this case, the health check state is changed from fail to success. Valid values: 2 to 10. Default value: 3.
+	// The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy. Default value: `3`. Valid values: `2` to `10`.
 	HealthyThreshold *int `pulumi:"healthyThreshold"`
-	// The number of consecutive health checks that a healthy backend server must consecutively fail before it is declared unhealthy. In this case, the health check state is changed from success to fail. Valid values: `2` to `10`. Default value: `3`.
+	// The number of times that a healthy backend server must consecutively fail health checks before it is declared unhealthy. Default value: `3`. Valid values: `2` to `10`.
 	UnhealthyThreshold *int `pulumi:"unhealthyThreshold"`
 }
 
@@ -6399,30 +6400,31 @@ type ServerGroupHealthCheckConfigInput interface {
 }
 
 type ServerGroupHealthCheckConfigArgs struct {
-	// The status code for a successful health check.  Multiple status codes can be specified as a list. Valid values: `http2xx`, `http3xx`, `http4xx`, and `http5xx`. Default value: `http2xx`. **NOTE:** This
-	// parameter exists if the `HealthCheckProtocol` parameter is set to `HTTP`.
+	// The HTTP status codes that are used to indicate whether the backend server passes the health check. Valid values:
+	// - If `healthCheckProtocol` is set to `HTTP` or `HTTPS`. Valid values: `http2xx`, `http3xx`, `http4xx`, and `http5xx`. Default value: `http2xx`.
+	// - If `healthCheckProtocol` is set to `gRPC`. Valid values: `0` to `99`. Default value: `0`.
 	HealthCheckCodes pulumi.StringArrayInput `pulumi:"healthCheckCodes"`
-	// The port of the backend server that is used for health checks. Valid values: `0` to `65535`. Default value: `0`. A value of 0 indicates that a backend server port is used for health checks.
+	// The backend port that is used for health checks. Default value: `0`. Valid values: `0` to `65535`. A value of 0 indicates that a backend server port is used for health checks.
 	HealthCheckConnectPort pulumi.IntPtrInput `pulumi:"healthCheckConnectPort"`
-	// Indicates whether health checks are enabled. Valid values: `true`, `false`. Default value: `true`.
-	HealthCheckEnabled pulumi.BoolPtrInput `pulumi:"healthCheckEnabled"`
+	// Specifies whether to enable the health check feature. Valid values: `true`, `false`.
+	HealthCheckEnabled pulumi.BoolInput `pulumi:"healthCheckEnabled"`
 	// The domain name that is used for health checks.
 	HealthCheckHost pulumi.StringPtrInput `pulumi:"healthCheckHost"`
-	// HTTP protocol version. Valid values: `HTTP1.0` and `HTTP1.1`. Default value: `HTTP1.1`. **NOTE:** This parameter exists if the `HealthCheckProtocol` parameter is set to `HTTP`.
+	// The version of the HTTP protocol. Default value: `HTTP1.1`. Valid values: `HTTP1.0` and `HTTP1.1`. **NOTE:** This parameter takes effect only when `healthCheckProtocol` is set to `HTTP` or `HTTPS`.
 	HealthCheckHttpVersion pulumi.StringPtrInput `pulumi:"healthCheckHttpVersion"`
-	// The time interval between two consecutive health checks. Unit: seconds. Valid values: `1` to `50`. Default value: `2`.
+	// The interval at which health checks are performed. Unit: seconds. Default value: `2`. Valid values: `1` to `50`.
 	HealthCheckInterval pulumi.IntPtrInput `pulumi:"healthCheckInterval"`
-	// Health check method. Valid values: `GET` and `HEAD`. Default: `GET`. **NOTE:** This parameter exists if the `HealthCheckProtocol` parameter is set to `HTTP`.
+	// The HTTP method that is used for health checks. Default value: `GET`. Valid values: `GET`, `POST`, `HEAD`. **NOTE:** This parameter takes effect only when `healthCheckProtocol` is set to `HTTP`, `HTTPS`, or `gRPC`. From version 1.215.0, `healthCheckMethod` can be set to `POST`.
 	HealthCheckMethod pulumi.StringPtrInput `pulumi:"healthCheckMethod"`
-	// The forwarding rule path of health checks. **NOTE:** This parameter exists if the `HealthCheckProtocol` parameter is set to `HTTP`.
+	// The path that is used for health checks. **NOTE:** This parameter takes effect only when `healthCheckProtocol` is set to `HTTP` or `HTTPS`.
 	HealthCheckPath pulumi.StringPtrInput `pulumi:"healthCheckPath"`
-	// Health check protocol. Valid values: `HTTP` and `TCP`, `HTTPS`.
+	// The protocol that is used for health checks. Valid values: `HTTP`, `HTTPS`, `TCP` and `gRPC`.
 	HealthCheckProtocol pulumi.StringPtrInput `pulumi:"healthCheckProtocol"`
-	// The timeout period of a health check response. If a backend Elastic Compute Service (ECS) instance does not send an expected response within the specified period of time, the ECS instance is considered unhealthy. Unit: seconds. Valid values: 1 to 300. Default value: 5. **NOTE:** If the value of the `HealthCHeckTimeout` parameter is smaller than that of the `HealthCheckInterval` parameter, the value of the `HealthCHeckTimeout` parameter is ignored and the value of the `HealthCheckInterval` parameter is regarded as the timeout period.
+	// The timeout period for a health check response. If a backend Elastic Compute Service (ECS) instance does not send an expected response within the specified period of time, the ECS instance is considered unhealthy. Unit: seconds. Default value: `5`. Valid values: `1` to `300`. **NOTE:** If the value of `healthCheckTimeout` is smaller than the value of `healthCheckInterval`, the value of `healthCheckTimeout` is ignored and the value of `healthCheckInterval` is used.
 	HealthCheckTimeout pulumi.IntPtrInput `pulumi:"healthCheckTimeout"`
-	// The number of health checks that an unhealthy backend server must pass consecutively before it is declared healthy. In this case, the health check state is changed from fail to success. Valid values: 2 to 10. Default value: 3.
+	// The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy. Default value: `3`. Valid values: `2` to `10`.
 	HealthyThreshold pulumi.IntPtrInput `pulumi:"healthyThreshold"`
-	// The number of consecutive health checks that a healthy backend server must consecutively fail before it is declared unhealthy. In this case, the health check state is changed from success to fail. Valid values: `2` to `10`. Default value: `3`.
+	// The number of times that a healthy backend server must consecutively fail health checks before it is declared unhealthy. Default value: `3`. Valid values: `2` to `10`.
 	UnhealthyThreshold pulumi.IntPtrInput `pulumi:"unhealthyThreshold"`
 }
 
@@ -6503,20 +6505,21 @@ func (o ServerGroupHealthCheckConfigOutput) ToServerGroupHealthCheckConfigPtrOut
 	}).(ServerGroupHealthCheckConfigPtrOutput)
 }
 
-// The status code for a successful health check.  Multiple status codes can be specified as a list. Valid values: `http2xx`, `http3xx`, `http4xx`, and `http5xx`. Default value: `http2xx`. **NOTE:** This
-// parameter exists if the `HealthCheckProtocol` parameter is set to `HTTP`.
+// The HTTP status codes that are used to indicate whether the backend server passes the health check. Valid values:
+// - If `healthCheckProtocol` is set to `HTTP` or `HTTPS`. Valid values: `http2xx`, `http3xx`, `http4xx`, and `http5xx`. Default value: `http2xx`.
+// - If `healthCheckProtocol` is set to `gRPC`. Valid values: `0` to `99`. Default value: `0`.
 func (o ServerGroupHealthCheckConfigOutput) HealthCheckCodes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ServerGroupHealthCheckConfig) []string { return v.HealthCheckCodes }).(pulumi.StringArrayOutput)
 }
 
-// The port of the backend server that is used for health checks. Valid values: `0` to `65535`. Default value: `0`. A value of 0 indicates that a backend server port is used for health checks.
+// The backend port that is used for health checks. Default value: `0`. Valid values: `0` to `65535`. A value of 0 indicates that a backend server port is used for health checks.
 func (o ServerGroupHealthCheckConfigOutput) HealthCheckConnectPort() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ServerGroupHealthCheckConfig) *int { return v.HealthCheckConnectPort }).(pulumi.IntPtrOutput)
 }
 
-// Indicates whether health checks are enabled. Valid values: `true`, `false`. Default value: `true`.
-func (o ServerGroupHealthCheckConfigOutput) HealthCheckEnabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ServerGroupHealthCheckConfig) *bool { return v.HealthCheckEnabled }).(pulumi.BoolPtrOutput)
+// Specifies whether to enable the health check feature. Valid values: `true`, `false`.
+func (o ServerGroupHealthCheckConfigOutput) HealthCheckEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v ServerGroupHealthCheckConfig) bool { return v.HealthCheckEnabled }).(pulumi.BoolOutput)
 }
 
 // The domain name that is used for health checks.
@@ -6524,42 +6527,42 @@ func (o ServerGroupHealthCheckConfigOutput) HealthCheckHost() pulumi.StringPtrOu
 	return o.ApplyT(func(v ServerGroupHealthCheckConfig) *string { return v.HealthCheckHost }).(pulumi.StringPtrOutput)
 }
 
-// HTTP protocol version. Valid values: `HTTP1.0` and `HTTP1.1`. Default value: `HTTP1.1`. **NOTE:** This parameter exists if the `HealthCheckProtocol` parameter is set to `HTTP`.
+// The version of the HTTP protocol. Default value: `HTTP1.1`. Valid values: `HTTP1.0` and `HTTP1.1`. **NOTE:** This parameter takes effect only when `healthCheckProtocol` is set to `HTTP` or `HTTPS`.
 func (o ServerGroupHealthCheckConfigOutput) HealthCheckHttpVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServerGroupHealthCheckConfig) *string { return v.HealthCheckHttpVersion }).(pulumi.StringPtrOutput)
 }
 
-// The time interval between two consecutive health checks. Unit: seconds. Valid values: `1` to `50`. Default value: `2`.
+// The interval at which health checks are performed. Unit: seconds. Default value: `2`. Valid values: `1` to `50`.
 func (o ServerGroupHealthCheckConfigOutput) HealthCheckInterval() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ServerGroupHealthCheckConfig) *int { return v.HealthCheckInterval }).(pulumi.IntPtrOutput)
 }
 
-// Health check method. Valid values: `GET` and `HEAD`. Default: `GET`. **NOTE:** This parameter exists if the `HealthCheckProtocol` parameter is set to `HTTP`.
+// The HTTP method that is used for health checks. Default value: `GET`. Valid values: `GET`, `POST`, `HEAD`. **NOTE:** This parameter takes effect only when `healthCheckProtocol` is set to `HTTP`, `HTTPS`, or `gRPC`. From version 1.215.0, `healthCheckMethod` can be set to `POST`.
 func (o ServerGroupHealthCheckConfigOutput) HealthCheckMethod() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServerGroupHealthCheckConfig) *string { return v.HealthCheckMethod }).(pulumi.StringPtrOutput)
 }
 
-// The forwarding rule path of health checks. **NOTE:** This parameter exists if the `HealthCheckProtocol` parameter is set to `HTTP`.
+// The path that is used for health checks. **NOTE:** This parameter takes effect only when `healthCheckProtocol` is set to `HTTP` or `HTTPS`.
 func (o ServerGroupHealthCheckConfigOutput) HealthCheckPath() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServerGroupHealthCheckConfig) *string { return v.HealthCheckPath }).(pulumi.StringPtrOutput)
 }
 
-// Health check protocol. Valid values: `HTTP` and `TCP`, `HTTPS`.
+// The protocol that is used for health checks. Valid values: `HTTP`, `HTTPS`, `TCP` and `gRPC`.
 func (o ServerGroupHealthCheckConfigOutput) HealthCheckProtocol() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServerGroupHealthCheckConfig) *string { return v.HealthCheckProtocol }).(pulumi.StringPtrOutput)
 }
 
-// The timeout period of a health check response. If a backend Elastic Compute Service (ECS) instance does not send an expected response within the specified period of time, the ECS instance is considered unhealthy. Unit: seconds. Valid values: 1 to 300. Default value: 5. **NOTE:** If the value of the `HealthCHeckTimeout` parameter is smaller than that of the `HealthCheckInterval` parameter, the value of the `HealthCHeckTimeout` parameter is ignored and the value of the `HealthCheckInterval` parameter is regarded as the timeout period.
+// The timeout period for a health check response. If a backend Elastic Compute Service (ECS) instance does not send an expected response within the specified period of time, the ECS instance is considered unhealthy. Unit: seconds. Default value: `5`. Valid values: `1` to `300`. **NOTE:** If the value of `healthCheckTimeout` is smaller than the value of `healthCheckInterval`, the value of `healthCheckTimeout` is ignored and the value of `healthCheckInterval` is used.
 func (o ServerGroupHealthCheckConfigOutput) HealthCheckTimeout() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ServerGroupHealthCheckConfig) *int { return v.HealthCheckTimeout }).(pulumi.IntPtrOutput)
 }
 
-// The number of health checks that an unhealthy backend server must pass consecutively before it is declared healthy. In this case, the health check state is changed from fail to success. Valid values: 2 to 10. Default value: 3.
+// The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy. Default value: `3`. Valid values: `2` to `10`.
 func (o ServerGroupHealthCheckConfigOutput) HealthyThreshold() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ServerGroupHealthCheckConfig) *int { return v.HealthyThreshold }).(pulumi.IntPtrOutput)
 }
 
-// The number of consecutive health checks that a healthy backend server must consecutively fail before it is declared unhealthy. In this case, the health check state is changed from success to fail. Valid values: `2` to `10`. Default value: `3`.
+// The number of times that a healthy backend server must consecutively fail health checks before it is declared unhealthy. Default value: `3`. Valid values: `2` to `10`.
 func (o ServerGroupHealthCheckConfigOutput) UnhealthyThreshold() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ServerGroupHealthCheckConfig) *int { return v.UnhealthyThreshold }).(pulumi.IntPtrOutput)
 }
@@ -6588,8 +6591,9 @@ func (o ServerGroupHealthCheckConfigPtrOutput) Elem() ServerGroupHealthCheckConf
 	}).(ServerGroupHealthCheckConfigOutput)
 }
 
-// The status code for a successful health check.  Multiple status codes can be specified as a list. Valid values: `http2xx`, `http3xx`, `http4xx`, and `http5xx`. Default value: `http2xx`. **NOTE:** This
-// parameter exists if the `HealthCheckProtocol` parameter is set to `HTTP`.
+// The HTTP status codes that are used to indicate whether the backend server passes the health check. Valid values:
+// - If `healthCheckProtocol` is set to `HTTP` or `HTTPS`. Valid values: `http2xx`, `http3xx`, `http4xx`, and `http5xx`. Default value: `http2xx`.
+// - If `healthCheckProtocol` is set to `gRPC`. Valid values: `0` to `99`. Default value: `0`.
 func (o ServerGroupHealthCheckConfigPtrOutput) HealthCheckCodes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ServerGroupHealthCheckConfig) []string {
 		if v == nil {
@@ -6599,7 +6603,7 @@ func (o ServerGroupHealthCheckConfigPtrOutput) HealthCheckCodes() pulumi.StringA
 	}).(pulumi.StringArrayOutput)
 }
 
-// The port of the backend server that is used for health checks. Valid values: `0` to `65535`. Default value: `0`. A value of 0 indicates that a backend server port is used for health checks.
+// The backend port that is used for health checks. Default value: `0`. Valid values: `0` to `65535`. A value of 0 indicates that a backend server port is used for health checks.
 func (o ServerGroupHealthCheckConfigPtrOutput) HealthCheckConnectPort() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ServerGroupHealthCheckConfig) *int {
 		if v == nil {
@@ -6609,13 +6613,13 @@ func (o ServerGroupHealthCheckConfigPtrOutput) HealthCheckConnectPort() pulumi.I
 	}).(pulumi.IntPtrOutput)
 }
 
-// Indicates whether health checks are enabled. Valid values: `true`, `false`. Default value: `true`.
+// Specifies whether to enable the health check feature. Valid values: `true`, `false`.
 func (o ServerGroupHealthCheckConfigPtrOutput) HealthCheckEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ServerGroupHealthCheckConfig) *bool {
 		if v == nil {
 			return nil
 		}
-		return v.HealthCheckEnabled
+		return &v.HealthCheckEnabled
 	}).(pulumi.BoolPtrOutput)
 }
 
@@ -6629,7 +6633,7 @@ func (o ServerGroupHealthCheckConfigPtrOutput) HealthCheckHost() pulumi.StringPt
 	}).(pulumi.StringPtrOutput)
 }
 
-// HTTP protocol version. Valid values: `HTTP1.0` and `HTTP1.1`. Default value: `HTTP1.1`. **NOTE:** This parameter exists if the `HealthCheckProtocol` parameter is set to `HTTP`.
+// The version of the HTTP protocol. Default value: `HTTP1.1`. Valid values: `HTTP1.0` and `HTTP1.1`. **NOTE:** This parameter takes effect only when `healthCheckProtocol` is set to `HTTP` or `HTTPS`.
 func (o ServerGroupHealthCheckConfigPtrOutput) HealthCheckHttpVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServerGroupHealthCheckConfig) *string {
 		if v == nil {
@@ -6639,7 +6643,7 @@ func (o ServerGroupHealthCheckConfigPtrOutput) HealthCheckHttpVersion() pulumi.S
 	}).(pulumi.StringPtrOutput)
 }
 
-// The time interval between two consecutive health checks. Unit: seconds. Valid values: `1` to `50`. Default value: `2`.
+// The interval at which health checks are performed. Unit: seconds. Default value: `2`. Valid values: `1` to `50`.
 func (o ServerGroupHealthCheckConfigPtrOutput) HealthCheckInterval() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ServerGroupHealthCheckConfig) *int {
 		if v == nil {
@@ -6649,7 +6653,7 @@ func (o ServerGroupHealthCheckConfigPtrOutput) HealthCheckInterval() pulumi.IntP
 	}).(pulumi.IntPtrOutput)
 }
 
-// Health check method. Valid values: `GET` and `HEAD`. Default: `GET`. **NOTE:** This parameter exists if the `HealthCheckProtocol` parameter is set to `HTTP`.
+// The HTTP method that is used for health checks. Default value: `GET`. Valid values: `GET`, `POST`, `HEAD`. **NOTE:** This parameter takes effect only when `healthCheckProtocol` is set to `HTTP`, `HTTPS`, or `gRPC`. From version 1.215.0, `healthCheckMethod` can be set to `POST`.
 func (o ServerGroupHealthCheckConfigPtrOutput) HealthCheckMethod() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServerGroupHealthCheckConfig) *string {
 		if v == nil {
@@ -6659,7 +6663,7 @@ func (o ServerGroupHealthCheckConfigPtrOutput) HealthCheckMethod() pulumi.String
 	}).(pulumi.StringPtrOutput)
 }
 
-// The forwarding rule path of health checks. **NOTE:** This parameter exists if the `HealthCheckProtocol` parameter is set to `HTTP`.
+// The path that is used for health checks. **NOTE:** This parameter takes effect only when `healthCheckProtocol` is set to `HTTP` or `HTTPS`.
 func (o ServerGroupHealthCheckConfigPtrOutput) HealthCheckPath() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServerGroupHealthCheckConfig) *string {
 		if v == nil {
@@ -6669,7 +6673,7 @@ func (o ServerGroupHealthCheckConfigPtrOutput) HealthCheckPath() pulumi.StringPt
 	}).(pulumi.StringPtrOutput)
 }
 
-// Health check protocol. Valid values: `HTTP` and `TCP`, `HTTPS`.
+// The protocol that is used for health checks. Valid values: `HTTP`, `HTTPS`, `TCP` and `gRPC`.
 func (o ServerGroupHealthCheckConfigPtrOutput) HealthCheckProtocol() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServerGroupHealthCheckConfig) *string {
 		if v == nil {
@@ -6679,7 +6683,7 @@ func (o ServerGroupHealthCheckConfigPtrOutput) HealthCheckProtocol() pulumi.Stri
 	}).(pulumi.StringPtrOutput)
 }
 
-// The timeout period of a health check response. If a backend Elastic Compute Service (ECS) instance does not send an expected response within the specified period of time, the ECS instance is considered unhealthy. Unit: seconds. Valid values: 1 to 300. Default value: 5. **NOTE:** If the value of the `HealthCHeckTimeout` parameter is smaller than that of the `HealthCheckInterval` parameter, the value of the `HealthCHeckTimeout` parameter is ignored and the value of the `HealthCheckInterval` parameter is regarded as the timeout period.
+// The timeout period for a health check response. If a backend Elastic Compute Service (ECS) instance does not send an expected response within the specified period of time, the ECS instance is considered unhealthy. Unit: seconds. Default value: `5`. Valid values: `1` to `300`. **NOTE:** If the value of `healthCheckTimeout` is smaller than the value of `healthCheckInterval`, the value of `healthCheckTimeout` is ignored and the value of `healthCheckInterval` is used.
 func (o ServerGroupHealthCheckConfigPtrOutput) HealthCheckTimeout() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ServerGroupHealthCheckConfig) *int {
 		if v == nil {
@@ -6689,7 +6693,7 @@ func (o ServerGroupHealthCheckConfigPtrOutput) HealthCheckTimeout() pulumi.IntPt
 	}).(pulumi.IntPtrOutput)
 }
 
-// The number of health checks that an unhealthy backend server must pass consecutively before it is declared healthy. In this case, the health check state is changed from fail to success. Valid values: 2 to 10. Default value: 3.
+// The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy. Default value: `3`. Valid values: `2` to `10`.
 func (o ServerGroupHealthCheckConfigPtrOutput) HealthyThreshold() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ServerGroupHealthCheckConfig) *int {
 		if v == nil {
@@ -6699,7 +6703,7 @@ func (o ServerGroupHealthCheckConfigPtrOutput) HealthyThreshold() pulumi.IntPtrO
 	}).(pulumi.IntPtrOutput)
 }
 
-// The number of consecutive health checks that a healthy backend server must consecutively fail before it is declared unhealthy. In this case, the health check state is changed from success to fail. Valid values: `2` to `10`. Default value: `3`.
+// The number of times that a healthy backend server must consecutively fail health checks before it is declared unhealthy. Default value: `3`. Valid values: `2` to `10`.
 func (o ServerGroupHealthCheckConfigPtrOutput) UnhealthyThreshold() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ServerGroupHealthCheckConfig) *int {
 		if v == nil {
@@ -6710,9 +6714,9 @@ func (o ServerGroupHealthCheckConfigPtrOutput) UnhealthyThreshold() pulumi.IntPt
 }
 
 type ServerGroupServer struct {
-	// The description of the server.
+	// The description of the backend server.
 	Description *string `pulumi:"description"`
-	// The port that is used by the server. Valid values: `1` to `65535`. **Note:** This parameter is required if the `serverType` parameter is set to `Ecs`, `Eni`, `Eci`, or `Ip`. You do not need to configure this parameter if you set `serverType` to `Fc`.
+	// The port used by the backend server. Valid values: `1` to `65535`. **Note:** This parameter is required if the `serverType` parameter is set to `Ecs`, `Eni`, `Eci`, or `Ip`. You do not need to configure this parameter if you set `serverType` to `Fc`.
 	Port *int `pulumi:"port"`
 	// Specifies whether to enable the remote IP address feature. You can specify up to 40 servers in each call. **Note:** If `serverType` is set to `Ip`, this parameter is available.
 	RemoteIpEnabled *bool `pulumi:"remoteIpEnabled"`
@@ -6724,16 +6728,10 @@ type ServerGroupServer struct {
 	// The IP address of an Elastic Compute Service (ECS) instance, an elastic network interface (ENI), or an elastic container instance. **Note:** If `serverGroupType` is set to `Fc`, you do not need to configure parameters, otherwise this attribute is required. If `serverGroupType` is set to `Ip`, the value of this property is the same as the `serverId` value.
 	ServerIp *string `pulumi:"serverIp"`
 	// The type of the server. The type of the server. Valid values:
-	// - Ecs: an ECS instance.
-	// - Eni: an ENI.
-	// - Eci: an elastic container instance.
-	// - Ip(Available in v1.194.0+): an IP address.
-	// - fc(Available in v1.194.0+): a function.
 	ServerType string `pulumi:"serverType"`
-	// The status of the backend server. Valid values:
+	// The status of the backend server.
 	Status *string `pulumi:"status"`
-	// The weight of the server. Valid values: `0` to `100`. Default value: `100`. If the value is set to `0`, no
-	// requests are forwarded to the server. **Note:** You do not need to set this parameter if you set `serverType` to `Fc`.
+	// The weight of the server. Default value: `100`. Valid values: `0` to `100`. If the value is set to `0`, no requests are forwarded to the server. **Note:** You do not need to set this parameter if you set `serverType` to `Fc`.
 	Weight *int `pulumi:"weight"`
 }
 
@@ -6749,9 +6747,9 @@ type ServerGroupServerInput interface {
 }
 
 type ServerGroupServerArgs struct {
-	// The description of the server.
+	// The description of the backend server.
 	Description pulumi.StringPtrInput `pulumi:"description"`
-	// The port that is used by the server. Valid values: `1` to `65535`. **Note:** This parameter is required if the `serverType` parameter is set to `Ecs`, `Eni`, `Eci`, or `Ip`. You do not need to configure this parameter if you set `serverType` to `Fc`.
+	// The port used by the backend server. Valid values: `1` to `65535`. **Note:** This parameter is required if the `serverType` parameter is set to `Ecs`, `Eni`, `Eci`, or `Ip`. You do not need to configure this parameter if you set `serverType` to `Fc`.
 	Port pulumi.IntPtrInput `pulumi:"port"`
 	// Specifies whether to enable the remote IP address feature. You can specify up to 40 servers in each call. **Note:** If `serverType` is set to `Ip`, this parameter is available.
 	RemoteIpEnabled pulumi.BoolPtrInput `pulumi:"remoteIpEnabled"`
@@ -6763,16 +6761,10 @@ type ServerGroupServerArgs struct {
 	// The IP address of an Elastic Compute Service (ECS) instance, an elastic network interface (ENI), or an elastic container instance. **Note:** If `serverGroupType` is set to `Fc`, you do not need to configure parameters, otherwise this attribute is required. If `serverGroupType` is set to `Ip`, the value of this property is the same as the `serverId` value.
 	ServerIp pulumi.StringPtrInput `pulumi:"serverIp"`
 	// The type of the server. The type of the server. Valid values:
-	// - Ecs: an ECS instance.
-	// - Eni: an ENI.
-	// - Eci: an elastic container instance.
-	// - Ip(Available in v1.194.0+): an IP address.
-	// - fc(Available in v1.194.0+): a function.
 	ServerType pulumi.StringInput `pulumi:"serverType"`
-	// The status of the backend server. Valid values:
+	// The status of the backend server.
 	Status pulumi.StringPtrInput `pulumi:"status"`
-	// The weight of the server. Valid values: `0` to `100`. Default value: `100`. If the value is set to `0`, no
-	// requests are forwarded to the server. **Note:** You do not need to set this parameter if you set `serverType` to `Fc`.
+	// The weight of the server. Default value: `100`. Valid values: `0` to `100`. If the value is set to `0`, no requests are forwarded to the server. **Note:** You do not need to set this parameter if you set `serverType` to `Fc`.
 	Weight pulumi.IntPtrInput `pulumi:"weight"`
 }
 
@@ -6827,12 +6819,12 @@ func (o ServerGroupServerOutput) ToServerGroupServerOutputWithContext(ctx contex
 	return o
 }
 
-// The description of the server.
+// The description of the backend server.
 func (o ServerGroupServerOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServerGroupServer) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// The port that is used by the server. Valid values: `1` to `65535`. **Note:** This parameter is required if the `serverType` parameter is set to `Ecs`, `Eni`, `Eci`, or `Ip`. You do not need to configure this parameter if you set `serverType` to `Fc`.
+// The port used by the backend server. Valid values: `1` to `65535`. **Note:** This parameter is required if the `serverType` parameter is set to `Ecs`, `Eni`, `Eci`, or `Ip`. You do not need to configure this parameter if you set `serverType` to `Fc`.
 func (o ServerGroupServerOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ServerGroupServer) *int { return v.Port }).(pulumi.IntPtrOutput)
 }
@@ -6856,22 +6848,16 @@ func (o ServerGroupServerOutput) ServerIp() pulumi.StringPtrOutput {
 }
 
 // The type of the server. The type of the server. Valid values:
-// - Ecs: an ECS instance.
-// - Eni: an ENI.
-// - Eci: an elastic container instance.
-// - Ip(Available in v1.194.0+): an IP address.
-// - fc(Available in v1.194.0+): a function.
 func (o ServerGroupServerOutput) ServerType() pulumi.StringOutput {
 	return o.ApplyT(func(v ServerGroupServer) string { return v.ServerType }).(pulumi.StringOutput)
 }
 
-// The status of the backend server. Valid values:
+// The status of the backend server.
 func (o ServerGroupServerOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServerGroupServer) *string { return v.Status }).(pulumi.StringPtrOutput)
 }
 
-// The weight of the server. Valid values: `0` to `100`. Default value: `100`. If the value is set to `0`, no
-// requests are forwarded to the server. **Note:** You do not need to set this parameter if you set `serverType` to `Fc`.
+// The weight of the server. Default value: `100`. Valid values: `0` to `100`. If the value is set to `0`, no requests are forwarded to the server. **Note:** You do not need to set this parameter if you set `serverType` to `Fc`.
 func (o ServerGroupServerOutput) Weight() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ServerGroupServer) *int { return v.Weight }).(pulumi.IntPtrOutput)
 }
@@ -6897,16 +6883,13 @@ func (o ServerGroupServerArrayOutput) Index(i pulumi.IntInput) ServerGroupServer
 }
 
 type ServerGroupStickySessionConfig struct {
-	// the cookie that is configured on the server. **NOTE:** This parameter exists if the `StickySession`
-	// parameter is set to `On` and the `StickySessionType` parameter is set to `server`.
+	// The cookie to be configured on the server. **NOTE:** This parameter takes effect when the `stickySessionEnabled` parameter is set to `true` and the `stickySessionType` parameter is set to `Server`.
 	Cookie *string `pulumi:"cookie"`
-	// The timeout period of a cookie. The timeout period of a cookie. Unit: seconds. Valid values: `1`
-	// to `86400`. Default value: `1000`.
+	// The timeout period of a cookie. Unit: seconds. Default value: `1000`. Valid values: `1` to `86400`. **NOTE:** This parameter takes effect when the `stickySessionEnabled` parameter is set to `true` and the `stickySessionType` parameter is set to `Insert`.
 	CookieTimeout *int `pulumi:"cookieTimeout"`
-	// Indicates whether sticky session is enabled. Values: `true` and `false`. Default
-	// value: `false`.  **NOTE:** This parameter exists if the `StickySession` parameter is set to `On`.
+	// Specifies whether to enable session persistence. Default value: `false`. Valid values: `true`, `false`. **NOTE:** This parameter takes effect when the `serverGroupType` parameter is set to `Instance` or `Ip`.
 	StickySessionEnabled *bool `pulumi:"stickySessionEnabled"`
-	// The method that is used to handle a cookie. Values: `Server` and `Insert`.
+	// The method that is used to handle a cookie. Valid values: `Server`, `Insert`.
 	StickySessionType *string `pulumi:"stickySessionType"`
 }
 
@@ -6922,16 +6905,13 @@ type ServerGroupStickySessionConfigInput interface {
 }
 
 type ServerGroupStickySessionConfigArgs struct {
-	// the cookie that is configured on the server. **NOTE:** This parameter exists if the `StickySession`
-	// parameter is set to `On` and the `StickySessionType` parameter is set to `server`.
+	// The cookie to be configured on the server. **NOTE:** This parameter takes effect when the `stickySessionEnabled` parameter is set to `true` and the `stickySessionType` parameter is set to `Server`.
 	Cookie pulumi.StringPtrInput `pulumi:"cookie"`
-	// The timeout period of a cookie. The timeout period of a cookie. Unit: seconds. Valid values: `1`
-	// to `86400`. Default value: `1000`.
+	// The timeout period of a cookie. Unit: seconds. Default value: `1000`. Valid values: `1` to `86400`. **NOTE:** This parameter takes effect when the `stickySessionEnabled` parameter is set to `true` and the `stickySessionType` parameter is set to `Insert`.
 	CookieTimeout pulumi.IntPtrInput `pulumi:"cookieTimeout"`
-	// Indicates whether sticky session is enabled. Values: `true` and `false`. Default
-	// value: `false`.  **NOTE:** This parameter exists if the `StickySession` parameter is set to `On`.
+	// Specifies whether to enable session persistence. Default value: `false`. Valid values: `true`, `false`. **NOTE:** This parameter takes effect when the `serverGroupType` parameter is set to `Instance` or `Ip`.
 	StickySessionEnabled pulumi.BoolPtrInput `pulumi:"stickySessionEnabled"`
-	// The method that is used to handle a cookie. Values: `Server` and `Insert`.
+	// The method that is used to handle a cookie. Valid values: `Server`, `Insert`.
 	StickySessionType pulumi.StringPtrInput `pulumi:"stickySessionType"`
 }
 
@@ -7012,25 +6992,22 @@ func (o ServerGroupStickySessionConfigOutput) ToServerGroupStickySessionConfigPt
 	}).(ServerGroupStickySessionConfigPtrOutput)
 }
 
-// the cookie that is configured on the server. **NOTE:** This parameter exists if the `StickySession`
-// parameter is set to `On` and the `StickySessionType` parameter is set to `server`.
+// The cookie to be configured on the server. **NOTE:** This parameter takes effect when the `stickySessionEnabled` parameter is set to `true` and the `stickySessionType` parameter is set to `Server`.
 func (o ServerGroupStickySessionConfigOutput) Cookie() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServerGroupStickySessionConfig) *string { return v.Cookie }).(pulumi.StringPtrOutput)
 }
 
-// The timeout period of a cookie. The timeout period of a cookie. Unit: seconds. Valid values: `1`
-// to `86400`. Default value: `1000`.
+// The timeout period of a cookie. Unit: seconds. Default value: `1000`. Valid values: `1` to `86400`. **NOTE:** This parameter takes effect when the `stickySessionEnabled` parameter is set to `true` and the `stickySessionType` parameter is set to `Insert`.
 func (o ServerGroupStickySessionConfigOutput) CookieTimeout() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ServerGroupStickySessionConfig) *int { return v.CookieTimeout }).(pulumi.IntPtrOutput)
 }
 
-// Indicates whether sticky session is enabled. Values: `true` and `false`. Default
-// value: `false`.  **NOTE:** This parameter exists if the `StickySession` parameter is set to `On`.
+// Specifies whether to enable session persistence. Default value: `false`. Valid values: `true`, `false`. **NOTE:** This parameter takes effect when the `serverGroupType` parameter is set to `Instance` or `Ip`.
 func (o ServerGroupStickySessionConfigOutput) StickySessionEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ServerGroupStickySessionConfig) *bool { return v.StickySessionEnabled }).(pulumi.BoolPtrOutput)
 }
 
-// The method that is used to handle a cookie. Values: `Server` and `Insert`.
+// The method that is used to handle a cookie. Valid values: `Server`, `Insert`.
 func (o ServerGroupStickySessionConfigOutput) StickySessionType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServerGroupStickySessionConfig) *string { return v.StickySessionType }).(pulumi.StringPtrOutput)
 }
@@ -7059,8 +7036,7 @@ func (o ServerGroupStickySessionConfigPtrOutput) Elem() ServerGroupStickySession
 	}).(ServerGroupStickySessionConfigOutput)
 }
 
-// the cookie that is configured on the server. **NOTE:** This parameter exists if the `StickySession`
-// parameter is set to `On` and the `StickySessionType` parameter is set to `server`.
+// The cookie to be configured on the server. **NOTE:** This parameter takes effect when the `stickySessionEnabled` parameter is set to `true` and the `stickySessionType` parameter is set to `Server`.
 func (o ServerGroupStickySessionConfigPtrOutput) Cookie() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServerGroupStickySessionConfig) *string {
 		if v == nil {
@@ -7070,8 +7046,7 @@ func (o ServerGroupStickySessionConfigPtrOutput) Cookie() pulumi.StringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
-// The timeout period of a cookie. The timeout period of a cookie. Unit: seconds. Valid values: `1`
-// to `86400`. Default value: `1000`.
+// The timeout period of a cookie. Unit: seconds. Default value: `1000`. Valid values: `1` to `86400`. **NOTE:** This parameter takes effect when the `stickySessionEnabled` parameter is set to `true` and the `stickySessionType` parameter is set to `Insert`.
 func (o ServerGroupStickySessionConfigPtrOutput) CookieTimeout() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ServerGroupStickySessionConfig) *int {
 		if v == nil {
@@ -7081,8 +7056,7 @@ func (o ServerGroupStickySessionConfigPtrOutput) CookieTimeout() pulumi.IntPtrOu
 	}).(pulumi.IntPtrOutput)
 }
 
-// Indicates whether sticky session is enabled. Values: `true` and `false`. Default
-// value: `false`.  **NOTE:** This parameter exists if the `StickySession` parameter is set to `On`.
+// Specifies whether to enable session persistence. Default value: `false`. Valid values: `true`, `false`. **NOTE:** This parameter takes effect when the `serverGroupType` parameter is set to `Instance` or `Ip`.
 func (o ServerGroupStickySessionConfigPtrOutput) StickySessionEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ServerGroupStickySessionConfig) *bool {
 		if v == nil {
@@ -7092,7 +7066,7 @@ func (o ServerGroupStickySessionConfigPtrOutput) StickySessionEnabled() pulumi.B
 	}).(pulumi.BoolPtrOutput)
 }
 
-// The method that is used to handle a cookie. Values: `Server` and `Insert`.
+// The method that is used to handle a cookie. Valid values: `Server`, `Insert`.
 func (o ServerGroupStickySessionConfigPtrOutput) StickySessionType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServerGroupStickySessionConfig) *string {
 		if v == nil {

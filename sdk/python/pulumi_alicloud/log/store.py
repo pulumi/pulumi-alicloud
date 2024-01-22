@@ -23,6 +23,7 @@ class StoreArgs:
                  hot_ttl: Optional[pulumi.Input[int]] = None,
                  logstore_name: Optional[pulumi.Input[str]] = None,
                  max_split_shard_count: Optional[pulumi.Input[int]] = None,
+                 metering_mode: Optional[pulumi.Input[str]] = None,
                  mode: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -39,6 +40,7 @@ class StoreArgs:
         :param pulumi.Input[int] hot_ttl: The ttl of hot storage. Default to 30, at least 30, hot storage ttl must be less than ttl.
         :param pulumi.Input[str] logstore_name: The log store, which is unique in the same project. You need to specify one of the attributes: `logstore_name`, `name`.
         :param pulumi.Input[int] max_split_shard_count: The maximum number of shards for automatic split, which is in the range of 1 to 256. You must specify this parameter when autoSplit is true.
+        :param pulumi.Input[str] metering_mode: Metering mode. The default metering mode of ChargeByFunction, ChargeByDataIngest traffic mode.
         :param pulumi.Input[str] mode: The mode of storage. Default to `standard`, must be `standard` or `query`, `lite`.
         :param pulumi.Input[str] name: . Field 'name' has been deprecated from provider version 1.215.0. New field 'logstore_name' instead.
         :param pulumi.Input[str] project: . Field 'project' has been deprecated from provider version 1.215.0. New field 'project_name' instead.
@@ -63,6 +65,8 @@ class StoreArgs:
             pulumi.set(__self__, "logstore_name", logstore_name)
         if max_split_shard_count is not None:
             pulumi.set(__self__, "max_split_shard_count", max_split_shard_count)
+        if metering_mode is not None:
+            pulumi.set(__self__, "metering_mode", metering_mode)
         if mode is not None:
             pulumi.set(__self__, "mode", mode)
         if name is not None:
@@ -169,6 +173,18 @@ class StoreArgs:
         pulumi.set(self, "max_split_shard_count", value)
 
     @property
+    @pulumi.getter(name="meteringMode")
+    def metering_mode(self) -> Optional[pulumi.Input[str]]:
+        """
+        Metering mode. The default metering mode of ChargeByFunction, ChargeByDataIngest traffic mode.
+        """
+        return pulumi.get(self, "metering_mode")
+
+    @metering_mode.setter
+    def metering_mode(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "metering_mode", value)
+
+    @property
     @pulumi.getter
     def mode(self) -> Optional[pulumi.Input[str]]:
         """
@@ -272,6 +288,7 @@ class _StoreState:
                  hot_ttl: Optional[pulumi.Input[int]] = None,
                  logstore_name: Optional[pulumi.Input[str]] = None,
                  max_split_shard_count: Optional[pulumi.Input[int]] = None,
+                 metering_mode: Optional[pulumi.Input[str]] = None,
                  mode: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -290,6 +307,7 @@ class _StoreState:
         :param pulumi.Input[int] hot_ttl: The ttl of hot storage. Default to 30, at least 30, hot storage ttl must be less than ttl.
         :param pulumi.Input[str] logstore_name: The log store, which is unique in the same project. You need to specify one of the attributes: `logstore_name`, `name`.
         :param pulumi.Input[int] max_split_shard_count: The maximum number of shards for automatic split, which is in the range of 1 to 256. You must specify this parameter when autoSplit is true.
+        :param pulumi.Input[str] metering_mode: Metering mode. The default metering mode of ChargeByFunction, ChargeByDataIngest traffic mode.
         :param pulumi.Input[str] mode: The mode of storage. Default to `standard`, must be `standard` or `query`, `lite`.
         :param pulumi.Input[str] name: . Field 'name' has been deprecated from provider version 1.215.0. New field 'logstore_name' instead.
         :param pulumi.Input[str] project: . Field 'project' has been deprecated from provider version 1.215.0. New field 'project_name' instead.
@@ -317,6 +335,8 @@ class _StoreState:
             pulumi.set(__self__, "logstore_name", logstore_name)
         if max_split_shard_count is not None:
             pulumi.set(__self__, "max_split_shard_count", max_split_shard_count)
+        if metering_mode is not None:
+            pulumi.set(__self__, "metering_mode", metering_mode)
         if mode is not None:
             pulumi.set(__self__, "mode", mode)
         if name is not None:
@@ -437,6 +457,18 @@ class _StoreState:
         pulumi.set(self, "max_split_shard_count", value)
 
     @property
+    @pulumi.getter(name="meteringMode")
+    def metering_mode(self) -> Optional[pulumi.Input[str]]:
+        """
+        Metering mode. The default metering mode of ChargeByFunction, ChargeByDataIngest traffic mode.
+        """
+        return pulumi.get(self, "metering_mode")
+
+    @metering_mode.setter
+    def metering_mode(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "metering_mode", value)
+
+    @property
     @pulumi.getter
     def mode(self) -> Optional[pulumi.Input[str]]:
         """
@@ -553,6 +585,7 @@ class Store(pulumi.CustomResource):
                  hot_ttl: Optional[pulumi.Input[int]] = None,
                  logstore_name: Optional[pulumi.Input[str]] = None,
                  max_split_shard_count: Optional[pulumi.Input[int]] = None,
+                 metering_mode: Optional[pulumi.Input[str]] = None,
                  mode: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -646,6 +679,7 @@ class Store(pulumi.CustomResource):
         :param pulumi.Input[int] hot_ttl: The ttl of hot storage. Default to 30, at least 30, hot storage ttl must be less than ttl.
         :param pulumi.Input[str] logstore_name: The log store, which is unique in the same project. You need to specify one of the attributes: `logstore_name`, `name`.
         :param pulumi.Input[int] max_split_shard_count: The maximum number of shards for automatic split, which is in the range of 1 to 256. You must specify this parameter when autoSplit is true.
+        :param pulumi.Input[str] metering_mode: Metering mode. The default metering mode of ChargeByFunction, ChargeByDataIngest traffic mode.
         :param pulumi.Input[str] mode: The mode of storage. Default to `standard`, must be `standard` or `query`, `lite`.
         :param pulumi.Input[str] name: . Field 'name' has been deprecated from provider version 1.215.0. New field 'logstore_name' instead.
         :param pulumi.Input[str] project: . Field 'project' has been deprecated from provider version 1.215.0. New field 'project_name' instead.
@@ -760,6 +794,7 @@ class Store(pulumi.CustomResource):
                  hot_ttl: Optional[pulumi.Input[int]] = None,
                  logstore_name: Optional[pulumi.Input[str]] = None,
                  max_split_shard_count: Optional[pulumi.Input[int]] = None,
+                 metering_mode: Optional[pulumi.Input[str]] = None,
                  mode: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -783,6 +818,7 @@ class Store(pulumi.CustomResource):
             __props__.__dict__["hot_ttl"] = hot_ttl
             __props__.__dict__["logstore_name"] = logstore_name
             __props__.__dict__["max_split_shard_count"] = max_split_shard_count
+            __props__.__dict__["metering_mode"] = metering_mode
             __props__.__dict__["mode"] = mode
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project
@@ -810,6 +846,7 @@ class Store(pulumi.CustomResource):
             hot_ttl: Optional[pulumi.Input[int]] = None,
             logstore_name: Optional[pulumi.Input[str]] = None,
             max_split_shard_count: Optional[pulumi.Input[int]] = None,
+            metering_mode: Optional[pulumi.Input[str]] = None,
             mode: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
@@ -833,6 +870,7 @@ class Store(pulumi.CustomResource):
         :param pulumi.Input[int] hot_ttl: The ttl of hot storage. Default to 30, at least 30, hot storage ttl must be less than ttl.
         :param pulumi.Input[str] logstore_name: The log store, which is unique in the same project. You need to specify one of the attributes: `logstore_name`, `name`.
         :param pulumi.Input[int] max_split_shard_count: The maximum number of shards for automatic split, which is in the range of 1 to 256. You must specify this parameter when autoSplit is true.
+        :param pulumi.Input[str] metering_mode: Metering mode. The default metering mode of ChargeByFunction, ChargeByDataIngest traffic mode.
         :param pulumi.Input[str] mode: The mode of storage. Default to `standard`, must be `standard` or `query`, `lite`.
         :param pulumi.Input[str] name: . Field 'name' has been deprecated from provider version 1.215.0. New field 'logstore_name' instead.
         :param pulumi.Input[str] project: . Field 'project' has been deprecated from provider version 1.215.0. New field 'project_name' instead.
@@ -856,6 +894,7 @@ class Store(pulumi.CustomResource):
         __props__.__dict__["hot_ttl"] = hot_ttl
         __props__.__dict__["logstore_name"] = logstore_name
         __props__.__dict__["max_split_shard_count"] = max_split_shard_count
+        __props__.__dict__["metering_mode"] = metering_mode
         __props__.__dict__["mode"] = mode
         __props__.__dict__["name"] = name
         __props__.__dict__["project"] = project
@@ -929,6 +968,14 @@ class Store(pulumi.CustomResource):
         The maximum number of shards for automatic split, which is in the range of 1 to 256. You must specify this parameter when autoSplit is true.
         """
         return pulumi.get(self, "max_split_shard_count")
+
+    @property
+    @pulumi.getter(name="meteringMode")
+    def metering_mode(self) -> pulumi.Output[str]:
+        """
+        Metering mode. The default metering mode of ChargeByFunction, ChargeByDataIngest traffic mode.
+        """
+        return pulumi.get(self, "metering_mode")
 
     @property
     @pulumi.getter

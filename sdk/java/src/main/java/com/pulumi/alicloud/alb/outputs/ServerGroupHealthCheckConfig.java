@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.alb.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -15,89 +16,91 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ServerGroupHealthCheckConfig {
     /**
-     * @return The status code for a successful health check.  Multiple status codes can be specified as a list. Valid values: `http_2xx`, `http_3xx`, `http_4xx`, and `http_5xx`. Default value: `http_2xx`. **NOTE:** This
-     * parameter exists if the `HealthCheckProtocol` parameter is set to `HTTP`.
+     * @return The HTTP status codes that are used to indicate whether the backend server passes the health check. Valid values:
+     * - If `health_check_protocol` is set to `HTTP` or `HTTPS`. Valid values: `http_2xx`, `http_3xx`, `http_4xx`, and `http_5xx`. Default value: `http_2xx`.
+     * - If `health_check_protocol` is set to `gRPC`. Valid values: `0` to `99`. Default value: `0`.
      * 
      */
     private @Nullable List<String> healthCheckCodes;
     /**
-     * @return The port of the backend server that is used for health checks. Valid values: `0` to `65535`. Default value: `0`. A value of 0 indicates that a backend server port is used for health checks.
+     * @return The backend port that is used for health checks. Default value: `0`. Valid values: `0` to `65535`. A value of 0 indicates that a backend server port is used for health checks.
      * 
      */
     private @Nullable Integer healthCheckConnectPort;
     /**
-     * @return Indicates whether health checks are enabled. Valid values: `true`, `false`. Default value: `true`.
+     * @return Specifies whether to enable the health check feature. Valid values: `true`, `false`.
      * 
      */
-    private @Nullable Boolean healthCheckEnabled;
+    private Boolean healthCheckEnabled;
     /**
      * @return The domain name that is used for health checks.
      * 
      */
     private @Nullable String healthCheckHost;
     /**
-     * @return HTTP protocol version. Valid values: `HTTP1.0` and `HTTP1.1`. Default value: `HTTP1.1`. **NOTE:** This parameter exists if the `HealthCheckProtocol` parameter is set to `HTTP`.
+     * @return The version of the HTTP protocol. Default value: `HTTP1.1`. Valid values: `HTTP1.0` and `HTTP1.1`. **NOTE:** This parameter takes effect only when `health_check_protocol` is set to `HTTP` or `HTTPS`.
      * 
      */
     private @Nullable String healthCheckHttpVersion;
     /**
-     * @return The time interval between two consecutive health checks. Unit: seconds. Valid values: `1` to `50`. Default value: `2`.
+     * @return The interval at which health checks are performed. Unit: seconds. Default value: `2`. Valid values: `1` to `50`.
      * 
      */
     private @Nullable Integer healthCheckInterval;
     /**
-     * @return Health check method. Valid values: `GET` and `HEAD`. Default: `GET`. **NOTE:** This parameter exists if the `HealthCheckProtocol` parameter is set to `HTTP`.
+     * @return The HTTP method that is used for health checks. Default value: `GET`. Valid values: `GET`, `POST`, `HEAD`. **NOTE:** This parameter takes effect only when `health_check_protocol` is set to `HTTP`, `HTTPS`, or `gRPC`. From version 1.215.0, `health_check_method` can be set to `POST`.
      * 
      */
     private @Nullable String healthCheckMethod;
     /**
-     * @return The forwarding rule path of health checks. **NOTE:** This parameter exists if the `HealthCheckProtocol` parameter is set to `HTTP`.
+     * @return The path that is used for health checks. **NOTE:** This parameter takes effect only when `health_check_protocol` is set to `HTTP` or `HTTPS`.
      * 
      */
     private @Nullable String healthCheckPath;
     /**
-     * @return Health check protocol. Valid values: `HTTP` and `TCP`, `HTTPS`.
+     * @return The protocol that is used for health checks. Valid values: `HTTP`, `HTTPS`, `TCP` and `gRPC`.
      * 
      */
     private @Nullable String healthCheckProtocol;
     /**
-     * @return The timeout period of a health check response. If a backend Elastic Compute Service (ECS) instance does not send an expected response within the specified period of time, the ECS instance is considered unhealthy. Unit: seconds. Valid values: 1 to 300. Default value: 5. **NOTE:** If the value of the `HealthCHeckTimeout` parameter is smaller than that of the `HealthCheckInterval` parameter, the value of the `HealthCHeckTimeout` parameter is ignored and the value of the `HealthCheckInterval` parameter is regarded as the timeout period.
+     * @return The timeout period for a health check response. If a backend Elastic Compute Service (ECS) instance does not send an expected response within the specified period of time, the ECS instance is considered unhealthy. Unit: seconds. Default value: `5`. Valid values: `1` to `300`. **NOTE:** If the value of `health_check_timeout` is smaller than the value of `health_check_interval`, the value of `health_check_timeout` is ignored and the value of `health_check_interval` is used.
      * 
      */
     private @Nullable Integer healthCheckTimeout;
     /**
-     * @return The number of health checks that an unhealthy backend server must pass consecutively before it is declared healthy. In this case, the health check state is changed from fail to success. Valid values: 2 to 10. Default value: 3.
+     * @return The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy. Default value: `3`. Valid values: `2` to `10`.
      * 
      */
     private @Nullable Integer healthyThreshold;
     /**
-     * @return The number of consecutive health checks that a healthy backend server must consecutively fail before it is declared unhealthy. In this case, the health check state is changed from success to fail. Valid values: `2` to `10`. Default value: `3`.
+     * @return The number of times that a healthy backend server must consecutively fail health checks before it is declared unhealthy. Default value: `3`. Valid values: `2` to `10`.
      * 
      */
     private @Nullable Integer unhealthyThreshold;
 
     private ServerGroupHealthCheckConfig() {}
     /**
-     * @return The status code for a successful health check.  Multiple status codes can be specified as a list. Valid values: `http_2xx`, `http_3xx`, `http_4xx`, and `http_5xx`. Default value: `http_2xx`. **NOTE:** This
-     * parameter exists if the `HealthCheckProtocol` parameter is set to `HTTP`.
+     * @return The HTTP status codes that are used to indicate whether the backend server passes the health check. Valid values:
+     * - If `health_check_protocol` is set to `HTTP` or `HTTPS`. Valid values: `http_2xx`, `http_3xx`, `http_4xx`, and `http_5xx`. Default value: `http_2xx`.
+     * - If `health_check_protocol` is set to `gRPC`. Valid values: `0` to `99`. Default value: `0`.
      * 
      */
     public List<String> healthCheckCodes() {
         return this.healthCheckCodes == null ? List.of() : this.healthCheckCodes;
     }
     /**
-     * @return The port of the backend server that is used for health checks. Valid values: `0` to `65535`. Default value: `0`. A value of 0 indicates that a backend server port is used for health checks.
+     * @return The backend port that is used for health checks. Default value: `0`. Valid values: `0` to `65535`. A value of 0 indicates that a backend server port is used for health checks.
      * 
      */
     public Optional<Integer> healthCheckConnectPort() {
         return Optional.ofNullable(this.healthCheckConnectPort);
     }
     /**
-     * @return Indicates whether health checks are enabled. Valid values: `true`, `false`. Default value: `true`.
+     * @return Specifies whether to enable the health check feature. Valid values: `true`, `false`.
      * 
      */
-    public Optional<Boolean> healthCheckEnabled() {
-        return Optional.ofNullable(this.healthCheckEnabled);
+    public Boolean healthCheckEnabled() {
+        return this.healthCheckEnabled;
     }
     /**
      * @return The domain name that is used for health checks.
@@ -107,56 +110,56 @@ public final class ServerGroupHealthCheckConfig {
         return Optional.ofNullable(this.healthCheckHost);
     }
     /**
-     * @return HTTP protocol version. Valid values: `HTTP1.0` and `HTTP1.1`. Default value: `HTTP1.1`. **NOTE:** This parameter exists if the `HealthCheckProtocol` parameter is set to `HTTP`.
+     * @return The version of the HTTP protocol. Default value: `HTTP1.1`. Valid values: `HTTP1.0` and `HTTP1.1`. **NOTE:** This parameter takes effect only when `health_check_protocol` is set to `HTTP` or `HTTPS`.
      * 
      */
     public Optional<String> healthCheckHttpVersion() {
         return Optional.ofNullable(this.healthCheckHttpVersion);
     }
     /**
-     * @return The time interval between two consecutive health checks. Unit: seconds. Valid values: `1` to `50`. Default value: `2`.
+     * @return The interval at which health checks are performed. Unit: seconds. Default value: `2`. Valid values: `1` to `50`.
      * 
      */
     public Optional<Integer> healthCheckInterval() {
         return Optional.ofNullable(this.healthCheckInterval);
     }
     /**
-     * @return Health check method. Valid values: `GET` and `HEAD`. Default: `GET`. **NOTE:** This parameter exists if the `HealthCheckProtocol` parameter is set to `HTTP`.
+     * @return The HTTP method that is used for health checks. Default value: `GET`. Valid values: `GET`, `POST`, `HEAD`. **NOTE:** This parameter takes effect only when `health_check_protocol` is set to `HTTP`, `HTTPS`, or `gRPC`. From version 1.215.0, `health_check_method` can be set to `POST`.
      * 
      */
     public Optional<String> healthCheckMethod() {
         return Optional.ofNullable(this.healthCheckMethod);
     }
     /**
-     * @return The forwarding rule path of health checks. **NOTE:** This parameter exists if the `HealthCheckProtocol` parameter is set to `HTTP`.
+     * @return The path that is used for health checks. **NOTE:** This parameter takes effect only when `health_check_protocol` is set to `HTTP` or `HTTPS`.
      * 
      */
     public Optional<String> healthCheckPath() {
         return Optional.ofNullable(this.healthCheckPath);
     }
     /**
-     * @return Health check protocol. Valid values: `HTTP` and `TCP`, `HTTPS`.
+     * @return The protocol that is used for health checks. Valid values: `HTTP`, `HTTPS`, `TCP` and `gRPC`.
      * 
      */
     public Optional<String> healthCheckProtocol() {
         return Optional.ofNullable(this.healthCheckProtocol);
     }
     /**
-     * @return The timeout period of a health check response. If a backend Elastic Compute Service (ECS) instance does not send an expected response within the specified period of time, the ECS instance is considered unhealthy. Unit: seconds. Valid values: 1 to 300. Default value: 5. **NOTE:** If the value of the `HealthCHeckTimeout` parameter is smaller than that of the `HealthCheckInterval` parameter, the value of the `HealthCHeckTimeout` parameter is ignored and the value of the `HealthCheckInterval` parameter is regarded as the timeout period.
+     * @return The timeout period for a health check response. If a backend Elastic Compute Service (ECS) instance does not send an expected response within the specified period of time, the ECS instance is considered unhealthy. Unit: seconds. Default value: `5`. Valid values: `1` to `300`. **NOTE:** If the value of `health_check_timeout` is smaller than the value of `health_check_interval`, the value of `health_check_timeout` is ignored and the value of `health_check_interval` is used.
      * 
      */
     public Optional<Integer> healthCheckTimeout() {
         return Optional.ofNullable(this.healthCheckTimeout);
     }
     /**
-     * @return The number of health checks that an unhealthy backend server must pass consecutively before it is declared healthy. In this case, the health check state is changed from fail to success. Valid values: 2 to 10. Default value: 3.
+     * @return The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy. Default value: `3`. Valid values: `2` to `10`.
      * 
      */
     public Optional<Integer> healthyThreshold() {
         return Optional.ofNullable(this.healthyThreshold);
     }
     /**
-     * @return The number of consecutive health checks that a healthy backend server must consecutively fail before it is declared unhealthy. In this case, the health check state is changed from success to fail. Valid values: `2` to `10`. Default value: `3`.
+     * @return The number of times that a healthy backend server must consecutively fail health checks before it is declared unhealthy. Default value: `3`. Valid values: `2` to `10`.
      * 
      */
     public Optional<Integer> unhealthyThreshold() {
@@ -174,7 +177,7 @@ public final class ServerGroupHealthCheckConfig {
     public static final class Builder {
         private @Nullable List<String> healthCheckCodes;
         private @Nullable Integer healthCheckConnectPort;
-        private @Nullable Boolean healthCheckEnabled;
+        private Boolean healthCheckEnabled;
         private @Nullable String healthCheckHost;
         private @Nullable String healthCheckHttpVersion;
         private @Nullable Integer healthCheckInterval;
@@ -217,8 +220,10 @@ public final class ServerGroupHealthCheckConfig {
             return this;
         }
         @CustomType.Setter
-        public Builder healthCheckEnabled(@Nullable Boolean healthCheckEnabled) {
-
+        public Builder healthCheckEnabled(Boolean healthCheckEnabled) {
+            if (healthCheckEnabled == null) {
+              throw new MissingRequiredPropertyException("ServerGroupHealthCheckConfig", "healthCheckEnabled");
+            }
             this.healthCheckEnabled = healthCheckEnabled;
             return this;
         }

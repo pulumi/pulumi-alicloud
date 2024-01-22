@@ -10,10 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Alb
 {
     /// <summary>
-    /// Provides a ALB Server Group resource.
+    /// Provides an ALB Server Group resource.
     /// 
-    /// For information about ALB Server Group and how to use it,
-    /// see [What is Server Group](https://www.alibabacloud.com/help/en/slb/application-load-balancer/developer-reference/api-alb-2020-06-16-createservergroup).
+    /// For information about ALB Server Group and how to use it, see [What is Server Group](https://www.alibabacloud.com/help/en/slb/application-load-balancer/developer-reference/api-alb-2020-06-16-createservergroup).
     /// 
     /// &gt; **NOTE:** Available since v1.131.0.
     /// 
@@ -31,6 +30,8 @@ namespace Pulumi.AliCloud.Alb
     /// {
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "terraform-example";
+    ///     var exampleResourceGroups = AliCloud.ResourceManager.GetResourceGroups.Invoke();
+    /// 
     ///     var exampleZones = AliCloud.GetZones.Invoke(new()
     ///     {
     ///         AvailableResourceCreation = "Instance",
@@ -48,8 +49,6 @@ namespace Pulumi.AliCloud.Alb
     ///         NameRegex = "^ubuntu_[0-9]+_[0-9]+_x64*",
     ///         Owners = "system",
     ///     });
-    /// 
-    ///     var exampleResourceGroups = AliCloud.ResourceManager.GetResourceGroups.Invoke();
     /// 
     ///     var exampleNetwork = new AliCloud.Vpc.Network("exampleNetwork", new()
     ///     {
@@ -90,6 +89,12 @@ namespace Pulumi.AliCloud.Alb
     ///         VpcId = exampleNetwork.Id,
     ///         ServerGroupName = name,
     ///         ResourceGroupId = exampleResourceGroups.Apply(getResourceGroupsResult =&gt; getResourceGroupsResult.Groups[0]?.Id),
+    ///         StickySessionConfig = new AliCloud.Alb.Inputs.ServerGroupStickySessionConfigArgs
+    ///         {
+    ///             StickySessionEnabled = true,
+    ///             Cookie = "tf-example",
+    ///             StickySessionType = "Server",
+    ///         },
     ///         HealthCheckConfig = new AliCloud.Alb.Inputs.ServerGroupHealthCheckConfigArgs
     ///         {
     ///             HealthCheckConnectPort = 46325,
@@ -110,16 +115,6 @@ namespace Pulumi.AliCloud.Alb
     ///             HealthyThreshold = 3,
     ///             UnhealthyThreshold = 3,
     ///         },
-    ///         StickySessionConfig = new AliCloud.Alb.Inputs.ServerGroupStickySessionConfigArgs
-    ///         {
-    ///             StickySessionEnabled = true,
-    ///             Cookie = "tf-example",
-    ///             StickySessionType = "Server",
-    ///         },
-    ///         Tags = 
-    ///         {
-    ///             { "Created", "TF" },
-    ///         },
     ///         Servers = new[]
     ///         {
     ///             new AliCloud.Alb.Inputs.ServerGroupServerArgs
@@ -131,6 +126,10 @@ namespace Pulumi.AliCloud.Alb
     ///                 ServerType = "Ecs",
     ///                 Weight = 10,
     ///             },
+    ///         },
+    ///         Tags = 
+    ///         {
+    ///             { "Created", "TF" },
     ///         },
     ///     });
     /// 
@@ -155,13 +154,13 @@ namespace Pulumi.AliCloud.Alb
         public Output<bool?> DryRun { get; private set; } = null!;
 
         /// <summary>
-        /// The configuration of health checks. See `health_check_config` below for details.
+        /// The configuration of health checks. See `health_check_config` below.
         /// </summary>
         [Output("healthCheckConfig")]
-        public Output<Outputs.ServerGroupHealthCheckConfig?> HealthCheckConfig { get; private set; } = null!;
+        public Output<Outputs.ServerGroupHealthCheckConfig> HealthCheckConfig { get; private set; } = null!;
 
         /// <summary>
-        /// The server protocol. Valid values: ` HTTPS`, `HTTP`.
+        /// The server protocol. Valid values: ` HTTP`, `HTTPS`, `gRPC`. While `server_group_type` is `Fc` this parameter will not take effect. From version 1.215.0, `protocol` can be set to `gRPC`.
         /// </summary>
         [Output("protocol")]
         public Output<string> Protocol { get; private set; } = null!;
@@ -173,40 +172,40 @@ namespace Pulumi.AliCloud.Alb
         public Output<string> ResourceGroupId { get; private set; } = null!;
 
         /// <summary>
-        /// The scheduling algorithm. Valid values: ` Sch`, ` Wlc`, `Wrr`.
+        /// The scheduling algorithm. Valid values: ` Sch`, ` Wlc`, `Wrr`. **NOTE:** This parameter takes effect when the `server_group_type` parameter is set to `Instance` or `Ip`.
         /// </summary>
         [Output("scheduler")]
         public Output<string> Scheduler { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the resource.
+        /// The name of the server group.
         /// </summary>
         [Output("serverGroupName")]
-        public Output<string?> ServerGroupName { get; private set; } = null!;
+        public Output<string> ServerGroupName { get; private set; } = null!;
 
         /// <summary>
-        /// The type of the server group. Valid values:
+        /// The type of the server group. Default value: `Instance`. Valid values:
         /// </summary>
         [Output("serverGroupType")]
         public Output<string> ServerGroupType { get; private set; } = null!;
 
         /// <summary>
-        /// The backend server. See `servers` below for details.
+        /// The backend servers. See `servers` below.
         /// </summary>
         [Output("servers")]
         public Output<ImmutableArray<Outputs.ServerGroupServer>> Servers { get; private set; } = null!;
 
         /// <summary>
-        /// The status of the backend server. Valid values:
+        /// The status of the backend server.
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
-        /// The configuration of the sticky session. See `sticky_session_config` below for details.
+        /// The configuration of session persistence. See `sticky_session_config` below.
         /// </summary>
         [Output("stickySessionConfig")]
-        public Output<Outputs.ServerGroupStickySessionConfig?> StickySessionConfig { get; private set; } = null!;
+        public Output<Outputs.ServerGroupStickySessionConfig> StickySessionConfig { get; private set; } = null!;
 
         /// <summary>
         /// A mapping of tags to assign to the resource.
@@ -215,7 +214,7 @@ namespace Pulumi.AliCloud.Alb
         public Output<ImmutableDictionary<string, object>?> Tags { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the VPC that you want to access.
+        /// The ID of the VPC that you want to access. **NOTE:** This parameter takes effect when the `server_group_type` parameter is set to `Instance` or `Ip`.
         /// </summary>
         [Output("vpcId")]
         public Output<string?> VpcId { get; private set; } = null!;
@@ -228,7 +227,7 @@ namespace Pulumi.AliCloud.Alb
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public ServerGroup(string name, ServerGroupArgs? args = null, CustomResourceOptions? options = null)
+        public ServerGroup(string name, ServerGroupArgs args, CustomResourceOptions? options = null)
             : base("alicloud:alb/serverGroup:ServerGroup", name, args ?? new ServerGroupArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -273,13 +272,13 @@ namespace Pulumi.AliCloud.Alb
         public Input<bool>? DryRun { get; set; }
 
         /// <summary>
-        /// The configuration of health checks. See `health_check_config` below for details.
+        /// The configuration of health checks. See `health_check_config` below.
         /// </summary>
-        [Input("healthCheckConfig")]
-        public Input<Inputs.ServerGroupHealthCheckConfigArgs>? HealthCheckConfig { get; set; }
+        [Input("healthCheckConfig", required: true)]
+        public Input<Inputs.ServerGroupHealthCheckConfigArgs> HealthCheckConfig { get; set; } = null!;
 
         /// <summary>
-        /// The server protocol. Valid values: ` HTTPS`, `HTTP`.
+        /// The server protocol. Valid values: ` HTTP`, `HTTPS`, `gRPC`. While `server_group_type` is `Fc` this parameter will not take effect. From version 1.215.0, `protocol` can be set to `gRPC`.
         /// </summary>
         [Input("protocol")]
         public Input<string>? Protocol { get; set; }
@@ -291,19 +290,19 @@ namespace Pulumi.AliCloud.Alb
         public Input<string>? ResourceGroupId { get; set; }
 
         /// <summary>
-        /// The scheduling algorithm. Valid values: ` Sch`, ` Wlc`, `Wrr`.
+        /// The scheduling algorithm. Valid values: ` Sch`, ` Wlc`, `Wrr`. **NOTE:** This parameter takes effect when the `server_group_type` parameter is set to `Instance` or `Ip`.
         /// </summary>
         [Input("scheduler")]
         public Input<string>? Scheduler { get; set; }
 
         /// <summary>
-        /// The name of the resource.
+        /// The name of the server group.
         /// </summary>
-        [Input("serverGroupName")]
-        public Input<string>? ServerGroupName { get; set; }
+        [Input("serverGroupName", required: true)]
+        public Input<string> ServerGroupName { get; set; } = null!;
 
         /// <summary>
-        /// The type of the server group. Valid values:
+        /// The type of the server group. Default value: `Instance`. Valid values:
         /// </summary>
         [Input("serverGroupType")]
         public Input<string>? ServerGroupType { get; set; }
@@ -312,7 +311,7 @@ namespace Pulumi.AliCloud.Alb
         private InputList<Inputs.ServerGroupServerArgs>? _servers;
 
         /// <summary>
-        /// The backend server. See `servers` below for details.
+        /// The backend servers. See `servers` below.
         /// </summary>
         public InputList<Inputs.ServerGroupServerArgs> Servers
         {
@@ -321,7 +320,7 @@ namespace Pulumi.AliCloud.Alb
         }
 
         /// <summary>
-        /// The configuration of the sticky session. See `sticky_session_config` below for details.
+        /// The configuration of session persistence. See `sticky_session_config` below.
         /// </summary>
         [Input("stickySessionConfig")]
         public Input<Inputs.ServerGroupStickySessionConfigArgs>? StickySessionConfig { get; set; }
@@ -339,7 +338,7 @@ namespace Pulumi.AliCloud.Alb
         }
 
         /// <summary>
-        /// The ID of the VPC that you want to access.
+        /// The ID of the VPC that you want to access. **NOTE:** This parameter takes effect when the `server_group_type` parameter is set to `Instance` or `Ip`.
         /// </summary>
         [Input("vpcId")]
         public Input<string>? VpcId { get; set; }
@@ -359,13 +358,13 @@ namespace Pulumi.AliCloud.Alb
         public Input<bool>? DryRun { get; set; }
 
         /// <summary>
-        /// The configuration of health checks. See `health_check_config` below for details.
+        /// The configuration of health checks. See `health_check_config` below.
         /// </summary>
         [Input("healthCheckConfig")]
         public Input<Inputs.ServerGroupHealthCheckConfigGetArgs>? HealthCheckConfig { get; set; }
 
         /// <summary>
-        /// The server protocol. Valid values: ` HTTPS`, `HTTP`.
+        /// The server protocol. Valid values: ` HTTP`, `HTTPS`, `gRPC`. While `server_group_type` is `Fc` this parameter will not take effect. From version 1.215.0, `protocol` can be set to `gRPC`.
         /// </summary>
         [Input("protocol")]
         public Input<string>? Protocol { get; set; }
@@ -377,19 +376,19 @@ namespace Pulumi.AliCloud.Alb
         public Input<string>? ResourceGroupId { get; set; }
 
         /// <summary>
-        /// The scheduling algorithm. Valid values: ` Sch`, ` Wlc`, `Wrr`.
+        /// The scheduling algorithm. Valid values: ` Sch`, ` Wlc`, `Wrr`. **NOTE:** This parameter takes effect when the `server_group_type` parameter is set to `Instance` or `Ip`.
         /// </summary>
         [Input("scheduler")]
         public Input<string>? Scheduler { get; set; }
 
         /// <summary>
-        /// The name of the resource.
+        /// The name of the server group.
         /// </summary>
         [Input("serverGroupName")]
         public Input<string>? ServerGroupName { get; set; }
 
         /// <summary>
-        /// The type of the server group. Valid values:
+        /// The type of the server group. Default value: `Instance`. Valid values:
         /// </summary>
         [Input("serverGroupType")]
         public Input<string>? ServerGroupType { get; set; }
@@ -398,7 +397,7 @@ namespace Pulumi.AliCloud.Alb
         private InputList<Inputs.ServerGroupServerGetArgs>? _servers;
 
         /// <summary>
-        /// The backend server. See `servers` below for details.
+        /// The backend servers. See `servers` below.
         /// </summary>
         public InputList<Inputs.ServerGroupServerGetArgs> Servers
         {
@@ -407,13 +406,13 @@ namespace Pulumi.AliCloud.Alb
         }
 
         /// <summary>
-        /// The status of the backend server. Valid values:
+        /// The status of the backend server.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
 
         /// <summary>
-        /// The configuration of the sticky session. See `sticky_session_config` below for details.
+        /// The configuration of session persistence. See `sticky_session_config` below.
         /// </summary>
         [Input("stickySessionConfig")]
         public Input<Inputs.ServerGroupStickySessionConfigGetArgs>? StickySessionConfig { get; set; }
@@ -431,7 +430,7 @@ namespace Pulumi.AliCloud.Alb
         }
 
         /// <summary>
-        /// The ID of the VPC that you want to access.
+        /// The ID of the VPC that you want to access. **NOTE:** This parameter takes effect when the `server_group_type` parameter is set to `Instance` or `Ip`.
         /// </summary>
         [Input("vpcId")]
         public Input<string>? VpcId { get; set; }

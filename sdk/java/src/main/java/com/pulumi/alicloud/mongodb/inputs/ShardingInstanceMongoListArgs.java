@@ -18,14 +18,14 @@ public final class ShardingInstanceMongoListArgs extends com.pulumi.resources.Re
     public static final ShardingInstanceMongoListArgs Empty = new ShardingInstanceMongoListArgs();
 
     /**
-     * Mongo node connection string.
+     * The connection address of the Config Server node.
      * 
      */
     @Import(name="connectString")
     private @Nullable Output<String> connectString;
 
     /**
-     * @return Mongo node connection string.
+     * @return The connection address of the Config Server node.
      * 
      */
     public Optional<Output<String>> connectString() {
@@ -33,14 +33,14 @@ public final class ShardingInstanceMongoListArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * Node specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
+     * The instance type of the mongo node. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
      * 
      */
     @Import(name="nodeClass", required=true)
     private Output<String> nodeClass;
 
     /**
-     * @return Node specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
+     * @return The instance type of the mongo node. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
      * 
      */
     public Output<String> nodeClass() {
@@ -48,14 +48,14 @@ public final class ShardingInstanceMongoListArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * The ID of the mongo-node.
+     * The ID of the Config Server node.
      * 
      */
     @Import(name="nodeId")
     private @Nullable Output<String> nodeId;
 
     /**
-     * @return The ID of the mongo-node.
+     * @return The ID of the Config Server node.
      * 
      */
     public Optional<Output<String>> nodeId() {
@@ -63,14 +63,14 @@ public final class ShardingInstanceMongoListArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * Mongo node port.
+     * The connection port of the Config Server node.
      * 
      */
     @Import(name="port")
     private @Nullable Output<Integer> port;
 
     /**
-     * @return Mongo node port.
+     * @return The connection port of the Config Server node.
      * 
      */
     public Optional<Output<Integer>> port() {
@@ -105,7 +105,7 @@ public final class ShardingInstanceMongoListArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param connectString Mongo node connection string.
+         * @param connectString The connection address of the Config Server node.
          * 
          * @return builder
          * 
@@ -116,7 +116,7 @@ public final class ShardingInstanceMongoListArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param connectString Mongo node connection string.
+         * @param connectString The connection address of the Config Server node.
          * 
          * @return builder
          * 
@@ -126,7 +126,7 @@ public final class ShardingInstanceMongoListArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param nodeClass Node specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
+         * @param nodeClass The instance type of the mongo node. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
          * 
          * @return builder
          * 
@@ -137,7 +137,7 @@ public final class ShardingInstanceMongoListArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param nodeClass Node specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
+         * @param nodeClass The instance type of the mongo node. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
          * 
          * @return builder
          * 
@@ -147,7 +147,7 @@ public final class ShardingInstanceMongoListArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param nodeId The ID of the mongo-node.
+         * @param nodeId The ID of the Config Server node.
          * 
          * @return builder
          * 
@@ -158,7 +158,7 @@ public final class ShardingInstanceMongoListArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param nodeId The ID of the mongo-node.
+         * @param nodeId The ID of the Config Server node.
          * 
          * @return builder
          * 
@@ -168,7 +168,7 @@ public final class ShardingInstanceMongoListArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param port Mongo node port.
+         * @param port The connection port of the Config Server node.
          * 
          * @return builder
          * 
@@ -179,7 +179,7 @@ public final class ShardingInstanceMongoListArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param port Mongo node port.
+         * @param port The connection port of the Config Server node.
          * 
          * @return builder
          * 

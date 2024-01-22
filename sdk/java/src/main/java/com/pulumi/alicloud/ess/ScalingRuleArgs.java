@@ -3,6 +3,7 @@
 
 package com.pulumi.alicloud.ess;
 
+import com.pulumi.alicloud.ess.inputs.ScalingRuleAlarmDimensionArgs;
 import com.pulumi.alicloud.ess.inputs.ScalingRuleStepAdjustmentArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
@@ -61,6 +62,21 @@ public final class ScalingRuleArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<Integer>> adjustmentValue() {
         return Optional.ofNullable(this.adjustmentValue);
+    }
+
+    /**
+     * AlarmDimension for StepScalingRule. See `alarm_dimension` below.
+     * 
+     */
+    @Import(name="alarmDimension")
+    private @Nullable Output<ScalingRuleAlarmDimensionArgs> alarmDimension;
+
+    /**
+     * @return AlarmDimension for StepScalingRule. See `alarm_dimension` below.
+     * 
+     */
+    public Optional<Output<ScalingRuleAlarmDimensionArgs>> alarmDimension() {
+        return Optional.ofNullable(this.alarmDimension);
     }
 
     /**
@@ -203,6 +219,7 @@ public final class ScalingRuleArgs extends com.pulumi.resources.ResourceArgs {
     private ScalingRuleArgs(ScalingRuleArgs $) {
         this.adjustmentType = $.adjustmentType;
         this.adjustmentValue = $.adjustmentValue;
+        this.alarmDimension = $.alarmDimension;
         this.cooldown = $.cooldown;
         this.disableScaleIn = $.disableScaleIn;
         this.estimatedInstanceWarmup = $.estimatedInstanceWarmup;
@@ -284,6 +301,27 @@ public final class ScalingRuleArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder adjustmentValue(Integer adjustmentValue) {
             return adjustmentValue(Output.of(adjustmentValue));
+        }
+
+        /**
+         * @param alarmDimension AlarmDimension for StepScalingRule. See `alarm_dimension` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder alarmDimension(@Nullable Output<ScalingRuleAlarmDimensionArgs> alarmDimension) {
+            $.alarmDimension = alarmDimension;
+            return this;
+        }
+
+        /**
+         * @param alarmDimension AlarmDimension for StepScalingRule. See `alarm_dimension` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder alarmDimension(ScalingRuleAlarmDimensionArgs alarmDimension) {
+            return alarmDimension(Output.of(alarmDimension));
         }
 
         /**

@@ -70,6 +70,10 @@ namespace Pulumi.AliCloud.Eci.Outputs
         /// </summary>
         public readonly int? RestartCount;
         /// <summary>
+        /// The security context of the container. See `security_context` below.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.ContainerGroupContainerSecurityContext> SecurityContexts;
+        /// <summary>
         /// The structure of volumeMounts. See `volume_mounts` below.
         /// </summary>
         public readonly ImmutableArray<Outputs.ContainerGroupContainerVolumeMount> VolumeMounts;
@@ -108,6 +112,8 @@ namespace Pulumi.AliCloud.Eci.Outputs
 
             int? restartCount,
 
+            ImmutableArray<Outputs.ContainerGroupContainerSecurityContext> securityContexts,
+
             ImmutableArray<Outputs.ContainerGroupContainerVolumeMount> volumeMounts,
 
             string? workingDir)
@@ -126,6 +132,7 @@ namespace Pulumi.AliCloud.Eci.Outputs
             ReadinessProbes = readinessProbes;
             Ready = ready;
             RestartCount = restartCount;
+            SecurityContexts = securityContexts;
             VolumeMounts = volumeMounts;
             WorkingDir = workingDir;
         }

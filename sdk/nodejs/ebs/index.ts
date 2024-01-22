@@ -20,6 +20,16 @@ export type DiskReplicaPair = import("./diskReplicaPair").DiskReplicaPair;
 export const DiskReplicaPair: typeof import("./diskReplicaPair").DiskReplicaPair = null as any;
 utilities.lazyLoad(exports, ["DiskReplicaPair"], () => require("./diskReplicaPair"));
 
+export { EnterpriseSnapshotPolicyArgs, EnterpriseSnapshotPolicyState } from "./enterpriseSnapshotPolicy";
+export type EnterpriseSnapshotPolicy = import("./enterpriseSnapshotPolicy").EnterpriseSnapshotPolicy;
+export const EnterpriseSnapshotPolicy: typeof import("./enterpriseSnapshotPolicy").EnterpriseSnapshotPolicy = null as any;
+utilities.lazyLoad(exports, ["EnterpriseSnapshotPolicy"], () => require("./enterpriseSnapshotPolicy"));
+
+export { EnterpriseSnapshotPolicyAttachmentArgs, EnterpriseSnapshotPolicyAttachmentState } from "./enterpriseSnapshotPolicyAttachment";
+export type EnterpriseSnapshotPolicyAttachment = import("./enterpriseSnapshotPolicyAttachment").EnterpriseSnapshotPolicyAttachment;
+export const EnterpriseSnapshotPolicyAttachment: typeof import("./enterpriseSnapshotPolicyAttachment").EnterpriseSnapshotPolicyAttachment = null as any;
+utilities.lazyLoad(exports, ["EnterpriseSnapshotPolicyAttachment"], () => require("./enterpriseSnapshotPolicyAttachment"));
+
 export { GetDedicatedBlockStorageClustersArgs, GetDedicatedBlockStorageClustersResult, GetDedicatedBlockStorageClustersOutputArgs } from "./getDedicatedBlockStorageClusters";
 export const getDedicatedBlockStorageClusters: typeof import("./getDedicatedBlockStorageClusters").getDedicatedBlockStorageClusters = null as any;
 export const getDedicatedBlockStorageClustersOutput: typeof import("./getDedicatedBlockStorageClusters").getDedicatedBlockStorageClustersOutput = null as any;
@@ -40,6 +50,16 @@ export const getRegions: typeof import("./getRegions").getRegions = null as any;
 export const getRegionsOutput: typeof import("./getRegions").getRegionsOutput = null as any;
 utilities.lazyLoad(exports, ["getRegions","getRegionsOutput"], () => require("./getRegions"));
 
+export { ReplicaGroupDrillArgs, ReplicaGroupDrillState } from "./replicaGroupDrill";
+export type ReplicaGroupDrill = import("./replicaGroupDrill").ReplicaGroupDrill;
+export const ReplicaGroupDrill: typeof import("./replicaGroupDrill").ReplicaGroupDrill = null as any;
+utilities.lazyLoad(exports, ["ReplicaGroupDrill"], () => require("./replicaGroupDrill"));
+
+export { ReplicaPairDrillArgs, ReplicaPairDrillState } from "./replicaPairDrill";
+export type ReplicaPairDrill = import("./replicaPairDrill").ReplicaPairDrill;
+export const ReplicaPairDrill: typeof import("./replicaPairDrill").ReplicaPairDrill = null as any;
+utilities.lazyLoad(exports, ["ReplicaPairDrill"], () => require("./replicaPairDrill"));
+
 
 const _module = {
     version: utilities.getVersion(),
@@ -51,6 +71,14 @@ const _module = {
                 return new DiskReplicaGroup(name, <any>undefined, { urn })
             case "alicloud:ebs/diskReplicaPair:DiskReplicaPair":
                 return new DiskReplicaPair(name, <any>undefined, { urn })
+            case "alicloud:ebs/enterpriseSnapshotPolicy:EnterpriseSnapshotPolicy":
+                return new EnterpriseSnapshotPolicy(name, <any>undefined, { urn })
+            case "alicloud:ebs/enterpriseSnapshotPolicyAttachment:EnterpriseSnapshotPolicyAttachment":
+                return new EnterpriseSnapshotPolicyAttachment(name, <any>undefined, { urn })
+            case "alicloud:ebs/replicaGroupDrill:ReplicaGroupDrill":
+                return new ReplicaGroupDrill(name, <any>undefined, { urn })
+            case "alicloud:ebs/replicaPairDrill:ReplicaPairDrill":
+                return new ReplicaPairDrill(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
@@ -59,3 +87,7 @@ const _module = {
 pulumi.runtime.registerResourceModule("alicloud", "ebs/dedicatedBlockStorageCluster", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ebs/diskReplicaGroup", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ebs/diskReplicaPair", _module)
+pulumi.runtime.registerResourceModule("alicloud", "ebs/enterpriseSnapshotPolicy", _module)
+pulumi.runtime.registerResourceModule("alicloud", "ebs/enterpriseSnapshotPolicyAttachment", _module)
+pulumi.runtime.registerResourceModule("alicloud", "ebs/replicaGroupDrill", _module)
+pulumi.runtime.registerResourceModule("alicloud", "ebs/replicaPairDrill", _module)

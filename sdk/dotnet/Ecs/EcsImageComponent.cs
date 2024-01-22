@@ -10,11 +10,11 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Ecs
 {
     /// <summary>
-    /// Provides a ECS Image Component resource.
+    /// Provides a Ecs Image Component resource.
     /// 
-    /// For information about ECS Image Component and how to use it, see [What is Image Component](https://www.alibabacloud.com/help/en/doc-detail/200424.htm).
+    /// For information about Ecs Image Component and how to use it, see [What is Image Component](https://www.alibabacloud.com/help/en/doc-detail/200424.htm).
     /// 
-    /// &gt; **NOTE:** Available in v1.159.0+.
+    /// &gt; **NOTE:** Available since v1.159.0.
     /// 
     /// ## Example Usage
     /// 
@@ -52,7 +52,7 @@ namespace Pulumi.AliCloud.Ecs
     /// 
     /// ## Import
     /// 
-    /// ECS Image Component can be imported using the id, e.g.
+    /// Ecs Image Component can be imported using the id, e.g.
     /// 
     /// ```sh
     ///  $ pulumi import alicloud:ecs/ecsImageComponent:EcsImageComponent example &lt;id&gt;
@@ -62,43 +62,49 @@ namespace Pulumi.AliCloud.Ecs
     public partial class EcsImageComponent : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The type of the image component. Only image building components are supported. Valid values: `Build`.
+        /// The component type. Currently, only mirror build components are supported. Value: Build.  Default value: Build.
         /// </summary>
         [Output("componentType")]
         public Output<string> ComponentType { get; private set; } = null!;
 
         /// <summary>
-        /// The content of the image component. The content can consist of up to 127 commands.
+        /// Component content.
         /// </summary>
         [Output("content")]
         public Output<string> Content { get; private set; } = null!;
 
         /// <summary>
-        /// The description of the image component. The description must be `2` to `256` characters in length and cannot start with `http://` or `https://`.
+        /// Component creation time.
+        /// </summary>
+        [Output("createTime")]
+        public Output<string> CreateTime { get; private set; } = null!;
+
+        /// <summary>
+        /// Describe the information.
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the image component. The name must be `2` to `128` characters in length. It must start with a letter and cannot start with `http://` or `https://`. It can contain letters, digits, colons (:), underscores (_), periods (.), and hyphens (-).
+        /// The component name. The name must be 2 to 128 characters in length and must start with an uppercase letter or a Chinese character. It cannot start with http:// or https. Can contain Chinese, English, numbers, half-length colons (:), underscores (_), half-length periods (.), or dashes (-).  Note: If Name is not set, the return value of ImageComponentId is used by default.
         /// </summary>
         [Output("imageComponentName")]
         public Output<string> ImageComponentName { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the resource group to which to assign the image component.
+        /// The ID of the resource group.
         /// </summary>
         [Output("resourceGroupId")]
-        public Output<string?> ResourceGroupId { get; private set; } = null!;
+        public Output<string> ResourceGroupId { get; private set; } = null!;
 
         /// <summary>
-        /// The operating system type supported by the image component. Only Linux is supported. Valid values: `Linux`.
+        /// The operating system supported by the component. Currently, only Linux systems are supported. Value: Linux.  Default value: Linux.
         /// </summary>
         [Output("systemType")]
         public Output<string> SystemType { get; private set; } = null!;
 
         /// <summary>
-        /// A mapping of tags to assign to the resource.
+        /// List of label key-value pairs.
         /// </summary>
         [Output("tags")]
         public Output<ImmutableDictionary<string, object>?> Tags { get; private set; } = null!;
@@ -150,37 +156,37 @@ namespace Pulumi.AliCloud.Ecs
     public sealed class EcsImageComponentArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The type of the image component. Only image building components are supported. Valid values: `Build`.
+        /// The component type. Currently, only mirror build components are supported. Value: Build.  Default value: Build.
         /// </summary>
         [Input("componentType")]
         public Input<string>? ComponentType { get; set; }
 
         /// <summary>
-        /// The content of the image component. The content can consist of up to 127 commands.
+        /// Component content.
         /// </summary>
         [Input("content", required: true)]
         public Input<string> Content { get; set; } = null!;
 
         /// <summary>
-        /// The description of the image component. The description must be `2` to `256` characters in length and cannot start with `http://` or `https://`.
+        /// Describe the information.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The name of the image component. The name must be `2` to `128` characters in length. It must start with a letter and cannot start with `http://` or `https://`. It can contain letters, digits, colons (:), underscores (_), periods (.), and hyphens (-).
+        /// The component name. The name must be 2 to 128 characters in length and must start with an uppercase letter or a Chinese character. It cannot start with http:// or https. Can contain Chinese, English, numbers, half-length colons (:), underscores (_), half-length periods (.), or dashes (-).  Note: If Name is not set, the return value of ImageComponentId is used by default.
         /// </summary>
         [Input("imageComponentName")]
         public Input<string>? ImageComponentName { get; set; }
 
         /// <summary>
-        /// The ID of the resource group to which to assign the image component.
+        /// The ID of the resource group.
         /// </summary>
         [Input("resourceGroupId")]
         public Input<string>? ResourceGroupId { get; set; }
 
         /// <summary>
-        /// The operating system type supported by the image component. Only Linux is supported. Valid values: `Linux`.
+        /// The operating system supported by the component. Currently, only Linux systems are supported. Value: Linux.  Default value: Linux.
         /// </summary>
         [Input("systemType")]
         public Input<string>? SystemType { get; set; }
@@ -189,7 +195,7 @@ namespace Pulumi.AliCloud.Ecs
         private InputMap<object>? _tags;
 
         /// <summary>
-        /// A mapping of tags to assign to the resource.
+        /// List of label key-value pairs.
         /// </summary>
         public InputMap<object> Tags
         {
@@ -206,37 +212,43 @@ namespace Pulumi.AliCloud.Ecs
     public sealed class EcsImageComponentState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The type of the image component. Only image building components are supported. Valid values: `Build`.
+        /// The component type. Currently, only mirror build components are supported. Value: Build.  Default value: Build.
         /// </summary>
         [Input("componentType")]
         public Input<string>? ComponentType { get; set; }
 
         /// <summary>
-        /// The content of the image component. The content can consist of up to 127 commands.
+        /// Component content.
         /// </summary>
         [Input("content")]
         public Input<string>? Content { get; set; }
 
         /// <summary>
-        /// The description of the image component. The description must be `2` to `256` characters in length and cannot start with `http://` or `https://`.
+        /// Component creation time.
+        /// </summary>
+        [Input("createTime")]
+        public Input<string>? CreateTime { get; set; }
+
+        /// <summary>
+        /// Describe the information.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The name of the image component. The name must be `2` to `128` characters in length. It must start with a letter and cannot start with `http://` or `https://`. It can contain letters, digits, colons (:), underscores (_), periods (.), and hyphens (-).
+        /// The component name. The name must be 2 to 128 characters in length and must start with an uppercase letter or a Chinese character. It cannot start with http:// or https. Can contain Chinese, English, numbers, half-length colons (:), underscores (_), half-length periods (.), or dashes (-).  Note: If Name is not set, the return value of ImageComponentId is used by default.
         /// </summary>
         [Input("imageComponentName")]
         public Input<string>? ImageComponentName { get; set; }
 
         /// <summary>
-        /// The ID of the resource group to which to assign the image component.
+        /// The ID of the resource group.
         /// </summary>
         [Input("resourceGroupId")]
         public Input<string>? ResourceGroupId { get; set; }
 
         /// <summary>
-        /// The operating system type supported by the image component. Only Linux is supported. Valid values: `Linux`.
+        /// The operating system supported by the component. Currently, only Linux systems are supported. Value: Linux.  Default value: Linux.
         /// </summary>
         [Input("systemType")]
         public Input<string>? SystemType { get; set; }
@@ -245,7 +257,7 @@ namespace Pulumi.AliCloud.Ecs
         private InputMap<object>? _tags;
 
         /// <summary>
-        /// A mapping of tags to assign to the resource.
+        /// List of label key-value pairs.
         /// </summary>
         public InputMap<object> Tags
         {

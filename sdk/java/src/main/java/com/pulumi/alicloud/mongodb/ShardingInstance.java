@@ -23,16 +23,16 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a MongoDB sharding instance resource supports replica set instances only. the MongoDB provides stable, reliable, and automatic scalable database services.
+ * Provides a MongoDB Sharding Instance resource supports replica set instances only. the MongoDB provides stable, reliable, and automatic scalable database services.
  * It offers a full range of database solutions, such as disaster recovery, backup, recovery, monitoring, and alarms.
  * You can see detail product introduction [here](https://www.alibabacloud.com/help/doc-detail/26558.htm)
  * 
  * &gt; **NOTE:** Available since v1.40.0.
  * 
- * &gt; **NOTE:**  The following regions don&#39;t support create Classic network MongoDB sharding instance.
+ * &gt; **NOTE:**  The following regions don&#39;t support create Classic network MongoDB Sharding Instance.
  * [`cn-zhangjiakou`,`cn-huhehaote`,`ap-southeast-2`,`ap-southeast-3`,`ap-southeast-5`,`ap-south-1`,`me-east-1`,`ap-northeast-1`,`eu-west-1`]
  * 
- * &gt; **NOTE:**  Create MongoDB Sharding instance or change instance type and storage would cost 10~20 minutes. Please make full preparation
+ * &gt; **NOTE:**  Create MongoDB Sharding instance or change instance type and storage would cost 10~20 minutes. Please make full preparation.
  * 
  * ## Example Usage
  * ### Create a Mongodb Sharding instance
@@ -50,8 +50,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.alicloud.vpc.SwitchArgs;
  * import com.pulumi.alicloud.mongodb.ShardingInstance;
  * import com.pulumi.alicloud.mongodb.ShardingInstanceArgs;
- * import com.pulumi.alicloud.mongodb.inputs.ShardingInstanceShardListArgs;
  * import com.pulumi.alicloud.mongodb.inputs.ShardingInstanceMongoListArgs;
+ * import com.pulumi.alicloud.mongodb.inputs.ShardingInstanceShardListArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -86,9 +86,16 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var defaultShardingInstance = new ShardingInstance(&#34;defaultShardingInstance&#34;, ShardingInstanceArgs.builder()        
- *             .zoneId(zoneId)
- *             .vswitchId(defaultSwitch.id())
  *             .engineVersion(&#34;4.2&#34;)
+ *             .vswitchId(defaultSwitch.id())
+ *             .zoneId(zoneId)
+ *             .mongoLists(            
+ *                 ShardingInstanceMongoListArgs.builder()
+ *                     .nodeClass(&#34;dds.mongos.mid&#34;)
+ *                     .build(),
+ *                 ShardingInstanceMongoListArgs.builder()
+ *                     .nodeClass(&#34;dds.mongos.mid&#34;)
+ *                     .build())
  *             .shardLists(            
  *                 ShardingInstanceShardListArgs.builder()
  *                     .nodeClass(&#34;dds.shard.mid&#34;)
@@ -99,13 +106,6 @@ import javax.annotation.Nullable;
  *                     .nodeStorage(&#34;20&#34;)
  *                     .readonlyReplicas(&#34;1&#34;)
  *                     .build())
- *             .mongoLists(            
- *                 ShardingInstanceMongoListArgs.builder()
- *                     .nodeClass(&#34;dds.mongos.mid&#34;)
- *                     .build(),
- *                 ShardingInstanceMongoListArgs.builder()
- *                     .nodeClass(&#34;dds.mongos.mid&#34;)
- *                     .build())
  *             .build());
  * 
  *     }
@@ -114,11 +114,11 @@ import javax.annotation.Nullable;
  * ## Module Support
  * 
  * You can use to the existing mongodb-sharding module
- * to create a MongoDB sharding instance resource one-click.
+ * to create a MongoDB Sharding Instance resource one-click.
  * 
  * ## Import
  * 
- * MongoDB can be imported using the id, e.g.
+ * MongoDB Sharding Instance can be imported using the id, e.g.
  * 
  * ```sh
  *  $ pulumi import alicloud:mongodb/shardingInstance:ShardingInstance example dds-bp1291daeda44195
@@ -142,14 +142,14 @@ public class ShardingInstance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.accountPassword);
     }
     /**
-     * Auto renew for prepaid, true of false. Default is false.
+     * Auto renew for prepaid. Default value: `false`. Valid values: `true`, `false`.
      * 
      */
     @Export(name="autoRenew", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> autoRenew;
 
     /**
-     * @return Auto renew for prepaid, true of false. Default is false.
+     * @return Auto renew for prepaid. Default value: `false`. Valid values: `true`, `false`.
      * 
      */
     public Output<Optional<Boolean>> autoRenew() {
@@ -170,28 +170,28 @@ public class ShardingInstance extends com.pulumi.resources.CustomResource {
         return this.backupPeriods;
     }
     /**
-     * MongoDB instance backup time. It is required when `backup_period` was existed. In the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. If not set, the system will return a default, like &#34;23:00Z-24:00Z&#34;.
+     * Sharding Instance backup time. It is required when `backup_period` was existed. In the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. If not set, the system will return a default, like &#34;23:00Z-24:00Z&#34;.
      * 
      */
     @Export(name="backupTime", refs={String.class}, tree="[0]")
     private Output<String> backupTime;
 
     /**
-     * @return MongoDB instance backup time. It is required when `backup_period` was existed. In the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. If not set, the system will return a default, like &#34;23:00Z-24:00Z&#34;.
+     * @return Sharding Instance backup time. It is required when `backup_period` was existed. In the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. If not set, the system will return a default, like &#34;23:00Z-24:00Z&#34;.
      * 
      */
     public Output<String> backupTime() {
         return this.backupTime;
     }
     /**
-     * The node information list of config server. See `config_server_list` below.
+     * The information of the ConfigServer nodes.
      * 
      */
     @Export(name="configServerLists", refs={List.class,ShardingInstanceConfigServerList.class}, tree="[0,1]")
     private Output<List<ShardingInstanceConfigServerList>> configServerLists;
 
     /**
-     * @return The node information list of config server. See `config_server_list` below.
+     * @return The information of the ConfigServer nodes.
      * 
      */
     public Output<List<ShardingInstanceConfigServerList>> configServerLists() {
@@ -212,14 +212,14 @@ public class ShardingInstance extends com.pulumi.resources.CustomResource {
         return this.engineVersion;
     }
     /**
-     * Valid values are `PrePaid`, `PostPaid`,System default to `PostPaid`. **NOTE:** It can be modified from `PostPaid` to `PrePaid` after version v1.141.0.
+     * The billing method of the instance. Default value: `PostPaid`. Valid values: `PrePaid`, `PostPaid`. **NOTE:** It can be modified from `PostPaid` to `PrePaid` after version v1.141.0.
      * 
      */
     @Export(name="instanceChargeType", refs={String.class}, tree="[0]")
     private Output<String> instanceChargeType;
 
     /**
-     * @return Valid values are `PrePaid`, `PostPaid`,System default to `PostPaid`. **NOTE:** It can be modified from `PostPaid` to `PrePaid` after version v1.141.0.
+     * @return The billing method of the instance. Default value: `PostPaid`. Valid values: `PrePaid`, `PostPaid`. **NOTE:** It can be modified from `PostPaid` to `PrePaid` after version v1.141.0.
      * 
      */
     public Output<String> instanceChargeType() {
@@ -268,62 +268,56 @@ public class ShardingInstance extends com.pulumi.resources.CustomResource {
         return this.mongoLists;
     }
     /**
-     * The name of DB instance. It a string of 2 to 256 characters.
+     * The name of DB instance. It must be 2 to 256 characters in length.
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return The name of DB instance. It a string of 2 to 256 characters.
+     * @return The name of DB instance. It must be 2 to 256 characters in length.
      * 
      */
     public Output<String> name() {
         return this.name;
     }
     /**
-     * The network type of the instance. Valid values:`Classic` or `VPC`. Default value: `Classic`.
+     * The network type of the instance. Valid values:`Classic` or `VPC`.
      * 
      */
     @Export(name="networkType", refs={String.class}, tree="[0]")
     private Output<String> networkType;
 
     /**
-     * @return The network type of the instance. Valid values:`Classic` or `VPC`. Default value: `Classic`.
+     * @return The network type of the instance. Valid values:`Classic` or `VPC`.
      * 
      */
     public Output<String> networkType() {
         return this.networkType;
     }
     /**
-     * The type of configuration changes performed. Default value: DOWNGRADE. Valid values:
-     * * UPGRADE: The specifications are upgraded.
-     * * DOWNGRADE: The specifications are downgraded.
-     *   Note: This parameter is only applicable to instances when `instance_charge_type` is PrePaid.
+     * The type of configuration changes performed. Default value: `DOWNGRADE`. Valid values:
      * 
      */
     @Export(name="orderType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> orderType;
 
     /**
-     * @return The type of configuration changes performed. Default value: DOWNGRADE. Valid values:
-     * * UPGRADE: The specifications are upgraded.
-     * * DOWNGRADE: The specifications are downgraded.
-     *   Note: This parameter is only applicable to instances when `instance_charge_type` is PrePaid.
+     * @return The type of configuration changes performed. Default value: `DOWNGRADE`. Valid values:
      * 
      */
     public Output<Optional<String>> orderType() {
         return Codegen.optional(this.orderType);
     }
     /**
-     * The duration that you will buy DB instance (in month). It is valid when instance_charge_type is `PrePaid`. Valid values: [1~9], 12, 24, 36. System default to 1.
+     * The duration that you will buy DB instance (in month). It is valid when `instance_charge_type` is `PrePaid`. Default value: `1`. Valid values: [1~9], 12, 24, 36.
      * 
      */
     @Export(name="period", refs={Integer.class}, tree="[0]")
     private Output<Integer> period;
 
     /**
-     * @return The duration that you will buy DB instance (in month). It is valid when instance_charge_type is `PrePaid`. Valid values: [1~9], 12, 24, 36. System default to 1.
+     * @return The duration that you will buy DB instance (in month). It is valid when `instance_charge_type` is `PrePaid`. Default value: `1`. Valid values: [1~9], 12, 24, 36.
      * 
      */
     public Output<Integer> period() {
@@ -358,14 +352,14 @@ public class ShardingInstance extends com.pulumi.resources.CustomResource {
         return this.resourceGroupId;
     }
     /**
-     * Instance data backup retention days. **NOTE:** Available in 1.42.0+.
+     * (Available since v1.42.0) Instance data backup retention days.
      * 
      */
     @Export(name="retentionPeriod", refs={Integer.class}, tree="[0]")
     private Output<Integer> retentionPeriod;
 
     /**
-     * @return Instance data backup retention days. **NOTE:** Available in 1.42.0+.
+     * @return (Available since v1.42.0) Instance data backup retention days.
      * 
      */
     public Output<Integer> retentionPeriod() {
@@ -414,14 +408,14 @@ public class ShardingInstance extends com.pulumi.resources.CustomResource {
         return this.shardLists;
     }
     /**
-     * Storage engine: WiredTiger or RocksDB. System Default value: WiredTiger.
+     * The storage engine of the instance. Default value: `WiredTiger`. Valid values: `WiredTiger`, `RocksDB`.
      * 
      */
     @Export(name="storageEngine", refs={String.class}, tree="[0]")
     private Output<String> storageEngine;
 
     /**
-     * @return Storage engine: WiredTiger or RocksDB. System Default value: WiredTiger.
+     * @return The storage engine of the instance. Default value: `WiredTiger`. Valid values: `WiredTiger`, `RocksDB`.
      * 
      */
     public Output<String> storageEngine() {
@@ -442,28 +436,28 @@ public class ShardingInstance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.tags);
     }
     /**
-     * The TDE(Transparent Data Encryption) status. It can be updated from version 1.160.0+.
+     * The TDE(Transparent Data Encryption) status. It can be updated from version 1.160.0.
      * 
      */
     @Export(name="tdeStatus", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> tdeStatus;
+    private Output<String> tdeStatus;
 
     /**
-     * @return The TDE(Transparent Data Encryption) status. It can be updated from version 1.160.0+.
+     * @return The TDE(Transparent Data Encryption) status. It can be updated from version 1.160.0.
      * 
      */
-    public Output<Optional<String>> tdeStatus() {
-        return Codegen.optional(this.tdeStatus);
+    public Output<String> tdeStatus() {
+        return this.tdeStatus;
     }
     /**
-     * The ID of the VPC. &gt; **NOTE:** This parameter is valid only when NetworkType is set to VPC.
+     * The ID of the VPC. &gt; **NOTE:** `vpc_id` is valid only when `network_type` is set to `VPC`.
      * 
      */
     @Export(name="vpcId", refs={String.class}, tree="[0]")
     private Output<String> vpcId;
 
     /**
-     * @return The ID of the VPC. &gt; **NOTE:** This parameter is valid only when NetworkType is set to VPC.
+     * @return The ID of the VPC. &gt; **NOTE:** `vpc_id` is valid only when `network_type` is set to `VPC`.
      * 
      */
     public Output<String> vpcId() {
@@ -484,20 +478,20 @@ public class ShardingInstance extends com.pulumi.resources.CustomResource {
         return this.vswitchId;
     }
     /**
-     * The Zone to launch the DB instance. MongoDB sharding instance does not support multiple-zone.
+     * The Zone to launch the DB instance. MongoDB Sharding Instance does not support multiple-zone.
      * If it is a multi-zone and `vswitch_id` is specified, the vswitch must in one of them.
      * 
      */
     @Export(name="zoneId", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> zoneId;
+    private Output<String> zoneId;
 
     /**
-     * @return The Zone to launch the DB instance. MongoDB sharding instance does not support multiple-zone.
+     * @return The Zone to launch the DB instance. MongoDB Sharding Instance does not support multiple-zone.
      * If it is a multi-zone and `vswitch_id` is specified, the vswitch must in one of them.
      * 
      */
-    public Output<Optional<String>> zoneId() {
-        return Codegen.optional(this.zoneId);
+    public Output<String> zoneId() {
+        return this.zoneId;
     }
 
     /**

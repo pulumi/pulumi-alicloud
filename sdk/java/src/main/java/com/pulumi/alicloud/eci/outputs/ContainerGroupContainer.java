@@ -7,6 +7,7 @@ import com.pulumi.alicloud.eci.outputs.ContainerGroupContainerEnvironmentVar;
 import com.pulumi.alicloud.eci.outputs.ContainerGroupContainerLivenessProbe;
 import com.pulumi.alicloud.eci.outputs.ContainerGroupContainerPort;
 import com.pulumi.alicloud.eci.outputs.ContainerGroupContainerReadinessProbe;
+import com.pulumi.alicloud.eci.outputs.ContainerGroupContainerSecurityContext;
 import com.pulumi.alicloud.eci.outputs.ContainerGroupContainerVolumeMount;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
@@ -91,6 +92,11 @@ public final class ContainerGroupContainer {
      * 
      */
     private @Nullable Integer restartCount;
+    /**
+     * @return The security context of the container. See `security_context` below.
+     * 
+     */
+    private @Nullable List<ContainerGroupContainerSecurityContext> securityContexts;
     /**
      * @return The structure of volumeMounts. See `volume_mounts` below.
      * 
@@ -202,6 +208,13 @@ public final class ContainerGroupContainer {
         return Optional.ofNullable(this.restartCount);
     }
     /**
+     * @return The security context of the container. See `security_context` below.
+     * 
+     */
+    public List<ContainerGroupContainerSecurityContext> securityContexts() {
+        return this.securityContexts == null ? List.of() : this.securityContexts;
+    }
+    /**
      * @return The structure of volumeMounts. See `volume_mounts` below.
      * 
      */
@@ -239,6 +252,7 @@ public final class ContainerGroupContainer {
         private @Nullable List<ContainerGroupContainerReadinessProbe> readinessProbes;
         private @Nullable Boolean ready;
         private @Nullable Integer restartCount;
+        private @Nullable List<ContainerGroupContainerSecurityContext> securityContexts;
         private @Nullable List<ContainerGroupContainerVolumeMount> volumeMounts;
         private @Nullable String workingDir;
         public Builder() {}
@@ -258,6 +272,7 @@ public final class ContainerGroupContainer {
     	      this.readinessProbes = defaults.readinessProbes;
     	      this.ready = defaults.ready;
     	      this.restartCount = defaults.restartCount;
+    	      this.securityContexts = defaults.securityContexts;
     	      this.volumeMounts = defaults.volumeMounts;
     	      this.workingDir = defaults.workingDir;
         }
@@ -369,6 +384,15 @@ public final class ContainerGroupContainer {
             return this;
         }
         @CustomType.Setter
+        public Builder securityContexts(@Nullable List<ContainerGroupContainerSecurityContext> securityContexts) {
+
+            this.securityContexts = securityContexts;
+            return this;
+        }
+        public Builder securityContexts(ContainerGroupContainerSecurityContext... securityContexts) {
+            return securityContexts(List.of(securityContexts));
+        }
+        @CustomType.Setter
         public Builder volumeMounts(@Nullable List<ContainerGroupContainerVolumeMount> volumeMounts) {
 
             this.volumeMounts = volumeMounts;
@@ -399,6 +423,7 @@ public final class ContainerGroupContainer {
             _resultValue.readinessProbes = readinessProbes;
             _resultValue.ready = ready;
             _resultValue.restartCount = restartCount;
+            _resultValue.securityContexts = securityContexts;
             _resultValue.volumeMounts = volumeMounts;
             _resultValue.workingDir = workingDir;
             return _resultValue;

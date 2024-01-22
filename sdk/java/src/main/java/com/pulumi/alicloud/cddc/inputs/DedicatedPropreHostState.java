@@ -6,8 +6,12 @@ package com.pulumi.alicloud.cddc.inputs;
 import com.pulumi.alicloud.cddc.inputs.DedicatedPropreHostEcsClassListArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
+import java.lang.Integer;
+import java.lang.Object;
 import java.lang.String;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -16,6 +20,21 @@ import javax.annotation.Nullable;
 public final class DedicatedPropreHostState extends com.pulumi.resources.ResourceArgs {
 
     public static final DedicatedPropreHostState Empty = new DedicatedPropreHostState();
+
+    /**
+     * Whether to pay automatically when the host is created.
+     * 
+     */
+    @Import(name="autoPay")
+    private @Nullable Output<Boolean> autoPay;
+
+    /**
+     * @return Whether to pay automatically when the host is created.
+     * 
+     */
+    public Optional<Output<Boolean>> autoPay() {
+        return Optional.ofNullable(this.autoPay);
+    }
 
     /**
      * Whether to enable automatic renewal. Valid values:
@@ -82,14 +101,14 @@ public final class DedicatedPropreHostState extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Windows system: length of 2 to 15 characters, allowing the use of upper and lower case letters, numbers. You cannot use only numbers.Other operating systems (such as Linux): the length of 2 to 64 characters, allowing the use of dot (.) to separate characters into multiple segments, each segment allows the use of upper and lower case letters, numbers, but can not use continuous dot (.). Cannot start or end with a dot (.).
+     * Windows system: length of 2 to 15 characters, allowing the use of upper and lower case letters, numbers. You cannot use only numbers. Other operating systems (such as Linux): the length of 2 to 64 characters, allowing the use of dot (.) to separate characters into multiple segments, each segment allows the use of upper and lower case letters, numbers, but can not use continuous dot (.). Cannot start or end with a dot (.).
      * 
      */
     @Import(name="ecsHostName")
     private @Nullable Output<String> ecsHostName;
 
     /**
-     * @return Windows system: length of 2 to 15 characters, allowing the use of upper and lower case letters, numbers. You cannot use only numbers.Other operating systems (such as Linux): the length of 2 to 64 characters, allowing the use of dot (.) to separate characters into multiple segments, each segment allows the use of upper and lower case letters, numbers, but can not use continuous dot (.). Cannot start or end with a dot (.).
+     * @return Windows system: length of 2 to 15 characters, allowing the use of upper and lower case letters, numbers. You cannot use only numbers. Other operating systems (such as Linux): the length of 2 to 64 characters, allowing the use of dot (.) to separate characters into multiple segments, each segment allows the use of upper and lower case letters, numbers, but can not use continuous dot (.). Cannot start or end with a dot (.).
      * 
      */
     public Optional<Output<String>> ecsHostName() {
@@ -203,6 +222,36 @@ public final class DedicatedPropreHostState extends com.pulumi.resources.Resourc
     }
 
     /**
+     * Network billing type. Value range: PayByBandwidth: Billing based on fixed bandwidth. PayByTraffic: charges by using the flow meter.
+     * 
+     */
+    @Import(name="internetChargeType")
+    private @Nullable Output<String> internetChargeType;
+
+    /**
+     * @return Network billing type. Value range: PayByBandwidth: Billing based on fixed bandwidth. PayByTraffic: charges by using the flow meter.
+     * 
+     */
+    public Optional<Output<String>> internetChargeType() {
+        return Optional.ofNullable(this.internetChargeType);
+    }
+
+    /**
+     * The maximum outbound bandwidth of the public network, in Mbit/s. Value range: 0~100.  Default value: 0. When set to greater than 0, a public IP is automatically created.
+     * 
+     */
+    @Import(name="internetMaxBandwidthOut")
+    private @Nullable Output<Integer> internetMaxBandwidthOut;
+
+    /**
+     * @return The maximum outbound bandwidth of the public network, in Mbit/s. Value range: 0~100.  Default value: 0. When set to greater than 0, a public IP is automatically created.
+     * 
+     */
+    public Optional<Output<Integer>> internetMaxBandwidthOut() {
+        return Optional.ofNullable(this.internetMaxBandwidthOut);
+    }
+
+    /**
      * The key pair name.
      * 
      */
@@ -307,6 +356,21 @@ public final class DedicatedPropreHostState extends com.pulumi.resources.Resourc
     }
 
     /**
+     * The ID of the resource group.
+     * 
+     */
+    @Import(name="resourceGroupId")
+    private @Nullable Output<String> resourceGroupId;
+
+    /**
+     * @return The ID of the resource group.
+     * 
+     */
+    public Optional<Output<String>> resourceGroupId() {
+        return Optional.ofNullable(this.resourceGroupId);
+    }
+
+    /**
      * The ID of the security group.
      * 
      */
@@ -319,6 +383,51 @@ public final class DedicatedPropreHostState extends com.pulumi.resources.Resourc
      */
     public Optional<Output<String>> securityGroupId() {
         return Optional.ofNullable(this.securityGroupId);
+    }
+
+    /**
+     * Host tag information.
+     * 
+     */
+    @Import(name="tags")
+    private @Nullable Output<Map<String,Object>> tags;
+
+    /**
+     * @return Host tag information.
+     * 
+     */
+    public Optional<Output<Map<String,Object>>> tags() {
+        return Optional.ofNullable(this.tags);
+    }
+
+    /**
+     * User-defined script data. The maximum size of the original data is 16kB.
+     * 
+     */
+    @Import(name="userData")
+    private @Nullable Output<String> userData;
+
+    /**
+     * @return User-defined script data. The maximum size of the original data is 16kB.
+     * 
+     */
+    public Optional<Output<String>> userData() {
+        return Optional.ofNullable(this.userData);
+    }
+
+    /**
+     * Whether custom data is encoded in Base64 format.
+     * 
+     */
+    @Import(name="userDataEncoded")
+    private @Nullable Output<Boolean> userDataEncoded;
+
+    /**
+     * @return Whether custom data is encoded in Base64 format.
+     * 
+     */
+    public Optional<Output<Boolean>> userDataEncoded() {
+        return Optional.ofNullable(this.userDataEncoded);
     }
 
     /**
@@ -354,6 +463,7 @@ public final class DedicatedPropreHostState extends com.pulumi.resources.Resourc
     private DedicatedPropreHostState() {}
 
     private DedicatedPropreHostState(DedicatedPropreHostState $) {
+        this.autoPay = $.autoPay;
         this.autoRenew = $.autoRenew;
         this.dedicatedHostGroupId = $.dedicatedHostGroupId;
         this.ecsClassLists = $.ecsClassLists;
@@ -365,13 +475,19 @@ public final class DedicatedPropreHostState extends com.pulumi.resources.Resourc
         this.ecsZoneId = $.ecsZoneId;
         this.engine = $.engine;
         this.imageId = $.imageId;
+        this.internetChargeType = $.internetChargeType;
+        this.internetMaxBandwidthOut = $.internetMaxBandwidthOut;
         this.keyPairName = $.keyPairName;
         this.osPassword = $.osPassword;
         this.passwordInherit = $.passwordInherit;
         this.paymentType = $.paymentType;
         this.period = $.period;
         this.periodType = $.periodType;
+        this.resourceGroupId = $.resourceGroupId;
         this.securityGroupId = $.securityGroupId;
+        this.tags = $.tags;
+        this.userData = $.userData;
+        this.userDataEncoded = $.userDataEncoded;
         this.vpcId = $.vpcId;
         this.vswitchId = $.vswitchId;
     }
@@ -392,6 +508,27 @@ public final class DedicatedPropreHostState extends com.pulumi.resources.Resourc
 
         public Builder(DedicatedPropreHostState defaults) {
             $ = new DedicatedPropreHostState(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param autoPay Whether to pay automatically when the host is created.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder autoPay(@Nullable Output<Boolean> autoPay) {
+            $.autoPay = autoPay;
+            return this;
+        }
+
+        /**
+         * @param autoPay Whether to pay automatically when the host is created.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder autoPay(Boolean autoPay) {
+            return autoPay(Output.of(autoPay));
         }
 
         /**
@@ -493,7 +630,7 @@ public final class DedicatedPropreHostState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param ecsHostName Windows system: length of 2 to 15 characters, allowing the use of upper and lower case letters, numbers. You cannot use only numbers.Other operating systems (such as Linux): the length of 2 to 64 characters, allowing the use of dot (.) to separate characters into multiple segments, each segment allows the use of upper and lower case letters, numbers, but can not use continuous dot (.). Cannot start or end with a dot (.).
+         * @param ecsHostName Windows system: length of 2 to 15 characters, allowing the use of upper and lower case letters, numbers. You cannot use only numbers. Other operating systems (such as Linux): the length of 2 to 64 characters, allowing the use of dot (.) to separate characters into multiple segments, each segment allows the use of upper and lower case letters, numbers, but can not use continuous dot (.). Cannot start or end with a dot (.).
          * 
          * @return builder
          * 
@@ -504,7 +641,7 @@ public final class DedicatedPropreHostState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param ecsHostName Windows system: length of 2 to 15 characters, allowing the use of upper and lower case letters, numbers. You cannot use only numbers.Other operating systems (such as Linux): the length of 2 to 64 characters, allowing the use of dot (.) to separate characters into multiple segments, each segment allows the use of upper and lower case letters, numbers, but can not use continuous dot (.). Cannot start or end with a dot (.).
+         * @param ecsHostName Windows system: length of 2 to 15 characters, allowing the use of upper and lower case letters, numbers. You cannot use only numbers. Other operating systems (such as Linux): the length of 2 to 64 characters, allowing the use of dot (.) to separate characters into multiple segments, each segment allows the use of upper and lower case letters, numbers, but can not use continuous dot (.). Cannot start or end with a dot (.).
          * 
          * @return builder
          * 
@@ -656,6 +793,48 @@ public final class DedicatedPropreHostState extends com.pulumi.resources.Resourc
         }
 
         /**
+         * @param internetChargeType Network billing type. Value range: PayByBandwidth: Billing based on fixed bandwidth. PayByTraffic: charges by using the flow meter.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder internetChargeType(@Nullable Output<String> internetChargeType) {
+            $.internetChargeType = internetChargeType;
+            return this;
+        }
+
+        /**
+         * @param internetChargeType Network billing type. Value range: PayByBandwidth: Billing based on fixed bandwidth. PayByTraffic: charges by using the flow meter.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder internetChargeType(String internetChargeType) {
+            return internetChargeType(Output.of(internetChargeType));
+        }
+
+        /**
+         * @param internetMaxBandwidthOut The maximum outbound bandwidth of the public network, in Mbit/s. Value range: 0~100.  Default value: 0. When set to greater than 0, a public IP is automatically created.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder internetMaxBandwidthOut(@Nullable Output<Integer> internetMaxBandwidthOut) {
+            $.internetMaxBandwidthOut = internetMaxBandwidthOut;
+            return this;
+        }
+
+        /**
+         * @param internetMaxBandwidthOut The maximum outbound bandwidth of the public network, in Mbit/s. Value range: 0~100.  Default value: 0. When set to greater than 0, a public IP is automatically created.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder internetMaxBandwidthOut(Integer internetMaxBandwidthOut) {
+            return internetMaxBandwidthOut(Output.of(internetMaxBandwidthOut));
+        }
+
+        /**
          * @param keyPairName The key pair name.
          * 
          * @return builder
@@ -796,6 +975,27 @@ public final class DedicatedPropreHostState extends com.pulumi.resources.Resourc
         }
 
         /**
+         * @param resourceGroupId The ID of the resource group.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder resourceGroupId(@Nullable Output<String> resourceGroupId) {
+            $.resourceGroupId = resourceGroupId;
+            return this;
+        }
+
+        /**
+         * @param resourceGroupId The ID of the resource group.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder resourceGroupId(String resourceGroupId) {
+            return resourceGroupId(Output.of(resourceGroupId));
+        }
+
+        /**
          * @param securityGroupId The ID of the security group.
          * 
          * @return builder
@@ -814,6 +1014,69 @@ public final class DedicatedPropreHostState extends com.pulumi.resources.Resourc
          */
         public Builder securityGroupId(String securityGroupId) {
             return securityGroupId(Output.of(securityGroupId));
+        }
+
+        /**
+         * @param tags Host tag information.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(@Nullable Output<Map<String,Object>> tags) {
+            $.tags = tags;
+            return this;
+        }
+
+        /**
+         * @param tags Host tag information.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(Map<String,Object> tags) {
+            return tags(Output.of(tags));
+        }
+
+        /**
+         * @param userData User-defined script data. The maximum size of the original data is 16kB.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder userData(@Nullable Output<String> userData) {
+            $.userData = userData;
+            return this;
+        }
+
+        /**
+         * @param userData User-defined script data. The maximum size of the original data is 16kB.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder userData(String userData) {
+            return userData(Output.of(userData));
+        }
+
+        /**
+         * @param userDataEncoded Whether custom data is encoded in Base64 format.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder userDataEncoded(@Nullable Output<Boolean> userDataEncoded) {
+            $.userDataEncoded = userDataEncoded;
+            return this;
+        }
+
+        /**
+         * @param userDataEncoded Whether custom data is encoded in Base64 format.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder userDataEncoded(Boolean userDataEncoded) {
+            return userDataEncoded(Output.of(userDataEncoded));
         }
 
         /**

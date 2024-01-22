@@ -59,6 +59,7 @@ namespace Pulumi.AliCloud.Eci
     ///         RestartPolicy = "OnFailure",
     ///         SecurityGroupId = defaultSecurityGroup.Id,
     ///         VswitchId = defaultSwitch.Id,
+    ///         AutoCreateEip = true,
     ///         Tags = 
     ///         {
     ///             { "Created", "TF" },
@@ -68,7 +69,7 @@ namespace Pulumi.AliCloud.Eci
     ///         {
     ///             new AliCloud.Eci.Inputs.ContainerGroupContainerArgs
     ///             {
-    ///                 Image = "registry-vpc.cn-beijing.aliyuncs.com/eci_open/nginx:alpine",
+    ///                 Image = "registry.cn-beijing.aliyuncs.com/eci_open/nginx:alpine",
     ///                 Name = "nginx",
     ///                 WorkingDir = "/tmp/nginx",
     ///                 ImagePullPolicy = "IfNotPresent",
@@ -146,24 +147,13 @@ namespace Pulumi.AliCloud.Eci
     ///                     },
     ///                 },
     ///             },
-    ///             new AliCloud.Eci.Inputs.ContainerGroupContainerArgs
-    ///             {
-    ///                 Image = "registry-vpc.cn-beijing.aliyuncs.com/eci_open/centos:7",
-    ///                 Name = "centos",
-    ///                 Commands = new[]
-    ///                 {
-    ///                     "/bin/sh",
-    ///                     "-c",
-    ///                     "sleep 9999",
-    ///                 },
-    ///             },
     ///         },
     ///         InitContainers = new[]
     ///         {
     ///             new AliCloud.Eci.Inputs.ContainerGroupInitContainerArgs
     ///             {
     ///                 Name = "init-busybox",
-    ///                 Image = "registry-vpc.cn-beijing.aliyuncs.com/eci_open/busybox:1.30",
+    ///                 Image = "registry.cn-beijing.aliyuncs.com/eci_open/busybox:1.30",
     ///                 ImagePullPolicy = "IfNotPresent",
     ///                 Commands = new[]
     ///                 {
@@ -245,12 +235,6 @@ namespace Pulumi.AliCloud.Eci
         /// </summary>
         [Output("dnsConfig")]
         public Output<Outputs.ContainerGroupDnsConfig?> DnsConfig { get; private set; } = null!;
-
-        /// <summary>
-        /// The security context of the container group. See `eci_security_context` below.
-        /// </summary>
-        [Output("eciSecurityContext")]
-        public Output<Outputs.ContainerGroupEciSecurityContext?> EciSecurityContext { get; private set; } = null!;
 
         /// <summary>
         /// The bandwidth of the EIP. Default value: `5`.
@@ -335,6 +319,12 @@ namespace Pulumi.AliCloud.Eci
         /// </summary>
         [Output("restartPolicy")]
         public Output<string> RestartPolicy { get; private set; } = null!;
+
+        /// <summary>
+        /// The security context of the container group. See `security_context` below.
+        /// </summary>
+        [Output("securityContext")]
+        public Output<Outputs.ContainerGroupSecurityContext?> SecurityContext { get; private set; } = null!;
 
         /// <summary>
         /// The ID of the security group to which the container group belongs. Container groups within the same security group can access each other.
@@ -476,12 +466,6 @@ namespace Pulumi.AliCloud.Eci
         public Input<Inputs.ContainerGroupDnsConfigArgs>? DnsConfig { get; set; }
 
         /// <summary>
-        /// The security context of the container group. See `eci_security_context` below.
-        /// </summary>
-        [Input("eciSecurityContext")]
-        public Input<Inputs.ContainerGroupEciSecurityContextArgs>? EciSecurityContext { get; set; }
-
-        /// <summary>
         /// The bandwidth of the EIP. Default value: `5`.
         /// </summary>
         [Input("eipBandwidth")]
@@ -570,6 +554,12 @@ namespace Pulumi.AliCloud.Eci
         /// </summary>
         [Input("restartPolicy")]
         public Input<string>? RestartPolicy { get; set; }
+
+        /// <summary>
+        /// The security context of the container group. See `security_context` below.
+        /// </summary>
+        [Input("securityContext")]
+        public Input<Inputs.ContainerGroupSecurityContextArgs>? SecurityContext { get; set; }
 
         /// <summary>
         /// The ID of the security group to which the container group belongs. Container groups within the same security group can access each other.
@@ -679,12 +669,6 @@ namespace Pulumi.AliCloud.Eci
         public Input<Inputs.ContainerGroupDnsConfigGetArgs>? DnsConfig { get; set; }
 
         /// <summary>
-        /// The security context of the container group. See `eci_security_context` below.
-        /// </summary>
-        [Input("eciSecurityContext")]
-        public Input<Inputs.ContainerGroupEciSecurityContextGetArgs>? EciSecurityContext { get; set; }
-
-        /// <summary>
         /// The bandwidth of the EIP. Default value: `5`.
         /// </summary>
         [Input("eipBandwidth")]
@@ -785,6 +769,12 @@ namespace Pulumi.AliCloud.Eci
         /// </summary>
         [Input("restartPolicy")]
         public Input<string>? RestartPolicy { get; set; }
+
+        /// <summary>
+        /// The security context of the container group. See `security_context` below.
+        /// </summary>
+        [Input("securityContext")]
+        public Input<Inputs.ContainerGroupSecurityContextGetArgs>? SecurityContext { get; set; }
 
         /// <summary>
         /// The ID of the security group to which the container group belongs. Container groups within the same security group can access each other.

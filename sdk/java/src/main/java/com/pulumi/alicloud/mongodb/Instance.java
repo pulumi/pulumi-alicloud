@@ -106,7 +106,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * MongoDB can be imported using the id, e.g.
+ * MongoDB instance can be imported using the id, e.g.
  * 
  * ```sh
  *  $ pulumi import alicloud:mongodb/instance:Instance example dds-bp1291daeda44194
@@ -246,6 +246,20 @@ public class Instance extends com.pulumi.resources.CustomResource {
      */
     public Output<Integer> dbInstanceStorage() {
         return this.dbInstanceStorage;
+    }
+    /**
+     * The time when the changed configurations take effect. Valid values: `Immediately`, `MaintainTime`.
+     * 
+     */
+    @Export(name="effectiveTime", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> effectiveTime;
+
+    /**
+     * @return The time when the changed configurations take effect. Valid values: `Immediately`, `MaintainTime`.
+     * 
+     */
+    public Output<Optional<String>> effectiveTime() {
+        return Codegen.optional(this.effectiveTime);
     }
     /**
      * Whether to enable cloud disk encryption. Default value: `false`. Valid values: `true`, `false`.
@@ -388,14 +402,14 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.maintainStartTime;
     }
     /**
-     * The name of DB instance. It a string of 2 to 256 characters.
+     * The name of DB instance. It must be 2 to 256 characters in length.
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return The name of DB instance. It a string of 2 to 256 characters.
+     * @return The name of DB instance. It must be 2 to 256 characters in length.
      * 
      */
     public Output<String> name() {
@@ -444,14 +458,14 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.parameters;
     }
     /**
-     * The duration that you will buy DB instance (in month). It is valid when instance_charge_type is `PrePaid`. Default value: `1`. Valid values: [1~9], 12, 24, 36.
+     * The duration that you will buy DB instance (in month). It is valid when `instance_charge_type` is `PrePaid`. Default value: `1`. Valid values: [1~9], 12, 24, 36.
      * 
      */
     @Export(name="period", refs={Integer.class}, tree="[0]")
     private Output<Integer> period;
 
     /**
-     * @return The duration that you will buy DB instance (in month). It is valid when instance_charge_type is `PrePaid`. Default value: `1`. Valid values: [1~9], 12, 24, 36.
+     * @return The duration that you will buy DB instance (in month). It is valid when `instance_charge_type` is `PrePaid`. Default value: `1`. Valid values: [1~9], 12, 24, 36.
      * 
      */
     public Output<Integer> period() {

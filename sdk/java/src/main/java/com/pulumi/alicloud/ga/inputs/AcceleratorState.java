@@ -80,14 +80,14 @@ public final class AcceleratorState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The type of cross-border acceleration. Default value: `bgpPro`. Valid values: `bgpPro`, `private`.
+     * The type of cross-border acceleration. Default value: `bgpPro`. Valid values: `bgpPro`, `private`. **NOTE:** `cross_border_mode` is valid only when `cross_border_status` is set to `true`.
      * 
      */
     @Import(name="crossBorderMode")
     private @Nullable Output<String> crossBorderMode;
 
     /**
-     * @return The type of cross-border acceleration. Default value: `bgpPro`. Valid values: `bgpPro`, `private`.
+     * @return The type of cross-border acceleration. Default value: `bgpPro`. Valid values: `bgpPro`, `private`. **NOTE:** `cross_border_mode` is valid only when `cross_border_status` is set to `true`.
      * 
      */
     public Optional<Output<String>> crossBorderMode() {
@@ -371,7 +371,7 @@ public final class AcceleratorState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param crossBorderMode The type of cross-border acceleration. Default value: `bgpPro`. Valid values: `bgpPro`, `private`.
+         * @param crossBorderMode The type of cross-border acceleration. Default value: `bgpPro`. Valid values: `bgpPro`, `private`. **NOTE:** `cross_border_mode` is valid only when `cross_border_status` is set to `true`.
          * 
          * @return builder
          * 
@@ -382,7 +382,7 @@ public final class AcceleratorState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param crossBorderMode The type of cross-border acceleration. Default value: `bgpPro`. Valid values: `bgpPro`, `private`.
+         * @param crossBorderMode The type of cross-border acceleration. Default value: `bgpPro`. Valid values: `bgpPro`, `private`. **NOTE:** `cross_border_mode` is valid only when `cross_border_status` is set to `true`.
          * 
          * @return builder
          * 

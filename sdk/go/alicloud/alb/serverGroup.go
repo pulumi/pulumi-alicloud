@@ -7,14 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a ALB Server Group resource.
+// Provides an ALB Server Group resource.
 //
-// For information about ALB Server Group and how to use it,
-// see [What is Server Group](https://www.alibabacloud.com/help/en/slb/application-load-balancer/developer-reference/api-alb-2020-06-16-createservergroup).
+// For information about ALB Server Group and how to use it, see [What is Server Group](https://www.alibabacloud.com/help/en/slb/application-load-balancer/developer-reference/api-alb-2020-06-16-createservergroup).
 //
 // > **NOTE:** Available since v1.131.0.
 //
@@ -44,6 +44,10 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
+//			exampleResourceGroups, err := resourcemanager.GetResourceGroups(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
 //			exampleZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
 //				AvailableResourceCreation: pulumi.StringRef("Instance"),
 //			}, nil)
@@ -62,10 +66,6 @@ import (
 //				NameRegex: pulumi.StringRef("^ubuntu_[0-9]+_[0-9]+_x64*"),
 //				Owners:    pulumi.StringRef("system"),
 //			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			exampleResourceGroups, err := resourcemanager.GetResourceGroups(ctx, nil, nil)
 //			if err != nil {
 //				return err
 //			}
@@ -110,6 +110,11 @@ import (
 //				VpcId:           exampleNetwork.ID(),
 //				ServerGroupName: pulumi.String(name),
 //				ResourceGroupId: *pulumi.String(exampleResourceGroups.Groups[0].Id),
+//				StickySessionConfig: &alb.ServerGroupStickySessionConfigArgs{
+//					StickySessionEnabled: pulumi.Bool(true),
+//					Cookie:               pulumi.String("tf-example"),
+//					StickySessionType:    pulumi.String("Server"),
+//				},
 //				HealthCheckConfig: &alb.ServerGroupHealthCheckConfigArgs{
 //					HealthCheckConnectPort: pulumi.Int(46325),
 //					HealthCheckEnabled:     pulumi.Bool(true),
@@ -128,14 +133,6 @@ import (
 //					HealthyThreshold:       pulumi.Int(3),
 //					UnhealthyThreshold:     pulumi.Int(3),
 //				},
-//				StickySessionConfig: &alb.ServerGroupStickySessionConfigArgs{
-//					StickySessionEnabled: pulumi.Bool(true),
-//					Cookie:               pulumi.String("tf-example"),
-//					StickySessionType:    pulumi.String("Server"),
-//				},
-//				Tags: pulumi.Map{
-//					"Created": pulumi.Any("TF"),
-//				},
 //				Servers: alb.ServerGroupServerArray{
 //					&alb.ServerGroupServerArgs{
 //						Description: pulumi.String(name),
@@ -145,6 +142,9 @@ import (
 //						ServerType:  pulumi.String("Ecs"),
 //						Weight:      pulumi.Int(10),
 //					},
+//				},
+//				Tags: pulumi.Map{
+//					"Created": pulumi.Any("TF"),
 //				},
 //			})
 //			if err != nil {
@@ -170,27 +170,27 @@ type ServerGroup struct {
 
 	// The dry run.
 	DryRun pulumi.BoolPtrOutput `pulumi:"dryRun"`
-	// The configuration of health checks. See `healthCheckConfig` below for details.
-	HealthCheckConfig ServerGroupHealthCheckConfigPtrOutput `pulumi:"healthCheckConfig"`
-	// The server protocol. Valid values: `  HTTPS `, `HTTP`.
+	// The configuration of health checks. See `healthCheckConfig` below.
+	HealthCheckConfig ServerGroupHealthCheckConfigOutput `pulumi:"healthCheckConfig"`
+	// The server protocol. Valid values: `  HTTP `, `HTTPS`, `gRPC`. While `serverGroupType` is `Fc` this parameter will not take effect. From version 1.215.0, `protocol` can be set to `gRPC`.
 	Protocol pulumi.StringOutput `pulumi:"protocol"`
 	// The ID of the resource group.
 	ResourceGroupId pulumi.StringOutput `pulumi:"resourceGroupId"`
-	// The scheduling algorithm. Valid values: `  Sch `, `  Wlc `, `Wrr`.
+	// The scheduling algorithm. Valid values: `  Sch `, `  Wlc `, `Wrr`. **NOTE:** This parameter takes effect when the `serverGroupType` parameter is set to `Instance` or `Ip`.
 	Scheduler pulumi.StringOutput `pulumi:"scheduler"`
-	// The name of the resource.
-	ServerGroupName pulumi.StringPtrOutput `pulumi:"serverGroupName"`
-	// The type of the server group. Valid values:
+	// The name of the server group.
+	ServerGroupName pulumi.StringOutput `pulumi:"serverGroupName"`
+	// The type of the server group. Default value: `Instance`. Valid values:
 	ServerGroupType pulumi.StringOutput `pulumi:"serverGroupType"`
-	// The backend server. See `servers` below for details.
+	// The backend servers. See `servers` below.
 	Servers ServerGroupServerArrayOutput `pulumi:"servers"`
-	// The status of the backend server. Valid values:
+	// The status of the backend server.
 	Status pulumi.StringOutput `pulumi:"status"`
-	// The configuration of the sticky session. See `stickySessionConfig` below for details.
-	StickySessionConfig ServerGroupStickySessionConfigPtrOutput `pulumi:"stickySessionConfig"`
+	// The configuration of session persistence. See `stickySessionConfig` below.
+	StickySessionConfig ServerGroupStickySessionConfigOutput `pulumi:"stickySessionConfig"`
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.MapOutput `pulumi:"tags"`
-	// The ID of the VPC that you want to access.
+	// The ID of the VPC that you want to access. **NOTE:** This parameter takes effect when the `serverGroupType` parameter is set to `Instance` or `Ip`.
 	VpcId pulumi.StringPtrOutput `pulumi:"vpcId"`
 }
 
@@ -198,9 +198,15 @@ type ServerGroup struct {
 func NewServerGroup(ctx *pulumi.Context,
 	name string, args *ServerGroupArgs, opts ...pulumi.ResourceOption) (*ServerGroup, error) {
 	if args == nil {
-		args = &ServerGroupArgs{}
+		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.HealthCheckConfig == nil {
+		return nil, errors.New("invalid value for required argument 'HealthCheckConfig'")
+	}
+	if args.ServerGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ServerGroupName'")
+	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ServerGroup
 	err := ctx.RegisterResource("alicloud:alb/serverGroup:ServerGroup", name, args, &resource, opts...)
@@ -226,54 +232,54 @@ func GetServerGroup(ctx *pulumi.Context,
 type serverGroupState struct {
 	// The dry run.
 	DryRun *bool `pulumi:"dryRun"`
-	// The configuration of health checks. See `healthCheckConfig` below for details.
+	// The configuration of health checks. See `healthCheckConfig` below.
 	HealthCheckConfig *ServerGroupHealthCheckConfig `pulumi:"healthCheckConfig"`
-	// The server protocol. Valid values: `  HTTPS `, `HTTP`.
+	// The server protocol. Valid values: `  HTTP `, `HTTPS`, `gRPC`. While `serverGroupType` is `Fc` this parameter will not take effect. From version 1.215.0, `protocol` can be set to `gRPC`.
 	Protocol *string `pulumi:"protocol"`
 	// The ID of the resource group.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
-	// The scheduling algorithm. Valid values: `  Sch `, `  Wlc `, `Wrr`.
+	// The scheduling algorithm. Valid values: `  Sch `, `  Wlc `, `Wrr`. **NOTE:** This parameter takes effect when the `serverGroupType` parameter is set to `Instance` or `Ip`.
 	Scheduler *string `pulumi:"scheduler"`
-	// The name of the resource.
+	// The name of the server group.
 	ServerGroupName *string `pulumi:"serverGroupName"`
-	// The type of the server group. Valid values:
+	// The type of the server group. Default value: `Instance`. Valid values:
 	ServerGroupType *string `pulumi:"serverGroupType"`
-	// The backend server. See `servers` below for details.
+	// The backend servers. See `servers` below.
 	Servers []ServerGroupServer `pulumi:"servers"`
-	// The status of the backend server. Valid values:
+	// The status of the backend server.
 	Status *string `pulumi:"status"`
-	// The configuration of the sticky session. See `stickySessionConfig` below for details.
+	// The configuration of session persistence. See `stickySessionConfig` below.
 	StickySessionConfig *ServerGroupStickySessionConfig `pulumi:"stickySessionConfig"`
 	// A mapping of tags to assign to the resource.
 	Tags map[string]interface{} `pulumi:"tags"`
-	// The ID of the VPC that you want to access.
+	// The ID of the VPC that you want to access. **NOTE:** This parameter takes effect when the `serverGroupType` parameter is set to `Instance` or `Ip`.
 	VpcId *string `pulumi:"vpcId"`
 }
 
 type ServerGroupState struct {
 	// The dry run.
 	DryRun pulumi.BoolPtrInput
-	// The configuration of health checks. See `healthCheckConfig` below for details.
+	// The configuration of health checks. See `healthCheckConfig` below.
 	HealthCheckConfig ServerGroupHealthCheckConfigPtrInput
-	// The server protocol. Valid values: `  HTTPS `, `HTTP`.
+	// The server protocol. Valid values: `  HTTP `, `HTTPS`, `gRPC`. While `serverGroupType` is `Fc` this parameter will not take effect. From version 1.215.0, `protocol` can be set to `gRPC`.
 	Protocol pulumi.StringPtrInput
 	// The ID of the resource group.
 	ResourceGroupId pulumi.StringPtrInput
-	// The scheduling algorithm. Valid values: `  Sch `, `  Wlc `, `Wrr`.
+	// The scheduling algorithm. Valid values: `  Sch `, `  Wlc `, `Wrr`. **NOTE:** This parameter takes effect when the `serverGroupType` parameter is set to `Instance` or `Ip`.
 	Scheduler pulumi.StringPtrInput
-	// The name of the resource.
+	// The name of the server group.
 	ServerGroupName pulumi.StringPtrInput
-	// The type of the server group. Valid values:
+	// The type of the server group. Default value: `Instance`. Valid values:
 	ServerGroupType pulumi.StringPtrInput
-	// The backend server. See `servers` below for details.
+	// The backend servers. See `servers` below.
 	Servers ServerGroupServerArrayInput
-	// The status of the backend server. Valid values:
+	// The status of the backend server.
 	Status pulumi.StringPtrInput
-	// The configuration of the sticky session. See `stickySessionConfig` below for details.
+	// The configuration of session persistence. See `stickySessionConfig` below.
 	StickySessionConfig ServerGroupStickySessionConfigPtrInput
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.MapInput
-	// The ID of the VPC that you want to access.
+	// The ID of the VPC that you want to access. **NOTE:** This parameter takes effect when the `serverGroupType` parameter is set to `Instance` or `Ip`.
 	VpcId pulumi.StringPtrInput
 }
 
@@ -284,25 +290,25 @@ func (ServerGroupState) ElementType() reflect.Type {
 type serverGroupArgs struct {
 	// The dry run.
 	DryRun *bool `pulumi:"dryRun"`
-	// The configuration of health checks. See `healthCheckConfig` below for details.
-	HealthCheckConfig *ServerGroupHealthCheckConfig `pulumi:"healthCheckConfig"`
-	// The server protocol. Valid values: `  HTTPS `, `HTTP`.
+	// The configuration of health checks. See `healthCheckConfig` below.
+	HealthCheckConfig ServerGroupHealthCheckConfig `pulumi:"healthCheckConfig"`
+	// The server protocol. Valid values: `  HTTP `, `HTTPS`, `gRPC`. While `serverGroupType` is `Fc` this parameter will not take effect. From version 1.215.0, `protocol` can be set to `gRPC`.
 	Protocol *string `pulumi:"protocol"`
 	// The ID of the resource group.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
-	// The scheduling algorithm. Valid values: `  Sch `, `  Wlc `, `Wrr`.
+	// The scheduling algorithm. Valid values: `  Sch `, `  Wlc `, `Wrr`. **NOTE:** This parameter takes effect when the `serverGroupType` parameter is set to `Instance` or `Ip`.
 	Scheduler *string `pulumi:"scheduler"`
-	// The name of the resource.
-	ServerGroupName *string `pulumi:"serverGroupName"`
-	// The type of the server group. Valid values:
+	// The name of the server group.
+	ServerGroupName string `pulumi:"serverGroupName"`
+	// The type of the server group. Default value: `Instance`. Valid values:
 	ServerGroupType *string `pulumi:"serverGroupType"`
-	// The backend server. See `servers` below for details.
+	// The backend servers. See `servers` below.
 	Servers []ServerGroupServer `pulumi:"servers"`
-	// The configuration of the sticky session. See `stickySessionConfig` below for details.
+	// The configuration of session persistence. See `stickySessionConfig` below.
 	StickySessionConfig *ServerGroupStickySessionConfig `pulumi:"stickySessionConfig"`
 	// A mapping of tags to assign to the resource.
 	Tags map[string]interface{} `pulumi:"tags"`
-	// The ID of the VPC that you want to access.
+	// The ID of the VPC that you want to access. **NOTE:** This parameter takes effect when the `serverGroupType` parameter is set to `Instance` or `Ip`.
 	VpcId *string `pulumi:"vpcId"`
 }
 
@@ -310,25 +316,25 @@ type serverGroupArgs struct {
 type ServerGroupArgs struct {
 	// The dry run.
 	DryRun pulumi.BoolPtrInput
-	// The configuration of health checks. See `healthCheckConfig` below for details.
-	HealthCheckConfig ServerGroupHealthCheckConfigPtrInput
-	// The server protocol. Valid values: `  HTTPS `, `HTTP`.
+	// The configuration of health checks. See `healthCheckConfig` below.
+	HealthCheckConfig ServerGroupHealthCheckConfigInput
+	// The server protocol. Valid values: `  HTTP `, `HTTPS`, `gRPC`. While `serverGroupType` is `Fc` this parameter will not take effect. From version 1.215.0, `protocol` can be set to `gRPC`.
 	Protocol pulumi.StringPtrInput
 	// The ID of the resource group.
 	ResourceGroupId pulumi.StringPtrInput
-	// The scheduling algorithm. Valid values: `  Sch `, `  Wlc `, `Wrr`.
+	// The scheduling algorithm. Valid values: `  Sch `, `  Wlc `, `Wrr`. **NOTE:** This parameter takes effect when the `serverGroupType` parameter is set to `Instance` or `Ip`.
 	Scheduler pulumi.StringPtrInput
-	// The name of the resource.
-	ServerGroupName pulumi.StringPtrInput
-	// The type of the server group. Valid values:
+	// The name of the server group.
+	ServerGroupName pulumi.StringInput
+	// The type of the server group. Default value: `Instance`. Valid values:
 	ServerGroupType pulumi.StringPtrInput
-	// The backend server. See `servers` below for details.
+	// The backend servers. See `servers` below.
 	Servers ServerGroupServerArrayInput
-	// The configuration of the sticky session. See `stickySessionConfig` below for details.
+	// The configuration of session persistence. See `stickySessionConfig` below.
 	StickySessionConfig ServerGroupStickySessionConfigPtrInput
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.MapInput
-	// The ID of the VPC that you want to access.
+	// The ID of the VPC that you want to access. **NOTE:** This parameter takes effect when the `serverGroupType` parameter is set to `Instance` or `Ip`.
 	VpcId pulumi.StringPtrInput
 }
 
@@ -424,12 +430,12 @@ func (o ServerGroupOutput) DryRun() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ServerGroup) pulumi.BoolPtrOutput { return v.DryRun }).(pulumi.BoolPtrOutput)
 }
 
-// The configuration of health checks. See `healthCheckConfig` below for details.
-func (o ServerGroupOutput) HealthCheckConfig() ServerGroupHealthCheckConfigPtrOutput {
-	return o.ApplyT(func(v *ServerGroup) ServerGroupHealthCheckConfigPtrOutput { return v.HealthCheckConfig }).(ServerGroupHealthCheckConfigPtrOutput)
+// The configuration of health checks. See `healthCheckConfig` below.
+func (o ServerGroupOutput) HealthCheckConfig() ServerGroupHealthCheckConfigOutput {
+	return o.ApplyT(func(v *ServerGroup) ServerGroupHealthCheckConfigOutput { return v.HealthCheckConfig }).(ServerGroupHealthCheckConfigOutput)
 }
 
-// The server protocol. Valid values: `  HTTPS `, `HTTP`.
+// The server protocol. Valid values: `  HTTP `, `HTTPS`, `gRPC`. While `serverGroupType` is `Fc` this parameter will not take effect. From version 1.215.0, `protocol` can be set to `gRPC`.
 func (o ServerGroupOutput) Protocol() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServerGroup) pulumi.StringOutput { return v.Protocol }).(pulumi.StringOutput)
 }
@@ -439,34 +445,34 @@ func (o ServerGroupOutput) ResourceGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServerGroup) pulumi.StringOutput { return v.ResourceGroupId }).(pulumi.StringOutput)
 }
 
-// The scheduling algorithm. Valid values: `  Sch `, `  Wlc `, `Wrr`.
+// The scheduling algorithm. Valid values: `  Sch `, `  Wlc `, `Wrr`. **NOTE:** This parameter takes effect when the `serverGroupType` parameter is set to `Instance` or `Ip`.
 func (o ServerGroupOutput) Scheduler() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServerGroup) pulumi.StringOutput { return v.Scheduler }).(pulumi.StringOutput)
 }
 
-// The name of the resource.
-func (o ServerGroupOutput) ServerGroupName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ServerGroup) pulumi.StringPtrOutput { return v.ServerGroupName }).(pulumi.StringPtrOutput)
+// The name of the server group.
+func (o ServerGroupOutput) ServerGroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v *ServerGroup) pulumi.StringOutput { return v.ServerGroupName }).(pulumi.StringOutput)
 }
 
-// The type of the server group. Valid values:
+// The type of the server group. Default value: `Instance`. Valid values:
 func (o ServerGroupOutput) ServerGroupType() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServerGroup) pulumi.StringOutput { return v.ServerGroupType }).(pulumi.StringOutput)
 }
 
-// The backend server. See `servers` below for details.
+// The backend servers. See `servers` below.
 func (o ServerGroupOutput) Servers() ServerGroupServerArrayOutput {
 	return o.ApplyT(func(v *ServerGroup) ServerGroupServerArrayOutput { return v.Servers }).(ServerGroupServerArrayOutput)
 }
 
-// The status of the backend server. Valid values:
+// The status of the backend server.
 func (o ServerGroupOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServerGroup) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }
 
-// The configuration of the sticky session. See `stickySessionConfig` below for details.
-func (o ServerGroupOutput) StickySessionConfig() ServerGroupStickySessionConfigPtrOutput {
-	return o.ApplyT(func(v *ServerGroup) ServerGroupStickySessionConfigPtrOutput { return v.StickySessionConfig }).(ServerGroupStickySessionConfigPtrOutput)
+// The configuration of session persistence. See `stickySessionConfig` below.
+func (o ServerGroupOutput) StickySessionConfig() ServerGroupStickySessionConfigOutput {
+	return o.ApplyT(func(v *ServerGroup) ServerGroupStickySessionConfigOutput { return v.StickySessionConfig }).(ServerGroupStickySessionConfigOutput)
 }
 
 // A mapping of tags to assign to the resource.
@@ -474,7 +480,7 @@ func (o ServerGroupOutput) Tags() pulumi.MapOutput {
 	return o.ApplyT(func(v *ServerGroup) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
 }
 
-// The ID of the VPC that you want to access.
+// The ID of the VPC that you want to access. **NOTE:** This parameter takes effect when the `serverGroupType` parameter is set to `Instance` or `Ip`.
 func (o ServerGroupOutput) VpcId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServerGroup) pulumi.StringPtrOutput { return v.VpcId }).(pulumi.StringPtrOutput)
 }

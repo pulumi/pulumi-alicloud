@@ -8,6 +8,7 @@ import com.pulumi.alicloud.ga.inputs.EndpointGroupPortOverridesArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.Object;
 import java.lang.String;
@@ -114,6 +115,21 @@ public final class EndpointGroupArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> endpointRequestProtocol() {
         return Optional.ofNullable(this.endpointRequestProtocol);
+    }
+
+    /**
+     * Specifies whether to enable the health check feature. Valid values:
+     * 
+     */
+    @Import(name="healthCheckEnabled")
+    private @Nullable Output<Boolean> healthCheckEnabled;
+
+    /**
+     * @return Specifies whether to enable the health check feature. Valid values:
+     * 
+     */
+    public Optional<Output<Boolean>> healthCheckEnabled() {
+        return Optional.ofNullable(this.healthCheckEnabled);
     }
 
     /**
@@ -277,6 +293,7 @@ public final class EndpointGroupArgs extends com.pulumi.resources.ResourceArgs {
         this.endpointGroupRegion = $.endpointGroupRegion;
         this.endpointGroupType = $.endpointGroupType;
         this.endpointRequestProtocol = $.endpointRequestProtocol;
+        this.healthCheckEnabled = $.healthCheckEnabled;
         this.healthCheckIntervalSeconds = $.healthCheckIntervalSeconds;
         this.healthCheckPath = $.healthCheckPath;
         this.healthCheckPort = $.healthCheckPort;
@@ -445,6 +462,27 @@ public final class EndpointGroupArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder endpointRequestProtocol(String endpointRequestProtocol) {
             return endpointRequestProtocol(Output.of(endpointRequestProtocol));
+        }
+
+        /**
+         * @param healthCheckEnabled Specifies whether to enable the health check feature. Valid values:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder healthCheckEnabled(@Nullable Output<Boolean> healthCheckEnabled) {
+            $.healthCheckEnabled = healthCheckEnabled;
+            return this;
+        }
+
+        /**
+         * @param healthCheckEnabled Specifies whether to enable the health check feature. Valid values:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder healthCheckEnabled(Boolean healthCheckEnabled) {
+            return healthCheckEnabled(Output.of(healthCheckEnabled));
         }
 
         /**

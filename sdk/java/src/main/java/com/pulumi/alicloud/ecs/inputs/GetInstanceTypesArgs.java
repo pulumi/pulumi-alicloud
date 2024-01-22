@@ -253,7 +253,7 @@ public final class GetInstanceTypesArgs extends com.pulumi.resources.InvokeArgs 
     }
 
     /**
-     * Filter the results by system disk category. Valid values: `cloud`, `ephemeral_ssd`, `cloud_essd`, `cloud_efficiency`, `cloud_ssd`.
+     * Filter the results by system disk category. Valid values: `cloud`, `ephemeral_ssd`, `cloud_essd`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd_entry`.
      * **NOTE**: Its default value `cloud_efficiency` has been removed from the version v1.150.0.
      * 
      */
@@ -261,7 +261,7 @@ public final class GetInstanceTypesArgs extends com.pulumi.resources.InvokeArgs 
     private @Nullable Output<String> systemDiskCategory;
 
     /**
-     * @return Filter the results by system disk category. Valid values: `cloud`, `ephemeral_ssd`, `cloud_essd`, `cloud_efficiency`, `cloud_ssd`.
+     * @return Filter the results by system disk category. Valid values: `cloud`, `ephemeral_ssd`, `cloud_essd`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd_entry`.
      * **NOTE**: Its default value `cloud_efficiency` has been removed from the version v1.150.0.
      * 
      */
@@ -636,7 +636,7 @@ public final class GetInstanceTypesArgs extends com.pulumi.resources.InvokeArgs 
         }
 
         /**
-         * @param systemDiskCategory Filter the results by system disk category. Valid values: `cloud`, `ephemeral_ssd`, `cloud_essd`, `cloud_efficiency`, `cloud_ssd`.
+         * @param systemDiskCategory Filter the results by system disk category. Valid values: `cloud`, `ephemeral_ssd`, `cloud_essd`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd_entry`.
          * **NOTE**: Its default value `cloud_efficiency` has been removed from the version v1.150.0.
          * 
          * @return builder
@@ -648,7 +648,7 @@ public final class GetInstanceTypesArgs extends com.pulumi.resources.InvokeArgs 
         }
 
         /**
-         * @param systemDiskCategory Filter the results by system disk category. Valid values: `cloud`, `ephemeral_ssd`, `cloud_essd`, `cloud_efficiency`, `cloud_ssd`.
+         * @param systemDiskCategory Filter the results by system disk category. Valid values: `cloud`, `ephemeral_ssd`, `cloud_essd`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd_entry`.
          * **NOTE**: Its default value `cloud_efficiency` has been removed from the version v1.150.0.
          * 
          * @return builder

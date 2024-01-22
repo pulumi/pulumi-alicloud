@@ -16,17 +16,21 @@ class DatabaseArgs:
     def __init__(__self__, *,
                  db_cluster_id: pulumi.Input[str],
                  db_name: pulumi.Input[str],
+                 account_name: Optional[pulumi.Input[str]] = None,
                  character_set_name: Optional[pulumi.Input[str]] = None,
                  db_description: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Database resource.
         :param pulumi.Input[str] db_cluster_id: The Id of cluster that can run database.
         :param pulumi.Input[str] db_name: Name of the database requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letterand have no more than 64 characters.
+        :param pulumi.Input[str] account_name: Account name authorized to access the database. Only supports PostgreSQL.
         :param pulumi.Input[str] character_set_name: Character set. The value range is limited to the following: [ utf8, gbk, latin1, utf8mb4, Chinese_PRC_CI_AS, Chinese_PRC_CS_AS, SQL_Latin1_General_CP1_CI_AS, SQL_Latin1_General_CP1_CS_AS, Chinese_PRC_BIN ], default is "utf8" \\(`utf8mb4` only supports versions 5.5 and 5.6\\).
         :param pulumi.Input[str] db_description: Database description. It must start with a Chinese character or English letter, cannot start with "http://" or "https://". It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length must be 2-256 characters.
         """
         pulumi.set(__self__, "db_cluster_id", db_cluster_id)
         pulumi.set(__self__, "db_name", db_name)
+        if account_name is not None:
+            pulumi.set(__self__, "account_name", account_name)
         if character_set_name is not None:
             pulumi.set(__self__, "character_set_name", character_set_name)
         if db_description is not None:
@@ -57,6 +61,18 @@ class DatabaseArgs:
         pulumi.set(self, "db_name", value)
 
     @property
+    @pulumi.getter(name="accountName")
+    def account_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Account name authorized to access the database. Only supports PostgreSQL.
+        """
+        return pulumi.get(self, "account_name")
+
+    @account_name.setter
+    def account_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "account_name", value)
+
+    @property
     @pulumi.getter(name="characterSetName")
     def character_set_name(self) -> Optional[pulumi.Input[str]]:
         """
@@ -84,17 +100,21 @@ class DatabaseArgs:
 @pulumi.input_type
 class _DatabaseState:
     def __init__(__self__, *,
+                 account_name: Optional[pulumi.Input[str]] = None,
                  character_set_name: Optional[pulumi.Input[str]] = None,
                  db_cluster_id: Optional[pulumi.Input[str]] = None,
                  db_description: Optional[pulumi.Input[str]] = None,
                  db_name: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Database resources.
+        :param pulumi.Input[str] account_name: Account name authorized to access the database. Only supports PostgreSQL.
         :param pulumi.Input[str] character_set_name: Character set. The value range is limited to the following: [ utf8, gbk, latin1, utf8mb4, Chinese_PRC_CI_AS, Chinese_PRC_CS_AS, SQL_Latin1_General_CP1_CI_AS, SQL_Latin1_General_CP1_CS_AS, Chinese_PRC_BIN ], default is "utf8" \\(`utf8mb4` only supports versions 5.5 and 5.6\\).
         :param pulumi.Input[str] db_cluster_id: The Id of cluster that can run database.
         :param pulumi.Input[str] db_description: Database description. It must start with a Chinese character or English letter, cannot start with "http://" or "https://". It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length must be 2-256 characters.
         :param pulumi.Input[str] db_name: Name of the database requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letterand have no more than 64 characters.
         """
+        if account_name is not None:
+            pulumi.set(__self__, "account_name", account_name)
         if character_set_name is not None:
             pulumi.set(__self__, "character_set_name", character_set_name)
         if db_cluster_id is not None:
@@ -103,6 +123,18 @@ class _DatabaseState:
             pulumi.set(__self__, "db_description", db_description)
         if db_name is not None:
             pulumi.set(__self__, "db_name", db_name)
+
+    @property
+    @pulumi.getter(name="accountName")
+    def account_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Account name authorized to access the database. Only supports PostgreSQL.
+        """
+        return pulumi.get(self, "account_name")
+
+    @account_name.setter
+    def account_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "account_name", value)
 
     @property
     @pulumi.getter(name="characterSetName")
@@ -158,6 +190,7 @@ class Database(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 account_name: Optional[pulumi.Input[str]] = None,
                  character_set_name: Optional[pulumi.Input[str]] = None,
                  db_cluster_id: Optional[pulumi.Input[str]] = None,
                  db_description: Optional[pulumi.Input[str]] = None,
@@ -166,7 +199,7 @@ class Database(pulumi.CustomResource):
         """
         Provides a PolarDB database resource. A database deployed in a PolarDB cluster. A PolarDB cluster can own multiple databases.
 
-        > **NOTE:** Available in v1.66.0+.
+        > **NOTE:** Available since v1.66.0.
 
         ## Example Usage
 
@@ -176,7 +209,8 @@ class Database(pulumi.CustomResource):
 
         default_node_classes = alicloud.polardb.get_node_classes(db_type="MySQL",
             db_version="8.0",
-            pay_type="PostPaid")
+            pay_type="PostPaid",
+            category="Normal")
         default_network = alicloud.vpc.Network("defaultNetwork",
             vpc_name="terraform-example",
             cidr_block="172.16.0.0/16")
@@ -207,6 +241,7 @@ class Database(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] account_name: Account name authorized to access the database. Only supports PostgreSQL.
         :param pulumi.Input[str] character_set_name: Character set. The value range is limited to the following: [ utf8, gbk, latin1, utf8mb4, Chinese_PRC_CI_AS, Chinese_PRC_CS_AS, SQL_Latin1_General_CP1_CI_AS, SQL_Latin1_General_CP1_CS_AS, Chinese_PRC_BIN ], default is "utf8" \\(`utf8mb4` only supports versions 5.5 and 5.6\\).
         :param pulumi.Input[str] db_cluster_id: The Id of cluster that can run database.
         :param pulumi.Input[str] db_description: Database description. It must start with a Chinese character or English letter, cannot start with "http://" or "https://". It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length must be 2-256 characters.
@@ -221,7 +256,7 @@ class Database(pulumi.CustomResource):
         """
         Provides a PolarDB database resource. A database deployed in a PolarDB cluster. A PolarDB cluster can own multiple databases.
 
-        > **NOTE:** Available in v1.66.0+.
+        > **NOTE:** Available since v1.66.0.
 
         ## Example Usage
 
@@ -231,7 +266,8 @@ class Database(pulumi.CustomResource):
 
         default_node_classes = alicloud.polardb.get_node_classes(db_type="MySQL",
             db_version="8.0",
-            pay_type="PostPaid")
+            pay_type="PostPaid",
+            category="Normal")
         default_network = alicloud.vpc.Network("defaultNetwork",
             vpc_name="terraform-example",
             cidr_block="172.16.0.0/16")
@@ -275,6 +311,7 @@ class Database(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 account_name: Optional[pulumi.Input[str]] = None,
                  character_set_name: Optional[pulumi.Input[str]] = None,
                  db_cluster_id: Optional[pulumi.Input[str]] = None,
                  db_description: Optional[pulumi.Input[str]] = None,
@@ -288,6 +325,7 @@ class Database(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = DatabaseArgs.__new__(DatabaseArgs)
 
+            __props__.__dict__["account_name"] = account_name
             __props__.__dict__["character_set_name"] = character_set_name
             if db_cluster_id is None and not opts.urn:
                 raise TypeError("Missing required property 'db_cluster_id'")
@@ -306,6 +344,7 @@ class Database(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            account_name: Optional[pulumi.Input[str]] = None,
             character_set_name: Optional[pulumi.Input[str]] = None,
             db_cluster_id: Optional[pulumi.Input[str]] = None,
             db_description: Optional[pulumi.Input[str]] = None,
@@ -317,6 +356,7 @@ class Database(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] account_name: Account name authorized to access the database. Only supports PostgreSQL.
         :param pulumi.Input[str] character_set_name: Character set. The value range is limited to the following: [ utf8, gbk, latin1, utf8mb4, Chinese_PRC_CI_AS, Chinese_PRC_CS_AS, SQL_Latin1_General_CP1_CI_AS, SQL_Latin1_General_CP1_CS_AS, Chinese_PRC_BIN ], default is "utf8" \\(`utf8mb4` only supports versions 5.5 and 5.6\\).
         :param pulumi.Input[str] db_cluster_id: The Id of cluster that can run database.
         :param pulumi.Input[str] db_description: Database description. It must start with a Chinese character or English letter, cannot start with "http://" or "https://". It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length must be 2-256 characters.
@@ -326,11 +366,20 @@ class Database(pulumi.CustomResource):
 
         __props__ = _DatabaseState.__new__(_DatabaseState)
 
+        __props__.__dict__["account_name"] = account_name
         __props__.__dict__["character_set_name"] = character_set_name
         __props__.__dict__["db_cluster_id"] = db_cluster_id
         __props__.__dict__["db_description"] = db_description
         __props__.__dict__["db_name"] = db_name
         return Database(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="accountName")
+    def account_name(self) -> pulumi.Output[Optional[str]]:
+        """
+        Account name authorized to access the database. Only supports PostgreSQL.
+        """
+        return pulumi.get(self, "account_name")
 
     @property
     @pulumi.getter(name="characterSetName")

@@ -231,6 +231,14 @@ Object.defineProperty(exports, "sharedCredentialsFile", {
     enumerable: true,
 });
 
+export declare const signVersion: outputs.config.SignVersion | undefined;
+Object.defineProperty(exports, "signVersion", {
+    get() {
+        return __config.getObject<outputs.config.SignVersion>("signVersion");
+    },
+    enumerable: true,
+});
+
 /**
  * Skip static validation of region ID. Used by users of alternative AlibabaCloud-like APIs or users w/ access to regions
  * that are not public (yet).

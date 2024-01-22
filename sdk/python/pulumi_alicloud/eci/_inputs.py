@@ -13,6 +13,7 @@ __all__ = [
     'ContainerGroupAcrRegistryInfoArgs',
     'ContainerGroupContainerArgs',
     'ContainerGroupContainerEnvironmentVarArgs',
+    'ContainerGroupContainerEnvironmentVarFieldRefArgs',
     'ContainerGroupContainerLivenessProbeArgs',
     'ContainerGroupContainerLivenessProbeExecArgs',
     'ContainerGroupContainerLivenessProbeHttpGetArgs',
@@ -22,17 +23,22 @@ __all__ = [
     'ContainerGroupContainerReadinessProbeExecArgs',
     'ContainerGroupContainerReadinessProbeHttpGetArgs',
     'ContainerGroupContainerReadinessProbeTcpSocketArgs',
+    'ContainerGroupContainerSecurityContextArgs',
+    'ContainerGroupContainerSecurityContextCapabilityArgs',
     'ContainerGroupContainerVolumeMountArgs',
     'ContainerGroupDnsConfigArgs',
     'ContainerGroupDnsConfigOptionArgs',
-    'ContainerGroupEciSecurityContextArgs',
-    'ContainerGroupEciSecurityContextSysctlArgs',
     'ContainerGroupHostAliasArgs',
     'ContainerGroupImageRegistryCredentialArgs',
     'ContainerGroupInitContainerArgs',
     'ContainerGroupInitContainerEnvironmentVarArgs',
+    'ContainerGroupInitContainerEnvironmentVarFieldRefArgs',
     'ContainerGroupInitContainerPortArgs',
+    'ContainerGroupInitContainerSecurityContextArgs',
+    'ContainerGroupInitContainerSecurityContextCapabilityArgs',
     'ContainerGroupInitContainerVolumeMountArgs',
+    'ContainerGroupSecurityContextArgs',
+    'ContainerGroupSecurityContextSysctlArgs',
     'ContainerGroupVolumeArgs',
     'ContainerGroupVolumeConfigFileVolumeConfigFileToPathArgs',
     'ImageCacheImageRegistryCredentialArgs',
@@ -128,6 +134,7 @@ class ContainerGroupContainerArgs:
                  readiness_probes: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupContainerReadinessProbeArgs']]]] = None,
                  ready: Optional[pulumi.Input[bool]] = None,
                  restart_count: Optional[pulumi.Input[int]] = None,
+                 security_contexts: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupContainerSecurityContextArgs']]]] = None,
                  volume_mounts: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupContainerVolumeMountArgs']]]] = None,
                  working_dir: Optional[pulumi.Input[str]] = None):
         """
@@ -145,6 +152,7 @@ class ContainerGroupContainerArgs:
         :param pulumi.Input[Sequence[pulumi.Input['ContainerGroupContainerReadinessProbeArgs']]] readiness_probes: The health check of the container. See `readiness_probe` below.
         :param pulumi.Input[bool] ready: Indicates whether the container passed the readiness probe.
         :param pulumi.Input[int] restart_count: The number of times that the container restarted.
+        :param pulumi.Input[Sequence[pulumi.Input['ContainerGroupContainerSecurityContextArgs']]] security_contexts: The security context of the container. See `security_context` below.
         :param pulumi.Input[Sequence[pulumi.Input['ContainerGroupContainerVolumeMountArgs']]] volume_mounts: The structure of volumeMounts. See `volume_mounts` below.
         :param pulumi.Input[str] working_dir: The working directory of the container.
         """
@@ -174,6 +182,8 @@ class ContainerGroupContainerArgs:
             pulumi.set(__self__, "ready", ready)
         if restart_count is not None:
             pulumi.set(__self__, "restart_count", restart_count)
+        if security_contexts is not None:
+            pulumi.set(__self__, "security_contexts", security_contexts)
         if volume_mounts is not None:
             pulumi.set(__self__, "volume_mounts", volume_mounts)
         if working_dir is not None:
@@ -348,6 +358,18 @@ class ContainerGroupContainerArgs:
         pulumi.set(self, "restart_count", value)
 
     @property
+    @pulumi.getter(name="securityContexts")
+    def security_contexts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupContainerSecurityContextArgs']]]]:
+        """
+        The security context of the container. See `security_context` below.
+        """
+        return pulumi.get(self, "security_contexts")
+
+    @security_contexts.setter
+    def security_contexts(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupContainerSecurityContextArgs']]]]):
+        pulumi.set(self, "security_contexts", value)
+
+    @property
     @pulumi.getter(name="volumeMounts")
     def volume_mounts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupContainerVolumeMountArgs']]]]:
         """
@@ -375,16 +397,32 @@ class ContainerGroupContainerArgs:
 @pulumi.input_type
 class ContainerGroupContainerEnvironmentVarArgs:
     def __init__(__self__, *,
+                 field_reves: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupContainerEnvironmentVarFieldRefArgs']]]] = None,
                  key: Optional[pulumi.Input[str]] = None,
                  value: Optional[pulumi.Input[str]] = None):
         """
+        :param pulumi.Input[Sequence[pulumi.Input['ContainerGroupContainerEnvironmentVarFieldRefArgs']]] field_reves: The reference of the environment variable. See `field_ref` below.
         :param pulumi.Input[str] key: The name of the variable. The name can be 1 to 128 characters in length and can contain letters, digits, and underscores (_). It cannot start with a digit.
         :param pulumi.Input[str] value: The value of the variable. The value can be 0 to 256 characters in length.
         """
+        if field_reves is not None:
+            pulumi.set(__self__, "field_reves", field_reves)
         if key is not None:
             pulumi.set(__self__, "key", key)
         if value is not None:
             pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter(name="fieldReves")
+    def field_reves(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupContainerEnvironmentVarFieldRefArgs']]]]:
+        """
+        The reference of the environment variable. See `field_ref` below.
+        """
+        return pulumi.get(self, "field_reves")
+
+    @field_reves.setter
+    def field_reves(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupContainerEnvironmentVarFieldRefArgs']]]]):
+        pulumi.set(self, "field_reves", value)
 
     @property
     @pulumi.getter
@@ -409,6 +447,29 @@ class ContainerGroupContainerEnvironmentVarArgs:
     @value.setter
     def value(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "value", value)
+
+
+@pulumi.input_type
+class ContainerGroupContainerEnvironmentVarFieldRefArgs:
+    def __init__(__self__, *,
+                 field_path: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] field_path: The path of the reference.
+        """
+        if field_path is not None:
+            pulumi.set(__self__, "field_path", field_path)
+
+    @property
+    @pulumi.getter(name="fieldPath")
+    def field_path(self) -> Optional[pulumi.Input[str]]:
+        """
+        The path of the reference.
+        """
+        return pulumi.get(self, "field_path")
+
+    @field_path.setter
+    def field_path(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "field_path", value)
 
 
 @pulumi.input_type
@@ -923,6 +984,68 @@ class ContainerGroupContainerReadinessProbeTcpSocketArgs:
 
 
 @pulumi.input_type
+class ContainerGroupContainerSecurityContextArgs:
+    def __init__(__self__, *,
+                 capabilities: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupContainerSecurityContextCapabilityArgs']]]] = None,
+                 run_as_user: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['ContainerGroupContainerSecurityContextCapabilityArgs']]] capabilities: The permissions that you want to grant to the processes in the containers. See `capability` below.
+        :param pulumi.Input[int] run_as_user: The ID of the user who runs the container.
+        """
+        if capabilities is not None:
+            pulumi.set(__self__, "capabilities", capabilities)
+        if run_as_user is not None:
+            pulumi.set(__self__, "run_as_user", run_as_user)
+
+    @property
+    @pulumi.getter
+    def capabilities(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupContainerSecurityContextCapabilityArgs']]]]:
+        """
+        The permissions that you want to grant to the processes in the containers. See `capability` below.
+        """
+        return pulumi.get(self, "capabilities")
+
+    @capabilities.setter
+    def capabilities(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupContainerSecurityContextCapabilityArgs']]]]):
+        pulumi.set(self, "capabilities", value)
+
+    @property
+    @pulumi.getter(name="runAsUser")
+    def run_as_user(self) -> Optional[pulumi.Input[int]]:
+        """
+        The ID of the user who runs the container.
+        """
+        return pulumi.get(self, "run_as_user")
+
+    @run_as_user.setter
+    def run_as_user(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "run_as_user", value)
+
+
+@pulumi.input_type
+class ContainerGroupContainerSecurityContextCapabilityArgs:
+    def __init__(__self__, *,
+                 adds: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] adds: The permissions that you want to grant to the processes in the containers.
+        """
+        if adds is not None:
+            pulumi.set(__self__, "adds", adds)
+
+    @property
+    @pulumi.getter
+    def adds(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The permissions that you want to grant to the processes in the containers.
+        """
+        return pulumi.get(self, "adds")
+
+    @adds.setter
+    def adds(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "adds", value)
+
+
+@pulumi.input_type
 class ContainerGroupContainerVolumeMountArgs:
     def __init__(__self__, *,
                  mount_path: Optional[pulumi.Input[str]] = None,
@@ -1072,68 +1195,6 @@ class ContainerGroupDnsConfigOptionArgs:
 
 
 @pulumi.input_type
-class ContainerGroupEciSecurityContextArgs:
-    def __init__(__self__, *,
-                 sysctls: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupEciSecurityContextSysctlArgs']]]] = None):
-        """
-        :param pulumi.Input[Sequence[pulumi.Input['ContainerGroupEciSecurityContextSysctlArgs']]] sysctls: Sysctls hold a list of namespaced sysctls used for the pod. Pods with unsupported sysctls (by the container runtime) might fail to launch. See `sysctls` below.
-        """
-        if sysctls is not None:
-            pulumi.set(__self__, "sysctls", sysctls)
-
-    @property
-    @pulumi.getter
-    def sysctls(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupEciSecurityContextSysctlArgs']]]]:
-        """
-        Sysctls hold a list of namespaced sysctls used for the pod. Pods with unsupported sysctls (by the container runtime) might fail to launch. See `sysctls` below.
-        """
-        return pulumi.get(self, "sysctls")
-
-    @sysctls.setter
-    def sysctls(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupEciSecurityContextSysctlArgs']]]]):
-        pulumi.set(self, "sysctls", value)
-
-
-@pulumi.input_type
-class ContainerGroupEciSecurityContextSysctlArgs:
-    def __init__(__self__, *,
-                 name: Optional[pulumi.Input[str]] = None,
-                 value: Optional[pulumi.Input[str]] = None):
-        """
-        :param pulumi.Input[str] name: The name of the mounted volume.
-        :param pulumi.Input[str] value: The value of the variable. The value can be 0 to 256 characters in length.
-        """
-        if name is not None:
-            pulumi.set(__self__, "name", name)
-        if value is not None:
-            pulumi.set(__self__, "value", value)
-
-    @property
-    @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[str]]:
-        """
-        The name of the mounted volume.
-        """
-        return pulumi.get(self, "name")
-
-    @name.setter
-    def name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "name", value)
-
-    @property
-    @pulumi.getter
-    def value(self) -> Optional[pulumi.Input[str]]:
-        """
-        The value of the variable. The value can be 0 to 256 characters in length.
-        """
-        return pulumi.get(self, "value")
-
-    @value.setter
-    def value(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "value", value)
-
-
-@pulumi.input_type
 class ContainerGroupHostAliasArgs:
     def __init__(__self__, *,
                  hostnames: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -1239,6 +1300,7 @@ class ContainerGroupInitContainerArgs:
                  ports: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupInitContainerPortArgs']]]] = None,
                  ready: Optional[pulumi.Input[bool]] = None,
                  restart_count: Optional[pulumi.Input[int]] = None,
+                 security_contexts: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupInitContainerSecurityContextArgs']]]] = None,
                  volume_mounts: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupInitContainerVolumeMountArgs']]]] = None,
                  working_dir: Optional[pulumi.Input[str]] = None):
         """
@@ -1254,6 +1316,7 @@ class ContainerGroupInitContainerArgs:
         :param pulumi.Input[Sequence[pulumi.Input['ContainerGroupInitContainerPortArgs']]] ports: The structure of port. See `ports` below.
         :param pulumi.Input[bool] ready: Indicates whether the container passed the readiness probe.
         :param pulumi.Input[int] restart_count: The number of times that the container restarted.
+        :param pulumi.Input[Sequence[pulumi.Input['ContainerGroupInitContainerSecurityContextArgs']]] security_contexts: The security context of the container. See `security_context` below.
         :param pulumi.Input[Sequence[pulumi.Input['ContainerGroupInitContainerVolumeMountArgs']]] volume_mounts: The structure of volumeMounts. See `volume_mounts` below.
         :param pulumi.Input[str] working_dir: The working directory of the container.
         """
@@ -1281,6 +1344,8 @@ class ContainerGroupInitContainerArgs:
             pulumi.set(__self__, "ready", ready)
         if restart_count is not None:
             pulumi.set(__self__, "restart_count", restart_count)
+        if security_contexts is not None:
+            pulumi.set(__self__, "security_contexts", security_contexts)
         if volume_mounts is not None:
             pulumi.set(__self__, "volume_mounts", volume_mounts)
         if working_dir is not None:
@@ -1431,6 +1496,18 @@ class ContainerGroupInitContainerArgs:
         pulumi.set(self, "restart_count", value)
 
     @property
+    @pulumi.getter(name="securityContexts")
+    def security_contexts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupInitContainerSecurityContextArgs']]]]:
+        """
+        The security context of the container. See `security_context` below.
+        """
+        return pulumi.get(self, "security_contexts")
+
+    @security_contexts.setter
+    def security_contexts(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupInitContainerSecurityContextArgs']]]]):
+        pulumi.set(self, "security_contexts", value)
+
+    @property
     @pulumi.getter(name="volumeMounts")
     def volume_mounts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupInitContainerVolumeMountArgs']]]]:
         """
@@ -1458,16 +1535,32 @@ class ContainerGroupInitContainerArgs:
 @pulumi.input_type
 class ContainerGroupInitContainerEnvironmentVarArgs:
     def __init__(__self__, *,
+                 field_reves: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupInitContainerEnvironmentVarFieldRefArgs']]]] = None,
                  key: Optional[pulumi.Input[str]] = None,
                  value: Optional[pulumi.Input[str]] = None):
         """
+        :param pulumi.Input[Sequence[pulumi.Input['ContainerGroupInitContainerEnvironmentVarFieldRefArgs']]] field_reves: The reference of the environment variable. See `field_ref` below.
         :param pulumi.Input[str] key: The name of the variable. The name can be 1 to 128 characters in length and can contain letters, digits, and underscores (_). It cannot start with a digit.
         :param pulumi.Input[str] value: The value of the variable. The value can be 0 to 256 characters in length.
         """
+        if field_reves is not None:
+            pulumi.set(__self__, "field_reves", field_reves)
         if key is not None:
             pulumi.set(__self__, "key", key)
         if value is not None:
             pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter(name="fieldReves")
+    def field_reves(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupInitContainerEnvironmentVarFieldRefArgs']]]]:
+        """
+        The reference of the environment variable. See `field_ref` below.
+        """
+        return pulumi.get(self, "field_reves")
+
+    @field_reves.setter
+    def field_reves(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupInitContainerEnvironmentVarFieldRefArgs']]]]):
+        pulumi.set(self, "field_reves", value)
 
     @property
     @pulumi.getter
@@ -1492,6 +1585,29 @@ class ContainerGroupInitContainerEnvironmentVarArgs:
     @value.setter
     def value(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "value", value)
+
+
+@pulumi.input_type
+class ContainerGroupInitContainerEnvironmentVarFieldRefArgs:
+    def __init__(__self__, *,
+                 field_path: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] field_path: The path of the reference.
+        """
+        if field_path is not None:
+            pulumi.set(__self__, "field_path", field_path)
+
+    @property
+    @pulumi.getter(name="fieldPath")
+    def field_path(self) -> Optional[pulumi.Input[str]]:
+        """
+        The path of the reference.
+        """
+        return pulumi.get(self, "field_path")
+
+    @field_path.setter
+    def field_path(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "field_path", value)
 
 
 @pulumi.input_type
@@ -1531,6 +1647,68 @@ class ContainerGroupInitContainerPortArgs:
     @protocol.setter
     def protocol(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "protocol", value)
+
+
+@pulumi.input_type
+class ContainerGroupInitContainerSecurityContextArgs:
+    def __init__(__self__, *,
+                 capabilities: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupInitContainerSecurityContextCapabilityArgs']]]] = None,
+                 run_as_user: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['ContainerGroupInitContainerSecurityContextCapabilityArgs']]] capabilities: The permissions that you want to grant to the processes in the containers. See `capability` below.
+        :param pulumi.Input[int] run_as_user: The ID of the user who runs the container.
+        """
+        if capabilities is not None:
+            pulumi.set(__self__, "capabilities", capabilities)
+        if run_as_user is not None:
+            pulumi.set(__self__, "run_as_user", run_as_user)
+
+    @property
+    @pulumi.getter
+    def capabilities(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupInitContainerSecurityContextCapabilityArgs']]]]:
+        """
+        The permissions that you want to grant to the processes in the containers. See `capability` below.
+        """
+        return pulumi.get(self, "capabilities")
+
+    @capabilities.setter
+    def capabilities(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupInitContainerSecurityContextCapabilityArgs']]]]):
+        pulumi.set(self, "capabilities", value)
+
+    @property
+    @pulumi.getter(name="runAsUser")
+    def run_as_user(self) -> Optional[pulumi.Input[int]]:
+        """
+        The ID of the user who runs the container.
+        """
+        return pulumi.get(self, "run_as_user")
+
+    @run_as_user.setter
+    def run_as_user(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "run_as_user", value)
+
+
+@pulumi.input_type
+class ContainerGroupInitContainerSecurityContextCapabilityArgs:
+    def __init__(__self__, *,
+                 adds: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] adds: The permissions that you want to grant to the processes in the containers.
+        """
+        if adds is not None:
+            pulumi.set(__self__, "adds", adds)
+
+    @property
+    @pulumi.getter
+    def adds(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The permissions that you want to grant to the processes in the containers.
+        """
+        return pulumi.get(self, "adds")
+
+    @adds.setter
+    def adds(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "adds", value)
 
 
 @pulumi.input_type
@@ -1586,6 +1764,68 @@ class ContainerGroupInitContainerVolumeMountArgs:
     @read_only.setter
     def read_only(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "read_only", value)
+
+
+@pulumi.input_type
+class ContainerGroupSecurityContextArgs:
+    def __init__(__self__, *,
+                 sysctls: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupSecurityContextSysctlArgs']]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['ContainerGroupSecurityContextSysctlArgs']]] sysctls: Sysctls hold a list of namespaced sysctls used for the pod. Pods with unsupported sysctls (by the container runtime) might fail to launch. See `sysctl` below.
+        """
+        if sysctls is not None:
+            pulumi.set(__self__, "sysctls", sysctls)
+
+    @property
+    @pulumi.getter
+    def sysctls(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupSecurityContextSysctlArgs']]]]:
+        """
+        Sysctls hold a list of namespaced sysctls used for the pod. Pods with unsupported sysctls (by the container runtime) might fail to launch. See `sysctl` below.
+        """
+        return pulumi.get(self, "sysctls")
+
+    @sysctls.setter
+    def sysctls(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupSecurityContextSysctlArgs']]]]):
+        pulumi.set(self, "sysctls", value)
+
+
+@pulumi.input_type
+class ContainerGroupSecurityContextSysctlArgs:
+    def __init__(__self__, *,
+                 name: Optional[pulumi.Input[str]] = None,
+                 value: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] name: The name of the mounted volume.
+        :param pulumi.Input[str] value: The value of the variable. The value can be 0 to 256 characters in length.
+        """
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the mounted volume.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[pulumi.Input[str]]:
+        """
+        The value of the variable. The value can be 0 to 256 characters in length.
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "value", value)
 
 
 @pulumi.input_type

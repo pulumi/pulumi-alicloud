@@ -53,7 +53,7 @@ import (
 //
 // ```sh
 //
-//	$ pulumi import alicloud:ga/accelerator:Accelerator example <accelerator_id>
+//	$ pulumi import alicloud:ga/accelerator:Accelerator example <id>
 //
 // ```
 type Accelerator struct {
@@ -62,12 +62,12 @@ type Accelerator struct {
 	// The Name of the GA instance.
 	AcceleratorName pulumi.StringPtrOutput `pulumi:"acceleratorName"`
 	// Auto renewal period of an instance, in the unit of month. The value range is 1-12.
-	AutoRenewDuration pulumi.IntPtrOutput `pulumi:"autoRenewDuration"`
+	AutoRenewDuration pulumi.IntOutput `pulumi:"autoRenewDuration"`
 	// Use coupons to pay bills automatically. Default value: `false`. Valid values:
 	AutoUseCoupon pulumi.BoolPtrOutput `pulumi:"autoUseCoupon"`
 	// The bandwidth billing method. Default value: `BandwidthPackage`. Valid values:
 	BandwidthBillingType pulumi.StringOutput `pulumi:"bandwidthBillingType"`
-	// The type of cross-border acceleration. Default value: `bgpPro`. Valid values: `bgpPro`, `private`.
+	// The type of cross-border acceleration. Default value: `bgpPro`. Valid values: `bgpPro`, `private`. **NOTE:** `crossBorderMode` is valid only when `crossBorderStatus` is set to `true`.
 	CrossBorderMode pulumi.StringOutput `pulumi:"crossBorderMode"`
 	// Indicates whether cross-border acceleration is enabled. Default value: `false`. Valid values:
 	CrossBorderStatus pulumi.BoolPtrOutput `pulumi:"crossBorderStatus"`
@@ -131,7 +131,7 @@ type acceleratorState struct {
 	AutoUseCoupon *bool `pulumi:"autoUseCoupon"`
 	// The bandwidth billing method. Default value: `BandwidthPackage`. Valid values:
 	BandwidthBillingType *string `pulumi:"bandwidthBillingType"`
-	// The type of cross-border acceleration. Default value: `bgpPro`. Valid values: `bgpPro`, `private`.
+	// The type of cross-border acceleration. Default value: `bgpPro`. Valid values: `bgpPro`, `private`. **NOTE:** `crossBorderMode` is valid only when `crossBorderStatus` is set to `true`.
 	CrossBorderMode *string `pulumi:"crossBorderMode"`
 	// Indicates whether cross-border acceleration is enabled. Default value: `false`. Valid values:
 	CrossBorderStatus *bool `pulumi:"crossBorderStatus"`
@@ -166,7 +166,7 @@ type AcceleratorState struct {
 	AutoUseCoupon pulumi.BoolPtrInput
 	// The bandwidth billing method. Default value: `BandwidthPackage`. Valid values:
 	BandwidthBillingType pulumi.StringPtrInput
-	// The type of cross-border acceleration. Default value: `bgpPro`. Valid values: `bgpPro`, `private`.
+	// The type of cross-border acceleration. Default value: `bgpPro`. Valid values: `bgpPro`, `private`. **NOTE:** `crossBorderMode` is valid only when `crossBorderStatus` is set to `true`.
 	CrossBorderMode pulumi.StringPtrInput
 	// Indicates whether cross-border acceleration is enabled. Default value: `false`. Valid values:
 	CrossBorderStatus pulumi.BoolPtrInput
@@ -205,7 +205,7 @@ type acceleratorArgs struct {
 	AutoUseCoupon *bool `pulumi:"autoUseCoupon"`
 	// The bandwidth billing method. Default value: `BandwidthPackage`. Valid values:
 	BandwidthBillingType *string `pulumi:"bandwidthBillingType"`
-	// The type of cross-border acceleration. Default value: `bgpPro`. Valid values: `bgpPro`, `private`.
+	// The type of cross-border acceleration. Default value: `bgpPro`. Valid values: `bgpPro`, `private`. **NOTE:** `crossBorderMode` is valid only when `crossBorderStatus` is set to `true`.
 	CrossBorderMode *string `pulumi:"crossBorderMode"`
 	// Indicates whether cross-border acceleration is enabled. Default value: `false`. Valid values:
 	CrossBorderStatus *bool `pulumi:"crossBorderStatus"`
@@ -239,7 +239,7 @@ type AcceleratorArgs struct {
 	AutoUseCoupon pulumi.BoolPtrInput
 	// The bandwidth billing method. Default value: `BandwidthPackage`. Valid values:
 	BandwidthBillingType pulumi.StringPtrInput
-	// The type of cross-border acceleration. Default value: `bgpPro`. Valid values: `bgpPro`, `private`.
+	// The type of cross-border acceleration. Default value: `bgpPro`. Valid values: `bgpPro`, `private`. **NOTE:** `crossBorderMode` is valid only when `crossBorderStatus` is set to `true`.
 	CrossBorderMode pulumi.StringPtrInput
 	// Indicates whether cross-border acceleration is enabled. Default value: `false`. Valid values:
 	CrossBorderStatus pulumi.BoolPtrInput
@@ -356,8 +356,8 @@ func (o AcceleratorOutput) AcceleratorName() pulumi.StringPtrOutput {
 }
 
 // Auto renewal period of an instance, in the unit of month. The value range is 1-12.
-func (o AcceleratorOutput) AutoRenewDuration() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *Accelerator) pulumi.IntPtrOutput { return v.AutoRenewDuration }).(pulumi.IntPtrOutput)
+func (o AcceleratorOutput) AutoRenewDuration() pulumi.IntOutput {
+	return o.ApplyT(func(v *Accelerator) pulumi.IntOutput { return v.AutoRenewDuration }).(pulumi.IntOutput)
 }
 
 // Use coupons to pay bills automatically. Default value: `false`. Valid values:
@@ -370,7 +370,7 @@ func (o AcceleratorOutput) BandwidthBillingType() pulumi.StringOutput {
 	return o.ApplyT(func(v *Accelerator) pulumi.StringOutput { return v.BandwidthBillingType }).(pulumi.StringOutput)
 }
 
-// The type of cross-border acceleration. Default value: `bgpPro`. Valid values: `bgpPro`, `private`.
+// The type of cross-border acceleration. Default value: `bgpPro`. Valid values: `bgpPro`, `private`. **NOTE:** `crossBorderMode` is valid only when `crossBorderStatus` is set to `true`.
 func (o AcceleratorOutput) CrossBorderMode() pulumi.StringOutput {
 	return o.ApplyT(func(v *Accelerator) pulumi.StringOutput { return v.CrossBorderMode }).(pulumi.StringOutput)
 }

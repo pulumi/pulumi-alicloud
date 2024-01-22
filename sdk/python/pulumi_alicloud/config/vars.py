@@ -151,6 +151,10 @@ class _ExportableConfig(types.ModuleType):
         return __config__.get('sharedCredentialsFile')
 
     @property
+    def sign_version(self) -> Optional[str]:
+        return __config__.get('signVersion')
+
+    @property
     def skip_region_validation(self) -> Optional[bool]:
         """
         Skip static validation of region ID. Used by users of alternative AlibabaCloud-like APIs or users w/ access to regions

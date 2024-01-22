@@ -96,7 +96,7 @@ import (
 //
 // ## Import
 //
-// MongoDB can be imported using the id, e.g.
+// MongoDB instance can be imported using the id, e.g.
 //
 // ```sh
 //
@@ -127,6 +127,8 @@ type Instance struct {
 	// - Custom storage space.
 	// - 10-GB increments.
 	DbInstanceStorage pulumi.IntOutput `pulumi:"dbInstanceStorage"`
+	// The time when the changed configurations take effect. Valid values: `Immediately`, `MaintainTime`.
+	EffectiveTime pulumi.StringPtrOutput `pulumi:"effectiveTime"`
 	// Whether to enable cloud disk encryption. Default value: `false`. Valid values: `true`, `false`.
 	Encrypted pulumi.BoolPtrOutput `pulumi:"encrypted"`
 	// The ID of the custom key.
@@ -147,7 +149,7 @@ type Instance struct {
 	MaintainEndTime pulumi.StringOutput `pulumi:"maintainEndTime"`
 	// The start time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time).
 	MaintainStartTime pulumi.StringOutput `pulumi:"maintainStartTime"`
-	// The name of DB instance. It a string of 2 to 256 characters.
+	// The name of DB instance. It must be 2 to 256 characters in length.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The network type of the instance. Valid values:`Classic`, `VPC`.
 	NetworkType pulumi.StringOutput `pulumi:"networkType"`
@@ -155,7 +157,7 @@ type Instance struct {
 	OrderType pulumi.StringPtrOutput `pulumi:"orderType"`
 	// Set of parameters needs to be set after mongodb instance was launched. See `parameters` below.
 	Parameters InstanceParameterArrayOutput `pulumi:"parameters"`
-	// The duration that you will buy DB instance (in month). It is valid when instanceChargeType is `PrePaid`. Default value: `1`. Valid values: [1~9], 12, 24, 36.
+	// The duration that you will buy DB instance (in month). It is valid when `instanceChargeType` is `PrePaid`. Default value: `1`. Valid values: [1~9], 12, 24, 36.
 	Period pulumi.IntOutput `pulumi:"period"`
 	// The number of read-only nodes in the replica set instance. Default value: 0. Valid values: 0 to 5.
 	ReadonlyReplicas pulumi.IntOutput `pulumi:"readonlyReplicas"`
@@ -268,6 +270,8 @@ type instanceState struct {
 	// - Custom storage space.
 	// - 10-GB increments.
 	DbInstanceStorage *int `pulumi:"dbInstanceStorage"`
+	// The time when the changed configurations take effect. Valid values: `Immediately`, `MaintainTime`.
+	EffectiveTime *string `pulumi:"effectiveTime"`
 	// Whether to enable cloud disk encryption. Default value: `false`. Valid values: `true`, `false`.
 	Encrypted *bool `pulumi:"encrypted"`
 	// The ID of the custom key.
@@ -288,7 +292,7 @@ type instanceState struct {
 	MaintainEndTime *string `pulumi:"maintainEndTime"`
 	// The start time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time).
 	MaintainStartTime *string `pulumi:"maintainStartTime"`
-	// The name of DB instance. It a string of 2 to 256 characters.
+	// The name of DB instance. It must be 2 to 256 characters in length.
 	Name *string `pulumi:"name"`
 	// The network type of the instance. Valid values:`Classic`, `VPC`.
 	NetworkType *string `pulumi:"networkType"`
@@ -296,7 +300,7 @@ type instanceState struct {
 	OrderType *string `pulumi:"orderType"`
 	// Set of parameters needs to be set after mongodb instance was launched. See `parameters` below.
 	Parameters []InstanceParameter `pulumi:"parameters"`
-	// The duration that you will buy DB instance (in month). It is valid when instanceChargeType is `PrePaid`. Default value: `1`. Valid values: [1~9], 12, 24, 36.
+	// The duration that you will buy DB instance (in month). It is valid when `instanceChargeType` is `PrePaid`. Default value: `1`. Valid values: [1~9], 12, 24, 36.
 	Period *int `pulumi:"period"`
 	// The number of read-only nodes in the replica set instance. Default value: 0. Valid values: 0 to 5.
 	ReadonlyReplicas *int `pulumi:"readonlyReplicas"`
@@ -364,6 +368,8 @@ type InstanceState struct {
 	// - Custom storage space.
 	// - 10-GB increments.
 	DbInstanceStorage pulumi.IntPtrInput
+	// The time when the changed configurations take effect. Valid values: `Immediately`, `MaintainTime`.
+	EffectiveTime pulumi.StringPtrInput
 	// Whether to enable cloud disk encryption. Default value: `false`. Valid values: `true`, `false`.
 	Encrypted pulumi.BoolPtrInput
 	// The ID of the custom key.
@@ -384,7 +390,7 @@ type InstanceState struct {
 	MaintainEndTime pulumi.StringPtrInput
 	// The start time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time).
 	MaintainStartTime pulumi.StringPtrInput
-	// The name of DB instance. It a string of 2 to 256 characters.
+	// The name of DB instance. It must be 2 to 256 characters in length.
 	Name pulumi.StringPtrInput
 	// The network type of the instance. Valid values:`Classic`, `VPC`.
 	NetworkType pulumi.StringPtrInput
@@ -392,7 +398,7 @@ type InstanceState struct {
 	OrderType pulumi.StringPtrInput
 	// Set of parameters needs to be set after mongodb instance was launched. See `parameters` below.
 	Parameters InstanceParameterArrayInput
-	// The duration that you will buy DB instance (in month). It is valid when instanceChargeType is `PrePaid`. Default value: `1`. Valid values: [1~9], 12, 24, 36.
+	// The duration that you will buy DB instance (in month). It is valid when `instanceChargeType` is `PrePaid`. Default value: `1`. Valid values: [1~9], 12, 24, 36.
 	Period pulumi.IntPtrInput
 	// The number of read-only nodes in the replica set instance. Default value: 0. Valid values: 0 to 5.
 	ReadonlyReplicas pulumi.IntPtrInput
@@ -464,6 +470,8 @@ type instanceArgs struct {
 	// - Custom storage space.
 	// - 10-GB increments.
 	DbInstanceStorage int `pulumi:"dbInstanceStorage"`
+	// The time when the changed configurations take effect. Valid values: `Immediately`, `MaintainTime`.
+	EffectiveTime *string `pulumi:"effectiveTime"`
 	// Whether to enable cloud disk encryption. Default value: `false`. Valid values: `true`, `false`.
 	Encrypted *bool `pulumi:"encrypted"`
 	// The ID of the custom key.
@@ -484,7 +492,7 @@ type instanceArgs struct {
 	MaintainEndTime *string `pulumi:"maintainEndTime"`
 	// The start time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time).
 	MaintainStartTime *string `pulumi:"maintainStartTime"`
-	// The name of DB instance. It a string of 2 to 256 characters.
+	// The name of DB instance. It must be 2 to 256 characters in length.
 	Name *string `pulumi:"name"`
 	// The network type of the instance. Valid values:`Classic`, `VPC`.
 	NetworkType *string `pulumi:"networkType"`
@@ -492,7 +500,7 @@ type instanceArgs struct {
 	OrderType *string `pulumi:"orderType"`
 	// Set of parameters needs to be set after mongodb instance was launched. See `parameters` below.
 	Parameters []InstanceParameter `pulumi:"parameters"`
-	// The duration that you will buy DB instance (in month). It is valid when instanceChargeType is `PrePaid`. Default value: `1`. Valid values: [1~9], 12, 24, 36.
+	// The duration that you will buy DB instance (in month). It is valid when `instanceChargeType` is `PrePaid`. Default value: `1`. Valid values: [1~9], 12, 24, 36.
 	Period *int `pulumi:"period"`
 	// The number of read-only nodes in the replica set instance. Default value: 0. Valid values: 0 to 5.
 	ReadonlyReplicas *int `pulumi:"readonlyReplicas"`
@@ -553,6 +561,8 @@ type InstanceArgs struct {
 	// - Custom storage space.
 	// - 10-GB increments.
 	DbInstanceStorage pulumi.IntInput
+	// The time when the changed configurations take effect. Valid values: `Immediately`, `MaintainTime`.
+	EffectiveTime pulumi.StringPtrInput
 	// Whether to enable cloud disk encryption. Default value: `false`. Valid values: `true`, `false`.
 	Encrypted pulumi.BoolPtrInput
 	// The ID of the custom key.
@@ -573,7 +583,7 @@ type InstanceArgs struct {
 	MaintainEndTime pulumi.StringPtrInput
 	// The start time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time).
 	MaintainStartTime pulumi.StringPtrInput
-	// The name of DB instance. It a string of 2 to 256 characters.
+	// The name of DB instance. It must be 2 to 256 characters in length.
 	Name pulumi.StringPtrInput
 	// The network type of the instance. Valid values:`Classic`, `VPC`.
 	NetworkType pulumi.StringPtrInput
@@ -581,7 +591,7 @@ type InstanceArgs struct {
 	OrderType pulumi.StringPtrInput
 	// Set of parameters needs to be set after mongodb instance was launched. See `parameters` below.
 	Parameters InstanceParameterArrayInput
-	// The duration that you will buy DB instance (in month). It is valid when instanceChargeType is `PrePaid`. Default value: `1`. Valid values: [1~9], 12, 24, 36.
+	// The duration that you will buy DB instance (in month). It is valid when `instanceChargeType` is `PrePaid`. Default value: `1`. Valid values: [1~9], 12, 24, 36.
 	Period pulumi.IntPtrInput
 	// The number of read-only nodes in the replica set instance. Default value: 0. Valid values: 0 to 5.
 	ReadonlyReplicas pulumi.IntPtrInput
@@ -754,6 +764,11 @@ func (o InstanceOutput) DbInstanceStorage() pulumi.IntOutput {
 	return o.ApplyT(func(v *Instance) pulumi.IntOutput { return v.DbInstanceStorage }).(pulumi.IntOutput)
 }
 
+// The time when the changed configurations take effect. Valid values: `Immediately`, `MaintainTime`.
+func (o InstanceOutput) EffectiveTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.EffectiveTime }).(pulumi.StringPtrOutput)
+}
+
 // Whether to enable cloud disk encryption. Default value: `false`. Valid values: `true`, `false`.
 func (o InstanceOutput) Encrypted() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.BoolPtrOutput { return v.Encrypted }).(pulumi.BoolPtrOutput)
@@ -804,7 +819,7 @@ func (o InstanceOutput) MaintainStartTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.MaintainStartTime }).(pulumi.StringOutput)
 }
 
-// The name of DB instance. It a string of 2 to 256 characters.
+// The name of DB instance. It must be 2 to 256 characters in length.
 func (o InstanceOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -824,7 +839,7 @@ func (o InstanceOutput) Parameters() InstanceParameterArrayOutput {
 	return o.ApplyT(func(v *Instance) InstanceParameterArrayOutput { return v.Parameters }).(InstanceParameterArrayOutput)
 }
 
-// The duration that you will buy DB instance (in month). It is valid when instanceChargeType is `PrePaid`. Default value: `1`. Valid values: [1~9], 12, 24, 36.
+// The duration that you will buy DB instance (in month). It is valid when `instanceChargeType` is `PrePaid`. Default value: `1`. Valid values: [1~9], 12, 24, 36.
 func (o InstanceOutput) Period() pulumi.IntOutput {
 	return o.ApplyT(func(v *Instance) pulumi.IntOutput { return v.Period }).(pulumi.IntOutput)
 }

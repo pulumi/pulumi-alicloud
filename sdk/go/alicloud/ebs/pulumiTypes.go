@@ -13,6 +13,1009 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type EnterpriseSnapshotPolicyCrossRegionCopyInfo struct {
+	// Enable Snapshot replication.
+	Enabled *bool `pulumi:"enabled"`
+	// Destination region for Snapshot replication. See `regions` below.
+	Regions []EnterpriseSnapshotPolicyCrossRegionCopyInfoRegion `pulumi:"regions"`
+}
+
+// EnterpriseSnapshotPolicyCrossRegionCopyInfoInput is an input type that accepts EnterpriseSnapshotPolicyCrossRegionCopyInfoArgs and EnterpriseSnapshotPolicyCrossRegionCopyInfoOutput values.
+// You can construct a concrete instance of `EnterpriseSnapshotPolicyCrossRegionCopyInfoInput` via:
+//
+//	EnterpriseSnapshotPolicyCrossRegionCopyInfoArgs{...}
+type EnterpriseSnapshotPolicyCrossRegionCopyInfoInput interface {
+	pulumi.Input
+
+	ToEnterpriseSnapshotPolicyCrossRegionCopyInfoOutput() EnterpriseSnapshotPolicyCrossRegionCopyInfoOutput
+	ToEnterpriseSnapshotPolicyCrossRegionCopyInfoOutputWithContext(context.Context) EnterpriseSnapshotPolicyCrossRegionCopyInfoOutput
+}
+
+type EnterpriseSnapshotPolicyCrossRegionCopyInfoArgs struct {
+	// Enable Snapshot replication.
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	// Destination region for Snapshot replication. See `regions` below.
+	Regions EnterpriseSnapshotPolicyCrossRegionCopyInfoRegionArrayInput `pulumi:"regions"`
+}
+
+func (EnterpriseSnapshotPolicyCrossRegionCopyInfoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EnterpriseSnapshotPolicyCrossRegionCopyInfo)(nil)).Elem()
+}
+
+func (i EnterpriseSnapshotPolicyCrossRegionCopyInfoArgs) ToEnterpriseSnapshotPolicyCrossRegionCopyInfoOutput() EnterpriseSnapshotPolicyCrossRegionCopyInfoOutput {
+	return i.ToEnterpriseSnapshotPolicyCrossRegionCopyInfoOutputWithContext(context.Background())
+}
+
+func (i EnterpriseSnapshotPolicyCrossRegionCopyInfoArgs) ToEnterpriseSnapshotPolicyCrossRegionCopyInfoOutputWithContext(ctx context.Context) EnterpriseSnapshotPolicyCrossRegionCopyInfoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseSnapshotPolicyCrossRegionCopyInfoOutput)
+}
+
+func (i EnterpriseSnapshotPolicyCrossRegionCopyInfoArgs) ToEnterpriseSnapshotPolicyCrossRegionCopyInfoPtrOutput() EnterpriseSnapshotPolicyCrossRegionCopyInfoPtrOutput {
+	return i.ToEnterpriseSnapshotPolicyCrossRegionCopyInfoPtrOutputWithContext(context.Background())
+}
+
+func (i EnterpriseSnapshotPolicyCrossRegionCopyInfoArgs) ToEnterpriseSnapshotPolicyCrossRegionCopyInfoPtrOutputWithContext(ctx context.Context) EnterpriseSnapshotPolicyCrossRegionCopyInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseSnapshotPolicyCrossRegionCopyInfoOutput).ToEnterpriseSnapshotPolicyCrossRegionCopyInfoPtrOutputWithContext(ctx)
+}
+
+// EnterpriseSnapshotPolicyCrossRegionCopyInfoPtrInput is an input type that accepts EnterpriseSnapshotPolicyCrossRegionCopyInfoArgs, EnterpriseSnapshotPolicyCrossRegionCopyInfoPtr and EnterpriseSnapshotPolicyCrossRegionCopyInfoPtrOutput values.
+// You can construct a concrete instance of `EnterpriseSnapshotPolicyCrossRegionCopyInfoPtrInput` via:
+//
+//	        EnterpriseSnapshotPolicyCrossRegionCopyInfoArgs{...}
+//
+//	or:
+//
+//	        nil
+type EnterpriseSnapshotPolicyCrossRegionCopyInfoPtrInput interface {
+	pulumi.Input
+
+	ToEnterpriseSnapshotPolicyCrossRegionCopyInfoPtrOutput() EnterpriseSnapshotPolicyCrossRegionCopyInfoPtrOutput
+	ToEnterpriseSnapshotPolicyCrossRegionCopyInfoPtrOutputWithContext(context.Context) EnterpriseSnapshotPolicyCrossRegionCopyInfoPtrOutput
+}
+
+type enterpriseSnapshotPolicyCrossRegionCopyInfoPtrType EnterpriseSnapshotPolicyCrossRegionCopyInfoArgs
+
+func EnterpriseSnapshotPolicyCrossRegionCopyInfoPtr(v *EnterpriseSnapshotPolicyCrossRegionCopyInfoArgs) EnterpriseSnapshotPolicyCrossRegionCopyInfoPtrInput {
+	return (*enterpriseSnapshotPolicyCrossRegionCopyInfoPtrType)(v)
+}
+
+func (*enterpriseSnapshotPolicyCrossRegionCopyInfoPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**EnterpriseSnapshotPolicyCrossRegionCopyInfo)(nil)).Elem()
+}
+
+func (i *enterpriseSnapshotPolicyCrossRegionCopyInfoPtrType) ToEnterpriseSnapshotPolicyCrossRegionCopyInfoPtrOutput() EnterpriseSnapshotPolicyCrossRegionCopyInfoPtrOutput {
+	return i.ToEnterpriseSnapshotPolicyCrossRegionCopyInfoPtrOutputWithContext(context.Background())
+}
+
+func (i *enterpriseSnapshotPolicyCrossRegionCopyInfoPtrType) ToEnterpriseSnapshotPolicyCrossRegionCopyInfoPtrOutputWithContext(ctx context.Context) EnterpriseSnapshotPolicyCrossRegionCopyInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseSnapshotPolicyCrossRegionCopyInfoPtrOutput)
+}
+
+type EnterpriseSnapshotPolicyCrossRegionCopyInfoOutput struct{ *pulumi.OutputState }
+
+func (EnterpriseSnapshotPolicyCrossRegionCopyInfoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EnterpriseSnapshotPolicyCrossRegionCopyInfo)(nil)).Elem()
+}
+
+func (o EnterpriseSnapshotPolicyCrossRegionCopyInfoOutput) ToEnterpriseSnapshotPolicyCrossRegionCopyInfoOutput() EnterpriseSnapshotPolicyCrossRegionCopyInfoOutput {
+	return o
+}
+
+func (o EnterpriseSnapshotPolicyCrossRegionCopyInfoOutput) ToEnterpriseSnapshotPolicyCrossRegionCopyInfoOutputWithContext(ctx context.Context) EnterpriseSnapshotPolicyCrossRegionCopyInfoOutput {
+	return o
+}
+
+func (o EnterpriseSnapshotPolicyCrossRegionCopyInfoOutput) ToEnterpriseSnapshotPolicyCrossRegionCopyInfoPtrOutput() EnterpriseSnapshotPolicyCrossRegionCopyInfoPtrOutput {
+	return o.ToEnterpriseSnapshotPolicyCrossRegionCopyInfoPtrOutputWithContext(context.Background())
+}
+
+func (o EnterpriseSnapshotPolicyCrossRegionCopyInfoOutput) ToEnterpriseSnapshotPolicyCrossRegionCopyInfoPtrOutputWithContext(ctx context.Context) EnterpriseSnapshotPolicyCrossRegionCopyInfoPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EnterpriseSnapshotPolicyCrossRegionCopyInfo) *EnterpriseSnapshotPolicyCrossRegionCopyInfo {
+		return &v
+	}).(EnterpriseSnapshotPolicyCrossRegionCopyInfoPtrOutput)
+}
+
+// Enable Snapshot replication.
+func (o EnterpriseSnapshotPolicyCrossRegionCopyInfoOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v EnterpriseSnapshotPolicyCrossRegionCopyInfo) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+// Destination region for Snapshot replication. See `regions` below.
+func (o EnterpriseSnapshotPolicyCrossRegionCopyInfoOutput) Regions() EnterpriseSnapshotPolicyCrossRegionCopyInfoRegionArrayOutput {
+	return o.ApplyT(func(v EnterpriseSnapshotPolicyCrossRegionCopyInfo) []EnterpriseSnapshotPolicyCrossRegionCopyInfoRegion {
+		return v.Regions
+	}).(EnterpriseSnapshotPolicyCrossRegionCopyInfoRegionArrayOutput)
+}
+
+type EnterpriseSnapshotPolicyCrossRegionCopyInfoPtrOutput struct{ *pulumi.OutputState }
+
+func (EnterpriseSnapshotPolicyCrossRegionCopyInfoPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EnterpriseSnapshotPolicyCrossRegionCopyInfo)(nil)).Elem()
+}
+
+func (o EnterpriseSnapshotPolicyCrossRegionCopyInfoPtrOutput) ToEnterpriseSnapshotPolicyCrossRegionCopyInfoPtrOutput() EnterpriseSnapshotPolicyCrossRegionCopyInfoPtrOutput {
+	return o
+}
+
+func (o EnterpriseSnapshotPolicyCrossRegionCopyInfoPtrOutput) ToEnterpriseSnapshotPolicyCrossRegionCopyInfoPtrOutputWithContext(ctx context.Context) EnterpriseSnapshotPolicyCrossRegionCopyInfoPtrOutput {
+	return o
+}
+
+func (o EnterpriseSnapshotPolicyCrossRegionCopyInfoPtrOutput) Elem() EnterpriseSnapshotPolicyCrossRegionCopyInfoOutput {
+	return o.ApplyT(func(v *EnterpriseSnapshotPolicyCrossRegionCopyInfo) EnterpriseSnapshotPolicyCrossRegionCopyInfo {
+		if v != nil {
+			return *v
+		}
+		var ret EnterpriseSnapshotPolicyCrossRegionCopyInfo
+		return ret
+	}).(EnterpriseSnapshotPolicyCrossRegionCopyInfoOutput)
+}
+
+// Enable Snapshot replication.
+func (o EnterpriseSnapshotPolicyCrossRegionCopyInfoPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *EnterpriseSnapshotPolicyCrossRegionCopyInfo) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Destination region for Snapshot replication. See `regions` below.
+func (o EnterpriseSnapshotPolicyCrossRegionCopyInfoPtrOutput) Regions() EnterpriseSnapshotPolicyCrossRegionCopyInfoRegionArrayOutput {
+	return o.ApplyT(func(v *EnterpriseSnapshotPolicyCrossRegionCopyInfo) []EnterpriseSnapshotPolicyCrossRegionCopyInfoRegion {
+		if v == nil {
+			return nil
+		}
+		return v.Regions
+	}).(EnterpriseSnapshotPolicyCrossRegionCopyInfoRegionArrayOutput)
+}
+
+type EnterpriseSnapshotPolicyCrossRegionCopyInfoRegion struct {
+	// Destination region ID.
+	RegionId *string `pulumi:"regionId"`
+	// Number of days of snapshot retention for replication.
+	RetainDays *int `pulumi:"retainDays"`
+}
+
+// EnterpriseSnapshotPolicyCrossRegionCopyInfoRegionInput is an input type that accepts EnterpriseSnapshotPolicyCrossRegionCopyInfoRegionArgs and EnterpriseSnapshotPolicyCrossRegionCopyInfoRegionOutput values.
+// You can construct a concrete instance of `EnterpriseSnapshotPolicyCrossRegionCopyInfoRegionInput` via:
+//
+//	EnterpriseSnapshotPolicyCrossRegionCopyInfoRegionArgs{...}
+type EnterpriseSnapshotPolicyCrossRegionCopyInfoRegionInput interface {
+	pulumi.Input
+
+	ToEnterpriseSnapshotPolicyCrossRegionCopyInfoRegionOutput() EnterpriseSnapshotPolicyCrossRegionCopyInfoRegionOutput
+	ToEnterpriseSnapshotPolicyCrossRegionCopyInfoRegionOutputWithContext(context.Context) EnterpriseSnapshotPolicyCrossRegionCopyInfoRegionOutput
+}
+
+type EnterpriseSnapshotPolicyCrossRegionCopyInfoRegionArgs struct {
+	// Destination region ID.
+	RegionId pulumi.StringPtrInput `pulumi:"regionId"`
+	// Number of days of snapshot retention for replication.
+	RetainDays pulumi.IntPtrInput `pulumi:"retainDays"`
+}
+
+func (EnterpriseSnapshotPolicyCrossRegionCopyInfoRegionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EnterpriseSnapshotPolicyCrossRegionCopyInfoRegion)(nil)).Elem()
+}
+
+func (i EnterpriseSnapshotPolicyCrossRegionCopyInfoRegionArgs) ToEnterpriseSnapshotPolicyCrossRegionCopyInfoRegionOutput() EnterpriseSnapshotPolicyCrossRegionCopyInfoRegionOutput {
+	return i.ToEnterpriseSnapshotPolicyCrossRegionCopyInfoRegionOutputWithContext(context.Background())
+}
+
+func (i EnterpriseSnapshotPolicyCrossRegionCopyInfoRegionArgs) ToEnterpriseSnapshotPolicyCrossRegionCopyInfoRegionOutputWithContext(ctx context.Context) EnterpriseSnapshotPolicyCrossRegionCopyInfoRegionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseSnapshotPolicyCrossRegionCopyInfoRegionOutput)
+}
+
+// EnterpriseSnapshotPolicyCrossRegionCopyInfoRegionArrayInput is an input type that accepts EnterpriseSnapshotPolicyCrossRegionCopyInfoRegionArray and EnterpriseSnapshotPolicyCrossRegionCopyInfoRegionArrayOutput values.
+// You can construct a concrete instance of `EnterpriseSnapshotPolicyCrossRegionCopyInfoRegionArrayInput` via:
+//
+//	EnterpriseSnapshotPolicyCrossRegionCopyInfoRegionArray{ EnterpriseSnapshotPolicyCrossRegionCopyInfoRegionArgs{...} }
+type EnterpriseSnapshotPolicyCrossRegionCopyInfoRegionArrayInput interface {
+	pulumi.Input
+
+	ToEnterpriseSnapshotPolicyCrossRegionCopyInfoRegionArrayOutput() EnterpriseSnapshotPolicyCrossRegionCopyInfoRegionArrayOutput
+	ToEnterpriseSnapshotPolicyCrossRegionCopyInfoRegionArrayOutputWithContext(context.Context) EnterpriseSnapshotPolicyCrossRegionCopyInfoRegionArrayOutput
+}
+
+type EnterpriseSnapshotPolicyCrossRegionCopyInfoRegionArray []EnterpriseSnapshotPolicyCrossRegionCopyInfoRegionInput
+
+func (EnterpriseSnapshotPolicyCrossRegionCopyInfoRegionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EnterpriseSnapshotPolicyCrossRegionCopyInfoRegion)(nil)).Elem()
+}
+
+func (i EnterpriseSnapshotPolicyCrossRegionCopyInfoRegionArray) ToEnterpriseSnapshotPolicyCrossRegionCopyInfoRegionArrayOutput() EnterpriseSnapshotPolicyCrossRegionCopyInfoRegionArrayOutput {
+	return i.ToEnterpriseSnapshotPolicyCrossRegionCopyInfoRegionArrayOutputWithContext(context.Background())
+}
+
+func (i EnterpriseSnapshotPolicyCrossRegionCopyInfoRegionArray) ToEnterpriseSnapshotPolicyCrossRegionCopyInfoRegionArrayOutputWithContext(ctx context.Context) EnterpriseSnapshotPolicyCrossRegionCopyInfoRegionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseSnapshotPolicyCrossRegionCopyInfoRegionArrayOutput)
+}
+
+type EnterpriseSnapshotPolicyCrossRegionCopyInfoRegionOutput struct{ *pulumi.OutputState }
+
+func (EnterpriseSnapshotPolicyCrossRegionCopyInfoRegionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EnterpriseSnapshotPolicyCrossRegionCopyInfoRegion)(nil)).Elem()
+}
+
+func (o EnterpriseSnapshotPolicyCrossRegionCopyInfoRegionOutput) ToEnterpriseSnapshotPolicyCrossRegionCopyInfoRegionOutput() EnterpriseSnapshotPolicyCrossRegionCopyInfoRegionOutput {
+	return o
+}
+
+func (o EnterpriseSnapshotPolicyCrossRegionCopyInfoRegionOutput) ToEnterpriseSnapshotPolicyCrossRegionCopyInfoRegionOutputWithContext(ctx context.Context) EnterpriseSnapshotPolicyCrossRegionCopyInfoRegionOutput {
+	return o
+}
+
+// Destination region ID.
+func (o EnterpriseSnapshotPolicyCrossRegionCopyInfoRegionOutput) RegionId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EnterpriseSnapshotPolicyCrossRegionCopyInfoRegion) *string { return v.RegionId }).(pulumi.StringPtrOutput)
+}
+
+// Number of days of snapshot retention for replication.
+func (o EnterpriseSnapshotPolicyCrossRegionCopyInfoRegionOutput) RetainDays() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v EnterpriseSnapshotPolicyCrossRegionCopyInfoRegion) *int { return v.RetainDays }).(pulumi.IntPtrOutput)
+}
+
+type EnterpriseSnapshotPolicyCrossRegionCopyInfoRegionArrayOutput struct{ *pulumi.OutputState }
+
+func (EnterpriseSnapshotPolicyCrossRegionCopyInfoRegionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EnterpriseSnapshotPolicyCrossRegionCopyInfoRegion)(nil)).Elem()
+}
+
+func (o EnterpriseSnapshotPolicyCrossRegionCopyInfoRegionArrayOutput) ToEnterpriseSnapshotPolicyCrossRegionCopyInfoRegionArrayOutput() EnterpriseSnapshotPolicyCrossRegionCopyInfoRegionArrayOutput {
+	return o
+}
+
+func (o EnterpriseSnapshotPolicyCrossRegionCopyInfoRegionArrayOutput) ToEnterpriseSnapshotPolicyCrossRegionCopyInfoRegionArrayOutputWithContext(ctx context.Context) EnterpriseSnapshotPolicyCrossRegionCopyInfoRegionArrayOutput {
+	return o
+}
+
+func (o EnterpriseSnapshotPolicyCrossRegionCopyInfoRegionArrayOutput) Index(i pulumi.IntInput) EnterpriseSnapshotPolicyCrossRegionCopyInfoRegionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EnterpriseSnapshotPolicyCrossRegionCopyInfoRegion {
+		return vs[0].([]EnterpriseSnapshotPolicyCrossRegionCopyInfoRegion)[vs[1].(int)]
+	}).(EnterpriseSnapshotPolicyCrossRegionCopyInfoRegionOutput)
+}
+
+type EnterpriseSnapshotPolicyRetainRule struct {
+	// Retention based on counting method.
+	Number *int `pulumi:"number"`
+	// Time unit.
+	TimeInterval *int `pulumi:"timeInterval"`
+	// Time-based retention.
+	TimeUnit *string `pulumi:"timeUnit"`
+}
+
+// EnterpriseSnapshotPolicyRetainRuleInput is an input type that accepts EnterpriseSnapshotPolicyRetainRuleArgs and EnterpriseSnapshotPolicyRetainRuleOutput values.
+// You can construct a concrete instance of `EnterpriseSnapshotPolicyRetainRuleInput` via:
+//
+//	EnterpriseSnapshotPolicyRetainRuleArgs{...}
+type EnterpriseSnapshotPolicyRetainRuleInput interface {
+	pulumi.Input
+
+	ToEnterpriseSnapshotPolicyRetainRuleOutput() EnterpriseSnapshotPolicyRetainRuleOutput
+	ToEnterpriseSnapshotPolicyRetainRuleOutputWithContext(context.Context) EnterpriseSnapshotPolicyRetainRuleOutput
+}
+
+type EnterpriseSnapshotPolicyRetainRuleArgs struct {
+	// Retention based on counting method.
+	Number pulumi.IntPtrInput `pulumi:"number"`
+	// Time unit.
+	TimeInterval pulumi.IntPtrInput `pulumi:"timeInterval"`
+	// Time-based retention.
+	TimeUnit pulumi.StringPtrInput `pulumi:"timeUnit"`
+}
+
+func (EnterpriseSnapshotPolicyRetainRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EnterpriseSnapshotPolicyRetainRule)(nil)).Elem()
+}
+
+func (i EnterpriseSnapshotPolicyRetainRuleArgs) ToEnterpriseSnapshotPolicyRetainRuleOutput() EnterpriseSnapshotPolicyRetainRuleOutput {
+	return i.ToEnterpriseSnapshotPolicyRetainRuleOutputWithContext(context.Background())
+}
+
+func (i EnterpriseSnapshotPolicyRetainRuleArgs) ToEnterpriseSnapshotPolicyRetainRuleOutputWithContext(ctx context.Context) EnterpriseSnapshotPolicyRetainRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseSnapshotPolicyRetainRuleOutput)
+}
+
+func (i EnterpriseSnapshotPolicyRetainRuleArgs) ToEnterpriseSnapshotPolicyRetainRulePtrOutput() EnterpriseSnapshotPolicyRetainRulePtrOutput {
+	return i.ToEnterpriseSnapshotPolicyRetainRulePtrOutputWithContext(context.Background())
+}
+
+func (i EnterpriseSnapshotPolicyRetainRuleArgs) ToEnterpriseSnapshotPolicyRetainRulePtrOutputWithContext(ctx context.Context) EnterpriseSnapshotPolicyRetainRulePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseSnapshotPolicyRetainRuleOutput).ToEnterpriseSnapshotPolicyRetainRulePtrOutputWithContext(ctx)
+}
+
+// EnterpriseSnapshotPolicyRetainRulePtrInput is an input type that accepts EnterpriseSnapshotPolicyRetainRuleArgs, EnterpriseSnapshotPolicyRetainRulePtr and EnterpriseSnapshotPolicyRetainRulePtrOutput values.
+// You can construct a concrete instance of `EnterpriseSnapshotPolicyRetainRulePtrInput` via:
+//
+//	        EnterpriseSnapshotPolicyRetainRuleArgs{...}
+//
+//	or:
+//
+//	        nil
+type EnterpriseSnapshotPolicyRetainRulePtrInput interface {
+	pulumi.Input
+
+	ToEnterpriseSnapshotPolicyRetainRulePtrOutput() EnterpriseSnapshotPolicyRetainRulePtrOutput
+	ToEnterpriseSnapshotPolicyRetainRulePtrOutputWithContext(context.Context) EnterpriseSnapshotPolicyRetainRulePtrOutput
+}
+
+type enterpriseSnapshotPolicyRetainRulePtrType EnterpriseSnapshotPolicyRetainRuleArgs
+
+func EnterpriseSnapshotPolicyRetainRulePtr(v *EnterpriseSnapshotPolicyRetainRuleArgs) EnterpriseSnapshotPolicyRetainRulePtrInput {
+	return (*enterpriseSnapshotPolicyRetainRulePtrType)(v)
+}
+
+func (*enterpriseSnapshotPolicyRetainRulePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**EnterpriseSnapshotPolicyRetainRule)(nil)).Elem()
+}
+
+func (i *enterpriseSnapshotPolicyRetainRulePtrType) ToEnterpriseSnapshotPolicyRetainRulePtrOutput() EnterpriseSnapshotPolicyRetainRulePtrOutput {
+	return i.ToEnterpriseSnapshotPolicyRetainRulePtrOutputWithContext(context.Background())
+}
+
+func (i *enterpriseSnapshotPolicyRetainRulePtrType) ToEnterpriseSnapshotPolicyRetainRulePtrOutputWithContext(ctx context.Context) EnterpriseSnapshotPolicyRetainRulePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseSnapshotPolicyRetainRulePtrOutput)
+}
+
+type EnterpriseSnapshotPolicyRetainRuleOutput struct{ *pulumi.OutputState }
+
+func (EnterpriseSnapshotPolicyRetainRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EnterpriseSnapshotPolicyRetainRule)(nil)).Elem()
+}
+
+func (o EnterpriseSnapshotPolicyRetainRuleOutput) ToEnterpriseSnapshotPolicyRetainRuleOutput() EnterpriseSnapshotPolicyRetainRuleOutput {
+	return o
+}
+
+func (o EnterpriseSnapshotPolicyRetainRuleOutput) ToEnterpriseSnapshotPolicyRetainRuleOutputWithContext(ctx context.Context) EnterpriseSnapshotPolicyRetainRuleOutput {
+	return o
+}
+
+func (o EnterpriseSnapshotPolicyRetainRuleOutput) ToEnterpriseSnapshotPolicyRetainRulePtrOutput() EnterpriseSnapshotPolicyRetainRulePtrOutput {
+	return o.ToEnterpriseSnapshotPolicyRetainRulePtrOutputWithContext(context.Background())
+}
+
+func (o EnterpriseSnapshotPolicyRetainRuleOutput) ToEnterpriseSnapshotPolicyRetainRulePtrOutputWithContext(ctx context.Context) EnterpriseSnapshotPolicyRetainRulePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EnterpriseSnapshotPolicyRetainRule) *EnterpriseSnapshotPolicyRetainRule {
+		return &v
+	}).(EnterpriseSnapshotPolicyRetainRulePtrOutput)
+}
+
+// Retention based on counting method.
+func (o EnterpriseSnapshotPolicyRetainRuleOutput) Number() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v EnterpriseSnapshotPolicyRetainRule) *int { return v.Number }).(pulumi.IntPtrOutput)
+}
+
+// Time unit.
+func (o EnterpriseSnapshotPolicyRetainRuleOutput) TimeInterval() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v EnterpriseSnapshotPolicyRetainRule) *int { return v.TimeInterval }).(pulumi.IntPtrOutput)
+}
+
+// Time-based retention.
+func (o EnterpriseSnapshotPolicyRetainRuleOutput) TimeUnit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EnterpriseSnapshotPolicyRetainRule) *string { return v.TimeUnit }).(pulumi.StringPtrOutput)
+}
+
+type EnterpriseSnapshotPolicyRetainRulePtrOutput struct{ *pulumi.OutputState }
+
+func (EnterpriseSnapshotPolicyRetainRulePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EnterpriseSnapshotPolicyRetainRule)(nil)).Elem()
+}
+
+func (o EnterpriseSnapshotPolicyRetainRulePtrOutput) ToEnterpriseSnapshotPolicyRetainRulePtrOutput() EnterpriseSnapshotPolicyRetainRulePtrOutput {
+	return o
+}
+
+func (o EnterpriseSnapshotPolicyRetainRulePtrOutput) ToEnterpriseSnapshotPolicyRetainRulePtrOutputWithContext(ctx context.Context) EnterpriseSnapshotPolicyRetainRulePtrOutput {
+	return o
+}
+
+func (o EnterpriseSnapshotPolicyRetainRulePtrOutput) Elem() EnterpriseSnapshotPolicyRetainRuleOutput {
+	return o.ApplyT(func(v *EnterpriseSnapshotPolicyRetainRule) EnterpriseSnapshotPolicyRetainRule {
+		if v != nil {
+			return *v
+		}
+		var ret EnterpriseSnapshotPolicyRetainRule
+		return ret
+	}).(EnterpriseSnapshotPolicyRetainRuleOutput)
+}
+
+// Retention based on counting method.
+func (o EnterpriseSnapshotPolicyRetainRulePtrOutput) Number() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *EnterpriseSnapshotPolicyRetainRule) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Number
+	}).(pulumi.IntPtrOutput)
+}
+
+// Time unit.
+func (o EnterpriseSnapshotPolicyRetainRulePtrOutput) TimeInterval() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *EnterpriseSnapshotPolicyRetainRule) *int {
+		if v == nil {
+			return nil
+		}
+		return v.TimeInterval
+	}).(pulumi.IntPtrOutput)
+}
+
+// Time-based retention.
+func (o EnterpriseSnapshotPolicyRetainRulePtrOutput) TimeUnit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EnterpriseSnapshotPolicyRetainRule) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TimeUnit
+	}).(pulumi.StringPtrOutput)
+}
+
+type EnterpriseSnapshotPolicySchedule struct {
+	// CronTab expression.
+	CronExpression string `pulumi:"cronExpression"`
+}
+
+// EnterpriseSnapshotPolicyScheduleInput is an input type that accepts EnterpriseSnapshotPolicyScheduleArgs and EnterpriseSnapshotPolicyScheduleOutput values.
+// You can construct a concrete instance of `EnterpriseSnapshotPolicyScheduleInput` via:
+//
+//	EnterpriseSnapshotPolicyScheduleArgs{...}
+type EnterpriseSnapshotPolicyScheduleInput interface {
+	pulumi.Input
+
+	ToEnterpriseSnapshotPolicyScheduleOutput() EnterpriseSnapshotPolicyScheduleOutput
+	ToEnterpriseSnapshotPolicyScheduleOutputWithContext(context.Context) EnterpriseSnapshotPolicyScheduleOutput
+}
+
+type EnterpriseSnapshotPolicyScheduleArgs struct {
+	// CronTab expression.
+	CronExpression pulumi.StringInput `pulumi:"cronExpression"`
+}
+
+func (EnterpriseSnapshotPolicyScheduleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EnterpriseSnapshotPolicySchedule)(nil)).Elem()
+}
+
+func (i EnterpriseSnapshotPolicyScheduleArgs) ToEnterpriseSnapshotPolicyScheduleOutput() EnterpriseSnapshotPolicyScheduleOutput {
+	return i.ToEnterpriseSnapshotPolicyScheduleOutputWithContext(context.Background())
+}
+
+func (i EnterpriseSnapshotPolicyScheduleArgs) ToEnterpriseSnapshotPolicyScheduleOutputWithContext(ctx context.Context) EnterpriseSnapshotPolicyScheduleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseSnapshotPolicyScheduleOutput)
+}
+
+func (i EnterpriseSnapshotPolicyScheduleArgs) ToEnterpriseSnapshotPolicySchedulePtrOutput() EnterpriseSnapshotPolicySchedulePtrOutput {
+	return i.ToEnterpriseSnapshotPolicySchedulePtrOutputWithContext(context.Background())
+}
+
+func (i EnterpriseSnapshotPolicyScheduleArgs) ToEnterpriseSnapshotPolicySchedulePtrOutputWithContext(ctx context.Context) EnterpriseSnapshotPolicySchedulePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseSnapshotPolicyScheduleOutput).ToEnterpriseSnapshotPolicySchedulePtrOutputWithContext(ctx)
+}
+
+// EnterpriseSnapshotPolicySchedulePtrInput is an input type that accepts EnterpriseSnapshotPolicyScheduleArgs, EnterpriseSnapshotPolicySchedulePtr and EnterpriseSnapshotPolicySchedulePtrOutput values.
+// You can construct a concrete instance of `EnterpriseSnapshotPolicySchedulePtrInput` via:
+//
+//	        EnterpriseSnapshotPolicyScheduleArgs{...}
+//
+//	or:
+//
+//	        nil
+type EnterpriseSnapshotPolicySchedulePtrInput interface {
+	pulumi.Input
+
+	ToEnterpriseSnapshotPolicySchedulePtrOutput() EnterpriseSnapshotPolicySchedulePtrOutput
+	ToEnterpriseSnapshotPolicySchedulePtrOutputWithContext(context.Context) EnterpriseSnapshotPolicySchedulePtrOutput
+}
+
+type enterpriseSnapshotPolicySchedulePtrType EnterpriseSnapshotPolicyScheduleArgs
+
+func EnterpriseSnapshotPolicySchedulePtr(v *EnterpriseSnapshotPolicyScheduleArgs) EnterpriseSnapshotPolicySchedulePtrInput {
+	return (*enterpriseSnapshotPolicySchedulePtrType)(v)
+}
+
+func (*enterpriseSnapshotPolicySchedulePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**EnterpriseSnapshotPolicySchedule)(nil)).Elem()
+}
+
+func (i *enterpriseSnapshotPolicySchedulePtrType) ToEnterpriseSnapshotPolicySchedulePtrOutput() EnterpriseSnapshotPolicySchedulePtrOutput {
+	return i.ToEnterpriseSnapshotPolicySchedulePtrOutputWithContext(context.Background())
+}
+
+func (i *enterpriseSnapshotPolicySchedulePtrType) ToEnterpriseSnapshotPolicySchedulePtrOutputWithContext(ctx context.Context) EnterpriseSnapshotPolicySchedulePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseSnapshotPolicySchedulePtrOutput)
+}
+
+type EnterpriseSnapshotPolicyScheduleOutput struct{ *pulumi.OutputState }
+
+func (EnterpriseSnapshotPolicyScheduleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EnterpriseSnapshotPolicySchedule)(nil)).Elem()
+}
+
+func (o EnterpriseSnapshotPolicyScheduleOutput) ToEnterpriseSnapshotPolicyScheduleOutput() EnterpriseSnapshotPolicyScheduleOutput {
+	return o
+}
+
+func (o EnterpriseSnapshotPolicyScheduleOutput) ToEnterpriseSnapshotPolicyScheduleOutputWithContext(ctx context.Context) EnterpriseSnapshotPolicyScheduleOutput {
+	return o
+}
+
+func (o EnterpriseSnapshotPolicyScheduleOutput) ToEnterpriseSnapshotPolicySchedulePtrOutput() EnterpriseSnapshotPolicySchedulePtrOutput {
+	return o.ToEnterpriseSnapshotPolicySchedulePtrOutputWithContext(context.Background())
+}
+
+func (o EnterpriseSnapshotPolicyScheduleOutput) ToEnterpriseSnapshotPolicySchedulePtrOutputWithContext(ctx context.Context) EnterpriseSnapshotPolicySchedulePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EnterpriseSnapshotPolicySchedule) *EnterpriseSnapshotPolicySchedule {
+		return &v
+	}).(EnterpriseSnapshotPolicySchedulePtrOutput)
+}
+
+// CronTab expression.
+func (o EnterpriseSnapshotPolicyScheduleOutput) CronExpression() pulumi.StringOutput {
+	return o.ApplyT(func(v EnterpriseSnapshotPolicySchedule) string { return v.CronExpression }).(pulumi.StringOutput)
+}
+
+type EnterpriseSnapshotPolicySchedulePtrOutput struct{ *pulumi.OutputState }
+
+func (EnterpriseSnapshotPolicySchedulePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EnterpriseSnapshotPolicySchedule)(nil)).Elem()
+}
+
+func (o EnterpriseSnapshotPolicySchedulePtrOutput) ToEnterpriseSnapshotPolicySchedulePtrOutput() EnterpriseSnapshotPolicySchedulePtrOutput {
+	return o
+}
+
+func (o EnterpriseSnapshotPolicySchedulePtrOutput) ToEnterpriseSnapshotPolicySchedulePtrOutputWithContext(ctx context.Context) EnterpriseSnapshotPolicySchedulePtrOutput {
+	return o
+}
+
+func (o EnterpriseSnapshotPolicySchedulePtrOutput) Elem() EnterpriseSnapshotPolicyScheduleOutput {
+	return o.ApplyT(func(v *EnterpriseSnapshotPolicySchedule) EnterpriseSnapshotPolicySchedule {
+		if v != nil {
+			return *v
+		}
+		var ret EnterpriseSnapshotPolicySchedule
+		return ret
+	}).(EnterpriseSnapshotPolicyScheduleOutput)
+}
+
+// CronTab expression.
+func (o EnterpriseSnapshotPolicySchedulePtrOutput) CronExpression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EnterpriseSnapshotPolicySchedule) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.CronExpression
+	}).(pulumi.StringPtrOutput)
+}
+
+type EnterpriseSnapshotPolicySpecialRetainRules struct {
+	// Whether special reservations are enabled. Value range:
+	// - true
+	// - false.
+	Enabled *bool `pulumi:"enabled"`
+	// List of special retention rules. See `rules` below.
+	Rules []EnterpriseSnapshotPolicySpecialRetainRulesRule `pulumi:"rules"`
+}
+
+// EnterpriseSnapshotPolicySpecialRetainRulesInput is an input type that accepts EnterpriseSnapshotPolicySpecialRetainRulesArgs and EnterpriseSnapshotPolicySpecialRetainRulesOutput values.
+// You can construct a concrete instance of `EnterpriseSnapshotPolicySpecialRetainRulesInput` via:
+//
+//	EnterpriseSnapshotPolicySpecialRetainRulesArgs{...}
+type EnterpriseSnapshotPolicySpecialRetainRulesInput interface {
+	pulumi.Input
+
+	ToEnterpriseSnapshotPolicySpecialRetainRulesOutput() EnterpriseSnapshotPolicySpecialRetainRulesOutput
+	ToEnterpriseSnapshotPolicySpecialRetainRulesOutputWithContext(context.Context) EnterpriseSnapshotPolicySpecialRetainRulesOutput
+}
+
+type EnterpriseSnapshotPolicySpecialRetainRulesArgs struct {
+	// Whether special reservations are enabled. Value range:
+	// - true
+	// - false.
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	// List of special retention rules. See `rules` below.
+	Rules EnterpriseSnapshotPolicySpecialRetainRulesRuleArrayInput `pulumi:"rules"`
+}
+
+func (EnterpriseSnapshotPolicySpecialRetainRulesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EnterpriseSnapshotPolicySpecialRetainRules)(nil)).Elem()
+}
+
+func (i EnterpriseSnapshotPolicySpecialRetainRulesArgs) ToEnterpriseSnapshotPolicySpecialRetainRulesOutput() EnterpriseSnapshotPolicySpecialRetainRulesOutput {
+	return i.ToEnterpriseSnapshotPolicySpecialRetainRulesOutputWithContext(context.Background())
+}
+
+func (i EnterpriseSnapshotPolicySpecialRetainRulesArgs) ToEnterpriseSnapshotPolicySpecialRetainRulesOutputWithContext(ctx context.Context) EnterpriseSnapshotPolicySpecialRetainRulesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseSnapshotPolicySpecialRetainRulesOutput)
+}
+
+func (i EnterpriseSnapshotPolicySpecialRetainRulesArgs) ToEnterpriseSnapshotPolicySpecialRetainRulesPtrOutput() EnterpriseSnapshotPolicySpecialRetainRulesPtrOutput {
+	return i.ToEnterpriseSnapshotPolicySpecialRetainRulesPtrOutputWithContext(context.Background())
+}
+
+func (i EnterpriseSnapshotPolicySpecialRetainRulesArgs) ToEnterpriseSnapshotPolicySpecialRetainRulesPtrOutputWithContext(ctx context.Context) EnterpriseSnapshotPolicySpecialRetainRulesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseSnapshotPolicySpecialRetainRulesOutput).ToEnterpriseSnapshotPolicySpecialRetainRulesPtrOutputWithContext(ctx)
+}
+
+// EnterpriseSnapshotPolicySpecialRetainRulesPtrInput is an input type that accepts EnterpriseSnapshotPolicySpecialRetainRulesArgs, EnterpriseSnapshotPolicySpecialRetainRulesPtr and EnterpriseSnapshotPolicySpecialRetainRulesPtrOutput values.
+// You can construct a concrete instance of `EnterpriseSnapshotPolicySpecialRetainRulesPtrInput` via:
+//
+//	        EnterpriseSnapshotPolicySpecialRetainRulesArgs{...}
+//
+//	or:
+//
+//	        nil
+type EnterpriseSnapshotPolicySpecialRetainRulesPtrInput interface {
+	pulumi.Input
+
+	ToEnterpriseSnapshotPolicySpecialRetainRulesPtrOutput() EnterpriseSnapshotPolicySpecialRetainRulesPtrOutput
+	ToEnterpriseSnapshotPolicySpecialRetainRulesPtrOutputWithContext(context.Context) EnterpriseSnapshotPolicySpecialRetainRulesPtrOutput
+}
+
+type enterpriseSnapshotPolicySpecialRetainRulesPtrType EnterpriseSnapshotPolicySpecialRetainRulesArgs
+
+func EnterpriseSnapshotPolicySpecialRetainRulesPtr(v *EnterpriseSnapshotPolicySpecialRetainRulesArgs) EnterpriseSnapshotPolicySpecialRetainRulesPtrInput {
+	return (*enterpriseSnapshotPolicySpecialRetainRulesPtrType)(v)
+}
+
+func (*enterpriseSnapshotPolicySpecialRetainRulesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**EnterpriseSnapshotPolicySpecialRetainRules)(nil)).Elem()
+}
+
+func (i *enterpriseSnapshotPolicySpecialRetainRulesPtrType) ToEnterpriseSnapshotPolicySpecialRetainRulesPtrOutput() EnterpriseSnapshotPolicySpecialRetainRulesPtrOutput {
+	return i.ToEnterpriseSnapshotPolicySpecialRetainRulesPtrOutputWithContext(context.Background())
+}
+
+func (i *enterpriseSnapshotPolicySpecialRetainRulesPtrType) ToEnterpriseSnapshotPolicySpecialRetainRulesPtrOutputWithContext(ctx context.Context) EnterpriseSnapshotPolicySpecialRetainRulesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseSnapshotPolicySpecialRetainRulesPtrOutput)
+}
+
+type EnterpriseSnapshotPolicySpecialRetainRulesOutput struct{ *pulumi.OutputState }
+
+func (EnterpriseSnapshotPolicySpecialRetainRulesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EnterpriseSnapshotPolicySpecialRetainRules)(nil)).Elem()
+}
+
+func (o EnterpriseSnapshotPolicySpecialRetainRulesOutput) ToEnterpriseSnapshotPolicySpecialRetainRulesOutput() EnterpriseSnapshotPolicySpecialRetainRulesOutput {
+	return o
+}
+
+func (o EnterpriseSnapshotPolicySpecialRetainRulesOutput) ToEnterpriseSnapshotPolicySpecialRetainRulesOutputWithContext(ctx context.Context) EnterpriseSnapshotPolicySpecialRetainRulesOutput {
+	return o
+}
+
+func (o EnterpriseSnapshotPolicySpecialRetainRulesOutput) ToEnterpriseSnapshotPolicySpecialRetainRulesPtrOutput() EnterpriseSnapshotPolicySpecialRetainRulesPtrOutput {
+	return o.ToEnterpriseSnapshotPolicySpecialRetainRulesPtrOutputWithContext(context.Background())
+}
+
+func (o EnterpriseSnapshotPolicySpecialRetainRulesOutput) ToEnterpriseSnapshotPolicySpecialRetainRulesPtrOutputWithContext(ctx context.Context) EnterpriseSnapshotPolicySpecialRetainRulesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EnterpriseSnapshotPolicySpecialRetainRules) *EnterpriseSnapshotPolicySpecialRetainRules {
+		return &v
+	}).(EnterpriseSnapshotPolicySpecialRetainRulesPtrOutput)
+}
+
+// Whether special reservations are enabled. Value range:
+// - true
+// - false.
+func (o EnterpriseSnapshotPolicySpecialRetainRulesOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v EnterpriseSnapshotPolicySpecialRetainRules) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+// List of special retention rules. See `rules` below.
+func (o EnterpriseSnapshotPolicySpecialRetainRulesOutput) Rules() EnterpriseSnapshotPolicySpecialRetainRulesRuleArrayOutput {
+	return o.ApplyT(func(v EnterpriseSnapshotPolicySpecialRetainRules) []EnterpriseSnapshotPolicySpecialRetainRulesRule {
+		return v.Rules
+	}).(EnterpriseSnapshotPolicySpecialRetainRulesRuleArrayOutput)
+}
+
+type EnterpriseSnapshotPolicySpecialRetainRulesPtrOutput struct{ *pulumi.OutputState }
+
+func (EnterpriseSnapshotPolicySpecialRetainRulesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EnterpriseSnapshotPolicySpecialRetainRules)(nil)).Elem()
+}
+
+func (o EnterpriseSnapshotPolicySpecialRetainRulesPtrOutput) ToEnterpriseSnapshotPolicySpecialRetainRulesPtrOutput() EnterpriseSnapshotPolicySpecialRetainRulesPtrOutput {
+	return o
+}
+
+func (o EnterpriseSnapshotPolicySpecialRetainRulesPtrOutput) ToEnterpriseSnapshotPolicySpecialRetainRulesPtrOutputWithContext(ctx context.Context) EnterpriseSnapshotPolicySpecialRetainRulesPtrOutput {
+	return o
+}
+
+func (o EnterpriseSnapshotPolicySpecialRetainRulesPtrOutput) Elem() EnterpriseSnapshotPolicySpecialRetainRulesOutput {
+	return o.ApplyT(func(v *EnterpriseSnapshotPolicySpecialRetainRules) EnterpriseSnapshotPolicySpecialRetainRules {
+		if v != nil {
+			return *v
+		}
+		var ret EnterpriseSnapshotPolicySpecialRetainRules
+		return ret
+	}).(EnterpriseSnapshotPolicySpecialRetainRulesOutput)
+}
+
+// Whether special reservations are enabled. Value range:
+// - true
+// - false.
+func (o EnterpriseSnapshotPolicySpecialRetainRulesPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *EnterpriseSnapshotPolicySpecialRetainRules) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// List of special retention rules. See `rules` below.
+func (o EnterpriseSnapshotPolicySpecialRetainRulesPtrOutput) Rules() EnterpriseSnapshotPolicySpecialRetainRulesRuleArrayOutput {
+	return o.ApplyT(func(v *EnterpriseSnapshotPolicySpecialRetainRules) []EnterpriseSnapshotPolicySpecialRetainRulesRule {
+		if v == nil {
+			return nil
+		}
+		return v.Rules
+	}).(EnterpriseSnapshotPolicySpecialRetainRulesRuleArrayOutput)
+}
+
+type EnterpriseSnapshotPolicySpecialRetainRulesRule struct {
+	// The cycle unit of the special reserved snapshot. If the value is set to WEEKS, the first snapshot of each week is reserved. The retention time is determined by TimeUnit and TimeInterval. The value range is:
+	// - WEEKS
+	// - MONTHS
+	// - YEARS.
+	SpecialPeriodUnit *string `pulumi:"specialPeriodUnit"`
+	// Time unit.
+	TimeInterval *int `pulumi:"timeInterval"`
+	// Time-based retention.
+	TimeUnit *string `pulumi:"timeUnit"`
+}
+
+// EnterpriseSnapshotPolicySpecialRetainRulesRuleInput is an input type that accepts EnterpriseSnapshotPolicySpecialRetainRulesRuleArgs and EnterpriseSnapshotPolicySpecialRetainRulesRuleOutput values.
+// You can construct a concrete instance of `EnterpriseSnapshotPolicySpecialRetainRulesRuleInput` via:
+//
+//	EnterpriseSnapshotPolicySpecialRetainRulesRuleArgs{...}
+type EnterpriseSnapshotPolicySpecialRetainRulesRuleInput interface {
+	pulumi.Input
+
+	ToEnterpriseSnapshotPolicySpecialRetainRulesRuleOutput() EnterpriseSnapshotPolicySpecialRetainRulesRuleOutput
+	ToEnterpriseSnapshotPolicySpecialRetainRulesRuleOutputWithContext(context.Context) EnterpriseSnapshotPolicySpecialRetainRulesRuleOutput
+}
+
+type EnterpriseSnapshotPolicySpecialRetainRulesRuleArgs struct {
+	// The cycle unit of the special reserved snapshot. If the value is set to WEEKS, the first snapshot of each week is reserved. The retention time is determined by TimeUnit and TimeInterval. The value range is:
+	// - WEEKS
+	// - MONTHS
+	// - YEARS.
+	SpecialPeriodUnit pulumi.StringPtrInput `pulumi:"specialPeriodUnit"`
+	// Time unit.
+	TimeInterval pulumi.IntPtrInput `pulumi:"timeInterval"`
+	// Time-based retention.
+	TimeUnit pulumi.StringPtrInput `pulumi:"timeUnit"`
+}
+
+func (EnterpriseSnapshotPolicySpecialRetainRulesRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EnterpriseSnapshotPolicySpecialRetainRulesRule)(nil)).Elem()
+}
+
+func (i EnterpriseSnapshotPolicySpecialRetainRulesRuleArgs) ToEnterpriseSnapshotPolicySpecialRetainRulesRuleOutput() EnterpriseSnapshotPolicySpecialRetainRulesRuleOutput {
+	return i.ToEnterpriseSnapshotPolicySpecialRetainRulesRuleOutputWithContext(context.Background())
+}
+
+func (i EnterpriseSnapshotPolicySpecialRetainRulesRuleArgs) ToEnterpriseSnapshotPolicySpecialRetainRulesRuleOutputWithContext(ctx context.Context) EnterpriseSnapshotPolicySpecialRetainRulesRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseSnapshotPolicySpecialRetainRulesRuleOutput)
+}
+
+// EnterpriseSnapshotPolicySpecialRetainRulesRuleArrayInput is an input type that accepts EnterpriseSnapshotPolicySpecialRetainRulesRuleArray and EnterpriseSnapshotPolicySpecialRetainRulesRuleArrayOutput values.
+// You can construct a concrete instance of `EnterpriseSnapshotPolicySpecialRetainRulesRuleArrayInput` via:
+//
+//	EnterpriseSnapshotPolicySpecialRetainRulesRuleArray{ EnterpriseSnapshotPolicySpecialRetainRulesRuleArgs{...} }
+type EnterpriseSnapshotPolicySpecialRetainRulesRuleArrayInput interface {
+	pulumi.Input
+
+	ToEnterpriseSnapshotPolicySpecialRetainRulesRuleArrayOutput() EnterpriseSnapshotPolicySpecialRetainRulesRuleArrayOutput
+	ToEnterpriseSnapshotPolicySpecialRetainRulesRuleArrayOutputWithContext(context.Context) EnterpriseSnapshotPolicySpecialRetainRulesRuleArrayOutput
+}
+
+type EnterpriseSnapshotPolicySpecialRetainRulesRuleArray []EnterpriseSnapshotPolicySpecialRetainRulesRuleInput
+
+func (EnterpriseSnapshotPolicySpecialRetainRulesRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EnterpriseSnapshotPolicySpecialRetainRulesRule)(nil)).Elem()
+}
+
+func (i EnterpriseSnapshotPolicySpecialRetainRulesRuleArray) ToEnterpriseSnapshotPolicySpecialRetainRulesRuleArrayOutput() EnterpriseSnapshotPolicySpecialRetainRulesRuleArrayOutput {
+	return i.ToEnterpriseSnapshotPolicySpecialRetainRulesRuleArrayOutputWithContext(context.Background())
+}
+
+func (i EnterpriseSnapshotPolicySpecialRetainRulesRuleArray) ToEnterpriseSnapshotPolicySpecialRetainRulesRuleArrayOutputWithContext(ctx context.Context) EnterpriseSnapshotPolicySpecialRetainRulesRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseSnapshotPolicySpecialRetainRulesRuleArrayOutput)
+}
+
+type EnterpriseSnapshotPolicySpecialRetainRulesRuleOutput struct{ *pulumi.OutputState }
+
+func (EnterpriseSnapshotPolicySpecialRetainRulesRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EnterpriseSnapshotPolicySpecialRetainRulesRule)(nil)).Elem()
+}
+
+func (o EnterpriseSnapshotPolicySpecialRetainRulesRuleOutput) ToEnterpriseSnapshotPolicySpecialRetainRulesRuleOutput() EnterpriseSnapshotPolicySpecialRetainRulesRuleOutput {
+	return o
+}
+
+func (o EnterpriseSnapshotPolicySpecialRetainRulesRuleOutput) ToEnterpriseSnapshotPolicySpecialRetainRulesRuleOutputWithContext(ctx context.Context) EnterpriseSnapshotPolicySpecialRetainRulesRuleOutput {
+	return o
+}
+
+// The cycle unit of the special reserved snapshot. If the value is set to WEEKS, the first snapshot of each week is reserved. The retention time is determined by TimeUnit and TimeInterval. The value range is:
+// - WEEKS
+// - MONTHS
+// - YEARS.
+func (o EnterpriseSnapshotPolicySpecialRetainRulesRuleOutput) SpecialPeriodUnit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EnterpriseSnapshotPolicySpecialRetainRulesRule) *string { return v.SpecialPeriodUnit }).(pulumi.StringPtrOutput)
+}
+
+// Time unit.
+func (o EnterpriseSnapshotPolicySpecialRetainRulesRuleOutput) TimeInterval() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v EnterpriseSnapshotPolicySpecialRetainRulesRule) *int { return v.TimeInterval }).(pulumi.IntPtrOutput)
+}
+
+// Time-based retention.
+func (o EnterpriseSnapshotPolicySpecialRetainRulesRuleOutput) TimeUnit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EnterpriseSnapshotPolicySpecialRetainRulesRule) *string { return v.TimeUnit }).(pulumi.StringPtrOutput)
+}
+
+type EnterpriseSnapshotPolicySpecialRetainRulesRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (EnterpriseSnapshotPolicySpecialRetainRulesRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EnterpriseSnapshotPolicySpecialRetainRulesRule)(nil)).Elem()
+}
+
+func (o EnterpriseSnapshotPolicySpecialRetainRulesRuleArrayOutput) ToEnterpriseSnapshotPolicySpecialRetainRulesRuleArrayOutput() EnterpriseSnapshotPolicySpecialRetainRulesRuleArrayOutput {
+	return o
+}
+
+func (o EnterpriseSnapshotPolicySpecialRetainRulesRuleArrayOutput) ToEnterpriseSnapshotPolicySpecialRetainRulesRuleArrayOutputWithContext(ctx context.Context) EnterpriseSnapshotPolicySpecialRetainRulesRuleArrayOutput {
+	return o
+}
+
+func (o EnterpriseSnapshotPolicySpecialRetainRulesRuleArrayOutput) Index(i pulumi.IntInput) EnterpriseSnapshotPolicySpecialRetainRulesRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EnterpriseSnapshotPolicySpecialRetainRulesRule {
+		return vs[0].([]EnterpriseSnapshotPolicySpecialRetainRulesRule)[vs[1].(int)]
+	}).(EnterpriseSnapshotPolicySpecialRetainRulesRuleOutput)
+}
+
+type EnterpriseSnapshotPolicyStorageRule struct {
+	// Snapshot speed available.
+	EnableImmediateAccess *bool `pulumi:"enableImmediateAccess"`
+}
+
+// EnterpriseSnapshotPolicyStorageRuleInput is an input type that accepts EnterpriseSnapshotPolicyStorageRuleArgs and EnterpriseSnapshotPolicyStorageRuleOutput values.
+// You can construct a concrete instance of `EnterpriseSnapshotPolicyStorageRuleInput` via:
+//
+//	EnterpriseSnapshotPolicyStorageRuleArgs{...}
+type EnterpriseSnapshotPolicyStorageRuleInput interface {
+	pulumi.Input
+
+	ToEnterpriseSnapshotPolicyStorageRuleOutput() EnterpriseSnapshotPolicyStorageRuleOutput
+	ToEnterpriseSnapshotPolicyStorageRuleOutputWithContext(context.Context) EnterpriseSnapshotPolicyStorageRuleOutput
+}
+
+type EnterpriseSnapshotPolicyStorageRuleArgs struct {
+	// Snapshot speed available.
+	EnableImmediateAccess pulumi.BoolPtrInput `pulumi:"enableImmediateAccess"`
+}
+
+func (EnterpriseSnapshotPolicyStorageRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EnterpriseSnapshotPolicyStorageRule)(nil)).Elem()
+}
+
+func (i EnterpriseSnapshotPolicyStorageRuleArgs) ToEnterpriseSnapshotPolicyStorageRuleOutput() EnterpriseSnapshotPolicyStorageRuleOutput {
+	return i.ToEnterpriseSnapshotPolicyStorageRuleOutputWithContext(context.Background())
+}
+
+func (i EnterpriseSnapshotPolicyStorageRuleArgs) ToEnterpriseSnapshotPolicyStorageRuleOutputWithContext(ctx context.Context) EnterpriseSnapshotPolicyStorageRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseSnapshotPolicyStorageRuleOutput)
+}
+
+func (i EnterpriseSnapshotPolicyStorageRuleArgs) ToEnterpriseSnapshotPolicyStorageRulePtrOutput() EnterpriseSnapshotPolicyStorageRulePtrOutput {
+	return i.ToEnterpriseSnapshotPolicyStorageRulePtrOutputWithContext(context.Background())
+}
+
+func (i EnterpriseSnapshotPolicyStorageRuleArgs) ToEnterpriseSnapshotPolicyStorageRulePtrOutputWithContext(ctx context.Context) EnterpriseSnapshotPolicyStorageRulePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseSnapshotPolicyStorageRuleOutput).ToEnterpriseSnapshotPolicyStorageRulePtrOutputWithContext(ctx)
+}
+
+// EnterpriseSnapshotPolicyStorageRulePtrInput is an input type that accepts EnterpriseSnapshotPolicyStorageRuleArgs, EnterpriseSnapshotPolicyStorageRulePtr and EnterpriseSnapshotPolicyStorageRulePtrOutput values.
+// You can construct a concrete instance of `EnterpriseSnapshotPolicyStorageRulePtrInput` via:
+//
+//	        EnterpriseSnapshotPolicyStorageRuleArgs{...}
+//
+//	or:
+//
+//	        nil
+type EnterpriseSnapshotPolicyStorageRulePtrInput interface {
+	pulumi.Input
+
+	ToEnterpriseSnapshotPolicyStorageRulePtrOutput() EnterpriseSnapshotPolicyStorageRulePtrOutput
+	ToEnterpriseSnapshotPolicyStorageRulePtrOutputWithContext(context.Context) EnterpriseSnapshotPolicyStorageRulePtrOutput
+}
+
+type enterpriseSnapshotPolicyStorageRulePtrType EnterpriseSnapshotPolicyStorageRuleArgs
+
+func EnterpriseSnapshotPolicyStorageRulePtr(v *EnterpriseSnapshotPolicyStorageRuleArgs) EnterpriseSnapshotPolicyStorageRulePtrInput {
+	return (*enterpriseSnapshotPolicyStorageRulePtrType)(v)
+}
+
+func (*enterpriseSnapshotPolicyStorageRulePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**EnterpriseSnapshotPolicyStorageRule)(nil)).Elem()
+}
+
+func (i *enterpriseSnapshotPolicyStorageRulePtrType) ToEnterpriseSnapshotPolicyStorageRulePtrOutput() EnterpriseSnapshotPolicyStorageRulePtrOutput {
+	return i.ToEnterpriseSnapshotPolicyStorageRulePtrOutputWithContext(context.Background())
+}
+
+func (i *enterpriseSnapshotPolicyStorageRulePtrType) ToEnterpriseSnapshotPolicyStorageRulePtrOutputWithContext(ctx context.Context) EnterpriseSnapshotPolicyStorageRulePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseSnapshotPolicyStorageRulePtrOutput)
+}
+
+type EnterpriseSnapshotPolicyStorageRuleOutput struct{ *pulumi.OutputState }
+
+func (EnterpriseSnapshotPolicyStorageRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EnterpriseSnapshotPolicyStorageRule)(nil)).Elem()
+}
+
+func (o EnterpriseSnapshotPolicyStorageRuleOutput) ToEnterpriseSnapshotPolicyStorageRuleOutput() EnterpriseSnapshotPolicyStorageRuleOutput {
+	return o
+}
+
+func (o EnterpriseSnapshotPolicyStorageRuleOutput) ToEnterpriseSnapshotPolicyStorageRuleOutputWithContext(ctx context.Context) EnterpriseSnapshotPolicyStorageRuleOutput {
+	return o
+}
+
+func (o EnterpriseSnapshotPolicyStorageRuleOutput) ToEnterpriseSnapshotPolicyStorageRulePtrOutput() EnterpriseSnapshotPolicyStorageRulePtrOutput {
+	return o.ToEnterpriseSnapshotPolicyStorageRulePtrOutputWithContext(context.Background())
+}
+
+func (o EnterpriseSnapshotPolicyStorageRuleOutput) ToEnterpriseSnapshotPolicyStorageRulePtrOutputWithContext(ctx context.Context) EnterpriseSnapshotPolicyStorageRulePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EnterpriseSnapshotPolicyStorageRule) *EnterpriseSnapshotPolicyStorageRule {
+		return &v
+	}).(EnterpriseSnapshotPolicyStorageRulePtrOutput)
+}
+
+// Snapshot speed available.
+func (o EnterpriseSnapshotPolicyStorageRuleOutput) EnableImmediateAccess() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v EnterpriseSnapshotPolicyStorageRule) *bool { return v.EnableImmediateAccess }).(pulumi.BoolPtrOutput)
+}
+
+type EnterpriseSnapshotPolicyStorageRulePtrOutput struct{ *pulumi.OutputState }
+
+func (EnterpriseSnapshotPolicyStorageRulePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EnterpriseSnapshotPolicyStorageRule)(nil)).Elem()
+}
+
+func (o EnterpriseSnapshotPolicyStorageRulePtrOutput) ToEnterpriseSnapshotPolicyStorageRulePtrOutput() EnterpriseSnapshotPolicyStorageRulePtrOutput {
+	return o
+}
+
+func (o EnterpriseSnapshotPolicyStorageRulePtrOutput) ToEnterpriseSnapshotPolicyStorageRulePtrOutputWithContext(ctx context.Context) EnterpriseSnapshotPolicyStorageRulePtrOutput {
+	return o
+}
+
+func (o EnterpriseSnapshotPolicyStorageRulePtrOutput) Elem() EnterpriseSnapshotPolicyStorageRuleOutput {
+	return o.ApplyT(func(v *EnterpriseSnapshotPolicyStorageRule) EnterpriseSnapshotPolicyStorageRule {
+		if v != nil {
+			return *v
+		}
+		var ret EnterpriseSnapshotPolicyStorageRule
+		return ret
+	}).(EnterpriseSnapshotPolicyStorageRuleOutput)
+}
+
+// Snapshot speed available.
+func (o EnterpriseSnapshotPolicyStorageRulePtrOutput) EnableImmediateAccess() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *EnterpriseSnapshotPolicyStorageRule) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableImmediateAccess
+	}).(pulumi.BoolPtrOutput)
+}
+
 type GetDedicatedBlockStorageClustersCluster struct {
 	// The available capacity of the dedicated block storage cluster. Unit: GiB.
 	AvailableCapacity string `pulumi:"availableCapacity"`
@@ -895,6 +1898,20 @@ func (o GetRegionsRegionZoneArrayOutput) Index(i pulumi.IntInput) GetRegionsRegi
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*EnterpriseSnapshotPolicyCrossRegionCopyInfoInput)(nil)).Elem(), EnterpriseSnapshotPolicyCrossRegionCopyInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EnterpriseSnapshotPolicyCrossRegionCopyInfoPtrInput)(nil)).Elem(), EnterpriseSnapshotPolicyCrossRegionCopyInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EnterpriseSnapshotPolicyCrossRegionCopyInfoRegionInput)(nil)).Elem(), EnterpriseSnapshotPolicyCrossRegionCopyInfoRegionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EnterpriseSnapshotPolicyCrossRegionCopyInfoRegionArrayInput)(nil)).Elem(), EnterpriseSnapshotPolicyCrossRegionCopyInfoRegionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EnterpriseSnapshotPolicyRetainRuleInput)(nil)).Elem(), EnterpriseSnapshotPolicyRetainRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EnterpriseSnapshotPolicyRetainRulePtrInput)(nil)).Elem(), EnterpriseSnapshotPolicyRetainRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EnterpriseSnapshotPolicyScheduleInput)(nil)).Elem(), EnterpriseSnapshotPolicyScheduleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EnterpriseSnapshotPolicySchedulePtrInput)(nil)).Elem(), EnterpriseSnapshotPolicyScheduleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EnterpriseSnapshotPolicySpecialRetainRulesInput)(nil)).Elem(), EnterpriseSnapshotPolicySpecialRetainRulesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EnterpriseSnapshotPolicySpecialRetainRulesPtrInput)(nil)).Elem(), EnterpriseSnapshotPolicySpecialRetainRulesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EnterpriseSnapshotPolicySpecialRetainRulesRuleInput)(nil)).Elem(), EnterpriseSnapshotPolicySpecialRetainRulesRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EnterpriseSnapshotPolicySpecialRetainRulesRuleArrayInput)(nil)).Elem(), EnterpriseSnapshotPolicySpecialRetainRulesRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EnterpriseSnapshotPolicyStorageRuleInput)(nil)).Elem(), EnterpriseSnapshotPolicyStorageRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EnterpriseSnapshotPolicyStorageRulePtrInput)(nil)).Elem(), EnterpriseSnapshotPolicyStorageRuleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDedicatedBlockStorageClustersClusterInput)(nil)).Elem(), GetDedicatedBlockStorageClustersClusterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDedicatedBlockStorageClustersClusterArrayInput)(nil)).Elem(), GetDedicatedBlockStorageClustersClusterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDiskReplicaGroupsGroupInput)(nil)).Elem(), GetDiskReplicaGroupsGroupArgs{})
@@ -905,6 +1922,20 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionsRegionArrayInput)(nil)).Elem(), GetRegionsRegionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionsRegionZoneInput)(nil)).Elem(), GetRegionsRegionZoneArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionsRegionZoneArrayInput)(nil)).Elem(), GetRegionsRegionZoneArray{})
+	pulumi.RegisterOutputType(EnterpriseSnapshotPolicyCrossRegionCopyInfoOutput{})
+	pulumi.RegisterOutputType(EnterpriseSnapshotPolicyCrossRegionCopyInfoPtrOutput{})
+	pulumi.RegisterOutputType(EnterpriseSnapshotPolicyCrossRegionCopyInfoRegionOutput{})
+	pulumi.RegisterOutputType(EnterpriseSnapshotPolicyCrossRegionCopyInfoRegionArrayOutput{})
+	pulumi.RegisterOutputType(EnterpriseSnapshotPolicyRetainRuleOutput{})
+	pulumi.RegisterOutputType(EnterpriseSnapshotPolicyRetainRulePtrOutput{})
+	pulumi.RegisterOutputType(EnterpriseSnapshotPolicyScheduleOutput{})
+	pulumi.RegisterOutputType(EnterpriseSnapshotPolicySchedulePtrOutput{})
+	pulumi.RegisterOutputType(EnterpriseSnapshotPolicySpecialRetainRulesOutput{})
+	pulumi.RegisterOutputType(EnterpriseSnapshotPolicySpecialRetainRulesPtrOutput{})
+	pulumi.RegisterOutputType(EnterpriseSnapshotPolicySpecialRetainRulesRuleOutput{})
+	pulumi.RegisterOutputType(EnterpriseSnapshotPolicySpecialRetainRulesRuleArrayOutput{})
+	pulumi.RegisterOutputType(EnterpriseSnapshotPolicyStorageRuleOutput{})
+	pulumi.RegisterOutputType(EnterpriseSnapshotPolicyStorageRulePtrOutput{})
 	pulumi.RegisterOutputType(GetDedicatedBlockStorageClustersClusterOutput{})
 	pulumi.RegisterOutputType(GetDedicatedBlockStorageClustersClusterArrayOutput{})
 	pulumi.RegisterOutputType(GetDiskReplicaGroupsGroupOutput{})

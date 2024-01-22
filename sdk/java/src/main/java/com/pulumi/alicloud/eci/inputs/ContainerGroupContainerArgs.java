@@ -7,6 +7,7 @@ import com.pulumi.alicloud.eci.inputs.ContainerGroupContainerEnvironmentVarArgs;
 import com.pulumi.alicloud.eci.inputs.ContainerGroupContainerLivenessProbeArgs;
 import com.pulumi.alicloud.eci.inputs.ContainerGroupContainerPortArgs;
 import com.pulumi.alicloud.eci.inputs.ContainerGroupContainerReadinessProbeArgs;
+import com.pulumi.alicloud.eci.inputs.ContainerGroupContainerSecurityContextArgs;
 import com.pulumi.alicloud.eci.inputs.ContainerGroupContainerVolumeMountArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
@@ -236,6 +237,21 @@ public final class ContainerGroupContainerArgs extends com.pulumi.resources.Reso
     }
 
     /**
+     * The security context of the container. See `security_context` below.
+     * 
+     */
+    @Import(name="securityContexts")
+    private @Nullable Output<List<ContainerGroupContainerSecurityContextArgs>> securityContexts;
+
+    /**
+     * @return The security context of the container. See `security_context` below.
+     * 
+     */
+    public Optional<Output<List<ContainerGroupContainerSecurityContextArgs>>> securityContexts() {
+        return Optional.ofNullable(this.securityContexts);
+    }
+
+    /**
      * The structure of volumeMounts. See `volume_mounts` below.
      * 
      */
@@ -282,6 +298,7 @@ public final class ContainerGroupContainerArgs extends com.pulumi.resources.Reso
         this.readinessProbes = $.readinessProbes;
         this.ready = $.ready;
         this.restartCount = $.restartCount;
+        this.securityContexts = $.securityContexts;
         this.volumeMounts = $.volumeMounts;
         this.workingDir = $.workingDir;
     }
@@ -656,6 +673,37 @@ public final class ContainerGroupContainerArgs extends com.pulumi.resources.Reso
          */
         public Builder restartCount(Integer restartCount) {
             return restartCount(Output.of(restartCount));
+        }
+
+        /**
+         * @param securityContexts The security context of the container. See `security_context` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder securityContexts(@Nullable Output<List<ContainerGroupContainerSecurityContextArgs>> securityContexts) {
+            $.securityContexts = securityContexts;
+            return this;
+        }
+
+        /**
+         * @param securityContexts The security context of the container. See `security_context` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder securityContexts(List<ContainerGroupContainerSecurityContextArgs> securityContexts) {
+            return securityContexts(Output.of(securityContexts));
+        }
+
+        /**
+         * @param securityContexts The security context of the container. See `security_context` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder securityContexts(ContainerGroupContainerSecurityContextArgs... securityContexts) {
+            return securityContexts(List.of(securityContexts));
         }
 
         /**

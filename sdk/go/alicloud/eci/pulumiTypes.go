@@ -166,6 +166,8 @@ type ContainerGroupContainer struct {
 	Ready *bool `pulumi:"ready"`
 	// The number of times that the container restarted.
 	RestartCount *int `pulumi:"restartCount"`
+	// The security context of the container. See `securityContext` below.
+	SecurityContexts []ContainerGroupContainerSecurityContext `pulumi:"securityContexts"`
 	// The structure of volumeMounts. See `volumeMounts` below.
 	VolumeMounts []ContainerGroupContainerVolumeMount `pulumi:"volumeMounts"`
 	// The working directory of the container.
@@ -212,6 +214,8 @@ type ContainerGroupContainerArgs struct {
 	Ready pulumi.BoolPtrInput `pulumi:"ready"`
 	// The number of times that the container restarted.
 	RestartCount pulumi.IntPtrInput `pulumi:"restartCount"`
+	// The security context of the container. See `securityContext` below.
+	SecurityContexts ContainerGroupContainerSecurityContextArrayInput `pulumi:"securityContexts"`
 	// The structure of volumeMounts. See `volumeMounts` below.
 	VolumeMounts ContainerGroupContainerVolumeMountArrayInput `pulumi:"volumeMounts"`
 	// The working directory of the container.
@@ -339,6 +343,11 @@ func (o ContainerGroupContainerOutput) RestartCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ContainerGroupContainer) *int { return v.RestartCount }).(pulumi.IntPtrOutput)
 }
 
+// The security context of the container. See `securityContext` below.
+func (o ContainerGroupContainerOutput) SecurityContexts() ContainerGroupContainerSecurityContextArrayOutput {
+	return o.ApplyT(func(v ContainerGroupContainer) []ContainerGroupContainerSecurityContext { return v.SecurityContexts }).(ContainerGroupContainerSecurityContextArrayOutput)
+}
+
 // The structure of volumeMounts. See `volumeMounts` below.
 func (o ContainerGroupContainerOutput) VolumeMounts() ContainerGroupContainerVolumeMountArrayOutput {
 	return o.ApplyT(func(v ContainerGroupContainer) []ContainerGroupContainerVolumeMount { return v.VolumeMounts }).(ContainerGroupContainerVolumeMountArrayOutput)
@@ -370,6 +379,8 @@ func (o ContainerGroupContainerArrayOutput) Index(i pulumi.IntInput) ContainerGr
 }
 
 type ContainerGroupContainerEnvironmentVar struct {
+	// The reference of the environment variable. See `fieldRef` below.
+	FieldReves []ContainerGroupContainerEnvironmentVarFieldRef `pulumi:"fieldReves"`
 	// The name of the variable. The name can be 1 to 128 characters in length and can contain letters, digits, and underscores (_). It cannot start with a digit.
 	Key *string `pulumi:"key"`
 	// The value of the variable. The value can be 0 to 256 characters in length.
@@ -388,6 +399,8 @@ type ContainerGroupContainerEnvironmentVarInput interface {
 }
 
 type ContainerGroupContainerEnvironmentVarArgs struct {
+	// The reference of the environment variable. See `fieldRef` below.
+	FieldReves ContainerGroupContainerEnvironmentVarFieldRefArrayInput `pulumi:"fieldReves"`
 	// The name of the variable. The name can be 1 to 128 characters in length and can contain letters, digits, and underscores (_). It cannot start with a digit.
 	Key pulumi.StringPtrInput `pulumi:"key"`
 	// The value of the variable. The value can be 0 to 256 characters in length.
@@ -445,6 +458,13 @@ func (o ContainerGroupContainerEnvironmentVarOutput) ToContainerGroupContainerEn
 	return o
 }
 
+// The reference of the environment variable. See `fieldRef` below.
+func (o ContainerGroupContainerEnvironmentVarOutput) FieldReves() ContainerGroupContainerEnvironmentVarFieldRefArrayOutput {
+	return o.ApplyT(func(v ContainerGroupContainerEnvironmentVar) []ContainerGroupContainerEnvironmentVarFieldRef {
+		return v.FieldReves
+	}).(ContainerGroupContainerEnvironmentVarFieldRefArrayOutput)
+}
+
 // The name of the variable. The name can be 1 to 128 characters in length and can contain letters, digits, and underscores (_). It cannot start with a digit.
 func (o ContainerGroupContainerEnvironmentVarOutput) Key() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ContainerGroupContainerEnvironmentVar) *string { return v.Key }).(pulumi.StringPtrOutput)
@@ -473,6 +493,103 @@ func (o ContainerGroupContainerEnvironmentVarArrayOutput) Index(i pulumi.IntInpu
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ContainerGroupContainerEnvironmentVar {
 		return vs[0].([]ContainerGroupContainerEnvironmentVar)[vs[1].(int)]
 	}).(ContainerGroupContainerEnvironmentVarOutput)
+}
+
+type ContainerGroupContainerEnvironmentVarFieldRef struct {
+	// The path of the reference.
+	FieldPath *string `pulumi:"fieldPath"`
+}
+
+// ContainerGroupContainerEnvironmentVarFieldRefInput is an input type that accepts ContainerGroupContainerEnvironmentVarFieldRefArgs and ContainerGroupContainerEnvironmentVarFieldRefOutput values.
+// You can construct a concrete instance of `ContainerGroupContainerEnvironmentVarFieldRefInput` via:
+//
+//	ContainerGroupContainerEnvironmentVarFieldRefArgs{...}
+type ContainerGroupContainerEnvironmentVarFieldRefInput interface {
+	pulumi.Input
+
+	ToContainerGroupContainerEnvironmentVarFieldRefOutput() ContainerGroupContainerEnvironmentVarFieldRefOutput
+	ToContainerGroupContainerEnvironmentVarFieldRefOutputWithContext(context.Context) ContainerGroupContainerEnvironmentVarFieldRefOutput
+}
+
+type ContainerGroupContainerEnvironmentVarFieldRefArgs struct {
+	// The path of the reference.
+	FieldPath pulumi.StringPtrInput `pulumi:"fieldPath"`
+}
+
+func (ContainerGroupContainerEnvironmentVarFieldRefArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ContainerGroupContainerEnvironmentVarFieldRef)(nil)).Elem()
+}
+
+func (i ContainerGroupContainerEnvironmentVarFieldRefArgs) ToContainerGroupContainerEnvironmentVarFieldRefOutput() ContainerGroupContainerEnvironmentVarFieldRefOutput {
+	return i.ToContainerGroupContainerEnvironmentVarFieldRefOutputWithContext(context.Background())
+}
+
+func (i ContainerGroupContainerEnvironmentVarFieldRefArgs) ToContainerGroupContainerEnvironmentVarFieldRefOutputWithContext(ctx context.Context) ContainerGroupContainerEnvironmentVarFieldRefOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ContainerGroupContainerEnvironmentVarFieldRefOutput)
+}
+
+// ContainerGroupContainerEnvironmentVarFieldRefArrayInput is an input type that accepts ContainerGroupContainerEnvironmentVarFieldRefArray and ContainerGroupContainerEnvironmentVarFieldRefArrayOutput values.
+// You can construct a concrete instance of `ContainerGroupContainerEnvironmentVarFieldRefArrayInput` via:
+//
+//	ContainerGroupContainerEnvironmentVarFieldRefArray{ ContainerGroupContainerEnvironmentVarFieldRefArgs{...} }
+type ContainerGroupContainerEnvironmentVarFieldRefArrayInput interface {
+	pulumi.Input
+
+	ToContainerGroupContainerEnvironmentVarFieldRefArrayOutput() ContainerGroupContainerEnvironmentVarFieldRefArrayOutput
+	ToContainerGroupContainerEnvironmentVarFieldRefArrayOutputWithContext(context.Context) ContainerGroupContainerEnvironmentVarFieldRefArrayOutput
+}
+
+type ContainerGroupContainerEnvironmentVarFieldRefArray []ContainerGroupContainerEnvironmentVarFieldRefInput
+
+func (ContainerGroupContainerEnvironmentVarFieldRefArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ContainerGroupContainerEnvironmentVarFieldRef)(nil)).Elem()
+}
+
+func (i ContainerGroupContainerEnvironmentVarFieldRefArray) ToContainerGroupContainerEnvironmentVarFieldRefArrayOutput() ContainerGroupContainerEnvironmentVarFieldRefArrayOutput {
+	return i.ToContainerGroupContainerEnvironmentVarFieldRefArrayOutputWithContext(context.Background())
+}
+
+func (i ContainerGroupContainerEnvironmentVarFieldRefArray) ToContainerGroupContainerEnvironmentVarFieldRefArrayOutputWithContext(ctx context.Context) ContainerGroupContainerEnvironmentVarFieldRefArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ContainerGroupContainerEnvironmentVarFieldRefArrayOutput)
+}
+
+type ContainerGroupContainerEnvironmentVarFieldRefOutput struct{ *pulumi.OutputState }
+
+func (ContainerGroupContainerEnvironmentVarFieldRefOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ContainerGroupContainerEnvironmentVarFieldRef)(nil)).Elem()
+}
+
+func (o ContainerGroupContainerEnvironmentVarFieldRefOutput) ToContainerGroupContainerEnvironmentVarFieldRefOutput() ContainerGroupContainerEnvironmentVarFieldRefOutput {
+	return o
+}
+
+func (o ContainerGroupContainerEnvironmentVarFieldRefOutput) ToContainerGroupContainerEnvironmentVarFieldRefOutputWithContext(ctx context.Context) ContainerGroupContainerEnvironmentVarFieldRefOutput {
+	return o
+}
+
+// The path of the reference.
+func (o ContainerGroupContainerEnvironmentVarFieldRefOutput) FieldPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ContainerGroupContainerEnvironmentVarFieldRef) *string { return v.FieldPath }).(pulumi.StringPtrOutput)
+}
+
+type ContainerGroupContainerEnvironmentVarFieldRefArrayOutput struct{ *pulumi.OutputState }
+
+func (ContainerGroupContainerEnvironmentVarFieldRefArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ContainerGroupContainerEnvironmentVarFieldRef)(nil)).Elem()
+}
+
+func (o ContainerGroupContainerEnvironmentVarFieldRefArrayOutput) ToContainerGroupContainerEnvironmentVarFieldRefArrayOutput() ContainerGroupContainerEnvironmentVarFieldRefArrayOutput {
+	return o
+}
+
+func (o ContainerGroupContainerEnvironmentVarFieldRefArrayOutput) ToContainerGroupContainerEnvironmentVarFieldRefArrayOutputWithContext(ctx context.Context) ContainerGroupContainerEnvironmentVarFieldRefArrayOutput {
+	return o
+}
+
+func (o ContainerGroupContainerEnvironmentVarFieldRefArrayOutput) Index(i pulumi.IntInput) ContainerGroupContainerEnvironmentVarFieldRefOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ContainerGroupContainerEnvironmentVarFieldRef {
+		return vs[0].([]ContainerGroupContainerEnvironmentVarFieldRef)[vs[1].(int)]
+	}).(ContainerGroupContainerEnvironmentVarFieldRefOutput)
 }
 
 type ContainerGroupContainerLivenessProbe struct {
@@ -1531,6 +1648,211 @@ func (o ContainerGroupContainerReadinessProbeTcpSocketArrayOutput) Index(i pulum
 	}).(ContainerGroupContainerReadinessProbeTcpSocketOutput)
 }
 
+type ContainerGroupContainerSecurityContext struct {
+	// The permissions that you want to grant to the processes in the containers. See `capability` below.
+	Capabilities []ContainerGroupContainerSecurityContextCapability `pulumi:"capabilities"`
+	// The ID of the user who runs the container.
+	RunAsUser *int `pulumi:"runAsUser"`
+}
+
+// ContainerGroupContainerSecurityContextInput is an input type that accepts ContainerGroupContainerSecurityContextArgs and ContainerGroupContainerSecurityContextOutput values.
+// You can construct a concrete instance of `ContainerGroupContainerSecurityContextInput` via:
+//
+//	ContainerGroupContainerSecurityContextArgs{...}
+type ContainerGroupContainerSecurityContextInput interface {
+	pulumi.Input
+
+	ToContainerGroupContainerSecurityContextOutput() ContainerGroupContainerSecurityContextOutput
+	ToContainerGroupContainerSecurityContextOutputWithContext(context.Context) ContainerGroupContainerSecurityContextOutput
+}
+
+type ContainerGroupContainerSecurityContextArgs struct {
+	// The permissions that you want to grant to the processes in the containers. See `capability` below.
+	Capabilities ContainerGroupContainerSecurityContextCapabilityArrayInput `pulumi:"capabilities"`
+	// The ID of the user who runs the container.
+	RunAsUser pulumi.IntPtrInput `pulumi:"runAsUser"`
+}
+
+func (ContainerGroupContainerSecurityContextArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ContainerGroupContainerSecurityContext)(nil)).Elem()
+}
+
+func (i ContainerGroupContainerSecurityContextArgs) ToContainerGroupContainerSecurityContextOutput() ContainerGroupContainerSecurityContextOutput {
+	return i.ToContainerGroupContainerSecurityContextOutputWithContext(context.Background())
+}
+
+func (i ContainerGroupContainerSecurityContextArgs) ToContainerGroupContainerSecurityContextOutputWithContext(ctx context.Context) ContainerGroupContainerSecurityContextOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ContainerGroupContainerSecurityContextOutput)
+}
+
+// ContainerGroupContainerSecurityContextArrayInput is an input type that accepts ContainerGroupContainerSecurityContextArray and ContainerGroupContainerSecurityContextArrayOutput values.
+// You can construct a concrete instance of `ContainerGroupContainerSecurityContextArrayInput` via:
+//
+//	ContainerGroupContainerSecurityContextArray{ ContainerGroupContainerSecurityContextArgs{...} }
+type ContainerGroupContainerSecurityContextArrayInput interface {
+	pulumi.Input
+
+	ToContainerGroupContainerSecurityContextArrayOutput() ContainerGroupContainerSecurityContextArrayOutput
+	ToContainerGroupContainerSecurityContextArrayOutputWithContext(context.Context) ContainerGroupContainerSecurityContextArrayOutput
+}
+
+type ContainerGroupContainerSecurityContextArray []ContainerGroupContainerSecurityContextInput
+
+func (ContainerGroupContainerSecurityContextArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ContainerGroupContainerSecurityContext)(nil)).Elem()
+}
+
+func (i ContainerGroupContainerSecurityContextArray) ToContainerGroupContainerSecurityContextArrayOutput() ContainerGroupContainerSecurityContextArrayOutput {
+	return i.ToContainerGroupContainerSecurityContextArrayOutputWithContext(context.Background())
+}
+
+func (i ContainerGroupContainerSecurityContextArray) ToContainerGroupContainerSecurityContextArrayOutputWithContext(ctx context.Context) ContainerGroupContainerSecurityContextArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ContainerGroupContainerSecurityContextArrayOutput)
+}
+
+type ContainerGroupContainerSecurityContextOutput struct{ *pulumi.OutputState }
+
+func (ContainerGroupContainerSecurityContextOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ContainerGroupContainerSecurityContext)(nil)).Elem()
+}
+
+func (o ContainerGroupContainerSecurityContextOutput) ToContainerGroupContainerSecurityContextOutput() ContainerGroupContainerSecurityContextOutput {
+	return o
+}
+
+func (o ContainerGroupContainerSecurityContextOutput) ToContainerGroupContainerSecurityContextOutputWithContext(ctx context.Context) ContainerGroupContainerSecurityContextOutput {
+	return o
+}
+
+// The permissions that you want to grant to the processes in the containers. See `capability` below.
+func (o ContainerGroupContainerSecurityContextOutput) Capabilities() ContainerGroupContainerSecurityContextCapabilityArrayOutput {
+	return o.ApplyT(func(v ContainerGroupContainerSecurityContext) []ContainerGroupContainerSecurityContextCapability {
+		return v.Capabilities
+	}).(ContainerGroupContainerSecurityContextCapabilityArrayOutput)
+}
+
+// The ID of the user who runs the container.
+func (o ContainerGroupContainerSecurityContextOutput) RunAsUser() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ContainerGroupContainerSecurityContext) *int { return v.RunAsUser }).(pulumi.IntPtrOutput)
+}
+
+type ContainerGroupContainerSecurityContextArrayOutput struct{ *pulumi.OutputState }
+
+func (ContainerGroupContainerSecurityContextArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ContainerGroupContainerSecurityContext)(nil)).Elem()
+}
+
+func (o ContainerGroupContainerSecurityContextArrayOutput) ToContainerGroupContainerSecurityContextArrayOutput() ContainerGroupContainerSecurityContextArrayOutput {
+	return o
+}
+
+func (o ContainerGroupContainerSecurityContextArrayOutput) ToContainerGroupContainerSecurityContextArrayOutputWithContext(ctx context.Context) ContainerGroupContainerSecurityContextArrayOutput {
+	return o
+}
+
+func (o ContainerGroupContainerSecurityContextArrayOutput) Index(i pulumi.IntInput) ContainerGroupContainerSecurityContextOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ContainerGroupContainerSecurityContext {
+		return vs[0].([]ContainerGroupContainerSecurityContext)[vs[1].(int)]
+	}).(ContainerGroupContainerSecurityContextOutput)
+}
+
+type ContainerGroupContainerSecurityContextCapability struct {
+	// The permissions that you want to grant to the processes in the containers.
+	Adds []string `pulumi:"adds"`
+}
+
+// ContainerGroupContainerSecurityContextCapabilityInput is an input type that accepts ContainerGroupContainerSecurityContextCapabilityArgs and ContainerGroupContainerSecurityContextCapabilityOutput values.
+// You can construct a concrete instance of `ContainerGroupContainerSecurityContextCapabilityInput` via:
+//
+//	ContainerGroupContainerSecurityContextCapabilityArgs{...}
+type ContainerGroupContainerSecurityContextCapabilityInput interface {
+	pulumi.Input
+
+	ToContainerGroupContainerSecurityContextCapabilityOutput() ContainerGroupContainerSecurityContextCapabilityOutput
+	ToContainerGroupContainerSecurityContextCapabilityOutputWithContext(context.Context) ContainerGroupContainerSecurityContextCapabilityOutput
+}
+
+type ContainerGroupContainerSecurityContextCapabilityArgs struct {
+	// The permissions that you want to grant to the processes in the containers.
+	Adds pulumi.StringArrayInput `pulumi:"adds"`
+}
+
+func (ContainerGroupContainerSecurityContextCapabilityArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ContainerGroupContainerSecurityContextCapability)(nil)).Elem()
+}
+
+func (i ContainerGroupContainerSecurityContextCapabilityArgs) ToContainerGroupContainerSecurityContextCapabilityOutput() ContainerGroupContainerSecurityContextCapabilityOutput {
+	return i.ToContainerGroupContainerSecurityContextCapabilityOutputWithContext(context.Background())
+}
+
+func (i ContainerGroupContainerSecurityContextCapabilityArgs) ToContainerGroupContainerSecurityContextCapabilityOutputWithContext(ctx context.Context) ContainerGroupContainerSecurityContextCapabilityOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ContainerGroupContainerSecurityContextCapabilityOutput)
+}
+
+// ContainerGroupContainerSecurityContextCapabilityArrayInput is an input type that accepts ContainerGroupContainerSecurityContextCapabilityArray and ContainerGroupContainerSecurityContextCapabilityArrayOutput values.
+// You can construct a concrete instance of `ContainerGroupContainerSecurityContextCapabilityArrayInput` via:
+//
+//	ContainerGroupContainerSecurityContextCapabilityArray{ ContainerGroupContainerSecurityContextCapabilityArgs{...} }
+type ContainerGroupContainerSecurityContextCapabilityArrayInput interface {
+	pulumi.Input
+
+	ToContainerGroupContainerSecurityContextCapabilityArrayOutput() ContainerGroupContainerSecurityContextCapabilityArrayOutput
+	ToContainerGroupContainerSecurityContextCapabilityArrayOutputWithContext(context.Context) ContainerGroupContainerSecurityContextCapabilityArrayOutput
+}
+
+type ContainerGroupContainerSecurityContextCapabilityArray []ContainerGroupContainerSecurityContextCapabilityInput
+
+func (ContainerGroupContainerSecurityContextCapabilityArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ContainerGroupContainerSecurityContextCapability)(nil)).Elem()
+}
+
+func (i ContainerGroupContainerSecurityContextCapabilityArray) ToContainerGroupContainerSecurityContextCapabilityArrayOutput() ContainerGroupContainerSecurityContextCapabilityArrayOutput {
+	return i.ToContainerGroupContainerSecurityContextCapabilityArrayOutputWithContext(context.Background())
+}
+
+func (i ContainerGroupContainerSecurityContextCapabilityArray) ToContainerGroupContainerSecurityContextCapabilityArrayOutputWithContext(ctx context.Context) ContainerGroupContainerSecurityContextCapabilityArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ContainerGroupContainerSecurityContextCapabilityArrayOutput)
+}
+
+type ContainerGroupContainerSecurityContextCapabilityOutput struct{ *pulumi.OutputState }
+
+func (ContainerGroupContainerSecurityContextCapabilityOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ContainerGroupContainerSecurityContextCapability)(nil)).Elem()
+}
+
+func (o ContainerGroupContainerSecurityContextCapabilityOutput) ToContainerGroupContainerSecurityContextCapabilityOutput() ContainerGroupContainerSecurityContextCapabilityOutput {
+	return o
+}
+
+func (o ContainerGroupContainerSecurityContextCapabilityOutput) ToContainerGroupContainerSecurityContextCapabilityOutputWithContext(ctx context.Context) ContainerGroupContainerSecurityContextCapabilityOutput {
+	return o
+}
+
+// The permissions that you want to grant to the processes in the containers.
+func (o ContainerGroupContainerSecurityContextCapabilityOutput) Adds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ContainerGroupContainerSecurityContextCapability) []string { return v.Adds }).(pulumi.StringArrayOutput)
+}
+
+type ContainerGroupContainerSecurityContextCapabilityArrayOutput struct{ *pulumi.OutputState }
+
+func (ContainerGroupContainerSecurityContextCapabilityArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ContainerGroupContainerSecurityContextCapability)(nil)).Elem()
+}
+
+func (o ContainerGroupContainerSecurityContextCapabilityArrayOutput) ToContainerGroupContainerSecurityContextCapabilityArrayOutput() ContainerGroupContainerSecurityContextCapabilityArrayOutput {
+	return o
+}
+
+func (o ContainerGroupContainerSecurityContextCapabilityArrayOutput) ToContainerGroupContainerSecurityContextCapabilityArrayOutputWithContext(ctx context.Context) ContainerGroupContainerSecurityContextCapabilityArrayOutput {
+	return o
+}
+
+func (o ContainerGroupContainerSecurityContextCapabilityArrayOutput) Index(i pulumi.IntInput) ContainerGroupContainerSecurityContextCapabilityOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ContainerGroupContainerSecurityContextCapability {
+		return vs[0].([]ContainerGroupContainerSecurityContextCapability)[vs[1].(int)]
+	}).(ContainerGroupContainerSecurityContextCapabilityOutput)
+}
+
 type ContainerGroupContainerVolumeMount struct {
 	// The directory of the mounted volume. Data under this directory will be overwritten by the data in the volume.
 	MountPath *string `pulumi:"mountPath"`
@@ -1927,249 +2249,6 @@ func (o ContainerGroupDnsConfigOptionArrayOutput) Index(i pulumi.IntInput) Conta
 	}).(ContainerGroupDnsConfigOptionOutput)
 }
 
-type ContainerGroupEciSecurityContext struct {
-	// Sysctls hold a list of namespaced sysctls used for the pod. Pods with unsupported sysctls (by the container runtime) might fail to launch. See `sysctls` below.
-	Sysctls []ContainerGroupEciSecurityContextSysctl `pulumi:"sysctls"`
-}
-
-// ContainerGroupEciSecurityContextInput is an input type that accepts ContainerGroupEciSecurityContextArgs and ContainerGroupEciSecurityContextOutput values.
-// You can construct a concrete instance of `ContainerGroupEciSecurityContextInput` via:
-//
-//	ContainerGroupEciSecurityContextArgs{...}
-type ContainerGroupEciSecurityContextInput interface {
-	pulumi.Input
-
-	ToContainerGroupEciSecurityContextOutput() ContainerGroupEciSecurityContextOutput
-	ToContainerGroupEciSecurityContextOutputWithContext(context.Context) ContainerGroupEciSecurityContextOutput
-}
-
-type ContainerGroupEciSecurityContextArgs struct {
-	// Sysctls hold a list of namespaced sysctls used for the pod. Pods with unsupported sysctls (by the container runtime) might fail to launch. See `sysctls` below.
-	Sysctls ContainerGroupEciSecurityContextSysctlArrayInput `pulumi:"sysctls"`
-}
-
-func (ContainerGroupEciSecurityContextArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ContainerGroupEciSecurityContext)(nil)).Elem()
-}
-
-func (i ContainerGroupEciSecurityContextArgs) ToContainerGroupEciSecurityContextOutput() ContainerGroupEciSecurityContextOutput {
-	return i.ToContainerGroupEciSecurityContextOutputWithContext(context.Background())
-}
-
-func (i ContainerGroupEciSecurityContextArgs) ToContainerGroupEciSecurityContextOutputWithContext(ctx context.Context) ContainerGroupEciSecurityContextOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ContainerGroupEciSecurityContextOutput)
-}
-
-func (i ContainerGroupEciSecurityContextArgs) ToContainerGroupEciSecurityContextPtrOutput() ContainerGroupEciSecurityContextPtrOutput {
-	return i.ToContainerGroupEciSecurityContextPtrOutputWithContext(context.Background())
-}
-
-func (i ContainerGroupEciSecurityContextArgs) ToContainerGroupEciSecurityContextPtrOutputWithContext(ctx context.Context) ContainerGroupEciSecurityContextPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ContainerGroupEciSecurityContextOutput).ToContainerGroupEciSecurityContextPtrOutputWithContext(ctx)
-}
-
-// ContainerGroupEciSecurityContextPtrInput is an input type that accepts ContainerGroupEciSecurityContextArgs, ContainerGroupEciSecurityContextPtr and ContainerGroupEciSecurityContextPtrOutput values.
-// You can construct a concrete instance of `ContainerGroupEciSecurityContextPtrInput` via:
-//
-//	        ContainerGroupEciSecurityContextArgs{...}
-//
-//	or:
-//
-//	        nil
-type ContainerGroupEciSecurityContextPtrInput interface {
-	pulumi.Input
-
-	ToContainerGroupEciSecurityContextPtrOutput() ContainerGroupEciSecurityContextPtrOutput
-	ToContainerGroupEciSecurityContextPtrOutputWithContext(context.Context) ContainerGroupEciSecurityContextPtrOutput
-}
-
-type containerGroupEciSecurityContextPtrType ContainerGroupEciSecurityContextArgs
-
-func ContainerGroupEciSecurityContextPtr(v *ContainerGroupEciSecurityContextArgs) ContainerGroupEciSecurityContextPtrInput {
-	return (*containerGroupEciSecurityContextPtrType)(v)
-}
-
-func (*containerGroupEciSecurityContextPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ContainerGroupEciSecurityContext)(nil)).Elem()
-}
-
-func (i *containerGroupEciSecurityContextPtrType) ToContainerGroupEciSecurityContextPtrOutput() ContainerGroupEciSecurityContextPtrOutput {
-	return i.ToContainerGroupEciSecurityContextPtrOutputWithContext(context.Background())
-}
-
-func (i *containerGroupEciSecurityContextPtrType) ToContainerGroupEciSecurityContextPtrOutputWithContext(ctx context.Context) ContainerGroupEciSecurityContextPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ContainerGroupEciSecurityContextPtrOutput)
-}
-
-type ContainerGroupEciSecurityContextOutput struct{ *pulumi.OutputState }
-
-func (ContainerGroupEciSecurityContextOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ContainerGroupEciSecurityContext)(nil)).Elem()
-}
-
-func (o ContainerGroupEciSecurityContextOutput) ToContainerGroupEciSecurityContextOutput() ContainerGroupEciSecurityContextOutput {
-	return o
-}
-
-func (o ContainerGroupEciSecurityContextOutput) ToContainerGroupEciSecurityContextOutputWithContext(ctx context.Context) ContainerGroupEciSecurityContextOutput {
-	return o
-}
-
-func (o ContainerGroupEciSecurityContextOutput) ToContainerGroupEciSecurityContextPtrOutput() ContainerGroupEciSecurityContextPtrOutput {
-	return o.ToContainerGroupEciSecurityContextPtrOutputWithContext(context.Background())
-}
-
-func (o ContainerGroupEciSecurityContextOutput) ToContainerGroupEciSecurityContextPtrOutputWithContext(ctx context.Context) ContainerGroupEciSecurityContextPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ContainerGroupEciSecurityContext) *ContainerGroupEciSecurityContext {
-		return &v
-	}).(ContainerGroupEciSecurityContextPtrOutput)
-}
-
-// Sysctls hold a list of namespaced sysctls used for the pod. Pods with unsupported sysctls (by the container runtime) might fail to launch. See `sysctls` below.
-func (o ContainerGroupEciSecurityContextOutput) Sysctls() ContainerGroupEciSecurityContextSysctlArrayOutput {
-	return o.ApplyT(func(v ContainerGroupEciSecurityContext) []ContainerGroupEciSecurityContextSysctl { return v.Sysctls }).(ContainerGroupEciSecurityContextSysctlArrayOutput)
-}
-
-type ContainerGroupEciSecurityContextPtrOutput struct{ *pulumi.OutputState }
-
-func (ContainerGroupEciSecurityContextPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ContainerGroupEciSecurityContext)(nil)).Elem()
-}
-
-func (o ContainerGroupEciSecurityContextPtrOutput) ToContainerGroupEciSecurityContextPtrOutput() ContainerGroupEciSecurityContextPtrOutput {
-	return o
-}
-
-func (o ContainerGroupEciSecurityContextPtrOutput) ToContainerGroupEciSecurityContextPtrOutputWithContext(ctx context.Context) ContainerGroupEciSecurityContextPtrOutput {
-	return o
-}
-
-func (o ContainerGroupEciSecurityContextPtrOutput) Elem() ContainerGroupEciSecurityContextOutput {
-	return o.ApplyT(func(v *ContainerGroupEciSecurityContext) ContainerGroupEciSecurityContext {
-		if v != nil {
-			return *v
-		}
-		var ret ContainerGroupEciSecurityContext
-		return ret
-	}).(ContainerGroupEciSecurityContextOutput)
-}
-
-// Sysctls hold a list of namespaced sysctls used for the pod. Pods with unsupported sysctls (by the container runtime) might fail to launch. See `sysctls` below.
-func (o ContainerGroupEciSecurityContextPtrOutput) Sysctls() ContainerGroupEciSecurityContextSysctlArrayOutput {
-	return o.ApplyT(func(v *ContainerGroupEciSecurityContext) []ContainerGroupEciSecurityContextSysctl {
-		if v == nil {
-			return nil
-		}
-		return v.Sysctls
-	}).(ContainerGroupEciSecurityContextSysctlArrayOutput)
-}
-
-type ContainerGroupEciSecurityContextSysctl struct {
-	// The name of the mounted volume.
-	Name *string `pulumi:"name"`
-	// The value of the variable. The value can be 0 to 256 characters in length.
-	Value *string `pulumi:"value"`
-}
-
-// ContainerGroupEciSecurityContextSysctlInput is an input type that accepts ContainerGroupEciSecurityContextSysctlArgs and ContainerGroupEciSecurityContextSysctlOutput values.
-// You can construct a concrete instance of `ContainerGroupEciSecurityContextSysctlInput` via:
-//
-//	ContainerGroupEciSecurityContextSysctlArgs{...}
-type ContainerGroupEciSecurityContextSysctlInput interface {
-	pulumi.Input
-
-	ToContainerGroupEciSecurityContextSysctlOutput() ContainerGroupEciSecurityContextSysctlOutput
-	ToContainerGroupEciSecurityContextSysctlOutputWithContext(context.Context) ContainerGroupEciSecurityContextSysctlOutput
-}
-
-type ContainerGroupEciSecurityContextSysctlArgs struct {
-	// The name of the mounted volume.
-	Name pulumi.StringPtrInput `pulumi:"name"`
-	// The value of the variable. The value can be 0 to 256 characters in length.
-	Value pulumi.StringPtrInput `pulumi:"value"`
-}
-
-func (ContainerGroupEciSecurityContextSysctlArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ContainerGroupEciSecurityContextSysctl)(nil)).Elem()
-}
-
-func (i ContainerGroupEciSecurityContextSysctlArgs) ToContainerGroupEciSecurityContextSysctlOutput() ContainerGroupEciSecurityContextSysctlOutput {
-	return i.ToContainerGroupEciSecurityContextSysctlOutputWithContext(context.Background())
-}
-
-func (i ContainerGroupEciSecurityContextSysctlArgs) ToContainerGroupEciSecurityContextSysctlOutputWithContext(ctx context.Context) ContainerGroupEciSecurityContextSysctlOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ContainerGroupEciSecurityContextSysctlOutput)
-}
-
-// ContainerGroupEciSecurityContextSysctlArrayInput is an input type that accepts ContainerGroupEciSecurityContextSysctlArray and ContainerGroupEciSecurityContextSysctlArrayOutput values.
-// You can construct a concrete instance of `ContainerGroupEciSecurityContextSysctlArrayInput` via:
-//
-//	ContainerGroupEciSecurityContextSysctlArray{ ContainerGroupEciSecurityContextSysctlArgs{...} }
-type ContainerGroupEciSecurityContextSysctlArrayInput interface {
-	pulumi.Input
-
-	ToContainerGroupEciSecurityContextSysctlArrayOutput() ContainerGroupEciSecurityContextSysctlArrayOutput
-	ToContainerGroupEciSecurityContextSysctlArrayOutputWithContext(context.Context) ContainerGroupEciSecurityContextSysctlArrayOutput
-}
-
-type ContainerGroupEciSecurityContextSysctlArray []ContainerGroupEciSecurityContextSysctlInput
-
-func (ContainerGroupEciSecurityContextSysctlArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ContainerGroupEciSecurityContextSysctl)(nil)).Elem()
-}
-
-func (i ContainerGroupEciSecurityContextSysctlArray) ToContainerGroupEciSecurityContextSysctlArrayOutput() ContainerGroupEciSecurityContextSysctlArrayOutput {
-	return i.ToContainerGroupEciSecurityContextSysctlArrayOutputWithContext(context.Background())
-}
-
-func (i ContainerGroupEciSecurityContextSysctlArray) ToContainerGroupEciSecurityContextSysctlArrayOutputWithContext(ctx context.Context) ContainerGroupEciSecurityContextSysctlArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ContainerGroupEciSecurityContextSysctlArrayOutput)
-}
-
-type ContainerGroupEciSecurityContextSysctlOutput struct{ *pulumi.OutputState }
-
-func (ContainerGroupEciSecurityContextSysctlOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ContainerGroupEciSecurityContextSysctl)(nil)).Elem()
-}
-
-func (o ContainerGroupEciSecurityContextSysctlOutput) ToContainerGroupEciSecurityContextSysctlOutput() ContainerGroupEciSecurityContextSysctlOutput {
-	return o
-}
-
-func (o ContainerGroupEciSecurityContextSysctlOutput) ToContainerGroupEciSecurityContextSysctlOutputWithContext(ctx context.Context) ContainerGroupEciSecurityContextSysctlOutput {
-	return o
-}
-
-// The name of the mounted volume.
-func (o ContainerGroupEciSecurityContextSysctlOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ContainerGroupEciSecurityContextSysctl) *string { return v.Name }).(pulumi.StringPtrOutput)
-}
-
-// The value of the variable. The value can be 0 to 256 characters in length.
-func (o ContainerGroupEciSecurityContextSysctlOutput) Value() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ContainerGroupEciSecurityContextSysctl) *string { return v.Value }).(pulumi.StringPtrOutput)
-}
-
-type ContainerGroupEciSecurityContextSysctlArrayOutput struct{ *pulumi.OutputState }
-
-func (ContainerGroupEciSecurityContextSysctlArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ContainerGroupEciSecurityContextSysctl)(nil)).Elem()
-}
-
-func (o ContainerGroupEciSecurityContextSysctlArrayOutput) ToContainerGroupEciSecurityContextSysctlArrayOutput() ContainerGroupEciSecurityContextSysctlArrayOutput {
-	return o
-}
-
-func (o ContainerGroupEciSecurityContextSysctlArrayOutput) ToContainerGroupEciSecurityContextSysctlArrayOutputWithContext(ctx context.Context) ContainerGroupEciSecurityContextSysctlArrayOutput {
-	return o
-}
-
-func (o ContainerGroupEciSecurityContextSysctlArrayOutput) Index(i pulumi.IntInput) ContainerGroupEciSecurityContextSysctlOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ContainerGroupEciSecurityContextSysctl {
-		return vs[0].([]ContainerGroupEciSecurityContextSysctl)[vs[1].(int)]
-	}).(ContainerGroupEciSecurityContextSysctlOutput)
-}
-
 type ContainerGroupHostAlias struct {
 	// The information about the host.
 	Hostnames []string `pulumi:"hostnames"`
@@ -2416,6 +2495,8 @@ type ContainerGroupInitContainer struct {
 	Ready *bool `pulumi:"ready"`
 	// The number of times that the container restarted.
 	RestartCount *int `pulumi:"restartCount"`
+	// The security context of the container. See `securityContext` below.
+	SecurityContexts []ContainerGroupInitContainerSecurityContext `pulumi:"securityContexts"`
 	// The structure of volumeMounts. See `volumeMounts` below.
 	VolumeMounts []ContainerGroupInitContainerVolumeMount `pulumi:"volumeMounts"`
 	// The working directory of the container.
@@ -2458,6 +2539,8 @@ type ContainerGroupInitContainerArgs struct {
 	Ready pulumi.BoolPtrInput `pulumi:"ready"`
 	// The number of times that the container restarted.
 	RestartCount pulumi.IntPtrInput `pulumi:"restartCount"`
+	// The security context of the container. See `securityContext` below.
+	SecurityContexts ContainerGroupInitContainerSecurityContextArrayInput `pulumi:"securityContexts"`
 	// The structure of volumeMounts. See `volumeMounts` below.
 	VolumeMounts ContainerGroupInitContainerVolumeMountArrayInput `pulumi:"volumeMounts"`
 	// The working directory of the container.
@@ -2577,6 +2660,13 @@ func (o ContainerGroupInitContainerOutput) RestartCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ContainerGroupInitContainer) *int { return v.RestartCount }).(pulumi.IntPtrOutput)
 }
 
+// The security context of the container. See `securityContext` below.
+func (o ContainerGroupInitContainerOutput) SecurityContexts() ContainerGroupInitContainerSecurityContextArrayOutput {
+	return o.ApplyT(func(v ContainerGroupInitContainer) []ContainerGroupInitContainerSecurityContext {
+		return v.SecurityContexts
+	}).(ContainerGroupInitContainerSecurityContextArrayOutput)
+}
+
 // The structure of volumeMounts. See `volumeMounts` below.
 func (o ContainerGroupInitContainerOutput) VolumeMounts() ContainerGroupInitContainerVolumeMountArrayOutput {
 	return o.ApplyT(func(v ContainerGroupInitContainer) []ContainerGroupInitContainerVolumeMount { return v.VolumeMounts }).(ContainerGroupInitContainerVolumeMountArrayOutput)
@@ -2608,6 +2698,8 @@ func (o ContainerGroupInitContainerArrayOutput) Index(i pulumi.IntInput) Contain
 }
 
 type ContainerGroupInitContainerEnvironmentVar struct {
+	// The reference of the environment variable. See `fieldRef` below.
+	FieldReves []ContainerGroupInitContainerEnvironmentVarFieldRef `pulumi:"fieldReves"`
 	// The name of the variable. The name can be 1 to 128 characters in length and can contain letters, digits, and underscores (_). It cannot start with a digit.
 	Key *string `pulumi:"key"`
 	// The value of the variable. The value can be 0 to 256 characters in length.
@@ -2626,6 +2718,8 @@ type ContainerGroupInitContainerEnvironmentVarInput interface {
 }
 
 type ContainerGroupInitContainerEnvironmentVarArgs struct {
+	// The reference of the environment variable. See `fieldRef` below.
+	FieldReves ContainerGroupInitContainerEnvironmentVarFieldRefArrayInput `pulumi:"fieldReves"`
 	// The name of the variable. The name can be 1 to 128 characters in length and can contain letters, digits, and underscores (_). It cannot start with a digit.
 	Key pulumi.StringPtrInput `pulumi:"key"`
 	// The value of the variable. The value can be 0 to 256 characters in length.
@@ -2683,6 +2777,13 @@ func (o ContainerGroupInitContainerEnvironmentVarOutput) ToContainerGroupInitCon
 	return o
 }
 
+// The reference of the environment variable. See `fieldRef` below.
+func (o ContainerGroupInitContainerEnvironmentVarOutput) FieldReves() ContainerGroupInitContainerEnvironmentVarFieldRefArrayOutput {
+	return o.ApplyT(func(v ContainerGroupInitContainerEnvironmentVar) []ContainerGroupInitContainerEnvironmentVarFieldRef {
+		return v.FieldReves
+	}).(ContainerGroupInitContainerEnvironmentVarFieldRefArrayOutput)
+}
+
 // The name of the variable. The name can be 1 to 128 characters in length and can contain letters, digits, and underscores (_). It cannot start with a digit.
 func (o ContainerGroupInitContainerEnvironmentVarOutput) Key() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ContainerGroupInitContainerEnvironmentVar) *string { return v.Key }).(pulumi.StringPtrOutput)
@@ -2711,6 +2812,103 @@ func (o ContainerGroupInitContainerEnvironmentVarArrayOutput) Index(i pulumi.Int
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ContainerGroupInitContainerEnvironmentVar {
 		return vs[0].([]ContainerGroupInitContainerEnvironmentVar)[vs[1].(int)]
 	}).(ContainerGroupInitContainerEnvironmentVarOutput)
+}
+
+type ContainerGroupInitContainerEnvironmentVarFieldRef struct {
+	// The path of the reference.
+	FieldPath *string `pulumi:"fieldPath"`
+}
+
+// ContainerGroupInitContainerEnvironmentVarFieldRefInput is an input type that accepts ContainerGroupInitContainerEnvironmentVarFieldRefArgs and ContainerGroupInitContainerEnvironmentVarFieldRefOutput values.
+// You can construct a concrete instance of `ContainerGroupInitContainerEnvironmentVarFieldRefInput` via:
+//
+//	ContainerGroupInitContainerEnvironmentVarFieldRefArgs{...}
+type ContainerGroupInitContainerEnvironmentVarFieldRefInput interface {
+	pulumi.Input
+
+	ToContainerGroupInitContainerEnvironmentVarFieldRefOutput() ContainerGroupInitContainerEnvironmentVarFieldRefOutput
+	ToContainerGroupInitContainerEnvironmentVarFieldRefOutputWithContext(context.Context) ContainerGroupInitContainerEnvironmentVarFieldRefOutput
+}
+
+type ContainerGroupInitContainerEnvironmentVarFieldRefArgs struct {
+	// The path of the reference.
+	FieldPath pulumi.StringPtrInput `pulumi:"fieldPath"`
+}
+
+func (ContainerGroupInitContainerEnvironmentVarFieldRefArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ContainerGroupInitContainerEnvironmentVarFieldRef)(nil)).Elem()
+}
+
+func (i ContainerGroupInitContainerEnvironmentVarFieldRefArgs) ToContainerGroupInitContainerEnvironmentVarFieldRefOutput() ContainerGroupInitContainerEnvironmentVarFieldRefOutput {
+	return i.ToContainerGroupInitContainerEnvironmentVarFieldRefOutputWithContext(context.Background())
+}
+
+func (i ContainerGroupInitContainerEnvironmentVarFieldRefArgs) ToContainerGroupInitContainerEnvironmentVarFieldRefOutputWithContext(ctx context.Context) ContainerGroupInitContainerEnvironmentVarFieldRefOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ContainerGroupInitContainerEnvironmentVarFieldRefOutput)
+}
+
+// ContainerGroupInitContainerEnvironmentVarFieldRefArrayInput is an input type that accepts ContainerGroupInitContainerEnvironmentVarFieldRefArray and ContainerGroupInitContainerEnvironmentVarFieldRefArrayOutput values.
+// You can construct a concrete instance of `ContainerGroupInitContainerEnvironmentVarFieldRefArrayInput` via:
+//
+//	ContainerGroupInitContainerEnvironmentVarFieldRefArray{ ContainerGroupInitContainerEnvironmentVarFieldRefArgs{...} }
+type ContainerGroupInitContainerEnvironmentVarFieldRefArrayInput interface {
+	pulumi.Input
+
+	ToContainerGroupInitContainerEnvironmentVarFieldRefArrayOutput() ContainerGroupInitContainerEnvironmentVarFieldRefArrayOutput
+	ToContainerGroupInitContainerEnvironmentVarFieldRefArrayOutputWithContext(context.Context) ContainerGroupInitContainerEnvironmentVarFieldRefArrayOutput
+}
+
+type ContainerGroupInitContainerEnvironmentVarFieldRefArray []ContainerGroupInitContainerEnvironmentVarFieldRefInput
+
+func (ContainerGroupInitContainerEnvironmentVarFieldRefArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ContainerGroupInitContainerEnvironmentVarFieldRef)(nil)).Elem()
+}
+
+func (i ContainerGroupInitContainerEnvironmentVarFieldRefArray) ToContainerGroupInitContainerEnvironmentVarFieldRefArrayOutput() ContainerGroupInitContainerEnvironmentVarFieldRefArrayOutput {
+	return i.ToContainerGroupInitContainerEnvironmentVarFieldRefArrayOutputWithContext(context.Background())
+}
+
+func (i ContainerGroupInitContainerEnvironmentVarFieldRefArray) ToContainerGroupInitContainerEnvironmentVarFieldRefArrayOutputWithContext(ctx context.Context) ContainerGroupInitContainerEnvironmentVarFieldRefArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ContainerGroupInitContainerEnvironmentVarFieldRefArrayOutput)
+}
+
+type ContainerGroupInitContainerEnvironmentVarFieldRefOutput struct{ *pulumi.OutputState }
+
+func (ContainerGroupInitContainerEnvironmentVarFieldRefOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ContainerGroupInitContainerEnvironmentVarFieldRef)(nil)).Elem()
+}
+
+func (o ContainerGroupInitContainerEnvironmentVarFieldRefOutput) ToContainerGroupInitContainerEnvironmentVarFieldRefOutput() ContainerGroupInitContainerEnvironmentVarFieldRefOutput {
+	return o
+}
+
+func (o ContainerGroupInitContainerEnvironmentVarFieldRefOutput) ToContainerGroupInitContainerEnvironmentVarFieldRefOutputWithContext(ctx context.Context) ContainerGroupInitContainerEnvironmentVarFieldRefOutput {
+	return o
+}
+
+// The path of the reference.
+func (o ContainerGroupInitContainerEnvironmentVarFieldRefOutput) FieldPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ContainerGroupInitContainerEnvironmentVarFieldRef) *string { return v.FieldPath }).(pulumi.StringPtrOutput)
+}
+
+type ContainerGroupInitContainerEnvironmentVarFieldRefArrayOutput struct{ *pulumi.OutputState }
+
+func (ContainerGroupInitContainerEnvironmentVarFieldRefArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ContainerGroupInitContainerEnvironmentVarFieldRef)(nil)).Elem()
+}
+
+func (o ContainerGroupInitContainerEnvironmentVarFieldRefArrayOutput) ToContainerGroupInitContainerEnvironmentVarFieldRefArrayOutput() ContainerGroupInitContainerEnvironmentVarFieldRefArrayOutput {
+	return o
+}
+
+func (o ContainerGroupInitContainerEnvironmentVarFieldRefArrayOutput) ToContainerGroupInitContainerEnvironmentVarFieldRefArrayOutputWithContext(ctx context.Context) ContainerGroupInitContainerEnvironmentVarFieldRefArrayOutput {
+	return o
+}
+
+func (o ContainerGroupInitContainerEnvironmentVarFieldRefArrayOutput) Index(i pulumi.IntInput) ContainerGroupInitContainerEnvironmentVarFieldRefOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ContainerGroupInitContainerEnvironmentVarFieldRef {
+		return vs[0].([]ContainerGroupInitContainerEnvironmentVarFieldRef)[vs[1].(int)]
+	}).(ContainerGroupInitContainerEnvironmentVarFieldRefOutput)
 }
 
 type ContainerGroupInitContainerPort struct {
@@ -2817,6 +3015,211 @@ func (o ContainerGroupInitContainerPortArrayOutput) Index(i pulumi.IntInput) Con
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ContainerGroupInitContainerPort {
 		return vs[0].([]ContainerGroupInitContainerPort)[vs[1].(int)]
 	}).(ContainerGroupInitContainerPortOutput)
+}
+
+type ContainerGroupInitContainerSecurityContext struct {
+	// The permissions that you want to grant to the processes in the containers. See `capability` below.
+	Capabilities []ContainerGroupInitContainerSecurityContextCapability `pulumi:"capabilities"`
+	// The ID of the user who runs the container.
+	RunAsUser *int `pulumi:"runAsUser"`
+}
+
+// ContainerGroupInitContainerSecurityContextInput is an input type that accepts ContainerGroupInitContainerSecurityContextArgs and ContainerGroupInitContainerSecurityContextOutput values.
+// You can construct a concrete instance of `ContainerGroupInitContainerSecurityContextInput` via:
+//
+//	ContainerGroupInitContainerSecurityContextArgs{...}
+type ContainerGroupInitContainerSecurityContextInput interface {
+	pulumi.Input
+
+	ToContainerGroupInitContainerSecurityContextOutput() ContainerGroupInitContainerSecurityContextOutput
+	ToContainerGroupInitContainerSecurityContextOutputWithContext(context.Context) ContainerGroupInitContainerSecurityContextOutput
+}
+
+type ContainerGroupInitContainerSecurityContextArgs struct {
+	// The permissions that you want to grant to the processes in the containers. See `capability` below.
+	Capabilities ContainerGroupInitContainerSecurityContextCapabilityArrayInput `pulumi:"capabilities"`
+	// The ID of the user who runs the container.
+	RunAsUser pulumi.IntPtrInput `pulumi:"runAsUser"`
+}
+
+func (ContainerGroupInitContainerSecurityContextArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ContainerGroupInitContainerSecurityContext)(nil)).Elem()
+}
+
+func (i ContainerGroupInitContainerSecurityContextArgs) ToContainerGroupInitContainerSecurityContextOutput() ContainerGroupInitContainerSecurityContextOutput {
+	return i.ToContainerGroupInitContainerSecurityContextOutputWithContext(context.Background())
+}
+
+func (i ContainerGroupInitContainerSecurityContextArgs) ToContainerGroupInitContainerSecurityContextOutputWithContext(ctx context.Context) ContainerGroupInitContainerSecurityContextOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ContainerGroupInitContainerSecurityContextOutput)
+}
+
+// ContainerGroupInitContainerSecurityContextArrayInput is an input type that accepts ContainerGroupInitContainerSecurityContextArray and ContainerGroupInitContainerSecurityContextArrayOutput values.
+// You can construct a concrete instance of `ContainerGroupInitContainerSecurityContextArrayInput` via:
+//
+//	ContainerGroupInitContainerSecurityContextArray{ ContainerGroupInitContainerSecurityContextArgs{...} }
+type ContainerGroupInitContainerSecurityContextArrayInput interface {
+	pulumi.Input
+
+	ToContainerGroupInitContainerSecurityContextArrayOutput() ContainerGroupInitContainerSecurityContextArrayOutput
+	ToContainerGroupInitContainerSecurityContextArrayOutputWithContext(context.Context) ContainerGroupInitContainerSecurityContextArrayOutput
+}
+
+type ContainerGroupInitContainerSecurityContextArray []ContainerGroupInitContainerSecurityContextInput
+
+func (ContainerGroupInitContainerSecurityContextArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ContainerGroupInitContainerSecurityContext)(nil)).Elem()
+}
+
+func (i ContainerGroupInitContainerSecurityContextArray) ToContainerGroupInitContainerSecurityContextArrayOutput() ContainerGroupInitContainerSecurityContextArrayOutput {
+	return i.ToContainerGroupInitContainerSecurityContextArrayOutputWithContext(context.Background())
+}
+
+func (i ContainerGroupInitContainerSecurityContextArray) ToContainerGroupInitContainerSecurityContextArrayOutputWithContext(ctx context.Context) ContainerGroupInitContainerSecurityContextArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ContainerGroupInitContainerSecurityContextArrayOutput)
+}
+
+type ContainerGroupInitContainerSecurityContextOutput struct{ *pulumi.OutputState }
+
+func (ContainerGroupInitContainerSecurityContextOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ContainerGroupInitContainerSecurityContext)(nil)).Elem()
+}
+
+func (o ContainerGroupInitContainerSecurityContextOutput) ToContainerGroupInitContainerSecurityContextOutput() ContainerGroupInitContainerSecurityContextOutput {
+	return o
+}
+
+func (o ContainerGroupInitContainerSecurityContextOutput) ToContainerGroupInitContainerSecurityContextOutputWithContext(ctx context.Context) ContainerGroupInitContainerSecurityContextOutput {
+	return o
+}
+
+// The permissions that you want to grant to the processes in the containers. See `capability` below.
+func (o ContainerGroupInitContainerSecurityContextOutput) Capabilities() ContainerGroupInitContainerSecurityContextCapabilityArrayOutput {
+	return o.ApplyT(func(v ContainerGroupInitContainerSecurityContext) []ContainerGroupInitContainerSecurityContextCapability {
+		return v.Capabilities
+	}).(ContainerGroupInitContainerSecurityContextCapabilityArrayOutput)
+}
+
+// The ID of the user who runs the container.
+func (o ContainerGroupInitContainerSecurityContextOutput) RunAsUser() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ContainerGroupInitContainerSecurityContext) *int { return v.RunAsUser }).(pulumi.IntPtrOutput)
+}
+
+type ContainerGroupInitContainerSecurityContextArrayOutput struct{ *pulumi.OutputState }
+
+func (ContainerGroupInitContainerSecurityContextArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ContainerGroupInitContainerSecurityContext)(nil)).Elem()
+}
+
+func (o ContainerGroupInitContainerSecurityContextArrayOutput) ToContainerGroupInitContainerSecurityContextArrayOutput() ContainerGroupInitContainerSecurityContextArrayOutput {
+	return o
+}
+
+func (o ContainerGroupInitContainerSecurityContextArrayOutput) ToContainerGroupInitContainerSecurityContextArrayOutputWithContext(ctx context.Context) ContainerGroupInitContainerSecurityContextArrayOutput {
+	return o
+}
+
+func (o ContainerGroupInitContainerSecurityContextArrayOutput) Index(i pulumi.IntInput) ContainerGroupInitContainerSecurityContextOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ContainerGroupInitContainerSecurityContext {
+		return vs[0].([]ContainerGroupInitContainerSecurityContext)[vs[1].(int)]
+	}).(ContainerGroupInitContainerSecurityContextOutput)
+}
+
+type ContainerGroupInitContainerSecurityContextCapability struct {
+	// The permissions that you want to grant to the processes in the containers.
+	Adds []string `pulumi:"adds"`
+}
+
+// ContainerGroupInitContainerSecurityContextCapabilityInput is an input type that accepts ContainerGroupInitContainerSecurityContextCapabilityArgs and ContainerGroupInitContainerSecurityContextCapabilityOutput values.
+// You can construct a concrete instance of `ContainerGroupInitContainerSecurityContextCapabilityInput` via:
+//
+//	ContainerGroupInitContainerSecurityContextCapabilityArgs{...}
+type ContainerGroupInitContainerSecurityContextCapabilityInput interface {
+	pulumi.Input
+
+	ToContainerGroupInitContainerSecurityContextCapabilityOutput() ContainerGroupInitContainerSecurityContextCapabilityOutput
+	ToContainerGroupInitContainerSecurityContextCapabilityOutputWithContext(context.Context) ContainerGroupInitContainerSecurityContextCapabilityOutput
+}
+
+type ContainerGroupInitContainerSecurityContextCapabilityArgs struct {
+	// The permissions that you want to grant to the processes in the containers.
+	Adds pulumi.StringArrayInput `pulumi:"adds"`
+}
+
+func (ContainerGroupInitContainerSecurityContextCapabilityArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ContainerGroupInitContainerSecurityContextCapability)(nil)).Elem()
+}
+
+func (i ContainerGroupInitContainerSecurityContextCapabilityArgs) ToContainerGroupInitContainerSecurityContextCapabilityOutput() ContainerGroupInitContainerSecurityContextCapabilityOutput {
+	return i.ToContainerGroupInitContainerSecurityContextCapabilityOutputWithContext(context.Background())
+}
+
+func (i ContainerGroupInitContainerSecurityContextCapabilityArgs) ToContainerGroupInitContainerSecurityContextCapabilityOutputWithContext(ctx context.Context) ContainerGroupInitContainerSecurityContextCapabilityOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ContainerGroupInitContainerSecurityContextCapabilityOutput)
+}
+
+// ContainerGroupInitContainerSecurityContextCapabilityArrayInput is an input type that accepts ContainerGroupInitContainerSecurityContextCapabilityArray and ContainerGroupInitContainerSecurityContextCapabilityArrayOutput values.
+// You can construct a concrete instance of `ContainerGroupInitContainerSecurityContextCapabilityArrayInput` via:
+//
+//	ContainerGroupInitContainerSecurityContextCapabilityArray{ ContainerGroupInitContainerSecurityContextCapabilityArgs{...} }
+type ContainerGroupInitContainerSecurityContextCapabilityArrayInput interface {
+	pulumi.Input
+
+	ToContainerGroupInitContainerSecurityContextCapabilityArrayOutput() ContainerGroupInitContainerSecurityContextCapabilityArrayOutput
+	ToContainerGroupInitContainerSecurityContextCapabilityArrayOutputWithContext(context.Context) ContainerGroupInitContainerSecurityContextCapabilityArrayOutput
+}
+
+type ContainerGroupInitContainerSecurityContextCapabilityArray []ContainerGroupInitContainerSecurityContextCapabilityInput
+
+func (ContainerGroupInitContainerSecurityContextCapabilityArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ContainerGroupInitContainerSecurityContextCapability)(nil)).Elem()
+}
+
+func (i ContainerGroupInitContainerSecurityContextCapabilityArray) ToContainerGroupInitContainerSecurityContextCapabilityArrayOutput() ContainerGroupInitContainerSecurityContextCapabilityArrayOutput {
+	return i.ToContainerGroupInitContainerSecurityContextCapabilityArrayOutputWithContext(context.Background())
+}
+
+func (i ContainerGroupInitContainerSecurityContextCapabilityArray) ToContainerGroupInitContainerSecurityContextCapabilityArrayOutputWithContext(ctx context.Context) ContainerGroupInitContainerSecurityContextCapabilityArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ContainerGroupInitContainerSecurityContextCapabilityArrayOutput)
+}
+
+type ContainerGroupInitContainerSecurityContextCapabilityOutput struct{ *pulumi.OutputState }
+
+func (ContainerGroupInitContainerSecurityContextCapabilityOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ContainerGroupInitContainerSecurityContextCapability)(nil)).Elem()
+}
+
+func (o ContainerGroupInitContainerSecurityContextCapabilityOutput) ToContainerGroupInitContainerSecurityContextCapabilityOutput() ContainerGroupInitContainerSecurityContextCapabilityOutput {
+	return o
+}
+
+func (o ContainerGroupInitContainerSecurityContextCapabilityOutput) ToContainerGroupInitContainerSecurityContextCapabilityOutputWithContext(ctx context.Context) ContainerGroupInitContainerSecurityContextCapabilityOutput {
+	return o
+}
+
+// The permissions that you want to grant to the processes in the containers.
+func (o ContainerGroupInitContainerSecurityContextCapabilityOutput) Adds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ContainerGroupInitContainerSecurityContextCapability) []string { return v.Adds }).(pulumi.StringArrayOutput)
+}
+
+type ContainerGroupInitContainerSecurityContextCapabilityArrayOutput struct{ *pulumi.OutputState }
+
+func (ContainerGroupInitContainerSecurityContextCapabilityArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ContainerGroupInitContainerSecurityContextCapability)(nil)).Elem()
+}
+
+func (o ContainerGroupInitContainerSecurityContextCapabilityArrayOutput) ToContainerGroupInitContainerSecurityContextCapabilityArrayOutput() ContainerGroupInitContainerSecurityContextCapabilityArrayOutput {
+	return o
+}
+
+func (o ContainerGroupInitContainerSecurityContextCapabilityArrayOutput) ToContainerGroupInitContainerSecurityContextCapabilityArrayOutputWithContext(ctx context.Context) ContainerGroupInitContainerSecurityContextCapabilityArrayOutput {
+	return o
+}
+
+func (o ContainerGroupInitContainerSecurityContextCapabilityArrayOutput) Index(i pulumi.IntInput) ContainerGroupInitContainerSecurityContextCapabilityOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ContainerGroupInitContainerSecurityContextCapability {
+		return vs[0].([]ContainerGroupInitContainerSecurityContextCapability)[vs[1].(int)]
+	}).(ContainerGroupInitContainerSecurityContextCapabilityOutput)
 }
 
 type ContainerGroupInitContainerVolumeMount struct {
@@ -2932,6 +3335,249 @@ func (o ContainerGroupInitContainerVolumeMountArrayOutput) Index(i pulumi.IntInp
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ContainerGroupInitContainerVolumeMount {
 		return vs[0].([]ContainerGroupInitContainerVolumeMount)[vs[1].(int)]
 	}).(ContainerGroupInitContainerVolumeMountOutput)
+}
+
+type ContainerGroupSecurityContext struct {
+	// Sysctls hold a list of namespaced sysctls used for the pod. Pods with unsupported sysctls (by the container runtime) might fail to launch. See `sysctl` below.
+	Sysctls []ContainerGroupSecurityContextSysctl `pulumi:"sysctls"`
+}
+
+// ContainerGroupSecurityContextInput is an input type that accepts ContainerGroupSecurityContextArgs and ContainerGroupSecurityContextOutput values.
+// You can construct a concrete instance of `ContainerGroupSecurityContextInput` via:
+//
+//	ContainerGroupSecurityContextArgs{...}
+type ContainerGroupSecurityContextInput interface {
+	pulumi.Input
+
+	ToContainerGroupSecurityContextOutput() ContainerGroupSecurityContextOutput
+	ToContainerGroupSecurityContextOutputWithContext(context.Context) ContainerGroupSecurityContextOutput
+}
+
+type ContainerGroupSecurityContextArgs struct {
+	// Sysctls hold a list of namespaced sysctls used for the pod. Pods with unsupported sysctls (by the container runtime) might fail to launch. See `sysctl` below.
+	Sysctls ContainerGroupSecurityContextSysctlArrayInput `pulumi:"sysctls"`
+}
+
+func (ContainerGroupSecurityContextArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ContainerGroupSecurityContext)(nil)).Elem()
+}
+
+func (i ContainerGroupSecurityContextArgs) ToContainerGroupSecurityContextOutput() ContainerGroupSecurityContextOutput {
+	return i.ToContainerGroupSecurityContextOutputWithContext(context.Background())
+}
+
+func (i ContainerGroupSecurityContextArgs) ToContainerGroupSecurityContextOutputWithContext(ctx context.Context) ContainerGroupSecurityContextOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ContainerGroupSecurityContextOutput)
+}
+
+func (i ContainerGroupSecurityContextArgs) ToContainerGroupSecurityContextPtrOutput() ContainerGroupSecurityContextPtrOutput {
+	return i.ToContainerGroupSecurityContextPtrOutputWithContext(context.Background())
+}
+
+func (i ContainerGroupSecurityContextArgs) ToContainerGroupSecurityContextPtrOutputWithContext(ctx context.Context) ContainerGroupSecurityContextPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ContainerGroupSecurityContextOutput).ToContainerGroupSecurityContextPtrOutputWithContext(ctx)
+}
+
+// ContainerGroupSecurityContextPtrInput is an input type that accepts ContainerGroupSecurityContextArgs, ContainerGroupSecurityContextPtr and ContainerGroupSecurityContextPtrOutput values.
+// You can construct a concrete instance of `ContainerGroupSecurityContextPtrInput` via:
+//
+//	        ContainerGroupSecurityContextArgs{...}
+//
+//	or:
+//
+//	        nil
+type ContainerGroupSecurityContextPtrInput interface {
+	pulumi.Input
+
+	ToContainerGroupSecurityContextPtrOutput() ContainerGroupSecurityContextPtrOutput
+	ToContainerGroupSecurityContextPtrOutputWithContext(context.Context) ContainerGroupSecurityContextPtrOutput
+}
+
+type containerGroupSecurityContextPtrType ContainerGroupSecurityContextArgs
+
+func ContainerGroupSecurityContextPtr(v *ContainerGroupSecurityContextArgs) ContainerGroupSecurityContextPtrInput {
+	return (*containerGroupSecurityContextPtrType)(v)
+}
+
+func (*containerGroupSecurityContextPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ContainerGroupSecurityContext)(nil)).Elem()
+}
+
+func (i *containerGroupSecurityContextPtrType) ToContainerGroupSecurityContextPtrOutput() ContainerGroupSecurityContextPtrOutput {
+	return i.ToContainerGroupSecurityContextPtrOutputWithContext(context.Background())
+}
+
+func (i *containerGroupSecurityContextPtrType) ToContainerGroupSecurityContextPtrOutputWithContext(ctx context.Context) ContainerGroupSecurityContextPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ContainerGroupSecurityContextPtrOutput)
+}
+
+type ContainerGroupSecurityContextOutput struct{ *pulumi.OutputState }
+
+func (ContainerGroupSecurityContextOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ContainerGroupSecurityContext)(nil)).Elem()
+}
+
+func (o ContainerGroupSecurityContextOutput) ToContainerGroupSecurityContextOutput() ContainerGroupSecurityContextOutput {
+	return o
+}
+
+func (o ContainerGroupSecurityContextOutput) ToContainerGroupSecurityContextOutputWithContext(ctx context.Context) ContainerGroupSecurityContextOutput {
+	return o
+}
+
+func (o ContainerGroupSecurityContextOutput) ToContainerGroupSecurityContextPtrOutput() ContainerGroupSecurityContextPtrOutput {
+	return o.ToContainerGroupSecurityContextPtrOutputWithContext(context.Background())
+}
+
+func (o ContainerGroupSecurityContextOutput) ToContainerGroupSecurityContextPtrOutputWithContext(ctx context.Context) ContainerGroupSecurityContextPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ContainerGroupSecurityContext) *ContainerGroupSecurityContext {
+		return &v
+	}).(ContainerGroupSecurityContextPtrOutput)
+}
+
+// Sysctls hold a list of namespaced sysctls used for the pod. Pods with unsupported sysctls (by the container runtime) might fail to launch. See `sysctl` below.
+func (o ContainerGroupSecurityContextOutput) Sysctls() ContainerGroupSecurityContextSysctlArrayOutput {
+	return o.ApplyT(func(v ContainerGroupSecurityContext) []ContainerGroupSecurityContextSysctl { return v.Sysctls }).(ContainerGroupSecurityContextSysctlArrayOutput)
+}
+
+type ContainerGroupSecurityContextPtrOutput struct{ *pulumi.OutputState }
+
+func (ContainerGroupSecurityContextPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ContainerGroupSecurityContext)(nil)).Elem()
+}
+
+func (o ContainerGroupSecurityContextPtrOutput) ToContainerGroupSecurityContextPtrOutput() ContainerGroupSecurityContextPtrOutput {
+	return o
+}
+
+func (o ContainerGroupSecurityContextPtrOutput) ToContainerGroupSecurityContextPtrOutputWithContext(ctx context.Context) ContainerGroupSecurityContextPtrOutput {
+	return o
+}
+
+func (o ContainerGroupSecurityContextPtrOutput) Elem() ContainerGroupSecurityContextOutput {
+	return o.ApplyT(func(v *ContainerGroupSecurityContext) ContainerGroupSecurityContext {
+		if v != nil {
+			return *v
+		}
+		var ret ContainerGroupSecurityContext
+		return ret
+	}).(ContainerGroupSecurityContextOutput)
+}
+
+// Sysctls hold a list of namespaced sysctls used for the pod. Pods with unsupported sysctls (by the container runtime) might fail to launch. See `sysctl` below.
+func (o ContainerGroupSecurityContextPtrOutput) Sysctls() ContainerGroupSecurityContextSysctlArrayOutput {
+	return o.ApplyT(func(v *ContainerGroupSecurityContext) []ContainerGroupSecurityContextSysctl {
+		if v == nil {
+			return nil
+		}
+		return v.Sysctls
+	}).(ContainerGroupSecurityContextSysctlArrayOutput)
+}
+
+type ContainerGroupSecurityContextSysctl struct {
+	// The name of the mounted volume.
+	Name *string `pulumi:"name"`
+	// The value of the variable. The value can be 0 to 256 characters in length.
+	Value *string `pulumi:"value"`
+}
+
+// ContainerGroupSecurityContextSysctlInput is an input type that accepts ContainerGroupSecurityContextSysctlArgs and ContainerGroupSecurityContextSysctlOutput values.
+// You can construct a concrete instance of `ContainerGroupSecurityContextSysctlInput` via:
+//
+//	ContainerGroupSecurityContextSysctlArgs{...}
+type ContainerGroupSecurityContextSysctlInput interface {
+	pulumi.Input
+
+	ToContainerGroupSecurityContextSysctlOutput() ContainerGroupSecurityContextSysctlOutput
+	ToContainerGroupSecurityContextSysctlOutputWithContext(context.Context) ContainerGroupSecurityContextSysctlOutput
+}
+
+type ContainerGroupSecurityContextSysctlArgs struct {
+	// The name of the mounted volume.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The value of the variable. The value can be 0 to 256 characters in length.
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (ContainerGroupSecurityContextSysctlArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ContainerGroupSecurityContextSysctl)(nil)).Elem()
+}
+
+func (i ContainerGroupSecurityContextSysctlArgs) ToContainerGroupSecurityContextSysctlOutput() ContainerGroupSecurityContextSysctlOutput {
+	return i.ToContainerGroupSecurityContextSysctlOutputWithContext(context.Background())
+}
+
+func (i ContainerGroupSecurityContextSysctlArgs) ToContainerGroupSecurityContextSysctlOutputWithContext(ctx context.Context) ContainerGroupSecurityContextSysctlOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ContainerGroupSecurityContextSysctlOutput)
+}
+
+// ContainerGroupSecurityContextSysctlArrayInput is an input type that accepts ContainerGroupSecurityContextSysctlArray and ContainerGroupSecurityContextSysctlArrayOutput values.
+// You can construct a concrete instance of `ContainerGroupSecurityContextSysctlArrayInput` via:
+//
+//	ContainerGroupSecurityContextSysctlArray{ ContainerGroupSecurityContextSysctlArgs{...} }
+type ContainerGroupSecurityContextSysctlArrayInput interface {
+	pulumi.Input
+
+	ToContainerGroupSecurityContextSysctlArrayOutput() ContainerGroupSecurityContextSysctlArrayOutput
+	ToContainerGroupSecurityContextSysctlArrayOutputWithContext(context.Context) ContainerGroupSecurityContextSysctlArrayOutput
+}
+
+type ContainerGroupSecurityContextSysctlArray []ContainerGroupSecurityContextSysctlInput
+
+func (ContainerGroupSecurityContextSysctlArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ContainerGroupSecurityContextSysctl)(nil)).Elem()
+}
+
+func (i ContainerGroupSecurityContextSysctlArray) ToContainerGroupSecurityContextSysctlArrayOutput() ContainerGroupSecurityContextSysctlArrayOutput {
+	return i.ToContainerGroupSecurityContextSysctlArrayOutputWithContext(context.Background())
+}
+
+func (i ContainerGroupSecurityContextSysctlArray) ToContainerGroupSecurityContextSysctlArrayOutputWithContext(ctx context.Context) ContainerGroupSecurityContextSysctlArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ContainerGroupSecurityContextSysctlArrayOutput)
+}
+
+type ContainerGroupSecurityContextSysctlOutput struct{ *pulumi.OutputState }
+
+func (ContainerGroupSecurityContextSysctlOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ContainerGroupSecurityContextSysctl)(nil)).Elem()
+}
+
+func (o ContainerGroupSecurityContextSysctlOutput) ToContainerGroupSecurityContextSysctlOutput() ContainerGroupSecurityContextSysctlOutput {
+	return o
+}
+
+func (o ContainerGroupSecurityContextSysctlOutput) ToContainerGroupSecurityContextSysctlOutputWithContext(ctx context.Context) ContainerGroupSecurityContextSysctlOutput {
+	return o
+}
+
+// The name of the mounted volume.
+func (o ContainerGroupSecurityContextSysctlOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ContainerGroupSecurityContextSysctl) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// The value of the variable. The value can be 0 to 256 characters in length.
+func (o ContainerGroupSecurityContextSysctlOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ContainerGroupSecurityContextSysctl) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type ContainerGroupSecurityContextSysctlArrayOutput struct{ *pulumi.OutputState }
+
+func (ContainerGroupSecurityContextSysctlArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ContainerGroupSecurityContextSysctl)(nil)).Elem()
+}
+
+func (o ContainerGroupSecurityContextSysctlArrayOutput) ToContainerGroupSecurityContextSysctlArrayOutput() ContainerGroupSecurityContextSysctlArrayOutput {
+	return o
+}
+
+func (o ContainerGroupSecurityContextSysctlArrayOutput) ToContainerGroupSecurityContextSysctlArrayOutputWithContext(ctx context.Context) ContainerGroupSecurityContextSysctlArrayOutput {
+	return o
+}
+
+func (o ContainerGroupSecurityContextSysctlArrayOutput) Index(i pulumi.IntInput) ContainerGroupSecurityContextSysctlOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ContainerGroupSecurityContextSysctl {
+		return vs[0].([]ContainerGroupSecurityContextSysctl)[vs[1].(int)]
+	}).(ContainerGroupSecurityContextSysctlOutput)
 }
 
 type ContainerGroupVolume struct {
@@ -6823,6 +7469,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ContainerGroupContainerArrayInput)(nil)).Elem(), ContainerGroupContainerArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ContainerGroupContainerEnvironmentVarInput)(nil)).Elem(), ContainerGroupContainerEnvironmentVarArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ContainerGroupContainerEnvironmentVarArrayInput)(nil)).Elem(), ContainerGroupContainerEnvironmentVarArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ContainerGroupContainerEnvironmentVarFieldRefInput)(nil)).Elem(), ContainerGroupContainerEnvironmentVarFieldRefArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ContainerGroupContainerEnvironmentVarFieldRefArrayInput)(nil)).Elem(), ContainerGroupContainerEnvironmentVarFieldRefArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ContainerGroupContainerLivenessProbeInput)(nil)).Elem(), ContainerGroupContainerLivenessProbeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ContainerGroupContainerLivenessProbeArrayInput)(nil)).Elem(), ContainerGroupContainerLivenessProbeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ContainerGroupContainerLivenessProbeExecInput)(nil)).Elem(), ContainerGroupContainerLivenessProbeExecArgs{})
@@ -6841,16 +7489,16 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ContainerGroupContainerReadinessProbeHttpGetArrayInput)(nil)).Elem(), ContainerGroupContainerReadinessProbeHttpGetArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ContainerGroupContainerReadinessProbeTcpSocketInput)(nil)).Elem(), ContainerGroupContainerReadinessProbeTcpSocketArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ContainerGroupContainerReadinessProbeTcpSocketArrayInput)(nil)).Elem(), ContainerGroupContainerReadinessProbeTcpSocketArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ContainerGroupContainerSecurityContextInput)(nil)).Elem(), ContainerGroupContainerSecurityContextArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ContainerGroupContainerSecurityContextArrayInput)(nil)).Elem(), ContainerGroupContainerSecurityContextArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ContainerGroupContainerSecurityContextCapabilityInput)(nil)).Elem(), ContainerGroupContainerSecurityContextCapabilityArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ContainerGroupContainerSecurityContextCapabilityArrayInput)(nil)).Elem(), ContainerGroupContainerSecurityContextCapabilityArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ContainerGroupContainerVolumeMountInput)(nil)).Elem(), ContainerGroupContainerVolumeMountArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ContainerGroupContainerVolumeMountArrayInput)(nil)).Elem(), ContainerGroupContainerVolumeMountArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ContainerGroupDnsConfigInput)(nil)).Elem(), ContainerGroupDnsConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ContainerGroupDnsConfigPtrInput)(nil)).Elem(), ContainerGroupDnsConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ContainerGroupDnsConfigOptionInput)(nil)).Elem(), ContainerGroupDnsConfigOptionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ContainerGroupDnsConfigOptionArrayInput)(nil)).Elem(), ContainerGroupDnsConfigOptionArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ContainerGroupEciSecurityContextInput)(nil)).Elem(), ContainerGroupEciSecurityContextArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ContainerGroupEciSecurityContextPtrInput)(nil)).Elem(), ContainerGroupEciSecurityContextArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ContainerGroupEciSecurityContextSysctlInput)(nil)).Elem(), ContainerGroupEciSecurityContextSysctlArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ContainerGroupEciSecurityContextSysctlArrayInput)(nil)).Elem(), ContainerGroupEciSecurityContextSysctlArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ContainerGroupHostAliasInput)(nil)).Elem(), ContainerGroupHostAliasArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ContainerGroupHostAliasArrayInput)(nil)).Elem(), ContainerGroupHostAliasArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ContainerGroupImageRegistryCredentialInput)(nil)).Elem(), ContainerGroupImageRegistryCredentialArgs{})
@@ -6859,10 +7507,20 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ContainerGroupInitContainerArrayInput)(nil)).Elem(), ContainerGroupInitContainerArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ContainerGroupInitContainerEnvironmentVarInput)(nil)).Elem(), ContainerGroupInitContainerEnvironmentVarArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ContainerGroupInitContainerEnvironmentVarArrayInput)(nil)).Elem(), ContainerGroupInitContainerEnvironmentVarArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ContainerGroupInitContainerEnvironmentVarFieldRefInput)(nil)).Elem(), ContainerGroupInitContainerEnvironmentVarFieldRefArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ContainerGroupInitContainerEnvironmentVarFieldRefArrayInput)(nil)).Elem(), ContainerGroupInitContainerEnvironmentVarFieldRefArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ContainerGroupInitContainerPortInput)(nil)).Elem(), ContainerGroupInitContainerPortArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ContainerGroupInitContainerPortArrayInput)(nil)).Elem(), ContainerGroupInitContainerPortArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ContainerGroupInitContainerSecurityContextInput)(nil)).Elem(), ContainerGroupInitContainerSecurityContextArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ContainerGroupInitContainerSecurityContextArrayInput)(nil)).Elem(), ContainerGroupInitContainerSecurityContextArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ContainerGroupInitContainerSecurityContextCapabilityInput)(nil)).Elem(), ContainerGroupInitContainerSecurityContextCapabilityArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ContainerGroupInitContainerSecurityContextCapabilityArrayInput)(nil)).Elem(), ContainerGroupInitContainerSecurityContextCapabilityArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ContainerGroupInitContainerVolumeMountInput)(nil)).Elem(), ContainerGroupInitContainerVolumeMountArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ContainerGroupInitContainerVolumeMountArrayInput)(nil)).Elem(), ContainerGroupInitContainerVolumeMountArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ContainerGroupSecurityContextInput)(nil)).Elem(), ContainerGroupSecurityContextArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ContainerGroupSecurityContextPtrInput)(nil)).Elem(), ContainerGroupSecurityContextArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ContainerGroupSecurityContextSysctlInput)(nil)).Elem(), ContainerGroupSecurityContextSysctlArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ContainerGroupSecurityContextSysctlArrayInput)(nil)).Elem(), ContainerGroupSecurityContextSysctlArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ContainerGroupVolumeInput)(nil)).Elem(), ContainerGroupVolumeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ContainerGroupVolumeArrayInput)(nil)).Elem(), ContainerGroupVolumeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ContainerGroupVolumeConfigFileVolumeConfigFileToPathInput)(nil)).Elem(), ContainerGroupVolumeConfigFileVolumeConfigFileToPathArgs{})
@@ -6923,6 +7581,8 @@ func init() {
 	pulumi.RegisterOutputType(ContainerGroupContainerArrayOutput{})
 	pulumi.RegisterOutputType(ContainerGroupContainerEnvironmentVarOutput{})
 	pulumi.RegisterOutputType(ContainerGroupContainerEnvironmentVarArrayOutput{})
+	pulumi.RegisterOutputType(ContainerGroupContainerEnvironmentVarFieldRefOutput{})
+	pulumi.RegisterOutputType(ContainerGroupContainerEnvironmentVarFieldRefArrayOutput{})
 	pulumi.RegisterOutputType(ContainerGroupContainerLivenessProbeOutput{})
 	pulumi.RegisterOutputType(ContainerGroupContainerLivenessProbeArrayOutput{})
 	pulumi.RegisterOutputType(ContainerGroupContainerLivenessProbeExecOutput{})
@@ -6941,16 +7601,16 @@ func init() {
 	pulumi.RegisterOutputType(ContainerGroupContainerReadinessProbeHttpGetArrayOutput{})
 	pulumi.RegisterOutputType(ContainerGroupContainerReadinessProbeTcpSocketOutput{})
 	pulumi.RegisterOutputType(ContainerGroupContainerReadinessProbeTcpSocketArrayOutput{})
+	pulumi.RegisterOutputType(ContainerGroupContainerSecurityContextOutput{})
+	pulumi.RegisterOutputType(ContainerGroupContainerSecurityContextArrayOutput{})
+	pulumi.RegisterOutputType(ContainerGroupContainerSecurityContextCapabilityOutput{})
+	pulumi.RegisterOutputType(ContainerGroupContainerSecurityContextCapabilityArrayOutput{})
 	pulumi.RegisterOutputType(ContainerGroupContainerVolumeMountOutput{})
 	pulumi.RegisterOutputType(ContainerGroupContainerVolumeMountArrayOutput{})
 	pulumi.RegisterOutputType(ContainerGroupDnsConfigOutput{})
 	pulumi.RegisterOutputType(ContainerGroupDnsConfigPtrOutput{})
 	pulumi.RegisterOutputType(ContainerGroupDnsConfigOptionOutput{})
 	pulumi.RegisterOutputType(ContainerGroupDnsConfigOptionArrayOutput{})
-	pulumi.RegisterOutputType(ContainerGroupEciSecurityContextOutput{})
-	pulumi.RegisterOutputType(ContainerGroupEciSecurityContextPtrOutput{})
-	pulumi.RegisterOutputType(ContainerGroupEciSecurityContextSysctlOutput{})
-	pulumi.RegisterOutputType(ContainerGroupEciSecurityContextSysctlArrayOutput{})
 	pulumi.RegisterOutputType(ContainerGroupHostAliasOutput{})
 	pulumi.RegisterOutputType(ContainerGroupHostAliasArrayOutput{})
 	pulumi.RegisterOutputType(ContainerGroupImageRegistryCredentialOutput{})
@@ -6959,10 +7619,20 @@ func init() {
 	pulumi.RegisterOutputType(ContainerGroupInitContainerArrayOutput{})
 	pulumi.RegisterOutputType(ContainerGroupInitContainerEnvironmentVarOutput{})
 	pulumi.RegisterOutputType(ContainerGroupInitContainerEnvironmentVarArrayOutput{})
+	pulumi.RegisterOutputType(ContainerGroupInitContainerEnvironmentVarFieldRefOutput{})
+	pulumi.RegisterOutputType(ContainerGroupInitContainerEnvironmentVarFieldRefArrayOutput{})
 	pulumi.RegisterOutputType(ContainerGroupInitContainerPortOutput{})
 	pulumi.RegisterOutputType(ContainerGroupInitContainerPortArrayOutput{})
+	pulumi.RegisterOutputType(ContainerGroupInitContainerSecurityContextOutput{})
+	pulumi.RegisterOutputType(ContainerGroupInitContainerSecurityContextArrayOutput{})
+	pulumi.RegisterOutputType(ContainerGroupInitContainerSecurityContextCapabilityOutput{})
+	pulumi.RegisterOutputType(ContainerGroupInitContainerSecurityContextCapabilityArrayOutput{})
 	pulumi.RegisterOutputType(ContainerGroupInitContainerVolumeMountOutput{})
 	pulumi.RegisterOutputType(ContainerGroupInitContainerVolumeMountArrayOutput{})
+	pulumi.RegisterOutputType(ContainerGroupSecurityContextOutput{})
+	pulumi.RegisterOutputType(ContainerGroupSecurityContextPtrOutput{})
+	pulumi.RegisterOutputType(ContainerGroupSecurityContextSysctlOutput{})
+	pulumi.RegisterOutputType(ContainerGroupSecurityContextSysctlArrayOutput{})
 	pulumi.RegisterOutputType(ContainerGroupVolumeOutput{})
 	pulumi.RegisterOutputType(ContainerGroupVolumeArrayOutput{})
 	pulumi.RegisterOutputType(ContainerGroupVolumeConfigFileVolumeConfigFileToPathOutput{})
