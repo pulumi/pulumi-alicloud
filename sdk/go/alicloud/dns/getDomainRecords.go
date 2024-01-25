@@ -11,6 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// > **NOTE:** This resource has been deprecated from v1.3.2. Please use the datasource `dns.getRecords` instead.
 func GetDomainRecords(ctx *pulumi.Context, args *GetDomainRecordsArgs, opts ...pulumi.InvokeOption) (*GetDomainRecordsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetDomainRecordsResult

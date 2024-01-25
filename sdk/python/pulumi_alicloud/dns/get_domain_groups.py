@@ -95,7 +95,7 @@ def get_domain_groups(ids: Optional[Sequence[str]] = None,
                       output_file: Optional[str] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDomainGroupsResult:
     """
-    Use this data source to access information about an existing resource.
+    > **NOTE:** This datasource has been deprecated from v1.3.2. Please use the datasource `dns_get_groups` instead.
     """
     __args__ = dict()
     __args__['ids'] = ids
@@ -119,6 +119,6 @@ def get_domain_groups_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]
                              output_file: Optional[pulumi.Input[Optional[str]]] = None,
                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDomainGroupsResult]:
     """
-    Use this data source to access information about an existing resource.
+    > **NOTE:** This datasource has been deprecated from v1.3.2. Please use the datasource `dns_get_groups` instead.
     """
     ...

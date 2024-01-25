@@ -9,6 +9,9 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud.Ess
 {
+    /// <summary>
+    /// &gt; **NOTE:** This resource has been deprecated from v1.45.0. New resource `alicloud.ess.ScheduledTask` will replace.
+    /// </summary>
     [AliCloudResourceType("alicloud:ess/schedule:Schedule")]
     public partial class Schedule : global::Pulumi.CustomResource
     {

@@ -4,6 +4,9 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
+/**
+ * > **NOTE:** This resource has been deprecated from v1.45.0. New resource `alicloud.ess.ScheduledTask` will replace.
+ */
 export class Schedule extends pulumi.CustomResource {
     /**
      * Get an existing Schedule resource's state with the given name, ID, and optional extra

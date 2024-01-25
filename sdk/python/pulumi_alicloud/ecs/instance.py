@@ -194,6 +194,10 @@ class InstanceArgs:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
                - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
                - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+        :param pulumi.Input[str] user_data: User-defined data to customize the startup behaviors of an ECS instance and to pass data into an ECS instance.
+               It supports to setting a base64-encoded value, and it is the recommended usage.
+               From version 1.60.0, it can be updated in-place. If updated, the instance will reboot to make the change take effect.
+               Note: Not all changes will take effect, and it depends on [cloud-init module type](https://cloudinit.readthedocs.io/en/latest/topics/modules.html).
         :param pulumi.Input[Mapping[str, Any]] volume_tags: A mapping of tags to assign to the devices created by the instance at launch time.
                - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
                - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
@@ -1184,6 +1188,12 @@ class InstanceArgs:
     @property
     @pulumi.getter(name="userData")
     def user_data(self) -> Optional[pulumi.Input[str]]:
+        """
+        User-defined data to customize the startup behaviors of an ECS instance and to pass data into an ECS instance.
+        It supports to setting a base64-encoded value, and it is the recommended usage.
+        From version 1.60.0, it can be updated in-place. If updated, the instance will reboot to make the change take effect.
+        Note: Not all changes will take effect, and it depends on [cloud-init module type](https://cloudinit.readthedocs.io/en/latest/topics/modules.html).
+        """
         return pulumi.get(self, "user_data")
 
     @user_data.setter
@@ -1416,6 +1426,10 @@ class _InstanceState:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
                - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
                - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+        :param pulumi.Input[str] user_data: User-defined data to customize the startup behaviors of an ECS instance and to pass data into an ECS instance.
+               It supports to setting a base64-encoded value, and it is the recommended usage.
+               From version 1.60.0, it can be updated in-place. If updated, the instance will reboot to make the change take effect.
+               Note: Not all changes will take effect, and it depends on [cloud-init module type](https://cloudinit.readthedocs.io/en/latest/topics/modules.html).
         :param pulumi.Input[Mapping[str, Any]] volume_tags: A mapping of tags to assign to the devices created by the instance at launch time.
                - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
                - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
@@ -2532,6 +2546,12 @@ class _InstanceState:
     @property
     @pulumi.getter(name="userData")
     def user_data(self) -> Optional[pulumi.Input[str]]:
+        """
+        User-defined data to customize the startup behaviors of an ECS instance and to pass data into an ECS instance.
+        It supports to setting a base64-encoded value, and it is the recommended usage.
+        From version 1.60.0, it can be updated in-place. If updated, the instance will reboot to make the change take effect.
+        Note: Not all changes will take effect, and it depends on [cloud-init module type](https://cloudinit.readthedocs.io/en/latest/topics/modules.html).
+        """
         return pulumi.get(self, "user_data")
 
     @user_data.setter
@@ -2818,6 +2838,10 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
                - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
                - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+        :param pulumi.Input[str] user_data: User-defined data to customize the startup behaviors of an ECS instance and to pass data into an ECS instance.
+               It supports to setting a base64-encoded value, and it is the recommended usage.
+               From version 1.60.0, it can be updated in-place. If updated, the instance will reboot to make the change take effect.
+               Note: Not all changes will take effect, and it depends on [cloud-init module type](https://cloudinit.readthedocs.io/en/latest/topics/modules.html).
         :param pulumi.Input[Mapping[str, Any]] volume_tags: A mapping of tags to assign to the devices created by the instance at launch time.
                - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
                - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
@@ -3282,6 +3306,10 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
                - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
                - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+        :param pulumi.Input[str] user_data: User-defined data to customize the startup behaviors of an ECS instance and to pass data into an ECS instance.
+               It supports to setting a base64-encoded value, and it is the recommended usage.
+               From version 1.60.0, it can be updated in-place. If updated, the instance will reboot to make the change take effect.
+               Note: Not all changes will take effect, and it depends on [cloud-init module type](https://cloudinit.readthedocs.io/en/latest/topics/modules.html).
         :param pulumi.Input[Mapping[str, Any]] volume_tags: A mapping of tags to assign to the devices created by the instance at launch time.
                - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
                - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
@@ -4019,6 +4047,12 @@ class Instance(pulumi.CustomResource):
     @property
     @pulumi.getter(name="userData")
     def user_data(self) -> pulumi.Output[Optional[str]]:
+        """
+        User-defined data to customize the startup behaviors of an ECS instance and to pass data into an ECS instance.
+        It supports to setting a base64-encoded value, and it is the recommended usage.
+        From version 1.60.0, it can be updated in-place. If updated, the instance will reboot to make the change take effect.
+        Note: Not all changes will take effect, and it depends on [cloud-init module type](https://cloudinit.readthedocs.io/en/latest/topics/modules.html).
+        """
         return pulumi.get(self, "user_data")
 
     @property
