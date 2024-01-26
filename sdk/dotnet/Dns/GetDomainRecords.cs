@@ -11,9 +11,15 @@ namespace Pulumi.AliCloud.Dns
 {
     public static class GetDomainRecords
     {
+        /// <summary>
+        /// &gt; **NOTE:** This resource has been deprecated from v1.3.2. Please use the datasource `alicloud.dns.getRecords` instead.
+        /// </summary>
         public static Task<GetDomainRecordsResult> InvokeAsync(GetDomainRecordsArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetDomainRecordsResult>("alicloud:dns/getDomainRecords:getDomainRecords", args ?? new GetDomainRecordsArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// &gt; **NOTE:** This resource has been deprecated from v1.3.2. Please use the datasource `alicloud.dns.getRecords` instead.
+        /// </summary>
         public static Output<GetDomainRecordsResult> Invoke(GetDomainRecordsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDomainRecordsResult>("alicloud:dns/getDomainRecords:getDomainRecords", args ?? new GetDomainRecordsInvokeArgs(), options.WithDefaults());
     }

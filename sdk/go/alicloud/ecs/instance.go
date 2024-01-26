@@ -320,7 +320,11 @@ type Instance struct {
 	// A mapping of tags to assign to the resource.
 	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
 	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
-	Tags     pulumi.StringMapOutput `pulumi:"tags"`
+	Tags pulumi.StringMapOutput `pulumi:"tags"`
+	// User-defined data to customize the startup behaviors of an ECS instance and to pass data into an ECS instance.
+	// It supports to setting a base64-encoded value, and it is the recommended usage.
+	// From version 1.60.0, it can be updated in-place. If updated, the instance will reboot to make the change take effect.
+	// Note: Not all changes will take effect, and it depends on [cloud-init module type](https://cloudinit.readthedocs.io/en/latest/topics/modules.html).
 	UserData pulumi.StringPtrOutput `pulumi:"userData"`
 	// A mapping of tags to assign to the devices created by the instance at launch time.
 	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
@@ -560,8 +564,12 @@ type instanceState struct {
 	// A mapping of tags to assign to the resource.
 	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
 	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
-	Tags     map[string]string `pulumi:"tags"`
-	UserData *string           `pulumi:"userData"`
+	Tags map[string]string `pulumi:"tags"`
+	// User-defined data to customize the startup behaviors of an ECS instance and to pass data into an ECS instance.
+	// It supports to setting a base64-encoded value, and it is the recommended usage.
+	// From version 1.60.0, it can be updated in-place. If updated, the instance will reboot to make the change take effect.
+	// Note: Not all changes will take effect, and it depends on [cloud-init module type](https://cloudinit.readthedocs.io/en/latest/topics/modules.html).
+	UserData *string `pulumi:"userData"`
 	// A mapping of tags to assign to the devices created by the instance at launch time.
 	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
 	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
@@ -764,7 +772,11 @@ type InstanceState struct {
 	// A mapping of tags to assign to the resource.
 	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
 	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
-	Tags     pulumi.StringMapInput
+	Tags pulumi.StringMapInput
+	// User-defined data to customize the startup behaviors of an ECS instance and to pass data into an ECS instance.
+	// It supports to setting a base64-encoded value, and it is the recommended usage.
+	// From version 1.60.0, it can be updated in-place. If updated, the instance will reboot to make the change take effect.
+	// Note: Not all changes will take effect, and it depends on [cloud-init module type](https://cloudinit.readthedocs.io/en/latest/topics/modules.html).
 	UserData pulumi.StringPtrInput
 	// A mapping of tags to assign to the devices created by the instance at launch time.
 	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
@@ -954,8 +966,12 @@ type instanceArgs struct {
 	// A mapping of tags to assign to the resource.
 	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
 	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
-	Tags     map[string]string `pulumi:"tags"`
-	UserData *string           `pulumi:"userData"`
+	Tags map[string]string `pulumi:"tags"`
+	// User-defined data to customize the startup behaviors of an ECS instance and to pass data into an ECS instance.
+	// It supports to setting a base64-encoded value, and it is the recommended usage.
+	// From version 1.60.0, it can be updated in-place. If updated, the instance will reboot to make the change take effect.
+	// Note: Not all changes will take effect, and it depends on [cloud-init module type](https://cloudinit.readthedocs.io/en/latest/topics/modules.html).
+	UserData *string `pulumi:"userData"`
 	// A mapping of tags to assign to the devices created by the instance at launch time.
 	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
 	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
@@ -1141,7 +1157,11 @@ type InstanceArgs struct {
 	// A mapping of tags to assign to the resource.
 	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
 	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
-	Tags     pulumi.StringMapInput
+	Tags pulumi.StringMapInput
+	// User-defined data to customize the startup behaviors of an ECS instance and to pass data into an ECS instance.
+	// It supports to setting a base64-encoded value, and it is the recommended usage.
+	// From version 1.60.0, it can be updated in-place. If updated, the instance will reboot to make the change take effect.
+	// Note: Not all changes will take effect, and it depends on [cloud-init module type](https://cloudinit.readthedocs.io/en/latest/topics/modules.html).
 	UserData pulumi.StringPtrInput
 	// A mapping of tags to assign to the devices created by the instance at launch time.
 	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
@@ -1657,6 +1677,10 @@ func (o InstanceOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// User-defined data to customize the startup behaviors of an ECS instance and to pass data into an ECS instance.
+// It supports to setting a base64-encoded value, and it is the recommended usage.
+// From version 1.60.0, it can be updated in-place. If updated, the instance will reboot to make the change take effect.
+// Note: Not all changes will take effect, and it depends on [cloud-init module type](https://cloudinit.readthedocs.io/en/latest/topics/modules.html).
 func (o InstanceOutput) UserData() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.UserData }).(pulumi.StringPtrOutput)
 }

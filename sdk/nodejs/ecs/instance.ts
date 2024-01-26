@@ -451,6 +451,12 @@ export class Instance extends pulumi.CustomResource {
      * - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
      */
     public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    /**
+     * User-defined data to customize the startup behaviors of an ECS instance and to pass data into an ECS instance.
+     * It supports to setting a base64-encoded value, and it is the recommended usage.
+     * From version 1.60.0, it can be updated in-place. If updated, the instance will reboot to make the change take effect.
+     * Note: Not all changes will take effect, and it depends on [cloud-init module type](https://cloudinit.readthedocs.io/en/latest/topics/modules.html).
+     */
     public readonly userData!: pulumi.Output<string | undefined>;
     /**
      * A mapping of tags to assign to the devices created by the instance at launch time.
@@ -989,6 +995,12 @@ export interface InstanceState {
      * - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * User-defined data to customize the startup behaviors of an ECS instance and to pass data into an ECS instance.
+     * It supports to setting a base64-encoded value, and it is the recommended usage.
+     * From version 1.60.0, it can be updated in-place. If updated, the instance will reboot to make the change take effect.
+     * Note: Not all changes will take effect, and it depends on [cloud-init module type](https://cloudinit.readthedocs.io/en/latest/topics/modules.html).
+     */
     userData?: pulumi.Input<string>;
     /**
      * A mapping of tags to assign to the devices created by the instance at launch time.
@@ -1313,6 +1325,12 @@ export interface InstanceArgs {
      * - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * User-defined data to customize the startup behaviors of an ECS instance and to pass data into an ECS instance.
+     * It supports to setting a base64-encoded value, and it is the recommended usage.
+     * From version 1.60.0, it can be updated in-place. If updated, the instance will reboot to make the change take effect.
+     * Note: Not all changes will take effect, and it depends on [cloud-init module type](https://cloudinit.readthedocs.io/en/latest/topics/modules.html).
+     */
     userData?: pulumi.Input<string>;
     /**
      * A mapping of tags to assign to the devices created by the instance at launch time.

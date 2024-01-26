@@ -6,6 +6,9 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
+/**
+ * > **NOTE:** This datasource has been deprecated from v1.3.2. Please use the datasource `alicloud.dns.getGroups` instead.
+ */
 export function getDomainGroups(args?: GetDomainGroupsArgs, opts?: pulumi.InvokeOptions): Promise<GetDomainGroupsResult> {
     args = args || {};
 
@@ -40,6 +43,9 @@ export interface GetDomainGroupsResult {
     readonly names: string[];
     readonly outputFile?: string;
 }
+/**
+ * > **NOTE:** This datasource has been deprecated from v1.3.2. Please use the datasource `alicloud.dns.getGroups` instead.
+ */
 export function getDomainGroupsOutput(args?: GetDomainGroupsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDomainGroupsResult> {
     return pulumi.output(args).apply((a: any) => getDomainGroups(a, opts))
 }

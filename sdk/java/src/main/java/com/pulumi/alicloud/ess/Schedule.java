@@ -16,6 +16,10 @@ import java.lang.String;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
+/**
+ * &gt; **NOTE:** This resource has been deprecated from v1.45.0. New resource `alicloud.ess.ScheduledTask` will replace.
+ * 
+ */
 @ResourceType(type="alicloud:ess/schedule:Schedule")
 public class Schedule extends com.pulumi.resources.CustomResource {
     @Export(name="description", refs={String.class}, tree="[0]")

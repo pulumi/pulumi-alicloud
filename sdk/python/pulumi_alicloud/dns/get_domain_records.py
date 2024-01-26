@@ -155,7 +155,7 @@ def get_domain_records(domain_name: Optional[str] = None,
                        value_regex: Optional[str] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDomainRecordsResult:
     """
-    Use this data source to access information about an existing resource.
+    > **NOTE:** This resource has been deprecated from v1.3.2. Please use the datasource `dns_get_records` instead.
     """
     __args__ = dict()
     __args__['domainName'] = domain_name
@@ -197,6 +197,6 @@ def get_domain_records_output(domain_name: Optional[pulumi.Input[str]] = None,
                               value_regex: Optional[pulumi.Input[Optional[str]]] = None,
                               opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDomainRecordsResult]:
     """
-    Use this data source to access information about an existing resource.
+    > **NOTE:** This resource has been deprecated from v1.3.2. Please use the datasource `dns_get_records` instead.
     """
     ...

@@ -6,6 +6,9 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
+/**
+ * > **NOTE:** This resource has been deprecated from v1.3.2. Please use the datasource `alicloud.dns.getRecords` instead.
+ */
 export function getDomainRecords(args: GetDomainRecordsArgs, opts?: pulumi.InvokeOptions): Promise<GetDomainRecordsResult> {
 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -57,6 +60,9 @@ export interface GetDomainRecordsResult {
     readonly urls: string[];
     readonly valueRegex?: string;
 }
+/**
+ * > **NOTE:** This resource has been deprecated from v1.3.2. Please use the datasource `alicloud.dns.getRecords` instead.
+ */
 export function getDomainRecordsOutput(args: GetDomainRecordsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDomainRecordsResult> {
     return pulumi.output(args).apply((a: any) => getDomainRecords(a, opts))
 }
