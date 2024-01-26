@@ -11,9 +11,15 @@ namespace Pulumi.AliCloud.Dns
 {
     public static class GetDomainGroups
     {
+        /// <summary>
+        /// &gt; **NOTE:** This datasource has been deprecated from v1.3.2. Please use the datasource `alicloud.dns.getGroups` instead.
+        /// </summary>
         public static Task<GetDomainGroupsResult> InvokeAsync(GetDomainGroupsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetDomainGroupsResult>("alicloud:dns/getDomainGroups:getDomainGroups", args ?? new GetDomainGroupsArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// &gt; **NOTE:** This datasource has been deprecated from v1.3.2. Please use the datasource `alicloud.dns.getGroups` instead.
+        /// </summary>
         public static Output<GetDomainGroupsResult> Invoke(GetDomainGroupsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDomainGroupsResult>("alicloud:dns/getDomainGroups:getDomainGroups", args ?? new GetDomainGroupsInvokeArgs(), options.WithDefaults());
     }

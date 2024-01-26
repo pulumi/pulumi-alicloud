@@ -1104,9 +1104,23 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.tags);
     }
 
+    /**
+     * User-defined data to customize the startup behaviors of an ECS instance and to pass data into an ECS instance.
+     * It supports to setting a base64-encoded value, and it is the recommended usage.
+     * From version 1.60.0, it can be updated in-place. If updated, the instance will reboot to make the change take effect.
+     * Note: Not all changes will take effect, and it depends on [cloud-init module type](https://cloudinit.readthedocs.io/en/latest/topics/modules.html).
+     * 
+     */
     @Import(name="userData")
     private @Nullable Output<String> userData;
 
+    /**
+     * @return User-defined data to customize the startup behaviors of an ECS instance and to pass data into an ECS instance.
+     * It supports to setting a base64-encoded value, and it is the recommended usage.
+     * From version 1.60.0, it can be updated in-place. If updated, the instance will reboot to make the change take effect.
+     * Note: Not all changes will take effect, and it depends on [cloud-init module type](https://cloudinit.readthedocs.io/en/latest/topics/modules.html).
+     * 
+     */
     public Optional<Output<String>> userData() {
         return Optional.ofNullable(this.userData);
     }
@@ -2749,11 +2763,29 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
             return tags(Output.of(tags));
         }
 
+        /**
+         * @param userData User-defined data to customize the startup behaviors of an ECS instance and to pass data into an ECS instance.
+         * It supports to setting a base64-encoded value, and it is the recommended usage.
+         * From version 1.60.0, it can be updated in-place. If updated, the instance will reboot to make the change take effect.
+         * Note: Not all changes will take effect, and it depends on [cloud-init module type](https://cloudinit.readthedocs.io/en/latest/topics/modules.html).
+         * 
+         * @return builder
+         * 
+         */
         public Builder userData(@Nullable Output<String> userData) {
             $.userData = userData;
             return this;
         }
 
+        /**
+         * @param userData User-defined data to customize the startup behaviors of an ECS instance and to pass data into an ECS instance.
+         * It supports to setting a base64-encoded value, and it is the recommended usage.
+         * From version 1.60.0, it can be updated in-place. If updated, the instance will reboot to make the change take effect.
+         * Note: Not all changes will take effect, and it depends on [cloud-init module type](https://cloudinit.readthedocs.io/en/latest/topics/modules.html).
+         * 
+         * @return builder
+         * 
+         */
         public Builder userData(String userData) {
             return userData(Output.of(userData));
         }

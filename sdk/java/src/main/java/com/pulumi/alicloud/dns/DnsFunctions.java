@@ -1521,33 +1521,73 @@ public final class DnsFunctions {
     public static CompletableFuture<GetCustomLinesResult> getCustomLinesPlain(GetCustomLinesPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:dns/getCustomLines:getCustomLines", TypeShape.of(GetCustomLinesResult.class), args, Utilities.withVersion(options));
     }
+    /**
+     * &gt; **NOTE:** This datasource has been deprecated from v1.3.2. Please use the datasource `alicloud.dns.getGroups` instead.
+     * 
+     */
     public static Output<GetDomainGroupsResult> getDomainGroups() {
         return getDomainGroups(GetDomainGroupsArgs.Empty, InvokeOptions.Empty);
     }
+    /**
+     * &gt; **NOTE:** This datasource has been deprecated from v1.3.2. Please use the datasource `alicloud.dns.getGroups` instead.
+     * 
+     */
     public static CompletableFuture<GetDomainGroupsResult> getDomainGroupsPlain() {
         return getDomainGroupsPlain(GetDomainGroupsPlainArgs.Empty, InvokeOptions.Empty);
     }
+    /**
+     * &gt; **NOTE:** This datasource has been deprecated from v1.3.2. Please use the datasource `alicloud.dns.getGroups` instead.
+     * 
+     */
     public static Output<GetDomainGroupsResult> getDomainGroups(GetDomainGroupsArgs args) {
         return getDomainGroups(args, InvokeOptions.Empty);
     }
+    /**
+     * &gt; **NOTE:** This datasource has been deprecated from v1.3.2. Please use the datasource `alicloud.dns.getGroups` instead.
+     * 
+     */
     public static CompletableFuture<GetDomainGroupsResult> getDomainGroupsPlain(GetDomainGroupsPlainArgs args) {
         return getDomainGroupsPlain(args, InvokeOptions.Empty);
     }
+    /**
+     * &gt; **NOTE:** This datasource has been deprecated from v1.3.2. Please use the datasource `alicloud.dns.getGroups` instead.
+     * 
+     */
     public static Output<GetDomainGroupsResult> getDomainGroups(GetDomainGroupsArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:dns/getDomainGroups:getDomainGroups", TypeShape.of(GetDomainGroupsResult.class), args, Utilities.withVersion(options));
     }
+    /**
+     * &gt; **NOTE:** This datasource has been deprecated from v1.3.2. Please use the datasource `alicloud.dns.getGroups` instead.
+     * 
+     */
     public static CompletableFuture<GetDomainGroupsResult> getDomainGroupsPlain(GetDomainGroupsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:dns/getDomainGroups:getDomainGroups", TypeShape.of(GetDomainGroupsResult.class), args, Utilities.withVersion(options));
     }
+    /**
+     * &gt; **NOTE:** This resource has been deprecated from v1.3.2. Please use the datasource `alicloud.dns.getRecords` instead.
+     * 
+     */
     public static Output<GetDomainRecordsResult> getDomainRecords(GetDomainRecordsArgs args) {
         return getDomainRecords(args, InvokeOptions.Empty);
     }
+    /**
+     * &gt; **NOTE:** This resource has been deprecated from v1.3.2. Please use the datasource `alicloud.dns.getRecords` instead.
+     * 
+     */
     public static CompletableFuture<GetDomainRecordsResult> getDomainRecordsPlain(GetDomainRecordsPlainArgs args) {
         return getDomainRecordsPlain(args, InvokeOptions.Empty);
     }
+    /**
+     * &gt; **NOTE:** This resource has been deprecated from v1.3.2. Please use the datasource `alicloud.dns.getRecords` instead.
+     * 
+     */
     public static Output<GetDomainRecordsResult> getDomainRecords(GetDomainRecordsArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:dns/getDomainRecords:getDomainRecords", TypeShape.of(GetDomainRecordsResult.class), args, Utilities.withVersion(options));
     }
+    /**
+     * &gt; **NOTE:** This resource has been deprecated from v1.3.2. Please use the datasource `alicloud.dns.getRecords` instead.
+     * 
+     */
     public static CompletableFuture<GetDomainRecordsResult> getDomainRecordsPlain(GetDomainRecordsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:dns/getDomainRecords:getDomainRecords", TypeShape.of(GetDomainRecordsResult.class), args, Utilities.withVersion(options));
     }

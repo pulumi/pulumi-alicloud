@@ -599,6 +599,12 @@ namespace Pulumi.AliCloud.Ecs
         [Output("tags")]
         public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
 
+        /// <summary>
+        /// User-defined data to customize the startup behaviors of an ECS instance and to pass data into an ECS instance.
+        /// It supports to setting a base64-encoded value, and it is the recommended usage.
+        /// From version 1.60.0, it can be updated in-place. If updated, the instance will reboot to make the change take effect.
+        /// Note: Not all changes will take effect, and it depends on [cloud-init module type](https://cloudinit.readthedocs.io/en/latest/topics/modules.html).
+        /// </summary>
         [Output("userData")]
         public Output<string?> UserData { get; private set; } = null!;
 
@@ -1147,6 +1153,12 @@ namespace Pulumi.AliCloud.Ecs
             set => _tags = value;
         }
 
+        /// <summary>
+        /// User-defined data to customize the startup behaviors of an ECS instance and to pass data into an ECS instance.
+        /// It supports to setting a base64-encoded value, and it is the recommended usage.
+        /// From version 1.60.0, it can be updated in-place. If updated, the instance will reboot to make the change take effect.
+        /// Note: Not all changes will take effect, and it depends on [cloud-init module type](https://cloudinit.readthedocs.io/en/latest/topics/modules.html).
+        /// </summary>
         [Input("userData")]
         public Input<string>? UserData { get; set; }
 
@@ -1713,6 +1725,12 @@ namespace Pulumi.AliCloud.Ecs
             set => _tags = value;
         }
 
+        /// <summary>
+        /// User-defined data to customize the startup behaviors of an ECS instance and to pass data into an ECS instance.
+        /// It supports to setting a base64-encoded value, and it is the recommended usage.
+        /// From version 1.60.0, it can be updated in-place. If updated, the instance will reboot to make the change take effect.
+        /// Note: Not all changes will take effect, and it depends on [cloud-init module type](https://cloudinit.readthedocs.io/en/latest/topics/modules.html).
+        /// </summary>
         [Input("userData")]
         public Input<string>? UserData { get; set; }
 

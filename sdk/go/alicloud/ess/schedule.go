@@ -11,6 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// > **NOTE:** This resource has been deprecated from v1.45.0. New resource `ess.ScheduledTask` will replace.
 type Schedule struct {
 	pulumi.CustomResourceState
 
