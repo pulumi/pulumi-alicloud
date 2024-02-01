@@ -50,10 +50,6 @@ public final class Config {
     public Optional<Integer> clientReadTimeout() {
         return Codegen.integerProp("clientReadTimeout").config(config).get();
     }
-/**
- * Use this to mark a terraform configuration file source.
- * 
- */
     public Optional<String> configurationSource() {
         return Codegen.stringProp("configurationSource").config(config).get();
     }
