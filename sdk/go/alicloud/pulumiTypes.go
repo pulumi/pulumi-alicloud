@@ -14,9 +14,12 @@ import (
 var _ = internal.GetEnvOrDefault
 
 type ProviderAssumeRole struct {
-	ExternalId        *string `pulumi:"externalId"`
-	Policy            *string `pulumi:"policy"`
-	RoleArn           string  `pulumi:"roleArn"`
+	ExternalId *string `pulumi:"externalId"`
+	// The permissions applied when assuming a role. You cannot use, this policy to grant further permissions that are in excess to those of the, role that is being assumed.
+	Policy *string `pulumi:"policy"`
+	// The ARN of a RAM role to assume prior to making API calls.
+	RoleArn string `pulumi:"roleArn"`
+	// The time after which the established session for assuming role expires. Valid value range: [900-3600] seconds. Default to 0 (in this case Alicloud use own default value).
 	SessionExpiration *int    `pulumi:"sessionExpiration"`
 	SessionName       *string `pulumi:"sessionName"`
 }
@@ -33,9 +36,12 @@ type ProviderAssumeRoleInput interface {
 }
 
 type ProviderAssumeRoleArgs struct {
-	ExternalId        pulumi.StringPtrInput `pulumi:"externalId"`
-	Policy            pulumi.StringPtrInput `pulumi:"policy"`
-	RoleArn           pulumi.StringInput    `pulumi:"roleArn"`
+	ExternalId pulumi.StringPtrInput `pulumi:"externalId"`
+	// The permissions applied when assuming a role. You cannot use, this policy to grant further permissions that are in excess to those of the, role that is being assumed.
+	Policy pulumi.StringPtrInput `pulumi:"policy"`
+	// The ARN of a RAM role to assume prior to making API calls.
+	RoleArn pulumi.StringInput `pulumi:"roleArn"`
+	// The time after which the established session for assuming role expires. Valid value range: [900-3600] seconds. Default to 0 (in this case Alicloud use own default value).
 	SessionExpiration pulumi.IntPtrInput    `pulumi:"sessionExpiration"`
 	SessionName       pulumi.StringPtrInput `pulumi:"sessionName"`
 }
@@ -121,14 +127,17 @@ func (o ProviderAssumeRoleOutput) ExternalId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderAssumeRole) *string { return v.ExternalId }).(pulumi.StringPtrOutput)
 }
 
+// The permissions applied when assuming a role. You cannot use, this policy to grant further permissions that are in excess to those of the, role that is being assumed.
 func (o ProviderAssumeRoleOutput) Policy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderAssumeRole) *string { return v.Policy }).(pulumi.StringPtrOutput)
 }
 
+// The ARN of a RAM role to assume prior to making API calls.
 func (o ProviderAssumeRoleOutput) RoleArn() pulumi.StringOutput {
 	return o.ApplyT(func(v ProviderAssumeRole) string { return v.RoleArn }).(pulumi.StringOutput)
 }
 
+// The time after which the established session for assuming role expires. Valid value range: [900-3600] seconds. Default to 0 (in this case Alicloud use own default value).
 func (o ProviderAssumeRoleOutput) SessionExpiration() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ProviderAssumeRole) *int { return v.SessionExpiration }).(pulumi.IntPtrOutput)
 }
@@ -170,6 +179,7 @@ func (o ProviderAssumeRolePtrOutput) ExternalId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// The permissions applied when assuming a role. You cannot use, this policy to grant further permissions that are in excess to those of the, role that is being assumed.
 func (o ProviderAssumeRolePtrOutput) Policy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ProviderAssumeRole) *string {
 		if v == nil {
@@ -179,6 +189,7 @@ func (o ProviderAssumeRolePtrOutput) Policy() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// The ARN of a RAM role to assume prior to making API calls.
 func (o ProviderAssumeRolePtrOutput) RoleArn() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ProviderAssumeRole) *string {
 		if v == nil {
@@ -188,6 +199,7 @@ func (o ProviderAssumeRolePtrOutput) RoleArn() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// The time after which the established session for assuming role expires. Valid value range: [900-3600] seconds. Default to 0 (in this case Alicloud use own default value).
 func (o ProviderAssumeRolePtrOutput) SessionExpiration() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ProviderAssumeRole) *int {
 		if v == nil {
@@ -207,135 +219,263 @@ func (o ProviderAssumeRolePtrOutput) SessionName() pulumi.StringPtrOutput {
 }
 
 type ProviderEndpoint struct {
-	Acr                 *string `pulumi:"acr"`
-	Actiontrail         *string `pulumi:"actiontrail"`
-	Adb                 *string `pulumi:"adb"`
-	Alb                 *string `pulumi:"alb"`
-	Alidfs              *string `pulumi:"alidfs"`
-	Alidns              *string `pulumi:"alidns"`
-	Alikafka            *string `pulumi:"alikafka"`
-	Apigateway          *string `pulumi:"apigateway"`
-	Arms                *string `pulumi:"arms"`
-	Bastionhost         *string `pulumi:"bastionhost"`
-	Beebot              *string `pulumi:"beebot"`
-	Bpstudio            *string `pulumi:"bpstudio"`
-	BrainIndustrial     *string `pulumi:"brainIndustrial"`
-	Bssopenapi          *string `pulumi:"bssopenapi"`
-	Cas                 *string `pulumi:"cas"`
-	Cassandra           *string `pulumi:"cassandra"`
-	Cbn                 *string `pulumi:"cbn"`
-	Cbs                 *string `pulumi:"cbs"`
-	Cddc                *string `pulumi:"cddc"`
-	Cdn                 *string `pulumi:"cdn"`
-	Cds                 *string `pulumi:"cds"`
-	Clickhouse          *string `pulumi:"clickhouse"`
-	Cloudauth           *string `pulumi:"cloudauth"`
-	Cloudfirewall       *string `pulumi:"cloudfirewall"`
-	Cloudfw             *string `pulumi:"cloudfw"`
-	Cloudphone          *string `pulumi:"cloudphone"`
-	Cloudsso            *string `pulumi:"cloudsso"`
-	Cms                 *string `pulumi:"cms"`
-	Computenest         *string `pulumi:"computenest"`
-	Config              *string `pulumi:"config"`
-	Cr                  *string `pulumi:"cr"`
-	Cs                  *string `pulumi:"cs"`
-	Das                 *string `pulumi:"das"`
-	Datahub             *string `pulumi:"datahub"`
-	Dataworkspublic     *string `pulumi:"dataworkspublic"`
-	Dbfs                *string `pulumi:"dbfs"`
-	Dcdn                *string `pulumi:"dcdn"`
-	Ddosbasic           *string `pulumi:"ddosbasic"`
-	Ddosbgp             *string `pulumi:"ddosbgp"`
-	Ddoscoo             *string `pulumi:"ddoscoo"`
-	Dds                 *string `pulumi:"dds"`
-	Devopsrdc           *string `pulumi:"devopsrdc"`
-	Dg                  *string `pulumi:"dg"`
-	Dm                  *string `pulumi:"dm"`
-	DmsEnterprise       *string `pulumi:"dmsEnterprise"`
-	Dmsenterprise       *string `pulumi:"dmsenterprise"`
-	Dns                 *string `pulumi:"dns"`
-	Drds                *string `pulumi:"drds"`
-	Dts                 *string `pulumi:"dts"`
-	Dysms               *string `pulumi:"dysms"`
-	Eais                *string `pulumi:"eais"`
-	Ebs                 *string `pulumi:"ebs"`
-	Eci                 *string `pulumi:"eci"`
-	Ecs                 *string `pulumi:"ecs"`
-	Edas                *string `pulumi:"edas"`
-	Edasschedulerx      *string `pulumi:"edasschedulerx"`
-	Edsuser             *string `pulumi:"edsuser"`
-	Eflo                *string `pulumi:"eflo"`
-	Ehpc                *string `pulumi:"ehpc"`
-	Ehs                 *string `pulumi:"ehs"`
-	Eipanycast          *string `pulumi:"eipanycast"`
-	Elasticsearch       *string `pulumi:"elasticsearch"`
-	Emr                 *string `pulumi:"emr"`
-	Ens                 *string `pulumi:"ens"`
-	Ess                 *string `pulumi:"ess"`
-	Eventbridge         *string `pulumi:"eventbridge"`
-	Fc                  *string `pulumi:"fc"`
-	Fnf                 *string `pulumi:"fnf"`
-	Ga                  *string `pulumi:"ga"`
-	Gaplus              *string `pulumi:"gaplus"`
-	Gds                 *string `pulumi:"gds"`
-	Gpdb                *string `pulumi:"gpdb"`
-	Gwsecd              *string `pulumi:"gwsecd"`
-	Hbr                 *string `pulumi:"hbr"`
-	HcsSgw              *string `pulumi:"hcsSgw"`
-	Hitsdb              *string `pulumi:"hitsdb"`
-	Imm                 *string `pulumi:"imm"`
-	Imp                 *string `pulumi:"imp"`
-	Ims                 *string `pulumi:"ims"`
-	Iot                 *string `pulumi:"iot"`
-	Kms                 *string `pulumi:"kms"`
-	Kvstore             *string `pulumi:"kvstore"`
-	Location            *string `pulumi:"location"`
-	Log                 *string `pulumi:"log"`
-	Market              *string `pulumi:"market"`
-	Maxcompute          *string `pulumi:"maxcompute"`
-	Mhub                *string `pulumi:"mhub"`
-	Mns                 *string `pulumi:"mns"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom acr endpoints.
+	Acr *string `pulumi:"acr"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Actiontrail endpoints.
+	Actiontrail *string `pulumi:"actiontrail"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom AnalyticDB endpoints.
+	Adb *string `pulumi:"adb"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom alb endpoints.
+	Alb *string `pulumi:"alb"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom alidfs endpoints.
+	Alidfs *string `pulumi:"alidfs"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom alidns endpoints.
+	Alidns *string `pulumi:"alidns"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom ALIKAFKA endpoints.
+	Alikafka *string `pulumi:"alikafka"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Api Gateway endpoints.
+	Apigateway *string `pulumi:"apigateway"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom arms endpoints.
+	Arms *string `pulumi:"arms"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom bastionhost endpoints.
+	Bastionhost *string `pulumi:"bastionhost"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom beebot endpoints.
+	Beebot *string `pulumi:"beebot"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom bpstudio endpoints.
+	Bpstudio *string `pulumi:"bpstudio"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom brainIndustrial endpoints.
+	BrainIndustrial *string `pulumi:"brainIndustrial"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom BSSOPENAPI endpoints.
+	Bssopenapi *string `pulumi:"bssopenapi"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom CAS endpoints.
+	Cas *string `pulumi:"cas"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom cassandra endpoints.
+	Cassandra *string `pulumi:"cassandra"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom cbn endpoints.
+	Cbn *string `pulumi:"cbn"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom cbs endpoints.
+	Cbs *string `pulumi:"cbs"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom cddc endpoints.
+	Cddc *string `pulumi:"cddc"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom CDN endpoints.
+	Cdn *string `pulumi:"cdn"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom cds endpoints.
+	Cds *string `pulumi:"cds"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom clickhouse endpoints.
+	Clickhouse *string `pulumi:"clickhouse"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom cloudauth endpoints.
+	Cloudauth *string `pulumi:"cloudauth"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom cloudfirewall endpoints.
+	Cloudfirewall *string `pulumi:"cloudfirewall"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom cloudfw endpoints.
+	Cloudfw *string `pulumi:"cloudfw"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom cloudphone endpoints.
+	Cloudphone *string `pulumi:"cloudphone"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom cloudsso endpoints.
+	Cloudsso *string `pulumi:"cloudsso"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Cloud Monitor endpoints.
+	Cms *string `pulumi:"cms"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom computenest endpoints.
+	Computenest *string `pulumi:"computenest"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom config endpoints.
+	Config *string `pulumi:"config"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Container Registry endpoints.
+	Cr *string `pulumi:"cr"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Container Service endpoints.
+	Cs *string `pulumi:"cs"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom das endpoints.
+	Das *string `pulumi:"das"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Datahub endpoints.
+	Datahub *string `pulumi:"datahub"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom dataworkspublic endpoints.
+	Dataworkspublic *string `pulumi:"dataworkspublic"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom dbfs endpoints.
+	Dbfs *string `pulumi:"dbfs"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom dcdn endpoints.
+	Dcdn *string `pulumi:"dcdn"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom ddosbasic endpoints.
+	Ddosbasic *string `pulumi:"ddosbasic"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom DDOSBGP endpoints.
+	Ddosbgp *string `pulumi:"ddosbgp"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom DDOSCOO endpoints.
+	Ddoscoo *string `pulumi:"ddoscoo"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom MongoDB endpoints.
+	Dds *string `pulumi:"dds"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom devopsrdc endpoints.
+	Devopsrdc *string `pulumi:"devopsrdc"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom dg endpoints.
+	Dg *string `pulumi:"dg"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom dm endpoints.
+	Dm *string `pulumi:"dm"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom dmsEnterprise endpoints.
+	DmsEnterprise *string `pulumi:"dmsEnterprise"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom dmsenterprise endpoints.
+	Dmsenterprise *string `pulumi:"dmsenterprise"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom DNS endpoints.
+	Dns *string `pulumi:"dns"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom DRDS endpoints.
+	Drds *string `pulumi:"drds"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom dts endpoints.
+	Dts   *string `pulumi:"dts"`
+	Dysms *string `pulumi:"dysms"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom eais endpoints.
+	Eais *string `pulumi:"eais"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom ebs endpoints.
+	Ebs *string `pulumi:"ebs"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom eci endpoints.
+	Eci *string `pulumi:"eci"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom ECS endpoints.
+	Ecs *string `pulumi:"ecs"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom edas endpoints.
+	Edas *string `pulumi:"edas"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom edasschedulerx endpoints.
+	Edasschedulerx *string `pulumi:"edasschedulerx"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom edsuser endpoints.
+	Edsuser *string `pulumi:"edsuser"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom eflo endpoints.
+	Eflo *string `pulumi:"eflo"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom ehpc endpoints.
+	Ehpc *string `pulumi:"ehpc"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom ehs endpoints.
+	Ehs *string `pulumi:"ehs"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom eipanycast endpoints.
+	Eipanycast *string `pulumi:"eipanycast"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Elasticsearch endpoints.
+	Elasticsearch *string `pulumi:"elasticsearch"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom EMR endpoints.
+	Emr *string `pulumi:"emr"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom ens endpoints.
+	Ens *string `pulumi:"ens"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Autoscaling endpoints.
+	Ess *string `pulumi:"ess"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom eventbridgeShare endpoints.
+	Eventbridge *string `pulumi:"eventbridge"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Function Computing endpoints.
+	Fc *string `pulumi:"fc"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom fnf endpoints.
+	Fnf *string `pulumi:"fnf"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom ga endpoints.
+	Ga *string `pulumi:"ga"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom gaplus endpoints.
+	Gaplus *string `pulumi:"gaplus"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom gds endpoints.
+	Gds *string `pulumi:"gds"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom GPDB endpoints.
+	Gpdb *string `pulumi:"gpdb"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom gwsecd endpoints.
+	Gwsecd *string `pulumi:"gwsecd"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom hbr endpoints.
+	Hbr *string `pulumi:"hbr"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom hcsSgw endpoints.
+	HcsSgw *string `pulumi:"hcsSgw"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom hitsdb endpoints.
+	Hitsdb *string `pulumi:"hitsdb"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom imm endpoints.
+	Imm *string `pulumi:"imm"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom imp endpoints.
+	Imp *string `pulumi:"imp"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom ims endpoints.
+	Ims *string `pulumi:"ims"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom iot endpoints.
+	Iot *string `pulumi:"iot"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom KMS endpoints.
+	Kms *string `pulumi:"kms"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom R-KVStore endpoints.
+	Kvstore *string `pulumi:"kvstore"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Location Service endpoints.
+	Location *string `pulumi:"location"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Log Service endpoints.
+	Log *string `pulumi:"log"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Market Place endpoints.
+	Market *string `pulumi:"market"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom MaxCompute endpoints.
+	Maxcompute *string `pulumi:"maxcompute"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom mhub endpoints.
+	Mhub *string `pulumi:"mhub"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom MNS endpoints.
+	Mns *string `pulumi:"mns"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom mscopensubscription endpoints.
 	Mscopensubscription *string `pulumi:"mscopensubscription"`
-	Mse                 *string `pulumi:"mse"`
-	Nas                 *string `pulumi:"nas"`
-	Nlb                 *string `pulumi:"nlb"`
-	Oceanbase           *string `pulumi:"oceanbase"`
-	Ons                 *string `pulumi:"ons"`
-	Onsproxy            *string `pulumi:"onsproxy"`
-	Oos                 *string `pulumi:"oos"`
-	Opensearch          *string `pulumi:"opensearch"`
-	Oss                 *string `pulumi:"oss"`
-	Ots                 *string `pulumi:"ots"`
-	Polardb             *string `pulumi:"polardb"`
-	Privatelink         *string `pulumi:"privatelink"`
-	Pvtz                *string `pulumi:"pvtz"`
-	Quickbi             *string `pulumi:"quickbi"`
-	Quotas              *string `pulumi:"quotas"`
-	RKvstore            *string `pulumi:"rKvstore"`
-	Ram                 *string `pulumi:"ram"`
-	Rds                 *string `pulumi:"rds"`
-	Redisa              *string `pulumi:"redisa"`
-	Resourcemanager     *string `pulumi:"resourcemanager"`
-	Resourcesharing     *string `pulumi:"resourcesharing"`
-	Ros                 *string `pulumi:"ros"`
-	Sas                 *string `pulumi:"sas"`
-	Scdn                *string `pulumi:"scdn"`
-	Sddp                *string `pulumi:"sddp"`
-	Serverless          *string `pulumi:"serverless"`
-	Servicemesh         *string `pulumi:"servicemesh"`
-	Sgw                 *string `pulumi:"sgw"`
-	Slb                 *string `pulumi:"slb"`
-	Smartag             *string `pulumi:"smartag"`
-	Srvcatalog          *string `pulumi:"srvcatalog"`
-	Sts                 *string `pulumi:"sts"`
-	Swas                *string `pulumi:"swas"`
-	Tag                 *string `pulumi:"tag"`
-	Vod                 *string `pulumi:"vod"`
-	Vpc                 *string `pulumi:"vpc"`
-	Vpcpeer             *string `pulumi:"vpcpeer"`
-	Vs                  *string `pulumi:"vs"`
-	Waf                 *string `pulumi:"waf"`
-	WafOpenapi          *string `pulumi:"wafOpenapi"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom mse endpoints.
+	Mse *string `pulumi:"mse"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom NAS endpoints.
+	Nas *string `pulumi:"nas"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom nlb endpoints.
+	Nlb *string `pulumi:"nlb"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom oceanbase endpoints.
+	Oceanbase *string `pulumi:"oceanbase"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom ONS endpoints.
+	Ons *string `pulumi:"ons"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom onsproxy endpoints.
+	Onsproxy *string `pulumi:"onsproxy"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom oos endpoints.
+	Oos *string `pulumi:"oos"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom opensearch endpoints.
+	Opensearch *string `pulumi:"opensearch"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom OSS endpoints.
+	Oss *string `pulumi:"oss"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Table Store endpoints.
+	Ots *string `pulumi:"ots"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom PolarDB endpoints.
+	Polardb *string `pulumi:"polardb"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom privatelink endpoints.
+	Privatelink *string `pulumi:"privatelink"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Private Zone endpoints.
+	Pvtz *string `pulumi:"pvtz"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom quickbi endpoints.
+	Quickbi *string `pulumi:"quickbi"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom quotas endpoints.
+	Quotas *string `pulumi:"quotas"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom rKvstore endpoints.
+	RKvstore *string `pulumi:"rKvstore"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom RAM endpoints.
+	Ram *string `pulumi:"ram"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom RDS endpoints.
+	Rds *string `pulumi:"rds"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom redisa endpoints.
+	Redisa *string `pulumi:"redisa"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom resourcemanager endpoints.
+	Resourcemanager *string `pulumi:"resourcemanager"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom resourcesharing endpoints.
+	Resourcesharing *string `pulumi:"resourcesharing"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom ros endpoints.
+	Ros *string `pulumi:"ros"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom sas endpoints.
+	Sas *string `pulumi:"sas"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom scdn endpoints.
+	Scdn *string `pulumi:"scdn"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom sddp endpoints.
+	Sddp *string `pulumi:"sddp"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom serverless endpoints.
+	Serverless *string `pulumi:"serverless"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom servicemesh endpoints.
+	Servicemesh *string `pulumi:"servicemesh"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom sgw endpoints.
+	Sgw *string `pulumi:"sgw"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom SLB endpoints.
+	Slb *string `pulumi:"slb"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom smartag endpoints.
+	Smartag *string `pulumi:"smartag"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom srvcatalog endpoints.
+	Srvcatalog *string `pulumi:"srvcatalog"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom STS endpoints.
+	Sts *string `pulumi:"sts"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom swas endpoints.
+	Swas *string `pulumi:"swas"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom tag endpoints.
+	Tag *string `pulumi:"tag"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom vod endpoints.
+	Vod *string `pulumi:"vod"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom VPC and VPN endpoints.
+	Vpc *string `pulumi:"vpc"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom vpcpeer endpoints.
+	Vpcpeer *string `pulumi:"vpcpeer"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom vs endpoints.
+	Vs *string `pulumi:"vs"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom waf endpoints.
+	Waf *string `pulumi:"waf"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom wafOpenapi endpoints.
+	WafOpenapi *string `pulumi:"wafOpenapi"`
 }
 
 // ProviderEndpointInput is an input type that accepts ProviderEndpointArgs and ProviderEndpointOutput values.
@@ -350,135 +490,263 @@ type ProviderEndpointInput interface {
 }
 
 type ProviderEndpointArgs struct {
-	Acr                 pulumi.StringPtrInput `pulumi:"acr"`
-	Actiontrail         pulumi.StringPtrInput `pulumi:"actiontrail"`
-	Adb                 pulumi.StringPtrInput `pulumi:"adb"`
-	Alb                 pulumi.StringPtrInput `pulumi:"alb"`
-	Alidfs              pulumi.StringPtrInput `pulumi:"alidfs"`
-	Alidns              pulumi.StringPtrInput `pulumi:"alidns"`
-	Alikafka            pulumi.StringPtrInput `pulumi:"alikafka"`
-	Apigateway          pulumi.StringPtrInput `pulumi:"apigateway"`
-	Arms                pulumi.StringPtrInput `pulumi:"arms"`
-	Bastionhost         pulumi.StringPtrInput `pulumi:"bastionhost"`
-	Beebot              pulumi.StringPtrInput `pulumi:"beebot"`
-	Bpstudio            pulumi.StringPtrInput `pulumi:"bpstudio"`
-	BrainIndustrial     pulumi.StringPtrInput `pulumi:"brainIndustrial"`
-	Bssopenapi          pulumi.StringPtrInput `pulumi:"bssopenapi"`
-	Cas                 pulumi.StringPtrInput `pulumi:"cas"`
-	Cassandra           pulumi.StringPtrInput `pulumi:"cassandra"`
-	Cbn                 pulumi.StringPtrInput `pulumi:"cbn"`
-	Cbs                 pulumi.StringPtrInput `pulumi:"cbs"`
-	Cddc                pulumi.StringPtrInput `pulumi:"cddc"`
-	Cdn                 pulumi.StringPtrInput `pulumi:"cdn"`
-	Cds                 pulumi.StringPtrInput `pulumi:"cds"`
-	Clickhouse          pulumi.StringPtrInput `pulumi:"clickhouse"`
-	Cloudauth           pulumi.StringPtrInput `pulumi:"cloudauth"`
-	Cloudfirewall       pulumi.StringPtrInput `pulumi:"cloudfirewall"`
-	Cloudfw             pulumi.StringPtrInput `pulumi:"cloudfw"`
-	Cloudphone          pulumi.StringPtrInput `pulumi:"cloudphone"`
-	Cloudsso            pulumi.StringPtrInput `pulumi:"cloudsso"`
-	Cms                 pulumi.StringPtrInput `pulumi:"cms"`
-	Computenest         pulumi.StringPtrInput `pulumi:"computenest"`
-	Config              pulumi.StringPtrInput `pulumi:"config"`
-	Cr                  pulumi.StringPtrInput `pulumi:"cr"`
-	Cs                  pulumi.StringPtrInput `pulumi:"cs"`
-	Das                 pulumi.StringPtrInput `pulumi:"das"`
-	Datahub             pulumi.StringPtrInput `pulumi:"datahub"`
-	Dataworkspublic     pulumi.StringPtrInput `pulumi:"dataworkspublic"`
-	Dbfs                pulumi.StringPtrInput `pulumi:"dbfs"`
-	Dcdn                pulumi.StringPtrInput `pulumi:"dcdn"`
-	Ddosbasic           pulumi.StringPtrInput `pulumi:"ddosbasic"`
-	Ddosbgp             pulumi.StringPtrInput `pulumi:"ddosbgp"`
-	Ddoscoo             pulumi.StringPtrInput `pulumi:"ddoscoo"`
-	Dds                 pulumi.StringPtrInput `pulumi:"dds"`
-	Devopsrdc           pulumi.StringPtrInput `pulumi:"devopsrdc"`
-	Dg                  pulumi.StringPtrInput `pulumi:"dg"`
-	Dm                  pulumi.StringPtrInput `pulumi:"dm"`
-	DmsEnterprise       pulumi.StringPtrInput `pulumi:"dmsEnterprise"`
-	Dmsenterprise       pulumi.StringPtrInput `pulumi:"dmsenterprise"`
-	Dns                 pulumi.StringPtrInput `pulumi:"dns"`
-	Drds                pulumi.StringPtrInput `pulumi:"drds"`
-	Dts                 pulumi.StringPtrInput `pulumi:"dts"`
-	Dysms               pulumi.StringPtrInput `pulumi:"dysms"`
-	Eais                pulumi.StringPtrInput `pulumi:"eais"`
-	Ebs                 pulumi.StringPtrInput `pulumi:"ebs"`
-	Eci                 pulumi.StringPtrInput `pulumi:"eci"`
-	Ecs                 pulumi.StringPtrInput `pulumi:"ecs"`
-	Edas                pulumi.StringPtrInput `pulumi:"edas"`
-	Edasschedulerx      pulumi.StringPtrInput `pulumi:"edasschedulerx"`
-	Edsuser             pulumi.StringPtrInput `pulumi:"edsuser"`
-	Eflo                pulumi.StringPtrInput `pulumi:"eflo"`
-	Ehpc                pulumi.StringPtrInput `pulumi:"ehpc"`
-	Ehs                 pulumi.StringPtrInput `pulumi:"ehs"`
-	Eipanycast          pulumi.StringPtrInput `pulumi:"eipanycast"`
-	Elasticsearch       pulumi.StringPtrInput `pulumi:"elasticsearch"`
-	Emr                 pulumi.StringPtrInput `pulumi:"emr"`
-	Ens                 pulumi.StringPtrInput `pulumi:"ens"`
-	Ess                 pulumi.StringPtrInput `pulumi:"ess"`
-	Eventbridge         pulumi.StringPtrInput `pulumi:"eventbridge"`
-	Fc                  pulumi.StringPtrInput `pulumi:"fc"`
-	Fnf                 pulumi.StringPtrInput `pulumi:"fnf"`
-	Ga                  pulumi.StringPtrInput `pulumi:"ga"`
-	Gaplus              pulumi.StringPtrInput `pulumi:"gaplus"`
-	Gds                 pulumi.StringPtrInput `pulumi:"gds"`
-	Gpdb                pulumi.StringPtrInput `pulumi:"gpdb"`
-	Gwsecd              pulumi.StringPtrInput `pulumi:"gwsecd"`
-	Hbr                 pulumi.StringPtrInput `pulumi:"hbr"`
-	HcsSgw              pulumi.StringPtrInput `pulumi:"hcsSgw"`
-	Hitsdb              pulumi.StringPtrInput `pulumi:"hitsdb"`
-	Imm                 pulumi.StringPtrInput `pulumi:"imm"`
-	Imp                 pulumi.StringPtrInput `pulumi:"imp"`
-	Ims                 pulumi.StringPtrInput `pulumi:"ims"`
-	Iot                 pulumi.StringPtrInput `pulumi:"iot"`
-	Kms                 pulumi.StringPtrInput `pulumi:"kms"`
-	Kvstore             pulumi.StringPtrInput `pulumi:"kvstore"`
-	Location            pulumi.StringPtrInput `pulumi:"location"`
-	Log                 pulumi.StringPtrInput `pulumi:"log"`
-	Market              pulumi.StringPtrInput `pulumi:"market"`
-	Maxcompute          pulumi.StringPtrInput `pulumi:"maxcompute"`
-	Mhub                pulumi.StringPtrInput `pulumi:"mhub"`
-	Mns                 pulumi.StringPtrInput `pulumi:"mns"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom acr endpoints.
+	Acr pulumi.StringPtrInput `pulumi:"acr"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Actiontrail endpoints.
+	Actiontrail pulumi.StringPtrInput `pulumi:"actiontrail"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom AnalyticDB endpoints.
+	Adb pulumi.StringPtrInput `pulumi:"adb"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom alb endpoints.
+	Alb pulumi.StringPtrInput `pulumi:"alb"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom alidfs endpoints.
+	Alidfs pulumi.StringPtrInput `pulumi:"alidfs"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom alidns endpoints.
+	Alidns pulumi.StringPtrInput `pulumi:"alidns"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom ALIKAFKA endpoints.
+	Alikafka pulumi.StringPtrInput `pulumi:"alikafka"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Api Gateway endpoints.
+	Apigateway pulumi.StringPtrInput `pulumi:"apigateway"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom arms endpoints.
+	Arms pulumi.StringPtrInput `pulumi:"arms"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom bastionhost endpoints.
+	Bastionhost pulumi.StringPtrInput `pulumi:"bastionhost"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom beebot endpoints.
+	Beebot pulumi.StringPtrInput `pulumi:"beebot"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom bpstudio endpoints.
+	Bpstudio pulumi.StringPtrInput `pulumi:"bpstudio"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom brainIndustrial endpoints.
+	BrainIndustrial pulumi.StringPtrInput `pulumi:"brainIndustrial"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom BSSOPENAPI endpoints.
+	Bssopenapi pulumi.StringPtrInput `pulumi:"bssopenapi"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom CAS endpoints.
+	Cas pulumi.StringPtrInput `pulumi:"cas"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom cassandra endpoints.
+	Cassandra pulumi.StringPtrInput `pulumi:"cassandra"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom cbn endpoints.
+	Cbn pulumi.StringPtrInput `pulumi:"cbn"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom cbs endpoints.
+	Cbs pulumi.StringPtrInput `pulumi:"cbs"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom cddc endpoints.
+	Cddc pulumi.StringPtrInput `pulumi:"cddc"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom CDN endpoints.
+	Cdn pulumi.StringPtrInput `pulumi:"cdn"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom cds endpoints.
+	Cds pulumi.StringPtrInput `pulumi:"cds"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom clickhouse endpoints.
+	Clickhouse pulumi.StringPtrInput `pulumi:"clickhouse"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom cloudauth endpoints.
+	Cloudauth pulumi.StringPtrInput `pulumi:"cloudauth"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom cloudfirewall endpoints.
+	Cloudfirewall pulumi.StringPtrInput `pulumi:"cloudfirewall"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom cloudfw endpoints.
+	Cloudfw pulumi.StringPtrInput `pulumi:"cloudfw"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom cloudphone endpoints.
+	Cloudphone pulumi.StringPtrInput `pulumi:"cloudphone"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom cloudsso endpoints.
+	Cloudsso pulumi.StringPtrInput `pulumi:"cloudsso"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Cloud Monitor endpoints.
+	Cms pulumi.StringPtrInput `pulumi:"cms"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom computenest endpoints.
+	Computenest pulumi.StringPtrInput `pulumi:"computenest"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom config endpoints.
+	Config pulumi.StringPtrInput `pulumi:"config"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Container Registry endpoints.
+	Cr pulumi.StringPtrInput `pulumi:"cr"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Container Service endpoints.
+	Cs pulumi.StringPtrInput `pulumi:"cs"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom das endpoints.
+	Das pulumi.StringPtrInput `pulumi:"das"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Datahub endpoints.
+	Datahub pulumi.StringPtrInput `pulumi:"datahub"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom dataworkspublic endpoints.
+	Dataworkspublic pulumi.StringPtrInput `pulumi:"dataworkspublic"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom dbfs endpoints.
+	Dbfs pulumi.StringPtrInput `pulumi:"dbfs"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom dcdn endpoints.
+	Dcdn pulumi.StringPtrInput `pulumi:"dcdn"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom ddosbasic endpoints.
+	Ddosbasic pulumi.StringPtrInput `pulumi:"ddosbasic"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom DDOSBGP endpoints.
+	Ddosbgp pulumi.StringPtrInput `pulumi:"ddosbgp"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom DDOSCOO endpoints.
+	Ddoscoo pulumi.StringPtrInput `pulumi:"ddoscoo"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom MongoDB endpoints.
+	Dds pulumi.StringPtrInput `pulumi:"dds"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom devopsrdc endpoints.
+	Devopsrdc pulumi.StringPtrInput `pulumi:"devopsrdc"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom dg endpoints.
+	Dg pulumi.StringPtrInput `pulumi:"dg"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom dm endpoints.
+	Dm pulumi.StringPtrInput `pulumi:"dm"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom dmsEnterprise endpoints.
+	DmsEnterprise pulumi.StringPtrInput `pulumi:"dmsEnterprise"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom dmsenterprise endpoints.
+	Dmsenterprise pulumi.StringPtrInput `pulumi:"dmsenterprise"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom DNS endpoints.
+	Dns pulumi.StringPtrInput `pulumi:"dns"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom DRDS endpoints.
+	Drds pulumi.StringPtrInput `pulumi:"drds"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom dts endpoints.
+	Dts   pulumi.StringPtrInput `pulumi:"dts"`
+	Dysms pulumi.StringPtrInput `pulumi:"dysms"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom eais endpoints.
+	Eais pulumi.StringPtrInput `pulumi:"eais"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom ebs endpoints.
+	Ebs pulumi.StringPtrInput `pulumi:"ebs"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom eci endpoints.
+	Eci pulumi.StringPtrInput `pulumi:"eci"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom ECS endpoints.
+	Ecs pulumi.StringPtrInput `pulumi:"ecs"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom edas endpoints.
+	Edas pulumi.StringPtrInput `pulumi:"edas"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom edasschedulerx endpoints.
+	Edasschedulerx pulumi.StringPtrInput `pulumi:"edasschedulerx"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom edsuser endpoints.
+	Edsuser pulumi.StringPtrInput `pulumi:"edsuser"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom eflo endpoints.
+	Eflo pulumi.StringPtrInput `pulumi:"eflo"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom ehpc endpoints.
+	Ehpc pulumi.StringPtrInput `pulumi:"ehpc"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom ehs endpoints.
+	Ehs pulumi.StringPtrInput `pulumi:"ehs"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom eipanycast endpoints.
+	Eipanycast pulumi.StringPtrInput `pulumi:"eipanycast"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Elasticsearch endpoints.
+	Elasticsearch pulumi.StringPtrInput `pulumi:"elasticsearch"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom EMR endpoints.
+	Emr pulumi.StringPtrInput `pulumi:"emr"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom ens endpoints.
+	Ens pulumi.StringPtrInput `pulumi:"ens"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Autoscaling endpoints.
+	Ess pulumi.StringPtrInput `pulumi:"ess"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom eventbridgeShare endpoints.
+	Eventbridge pulumi.StringPtrInput `pulumi:"eventbridge"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Function Computing endpoints.
+	Fc pulumi.StringPtrInput `pulumi:"fc"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom fnf endpoints.
+	Fnf pulumi.StringPtrInput `pulumi:"fnf"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom ga endpoints.
+	Ga pulumi.StringPtrInput `pulumi:"ga"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom gaplus endpoints.
+	Gaplus pulumi.StringPtrInput `pulumi:"gaplus"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom gds endpoints.
+	Gds pulumi.StringPtrInput `pulumi:"gds"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom GPDB endpoints.
+	Gpdb pulumi.StringPtrInput `pulumi:"gpdb"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom gwsecd endpoints.
+	Gwsecd pulumi.StringPtrInput `pulumi:"gwsecd"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom hbr endpoints.
+	Hbr pulumi.StringPtrInput `pulumi:"hbr"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom hcsSgw endpoints.
+	HcsSgw pulumi.StringPtrInput `pulumi:"hcsSgw"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom hitsdb endpoints.
+	Hitsdb pulumi.StringPtrInput `pulumi:"hitsdb"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom imm endpoints.
+	Imm pulumi.StringPtrInput `pulumi:"imm"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom imp endpoints.
+	Imp pulumi.StringPtrInput `pulumi:"imp"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom ims endpoints.
+	Ims pulumi.StringPtrInput `pulumi:"ims"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom iot endpoints.
+	Iot pulumi.StringPtrInput `pulumi:"iot"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom KMS endpoints.
+	Kms pulumi.StringPtrInput `pulumi:"kms"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom R-KVStore endpoints.
+	Kvstore pulumi.StringPtrInput `pulumi:"kvstore"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Location Service endpoints.
+	Location pulumi.StringPtrInput `pulumi:"location"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Log Service endpoints.
+	Log pulumi.StringPtrInput `pulumi:"log"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Market Place endpoints.
+	Market pulumi.StringPtrInput `pulumi:"market"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom MaxCompute endpoints.
+	Maxcompute pulumi.StringPtrInput `pulumi:"maxcompute"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom mhub endpoints.
+	Mhub pulumi.StringPtrInput `pulumi:"mhub"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom MNS endpoints.
+	Mns pulumi.StringPtrInput `pulumi:"mns"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom mscopensubscription endpoints.
 	Mscopensubscription pulumi.StringPtrInput `pulumi:"mscopensubscription"`
-	Mse                 pulumi.StringPtrInput `pulumi:"mse"`
-	Nas                 pulumi.StringPtrInput `pulumi:"nas"`
-	Nlb                 pulumi.StringPtrInput `pulumi:"nlb"`
-	Oceanbase           pulumi.StringPtrInput `pulumi:"oceanbase"`
-	Ons                 pulumi.StringPtrInput `pulumi:"ons"`
-	Onsproxy            pulumi.StringPtrInput `pulumi:"onsproxy"`
-	Oos                 pulumi.StringPtrInput `pulumi:"oos"`
-	Opensearch          pulumi.StringPtrInput `pulumi:"opensearch"`
-	Oss                 pulumi.StringPtrInput `pulumi:"oss"`
-	Ots                 pulumi.StringPtrInput `pulumi:"ots"`
-	Polardb             pulumi.StringPtrInput `pulumi:"polardb"`
-	Privatelink         pulumi.StringPtrInput `pulumi:"privatelink"`
-	Pvtz                pulumi.StringPtrInput `pulumi:"pvtz"`
-	Quickbi             pulumi.StringPtrInput `pulumi:"quickbi"`
-	Quotas              pulumi.StringPtrInput `pulumi:"quotas"`
-	RKvstore            pulumi.StringPtrInput `pulumi:"rKvstore"`
-	Ram                 pulumi.StringPtrInput `pulumi:"ram"`
-	Rds                 pulumi.StringPtrInput `pulumi:"rds"`
-	Redisa              pulumi.StringPtrInput `pulumi:"redisa"`
-	Resourcemanager     pulumi.StringPtrInput `pulumi:"resourcemanager"`
-	Resourcesharing     pulumi.StringPtrInput `pulumi:"resourcesharing"`
-	Ros                 pulumi.StringPtrInput `pulumi:"ros"`
-	Sas                 pulumi.StringPtrInput `pulumi:"sas"`
-	Scdn                pulumi.StringPtrInput `pulumi:"scdn"`
-	Sddp                pulumi.StringPtrInput `pulumi:"sddp"`
-	Serverless          pulumi.StringPtrInput `pulumi:"serverless"`
-	Servicemesh         pulumi.StringPtrInput `pulumi:"servicemesh"`
-	Sgw                 pulumi.StringPtrInput `pulumi:"sgw"`
-	Slb                 pulumi.StringPtrInput `pulumi:"slb"`
-	Smartag             pulumi.StringPtrInput `pulumi:"smartag"`
-	Srvcatalog          pulumi.StringPtrInput `pulumi:"srvcatalog"`
-	Sts                 pulumi.StringPtrInput `pulumi:"sts"`
-	Swas                pulumi.StringPtrInput `pulumi:"swas"`
-	Tag                 pulumi.StringPtrInput `pulumi:"tag"`
-	Vod                 pulumi.StringPtrInput `pulumi:"vod"`
-	Vpc                 pulumi.StringPtrInput `pulumi:"vpc"`
-	Vpcpeer             pulumi.StringPtrInput `pulumi:"vpcpeer"`
-	Vs                  pulumi.StringPtrInput `pulumi:"vs"`
-	Waf                 pulumi.StringPtrInput `pulumi:"waf"`
-	WafOpenapi          pulumi.StringPtrInput `pulumi:"wafOpenapi"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom mse endpoints.
+	Mse pulumi.StringPtrInput `pulumi:"mse"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom NAS endpoints.
+	Nas pulumi.StringPtrInput `pulumi:"nas"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom nlb endpoints.
+	Nlb pulumi.StringPtrInput `pulumi:"nlb"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom oceanbase endpoints.
+	Oceanbase pulumi.StringPtrInput `pulumi:"oceanbase"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom ONS endpoints.
+	Ons pulumi.StringPtrInput `pulumi:"ons"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom onsproxy endpoints.
+	Onsproxy pulumi.StringPtrInput `pulumi:"onsproxy"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom oos endpoints.
+	Oos pulumi.StringPtrInput `pulumi:"oos"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom opensearch endpoints.
+	Opensearch pulumi.StringPtrInput `pulumi:"opensearch"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom OSS endpoints.
+	Oss pulumi.StringPtrInput `pulumi:"oss"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Table Store endpoints.
+	Ots pulumi.StringPtrInput `pulumi:"ots"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom PolarDB endpoints.
+	Polardb pulumi.StringPtrInput `pulumi:"polardb"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom privatelink endpoints.
+	Privatelink pulumi.StringPtrInput `pulumi:"privatelink"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Private Zone endpoints.
+	Pvtz pulumi.StringPtrInput `pulumi:"pvtz"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom quickbi endpoints.
+	Quickbi pulumi.StringPtrInput `pulumi:"quickbi"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom quotas endpoints.
+	Quotas pulumi.StringPtrInput `pulumi:"quotas"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom rKvstore endpoints.
+	RKvstore pulumi.StringPtrInput `pulumi:"rKvstore"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom RAM endpoints.
+	Ram pulumi.StringPtrInput `pulumi:"ram"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom RDS endpoints.
+	Rds pulumi.StringPtrInput `pulumi:"rds"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom redisa endpoints.
+	Redisa pulumi.StringPtrInput `pulumi:"redisa"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom resourcemanager endpoints.
+	Resourcemanager pulumi.StringPtrInput `pulumi:"resourcemanager"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom resourcesharing endpoints.
+	Resourcesharing pulumi.StringPtrInput `pulumi:"resourcesharing"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom ros endpoints.
+	Ros pulumi.StringPtrInput `pulumi:"ros"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom sas endpoints.
+	Sas pulumi.StringPtrInput `pulumi:"sas"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom scdn endpoints.
+	Scdn pulumi.StringPtrInput `pulumi:"scdn"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom sddp endpoints.
+	Sddp pulumi.StringPtrInput `pulumi:"sddp"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom serverless endpoints.
+	Serverless pulumi.StringPtrInput `pulumi:"serverless"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom servicemesh endpoints.
+	Servicemesh pulumi.StringPtrInput `pulumi:"servicemesh"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom sgw endpoints.
+	Sgw pulumi.StringPtrInput `pulumi:"sgw"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom SLB endpoints.
+	Slb pulumi.StringPtrInput `pulumi:"slb"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom smartag endpoints.
+	Smartag pulumi.StringPtrInput `pulumi:"smartag"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom srvcatalog endpoints.
+	Srvcatalog pulumi.StringPtrInput `pulumi:"srvcatalog"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom STS endpoints.
+	Sts pulumi.StringPtrInput `pulumi:"sts"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom swas endpoints.
+	Swas pulumi.StringPtrInput `pulumi:"swas"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom tag endpoints.
+	Tag pulumi.StringPtrInput `pulumi:"tag"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom vod endpoints.
+	Vod pulumi.StringPtrInput `pulumi:"vod"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom VPC and VPN endpoints.
+	Vpc pulumi.StringPtrInput `pulumi:"vpc"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom vpcpeer endpoints.
+	Vpcpeer pulumi.StringPtrInput `pulumi:"vpcpeer"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom vs endpoints.
+	Vs pulumi.StringPtrInput `pulumi:"vs"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom waf endpoints.
+	Waf pulumi.StringPtrInput `pulumi:"waf"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom wafOpenapi endpoints.
+	WafOpenapi pulumi.StringPtrInput `pulumi:"wafOpenapi"`
 }
 
 func (ProviderEndpointArgs) ElementType() reflect.Type {
@@ -532,198 +800,247 @@ func (o ProviderEndpointOutput) ToProviderEndpointOutputWithContext(ctx context.
 	return o
 }
 
+// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom acr endpoints.
 func (o ProviderEndpointOutput) Acr() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Acr }).(pulumi.StringPtrOutput)
 }
 
+// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Actiontrail endpoints.
 func (o ProviderEndpointOutput) Actiontrail() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Actiontrail }).(pulumi.StringPtrOutput)
 }
 
+// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom AnalyticDB endpoints.
 func (o ProviderEndpointOutput) Adb() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Adb }).(pulumi.StringPtrOutput)
 }
 
+// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom alb endpoints.
 func (o ProviderEndpointOutput) Alb() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Alb }).(pulumi.StringPtrOutput)
 }
 
+// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom alidfs endpoints.
 func (o ProviderEndpointOutput) Alidfs() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Alidfs }).(pulumi.StringPtrOutput)
 }
 
+// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom alidns endpoints.
 func (o ProviderEndpointOutput) Alidns() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Alidns }).(pulumi.StringPtrOutput)
 }
 
+// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom ALIKAFKA endpoints.
 func (o ProviderEndpointOutput) Alikafka() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Alikafka }).(pulumi.StringPtrOutput)
 }
 
+// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Api Gateway endpoints.
 func (o ProviderEndpointOutput) Apigateway() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Apigateway }).(pulumi.StringPtrOutput)
 }
 
+// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom arms endpoints.
 func (o ProviderEndpointOutput) Arms() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Arms }).(pulumi.StringPtrOutput)
 }
 
+// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom bastionhost endpoints.
 func (o ProviderEndpointOutput) Bastionhost() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Bastionhost }).(pulumi.StringPtrOutput)
 }
 
+// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom beebot endpoints.
 func (o ProviderEndpointOutput) Beebot() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Beebot }).(pulumi.StringPtrOutput)
 }
 
+// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom bpstudio endpoints.
 func (o ProviderEndpointOutput) Bpstudio() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Bpstudio }).(pulumi.StringPtrOutput)
 }
 
+// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom brainIndustrial endpoints.
 func (o ProviderEndpointOutput) BrainIndustrial() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderEndpoint) *string { return v.BrainIndustrial }).(pulumi.StringPtrOutput)
 }
 
+// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom BSSOPENAPI endpoints.
 func (o ProviderEndpointOutput) Bssopenapi() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Bssopenapi }).(pulumi.StringPtrOutput)
 }
 
+// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom CAS endpoints.
 func (o ProviderEndpointOutput) Cas() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Cas }).(pulumi.StringPtrOutput)
 }
 
+// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom cassandra endpoints.
 func (o ProviderEndpointOutput) Cassandra() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Cassandra }).(pulumi.StringPtrOutput)
 }
 
+// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom cbn endpoints.
 func (o ProviderEndpointOutput) Cbn() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Cbn }).(pulumi.StringPtrOutput)
 }
 
+// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom cbs endpoints.
 func (o ProviderEndpointOutput) Cbs() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Cbs }).(pulumi.StringPtrOutput)
 }
 
+// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom cddc endpoints.
 func (o ProviderEndpointOutput) Cddc() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Cddc }).(pulumi.StringPtrOutput)
 }
 
+// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom CDN endpoints.
 func (o ProviderEndpointOutput) Cdn() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Cdn }).(pulumi.StringPtrOutput)
 }
 
+// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom cds endpoints.
 func (o ProviderEndpointOutput) Cds() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Cds }).(pulumi.StringPtrOutput)
 }
 
+// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom clickhouse endpoints.
 func (o ProviderEndpointOutput) Clickhouse() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Clickhouse }).(pulumi.StringPtrOutput)
 }
 
+// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom cloudauth endpoints.
 func (o ProviderEndpointOutput) Cloudauth() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Cloudauth }).(pulumi.StringPtrOutput)
 }
 
+// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom cloudfirewall endpoints.
 func (o ProviderEndpointOutput) Cloudfirewall() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Cloudfirewall }).(pulumi.StringPtrOutput)
 }
 
+// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom cloudfw endpoints.
 func (o ProviderEndpointOutput) Cloudfw() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Cloudfw }).(pulumi.StringPtrOutput)
 }
 
+// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom cloudphone endpoints.
 func (o ProviderEndpointOutput) Cloudphone() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Cloudphone }).(pulumi.StringPtrOutput)
 }
 
+// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom cloudsso endpoints.
 func (o ProviderEndpointOutput) Cloudsso() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Cloudsso }).(pulumi.StringPtrOutput)
 }
 
+// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Cloud Monitor endpoints.
 func (o ProviderEndpointOutput) Cms() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Cms }).(pulumi.StringPtrOutput)
 }
 
+// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom computenest endpoints.
 func (o ProviderEndpointOutput) Computenest() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Computenest }).(pulumi.StringPtrOutput)
 }
 
+// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom config endpoints.
 func (o ProviderEndpointOutput) Config() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Config }).(pulumi.StringPtrOutput)
 }
 
+// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Container Registry endpoints.
 func (o ProviderEndpointOutput) Cr() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Cr }).(pulumi.StringPtrOutput)
 }
 
+// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Container Service endpoints.
 func (o ProviderEndpointOutput) Cs() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Cs }).(pulumi.StringPtrOutput)
 }
 
+// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom das endpoints.
 func (o ProviderEndpointOutput) Das() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Das }).(pulumi.StringPtrOutput)
 }
 
+// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Datahub endpoints.
 func (o ProviderEndpointOutput) Datahub() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Datahub }).(pulumi.StringPtrOutput)
 }
 
+// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom dataworkspublic endpoints.
 func (o ProviderEndpointOutput) Dataworkspublic() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Dataworkspublic }).(pulumi.StringPtrOutput)
 }
 
+// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom dbfs endpoints.
 func (o ProviderEndpointOutput) Dbfs() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Dbfs }).(pulumi.StringPtrOutput)
 }
 
+// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom dcdn endpoints.
 func (o ProviderEndpointOutput) Dcdn() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Dcdn }).(pulumi.StringPtrOutput)
 }
 
+// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom ddosbasic endpoints.
 func (o ProviderEndpointOutput) Ddosbasic() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Ddosbasic }).(pulumi.StringPtrOutput)
 }
 
+// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom DDOSBGP endpoints.
 func (o ProviderEndpointOutput) Ddosbgp() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Ddosbgp }).(pulumi.StringPtrOutput)
 }
 
+// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom DDOSCOO endpoints.
 func (o ProviderEndpointOutput) Ddoscoo() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Ddoscoo }).(pulumi.StringPtrOutput)
 }
 
+// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom MongoDB endpoints.
 func (o ProviderEndpointOutput) Dds() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Dds }).(pulumi.StringPtrOutput)
 }
 
+// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom devopsrdc endpoints.
 func (o ProviderEndpointOutput) Devopsrdc() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Devopsrdc }).(pulumi.StringPtrOutput)
 }
 
+// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom dg endpoints.
 func (o ProviderEndpointOutput) Dg() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Dg }).(pulumi.StringPtrOutput)
 }
 
+// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom dm endpoints.
 func (o ProviderEndpointOutput) Dm() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Dm }).(pulumi.StringPtrOutput)
 }
 
+// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom dmsEnterprise endpoints.
 func (o ProviderEndpointOutput) DmsEnterprise() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderEndpoint) *string { return v.DmsEnterprise }).(pulumi.StringPtrOutput)
 }
 
+// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom dmsenterprise endpoints.
 func (o ProviderEndpointOutput) Dmsenterprise() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Dmsenterprise }).(pulumi.StringPtrOutput)
 }
 
+// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom DNS endpoints.
 func (o ProviderEndpointOutput) Dns() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Dns }).(pulumi.StringPtrOutput)
 }
 
+// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom DRDS endpoints.
 func (o ProviderEndpointOutput) Drds() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Drds }).(pulumi.StringPtrOutput)
 }
 
+// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom dts endpoints.
 func (o ProviderEndpointOutput) Dts() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Dts }).(pulumi.StringPtrOutput)
 }
@@ -732,318 +1049,397 @@ func (o ProviderEndpointOutput) Dysms() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Dysms }).(pulumi.StringPtrOutput)
 }
 
+// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom eais endpoints.
 func (o ProviderEndpointOutput) Eais() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Eais }).(pulumi.StringPtrOutput)
 }
 
+// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom ebs endpoints.
 func (o ProviderEndpointOutput) Ebs() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Ebs }).(pulumi.StringPtrOutput)
 }
 
+// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom eci endpoints.
 func (o ProviderEndpointOutput) Eci() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Eci }).(pulumi.StringPtrOutput)
 }
 
+// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom ECS endpoints.
 func (o ProviderEndpointOutput) Ecs() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Ecs }).(pulumi.StringPtrOutput)
 }
 
+// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom edas endpoints.
 func (o ProviderEndpointOutput) Edas() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Edas }).(pulumi.StringPtrOutput)
 }
 
+// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom edasschedulerx endpoints.
 func (o ProviderEndpointOutput) Edasschedulerx() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Edasschedulerx }).(pulumi.StringPtrOutput)
 }
 
+// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom edsuser endpoints.
 func (o ProviderEndpointOutput) Edsuser() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Edsuser }).(pulumi.StringPtrOutput)
 }
 
+// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom eflo endpoints.
 func (o ProviderEndpointOutput) Eflo() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Eflo }).(pulumi.StringPtrOutput)
 }
 
+// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom ehpc endpoints.
 func (o ProviderEndpointOutput) Ehpc() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Ehpc }).(pulumi.StringPtrOutput)
 }
 
+// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom ehs endpoints.
 func (o ProviderEndpointOutput) Ehs() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Ehs }).(pulumi.StringPtrOutput)
 }
 
+// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom eipanycast endpoints.
 func (o ProviderEndpointOutput) Eipanycast() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Eipanycast }).(pulumi.StringPtrOutput)
 }
 
+// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Elasticsearch endpoints.
 func (o ProviderEndpointOutput) Elasticsearch() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Elasticsearch }).(pulumi.StringPtrOutput)
 }
 
+// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom EMR endpoints.
 func (o ProviderEndpointOutput) Emr() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Emr }).(pulumi.StringPtrOutput)
 }
 
+// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom ens endpoints.
 func (o ProviderEndpointOutput) Ens() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Ens }).(pulumi.StringPtrOutput)
 }
 
+// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Autoscaling endpoints.
 func (o ProviderEndpointOutput) Ess() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Ess }).(pulumi.StringPtrOutput)
 }
 
+// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom eventbridgeShare endpoints.
 func (o ProviderEndpointOutput) Eventbridge() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Eventbridge }).(pulumi.StringPtrOutput)
 }
 
+// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Function Computing endpoints.
 func (o ProviderEndpointOutput) Fc() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Fc }).(pulumi.StringPtrOutput)
 }
 
+// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom fnf endpoints.
 func (o ProviderEndpointOutput) Fnf() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Fnf }).(pulumi.StringPtrOutput)
 }
 
+// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom ga endpoints.
 func (o ProviderEndpointOutput) Ga() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Ga }).(pulumi.StringPtrOutput)
 }
 
+// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom gaplus endpoints.
 func (o ProviderEndpointOutput) Gaplus() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Gaplus }).(pulumi.StringPtrOutput)
 }
 
+// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom gds endpoints.
 func (o ProviderEndpointOutput) Gds() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Gds }).(pulumi.StringPtrOutput)
 }
 
+// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom GPDB endpoints.
 func (o ProviderEndpointOutput) Gpdb() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Gpdb }).(pulumi.StringPtrOutput)
 }
 
+// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom gwsecd endpoints.
 func (o ProviderEndpointOutput) Gwsecd() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Gwsecd }).(pulumi.StringPtrOutput)
 }
 
+// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom hbr endpoints.
 func (o ProviderEndpointOutput) Hbr() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Hbr }).(pulumi.StringPtrOutput)
 }
 
+// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom hcsSgw endpoints.
 func (o ProviderEndpointOutput) HcsSgw() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderEndpoint) *string { return v.HcsSgw }).(pulumi.StringPtrOutput)
 }
 
+// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom hitsdb endpoints.
 func (o ProviderEndpointOutput) Hitsdb() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Hitsdb }).(pulumi.StringPtrOutput)
 }
 
+// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom imm endpoints.
 func (o ProviderEndpointOutput) Imm() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Imm }).(pulumi.StringPtrOutput)
 }
 
+// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom imp endpoints.
 func (o ProviderEndpointOutput) Imp() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Imp }).(pulumi.StringPtrOutput)
 }
 
+// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom ims endpoints.
 func (o ProviderEndpointOutput) Ims() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Ims }).(pulumi.StringPtrOutput)
 }
 
+// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom iot endpoints.
 func (o ProviderEndpointOutput) Iot() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Iot }).(pulumi.StringPtrOutput)
 }
 
+// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom KMS endpoints.
 func (o ProviderEndpointOutput) Kms() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Kms }).(pulumi.StringPtrOutput)
 }
 
+// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom R-KVStore endpoints.
 func (o ProviderEndpointOutput) Kvstore() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Kvstore }).(pulumi.StringPtrOutput)
 }
 
+// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Location Service endpoints.
 func (o ProviderEndpointOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
 
+// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Log Service endpoints.
 func (o ProviderEndpointOutput) Log() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Log }).(pulumi.StringPtrOutput)
 }
 
+// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Market Place endpoints.
 func (o ProviderEndpointOutput) Market() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Market }).(pulumi.StringPtrOutput)
 }
 
+// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom MaxCompute endpoints.
 func (o ProviderEndpointOutput) Maxcompute() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Maxcompute }).(pulumi.StringPtrOutput)
 }
 
+// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom mhub endpoints.
 func (o ProviderEndpointOutput) Mhub() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Mhub }).(pulumi.StringPtrOutput)
 }
 
+// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom MNS endpoints.
 func (o ProviderEndpointOutput) Mns() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Mns }).(pulumi.StringPtrOutput)
 }
 
+// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom mscopensubscription endpoints.
 func (o ProviderEndpointOutput) Mscopensubscription() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Mscopensubscription }).(pulumi.StringPtrOutput)
 }
 
+// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom mse endpoints.
 func (o ProviderEndpointOutput) Mse() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Mse }).(pulumi.StringPtrOutput)
 }
 
+// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom NAS endpoints.
 func (o ProviderEndpointOutput) Nas() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Nas }).(pulumi.StringPtrOutput)
 }
 
+// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom nlb endpoints.
 func (o ProviderEndpointOutput) Nlb() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Nlb }).(pulumi.StringPtrOutput)
 }
 
+// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom oceanbase endpoints.
 func (o ProviderEndpointOutput) Oceanbase() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Oceanbase }).(pulumi.StringPtrOutput)
 }
 
+// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom ONS endpoints.
 func (o ProviderEndpointOutput) Ons() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Ons }).(pulumi.StringPtrOutput)
 }
 
+// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom onsproxy endpoints.
 func (o ProviderEndpointOutput) Onsproxy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Onsproxy }).(pulumi.StringPtrOutput)
 }
 
+// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom oos endpoints.
 func (o ProviderEndpointOutput) Oos() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Oos }).(pulumi.StringPtrOutput)
 }
 
+// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom opensearch endpoints.
 func (o ProviderEndpointOutput) Opensearch() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Opensearch }).(pulumi.StringPtrOutput)
 }
 
+// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom OSS endpoints.
 func (o ProviderEndpointOutput) Oss() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Oss }).(pulumi.StringPtrOutput)
 }
 
+// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Table Store endpoints.
 func (o ProviderEndpointOutput) Ots() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Ots }).(pulumi.StringPtrOutput)
 }
 
+// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom PolarDB endpoints.
 func (o ProviderEndpointOutput) Polardb() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Polardb }).(pulumi.StringPtrOutput)
 }
 
+// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom privatelink endpoints.
 func (o ProviderEndpointOutput) Privatelink() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Privatelink }).(pulumi.StringPtrOutput)
 }
 
+// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Private Zone endpoints.
 func (o ProviderEndpointOutput) Pvtz() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Pvtz }).(pulumi.StringPtrOutput)
 }
 
+// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom quickbi endpoints.
 func (o ProviderEndpointOutput) Quickbi() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Quickbi }).(pulumi.StringPtrOutput)
 }
 
+// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom quotas endpoints.
 func (o ProviderEndpointOutput) Quotas() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Quotas }).(pulumi.StringPtrOutput)
 }
 
+// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom rKvstore endpoints.
 func (o ProviderEndpointOutput) RKvstore() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderEndpoint) *string { return v.RKvstore }).(pulumi.StringPtrOutput)
 }
 
+// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom RAM endpoints.
 func (o ProviderEndpointOutput) Ram() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Ram }).(pulumi.StringPtrOutput)
 }
 
+// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom RDS endpoints.
 func (o ProviderEndpointOutput) Rds() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Rds }).(pulumi.StringPtrOutput)
 }
 
+// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom redisa endpoints.
 func (o ProviderEndpointOutput) Redisa() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Redisa }).(pulumi.StringPtrOutput)
 }
 
+// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom resourcemanager endpoints.
 func (o ProviderEndpointOutput) Resourcemanager() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Resourcemanager }).(pulumi.StringPtrOutput)
 }
 
+// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom resourcesharing endpoints.
 func (o ProviderEndpointOutput) Resourcesharing() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Resourcesharing }).(pulumi.StringPtrOutput)
 }
 
+// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom ros endpoints.
 func (o ProviderEndpointOutput) Ros() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Ros }).(pulumi.StringPtrOutput)
 }
 
+// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom sas endpoints.
 func (o ProviderEndpointOutput) Sas() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Sas }).(pulumi.StringPtrOutput)
 }
 
+// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom scdn endpoints.
 func (o ProviderEndpointOutput) Scdn() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Scdn }).(pulumi.StringPtrOutput)
 }
 
+// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom sddp endpoints.
 func (o ProviderEndpointOutput) Sddp() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Sddp }).(pulumi.StringPtrOutput)
 }
 
+// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom serverless endpoints.
 func (o ProviderEndpointOutput) Serverless() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Serverless }).(pulumi.StringPtrOutput)
 }
 
+// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom servicemesh endpoints.
 func (o ProviderEndpointOutput) Servicemesh() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Servicemesh }).(pulumi.StringPtrOutput)
 }
 
+// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom sgw endpoints.
 func (o ProviderEndpointOutput) Sgw() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Sgw }).(pulumi.StringPtrOutput)
 }
 
+// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom SLB endpoints.
 func (o ProviderEndpointOutput) Slb() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Slb }).(pulumi.StringPtrOutput)
 }
 
+// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom smartag endpoints.
 func (o ProviderEndpointOutput) Smartag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Smartag }).(pulumi.StringPtrOutput)
 }
 
+// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom srvcatalog endpoints.
 func (o ProviderEndpointOutput) Srvcatalog() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Srvcatalog }).(pulumi.StringPtrOutput)
 }
 
+// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom STS endpoints.
 func (o ProviderEndpointOutput) Sts() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Sts }).(pulumi.StringPtrOutput)
 }
 
+// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom swas endpoints.
 func (o ProviderEndpointOutput) Swas() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Swas }).(pulumi.StringPtrOutput)
 }
 
+// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom tag endpoints.
 func (o ProviderEndpointOutput) Tag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Tag }).(pulumi.StringPtrOutput)
 }
 
+// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom vod endpoints.
 func (o ProviderEndpointOutput) Vod() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Vod }).(pulumi.StringPtrOutput)
 }
 
+// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom VPC and VPN endpoints.
 func (o ProviderEndpointOutput) Vpc() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Vpc }).(pulumi.StringPtrOutput)
 }
 
+// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom vpcpeer endpoints.
 func (o ProviderEndpointOutput) Vpcpeer() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Vpcpeer }).(pulumi.StringPtrOutput)
 }
 
+// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom vs endpoints.
 func (o ProviderEndpointOutput) Vs() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Vs }).(pulumi.StringPtrOutput)
 }
 
+// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom waf endpoints.
 func (o ProviderEndpointOutput) Waf() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Waf }).(pulumi.StringPtrOutput)
 }
 
+// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom wafOpenapi endpoints.
 func (o ProviderEndpointOutput) WafOpenapi() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderEndpoint) *string { return v.WafOpenapi }).(pulumi.StringPtrOutput)
 }

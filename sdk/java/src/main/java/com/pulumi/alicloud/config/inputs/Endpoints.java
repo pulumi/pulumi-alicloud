@@ -11,521 +11,1545 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class Endpoints {
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom acr endpoints.
+     * 
+     */
     private @Nullable String acr;
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom Actiontrail endpoints.
+     * 
+     */
     private @Nullable String actiontrail;
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom AnalyticDB endpoints.
+     * 
+     */
     private @Nullable String adb;
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom alb endpoints.
+     * 
+     */
     private @Nullable String alb;
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom alidfs endpoints.
+     * 
+     */
     private @Nullable String alidfs;
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom alidns endpoints.
+     * 
+     */
     private @Nullable String alidns;
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom ALIKAFKA endpoints.
+     * 
+     */
     private @Nullable String alikafka;
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom Api Gateway endpoints.
+     * 
+     */
     private @Nullable String apigateway;
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom arms endpoints.
+     * 
+     */
     private @Nullable String arms;
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom bastionhost endpoints.
+     * 
+     */
     private @Nullable String bastionhost;
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom beebot endpoints.
+     * 
+     */
     private @Nullable String beebot;
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom bpstudio endpoints.
+     * 
+     */
     private @Nullable String bpstudio;
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom brain_industrial endpoints.
+     * 
+     */
     private @Nullable String brainIndustrial;
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom BSSOPENAPI endpoints.
+     * 
+     */
     private @Nullable String bssopenapi;
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom CAS endpoints.
+     * 
+     */
     private @Nullable String cas;
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom cassandra endpoints.
+     * 
+     */
     private @Nullable String cassandra;
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom cbn endpoints.
+     * 
+     */
     private @Nullable String cbn;
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom cbs endpoints.
+     * 
+     */
     private @Nullable String cbs;
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom cddc endpoints.
+     * 
+     */
     private @Nullable String cddc;
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom CDN endpoints.
+     * 
+     */
     private @Nullable String cdn;
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom cds endpoints.
+     * 
+     */
     private @Nullable String cds;
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom clickhouse endpoints.
+     * 
+     */
     private @Nullable String clickhouse;
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom cloudauth endpoints.
+     * 
+     */
     private @Nullable String cloudauth;
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom cloudfirewall endpoints.
+     * 
+     */
     private @Nullable String cloudfirewall;
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom cloudfw endpoints.
+     * 
+     */
     private @Nullable String cloudfw;
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom cloudphone endpoints.
+     * 
+     */
     private @Nullable String cloudphone;
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom cloudsso endpoints.
+     * 
+     */
     private @Nullable String cloudsso;
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom Cloud Monitor endpoints.
+     * 
+     */
     private @Nullable String cms;
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom computenest endpoints.
+     * 
+     */
     private @Nullable String computenest;
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom config endpoints.
+     * 
+     */
     private @Nullable String config;
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom Container Registry endpoints.
+     * 
+     */
     private @Nullable String cr;
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom Container Service endpoints.
+     * 
+     */
     private @Nullable String cs;
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom das endpoints.
+     * 
+     */
     private @Nullable String das;
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom Datahub endpoints.
+     * 
+     */
     private @Nullable String datahub;
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom dataworkspublic endpoints.
+     * 
+     */
     private @Nullable String dataworkspublic;
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom dbfs endpoints.
+     * 
+     */
     private @Nullable String dbfs;
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom dcdn endpoints.
+     * 
+     */
     private @Nullable String dcdn;
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom ddosbasic endpoints.
+     * 
+     */
     private @Nullable String ddosbasic;
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom DDOSBGP endpoints.
+     * 
+     */
     private @Nullable String ddosbgp;
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom DDOSCOO endpoints.
+     * 
+     */
     private @Nullable String ddoscoo;
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom MongoDB endpoints.
+     * 
+     */
     private @Nullable String dds;
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom devopsrdc endpoints.
+     * 
+     */
     private @Nullable String devopsrdc;
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom dg endpoints.
+     * 
+     */
     private @Nullable String dg;
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom dm endpoints.
+     * 
+     */
     private @Nullable String dm;
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom dms_enterprise endpoints.
+     * 
+     */
     private @Nullable String dmsEnterprise;
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom dmsenterprise endpoints.
+     * 
+     */
     private @Nullable String dmsenterprise;
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom DNS endpoints.
+     * 
+     */
     private @Nullable String dns;
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom DRDS endpoints.
+     * 
+     */
     private @Nullable String drds;
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom dts endpoints.
+     * 
+     */
     private @Nullable String dts;
     private @Nullable String dysms;
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom eais endpoints.
+     * 
+     */
     private @Nullable String eais;
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom ebs endpoints.
+     * 
+     */
     private @Nullable String ebs;
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom eci endpoints.
+     * 
+     */
     private @Nullable String eci;
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom ECS endpoints.
+     * 
+     */
     private @Nullable String ecs;
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom edas endpoints.
+     * 
+     */
     private @Nullable String edas;
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom edasschedulerx endpoints.
+     * 
+     */
     private @Nullable String edasschedulerx;
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom edsuser endpoints.
+     * 
+     */
     private @Nullable String edsuser;
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom eflo endpoints.
+     * 
+     */
     private @Nullable String eflo;
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom ehpc endpoints.
+     * 
+     */
     private @Nullable String ehpc;
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom ehs endpoints.
+     * 
+     */
     private @Nullable String ehs;
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom eipanycast endpoints.
+     * 
+     */
     private @Nullable String eipanycast;
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom Elasticsearch endpoints.
+     * 
+     */
     private @Nullable String elasticsearch;
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom EMR endpoints.
+     * 
+     */
     private @Nullable String emr;
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom ens endpoints.
+     * 
+     */
     private @Nullable String ens;
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom Autoscaling endpoints.
+     * 
+     */
     private @Nullable String ess;
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom eventbridge_share endpoints.
+     * 
+     */
     private @Nullable String eventbridge;
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom Function Computing endpoints.
+     * 
+     */
     private @Nullable String fc;
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom fnf endpoints.
+     * 
+     */
     private @Nullable String fnf;
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom ga endpoints.
+     * 
+     */
     private @Nullable String ga;
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom gaplus endpoints.
+     * 
+     */
     private @Nullable String gaplus;
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom gds endpoints.
+     * 
+     */
     private @Nullable String gds;
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom GPDB endpoints.
+     * 
+     */
     private @Nullable String gpdb;
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom gwsecd endpoints.
+     * 
+     */
     private @Nullable String gwsecd;
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom hbr endpoints.
+     * 
+     */
     private @Nullable String hbr;
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom hcs_sgw endpoints.
+     * 
+     */
     private @Nullable String hcsSgw;
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom hitsdb endpoints.
+     * 
+     */
     private @Nullable String hitsdb;
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom imm endpoints.
+     * 
+     */
     private @Nullable String imm;
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom imp endpoints.
+     * 
+     */
     private @Nullable String imp;
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom ims endpoints.
+     * 
+     */
     private @Nullable String ims;
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom iot endpoints.
+     * 
+     */
     private @Nullable String iot;
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom KMS endpoints.
+     * 
+     */
     private @Nullable String kms;
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom R-KVStore endpoints.
+     * 
+     */
     private @Nullable String kvstore;
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom Location Service endpoints.
+     * 
+     */
     private @Nullable String location;
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom Log Service endpoints.
+     * 
+     */
     private @Nullable String log;
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom Market Place endpoints.
+     * 
+     */
     private @Nullable String market;
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom MaxCompute endpoints.
+     * 
+     */
     private @Nullable String maxcompute;
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom mhub endpoints.
+     * 
+     */
     private @Nullable String mhub;
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom MNS endpoints.
+     * 
+     */
     private @Nullable String mns;
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom mscopensubscription endpoints.
+     * 
+     */
     private @Nullable String mscopensubscription;
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom mse endpoints.
+     * 
+     */
     private @Nullable String mse;
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom NAS endpoints.
+     * 
+     */
     private @Nullable String nas;
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom nlb endpoints.
+     * 
+     */
     private @Nullable String nlb;
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom oceanbase endpoints.
+     * 
+     */
     private @Nullable String oceanbase;
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom ONS endpoints.
+     * 
+     */
     private @Nullable String ons;
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom onsproxy endpoints.
+     * 
+     */
     private @Nullable String onsproxy;
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom oos endpoints.
+     * 
+     */
     private @Nullable String oos;
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom opensearch endpoints.
+     * 
+     */
     private @Nullable String opensearch;
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom OSS endpoints.
+     * 
+     */
     private @Nullable String oss;
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom Table Store endpoints.
+     * 
+     */
     private @Nullable String ots;
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom PolarDB endpoints.
+     * 
+     */
     private @Nullable String polardb;
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom privatelink endpoints.
+     * 
+     */
     private @Nullable String privatelink;
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom Private Zone endpoints.
+     * 
+     */
     private @Nullable String pvtz;
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom quickbi endpoints.
+     * 
+     */
     private @Nullable String quickbi;
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom quotas endpoints.
+     * 
+     */
     private @Nullable String quotas;
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom r_kvstore endpoints.
+     * 
+     */
     private @Nullable String rKvstore;
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom RAM endpoints.
+     * 
+     */
     private @Nullable String ram;
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom RDS endpoints.
+     * 
+     */
     private @Nullable String rds;
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom redisa endpoints.
+     * 
+     */
     private @Nullable String redisa;
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom resourcemanager endpoints.
+     * 
+     */
     private @Nullable String resourcemanager;
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom resourcesharing endpoints.
+     * 
+     */
     private @Nullable String resourcesharing;
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom ros endpoints.
+     * 
+     */
     private @Nullable String ros;
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom sas endpoints.
+     * 
+     */
     private @Nullable String sas;
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom scdn endpoints.
+     * 
+     */
     private @Nullable String scdn;
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom sddp endpoints.
+     * 
+     */
     private @Nullable String sddp;
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom serverless endpoints.
+     * 
+     */
     private @Nullable String serverless;
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom servicemesh endpoints.
+     * 
+     */
     private @Nullable String servicemesh;
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom sgw endpoints.
+     * 
+     */
     private @Nullable String sgw;
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom SLB endpoints.
+     * 
+     */
     private @Nullable String slb;
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom smartag endpoints.
+     * 
+     */
     private @Nullable String smartag;
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom srvcatalog endpoints.
+     * 
+     */
     private @Nullable String srvcatalog;
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom STS endpoints.
+     * 
+     */
     private @Nullable String sts;
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom swas endpoints.
+     * 
+     */
     private @Nullable String swas;
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom tag endpoints.
+     * 
+     */
     private @Nullable String tag;
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom vod endpoints.
+     * 
+     */
     private @Nullable String vod;
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom VPC and VPN endpoints.
+     * 
+     */
     private @Nullable String vpc;
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom vpcpeer endpoints.
+     * 
+     */
     private @Nullable String vpcpeer;
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom vs endpoints.
+     * 
+     */
     private @Nullable String vs;
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom waf endpoints.
+     * 
+     */
     private @Nullable String waf;
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom waf_openapi endpoints.
+     * 
+     */
     private @Nullable String wafOpenapi;
 
     private Endpoints() {}
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom acr endpoints.
+     * 
+     */
     public Optional<String> acr() {
         return Optional.ofNullable(this.acr);
     }
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom Actiontrail endpoints.
+     * 
+     */
     public Optional<String> actiontrail() {
         return Optional.ofNullable(this.actiontrail);
     }
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom AnalyticDB endpoints.
+     * 
+     */
     public Optional<String> adb() {
         return Optional.ofNullable(this.adb);
     }
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom alb endpoints.
+     * 
+     */
     public Optional<String> alb() {
         return Optional.ofNullable(this.alb);
     }
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom alidfs endpoints.
+     * 
+     */
     public Optional<String> alidfs() {
         return Optional.ofNullable(this.alidfs);
     }
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom alidns endpoints.
+     * 
+     */
     public Optional<String> alidns() {
         return Optional.ofNullable(this.alidns);
     }
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom ALIKAFKA endpoints.
+     * 
+     */
     public Optional<String> alikafka() {
         return Optional.ofNullable(this.alikafka);
     }
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom Api Gateway endpoints.
+     * 
+     */
     public Optional<String> apigateway() {
         return Optional.ofNullable(this.apigateway);
     }
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom arms endpoints.
+     * 
+     */
     public Optional<String> arms() {
         return Optional.ofNullable(this.arms);
     }
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom bastionhost endpoints.
+     * 
+     */
     public Optional<String> bastionhost() {
         return Optional.ofNullable(this.bastionhost);
     }
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom beebot endpoints.
+     * 
+     */
     public Optional<String> beebot() {
         return Optional.ofNullable(this.beebot);
     }
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom bpstudio endpoints.
+     * 
+     */
     public Optional<String> bpstudio() {
         return Optional.ofNullable(this.bpstudio);
     }
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom brain_industrial endpoints.
+     * 
+     */
     public Optional<String> brainIndustrial() {
         return Optional.ofNullable(this.brainIndustrial);
     }
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom BSSOPENAPI endpoints.
+     * 
+     */
     public Optional<String> bssopenapi() {
         return Optional.ofNullable(this.bssopenapi);
     }
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom CAS endpoints.
+     * 
+     */
     public Optional<String> cas() {
         return Optional.ofNullable(this.cas);
     }
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom cassandra endpoints.
+     * 
+     */
     public Optional<String> cassandra() {
         return Optional.ofNullable(this.cassandra);
     }
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom cbn endpoints.
+     * 
+     */
     public Optional<String> cbn() {
         return Optional.ofNullable(this.cbn);
     }
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom cbs endpoints.
+     * 
+     */
     public Optional<String> cbs() {
         return Optional.ofNullable(this.cbs);
     }
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom cddc endpoints.
+     * 
+     */
     public Optional<String> cddc() {
         return Optional.ofNullable(this.cddc);
     }
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom CDN endpoints.
+     * 
+     */
     public Optional<String> cdn() {
         return Optional.ofNullable(this.cdn);
     }
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom cds endpoints.
+     * 
+     */
     public Optional<String> cds() {
         return Optional.ofNullable(this.cds);
     }
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom clickhouse endpoints.
+     * 
+     */
     public Optional<String> clickhouse() {
         return Optional.ofNullable(this.clickhouse);
     }
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom cloudauth endpoints.
+     * 
+     */
     public Optional<String> cloudauth() {
         return Optional.ofNullable(this.cloudauth);
     }
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom cloudfirewall endpoints.
+     * 
+     */
     public Optional<String> cloudfirewall() {
         return Optional.ofNullable(this.cloudfirewall);
     }
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom cloudfw endpoints.
+     * 
+     */
     public Optional<String> cloudfw() {
         return Optional.ofNullable(this.cloudfw);
     }
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom cloudphone endpoints.
+     * 
+     */
     public Optional<String> cloudphone() {
         return Optional.ofNullable(this.cloudphone);
     }
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom cloudsso endpoints.
+     * 
+     */
     public Optional<String> cloudsso() {
         return Optional.ofNullable(this.cloudsso);
     }
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom Cloud Monitor endpoints.
+     * 
+     */
     public Optional<String> cms() {
         return Optional.ofNullable(this.cms);
     }
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom computenest endpoints.
+     * 
+     */
     public Optional<String> computenest() {
         return Optional.ofNullable(this.computenest);
     }
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom config endpoints.
+     * 
+     */
     public Optional<String> config() {
         return Optional.ofNullable(this.config);
     }
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom Container Registry endpoints.
+     * 
+     */
     public Optional<String> cr() {
         return Optional.ofNullable(this.cr);
     }
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom Container Service endpoints.
+     * 
+     */
     public Optional<String> cs() {
         return Optional.ofNullable(this.cs);
     }
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom das endpoints.
+     * 
+     */
     public Optional<String> das() {
         return Optional.ofNullable(this.das);
     }
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom Datahub endpoints.
+     * 
+     */
     public Optional<String> datahub() {
         return Optional.ofNullable(this.datahub);
     }
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom dataworkspublic endpoints.
+     * 
+     */
     public Optional<String> dataworkspublic() {
         return Optional.ofNullable(this.dataworkspublic);
     }
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom dbfs endpoints.
+     * 
+     */
     public Optional<String> dbfs() {
         return Optional.ofNullable(this.dbfs);
     }
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom dcdn endpoints.
+     * 
+     */
     public Optional<String> dcdn() {
         return Optional.ofNullable(this.dcdn);
     }
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom ddosbasic endpoints.
+     * 
+     */
     public Optional<String> ddosbasic() {
         return Optional.ofNullable(this.ddosbasic);
     }
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom DDOSBGP endpoints.
+     * 
+     */
     public Optional<String> ddosbgp() {
         return Optional.ofNullable(this.ddosbgp);
     }
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom DDOSCOO endpoints.
+     * 
+     */
     public Optional<String> ddoscoo() {
         return Optional.ofNullable(this.ddoscoo);
     }
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom MongoDB endpoints.
+     * 
+     */
     public Optional<String> dds() {
         return Optional.ofNullable(this.dds);
     }
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom devopsrdc endpoints.
+     * 
+     */
     public Optional<String> devopsrdc() {
         return Optional.ofNullable(this.devopsrdc);
     }
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom dg endpoints.
+     * 
+     */
     public Optional<String> dg() {
         return Optional.ofNullable(this.dg);
     }
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom dm endpoints.
+     * 
+     */
     public Optional<String> dm() {
         return Optional.ofNullable(this.dm);
     }
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom dms_enterprise endpoints.
+     * 
+     */
     public Optional<String> dmsEnterprise() {
         return Optional.ofNullable(this.dmsEnterprise);
     }
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom dmsenterprise endpoints.
+     * 
+     */
     public Optional<String> dmsenterprise() {
         return Optional.ofNullable(this.dmsenterprise);
     }
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom DNS endpoints.
+     * 
+     */
     public Optional<String> dns() {
         return Optional.ofNullable(this.dns);
     }
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom DRDS endpoints.
+     * 
+     */
     public Optional<String> drds() {
         return Optional.ofNullable(this.drds);
     }
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom dts endpoints.
+     * 
+     */
     public Optional<String> dts() {
         return Optional.ofNullable(this.dts);
     }
     public Optional<String> dysms() {
         return Optional.ofNullable(this.dysms);
     }
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom eais endpoints.
+     * 
+     */
     public Optional<String> eais() {
         return Optional.ofNullable(this.eais);
     }
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom ebs endpoints.
+     * 
+     */
     public Optional<String> ebs() {
         return Optional.ofNullable(this.ebs);
     }
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom eci endpoints.
+     * 
+     */
     public Optional<String> eci() {
         return Optional.ofNullable(this.eci);
     }
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom ECS endpoints.
+     * 
+     */
     public Optional<String> ecs() {
         return Optional.ofNullable(this.ecs);
     }
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom edas endpoints.
+     * 
+     */
     public Optional<String> edas() {
         return Optional.ofNullable(this.edas);
     }
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom edasschedulerx endpoints.
+     * 
+     */
     public Optional<String> edasschedulerx() {
         return Optional.ofNullable(this.edasschedulerx);
     }
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom edsuser endpoints.
+     * 
+     */
     public Optional<String> edsuser() {
         return Optional.ofNullable(this.edsuser);
     }
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom eflo endpoints.
+     * 
+     */
     public Optional<String> eflo() {
         return Optional.ofNullable(this.eflo);
     }
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom ehpc endpoints.
+     * 
+     */
     public Optional<String> ehpc() {
         return Optional.ofNullable(this.ehpc);
     }
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom ehs endpoints.
+     * 
+     */
     public Optional<String> ehs() {
         return Optional.ofNullable(this.ehs);
     }
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom eipanycast endpoints.
+     * 
+     */
     public Optional<String> eipanycast() {
         return Optional.ofNullable(this.eipanycast);
     }
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom Elasticsearch endpoints.
+     * 
+     */
     public Optional<String> elasticsearch() {
         return Optional.ofNullable(this.elasticsearch);
     }
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom EMR endpoints.
+     * 
+     */
     public Optional<String> emr() {
         return Optional.ofNullable(this.emr);
     }
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom ens endpoints.
+     * 
+     */
     public Optional<String> ens() {
         return Optional.ofNullable(this.ens);
     }
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom Autoscaling endpoints.
+     * 
+     */
     public Optional<String> ess() {
         return Optional.ofNullable(this.ess);
     }
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom eventbridge_share endpoints.
+     * 
+     */
     public Optional<String> eventbridge() {
         return Optional.ofNullable(this.eventbridge);
     }
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom Function Computing endpoints.
+     * 
+     */
     public Optional<String> fc() {
         return Optional.ofNullable(this.fc);
     }
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom fnf endpoints.
+     * 
+     */
     public Optional<String> fnf() {
         return Optional.ofNullable(this.fnf);
     }
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom ga endpoints.
+     * 
+     */
     public Optional<String> ga() {
         return Optional.ofNullable(this.ga);
     }
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom gaplus endpoints.
+     * 
+     */
     public Optional<String> gaplus() {
         return Optional.ofNullable(this.gaplus);
     }
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom gds endpoints.
+     * 
+     */
     public Optional<String> gds() {
         return Optional.ofNullable(this.gds);
     }
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom GPDB endpoints.
+     * 
+     */
     public Optional<String> gpdb() {
         return Optional.ofNullable(this.gpdb);
     }
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom gwsecd endpoints.
+     * 
+     */
     public Optional<String> gwsecd() {
         return Optional.ofNullable(this.gwsecd);
     }
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom hbr endpoints.
+     * 
+     */
     public Optional<String> hbr() {
         return Optional.ofNullable(this.hbr);
     }
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom hcs_sgw endpoints.
+     * 
+     */
     public Optional<String> hcsSgw() {
         return Optional.ofNullable(this.hcsSgw);
     }
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom hitsdb endpoints.
+     * 
+     */
     public Optional<String> hitsdb() {
         return Optional.ofNullable(this.hitsdb);
     }
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom imm endpoints.
+     * 
+     */
     public Optional<String> imm() {
         return Optional.ofNullable(this.imm);
     }
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom imp endpoints.
+     * 
+     */
     public Optional<String> imp() {
         return Optional.ofNullable(this.imp);
     }
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom ims endpoints.
+     * 
+     */
     public Optional<String> ims() {
         return Optional.ofNullable(this.ims);
     }
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom iot endpoints.
+     * 
+     */
     public Optional<String> iot() {
         return Optional.ofNullable(this.iot);
     }
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom KMS endpoints.
+     * 
+     */
     public Optional<String> kms() {
         return Optional.ofNullable(this.kms);
     }
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom R-KVStore endpoints.
+     * 
+     */
     public Optional<String> kvstore() {
         return Optional.ofNullable(this.kvstore);
     }
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom Location Service endpoints.
+     * 
+     */
     public Optional<String> location() {
         return Optional.ofNullable(this.location);
     }
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom Log Service endpoints.
+     * 
+     */
     public Optional<String> log() {
         return Optional.ofNullable(this.log);
     }
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom Market Place endpoints.
+     * 
+     */
     public Optional<String> market() {
         return Optional.ofNullable(this.market);
     }
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom MaxCompute endpoints.
+     * 
+     */
     public Optional<String> maxcompute() {
         return Optional.ofNullable(this.maxcompute);
     }
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom mhub endpoints.
+     * 
+     */
     public Optional<String> mhub() {
         return Optional.ofNullable(this.mhub);
     }
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom MNS endpoints.
+     * 
+     */
     public Optional<String> mns() {
         return Optional.ofNullable(this.mns);
     }
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom mscopensubscription endpoints.
+     * 
+     */
     public Optional<String> mscopensubscription() {
         return Optional.ofNullable(this.mscopensubscription);
     }
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom mse endpoints.
+     * 
+     */
     public Optional<String> mse() {
         return Optional.ofNullable(this.mse);
     }
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom NAS endpoints.
+     * 
+     */
     public Optional<String> nas() {
         return Optional.ofNullable(this.nas);
     }
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom nlb endpoints.
+     * 
+     */
     public Optional<String> nlb() {
         return Optional.ofNullable(this.nlb);
     }
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom oceanbase endpoints.
+     * 
+     */
     public Optional<String> oceanbase() {
         return Optional.ofNullable(this.oceanbase);
     }
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom ONS endpoints.
+     * 
+     */
     public Optional<String> ons() {
         return Optional.ofNullable(this.ons);
     }
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom onsproxy endpoints.
+     * 
+     */
     public Optional<String> onsproxy() {
         return Optional.ofNullable(this.onsproxy);
     }
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom oos endpoints.
+     * 
+     */
     public Optional<String> oos() {
         return Optional.ofNullable(this.oos);
     }
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom opensearch endpoints.
+     * 
+     */
     public Optional<String> opensearch() {
         return Optional.ofNullable(this.opensearch);
     }
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom OSS endpoints.
+     * 
+     */
     public Optional<String> oss() {
         return Optional.ofNullable(this.oss);
     }
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom Table Store endpoints.
+     * 
+     */
     public Optional<String> ots() {
         return Optional.ofNullable(this.ots);
     }
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom PolarDB endpoints.
+     * 
+     */
     public Optional<String> polardb() {
         return Optional.ofNullable(this.polardb);
     }
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom privatelink endpoints.
+     * 
+     */
     public Optional<String> privatelink() {
         return Optional.ofNullable(this.privatelink);
     }
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom Private Zone endpoints.
+     * 
+     */
     public Optional<String> pvtz() {
         return Optional.ofNullable(this.pvtz);
     }
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom quickbi endpoints.
+     * 
+     */
     public Optional<String> quickbi() {
         return Optional.ofNullable(this.quickbi);
     }
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom quotas endpoints.
+     * 
+     */
     public Optional<String> quotas() {
         return Optional.ofNullable(this.quotas);
     }
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom r_kvstore endpoints.
+     * 
+     */
     public Optional<String> rKvstore() {
         return Optional.ofNullable(this.rKvstore);
     }
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom RAM endpoints.
+     * 
+     */
     public Optional<String> ram() {
         return Optional.ofNullable(this.ram);
     }
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom RDS endpoints.
+     * 
+     */
     public Optional<String> rds() {
         return Optional.ofNullable(this.rds);
     }
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom redisa endpoints.
+     * 
+     */
     public Optional<String> redisa() {
         return Optional.ofNullable(this.redisa);
     }
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom resourcemanager endpoints.
+     * 
+     */
     public Optional<String> resourcemanager() {
         return Optional.ofNullable(this.resourcemanager);
     }
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom resourcesharing endpoints.
+     * 
+     */
     public Optional<String> resourcesharing() {
         return Optional.ofNullable(this.resourcesharing);
     }
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom ros endpoints.
+     * 
+     */
     public Optional<String> ros() {
         return Optional.ofNullable(this.ros);
     }
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom sas endpoints.
+     * 
+     */
     public Optional<String> sas() {
         return Optional.ofNullable(this.sas);
     }
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom scdn endpoints.
+     * 
+     */
     public Optional<String> scdn() {
         return Optional.ofNullable(this.scdn);
     }
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom sddp endpoints.
+     * 
+     */
     public Optional<String> sddp() {
         return Optional.ofNullable(this.sddp);
     }
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom serverless endpoints.
+     * 
+     */
     public Optional<String> serverless() {
         return Optional.ofNullable(this.serverless);
     }
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom servicemesh endpoints.
+     * 
+     */
     public Optional<String> servicemesh() {
         return Optional.ofNullable(this.servicemesh);
     }
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom sgw endpoints.
+     * 
+     */
     public Optional<String> sgw() {
         return Optional.ofNullable(this.sgw);
     }
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom SLB endpoints.
+     * 
+     */
     public Optional<String> slb() {
         return Optional.ofNullable(this.slb);
     }
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom smartag endpoints.
+     * 
+     */
     public Optional<String> smartag() {
         return Optional.ofNullable(this.smartag);
     }
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom srvcatalog endpoints.
+     * 
+     */
     public Optional<String> srvcatalog() {
         return Optional.ofNullable(this.srvcatalog);
     }
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom STS endpoints.
+     * 
+     */
     public Optional<String> sts() {
         return Optional.ofNullable(this.sts);
     }
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom swas endpoints.
+     * 
+     */
     public Optional<String> swas() {
         return Optional.ofNullable(this.swas);
     }
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom tag endpoints.
+     * 
+     */
     public Optional<String> tag() {
         return Optional.ofNullable(this.tag);
     }
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom vod endpoints.
+     * 
+     */
     public Optional<String> vod() {
         return Optional.ofNullable(this.vod);
     }
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom VPC and VPN endpoints.
+     * 
+     */
     public Optional<String> vpc() {
         return Optional.ofNullable(this.vpc);
     }
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom vpcpeer endpoints.
+     * 
+     */
     public Optional<String> vpcpeer() {
         return Optional.ofNullable(this.vpcpeer);
     }
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom vs endpoints.
+     * 
+     */
     public Optional<String> vs() {
         return Optional.ofNullable(this.vs);
     }
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom waf endpoints.
+     * 
+     */
     public Optional<String> waf() {
         return Optional.ofNullable(this.waf);
     }
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom waf_openapi endpoints.
+     * 
+     */
     public Optional<String> wafOpenapi() {
         return Optional.ofNullable(this.wafOpenapi);
     }

@@ -14,8 +14,20 @@ import javax.annotation.Nullable;
 @CustomType
 public final class AssumeRole {
     private @Nullable String externalId;
+    /**
+     * @return The permissions applied when assuming a role. You cannot use, this policy to grant further permissions that are in excess to those of the, role that is being assumed.
+     * 
+     */
     private @Nullable String policy;
+    /**
+     * @return The ARN of a RAM role to assume prior to making API calls.
+     * 
+     */
     private String roleArn;
+    /**
+     * @return The time after which the established session for assuming role expires. Valid value range: [900-3600] seconds. Default to 0 (in this case Alicloud use own default value).
+     * 
+     */
     private @Nullable Integer sessionExpiration;
     private @Nullable String sessionName;
 
@@ -23,12 +35,24 @@ public final class AssumeRole {
     public Optional<String> externalId() {
         return Optional.ofNullable(this.externalId);
     }
+    /**
+     * @return The permissions applied when assuming a role. You cannot use, this policy to grant further permissions that are in excess to those of the, role that is being assumed.
+     * 
+     */
     public Optional<String> policy() {
         return Optional.ofNullable(this.policy);
     }
+    /**
+     * @return The ARN of a RAM role to assume prior to making API calls.
+     * 
+     */
     public String roleArn() {
         return this.roleArn;
     }
+    /**
+     * @return The time after which the established session for assuming role expires. Valid value range: [900-3600] seconds. Default to 0 (in this case Alicloud use own default value).
+     * 
+     */
     public Optional<Integer> sessionExpiration() {
         return Optional.ofNullable(this.sessionExpiration);
     }

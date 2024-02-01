@@ -24,23 +24,47 @@ public final class ProviderAssumeRoleArgs extends com.pulumi.resources.ResourceA
         return Optional.ofNullable(this.externalId);
     }
 
+    /**
+     * The permissions applied when assuming a role. You cannot use, this policy to grant further permissions that are in excess to those of the, role that is being assumed.
+     * 
+     */
     @Import(name="policy")
     private @Nullable Output<String> policy;
 
+    /**
+     * @return The permissions applied when assuming a role. You cannot use, this policy to grant further permissions that are in excess to those of the, role that is being assumed.
+     * 
+     */
     public Optional<Output<String>> policy() {
         return Optional.ofNullable(this.policy);
     }
 
+    /**
+     * The ARN of a RAM role to assume prior to making API calls.
+     * 
+     */
     @Import(name="roleArn", required=true)
     private Output<String> roleArn;
 
+    /**
+     * @return The ARN of a RAM role to assume prior to making API calls.
+     * 
+     */
     public Output<String> roleArn() {
         return this.roleArn;
     }
 
+    /**
+     * The time after which the established session for assuming role expires. Valid value range: [900-3600] seconds. Default to 0 (in this case Alicloud use own default value).
+     * 
+     */
     @Import(name="sessionExpiration")
     private @Nullable Output<Integer> sessionExpiration;
 
+    /**
+     * @return The time after which the established session for assuming role expires. Valid value range: [900-3600] seconds. Default to 0 (in this case Alicloud use own default value).
+     * 
+     */
     public Optional<Output<Integer>> sessionExpiration() {
         return Optional.ofNullable(this.sessionExpiration);
     }
@@ -89,29 +113,65 @@ public final class ProviderAssumeRoleArgs extends com.pulumi.resources.ResourceA
             return externalId(Output.of(externalId));
         }
 
+        /**
+         * @param policy The permissions applied when assuming a role. You cannot use, this policy to grant further permissions that are in excess to those of the, role that is being assumed.
+         * 
+         * @return builder
+         * 
+         */
         public Builder policy(@Nullable Output<String> policy) {
             $.policy = policy;
             return this;
         }
 
+        /**
+         * @param policy The permissions applied when assuming a role. You cannot use, this policy to grant further permissions that are in excess to those of the, role that is being assumed.
+         * 
+         * @return builder
+         * 
+         */
         public Builder policy(String policy) {
             return policy(Output.of(policy));
         }
 
+        /**
+         * @param roleArn The ARN of a RAM role to assume prior to making API calls.
+         * 
+         * @return builder
+         * 
+         */
         public Builder roleArn(Output<String> roleArn) {
             $.roleArn = roleArn;
             return this;
         }
 
+        /**
+         * @param roleArn The ARN of a RAM role to assume prior to making API calls.
+         * 
+         * @return builder
+         * 
+         */
         public Builder roleArn(String roleArn) {
             return roleArn(Output.of(roleArn));
         }
 
+        /**
+         * @param sessionExpiration The time after which the established session for assuming role expires. Valid value range: [900-3600] seconds. Default to 0 (in this case Alicloud use own default value).
+         * 
+         * @return builder
+         * 
+         */
         public Builder sessionExpiration(@Nullable Output<Integer> sessionExpiration) {
             $.sessionExpiration = sessionExpiration;
             return this;
         }
 
+        /**
+         * @param sessionExpiration The time after which the established session for assuming role expires. Valid value range: [900-3600] seconds. Default to 0 (in this case Alicloud use own default value).
+         * 
+         * @return builder
+         * 
+         */
         public Builder sessionExpiration(Integer sessionExpiration) {
             return sessionExpiration(Output.of(sessionExpiration));
         }

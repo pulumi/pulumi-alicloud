@@ -7,141 +7,534 @@ import * as outputs from "../types/output";
 
 export interface ProviderAssumeRole {
     externalId?: pulumi.Input<string>;
+    /**
+     * The permissions applied when assuming a role. You cannot use, this policy to grant further permissions that are in excess to those of the, role that is being assumed.
+     */
     policy?: pulumi.Input<string>;
+    /**
+     * The ARN of a RAM role to assume prior to making API calls.
+     */
     roleArn: pulumi.Input<string>;
+    /**
+     * The time after which the established session for assuming role expires. Valid value range: [900-3600] seconds. Default to 0 (in this case Alicloud use own default value).
+     */
     sessionExpiration?: pulumi.Input<number>;
     sessionName?: pulumi.Input<string>;
 }
 
 export interface ProviderEndpoint {
+    /**
+     * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom acr endpoints.
+     */
     acr?: pulumi.Input<string>;
+    /**
+     * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Actiontrail endpoints.
+     */
     actiontrail?: pulumi.Input<string>;
+    /**
+     * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom AnalyticDB endpoints.
+     */
     adb?: pulumi.Input<string>;
+    /**
+     * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom alb endpoints.
+     */
     alb?: pulumi.Input<string>;
+    /**
+     * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom alidfs endpoints.
+     */
     alidfs?: pulumi.Input<string>;
+    /**
+     * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom alidns endpoints.
+     */
     alidns?: pulumi.Input<string>;
+    /**
+     * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom ALIKAFKA endpoints.
+     */
     alikafka?: pulumi.Input<string>;
+    /**
+     * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Api Gateway endpoints.
+     */
     apigateway?: pulumi.Input<string>;
+    /**
+     * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom arms endpoints.
+     */
     arms?: pulumi.Input<string>;
+    /**
+     * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom bastionhost endpoints.
+     */
     bastionhost?: pulumi.Input<string>;
+    /**
+     * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom beebot endpoints.
+     */
     beebot?: pulumi.Input<string>;
+    /**
+     * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom bpstudio endpoints.
+     */
     bpstudio?: pulumi.Input<string>;
+    /**
+     * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom brainIndustrial endpoints.
+     */
     brainIndustrial?: pulumi.Input<string>;
+    /**
+     * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom BSSOPENAPI endpoints.
+     */
     bssopenapi?: pulumi.Input<string>;
+    /**
+     * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom CAS endpoints.
+     */
     cas?: pulumi.Input<string>;
+    /**
+     * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom cassandra endpoints.
+     */
     cassandra?: pulumi.Input<string>;
+    /**
+     * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom cbn endpoints.
+     */
     cbn?: pulumi.Input<string>;
+    /**
+     * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom cbs endpoints.
+     */
     cbs?: pulumi.Input<string>;
+    /**
+     * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom cddc endpoints.
+     */
     cddc?: pulumi.Input<string>;
+    /**
+     * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom CDN endpoints.
+     */
     cdn?: pulumi.Input<string>;
+    /**
+     * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom cds endpoints.
+     */
     cds?: pulumi.Input<string>;
+    /**
+     * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom clickhouse endpoints.
+     */
     clickhouse?: pulumi.Input<string>;
+    /**
+     * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom cloudauth endpoints.
+     */
     cloudauth?: pulumi.Input<string>;
+    /**
+     * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom cloudfirewall endpoints.
+     */
     cloudfirewall?: pulumi.Input<string>;
+    /**
+     * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom cloudfw endpoints.
+     */
     cloudfw?: pulumi.Input<string>;
+    /**
+     * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom cloudphone endpoints.
+     */
     cloudphone?: pulumi.Input<string>;
+    /**
+     * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom cloudsso endpoints.
+     */
     cloudsso?: pulumi.Input<string>;
+    /**
+     * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Cloud Monitor endpoints.
+     */
     cms?: pulumi.Input<string>;
+    /**
+     * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom computenest endpoints.
+     */
     computenest?: pulumi.Input<string>;
+    /**
+     * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom config endpoints.
+     */
     config?: pulumi.Input<string>;
+    /**
+     * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Container Registry endpoints.
+     */
     cr?: pulumi.Input<string>;
+    /**
+     * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Container Service endpoints.
+     */
     cs?: pulumi.Input<string>;
+    /**
+     * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom das endpoints.
+     */
     das?: pulumi.Input<string>;
+    /**
+     * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Datahub endpoints.
+     */
     datahub?: pulumi.Input<string>;
+    /**
+     * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom dataworkspublic endpoints.
+     */
     dataworkspublic?: pulumi.Input<string>;
+    /**
+     * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom dbfs endpoints.
+     */
     dbfs?: pulumi.Input<string>;
+    /**
+     * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom dcdn endpoints.
+     */
     dcdn?: pulumi.Input<string>;
+    /**
+     * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom ddosbasic endpoints.
+     */
     ddosbasic?: pulumi.Input<string>;
+    /**
+     * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom DDOSBGP endpoints.
+     */
     ddosbgp?: pulumi.Input<string>;
+    /**
+     * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom DDOSCOO endpoints.
+     */
     ddoscoo?: pulumi.Input<string>;
+    /**
+     * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom MongoDB endpoints.
+     */
     dds?: pulumi.Input<string>;
+    /**
+     * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom devopsrdc endpoints.
+     */
     devopsrdc?: pulumi.Input<string>;
+    /**
+     * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom dg endpoints.
+     */
     dg?: pulumi.Input<string>;
+    /**
+     * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom dm endpoints.
+     */
     dm?: pulumi.Input<string>;
+    /**
+     * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom dmsEnterprise endpoints.
+     */
     dmsEnterprise?: pulumi.Input<string>;
+    /**
+     * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom dmsenterprise endpoints.
+     */
     dmsenterprise?: pulumi.Input<string>;
+    /**
+     * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom DNS endpoints.
+     */
     dns?: pulumi.Input<string>;
+    /**
+     * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom DRDS endpoints.
+     */
     drds?: pulumi.Input<string>;
+    /**
+     * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom dts endpoints.
+     */
     dts?: pulumi.Input<string>;
     dysms?: pulumi.Input<string>;
+    /**
+     * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom eais endpoints.
+     */
     eais?: pulumi.Input<string>;
+    /**
+     * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom ebs endpoints.
+     */
     ebs?: pulumi.Input<string>;
+    /**
+     * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom eci endpoints.
+     */
     eci?: pulumi.Input<string>;
+    /**
+     * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom ECS endpoints.
+     */
     ecs?: pulumi.Input<string>;
+    /**
+     * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom edas endpoints.
+     */
     edas?: pulumi.Input<string>;
+    /**
+     * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom edasschedulerx endpoints.
+     */
     edasschedulerx?: pulumi.Input<string>;
+    /**
+     * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom edsuser endpoints.
+     */
     edsuser?: pulumi.Input<string>;
+    /**
+     * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom eflo endpoints.
+     */
     eflo?: pulumi.Input<string>;
+    /**
+     * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom ehpc endpoints.
+     */
     ehpc?: pulumi.Input<string>;
+    /**
+     * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom ehs endpoints.
+     */
     ehs?: pulumi.Input<string>;
+    /**
+     * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom eipanycast endpoints.
+     */
     eipanycast?: pulumi.Input<string>;
+    /**
+     * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Elasticsearch endpoints.
+     */
     elasticsearch?: pulumi.Input<string>;
+    /**
+     * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom EMR endpoints.
+     */
     emr?: pulumi.Input<string>;
+    /**
+     * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom ens endpoints.
+     */
     ens?: pulumi.Input<string>;
+    /**
+     * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Autoscaling endpoints.
+     */
     ess?: pulumi.Input<string>;
+    /**
+     * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom eventbridgeShare endpoints.
+     */
     eventbridge?: pulumi.Input<string>;
+    /**
+     * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Function Computing endpoints.
+     */
     fc?: pulumi.Input<string>;
+    /**
+     * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom fnf endpoints.
+     */
     fnf?: pulumi.Input<string>;
+    /**
+     * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom ga endpoints.
+     */
     ga?: pulumi.Input<string>;
+    /**
+     * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom gaplus endpoints.
+     */
     gaplus?: pulumi.Input<string>;
+    /**
+     * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom gds endpoints.
+     */
     gds?: pulumi.Input<string>;
+    /**
+     * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom GPDB endpoints.
+     */
     gpdb?: pulumi.Input<string>;
+    /**
+     * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom gwsecd endpoints.
+     */
     gwsecd?: pulumi.Input<string>;
+    /**
+     * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom hbr endpoints.
+     */
     hbr?: pulumi.Input<string>;
+    /**
+     * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom hcsSgw endpoints.
+     */
     hcsSgw?: pulumi.Input<string>;
+    /**
+     * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom hitsdb endpoints.
+     */
     hitsdb?: pulumi.Input<string>;
+    /**
+     * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom imm endpoints.
+     */
     imm?: pulumi.Input<string>;
+    /**
+     * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom imp endpoints.
+     */
     imp?: pulumi.Input<string>;
+    /**
+     * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom ims endpoints.
+     */
     ims?: pulumi.Input<string>;
+    /**
+     * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom iot endpoints.
+     */
     iot?: pulumi.Input<string>;
+    /**
+     * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom KMS endpoints.
+     */
     kms?: pulumi.Input<string>;
+    /**
+     * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom R-KVStore endpoints.
+     */
     kvstore?: pulumi.Input<string>;
+    /**
+     * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Location Service endpoints.
+     */
     location?: pulumi.Input<string>;
+    /**
+     * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Log Service endpoints.
+     */
     log?: pulumi.Input<string>;
+    /**
+     * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Market Place endpoints.
+     */
     market?: pulumi.Input<string>;
+    /**
+     * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom MaxCompute endpoints.
+     */
     maxcompute?: pulumi.Input<string>;
+    /**
+     * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom mhub endpoints.
+     */
     mhub?: pulumi.Input<string>;
+    /**
+     * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom MNS endpoints.
+     */
     mns?: pulumi.Input<string>;
+    /**
+     * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom mscopensubscription endpoints.
+     */
     mscopensubscription?: pulumi.Input<string>;
+    /**
+     * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom mse endpoints.
+     */
     mse?: pulumi.Input<string>;
+    /**
+     * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom NAS endpoints.
+     */
     nas?: pulumi.Input<string>;
+    /**
+     * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom nlb endpoints.
+     */
     nlb?: pulumi.Input<string>;
+    /**
+     * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom oceanbase endpoints.
+     */
     oceanbase?: pulumi.Input<string>;
+    /**
+     * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom ONS endpoints.
+     */
     ons?: pulumi.Input<string>;
+    /**
+     * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom onsproxy endpoints.
+     */
     onsproxy?: pulumi.Input<string>;
+    /**
+     * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom oos endpoints.
+     */
     oos?: pulumi.Input<string>;
+    /**
+     * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom opensearch endpoints.
+     */
     opensearch?: pulumi.Input<string>;
+    /**
+     * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom OSS endpoints.
+     */
     oss?: pulumi.Input<string>;
+    /**
+     * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Table Store endpoints.
+     */
     ots?: pulumi.Input<string>;
+    /**
+     * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom PolarDB endpoints.
+     */
     polardb?: pulumi.Input<string>;
+    /**
+     * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom privatelink endpoints.
+     */
     privatelink?: pulumi.Input<string>;
+    /**
+     * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Private Zone endpoints.
+     */
     pvtz?: pulumi.Input<string>;
+    /**
+     * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom quickbi endpoints.
+     */
     quickbi?: pulumi.Input<string>;
+    /**
+     * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom quotas endpoints.
+     */
     quotas?: pulumi.Input<string>;
+    /**
+     * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom rKvstore endpoints.
+     */
     rKvstore?: pulumi.Input<string>;
+    /**
+     * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom RAM endpoints.
+     */
     ram?: pulumi.Input<string>;
+    /**
+     * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom RDS endpoints.
+     */
     rds?: pulumi.Input<string>;
+    /**
+     * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom redisa endpoints.
+     */
     redisa?: pulumi.Input<string>;
+    /**
+     * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom resourcemanager endpoints.
+     */
     resourcemanager?: pulumi.Input<string>;
+    /**
+     * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom resourcesharing endpoints.
+     */
     resourcesharing?: pulumi.Input<string>;
+    /**
+     * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom ros endpoints.
+     */
     ros?: pulumi.Input<string>;
+    /**
+     * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom sas endpoints.
+     */
     sas?: pulumi.Input<string>;
+    /**
+     * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom scdn endpoints.
+     */
     scdn?: pulumi.Input<string>;
+    /**
+     * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom sddp endpoints.
+     */
     sddp?: pulumi.Input<string>;
+    /**
+     * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom serverless endpoints.
+     */
     serverless?: pulumi.Input<string>;
+    /**
+     * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom servicemesh endpoints.
+     */
     servicemesh?: pulumi.Input<string>;
+    /**
+     * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom sgw endpoints.
+     */
     sgw?: pulumi.Input<string>;
+    /**
+     * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom SLB endpoints.
+     */
     slb?: pulumi.Input<string>;
+    /**
+     * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom smartag endpoints.
+     */
     smartag?: pulumi.Input<string>;
+    /**
+     * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom srvcatalog endpoints.
+     */
     srvcatalog?: pulumi.Input<string>;
+    /**
+     * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom STS endpoints.
+     */
     sts?: pulumi.Input<string>;
+    /**
+     * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom swas endpoints.
+     */
     swas?: pulumi.Input<string>;
+    /**
+     * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom tag endpoints.
+     */
     tag?: pulumi.Input<string>;
+    /**
+     * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom vod endpoints.
+     */
     vod?: pulumi.Input<string>;
+    /**
+     * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom VPC and VPN endpoints.
+     */
     vpc?: pulumi.Input<string>;
+    /**
+     * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom vpcpeer endpoints.
+     */
     vpcpeer?: pulumi.Input<string>;
+    /**
+     * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom vs endpoints.
+     */
     vs?: pulumi.Input<string>;
+    /**
+     * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom waf endpoints.
+     */
     waf?: pulumi.Input<string>;
+    /**
+     * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom wafOpenapi endpoints.
+     */
     wafOpenapi?: pulumi.Input<string>;
 }
 

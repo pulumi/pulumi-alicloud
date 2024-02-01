@@ -23,6 +23,11 @@ class ProviderAssumeRoleArgs:
                  policy: Optional[pulumi.Input[str]] = None,
                  session_expiration: Optional[pulumi.Input[int]] = None,
                  session_name: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] role_arn: The ARN of a RAM role to assume prior to making API calls.
+        :param pulumi.Input[str] policy: The permissions applied when assuming a role. You cannot use, this policy to grant further permissions that are in excess to those of the, role that is being assumed.
+        :param pulumi.Input[int] session_expiration: The time after which the established session for assuming role expires. Valid value range: [900-3600] seconds. Default to 0 (in this case Alicloud use own default value).
+        """
         pulumi.set(__self__, "role_arn", role_arn)
         if external_id is not None:
             pulumi.set(__self__, "external_id", external_id)
@@ -36,6 +41,9 @@ class ProviderAssumeRoleArgs:
     @property
     @pulumi.getter(name="roleArn")
     def role_arn(self) -> pulumi.Input[str]:
+        """
+        The ARN of a RAM role to assume prior to making API calls.
+        """
         return pulumi.get(self, "role_arn")
 
     @role_arn.setter
@@ -54,6 +62,9 @@ class ProviderAssumeRoleArgs:
     @property
     @pulumi.getter
     def policy(self) -> Optional[pulumi.Input[str]]:
+        """
+        The permissions applied when assuming a role. You cannot use, this policy to grant further permissions that are in excess to those of the, role that is being assumed.
+        """
         return pulumi.get(self, "policy")
 
     @policy.setter
@@ -63,6 +74,9 @@ class ProviderAssumeRoleArgs:
     @property
     @pulumi.getter(name="sessionExpiration")
     def session_expiration(self) -> Optional[pulumi.Input[int]]:
+        """
+        The time after which the established session for assuming role expires. Valid value range: [900-3600] seconds. Default to 0 (in this case Alicloud use own default value).
+        """
         return pulumi.get(self, "session_expiration")
 
     @session_expiration.setter
@@ -211,6 +225,136 @@ class ProviderEndpointArgs:
                  vs: Optional[pulumi.Input[str]] = None,
                  waf: Optional[pulumi.Input[str]] = None,
                  waf_openapi: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] acr: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom acr endpoints.
+        :param pulumi.Input[str] actiontrail: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Actiontrail endpoints.
+        :param pulumi.Input[str] adb: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom AnalyticDB endpoints.
+        :param pulumi.Input[str] alb: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom alb endpoints.
+        :param pulumi.Input[str] alidfs: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom alidfs endpoints.
+        :param pulumi.Input[str] alidns: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom alidns endpoints.
+        :param pulumi.Input[str] alikafka: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom ALIKAFKA endpoints.
+        :param pulumi.Input[str] apigateway: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Api Gateway endpoints.
+        :param pulumi.Input[str] arms: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom arms endpoints.
+        :param pulumi.Input[str] bastionhost: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom bastionhost endpoints.
+        :param pulumi.Input[str] beebot: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom beebot endpoints.
+        :param pulumi.Input[str] bpstudio: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom bpstudio endpoints.
+        :param pulumi.Input[str] brain_industrial: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom brain_industrial endpoints.
+        :param pulumi.Input[str] bssopenapi: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom BSSOPENAPI endpoints.
+        :param pulumi.Input[str] cas: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom CAS endpoints.
+        :param pulumi.Input[str] cassandra: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom cassandra endpoints.
+        :param pulumi.Input[str] cbn: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom cbn endpoints.
+        :param pulumi.Input[str] cbs: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom cbs endpoints.
+        :param pulumi.Input[str] cddc: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom cddc endpoints.
+        :param pulumi.Input[str] cdn: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom CDN endpoints.
+        :param pulumi.Input[str] cds: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom cds endpoints.
+        :param pulumi.Input[str] clickhouse: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom clickhouse endpoints.
+        :param pulumi.Input[str] cloudauth: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom cloudauth endpoints.
+        :param pulumi.Input[str] cloudfirewall: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom cloudfirewall endpoints.
+        :param pulumi.Input[str] cloudfw: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom cloudfw endpoints.
+        :param pulumi.Input[str] cloudphone: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom cloudphone endpoints.
+        :param pulumi.Input[str] cloudsso: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom cloudsso endpoints.
+        :param pulumi.Input[str] cms: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Cloud Monitor endpoints.
+        :param pulumi.Input[str] computenest: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom computenest endpoints.
+        :param pulumi.Input[str] config: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom config endpoints.
+        :param pulumi.Input[str] cr: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Container Registry endpoints.
+        :param pulumi.Input[str] cs: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Container Service endpoints.
+        :param pulumi.Input[str] das: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom das endpoints.
+        :param pulumi.Input[str] datahub: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Datahub endpoints.
+        :param pulumi.Input[str] dataworkspublic: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom dataworkspublic endpoints.
+        :param pulumi.Input[str] dbfs: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom dbfs endpoints.
+        :param pulumi.Input[str] dcdn: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom dcdn endpoints.
+        :param pulumi.Input[str] ddosbasic: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom ddosbasic endpoints.
+        :param pulumi.Input[str] ddosbgp: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom DDOSBGP endpoints.
+        :param pulumi.Input[str] ddoscoo: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom DDOSCOO endpoints.
+        :param pulumi.Input[str] dds: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom MongoDB endpoints.
+        :param pulumi.Input[str] devopsrdc: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom devopsrdc endpoints.
+        :param pulumi.Input[str] dg: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom dg endpoints.
+        :param pulumi.Input[str] dm: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom dm endpoints.
+        :param pulumi.Input[str] dms_enterprise: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom dms_enterprise endpoints.
+        :param pulumi.Input[str] dmsenterprise: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom dmsenterprise endpoints.
+        :param pulumi.Input[str] dns: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom DNS endpoints.
+        :param pulumi.Input[str] drds: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom DRDS endpoints.
+        :param pulumi.Input[str] dts: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom dts endpoints.
+        :param pulumi.Input[str] eais: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom eais endpoints.
+        :param pulumi.Input[str] ebs: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom ebs endpoints.
+        :param pulumi.Input[str] eci: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom eci endpoints.
+        :param pulumi.Input[str] ecs: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom ECS endpoints.
+        :param pulumi.Input[str] edas: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom edas endpoints.
+        :param pulumi.Input[str] edasschedulerx: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom edasschedulerx endpoints.
+        :param pulumi.Input[str] edsuser: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom edsuser endpoints.
+        :param pulumi.Input[str] eflo: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom eflo endpoints.
+        :param pulumi.Input[str] ehpc: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom ehpc endpoints.
+        :param pulumi.Input[str] ehs: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom ehs endpoints.
+        :param pulumi.Input[str] eipanycast: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom eipanycast endpoints.
+        :param pulumi.Input[str] elasticsearch: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Elasticsearch endpoints.
+        :param pulumi.Input[str] emr: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom EMR endpoints.
+        :param pulumi.Input[str] ens: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom ens endpoints.
+        :param pulumi.Input[str] ess: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Autoscaling endpoints.
+        :param pulumi.Input[str] eventbridge: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom eventbridge_share endpoints.
+        :param pulumi.Input[str] fc: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Function Computing endpoints.
+        :param pulumi.Input[str] fnf: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom fnf endpoints.
+        :param pulumi.Input[str] ga: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom ga endpoints.
+        :param pulumi.Input[str] gaplus: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom gaplus endpoints.
+        :param pulumi.Input[str] gds: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom gds endpoints.
+        :param pulumi.Input[str] gpdb: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom GPDB endpoints.
+        :param pulumi.Input[str] gwsecd: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom gwsecd endpoints.
+        :param pulumi.Input[str] hbr: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom hbr endpoints.
+        :param pulumi.Input[str] hcs_sgw: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom hcs_sgw endpoints.
+        :param pulumi.Input[str] hitsdb: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom hitsdb endpoints.
+        :param pulumi.Input[str] imm: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom imm endpoints.
+        :param pulumi.Input[str] imp: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom imp endpoints.
+        :param pulumi.Input[str] ims: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom ims endpoints.
+        :param pulumi.Input[str] iot: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom iot endpoints.
+        :param pulumi.Input[str] kms: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom KMS endpoints.
+        :param pulumi.Input[str] kvstore: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom R-KVStore endpoints.
+        :param pulumi.Input[str] location: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Location Service endpoints.
+        :param pulumi.Input[str] log: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Log Service endpoints.
+        :param pulumi.Input[str] market: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Market Place endpoints.
+        :param pulumi.Input[str] maxcompute: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom MaxCompute endpoints.
+        :param pulumi.Input[str] mhub: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom mhub endpoints.
+        :param pulumi.Input[str] mns: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom MNS endpoints.
+        :param pulumi.Input[str] mscopensubscription: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom mscopensubscription endpoints.
+        :param pulumi.Input[str] mse: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom mse endpoints.
+        :param pulumi.Input[str] nas: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom NAS endpoints.
+        :param pulumi.Input[str] nlb: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom nlb endpoints.
+        :param pulumi.Input[str] oceanbase: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom oceanbase endpoints.
+        :param pulumi.Input[str] ons: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom ONS endpoints.
+        :param pulumi.Input[str] onsproxy: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom onsproxy endpoints.
+        :param pulumi.Input[str] oos: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom oos endpoints.
+        :param pulumi.Input[str] opensearch: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom opensearch endpoints.
+        :param pulumi.Input[str] oss: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom OSS endpoints.
+        :param pulumi.Input[str] ots: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Table Store endpoints.
+        :param pulumi.Input[str] polardb: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom PolarDB endpoints.
+        :param pulumi.Input[str] privatelink: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom privatelink endpoints.
+        :param pulumi.Input[str] pvtz: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Private Zone endpoints.
+        :param pulumi.Input[str] quickbi: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom quickbi endpoints.
+        :param pulumi.Input[str] quotas: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom quotas endpoints.
+        :param pulumi.Input[str] r_kvstore: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom r_kvstore endpoints.
+        :param pulumi.Input[str] ram: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom RAM endpoints.
+        :param pulumi.Input[str] rds: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom RDS endpoints.
+        :param pulumi.Input[str] redisa: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom redisa endpoints.
+        :param pulumi.Input[str] resourcemanager: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom resourcemanager endpoints.
+        :param pulumi.Input[str] resourcesharing: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom resourcesharing endpoints.
+        :param pulumi.Input[str] ros: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom ros endpoints.
+        :param pulumi.Input[str] sas: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom sas endpoints.
+        :param pulumi.Input[str] scdn: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom scdn endpoints.
+        :param pulumi.Input[str] sddp: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom sddp endpoints.
+        :param pulumi.Input[str] serverless: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom serverless endpoints.
+        :param pulumi.Input[str] servicemesh: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom servicemesh endpoints.
+        :param pulumi.Input[str] sgw: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom sgw endpoints.
+        :param pulumi.Input[str] slb: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom SLB endpoints.
+        :param pulumi.Input[str] smartag: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom smartag endpoints.
+        :param pulumi.Input[str] srvcatalog: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom srvcatalog endpoints.
+        :param pulumi.Input[str] sts: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom STS endpoints.
+        :param pulumi.Input[str] swas: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom swas endpoints.
+        :param pulumi.Input[str] tag: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom tag endpoints.
+        :param pulumi.Input[str] vod: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom vod endpoints.
+        :param pulumi.Input[str] vpc: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom VPC and VPN endpoints.
+        :param pulumi.Input[str] vpcpeer: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom vpcpeer endpoints.
+        :param pulumi.Input[str] vs: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom vs endpoints.
+        :param pulumi.Input[str] waf: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom waf endpoints.
+        :param pulumi.Input[str] waf_openapi: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom waf_openapi endpoints.
+        """
         if acr is not None:
             pulumi.set(__self__, "acr", acr)
         if actiontrail is not None:
@@ -473,6 +617,9 @@ class ProviderEndpointArgs:
     @property
     @pulumi.getter
     def acr(self) -> Optional[pulumi.Input[str]]:
+        """
+        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom acr endpoints.
+        """
         return pulumi.get(self, "acr")
 
     @acr.setter
@@ -482,6 +629,9 @@ class ProviderEndpointArgs:
     @property
     @pulumi.getter
     def actiontrail(self) -> Optional[pulumi.Input[str]]:
+        """
+        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Actiontrail endpoints.
+        """
         return pulumi.get(self, "actiontrail")
 
     @actiontrail.setter
@@ -491,6 +641,9 @@ class ProviderEndpointArgs:
     @property
     @pulumi.getter
     def adb(self) -> Optional[pulumi.Input[str]]:
+        """
+        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom AnalyticDB endpoints.
+        """
         return pulumi.get(self, "adb")
 
     @adb.setter
@@ -500,6 +653,9 @@ class ProviderEndpointArgs:
     @property
     @pulumi.getter
     def alb(self) -> Optional[pulumi.Input[str]]:
+        """
+        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom alb endpoints.
+        """
         return pulumi.get(self, "alb")
 
     @alb.setter
@@ -509,6 +665,9 @@ class ProviderEndpointArgs:
     @property
     @pulumi.getter
     def alidfs(self) -> Optional[pulumi.Input[str]]:
+        """
+        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom alidfs endpoints.
+        """
         return pulumi.get(self, "alidfs")
 
     @alidfs.setter
@@ -518,6 +677,9 @@ class ProviderEndpointArgs:
     @property
     @pulumi.getter
     def alidns(self) -> Optional[pulumi.Input[str]]:
+        """
+        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom alidns endpoints.
+        """
         return pulumi.get(self, "alidns")
 
     @alidns.setter
@@ -527,6 +689,9 @@ class ProviderEndpointArgs:
     @property
     @pulumi.getter
     def alikafka(self) -> Optional[pulumi.Input[str]]:
+        """
+        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom ALIKAFKA endpoints.
+        """
         return pulumi.get(self, "alikafka")
 
     @alikafka.setter
@@ -536,6 +701,9 @@ class ProviderEndpointArgs:
     @property
     @pulumi.getter
     def apigateway(self) -> Optional[pulumi.Input[str]]:
+        """
+        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Api Gateway endpoints.
+        """
         return pulumi.get(self, "apigateway")
 
     @apigateway.setter
@@ -545,6 +713,9 @@ class ProviderEndpointArgs:
     @property
     @pulumi.getter
     def arms(self) -> Optional[pulumi.Input[str]]:
+        """
+        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom arms endpoints.
+        """
         return pulumi.get(self, "arms")
 
     @arms.setter
@@ -554,6 +725,9 @@ class ProviderEndpointArgs:
     @property
     @pulumi.getter
     def bastionhost(self) -> Optional[pulumi.Input[str]]:
+        """
+        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom bastionhost endpoints.
+        """
         return pulumi.get(self, "bastionhost")
 
     @bastionhost.setter
@@ -563,6 +737,9 @@ class ProviderEndpointArgs:
     @property
     @pulumi.getter
     def beebot(self) -> Optional[pulumi.Input[str]]:
+        """
+        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom beebot endpoints.
+        """
         return pulumi.get(self, "beebot")
 
     @beebot.setter
@@ -572,6 +749,9 @@ class ProviderEndpointArgs:
     @property
     @pulumi.getter
     def bpstudio(self) -> Optional[pulumi.Input[str]]:
+        """
+        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom bpstudio endpoints.
+        """
         return pulumi.get(self, "bpstudio")
 
     @bpstudio.setter
@@ -581,6 +761,9 @@ class ProviderEndpointArgs:
     @property
     @pulumi.getter(name="brainIndustrial")
     def brain_industrial(self) -> Optional[pulumi.Input[str]]:
+        """
+        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom brain_industrial endpoints.
+        """
         return pulumi.get(self, "brain_industrial")
 
     @brain_industrial.setter
@@ -590,6 +773,9 @@ class ProviderEndpointArgs:
     @property
     @pulumi.getter
     def bssopenapi(self) -> Optional[pulumi.Input[str]]:
+        """
+        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom BSSOPENAPI endpoints.
+        """
         return pulumi.get(self, "bssopenapi")
 
     @bssopenapi.setter
@@ -599,6 +785,9 @@ class ProviderEndpointArgs:
     @property
     @pulumi.getter
     def cas(self) -> Optional[pulumi.Input[str]]:
+        """
+        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom CAS endpoints.
+        """
         return pulumi.get(self, "cas")
 
     @cas.setter
@@ -608,6 +797,9 @@ class ProviderEndpointArgs:
     @property
     @pulumi.getter
     def cassandra(self) -> Optional[pulumi.Input[str]]:
+        """
+        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom cassandra endpoints.
+        """
         return pulumi.get(self, "cassandra")
 
     @cassandra.setter
@@ -617,6 +809,9 @@ class ProviderEndpointArgs:
     @property
     @pulumi.getter
     def cbn(self) -> Optional[pulumi.Input[str]]:
+        """
+        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom cbn endpoints.
+        """
         return pulumi.get(self, "cbn")
 
     @cbn.setter
@@ -626,6 +821,9 @@ class ProviderEndpointArgs:
     @property
     @pulumi.getter
     def cbs(self) -> Optional[pulumi.Input[str]]:
+        """
+        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom cbs endpoints.
+        """
         return pulumi.get(self, "cbs")
 
     @cbs.setter
@@ -635,6 +833,9 @@ class ProviderEndpointArgs:
     @property
     @pulumi.getter
     def cddc(self) -> Optional[pulumi.Input[str]]:
+        """
+        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom cddc endpoints.
+        """
         return pulumi.get(self, "cddc")
 
     @cddc.setter
@@ -644,6 +845,9 @@ class ProviderEndpointArgs:
     @property
     @pulumi.getter
     def cdn(self) -> Optional[pulumi.Input[str]]:
+        """
+        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom CDN endpoints.
+        """
         return pulumi.get(self, "cdn")
 
     @cdn.setter
@@ -653,6 +857,9 @@ class ProviderEndpointArgs:
     @property
     @pulumi.getter
     def cds(self) -> Optional[pulumi.Input[str]]:
+        """
+        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom cds endpoints.
+        """
         return pulumi.get(self, "cds")
 
     @cds.setter
@@ -662,6 +869,9 @@ class ProviderEndpointArgs:
     @property
     @pulumi.getter
     def clickhouse(self) -> Optional[pulumi.Input[str]]:
+        """
+        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom clickhouse endpoints.
+        """
         return pulumi.get(self, "clickhouse")
 
     @clickhouse.setter
@@ -671,6 +881,9 @@ class ProviderEndpointArgs:
     @property
     @pulumi.getter
     def cloudauth(self) -> Optional[pulumi.Input[str]]:
+        """
+        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom cloudauth endpoints.
+        """
         return pulumi.get(self, "cloudauth")
 
     @cloudauth.setter
@@ -680,6 +893,9 @@ class ProviderEndpointArgs:
     @property
     @pulumi.getter
     def cloudfirewall(self) -> Optional[pulumi.Input[str]]:
+        """
+        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom cloudfirewall endpoints.
+        """
         return pulumi.get(self, "cloudfirewall")
 
     @cloudfirewall.setter
@@ -689,6 +905,9 @@ class ProviderEndpointArgs:
     @property
     @pulumi.getter
     def cloudfw(self) -> Optional[pulumi.Input[str]]:
+        """
+        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom cloudfw endpoints.
+        """
         return pulumi.get(self, "cloudfw")
 
     @cloudfw.setter
@@ -698,6 +917,9 @@ class ProviderEndpointArgs:
     @property
     @pulumi.getter
     def cloudphone(self) -> Optional[pulumi.Input[str]]:
+        """
+        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom cloudphone endpoints.
+        """
         return pulumi.get(self, "cloudphone")
 
     @cloudphone.setter
@@ -707,6 +929,9 @@ class ProviderEndpointArgs:
     @property
     @pulumi.getter
     def cloudsso(self) -> Optional[pulumi.Input[str]]:
+        """
+        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom cloudsso endpoints.
+        """
         return pulumi.get(self, "cloudsso")
 
     @cloudsso.setter
@@ -716,6 +941,9 @@ class ProviderEndpointArgs:
     @property
     @pulumi.getter
     def cms(self) -> Optional[pulumi.Input[str]]:
+        """
+        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Cloud Monitor endpoints.
+        """
         return pulumi.get(self, "cms")
 
     @cms.setter
@@ -725,6 +953,9 @@ class ProviderEndpointArgs:
     @property
     @pulumi.getter
     def computenest(self) -> Optional[pulumi.Input[str]]:
+        """
+        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom computenest endpoints.
+        """
         return pulumi.get(self, "computenest")
 
     @computenest.setter
@@ -734,6 +965,9 @@ class ProviderEndpointArgs:
     @property
     @pulumi.getter
     def config(self) -> Optional[pulumi.Input[str]]:
+        """
+        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom config endpoints.
+        """
         return pulumi.get(self, "config")
 
     @config.setter
@@ -743,6 +977,9 @@ class ProviderEndpointArgs:
     @property
     @pulumi.getter
     def cr(self) -> Optional[pulumi.Input[str]]:
+        """
+        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Container Registry endpoints.
+        """
         return pulumi.get(self, "cr")
 
     @cr.setter
@@ -752,6 +989,9 @@ class ProviderEndpointArgs:
     @property
     @pulumi.getter
     def cs(self) -> Optional[pulumi.Input[str]]:
+        """
+        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Container Service endpoints.
+        """
         return pulumi.get(self, "cs")
 
     @cs.setter
@@ -761,6 +1001,9 @@ class ProviderEndpointArgs:
     @property
     @pulumi.getter
     def das(self) -> Optional[pulumi.Input[str]]:
+        """
+        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom das endpoints.
+        """
         return pulumi.get(self, "das")
 
     @das.setter
@@ -770,6 +1013,9 @@ class ProviderEndpointArgs:
     @property
     @pulumi.getter
     def datahub(self) -> Optional[pulumi.Input[str]]:
+        """
+        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Datahub endpoints.
+        """
         return pulumi.get(self, "datahub")
 
     @datahub.setter
@@ -779,6 +1025,9 @@ class ProviderEndpointArgs:
     @property
     @pulumi.getter
     def dataworkspublic(self) -> Optional[pulumi.Input[str]]:
+        """
+        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom dataworkspublic endpoints.
+        """
         return pulumi.get(self, "dataworkspublic")
 
     @dataworkspublic.setter
@@ -788,6 +1037,9 @@ class ProviderEndpointArgs:
     @property
     @pulumi.getter
     def dbfs(self) -> Optional[pulumi.Input[str]]:
+        """
+        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom dbfs endpoints.
+        """
         return pulumi.get(self, "dbfs")
 
     @dbfs.setter
@@ -797,6 +1049,9 @@ class ProviderEndpointArgs:
     @property
     @pulumi.getter
     def dcdn(self) -> Optional[pulumi.Input[str]]:
+        """
+        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom dcdn endpoints.
+        """
         return pulumi.get(self, "dcdn")
 
     @dcdn.setter
@@ -806,6 +1061,9 @@ class ProviderEndpointArgs:
     @property
     @pulumi.getter
     def ddosbasic(self) -> Optional[pulumi.Input[str]]:
+        """
+        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom ddosbasic endpoints.
+        """
         return pulumi.get(self, "ddosbasic")
 
     @ddosbasic.setter
@@ -815,6 +1073,9 @@ class ProviderEndpointArgs:
     @property
     @pulumi.getter
     def ddosbgp(self) -> Optional[pulumi.Input[str]]:
+        """
+        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom DDOSBGP endpoints.
+        """
         return pulumi.get(self, "ddosbgp")
 
     @ddosbgp.setter
@@ -824,6 +1085,9 @@ class ProviderEndpointArgs:
     @property
     @pulumi.getter
     def ddoscoo(self) -> Optional[pulumi.Input[str]]:
+        """
+        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom DDOSCOO endpoints.
+        """
         return pulumi.get(self, "ddoscoo")
 
     @ddoscoo.setter
@@ -833,6 +1097,9 @@ class ProviderEndpointArgs:
     @property
     @pulumi.getter
     def dds(self) -> Optional[pulumi.Input[str]]:
+        """
+        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom MongoDB endpoints.
+        """
         return pulumi.get(self, "dds")
 
     @dds.setter
@@ -842,6 +1109,9 @@ class ProviderEndpointArgs:
     @property
     @pulumi.getter
     def devopsrdc(self) -> Optional[pulumi.Input[str]]:
+        """
+        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom devopsrdc endpoints.
+        """
         return pulumi.get(self, "devopsrdc")
 
     @devopsrdc.setter
@@ -851,6 +1121,9 @@ class ProviderEndpointArgs:
     @property
     @pulumi.getter
     def dg(self) -> Optional[pulumi.Input[str]]:
+        """
+        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom dg endpoints.
+        """
         return pulumi.get(self, "dg")
 
     @dg.setter
@@ -860,6 +1133,9 @@ class ProviderEndpointArgs:
     @property
     @pulumi.getter
     def dm(self) -> Optional[pulumi.Input[str]]:
+        """
+        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom dm endpoints.
+        """
         return pulumi.get(self, "dm")
 
     @dm.setter
@@ -869,6 +1145,9 @@ class ProviderEndpointArgs:
     @property
     @pulumi.getter(name="dmsEnterprise")
     def dms_enterprise(self) -> Optional[pulumi.Input[str]]:
+        """
+        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom dms_enterprise endpoints.
+        """
         return pulumi.get(self, "dms_enterprise")
 
     @dms_enterprise.setter
@@ -878,6 +1157,9 @@ class ProviderEndpointArgs:
     @property
     @pulumi.getter
     def dmsenterprise(self) -> Optional[pulumi.Input[str]]:
+        """
+        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom dmsenterprise endpoints.
+        """
         return pulumi.get(self, "dmsenterprise")
 
     @dmsenterprise.setter
@@ -887,6 +1169,9 @@ class ProviderEndpointArgs:
     @property
     @pulumi.getter
     def dns(self) -> Optional[pulumi.Input[str]]:
+        """
+        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom DNS endpoints.
+        """
         return pulumi.get(self, "dns")
 
     @dns.setter
@@ -896,6 +1181,9 @@ class ProviderEndpointArgs:
     @property
     @pulumi.getter
     def drds(self) -> Optional[pulumi.Input[str]]:
+        """
+        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom DRDS endpoints.
+        """
         return pulumi.get(self, "drds")
 
     @drds.setter
@@ -905,6 +1193,9 @@ class ProviderEndpointArgs:
     @property
     @pulumi.getter
     def dts(self) -> Optional[pulumi.Input[str]]:
+        """
+        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom dts endpoints.
+        """
         return pulumi.get(self, "dts")
 
     @dts.setter
@@ -923,6 +1214,9 @@ class ProviderEndpointArgs:
     @property
     @pulumi.getter
     def eais(self) -> Optional[pulumi.Input[str]]:
+        """
+        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom eais endpoints.
+        """
         return pulumi.get(self, "eais")
 
     @eais.setter
@@ -932,6 +1226,9 @@ class ProviderEndpointArgs:
     @property
     @pulumi.getter
     def ebs(self) -> Optional[pulumi.Input[str]]:
+        """
+        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom ebs endpoints.
+        """
         return pulumi.get(self, "ebs")
 
     @ebs.setter
@@ -941,6 +1238,9 @@ class ProviderEndpointArgs:
     @property
     @pulumi.getter
     def eci(self) -> Optional[pulumi.Input[str]]:
+        """
+        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom eci endpoints.
+        """
         return pulumi.get(self, "eci")
 
     @eci.setter
@@ -950,6 +1250,9 @@ class ProviderEndpointArgs:
     @property
     @pulumi.getter
     def ecs(self) -> Optional[pulumi.Input[str]]:
+        """
+        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom ECS endpoints.
+        """
         return pulumi.get(self, "ecs")
 
     @ecs.setter
@@ -959,6 +1262,9 @@ class ProviderEndpointArgs:
     @property
     @pulumi.getter
     def edas(self) -> Optional[pulumi.Input[str]]:
+        """
+        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom edas endpoints.
+        """
         return pulumi.get(self, "edas")
 
     @edas.setter
@@ -968,6 +1274,9 @@ class ProviderEndpointArgs:
     @property
     @pulumi.getter
     def edasschedulerx(self) -> Optional[pulumi.Input[str]]:
+        """
+        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom edasschedulerx endpoints.
+        """
         return pulumi.get(self, "edasschedulerx")
 
     @edasschedulerx.setter
@@ -977,6 +1286,9 @@ class ProviderEndpointArgs:
     @property
     @pulumi.getter
     def edsuser(self) -> Optional[pulumi.Input[str]]:
+        """
+        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom edsuser endpoints.
+        """
         return pulumi.get(self, "edsuser")
 
     @edsuser.setter
@@ -986,6 +1298,9 @@ class ProviderEndpointArgs:
     @property
     @pulumi.getter
     def eflo(self) -> Optional[pulumi.Input[str]]:
+        """
+        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom eflo endpoints.
+        """
         return pulumi.get(self, "eflo")
 
     @eflo.setter
@@ -995,6 +1310,9 @@ class ProviderEndpointArgs:
     @property
     @pulumi.getter
     def ehpc(self) -> Optional[pulumi.Input[str]]:
+        """
+        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom ehpc endpoints.
+        """
         return pulumi.get(self, "ehpc")
 
     @ehpc.setter
@@ -1004,6 +1322,9 @@ class ProviderEndpointArgs:
     @property
     @pulumi.getter
     def ehs(self) -> Optional[pulumi.Input[str]]:
+        """
+        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom ehs endpoints.
+        """
         return pulumi.get(self, "ehs")
 
     @ehs.setter
@@ -1013,6 +1334,9 @@ class ProviderEndpointArgs:
     @property
     @pulumi.getter
     def eipanycast(self) -> Optional[pulumi.Input[str]]:
+        """
+        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom eipanycast endpoints.
+        """
         return pulumi.get(self, "eipanycast")
 
     @eipanycast.setter
@@ -1022,6 +1346,9 @@ class ProviderEndpointArgs:
     @property
     @pulumi.getter
     def elasticsearch(self) -> Optional[pulumi.Input[str]]:
+        """
+        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Elasticsearch endpoints.
+        """
         return pulumi.get(self, "elasticsearch")
 
     @elasticsearch.setter
@@ -1031,6 +1358,9 @@ class ProviderEndpointArgs:
     @property
     @pulumi.getter
     def emr(self) -> Optional[pulumi.Input[str]]:
+        """
+        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom EMR endpoints.
+        """
         return pulumi.get(self, "emr")
 
     @emr.setter
@@ -1040,6 +1370,9 @@ class ProviderEndpointArgs:
     @property
     @pulumi.getter
     def ens(self) -> Optional[pulumi.Input[str]]:
+        """
+        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom ens endpoints.
+        """
         return pulumi.get(self, "ens")
 
     @ens.setter
@@ -1049,6 +1382,9 @@ class ProviderEndpointArgs:
     @property
     @pulumi.getter
     def ess(self) -> Optional[pulumi.Input[str]]:
+        """
+        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Autoscaling endpoints.
+        """
         return pulumi.get(self, "ess")
 
     @ess.setter
@@ -1058,6 +1394,9 @@ class ProviderEndpointArgs:
     @property
     @pulumi.getter
     def eventbridge(self) -> Optional[pulumi.Input[str]]:
+        """
+        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom eventbridge_share endpoints.
+        """
         return pulumi.get(self, "eventbridge")
 
     @eventbridge.setter
@@ -1067,6 +1406,9 @@ class ProviderEndpointArgs:
     @property
     @pulumi.getter
     def fc(self) -> Optional[pulumi.Input[str]]:
+        """
+        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Function Computing endpoints.
+        """
         return pulumi.get(self, "fc")
 
     @fc.setter
@@ -1076,6 +1418,9 @@ class ProviderEndpointArgs:
     @property
     @pulumi.getter
     def fnf(self) -> Optional[pulumi.Input[str]]:
+        """
+        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom fnf endpoints.
+        """
         return pulumi.get(self, "fnf")
 
     @fnf.setter
@@ -1085,6 +1430,9 @@ class ProviderEndpointArgs:
     @property
     @pulumi.getter
     def ga(self) -> Optional[pulumi.Input[str]]:
+        """
+        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom ga endpoints.
+        """
         return pulumi.get(self, "ga")
 
     @ga.setter
@@ -1094,6 +1442,9 @@ class ProviderEndpointArgs:
     @property
     @pulumi.getter
     def gaplus(self) -> Optional[pulumi.Input[str]]:
+        """
+        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom gaplus endpoints.
+        """
         return pulumi.get(self, "gaplus")
 
     @gaplus.setter
@@ -1103,6 +1454,9 @@ class ProviderEndpointArgs:
     @property
     @pulumi.getter
     def gds(self) -> Optional[pulumi.Input[str]]:
+        """
+        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom gds endpoints.
+        """
         return pulumi.get(self, "gds")
 
     @gds.setter
@@ -1112,6 +1466,9 @@ class ProviderEndpointArgs:
     @property
     @pulumi.getter
     def gpdb(self) -> Optional[pulumi.Input[str]]:
+        """
+        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom GPDB endpoints.
+        """
         return pulumi.get(self, "gpdb")
 
     @gpdb.setter
@@ -1121,6 +1478,9 @@ class ProviderEndpointArgs:
     @property
     @pulumi.getter
     def gwsecd(self) -> Optional[pulumi.Input[str]]:
+        """
+        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom gwsecd endpoints.
+        """
         return pulumi.get(self, "gwsecd")
 
     @gwsecd.setter
@@ -1130,6 +1490,9 @@ class ProviderEndpointArgs:
     @property
     @pulumi.getter
     def hbr(self) -> Optional[pulumi.Input[str]]:
+        """
+        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom hbr endpoints.
+        """
         return pulumi.get(self, "hbr")
 
     @hbr.setter
@@ -1139,6 +1502,9 @@ class ProviderEndpointArgs:
     @property
     @pulumi.getter(name="hcsSgw")
     def hcs_sgw(self) -> Optional[pulumi.Input[str]]:
+        """
+        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom hcs_sgw endpoints.
+        """
         return pulumi.get(self, "hcs_sgw")
 
     @hcs_sgw.setter
@@ -1148,6 +1514,9 @@ class ProviderEndpointArgs:
     @property
     @pulumi.getter
     def hitsdb(self) -> Optional[pulumi.Input[str]]:
+        """
+        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom hitsdb endpoints.
+        """
         return pulumi.get(self, "hitsdb")
 
     @hitsdb.setter
@@ -1157,6 +1526,9 @@ class ProviderEndpointArgs:
     @property
     @pulumi.getter
     def imm(self) -> Optional[pulumi.Input[str]]:
+        """
+        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom imm endpoints.
+        """
         return pulumi.get(self, "imm")
 
     @imm.setter
@@ -1166,6 +1538,9 @@ class ProviderEndpointArgs:
     @property
     @pulumi.getter
     def imp(self) -> Optional[pulumi.Input[str]]:
+        """
+        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom imp endpoints.
+        """
         return pulumi.get(self, "imp")
 
     @imp.setter
@@ -1175,6 +1550,9 @@ class ProviderEndpointArgs:
     @property
     @pulumi.getter
     def ims(self) -> Optional[pulumi.Input[str]]:
+        """
+        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom ims endpoints.
+        """
         return pulumi.get(self, "ims")
 
     @ims.setter
@@ -1184,6 +1562,9 @@ class ProviderEndpointArgs:
     @property
     @pulumi.getter
     def iot(self) -> Optional[pulumi.Input[str]]:
+        """
+        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom iot endpoints.
+        """
         return pulumi.get(self, "iot")
 
     @iot.setter
@@ -1193,6 +1574,9 @@ class ProviderEndpointArgs:
     @property
     @pulumi.getter
     def kms(self) -> Optional[pulumi.Input[str]]:
+        """
+        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom KMS endpoints.
+        """
         return pulumi.get(self, "kms")
 
     @kms.setter
@@ -1202,6 +1586,9 @@ class ProviderEndpointArgs:
     @property
     @pulumi.getter
     def kvstore(self) -> Optional[pulumi.Input[str]]:
+        """
+        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom R-KVStore endpoints.
+        """
         return pulumi.get(self, "kvstore")
 
     @kvstore.setter
@@ -1211,6 +1598,9 @@ class ProviderEndpointArgs:
     @property
     @pulumi.getter
     def location(self) -> Optional[pulumi.Input[str]]:
+        """
+        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Location Service endpoints.
+        """
         return pulumi.get(self, "location")
 
     @location.setter
@@ -1220,6 +1610,9 @@ class ProviderEndpointArgs:
     @property
     @pulumi.getter
     def log(self) -> Optional[pulumi.Input[str]]:
+        """
+        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Log Service endpoints.
+        """
         return pulumi.get(self, "log")
 
     @log.setter
@@ -1229,6 +1622,9 @@ class ProviderEndpointArgs:
     @property
     @pulumi.getter
     def market(self) -> Optional[pulumi.Input[str]]:
+        """
+        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Market Place endpoints.
+        """
         return pulumi.get(self, "market")
 
     @market.setter
@@ -1238,6 +1634,9 @@ class ProviderEndpointArgs:
     @property
     @pulumi.getter
     def maxcompute(self) -> Optional[pulumi.Input[str]]:
+        """
+        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom MaxCompute endpoints.
+        """
         return pulumi.get(self, "maxcompute")
 
     @maxcompute.setter
@@ -1247,6 +1646,9 @@ class ProviderEndpointArgs:
     @property
     @pulumi.getter
     def mhub(self) -> Optional[pulumi.Input[str]]:
+        """
+        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom mhub endpoints.
+        """
         return pulumi.get(self, "mhub")
 
     @mhub.setter
@@ -1256,6 +1658,9 @@ class ProviderEndpointArgs:
     @property
     @pulumi.getter
     def mns(self) -> Optional[pulumi.Input[str]]:
+        """
+        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom MNS endpoints.
+        """
         return pulumi.get(self, "mns")
 
     @mns.setter
@@ -1265,6 +1670,9 @@ class ProviderEndpointArgs:
     @property
     @pulumi.getter
     def mscopensubscription(self) -> Optional[pulumi.Input[str]]:
+        """
+        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom mscopensubscription endpoints.
+        """
         return pulumi.get(self, "mscopensubscription")
 
     @mscopensubscription.setter
@@ -1274,6 +1682,9 @@ class ProviderEndpointArgs:
     @property
     @pulumi.getter
     def mse(self) -> Optional[pulumi.Input[str]]:
+        """
+        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom mse endpoints.
+        """
         return pulumi.get(self, "mse")
 
     @mse.setter
@@ -1283,6 +1694,9 @@ class ProviderEndpointArgs:
     @property
     @pulumi.getter
     def nas(self) -> Optional[pulumi.Input[str]]:
+        """
+        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom NAS endpoints.
+        """
         return pulumi.get(self, "nas")
 
     @nas.setter
@@ -1292,6 +1706,9 @@ class ProviderEndpointArgs:
     @property
     @pulumi.getter
     def nlb(self) -> Optional[pulumi.Input[str]]:
+        """
+        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom nlb endpoints.
+        """
         return pulumi.get(self, "nlb")
 
     @nlb.setter
@@ -1301,6 +1718,9 @@ class ProviderEndpointArgs:
     @property
     @pulumi.getter
     def oceanbase(self) -> Optional[pulumi.Input[str]]:
+        """
+        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom oceanbase endpoints.
+        """
         return pulumi.get(self, "oceanbase")
 
     @oceanbase.setter
@@ -1310,6 +1730,9 @@ class ProviderEndpointArgs:
     @property
     @pulumi.getter
     def ons(self) -> Optional[pulumi.Input[str]]:
+        """
+        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom ONS endpoints.
+        """
         return pulumi.get(self, "ons")
 
     @ons.setter
@@ -1319,6 +1742,9 @@ class ProviderEndpointArgs:
     @property
     @pulumi.getter
     def onsproxy(self) -> Optional[pulumi.Input[str]]:
+        """
+        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom onsproxy endpoints.
+        """
         return pulumi.get(self, "onsproxy")
 
     @onsproxy.setter
@@ -1328,6 +1754,9 @@ class ProviderEndpointArgs:
     @property
     @pulumi.getter
     def oos(self) -> Optional[pulumi.Input[str]]:
+        """
+        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom oos endpoints.
+        """
         return pulumi.get(self, "oos")
 
     @oos.setter
@@ -1337,6 +1766,9 @@ class ProviderEndpointArgs:
     @property
     @pulumi.getter
     def opensearch(self) -> Optional[pulumi.Input[str]]:
+        """
+        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom opensearch endpoints.
+        """
         return pulumi.get(self, "opensearch")
 
     @opensearch.setter
@@ -1346,6 +1778,9 @@ class ProviderEndpointArgs:
     @property
     @pulumi.getter
     def oss(self) -> Optional[pulumi.Input[str]]:
+        """
+        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom OSS endpoints.
+        """
         return pulumi.get(self, "oss")
 
     @oss.setter
@@ -1355,6 +1790,9 @@ class ProviderEndpointArgs:
     @property
     @pulumi.getter
     def ots(self) -> Optional[pulumi.Input[str]]:
+        """
+        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Table Store endpoints.
+        """
         return pulumi.get(self, "ots")
 
     @ots.setter
@@ -1364,6 +1802,9 @@ class ProviderEndpointArgs:
     @property
     @pulumi.getter
     def polardb(self) -> Optional[pulumi.Input[str]]:
+        """
+        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom PolarDB endpoints.
+        """
         return pulumi.get(self, "polardb")
 
     @polardb.setter
@@ -1373,6 +1814,9 @@ class ProviderEndpointArgs:
     @property
     @pulumi.getter
     def privatelink(self) -> Optional[pulumi.Input[str]]:
+        """
+        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom privatelink endpoints.
+        """
         return pulumi.get(self, "privatelink")
 
     @privatelink.setter
@@ -1382,6 +1826,9 @@ class ProviderEndpointArgs:
     @property
     @pulumi.getter
     def pvtz(self) -> Optional[pulumi.Input[str]]:
+        """
+        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Private Zone endpoints.
+        """
         return pulumi.get(self, "pvtz")
 
     @pvtz.setter
@@ -1391,6 +1838,9 @@ class ProviderEndpointArgs:
     @property
     @pulumi.getter
     def quickbi(self) -> Optional[pulumi.Input[str]]:
+        """
+        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom quickbi endpoints.
+        """
         return pulumi.get(self, "quickbi")
 
     @quickbi.setter
@@ -1400,6 +1850,9 @@ class ProviderEndpointArgs:
     @property
     @pulumi.getter
     def quotas(self) -> Optional[pulumi.Input[str]]:
+        """
+        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom quotas endpoints.
+        """
         return pulumi.get(self, "quotas")
 
     @quotas.setter
@@ -1409,6 +1862,9 @@ class ProviderEndpointArgs:
     @property
     @pulumi.getter(name="rKvstore")
     def r_kvstore(self) -> Optional[pulumi.Input[str]]:
+        """
+        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom r_kvstore endpoints.
+        """
         return pulumi.get(self, "r_kvstore")
 
     @r_kvstore.setter
@@ -1418,6 +1874,9 @@ class ProviderEndpointArgs:
     @property
     @pulumi.getter
     def ram(self) -> Optional[pulumi.Input[str]]:
+        """
+        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom RAM endpoints.
+        """
         return pulumi.get(self, "ram")
 
     @ram.setter
@@ -1427,6 +1886,9 @@ class ProviderEndpointArgs:
     @property
     @pulumi.getter
     def rds(self) -> Optional[pulumi.Input[str]]:
+        """
+        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom RDS endpoints.
+        """
         return pulumi.get(self, "rds")
 
     @rds.setter
@@ -1436,6 +1898,9 @@ class ProviderEndpointArgs:
     @property
     @pulumi.getter
     def redisa(self) -> Optional[pulumi.Input[str]]:
+        """
+        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom redisa endpoints.
+        """
         return pulumi.get(self, "redisa")
 
     @redisa.setter
@@ -1445,6 +1910,9 @@ class ProviderEndpointArgs:
     @property
     @pulumi.getter
     def resourcemanager(self) -> Optional[pulumi.Input[str]]:
+        """
+        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom resourcemanager endpoints.
+        """
         return pulumi.get(self, "resourcemanager")
 
     @resourcemanager.setter
@@ -1454,6 +1922,9 @@ class ProviderEndpointArgs:
     @property
     @pulumi.getter
     def resourcesharing(self) -> Optional[pulumi.Input[str]]:
+        """
+        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom resourcesharing endpoints.
+        """
         return pulumi.get(self, "resourcesharing")
 
     @resourcesharing.setter
@@ -1463,6 +1934,9 @@ class ProviderEndpointArgs:
     @property
     @pulumi.getter
     def ros(self) -> Optional[pulumi.Input[str]]:
+        """
+        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom ros endpoints.
+        """
         return pulumi.get(self, "ros")
 
     @ros.setter
@@ -1472,6 +1946,9 @@ class ProviderEndpointArgs:
     @property
     @pulumi.getter
     def sas(self) -> Optional[pulumi.Input[str]]:
+        """
+        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom sas endpoints.
+        """
         return pulumi.get(self, "sas")
 
     @sas.setter
@@ -1481,6 +1958,9 @@ class ProviderEndpointArgs:
     @property
     @pulumi.getter
     def scdn(self) -> Optional[pulumi.Input[str]]:
+        """
+        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom scdn endpoints.
+        """
         return pulumi.get(self, "scdn")
 
     @scdn.setter
@@ -1490,6 +1970,9 @@ class ProviderEndpointArgs:
     @property
     @pulumi.getter
     def sddp(self) -> Optional[pulumi.Input[str]]:
+        """
+        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom sddp endpoints.
+        """
         return pulumi.get(self, "sddp")
 
     @sddp.setter
@@ -1499,6 +1982,9 @@ class ProviderEndpointArgs:
     @property
     @pulumi.getter
     def serverless(self) -> Optional[pulumi.Input[str]]:
+        """
+        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom serverless endpoints.
+        """
         return pulumi.get(self, "serverless")
 
     @serverless.setter
@@ -1508,6 +1994,9 @@ class ProviderEndpointArgs:
     @property
     @pulumi.getter
     def servicemesh(self) -> Optional[pulumi.Input[str]]:
+        """
+        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom servicemesh endpoints.
+        """
         return pulumi.get(self, "servicemesh")
 
     @servicemesh.setter
@@ -1517,6 +2006,9 @@ class ProviderEndpointArgs:
     @property
     @pulumi.getter
     def sgw(self) -> Optional[pulumi.Input[str]]:
+        """
+        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom sgw endpoints.
+        """
         return pulumi.get(self, "sgw")
 
     @sgw.setter
@@ -1526,6 +2018,9 @@ class ProviderEndpointArgs:
     @property
     @pulumi.getter
     def slb(self) -> Optional[pulumi.Input[str]]:
+        """
+        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom SLB endpoints.
+        """
         return pulumi.get(self, "slb")
 
     @slb.setter
@@ -1535,6 +2030,9 @@ class ProviderEndpointArgs:
     @property
     @pulumi.getter
     def smartag(self) -> Optional[pulumi.Input[str]]:
+        """
+        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom smartag endpoints.
+        """
         return pulumi.get(self, "smartag")
 
     @smartag.setter
@@ -1544,6 +2042,9 @@ class ProviderEndpointArgs:
     @property
     @pulumi.getter
     def srvcatalog(self) -> Optional[pulumi.Input[str]]:
+        """
+        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom srvcatalog endpoints.
+        """
         return pulumi.get(self, "srvcatalog")
 
     @srvcatalog.setter
@@ -1553,6 +2054,9 @@ class ProviderEndpointArgs:
     @property
     @pulumi.getter
     def sts(self) -> Optional[pulumi.Input[str]]:
+        """
+        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom STS endpoints.
+        """
         return pulumi.get(self, "sts")
 
     @sts.setter
@@ -1562,6 +2066,9 @@ class ProviderEndpointArgs:
     @property
     @pulumi.getter
     def swas(self) -> Optional[pulumi.Input[str]]:
+        """
+        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom swas endpoints.
+        """
         return pulumi.get(self, "swas")
 
     @swas.setter
@@ -1571,6 +2078,9 @@ class ProviderEndpointArgs:
     @property
     @pulumi.getter
     def tag(self) -> Optional[pulumi.Input[str]]:
+        """
+        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom tag endpoints.
+        """
         return pulumi.get(self, "tag")
 
     @tag.setter
@@ -1580,6 +2090,9 @@ class ProviderEndpointArgs:
     @property
     @pulumi.getter
     def vod(self) -> Optional[pulumi.Input[str]]:
+        """
+        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom vod endpoints.
+        """
         return pulumi.get(self, "vod")
 
     @vod.setter
@@ -1589,6 +2102,9 @@ class ProviderEndpointArgs:
     @property
     @pulumi.getter
     def vpc(self) -> Optional[pulumi.Input[str]]:
+        """
+        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom VPC and VPN endpoints.
+        """
         return pulumi.get(self, "vpc")
 
     @vpc.setter
@@ -1598,6 +2114,9 @@ class ProviderEndpointArgs:
     @property
     @pulumi.getter
     def vpcpeer(self) -> Optional[pulumi.Input[str]]:
+        """
+        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom vpcpeer endpoints.
+        """
         return pulumi.get(self, "vpcpeer")
 
     @vpcpeer.setter
@@ -1607,6 +2126,9 @@ class ProviderEndpointArgs:
     @property
     @pulumi.getter
     def vs(self) -> Optional[pulumi.Input[str]]:
+        """
+        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom vs endpoints.
+        """
         return pulumi.get(self, "vs")
 
     @vs.setter
@@ -1616,6 +2138,9 @@ class ProviderEndpointArgs:
     @property
     @pulumi.getter
     def waf(self) -> Optional[pulumi.Input[str]]:
+        """
+        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom waf endpoints.
+        """
         return pulumi.get(self, "waf")
 
     @waf.setter
@@ -1625,6 +2150,9 @@ class ProviderEndpointArgs:
     @property
     @pulumi.getter(name="wafOpenapi")
     def waf_openapi(self) -> Optional[pulumi.Input[str]]:
+        """
+        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom waf_openapi endpoints.
+        """
         return pulumi.get(self, "waf_openapi")
 
     @waf_openapi.setter

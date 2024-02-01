@@ -11892,141 +11892,534 @@ export namespace compute {
 export namespace config {
     export interface AssumeRole {
         externalId?: string;
+        /**
+         * The permissions applied when assuming a role. You cannot use, this policy to grant further permissions that are in excess to those of the, role that is being assumed.
+         */
         policy?: string;
+        /**
+         * The ARN of a RAM role to assume prior to making API calls.
+         */
         roleArn: string;
+        /**
+         * The time after which the established session for assuming role expires. Valid value range: [900-3600] seconds. Default to 0 (in this case Alicloud use own default value).
+         */
         sessionExpiration?: number;
         sessionName?: string;
     }
 
     export interface Endpoints {
+        /**
+         * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom acr endpoints.
+         */
         acr?: string;
+        /**
+         * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Actiontrail endpoints.
+         */
         actiontrail?: string;
+        /**
+         * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom AnalyticDB endpoints.
+         */
         adb?: string;
+        /**
+         * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom alb endpoints.
+         */
         alb?: string;
+        /**
+         * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom alidfs endpoints.
+         */
         alidfs?: string;
+        /**
+         * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom alidns endpoints.
+         */
         alidns?: string;
+        /**
+         * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom ALIKAFKA endpoints.
+         */
         alikafka?: string;
+        /**
+         * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Api Gateway endpoints.
+         */
         apigateway?: string;
+        /**
+         * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom arms endpoints.
+         */
         arms?: string;
+        /**
+         * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom bastionhost endpoints.
+         */
         bastionhost?: string;
+        /**
+         * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom beebot endpoints.
+         */
         beebot?: string;
+        /**
+         * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom bpstudio endpoints.
+         */
         bpstudio?: string;
+        /**
+         * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom brainIndustrial endpoints.
+         */
         brainIndustrial?: string;
+        /**
+         * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom BSSOPENAPI endpoints.
+         */
         bssopenapi?: string;
+        /**
+         * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom CAS endpoints.
+         */
         cas?: string;
+        /**
+         * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom cassandra endpoints.
+         */
         cassandra?: string;
+        /**
+         * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom cbn endpoints.
+         */
         cbn?: string;
+        /**
+         * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom cbs endpoints.
+         */
         cbs?: string;
+        /**
+         * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom cddc endpoints.
+         */
         cddc?: string;
+        /**
+         * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom CDN endpoints.
+         */
         cdn?: string;
+        /**
+         * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom cds endpoints.
+         */
         cds?: string;
+        /**
+         * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom clickhouse endpoints.
+         */
         clickhouse?: string;
+        /**
+         * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom cloudauth endpoints.
+         */
         cloudauth?: string;
+        /**
+         * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom cloudfirewall endpoints.
+         */
         cloudfirewall?: string;
+        /**
+         * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom cloudfw endpoints.
+         */
         cloudfw?: string;
+        /**
+         * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom cloudphone endpoints.
+         */
         cloudphone?: string;
+        /**
+         * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom cloudsso endpoints.
+         */
         cloudsso?: string;
+        /**
+         * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Cloud Monitor endpoints.
+         */
         cms?: string;
+        /**
+         * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom computenest endpoints.
+         */
         computenest?: string;
+        /**
+         * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom config endpoints.
+         */
         config?: string;
+        /**
+         * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Container Registry endpoints.
+         */
         cr?: string;
+        /**
+         * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Container Service endpoints.
+         */
         cs?: string;
+        /**
+         * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom das endpoints.
+         */
         das?: string;
+        /**
+         * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Datahub endpoints.
+         */
         datahub?: string;
+        /**
+         * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom dataworkspublic endpoints.
+         */
         dataworkspublic?: string;
+        /**
+         * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom dbfs endpoints.
+         */
         dbfs?: string;
+        /**
+         * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom dcdn endpoints.
+         */
         dcdn?: string;
+        /**
+         * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom ddosbasic endpoints.
+         */
         ddosbasic?: string;
+        /**
+         * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom DDOSBGP endpoints.
+         */
         ddosbgp?: string;
+        /**
+         * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom DDOSCOO endpoints.
+         */
         ddoscoo?: string;
+        /**
+         * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom MongoDB endpoints.
+         */
         dds?: string;
+        /**
+         * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom devopsrdc endpoints.
+         */
         devopsrdc?: string;
+        /**
+         * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom dg endpoints.
+         */
         dg?: string;
+        /**
+         * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom dm endpoints.
+         */
         dm?: string;
+        /**
+         * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom dmsEnterprise endpoints.
+         */
         dmsEnterprise?: string;
+        /**
+         * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom dmsenterprise endpoints.
+         */
         dmsenterprise?: string;
+        /**
+         * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom DNS endpoints.
+         */
         dns?: string;
+        /**
+         * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom DRDS endpoints.
+         */
         drds?: string;
+        /**
+         * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom dts endpoints.
+         */
         dts?: string;
         dysms?: string;
+        /**
+         * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom eais endpoints.
+         */
         eais?: string;
+        /**
+         * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom ebs endpoints.
+         */
         ebs?: string;
+        /**
+         * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom eci endpoints.
+         */
         eci?: string;
+        /**
+         * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom ECS endpoints.
+         */
         ecs?: string;
+        /**
+         * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom edas endpoints.
+         */
         edas?: string;
+        /**
+         * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom edasschedulerx endpoints.
+         */
         edasschedulerx?: string;
+        /**
+         * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom edsuser endpoints.
+         */
         edsuser?: string;
+        /**
+         * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom eflo endpoints.
+         */
         eflo?: string;
+        /**
+         * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom ehpc endpoints.
+         */
         ehpc?: string;
+        /**
+         * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom ehs endpoints.
+         */
         ehs?: string;
+        /**
+         * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom eipanycast endpoints.
+         */
         eipanycast?: string;
+        /**
+         * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Elasticsearch endpoints.
+         */
         elasticsearch?: string;
+        /**
+         * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom EMR endpoints.
+         */
         emr?: string;
+        /**
+         * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom ens endpoints.
+         */
         ens?: string;
+        /**
+         * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Autoscaling endpoints.
+         */
         ess?: string;
+        /**
+         * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom eventbridgeShare endpoints.
+         */
         eventbridge?: string;
+        /**
+         * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Function Computing endpoints.
+         */
         fc?: string;
+        /**
+         * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom fnf endpoints.
+         */
         fnf?: string;
+        /**
+         * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom ga endpoints.
+         */
         ga?: string;
+        /**
+         * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom gaplus endpoints.
+         */
         gaplus?: string;
+        /**
+         * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom gds endpoints.
+         */
         gds?: string;
+        /**
+         * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom GPDB endpoints.
+         */
         gpdb?: string;
+        /**
+         * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom gwsecd endpoints.
+         */
         gwsecd?: string;
+        /**
+         * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom hbr endpoints.
+         */
         hbr?: string;
+        /**
+         * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom hcsSgw endpoints.
+         */
         hcsSgw?: string;
+        /**
+         * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom hitsdb endpoints.
+         */
         hitsdb?: string;
+        /**
+         * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom imm endpoints.
+         */
         imm?: string;
+        /**
+         * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom imp endpoints.
+         */
         imp?: string;
+        /**
+         * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom ims endpoints.
+         */
         ims?: string;
+        /**
+         * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom iot endpoints.
+         */
         iot?: string;
+        /**
+         * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom KMS endpoints.
+         */
         kms?: string;
+        /**
+         * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom R-KVStore endpoints.
+         */
         kvstore?: string;
+        /**
+         * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Location Service endpoints.
+         */
         location?: string;
+        /**
+         * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Log Service endpoints.
+         */
         log?: string;
+        /**
+         * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Market Place endpoints.
+         */
         market?: string;
+        /**
+         * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom MaxCompute endpoints.
+         */
         maxcompute?: string;
+        /**
+         * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom mhub endpoints.
+         */
         mhub?: string;
+        /**
+         * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom MNS endpoints.
+         */
         mns?: string;
+        /**
+         * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom mscopensubscription endpoints.
+         */
         mscopensubscription?: string;
+        /**
+         * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom mse endpoints.
+         */
         mse?: string;
+        /**
+         * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom NAS endpoints.
+         */
         nas?: string;
+        /**
+         * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom nlb endpoints.
+         */
         nlb?: string;
+        /**
+         * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom oceanbase endpoints.
+         */
         oceanbase?: string;
+        /**
+         * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom ONS endpoints.
+         */
         ons?: string;
+        /**
+         * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom onsproxy endpoints.
+         */
         onsproxy?: string;
+        /**
+         * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom oos endpoints.
+         */
         oos?: string;
+        /**
+         * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom opensearch endpoints.
+         */
         opensearch?: string;
+        /**
+         * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom OSS endpoints.
+         */
         oss?: string;
+        /**
+         * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Table Store endpoints.
+         */
         ots?: string;
+        /**
+         * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom PolarDB endpoints.
+         */
         polardb?: string;
+        /**
+         * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom privatelink endpoints.
+         */
         privatelink?: string;
+        /**
+         * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Private Zone endpoints.
+         */
         pvtz?: string;
+        /**
+         * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom quickbi endpoints.
+         */
         quickbi?: string;
+        /**
+         * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom quotas endpoints.
+         */
         quotas?: string;
+        /**
+         * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom rKvstore endpoints.
+         */
         rKvstore?: string;
+        /**
+         * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom RAM endpoints.
+         */
         ram?: string;
+        /**
+         * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom RDS endpoints.
+         */
         rds?: string;
+        /**
+         * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom redisa endpoints.
+         */
         redisa?: string;
+        /**
+         * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom resourcemanager endpoints.
+         */
         resourcemanager?: string;
+        /**
+         * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom resourcesharing endpoints.
+         */
         resourcesharing?: string;
+        /**
+         * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom ros endpoints.
+         */
         ros?: string;
+        /**
+         * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom sas endpoints.
+         */
         sas?: string;
+        /**
+         * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom scdn endpoints.
+         */
         scdn?: string;
+        /**
+         * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom sddp endpoints.
+         */
         sddp?: string;
+        /**
+         * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom serverless endpoints.
+         */
         serverless?: string;
+        /**
+         * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom servicemesh endpoints.
+         */
         servicemesh?: string;
+        /**
+         * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom sgw endpoints.
+         */
         sgw?: string;
+        /**
+         * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom SLB endpoints.
+         */
         slb?: string;
+        /**
+         * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom smartag endpoints.
+         */
         smartag?: string;
+        /**
+         * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom srvcatalog endpoints.
+         */
         srvcatalog?: string;
+        /**
+         * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom STS endpoints.
+         */
         sts?: string;
+        /**
+         * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom swas endpoints.
+         */
         swas?: string;
+        /**
+         * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom tag endpoints.
+         */
         tag?: string;
+        /**
+         * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom vod endpoints.
+         */
         vod?: string;
+        /**
+         * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom VPC and VPN endpoints.
+         */
         vpc?: string;
+        /**
+         * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom vpcpeer endpoints.
+         */
         vpcpeer?: string;
+        /**
+         * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom vs endpoints.
+         */
         vs?: string;
+        /**
+         * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom waf endpoints.
+         */
         waf?: string;
+        /**
+         * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom wafOpenapi endpoints.
+         */
         wafOpenapi?: string;
     }
 
