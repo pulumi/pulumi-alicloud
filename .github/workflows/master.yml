@@ -80,7 +80,7 @@ jobs:
         distribution: temurin
         java-version: ${{ env.JAVAVERSION }}
     - name: Setup Gradle
-      uses: gradle/gradle-build-action@v2
+      uses: gradle/gradle-build-action@v3
       with:
         gradle-version: ${{ env.GRADLEVERSION }}
     - name: Download provider + tfgen binaries
@@ -406,7 +406,7 @@ jobs:
         distribution: temurin
         java-version: ${{ env.JAVAVERSION }}
     - name: Setup Gradle
-      uses: gradle/gradle-build-action@v2
+      uses: gradle/gradle-build-action@v3
       with:
         gradle-version: ${{ env.GRADLEVERSION }}
     - name: Download provider + tfgen binaries
