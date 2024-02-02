@@ -19,10 +19,6 @@ public final class GetDdosCooInstancesResult {
      * 
      */
     private String id;
-    /**
-     * @return A list of instance IDs.
-     * 
-     */
     private List<String> ids;
     /**
      * @return A list of apis. Each element contains the following attributes:
@@ -45,10 +41,6 @@ public final class GetDdosCooInstancesResult {
     public String id() {
         return this.id;
     }
-    /**
-     * @return A list of instance IDs.
-     * 
-     */
     public List<String> ids() {
         return this.ids;
     }

@@ -216,7 +216,7 @@ type ContainerGroup struct {
 	// The address of the self-built mirror warehouse. When creating an image cache using an image in a self-built image repository with a self-signed certificate, you need to configure this parameter to skip certificate authentication to avoid image pull failure due to certificate authentication failure.
 	InsecureRegistry pulumi.StringPtrOutput `pulumi:"insecureRegistry"`
 	// The type of the ECS instance.
-	InstanceType pulumi.StringPtrOutput `pulumi:"instanceType"`
+	InstanceType pulumi.StringOutput `pulumi:"instanceType"`
 	// (Available since v1.170.0) The Public IP of the container group.
 	InternetIp pulumi.StringOutput `pulumi:"internetIp"`
 	// (Available since v1.170.0) The Private IP of the container group.
@@ -235,12 +235,18 @@ type ContainerGroup struct {
 	SecurityContext ContainerGroupSecurityContextPtrOutput `pulumi:"securityContext"`
 	// The ID of the security group to which the container group belongs. Container groups within the same security group can access each other.
 	SecurityGroupId pulumi.StringOutput `pulumi:"securityGroupId"`
+	// The maximum hourly price of the ECI spot instance.
+	SpotPriceLimit pulumi.Float64Output `pulumi:"spotPriceLimit"`
+	// Filter the results by ECI spot type. Valid values: `NoSpot`, `SpotWithPriceLimit` and `SpotAsPriceGo`. Default to `NoSpot`.
+	SpotStrategy pulumi.StringOutput `pulumi:"spotStrategy"`
 	// The status of container group.
 	Status pulumi.StringOutput `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
 	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
 	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
 	Tags pulumi.MapOutput `pulumi:"tags"`
+	// The buffer time during which the program handles operations before the program stops. Unit: seconds.
+	TerminationGracePeriodSeconds pulumi.IntPtrOutput `pulumi:"terminationGracePeriodSeconds"`
 	// The list of volumes. See `volumes` below.
 	Volumes ContainerGroupVolumeArrayOutput `pulumi:"volumes"`
 	// The ID of the VSwitch. Currently, container groups can only be deployed in VPC networks. The number of IP addresses in the VSwitch CIDR block determines the maximum number of container groups that can be created in the VSwitch. Before you can create an ECI instance, plan the CIDR block of the VSwitch.
@@ -338,12 +344,18 @@ type containerGroupState struct {
 	SecurityContext *ContainerGroupSecurityContext `pulumi:"securityContext"`
 	// The ID of the security group to which the container group belongs. Container groups within the same security group can access each other.
 	SecurityGroupId *string `pulumi:"securityGroupId"`
+	// The maximum hourly price of the ECI spot instance.
+	SpotPriceLimit *float64 `pulumi:"spotPriceLimit"`
+	// Filter the results by ECI spot type. Valid values: `NoSpot`, `SpotWithPriceLimit` and `SpotAsPriceGo`. Default to `NoSpot`.
+	SpotStrategy *string `pulumi:"spotStrategy"`
 	// The status of container group.
 	Status *string `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
 	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
 	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
 	Tags map[string]interface{} `pulumi:"tags"`
+	// The buffer time during which the program handles operations before the program stops. Unit: seconds.
+	TerminationGracePeriodSeconds *int `pulumi:"terminationGracePeriodSeconds"`
 	// The list of volumes. See `volumes` below.
 	Volumes []ContainerGroupVolume `pulumi:"volumes"`
 	// The ID of the VSwitch. Currently, container groups can only be deployed in VPC networks. The number of IP addresses in the VSwitch CIDR block determines the maximum number of container groups that can be created in the VSwitch. Before you can create an ECI instance, plan the CIDR block of the VSwitch.
@@ -400,12 +412,18 @@ type ContainerGroupState struct {
 	SecurityContext ContainerGroupSecurityContextPtrInput
 	// The ID of the security group to which the container group belongs. Container groups within the same security group can access each other.
 	SecurityGroupId pulumi.StringPtrInput
+	// The maximum hourly price of the ECI spot instance.
+	SpotPriceLimit pulumi.Float64PtrInput
+	// Filter the results by ECI spot type. Valid values: `NoSpot`, `SpotWithPriceLimit` and `SpotAsPriceGo`. Default to `NoSpot`.
+	SpotStrategy pulumi.StringPtrInput
 	// The status of container group.
 	Status pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
 	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
 	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
 	Tags pulumi.MapInput
+	// The buffer time during which the program handles operations before the program stops. Unit: seconds.
+	TerminationGracePeriodSeconds pulumi.IntPtrInput
 	// The list of volumes. See `volumes` below.
 	Volumes ContainerGroupVolumeArrayInput
 	// The ID of the VSwitch. Currently, container groups can only be deployed in VPC networks. The number of IP addresses in the VSwitch CIDR block determines the maximum number of container groups that can be created in the VSwitch. Before you can create an ECI instance, plan the CIDR block of the VSwitch.
@@ -462,10 +480,16 @@ type containerGroupArgs struct {
 	SecurityContext *ContainerGroupSecurityContext `pulumi:"securityContext"`
 	// The ID of the security group to which the container group belongs. Container groups within the same security group can access each other.
 	SecurityGroupId string `pulumi:"securityGroupId"`
+	// The maximum hourly price of the ECI spot instance.
+	SpotPriceLimit *float64 `pulumi:"spotPriceLimit"`
+	// Filter the results by ECI spot type. Valid values: `NoSpot`, `SpotWithPriceLimit` and `SpotAsPriceGo`. Default to `NoSpot`.
+	SpotStrategy *string `pulumi:"spotStrategy"`
 	// A mapping of tags to assign to the resource.
 	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
 	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
 	Tags map[string]interface{} `pulumi:"tags"`
+	// The buffer time during which the program handles operations before the program stops. Unit: seconds.
+	TerminationGracePeriodSeconds *int `pulumi:"terminationGracePeriodSeconds"`
 	// The list of volumes. See `volumes` below.
 	Volumes []ContainerGroupVolume `pulumi:"volumes"`
 	// The ID of the VSwitch. Currently, container groups can only be deployed in VPC networks. The number of IP addresses in the VSwitch CIDR block determines the maximum number of container groups that can be created in the VSwitch. Before you can create an ECI instance, plan the CIDR block of the VSwitch.
@@ -519,10 +543,16 @@ type ContainerGroupArgs struct {
 	SecurityContext ContainerGroupSecurityContextPtrInput
 	// The ID of the security group to which the container group belongs. Container groups within the same security group can access each other.
 	SecurityGroupId pulumi.StringInput
+	// The maximum hourly price of the ECI spot instance.
+	SpotPriceLimit pulumi.Float64PtrInput
+	// Filter the results by ECI spot type. Valid values: `NoSpot`, `SpotWithPriceLimit` and `SpotAsPriceGo`. Default to `NoSpot`.
+	SpotStrategy pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
 	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
 	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
 	Tags pulumi.MapInput
+	// The buffer time during which the program handles operations before the program stops. Unit: seconds.
+	TerminationGracePeriodSeconds pulumi.IntPtrInput
 	// The list of volumes. See `volumes` below.
 	Volumes ContainerGroupVolumeArrayInput
 	// The ID of the VSwitch. Currently, container groups can only be deployed in VPC networks. The number of IP addresses in the VSwitch CIDR block determines the maximum number of container groups that can be created in the VSwitch. Before you can create an ECI instance, plan the CIDR block of the VSwitch.
@@ -687,8 +717,8 @@ func (o ContainerGroupOutput) InsecureRegistry() pulumi.StringPtrOutput {
 }
 
 // The type of the ECS instance.
-func (o ContainerGroupOutput) InstanceType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ContainerGroup) pulumi.StringPtrOutput { return v.InstanceType }).(pulumi.StringPtrOutput)
+func (o ContainerGroupOutput) InstanceType() pulumi.StringOutput {
+	return o.ApplyT(func(v *ContainerGroup) pulumi.StringOutput { return v.InstanceType }).(pulumi.StringOutput)
 }
 
 // (Available since v1.170.0) The Public IP of the container group.
@@ -736,6 +766,16 @@ func (o ContainerGroupOutput) SecurityGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ContainerGroup) pulumi.StringOutput { return v.SecurityGroupId }).(pulumi.StringOutput)
 }
 
+// The maximum hourly price of the ECI spot instance.
+func (o ContainerGroupOutput) SpotPriceLimit() pulumi.Float64Output {
+	return o.ApplyT(func(v *ContainerGroup) pulumi.Float64Output { return v.SpotPriceLimit }).(pulumi.Float64Output)
+}
+
+// Filter the results by ECI spot type. Valid values: `NoSpot`, `SpotWithPriceLimit` and `SpotAsPriceGo`. Default to `NoSpot`.
+func (o ContainerGroupOutput) SpotStrategy() pulumi.StringOutput {
+	return o.ApplyT(func(v *ContainerGroup) pulumi.StringOutput { return v.SpotStrategy }).(pulumi.StringOutput)
+}
+
 // The status of container group.
 func (o ContainerGroupOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *ContainerGroup) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
@@ -746,6 +786,11 @@ func (o ContainerGroupOutput) Status() pulumi.StringOutput {
 // - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
 func (o ContainerGroupOutput) Tags() pulumi.MapOutput {
 	return o.ApplyT(func(v *ContainerGroup) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+}
+
+// The buffer time during which the program handles operations before the program stops. Unit: seconds.
+func (o ContainerGroupOutput) TerminationGracePeriodSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ContainerGroup) pulumi.IntPtrOutput { return v.TerminationGracePeriodSeconds }).(pulumi.IntPtrOutput)
 }
 
 // The list of volumes. See `volumes` below.

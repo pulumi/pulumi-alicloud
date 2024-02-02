@@ -31,11 +31,18 @@ namespace Pulumi.AliCloud.ActionTrail
     /// using System.Linq;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
+    /// using Random = Pulumi.Random;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     var config = new Config();
-    ///     var name = config.Get("name") ?? "tfexample";
+    ///     var name = config.Get("name") ?? "tf-example";
+    ///     var @default = new Random.RandomInteger("default", new()
+    ///     {
+    ///         Min = 10000,
+    ///         Max = 99999,
+    ///     });
+    /// 
     ///     var exampleRegions = AliCloud.GetRegions.Invoke(new()
     ///     {
     ///         Current = true,
@@ -45,12 +52,13 @@ namespace Pulumi.AliCloud.ActionTrail
     /// 
     ///     var exampleProject = new AliCloud.Log.Project("exampleProject", new()
     ///     {
+    ///         ProjectName = @default.Result.Apply(result =&gt; $"{name}-{result}"),
     ///         Description = "tf actiontrail example",
     ///     });
     /// 
     ///     var exampleTrail = new AliCloud.ActionTrail.Trail("exampleTrail", new()
     ///     {
-    ///         TrailName = name,
+    ///         TrailName = @default.Result.Apply(result =&gt; $"{name}-{result}"),
     ///         SlsProjectArn = Output.Tuple(exampleRegions, exampleAccount, exampleProject.Name).Apply(values =&gt;
     ///         {
     ///             var exampleRegions = values.Item1;

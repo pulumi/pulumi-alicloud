@@ -38,6 +38,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.random.RandomInteger;
+ * import com.pulumi.random.RandomIntegerArgs;
  * import com.pulumi.alicloud.slb.ApplicationLoadBalancer;
  * import com.pulumi.alicloud.slb.ApplicationLoadBalancerArgs;
  * import com.pulumi.alicloud.slb.Acl;
@@ -61,9 +63,14 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var slbListenerName = config.get(&#34;slbListenerName&#34;).orElse(&#34;forSlbListener&#34;);
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
+ *         var default_ = new RandomInteger(&#34;default&#34;, RandomIntegerArgs.builder()        
+ *             .min(10000)
+ *             .max(99999)
+ *             .build());
+ * 
  *         var listenerApplicationLoadBalancer = new ApplicationLoadBalancer(&#34;listenerApplicationLoadBalancer&#34;, ApplicationLoadBalancerArgs.builder()        
- *             .loadBalancerName(&#34;tf-exampleSlbListenerHttp&#34;)
+ *             .loadBalancerName(default_.result().applyValue(result -&gt; String.format(&#34;%s-%s&#34;, name,result)))
  *             .internetChargeType(&#34;PayByTraffic&#34;)
  *             .addressType(&#34;internet&#34;)
  *             .instanceChargeType(&#34;PayByCLCU&#34;)

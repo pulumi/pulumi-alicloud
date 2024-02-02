@@ -16,25 +16,30 @@ import * as utilities from "../utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
+ * import * as random from "@pulumi/random";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "tf-example";
+ * const defaultRandomInteger = new random.RandomInteger("defaultRandomInteger", {
+ *     min: 10000,
+ *     max: 99999,
+ * });
  * const defaultRegions = alicloud.getRegions({
  *     current: true,
  * });
  * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {
- *     vpcName: name,
+ *     vpcName: pulumi.interpolate`${name}-${defaultRandomInteger.result}`,
  *     cidrBlock: "10.4.0.0/16",
  * });
  * const defaultCluster = new alicloud.edas.Cluster("defaultCluster", {
- *     clusterName: name,
+ *     clusterName: pulumi.interpolate`${name}-${defaultRandomInteger.result}`,
  *     clusterType: 2,
  *     networkMode: 2,
  *     logicalRegionId: defaultRegions.then(defaultRegions => defaultRegions.regions?.[0]?.id),
  *     vpcId: defaultNetwork.id,
  * });
  * const defaultApplication = new alicloud.edas.Application("defaultApplication", {
- *     applicationName: name,
+ *     applicationName: pulumi.interpolate`${name}-${defaultRandomInteger.result}`,
  *     clusterId: defaultCluster.id,
  *     packageType: "JAR",
  * });

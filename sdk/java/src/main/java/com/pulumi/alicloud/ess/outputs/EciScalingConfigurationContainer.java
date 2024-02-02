@@ -55,6 +55,11 @@ public final class EciScalingConfigurationContainer {
      */
     private @Nullable String imagePullPolicy;
     /**
+     * @return The commands to be executed in containers when you use the CLI to specify the preStop callback function.
+     * 
+     */
+    private @Nullable List<String> lifecyclePreStopHandlerExecs;
+    /**
      * @return Commands that you want to run in containers when you use the CLI to perform liveness probes.
      * 
      */
@@ -248,6 +253,13 @@ public final class EciScalingConfigurationContainer {
      */
     public Optional<String> imagePullPolicy() {
         return Optional.ofNullable(this.imagePullPolicy);
+    }
+    /**
+     * @return The commands to be executed in containers when you use the CLI to specify the preStop callback function.
+     * 
+     */
+    public List<String> lifecyclePreStopHandlerExecs() {
+        return this.lifecyclePreStopHandlerExecs == null ? List.of() : this.lifecyclePreStopHandlerExecs;
     }
     /**
      * @return Commands that you want to run in containers when you use the CLI to perform liveness probes.
@@ -465,6 +477,7 @@ public final class EciScalingConfigurationContainer {
         private @Nullable Integer gpu;
         private @Nullable String image;
         private @Nullable String imagePullPolicy;
+        private @Nullable List<String> lifecyclePreStopHandlerExecs;
         private @Nullable List<String> livenessProbeExecCommands;
         private @Nullable Integer livenessProbeFailureThreshold;
         private @Nullable String livenessProbeHttpGetPath;
@@ -503,6 +516,7 @@ public final class EciScalingConfigurationContainer {
     	      this.gpu = defaults.gpu;
     	      this.image = defaults.image;
     	      this.imagePullPolicy = defaults.imagePullPolicy;
+    	      this.lifecyclePreStopHandlerExecs = defaults.lifecyclePreStopHandlerExecs;
     	      this.livenessProbeExecCommands = defaults.livenessProbeExecCommands;
     	      this.livenessProbeFailureThreshold = defaults.livenessProbeFailureThreshold;
     	      this.livenessProbeHttpGetPath = defaults.livenessProbeHttpGetPath;
@@ -583,6 +597,15 @@ public final class EciScalingConfigurationContainer {
 
             this.imagePullPolicy = imagePullPolicy;
             return this;
+        }
+        @CustomType.Setter
+        public Builder lifecyclePreStopHandlerExecs(@Nullable List<String> lifecyclePreStopHandlerExecs) {
+
+            this.lifecyclePreStopHandlerExecs = lifecyclePreStopHandlerExecs;
+            return this;
+        }
+        public Builder lifecyclePreStopHandlerExecs(String... lifecyclePreStopHandlerExecs) {
+            return lifecyclePreStopHandlerExecs(List.of(lifecyclePreStopHandlerExecs));
         }
         @CustomType.Setter
         public Builder livenessProbeExecCommands(@Nullable List<String> livenessProbeExecCommands) {
@@ -776,6 +799,7 @@ public final class EciScalingConfigurationContainer {
             _resultValue.gpu = gpu;
             _resultValue.image = image;
             _resultValue.imagePullPolicy = imagePullPolicy;
+            _resultValue.lifecyclePreStopHandlerExecs = lifecyclePreStopHandlerExecs;
             _resultValue.livenessProbeExecCommands = livenessProbeExecCommands;
             _resultValue.livenessProbeFailureThreshold = livenessProbeFailureThreshold;
             _resultValue.livenessProbeHttpGetPath = livenessProbeHttpGetPath;

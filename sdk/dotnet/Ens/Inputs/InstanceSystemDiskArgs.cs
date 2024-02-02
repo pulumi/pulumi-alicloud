@@ -13,7 +13,17 @@ namespace Pulumi.AliCloud.Ens.Inputs
     public sealed class InstanceSystemDiskArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// System disk size, cloud_efficiency is 20-32000,cloud_ssd/local_hdd/local_ssd is 20-25000, unit: GB.
+        /// System disk type. Optional values:
+        /// - cloud_efficiency: Ultra cloud disk
+        /// - cloud_ssd: Full Flash cloud disk
+        /// - local_hdd: local hdd disk
+        /// - local_ssd: local disk ssd.
+        /// </summary>
+        [Input("category")]
+        public Input<string>? Category { get; set; }
+
+        /// <summary>
+        /// System disk size, unit: GB.
         /// </summary>
         [Input("size")]
         public Input<int>? Size { get; set; }

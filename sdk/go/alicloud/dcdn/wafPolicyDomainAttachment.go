@@ -27,7 +27,10 @@ import (
 //
 // import (
 //
+//	"fmt"
+//
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/dcdn"
+//	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
@@ -36,17 +39,26 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			cfg := config.New(ctx, "")
+//			domainName := "tf-example.com"
+//			if param := cfg.Get("domainName"); param != "" {
+//				domainName = param
+//			}
 //			name := "tf_example"
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			domainName := "example.com"
-//			if param := cfg.Get("domainName"); param != "" {
-//				domainName = param
+//			_, err := random.NewRandomInteger(ctx, "default", &random.RandomIntegerArgs{
+//				Min: pulumi.Int(10000),
+//				Max: pulumi.Int(99999),
+//			})
+//			if err != nil {
+//				return err
 //			}
 //			exampleDomain, err := dcdn.NewDomain(ctx, "exampleDomain", &dcdn.DomainArgs{
-//				DomainName: pulumi.String(domainName),
-//				Scope:      pulumi.String("overseas"),
+//				DomainName: _default.Result.ApplyT(func(result int) (string, error) {
+//					return fmt.Sprintf("%v-%v", domainName, result), nil
+//				}).(pulumi.StringOutput),
+//				Scope: pulumi.String("overseas"),
 //				Sources: dcdn.DomainSourceArray{
 //					&dcdn.DomainSourceArgs{
 //						Content:  pulumi.String("1.1.1.1"),
@@ -69,9 +81,11 @@ import (
 //			}
 //			exampleWafPolicy, err := dcdn.NewWafPolicy(ctx, "exampleWafPolicy", &dcdn.WafPolicyArgs{
 //				DefenseScene: pulumi.String("waf_group"),
-//				PolicyName:   pulumi.String(name),
-//				PolicyType:   pulumi.String("custom"),
-//				Status:       pulumi.String("on"),
+//				PolicyName: _default.Result.ApplyT(func(result int) (string, error) {
+//					return fmt.Sprintf("%v_%v", name, result), nil
+//				}).(pulumi.StringOutput),
+//				PolicyType: pulumi.String("custom"),
+//				Status:     pulumi.String("on"),
 //			})
 //			if err != nil {
 //				return err

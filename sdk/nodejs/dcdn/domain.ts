@@ -24,11 +24,16 @@ import * as utilities from "../utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
+ * import * as random from "@pulumi/random";
  *
  * const config = new pulumi.Config();
- * const domainName = config.get("domainName") || "example.com";
+ * const domainName = config.get("domainName") || "tf-example.com";
+ * const _default = new random.RandomInteger("default", {
+ *     max: 99999,
+ *     min: 10000,
+ * });
  * const example = new alicloud.dcdn.Domain("example", {
- *     domainName: domainName,
+ *     domainName: pulumi.interpolate`${domainName}-${_default.result}`,
  *     scope: "overseas",
  *     sources: [{
  *         content: "1.1.1.1",

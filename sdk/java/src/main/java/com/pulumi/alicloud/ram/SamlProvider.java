@@ -17,9 +17,9 @@ import javax.annotation.Nullable;
 /**
  * Provides a RAM SAML Provider resource.
  * 
- * For information about RAM SAML Provider and how to use it, see [What is SAML Provider](https://www.alibabacloud.com/help/doc-detail/186846.htm).
+ * For information about RAM SAML Provider and how to use it, see [What is SAML Provider](https://www.alibabacloud.com/help/en/ram/developer-reference/api-ims-2019-08-15-createsamlprovider).
  * 
- * &gt; **NOTE:** Available since v1.114.0+.
+ * &gt; **NOTE:** Available since v1.114.0.
  * 
  * ## Example Usage
  * 
@@ -102,14 +102,14 @@ public class SamlProvider extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="encodedsamlMetadataDocument", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> encodedsamlMetadataDocument;
+    private Output<String> encodedsamlMetadataDocument;
 
     /**
      * @return The metadata file, which is Base64 encoded. The file is provided by an IdP that supports SAML 2.0.
      * 
      */
-    public Output<Optional<String>> encodedsamlMetadataDocument() {
-        return Codegen.optional(this.encodedsamlMetadataDocument);
+    public Output<String> encodedsamlMetadataDocument() {
+        return this.encodedsamlMetadataDocument;
     }
     /**
      * The name of SAML Provider.

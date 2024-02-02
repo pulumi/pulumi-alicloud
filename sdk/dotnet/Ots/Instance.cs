@@ -22,12 +22,19 @@ namespace Pulumi.AliCloud.Ots
     /// using System.Linq;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
+    /// using Random = Pulumi.Random;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "tf-example";
-    ///     var @default = new AliCloud.Ots.Instance("default", new()
+    ///     var defaultRandomInteger = new Random.RandomInteger("defaultRandomInteger", new()
+    ///     {
+    ///         Min = 10000,
+    ///         Max = 99999,
+    ///     });
+    /// 
+    ///     var defaultInstance = new AliCloud.Ots.Instance("defaultInstance", new()
     ///     {
     ///         Description = name,
     ///         AccessedBy = "Vpc",

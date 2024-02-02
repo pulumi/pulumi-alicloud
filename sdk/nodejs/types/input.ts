@@ -2858,7 +2858,7 @@ export namespace cloudstoragegateway {
 export namespace cms {
     export interface AlarmEscalationsCritical {
         /**
-         * Critical level alarm comparison operator. Valid values: ["<=", "<", ">", ">=", "==", "!="]. Default to "==".
+         * Critical level alarm comparison operator. Default value: `==`. Valid values: ["<=", "<", ">", ">=", "==", "!="].
          */
         comparisonOperator?: pulumi.Input<string>;
         /**
@@ -2870,14 +2870,14 @@ export namespace cms {
          */
         threshold?: pulumi.Input<string>;
         /**
-         * Critical level alarm retry times. Default to 3.
+         * Critical level alarm retry times. Default value: `3`.
          */
         times?: pulumi.Input<number>;
     }
 
     export interface AlarmEscalationsInfo {
         /**
-         * Critical level alarm comparison operator. Valid values: ["<=", "<", ">", ">=", "==", "!="]. Default to "==".
+         * Critical level alarm comparison operator. Default value: `==`. Valid values: ["<=", "<", ">", ">=", "==", "!="].
          */
         comparisonOperator?: pulumi.Input<string>;
         /**
@@ -2889,14 +2889,14 @@ export namespace cms {
          */
         threshold?: pulumi.Input<string>;
         /**
-         * Critical level alarm retry times. Default to 3.
+         * Critical level alarm retry times. Default value: `3`.
          */
         times?: pulumi.Input<number>;
     }
 
     export interface AlarmEscalationsWarn {
         /**
-         * Critical level alarm comparison operator. Valid values: ["<=", "<", ">", ">=", "==", "!="]. Default to "==".
+         * Critical level alarm comparison operator. Default value: `==`. Valid values: ["<=", "<", ">", ">=", "==", "!="].
          */
         comparisonOperator?: pulumi.Input<string>;
         /**
@@ -2908,7 +2908,7 @@ export namespace cms {
          */
         threshold?: pulumi.Input<string>;
         /**
-         * Critical level alarm retry times. Default to 3.
+         * Critical level alarm retry times. Default value: `3`.
          */
         times?: pulumi.Input<number>;
     }
@@ -2930,6 +2930,26 @@ export namespace cms {
          * The number of consecutive triggers. If the number of times that the metric values meet the trigger conditions reaches the value of this parameter, CloudMonitor sends alert notifications.
          */
         times?: pulumi.Input<number>;
+    }
+
+    export interface AlarmTarget {
+        /**
+         * The Alibaba Cloud Resource Name (ARN) of the resource.
+         * > **NOTE:** Currently, the Alibaba Cloud Resource Name (ARN) of the resource. To use, please [submit an application](https://www.alibabacloud.com/help/en/cloudmonitor/latest/describemetricruletargets).
+         */
+        arn?: pulumi.Input<string>;
+        /**
+         * The parameters of the alert callback. The parameters are in the JSON format.
+         */
+        jsonParams?: pulumi.Input<string>;
+        /**
+         * The level of the alert. Valid values: `Critical`, `Warn`, `Info`.
+         */
+        level?: pulumi.Input<string>;
+        /**
+         * The ID of the resource for which alerts are triggered.
+         */
+        targetId?: pulumi.Input<string>;
     }
 
     export interface DynamicTagGroupMatchExpress {
@@ -5427,6 +5447,10 @@ export namespace eci {
          */
         imagePullPolicy?: pulumi.Input<string>;
         /**
+         * The commands to be executed in containers when you use the CLI to specify the preStop callback function.
+         */
+        lifecyclePreStopHandlerExecs?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
          * The health check of the container. See `livenessProbe` below.
          */
         livenessProbes?: pulumi.Input<pulumi.Input<inputs.eci.ContainerGroupContainerLivenessProbe>[]>;
@@ -7118,22 +7142,30 @@ export namespace emrv2 {
 export namespace ens {
     export interface InstanceDataDisk {
         /**
-         * Type of dataDisk
-         * - cloud_efficiency：High-efficiency cloud disk
-         * - cloud_ssd：Full flash cloud disk
-         * - local_hdd：Local hdd disk
-         * - local_ssd：Local disk ssd.
+         * Data disk type. Optional values:
+         * - cloud_efficiency: Ultra cloud disk
+         * - cloud_ssd: Full Flash cloud disk
+         * - local_hdd: local hdd disk
+         * - local_ssd: local disk ssd.
          */
         category?: pulumi.Input<string>;
         /**
-         * Data disk size, cloudEfficiency is 20-32000,cloud_ssd/local_hdd/local_ssd is 20-25000, unit: GB.
+         * Data disk size, unit: GB.
          */
         size?: pulumi.Input<number>;
     }
 
     export interface InstanceSystemDisk {
         /**
-         * System disk size, cloudEfficiency is 20-32000,cloud_ssd/local_hdd/local_ssd is 20-25000, unit: GB.
+         * System disk type. Optional values:
+         * - cloud_efficiency: Ultra cloud disk
+         * - cloud_ssd: Full Flash cloud disk
+         * - local_hdd: local hdd disk
+         * - local_ssd: local disk ssd.
+         */
+        category?: pulumi.Input<string>;
+        /**
+         * System disk size, unit: GB.
          */
         size?: pulumi.Input<number>;
     }
@@ -7193,6 +7225,10 @@ export namespace ess {
          * The restart policy of the image.
          */
         imagePullPolicy?: pulumi.Input<string>;
+        /**
+         * The commands to be executed in containers when you use the CLI to specify the preStop callback function.
+         */
+        lifecyclePreStopHandlerExecs?: pulumi.Input<pulumi.Input<string>[]>;
         /**
          * Commands that you want to run in containers when you use the CLI to perform liveness probes.
          */
@@ -7628,6 +7664,17 @@ export namespace ess {
         memory?: pulumi.Input<number>;
     }
 
+    export interface ScalingConfigurationInstanceTypeOverride {
+        /**
+         * The is specified for an instance type in instanceTypeOverride.
+         */
+        instanceType?: pulumi.Input<string>;
+        /**
+         * The weight of instance type in instanceTypeOverride.
+         */
+        weightedCapacity?: pulumi.Input<number>;
+    }
+
     export interface ScalingConfigurationSpotPriceLimit {
         /**
          * Resource type of an ECS instance.
@@ -7637,6 +7684,28 @@ export namespace ess {
          * Price limit hourly of instance type, 2 decimals is allowed at most.
          */
         priceLimit?: pulumi.Input<number>;
+    }
+
+    export interface ScalingGroupLaunchTemplateOverride {
+        /**
+         * The instance type in launchTemplateOverride.
+         */
+        instanceType?: pulumi.Input<string>;
+        /**
+         * The maximum bid price of instance type in launchTemplateOverride.
+         *
+         *
+         * > **NOTE:** When detach loadbalancers, instances in group will be remove from loadbalancer's `Default Server Group`; On the contrary, When attach loadbalancers, instances in group will be added to loadbalancer's `Default Server Group`.
+         *
+         * > **NOTE:** When detach dbInstances, private ip of instances in group will be remove from dbInstance's `WhiteList`; On the contrary, When attach dbInstances, private ip of instances in group will be added to dbInstance's `WhiteList`.
+         *
+         * > **NOTE:** `onDemandBaseCapacity`,`onDemandPercentageAboveBaseCapacity`,`spotInstancePools`,`spotInstanceRemedy` are valid only if `multiAzPolicy` is 'COST_OPTIMIZED'.
+         */
+        spotPriceLimit?: pulumi.Input<number>;
+        /**
+         * The weight of the instance type in launchTemplateOverride.
+         */
+        weightedCapacity?: pulumi.Input<number>;
     }
 
     export interface ScalingGroupVServerGroupsVserverGroup {
@@ -10167,6 +10236,25 @@ export namespace polardb {
          * List of IP addresses allowed to access all databases of a cluster. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
          */
         securityIps?: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface ClusterDbRevisionVersionList {
+        /**
+         * (Available since v1.216.0) The revised version Code of the database engine is used to specify the upgrade to the target version.
+         */
+        releaseNote?: pulumi.Input<string>;
+        /**
+         * (Available since v1.216.0) Database version release status. Valid values are `Stable`, `Old`, `HighRisk`.
+         */
+        releaseType?: pulumi.Input<string>;
+        /**
+         * (Available since v1.216.0) The revised version Code of the database engine is used to specify the upgrade to the target version.
+         */
+        revisionVersionCode?: pulumi.Input<string>;
+        /**
+         * (Available since v1.216.0) The revision version number of the database engine.
+         */
+        revisionVersionName?: pulumi.Input<string>;
     }
 
     export interface ClusterParameter {
@@ -12781,100 +12869,240 @@ export namespace vpc {
 export namespace vpn {
     export interface ConnectionBgpConfig {
         /**
-         * Whether to enable BGP.
+         * Bgp enable.
          */
         enable?: pulumi.Input<boolean>;
         /**
-         * The ASN on the Alibaba Cloud side.
+         * Local asn.
          */
         localAsn?: pulumi.Input<string>;
         /**
-         * The BGP IP address on the Alibaba Cloud side.
+         * Local bgp IP.
          */
         localBgpIp?: pulumi.Input<string>;
         /**
-         * The CIDR block of the IPsec tunnel. The CIDR block belongs to 169.254.0.0/16. The mask of the CIDR block is 30 bits in length.
+         * The negotiation status of Tunnel.
+         */
+        status?: pulumi.Input<string>;
+        /**
+         * IPSec tunnel Cidr.
          */
         tunnelCidr?: pulumi.Input<string>;
     }
 
     export interface ConnectionHealthCheckConfig {
         /**
-         * The destination IP address.
+         * Destination IP.
          */
         dip?: pulumi.Input<string>;
         /**
-         * Whether to enable Health Check.
+         * Specifies whether to enable healthcheck.
          */
         enable?: pulumi.Input<boolean>;
         /**
-         * The interval between two consecutive health checks. Unit: seconds.
+         * Retry interval.
          */
         interval?: pulumi.Input<number>;
         /**
-         * The maximum number of health check retries.
+         * retry times.
          */
         retry?: pulumi.Input<number>;
         /**
-         * The source IP address.
+         * Source IP.
          */
         sip?: pulumi.Input<string>;
     }
 
     export interface ConnectionIkeConfig {
         /**
-         * The authentication algorithm of phase-one negotiation. Valid value: md5 | sha1 . Default value: md5
+         * IKE auth Algorithm.
          */
         ikeAuthAlg?: pulumi.Input<string>;
         /**
-         * The encryption algorithm of phase-one negotiation. Valid value: aes | aes192 | aes256 | des | 3des. Default Valid value: aes
+         * IKE encript algorithm.
          */
         ikeEncAlg?: pulumi.Input<string>;
         /**
-         * The SA lifecycle as the result of phase-one negotiation. The valid value of n is [0, 86400], the unit is second and the default value is 86400.
+         * IKE lifetime.
          */
         ikeLifetime?: pulumi.Input<number>;
         /**
-         * The identification of the VPN gateway.
+         * The local ID, which supports the FQDN and IP formats, and defaults to the IP address of the selected VPN gateway.
          */
         ikeLocalId?: pulumi.Input<string>;
         /**
-         * The negotiation mode of IKE V1. Valid value: main (main mode) | aggressive (aggressive mode). Default value: main
+         * IKE mode, supports main and aggressive mode. The main mode is highly secure. If NAT traversal is enabled, we recommend that you use the aggressive mode.
          */
         ikeMode?: pulumi.Input<string>;
         /**
-         * The Diffie-Hellman key exchange algorithm used by phase-one negotiation. Valid value: group1 | group2 | group5 | group14 | group24. Default value: group2
+         * DH group.
          */
         ikePfs?: pulumi.Input<string>;
         /**
-         * The identification of the customer gateway.
+         * The peer ID. The FQDN and IP address formats are supported. The default value is the IP address of the selected customer gateway.
          */
         ikeRemoteId?: pulumi.Input<string>;
         /**
-         * The version of the IKE protocol. Valid value: ikev1 | ikev2. Default value: ikev1
+         * IKE version.
          */
         ikeVersion?: pulumi.Input<string>;
         /**
-         * Used for authentication between the IPsec VPN gateway and the customer gateway.
+         * Preshared secret key.
          */
         psk?: pulumi.Input<string>;
     }
 
     export interface ConnectionIpsecConfig {
         /**
-         * The authentication algorithm of phase-two negotiation. Valid value: md5 | sha1 | sha256 | sha384 | sha512 |. Default value: sha1
+         * IPsec authentication algorithm. sha1 and md5 are supported.
          */
         ipsecAuthAlg?: pulumi.Input<string>;
         /**
-         * The encryption algorithm of phase-two negotiation. Valid value: aes | aes192 | aes256 | des | 3des. Default value: aes
+         * IPsec Encript algorithm.
          */
         ipsecEncAlg?: pulumi.Input<string>;
         /**
-         * The SA lifecycle as the result of phase-two negotiation. The valid value is [0, 86400], the unit is second and the default value is 86400.
+         * IPsec lifetime.
          */
         ipsecLifetime?: pulumi.Input<number>;
         /**
-         * The Diffie-Hellman key exchange algorithm used by phase-two negotiation. Valid value: group1 | group2 | group5 | group14 | group24| disabled. Default value: group2
+         * DH Group.
+         */
+        ipsecPfs?: pulumi.Input<string>;
+    }
+
+    export interface ConnectionTunnelOptionsSpecification {
+        /**
+         * The ID of the customer gateway in Tunnel.
+         */
+        customerGatewayId?: pulumi.Input<string>;
+        /**
+         * Wether enable Dpd detection.
+         */
+        enableDpd?: pulumi.Input<boolean>;
+        /**
+         * enable nat traversal.
+         */
+        enableNatTraversal?: pulumi.Input<boolean>;
+        /**
+         * The local internet IP in Tunnel.
+         */
+        internetIp?: pulumi.Input<string>;
+        /**
+         * The role of Tunnel.
+         */
+        role?: pulumi.Input<string>;
+        /**
+         * The state of Tunnel.
+         */
+        state?: pulumi.Input<string>;
+        /**
+         * The negotiation status of Tunnel.
+         */
+        status?: pulumi.Input<string>;
+        /**
+         * The bgp config of Tunnel. See `tunnelBgpConfig` below.
+         */
+        tunnelBgpConfig?: pulumi.Input<inputs.vpn.ConnectionTunnelOptionsSpecificationTunnelBgpConfig>;
+        /**
+         * The tunnel ID of IPsec-VPN connection.
+         */
+        tunnelId?: pulumi.Input<string>;
+        /**
+         * The configuration of Phase 1 negotiations in Tunnel. See `tunnelIkeConfig` below.
+         */
+        tunnelIkeConfig?: pulumi.Input<inputs.vpn.ConnectionTunnelOptionsSpecificationTunnelIkeConfig>;
+        /**
+         * IPsec configuration in Tunnel. See `tunnelIpsecConfig` below.
+         */
+        tunnelIpsecConfig?: pulumi.Input<inputs.vpn.ConnectionTunnelOptionsSpecificationTunnelIpsecConfig>;
+        /**
+         * The zoneNo of tunnel.
+         */
+        zoneNo?: pulumi.Input<string>;
+    }
+
+    export interface ConnectionTunnelOptionsSpecificationTunnelBgpConfig {
+        /**
+         * Whether BGP function is turned on.
+         */
+        bgpStatus?: pulumi.Input<string>;
+        /**
+         * Local asn.
+         */
+        localAsn?: pulumi.Input<string>;
+        /**
+         * Local bgp IP.
+         */
+        localBgpIp?: pulumi.Input<string>;
+        /**
+         * Peer asn.
+         */
+        peerAsn?: pulumi.Input<string>;
+        /**
+         * Peer bgp ip.
+         */
+        peerBgpIp?: pulumi.Input<string>;
+        /**
+         * IPSec tunnel Cidr.
+         */
+        tunnelCidr?: pulumi.Input<string>;
+    }
+
+    export interface ConnectionTunnelOptionsSpecificationTunnelIkeConfig {
+        /**
+         * IKE auth Algorithm.
+         */
+        ikeAuthAlg?: pulumi.Input<string>;
+        /**
+         * IKE encript algorithm.
+         */
+        ikeEncAlg?: pulumi.Input<string>;
+        /**
+         * IKE lifetime.
+         */
+        ikeLifetime?: pulumi.Input<number>;
+        /**
+         * IKE mode, supports main and aggressive mode. The main mode is highly secure. If NAT traversal is enabled, we recommend that you use the aggressive mode.
+         */
+        ikeMode?: pulumi.Input<string>;
+        /**
+         * DH group.
+         */
+        ikePfs?: pulumi.Input<string>;
+        /**
+         * IKE version.
+         */
+        ikeVersion?: pulumi.Input<string>;
+        /**
+         * The local Id.
+         */
+        localId?: pulumi.Input<string>;
+        /**
+         * Preshared secret key.
+         */
+        psk?: pulumi.Input<string>;
+        /**
+         * Remote ID.
+         */
+        remoteId?: pulumi.Input<string>;
+    }
+
+    export interface ConnectionTunnelOptionsSpecificationTunnelIpsecConfig {
+        /**
+         * IPsec authentication algorithm. sha1 and md5 are supported.
+         */
+        ipsecAuthAlg?: pulumi.Input<string>;
+        /**
+         * IPsec Encript algorithm.
+         */
+        ipsecEncAlg?: pulumi.Input<string>;
+        /**
+         * IPsec lifetime.
+         */
+        ipsecLifetime?: pulumi.Input<number>;
+        /**
+         * DH Group.
          */
         ipsecPfs?: pulumi.Input<string>;
     }

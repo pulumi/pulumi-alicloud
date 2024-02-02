@@ -10,14 +10,14 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.AliKafka
 {
     /// <summary>
-    /// Provides an Alikafka sasl user resource.
+    /// Provides an Alikafka Sasl User resource.
     /// 
     /// &gt; **NOTE:** Available since v1.66.0.
     /// 
-    /// &gt; **NOTE:**  Only the following regions support create alikafka sasl user.
+    /// &gt; **NOTE:**  Only the following regions support create alikafka Sasl User.
     /// [`cn-hangzhou`,`cn-beijing`,`cn-shenzhen`,`cn-shanghai`,`cn-qingdao`,`cn-hongkong`,`cn-huhehaote`,`cn-zhangjiakou`,`cn-chengdu`,`cn-heyuan`,`ap-southeast-1`,`ap-southeast-3`,`ap-southeast-5`,`ap-south-1`,`ap-northeast-1`,`eu-central-1`,`eu-west-1`,`us-west-1`,`us-east-1`]
     /// 
-    /// For information about Alikafka sasl user and how to use it, see [What is Alikafka sasl user ](https://www.alibabacloud.com/help/en/message-queue-for-apache-kafka/latest/api-alikafka-2019-09-16-createsasluser).
+    /// For information about Alikafka Sasl User and how to use it, see [What is Sasl User](https://www.alibabacloud.com/help/en/message-queue-for-apache-kafka/latest/api-alikafka-2019-09-16-createsasluser).
     /// 
     /// ## Example Usage
     /// 
@@ -66,16 +66,12 @@ namespace Pulumi.AliCloud.AliKafka
     ///         IoMax = 20,
     ///         SpecType = "professional",
     ///         ServiceVersion = "2.2.0",
-    ///         Config = "{\"enable.acl\":\"true\"}",
     ///         VswitchId = defaultSwitch.Id,
     ///         SecurityGroup = defaultSecurityGroup.Id,
-    ///     });
-    /// 
-    ///     var defaultTopic = new AliCloud.AliKafka.Topic("defaultTopic", new()
-    ///     {
-    ///         InstanceId = defaultInstance.Id,
-    ///         TopicName = "example-topic",
-    ///         Remark = "topic-remark",
+    ///         Config = @"  {
+    ///     ""enable.acl"": ""true""
+    ///   }
+    /// ",
     ///     });
     /// 
     ///     var defaultSaslUser = new AliCloud.AliKafka.SaslUser("defaultSaslUser", new()
@@ -118,19 +114,19 @@ namespace Pulumi.AliCloud.AliKafka
         public Output<ImmutableDictionary<string, object>?> KmsEncryptionContext { get; private set; } = null!;
 
         /// <summary>
-        /// Operation password. It may consist of letters, digits, or underlines, with a length of 1 to 64 characters. You have to specify one of `password` and `kms_encrypted_password` fields.
+        /// The password of the SASL user. It may consist of letters, digits, or underlines, with a length of 1 to 64 characters. You have to specify one of `password` and `kms_encrypted_password` fields.
         /// </summary>
         [Output("password")]
         public Output<string?> Password { get; private set; } = null!;
 
         /// <summary>
-        /// The authentication mechanism. Valid values: `plain`, `scram`. Default value: `plain`.
+        /// The authentication mechanism. Default value: `plain`. Valid values: `plain`, `scram`.
         /// </summary>
         [Output("type")]
-        public Output<string?> Type { get; private set; } = null!;
+        public Output<string> Type { get; private set; } = null!;
 
         /// <summary>
-        /// Username for the sasl user. The length should between 1 to 64 characters. The characters can only contain 'a'-'z', 'A'-'Z', '0'-'9', '_' and '-'.
+        /// The name of the SASL user. The length should between `1` to `64` characters. The characters can only contain `a`-`z`, `A`-`Z`, `0`-`9`, `_` and `-`.
         /// </summary>
         [Output("username")]
         public Output<string> Username { get; private set; } = null!;
@@ -213,7 +209,7 @@ namespace Pulumi.AliCloud.AliKafka
         private Input<string>? _password;
 
         /// <summary>
-        /// Operation password. It may consist of letters, digits, or underlines, with a length of 1 to 64 characters. You have to specify one of `password` and `kms_encrypted_password` fields.
+        /// The password of the SASL user. It may consist of letters, digits, or underlines, with a length of 1 to 64 characters. You have to specify one of `password` and `kms_encrypted_password` fields.
         /// </summary>
         public Input<string>? Password
         {
@@ -226,13 +222,13 @@ namespace Pulumi.AliCloud.AliKafka
         }
 
         /// <summary>
-        /// The authentication mechanism. Valid values: `plain`, `scram`. Default value: `plain`.
+        /// The authentication mechanism. Default value: `plain`. Valid values: `plain`, `scram`.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
 
         /// <summary>
-        /// Username for the sasl user. The length should between 1 to 64 characters. The characters can only contain 'a'-'z', 'A'-'Z', '0'-'9', '_' and '-'.
+        /// The name of the SASL user. The length should between `1` to `64` characters. The characters can only contain `a`-`z`, `A`-`Z`, `0`-`9`, `_` and `-`.
         /// </summary>
         [Input("username", required: true)]
         public Input<string> Username { get; set; } = null!;
@@ -273,7 +269,7 @@ namespace Pulumi.AliCloud.AliKafka
         private Input<string>? _password;
 
         /// <summary>
-        /// Operation password. It may consist of letters, digits, or underlines, with a length of 1 to 64 characters. You have to specify one of `password` and `kms_encrypted_password` fields.
+        /// The password of the SASL user. It may consist of letters, digits, or underlines, with a length of 1 to 64 characters. You have to specify one of `password` and `kms_encrypted_password` fields.
         /// </summary>
         public Input<string>? Password
         {
@@ -286,13 +282,13 @@ namespace Pulumi.AliCloud.AliKafka
         }
 
         /// <summary>
-        /// The authentication mechanism. Valid values: `plain`, `scram`. Default value: `plain`.
+        /// The authentication mechanism. Default value: `plain`. Valid values: `plain`, `scram`.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
 
         /// <summary>
-        /// Username for the sasl user. The length should between 1 to 64 characters. The characters can only contain 'a'-'z', 'A'-'Z', '0'-'9', '_' and '-'.
+        /// The name of the SASL user. The length should between `1` to `64` characters. The characters can only contain `a`-`z`, `A`-`Z`, `0`-`9`, `_` and `-`.
         /// </summary>
         [Input("username")]
         public Input<string>? Username { get; set; }

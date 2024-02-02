@@ -280,6 +280,11 @@ export type Ipv4Gateway = import("./ipv4Gateway").Ipv4Gateway;
 export const Ipv4Gateway: typeof import("./ipv4Gateway").Ipv4Gateway = null as any;
 utilities.lazyLoad(exports, ["Ipv4Gateway"], () => require("./ipv4Gateway"));
 
+export { Ipv6AddressArgs, Ipv6AddressState } from "./ipv6Address";
+export type Ipv6Address = import("./ipv6Address").Ipv6Address;
+export const Ipv6Address: typeof import("./ipv6Address").Ipv6Address = null as any;
+utilities.lazyLoad(exports, ["Ipv6Address"], () => require("./ipv6Address"));
+
 export { Ipv6EgressRuleArgs, Ipv6EgressRuleState } from "./ipv6EgressRule";
 export type Ipv6EgressRule = import("./ipv6EgressRule").Ipv6EgressRule;
 export const Ipv6EgressRule: typeof import("./ipv6EgressRule").Ipv6EgressRule = null as any;
@@ -479,6 +484,8 @@ const _module = {
                 return new Ipv4CidrBlock(name, <any>undefined, { urn })
             case "alicloud:vpc/ipv4Gateway:Ipv4Gateway":
                 return new Ipv4Gateway(name, <any>undefined, { urn })
+            case "alicloud:vpc/ipv6Address:Ipv6Address":
+                return new Ipv6Address(name, <any>undefined, { urn })
             case "alicloud:vpc/ipv6EgressRule:Ipv6EgressRule":
                 return new Ipv6EgressRule(name, <any>undefined, { urn })
             case "alicloud:vpc/ipv6Gateway:Ipv6Gateway":
@@ -565,6 +572,7 @@ pulumi.runtime.registerResourceModule("alicloud", "vpc/hAVipAttachment", _module
 pulumi.runtime.registerResourceModule("alicloud", "vpc/haVipv2", _module)
 pulumi.runtime.registerResourceModule("alicloud", "vpc/ipv4CidrBlock", _module)
 pulumi.runtime.registerResourceModule("alicloud", "vpc/ipv4Gateway", _module)
+pulumi.runtime.registerResourceModule("alicloud", "vpc/ipv6Address", _module)
 pulumi.runtime.registerResourceModule("alicloud", "vpc/ipv6EgressRule", _module)
 pulumi.runtime.registerResourceModule("alicloud", "vpc/ipv6Gateway", _module)
 pulumi.runtime.registerResourceModule("alicloud", "vpc/ipv6InternetBandwidth", _module)

@@ -12,8 +12,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a Sag qos car resource.
-// You need to create a QoS car to set priorities, rate limits, and quintuple rules for different messages.
+// Provides a Sag Qos Car resource.
 //
 // For information about Sag Qos Car and how to use it, see [What is Qos Car](https://www.alibabacloud.com/help/en/smart-access-gateway/latest/createqoscar).
 //
@@ -48,15 +47,13 @@ import (
 //				return err
 //			}
 //			_, err = rocketmq.NewQosCar(ctx, "defaultQosCar", &rocketmq.QosCarArgs{
-//				QosId:               defaultQos.ID(),
-//				Description:         pulumi.String(name),
-//				Priority:            pulumi.Int(1),
-//				LimitType:           pulumi.String("Absolute"),
-//				MinBandwidthAbs:     pulumi.Int(10),
-//				MaxBandwidthAbs:     pulumi.Int(20),
-//				MinBandwidthPercent: pulumi.Int(10),
-//				MaxBandwidthPercent: pulumi.Int(20),
-//				PercentSourceType:   pulumi.String("InternetUpBandwidth"),
+//				QosId:             defaultQos.ID(),
+//				Description:       pulumi.String(name),
+//				Priority:          pulumi.Int(1),
+//				LimitType:         pulumi.String("Absolute"),
+//				MinBandwidthAbs:   pulumi.Int(10),
+//				MaxBandwidthAbs:   pulumi.Int(20),
+//				PercentSourceType: pulumi.String("InternetUpBandwidth"),
 //			})
 //			if err != nil {
 //				return err
@@ -73,7 +70,7 @@ import (
 //
 // ```sh
 //
-//	$ pulumi import alicloud:rocketmq/qosCar:QosCar example qos-abc123456:qoscar-abc123456
+//	$ pulumi import alicloud:rocketmq/qosCar:QosCar example <qos_id>:<qos_car_id>
 //
 // ```
 type QosCar struct {
@@ -81,7 +78,7 @@ type QosCar struct {
 
 	// The description of the QoS speed limiting rule.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// The speed limiting method. Valid values: Absolute, Percent.
+	// The speed limiting method. Valid values: `Absolute`, `Percent`.
 	LimitType pulumi.StringOutput `pulumi:"limitType"`
 	// The maximum bandwidth allowed for the stream specified in the quintuple rule. This parameter is required when the value of the LimitType is Absolute.
 	MaxBandwidthAbs pulumi.IntPtrOutput `pulumi:"maxBandwidthAbs"`
@@ -142,7 +139,7 @@ func GetQosCar(ctx *pulumi.Context,
 type qosCarState struct {
 	// The description of the QoS speed limiting rule.
 	Description *string `pulumi:"description"`
-	// The speed limiting method. Valid values: Absolute, Percent.
+	// The speed limiting method. Valid values: `Absolute`, `Percent`.
 	LimitType *string `pulumi:"limitType"`
 	// The maximum bandwidth allowed for the stream specified in the quintuple rule. This parameter is required when the value of the LimitType is Absolute.
 	MaxBandwidthAbs *int `pulumi:"maxBandwidthAbs"`
@@ -165,7 +162,7 @@ type qosCarState struct {
 type QosCarState struct {
 	// The description of the QoS speed limiting rule.
 	Description pulumi.StringPtrInput
-	// The speed limiting method. Valid values: Absolute, Percent.
+	// The speed limiting method. Valid values: `Absolute`, `Percent`.
 	LimitType pulumi.StringPtrInput
 	// The maximum bandwidth allowed for the stream specified in the quintuple rule. This parameter is required when the value of the LimitType is Absolute.
 	MaxBandwidthAbs pulumi.IntPtrInput
@@ -192,7 +189,7 @@ func (QosCarState) ElementType() reflect.Type {
 type qosCarArgs struct {
 	// The description of the QoS speed limiting rule.
 	Description *string `pulumi:"description"`
-	// The speed limiting method. Valid values: Absolute, Percent.
+	// The speed limiting method. Valid values: `Absolute`, `Percent`.
 	LimitType string `pulumi:"limitType"`
 	// The maximum bandwidth allowed for the stream specified in the quintuple rule. This parameter is required when the value of the LimitType is Absolute.
 	MaxBandwidthAbs *int `pulumi:"maxBandwidthAbs"`
@@ -216,7 +213,7 @@ type qosCarArgs struct {
 type QosCarArgs struct {
 	// The description of the QoS speed limiting rule.
 	Description pulumi.StringPtrInput
-	// The speed limiting method. Valid values: Absolute, Percent.
+	// The speed limiting method. Valid values: `Absolute`, `Percent`.
 	LimitType pulumi.StringInput
 	// The maximum bandwidth allowed for the stream specified in the quintuple rule. This parameter is required when the value of the LimitType is Absolute.
 	MaxBandwidthAbs pulumi.IntPtrInput
@@ -328,7 +325,7 @@ func (o QosCarOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *QosCar) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// The speed limiting method. Valid values: Absolute, Percent.
+// The speed limiting method. Valid values: `Absolute`, `Percent`.
 func (o QosCarOutput) LimitType() pulumi.StringOutput {
 	return o.ApplyT(func(v *QosCar) pulumi.StringOutput { return v.LimitType }).(pulumi.StringOutput)
 }

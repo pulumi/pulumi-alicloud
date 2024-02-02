@@ -53,9 +53,6 @@ class GetDdosCooInstancesResult:
     @property
     @pulumi.getter
     def ids(self) -> Sequence[str]:
-        """
-        A list of instance IDs.
-        """
         return pulumi.get(self, "ids")
 
     @property
@@ -104,16 +101,20 @@ def get_ddos_coo_instances(ids: Optional[Sequence[str]] = None,
                            output_file: Optional[str] = None,
                            opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDdosCooInstancesResult:
     """
-    This data source provides a list of BGP-Line Anti-DDoS Pro instances in an Alibaba Cloud account according to the specified filters.
+    This data source provides the BGP-Line Anti-DDoS Pro(DdosCoo) instances of the current Alibaba Cloud user.
+
+    > **NOTE:** Available since v1.39.0.
 
     ## Example Usage
+
+    Basic Usage
 
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
 
-    instance_ddos_coo_instances = alicloud.ddos.get_ddos_coo_instances(name_regex="^ddoscoo")
-    pulumi.export("instance", [__item["id"] for __item in alicloud_ddoscoo_instances["instance"]])
+    default = alicloud.ddos.get_ddos_coo_instances(name_regex="tf")
+    pulumi.export("instance", [__item.id for __item in default.instances])
     ```
 
 
@@ -143,16 +144,20 @@ def get_ddos_coo_instances_output(ids: Optional[pulumi.Input[Optional[Sequence[s
                                   output_file: Optional[pulumi.Input[Optional[str]]] = None,
                                   opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDdosCooInstancesResult]:
     """
-    This data source provides a list of BGP-Line Anti-DDoS Pro instances in an Alibaba Cloud account according to the specified filters.
+    This data source provides the BGP-Line Anti-DDoS Pro(DdosCoo) instances of the current Alibaba Cloud user.
+
+    > **NOTE:** Available since v1.39.0.
 
     ## Example Usage
+
+    Basic Usage
 
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
 
-    instance_ddos_coo_instances = alicloud.ddos.get_ddos_coo_instances(name_regex="^ddoscoo")
-    pulumi.export("instance", [__item["id"] for __item in alicloud_ddoscoo_instances["instance"]])
+    default = alicloud.ddos.get_ddos_coo_instances(name_regex="tf")
+    pulumi.export("instance", [__item.id for __item in default.instances])
     ```
 
 

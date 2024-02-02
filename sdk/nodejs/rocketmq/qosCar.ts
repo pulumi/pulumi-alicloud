@@ -5,8 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Provides a Sag qos car resource.
- * You need to create a QoS car to set priorities, rate limits, and quintuple rules for different messages.
+ * Provides a Sag Qos Car resource.
  *
  * For information about Sag Qos Car and how to use it, see [What is Qos Car](https://www.alibabacloud.com/help/en/smart-access-gateway/latest/createqoscar).
  *
@@ -32,8 +31,6 @@ import * as utilities from "../utilities";
  *     limitType: "Absolute",
  *     minBandwidthAbs: 10,
  *     maxBandwidthAbs: 20,
- *     minBandwidthPercent: 10,
- *     maxBandwidthPercent: 20,
  *     percentSourceType: "InternetUpBandwidth",
  * });
  * ```
@@ -43,7 +40,7 @@ import * as utilities from "../utilities";
  * The Sag Qos Car can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:rocketmq/qosCar:QosCar example qos-abc123456:qoscar-abc123456
+ *  $ pulumi import alicloud:rocketmq/qosCar:QosCar example <qos_id>:<qos_car_id>
  * ```
  */
 export class QosCar extends pulumi.CustomResource {
@@ -79,7 +76,7 @@ export class QosCar extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * The speed limiting method. Valid values: Absolute, Percent.
+     * The speed limiting method. Valid values: `Absolute`, `Percent`.
      */
     public readonly limitType!: pulumi.Output<string>;
     /**
@@ -174,7 +171,7 @@ export interface QosCarState {
      */
     description?: pulumi.Input<string>;
     /**
-     * The speed limiting method. Valid values: Absolute, Percent.
+     * The speed limiting method. Valid values: `Absolute`, `Percent`.
      */
     limitType?: pulumi.Input<string>;
     /**
@@ -220,7 +217,7 @@ export interface QosCarArgs {
      */
     description?: pulumi.Input<string>;
     /**
-     * The speed limiting method. Valid values: Absolute, Percent.
+     * The speed limiting method. Valid values: `Absolute`, `Percent`.
      */
     limitType: pulumi.Input<string>;
     /**

@@ -32,28 +32,86 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:ens/instance:Instance")
 public class Instance extends com.pulumi.resources.CustomResource {
     /**
-     * Whether to automatically renew, default to False, this parameter is invalid when paying by volume.
+     * The number of instances created, with a minimum of 1 and a maximum of 100.
+     * 
+     */
+    @Export(name="amount", refs={Integer.class}, tree="[0]")
+    private Output</* @Nullable */ Integer> amount;
+
+    /**
+     * @return The number of instances created, with a minimum of 1 and a maximum of 100.
+     * 
+     */
+    public Output<Optional<Integer>> amount() {
+        return Codegen.optional(this.amount);
+    }
+    /**
+     * Whether to automatically renew the logo. The default value is false. This parameter is invalid when you pay by volume.
      * 
      */
     @Export(name="autoRenew", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> autoRenew;
 
     /**
-     * @return Whether to automatically renew, default to False, this parameter is invalid when paying by volume.
+     * @return Whether to automatically renew the logo. The default value is false. This parameter is invalid when you pay by volume.
      * 
      */
     public Output<Optional<Boolean>> autoRenew() {
         return Codegen.optional(this.autoRenew);
     }
     /**
-     * Operator, required for regional level scheduling, invalid for node level scheduling.
+     * Whether to use vouchers. The default is to use. Value:
+     * - true (used)
+     * - false (not used).
+     * 
+     */
+    @Export(name="autoUseCoupon", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> autoUseCoupon;
+
+    /**
+     * @return Whether to use vouchers. The default is to use. Value:
+     * - true (used)
+     * - false (not used).
+     * 
+     */
+    public Output<Optional<String>> autoUseCoupon() {
+        return Codegen.optional(this.autoUseCoupon);
+    }
+    /**
+     * The billing cycle for instance computing resources. Only instance-level pay-as-you-go is supported. Value
+     * - Hour: hourly billing
+     * - Day: Daily billing
+     * - Month: monthly billing.
+     * 
+     */
+    @Export(name="billingCycle", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> billingCycle;
+
+    /**
+     * @return The billing cycle for instance computing resources. Only instance-level pay-as-you-go is supported. Value
+     * - Hour: hourly billing
+     * - Day: Daily billing
+     * - Month: monthly billing.
+     * 
+     */
+    public Output<Optional<String>> billingCycle() {
+        return Codegen.optional(this.billingCycle);
+    }
+    /**
+     * Operator, required for regional scheduling. Optional values:
+     * - cmcc (mobile)
+     * - unicom
+     * - telecom.
      * 
      */
     @Export(name="carrier", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> carrier;
 
     /**
-     * @return Operator, required for regional level scheduling, invalid for node level scheduling.
+     * @return Operator, required for regional scheduling. Optional values:
+     * - cmcc (mobile)
+     * - unicom
+     * - telecom.
      * 
      */
     public Output<Optional<String>> carrier() {
@@ -64,150 +122,224 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="dataDisks", refs={List.class,InstanceDataDisk.class}, tree="[0,1]")
-    private Output</* @Nullable */ List<InstanceDataDisk>> dataDisks;
+    private Output<List<InstanceDataDisk>> dataDisks;
 
     /**
      * @return Data disk specifications. See `data_disk` below.
      * 
      */
-    public Output<Optional<List<InstanceDataDisk>>> dataDisks() {
-        return Codegen.optional(this.dataDisks);
+    public Output<List<InstanceDataDisk>> dataDisks() {
+        return this.dataDisks;
     }
     /**
-     * Node id. When ScheduleAreaLevel is Region, EnsRegionId is required. When ScheduleAreaLevel is Big, Middle, Small, EnsRegionId is not required.
+     * The node ID. When ScheduleAreaLevel is Region, EnsRegionId is required. When ScheduleAreaLevel is Big,Middle,Small, EnsRegionId is invalid.
      * 
      */
     @Export(name="ensRegionId", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> ensRegionId;
+    private Output<String> ensRegionId;
 
     /**
-     * @return Node id. When ScheduleAreaLevel is Region, EnsRegionId is required. When ScheduleAreaLevel is Big, Middle, Small, EnsRegionId is not required.
+     * @return The node ID. When ScheduleAreaLevel is Region, EnsRegionId is required. When ScheduleAreaLevel is Big,Middle,Small, EnsRegionId is invalid.
      * 
      */
-    public Output<Optional<String>> ensRegionId() {
-        return Codegen.optional(this.ensRegionId);
+    public Output<String> ensRegionId() {
+        return this.ensRegionId;
     }
     /**
-     * Host Name.
+     * Whether to force the identity when operating the instance. Optional values:
+     * - true: Force
+     * - false (default): non-mandatory
+     * 
+     */
+    @Export(name="forceStop", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> forceStop;
+
+    /**
+     * @return Whether to force the identity when operating the instance. Optional values:
+     * - true: Force
+     * - false (default): non-mandatory
+     * 
+     */
+    public Output<Optional<String>> forceStop() {
+        return Codegen.optional(this.forceStop);
+    }
+    /**
+     * The host name of the instance. Example value: test-HostName.
      * 
      */
     @Export(name="hostName", refs={String.class}, tree="[0]")
     private Output<String> hostName;
 
     /**
-     * @return Host Name.
+     * @return The host name of the instance. Example value: test-HostName.
      * 
      */
     public Output<String> hostName() {
         return this.hostName;
     }
     /**
-     * The Image Id field. If InstanceType is arm_bmi, the image Id is a non-required parameter. If instanceType is another specification value, the image Id is a required parameter.
+     * The image ID of the instance. The arm version card cannot be filled in. Other specifications are required. Example value: m-5si16wo6simkt267p8b7h * * * *.
      * 
      */
     @Export(name="imageId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> imageId;
 
     /**
-     * @return The Image Id field. If InstanceType is arm_bmi, the image Id is a non-required parameter. If instanceType is another specification value, the image Id is a required parameter.
+     * @return The image ID of the instance. The arm version card cannot be filled in. Other specifications are required. Example value: m-5si16wo6simkt267p8b7h * * * *.
      * 
      */
     public Output<Optional<String>> imageId() {
         return Codegen.optional(this.imageId);
     }
     /**
-     * Instance billing strategy, instance: instance granularity (prepaid method currently does not support instance), user: by user dimension (not transferred or prepaid method supports user).
+     * Whether the Payment type of the disk created with the instance is converted.
+     * 
+     */
+    @Export(name="includeDataDisks", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> includeDataDisks;
+
+    /**
+     * @return Whether the Payment type of the disk created with the instance is converted.
+     * 
+     */
+    public Output<Optional<Boolean>> includeDataDisks() {
+        return Codegen.optional(this.includeDataDisks);
+    }
+    /**
+     * The instance billing policy. Optional values:
+     * - instance: instance granularity (the subscription method does not support instance)
+     * - user: user Dimension (user is not transmitted or supported in the prepaid mode).
      * 
      */
     @Export(name="instanceChargeStrategy", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> instanceChargeStrategy;
 
     /**
-     * @return Instance billing strategy, instance: instance granularity (prepaid method currently does not support instance), user: by user dimension (not transferred or prepaid method supports user).
+     * @return The instance billing policy. Optional values:
+     * - instance: instance granularity (the subscription method does not support instance)
+     * - user: user Dimension (user is not transmitted or supported in the prepaid mode).
      * 
      */
     public Output<Optional<String>> instanceChargeStrategy() {
         return Codegen.optional(this.instanceChargeStrategy);
     }
     /**
-     * The instance name. It must be 2 to 128 characters in length and must start with an uppercase or lowercase letter or a Chinese character. It cannot start with http:// or https. It can contain Chinese, English, numbers, half-width colons (:), underscores (_), periods (.), or hyphens (-). The default value is the InstanceId of the instance.
+     * The instance name. Example value: test-InstanceName. It must be 2 to 128 characters in length and must start with an uppercase or lowercase letter or a Chinese character. It cannot start with http:// or https. Can contain Chinese, English, numbers, half-width colons (:), underscores (_), periods (.), or hyphens (-) The default value is the InstanceId of the instance. .
      * 
      */
     @Export(name="instanceName", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> instanceName;
+    private Output<String> instanceName;
 
     /**
-     * @return The instance name. It must be 2 to 128 characters in length and must start with an uppercase or lowercase letter or a Chinese character. It cannot start with http:// or https. It can contain Chinese, English, numbers, half-width colons (:), underscores (_), periods (.), or hyphens (-). The default value is the InstanceId of the instance.
+     * @return The instance name. Example value: test-InstanceName. It must be 2 to 128 characters in length and must start with an uppercase or lowercase letter or a Chinese character. It cannot start with http:// or https. Can contain Chinese, English, numbers, half-width colons (:), underscores (_), periods (.), or hyphens (-) The default value is the InstanceId of the instance. .
      * 
      */
-    public Output<Optional<String>> instanceName() {
-        return Codegen.optional(this.instanceName);
+    public Output<String> instanceName() {
+        return this.instanceName;
     }
     /**
-     * Instance specifications type.
+     * The specification of the instance. Example value: ens.sn1.small.
      * 
      */
     @Export(name="instanceType", refs={String.class}, tree="[0]")
     private Output<String> instanceType;
 
     /**
-     * @return Instance specifications type.
+     * @return The specification of the instance. Example value: ens.sn1.small.
      * 
      */
     public Output<String> instanceType() {
         return this.instanceType;
     }
     /**
-     * Instance Charge type.it could be BandwidthByDay, 95BandwidthByMonth, PayByBandwidth4thMonth.
+     * Instance bandwidth billing method. If the billing method can be selected for the first purchase, the subsequent value of this field will be processed by default according to the billing method selected for the first time. Optional values:
+     * - BandwidthByDay: Daily peak bandwidth
+     * - 95bandwidthbymonth: 95 peak bandwidth.
      * 
      */
     @Export(name="internetChargeType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> internetChargeType;
 
     /**
-     * @return Instance Charge type.it could be BandwidthByDay, 95BandwidthByMonth, PayByBandwidth4thMonth.
+     * @return Instance bandwidth billing method. If the billing method can be selected for the first purchase, the subsequent value of this field will be processed by default according to the billing method selected for the first time. Optional values:
+     * - BandwidthByDay: Daily peak bandwidth
+     * - 95bandwidthbymonth: 95 peak bandwidth.
      * 
      */
     public Output<Optional<String>> internetChargeType() {
         return Codegen.optional(this.internetChargeType);
     }
     /**
-     * The maximum public network bandwidth.
+     * Maximum public network bandwidth. The field type is Long, and the precision may be lost during serialization/deserialization. Please note that the value must not be greater than 9007199254740991.
      * 
      */
     @Export(name="internetMaxBandwidthOut", refs={Integer.class}, tree="[0]")
     private Output<Integer> internetMaxBandwidthOut;
 
     /**
-     * @return The maximum public network bandwidth.
+     * @return Maximum public network bandwidth. The field type is Long, and the precision may be lost during serialization/deserialization. Please note that the value must not be greater than 9007199254740991.
      * 
      */
     public Output<Integer> internetMaxBandwidthOut() {
         return this.internetMaxBandwidthOut;
     }
     /**
-     * Region code, required for regional level scheduling, invalid for node level scheduling.
+     * The IP type. Value:
+     * - ipv4 (default):IPv4
+     * - ipv6:IPv6
+     * - ipv4Andipv6:IPv4 and IPv6.
+     * 
+     */
+    @Export(name="ipType", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> ipType;
+
+    /**
+     * @return The IP type. Value:
+     * - ipv4 (default):IPv4
+     * - ipv6:IPv6
+     * - ipv4Andipv6:IPv4 and IPv6.
+     * 
+     */
+    public Output<Optional<String>> ipType() {
+        return Codegen.optional(this.ipType);
+    }
+    /**
+     * The area code. Example value: 350000. Required for regional-level scheduling, invalid for node-level scheduling.
      * 
      */
     @Export(name="netDistrictCode", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> netDistrictCode;
 
     /**
-     * @return Region code, required for regional level scheduling, invalid for node level scheduling.
+     * @return The area code. Example value: 350000. Required for regional-level scheduling, invalid for node-level scheduling.
      * 
      */
     public Output<Optional<String>> netDistrictCode() {
         return Codegen.optional(this.netDistrictCode);
     }
     /**
-     * The password of the instance。It is 8 to 30 characters in length and must contain three types of characters: uppercase and lowercase letters, numbers, and special symbols. The following special symbols can be set: &#39;&#39;&#39;()&#39;~! @#$%^&amp; *-_+ =|{}[]:;&#39;,.? /&#39;&#39;&#39;.
+     * The network ID of the instance. Can only be used in node-level scheduling.
+     * 
+     */
+    @Export(name="netWorkId", refs={String.class}, tree="[0]")
+    private Output<String> netWorkId;
+
+    /**
+     * @return The network ID of the instance. Can only be used in node-level scheduling.
+     * 
+     */
+    public Output<String> netWorkId() {
+        return this.netWorkId;
+    }
+    /**
+     * The instance password. At least one of Password, KeyPairName, and PasswordInherit.
      * 
      */
     @Export(name="password", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> password;
 
     /**
-     * @return The password of the instance。It is 8 to 30 characters in length and must contain three types of characters: uppercase and lowercase letters, numbers, and special symbols. The following special symbols can be set: &#39;&#39;&#39;()&#39;~! @#$%^&amp; *-_+ =|{}[]:;&#39;,.? /&#39;&#39;&#39;.
+     * @return The instance password. At least one of Password, KeyPairName, and PasswordInherit.
      * 
      */
     public Output<Optional<String>> password() {
@@ -228,172 +360,228 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.passwordInherit);
     }
     /**
-     * Instance payment method, Subscription: prepaid, monthly package; PayAsYouGo: Pay as you go.
+     * Instance payment method. Optional values:
+     * - Subscription: prepaid, annual and monthly
+     * - PayAsYouGo: Pay by volume.
      * 
      */
     @Export(name="paymentType", refs={String.class}, tree="[0]")
     private Output<String> paymentType;
 
     /**
-     * @return Instance payment method, Subscription: prepaid, monthly package; PayAsYouGo: Pay as you go.
+     * @return Instance payment method. Optional values:
+     * - Subscription: prepaid, annual and monthly
+     * - PayAsYouGo: Pay by volume.
      * 
      */
     public Output<String> paymentType() {
         return this.paymentType;
     }
     /**
-     * The duration of purchasing resources. If PeriodUnit is not specified, it defaults to purchasing on a monthly basis. Currently, only days and months are supported. If PeriodUnit=Day, Period can only be 3. If PeriodUnit=Monthc, then Period can be 1-9,12.
+     * The duration of the resource purchase. Value method:
+     * - If PeriodUnit is set to Day, Period can only be set to 3.
+     * - If PeriodUnit is set to Month, Period can be set to 1-9,12.
      * 
      */
     @Export(name="period", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> period;
 
     /**
-     * @return The duration of purchasing resources. If PeriodUnit is not specified, it defaults to purchasing on a monthly basis. Currently, only days and months are supported. If PeriodUnit=Day, Period can only be 3. If PeriodUnit=Monthc, then Period can be 1-9,12.
+     * @return The duration of the resource purchase. Value method:
+     * - If PeriodUnit is set to Day, Period can only be set to 3.
+     * - If PeriodUnit is set to Month, Period can be set to 1-9,12.
      * 
      */
     public Output<Optional<Integer>> period() {
         return Codegen.optional(this.period);
     }
     /**
-     * The unit of time for purchasing resources. If PeriodUnit is not specified, it defaults to purchasing by Month. Currently, only days and months are supported. If PeriodUnit=Day, Period can only be 3. If PeriodUnit=Month, then Period can be 1-9,12.
+     * The unit of time for purchasing resources. Value:
+     * - Month (default): purchase by Month
+     * - Day: buy by Day.
      * 
      */
     @Export(name="periodUnit", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> periodUnit;
 
     /**
-     * @return The unit of time for purchasing resources. If PeriodUnit is not specified, it defaults to purchasing by Month. Currently, only days and months are supported. If PeriodUnit=Day, Period can only be 3. If PeriodUnit=Month, then Period can be 1-9,12.
+     * @return The unit of time for purchasing resources. Value:
+     * - Month (default): purchase by Month
+     * - Day: buy by Day.
      * 
      */
     public Output<Optional<String>> periodUnit() {
         return Codegen.optional(this.periodUnit);
     }
     /**
-     * Whether to allocate public IP. Value：true (default): can be assigned，false: cannot be assigned.
+     * The private IP address. Can only be used for node-level scheduling. If a private IP address is specified, the number of instances can only be one, and both the private IP address and the vSwitch ID are not empty, the private IP address takes effect.
+     * 
+     */
+    @Export(name="privateIpAddress", refs={String.class}, tree="[0]")
+    private Output<String> privateIpAddress;
+
+    /**
+     * @return The private IP address. Can only be used for node-level scheduling. If a private IP address is specified, the number of instances can only be one, and both the private IP address and the vSwitch ID are not empty, the private IP address takes effect.
+     * 
+     */
+    public Output<String> privateIpAddress() {
+        return this.privateIpAddress;
+    }
+    /**
+     * Whether to assign a public IP identifier. Value:
+     * - true (default): Assign
+     * - false: do not assign.
      * 
      */
     @Export(name="publicIpIdentification", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> publicIpIdentification;
 
     /**
-     * @return Whether to allocate public IP. Value：true (default): can be assigned，false: cannot be assigned.
+     * @return Whether to assign a public IP identifier. Value:
+     * - true (default): Assign
+     * - false: do not assign.
      * 
      */
     public Output<Optional<Boolean>> publicIpIdentification() {
         return Codegen.optional(this.publicIpIdentification);
     }
     /**
-     * Number of instances.
-     * 
-     */
-    @Export(name="quantity", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> quantity;
-
-    /**
-     * @return Number of instances.
-     * 
-     */
-    public Output<Optional<String>> quantity() {
-        return Codegen.optional(this.quantity);
-    }
-    /**
-     * Scheduling level, which is used to perform node level or regional scheduling.
+     * Scheduling level, through which node-level scheduling or area scheduling is performed. Optional values:
+     * - Node-level scheduling: Region
+     * - Regional scheduling: Big (region),Middle (province),Small (city).
      * 
      */
     @Export(name="scheduleAreaLevel", refs={String.class}, tree="[0]")
     private Output<String> scheduleAreaLevel;
 
     /**
-     * @return Scheduling level, which is used to perform node level or regional scheduling.
+     * @return Scheduling level, through which node-level scheduling or area scheduling is performed. Optional values:
+     * - Node-level scheduling: Region
+     * - Regional scheduling: Big (region),Middle (province),Small (city).
      * 
      */
     public Output<String> scheduleAreaLevel() {
         return this.scheduleAreaLevel;
     }
     /**
-     * Dispatch price strategy. If left blank, it defaults to prioritizing low prices. Values: PriceLowPriority (priority high price), PriceLowPriority (priority low price).
+     * Scheduling price policy. If it is not filled in, the default priority is low price. Value:
+     * - PriceLowPriority
+     * - PriceLowPriority (priority low price).
      * 
      */
     @Export(name="schedulingPriceStrategy", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> schedulingPriceStrategy;
 
     /**
-     * @return Dispatch price strategy. If left blank, it defaults to prioritizing low prices. Values: PriceLowPriority (priority high price), PriceLowPriority (priority low price).
+     * @return Scheduling price policy. If it is not filled in, the default priority is low price. Value:
+     * - PriceLowPriority
+     * - PriceLowPriority (priority low price).
      * 
      */
     public Output<Optional<String>> schedulingPriceStrategy() {
         return Codegen.optional(this.schedulingPriceStrategy);
     }
     /**
-     * When scheduling at the node level, it is Concentrate. When scheduling at the regional level, it is selected according to customer needs. Concentrate: Centralized; Disperse: Disperse.
+     * Scheduling policy. Optional values:
+     * - Concentrate for node-level scheduling
+     * - For regional scheduling, Concentrate, Disperse.
      * 
      */
     @Export(name="schedulingStrategy", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> schedulingStrategy;
 
     /**
-     * @return When scheduling at the node level, it is Concentrate. When scheduling at the regional level, it is selected according to customer needs. Concentrate: Centralized; Disperse: Disperse.
+     * @return Scheduling policy. Optional values:
+     * - Concentrate for node-level scheduling
+     * - For regional scheduling, Concentrate, Disperse.
      * 
      */
     public Output<Optional<String>> schedulingStrategy() {
         return Codegen.optional(this.schedulingStrategy);
     }
     /**
-     * the status of the resource.
+     * ID of the security group to which the instance belongs.
+     * 
+     */
+    @Export(name="securityId", refs={String.class}, tree="[0]")
+    private Output<String> securityId;
+
+    /**
+     * @return ID of the security group to which the instance belongs.
+     * 
+     */
+    public Output<String> securityId() {
+        return this.securityId;
+    }
+    /**
+     * Status of the instance.
      * 
      */
     @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
-     * @return the status of the resource.
+     * @return Status of the instance.
      * 
      */
     public Output<String> status() {
         return this.status;
     }
     /**
-     * The field representing the system disk specification. SystemDisk is a non-required parameter when InstanceType is x86_pm,x86_bmi,x86_bm,pc_bmi, or arm_bmi. SystemDisk is a required parameter when instanceType is other specification families. See `system_disk` below.
+     * System Disk Specification. SystemDisk is a non-required parameter when InstanceType is x86_pm,x86_bmi,x86_bm,pc_bmi, or arm_bmi. SystemDisk is a required parameter when instanceType is other specification families. See `system_disk` below.
      * 
      */
     @Export(name="systemDisk", refs={InstanceSystemDisk.class}, tree="[0]")
     private Output</* @Nullable */ InstanceSystemDisk> systemDisk;
 
     /**
-     * @return The field representing the system disk specification. SystemDisk is a non-required parameter when InstanceType is x86_pm,x86_bmi,x86_bm,pc_bmi, or arm_bmi. SystemDisk is a required parameter when instanceType is other specification families. See `system_disk` below.
+     * @return System Disk Specification. SystemDisk is a non-required parameter when InstanceType is x86_pm,x86_bmi,x86_bm,pc_bmi, or arm_bmi. SystemDisk is a required parameter when instanceType is other specification families. See `system_disk` below.
      * 
      */
     public Output<Optional<InstanceSystemDisk>> systemDisk() {
         return Codegen.optional(this.systemDisk);
     }
     /**
-     * Specifies whether to automatically append sequential suffixes to the hostnames specified by the HostName parameter and instance names specified by the InstanceName parameter when you create multiple instances at a time. The sequential suffix ranges from 001 to 999. Valid values:  true false Default value: false.
+     * Indicates whether to add an ordered suffix to HostName and InstanceName. The ordered suffix starts from 001 and cannot exceed 999.
      * 
      */
     @Export(name="uniqueSuffix", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> uniqueSuffix;
 
     /**
-     * @return Specifies whether to automatically append sequential suffixes to the hostnames specified by the HostName parameter and instance names specified by the InstanceName parameter when you create multiple instances at a time. The sequential suffix ranges from 001 to 999. Valid values:  true false Default value: false.
+     * @return Indicates whether to add an ordered suffix to HostName and InstanceName. The ordered suffix starts from 001 and cannot exceed 999.
      * 
      */
     public Output<Optional<Boolean>> uniqueSuffix() {
         return Codegen.optional(this.uniqueSuffix);
     }
     /**
-     * User defined data, with a maximum support of 16KB. You can input UserData information. UserData encoded in Base64 format.
+     * User-defined data, maximum support 16KB. You can pass in the UserData information. The UserData is encoded in Base64 format.
      * 
      */
     @Export(name="userData", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> userData;
 
     /**
-     * @return User defined data, with a maximum support of 16KB. You can input UserData information. UserData encoded in Base64 format.
+     * @return User-defined data, maximum support 16KB. You can pass in the UserData information. The UserData is encoded in Base64 format.
      * 
      */
     public Output<Optional<String>> userData() {
         return Codegen.optional(this.userData);
+    }
+    /**
+     * The ID of the vSwitch to which the instance belongs. Can only be used in node-level scheduling.
+     * 
+     */
+    @Export(name="vswitchId", refs={String.class}, tree="[0]")
+    private Output<String> vswitchId;
+
+    /**
+     * @return The ID of the vSwitch to which the instance belongs. Can only be used in node-level scheduling.
+     * 
+     */
+    public Output<String> vswitchId() {
+        return this.vswitchId;
     }
 
     /**

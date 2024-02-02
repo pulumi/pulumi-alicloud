@@ -38,6 +38,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.random.RandomInteger;
+ * import com.pulumi.random.RandomIntegerArgs;
  * import com.pulumi.alicloud.dcdn.Domain;
  * import com.pulumi.alicloud.dcdn.DomainArgs;
  * import com.pulumi.alicloud.dcdn.inputs.DomainSourceArgs;
@@ -55,9 +57,14 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var domainName = config.get(&#34;domainName&#34;).orElse(&#34;example.com&#34;);
+ *         final var domainName = config.get(&#34;domainName&#34;).orElse(&#34;tf-example.com&#34;);
+ *         var default_ = new RandomInteger(&#34;default&#34;, RandomIntegerArgs.builder()        
+ *             .max(99999)
+ *             .min(10000)
+ *             .build());
+ * 
  *         var example = new Domain(&#34;example&#34;, DomainArgs.builder()        
- *             .domainName(domainName)
+ *             .domainName(default_.result().applyValue(result -&gt; String.format(&#34;%s-%s&#34;, domainName,result)))
  *             .scope(&#34;overseas&#34;)
  *             .sources(DomainSourceArgs.builder()
  *                 .content(&#34;1.1.1.1&#34;)

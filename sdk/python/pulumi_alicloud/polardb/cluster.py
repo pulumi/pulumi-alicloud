@@ -72,6 +72,7 @@ class ClusterArgs:
                  storage_type: Optional[pulumi.Input[str]] = None,
                  sub_category: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 target_db_revision_version_code: Optional[pulumi.Input[str]] = None,
                  tde_status: Optional[pulumi.Input[str]] = None,
                  upgrade_type: Optional[pulumi.Input[str]] = None,
                  vpc_id: Optional[pulumi.Input[str]] = None,
@@ -163,6 +164,7 @@ class ClusterArgs:
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
                - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
                - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+        :param pulumi.Input[str] target_db_revision_version_code: The Version Code of the target version, whose parameter values can be obtained from the [DescribeDBClusterVersion](https://www.alibabacloud.com/help/en/polardb/latest/describedbclusterversion) interface.
         :param pulumi.Input[str] tde_status: turn on TDE encryption. Valid values are `Enabled`, `Disabled`. Default to `Disabled`. TDE cannot be closed after it is turned on. 
                > **NOTE:** `tde_status` Cannot modify after created when `db_type` is `PostgreSQL` or `Oracle`.`tde_status` only support modification from `Disabled` to `Enabled` when `db_type` is `MySQL`.
         :param pulumi.Input[str] upgrade_type: Version upgrade type. Valid values are PROXY, DB, ALL. PROXY means upgrading the proxy version, DB means upgrading the db version, ALL means upgrading both db and proxy versions simultaneously.
@@ -280,6 +282,8 @@ class ClusterArgs:
             pulumi.set(__self__, "sub_category", sub_category)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
+        if target_db_revision_version_code is not None:
+            pulumi.set(__self__, "target_db_revision_version_code", target_db_revision_version_code)
         if tde_status is not None:
             pulumi.set(__self__, "tde_status", tde_status)
         if upgrade_type is not None:
@@ -992,6 +996,18 @@ class ClusterArgs:
         pulumi.set(self, "tags", value)
 
     @property
+    @pulumi.getter(name="targetDbRevisionVersionCode")
+    def target_db_revision_version_code(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Version Code of the target version, whose parameter values can be obtained from the [DescribeDBClusterVersion](https://www.alibabacloud.com/help/en/polardb/latest/describedbclusterversion) interface.
+        """
+        return pulumi.get(self, "target_db_revision_version_code")
+
+    @target_db_revision_version_code.setter
+    def target_db_revision_version_code(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "target_db_revision_version_code", value)
+
+    @property
     @pulumi.getter(name="tdeStatus")
     def tde_status(self) -> Optional[pulumi.Input[str]]:
         """
@@ -1071,6 +1087,7 @@ class _ClusterState:
                  db_node_count: Optional[pulumi.Input[int]] = None,
                  db_node_id: Optional[pulumi.Input[str]] = None,
                  db_node_num: Optional[pulumi.Input[int]] = None,
+                 db_revision_version_lists: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterDbRevisionVersionListArgs']]]] = None,
                  db_type: Optional[pulumi.Input[str]] = None,
                  db_version: Optional[pulumi.Input[str]] = None,
                  default_time_zone: Optional[pulumi.Input[str]] = None,
@@ -1117,6 +1134,7 @@ class _ClusterState:
                  storage_type: Optional[pulumi.Input[str]] = None,
                  sub_category: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 target_db_revision_version_code: Optional[pulumi.Input[str]] = None,
                  tde_region: Optional[pulumi.Input[str]] = None,
                  tde_status: Optional[pulumi.Input[str]] = None,
                  upgrade_type: Optional[pulumi.Input[str]] = None,
@@ -1145,6 +1163,7 @@ class _ClusterState:
                > **NOTE:** To avoid adding or removing multiple read-only nodes by mistake, the system allows you to add or remove one read-only node at a time.
         :param pulumi.Input[str] db_node_id: The ID of the node or node subscript. Node subscript values: 1 to 15.
         :param pulumi.Input[int] db_node_num: The number of Standard Edition nodes. Default value: `1`. Valid values are `1`, `2`.
+        :param pulumi.Input[Sequence[pulumi.Input['ClusterDbRevisionVersionListArgs']]] db_revision_version_lists: (Available since v1.216.0) The db_revision_version_list supports the following:
         :param pulumi.Input[str] db_type: Database type. Value options: MySQL, Oracle, PostgreSQL.
         :param pulumi.Input[str] db_version: Database version. Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `DBVersion`.
         :param pulumi.Input[str] default_time_zone: The time zone of the cluster. You can set the parameter to a value that is on the hour from -12:00 to +13:00 based on UTC. Example: 00:00. Default value: SYSTEM. This value indicates that the time zone of the cluster is the same as the time zone of the region.
@@ -1213,6 +1232,7 @@ class _ClusterState:
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
                - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
                - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+        :param pulumi.Input[str] target_db_revision_version_code: The Version Code of the target version, whose parameter values can be obtained from the [DescribeDBClusterVersion](https://www.alibabacloud.com/help/en/polardb/latest/describedbclusterversion) interface.
         :param pulumi.Input[str] tde_region: (Available since 1.200.0) The region where the TDE key resides.
                > **NOTE:** TDE can be enabled on clusters that have joined a global database network (GDN). After TDE is enabled on the primary cluster in a GDN, TDE is enabled on the secondary clusters in the GDN by default. The key used by the secondary clusters and the region for the key resides must be the same as the primary cluster. The region of the key cannot be modified.
                > **NOTE:** You cannot enable TDE for the secondary clusters in a GDN. Used to view user KMS activation status.
@@ -1252,6 +1272,8 @@ class _ClusterState:
             pulumi.set(__self__, "db_node_id", db_node_id)
         if db_node_num is not None:
             pulumi.set(__self__, "db_node_num", db_node_num)
+        if db_revision_version_lists is not None:
+            pulumi.set(__self__, "db_revision_version_lists", db_revision_version_lists)
         if db_type is not None:
             pulumi.set(__self__, "db_type", db_type)
         if db_version is not None:
@@ -1344,6 +1366,8 @@ class _ClusterState:
             pulumi.set(__self__, "sub_category", sub_category)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
+        if target_db_revision_version_code is not None:
+            pulumi.set(__self__, "target_db_revision_version_code", target_db_revision_version_code)
         if tde_region is not None:
             pulumi.set(__self__, "tde_region", tde_region)
         if tde_status is not None:
@@ -1530,6 +1554,18 @@ class _ClusterState:
     @db_node_num.setter
     def db_node_num(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "db_node_num", value)
+
+    @property
+    @pulumi.getter(name="dbRevisionVersionLists")
+    def db_revision_version_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterDbRevisionVersionListArgs']]]]:
+        """
+        (Available since v1.216.0) The db_revision_version_list supports the following:
+        """
+        return pulumi.get(self, "db_revision_version_lists")
+
+    @db_revision_version_lists.setter
+    def db_revision_version_lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterDbRevisionVersionListArgs']]]]):
+        pulumi.set(self, "db_revision_version_lists", value)
 
     @property
     @pulumi.getter(name="dbType")
@@ -2106,6 +2142,18 @@ class _ClusterState:
         pulumi.set(self, "tags", value)
 
     @property
+    @pulumi.getter(name="targetDbRevisionVersionCode")
+    def target_db_revision_version_code(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Version Code of the target version, whose parameter values can be obtained from the [DescribeDBClusterVersion](https://www.alibabacloud.com/help/en/polardb/latest/describedbclusterversion) interface.
+        """
+        return pulumi.get(self, "target_db_revision_version_code")
+
+    @target_db_revision_version_code.setter
+    def target_db_revision_version_code(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "target_db_revision_version_code", value)
+
+    @property
     @pulumi.getter(name="tdeRegion")
     def tde_region(self) -> Optional[pulumi.Input[str]]:
         """
@@ -2243,6 +2291,7 @@ class Cluster(pulumi.CustomResource):
                  storage_type: Optional[pulumi.Input[str]] = None,
                  sub_category: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 target_db_revision_version_code: Optional[pulumi.Input[str]] = None,
                  tde_status: Optional[pulumi.Input[str]] = None,
                  upgrade_type: Optional[pulumi.Input[str]] = None,
                  vpc_id: Optional[pulumi.Input[str]] = None,
@@ -2344,6 +2393,7 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
                - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
                - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+        :param pulumi.Input[str] target_db_revision_version_code: The Version Code of the target version, whose parameter values can be obtained from the [DescribeDBClusterVersion](https://www.alibabacloud.com/help/en/polardb/latest/describedbclusterversion) interface.
         :param pulumi.Input[str] tde_status: turn on TDE encryption. Valid values are `Enabled`, `Disabled`. Default to `Disabled`. TDE cannot be closed after it is turned on. 
                > **NOTE:** `tde_status` Cannot modify after created when `db_type` is `PostgreSQL` or `Oracle`.`tde_status` only support modification from `Disabled` to `Enabled` when `db_type` is `MySQL`.
         :param pulumi.Input[str] upgrade_type: Version upgrade type. Valid values are PROXY, DB, ALL. PROXY means upgrading the proxy version, DB means upgrading the db version, ALL means upgrading both db and proxy versions simultaneously.
@@ -2438,6 +2488,7 @@ class Cluster(pulumi.CustomResource):
                  storage_type: Optional[pulumi.Input[str]] = None,
                  sub_category: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 target_db_revision_version_code: Optional[pulumi.Input[str]] = None,
                  tde_status: Optional[pulumi.Input[str]] = None,
                  upgrade_type: Optional[pulumi.Input[str]] = None,
                  vpc_id: Optional[pulumi.Input[str]] = None,
@@ -2514,6 +2565,7 @@ class Cluster(pulumi.CustomResource):
             __props__.__dict__["storage_type"] = storage_type
             __props__.__dict__["sub_category"] = sub_category
             __props__.__dict__["tags"] = tags
+            __props__.__dict__["target_db_revision_version_code"] = target_db_revision_version_code
             __props__.__dict__["tde_status"] = tde_status
             __props__.__dict__["upgrade_type"] = upgrade_type
             __props__.__dict__["vpc_id"] = vpc_id
@@ -2521,6 +2573,7 @@ class Cluster(pulumi.CustomResource):
             __props__.__dict__["zone_id"] = zone_id
             __props__.__dict__["connection_string"] = None
             __props__.__dict__["create_time"] = None
+            __props__.__dict__["db_revision_version_lists"] = None
             __props__.__dict__["port"] = None
             __props__.__dict__["status"] = None
             __props__.__dict__["tde_region"] = None
@@ -2548,6 +2601,7 @@ class Cluster(pulumi.CustomResource):
             db_node_count: Optional[pulumi.Input[int]] = None,
             db_node_id: Optional[pulumi.Input[str]] = None,
             db_node_num: Optional[pulumi.Input[int]] = None,
+            db_revision_version_lists: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterDbRevisionVersionListArgs']]]]] = None,
             db_type: Optional[pulumi.Input[str]] = None,
             db_version: Optional[pulumi.Input[str]] = None,
             default_time_zone: Optional[pulumi.Input[str]] = None,
@@ -2594,6 +2648,7 @@ class Cluster(pulumi.CustomResource):
             storage_type: Optional[pulumi.Input[str]] = None,
             sub_category: Optional[pulumi.Input[str]] = None,
             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            target_db_revision_version_code: Optional[pulumi.Input[str]] = None,
             tde_region: Optional[pulumi.Input[str]] = None,
             tde_status: Optional[pulumi.Input[str]] = None,
             upgrade_type: Optional[pulumi.Input[str]] = None,
@@ -2627,6 +2682,7 @@ class Cluster(pulumi.CustomResource):
                > **NOTE:** To avoid adding or removing multiple read-only nodes by mistake, the system allows you to add or remove one read-only node at a time.
         :param pulumi.Input[str] db_node_id: The ID of the node or node subscript. Node subscript values: 1 to 15.
         :param pulumi.Input[int] db_node_num: The number of Standard Edition nodes. Default value: `1`. Valid values are `1`, `2`.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterDbRevisionVersionListArgs']]]] db_revision_version_lists: (Available since v1.216.0) The db_revision_version_list supports the following:
         :param pulumi.Input[str] db_type: Database type. Value options: MySQL, Oracle, PostgreSQL.
         :param pulumi.Input[str] db_version: Database version. Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `DBVersion`.
         :param pulumi.Input[str] default_time_zone: The time zone of the cluster. You can set the parameter to a value that is on the hour from -12:00 to +13:00 based on UTC. Example: 00:00. Default value: SYSTEM. This value indicates that the time zone of the cluster is the same as the time zone of the region.
@@ -2695,6 +2751,7 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
                - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
                - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+        :param pulumi.Input[str] target_db_revision_version_code: The Version Code of the target version, whose parameter values can be obtained from the [DescribeDBClusterVersion](https://www.alibabacloud.com/help/en/polardb/latest/describedbclusterversion) interface.
         :param pulumi.Input[str] tde_region: (Available since 1.200.0) The region where the TDE key resides.
                > **NOTE:** TDE can be enabled on clusters that have joined a global database network (GDN). After TDE is enabled on the primary cluster in a GDN, TDE is enabled on the secondary clusters in the GDN by default. The key used by the secondary clusters and the region for the key resides must be the same as the primary cluster. The region of the key cannot be modified.
                > **NOTE:** You cannot enable TDE for the secondary clusters in a GDN. Used to view user KMS activation status.
@@ -2724,6 +2781,7 @@ class Cluster(pulumi.CustomResource):
         __props__.__dict__["db_node_count"] = db_node_count
         __props__.__dict__["db_node_id"] = db_node_id
         __props__.__dict__["db_node_num"] = db_node_num
+        __props__.__dict__["db_revision_version_lists"] = db_revision_version_lists
         __props__.__dict__["db_type"] = db_type
         __props__.__dict__["db_version"] = db_version
         __props__.__dict__["default_time_zone"] = default_time_zone
@@ -2770,6 +2828,7 @@ class Cluster(pulumi.CustomResource):
         __props__.__dict__["storage_type"] = storage_type
         __props__.__dict__["sub_category"] = sub_category
         __props__.__dict__["tags"] = tags
+        __props__.__dict__["target_db_revision_version_code"] = target_db_revision_version_code
         __props__.__dict__["tde_region"] = tde_region
         __props__.__dict__["tde_status"] = tde_status
         __props__.__dict__["upgrade_type"] = upgrade_type
@@ -2895,6 +2954,14 @@ class Cluster(pulumi.CustomResource):
         The number of Standard Edition nodes. Default value: `1`. Valid values are `1`, `2`.
         """
         return pulumi.get(self, "db_node_num")
+
+    @property
+    @pulumi.getter(name="dbRevisionVersionLists")
+    def db_revision_version_lists(self) -> pulumi.Output[Sequence['outputs.ClusterDbRevisionVersionList']]:
+        """
+        (Available since v1.216.0) The db_revision_version_list supports the following:
+        """
+        return pulumi.get(self, "db_revision_version_lists")
 
     @property
     @pulumi.getter(name="dbType")
@@ -3285,6 +3352,14 @@ class Cluster(pulumi.CustomResource):
         - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
         """
         return pulumi.get(self, "tags")
+
+    @property
+    @pulumi.getter(name="targetDbRevisionVersionCode")
+    def target_db_revision_version_code(self) -> pulumi.Output[Optional[str]]:
+        """
+        The Version Code of the target version, whose parameter values can be obtained from the [DescribeDBClusterVersion](https://www.alibabacloud.com/help/en/polardb/latest/describedbclusterversion) interface.
+        """
+        return pulumi.get(self, "target_db_revision_version_code")
 
     @property
     @pulumi.getter(name="tdeRegion")

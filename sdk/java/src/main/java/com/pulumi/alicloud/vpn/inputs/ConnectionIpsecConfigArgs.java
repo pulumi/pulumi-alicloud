@@ -17,14 +17,14 @@ public final class ConnectionIpsecConfigArgs extends com.pulumi.resources.Resour
     public static final ConnectionIpsecConfigArgs Empty = new ConnectionIpsecConfigArgs();
 
     /**
-     * The authentication algorithm of phase-two negotiation. Valid value: md5 | sha1 | sha256 | sha384 | sha512 |. Default value: sha1
+     * IPsec authentication algorithm. sha1 and md5 are supported.
      * 
      */
     @Import(name="ipsecAuthAlg")
     private @Nullable Output<String> ipsecAuthAlg;
 
     /**
-     * @return The authentication algorithm of phase-two negotiation. Valid value: md5 | sha1 | sha256 | sha384 | sha512 |. Default value: sha1
+     * @return IPsec authentication algorithm. sha1 and md5 are supported.
      * 
      */
     public Optional<Output<String>> ipsecAuthAlg() {
@@ -32,14 +32,14 @@ public final class ConnectionIpsecConfigArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * The encryption algorithm of phase-two negotiation. Valid value: aes | aes192 | aes256 | des | 3des. Default value: aes
+     * IPsec Encript algorithm.
      * 
      */
     @Import(name="ipsecEncAlg")
     private @Nullable Output<String> ipsecEncAlg;
 
     /**
-     * @return The encryption algorithm of phase-two negotiation. Valid value: aes | aes192 | aes256 | des | 3des. Default value: aes
+     * @return IPsec Encript algorithm.
      * 
      */
     public Optional<Output<String>> ipsecEncAlg() {
@@ -47,14 +47,14 @@ public final class ConnectionIpsecConfigArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * The SA lifecycle as the result of phase-two negotiation. The valid value is [0, 86400], the unit is second and the default value is 86400.
+     * IPsec lifetime.
      * 
      */
     @Import(name="ipsecLifetime")
     private @Nullable Output<Integer> ipsecLifetime;
 
     /**
-     * @return The SA lifecycle as the result of phase-two negotiation. The valid value is [0, 86400], the unit is second and the default value is 86400.
+     * @return IPsec lifetime.
      * 
      */
     public Optional<Output<Integer>> ipsecLifetime() {
@@ -62,14 +62,14 @@ public final class ConnectionIpsecConfigArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * The Diffie-Hellman key exchange algorithm used by phase-two negotiation. Valid value: group1 | group2 | group5 | group14 | group24| disabled. Default value: group2
+     * DH Group.
      * 
      */
     @Import(name="ipsecPfs")
     private @Nullable Output<String> ipsecPfs;
 
     /**
-     * @return The Diffie-Hellman key exchange algorithm used by phase-two negotiation. Valid value: group1 | group2 | group5 | group14 | group24| disabled. Default value: group2
+     * @return DH Group.
      * 
      */
     public Optional<Output<String>> ipsecPfs() {
@@ -104,7 +104,7 @@ public final class ConnectionIpsecConfigArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param ipsecAuthAlg The authentication algorithm of phase-two negotiation. Valid value: md5 | sha1 | sha256 | sha384 | sha512 |. Default value: sha1
+         * @param ipsecAuthAlg IPsec authentication algorithm. sha1 and md5 are supported.
          * 
          * @return builder
          * 
@@ -115,7 +115,7 @@ public final class ConnectionIpsecConfigArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param ipsecAuthAlg The authentication algorithm of phase-two negotiation. Valid value: md5 | sha1 | sha256 | sha384 | sha512 |. Default value: sha1
+         * @param ipsecAuthAlg IPsec authentication algorithm. sha1 and md5 are supported.
          * 
          * @return builder
          * 
@@ -125,7 +125,7 @@ public final class ConnectionIpsecConfigArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param ipsecEncAlg The encryption algorithm of phase-two negotiation. Valid value: aes | aes192 | aes256 | des | 3des. Default value: aes
+         * @param ipsecEncAlg IPsec Encript algorithm.
          * 
          * @return builder
          * 
@@ -136,7 +136,7 @@ public final class ConnectionIpsecConfigArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param ipsecEncAlg The encryption algorithm of phase-two negotiation. Valid value: aes | aes192 | aes256 | des | 3des. Default value: aes
+         * @param ipsecEncAlg IPsec Encript algorithm.
          * 
          * @return builder
          * 
@@ -146,7 +146,7 @@ public final class ConnectionIpsecConfigArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param ipsecLifetime The SA lifecycle as the result of phase-two negotiation. The valid value is [0, 86400], the unit is second and the default value is 86400.
+         * @param ipsecLifetime IPsec lifetime.
          * 
          * @return builder
          * 
@@ -157,7 +157,7 @@ public final class ConnectionIpsecConfigArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param ipsecLifetime The SA lifecycle as the result of phase-two negotiation. The valid value is [0, 86400], the unit is second and the default value is 86400.
+         * @param ipsecLifetime IPsec lifetime.
          * 
          * @return builder
          * 
@@ -167,7 +167,7 @@ public final class ConnectionIpsecConfigArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param ipsecPfs The Diffie-Hellman key exchange algorithm used by phase-two negotiation. Valid value: group1 | group2 | group5 | group14 | group24| disabled. Default value: group2
+         * @param ipsecPfs DH Group.
          * 
          * @return builder
          * 
@@ -178,7 +178,7 @@ public final class ConnectionIpsecConfigArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param ipsecPfs The Diffie-Hellman key exchange algorithm used by phase-two negotiation. Valid value: group1 | group2 | group5 | group14 | group24| disabled. Default value: group2
+         * @param ipsecPfs DH Group.
          * 
          * @return builder
          * 

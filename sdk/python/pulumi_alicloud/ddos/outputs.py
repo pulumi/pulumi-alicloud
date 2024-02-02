@@ -608,17 +608,17 @@ class GetDdosCooInstancesInstanceResult(dict):
         :param int create_time: The creation time of the instance.
         :param int debt_status: The debt status of the instance.
         :param int domain_count: The instance's count of domain retransmission config.
-        :param int edition: The edition of the instance. The Valid Values : `0`, `1`, `2`, `9`.
-        :param int enabled: The enabled of the instance. The Valid Values : `0`, `1`.
+        :param int edition: The edition of the instance.
+        :param int enabled: The enabled of the instance.
         :param int expire_time: The expiry time of the instance.
         :param str id: The instance's id.
-        :param str ip_mode: The ip mode of the instance. The Valid Values : `fnat`, `v6tov4`.
-        :param str ip_version: The ip version of the instance. The Valid Values : `Ipv4`, `Ipv6`.
+        :param str ip_mode: The ip mode of the instance.
+        :param str ip_version: The ip version of the instance.
         :param str name: The instance's remark.
         :param int port_count: The instance's count of port retransmission config.
         :param str remark: The remark of the instance.
         :param int service_bandwidth: The instance's business bandwidth.
-        :param int status: The status of the instance. The Valid Values : `1`, `2`.
+        :param int status: The status of the instance.
         """
         pulumi.set(__self__, "bandwidth", bandwidth)
         pulumi.set(__self__, "base_bandwidth", base_bandwidth)
@@ -681,7 +681,7 @@ class GetDdosCooInstancesInstanceResult(dict):
     @pulumi.getter
     def edition(self) -> int:
         """
-        The edition of the instance. The Valid Values : `0`, `1`, `2`, `9`.
+        The edition of the instance.
         """
         return pulumi.get(self, "edition")
 
@@ -689,7 +689,7 @@ class GetDdosCooInstancesInstanceResult(dict):
     @pulumi.getter
     def enabled(self) -> int:
         """
-        The enabled of the instance. The Valid Values : `0`, `1`.
+        The enabled of the instance.
         """
         return pulumi.get(self, "enabled")
 
@@ -713,7 +713,7 @@ class GetDdosCooInstancesInstanceResult(dict):
     @pulumi.getter(name="ipMode")
     def ip_mode(self) -> str:
         """
-        The ip mode of the instance. The Valid Values : `fnat`, `v6tov4`.
+        The ip mode of the instance.
         """
         return pulumi.get(self, "ip_mode")
 
@@ -721,7 +721,7 @@ class GetDdosCooInstancesInstanceResult(dict):
     @pulumi.getter(name="ipVersion")
     def ip_version(self) -> str:
         """
-        The ip version of the instance. The Valid Values : `Ipv4`, `Ipv6`.
+        The ip version of the instance.
         """
         return pulumi.get(self, "ip_version")
 
@@ -761,7 +761,7 @@ class GetDdosCooInstancesInstanceResult(dict):
     @pulumi.getter
     def status(self) -> int:
         """
-        The status of the instance. The Valid Values : `1`, `2`.
+        The status of the instance.
         """
         return pulumi.get(self, "status")
 

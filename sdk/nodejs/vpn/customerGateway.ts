@@ -13,9 +13,13 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const foo = new alicloud.vpn.CustomerGateway("foo", {
- *     description: "vpnCgwDescriptionExample",
- *     ipAddress: "43.104.22.228",
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "terraform-example";
+ * const _default = new alicloud.vpn.CustomerGateway("default", {
+ *     description: name,
+ *     ipAddress: "4.3.2.10",
+ *     asn: "1219002",
+ *     customerGatewayName: name,
  * });
  * ```
  *
@@ -24,7 +28,7 @@ import * as utilities from "../utilities";
  * VPN customer gateway can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:vpn/customerGateway:CustomerGateway example cgw-abc123456
+ *  $ pulumi import alicloud:vpn/customerGateway:CustomerGateway example <id>
  * ```
  */
 export class CustomerGateway extends pulumi.CustomResource {
@@ -56,11 +60,19 @@ export class CustomerGateway extends pulumi.CustomResource {
     }
 
     /**
-     * The autonomous system number of the gateway device in the data center. The `asn` is a 4-byte number. You can enter the number in two segments and separate the first 16 bits from the following 16 bits with a period (.). Enter the number in each segment in the decimal format.
+     * Asn.
      */
     public readonly asn!: pulumi.Output<string | undefined>;
     /**
-     * The description of the VPN customer gateway instance.
+     * The time when the customer gateway was created.
+     */
+    public /*out*/ readonly createTime!: pulumi.Output<number>;
+    /**
+     * The name of the customer gateway.
+     */
+    public readonly customerGatewayName!: pulumi.Output<string>;
+    /**
+     * The description of the customer gateway.
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
@@ -68,9 +80,17 @@ export class CustomerGateway extends pulumi.CustomResource {
      */
     public readonly ipAddress!: pulumi.Output<string>;
     /**
-     * The name of the VPN customer gateway. Defaults to null.
+     * . Field 'name' has been deprecated from provider version 1.216.0. New field 'customer_gateway_name' instead.
+     *
+     * @deprecated Field 'name' has been deprecated since provider version 1.210.0. New field 'customer_gateway_name' instead.
      */
     public readonly name!: pulumi.Output<string>;
+    /**
+     * tag.
+     *
+     * The following arguments will be discarded. Please use new fields as soon as possible:
+     */
+    public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
 
     /**
      * Create a CustomerGateway resource with the given unique name, arguments, and options.
@@ -86,18 +106,24 @@ export class CustomerGateway extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as CustomerGatewayState | undefined;
             resourceInputs["asn"] = state ? state.asn : undefined;
+            resourceInputs["createTime"] = state ? state.createTime : undefined;
+            resourceInputs["customerGatewayName"] = state ? state.customerGatewayName : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["ipAddress"] = state ? state.ipAddress : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
         } else {
             const args = argsOrState as CustomerGatewayArgs | undefined;
             if ((!args || args.ipAddress === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'ipAddress'");
             }
             resourceInputs["asn"] = args ? args.asn : undefined;
+            resourceInputs["customerGatewayName"] = args ? args.customerGatewayName : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["ipAddress"] = args ? args.ipAddress : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["createTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(CustomerGateway.__pulumiType, name, resourceInputs, opts);
@@ -109,11 +135,19 @@ export class CustomerGateway extends pulumi.CustomResource {
  */
 export interface CustomerGatewayState {
     /**
-     * The autonomous system number of the gateway device in the data center. The `asn` is a 4-byte number. You can enter the number in two segments and separate the first 16 bits from the following 16 bits with a period (.). Enter the number in each segment in the decimal format.
+     * Asn.
      */
     asn?: pulumi.Input<string>;
     /**
-     * The description of the VPN customer gateway instance.
+     * The time when the customer gateway was created.
+     */
+    createTime?: pulumi.Input<number>;
+    /**
+     * The name of the customer gateway.
+     */
+    customerGatewayName?: pulumi.Input<string>;
+    /**
+     * The description of the customer gateway.
      */
     description?: pulumi.Input<string>;
     /**
@@ -121,9 +155,17 @@ export interface CustomerGatewayState {
      */
     ipAddress?: pulumi.Input<string>;
     /**
-     * The name of the VPN customer gateway. Defaults to null.
+     * . Field 'name' has been deprecated from provider version 1.216.0. New field 'customer_gateway_name' instead.
+     *
+     * @deprecated Field 'name' has been deprecated since provider version 1.210.0. New field 'customer_gateway_name' instead.
      */
     name?: pulumi.Input<string>;
+    /**
+     * tag.
+     *
+     * The following arguments will be discarded. Please use new fields as soon as possible:
+     */
+    tags?: pulumi.Input<{[key: string]: any}>;
 }
 
 /**
@@ -131,11 +173,15 @@ export interface CustomerGatewayState {
  */
 export interface CustomerGatewayArgs {
     /**
-     * The autonomous system number of the gateway device in the data center. The `asn` is a 4-byte number. You can enter the number in two segments and separate the first 16 bits from the following 16 bits with a period (.). Enter the number in each segment in the decimal format.
+     * Asn.
      */
     asn?: pulumi.Input<string>;
     /**
-     * The description of the VPN customer gateway instance.
+     * The name of the customer gateway.
+     */
+    customerGatewayName?: pulumi.Input<string>;
+    /**
+     * The description of the customer gateway.
      */
     description?: pulumi.Input<string>;
     /**
@@ -143,7 +189,15 @@ export interface CustomerGatewayArgs {
      */
     ipAddress: pulumi.Input<string>;
     /**
-     * The name of the VPN customer gateway. Defaults to null.
+     * . Field 'name' has been deprecated from provider version 1.216.0. New field 'customer_gateway_name' instead.
+     *
+     * @deprecated Field 'name' has been deprecated since provider version 1.210.0. New field 'customer_gateway_name' instead.
      */
     name?: pulumi.Input<string>;
+    /**
+     * tag.
+     *
+     * The following arguments will be discarded. Please use new fields as soon as possible:
+     */
+    tags?: pulumi.Input<{[key: string]: any}>;
 }

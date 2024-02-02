@@ -16,7 +16,7 @@ package alicloud
 
 import (
 	"fmt"
-	"path/filepath"
+	"path"
 	"strings"
 	"unicode"
 
@@ -27,10 +27,9 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
-	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/x"
+	tks "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/tokens"
 	shimv1 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v1"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/tokens"
-	"github.com/pulumi/pulumi/sdk/v3/go/common/util/contract"
 
 	"github.com/pulumi/pulumi-alicloud/provider/v3/pkg/version"
 )
@@ -339,14 +338,15 @@ func Provider() tfbridge.ProviderInfo {
 	p := shimv1.NewProvider(alicloud.Provider().(*schema.Provider))
 
 	prov := tfbridge.ProviderInfo{
-		P:           p,
-		Name:        "alicloud",
-		Description: "A Pulumi package for creating and managing AliCloud resources.",
-		Keywords:    []string{"pulumi", "alicloud"},
-		Homepage:    "https://pulumi.io",
-		License:     "Apache-2.0",
-		GitHubOrg:   "aliyun",
-		Repository:  "https://github.com/pulumi/pulumi-alicloud",
+		P:            p,
+		Name:         "alicloud",
+		Description:  "A Pulumi package for creating and managing AliCloud resources.",
+		Keywords:     []string{"pulumi", "alicloud"},
+		Homepage:     "https://pulumi.io",
+		License:      "Apache-2.0",
+		GitHubOrg:    "aliyun",
+		Repository:   "https://github.com/pulumi/pulumi-alicloud",
+		MetadataInfo: tfbridge.NewProviderMetadata(metadata),
 		Config: map[string]*tfbridge.SchemaInfo{
 			"ecs_role_name": {
 				Default: &tfbridge.DefaultInfo{
@@ -1463,6 +1463,11 @@ func Provider() tfbridge.ProviderInfo {
 					},
 				},
 			},
+			"alicloud_vpc_ipv6_address": {
+				Fields: map[string]*tfbridge.SchemaInfo{
+					"ipv6_address": {CSharpName: "Address"},
+				},
+			},
 			"alicloud_vpc_bgp_group":                      {Tok: resource(vpcMod, "BgpGroup")},
 			"alicloud_vpc_bgp_network":                    {Tok: resource(vpcMod, "BgpNetwork")},
 			"alicloud_vpc_bgp_peer":                       {Tok: resource(vpcMod, "BgpPeer")},
@@ -2531,17 +2536,14 @@ func Provider() tfbridge.ProviderInfo {
 				"@pulumi/pulumi": "^3.0.0",
 			},
 		},
-		Python: (func() *tfbridge.PythonInfo {
-			i := &tfbridge.PythonInfo{
-				Requires: map[string]string{
-					"pulumi": ">=3.0.0,<4.0.0",
-				}}
-			i.PyProject.Enabled = true
-			return i
-		})(),
-
+		Python: &tfbridge.PythonInfo{
+			Requires: map[string]string{
+				"pulumi": ">=3.0.0,<4.0.0",
+			},
+			PyProject: struct{ Enabled bool }{true},
+		},
 		Golang: &tfbridge.GolangInfo{
-			ImportBasePath: filepath.Join(
+			ImportBasePath: path.Join(
 				fmt.Sprintf("github.com/pulumi/pulumi-%[1]s/sdk/", alicloudPkg),
 				tfbridge.GetModuleMajorVersion(version.Version),
 				"go",
@@ -2555,7 +2557,7 @@ func Provider() tfbridge.ProviderInfo {
 				"Pulumi": "3.*",
 			},
 			Namespaces: namespaceMap,
-		}, MetadataInfo: tfbridge.NewProviderMetadata(metadata),
+		},
 	}
 	prov.RenameResourceWithAlias("alicloud_ddosbgp_instance", resource(dnsMod, "DdosBgpInstance"),
 		resource(ddosMod, "DdosBgpInstance"), dnsMod, ddosMod, nil)
@@ -2569,32 +2571,14 @@ func Provider() tfbridge.ProviderInfo {
 	prov.RenameDataSource("alicloud_ots_tables", dataSource(ossMod, "getTables"),
 		dataSource(otsMod, "getTables"), ossMod, otsMod, nil)
 
-	mappedModKeys := make([]string, 0, len(mappedMods))
-	for k := range mappedMods {
-		mappedModKeys = append(mappedModKeys, k)
-	}
-
-	moduleNameMap := make(map[string]string, len(mappedMods))
-	for k, v := range mappedMods {
-		k = strings.ReplaceAll(k, "_", "")
-		k = strings.ToLower(k)
-		moduleNameMap[k] = v
-	}
-
-	err := x.ComputeDefaults(&prov, x.TokensKnownModules("alicloud_", "", mappedModKeys,
+	prov.MustComputeTokens(tks.MappedModules("alicloud_", "", mappedMods,
 		func(mod, name string) (string, error) {
-			mod = strings.ToLower(mod)
-			m, ok := moduleNameMap[mod]
-			if !ok {
-				return "", fmt.Errorf("unmapped module '%s'", mod)
-			}
-			return resource(m, name).String(), nil
+			return resource(mod, name).String(), nil
 		}))
-	contract.AssertNoError(err)
-	err = x.AutoAliasing(&prov, prov.GetMetadata())
-	contract.AssertNoErrorf(err, "auto aliasing apply failed")
 
 	prov.SetAutonaming(255, "-")
+
+	prov.MustApplyAutoAliases()
 
 	return prov
 }

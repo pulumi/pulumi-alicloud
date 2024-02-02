@@ -139,7 +139,7 @@ class ImageExport(pulumi.CustomResource):
 
         > **NOTE:** Before exporting the image, you must authorize the cloud server ECS official service account to write OSS permissions through RAM.
 
-        > **NOTE:** Available in 1.68.0+.
+        > **NOTE:** Available since v1.68.0+.
 
         ## Example Usage
 
@@ -169,24 +169,19 @@ class ImageExport(pulumi.CustomResource):
             instance_type=default_instance_types.ids[0],
             image_id=default_images.ids[0],
             internet_max_bandwidth_out=10)
-        default_image = alicloud.ecs.Image("defaultImage",
-            instance_id=default_instance.id,
-            image_name="terraform-example",
-            description="terraform-example")
         default_random_integer = random.RandomInteger("defaultRandomInteger",
             max=99999,
             min=10000)
+        default_image = alicloud.ecs.Image("defaultImage",
+            instance_id=default_instance.id,
+            image_name=default_random_integer.result.apply(lambda result: f"terraform-example-{result}"),
+            description="terraform-example")
         default_bucket = alicloud.oss.Bucket("defaultBucket", bucket=default_random_integer.result.apply(lambda result: f"example-value-{result}"))
         default_image_export = alicloud.ecs.ImageExport("defaultImageExport",
             image_id=default_image.id,
             oss_bucket=default_bucket.id,
             oss_prefix="ecsExport")
         ```
-        ## Attributes Reference0
-
-         The following attributes are exported:
-
-        * `id` - ID of the image.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -209,7 +204,7 @@ class ImageExport(pulumi.CustomResource):
 
         > **NOTE:** Before exporting the image, you must authorize the cloud server ECS official service account to write OSS permissions through RAM.
 
-        > **NOTE:** Available in 1.68.0+.
+        > **NOTE:** Available since v1.68.0+.
 
         ## Example Usage
 
@@ -239,24 +234,19 @@ class ImageExport(pulumi.CustomResource):
             instance_type=default_instance_types.ids[0],
             image_id=default_images.ids[0],
             internet_max_bandwidth_out=10)
-        default_image = alicloud.ecs.Image("defaultImage",
-            instance_id=default_instance.id,
-            image_name="terraform-example",
-            description="terraform-example")
         default_random_integer = random.RandomInteger("defaultRandomInteger",
             max=99999,
             min=10000)
+        default_image = alicloud.ecs.Image("defaultImage",
+            instance_id=default_instance.id,
+            image_name=default_random_integer.result.apply(lambda result: f"terraform-example-{result}"),
+            description="terraform-example")
         default_bucket = alicloud.oss.Bucket("defaultBucket", bucket=default_random_integer.result.apply(lambda result: f"example-value-{result}"))
         default_image_export = alicloud.ecs.ImageExport("defaultImageExport",
             image_id=default_image.id,
             oss_bucket=default_bucket.id,
             oss_prefix="ecsExport")
         ```
-        ## Attributes Reference0
-
-         The following attributes are exported:
-
-        * `id` - ID of the image.
 
         :param str resource_name: The name of the resource.
         :param ImageExportArgs args: The arguments to use to populate this resource's properties.

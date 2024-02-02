@@ -106,6 +106,10 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly dbNodeNum!: pulumi.Output<number | undefined>;
     /**
+     * (Available since v1.216.0) The dbRevisionVersionList supports the following:
+     */
+    public /*out*/ readonly dbRevisionVersionLists!: pulumi.Output<outputs.polardb.ClusterDbRevisionVersionList[]>;
+    /**
      * Database type. Value options: MySQL, Oracle, PostgreSQL.
      */
     public readonly dbType!: pulumi.Output<string>;
@@ -312,6 +316,10 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
     /**
+     * The Version Code of the target version, whose parameter values can be obtained from the [DescribeDBClusterVersion](https://www.alibabacloud.com/help/en/polardb/latest/describedbclusterversion) interface.
+     */
+    public readonly targetDbRevisionVersionCode!: pulumi.Output<string | undefined>;
+    /**
      * (Available since 1.200.0) The region where the TDE key resides.
      * > **NOTE:** TDE can be enabled on clusters that have joined a global database network (GDN). After TDE is enabled on the primary cluster in a GDN, TDE is enabled on the secondary clusters in the GDN by default. The key used by the secondary clusters and the region for the key resides must be the same as the primary cluster. The region of the key cannot be modified.
      * > **NOTE:** You cannot enable TDE for the secondary clusters in a GDN. Used to view user KMS activation status.
@@ -367,6 +375,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["dbNodeCount"] = state ? state.dbNodeCount : undefined;
             resourceInputs["dbNodeId"] = state ? state.dbNodeId : undefined;
             resourceInputs["dbNodeNum"] = state ? state.dbNodeNum : undefined;
+            resourceInputs["dbRevisionVersionLists"] = state ? state.dbRevisionVersionLists : undefined;
             resourceInputs["dbType"] = state ? state.dbType : undefined;
             resourceInputs["dbVersion"] = state ? state.dbVersion : undefined;
             resourceInputs["defaultTimeZone"] = state ? state.defaultTimeZone : undefined;
@@ -413,6 +422,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["storageType"] = state ? state.storageType : undefined;
             resourceInputs["subCategory"] = state ? state.subCategory : undefined;
             resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["targetDbRevisionVersionCode"] = state ? state.targetDbRevisionVersionCode : undefined;
             resourceInputs["tdeRegion"] = state ? state.tdeRegion : undefined;
             resourceInputs["tdeStatus"] = state ? state.tdeStatus : undefined;
             resourceInputs["upgradeType"] = state ? state.upgradeType : undefined;
@@ -486,6 +496,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["storageType"] = args ? args.storageType : undefined;
             resourceInputs["subCategory"] = args ? args.subCategory : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["targetDbRevisionVersionCode"] = args ? args.targetDbRevisionVersionCode : undefined;
             resourceInputs["tdeStatus"] = args ? args.tdeStatus : undefined;
             resourceInputs["upgradeType"] = args ? args.upgradeType : undefined;
             resourceInputs["vpcId"] = args ? args.vpcId : undefined;
@@ -493,6 +504,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["zoneId"] = args ? args.zoneId : undefined;
             resourceInputs["connectionString"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["dbRevisionVersionLists"] = undefined /*out*/;
             resourceInputs["port"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
             resourceInputs["tdeRegion"] = undefined /*out*/;
@@ -568,6 +580,10 @@ export interface ClusterState {
      * The number of Standard Edition nodes. Default value: `1`. Valid values are `1`, `2`.
      */
     dbNodeNum?: pulumi.Input<number>;
+    /**
+     * (Available since v1.216.0) The dbRevisionVersionList supports the following:
+     */
+    dbRevisionVersionLists?: pulumi.Input<pulumi.Input<inputs.polardb.ClusterDbRevisionVersionList>[]>;
     /**
      * Database type. Value options: MySQL, Oracle, PostgreSQL.
      */
@@ -774,6 +790,10 @@ export interface ClusterState {
      * - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
      */
     tags?: pulumi.Input<{[key: string]: any}>;
+    /**
+     * The Version Code of the target version, whose parameter values can be obtained from the [DescribeDBClusterVersion](https://www.alibabacloud.com/help/en/polardb/latest/describedbclusterversion) interface.
+     */
+    targetDbRevisionVersionCode?: pulumi.Input<string>;
     /**
      * (Available since 1.200.0) The region where the TDE key resides.
      * > **NOTE:** TDE can be enabled on clusters that have joined a global database network (GDN). After TDE is enabled on the primary cluster in a GDN, TDE is enabled on the secondary clusters in the GDN by default. The key used by the secondary clusters and the region for the key resides must be the same as the primary cluster. The region of the key cannot be modified.
@@ -1060,6 +1080,10 @@ export interface ClusterArgs {
      * - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
      */
     tags?: pulumi.Input<{[key: string]: any}>;
+    /**
+     * The Version Code of the target version, whose parameter values can be obtained from the [DescribeDBClusterVersion](https://www.alibabacloud.com/help/en/polardb/latest/describedbclusterversion) interface.
+     */
+    targetDbRevisionVersionCode?: pulumi.Input<string>;
     /**
      * turn on TDE encryption. Valid values are `Enabled`, `Disabled`. Default to `Disabled`. TDE cannot be closed after it is turned on. 
      * > **NOTE:** `tdeStatus` Cannot modify after created when `dbType` is `PostgreSQL` or `Oracle`.`tdeStatus` only support modification from `Disabled` to `Enabled` when `dbType` is `MySQL`.

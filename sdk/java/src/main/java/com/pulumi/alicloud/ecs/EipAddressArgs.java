@@ -176,6 +176,21 @@ public final class EipAddressArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The IP address of the EIP.
+     * 
+     */
+    @Import(name="ipAddress")
+    private @Nullable Output<String> ipAddress;
+
+    /**
+     * @return The IP address of the EIP.
+     * 
+     */
+    public Optional<Output<String>> ipAddress() {
+        return Optional.ofNullable(this.ipAddress);
+    }
+
+    /**
      * The line type. You can set this parameter only when you create a `PayAsYouGo` EIP. Valid values:
      * 
      */
@@ -274,14 +289,14 @@ public final class EipAddressArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * When the PricingCycle is set to Month, the Period value ranges from 1 to 9.When the PricingCycle is set to Year, the Period range is 1 to 5.If the value of the InstanceChargeType parameter is PrePaid, this parameter is required. If the value of the InstanceChargeType parameter is PostPaid, this parameter is not filled in.
+     * When the PricingCycle is set to Month, the Period value ranges from 1 to 9.  When the PricingCycle is set to Year, the Period range is 1 to 5.  If the value of the InstanceChargeType parameter is PrePaid, this parameter is required. If the value of the InstanceChargeType parameter is PostPaid, this parameter is not filled in.
      * 
      */
     @Import(name="period")
     private @Nullable Output<Integer> period;
 
     /**
-     * @return When the PricingCycle is set to Month, the Period value ranges from 1 to 9.When the PricingCycle is set to Year, the Period range is 1 to 5.If the value of the InstanceChargeType parameter is PrePaid, this parameter is required. If the value of the InstanceChargeType parameter is PostPaid, this parameter is not filled in.
+     * @return When the PricingCycle is set to Month, the Period value ranges from 1 to 9.  When the PricingCycle is set to Year, the Period range is 1 to 5.  If the value of the InstanceChargeType parameter is PrePaid, this parameter is required. If the value of the InstanceChargeType parameter is PostPaid, this parameter is not filled in.
      * 
      */
     public Optional<Output<Integer>> period() {
@@ -289,14 +304,14 @@ public final class EipAddressArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Value:Month (default): Pay monthly.Year: Pay per Year.This parameter is required when the value of the InstanceChargeType parameter is Subscription(PrePaid). This parameter is optional when the value of the InstanceChargeType parameter is PayAsYouGo(PostPaid).
+     * Value: Month (default): Pay monthly. Year: Pay per Year. This parameter is required when the value of the InstanceChargeType parameter is Subscription(PrePaid). This parameter is optional when the value of the InstanceChargeType parameter is PayAsYouGo(PostPaid).
      * 
      */
     @Import(name="pricingCycle")
     private @Nullable Output<String> pricingCycle;
 
     /**
-     * @return Value:Month (default): Pay monthly.Year: Pay per Year.This parameter is required when the value of the InstanceChargeType parameter is Subscription(PrePaid). This parameter is optional when the value of the InstanceChargeType parameter is PayAsYouGo(PostPaid).
+     * @return Value: Month (default): Pay monthly. Year: Pay per Year. This parameter is required when the value of the InstanceChargeType parameter is Subscription(PrePaid). This parameter is optional when the value of the InstanceChargeType parameter is PayAsYouGo(PostPaid).
      * 
      */
     public Optional<Output<String>> pricingCycle() {
@@ -368,7 +383,7 @@ public final class EipAddressArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The zone of the EIP.This parameter is returned only for whitelist users that are visible to the zone.
+     * The zone of the EIP.  This parameter is returned only for whitelist users that are visible to the zone.
      * 
      * The following arguments will be discarded. Please use new fields as soon as possible:
      * 
@@ -377,7 +392,7 @@ public final class EipAddressArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> zone;
 
     /**
-     * @return The zone of the EIP.This parameter is returned only for whitelist users that are visible to the zone.
+     * @return The zone of the EIP.  This parameter is returned only for whitelist users that are visible to the zone.
      * 
      * The following arguments will be discarded. Please use new fields as soon as possible:
      * 
@@ -398,6 +413,7 @@ public final class EipAddressArgs extends com.pulumi.resources.ResourceArgs {
         this.highDefinitionMonitorLogStatus = $.highDefinitionMonitorLogStatus;
         this.instanceChargeType = $.instanceChargeType;
         this.internetChargeType = $.internetChargeType;
+        this.ipAddress = $.ipAddress;
         this.isp = $.isp;
         this.logProject = $.logProject;
         this.logStore = $.logStore;
@@ -641,6 +657,27 @@ public final class EipAddressArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param ipAddress The IP address of the EIP.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipAddress(@Nullable Output<String> ipAddress) {
+            $.ipAddress = ipAddress;
+            return this;
+        }
+
+        /**
+         * @param ipAddress The IP address of the EIP.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipAddress(String ipAddress) {
+            return ipAddress(Output.of(ipAddress));
+        }
+
+        /**
          * @param isp The line type. You can set this parameter only when you create a `PayAsYouGo` EIP. Valid values:
          * 
          * @return builder
@@ -775,7 +812,7 @@ public final class EipAddressArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param period When the PricingCycle is set to Month, the Period value ranges from 1 to 9.When the PricingCycle is set to Year, the Period range is 1 to 5.If the value of the InstanceChargeType parameter is PrePaid, this parameter is required. If the value of the InstanceChargeType parameter is PostPaid, this parameter is not filled in.
+         * @param period When the PricingCycle is set to Month, the Period value ranges from 1 to 9.  When the PricingCycle is set to Year, the Period range is 1 to 5.  If the value of the InstanceChargeType parameter is PrePaid, this parameter is required. If the value of the InstanceChargeType parameter is PostPaid, this parameter is not filled in.
          * 
          * @return builder
          * 
@@ -786,7 +823,7 @@ public final class EipAddressArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param period When the PricingCycle is set to Month, the Period value ranges from 1 to 9.When the PricingCycle is set to Year, the Period range is 1 to 5.If the value of the InstanceChargeType parameter is PrePaid, this parameter is required. If the value of the InstanceChargeType parameter is PostPaid, this parameter is not filled in.
+         * @param period When the PricingCycle is set to Month, the Period value ranges from 1 to 9.  When the PricingCycle is set to Year, the Period range is 1 to 5.  If the value of the InstanceChargeType parameter is PrePaid, this parameter is required. If the value of the InstanceChargeType parameter is PostPaid, this parameter is not filled in.
          * 
          * @return builder
          * 
@@ -796,7 +833,7 @@ public final class EipAddressArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param pricingCycle Value:Month (default): Pay monthly.Year: Pay per Year.This parameter is required when the value of the InstanceChargeType parameter is Subscription(PrePaid). This parameter is optional when the value of the InstanceChargeType parameter is PayAsYouGo(PostPaid).
+         * @param pricingCycle Value: Month (default): Pay monthly. Year: Pay per Year. This parameter is required when the value of the InstanceChargeType parameter is Subscription(PrePaid). This parameter is optional when the value of the InstanceChargeType parameter is PayAsYouGo(PostPaid).
          * 
          * @return builder
          * 
@@ -807,7 +844,7 @@ public final class EipAddressArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param pricingCycle Value:Month (default): Pay monthly.Year: Pay per Year.This parameter is required when the value of the InstanceChargeType parameter is Subscription(PrePaid). This parameter is optional when the value of the InstanceChargeType parameter is PayAsYouGo(PostPaid).
+         * @param pricingCycle Value: Month (default): Pay monthly. Year: Pay per Year. This parameter is required when the value of the InstanceChargeType parameter is Subscription(PrePaid). This parameter is optional when the value of the InstanceChargeType parameter is PayAsYouGo(PostPaid).
          * 
          * @return builder
          * 
@@ -917,7 +954,7 @@ public final class EipAddressArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param zone The zone of the EIP.This parameter is returned only for whitelist users that are visible to the zone.
+         * @param zone The zone of the EIP.  This parameter is returned only for whitelist users that are visible to the zone.
          * 
          * The following arguments will be discarded. Please use new fields as soon as possible:
          * 
@@ -930,7 +967,7 @@ public final class EipAddressArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param zone The zone of the EIP.This parameter is returned only for whitelist users that are visible to the zone.
+         * @param zone The zone of the EIP.  This parameter is returned only for whitelist users that are visible to the zone.
          * 
          * The following arguments will be discarded. Please use new fields as soon as possible:
          * 

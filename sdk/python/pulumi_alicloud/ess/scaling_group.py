@@ -8,6 +8,8 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['ScalingGroupArgs', 'ScalingGroup']
 
@@ -23,6 +25,7 @@ class ScalingGroupArgs:
                  group_type: Optional[pulumi.Input[str]] = None,
                  health_check_type: Optional[pulumi.Input[str]] = None,
                  launch_template_id: Optional[pulumi.Input[str]] = None,
+                 launch_template_overrides: Optional[pulumi.Input[Sequence[pulumi.Input['ScalingGroupLaunchTemplateOverrideArgs']]]] = None,
                  launch_template_version: Optional[pulumi.Input[str]] = None,
                  loadbalancer_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  multi_az_policy: Optional[pulumi.Input[str]] = None,
@@ -51,6 +54,7 @@ class ScalingGroupArgs:
         :param pulumi.Input[str] group_type: Resource type within scaling group. Optional values: ECS, ECI. Default to ECS.
         :param pulumi.Input[str] health_check_type: Resource type within scaling group. Optional values: ECS, NONE. Default to ECS.
         :param pulumi.Input[str] launch_template_id: Instance launch template ID, scaling group obtains launch configuration from instance launch template, see [Launch Template](https://www.alibabacloud.com/help/doc-detail/73916.html). Creating scaling group from launch template enable group automatically.
+        :param pulumi.Input[Sequence[pulumi.Input['ScalingGroupLaunchTemplateOverrideArgs']]] launch_template_overrides: The details of the instance types that are specified by using the Extend Instance Type of Launch Template feature..  See `launch_template_override` below for details.
         :param pulumi.Input[str] launch_template_version: The version number of the launch template. Valid values are the version number, `Latest`, or `Default`, Default value: `Default`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] loadbalancer_ids: If a Server Load Balancer instance is specified in the scaling group, the scaling group automatically attaches its ECS instances to the Server Load Balancer instance.
                - The Server Load Balancer instance must be enabled.
@@ -58,16 +62,10 @@ class ScalingGroupArgs:
                targeting your `slb.Listener` in order to make sure the listener with its HealthCheck configuration is ready before creating your scaling group).
                - The Server Load Balancer instance attached with VPC-type ECS instances cannot be attached to the scaling group.
                - The default weight of an ECS instance attached to the Server Load Balancer instance is 50.
-        :param pulumi.Input[str] multi_az_policy: Multi-AZ scaling group ECS instance expansion and contraction strategy. PRIORITY, BALANCE or COST_OPTIMIZED(Available in 1.54.0+).
+        :param pulumi.Input[str] multi_az_policy: Multi-AZ scaling group ECS instance expansion and contraction strategy. PRIORITY, BALANCE or COST_OPTIMIZED(Available since v1.54.0).
         :param pulumi.Input[int] on_demand_base_capacity: The minimum amount of the Auto Scaling group's capacity that must be fulfilled by On-Demand Instances. This base portion is provisioned first as your group scales.
         :param pulumi.Input[int] on_demand_percentage_above_base_capacity: Controls the percentages of On-Demand Instances and Spot Instances for your additional capacity beyond OnDemandBaseCapacity.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] protected_instances: Set or unset instances within group into protected status.
-               
-               > **NOTE:** When detach loadbalancers, instances in group will be remove from loadbalancer's `Default Server Group`; On the contrary, When attach loadbalancers, instances in group will be added to loadbalancer's `Default Server Group`.
-               
-               > **NOTE:** When detach dbInstances, private ip of instances in group will be remove from dbInstance's `WhiteList`; On the contrary, When attach dbInstances, private ip of instances in group will be added to dbInstance's `WhiteList`.
-               
-               > **NOTE:** `on_demand_base_capacity`,`on_demand_percentage_above_base_capacity`,`spot_instance_pools`,`spot_instance_remedy` are valid only if `multi_az_policy` is 'COST_OPTIMIZED'.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] removal_policies: RemovalPolicy is used to select the ECS instances you want to remove from the scaling group when multiple candidates for removal exist. Optional values:
                - OldestInstance: removes the ECS instance that is added to the scaling group at the earliest point in time.
                - NewestInstance: removes the ECS instance that is added to the scaling group at the latest point in time.
@@ -98,6 +96,8 @@ class ScalingGroupArgs:
             pulumi.set(__self__, "health_check_type", health_check_type)
         if launch_template_id is not None:
             pulumi.set(__self__, "launch_template_id", launch_template_id)
+        if launch_template_overrides is not None:
+            pulumi.set(__self__, "launch_template_overrides", launch_template_overrides)
         if launch_template_version is not None:
             pulumi.set(__self__, "launch_template_version", launch_template_version)
         if loadbalancer_ids is not None:
@@ -241,6 +241,18 @@ class ScalingGroupArgs:
         pulumi.set(self, "launch_template_id", value)
 
     @property
+    @pulumi.getter(name="launchTemplateOverrides")
+    def launch_template_overrides(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ScalingGroupLaunchTemplateOverrideArgs']]]]:
+        """
+        The details of the instance types that are specified by using the Extend Instance Type of Launch Template feature..  See `launch_template_override` below for details.
+        """
+        return pulumi.get(self, "launch_template_overrides")
+
+    @launch_template_overrides.setter
+    def launch_template_overrides(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ScalingGroupLaunchTemplateOverrideArgs']]]]):
+        pulumi.set(self, "launch_template_overrides", value)
+
+    @property
     @pulumi.getter(name="launchTemplateVersion")
     def launch_template_version(self) -> Optional[pulumi.Input[str]]:
         """
@@ -273,7 +285,7 @@ class ScalingGroupArgs:
     @pulumi.getter(name="multiAzPolicy")
     def multi_az_policy(self) -> Optional[pulumi.Input[str]]:
         """
-        Multi-AZ scaling group ECS instance expansion and contraction strategy. PRIORITY, BALANCE or COST_OPTIMIZED(Available in 1.54.0+).
+        Multi-AZ scaling group ECS instance expansion and contraction strategy. PRIORITY, BALANCE or COST_OPTIMIZED(Available since v1.54.0).
         """
         return pulumi.get(self, "multi_az_policy")
 
@@ -310,12 +322,6 @@ class ScalingGroupArgs:
     def protected_instances(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         Set or unset instances within group into protected status.
-
-        > **NOTE:** When detach loadbalancers, instances in group will be remove from loadbalancer's `Default Server Group`; On the contrary, When attach loadbalancers, instances in group will be added to loadbalancer's `Default Server Group`.
-
-        > **NOTE:** When detach dbInstances, private ip of instances in group will be remove from dbInstance's `WhiteList`; On the contrary, When attach dbInstances, private ip of instances in group will be added to dbInstance's `WhiteList`.
-
-        > **NOTE:** `on_demand_base_capacity`,`on_demand_percentage_above_base_capacity`,`spot_instance_pools`,`spot_instance_remedy` are valid only if `multi_az_policy` is 'COST_OPTIMIZED'.
         """
         return pulumi.get(self, "protected_instances")
 
@@ -427,6 +433,7 @@ class _ScalingGroupState:
                  group_type: Optional[pulumi.Input[str]] = None,
                  health_check_type: Optional[pulumi.Input[str]] = None,
                  launch_template_id: Optional[pulumi.Input[str]] = None,
+                 launch_template_overrides: Optional[pulumi.Input[Sequence[pulumi.Input['ScalingGroupLaunchTemplateOverrideArgs']]]] = None,
                  launch_template_version: Optional[pulumi.Input[str]] = None,
                  loadbalancer_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  max_size: Optional[pulumi.Input[int]] = None,
@@ -453,6 +460,7 @@ class _ScalingGroupState:
         :param pulumi.Input[str] group_type: Resource type within scaling group. Optional values: ECS, ECI. Default to ECS.
         :param pulumi.Input[str] health_check_type: Resource type within scaling group. Optional values: ECS, NONE. Default to ECS.
         :param pulumi.Input[str] launch_template_id: Instance launch template ID, scaling group obtains launch configuration from instance launch template, see [Launch Template](https://www.alibabacloud.com/help/doc-detail/73916.html). Creating scaling group from launch template enable group automatically.
+        :param pulumi.Input[Sequence[pulumi.Input['ScalingGroupLaunchTemplateOverrideArgs']]] launch_template_overrides: The details of the instance types that are specified by using the Extend Instance Type of Launch Template feature..  See `launch_template_override` below for details.
         :param pulumi.Input[str] launch_template_version: The version number of the launch template. Valid values are the version number, `Latest`, or `Default`, Default value: `Default`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] loadbalancer_ids: If a Server Load Balancer instance is specified in the scaling group, the scaling group automatically attaches its ECS instances to the Server Load Balancer instance.
                - The Server Load Balancer instance must be enabled.
@@ -464,16 +472,10 @@ class _ScalingGroupState:
                **NOTE:** From version 1.204.1, `max_size` can be set to `2000`.
         :param pulumi.Input[int] min_size: Minimum number of ECS instances in the scaling group. Value range: [0, 2000].
                **NOTE:** From version 1.204.1, `min_size` can be set to `2000`.
-        :param pulumi.Input[str] multi_az_policy: Multi-AZ scaling group ECS instance expansion and contraction strategy. PRIORITY, BALANCE or COST_OPTIMIZED(Available in 1.54.0+).
+        :param pulumi.Input[str] multi_az_policy: Multi-AZ scaling group ECS instance expansion and contraction strategy. PRIORITY, BALANCE or COST_OPTIMIZED(Available since v1.54.0).
         :param pulumi.Input[int] on_demand_base_capacity: The minimum amount of the Auto Scaling group's capacity that must be fulfilled by On-Demand Instances. This base portion is provisioned first as your group scales.
         :param pulumi.Input[int] on_demand_percentage_above_base_capacity: Controls the percentages of On-Demand Instances and Spot Instances for your additional capacity beyond OnDemandBaseCapacity.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] protected_instances: Set or unset instances within group into protected status.
-               
-               > **NOTE:** When detach loadbalancers, instances in group will be remove from loadbalancer's `Default Server Group`; On the contrary, When attach loadbalancers, instances in group will be added to loadbalancer's `Default Server Group`.
-               
-               > **NOTE:** When detach dbInstances, private ip of instances in group will be remove from dbInstance's `WhiteList`; On the contrary, When attach dbInstances, private ip of instances in group will be added to dbInstance's `WhiteList`.
-               
-               > **NOTE:** `on_demand_base_capacity`,`on_demand_percentage_above_base_capacity`,`spot_instance_pools`,`spot_instance_remedy` are valid only if `multi_az_policy` is 'COST_OPTIMIZED'.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] removal_policies: RemovalPolicy is used to select the ECS instances you want to remove from the scaling group when multiple candidates for removal exist. Optional values:
                - OldestInstance: removes the ECS instance that is added to the scaling group at the earliest point in time.
                - NewestInstance: removes the ECS instance that is added to the scaling group at the latest point in time.
@@ -502,6 +504,8 @@ class _ScalingGroupState:
             pulumi.set(__self__, "health_check_type", health_check_type)
         if launch_template_id is not None:
             pulumi.set(__self__, "launch_template_id", launch_template_id)
+        if launch_template_overrides is not None:
+            pulumi.set(__self__, "launch_template_overrides", launch_template_overrides)
         if launch_template_version is not None:
             pulumi.set(__self__, "launch_template_version", launch_template_version)
         if loadbalancer_ids is not None:
@@ -623,6 +627,18 @@ class _ScalingGroupState:
         pulumi.set(self, "launch_template_id", value)
 
     @property
+    @pulumi.getter(name="launchTemplateOverrides")
+    def launch_template_overrides(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ScalingGroupLaunchTemplateOverrideArgs']]]]:
+        """
+        The details of the instance types that are specified by using the Extend Instance Type of Launch Template feature..  See `launch_template_override` below for details.
+        """
+        return pulumi.get(self, "launch_template_overrides")
+
+    @launch_template_overrides.setter
+    def launch_template_overrides(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ScalingGroupLaunchTemplateOverrideArgs']]]]):
+        pulumi.set(self, "launch_template_overrides", value)
+
+    @property
     @pulumi.getter(name="launchTemplateVersion")
     def launch_template_version(self) -> Optional[pulumi.Input[str]]:
         """
@@ -681,7 +697,7 @@ class _ScalingGroupState:
     @pulumi.getter(name="multiAzPolicy")
     def multi_az_policy(self) -> Optional[pulumi.Input[str]]:
         """
-        Multi-AZ scaling group ECS instance expansion and contraction strategy. PRIORITY, BALANCE or COST_OPTIMIZED(Available in 1.54.0+).
+        Multi-AZ scaling group ECS instance expansion and contraction strategy. PRIORITY, BALANCE or COST_OPTIMIZED(Available since v1.54.0).
         """
         return pulumi.get(self, "multi_az_policy")
 
@@ -718,12 +734,6 @@ class _ScalingGroupState:
     def protected_instances(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         Set or unset instances within group into protected status.
-
-        > **NOTE:** When detach loadbalancers, instances in group will be remove from loadbalancer's `Default Server Group`; On the contrary, When attach loadbalancers, instances in group will be added to loadbalancer's `Default Server Group`.
-
-        > **NOTE:** When detach dbInstances, private ip of instances in group will be remove from dbInstance's `WhiteList`; On the contrary, When attach dbInstances, private ip of instances in group will be added to dbInstance's `WhiteList`.
-
-        > **NOTE:** `on_demand_base_capacity`,`on_demand_percentage_above_base_capacity`,`spot_instance_pools`,`spot_instance_remedy` are valid only if `multi_az_policy` is 'COST_OPTIMIZED'.
         """
         return pulumi.get(self, "protected_instances")
 
@@ -837,6 +847,7 @@ class ScalingGroup(pulumi.CustomResource):
                  group_type: Optional[pulumi.Input[str]] = None,
                  health_check_type: Optional[pulumi.Input[str]] = None,
                  launch_template_id: Optional[pulumi.Input[str]] = None,
+                 launch_template_overrides: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ScalingGroupLaunchTemplateOverrideArgs']]]]] = None,
                  launch_template_version: Optional[pulumi.Input[str]] = None,
                  loadbalancer_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  max_size: Optional[pulumi.Input[int]] = None,
@@ -869,11 +880,16 @@ class ScalingGroup(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
             name = "terraform-example"
+        default_random_integer = random.RandomInteger("defaultRandomInteger",
+            min=10000,
+            max=99999)
+        my_name = default_random_integer.result.apply(lambda result: f"{name}-{result}")
         default_zones = alicloud.get_zones(available_disk_category="cloud_efficiency",
             available_resource_creation="VSwitch")
         default_instance_types = alicloud.ecs.get_instance_types(availability_zone=default_zones.zones[0].id,
@@ -883,13 +899,13 @@ class ScalingGroup(pulumi.CustomResource):
             most_recent=True,
             owners="system")
         default_network = alicloud.vpc.Network("defaultNetwork",
-            vpc_name=name,
+            vpc_name=my_name,
             cidr_block="172.16.0.0/16")
         default_switch = alicloud.vpc.Switch("defaultSwitch",
             vpc_id=default_network.id,
             cidr_block="172.16.0.0/24",
             zone_id=default_zones.zones[0].id,
-            vswitch_name=name)
+            vswitch_name=my_name)
         default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
         default_security_group_rule = alicloud.ecs.SecurityGroupRule("defaultSecurityGroupRule",
             type="ingress",
@@ -908,7 +924,7 @@ class ScalingGroup(pulumi.CustomResource):
         default_scaling_group = alicloud.ess.ScalingGroup("defaultScalingGroup",
             min_size=1,
             max_size=1,
-            scaling_group_name=name,
+            scaling_group_name=my_name,
             default_cooldown=20,
             vswitch_ids=[
                 default_switch.id,
@@ -943,6 +959,7 @@ class ScalingGroup(pulumi.CustomResource):
         :param pulumi.Input[str] group_type: Resource type within scaling group. Optional values: ECS, ECI. Default to ECS.
         :param pulumi.Input[str] health_check_type: Resource type within scaling group. Optional values: ECS, NONE. Default to ECS.
         :param pulumi.Input[str] launch_template_id: Instance launch template ID, scaling group obtains launch configuration from instance launch template, see [Launch Template](https://www.alibabacloud.com/help/doc-detail/73916.html). Creating scaling group from launch template enable group automatically.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ScalingGroupLaunchTemplateOverrideArgs']]]] launch_template_overrides: The details of the instance types that are specified by using the Extend Instance Type of Launch Template feature..  See `launch_template_override` below for details.
         :param pulumi.Input[str] launch_template_version: The version number of the launch template. Valid values are the version number, `Latest`, or `Default`, Default value: `Default`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] loadbalancer_ids: If a Server Load Balancer instance is specified in the scaling group, the scaling group automatically attaches its ECS instances to the Server Load Balancer instance.
                - The Server Load Balancer instance must be enabled.
@@ -954,16 +971,10 @@ class ScalingGroup(pulumi.CustomResource):
                **NOTE:** From version 1.204.1, `max_size` can be set to `2000`.
         :param pulumi.Input[int] min_size: Minimum number of ECS instances in the scaling group. Value range: [0, 2000].
                **NOTE:** From version 1.204.1, `min_size` can be set to `2000`.
-        :param pulumi.Input[str] multi_az_policy: Multi-AZ scaling group ECS instance expansion and contraction strategy. PRIORITY, BALANCE or COST_OPTIMIZED(Available in 1.54.0+).
+        :param pulumi.Input[str] multi_az_policy: Multi-AZ scaling group ECS instance expansion and contraction strategy. PRIORITY, BALANCE or COST_OPTIMIZED(Available since v1.54.0).
         :param pulumi.Input[int] on_demand_base_capacity: The minimum amount of the Auto Scaling group's capacity that must be fulfilled by On-Demand Instances. This base portion is provisioned first as your group scales.
         :param pulumi.Input[int] on_demand_percentage_above_base_capacity: Controls the percentages of On-Demand Instances and Spot Instances for your additional capacity beyond OnDemandBaseCapacity.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] protected_instances: Set or unset instances within group into protected status.
-               
-               > **NOTE:** When detach loadbalancers, instances in group will be remove from loadbalancer's `Default Server Group`; On the contrary, When attach loadbalancers, instances in group will be added to loadbalancer's `Default Server Group`.
-               
-               > **NOTE:** When detach dbInstances, private ip of instances in group will be remove from dbInstance's `WhiteList`; On the contrary, When attach dbInstances, private ip of instances in group will be added to dbInstance's `WhiteList`.
-               
-               > **NOTE:** `on_demand_base_capacity`,`on_demand_percentage_above_base_capacity`,`spot_instance_pools`,`spot_instance_remedy` are valid only if `multi_az_policy` is 'COST_OPTIMIZED'.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] removal_policies: RemovalPolicy is used to select the ECS instances you want to remove from the scaling group when multiple candidates for removal exist. Optional values:
                - OldestInstance: removes the ECS instance that is added to the scaling group at the earliest point in time.
                - NewestInstance: removes the ECS instance that is added to the scaling group at the latest point in time.
@@ -1000,11 +1011,16 @@ class ScalingGroup(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
             name = "terraform-example"
+        default_random_integer = random.RandomInteger("defaultRandomInteger",
+            min=10000,
+            max=99999)
+        my_name = default_random_integer.result.apply(lambda result: f"{name}-{result}")
         default_zones = alicloud.get_zones(available_disk_category="cloud_efficiency",
             available_resource_creation="VSwitch")
         default_instance_types = alicloud.ecs.get_instance_types(availability_zone=default_zones.zones[0].id,
@@ -1014,13 +1030,13 @@ class ScalingGroup(pulumi.CustomResource):
             most_recent=True,
             owners="system")
         default_network = alicloud.vpc.Network("defaultNetwork",
-            vpc_name=name,
+            vpc_name=my_name,
             cidr_block="172.16.0.0/16")
         default_switch = alicloud.vpc.Switch("defaultSwitch",
             vpc_id=default_network.id,
             cidr_block="172.16.0.0/24",
             zone_id=default_zones.zones[0].id,
-            vswitch_name=name)
+            vswitch_name=my_name)
         default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
         default_security_group_rule = alicloud.ecs.SecurityGroupRule("defaultSecurityGroupRule",
             type="ingress",
@@ -1039,7 +1055,7 @@ class ScalingGroup(pulumi.CustomResource):
         default_scaling_group = alicloud.ess.ScalingGroup("defaultScalingGroup",
             min_size=1,
             max_size=1,
-            scaling_group_name=name,
+            scaling_group_name=my_name,
             default_cooldown=20,
             vswitch_ids=[
                 default_switch.id,
@@ -1085,6 +1101,7 @@ class ScalingGroup(pulumi.CustomResource):
                  group_type: Optional[pulumi.Input[str]] = None,
                  health_check_type: Optional[pulumi.Input[str]] = None,
                  launch_template_id: Optional[pulumi.Input[str]] = None,
+                 launch_template_overrides: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ScalingGroupLaunchTemplateOverrideArgs']]]]] = None,
                  launch_template_version: Optional[pulumi.Input[str]] = None,
                  loadbalancer_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  max_size: Optional[pulumi.Input[int]] = None,
@@ -1116,6 +1133,7 @@ class ScalingGroup(pulumi.CustomResource):
             __props__.__dict__["group_type"] = group_type
             __props__.__dict__["health_check_type"] = health_check_type
             __props__.__dict__["launch_template_id"] = launch_template_id
+            __props__.__dict__["launch_template_overrides"] = launch_template_overrides
             __props__.__dict__["launch_template_version"] = launch_template_version
             __props__.__dict__["loadbalancer_ids"] = loadbalancer_ids
             if max_size is None and not opts.urn:
@@ -1152,6 +1170,7 @@ class ScalingGroup(pulumi.CustomResource):
             group_type: Optional[pulumi.Input[str]] = None,
             health_check_type: Optional[pulumi.Input[str]] = None,
             launch_template_id: Optional[pulumi.Input[str]] = None,
+            launch_template_overrides: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ScalingGroupLaunchTemplateOverrideArgs']]]]] = None,
             launch_template_version: Optional[pulumi.Input[str]] = None,
             loadbalancer_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             max_size: Optional[pulumi.Input[int]] = None,
@@ -1183,6 +1202,7 @@ class ScalingGroup(pulumi.CustomResource):
         :param pulumi.Input[str] group_type: Resource type within scaling group. Optional values: ECS, ECI. Default to ECS.
         :param pulumi.Input[str] health_check_type: Resource type within scaling group. Optional values: ECS, NONE. Default to ECS.
         :param pulumi.Input[str] launch_template_id: Instance launch template ID, scaling group obtains launch configuration from instance launch template, see [Launch Template](https://www.alibabacloud.com/help/doc-detail/73916.html). Creating scaling group from launch template enable group automatically.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ScalingGroupLaunchTemplateOverrideArgs']]]] launch_template_overrides: The details of the instance types that are specified by using the Extend Instance Type of Launch Template feature..  See `launch_template_override` below for details.
         :param pulumi.Input[str] launch_template_version: The version number of the launch template. Valid values are the version number, `Latest`, or `Default`, Default value: `Default`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] loadbalancer_ids: If a Server Load Balancer instance is specified in the scaling group, the scaling group automatically attaches its ECS instances to the Server Load Balancer instance.
                - The Server Load Balancer instance must be enabled.
@@ -1194,16 +1214,10 @@ class ScalingGroup(pulumi.CustomResource):
                **NOTE:** From version 1.204.1, `max_size` can be set to `2000`.
         :param pulumi.Input[int] min_size: Minimum number of ECS instances in the scaling group. Value range: [0, 2000].
                **NOTE:** From version 1.204.1, `min_size` can be set to `2000`.
-        :param pulumi.Input[str] multi_az_policy: Multi-AZ scaling group ECS instance expansion and contraction strategy. PRIORITY, BALANCE or COST_OPTIMIZED(Available in 1.54.0+).
+        :param pulumi.Input[str] multi_az_policy: Multi-AZ scaling group ECS instance expansion and contraction strategy. PRIORITY, BALANCE or COST_OPTIMIZED(Available since v1.54.0).
         :param pulumi.Input[int] on_demand_base_capacity: The minimum amount of the Auto Scaling group's capacity that must be fulfilled by On-Demand Instances. This base portion is provisioned first as your group scales.
         :param pulumi.Input[int] on_demand_percentage_above_base_capacity: Controls the percentages of On-Demand Instances and Spot Instances for your additional capacity beyond OnDemandBaseCapacity.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] protected_instances: Set or unset instances within group into protected status.
-               
-               > **NOTE:** When detach loadbalancers, instances in group will be remove from loadbalancer's `Default Server Group`; On the contrary, When attach loadbalancers, instances in group will be added to loadbalancer's `Default Server Group`.
-               
-               > **NOTE:** When detach dbInstances, private ip of instances in group will be remove from dbInstance's `WhiteList`; On the contrary, When attach dbInstances, private ip of instances in group will be added to dbInstance's `WhiteList`.
-               
-               > **NOTE:** `on_demand_base_capacity`,`on_demand_percentage_above_base_capacity`,`spot_instance_pools`,`spot_instance_remedy` are valid only if `multi_az_policy` is 'COST_OPTIMIZED'.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] removal_policies: RemovalPolicy is used to select the ECS instances you want to remove from the scaling group when multiple candidates for removal exist. Optional values:
                - OldestInstance: removes the ECS instance that is added to the scaling group at the earliest point in time.
                - NewestInstance: removes the ECS instance that is added to the scaling group at the latest point in time.
@@ -1229,6 +1243,7 @@ class ScalingGroup(pulumi.CustomResource):
         __props__.__dict__["group_type"] = group_type
         __props__.__dict__["health_check_type"] = health_check_type
         __props__.__dict__["launch_template_id"] = launch_template_id
+        __props__.__dict__["launch_template_overrides"] = launch_template_overrides
         __props__.__dict__["launch_template_version"] = launch_template_version
         __props__.__dict__["loadbalancer_ids"] = loadbalancer_ids
         __props__.__dict__["max_size"] = max_size
@@ -1305,6 +1320,14 @@ class ScalingGroup(pulumi.CustomResource):
         return pulumi.get(self, "launch_template_id")
 
     @property
+    @pulumi.getter(name="launchTemplateOverrides")
+    def launch_template_overrides(self) -> pulumi.Output[Optional[Sequence['outputs.ScalingGroupLaunchTemplateOverride']]]:
+        """
+        The details of the instance types that are specified by using the Extend Instance Type of Launch Template feature..  See `launch_template_override` below for details.
+        """
+        return pulumi.get(self, "launch_template_overrides")
+
+    @property
     @pulumi.getter(name="launchTemplateVersion")
     def launch_template_version(self) -> pulumi.Output[Optional[str]]:
         """
@@ -1347,7 +1370,7 @@ class ScalingGroup(pulumi.CustomResource):
     @pulumi.getter(name="multiAzPolicy")
     def multi_az_policy(self) -> pulumi.Output[Optional[str]]:
         """
-        Multi-AZ scaling group ECS instance expansion and contraction strategy. PRIORITY, BALANCE or COST_OPTIMIZED(Available in 1.54.0+).
+        Multi-AZ scaling group ECS instance expansion and contraction strategy. PRIORITY, BALANCE or COST_OPTIMIZED(Available since v1.54.0).
         """
         return pulumi.get(self, "multi_az_policy")
 
@@ -1372,12 +1395,6 @@ class ScalingGroup(pulumi.CustomResource):
     def protected_instances(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
         Set or unset instances within group into protected status.
-
-        > **NOTE:** When detach loadbalancers, instances in group will be remove from loadbalancer's `Default Server Group`; On the contrary, When attach loadbalancers, instances in group will be added to loadbalancer's `Default Server Group`.
-
-        > **NOTE:** When detach dbInstances, private ip of instances in group will be remove from dbInstance's `WhiteList`; On the contrary, When attach dbInstances, private ip of instances in group will be added to dbInstance's `WhiteList`.
-
-        > **NOTE:** `on_demand_base_capacity`,`on_demand_percentage_above_base_capacity`,`spot_instance_pools`,`spot_instance_remedy` are valid only if `multi_az_policy` is 'COST_OPTIMIZED'.
         """
         return pulumi.get(self, "protected_instances")
 

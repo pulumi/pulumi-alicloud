@@ -29,16 +29,16 @@ namespace Pulumi.AliCloud.Ess
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var defaultRandomInteger = new List&lt;Random.RandomInteger&gt;();
-    ///     for (var rangeIndex = 0; rangeIndex &lt; 2; rangeIndex++)
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "terraform-example";
+    ///     var defaultRandomInteger = new Random.RandomInteger("defaultRandomInteger", new()
     ///     {
-    ///         var range = new { Value = rangeIndex };
-    ///         defaultRandomInteger.Add(new Random.RandomInteger($"defaultRandomInteger-{range.Value}", new()
-    ///         {
-    ///             Max = 99999,
-    ///             Min = 10000,
-    ///         }));
-    ///     }
+    ///         Min = 10000,
+    ///         Max = 99999,
+    ///     });
+    /// 
+    ///     var myName = defaultRandomInteger.Result.Apply(result =&gt; $"{name}-{result}");
+    /// 
     ///     var defaultZones = AliCloud.GetZones.Invoke(new()
     ///     {
     ///         AvailableDiskCategory = "cloud_efficiency",
@@ -47,7 +47,7 @@ namespace Pulumi.AliCloud.Ess
     /// 
     ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
     ///     {
-    ///         VpcName = defaultRandomInteger[0].Result.Apply(result =&gt; $"terraform-example-{result}"),
+    ///         VpcName = myName,
     ///         CidrBlock = "172.16.0.0/16",
     ///     });
     /// 
@@ -56,7 +56,7 @@ namespace Pulumi.AliCloud.Ess
     ///         VpcId = defaultNetwork.Id,
     ///         CidrBlock = "172.16.0.0/24",
     ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
-    ///         VswitchName = defaultRandomInteger[0].Result.Apply(result =&gt; $"terraform-example-{result}"),
+    ///         VswitchName = myName,
     ///     });
     /// 
     ///     var defaultSecurityGroup = new AliCloud.Ecs.SecurityGroup("defaultSecurityGroup", new()
@@ -68,7 +68,7 @@ namespace Pulumi.AliCloud.Ess
     ///     {
     ///         MinSize = 0,
     ///         MaxSize = 1,
-    ///         ScalingGroupName = defaultRandomInteger[0].Result.Apply(result =&gt; $"terraform-example-{result}"),
+    ///         ScalingGroupName = myName,
     ///         RemovalPolicies = new[]
     ///         {
     ///             "OldestInstance",

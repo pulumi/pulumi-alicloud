@@ -14,13 +14,25 @@ namespace Pulumi.AliCloud.Ens.Outputs
     public sealed class InstanceSystemDisk
     {
         /// <summary>
-        /// System disk size, cloud_efficiency is 20-32000,cloud_ssd/local_hdd/local_ssd is 20-25000, unit: GB.
+        /// System disk type. Optional values:
+        /// - cloud_efficiency: Ultra cloud disk
+        /// - cloud_ssd: Full Flash cloud disk
+        /// - local_hdd: local hdd disk
+        /// - local_ssd: local disk ssd.
+        /// </summary>
+        public readonly string? Category;
+        /// <summary>
+        /// System disk size, unit: GB.
         /// </summary>
         public readonly int? Size;
 
         [OutputConstructor]
-        private InstanceSystemDisk(int? size)
+        private InstanceSystemDisk(
+            string? category,
+
+            int? size)
         {
+            Category = category;
             Size = size;
         }
     }

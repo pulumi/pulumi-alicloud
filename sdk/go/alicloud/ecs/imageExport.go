@@ -20,7 +20,7 @@ import (
 //
 // > **NOTE:** Before exporting the image, you must authorize the cloud server ECS official service account to write OSS permissions through RAM.
 //
-// > **NOTE:** Available in 1.68.0+.
+// > **NOTE:** Available since v1.68.0+.
 //
 // ## Example Usage
 //
@@ -97,17 +97,19 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			defaultImage, err := ecs.NewImage(ctx, "defaultImage", &ecs.ImageArgs{
-//				InstanceId:  defaultInstance.ID(),
-//				ImageName:   pulumi.String("terraform-example"),
-//				Description: pulumi.String("terraform-example"),
+//			defaultRandomInteger, err := random.NewRandomInteger(ctx, "defaultRandomInteger", &random.RandomIntegerArgs{
+//				Max: pulumi.Int(99999),
+//				Min: pulumi.Int(10000),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			defaultRandomInteger, err := random.NewRandomInteger(ctx, "defaultRandomInteger", &random.RandomIntegerArgs{
-//				Max: pulumi.Int(99999),
-//				Min: pulumi.Int(10000),
+//			defaultImage, err := ecs.NewImage(ctx, "defaultImage", &ecs.ImageArgs{
+//				InstanceId: defaultInstance.ID(),
+//				ImageName: defaultRandomInteger.Result.ApplyT(func(result int) (string, error) {
+//					return fmt.Sprintf("terraform-example-%v", result), nil
+//				}).(pulumi.StringOutput),
+//				Description: pulumi.String("terraform-example"),
 //			})
 //			if err != nil {
 //				return err
@@ -133,11 +135,6 @@ import (
 //	}
 //
 // ```
-// ## Attributes Reference0
-//
-//	The following attributes are exported:
-//
-// * `id` - ID of the image.
 type ImageExport struct {
 	pulumi.CustomResourceState
 

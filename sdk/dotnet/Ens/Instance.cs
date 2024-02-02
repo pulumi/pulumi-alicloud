@@ -22,13 +22,39 @@ namespace Pulumi.AliCloud.Ens
     public partial class Instance : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Whether to automatically renew, default to False, this parameter is invalid when paying by volume.
+        /// The number of instances created, with a minimum of 1 and a maximum of 100.
+        /// </summary>
+        [Output("amount")]
+        public Output<int?> Amount { get; private set; } = null!;
+
+        /// <summary>
+        /// Whether to automatically renew the logo. The default value is false. This parameter is invalid when you pay by volume.
         /// </summary>
         [Output("autoRenew")]
         public Output<bool?> AutoRenew { get; private set; } = null!;
 
         /// <summary>
-        /// Operator, required for regional level scheduling, invalid for node level scheduling.
+        /// Whether to use vouchers. The default is to use. Value:
+        /// - true (used)
+        /// - false (not used).
+        /// </summary>
+        [Output("autoUseCoupon")]
+        public Output<string?> AutoUseCoupon { get; private set; } = null!;
+
+        /// <summary>
+        /// The billing cycle for instance computing resources. Only instance-level pay-as-you-go is supported. Value
+        /// - Hour: hourly billing
+        /// - Day: Daily billing
+        /// - Month: monthly billing.
+        /// </summary>
+        [Output("billingCycle")]
+        public Output<string?> BillingCycle { get; private set; } = null!;
+
+        /// <summary>
+        /// Operator, required for regional scheduling. Optional values:
+        /// - cmcc (mobile)
+        /// - unicom
+        /// - telecom.
         /// </summary>
         [Output("carrier")]
         public Output<string?> Carrier { get; private set; } = null!;
@@ -40,61 +66,94 @@ namespace Pulumi.AliCloud.Ens
         public Output<ImmutableArray<Outputs.InstanceDataDisk>> DataDisks { get; private set; } = null!;
 
         /// <summary>
-        /// Node id. When ScheduleAreaLevel is Region, EnsRegionId is required. When ScheduleAreaLevel is Big, Middle, Small, EnsRegionId is not required.
+        /// The node ID. When ScheduleAreaLevel is Region, EnsRegionId is required. When ScheduleAreaLevel is Big,Middle,Small, EnsRegionId is invalid.
         /// </summary>
         [Output("ensRegionId")]
-        public Output<string?> EnsRegionId { get; private set; } = null!;
+        public Output<string> EnsRegionId { get; private set; } = null!;
 
         /// <summary>
-        /// Host Name.
+        /// Whether to force the identity when operating the instance. Optional values:
+        /// - true: Force
+        /// - false (default): non-mandatory
+        /// </summary>
+        [Output("forceStop")]
+        public Output<string?> ForceStop { get; private set; } = null!;
+
+        /// <summary>
+        /// The host name of the instance. Example value: test-HostName.
         /// </summary>
         [Output("hostName")]
         public Output<string> HostName { get; private set; } = null!;
 
         /// <summary>
-        /// The Image Id field. If InstanceType is arm_bmi, the image Id is a non-required parameter. If instanceType is another specification value, the image Id is a required parameter.
+        /// The image ID of the instance. The arm version card cannot be filled in. Other specifications are required. Example value: m-5si16wo6simkt267p8b7h * * * *.
         /// </summary>
         [Output("imageId")]
         public Output<string?> ImageId { get; private set; } = null!;
 
         /// <summary>
-        /// Instance billing strategy, instance: instance granularity (prepaid method currently does not support instance), user: by user dimension (not transferred or prepaid method supports user).
+        /// Whether the Payment type of the disk created with the instance is converted.
+        /// </summary>
+        [Output("includeDataDisks")]
+        public Output<bool?> IncludeDataDisks { get; private set; } = null!;
+
+        /// <summary>
+        /// The instance billing policy. Optional values:
+        /// - instance: instance granularity (the subscription method does not support instance)
+        /// - user: user Dimension (user is not transmitted or supported in the prepaid mode).
         /// </summary>
         [Output("instanceChargeStrategy")]
         public Output<string?> InstanceChargeStrategy { get; private set; } = null!;
 
         /// <summary>
-        /// The instance name. It must be 2 to 128 characters in length and must start with an uppercase or lowercase letter or a Chinese character. It cannot start with http:// or https. It can contain Chinese, English, numbers, half-width colons (:), underscores (_), periods (.), or hyphens (-). The default value is the InstanceId of the instance.
+        /// The instance name. Example value: test-InstanceName. It must be 2 to 128 characters in length and must start with an uppercase or lowercase letter or a Chinese character. It cannot start with http:// or https. Can contain Chinese, English, numbers, half-width colons (:), underscores (_), periods (.), or hyphens (-) The default value is the InstanceId of the instance. .
         /// </summary>
         [Output("instanceName")]
-        public Output<string?> InstanceName { get; private set; } = null!;
+        public Output<string> InstanceName { get; private set; } = null!;
 
         /// <summary>
-        /// Instance specifications type.
+        /// The specification of the instance. Example value: ens.sn1.small.
         /// </summary>
         [Output("instanceType")]
         public Output<string> InstanceType { get; private set; } = null!;
 
         /// <summary>
-        /// Instance Charge type.it could be BandwidthByDay, 95BandwidthByMonth, PayByBandwidth4thMonth.
+        /// Instance bandwidth billing method. If the billing method can be selected for the first purchase, the subsequent value of this field will be processed by default according to the billing method selected for the first time. Optional values:
+        /// - BandwidthByDay: Daily peak bandwidth
+        /// - 95bandwidthbymonth: 95 peak bandwidth.
         /// </summary>
         [Output("internetChargeType")]
         public Output<string?> InternetChargeType { get; private set; } = null!;
 
         /// <summary>
-        /// The maximum public network bandwidth.
+        /// Maximum public network bandwidth. The field type is Long, and the precision may be lost during serialization/deserialization. Please note that the value must not be greater than 9007199254740991.
         /// </summary>
         [Output("internetMaxBandwidthOut")]
         public Output<int> InternetMaxBandwidthOut { get; private set; } = null!;
 
         /// <summary>
-        /// Region code, required for regional level scheduling, invalid for node level scheduling.
+        /// The IP type. Value:
+        /// - ipv4 (default):IPv4
+        /// - ipv6:IPv6
+        /// - ipv4Andipv6:IPv4 and IPv6.
+        /// </summary>
+        [Output("ipType")]
+        public Output<string?> IpType { get; private set; } = null!;
+
+        /// <summary>
+        /// The area code. Example value: 350000. Required for regional-level scheduling, invalid for node-level scheduling.
         /// </summary>
         [Output("netDistrictCode")]
         public Output<string?> NetDistrictCode { get; private set; } = null!;
 
         /// <summary>
-        /// The password of the instance。It is 8 to 30 characters in length and must contain three types of characters: uppercase and lowercase letters, numbers, and special symbols. The following special symbols can be set: '''()'~! @#$%^&amp; *-_+ =|{}[]:;',.? /'''.
+        /// The network ID of the instance. Can only be used in node-level scheduling.
+        /// </summary>
+        [Output("netWorkId")]
+        public Output<string> NetWorkId { get; private set; } = null!;
+
+        /// <summary>
+        /// The instance password. At least one of Password, KeyPairName, and PasswordInherit.
         /// </summary>
         [Output("password")]
         public Output<string?> Password { get; private set; } = null!;
@@ -106,76 +165,102 @@ namespace Pulumi.AliCloud.Ens
         public Output<bool?> PasswordInherit { get; private set; } = null!;
 
         /// <summary>
-        /// Instance payment method, Subscription: prepaid, monthly package; PayAsYouGo: Pay as you go.
+        /// Instance payment method. Optional values:
+        /// - Subscription: prepaid, annual and monthly
+        /// - PayAsYouGo: Pay by volume.
         /// </summary>
         [Output("paymentType")]
         public Output<string> PaymentType { get; private set; } = null!;
 
         /// <summary>
-        /// The duration of purchasing resources. If PeriodUnit is not specified, it defaults to purchasing on a monthly basis. Currently, only days and months are supported. If PeriodUnit=Day, Period can only be 3. If PeriodUnit=Monthc, then Period can be 1-9,12.
+        /// The duration of the resource purchase. Value method:
+        /// - If PeriodUnit is set to Day, Period can only be set to 3.
+        /// - If PeriodUnit is set to Month, Period can be set to 1-9,12.
         /// </summary>
         [Output("period")]
         public Output<int?> Period { get; private set; } = null!;
 
         /// <summary>
-        /// The unit of time for purchasing resources. If PeriodUnit is not specified, it defaults to purchasing by Month. Currently, only days and months are supported. If PeriodUnit=Day, Period can only be 3. If PeriodUnit=Month, then Period can be 1-9,12.
+        /// The unit of time for purchasing resources. Value:
+        /// - Month (default): purchase by Month
+        /// - Day: buy by Day.
         /// </summary>
         [Output("periodUnit")]
         public Output<string?> PeriodUnit { get; private set; } = null!;
 
         /// <summary>
-        /// Whether to allocate public IP. Value：true (default): can be assigned，false: cannot be assigned.
+        /// The private IP address. Can only be used for node-level scheduling. If a private IP address is specified, the number of instances can only be one, and both the private IP address and the vSwitch ID are not empty, the private IP address takes effect.
+        /// </summary>
+        [Output("privateIpAddress")]
+        public Output<string> PrivateIpAddress { get; private set; } = null!;
+
+        /// <summary>
+        /// Whether to assign a public IP identifier. Value:
+        /// - true (default): Assign
+        /// - false: do not assign.
         /// </summary>
         [Output("publicIpIdentification")]
         public Output<bool?> PublicIpIdentification { get; private set; } = null!;
 
         /// <summary>
-        /// Number of instances.
-        /// </summary>
-        [Output("quantity")]
-        public Output<string?> Quantity { get; private set; } = null!;
-
-        /// <summary>
-        /// Scheduling level, which is used to perform node level or regional scheduling.
+        /// Scheduling level, through which node-level scheduling or area scheduling is performed. Optional values:
+        /// - Node-level scheduling: Region
+        /// - Regional scheduling: Big (region),Middle (province),Small (city).
         /// </summary>
         [Output("scheduleAreaLevel")]
         public Output<string> ScheduleAreaLevel { get; private set; } = null!;
 
         /// <summary>
-        /// Dispatch price strategy. If left blank, it defaults to prioritizing low prices. Values: PriceLowPriority (priority high price), PriceLowPriority (priority low price).
+        /// Scheduling price policy. If it is not filled in, the default priority is low price. Value:
+        /// - PriceLowPriority
+        /// - PriceLowPriority (priority low price).
         /// </summary>
         [Output("schedulingPriceStrategy")]
         public Output<string?> SchedulingPriceStrategy { get; private set; } = null!;
 
         /// <summary>
-        /// When scheduling at the node level, it is Concentrate. When scheduling at the regional level, it is selected according to customer needs. Concentrate: Centralized; Disperse: Disperse.
+        /// Scheduling policy. Optional values:
+        /// - Concentrate for node-level scheduling
+        /// - For regional scheduling, Concentrate, Disperse.
         /// </summary>
         [Output("schedulingStrategy")]
         public Output<string?> SchedulingStrategy { get; private set; } = null!;
 
         /// <summary>
-        /// the status of the resource.
+        /// ID of the security group to which the instance belongs.
+        /// </summary>
+        [Output("securityId")]
+        public Output<string> SecurityId { get; private set; } = null!;
+
+        /// <summary>
+        /// Status of the instance.
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
-        /// The field representing the system disk specification. SystemDisk is a non-required parameter when InstanceType is x86_pm,x86_bmi,x86_bm,pc_bmi, or arm_bmi. SystemDisk is a required parameter when instanceType is other specification families. See `system_disk` below.
+        /// System Disk Specification. SystemDisk is a non-required parameter when InstanceType is x86_pm,x86_bmi,x86_bm,pc_bmi, or arm_bmi. SystemDisk is a required parameter when instanceType is other specification families. See `system_disk` below.
         /// </summary>
         [Output("systemDisk")]
         public Output<Outputs.InstanceSystemDisk?> SystemDisk { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies whether to automatically append sequential suffixes to the hostnames specified by the HostName parameter and instance names specified by the InstanceName parameter when you create multiple instances at a time. The sequential suffix ranges from 001 to 999. Valid values:  true false Default value: false.
+        /// Indicates whether to add an ordered suffix to HostName and InstanceName. The ordered suffix starts from 001 and cannot exceed 999.
         /// </summary>
         [Output("uniqueSuffix")]
         public Output<bool?> UniqueSuffix { get; private set; } = null!;
 
         /// <summary>
-        /// User defined data, with a maximum support of 16KB. You can input UserData information. UserData encoded in Base64 format.
+        /// User-defined data, maximum support 16KB. You can pass in the UserData information. The UserData is encoded in Base64 format.
         /// </summary>
         [Output("userData")]
         public Output<string?> UserData { get; private set; } = null!;
+
+        /// <summary>
+        /// The ID of the vSwitch to which the instance belongs. Can only be used in node-level scheduling.
+        /// </summary>
+        [Output("vswitchId")]
+        public Output<string> VswitchId { get; private set; } = null!;
 
 
         /// <summary>
@@ -228,13 +313,39 @@ namespace Pulumi.AliCloud.Ens
     public sealed class InstanceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Whether to automatically renew, default to False, this parameter is invalid when paying by volume.
+        /// The number of instances created, with a minimum of 1 and a maximum of 100.
+        /// </summary>
+        [Input("amount")]
+        public Input<int>? Amount { get; set; }
+
+        /// <summary>
+        /// Whether to automatically renew the logo. The default value is false. This parameter is invalid when you pay by volume.
         /// </summary>
         [Input("autoRenew")]
         public Input<bool>? AutoRenew { get; set; }
 
         /// <summary>
-        /// Operator, required for regional level scheduling, invalid for node level scheduling.
+        /// Whether to use vouchers. The default is to use. Value:
+        /// - true (used)
+        /// - false (not used).
+        /// </summary>
+        [Input("autoUseCoupon")]
+        public Input<string>? AutoUseCoupon { get; set; }
+
+        /// <summary>
+        /// The billing cycle for instance computing resources. Only instance-level pay-as-you-go is supported. Value
+        /// - Hour: hourly billing
+        /// - Day: Daily billing
+        /// - Month: monthly billing.
+        /// </summary>
+        [Input("billingCycle")]
+        public Input<string>? BillingCycle { get; set; }
+
+        /// <summary>
+        /// Operator, required for regional scheduling. Optional values:
+        /// - cmcc (mobile)
+        /// - unicom
+        /// - telecom.
         /// </summary>
         [Input("carrier")]
         public Input<string>? Carrier { get; set; }
@@ -252,64 +363,97 @@ namespace Pulumi.AliCloud.Ens
         }
 
         /// <summary>
-        /// Node id. When ScheduleAreaLevel is Region, EnsRegionId is required. When ScheduleAreaLevel is Big, Middle, Small, EnsRegionId is not required.
+        /// The node ID. When ScheduleAreaLevel is Region, EnsRegionId is required. When ScheduleAreaLevel is Big,Middle,Small, EnsRegionId is invalid.
         /// </summary>
         [Input("ensRegionId")]
         public Input<string>? EnsRegionId { get; set; }
 
         /// <summary>
-        /// Host Name.
+        /// Whether to force the identity when operating the instance. Optional values:
+        /// - true: Force
+        /// - false (default): non-mandatory
+        /// </summary>
+        [Input("forceStop")]
+        public Input<string>? ForceStop { get; set; }
+
+        /// <summary>
+        /// The host name of the instance. Example value: test-HostName.
         /// </summary>
         [Input("hostName")]
         public Input<string>? HostName { get; set; }
 
         /// <summary>
-        /// The Image Id field. If InstanceType is arm_bmi, the image Id is a non-required parameter. If instanceType is another specification value, the image Id is a required parameter.
+        /// The image ID of the instance. The arm version card cannot be filled in. Other specifications are required. Example value: m-5si16wo6simkt267p8b7h * * * *.
         /// </summary>
         [Input("imageId")]
         public Input<string>? ImageId { get; set; }
 
         /// <summary>
-        /// Instance billing strategy, instance: instance granularity (prepaid method currently does not support instance), user: by user dimension (not transferred or prepaid method supports user).
+        /// Whether the Payment type of the disk created with the instance is converted.
+        /// </summary>
+        [Input("includeDataDisks")]
+        public Input<bool>? IncludeDataDisks { get; set; }
+
+        /// <summary>
+        /// The instance billing policy. Optional values:
+        /// - instance: instance granularity (the subscription method does not support instance)
+        /// - user: user Dimension (user is not transmitted or supported in the prepaid mode).
         /// </summary>
         [Input("instanceChargeStrategy")]
         public Input<string>? InstanceChargeStrategy { get; set; }
 
         /// <summary>
-        /// The instance name. It must be 2 to 128 characters in length and must start with an uppercase or lowercase letter or a Chinese character. It cannot start with http:// or https. It can contain Chinese, English, numbers, half-width colons (:), underscores (_), periods (.), or hyphens (-). The default value is the InstanceId of the instance.
+        /// The instance name. Example value: test-InstanceName. It must be 2 to 128 characters in length and must start with an uppercase or lowercase letter or a Chinese character. It cannot start with http:// or https. Can contain Chinese, English, numbers, half-width colons (:), underscores (_), periods (.), or hyphens (-) The default value is the InstanceId of the instance. .
         /// </summary>
         [Input("instanceName")]
         public Input<string>? InstanceName { get; set; }
 
         /// <summary>
-        /// Instance specifications type.
+        /// The specification of the instance. Example value: ens.sn1.small.
         /// </summary>
         [Input("instanceType", required: true)]
         public Input<string> InstanceType { get; set; } = null!;
 
         /// <summary>
-        /// Instance Charge type.it could be BandwidthByDay, 95BandwidthByMonth, PayByBandwidth4thMonth.
+        /// Instance bandwidth billing method. If the billing method can be selected for the first purchase, the subsequent value of this field will be processed by default according to the billing method selected for the first time. Optional values:
+        /// - BandwidthByDay: Daily peak bandwidth
+        /// - 95bandwidthbymonth: 95 peak bandwidth.
         /// </summary>
         [Input("internetChargeType")]
         public Input<string>? InternetChargeType { get; set; }
 
         /// <summary>
-        /// The maximum public network bandwidth.
+        /// Maximum public network bandwidth. The field type is Long, and the precision may be lost during serialization/deserialization. Please note that the value must not be greater than 9007199254740991.
         /// </summary>
         [Input("internetMaxBandwidthOut", required: true)]
         public Input<int> InternetMaxBandwidthOut { get; set; } = null!;
 
         /// <summary>
-        /// Region code, required for regional level scheduling, invalid for node level scheduling.
+        /// The IP type. Value:
+        /// - ipv4 (default):IPv4
+        /// - ipv6:IPv6
+        /// - ipv4Andipv6:IPv4 and IPv6.
+        /// </summary>
+        [Input("ipType")]
+        public Input<string>? IpType { get; set; }
+
+        /// <summary>
+        /// The area code. Example value: 350000. Required for regional-level scheduling, invalid for node-level scheduling.
         /// </summary>
         [Input("netDistrictCode")]
         public Input<string>? NetDistrictCode { get; set; }
+
+        /// <summary>
+        /// The network ID of the instance. Can only be used in node-level scheduling.
+        /// </summary>
+        [Input("netWorkId")]
+        public Input<string>? NetWorkId { get; set; }
 
         [Input("password")]
         private Input<string>? _password;
 
         /// <summary>
-        /// The password of the instance。It is 8 to 30 characters in length and must contain three types of characters: uppercase and lowercase letters, numbers, and special symbols. The following special symbols can be set: '''()'~! @#$%^&amp; *-_+ =|{}[]:;',.? /'''.
+        /// The instance password. At least one of Password, KeyPairName, and PasswordInherit.
         /// </summary>
         public Input<string>? Password
         {
@@ -328,70 +472,102 @@ namespace Pulumi.AliCloud.Ens
         public Input<bool>? PasswordInherit { get; set; }
 
         /// <summary>
-        /// Instance payment method, Subscription: prepaid, monthly package; PayAsYouGo: Pay as you go.
+        /// Instance payment method. Optional values:
+        /// - Subscription: prepaid, annual and monthly
+        /// - PayAsYouGo: Pay by volume.
         /// </summary>
         [Input("paymentType", required: true)]
         public Input<string> PaymentType { get; set; } = null!;
 
         /// <summary>
-        /// The duration of purchasing resources. If PeriodUnit is not specified, it defaults to purchasing on a monthly basis. Currently, only days and months are supported. If PeriodUnit=Day, Period can only be 3. If PeriodUnit=Monthc, then Period can be 1-9,12.
+        /// The duration of the resource purchase. Value method:
+        /// - If PeriodUnit is set to Day, Period can only be set to 3.
+        /// - If PeriodUnit is set to Month, Period can be set to 1-9,12.
         /// </summary>
         [Input("period")]
         public Input<int>? Period { get; set; }
 
         /// <summary>
-        /// The unit of time for purchasing resources. If PeriodUnit is not specified, it defaults to purchasing by Month. Currently, only days and months are supported. If PeriodUnit=Day, Period can only be 3. If PeriodUnit=Month, then Period can be 1-9,12.
+        /// The unit of time for purchasing resources. Value:
+        /// - Month (default): purchase by Month
+        /// - Day: buy by Day.
         /// </summary>
         [Input("periodUnit")]
         public Input<string>? PeriodUnit { get; set; }
 
         /// <summary>
-        /// Whether to allocate public IP. Value：true (default): can be assigned，false: cannot be assigned.
+        /// The private IP address. Can only be used for node-level scheduling. If a private IP address is specified, the number of instances can only be one, and both the private IP address and the vSwitch ID are not empty, the private IP address takes effect.
+        /// </summary>
+        [Input("privateIpAddress")]
+        public Input<string>? PrivateIpAddress { get; set; }
+
+        /// <summary>
+        /// Whether to assign a public IP identifier. Value:
+        /// - true (default): Assign
+        /// - false: do not assign.
         /// </summary>
         [Input("publicIpIdentification")]
         public Input<bool>? PublicIpIdentification { get; set; }
 
         /// <summary>
-        /// Number of instances.
-        /// </summary>
-        [Input("quantity")]
-        public Input<string>? Quantity { get; set; }
-
-        /// <summary>
-        /// Scheduling level, which is used to perform node level or regional scheduling.
+        /// Scheduling level, through which node-level scheduling or area scheduling is performed. Optional values:
+        /// - Node-level scheduling: Region
+        /// - Regional scheduling: Big (region),Middle (province),Small (city).
         /// </summary>
         [Input("scheduleAreaLevel", required: true)]
         public Input<string> ScheduleAreaLevel { get; set; } = null!;
 
         /// <summary>
-        /// Dispatch price strategy. If left blank, it defaults to prioritizing low prices. Values: PriceLowPriority (priority high price), PriceLowPriority (priority low price).
+        /// Scheduling price policy. If it is not filled in, the default priority is low price. Value:
+        /// - PriceLowPriority
+        /// - PriceLowPriority (priority low price).
         /// </summary>
         [Input("schedulingPriceStrategy")]
         public Input<string>? SchedulingPriceStrategy { get; set; }
 
         /// <summary>
-        /// When scheduling at the node level, it is Concentrate. When scheduling at the regional level, it is selected according to customer needs. Concentrate: Centralized; Disperse: Disperse.
+        /// Scheduling policy. Optional values:
+        /// - Concentrate for node-level scheduling
+        /// - For regional scheduling, Concentrate, Disperse.
         /// </summary>
         [Input("schedulingStrategy")]
         public Input<string>? SchedulingStrategy { get; set; }
 
         /// <summary>
-        /// The field representing the system disk specification. SystemDisk is a non-required parameter when InstanceType is x86_pm,x86_bmi,x86_bm,pc_bmi, or arm_bmi. SystemDisk is a required parameter when instanceType is other specification families. See `system_disk` below.
+        /// ID of the security group to which the instance belongs.
+        /// </summary>
+        [Input("securityId")]
+        public Input<string>? SecurityId { get; set; }
+
+        /// <summary>
+        /// Status of the instance.
+        /// </summary>
+        [Input("status")]
+        public Input<string>? Status { get; set; }
+
+        /// <summary>
+        /// System Disk Specification. SystemDisk is a non-required parameter when InstanceType is x86_pm,x86_bmi,x86_bm,pc_bmi, or arm_bmi. SystemDisk is a required parameter when instanceType is other specification families. See `system_disk` below.
         /// </summary>
         [Input("systemDisk")]
         public Input<Inputs.InstanceSystemDiskArgs>? SystemDisk { get; set; }
 
         /// <summary>
-        /// Specifies whether to automatically append sequential suffixes to the hostnames specified by the HostName parameter and instance names specified by the InstanceName parameter when you create multiple instances at a time. The sequential suffix ranges from 001 to 999. Valid values:  true false Default value: false.
+        /// Indicates whether to add an ordered suffix to HostName and InstanceName. The ordered suffix starts from 001 and cannot exceed 999.
         /// </summary>
         [Input("uniqueSuffix")]
         public Input<bool>? UniqueSuffix { get; set; }
 
         /// <summary>
-        /// User defined data, with a maximum support of 16KB. You can input UserData information. UserData encoded in Base64 format.
+        /// User-defined data, maximum support 16KB. You can pass in the UserData information. The UserData is encoded in Base64 format.
         /// </summary>
         [Input("userData")]
         public Input<string>? UserData { get; set; }
+
+        /// <summary>
+        /// The ID of the vSwitch to which the instance belongs. Can only be used in node-level scheduling.
+        /// </summary>
+        [Input("vswitchId")]
+        public Input<string>? VswitchId { get; set; }
 
         public InstanceArgs()
         {
@@ -402,13 +578,39 @@ namespace Pulumi.AliCloud.Ens
     public sealed class InstanceState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Whether to automatically renew, default to False, this parameter is invalid when paying by volume.
+        /// The number of instances created, with a minimum of 1 and a maximum of 100.
+        /// </summary>
+        [Input("amount")]
+        public Input<int>? Amount { get; set; }
+
+        /// <summary>
+        /// Whether to automatically renew the logo. The default value is false. This parameter is invalid when you pay by volume.
         /// </summary>
         [Input("autoRenew")]
         public Input<bool>? AutoRenew { get; set; }
 
         /// <summary>
-        /// Operator, required for regional level scheduling, invalid for node level scheduling.
+        /// Whether to use vouchers. The default is to use. Value:
+        /// - true (used)
+        /// - false (not used).
+        /// </summary>
+        [Input("autoUseCoupon")]
+        public Input<string>? AutoUseCoupon { get; set; }
+
+        /// <summary>
+        /// The billing cycle for instance computing resources. Only instance-level pay-as-you-go is supported. Value
+        /// - Hour: hourly billing
+        /// - Day: Daily billing
+        /// - Month: monthly billing.
+        /// </summary>
+        [Input("billingCycle")]
+        public Input<string>? BillingCycle { get; set; }
+
+        /// <summary>
+        /// Operator, required for regional scheduling. Optional values:
+        /// - cmcc (mobile)
+        /// - unicom
+        /// - telecom.
         /// </summary>
         [Input("carrier")]
         public Input<string>? Carrier { get; set; }
@@ -426,64 +628,97 @@ namespace Pulumi.AliCloud.Ens
         }
 
         /// <summary>
-        /// Node id. When ScheduleAreaLevel is Region, EnsRegionId is required. When ScheduleAreaLevel is Big, Middle, Small, EnsRegionId is not required.
+        /// The node ID. When ScheduleAreaLevel is Region, EnsRegionId is required. When ScheduleAreaLevel is Big,Middle,Small, EnsRegionId is invalid.
         /// </summary>
         [Input("ensRegionId")]
         public Input<string>? EnsRegionId { get; set; }
 
         /// <summary>
-        /// Host Name.
+        /// Whether to force the identity when operating the instance. Optional values:
+        /// - true: Force
+        /// - false (default): non-mandatory
+        /// </summary>
+        [Input("forceStop")]
+        public Input<string>? ForceStop { get; set; }
+
+        /// <summary>
+        /// The host name of the instance. Example value: test-HostName.
         /// </summary>
         [Input("hostName")]
         public Input<string>? HostName { get; set; }
 
         /// <summary>
-        /// The Image Id field. If InstanceType is arm_bmi, the image Id is a non-required parameter. If instanceType is another specification value, the image Id is a required parameter.
+        /// The image ID of the instance. The arm version card cannot be filled in. Other specifications are required. Example value: m-5si16wo6simkt267p8b7h * * * *.
         /// </summary>
         [Input("imageId")]
         public Input<string>? ImageId { get; set; }
 
         /// <summary>
-        /// Instance billing strategy, instance: instance granularity (prepaid method currently does not support instance), user: by user dimension (not transferred or prepaid method supports user).
+        /// Whether the Payment type of the disk created with the instance is converted.
+        /// </summary>
+        [Input("includeDataDisks")]
+        public Input<bool>? IncludeDataDisks { get; set; }
+
+        /// <summary>
+        /// The instance billing policy. Optional values:
+        /// - instance: instance granularity (the subscription method does not support instance)
+        /// - user: user Dimension (user is not transmitted or supported in the prepaid mode).
         /// </summary>
         [Input("instanceChargeStrategy")]
         public Input<string>? InstanceChargeStrategy { get; set; }
 
         /// <summary>
-        /// The instance name. It must be 2 to 128 characters in length and must start with an uppercase or lowercase letter or a Chinese character. It cannot start with http:// or https. It can contain Chinese, English, numbers, half-width colons (:), underscores (_), periods (.), or hyphens (-). The default value is the InstanceId of the instance.
+        /// The instance name. Example value: test-InstanceName. It must be 2 to 128 characters in length and must start with an uppercase or lowercase letter or a Chinese character. It cannot start with http:// or https. Can contain Chinese, English, numbers, half-width colons (:), underscores (_), periods (.), or hyphens (-) The default value is the InstanceId of the instance. .
         /// </summary>
         [Input("instanceName")]
         public Input<string>? InstanceName { get; set; }
 
         /// <summary>
-        /// Instance specifications type.
+        /// The specification of the instance. Example value: ens.sn1.small.
         /// </summary>
         [Input("instanceType")]
         public Input<string>? InstanceType { get; set; }
 
         /// <summary>
-        /// Instance Charge type.it could be BandwidthByDay, 95BandwidthByMonth, PayByBandwidth4thMonth.
+        /// Instance bandwidth billing method. If the billing method can be selected for the first purchase, the subsequent value of this field will be processed by default according to the billing method selected for the first time. Optional values:
+        /// - BandwidthByDay: Daily peak bandwidth
+        /// - 95bandwidthbymonth: 95 peak bandwidth.
         /// </summary>
         [Input("internetChargeType")]
         public Input<string>? InternetChargeType { get; set; }
 
         /// <summary>
-        /// The maximum public network bandwidth.
+        /// Maximum public network bandwidth. The field type is Long, and the precision may be lost during serialization/deserialization. Please note that the value must not be greater than 9007199254740991.
         /// </summary>
         [Input("internetMaxBandwidthOut")]
         public Input<int>? InternetMaxBandwidthOut { get; set; }
 
         /// <summary>
-        /// Region code, required for regional level scheduling, invalid for node level scheduling.
+        /// The IP type. Value:
+        /// - ipv4 (default):IPv4
+        /// - ipv6:IPv6
+        /// - ipv4Andipv6:IPv4 and IPv6.
+        /// </summary>
+        [Input("ipType")]
+        public Input<string>? IpType { get; set; }
+
+        /// <summary>
+        /// The area code. Example value: 350000. Required for regional-level scheduling, invalid for node-level scheduling.
         /// </summary>
         [Input("netDistrictCode")]
         public Input<string>? NetDistrictCode { get; set; }
+
+        /// <summary>
+        /// The network ID of the instance. Can only be used in node-level scheduling.
+        /// </summary>
+        [Input("netWorkId")]
+        public Input<string>? NetWorkId { get; set; }
 
         [Input("password")]
         private Input<string>? _password;
 
         /// <summary>
-        /// The password of the instance。It is 8 to 30 characters in length and must contain three types of characters: uppercase and lowercase letters, numbers, and special symbols. The following special symbols can be set: '''()'~! @#$%^&amp; *-_+ =|{}[]:;',.? /'''.
+        /// The instance password. At least one of Password, KeyPairName, and PasswordInherit.
         /// </summary>
         public Input<string>? Password
         {
@@ -502,76 +737,102 @@ namespace Pulumi.AliCloud.Ens
         public Input<bool>? PasswordInherit { get; set; }
 
         /// <summary>
-        /// Instance payment method, Subscription: prepaid, monthly package; PayAsYouGo: Pay as you go.
+        /// Instance payment method. Optional values:
+        /// - Subscription: prepaid, annual and monthly
+        /// - PayAsYouGo: Pay by volume.
         /// </summary>
         [Input("paymentType")]
         public Input<string>? PaymentType { get; set; }
 
         /// <summary>
-        /// The duration of purchasing resources. If PeriodUnit is not specified, it defaults to purchasing on a monthly basis. Currently, only days and months are supported. If PeriodUnit=Day, Period can only be 3. If PeriodUnit=Monthc, then Period can be 1-9,12.
+        /// The duration of the resource purchase. Value method:
+        /// - If PeriodUnit is set to Day, Period can only be set to 3.
+        /// - If PeriodUnit is set to Month, Period can be set to 1-9,12.
         /// </summary>
         [Input("period")]
         public Input<int>? Period { get; set; }
 
         /// <summary>
-        /// The unit of time for purchasing resources. If PeriodUnit is not specified, it defaults to purchasing by Month. Currently, only days and months are supported. If PeriodUnit=Day, Period can only be 3. If PeriodUnit=Month, then Period can be 1-9,12.
+        /// The unit of time for purchasing resources. Value:
+        /// - Month (default): purchase by Month
+        /// - Day: buy by Day.
         /// </summary>
         [Input("periodUnit")]
         public Input<string>? PeriodUnit { get; set; }
 
         /// <summary>
-        /// Whether to allocate public IP. Value：true (default): can be assigned，false: cannot be assigned.
+        /// The private IP address. Can only be used for node-level scheduling. If a private IP address is specified, the number of instances can only be one, and both the private IP address and the vSwitch ID are not empty, the private IP address takes effect.
+        /// </summary>
+        [Input("privateIpAddress")]
+        public Input<string>? PrivateIpAddress { get; set; }
+
+        /// <summary>
+        /// Whether to assign a public IP identifier. Value:
+        /// - true (default): Assign
+        /// - false: do not assign.
         /// </summary>
         [Input("publicIpIdentification")]
         public Input<bool>? PublicIpIdentification { get; set; }
 
         /// <summary>
-        /// Number of instances.
-        /// </summary>
-        [Input("quantity")]
-        public Input<string>? Quantity { get; set; }
-
-        /// <summary>
-        /// Scheduling level, which is used to perform node level or regional scheduling.
+        /// Scheduling level, through which node-level scheduling or area scheduling is performed. Optional values:
+        /// - Node-level scheduling: Region
+        /// - Regional scheduling: Big (region),Middle (province),Small (city).
         /// </summary>
         [Input("scheduleAreaLevel")]
         public Input<string>? ScheduleAreaLevel { get; set; }
 
         /// <summary>
-        /// Dispatch price strategy. If left blank, it defaults to prioritizing low prices. Values: PriceLowPriority (priority high price), PriceLowPriority (priority low price).
+        /// Scheduling price policy. If it is not filled in, the default priority is low price. Value:
+        /// - PriceLowPriority
+        /// - PriceLowPriority (priority low price).
         /// </summary>
         [Input("schedulingPriceStrategy")]
         public Input<string>? SchedulingPriceStrategy { get; set; }
 
         /// <summary>
-        /// When scheduling at the node level, it is Concentrate. When scheduling at the regional level, it is selected according to customer needs. Concentrate: Centralized; Disperse: Disperse.
+        /// Scheduling policy. Optional values:
+        /// - Concentrate for node-level scheduling
+        /// - For regional scheduling, Concentrate, Disperse.
         /// </summary>
         [Input("schedulingStrategy")]
         public Input<string>? SchedulingStrategy { get; set; }
 
         /// <summary>
-        /// the status of the resource.
+        /// ID of the security group to which the instance belongs.
+        /// </summary>
+        [Input("securityId")]
+        public Input<string>? SecurityId { get; set; }
+
+        /// <summary>
+        /// Status of the instance.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
 
         /// <summary>
-        /// The field representing the system disk specification. SystemDisk is a non-required parameter when InstanceType is x86_pm,x86_bmi,x86_bm,pc_bmi, or arm_bmi. SystemDisk is a required parameter when instanceType is other specification families. See `system_disk` below.
+        /// System Disk Specification. SystemDisk is a non-required parameter when InstanceType is x86_pm,x86_bmi,x86_bm,pc_bmi, or arm_bmi. SystemDisk is a required parameter when instanceType is other specification families. See `system_disk` below.
         /// </summary>
         [Input("systemDisk")]
         public Input<Inputs.InstanceSystemDiskGetArgs>? SystemDisk { get; set; }
 
         /// <summary>
-        /// Specifies whether to automatically append sequential suffixes to the hostnames specified by the HostName parameter and instance names specified by the InstanceName parameter when you create multiple instances at a time. The sequential suffix ranges from 001 to 999. Valid values:  true false Default value: false.
+        /// Indicates whether to add an ordered suffix to HostName and InstanceName. The ordered suffix starts from 001 and cannot exceed 999.
         /// </summary>
         [Input("uniqueSuffix")]
         public Input<bool>? UniqueSuffix { get; set; }
 
         /// <summary>
-        /// User defined data, with a maximum support of 16KB. You can input UserData information. UserData encoded in Base64 format.
+        /// User-defined data, maximum support 16KB. You can pass in the UserData information. The UserData is encoded in Base64 format.
         /// </summary>
         [Input("userData")]
         public Input<string>? UserData { get; set; }
+
+        /// <summary>
+        /// The ID of the vSwitch to which the instance belongs. Can only be used in node-level scheduling.
+        /// </summary>
+        [Input("vswitchId")]
+        public Input<string>? VswitchId { get; set; }
 
         public InstanceState()
         {

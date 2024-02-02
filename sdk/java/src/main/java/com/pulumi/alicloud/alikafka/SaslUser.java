@@ -18,14 +18,14 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides an Alikafka sasl user resource.
+ * Provides an Alikafka Sasl User resource.
  * 
  * &gt; **NOTE:** Available since v1.66.0.
  * 
- * &gt; **NOTE:**  Only the following regions support create alikafka sasl user.
+ * &gt; **NOTE:**  Only the following regions support create alikafka Sasl User.
  * [`cn-hangzhou`,`cn-beijing`,`cn-shenzhen`,`cn-shanghai`,`cn-qingdao`,`cn-hongkong`,`cn-huhehaote`,`cn-zhangjiakou`,`cn-chengdu`,`cn-heyuan`,`ap-southeast-1`,`ap-southeast-3`,`ap-southeast-5`,`ap-south-1`,`ap-northeast-1`,`eu-central-1`,`eu-west-1`,`us-west-1`,`us-east-1`]
  * 
- * For information about Alikafka sasl user and how to use it, see [What is Alikafka sasl user ](https://www.alibabacloud.com/help/en/message-queue-for-apache-kafka/latest/api-alikafka-2019-09-16-createsasluser).
+ * For information about Alikafka Sasl User and how to use it, see [What is Sasl User](https://www.alibabacloud.com/help/en/message-queue-for-apache-kafka/latest/api-alikafka-2019-09-16-createsasluser).
  * 
  * ## Example Usage
  * 
@@ -46,8 +46,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.alicloud.ecs.SecurityGroupArgs;
  * import com.pulumi.alicloud.alikafka.Instance;
  * import com.pulumi.alicloud.alikafka.InstanceArgs;
- * import com.pulumi.alicloud.alikafka.Topic;
- * import com.pulumi.alicloud.alikafka.TopicArgs;
  * import com.pulumi.alicloud.alikafka.SaslUser;
  * import com.pulumi.alicloud.alikafka.SaslUserArgs;
  * import java.util.List;
@@ -93,15 +91,13 @@ import javax.annotation.Nullable;
  *             .ioMax(&#34;20&#34;)
  *             .specType(&#34;professional&#34;)
  *             .serviceVersion(&#34;2.2.0&#34;)
- *             .config(&#34;{\&#34;enable.acl\&#34;:\&#34;true\&#34;}&#34;)
  *             .vswitchId(defaultSwitch.id())
  *             .securityGroup(defaultSecurityGroup.id())
- *             .build());
- * 
- *         var defaultTopic = new Topic(&#34;defaultTopic&#34;, TopicArgs.builder()        
- *             .instanceId(defaultInstance.id())
- *             .topic(&#34;example-topic&#34;)
- *             .remark(&#34;topic-remark&#34;)
+ *             .config(&#34;&#34;&#34;
+ *   {
+ *     &#34;enable.acl&#34;: &#34;true&#34;
+ *   }
+ *             &#34;&#34;&#34;)
  *             .build());
  * 
  *         var defaultSaslUser = new SaslUser(&#34;defaultSaslUser&#34;, SaslUserArgs.builder()        
@@ -168,42 +164,42 @@ public class SaslUser extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.kmsEncryptionContext);
     }
     /**
-     * Operation password. It may consist of letters, digits, or underlines, with a length of 1 to 64 characters. You have to specify one of `password` and `kms_encrypted_password` fields.
+     * The password of the SASL user. It may consist of letters, digits, or underlines, with a length of 1 to 64 characters. You have to specify one of `password` and `kms_encrypted_password` fields.
      * 
      */
     @Export(name="password", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> password;
 
     /**
-     * @return Operation password. It may consist of letters, digits, or underlines, with a length of 1 to 64 characters. You have to specify one of `password` and `kms_encrypted_password` fields.
+     * @return The password of the SASL user. It may consist of letters, digits, or underlines, with a length of 1 to 64 characters. You have to specify one of `password` and `kms_encrypted_password` fields.
      * 
      */
     public Output<Optional<String>> password() {
         return Codegen.optional(this.password);
     }
     /**
-     * The authentication mechanism. Valid values: `plain`, `scram`. Default value: `plain`.
+     * The authentication mechanism. Default value: `plain`. Valid values: `plain`, `scram`.
      * 
      */
     @Export(name="type", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> type;
+    private Output<String> type;
 
     /**
-     * @return The authentication mechanism. Valid values: `plain`, `scram`. Default value: `plain`.
+     * @return The authentication mechanism. Default value: `plain`. Valid values: `plain`, `scram`.
      * 
      */
-    public Output<Optional<String>> type() {
-        return Codegen.optional(this.type);
+    public Output<String> type() {
+        return this.type;
     }
     /**
-     * Username for the sasl user. The length should between 1 to 64 characters. The characters can only contain &#39;a&#39;-&#39;z&#39;, &#39;A&#39;-&#39;Z&#39;, &#39;0&#39;-&#39;9&#39;, &#39;_&#39; and &#39;-&#39;.
+     * The name of the SASL user. The length should between `1` to `64` characters. The characters can only contain `a`-`z`, `A`-`Z`, `0`-`9`, `_` and `-`.
      * 
      */
     @Export(name="username", refs={String.class}, tree="[0]")
     private Output<String> username;
 
     /**
-     * @return Username for the sasl user. The length should between 1 to 64 characters. The characters can only contain &#39;a&#39;-&#39;z&#39;, &#39;A&#39;-&#39;Z&#39;, &#39;0&#39;-&#39;9&#39;, &#39;_&#39; and &#39;-&#39;.
+     * @return The name of the SASL user. The length should between `1` to `64` characters. The characters can only contain `a`-`z`, `A`-`Z`, `0`-`9`, `_` and `-`.
      * 
      */
     public Output<String> username() {

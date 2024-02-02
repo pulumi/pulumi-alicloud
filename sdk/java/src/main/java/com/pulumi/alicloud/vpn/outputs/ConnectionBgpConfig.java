@@ -13,50 +13,62 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ConnectionBgpConfig {
     /**
-     * @return Whether to enable BGP.
+     * @return Bgp enable.
      * 
      */
     private @Nullable Boolean enable;
     /**
-     * @return The ASN on the Alibaba Cloud side.
+     * @return Local asn.
      * 
      */
     private @Nullable String localAsn;
     /**
-     * @return The BGP IP address on the Alibaba Cloud side.
+     * @return Local bgp IP.
      * 
      */
     private @Nullable String localBgpIp;
     /**
-     * @return The CIDR block of the IPsec tunnel. The CIDR block belongs to 169.254.0.0/16. The mask of the CIDR block is 30 bits in length.
+     * @return The negotiation status of Tunnel.
+     * 
+     */
+    private @Nullable String status;
+    /**
+     * @return IPSec tunnel Cidr.
      * 
      */
     private @Nullable String tunnelCidr;
 
     private ConnectionBgpConfig() {}
     /**
-     * @return Whether to enable BGP.
+     * @return Bgp enable.
      * 
      */
     public Optional<Boolean> enable() {
         return Optional.ofNullable(this.enable);
     }
     /**
-     * @return The ASN on the Alibaba Cloud side.
+     * @return Local asn.
      * 
      */
     public Optional<String> localAsn() {
         return Optional.ofNullable(this.localAsn);
     }
     /**
-     * @return The BGP IP address on the Alibaba Cloud side.
+     * @return Local bgp IP.
      * 
      */
     public Optional<String> localBgpIp() {
         return Optional.ofNullable(this.localBgpIp);
     }
     /**
-     * @return The CIDR block of the IPsec tunnel. The CIDR block belongs to 169.254.0.0/16. The mask of the CIDR block is 30 bits in length.
+     * @return The negotiation status of Tunnel.
+     * 
+     */
+    public Optional<String> status() {
+        return Optional.ofNullable(this.status);
+    }
+    /**
+     * @return IPSec tunnel Cidr.
      * 
      */
     public Optional<String> tunnelCidr() {
@@ -75,6 +87,7 @@ public final class ConnectionBgpConfig {
         private @Nullable Boolean enable;
         private @Nullable String localAsn;
         private @Nullable String localBgpIp;
+        private @Nullable String status;
         private @Nullable String tunnelCidr;
         public Builder() {}
         public Builder(ConnectionBgpConfig defaults) {
@@ -82,6 +95,7 @@ public final class ConnectionBgpConfig {
     	      this.enable = defaults.enable;
     	      this.localAsn = defaults.localAsn;
     	      this.localBgpIp = defaults.localBgpIp;
+    	      this.status = defaults.status;
     	      this.tunnelCidr = defaults.tunnelCidr;
         }
 
@@ -104,6 +118,12 @@ public final class ConnectionBgpConfig {
             return this;
         }
         @CustomType.Setter
+        public Builder status(@Nullable String status) {
+
+            this.status = status;
+            return this;
+        }
+        @CustomType.Setter
         public Builder tunnelCidr(@Nullable String tunnelCidr) {
 
             this.tunnelCidr = tunnelCidr;
@@ -114,6 +134,7 @@ public final class ConnectionBgpConfig {
             _resultValue.enable = enable;
             _resultValue.localAsn = localAsn;
             _resultValue.localBgpIp = localBgpIp;
+            _resultValue.status = status;
             _resultValue.tunnelCidr = tunnelCidr;
             return _resultValue;
         }

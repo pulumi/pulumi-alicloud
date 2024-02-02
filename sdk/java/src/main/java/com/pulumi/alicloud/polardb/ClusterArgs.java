@@ -919,6 +919,21 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The Version Code of the target version, whose parameter values can be obtained from the [DescribeDBClusterVersion](https://www.alibabacloud.com/help/en/polardb/latest/describedbclusterversion) interface.
+     * 
+     */
+    @Import(name="targetDbRevisionVersionCode")
+    private @Nullable Output<String> targetDbRevisionVersionCode;
+
+    /**
+     * @return The Version Code of the target version, whose parameter values can be obtained from the [DescribeDBClusterVersion](https://www.alibabacloud.com/help/en/polardb/latest/describedbclusterversion) interface.
+     * 
+     */
+    public Optional<Output<String>> targetDbRevisionVersionCode() {
+        return Optional.ofNullable(this.targetDbRevisionVersionCode);
+    }
+
+    /**
      * turn on TDE encryption. Valid values are `Enabled`, `Disabled`. Default to `Disabled`. TDE cannot be closed after it is turned on.
      * &gt; **NOTE:** `tde_status` Cannot modify after created when `db_type` is `PostgreSQL` or `Oracle`.`tde_status` only support modification from `Disabled` to `Enabled` when `db_type` is `MySQL`.
      * 
@@ -1056,6 +1071,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         this.storageType = $.storageType;
         this.subCategory = $.subCategory;
         this.tags = $.tags;
+        this.targetDbRevisionVersionCode = $.targetDbRevisionVersionCode;
         this.tdeStatus = $.tdeStatus;
         this.upgradeType = $.upgradeType;
         this.vpcId = $.vpcId;
@@ -2353,6 +2369,27 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder tags(Map<String,Object> tags) {
             return tags(Output.of(tags));
+        }
+
+        /**
+         * @param targetDbRevisionVersionCode The Version Code of the target version, whose parameter values can be obtained from the [DescribeDBClusterVersion](https://www.alibabacloud.com/help/en/polardb/latest/describedbclusterversion) interface.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder targetDbRevisionVersionCode(@Nullable Output<String> targetDbRevisionVersionCode) {
+            $.targetDbRevisionVersionCode = targetDbRevisionVersionCode;
+            return this;
+        }
+
+        /**
+         * @param targetDbRevisionVersionCode The Version Code of the target version, whose parameter values can be obtained from the [DescribeDBClusterVersion](https://www.alibabacloud.com/help/en/polardb/latest/describedbclusterversion) interface.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder targetDbRevisionVersionCode(String targetDbRevisionVersionCode) {
+            return targetDbRevisionVersionCode(Output.of(targetDbRevisionVersionCode));
         }
 
         /**

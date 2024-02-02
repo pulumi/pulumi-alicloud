@@ -6,6 +6,7 @@ package com.pulumi.alicloud.ess;
 import com.pulumi.alicloud.Utilities;
 import com.pulumi.alicloud.ess.ScalingGroupArgs;
 import com.pulumi.alicloud.ess.inputs.ScalingGroupState;
+import com.pulumi.alicloud.ess.outputs.ScalingGroupLaunchTemplateOverride;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
@@ -37,6 +38,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.random.RandomInteger;
+ * import com.pulumi.random.RandomIntegerArgs;
  * import com.pulumi.alicloud.AlicloudFunctions;
  * import com.pulumi.alicloud.inputs.GetZonesArgs;
  * import com.pulumi.alicloud.ecs.EcsFunctions;
@@ -67,6 +70,13 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get(&#34;name&#34;).orElse(&#34;terraform-example&#34;);
+ *         var defaultRandomInteger = new RandomInteger(&#34;defaultRandomInteger&#34;, RandomIntegerArgs.builder()        
+ *             .min(10000)
+ *             .max(99999)
+ *             .build());
+ * 
+ *         final var myName = defaultRandomInteger.result().applyValue(result -&gt; String.format(&#34;%s-%s&#34;, name,result));
+ * 
  *         final var defaultZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
  *             .availableDiskCategory(&#34;cloud_efficiency&#34;)
  *             .availableResourceCreation(&#34;VSwitch&#34;)
@@ -85,7 +95,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
- *             .vpcName(name)
+ *             .vpcName(myName)
  *             .cidrBlock(&#34;172.16.0.0/16&#34;)
  *             .build());
  * 
@@ -93,7 +103,7 @@ import javax.annotation.Nullable;
  *             .vpcId(defaultNetwork.id())
  *             .cidrBlock(&#34;172.16.0.0/24&#34;)
  *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
- *             .vswitchName(name)
+ *             .vswitchName(myName)
  *             .build());
  * 
  *         var defaultSecurityGroup = new SecurityGroup(&#34;defaultSecurityGroup&#34;, SecurityGroupArgs.builder()        
@@ -121,7 +131,7 @@ import javax.annotation.Nullable;
  *         var defaultScalingGroup = new ScalingGroup(&#34;defaultScalingGroup&#34;, ScalingGroupArgs.builder()        
  *             .minSize(1)
  *             .maxSize(1)
- *             .scalingGroupName(name)
+ *             .scalingGroupName(myName)
  *             .defaultCooldown(20)
  *             .vswitchIds(            
  *                 defaultSwitch.id(),
@@ -253,6 +263,20 @@ public class ScalingGroup extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.launchTemplateId);
     }
     /**
+     * The details of the instance types that are specified by using the Extend Instance Type of Launch Template feature..  See `launch_template_override` below for details.
+     * 
+     */
+    @Export(name="launchTemplateOverrides", refs={List.class,ScalingGroupLaunchTemplateOverride.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<ScalingGroupLaunchTemplateOverride>> launchTemplateOverrides;
+
+    /**
+     * @return The details of the instance types that are specified by using the Extend Instance Type of Launch Template feature..  See `launch_template_override` below for details.
+     * 
+     */
+    public Output<Optional<List<ScalingGroupLaunchTemplateOverride>>> launchTemplateOverrides() {
+        return Codegen.optional(this.launchTemplateOverrides);
+    }
+    /**
      * The version number of the launch template. Valid values are the version number, `Latest`, or `Default`, Default value: `Default`.
      * 
      */
@@ -323,14 +347,14 @@ public class ScalingGroup extends com.pulumi.resources.CustomResource {
         return this.minSize;
     }
     /**
-     * Multi-AZ scaling group ECS instance expansion and contraction strategy. PRIORITY, BALANCE or COST_OPTIMIZED(Available in 1.54.0+).
+     * Multi-AZ scaling group ECS instance expansion and contraction strategy. PRIORITY, BALANCE or COST_OPTIMIZED(Available since v1.54.0).
      * 
      */
     @Export(name="multiAzPolicy", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> multiAzPolicy;
 
     /**
-     * @return Multi-AZ scaling group ECS instance expansion and contraction strategy. PRIORITY, BALANCE or COST_OPTIMIZED(Available in 1.54.0+).
+     * @return Multi-AZ scaling group ECS instance expansion and contraction strategy. PRIORITY, BALANCE or COST_OPTIMIZED(Available since v1.54.0).
      * 
      */
     public Output<Optional<String>> multiAzPolicy() {
@@ -367,24 +391,12 @@ public class ScalingGroup extends com.pulumi.resources.CustomResource {
     /**
      * Set or unset instances within group into protected status.
      * 
-     * &gt; **NOTE:** When detach loadbalancers, instances in group will be remove from loadbalancer&#39;s `Default Server Group`; On the contrary, When attach loadbalancers, instances in group will be added to loadbalancer&#39;s `Default Server Group`.
-     * 
-     * &gt; **NOTE:** When detach dbInstances, private ip of instances in group will be remove from dbInstance&#39;s `WhiteList`; On the contrary, When attach dbInstances, private ip of instances in group will be added to dbInstance&#39;s `WhiteList`.
-     * 
-     * &gt; **NOTE:** `on_demand_base_capacity`,`on_demand_percentage_above_base_capacity`,`spot_instance_pools`,`spot_instance_remedy` are valid only if `multi_az_policy` is &#39;COST_OPTIMIZED&#39;.
-     * 
      */
     @Export(name="protectedInstances", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> protectedInstances;
 
     /**
      * @return Set or unset instances within group into protected status.
-     * 
-     * &gt; **NOTE:** When detach loadbalancers, instances in group will be remove from loadbalancer&#39;s `Default Server Group`; On the contrary, When attach loadbalancers, instances in group will be added to loadbalancer&#39;s `Default Server Group`.
-     * 
-     * &gt; **NOTE:** When detach dbInstances, private ip of instances in group will be remove from dbInstance&#39;s `WhiteList`; On the contrary, When attach dbInstances, private ip of instances in group will be added to dbInstance&#39;s `WhiteList`.
-     * 
-     * &gt; **NOTE:** `on_demand_base_capacity`,`on_demand_percentage_above_base_capacity`,`spot_instance_pools`,`spot_instance_remedy` are valid only if `multi_az_policy` is &#39;COST_OPTIMIZED&#39;.
      * 
      */
     public Output<Optional<List<String>>> protectedInstances() {

@@ -38,6 +38,7 @@ import (
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/actiontrail"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/log"
+//	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
@@ -46,9 +47,16 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			cfg := config.New(ctx, "")
-//			name := "tfexample"
+//			name := "tf-example"
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
+//			}
+//			_, err := random.NewRandomInteger(ctx, "default", &random.RandomIntegerArgs{
+//				Min: pulumi.Int(10000),
+//				Max: pulumi.Int(99999),
+//			})
+//			if err != nil {
+//				return err
 //			}
 //			exampleRegions, err := alicloud.GetRegions(ctx, &alicloud.GetRegionsArgs{
 //				Current: pulumi.BoolRef(true),
@@ -61,13 +69,18 @@ import (
 //				return err
 //			}
 //			exampleProject, err := log.NewProject(ctx, "exampleProject", &log.ProjectArgs{
+//				ProjectName: _default.Result.ApplyT(func(result int) (string, error) {
+//					return fmt.Sprintf("%v-%v", name, result), nil
+//				}).(pulumi.StringOutput),
 //				Description: pulumi.String("tf actiontrail example"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			exampleTrail, err := actiontrail.NewTrail(ctx, "exampleTrail", &actiontrail.TrailArgs{
-//				TrailName: pulumi.String(name),
+//				TrailName: _default.Result.ApplyT(func(result int) (string, error) {
+//					return fmt.Sprintf("%v-%v", name, result), nil
+//				}).(pulumi.StringOutput),
 //				SlsProjectArn: exampleProject.Name.ApplyT(func(name string) (string, error) {
 //					return fmt.Sprintf("acs:log:%v:%v:project/%v", exampleRegions.Regions[0].Id, exampleAccount.Id, name), nil
 //				}).(pulumi.StringOutput),

@@ -73,11 +73,11 @@ export class DdosCooInstance extends pulumi.CustomResource {
     }
 
     /**
-     * The IP version of the IP address. Default value: `Ipv4`. Valid values: `Ipv4`, `Ipv6`.
+     * The IP version of the IP address. Default value: `Ipv4`. Valid values: `Ipv4`, `Ipv6`. **NOTE:** `addressType` is valid only when `productType` is set to `ddoscoo` or `ddoscooIntl`.
      */
     public readonly addressType!: pulumi.Output<string>;
     /**
-     * Elastic defend bandwidth of the instance. This value must be larger than the base defend bandwidth. Valid values: 30, 60, 100, 300, 400, 500, 600. The unit is Gbps. Only support upgrade.
+     * Elastic defend bandwidth of the instance. This value must be larger than the base defend bandwidth. Valid values: `30`, `60`, `100`, `300`, `400`, `500`, `600`. The unit is Gbps. Only support upgrade. **NOTE:** `bandwidth` is valid only when `productType` is set to `ddoscoo` or `ddoscooIntl`.
      */
     public readonly bandwidth!: pulumi.Output<string>;
     /**
@@ -85,7 +85,7 @@ export class DdosCooInstance extends pulumi.CustomResource {
      */
     public readonly bandwidthMode!: pulumi.Output<string | undefined>;
     /**
-     * Base defend bandwidth of the instance. Valid values: `30`, `60`, `100`, `300`, `400`, `500`, `600`. The unit is Gbps. Only support upgrade.
+     * Base defend bandwidth of the instance. Valid values: `30`, `60`, `100`, `300`, `400`, `500`, `600`. The unit is Gbps. Only support upgrade. **NOTE:** `baseBandwidth` is valid only when `productType` is set to `ddoscoo` or `ddoscooIntl`.
      */
     public readonly baseBandwidth!: pulumi.Output<string>;
     /**
@@ -105,15 +105,15 @@ export class DdosCooInstance extends pulumi.CustomResource {
      */
     public /*out*/ readonly ip!: pulumi.Output<string>;
     /**
-     * Name of the instance. This name can have a string of 1 to 63 characters.
+     * Name of the instance. This name can have a string of `1` to `64` characters.
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * The clean bandwidth provided by the instance.
+     * The clean bandwidth provided by the instance. **NOTE:** `normalBandwidth` is valid only when `productType` is set to `ddosDip`.
      */
     public readonly normalBandwidth!: pulumi.Output<string>;
     /**
-     * The clean QPS provided by the instance.
+     * The clean QPS provided by the instance. **NOTE:** `normalQps` is valid only when `productType` is set to `ddosDip`.
      */
     public readonly normalQps!: pulumi.Output<string>;
     /**
@@ -133,7 +133,7 @@ export class DdosCooInstance extends pulumi.CustomResource {
      */
     public readonly productType!: pulumi.Output<string | undefined>;
     /**
-     * Business bandwidth of the instance. At leaset 100. Increased 100 per step, such as 100, 200, 300. The unit is Mbps. Only support upgrade.
+     * Business bandwidth of the instance. At leaset 100. Increased 100 per step, such as 100, 200, 300. The unit is Mbps. Only support upgrade. **NOTE:** `serviceBandwidth` is valid only when `productType` is set to `ddoscoo` or `ddoscooIntl`.
      */
     public readonly serviceBandwidth!: pulumi.Output<string>;
 
@@ -203,11 +203,11 @@ export class DdosCooInstance extends pulumi.CustomResource {
  */
 export interface DdosCooInstanceState {
     /**
-     * The IP version of the IP address. Default value: `Ipv4`. Valid values: `Ipv4`, `Ipv6`.
+     * The IP version of the IP address. Default value: `Ipv4`. Valid values: `Ipv4`, `Ipv6`. **NOTE:** `addressType` is valid only when `productType` is set to `ddoscoo` or `ddoscooIntl`.
      */
     addressType?: pulumi.Input<string>;
     /**
-     * Elastic defend bandwidth of the instance. This value must be larger than the base defend bandwidth. Valid values: 30, 60, 100, 300, 400, 500, 600. The unit is Gbps. Only support upgrade.
+     * Elastic defend bandwidth of the instance. This value must be larger than the base defend bandwidth. Valid values: `30`, `60`, `100`, `300`, `400`, `500`, `600`. The unit is Gbps. Only support upgrade. **NOTE:** `bandwidth` is valid only when `productType` is set to `ddoscoo` or `ddoscooIntl`.
      */
     bandwidth?: pulumi.Input<string>;
     /**
@@ -215,7 +215,7 @@ export interface DdosCooInstanceState {
      */
     bandwidthMode?: pulumi.Input<string>;
     /**
-     * Base defend bandwidth of the instance. Valid values: `30`, `60`, `100`, `300`, `400`, `500`, `600`. The unit is Gbps. Only support upgrade.
+     * Base defend bandwidth of the instance. Valid values: `30`, `60`, `100`, `300`, `400`, `500`, `600`. The unit is Gbps. Only support upgrade. **NOTE:** `baseBandwidth` is valid only when `productType` is set to `ddoscoo` or `ddoscooIntl`.
      */
     baseBandwidth?: pulumi.Input<string>;
     /**
@@ -235,15 +235,15 @@ export interface DdosCooInstanceState {
      */
     ip?: pulumi.Input<string>;
     /**
-     * Name of the instance. This name can have a string of 1 to 63 characters.
+     * Name of the instance. This name can have a string of `1` to `64` characters.
      */
     name?: pulumi.Input<string>;
     /**
-     * The clean bandwidth provided by the instance.
+     * The clean bandwidth provided by the instance. **NOTE:** `normalBandwidth` is valid only when `productType` is set to `ddosDip`.
      */
     normalBandwidth?: pulumi.Input<string>;
     /**
-     * The clean QPS provided by the instance.
+     * The clean QPS provided by the instance. **NOTE:** `normalQps` is valid only when `productType` is set to `ddosDip`.
      */
     normalQps?: pulumi.Input<string>;
     /**
@@ -263,7 +263,7 @@ export interface DdosCooInstanceState {
      */
     productType?: pulumi.Input<string>;
     /**
-     * Business bandwidth of the instance. At leaset 100. Increased 100 per step, such as 100, 200, 300. The unit is Mbps. Only support upgrade.
+     * Business bandwidth of the instance. At leaset 100. Increased 100 per step, such as 100, 200, 300. The unit is Mbps. Only support upgrade. **NOTE:** `serviceBandwidth` is valid only when `productType` is set to `ddoscoo` or `ddoscooIntl`.
      */
     serviceBandwidth?: pulumi.Input<string>;
 }
@@ -273,11 +273,11 @@ export interface DdosCooInstanceState {
  */
 export interface DdosCooInstanceArgs {
     /**
-     * The IP version of the IP address. Default value: `Ipv4`. Valid values: `Ipv4`, `Ipv6`.
+     * The IP version of the IP address. Default value: `Ipv4`. Valid values: `Ipv4`, `Ipv6`. **NOTE:** `addressType` is valid only when `productType` is set to `ddoscoo` or `ddoscooIntl`.
      */
     addressType?: pulumi.Input<string>;
     /**
-     * Elastic defend bandwidth of the instance. This value must be larger than the base defend bandwidth. Valid values: 30, 60, 100, 300, 400, 500, 600. The unit is Gbps. Only support upgrade.
+     * Elastic defend bandwidth of the instance. This value must be larger than the base defend bandwidth. Valid values: `30`, `60`, `100`, `300`, `400`, `500`, `600`. The unit is Gbps. Only support upgrade. **NOTE:** `bandwidth` is valid only when `productType` is set to `ddoscoo` or `ddoscooIntl`.
      */
     bandwidth?: pulumi.Input<string>;
     /**
@@ -285,7 +285,7 @@ export interface DdosCooInstanceArgs {
      */
     bandwidthMode?: pulumi.Input<string>;
     /**
-     * Base defend bandwidth of the instance. Valid values: `30`, `60`, `100`, `300`, `400`, `500`, `600`. The unit is Gbps. Only support upgrade.
+     * Base defend bandwidth of the instance. Valid values: `30`, `60`, `100`, `300`, `400`, `500`, `600`. The unit is Gbps. Only support upgrade. **NOTE:** `baseBandwidth` is valid only when `productType` is set to `ddoscoo` or `ddoscooIntl`.
      */
     baseBandwidth?: pulumi.Input<string>;
     /**
@@ -301,15 +301,15 @@ export interface DdosCooInstanceArgs {
      */
     functionVersion?: pulumi.Input<string>;
     /**
-     * Name of the instance. This name can have a string of 1 to 63 characters.
+     * Name of the instance. This name can have a string of `1` to `64` characters.
      */
     name?: pulumi.Input<string>;
     /**
-     * The clean bandwidth provided by the instance.
+     * The clean bandwidth provided by the instance. **NOTE:** `normalBandwidth` is valid only when `productType` is set to `ddosDip`.
      */
     normalBandwidth?: pulumi.Input<string>;
     /**
-     * The clean QPS provided by the instance.
+     * The clean QPS provided by the instance. **NOTE:** `normalQps` is valid only when `productType` is set to `ddosDip`.
      */
     normalQps?: pulumi.Input<string>;
     /**
@@ -329,7 +329,7 @@ export interface DdosCooInstanceArgs {
      */
     productType?: pulumi.Input<string>;
     /**
-     * Business bandwidth of the instance. At leaset 100. Increased 100 per step, such as 100, 200, 300. The unit is Mbps. Only support upgrade.
+     * Business bandwidth of the instance. At leaset 100. Increased 100 per step, such as 100, 200, 300. The unit is Mbps. Only support upgrade. **NOTE:** `serviceBandwidth` is valid only when `productType` is set to `ddoscoo` or `ddoscooIntl`.
      */
     serviceBandwidth?: pulumi.Input<string>;
 }

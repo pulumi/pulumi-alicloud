@@ -82,7 +82,7 @@ namespace Pulumi.AliCloud.KVStore
         public Output<int> Capacity { get; private set; } = null!;
 
         /// <summary>
-        /// The configuration of the KVStore DBInstance. Available parameters can refer to the latest docs [Instance configurations table](https://www.alibabacloud.com/help/doc-detail/61209.htm) .
+        /// The configuration of the KVStore DBInstance. Available parameters can refer to the latest docs [Instance configurations table](https://www.alibabacloud.com/help/en/redis/user-guide/supported-parameters).
         /// </summary>
         [Output("config")]
         public Output<ImmutableDictionary<string, object>> Config { get; private set; } = null!;
@@ -95,14 +95,6 @@ namespace Pulumi.AliCloud.KVStore
 
         /// <summary>
         /// Indicates whether the address is a private endpoint.
-        /// 
-        /// &gt; **NOTE:** The start time to the end time must be 1 hour. For example, the MaintainStartTime is 01:00Z, then the MaintainEndTime must be 02:00Z.
-        /// 
-        /// &gt; **NOTE:** You must specify at least one of the `capacity` and `instance_class` parameters when you call create instance operation.
-        /// 
-        /// &gt; **NOTE:** The `private_ip` must be in the Classless Inter-Domain Routing (CIDR) block of the VSwitch to which the instance belongs.
-        /// 
-        /// &gt; **NOTE:** If you specify the `srcdb_instance_id` parameter, you must specify the `backup_id` or `restore_time` parameter.
         /// </summary>
         [Output("connectionString")]
         public Output<string> ConnectionString { get; private set; } = null!;
@@ -114,7 +106,7 @@ namespace Pulumi.AliCloud.KVStore
         public Output<string?> ConnectionStringPrefix { get; private set; } = null!;
 
         /// <summary>
-        /// The coupon code. Default value: `youhuiquan_promotion_option_id_for_blank`.
+        /// The coupon code.
         /// </summary>
         [Output("couponNo")]
         public Output<string?> CouponNo { get; private set; } = null!;
@@ -138,8 +130,7 @@ namespace Pulumi.AliCloud.KVStore
         public Output<bool?> DryRun { get; private set; } = null!;
 
         /// <summary>
-        /// The time when the database is switched after the instance is migrated, 
-        /// or when the major version is upgraded, or when the instance class is upgraded. Valid values:
+        /// The time when the database is switched after the instance is migrated, or when the major version is upgraded, or when the instance class is upgraded. Valid values:
         /// </summary>
         [Output("effectiveTime")]
         public Output<string?> EffectiveTime { get; private set; } = null!;
@@ -255,12 +246,6 @@ namespace Pulumi.AliCloud.KVStore
         public Output<string> MaintainStartTime { get; private set; } = null!;
 
         /// <summary>
-        /// The method of modifying the whitelist. Valid values: `0`, `1` and `2`. Default value: `0`. `0` means overwrites the original whitelist. `1` means adds the IP addresses to the whitelist. `2` means deletes the IP addresses from the whitelist.
-        /// </summary>
-        [Output("modifyMode")]
-        public Output<int?> ModifyMode { get; private set; } = null!;
-
-        /// <summary>
         /// "Field `node_type` has been deprecated from version 1.120.1". This parameter is determined by the `instance_class`.
         /// </summary>
         [Output("nodeType")]
@@ -352,7 +337,7 @@ namespace Pulumi.AliCloud.KVStore
         public Output<string?> SecondaryZoneId { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of security groups.
+        /// The ID of security groups. Separate multiple security group IDs with commas (,), such as `sg-***,sg-***,sg-***`.
         /// </summary>
         [Output("securityGroupId")]
         public Output<string?> SecurityGroupId { get; private set; } = null!;
@@ -376,7 +361,7 @@ namespace Pulumi.AliCloud.KVStore
         public Output<ImmutableArray<string>> SecurityIps { get; private set; } = null!;
 
         /// <summary>
-        /// The number of data shards. This parameter is available only if you create a cluster instance that uses cloud disks. You can use this parameter to specify a custom number of data shards.
+        /// The number of data shards. This parameter is available only if you create a cluster instance that uses cloud disks. You can use this parameter to specify a custom number of data shards. **NOTE:** From version 1.216.0, `shard_count` can be modified.
         /// </summary>
         [Output("shardCount")]
         public Output<int> ShardCount { get; private set; } = null!;
@@ -408,7 +393,7 @@ namespace Pulumi.AliCloud.KVStore
 
         /// <summary>
         /// Specifies whether to enable TDE. Valid values: `Enabled`.
-        /// **NOTE:**: TDE cannot be disabled after it is enabled. Before you enable it, evaluate whether this feature affects
+        /// **NOTE:**: TDE cannot be disabled after it is enabled. Before you enable it, evaluate whether this feature affects.
         /// your business. For more information, see [Enable TDE](https://www.alibabacloud.com/help/en/redis/user-guide/enable-tde).
         /// </summary>
         [Output("tdeStatus")]
@@ -546,7 +531,7 @@ namespace Pulumi.AliCloud.KVStore
         private InputMap<object>? _config;
 
         /// <summary>
-        /// The configuration of the KVStore DBInstance. Available parameters can refer to the latest docs [Instance configurations table](https://www.alibabacloud.com/help/doc-detail/61209.htm) .
+        /// The configuration of the KVStore DBInstance. Available parameters can refer to the latest docs [Instance configurations table](https://www.alibabacloud.com/help/en/redis/user-guide/supported-parameters).
         /// </summary>
         public InputMap<object> Config
         {
@@ -561,7 +546,7 @@ namespace Pulumi.AliCloud.KVStore
         public Input<string>? ConnectionStringPrefix { get; set; }
 
         /// <summary>
-        /// The coupon code. Default value: `youhuiquan_promotion_option_id_for_blank`.
+        /// The coupon code.
         /// </summary>
         [Input("couponNo")]
         public Input<string>? CouponNo { get; set; }
@@ -585,8 +570,7 @@ namespace Pulumi.AliCloud.KVStore
         public Input<bool>? DryRun { get; set; }
 
         /// <summary>
-        /// The time when the database is switched after the instance is migrated, 
-        /// or when the major version is upgraded, or when the instance class is upgraded. Valid values:
+        /// The time when the database is switched after the instance is migrated, or when the major version is upgraded, or when the instance class is upgraded. Valid values:
         /// </summary>
         [Input("effectiveTime")]
         public Input<string>? EffectiveTime { get; set; }
@@ -702,12 +686,6 @@ namespace Pulumi.AliCloud.KVStore
         public Input<string>? MaintainStartTime { get; set; }
 
         /// <summary>
-        /// The method of modifying the whitelist. Valid values: `0`, `1` and `2`. Default value: `0`. `0` means overwrites the original whitelist. `1` means adds the IP addresses to the whitelist. `2` means deletes the IP addresses from the whitelist.
-        /// </summary>
-        [Input("modifyMode")]
-        public Input<int>? ModifyMode { get; set; }
-
-        /// <summary>
         /// "Field `node_type` has been deprecated from version 1.120.1". This parameter is determined by the `instance_class`.
         /// </summary>
         [Input("nodeType")]
@@ -810,7 +788,7 @@ namespace Pulumi.AliCloud.KVStore
         public Input<string>? SecondaryZoneId { get; set; }
 
         /// <summary>
-        /// The ID of security groups.
+        /// The ID of security groups. Separate multiple security group IDs with commas (,), such as `sg-***,sg-***,sg-***`.
         /// </summary>
         [Input("securityGroupId")]
         public Input<string>? SecurityGroupId { get; set; }
@@ -840,7 +818,7 @@ namespace Pulumi.AliCloud.KVStore
         }
 
         /// <summary>
-        /// The number of data shards. This parameter is available only if you create a cluster instance that uses cloud disks. You can use this parameter to specify a custom number of data shards.
+        /// The number of data shards. This parameter is available only if you create a cluster instance that uses cloud disks. You can use this parameter to specify a custom number of data shards. **NOTE:** From version 1.216.0, `shard_count` can be modified.
         /// </summary>
         [Input("shardCount")]
         public Input<int>? ShardCount { get; set; }
@@ -872,7 +850,7 @@ namespace Pulumi.AliCloud.KVStore
 
         /// <summary>
         /// Specifies whether to enable TDE. Valid values: `Enabled`.
-        /// **NOTE:**: TDE cannot be disabled after it is enabled. Before you enable it, evaluate whether this feature affects
+        /// **NOTE:**: TDE cannot be disabled after it is enabled. Before you enable it, evaluate whether this feature affects.
         /// your business. For more information, see [Enable TDE](https://www.alibabacloud.com/help/en/redis/user-guide/enable-tde).
         /// </summary>
         [Input("tdeStatus")]
@@ -974,7 +952,7 @@ namespace Pulumi.AliCloud.KVStore
         private InputMap<object>? _config;
 
         /// <summary>
-        /// The configuration of the KVStore DBInstance. Available parameters can refer to the latest docs [Instance configurations table](https://www.alibabacloud.com/help/doc-detail/61209.htm) .
+        /// The configuration of the KVStore DBInstance. Available parameters can refer to the latest docs [Instance configurations table](https://www.alibabacloud.com/help/en/redis/user-guide/supported-parameters).
         /// </summary>
         public InputMap<object> Config
         {
@@ -990,14 +968,6 @@ namespace Pulumi.AliCloud.KVStore
 
         /// <summary>
         /// Indicates whether the address is a private endpoint.
-        /// 
-        /// &gt; **NOTE:** The start time to the end time must be 1 hour. For example, the MaintainStartTime is 01:00Z, then the MaintainEndTime must be 02:00Z.
-        /// 
-        /// &gt; **NOTE:** You must specify at least one of the `capacity` and `instance_class` parameters when you call create instance operation.
-        /// 
-        /// &gt; **NOTE:** The `private_ip` must be in the Classless Inter-Domain Routing (CIDR) block of the VSwitch to which the instance belongs.
-        /// 
-        /// &gt; **NOTE:** If you specify the `srcdb_instance_id` parameter, you must specify the `backup_id` or `restore_time` parameter.
         /// </summary>
         [Input("connectionString")]
         public Input<string>? ConnectionString { get; set; }
@@ -1009,7 +979,7 @@ namespace Pulumi.AliCloud.KVStore
         public Input<string>? ConnectionStringPrefix { get; set; }
 
         /// <summary>
-        /// The coupon code. Default value: `youhuiquan_promotion_option_id_for_blank`.
+        /// The coupon code.
         /// </summary>
         [Input("couponNo")]
         public Input<string>? CouponNo { get; set; }
@@ -1033,8 +1003,7 @@ namespace Pulumi.AliCloud.KVStore
         public Input<bool>? DryRun { get; set; }
 
         /// <summary>
-        /// The time when the database is switched after the instance is migrated, 
-        /// or when the major version is upgraded, or when the instance class is upgraded. Valid values:
+        /// The time when the database is switched after the instance is migrated, or when the major version is upgraded, or when the instance class is upgraded. Valid values:
         /// </summary>
         [Input("effectiveTime")]
         public Input<string>? EffectiveTime { get; set; }
@@ -1156,12 +1125,6 @@ namespace Pulumi.AliCloud.KVStore
         public Input<string>? MaintainStartTime { get; set; }
 
         /// <summary>
-        /// The method of modifying the whitelist. Valid values: `0`, `1` and `2`. Default value: `0`. `0` means overwrites the original whitelist. `1` means adds the IP addresses to the whitelist. `2` means deletes the IP addresses from the whitelist.
-        /// </summary>
-        [Input("modifyMode")]
-        public Input<int>? ModifyMode { get; set; }
-
-        /// <summary>
         /// "Field `node_type` has been deprecated from version 1.120.1". This parameter is determined by the `instance_class`.
         /// </summary>
         [Input("nodeType")]
@@ -1270,7 +1233,7 @@ namespace Pulumi.AliCloud.KVStore
         public Input<string>? SecondaryZoneId { get; set; }
 
         /// <summary>
-        /// The ID of security groups.
+        /// The ID of security groups. Separate multiple security group IDs with commas (,), such as `sg-***,sg-***,sg-***`.
         /// </summary>
         [Input("securityGroupId")]
         public Input<string>? SecurityGroupId { get; set; }
@@ -1300,7 +1263,7 @@ namespace Pulumi.AliCloud.KVStore
         }
 
         /// <summary>
-        /// The number of data shards. This parameter is available only if you create a cluster instance that uses cloud disks. You can use this parameter to specify a custom number of data shards.
+        /// The number of data shards. This parameter is available only if you create a cluster instance that uses cloud disks. You can use this parameter to specify a custom number of data shards. **NOTE:** From version 1.216.0, `shard_count` can be modified.
         /// </summary>
         [Input("shardCount")]
         public Input<int>? ShardCount { get; set; }
@@ -1338,7 +1301,7 @@ namespace Pulumi.AliCloud.KVStore
 
         /// <summary>
         /// Specifies whether to enable TDE. Valid values: `Enabled`.
-        /// **NOTE:**: TDE cannot be disabled after it is enabled. Before you enable it, evaluate whether this feature affects
+        /// **NOTE:**: TDE cannot be disabled after it is enabled. Before you enable it, evaluate whether this feature affects.
         /// your business. For more information, see [Enable TDE](https://www.alibabacloud.com/help/en/redis/user-guide/enable-tde).
         /// </summary>
         [Input("tdeStatus")]

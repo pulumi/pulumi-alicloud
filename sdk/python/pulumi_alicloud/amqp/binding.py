@@ -324,7 +324,7 @@ class Binding(pulumi.CustomResource):
         default_exchange = alicloud.amqp.Exchange("defaultExchange",
             auto_delete_state=False,
             exchange_name="tf-example",
-            exchange_type="DIRECT",
+            exchange_type="HEADERS",
             instance_id=default_instance.id,
             internal=False,
             virtual_host_name=default_virtual_host.virtual_host_name)
@@ -405,7 +405,7 @@ class Binding(pulumi.CustomResource):
         default_exchange = alicloud.amqp.Exchange("defaultExchange",
             auto_delete_state=False,
             exchange_name="tf-example",
-            exchange_type="DIRECT",
+            exchange_type="HEADERS",
             instance_id=default_instance.id,
             internal=False,
             virtual_host_name=default_virtual_host.virtual_host_name)

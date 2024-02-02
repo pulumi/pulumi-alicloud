@@ -33,14 +33,14 @@ public final class QosCarArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The speed limiting method. Valid values: Absolute, Percent.
+     * The speed limiting method. Valid values: `Absolute`, `Percent`.
      * 
      */
     @Import(name="limitType", required=true)
     private Output<String> limitType;
 
     /**
-     * @return The speed limiting method. Valid values: Absolute, Percent.
+     * @return The speed limiting method. Valid values: `Absolute`, `Percent`.
      * 
      */
     public Output<String> limitType() {
@@ -222,7 +222,7 @@ public final class QosCarArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param limitType The speed limiting method. Valid values: Absolute, Percent.
+         * @param limitType The speed limiting method. Valid values: `Absolute`, `Percent`.
          * 
          * @return builder
          * 
@@ -233,7 +233,7 @@ public final class QosCarArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param limitType The speed limiting method. Valid values: Absolute, Percent.
+         * @param limitType The speed limiting method. Valid values: `Absolute`, `Percent`.
          * 
          * @return builder
          * 

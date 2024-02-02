@@ -16,8 +16,7 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a Sag qos car resource.
- * You need to create a QoS car to set priorities, rate limits, and quintuple rules for different messages.
+ * Provides a Sag Qos Car resource.
  * 
  * For information about Sag Qos Car and how to use it, see [What is Qos Car](https://www.alibabacloud.com/help/en/smart-access-gateway/latest/createqoscar).
  * 
@@ -61,8 +60,6 @@ import javax.annotation.Nullable;
  *             .limitType(&#34;Absolute&#34;)
  *             .minBandwidthAbs(&#34;10&#34;)
  *             .maxBandwidthAbs(&#34;20&#34;)
- *             .minBandwidthPercent(&#34;10&#34;)
- *             .maxBandwidthPercent(&#34;20&#34;)
  *             .percentSourceType(&#34;InternetUpBandwidth&#34;)
  *             .build());
  * 
@@ -75,7 +72,7 @@ import javax.annotation.Nullable;
  * The Sag Qos Car can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:rocketmq/qosCar:QosCar example qos-abc123456:qoscar-abc123456
+ *  $ pulumi import alicloud:rocketmq/qosCar:QosCar example &lt;qos_id&gt;:&lt;qos_car_id&gt;
  * ```
  * 
  */
@@ -96,14 +93,14 @@ public class QosCar extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.description);
     }
     /**
-     * The speed limiting method. Valid values: Absolute, Percent.
+     * The speed limiting method. Valid values: `Absolute`, `Percent`.
      * 
      */
     @Export(name="limitType", refs={String.class}, tree="[0]")
     private Output<String> limitType;
 
     /**
-     * @return The speed limiting method. Valid values: Absolute, Percent.
+     * @return The speed limiting method. Valid values: `Absolute`, `Percent`.
      * 
      */
     public Output<String> limitType() {

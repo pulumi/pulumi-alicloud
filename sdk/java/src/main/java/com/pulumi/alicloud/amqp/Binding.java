@@ -71,7 +71,7 @@ import javax.annotation.Nullable;
  *         var defaultExchange = new Exchange(&#34;defaultExchange&#34;, ExchangeArgs.builder()        
  *             .autoDeleteState(false)
  *             .exchangeName(&#34;tf-example&#34;)
- *             .exchangeType(&#34;DIRECT&#34;)
+ *             .exchangeType(&#34;HEADERS&#34;)
  *             .instanceId(defaultInstance.id())
  *             .internal(false)
  *             .virtualHostName(defaultVirtualHost.virtualHostName())

@@ -18,12 +18,17 @@ import * as utilities from "../utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
+ * import * as random from "@pulumi/random";
  *
  * const config = new pulumi.Config();
+ * const domainName = config.get("domainName") || "tf-example.com";
  * const name = config.get("name") || "tf_example";
- * const domainName = config.get("domainName") || "example.com";
+ * const _default = new random.RandomInteger("default", {
+ *     min: 10000,
+ *     max: 99999,
+ * });
  * const exampleDomain = new alicloud.dcdn.Domain("exampleDomain", {
- *     domainName: domainName,
+ *     domainName: pulumi.interpolate`${domainName}-${_default.result}`,
  *     scope: "overseas",
  *     sources: [{
  *         content: "1.1.1.1",
@@ -39,7 +44,7 @@ import * as utilities from "../utilities";
  * });
  * const exampleWafPolicy = new alicloud.dcdn.WafPolicy("exampleWafPolicy", {
  *     defenseScene: "waf_group",
- *     policyName: name,
+ *     policyName: pulumi.interpolate`${name}_${_default.result}`,
  *     policyType: "custom",
  *     status: "on",
  * });

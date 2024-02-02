@@ -26,7 +26,9 @@ __all__ = [
     'EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPath',
     'ScalingConfigurationDataDisk',
     'ScalingConfigurationInstancePatternInfo',
+    'ScalingConfigurationInstanceTypeOverride',
     'ScalingConfigurationSpotPriceLimit',
+    'ScalingGroupLaunchTemplateOverride',
     'ScalingGroupVServerGroupsVserverGroup',
     'ScalingGroupVServerGroupsVserverGroupVserverAttribute',
     'ScalingRuleAlarmDimension',
@@ -135,6 +137,8 @@ class EciScalingConfigurationContainer(dict):
             suggest = "environment_vars"
         elif key == "imagePullPolicy":
             suggest = "image_pull_policy"
+        elif key == "lifecyclePreStopHandlerExecs":
+            suggest = "lifecycle_pre_stop_handler_execs"
         elif key == "livenessProbeExecCommands":
             suggest = "liveness_probe_exec_commands"
         elif key == "livenessProbeFailureThreshold":
@@ -205,6 +209,7 @@ class EciScalingConfigurationContainer(dict):
                  gpu: Optional[int] = None,
                  image: Optional[str] = None,
                  image_pull_policy: Optional[str] = None,
+                 lifecycle_pre_stop_handler_execs: Optional[Sequence[str]] = None,
                  liveness_probe_exec_commands: Optional[Sequence[str]] = None,
                  liveness_probe_failure_threshold: Optional[int] = None,
                  liveness_probe_http_get_path: Optional[str] = None,
@@ -242,6 +247,7 @@ class EciScalingConfigurationContainer(dict):
         :param int gpu: The number GPUs.
         :param str image: The image of the container.
         :param str image_pull_policy: The restart policy of the image.
+        :param Sequence[str] lifecycle_pre_stop_handler_execs: The commands to be executed in containers when you use the CLI to specify the preStop callback function.
         :param Sequence[str] liveness_probe_exec_commands: Commands that you want to run in containers when you use the CLI to perform liveness probes.
         :param int liveness_probe_failure_threshold: The minimum number of consecutive failures for the liveness probe to be considered failed after having been successful. Default value: 3.
         :param str liveness_probe_http_get_path: The path to which HTTP GET requests are sent when you use HTTP requests to perform liveness probes.
@@ -288,6 +294,8 @@ class EciScalingConfigurationContainer(dict):
             pulumi.set(__self__, "image", image)
         if image_pull_policy is not None:
             pulumi.set(__self__, "image_pull_policy", image_pull_policy)
+        if lifecycle_pre_stop_handler_execs is not None:
+            pulumi.set(__self__, "lifecycle_pre_stop_handler_execs", lifecycle_pre_stop_handler_execs)
         if liveness_probe_exec_commands is not None:
             pulumi.set(__self__, "liveness_probe_exec_commands", liveness_probe_exec_commands)
         if liveness_probe_failure_threshold is not None:
@@ -401,6 +409,14 @@ class EciScalingConfigurationContainer(dict):
         The restart policy of the image.
         """
         return pulumi.get(self, "image_pull_policy")
+
+    @property
+    @pulumi.getter(name="lifecyclePreStopHandlerExecs")
+    def lifecycle_pre_stop_handler_execs(self) -> Optional[Sequence[str]]:
+        """
+        The commands to be executed in containers when you use the CLI to specify the preStop callback function.
+        """
+        return pulumi.get(self, "lifecycle_pre_stop_handler_execs")
 
     @property
     @pulumi.getter(name="livenessProbeExecCommands")
@@ -1719,6 +1735,56 @@ class ScalingConfigurationInstancePatternInfo(dict):
 
 
 @pulumi.output_type
+class ScalingConfigurationInstanceTypeOverride(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "instanceType":
+            suggest = "instance_type"
+        elif key == "weightedCapacity":
+            suggest = "weighted_capacity"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ScalingConfigurationInstanceTypeOverride. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ScalingConfigurationInstanceTypeOverride.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ScalingConfigurationInstanceTypeOverride.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 instance_type: Optional[str] = None,
+                 weighted_capacity: Optional[int] = None):
+        """
+        :param str instance_type: The is specified for an instance type in instanceTypeOverride.
+        :param int weighted_capacity: The weight of instance type in instanceTypeOverride.
+        """
+        if instance_type is not None:
+            pulumi.set(__self__, "instance_type", instance_type)
+        if weighted_capacity is not None:
+            pulumi.set(__self__, "weighted_capacity", weighted_capacity)
+
+    @property
+    @pulumi.getter(name="instanceType")
+    def instance_type(self) -> Optional[str]:
+        """
+        The is specified for an instance type in instanceTypeOverride.
+        """
+        return pulumi.get(self, "instance_type")
+
+    @property
+    @pulumi.getter(name="weightedCapacity")
+    def weighted_capacity(self) -> Optional[int]:
+        """
+        The weight of instance type in instanceTypeOverride.
+        """
+        return pulumi.get(self, "weighted_capacity")
+
+
+@pulumi.output_type
 class ScalingConfigurationSpotPriceLimit(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -1766,6 +1832,84 @@ class ScalingConfigurationSpotPriceLimit(dict):
         Price limit hourly of instance type, 2 decimals is allowed at most.
         """
         return pulumi.get(self, "price_limit")
+
+
+@pulumi.output_type
+class ScalingGroupLaunchTemplateOverride(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "instanceType":
+            suggest = "instance_type"
+        elif key == "spotPriceLimit":
+            suggest = "spot_price_limit"
+        elif key == "weightedCapacity":
+            suggest = "weighted_capacity"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ScalingGroupLaunchTemplateOverride. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ScalingGroupLaunchTemplateOverride.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ScalingGroupLaunchTemplateOverride.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 instance_type: Optional[str] = None,
+                 spot_price_limit: Optional[float] = None,
+                 weighted_capacity: Optional[int] = None):
+        """
+        :param str instance_type: The instance type in launchTemplateOverride.
+        :param float spot_price_limit: The maximum bid price of instance type in launchTemplateOverride.
+               
+               
+               > **NOTE:** When detach loadbalancers, instances in group will be remove from loadbalancer's `Default Server Group`; On the contrary, When attach loadbalancers, instances in group will be added to loadbalancer's `Default Server Group`.
+               
+               > **NOTE:** When detach dbInstances, private ip of instances in group will be remove from dbInstance's `WhiteList`; On the contrary, When attach dbInstances, private ip of instances in group will be added to dbInstance's `WhiteList`.
+               
+               > **NOTE:** `on_demand_base_capacity`,`on_demand_percentage_above_base_capacity`,`spot_instance_pools`,`spot_instance_remedy` are valid only if `multi_az_policy` is 'COST_OPTIMIZED'.
+        :param int weighted_capacity: The weight of the instance type in launchTemplateOverride.
+        """
+        if instance_type is not None:
+            pulumi.set(__self__, "instance_type", instance_type)
+        if spot_price_limit is not None:
+            pulumi.set(__self__, "spot_price_limit", spot_price_limit)
+        if weighted_capacity is not None:
+            pulumi.set(__self__, "weighted_capacity", weighted_capacity)
+
+    @property
+    @pulumi.getter(name="instanceType")
+    def instance_type(self) -> Optional[str]:
+        """
+        The instance type in launchTemplateOverride.
+        """
+        return pulumi.get(self, "instance_type")
+
+    @property
+    @pulumi.getter(name="spotPriceLimit")
+    def spot_price_limit(self) -> Optional[float]:
+        """
+        The maximum bid price of instance type in launchTemplateOverride.
+
+
+        > **NOTE:** When detach loadbalancers, instances in group will be remove from loadbalancer's `Default Server Group`; On the contrary, When attach loadbalancers, instances in group will be added to loadbalancer's `Default Server Group`.
+
+        > **NOTE:** When detach dbInstances, private ip of instances in group will be remove from dbInstance's `WhiteList`; On the contrary, When attach dbInstances, private ip of instances in group will be added to dbInstance's `WhiteList`.
+
+        > **NOTE:** `on_demand_base_capacity`,`on_demand_percentage_above_base_capacity`,`spot_instance_pools`,`spot_instance_remedy` are valid only if `multi_az_policy` is 'COST_OPTIMIZED'.
+        """
+        return pulumi.get(self, "spot_price_limit")
+
+    @property
+    @pulumi.getter(name="weightedCapacity")
+    def weighted_capacity(self) -> Optional[int]:
+        """
+        The weight of the instance type in launchTemplateOverride.
+        """
+        return pulumi.get(self, "weighted_capacity")
 
 
 @pulumi.output_type

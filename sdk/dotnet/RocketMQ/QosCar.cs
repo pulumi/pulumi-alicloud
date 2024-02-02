@@ -10,8 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.RocketMQ
 {
     /// <summary>
-    /// Provides a Sag qos car resource.
-    /// You need to create a QoS car to set priorities, rate limits, and quintuple rules for different messages.
+    /// Provides a Sag Qos Car resource.
     /// 
     /// For information about Sag Qos Car and how to use it, see [What is Qos Car](https://www.alibabacloud.com/help/en/smart-access-gateway/latest/createqoscar).
     /// 
@@ -43,8 +42,6 @@ namespace Pulumi.AliCloud.RocketMQ
     ///         LimitType = "Absolute",
     ///         MinBandwidthAbs = 10,
     ///         MaxBandwidthAbs = 20,
-    ///         MinBandwidthPercent = 10,
-    ///         MaxBandwidthPercent = 20,
     ///         PercentSourceType = "InternetUpBandwidth",
     ///     });
     /// 
@@ -56,7 +53,7 @@ namespace Pulumi.AliCloud.RocketMQ
     /// The Sag Qos Car can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:rocketmq/qosCar:QosCar example qos-abc123456:qoscar-abc123456
+    ///  $ pulumi import alicloud:rocketmq/qosCar:QosCar example &lt;qos_id&gt;:&lt;qos_car_id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:rocketmq/qosCar:QosCar")]
@@ -69,7 +66,7 @@ namespace Pulumi.AliCloud.RocketMQ
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// The speed limiting method. Valid values: Absolute, Percent.
+        /// The speed limiting method. Valid values: `Absolute`, `Percent`.
         /// </summary>
         [Output("limitType")]
         public Output<string> LimitType { get; private set; } = null!;
@@ -175,7 +172,7 @@ namespace Pulumi.AliCloud.RocketMQ
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The speed limiting method. Valid values: Absolute, Percent.
+        /// The speed limiting method. Valid values: `Absolute`, `Percent`.
         /// </summary>
         [Input("limitType", required: true)]
         public Input<string> LimitType { get; set; } = null!;
@@ -243,7 +240,7 @@ namespace Pulumi.AliCloud.RocketMQ
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The speed limiting method. Valid values: Absolute, Percent.
+        /// The speed limiting method. Valid values: `Absolute`, `Percent`.
         /// </summary>
         [Input("limitType")]
         public Input<string>? LimitType { get; set; }

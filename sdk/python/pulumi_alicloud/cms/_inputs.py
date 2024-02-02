@@ -14,6 +14,7 @@ __all__ = [
     'AlarmEscalationsInfoArgs',
     'AlarmEscalationsWarnArgs',
     'AlarmPrometheusArgs',
+    'AlarmTargetArgs',
     'DynamicTagGroupMatchExpressArgs',
     'EventRuleContactParameterArgs',
     'EventRuleEventPatternArgs',
@@ -53,10 +54,10 @@ class AlarmEscalationsCriticalArgs:
                  threshold: Optional[pulumi.Input[str]] = None,
                  times: Optional[pulumi.Input[int]] = None):
         """
-        :param pulumi.Input[str] comparison_operator: Critical level alarm comparison operator. Valid values: ["<=", "<", ">", ">=", "==", "!="]. Default to "==".
+        :param pulumi.Input[str] comparison_operator: Critical level alarm comparison operator. Default value: `==`. Valid values: ["<=", "<", ">", ">=", "==", "!="].
         :param pulumi.Input[str] statistics: Critical level alarm statistics method. It must be consistent with that defined for metrics. For more information, see [How to use it](https://cms.console.aliyun.com/metric-meta/acs_ecs_dashboard/ecs).
         :param pulumi.Input[str] threshold: Critical level alarm threshold value, which must be a numeric value currently.
-        :param pulumi.Input[int] times: Critical level alarm retry times. Default to 3.
+        :param pulumi.Input[int] times: Critical level alarm retry times. Default value: `3`.
         """
         if comparison_operator is not None:
             pulumi.set(__self__, "comparison_operator", comparison_operator)
@@ -71,7 +72,7 @@ class AlarmEscalationsCriticalArgs:
     @pulumi.getter(name="comparisonOperator")
     def comparison_operator(self) -> Optional[pulumi.Input[str]]:
         """
-        Critical level alarm comparison operator. Valid values: ["<=", "<", ">", ">=", "==", "!="]. Default to "==".
+        Critical level alarm comparison operator. Default value: `==`. Valid values: ["<=", "<", ">", ">=", "==", "!="].
         """
         return pulumi.get(self, "comparison_operator")
 
@@ -107,7 +108,7 @@ class AlarmEscalationsCriticalArgs:
     @pulumi.getter
     def times(self) -> Optional[pulumi.Input[int]]:
         """
-        Critical level alarm retry times. Default to 3.
+        Critical level alarm retry times. Default value: `3`.
         """
         return pulumi.get(self, "times")
 
@@ -124,10 +125,10 @@ class AlarmEscalationsInfoArgs:
                  threshold: Optional[pulumi.Input[str]] = None,
                  times: Optional[pulumi.Input[int]] = None):
         """
-        :param pulumi.Input[str] comparison_operator: Critical level alarm comparison operator. Valid values: ["<=", "<", ">", ">=", "==", "!="]. Default to "==".
+        :param pulumi.Input[str] comparison_operator: Critical level alarm comparison operator. Default value: `==`. Valid values: ["<=", "<", ">", ">=", "==", "!="].
         :param pulumi.Input[str] statistics: Critical level alarm statistics method. It must be consistent with that defined for metrics. For more information, see [How to use it](https://cms.console.aliyun.com/metric-meta/acs_ecs_dashboard/ecs).
         :param pulumi.Input[str] threshold: Critical level alarm threshold value, which must be a numeric value currently.
-        :param pulumi.Input[int] times: Critical level alarm retry times. Default to 3.
+        :param pulumi.Input[int] times: Critical level alarm retry times. Default value: `3`.
         """
         if comparison_operator is not None:
             pulumi.set(__self__, "comparison_operator", comparison_operator)
@@ -142,7 +143,7 @@ class AlarmEscalationsInfoArgs:
     @pulumi.getter(name="comparisonOperator")
     def comparison_operator(self) -> Optional[pulumi.Input[str]]:
         """
-        Critical level alarm comparison operator. Valid values: ["<=", "<", ">", ">=", "==", "!="]. Default to "==".
+        Critical level alarm comparison operator. Default value: `==`. Valid values: ["<=", "<", ">", ">=", "==", "!="].
         """
         return pulumi.get(self, "comparison_operator")
 
@@ -178,7 +179,7 @@ class AlarmEscalationsInfoArgs:
     @pulumi.getter
     def times(self) -> Optional[pulumi.Input[int]]:
         """
-        Critical level alarm retry times. Default to 3.
+        Critical level alarm retry times. Default value: `3`.
         """
         return pulumi.get(self, "times")
 
@@ -195,10 +196,10 @@ class AlarmEscalationsWarnArgs:
                  threshold: Optional[pulumi.Input[str]] = None,
                  times: Optional[pulumi.Input[int]] = None):
         """
-        :param pulumi.Input[str] comparison_operator: Critical level alarm comparison operator. Valid values: ["<=", "<", ">", ">=", "==", "!="]. Default to "==".
+        :param pulumi.Input[str] comparison_operator: Critical level alarm comparison operator. Default value: `==`. Valid values: ["<=", "<", ">", ">=", "==", "!="].
         :param pulumi.Input[str] statistics: Critical level alarm statistics method. It must be consistent with that defined for metrics. For more information, see [How to use it](https://cms.console.aliyun.com/metric-meta/acs_ecs_dashboard/ecs).
         :param pulumi.Input[str] threshold: Critical level alarm threshold value, which must be a numeric value currently.
-        :param pulumi.Input[int] times: Critical level alarm retry times. Default to 3.
+        :param pulumi.Input[int] times: Critical level alarm retry times. Default value: `3`.
         """
         if comparison_operator is not None:
             pulumi.set(__self__, "comparison_operator", comparison_operator)
@@ -213,7 +214,7 @@ class AlarmEscalationsWarnArgs:
     @pulumi.getter(name="comparisonOperator")
     def comparison_operator(self) -> Optional[pulumi.Input[str]]:
         """
-        Critical level alarm comparison operator. Valid values: ["<=", "<", ">", ">=", "==", "!="]. Default to "==".
+        Critical level alarm comparison operator. Default value: `==`. Valid values: ["<=", "<", ">", ">=", "==", "!="].
         """
         return pulumi.get(self, "comparison_operator")
 
@@ -249,7 +250,7 @@ class AlarmEscalationsWarnArgs:
     @pulumi.getter
     def times(self) -> Optional[pulumi.Input[int]]:
         """
-        Critical level alarm retry times. Default to 3.
+        Critical level alarm retry times. Default value: `3`.
         """
         return pulumi.get(self, "times")
 
@@ -327,6 +328,79 @@ class AlarmPrometheusArgs:
     @times.setter
     def times(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "times", value)
+
+
+@pulumi.input_type
+class AlarmTargetArgs:
+    def __init__(__self__, *,
+                 arn: Optional[pulumi.Input[str]] = None,
+                 json_params: Optional[pulumi.Input[str]] = None,
+                 level: Optional[pulumi.Input[str]] = None,
+                 target_id: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] arn: The Alibaba Cloud Resource Name (ARN) of the resource.
+               > **NOTE:** Currently, the Alibaba Cloud Resource Name (ARN) of the resource. To use, please [submit an application](https://www.alibabacloud.com/help/en/cloudmonitor/latest/describemetricruletargets).
+        :param pulumi.Input[str] json_params: The parameters of the alert callback. The parameters are in the JSON format.
+        :param pulumi.Input[str] level: The level of the alert. Valid values: `Critical`, `Warn`, `Info`.
+        :param pulumi.Input[str] target_id: The ID of the resource for which alerts are triggered.
+        """
+        if arn is not None:
+            pulumi.set(__self__, "arn", arn)
+        if json_params is not None:
+            pulumi.set(__self__, "json_params", json_params)
+        if level is not None:
+            pulumi.set(__self__, "level", level)
+        if target_id is not None:
+            pulumi.set(__self__, "target_id", target_id)
+
+    @property
+    @pulumi.getter
+    def arn(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Alibaba Cloud Resource Name (ARN) of the resource.
+        > **NOTE:** Currently, the Alibaba Cloud Resource Name (ARN) of the resource. To use, please [submit an application](https://www.alibabacloud.com/help/en/cloudmonitor/latest/describemetricruletargets).
+        """
+        return pulumi.get(self, "arn")
+
+    @arn.setter
+    def arn(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "arn", value)
+
+    @property
+    @pulumi.getter(name="jsonParams")
+    def json_params(self) -> Optional[pulumi.Input[str]]:
+        """
+        The parameters of the alert callback. The parameters are in the JSON format.
+        """
+        return pulumi.get(self, "json_params")
+
+    @json_params.setter
+    def json_params(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "json_params", value)
+
+    @property
+    @pulumi.getter
+    def level(self) -> Optional[pulumi.Input[str]]:
+        """
+        The level of the alert. Valid values: `Critical`, `Warn`, `Info`.
+        """
+        return pulumi.get(self, "level")
+
+    @level.setter
+    def level(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "level", value)
+
+    @property
+    @pulumi.getter(name="targetId")
+    def target_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the resource for which alerts are triggered.
+        """
+        return pulumi.get(self, "target_id")
+
+    @target_id.setter
+    def target_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "target_id", value)
 
 
 @pulumi.input_type

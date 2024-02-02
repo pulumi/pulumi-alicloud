@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.polardb.inputs;
 
 import com.pulumi.alicloud.polardb.inputs.ClusterDbClusterIpArrayArgs;
+import com.pulumi.alicloud.polardb.inputs.ClusterDbRevisionVersionListArgs;
 import com.pulumi.alicloud.polardb.inputs.ClusterParameterArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
@@ -241,6 +242,21 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<Integer>> dbNodeNum() {
         return Optional.ofNullable(this.dbNodeNum);
+    }
+
+    /**
+     * (Available since v1.216.0) The db_revision_version_list supports the following:
+     * 
+     */
+    @Import(name="dbRevisionVersionLists")
+    private @Nullable Output<List<ClusterDbRevisionVersionListArgs>> dbRevisionVersionLists;
+
+    /**
+     * @return (Available since v1.216.0) The db_revision_version_list supports the following:
+     * 
+     */
+    public Optional<Output<List<ClusterDbRevisionVersionListArgs>>> dbRevisionVersionLists() {
+        return Optional.ofNullable(this.dbRevisionVersionLists);
     }
 
     /**
@@ -978,6 +994,21 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The Version Code of the target version, whose parameter values can be obtained from the [DescribeDBClusterVersion](https://www.alibabacloud.com/help/en/polardb/latest/describedbclusterversion) interface.
+     * 
+     */
+    @Import(name="targetDbRevisionVersionCode")
+    private @Nullable Output<String> targetDbRevisionVersionCode;
+
+    /**
+     * @return The Version Code of the target version, whose parameter values can be obtained from the [DescribeDBClusterVersion](https://www.alibabacloud.com/help/en/polardb/latest/describedbclusterversion) interface.
+     * 
+     */
+    public Optional<Output<String>> targetDbRevisionVersionCode() {
+        return Optional.ofNullable(this.targetDbRevisionVersionCode);
+    }
+
+    /**
      * (Available since 1.200.0) The region where the TDE key resides.
      * &gt; **NOTE:** TDE can be enabled on clusters that have joined a global database network (GDN). After TDE is enabled on the primary cluster in a GDN, TDE is enabled on the secondary clusters in the GDN by default. The key used by the secondary clusters and the region for the key resides must be the same as the primary cluster. The region of the key cannot be modified.
      * **NOTE:** You cannot enable TDE for the secondary clusters in a GDN. Used to view user KMS activation status.
@@ -1092,6 +1123,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         this.dbNodeCount = $.dbNodeCount;
         this.dbNodeId = $.dbNodeId;
         this.dbNodeNum = $.dbNodeNum;
+        this.dbRevisionVersionLists = $.dbRevisionVersionLists;
         this.dbType = $.dbType;
         this.dbVersion = $.dbVersion;
         this.defaultTimeZone = $.defaultTimeZone;
@@ -1138,6 +1170,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         this.storageType = $.storageType;
         this.subCategory = $.subCategory;
         this.tags = $.tags;
+        this.targetDbRevisionVersionCode = $.targetDbRevisionVersionCode;
         this.tdeRegion = $.tdeRegion;
         this.tdeStatus = $.tdeStatus;
         this.upgradeType = $.upgradeType;
@@ -1478,6 +1511,37 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder dbNodeNum(Integer dbNodeNum) {
             return dbNodeNum(Output.of(dbNodeNum));
+        }
+
+        /**
+         * @param dbRevisionVersionLists (Available since v1.216.0) The db_revision_version_list supports the following:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dbRevisionVersionLists(@Nullable Output<List<ClusterDbRevisionVersionListArgs>> dbRevisionVersionLists) {
+            $.dbRevisionVersionLists = dbRevisionVersionLists;
+            return this;
+        }
+
+        /**
+         * @param dbRevisionVersionLists (Available since v1.216.0) The db_revision_version_list supports the following:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dbRevisionVersionLists(List<ClusterDbRevisionVersionListArgs> dbRevisionVersionLists) {
+            return dbRevisionVersionLists(Output.of(dbRevisionVersionLists));
+        }
+
+        /**
+         * @param dbRevisionVersionLists (Available since v1.216.0) The db_revision_version_list supports the following:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dbRevisionVersionLists(ClusterDbRevisionVersionListArgs... dbRevisionVersionLists) {
+            return dbRevisionVersionLists(List.of(dbRevisionVersionLists));
         }
 
         /**
@@ -2520,6 +2584,27 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder tags(Map<String,Object> tags) {
             return tags(Output.of(tags));
+        }
+
+        /**
+         * @param targetDbRevisionVersionCode The Version Code of the target version, whose parameter values can be obtained from the [DescribeDBClusterVersion](https://www.alibabacloud.com/help/en/polardb/latest/describedbclusterversion) interface.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder targetDbRevisionVersionCode(@Nullable Output<String> targetDbRevisionVersionCode) {
+            $.targetDbRevisionVersionCode = targetDbRevisionVersionCode;
+            return this;
+        }
+
+        /**
+         * @param targetDbRevisionVersionCode The Version Code of the target version, whose parameter values can be obtained from the [DescribeDBClusterVersion](https://www.alibabacloud.com/help/en/polardb/latest/describedbclusterversion) interface.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder targetDbRevisionVersionCode(String targetDbRevisionVersionCode) {
+            return targetDbRevisionVersionCode(Output.of(targetDbRevisionVersionCode));
         }
 
         /**

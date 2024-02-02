@@ -29,8 +29,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.alicloud.apigateway.ApigatewayFunctions;
- * import com.pulumi.alicloud.apigateway.inputs.GetLogConfigsArgs;
  * import com.pulumi.random.RandomInteger;
  * import com.pulumi.random.RandomIntegerArgs;
  * import com.pulumi.alicloud.log.Project;
@@ -39,7 +37,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.alicloud.log.StoreArgs;
  * import com.pulumi.alicloud.apigateway.LogConfig;
  * import com.pulumi.alicloud.apigateway.LogConfigArgs;
- * import com.pulumi.codegen.internal.KeyedValue;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -53,47 +50,33 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var defaultLogConfigs = ApigatewayFunctions.getLogConfigs(GetLogConfigsArgs.builder()
+ *         final var config = ctx.config();
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;terraform-example&#34;);
+ *         var default_ = new RandomInteger(&#34;default&#34;, RandomIntegerArgs.builder()        
+ *             .max(99999)
+ *             .min(10000)
+ *             .build());
+ * 
+ *         var exampleProject = new Project(&#34;exampleProject&#34;, ProjectArgs.builder()        
+ *             .projectName(default_.result().applyValue(result -&gt; String.format(&#34;%s-%s&#34;, name,result)))
+ *             .description(name)
+ *             .build());
+ * 
+ *         var exampleStore = new Store(&#34;exampleStore&#34;, StoreArgs.builder()        
+ *             .projectName(exampleProject.projectName())
+ *             .logstoreName(default_.result().applyValue(result -&gt; String.format(&#34;%s-%s&#34;, name,result)))
+ *             .shardCount(3)
+ *             .autoSplit(true)
+ *             .maxSplitShardCount(60)
+ *             .appendMeta(true)
+ *             .build());
+ * 
+ *         var exampleLogConfig = new LogConfig(&#34;exampleLogConfig&#34;, LogConfigArgs.builder()        
+ *             .slsProject(exampleProject.projectName())
+ *             .slsLogStore(exampleStore.logstoreName())
  *             .logType(&#34;PROVIDER&#34;)
  *             .build());
  * 
- *         final var count = defaultLogConfigs.applyValue(getLogConfigsResult -&gt; getLogConfigsResult.configs()).length() &gt; 0 ? 0 : 1;
- * 
- *         for (var i = 0; i &lt; count; i++) {
- *             new RandomInteger(&#34;defaultRandomInteger-&#34; + i, RandomIntegerArgs.builder()            
- *                 .max(99999)
- *                 .min(10000)
- *                 .build());
- * 
- *         
- * }
- *         for (var i = 0; i &lt; count; i++) {
- *             new Project(&#34;exampleProject-&#34; + i, ProjectArgs.builder()            
- *                 .description(&#34;terraform-example&#34;)
- *                 .build());
- * 
- *         
- * }
- *         for (var i = 0; i &lt; count; i++) {
- *             new Store(&#34;exampleStore-&#34; + i, StoreArgs.builder()            
- *                 .project(exampleProject[0].name())
- *                 .shardCount(3)
- *                 .autoSplit(true)
- *                 .maxSplitShardCount(60)
- *                 .appendMeta(true)
- *                 .build());
- * 
- *         
- * }
- *         for (var i = 0; i &lt; count; i++) {
- *             new LogConfig(&#34;exampleLogConfig-&#34; + i, LogConfigArgs.builder()            
- *                 .slsProject(exampleProject[0].name())
- *                 .slsLogStore(exampleStore[0].name())
- *                 .logType(&#34;PROVIDER&#34;)
- *                 .build());
- * 
- *         
- * }
  *     }
  * }
  * ```

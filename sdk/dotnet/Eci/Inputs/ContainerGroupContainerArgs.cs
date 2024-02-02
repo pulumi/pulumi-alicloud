@@ -72,6 +72,18 @@ namespace Pulumi.AliCloud.Eci.Inputs
         [Input("imagePullPolicy")]
         public Input<string>? ImagePullPolicy { get; set; }
 
+        [Input("lifecyclePreStopHandlerExecs")]
+        private InputList<string>? _lifecyclePreStopHandlerExecs;
+
+        /// <summary>
+        /// The commands to be executed in containers when you use the CLI to specify the preStop callback function.
+        /// </summary>
+        public InputList<string> LifecyclePreStopHandlerExecs
+        {
+            get => _lifecyclePreStopHandlerExecs ?? (_lifecyclePreStopHandlerExecs = new InputList<string>());
+            set => _lifecyclePreStopHandlerExecs = value;
+        }
+
         [Input("livenessProbes")]
         private InputList<Inputs.ContainerGroupContainerLivenessProbeArgs>? _livenessProbes;
 

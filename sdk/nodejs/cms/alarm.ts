@@ -7,8 +7,9 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * This resource provides a alarm rule resource and it can be used to monitor several cloud services according different metrics.
- * Details for [What is alarm](https://www.alibabacloud.com/help/en/cloudmonitor/latest/putresourcemetricrule).
+ * Provides a Cloud Monitor Service Alarm resource.
+ *
+ * For information about Cloud Monitor Service Alarm and how to use it, see [What is Alarm](https://www.alibabacloud.com/help/en/cloudmonitor/latest/putresourcemetricrule).
  *
  * > **NOTE:** Available since v1.9.1.
  *
@@ -22,10 +23,6 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "tf-example";
- * const defaultImages = alicloud.ecs.getImages({
- *     nameRegex: "^ubuntu_[0-9]+_[0-9]+_x64*",
- *     owners: "system",
- * });
  * const defaultZones = alicloud.getZones({
  *     availableResourceCreation: "Instance",
  * });
@@ -34,6 +31,10 @@ import * as utilities from "../utilities";
  *     cpuCoreCount: 1,
  *     memorySize: 2,
  * }));
+ * const defaultImages = alicloud.ecs.getImages({
+ *     nameRegex: "^ubuntu_[0-9]+_[0-9]+_x64*",
+ *     owners: "system",
+ * });
  * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {
  *     vpcName: name,
  *     cidrBlock: "10.4.0.0/16",
@@ -57,25 +58,31 @@ import * as utilities from "../utilities";
  * const defaultAlarm = new alicloud.cms.Alarm("defaultAlarm", {
  *     project: "acs_ecs_dashboard",
  *     metric: "disk_writebytes",
- *     metricDimensions: pulumi.interpolate`[{"instanceId":"${defaultInstance.id}","device":"/dev/vda1"}]`,
+ *     period: 900,
+ *     contactGroups: [defaultAlarmContactGroup.alarmContactGroupName],
+ *     effectiveInterval: "06:00-20:00",
+ *     metricDimensions: pulumi.interpolate`  [
+ *     {
+ *       "instanceId": "${defaultInstance.id}",
+ *       "device": "/dev/vda1"
+ *     }
+ *   ]
+ * `,
  *     escalationsCritical: {
  *         statistics: "Average",
  *         comparisonOperator: "<=",
  *         threshold: "35",
  *         times: 2,
  *     },
- *     period: 900,
- *     contactGroups: [defaultAlarmContactGroup.alarmContactGroupName],
- *     effectiveInterval: "06:00-20:00",
  * });
  * ```
  *
  * ## Import
  *
- * Alarm rule can be imported using the id, e.g.
+ * Cloud Monitor Service Alarm can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:cms/alarm:Alarm alarm abc12345
+ *  $ pulumi import alicloud:cms/alarm:Alarm example <id>
  * ```
  */
 export class Alarm extends pulumi.CustomResource {
@@ -111,9 +118,9 @@ export class Alarm extends pulumi.CustomResource {
      */
     public readonly contactGroups!: pulumi.Output<string[]>;
     /**
-     * Field `dimensions` has been deprecated from version 1.95.0. Use `metricDimensions` instead.
+     * Field `dimensions` has been deprecated from provider version 1.173.0. New field `metricDimensions` instead.
      *
-     * @deprecated Field 'dimensions' has been deprecated from version 1.173.0. Use 'metric_dimensions' instead.
+     * @deprecated Field `dimensions` has been deprecated from provider version 1.173.0. New field `metric_dimensions` instead.
      */
     public readonly dimensions!: pulumi.Output<{[key: string]: any}>;
     /**
@@ -121,29 +128,29 @@ export class Alarm extends pulumi.CustomResource {
      */
     public readonly effectiveInterval!: pulumi.Output<string | undefined>;
     /**
-     * Whether to enable alarm rule. Default to true.
+     * Whether to enable alarm rule. Default value: `true`.
      */
     public readonly enabled!: pulumi.Output<boolean | undefined>;
     /**
-     * It has been deprecated from provider version 1.50.0 and 'effective_interval' instead.
+     * Field `endTime` has been deprecated from provider version 1.50.0. New field `effectiveInterval` instead.
      *
-     * @deprecated Field 'end_time' has been deprecated from provider version 1.50.0. New field 'effective_interval' instead.
+     * @deprecated Field `end_time` has been deprecated from provider version 1.50.0. New field `effective_interval` instead.
      */
     public readonly endTime!: pulumi.Output<number | undefined>;
     /**
      * A configuration of critical alarm. See `escalationsCritical` below.
      */
-    public readonly escalationsCritical!: pulumi.Output<outputs.cms.AlarmEscalationsCritical | undefined>;
+    public readonly escalationsCritical!: pulumi.Output<outputs.cms.AlarmEscalationsCritical>;
     /**
      * A configuration of critical info. See `escalationsInfo` below.
      */
-    public readonly escalationsInfo!: pulumi.Output<outputs.cms.AlarmEscalationsInfo | undefined>;
+    public readonly escalationsInfo!: pulumi.Output<outputs.cms.AlarmEscalationsInfo>;
     /**
      * A configuration of critical warn. See `escalationsWarn` below.
      */
-    public readonly escalationsWarn!: pulumi.Output<outputs.cms.AlarmEscalationsWarn | undefined>;
+    public readonly escalationsWarn!: pulumi.Output<outputs.cms.AlarmEscalationsWarn>;
     /**
-     * Name of the monitoring metrics corresponding to a project, such as "CPUUtilization" and "networkinRate". For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
+     * The name of the metric, such as `CPUUtilization` and `networkinRate`. For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
      */
     public readonly metric!: pulumi.Output<string>;
     /**
@@ -151,66 +158,44 @@ export class Alarm extends pulumi.CustomResource {
      */
     public readonly metricDimensions!: pulumi.Output<string>;
     /**
-     * The alarm rule name.
+     * The name of the alert rule.
      */
     public readonly name!: pulumi.Output<string>;
-    /**
-     * It has been deprecated from provider version 1.94.0 and 'escalations_critical.comparison_operator' instead.
-     *
-     * @deprecated Field 'operator' has been deprecated from provider version 1.94.0. New field 'escalations_critical.comparison_operator' instead.
-     */
-    public readonly operator!: pulumi.Output<string>;
     /**
      * Index query cycle, which must be consistent with that defined for metrics. Default to 300, in seconds.
      */
     public readonly period!: pulumi.Output<number | undefined>;
     /**
-     * Monitor project name, such as "acsEcsDashboard" and "acsRdsDashboard". For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
+     * The namespace of the cloud service, such as `acsEcsDashboard` and `acsRdsDashboard`. For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
      * **NOTE:** The `dimensions` and `metricDimensions` must be empty when `project` is `acsPrometheus`, otherwise, one of them must be set.
      */
     public readonly project!: pulumi.Output<string>;
     /**
      * The Prometheus alert rule. See `prometheus` below. **Note:** This parameter is required only when you create a Prometheus alert rule for Hybrid Cloud Monitoring.
      */
-    public readonly prometheuses!: pulumi.Output<outputs.cms.AlarmPrometheus[] | undefined>;
+    public readonly prometheuses!: pulumi.Output<outputs.cms.AlarmPrometheus[]>;
     /**
-     * Notification silence period in the alarm state, in seconds. Valid value range: [300, 86400]. Default to 86400
+     * Notification silence period in the alarm state, in seconds. Default value: `86400`. Valid value range: [300, 86400].
      */
     public readonly silenceTime!: pulumi.Output<number | undefined>;
     /**
-     * It has been deprecated from provider version 1.50.0 and 'effective_interval' instead.
+     * Field `startTime` has been deprecated from provider version 1.50.0. New field `effectiveInterval` instead.
      *
-     * @deprecated Field 'start_time' has been deprecated from provider version 1.50.0. New field 'effective_interval' instead.
+     * @deprecated Field `start_time` has been deprecated from provider version 1.50.0. New field `effective_interval` instead.
      */
     public readonly startTime!: pulumi.Output<number | undefined>;
     /**
-     * It has been deprecated from provider version 1.94.0 and 'escalations_critical.statistics' instead.
-     *
-     * @deprecated Field 'statistics' has been deprecated from provider version 1.94.0. New field 'escalations_critical.statistics' instead.
-     */
-    public readonly statistics!: pulumi.Output<string>;
-    /**
-     * The current alarm rule status.
+     * The status of the Alarm.
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
     /**
      * A mapping of tags to assign to the resource.
-     *
-     * > **NOTE:** Each resource supports the creation of one of the following three levels.
      */
     public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
     /**
-     * It has been deprecated from provider version 1.94.0 and 'escalations_critical.threshold' instead.
-     *
-     * @deprecated Field 'threshold' has been deprecated from provider version 1.94.0. New field 'escalations_critical.threshold' instead.
+     * The information about the resource for which alerts are triggered. See `targets` below.
      */
-    public readonly threshold!: pulumi.Output<string>;
-    /**
-     * It has been deprecated from provider version 1.94.0 and 'escalations_critical.times' instead.
-     *
-     * @deprecated Field 'triggered_count' has been deprecated from provider version 1.94.0. New field 'escalations_critical.times' instead.
-     */
-    public readonly triggeredCount!: pulumi.Output<number>;
+    public readonly targets!: pulumi.Output<outputs.cms.AlarmTarget[]>;
     /**
      * The webhook that should be called when the alarm is triggered. Currently, only http protocol is supported. Default is empty string.
      */
@@ -240,17 +225,14 @@ export class Alarm extends pulumi.CustomResource {
             resourceInputs["metric"] = state ? state.metric : undefined;
             resourceInputs["metricDimensions"] = state ? state.metricDimensions : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["operator"] = state ? state.operator : undefined;
             resourceInputs["period"] = state ? state.period : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["prometheuses"] = state ? state.prometheuses : undefined;
             resourceInputs["silenceTime"] = state ? state.silenceTime : undefined;
             resourceInputs["startTime"] = state ? state.startTime : undefined;
-            resourceInputs["statistics"] = state ? state.statistics : undefined;
             resourceInputs["status"] = state ? state.status : undefined;
             resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["threshold"] = state ? state.threshold : undefined;
-            resourceInputs["triggeredCount"] = state ? state.triggeredCount : undefined;
+            resourceInputs["targets"] = state ? state.targets : undefined;
             resourceInputs["webhook"] = state ? state.webhook : undefined;
         } else {
             const args = argsOrState as AlarmArgs | undefined;
@@ -274,16 +256,13 @@ export class Alarm extends pulumi.CustomResource {
             resourceInputs["metric"] = args ? args.metric : undefined;
             resourceInputs["metricDimensions"] = args ? args.metricDimensions : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["operator"] = args ? args.operator : undefined;
             resourceInputs["period"] = args ? args.period : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["prometheuses"] = args ? args.prometheuses : undefined;
             resourceInputs["silenceTime"] = args ? args.silenceTime : undefined;
             resourceInputs["startTime"] = args ? args.startTime : undefined;
-            resourceInputs["statistics"] = args ? args.statistics : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["threshold"] = args ? args.threshold : undefined;
-            resourceInputs["triggeredCount"] = args ? args.triggeredCount : undefined;
+            resourceInputs["targets"] = args ? args.targets : undefined;
             resourceInputs["webhook"] = args ? args.webhook : undefined;
             resourceInputs["status"] = undefined /*out*/;
         }
@@ -301,9 +280,9 @@ export interface AlarmState {
      */
     contactGroups?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Field `dimensions` has been deprecated from version 1.95.0. Use `metricDimensions` instead.
+     * Field `dimensions` has been deprecated from provider version 1.173.0. New field `metricDimensions` instead.
      *
-     * @deprecated Field 'dimensions' has been deprecated from version 1.173.0. Use 'metric_dimensions' instead.
+     * @deprecated Field `dimensions` has been deprecated from provider version 1.173.0. New field `metric_dimensions` instead.
      */
     dimensions?: pulumi.Input<{[key: string]: any}>;
     /**
@@ -311,13 +290,13 @@ export interface AlarmState {
      */
     effectiveInterval?: pulumi.Input<string>;
     /**
-     * Whether to enable alarm rule. Default to true.
+     * Whether to enable alarm rule. Default value: `true`.
      */
     enabled?: pulumi.Input<boolean>;
     /**
-     * It has been deprecated from provider version 1.50.0 and 'effective_interval' instead.
+     * Field `endTime` has been deprecated from provider version 1.50.0. New field `effectiveInterval` instead.
      *
-     * @deprecated Field 'end_time' has been deprecated from provider version 1.50.0. New field 'effective_interval' instead.
+     * @deprecated Field `end_time` has been deprecated from provider version 1.50.0. New field `effective_interval` instead.
      */
     endTime?: pulumi.Input<number>;
     /**
@@ -333,7 +312,7 @@ export interface AlarmState {
      */
     escalationsWarn?: pulumi.Input<inputs.cms.AlarmEscalationsWarn>;
     /**
-     * Name of the monitoring metrics corresponding to a project, such as "CPUUtilization" and "networkinRate". For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
+     * The name of the metric, such as `CPUUtilization` and `networkinRate`. For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
      */
     metric?: pulumi.Input<string>;
     /**
@@ -341,21 +320,15 @@ export interface AlarmState {
      */
     metricDimensions?: pulumi.Input<string>;
     /**
-     * The alarm rule name.
+     * The name of the alert rule.
      */
     name?: pulumi.Input<string>;
-    /**
-     * It has been deprecated from provider version 1.94.0 and 'escalations_critical.comparison_operator' instead.
-     *
-     * @deprecated Field 'operator' has been deprecated from provider version 1.94.0. New field 'escalations_critical.comparison_operator' instead.
-     */
-    operator?: pulumi.Input<string>;
     /**
      * Index query cycle, which must be consistent with that defined for metrics. Default to 300, in seconds.
      */
     period?: pulumi.Input<number>;
     /**
-     * Monitor project name, such as "acsEcsDashboard" and "acsRdsDashboard". For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
+     * The namespace of the cloud service, such as `acsEcsDashboard` and `acsRdsDashboard`. For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
      * **NOTE:** The `dimensions` and `metricDimensions` must be empty when `project` is `acsPrometheus`, otherwise, one of them must be set.
      */
     project?: pulumi.Input<string>;
@@ -364,43 +337,27 @@ export interface AlarmState {
      */
     prometheuses?: pulumi.Input<pulumi.Input<inputs.cms.AlarmPrometheus>[]>;
     /**
-     * Notification silence period in the alarm state, in seconds. Valid value range: [300, 86400]. Default to 86400
+     * Notification silence period in the alarm state, in seconds. Default value: `86400`. Valid value range: [300, 86400].
      */
     silenceTime?: pulumi.Input<number>;
     /**
-     * It has been deprecated from provider version 1.50.0 and 'effective_interval' instead.
+     * Field `startTime` has been deprecated from provider version 1.50.0. New field `effectiveInterval` instead.
      *
-     * @deprecated Field 'start_time' has been deprecated from provider version 1.50.0. New field 'effective_interval' instead.
+     * @deprecated Field `start_time` has been deprecated from provider version 1.50.0. New field `effective_interval` instead.
      */
     startTime?: pulumi.Input<number>;
     /**
-     * It has been deprecated from provider version 1.94.0 and 'escalations_critical.statistics' instead.
-     *
-     * @deprecated Field 'statistics' has been deprecated from provider version 1.94.0. New field 'escalations_critical.statistics' instead.
-     */
-    statistics?: pulumi.Input<string>;
-    /**
-     * The current alarm rule status.
+     * The status of the Alarm.
      */
     status?: pulumi.Input<string>;
     /**
      * A mapping of tags to assign to the resource.
-     *
-     * > **NOTE:** Each resource supports the creation of one of the following three levels.
      */
     tags?: pulumi.Input<{[key: string]: any}>;
     /**
-     * It has been deprecated from provider version 1.94.0 and 'escalations_critical.threshold' instead.
-     *
-     * @deprecated Field 'threshold' has been deprecated from provider version 1.94.0. New field 'escalations_critical.threshold' instead.
+     * The information about the resource for which alerts are triggered. See `targets` below.
      */
-    threshold?: pulumi.Input<string>;
-    /**
-     * It has been deprecated from provider version 1.94.0 and 'escalations_critical.times' instead.
-     *
-     * @deprecated Field 'triggered_count' has been deprecated from provider version 1.94.0. New field 'escalations_critical.times' instead.
-     */
-    triggeredCount?: pulumi.Input<number>;
+    targets?: pulumi.Input<pulumi.Input<inputs.cms.AlarmTarget>[]>;
     /**
      * The webhook that should be called when the alarm is triggered. Currently, only http protocol is supported. Default is empty string.
      */
@@ -416,9 +373,9 @@ export interface AlarmArgs {
      */
     contactGroups: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Field `dimensions` has been deprecated from version 1.95.0. Use `metricDimensions` instead.
+     * Field `dimensions` has been deprecated from provider version 1.173.0. New field `metricDimensions` instead.
      *
-     * @deprecated Field 'dimensions' has been deprecated from version 1.173.0. Use 'metric_dimensions' instead.
+     * @deprecated Field `dimensions` has been deprecated from provider version 1.173.0. New field `metric_dimensions` instead.
      */
     dimensions?: pulumi.Input<{[key: string]: any}>;
     /**
@@ -426,13 +383,13 @@ export interface AlarmArgs {
      */
     effectiveInterval?: pulumi.Input<string>;
     /**
-     * Whether to enable alarm rule. Default to true.
+     * Whether to enable alarm rule. Default value: `true`.
      */
     enabled?: pulumi.Input<boolean>;
     /**
-     * It has been deprecated from provider version 1.50.0 and 'effective_interval' instead.
+     * Field `endTime` has been deprecated from provider version 1.50.0. New field `effectiveInterval` instead.
      *
-     * @deprecated Field 'end_time' has been deprecated from provider version 1.50.0. New field 'effective_interval' instead.
+     * @deprecated Field `end_time` has been deprecated from provider version 1.50.0. New field `effective_interval` instead.
      */
     endTime?: pulumi.Input<number>;
     /**
@@ -448,7 +405,7 @@ export interface AlarmArgs {
      */
     escalationsWarn?: pulumi.Input<inputs.cms.AlarmEscalationsWarn>;
     /**
-     * Name of the monitoring metrics corresponding to a project, such as "CPUUtilization" and "networkinRate". For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
+     * The name of the metric, such as `CPUUtilization` and `networkinRate`. For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
      */
     metric: pulumi.Input<string>;
     /**
@@ -456,21 +413,15 @@ export interface AlarmArgs {
      */
     metricDimensions?: pulumi.Input<string>;
     /**
-     * The alarm rule name.
+     * The name of the alert rule.
      */
     name?: pulumi.Input<string>;
-    /**
-     * It has been deprecated from provider version 1.94.0 and 'escalations_critical.comparison_operator' instead.
-     *
-     * @deprecated Field 'operator' has been deprecated from provider version 1.94.0. New field 'escalations_critical.comparison_operator' instead.
-     */
-    operator?: pulumi.Input<string>;
     /**
      * Index query cycle, which must be consistent with that defined for metrics. Default to 300, in seconds.
      */
     period?: pulumi.Input<number>;
     /**
-     * Monitor project name, such as "acsEcsDashboard" and "acsRdsDashboard". For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
+     * The namespace of the cloud service, such as `acsEcsDashboard` and `acsRdsDashboard`. For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
      * **NOTE:** The `dimensions` and `metricDimensions` must be empty when `project` is `acsPrometheus`, otherwise, one of them must be set.
      */
     project: pulumi.Input<string>;
@@ -479,39 +430,23 @@ export interface AlarmArgs {
      */
     prometheuses?: pulumi.Input<pulumi.Input<inputs.cms.AlarmPrometheus>[]>;
     /**
-     * Notification silence period in the alarm state, in seconds. Valid value range: [300, 86400]. Default to 86400
+     * Notification silence period in the alarm state, in seconds. Default value: `86400`. Valid value range: [300, 86400].
      */
     silenceTime?: pulumi.Input<number>;
     /**
-     * It has been deprecated from provider version 1.50.0 and 'effective_interval' instead.
+     * Field `startTime` has been deprecated from provider version 1.50.0. New field `effectiveInterval` instead.
      *
-     * @deprecated Field 'start_time' has been deprecated from provider version 1.50.0. New field 'effective_interval' instead.
+     * @deprecated Field `start_time` has been deprecated from provider version 1.50.0. New field `effective_interval` instead.
      */
     startTime?: pulumi.Input<number>;
     /**
-     * It has been deprecated from provider version 1.94.0 and 'escalations_critical.statistics' instead.
-     *
-     * @deprecated Field 'statistics' has been deprecated from provider version 1.94.0. New field 'escalations_critical.statistics' instead.
-     */
-    statistics?: pulumi.Input<string>;
-    /**
      * A mapping of tags to assign to the resource.
-     *
-     * > **NOTE:** Each resource supports the creation of one of the following three levels.
      */
     tags?: pulumi.Input<{[key: string]: any}>;
     /**
-     * It has been deprecated from provider version 1.94.0 and 'escalations_critical.threshold' instead.
-     *
-     * @deprecated Field 'threshold' has been deprecated from provider version 1.94.0. New field 'escalations_critical.threshold' instead.
+     * The information about the resource for which alerts are triggered. See `targets` below.
      */
-    threshold?: pulumi.Input<string>;
-    /**
-     * It has been deprecated from provider version 1.94.0 and 'escalations_critical.times' instead.
-     *
-     * @deprecated Field 'triggered_count' has been deprecated from provider version 1.94.0. New field 'escalations_critical.times' instead.
-     */
-    triggeredCount?: pulumi.Input<number>;
+    targets?: pulumi.Input<pulumi.Input<inputs.cms.AlarmTarget>[]>;
     /**
      * The webhook that should be called when the alarm is triggered. Currently, only http protocol is supported. Default is empty string.
      */

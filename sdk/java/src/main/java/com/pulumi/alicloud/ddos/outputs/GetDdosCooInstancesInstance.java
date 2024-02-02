@@ -37,12 +37,12 @@ public final class GetDdosCooInstancesInstance {
      */
     private Integer domainCount;
     /**
-     * @return The edition of the instance. The Valid Values : `0`, `1`, `2`, `9`.
+     * @return The edition of the instance.
      * 
      */
     private Integer edition;
     /**
-     * @return The enabled of the instance. The Valid Values : `0`, `1`.
+     * @return The enabled of the instance.
      * 
      */
     private Integer enabled;
@@ -57,12 +57,12 @@ public final class GetDdosCooInstancesInstance {
      */
     private String id;
     /**
-     * @return The ip mode of the instance. The Valid Values : `fnat`, `v6tov4`.
+     * @return The ip mode of the instance.
      * 
      */
     private String ipMode;
     /**
-     * @return The ip version of the instance. The Valid Values : `Ipv4`, `Ipv6`.
+     * @return The ip version of the instance.
      * 
      */
     private String ipVersion;
@@ -87,7 +87,7 @@ public final class GetDdosCooInstancesInstance {
      */
     private Integer serviceBandwidth;
     /**
-     * @return The status of the instance. The Valid Values : `1`, `2`.
+     * @return The status of the instance.
      * 
      */
     private Integer status;
@@ -129,14 +129,14 @@ public final class GetDdosCooInstancesInstance {
         return this.domainCount;
     }
     /**
-     * @return The edition of the instance. The Valid Values : `0`, `1`, `2`, `9`.
+     * @return The edition of the instance.
      * 
      */
     public Integer edition() {
         return this.edition;
     }
     /**
-     * @return The enabled of the instance. The Valid Values : `0`, `1`.
+     * @return The enabled of the instance.
      * 
      */
     public Integer enabled() {
@@ -157,14 +157,14 @@ public final class GetDdosCooInstancesInstance {
         return this.id;
     }
     /**
-     * @return The ip mode of the instance. The Valid Values : `fnat`, `v6tov4`.
+     * @return The ip mode of the instance.
      * 
      */
     public String ipMode() {
         return this.ipMode;
     }
     /**
-     * @return The ip version of the instance. The Valid Values : `Ipv4`, `Ipv6`.
+     * @return The ip version of the instance.
      * 
      */
     public String ipVersion() {
@@ -199,7 +199,7 @@ public final class GetDdosCooInstancesInstance {
         return this.serviceBandwidth;
     }
     /**
-     * @return The status of the instance. The Valid Values : `1`, `2`.
+     * @return The status of the instance.
      * 
      */
     public Integer status() {

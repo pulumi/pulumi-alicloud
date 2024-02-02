@@ -94,14 +94,59 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * KMS Instance commodity type (software/hardware). Currently, only version 3 is supported.
+     * Instance Audit Log Switch.
+     * 
+     */
+    @Import(name="log")
+    private @Nullable Output<String> log;
+
+    /**
+     * @return Instance Audit Log Switch.
+     * 
+     */
+    public Optional<Output<String>> log() {
+        return Optional.ofNullable(this.log);
+    }
+
+    /**
+     * Instance log capacity.
+     * 
+     */
+    @Import(name="logStorage")
+    private @Nullable Output<Integer> logStorage;
+
+    /**
+     * @return Instance log capacity.
+     * 
+     */
+    public Optional<Output<Integer>> logStorage() {
+        return Optional.ofNullable(this.logStorage);
+    }
+
+    /**
+     * Purchase cycle, in months.
+     * 
+     */
+    @Import(name="period")
+    private @Nullable Output<Integer> period;
+
+    /**
+     * @return Purchase cycle, in months.
+     * 
+     */
+    public Optional<Output<Integer>> period() {
+        return Optional.ofNullable(this.period);
+    }
+
+    /**
+     * KMS Instance commodity type (software/hardware).
      * 
      */
     @Import(name="productVersion")
     private @Nullable Output<String> productVersion;
 
     /**
-     * @return KMS Instance commodity type (software/hardware). Currently, only version 3 is supported.
+     * @return KMS Instance commodity type (software/hardware).
      * 
      */
     public Optional<Output<String>> productVersion() {
@@ -251,6 +296,9 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         this.createTime = $.createTime;
         this.instanceName = $.instanceName;
         this.keyNum = $.keyNum;
+        this.log = $.log;
+        this.logStorage = $.logStorage;
+        this.period = $.period;
         this.productVersion = $.productVersion;
         this.renewPeriod = $.renewPeriod;
         this.renewStatus = $.renewStatus;
@@ -397,7 +445,70 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param productVersion KMS Instance commodity type (software/hardware). Currently, only version 3 is supported.
+         * @param log Instance Audit Log Switch.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder log(@Nullable Output<String> log) {
+            $.log = log;
+            return this;
+        }
+
+        /**
+         * @param log Instance Audit Log Switch.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder log(String log) {
+            return log(Output.of(log));
+        }
+
+        /**
+         * @param logStorage Instance log capacity.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder logStorage(@Nullable Output<Integer> logStorage) {
+            $.logStorage = logStorage;
+            return this;
+        }
+
+        /**
+         * @param logStorage Instance log capacity.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder logStorage(Integer logStorage) {
+            return logStorage(Output.of(logStorage));
+        }
+
+        /**
+         * @param period Purchase cycle, in months.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder period(@Nullable Output<Integer> period) {
+            $.period = period;
+            return this;
+        }
+
+        /**
+         * @param period Purchase cycle, in months.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder period(Integer period) {
+            return period(Output.of(period));
+        }
+
+        /**
+         * @param productVersion KMS Instance commodity type (software/hardware).
          * 
          * @return builder
          * 
@@ -408,7 +519,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param productVersion KMS Instance commodity type (software/hardware). Currently, only version 3 is supported.
+         * @param productVersion KMS Instance commodity type (software/hardware).
          * 
          * @return builder
          * 

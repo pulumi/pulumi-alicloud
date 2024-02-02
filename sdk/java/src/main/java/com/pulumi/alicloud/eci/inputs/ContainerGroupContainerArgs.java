@@ -132,6 +132,21 @@ public final class ContainerGroupContainerArgs extends com.pulumi.resources.Reso
     }
 
     /**
+     * The commands to be executed in containers when you use the CLI to specify the preStop callback function.
+     * 
+     */
+    @Import(name="lifecyclePreStopHandlerExecs")
+    private @Nullable Output<List<String>> lifecyclePreStopHandlerExecs;
+
+    /**
+     * @return The commands to be executed in containers when you use the CLI to specify the preStop callback function.
+     * 
+     */
+    public Optional<Output<List<String>>> lifecyclePreStopHandlerExecs() {
+        return Optional.ofNullable(this.lifecyclePreStopHandlerExecs);
+    }
+
+    /**
      * The health check of the container. See `liveness_probe` below.
      * 
      */
@@ -291,6 +306,7 @@ public final class ContainerGroupContainerArgs extends com.pulumi.resources.Reso
         this.gpu = $.gpu;
         this.image = $.image;
         this.imagePullPolicy = $.imagePullPolicy;
+        this.lifecyclePreStopHandlerExecs = $.lifecyclePreStopHandlerExecs;
         this.livenessProbes = $.livenessProbes;
         this.memory = $.memory;
         this.name = $.name;
@@ -496,6 +512,37 @@ public final class ContainerGroupContainerArgs extends com.pulumi.resources.Reso
          */
         public Builder imagePullPolicy(String imagePullPolicy) {
             return imagePullPolicy(Output.of(imagePullPolicy));
+        }
+
+        /**
+         * @param lifecyclePreStopHandlerExecs The commands to be executed in containers when you use the CLI to specify the preStop callback function.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder lifecyclePreStopHandlerExecs(@Nullable Output<List<String>> lifecyclePreStopHandlerExecs) {
+            $.lifecyclePreStopHandlerExecs = lifecyclePreStopHandlerExecs;
+            return this;
+        }
+
+        /**
+         * @param lifecyclePreStopHandlerExecs The commands to be executed in containers when you use the CLI to specify the preStop callback function.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder lifecyclePreStopHandlerExecs(List<String> lifecyclePreStopHandlerExecs) {
+            return lifecyclePreStopHandlerExecs(Output.of(lifecyclePreStopHandlerExecs));
+        }
+
+        /**
+         * @param lifecyclePreStopHandlerExecs The commands to be executed in containers when you use the CLI to specify the preStop callback function.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder lifecyclePreStopHandlerExecs(String... lifecyclePreStopHandlerExecs) {
+            return lifecyclePreStopHandlerExecs(List.of(lifecyclePreStopHandlerExecs));
         }
 
         /**

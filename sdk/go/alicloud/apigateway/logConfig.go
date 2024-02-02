@@ -27,82 +27,59 @@ import (
 //
 // import (
 //
+//	"fmt"
+//
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/apigateway"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/log"
 //	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			defaultLogConfigs, err := apigateway.GetLogConfigs(ctx, &apigateway.GetLogConfigsArgs{
-//				LogType: pulumi.StringRef("PROVIDER"),
-//			}, nil)
+//			cfg := config.New(ctx, "")
+//			name := "terraform-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			_, err := random.NewRandomInteger(ctx, "default", &random.RandomIntegerArgs{
+//				Max: pulumi.Int(99999),
+//				Min: pulumi.Int(10000),
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			var tmp0 float64
-//			if len(defaultLogConfigs.Configs) > 0 {
-//				tmp0 = 0
-//			} else {
-//				tmp0 = 1
+//			exampleProject, err := log.NewProject(ctx, "exampleProject", &log.ProjectArgs{
+//				ProjectName: _default.Result.ApplyT(func(result int) (string, error) {
+//					return fmt.Sprintf("%v-%v", name, result), nil
+//				}).(pulumi.StringOutput),
+//				Description: pulumi.String(name),
+//			})
+//			if err != nil {
+//				return err
 //			}
-//			count := tmp0
-//			var defaultRandomInteger []*random.RandomInteger
-//			for index := 0; index < count; index++ {
-//				key0 := index
-//				_ := index
-//				__res, err := random.NewRandomInteger(ctx, fmt.Sprintf("defaultRandomInteger-%v", key0), &random.RandomIntegerArgs{
-//					Max: pulumi.Int(99999),
-//					Min: pulumi.Int(10000),
-//				})
-//				if err != nil {
-//					return err
-//				}
-//				defaultRandomInteger = append(defaultRandomInteger, __res)
+//			exampleStore, err := log.NewStore(ctx, "exampleStore", &log.StoreArgs{
+//				ProjectName: exampleProject.ProjectName,
+//				LogstoreName: _default.Result.ApplyT(func(result int) (string, error) {
+//					return fmt.Sprintf("%v-%v", name, result), nil
+//				}).(pulumi.StringOutput),
+//				ShardCount:         pulumi.Int(3),
+//				AutoSplit:          pulumi.Bool(true),
+//				MaxSplitShardCount: pulumi.Int(60),
+//				AppendMeta:         pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
 //			}
-//			var exampleProject []*log.Project
-//			for index := 0; index < count; index++ {
-//				key0 := index
-//				_ := index
-//				__res, err := log.NewProject(ctx, fmt.Sprintf("exampleProject-%v", key0), &log.ProjectArgs{
-//					Description: pulumi.String("terraform-example"),
-//				})
-//				if err != nil {
-//					return err
-//				}
-//				exampleProject = append(exampleProject, __res)
-//			}
-//			var exampleStore []*log.Store
-//			for index := 0; index < count; index++ {
-//				key0 := index
-//				_ := index
-//				__res, err := log.NewStore(ctx, fmt.Sprintf("exampleStore-%v", key0), &log.StoreArgs{
-//					Project:            exampleProject[0].Name,
-//					ShardCount:         pulumi.Int(3),
-//					AutoSplit:          pulumi.Bool(true),
-//					MaxSplitShardCount: pulumi.Int(60),
-//					AppendMeta:         pulumi.Bool(true),
-//				})
-//				if err != nil {
-//					return err
-//				}
-//				exampleStore = append(exampleStore, __res)
-//			}
-//			var exampleLogConfig []*apigateway.LogConfig
-//			for index := 0; index < count; index++ {
-//				key0 := index
-//				_ := index
-//				__res, err := apigateway.NewLogConfig(ctx, fmt.Sprintf("exampleLogConfig-%v", key0), &apigateway.LogConfigArgs{
-//					SlsProject:  exampleProject[0].Name,
-//					SlsLogStore: exampleStore[0].Name,
-//					LogType:     pulumi.String("PROVIDER"),
-//				})
-//				if err != nil {
-//					return err
-//				}
-//				exampleLogConfig = append(exampleLogConfig, __res)
+//			_, err = apigateway.NewLogConfig(ctx, "exampleLogConfig", &apigateway.LogConfigArgs{
+//				SlsProject:  exampleProject.ProjectName,
+//				SlsLogStore: exampleStore.LogstoreName,
+//				LogType:     pulumi.String("PROVIDER"),
+//			})
+//			if err != nil {
+//				return err
 //			}
 //			return nil
 //		})

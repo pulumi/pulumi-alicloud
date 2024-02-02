@@ -50,6 +50,11 @@ export const getGatewayVpnAttachments: typeof import("./getGatewayVpnAttachments
 export const getGatewayVpnAttachmentsOutput: typeof import("./getGatewayVpnAttachments").getGatewayVpnAttachmentsOutput = null as any;
 utilities.lazyLoad(exports, ["getGatewayVpnAttachments","getGatewayVpnAttachmentsOutput"], () => require("./getGatewayVpnAttachments"));
 
+export { GetGatewayZonesArgs, GetGatewayZonesResult, GetGatewayZonesOutputArgs } from "./getGatewayZones";
+export const getGatewayZones: typeof import("./getGatewayZones").getGatewayZones = null as any;
+export const getGatewayZonesOutput: typeof import("./getGatewayZones").getGatewayZonesOutput = null as any;
+utilities.lazyLoad(exports, ["getGatewayZones","getGatewayZonesOutput"], () => require("./getGatewayZones"));
+
 export { GetGatewaysArgs, GetGatewaysResult, GetGatewaysOutputArgs } from "./getGateways";
 export const getGateways: typeof import("./getGateways").getGateways = null as any;
 export const getGatewaysOutput: typeof import("./getGateways").getGatewaysOutput = null as any;

@@ -30,14 +30,21 @@ namespace Pulumi.AliCloud.Slb
     /// using System.Linq;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
+    /// using Random = Pulumi.Random;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     var config = new Config();
-    ///     var slbListenerName = config.Get("slbListenerName") ?? "forSlbListener";
+    ///     var name = config.Get("name") ?? "tf-example";
+    ///     var @default = new Random.RandomInteger("default", new()
+    ///     {
+    ///         Min = 10000,
+    ///         Max = 99999,
+    ///     });
+    /// 
     ///     var listenerApplicationLoadBalancer = new AliCloud.Slb.ApplicationLoadBalancer("listenerApplicationLoadBalancer", new()
     ///     {
-    ///         LoadBalancerName = "tf-exampleSlbListenerHttp",
+    ///         LoadBalancerName = @default.Result.Apply(result =&gt; $"{name}-{result}"),
     ///         InternetChargeType = "PayByTraffic",
     ///         AddressType = "internet",
     ///         InstanceChargeType = "PayByCLCU",

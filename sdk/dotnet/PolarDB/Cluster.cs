@@ -112,6 +112,12 @@ namespace Pulumi.AliCloud.PolarDB
         public Output<int?> DbNodeNum { get; private set; } = null!;
 
         /// <summary>
+        /// (Available since v1.216.0) The db_revision_version_list supports the following:
+        /// </summary>
+        [Output("dbRevisionVersionLists")]
+        public Output<ImmutableArray<Outputs.ClusterDbRevisionVersionList>> DbRevisionVersionLists { get; private set; } = null!;
+
+        /// <summary>
         /// Database type. Value options: MySQL, Oracle, PostgreSQL.
         /// </summary>
         [Output("dbType")]
@@ -408,6 +414,12 @@ namespace Pulumi.AliCloud.PolarDB
         /// </summary>
         [Output("tags")]
         public Output<ImmutableDictionary<string, object>?> Tags { get; private set; } = null!;
+
+        /// <summary>
+        /// The Version Code of the target version, whose parameter values can be obtained from the [DescribeDBClusterVersion](https://www.alibabacloud.com/help/en/polardb/latest/describedbclusterversion) interface.
+        /// </summary>
+        [Output("targetDbRevisionVersionCode")]
+        public Output<string?> TargetDbRevisionVersionCode { get; private set; } = null!;
 
         /// <summary>
         /// (Available since 1.200.0) The region where the TDE key resides.
@@ -890,6 +902,12 @@ namespace Pulumi.AliCloud.PolarDB
         }
 
         /// <summary>
+        /// The Version Code of the target version, whose parameter values can be obtained from the [DescribeDBClusterVersion](https://www.alibabacloud.com/help/en/polardb/latest/describedbclusterversion) interface.
+        /// </summary>
+        [Input("targetDbRevisionVersionCode")]
+        public Input<string>? TargetDbRevisionVersionCode { get; set; }
+
+        /// <summary>
         /// turn on TDE encryption. Valid values are `Enabled`, `Disabled`. Default to `Disabled`. TDE cannot be closed after it is turned on. 
         /// &gt; **NOTE:** `tde_status` Cannot modify after created when `db_type` is `PostgreSQL` or `Oracle`.`tde_status` only support modification from `Disabled` to `Enabled` when `db_type` is `MySQL`.
         /// </summary>
@@ -1024,6 +1042,18 @@ namespace Pulumi.AliCloud.PolarDB
         /// </summary>
         [Input("dbNodeNum")]
         public Input<int>? DbNodeNum { get; set; }
+
+        [Input("dbRevisionVersionLists")]
+        private InputList<Inputs.ClusterDbRevisionVersionListGetArgs>? _dbRevisionVersionLists;
+
+        /// <summary>
+        /// (Available since v1.216.0) The db_revision_version_list supports the following:
+        /// </summary>
+        public InputList<Inputs.ClusterDbRevisionVersionListGetArgs> DbRevisionVersionLists
+        {
+            get => _dbRevisionVersionLists ?? (_dbRevisionVersionLists = new InputList<Inputs.ClusterDbRevisionVersionListGetArgs>());
+            set => _dbRevisionVersionLists = value;
+        }
 
         /// <summary>
         /// Database type. Value options: MySQL, Oracle, PostgreSQL.
@@ -1346,6 +1376,12 @@ namespace Pulumi.AliCloud.PolarDB
             get => _tags ?? (_tags = new InputMap<object>());
             set => _tags = value;
         }
+
+        /// <summary>
+        /// The Version Code of the target version, whose parameter values can be obtained from the [DescribeDBClusterVersion](https://www.alibabacloud.com/help/en/polardb/latest/describedbclusterversion) interface.
+        /// </summary>
+        [Input("targetDbRevisionVersionCode")]
+        public Input<string>? TargetDbRevisionVersionCode { get; set; }
 
         /// <summary>
         /// (Available since 1.200.0) The region where the TDE key resides.

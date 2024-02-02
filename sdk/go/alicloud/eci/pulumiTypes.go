@@ -152,6 +152,8 @@ type ContainerGroupContainer struct {
 	Image string `pulumi:"image"`
 	// The restart policy of the image. Default value: `IfNotPresent`. Valid values: `Always`, `IfNotPresent`, `Never`.
 	ImagePullPolicy *string `pulumi:"imagePullPolicy"`
+	// The commands to be executed in containers when you use the CLI to specify the preStop callback function.
+	LifecyclePreStopHandlerExecs []string `pulumi:"lifecyclePreStopHandlerExecs"`
 	// The health check of the container. See `livenessProbe` below.
 	LivenessProbes []ContainerGroupContainerLivenessProbe `pulumi:"livenessProbes"`
 	// The amount of memory resources allocated to the container. Default value: `0`.
@@ -200,6 +202,8 @@ type ContainerGroupContainerArgs struct {
 	Image pulumi.StringInput `pulumi:"image"`
 	// The restart policy of the image. Default value: `IfNotPresent`. Valid values: `Always`, `IfNotPresent`, `Never`.
 	ImagePullPolicy pulumi.StringPtrInput `pulumi:"imagePullPolicy"`
+	// The commands to be executed in containers when you use the CLI to specify the preStop callback function.
+	LifecyclePreStopHandlerExecs pulumi.StringArrayInput `pulumi:"lifecyclePreStopHandlerExecs"`
 	// The health check of the container. See `livenessProbe` below.
 	LivenessProbes ContainerGroupContainerLivenessProbeArrayInput `pulumi:"livenessProbes"`
 	// The amount of memory resources allocated to the container. Default value: `0`.
@@ -306,6 +310,11 @@ func (o ContainerGroupContainerOutput) Image() pulumi.StringOutput {
 // The restart policy of the image. Default value: `IfNotPresent`. Valid values: `Always`, `IfNotPresent`, `Never`.
 func (o ContainerGroupContainerOutput) ImagePullPolicy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ContainerGroupContainer) *string { return v.ImagePullPolicy }).(pulumi.StringPtrOutput)
+}
+
+// The commands to be executed in containers when you use the CLI to specify the preStop callback function.
+func (o ContainerGroupContainerOutput) LifecyclePreStopHandlerExecs() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ContainerGroupContainer) []string { return v.LifecyclePreStopHandlerExecs }).(pulumi.StringArrayOutput)
 }
 
 // The health check of the container. See `livenessProbe` below.

@@ -14,13 +14,13 @@ import (
 var _ = internal.GetEnvOrDefault
 
 type InstanceDataDisk struct {
-	// Type of dataDisk
-	// - cloud_efficiency：High-efficiency cloud disk
-	// - cloud_ssd：Full flash cloud disk
-	// - local_hdd：Local hdd disk
-	// - local_ssd：Local disk ssd.
+	// Data disk type. Optional values:
+	// - cloud_efficiency: Ultra cloud disk
+	// - cloud_ssd: Full Flash cloud disk
+	// - local_hdd: local hdd disk
+	// - local_ssd: local disk ssd.
 	Category *string `pulumi:"category"`
-	// Data disk size, cloudEfficiency is 20-32000,cloud_ssd/local_hdd/local_ssd is 20-25000, unit: GB.
+	// Data disk size, unit: GB.
 	Size *int `pulumi:"size"`
 }
 
@@ -36,13 +36,13 @@ type InstanceDataDiskInput interface {
 }
 
 type InstanceDataDiskArgs struct {
-	// Type of dataDisk
-	// - cloud_efficiency：High-efficiency cloud disk
-	// - cloud_ssd：Full flash cloud disk
-	// - local_hdd：Local hdd disk
-	// - local_ssd：Local disk ssd.
+	// Data disk type. Optional values:
+	// - cloud_efficiency: Ultra cloud disk
+	// - cloud_ssd: Full Flash cloud disk
+	// - local_hdd: local hdd disk
+	// - local_ssd: local disk ssd.
 	Category pulumi.StringPtrInput `pulumi:"category"`
-	// Data disk size, cloudEfficiency is 20-32000,cloud_ssd/local_hdd/local_ssd is 20-25000, unit: GB.
+	// Data disk size, unit: GB.
 	Size pulumi.IntPtrInput `pulumi:"size"`
 }
 
@@ -97,16 +97,16 @@ func (o InstanceDataDiskOutput) ToInstanceDataDiskOutputWithContext(ctx context.
 	return o
 }
 
-// Type of dataDisk
-// - cloud_efficiency：High-efficiency cloud disk
-// - cloud_ssd：Full flash cloud disk
-// - local_hdd：Local hdd disk
-// - local_ssd：Local disk ssd.
+// Data disk type. Optional values:
+// - cloud_efficiency: Ultra cloud disk
+// - cloud_ssd: Full Flash cloud disk
+// - local_hdd: local hdd disk
+// - local_ssd: local disk ssd.
 func (o InstanceDataDiskOutput) Category() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceDataDisk) *string { return v.Category }).(pulumi.StringPtrOutput)
 }
 
-// Data disk size, cloudEfficiency is 20-32000,cloud_ssd/local_hdd/local_ssd is 20-25000, unit: GB.
+// Data disk size, unit: GB.
 func (o InstanceDataDiskOutput) Size() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v InstanceDataDisk) *int { return v.Size }).(pulumi.IntPtrOutput)
 }
@@ -132,7 +132,13 @@ func (o InstanceDataDiskArrayOutput) Index(i pulumi.IntInput) InstanceDataDiskOu
 }
 
 type InstanceSystemDisk struct {
-	// System disk size, cloudEfficiency is 20-32000,cloud_ssd/local_hdd/local_ssd is 20-25000, unit: GB.
+	// System disk type. Optional values:
+	// - cloud_efficiency: Ultra cloud disk
+	// - cloud_ssd: Full Flash cloud disk
+	// - local_hdd: local hdd disk
+	// - local_ssd: local disk ssd.
+	Category *string `pulumi:"category"`
+	// System disk size, unit: GB.
 	Size *int `pulumi:"size"`
 }
 
@@ -148,7 +154,13 @@ type InstanceSystemDiskInput interface {
 }
 
 type InstanceSystemDiskArgs struct {
-	// System disk size, cloudEfficiency is 20-32000,cloud_ssd/local_hdd/local_ssd is 20-25000, unit: GB.
+	// System disk type. Optional values:
+	// - cloud_efficiency: Ultra cloud disk
+	// - cloud_ssd: Full Flash cloud disk
+	// - local_hdd: local hdd disk
+	// - local_ssd: local disk ssd.
+	Category pulumi.StringPtrInput `pulumi:"category"`
+	// System disk size, unit: GB.
 	Size pulumi.IntPtrInput `pulumi:"size"`
 }
 
@@ -229,7 +241,16 @@ func (o InstanceSystemDiskOutput) ToInstanceSystemDiskPtrOutputWithContext(ctx c
 	}).(InstanceSystemDiskPtrOutput)
 }
 
-// System disk size, cloudEfficiency is 20-32000,cloud_ssd/local_hdd/local_ssd is 20-25000, unit: GB.
+// System disk type. Optional values:
+// - cloud_efficiency: Ultra cloud disk
+// - cloud_ssd: Full Flash cloud disk
+// - local_hdd: local hdd disk
+// - local_ssd: local disk ssd.
+func (o InstanceSystemDiskOutput) Category() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceSystemDisk) *string { return v.Category }).(pulumi.StringPtrOutput)
+}
+
+// System disk size, unit: GB.
 func (o InstanceSystemDiskOutput) Size() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v InstanceSystemDisk) *int { return v.Size }).(pulumi.IntPtrOutput)
 }
@@ -258,7 +279,21 @@ func (o InstanceSystemDiskPtrOutput) Elem() InstanceSystemDiskOutput {
 	}).(InstanceSystemDiskOutput)
 }
 
-// System disk size, cloudEfficiency is 20-32000,cloud_ssd/local_hdd/local_ssd is 20-25000, unit: GB.
+// System disk type. Optional values:
+// - cloud_efficiency: Ultra cloud disk
+// - cloud_ssd: Full Flash cloud disk
+// - local_hdd: local hdd disk
+// - local_ssd: local disk ssd.
+func (o InstanceSystemDiskPtrOutput) Category() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InstanceSystemDisk) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Category
+	}).(pulumi.StringPtrOutput)
+}
+
+// System disk size, unit: GB.
 func (o InstanceSystemDiskPtrOutput) Size() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *InstanceSystemDisk) *int {
 		if v == nil {

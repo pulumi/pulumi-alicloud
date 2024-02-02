@@ -11,9 +11,13 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// This data source provides a list of BGP-Line Anti-DDoS Pro instances in an Alibaba Cloud account according to the specified filters.
+// This data source provides the BGP-Line Anti-DDoS Pro(DdosCoo) instances of the current Alibaba Cloud user.
+//
+// > **NOTE:** Available since v1.39.0.
 //
 // ## Example Usage
+//
+// # Basic Usage
 //
 // ```go
 // package main
@@ -27,14 +31,14 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := ddos.GetDdosCooInstances(ctx, &ddos.GetDdosCooInstancesArgs{
-//				NameRegex: pulumi.StringRef("^ddoscoo"),
+//			_default, err := ddos.GetDdosCooInstances(ctx, &ddos.GetDdosCooInstancesArgs{
+//				NameRegex: pulumi.StringRef("tf"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			var splat0 []interface{}
-//			for _, val0 := range alicloud_ddoscoo_instances.Instance {
+//			var splat0 []*string
+//			for _, val0 := range _default.Instances {
 //				splat0 = append(splat0, val0.Id)
 //			}
 //			ctx.Export("instance", splat0)
@@ -66,8 +70,7 @@ type GetDdosCooInstancesArgs struct {
 // A collection of values returned by getDdosCooInstances.
 type GetDdosCooInstancesResult struct {
 	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
-	// A list of instance IDs.
+	Id  string   `pulumi:"id"`
 	Ids []string `pulumi:"ids"`
 	// A list of apis. Each element contains the following attributes:
 	Instances []GetDdosCooInstancesInstance `pulumi:"instances"`
@@ -124,7 +127,6 @@ func (o GetDdosCooInstancesResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDdosCooInstancesResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// A list of instance IDs.
 func (o GetDdosCooInstancesResultOutput) Ids() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetDdosCooInstancesResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
 }

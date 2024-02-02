@@ -7,18 +7,22 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * This data source provides a list of BGP-Line Anti-DDoS Pro instances in an Alibaba Cloud account according to the specified filters.
+ * This data source provides the BGP-Line Anti-DDoS Pro(DdosCoo) instances of the current Alibaba Cloud user.
+ *
+ * > **NOTE:** Available since v1.39.0.
  *
  * ## Example Usage
+ *
+ * Basic Usage
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const instanceDdosCooInstances = alicloud.ddos.getDdosCooInstances({
- *     nameRegex: "^ddoscoo",
+ * const default = alicloud.ddos.getDdosCooInstances({
+ *     nameRegex: "tf",
  * });
- * export const instance = alicloud_ddoscoo_instances.instance.map(__item => __item.id);
+ * export const instance = _default.then(_default => _default.instances.map(__item => __item.id));
  * ```
  */
 export function getDdosCooInstances(args?: GetDdosCooInstancesArgs, opts?: pulumi.InvokeOptions): Promise<GetDdosCooInstancesResult> {
@@ -58,9 +62,6 @@ export interface GetDdosCooInstancesResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
-    /**
-     * A list of instance IDs.
-     */
     readonly ids: string[];
     /**
      * A list of apis. Each element contains the following attributes:
@@ -74,18 +75,22 @@ export interface GetDdosCooInstancesResult {
     readonly outputFile?: string;
 }
 /**
- * This data source provides a list of BGP-Line Anti-DDoS Pro instances in an Alibaba Cloud account according to the specified filters.
+ * This data source provides the BGP-Line Anti-DDoS Pro(DdosCoo) instances of the current Alibaba Cloud user.
+ *
+ * > **NOTE:** Available since v1.39.0.
  *
  * ## Example Usage
+ *
+ * Basic Usage
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const instanceDdosCooInstances = alicloud.ddos.getDdosCooInstances({
- *     nameRegex: "^ddoscoo",
+ * const default = alicloud.ddos.getDdosCooInstances({
+ *     nameRegex: "tf",
  * });
- * export const instance = alicloud_ddoscoo_instances.instance.map(__item => __item.id);
+ * export const instance = _default.then(_default => _default.instances.map(__item => __item.id));
  * ```
  */
 export function getDdosCooInstancesOutput(args?: GetDdosCooInstancesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDdosCooInstancesResult> {

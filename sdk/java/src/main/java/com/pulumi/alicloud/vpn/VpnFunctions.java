@@ -12,12 +12,15 @@ import com.pulumi.alicloud.vpn.inputs.GetGatewayVcoRoutesArgs;
 import com.pulumi.alicloud.vpn.inputs.GetGatewayVcoRoutesPlainArgs;
 import com.pulumi.alicloud.vpn.inputs.GetGatewayVpnAttachmentsArgs;
 import com.pulumi.alicloud.vpn.inputs.GetGatewayVpnAttachmentsPlainArgs;
+import com.pulumi.alicloud.vpn.inputs.GetGatewayZonesArgs;
+import com.pulumi.alicloud.vpn.inputs.GetGatewayZonesPlainArgs;
 import com.pulumi.alicloud.vpn.inputs.GetGatewaysArgs;
 import com.pulumi.alicloud.vpn.inputs.GetGatewaysPlainArgs;
 import com.pulumi.alicloud.vpn.outputs.GetConnectionsResult;
 import com.pulumi.alicloud.vpn.outputs.GetCustomerGatewaysResult;
 import com.pulumi.alicloud.vpn.outputs.GetGatewayVcoRoutesResult;
 import com.pulumi.alicloud.vpn.outputs.GetGatewayVpnAttachmentsResult;
+import com.pulumi.alicloud.vpn.outputs.GetGatewayZonesResult;
 import com.pulumi.alicloud.vpn.outputs.GetGatewaysResult;
 import com.pulumi.core.Output;
 import com.pulumi.core.TypeShape;
@@ -1353,6 +1356,162 @@ public final class VpnFunctions {
      */
     public static CompletableFuture<GetGatewayVpnAttachmentsResult> getGatewayVpnAttachmentsPlain(GetGatewayVpnAttachmentsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:vpn/getGatewayVpnAttachments:getGatewayVpnAttachments", TypeShape.of(GetGatewayVpnAttachmentsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides VPN Gateway Zone available to the user.[What is Zone](https://next.api.alibabacloud.com/api/Vpc/2016-04-28/DescribeVpnGatewayAvailableZones?lang=JAVA)
+     * 
+     * &gt; **NOTE:** Available since v1.216.0.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpn.VpnFunctions;
+     * import com.pulumi.alicloud.vpn.inputs.GetGatewayZonesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = VpnFunctions.getGatewayZones(GetGatewayZonesArgs.builder()
+     *             .spec(&#34;5M&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetGatewayZonesResult> getGatewayZones(GetGatewayZonesArgs args) {
+        return getGatewayZones(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides VPN Gateway Zone available to the user.[What is Zone](https://next.api.alibabacloud.com/api/Vpc/2016-04-28/DescribeVpnGatewayAvailableZones?lang=JAVA)
+     * 
+     * &gt; **NOTE:** Available since v1.216.0.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpn.VpnFunctions;
+     * import com.pulumi.alicloud.vpn.inputs.GetGatewayZonesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = VpnFunctions.getGatewayZones(GetGatewayZonesArgs.builder()
+     *             .spec(&#34;5M&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetGatewayZonesResult> getGatewayZonesPlain(GetGatewayZonesPlainArgs args) {
+        return getGatewayZonesPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides VPN Gateway Zone available to the user.[What is Zone](https://next.api.alibabacloud.com/api/Vpc/2016-04-28/DescribeVpnGatewayAvailableZones?lang=JAVA)
+     * 
+     * &gt; **NOTE:** Available since v1.216.0.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpn.VpnFunctions;
+     * import com.pulumi.alicloud.vpn.inputs.GetGatewayZonesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = VpnFunctions.getGatewayZones(GetGatewayZonesArgs.builder()
+     *             .spec(&#34;5M&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetGatewayZonesResult> getGatewayZones(GetGatewayZonesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:vpn/getGatewayZones:getGatewayZones", TypeShape.of(GetGatewayZonesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides VPN Gateway Zone available to the user.[What is Zone](https://next.api.alibabacloud.com/api/Vpc/2016-04-28/DescribeVpnGatewayAvailableZones?lang=JAVA)
+     * 
+     * &gt; **NOTE:** Available since v1.216.0.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpn.VpnFunctions;
+     * import com.pulumi.alicloud.vpn.inputs.GetGatewayZonesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = VpnFunctions.getGatewayZones(GetGatewayZonesArgs.builder()
+     *             .spec(&#34;5M&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetGatewayZonesResult> getGatewayZonesPlain(GetGatewayZonesPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("alicloud:vpn/getGatewayZones:getGatewayZones", TypeShape.of(GetGatewayZonesResult.class), args, Utilities.withVersion(options));
     }
     /**
      * The VPNs data source lists a number of VPNs resource information owned by an Alicloud account.

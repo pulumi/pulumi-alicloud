@@ -31,11 +31,14 @@ import (
 //
 // import (
 //
+//	"fmt"
+//
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/alb"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ess"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
@@ -48,6 +51,16 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
+//			defaultRandomInteger, err := random.NewRandomInteger(ctx, "defaultRandomInteger", &random.RandomIntegerArgs{
+//				Min: pulumi.Int(10000),
+//				Max: pulumi.Int(99999),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			myName := defaultRandomInteger.Result.ApplyT(func(result int) (string, error) {
+//				return fmt.Sprintf("%v-%v", name, result), nil
+//			}).(pulumi.StringOutput)
 //			defaultZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
 //				AvailableDiskCategory:     pulumi.StringRef("cloud_efficiency"),
 //				AvailableResourceCreation: pulumi.StringRef("VSwitch"),
@@ -72,7 +85,7 @@ import (
 //				return err
 //			}
 //			defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
-//				VpcName:   pulumi.String(name),
+//				VpcName:   pulumi.String(myName),
 //				CidrBlock: pulumi.String("172.16.0.0/16"),
 //			})
 //			if err != nil {
@@ -82,7 +95,7 @@ import (
 //				VpcId:       defaultNetwork.ID(),
 //				CidrBlock:   pulumi.String("172.16.0.0/24"),
 //				ZoneId:      *pulumi.String(defaultZones.Zones[0].Id),
-//				VswitchName: pulumi.String(name),
+//				VswitchName: pulumi.String(myName),
 //			})
 //			if err != nil {
 //				return err
@@ -96,7 +109,7 @@ import (
 //			defaultScalingGroup, err := ess.NewScalingGroup(ctx, "defaultScalingGroup", &ess.ScalingGroupArgs{
 //				MinSize:          pulumi.Int(0),
 //				MaxSize:          pulumi.Int(2),
-//				ScalingGroupName: pulumi.String(name),
+//				ScalingGroupName: pulumi.String(myName),
 //				DefaultCooldown:  pulumi.Int(200),
 //				RemovalPolicies: pulumi.StringArray{
 //					pulumi.String("OldestInstance"),
@@ -121,7 +134,7 @@ import (
 //				return err
 //			}
 //			defaultServerGroup, err := alb.NewServerGroup(ctx, "defaultServerGroup", &alb.ServerGroupArgs{
-//				ServerGroupName: pulumi.String(name),
+//				ServerGroupName: pulumi.String(myName),
 //				VpcId:           defaultNetwork.ID(),
 //				HealthCheckConfig: &alb.ServerGroupHealthCheckConfigArgs{
 //					HealthCheckEnabled: pulumi.Bool(false),

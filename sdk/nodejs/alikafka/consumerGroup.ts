@@ -22,31 +22,33 @@ import * as utilities from "../utilities";
  * import * as random from "@pulumi/random";
  *
  * const config = new pulumi.Config();
- * const name = config.get("name") || "terraform-example";
+ * const name = config.get("name") || "tf-example";
  * const defaultRandomInteger = new random.RandomInteger("defaultRandomInteger", {
  *     min: 10000,
  *     max: 99999,
  * });
- * const defaultNetworks = alicloud.vpc.getNetworks({
- *     nameRegex: "^default-NODELETING$",
+ * const defaultZones = alicloud.getZones({
+ *     availableResourceCreation: "VSwitch",
  * });
- * const defaultSwitches = defaultNetworks.then(defaultNetworks => alicloud.vpc.getSwitches({
- *     vpcId: defaultNetworks.ids?.[0],
- * }));
- * const defaultSecurityGroup = new alicloud.ecs.SecurityGroup("defaultSecurityGroup", {vpcId: defaultNetworks.then(defaultNetworks => defaultNetworks.ids?.[0])});
+ * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {cidrBlock: "172.16.0.0/12"});
+ * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
+ *     vpcId: defaultNetwork.id,
+ *     cidrBlock: "172.16.0.0/24",
+ *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
+ * });
+ * const defaultSecurityGroup = new alicloud.ecs.SecurityGroup("defaultSecurityGroup", {vpcId: defaultNetwork.id});
  * const defaultInstance = new alicloud.alikafka.Instance("defaultInstance", {
  *     partitionNum: 50,
  *     diskType: 1,
  *     diskSize: 500,
  *     deployType: 5,
  *     ioMax: 20,
- *     vswitchId: defaultSwitches.then(defaultSwitches => defaultSwitches.ids?.[0]),
+ *     vswitchId: defaultSwitch.id,
  *     securityGroup: defaultSecurityGroup.id,
  * });
  * const defaultConsumerGroup = new alicloud.alikafka.ConsumerGroup("defaultConsumerGroup", {
+ *     consumerId: name,
  *     instanceId: defaultInstance.id,
- *     consumerId: pulumi.interpolate`${name}-${defaultRandomInteger.result}`,
- *     description: pulumi.interpolate`${name}-${defaultRandomInteger.result}`,
  * });
  * ```
  *

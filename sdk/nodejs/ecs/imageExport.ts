@@ -13,7 +13,7 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Before exporting the image, you must authorize the cloud server ECS official service account to write OSS permissions through RAM.
  *
- * > **NOTE:** Available in 1.68.0+.
+ * > **NOTE:** Available since v1.68.0+.
  *
  * ## Example Usage
  *
@@ -52,14 +52,14 @@ import * as utilities from "../utilities";
  *     imageId: defaultImages.then(defaultImages => defaultImages.ids?.[0]),
  *     internetMaxBandwidthOut: 10,
  * });
- * const defaultImage = new alicloud.ecs.Image("defaultImage", {
- *     instanceId: defaultInstance.id,
- *     imageName: "terraform-example",
- *     description: "terraform-example",
- * });
  * const defaultRandomInteger = new random.RandomInteger("defaultRandomInteger", {
  *     max: 99999,
  *     min: 10000,
+ * });
+ * const defaultImage = new alicloud.ecs.Image("defaultImage", {
+ *     instanceId: defaultInstance.id,
+ *     imageName: pulumi.interpolate`terraform-example-${defaultRandomInteger.result}`,
+ *     description: "terraform-example",
  * });
  * const defaultBucket = new alicloud.oss.Bucket("defaultBucket", {bucket: pulumi.interpolate`example-value-${defaultRandomInteger.result}`});
  * const defaultImageExport = new alicloud.ecs.ImageExport("defaultImageExport", {
@@ -68,11 +68,6 @@ import * as utilities from "../utilities";
  *     ossPrefix: "ecsExport",
  * });
  * ```
- * ## Attributes Reference0
- *
- *  The following attributes are exported:
- *
- * * `id` - ID of the image.
  */
 export class ImageExport extends pulumi.CustomResource {
     /**

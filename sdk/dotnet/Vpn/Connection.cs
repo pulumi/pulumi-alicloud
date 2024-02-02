@@ -10,146 +10,81 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Vpn
 {
     /// <summary>
-    /// ## Example Usage
-    /// 
-    /// Basic Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var config = new Config();
-    ///     var name = config.Get("name") ?? "tf-example";
-    ///     var defaultZones = AliCloud.GetZones.Invoke(new()
-    ///     {
-    ///         AvailableResourceCreation = "VSwitch",
-    ///     });
-    /// 
-    ///     var defaultNetworks = AliCloud.Vpc.GetNetworks.Invoke(new()
-    ///     {
-    ///         NameRegex = "^default-NODELETING$",
-    ///     });
-    /// 
-    ///     var defaultSwitches = AliCloud.Vpc.GetSwitches.Invoke(new()
-    ///     {
-    ///         VpcId = defaultNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
-    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Ids[0]),
-    ///     });
-    /// 
-    ///     var fooGateway = new AliCloud.Vpn.Gateway("fooGateway", new()
-    ///     {
-    ///         VpcId = defaultNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
-    ///         Bandwidth = 10,
-    ///         EnableSsl = true,
-    ///         InstanceChargeType = "PrePaid",
-    ///         Description = "test_create_description",
-    ///         VswitchId = defaultSwitches.Apply(getSwitchesResult =&gt; getSwitchesResult.Ids[0]),
-    ///     });
-    /// 
-    ///     var fooCustomerGateway = new AliCloud.Vpn.CustomerGateway("fooCustomerGateway", new()
-    ///     {
-    ///         IpAddress = "42.104.22.210",
-    ///         Description = name,
-    ///     });
-    /// 
-    ///     var fooConnection = new AliCloud.Vpn.Connection("fooConnection", new()
-    ///     {
-    ///         VpnGatewayId = fooGateway.Id,
-    ///         CustomerGatewayId = fooCustomerGateway.Id,
-    ///         LocalSubnets = new[]
-    ///         {
-    ///             "172.16.0.0/24",
-    ///             "172.16.1.0/24",
-    ///         },
-    ///         RemoteSubnets = new[]
-    ///         {
-    ///             "10.0.0.0/24",
-    ///             "10.0.1.0/24",
-    ///         },
-    ///         EffectImmediately = true,
-    ///         IkeConfig = new AliCloud.Vpn.Inputs.ConnectionIkeConfigArgs
-    ///         {
-    ///             IkeAuthAlg = "md5",
-    ///             IkeEncAlg = "des",
-    ///             IkeVersion = "ikev2",
-    ///             IkeMode = "main",
-    ///             IkeLifetime = 86400,
-    ///             Psk = "tf-testvpn2",
-    ///             IkePfs = "group1",
-    ///             IkeRemoteId = "testbob2",
-    ///             IkeLocalId = "testalice2",
-    ///         },
-    ///         IpsecConfig = new AliCloud.Vpn.Inputs.ConnectionIpsecConfigArgs
-    ///         {
-    ///             IpsecPfs = "group5",
-    ///             IpsecEncAlg = "des",
-    ///             IpsecAuthAlg = "md5",
-    ///             IpsecLifetime = 8640,
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// VPN connection can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:vpn/connection:Connection example vco-abc123456
+    ///  $ pulumi import alicloud:vpn/connection:Connection example &lt;id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:vpn/connection:Connection")]
     public partial class Connection : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The configurations of the BGP routing protocol. See `bgp_config` below.
+        /// Whether to configure routing automatically. Value:
+        /// - **true**: Automatically configure routes.
+        /// - **false**: does not automatically configure routes.
+        /// </summary>
+        [Output("autoConfigRoute")]
+        public Output<bool?> AutoConfigRoute { get; private set; } = null!;
+
+        /// <summary>
+        /// vpnBgp configuration. See `bgp_config` below.
         /// </summary>
         [Output("bgpConfig")]
         public Output<Outputs.ConnectionBgpConfig> BgpConfig { get; private set; } = null!;
 
         /// <summary>
+        /// The time when the IPsec-VPN connection was created.
+        /// </summary>
+        [Output("createTime")]
+        public Output<int> CreateTime { get; private set; } = null!;
+
+        /// <summary>
         /// The ID of the customer gateway.
         /// </summary>
         [Output("customerGatewayId")]
-        public Output<string> CustomerGatewayId { get; private set; } = null!;
+        public Output<string?> CustomerGatewayId { get; private set; } = null!;
 
         /// <summary>
-        /// Whether to delete a successfully negotiated IPsec tunnel and initiate a negotiation again. Valid value:true,false.
+        /// Indicates whether IPsec-VPN negotiations are initiated immediately. Valid values.
         /// </summary>
         [Output("effectImmediately")]
         public Output<bool?> EffectImmediately { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies whether to enable the dead peer detection (DPD) feature. Valid values: `true`(default), `false`.
+        /// Wether enable Dpd detection.
         /// </summary>
         [Output("enableDpd")]
         public Output<bool> EnableDpd { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies whether to enable NAT traversal. Valid values: `true`(default), `false`.
+        /// enable nat traversal.
         /// </summary>
         [Output("enableNatTraversal")]
         public Output<bool> EnableNatTraversal { get; private set; } = null!;
 
         /// <summary>
-        /// The health check configurations. See `health_check_config` below.
+        /// Enable tunnel bgp.
+        /// </summary>
+        [Output("enableTunnelsBgp")]
+        public Output<bool> EnableTunnelsBgp { get; private set; } = null!;
+
+        /// <summary>
+        /// Health Check information. See `health_check_config` below.
         /// </summary>
         [Output("healthCheckConfig")]
         public Output<Outputs.ConnectionHealthCheckConfig> HealthCheckConfig { get; private set; } = null!;
 
         /// <summary>
-        /// The configurations of phase-one negotiation. See `ike_config` below.
+        /// The configuration of Phase 1 negotiations. See `ike_config` below.
         /// </summary>
         [Output("ikeConfig")]
         public Output<Outputs.ConnectionIkeConfig> IkeConfig { get; private set; } = null!;
 
         /// <summary>
-        /// The configurations of phase-two negotiation. See `ipsec_config` below.
+        /// IPsec configuration. See `ipsec_config` below.
         /// </summary>
         [Output("ipsecConfig")]
         public Output<Outputs.ConnectionIpsecConfig> IpsecConfig { get; private set; } = null!;
@@ -161,10 +96,18 @@ namespace Pulumi.AliCloud.Vpn
         public Output<ImmutableArray<string>> LocalSubnets { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the IPsec connection.
+        /// . Field 'name' has been deprecated from provider version 1.216.0. New field 'vpn_connection_name' instead.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// The network type of the IPsec connection. Value:
+        /// - **public**: public network, indicating that the IPsec connection establishes an encrypted communication channel through the public network.
+        /// - **private**: private network, indicating that the IPsec connection establishes an encrypted communication channel through the private network.
+        /// </summary>
+        [Output("networkType")]
+        public Output<string?> NetworkType { get; private set; } = null!;
 
         /// <summary>
         /// The CIDR block of the local data center. This parameter is used for phase-two negotiation.
@@ -173,13 +116,39 @@ namespace Pulumi.AliCloud.Vpn
         public Output<ImmutableArray<string>> RemoteSubnets { get; private set; } = null!;
 
         /// <summary>
-        /// The status of VPN connection.
+        /// The ID of the resource group.
+        /// </summary>
+        [Output("resourceGroupId")]
+        public Output<string> ResourceGroupId { get; private set; } = null!;
+
+        /// <summary>
+        /// The negotiation status of Tunnel.
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
+        /// Tags.
+        /// </summary>
+        [Output("tags")]
+        public Output<ImmutableDictionary<string, object>?> Tags { get; private set; } = null!;
+
+        /// <summary>
+        /// The tunnel options of IPsec. See `tunnel_options_specification` below.
+        /// </summary>
+        [Output("tunnelOptionsSpecifications")]
+        public Output<ImmutableArray<Outputs.ConnectionTunnelOptionsSpecification>> TunnelOptionsSpecifications { get; private set; } = null!;
+
+        /// <summary>
+        /// The name of the IPsec-VPN connection.
+        /// </summary>
+        [Output("vpnConnectionName")]
+        public Output<string> VpnConnectionName { get; private set; } = null!;
+
+        /// <summary>
         /// The ID of the VPN gateway.
+        /// 
+        /// The following arguments will be discarded. Please use new fields as soon as possible:
         /// </summary>
         [Output("vpnGatewayId")]
         public Output<string> VpnGatewayId { get; private set; } = null!;
@@ -231,7 +200,15 @@ namespace Pulumi.AliCloud.Vpn
     public sealed class ConnectionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The configurations of the BGP routing protocol. See `bgp_config` below.
+        /// Whether to configure routing automatically. Value:
+        /// - **true**: Automatically configure routes.
+        /// - **false**: does not automatically configure routes.
+        /// </summary>
+        [Input("autoConfigRoute")]
+        public Input<bool>? AutoConfigRoute { get; set; }
+
+        /// <summary>
+        /// vpnBgp configuration. See `bgp_config` below.
         /// </summary>
         [Input("bgpConfig")]
         public Input<Inputs.ConnectionBgpConfigArgs>? BgpConfig { get; set; }
@@ -239,41 +216,47 @@ namespace Pulumi.AliCloud.Vpn
         /// <summary>
         /// The ID of the customer gateway.
         /// </summary>
-        [Input("customerGatewayId", required: true)]
-        public Input<string> CustomerGatewayId { get; set; } = null!;
+        [Input("customerGatewayId")]
+        public Input<string>? CustomerGatewayId { get; set; }
 
         /// <summary>
-        /// Whether to delete a successfully negotiated IPsec tunnel and initiate a negotiation again. Valid value:true,false.
+        /// Indicates whether IPsec-VPN negotiations are initiated immediately. Valid values.
         /// </summary>
         [Input("effectImmediately")]
         public Input<bool>? EffectImmediately { get; set; }
 
         /// <summary>
-        /// Specifies whether to enable the dead peer detection (DPD) feature. Valid values: `true`(default), `false`.
+        /// Wether enable Dpd detection.
         /// </summary>
         [Input("enableDpd")]
         public Input<bool>? EnableDpd { get; set; }
 
         /// <summary>
-        /// Specifies whether to enable NAT traversal. Valid values: `true`(default), `false`.
+        /// enable nat traversal.
         /// </summary>
         [Input("enableNatTraversal")]
         public Input<bool>? EnableNatTraversal { get; set; }
 
         /// <summary>
-        /// The health check configurations. See `health_check_config` below.
+        /// Enable tunnel bgp.
+        /// </summary>
+        [Input("enableTunnelsBgp")]
+        public Input<bool>? EnableTunnelsBgp { get; set; }
+
+        /// <summary>
+        /// Health Check information. See `health_check_config` below.
         /// </summary>
         [Input("healthCheckConfig")]
         public Input<Inputs.ConnectionHealthCheckConfigArgs>? HealthCheckConfig { get; set; }
 
         /// <summary>
-        /// The configurations of phase-one negotiation. See `ike_config` below.
+        /// The configuration of Phase 1 negotiations. See `ike_config` below.
         /// </summary>
         [Input("ikeConfig")]
         public Input<Inputs.ConnectionIkeConfigArgs>? IkeConfig { get; set; }
 
         /// <summary>
-        /// The configurations of phase-two negotiation. See `ipsec_config` below.
+        /// IPsec configuration. See `ipsec_config` below.
         /// </summary>
         [Input("ipsecConfig")]
         public Input<Inputs.ConnectionIpsecConfigArgs>? IpsecConfig { get; set; }
@@ -291,10 +274,18 @@ namespace Pulumi.AliCloud.Vpn
         }
 
         /// <summary>
-        /// The name of the IPsec connection.
+        /// . Field 'name' has been deprecated from provider version 1.216.0. New field 'vpn_connection_name' instead.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// The network type of the IPsec connection. Value:
+        /// - **public**: public network, indicating that the IPsec connection establishes an encrypted communication channel through the public network.
+        /// - **private**: private network, indicating that the IPsec connection establishes an encrypted communication channel through the private network.
+        /// </summary>
+        [Input("networkType")]
+        public Input<string>? NetworkType { get; set; }
 
         [Input("remoteSubnets", required: true)]
         private InputList<string>? _remoteSubnets;
@@ -308,8 +299,40 @@ namespace Pulumi.AliCloud.Vpn
             set => _remoteSubnets = value;
         }
 
+        [Input("tags")]
+        private InputMap<object>? _tags;
+
+        /// <summary>
+        /// Tags.
+        /// </summary>
+        public InputMap<object> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<object>());
+            set => _tags = value;
+        }
+
+        [Input("tunnelOptionsSpecifications")]
+        private InputList<Inputs.ConnectionTunnelOptionsSpecificationArgs>? _tunnelOptionsSpecifications;
+
+        /// <summary>
+        /// The tunnel options of IPsec. See `tunnel_options_specification` below.
+        /// </summary>
+        public InputList<Inputs.ConnectionTunnelOptionsSpecificationArgs> TunnelOptionsSpecifications
+        {
+            get => _tunnelOptionsSpecifications ?? (_tunnelOptionsSpecifications = new InputList<Inputs.ConnectionTunnelOptionsSpecificationArgs>());
+            set => _tunnelOptionsSpecifications = value;
+        }
+
+        /// <summary>
+        /// The name of the IPsec-VPN connection.
+        /// </summary>
+        [Input("vpnConnectionName")]
+        public Input<string>? VpnConnectionName { get; set; }
+
         /// <summary>
         /// The ID of the VPN gateway.
+        /// 
+        /// The following arguments will be discarded. Please use new fields as soon as possible:
         /// </summary>
         [Input("vpnGatewayId", required: true)]
         public Input<string> VpnGatewayId { get; set; } = null!;
@@ -323,10 +346,24 @@ namespace Pulumi.AliCloud.Vpn
     public sealed class ConnectionState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The configurations of the BGP routing protocol. See `bgp_config` below.
+        /// Whether to configure routing automatically. Value:
+        /// - **true**: Automatically configure routes.
+        /// - **false**: does not automatically configure routes.
+        /// </summary>
+        [Input("autoConfigRoute")]
+        public Input<bool>? AutoConfigRoute { get; set; }
+
+        /// <summary>
+        /// vpnBgp configuration. See `bgp_config` below.
         /// </summary>
         [Input("bgpConfig")]
         public Input<Inputs.ConnectionBgpConfigGetArgs>? BgpConfig { get; set; }
+
+        /// <summary>
+        /// The time when the IPsec-VPN connection was created.
+        /// </summary>
+        [Input("createTime")]
+        public Input<int>? CreateTime { get; set; }
 
         /// <summary>
         /// The ID of the customer gateway.
@@ -335,37 +372,43 @@ namespace Pulumi.AliCloud.Vpn
         public Input<string>? CustomerGatewayId { get; set; }
 
         /// <summary>
-        /// Whether to delete a successfully negotiated IPsec tunnel and initiate a negotiation again. Valid value:true,false.
+        /// Indicates whether IPsec-VPN negotiations are initiated immediately. Valid values.
         /// </summary>
         [Input("effectImmediately")]
         public Input<bool>? EffectImmediately { get; set; }
 
         /// <summary>
-        /// Specifies whether to enable the dead peer detection (DPD) feature. Valid values: `true`(default), `false`.
+        /// Wether enable Dpd detection.
         /// </summary>
         [Input("enableDpd")]
         public Input<bool>? EnableDpd { get; set; }
 
         /// <summary>
-        /// Specifies whether to enable NAT traversal. Valid values: `true`(default), `false`.
+        /// enable nat traversal.
         /// </summary>
         [Input("enableNatTraversal")]
         public Input<bool>? EnableNatTraversal { get; set; }
 
         /// <summary>
-        /// The health check configurations. See `health_check_config` below.
+        /// Enable tunnel bgp.
+        /// </summary>
+        [Input("enableTunnelsBgp")]
+        public Input<bool>? EnableTunnelsBgp { get; set; }
+
+        /// <summary>
+        /// Health Check information. See `health_check_config` below.
         /// </summary>
         [Input("healthCheckConfig")]
         public Input<Inputs.ConnectionHealthCheckConfigGetArgs>? HealthCheckConfig { get; set; }
 
         /// <summary>
-        /// The configurations of phase-one negotiation. See `ike_config` below.
+        /// The configuration of Phase 1 negotiations. See `ike_config` below.
         /// </summary>
         [Input("ikeConfig")]
         public Input<Inputs.ConnectionIkeConfigGetArgs>? IkeConfig { get; set; }
 
         /// <summary>
-        /// The configurations of phase-two negotiation. See `ipsec_config` below.
+        /// IPsec configuration. See `ipsec_config` below.
         /// </summary>
         [Input("ipsecConfig")]
         public Input<Inputs.ConnectionIpsecConfigGetArgs>? IpsecConfig { get; set; }
@@ -383,10 +426,18 @@ namespace Pulumi.AliCloud.Vpn
         }
 
         /// <summary>
-        /// The name of the IPsec connection.
+        /// . Field 'name' has been deprecated from provider version 1.216.0. New field 'vpn_connection_name' instead.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// The network type of the IPsec connection. Value:
+        /// - **public**: public network, indicating that the IPsec connection establishes an encrypted communication channel through the public network.
+        /// - **private**: private network, indicating that the IPsec connection establishes an encrypted communication channel through the private network.
+        /// </summary>
+        [Input("networkType")]
+        public Input<string>? NetworkType { get; set; }
 
         [Input("remoteSubnets")]
         private InputList<string>? _remoteSubnets;
@@ -401,13 +452,51 @@ namespace Pulumi.AliCloud.Vpn
         }
 
         /// <summary>
-        /// The status of VPN connection.
+        /// The ID of the resource group.
+        /// </summary>
+        [Input("resourceGroupId")]
+        public Input<string>? ResourceGroupId { get; set; }
+
+        /// <summary>
+        /// The negotiation status of Tunnel.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
 
+        [Input("tags")]
+        private InputMap<object>? _tags;
+
+        /// <summary>
+        /// Tags.
+        /// </summary>
+        public InputMap<object> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<object>());
+            set => _tags = value;
+        }
+
+        [Input("tunnelOptionsSpecifications")]
+        private InputList<Inputs.ConnectionTunnelOptionsSpecificationGetArgs>? _tunnelOptionsSpecifications;
+
+        /// <summary>
+        /// The tunnel options of IPsec. See `tunnel_options_specification` below.
+        /// </summary>
+        public InputList<Inputs.ConnectionTunnelOptionsSpecificationGetArgs> TunnelOptionsSpecifications
+        {
+            get => _tunnelOptionsSpecifications ?? (_tunnelOptionsSpecifications = new InputList<Inputs.ConnectionTunnelOptionsSpecificationGetArgs>());
+            set => _tunnelOptionsSpecifications = value;
+        }
+
+        /// <summary>
+        /// The name of the IPsec-VPN connection.
+        /// </summary>
+        [Input("vpnConnectionName")]
+        public Input<string>? VpnConnectionName { get; set; }
+
         /// <summary>
         /// The ID of the VPN gateway.
+        /// 
+        /// The following arguments will be discarded. Please use new fields as soon as possible:
         /// </summary>
         [Input("vpnGatewayId")]
         public Input<string>? VpnGatewayId { get; set; }

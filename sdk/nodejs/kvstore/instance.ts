@@ -86,7 +86,7 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly capacity!: pulumi.Output<number>;
     /**
-     * The configuration of the KVStore DBInstance. Available parameters can refer to the latest docs [Instance configurations table](https://www.alibabacloud.com/help/doc-detail/61209.htm) .
+     * The configuration of the KVStore DBInstance. Available parameters can refer to the latest docs [Instance configurations table](https://www.alibabacloud.com/help/en/redis/user-guide/supported-parameters).
      */
     public readonly config!: pulumi.Output<{[key: string]: any}>;
     /**
@@ -95,14 +95,6 @@ export class Instance extends pulumi.CustomResource {
     public /*out*/ readonly connectionDomain!: pulumi.Output<string>;
     /**
      * Indicates whether the address is a private endpoint.
-     *
-     * > **NOTE:** The start time to the end time must be 1 hour. For example, the MaintainStartTime is 01:00Z, then the MaintainEndTime must be 02:00Z.
-     *
-     * > **NOTE:** You must specify at least one of the `capacity` and `instanceClass` parameters when you call create instance operation.
-     *
-     * > **NOTE:** The `privateIp` must be in the Classless Inter-Domain Routing (CIDR) block of the VSwitch to which the instance belongs.
-     *
-     * > **NOTE:** If you specify the `srcdbInstanceId` parameter, you must specify the `backupId` or `restoreTime` parameter.
      *
      * @deprecated Field 'connection_string' has been deprecated from version 1.101.0. Please use resource 'alicloud_kvstore_connection' instead.
      */
@@ -114,7 +106,7 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly connectionStringPrefix!: pulumi.Output<string | undefined>;
     /**
-     * The coupon code. Default value: `youhuiquanPromotionOptionIdForBlank`.
+     * The coupon code.
      */
     public readonly couponNo!: pulumi.Output<string | undefined>;
     /**
@@ -130,8 +122,7 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly dryRun!: pulumi.Output<boolean | undefined>;
     /**
-     * The time when the database is switched after the instance is migrated, 
-     * or when the major version is upgraded, or when the instance class is upgraded. Valid values:
+     * The time when the database is switched after the instance is migrated, or when the major version is upgraded, or when the instance class is upgraded. Valid values:
      */
     public readonly effectiveTime!: pulumi.Output<string | undefined>;
     /**
@@ -215,10 +206,6 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly maintainStartTime!: pulumi.Output<string>;
     /**
-     * The method of modifying the whitelist. Valid values: `0`, `1` and `2`. Default value: `0`. `0` means overwrites the original whitelist. `1` means adds the IP addresses to the whitelist. `2` means deletes the IP addresses from the whitelist.
-     */
-    public readonly modifyMode!: pulumi.Output<number | undefined>;
-    /**
      * "Field `nodeType` has been deprecated from version 1.120.1". This parameter is determined by the `instanceClass`.
      *
      * @deprecated Field 'node_type' has been deprecated from version 1.120.1
@@ -284,7 +271,7 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly secondaryZoneId!: pulumi.Output<string | undefined>;
     /**
-     * The ID of security groups.
+     * The ID of security groups. Separate multiple security group IDs with commas (,), such as `sg-***,sg-***,sg-***`.
      */
     public readonly securityGroupId!: pulumi.Output<string | undefined>;
     /**
@@ -300,7 +287,7 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly securityIps!: pulumi.Output<string[]>;
     /**
-     * The number of data shards. This parameter is available only if you create a cluster instance that uses cloud disks. You can use this parameter to specify a custom number of data shards.
+     * The number of data shards. This parameter is available only if you create a cluster instance that uses cloud disks. You can use this parameter to specify a custom number of data shards. **NOTE:** From version 1.216.0, `shardCount` can be modified.
      */
     public readonly shardCount!: pulumi.Output<number>;
     /**
@@ -322,7 +309,7 @@ export class Instance extends pulumi.CustomResource {
     public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
     /**
      * Specifies whether to enable TDE. Valid values: `Enabled`.
-     * **NOTE:**: TDE cannot be disabled after it is enabled. Before you enable it, evaluate whether this feature affects
+     * **NOTE:**: TDE cannot be disabled after it is enabled. Before you enable it, evaluate whether this feature affects.
      * your business. For more information, see [Enable TDE](https://www.alibabacloud.com/help/en/redis/user-guide/enable-tde).
      */
     public readonly tdeStatus!: pulumi.Output<string>;
@@ -389,7 +376,6 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["kmsEncryptionContext"] = state ? state.kmsEncryptionContext : undefined;
             resourceInputs["maintainEndTime"] = state ? state.maintainEndTime : undefined;
             resourceInputs["maintainStartTime"] = state ? state.maintainStartTime : undefined;
-            resourceInputs["modifyMode"] = state ? state.modifyMode : undefined;
             resourceInputs["nodeType"] = state ? state.nodeType : undefined;
             resourceInputs["orderType"] = state ? state.orderType : undefined;
             resourceInputs["parameters"] = state ? state.parameters : undefined;
@@ -453,7 +439,6 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["kmsEncryptionContext"] = args ? args.kmsEncryptionContext : undefined;
             resourceInputs["maintainEndTime"] = args ? args.maintainEndTime : undefined;
             resourceInputs["maintainStartTime"] = args ? args.maintainStartTime : undefined;
-            resourceInputs["modifyMode"] = args ? args.modifyMode : undefined;
             resourceInputs["nodeType"] = args ? args.nodeType : undefined;
             resourceInputs["orderType"] = args ? args.orderType : undefined;
             resourceInputs["parameters"] = args ? args.parameters : undefined;
@@ -541,7 +526,7 @@ export interface InstanceState {
      */
     capacity?: pulumi.Input<number>;
     /**
-     * The configuration of the KVStore DBInstance. Available parameters can refer to the latest docs [Instance configurations table](https://www.alibabacloud.com/help/doc-detail/61209.htm) .
+     * The configuration of the KVStore DBInstance. Available parameters can refer to the latest docs [Instance configurations table](https://www.alibabacloud.com/help/en/redis/user-guide/supported-parameters).
      */
     config?: pulumi.Input<{[key: string]: any}>;
     /**
@@ -550,14 +535,6 @@ export interface InstanceState {
     connectionDomain?: pulumi.Input<string>;
     /**
      * Indicates whether the address is a private endpoint.
-     *
-     * > **NOTE:** The start time to the end time must be 1 hour. For example, the MaintainStartTime is 01:00Z, then the MaintainEndTime must be 02:00Z.
-     *
-     * > **NOTE:** You must specify at least one of the `capacity` and `instanceClass` parameters when you call create instance operation.
-     *
-     * > **NOTE:** The `privateIp` must be in the Classless Inter-Domain Routing (CIDR) block of the VSwitch to which the instance belongs.
-     *
-     * > **NOTE:** If you specify the `srcdbInstanceId` parameter, you must specify the `backupId` or `restoreTime` parameter.
      *
      * @deprecated Field 'connection_string' has been deprecated from version 1.101.0. Please use resource 'alicloud_kvstore_connection' instead.
      */
@@ -569,7 +546,7 @@ export interface InstanceState {
      */
     connectionStringPrefix?: pulumi.Input<string>;
     /**
-     * The coupon code. Default value: `youhuiquanPromotionOptionIdForBlank`.
+     * The coupon code.
      */
     couponNo?: pulumi.Input<string>;
     /**
@@ -585,8 +562,7 @@ export interface InstanceState {
      */
     dryRun?: pulumi.Input<boolean>;
     /**
-     * The time when the database is switched after the instance is migrated, 
-     * or when the major version is upgraded, or when the instance class is upgraded. Valid values:
+     * The time when the database is switched after the instance is migrated, or when the major version is upgraded, or when the instance class is upgraded. Valid values:
      */
     effectiveTime?: pulumi.Input<string>;
     /**
@@ -670,10 +646,6 @@ export interface InstanceState {
      */
     maintainStartTime?: pulumi.Input<string>;
     /**
-     * The method of modifying the whitelist. Valid values: `0`, `1` and `2`. Default value: `0`. `0` means overwrites the original whitelist. `1` means adds the IP addresses to the whitelist. `2` means deletes the IP addresses from the whitelist.
-     */
-    modifyMode?: pulumi.Input<number>;
-    /**
      * "Field `nodeType` has been deprecated from version 1.120.1". This parameter is determined by the `instanceClass`.
      *
      * @deprecated Field 'node_type' has been deprecated from version 1.120.1
@@ -739,7 +711,7 @@ export interface InstanceState {
      */
     secondaryZoneId?: pulumi.Input<string>;
     /**
-     * The ID of security groups.
+     * The ID of security groups. Separate multiple security group IDs with commas (,), such as `sg-***,sg-***,sg-***`.
      */
     securityGroupId?: pulumi.Input<string>;
     /**
@@ -755,7 +727,7 @@ export interface InstanceState {
      */
     securityIps?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The number of data shards. This parameter is available only if you create a cluster instance that uses cloud disks. You can use this parameter to specify a custom number of data shards.
+     * The number of data shards. This parameter is available only if you create a cluster instance that uses cloud disks. You can use this parameter to specify a custom number of data shards. **NOTE:** From version 1.216.0, `shardCount` can be modified.
      */
     shardCount?: pulumi.Input<number>;
     /**
@@ -777,7 +749,7 @@ export interface InstanceState {
     tags?: pulumi.Input<{[key: string]: any}>;
     /**
      * Specifies whether to enable TDE. Valid values: `Enabled`.
-     * **NOTE:**: TDE cannot be disabled after it is enabled. Before you enable it, evaluate whether this feature affects
+     * **NOTE:**: TDE cannot be disabled after it is enabled. Before you enable it, evaluate whether this feature affects.
      * your business. For more information, see [Enable TDE](https://www.alibabacloud.com/help/en/redis/user-guide/enable-tde).
      */
     tdeStatus?: pulumi.Input<string>;
@@ -838,7 +810,7 @@ export interface InstanceArgs {
      */
     capacity?: pulumi.Input<number>;
     /**
-     * The configuration of the KVStore DBInstance. Available parameters can refer to the latest docs [Instance configurations table](https://www.alibabacloud.com/help/doc-detail/61209.htm) .
+     * The configuration of the KVStore DBInstance. Available parameters can refer to the latest docs [Instance configurations table](https://www.alibabacloud.com/help/en/redis/user-guide/supported-parameters).
      */
     config?: pulumi.Input<{[key: string]: any}>;
     /**
@@ -848,7 +820,7 @@ export interface InstanceArgs {
      */
     connectionStringPrefix?: pulumi.Input<string>;
     /**
-     * The coupon code. Default value: `youhuiquanPromotionOptionIdForBlank`.
+     * The coupon code.
      */
     couponNo?: pulumi.Input<string>;
     /**
@@ -864,8 +836,7 @@ export interface InstanceArgs {
      */
     dryRun?: pulumi.Input<boolean>;
     /**
-     * The time when the database is switched after the instance is migrated, 
-     * or when the major version is upgraded, or when the instance class is upgraded. Valid values:
+     * The time when the database is switched after the instance is migrated, or when the major version is upgraded, or when the instance class is upgraded. Valid values:
      */
     effectiveTime?: pulumi.Input<string>;
     /**
@@ -945,10 +916,6 @@ export interface InstanceArgs {
      */
     maintainStartTime?: pulumi.Input<string>;
     /**
-     * The method of modifying the whitelist. Valid values: `0`, `1` and `2`. Default value: `0`. `0` means overwrites the original whitelist. `1` means adds the IP addresses to the whitelist. `2` means deletes the IP addresses from the whitelist.
-     */
-    modifyMode?: pulumi.Input<number>;
-    /**
      * "Field `nodeType` has been deprecated from version 1.120.1". This parameter is determined by the `instanceClass`.
      *
      * @deprecated Field 'node_type' has been deprecated from version 1.120.1
@@ -1010,7 +977,7 @@ export interface InstanceArgs {
      */
     secondaryZoneId?: pulumi.Input<string>;
     /**
-     * The ID of security groups.
+     * The ID of security groups. Separate multiple security group IDs with commas (,), such as `sg-***,sg-***,sg-***`.
      */
     securityGroupId?: pulumi.Input<string>;
     /**
@@ -1026,7 +993,7 @@ export interface InstanceArgs {
      */
     securityIps?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The number of data shards. This parameter is available only if you create a cluster instance that uses cloud disks. You can use this parameter to specify a custom number of data shards.
+     * The number of data shards. This parameter is available only if you create a cluster instance that uses cloud disks. You can use this parameter to specify a custom number of data shards. **NOTE:** From version 1.216.0, `shardCount` can be modified.
      */
     shardCount?: pulumi.Input<number>;
     /**
@@ -1044,7 +1011,7 @@ export interface InstanceArgs {
     tags?: pulumi.Input<{[key: string]: any}>;
     /**
      * Specifies whether to enable TDE. Valid values: `Enabled`.
-     * **NOTE:**: TDE cannot be disabled after it is enabled. Before you enable it, evaluate whether this feature affects
+     * **NOTE:**: TDE cannot be disabled after it is enabled. Before you enable it, evaluate whether this feature affects.
      * your business. For more information, see [Enable TDE](https://www.alibabacloud.com/help/en/redis/user-guide/enable-tde).
      */
     tdeStatus?: pulumi.Input<string>;

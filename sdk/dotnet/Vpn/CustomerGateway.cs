@@ -22,10 +22,14 @@ namespace Pulumi.AliCloud.Vpn
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var foo = new AliCloud.Vpn.CustomerGateway("foo", new()
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "terraform-example";
+    ///     var @default = new AliCloud.Vpn.CustomerGateway("default", new()
     ///     {
-    ///         Description = "vpnCgwDescriptionExample",
-    ///         IpAddress = "43.104.22.228",
+    ///         Description = name,
+    ///         IpAddress = "4.3.2.10",
+    ///         Asn = "1219002",
+    ///         CustomerGatewayName = name,
     ///     });
     /// 
     /// });
@@ -36,20 +40,32 @@ namespace Pulumi.AliCloud.Vpn
     /// VPN customer gateway can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:vpn/customerGateway:CustomerGateway example cgw-abc123456
+    ///  $ pulumi import alicloud:vpn/customerGateway:CustomerGateway example &lt;id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:vpn/customerGateway:CustomerGateway")]
     public partial class CustomerGateway : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The autonomous system number of the gateway device in the data center. The `asn` is a 4-byte number. You can enter the number in two segments and separate the first 16 bits from the following 16 bits with a period (.). Enter the number in each segment in the decimal format.
+        /// Asn.
         /// </summary>
         [Output("asn")]
         public Output<string?> Asn { get; private set; } = null!;
 
         /// <summary>
-        /// The description of the VPN customer gateway instance.
+        /// The time when the customer gateway was created.
+        /// </summary>
+        [Output("createTime")]
+        public Output<int> CreateTime { get; private set; } = null!;
+
+        /// <summary>
+        /// The name of the customer gateway.
+        /// </summary>
+        [Output("customerGatewayName")]
+        public Output<string> CustomerGatewayName { get; private set; } = null!;
+
+        /// <summary>
+        /// The description of the customer gateway.
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
@@ -61,10 +77,18 @@ namespace Pulumi.AliCloud.Vpn
         public Output<string> IpAddress { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the VPN customer gateway. Defaults to null.
+        /// . Field 'name' has been deprecated from provider version 1.216.0. New field 'customer_gateway_name' instead.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// tag.
+        /// 
+        /// The following arguments will be discarded. Please use new fields as soon as possible:
+        /// </summary>
+        [Output("tags")]
+        public Output<ImmutableDictionary<string, object>?> Tags { get; private set; } = null!;
 
 
         /// <summary>
@@ -113,13 +137,19 @@ namespace Pulumi.AliCloud.Vpn
     public sealed class CustomerGatewayArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The autonomous system number of the gateway device in the data center. The `asn` is a 4-byte number. You can enter the number in two segments and separate the first 16 bits from the following 16 bits with a period (.). Enter the number in each segment in the decimal format.
+        /// Asn.
         /// </summary>
         [Input("asn")]
         public Input<string>? Asn { get; set; }
 
         /// <summary>
-        /// The description of the VPN customer gateway instance.
+        /// The name of the customer gateway.
+        /// </summary>
+        [Input("customerGatewayName")]
+        public Input<string>? CustomerGatewayName { get; set; }
+
+        /// <summary>
+        /// The description of the customer gateway.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -131,10 +161,24 @@ namespace Pulumi.AliCloud.Vpn
         public Input<string> IpAddress { get; set; } = null!;
 
         /// <summary>
-        /// The name of the VPN customer gateway. Defaults to null.
+        /// . Field 'name' has been deprecated from provider version 1.216.0. New field 'customer_gateway_name' instead.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        [Input("tags")]
+        private InputMap<object>? _tags;
+
+        /// <summary>
+        /// tag.
+        /// 
+        /// The following arguments will be discarded. Please use new fields as soon as possible:
+        /// </summary>
+        public InputMap<object> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<object>());
+            set => _tags = value;
+        }
 
         public CustomerGatewayArgs()
         {
@@ -145,13 +189,25 @@ namespace Pulumi.AliCloud.Vpn
     public sealed class CustomerGatewayState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The autonomous system number of the gateway device in the data center. The `asn` is a 4-byte number. You can enter the number in two segments and separate the first 16 bits from the following 16 bits with a period (.). Enter the number in each segment in the decimal format.
+        /// Asn.
         /// </summary>
         [Input("asn")]
         public Input<string>? Asn { get; set; }
 
         /// <summary>
-        /// The description of the VPN customer gateway instance.
+        /// The time when the customer gateway was created.
+        /// </summary>
+        [Input("createTime")]
+        public Input<int>? CreateTime { get; set; }
+
+        /// <summary>
+        /// The name of the customer gateway.
+        /// </summary>
+        [Input("customerGatewayName")]
+        public Input<string>? CustomerGatewayName { get; set; }
+
+        /// <summary>
+        /// The description of the customer gateway.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -163,10 +219,24 @@ namespace Pulumi.AliCloud.Vpn
         public Input<string>? IpAddress { get; set; }
 
         /// <summary>
-        /// The name of the VPN customer gateway. Defaults to null.
+        /// . Field 'name' has been deprecated from provider version 1.216.0. New field 'customer_gateway_name' instead.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        [Input("tags")]
+        private InputMap<object>? _tags;
+
+        /// <summary>
+        /// tag.
+        /// 
+        /// The following arguments will be discarded. Please use new fields as soon as possible:
+        /// </summary>
+        public InputMap<object> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<object>());
+            set => _tags = value;
+        }
 
         public CustomerGatewayState()
         {

@@ -5,6 +5,7 @@ package com.pulumi.alicloud.ens.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import java.lang.Integer;
+import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -12,14 +13,34 @@ import javax.annotation.Nullable;
 @CustomType
 public final class InstanceSystemDisk {
     /**
-     * @return System disk size, cloud_efficiency is 20-32000,cloud_ssd/local_hdd/local_ssd is 20-25000, unit: GB.
+     * @return System disk type. Optional values:
+     * - cloud_efficiency: Ultra cloud disk
+     * - cloud_ssd: Full Flash cloud disk
+     * - local_hdd: local hdd disk
+     * - local_ssd: local disk ssd.
+     * 
+     */
+    private @Nullable String category;
+    /**
+     * @return System disk size, unit: GB.
      * 
      */
     private @Nullable Integer size;
 
     private InstanceSystemDisk() {}
     /**
-     * @return System disk size, cloud_efficiency is 20-32000,cloud_ssd/local_hdd/local_ssd is 20-25000, unit: GB.
+     * @return System disk type. Optional values:
+     * - cloud_efficiency: Ultra cloud disk
+     * - cloud_ssd: Full Flash cloud disk
+     * - local_hdd: local hdd disk
+     * - local_ssd: local disk ssd.
+     * 
+     */
+    public Optional<String> category() {
+        return Optional.ofNullable(this.category);
+    }
+    /**
+     * @return System disk size, unit: GB.
      * 
      */
     public Optional<Integer> size() {
@@ -35,13 +56,21 @@ public final class InstanceSystemDisk {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable String category;
         private @Nullable Integer size;
         public Builder() {}
         public Builder(InstanceSystemDisk defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.category = defaults.category;
     	      this.size = defaults.size;
         }
 
+        @CustomType.Setter
+        public Builder category(@Nullable String category) {
+
+            this.category = category;
+            return this;
+        }
         @CustomType.Setter
         public Builder size(@Nullable Integer size) {
 
@@ -50,6 +79,7 @@ public final class InstanceSystemDisk {
         }
         public InstanceSystemDisk build() {
             final var _resultValue = new InstanceSystemDisk();
+            _resultValue.category = category;
             _resultValue.size = size;
             return _resultValue;
         }

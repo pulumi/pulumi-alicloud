@@ -18,6 +18,12 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * Provides a KMS Instance resource.
+ * 
+ * For information about KMS Instance and how to use it, see [What is Instance](https://www.alibabacloud.com/help/zh/key-management-service/latest/kms-instance-management).
+ * 
+ * &gt; **NOTE:** Available since v1.210.0.
+ * 
  * ## Import
  * 
  * KMS Instance can be imported using the id, e.g.
@@ -100,14 +106,56 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.keyNum;
     }
     /**
-     * KMS Instance commodity type (software/hardware). Currently, only version 3 is supported.
+     * Instance Audit Log Switch.
+     * 
+     */
+    @Export(name="log", refs={String.class}, tree="[0]")
+    private Output<String> log;
+
+    /**
+     * @return Instance Audit Log Switch.
+     * 
+     */
+    public Output<String> log() {
+        return this.log;
+    }
+    /**
+     * Instance log capacity.
+     * 
+     */
+    @Export(name="logStorage", refs={Integer.class}, tree="[0]")
+    private Output<Integer> logStorage;
+
+    /**
+     * @return Instance log capacity.
+     * 
+     */
+    public Output<Integer> logStorage() {
+        return this.logStorage;
+    }
+    /**
+     * Purchase cycle, in months.
+     * 
+     */
+    @Export(name="period", refs={Integer.class}, tree="[0]")
+    private Output</* @Nullable */ Integer> period;
+
+    /**
+     * @return Purchase cycle, in months.
+     * 
+     */
+    public Output<Optional<Integer>> period() {
+        return Codegen.optional(this.period);
+    }
+    /**
+     * KMS Instance commodity type (software/hardware).
      * 
      */
     @Export(name="productVersion", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> productVersion;
 
     /**
-     * @return KMS Instance commodity type (software/hardware). Currently, only version 3 is supported.
+     * @return KMS Instance commodity type (software/hardware).
      * 
      */
     public Output<Optional<String>> productVersion() {

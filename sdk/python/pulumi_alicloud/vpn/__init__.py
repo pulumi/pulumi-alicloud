@@ -14,6 +14,7 @@ from .get_connections import *
 from .get_customer_gateways import *
 from .get_gateway_vco_routes import *
 from .get_gateway_vpn_attachments import *
+from .get_gateway_zones import *
 from .get_gateways import *
 from .ipsec_server import *
 from .pbr_route_entry import *

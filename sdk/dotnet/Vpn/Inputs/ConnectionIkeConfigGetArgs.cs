@@ -13,55 +13,55 @@ namespace Pulumi.AliCloud.Vpn.Inputs
     public sealed class ConnectionIkeConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The authentication algorithm of phase-one negotiation. Valid value: md5 | sha1 . Default value: md5
+        /// IKE auth Algorithm.
         /// </summary>
         [Input("ikeAuthAlg")]
         public Input<string>? IkeAuthAlg { get; set; }
 
         /// <summary>
-        /// The encryption algorithm of phase-one negotiation. Valid value: aes | aes192 | aes256 | des | 3des. Default Valid value: aes
+        /// IKE encript algorithm.
         /// </summary>
         [Input("ikeEncAlg")]
         public Input<string>? IkeEncAlg { get; set; }
 
         /// <summary>
-        /// The SA lifecycle as the result of phase-one negotiation. The valid value of n is [0, 86400], the unit is second and the default value is 86400.
+        /// IKE lifetime.
         /// </summary>
         [Input("ikeLifetime")]
         public Input<int>? IkeLifetime { get; set; }
 
         /// <summary>
-        /// The identification of the VPN gateway.
+        /// The local ID, which supports the FQDN and IP formats, and defaults to the IP address of the selected VPN gateway.
         /// </summary>
         [Input("ikeLocalId")]
         public Input<string>? IkeLocalId { get; set; }
 
         /// <summary>
-        /// The negotiation mode of IKE V1. Valid value: main (main mode) | aggressive (aggressive mode). Default value: main
+        /// IKE mode, supports main and aggressive mode. The main mode is highly secure. If NAT traversal is enabled, we recommend that you use the aggressive mode.
         /// </summary>
         [Input("ikeMode")]
         public Input<string>? IkeMode { get; set; }
 
         /// <summary>
-        /// The Diffie-Hellman key exchange algorithm used by phase-one negotiation. Valid value: group1 | group2 | group5 | group14 | group24. Default value: group2
+        /// DH group.
         /// </summary>
         [Input("ikePfs")]
         public Input<string>? IkePfs { get; set; }
 
         /// <summary>
-        /// The identification of the customer gateway.
+        /// The peer ID. The FQDN and IP address formats are supported. The default value is the IP address of the selected customer gateway.
         /// </summary>
         [Input("ikeRemoteId")]
         public Input<string>? IkeRemoteId { get; set; }
 
         /// <summary>
-        /// The version of the IKE protocol. Valid value: ikev1 | ikev2. Default value: ikev1
+        /// IKE version.
         /// </summary>
         [Input("ikeVersion")]
         public Input<string>? IkeVersion { get; set; }
 
         /// <summary>
-        /// Used for authentication between the IPsec VPN gateway and the customer gateway.
+        /// Preshared secret key.
         /// </summary>
         [Input("psk")]
         public Input<string>? Psk { get; set; }

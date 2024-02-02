@@ -111,16 +111,20 @@ class WafPolicyDomainAttachment(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
         config = pulumi.Config()
+        domain_name = config.get("domainName")
+        if domain_name is None:
+            domain_name = "tf-example.com"
         name = config.get("name")
         if name is None:
             name = "tf_example"
-        domain_name = config.get("domainName")
-        if domain_name is None:
-            domain_name = "example.com"
+        default = random.RandomInteger("default",
+            min=10000,
+            max=99999)
         example_domain = alicloud.dcdn.Domain("exampleDomain",
-            domain_name=domain_name,
+            domain_name=default.result.apply(lambda result: f"{domain_name}-{result}"),
             scope="overseas",
             sources=[alicloud.dcdn.DomainSourceArgs(
                 content="1.1.1.1",
@@ -134,7 +138,7 @@ class WafPolicyDomainAttachment(pulumi.CustomResource):
             client_ip_tag="X-Forwarded-For")
         example_waf_policy = alicloud.dcdn.WafPolicy("exampleWafPolicy",
             defense_scene="waf_group",
-            policy_name=name,
+            policy_name=default.result.apply(lambda result: f"{name}_{result}"),
             policy_type="custom",
             status="on")
         example_waf_policy_domain_attachment = alicloud.dcdn.WafPolicyDomainAttachment("exampleWafPolicyDomainAttachment",
@@ -175,16 +179,20 @@ class WafPolicyDomainAttachment(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
         config = pulumi.Config()
+        domain_name = config.get("domainName")
+        if domain_name is None:
+            domain_name = "tf-example.com"
         name = config.get("name")
         if name is None:
             name = "tf_example"
-        domain_name = config.get("domainName")
-        if domain_name is None:
-            domain_name = "example.com"
+        default = random.RandomInteger("default",
+            min=10000,
+            max=99999)
         example_domain = alicloud.dcdn.Domain("exampleDomain",
-            domain_name=domain_name,
+            domain_name=default.result.apply(lambda result: f"{domain_name}-{result}"),
             scope="overseas",
             sources=[alicloud.dcdn.DomainSourceArgs(
                 content="1.1.1.1",
@@ -198,7 +206,7 @@ class WafPolicyDomainAttachment(pulumi.CustomResource):
             client_ip_tag="X-Forwarded-For")
         example_waf_policy = alicloud.dcdn.WafPolicy("exampleWafPolicy",
             defense_scene="waf_group",
-            policy_name=name,
+            policy_name=default.result.apply(lambda result: f"{name}_{result}"),
             policy_type="custom",
             status="on")
         example_waf_policy_domain_attachment = alicloud.dcdn.WafPolicyDomainAttachment("exampleWafPolicyDomainAttachment",

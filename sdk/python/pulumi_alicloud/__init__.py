@@ -3491,6 +3491,14 @@ _utilities.register(
  },
  {
   "pkg": "alicloud",
+  "mod": "ens/diskInstanceAttachment",
+  "fqn": "pulumi_alicloud.ens",
+  "classes": {
+   "alicloud:ens/diskInstanceAttachment:DiskInstanceAttachment": "DiskInstanceAttachment"
+  }
+ },
+ {
+  "pkg": "alicloud",
   "mod": "ens/eip",
   "fqn": "pulumi_alicloud.ens",
   "classes": {
@@ -3499,10 +3507,26 @@ _utilities.register(
  },
  {
   "pkg": "alicloud",
+  "mod": "ens/image",
+  "fqn": "pulumi_alicloud.ens",
+  "classes": {
+   "alicloud:ens/image:Image": "Image"
+  }
+ },
+ {
+  "pkg": "alicloud",
   "mod": "ens/instance",
   "fqn": "pulumi_alicloud.ens",
   "classes": {
    "alicloud:ens/instance:Instance": "Instance"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "ens/instanceSecurityGroupAttachment",
+  "fqn": "pulumi_alicloud.ens",
+  "classes": {
+   "alicloud:ens/instanceSecurityGroupAttachment:InstanceSecurityGroupAttachment": "InstanceSecurityGroupAttachment"
   }
  },
  {
@@ -6511,6 +6535,14 @@ _utilities.register(
   "fqn": "pulumi_alicloud.vpc",
   "classes": {
    "alicloud:vpc/ipv4Gateway:Ipv4Gateway": "Ipv4Gateway"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "vpc/ipv6Address",
+  "fqn": "pulumi_alicloud.vpc",
+  "classes": {
+   "alicloud:vpc/ipv6Address:Ipv6Address": "Ipv6Address"
   }
  },
  {

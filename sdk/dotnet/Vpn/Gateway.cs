@@ -15,7 +15,7 @@ namespace Pulumi.AliCloud.Vpn
     /// VPN gateway can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:vpn/gateway:Gateway example vpn-abc123456
+    ///  $ pulumi import alicloud:vpn/gateway:Gateway example &lt;id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:vpn/gateway:Gateway")]
@@ -28,11 +28,14 @@ namespace Pulumi.AliCloud.Vpn
         public Output<bool?> AutoPay { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies whether to automatically advertise BGP routes to the virtual private cloud (VPC). Valid values:
+        /// Whether to automatically propagate the BGP route to the VPC. Value:  true: Propagate automatically.  false: does not propagate automatically.
         /// </summary>
         [Output("autoPropagate")]
         public Output<bool?> AutoPropagate { get; private set; } = null!;
 
+        /// <summary>
+        /// The Bandwidth specification of the VPN gateway. Unit: Mbps.  If you want to create a public VPN gateway, the value is 5, 10, 20, 50, 100, 200, 500, or 1000. If you want to create a private VPN gateway, the value is 200 or 1000.
+        /// </summary>
         [Output("bandwidth")]
         public Output<int> Bandwidth { get; private set; } = null!;
 
@@ -43,10 +46,22 @@ namespace Pulumi.AliCloud.Vpn
         public Output<string> BusinessStatus { get; private set; } = null!;
 
         /// <summary>
-        /// The description of the VPN instance.
+        /// The time when the VPN gateway was created.
+        /// </summary>
+        [Output("createTime")]
+        public Output<int> CreateTime { get; private set; } = null!;
+
+        /// <summary>
+        /// The description of the VPN gateway.
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
+
+        /// <summary>
+        /// The ID of the backup VSwitch to which the VPN gateway is attached.
+        /// </summary>
+        [Output("disasterRecoveryVswitchId")]
+        public Output<string> DisasterRecoveryVswitchId { get; private set; } = null!;
 
         /// <summary>
         /// Enable or Disable IPSec VPN. At least one type of VPN should be enabled.
@@ -56,16 +71,17 @@ namespace Pulumi.AliCloud.Vpn
 
         /// <summary>
         /// Enable or Disable SSL VPN.  At least one type of VPN should be enabled.
+        /// 
+        /// The following arguments will be discarded. Please use new fields as soon as possible:
         /// </summary>
         [Output("enableSsl")]
         public Output<bool?> EnableSsl { get; private set; } = null!;
 
         /// <summary>
-        /// The charge type for instance. If it is an international site account, the valid value is PostPaid, otherwise PrePaid. 
-        /// Default to PostPaid.
+        /// . Field 'instance_charge_type' has been deprecated from provider version 1.216.0. New field 'payment_type' instead.
         /// </summary>
         [Output("instanceChargeType")]
-        public Output<string?> InstanceChargeType { get; private set; } = null!;
+        public Output<string> InstanceChargeType { get; private set; } = null!;
 
         /// <summary>
         /// The internet ip of the VPN.
@@ -74,20 +90,22 @@ namespace Pulumi.AliCloud.Vpn
         public Output<string> InternetIp { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the VPN. Defaults to null.
+        /// . Field 'name' has been deprecated from provider version 1.216.0. New field 'vpn_gateway_name' instead.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The network type of the VPN gateway. Value:
-        /// - public (default): Public VPN gateway.
-        /// - private: Private VPN gateway.
-        /// 
-        /// &gt; **NOTE:** Private VPN gateway can only be purchased by white list users, and the bandwidth only supports 200M or 1000M; In addition, SSL is not supported.
+        /// The network type of the VPN gateway. Value:  public (default): public VPN gateway. private: private network VPN gateway.
         /// </summary>
         [Output("networkType")]
         public Output<string> NetworkType { get; private set; } = null!;
+
+        /// <summary>
+        /// Type of payment. Value: Subscription: prepaid PayAsYouGo: Post-paid.
+        /// </summary>
+        [Output("paymentType")]
+        public Output<string> PaymentType { get; private set; } = null!;
 
         /// <summary>
         /// The filed is only required while the InstanceChargeType is PrePaid. Valid values: [1-9, 12, 24, 36]. Default to 1.
@@ -96,32 +114,49 @@ namespace Pulumi.AliCloud.Vpn
         public Output<int?> Period { get; private set; } = null!;
 
         /// <summary>
-        /// The max connections of SSL VPN. Default to 5. The number of connections supported by each account is different. 
-        /// This field is ignored when enable_ssl is false.
+        /// The ID of the resource group.
         /// </summary>
-        [Output("sslConnections")]
-        public Output<int?> SslConnections { get; private set; } = null!;
+        [Output("resourceGroupId")]
+        public Output<string> ResourceGroupId { get; private set; } = null!;
 
         /// <summary>
-        /// The status of the VPN gateway.
+        /// Maximum number of clients.
+        /// </summary>
+        [Output("sslConnections")]
+        public Output<int> SslConnections { get; private set; } = null!;
+
+        /// <summary>
+        /// The status of the resource.
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
-        /// The tags of VPN gateway.
+        /// The Tag of.
         /// </summary>
         [Output("tags")]
         public Output<ImmutableDictionary<string, object>?> Tags { get; private set; } = null!;
 
         /// <summary>
-        /// The VPN belongs the vpc_id, the field can't be changed.
+        /// The ID of the VPC to which the VPN gateway belongs.
         /// </summary>
         [Output("vpcId")]
         public Output<string> VpcId { get; private set; } = null!;
 
         /// <summary>
-        /// The VPN belongs the vswitch_id, the field can't be changed.
+        /// The name of the VPN gateway.
+        /// </summary>
+        [Output("vpnGatewayName")]
+        public Output<string> VpnGatewayName { get; private set; } = null!;
+
+        /// <summary>
+        /// The VPN gateway type. Value:  Normal (default): Normal type. NationalStandard: National Secret type.
+        /// </summary>
+        [Output("vpnType")]
+        public Output<string> VpnType { get; private set; } = null!;
+
+        /// <summary>
+        /// The ID of the VSwitch to which the VPN gateway is attached.
         /// </summary>
         [Output("vswitchId")]
         public Output<string> VswitchId { get; private set; } = null!;
@@ -179,19 +214,28 @@ namespace Pulumi.AliCloud.Vpn
         public Input<bool>? AutoPay { get; set; }
 
         /// <summary>
-        /// Specifies whether to automatically advertise BGP routes to the virtual private cloud (VPC). Valid values:
+        /// Whether to automatically propagate the BGP route to the VPC. Value:  true: Propagate automatically.  false: does not propagate automatically.
         /// </summary>
         [Input("autoPropagate")]
         public Input<bool>? AutoPropagate { get; set; }
 
+        /// <summary>
+        /// The Bandwidth specification of the VPN gateway. Unit: Mbps.  If you want to create a public VPN gateway, the value is 5, 10, 20, 50, 100, 200, 500, or 1000. If you want to create a private VPN gateway, the value is 200 or 1000.
+        /// </summary>
         [Input("bandwidth", required: true)]
         public Input<int> Bandwidth { get; set; } = null!;
 
         /// <summary>
-        /// The description of the VPN instance.
+        /// The description of the VPN gateway.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
+
+        /// <summary>
+        /// The ID of the backup VSwitch to which the VPN gateway is attached.
+        /// </summary>
+        [Input("disasterRecoveryVswitchId")]
+        public Input<string>? DisasterRecoveryVswitchId { get; set; }
 
         /// <summary>
         /// Enable or Disable IPSec VPN. At least one type of VPN should be enabled.
@@ -201,32 +245,35 @@ namespace Pulumi.AliCloud.Vpn
 
         /// <summary>
         /// Enable or Disable SSL VPN.  At least one type of VPN should be enabled.
+        /// 
+        /// The following arguments will be discarded. Please use new fields as soon as possible:
         /// </summary>
         [Input("enableSsl")]
         public Input<bool>? EnableSsl { get; set; }
 
         /// <summary>
-        /// The charge type for instance. If it is an international site account, the valid value is PostPaid, otherwise PrePaid. 
-        /// Default to PostPaid.
+        /// . Field 'instance_charge_type' has been deprecated from provider version 1.216.0. New field 'payment_type' instead.
         /// </summary>
         [Input("instanceChargeType")]
         public Input<string>? InstanceChargeType { get; set; }
 
         /// <summary>
-        /// The name of the VPN. Defaults to null.
+        /// . Field 'name' has been deprecated from provider version 1.216.0. New field 'vpn_gateway_name' instead.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The network type of the VPN gateway. Value:
-        /// - public (default): Public VPN gateway.
-        /// - private: Private VPN gateway.
-        /// 
-        /// &gt; **NOTE:** Private VPN gateway can only be purchased by white list users, and the bandwidth only supports 200M or 1000M; In addition, SSL is not supported.
+        /// The network type of the VPN gateway. Value:  public (default): public VPN gateway. private: private network VPN gateway.
         /// </summary>
         [Input("networkType")]
         public Input<string>? NetworkType { get; set; }
+
+        /// <summary>
+        /// Type of payment. Value: Subscription: prepaid PayAsYouGo: Post-paid.
+        /// </summary>
+        [Input("paymentType")]
+        public Input<string>? PaymentType { get; set; }
 
         /// <summary>
         /// The filed is only required while the InstanceChargeType is PrePaid. Valid values: [1-9, 12, 24, 36]. Default to 1.
@@ -235,8 +282,13 @@ namespace Pulumi.AliCloud.Vpn
         public Input<int>? Period { get; set; }
 
         /// <summary>
-        /// The max connections of SSL VPN. Default to 5. The number of connections supported by each account is different. 
-        /// This field is ignored when enable_ssl is false.
+        /// The ID of the resource group.
+        /// </summary>
+        [Input("resourceGroupId")]
+        public Input<string>? ResourceGroupId { get; set; }
+
+        /// <summary>
+        /// Maximum number of clients.
         /// </summary>
         [Input("sslConnections")]
         public Input<int>? SslConnections { get; set; }
@@ -245,7 +297,7 @@ namespace Pulumi.AliCloud.Vpn
         private InputMap<object>? _tags;
 
         /// <summary>
-        /// The tags of VPN gateway.
+        /// The Tag of.
         /// </summary>
         public InputMap<object> Tags
         {
@@ -254,13 +306,25 @@ namespace Pulumi.AliCloud.Vpn
         }
 
         /// <summary>
-        /// The VPN belongs the vpc_id, the field can't be changed.
+        /// The ID of the VPC to which the VPN gateway belongs.
         /// </summary>
         [Input("vpcId", required: true)]
         public Input<string> VpcId { get; set; } = null!;
 
         /// <summary>
-        /// The VPN belongs the vswitch_id, the field can't be changed.
+        /// The name of the VPN gateway.
+        /// </summary>
+        [Input("vpnGatewayName")]
+        public Input<string>? VpnGatewayName { get; set; }
+
+        /// <summary>
+        /// The VPN gateway type. Value:  Normal (default): Normal type. NationalStandard: National Secret type.
+        /// </summary>
+        [Input("vpnType")]
+        public Input<string>? VpnType { get; set; }
+
+        /// <summary>
+        /// The ID of the VSwitch to which the VPN gateway is attached.
         /// </summary>
         [Input("vswitchId")]
         public Input<string>? VswitchId { get; set; }
@@ -280,11 +344,14 @@ namespace Pulumi.AliCloud.Vpn
         public Input<bool>? AutoPay { get; set; }
 
         /// <summary>
-        /// Specifies whether to automatically advertise BGP routes to the virtual private cloud (VPC). Valid values:
+        /// Whether to automatically propagate the BGP route to the VPC. Value:  true: Propagate automatically.  false: does not propagate automatically.
         /// </summary>
         [Input("autoPropagate")]
         public Input<bool>? AutoPropagate { get; set; }
 
+        /// <summary>
+        /// The Bandwidth specification of the VPN gateway. Unit: Mbps.  If you want to create a public VPN gateway, the value is 5, 10, 20, 50, 100, 200, 500, or 1000. If you want to create a private VPN gateway, the value is 200 or 1000.
+        /// </summary>
         [Input("bandwidth")]
         public Input<int>? Bandwidth { get; set; }
 
@@ -295,10 +362,22 @@ namespace Pulumi.AliCloud.Vpn
         public Input<string>? BusinessStatus { get; set; }
 
         /// <summary>
-        /// The description of the VPN instance.
+        /// The time when the VPN gateway was created.
+        /// </summary>
+        [Input("createTime")]
+        public Input<int>? CreateTime { get; set; }
+
+        /// <summary>
+        /// The description of the VPN gateway.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
+
+        /// <summary>
+        /// The ID of the backup VSwitch to which the VPN gateway is attached.
+        /// </summary>
+        [Input("disasterRecoveryVswitchId")]
+        public Input<string>? DisasterRecoveryVswitchId { get; set; }
 
         /// <summary>
         /// Enable or Disable IPSec VPN. At least one type of VPN should be enabled.
@@ -308,13 +387,14 @@ namespace Pulumi.AliCloud.Vpn
 
         /// <summary>
         /// Enable or Disable SSL VPN.  At least one type of VPN should be enabled.
+        /// 
+        /// The following arguments will be discarded. Please use new fields as soon as possible:
         /// </summary>
         [Input("enableSsl")]
         public Input<bool>? EnableSsl { get; set; }
 
         /// <summary>
-        /// The charge type for instance. If it is an international site account, the valid value is PostPaid, otherwise PrePaid. 
-        /// Default to PostPaid.
+        /// . Field 'instance_charge_type' has been deprecated from provider version 1.216.0. New field 'payment_type' instead.
         /// </summary>
         [Input("instanceChargeType")]
         public Input<string>? InstanceChargeType { get; set; }
@@ -326,20 +406,22 @@ namespace Pulumi.AliCloud.Vpn
         public Input<string>? InternetIp { get; set; }
 
         /// <summary>
-        /// The name of the VPN. Defaults to null.
+        /// . Field 'name' has been deprecated from provider version 1.216.0. New field 'vpn_gateway_name' instead.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The network type of the VPN gateway. Value:
-        /// - public (default): Public VPN gateway.
-        /// - private: Private VPN gateway.
-        /// 
-        /// &gt; **NOTE:** Private VPN gateway can only be purchased by white list users, and the bandwidth only supports 200M or 1000M; In addition, SSL is not supported.
+        /// The network type of the VPN gateway. Value:  public (default): public VPN gateway. private: private network VPN gateway.
         /// </summary>
         [Input("networkType")]
         public Input<string>? NetworkType { get; set; }
+
+        /// <summary>
+        /// Type of payment. Value: Subscription: prepaid PayAsYouGo: Post-paid.
+        /// </summary>
+        [Input("paymentType")]
+        public Input<string>? PaymentType { get; set; }
 
         /// <summary>
         /// The filed is only required while the InstanceChargeType is PrePaid. Valid values: [1-9, 12, 24, 36]. Default to 1.
@@ -348,14 +430,19 @@ namespace Pulumi.AliCloud.Vpn
         public Input<int>? Period { get; set; }
 
         /// <summary>
-        /// The max connections of SSL VPN. Default to 5. The number of connections supported by each account is different. 
-        /// This field is ignored when enable_ssl is false.
+        /// The ID of the resource group.
+        /// </summary>
+        [Input("resourceGroupId")]
+        public Input<string>? ResourceGroupId { get; set; }
+
+        /// <summary>
+        /// Maximum number of clients.
         /// </summary>
         [Input("sslConnections")]
         public Input<int>? SslConnections { get; set; }
 
         /// <summary>
-        /// The status of the VPN gateway.
+        /// The status of the resource.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
@@ -364,7 +451,7 @@ namespace Pulumi.AliCloud.Vpn
         private InputMap<object>? _tags;
 
         /// <summary>
-        /// The tags of VPN gateway.
+        /// The Tag of.
         /// </summary>
         public InputMap<object> Tags
         {
@@ -373,13 +460,25 @@ namespace Pulumi.AliCloud.Vpn
         }
 
         /// <summary>
-        /// The VPN belongs the vpc_id, the field can't be changed.
+        /// The ID of the VPC to which the VPN gateway belongs.
         /// </summary>
         [Input("vpcId")]
         public Input<string>? VpcId { get; set; }
 
         /// <summary>
-        /// The VPN belongs the vswitch_id, the field can't be changed.
+        /// The name of the VPN gateway.
+        /// </summary>
+        [Input("vpnGatewayName")]
+        public Input<string>? VpnGatewayName { get; set; }
+
+        /// <summary>
+        /// The VPN gateway type. Value:  Normal (default): Normal type. NationalStandard: National Secret type.
+        /// </summary>
+        [Input("vpnType")]
+        public Input<string>? VpnType { get; set; }
+
+        /// <summary>
+        /// The ID of the VSwitch to which the VPN gateway is attached.
         /// </summary>
         [Input("vswitchId")]
         public Input<string>? VswitchId { get; set; }

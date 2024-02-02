@@ -18,9 +18,15 @@ import * as utilities from "../utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
+ * import * as random from "@pulumi/random";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "terraform-example";
+ * const defaultRandomInteger = new random.RandomInteger("defaultRandomInteger", {
+ *     min: 10000,
+ *     max: 99999,
+ * });
+ * const myName = pulumi.interpolate`${name}-${defaultRandomInteger.result}`;
  * const defaultZones = alicloud.getZones({
  *     availableDiskCategory: "cloud_efficiency",
  *     availableResourceCreation: "VSwitch",
@@ -36,14 +42,14 @@ import * as utilities from "../utilities";
  *     owners: "system",
  * });
  * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {
- *     vpcName: name,
+ *     vpcName: myName,
  *     cidrBlock: "172.16.0.0/16",
  * });
  * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
  *     vpcId: defaultNetwork.id,
  *     cidrBlock: "172.16.0.0/24",
  *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
- *     vswitchName: name,
+ *     vswitchName: myName,
  * });
  * const defaultSecurityGroup = new alicloud.ecs.SecurityGroup("defaultSecurityGroup", {vpcId: defaultNetwork.id});
  * const defaultSecurityGroupRule = new alicloud.ecs.SecurityGroupRule("defaultSecurityGroupRule", {
@@ -59,7 +65,7 @@ import * as utilities from "../utilities";
  * const defaultScalingGroup = new alicloud.ess.ScalingGroup("defaultScalingGroup", {
  *     minSize: 1,
  *     maxSize: 1,
- *     scalingGroupName: name,
+ *     scalingGroupName: myName,
  *     removalPolicies: [
  *         "OldestInstance",
  *         "NewestInstance",
@@ -166,6 +172,10 @@ export class ScalingConfiguration extends pulumi.CustomResource {
      * Resource type of an ECS instance.
      */
     public readonly instanceType!: pulumi.Output<string | undefined>;
+    /**
+     * specify the weight of instance type.  See `instanceTypeOverride` below for details.
+     */
+    public readonly instanceTypeOverrides!: pulumi.Output<outputs.ess.ScalingConfigurationInstanceTypeOverride[] | undefined>;
     /**
      * Resource types of an ECS instance.
      */
@@ -330,6 +340,7 @@ export class ScalingConfiguration extends pulumi.CustomResource {
             resourceInputs["instanceName"] = state ? state.instanceName : undefined;
             resourceInputs["instancePatternInfos"] = state ? state.instancePatternInfos : undefined;
             resourceInputs["instanceType"] = state ? state.instanceType : undefined;
+            resourceInputs["instanceTypeOverrides"] = state ? state.instanceTypeOverrides : undefined;
             resourceInputs["instanceTypes"] = state ? state.instanceTypes : undefined;
             resourceInputs["internetChargeType"] = state ? state.internetChargeType : undefined;
             resourceInputs["internetMaxBandwidthIn"] = state ? state.internetMaxBandwidthIn : undefined;
@@ -377,6 +388,7 @@ export class ScalingConfiguration extends pulumi.CustomResource {
             resourceInputs["instanceName"] = args ? args.instanceName : undefined;
             resourceInputs["instancePatternInfos"] = args ? args.instancePatternInfos : undefined;
             resourceInputs["instanceType"] = args ? args.instanceType : undefined;
+            resourceInputs["instanceTypeOverrides"] = args ? args.instanceTypeOverrides : undefined;
             resourceInputs["instanceTypes"] = args ? args.instanceTypes : undefined;
             resourceInputs["internetChargeType"] = args ? args.internetChargeType : undefined;
             resourceInputs["internetMaxBandwidthIn"] = args ? args.internetMaxBandwidthIn : undefined;
@@ -467,6 +479,10 @@ export interface ScalingConfigurationState {
      * Resource type of an ECS instance.
      */
     instanceType?: pulumi.Input<string>;
+    /**
+     * specify the weight of instance type.  See `instanceTypeOverride` below for details.
+     */
+    instanceTypeOverrides?: pulumi.Input<pulumi.Input<inputs.ess.ScalingConfigurationInstanceTypeOverride>[]>;
     /**
      * Resource types of an ECS instance.
      */
@@ -661,6 +677,10 @@ export interface ScalingConfigurationArgs {
      * Resource type of an ECS instance.
      */
     instanceType?: pulumi.Input<string>;
+    /**
+     * specify the weight of instance type.  See `instanceTypeOverride` below for details.
+     */
+    instanceTypeOverrides?: pulumi.Input<pulumi.Input<inputs.ess.ScalingConfigurationInstanceTypeOverride>[]>;
     /**
      * Resource types of an ECS instance.
      */

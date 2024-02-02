@@ -12,8 +12,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// This resource provides a alarm rule resource and it can be used to monitor several cloud services according different metrics.
-// Details for [What is alarm](https://www.alibabacloud.com/help/en/cloudmonitor/latest/putresourcemetricrule).
+// Provides a Cloud Monitor Service Alarm resource.
+//
+// For information about Cloud Monitor Service Alarm and how to use it, see [What is Alarm](https://www.alibabacloud.com/help/en/cloudmonitor/latest/putresourcemetricrule).
 //
 // > **NOTE:** Available since v1.9.1.
 //
@@ -44,13 +45,6 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			defaultImages, err := ecs.GetImages(ctx, &ecs.GetImagesArgs{
-//				NameRegex: pulumi.StringRef("^ubuntu_[0-9]+_[0-9]+_x64*"),
-//				Owners:    pulumi.StringRef("system"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
 //			defaultZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
 //				AvailableResourceCreation: pulumi.StringRef("Instance"),
 //			}, nil)
@@ -61,6 +55,13 @@ import (
 //				AvailabilityZone: pulumi.StringRef(defaultZones.Zones[0].Id),
 //				CpuCoreCount:     pulumi.IntRef(1),
 //				MemorySize:       pulumi.Float64Ref(2),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultImages, err := ecs.GetImages(ctx, &ecs.GetImagesArgs{
+//				NameRegex: pulumi.StringRef("^ubuntu_[0-9]+_[0-9]+_x64*"),
+//				Owners:    pulumi.StringRef("system"),
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -109,8 +110,21 @@ import (
 //			_, err = cms.NewAlarm(ctx, "defaultAlarm", &cms.AlarmArgs{
 //				Project: pulumi.String("acs_ecs_dashboard"),
 //				Metric:  pulumi.String("disk_writebytes"),
+//				Period:  pulumi.Int(900),
+//				ContactGroups: pulumi.StringArray{
+//					defaultAlarmContactGroup.AlarmContactGroupName,
+//				},
+//				EffectiveInterval: pulumi.String("06:00-20:00"),
 //				MetricDimensions: defaultInstance.ID().ApplyT(func(id string) (string, error) {
-//					return fmt.Sprintf("[{\"instanceId\":\"%v\",\"device\":\"/dev/vda1\"}]", id), nil
+//					return fmt.Sprintf(`  [
+//	    {
+//	      "instanceId": "%v",
+//	      "device": "/dev/vda1"
+//	    }
+//	  ]
+//
+// `, id), nil
+//
 //				}).(pulumi.StringOutput),
 //				EscalationsCritical: &cms.AlarmEscalationsCriticalArgs{
 //					Statistics:         pulumi.String("Average"),
@@ -118,11 +132,6 @@ import (
 //					Threshold:          pulumi.String("35"),
 //					Times:              pulumi.Int(2),
 //				},
-//				Period: pulumi.Int(900),
-//				ContactGroups: pulumi.StringArray{
-//					defaultAlarmContactGroup.AlarmContactGroupName,
-//				},
-//				EffectiveInterval: pulumi.String("06:00-20:00"),
 //			})
 //			if err != nil {
 //				return err
@@ -135,11 +144,11 @@ import (
 //
 // ## Import
 //
-// Alarm rule can be imported using the id, e.g.
+// Cloud Monitor Service Alarm can be imported using the id, e.g.
 //
 // ```sh
 //
-//	$ pulumi import alicloud:cms/alarm:Alarm alarm abc12345
+//	$ pulumi import alicloud:cms/alarm:Alarm example <id>
 //
 // ```
 type Alarm struct {
@@ -147,65 +156,49 @@ type Alarm struct {
 
 	// List contact groups of the alarm rule, which must have been created on the console.
 	ContactGroups pulumi.StringArrayOutput `pulumi:"contactGroups"`
-	// Field `dimensions` has been deprecated from version 1.95.0. Use `metricDimensions` instead.
+	// Field `dimensions` has been deprecated from provider version 1.173.0. New field `metricDimensions` instead.
 	//
-	// Deprecated: Field 'dimensions' has been deprecated from version 1.173.0. Use 'metric_dimensions' instead.
+	// Deprecated: Field `dimensions` has been deprecated from provider version 1.173.0. New field `metric_dimensions` instead.
 	Dimensions pulumi.MapOutput `pulumi:"dimensions"`
 	// The interval of effecting alarm rule. It format as "hh:mm-hh:mm", like "0:00-4:00". Default to "00:00-23:59".
 	EffectiveInterval pulumi.StringPtrOutput `pulumi:"effectiveInterval"`
-	// Whether to enable alarm rule. Default to true.
+	// Whether to enable alarm rule. Default value: `true`.
 	Enabled pulumi.BoolPtrOutput `pulumi:"enabled"`
-	// It has been deprecated from provider version 1.50.0 and 'effective_interval' instead.
+	// Field `endTime` has been deprecated from provider version 1.50.0. New field `effectiveInterval` instead.
 	//
-	// Deprecated: Field 'end_time' has been deprecated from provider version 1.50.0. New field 'effective_interval' instead.
+	// Deprecated: Field `end_time` has been deprecated from provider version 1.50.0. New field `effective_interval` instead.
 	EndTime pulumi.IntPtrOutput `pulumi:"endTime"`
 	// A configuration of critical alarm. See `escalationsCritical` below.
-	EscalationsCritical AlarmEscalationsCriticalPtrOutput `pulumi:"escalationsCritical"`
+	EscalationsCritical AlarmEscalationsCriticalOutput `pulumi:"escalationsCritical"`
 	// A configuration of critical info. See `escalationsInfo` below.
-	EscalationsInfo AlarmEscalationsInfoPtrOutput `pulumi:"escalationsInfo"`
+	EscalationsInfo AlarmEscalationsInfoOutput `pulumi:"escalationsInfo"`
 	// A configuration of critical warn. See `escalationsWarn` below.
-	EscalationsWarn AlarmEscalationsWarnPtrOutput `pulumi:"escalationsWarn"`
-	// Name of the monitoring metrics corresponding to a project, such as "CPUUtilization" and "networkinRate". For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
+	EscalationsWarn AlarmEscalationsWarnOutput `pulumi:"escalationsWarn"`
+	// The name of the metric, such as `CPUUtilization` and `networkinRate`. For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
 	Metric pulumi.StringOutput `pulumi:"metric"`
 	// Map of the resources associated with the alarm rule, such as "instanceId", "device" and "port". Each key's value is a string, and it uses comma to split multiple items. For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
 	MetricDimensions pulumi.StringOutput `pulumi:"metricDimensions"`
-	// The alarm rule name.
+	// The name of the alert rule.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// It has been deprecated from provider version 1.94.0 and 'escalations_critical.comparison_operator' instead.
-	//
-	// Deprecated: Field 'operator' has been deprecated from provider version 1.94.0. New field 'escalations_critical.comparison_operator' instead.
-	Operator pulumi.StringOutput `pulumi:"operator"`
 	// Index query cycle, which must be consistent with that defined for metrics. Default to 300, in seconds.
 	Period pulumi.IntPtrOutput `pulumi:"period"`
-	// Monitor project name, such as "acsEcsDashboard" and "acsRdsDashboard". For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
+	// The namespace of the cloud service, such as `acsEcsDashboard` and `acsRdsDashboard`. For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
 	// **NOTE:** The `dimensions` and `metricDimensions` must be empty when `project` is `acsPrometheus`, otherwise, one of them must be set.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The Prometheus alert rule. See `prometheus` below. **Note:** This parameter is required only when you create a Prometheus alert rule for Hybrid Cloud Monitoring.
 	Prometheuses AlarmPrometheusArrayOutput `pulumi:"prometheuses"`
-	// Notification silence period in the alarm state, in seconds. Valid value range: [300, 86400]. Default to 86400
+	// Notification silence period in the alarm state, in seconds. Default value: `86400`. Valid value range: [300, 86400].
 	SilenceTime pulumi.IntPtrOutput `pulumi:"silenceTime"`
-	// It has been deprecated from provider version 1.50.0 and 'effective_interval' instead.
+	// Field `startTime` has been deprecated from provider version 1.50.0. New field `effectiveInterval` instead.
 	//
-	// Deprecated: Field 'start_time' has been deprecated from provider version 1.50.0. New field 'effective_interval' instead.
+	// Deprecated: Field `start_time` has been deprecated from provider version 1.50.0. New field `effective_interval` instead.
 	StartTime pulumi.IntPtrOutput `pulumi:"startTime"`
-	// It has been deprecated from provider version 1.94.0 and 'escalations_critical.statistics' instead.
-	//
-	// Deprecated: Field 'statistics' has been deprecated from provider version 1.94.0. New field 'escalations_critical.statistics' instead.
-	Statistics pulumi.StringOutput `pulumi:"statistics"`
-	// The current alarm rule status.
+	// The status of the Alarm.
 	Status pulumi.StringOutput `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
-	//
-	// > **NOTE:** Each resource supports the creation of one of the following three levels.
 	Tags pulumi.MapOutput `pulumi:"tags"`
-	// It has been deprecated from provider version 1.94.0 and 'escalations_critical.threshold' instead.
-	//
-	// Deprecated: Field 'threshold' has been deprecated from provider version 1.94.0. New field 'escalations_critical.threshold' instead.
-	Threshold pulumi.StringOutput `pulumi:"threshold"`
-	// It has been deprecated from provider version 1.94.0 and 'escalations_critical.times' instead.
-	//
-	// Deprecated: Field 'triggered_count' has been deprecated from provider version 1.94.0. New field 'escalations_critical.times' instead.
-	TriggeredCount pulumi.IntOutput `pulumi:"triggeredCount"`
+	// The information about the resource for which alerts are triggered. See `targets` below.
+	Targets AlarmTargetArrayOutput `pulumi:"targets"`
 	// The webhook that should be called when the alarm is triggered. Currently, only http protocol is supported. Default is empty string.
 	Webhook pulumi.StringPtrOutput `pulumi:"webhook"`
 }
@@ -251,17 +244,17 @@ func GetAlarm(ctx *pulumi.Context,
 type alarmState struct {
 	// List contact groups of the alarm rule, which must have been created on the console.
 	ContactGroups []string `pulumi:"contactGroups"`
-	// Field `dimensions` has been deprecated from version 1.95.0. Use `metricDimensions` instead.
+	// Field `dimensions` has been deprecated from provider version 1.173.0. New field `metricDimensions` instead.
 	//
-	// Deprecated: Field 'dimensions' has been deprecated from version 1.173.0. Use 'metric_dimensions' instead.
+	// Deprecated: Field `dimensions` has been deprecated from provider version 1.173.0. New field `metric_dimensions` instead.
 	Dimensions map[string]interface{} `pulumi:"dimensions"`
 	// The interval of effecting alarm rule. It format as "hh:mm-hh:mm", like "0:00-4:00". Default to "00:00-23:59".
 	EffectiveInterval *string `pulumi:"effectiveInterval"`
-	// Whether to enable alarm rule. Default to true.
+	// Whether to enable alarm rule. Default value: `true`.
 	Enabled *bool `pulumi:"enabled"`
-	// It has been deprecated from provider version 1.50.0 and 'effective_interval' instead.
+	// Field `endTime` has been deprecated from provider version 1.50.0. New field `effectiveInterval` instead.
 	//
-	// Deprecated: Field 'end_time' has been deprecated from provider version 1.50.0. New field 'effective_interval' instead.
+	// Deprecated: Field `end_time` has been deprecated from provider version 1.50.0. New field `effective_interval` instead.
 	EndTime *int `pulumi:"endTime"`
 	// A configuration of critical alarm. See `escalationsCritical` below.
 	EscalationsCritical *AlarmEscalationsCritical `pulumi:"escalationsCritical"`
@@ -269,47 +262,31 @@ type alarmState struct {
 	EscalationsInfo *AlarmEscalationsInfo `pulumi:"escalationsInfo"`
 	// A configuration of critical warn. See `escalationsWarn` below.
 	EscalationsWarn *AlarmEscalationsWarn `pulumi:"escalationsWarn"`
-	// Name of the monitoring metrics corresponding to a project, such as "CPUUtilization" and "networkinRate". For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
+	// The name of the metric, such as `CPUUtilization` and `networkinRate`. For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
 	Metric *string `pulumi:"metric"`
 	// Map of the resources associated with the alarm rule, such as "instanceId", "device" and "port". Each key's value is a string, and it uses comma to split multiple items. For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
 	MetricDimensions *string `pulumi:"metricDimensions"`
-	// The alarm rule name.
+	// The name of the alert rule.
 	Name *string `pulumi:"name"`
-	// It has been deprecated from provider version 1.94.0 and 'escalations_critical.comparison_operator' instead.
-	//
-	// Deprecated: Field 'operator' has been deprecated from provider version 1.94.0. New field 'escalations_critical.comparison_operator' instead.
-	Operator *string `pulumi:"operator"`
 	// Index query cycle, which must be consistent with that defined for metrics. Default to 300, in seconds.
 	Period *int `pulumi:"period"`
-	// Monitor project name, such as "acsEcsDashboard" and "acsRdsDashboard". For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
+	// The namespace of the cloud service, such as `acsEcsDashboard` and `acsRdsDashboard`. For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
 	// **NOTE:** The `dimensions` and `metricDimensions` must be empty when `project` is `acsPrometheus`, otherwise, one of them must be set.
 	Project *string `pulumi:"project"`
 	// The Prometheus alert rule. See `prometheus` below. **Note:** This parameter is required only when you create a Prometheus alert rule for Hybrid Cloud Monitoring.
 	Prometheuses []AlarmPrometheus `pulumi:"prometheuses"`
-	// Notification silence period in the alarm state, in seconds. Valid value range: [300, 86400]. Default to 86400
+	// Notification silence period in the alarm state, in seconds. Default value: `86400`. Valid value range: [300, 86400].
 	SilenceTime *int `pulumi:"silenceTime"`
-	// It has been deprecated from provider version 1.50.0 and 'effective_interval' instead.
+	// Field `startTime` has been deprecated from provider version 1.50.0. New field `effectiveInterval` instead.
 	//
-	// Deprecated: Field 'start_time' has been deprecated from provider version 1.50.0. New field 'effective_interval' instead.
+	// Deprecated: Field `start_time` has been deprecated from provider version 1.50.0. New field `effective_interval` instead.
 	StartTime *int `pulumi:"startTime"`
-	// It has been deprecated from provider version 1.94.0 and 'escalations_critical.statistics' instead.
-	//
-	// Deprecated: Field 'statistics' has been deprecated from provider version 1.94.0. New field 'escalations_critical.statistics' instead.
-	Statistics *string `pulumi:"statistics"`
-	// The current alarm rule status.
+	// The status of the Alarm.
 	Status *string `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
-	//
-	// > **NOTE:** Each resource supports the creation of one of the following three levels.
 	Tags map[string]interface{} `pulumi:"tags"`
-	// It has been deprecated from provider version 1.94.0 and 'escalations_critical.threshold' instead.
-	//
-	// Deprecated: Field 'threshold' has been deprecated from provider version 1.94.0. New field 'escalations_critical.threshold' instead.
-	Threshold *string `pulumi:"threshold"`
-	// It has been deprecated from provider version 1.94.0 and 'escalations_critical.times' instead.
-	//
-	// Deprecated: Field 'triggered_count' has been deprecated from provider version 1.94.0. New field 'escalations_critical.times' instead.
-	TriggeredCount *int `pulumi:"triggeredCount"`
+	// The information about the resource for which alerts are triggered. See `targets` below.
+	Targets []AlarmTarget `pulumi:"targets"`
 	// The webhook that should be called when the alarm is triggered. Currently, only http protocol is supported. Default is empty string.
 	Webhook *string `pulumi:"webhook"`
 }
@@ -317,17 +294,17 @@ type alarmState struct {
 type AlarmState struct {
 	// List contact groups of the alarm rule, which must have been created on the console.
 	ContactGroups pulumi.StringArrayInput
-	// Field `dimensions` has been deprecated from version 1.95.0. Use `metricDimensions` instead.
+	// Field `dimensions` has been deprecated from provider version 1.173.0. New field `metricDimensions` instead.
 	//
-	// Deprecated: Field 'dimensions' has been deprecated from version 1.173.0. Use 'metric_dimensions' instead.
+	// Deprecated: Field `dimensions` has been deprecated from provider version 1.173.0. New field `metric_dimensions` instead.
 	Dimensions pulumi.MapInput
 	// The interval of effecting alarm rule. It format as "hh:mm-hh:mm", like "0:00-4:00". Default to "00:00-23:59".
 	EffectiveInterval pulumi.StringPtrInput
-	// Whether to enable alarm rule. Default to true.
+	// Whether to enable alarm rule. Default value: `true`.
 	Enabled pulumi.BoolPtrInput
-	// It has been deprecated from provider version 1.50.0 and 'effective_interval' instead.
+	// Field `endTime` has been deprecated from provider version 1.50.0. New field `effectiveInterval` instead.
 	//
-	// Deprecated: Field 'end_time' has been deprecated from provider version 1.50.0. New field 'effective_interval' instead.
+	// Deprecated: Field `end_time` has been deprecated from provider version 1.50.0. New field `effective_interval` instead.
 	EndTime pulumi.IntPtrInput
 	// A configuration of critical alarm. See `escalationsCritical` below.
 	EscalationsCritical AlarmEscalationsCriticalPtrInput
@@ -335,47 +312,31 @@ type AlarmState struct {
 	EscalationsInfo AlarmEscalationsInfoPtrInput
 	// A configuration of critical warn. See `escalationsWarn` below.
 	EscalationsWarn AlarmEscalationsWarnPtrInput
-	// Name of the monitoring metrics corresponding to a project, such as "CPUUtilization" and "networkinRate". For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
+	// The name of the metric, such as `CPUUtilization` and `networkinRate`. For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
 	Metric pulumi.StringPtrInput
 	// Map of the resources associated with the alarm rule, such as "instanceId", "device" and "port". Each key's value is a string, and it uses comma to split multiple items. For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
 	MetricDimensions pulumi.StringPtrInput
-	// The alarm rule name.
+	// The name of the alert rule.
 	Name pulumi.StringPtrInput
-	// It has been deprecated from provider version 1.94.0 and 'escalations_critical.comparison_operator' instead.
-	//
-	// Deprecated: Field 'operator' has been deprecated from provider version 1.94.0. New field 'escalations_critical.comparison_operator' instead.
-	Operator pulumi.StringPtrInput
 	// Index query cycle, which must be consistent with that defined for metrics. Default to 300, in seconds.
 	Period pulumi.IntPtrInput
-	// Monitor project name, such as "acsEcsDashboard" and "acsRdsDashboard". For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
+	// The namespace of the cloud service, such as `acsEcsDashboard` and `acsRdsDashboard`. For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
 	// **NOTE:** The `dimensions` and `metricDimensions` must be empty when `project` is `acsPrometheus`, otherwise, one of them must be set.
 	Project pulumi.StringPtrInput
 	// The Prometheus alert rule. See `prometheus` below. **Note:** This parameter is required only when you create a Prometheus alert rule for Hybrid Cloud Monitoring.
 	Prometheuses AlarmPrometheusArrayInput
-	// Notification silence period in the alarm state, in seconds. Valid value range: [300, 86400]. Default to 86400
+	// Notification silence period in the alarm state, in seconds. Default value: `86400`. Valid value range: [300, 86400].
 	SilenceTime pulumi.IntPtrInput
-	// It has been deprecated from provider version 1.50.0 and 'effective_interval' instead.
+	// Field `startTime` has been deprecated from provider version 1.50.0. New field `effectiveInterval` instead.
 	//
-	// Deprecated: Field 'start_time' has been deprecated from provider version 1.50.0. New field 'effective_interval' instead.
+	// Deprecated: Field `start_time` has been deprecated from provider version 1.50.0. New field `effective_interval` instead.
 	StartTime pulumi.IntPtrInput
-	// It has been deprecated from provider version 1.94.0 and 'escalations_critical.statistics' instead.
-	//
-	// Deprecated: Field 'statistics' has been deprecated from provider version 1.94.0. New field 'escalations_critical.statistics' instead.
-	Statistics pulumi.StringPtrInput
-	// The current alarm rule status.
+	// The status of the Alarm.
 	Status pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
-	//
-	// > **NOTE:** Each resource supports the creation of one of the following three levels.
 	Tags pulumi.MapInput
-	// It has been deprecated from provider version 1.94.0 and 'escalations_critical.threshold' instead.
-	//
-	// Deprecated: Field 'threshold' has been deprecated from provider version 1.94.0. New field 'escalations_critical.threshold' instead.
-	Threshold pulumi.StringPtrInput
-	// It has been deprecated from provider version 1.94.0 and 'escalations_critical.times' instead.
-	//
-	// Deprecated: Field 'triggered_count' has been deprecated from provider version 1.94.0. New field 'escalations_critical.times' instead.
-	TriggeredCount pulumi.IntPtrInput
+	// The information about the resource for which alerts are triggered. See `targets` below.
+	Targets AlarmTargetArrayInput
 	// The webhook that should be called when the alarm is triggered. Currently, only http protocol is supported. Default is empty string.
 	Webhook pulumi.StringPtrInput
 }
@@ -387,17 +348,17 @@ func (AlarmState) ElementType() reflect.Type {
 type alarmArgs struct {
 	// List contact groups of the alarm rule, which must have been created on the console.
 	ContactGroups []string `pulumi:"contactGroups"`
-	// Field `dimensions` has been deprecated from version 1.95.0. Use `metricDimensions` instead.
+	// Field `dimensions` has been deprecated from provider version 1.173.0. New field `metricDimensions` instead.
 	//
-	// Deprecated: Field 'dimensions' has been deprecated from version 1.173.0. Use 'metric_dimensions' instead.
+	// Deprecated: Field `dimensions` has been deprecated from provider version 1.173.0. New field `metric_dimensions` instead.
 	Dimensions map[string]interface{} `pulumi:"dimensions"`
 	// The interval of effecting alarm rule. It format as "hh:mm-hh:mm", like "0:00-4:00". Default to "00:00-23:59".
 	EffectiveInterval *string `pulumi:"effectiveInterval"`
-	// Whether to enable alarm rule. Default to true.
+	// Whether to enable alarm rule. Default value: `true`.
 	Enabled *bool `pulumi:"enabled"`
-	// It has been deprecated from provider version 1.50.0 and 'effective_interval' instead.
+	// Field `endTime` has been deprecated from provider version 1.50.0. New field `effectiveInterval` instead.
 	//
-	// Deprecated: Field 'end_time' has been deprecated from provider version 1.50.0. New field 'effective_interval' instead.
+	// Deprecated: Field `end_time` has been deprecated from provider version 1.50.0. New field `effective_interval` instead.
 	EndTime *int `pulumi:"endTime"`
 	// A configuration of critical alarm. See `escalationsCritical` below.
 	EscalationsCritical *AlarmEscalationsCritical `pulumi:"escalationsCritical"`
@@ -405,45 +366,29 @@ type alarmArgs struct {
 	EscalationsInfo *AlarmEscalationsInfo `pulumi:"escalationsInfo"`
 	// A configuration of critical warn. See `escalationsWarn` below.
 	EscalationsWarn *AlarmEscalationsWarn `pulumi:"escalationsWarn"`
-	// Name of the monitoring metrics corresponding to a project, such as "CPUUtilization" and "networkinRate". For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
+	// The name of the metric, such as `CPUUtilization` and `networkinRate`. For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
 	Metric string `pulumi:"metric"`
 	// Map of the resources associated with the alarm rule, such as "instanceId", "device" and "port". Each key's value is a string, and it uses comma to split multiple items. For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
 	MetricDimensions *string `pulumi:"metricDimensions"`
-	// The alarm rule name.
+	// The name of the alert rule.
 	Name *string `pulumi:"name"`
-	// It has been deprecated from provider version 1.94.0 and 'escalations_critical.comparison_operator' instead.
-	//
-	// Deprecated: Field 'operator' has been deprecated from provider version 1.94.0. New field 'escalations_critical.comparison_operator' instead.
-	Operator *string `pulumi:"operator"`
 	// Index query cycle, which must be consistent with that defined for metrics. Default to 300, in seconds.
 	Period *int `pulumi:"period"`
-	// Monitor project name, such as "acsEcsDashboard" and "acsRdsDashboard". For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
+	// The namespace of the cloud service, such as `acsEcsDashboard` and `acsRdsDashboard`. For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
 	// **NOTE:** The `dimensions` and `metricDimensions` must be empty when `project` is `acsPrometheus`, otherwise, one of them must be set.
 	Project string `pulumi:"project"`
 	// The Prometheus alert rule. See `prometheus` below. **Note:** This parameter is required only when you create a Prometheus alert rule for Hybrid Cloud Monitoring.
 	Prometheuses []AlarmPrometheus `pulumi:"prometheuses"`
-	// Notification silence period in the alarm state, in seconds. Valid value range: [300, 86400]. Default to 86400
+	// Notification silence period in the alarm state, in seconds. Default value: `86400`. Valid value range: [300, 86400].
 	SilenceTime *int `pulumi:"silenceTime"`
-	// It has been deprecated from provider version 1.50.0 and 'effective_interval' instead.
+	// Field `startTime` has been deprecated from provider version 1.50.0. New field `effectiveInterval` instead.
 	//
-	// Deprecated: Field 'start_time' has been deprecated from provider version 1.50.0. New field 'effective_interval' instead.
+	// Deprecated: Field `start_time` has been deprecated from provider version 1.50.0. New field `effective_interval` instead.
 	StartTime *int `pulumi:"startTime"`
-	// It has been deprecated from provider version 1.94.0 and 'escalations_critical.statistics' instead.
-	//
-	// Deprecated: Field 'statistics' has been deprecated from provider version 1.94.0. New field 'escalations_critical.statistics' instead.
-	Statistics *string `pulumi:"statistics"`
 	// A mapping of tags to assign to the resource.
-	//
-	// > **NOTE:** Each resource supports the creation of one of the following three levels.
 	Tags map[string]interface{} `pulumi:"tags"`
-	// It has been deprecated from provider version 1.94.0 and 'escalations_critical.threshold' instead.
-	//
-	// Deprecated: Field 'threshold' has been deprecated from provider version 1.94.0. New field 'escalations_critical.threshold' instead.
-	Threshold *string `pulumi:"threshold"`
-	// It has been deprecated from provider version 1.94.0 and 'escalations_critical.times' instead.
-	//
-	// Deprecated: Field 'triggered_count' has been deprecated from provider version 1.94.0. New field 'escalations_critical.times' instead.
-	TriggeredCount *int `pulumi:"triggeredCount"`
+	// The information about the resource for which alerts are triggered. See `targets` below.
+	Targets []AlarmTarget `pulumi:"targets"`
 	// The webhook that should be called when the alarm is triggered. Currently, only http protocol is supported. Default is empty string.
 	Webhook *string `pulumi:"webhook"`
 }
@@ -452,17 +397,17 @@ type alarmArgs struct {
 type AlarmArgs struct {
 	// List contact groups of the alarm rule, which must have been created on the console.
 	ContactGroups pulumi.StringArrayInput
-	// Field `dimensions` has been deprecated from version 1.95.0. Use `metricDimensions` instead.
+	// Field `dimensions` has been deprecated from provider version 1.173.0. New field `metricDimensions` instead.
 	//
-	// Deprecated: Field 'dimensions' has been deprecated from version 1.173.0. Use 'metric_dimensions' instead.
+	// Deprecated: Field `dimensions` has been deprecated from provider version 1.173.0. New field `metric_dimensions` instead.
 	Dimensions pulumi.MapInput
 	// The interval of effecting alarm rule. It format as "hh:mm-hh:mm", like "0:00-4:00". Default to "00:00-23:59".
 	EffectiveInterval pulumi.StringPtrInput
-	// Whether to enable alarm rule. Default to true.
+	// Whether to enable alarm rule. Default value: `true`.
 	Enabled pulumi.BoolPtrInput
-	// It has been deprecated from provider version 1.50.0 and 'effective_interval' instead.
+	// Field `endTime` has been deprecated from provider version 1.50.0. New field `effectiveInterval` instead.
 	//
-	// Deprecated: Field 'end_time' has been deprecated from provider version 1.50.0. New field 'effective_interval' instead.
+	// Deprecated: Field `end_time` has been deprecated from provider version 1.50.0. New field `effective_interval` instead.
 	EndTime pulumi.IntPtrInput
 	// A configuration of critical alarm. See `escalationsCritical` below.
 	EscalationsCritical AlarmEscalationsCriticalPtrInput
@@ -470,45 +415,29 @@ type AlarmArgs struct {
 	EscalationsInfo AlarmEscalationsInfoPtrInput
 	// A configuration of critical warn. See `escalationsWarn` below.
 	EscalationsWarn AlarmEscalationsWarnPtrInput
-	// Name of the monitoring metrics corresponding to a project, such as "CPUUtilization" and "networkinRate". For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
+	// The name of the metric, such as `CPUUtilization` and `networkinRate`. For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
 	Metric pulumi.StringInput
 	// Map of the resources associated with the alarm rule, such as "instanceId", "device" and "port". Each key's value is a string, and it uses comma to split multiple items. For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
 	MetricDimensions pulumi.StringPtrInput
-	// The alarm rule name.
+	// The name of the alert rule.
 	Name pulumi.StringPtrInput
-	// It has been deprecated from provider version 1.94.0 and 'escalations_critical.comparison_operator' instead.
-	//
-	// Deprecated: Field 'operator' has been deprecated from provider version 1.94.0. New field 'escalations_critical.comparison_operator' instead.
-	Operator pulumi.StringPtrInput
 	// Index query cycle, which must be consistent with that defined for metrics. Default to 300, in seconds.
 	Period pulumi.IntPtrInput
-	// Monitor project name, such as "acsEcsDashboard" and "acsRdsDashboard". For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
+	// The namespace of the cloud service, such as `acsEcsDashboard` and `acsRdsDashboard`. For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
 	// **NOTE:** The `dimensions` and `metricDimensions` must be empty when `project` is `acsPrometheus`, otherwise, one of them must be set.
 	Project pulumi.StringInput
 	// The Prometheus alert rule. See `prometheus` below. **Note:** This parameter is required only when you create a Prometheus alert rule for Hybrid Cloud Monitoring.
 	Prometheuses AlarmPrometheusArrayInput
-	// Notification silence period in the alarm state, in seconds. Valid value range: [300, 86400]. Default to 86400
+	// Notification silence period in the alarm state, in seconds. Default value: `86400`. Valid value range: [300, 86400].
 	SilenceTime pulumi.IntPtrInput
-	// It has been deprecated from provider version 1.50.0 and 'effective_interval' instead.
+	// Field `startTime` has been deprecated from provider version 1.50.0. New field `effectiveInterval` instead.
 	//
-	// Deprecated: Field 'start_time' has been deprecated from provider version 1.50.0. New field 'effective_interval' instead.
+	// Deprecated: Field `start_time` has been deprecated from provider version 1.50.0. New field `effective_interval` instead.
 	StartTime pulumi.IntPtrInput
-	// It has been deprecated from provider version 1.94.0 and 'escalations_critical.statistics' instead.
-	//
-	// Deprecated: Field 'statistics' has been deprecated from provider version 1.94.0. New field 'escalations_critical.statistics' instead.
-	Statistics pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
-	//
-	// > **NOTE:** Each resource supports the creation of one of the following three levels.
 	Tags pulumi.MapInput
-	// It has been deprecated from provider version 1.94.0 and 'escalations_critical.threshold' instead.
-	//
-	// Deprecated: Field 'threshold' has been deprecated from provider version 1.94.0. New field 'escalations_critical.threshold' instead.
-	Threshold pulumi.StringPtrInput
-	// It has been deprecated from provider version 1.94.0 and 'escalations_critical.times' instead.
-	//
-	// Deprecated: Field 'triggered_count' has been deprecated from provider version 1.94.0. New field 'escalations_critical.times' instead.
-	TriggeredCount pulumi.IntPtrInput
+	// The information about the resource for which alerts are triggered. See `targets` below.
+	Targets AlarmTargetArrayInput
 	// The webhook that should be called when the alarm is triggered. Currently, only http protocol is supported. Default is empty string.
 	Webhook pulumi.StringPtrInput
 }
@@ -605,9 +534,9 @@ func (o AlarmOutput) ContactGroups() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Alarm) pulumi.StringArrayOutput { return v.ContactGroups }).(pulumi.StringArrayOutput)
 }
 
-// Field `dimensions` has been deprecated from version 1.95.0. Use `metricDimensions` instead.
+// Field `dimensions` has been deprecated from provider version 1.173.0. New field `metricDimensions` instead.
 //
-// Deprecated: Field 'dimensions' has been deprecated from version 1.173.0. Use 'metric_dimensions' instead.
+// Deprecated: Field `dimensions` has been deprecated from provider version 1.173.0. New field `metric_dimensions` instead.
 func (o AlarmOutput) Dimensions() pulumi.MapOutput {
 	return o.ApplyT(func(v *Alarm) pulumi.MapOutput { return v.Dimensions }).(pulumi.MapOutput)
 }
@@ -617,34 +546,34 @@ func (o AlarmOutput) EffectiveInterval() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Alarm) pulumi.StringPtrOutput { return v.EffectiveInterval }).(pulumi.StringPtrOutput)
 }
 
-// Whether to enable alarm rule. Default to true.
+// Whether to enable alarm rule. Default value: `true`.
 func (o AlarmOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Alarm) pulumi.BoolPtrOutput { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
 
-// It has been deprecated from provider version 1.50.0 and 'effective_interval' instead.
+// Field `endTime` has been deprecated from provider version 1.50.0. New field `effectiveInterval` instead.
 //
-// Deprecated: Field 'end_time' has been deprecated from provider version 1.50.0. New field 'effective_interval' instead.
+// Deprecated: Field `end_time` has been deprecated from provider version 1.50.0. New field `effective_interval` instead.
 func (o AlarmOutput) EndTime() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Alarm) pulumi.IntPtrOutput { return v.EndTime }).(pulumi.IntPtrOutput)
 }
 
 // A configuration of critical alarm. See `escalationsCritical` below.
-func (o AlarmOutput) EscalationsCritical() AlarmEscalationsCriticalPtrOutput {
-	return o.ApplyT(func(v *Alarm) AlarmEscalationsCriticalPtrOutput { return v.EscalationsCritical }).(AlarmEscalationsCriticalPtrOutput)
+func (o AlarmOutput) EscalationsCritical() AlarmEscalationsCriticalOutput {
+	return o.ApplyT(func(v *Alarm) AlarmEscalationsCriticalOutput { return v.EscalationsCritical }).(AlarmEscalationsCriticalOutput)
 }
 
 // A configuration of critical info. See `escalationsInfo` below.
-func (o AlarmOutput) EscalationsInfo() AlarmEscalationsInfoPtrOutput {
-	return o.ApplyT(func(v *Alarm) AlarmEscalationsInfoPtrOutput { return v.EscalationsInfo }).(AlarmEscalationsInfoPtrOutput)
+func (o AlarmOutput) EscalationsInfo() AlarmEscalationsInfoOutput {
+	return o.ApplyT(func(v *Alarm) AlarmEscalationsInfoOutput { return v.EscalationsInfo }).(AlarmEscalationsInfoOutput)
 }
 
 // A configuration of critical warn. See `escalationsWarn` below.
-func (o AlarmOutput) EscalationsWarn() AlarmEscalationsWarnPtrOutput {
-	return o.ApplyT(func(v *Alarm) AlarmEscalationsWarnPtrOutput { return v.EscalationsWarn }).(AlarmEscalationsWarnPtrOutput)
+func (o AlarmOutput) EscalationsWarn() AlarmEscalationsWarnOutput {
+	return o.ApplyT(func(v *Alarm) AlarmEscalationsWarnOutput { return v.EscalationsWarn }).(AlarmEscalationsWarnOutput)
 }
 
-// Name of the monitoring metrics corresponding to a project, such as "CPUUtilization" and "networkinRate". For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
+// The name of the metric, such as `CPUUtilization` and `networkinRate`. For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
 func (o AlarmOutput) Metric() pulumi.StringOutput {
 	return o.ApplyT(func(v *Alarm) pulumi.StringOutput { return v.Metric }).(pulumi.StringOutput)
 }
@@ -654,16 +583,9 @@ func (o AlarmOutput) MetricDimensions() pulumi.StringOutput {
 	return o.ApplyT(func(v *Alarm) pulumi.StringOutput { return v.MetricDimensions }).(pulumi.StringOutput)
 }
 
-// The alarm rule name.
+// The name of the alert rule.
 func (o AlarmOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Alarm) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
-}
-
-// It has been deprecated from provider version 1.94.0 and 'escalations_critical.comparison_operator' instead.
-//
-// Deprecated: Field 'operator' has been deprecated from provider version 1.94.0. New field 'escalations_critical.comparison_operator' instead.
-func (o AlarmOutput) Operator() pulumi.StringOutput {
-	return o.ApplyT(func(v *Alarm) pulumi.StringOutput { return v.Operator }).(pulumi.StringOutput)
 }
 
 // Index query cycle, which must be consistent with that defined for metrics. Default to 300, in seconds.
@@ -671,7 +593,7 @@ func (o AlarmOutput) Period() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Alarm) pulumi.IntPtrOutput { return v.Period }).(pulumi.IntPtrOutput)
 }
 
-// Monitor project name, such as "acsEcsDashboard" and "acsRdsDashboard". For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
+// The namespace of the cloud service, such as `acsEcsDashboard` and `acsRdsDashboard`. For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
 // **NOTE:** The `dimensions` and `metricDimensions` must be empty when `project` is `acsPrometheus`, otherwise, one of them must be set.
 func (o AlarmOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *Alarm) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
@@ -682,49 +604,31 @@ func (o AlarmOutput) Prometheuses() AlarmPrometheusArrayOutput {
 	return o.ApplyT(func(v *Alarm) AlarmPrometheusArrayOutput { return v.Prometheuses }).(AlarmPrometheusArrayOutput)
 }
 
-// Notification silence period in the alarm state, in seconds. Valid value range: [300, 86400]. Default to 86400
+// Notification silence period in the alarm state, in seconds. Default value: `86400`. Valid value range: [300, 86400].
 func (o AlarmOutput) SilenceTime() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Alarm) pulumi.IntPtrOutput { return v.SilenceTime }).(pulumi.IntPtrOutput)
 }
 
-// It has been deprecated from provider version 1.50.0 and 'effective_interval' instead.
+// Field `startTime` has been deprecated from provider version 1.50.0. New field `effectiveInterval` instead.
 //
-// Deprecated: Field 'start_time' has been deprecated from provider version 1.50.0. New field 'effective_interval' instead.
+// Deprecated: Field `start_time` has been deprecated from provider version 1.50.0. New field `effective_interval` instead.
 func (o AlarmOutput) StartTime() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Alarm) pulumi.IntPtrOutput { return v.StartTime }).(pulumi.IntPtrOutput)
 }
 
-// It has been deprecated from provider version 1.94.0 and 'escalations_critical.statistics' instead.
-//
-// Deprecated: Field 'statistics' has been deprecated from provider version 1.94.0. New field 'escalations_critical.statistics' instead.
-func (o AlarmOutput) Statistics() pulumi.StringOutput {
-	return o.ApplyT(func(v *Alarm) pulumi.StringOutput { return v.Statistics }).(pulumi.StringOutput)
-}
-
-// The current alarm rule status.
+// The status of the Alarm.
 func (o AlarmOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *Alarm) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }
 
 // A mapping of tags to assign to the resource.
-//
-// > **NOTE:** Each resource supports the creation of one of the following three levels.
 func (o AlarmOutput) Tags() pulumi.MapOutput {
 	return o.ApplyT(func(v *Alarm) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
 }
 
-// It has been deprecated from provider version 1.94.0 and 'escalations_critical.threshold' instead.
-//
-// Deprecated: Field 'threshold' has been deprecated from provider version 1.94.0. New field 'escalations_critical.threshold' instead.
-func (o AlarmOutput) Threshold() pulumi.StringOutput {
-	return o.ApplyT(func(v *Alarm) pulumi.StringOutput { return v.Threshold }).(pulumi.StringOutput)
-}
-
-// It has been deprecated from provider version 1.94.0 and 'escalations_critical.times' instead.
-//
-// Deprecated: Field 'triggered_count' has been deprecated from provider version 1.94.0. New field 'escalations_critical.times' instead.
-func (o AlarmOutput) TriggeredCount() pulumi.IntOutput {
-	return o.ApplyT(func(v *Alarm) pulumi.IntOutput { return v.TriggeredCount }).(pulumi.IntOutput)
+// The information about the resource for which alerts are triggered. See `targets` below.
+func (o AlarmOutput) Targets() AlarmTargetArrayOutput {
+	return o.ApplyT(func(v *Alarm) AlarmTargetArrayOutput { return v.Targets }).(AlarmTargetArrayOutput)
 }
 
 // The webhook that should be called when the alarm is triggered. Currently, only http protocol is supported. Default is empty string.

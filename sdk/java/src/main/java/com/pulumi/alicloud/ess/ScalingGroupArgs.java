@@ -3,6 +3,7 @@
 
 package com.pulumi.alicloud.ess;
 
+import com.pulumi.alicloud.ess.inputs.ScalingGroupLaunchTemplateOverrideArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
@@ -131,6 +132,21 @@ public final class ScalingGroupArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The details of the instance types that are specified by using the Extend Instance Type of Launch Template feature..  See `launch_template_override` below for details.
+     * 
+     */
+    @Import(name="launchTemplateOverrides")
+    private @Nullable Output<List<ScalingGroupLaunchTemplateOverrideArgs>> launchTemplateOverrides;
+
+    /**
+     * @return The details of the instance types that are specified by using the Extend Instance Type of Launch Template feature..  See `launch_template_override` below for details.
+     * 
+     */
+    public Optional<Output<List<ScalingGroupLaunchTemplateOverrideArgs>>> launchTemplateOverrides() {
+        return Optional.ofNullable(this.launchTemplateOverrides);
+    }
+
+    /**
      * The version number of the launch template. Valid values are the version number, `Latest`, or `Default`, Default value: `Default`.
      * 
      */
@@ -205,14 +221,14 @@ public final class ScalingGroupArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Multi-AZ scaling group ECS instance expansion and contraction strategy. PRIORITY, BALANCE or COST_OPTIMIZED(Available in 1.54.0+).
+     * Multi-AZ scaling group ECS instance expansion and contraction strategy. PRIORITY, BALANCE or COST_OPTIMIZED(Available since v1.54.0).
      * 
      */
     @Import(name="multiAzPolicy")
     private @Nullable Output<String> multiAzPolicy;
 
     /**
-     * @return Multi-AZ scaling group ECS instance expansion and contraction strategy. PRIORITY, BALANCE or COST_OPTIMIZED(Available in 1.54.0+).
+     * @return Multi-AZ scaling group ECS instance expansion and contraction strategy. PRIORITY, BALANCE or COST_OPTIMIZED(Available since v1.54.0).
      * 
      */
     public Optional<Output<String>> multiAzPolicy() {
@@ -252,24 +268,12 @@ public final class ScalingGroupArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * Set or unset instances within group into protected status.
      * 
-     * &gt; **NOTE:** When detach loadbalancers, instances in group will be remove from loadbalancer&#39;s `Default Server Group`; On the contrary, When attach loadbalancers, instances in group will be added to loadbalancer&#39;s `Default Server Group`.
-     * 
-     * &gt; **NOTE:** When detach dbInstances, private ip of instances in group will be remove from dbInstance&#39;s `WhiteList`; On the contrary, When attach dbInstances, private ip of instances in group will be added to dbInstance&#39;s `WhiteList`.
-     * 
-     * &gt; **NOTE:** `on_demand_base_capacity`,`on_demand_percentage_above_base_capacity`,`spot_instance_pools`,`spot_instance_remedy` are valid only if `multi_az_policy` is &#39;COST_OPTIMIZED&#39;.
-     * 
      */
     @Import(name="protectedInstances")
     private @Nullable Output<List<String>> protectedInstances;
 
     /**
      * @return Set or unset instances within group into protected status.
-     * 
-     * &gt; **NOTE:** When detach loadbalancers, instances in group will be remove from loadbalancer&#39;s `Default Server Group`; On the contrary, When attach loadbalancers, instances in group will be added to loadbalancer&#39;s `Default Server Group`.
-     * 
-     * &gt; **NOTE:** When detach dbInstances, private ip of instances in group will be remove from dbInstance&#39;s `WhiteList`; On the contrary, When attach dbInstances, private ip of instances in group will be added to dbInstance&#39;s `WhiteList`.
-     * 
-     * &gt; **NOTE:** `on_demand_base_capacity`,`on_demand_percentage_above_base_capacity`,`spot_instance_pools`,`spot_instance_remedy` are valid only if `multi_az_policy` is &#39;COST_OPTIMIZED&#39;.
      * 
      */
     public Optional<Output<List<String>>> protectedInstances() {
@@ -411,6 +415,7 @@ public final class ScalingGroupArgs extends com.pulumi.resources.ResourceArgs {
         this.groupType = $.groupType;
         this.healthCheckType = $.healthCheckType;
         this.launchTemplateId = $.launchTemplateId;
+        this.launchTemplateOverrides = $.launchTemplateOverrides;
         this.launchTemplateVersion = $.launchTemplateVersion;
         this.loadbalancerIds = $.loadbalancerIds;
         this.maxSize = $.maxSize;
@@ -610,6 +615,37 @@ public final class ScalingGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param launchTemplateOverrides The details of the instance types that are specified by using the Extend Instance Type of Launch Template feature..  See `launch_template_override` below for details.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder launchTemplateOverrides(@Nullable Output<List<ScalingGroupLaunchTemplateOverrideArgs>> launchTemplateOverrides) {
+            $.launchTemplateOverrides = launchTemplateOverrides;
+            return this;
+        }
+
+        /**
+         * @param launchTemplateOverrides The details of the instance types that are specified by using the Extend Instance Type of Launch Template feature..  See `launch_template_override` below for details.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder launchTemplateOverrides(List<ScalingGroupLaunchTemplateOverrideArgs> launchTemplateOverrides) {
+            return launchTemplateOverrides(Output.of(launchTemplateOverrides));
+        }
+
+        /**
+         * @param launchTemplateOverrides The details of the instance types that are specified by using the Extend Instance Type of Launch Template feature..  See `launch_template_override` below for details.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder launchTemplateOverrides(ScalingGroupLaunchTemplateOverrideArgs... launchTemplateOverrides) {
+            return launchTemplateOverrides(List.of(launchTemplateOverrides));
+        }
+
+        /**
          * @param launchTemplateVersion The version number of the launch template. Valid values are the version number, `Latest`, or `Default`, Default value: `Default`.
          * 
          * @return builder
@@ -723,7 +759,7 @@ public final class ScalingGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param multiAzPolicy Multi-AZ scaling group ECS instance expansion and contraction strategy. PRIORITY, BALANCE or COST_OPTIMIZED(Available in 1.54.0+).
+         * @param multiAzPolicy Multi-AZ scaling group ECS instance expansion and contraction strategy. PRIORITY, BALANCE or COST_OPTIMIZED(Available since v1.54.0).
          * 
          * @return builder
          * 
@@ -734,7 +770,7 @@ public final class ScalingGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param multiAzPolicy Multi-AZ scaling group ECS instance expansion and contraction strategy. PRIORITY, BALANCE or COST_OPTIMIZED(Available in 1.54.0+).
+         * @param multiAzPolicy Multi-AZ scaling group ECS instance expansion and contraction strategy. PRIORITY, BALANCE or COST_OPTIMIZED(Available since v1.54.0).
          * 
          * @return builder
          * 
@@ -788,12 +824,6 @@ public final class ScalingGroupArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param protectedInstances Set or unset instances within group into protected status.
          * 
-         * &gt; **NOTE:** When detach loadbalancers, instances in group will be remove from loadbalancer&#39;s `Default Server Group`; On the contrary, When attach loadbalancers, instances in group will be added to loadbalancer&#39;s `Default Server Group`.
-         * 
-         * &gt; **NOTE:** When detach dbInstances, private ip of instances in group will be remove from dbInstance&#39;s `WhiteList`; On the contrary, When attach dbInstances, private ip of instances in group will be added to dbInstance&#39;s `WhiteList`.
-         * 
-         * &gt; **NOTE:** `on_demand_base_capacity`,`on_demand_percentage_above_base_capacity`,`spot_instance_pools`,`spot_instance_remedy` are valid only if `multi_az_policy` is &#39;COST_OPTIMIZED&#39;.
-         * 
          * @return builder
          * 
          */
@@ -805,12 +835,6 @@ public final class ScalingGroupArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param protectedInstances Set or unset instances within group into protected status.
          * 
-         * &gt; **NOTE:** When detach loadbalancers, instances in group will be remove from loadbalancer&#39;s `Default Server Group`; On the contrary, When attach loadbalancers, instances in group will be added to loadbalancer&#39;s `Default Server Group`.
-         * 
-         * &gt; **NOTE:** When detach dbInstances, private ip of instances in group will be remove from dbInstance&#39;s `WhiteList`; On the contrary, When attach dbInstances, private ip of instances in group will be added to dbInstance&#39;s `WhiteList`.
-         * 
-         * &gt; **NOTE:** `on_demand_base_capacity`,`on_demand_percentage_above_base_capacity`,`spot_instance_pools`,`spot_instance_remedy` are valid only if `multi_az_policy` is &#39;COST_OPTIMIZED&#39;.
-         * 
          * @return builder
          * 
          */
@@ -820,12 +844,6 @@ public final class ScalingGroupArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param protectedInstances Set or unset instances within group into protected status.
-         * 
-         * &gt; **NOTE:** When detach loadbalancers, instances in group will be remove from loadbalancer&#39;s `Default Server Group`; On the contrary, When attach loadbalancers, instances in group will be added to loadbalancer&#39;s `Default Server Group`.
-         * 
-         * &gt; **NOTE:** When detach dbInstances, private ip of instances in group will be remove from dbInstance&#39;s `WhiteList`; On the contrary, When attach dbInstances, private ip of instances in group will be added to dbInstance&#39;s `WhiteList`.
-         * 
-         * &gt; **NOTE:** `on_demand_base_capacity`,`on_demand_percentage_above_base_capacity`,`spot_instance_pools`,`spot_instance_remedy` are valid only if `multi_az_policy` is &#39;COST_OPTIMIZED&#39;.
          * 
          * @return builder
          * 

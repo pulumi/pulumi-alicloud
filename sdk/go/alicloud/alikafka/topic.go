@@ -28,9 +28,11 @@ import (
 //
 // import (
 //
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/alikafka"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
@@ -39,24 +41,39 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			cfg := config.New(ctx, "")
-//			name := "terraform-example"
-//			if param := cfg.Get("name"); param != "" {
-//				name = param
+//			instanceName := "tf-example"
+//			if param := cfg.Get("instanceName"); param != "" {
+//				instanceName = param
 //			}
-//			defaultNetworks, err := vpc.GetNetworks(ctx, &vpc.GetNetworksArgs{
-//				NameRegex: pulumi.StringRef("^default-NODELETING$"),
+//			defaultZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
+//				AvailableResourceCreation: pulumi.StringRef("VSwitch"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			defaultSwitches, err := vpc.GetSwitches(ctx, &vpc.GetSwitchesArgs{
-//				VpcId: pulumi.StringRef(defaultNetworks.Ids[0]),
-//			}, nil)
+//			_, err = random.NewRandomInteger(ctx, "defaultRandomInteger", &random.RandomIntegerArgs{
+//				Min: pulumi.Int(10000),
+//				Max: pulumi.Int(99999),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
+//				CidrBlock: pulumi.String("172.16.0.0/12"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
+//				VpcId:     defaultNetwork.ID(),
+//				CidrBlock: pulumi.String("172.16.0.0/24"),
+//				ZoneId:    *pulumi.String(defaultZones.Zones[0].Id),
+//			})
 //			if err != nil {
 //				return err
 //			}
 //			defaultSecurityGroup, err := ecs.NewSecurityGroup(ctx, "defaultSecurityGroup", &ecs.SecurityGroupArgs{
-//				VpcId: *pulumi.String(defaultNetworks.Ids[0]),
+//				VpcId: defaultNetwork.ID(),
 //			})
 //			if err != nil {
 //				return err
@@ -67,19 +84,19 @@ import (
 //				DiskSize:      pulumi.Int(500),
 //				DeployType:    pulumi.Int(5),
 //				IoMax:         pulumi.Int(20),
-//				VswitchId:     *pulumi.String(defaultSwitches.Ids[0]),
+//				VswitchId:     defaultSwitch.ID(),
 //				SecurityGroup: defaultSecurityGroup.ID(),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = alikafka.NewTopic(ctx, "defaultTopic", &alikafka.TopicArgs{
-//				Remark:       pulumi.String("alicloud_alikafka_topic_remark"),
 //				InstanceId:   defaultInstance.ID(),
-//				Topic:        pulumi.String(name),
+//				Topic:        pulumi.String("example-topic"),
 //				LocalTopic:   pulumi.Bool(false),
 //				CompactTopic: pulumi.Bool(false),
-//				PartitionNum: pulumi.Int(6),
+//				PartitionNum: pulumi.Int(12),
+//				Remark:       pulumi.String("dafault_kafka_topic_remark"),
 //			})
 //			if err != nil {
 //				return err

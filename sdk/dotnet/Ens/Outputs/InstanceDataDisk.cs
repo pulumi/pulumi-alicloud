@@ -14,15 +14,15 @@ namespace Pulumi.AliCloud.Ens.Outputs
     public sealed class InstanceDataDisk
     {
         /// <summary>
-        /// Type of dataDisk
-        /// - cloud_efficiency：High-efficiency cloud disk
-        /// - cloud_ssd：Full flash cloud disk
-        /// - local_hdd：Local hdd disk
-        /// - local_ssd：Local disk ssd.
+        /// Data disk type. Optional values:
+        /// - cloud_efficiency: Ultra cloud disk
+        /// - cloud_ssd: Full Flash cloud disk
+        /// - local_hdd: local hdd disk
+        /// - local_ssd: local disk ssd.
         /// </summary>
         public readonly string? Category;
         /// <summary>
-        /// Data disk size, cloud_efficiency is 20-32000,cloud_ssd/local_hdd/local_ssd is 20-25000, unit: GB.
+        /// Data disk size, unit: GB.
         /// </summary>
         public readonly int? Size;
 

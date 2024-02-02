@@ -23,10 +23,16 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "alicloud:ens/disk:Disk":
 		r = &Disk{}
+	case "alicloud:ens/diskInstanceAttachment:DiskInstanceAttachment":
+		r = &DiskInstanceAttachment{}
 	case "alicloud:ens/eip:Eip":
 		r = &Eip{}
+	case "alicloud:ens/image:Image":
+		r = &Image{}
 	case "alicloud:ens/instance:Instance":
 		r = &Instance{}
+	case "alicloud:ens/instanceSecurityGroupAttachment:InstanceSecurityGroupAttachment":
+		r = &InstanceSecurityGroupAttachment{}
 	case "alicloud:ens/keyPair:KeyPair":
 		r = &KeyPair{}
 	case "alicloud:ens/loadBalancer:LoadBalancer":
@@ -59,12 +65,27 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"alicloud",
+		"ens/diskInstanceAttachment",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
 		"ens/eip",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
 		"alicloud",
+		"ens/image",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
 		"ens/instance",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"ens/instanceSecurityGroupAttachment",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

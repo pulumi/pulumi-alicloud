@@ -13,25 +13,31 @@ namespace Pulumi.AliCloud.Vpn.Inputs
     public sealed class ConnectionBgpConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Whether to enable BGP.
+        /// Bgp enable.
         /// </summary>
         [Input("enable")]
         public Input<bool>? Enable { get; set; }
 
         /// <summary>
-        /// The ASN on the Alibaba Cloud side.
+        /// Local asn.
         /// </summary>
         [Input("localAsn")]
         public Input<string>? LocalAsn { get; set; }
 
         /// <summary>
-        /// The BGP IP address on the Alibaba Cloud side.
+        /// Local bgp IP.
         /// </summary>
         [Input("localBgpIp")]
         public Input<string>? LocalBgpIp { get; set; }
 
         /// <summary>
-        /// The CIDR block of the IPsec tunnel. The CIDR block belongs to 169.254.0.0/16. The mask of the CIDR block is 30 bits in length.
+        /// The negotiation status of Tunnel.
+        /// </summary>
+        [Input("status")]
+        public Input<string>? Status { get; set; }
+
+        /// <summary>
+        /// IPSec tunnel Cidr.
         /// </summary>
         [Input("tunnelCidr")]
         public Input<string>? TunnelCidr { get; set; }

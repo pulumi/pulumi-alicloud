@@ -10,8 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Cms
 {
     /// <summary>
-    /// This resource provides a alarm rule resource and it can be used to monitor several cloud services according different metrics.
-    /// Details for [What is alarm](https://www.alibabacloud.com/help/en/cloudmonitor/latest/putresourcemetricrule).
+    /// Provides a Cloud Monitor Service Alarm resource.
+    /// 
+    /// For information about Cloud Monitor Service Alarm and how to use it, see [What is Alarm](https://www.alibabacloud.com/help/en/cloudmonitor/latest/putresourcemetricrule).
     /// 
     /// &gt; **NOTE:** Available since v1.9.1.
     /// 
@@ -29,12 +30,6 @@ namespace Pulumi.AliCloud.Cms
     /// {
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "tf-example";
-    ///     var defaultImages = AliCloud.Ecs.GetImages.Invoke(new()
-    ///     {
-    ///         NameRegex = "^ubuntu_[0-9]+_[0-9]+_x64*",
-    ///         Owners = "system",
-    ///     });
-    /// 
     ///     var defaultZones = AliCloud.GetZones.Invoke(new()
     ///     {
     ///         AvailableResourceCreation = "Instance",
@@ -45,6 +40,12 @@ namespace Pulumi.AliCloud.Cms
     ///         AvailabilityZone = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
     ///         CpuCoreCount = 1,
     ///         MemorySize = 2,
+    ///     });
+    /// 
+    ///     var defaultImages = AliCloud.Ecs.GetImages.Invoke(new()
+    ///     {
+    ///         NameRegex = "^ubuntu_[0-9]+_[0-9]+_x64*",
+    ///         Owners = "system",
     ///     });
     /// 
     ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
@@ -88,7 +89,19 @@ namespace Pulumi.AliCloud.Cms
     ///     {
     ///         Project = "acs_ecs_dashboard",
     ///         Metric = "disk_writebytes",
-    ///         MetricDimensions = defaultInstance.Id.Apply(id =&gt; $"[{{\"instanceId\":\"{id}\",\"device\":\"/dev/vda1\"}}]"),
+    ///         Period = 900,
+    ///         ContactGroups = new[]
+    ///         {
+    ///             defaultAlarmContactGroup.AlarmContactGroupName,
+    ///         },
+    ///         EffectiveInterval = "06:00-20:00",
+    ///         MetricDimensions = defaultInstance.Id.Apply(id =&gt; @$"  [
+    ///     {{
+    ///       ""instanceId"": ""{id}"",
+    ///       ""device"": ""/dev/vda1""
+    ///     }}
+    ///   ]
+    /// "),
     ///         EscalationsCritical = new AliCloud.Cms.Inputs.AlarmEscalationsCriticalArgs
     ///         {
     ///             Statistics = "Average",
@@ -96,12 +109,6 @@ namespace Pulumi.AliCloud.Cms
     ///             Threshold = "35",
     ///             Times = 2,
     ///         },
-    ///         Period = 900,
-    ///         ContactGroups = new[]
-    ///         {
-    ///             defaultAlarmContactGroup.AlarmContactGroupName,
-    ///         },
-    ///         EffectiveInterval = "06:00-20:00",
     ///     });
     /// 
     /// });
@@ -109,10 +116,10 @@ namespace Pulumi.AliCloud.Cms
     /// 
     /// ## Import
     /// 
-    /// Alarm rule can be imported using the id, e.g.
+    /// Cloud Monitor Service Alarm can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:cms/alarm:Alarm alarm abc12345
+    ///  $ pulumi import alicloud:cms/alarm:Alarm example &lt;id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:cms/alarm:Alarm")]
@@ -125,7 +132,7 @@ namespace Pulumi.AliCloud.Cms
         public Output<ImmutableArray<string>> ContactGroups { get; private set; } = null!;
 
         /// <summary>
-        /// Field `dimensions` has been deprecated from version 1.95.0. Use `metric_dimensions` instead.
+        /// Field `dimensions` has been deprecated from provider version 1.173.0. New field `metric_dimensions` instead.
         /// </summary>
         [Output("dimensions")]
         public Output<ImmutableDictionary<string, object>> Dimensions { get; private set; } = null!;
@@ -137,13 +144,13 @@ namespace Pulumi.AliCloud.Cms
         public Output<string?> EffectiveInterval { get; private set; } = null!;
 
         /// <summary>
-        /// Whether to enable alarm rule. Default to true.
+        /// Whether to enable alarm rule. Default value: `true`.
         /// </summary>
         [Output("enabled")]
         public Output<bool?> Enabled { get; private set; } = null!;
 
         /// <summary>
-        /// It has been deprecated from provider version 1.50.0 and 'effective_interval' instead.
+        /// Field `end_time` has been deprecated from provider version 1.50.0. New field `effective_interval` instead.
         /// </summary>
         [Output("endTime")]
         public Output<int?> EndTime { get; private set; } = null!;
@@ -152,22 +159,22 @@ namespace Pulumi.AliCloud.Cms
         /// A configuration of critical alarm. See `escalations_critical` below.
         /// </summary>
         [Output("escalationsCritical")]
-        public Output<Outputs.AlarmEscalationsCritical?> EscalationsCritical { get; private set; } = null!;
+        public Output<Outputs.AlarmEscalationsCritical> EscalationsCritical { get; private set; } = null!;
 
         /// <summary>
         /// A configuration of critical info. See `escalations_info` below.
         /// </summary>
         [Output("escalationsInfo")]
-        public Output<Outputs.AlarmEscalationsInfo?> EscalationsInfo { get; private set; } = null!;
+        public Output<Outputs.AlarmEscalationsInfo> EscalationsInfo { get; private set; } = null!;
 
         /// <summary>
         /// A configuration of critical warn. See `escalations_warn` below.
         /// </summary>
         [Output("escalationsWarn")]
-        public Output<Outputs.AlarmEscalationsWarn?> EscalationsWarn { get; private set; } = null!;
+        public Output<Outputs.AlarmEscalationsWarn> EscalationsWarn { get; private set; } = null!;
 
         /// <summary>
-        /// Name of the monitoring metrics corresponding to a project, such as "CPUUtilization" and "networkin_rate". For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
+        /// The name of the metric, such as `CPUUtilization` and `networkin_rate`. For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
         /// </summary>
         [Output("metric")]
         public Output<string> Metric { get; private set; } = null!;
@@ -179,16 +186,10 @@ namespace Pulumi.AliCloud.Cms
         public Output<string> MetricDimensions { get; private set; } = null!;
 
         /// <summary>
-        /// The alarm rule name.
+        /// The name of the alert rule.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
-
-        /// <summary>
-        /// It has been deprecated from provider version 1.94.0 and 'escalations_critical.comparison_operator' instead.
-        /// </summary>
-        [Output("operator")]
-        public Output<string> Operator { get; private set; } = null!;
 
         /// <summary>
         /// Index query cycle, which must be consistent with that defined for metrics. Default to 300, in seconds.
@@ -197,7 +198,7 @@ namespace Pulumi.AliCloud.Cms
         public Output<int?> Period { get; private set; } = null!;
 
         /// <summary>
-        /// Monitor project name, such as "acs_ecs_dashboard" and "acs_rds_dashboard". For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
+        /// The namespace of the cloud service, such as `acs_ecs_dashboard` and `acs_rds_dashboard`. For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
         /// **NOTE:** The `dimensions` and `metric_dimensions` must be empty when `project` is `acs_prometheus`, otherwise, one of them must be set.
         /// </summary>
         [Output("project")]
@@ -210,48 +211,34 @@ namespace Pulumi.AliCloud.Cms
         public Output<ImmutableArray<Outputs.AlarmPrometheus>> Prometheuses { get; private set; } = null!;
 
         /// <summary>
-        /// Notification silence period in the alarm state, in seconds. Valid value range: [300, 86400]. Default to 86400
+        /// Notification silence period in the alarm state, in seconds. Default value: `86400`. Valid value range: [300, 86400].
         /// </summary>
         [Output("silenceTime")]
         public Output<int?> SilenceTime { get; private set; } = null!;
 
         /// <summary>
-        /// It has been deprecated from provider version 1.50.0 and 'effective_interval' instead.
+        /// Field `start_time` has been deprecated from provider version 1.50.0. New field `effective_interval` instead.
         /// </summary>
         [Output("startTime")]
         public Output<int?> StartTime { get; private set; } = null!;
 
         /// <summary>
-        /// It has been deprecated from provider version 1.94.0 and 'escalations_critical.statistics' instead.
-        /// </summary>
-        [Output("statistics")]
-        public Output<string> Statistics { get; private set; } = null!;
-
-        /// <summary>
-        /// The current alarm rule status.
+        /// The status of the Alarm.
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
         /// A mapping of tags to assign to the resource.
-        /// 
-        /// &gt; **NOTE:** Each resource supports the creation of one of the following three levels.
         /// </summary>
         [Output("tags")]
         public Output<ImmutableDictionary<string, object>?> Tags { get; private set; } = null!;
 
         /// <summary>
-        /// It has been deprecated from provider version 1.94.0 and 'escalations_critical.threshold' instead.
+        /// The information about the resource for which alerts are triggered. See `targets` below.
         /// </summary>
-        [Output("threshold")]
-        public Output<string> Threshold { get; private set; } = null!;
-
-        /// <summary>
-        /// It has been deprecated from provider version 1.94.0 and 'escalations_critical.times' instead.
-        /// </summary>
-        [Output("triggeredCount")]
-        public Output<int> TriggeredCount { get; private set; } = null!;
+        [Output("targets")]
+        public Output<ImmutableArray<Outputs.AlarmTarget>> Targets { get; private set; } = null!;
 
         /// <summary>
         /// The webhook that should be called when the alarm is triggered. Currently, only http protocol is supported. Default is empty string.
@@ -321,9 +308,9 @@ namespace Pulumi.AliCloud.Cms
         private InputMap<object>? _dimensions;
 
         /// <summary>
-        /// Field `dimensions` has been deprecated from version 1.95.0. Use `metric_dimensions` instead.
+        /// Field `dimensions` has been deprecated from provider version 1.173.0. New field `metric_dimensions` instead.
         /// </summary>
-        [Obsolete(@"Field 'dimensions' has been deprecated from version 1.173.0. Use 'metric_dimensions' instead.")]
+        [Obsolete(@"Field `dimensions` has been deprecated from provider version 1.173.0. New field `metric_dimensions` instead.")]
         public InputMap<object> Dimensions
         {
             get => _dimensions ?? (_dimensions = new InputMap<object>());
@@ -337,13 +324,13 @@ namespace Pulumi.AliCloud.Cms
         public Input<string>? EffectiveInterval { get; set; }
 
         /// <summary>
-        /// Whether to enable alarm rule. Default to true.
+        /// Whether to enable alarm rule. Default value: `true`.
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
-        /// It has been deprecated from provider version 1.50.0 and 'effective_interval' instead.
+        /// Field `end_time` has been deprecated from provider version 1.50.0. New field `effective_interval` instead.
         /// </summary>
         [Input("endTime")]
         public Input<int>? EndTime { get; set; }
@@ -367,7 +354,7 @@ namespace Pulumi.AliCloud.Cms
         public Input<Inputs.AlarmEscalationsWarnArgs>? EscalationsWarn { get; set; }
 
         /// <summary>
-        /// Name of the monitoring metrics corresponding to a project, such as "CPUUtilization" and "networkin_rate". For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
+        /// The name of the metric, such as `CPUUtilization` and `networkin_rate`. For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
         /// </summary>
         [Input("metric", required: true)]
         public Input<string> Metric { get; set; } = null!;
@@ -379,16 +366,10 @@ namespace Pulumi.AliCloud.Cms
         public Input<string>? MetricDimensions { get; set; }
 
         /// <summary>
-        /// The alarm rule name.
+        /// The name of the alert rule.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
-
-        /// <summary>
-        /// It has been deprecated from provider version 1.94.0 and 'escalations_critical.comparison_operator' instead.
-        /// </summary>
-        [Input("operator")]
-        public Input<string>? Operator { get; set; }
 
         /// <summary>
         /// Index query cycle, which must be consistent with that defined for metrics. Default to 300, in seconds.
@@ -397,7 +378,7 @@ namespace Pulumi.AliCloud.Cms
         public Input<int>? Period { get; set; }
 
         /// <summary>
-        /// Monitor project name, such as "acs_ecs_dashboard" and "acs_rds_dashboard". For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
+        /// The namespace of the cloud service, such as `acs_ecs_dashboard` and `acs_rds_dashboard`. For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
         /// **NOTE:** The `dimensions` and `metric_dimensions` must be empty when `project` is `acs_prometheus`, otherwise, one of them must be set.
         /// </summary>
         [Input("project", required: true)]
@@ -416,30 +397,22 @@ namespace Pulumi.AliCloud.Cms
         }
 
         /// <summary>
-        /// Notification silence period in the alarm state, in seconds. Valid value range: [300, 86400]. Default to 86400
+        /// Notification silence period in the alarm state, in seconds. Default value: `86400`. Valid value range: [300, 86400].
         /// </summary>
         [Input("silenceTime")]
         public Input<int>? SilenceTime { get; set; }
 
         /// <summary>
-        /// It has been deprecated from provider version 1.50.0 and 'effective_interval' instead.
+        /// Field `start_time` has been deprecated from provider version 1.50.0. New field `effective_interval` instead.
         /// </summary>
         [Input("startTime")]
         public Input<int>? StartTime { get; set; }
-
-        /// <summary>
-        /// It has been deprecated from provider version 1.94.0 and 'escalations_critical.statistics' instead.
-        /// </summary>
-        [Input("statistics")]
-        public Input<string>? Statistics { get; set; }
 
         [Input("tags")]
         private InputMap<object>? _tags;
 
         /// <summary>
         /// A mapping of tags to assign to the resource.
-        /// 
-        /// &gt; **NOTE:** Each resource supports the creation of one of the following three levels.
         /// </summary>
         public InputMap<object> Tags
         {
@@ -447,17 +420,17 @@ namespace Pulumi.AliCloud.Cms
             set => _tags = value;
         }
 
-        /// <summary>
-        /// It has been deprecated from provider version 1.94.0 and 'escalations_critical.threshold' instead.
-        /// </summary>
-        [Input("threshold")]
-        public Input<string>? Threshold { get; set; }
+        [Input("targets")]
+        private InputList<Inputs.AlarmTargetArgs>? _targets;
 
         /// <summary>
-        /// It has been deprecated from provider version 1.94.0 and 'escalations_critical.times' instead.
+        /// The information about the resource for which alerts are triggered. See `targets` below.
         /// </summary>
-        [Input("triggeredCount")]
-        public Input<int>? TriggeredCount { get; set; }
+        public InputList<Inputs.AlarmTargetArgs> Targets
+        {
+            get => _targets ?? (_targets = new InputList<Inputs.AlarmTargetArgs>());
+            set => _targets = value;
+        }
 
         /// <summary>
         /// The webhook that should be called when the alarm is triggered. Currently, only http protocol is supported. Default is empty string.
@@ -489,9 +462,9 @@ namespace Pulumi.AliCloud.Cms
         private InputMap<object>? _dimensions;
 
         /// <summary>
-        /// Field `dimensions` has been deprecated from version 1.95.0. Use `metric_dimensions` instead.
+        /// Field `dimensions` has been deprecated from provider version 1.173.0. New field `metric_dimensions` instead.
         /// </summary>
-        [Obsolete(@"Field 'dimensions' has been deprecated from version 1.173.0. Use 'metric_dimensions' instead.")]
+        [Obsolete(@"Field `dimensions` has been deprecated from provider version 1.173.0. New field `metric_dimensions` instead.")]
         public InputMap<object> Dimensions
         {
             get => _dimensions ?? (_dimensions = new InputMap<object>());
@@ -505,13 +478,13 @@ namespace Pulumi.AliCloud.Cms
         public Input<string>? EffectiveInterval { get; set; }
 
         /// <summary>
-        /// Whether to enable alarm rule. Default to true.
+        /// Whether to enable alarm rule. Default value: `true`.
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
-        /// It has been deprecated from provider version 1.50.0 and 'effective_interval' instead.
+        /// Field `end_time` has been deprecated from provider version 1.50.0. New field `effective_interval` instead.
         /// </summary>
         [Input("endTime")]
         public Input<int>? EndTime { get; set; }
@@ -535,7 +508,7 @@ namespace Pulumi.AliCloud.Cms
         public Input<Inputs.AlarmEscalationsWarnGetArgs>? EscalationsWarn { get; set; }
 
         /// <summary>
-        /// Name of the monitoring metrics corresponding to a project, such as "CPUUtilization" and "networkin_rate". For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
+        /// The name of the metric, such as `CPUUtilization` and `networkin_rate`. For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
         /// </summary>
         [Input("metric")]
         public Input<string>? Metric { get; set; }
@@ -547,16 +520,10 @@ namespace Pulumi.AliCloud.Cms
         public Input<string>? MetricDimensions { get; set; }
 
         /// <summary>
-        /// The alarm rule name.
+        /// The name of the alert rule.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
-
-        /// <summary>
-        /// It has been deprecated from provider version 1.94.0 and 'escalations_critical.comparison_operator' instead.
-        /// </summary>
-        [Input("operator")]
-        public Input<string>? Operator { get; set; }
 
         /// <summary>
         /// Index query cycle, which must be consistent with that defined for metrics. Default to 300, in seconds.
@@ -565,7 +532,7 @@ namespace Pulumi.AliCloud.Cms
         public Input<int>? Period { get; set; }
 
         /// <summary>
-        /// Monitor project name, such as "acs_ecs_dashboard" and "acs_rds_dashboard". For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
+        /// The namespace of the cloud service, such as `acs_ecs_dashboard` and `acs_rds_dashboard`. For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
         /// **NOTE:** The `dimensions` and `metric_dimensions` must be empty when `project` is `acs_prometheus`, otherwise, one of them must be set.
         /// </summary>
         [Input("project")]
@@ -584,25 +551,19 @@ namespace Pulumi.AliCloud.Cms
         }
 
         /// <summary>
-        /// Notification silence period in the alarm state, in seconds. Valid value range: [300, 86400]. Default to 86400
+        /// Notification silence period in the alarm state, in seconds. Default value: `86400`. Valid value range: [300, 86400].
         /// </summary>
         [Input("silenceTime")]
         public Input<int>? SilenceTime { get; set; }
 
         /// <summary>
-        /// It has been deprecated from provider version 1.50.0 and 'effective_interval' instead.
+        /// Field `start_time` has been deprecated from provider version 1.50.0. New field `effective_interval` instead.
         /// </summary>
         [Input("startTime")]
         public Input<int>? StartTime { get; set; }
 
         /// <summary>
-        /// It has been deprecated from provider version 1.94.0 and 'escalations_critical.statistics' instead.
-        /// </summary>
-        [Input("statistics")]
-        public Input<string>? Statistics { get; set; }
-
-        /// <summary>
-        /// The current alarm rule status.
+        /// The status of the Alarm.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
@@ -612,8 +573,6 @@ namespace Pulumi.AliCloud.Cms
 
         /// <summary>
         /// A mapping of tags to assign to the resource.
-        /// 
-        /// &gt; **NOTE:** Each resource supports the creation of one of the following three levels.
         /// </summary>
         public InputMap<object> Tags
         {
@@ -621,17 +580,17 @@ namespace Pulumi.AliCloud.Cms
             set => _tags = value;
         }
 
-        /// <summary>
-        /// It has been deprecated from provider version 1.94.0 and 'escalations_critical.threshold' instead.
-        /// </summary>
-        [Input("threshold")]
-        public Input<string>? Threshold { get; set; }
+        [Input("targets")]
+        private InputList<Inputs.AlarmTargetGetArgs>? _targets;
 
         /// <summary>
-        /// It has been deprecated from provider version 1.94.0 and 'escalations_critical.times' instead.
+        /// The information about the resource for which alerts are triggered. See `targets` below.
         /// </summary>
-        [Input("triggeredCount")]
-        public Input<int>? TriggeredCount { get; set; }
+        public InputList<Inputs.AlarmTargetGetArgs> Targets
+        {
+            get => _targets ?? (_targets = new InputList<Inputs.AlarmTargetGetArgs>());
+            set => _targets = value;
+        }
 
         /// <summary>
         /// The webhook that should be called when the alarm is triggered. Currently, only http protocol is supported. Default is empty string.

@@ -22,9 +22,15 @@ import * as utilities from "../utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
+ * import * as random from "@pulumi/random";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "terraform-example";
+ * const defaultRandomInteger = new random.RandomInteger("defaultRandomInteger", {
+ *     min: 10000,
+ *     max: 99999,
+ * });
+ * const myName = pulumi.interpolate`${name}-${defaultRandomInteger.result}`;
  * const defaultZones = alicloud.getZones({
  *     availableDiskCategory: "cloud_efficiency",
  *     availableResourceCreation: "VSwitch",
@@ -40,20 +46,20 @@ import * as utilities from "../utilities";
  *     owners: "system",
  * });
  * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {
- *     vpcName: name,
+ *     vpcName: myName,
  *     cidrBlock: "172.16.0.0/16",
  * });
  * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
  *     vpcId: defaultNetwork.id,
  *     cidrBlock: "172.16.0.0/24",
  *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
- *     vswitchName: name,
+ *     vswitchName: myName,
  * });
  * const defaultSecurityGroup = new alicloud.ecs.SecurityGroup("defaultSecurityGroup", {vpcId: defaultNetwork.id});
  * const defaultScalingGroup = new alicloud.ess.ScalingGroup("defaultScalingGroup", {
  *     minSize: 0,
  *     maxSize: 2,
- *     scalingGroupName: name,
+ *     scalingGroupName: myName,
  *     defaultCooldown: 200,
  *     removalPolicies: ["OldestInstance"],
  *     vswitchIds: [defaultSwitch.id],
@@ -68,7 +74,7 @@ import * as utilities from "../utilities";
  *     enable: true,
  * });
  * const defaultServerGroup = new alicloud.alb.ServerGroup("defaultServerGroup", {
- *     serverGroupName: name,
+ *     serverGroupName: myName,
  *     vpcId: defaultNetwork.id,
  *     healthCheckConfig: {
  *         healthCheckEnabled: false,

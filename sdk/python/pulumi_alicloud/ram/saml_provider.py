@@ -14,20 +14,31 @@ __all__ = ['SamlProviderArgs', 'SamlProvider']
 @pulumi.input_type
 class SamlProviderArgs:
     def __init__(__self__, *,
+                 encodedsaml_metadata_document: pulumi.Input[str],
                  saml_provider_name: pulumi.Input[str],
-                 description: Optional[pulumi.Input[str]] = None,
-                 encodedsaml_metadata_document: Optional[pulumi.Input[str]] = None):
+                 description: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a SamlProvider resource.
+        :param pulumi.Input[str] encodedsaml_metadata_document: The metadata file, which is Base64 encoded. The file is provided by an IdP that supports SAML 2.0.
         :param pulumi.Input[str] saml_provider_name: The name of SAML Provider.
         :param pulumi.Input[str] description: The description of SAML Provider.
-        :param pulumi.Input[str] encodedsaml_metadata_document: The metadata file, which is Base64 encoded. The file is provided by an IdP that supports SAML 2.0.
         """
+        pulumi.set(__self__, "encodedsaml_metadata_document", encodedsaml_metadata_document)
         pulumi.set(__self__, "saml_provider_name", saml_provider_name)
         if description is not None:
             pulumi.set(__self__, "description", description)
-        if encodedsaml_metadata_document is not None:
-            pulumi.set(__self__, "encodedsaml_metadata_document", encodedsaml_metadata_document)
+
+    @property
+    @pulumi.getter(name="encodedsamlMetadataDocument")
+    def encodedsaml_metadata_document(self) -> pulumi.Input[str]:
+        """
+        The metadata file, which is Base64 encoded. The file is provided by an IdP that supports SAML 2.0.
+        """
+        return pulumi.get(self, "encodedsaml_metadata_document")
+
+    @encodedsaml_metadata_document.setter
+    def encodedsaml_metadata_document(self, value: pulumi.Input[str]):
+        pulumi.set(self, "encodedsaml_metadata_document", value)
 
     @property
     @pulumi.getter(name="samlProviderName")
@@ -52,18 +63,6 @@ class SamlProviderArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
-
-    @property
-    @pulumi.getter(name="encodedsamlMetadataDocument")
-    def encodedsaml_metadata_document(self) -> Optional[pulumi.Input[str]]:
-        """
-        The metadata file, which is Base64 encoded. The file is provided by an IdP that supports SAML 2.0.
-        """
-        return pulumi.get(self, "encodedsaml_metadata_document")
-
-    @encodedsaml_metadata_document.setter
-    def encodedsaml_metadata_document(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "encodedsaml_metadata_document", value)
 
 
 @pulumi.input_type
@@ -166,9 +165,9 @@ class SamlProvider(pulumi.CustomResource):
         """
         Provides a RAM SAML Provider resource.
 
-        For information about RAM SAML Provider and how to use it, see [What is SAML Provider](https://www.alibabacloud.com/help/doc-detail/186846.htm).
+        For information about RAM SAML Provider and how to use it, see [What is SAML Provider](https://www.alibabacloud.com/help/en/ram/developer-reference/api-ims-2019-08-15-createsamlprovider).
 
-        > **NOTE:** Available since v1.114.0+.
+        > **NOTE:** Available since v1.114.0.
 
         ## Example Usage
 
@@ -209,9 +208,9 @@ class SamlProvider(pulumi.CustomResource):
         """
         Provides a RAM SAML Provider resource.
 
-        For information about RAM SAML Provider and how to use it, see [What is SAML Provider](https://www.alibabacloud.com/help/doc-detail/186846.htm).
+        For information about RAM SAML Provider and how to use it, see [What is SAML Provider](https://www.alibabacloud.com/help/en/ram/developer-reference/api-ims-2019-08-15-createsamlprovider).
 
-        > **NOTE:** Available since v1.114.0+.
+        > **NOTE:** Available since v1.114.0.
 
         ## Example Usage
 
@@ -265,6 +264,8 @@ class SamlProvider(pulumi.CustomResource):
             __props__ = SamlProviderArgs.__new__(SamlProviderArgs)
 
             __props__.__dict__["description"] = description
+            if encodedsaml_metadata_document is None and not opts.urn:
+                raise TypeError("Missing required property 'encodedsaml_metadata_document'")
             __props__.__dict__["encodedsaml_metadata_document"] = encodedsaml_metadata_document
             if saml_provider_name is None and not opts.urn:
                 raise TypeError("Missing required property 'saml_provider_name'")
@@ -328,7 +329,7 @@ class SamlProvider(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="encodedsamlMetadataDocument")
-    def encodedsaml_metadata_document(self) -> pulumi.Output[Optional[str]]:
+    def encodedsaml_metadata_document(self) -> pulumi.Output[str]:
         """
         The metadata file, which is Base64 encoded. The file is provided by an IdP that supports SAML 2.0.
         """

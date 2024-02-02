@@ -50,7 +50,7 @@ namespace Pulumi.AliCloud.Amqp
     ///     {
     ///         AutoDeleteState = false,
     ///         ExchangeName = "tf-example",
-    ///         ExchangeType = "DIRECT",
+    ///         ExchangeType = "HEADERS",
     ///         InstanceId = defaultInstance.Id,
     ///         Internal = false,
     ///         VirtualHostName = defaultVirtualHost.VirtualHostName,

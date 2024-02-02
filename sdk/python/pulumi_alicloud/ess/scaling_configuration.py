@@ -29,6 +29,7 @@ class ScalingConfigurationArgs:
                  instance_name: Optional[pulumi.Input[str]] = None,
                  instance_pattern_infos: Optional[pulumi.Input[Sequence[pulumi.Input['ScalingConfigurationInstancePatternInfoArgs']]]] = None,
                  instance_type: Optional[pulumi.Input[str]] = None,
+                 instance_type_overrides: Optional[pulumi.Input[Sequence[pulumi.Input['ScalingConfigurationInstanceTypeOverrideArgs']]]] = None,
                  instance_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  internet_charge_type: Optional[pulumi.Input[str]] = None,
                  internet_max_bandwidth_in: Optional[pulumi.Input[int]] = None,
@@ -73,6 +74,7 @@ class ScalingConfigurationArgs:
         :param pulumi.Input[str] instance_name: Name of an ECS instance. Default to "ESS-Instance". It is valid from version 1.7.1.
         :param pulumi.Input[Sequence[pulumi.Input['ScalingConfigurationInstancePatternInfoArgs']]] instance_pattern_infos: intelligent configuration mode. In this mode, you only need to specify the number of vCPUs, memory size, instance family, and maximum price. The system selects an instance type that is provided at the lowest price based on your configurations to create ECS instances. This mode is available only for scaling groups that reside in virtual private clouds (VPCs). This mode helps reduce the failures of scale-out activities caused by insufficient inventory of instance types.  See `instance_pattern_info` below for details.
         :param pulumi.Input[str] instance_type: Resource type of an ECS instance.
+        :param pulumi.Input[Sequence[pulumi.Input['ScalingConfigurationInstanceTypeOverrideArgs']]] instance_type_overrides: specify the weight of instance type.  See `instance_type_override` below for details.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_types: Resource types of an ECS instance.
         :param pulumi.Input[str] internet_charge_type: Network billing type, Values: PayByBandwidth or PayByTraffic. Default to `PayByBandwidth`.
         :param pulumi.Input[int] internet_max_bandwidth_in: Maximum incoming bandwidth from the public network, measured in Mbps (Mega bit per second). The value range is [1,200].
@@ -147,6 +149,8 @@ class ScalingConfigurationArgs:
             pulumi.set(__self__, "instance_pattern_infos", instance_pattern_infos)
         if instance_type is not None:
             pulumi.set(__self__, "instance_type", instance_type)
+        if instance_type_overrides is not None:
+            pulumi.set(__self__, "instance_type_overrides", instance_type_overrides)
         if instance_types is not None:
             pulumi.set(__self__, "instance_types", instance_types)
         if internet_charge_type is not None:
@@ -367,6 +371,18 @@ class ScalingConfigurationArgs:
     @instance_type.setter
     def instance_type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "instance_type", value)
+
+    @property
+    @pulumi.getter(name="instanceTypeOverrides")
+    def instance_type_overrides(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ScalingConfigurationInstanceTypeOverrideArgs']]]]:
+        """
+        specify the weight of instance type.  See `instance_type_override` below for details.
+        """
+        return pulumi.get(self, "instance_type_overrides")
+
+    @instance_type_overrides.setter
+    def instance_type_overrides(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ScalingConfigurationInstanceTypeOverrideArgs']]]]):
+        pulumi.set(self, "instance_type_overrides", value)
 
     @property
     @pulumi.getter(name="instanceTypes")
@@ -751,6 +767,7 @@ class _ScalingConfigurationState:
                  instance_name: Optional[pulumi.Input[str]] = None,
                  instance_pattern_infos: Optional[pulumi.Input[Sequence[pulumi.Input['ScalingConfigurationInstancePatternInfoArgs']]]] = None,
                  instance_type: Optional[pulumi.Input[str]] = None,
+                 instance_type_overrides: Optional[pulumi.Input[Sequence[pulumi.Input['ScalingConfigurationInstanceTypeOverrideArgs']]]] = None,
                  instance_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  internet_charge_type: Optional[pulumi.Input[str]] = None,
                  internet_max_bandwidth_in: Optional[pulumi.Input[int]] = None,
@@ -795,6 +812,7 @@ class _ScalingConfigurationState:
         :param pulumi.Input[str] instance_name: Name of an ECS instance. Default to "ESS-Instance". It is valid from version 1.7.1.
         :param pulumi.Input[Sequence[pulumi.Input['ScalingConfigurationInstancePatternInfoArgs']]] instance_pattern_infos: intelligent configuration mode. In this mode, you only need to specify the number of vCPUs, memory size, instance family, and maximum price. The system selects an instance type that is provided at the lowest price based on your configurations to create ECS instances. This mode is available only for scaling groups that reside in virtual private clouds (VPCs). This mode helps reduce the failures of scale-out activities caused by insufficient inventory of instance types.  See `instance_pattern_info` below for details.
         :param pulumi.Input[str] instance_type: Resource type of an ECS instance.
+        :param pulumi.Input[Sequence[pulumi.Input['ScalingConfigurationInstanceTypeOverrideArgs']]] instance_type_overrides: specify the weight of instance type.  See `instance_type_override` below for details.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_types: Resource types of an ECS instance.
         :param pulumi.Input[str] internet_charge_type: Network billing type, Values: PayByBandwidth or PayByTraffic. Default to `PayByBandwidth`.
         :param pulumi.Input[int] internet_max_bandwidth_in: Maximum incoming bandwidth from the public network, measured in Mbps (Mega bit per second). The value range is [1,200].
@@ -869,6 +887,8 @@ class _ScalingConfigurationState:
             pulumi.set(__self__, "instance_pattern_infos", instance_pattern_infos)
         if instance_type is not None:
             pulumi.set(__self__, "instance_type", instance_type)
+        if instance_type_overrides is not None:
+            pulumi.set(__self__, "instance_type_overrides", instance_type_overrides)
         if instance_types is not None:
             pulumi.set(__self__, "instance_types", instance_types)
         if internet_charge_type is not None:
@@ -1079,6 +1099,18 @@ class _ScalingConfigurationState:
     @instance_type.setter
     def instance_type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "instance_type", value)
+
+    @property
+    @pulumi.getter(name="instanceTypeOverrides")
+    def instance_type_overrides(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ScalingConfigurationInstanceTypeOverrideArgs']]]]:
+        """
+        specify the weight of instance type.  See `instance_type_override` below for details.
+        """
+        return pulumi.get(self, "instance_type_overrides")
+
+    @instance_type_overrides.setter
+    def instance_type_overrides(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ScalingConfigurationInstanceTypeOverrideArgs']]]]):
+        pulumi.set(self, "instance_type_overrides", value)
 
     @property
     @pulumi.getter(name="instanceTypes")
@@ -1477,6 +1509,7 @@ class ScalingConfiguration(pulumi.CustomResource):
                  instance_name: Optional[pulumi.Input[str]] = None,
                  instance_pattern_infos: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ScalingConfigurationInstancePatternInfoArgs']]]]] = None,
                  instance_type: Optional[pulumi.Input[str]] = None,
+                 instance_type_overrides: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ScalingConfigurationInstanceTypeOverrideArgs']]]]] = None,
                  instance_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  internet_charge_type: Optional[pulumi.Input[str]] = None,
                  internet_max_bandwidth_in: Optional[pulumi.Input[int]] = None,
@@ -1520,11 +1553,16 @@ class ScalingConfiguration(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
             name = "terraform-example"
+        default_random_integer = random.RandomInteger("defaultRandomInteger",
+            min=10000,
+            max=99999)
+        my_name = default_random_integer.result.apply(lambda result: f"{name}-{result}")
         default_zones = alicloud.get_zones(available_disk_category="cloud_efficiency",
             available_resource_creation="VSwitch")
         default_instance_types = alicloud.ecs.get_instance_types(availability_zone=default_zones.zones[0].id,
@@ -1534,13 +1572,13 @@ class ScalingConfiguration(pulumi.CustomResource):
             most_recent=True,
             owners="system")
         default_network = alicloud.vpc.Network("defaultNetwork",
-            vpc_name=name,
+            vpc_name=my_name,
             cidr_block="172.16.0.0/16")
         default_switch = alicloud.vpc.Switch("defaultSwitch",
             vpc_id=default_network.id,
             cidr_block="172.16.0.0/24",
             zone_id=default_zones.zones[0].id,
-            vswitch_name=name)
+            vswitch_name=my_name)
         default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
         default_security_group_rule = alicloud.ecs.SecurityGroupRule("defaultSecurityGroupRule",
             type="ingress",
@@ -1554,7 +1592,7 @@ class ScalingConfiguration(pulumi.CustomResource):
         default_scaling_group = alicloud.ess.ScalingGroup("defaultScalingGroup",
             min_size=1,
             max_size=1,
-            scaling_group_name=name,
+            scaling_group_name=my_name,
             removal_policies=[
                 "OldestInstance",
                 "NewestInstance",
@@ -1595,6 +1633,7 @@ class ScalingConfiguration(pulumi.CustomResource):
         :param pulumi.Input[str] instance_name: Name of an ECS instance. Default to "ESS-Instance". It is valid from version 1.7.1.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ScalingConfigurationInstancePatternInfoArgs']]]] instance_pattern_infos: intelligent configuration mode. In this mode, you only need to specify the number of vCPUs, memory size, instance family, and maximum price. The system selects an instance type that is provided at the lowest price based on your configurations to create ECS instances. This mode is available only for scaling groups that reside in virtual private clouds (VPCs). This mode helps reduce the failures of scale-out activities caused by insufficient inventory of instance types.  See `instance_pattern_info` below for details.
         :param pulumi.Input[str] instance_type: Resource type of an ECS instance.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ScalingConfigurationInstanceTypeOverrideArgs']]]] instance_type_overrides: specify the weight of instance type.  See `instance_type_override` below for details.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_types: Resource types of an ECS instance.
         :param pulumi.Input[str] internet_charge_type: Network billing type, Values: PayByBandwidth or PayByTraffic. Default to `PayByBandwidth`.
         :param pulumi.Input[int] internet_max_bandwidth_in: Maximum incoming bandwidth from the public network, measured in Mbps (Mega bit per second). The value range is [1,200].
@@ -1660,11 +1699,16 @@ class ScalingConfiguration(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
             name = "terraform-example"
+        default_random_integer = random.RandomInteger("defaultRandomInteger",
+            min=10000,
+            max=99999)
+        my_name = default_random_integer.result.apply(lambda result: f"{name}-{result}")
         default_zones = alicloud.get_zones(available_disk_category="cloud_efficiency",
             available_resource_creation="VSwitch")
         default_instance_types = alicloud.ecs.get_instance_types(availability_zone=default_zones.zones[0].id,
@@ -1674,13 +1718,13 @@ class ScalingConfiguration(pulumi.CustomResource):
             most_recent=True,
             owners="system")
         default_network = alicloud.vpc.Network("defaultNetwork",
-            vpc_name=name,
+            vpc_name=my_name,
             cidr_block="172.16.0.0/16")
         default_switch = alicloud.vpc.Switch("defaultSwitch",
             vpc_id=default_network.id,
             cidr_block="172.16.0.0/24",
             zone_id=default_zones.zones[0].id,
-            vswitch_name=name)
+            vswitch_name=my_name)
         default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
         default_security_group_rule = alicloud.ecs.SecurityGroupRule("defaultSecurityGroupRule",
             type="ingress",
@@ -1694,7 +1738,7 @@ class ScalingConfiguration(pulumi.CustomResource):
         default_scaling_group = alicloud.ess.ScalingGroup("defaultScalingGroup",
             min_size=1,
             max_size=1,
-            scaling_group_name=name,
+            scaling_group_name=my_name,
             removal_policies=[
                 "OldestInstance",
                 "NewestInstance",
@@ -1748,6 +1792,7 @@ class ScalingConfiguration(pulumi.CustomResource):
                  instance_name: Optional[pulumi.Input[str]] = None,
                  instance_pattern_infos: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ScalingConfigurationInstancePatternInfoArgs']]]]] = None,
                  instance_type: Optional[pulumi.Input[str]] = None,
+                 instance_type_overrides: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ScalingConfigurationInstanceTypeOverrideArgs']]]]] = None,
                  instance_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  internet_charge_type: Optional[pulumi.Input[str]] = None,
                  internet_max_bandwidth_in: Optional[pulumi.Input[int]] = None,
@@ -1799,6 +1844,7 @@ class ScalingConfiguration(pulumi.CustomResource):
             __props__.__dict__["instance_name"] = instance_name
             __props__.__dict__["instance_pattern_infos"] = instance_pattern_infos
             __props__.__dict__["instance_type"] = instance_type
+            __props__.__dict__["instance_type_overrides"] = instance_type_overrides
             __props__.__dict__["instance_types"] = instance_types
             __props__.__dict__["internet_charge_type"] = internet_charge_type
             __props__.__dict__["internet_max_bandwidth_in"] = internet_max_bandwidth_in
@@ -1853,6 +1899,7 @@ class ScalingConfiguration(pulumi.CustomResource):
             instance_name: Optional[pulumi.Input[str]] = None,
             instance_pattern_infos: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ScalingConfigurationInstancePatternInfoArgs']]]]] = None,
             instance_type: Optional[pulumi.Input[str]] = None,
+            instance_type_overrides: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ScalingConfigurationInstanceTypeOverrideArgs']]]]] = None,
             instance_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             internet_charge_type: Optional[pulumi.Input[str]] = None,
             internet_max_bandwidth_in: Optional[pulumi.Input[int]] = None,
@@ -1902,6 +1949,7 @@ class ScalingConfiguration(pulumi.CustomResource):
         :param pulumi.Input[str] instance_name: Name of an ECS instance. Default to "ESS-Instance". It is valid from version 1.7.1.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ScalingConfigurationInstancePatternInfoArgs']]]] instance_pattern_infos: intelligent configuration mode. In this mode, you only need to specify the number of vCPUs, memory size, instance family, and maximum price. The system selects an instance type that is provided at the lowest price based on your configurations to create ECS instances. This mode is available only for scaling groups that reside in virtual private clouds (VPCs). This mode helps reduce the failures of scale-out activities caused by insufficient inventory of instance types.  See `instance_pattern_info` below for details.
         :param pulumi.Input[str] instance_type: Resource type of an ECS instance.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ScalingConfigurationInstanceTypeOverrideArgs']]]] instance_type_overrides: specify the weight of instance type.  See `instance_type_override` below for details.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_types: Resource types of an ECS instance.
         :param pulumi.Input[str] internet_charge_type: Network billing type, Values: PayByBandwidth or PayByTraffic. Default to `PayByBandwidth`.
         :param pulumi.Input[int] internet_max_bandwidth_in: Maximum incoming bandwidth from the public network, measured in Mbps (Mega bit per second). The value range is [1,200].
@@ -1965,6 +2013,7 @@ class ScalingConfiguration(pulumi.CustomResource):
         __props__.__dict__["instance_name"] = instance_name
         __props__.__dict__["instance_pattern_infos"] = instance_pattern_infos
         __props__.__dict__["instance_type"] = instance_type
+        __props__.__dict__["instance_type_overrides"] = instance_type_overrides
         __props__.__dict__["instance_types"] = instance_types
         __props__.__dict__["internet_charge_type"] = internet_charge_type
         __props__.__dict__["internet_max_bandwidth_in"] = internet_max_bandwidth_in
@@ -2095,6 +2144,14 @@ class ScalingConfiguration(pulumi.CustomResource):
         Resource type of an ECS instance.
         """
         return pulumi.get(self, "instance_type")
+
+    @property
+    @pulumi.getter(name="instanceTypeOverrides")
+    def instance_type_overrides(self) -> pulumi.Output[Optional[Sequence['outputs.ScalingConfigurationInstanceTypeOverride']]]:
+        """
+        specify the weight of instance type.  See `instance_type_override` below for details.
+        """
+        return pulumi.get(self, "instance_type_overrides")
 
     @property
     @pulumi.getter(name="instanceTypes")

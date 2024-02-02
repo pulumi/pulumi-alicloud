@@ -14,62 +14,62 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ConnectionHealthCheckConfig {
     /**
-     * @return The destination IP address.
+     * @return Destination IP.
      * 
      */
     private @Nullable String dip;
     /**
-     * @return Whether to enable Health Check.
+     * @return Specifies whether to enable healthcheck.
      * 
      */
     private @Nullable Boolean enable;
     /**
-     * @return The interval between two consecutive health checks. Unit: seconds.
+     * @return Retry interval.
      * 
      */
     private @Nullable Integer interval;
     /**
-     * @return The maximum number of health check retries.
+     * @return retry times.
      * 
      */
     private @Nullable Integer retry;
     /**
-     * @return The source IP address.
+     * @return Source IP.
      * 
      */
     private @Nullable String sip;
 
     private ConnectionHealthCheckConfig() {}
     /**
-     * @return The destination IP address.
+     * @return Destination IP.
      * 
      */
     public Optional<String> dip() {
         return Optional.ofNullable(this.dip);
     }
     /**
-     * @return Whether to enable Health Check.
+     * @return Specifies whether to enable healthcheck.
      * 
      */
     public Optional<Boolean> enable() {
         return Optional.ofNullable(this.enable);
     }
     /**
-     * @return The interval between two consecutive health checks. Unit: seconds.
+     * @return Retry interval.
      * 
      */
     public Optional<Integer> interval() {
         return Optional.ofNullable(this.interval);
     }
     /**
-     * @return The maximum number of health check retries.
+     * @return retry times.
      * 
      */
     public Optional<Integer> retry() {
         return Optional.ofNullable(this.retry);
     }
     /**
-     * @return The source IP address.
+     * @return Source IP.
      * 
      */
     public Optional<String> sip() {

@@ -264,6 +264,8 @@ type eipArgs struct {
 	InstanceChargeType *string `pulumi:"instanceChargeType"`
 	// Internet charge type of the EIP, Valid values are `PayByBandwidth`, `PayByTraffic`. Default to `PayByBandwidth`. **NOTE:** From version `1.7.1` to `1.125.0`, it defaults to `PayByTraffic`. It is only "PayByBandwidth" when `instanceChargeType` is PrePaid.
 	InternetChargeType *string `pulumi:"internetChargeType"`
+	// The elastic ip address
+	IpAddress *string `pulumi:"ipAddress"`
 	// The line type of the Elastic IP instance. Default to `BGP`. Other type of the isp need to open a whitelist.
 	Isp        *string `pulumi:"isp"`
 	LogProject *string `pulumi:"logProject"`
@@ -309,6 +311,8 @@ type EipArgs struct {
 	InstanceChargeType pulumi.StringPtrInput
 	// Internet charge type of the EIP, Valid values are `PayByBandwidth`, `PayByTraffic`. Default to `PayByBandwidth`. **NOTE:** From version `1.7.1` to `1.125.0`, it defaults to `PayByTraffic`. It is only "PayByBandwidth" when `instanceChargeType` is PrePaid.
 	InternetChargeType pulumi.StringPtrInput
+	// The elastic ip address
+	IpAddress pulumi.StringPtrInput
 	// The line type of the Elastic IP instance. Default to `BGP`. Other type of the isp need to open a whitelist.
 	Isp        pulumi.StringPtrInput
 	LogProject pulumi.StringPtrInput

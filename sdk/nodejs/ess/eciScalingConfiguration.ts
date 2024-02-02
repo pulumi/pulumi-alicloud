@@ -22,32 +22,32 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  * import * as random from "@pulumi/random";
  *
- * const defaultRandomInteger: random.RandomInteger[] = [];
- * for (const range = {value: 0}; range.value < 2; range.value++) {
- *     defaultRandomInteger.push(new random.RandomInteger(`defaultRandomInteger-${range.value}`, {
- *         max: 99999,
- *         min: 10000,
- *     }));
- * }
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "terraform-example";
+ * const defaultRandomInteger = new random.RandomInteger("defaultRandomInteger", {
+ *     min: 10000,
+ *     max: 99999,
+ * });
+ * const myName = pulumi.interpolate`${name}-${defaultRandomInteger.result}`;
  * const defaultZones = alicloud.getZones({
  *     availableDiskCategory: "cloud_efficiency",
  *     availableResourceCreation: "VSwitch",
  * });
  * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {
- *     vpcName: pulumi.interpolate`terraform-example-${defaultRandomInteger[0].result}`,
+ *     vpcName: myName,
  *     cidrBlock: "172.16.0.0/16",
  * });
  * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
  *     vpcId: defaultNetwork.id,
  *     cidrBlock: "172.16.0.0/24",
  *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
- *     vswitchName: pulumi.interpolate`terraform-example-${defaultRandomInteger[0].result}`,
+ *     vswitchName: myName,
  * });
  * const defaultSecurityGroup = new alicloud.ecs.SecurityGroup("defaultSecurityGroup", {vpcId: defaultNetwork.id});
  * const defaultScalingGroup = new alicloud.ess.ScalingGroup("defaultScalingGroup", {
  *     minSize: 0,
  *     maxSize: 1,
- *     scalingGroupName: pulumi.interpolate`terraform-example-${defaultRandomInteger[0].result}`,
+ *     scalingGroupName: myName,
  *     removalPolicies: [
  *         "OldestInstance",
  *         "NewestInstance",

@@ -17,22 +17,22 @@ public final class InstanceDataDiskArgs extends com.pulumi.resources.ResourceArg
     public static final InstanceDataDiskArgs Empty = new InstanceDataDiskArgs();
 
     /**
-     * Type of dataDisk
-     * - cloud_efficiency：High-efficiency cloud disk
-     * - cloud_ssd：Full flash cloud disk
-     * - local_hdd：Local hdd disk
-     * - local_ssd：Local disk ssd.
+     * Data disk type. Optional values:
+     * - cloud_efficiency: Ultra cloud disk
+     * - cloud_ssd: Full Flash cloud disk
+     * - local_hdd: local hdd disk
+     * - local_ssd: local disk ssd.
      * 
      */
     @Import(name="category")
     private @Nullable Output<String> category;
 
     /**
-     * @return Type of dataDisk
-     * - cloud_efficiency：High-efficiency cloud disk
-     * - cloud_ssd：Full flash cloud disk
-     * - local_hdd：Local hdd disk
-     * - local_ssd：Local disk ssd.
+     * @return Data disk type. Optional values:
+     * - cloud_efficiency: Ultra cloud disk
+     * - cloud_ssd: Full Flash cloud disk
+     * - local_hdd: local hdd disk
+     * - local_ssd: local disk ssd.
      * 
      */
     public Optional<Output<String>> category() {
@@ -40,14 +40,14 @@ public final class InstanceDataDiskArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Data disk size, cloud_efficiency is 20-32000,cloud_ssd/local_hdd/local_ssd is 20-25000, unit: GB.
+     * Data disk size, unit: GB.
      * 
      */
     @Import(name="size")
     private @Nullable Output<Integer> size;
 
     /**
-     * @return Data disk size, cloud_efficiency is 20-32000,cloud_ssd/local_hdd/local_ssd is 20-25000, unit: GB.
+     * @return Data disk size, unit: GB.
      * 
      */
     public Optional<Output<Integer>> size() {
@@ -80,11 +80,11 @@ public final class InstanceDataDiskArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param category Type of dataDisk
-         * - cloud_efficiency：High-efficiency cloud disk
-         * - cloud_ssd：Full flash cloud disk
-         * - local_hdd：Local hdd disk
-         * - local_ssd：Local disk ssd.
+         * @param category Data disk type. Optional values:
+         * - cloud_efficiency: Ultra cloud disk
+         * - cloud_ssd: Full Flash cloud disk
+         * - local_hdd: local hdd disk
+         * - local_ssd: local disk ssd.
          * 
          * @return builder
          * 
@@ -95,11 +95,11 @@ public final class InstanceDataDiskArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param category Type of dataDisk
-         * - cloud_efficiency：High-efficiency cloud disk
-         * - cloud_ssd：Full flash cloud disk
-         * - local_hdd：Local hdd disk
-         * - local_ssd：Local disk ssd.
+         * @param category Data disk type. Optional values:
+         * - cloud_efficiency: Ultra cloud disk
+         * - cloud_ssd: Full Flash cloud disk
+         * - local_hdd: local hdd disk
+         * - local_ssd: local disk ssd.
          * 
          * @return builder
          * 
@@ -109,7 +109,7 @@ public final class InstanceDataDiskArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param size Data disk size, cloud_efficiency is 20-32000,cloud_ssd/local_hdd/local_ssd is 20-25000, unit: GB.
+         * @param size Data disk size, unit: GB.
          * 
          * @return builder
          * 
@@ -120,7 +120,7 @@ public final class InstanceDataDiskArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param size Data disk size, cloud_efficiency is 20-32000,cloud_ssd/local_hdd/local_ssd is 20-25000, unit: GB.
+         * @param size Data disk size, unit: GB.
          * 
          * @return builder
          * 

@@ -58,6 +58,8 @@ type Cluster struct {
 	DbNodeId pulumi.StringPtrOutput `pulumi:"dbNodeId"`
 	// The number of Standard Edition nodes. Default value: `1`. Valid values are `1`, `2`.
 	DbNodeNum pulumi.IntPtrOutput `pulumi:"dbNodeNum"`
+	// (Available since v1.216.0) The dbRevisionVersionList supports the following:
+	DbRevisionVersionLists ClusterDbRevisionVersionListArrayOutput `pulumi:"dbRevisionVersionLists"`
 	// Database type. Value options: MySQL, Oracle, PostgreSQL.
 	DbType pulumi.StringOutput `pulumi:"dbType"`
 	// Database version. Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `DBVersion`.
@@ -172,6 +174,8 @@ type Cluster struct {
 	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
 	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
 	Tags pulumi.MapOutput `pulumi:"tags"`
+	// The Version Code of the target version, whose parameter values can be obtained from the [DescribeDBClusterVersion](https://www.alibabacloud.com/help/en/polardb/latest/describedbclusterversion) interface.
+	TargetDbRevisionVersionCode pulumi.StringPtrOutput `pulumi:"targetDbRevisionVersionCode"`
 	// (Available since 1.200.0) The region where the TDE key resides.
 	// > **NOTE:** TDE can be enabled on clusters that have joined a global database network (GDN). After TDE is enabled on the primary cluster in a GDN, TDE is enabled on the secondary clusters in the GDN by default. The key used by the secondary clusters and the region for the key resides must be the same as the primary cluster. The region of the key cannot be modified.
 	// **NOTE:** You cannot enable TDE for the secondary clusters in a GDN. Used to view user KMS activation status.
@@ -263,6 +267,8 @@ type clusterState struct {
 	DbNodeId *string `pulumi:"dbNodeId"`
 	// The number of Standard Edition nodes. Default value: `1`. Valid values are `1`, `2`.
 	DbNodeNum *int `pulumi:"dbNodeNum"`
+	// (Available since v1.216.0) The dbRevisionVersionList supports the following:
+	DbRevisionVersionLists []ClusterDbRevisionVersionList `pulumi:"dbRevisionVersionLists"`
 	// Database type. Value options: MySQL, Oracle, PostgreSQL.
 	DbType *string `pulumi:"dbType"`
 	// Database version. Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `DBVersion`.
@@ -377,6 +383,8 @@ type clusterState struct {
 	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
 	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
 	Tags map[string]interface{} `pulumi:"tags"`
+	// The Version Code of the target version, whose parameter values can be obtained from the [DescribeDBClusterVersion](https://www.alibabacloud.com/help/en/polardb/latest/describedbclusterversion) interface.
+	TargetDbRevisionVersionCode *string `pulumi:"targetDbRevisionVersionCode"`
 	// (Available since 1.200.0) The region where the TDE key resides.
 	// > **NOTE:** TDE can be enabled on clusters that have joined a global database network (GDN). After TDE is enabled on the primary cluster in a GDN, TDE is enabled on the secondary clusters in the GDN by default. The key used by the secondary clusters and the region for the key resides must be the same as the primary cluster. The region of the key cannot be modified.
 	// **NOTE:** You cannot enable TDE for the secondary clusters in a GDN. Used to view user KMS activation status.
@@ -430,6 +438,8 @@ type ClusterState struct {
 	DbNodeId pulumi.StringPtrInput
 	// The number of Standard Edition nodes. Default value: `1`. Valid values are `1`, `2`.
 	DbNodeNum pulumi.IntPtrInput
+	// (Available since v1.216.0) The dbRevisionVersionList supports the following:
+	DbRevisionVersionLists ClusterDbRevisionVersionListArrayInput
 	// Database type. Value options: MySQL, Oracle, PostgreSQL.
 	DbType pulumi.StringPtrInput
 	// Database version. Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `DBVersion`.
@@ -544,6 +554,8 @@ type ClusterState struct {
 	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
 	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
 	Tags pulumi.MapInput
+	// The Version Code of the target version, whose parameter values can be obtained from the [DescribeDBClusterVersion](https://www.alibabacloud.com/help/en/polardb/latest/describedbclusterversion) interface.
+	TargetDbRevisionVersionCode pulumi.StringPtrInput
 	// (Available since 1.200.0) The region where the TDE key resides.
 	// > **NOTE:** TDE can be enabled on clusters that have joined a global database network (GDN). After TDE is enabled on the primary cluster in a GDN, TDE is enabled on the secondary clusters in the GDN by default. The key used by the secondary clusters and the region for the key resides must be the same as the primary cluster. The region of the key cannot be modified.
 	// **NOTE:** You cannot enable TDE for the secondary clusters in a GDN. Used to view user KMS activation status.
@@ -707,6 +719,8 @@ type clusterArgs struct {
 	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
 	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
 	Tags map[string]interface{} `pulumi:"tags"`
+	// The Version Code of the target version, whose parameter values can be obtained from the [DescribeDBClusterVersion](https://www.alibabacloud.com/help/en/polardb/latest/describedbclusterversion) interface.
+	TargetDbRevisionVersionCode *string `pulumi:"targetDbRevisionVersionCode"`
 	// turn on TDE encryption. Valid values are `Enabled`, `Disabled`. Default to `Disabled`. TDE cannot be closed after it is turned on.
 	// > **NOTE:** `tdeStatus` Cannot modify after created when `dbType` is `PostgreSQL` or `Oracle`.`tdeStatus` only support modification from `Disabled` to `Enabled` when `dbType` is `MySQL`.
 	TdeStatus *string `pulumi:"tdeStatus"`
@@ -863,6 +877,8 @@ type ClusterArgs struct {
 	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
 	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
 	Tags pulumi.MapInput
+	// The Version Code of the target version, whose parameter values can be obtained from the [DescribeDBClusterVersion](https://www.alibabacloud.com/help/en/polardb/latest/describedbclusterversion) interface.
+	TargetDbRevisionVersionCode pulumi.StringPtrInput
 	// turn on TDE encryption. Valid values are `Enabled`, `Disabled`. Default to `Disabled`. TDE cannot be closed after it is turned on.
 	// > **NOTE:** `tdeStatus` Cannot modify after created when `dbType` is `PostgreSQL` or `Oracle`.`tdeStatus` only support modification from `Disabled` to `Enabled` when `dbType` is `MySQL`.
 	TdeStatus pulumi.StringPtrInput
@@ -1038,6 +1054,11 @@ func (o ClusterOutput) DbNodeId() pulumi.StringPtrOutput {
 // The number of Standard Edition nodes. Default value: `1`. Valid values are `1`, `2`.
 func (o ClusterOutput) DbNodeNum() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.IntPtrOutput { return v.DbNodeNum }).(pulumi.IntPtrOutput)
+}
+
+// (Available since v1.216.0) The dbRevisionVersionList supports the following:
+func (o ClusterOutput) DbRevisionVersionLists() ClusterDbRevisionVersionListArrayOutput {
+	return o.ApplyT(func(v *Cluster) ClusterDbRevisionVersionListArrayOutput { return v.DbRevisionVersionLists }).(ClusterDbRevisionVersionListArrayOutput)
 }
 
 // Database type. Value options: MySQL, Oracle, PostgreSQL.
@@ -1290,6 +1311,11 @@ func (o ClusterOutput) SubCategory() pulumi.StringOutput {
 // - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
 func (o ClusterOutput) Tags() pulumi.MapOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+}
+
+// The Version Code of the target version, whose parameter values can be obtained from the [DescribeDBClusterVersion](https://www.alibabacloud.com/help/en/polardb/latest/describedbclusterversion) interface.
+func (o ClusterOutput) TargetDbRevisionVersionCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringPtrOutput { return v.TargetDbRevisionVersionCode }).(pulumi.StringPtrOutput)
 }
 
 // (Available since 1.200.0) The region where the TDE key resides.

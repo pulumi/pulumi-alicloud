@@ -180,14 +180,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The configuration of the KVStore DBInstance. Available parameters can refer to the latest docs [Instance configurations table](https://www.alibabacloud.com/help/doc-detail/61209.htm) .
+     * The configuration of the KVStore DBInstance. Available parameters can refer to the latest docs [Instance configurations table](https://www.alibabacloud.com/help/en/redis/user-guide/supported-parameters).
      * 
      */
     @Import(name="config")
     private @Nullable Output<Map<String,Object>> config;
 
     /**
-     * @return The configuration of the KVStore DBInstance. Available parameters can refer to the latest docs [Instance configurations table](https://www.alibabacloud.com/help/doc-detail/61209.htm) .
+     * @return The configuration of the KVStore DBInstance. Available parameters can refer to the latest docs [Instance configurations table](https://www.alibabacloud.com/help/en/redis/user-guide/supported-parameters).
      * 
      */
     public Optional<Output<Map<String,Object>>> config() {
@@ -212,14 +212,6 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     /**
      * Indicates whether the address is a private endpoint.
      * 
-     * &gt; **NOTE:** The start time to the end time must be 1 hour. For example, the MaintainStartTime is 01:00Z, then the MaintainEndTime must be 02:00Z.
-     * 
-     * &gt; **NOTE:** You must specify at least one of the `capacity` and `instance_class` parameters when you call create instance operation.
-     * 
-     * &gt; **NOTE:** The `private_ip` must be in the Classless Inter-Domain Routing (CIDR) block of the VSwitch to which the instance belongs.
-     * 
-     * &gt; **NOTE:** If you specify the `srcdb_instance_id` parameter, you must specify the `backup_id` or `restore_time` parameter.
-     * 
      * @deprecated
      * Field &#39;connection_string&#39; has been deprecated from version 1.101.0. Please use resource &#39;alicloud_kvstore_connection&#39; instead.
      * 
@@ -230,14 +222,6 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Indicates whether the address is a private endpoint.
-     * 
-     * &gt; **NOTE:** The start time to the end time must be 1 hour. For example, the MaintainStartTime is 01:00Z, then the MaintainEndTime must be 02:00Z.
-     * 
-     * &gt; **NOTE:** You must specify at least one of the `capacity` and `instance_class` parameters when you call create instance operation.
-     * 
-     * &gt; **NOTE:** The `private_ip` must be in the Classless Inter-Domain Routing (CIDR) block of the VSwitch to which the instance belongs.
-     * 
-     * &gt; **NOTE:** If you specify the `srcdb_instance_id` parameter, you must specify the `backup_id` or `restore_time` parameter.
      * 
      * @deprecated
      * Field &#39;connection_string&#39; has been deprecated from version 1.101.0. Please use resource &#39;alicloud_kvstore_connection&#39; instead.
@@ -272,14 +256,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The coupon code. Default value: `youhuiquan_promotion_option_id_for_blank`.
+     * The coupon code.
      * 
      */
     @Import(name="couponNo")
     private @Nullable Output<String> couponNo;
 
     /**
-     * @return The coupon code. Default value: `youhuiquan_promotion_option_id_for_blank`.
+     * @return The coupon code.
      * 
      */
     public Optional<Output<String>> couponNo() {
@@ -332,16 +316,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The time when the database is switched after the instance is migrated,
-     * or when the major version is upgraded, or when the instance class is upgraded. Valid values:
+     * The time when the database is switched after the instance is migrated, or when the major version is upgraded, or when the instance class is upgraded. Valid values:
      * 
      */
     @Import(name="effectiveTime")
     private @Nullable Output<String> effectiveTime;
 
     /**
-     * @return The time when the database is switched after the instance is migrated,
-     * or when the major version is upgraded, or when the instance class is upgraded. Valid values:
+     * @return The time when the database is switched after the instance is migrated, or when the major version is upgraded, or when the instance class is upgraded. Valid values:
      * 
      */
     public Optional<Output<String>> effectiveTime() {
@@ -647,21 +629,6 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The method of modifying the whitelist. Valid values: `0`, `1` and `2`. Default value: `0`. `0` means overwrites the original whitelist. `1` means adds the IP addresses to the whitelist. `2` means deletes the IP addresses from the whitelist.
-     * 
-     */
-    @Import(name="modifyMode")
-    private @Nullable Output<Integer> modifyMode;
-
-    /**
-     * @return The method of modifying the whitelist. Valid values: `0`, `1` and `2`. Default value: `0`. `0` means overwrites the original whitelist. `1` means adds the IP addresses to the whitelist. `2` means deletes the IP addresses from the whitelist.
-     * 
-     */
-    public Optional<Output<Integer>> modifyMode() {
-        return Optional.ofNullable(this.modifyMode);
-    }
-
-    /**
      * &#34;Field `node_type` has been deprecated from version 1.120.1&#34;. This parameter is determined by the `instance_class`.
      * 
      * @deprecated
@@ -905,14 +872,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The ID of security groups.
+     * The ID of security groups. Separate multiple security group IDs with commas (,), such as `sg-***,sg-***,sg-***`.
      * 
      */
     @Import(name="securityGroupId")
     private @Nullable Output<String> securityGroupId;
 
     /**
-     * @return The ID of security groups.
+     * @return The ID of security groups. Separate multiple security group IDs with commas (,), such as `sg-***,sg-***,sg-***`.
      * 
      */
     public Optional<Output<String>> securityGroupId() {
@@ -965,14 +932,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The number of data shards. This parameter is available only if you create a cluster instance that uses cloud disks. You can use this parameter to specify a custom number of data shards.
+     * The number of data shards. This parameter is available only if you create a cluster instance that uses cloud disks. You can use this parameter to specify a custom number of data shards. **NOTE:** From version 1.216.0, `shard_count` can be modified.
      * 
      */
     @Import(name="shardCount")
     private @Nullable Output<Integer> shardCount;
 
     /**
-     * @return The number of data shards. This parameter is available only if you create a cluster instance that uses cloud disks. You can use this parameter to specify a custom number of data shards.
+     * @return The number of data shards. This parameter is available only if you create a cluster instance that uses cloud disks. You can use this parameter to specify a custom number of data shards. **NOTE:** From version 1.216.0, `shard_count` can be modified.
      * 
      */
     public Optional<Output<Integer>> shardCount() {
@@ -1043,7 +1010,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Specifies whether to enable TDE. Valid values: `Enabled`.
-     * **NOTE:**: TDE cannot be disabled after it is enabled. Before you enable it, evaluate whether this feature affects
+     * **NOTE:**: TDE cannot be disabled after it is enabled. Before you enable it, evaluate whether this feature affects.
      * your business. For more information, see [Enable TDE](https://www.alibabacloud.com/help/en/redis/user-guide/enable-tde).
      * 
      */
@@ -1052,7 +1019,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Specifies whether to enable TDE. Valid values: `Enabled`.
-     * **NOTE:**: TDE cannot be disabled after it is enabled. Before you enable it, evaluate whether this feature affects
+     * **NOTE:**: TDE cannot be disabled after it is enabled. Before you enable it, evaluate whether this feature affects.
      * your business. For more information, see [Enable TDE](https://www.alibabacloud.com/help/en/redis/user-guide/enable-tde).
      * 
      */
@@ -1145,7 +1112,6 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         this.kmsEncryptionContext = $.kmsEncryptionContext;
         this.maintainEndTime = $.maintainEndTime;
         this.maintainStartTime = $.maintainStartTime;
-        this.modifyMode = $.modifyMode;
         this.nodeType = $.nodeType;
         this.orderType = $.orderType;
         this.parameters = $.parameters;
@@ -1423,7 +1389,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param config The configuration of the KVStore DBInstance. Available parameters can refer to the latest docs [Instance configurations table](https://www.alibabacloud.com/help/doc-detail/61209.htm) .
+         * @param config The configuration of the KVStore DBInstance. Available parameters can refer to the latest docs [Instance configurations table](https://www.alibabacloud.com/help/en/redis/user-guide/supported-parameters).
          * 
          * @return builder
          * 
@@ -1434,7 +1400,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param config The configuration of the KVStore DBInstance. Available parameters can refer to the latest docs [Instance configurations table](https://www.alibabacloud.com/help/doc-detail/61209.htm) .
+         * @param config The configuration of the KVStore DBInstance. Available parameters can refer to the latest docs [Instance configurations table](https://www.alibabacloud.com/help/en/redis/user-guide/supported-parameters).
          * 
          * @return builder
          * 
@@ -1467,14 +1433,6 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param connectionString Indicates whether the address is a private endpoint.
          * 
-         * &gt; **NOTE:** The start time to the end time must be 1 hour. For example, the MaintainStartTime is 01:00Z, then the MaintainEndTime must be 02:00Z.
-         * 
-         * &gt; **NOTE:** You must specify at least one of the `capacity` and `instance_class` parameters when you call create instance operation.
-         * 
-         * &gt; **NOTE:** The `private_ip` must be in the Classless Inter-Domain Routing (CIDR) block of the VSwitch to which the instance belongs.
-         * 
-         * &gt; **NOTE:** If you specify the `srcdb_instance_id` parameter, you must specify the `backup_id` or `restore_time` parameter.
-         * 
          * @return builder
          * 
          * @deprecated
@@ -1489,14 +1447,6 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param connectionString Indicates whether the address is a private endpoint.
-         * 
-         * &gt; **NOTE:** The start time to the end time must be 1 hour. For example, the MaintainStartTime is 01:00Z, then the MaintainEndTime must be 02:00Z.
-         * 
-         * &gt; **NOTE:** You must specify at least one of the `capacity` and `instance_class` parameters when you call create instance operation.
-         * 
-         * &gt; **NOTE:** The `private_ip` must be in the Classless Inter-Domain Routing (CIDR) block of the VSwitch to which the instance belongs.
-         * 
-         * &gt; **NOTE:** If you specify the `srcdb_instance_id` parameter, you must specify the `backup_id` or `restore_time` parameter.
          * 
          * @return builder
          * 
@@ -1539,7 +1489,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param couponNo The coupon code. Default value: `youhuiquan_promotion_option_id_for_blank`.
+         * @param couponNo The coupon code.
          * 
          * @return builder
          * 
@@ -1550,7 +1500,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param couponNo The coupon code. Default value: `youhuiquan_promotion_option_id_for_blank`.
+         * @param couponNo The coupon code.
          * 
          * @return builder
          * 
@@ -1623,8 +1573,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param effectiveTime The time when the database is switched after the instance is migrated,
-         * or when the major version is upgraded, or when the instance class is upgraded. Valid values:
+         * @param effectiveTime The time when the database is switched after the instance is migrated, or when the major version is upgraded, or when the instance class is upgraded. Valid values:
          * 
          * @return builder
          * 
@@ -1635,8 +1584,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param effectiveTime The time when the database is switched after the instance is migrated,
-         * or when the major version is upgraded, or when the instance class is upgraded. Valid values:
+         * @param effectiveTime The time when the database is switched after the instance is migrated, or when the major version is upgraded, or when the instance class is upgraded. Valid values:
          * 
          * @return builder
          * 
@@ -2052,27 +2000,6 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param modifyMode The method of modifying the whitelist. Valid values: `0`, `1` and `2`. Default value: `0`. `0` means overwrites the original whitelist. `1` means adds the IP addresses to the whitelist. `2` means deletes the IP addresses from the whitelist.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder modifyMode(@Nullable Output<Integer> modifyMode) {
-            $.modifyMode = modifyMode;
-            return this;
-        }
-
-        /**
-         * @param modifyMode The method of modifying the whitelist. Valid values: `0`, `1` and `2`. Default value: `0`. `0` means overwrites the original whitelist. `1` means adds the IP addresses to the whitelist. `2` means deletes the IP addresses from the whitelist.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder modifyMode(Integer modifyMode) {
-            return modifyMode(Output.of(modifyMode));
-        }
-
-        /**
          * @param nodeType &#34;Field `node_type` has been deprecated from version 1.120.1&#34;. This parameter is determined by the `instance_class`.
          * 
          * @return builder
@@ -2420,7 +2347,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param securityGroupId The ID of security groups.
+         * @param securityGroupId The ID of security groups. Separate multiple security group IDs with commas (,), such as `sg-***,sg-***,sg-***`.
          * 
          * @return builder
          * 
@@ -2431,7 +2358,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param securityGroupId The ID of security groups.
+         * @param securityGroupId The ID of security groups. Separate multiple security group IDs with commas (,), such as `sg-***,sg-***,sg-***`.
          * 
          * @return builder
          * 
@@ -2514,7 +2441,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param shardCount The number of data shards. This parameter is available only if you create a cluster instance that uses cloud disks. You can use this parameter to specify a custom number of data shards.
+         * @param shardCount The number of data shards. This parameter is available only if you create a cluster instance that uses cloud disks. You can use this parameter to specify a custom number of data shards. **NOTE:** From version 1.216.0, `shard_count` can be modified.
          * 
          * @return builder
          * 
@@ -2525,7 +2452,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param shardCount The number of data shards. This parameter is available only if you create a cluster instance that uses cloud disks. You can use this parameter to specify a custom number of data shards.
+         * @param shardCount The number of data shards. This parameter is available only if you create a cluster instance that uses cloud disks. You can use this parameter to specify a custom number of data shards. **NOTE:** From version 1.216.0, `shard_count` can be modified.
          * 
          * @return builder
          * 
@@ -2622,7 +2549,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param tdeStatus Specifies whether to enable TDE. Valid values: `Enabled`.
-         * **NOTE:**: TDE cannot be disabled after it is enabled. Before you enable it, evaluate whether this feature affects
+         * **NOTE:**: TDE cannot be disabled after it is enabled. Before you enable it, evaluate whether this feature affects.
          * your business. For more information, see [Enable TDE](https://www.alibabacloud.com/help/en/redis/user-guide/enable-tde).
          * 
          * @return builder
@@ -2635,7 +2562,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param tdeStatus Specifies whether to enable TDE. Valid values: `Enabled`.
-         * **NOTE:**: TDE cannot be disabled after it is enabled. Before you enable it, evaluate whether this feature affects
+         * **NOTE:**: TDE cannot be disabled after it is enabled. Before you enable it, evaluate whether this feature affects.
          * your business. For more information, see [Enable TDE](https://www.alibabacloud.com/help/en/redis/user-guide/enable-tde).
          * 
          * @return builder

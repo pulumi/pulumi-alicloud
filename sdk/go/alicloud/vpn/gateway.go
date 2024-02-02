@@ -18,7 +18,7 @@ import (
 //
 // ```sh
 //
-//	$ pulumi import alicloud:vpn/gateway:Gateway example vpn-abc123456
+//	$ pulumi import alicloud:vpn/gateway:Gateway example <id>
 //
 // ```
 type Gateway struct {
@@ -26,42 +26,55 @@ type Gateway struct {
 
 	// Whether to pay automatically. Default value: `true`. Valid values:
 	AutoPay pulumi.BoolPtrOutput `pulumi:"autoPay"`
-	// Specifies whether to automatically advertise BGP routes to the virtual private cloud (VPC). Valid values:
+	// Whether to automatically propagate the BGP route to the VPC. Value:  true: Propagate automatically.  false: does not propagate automatically.
 	AutoPropagate pulumi.BoolPtrOutput `pulumi:"autoPropagate"`
-	Bandwidth     pulumi.IntOutput     `pulumi:"bandwidth"`
+	// The Bandwidth specification of the VPN gateway. Unit: Mbps.  If you want to create a public VPN gateway, the value is 5, 10, 20, 50, 100, 200, 500, or 1000. If you want to create a private VPN gateway, the value is 200 or 1000.
+	Bandwidth pulumi.IntOutput `pulumi:"bandwidth"`
 	// The business status of the VPN gateway.
 	BusinessStatus pulumi.StringOutput `pulumi:"businessStatus"`
-	// The description of the VPN instance.
+	// The time when the VPN gateway was created.
+	CreateTime pulumi.IntOutput `pulumi:"createTime"`
+	// The description of the VPN gateway.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
+	// The ID of the backup VSwitch to which the VPN gateway is attached.
+	DisasterRecoveryVswitchId pulumi.StringOutput `pulumi:"disasterRecoveryVswitchId"`
 	// Enable or Disable IPSec VPN. At least one type of VPN should be enabled.
 	EnableIpsec pulumi.BoolPtrOutput `pulumi:"enableIpsec"`
 	// Enable or Disable SSL VPN.  At least one type of VPN should be enabled.
+	//
+	// The following arguments will be discarded. Please use new fields as soon as possible:
 	EnableSsl pulumi.BoolPtrOutput `pulumi:"enableSsl"`
-	// The charge type for instance. If it is an international site account, the valid value is PostPaid, otherwise PrePaid.
-	// Default to PostPaid.
-	InstanceChargeType pulumi.StringPtrOutput `pulumi:"instanceChargeType"`
+	// . Field 'instance_charge_type' has been deprecated from provider version 1.216.0. New field 'payment_type' instead.
+	//
+	// Deprecated: Field 'instance_charge_type' has been deprecated since provider version 1.215.0. New field 'payment_type' instead.
+	InstanceChargeType pulumi.StringOutput `pulumi:"instanceChargeType"`
 	// The internet ip of the VPN.
 	InternetIp pulumi.StringOutput `pulumi:"internetIp"`
-	// The name of the VPN. Defaults to null.
-	Name pulumi.StringOutput `pulumi:"name"`
-	// The network type of the VPN gateway. Value:
-	// - public (default): Public VPN gateway.
-	// - private: Private VPN gateway.
+	// . Field 'name' has been deprecated from provider version 1.216.0. New field 'vpn_gateway_name' instead.
 	//
-	// > **NOTE:** Private VPN gateway can only be purchased by white list users, and the bandwidth only supports 200M or 1000M; In addition, SSL is not supported.
+	// Deprecated: Field 'name' has been deprecated since provider version 1.215.0. New field 'vpn_gateway_name' instead.
+	Name pulumi.StringOutput `pulumi:"name"`
+	// The network type of the VPN gateway. Value:  public (default): public VPN gateway. private: private network VPN gateway.
 	NetworkType pulumi.StringOutput `pulumi:"networkType"`
+	// Type of payment. Value: Subscription: prepaid PayAsYouGo: Post-paid.
+	PaymentType pulumi.StringOutput `pulumi:"paymentType"`
 	// The filed is only required while the InstanceChargeType is PrePaid. Valid values: [1-9, 12, 24, 36]. Default to 1.
 	Period pulumi.IntPtrOutput `pulumi:"period"`
-	// The max connections of SSL VPN. Default to 5. The number of connections supported by each account is different.
-	// This field is ignored when enableSsl is false.
-	SslConnections pulumi.IntPtrOutput `pulumi:"sslConnections"`
-	// The status of the VPN gateway.
+	// The ID of the resource group.
+	ResourceGroupId pulumi.StringOutput `pulumi:"resourceGroupId"`
+	// Maximum number of clients.
+	SslConnections pulumi.IntOutput `pulumi:"sslConnections"`
+	// The status of the resource.
 	Status pulumi.StringOutput `pulumi:"status"`
-	// The tags of VPN gateway.
+	// The Tag of.
 	Tags pulumi.MapOutput `pulumi:"tags"`
-	// The VPN belongs the vpc_id, the field can't be changed.
+	// The ID of the VPC to which the VPN gateway belongs.
 	VpcId pulumi.StringOutput `pulumi:"vpcId"`
-	// The VPN belongs the vswitch_id, the field can't be changed.
+	// The name of the VPN gateway.
+	VpnGatewayName pulumi.StringOutput `pulumi:"vpnGatewayName"`
+	// The VPN gateway type. Value:  Normal (default): Normal type. NationalStandard: National Secret type.
+	VpnType pulumi.StringOutput `pulumi:"vpnType"`
+	// The ID of the VSwitch to which the VPN gateway is attached.
 	VswitchId pulumi.StringOutput `pulumi:"vswitchId"`
 }
 
@@ -103,84 +116,110 @@ func GetGateway(ctx *pulumi.Context,
 type gatewayState struct {
 	// Whether to pay automatically. Default value: `true`. Valid values:
 	AutoPay *bool `pulumi:"autoPay"`
-	// Specifies whether to automatically advertise BGP routes to the virtual private cloud (VPC). Valid values:
+	// Whether to automatically propagate the BGP route to the VPC. Value:  true: Propagate automatically.  false: does not propagate automatically.
 	AutoPropagate *bool `pulumi:"autoPropagate"`
-	Bandwidth     *int  `pulumi:"bandwidth"`
+	// The Bandwidth specification of the VPN gateway. Unit: Mbps.  If you want to create a public VPN gateway, the value is 5, 10, 20, 50, 100, 200, 500, or 1000. If you want to create a private VPN gateway, the value is 200 or 1000.
+	Bandwidth *int `pulumi:"bandwidth"`
 	// The business status of the VPN gateway.
 	BusinessStatus *string `pulumi:"businessStatus"`
-	// The description of the VPN instance.
+	// The time when the VPN gateway was created.
+	CreateTime *int `pulumi:"createTime"`
+	// The description of the VPN gateway.
 	Description *string `pulumi:"description"`
+	// The ID of the backup VSwitch to which the VPN gateway is attached.
+	DisasterRecoveryVswitchId *string `pulumi:"disasterRecoveryVswitchId"`
 	// Enable or Disable IPSec VPN. At least one type of VPN should be enabled.
 	EnableIpsec *bool `pulumi:"enableIpsec"`
 	// Enable or Disable SSL VPN.  At least one type of VPN should be enabled.
+	//
+	// The following arguments will be discarded. Please use new fields as soon as possible:
 	EnableSsl *bool `pulumi:"enableSsl"`
-	// The charge type for instance. If it is an international site account, the valid value is PostPaid, otherwise PrePaid.
-	// Default to PostPaid.
+	// . Field 'instance_charge_type' has been deprecated from provider version 1.216.0. New field 'payment_type' instead.
+	//
+	// Deprecated: Field 'instance_charge_type' has been deprecated since provider version 1.215.0. New field 'payment_type' instead.
 	InstanceChargeType *string `pulumi:"instanceChargeType"`
 	// The internet ip of the VPN.
 	InternetIp *string `pulumi:"internetIp"`
-	// The name of the VPN. Defaults to null.
-	Name *string `pulumi:"name"`
-	// The network type of the VPN gateway. Value:
-	// - public (default): Public VPN gateway.
-	// - private: Private VPN gateway.
+	// . Field 'name' has been deprecated from provider version 1.216.0. New field 'vpn_gateway_name' instead.
 	//
-	// > **NOTE:** Private VPN gateway can only be purchased by white list users, and the bandwidth only supports 200M or 1000M; In addition, SSL is not supported.
+	// Deprecated: Field 'name' has been deprecated since provider version 1.215.0. New field 'vpn_gateway_name' instead.
+	Name *string `pulumi:"name"`
+	// The network type of the VPN gateway. Value:  public (default): public VPN gateway. private: private network VPN gateway.
 	NetworkType *string `pulumi:"networkType"`
+	// Type of payment. Value: Subscription: prepaid PayAsYouGo: Post-paid.
+	PaymentType *string `pulumi:"paymentType"`
 	// The filed is only required while the InstanceChargeType is PrePaid. Valid values: [1-9, 12, 24, 36]. Default to 1.
 	Period *int `pulumi:"period"`
-	// The max connections of SSL VPN. Default to 5. The number of connections supported by each account is different.
-	// This field is ignored when enableSsl is false.
+	// The ID of the resource group.
+	ResourceGroupId *string `pulumi:"resourceGroupId"`
+	// Maximum number of clients.
 	SslConnections *int `pulumi:"sslConnections"`
-	// The status of the VPN gateway.
+	// The status of the resource.
 	Status *string `pulumi:"status"`
-	// The tags of VPN gateway.
+	// The Tag of.
 	Tags map[string]interface{} `pulumi:"tags"`
-	// The VPN belongs the vpc_id, the field can't be changed.
+	// The ID of the VPC to which the VPN gateway belongs.
 	VpcId *string `pulumi:"vpcId"`
-	// The VPN belongs the vswitch_id, the field can't be changed.
+	// The name of the VPN gateway.
+	VpnGatewayName *string `pulumi:"vpnGatewayName"`
+	// The VPN gateway type. Value:  Normal (default): Normal type. NationalStandard: National Secret type.
+	VpnType *string `pulumi:"vpnType"`
+	// The ID of the VSwitch to which the VPN gateway is attached.
 	VswitchId *string `pulumi:"vswitchId"`
 }
 
 type GatewayState struct {
 	// Whether to pay automatically. Default value: `true`. Valid values:
 	AutoPay pulumi.BoolPtrInput
-	// Specifies whether to automatically advertise BGP routes to the virtual private cloud (VPC). Valid values:
+	// Whether to automatically propagate the BGP route to the VPC. Value:  true: Propagate automatically.  false: does not propagate automatically.
 	AutoPropagate pulumi.BoolPtrInput
-	Bandwidth     pulumi.IntPtrInput
+	// The Bandwidth specification of the VPN gateway. Unit: Mbps.  If you want to create a public VPN gateway, the value is 5, 10, 20, 50, 100, 200, 500, or 1000. If you want to create a private VPN gateway, the value is 200 or 1000.
+	Bandwidth pulumi.IntPtrInput
 	// The business status of the VPN gateway.
 	BusinessStatus pulumi.StringPtrInput
-	// The description of the VPN instance.
+	// The time when the VPN gateway was created.
+	CreateTime pulumi.IntPtrInput
+	// The description of the VPN gateway.
 	Description pulumi.StringPtrInput
+	// The ID of the backup VSwitch to which the VPN gateway is attached.
+	DisasterRecoveryVswitchId pulumi.StringPtrInput
 	// Enable or Disable IPSec VPN. At least one type of VPN should be enabled.
 	EnableIpsec pulumi.BoolPtrInput
 	// Enable or Disable SSL VPN.  At least one type of VPN should be enabled.
+	//
+	// The following arguments will be discarded. Please use new fields as soon as possible:
 	EnableSsl pulumi.BoolPtrInput
-	// The charge type for instance. If it is an international site account, the valid value is PostPaid, otherwise PrePaid.
-	// Default to PostPaid.
+	// . Field 'instance_charge_type' has been deprecated from provider version 1.216.0. New field 'payment_type' instead.
+	//
+	// Deprecated: Field 'instance_charge_type' has been deprecated since provider version 1.215.0. New field 'payment_type' instead.
 	InstanceChargeType pulumi.StringPtrInput
 	// The internet ip of the VPN.
 	InternetIp pulumi.StringPtrInput
-	// The name of the VPN. Defaults to null.
-	Name pulumi.StringPtrInput
-	// The network type of the VPN gateway. Value:
-	// - public (default): Public VPN gateway.
-	// - private: Private VPN gateway.
+	// . Field 'name' has been deprecated from provider version 1.216.0. New field 'vpn_gateway_name' instead.
 	//
-	// > **NOTE:** Private VPN gateway can only be purchased by white list users, and the bandwidth only supports 200M or 1000M; In addition, SSL is not supported.
+	// Deprecated: Field 'name' has been deprecated since provider version 1.215.0. New field 'vpn_gateway_name' instead.
+	Name pulumi.StringPtrInput
+	// The network type of the VPN gateway. Value:  public (default): public VPN gateway. private: private network VPN gateway.
 	NetworkType pulumi.StringPtrInput
+	// Type of payment. Value: Subscription: prepaid PayAsYouGo: Post-paid.
+	PaymentType pulumi.StringPtrInput
 	// The filed is only required while the InstanceChargeType is PrePaid. Valid values: [1-9, 12, 24, 36]. Default to 1.
 	Period pulumi.IntPtrInput
-	// The max connections of SSL VPN. Default to 5. The number of connections supported by each account is different.
-	// This field is ignored when enableSsl is false.
+	// The ID of the resource group.
+	ResourceGroupId pulumi.StringPtrInput
+	// Maximum number of clients.
 	SslConnections pulumi.IntPtrInput
-	// The status of the VPN gateway.
+	// The status of the resource.
 	Status pulumi.StringPtrInput
-	// The tags of VPN gateway.
+	// The Tag of.
 	Tags pulumi.MapInput
-	// The VPN belongs the vpc_id, the field can't be changed.
+	// The ID of the VPC to which the VPN gateway belongs.
 	VpcId pulumi.StringPtrInput
-	// The VPN belongs the vswitch_id, the field can't be changed.
+	// The name of the VPN gateway.
+	VpnGatewayName pulumi.StringPtrInput
+	// The VPN gateway type. Value:  Normal (default): Normal type. NationalStandard: National Secret type.
+	VpnType pulumi.StringPtrInput
+	// The ID of the VSwitch to which the VPN gateway is attached.
 	VswitchId pulumi.StringPtrInput
 }
 
@@ -191,36 +230,47 @@ func (GatewayState) ElementType() reflect.Type {
 type gatewayArgs struct {
 	// Whether to pay automatically. Default value: `true`. Valid values:
 	AutoPay *bool `pulumi:"autoPay"`
-	// Specifies whether to automatically advertise BGP routes to the virtual private cloud (VPC). Valid values:
+	// Whether to automatically propagate the BGP route to the VPC. Value:  true: Propagate automatically.  false: does not propagate automatically.
 	AutoPropagate *bool `pulumi:"autoPropagate"`
-	Bandwidth     int   `pulumi:"bandwidth"`
-	// The description of the VPN instance.
+	// The Bandwidth specification of the VPN gateway. Unit: Mbps.  If you want to create a public VPN gateway, the value is 5, 10, 20, 50, 100, 200, 500, or 1000. If you want to create a private VPN gateway, the value is 200 or 1000.
+	Bandwidth int `pulumi:"bandwidth"`
+	// The description of the VPN gateway.
 	Description *string `pulumi:"description"`
+	// The ID of the backup VSwitch to which the VPN gateway is attached.
+	DisasterRecoveryVswitchId *string `pulumi:"disasterRecoveryVswitchId"`
 	// Enable or Disable IPSec VPN. At least one type of VPN should be enabled.
 	EnableIpsec *bool `pulumi:"enableIpsec"`
 	// Enable or Disable SSL VPN.  At least one type of VPN should be enabled.
-	EnableSsl *bool `pulumi:"enableSsl"`
-	// The charge type for instance. If it is an international site account, the valid value is PostPaid, otherwise PrePaid.
-	// Default to PostPaid.
-	InstanceChargeType *string `pulumi:"instanceChargeType"`
-	// The name of the VPN. Defaults to null.
-	Name *string `pulumi:"name"`
-	// The network type of the VPN gateway. Value:
-	// - public (default): Public VPN gateway.
-	// - private: Private VPN gateway.
 	//
-	// > **NOTE:** Private VPN gateway can only be purchased by white list users, and the bandwidth only supports 200M or 1000M; In addition, SSL is not supported.
+	// The following arguments will be discarded. Please use new fields as soon as possible:
+	EnableSsl *bool `pulumi:"enableSsl"`
+	// . Field 'instance_charge_type' has been deprecated from provider version 1.216.0. New field 'payment_type' instead.
+	//
+	// Deprecated: Field 'instance_charge_type' has been deprecated since provider version 1.215.0. New field 'payment_type' instead.
+	InstanceChargeType *string `pulumi:"instanceChargeType"`
+	// . Field 'name' has been deprecated from provider version 1.216.0. New field 'vpn_gateway_name' instead.
+	//
+	// Deprecated: Field 'name' has been deprecated since provider version 1.215.0. New field 'vpn_gateway_name' instead.
+	Name *string `pulumi:"name"`
+	// The network type of the VPN gateway. Value:  public (default): public VPN gateway. private: private network VPN gateway.
 	NetworkType *string `pulumi:"networkType"`
+	// Type of payment. Value: Subscription: prepaid PayAsYouGo: Post-paid.
+	PaymentType *string `pulumi:"paymentType"`
 	// The filed is only required while the InstanceChargeType is PrePaid. Valid values: [1-9, 12, 24, 36]. Default to 1.
 	Period *int `pulumi:"period"`
-	// The max connections of SSL VPN. Default to 5. The number of connections supported by each account is different.
-	// This field is ignored when enableSsl is false.
+	// The ID of the resource group.
+	ResourceGroupId *string `pulumi:"resourceGroupId"`
+	// Maximum number of clients.
 	SslConnections *int `pulumi:"sslConnections"`
-	// The tags of VPN gateway.
+	// The Tag of.
 	Tags map[string]interface{} `pulumi:"tags"`
-	// The VPN belongs the vpc_id, the field can't be changed.
+	// The ID of the VPC to which the VPN gateway belongs.
 	VpcId string `pulumi:"vpcId"`
-	// The VPN belongs the vswitch_id, the field can't be changed.
+	// The name of the VPN gateway.
+	VpnGatewayName *string `pulumi:"vpnGatewayName"`
+	// The VPN gateway type. Value:  Normal (default): Normal type. NationalStandard: National Secret type.
+	VpnType *string `pulumi:"vpnType"`
+	// The ID of the VSwitch to which the VPN gateway is attached.
 	VswitchId *string `pulumi:"vswitchId"`
 }
 
@@ -228,36 +278,47 @@ type gatewayArgs struct {
 type GatewayArgs struct {
 	// Whether to pay automatically. Default value: `true`. Valid values:
 	AutoPay pulumi.BoolPtrInput
-	// Specifies whether to automatically advertise BGP routes to the virtual private cloud (VPC). Valid values:
+	// Whether to automatically propagate the BGP route to the VPC. Value:  true: Propagate automatically.  false: does not propagate automatically.
 	AutoPropagate pulumi.BoolPtrInput
-	Bandwidth     pulumi.IntInput
-	// The description of the VPN instance.
+	// The Bandwidth specification of the VPN gateway. Unit: Mbps.  If you want to create a public VPN gateway, the value is 5, 10, 20, 50, 100, 200, 500, or 1000. If you want to create a private VPN gateway, the value is 200 or 1000.
+	Bandwidth pulumi.IntInput
+	// The description of the VPN gateway.
 	Description pulumi.StringPtrInput
+	// The ID of the backup VSwitch to which the VPN gateway is attached.
+	DisasterRecoveryVswitchId pulumi.StringPtrInput
 	// Enable or Disable IPSec VPN. At least one type of VPN should be enabled.
 	EnableIpsec pulumi.BoolPtrInput
 	// Enable or Disable SSL VPN.  At least one type of VPN should be enabled.
-	EnableSsl pulumi.BoolPtrInput
-	// The charge type for instance. If it is an international site account, the valid value is PostPaid, otherwise PrePaid.
-	// Default to PostPaid.
-	InstanceChargeType pulumi.StringPtrInput
-	// The name of the VPN. Defaults to null.
-	Name pulumi.StringPtrInput
-	// The network type of the VPN gateway. Value:
-	// - public (default): Public VPN gateway.
-	// - private: Private VPN gateway.
 	//
-	// > **NOTE:** Private VPN gateway can only be purchased by white list users, and the bandwidth only supports 200M or 1000M; In addition, SSL is not supported.
+	// The following arguments will be discarded. Please use new fields as soon as possible:
+	EnableSsl pulumi.BoolPtrInput
+	// . Field 'instance_charge_type' has been deprecated from provider version 1.216.0. New field 'payment_type' instead.
+	//
+	// Deprecated: Field 'instance_charge_type' has been deprecated since provider version 1.215.0. New field 'payment_type' instead.
+	InstanceChargeType pulumi.StringPtrInput
+	// . Field 'name' has been deprecated from provider version 1.216.0. New field 'vpn_gateway_name' instead.
+	//
+	// Deprecated: Field 'name' has been deprecated since provider version 1.215.0. New field 'vpn_gateway_name' instead.
+	Name pulumi.StringPtrInput
+	// The network type of the VPN gateway. Value:  public (default): public VPN gateway. private: private network VPN gateway.
 	NetworkType pulumi.StringPtrInput
+	// Type of payment. Value: Subscription: prepaid PayAsYouGo: Post-paid.
+	PaymentType pulumi.StringPtrInput
 	// The filed is only required while the InstanceChargeType is PrePaid. Valid values: [1-9, 12, 24, 36]. Default to 1.
 	Period pulumi.IntPtrInput
-	// The max connections of SSL VPN. Default to 5. The number of connections supported by each account is different.
-	// This field is ignored when enableSsl is false.
+	// The ID of the resource group.
+	ResourceGroupId pulumi.StringPtrInput
+	// Maximum number of clients.
 	SslConnections pulumi.IntPtrInput
-	// The tags of VPN gateway.
+	// The Tag of.
 	Tags pulumi.MapInput
-	// The VPN belongs the vpc_id, the field can't be changed.
+	// The ID of the VPC to which the VPN gateway belongs.
 	VpcId pulumi.StringInput
-	// The VPN belongs the vswitch_id, the field can't be changed.
+	// The name of the VPN gateway.
+	VpnGatewayName pulumi.StringPtrInput
+	// The VPN gateway type. Value:  Normal (default): Normal type. NationalStandard: National Secret type.
+	VpnType pulumi.StringPtrInput
+	// The ID of the VSwitch to which the VPN gateway is attached.
 	VswitchId pulumi.StringPtrInput
 }
 
@@ -353,11 +414,12 @@ func (o GatewayOutput) AutoPay() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Gateway) pulumi.BoolPtrOutput { return v.AutoPay }).(pulumi.BoolPtrOutput)
 }
 
-// Specifies whether to automatically advertise BGP routes to the virtual private cloud (VPC). Valid values:
+// Whether to automatically propagate the BGP route to the VPC. Value:  true: Propagate automatically.  false: does not propagate automatically.
 func (o GatewayOutput) AutoPropagate() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Gateway) pulumi.BoolPtrOutput { return v.AutoPropagate }).(pulumi.BoolPtrOutput)
 }
 
+// The Bandwidth specification of the VPN gateway. Unit: Mbps.  If you want to create a public VPN gateway, the value is 5, 10, 20, 50, 100, 200, 500, or 1000. If you want to create a private VPN gateway, the value is 200 or 1000.
 func (o GatewayOutput) Bandwidth() pulumi.IntOutput {
 	return o.ApplyT(func(v *Gateway) pulumi.IntOutput { return v.Bandwidth }).(pulumi.IntOutput)
 }
@@ -367,9 +429,19 @@ func (o GatewayOutput) BusinessStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v *Gateway) pulumi.StringOutput { return v.BusinessStatus }).(pulumi.StringOutput)
 }
 
-// The description of the VPN instance.
+// The time when the VPN gateway was created.
+func (o GatewayOutput) CreateTime() pulumi.IntOutput {
+	return o.ApplyT(func(v *Gateway) pulumi.IntOutput { return v.CreateTime }).(pulumi.IntOutput)
+}
+
+// The description of the VPN gateway.
 func (o GatewayOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Gateway) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the backup VSwitch to which the VPN gateway is attached.
+func (o GatewayOutput) DisasterRecoveryVswitchId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Gateway) pulumi.StringOutput { return v.DisasterRecoveryVswitchId }).(pulumi.StringOutput)
 }
 
 // Enable or Disable IPSec VPN. At least one type of VPN should be enabled.
@@ -378,14 +450,17 @@ func (o GatewayOutput) EnableIpsec() pulumi.BoolPtrOutput {
 }
 
 // Enable or Disable SSL VPN.  At least one type of VPN should be enabled.
+//
+// The following arguments will be discarded. Please use new fields as soon as possible:
 func (o GatewayOutput) EnableSsl() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Gateway) pulumi.BoolPtrOutput { return v.EnableSsl }).(pulumi.BoolPtrOutput)
 }
 
-// The charge type for instance. If it is an international site account, the valid value is PostPaid, otherwise PrePaid.
-// Default to PostPaid.
-func (o GatewayOutput) InstanceChargeType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Gateway) pulumi.StringPtrOutput { return v.InstanceChargeType }).(pulumi.StringPtrOutput)
+// . Field 'instance_charge_type' has been deprecated from provider version 1.216.0. New field 'payment_type' instead.
+//
+// Deprecated: Field 'instance_charge_type' has been deprecated since provider version 1.215.0. New field 'payment_type' instead.
+func (o GatewayOutput) InstanceChargeType() pulumi.StringOutput {
+	return o.ApplyT(func(v *Gateway) pulumi.StringOutput { return v.InstanceChargeType }).(pulumi.StringOutput)
 }
 
 // The internet ip of the VPN.
@@ -393,18 +468,21 @@ func (o GatewayOutput) InternetIp() pulumi.StringOutput {
 	return o.ApplyT(func(v *Gateway) pulumi.StringOutput { return v.InternetIp }).(pulumi.StringOutput)
 }
 
-// The name of the VPN. Defaults to null.
+// . Field 'name' has been deprecated from provider version 1.216.0. New field 'vpn_gateway_name' instead.
+//
+// Deprecated: Field 'name' has been deprecated since provider version 1.215.0. New field 'vpn_gateway_name' instead.
 func (o GatewayOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Gateway) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// The network type of the VPN gateway. Value:
-// - public (default): Public VPN gateway.
-// - private: Private VPN gateway.
-//
-// > **NOTE:** Private VPN gateway can only be purchased by white list users, and the bandwidth only supports 200M or 1000M; In addition, SSL is not supported.
+// The network type of the VPN gateway. Value:  public (default): public VPN gateway. private: private network VPN gateway.
 func (o GatewayOutput) NetworkType() pulumi.StringOutput {
 	return o.ApplyT(func(v *Gateway) pulumi.StringOutput { return v.NetworkType }).(pulumi.StringOutput)
+}
+
+// Type of payment. Value: Subscription: prepaid PayAsYouGo: Post-paid.
+func (o GatewayOutput) PaymentType() pulumi.StringOutput {
+	return o.ApplyT(func(v *Gateway) pulumi.StringOutput { return v.PaymentType }).(pulumi.StringOutput)
 }
 
 // The filed is only required while the InstanceChargeType is PrePaid. Valid values: [1-9, 12, 24, 36]. Default to 1.
@@ -412,28 +490,42 @@ func (o GatewayOutput) Period() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Gateway) pulumi.IntPtrOutput { return v.Period }).(pulumi.IntPtrOutput)
 }
 
-// The max connections of SSL VPN. Default to 5. The number of connections supported by each account is different.
-// This field is ignored when enableSsl is false.
-func (o GatewayOutput) SslConnections() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *Gateway) pulumi.IntPtrOutput { return v.SslConnections }).(pulumi.IntPtrOutput)
+// The ID of the resource group.
+func (o GatewayOutput) ResourceGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Gateway) pulumi.StringOutput { return v.ResourceGroupId }).(pulumi.StringOutput)
 }
 
-// The status of the VPN gateway.
+// Maximum number of clients.
+func (o GatewayOutput) SslConnections() pulumi.IntOutput {
+	return o.ApplyT(func(v *Gateway) pulumi.IntOutput { return v.SslConnections }).(pulumi.IntOutput)
+}
+
+// The status of the resource.
 func (o GatewayOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *Gateway) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }
 
-// The tags of VPN gateway.
+// The Tag of.
 func (o GatewayOutput) Tags() pulumi.MapOutput {
 	return o.ApplyT(func(v *Gateway) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
 }
 
-// The VPN belongs the vpc_id, the field can't be changed.
+// The ID of the VPC to which the VPN gateway belongs.
 func (o GatewayOutput) VpcId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Gateway) pulumi.StringOutput { return v.VpcId }).(pulumi.StringOutput)
 }
 
-// The VPN belongs the vswitch_id, the field can't be changed.
+// The name of the VPN gateway.
+func (o GatewayOutput) VpnGatewayName() pulumi.StringOutput {
+	return o.ApplyT(func(v *Gateway) pulumi.StringOutput { return v.VpnGatewayName }).(pulumi.StringOutput)
+}
+
+// The VPN gateway type. Value:  Normal (default): Normal type. NationalStandard: National Secret type.
+func (o GatewayOutput) VpnType() pulumi.StringOutput {
+	return o.ApplyT(func(v *Gateway) pulumi.StringOutput { return v.VpnType }).(pulumi.StringOutput)
+}
+
+// The ID of the VSwitch to which the VPN gateway is attached.
 func (o GatewayOutput) VswitchId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Gateway) pulumi.StringOutput { return v.VswitchId }).(pulumi.StringOutput)
 }

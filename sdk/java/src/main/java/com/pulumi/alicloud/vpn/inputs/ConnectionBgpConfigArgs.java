@@ -17,14 +17,14 @@ public final class ConnectionBgpConfigArgs extends com.pulumi.resources.Resource
     public static final ConnectionBgpConfigArgs Empty = new ConnectionBgpConfigArgs();
 
     /**
-     * Whether to enable BGP.
+     * Bgp enable.
      * 
      */
     @Import(name="enable")
     private @Nullable Output<Boolean> enable;
 
     /**
-     * @return Whether to enable BGP.
+     * @return Bgp enable.
      * 
      */
     public Optional<Output<Boolean>> enable() {
@@ -32,14 +32,14 @@ public final class ConnectionBgpConfigArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * The ASN on the Alibaba Cloud side.
+     * Local asn.
      * 
      */
     @Import(name="localAsn")
     private @Nullable Output<String> localAsn;
 
     /**
-     * @return The ASN on the Alibaba Cloud side.
+     * @return Local asn.
      * 
      */
     public Optional<Output<String>> localAsn() {
@@ -47,14 +47,14 @@ public final class ConnectionBgpConfigArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * The BGP IP address on the Alibaba Cloud side.
+     * Local bgp IP.
      * 
      */
     @Import(name="localBgpIp")
     private @Nullable Output<String> localBgpIp;
 
     /**
-     * @return The BGP IP address on the Alibaba Cloud side.
+     * @return Local bgp IP.
      * 
      */
     public Optional<Output<String>> localBgpIp() {
@@ -62,14 +62,29 @@ public final class ConnectionBgpConfigArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * The CIDR block of the IPsec tunnel. The CIDR block belongs to 169.254.0.0/16. The mask of the CIDR block is 30 bits in length.
+     * The negotiation status of Tunnel.
+     * 
+     */
+    @Import(name="status")
+    private @Nullable Output<String> status;
+
+    /**
+     * @return The negotiation status of Tunnel.
+     * 
+     */
+    public Optional<Output<String>> status() {
+        return Optional.ofNullable(this.status);
+    }
+
+    /**
+     * IPSec tunnel Cidr.
      * 
      */
     @Import(name="tunnelCidr")
     private @Nullable Output<String> tunnelCidr;
 
     /**
-     * @return The CIDR block of the IPsec tunnel. The CIDR block belongs to 169.254.0.0/16. The mask of the CIDR block is 30 bits in length.
+     * @return IPSec tunnel Cidr.
      * 
      */
     public Optional<Output<String>> tunnelCidr() {
@@ -82,6 +97,7 @@ public final class ConnectionBgpConfigArgs extends com.pulumi.resources.Resource
         this.enable = $.enable;
         this.localAsn = $.localAsn;
         this.localBgpIp = $.localBgpIp;
+        this.status = $.status;
         this.tunnelCidr = $.tunnelCidr;
     }
 
@@ -104,7 +120,7 @@ public final class ConnectionBgpConfigArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param enable Whether to enable BGP.
+         * @param enable Bgp enable.
          * 
          * @return builder
          * 
@@ -115,7 +131,7 @@ public final class ConnectionBgpConfigArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param enable Whether to enable BGP.
+         * @param enable Bgp enable.
          * 
          * @return builder
          * 
@@ -125,7 +141,7 @@ public final class ConnectionBgpConfigArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param localAsn The ASN on the Alibaba Cloud side.
+         * @param localAsn Local asn.
          * 
          * @return builder
          * 
@@ -136,7 +152,7 @@ public final class ConnectionBgpConfigArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param localAsn The ASN on the Alibaba Cloud side.
+         * @param localAsn Local asn.
          * 
          * @return builder
          * 
@@ -146,7 +162,7 @@ public final class ConnectionBgpConfigArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param localBgpIp The BGP IP address on the Alibaba Cloud side.
+         * @param localBgpIp Local bgp IP.
          * 
          * @return builder
          * 
@@ -157,7 +173,7 @@ public final class ConnectionBgpConfigArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param localBgpIp The BGP IP address on the Alibaba Cloud side.
+         * @param localBgpIp Local bgp IP.
          * 
          * @return builder
          * 
@@ -167,7 +183,28 @@ public final class ConnectionBgpConfigArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param tunnelCidr The CIDR block of the IPsec tunnel. The CIDR block belongs to 169.254.0.0/16. The mask of the CIDR block is 30 bits in length.
+         * @param status The negotiation status of Tunnel.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder status(@Nullable Output<String> status) {
+            $.status = status;
+            return this;
+        }
+
+        /**
+         * @param status The negotiation status of Tunnel.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder status(String status) {
+            return status(Output.of(status));
+        }
+
+        /**
+         * @param tunnelCidr IPSec tunnel Cidr.
          * 
          * @return builder
          * 
@@ -178,7 +215,7 @@ public final class ConnectionBgpConfigArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param tunnelCidr The CIDR block of the IPsec tunnel. The CIDR block belongs to 169.254.0.0/16. The mask of the CIDR block is 30 bits in length.
+         * @param tunnelCidr IPSec tunnel Cidr.
          * 
          * @return builder
          * 

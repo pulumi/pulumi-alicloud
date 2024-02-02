@@ -10159,7 +10159,7 @@ export namespace cloudstoragegateway {
 export namespace cms {
     export interface AlarmEscalationsCritical {
         /**
-         * Critical level alarm comparison operator. Valid values: ["<=", "<", ">", ">=", "==", "!="]. Default to "==".
+         * Critical level alarm comparison operator. Default value: `==`. Valid values: ["<=", "<", ">", ">=", "==", "!="].
          */
         comparisonOperator?: string;
         /**
@@ -10171,14 +10171,14 @@ export namespace cms {
          */
         threshold?: string;
         /**
-         * Critical level alarm retry times. Default to 3.
+         * Critical level alarm retry times. Default value: `3`.
          */
         times?: number;
     }
 
     export interface AlarmEscalationsInfo {
         /**
-         * Critical level alarm comparison operator. Valid values: ["<=", "<", ">", ">=", "==", "!="]. Default to "==".
+         * Critical level alarm comparison operator. Default value: `==`. Valid values: ["<=", "<", ">", ">=", "==", "!="].
          */
         comparisonOperator?: string;
         /**
@@ -10190,14 +10190,14 @@ export namespace cms {
          */
         threshold?: string;
         /**
-         * Critical level alarm retry times. Default to 3.
+         * Critical level alarm retry times. Default value: `3`.
          */
         times?: number;
     }
 
     export interface AlarmEscalationsWarn {
         /**
-         * Critical level alarm comparison operator. Valid values: ["<=", "<", ">", ">=", "==", "!="]. Default to "==".
+         * Critical level alarm comparison operator. Default value: `==`. Valid values: ["<=", "<", ">", ">=", "==", "!="].
          */
         comparisonOperator?: string;
         /**
@@ -10209,7 +10209,7 @@ export namespace cms {
          */
         threshold?: string;
         /**
-         * Critical level alarm retry times. Default to 3.
+         * Critical level alarm retry times. Default value: `3`.
          */
         times?: number;
     }
@@ -10222,7 +10222,7 @@ export namespace cms {
         /**
          * The level of the alert. Valid values: `Critical`, `Warn`, `Info`.
          */
-        level?: string;
+        level: string;
         /**
          * The PromQL query statement. **Note:** The data obtained by using the PromQL query statement is the monitoring data. You must include the alert threshold in this statement.
          */
@@ -10230,7 +10230,27 @@ export namespace cms {
         /**
          * The number of consecutive triggers. If the number of times that the metric values meet the trigger conditions reaches the value of this parameter, CloudMonitor sends alert notifications.
          */
-        times?: number;
+        times: number;
+    }
+
+    export interface AlarmTarget {
+        /**
+         * The Alibaba Cloud Resource Name (ARN) of the resource.
+         * > **NOTE:** Currently, the Alibaba Cloud Resource Name (ARN) of the resource. To use, please [submit an application](https://www.alibabacloud.com/help/en/cloudmonitor/latest/describemetricruletargets).
+         */
+        arn?: string;
+        /**
+         * The parameters of the alert callback. The parameters are in the JSON format.
+         */
+        jsonParams?: string;
+        /**
+         * The level of the alert. Valid values: `Critical`, `Warn`, `Info`.
+         */
+        level?: string;
+        /**
+         * The ID of the resource for which alerts are triggered.
+         */
+        targetId?: string;
     }
 
     export interface DynamicTagGroupMatchExpress {
@@ -15945,11 +15965,11 @@ export namespace ddos {
          */
         domainCount: number;
         /**
-         * The edition of the instance. The Valid Values : `0`, `1`, `2`, `9`.
+         * The edition of the instance.
          */
         edition: number;
         /**
-         * The enabled of the instance. The Valid Values : `0`, `1`.
+         * The enabled of the instance.
          */
         enabled: number;
         /**
@@ -15961,11 +15981,11 @@ export namespace ddos {
          */
         id: string;
         /**
-         * The ip mode of the instance. The Valid Values : `fnat`, `v6tov4`.
+         * The ip mode of the instance.
          */
         ipMode: string;
         /**
-         * The ip version of the instance. The Valid Values : `Ipv4`, `Ipv6`.
+         * The ip version of the instance.
          */
         ipVersion: string;
         /**
@@ -15985,7 +16005,7 @@ export namespace ddos {
          */
         serviceBandwidth: number;
         /**
-         * The status of the instance. The Valid Values : `1`, `2`.
+         * The status of the instance.
          */
         status: number;
     }
@@ -18626,6 +18646,10 @@ export namespace eci {
          * The restart policy of the image. Default value: `IfNotPresent`. Valid values: `Always`, `IfNotPresent`, `Never`.
          */
         imagePullPolicy?: string;
+        /**
+         * The commands to be executed in containers when you use the CLI to specify the preStop callback function.
+         */
+        lifecyclePreStopHandlerExecs?: string[];
         /**
          * The health check of the container. See `livenessProbe` below.
          */
@@ -26236,24 +26260,32 @@ export namespace ens {
 
     export interface InstanceDataDisk {
         /**
-         * Type of dataDisk
-         * - cloud_efficiency：High-efficiency cloud disk
-         * - cloud_ssd：Full flash cloud disk
-         * - local_hdd：Local hdd disk
-         * - local_ssd：Local disk ssd.
+         * Data disk type. Optional values:
+         * - cloud_efficiency: Ultra cloud disk
+         * - cloud_ssd: Full Flash cloud disk
+         * - local_hdd: local hdd disk
+         * - local_ssd: local disk ssd.
          */
         category?: string;
         /**
-         * Data disk size, cloudEfficiency is 20-32000,cloud_ssd/local_hdd/local_ssd is 20-25000, unit: GB.
+         * Data disk size, unit: GB.
          */
         size?: number;
     }
 
     export interface InstanceSystemDisk {
         /**
-         * System disk size, cloudEfficiency is 20-32000,cloud_ssd/local_hdd/local_ssd is 20-25000, unit: GB.
+         * System disk type. Optional values:
+         * - cloud_efficiency: Ultra cloud disk
+         * - cloud_ssd: Full Flash cloud disk
+         * - local_hdd: local hdd disk
+         * - local_ssd: local disk ssd.
          */
-        size?: number;
+        category: string;
+        /**
+         * System disk size, unit: GB.
+         */
+        size: number;
     }
 
 }
@@ -26312,6 +26344,10 @@ export namespace ess {
          * The restart policy of the image.
          */
         imagePullPolicy?: string;
+        /**
+         * The commands to be executed in containers when you use the CLI to specify the preStop callback function.
+         */
+        lifecyclePreStopHandlerExecs?: string[];
         /**
          * Commands that you want to run in containers when you use the CLI to perform liveness probes.
          */
@@ -27181,6 +27217,17 @@ export namespace ess {
         memory?: number;
     }
 
+    export interface ScalingConfigurationInstanceTypeOverride {
+        /**
+         * The is specified for an instance type in instanceTypeOverride.
+         */
+        instanceType?: string;
+        /**
+         * The weight of instance type in instanceTypeOverride.
+         */
+        weightedCapacity?: number;
+    }
+
     export interface ScalingConfigurationSpotPriceLimit {
         /**
          * Resource type of an ECS instance.
@@ -27190,6 +27237,28 @@ export namespace ess {
          * Price limit hourly of instance type, 2 decimals is allowed at most.
          */
         priceLimit?: number;
+    }
+
+    export interface ScalingGroupLaunchTemplateOverride {
+        /**
+         * The instance type in launchTemplateOverride.
+         */
+        instanceType?: string;
+        /**
+         * The maximum bid price of instance type in launchTemplateOverride.
+         *
+         *
+         * > **NOTE:** When detach loadbalancers, instances in group will be remove from loadbalancer's `Default Server Group`; On the contrary, When attach loadbalancers, instances in group will be added to loadbalancer's `Default Server Group`.
+         *
+         * > **NOTE:** When detach dbInstances, private ip of instances in group will be remove from dbInstance's `WhiteList`; On the contrary, When attach dbInstances, private ip of instances in group will be added to dbInstance's `WhiteList`.
+         *
+         * > **NOTE:** `onDemandBaseCapacity`,`onDemandPercentageAboveBaseCapacity`,`spotInstancePools`,`spotInstanceRemedy` are valid only if `multiAzPolicy` is 'COST_OPTIMIZED'.
+         */
+        spotPriceLimit?: number;
+        /**
+         * The weight of the instance type in launchTemplateOverride.
+         */
+        weightedCapacity?: number;
     }
 
     export interface ScalingGroupVServerGroupsVserverGroup {
@@ -37638,6 +37707,25 @@ export namespace polardb {
          * List of IP addresses allowed to access all databases of a cluster. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
          */
         securityIps?: string[];
+    }
+
+    export interface ClusterDbRevisionVersionList {
+        /**
+         * (Available since v1.216.0) The revised version Code of the database engine is used to specify the upgrade to the target version.
+         */
+        releaseNote: string;
+        /**
+         * (Available since v1.216.0) Database version release status. Valid values are `Stable`, `Old`, `HighRisk`.
+         */
+        releaseType: string;
+        /**
+         * (Available since v1.216.0) The revised version Code of the database engine is used to specify the upgrade to the target version.
+         */
+        revisionVersionCode: string;
+        /**
+         * (Available since v1.216.0) The revision version number of the database engine.
+         */
+        revisionVersionName: string;
     }
 
     export interface ClusterParameter {
@@ -48804,100 +48892,240 @@ export namespace vpc {
 export namespace vpn {
     export interface ConnectionBgpConfig {
         /**
-         * Whether to enable BGP.
+         * Bgp enable.
          */
         enable: boolean;
         /**
-         * The ASN on the Alibaba Cloud side.
+         * Local asn.
          */
         localAsn: string;
         /**
-         * The BGP IP address on the Alibaba Cloud side.
+         * Local bgp IP.
          */
         localBgpIp: string;
         /**
-         * The CIDR block of the IPsec tunnel. The CIDR block belongs to 169.254.0.0/16. The mask of the CIDR block is 30 bits in length.
+         * The negotiation status of Tunnel.
+         */
+        status: string;
+        /**
+         * IPSec tunnel Cidr.
          */
         tunnelCidr: string;
     }
 
     export interface ConnectionHealthCheckConfig {
         /**
-         * The destination IP address.
+         * Destination IP.
          */
         dip: string;
         /**
-         * Whether to enable Health Check.
+         * Specifies whether to enable healthcheck.
          */
         enable: boolean;
         /**
-         * The interval between two consecutive health checks. Unit: seconds.
+         * Retry interval.
          */
         interval: number;
         /**
-         * The maximum number of health check retries.
+         * retry times.
          */
         retry: number;
         /**
-         * The source IP address.
+         * Source IP.
          */
         sip: string;
     }
 
     export interface ConnectionIkeConfig {
         /**
-         * The authentication algorithm of phase-one negotiation. Valid value: md5 | sha1 . Default value: md5
+         * IKE auth Algorithm.
          */
         ikeAuthAlg: string;
         /**
-         * The encryption algorithm of phase-one negotiation. Valid value: aes | aes192 | aes256 | des | 3des. Default Valid value: aes
+         * IKE encript algorithm.
          */
-        ikeEncAlg?: string;
+        ikeEncAlg: string;
         /**
-         * The SA lifecycle as the result of phase-one negotiation. The valid value of n is [0, 86400], the unit is second and the default value is 86400.
+         * IKE lifetime.
          */
-        ikeLifetime?: number;
+        ikeLifetime: number;
         /**
-         * The identification of the VPN gateway.
+         * The local ID, which supports the FQDN and IP formats, and defaults to the IP address of the selected VPN gateway.
          */
         ikeLocalId: string;
         /**
-         * The negotiation mode of IKE V1. Valid value: main (main mode) | aggressive (aggressive mode). Default value: main
+         * IKE mode, supports main and aggressive mode. The main mode is highly secure. If NAT traversal is enabled, we recommend that you use the aggressive mode.
          */
-        ikeMode?: string;
+        ikeMode: string;
         /**
-         * The Diffie-Hellman key exchange algorithm used by phase-one negotiation. Valid value: group1 | group2 | group5 | group14 | group24. Default value: group2
+         * DH group.
          */
-        ikePfs?: string;
+        ikePfs: string;
         /**
-         * The identification of the customer gateway.
+         * The peer ID. The FQDN and IP address formats are supported. The default value is the IP address of the selected customer gateway.
          */
         ikeRemoteId: string;
         /**
-         * The version of the IKE protocol. Valid value: ikev1 | ikev2. Default value: ikev1
+         * IKE version.
          */
-        ikeVersion?: string;
+        ikeVersion: string;
         /**
-         * Used for authentication between the IPsec VPN gateway and the customer gateway.
+         * Preshared secret key.
          */
-        psk?: string;
+        psk: string;
     }
 
     export interface ConnectionIpsecConfig {
         /**
-         * The authentication algorithm of phase-two negotiation. Valid value: md5 | sha1 | sha256 | sha384 | sha512 |. Default value: sha1
+         * IPsec authentication algorithm. sha1 and md5 are supported.
+         */
+        ipsecAuthAlg: string;
+        /**
+         * IPsec Encript algorithm.
+         */
+        ipsecEncAlg: string;
+        /**
+         * IPsec lifetime.
+         */
+        ipsecLifetime: number;
+        /**
+         * DH Group.
+         */
+        ipsecPfs: string;
+    }
+
+    export interface ConnectionTunnelOptionsSpecification {
+        /**
+         * The ID of the customer gateway in Tunnel.
+         */
+        customerGatewayId?: string;
+        /**
+         * Wether enable Dpd detection.
+         */
+        enableDpd?: boolean;
+        /**
+         * enable nat traversal.
+         */
+        enableNatTraversal?: boolean;
+        /**
+         * The local internet IP in Tunnel.
+         */
+        internetIp: string;
+        /**
+         * The role of Tunnel.
+         */
+        role?: string;
+        /**
+         * The state of Tunnel.
+         */
+        state: string;
+        /**
+         * The negotiation status of Tunnel.
+         */
+        status: string;
+        /**
+         * The bgp config of Tunnel. See `tunnelBgpConfig` below.
+         */
+        tunnelBgpConfig?: outputs.vpn.ConnectionTunnelOptionsSpecificationTunnelBgpConfig;
+        /**
+         * The tunnel ID of IPsec-VPN connection.
+         */
+        tunnelId: string;
+        /**
+         * The configuration of Phase 1 negotiations in Tunnel. See `tunnelIkeConfig` below.
+         */
+        tunnelIkeConfig?: outputs.vpn.ConnectionTunnelOptionsSpecificationTunnelIkeConfig;
+        /**
+         * IPsec configuration in Tunnel. See `tunnelIpsecConfig` below.
+         */
+        tunnelIpsecConfig?: outputs.vpn.ConnectionTunnelOptionsSpecificationTunnelIpsecConfig;
+        /**
+         * The zoneNo of tunnel.
+         */
+        zoneNo: string;
+    }
+
+    export interface ConnectionTunnelOptionsSpecificationTunnelBgpConfig {
+        /**
+         * Whether BGP function is turned on.
+         */
+        bgpStatus: string;
+        /**
+         * Local asn.
+         */
+        localAsn?: string;
+        /**
+         * Local bgp IP.
+         */
+        localBgpIp?: string;
+        /**
+         * Peer asn.
+         */
+        peerAsn: string;
+        /**
+         * Peer bgp ip.
+         */
+        peerBgpIp: string;
+        /**
+         * IPSec tunnel Cidr.
+         */
+        tunnelCidr?: string;
+    }
+
+    export interface ConnectionTunnelOptionsSpecificationTunnelIkeConfig {
+        /**
+         * IKE auth Algorithm.
+         */
+        ikeAuthAlg?: string;
+        /**
+         * IKE encript algorithm.
+         */
+        ikeEncAlg?: string;
+        /**
+         * IKE lifetime.
+         */
+        ikeLifetime?: number;
+        /**
+         * IKE mode, supports main and aggressive mode. The main mode is highly secure. If NAT traversal is enabled, we recommend that you use the aggressive mode.
+         */
+        ikeMode?: string;
+        /**
+         * DH group.
+         */
+        ikePfs?: string;
+        /**
+         * IKE version.
+         */
+        ikeVersion?: string;
+        /**
+         * The local Id.
+         */
+        localId?: string;
+        /**
+         * Preshared secret key.
+         */
+        psk?: string;
+        /**
+         * Remote ID.
+         */
+        remoteId?: string;
+    }
+
+    export interface ConnectionTunnelOptionsSpecificationTunnelIpsecConfig {
+        /**
+         * IPsec authentication algorithm. sha1 and md5 are supported.
          */
         ipsecAuthAlg?: string;
         /**
-         * The encryption algorithm of phase-two negotiation. Valid value: aes | aes192 | aes256 | des | 3des. Default value: aes
+         * IPsec Encript algorithm.
          */
         ipsecEncAlg?: string;
         /**
-         * The SA lifecycle as the result of phase-two negotiation. The valid value is [0, 86400], the unit is second and the default value is 86400.
+         * IPsec lifetime.
          */
         ipsecLifetime?: number;
         /**
-         * The Diffie-Hellman key exchange algorithm used by phase-two negotiation. Valid value: group1 | group2 | group5 | group14 | group24| disabled. Default value: group2
+         * DH Group.
          */
         ipsecPfs?: string;
     }
@@ -49415,6 +49643,17 @@ export namespace vpn {
          * The DH group.
          */
         ipsecPfs: string;
+    }
+
+    export interface GetGatewayZonesZone {
+        /**
+         * The zone ID.
+         */
+        zoneId: string;
+        /**
+         * The zone name.
+         */
+        zoneName: string;
     }
 
     export interface GetGatewaysGateway {

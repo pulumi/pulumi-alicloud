@@ -10,7 +10,10 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
+import java.lang.Integer;
+import java.lang.Object;
 import java.lang.String;
+import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
@@ -39,9 +42,13 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var foo = new CustomerGateway(&#34;foo&#34;, CustomerGatewayArgs.builder()        
- *             .description(&#34;vpnCgwDescriptionExample&#34;)
- *             .ipAddress(&#34;43.104.22.228&#34;)
+ *         final var config = ctx.config();
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;terraform-example&#34;);
+ *         var default_ = new CustomerGateway(&#34;default&#34;, CustomerGatewayArgs.builder()        
+ *             .description(name)
+ *             .ipAddress(&#34;4.3.2.10&#34;)
+ *             .asn(&#34;1219002&#34;)
+ *             .customerGatewayName(name)
  *             .build());
  * 
  *     }
@@ -53,35 +60,63 @@ import javax.annotation.Nullable;
  * VPN customer gateway can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:vpn/customerGateway:CustomerGateway example cgw-abc123456
+ *  $ pulumi import alicloud:vpn/customerGateway:CustomerGateway example &lt;id&gt;
  * ```
  * 
  */
 @ResourceType(type="alicloud:vpn/customerGateway:CustomerGateway")
 public class CustomerGateway extends com.pulumi.resources.CustomResource {
     /**
-     * The autonomous system number of the gateway device in the data center. The `asn` is a 4-byte number. You can enter the number in two segments and separate the first 16 bits from the following 16 bits with a period (.). Enter the number in each segment in the decimal format.
+     * Asn.
      * 
      */
     @Export(name="asn", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> asn;
 
     /**
-     * @return The autonomous system number of the gateway device in the data center. The `asn` is a 4-byte number. You can enter the number in two segments and separate the first 16 bits from the following 16 bits with a period (.). Enter the number in each segment in the decimal format.
+     * @return Asn.
      * 
      */
     public Output<Optional<String>> asn() {
         return Codegen.optional(this.asn);
     }
     /**
-     * The description of the VPN customer gateway instance.
+     * The time when the customer gateway was created.
+     * 
+     */
+    @Export(name="createTime", refs={Integer.class}, tree="[0]")
+    private Output<Integer> createTime;
+
+    /**
+     * @return The time when the customer gateway was created.
+     * 
+     */
+    public Output<Integer> createTime() {
+        return this.createTime;
+    }
+    /**
+     * The name of the customer gateway.
+     * 
+     */
+    @Export(name="customerGatewayName", refs={String.class}, tree="[0]")
+    private Output<String> customerGatewayName;
+
+    /**
+     * @return The name of the customer gateway.
+     * 
+     */
+    public Output<String> customerGatewayName() {
+        return this.customerGatewayName;
+    }
+    /**
+     * The description of the customer gateway.
      * 
      */
     @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
-     * @return The description of the VPN customer gateway instance.
+     * @return The description of the customer gateway.
      * 
      */
     public Output<Optional<String>> description() {
@@ -102,18 +137,40 @@ public class CustomerGateway extends com.pulumi.resources.CustomResource {
         return this.ipAddress;
     }
     /**
-     * The name of the VPN customer gateway. Defaults to null.
+     * . Field &#39;name&#39; has been deprecated from provider version 1.216.0. New field &#39;customer_gateway_name&#39; instead.
+     * 
+     * @deprecated
+     * Field &#39;name&#39; has been deprecated since provider version 1.210.0. New field &#39;customer_gateway_name&#39; instead.
      * 
      */
+    @Deprecated /* Field 'name' has been deprecated since provider version 1.210.0. New field 'customer_gateway_name' instead. */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return The name of the VPN customer gateway. Defaults to null.
+     * @return . Field &#39;name&#39; has been deprecated from provider version 1.216.0. New field &#39;customer_gateway_name&#39; instead.
      * 
      */
     public Output<String> name() {
         return this.name;
+    }
+    /**
+     * tag.
+     * 
+     * The following arguments will be discarded. Please use new fields as soon as possible:
+     * 
+     */
+    @Export(name="tags", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
+    private Output</* @Nullable */ Map<String,Object>> tags;
+
+    /**
+     * @return tag.
+     * 
+     * The following arguments will be discarded. Please use new fields as soon as possible:
+     * 
+     */
+    public Output<Optional<Map<String,Object>>> tags() {
+        return Codegen.optional(this.tags);
     }
 
     /**

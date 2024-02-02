@@ -24,16 +24,24 @@ import * as utilities from "../utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
+ * import * as random from "@pulumi/random";
  *
  * const config = new pulumi.Config();
- * const name = config.get("name") || "tfexample";
+ * const name = config.get("name") || "tf-example";
+ * const _default = new random.RandomInteger("default", {
+ *     min: 10000,
+ *     max: 99999,
+ * });
  * const exampleRegions = alicloud.getRegions({
  *     current: true,
  * });
  * const exampleAccount = alicloud.getAccount({});
- * const exampleProject = new alicloud.log.Project("exampleProject", {description: "tf actiontrail example"});
+ * const exampleProject = new alicloud.log.Project("exampleProject", {
+ *     projectName: pulumi.interpolate`${name}-${_default.result}`,
+ *     description: "tf actiontrail example",
+ * });
  * const exampleTrail = new alicloud.actiontrail.Trail("exampleTrail", {
- *     trailName: name,
+ *     trailName: pulumi.interpolate`${name}-${_default.result}`,
  *     slsProjectArn: pulumi.all([exampleRegions, exampleAccount, exampleProject.name]).apply(([exampleRegions, exampleAccount, name]) => `acs:log:${exampleRegions.regions?.[0]?.id}:${exampleAccount.id}:project/${name}`),
  * });
  * const exampleHistoryDeliveryJob = new alicloud.actiontrail.HistoryDeliveryJob("exampleHistoryDeliveryJob", {trailName: exampleTrail.id});

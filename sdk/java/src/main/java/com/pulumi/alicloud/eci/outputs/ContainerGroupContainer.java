@@ -58,6 +58,11 @@ public final class ContainerGroupContainer {
      */
     private @Nullable String imagePullPolicy;
     /**
+     * @return The commands to be executed in containers when you use the CLI to specify the preStop callback function.
+     * 
+     */
+    private @Nullable List<String> lifecyclePreStopHandlerExecs;
+    /**
      * @return The health check of the container. See `liveness_probe` below.
      * 
      */
@@ -159,6 +164,13 @@ public final class ContainerGroupContainer {
         return Optional.ofNullable(this.imagePullPolicy);
     }
     /**
+     * @return The commands to be executed in containers when you use the CLI to specify the preStop callback function.
+     * 
+     */
+    public List<String> lifecyclePreStopHandlerExecs() {
+        return this.lifecyclePreStopHandlerExecs == null ? List.of() : this.lifecyclePreStopHandlerExecs;
+    }
+    /**
      * @return The health check of the container. See `liveness_probe` below.
      * 
      */
@@ -245,6 +257,7 @@ public final class ContainerGroupContainer {
         private @Nullable Integer gpu;
         private String image;
         private @Nullable String imagePullPolicy;
+        private @Nullable List<String> lifecyclePreStopHandlerExecs;
         private @Nullable List<ContainerGroupContainerLivenessProbe> livenessProbes;
         private @Nullable Double memory;
         private String name;
@@ -265,6 +278,7 @@ public final class ContainerGroupContainer {
     	      this.gpu = defaults.gpu;
     	      this.image = defaults.image;
     	      this.imagePullPolicy = defaults.imagePullPolicy;
+    	      this.lifecyclePreStopHandlerExecs = defaults.lifecyclePreStopHandlerExecs;
     	      this.livenessProbes = defaults.livenessProbes;
     	      this.memory = defaults.memory;
     	      this.name = defaults.name;
@@ -329,6 +343,15 @@ public final class ContainerGroupContainer {
 
             this.imagePullPolicy = imagePullPolicy;
             return this;
+        }
+        @CustomType.Setter
+        public Builder lifecyclePreStopHandlerExecs(@Nullable List<String> lifecyclePreStopHandlerExecs) {
+
+            this.lifecyclePreStopHandlerExecs = lifecyclePreStopHandlerExecs;
+            return this;
+        }
+        public Builder lifecyclePreStopHandlerExecs(String... lifecyclePreStopHandlerExecs) {
+            return lifecyclePreStopHandlerExecs(List.of(lifecyclePreStopHandlerExecs));
         }
         @CustomType.Setter
         public Builder livenessProbes(@Nullable List<ContainerGroupContainerLivenessProbe> livenessProbes) {
@@ -416,6 +439,7 @@ public final class ContainerGroupContainer {
             _resultValue.gpu = gpu;
             _resultValue.image = image;
             _resultValue.imagePullPolicy = imagePullPolicy;
+            _resultValue.lifecyclePreStopHandlerExecs = lifecyclePreStopHandlerExecs;
             _resultValue.livenessProbes = livenessProbes;
             _resultValue.memory = memory;
             _resultValue.name = name;

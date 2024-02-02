@@ -45,19 +45,11 @@ type Instance struct {
 	BusinessInfo pulumi.StringPtrOutput `pulumi:"businessInfo"`
 	// The storage capacity of the KVStore DBInstance. Unit: MB.
 	Capacity pulumi.IntOutput `pulumi:"capacity"`
-	// The configuration of the KVStore DBInstance. Available parameters can refer to the latest docs [Instance configurations table](https://www.alibabacloud.com/help/doc-detail/61209.htm) .
+	// The configuration of the KVStore DBInstance. Available parameters can refer to the latest docs [Instance configurations table](https://www.alibabacloud.com/help/en/redis/user-guide/supported-parameters).
 	Config pulumi.MapOutput `pulumi:"config"`
 	// Intranet connection address of the KVStore instance.
 	ConnectionDomain pulumi.StringOutput `pulumi:"connectionDomain"`
 	// Indicates whether the address is a private endpoint.
-	//
-	// > **NOTE:** The start time to the end time must be 1 hour. For example, the MaintainStartTime is 01:00Z, then the MaintainEndTime must be 02:00Z.
-	//
-	// > **NOTE:** You must specify at least one of the `capacity` and `instanceClass` parameters when you call create instance operation.
-	//
-	// > **NOTE:** The `privateIp` must be in the Classless Inter-Domain Routing (CIDR) block of the VSwitch to which the instance belongs.
-	//
-	// > **NOTE:** If you specify the `srcdbInstanceId` parameter, you must specify the `backupId` or `restoreTime` parameter.
 	//
 	// Deprecated: Field 'connection_string' has been deprecated from version 1.101.0. Please use resource 'alicloud_kvstore_connection' instead.
 	ConnectionString pulumi.StringOutput `pulumi:"connectionString"`
@@ -65,7 +57,7 @@ type Instance struct {
 	//
 	// Deprecated: Field 'connection_string_prefix' has been deprecated from version 1.101.0. Please use resource 'alicloud_kvstore_connection' instead.
 	ConnectionStringPrefix pulumi.StringPtrOutput `pulumi:"connectionStringPrefix"`
-	// The coupon code. Default value: `youhuiquanPromotionOptionIdForBlank`.
+	// The coupon code.
 	CouponNo pulumi.StringPtrOutput `pulumi:"couponNo"`
 	// The name of KVStore DBInstance. It is a string of 2 to 256 characters.
 	DbInstanceName pulumi.StringOutput `pulumi:"dbInstanceName"`
@@ -73,8 +65,7 @@ type Instance struct {
 	DedicatedHostGroupId pulumi.StringPtrOutput `pulumi:"dedicatedHostGroupId"`
 	// Specifies whether to precheck the request. Valid values:
 	DryRun pulumi.BoolPtrOutput `pulumi:"dryRun"`
-	// The time when the database is switched after the instance is migrated,
-	// or when the major version is upgraded, or when the instance class is upgraded. Valid values:
+	// The time when the database is switched after the instance is migrated, or when the major version is upgraded, or when the instance class is upgraded. Valid values:
 	EffectiveTime pulumi.StringPtrOutput `pulumi:"effectiveTime"`
 	// Turn on or off incremental backup. Valid values: `1`, `0`. Default value: `0`
 	EnableBackupLog pulumi.IntPtrOutput `pulumi:"enableBackupLog"`
@@ -120,8 +111,6 @@ type Instance struct {
 	MaintainEndTime pulumi.StringOutput `pulumi:"maintainEndTime"`
 	// The start time of the operation and maintenance time period of the KVStore DBInstance, in the format of HH:mmZ (UTC time).
 	MaintainStartTime pulumi.StringOutput `pulumi:"maintainStartTime"`
-	// The method of modifying the whitelist. Valid values: `0`, `1` and `2`. Default value: `0`. `0` means overwrites the original whitelist. `1` means adds the IP addresses to the whitelist. `2` means deletes the IP addresses from the whitelist.
-	ModifyMode pulumi.IntPtrOutput `pulumi:"modifyMode"`
 	// "Field `nodeType` has been deprecated from version 1.120.1". This parameter is determined by the `instanceClass`.
 	//
 	// Deprecated: Field 'node_type' has been deprecated from version 1.120.1
@@ -157,7 +146,7 @@ type Instance struct {
 	// The ID of the secondary zone to which you want to migrate the ApsaraDB for Redis instance.
 	// > **NOTE:** If you specify this parameter, the master node and replica node of the instance can be deployed in different zones and disaster recovery is implemented across zones. The instance can withstand failures in data centers.
 	SecondaryZoneId pulumi.StringPtrOutput `pulumi:"secondaryZoneId"`
-	// The ID of security groups.
+	// The ID of security groups. Separate multiple security group IDs with commas (,), such as `sg-***,sg-***,sg-***`.
 	SecurityGroupId pulumi.StringPtrOutput `pulumi:"securityGroupId"`
 	// The value of this parameter is empty by default. The attribute of the whitelist group. The console does not display the whitelist group whose value of this parameter is hidden.
 	SecurityIpGroupAttribute pulumi.StringPtrOutput `pulumi:"securityIpGroupAttribute"`
@@ -165,7 +154,7 @@ type Instance struct {
 	SecurityIpGroupName pulumi.StringOutput `pulumi:"securityIpGroupName"`
 	// The IP addresses in the whitelist group. The maximum number of IP addresses in the whitelist group is 1000.
 	SecurityIps pulumi.StringArrayOutput `pulumi:"securityIps"`
-	// The number of data shards. This parameter is available only if you create a cluster instance that uses cloud disks. You can use this parameter to specify a custom number of data shards.
+	// The number of data shards. This parameter is available only if you create a cluster instance that uses cloud disks. You can use this parameter to specify a custom number of data shards. **NOTE:** From version 1.216.0, `shardCount` can be modified.
 	ShardCount pulumi.IntOutput `pulumi:"shardCount"`
 	// The ID of the source instance.
 	SrcdbInstanceId pulumi.StringPtrOutput `pulumi:"srcdbInstanceId"`
@@ -177,7 +166,7 @@ type Instance struct {
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.MapOutput `pulumi:"tags"`
 	// Specifies whether to enable TDE. Valid values: `Enabled`.
-	// **NOTE:**: TDE cannot be disabled after it is enabled. Before you enable it, evaluate whether this feature affects
+	// **NOTE:**: TDE cannot be disabled after it is enabled. Before you enable it, evaluate whether this feature affects.
 	// your business. For more information, see [Enable TDE](https://www.alibabacloud.com/help/en/redis/user-guide/enable-tde).
 	TdeStatus pulumi.StringOutput `pulumi:"tdeStatus"`
 	// Only meaningful if instanceType is `Redis` and network type is VPC. Valid values: `Close`, `Open`. Default value: `Open`. `Close` means the redis instance can be accessed without authentication. `Open` means authentication is required.
@@ -247,19 +236,11 @@ type instanceState struct {
 	BusinessInfo *string `pulumi:"businessInfo"`
 	// The storage capacity of the KVStore DBInstance. Unit: MB.
 	Capacity *int `pulumi:"capacity"`
-	// The configuration of the KVStore DBInstance. Available parameters can refer to the latest docs [Instance configurations table](https://www.alibabacloud.com/help/doc-detail/61209.htm) .
+	// The configuration of the KVStore DBInstance. Available parameters can refer to the latest docs [Instance configurations table](https://www.alibabacloud.com/help/en/redis/user-guide/supported-parameters).
 	Config map[string]interface{} `pulumi:"config"`
 	// Intranet connection address of the KVStore instance.
 	ConnectionDomain *string `pulumi:"connectionDomain"`
 	// Indicates whether the address is a private endpoint.
-	//
-	// > **NOTE:** The start time to the end time must be 1 hour. For example, the MaintainStartTime is 01:00Z, then the MaintainEndTime must be 02:00Z.
-	//
-	// > **NOTE:** You must specify at least one of the `capacity` and `instanceClass` parameters when you call create instance operation.
-	//
-	// > **NOTE:** The `privateIp` must be in the Classless Inter-Domain Routing (CIDR) block of the VSwitch to which the instance belongs.
-	//
-	// > **NOTE:** If you specify the `srcdbInstanceId` parameter, you must specify the `backupId` or `restoreTime` parameter.
 	//
 	// Deprecated: Field 'connection_string' has been deprecated from version 1.101.0. Please use resource 'alicloud_kvstore_connection' instead.
 	ConnectionString *string `pulumi:"connectionString"`
@@ -267,7 +248,7 @@ type instanceState struct {
 	//
 	// Deprecated: Field 'connection_string_prefix' has been deprecated from version 1.101.0. Please use resource 'alicloud_kvstore_connection' instead.
 	ConnectionStringPrefix *string `pulumi:"connectionStringPrefix"`
-	// The coupon code. Default value: `youhuiquanPromotionOptionIdForBlank`.
+	// The coupon code.
 	CouponNo *string `pulumi:"couponNo"`
 	// The name of KVStore DBInstance. It is a string of 2 to 256 characters.
 	DbInstanceName *string `pulumi:"dbInstanceName"`
@@ -275,8 +256,7 @@ type instanceState struct {
 	DedicatedHostGroupId *string `pulumi:"dedicatedHostGroupId"`
 	// Specifies whether to precheck the request. Valid values:
 	DryRun *bool `pulumi:"dryRun"`
-	// The time when the database is switched after the instance is migrated,
-	// or when the major version is upgraded, or when the instance class is upgraded. Valid values:
+	// The time when the database is switched after the instance is migrated, or when the major version is upgraded, or when the instance class is upgraded. Valid values:
 	EffectiveTime *string `pulumi:"effectiveTime"`
 	// Turn on or off incremental backup. Valid values: `1`, `0`. Default value: `0`
 	EnableBackupLog *int `pulumi:"enableBackupLog"`
@@ -322,8 +302,6 @@ type instanceState struct {
 	MaintainEndTime *string `pulumi:"maintainEndTime"`
 	// The start time of the operation and maintenance time period of the KVStore DBInstance, in the format of HH:mmZ (UTC time).
 	MaintainStartTime *string `pulumi:"maintainStartTime"`
-	// The method of modifying the whitelist. Valid values: `0`, `1` and `2`. Default value: `0`. `0` means overwrites the original whitelist. `1` means adds the IP addresses to the whitelist. `2` means deletes the IP addresses from the whitelist.
-	ModifyMode *int `pulumi:"modifyMode"`
 	// "Field `nodeType` has been deprecated from version 1.120.1". This parameter is determined by the `instanceClass`.
 	//
 	// Deprecated: Field 'node_type' has been deprecated from version 1.120.1
@@ -359,7 +337,7 @@ type instanceState struct {
 	// The ID of the secondary zone to which you want to migrate the ApsaraDB for Redis instance.
 	// > **NOTE:** If you specify this parameter, the master node and replica node of the instance can be deployed in different zones and disaster recovery is implemented across zones. The instance can withstand failures in data centers.
 	SecondaryZoneId *string `pulumi:"secondaryZoneId"`
-	// The ID of security groups.
+	// The ID of security groups. Separate multiple security group IDs with commas (,), such as `sg-***,sg-***,sg-***`.
 	SecurityGroupId *string `pulumi:"securityGroupId"`
 	// The value of this parameter is empty by default. The attribute of the whitelist group. The console does not display the whitelist group whose value of this parameter is hidden.
 	SecurityIpGroupAttribute *string `pulumi:"securityIpGroupAttribute"`
@@ -367,7 +345,7 @@ type instanceState struct {
 	SecurityIpGroupName *string `pulumi:"securityIpGroupName"`
 	// The IP addresses in the whitelist group. The maximum number of IP addresses in the whitelist group is 1000.
 	SecurityIps []string `pulumi:"securityIps"`
-	// The number of data shards. This parameter is available only if you create a cluster instance that uses cloud disks. You can use this parameter to specify a custom number of data shards.
+	// The number of data shards. This parameter is available only if you create a cluster instance that uses cloud disks. You can use this parameter to specify a custom number of data shards. **NOTE:** From version 1.216.0, `shardCount` can be modified.
 	ShardCount *int `pulumi:"shardCount"`
 	// The ID of the source instance.
 	SrcdbInstanceId *string `pulumi:"srcdbInstanceId"`
@@ -379,7 +357,7 @@ type instanceState struct {
 	// A mapping of tags to assign to the resource.
 	Tags map[string]interface{} `pulumi:"tags"`
 	// Specifies whether to enable TDE. Valid values: `Enabled`.
-	// **NOTE:**: TDE cannot be disabled after it is enabled. Before you enable it, evaluate whether this feature affects
+	// **NOTE:**: TDE cannot be disabled after it is enabled. Before you enable it, evaluate whether this feature affects.
 	// your business. For more information, see [Enable TDE](https://www.alibabacloud.com/help/en/redis/user-guide/enable-tde).
 	TdeStatus *string `pulumi:"tdeStatus"`
 	// Only meaningful if instanceType is `Redis` and network type is VPC. Valid values: `Close`, `Open`. Default value: `Open`. `Close` means the redis instance can be accessed without authentication. `Open` means authentication is required.
@@ -413,19 +391,11 @@ type InstanceState struct {
 	BusinessInfo pulumi.StringPtrInput
 	// The storage capacity of the KVStore DBInstance. Unit: MB.
 	Capacity pulumi.IntPtrInput
-	// The configuration of the KVStore DBInstance. Available parameters can refer to the latest docs [Instance configurations table](https://www.alibabacloud.com/help/doc-detail/61209.htm) .
+	// The configuration of the KVStore DBInstance. Available parameters can refer to the latest docs [Instance configurations table](https://www.alibabacloud.com/help/en/redis/user-guide/supported-parameters).
 	Config pulumi.MapInput
 	// Intranet connection address of the KVStore instance.
 	ConnectionDomain pulumi.StringPtrInput
 	// Indicates whether the address is a private endpoint.
-	//
-	// > **NOTE:** The start time to the end time must be 1 hour. For example, the MaintainStartTime is 01:00Z, then the MaintainEndTime must be 02:00Z.
-	//
-	// > **NOTE:** You must specify at least one of the `capacity` and `instanceClass` parameters when you call create instance operation.
-	//
-	// > **NOTE:** The `privateIp` must be in the Classless Inter-Domain Routing (CIDR) block of the VSwitch to which the instance belongs.
-	//
-	// > **NOTE:** If you specify the `srcdbInstanceId` parameter, you must specify the `backupId` or `restoreTime` parameter.
 	//
 	// Deprecated: Field 'connection_string' has been deprecated from version 1.101.0. Please use resource 'alicloud_kvstore_connection' instead.
 	ConnectionString pulumi.StringPtrInput
@@ -433,7 +403,7 @@ type InstanceState struct {
 	//
 	// Deprecated: Field 'connection_string_prefix' has been deprecated from version 1.101.0. Please use resource 'alicloud_kvstore_connection' instead.
 	ConnectionStringPrefix pulumi.StringPtrInput
-	// The coupon code. Default value: `youhuiquanPromotionOptionIdForBlank`.
+	// The coupon code.
 	CouponNo pulumi.StringPtrInput
 	// The name of KVStore DBInstance. It is a string of 2 to 256 characters.
 	DbInstanceName pulumi.StringPtrInput
@@ -441,8 +411,7 @@ type InstanceState struct {
 	DedicatedHostGroupId pulumi.StringPtrInput
 	// Specifies whether to precheck the request. Valid values:
 	DryRun pulumi.BoolPtrInput
-	// The time when the database is switched after the instance is migrated,
-	// or when the major version is upgraded, or when the instance class is upgraded. Valid values:
+	// The time when the database is switched after the instance is migrated, or when the major version is upgraded, or when the instance class is upgraded. Valid values:
 	EffectiveTime pulumi.StringPtrInput
 	// Turn on or off incremental backup. Valid values: `1`, `0`. Default value: `0`
 	EnableBackupLog pulumi.IntPtrInput
@@ -488,8 +457,6 @@ type InstanceState struct {
 	MaintainEndTime pulumi.StringPtrInput
 	// The start time of the operation and maintenance time period of the KVStore DBInstance, in the format of HH:mmZ (UTC time).
 	MaintainStartTime pulumi.StringPtrInput
-	// The method of modifying the whitelist. Valid values: `0`, `1` and `2`. Default value: `0`. `0` means overwrites the original whitelist. `1` means adds the IP addresses to the whitelist. `2` means deletes the IP addresses from the whitelist.
-	ModifyMode pulumi.IntPtrInput
 	// "Field `nodeType` has been deprecated from version 1.120.1". This parameter is determined by the `instanceClass`.
 	//
 	// Deprecated: Field 'node_type' has been deprecated from version 1.120.1
@@ -525,7 +492,7 @@ type InstanceState struct {
 	// The ID of the secondary zone to which you want to migrate the ApsaraDB for Redis instance.
 	// > **NOTE:** If you specify this parameter, the master node and replica node of the instance can be deployed in different zones and disaster recovery is implemented across zones. The instance can withstand failures in data centers.
 	SecondaryZoneId pulumi.StringPtrInput
-	// The ID of security groups.
+	// The ID of security groups. Separate multiple security group IDs with commas (,), such as `sg-***,sg-***,sg-***`.
 	SecurityGroupId pulumi.StringPtrInput
 	// The value of this parameter is empty by default. The attribute of the whitelist group. The console does not display the whitelist group whose value of this parameter is hidden.
 	SecurityIpGroupAttribute pulumi.StringPtrInput
@@ -533,7 +500,7 @@ type InstanceState struct {
 	SecurityIpGroupName pulumi.StringPtrInput
 	// The IP addresses in the whitelist group. The maximum number of IP addresses in the whitelist group is 1000.
 	SecurityIps pulumi.StringArrayInput
-	// The number of data shards. This parameter is available only if you create a cluster instance that uses cloud disks. You can use this parameter to specify a custom number of data shards.
+	// The number of data shards. This parameter is available only if you create a cluster instance that uses cloud disks. You can use this parameter to specify a custom number of data shards. **NOTE:** From version 1.216.0, `shardCount` can be modified.
 	ShardCount pulumi.IntPtrInput
 	// The ID of the source instance.
 	SrcdbInstanceId pulumi.StringPtrInput
@@ -545,7 +512,7 @@ type InstanceState struct {
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.MapInput
 	// Specifies whether to enable TDE. Valid values: `Enabled`.
-	// **NOTE:**: TDE cannot be disabled after it is enabled. Before you enable it, evaluate whether this feature affects
+	// **NOTE:**: TDE cannot be disabled after it is enabled. Before you enable it, evaluate whether this feature affects.
 	// your business. For more information, see [Enable TDE](https://www.alibabacloud.com/help/en/redis/user-guide/enable-tde).
 	TdeStatus pulumi.StringPtrInput
 	// Only meaningful if instanceType is `Redis` and network type is VPC. Valid values: `Close`, `Open`. Default value: `Open`. `Close` means the redis instance can be accessed without authentication. `Open` means authentication is required.
@@ -581,13 +548,13 @@ type instanceArgs struct {
 	BusinessInfo *string `pulumi:"businessInfo"`
 	// The storage capacity of the KVStore DBInstance. Unit: MB.
 	Capacity *int `pulumi:"capacity"`
-	// The configuration of the KVStore DBInstance. Available parameters can refer to the latest docs [Instance configurations table](https://www.alibabacloud.com/help/doc-detail/61209.htm) .
+	// The configuration of the KVStore DBInstance. Available parameters can refer to the latest docs [Instance configurations table](https://www.alibabacloud.com/help/en/redis/user-guide/supported-parameters).
 	Config map[string]interface{} `pulumi:"config"`
 	// It has been deprecated from provider version 1.101.0 and resource `kvstore.Connection` instead.
 	//
 	// Deprecated: Field 'connection_string_prefix' has been deprecated from version 1.101.0. Please use resource 'alicloud_kvstore_connection' instead.
 	ConnectionStringPrefix *string `pulumi:"connectionStringPrefix"`
-	// The coupon code. Default value: `youhuiquanPromotionOptionIdForBlank`.
+	// The coupon code.
 	CouponNo *string `pulumi:"couponNo"`
 	// The name of KVStore DBInstance. It is a string of 2 to 256 characters.
 	DbInstanceName *string `pulumi:"dbInstanceName"`
@@ -595,8 +562,7 @@ type instanceArgs struct {
 	DedicatedHostGroupId *string `pulumi:"dedicatedHostGroupId"`
 	// Specifies whether to precheck the request. Valid values:
 	DryRun *bool `pulumi:"dryRun"`
-	// The time when the database is switched after the instance is migrated,
-	// or when the major version is upgraded, or when the instance class is upgraded. Valid values:
+	// The time when the database is switched after the instance is migrated, or when the major version is upgraded, or when the instance class is upgraded. Valid values:
 	EffectiveTime *string `pulumi:"effectiveTime"`
 	// Turn on or off incremental backup. Valid values: `1`, `0`. Default value: `0`
 	EnableBackupLog *int `pulumi:"enableBackupLog"`
@@ -640,8 +606,6 @@ type instanceArgs struct {
 	MaintainEndTime *string `pulumi:"maintainEndTime"`
 	// The start time of the operation and maintenance time period of the KVStore DBInstance, in the format of HH:mmZ (UTC time).
 	MaintainStartTime *string `pulumi:"maintainStartTime"`
-	// The method of modifying the whitelist. Valid values: `0`, `1` and `2`. Default value: `0`. `0` means overwrites the original whitelist. `1` means adds the IP addresses to the whitelist. `2` means deletes the IP addresses from the whitelist.
-	ModifyMode *int `pulumi:"modifyMode"`
 	// "Field `nodeType` has been deprecated from version 1.120.1". This parameter is determined by the `instanceClass`.
 	//
 	// Deprecated: Field 'node_type' has been deprecated from version 1.120.1
@@ -675,7 +639,7 @@ type instanceArgs struct {
 	// The ID of the secondary zone to which you want to migrate the ApsaraDB for Redis instance.
 	// > **NOTE:** If you specify this parameter, the master node and replica node of the instance can be deployed in different zones and disaster recovery is implemented across zones. The instance can withstand failures in data centers.
 	SecondaryZoneId *string `pulumi:"secondaryZoneId"`
-	// The ID of security groups.
+	// The ID of security groups. Separate multiple security group IDs with commas (,), such as `sg-***,sg-***,sg-***`.
 	SecurityGroupId *string `pulumi:"securityGroupId"`
 	// The value of this parameter is empty by default. The attribute of the whitelist group. The console does not display the whitelist group whose value of this parameter is hidden.
 	SecurityIpGroupAttribute *string `pulumi:"securityIpGroupAttribute"`
@@ -683,7 +647,7 @@ type instanceArgs struct {
 	SecurityIpGroupName *string `pulumi:"securityIpGroupName"`
 	// The IP addresses in the whitelist group. The maximum number of IP addresses in the whitelist group is 1000.
 	SecurityIps []string `pulumi:"securityIps"`
-	// The number of data shards. This parameter is available only if you create a cluster instance that uses cloud disks. You can use this parameter to specify a custom number of data shards.
+	// The number of data shards. This parameter is available only if you create a cluster instance that uses cloud disks. You can use this parameter to specify a custom number of data shards. **NOTE:** From version 1.216.0, `shardCount` can be modified.
 	ShardCount *int `pulumi:"shardCount"`
 	// The ID of the source instance.
 	SrcdbInstanceId *string `pulumi:"srcdbInstanceId"`
@@ -693,7 +657,7 @@ type instanceArgs struct {
 	// A mapping of tags to assign to the resource.
 	Tags map[string]interface{} `pulumi:"tags"`
 	// Specifies whether to enable TDE. Valid values: `Enabled`.
-	// **NOTE:**: TDE cannot be disabled after it is enabled. Before you enable it, evaluate whether this feature affects
+	// **NOTE:**: TDE cannot be disabled after it is enabled. Before you enable it, evaluate whether this feature affects.
 	// your business. For more information, see [Enable TDE](https://www.alibabacloud.com/help/en/redis/user-guide/enable-tde).
 	TdeStatus *string `pulumi:"tdeStatus"`
 	// Only meaningful if instanceType is `Redis` and network type is VPC. Valid values: `Close`, `Open`. Default value: `Open`. `Close` means the redis instance can be accessed without authentication. `Open` means authentication is required.
@@ -726,13 +690,13 @@ type InstanceArgs struct {
 	BusinessInfo pulumi.StringPtrInput
 	// The storage capacity of the KVStore DBInstance. Unit: MB.
 	Capacity pulumi.IntPtrInput
-	// The configuration of the KVStore DBInstance. Available parameters can refer to the latest docs [Instance configurations table](https://www.alibabacloud.com/help/doc-detail/61209.htm) .
+	// The configuration of the KVStore DBInstance. Available parameters can refer to the latest docs [Instance configurations table](https://www.alibabacloud.com/help/en/redis/user-guide/supported-parameters).
 	Config pulumi.MapInput
 	// It has been deprecated from provider version 1.101.0 and resource `kvstore.Connection` instead.
 	//
 	// Deprecated: Field 'connection_string_prefix' has been deprecated from version 1.101.0. Please use resource 'alicloud_kvstore_connection' instead.
 	ConnectionStringPrefix pulumi.StringPtrInput
-	// The coupon code. Default value: `youhuiquanPromotionOptionIdForBlank`.
+	// The coupon code.
 	CouponNo pulumi.StringPtrInput
 	// The name of KVStore DBInstance. It is a string of 2 to 256 characters.
 	DbInstanceName pulumi.StringPtrInput
@@ -740,8 +704,7 @@ type InstanceArgs struct {
 	DedicatedHostGroupId pulumi.StringPtrInput
 	// Specifies whether to precheck the request. Valid values:
 	DryRun pulumi.BoolPtrInput
-	// The time when the database is switched after the instance is migrated,
-	// or when the major version is upgraded, or when the instance class is upgraded. Valid values:
+	// The time when the database is switched after the instance is migrated, or when the major version is upgraded, or when the instance class is upgraded. Valid values:
 	EffectiveTime pulumi.StringPtrInput
 	// Turn on or off incremental backup. Valid values: `1`, `0`. Default value: `0`
 	EnableBackupLog pulumi.IntPtrInput
@@ -785,8 +748,6 @@ type InstanceArgs struct {
 	MaintainEndTime pulumi.StringPtrInput
 	// The start time of the operation and maintenance time period of the KVStore DBInstance, in the format of HH:mmZ (UTC time).
 	MaintainStartTime pulumi.StringPtrInput
-	// The method of modifying the whitelist. Valid values: `0`, `1` and `2`. Default value: `0`. `0` means overwrites the original whitelist. `1` means adds the IP addresses to the whitelist. `2` means deletes the IP addresses from the whitelist.
-	ModifyMode pulumi.IntPtrInput
 	// "Field `nodeType` has been deprecated from version 1.120.1". This parameter is determined by the `instanceClass`.
 	//
 	// Deprecated: Field 'node_type' has been deprecated from version 1.120.1
@@ -820,7 +781,7 @@ type InstanceArgs struct {
 	// The ID of the secondary zone to which you want to migrate the ApsaraDB for Redis instance.
 	// > **NOTE:** If you specify this parameter, the master node and replica node of the instance can be deployed in different zones and disaster recovery is implemented across zones. The instance can withstand failures in data centers.
 	SecondaryZoneId pulumi.StringPtrInput
-	// The ID of security groups.
+	// The ID of security groups. Separate multiple security group IDs with commas (,), such as `sg-***,sg-***,sg-***`.
 	SecurityGroupId pulumi.StringPtrInput
 	// The value of this parameter is empty by default. The attribute of the whitelist group. The console does not display the whitelist group whose value of this parameter is hidden.
 	SecurityIpGroupAttribute pulumi.StringPtrInput
@@ -828,7 +789,7 @@ type InstanceArgs struct {
 	SecurityIpGroupName pulumi.StringPtrInput
 	// The IP addresses in the whitelist group. The maximum number of IP addresses in the whitelist group is 1000.
 	SecurityIps pulumi.StringArrayInput
-	// The number of data shards. This parameter is available only if you create a cluster instance that uses cloud disks. You can use this parameter to specify a custom number of data shards.
+	// The number of data shards. This parameter is available only if you create a cluster instance that uses cloud disks. You can use this parameter to specify a custom number of data shards. **NOTE:** From version 1.216.0, `shardCount` can be modified.
 	ShardCount pulumi.IntPtrInput
 	// The ID of the source instance.
 	SrcdbInstanceId pulumi.StringPtrInput
@@ -838,7 +799,7 @@ type InstanceArgs struct {
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.MapInput
 	// Specifies whether to enable TDE. Valid values: `Enabled`.
-	// **NOTE:**: TDE cannot be disabled after it is enabled. Before you enable it, evaluate whether this feature affects
+	// **NOTE:**: TDE cannot be disabled after it is enabled. Before you enable it, evaluate whether this feature affects.
 	// your business. For more information, see [Enable TDE](https://www.alibabacloud.com/help/en/redis/user-guide/enable-tde).
 	TdeStatus pulumi.StringPtrInput
 	// Only meaningful if instanceType is `Redis` and network type is VPC. Valid values: `Close`, `Open`. Default value: `Open`. `Close` means the redis instance can be accessed without authentication. `Open` means authentication is required.
@@ -988,7 +949,7 @@ func (o InstanceOutput) Capacity() pulumi.IntOutput {
 	return o.ApplyT(func(v *Instance) pulumi.IntOutput { return v.Capacity }).(pulumi.IntOutput)
 }
 
-// The configuration of the KVStore DBInstance. Available parameters can refer to the latest docs [Instance configurations table](https://www.alibabacloud.com/help/doc-detail/61209.htm) .
+// The configuration of the KVStore DBInstance. Available parameters can refer to the latest docs [Instance configurations table](https://www.alibabacloud.com/help/en/redis/user-guide/supported-parameters).
 func (o InstanceOutput) Config() pulumi.MapOutput {
 	return o.ApplyT(func(v *Instance) pulumi.MapOutput { return v.Config }).(pulumi.MapOutput)
 }
@@ -999,14 +960,6 @@ func (o InstanceOutput) ConnectionDomain() pulumi.StringOutput {
 }
 
 // Indicates whether the address is a private endpoint.
-//
-// > **NOTE:** The start time to the end time must be 1 hour. For example, the MaintainStartTime is 01:00Z, then the MaintainEndTime must be 02:00Z.
-//
-// > **NOTE:** You must specify at least one of the `capacity` and `instanceClass` parameters when you call create instance operation.
-//
-// > **NOTE:** The `privateIp` must be in the Classless Inter-Domain Routing (CIDR) block of the VSwitch to which the instance belongs.
-//
-// > **NOTE:** If you specify the `srcdbInstanceId` parameter, you must specify the `backupId` or `restoreTime` parameter.
 //
 // Deprecated: Field 'connection_string' has been deprecated from version 1.101.0. Please use resource 'alicloud_kvstore_connection' instead.
 func (o InstanceOutput) ConnectionString() pulumi.StringOutput {
@@ -1020,7 +973,7 @@ func (o InstanceOutput) ConnectionStringPrefix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.ConnectionStringPrefix }).(pulumi.StringPtrOutput)
 }
 
-// The coupon code. Default value: `youhuiquanPromotionOptionIdForBlank`.
+// The coupon code.
 func (o InstanceOutput) CouponNo() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.CouponNo }).(pulumi.StringPtrOutput)
 }
@@ -1040,8 +993,7 @@ func (o InstanceOutput) DryRun() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.BoolPtrOutput { return v.DryRun }).(pulumi.BoolPtrOutput)
 }
 
-// The time when the database is switched after the instance is migrated,
-// or when the major version is upgraded, or when the instance class is upgraded. Valid values:
+// The time when the database is switched after the instance is migrated, or when the major version is upgraded, or when the instance class is upgraded. Valid values:
 func (o InstanceOutput) EffectiveTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.EffectiveTime }).(pulumi.StringPtrOutput)
 }
@@ -1144,11 +1096,6 @@ func (o InstanceOutput) MaintainStartTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.MaintainStartTime }).(pulumi.StringOutput)
 }
 
-// The method of modifying the whitelist. Valid values: `0`, `1` and `2`. Default value: `0`. `0` means overwrites the original whitelist. `1` means adds the IP addresses to the whitelist. `2` means deletes the IP addresses from the whitelist.
-func (o InstanceOutput) ModifyMode() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *Instance) pulumi.IntPtrOutput { return v.ModifyMode }).(pulumi.IntPtrOutput)
-}
-
 // "Field `nodeType` has been deprecated from version 1.120.1". This parameter is determined by the `instanceClass`.
 //
 // Deprecated: Field 'node_type' has been deprecated from version 1.120.1
@@ -1229,7 +1176,7 @@ func (o InstanceOutput) SecondaryZoneId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.SecondaryZoneId }).(pulumi.StringPtrOutput)
 }
 
-// The ID of security groups.
+// The ID of security groups. Separate multiple security group IDs with commas (,), such as `sg-***,sg-***,sg-***`.
 func (o InstanceOutput) SecurityGroupId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.SecurityGroupId }).(pulumi.StringPtrOutput)
 }
@@ -1249,7 +1196,7 @@ func (o InstanceOutput) SecurityIps() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringArrayOutput { return v.SecurityIps }).(pulumi.StringArrayOutput)
 }
 
-// The number of data shards. This parameter is available only if you create a cluster instance that uses cloud disks. You can use this parameter to specify a custom number of data shards.
+// The number of data shards. This parameter is available only if you create a cluster instance that uses cloud disks. You can use this parameter to specify a custom number of data shards. **NOTE:** From version 1.216.0, `shardCount` can be modified.
 func (o InstanceOutput) ShardCount() pulumi.IntOutput {
 	return o.ApplyT(func(v *Instance) pulumi.IntOutput { return v.ShardCount }).(pulumi.IntOutput)
 }
@@ -1276,7 +1223,7 @@ func (o InstanceOutput) Tags() pulumi.MapOutput {
 }
 
 // Specifies whether to enable TDE. Valid values: `Enabled`.
-// **NOTE:**: TDE cannot be disabled after it is enabled. Before you enable it, evaluate whether this feature affects
+// **NOTE:**: TDE cannot be disabled after it is enabled. Before you enable it, evaluate whether this feature affects.
 // your business. For more information, see [Enable TDE](https://www.alibabacloud.com/help/en/redis/user-guide/enable-tde).
 func (o InstanceOutput) TdeStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.TdeStatus }).(pulumi.StringOutput)

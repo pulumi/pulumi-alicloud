@@ -12,6 +12,7 @@ from . import outputs
 
 __all__ = [
     'ClusterDbClusterIpArray',
+    'ClusterDbRevisionVersionList',
     'ClusterParameter',
     'ParameterGroupParameter',
     'GetAccountsAccountResult',
@@ -97,6 +98,84 @@ class ClusterDbClusterIpArray(dict):
         List of IP addresses allowed to access all databases of a cluster. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
         """
         return pulumi.get(self, "security_ips")
+
+
+@pulumi.output_type
+class ClusterDbRevisionVersionList(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "releaseNote":
+            suggest = "release_note"
+        elif key == "releaseType":
+            suggest = "release_type"
+        elif key == "revisionVersionCode":
+            suggest = "revision_version_code"
+        elif key == "revisionVersionName":
+            suggest = "revision_version_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterDbRevisionVersionList. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterDbRevisionVersionList.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterDbRevisionVersionList.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 release_note: Optional[str] = None,
+                 release_type: Optional[str] = None,
+                 revision_version_code: Optional[str] = None,
+                 revision_version_name: Optional[str] = None):
+        """
+        :param str release_note: (Available since v1.216.0) The revised version Code of the database engine is used to specify the upgrade to the target version.
+        :param str release_type: (Available since v1.216.0) Database version release status. Valid values are `Stable`, `Old`, `HighRisk`.
+        :param str revision_version_code: (Available since v1.216.0) The revised version Code of the database engine is used to specify the upgrade to the target version.
+        :param str revision_version_name: (Available since v1.216.0) The revision version number of the database engine.
+        """
+        if release_note is not None:
+            pulumi.set(__self__, "release_note", release_note)
+        if release_type is not None:
+            pulumi.set(__self__, "release_type", release_type)
+        if revision_version_code is not None:
+            pulumi.set(__self__, "revision_version_code", revision_version_code)
+        if revision_version_name is not None:
+            pulumi.set(__self__, "revision_version_name", revision_version_name)
+
+    @property
+    @pulumi.getter(name="releaseNote")
+    def release_note(self) -> Optional[str]:
+        """
+        (Available since v1.216.0) The revised version Code of the database engine is used to specify the upgrade to the target version.
+        """
+        return pulumi.get(self, "release_note")
+
+    @property
+    @pulumi.getter(name="releaseType")
+    def release_type(self) -> Optional[str]:
+        """
+        (Available since v1.216.0) Database version release status. Valid values are `Stable`, `Old`, `HighRisk`.
+        """
+        return pulumi.get(self, "release_type")
+
+    @property
+    @pulumi.getter(name="revisionVersionCode")
+    def revision_version_code(self) -> Optional[str]:
+        """
+        (Available since v1.216.0) The revised version Code of the database engine is used to specify the upgrade to the target version.
+        """
+        return pulumi.get(self, "revision_version_code")
+
+    @property
+    @pulumi.getter(name="revisionVersionName")
+    def revision_version_name(self) -> Optional[str]:
+        """
+        (Available since v1.216.0) The revision version number of the database engine.
+        """
+        return pulumi.get(self, "revision_version_name")
 
 
 @pulumi.output_type

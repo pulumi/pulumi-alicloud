@@ -28,8 +28,7 @@ import (
 //
 // import (
 //
-//	"fmt"
-//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/alikafka"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
@@ -42,31 +41,39 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			cfg := config.New(ctx, "")
-//			name := "terraform-example"
+//			name := "tf-example"
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			defaultRandomInteger, err := random.NewRandomInteger(ctx, "defaultRandomInteger", &random.RandomIntegerArgs{
+//			_, err := random.NewRandomInteger(ctx, "defaultRandomInteger", &random.RandomIntegerArgs{
 //				Min: pulumi.Int(10000),
 //				Max: pulumi.Int(99999),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			defaultNetworks, err := vpc.GetNetworks(ctx, &vpc.GetNetworksArgs{
-//				NameRegex: pulumi.StringRef("^default-NODELETING$"),
+//			defaultZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
+//				AvailableResourceCreation: pulumi.StringRef("VSwitch"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			defaultSwitches, err := vpc.GetSwitches(ctx, &vpc.GetSwitchesArgs{
-//				VpcId: pulumi.StringRef(defaultNetworks.Ids[0]),
-//			}, nil)
+//			defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
+//				CidrBlock: pulumi.String("172.16.0.0/12"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
+//				VpcId:     defaultNetwork.ID(),
+//				CidrBlock: pulumi.String("172.16.0.0/24"),
+//				ZoneId:    *pulumi.String(defaultZones.Zones[0].Id),
+//			})
 //			if err != nil {
 //				return err
 //			}
 //			defaultSecurityGroup, err := ecs.NewSecurityGroup(ctx, "defaultSecurityGroup", &ecs.SecurityGroupArgs{
-//				VpcId: *pulumi.String(defaultNetworks.Ids[0]),
+//				VpcId: defaultNetwork.ID(),
 //			})
 //			if err != nil {
 //				return err
@@ -77,20 +84,15 @@ import (
 //				DiskSize:      pulumi.Int(500),
 //				DeployType:    pulumi.Int(5),
 //				IoMax:         pulumi.Int(20),
-//				VswitchId:     *pulumi.String(defaultSwitches.Ids[0]),
+//				VswitchId:     defaultSwitch.ID(),
 //				SecurityGroup: defaultSecurityGroup.ID(),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = alikafka.NewConsumerGroup(ctx, "defaultConsumerGroup", &alikafka.ConsumerGroupArgs{
+//				ConsumerId: pulumi.String(name),
 //				InstanceId: defaultInstance.ID(),
-//				ConsumerId: defaultRandomInteger.Result.ApplyT(func(result int) (string, error) {
-//					return fmt.Sprintf("%v-%v", name, result), nil
-//				}).(pulumi.StringOutput),
-//				Description: defaultRandomInteger.Result.ApplyT(func(result int) (string, error) {
-//					return fmt.Sprintf("%v-%v", name, result), nil
-//				}).(pulumi.StringOutput),
 //			})
 //			if err != nil {
 //				return err

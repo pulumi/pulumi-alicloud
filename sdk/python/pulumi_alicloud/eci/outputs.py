@@ -154,6 +154,8 @@ class ContainerGroupContainer(dict):
             suggest = "environment_vars"
         elif key == "imagePullPolicy":
             suggest = "image_pull_policy"
+        elif key == "lifecyclePreStopHandlerExecs":
+            suggest = "lifecycle_pre_stop_handler_execs"
         elif key == "livenessProbes":
             suggest = "liveness_probes"
         elif key == "readinessProbes":
@@ -187,6 +189,7 @@ class ContainerGroupContainer(dict):
                  environment_vars: Optional[Sequence['outputs.ContainerGroupContainerEnvironmentVar']] = None,
                  gpu: Optional[int] = None,
                  image_pull_policy: Optional[str] = None,
+                 lifecycle_pre_stop_handler_execs: Optional[Sequence[str]] = None,
                  liveness_probes: Optional[Sequence['outputs.ContainerGroupContainerLivenessProbe']] = None,
                  memory: Optional[float] = None,
                  ports: Optional[Sequence['outputs.ContainerGroupContainerPort']] = None,
@@ -205,6 +208,7 @@ class ContainerGroupContainer(dict):
         :param Sequence['ContainerGroupContainerEnvironmentVarArgs'] environment_vars: The structure of environmentVars. See `environment_vars` below.
         :param int gpu: The number GPUs. Default value: `0`.
         :param str image_pull_policy: The restart policy of the image. Default value: `IfNotPresent`. Valid values: `Always`, `IfNotPresent`, `Never`.
+        :param Sequence[str] lifecycle_pre_stop_handler_execs: The commands to be executed in containers when you use the CLI to specify the preStop callback function.
         :param Sequence['ContainerGroupContainerLivenessProbeArgs'] liveness_probes: The health check of the container. See `liveness_probe` below.
         :param float memory: The amount of memory resources allocated to the container. Default value: `0`.
         :param Sequence['ContainerGroupContainerPortArgs'] ports: The structure of port. See `ports` below.
@@ -229,6 +233,8 @@ class ContainerGroupContainer(dict):
             pulumi.set(__self__, "gpu", gpu)
         if image_pull_policy is not None:
             pulumi.set(__self__, "image_pull_policy", image_pull_policy)
+        if lifecycle_pre_stop_handler_execs is not None:
+            pulumi.set(__self__, "lifecycle_pre_stop_handler_execs", lifecycle_pre_stop_handler_execs)
         if liveness_probes is not None:
             pulumi.set(__self__, "liveness_probes", liveness_probes)
         if memory is not None:
@@ -311,6 +317,14 @@ class ContainerGroupContainer(dict):
         The restart policy of the image. Default value: `IfNotPresent`. Valid values: `Always`, `IfNotPresent`, `Never`.
         """
         return pulumi.get(self, "image_pull_policy")
+
+    @property
+    @pulumi.getter(name="lifecyclePreStopHandlerExecs")
+    def lifecycle_pre_stop_handler_execs(self) -> Optional[Sequence[str]]:
+        """
+        The commands to be executed in containers when you use the CLI to specify the preStop callback function.
+        """
+        return pulumi.get(self, "lifecycle_pre_stop_handler_execs")
 
     @property
     @pulumi.getter(name="livenessProbes")

@@ -13,7 +13,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class AlarmEscalationsWarn {
     /**
-     * @return Critical level alarm comparison operator. Valid values: [&#34;&lt;=&#34;, &#34;&lt;&#34;, &#34;&gt;&#34;, &#34;&gt;=&#34;, &#34;==&#34;, &#34;!=&#34;]. Default to &#34;==&#34;.
+     * @return Critical level alarm comparison operator. Default value: `==`. Valid values: [&#34;&lt;=&#34;, &#34;&lt;&#34;, &#34;&gt;&#34;, &#34;&gt;=&#34;, &#34;==&#34;, &#34;!=&#34;].
      * 
      */
     private @Nullable String comparisonOperator;
@@ -28,14 +28,14 @@ public final class AlarmEscalationsWarn {
      */
     private @Nullable String threshold;
     /**
-     * @return Critical level alarm retry times. Default to 3.
+     * @return Critical level alarm retry times. Default value: `3`.
      * 
      */
     private @Nullable Integer times;
 
     private AlarmEscalationsWarn() {}
     /**
-     * @return Critical level alarm comparison operator. Valid values: [&#34;&lt;=&#34;, &#34;&lt;&#34;, &#34;&gt;&#34;, &#34;&gt;=&#34;, &#34;==&#34;, &#34;!=&#34;]. Default to &#34;==&#34;.
+     * @return Critical level alarm comparison operator. Default value: `==`. Valid values: [&#34;&lt;=&#34;, &#34;&lt;&#34;, &#34;&gt;&#34;, &#34;&gt;=&#34;, &#34;==&#34;, &#34;!=&#34;].
      * 
      */
     public Optional<String> comparisonOperator() {
@@ -56,7 +56,7 @@ public final class AlarmEscalationsWarn {
         return Optional.ofNullable(this.threshold);
     }
     /**
-     * @return Critical level alarm retry times. Default to 3.
+     * @return Critical level alarm retry times. Default value: `3`.
      * 
      */
     public Optional<Integer> times() {

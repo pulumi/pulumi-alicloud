@@ -13,7 +13,7 @@ namespace Pulumi.AliCloud.Cms.Inputs
     public sealed class AlarmEscalationsInfoGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Critical level alarm comparison operator. Valid values: ["&lt;=", "&lt;", "&gt;", "&gt;=", "==", "!="]. Default to "==".
+        /// Critical level alarm comparison operator. Default value: `==`. Valid values: ["&lt;=", "&lt;", "&gt;", "&gt;=", "==", "!="].
         /// </summary>
         [Input("comparisonOperator")]
         public Input<string>? ComparisonOperator { get; set; }
@@ -31,7 +31,7 @@ namespace Pulumi.AliCloud.Cms.Inputs
         public Input<string>? Threshold { get; set; }
 
         /// <summary>
-        /// Critical level alarm retry times. Default to 3.
+        /// Critical level alarm retry times. Default value: `3`.
         /// </summary>
         [Input("times")]
         public Input<int>? Times { get; set; }

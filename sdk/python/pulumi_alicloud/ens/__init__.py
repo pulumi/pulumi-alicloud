@@ -6,9 +6,12 @@ from .. import _utilities
 import typing
 # Export this package's modules as members:
 from .disk import *
+from .disk_instance_attachment import *
 from .eip import *
 from .get_key_pairs import *
+from .image import *
 from .instance import *
+from .instance_security_group_attachment import *
 from .key_pair import *
 from .load_balancer import *
 from .network import *

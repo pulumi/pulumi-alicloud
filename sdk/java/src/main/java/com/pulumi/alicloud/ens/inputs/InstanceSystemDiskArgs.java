@@ -6,6 +6,7 @@ package com.pulumi.alicloud.ens.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Integer;
+import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -16,14 +17,37 @@ public final class InstanceSystemDiskArgs extends com.pulumi.resources.ResourceA
     public static final InstanceSystemDiskArgs Empty = new InstanceSystemDiskArgs();
 
     /**
-     * System disk size, cloud_efficiency is 20-32000,cloud_ssd/local_hdd/local_ssd is 20-25000, unit: GB.
+     * System disk type. Optional values:
+     * - cloud_efficiency: Ultra cloud disk
+     * - cloud_ssd: Full Flash cloud disk
+     * - local_hdd: local hdd disk
+     * - local_ssd: local disk ssd.
+     * 
+     */
+    @Import(name="category")
+    private @Nullable Output<String> category;
+
+    /**
+     * @return System disk type. Optional values:
+     * - cloud_efficiency: Ultra cloud disk
+     * - cloud_ssd: Full Flash cloud disk
+     * - local_hdd: local hdd disk
+     * - local_ssd: local disk ssd.
+     * 
+     */
+    public Optional<Output<String>> category() {
+        return Optional.ofNullable(this.category);
+    }
+
+    /**
+     * System disk size, unit: GB.
      * 
      */
     @Import(name="size")
     private @Nullable Output<Integer> size;
 
     /**
-     * @return System disk size, cloud_efficiency is 20-32000,cloud_ssd/local_hdd/local_ssd is 20-25000, unit: GB.
+     * @return System disk size, unit: GB.
      * 
      */
     public Optional<Output<Integer>> size() {
@@ -33,6 +57,7 @@ public final class InstanceSystemDiskArgs extends com.pulumi.resources.ResourceA
     private InstanceSystemDiskArgs() {}
 
     private InstanceSystemDiskArgs(InstanceSystemDiskArgs $) {
+        this.category = $.category;
         this.size = $.size;
     }
 
@@ -55,7 +80,36 @@ public final class InstanceSystemDiskArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param size System disk size, cloud_efficiency is 20-32000,cloud_ssd/local_hdd/local_ssd is 20-25000, unit: GB.
+         * @param category System disk type. Optional values:
+         * - cloud_efficiency: Ultra cloud disk
+         * - cloud_ssd: Full Flash cloud disk
+         * - local_hdd: local hdd disk
+         * - local_ssd: local disk ssd.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder category(@Nullable Output<String> category) {
+            $.category = category;
+            return this;
+        }
+
+        /**
+         * @param category System disk type. Optional values:
+         * - cloud_efficiency: Ultra cloud disk
+         * - cloud_ssd: Full Flash cloud disk
+         * - local_hdd: local hdd disk
+         * - local_ssd: local disk ssd.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder category(String category) {
+            return category(Output.of(category));
+        }
+
+        /**
+         * @param size System disk size, unit: GB.
          * 
          * @return builder
          * 
@@ -66,7 +120,7 @@ public final class InstanceSystemDiskArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param size System disk size, cloud_efficiency is 20-32000,cloud_ssd/local_hdd/local_ssd is 20-25000, unit: GB.
+         * @param size System disk size, unit: GB.
          * 
          * @return builder
          * 

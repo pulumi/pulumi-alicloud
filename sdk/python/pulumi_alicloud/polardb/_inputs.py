@@ -11,6 +11,7 @@ from .. import _utilities
 
 __all__ = [
     'ClusterDbClusterIpArrayArgs',
+    'ClusterDbRevisionVersionListArgs',
     'ClusterParameterArgs',
     'ParameterGroupParameterArgs',
 ]
@@ -72,6 +73,77 @@ class ClusterDbClusterIpArrayArgs:
     @security_ips.setter
     def security_ips(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "security_ips", value)
+
+
+@pulumi.input_type
+class ClusterDbRevisionVersionListArgs:
+    def __init__(__self__, *,
+                 release_note: Optional[pulumi.Input[str]] = None,
+                 release_type: Optional[pulumi.Input[str]] = None,
+                 revision_version_code: Optional[pulumi.Input[str]] = None,
+                 revision_version_name: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] release_note: (Available since v1.216.0) The revised version Code of the database engine is used to specify the upgrade to the target version.
+        :param pulumi.Input[str] release_type: (Available since v1.216.0) Database version release status. Valid values are `Stable`, `Old`, `HighRisk`.
+        :param pulumi.Input[str] revision_version_code: (Available since v1.216.0) The revised version Code of the database engine is used to specify the upgrade to the target version.
+        :param pulumi.Input[str] revision_version_name: (Available since v1.216.0) The revision version number of the database engine.
+        """
+        if release_note is not None:
+            pulumi.set(__self__, "release_note", release_note)
+        if release_type is not None:
+            pulumi.set(__self__, "release_type", release_type)
+        if revision_version_code is not None:
+            pulumi.set(__self__, "revision_version_code", revision_version_code)
+        if revision_version_name is not None:
+            pulumi.set(__self__, "revision_version_name", revision_version_name)
+
+    @property
+    @pulumi.getter(name="releaseNote")
+    def release_note(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Available since v1.216.0) The revised version Code of the database engine is used to specify the upgrade to the target version.
+        """
+        return pulumi.get(self, "release_note")
+
+    @release_note.setter
+    def release_note(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "release_note", value)
+
+    @property
+    @pulumi.getter(name="releaseType")
+    def release_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Available since v1.216.0) Database version release status. Valid values are `Stable`, `Old`, `HighRisk`.
+        """
+        return pulumi.get(self, "release_type")
+
+    @release_type.setter
+    def release_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "release_type", value)
+
+    @property
+    @pulumi.getter(name="revisionVersionCode")
+    def revision_version_code(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Available since v1.216.0) The revised version Code of the database engine is used to specify the upgrade to the target version.
+        """
+        return pulumi.get(self, "revision_version_code")
+
+    @revision_version_code.setter
+    def revision_version_code(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "revision_version_code", value)
+
+    @property
+    @pulumi.getter(name="revisionVersionName")
+    def revision_version_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Available since v1.216.0) The revision version number of the database engine.
+        """
+        return pulumi.get(self, "revision_version_name")
+
+    @revision_version_name.setter
+    def revision_version_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "revision_version_name", value)
 
 
 @pulumi.input_type

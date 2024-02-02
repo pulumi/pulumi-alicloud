@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Cms.Outputs
     public sealed class AlarmEscalationsInfo
     {
         /// <summary>
-        /// Critical level alarm comparison operator. Valid values: ["&lt;=", "&lt;", "&gt;", "&gt;=", "==", "!="]. Default to "==".
+        /// Critical level alarm comparison operator. Default value: `==`. Valid values: ["&lt;=", "&lt;", "&gt;", "&gt;=", "==", "!="].
         /// </summary>
         public readonly string? ComparisonOperator;
         /// <summary>
@@ -26,7 +26,7 @@ namespace Pulumi.AliCloud.Cms.Outputs
         /// </summary>
         public readonly string? Threshold;
         /// <summary>
-        /// Critical level alarm retry times. Default to 3.
+        /// Critical level alarm retry times. Default value: `3`.
         /// </summary>
         public readonly int? Times;
 
