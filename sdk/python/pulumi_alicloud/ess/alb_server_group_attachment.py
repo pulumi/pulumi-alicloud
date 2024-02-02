@@ -216,11 +216,16 @@ class AlbServerGroupAttachment(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
             name = "terraform-example"
+        default_random_integer = random.RandomInteger("defaultRandomInteger",
+            min=10000,
+            max=99999)
+        my_name = default_random_integer.result.apply(lambda result: f"{name}-{result}")
         default_zones = alicloud.get_zones(available_disk_category="cloud_efficiency",
             available_resource_creation="VSwitch")
         default_instance_types = alicloud.ecs.get_instance_types(availability_zone=default_zones.zones[0].id,
@@ -230,18 +235,18 @@ class AlbServerGroupAttachment(pulumi.CustomResource):
             most_recent=True,
             owners="system")
         default_network = alicloud.vpc.Network("defaultNetwork",
-            vpc_name=name,
+            vpc_name=my_name,
             cidr_block="172.16.0.0/16")
         default_switch = alicloud.vpc.Switch("defaultSwitch",
             vpc_id=default_network.id,
             cidr_block="172.16.0.0/24",
             zone_id=default_zones.zones[0].id,
-            vswitch_name=name)
+            vswitch_name=my_name)
         default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
         default_scaling_group = alicloud.ess.ScalingGroup("defaultScalingGroup",
             min_size=0,
             max_size=2,
-            scaling_group_name=name,
+            scaling_group_name=my_name,
             default_cooldown=200,
             removal_policies=["OldestInstance"],
             vswitch_ids=[default_switch.id])
@@ -254,7 +259,7 @@ class AlbServerGroupAttachment(pulumi.CustomResource):
             active=True,
             enable=True)
         default_server_group = alicloud.alb.ServerGroup("defaultServerGroup",
-            server_group_name=name,
+            server_group_name=my_name,
             vpc_id=default_network.id,
             health_check_config=alicloud.alb.ServerGroupHealthCheckConfigArgs(
                 health_check_enabled=False,
@@ -313,11 +318,16 @@ class AlbServerGroupAttachment(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
             name = "terraform-example"
+        default_random_integer = random.RandomInteger("defaultRandomInteger",
+            min=10000,
+            max=99999)
+        my_name = default_random_integer.result.apply(lambda result: f"{name}-{result}")
         default_zones = alicloud.get_zones(available_disk_category="cloud_efficiency",
             available_resource_creation="VSwitch")
         default_instance_types = alicloud.ecs.get_instance_types(availability_zone=default_zones.zones[0].id,
@@ -327,18 +337,18 @@ class AlbServerGroupAttachment(pulumi.CustomResource):
             most_recent=True,
             owners="system")
         default_network = alicloud.vpc.Network("defaultNetwork",
-            vpc_name=name,
+            vpc_name=my_name,
             cidr_block="172.16.0.0/16")
         default_switch = alicloud.vpc.Switch("defaultSwitch",
             vpc_id=default_network.id,
             cidr_block="172.16.0.0/24",
             zone_id=default_zones.zones[0].id,
-            vswitch_name=name)
+            vswitch_name=my_name)
         default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
         default_scaling_group = alicloud.ess.ScalingGroup("defaultScalingGroup",
             min_size=0,
             max_size=2,
-            scaling_group_name=name,
+            scaling_group_name=my_name,
             default_cooldown=200,
             removal_policies=["OldestInstance"],
             vswitch_ids=[default_switch.id])
@@ -351,7 +361,7 @@ class AlbServerGroupAttachment(pulumi.CustomResource):
             active=True,
             enable=True)
         default_server_group = alicloud.alb.ServerGroup("defaultServerGroup",
-            server_group_name=name,
+            server_group_name=my_name,
             vpc_id=default_network.id,
             health_check_config=alicloud.alb.ServerGroupHealthCheckConfigArgs(
                 health_check_enabled=False,

@@ -25,15 +25,22 @@ namespace Pulumi.AliCloud.Dcdn
     /// using System.Linq;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
+    /// using Random = Pulumi.Random;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "tf_example";
+    ///     var @default = new Random.RandomInteger("default", new()
+    ///     {
+    ///         Max = 99999,
+    ///         Min = 10000,
+    ///     });
+    /// 
     ///     var example = new AliCloud.Dcdn.WafPolicy("example", new()
     ///     {
     ///         DefenseScene = "waf_group",
-    ///         PolicyName = name,
+    ///         PolicyName = @default.Result.Apply(result =&gt; $"{name}_{result}"),
     ///         PolicyType = "custom",
     ///         Status = "on",
     ///     });

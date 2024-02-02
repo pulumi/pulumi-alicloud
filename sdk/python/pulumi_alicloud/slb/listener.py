@@ -1543,13 +1543,17 @@ class Listener(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
         config = pulumi.Config()
-        slb_listener_name = config.get("slbListenerName")
-        if slb_listener_name is None:
-            slb_listener_name = "forSlbListener"
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        default = random.RandomInteger("default",
+            min=10000,
+            max=99999)
         listener_application_load_balancer = alicloud.slb.ApplicationLoadBalancer("listenerApplicationLoadBalancer",
-            load_balancer_name="tf-exampleSlbListenerHttp",
+            load_balancer_name=default.result.apply(lambda result: f"{name}-{result}"),
             internet_charge_type="PayByTraffic",
             address_type="internet",
             instance_charge_type="PayByCLCU")
@@ -1716,13 +1720,17 @@ class Listener(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
         config = pulumi.Config()
-        slb_listener_name = config.get("slbListenerName")
-        if slb_listener_name is None:
-            slb_listener_name = "forSlbListener"
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        default = random.RandomInteger("default",
+            min=10000,
+            max=99999)
         listener_application_load_balancer = alicloud.slb.ApplicationLoadBalancer("listenerApplicationLoadBalancer",
-            load_balancer_name="tf-exampleSlbListenerHttp",
+            load_balancer_name=default.result.apply(lambda result: f"{name}-{result}"),
             internet_charge_type="PayByTraffic",
             address_type="internet",
             instance_charge_type="PayByCLCU")

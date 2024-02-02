@@ -14,9 +14,9 @@ import (
 
 // Provides a RAM SAML Provider resource.
 //
-// For information about RAM SAML Provider and how to use it, see [What is SAML Provider](https://www.alibabacloud.com/help/doc-detail/186846.htm).
+// For information about RAM SAML Provider and how to use it, see [What is SAML Provider](https://www.alibabacloud.com/help/en/ram/developer-reference/api-ims-2019-08-15-createsamlprovider).
 //
-// > **NOTE:** Available since v1.114.0+.
+// > **NOTE:** Available since v1.114.0.
 //
 // ## Example Usage
 //
@@ -65,7 +65,7 @@ type SamlProvider struct {
 	// The description of SAML Provider.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The metadata file, which is Base64 encoded. The file is provided by an IdP that supports SAML 2.0.
-	EncodedsamlMetadataDocument pulumi.StringPtrOutput `pulumi:"encodedsamlMetadataDocument"`
+	EncodedsamlMetadataDocument pulumi.StringOutput `pulumi:"encodedsamlMetadataDocument"`
 	// The name of SAML Provider.
 	SamlProviderName pulumi.StringOutput `pulumi:"samlProviderName"`
 	// The update time.
@@ -79,6 +79,9 @@ func NewSamlProvider(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.EncodedsamlMetadataDocument == nil {
+		return nil, errors.New("invalid value for required argument 'EncodedsamlMetadataDocument'")
+	}
 	if args.SamlProviderName == nil {
 		return nil, errors.New("invalid value for required argument 'SamlProviderName'")
 	}
@@ -138,7 +141,7 @@ type samlProviderArgs struct {
 	// The description of SAML Provider.
 	Description *string `pulumi:"description"`
 	// The metadata file, which is Base64 encoded. The file is provided by an IdP that supports SAML 2.0.
-	EncodedsamlMetadataDocument *string `pulumi:"encodedsamlMetadataDocument"`
+	EncodedsamlMetadataDocument string `pulumi:"encodedsamlMetadataDocument"`
 	// The name of SAML Provider.
 	SamlProviderName string `pulumi:"samlProviderName"`
 }
@@ -148,7 +151,7 @@ type SamlProviderArgs struct {
 	// The description of SAML Provider.
 	Description pulumi.StringPtrInput
 	// The metadata file, which is Base64 encoded. The file is provided by an IdP that supports SAML 2.0.
-	EncodedsamlMetadataDocument pulumi.StringPtrInput
+	EncodedsamlMetadataDocument pulumi.StringInput
 	// The name of SAML Provider.
 	SamlProviderName pulumi.StringInput
 }
@@ -251,8 +254,8 @@ func (o SamlProviderOutput) Description() pulumi.StringPtrOutput {
 }
 
 // The metadata file, which is Base64 encoded. The file is provided by an IdP that supports SAML 2.0.
-func (o SamlProviderOutput) EncodedsamlMetadataDocument() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SamlProvider) pulumi.StringPtrOutput { return v.EncodedsamlMetadataDocument }).(pulumi.StringPtrOutput)
+func (o SamlProviderOutput) EncodedsamlMetadataDocument() pulumi.StringOutput {
+	return o.ApplyT(func(v *SamlProvider) pulumi.StringOutput { return v.EncodedsamlMetadataDocument }).(pulumi.StringOutput)
 }
 
 // The name of SAML Provider.

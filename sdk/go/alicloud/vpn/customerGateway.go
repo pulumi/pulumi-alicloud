@@ -23,14 +23,22 @@ import (
 //
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpn"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := vpn.NewCustomerGateway(ctx, "foo", &vpn.CustomerGatewayArgs{
-//				Description: pulumi.String("vpnCgwDescriptionExample"),
-//				IpAddress:   pulumi.String("43.104.22.228"),
+//			cfg := config.New(ctx, "")
+//			name := "terraform-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			_, err := vpn.NewCustomerGateway(ctx, "default", &vpn.CustomerGatewayArgs{
+//				Description:         pulumi.String(name),
+//				IpAddress:           pulumi.String("4.3.2.10"),
+//				Asn:                 pulumi.String("1219002"),
+//				CustomerGatewayName: pulumi.String(name),
 //			})
 //			if err != nil {
 //				return err
@@ -47,20 +55,30 @@ import (
 //
 // ```sh
 //
-//	$ pulumi import alicloud:vpn/customerGateway:CustomerGateway example cgw-abc123456
+//	$ pulumi import alicloud:vpn/customerGateway:CustomerGateway example <id>
 //
 // ```
 type CustomerGateway struct {
 	pulumi.CustomResourceState
 
-	// The autonomous system number of the gateway device in the data center. The `asn` is a 4-byte number. You can enter the number in two segments and separate the first 16 bits from the following 16 bits with a period (.). Enter the number in each segment in the decimal format.
+	// Asn.
 	Asn pulumi.StringPtrOutput `pulumi:"asn"`
-	// The description of the VPN customer gateway instance.
+	// The time when the customer gateway was created.
+	CreateTime pulumi.IntOutput `pulumi:"createTime"`
+	// The name of the customer gateway.
+	CustomerGatewayName pulumi.StringOutput `pulumi:"customerGatewayName"`
+	// The description of the customer gateway.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The IP address of the customer gateway.
 	IpAddress pulumi.StringOutput `pulumi:"ipAddress"`
-	// The name of the VPN customer gateway. Defaults to null.
+	// . Field 'name' has been deprecated from provider version 1.216.0. New field 'customer_gateway_name' instead.
+	//
+	// Deprecated: Field 'name' has been deprecated since provider version 1.210.0. New field 'customer_gateway_name' instead.
 	Name pulumi.StringOutput `pulumi:"name"`
+	// tag.
+	//
+	// The following arguments will be discarded. Please use new fields as soon as possible:
+	Tags pulumi.MapOutput `pulumi:"tags"`
 }
 
 // NewCustomerGateway registers a new resource with the given unique name, arguments, and options.
@@ -96,25 +114,45 @@ func GetCustomerGateway(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering CustomerGateway resources.
 type customerGatewayState struct {
-	// The autonomous system number of the gateway device in the data center. The `asn` is a 4-byte number. You can enter the number in two segments and separate the first 16 bits from the following 16 bits with a period (.). Enter the number in each segment in the decimal format.
+	// Asn.
 	Asn *string `pulumi:"asn"`
-	// The description of the VPN customer gateway instance.
+	// The time when the customer gateway was created.
+	CreateTime *int `pulumi:"createTime"`
+	// The name of the customer gateway.
+	CustomerGatewayName *string `pulumi:"customerGatewayName"`
+	// The description of the customer gateway.
 	Description *string `pulumi:"description"`
 	// The IP address of the customer gateway.
 	IpAddress *string `pulumi:"ipAddress"`
-	// The name of the VPN customer gateway. Defaults to null.
+	// . Field 'name' has been deprecated from provider version 1.216.0. New field 'customer_gateway_name' instead.
+	//
+	// Deprecated: Field 'name' has been deprecated since provider version 1.210.0. New field 'customer_gateway_name' instead.
 	Name *string `pulumi:"name"`
+	// tag.
+	//
+	// The following arguments will be discarded. Please use new fields as soon as possible:
+	Tags map[string]interface{} `pulumi:"tags"`
 }
 
 type CustomerGatewayState struct {
-	// The autonomous system number of the gateway device in the data center. The `asn` is a 4-byte number. You can enter the number in two segments and separate the first 16 bits from the following 16 bits with a period (.). Enter the number in each segment in the decimal format.
+	// Asn.
 	Asn pulumi.StringPtrInput
-	// The description of the VPN customer gateway instance.
+	// The time when the customer gateway was created.
+	CreateTime pulumi.IntPtrInput
+	// The name of the customer gateway.
+	CustomerGatewayName pulumi.StringPtrInput
+	// The description of the customer gateway.
 	Description pulumi.StringPtrInput
 	// The IP address of the customer gateway.
 	IpAddress pulumi.StringPtrInput
-	// The name of the VPN customer gateway. Defaults to null.
+	// . Field 'name' has been deprecated from provider version 1.216.0. New field 'customer_gateway_name' instead.
+	//
+	// Deprecated: Field 'name' has been deprecated since provider version 1.210.0. New field 'customer_gateway_name' instead.
 	Name pulumi.StringPtrInput
+	// tag.
+	//
+	// The following arguments will be discarded. Please use new fields as soon as possible:
+	Tags pulumi.MapInput
 }
 
 func (CustomerGatewayState) ElementType() reflect.Type {
@@ -122,26 +160,42 @@ func (CustomerGatewayState) ElementType() reflect.Type {
 }
 
 type customerGatewayArgs struct {
-	// The autonomous system number of the gateway device in the data center. The `asn` is a 4-byte number. You can enter the number in two segments and separate the first 16 bits from the following 16 bits with a period (.). Enter the number in each segment in the decimal format.
+	// Asn.
 	Asn *string `pulumi:"asn"`
-	// The description of the VPN customer gateway instance.
+	// The name of the customer gateway.
+	CustomerGatewayName *string `pulumi:"customerGatewayName"`
+	// The description of the customer gateway.
 	Description *string `pulumi:"description"`
 	// The IP address of the customer gateway.
 	IpAddress string `pulumi:"ipAddress"`
-	// The name of the VPN customer gateway. Defaults to null.
+	// . Field 'name' has been deprecated from provider version 1.216.0. New field 'customer_gateway_name' instead.
+	//
+	// Deprecated: Field 'name' has been deprecated since provider version 1.210.0. New field 'customer_gateway_name' instead.
 	Name *string `pulumi:"name"`
+	// tag.
+	//
+	// The following arguments will be discarded. Please use new fields as soon as possible:
+	Tags map[string]interface{} `pulumi:"tags"`
 }
 
 // The set of arguments for constructing a CustomerGateway resource.
 type CustomerGatewayArgs struct {
-	// The autonomous system number of the gateway device in the data center. The `asn` is a 4-byte number. You can enter the number in two segments and separate the first 16 bits from the following 16 bits with a period (.). Enter the number in each segment in the decimal format.
+	// Asn.
 	Asn pulumi.StringPtrInput
-	// The description of the VPN customer gateway instance.
+	// The name of the customer gateway.
+	CustomerGatewayName pulumi.StringPtrInput
+	// The description of the customer gateway.
 	Description pulumi.StringPtrInput
 	// The IP address of the customer gateway.
 	IpAddress pulumi.StringInput
-	// The name of the VPN customer gateway. Defaults to null.
+	// . Field 'name' has been deprecated from provider version 1.216.0. New field 'customer_gateway_name' instead.
+	//
+	// Deprecated: Field 'name' has been deprecated since provider version 1.210.0. New field 'customer_gateway_name' instead.
 	Name pulumi.StringPtrInput
+	// tag.
+	//
+	// The following arguments will be discarded. Please use new fields as soon as possible:
+	Tags pulumi.MapInput
 }
 
 func (CustomerGatewayArgs) ElementType() reflect.Type {
@@ -231,12 +285,22 @@ func (o CustomerGatewayOutput) ToCustomerGatewayOutputWithContext(ctx context.Co
 	return o
 }
 
-// The autonomous system number of the gateway device in the data center. The `asn` is a 4-byte number. You can enter the number in two segments and separate the first 16 bits from the following 16 bits with a period (.). Enter the number in each segment in the decimal format.
+// Asn.
 func (o CustomerGatewayOutput) Asn() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CustomerGateway) pulumi.StringPtrOutput { return v.Asn }).(pulumi.StringPtrOutput)
 }
 
-// The description of the VPN customer gateway instance.
+// The time when the customer gateway was created.
+func (o CustomerGatewayOutput) CreateTime() pulumi.IntOutput {
+	return o.ApplyT(func(v *CustomerGateway) pulumi.IntOutput { return v.CreateTime }).(pulumi.IntOutput)
+}
+
+// The name of the customer gateway.
+func (o CustomerGatewayOutput) CustomerGatewayName() pulumi.StringOutput {
+	return o.ApplyT(func(v *CustomerGateway) pulumi.StringOutput { return v.CustomerGatewayName }).(pulumi.StringOutput)
+}
+
+// The description of the customer gateway.
 func (o CustomerGatewayOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CustomerGateway) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -246,9 +310,18 @@ func (o CustomerGatewayOutput) IpAddress() pulumi.StringOutput {
 	return o.ApplyT(func(v *CustomerGateway) pulumi.StringOutput { return v.IpAddress }).(pulumi.StringOutput)
 }
 
-// The name of the VPN customer gateway. Defaults to null.
+// . Field 'name' has been deprecated from provider version 1.216.0. New field 'customer_gateway_name' instead.
+//
+// Deprecated: Field 'name' has been deprecated since provider version 1.210.0. New field 'customer_gateway_name' instead.
 func (o CustomerGatewayOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *CustomerGateway) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// tag.
+//
+// The following arguments will be discarded. Please use new fields as soon as possible:
+func (o CustomerGatewayOutput) Tags() pulumi.MapOutput {
+	return o.ApplyT(func(v *CustomerGateway) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
 }
 
 type CustomerGatewayArrayOutput struct{ *pulumi.OutputState }

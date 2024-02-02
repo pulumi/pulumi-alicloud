@@ -23,6 +23,7 @@ class EipArgs:
                  high_definition_monitor_log_status: Optional[pulumi.Input[str]] = None,
                  instance_charge_type: Optional[pulumi.Input[str]] = None,
                  internet_charge_type: Optional[pulumi.Input[str]] = None,
+                 ip_address: Optional[pulumi.Input[str]] = None,
                  isp: Optional[pulumi.Input[str]] = None,
                  log_project: Optional[pulumi.Input[str]] = None,
                  log_store: Optional[pulumi.Input[str]] = None,
@@ -46,6 +47,7 @@ class EipArgs:
         :param pulumi.Input[str] description: Description of the EIP instance, This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
         :param pulumi.Input[str] instance_charge_type: (It has been deprecated from version 1.126.0 and using new attribute `payment_type` instead) Elastic IP instance charge type. Valid values are "PrePaid" and "PostPaid". Default to "PostPaid".
         :param pulumi.Input[str] internet_charge_type: Internet charge type of the EIP, Valid values are `PayByBandwidth`, `PayByTraffic`. Default to `PayByBandwidth`. **NOTE:** From version `1.7.1` to `1.125.0`, it defaults to `PayByTraffic`. It is only "PayByBandwidth" when `instance_charge_type` is PrePaid.
+        :param pulumi.Input[str] ip_address: The elastic ip address
         :param pulumi.Input[str] isp: The line type of the Elastic IP instance. Default to `BGP`. Other type of the isp need to open a whitelist.
         :param pulumi.Input[str] name: It has been deprecated from version 1.126.0 and using new attribute `address_name` instead.
         :param pulumi.Input[str] payment_type: The billing method of the EIP. Valid values: `Subscription` and `PayAsYouGo`. Default value is `PayAsYouGo`.
@@ -75,6 +77,8 @@ class EipArgs:
             pulumi.set(__self__, "instance_charge_type", instance_charge_type)
         if internet_charge_type is not None:
             pulumi.set(__self__, "internet_charge_type", internet_charge_type)
+        if ip_address is not None:
+            pulumi.set(__self__, "ip_address", ip_address)
         if isp is not None:
             pulumi.set(__self__, "isp", isp)
         if log_project is not None:
@@ -208,6 +212,18 @@ class EipArgs:
     @internet_charge_type.setter
     def internet_charge_type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "internet_charge_type", value)
+
+    @property
+    @pulumi.getter(name="ipAddress")
+    def ip_address(self) -> Optional[pulumi.Input[str]]:
+        """
+        The elastic ip address
+        """
+        return pulumi.get(self, "ip_address")
+
+    @ip_address.setter
+    def ip_address(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ip_address", value)
 
     @property
     @pulumi.getter
@@ -750,6 +766,7 @@ class Eip(pulumi.CustomResource):
                  high_definition_monitor_log_status: Optional[pulumi.Input[str]] = None,
                  instance_charge_type: Optional[pulumi.Input[str]] = None,
                  internet_charge_type: Optional[pulumi.Input[str]] = None,
+                 ip_address: Optional[pulumi.Input[str]] = None,
                  isp: Optional[pulumi.Input[str]] = None,
                  log_project: Optional[pulumi.Input[str]] = None,
                  log_store: Optional[pulumi.Input[str]] = None,
@@ -808,6 +825,7 @@ class Eip(pulumi.CustomResource):
         :param pulumi.Input[str] description: Description of the EIP instance, This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
         :param pulumi.Input[str] instance_charge_type: (It has been deprecated from version 1.126.0 and using new attribute `payment_type` instead) Elastic IP instance charge type. Valid values are "PrePaid" and "PostPaid". Default to "PostPaid".
         :param pulumi.Input[str] internet_charge_type: Internet charge type of the EIP, Valid values are `PayByBandwidth`, `PayByTraffic`. Default to `PayByBandwidth`. **NOTE:** From version `1.7.1` to `1.125.0`, it defaults to `PayByTraffic`. It is only "PayByBandwidth" when `instance_charge_type` is PrePaid.
+        :param pulumi.Input[str] ip_address: The elastic ip address
         :param pulumi.Input[str] isp: The line type of the Elastic IP instance. Default to `BGP`. Other type of the isp need to open a whitelist.
         :param pulumi.Input[str] name: It has been deprecated from version 1.126.0 and using new attribute `address_name` instead.
         :param pulumi.Input[str] payment_type: The billing method of the EIP. Valid values: `Subscription` and `PayAsYouGo`. Default value is `PayAsYouGo`.
@@ -880,6 +898,7 @@ class Eip(pulumi.CustomResource):
                  high_definition_monitor_log_status: Optional[pulumi.Input[str]] = None,
                  instance_charge_type: Optional[pulumi.Input[str]] = None,
                  internet_charge_type: Optional[pulumi.Input[str]] = None,
+                 ip_address: Optional[pulumi.Input[str]] = None,
                  isp: Optional[pulumi.Input[str]] = None,
                  log_project: Optional[pulumi.Input[str]] = None,
                  log_store: Optional[pulumi.Input[str]] = None,
@@ -912,6 +931,7 @@ class Eip(pulumi.CustomResource):
             __props__.__dict__["high_definition_monitor_log_status"] = high_definition_monitor_log_status
             __props__.__dict__["instance_charge_type"] = instance_charge_type
             __props__.__dict__["internet_charge_type"] = internet_charge_type
+            __props__.__dict__["ip_address"] = ip_address
             __props__.__dict__["isp"] = isp
             __props__.__dict__["log_project"] = log_project
             __props__.__dict__["log_store"] = log_store
@@ -926,7 +946,6 @@ class Eip(pulumi.CustomResource):
             __props__.__dict__["tags"] = tags
             __props__.__dict__["zone"] = zone
             __props__.__dict__["create_time"] = None
-            __props__.__dict__["ip_address"] = None
             __props__.__dict__["status"] = None
         super(Eip, __self__).__init__(
             'alicloud:ecs/eip:Eip',

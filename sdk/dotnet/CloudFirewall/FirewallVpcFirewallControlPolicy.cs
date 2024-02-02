@@ -28,11 +28,13 @@ namespace Pulumi.AliCloud.CloudFirewall
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "terraform-example";
     ///     var defaultAccount = AliCloud.GetAccount.Invoke();
     /// 
     ///     var defaultInstance = new AliCloud.Cen.Instance("defaultInstance", new()
     ///     {
-    ///         CenInstanceName = @var.Name,
+    ///         CenInstanceName = name,
     ///         Description = "example_value",
     ///         Tags = 
     ///         {

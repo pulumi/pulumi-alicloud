@@ -714,9 +714,13 @@ class FirewallVpcFirewallControlPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
         default_account = alicloud.get_account()
         default_instance = alicloud.cen.Instance("defaultInstance",
-            cen_instance_name=var["name"],
+            cen_instance_name=name,
             description="example_value",
             tags={
                 "Created": "TF",
@@ -793,9 +797,13 @@ class FirewallVpcFirewallControlPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
         default_account = alicloud.get_account()
         default_instance = alicloud.cen.Instance("defaultInstance",
-            cen_instance_name=var["name"],
+            cen_instance_name=name,
             description="example_value",
             tags={
                 "Created": "TF",

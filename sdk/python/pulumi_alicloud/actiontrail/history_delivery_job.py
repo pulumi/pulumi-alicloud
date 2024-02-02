@@ -101,16 +101,22 @@ class HistoryDeliveryJob(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
-            name = "tfexample"
+            name = "tf-example"
+        default = random.RandomInteger("default",
+            min=10000,
+            max=99999)
         example_regions = alicloud.get_regions(current=True)
         example_account = alicloud.get_account()
-        example_project = alicloud.log.Project("exampleProject", description="tf actiontrail example")
+        example_project = alicloud.log.Project("exampleProject",
+            project_name=default.result.apply(lambda result: f"{name}-{result}"),
+            description="tf actiontrail example")
         example_trail = alicloud.actiontrail.Trail("exampleTrail",
-            trail_name=name,
+            trail_name=default.result.apply(lambda result: f"{name}-{result}"),
             sls_project_arn=example_project.name.apply(lambda name: f"acs:log:{example_regions.regions[0].id}:{example_account.id}:project/{name}"))
         example_history_delivery_job = alicloud.actiontrail.HistoryDeliveryJob("exampleHistoryDeliveryJob", trail_name=example_trail.id)
         ```
@@ -153,16 +159,22 @@ class HistoryDeliveryJob(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
-            name = "tfexample"
+            name = "tf-example"
+        default = random.RandomInteger("default",
+            min=10000,
+            max=99999)
         example_regions = alicloud.get_regions(current=True)
         example_account = alicloud.get_account()
-        example_project = alicloud.log.Project("exampleProject", description="tf actiontrail example")
+        example_project = alicloud.log.Project("exampleProject",
+            project_name=default.result.apply(lambda result: f"{name}-{result}"),
+            description="tf actiontrail example")
         example_trail = alicloud.actiontrail.Trail("exampleTrail",
-            trail_name=name,
+            trail_name=default.result.apply(lambda result: f"{name}-{result}"),
             sls_project_arn=example_project.name.apply(lambda name: f"acs:log:{example_regions.regions[0].id}:{example_account.id}:project/{name}"))
         example_history_delivery_job = alicloud.actiontrail.HistoryDeliveryJob("exampleHistoryDeliveryJob", trail_name=example_trail.id)
         ```

@@ -19016,6 +19016,25 @@
             }
         }
     },
+    "auto-settings": {
+        "resources": {
+            "alicloud_db_instance": {
+                "maxItemsOneOverrides": {
+                    "serverless_config": false
+                }
+            },
+            "alicloud_rds_clone_db_instance": {
+                "maxItemsOneOverrides": {
+                    "serverless_config": false
+                }
+            },
+            "alicloud_service_mesh_service_mesh": {
+                "maxItemsOneOverrides": {
+                    "network.$.vswitche_list": true
+                }
+            }
+        }
+    },
     "renames": {
         "resources": {
             "alicloud:ackone/cluster:Cluster": "alicloud_ack_one_cluster",

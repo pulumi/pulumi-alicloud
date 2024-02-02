@@ -20,13 +20,13 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  * import * as random from "@pulumi/random";
  *
- * let defaultRandomInteger: random.RandomInteger | undefined;
- * if (1 == true) {
- *     defaultRandomInteger = new random.RandomInteger("defaultRandomInteger", {
- *         max: 99999,
- *         min: 10000,
- *     });
- * }
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "terraform-example";
+ * const defaultRandomInteger = new random.RandomInteger("defaultRandomInteger", {
+ *     min: 10000,
+ *     max: 99999,
+ * });
+ * const myName = pulumi.interpolate`${name}-${defaultRandomInteger.result}`;
  * const defaultZones = alicloud.getZones({
  *     availableDiskCategory: "cloud_efficiency",
  *     availableResourceCreation: "VSwitch",
@@ -41,12 +41,15 @@ import * as utilities from "../utilities";
  *     mostRecent: true,
  *     owners: "system",
  * });
- * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {cidrBlock: "172.16.0.0/16"});
+ * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {
+ *     vpcName: myName,
+ *     cidrBlock: "172.16.0.0/16",
+ * });
  * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
  *     vpcId: defaultNetwork.id,
  *     cidrBlock: "172.16.0.0/24",
  *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
- *     vswitchName: defaultRandomInteger?.result.apply(result => `terraform-example-${result}`),
+ *     vswitchName: myName,
  * });
  * const defaultSecurityGroup = new alicloud.ecs.SecurityGroup("defaultSecurityGroup", {vpcId: defaultNetwork.id});
  * const defaultSecurityGroupRule = new alicloud.ecs.SecurityGroupRule("defaultSecurityGroupRule", {
@@ -62,7 +65,7 @@ import * as utilities from "../utilities";
  * const defaultScalingGroup = new alicloud.ess.ScalingGroup("defaultScalingGroup", {
  *     minSize: 1,
  *     maxSize: 1,
- *     scalingGroupName: defaultRandomInteger?.result.apply(result => `terraform-example-${result}`),
+ *     scalingGroupName: myName,
  *     vswitchIds: [defaultSwitch.id],
  *     removalPolicies: [
  *         "OldestInstance",

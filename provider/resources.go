@@ -16,7 +16,7 @@ package alicloud
 
 import (
 	"fmt"
-	"path/filepath"
+	"path"
 	"strings"
 	"unicode"
 
@@ -27,10 +27,9 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
-	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/x"
+	tks "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/tokens"
 	shimv1 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v1"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/tokens"
-	"github.com/pulumi/pulumi/sdk/v3/go/common/util/contract"
 
 	"github.com/pulumi/pulumi-alicloud/provider/v3/pkg/version"
 )
@@ -1463,6 +1462,11 @@ func Provider() tfbridge.ProviderInfo {
 					},
 				},
 			},
+			"alicloud_vpc_ipv6_address": {
+				Fields: map[string]*tfbridge.SchemaInfo{
+					"ipv6_address": {CSharpName: "Address"},
+				},
+			},
 			"alicloud_vpc_bgp_group":                      {Tok: resource(vpcMod, "BgpGroup")},
 			"alicloud_vpc_bgp_network":                    {Tok: resource(vpcMod, "BgpNetwork")},
 			"alicloud_vpc_bgp_peer":                       {Tok: resource(vpcMod, "BgpPeer")},
@@ -2531,17 +2535,14 @@ func Provider() tfbridge.ProviderInfo {
 				"@pulumi/pulumi": "^3.0.0",
 			},
 		},
-		Python: (func() *tfbridge.PythonInfo {
-			i := &tfbridge.PythonInfo{
-				Requires: map[string]string{
-					"pulumi": ">=3.0.0,<4.0.0",
-				}}
-			i.PyProject.Enabled = true
-			return i
-		})(),
-
+		Python: &tfbridge.PythonInfo{
+			Requires: map[string]string{
+				"pulumi": ">=3.0.0,<4.0.0",
+			},
+			PyProject: struct{ Enabled bool }{true},
+		},
 		Golang: &tfbridge.GolangInfo{
-			ImportBasePath: filepath.Join(
+			ImportBasePath: path.Join(
 				fmt.Sprintf("github.com/pulumi/pulumi-%[1]s/sdk/", alicloudPkg),
 				tfbridge.GetModuleMajorVersion(version.Version),
 				"go",
@@ -2555,7 +2556,8 @@ func Provider() tfbridge.ProviderInfo {
 				"Pulumi": "3.*",
 			},
 			Namespaces: namespaceMap,
-		}, MetadataInfo: tfbridge.NewProviderMetadata(metadata),
+		},
+		MetadataInfo: tfbridge.NewProviderMetadata(metadata),
 	}
 	prov.RenameResourceWithAlias("alicloud_ddosbgp_instance", resource(dnsMod, "DdosBgpInstance"),
 		resource(ddosMod, "DdosBgpInstance"), dnsMod, ddosMod, nil)
@@ -2581,7 +2583,7 @@ func Provider() tfbridge.ProviderInfo {
 		moduleNameMap[k] = v
 	}
 
-	err := x.ComputeDefaults(&prov, x.TokensKnownModules("alicloud_", "", mappedModKeys,
+	prov.MustComputeTokens(tks.KnownModules("alicloud_", "", mappedModKeys,
 		func(mod, name string) (string, error) {
 			mod = strings.ToLower(mod)
 			m, ok := moduleNameMap[mod]
@@ -2590,11 +2592,10 @@ func Provider() tfbridge.ProviderInfo {
 			}
 			return resource(m, name).String(), nil
 		}))
-	contract.AssertNoError(err)
-	err = x.AutoAliasing(&prov, prov.GetMetadata())
-	contract.AssertNoErrorf(err, "auto aliasing apply failed")
 
 	prov.SetAutonaming(255, "-")
+
+	prov.MustApplyAutoAliases()
 
 	return prov
 }

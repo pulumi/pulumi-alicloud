@@ -60,6 +60,7 @@ from .ha_vip_attachment import *
 from .ha_vipv2 import *
 from .ipv4_cidr_block import *
 from .ipv4_gateway import *
+from .ipv6_address import *
 from .ipv6_egress_rule import *
 from .ipv6_gateway import *
 from .ipv6_internet_bandwidth import *

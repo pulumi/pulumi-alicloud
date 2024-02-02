@@ -43,6 +43,10 @@ namespace Pulumi.AliCloud.Ess.Outputs
         /// </summary>
         public readonly string? ImagePullPolicy;
         /// <summary>
+        /// The commands to be executed in containers when you use the CLI to specify the preStop callback function.
+        /// </summary>
+        public readonly ImmutableArray<string> LifecyclePreStopHandlerExecs;
+        /// <summary>
         /// Commands that you want to run in containers when you use the CLI to perform liveness probes.
         /// </summary>
         public readonly ImmutableArray<string> LivenessProbeExecCommands;
@@ -174,6 +178,8 @@ namespace Pulumi.AliCloud.Ess.Outputs
 
             string? imagePullPolicy,
 
+            ImmutableArray<string> lifecyclePreStopHandlerExecs,
+
             ImmutableArray<string> livenessProbeExecCommands,
 
             int? livenessProbeFailureThreshold,
@@ -237,6 +243,7 @@ namespace Pulumi.AliCloud.Ess.Outputs
             Gpu = gpu;
             Image = image;
             ImagePullPolicy = imagePullPolicy;
+            LifecyclePreStopHandlerExecs = lifecyclePreStopHandlerExecs;
             LivenessProbeExecCommands = livenessProbeExecCommands;
             LivenessProbeFailureThreshold = livenessProbeFailureThreshold;
             LivenessProbeHttpGetPath = livenessProbeHttpGetPath;

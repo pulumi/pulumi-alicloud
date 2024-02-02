@@ -34,11 +34,11 @@ namespace Pulumi.AliCloud.Ddos.Outputs
         /// </summary>
         public readonly int DomainCount;
         /// <summary>
-        /// The edition of the instance. The Valid Values : `0`, `1`, `2`, `9`.
+        /// The edition of the instance.
         /// </summary>
         public readonly int Edition;
         /// <summary>
-        /// The enabled of the instance. The Valid Values : `0`, `1`.
+        /// The enabled of the instance.
         /// </summary>
         public readonly int Enabled;
         /// <summary>
@@ -50,11 +50,11 @@ namespace Pulumi.AliCloud.Ddos.Outputs
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// The ip mode of the instance. The Valid Values : `fnat`, `v6tov4`.
+        /// The ip mode of the instance.
         /// </summary>
         public readonly string IpMode;
         /// <summary>
-        /// The ip version of the instance. The Valid Values : `Ipv4`, `Ipv6`.
+        /// The ip version of the instance.
         /// </summary>
         public readonly string IpVersion;
         /// <summary>
@@ -74,7 +74,7 @@ namespace Pulumi.AliCloud.Ddos.Outputs
         /// </summary>
         public readonly int ServiceBandwidth;
         /// <summary>
-        /// The status of the instance. The Valid Values : `1`, `2`.
+        /// The status of the instance.
         /// </summary>
         public readonly int Status;
 

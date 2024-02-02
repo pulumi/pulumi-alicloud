@@ -14,13 +14,13 @@ import (
 var _ = internal.GetEnvOrDefault
 
 type AlarmEscalationsCritical struct {
-	// Critical level alarm comparison operator. Valid values: ["<=", "<", ">", ">=", "==", "!="]. Default to "==".
+	// Critical level alarm comparison operator. Default value: `==`. Valid values: ["<=", "<", ">", ">=", "==", "!="].
 	ComparisonOperator *string `pulumi:"comparisonOperator"`
 	// Critical level alarm statistics method. It must be consistent with that defined for metrics. For more information, see [How to use it](https://cms.console.aliyun.com/metric-meta/acs_ecs_dashboard/ecs).
 	Statistics *string `pulumi:"statistics"`
 	// Critical level alarm threshold value, which must be a numeric value currently.
 	Threshold *string `pulumi:"threshold"`
-	// Critical level alarm retry times. Default to 3.
+	// Critical level alarm retry times. Default value: `3`.
 	Times *int `pulumi:"times"`
 }
 
@@ -36,13 +36,13 @@ type AlarmEscalationsCriticalInput interface {
 }
 
 type AlarmEscalationsCriticalArgs struct {
-	// Critical level alarm comparison operator. Valid values: ["<=", "<", ">", ">=", "==", "!="]. Default to "==".
+	// Critical level alarm comparison operator. Default value: `==`. Valid values: ["<=", "<", ">", ">=", "==", "!="].
 	ComparisonOperator pulumi.StringPtrInput `pulumi:"comparisonOperator"`
 	// Critical level alarm statistics method. It must be consistent with that defined for metrics. For more information, see [How to use it](https://cms.console.aliyun.com/metric-meta/acs_ecs_dashboard/ecs).
 	Statistics pulumi.StringPtrInput `pulumi:"statistics"`
 	// Critical level alarm threshold value, which must be a numeric value currently.
 	Threshold pulumi.StringPtrInput `pulumi:"threshold"`
-	// Critical level alarm retry times. Default to 3.
+	// Critical level alarm retry times. Default value: `3`.
 	Times pulumi.IntPtrInput `pulumi:"times"`
 }
 
@@ -123,7 +123,7 @@ func (o AlarmEscalationsCriticalOutput) ToAlarmEscalationsCriticalPtrOutputWithC
 	}).(AlarmEscalationsCriticalPtrOutput)
 }
 
-// Critical level alarm comparison operator. Valid values: ["<=", "<", ">", ">=", "==", "!="]. Default to "==".
+// Critical level alarm comparison operator. Default value: `==`. Valid values: ["<=", "<", ">", ">=", "==", "!="].
 func (o AlarmEscalationsCriticalOutput) ComparisonOperator() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AlarmEscalationsCritical) *string { return v.ComparisonOperator }).(pulumi.StringPtrOutput)
 }
@@ -138,7 +138,7 @@ func (o AlarmEscalationsCriticalOutput) Threshold() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AlarmEscalationsCritical) *string { return v.Threshold }).(pulumi.StringPtrOutput)
 }
 
-// Critical level alarm retry times. Default to 3.
+// Critical level alarm retry times. Default value: `3`.
 func (o AlarmEscalationsCriticalOutput) Times() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v AlarmEscalationsCritical) *int { return v.Times }).(pulumi.IntPtrOutput)
 }
@@ -167,7 +167,7 @@ func (o AlarmEscalationsCriticalPtrOutput) Elem() AlarmEscalationsCriticalOutput
 	}).(AlarmEscalationsCriticalOutput)
 }
 
-// Critical level alarm comparison operator. Valid values: ["<=", "<", ">", ">=", "==", "!="]. Default to "==".
+// Critical level alarm comparison operator. Default value: `==`. Valid values: ["<=", "<", ">", ">=", "==", "!="].
 func (o AlarmEscalationsCriticalPtrOutput) ComparisonOperator() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AlarmEscalationsCritical) *string {
 		if v == nil {
@@ -197,7 +197,7 @@ func (o AlarmEscalationsCriticalPtrOutput) Threshold() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Critical level alarm retry times. Default to 3.
+// Critical level alarm retry times. Default value: `3`.
 func (o AlarmEscalationsCriticalPtrOutput) Times() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *AlarmEscalationsCritical) *int {
 		if v == nil {
@@ -208,13 +208,13 @@ func (o AlarmEscalationsCriticalPtrOutput) Times() pulumi.IntPtrOutput {
 }
 
 type AlarmEscalationsInfo struct {
-	// Critical level alarm comparison operator. Valid values: ["<=", "<", ">", ">=", "==", "!="]. Default to "==".
+	// Critical level alarm comparison operator. Default value: `==`. Valid values: ["<=", "<", ">", ">=", "==", "!="].
 	ComparisonOperator *string `pulumi:"comparisonOperator"`
 	// Critical level alarm statistics method. It must be consistent with that defined for metrics. For more information, see [How to use it](https://cms.console.aliyun.com/metric-meta/acs_ecs_dashboard/ecs).
 	Statistics *string `pulumi:"statistics"`
 	// Critical level alarm threshold value, which must be a numeric value currently.
 	Threshold *string `pulumi:"threshold"`
-	// Critical level alarm retry times. Default to 3.
+	// Critical level alarm retry times. Default value: `3`.
 	Times *int `pulumi:"times"`
 }
 
@@ -230,13 +230,13 @@ type AlarmEscalationsInfoInput interface {
 }
 
 type AlarmEscalationsInfoArgs struct {
-	// Critical level alarm comparison operator. Valid values: ["<=", "<", ">", ">=", "==", "!="]. Default to "==".
+	// Critical level alarm comparison operator. Default value: `==`. Valid values: ["<=", "<", ">", ">=", "==", "!="].
 	ComparisonOperator pulumi.StringPtrInput `pulumi:"comparisonOperator"`
 	// Critical level alarm statistics method. It must be consistent with that defined for metrics. For more information, see [How to use it](https://cms.console.aliyun.com/metric-meta/acs_ecs_dashboard/ecs).
 	Statistics pulumi.StringPtrInput `pulumi:"statistics"`
 	// Critical level alarm threshold value, which must be a numeric value currently.
 	Threshold pulumi.StringPtrInput `pulumi:"threshold"`
-	// Critical level alarm retry times. Default to 3.
+	// Critical level alarm retry times. Default value: `3`.
 	Times pulumi.IntPtrInput `pulumi:"times"`
 }
 
@@ -317,7 +317,7 @@ func (o AlarmEscalationsInfoOutput) ToAlarmEscalationsInfoPtrOutputWithContext(c
 	}).(AlarmEscalationsInfoPtrOutput)
 }
 
-// Critical level alarm comparison operator. Valid values: ["<=", "<", ">", ">=", "==", "!="]. Default to "==".
+// Critical level alarm comparison operator. Default value: `==`. Valid values: ["<=", "<", ">", ">=", "==", "!="].
 func (o AlarmEscalationsInfoOutput) ComparisonOperator() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AlarmEscalationsInfo) *string { return v.ComparisonOperator }).(pulumi.StringPtrOutput)
 }
@@ -332,7 +332,7 @@ func (o AlarmEscalationsInfoOutput) Threshold() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AlarmEscalationsInfo) *string { return v.Threshold }).(pulumi.StringPtrOutput)
 }
 
-// Critical level alarm retry times. Default to 3.
+// Critical level alarm retry times. Default value: `3`.
 func (o AlarmEscalationsInfoOutput) Times() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v AlarmEscalationsInfo) *int { return v.Times }).(pulumi.IntPtrOutput)
 }
@@ -361,7 +361,7 @@ func (o AlarmEscalationsInfoPtrOutput) Elem() AlarmEscalationsInfoOutput {
 	}).(AlarmEscalationsInfoOutput)
 }
 
-// Critical level alarm comparison operator. Valid values: ["<=", "<", ">", ">=", "==", "!="]. Default to "==".
+// Critical level alarm comparison operator. Default value: `==`. Valid values: ["<=", "<", ">", ">=", "==", "!="].
 func (o AlarmEscalationsInfoPtrOutput) ComparisonOperator() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AlarmEscalationsInfo) *string {
 		if v == nil {
@@ -391,7 +391,7 @@ func (o AlarmEscalationsInfoPtrOutput) Threshold() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Critical level alarm retry times. Default to 3.
+// Critical level alarm retry times. Default value: `3`.
 func (o AlarmEscalationsInfoPtrOutput) Times() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *AlarmEscalationsInfo) *int {
 		if v == nil {
@@ -402,13 +402,13 @@ func (o AlarmEscalationsInfoPtrOutput) Times() pulumi.IntPtrOutput {
 }
 
 type AlarmEscalationsWarn struct {
-	// Critical level alarm comparison operator. Valid values: ["<=", "<", ">", ">=", "==", "!="]. Default to "==".
+	// Critical level alarm comparison operator. Default value: `==`. Valid values: ["<=", "<", ">", ">=", "==", "!="].
 	ComparisonOperator *string `pulumi:"comparisonOperator"`
 	// Critical level alarm statistics method. It must be consistent with that defined for metrics. For more information, see [How to use it](https://cms.console.aliyun.com/metric-meta/acs_ecs_dashboard/ecs).
 	Statistics *string `pulumi:"statistics"`
 	// Critical level alarm threshold value, which must be a numeric value currently.
 	Threshold *string `pulumi:"threshold"`
-	// Critical level alarm retry times. Default to 3.
+	// Critical level alarm retry times. Default value: `3`.
 	Times *int `pulumi:"times"`
 }
 
@@ -424,13 +424,13 @@ type AlarmEscalationsWarnInput interface {
 }
 
 type AlarmEscalationsWarnArgs struct {
-	// Critical level alarm comparison operator. Valid values: ["<=", "<", ">", ">=", "==", "!="]. Default to "==".
+	// Critical level alarm comparison operator. Default value: `==`. Valid values: ["<=", "<", ">", ">=", "==", "!="].
 	ComparisonOperator pulumi.StringPtrInput `pulumi:"comparisonOperator"`
 	// Critical level alarm statistics method. It must be consistent with that defined for metrics. For more information, see [How to use it](https://cms.console.aliyun.com/metric-meta/acs_ecs_dashboard/ecs).
 	Statistics pulumi.StringPtrInput `pulumi:"statistics"`
 	// Critical level alarm threshold value, which must be a numeric value currently.
 	Threshold pulumi.StringPtrInput `pulumi:"threshold"`
-	// Critical level alarm retry times. Default to 3.
+	// Critical level alarm retry times. Default value: `3`.
 	Times pulumi.IntPtrInput `pulumi:"times"`
 }
 
@@ -511,7 +511,7 @@ func (o AlarmEscalationsWarnOutput) ToAlarmEscalationsWarnPtrOutputWithContext(c
 	}).(AlarmEscalationsWarnPtrOutput)
 }
 
-// Critical level alarm comparison operator. Valid values: ["<=", "<", ">", ">=", "==", "!="]. Default to "==".
+// Critical level alarm comparison operator. Default value: `==`. Valid values: ["<=", "<", ">", ">=", "==", "!="].
 func (o AlarmEscalationsWarnOutput) ComparisonOperator() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AlarmEscalationsWarn) *string { return v.ComparisonOperator }).(pulumi.StringPtrOutput)
 }
@@ -526,7 +526,7 @@ func (o AlarmEscalationsWarnOutput) Threshold() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AlarmEscalationsWarn) *string { return v.Threshold }).(pulumi.StringPtrOutput)
 }
 
-// Critical level alarm retry times. Default to 3.
+// Critical level alarm retry times. Default value: `3`.
 func (o AlarmEscalationsWarnOutput) Times() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v AlarmEscalationsWarn) *int { return v.Times }).(pulumi.IntPtrOutput)
 }
@@ -555,7 +555,7 @@ func (o AlarmEscalationsWarnPtrOutput) Elem() AlarmEscalationsWarnOutput {
 	}).(AlarmEscalationsWarnOutput)
 }
 
-// Critical level alarm comparison operator. Valid values: ["<=", "<", ">", ">=", "==", "!="]. Default to "==".
+// Critical level alarm comparison operator. Default value: `==`. Valid values: ["<=", "<", ">", ">=", "==", "!="].
 func (o AlarmEscalationsWarnPtrOutput) ComparisonOperator() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AlarmEscalationsWarn) *string {
 		if v == nil {
@@ -585,7 +585,7 @@ func (o AlarmEscalationsWarnPtrOutput) Threshold() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Critical level alarm retry times. Default to 3.
+// Critical level alarm retry times. Default value: `3`.
 func (o AlarmEscalationsWarnPtrOutput) Times() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *AlarmEscalationsWarn) *int {
 		if v == nil {
@@ -717,6 +717,133 @@ func (o AlarmPrometheusArrayOutput) Index(i pulumi.IntInput) AlarmPrometheusOutp
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AlarmPrometheus {
 		return vs[0].([]AlarmPrometheus)[vs[1].(int)]
 	}).(AlarmPrometheusOutput)
+}
+
+type AlarmTarget struct {
+	// The Alibaba Cloud Resource Name (ARN) of the resource.
+	// > **NOTE:** Currently, the Alibaba Cloud Resource Name (ARN) of the resource. To use, please [submit an application](https://www.alibabacloud.com/help/en/cloudmonitor/latest/describemetricruletargets).
+	Arn *string `pulumi:"arn"`
+	// The parameters of the alert callback. The parameters are in the JSON format.
+	JsonParams *string `pulumi:"jsonParams"`
+	// The level of the alert. Valid values: `Critical`, `Warn`, `Info`.
+	Level *string `pulumi:"level"`
+	// The ID of the resource for which alerts are triggered.
+	TargetId *string `pulumi:"targetId"`
+}
+
+// AlarmTargetInput is an input type that accepts AlarmTargetArgs and AlarmTargetOutput values.
+// You can construct a concrete instance of `AlarmTargetInput` via:
+//
+//	AlarmTargetArgs{...}
+type AlarmTargetInput interface {
+	pulumi.Input
+
+	ToAlarmTargetOutput() AlarmTargetOutput
+	ToAlarmTargetOutputWithContext(context.Context) AlarmTargetOutput
+}
+
+type AlarmTargetArgs struct {
+	// The Alibaba Cloud Resource Name (ARN) of the resource.
+	// > **NOTE:** Currently, the Alibaba Cloud Resource Name (ARN) of the resource. To use, please [submit an application](https://www.alibabacloud.com/help/en/cloudmonitor/latest/describemetricruletargets).
+	Arn pulumi.StringPtrInput `pulumi:"arn"`
+	// The parameters of the alert callback. The parameters are in the JSON format.
+	JsonParams pulumi.StringPtrInput `pulumi:"jsonParams"`
+	// The level of the alert. Valid values: `Critical`, `Warn`, `Info`.
+	Level pulumi.StringPtrInput `pulumi:"level"`
+	// The ID of the resource for which alerts are triggered.
+	TargetId pulumi.StringPtrInput `pulumi:"targetId"`
+}
+
+func (AlarmTargetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlarmTarget)(nil)).Elem()
+}
+
+func (i AlarmTargetArgs) ToAlarmTargetOutput() AlarmTargetOutput {
+	return i.ToAlarmTargetOutputWithContext(context.Background())
+}
+
+func (i AlarmTargetArgs) ToAlarmTargetOutputWithContext(ctx context.Context) AlarmTargetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlarmTargetOutput)
+}
+
+// AlarmTargetArrayInput is an input type that accepts AlarmTargetArray and AlarmTargetArrayOutput values.
+// You can construct a concrete instance of `AlarmTargetArrayInput` via:
+//
+//	AlarmTargetArray{ AlarmTargetArgs{...} }
+type AlarmTargetArrayInput interface {
+	pulumi.Input
+
+	ToAlarmTargetArrayOutput() AlarmTargetArrayOutput
+	ToAlarmTargetArrayOutputWithContext(context.Context) AlarmTargetArrayOutput
+}
+
+type AlarmTargetArray []AlarmTargetInput
+
+func (AlarmTargetArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AlarmTarget)(nil)).Elem()
+}
+
+func (i AlarmTargetArray) ToAlarmTargetArrayOutput() AlarmTargetArrayOutput {
+	return i.ToAlarmTargetArrayOutputWithContext(context.Background())
+}
+
+func (i AlarmTargetArray) ToAlarmTargetArrayOutputWithContext(ctx context.Context) AlarmTargetArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlarmTargetArrayOutput)
+}
+
+type AlarmTargetOutput struct{ *pulumi.OutputState }
+
+func (AlarmTargetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlarmTarget)(nil)).Elem()
+}
+
+func (o AlarmTargetOutput) ToAlarmTargetOutput() AlarmTargetOutput {
+	return o
+}
+
+func (o AlarmTargetOutput) ToAlarmTargetOutputWithContext(ctx context.Context) AlarmTargetOutput {
+	return o
+}
+
+// The Alibaba Cloud Resource Name (ARN) of the resource.
+// > **NOTE:** Currently, the Alibaba Cloud Resource Name (ARN) of the resource. To use, please [submit an application](https://www.alibabacloud.com/help/en/cloudmonitor/latest/describemetricruletargets).
+func (o AlarmTargetOutput) Arn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlarmTarget) *string { return v.Arn }).(pulumi.StringPtrOutput)
+}
+
+// The parameters of the alert callback. The parameters are in the JSON format.
+func (o AlarmTargetOutput) JsonParams() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlarmTarget) *string { return v.JsonParams }).(pulumi.StringPtrOutput)
+}
+
+// The level of the alert. Valid values: `Critical`, `Warn`, `Info`.
+func (o AlarmTargetOutput) Level() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlarmTarget) *string { return v.Level }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the resource for which alerts are triggered.
+func (o AlarmTargetOutput) TargetId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlarmTarget) *string { return v.TargetId }).(pulumi.StringPtrOutput)
+}
+
+type AlarmTargetArrayOutput struct{ *pulumi.OutputState }
+
+func (AlarmTargetArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AlarmTarget)(nil)).Elem()
+}
+
+func (o AlarmTargetArrayOutput) ToAlarmTargetArrayOutput() AlarmTargetArrayOutput {
+	return o
+}
+
+func (o AlarmTargetArrayOutput) ToAlarmTargetArrayOutputWithContext(ctx context.Context) AlarmTargetArrayOutput {
+	return o
+}
+
+func (o AlarmTargetArrayOutput) Index(i pulumi.IntInput) AlarmTargetOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AlarmTarget {
+		return vs[0].([]AlarmTarget)[vs[1].(int)]
+	}).(AlarmTargetOutput)
 }
 
 type DynamicTagGroupMatchExpress struct {
@@ -10436,6 +10563,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AlarmEscalationsWarnPtrInput)(nil)).Elem(), AlarmEscalationsWarnArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AlarmPrometheusInput)(nil)).Elem(), AlarmPrometheusArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AlarmPrometheusArrayInput)(nil)).Elem(), AlarmPrometheusArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlarmTargetInput)(nil)).Elem(), AlarmTargetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlarmTargetArrayInput)(nil)).Elem(), AlarmTargetArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DynamicTagGroupMatchExpressInput)(nil)).Elem(), DynamicTagGroupMatchExpressArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DynamicTagGroupMatchExpressArrayInput)(nil)).Elem(), DynamicTagGroupMatchExpressArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EventRuleContactParameterInput)(nil)).Elem(), EventRuleContactParameterArgs{})
@@ -10580,6 +10709,8 @@ func init() {
 	pulumi.RegisterOutputType(AlarmEscalationsWarnPtrOutput{})
 	pulumi.RegisterOutputType(AlarmPrometheusOutput{})
 	pulumi.RegisterOutputType(AlarmPrometheusArrayOutput{})
+	pulumi.RegisterOutputType(AlarmTargetOutput{})
+	pulumi.RegisterOutputType(AlarmTargetArrayOutput{})
 	pulumi.RegisterOutputType(DynamicTagGroupMatchExpressOutput{})
 	pulumi.RegisterOutputType(DynamicTagGroupMatchExpressArrayOutput{})
 	pulumi.RegisterOutputType(EventRuleContactParameterOutput{})

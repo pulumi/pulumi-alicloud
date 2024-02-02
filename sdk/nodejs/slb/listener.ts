@@ -25,11 +25,16 @@ import * as utilities from "../utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
+ * import * as random from "@pulumi/random";
  *
  * const config = new pulumi.Config();
- * const slbListenerName = config.get("slbListenerName") || "forSlbListener";
+ * const name = config.get("name") || "tf-example";
+ * const _default = new random.RandomInteger("default", {
+ *     min: 10000,
+ *     max: 99999,
+ * });
  * const listenerApplicationLoadBalancer = new alicloud.slb.ApplicationLoadBalancer("listenerApplicationLoadBalancer", {
- *     loadBalancerName: "tf-exampleSlbListenerHttp",
+ *     loadBalancerName: pulumi.interpolate`${name}-${_default.result}`,
  *     internetChargeType: "PayByTraffic",
  *     addressType: "internet",
  *     instanceChargeType: "PayByCLCU",

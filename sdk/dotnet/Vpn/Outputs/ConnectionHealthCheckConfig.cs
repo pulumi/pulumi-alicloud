@@ -14,23 +14,23 @@ namespace Pulumi.AliCloud.Vpn.Outputs
     public sealed class ConnectionHealthCheckConfig
     {
         /// <summary>
-        /// The destination IP address.
+        /// Destination IP.
         /// </summary>
         public readonly string? Dip;
         /// <summary>
-        /// Whether to enable Health Check.
+        /// Specifies whether to enable healthcheck.
         /// </summary>
         public readonly bool? Enable;
         /// <summary>
-        /// The interval between two consecutive health checks. Unit: seconds.
+        /// Retry interval.
         /// </summary>
         public readonly int? Interval;
         /// <summary>
-        /// The maximum number of health check retries.
+        /// retry times.
         /// </summary>
         public readonly int? Retry;
         /// <summary>
-        /// The source IP address.
+        /// Source IP.
         /// </summary>
         public readonly string? Sip;
 

@@ -10,6 +10,12 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Kms
 {
     /// <summary>
+    /// Provides a KMS Instance resource.
+    /// 
+    /// For information about KMS Instance and how to use it, see [What is Instance](https://www.alibabacloud.com/help/zh/key-management-service/latest/kms-instance-management).
+    /// 
+    /// &gt; **NOTE:** Available since v1.210.0.
+    /// 
     /// ## Import
     /// 
     /// KMS Instance can be imported using the id, e.g.
@@ -52,7 +58,25 @@ namespace Pulumi.AliCloud.Kms
         public Output<int> KeyNum { get; private set; } = null!;
 
         /// <summary>
-        /// KMS Instance commodity type (software/hardware). Currently, only version 3 is supported.
+        /// Instance Audit Log Switch.
+        /// </summary>
+        [Output("log")]
+        public Output<string> Log { get; private set; } = null!;
+
+        /// <summary>
+        /// Instance log capacity.
+        /// </summary>
+        [Output("logStorage")]
+        public Output<int> LogStorage { get; private set; } = null!;
+
+        /// <summary>
+        /// Purchase cycle, in months.
+        /// </summary>
+        [Output("period")]
+        public Output<int?> Period { get; private set; } = null!;
+
+        /// <summary>
+        /// KMS Instance commodity type (software/hardware).
         /// </summary>
         [Output("productVersion")]
         public Output<string?> ProductVersion { get; private set; } = null!;
@@ -176,7 +200,25 @@ namespace Pulumi.AliCloud.Kms
         public Input<int> KeyNum { get; set; } = null!;
 
         /// <summary>
-        /// KMS Instance commodity type (software/hardware). Currently, only version 3 is supported.
+        /// Instance Audit Log Switch.
+        /// </summary>
+        [Input("log")]
+        public Input<string>? Log { get; set; }
+
+        /// <summary>
+        /// Instance log capacity.
+        /// </summary>
+        [Input("logStorage")]
+        public Input<int>? LogStorage { get; set; }
+
+        /// <summary>
+        /// Purchase cycle, in months.
+        /// </summary>
+        [Input("period")]
+        public Input<int>? Period { get; set; }
+
+        /// <summary>
+        /// KMS Instance commodity type (software/hardware).
         /// </summary>
         [Input("productVersion")]
         public Input<string>? ProductVersion { get; set; }
@@ -286,7 +328,25 @@ namespace Pulumi.AliCloud.Kms
         public Input<int>? KeyNum { get; set; }
 
         /// <summary>
-        /// KMS Instance commodity type (software/hardware). Currently, only version 3 is supported.
+        /// Instance Audit Log Switch.
+        /// </summary>
+        [Input("log")]
+        public Input<string>? Log { get; set; }
+
+        /// <summary>
+        /// Instance log capacity.
+        /// </summary>
+        [Input("logStorage")]
+        public Input<int>? LogStorage { get; set; }
+
+        /// <summary>
+        /// Purchase cycle, in months.
+        /// </summary>
+        [Input("period")]
+        public Input<int>? Period { get; set; }
+
+        /// <summary>
+        /// KMS Instance commodity type (software/hardware).
         /// </summary>
         [Input("productVersion")]
         public Input<string>? ProductVersion { get; set; }

@@ -32,7 +32,10 @@ import (
 //
 // import (
 //
+//	"fmt"
+//
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/slb"
+//	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
@@ -41,12 +44,21 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			cfg := config.New(ctx, "")
-//			slbListenerName := "forSlbListener"
-//			if param := cfg.Get("slbListenerName"); param != "" {
-//				slbListenerName = param
+//			name := "tf-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			_, err := random.NewRandomInteger(ctx, "default", &random.RandomIntegerArgs{
+//				Min: pulumi.Int(10000),
+//				Max: pulumi.Int(99999),
+//			})
+//			if err != nil {
+//				return err
 //			}
 //			listenerApplicationLoadBalancer, err := slb.NewApplicationLoadBalancer(ctx, "listenerApplicationLoadBalancer", &slb.ApplicationLoadBalancerArgs{
-//				LoadBalancerName:   pulumi.String("tf-exampleSlbListenerHttp"),
+//				LoadBalancerName: _default.Result.ApplyT(func(result int) (string, error) {
+//					return fmt.Sprintf("%v-%v", name, result), nil
+//				}).(pulumi.StringOutput),
 //				InternetChargeType: pulumi.String("PayByTraffic"),
 //				AddressType:        pulumi.String("internet"),
 //				InstanceChargeType: pulumi.String("PayByCLCU"),

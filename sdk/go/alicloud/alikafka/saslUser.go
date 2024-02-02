@@ -12,14 +12,14 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides an Alikafka sasl user resource.
+// Provides an Alikafka Sasl User resource.
 //
 // > **NOTE:** Available since v1.66.0.
 //
-// > **NOTE:**  Only the following regions support create alikafka sasl user.
+// > **NOTE:**  Only the following regions support create alikafka Sasl User.
 // [`cn-hangzhou`,`cn-beijing`,`cn-shenzhen`,`cn-shanghai`,`cn-qingdao`,`cn-hongkong`,`cn-huhehaote`,`cn-zhangjiakou`,`cn-chengdu`,`cn-heyuan`,`ap-southeast-1`,`ap-southeast-3`,`ap-southeast-5`,`ap-south-1`,`ap-northeast-1`,`eu-central-1`,`eu-west-1`,`us-west-1`,`us-east-1`]
 //
-// For information about Alikafka sasl user and how to use it, see [What is Alikafka sasl user ](https://www.alibabacloud.com/help/en/message-queue-for-apache-kafka/latest/api-alikafka-2019-09-16-createsasluser).
+// For information about Alikafka Sasl User and how to use it, see [What is Sasl User](https://www.alibabacloud.com/help/en/message-queue-for-apache-kafka/latest/api-alikafka-2019-09-16-createsasluser).
 //
 // ## Example Usage
 //
@@ -82,17 +82,9 @@ import (
 //				IoMax:          pulumi.Int(20),
 //				SpecType:       pulumi.String("professional"),
 //				ServiceVersion: pulumi.String("2.2.0"),
-//				Config:         pulumi.String("{\"enable.acl\":\"true\"}"),
 //				VswitchId:      defaultSwitch.ID(),
 //				SecurityGroup:  defaultSecurityGroup.ID(),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = alikafka.NewTopic(ctx, "defaultTopic", &alikafka.TopicArgs{
-//				InstanceId: defaultInstance.ID(),
-//				Topic:      pulumi.String("example-topic"),
-//				Remark:     pulumi.String("topic-remark"),
+//				Config:         pulumi.String("  {\n    \"enable.acl\": \"true\"\n  }\n"),
 //			})
 //			if err != nil {
 //				return err
@@ -129,11 +121,11 @@ type SaslUser struct {
 	KmsEncryptedPassword pulumi.StringPtrOutput `pulumi:"kmsEncryptedPassword"`
 	// An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating a user with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
 	KmsEncryptionContext pulumi.MapOutput `pulumi:"kmsEncryptionContext"`
-	// Operation password. It may consist of letters, digits, or underlines, with a length of 1 to 64 characters. You have to specify one of `password` and `kmsEncryptedPassword` fields.
+	// The password of the SASL user. It may consist of letters, digits, or underlines, with a length of 1 to 64 characters. You have to specify one of `password` and `kmsEncryptedPassword` fields.
 	Password pulumi.StringPtrOutput `pulumi:"password"`
-	// The authentication mechanism. Valid values: `plain`, `scram`. Default value: `plain`.
-	Type pulumi.StringPtrOutput `pulumi:"type"`
-	// Username for the sasl user. The length should between 1 to 64 characters. The characters can only contain 'a'-'z', 'A'-'Z', '0'-'9', '_' and '-'.
+	// The authentication mechanism. Default value: `plain`. Valid values: `plain`, `scram`.
+	Type pulumi.StringOutput `pulumi:"type"`
+	// The name of the SASL user. The length should between `1` to `64` characters. The characters can only contain `a`-`z`, `A`-`Z`, `0`-`9`, `_` and `-`.
 	Username pulumi.StringOutput `pulumi:"username"`
 }
 
@@ -186,11 +178,11 @@ type saslUserState struct {
 	KmsEncryptedPassword *string `pulumi:"kmsEncryptedPassword"`
 	// An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating a user with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
 	KmsEncryptionContext map[string]interface{} `pulumi:"kmsEncryptionContext"`
-	// Operation password. It may consist of letters, digits, or underlines, with a length of 1 to 64 characters. You have to specify one of `password` and `kmsEncryptedPassword` fields.
+	// The password of the SASL user. It may consist of letters, digits, or underlines, with a length of 1 to 64 characters. You have to specify one of `password` and `kmsEncryptedPassword` fields.
 	Password *string `pulumi:"password"`
-	// The authentication mechanism. Valid values: `plain`, `scram`. Default value: `plain`.
+	// The authentication mechanism. Default value: `plain`. Valid values: `plain`, `scram`.
 	Type *string `pulumi:"type"`
-	// Username for the sasl user. The length should between 1 to 64 characters. The characters can only contain 'a'-'z', 'A'-'Z', '0'-'9', '_' and '-'.
+	// The name of the SASL user. The length should between `1` to `64` characters. The characters can only contain `a`-`z`, `A`-`Z`, `0`-`9`, `_` and `-`.
 	Username *string `pulumi:"username"`
 }
 
@@ -201,11 +193,11 @@ type SaslUserState struct {
 	KmsEncryptedPassword pulumi.StringPtrInput
 	// An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating a user with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
 	KmsEncryptionContext pulumi.MapInput
-	// Operation password. It may consist of letters, digits, or underlines, with a length of 1 to 64 characters. You have to specify one of `password` and `kmsEncryptedPassword` fields.
+	// The password of the SASL user. It may consist of letters, digits, or underlines, with a length of 1 to 64 characters. You have to specify one of `password` and `kmsEncryptedPassword` fields.
 	Password pulumi.StringPtrInput
-	// The authentication mechanism. Valid values: `plain`, `scram`. Default value: `plain`.
+	// The authentication mechanism. Default value: `plain`. Valid values: `plain`, `scram`.
 	Type pulumi.StringPtrInput
-	// Username for the sasl user. The length should between 1 to 64 characters. The characters can only contain 'a'-'z', 'A'-'Z', '0'-'9', '_' and '-'.
+	// The name of the SASL user. The length should between `1` to `64` characters. The characters can only contain `a`-`z`, `A`-`Z`, `0`-`9`, `_` and `-`.
 	Username pulumi.StringPtrInput
 }
 
@@ -220,11 +212,11 @@ type saslUserArgs struct {
 	KmsEncryptedPassword *string `pulumi:"kmsEncryptedPassword"`
 	// An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating a user with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
 	KmsEncryptionContext map[string]interface{} `pulumi:"kmsEncryptionContext"`
-	// Operation password. It may consist of letters, digits, or underlines, with a length of 1 to 64 characters. You have to specify one of `password` and `kmsEncryptedPassword` fields.
+	// The password of the SASL user. It may consist of letters, digits, or underlines, with a length of 1 to 64 characters. You have to specify one of `password` and `kmsEncryptedPassword` fields.
 	Password *string `pulumi:"password"`
-	// The authentication mechanism. Valid values: `plain`, `scram`. Default value: `plain`.
+	// The authentication mechanism. Default value: `plain`. Valid values: `plain`, `scram`.
 	Type *string `pulumi:"type"`
-	// Username for the sasl user. The length should between 1 to 64 characters. The characters can only contain 'a'-'z', 'A'-'Z', '0'-'9', '_' and '-'.
+	// The name of the SASL user. The length should between `1` to `64` characters. The characters can only contain `a`-`z`, `A`-`Z`, `0`-`9`, `_` and `-`.
 	Username string `pulumi:"username"`
 }
 
@@ -236,11 +228,11 @@ type SaslUserArgs struct {
 	KmsEncryptedPassword pulumi.StringPtrInput
 	// An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating a user with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
 	KmsEncryptionContext pulumi.MapInput
-	// Operation password. It may consist of letters, digits, or underlines, with a length of 1 to 64 characters. You have to specify one of `password` and `kmsEncryptedPassword` fields.
+	// The password of the SASL user. It may consist of letters, digits, or underlines, with a length of 1 to 64 characters. You have to specify one of `password` and `kmsEncryptedPassword` fields.
 	Password pulumi.StringPtrInput
-	// The authentication mechanism. Valid values: `plain`, `scram`. Default value: `plain`.
+	// The authentication mechanism. Default value: `plain`. Valid values: `plain`, `scram`.
 	Type pulumi.StringPtrInput
-	// Username for the sasl user. The length should between 1 to 64 characters. The characters can only contain 'a'-'z', 'A'-'Z', '0'-'9', '_' and '-'.
+	// The name of the SASL user. The length should between `1` to `64` characters. The characters can only contain `a`-`z`, `A`-`Z`, `0`-`9`, `_` and `-`.
 	Username pulumi.StringInput
 }
 
@@ -346,17 +338,17 @@ func (o SaslUserOutput) KmsEncryptionContext() pulumi.MapOutput {
 	return o.ApplyT(func(v *SaslUser) pulumi.MapOutput { return v.KmsEncryptionContext }).(pulumi.MapOutput)
 }
 
-// Operation password. It may consist of letters, digits, or underlines, with a length of 1 to 64 characters. You have to specify one of `password` and `kmsEncryptedPassword` fields.
+// The password of the SASL user. It may consist of letters, digits, or underlines, with a length of 1 to 64 characters. You have to specify one of `password` and `kmsEncryptedPassword` fields.
 func (o SaslUserOutput) Password() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SaslUser) pulumi.StringPtrOutput { return v.Password }).(pulumi.StringPtrOutput)
 }
 
-// The authentication mechanism. Valid values: `plain`, `scram`. Default value: `plain`.
-func (o SaslUserOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SaslUser) pulumi.StringPtrOutput { return v.Type }).(pulumi.StringPtrOutput)
+// The authentication mechanism. Default value: `plain`. Valid values: `plain`, `scram`.
+func (o SaslUserOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v *SaslUser) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }
 
-// Username for the sasl user. The length should between 1 to 64 characters. The characters can only contain 'a'-'z', 'A'-'Z', '0'-'9', '_' and '-'.
+// The name of the SASL user. The length should between `1` to `64` characters. The characters can only contain `a`-`z`, `A`-`Z`, `0`-`9`, `_` and `-`.
 func (o SaslUserOutput) Username() pulumi.StringOutput {
 	return o.ApplyT(func(v *SaslUser) pulumi.StringOutput { return v.Username }).(pulumi.StringOutput)
 }

@@ -18,7 +18,7 @@ namespace Pulumi.AliCloud.Ecs
     /// 
     /// &gt; **NOTE:** Before exporting the image, you must authorize the cloud server ECS official service account to write OSS permissions through RAM.
     /// 
-    /// &gt; **NOTE:** Available in 1.68.0+.
+    /// &gt; **NOTE:** Available since v1.68.0+.
     /// 
     /// ## Example Usage
     /// 
@@ -80,17 +80,17 @@ namespace Pulumi.AliCloud.Ecs
     ///         InternetMaxBandwidthOut = 10,
     ///     });
     /// 
-    ///     var defaultImage = new AliCloud.Ecs.Image("defaultImage", new()
-    ///     {
-    ///         InstanceId = defaultInstance.Id,
-    ///         ImageName = "terraform-example",
-    ///         Description = "terraform-example",
-    ///     });
-    /// 
     ///     var defaultRandomInteger = new Random.RandomInteger("defaultRandomInteger", new()
     ///     {
     ///         Max = 99999,
     ///         Min = 10000,
+    ///     });
+    /// 
+    ///     var defaultImage = new AliCloud.Ecs.Image("defaultImage", new()
+    ///     {
+    ///         InstanceId = defaultInstance.Id,
+    ///         ImageName = defaultRandomInteger.Result.Apply(result =&gt; $"terraform-example-{result}"),
+    ///         Description = "terraform-example",
     ///     });
     /// 
     ///     var defaultBucket = new AliCloud.Oss.Bucket("defaultBucket", new()
@@ -107,11 +107,6 @@ namespace Pulumi.AliCloud.Ecs
     /// 
     /// });
     /// ```
-    /// ## Attributes Reference0
-    /// 
-    ///  The following attributes are exported:
-    /// 
-    /// * `id` - ID of the image.
     /// </summary>
     [AliCloudResourceType("alicloud:ecs/imageExport:ImageExport")]
     public partial class ImageExport : global::Pulumi.CustomResource

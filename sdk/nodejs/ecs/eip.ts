@@ -105,7 +105,7 @@ export class Eip extends pulumi.CustomResource {
     /**
      * The elastic ip address
      */
-    public /*out*/ readonly ipAddress!: pulumi.Output<string>;
+    public readonly ipAddress!: pulumi.Output<string>;
     /**
      * The line type of the Elastic IP instance. Default to `BGP`. Other type of the isp need to open a whitelist.
      */
@@ -197,6 +197,7 @@ export class Eip extends pulumi.CustomResource {
             resourceInputs["highDefinitionMonitorLogStatus"] = args ? args.highDefinitionMonitorLogStatus : undefined;
             resourceInputs["instanceChargeType"] = args ? args.instanceChargeType : undefined;
             resourceInputs["internetChargeType"] = args ? args.internetChargeType : undefined;
+            resourceInputs["ipAddress"] = args ? args.ipAddress : undefined;
             resourceInputs["isp"] = args ? args.isp : undefined;
             resourceInputs["logProject"] = args ? args.logProject : undefined;
             resourceInputs["logStore"] = args ? args.logStore : undefined;
@@ -211,7 +212,6 @@ export class Eip extends pulumi.CustomResource {
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["zone"] = args ? args.zone : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
-            resourceInputs["ipAddress"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -334,6 +334,10 @@ export interface EipArgs {
      * Internet charge type of the EIP, Valid values are `PayByBandwidth`, `PayByTraffic`. Default to `PayByBandwidth`. **NOTE:** From version `1.7.1` to `1.125.0`, it defaults to `PayByTraffic`. It is only "PayByBandwidth" when `instanceChargeType` is PrePaid.
      */
     internetChargeType?: pulumi.Input<string>;
+    /**
+     * The elastic ip address
+     */
+    ipAddress?: pulumi.Input<string>;
     /**
      * The line type of the Elastic IP instance. Default to `BGP`. Other type of the isp need to open a whitelist.
      */

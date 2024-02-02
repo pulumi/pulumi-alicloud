@@ -57,7 +57,7 @@ import (
 //			defaultExchange, err := amqp.NewExchange(ctx, "defaultExchange", &amqp.ExchangeArgs{
 //				AutoDeleteState: pulumi.Bool(false),
 //				ExchangeName:    pulumi.String("tf-example"),
-//				ExchangeType:    pulumi.String("DIRECT"),
+//				ExchangeType:    pulumi.String("HEADERS"),
 //				InstanceId:      defaultInstance.ID(),
 //				Internal:        pulumi.Bool(false),
 //				VirtualHostName: defaultVirtualHost.VirtualHostName,

@@ -36,7 +36,7 @@ import * as utilities from "../utilities";
  * const defaultExchange = new alicloud.amqp.Exchange("defaultExchange", {
  *     autoDeleteState: false,
  *     exchangeName: "tf-example",
- *     exchangeType: "DIRECT",
+ *     exchangeType: "HEADERS",
  *     instanceId: defaultInstance.id,
  *     internal: false,
  *     virtualHostName: defaultVirtualHost.virtualHostName,

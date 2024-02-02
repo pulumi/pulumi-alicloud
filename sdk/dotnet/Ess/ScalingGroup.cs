@@ -27,11 +27,20 @@ namespace Pulumi.AliCloud.Ess
     /// using System.Linq;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
+    /// using Random = Pulumi.Random;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "terraform-example";
+    ///     var defaultRandomInteger = new Random.RandomInteger("defaultRandomInteger", new()
+    ///     {
+    ///         Min = 10000,
+    ///         Max = 99999,
+    ///     });
+    /// 
+    ///     var myName = defaultRandomInteger.Result.Apply(result =&gt; $"{name}-{result}");
+    /// 
     ///     var defaultZones = AliCloud.GetZones.Invoke(new()
     ///     {
     ///         AvailableDiskCategory = "cloud_efficiency",
@@ -54,7 +63,7 @@ namespace Pulumi.AliCloud.Ess
     /// 
     ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
     ///     {
-    ///         VpcName = name,
+    ///         VpcName = myName,
     ///         CidrBlock = "172.16.0.0/16",
     ///     });
     /// 
@@ -63,7 +72,7 @@ namespace Pulumi.AliCloud.Ess
     ///         VpcId = defaultNetwork.Id,
     ///         CidrBlock = "172.16.0.0/24",
     ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
-    ///         VswitchName = name,
+    ///         VswitchName = myName,
     ///     });
     /// 
     ///     var defaultSecurityGroup = new AliCloud.Ecs.SecurityGroup("defaultSecurityGroup", new()
@@ -95,7 +104,7 @@ namespace Pulumi.AliCloud.Ess
     ///     {
     ///         MinSize = 1,
     ///         MaxSize = 1,
-    ///         ScalingGroupName = name,
+    ///         ScalingGroupName = myName,
     ///         DefaultCooldown = 20,
     ///         VswitchIds = new[]
     ///         {
@@ -172,6 +181,12 @@ namespace Pulumi.AliCloud.Ess
         public Output<string?> LaunchTemplateId { get; private set; } = null!;
 
         /// <summary>
+        /// The details of the instance types that are specified by using the Extend Instance Type of Launch Template feature..  See `launch_template_override` below for details.
+        /// </summary>
+        [Output("launchTemplateOverrides")]
+        public Output<ImmutableArray<Outputs.ScalingGroupLaunchTemplateOverride>> LaunchTemplateOverrides { get; private set; } = null!;
+
+        /// <summary>
         /// The version number of the launch template. Valid values are the version number, `Latest`, or `Default`, Default value: `Default`.
         /// </summary>
         [Output("launchTemplateVersion")]
@@ -203,7 +218,7 @@ namespace Pulumi.AliCloud.Ess
         public Output<int> MinSize { get; private set; } = null!;
 
         /// <summary>
-        /// Multi-AZ scaling group ECS instance expansion and contraction strategy. PRIORITY, BALANCE or COST_OPTIMIZED(Available in 1.54.0+).
+        /// Multi-AZ scaling group ECS instance expansion and contraction strategy. PRIORITY, BALANCE or COST_OPTIMIZED(Available since v1.54.0).
         /// </summary>
         [Output("multiAzPolicy")]
         public Output<string?> MultiAzPolicy { get; private set; } = null!;
@@ -222,12 +237,6 @@ namespace Pulumi.AliCloud.Ess
 
         /// <summary>
         /// Set or unset instances within group into protected status.
-        /// 
-        /// &gt; **NOTE:** When detach loadbalancers, instances in group will be remove from loadbalancer's `Default Server Group`; On the contrary, When attach loadbalancers, instances in group will be added to loadbalancer's `Default Server Group`.
-        /// 
-        /// &gt; **NOTE:** When detach dbInstances, private ip of instances in group will be remove from dbInstance's `WhiteList`; On the contrary, When attach dbInstances, private ip of instances in group will be added to dbInstance's `WhiteList`.
-        /// 
-        /// &gt; **NOTE:** `on_demand_base_capacity`,`on_demand_percentage_above_base_capacity`,`spot_instance_pools`,`spot_instance_remedy` are valid only if `multi_az_policy` is 'COST_OPTIMIZED'.
         /// </summary>
         [Output("protectedInstances")]
         public Output<ImmutableArray<string>> ProtectedInstances { get; private set; } = null!;
@@ -376,6 +385,18 @@ namespace Pulumi.AliCloud.Ess
         [Input("launchTemplateId")]
         public Input<string>? LaunchTemplateId { get; set; }
 
+        [Input("launchTemplateOverrides")]
+        private InputList<Inputs.ScalingGroupLaunchTemplateOverrideArgs>? _launchTemplateOverrides;
+
+        /// <summary>
+        /// The details of the instance types that are specified by using the Extend Instance Type of Launch Template feature..  See `launch_template_override` below for details.
+        /// </summary>
+        public InputList<Inputs.ScalingGroupLaunchTemplateOverrideArgs> LaunchTemplateOverrides
+        {
+            get => _launchTemplateOverrides ?? (_launchTemplateOverrides = new InputList<Inputs.ScalingGroupLaunchTemplateOverrideArgs>());
+            set => _launchTemplateOverrides = value;
+        }
+
         /// <summary>
         /// The version number of the launch template. Valid values are the version number, `Latest`, or `Default`, Default value: `Default`.
         /// </summary>
@@ -414,7 +435,7 @@ namespace Pulumi.AliCloud.Ess
         public Input<int> MinSize { get; set; } = null!;
 
         /// <summary>
-        /// Multi-AZ scaling group ECS instance expansion and contraction strategy. PRIORITY, BALANCE or COST_OPTIMIZED(Available in 1.54.0+).
+        /// Multi-AZ scaling group ECS instance expansion and contraction strategy. PRIORITY, BALANCE or COST_OPTIMIZED(Available since v1.54.0).
         /// </summary>
         [Input("multiAzPolicy")]
         public Input<string>? MultiAzPolicy { get; set; }
@@ -436,12 +457,6 @@ namespace Pulumi.AliCloud.Ess
 
         /// <summary>
         /// Set or unset instances within group into protected status.
-        /// 
-        /// &gt; **NOTE:** When detach loadbalancers, instances in group will be remove from loadbalancer's `Default Server Group`; On the contrary, When attach loadbalancers, instances in group will be added to loadbalancer's `Default Server Group`.
-        /// 
-        /// &gt; **NOTE:** When detach dbInstances, private ip of instances in group will be remove from dbInstance's `WhiteList`; On the contrary, When attach dbInstances, private ip of instances in group will be added to dbInstance's `WhiteList`.
-        /// 
-        /// &gt; **NOTE:** `on_demand_base_capacity`,`on_demand_percentage_above_base_capacity`,`spot_instance_pools`,`spot_instance_remedy` are valid only if `multi_az_policy` is 'COST_OPTIMIZED'.
         /// </summary>
         public InputList<string> ProtectedInstances
         {
@@ -573,6 +588,18 @@ namespace Pulumi.AliCloud.Ess
         [Input("launchTemplateId")]
         public Input<string>? LaunchTemplateId { get; set; }
 
+        [Input("launchTemplateOverrides")]
+        private InputList<Inputs.ScalingGroupLaunchTemplateOverrideGetArgs>? _launchTemplateOverrides;
+
+        /// <summary>
+        /// The details of the instance types that are specified by using the Extend Instance Type of Launch Template feature..  See `launch_template_override` below for details.
+        /// </summary>
+        public InputList<Inputs.ScalingGroupLaunchTemplateOverrideGetArgs> LaunchTemplateOverrides
+        {
+            get => _launchTemplateOverrides ?? (_launchTemplateOverrides = new InputList<Inputs.ScalingGroupLaunchTemplateOverrideGetArgs>());
+            set => _launchTemplateOverrides = value;
+        }
+
         /// <summary>
         /// The version number of the launch template. Valid values are the version number, `Latest`, or `Default`, Default value: `Default`.
         /// </summary>
@@ -611,7 +638,7 @@ namespace Pulumi.AliCloud.Ess
         public Input<int>? MinSize { get; set; }
 
         /// <summary>
-        /// Multi-AZ scaling group ECS instance expansion and contraction strategy. PRIORITY, BALANCE or COST_OPTIMIZED(Available in 1.54.0+).
+        /// Multi-AZ scaling group ECS instance expansion and contraction strategy. PRIORITY, BALANCE or COST_OPTIMIZED(Available since v1.54.0).
         /// </summary>
         [Input("multiAzPolicy")]
         public Input<string>? MultiAzPolicy { get; set; }
@@ -633,12 +660,6 @@ namespace Pulumi.AliCloud.Ess
 
         /// <summary>
         /// Set or unset instances within group into protected status.
-        /// 
-        /// &gt; **NOTE:** When detach loadbalancers, instances in group will be remove from loadbalancer's `Default Server Group`; On the contrary, When attach loadbalancers, instances in group will be added to loadbalancer's `Default Server Group`.
-        /// 
-        /// &gt; **NOTE:** When detach dbInstances, private ip of instances in group will be remove from dbInstance's `WhiteList`; On the contrary, When attach dbInstances, private ip of instances in group will be added to dbInstance's `WhiteList`.
-        /// 
-        /// &gt; **NOTE:** `on_demand_base_capacity`,`on_demand_percentage_above_base_capacity`,`spot_instance_pools`,`spot_instance_remedy` are valid only if `multi_az_policy` is 'COST_OPTIMIZED'.
         /// </summary>
         public InputList<string> ProtectedInstances
         {

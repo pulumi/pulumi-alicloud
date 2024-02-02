@@ -38,7 +38,10 @@ class ContainerGroupArgs:
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  restart_policy: Optional[pulumi.Input[str]] = None,
                  security_context: Optional[pulumi.Input['ContainerGroupSecurityContextArgs']] = None,
+                 spot_price_limit: Optional[pulumi.Input[float]] = None,
+                 spot_strategy: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 termination_grace_period_seconds: Optional[pulumi.Input[int]] = None,
                  volumes: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupVolumeArgs']]]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None):
         """
@@ -66,9 +69,12 @@ class ContainerGroupArgs:
         :param pulumi.Input[str] resource_group_id: The ID of the resource group. **NOTE:** From version 1.208.0, `resource_group_id` can be modified.
         :param pulumi.Input[str] restart_policy: The restart policy of the container group. Valid values: `Always`, `Never`, `OnFailure`.
         :param pulumi.Input['ContainerGroupSecurityContextArgs'] security_context: The security context of the container group. See `security_context` below.
+        :param pulumi.Input[float] spot_price_limit: The maximum hourly price of the ECI spot instance.
+        :param pulumi.Input[str] spot_strategy: Filter the results by ECI spot type. Valid values: `NoSpot`, `SpotWithPriceLimit` and `SpotAsPriceGo`. Default to `NoSpot`.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
                - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
                - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+        :param pulumi.Input[int] termination_grace_period_seconds: The buffer time during which the program handles operations before the program stops. Unit: seconds.
         :param pulumi.Input[Sequence[pulumi.Input['ContainerGroupVolumeArgs']]] volumes: The list of volumes. See `volumes` below.
         :param pulumi.Input[str] zone_id: The ID of the zone where you want to deploy the container group. If no value is specified, the system assigns a zone to the container group. By default, no value is specified.
         """
@@ -112,8 +118,14 @@ class ContainerGroupArgs:
             pulumi.set(__self__, "restart_policy", restart_policy)
         if security_context is not None:
             pulumi.set(__self__, "security_context", security_context)
+        if spot_price_limit is not None:
+            pulumi.set(__self__, "spot_price_limit", spot_price_limit)
+        if spot_strategy is not None:
+            pulumi.set(__self__, "spot_strategy", spot_strategy)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
+        if termination_grace_period_seconds is not None:
+            pulumi.set(__self__, "termination_grace_period_seconds", termination_grace_period_seconds)
         if volumes is not None:
             pulumi.set(__self__, "volumes", volumes)
         if zone_id is not None:
@@ -385,6 +397,30 @@ class ContainerGroupArgs:
         pulumi.set(self, "security_context", value)
 
     @property
+    @pulumi.getter(name="spotPriceLimit")
+    def spot_price_limit(self) -> Optional[pulumi.Input[float]]:
+        """
+        The maximum hourly price of the ECI spot instance.
+        """
+        return pulumi.get(self, "spot_price_limit")
+
+    @spot_price_limit.setter
+    def spot_price_limit(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "spot_price_limit", value)
+
+    @property
+    @pulumi.getter(name="spotStrategy")
+    def spot_strategy(self) -> Optional[pulumi.Input[str]]:
+        """
+        Filter the results by ECI spot type. Valid values: `NoSpot`, `SpotWithPriceLimit` and `SpotAsPriceGo`. Default to `NoSpot`.
+        """
+        return pulumi.get(self, "spot_strategy")
+
+    @spot_strategy.setter
+    def spot_strategy(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "spot_strategy", value)
+
+    @property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
         """
@@ -397,6 +433,18 @@ class ContainerGroupArgs:
     @tags.setter
     def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
         pulumi.set(self, "tags", value)
+
+    @property
+    @pulumi.getter(name="terminationGracePeriodSeconds")
+    def termination_grace_period_seconds(self) -> Optional[pulumi.Input[int]]:
+        """
+        The buffer time during which the program handles operations before the program stops. Unit: seconds.
+        """
+        return pulumi.get(self, "termination_grace_period_seconds")
+
+    @termination_grace_period_seconds.setter
+    def termination_grace_period_seconds(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "termination_grace_period_seconds", value)
 
     @property
     @pulumi.getter
@@ -449,8 +497,11 @@ class _ContainerGroupState:
                  restart_policy: Optional[pulumi.Input[str]] = None,
                  security_context: Optional[pulumi.Input['ContainerGroupSecurityContextArgs']] = None,
                  security_group_id: Optional[pulumi.Input[str]] = None,
+                 spot_price_limit: Optional[pulumi.Input[float]] = None,
+                 spot_strategy: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 termination_grace_period_seconds: Optional[pulumi.Input[int]] = None,
                  volumes: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupVolumeArgs']]]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None):
@@ -479,10 +530,13 @@ class _ContainerGroupState:
         :param pulumi.Input[str] restart_policy: The restart policy of the container group. Valid values: `Always`, `Never`, `OnFailure`.
         :param pulumi.Input['ContainerGroupSecurityContextArgs'] security_context: The security context of the container group. See `security_context` below.
         :param pulumi.Input[str] security_group_id: The ID of the security group to which the container group belongs. Container groups within the same security group can access each other.
+        :param pulumi.Input[float] spot_price_limit: The maximum hourly price of the ECI spot instance.
+        :param pulumi.Input[str] spot_strategy: Filter the results by ECI spot type. Valid values: `NoSpot`, `SpotWithPriceLimit` and `SpotAsPriceGo`. Default to `NoSpot`.
         :param pulumi.Input[str] status: The status of container group.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
                - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
                - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+        :param pulumi.Input[int] termination_grace_period_seconds: The buffer time during which the program handles operations before the program stops. Unit: seconds.
         :param pulumi.Input[Sequence[pulumi.Input['ContainerGroupVolumeArgs']]] volumes: The list of volumes. See `volumes` below.
         :param pulumi.Input[str] vswitch_id: The ID of the VSwitch. Currently, container groups can only be deployed in VPC networks. The number of IP addresses in the VSwitch CIDR block determines the maximum number of container groups that can be created in the VSwitch. Before you can create an ECI instance, plan the CIDR block of the VSwitch.
                **NOTE:** From version 1.208.0, You can specify up to 10 `vswitch_id`. Separate multiple vSwitch IDs with commas (,), such as vsw-***,vsw-***.  attribute `vswitch_id` updating diff will be ignored when you set multiple vSwitchIds, there is only one valid `vswitch_id` exists in the set vSwitchIds.
@@ -534,10 +588,16 @@ class _ContainerGroupState:
             pulumi.set(__self__, "security_context", security_context)
         if security_group_id is not None:
             pulumi.set(__self__, "security_group_id", security_group_id)
+        if spot_price_limit is not None:
+            pulumi.set(__self__, "spot_price_limit", spot_price_limit)
+        if spot_strategy is not None:
+            pulumi.set(__self__, "spot_strategy", spot_strategy)
         if status is not None:
             pulumi.set(__self__, "status", status)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
+        if termination_grace_period_seconds is not None:
+            pulumi.set(__self__, "termination_grace_period_seconds", termination_grace_period_seconds)
         if volumes is not None:
             pulumi.set(__self__, "volumes", volumes)
         if vswitch_id is not None:
@@ -822,6 +882,30 @@ class _ContainerGroupState:
         pulumi.set(self, "security_group_id", value)
 
     @property
+    @pulumi.getter(name="spotPriceLimit")
+    def spot_price_limit(self) -> Optional[pulumi.Input[float]]:
+        """
+        The maximum hourly price of the ECI spot instance.
+        """
+        return pulumi.get(self, "spot_price_limit")
+
+    @spot_price_limit.setter
+    def spot_price_limit(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "spot_price_limit", value)
+
+    @property
+    @pulumi.getter(name="spotStrategy")
+    def spot_strategy(self) -> Optional[pulumi.Input[str]]:
+        """
+        Filter the results by ECI spot type. Valid values: `NoSpot`, `SpotWithPriceLimit` and `SpotAsPriceGo`. Default to `NoSpot`.
+        """
+        return pulumi.get(self, "spot_strategy")
+
+    @spot_strategy.setter
+    def spot_strategy(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "spot_strategy", value)
+
+    @property
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[str]]:
         """
@@ -846,6 +930,18 @@ class _ContainerGroupState:
     @tags.setter
     def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
         pulumi.set(self, "tags", value)
+
+    @property
+    @pulumi.getter(name="terminationGracePeriodSeconds")
+    def termination_grace_period_seconds(self) -> Optional[pulumi.Input[int]]:
+        """
+        The buffer time during which the program handles operations before the program stops. Unit: seconds.
+        """
+        return pulumi.get(self, "termination_grace_period_seconds")
+
+    @termination_grace_period_seconds.setter
+    def termination_grace_period_seconds(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "termination_grace_period_seconds", value)
 
     @property
     @pulumi.getter
@@ -911,7 +1007,10 @@ class ContainerGroup(pulumi.CustomResource):
                  restart_policy: Optional[pulumi.Input[str]] = None,
                  security_context: Optional[pulumi.Input[pulumi.InputType['ContainerGroupSecurityContextArgs']]] = None,
                  security_group_id: Optional[pulumi.Input[str]] = None,
+                 spot_price_limit: Optional[pulumi.Input[float]] = None,
+                 spot_strategy: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 termination_grace_period_seconds: Optional[pulumi.Input[int]] = None,
                  volumes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ContainerGroupVolumeArgs']]]]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None,
@@ -1051,9 +1150,12 @@ class ContainerGroup(pulumi.CustomResource):
         :param pulumi.Input[str] restart_policy: The restart policy of the container group. Valid values: `Always`, `Never`, `OnFailure`.
         :param pulumi.Input[pulumi.InputType['ContainerGroupSecurityContextArgs']] security_context: The security context of the container group. See `security_context` below.
         :param pulumi.Input[str] security_group_id: The ID of the security group to which the container group belongs. Container groups within the same security group can access each other.
+        :param pulumi.Input[float] spot_price_limit: The maximum hourly price of the ECI spot instance.
+        :param pulumi.Input[str] spot_strategy: Filter the results by ECI spot type. Valid values: `NoSpot`, `SpotWithPriceLimit` and `SpotAsPriceGo`. Default to `NoSpot`.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
                - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
                - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+        :param pulumi.Input[int] termination_grace_period_seconds: The buffer time during which the program handles operations before the program stops. Unit: seconds.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ContainerGroupVolumeArgs']]]] volumes: The list of volumes. See `volumes` below.
         :param pulumi.Input[str] vswitch_id: The ID of the VSwitch. Currently, container groups can only be deployed in VPC networks. The number of IP addresses in the VSwitch CIDR block determines the maximum number of container groups that can be created in the VSwitch. Before you can create an ECI instance, plan the CIDR block of the VSwitch.
                **NOTE:** From version 1.208.0, You can specify up to 10 `vswitch_id`. Separate multiple vSwitch IDs with commas (,), such as vsw-***,vsw-***.  attribute `vswitch_id` updating diff will be ignored when you set multiple vSwitchIds, there is only one valid `vswitch_id` exists in the set vSwitchIds.
@@ -1213,7 +1315,10 @@ class ContainerGroup(pulumi.CustomResource):
                  restart_policy: Optional[pulumi.Input[str]] = None,
                  security_context: Optional[pulumi.Input[pulumi.InputType['ContainerGroupSecurityContextArgs']]] = None,
                  security_group_id: Optional[pulumi.Input[str]] = None,
+                 spot_price_limit: Optional[pulumi.Input[float]] = None,
+                 spot_strategy: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 termination_grace_period_seconds: Optional[pulumi.Input[int]] = None,
                  volumes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ContainerGroupVolumeArgs']]]]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None,
@@ -1253,7 +1358,10 @@ class ContainerGroup(pulumi.CustomResource):
             if security_group_id is None and not opts.urn:
                 raise TypeError("Missing required property 'security_group_id'")
             __props__.__dict__["security_group_id"] = security_group_id
+            __props__.__dict__["spot_price_limit"] = spot_price_limit
+            __props__.__dict__["spot_strategy"] = spot_strategy
             __props__.__dict__["tags"] = tags
+            __props__.__dict__["termination_grace_period_seconds"] = termination_grace_period_seconds
             __props__.__dict__["volumes"] = volumes
             if vswitch_id is None and not opts.urn:
                 raise TypeError("Missing required property 'vswitch_id'")
@@ -1295,8 +1403,11 @@ class ContainerGroup(pulumi.CustomResource):
             restart_policy: Optional[pulumi.Input[str]] = None,
             security_context: Optional[pulumi.Input[pulumi.InputType['ContainerGroupSecurityContextArgs']]] = None,
             security_group_id: Optional[pulumi.Input[str]] = None,
+            spot_price_limit: Optional[pulumi.Input[float]] = None,
+            spot_strategy: Optional[pulumi.Input[str]] = None,
             status: Optional[pulumi.Input[str]] = None,
             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            termination_grace_period_seconds: Optional[pulumi.Input[int]] = None,
             volumes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ContainerGroupVolumeArgs']]]]] = None,
             vswitch_id: Optional[pulumi.Input[str]] = None,
             zone_id: Optional[pulumi.Input[str]] = None) -> 'ContainerGroup':
@@ -1330,10 +1441,13 @@ class ContainerGroup(pulumi.CustomResource):
         :param pulumi.Input[str] restart_policy: The restart policy of the container group. Valid values: `Always`, `Never`, `OnFailure`.
         :param pulumi.Input[pulumi.InputType['ContainerGroupSecurityContextArgs']] security_context: The security context of the container group. See `security_context` below.
         :param pulumi.Input[str] security_group_id: The ID of the security group to which the container group belongs. Container groups within the same security group can access each other.
+        :param pulumi.Input[float] spot_price_limit: The maximum hourly price of the ECI spot instance.
+        :param pulumi.Input[str] spot_strategy: Filter the results by ECI spot type. Valid values: `NoSpot`, `SpotWithPriceLimit` and `SpotAsPriceGo`. Default to `NoSpot`.
         :param pulumi.Input[str] status: The status of container group.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
                - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
                - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+        :param pulumi.Input[int] termination_grace_period_seconds: The buffer time during which the program handles operations before the program stops. Unit: seconds.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ContainerGroupVolumeArgs']]]] volumes: The list of volumes. See `volumes` below.
         :param pulumi.Input[str] vswitch_id: The ID of the VSwitch. Currently, container groups can only be deployed in VPC networks. The number of IP addresses in the VSwitch CIDR block determines the maximum number of container groups that can be created in the VSwitch. Before you can create an ECI instance, plan the CIDR block of the VSwitch.
                **NOTE:** From version 1.208.0, You can specify up to 10 `vswitch_id`. Separate multiple vSwitch IDs with commas (,), such as vsw-***,vsw-***.  attribute `vswitch_id` updating diff will be ignored when you set multiple vSwitchIds, there is only one valid `vswitch_id` exists in the set vSwitchIds.
@@ -1366,8 +1480,11 @@ class ContainerGroup(pulumi.CustomResource):
         __props__.__dict__["restart_policy"] = restart_policy
         __props__.__dict__["security_context"] = security_context
         __props__.__dict__["security_group_id"] = security_group_id
+        __props__.__dict__["spot_price_limit"] = spot_price_limit
+        __props__.__dict__["spot_strategy"] = spot_strategy
         __props__.__dict__["status"] = status
         __props__.__dict__["tags"] = tags
+        __props__.__dict__["termination_grace_period_seconds"] = termination_grace_period_seconds
         __props__.__dict__["volumes"] = volumes
         __props__.__dict__["vswitch_id"] = vswitch_id
         __props__.__dict__["zone_id"] = zone_id
@@ -1479,7 +1596,7 @@ class ContainerGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="instanceType")
-    def instance_type(self) -> pulumi.Output[Optional[str]]:
+    def instance_type(self) -> pulumi.Output[str]:
         """
         The type of the ECS instance.
         """
@@ -1558,6 +1675,22 @@ class ContainerGroup(pulumi.CustomResource):
         return pulumi.get(self, "security_group_id")
 
     @property
+    @pulumi.getter(name="spotPriceLimit")
+    def spot_price_limit(self) -> pulumi.Output[float]:
+        """
+        The maximum hourly price of the ECI spot instance.
+        """
+        return pulumi.get(self, "spot_price_limit")
+
+    @property
+    @pulumi.getter(name="spotStrategy")
+    def spot_strategy(self) -> pulumi.Output[str]:
+        """
+        Filter the results by ECI spot type. Valid values: `NoSpot`, `SpotWithPriceLimit` and `SpotAsPriceGo`. Default to `NoSpot`.
+        """
+        return pulumi.get(self, "spot_strategy")
+
+    @property
     @pulumi.getter
     def status(self) -> pulumi.Output[str]:
         """
@@ -1574,6 +1707,14 @@ class ContainerGroup(pulumi.CustomResource):
         - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
         """
         return pulumi.get(self, "tags")
+
+    @property
+    @pulumi.getter(name="terminationGracePeriodSeconds")
+    def termination_grace_period_seconds(self) -> pulumi.Output[Optional[int]]:
+        """
+        The buffer time during which the program handles operations before the program stops. Unit: seconds.
+        """
+        return pulumi.get(self, "termination_grace_period_seconds")
 
     @property
     @pulumi.getter

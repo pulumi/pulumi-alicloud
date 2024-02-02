@@ -23,11 +23,18 @@ namespace Pulumi.AliCloud.Edas
     /// using System.Linq;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
+    /// using Random = Pulumi.Random;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "tf-example";
+    ///     var defaultRandomInteger = new Random.RandomInteger("defaultRandomInteger", new()
+    ///     {
+    ///         Min = 10000,
+    ///         Max = 99999,
+    ///     });
+    /// 
     ///     var defaultRegions = AliCloud.GetRegions.Invoke(new()
     ///     {
     ///         Current = true,
@@ -35,13 +42,13 @@ namespace Pulumi.AliCloud.Edas
     /// 
     ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
     ///     {
-    ///         VpcName = name,
+    ///         VpcName = defaultRandomInteger.Result.Apply(result =&gt; $"{name}-{result}"),
     ///         CidrBlock = "10.4.0.0/16",
     ///     });
     /// 
     ///     var defaultCluster = new AliCloud.Edas.Cluster("defaultCluster", new()
     ///     {
-    ///         ClusterName = name,
+    ///         ClusterName = defaultRandomInteger.Result.Apply(result =&gt; $"{name}-{result}"),
     ///         ClusterType = 2,
     ///         NetworkMode = 2,
     ///         LogicalRegionId = defaultRegions.Apply(getRegionsResult =&gt; getRegionsResult.Regions[0]?.Id),
@@ -50,7 +57,7 @@ namespace Pulumi.AliCloud.Edas
     /// 
     ///     var defaultApplication = new AliCloud.Edas.Application("defaultApplication", new()
     ///     {
-    ///         ApplicationName = name,
+    ///         ApplicationName = defaultRandomInteger.Result.Apply(result =&gt; $"{name}-{result}"),
     ///         ClusterId = defaultCluster.Id,
     ///         PackageType = "JAR",
     ///     });

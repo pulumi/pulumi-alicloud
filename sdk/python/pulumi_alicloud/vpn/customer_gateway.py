@@ -16,22 +16,35 @@ class CustomerGatewayArgs:
     def __init__(__self__, *,
                  ip_address: pulumi.Input[str],
                  asn: Optional[pulumi.Input[str]] = None,
+                 customer_gateway_name: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 name: Optional[pulumi.Input[str]] = None):
+                 name: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None):
         """
         The set of arguments for constructing a CustomerGateway resource.
         :param pulumi.Input[str] ip_address: The IP address of the customer gateway.
-        :param pulumi.Input[str] asn: The autonomous system number of the gateway device in the data center. The `asn` is a 4-byte number. You can enter the number in two segments and separate the first 16 bits from the following 16 bits with a period (.). Enter the number in each segment in the decimal format.
-        :param pulumi.Input[str] description: The description of the VPN customer gateway instance.
-        :param pulumi.Input[str] name: The name of the VPN customer gateway. Defaults to null.
+        :param pulumi.Input[str] asn: Asn.
+        :param pulumi.Input[str] customer_gateway_name: The name of the customer gateway.
+        :param pulumi.Input[str] description: The description of the customer gateway.
+        :param pulumi.Input[str] name: . Field 'name' has been deprecated from provider version 1.216.0. New field 'customer_gateway_name' instead.
+        :param pulumi.Input[Mapping[str, Any]] tags: tag.
+               
+               The following arguments will be discarded. Please use new fields as soon as possible:
         """
         pulumi.set(__self__, "ip_address", ip_address)
         if asn is not None:
             pulumi.set(__self__, "asn", asn)
+        if customer_gateway_name is not None:
+            pulumi.set(__self__, "customer_gateway_name", customer_gateway_name)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if name is not None:
+            warnings.warn("""Field 'name' has been deprecated since provider version 1.210.0. New field 'customer_gateway_name' instead.""", DeprecationWarning)
+            pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated since provider version 1.210.0. New field 'customer_gateway_name' instead.""")
+        if name is not None:
             pulumi.set(__self__, "name", name)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
 
     @property
     @pulumi.getter(name="ipAddress")
@@ -49,7 +62,7 @@ class CustomerGatewayArgs:
     @pulumi.getter
     def asn(self) -> Optional[pulumi.Input[str]]:
         """
-        The autonomous system number of the gateway device in the data center. The `asn` is a 4-byte number. You can enter the number in two segments and separate the first 16 bits from the following 16 bits with a period (.). Enter the number in each segment in the decimal format.
+        Asn.
         """
         return pulumi.get(self, "asn")
 
@@ -58,10 +71,22 @@ class CustomerGatewayArgs:
         pulumi.set(self, "asn", value)
 
     @property
+    @pulumi.getter(name="customerGatewayName")
+    def customer_gateway_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the customer gateway.
+        """
+        return pulumi.get(self, "customer_gateway_name")
+
+    @customer_gateway_name.setter
+    def customer_gateway_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "customer_gateway_name", value)
+
+    @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        The description of the VPN customer gateway instance.
+        The description of the customer gateway.
         """
         return pulumi.get(self, "description")
 
@@ -73,43 +98,77 @@ class CustomerGatewayArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the VPN customer gateway. Defaults to null.
+        . Field 'name' has been deprecated from provider version 1.216.0. New field 'customer_gateway_name' instead.
         """
+        warnings.warn("""Field 'name' has been deprecated since provider version 1.210.0. New field 'customer_gateway_name' instead.""", DeprecationWarning)
+        pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated since provider version 1.210.0. New field 'customer_gateway_name' instead.""")
+
         return pulumi.get(self, "name")
 
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
 
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        tag.
+
+        The following arguments will be discarded. Please use new fields as soon as possible:
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "tags", value)
+
 
 @pulumi.input_type
 class _CustomerGatewayState:
     def __init__(__self__, *,
                  asn: Optional[pulumi.Input[str]] = None,
+                 create_time: Optional[pulumi.Input[int]] = None,
+                 customer_gateway_name: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  ip_address: Optional[pulumi.Input[str]] = None,
-                 name: Optional[pulumi.Input[str]] = None):
+                 name: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None):
         """
         Input properties used for looking up and filtering CustomerGateway resources.
-        :param pulumi.Input[str] asn: The autonomous system number of the gateway device in the data center. The `asn` is a 4-byte number. You can enter the number in two segments and separate the first 16 bits from the following 16 bits with a period (.). Enter the number in each segment in the decimal format.
-        :param pulumi.Input[str] description: The description of the VPN customer gateway instance.
+        :param pulumi.Input[str] asn: Asn.
+        :param pulumi.Input[int] create_time: The time when the customer gateway was created.
+        :param pulumi.Input[str] customer_gateway_name: The name of the customer gateway.
+        :param pulumi.Input[str] description: The description of the customer gateway.
         :param pulumi.Input[str] ip_address: The IP address of the customer gateway.
-        :param pulumi.Input[str] name: The name of the VPN customer gateway. Defaults to null.
+        :param pulumi.Input[str] name: . Field 'name' has been deprecated from provider version 1.216.0. New field 'customer_gateway_name' instead.
+        :param pulumi.Input[Mapping[str, Any]] tags: tag.
+               
+               The following arguments will be discarded. Please use new fields as soon as possible:
         """
         if asn is not None:
             pulumi.set(__self__, "asn", asn)
+        if create_time is not None:
+            pulumi.set(__self__, "create_time", create_time)
+        if customer_gateway_name is not None:
+            pulumi.set(__self__, "customer_gateway_name", customer_gateway_name)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if ip_address is not None:
             pulumi.set(__self__, "ip_address", ip_address)
         if name is not None:
+            warnings.warn("""Field 'name' has been deprecated since provider version 1.210.0. New field 'customer_gateway_name' instead.""", DeprecationWarning)
+            pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated since provider version 1.210.0. New field 'customer_gateway_name' instead.""")
+        if name is not None:
             pulumi.set(__self__, "name", name)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
 
     @property
     @pulumi.getter
     def asn(self) -> Optional[pulumi.Input[str]]:
         """
-        The autonomous system number of the gateway device in the data center. The `asn` is a 4-byte number. You can enter the number in two segments and separate the first 16 bits from the following 16 bits with a period (.). Enter the number in each segment in the decimal format.
+        Asn.
         """
         return pulumi.get(self, "asn")
 
@@ -118,10 +177,34 @@ class _CustomerGatewayState:
         pulumi.set(self, "asn", value)
 
     @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> Optional[pulumi.Input[int]]:
+        """
+        The time when the customer gateway was created.
+        """
+        return pulumi.get(self, "create_time")
+
+    @create_time.setter
+    def create_time(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "create_time", value)
+
+    @property
+    @pulumi.getter(name="customerGatewayName")
+    def customer_gateway_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the customer gateway.
+        """
+        return pulumi.get(self, "customer_gateway_name")
+
+    @customer_gateway_name.setter
+    def customer_gateway_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "customer_gateway_name", value)
+
+    @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        The description of the VPN customer gateway instance.
+        The description of the customer gateway.
         """
         return pulumi.get(self, "description")
 
@@ -145,13 +228,30 @@ class _CustomerGatewayState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the VPN customer gateway. Defaults to null.
+        . Field 'name' has been deprecated from provider version 1.216.0. New field 'customer_gateway_name' instead.
         """
+        warnings.warn("""Field 'name' has been deprecated since provider version 1.210.0. New field 'customer_gateway_name' instead.""", DeprecationWarning)
+        pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated since provider version 1.210.0. New field 'customer_gateway_name' instead.""")
+
         return pulumi.get(self, "name")
 
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        tag.
+
+        The following arguments will be discarded. Please use new fields as soon as possible:
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "tags", value)
 
 
 class CustomerGateway(pulumi.CustomResource):
@@ -160,9 +260,11 @@ class CustomerGateway(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  asn: Optional[pulumi.Input[str]] = None,
+                 customer_gateway_name: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  ip_address: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  __props__=None):
         """
         ## Example Usage
@@ -173,9 +275,15 @@ class CustomerGateway(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        foo = alicloud.vpn.CustomerGateway("foo",
-            description="vpnCgwDescriptionExample",
-            ip_address="43.104.22.228")
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default = alicloud.vpn.CustomerGateway("default",
+            description=name,
+            ip_address="4.3.2.10",
+            asn="1219002",
+            customer_gateway_name=name)
         ```
 
         ## Import
@@ -183,15 +291,19 @@ class CustomerGateway(pulumi.CustomResource):
         VPN customer gateway can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:vpn/customerGateway:CustomerGateway example cgw-abc123456
+         $ pulumi import alicloud:vpn/customerGateway:CustomerGateway example <id>
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] asn: The autonomous system number of the gateway device in the data center. The `asn` is a 4-byte number. You can enter the number in two segments and separate the first 16 bits from the following 16 bits with a period (.). Enter the number in each segment in the decimal format.
-        :param pulumi.Input[str] description: The description of the VPN customer gateway instance.
+        :param pulumi.Input[str] asn: Asn.
+        :param pulumi.Input[str] customer_gateway_name: The name of the customer gateway.
+        :param pulumi.Input[str] description: The description of the customer gateway.
         :param pulumi.Input[str] ip_address: The IP address of the customer gateway.
-        :param pulumi.Input[str] name: The name of the VPN customer gateway. Defaults to null.
+        :param pulumi.Input[str] name: . Field 'name' has been deprecated from provider version 1.216.0. New field 'customer_gateway_name' instead.
+        :param pulumi.Input[Mapping[str, Any]] tags: tag.
+               
+               The following arguments will be discarded. Please use new fields as soon as possible:
         """
         ...
     @overload
@@ -208,9 +320,15 @@ class CustomerGateway(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        foo = alicloud.vpn.CustomerGateway("foo",
-            description="vpnCgwDescriptionExample",
-            ip_address="43.104.22.228")
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default = alicloud.vpn.CustomerGateway("default",
+            description=name,
+            ip_address="4.3.2.10",
+            asn="1219002",
+            customer_gateway_name=name)
         ```
 
         ## Import
@@ -218,7 +336,7 @@ class CustomerGateway(pulumi.CustomResource):
         VPN customer gateway can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:vpn/customerGateway:CustomerGateway example cgw-abc123456
+         $ pulumi import alicloud:vpn/customerGateway:CustomerGateway example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -237,9 +355,11 @@ class CustomerGateway(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  asn: Optional[pulumi.Input[str]] = None,
+                 customer_gateway_name: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  ip_address: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -250,11 +370,14 @@ class CustomerGateway(pulumi.CustomResource):
             __props__ = CustomerGatewayArgs.__new__(CustomerGatewayArgs)
 
             __props__.__dict__["asn"] = asn
+            __props__.__dict__["customer_gateway_name"] = customer_gateway_name
             __props__.__dict__["description"] = description
             if ip_address is None and not opts.urn:
                 raise TypeError("Missing required property 'ip_address'")
             __props__.__dict__["ip_address"] = ip_address
             __props__.__dict__["name"] = name
+            __props__.__dict__["tags"] = tags
+            __props__.__dict__["create_time"] = None
         super(CustomerGateway, __self__).__init__(
             'alicloud:vpn/customerGateway:CustomerGateway',
             resource_name,
@@ -266,9 +389,12 @@ class CustomerGateway(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             asn: Optional[pulumi.Input[str]] = None,
+            create_time: Optional[pulumi.Input[int]] = None,
+            customer_gateway_name: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             ip_address: Optional[pulumi.Input[str]] = None,
-            name: Optional[pulumi.Input[str]] = None) -> 'CustomerGateway':
+            name: Optional[pulumi.Input[str]] = None,
+            tags: Optional[pulumi.Input[Mapping[str, Any]]] = None) -> 'CustomerGateway':
         """
         Get an existing CustomerGateway resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -276,34 +402,58 @@ class CustomerGateway(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] asn: The autonomous system number of the gateway device in the data center. The `asn` is a 4-byte number. You can enter the number in two segments and separate the first 16 bits from the following 16 bits with a period (.). Enter the number in each segment in the decimal format.
-        :param pulumi.Input[str] description: The description of the VPN customer gateway instance.
+        :param pulumi.Input[str] asn: Asn.
+        :param pulumi.Input[int] create_time: The time when the customer gateway was created.
+        :param pulumi.Input[str] customer_gateway_name: The name of the customer gateway.
+        :param pulumi.Input[str] description: The description of the customer gateway.
         :param pulumi.Input[str] ip_address: The IP address of the customer gateway.
-        :param pulumi.Input[str] name: The name of the VPN customer gateway. Defaults to null.
+        :param pulumi.Input[str] name: . Field 'name' has been deprecated from provider version 1.216.0. New field 'customer_gateway_name' instead.
+        :param pulumi.Input[Mapping[str, Any]] tags: tag.
+               
+               The following arguments will be discarded. Please use new fields as soon as possible:
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _CustomerGatewayState.__new__(_CustomerGatewayState)
 
         __props__.__dict__["asn"] = asn
+        __props__.__dict__["create_time"] = create_time
+        __props__.__dict__["customer_gateway_name"] = customer_gateway_name
         __props__.__dict__["description"] = description
         __props__.__dict__["ip_address"] = ip_address
         __props__.__dict__["name"] = name
+        __props__.__dict__["tags"] = tags
         return CustomerGateway(resource_name, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter
     def asn(self) -> pulumi.Output[Optional[str]]:
         """
-        The autonomous system number of the gateway device in the data center. The `asn` is a 4-byte number. You can enter the number in two segments and separate the first 16 bits from the following 16 bits with a period (.). Enter the number in each segment in the decimal format.
+        Asn.
         """
         return pulumi.get(self, "asn")
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> pulumi.Output[int]:
+        """
+        The time when the customer gateway was created.
+        """
+        return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter(name="customerGatewayName")
+    def customer_gateway_name(self) -> pulumi.Output[str]:
+        """
+        The name of the customer gateway.
+        """
+        return pulumi.get(self, "customer_gateway_name")
 
     @property
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[str]]:
         """
-        The description of the VPN customer gateway instance.
+        The description of the customer gateway.
         """
         return pulumi.get(self, "description")
 
@@ -319,7 +469,20 @@ class CustomerGateway(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        The name of the VPN customer gateway. Defaults to null.
+        . Field 'name' has been deprecated from provider version 1.216.0. New field 'customer_gateway_name' instead.
         """
+        warnings.warn("""Field 'name' has been deprecated since provider version 1.210.0. New field 'customer_gateway_name' instead.""", DeprecationWarning)
+        pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated since provider version 1.210.0. New field 'customer_gateway_name' instead.""")
+
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+        """
+        tag.
+
+        The following arguments will be discarded. Please use new fields as soon as possible:
+        """
+        return pulumi.get(self, "tags")
 

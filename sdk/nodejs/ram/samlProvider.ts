@@ -7,9 +7,9 @@ import * as utilities from "../utilities";
 /**
  * Provides a RAM SAML Provider resource.
  *
- * For information about RAM SAML Provider and how to use it, see [What is SAML Provider](https://www.alibabacloud.com/help/doc-detail/186846.htm).
+ * For information about RAM SAML Provider and how to use it, see [What is SAML Provider](https://www.alibabacloud.com/help/en/ram/developer-reference/api-ims-2019-08-15-createsamlprovider).
  *
- * > **NOTE:** Available since v1.114.0+.
+ * > **NOTE:** Available since v1.114.0.
  *
  * ## Example Usage
  *
@@ -75,7 +75,7 @@ export class SamlProvider extends pulumi.CustomResource {
     /**
      * The metadata file, which is Base64 encoded. The file is provided by an IdP that supports SAML 2.0.
      */
-    public readonly encodedsamlMetadataDocument!: pulumi.Output<string | undefined>;
+    public readonly encodedsamlMetadataDocument!: pulumi.Output<string>;
     /**
      * The name of SAML Provider.
      */
@@ -105,6 +105,9 @@ export class SamlProvider extends pulumi.CustomResource {
             resourceInputs["updateDate"] = state ? state.updateDate : undefined;
         } else {
             const args = argsOrState as SamlProviderArgs | undefined;
+            if ((!args || args.encodedsamlMetadataDocument === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'encodedsamlMetadataDocument'");
+            }
             if ((!args || args.samlProviderName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'samlProviderName'");
             }
@@ -156,7 +159,7 @@ export interface SamlProviderArgs {
     /**
      * The metadata file, which is Base64 encoded. The file is provided by an IdP that supports SAML 2.0.
      */
-    encodedsamlMetadataDocument?: pulumi.Input<string>;
+    encodedsamlMetadataDocument: pulumi.Input<string>;
     /**
      * The name of SAML Provider.
      */

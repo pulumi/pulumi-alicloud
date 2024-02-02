@@ -525,11 +525,16 @@ class Alarm(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
             name = "terraform-example"
+        default_random_integer = random.RandomInteger("defaultRandomInteger",
+            min=10000,
+            max=99999)
+        my_name = default_random_integer.result.apply(lambda result: f"{name}-{result}")
         default_zones = alicloud.get_zones(available_disk_category="cloud_efficiency",
             available_resource_creation="VSwitch")
         default_instance_types = alicloud.ecs.get_instance_types(availability_zone=default_zones.zones[0].id,
@@ -539,13 +544,13 @@ class Alarm(pulumi.CustomResource):
             most_recent=True,
             owners="system")
         default_network = alicloud.vpc.Network("defaultNetwork",
-            vpc_name=name,
+            vpc_name=my_name,
             cidr_block="172.16.0.0/16")
         default_switch = alicloud.vpc.Switch("defaultSwitch",
             vpc_id=default_network.id,
             cidr_block="172.16.0.0/24",
             zone_id=default_zones.zones[0].id,
-            vswitch_name=name)
+            vswitch_name=my_name)
         default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
         default_security_group_rule = alicloud.ecs.SecurityGroupRule("defaultSecurityGroupRule",
             type="ingress",
@@ -564,7 +569,7 @@ class Alarm(pulumi.CustomResource):
         default_scaling_group = alicloud.ess.ScalingGroup("defaultScalingGroup",
             min_size=1,
             max_size=1,
-            scaling_group_name=name,
+            scaling_group_name=my_name,
             default_cooldown=20,
             vswitch_ids=[
                 default_switch.id,
@@ -575,7 +580,7 @@ class Alarm(pulumi.CustomResource):
                 "NewestInstance",
             ])
         default_scaling_rule = alicloud.ess.ScalingRule("defaultScalingRule",
-            scaling_rule_name=name,
+            scaling_rule_name=my_name,
             scaling_group_id=default_scaling_group.id,
             adjustment_type="TotalCapacity",
             adjustment_value=2,
@@ -640,11 +645,16 @@ class Alarm(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
             name = "terraform-example"
+        default_random_integer = random.RandomInteger("defaultRandomInteger",
+            min=10000,
+            max=99999)
+        my_name = default_random_integer.result.apply(lambda result: f"{name}-{result}")
         default_zones = alicloud.get_zones(available_disk_category="cloud_efficiency",
             available_resource_creation="VSwitch")
         default_instance_types = alicloud.ecs.get_instance_types(availability_zone=default_zones.zones[0].id,
@@ -654,13 +664,13 @@ class Alarm(pulumi.CustomResource):
             most_recent=True,
             owners="system")
         default_network = alicloud.vpc.Network("defaultNetwork",
-            vpc_name=name,
+            vpc_name=my_name,
             cidr_block="172.16.0.0/16")
         default_switch = alicloud.vpc.Switch("defaultSwitch",
             vpc_id=default_network.id,
             cidr_block="172.16.0.0/24",
             zone_id=default_zones.zones[0].id,
-            vswitch_name=name)
+            vswitch_name=my_name)
         default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
         default_security_group_rule = alicloud.ecs.SecurityGroupRule("defaultSecurityGroupRule",
             type="ingress",
@@ -679,7 +689,7 @@ class Alarm(pulumi.CustomResource):
         default_scaling_group = alicloud.ess.ScalingGroup("defaultScalingGroup",
             min_size=1,
             max_size=1,
-            scaling_group_name=name,
+            scaling_group_name=my_name,
             default_cooldown=20,
             vswitch_ids=[
                 default_switch.id,
@@ -690,7 +700,7 @@ class Alarm(pulumi.CustomResource):
                 "NewestInstance",
             ])
         default_scaling_rule = alicloud.ess.ScalingRule("defaultScalingRule",
-            scaling_rule_name=name,
+            scaling_rule_name=my_name,
             scaling_group_id=default_scaling_group.id,
             adjustment_type="TotalCapacity",
             adjustment_value=2,

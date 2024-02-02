@@ -20,79 +20,144 @@ class InstanceArgs:
                  internet_max_bandwidth_out: pulumi.Input[int],
                  payment_type: pulumi.Input[str],
                  schedule_area_level: pulumi.Input[str],
+                 amount: Optional[pulumi.Input[int]] = None,
                  auto_renew: Optional[pulumi.Input[bool]] = None,
+                 auto_use_coupon: Optional[pulumi.Input[str]] = None,
+                 billing_cycle: Optional[pulumi.Input[str]] = None,
                  carrier: Optional[pulumi.Input[str]] = None,
                  data_disks: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceDataDiskArgs']]]] = None,
                  ens_region_id: Optional[pulumi.Input[str]] = None,
+                 force_stop: Optional[pulumi.Input[str]] = None,
                  host_name: Optional[pulumi.Input[str]] = None,
                  image_id: Optional[pulumi.Input[str]] = None,
+                 include_data_disks: Optional[pulumi.Input[bool]] = None,
                  instance_charge_strategy: Optional[pulumi.Input[str]] = None,
                  instance_name: Optional[pulumi.Input[str]] = None,
                  internet_charge_type: Optional[pulumi.Input[str]] = None,
+                 ip_type: Optional[pulumi.Input[str]] = None,
                  net_district_code: Optional[pulumi.Input[str]] = None,
+                 net_work_id: Optional[pulumi.Input[str]] = None,
                  password: Optional[pulumi.Input[str]] = None,
                  password_inherit: Optional[pulumi.Input[bool]] = None,
                  period: Optional[pulumi.Input[int]] = None,
                  period_unit: Optional[pulumi.Input[str]] = None,
+                 private_ip_address: Optional[pulumi.Input[str]] = None,
                  public_ip_identification: Optional[pulumi.Input[bool]] = None,
-                 quantity: Optional[pulumi.Input[str]] = None,
                  scheduling_price_strategy: Optional[pulumi.Input[str]] = None,
                  scheduling_strategy: Optional[pulumi.Input[str]] = None,
+                 security_id: Optional[pulumi.Input[str]] = None,
+                 status: Optional[pulumi.Input[str]] = None,
                  system_disk: Optional[pulumi.Input['InstanceSystemDiskArgs']] = None,
                  unique_suffix: Optional[pulumi.Input[bool]] = None,
-                 user_data: Optional[pulumi.Input[str]] = None):
+                 user_data: Optional[pulumi.Input[str]] = None,
+                 vswitch_id: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Instance resource.
-        :param pulumi.Input[str] instance_type: Instance specifications type.
-        :param pulumi.Input[int] internet_max_bandwidth_out: The maximum public network bandwidth.
-        :param pulumi.Input[str] payment_type: Instance payment method, Subscription: prepaid, monthly package; PayAsYouGo: Pay as you go.
-        :param pulumi.Input[str] schedule_area_level: Scheduling level, which is used to perform node level or regional scheduling.
-        :param pulumi.Input[bool] auto_renew: Whether to automatically renew, default to False, this parameter is invalid when paying by volume.
-        :param pulumi.Input[str] carrier: Operator, required for regional level scheduling, invalid for node level scheduling.
+        :param pulumi.Input[str] instance_type: The specification of the instance. Example value: ens.sn1.small.
+        :param pulumi.Input[int] internet_max_bandwidth_out: Maximum public network bandwidth. The field type is Long, and the precision may be lost during serialization/deserialization. Please note that the value must not be greater than 9007199254740991.
+        :param pulumi.Input[str] payment_type: Instance payment method. Optional values:
+               - Subscription: prepaid, annual and monthly
+               - PayAsYouGo: Pay by volume.
+        :param pulumi.Input[str] schedule_area_level: Scheduling level, through which node-level scheduling or area scheduling is performed. Optional values:
+               - Node-level scheduling: Region
+               - Regional scheduling: Big (region),Middle (province),Small (city).
+        :param pulumi.Input[int] amount: The number of instances created, with a minimum of 1 and a maximum of 100.
+        :param pulumi.Input[bool] auto_renew: Whether to automatically renew the logo. The default value is false. This parameter is invalid when you pay by volume.
+        :param pulumi.Input[str] auto_use_coupon: Whether to use vouchers. The default is to use. Value:
+               - true (used)
+               - false (not used).
+        :param pulumi.Input[str] billing_cycle: The billing cycle for instance computing resources. Only instance-level pay-as-you-go is supported. Value
+               - Hour: hourly billing
+               - Day: Daily billing
+               - Month: monthly billing.
+        :param pulumi.Input[str] carrier: Operator, required for regional scheduling. Optional values:
+               - cmcc (mobile)
+               - unicom
+               - telecom.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceDataDiskArgs']]] data_disks: Data disk specifications. See `data_disk` below.
-        :param pulumi.Input[str] ens_region_id: Node id. When ScheduleAreaLevel is Region, EnsRegionId is required. When ScheduleAreaLevel is Big, Middle, Small, EnsRegionId is not required.
-        :param pulumi.Input[str] host_name: Host Name.
-        :param pulumi.Input[str] image_id: The Image Id field. If InstanceType is arm_bmi, the image Id is a non-required parameter. If instanceType is another specification value, the image Id is a required parameter.
-        :param pulumi.Input[str] instance_charge_strategy: Instance billing strategy, instance: instance granularity (prepaid method currently does not support instance), user: by user dimension (not transferred or prepaid method supports user).
-        :param pulumi.Input[str] instance_name: The instance name. It must be 2 to 128 characters in length and must start with an uppercase or lowercase letter or a Chinese character. It cannot start with http:// or https. It can contain Chinese, English, numbers, half-width colons (:), underscores (_), periods (.), or hyphens (-). The default value is the InstanceId of the instance.
-        :param pulumi.Input[str] internet_charge_type: Instance Charge type.it could be BandwidthByDay, 95BandwidthByMonth, PayByBandwidth4thMonth.
-        :param pulumi.Input[str] net_district_code: Region code, required for regional level scheduling, invalid for node level scheduling.
-        :param pulumi.Input[str] password: The password of the instance。It is 8 to 30 characters in length and must contain three types of characters: uppercase and lowercase letters, numbers, and special symbols. The following special symbols can be set: '''()'~! @#$%^& *-_+ =|{}[]:;',.? /'''.
+        :param pulumi.Input[str] ens_region_id: The node ID. When ScheduleAreaLevel is Region, EnsRegionId is required. When ScheduleAreaLevel is Big,Middle,Small, EnsRegionId is invalid.
+        :param pulumi.Input[str] force_stop: Whether to force the identity when operating the instance. Optional values:
+               - true: Force
+               - false (default): non-mandatory
+        :param pulumi.Input[str] host_name: The host name of the instance. Example value: test-HostName.
+        :param pulumi.Input[str] image_id: The image ID of the instance. The arm version card cannot be filled in. Other specifications are required. Example value: m-5si16wo6simkt267p8b7h * * * *.
+        :param pulumi.Input[bool] include_data_disks: Whether the Payment type of the disk created with the instance is converted.
+        :param pulumi.Input[str] instance_charge_strategy: The instance billing policy. Optional values:
+               - instance: instance granularity (the subscription method does not support instance)
+               - user: user Dimension (user is not transmitted or supported in the prepaid mode).
+        :param pulumi.Input[str] instance_name: The instance name. Example value: test-InstanceName. It must be 2 to 128 characters in length and must start with an uppercase or lowercase letter or a Chinese character. It cannot start with http:// or https. Can contain Chinese, English, numbers, half-width colons (:), underscores (_), periods (.), or hyphens (-) The default value is the InstanceId of the instance. .
+        :param pulumi.Input[str] internet_charge_type: Instance bandwidth billing method. If the billing method can be selected for the first purchase, the subsequent value of this field will be processed by default according to the billing method selected for the first time. Optional values:
+               - BandwidthByDay: Daily peak bandwidth
+               - 95bandwidthbymonth: 95 peak bandwidth.
+        :param pulumi.Input[str] ip_type: The IP type. Value:
+               - ipv4 (default):IPv4
+               - ipv6:IPv6
+               - ipv4Andipv6:IPv4 and IPv6.
+        :param pulumi.Input[str] net_district_code: The area code. Example value: 350000. Required for regional-level scheduling, invalid for node-level scheduling.
+        :param pulumi.Input[str] net_work_id: The network ID of the instance. Can only be used in node-level scheduling.
+        :param pulumi.Input[str] password: The instance password. At least one of Password, KeyPairName, and PasswordInherit.
         :param pulumi.Input[bool] password_inherit: Whether to use image preset password prompt: Password and KeyPairNamePasswordInherit must be passed.
-        :param pulumi.Input[int] period: The duration of purchasing resources. If PeriodUnit is not specified, it defaults to purchasing on a monthly basis. Currently, only days and months are supported. If PeriodUnit=Day, Period can only be 3. If PeriodUnit=Monthc, then Period can be 1-9,12.
-        :param pulumi.Input[str] period_unit: The unit of time for purchasing resources. If PeriodUnit is not specified, it defaults to purchasing by Month. Currently, only days and months are supported. If PeriodUnit=Day, Period can only be 3. If PeriodUnit=Month, then Period can be 1-9,12.
-        :param pulumi.Input[bool] public_ip_identification: Whether to allocate public IP. Value：true (default): can be assigned，false: cannot be assigned.
-        :param pulumi.Input[str] quantity: Number of instances.
-        :param pulumi.Input[str] scheduling_price_strategy: Dispatch price strategy. If left blank, it defaults to prioritizing low prices. Values: PriceLowPriority (priority high price), PriceLowPriority (priority low price).
-        :param pulumi.Input[str] scheduling_strategy: When scheduling at the node level, it is Concentrate. When scheduling at the regional level, it is selected according to customer needs. Concentrate: Centralized; Disperse: Disperse.
-        :param pulumi.Input['InstanceSystemDiskArgs'] system_disk: The field representing the system disk specification. SystemDisk is a non-required parameter when InstanceType is x86_pm,x86_bmi,x86_bm,pc_bmi, or arm_bmi. SystemDisk is a required parameter when instanceType is other specification families. See `system_disk` below.
-        :param pulumi.Input[bool] unique_suffix: Specifies whether to automatically append sequential suffixes to the hostnames specified by the HostName parameter and instance names specified by the InstanceName parameter when you create multiple instances at a time. The sequential suffix ranges from 001 to 999. Valid values:  true false Default value: false.
-        :param pulumi.Input[str] user_data: User defined data, with a maximum support of 16KB. You can input UserData information. UserData encoded in Base64 format.
+        :param pulumi.Input[int] period: The duration of the resource purchase. Value method:
+               - If PeriodUnit is set to Day, Period can only be set to 3.
+               - If PeriodUnit is set to Month, Period can be set to 1-9,12.
+        :param pulumi.Input[str] period_unit: The unit of time for purchasing resources. Value:
+               - Month (default): purchase by Month
+               - Day: buy by Day.
+        :param pulumi.Input[str] private_ip_address: The private IP address. Can only be used for node-level scheduling. If a private IP address is specified, the number of instances can only be one, and both the private IP address and the vSwitch ID are not empty, the private IP address takes effect.
+        :param pulumi.Input[bool] public_ip_identification: Whether to assign a public IP identifier. Value:
+               - true (default): Assign
+               - false: do not assign.
+        :param pulumi.Input[str] scheduling_price_strategy: Scheduling price policy. If it is not filled in, the default priority is low price. Value:
+               - PriceLowPriority
+               - PriceLowPriority (priority low price).
+        :param pulumi.Input[str] scheduling_strategy: Scheduling policy. Optional values:
+               - Concentrate for node-level scheduling
+               - For regional scheduling, Concentrate, Disperse.
+        :param pulumi.Input[str] security_id: ID of the security group to which the instance belongs.
+        :param pulumi.Input[str] status: Status of the instance.
+        :param pulumi.Input['InstanceSystemDiskArgs'] system_disk: System Disk Specification. SystemDisk is a non-required parameter when InstanceType is x86_pm,x86_bmi,x86_bm,pc_bmi, or arm_bmi. SystemDisk is a required parameter when instanceType is other specification families. See `system_disk` below.
+        :param pulumi.Input[bool] unique_suffix: Indicates whether to add an ordered suffix to HostName and InstanceName. The ordered suffix starts from 001 and cannot exceed 999.
+        :param pulumi.Input[str] user_data: User-defined data, maximum support 16KB. You can pass in the UserData information. The UserData is encoded in Base64 format.
+        :param pulumi.Input[str] vswitch_id: The ID of the vSwitch to which the instance belongs. Can only be used in node-level scheduling.
         """
         pulumi.set(__self__, "instance_type", instance_type)
         pulumi.set(__self__, "internet_max_bandwidth_out", internet_max_bandwidth_out)
         pulumi.set(__self__, "payment_type", payment_type)
         pulumi.set(__self__, "schedule_area_level", schedule_area_level)
+        if amount is not None:
+            pulumi.set(__self__, "amount", amount)
         if auto_renew is not None:
             pulumi.set(__self__, "auto_renew", auto_renew)
+        if auto_use_coupon is not None:
+            pulumi.set(__self__, "auto_use_coupon", auto_use_coupon)
+        if billing_cycle is not None:
+            pulumi.set(__self__, "billing_cycle", billing_cycle)
         if carrier is not None:
             pulumi.set(__self__, "carrier", carrier)
         if data_disks is not None:
             pulumi.set(__self__, "data_disks", data_disks)
         if ens_region_id is not None:
             pulumi.set(__self__, "ens_region_id", ens_region_id)
+        if force_stop is not None:
+            pulumi.set(__self__, "force_stop", force_stop)
         if host_name is not None:
             pulumi.set(__self__, "host_name", host_name)
         if image_id is not None:
             pulumi.set(__self__, "image_id", image_id)
+        if include_data_disks is not None:
+            pulumi.set(__self__, "include_data_disks", include_data_disks)
         if instance_charge_strategy is not None:
             pulumi.set(__self__, "instance_charge_strategy", instance_charge_strategy)
         if instance_name is not None:
             pulumi.set(__self__, "instance_name", instance_name)
         if internet_charge_type is not None:
             pulumi.set(__self__, "internet_charge_type", internet_charge_type)
+        if ip_type is not None:
+            pulumi.set(__self__, "ip_type", ip_type)
         if net_district_code is not None:
             pulumi.set(__self__, "net_district_code", net_district_code)
+        if net_work_id is not None:
+            pulumi.set(__self__, "net_work_id", net_work_id)
         if password is not None:
             pulumi.set(__self__, "password", password)
         if password_inherit is not None:
@@ -101,26 +166,32 @@ class InstanceArgs:
             pulumi.set(__self__, "period", period)
         if period_unit is not None:
             pulumi.set(__self__, "period_unit", period_unit)
+        if private_ip_address is not None:
+            pulumi.set(__self__, "private_ip_address", private_ip_address)
         if public_ip_identification is not None:
             pulumi.set(__self__, "public_ip_identification", public_ip_identification)
-        if quantity is not None:
-            pulumi.set(__self__, "quantity", quantity)
         if scheduling_price_strategy is not None:
             pulumi.set(__self__, "scheduling_price_strategy", scheduling_price_strategy)
         if scheduling_strategy is not None:
             pulumi.set(__self__, "scheduling_strategy", scheduling_strategy)
+        if security_id is not None:
+            pulumi.set(__self__, "security_id", security_id)
+        if status is not None:
+            pulumi.set(__self__, "status", status)
         if system_disk is not None:
             pulumi.set(__self__, "system_disk", system_disk)
         if unique_suffix is not None:
             pulumi.set(__self__, "unique_suffix", unique_suffix)
         if user_data is not None:
             pulumi.set(__self__, "user_data", user_data)
+        if vswitch_id is not None:
+            pulumi.set(__self__, "vswitch_id", vswitch_id)
 
     @property
     @pulumi.getter(name="instanceType")
     def instance_type(self) -> pulumi.Input[str]:
         """
-        Instance specifications type.
+        The specification of the instance. Example value: ens.sn1.small.
         """
         return pulumi.get(self, "instance_type")
 
@@ -132,7 +203,7 @@ class InstanceArgs:
     @pulumi.getter(name="internetMaxBandwidthOut")
     def internet_max_bandwidth_out(self) -> pulumi.Input[int]:
         """
-        The maximum public network bandwidth.
+        Maximum public network bandwidth. The field type is Long, and the precision may be lost during serialization/deserialization. Please note that the value must not be greater than 9007199254740991.
         """
         return pulumi.get(self, "internet_max_bandwidth_out")
 
@@ -144,7 +215,9 @@ class InstanceArgs:
     @pulumi.getter(name="paymentType")
     def payment_type(self) -> pulumi.Input[str]:
         """
-        Instance payment method, Subscription: prepaid, monthly package; PayAsYouGo: Pay as you go.
+        Instance payment method. Optional values:
+        - Subscription: prepaid, annual and monthly
+        - PayAsYouGo: Pay by volume.
         """
         return pulumi.get(self, "payment_type")
 
@@ -156,7 +229,9 @@ class InstanceArgs:
     @pulumi.getter(name="scheduleAreaLevel")
     def schedule_area_level(self) -> pulumi.Input[str]:
         """
-        Scheduling level, which is used to perform node level or regional scheduling.
+        Scheduling level, through which node-level scheduling or area scheduling is performed. Optional values:
+        - Node-level scheduling: Region
+        - Regional scheduling: Big (region),Middle (province),Small (city).
         """
         return pulumi.get(self, "schedule_area_level")
 
@@ -165,10 +240,22 @@ class InstanceArgs:
         pulumi.set(self, "schedule_area_level", value)
 
     @property
+    @pulumi.getter
+    def amount(self) -> Optional[pulumi.Input[int]]:
+        """
+        The number of instances created, with a minimum of 1 and a maximum of 100.
+        """
+        return pulumi.get(self, "amount")
+
+    @amount.setter
+    def amount(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "amount", value)
+
+    @property
     @pulumi.getter(name="autoRenew")
     def auto_renew(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether to automatically renew, default to False, this parameter is invalid when paying by volume.
+        Whether to automatically renew the logo. The default value is false. This parameter is invalid when you pay by volume.
         """
         return pulumi.get(self, "auto_renew")
 
@@ -177,10 +264,42 @@ class InstanceArgs:
         pulumi.set(self, "auto_renew", value)
 
     @property
+    @pulumi.getter(name="autoUseCoupon")
+    def auto_use_coupon(self) -> Optional[pulumi.Input[str]]:
+        """
+        Whether to use vouchers. The default is to use. Value:
+        - true (used)
+        - false (not used).
+        """
+        return pulumi.get(self, "auto_use_coupon")
+
+    @auto_use_coupon.setter
+    def auto_use_coupon(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "auto_use_coupon", value)
+
+    @property
+    @pulumi.getter(name="billingCycle")
+    def billing_cycle(self) -> Optional[pulumi.Input[str]]:
+        """
+        The billing cycle for instance computing resources. Only instance-level pay-as-you-go is supported. Value
+        - Hour: hourly billing
+        - Day: Daily billing
+        - Month: monthly billing.
+        """
+        return pulumi.get(self, "billing_cycle")
+
+    @billing_cycle.setter
+    def billing_cycle(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "billing_cycle", value)
+
+    @property
     @pulumi.getter
     def carrier(self) -> Optional[pulumi.Input[str]]:
         """
-        Operator, required for regional level scheduling, invalid for node level scheduling.
+        Operator, required for regional scheduling. Optional values:
+        - cmcc (mobile)
+        - unicom
+        - telecom.
         """
         return pulumi.get(self, "carrier")
 
@@ -204,7 +323,7 @@ class InstanceArgs:
     @pulumi.getter(name="ensRegionId")
     def ens_region_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Node id. When ScheduleAreaLevel is Region, EnsRegionId is required. When ScheduleAreaLevel is Big, Middle, Small, EnsRegionId is not required.
+        The node ID. When ScheduleAreaLevel is Region, EnsRegionId is required. When ScheduleAreaLevel is Big,Middle,Small, EnsRegionId is invalid.
         """
         return pulumi.get(self, "ens_region_id")
 
@@ -213,10 +332,24 @@ class InstanceArgs:
         pulumi.set(self, "ens_region_id", value)
 
     @property
+    @pulumi.getter(name="forceStop")
+    def force_stop(self) -> Optional[pulumi.Input[str]]:
+        """
+        Whether to force the identity when operating the instance. Optional values:
+        - true: Force
+        - false (default): non-mandatory
+        """
+        return pulumi.get(self, "force_stop")
+
+    @force_stop.setter
+    def force_stop(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "force_stop", value)
+
+    @property
     @pulumi.getter(name="hostName")
     def host_name(self) -> Optional[pulumi.Input[str]]:
         """
-        Host Name.
+        The host name of the instance. Example value: test-HostName.
         """
         return pulumi.get(self, "host_name")
 
@@ -228,7 +361,7 @@ class InstanceArgs:
     @pulumi.getter(name="imageId")
     def image_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The Image Id field. If InstanceType is arm_bmi, the image Id is a non-required parameter. If instanceType is another specification value, the image Id is a required parameter.
+        The image ID of the instance. The arm version card cannot be filled in. Other specifications are required. Example value: m-5si16wo6simkt267p8b7h * * * *.
         """
         return pulumi.get(self, "image_id")
 
@@ -237,10 +370,24 @@ class InstanceArgs:
         pulumi.set(self, "image_id", value)
 
     @property
+    @pulumi.getter(name="includeDataDisks")
+    def include_data_disks(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether the Payment type of the disk created with the instance is converted.
+        """
+        return pulumi.get(self, "include_data_disks")
+
+    @include_data_disks.setter
+    def include_data_disks(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "include_data_disks", value)
+
+    @property
     @pulumi.getter(name="instanceChargeStrategy")
     def instance_charge_strategy(self) -> Optional[pulumi.Input[str]]:
         """
-        Instance billing strategy, instance: instance granularity (prepaid method currently does not support instance), user: by user dimension (not transferred or prepaid method supports user).
+        The instance billing policy. Optional values:
+        - instance: instance granularity (the subscription method does not support instance)
+        - user: user Dimension (user is not transmitted or supported in the prepaid mode).
         """
         return pulumi.get(self, "instance_charge_strategy")
 
@@ -252,7 +399,7 @@ class InstanceArgs:
     @pulumi.getter(name="instanceName")
     def instance_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The instance name. It must be 2 to 128 characters in length and must start with an uppercase or lowercase letter or a Chinese character. It cannot start with http:// or https. It can contain Chinese, English, numbers, half-width colons (:), underscores (_), periods (.), or hyphens (-). The default value is the InstanceId of the instance.
+        The instance name. Example value: test-InstanceName. It must be 2 to 128 characters in length and must start with an uppercase or lowercase letter or a Chinese character. It cannot start with http:// or https. Can contain Chinese, English, numbers, half-width colons (:), underscores (_), periods (.), or hyphens (-) The default value is the InstanceId of the instance. .
         """
         return pulumi.get(self, "instance_name")
 
@@ -264,7 +411,9 @@ class InstanceArgs:
     @pulumi.getter(name="internetChargeType")
     def internet_charge_type(self) -> Optional[pulumi.Input[str]]:
         """
-        Instance Charge type.it could be BandwidthByDay, 95BandwidthByMonth, PayByBandwidth4thMonth.
+        Instance bandwidth billing method. If the billing method can be selected for the first purchase, the subsequent value of this field will be processed by default according to the billing method selected for the first time. Optional values:
+        - BandwidthByDay: Daily peak bandwidth
+        - 95bandwidthbymonth: 95 peak bandwidth.
         """
         return pulumi.get(self, "internet_charge_type")
 
@@ -273,10 +422,25 @@ class InstanceArgs:
         pulumi.set(self, "internet_charge_type", value)
 
     @property
+    @pulumi.getter(name="ipType")
+    def ip_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The IP type. Value:
+        - ipv4 (default):IPv4
+        - ipv6:IPv6
+        - ipv4Andipv6:IPv4 and IPv6.
+        """
+        return pulumi.get(self, "ip_type")
+
+    @ip_type.setter
+    def ip_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ip_type", value)
+
+    @property
     @pulumi.getter(name="netDistrictCode")
     def net_district_code(self) -> Optional[pulumi.Input[str]]:
         """
-        Region code, required for regional level scheduling, invalid for node level scheduling.
+        The area code. Example value: 350000. Required for regional-level scheduling, invalid for node-level scheduling.
         """
         return pulumi.get(self, "net_district_code")
 
@@ -285,10 +449,22 @@ class InstanceArgs:
         pulumi.set(self, "net_district_code", value)
 
     @property
+    @pulumi.getter(name="netWorkId")
+    def net_work_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The network ID of the instance. Can only be used in node-level scheduling.
+        """
+        return pulumi.get(self, "net_work_id")
+
+    @net_work_id.setter
+    def net_work_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "net_work_id", value)
+
+    @property
     @pulumi.getter
     def password(self) -> Optional[pulumi.Input[str]]:
         """
-        The password of the instance。It is 8 to 30 characters in length and must contain three types of characters: uppercase and lowercase letters, numbers, and special symbols. The following special symbols can be set: '''()'~! @#$%^& *-_+ =|{}[]:;',.? /'''.
+        The instance password. At least one of Password, KeyPairName, and PasswordInherit.
         """
         return pulumi.get(self, "password")
 
@@ -312,7 +488,9 @@ class InstanceArgs:
     @pulumi.getter
     def period(self) -> Optional[pulumi.Input[int]]:
         """
-        The duration of purchasing resources. If PeriodUnit is not specified, it defaults to purchasing on a monthly basis. Currently, only days and months are supported. If PeriodUnit=Day, Period can only be 3. If PeriodUnit=Monthc, then Period can be 1-9,12.
+        The duration of the resource purchase. Value method:
+        - If PeriodUnit is set to Day, Period can only be set to 3.
+        - If PeriodUnit is set to Month, Period can be set to 1-9,12.
         """
         return pulumi.get(self, "period")
 
@@ -324,7 +502,9 @@ class InstanceArgs:
     @pulumi.getter(name="periodUnit")
     def period_unit(self) -> Optional[pulumi.Input[str]]:
         """
-        The unit of time for purchasing resources. If PeriodUnit is not specified, it defaults to purchasing by Month. Currently, only days and months are supported. If PeriodUnit=Day, Period can only be 3. If PeriodUnit=Month, then Period can be 1-9,12.
+        The unit of time for purchasing resources. Value:
+        - Month (default): purchase by Month
+        - Day: buy by Day.
         """
         return pulumi.get(self, "period_unit")
 
@@ -333,10 +513,24 @@ class InstanceArgs:
         pulumi.set(self, "period_unit", value)
 
     @property
+    @pulumi.getter(name="privateIpAddress")
+    def private_ip_address(self) -> Optional[pulumi.Input[str]]:
+        """
+        The private IP address. Can only be used for node-level scheduling. If a private IP address is specified, the number of instances can only be one, and both the private IP address and the vSwitch ID are not empty, the private IP address takes effect.
+        """
+        return pulumi.get(self, "private_ip_address")
+
+    @private_ip_address.setter
+    def private_ip_address(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "private_ip_address", value)
+
+    @property
     @pulumi.getter(name="publicIpIdentification")
     def public_ip_identification(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether to allocate public IP. Value：true (default): can be assigned，false: cannot be assigned.
+        Whether to assign a public IP identifier. Value:
+        - true (default): Assign
+        - false: do not assign.
         """
         return pulumi.get(self, "public_ip_identification")
 
@@ -345,22 +539,12 @@ class InstanceArgs:
         pulumi.set(self, "public_ip_identification", value)
 
     @property
-    @pulumi.getter
-    def quantity(self) -> Optional[pulumi.Input[str]]:
-        """
-        Number of instances.
-        """
-        return pulumi.get(self, "quantity")
-
-    @quantity.setter
-    def quantity(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "quantity", value)
-
-    @property
     @pulumi.getter(name="schedulingPriceStrategy")
     def scheduling_price_strategy(self) -> Optional[pulumi.Input[str]]:
         """
-        Dispatch price strategy. If left blank, it defaults to prioritizing low prices. Values: PriceLowPriority (priority high price), PriceLowPriority (priority low price).
+        Scheduling price policy. If it is not filled in, the default priority is low price. Value:
+        - PriceLowPriority
+        - PriceLowPriority (priority low price).
         """
         return pulumi.get(self, "scheduling_price_strategy")
 
@@ -372,7 +556,9 @@ class InstanceArgs:
     @pulumi.getter(name="schedulingStrategy")
     def scheduling_strategy(self) -> Optional[pulumi.Input[str]]:
         """
-        When scheduling at the node level, it is Concentrate. When scheduling at the regional level, it is selected according to customer needs. Concentrate: Centralized; Disperse: Disperse.
+        Scheduling policy. Optional values:
+        - Concentrate for node-level scheduling
+        - For regional scheduling, Concentrate, Disperse.
         """
         return pulumi.get(self, "scheduling_strategy")
 
@@ -381,10 +567,34 @@ class InstanceArgs:
         pulumi.set(self, "scheduling_strategy", value)
 
     @property
+    @pulumi.getter(name="securityId")
+    def security_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        ID of the security group to which the instance belongs.
+        """
+        return pulumi.get(self, "security_id")
+
+    @security_id.setter
+    def security_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "security_id", value)
+
+    @property
+    @pulumi.getter
+    def status(self) -> Optional[pulumi.Input[str]]:
+        """
+        Status of the instance.
+        """
+        return pulumi.get(self, "status")
+
+    @status.setter
+    def status(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "status", value)
+
+    @property
     @pulumi.getter(name="systemDisk")
     def system_disk(self) -> Optional[pulumi.Input['InstanceSystemDiskArgs']]:
         """
-        The field representing the system disk specification. SystemDisk is a non-required parameter when InstanceType is x86_pm,x86_bmi,x86_bm,pc_bmi, or arm_bmi. SystemDisk is a required parameter when instanceType is other specification families. See `system_disk` below.
+        System Disk Specification. SystemDisk is a non-required parameter when InstanceType is x86_pm,x86_bmi,x86_bm,pc_bmi, or arm_bmi. SystemDisk is a required parameter when instanceType is other specification families. See `system_disk` below.
         """
         return pulumi.get(self, "system_disk")
 
@@ -396,7 +606,7 @@ class InstanceArgs:
     @pulumi.getter(name="uniqueSuffix")
     def unique_suffix(self) -> Optional[pulumi.Input[bool]]:
         """
-        Specifies whether to automatically append sequential suffixes to the hostnames specified by the HostName parameter and instance names specified by the InstanceName parameter when you create multiple instances at a time. The sequential suffix ranges from 001 to 999. Valid values:  true false Default value: false.
+        Indicates whether to add an ordered suffix to HostName and InstanceName. The ordered suffix starts from 001 and cannot exceed 999.
         """
         return pulumi.get(self, "unique_suffix")
 
@@ -408,7 +618,7 @@ class InstanceArgs:
     @pulumi.getter(name="userData")
     def user_data(self) -> Optional[pulumi.Input[str]]:
         """
-        User defined data, with a maximum support of 16KB. You can input UserData information. UserData encoded in Base64 format.
+        User-defined data, maximum support 16KB. You can pass in the UserData information. The UserData is encoded in Base64 format.
         """
         return pulumi.get(self, "user_data")
 
@@ -416,77 +626,148 @@ class InstanceArgs:
     def user_data(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "user_data", value)
 
+    @property
+    @pulumi.getter(name="vswitchId")
+    def vswitch_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the vSwitch to which the instance belongs. Can only be used in node-level scheduling.
+        """
+        return pulumi.get(self, "vswitch_id")
+
+    @vswitch_id.setter
+    def vswitch_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "vswitch_id", value)
+
 
 @pulumi.input_type
 class _InstanceState:
     def __init__(__self__, *,
+                 amount: Optional[pulumi.Input[int]] = None,
                  auto_renew: Optional[pulumi.Input[bool]] = None,
+                 auto_use_coupon: Optional[pulumi.Input[str]] = None,
+                 billing_cycle: Optional[pulumi.Input[str]] = None,
                  carrier: Optional[pulumi.Input[str]] = None,
                  data_disks: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceDataDiskArgs']]]] = None,
                  ens_region_id: Optional[pulumi.Input[str]] = None,
+                 force_stop: Optional[pulumi.Input[str]] = None,
                  host_name: Optional[pulumi.Input[str]] = None,
                  image_id: Optional[pulumi.Input[str]] = None,
+                 include_data_disks: Optional[pulumi.Input[bool]] = None,
                  instance_charge_strategy: Optional[pulumi.Input[str]] = None,
                  instance_name: Optional[pulumi.Input[str]] = None,
                  instance_type: Optional[pulumi.Input[str]] = None,
                  internet_charge_type: Optional[pulumi.Input[str]] = None,
                  internet_max_bandwidth_out: Optional[pulumi.Input[int]] = None,
+                 ip_type: Optional[pulumi.Input[str]] = None,
                  net_district_code: Optional[pulumi.Input[str]] = None,
+                 net_work_id: Optional[pulumi.Input[str]] = None,
                  password: Optional[pulumi.Input[str]] = None,
                  password_inherit: Optional[pulumi.Input[bool]] = None,
                  payment_type: Optional[pulumi.Input[str]] = None,
                  period: Optional[pulumi.Input[int]] = None,
                  period_unit: Optional[pulumi.Input[str]] = None,
+                 private_ip_address: Optional[pulumi.Input[str]] = None,
                  public_ip_identification: Optional[pulumi.Input[bool]] = None,
-                 quantity: Optional[pulumi.Input[str]] = None,
                  schedule_area_level: Optional[pulumi.Input[str]] = None,
                  scheduling_price_strategy: Optional[pulumi.Input[str]] = None,
                  scheduling_strategy: Optional[pulumi.Input[str]] = None,
+                 security_id: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
                  system_disk: Optional[pulumi.Input['InstanceSystemDiskArgs']] = None,
                  unique_suffix: Optional[pulumi.Input[bool]] = None,
-                 user_data: Optional[pulumi.Input[str]] = None):
+                 user_data: Optional[pulumi.Input[str]] = None,
+                 vswitch_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Instance resources.
-        :param pulumi.Input[bool] auto_renew: Whether to automatically renew, default to False, this parameter is invalid when paying by volume.
-        :param pulumi.Input[str] carrier: Operator, required for regional level scheduling, invalid for node level scheduling.
+        :param pulumi.Input[int] amount: The number of instances created, with a minimum of 1 and a maximum of 100.
+        :param pulumi.Input[bool] auto_renew: Whether to automatically renew the logo. The default value is false. This parameter is invalid when you pay by volume.
+        :param pulumi.Input[str] auto_use_coupon: Whether to use vouchers. The default is to use. Value:
+               - true (used)
+               - false (not used).
+        :param pulumi.Input[str] billing_cycle: The billing cycle for instance computing resources. Only instance-level pay-as-you-go is supported. Value
+               - Hour: hourly billing
+               - Day: Daily billing
+               - Month: monthly billing.
+        :param pulumi.Input[str] carrier: Operator, required for regional scheduling. Optional values:
+               - cmcc (mobile)
+               - unicom
+               - telecom.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceDataDiskArgs']]] data_disks: Data disk specifications. See `data_disk` below.
-        :param pulumi.Input[str] ens_region_id: Node id. When ScheduleAreaLevel is Region, EnsRegionId is required. When ScheduleAreaLevel is Big, Middle, Small, EnsRegionId is not required.
-        :param pulumi.Input[str] host_name: Host Name.
-        :param pulumi.Input[str] image_id: The Image Id field. If InstanceType is arm_bmi, the image Id is a non-required parameter. If instanceType is another specification value, the image Id is a required parameter.
-        :param pulumi.Input[str] instance_charge_strategy: Instance billing strategy, instance: instance granularity (prepaid method currently does not support instance), user: by user dimension (not transferred or prepaid method supports user).
-        :param pulumi.Input[str] instance_name: The instance name. It must be 2 to 128 characters in length and must start with an uppercase or lowercase letter or a Chinese character. It cannot start with http:// or https. It can contain Chinese, English, numbers, half-width colons (:), underscores (_), periods (.), or hyphens (-). The default value is the InstanceId of the instance.
-        :param pulumi.Input[str] instance_type: Instance specifications type.
-        :param pulumi.Input[str] internet_charge_type: Instance Charge type.it could be BandwidthByDay, 95BandwidthByMonth, PayByBandwidth4thMonth.
-        :param pulumi.Input[int] internet_max_bandwidth_out: The maximum public network bandwidth.
-        :param pulumi.Input[str] net_district_code: Region code, required for regional level scheduling, invalid for node level scheduling.
-        :param pulumi.Input[str] password: The password of the instance。It is 8 to 30 characters in length and must contain three types of characters: uppercase and lowercase letters, numbers, and special symbols. The following special symbols can be set: '''()'~! @#$%^& *-_+ =|{}[]:;',.? /'''.
+        :param pulumi.Input[str] ens_region_id: The node ID. When ScheduleAreaLevel is Region, EnsRegionId is required. When ScheduleAreaLevel is Big,Middle,Small, EnsRegionId is invalid.
+        :param pulumi.Input[str] force_stop: Whether to force the identity when operating the instance. Optional values:
+               - true: Force
+               - false (default): non-mandatory
+        :param pulumi.Input[str] host_name: The host name of the instance. Example value: test-HostName.
+        :param pulumi.Input[str] image_id: The image ID of the instance. The arm version card cannot be filled in. Other specifications are required. Example value: m-5si16wo6simkt267p8b7h * * * *.
+        :param pulumi.Input[bool] include_data_disks: Whether the Payment type of the disk created with the instance is converted.
+        :param pulumi.Input[str] instance_charge_strategy: The instance billing policy. Optional values:
+               - instance: instance granularity (the subscription method does not support instance)
+               - user: user Dimension (user is not transmitted or supported in the prepaid mode).
+        :param pulumi.Input[str] instance_name: The instance name. Example value: test-InstanceName. It must be 2 to 128 characters in length and must start with an uppercase or lowercase letter or a Chinese character. It cannot start with http:// or https. Can contain Chinese, English, numbers, half-width colons (:), underscores (_), periods (.), or hyphens (-) The default value is the InstanceId of the instance. .
+        :param pulumi.Input[str] instance_type: The specification of the instance. Example value: ens.sn1.small.
+        :param pulumi.Input[str] internet_charge_type: Instance bandwidth billing method. If the billing method can be selected for the first purchase, the subsequent value of this field will be processed by default according to the billing method selected for the first time. Optional values:
+               - BandwidthByDay: Daily peak bandwidth
+               - 95bandwidthbymonth: 95 peak bandwidth.
+        :param pulumi.Input[int] internet_max_bandwidth_out: Maximum public network bandwidth. The field type is Long, and the precision may be lost during serialization/deserialization. Please note that the value must not be greater than 9007199254740991.
+        :param pulumi.Input[str] ip_type: The IP type. Value:
+               - ipv4 (default):IPv4
+               - ipv6:IPv6
+               - ipv4Andipv6:IPv4 and IPv6.
+        :param pulumi.Input[str] net_district_code: The area code. Example value: 350000. Required for regional-level scheduling, invalid for node-level scheduling.
+        :param pulumi.Input[str] net_work_id: The network ID of the instance. Can only be used in node-level scheduling.
+        :param pulumi.Input[str] password: The instance password. At least one of Password, KeyPairName, and PasswordInherit.
         :param pulumi.Input[bool] password_inherit: Whether to use image preset password prompt: Password and KeyPairNamePasswordInherit must be passed.
-        :param pulumi.Input[str] payment_type: Instance payment method, Subscription: prepaid, monthly package; PayAsYouGo: Pay as you go.
-        :param pulumi.Input[int] period: The duration of purchasing resources. If PeriodUnit is not specified, it defaults to purchasing on a monthly basis. Currently, only days and months are supported. If PeriodUnit=Day, Period can only be 3. If PeriodUnit=Monthc, then Period can be 1-9,12.
-        :param pulumi.Input[str] period_unit: The unit of time for purchasing resources. If PeriodUnit is not specified, it defaults to purchasing by Month. Currently, only days and months are supported. If PeriodUnit=Day, Period can only be 3. If PeriodUnit=Month, then Period can be 1-9,12.
-        :param pulumi.Input[bool] public_ip_identification: Whether to allocate public IP. Value：true (default): can be assigned，false: cannot be assigned.
-        :param pulumi.Input[str] quantity: Number of instances.
-        :param pulumi.Input[str] schedule_area_level: Scheduling level, which is used to perform node level or regional scheduling.
-        :param pulumi.Input[str] scheduling_price_strategy: Dispatch price strategy. If left blank, it defaults to prioritizing low prices. Values: PriceLowPriority (priority high price), PriceLowPriority (priority low price).
-        :param pulumi.Input[str] scheduling_strategy: When scheduling at the node level, it is Concentrate. When scheduling at the regional level, it is selected according to customer needs. Concentrate: Centralized; Disperse: Disperse.
-        :param pulumi.Input[str] status: the status of the resource.
-        :param pulumi.Input['InstanceSystemDiskArgs'] system_disk: The field representing the system disk specification. SystemDisk is a non-required parameter when InstanceType is x86_pm,x86_bmi,x86_bm,pc_bmi, or arm_bmi. SystemDisk is a required parameter when instanceType is other specification families. See `system_disk` below.
-        :param pulumi.Input[bool] unique_suffix: Specifies whether to automatically append sequential suffixes to the hostnames specified by the HostName parameter and instance names specified by the InstanceName parameter when you create multiple instances at a time. The sequential suffix ranges from 001 to 999. Valid values:  true false Default value: false.
-        :param pulumi.Input[str] user_data: User defined data, with a maximum support of 16KB. You can input UserData information. UserData encoded in Base64 format.
+        :param pulumi.Input[str] payment_type: Instance payment method. Optional values:
+               - Subscription: prepaid, annual and monthly
+               - PayAsYouGo: Pay by volume.
+        :param pulumi.Input[int] period: The duration of the resource purchase. Value method:
+               - If PeriodUnit is set to Day, Period can only be set to 3.
+               - If PeriodUnit is set to Month, Period can be set to 1-9,12.
+        :param pulumi.Input[str] period_unit: The unit of time for purchasing resources. Value:
+               - Month (default): purchase by Month
+               - Day: buy by Day.
+        :param pulumi.Input[str] private_ip_address: The private IP address. Can only be used for node-level scheduling. If a private IP address is specified, the number of instances can only be one, and both the private IP address and the vSwitch ID are not empty, the private IP address takes effect.
+        :param pulumi.Input[bool] public_ip_identification: Whether to assign a public IP identifier. Value:
+               - true (default): Assign
+               - false: do not assign.
+        :param pulumi.Input[str] schedule_area_level: Scheduling level, through which node-level scheduling or area scheduling is performed. Optional values:
+               - Node-level scheduling: Region
+               - Regional scheduling: Big (region),Middle (province),Small (city).
+        :param pulumi.Input[str] scheduling_price_strategy: Scheduling price policy. If it is not filled in, the default priority is low price. Value:
+               - PriceLowPriority
+               - PriceLowPriority (priority low price).
+        :param pulumi.Input[str] scheduling_strategy: Scheduling policy. Optional values:
+               - Concentrate for node-level scheduling
+               - For regional scheduling, Concentrate, Disperse.
+        :param pulumi.Input[str] security_id: ID of the security group to which the instance belongs.
+        :param pulumi.Input[str] status: Status of the instance.
+        :param pulumi.Input['InstanceSystemDiskArgs'] system_disk: System Disk Specification. SystemDisk is a non-required parameter when InstanceType is x86_pm,x86_bmi,x86_bm,pc_bmi, or arm_bmi. SystemDisk is a required parameter when instanceType is other specification families. See `system_disk` below.
+        :param pulumi.Input[bool] unique_suffix: Indicates whether to add an ordered suffix to HostName and InstanceName. The ordered suffix starts from 001 and cannot exceed 999.
+        :param pulumi.Input[str] user_data: User-defined data, maximum support 16KB. You can pass in the UserData information. The UserData is encoded in Base64 format.
+        :param pulumi.Input[str] vswitch_id: The ID of the vSwitch to which the instance belongs. Can only be used in node-level scheduling.
         """
+        if amount is not None:
+            pulumi.set(__self__, "amount", amount)
         if auto_renew is not None:
             pulumi.set(__self__, "auto_renew", auto_renew)
+        if auto_use_coupon is not None:
+            pulumi.set(__self__, "auto_use_coupon", auto_use_coupon)
+        if billing_cycle is not None:
+            pulumi.set(__self__, "billing_cycle", billing_cycle)
         if carrier is not None:
             pulumi.set(__self__, "carrier", carrier)
         if data_disks is not None:
             pulumi.set(__self__, "data_disks", data_disks)
         if ens_region_id is not None:
             pulumi.set(__self__, "ens_region_id", ens_region_id)
+        if force_stop is not None:
+            pulumi.set(__self__, "force_stop", force_stop)
         if host_name is not None:
             pulumi.set(__self__, "host_name", host_name)
         if image_id is not None:
             pulumi.set(__self__, "image_id", image_id)
+        if include_data_disks is not None:
+            pulumi.set(__self__, "include_data_disks", include_data_disks)
         if instance_charge_strategy is not None:
             pulumi.set(__self__, "instance_charge_strategy", instance_charge_strategy)
         if instance_name is not None:
@@ -497,8 +778,12 @@ class _InstanceState:
             pulumi.set(__self__, "internet_charge_type", internet_charge_type)
         if internet_max_bandwidth_out is not None:
             pulumi.set(__self__, "internet_max_bandwidth_out", internet_max_bandwidth_out)
+        if ip_type is not None:
+            pulumi.set(__self__, "ip_type", ip_type)
         if net_district_code is not None:
             pulumi.set(__self__, "net_district_code", net_district_code)
+        if net_work_id is not None:
+            pulumi.set(__self__, "net_work_id", net_work_id)
         if password is not None:
             pulumi.set(__self__, "password", password)
         if password_inherit is not None:
@@ -509,16 +794,18 @@ class _InstanceState:
             pulumi.set(__self__, "period", period)
         if period_unit is not None:
             pulumi.set(__self__, "period_unit", period_unit)
+        if private_ip_address is not None:
+            pulumi.set(__self__, "private_ip_address", private_ip_address)
         if public_ip_identification is not None:
             pulumi.set(__self__, "public_ip_identification", public_ip_identification)
-        if quantity is not None:
-            pulumi.set(__self__, "quantity", quantity)
         if schedule_area_level is not None:
             pulumi.set(__self__, "schedule_area_level", schedule_area_level)
         if scheduling_price_strategy is not None:
             pulumi.set(__self__, "scheduling_price_strategy", scheduling_price_strategy)
         if scheduling_strategy is not None:
             pulumi.set(__self__, "scheduling_strategy", scheduling_strategy)
+        if security_id is not None:
+            pulumi.set(__self__, "security_id", security_id)
         if status is not None:
             pulumi.set(__self__, "status", status)
         if system_disk is not None:
@@ -527,12 +814,26 @@ class _InstanceState:
             pulumi.set(__self__, "unique_suffix", unique_suffix)
         if user_data is not None:
             pulumi.set(__self__, "user_data", user_data)
+        if vswitch_id is not None:
+            pulumi.set(__self__, "vswitch_id", vswitch_id)
+
+    @property
+    @pulumi.getter
+    def amount(self) -> Optional[pulumi.Input[int]]:
+        """
+        The number of instances created, with a minimum of 1 and a maximum of 100.
+        """
+        return pulumi.get(self, "amount")
+
+    @amount.setter
+    def amount(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "amount", value)
 
     @property
     @pulumi.getter(name="autoRenew")
     def auto_renew(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether to automatically renew, default to False, this parameter is invalid when paying by volume.
+        Whether to automatically renew the logo. The default value is false. This parameter is invalid when you pay by volume.
         """
         return pulumi.get(self, "auto_renew")
 
@@ -541,10 +842,42 @@ class _InstanceState:
         pulumi.set(self, "auto_renew", value)
 
     @property
+    @pulumi.getter(name="autoUseCoupon")
+    def auto_use_coupon(self) -> Optional[pulumi.Input[str]]:
+        """
+        Whether to use vouchers. The default is to use. Value:
+        - true (used)
+        - false (not used).
+        """
+        return pulumi.get(self, "auto_use_coupon")
+
+    @auto_use_coupon.setter
+    def auto_use_coupon(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "auto_use_coupon", value)
+
+    @property
+    @pulumi.getter(name="billingCycle")
+    def billing_cycle(self) -> Optional[pulumi.Input[str]]:
+        """
+        The billing cycle for instance computing resources. Only instance-level pay-as-you-go is supported. Value
+        - Hour: hourly billing
+        - Day: Daily billing
+        - Month: monthly billing.
+        """
+        return pulumi.get(self, "billing_cycle")
+
+    @billing_cycle.setter
+    def billing_cycle(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "billing_cycle", value)
+
+    @property
     @pulumi.getter
     def carrier(self) -> Optional[pulumi.Input[str]]:
         """
-        Operator, required for regional level scheduling, invalid for node level scheduling.
+        Operator, required for regional scheduling. Optional values:
+        - cmcc (mobile)
+        - unicom
+        - telecom.
         """
         return pulumi.get(self, "carrier")
 
@@ -568,7 +901,7 @@ class _InstanceState:
     @pulumi.getter(name="ensRegionId")
     def ens_region_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Node id. When ScheduleAreaLevel is Region, EnsRegionId is required. When ScheduleAreaLevel is Big, Middle, Small, EnsRegionId is not required.
+        The node ID. When ScheduleAreaLevel is Region, EnsRegionId is required. When ScheduleAreaLevel is Big,Middle,Small, EnsRegionId is invalid.
         """
         return pulumi.get(self, "ens_region_id")
 
@@ -577,10 +910,24 @@ class _InstanceState:
         pulumi.set(self, "ens_region_id", value)
 
     @property
+    @pulumi.getter(name="forceStop")
+    def force_stop(self) -> Optional[pulumi.Input[str]]:
+        """
+        Whether to force the identity when operating the instance. Optional values:
+        - true: Force
+        - false (default): non-mandatory
+        """
+        return pulumi.get(self, "force_stop")
+
+    @force_stop.setter
+    def force_stop(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "force_stop", value)
+
+    @property
     @pulumi.getter(name="hostName")
     def host_name(self) -> Optional[pulumi.Input[str]]:
         """
-        Host Name.
+        The host name of the instance. Example value: test-HostName.
         """
         return pulumi.get(self, "host_name")
 
@@ -592,7 +939,7 @@ class _InstanceState:
     @pulumi.getter(name="imageId")
     def image_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The Image Id field. If InstanceType is arm_bmi, the image Id is a non-required parameter. If instanceType is another specification value, the image Id is a required parameter.
+        The image ID of the instance. The arm version card cannot be filled in. Other specifications are required. Example value: m-5si16wo6simkt267p8b7h * * * *.
         """
         return pulumi.get(self, "image_id")
 
@@ -601,10 +948,24 @@ class _InstanceState:
         pulumi.set(self, "image_id", value)
 
     @property
+    @pulumi.getter(name="includeDataDisks")
+    def include_data_disks(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether the Payment type of the disk created with the instance is converted.
+        """
+        return pulumi.get(self, "include_data_disks")
+
+    @include_data_disks.setter
+    def include_data_disks(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "include_data_disks", value)
+
+    @property
     @pulumi.getter(name="instanceChargeStrategy")
     def instance_charge_strategy(self) -> Optional[pulumi.Input[str]]:
         """
-        Instance billing strategy, instance: instance granularity (prepaid method currently does not support instance), user: by user dimension (not transferred or prepaid method supports user).
+        The instance billing policy. Optional values:
+        - instance: instance granularity (the subscription method does not support instance)
+        - user: user Dimension (user is not transmitted or supported in the prepaid mode).
         """
         return pulumi.get(self, "instance_charge_strategy")
 
@@ -616,7 +977,7 @@ class _InstanceState:
     @pulumi.getter(name="instanceName")
     def instance_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The instance name. It must be 2 to 128 characters in length and must start with an uppercase or lowercase letter or a Chinese character. It cannot start with http:// or https. It can contain Chinese, English, numbers, half-width colons (:), underscores (_), periods (.), or hyphens (-). The default value is the InstanceId of the instance.
+        The instance name. Example value: test-InstanceName. It must be 2 to 128 characters in length and must start with an uppercase or lowercase letter or a Chinese character. It cannot start with http:// or https. Can contain Chinese, English, numbers, half-width colons (:), underscores (_), periods (.), or hyphens (-) The default value is the InstanceId of the instance. .
         """
         return pulumi.get(self, "instance_name")
 
@@ -628,7 +989,7 @@ class _InstanceState:
     @pulumi.getter(name="instanceType")
     def instance_type(self) -> Optional[pulumi.Input[str]]:
         """
-        Instance specifications type.
+        The specification of the instance. Example value: ens.sn1.small.
         """
         return pulumi.get(self, "instance_type")
 
@@ -640,7 +1001,9 @@ class _InstanceState:
     @pulumi.getter(name="internetChargeType")
     def internet_charge_type(self) -> Optional[pulumi.Input[str]]:
         """
-        Instance Charge type.it could be BandwidthByDay, 95BandwidthByMonth, PayByBandwidth4thMonth.
+        Instance bandwidth billing method. If the billing method can be selected for the first purchase, the subsequent value of this field will be processed by default according to the billing method selected for the first time. Optional values:
+        - BandwidthByDay: Daily peak bandwidth
+        - 95bandwidthbymonth: 95 peak bandwidth.
         """
         return pulumi.get(self, "internet_charge_type")
 
@@ -652,7 +1015,7 @@ class _InstanceState:
     @pulumi.getter(name="internetMaxBandwidthOut")
     def internet_max_bandwidth_out(self) -> Optional[pulumi.Input[int]]:
         """
-        The maximum public network bandwidth.
+        Maximum public network bandwidth. The field type is Long, and the precision may be lost during serialization/deserialization. Please note that the value must not be greater than 9007199254740991.
         """
         return pulumi.get(self, "internet_max_bandwidth_out")
 
@@ -661,10 +1024,25 @@ class _InstanceState:
         pulumi.set(self, "internet_max_bandwidth_out", value)
 
     @property
+    @pulumi.getter(name="ipType")
+    def ip_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The IP type. Value:
+        - ipv4 (default):IPv4
+        - ipv6:IPv6
+        - ipv4Andipv6:IPv4 and IPv6.
+        """
+        return pulumi.get(self, "ip_type")
+
+    @ip_type.setter
+    def ip_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ip_type", value)
+
+    @property
     @pulumi.getter(name="netDistrictCode")
     def net_district_code(self) -> Optional[pulumi.Input[str]]:
         """
-        Region code, required for regional level scheduling, invalid for node level scheduling.
+        The area code. Example value: 350000. Required for regional-level scheduling, invalid for node-level scheduling.
         """
         return pulumi.get(self, "net_district_code")
 
@@ -673,10 +1051,22 @@ class _InstanceState:
         pulumi.set(self, "net_district_code", value)
 
     @property
+    @pulumi.getter(name="netWorkId")
+    def net_work_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The network ID of the instance. Can only be used in node-level scheduling.
+        """
+        return pulumi.get(self, "net_work_id")
+
+    @net_work_id.setter
+    def net_work_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "net_work_id", value)
+
+    @property
     @pulumi.getter
     def password(self) -> Optional[pulumi.Input[str]]:
         """
-        The password of the instance。It is 8 to 30 characters in length and must contain three types of characters: uppercase and lowercase letters, numbers, and special symbols. The following special symbols can be set: '''()'~! @#$%^& *-_+ =|{}[]:;',.? /'''.
+        The instance password. At least one of Password, KeyPairName, and PasswordInherit.
         """
         return pulumi.get(self, "password")
 
@@ -700,7 +1090,9 @@ class _InstanceState:
     @pulumi.getter(name="paymentType")
     def payment_type(self) -> Optional[pulumi.Input[str]]:
         """
-        Instance payment method, Subscription: prepaid, monthly package; PayAsYouGo: Pay as you go.
+        Instance payment method. Optional values:
+        - Subscription: prepaid, annual and monthly
+        - PayAsYouGo: Pay by volume.
         """
         return pulumi.get(self, "payment_type")
 
@@ -712,7 +1104,9 @@ class _InstanceState:
     @pulumi.getter
     def period(self) -> Optional[pulumi.Input[int]]:
         """
-        The duration of purchasing resources. If PeriodUnit is not specified, it defaults to purchasing on a monthly basis. Currently, only days and months are supported. If PeriodUnit=Day, Period can only be 3. If PeriodUnit=Monthc, then Period can be 1-9,12.
+        The duration of the resource purchase. Value method:
+        - If PeriodUnit is set to Day, Period can only be set to 3.
+        - If PeriodUnit is set to Month, Period can be set to 1-9,12.
         """
         return pulumi.get(self, "period")
 
@@ -724,7 +1118,9 @@ class _InstanceState:
     @pulumi.getter(name="periodUnit")
     def period_unit(self) -> Optional[pulumi.Input[str]]:
         """
-        The unit of time for purchasing resources. If PeriodUnit is not specified, it defaults to purchasing by Month. Currently, only days and months are supported. If PeriodUnit=Day, Period can only be 3. If PeriodUnit=Month, then Period can be 1-9,12.
+        The unit of time for purchasing resources. Value:
+        - Month (default): purchase by Month
+        - Day: buy by Day.
         """
         return pulumi.get(self, "period_unit")
 
@@ -733,10 +1129,24 @@ class _InstanceState:
         pulumi.set(self, "period_unit", value)
 
     @property
+    @pulumi.getter(name="privateIpAddress")
+    def private_ip_address(self) -> Optional[pulumi.Input[str]]:
+        """
+        The private IP address. Can only be used for node-level scheduling. If a private IP address is specified, the number of instances can only be one, and both the private IP address and the vSwitch ID are not empty, the private IP address takes effect.
+        """
+        return pulumi.get(self, "private_ip_address")
+
+    @private_ip_address.setter
+    def private_ip_address(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "private_ip_address", value)
+
+    @property
     @pulumi.getter(name="publicIpIdentification")
     def public_ip_identification(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether to allocate public IP. Value：true (default): can be assigned，false: cannot be assigned.
+        Whether to assign a public IP identifier. Value:
+        - true (default): Assign
+        - false: do not assign.
         """
         return pulumi.get(self, "public_ip_identification")
 
@@ -745,22 +1155,12 @@ class _InstanceState:
         pulumi.set(self, "public_ip_identification", value)
 
     @property
-    @pulumi.getter
-    def quantity(self) -> Optional[pulumi.Input[str]]:
-        """
-        Number of instances.
-        """
-        return pulumi.get(self, "quantity")
-
-    @quantity.setter
-    def quantity(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "quantity", value)
-
-    @property
     @pulumi.getter(name="scheduleAreaLevel")
     def schedule_area_level(self) -> Optional[pulumi.Input[str]]:
         """
-        Scheduling level, which is used to perform node level or regional scheduling.
+        Scheduling level, through which node-level scheduling or area scheduling is performed. Optional values:
+        - Node-level scheduling: Region
+        - Regional scheduling: Big (region),Middle (province),Small (city).
         """
         return pulumi.get(self, "schedule_area_level")
 
@@ -772,7 +1172,9 @@ class _InstanceState:
     @pulumi.getter(name="schedulingPriceStrategy")
     def scheduling_price_strategy(self) -> Optional[pulumi.Input[str]]:
         """
-        Dispatch price strategy. If left blank, it defaults to prioritizing low prices. Values: PriceLowPriority (priority high price), PriceLowPriority (priority low price).
+        Scheduling price policy. If it is not filled in, the default priority is low price. Value:
+        - PriceLowPriority
+        - PriceLowPriority (priority low price).
         """
         return pulumi.get(self, "scheduling_price_strategy")
 
@@ -784,7 +1186,9 @@ class _InstanceState:
     @pulumi.getter(name="schedulingStrategy")
     def scheduling_strategy(self) -> Optional[pulumi.Input[str]]:
         """
-        When scheduling at the node level, it is Concentrate. When scheduling at the regional level, it is selected according to customer needs. Concentrate: Centralized; Disperse: Disperse.
+        Scheduling policy. Optional values:
+        - Concentrate for node-level scheduling
+        - For regional scheduling, Concentrate, Disperse.
         """
         return pulumi.get(self, "scheduling_strategy")
 
@@ -793,10 +1197,22 @@ class _InstanceState:
         pulumi.set(self, "scheduling_strategy", value)
 
     @property
+    @pulumi.getter(name="securityId")
+    def security_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        ID of the security group to which the instance belongs.
+        """
+        return pulumi.get(self, "security_id")
+
+    @security_id.setter
+    def security_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "security_id", value)
+
+    @property
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[str]]:
         """
-        the status of the resource.
+        Status of the instance.
         """
         return pulumi.get(self, "status")
 
@@ -808,7 +1224,7 @@ class _InstanceState:
     @pulumi.getter(name="systemDisk")
     def system_disk(self) -> Optional[pulumi.Input['InstanceSystemDiskArgs']]:
         """
-        The field representing the system disk specification. SystemDisk is a non-required parameter when InstanceType is x86_pm,x86_bmi,x86_bm,pc_bmi, or arm_bmi. SystemDisk is a required parameter when instanceType is other specification families. See `system_disk` below.
+        System Disk Specification. SystemDisk is a non-required parameter when InstanceType is x86_pm,x86_bmi,x86_bm,pc_bmi, or arm_bmi. SystemDisk is a required parameter when instanceType is other specification families. See `system_disk` below.
         """
         return pulumi.get(self, "system_disk")
 
@@ -820,7 +1236,7 @@ class _InstanceState:
     @pulumi.getter(name="uniqueSuffix")
     def unique_suffix(self) -> Optional[pulumi.Input[bool]]:
         """
-        Specifies whether to automatically append sequential suffixes to the hostnames specified by the HostName parameter and instance names specified by the InstanceName parameter when you create multiple instances at a time. The sequential suffix ranges from 001 to 999. Valid values:  true false Default value: false.
+        Indicates whether to add an ordered suffix to HostName and InstanceName. The ordered suffix starts from 001 and cannot exceed 999.
         """
         return pulumi.get(self, "unique_suffix")
 
@@ -832,7 +1248,7 @@ class _InstanceState:
     @pulumi.getter(name="userData")
     def user_data(self) -> Optional[pulumi.Input[str]]:
         """
-        User defined data, with a maximum support of 16KB. You can input UserData information. UserData encoded in Base64 format.
+        User-defined data, maximum support 16KB. You can pass in the UserData information. The UserData is encoded in Base64 format.
         """
         return pulumi.get(self, "user_data")
 
@@ -840,37 +1256,59 @@ class _InstanceState:
     def user_data(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "user_data", value)
 
+    @property
+    @pulumi.getter(name="vswitchId")
+    def vswitch_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the vSwitch to which the instance belongs. Can only be used in node-level scheduling.
+        """
+        return pulumi.get(self, "vswitch_id")
+
+    @vswitch_id.setter
+    def vswitch_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "vswitch_id", value)
+
 
 class Instance(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 amount: Optional[pulumi.Input[int]] = None,
                  auto_renew: Optional[pulumi.Input[bool]] = None,
+                 auto_use_coupon: Optional[pulumi.Input[str]] = None,
+                 billing_cycle: Optional[pulumi.Input[str]] = None,
                  carrier: Optional[pulumi.Input[str]] = None,
                  data_disks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceDataDiskArgs']]]]] = None,
                  ens_region_id: Optional[pulumi.Input[str]] = None,
+                 force_stop: Optional[pulumi.Input[str]] = None,
                  host_name: Optional[pulumi.Input[str]] = None,
                  image_id: Optional[pulumi.Input[str]] = None,
+                 include_data_disks: Optional[pulumi.Input[bool]] = None,
                  instance_charge_strategy: Optional[pulumi.Input[str]] = None,
                  instance_name: Optional[pulumi.Input[str]] = None,
                  instance_type: Optional[pulumi.Input[str]] = None,
                  internet_charge_type: Optional[pulumi.Input[str]] = None,
                  internet_max_bandwidth_out: Optional[pulumi.Input[int]] = None,
+                 ip_type: Optional[pulumi.Input[str]] = None,
                  net_district_code: Optional[pulumi.Input[str]] = None,
+                 net_work_id: Optional[pulumi.Input[str]] = None,
                  password: Optional[pulumi.Input[str]] = None,
                  password_inherit: Optional[pulumi.Input[bool]] = None,
                  payment_type: Optional[pulumi.Input[str]] = None,
                  period: Optional[pulumi.Input[int]] = None,
                  period_unit: Optional[pulumi.Input[str]] = None,
+                 private_ip_address: Optional[pulumi.Input[str]] = None,
                  public_ip_identification: Optional[pulumi.Input[bool]] = None,
-                 quantity: Optional[pulumi.Input[str]] = None,
                  schedule_area_level: Optional[pulumi.Input[str]] = None,
                  scheduling_price_strategy: Optional[pulumi.Input[str]] = None,
                  scheduling_strategy: Optional[pulumi.Input[str]] = None,
+                 security_id: Optional[pulumi.Input[str]] = None,
+                 status: Optional[pulumi.Input[str]] = None,
                  system_disk: Optional[pulumi.Input[pulumi.InputType['InstanceSystemDiskArgs']]] = None,
                  unique_suffix: Optional[pulumi.Input[bool]] = None,
                  user_data: Optional[pulumi.Input[str]] = None,
+                 vswitch_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         ## Import
@@ -883,31 +1321,72 @@ class Instance(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[bool] auto_renew: Whether to automatically renew, default to False, this parameter is invalid when paying by volume.
-        :param pulumi.Input[str] carrier: Operator, required for regional level scheduling, invalid for node level scheduling.
+        :param pulumi.Input[int] amount: The number of instances created, with a minimum of 1 and a maximum of 100.
+        :param pulumi.Input[bool] auto_renew: Whether to automatically renew the logo. The default value is false. This parameter is invalid when you pay by volume.
+        :param pulumi.Input[str] auto_use_coupon: Whether to use vouchers. The default is to use. Value:
+               - true (used)
+               - false (not used).
+        :param pulumi.Input[str] billing_cycle: The billing cycle for instance computing resources. Only instance-level pay-as-you-go is supported. Value
+               - Hour: hourly billing
+               - Day: Daily billing
+               - Month: monthly billing.
+        :param pulumi.Input[str] carrier: Operator, required for regional scheduling. Optional values:
+               - cmcc (mobile)
+               - unicom
+               - telecom.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceDataDiskArgs']]]] data_disks: Data disk specifications. See `data_disk` below.
-        :param pulumi.Input[str] ens_region_id: Node id. When ScheduleAreaLevel is Region, EnsRegionId is required. When ScheduleAreaLevel is Big, Middle, Small, EnsRegionId is not required.
-        :param pulumi.Input[str] host_name: Host Name.
-        :param pulumi.Input[str] image_id: The Image Id field. If InstanceType is arm_bmi, the image Id is a non-required parameter. If instanceType is another specification value, the image Id is a required parameter.
-        :param pulumi.Input[str] instance_charge_strategy: Instance billing strategy, instance: instance granularity (prepaid method currently does not support instance), user: by user dimension (not transferred or prepaid method supports user).
-        :param pulumi.Input[str] instance_name: The instance name. It must be 2 to 128 characters in length and must start with an uppercase or lowercase letter or a Chinese character. It cannot start with http:// or https. It can contain Chinese, English, numbers, half-width colons (:), underscores (_), periods (.), or hyphens (-). The default value is the InstanceId of the instance.
-        :param pulumi.Input[str] instance_type: Instance specifications type.
-        :param pulumi.Input[str] internet_charge_type: Instance Charge type.it could be BandwidthByDay, 95BandwidthByMonth, PayByBandwidth4thMonth.
-        :param pulumi.Input[int] internet_max_bandwidth_out: The maximum public network bandwidth.
-        :param pulumi.Input[str] net_district_code: Region code, required for regional level scheduling, invalid for node level scheduling.
-        :param pulumi.Input[str] password: The password of the instance。It is 8 to 30 characters in length and must contain three types of characters: uppercase and lowercase letters, numbers, and special symbols. The following special symbols can be set: '''()'~! @#$%^& *-_+ =|{}[]:;',.? /'''.
+        :param pulumi.Input[str] ens_region_id: The node ID. When ScheduleAreaLevel is Region, EnsRegionId is required. When ScheduleAreaLevel is Big,Middle,Small, EnsRegionId is invalid.
+        :param pulumi.Input[str] force_stop: Whether to force the identity when operating the instance. Optional values:
+               - true: Force
+               - false (default): non-mandatory
+        :param pulumi.Input[str] host_name: The host name of the instance. Example value: test-HostName.
+        :param pulumi.Input[str] image_id: The image ID of the instance. The arm version card cannot be filled in. Other specifications are required. Example value: m-5si16wo6simkt267p8b7h * * * *.
+        :param pulumi.Input[bool] include_data_disks: Whether the Payment type of the disk created with the instance is converted.
+        :param pulumi.Input[str] instance_charge_strategy: The instance billing policy. Optional values:
+               - instance: instance granularity (the subscription method does not support instance)
+               - user: user Dimension (user is not transmitted or supported in the prepaid mode).
+        :param pulumi.Input[str] instance_name: The instance name. Example value: test-InstanceName. It must be 2 to 128 characters in length and must start with an uppercase or lowercase letter or a Chinese character. It cannot start with http:// or https. Can contain Chinese, English, numbers, half-width colons (:), underscores (_), periods (.), or hyphens (-) The default value is the InstanceId of the instance. .
+        :param pulumi.Input[str] instance_type: The specification of the instance. Example value: ens.sn1.small.
+        :param pulumi.Input[str] internet_charge_type: Instance bandwidth billing method. If the billing method can be selected for the first purchase, the subsequent value of this field will be processed by default according to the billing method selected for the first time. Optional values:
+               - BandwidthByDay: Daily peak bandwidth
+               - 95bandwidthbymonth: 95 peak bandwidth.
+        :param pulumi.Input[int] internet_max_bandwidth_out: Maximum public network bandwidth. The field type is Long, and the precision may be lost during serialization/deserialization. Please note that the value must not be greater than 9007199254740991.
+        :param pulumi.Input[str] ip_type: The IP type. Value:
+               - ipv4 (default):IPv4
+               - ipv6:IPv6
+               - ipv4Andipv6:IPv4 and IPv6.
+        :param pulumi.Input[str] net_district_code: The area code. Example value: 350000. Required for regional-level scheduling, invalid for node-level scheduling.
+        :param pulumi.Input[str] net_work_id: The network ID of the instance. Can only be used in node-level scheduling.
+        :param pulumi.Input[str] password: The instance password. At least one of Password, KeyPairName, and PasswordInherit.
         :param pulumi.Input[bool] password_inherit: Whether to use image preset password prompt: Password and KeyPairNamePasswordInherit must be passed.
-        :param pulumi.Input[str] payment_type: Instance payment method, Subscription: prepaid, monthly package; PayAsYouGo: Pay as you go.
-        :param pulumi.Input[int] period: The duration of purchasing resources. If PeriodUnit is not specified, it defaults to purchasing on a monthly basis. Currently, only days and months are supported. If PeriodUnit=Day, Period can only be 3. If PeriodUnit=Monthc, then Period can be 1-9,12.
-        :param pulumi.Input[str] period_unit: The unit of time for purchasing resources. If PeriodUnit is not specified, it defaults to purchasing by Month. Currently, only days and months are supported. If PeriodUnit=Day, Period can only be 3. If PeriodUnit=Month, then Period can be 1-9,12.
-        :param pulumi.Input[bool] public_ip_identification: Whether to allocate public IP. Value：true (default): can be assigned，false: cannot be assigned.
-        :param pulumi.Input[str] quantity: Number of instances.
-        :param pulumi.Input[str] schedule_area_level: Scheduling level, which is used to perform node level or regional scheduling.
-        :param pulumi.Input[str] scheduling_price_strategy: Dispatch price strategy. If left blank, it defaults to prioritizing low prices. Values: PriceLowPriority (priority high price), PriceLowPriority (priority low price).
-        :param pulumi.Input[str] scheduling_strategy: When scheduling at the node level, it is Concentrate. When scheduling at the regional level, it is selected according to customer needs. Concentrate: Centralized; Disperse: Disperse.
-        :param pulumi.Input[pulumi.InputType['InstanceSystemDiskArgs']] system_disk: The field representing the system disk specification. SystemDisk is a non-required parameter when InstanceType is x86_pm,x86_bmi,x86_bm,pc_bmi, or arm_bmi. SystemDisk is a required parameter when instanceType is other specification families. See `system_disk` below.
-        :param pulumi.Input[bool] unique_suffix: Specifies whether to automatically append sequential suffixes to the hostnames specified by the HostName parameter and instance names specified by the InstanceName parameter when you create multiple instances at a time. The sequential suffix ranges from 001 to 999. Valid values:  true false Default value: false.
-        :param pulumi.Input[str] user_data: User defined data, with a maximum support of 16KB. You can input UserData information. UserData encoded in Base64 format.
+        :param pulumi.Input[str] payment_type: Instance payment method. Optional values:
+               - Subscription: prepaid, annual and monthly
+               - PayAsYouGo: Pay by volume.
+        :param pulumi.Input[int] period: The duration of the resource purchase. Value method:
+               - If PeriodUnit is set to Day, Period can only be set to 3.
+               - If PeriodUnit is set to Month, Period can be set to 1-9,12.
+        :param pulumi.Input[str] period_unit: The unit of time for purchasing resources. Value:
+               - Month (default): purchase by Month
+               - Day: buy by Day.
+        :param pulumi.Input[str] private_ip_address: The private IP address. Can only be used for node-level scheduling. If a private IP address is specified, the number of instances can only be one, and both the private IP address and the vSwitch ID are not empty, the private IP address takes effect.
+        :param pulumi.Input[bool] public_ip_identification: Whether to assign a public IP identifier. Value:
+               - true (default): Assign
+               - false: do not assign.
+        :param pulumi.Input[str] schedule_area_level: Scheduling level, through which node-level scheduling or area scheduling is performed. Optional values:
+               - Node-level scheduling: Region
+               - Regional scheduling: Big (region),Middle (province),Small (city).
+        :param pulumi.Input[str] scheduling_price_strategy: Scheduling price policy. If it is not filled in, the default priority is low price. Value:
+               - PriceLowPriority
+               - PriceLowPriority (priority low price).
+        :param pulumi.Input[str] scheduling_strategy: Scheduling policy. Optional values:
+               - Concentrate for node-level scheduling
+               - For regional scheduling, Concentrate, Disperse.
+        :param pulumi.Input[str] security_id: ID of the security group to which the instance belongs.
+        :param pulumi.Input[str] status: Status of the instance.
+        :param pulumi.Input[pulumi.InputType['InstanceSystemDiskArgs']] system_disk: System Disk Specification. SystemDisk is a non-required parameter when InstanceType is x86_pm,x86_bmi,x86_bm,pc_bmi, or arm_bmi. SystemDisk is a required parameter when instanceType is other specification families. See `system_disk` below.
+        :param pulumi.Input[bool] unique_suffix: Indicates whether to add an ordered suffix to HostName and InstanceName. The ordered suffix starts from 001 and cannot exceed 999.
+        :param pulumi.Input[str] user_data: User-defined data, maximum support 16KB. You can pass in the UserData information. The UserData is encoded in Base64 format.
+        :param pulumi.Input[str] vswitch_id: The ID of the vSwitch to which the instance belongs. Can only be used in node-level scheduling.
         """
         ...
     @overload
@@ -939,31 +1418,41 @@ class Instance(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 amount: Optional[pulumi.Input[int]] = None,
                  auto_renew: Optional[pulumi.Input[bool]] = None,
+                 auto_use_coupon: Optional[pulumi.Input[str]] = None,
+                 billing_cycle: Optional[pulumi.Input[str]] = None,
                  carrier: Optional[pulumi.Input[str]] = None,
                  data_disks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceDataDiskArgs']]]]] = None,
                  ens_region_id: Optional[pulumi.Input[str]] = None,
+                 force_stop: Optional[pulumi.Input[str]] = None,
                  host_name: Optional[pulumi.Input[str]] = None,
                  image_id: Optional[pulumi.Input[str]] = None,
+                 include_data_disks: Optional[pulumi.Input[bool]] = None,
                  instance_charge_strategy: Optional[pulumi.Input[str]] = None,
                  instance_name: Optional[pulumi.Input[str]] = None,
                  instance_type: Optional[pulumi.Input[str]] = None,
                  internet_charge_type: Optional[pulumi.Input[str]] = None,
                  internet_max_bandwidth_out: Optional[pulumi.Input[int]] = None,
+                 ip_type: Optional[pulumi.Input[str]] = None,
                  net_district_code: Optional[pulumi.Input[str]] = None,
+                 net_work_id: Optional[pulumi.Input[str]] = None,
                  password: Optional[pulumi.Input[str]] = None,
                  password_inherit: Optional[pulumi.Input[bool]] = None,
                  payment_type: Optional[pulumi.Input[str]] = None,
                  period: Optional[pulumi.Input[int]] = None,
                  period_unit: Optional[pulumi.Input[str]] = None,
+                 private_ip_address: Optional[pulumi.Input[str]] = None,
                  public_ip_identification: Optional[pulumi.Input[bool]] = None,
-                 quantity: Optional[pulumi.Input[str]] = None,
                  schedule_area_level: Optional[pulumi.Input[str]] = None,
                  scheduling_price_strategy: Optional[pulumi.Input[str]] = None,
                  scheduling_strategy: Optional[pulumi.Input[str]] = None,
+                 security_id: Optional[pulumi.Input[str]] = None,
+                 status: Optional[pulumi.Input[str]] = None,
                  system_disk: Optional[pulumi.Input[pulumi.InputType['InstanceSystemDiskArgs']]] = None,
                  unique_suffix: Optional[pulumi.Input[bool]] = None,
                  user_data: Optional[pulumi.Input[str]] = None,
+                 vswitch_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -973,12 +1462,17 @@ class Instance(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = InstanceArgs.__new__(InstanceArgs)
 
+            __props__.__dict__["amount"] = amount
             __props__.__dict__["auto_renew"] = auto_renew
+            __props__.__dict__["auto_use_coupon"] = auto_use_coupon
+            __props__.__dict__["billing_cycle"] = billing_cycle
             __props__.__dict__["carrier"] = carrier
             __props__.__dict__["data_disks"] = data_disks
             __props__.__dict__["ens_region_id"] = ens_region_id
+            __props__.__dict__["force_stop"] = force_stop
             __props__.__dict__["host_name"] = host_name
             __props__.__dict__["image_id"] = image_id
+            __props__.__dict__["include_data_disks"] = include_data_disks
             __props__.__dict__["instance_charge_strategy"] = instance_charge_strategy
             __props__.__dict__["instance_name"] = instance_name
             if instance_type is None and not opts.urn:
@@ -988,7 +1482,9 @@ class Instance(pulumi.CustomResource):
             if internet_max_bandwidth_out is None and not opts.urn:
                 raise TypeError("Missing required property 'internet_max_bandwidth_out'")
             __props__.__dict__["internet_max_bandwidth_out"] = internet_max_bandwidth_out
+            __props__.__dict__["ip_type"] = ip_type
             __props__.__dict__["net_district_code"] = net_district_code
+            __props__.__dict__["net_work_id"] = net_work_id
             __props__.__dict__["password"] = None if password is None else pulumi.Output.secret(password)
             __props__.__dict__["password_inherit"] = password_inherit
             if payment_type is None and not opts.urn:
@@ -996,17 +1492,19 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["payment_type"] = payment_type
             __props__.__dict__["period"] = period
             __props__.__dict__["period_unit"] = period_unit
+            __props__.__dict__["private_ip_address"] = private_ip_address
             __props__.__dict__["public_ip_identification"] = public_ip_identification
-            __props__.__dict__["quantity"] = quantity
             if schedule_area_level is None and not opts.urn:
                 raise TypeError("Missing required property 'schedule_area_level'")
             __props__.__dict__["schedule_area_level"] = schedule_area_level
             __props__.__dict__["scheduling_price_strategy"] = scheduling_price_strategy
             __props__.__dict__["scheduling_strategy"] = scheduling_strategy
+            __props__.__dict__["security_id"] = security_id
+            __props__.__dict__["status"] = status
             __props__.__dict__["system_disk"] = system_disk
             __props__.__dict__["unique_suffix"] = unique_suffix
             __props__.__dict__["user_data"] = user_data
-            __props__.__dict__["status"] = None
+            __props__.__dict__["vswitch_id"] = vswitch_id
         secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["password"])
         opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(Instance, __self__).__init__(
@@ -1019,32 +1517,41 @@ class Instance(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            amount: Optional[pulumi.Input[int]] = None,
             auto_renew: Optional[pulumi.Input[bool]] = None,
+            auto_use_coupon: Optional[pulumi.Input[str]] = None,
+            billing_cycle: Optional[pulumi.Input[str]] = None,
             carrier: Optional[pulumi.Input[str]] = None,
             data_disks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceDataDiskArgs']]]]] = None,
             ens_region_id: Optional[pulumi.Input[str]] = None,
+            force_stop: Optional[pulumi.Input[str]] = None,
             host_name: Optional[pulumi.Input[str]] = None,
             image_id: Optional[pulumi.Input[str]] = None,
+            include_data_disks: Optional[pulumi.Input[bool]] = None,
             instance_charge_strategy: Optional[pulumi.Input[str]] = None,
             instance_name: Optional[pulumi.Input[str]] = None,
             instance_type: Optional[pulumi.Input[str]] = None,
             internet_charge_type: Optional[pulumi.Input[str]] = None,
             internet_max_bandwidth_out: Optional[pulumi.Input[int]] = None,
+            ip_type: Optional[pulumi.Input[str]] = None,
             net_district_code: Optional[pulumi.Input[str]] = None,
+            net_work_id: Optional[pulumi.Input[str]] = None,
             password: Optional[pulumi.Input[str]] = None,
             password_inherit: Optional[pulumi.Input[bool]] = None,
             payment_type: Optional[pulumi.Input[str]] = None,
             period: Optional[pulumi.Input[int]] = None,
             period_unit: Optional[pulumi.Input[str]] = None,
+            private_ip_address: Optional[pulumi.Input[str]] = None,
             public_ip_identification: Optional[pulumi.Input[bool]] = None,
-            quantity: Optional[pulumi.Input[str]] = None,
             schedule_area_level: Optional[pulumi.Input[str]] = None,
             scheduling_price_strategy: Optional[pulumi.Input[str]] = None,
             scheduling_strategy: Optional[pulumi.Input[str]] = None,
+            security_id: Optional[pulumi.Input[str]] = None,
             status: Optional[pulumi.Input[str]] = None,
             system_disk: Optional[pulumi.Input[pulumi.InputType['InstanceSystemDiskArgs']]] = None,
             unique_suffix: Optional[pulumi.Input[bool]] = None,
-            user_data: Optional[pulumi.Input[str]] = None) -> 'Instance':
+            user_data: Optional[pulumi.Input[str]] = None,
+            vswitch_id: Optional[pulumi.Input[str]] = None) -> 'Instance':
         """
         Get an existing Instance resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -1052,84 +1559,165 @@ class Instance(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[bool] auto_renew: Whether to automatically renew, default to False, this parameter is invalid when paying by volume.
-        :param pulumi.Input[str] carrier: Operator, required for regional level scheduling, invalid for node level scheduling.
+        :param pulumi.Input[int] amount: The number of instances created, with a minimum of 1 and a maximum of 100.
+        :param pulumi.Input[bool] auto_renew: Whether to automatically renew the logo. The default value is false. This parameter is invalid when you pay by volume.
+        :param pulumi.Input[str] auto_use_coupon: Whether to use vouchers. The default is to use. Value:
+               - true (used)
+               - false (not used).
+        :param pulumi.Input[str] billing_cycle: The billing cycle for instance computing resources. Only instance-level pay-as-you-go is supported. Value
+               - Hour: hourly billing
+               - Day: Daily billing
+               - Month: monthly billing.
+        :param pulumi.Input[str] carrier: Operator, required for regional scheduling. Optional values:
+               - cmcc (mobile)
+               - unicom
+               - telecom.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceDataDiskArgs']]]] data_disks: Data disk specifications. See `data_disk` below.
-        :param pulumi.Input[str] ens_region_id: Node id. When ScheduleAreaLevel is Region, EnsRegionId is required. When ScheduleAreaLevel is Big, Middle, Small, EnsRegionId is not required.
-        :param pulumi.Input[str] host_name: Host Name.
-        :param pulumi.Input[str] image_id: The Image Id field. If InstanceType is arm_bmi, the image Id is a non-required parameter. If instanceType is another specification value, the image Id is a required parameter.
-        :param pulumi.Input[str] instance_charge_strategy: Instance billing strategy, instance: instance granularity (prepaid method currently does not support instance), user: by user dimension (not transferred or prepaid method supports user).
-        :param pulumi.Input[str] instance_name: The instance name. It must be 2 to 128 characters in length and must start with an uppercase or lowercase letter or a Chinese character. It cannot start with http:// or https. It can contain Chinese, English, numbers, half-width colons (:), underscores (_), periods (.), or hyphens (-). The default value is the InstanceId of the instance.
-        :param pulumi.Input[str] instance_type: Instance specifications type.
-        :param pulumi.Input[str] internet_charge_type: Instance Charge type.it could be BandwidthByDay, 95BandwidthByMonth, PayByBandwidth4thMonth.
-        :param pulumi.Input[int] internet_max_bandwidth_out: The maximum public network bandwidth.
-        :param pulumi.Input[str] net_district_code: Region code, required for regional level scheduling, invalid for node level scheduling.
-        :param pulumi.Input[str] password: The password of the instance。It is 8 to 30 characters in length and must contain three types of characters: uppercase and lowercase letters, numbers, and special symbols. The following special symbols can be set: '''()'~! @#$%^& *-_+ =|{}[]:;',.? /'''.
+        :param pulumi.Input[str] ens_region_id: The node ID. When ScheduleAreaLevel is Region, EnsRegionId is required. When ScheduleAreaLevel is Big,Middle,Small, EnsRegionId is invalid.
+        :param pulumi.Input[str] force_stop: Whether to force the identity when operating the instance. Optional values:
+               - true: Force
+               - false (default): non-mandatory
+        :param pulumi.Input[str] host_name: The host name of the instance. Example value: test-HostName.
+        :param pulumi.Input[str] image_id: The image ID of the instance. The arm version card cannot be filled in. Other specifications are required. Example value: m-5si16wo6simkt267p8b7h * * * *.
+        :param pulumi.Input[bool] include_data_disks: Whether the Payment type of the disk created with the instance is converted.
+        :param pulumi.Input[str] instance_charge_strategy: The instance billing policy. Optional values:
+               - instance: instance granularity (the subscription method does not support instance)
+               - user: user Dimension (user is not transmitted or supported in the prepaid mode).
+        :param pulumi.Input[str] instance_name: The instance name. Example value: test-InstanceName. It must be 2 to 128 characters in length and must start with an uppercase or lowercase letter or a Chinese character. It cannot start with http:// or https. Can contain Chinese, English, numbers, half-width colons (:), underscores (_), periods (.), or hyphens (-) The default value is the InstanceId of the instance. .
+        :param pulumi.Input[str] instance_type: The specification of the instance. Example value: ens.sn1.small.
+        :param pulumi.Input[str] internet_charge_type: Instance bandwidth billing method. If the billing method can be selected for the first purchase, the subsequent value of this field will be processed by default according to the billing method selected for the first time. Optional values:
+               - BandwidthByDay: Daily peak bandwidth
+               - 95bandwidthbymonth: 95 peak bandwidth.
+        :param pulumi.Input[int] internet_max_bandwidth_out: Maximum public network bandwidth. The field type is Long, and the precision may be lost during serialization/deserialization. Please note that the value must not be greater than 9007199254740991.
+        :param pulumi.Input[str] ip_type: The IP type. Value:
+               - ipv4 (default):IPv4
+               - ipv6:IPv6
+               - ipv4Andipv6:IPv4 and IPv6.
+        :param pulumi.Input[str] net_district_code: The area code. Example value: 350000. Required for regional-level scheduling, invalid for node-level scheduling.
+        :param pulumi.Input[str] net_work_id: The network ID of the instance. Can only be used in node-level scheduling.
+        :param pulumi.Input[str] password: The instance password. At least one of Password, KeyPairName, and PasswordInherit.
         :param pulumi.Input[bool] password_inherit: Whether to use image preset password prompt: Password and KeyPairNamePasswordInherit must be passed.
-        :param pulumi.Input[str] payment_type: Instance payment method, Subscription: prepaid, monthly package; PayAsYouGo: Pay as you go.
-        :param pulumi.Input[int] period: The duration of purchasing resources. If PeriodUnit is not specified, it defaults to purchasing on a monthly basis. Currently, only days and months are supported. If PeriodUnit=Day, Period can only be 3. If PeriodUnit=Monthc, then Period can be 1-9,12.
-        :param pulumi.Input[str] period_unit: The unit of time for purchasing resources. If PeriodUnit is not specified, it defaults to purchasing by Month. Currently, only days and months are supported. If PeriodUnit=Day, Period can only be 3. If PeriodUnit=Month, then Period can be 1-9,12.
-        :param pulumi.Input[bool] public_ip_identification: Whether to allocate public IP. Value：true (default): can be assigned，false: cannot be assigned.
-        :param pulumi.Input[str] quantity: Number of instances.
-        :param pulumi.Input[str] schedule_area_level: Scheduling level, which is used to perform node level or regional scheduling.
-        :param pulumi.Input[str] scheduling_price_strategy: Dispatch price strategy. If left blank, it defaults to prioritizing low prices. Values: PriceLowPriority (priority high price), PriceLowPriority (priority low price).
-        :param pulumi.Input[str] scheduling_strategy: When scheduling at the node level, it is Concentrate. When scheduling at the regional level, it is selected according to customer needs. Concentrate: Centralized; Disperse: Disperse.
-        :param pulumi.Input[str] status: the status of the resource.
-        :param pulumi.Input[pulumi.InputType['InstanceSystemDiskArgs']] system_disk: The field representing the system disk specification. SystemDisk is a non-required parameter when InstanceType is x86_pm,x86_bmi,x86_bm,pc_bmi, or arm_bmi. SystemDisk is a required parameter when instanceType is other specification families. See `system_disk` below.
-        :param pulumi.Input[bool] unique_suffix: Specifies whether to automatically append sequential suffixes to the hostnames specified by the HostName parameter and instance names specified by the InstanceName parameter when you create multiple instances at a time. The sequential suffix ranges from 001 to 999. Valid values:  true false Default value: false.
-        :param pulumi.Input[str] user_data: User defined data, with a maximum support of 16KB. You can input UserData information. UserData encoded in Base64 format.
+        :param pulumi.Input[str] payment_type: Instance payment method. Optional values:
+               - Subscription: prepaid, annual and monthly
+               - PayAsYouGo: Pay by volume.
+        :param pulumi.Input[int] period: The duration of the resource purchase. Value method:
+               - If PeriodUnit is set to Day, Period can only be set to 3.
+               - If PeriodUnit is set to Month, Period can be set to 1-9,12.
+        :param pulumi.Input[str] period_unit: The unit of time for purchasing resources. Value:
+               - Month (default): purchase by Month
+               - Day: buy by Day.
+        :param pulumi.Input[str] private_ip_address: The private IP address. Can only be used for node-level scheduling. If a private IP address is specified, the number of instances can only be one, and both the private IP address and the vSwitch ID are not empty, the private IP address takes effect.
+        :param pulumi.Input[bool] public_ip_identification: Whether to assign a public IP identifier. Value:
+               - true (default): Assign
+               - false: do not assign.
+        :param pulumi.Input[str] schedule_area_level: Scheduling level, through which node-level scheduling or area scheduling is performed. Optional values:
+               - Node-level scheduling: Region
+               - Regional scheduling: Big (region),Middle (province),Small (city).
+        :param pulumi.Input[str] scheduling_price_strategy: Scheduling price policy. If it is not filled in, the default priority is low price. Value:
+               - PriceLowPriority
+               - PriceLowPriority (priority low price).
+        :param pulumi.Input[str] scheduling_strategy: Scheduling policy. Optional values:
+               - Concentrate for node-level scheduling
+               - For regional scheduling, Concentrate, Disperse.
+        :param pulumi.Input[str] security_id: ID of the security group to which the instance belongs.
+        :param pulumi.Input[str] status: Status of the instance.
+        :param pulumi.Input[pulumi.InputType['InstanceSystemDiskArgs']] system_disk: System Disk Specification. SystemDisk is a non-required parameter when InstanceType is x86_pm,x86_bmi,x86_bm,pc_bmi, or arm_bmi. SystemDisk is a required parameter when instanceType is other specification families. See `system_disk` below.
+        :param pulumi.Input[bool] unique_suffix: Indicates whether to add an ordered suffix to HostName and InstanceName. The ordered suffix starts from 001 and cannot exceed 999.
+        :param pulumi.Input[str] user_data: User-defined data, maximum support 16KB. You can pass in the UserData information. The UserData is encoded in Base64 format.
+        :param pulumi.Input[str] vswitch_id: The ID of the vSwitch to which the instance belongs. Can only be used in node-level scheduling.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _InstanceState.__new__(_InstanceState)
 
+        __props__.__dict__["amount"] = amount
         __props__.__dict__["auto_renew"] = auto_renew
+        __props__.__dict__["auto_use_coupon"] = auto_use_coupon
+        __props__.__dict__["billing_cycle"] = billing_cycle
         __props__.__dict__["carrier"] = carrier
         __props__.__dict__["data_disks"] = data_disks
         __props__.__dict__["ens_region_id"] = ens_region_id
+        __props__.__dict__["force_stop"] = force_stop
         __props__.__dict__["host_name"] = host_name
         __props__.__dict__["image_id"] = image_id
+        __props__.__dict__["include_data_disks"] = include_data_disks
         __props__.__dict__["instance_charge_strategy"] = instance_charge_strategy
         __props__.__dict__["instance_name"] = instance_name
         __props__.__dict__["instance_type"] = instance_type
         __props__.__dict__["internet_charge_type"] = internet_charge_type
         __props__.__dict__["internet_max_bandwidth_out"] = internet_max_bandwidth_out
+        __props__.__dict__["ip_type"] = ip_type
         __props__.__dict__["net_district_code"] = net_district_code
+        __props__.__dict__["net_work_id"] = net_work_id
         __props__.__dict__["password"] = password
         __props__.__dict__["password_inherit"] = password_inherit
         __props__.__dict__["payment_type"] = payment_type
         __props__.__dict__["period"] = period
         __props__.__dict__["period_unit"] = period_unit
+        __props__.__dict__["private_ip_address"] = private_ip_address
         __props__.__dict__["public_ip_identification"] = public_ip_identification
-        __props__.__dict__["quantity"] = quantity
         __props__.__dict__["schedule_area_level"] = schedule_area_level
         __props__.__dict__["scheduling_price_strategy"] = scheduling_price_strategy
         __props__.__dict__["scheduling_strategy"] = scheduling_strategy
+        __props__.__dict__["security_id"] = security_id
         __props__.__dict__["status"] = status
         __props__.__dict__["system_disk"] = system_disk
         __props__.__dict__["unique_suffix"] = unique_suffix
         __props__.__dict__["user_data"] = user_data
+        __props__.__dict__["vswitch_id"] = vswitch_id
         return Instance(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter
+    def amount(self) -> pulumi.Output[Optional[int]]:
+        """
+        The number of instances created, with a minimum of 1 and a maximum of 100.
+        """
+        return pulumi.get(self, "amount")
 
     @property
     @pulumi.getter(name="autoRenew")
     def auto_renew(self) -> pulumi.Output[Optional[bool]]:
         """
-        Whether to automatically renew, default to False, this parameter is invalid when paying by volume.
+        Whether to automatically renew the logo. The default value is false. This parameter is invalid when you pay by volume.
         """
         return pulumi.get(self, "auto_renew")
+
+    @property
+    @pulumi.getter(name="autoUseCoupon")
+    def auto_use_coupon(self) -> pulumi.Output[Optional[str]]:
+        """
+        Whether to use vouchers. The default is to use. Value:
+        - true (used)
+        - false (not used).
+        """
+        return pulumi.get(self, "auto_use_coupon")
+
+    @property
+    @pulumi.getter(name="billingCycle")
+    def billing_cycle(self) -> pulumi.Output[Optional[str]]:
+        """
+        The billing cycle for instance computing resources. Only instance-level pay-as-you-go is supported. Value
+        - Hour: hourly billing
+        - Day: Daily billing
+        - Month: monthly billing.
+        """
+        return pulumi.get(self, "billing_cycle")
 
     @property
     @pulumi.getter
     def carrier(self) -> pulumi.Output[Optional[str]]:
         """
-        Operator, required for regional level scheduling, invalid for node level scheduling.
+        Operator, required for regional scheduling. Optional values:
+        - cmcc (mobile)
+        - unicom
+        - telecom.
         """
         return pulumi.get(self, "carrier")
 
     @property
     @pulumi.getter(name="dataDisks")
-    def data_disks(self) -> pulumi.Output[Optional[Sequence['outputs.InstanceDataDisk']]]:
+    def data_disks(self) -> pulumi.Output[Sequence['outputs.InstanceDataDisk']]:
         """
         Data disk specifications. See `data_disk` below.
         """
@@ -1137,17 +1725,27 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="ensRegionId")
-    def ens_region_id(self) -> pulumi.Output[Optional[str]]:
+    def ens_region_id(self) -> pulumi.Output[str]:
         """
-        Node id. When ScheduleAreaLevel is Region, EnsRegionId is required. When ScheduleAreaLevel is Big, Middle, Small, EnsRegionId is not required.
+        The node ID. When ScheduleAreaLevel is Region, EnsRegionId is required. When ScheduleAreaLevel is Big,Middle,Small, EnsRegionId is invalid.
         """
         return pulumi.get(self, "ens_region_id")
+
+    @property
+    @pulumi.getter(name="forceStop")
+    def force_stop(self) -> pulumi.Output[Optional[str]]:
+        """
+        Whether to force the identity when operating the instance. Optional values:
+        - true: Force
+        - false (default): non-mandatory
+        """
+        return pulumi.get(self, "force_stop")
 
     @property
     @pulumi.getter(name="hostName")
     def host_name(self) -> pulumi.Output[str]:
         """
-        Host Name.
+        The host name of the instance. Example value: test-HostName.
         """
         return pulumi.get(self, "host_name")
 
@@ -1155,23 +1753,33 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="imageId")
     def image_id(self) -> pulumi.Output[Optional[str]]:
         """
-        The Image Id field. If InstanceType is arm_bmi, the image Id is a non-required parameter. If instanceType is another specification value, the image Id is a required parameter.
+        The image ID of the instance. The arm version card cannot be filled in. Other specifications are required. Example value: m-5si16wo6simkt267p8b7h * * * *.
         """
         return pulumi.get(self, "image_id")
+
+    @property
+    @pulumi.getter(name="includeDataDisks")
+    def include_data_disks(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Whether the Payment type of the disk created with the instance is converted.
+        """
+        return pulumi.get(self, "include_data_disks")
 
     @property
     @pulumi.getter(name="instanceChargeStrategy")
     def instance_charge_strategy(self) -> pulumi.Output[Optional[str]]:
         """
-        Instance billing strategy, instance: instance granularity (prepaid method currently does not support instance), user: by user dimension (not transferred or prepaid method supports user).
+        The instance billing policy. Optional values:
+        - instance: instance granularity (the subscription method does not support instance)
+        - user: user Dimension (user is not transmitted or supported in the prepaid mode).
         """
         return pulumi.get(self, "instance_charge_strategy")
 
     @property
     @pulumi.getter(name="instanceName")
-    def instance_name(self) -> pulumi.Output[Optional[str]]:
+    def instance_name(self) -> pulumi.Output[str]:
         """
-        The instance name. It must be 2 to 128 characters in length and must start with an uppercase or lowercase letter or a Chinese character. It cannot start with http:// or https. It can contain Chinese, English, numbers, half-width colons (:), underscores (_), periods (.), or hyphens (-). The default value is the InstanceId of the instance.
+        The instance name. Example value: test-InstanceName. It must be 2 to 128 characters in length and must start with an uppercase or lowercase letter or a Chinese character. It cannot start with http:// or https. Can contain Chinese, English, numbers, half-width colons (:), underscores (_), periods (.), or hyphens (-) The default value is the InstanceId of the instance. .
         """
         return pulumi.get(self, "instance_name")
 
@@ -1179,7 +1787,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="instanceType")
     def instance_type(self) -> pulumi.Output[str]:
         """
-        Instance specifications type.
+        The specification of the instance. Example value: ens.sn1.small.
         """
         return pulumi.get(self, "instance_type")
 
@@ -1187,7 +1795,9 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="internetChargeType")
     def internet_charge_type(self) -> pulumi.Output[Optional[str]]:
         """
-        Instance Charge type.it could be BandwidthByDay, 95BandwidthByMonth, PayByBandwidth4thMonth.
+        Instance bandwidth billing method. If the billing method can be selected for the first purchase, the subsequent value of this field will be processed by default according to the billing method selected for the first time. Optional values:
+        - BandwidthByDay: Daily peak bandwidth
+        - 95bandwidthbymonth: 95 peak bandwidth.
         """
         return pulumi.get(self, "internet_charge_type")
 
@@ -1195,23 +1805,42 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="internetMaxBandwidthOut")
     def internet_max_bandwidth_out(self) -> pulumi.Output[int]:
         """
-        The maximum public network bandwidth.
+        Maximum public network bandwidth. The field type is Long, and the precision may be lost during serialization/deserialization. Please note that the value must not be greater than 9007199254740991.
         """
         return pulumi.get(self, "internet_max_bandwidth_out")
+
+    @property
+    @pulumi.getter(name="ipType")
+    def ip_type(self) -> pulumi.Output[Optional[str]]:
+        """
+        The IP type. Value:
+        - ipv4 (default):IPv4
+        - ipv6:IPv6
+        - ipv4Andipv6:IPv4 and IPv6.
+        """
+        return pulumi.get(self, "ip_type")
 
     @property
     @pulumi.getter(name="netDistrictCode")
     def net_district_code(self) -> pulumi.Output[Optional[str]]:
         """
-        Region code, required for regional level scheduling, invalid for node level scheduling.
+        The area code. Example value: 350000. Required for regional-level scheduling, invalid for node-level scheduling.
         """
         return pulumi.get(self, "net_district_code")
+
+    @property
+    @pulumi.getter(name="netWorkId")
+    def net_work_id(self) -> pulumi.Output[str]:
+        """
+        The network ID of the instance. Can only be used in node-level scheduling.
+        """
+        return pulumi.get(self, "net_work_id")
 
     @property
     @pulumi.getter
     def password(self) -> pulumi.Output[Optional[str]]:
         """
-        The password of the instance。It is 8 to 30 characters in length and must contain three types of characters: uppercase and lowercase letters, numbers, and special symbols. The following special symbols can be set: '''()'~! @#$%^& *-_+ =|{}[]:;',.? /'''.
+        The instance password. At least one of Password, KeyPairName, and PasswordInherit.
         """
         return pulumi.get(self, "password")
 
@@ -1227,7 +1856,9 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="paymentType")
     def payment_type(self) -> pulumi.Output[str]:
         """
-        Instance payment method, Subscription: prepaid, monthly package; PayAsYouGo: Pay as you go.
+        Instance payment method. Optional values:
+        - Subscription: prepaid, annual and monthly
+        - PayAsYouGo: Pay by volume.
         """
         return pulumi.get(self, "payment_type")
 
@@ -1235,7 +1866,9 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter
     def period(self) -> pulumi.Output[Optional[int]]:
         """
-        The duration of purchasing resources. If PeriodUnit is not specified, it defaults to purchasing on a monthly basis. Currently, only days and months are supported. If PeriodUnit=Day, Period can only be 3. If PeriodUnit=Monthc, then Period can be 1-9,12.
+        The duration of the resource purchase. Value method:
+        - If PeriodUnit is set to Day, Period can only be set to 3.
+        - If PeriodUnit is set to Month, Period can be set to 1-9,12.
         """
         return pulumi.get(self, "period")
 
@@ -1243,31 +1876,37 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="periodUnit")
     def period_unit(self) -> pulumi.Output[Optional[str]]:
         """
-        The unit of time for purchasing resources. If PeriodUnit is not specified, it defaults to purchasing by Month. Currently, only days and months are supported. If PeriodUnit=Day, Period can only be 3. If PeriodUnit=Month, then Period can be 1-9,12.
+        The unit of time for purchasing resources. Value:
+        - Month (default): purchase by Month
+        - Day: buy by Day.
         """
         return pulumi.get(self, "period_unit")
+
+    @property
+    @pulumi.getter(name="privateIpAddress")
+    def private_ip_address(self) -> pulumi.Output[str]:
+        """
+        The private IP address. Can only be used for node-level scheduling. If a private IP address is specified, the number of instances can only be one, and both the private IP address and the vSwitch ID are not empty, the private IP address takes effect.
+        """
+        return pulumi.get(self, "private_ip_address")
 
     @property
     @pulumi.getter(name="publicIpIdentification")
     def public_ip_identification(self) -> pulumi.Output[Optional[bool]]:
         """
-        Whether to allocate public IP. Value：true (default): can be assigned，false: cannot be assigned.
+        Whether to assign a public IP identifier. Value:
+        - true (default): Assign
+        - false: do not assign.
         """
         return pulumi.get(self, "public_ip_identification")
-
-    @property
-    @pulumi.getter
-    def quantity(self) -> pulumi.Output[Optional[str]]:
-        """
-        Number of instances.
-        """
-        return pulumi.get(self, "quantity")
 
     @property
     @pulumi.getter(name="scheduleAreaLevel")
     def schedule_area_level(self) -> pulumi.Output[str]:
         """
-        Scheduling level, which is used to perform node level or regional scheduling.
+        Scheduling level, through which node-level scheduling or area scheduling is performed. Optional values:
+        - Node-level scheduling: Region
+        - Regional scheduling: Big (region),Middle (province),Small (city).
         """
         return pulumi.get(self, "schedule_area_level")
 
@@ -1275,7 +1914,9 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="schedulingPriceStrategy")
     def scheduling_price_strategy(self) -> pulumi.Output[Optional[str]]:
         """
-        Dispatch price strategy. If left blank, it defaults to prioritizing low prices. Values: PriceLowPriority (priority high price), PriceLowPriority (priority low price).
+        Scheduling price policy. If it is not filled in, the default priority is low price. Value:
+        - PriceLowPriority
+        - PriceLowPriority (priority low price).
         """
         return pulumi.get(self, "scheduling_price_strategy")
 
@@ -1283,15 +1924,25 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="schedulingStrategy")
     def scheduling_strategy(self) -> pulumi.Output[Optional[str]]:
         """
-        When scheduling at the node level, it is Concentrate. When scheduling at the regional level, it is selected according to customer needs. Concentrate: Centralized; Disperse: Disperse.
+        Scheduling policy. Optional values:
+        - Concentrate for node-level scheduling
+        - For regional scheduling, Concentrate, Disperse.
         """
         return pulumi.get(self, "scheduling_strategy")
+
+    @property
+    @pulumi.getter(name="securityId")
+    def security_id(self) -> pulumi.Output[str]:
+        """
+        ID of the security group to which the instance belongs.
+        """
+        return pulumi.get(self, "security_id")
 
     @property
     @pulumi.getter
     def status(self) -> pulumi.Output[str]:
         """
-        the status of the resource.
+        Status of the instance.
         """
         return pulumi.get(self, "status")
 
@@ -1299,7 +1950,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="systemDisk")
     def system_disk(self) -> pulumi.Output[Optional['outputs.InstanceSystemDisk']]:
         """
-        The field representing the system disk specification. SystemDisk is a non-required parameter when InstanceType is x86_pm,x86_bmi,x86_bm,pc_bmi, or arm_bmi. SystemDisk is a required parameter when instanceType is other specification families. See `system_disk` below.
+        System Disk Specification. SystemDisk is a non-required parameter when InstanceType is x86_pm,x86_bmi,x86_bm,pc_bmi, or arm_bmi. SystemDisk is a required parameter when instanceType is other specification families. See `system_disk` below.
         """
         return pulumi.get(self, "system_disk")
 
@@ -1307,7 +1958,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="uniqueSuffix")
     def unique_suffix(self) -> pulumi.Output[Optional[bool]]:
         """
-        Specifies whether to automatically append sequential suffixes to the hostnames specified by the HostName parameter and instance names specified by the InstanceName parameter when you create multiple instances at a time. The sequential suffix ranges from 001 to 999. Valid values:  true false Default value: false.
+        Indicates whether to add an ordered suffix to HostName and InstanceName. The ordered suffix starts from 001 and cannot exceed 999.
         """
         return pulumi.get(self, "unique_suffix")
 
@@ -1315,7 +1966,15 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="userData")
     def user_data(self) -> pulumi.Output[Optional[str]]:
         """
-        User defined data, with a maximum support of 16KB. You can input UserData information. UserData encoded in Base64 format.
+        User-defined data, maximum support 16KB. You can pass in the UserData information. The UserData is encoded in Base64 format.
         """
         return pulumi.get(self, "user_data")
+
+    @property
+    @pulumi.getter(name="vswitchId")
+    def vswitch_id(self) -> pulumi.Output[str]:
+        """
+        The ID of the vSwitch to which the instance belongs. Can only be used in node-level scheduling.
+        """
+        return pulumi.get(self, "vswitch_id")
 

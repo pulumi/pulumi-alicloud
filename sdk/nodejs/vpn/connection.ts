@@ -7,76 +7,12 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const config = new pulumi.Config();
- * const name = config.get("name") || "tf-example";
- * const defaultZones = alicloud.getZones({
- *     availableResourceCreation: "VSwitch",
- * });
- * const defaultNetworks = alicloud.vpc.getNetworks({
- *     nameRegex: "^default-NODELETING$",
- * });
- * const defaultSwitches = Promise.all([defaultNetworks, defaultZones]).then(([defaultNetworks, defaultZones]) => alicloud.vpc.getSwitches({
- *     vpcId: defaultNetworks.ids?.[0],
- *     zoneId: defaultZones.ids?.[0],
- * }));
- * const fooGateway = new alicloud.vpn.Gateway("fooGateway", {
- *     vpcId: defaultNetworks.then(defaultNetworks => defaultNetworks.ids?.[0]),
- *     bandwidth: 10,
- *     enableSsl: true,
- *     instanceChargeType: "PrePaid",
- *     description: "test_create_description",
- *     vswitchId: defaultSwitches.then(defaultSwitches => defaultSwitches.ids?.[0]),
- * });
- * const fooCustomerGateway = new alicloud.vpn.CustomerGateway("fooCustomerGateway", {
- *     ipAddress: "42.104.22.210",
- *     description: name,
- * });
- * const fooConnection = new alicloud.vpn.Connection("fooConnection", {
- *     vpnGatewayId: fooGateway.id,
- *     customerGatewayId: fooCustomerGateway.id,
- *     localSubnets: [
- *         "172.16.0.0/24",
- *         "172.16.1.0/24",
- *     ],
- *     remoteSubnets: [
- *         "10.0.0.0/24",
- *         "10.0.1.0/24",
- *     ],
- *     effectImmediately: true,
- *     ikeConfig: {
- *         ikeAuthAlg: "md5",
- *         ikeEncAlg: "des",
- *         ikeVersion: "ikev2",
- *         ikeMode: "main",
- *         ikeLifetime: 86400,
- *         psk: "tf-testvpn2",
- *         ikePfs: "group1",
- *         ikeRemoteId: "testbob2",
- *         ikeLocalId: "testalice2",
- *     },
- *     ipsecConfig: {
- *         ipsecPfs: "group5",
- *         ipsecEncAlg: "des",
- *         ipsecAuthAlg: "md5",
- *         ipsecLifetime: 8640,
- *     },
- * });
- * ```
- *
  * ## Import
  *
  * VPN connection can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:vpn/connection:Connection example vco-abc123456
+ *  $ pulumi import alicloud:vpn/connection:Connection example <id>
  * ```
  */
 export class Connection extends pulumi.CustomResource {
@@ -108,35 +44,49 @@ export class Connection extends pulumi.CustomResource {
     }
 
     /**
-     * The configurations of the BGP routing protocol. See `bgpConfig` below.
+     * Whether to configure routing automatically. Value:
+     * - **true**: Automatically configure routes.
+     * - **false**: does not automatically configure routes.
+     */
+    public readonly autoConfigRoute!: pulumi.Output<boolean | undefined>;
+    /**
+     * vpnBgp configuration. See `bgpConfig` below.
      */
     public readonly bgpConfig!: pulumi.Output<outputs.vpn.ConnectionBgpConfig>;
     /**
+     * The time when the IPsec-VPN connection was created.
+     */
+    public /*out*/ readonly createTime!: pulumi.Output<number>;
+    /**
      * The ID of the customer gateway.
      */
-    public readonly customerGatewayId!: pulumi.Output<string>;
+    public readonly customerGatewayId!: pulumi.Output<string | undefined>;
     /**
-     * Whether to delete a successfully negotiated IPsec tunnel and initiate a negotiation again. Valid value:true,false.
+     * Indicates whether IPsec-VPN negotiations are initiated immediately. Valid values.
      */
     public readonly effectImmediately!: pulumi.Output<boolean | undefined>;
     /**
-     * Specifies whether to enable the dead peer detection (DPD) feature. Valid values: `true`(default), `false`.
+     * Wether enable Dpd detection.
      */
     public readonly enableDpd!: pulumi.Output<boolean>;
     /**
-     * Specifies whether to enable NAT traversal. Valid values: `true`(default), `false`.
+     * enable nat traversal.
      */
     public readonly enableNatTraversal!: pulumi.Output<boolean>;
     /**
-     * The health check configurations. See `healthCheckConfig` below.
+     * Enable tunnel bgp.
+     */
+    public readonly enableTunnelsBgp!: pulumi.Output<boolean>;
+    /**
+     * Health Check information. See `healthCheckConfig` below.
      */
     public readonly healthCheckConfig!: pulumi.Output<outputs.vpn.ConnectionHealthCheckConfig>;
     /**
-     * The configurations of phase-one negotiation. See `ikeConfig` below.
+     * The configuration of Phase 1 negotiations. See `ikeConfig` below.
      */
     public readonly ikeConfig!: pulumi.Output<outputs.vpn.ConnectionIkeConfig>;
     /**
-     * The configurations of phase-two negotiation. See `ipsecConfig` below.
+     * IPsec configuration. See `ipsecConfig` below.
      */
     public readonly ipsecConfig!: pulumi.Output<outputs.vpn.ConnectionIpsecConfig>;
     /**
@@ -144,19 +94,45 @@ export class Connection extends pulumi.CustomResource {
      */
     public readonly localSubnets!: pulumi.Output<string[]>;
     /**
-     * The name of the IPsec connection.
+     * . Field 'name' has been deprecated from provider version 1.216.0. New field 'vpn_connection_name' instead.
+     *
+     * @deprecated Field 'name' has been deprecated since provider version 1.216.0. New field 'vpn_connection_name' instead.
      */
     public readonly name!: pulumi.Output<string>;
+    /**
+     * The network type of the IPsec connection. Value:
+     * - **public**: public network, indicating that the IPsec connection establishes an encrypted communication channel through the public network.
+     * - **private**: private network, indicating that the IPsec connection establishes an encrypted communication channel through the private network.
+     */
+    public readonly networkType!: pulumi.Output<string | undefined>;
     /**
      * The CIDR block of the local data center. This parameter is used for phase-two negotiation.
      */
     public readonly remoteSubnets!: pulumi.Output<string[]>;
     /**
-     * The status of VPN connection.
+     * The ID of the resource group.
+     */
+    public /*out*/ readonly resourceGroupId!: pulumi.Output<string>;
+    /**
+     * The negotiation status of Tunnel.
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
     /**
+     * Tags.
+     */
+    public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
+    /**
+     * The tunnel options of IPsec. See `tunnelOptionsSpecification` below.
+     */
+    public readonly tunnelOptionsSpecifications!: pulumi.Output<outputs.vpn.ConnectionTunnelOptionsSpecification[] | undefined>;
+    /**
+     * The name of the IPsec-VPN connection.
+     */
+    public readonly vpnConnectionName!: pulumi.Output<string>;
+    /**
      * The ID of the VPN gateway.
+     *
+     * The following arguments will be discarded. Please use new fields as soon as possible:
      */
     public readonly vpnGatewayId!: pulumi.Output<string>;
 
@@ -173,24 +149,29 @@ export class Connection extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ConnectionState | undefined;
+            resourceInputs["autoConfigRoute"] = state ? state.autoConfigRoute : undefined;
             resourceInputs["bgpConfig"] = state ? state.bgpConfig : undefined;
+            resourceInputs["createTime"] = state ? state.createTime : undefined;
             resourceInputs["customerGatewayId"] = state ? state.customerGatewayId : undefined;
             resourceInputs["effectImmediately"] = state ? state.effectImmediately : undefined;
             resourceInputs["enableDpd"] = state ? state.enableDpd : undefined;
             resourceInputs["enableNatTraversal"] = state ? state.enableNatTraversal : undefined;
+            resourceInputs["enableTunnelsBgp"] = state ? state.enableTunnelsBgp : undefined;
             resourceInputs["healthCheckConfig"] = state ? state.healthCheckConfig : undefined;
             resourceInputs["ikeConfig"] = state ? state.ikeConfig : undefined;
             resourceInputs["ipsecConfig"] = state ? state.ipsecConfig : undefined;
             resourceInputs["localSubnets"] = state ? state.localSubnets : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["networkType"] = state ? state.networkType : undefined;
             resourceInputs["remoteSubnets"] = state ? state.remoteSubnets : undefined;
+            resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
             resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["tunnelOptionsSpecifications"] = state ? state.tunnelOptionsSpecifications : undefined;
+            resourceInputs["vpnConnectionName"] = state ? state.vpnConnectionName : undefined;
             resourceInputs["vpnGatewayId"] = state ? state.vpnGatewayId : undefined;
         } else {
             const args = argsOrState as ConnectionArgs | undefined;
-            if ((!args || args.customerGatewayId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'customerGatewayId'");
-            }
             if ((!args || args.localSubnets === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'localSubnets'");
             }
@@ -200,18 +181,26 @@ export class Connection extends pulumi.CustomResource {
             if ((!args || args.vpnGatewayId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'vpnGatewayId'");
             }
+            resourceInputs["autoConfigRoute"] = args ? args.autoConfigRoute : undefined;
             resourceInputs["bgpConfig"] = args ? args.bgpConfig : undefined;
             resourceInputs["customerGatewayId"] = args ? args.customerGatewayId : undefined;
             resourceInputs["effectImmediately"] = args ? args.effectImmediately : undefined;
             resourceInputs["enableDpd"] = args ? args.enableDpd : undefined;
             resourceInputs["enableNatTraversal"] = args ? args.enableNatTraversal : undefined;
+            resourceInputs["enableTunnelsBgp"] = args ? args.enableTunnelsBgp : undefined;
             resourceInputs["healthCheckConfig"] = args ? args.healthCheckConfig : undefined;
             resourceInputs["ikeConfig"] = args ? args.ikeConfig : undefined;
             resourceInputs["ipsecConfig"] = args ? args.ipsecConfig : undefined;
             resourceInputs["localSubnets"] = args ? args.localSubnets : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["networkType"] = args ? args.networkType : undefined;
             resourceInputs["remoteSubnets"] = args ? args.remoteSubnets : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["tunnelOptionsSpecifications"] = args ? args.tunnelOptionsSpecifications : undefined;
+            resourceInputs["vpnConnectionName"] = args ? args.vpnConnectionName : undefined;
             resourceInputs["vpnGatewayId"] = args ? args.vpnGatewayId : undefined;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["resourceGroupId"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -224,35 +213,49 @@ export class Connection extends pulumi.CustomResource {
  */
 export interface ConnectionState {
     /**
-     * The configurations of the BGP routing protocol. See `bgpConfig` below.
+     * Whether to configure routing automatically. Value:
+     * - **true**: Automatically configure routes.
+     * - **false**: does not automatically configure routes.
+     */
+    autoConfigRoute?: pulumi.Input<boolean>;
+    /**
+     * vpnBgp configuration. See `bgpConfig` below.
      */
     bgpConfig?: pulumi.Input<inputs.vpn.ConnectionBgpConfig>;
+    /**
+     * The time when the IPsec-VPN connection was created.
+     */
+    createTime?: pulumi.Input<number>;
     /**
      * The ID of the customer gateway.
      */
     customerGatewayId?: pulumi.Input<string>;
     /**
-     * Whether to delete a successfully negotiated IPsec tunnel and initiate a negotiation again. Valid value:true,false.
+     * Indicates whether IPsec-VPN negotiations are initiated immediately. Valid values.
      */
     effectImmediately?: pulumi.Input<boolean>;
     /**
-     * Specifies whether to enable the dead peer detection (DPD) feature. Valid values: `true`(default), `false`.
+     * Wether enable Dpd detection.
      */
     enableDpd?: pulumi.Input<boolean>;
     /**
-     * Specifies whether to enable NAT traversal. Valid values: `true`(default), `false`.
+     * enable nat traversal.
      */
     enableNatTraversal?: pulumi.Input<boolean>;
     /**
-     * The health check configurations. See `healthCheckConfig` below.
+     * Enable tunnel bgp.
+     */
+    enableTunnelsBgp?: pulumi.Input<boolean>;
+    /**
+     * Health Check information. See `healthCheckConfig` below.
      */
     healthCheckConfig?: pulumi.Input<inputs.vpn.ConnectionHealthCheckConfig>;
     /**
-     * The configurations of phase-one negotiation. See `ikeConfig` below.
+     * The configuration of Phase 1 negotiations. See `ikeConfig` below.
      */
     ikeConfig?: pulumi.Input<inputs.vpn.ConnectionIkeConfig>;
     /**
-     * The configurations of phase-two negotiation. See `ipsecConfig` below.
+     * IPsec configuration. See `ipsecConfig` below.
      */
     ipsecConfig?: pulumi.Input<inputs.vpn.ConnectionIpsecConfig>;
     /**
@@ -260,19 +263,45 @@ export interface ConnectionState {
      */
     localSubnets?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The name of the IPsec connection.
+     * . Field 'name' has been deprecated from provider version 1.216.0. New field 'vpn_connection_name' instead.
+     *
+     * @deprecated Field 'name' has been deprecated since provider version 1.216.0. New field 'vpn_connection_name' instead.
      */
     name?: pulumi.Input<string>;
+    /**
+     * The network type of the IPsec connection. Value:
+     * - **public**: public network, indicating that the IPsec connection establishes an encrypted communication channel through the public network.
+     * - **private**: private network, indicating that the IPsec connection establishes an encrypted communication channel through the private network.
+     */
+    networkType?: pulumi.Input<string>;
     /**
      * The CIDR block of the local data center. This parameter is used for phase-two negotiation.
      */
     remoteSubnets?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The status of VPN connection.
+     * The ID of the resource group.
+     */
+    resourceGroupId?: pulumi.Input<string>;
+    /**
+     * The negotiation status of Tunnel.
      */
     status?: pulumi.Input<string>;
     /**
+     * Tags.
+     */
+    tags?: pulumi.Input<{[key: string]: any}>;
+    /**
+     * The tunnel options of IPsec. See `tunnelOptionsSpecification` below.
+     */
+    tunnelOptionsSpecifications?: pulumi.Input<pulumi.Input<inputs.vpn.ConnectionTunnelOptionsSpecification>[]>;
+    /**
+     * The name of the IPsec-VPN connection.
+     */
+    vpnConnectionName?: pulumi.Input<string>;
+    /**
      * The ID of the VPN gateway.
+     *
+     * The following arguments will be discarded. Please use new fields as soon as possible:
      */
     vpnGatewayId?: pulumi.Input<string>;
 }
@@ -282,35 +311,45 @@ export interface ConnectionState {
  */
 export interface ConnectionArgs {
     /**
-     * The configurations of the BGP routing protocol. See `bgpConfig` below.
+     * Whether to configure routing automatically. Value:
+     * - **true**: Automatically configure routes.
+     * - **false**: does not automatically configure routes.
+     */
+    autoConfigRoute?: pulumi.Input<boolean>;
+    /**
+     * vpnBgp configuration. See `bgpConfig` below.
      */
     bgpConfig?: pulumi.Input<inputs.vpn.ConnectionBgpConfig>;
     /**
      * The ID of the customer gateway.
      */
-    customerGatewayId: pulumi.Input<string>;
+    customerGatewayId?: pulumi.Input<string>;
     /**
-     * Whether to delete a successfully negotiated IPsec tunnel and initiate a negotiation again. Valid value:true,false.
+     * Indicates whether IPsec-VPN negotiations are initiated immediately. Valid values.
      */
     effectImmediately?: pulumi.Input<boolean>;
     /**
-     * Specifies whether to enable the dead peer detection (DPD) feature. Valid values: `true`(default), `false`.
+     * Wether enable Dpd detection.
      */
     enableDpd?: pulumi.Input<boolean>;
     /**
-     * Specifies whether to enable NAT traversal. Valid values: `true`(default), `false`.
+     * enable nat traversal.
      */
     enableNatTraversal?: pulumi.Input<boolean>;
     /**
-     * The health check configurations. See `healthCheckConfig` below.
+     * Enable tunnel bgp.
+     */
+    enableTunnelsBgp?: pulumi.Input<boolean>;
+    /**
+     * Health Check information. See `healthCheckConfig` below.
      */
     healthCheckConfig?: pulumi.Input<inputs.vpn.ConnectionHealthCheckConfig>;
     /**
-     * The configurations of phase-one negotiation. See `ikeConfig` below.
+     * The configuration of Phase 1 negotiations. See `ikeConfig` below.
      */
     ikeConfig?: pulumi.Input<inputs.vpn.ConnectionIkeConfig>;
     /**
-     * The configurations of phase-two negotiation. See `ipsecConfig` below.
+     * IPsec configuration. See `ipsecConfig` below.
      */
     ipsecConfig?: pulumi.Input<inputs.vpn.ConnectionIpsecConfig>;
     /**
@@ -318,15 +357,37 @@ export interface ConnectionArgs {
      */
     localSubnets: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The name of the IPsec connection.
+     * . Field 'name' has been deprecated from provider version 1.216.0. New field 'vpn_connection_name' instead.
+     *
+     * @deprecated Field 'name' has been deprecated since provider version 1.216.0. New field 'vpn_connection_name' instead.
      */
     name?: pulumi.Input<string>;
+    /**
+     * The network type of the IPsec connection. Value:
+     * - **public**: public network, indicating that the IPsec connection establishes an encrypted communication channel through the public network.
+     * - **private**: private network, indicating that the IPsec connection establishes an encrypted communication channel through the private network.
+     */
+    networkType?: pulumi.Input<string>;
     /**
      * The CIDR block of the local data center. This parameter is used for phase-two negotiation.
      */
     remoteSubnets: pulumi.Input<pulumi.Input<string>[]>;
     /**
+     * Tags.
+     */
+    tags?: pulumi.Input<{[key: string]: any}>;
+    /**
+     * The tunnel options of IPsec. See `tunnelOptionsSpecification` below.
+     */
+    tunnelOptionsSpecifications?: pulumi.Input<pulumi.Input<inputs.vpn.ConnectionTunnelOptionsSpecification>[]>;
+    /**
+     * The name of the IPsec-VPN connection.
+     */
+    vpnConnectionName?: pulumi.Input<string>;
+    /**
      * The ID of the VPN gateway.
+     *
+     * The following arguments will be discarded. Please use new fields as soon as possible:
      */
     vpnGatewayId: pulumi.Input<string>;
 }

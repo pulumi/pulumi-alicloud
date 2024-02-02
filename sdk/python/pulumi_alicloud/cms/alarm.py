@@ -28,50 +28,42 @@ class AlarmArgs:
                  escalations_warn: Optional[pulumi.Input['AlarmEscalationsWarnArgs']] = None,
                  metric_dimensions: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 operator: Optional[pulumi.Input[str]] = None,
                  period: Optional[pulumi.Input[int]] = None,
                  prometheuses: Optional[pulumi.Input[Sequence[pulumi.Input['AlarmPrometheusArgs']]]] = None,
                  silence_time: Optional[pulumi.Input[int]] = None,
                  start_time: Optional[pulumi.Input[int]] = None,
-                 statistics: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-                 threshold: Optional[pulumi.Input[str]] = None,
-                 triggered_count: Optional[pulumi.Input[int]] = None,
+                 targets: Optional[pulumi.Input[Sequence[pulumi.Input['AlarmTargetArgs']]]] = None,
                  webhook: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Alarm resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] contact_groups: List contact groups of the alarm rule, which must have been created on the console.
-        :param pulumi.Input[str] metric: Name of the monitoring metrics corresponding to a project, such as "CPUUtilization" and "networkin_rate". For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
-        :param pulumi.Input[str] project: Monitor project name, such as "acs_ecs_dashboard" and "acs_rds_dashboard". For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
+        :param pulumi.Input[str] metric: The name of the metric, such as `CPUUtilization` and `networkin_rate`. For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
+        :param pulumi.Input[str] project: The namespace of the cloud service, such as `acs_ecs_dashboard` and `acs_rds_dashboard`. For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
                **NOTE:** The `dimensions` and `metric_dimensions` must be empty when `project` is `acs_prometheus`, otherwise, one of them must be set.
-        :param pulumi.Input[Mapping[str, Any]] dimensions: Field `dimensions` has been deprecated from version 1.95.0. Use `metric_dimensions` instead.
+        :param pulumi.Input[Mapping[str, Any]] dimensions: Field `dimensions` has been deprecated from provider version 1.173.0. New field `metric_dimensions` instead.
         :param pulumi.Input[str] effective_interval: The interval of effecting alarm rule. It format as "hh:mm-hh:mm", like "0:00-4:00". Default to "00:00-23:59".
-        :param pulumi.Input[bool] enabled: Whether to enable alarm rule. Default to true.
-        :param pulumi.Input[int] end_time: It has been deprecated from provider version 1.50.0 and 'effective_interval' instead.
+        :param pulumi.Input[bool] enabled: Whether to enable alarm rule. Default value: `true`.
+        :param pulumi.Input[int] end_time: Field `end_time` has been deprecated from provider version 1.50.0. New field `effective_interval` instead.
         :param pulumi.Input['AlarmEscalationsCriticalArgs'] escalations_critical: A configuration of critical alarm. See `escalations_critical` below.
         :param pulumi.Input['AlarmEscalationsInfoArgs'] escalations_info: A configuration of critical info. See `escalations_info` below.
         :param pulumi.Input['AlarmEscalationsWarnArgs'] escalations_warn: A configuration of critical warn. See `escalations_warn` below.
         :param pulumi.Input[str] metric_dimensions: Map of the resources associated with the alarm rule, such as "instanceId", "device" and "port". Each key's value is a string, and it uses comma to split multiple items. For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
-        :param pulumi.Input[str] name: The alarm rule name.
-        :param pulumi.Input[str] operator: It has been deprecated from provider version 1.94.0 and 'escalations_critical.comparison_operator' instead.
+        :param pulumi.Input[str] name: The name of the alert rule.
         :param pulumi.Input[int] period: Index query cycle, which must be consistent with that defined for metrics. Default to 300, in seconds.
         :param pulumi.Input[Sequence[pulumi.Input['AlarmPrometheusArgs']]] prometheuses: The Prometheus alert rule. See `prometheus` below. **Note:** This parameter is required only when you create a Prometheus alert rule for Hybrid Cloud Monitoring.
-        :param pulumi.Input[int] silence_time: Notification silence period in the alarm state, in seconds. Valid value range: [300, 86400]. Default to 86400
-        :param pulumi.Input[int] start_time: It has been deprecated from provider version 1.50.0 and 'effective_interval' instead.
-        :param pulumi.Input[str] statistics: It has been deprecated from provider version 1.94.0 and 'escalations_critical.statistics' instead.
+        :param pulumi.Input[int] silence_time: Notification silence period in the alarm state, in seconds. Default value: `86400`. Valid value range: [300, 86400].
+        :param pulumi.Input[int] start_time: Field `start_time` has been deprecated from provider version 1.50.0. New field `effective_interval` instead.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
-               
-               > **NOTE:** Each resource supports the creation of one of the following three levels.
-        :param pulumi.Input[str] threshold: It has been deprecated from provider version 1.94.0 and 'escalations_critical.threshold' instead.
-        :param pulumi.Input[int] triggered_count: It has been deprecated from provider version 1.94.0 and 'escalations_critical.times' instead.
+        :param pulumi.Input[Sequence[pulumi.Input['AlarmTargetArgs']]] targets: The information about the resource for which alerts are triggered. See `targets` below.
         :param pulumi.Input[str] webhook: The webhook that should be called when the alarm is triggered. Currently, only http protocol is supported. Default is empty string.
         """
         pulumi.set(__self__, "contact_groups", contact_groups)
         pulumi.set(__self__, "metric", metric)
         pulumi.set(__self__, "project", project)
         if dimensions is not None:
-            warnings.warn("""Field 'dimensions' has been deprecated from version 1.173.0. Use 'metric_dimensions' instead.""", DeprecationWarning)
-            pulumi.log.warn("""dimensions is deprecated: Field 'dimensions' has been deprecated from version 1.173.0. Use 'metric_dimensions' instead.""")
+            warnings.warn("""Field `dimensions` has been deprecated from provider version 1.173.0. New field `metric_dimensions` instead.""", DeprecationWarning)
+            pulumi.log.warn("""dimensions is deprecated: Field `dimensions` has been deprecated from provider version 1.173.0. New field `metric_dimensions` instead.""")
         if dimensions is not None:
             pulumi.set(__self__, "dimensions", dimensions)
         if effective_interval is not None:
@@ -79,8 +71,8 @@ class AlarmArgs:
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
         if end_time is not None:
-            warnings.warn("""Field 'end_time' has been deprecated from provider version 1.50.0. New field 'effective_interval' instead.""", DeprecationWarning)
-            pulumi.log.warn("""end_time is deprecated: Field 'end_time' has been deprecated from provider version 1.50.0. New field 'effective_interval' instead.""")
+            warnings.warn("""Field `end_time` has been deprecated from provider version 1.50.0. New field `effective_interval` instead.""", DeprecationWarning)
+            pulumi.log.warn("""end_time is deprecated: Field `end_time` has been deprecated from provider version 1.50.0. New field `effective_interval` instead.""")
         if end_time is not None:
             pulumi.set(__self__, "end_time", end_time)
         if escalations_critical is not None:
@@ -93,11 +85,6 @@ class AlarmArgs:
             pulumi.set(__self__, "metric_dimensions", metric_dimensions)
         if name is not None:
             pulumi.set(__self__, "name", name)
-        if operator is not None:
-            warnings.warn("""Field 'operator' has been deprecated from provider version 1.94.0. New field 'escalations_critical.comparison_operator' instead.""", DeprecationWarning)
-            pulumi.log.warn("""operator is deprecated: Field 'operator' has been deprecated from provider version 1.94.0. New field 'escalations_critical.comparison_operator' instead.""")
-        if operator is not None:
-            pulumi.set(__self__, "operator", operator)
         if period is not None:
             pulumi.set(__self__, "period", period)
         if prometheuses is not None:
@@ -105,27 +92,14 @@ class AlarmArgs:
         if silence_time is not None:
             pulumi.set(__self__, "silence_time", silence_time)
         if start_time is not None:
-            warnings.warn("""Field 'start_time' has been deprecated from provider version 1.50.0. New field 'effective_interval' instead.""", DeprecationWarning)
-            pulumi.log.warn("""start_time is deprecated: Field 'start_time' has been deprecated from provider version 1.50.0. New field 'effective_interval' instead.""")
+            warnings.warn("""Field `start_time` has been deprecated from provider version 1.50.0. New field `effective_interval` instead.""", DeprecationWarning)
+            pulumi.log.warn("""start_time is deprecated: Field `start_time` has been deprecated from provider version 1.50.0. New field `effective_interval` instead.""")
         if start_time is not None:
             pulumi.set(__self__, "start_time", start_time)
-        if statistics is not None:
-            warnings.warn("""Field 'statistics' has been deprecated from provider version 1.94.0. New field 'escalations_critical.statistics' instead.""", DeprecationWarning)
-            pulumi.log.warn("""statistics is deprecated: Field 'statistics' has been deprecated from provider version 1.94.0. New field 'escalations_critical.statistics' instead.""")
-        if statistics is not None:
-            pulumi.set(__self__, "statistics", statistics)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
-        if threshold is not None:
-            warnings.warn("""Field 'threshold' has been deprecated from provider version 1.94.0. New field 'escalations_critical.threshold' instead.""", DeprecationWarning)
-            pulumi.log.warn("""threshold is deprecated: Field 'threshold' has been deprecated from provider version 1.94.0. New field 'escalations_critical.threshold' instead.""")
-        if threshold is not None:
-            pulumi.set(__self__, "threshold", threshold)
-        if triggered_count is not None:
-            warnings.warn("""Field 'triggered_count' has been deprecated from provider version 1.94.0. New field 'escalations_critical.times' instead.""", DeprecationWarning)
-            pulumi.log.warn("""triggered_count is deprecated: Field 'triggered_count' has been deprecated from provider version 1.94.0. New field 'escalations_critical.times' instead.""")
-        if triggered_count is not None:
-            pulumi.set(__self__, "triggered_count", triggered_count)
+        if targets is not None:
+            pulumi.set(__self__, "targets", targets)
         if webhook is not None:
             pulumi.set(__self__, "webhook", webhook)
 
@@ -145,7 +119,7 @@ class AlarmArgs:
     @pulumi.getter
     def metric(self) -> pulumi.Input[str]:
         """
-        Name of the monitoring metrics corresponding to a project, such as "CPUUtilization" and "networkin_rate". For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
+        The name of the metric, such as `CPUUtilization` and `networkin_rate`. For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
         """
         return pulumi.get(self, "metric")
 
@@ -157,7 +131,7 @@ class AlarmArgs:
     @pulumi.getter
     def project(self) -> pulumi.Input[str]:
         """
-        Monitor project name, such as "acs_ecs_dashboard" and "acs_rds_dashboard". For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
+        The namespace of the cloud service, such as `acs_ecs_dashboard` and `acs_rds_dashboard`. For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
         **NOTE:** The `dimensions` and `metric_dimensions` must be empty when `project` is `acs_prometheus`, otherwise, one of them must be set.
         """
         return pulumi.get(self, "project")
@@ -170,10 +144,10 @@ class AlarmArgs:
     @pulumi.getter
     def dimensions(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
         """
-        Field `dimensions` has been deprecated from version 1.95.0. Use `metric_dimensions` instead.
+        Field `dimensions` has been deprecated from provider version 1.173.0. New field `metric_dimensions` instead.
         """
-        warnings.warn("""Field 'dimensions' has been deprecated from version 1.173.0. Use 'metric_dimensions' instead.""", DeprecationWarning)
-        pulumi.log.warn("""dimensions is deprecated: Field 'dimensions' has been deprecated from version 1.173.0. Use 'metric_dimensions' instead.""")
+        warnings.warn("""Field `dimensions` has been deprecated from provider version 1.173.0. New field `metric_dimensions` instead.""", DeprecationWarning)
+        pulumi.log.warn("""dimensions is deprecated: Field `dimensions` has been deprecated from provider version 1.173.0. New field `metric_dimensions` instead.""")
 
         return pulumi.get(self, "dimensions")
 
@@ -197,7 +171,7 @@ class AlarmArgs:
     @pulumi.getter
     def enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether to enable alarm rule. Default to true.
+        Whether to enable alarm rule. Default value: `true`.
         """
         return pulumi.get(self, "enabled")
 
@@ -209,10 +183,10 @@ class AlarmArgs:
     @pulumi.getter(name="endTime")
     def end_time(self) -> Optional[pulumi.Input[int]]:
         """
-        It has been deprecated from provider version 1.50.0 and 'effective_interval' instead.
+        Field `end_time` has been deprecated from provider version 1.50.0. New field `effective_interval` instead.
         """
-        warnings.warn("""Field 'end_time' has been deprecated from provider version 1.50.0. New field 'effective_interval' instead.""", DeprecationWarning)
-        pulumi.log.warn("""end_time is deprecated: Field 'end_time' has been deprecated from provider version 1.50.0. New field 'effective_interval' instead.""")
+        warnings.warn("""Field `end_time` has been deprecated from provider version 1.50.0. New field `effective_interval` instead.""", DeprecationWarning)
+        pulumi.log.warn("""end_time is deprecated: Field `end_time` has been deprecated from provider version 1.50.0. New field `effective_interval` instead.""")
 
         return pulumi.get(self, "end_time")
 
@@ -272,28 +246,13 @@ class AlarmArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The alarm rule name.
+        The name of the alert rule.
         """
         return pulumi.get(self, "name")
 
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
-
-    @property
-    @pulumi.getter
-    def operator(self) -> Optional[pulumi.Input[str]]:
-        """
-        It has been deprecated from provider version 1.94.0 and 'escalations_critical.comparison_operator' instead.
-        """
-        warnings.warn("""Field 'operator' has been deprecated from provider version 1.94.0. New field 'escalations_critical.comparison_operator' instead.""", DeprecationWarning)
-        pulumi.log.warn("""operator is deprecated: Field 'operator' has been deprecated from provider version 1.94.0. New field 'escalations_critical.comparison_operator' instead.""")
-
-        return pulumi.get(self, "operator")
-
-    @operator.setter
-    def operator(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "operator", value)
 
     @property
     @pulumi.getter
@@ -323,7 +282,7 @@ class AlarmArgs:
     @pulumi.getter(name="silenceTime")
     def silence_time(self) -> Optional[pulumi.Input[int]]:
         """
-        Notification silence period in the alarm state, in seconds. Valid value range: [300, 86400]. Default to 86400
+        Notification silence period in the alarm state, in seconds. Default value: `86400`. Valid value range: [300, 86400].
         """
         return pulumi.get(self, "silence_time")
 
@@ -335,10 +294,10 @@ class AlarmArgs:
     @pulumi.getter(name="startTime")
     def start_time(self) -> Optional[pulumi.Input[int]]:
         """
-        It has been deprecated from provider version 1.50.0 and 'effective_interval' instead.
+        Field `start_time` has been deprecated from provider version 1.50.0. New field `effective_interval` instead.
         """
-        warnings.warn("""Field 'start_time' has been deprecated from provider version 1.50.0. New field 'effective_interval' instead.""", DeprecationWarning)
-        pulumi.log.warn("""start_time is deprecated: Field 'start_time' has been deprecated from provider version 1.50.0. New field 'effective_interval' instead.""")
+        warnings.warn("""Field `start_time` has been deprecated from provider version 1.50.0. New field `effective_interval` instead.""", DeprecationWarning)
+        pulumi.log.warn("""start_time is deprecated: Field `start_time` has been deprecated from provider version 1.50.0. New field `effective_interval` instead.""")
 
         return pulumi.get(self, "start_time")
 
@@ -348,26 +307,9 @@ class AlarmArgs:
 
     @property
     @pulumi.getter
-    def statistics(self) -> Optional[pulumi.Input[str]]:
-        """
-        It has been deprecated from provider version 1.94.0 and 'escalations_critical.statistics' instead.
-        """
-        warnings.warn("""Field 'statistics' has been deprecated from provider version 1.94.0. New field 'escalations_critical.statistics' instead.""", DeprecationWarning)
-        pulumi.log.warn("""statistics is deprecated: Field 'statistics' has been deprecated from provider version 1.94.0. New field 'escalations_critical.statistics' instead.""")
-
-        return pulumi.get(self, "statistics")
-
-    @statistics.setter
-    def statistics(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "statistics", value)
-
-    @property
-    @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
         """
         A mapping of tags to assign to the resource.
-
-        > **NOTE:** Each resource supports the creation of one of the following three levels.
         """
         return pulumi.get(self, "tags")
 
@@ -377,33 +319,15 @@ class AlarmArgs:
 
     @property
     @pulumi.getter
-    def threshold(self) -> Optional[pulumi.Input[str]]:
+    def targets(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AlarmTargetArgs']]]]:
         """
-        It has been deprecated from provider version 1.94.0 and 'escalations_critical.threshold' instead.
+        The information about the resource for which alerts are triggered. See `targets` below.
         """
-        warnings.warn("""Field 'threshold' has been deprecated from provider version 1.94.0. New field 'escalations_critical.threshold' instead.""", DeprecationWarning)
-        pulumi.log.warn("""threshold is deprecated: Field 'threshold' has been deprecated from provider version 1.94.0. New field 'escalations_critical.threshold' instead.""")
+        return pulumi.get(self, "targets")
 
-        return pulumi.get(self, "threshold")
-
-    @threshold.setter
-    def threshold(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "threshold", value)
-
-    @property
-    @pulumi.getter(name="triggeredCount")
-    def triggered_count(self) -> Optional[pulumi.Input[int]]:
-        """
-        It has been deprecated from provider version 1.94.0 and 'escalations_critical.times' instead.
-        """
-        warnings.warn("""Field 'triggered_count' has been deprecated from provider version 1.94.0. New field 'escalations_critical.times' instead.""", DeprecationWarning)
-        pulumi.log.warn("""triggered_count is deprecated: Field 'triggered_count' has been deprecated from provider version 1.94.0. New field 'escalations_critical.times' instead.""")
-
-        return pulumi.get(self, "triggered_count")
-
-    @triggered_count.setter
-    def triggered_count(self, value: Optional[pulumi.Input[int]]):
-        pulumi.set(self, "triggered_count", value)
+    @targets.setter
+    def targets(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AlarmTargetArgs']]]]):
+        pulumi.set(self, "targets", value)
 
     @property
     @pulumi.getter
@@ -432,52 +356,44 @@ class _AlarmState:
                  metric: Optional[pulumi.Input[str]] = None,
                  metric_dimensions: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 operator: Optional[pulumi.Input[str]] = None,
                  period: Optional[pulumi.Input[int]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  prometheuses: Optional[pulumi.Input[Sequence[pulumi.Input['AlarmPrometheusArgs']]]] = None,
                  silence_time: Optional[pulumi.Input[int]] = None,
                  start_time: Optional[pulumi.Input[int]] = None,
-                 statistics: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-                 threshold: Optional[pulumi.Input[str]] = None,
-                 triggered_count: Optional[pulumi.Input[int]] = None,
+                 targets: Optional[pulumi.Input[Sequence[pulumi.Input['AlarmTargetArgs']]]] = None,
                  webhook: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Alarm resources.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] contact_groups: List contact groups of the alarm rule, which must have been created on the console.
-        :param pulumi.Input[Mapping[str, Any]] dimensions: Field `dimensions` has been deprecated from version 1.95.0. Use `metric_dimensions` instead.
+        :param pulumi.Input[Mapping[str, Any]] dimensions: Field `dimensions` has been deprecated from provider version 1.173.0. New field `metric_dimensions` instead.
         :param pulumi.Input[str] effective_interval: The interval of effecting alarm rule. It format as "hh:mm-hh:mm", like "0:00-4:00". Default to "00:00-23:59".
-        :param pulumi.Input[bool] enabled: Whether to enable alarm rule. Default to true.
-        :param pulumi.Input[int] end_time: It has been deprecated from provider version 1.50.0 and 'effective_interval' instead.
+        :param pulumi.Input[bool] enabled: Whether to enable alarm rule. Default value: `true`.
+        :param pulumi.Input[int] end_time: Field `end_time` has been deprecated from provider version 1.50.0. New field `effective_interval` instead.
         :param pulumi.Input['AlarmEscalationsCriticalArgs'] escalations_critical: A configuration of critical alarm. See `escalations_critical` below.
         :param pulumi.Input['AlarmEscalationsInfoArgs'] escalations_info: A configuration of critical info. See `escalations_info` below.
         :param pulumi.Input['AlarmEscalationsWarnArgs'] escalations_warn: A configuration of critical warn. See `escalations_warn` below.
-        :param pulumi.Input[str] metric: Name of the monitoring metrics corresponding to a project, such as "CPUUtilization" and "networkin_rate". For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
+        :param pulumi.Input[str] metric: The name of the metric, such as `CPUUtilization` and `networkin_rate`. For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
         :param pulumi.Input[str] metric_dimensions: Map of the resources associated with the alarm rule, such as "instanceId", "device" and "port". Each key's value is a string, and it uses comma to split multiple items. For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
-        :param pulumi.Input[str] name: The alarm rule name.
-        :param pulumi.Input[str] operator: It has been deprecated from provider version 1.94.0 and 'escalations_critical.comparison_operator' instead.
+        :param pulumi.Input[str] name: The name of the alert rule.
         :param pulumi.Input[int] period: Index query cycle, which must be consistent with that defined for metrics. Default to 300, in seconds.
-        :param pulumi.Input[str] project: Monitor project name, such as "acs_ecs_dashboard" and "acs_rds_dashboard". For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
+        :param pulumi.Input[str] project: The namespace of the cloud service, such as `acs_ecs_dashboard` and `acs_rds_dashboard`. For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
                **NOTE:** The `dimensions` and `metric_dimensions` must be empty when `project` is `acs_prometheus`, otherwise, one of them must be set.
         :param pulumi.Input[Sequence[pulumi.Input['AlarmPrometheusArgs']]] prometheuses: The Prometheus alert rule. See `prometheus` below. **Note:** This parameter is required only when you create a Prometheus alert rule for Hybrid Cloud Monitoring.
-        :param pulumi.Input[int] silence_time: Notification silence period in the alarm state, in seconds. Valid value range: [300, 86400]. Default to 86400
-        :param pulumi.Input[int] start_time: It has been deprecated from provider version 1.50.0 and 'effective_interval' instead.
-        :param pulumi.Input[str] statistics: It has been deprecated from provider version 1.94.0 and 'escalations_critical.statistics' instead.
-        :param pulumi.Input[str] status: The current alarm rule status.
+        :param pulumi.Input[int] silence_time: Notification silence period in the alarm state, in seconds. Default value: `86400`. Valid value range: [300, 86400].
+        :param pulumi.Input[int] start_time: Field `start_time` has been deprecated from provider version 1.50.0. New field `effective_interval` instead.
+        :param pulumi.Input[str] status: The status of the Alarm.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
-               
-               > **NOTE:** Each resource supports the creation of one of the following three levels.
-        :param pulumi.Input[str] threshold: It has been deprecated from provider version 1.94.0 and 'escalations_critical.threshold' instead.
-        :param pulumi.Input[int] triggered_count: It has been deprecated from provider version 1.94.0 and 'escalations_critical.times' instead.
+        :param pulumi.Input[Sequence[pulumi.Input['AlarmTargetArgs']]] targets: The information about the resource for which alerts are triggered. See `targets` below.
         :param pulumi.Input[str] webhook: The webhook that should be called when the alarm is triggered. Currently, only http protocol is supported. Default is empty string.
         """
         if contact_groups is not None:
             pulumi.set(__self__, "contact_groups", contact_groups)
         if dimensions is not None:
-            warnings.warn("""Field 'dimensions' has been deprecated from version 1.173.0. Use 'metric_dimensions' instead.""", DeprecationWarning)
-            pulumi.log.warn("""dimensions is deprecated: Field 'dimensions' has been deprecated from version 1.173.0. Use 'metric_dimensions' instead.""")
+            warnings.warn("""Field `dimensions` has been deprecated from provider version 1.173.0. New field `metric_dimensions` instead.""", DeprecationWarning)
+            pulumi.log.warn("""dimensions is deprecated: Field `dimensions` has been deprecated from provider version 1.173.0. New field `metric_dimensions` instead.""")
         if dimensions is not None:
             pulumi.set(__self__, "dimensions", dimensions)
         if effective_interval is not None:
@@ -485,8 +401,8 @@ class _AlarmState:
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
         if end_time is not None:
-            warnings.warn("""Field 'end_time' has been deprecated from provider version 1.50.0. New field 'effective_interval' instead.""", DeprecationWarning)
-            pulumi.log.warn("""end_time is deprecated: Field 'end_time' has been deprecated from provider version 1.50.0. New field 'effective_interval' instead.""")
+            warnings.warn("""Field `end_time` has been deprecated from provider version 1.50.0. New field `effective_interval` instead.""", DeprecationWarning)
+            pulumi.log.warn("""end_time is deprecated: Field `end_time` has been deprecated from provider version 1.50.0. New field `effective_interval` instead.""")
         if end_time is not None:
             pulumi.set(__self__, "end_time", end_time)
         if escalations_critical is not None:
@@ -501,11 +417,6 @@ class _AlarmState:
             pulumi.set(__self__, "metric_dimensions", metric_dimensions)
         if name is not None:
             pulumi.set(__self__, "name", name)
-        if operator is not None:
-            warnings.warn("""Field 'operator' has been deprecated from provider version 1.94.0. New field 'escalations_critical.comparison_operator' instead.""", DeprecationWarning)
-            pulumi.log.warn("""operator is deprecated: Field 'operator' has been deprecated from provider version 1.94.0. New field 'escalations_critical.comparison_operator' instead.""")
-        if operator is not None:
-            pulumi.set(__self__, "operator", operator)
         if period is not None:
             pulumi.set(__self__, "period", period)
         if project is not None:
@@ -515,29 +426,16 @@ class _AlarmState:
         if silence_time is not None:
             pulumi.set(__self__, "silence_time", silence_time)
         if start_time is not None:
-            warnings.warn("""Field 'start_time' has been deprecated from provider version 1.50.0. New field 'effective_interval' instead.""", DeprecationWarning)
-            pulumi.log.warn("""start_time is deprecated: Field 'start_time' has been deprecated from provider version 1.50.0. New field 'effective_interval' instead.""")
+            warnings.warn("""Field `start_time` has been deprecated from provider version 1.50.0. New field `effective_interval` instead.""", DeprecationWarning)
+            pulumi.log.warn("""start_time is deprecated: Field `start_time` has been deprecated from provider version 1.50.0. New field `effective_interval` instead.""")
         if start_time is not None:
             pulumi.set(__self__, "start_time", start_time)
-        if statistics is not None:
-            warnings.warn("""Field 'statistics' has been deprecated from provider version 1.94.0. New field 'escalations_critical.statistics' instead.""", DeprecationWarning)
-            pulumi.log.warn("""statistics is deprecated: Field 'statistics' has been deprecated from provider version 1.94.0. New field 'escalations_critical.statistics' instead.""")
-        if statistics is not None:
-            pulumi.set(__self__, "statistics", statistics)
         if status is not None:
             pulumi.set(__self__, "status", status)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
-        if threshold is not None:
-            warnings.warn("""Field 'threshold' has been deprecated from provider version 1.94.0. New field 'escalations_critical.threshold' instead.""", DeprecationWarning)
-            pulumi.log.warn("""threshold is deprecated: Field 'threshold' has been deprecated from provider version 1.94.0. New field 'escalations_critical.threshold' instead.""")
-        if threshold is not None:
-            pulumi.set(__self__, "threshold", threshold)
-        if triggered_count is not None:
-            warnings.warn("""Field 'triggered_count' has been deprecated from provider version 1.94.0. New field 'escalations_critical.times' instead.""", DeprecationWarning)
-            pulumi.log.warn("""triggered_count is deprecated: Field 'triggered_count' has been deprecated from provider version 1.94.0. New field 'escalations_critical.times' instead.""")
-        if triggered_count is not None:
-            pulumi.set(__self__, "triggered_count", triggered_count)
+        if targets is not None:
+            pulumi.set(__self__, "targets", targets)
         if webhook is not None:
             pulumi.set(__self__, "webhook", webhook)
 
@@ -557,10 +455,10 @@ class _AlarmState:
     @pulumi.getter
     def dimensions(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
         """
-        Field `dimensions` has been deprecated from version 1.95.0. Use `metric_dimensions` instead.
+        Field `dimensions` has been deprecated from provider version 1.173.0. New field `metric_dimensions` instead.
         """
-        warnings.warn("""Field 'dimensions' has been deprecated from version 1.173.0. Use 'metric_dimensions' instead.""", DeprecationWarning)
-        pulumi.log.warn("""dimensions is deprecated: Field 'dimensions' has been deprecated from version 1.173.0. Use 'metric_dimensions' instead.""")
+        warnings.warn("""Field `dimensions` has been deprecated from provider version 1.173.0. New field `metric_dimensions` instead.""", DeprecationWarning)
+        pulumi.log.warn("""dimensions is deprecated: Field `dimensions` has been deprecated from provider version 1.173.0. New field `metric_dimensions` instead.""")
 
         return pulumi.get(self, "dimensions")
 
@@ -584,7 +482,7 @@ class _AlarmState:
     @pulumi.getter
     def enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether to enable alarm rule. Default to true.
+        Whether to enable alarm rule. Default value: `true`.
         """
         return pulumi.get(self, "enabled")
 
@@ -596,10 +494,10 @@ class _AlarmState:
     @pulumi.getter(name="endTime")
     def end_time(self) -> Optional[pulumi.Input[int]]:
         """
-        It has been deprecated from provider version 1.50.0 and 'effective_interval' instead.
+        Field `end_time` has been deprecated from provider version 1.50.0. New field `effective_interval` instead.
         """
-        warnings.warn("""Field 'end_time' has been deprecated from provider version 1.50.0. New field 'effective_interval' instead.""", DeprecationWarning)
-        pulumi.log.warn("""end_time is deprecated: Field 'end_time' has been deprecated from provider version 1.50.0. New field 'effective_interval' instead.""")
+        warnings.warn("""Field `end_time` has been deprecated from provider version 1.50.0. New field `effective_interval` instead.""", DeprecationWarning)
+        pulumi.log.warn("""end_time is deprecated: Field `end_time` has been deprecated from provider version 1.50.0. New field `effective_interval` instead.""")
 
         return pulumi.get(self, "end_time")
 
@@ -647,7 +545,7 @@ class _AlarmState:
     @pulumi.getter
     def metric(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of the monitoring metrics corresponding to a project, such as "CPUUtilization" and "networkin_rate". For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
+        The name of the metric, such as `CPUUtilization` and `networkin_rate`. For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
         """
         return pulumi.get(self, "metric")
 
@@ -671,28 +569,13 @@ class _AlarmState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The alarm rule name.
+        The name of the alert rule.
         """
         return pulumi.get(self, "name")
 
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
-
-    @property
-    @pulumi.getter
-    def operator(self) -> Optional[pulumi.Input[str]]:
-        """
-        It has been deprecated from provider version 1.94.0 and 'escalations_critical.comparison_operator' instead.
-        """
-        warnings.warn("""Field 'operator' has been deprecated from provider version 1.94.0. New field 'escalations_critical.comparison_operator' instead.""", DeprecationWarning)
-        pulumi.log.warn("""operator is deprecated: Field 'operator' has been deprecated from provider version 1.94.0. New field 'escalations_critical.comparison_operator' instead.""")
-
-        return pulumi.get(self, "operator")
-
-    @operator.setter
-    def operator(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "operator", value)
 
     @property
     @pulumi.getter
@@ -710,7 +593,7 @@ class _AlarmState:
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
         """
-        Monitor project name, such as "acs_ecs_dashboard" and "acs_rds_dashboard". For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
+        The namespace of the cloud service, such as `acs_ecs_dashboard` and `acs_rds_dashboard`. For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
         **NOTE:** The `dimensions` and `metric_dimensions` must be empty when `project` is `acs_prometheus`, otherwise, one of them must be set.
         """
         return pulumi.get(self, "project")
@@ -735,7 +618,7 @@ class _AlarmState:
     @pulumi.getter(name="silenceTime")
     def silence_time(self) -> Optional[pulumi.Input[int]]:
         """
-        Notification silence period in the alarm state, in seconds. Valid value range: [300, 86400]. Default to 86400
+        Notification silence period in the alarm state, in seconds. Default value: `86400`. Valid value range: [300, 86400].
         """
         return pulumi.get(self, "silence_time")
 
@@ -747,10 +630,10 @@ class _AlarmState:
     @pulumi.getter(name="startTime")
     def start_time(self) -> Optional[pulumi.Input[int]]:
         """
-        It has been deprecated from provider version 1.50.0 and 'effective_interval' instead.
+        Field `start_time` has been deprecated from provider version 1.50.0. New field `effective_interval` instead.
         """
-        warnings.warn("""Field 'start_time' has been deprecated from provider version 1.50.0. New field 'effective_interval' instead.""", DeprecationWarning)
-        pulumi.log.warn("""start_time is deprecated: Field 'start_time' has been deprecated from provider version 1.50.0. New field 'effective_interval' instead.""")
+        warnings.warn("""Field `start_time` has been deprecated from provider version 1.50.0. New field `effective_interval` instead.""", DeprecationWarning)
+        pulumi.log.warn("""start_time is deprecated: Field `start_time` has been deprecated from provider version 1.50.0. New field `effective_interval` instead.""")
 
         return pulumi.get(self, "start_time")
 
@@ -760,24 +643,9 @@ class _AlarmState:
 
     @property
     @pulumi.getter
-    def statistics(self) -> Optional[pulumi.Input[str]]:
-        """
-        It has been deprecated from provider version 1.94.0 and 'escalations_critical.statistics' instead.
-        """
-        warnings.warn("""Field 'statistics' has been deprecated from provider version 1.94.0. New field 'escalations_critical.statistics' instead.""", DeprecationWarning)
-        pulumi.log.warn("""statistics is deprecated: Field 'statistics' has been deprecated from provider version 1.94.0. New field 'escalations_critical.statistics' instead.""")
-
-        return pulumi.get(self, "statistics")
-
-    @statistics.setter
-    def statistics(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "statistics", value)
-
-    @property
-    @pulumi.getter
     def status(self) -> Optional[pulumi.Input[str]]:
         """
-        The current alarm rule status.
+        The status of the Alarm.
         """
         return pulumi.get(self, "status")
 
@@ -790,8 +658,6 @@ class _AlarmState:
     def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
         """
         A mapping of tags to assign to the resource.
-
-        > **NOTE:** Each resource supports the creation of one of the following three levels.
         """
         return pulumi.get(self, "tags")
 
@@ -801,33 +667,15 @@ class _AlarmState:
 
     @property
     @pulumi.getter
-    def threshold(self) -> Optional[pulumi.Input[str]]:
+    def targets(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AlarmTargetArgs']]]]:
         """
-        It has been deprecated from provider version 1.94.0 and 'escalations_critical.threshold' instead.
+        The information about the resource for which alerts are triggered. See `targets` below.
         """
-        warnings.warn("""Field 'threshold' has been deprecated from provider version 1.94.0. New field 'escalations_critical.threshold' instead.""", DeprecationWarning)
-        pulumi.log.warn("""threshold is deprecated: Field 'threshold' has been deprecated from provider version 1.94.0. New field 'escalations_critical.threshold' instead.""")
+        return pulumi.get(self, "targets")
 
-        return pulumi.get(self, "threshold")
-
-    @threshold.setter
-    def threshold(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "threshold", value)
-
-    @property
-    @pulumi.getter(name="triggeredCount")
-    def triggered_count(self) -> Optional[pulumi.Input[int]]:
-        """
-        It has been deprecated from provider version 1.94.0 and 'escalations_critical.times' instead.
-        """
-        warnings.warn("""Field 'triggered_count' has been deprecated from provider version 1.94.0. New field 'escalations_critical.times' instead.""", DeprecationWarning)
-        pulumi.log.warn("""triggered_count is deprecated: Field 'triggered_count' has been deprecated from provider version 1.94.0. New field 'escalations_critical.times' instead.""")
-
-        return pulumi.get(self, "triggered_count")
-
-    @triggered_count.setter
-    def triggered_count(self, value: Optional[pulumi.Input[int]]):
-        pulumi.set(self, "triggered_count", value)
+    @targets.setter
+    def targets(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AlarmTargetArgs']]]]):
+        pulumi.set(self, "targets", value)
 
     @property
     @pulumi.getter
@@ -858,21 +706,19 @@ class Alarm(pulumi.CustomResource):
                  metric: Optional[pulumi.Input[str]] = None,
                  metric_dimensions: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 operator: Optional[pulumi.Input[str]] = None,
                  period: Optional[pulumi.Input[int]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  prometheuses: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AlarmPrometheusArgs']]]]] = None,
                  silence_time: Optional[pulumi.Input[int]] = None,
                  start_time: Optional[pulumi.Input[int]] = None,
-                 statistics: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-                 threshold: Optional[pulumi.Input[str]] = None,
-                 triggered_count: Optional[pulumi.Input[int]] = None,
+                 targets: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AlarmTargetArgs']]]]] = None,
                  webhook: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        This resource provides a alarm rule resource and it can be used to monitor several cloud services according different metrics.
-        Details for [What is alarm](https://www.alibabacloud.com/help/en/cloudmonitor/latest/putresourcemetricrule).
+        Provides a Cloud Monitor Service Alarm resource.
+
+        For information about Cloud Monitor Service Alarm and how to use it, see [What is Alarm](https://www.alibabacloud.com/help/en/cloudmonitor/latest/putresourcemetricrule).
 
         > **NOTE:** Available since v1.9.1.
 
@@ -888,12 +734,12 @@ class Alarm(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "tf-example"
-        default_images = alicloud.ecs.get_images(name_regex="^ubuntu_[0-9]+_[0-9]+_x64*",
-            owners="system")
         default_zones = alicloud.get_zones(available_resource_creation="Instance")
         default_instance_types = alicloud.ecs.get_instance_types(availability_zone=default_zones.zones[0].id,
             cpu_core_count=1,
             memory_size=2)
+        default_images = alicloud.ecs.get_images(name_regex="^ubuntu_[0-9]+_[0-9]+_x64*",
+            owners="system")
         default_network = alicloud.vpc.Network("defaultNetwork",
             vpc_name=name,
             cidr_block="10.4.0.0/16")
@@ -914,52 +760,53 @@ class Alarm(pulumi.CustomResource):
         default_alarm = alicloud.cms.Alarm("defaultAlarm",
             project="acs_ecs_dashboard",
             metric="disk_writebytes",
-            metric_dimensions=default_instance.id.apply(lambda id: f"[{{\\"instanceId\\":\\"{id}\\",\\"device\\":\\"/dev/vda1\\"}}]"),
+            period=900,
+            contact_groups=[default_alarm_contact_group.alarm_contact_group_name],
+            effective_interval="06:00-20:00",
+            metric_dimensions=default_instance.id.apply(lambda id: f\"\"\"  [
+            {{
+              "instanceId": "{id}",
+              "device": "/dev/vda1"
+            }}
+          ]
+        \"\"\"),
             escalations_critical=alicloud.cms.AlarmEscalationsCriticalArgs(
                 statistics="Average",
                 comparison_operator="<=",
                 threshold="35",
                 times=2,
-            ),
-            period=900,
-            contact_groups=[default_alarm_contact_group.alarm_contact_group_name],
-            effective_interval="06:00-20:00")
+            ))
         ```
 
         ## Import
 
-        Alarm rule can be imported using the id, e.g.
+        Cloud Monitor Service Alarm can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:cms/alarm:Alarm alarm abc12345
+         $ pulumi import alicloud:cms/alarm:Alarm example <id>
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] contact_groups: List contact groups of the alarm rule, which must have been created on the console.
-        :param pulumi.Input[Mapping[str, Any]] dimensions: Field `dimensions` has been deprecated from version 1.95.0. Use `metric_dimensions` instead.
+        :param pulumi.Input[Mapping[str, Any]] dimensions: Field `dimensions` has been deprecated from provider version 1.173.0. New field `metric_dimensions` instead.
         :param pulumi.Input[str] effective_interval: The interval of effecting alarm rule. It format as "hh:mm-hh:mm", like "0:00-4:00". Default to "00:00-23:59".
-        :param pulumi.Input[bool] enabled: Whether to enable alarm rule. Default to true.
-        :param pulumi.Input[int] end_time: It has been deprecated from provider version 1.50.0 and 'effective_interval' instead.
+        :param pulumi.Input[bool] enabled: Whether to enable alarm rule. Default value: `true`.
+        :param pulumi.Input[int] end_time: Field `end_time` has been deprecated from provider version 1.50.0. New field `effective_interval` instead.
         :param pulumi.Input[pulumi.InputType['AlarmEscalationsCriticalArgs']] escalations_critical: A configuration of critical alarm. See `escalations_critical` below.
         :param pulumi.Input[pulumi.InputType['AlarmEscalationsInfoArgs']] escalations_info: A configuration of critical info. See `escalations_info` below.
         :param pulumi.Input[pulumi.InputType['AlarmEscalationsWarnArgs']] escalations_warn: A configuration of critical warn. See `escalations_warn` below.
-        :param pulumi.Input[str] metric: Name of the monitoring metrics corresponding to a project, such as "CPUUtilization" and "networkin_rate". For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
+        :param pulumi.Input[str] metric: The name of the metric, such as `CPUUtilization` and `networkin_rate`. For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
         :param pulumi.Input[str] metric_dimensions: Map of the resources associated with the alarm rule, such as "instanceId", "device" and "port". Each key's value is a string, and it uses comma to split multiple items. For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
-        :param pulumi.Input[str] name: The alarm rule name.
-        :param pulumi.Input[str] operator: It has been deprecated from provider version 1.94.0 and 'escalations_critical.comparison_operator' instead.
+        :param pulumi.Input[str] name: The name of the alert rule.
         :param pulumi.Input[int] period: Index query cycle, which must be consistent with that defined for metrics. Default to 300, in seconds.
-        :param pulumi.Input[str] project: Monitor project name, such as "acs_ecs_dashboard" and "acs_rds_dashboard". For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
+        :param pulumi.Input[str] project: The namespace of the cloud service, such as `acs_ecs_dashboard` and `acs_rds_dashboard`. For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
                **NOTE:** The `dimensions` and `metric_dimensions` must be empty when `project` is `acs_prometheus`, otherwise, one of them must be set.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AlarmPrometheusArgs']]]] prometheuses: The Prometheus alert rule. See `prometheus` below. **Note:** This parameter is required only when you create a Prometheus alert rule for Hybrid Cloud Monitoring.
-        :param pulumi.Input[int] silence_time: Notification silence period in the alarm state, in seconds. Valid value range: [300, 86400]. Default to 86400
-        :param pulumi.Input[int] start_time: It has been deprecated from provider version 1.50.0 and 'effective_interval' instead.
-        :param pulumi.Input[str] statistics: It has been deprecated from provider version 1.94.0 and 'escalations_critical.statistics' instead.
+        :param pulumi.Input[int] silence_time: Notification silence period in the alarm state, in seconds. Default value: `86400`. Valid value range: [300, 86400].
+        :param pulumi.Input[int] start_time: Field `start_time` has been deprecated from provider version 1.50.0. New field `effective_interval` instead.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
-               
-               > **NOTE:** Each resource supports the creation of one of the following three levels.
-        :param pulumi.Input[str] threshold: It has been deprecated from provider version 1.94.0 and 'escalations_critical.threshold' instead.
-        :param pulumi.Input[int] triggered_count: It has been deprecated from provider version 1.94.0 and 'escalations_critical.times' instead.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AlarmTargetArgs']]]] targets: The information about the resource for which alerts are triggered. See `targets` below.
         :param pulumi.Input[str] webhook: The webhook that should be called when the alarm is triggered. Currently, only http protocol is supported. Default is empty string.
         """
         ...
@@ -969,8 +816,9 @@ class Alarm(pulumi.CustomResource):
                  args: AlarmArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        This resource provides a alarm rule resource and it can be used to monitor several cloud services according different metrics.
-        Details for [What is alarm](https://www.alibabacloud.com/help/en/cloudmonitor/latest/putresourcemetricrule).
+        Provides a Cloud Monitor Service Alarm resource.
+
+        For information about Cloud Monitor Service Alarm and how to use it, see [What is Alarm](https://www.alibabacloud.com/help/en/cloudmonitor/latest/putresourcemetricrule).
 
         > **NOTE:** Available since v1.9.1.
 
@@ -986,12 +834,12 @@ class Alarm(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "tf-example"
-        default_images = alicloud.ecs.get_images(name_regex="^ubuntu_[0-9]+_[0-9]+_x64*",
-            owners="system")
         default_zones = alicloud.get_zones(available_resource_creation="Instance")
         default_instance_types = alicloud.ecs.get_instance_types(availability_zone=default_zones.zones[0].id,
             cpu_core_count=1,
             memory_size=2)
+        default_images = alicloud.ecs.get_images(name_regex="^ubuntu_[0-9]+_[0-9]+_x64*",
+            owners="system")
         default_network = alicloud.vpc.Network("defaultNetwork",
             vpc_name=name,
             cidr_block="10.4.0.0/16")
@@ -1012,24 +860,30 @@ class Alarm(pulumi.CustomResource):
         default_alarm = alicloud.cms.Alarm("defaultAlarm",
             project="acs_ecs_dashboard",
             metric="disk_writebytes",
-            metric_dimensions=default_instance.id.apply(lambda id: f"[{{\\"instanceId\\":\\"{id}\\",\\"device\\":\\"/dev/vda1\\"}}]"),
+            period=900,
+            contact_groups=[default_alarm_contact_group.alarm_contact_group_name],
+            effective_interval="06:00-20:00",
+            metric_dimensions=default_instance.id.apply(lambda id: f\"\"\"  [
+            {{
+              "instanceId": "{id}",
+              "device": "/dev/vda1"
+            }}
+          ]
+        \"\"\"),
             escalations_critical=alicloud.cms.AlarmEscalationsCriticalArgs(
                 statistics="Average",
                 comparison_operator="<=",
                 threshold="35",
                 times=2,
-            ),
-            period=900,
-            contact_groups=[default_alarm_contact_group.alarm_contact_group_name],
-            effective_interval="06:00-20:00")
+            ))
         ```
 
         ## Import
 
-        Alarm rule can be imported using the id, e.g.
+        Cloud Monitor Service Alarm can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:cms/alarm:Alarm alarm abc12345
+         $ pulumi import alicloud:cms/alarm:Alarm example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -1058,16 +912,13 @@ class Alarm(pulumi.CustomResource):
                  metric: Optional[pulumi.Input[str]] = None,
                  metric_dimensions: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 operator: Optional[pulumi.Input[str]] = None,
                  period: Optional[pulumi.Input[int]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  prometheuses: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AlarmPrometheusArgs']]]]] = None,
                  silence_time: Optional[pulumi.Input[int]] = None,
                  start_time: Optional[pulumi.Input[int]] = None,
-                 statistics: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-                 threshold: Optional[pulumi.Input[str]] = None,
-                 triggered_count: Optional[pulumi.Input[int]] = None,
+                 targets: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AlarmTargetArgs']]]]] = None,
                  webhook: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -1093,7 +944,6 @@ class Alarm(pulumi.CustomResource):
             __props__.__dict__["metric"] = metric
             __props__.__dict__["metric_dimensions"] = metric_dimensions
             __props__.__dict__["name"] = name
-            __props__.__dict__["operator"] = operator
             __props__.__dict__["period"] = period
             if project is None and not opts.urn:
                 raise TypeError("Missing required property 'project'")
@@ -1101,10 +951,8 @@ class Alarm(pulumi.CustomResource):
             __props__.__dict__["prometheuses"] = prometheuses
             __props__.__dict__["silence_time"] = silence_time
             __props__.__dict__["start_time"] = start_time
-            __props__.__dict__["statistics"] = statistics
             __props__.__dict__["tags"] = tags
-            __props__.__dict__["threshold"] = threshold
-            __props__.__dict__["triggered_count"] = triggered_count
+            __props__.__dict__["targets"] = targets
             __props__.__dict__["webhook"] = webhook
             __props__.__dict__["status"] = None
         super(Alarm, __self__).__init__(
@@ -1128,17 +976,14 @@ class Alarm(pulumi.CustomResource):
             metric: Optional[pulumi.Input[str]] = None,
             metric_dimensions: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            operator: Optional[pulumi.Input[str]] = None,
             period: Optional[pulumi.Input[int]] = None,
             project: Optional[pulumi.Input[str]] = None,
             prometheuses: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AlarmPrometheusArgs']]]]] = None,
             silence_time: Optional[pulumi.Input[int]] = None,
             start_time: Optional[pulumi.Input[int]] = None,
-            statistics: Optional[pulumi.Input[str]] = None,
             status: Optional[pulumi.Input[str]] = None,
             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-            threshold: Optional[pulumi.Input[str]] = None,
-            triggered_count: Optional[pulumi.Input[int]] = None,
+            targets: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AlarmTargetArgs']]]]] = None,
             webhook: Optional[pulumi.Input[str]] = None) -> 'Alarm':
         """
         Get an existing Alarm resource's state with the given name, id, and optional extra
@@ -1148,30 +993,25 @@ class Alarm(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] contact_groups: List contact groups of the alarm rule, which must have been created on the console.
-        :param pulumi.Input[Mapping[str, Any]] dimensions: Field `dimensions` has been deprecated from version 1.95.0. Use `metric_dimensions` instead.
+        :param pulumi.Input[Mapping[str, Any]] dimensions: Field `dimensions` has been deprecated from provider version 1.173.0. New field `metric_dimensions` instead.
         :param pulumi.Input[str] effective_interval: The interval of effecting alarm rule. It format as "hh:mm-hh:mm", like "0:00-4:00". Default to "00:00-23:59".
-        :param pulumi.Input[bool] enabled: Whether to enable alarm rule. Default to true.
-        :param pulumi.Input[int] end_time: It has been deprecated from provider version 1.50.0 and 'effective_interval' instead.
+        :param pulumi.Input[bool] enabled: Whether to enable alarm rule. Default value: `true`.
+        :param pulumi.Input[int] end_time: Field `end_time` has been deprecated from provider version 1.50.0. New field `effective_interval` instead.
         :param pulumi.Input[pulumi.InputType['AlarmEscalationsCriticalArgs']] escalations_critical: A configuration of critical alarm. See `escalations_critical` below.
         :param pulumi.Input[pulumi.InputType['AlarmEscalationsInfoArgs']] escalations_info: A configuration of critical info. See `escalations_info` below.
         :param pulumi.Input[pulumi.InputType['AlarmEscalationsWarnArgs']] escalations_warn: A configuration of critical warn. See `escalations_warn` below.
-        :param pulumi.Input[str] metric: Name of the monitoring metrics corresponding to a project, such as "CPUUtilization" and "networkin_rate". For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
+        :param pulumi.Input[str] metric: The name of the metric, such as `CPUUtilization` and `networkin_rate`. For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
         :param pulumi.Input[str] metric_dimensions: Map of the resources associated with the alarm rule, such as "instanceId", "device" and "port". Each key's value is a string, and it uses comma to split multiple items. For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
-        :param pulumi.Input[str] name: The alarm rule name.
-        :param pulumi.Input[str] operator: It has been deprecated from provider version 1.94.0 and 'escalations_critical.comparison_operator' instead.
+        :param pulumi.Input[str] name: The name of the alert rule.
         :param pulumi.Input[int] period: Index query cycle, which must be consistent with that defined for metrics. Default to 300, in seconds.
-        :param pulumi.Input[str] project: Monitor project name, such as "acs_ecs_dashboard" and "acs_rds_dashboard". For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
+        :param pulumi.Input[str] project: The namespace of the cloud service, such as `acs_ecs_dashboard` and `acs_rds_dashboard`. For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
                **NOTE:** The `dimensions` and `metric_dimensions` must be empty when `project` is `acs_prometheus`, otherwise, one of them must be set.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AlarmPrometheusArgs']]]] prometheuses: The Prometheus alert rule. See `prometheus` below. **Note:** This parameter is required only when you create a Prometheus alert rule for Hybrid Cloud Monitoring.
-        :param pulumi.Input[int] silence_time: Notification silence period in the alarm state, in seconds. Valid value range: [300, 86400]. Default to 86400
-        :param pulumi.Input[int] start_time: It has been deprecated from provider version 1.50.0 and 'effective_interval' instead.
-        :param pulumi.Input[str] statistics: It has been deprecated from provider version 1.94.0 and 'escalations_critical.statistics' instead.
-        :param pulumi.Input[str] status: The current alarm rule status.
+        :param pulumi.Input[int] silence_time: Notification silence period in the alarm state, in seconds. Default value: `86400`. Valid value range: [300, 86400].
+        :param pulumi.Input[int] start_time: Field `start_time` has been deprecated from provider version 1.50.0. New field `effective_interval` instead.
+        :param pulumi.Input[str] status: The status of the Alarm.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
-               
-               > **NOTE:** Each resource supports the creation of one of the following three levels.
-        :param pulumi.Input[str] threshold: It has been deprecated from provider version 1.94.0 and 'escalations_critical.threshold' instead.
-        :param pulumi.Input[int] triggered_count: It has been deprecated from provider version 1.94.0 and 'escalations_critical.times' instead.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AlarmTargetArgs']]]] targets: The information about the resource for which alerts are triggered. See `targets` below.
         :param pulumi.Input[str] webhook: The webhook that should be called when the alarm is triggered. Currently, only http protocol is supported. Default is empty string.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -1189,17 +1029,14 @@ class Alarm(pulumi.CustomResource):
         __props__.__dict__["metric"] = metric
         __props__.__dict__["metric_dimensions"] = metric_dimensions
         __props__.__dict__["name"] = name
-        __props__.__dict__["operator"] = operator
         __props__.__dict__["period"] = period
         __props__.__dict__["project"] = project
         __props__.__dict__["prometheuses"] = prometheuses
         __props__.__dict__["silence_time"] = silence_time
         __props__.__dict__["start_time"] = start_time
-        __props__.__dict__["statistics"] = statistics
         __props__.__dict__["status"] = status
         __props__.__dict__["tags"] = tags
-        __props__.__dict__["threshold"] = threshold
-        __props__.__dict__["triggered_count"] = triggered_count
+        __props__.__dict__["targets"] = targets
         __props__.__dict__["webhook"] = webhook
         return Alarm(resource_name, opts=opts, __props__=__props__)
 
@@ -1215,10 +1052,10 @@ class Alarm(pulumi.CustomResource):
     @pulumi.getter
     def dimensions(self) -> pulumi.Output[Mapping[str, Any]]:
         """
-        Field `dimensions` has been deprecated from version 1.95.0. Use `metric_dimensions` instead.
+        Field `dimensions` has been deprecated from provider version 1.173.0. New field `metric_dimensions` instead.
         """
-        warnings.warn("""Field 'dimensions' has been deprecated from version 1.173.0. Use 'metric_dimensions' instead.""", DeprecationWarning)
-        pulumi.log.warn("""dimensions is deprecated: Field 'dimensions' has been deprecated from version 1.173.0. Use 'metric_dimensions' instead.""")
+        warnings.warn("""Field `dimensions` has been deprecated from provider version 1.173.0. New field `metric_dimensions` instead.""", DeprecationWarning)
+        pulumi.log.warn("""dimensions is deprecated: Field `dimensions` has been deprecated from provider version 1.173.0. New field `metric_dimensions` instead.""")
 
         return pulumi.get(self, "dimensions")
 
@@ -1234,7 +1071,7 @@ class Alarm(pulumi.CustomResource):
     @pulumi.getter
     def enabled(self) -> pulumi.Output[Optional[bool]]:
         """
-        Whether to enable alarm rule. Default to true.
+        Whether to enable alarm rule. Default value: `true`.
         """
         return pulumi.get(self, "enabled")
 
@@ -1242,16 +1079,16 @@ class Alarm(pulumi.CustomResource):
     @pulumi.getter(name="endTime")
     def end_time(self) -> pulumi.Output[Optional[int]]:
         """
-        It has been deprecated from provider version 1.50.0 and 'effective_interval' instead.
+        Field `end_time` has been deprecated from provider version 1.50.0. New field `effective_interval` instead.
         """
-        warnings.warn("""Field 'end_time' has been deprecated from provider version 1.50.0. New field 'effective_interval' instead.""", DeprecationWarning)
-        pulumi.log.warn("""end_time is deprecated: Field 'end_time' has been deprecated from provider version 1.50.0. New field 'effective_interval' instead.""")
+        warnings.warn("""Field `end_time` has been deprecated from provider version 1.50.0. New field `effective_interval` instead.""", DeprecationWarning)
+        pulumi.log.warn("""end_time is deprecated: Field `end_time` has been deprecated from provider version 1.50.0. New field `effective_interval` instead.""")
 
         return pulumi.get(self, "end_time")
 
     @property
     @pulumi.getter(name="escalationsCritical")
-    def escalations_critical(self) -> pulumi.Output[Optional['outputs.AlarmEscalationsCritical']]:
+    def escalations_critical(self) -> pulumi.Output['outputs.AlarmEscalationsCritical']:
         """
         A configuration of critical alarm. See `escalations_critical` below.
         """
@@ -1259,7 +1096,7 @@ class Alarm(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="escalationsInfo")
-    def escalations_info(self) -> pulumi.Output[Optional['outputs.AlarmEscalationsInfo']]:
+    def escalations_info(self) -> pulumi.Output['outputs.AlarmEscalationsInfo']:
         """
         A configuration of critical info. See `escalations_info` below.
         """
@@ -1267,7 +1104,7 @@ class Alarm(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="escalationsWarn")
-    def escalations_warn(self) -> pulumi.Output[Optional['outputs.AlarmEscalationsWarn']]:
+    def escalations_warn(self) -> pulumi.Output['outputs.AlarmEscalationsWarn']:
         """
         A configuration of critical warn. See `escalations_warn` below.
         """
@@ -1277,7 +1114,7 @@ class Alarm(pulumi.CustomResource):
     @pulumi.getter
     def metric(self) -> pulumi.Output[str]:
         """
-        Name of the monitoring metrics corresponding to a project, such as "CPUUtilization" and "networkin_rate". For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
+        The name of the metric, such as `CPUUtilization` and `networkin_rate`. For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
         """
         return pulumi.get(self, "metric")
 
@@ -1293,20 +1130,9 @@ class Alarm(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        The alarm rule name.
+        The name of the alert rule.
         """
         return pulumi.get(self, "name")
-
-    @property
-    @pulumi.getter
-    def operator(self) -> pulumi.Output[str]:
-        """
-        It has been deprecated from provider version 1.94.0 and 'escalations_critical.comparison_operator' instead.
-        """
-        warnings.warn("""Field 'operator' has been deprecated from provider version 1.94.0. New field 'escalations_critical.comparison_operator' instead.""", DeprecationWarning)
-        pulumi.log.warn("""operator is deprecated: Field 'operator' has been deprecated from provider version 1.94.0. New field 'escalations_critical.comparison_operator' instead.""")
-
-        return pulumi.get(self, "operator")
 
     @property
     @pulumi.getter
@@ -1320,14 +1146,14 @@ class Alarm(pulumi.CustomResource):
     @pulumi.getter
     def project(self) -> pulumi.Output[str]:
         """
-        Monitor project name, such as "acs_ecs_dashboard" and "acs_rds_dashboard". For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
+        The namespace of the cloud service, such as `acs_ecs_dashboard` and `acs_rds_dashboard`. For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
         **NOTE:** The `dimensions` and `metric_dimensions` must be empty when `project` is `acs_prometheus`, otherwise, one of them must be set.
         """
         return pulumi.get(self, "project")
 
     @property
     @pulumi.getter
-    def prometheuses(self) -> pulumi.Output[Optional[Sequence['outputs.AlarmPrometheus']]]:
+    def prometheuses(self) -> pulumi.Output[Sequence['outputs.AlarmPrometheus']]:
         """
         The Prometheus alert rule. See `prometheus` below. **Note:** This parameter is required only when you create a Prometheus alert rule for Hybrid Cloud Monitoring.
         """
@@ -1337,7 +1163,7 @@ class Alarm(pulumi.CustomResource):
     @pulumi.getter(name="silenceTime")
     def silence_time(self) -> pulumi.Output[Optional[int]]:
         """
-        Notification silence period in the alarm state, in seconds. Valid value range: [300, 86400]. Default to 86400
+        Notification silence period in the alarm state, in seconds. Default value: `86400`. Valid value range: [300, 86400].
         """
         return pulumi.get(self, "silence_time")
 
@@ -1345,29 +1171,18 @@ class Alarm(pulumi.CustomResource):
     @pulumi.getter(name="startTime")
     def start_time(self) -> pulumi.Output[Optional[int]]:
         """
-        It has been deprecated from provider version 1.50.0 and 'effective_interval' instead.
+        Field `start_time` has been deprecated from provider version 1.50.0. New field `effective_interval` instead.
         """
-        warnings.warn("""Field 'start_time' has been deprecated from provider version 1.50.0. New field 'effective_interval' instead.""", DeprecationWarning)
-        pulumi.log.warn("""start_time is deprecated: Field 'start_time' has been deprecated from provider version 1.50.0. New field 'effective_interval' instead.""")
+        warnings.warn("""Field `start_time` has been deprecated from provider version 1.50.0. New field `effective_interval` instead.""", DeprecationWarning)
+        pulumi.log.warn("""start_time is deprecated: Field `start_time` has been deprecated from provider version 1.50.0. New field `effective_interval` instead.""")
 
         return pulumi.get(self, "start_time")
 
     @property
     @pulumi.getter
-    def statistics(self) -> pulumi.Output[str]:
-        """
-        It has been deprecated from provider version 1.94.0 and 'escalations_critical.statistics' instead.
-        """
-        warnings.warn("""Field 'statistics' has been deprecated from provider version 1.94.0. New field 'escalations_critical.statistics' instead.""", DeprecationWarning)
-        pulumi.log.warn("""statistics is deprecated: Field 'statistics' has been deprecated from provider version 1.94.0. New field 'escalations_critical.statistics' instead.""")
-
-        return pulumi.get(self, "statistics")
-
-    @property
-    @pulumi.getter
     def status(self) -> pulumi.Output[str]:
         """
-        The current alarm rule status.
+        The status of the Alarm.
         """
         return pulumi.get(self, "status")
 
@@ -1376,32 +1191,16 @@ class Alarm(pulumi.CustomResource):
     def tags(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
         """
         A mapping of tags to assign to the resource.
-
-        > **NOTE:** Each resource supports the creation of one of the following three levels.
         """
         return pulumi.get(self, "tags")
 
     @property
     @pulumi.getter
-    def threshold(self) -> pulumi.Output[str]:
+    def targets(self) -> pulumi.Output[Sequence['outputs.AlarmTarget']]:
         """
-        It has been deprecated from provider version 1.94.0 and 'escalations_critical.threshold' instead.
+        The information about the resource for which alerts are triggered. See `targets` below.
         """
-        warnings.warn("""Field 'threshold' has been deprecated from provider version 1.94.0. New field 'escalations_critical.threshold' instead.""", DeprecationWarning)
-        pulumi.log.warn("""threshold is deprecated: Field 'threshold' has been deprecated from provider version 1.94.0. New field 'escalations_critical.threshold' instead.""")
-
-        return pulumi.get(self, "threshold")
-
-    @property
-    @pulumi.getter(name="triggeredCount")
-    def triggered_count(self) -> pulumi.Output[int]:
-        """
-        It has been deprecated from provider version 1.94.0 and 'escalations_critical.times' instead.
-        """
-        warnings.warn("""Field 'triggered_count' has been deprecated from provider version 1.94.0. New field 'escalations_critical.times' instead.""", DeprecationWarning)
-        pulumi.log.warn("""triggered_count is deprecated: Field 'triggered_count' has been deprecated from provider version 1.94.0. New field 'escalations_critical.times' instead.""")
-
-        return pulumi.get(self, "triggered_count")
+        return pulumi.get(self, "targets")
 
     @property
     @pulumi.getter

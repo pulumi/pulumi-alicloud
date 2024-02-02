@@ -12,9 +12,9 @@ namespace Pulumi.AliCloud.Ram
     /// <summary>
     /// Provides a RAM SAML Provider resource.
     /// 
-    /// For information about RAM SAML Provider and how to use it, see [What is SAML Provider](https://www.alibabacloud.com/help/doc-detail/186846.htm).
+    /// For information about RAM SAML Provider and how to use it, see [What is SAML Provider](https://www.alibabacloud.com/help/en/ram/developer-reference/api-ims-2019-08-15-createsamlprovider).
     /// 
-    /// &gt; **NOTE:** Available since v1.114.0+.
+    /// &gt; **NOTE:** Available since v1.114.0.
     /// 
     /// ## Example Usage
     /// 
@@ -67,7 +67,7 @@ namespace Pulumi.AliCloud.Ram
         /// The metadata file, which is Base64 encoded. The file is provided by an IdP that supports SAML 2.0.
         /// </summary>
         [Output("encodedsamlMetadataDocument")]
-        public Output<string?> EncodedsamlMetadataDocument { get; private set; } = null!;
+        public Output<string> EncodedsamlMetadataDocument { get; private set; } = null!;
 
         /// <summary>
         /// The name of SAML Provider.
@@ -136,8 +136,8 @@ namespace Pulumi.AliCloud.Ram
         /// <summary>
         /// The metadata file, which is Base64 encoded. The file is provided by an IdP that supports SAML 2.0.
         /// </summary>
-        [Input("encodedsamlMetadataDocument")]
-        public Input<string>? EncodedsamlMetadataDocument { get; set; }
+        [Input("encodedsamlMetadataDocument", required: true)]
+        public Input<string> EncodedsamlMetadataDocument { get; set; } = null!;
 
         /// <summary>
         /// The name of SAML Provider.

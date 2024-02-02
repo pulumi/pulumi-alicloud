@@ -10,6 +10,11 @@ export type Disk = import("./disk").Disk;
 export const Disk: typeof import("./disk").Disk = null as any;
 utilities.lazyLoad(exports, ["Disk"], () => require("./disk"));
 
+export { DiskInstanceAttachmentArgs, DiskInstanceAttachmentState } from "./diskInstanceAttachment";
+export type DiskInstanceAttachment = import("./diskInstanceAttachment").DiskInstanceAttachment;
+export const DiskInstanceAttachment: typeof import("./diskInstanceAttachment").DiskInstanceAttachment = null as any;
+utilities.lazyLoad(exports, ["DiskInstanceAttachment"], () => require("./diskInstanceAttachment"));
+
 export { EipArgs, EipState } from "./eip";
 export type Eip = import("./eip").Eip;
 export const Eip: typeof import("./eip").Eip = null as any;
@@ -20,10 +25,20 @@ export const getKeyPairs: typeof import("./getKeyPairs").getKeyPairs = null as a
 export const getKeyPairsOutput: typeof import("./getKeyPairs").getKeyPairsOutput = null as any;
 utilities.lazyLoad(exports, ["getKeyPairs","getKeyPairsOutput"], () => require("./getKeyPairs"));
 
+export { ImageArgs, ImageState } from "./image";
+export type Image = import("./image").Image;
+export const Image: typeof import("./image").Image = null as any;
+utilities.lazyLoad(exports, ["Image"], () => require("./image"));
+
 export { InstanceArgs, InstanceState } from "./instance";
 export type Instance = import("./instance").Instance;
 export const Instance: typeof import("./instance").Instance = null as any;
 utilities.lazyLoad(exports, ["Instance"], () => require("./instance"));
+
+export { InstanceSecurityGroupAttachmentArgs, InstanceSecurityGroupAttachmentState } from "./instanceSecurityGroupAttachment";
+export type InstanceSecurityGroupAttachment = import("./instanceSecurityGroupAttachment").InstanceSecurityGroupAttachment;
+export const InstanceSecurityGroupAttachment: typeof import("./instanceSecurityGroupAttachment").InstanceSecurityGroupAttachment = null as any;
+utilities.lazyLoad(exports, ["InstanceSecurityGroupAttachment"], () => require("./instanceSecurityGroupAttachment"));
 
 export { KeyPairArgs, KeyPairState } from "./keyPair";
 export type KeyPair = import("./keyPair").KeyPair;
@@ -62,10 +77,16 @@ const _module = {
         switch (type) {
             case "alicloud:ens/disk:Disk":
                 return new Disk(name, <any>undefined, { urn })
+            case "alicloud:ens/diskInstanceAttachment:DiskInstanceAttachment":
+                return new DiskInstanceAttachment(name, <any>undefined, { urn })
             case "alicloud:ens/eip:Eip":
                 return new Eip(name, <any>undefined, { urn })
+            case "alicloud:ens/image:Image":
+                return new Image(name, <any>undefined, { urn })
             case "alicloud:ens/instance:Instance":
                 return new Instance(name, <any>undefined, { urn })
+            case "alicloud:ens/instanceSecurityGroupAttachment:InstanceSecurityGroupAttachment":
+                return new InstanceSecurityGroupAttachment(name, <any>undefined, { urn })
             case "alicloud:ens/keyPair:KeyPair":
                 return new KeyPair(name, <any>undefined, { urn })
             case "alicloud:ens/loadBalancer:LoadBalancer":
@@ -84,8 +105,11 @@ const _module = {
     },
 };
 pulumi.runtime.registerResourceModule("alicloud", "ens/disk", _module)
+pulumi.runtime.registerResourceModule("alicloud", "ens/diskInstanceAttachment", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ens/eip", _module)
+pulumi.runtime.registerResourceModule("alicloud", "ens/image", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ens/instance", _module)
+pulumi.runtime.registerResourceModule("alicloud", "ens/instanceSecurityGroupAttachment", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ens/keyPair", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ens/loadBalancer", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ens/network", _module)

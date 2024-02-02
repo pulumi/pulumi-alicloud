@@ -175,14 +175,18 @@ class WafPolicy(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
             name = "tf_example"
+        default = random.RandomInteger("default",
+            max=99999,
+            min=10000)
         example = alicloud.dcdn.WafPolicy("example",
             defense_scene="waf_group",
-            policy_name=name,
+            policy_name=default.result.apply(lambda result: f"{name}_{result}"),
             policy_type="custom",
             status="on")
         ```
@@ -222,14 +226,18 @@ class WafPolicy(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
             name = "tf_example"
+        default = random.RandomInteger("default",
+            max=99999,
+            min=10000)
         example = alicloud.dcdn.WafPolicy("example",
             defense_scene="waf_group",
-            policy_name=name,
+            policy_name=default.result.apply(lambda result: f"{name}_{result}"),
             policy_type="custom",
             status="on")
         ```

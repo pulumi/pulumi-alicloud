@@ -134,6 +134,130 @@ func (o ClusterDbClusterIpArrayArrayOutput) Index(i pulumi.IntInput) ClusterDbCl
 	}).(ClusterDbClusterIpArrayOutput)
 }
 
+type ClusterDbRevisionVersionList struct {
+	// (Available since v1.216.0) The revised version Code of the database engine is used to specify the upgrade to the target version.
+	ReleaseNote *string `pulumi:"releaseNote"`
+	// (Available since v1.216.0) Database version release status. Valid values are `Stable`, `Old`, `HighRisk`.
+	ReleaseType *string `pulumi:"releaseType"`
+	// (Available since v1.216.0) The revised version Code of the database engine is used to specify the upgrade to the target version.
+	RevisionVersionCode *string `pulumi:"revisionVersionCode"`
+	// (Available since v1.216.0) The revision version number of the database engine.
+	RevisionVersionName *string `pulumi:"revisionVersionName"`
+}
+
+// ClusterDbRevisionVersionListInput is an input type that accepts ClusterDbRevisionVersionListArgs and ClusterDbRevisionVersionListOutput values.
+// You can construct a concrete instance of `ClusterDbRevisionVersionListInput` via:
+//
+//	ClusterDbRevisionVersionListArgs{...}
+type ClusterDbRevisionVersionListInput interface {
+	pulumi.Input
+
+	ToClusterDbRevisionVersionListOutput() ClusterDbRevisionVersionListOutput
+	ToClusterDbRevisionVersionListOutputWithContext(context.Context) ClusterDbRevisionVersionListOutput
+}
+
+type ClusterDbRevisionVersionListArgs struct {
+	// (Available since v1.216.0) The revised version Code of the database engine is used to specify the upgrade to the target version.
+	ReleaseNote pulumi.StringPtrInput `pulumi:"releaseNote"`
+	// (Available since v1.216.0) Database version release status. Valid values are `Stable`, `Old`, `HighRisk`.
+	ReleaseType pulumi.StringPtrInput `pulumi:"releaseType"`
+	// (Available since v1.216.0) The revised version Code of the database engine is used to specify the upgrade to the target version.
+	RevisionVersionCode pulumi.StringPtrInput `pulumi:"revisionVersionCode"`
+	// (Available since v1.216.0) The revision version number of the database engine.
+	RevisionVersionName pulumi.StringPtrInput `pulumi:"revisionVersionName"`
+}
+
+func (ClusterDbRevisionVersionListArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterDbRevisionVersionList)(nil)).Elem()
+}
+
+func (i ClusterDbRevisionVersionListArgs) ToClusterDbRevisionVersionListOutput() ClusterDbRevisionVersionListOutput {
+	return i.ToClusterDbRevisionVersionListOutputWithContext(context.Background())
+}
+
+func (i ClusterDbRevisionVersionListArgs) ToClusterDbRevisionVersionListOutputWithContext(ctx context.Context) ClusterDbRevisionVersionListOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterDbRevisionVersionListOutput)
+}
+
+// ClusterDbRevisionVersionListArrayInput is an input type that accepts ClusterDbRevisionVersionListArray and ClusterDbRevisionVersionListArrayOutput values.
+// You can construct a concrete instance of `ClusterDbRevisionVersionListArrayInput` via:
+//
+//	ClusterDbRevisionVersionListArray{ ClusterDbRevisionVersionListArgs{...} }
+type ClusterDbRevisionVersionListArrayInput interface {
+	pulumi.Input
+
+	ToClusterDbRevisionVersionListArrayOutput() ClusterDbRevisionVersionListArrayOutput
+	ToClusterDbRevisionVersionListArrayOutputWithContext(context.Context) ClusterDbRevisionVersionListArrayOutput
+}
+
+type ClusterDbRevisionVersionListArray []ClusterDbRevisionVersionListInput
+
+func (ClusterDbRevisionVersionListArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterDbRevisionVersionList)(nil)).Elem()
+}
+
+func (i ClusterDbRevisionVersionListArray) ToClusterDbRevisionVersionListArrayOutput() ClusterDbRevisionVersionListArrayOutput {
+	return i.ToClusterDbRevisionVersionListArrayOutputWithContext(context.Background())
+}
+
+func (i ClusterDbRevisionVersionListArray) ToClusterDbRevisionVersionListArrayOutputWithContext(ctx context.Context) ClusterDbRevisionVersionListArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterDbRevisionVersionListArrayOutput)
+}
+
+type ClusterDbRevisionVersionListOutput struct{ *pulumi.OutputState }
+
+func (ClusterDbRevisionVersionListOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterDbRevisionVersionList)(nil)).Elem()
+}
+
+func (o ClusterDbRevisionVersionListOutput) ToClusterDbRevisionVersionListOutput() ClusterDbRevisionVersionListOutput {
+	return o
+}
+
+func (o ClusterDbRevisionVersionListOutput) ToClusterDbRevisionVersionListOutputWithContext(ctx context.Context) ClusterDbRevisionVersionListOutput {
+	return o
+}
+
+// (Available since v1.216.0) The revised version Code of the database engine is used to specify the upgrade to the target version.
+func (o ClusterDbRevisionVersionListOutput) ReleaseNote() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterDbRevisionVersionList) *string { return v.ReleaseNote }).(pulumi.StringPtrOutput)
+}
+
+// (Available since v1.216.0) Database version release status. Valid values are `Stable`, `Old`, `HighRisk`.
+func (o ClusterDbRevisionVersionListOutput) ReleaseType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterDbRevisionVersionList) *string { return v.ReleaseType }).(pulumi.StringPtrOutput)
+}
+
+// (Available since v1.216.0) The revised version Code of the database engine is used to specify the upgrade to the target version.
+func (o ClusterDbRevisionVersionListOutput) RevisionVersionCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterDbRevisionVersionList) *string { return v.RevisionVersionCode }).(pulumi.StringPtrOutput)
+}
+
+// (Available since v1.216.0) The revision version number of the database engine.
+func (o ClusterDbRevisionVersionListOutput) RevisionVersionName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterDbRevisionVersionList) *string { return v.RevisionVersionName }).(pulumi.StringPtrOutput)
+}
+
+type ClusterDbRevisionVersionListArrayOutput struct{ *pulumi.OutputState }
+
+func (ClusterDbRevisionVersionListArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterDbRevisionVersionList)(nil)).Elem()
+}
+
+func (o ClusterDbRevisionVersionListArrayOutput) ToClusterDbRevisionVersionListArrayOutput() ClusterDbRevisionVersionListArrayOutput {
+	return o
+}
+
+func (o ClusterDbRevisionVersionListArrayOutput) ToClusterDbRevisionVersionListArrayOutputWithContext(ctx context.Context) ClusterDbRevisionVersionListArrayOutput {
+	return o
+}
+
+func (o ClusterDbRevisionVersionListArrayOutput) Index(i pulumi.IntInput) ClusterDbRevisionVersionListOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ClusterDbRevisionVersionList {
+		return vs[0].([]ClusterDbRevisionVersionList)[vs[1].(int)]
+	}).(ClusterDbRevisionVersionListOutput)
+}
+
 type ClusterParameter struct {
 	// Kernel parameter name.
 	Name string `pulumi:"name"`
@@ -2474,6 +2598,8 @@ func (o GetZonesZoneArrayOutput) Index(i pulumi.IntInput) GetZonesZoneOutput {
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterDbClusterIpArrayInput)(nil)).Elem(), ClusterDbClusterIpArrayArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterDbClusterIpArrayArrayInput)(nil)).Elem(), ClusterDbClusterIpArrayArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterDbRevisionVersionListInput)(nil)).Elem(), ClusterDbRevisionVersionListArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterDbRevisionVersionListArrayInput)(nil)).Elem(), ClusterDbRevisionVersionListArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterParameterInput)(nil)).Elem(), ClusterParameterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterParameterArrayInput)(nil)).Elem(), ClusterParameterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ParameterGroupParameterInput)(nil)).Elem(), ParameterGroupParameterArgs{})
@@ -2510,6 +2636,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetZonesZoneArrayInput)(nil)).Elem(), GetZonesZoneArray{})
 	pulumi.RegisterOutputType(ClusterDbClusterIpArrayOutput{})
 	pulumi.RegisterOutputType(ClusterDbClusterIpArrayArrayOutput{})
+	pulumi.RegisterOutputType(ClusterDbRevisionVersionListOutput{})
+	pulumi.RegisterOutputType(ClusterDbRevisionVersionListArrayOutput{})
 	pulumi.RegisterOutputType(ClusterParameterOutput{})
 	pulumi.RegisterOutputType(ClusterParameterArrayOutput{})
 	pulumi.RegisterOutputType(ParameterGroupParameterOutput{})

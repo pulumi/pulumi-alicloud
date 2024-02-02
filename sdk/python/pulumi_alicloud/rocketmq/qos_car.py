@@ -26,7 +26,7 @@ class QosCarArgs:
                  percent_source_type: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a QosCar resource.
-        :param pulumi.Input[str] limit_type: The speed limiting method. Valid values: Absolute, Percent.
+        :param pulumi.Input[str] limit_type: The speed limiting method. Valid values: `Absolute`, `Percent`.
         :param pulumi.Input[int] priority: The priority of the specified stream.
         :param pulumi.Input[str] qos_id: The instance ID of the QoS.
         :param pulumi.Input[str] description: The description of the QoS speed limiting rule.
@@ -59,7 +59,7 @@ class QosCarArgs:
     @pulumi.getter(name="limitType")
     def limit_type(self) -> pulumi.Input[str]:
         """
-        The speed limiting method. Valid values: Absolute, Percent.
+        The speed limiting method. Valid values: `Absolute`, `Percent`.
         """
         return pulumi.get(self, "limit_type")
 
@@ -192,7 +192,7 @@ class _QosCarState:
         """
         Input properties used for looking up and filtering QosCar resources.
         :param pulumi.Input[str] description: The description of the QoS speed limiting rule.
-        :param pulumi.Input[str] limit_type: The speed limiting method. Valid values: Absolute, Percent.
+        :param pulumi.Input[str] limit_type: The speed limiting method. Valid values: `Absolute`, `Percent`.
         :param pulumi.Input[int] max_bandwidth_abs: The maximum bandwidth allowed for the stream specified in the quintuple rule. This parameter is required when the value of the LimitType is Absolute.
         :param pulumi.Input[int] max_bandwidth_percent: The maximum bandwidth percentage allowed for the stream specified in the quintuple rule. It is based on the maximum upstream bandwidth you set for the associated Smart Access Gateway (SAG) instance.This parameter is required when the value of the LimitType parameter is Percent.
         :param pulumi.Input[int] min_bandwidth_abs: The minimum bandwidth allowed for the stream specified in the quintuple rule. This parameter is required when the value of the LimitType parameter is Absolute.
@@ -239,7 +239,7 @@ class _QosCarState:
     @pulumi.getter(name="limitType")
     def limit_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The speed limiting method. Valid values: Absolute, Percent.
+        The speed limiting method. Valid values: `Absolute`, `Percent`.
         """
         return pulumi.get(self, "limit_type")
 
@@ -361,8 +361,7 @@ class QosCar(pulumi.CustomResource):
                  qos_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Provides a Sag qos car resource.
-        You need to create a QoS car to set priorities, rate limits, and quintuple rules for different messages.
+        Provides a Sag Qos Car resource.
 
         For information about Sag Qos Car and how to use it, see [What is Qos Car](https://www.alibabacloud.com/help/en/smart-access-gateway/latest/createqoscar).
 
@@ -390,8 +389,6 @@ class QosCar(pulumi.CustomResource):
             limit_type="Absolute",
             min_bandwidth_abs=10,
             max_bandwidth_abs=20,
-            min_bandwidth_percent=10,
-            max_bandwidth_percent=20,
             percent_source_type="InternetUpBandwidth")
         ```
 
@@ -400,13 +397,13 @@ class QosCar(pulumi.CustomResource):
         The Sag Qos Car can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:rocketmq/qosCar:QosCar example qos-abc123456:qoscar-abc123456
+         $ pulumi import alicloud:rocketmq/qosCar:QosCar example <qos_id>:<qos_car_id>
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: The description of the QoS speed limiting rule.
-        :param pulumi.Input[str] limit_type: The speed limiting method. Valid values: Absolute, Percent.
+        :param pulumi.Input[str] limit_type: The speed limiting method. Valid values: `Absolute`, `Percent`.
         :param pulumi.Input[int] max_bandwidth_abs: The maximum bandwidth allowed for the stream specified in the quintuple rule. This parameter is required when the value of the LimitType is Absolute.
         :param pulumi.Input[int] max_bandwidth_percent: The maximum bandwidth percentage allowed for the stream specified in the quintuple rule. It is based on the maximum upstream bandwidth you set for the associated Smart Access Gateway (SAG) instance.This parameter is required when the value of the LimitType parameter is Percent.
         :param pulumi.Input[int] min_bandwidth_abs: The minimum bandwidth allowed for the stream specified in the quintuple rule. This parameter is required when the value of the LimitType parameter is Absolute.
@@ -423,8 +420,7 @@ class QosCar(pulumi.CustomResource):
                  args: QosCarArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a Sag qos car resource.
-        You need to create a QoS car to set priorities, rate limits, and quintuple rules for different messages.
+        Provides a Sag Qos Car resource.
 
         For information about Sag Qos Car and how to use it, see [What is Qos Car](https://www.alibabacloud.com/help/en/smart-access-gateway/latest/createqoscar).
 
@@ -452,8 +448,6 @@ class QosCar(pulumi.CustomResource):
             limit_type="Absolute",
             min_bandwidth_abs=10,
             max_bandwidth_abs=20,
-            min_bandwidth_percent=10,
-            max_bandwidth_percent=20,
             percent_source_type="InternetUpBandwidth")
         ```
 
@@ -462,7 +456,7 @@ class QosCar(pulumi.CustomResource):
         The Sag Qos Car can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:rocketmq/qosCar:QosCar example qos-abc123456:qoscar-abc123456
+         $ pulumi import alicloud:rocketmq/qosCar:QosCar example <qos_id>:<qos_car_id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -543,7 +537,7 @@ class QosCar(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: The description of the QoS speed limiting rule.
-        :param pulumi.Input[str] limit_type: The speed limiting method. Valid values: Absolute, Percent.
+        :param pulumi.Input[str] limit_type: The speed limiting method. Valid values: `Absolute`, `Percent`.
         :param pulumi.Input[int] max_bandwidth_abs: The maximum bandwidth allowed for the stream specified in the quintuple rule. This parameter is required when the value of the LimitType is Absolute.
         :param pulumi.Input[int] max_bandwidth_percent: The maximum bandwidth percentage allowed for the stream specified in the quintuple rule. It is based on the maximum upstream bandwidth you set for the associated Smart Access Gateway (SAG) instance.This parameter is required when the value of the LimitType parameter is Percent.
         :param pulumi.Input[int] min_bandwidth_abs: The minimum bandwidth allowed for the stream specified in the quintuple rule. This parameter is required when the value of the LimitType parameter is Absolute.
@@ -581,7 +575,7 @@ class QosCar(pulumi.CustomResource):
     @pulumi.getter(name="limitType")
     def limit_type(self) -> pulumi.Output[str]:
         """
-        The speed limiting method. Valid values: Absolute, Percent.
+        The speed limiting method. Valid values: `Absolute`, `Percent`.
         """
         return pulumi.get(self, "limit_type")
 

@@ -20,41 +20,29 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  * import * as random from "@pulumi/random";
  *
- * export = async () => {
- *     const defaultLogConfigs = await alicloud.apigateway.getLogConfigs({
- *         logType: "PROVIDER",
- *     });
- *     const count = defaultLogConfigs.configs.length > 0 ? 0 : 1;
- *     const defaultRandomInteger: random.RandomInteger[] = [];
- *     for (const range = {value: 0}; range.value < count; range.value++) {
- *         defaultRandomInteger.push(new random.RandomInteger(`defaultRandomInteger-${range.value}`, {
- *             max: 99999,
- *             min: 10000,
- *         }));
- *     }
- *     const exampleProject: alicloud.log.Project[] = [];
- *     for (const range = {value: 0}; range.value < count; range.value++) {
- *         exampleProject.push(new alicloud.log.Project(`exampleProject-${range.value}`, {description: "terraform-example"}));
- *     }
- *     const exampleStore: alicloud.log.Store[] = [];
- *     for (const range = {value: 0}; range.value < count; range.value++) {
- *         exampleStore.push(new alicloud.log.Store(`exampleStore-${range.value}`, {
- *             project: exampleProject[0].name,
- *             shardCount: 3,
- *             autoSplit: true,
- *             maxSplitShardCount: 60,
- *             appendMeta: true,
- *         }));
- *     }
- *     const exampleLogConfig: alicloud.apigateway.LogConfig[] = [];
- *     for (const range = {value: 0}; range.value < count; range.value++) {
- *         exampleLogConfig.push(new alicloud.apigateway.LogConfig(`exampleLogConfig-${range.value}`, {
- *             slsProject: exampleProject[0].name,
- *             slsLogStore: exampleStore[0].name,
- *             logType: "PROVIDER",
- *         }));
- *     }
- * }
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "terraform-example";
+ * const _default = new random.RandomInteger("default", {
+ *     max: 99999,
+ *     min: 10000,
+ * });
+ * const exampleProject = new alicloud.log.Project("exampleProject", {
+ *     projectName: pulumi.interpolate`${name}-${_default.result}`,
+ *     description: name,
+ * });
+ * const exampleStore = new alicloud.log.Store("exampleStore", {
+ *     projectName: exampleProject.projectName,
+ *     logstoreName: pulumi.interpolate`${name}-${_default.result}`,
+ *     shardCount: 3,
+ *     autoSplit: true,
+ *     maxSplitShardCount: 60,
+ *     appendMeta: true,
+ * });
+ * const exampleLogConfig = new alicloud.apigateway.LogConfig("exampleLogConfig", {
+ *     slsProject: exampleProject.projectName,
+ *     slsLogStore: exampleStore.logstoreName,
+ *     logType: "PROVIDER",
+ * });
  * ```
  *
  * ## Import

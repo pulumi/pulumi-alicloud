@@ -183,25 +183,28 @@ class ConsumerGroup(pulumi.CustomResource):
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
-            name = "terraform-example"
+            name = "tf-example"
         default_random_integer = random.RandomInteger("defaultRandomInteger",
             min=10000,
             max=99999)
-        default_networks = alicloud.vpc.get_networks(name_regex="^default-NODELETING$")
-        default_switches = alicloud.vpc.get_switches(vpc_id=default_networks.ids[0])
-        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_networks.ids[0])
+        default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
+        default_network = alicloud.vpc.Network("defaultNetwork", cidr_block="172.16.0.0/12")
+        default_switch = alicloud.vpc.Switch("defaultSwitch",
+            vpc_id=default_network.id,
+            cidr_block="172.16.0.0/24",
+            zone_id=default_zones.zones[0].id)
+        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
         default_instance = alicloud.alikafka.Instance("defaultInstance",
             partition_num=50,
             disk_type=1,
             disk_size=500,
             deploy_type=5,
             io_max=20,
-            vswitch_id=default_switches.ids[0],
+            vswitch_id=default_switch.id,
             security_group=default_security_group.id)
         default_consumer_group = alicloud.alikafka.ConsumerGroup("defaultConsumerGroup",
-            instance_id=default_instance.id,
-            consumer_id=default_random_integer.result.apply(lambda result: f"{name}-{result}"),
-            description=default_random_integer.result.apply(lambda result: f"{name}-{result}"))
+            consumer_id=name,
+            instance_id=default_instance.id)
         ```
 
         ## Import
@@ -245,25 +248,28 @@ class ConsumerGroup(pulumi.CustomResource):
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
-            name = "terraform-example"
+            name = "tf-example"
         default_random_integer = random.RandomInteger("defaultRandomInteger",
             min=10000,
             max=99999)
-        default_networks = alicloud.vpc.get_networks(name_regex="^default-NODELETING$")
-        default_switches = alicloud.vpc.get_switches(vpc_id=default_networks.ids[0])
-        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_networks.ids[0])
+        default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
+        default_network = alicloud.vpc.Network("defaultNetwork", cidr_block="172.16.0.0/12")
+        default_switch = alicloud.vpc.Switch("defaultSwitch",
+            vpc_id=default_network.id,
+            cidr_block="172.16.0.0/24",
+            zone_id=default_zones.zones[0].id)
+        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
         default_instance = alicloud.alikafka.Instance("defaultInstance",
             partition_num=50,
             disk_type=1,
             disk_size=500,
             deploy_type=5,
             io_max=20,
-            vswitch_id=default_switches.ids[0],
+            vswitch_id=default_switch.id,
             security_group=default_security_group.id)
         default_consumer_group = alicloud.alikafka.ConsumerGroup("defaultConsumerGroup",
-            instance_id=default_instance.id,
-            consumer_id=default_random_integer.result.apply(lambda result: f"{name}-{result}"),
-            description=default_random_integer.result.apply(lambda result: f"{name}-{result}"))
+            consumer_id=name,
+            instance_id=default_instance.id)
         ```
 
         ## Import

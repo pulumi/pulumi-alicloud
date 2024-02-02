@@ -35,6 +35,7 @@ import (
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ess"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
@@ -47,6 +48,16 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
+//			defaultRandomInteger, err := random.NewRandomInteger(ctx, "defaultRandomInteger", &random.RandomIntegerArgs{
+//				Min: pulumi.Int(10000),
+//				Max: pulumi.Int(99999),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			myName := defaultRandomInteger.Result.ApplyT(func(result int) (string, error) {
+//				return fmt.Sprintf("%v-%v", name, result), nil
+//			}).(pulumi.StringOutput)
 //			defaultZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
 //				AvailableDiskCategory:     pulumi.StringRef("cloud_efficiency"),
 //				AvailableResourceCreation: pulumi.StringRef("VSwitch"),
@@ -71,7 +82,7 @@ import (
 //				return err
 //			}
 //			defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
-//				VpcName:   pulumi.String(name),
+//				VpcName:   pulumi.String(myName),
 //				CidrBlock: pulumi.String("172.16.0.0/16"),
 //			})
 //			if err != nil {
@@ -81,7 +92,7 @@ import (
 //				VpcId:       defaultNetwork.ID(),
 //				CidrBlock:   pulumi.String("172.16.0.0/24"),
 //				ZoneId:      *pulumi.String(defaultZones.Zones[0].Id),
-//				VswitchName: pulumi.String(name),
+//				VswitchName: pulumi.String(myName),
 //			})
 //			if err != nil {
 //				return err
@@ -117,7 +128,7 @@ import (
 //			_, err = ess.NewScalingGroup(ctx, "defaultScalingGroup", &ess.ScalingGroupArgs{
 //				MinSize:          pulumi.Int(1),
 //				MaxSize:          pulumi.Int(1),
-//				ScalingGroupName: pulumi.String(name),
+//				ScalingGroupName: pulumi.String(myName),
 //				DefaultCooldown:  pulumi.Int(20),
 //				VswitchIds: pulumi.StringArray{
 //					defaultSwitch.ID(),
@@ -169,6 +180,8 @@ type ScalingGroup struct {
 	HealthCheckType pulumi.StringOutput `pulumi:"healthCheckType"`
 	// Instance launch template ID, scaling group obtains launch configuration from instance launch template, see [Launch Template](https://www.alibabacloud.com/help/doc-detail/73916.html). Creating scaling group from launch template enable group automatically.
 	LaunchTemplateId pulumi.StringPtrOutput `pulumi:"launchTemplateId"`
+	// The details of the instance types that are specified by using the Extend Instance Type of Launch Template feature..  See `launchTemplateOverride` below for details.
+	LaunchTemplateOverrides ScalingGroupLaunchTemplateOverrideArrayOutput `pulumi:"launchTemplateOverrides"`
 	// The version number of the launch template. Valid values are the version number, `Latest`, or `Default`, Default value: `Default`.
 	LaunchTemplateVersion pulumi.StringPtrOutput `pulumi:"launchTemplateVersion"`
 	// If a Server Load Balancer instance is specified in the scaling group, the scaling group automatically attaches its ECS instances to the Server Load Balancer instance.
@@ -184,19 +197,13 @@ type ScalingGroup struct {
 	// Minimum number of ECS instances in the scaling group. Value range: [0, 2000].
 	// **NOTE:** From version 1.204.1, `minSize` can be set to `2000`.
 	MinSize pulumi.IntOutput `pulumi:"minSize"`
-	// Multi-AZ scaling group ECS instance expansion and contraction strategy. PRIORITY, BALANCE or COST_OPTIMIZED(Available in 1.54.0+).
+	// Multi-AZ scaling group ECS instance expansion and contraction strategy. PRIORITY, BALANCE or COST_OPTIMIZED(Available since v1.54.0).
 	MultiAzPolicy pulumi.StringPtrOutput `pulumi:"multiAzPolicy"`
 	// The minimum amount of the Auto Scaling group's capacity that must be fulfilled by On-Demand Instances. This base portion is provisioned first as your group scales.
 	OnDemandBaseCapacity pulumi.IntOutput `pulumi:"onDemandBaseCapacity"`
 	// Controls the percentages of On-Demand Instances and Spot Instances for your additional capacity beyond OnDemandBaseCapacity.
 	OnDemandPercentageAboveBaseCapacity pulumi.IntOutput `pulumi:"onDemandPercentageAboveBaseCapacity"`
 	// Set or unset instances within group into protected status.
-	//
-	// > **NOTE:** When detach loadbalancers, instances in group will be remove from loadbalancer's `Default Server Group`; On the contrary, When attach loadbalancers, instances in group will be added to loadbalancer's `Default Server Group`.
-	//
-	// > **NOTE:** When detach dbInstances, private ip of instances in group will be remove from dbInstance's `WhiteList`; On the contrary, When attach dbInstances, private ip of instances in group will be added to dbInstance's `WhiteList`.
-	//
-	// > **NOTE:** `onDemandBaseCapacity`,`onDemandPercentageAboveBaseCapacity`,`spotInstancePools`,`spotInstanceRemedy` are valid only if `multiAzPolicy` is 'COST_OPTIMIZED'.
 	ProtectedInstances pulumi.StringArrayOutput `pulumi:"protectedInstances"`
 	// RemovalPolicy is used to select the ECS instances you want to remove from the scaling group when multiple candidates for removal exist. Optional values:
 	// - OldestInstance: removes the ECS instance that is added to the scaling group at the earliest point in time.
@@ -274,6 +281,8 @@ type scalingGroupState struct {
 	HealthCheckType *string `pulumi:"healthCheckType"`
 	// Instance launch template ID, scaling group obtains launch configuration from instance launch template, see [Launch Template](https://www.alibabacloud.com/help/doc-detail/73916.html). Creating scaling group from launch template enable group automatically.
 	LaunchTemplateId *string `pulumi:"launchTemplateId"`
+	// The details of the instance types that are specified by using the Extend Instance Type of Launch Template feature..  See `launchTemplateOverride` below for details.
+	LaunchTemplateOverrides []ScalingGroupLaunchTemplateOverride `pulumi:"launchTemplateOverrides"`
 	// The version number of the launch template. Valid values are the version number, `Latest`, or `Default`, Default value: `Default`.
 	LaunchTemplateVersion *string `pulumi:"launchTemplateVersion"`
 	// If a Server Load Balancer instance is specified in the scaling group, the scaling group automatically attaches its ECS instances to the Server Load Balancer instance.
@@ -289,19 +298,13 @@ type scalingGroupState struct {
 	// Minimum number of ECS instances in the scaling group. Value range: [0, 2000].
 	// **NOTE:** From version 1.204.1, `minSize` can be set to `2000`.
 	MinSize *int `pulumi:"minSize"`
-	// Multi-AZ scaling group ECS instance expansion and contraction strategy. PRIORITY, BALANCE or COST_OPTIMIZED(Available in 1.54.0+).
+	// Multi-AZ scaling group ECS instance expansion and contraction strategy. PRIORITY, BALANCE or COST_OPTIMIZED(Available since v1.54.0).
 	MultiAzPolicy *string `pulumi:"multiAzPolicy"`
 	// The minimum amount of the Auto Scaling group's capacity that must be fulfilled by On-Demand Instances. This base portion is provisioned first as your group scales.
 	OnDemandBaseCapacity *int `pulumi:"onDemandBaseCapacity"`
 	// Controls the percentages of On-Demand Instances and Spot Instances for your additional capacity beyond OnDemandBaseCapacity.
 	OnDemandPercentageAboveBaseCapacity *int `pulumi:"onDemandPercentageAboveBaseCapacity"`
 	// Set or unset instances within group into protected status.
-	//
-	// > **NOTE:** When detach loadbalancers, instances in group will be remove from loadbalancer's `Default Server Group`; On the contrary, When attach loadbalancers, instances in group will be added to loadbalancer's `Default Server Group`.
-	//
-	// > **NOTE:** When detach dbInstances, private ip of instances in group will be remove from dbInstance's `WhiteList`; On the contrary, When attach dbInstances, private ip of instances in group will be added to dbInstance's `WhiteList`.
-	//
-	// > **NOTE:** `onDemandBaseCapacity`,`onDemandPercentageAboveBaseCapacity`,`spotInstancePools`,`spotInstanceRemedy` are valid only if `multiAzPolicy` is 'COST_OPTIMIZED'.
 	ProtectedInstances []string `pulumi:"protectedInstances"`
 	// RemovalPolicy is used to select the ECS instances you want to remove from the scaling group when multiple candidates for removal exist. Optional values:
 	// - OldestInstance: removes the ECS instance that is added to the scaling group at the earliest point in time.
@@ -344,6 +347,8 @@ type ScalingGroupState struct {
 	HealthCheckType pulumi.StringPtrInput
 	// Instance launch template ID, scaling group obtains launch configuration from instance launch template, see [Launch Template](https://www.alibabacloud.com/help/doc-detail/73916.html). Creating scaling group from launch template enable group automatically.
 	LaunchTemplateId pulumi.StringPtrInput
+	// The details of the instance types that are specified by using the Extend Instance Type of Launch Template feature..  See `launchTemplateOverride` below for details.
+	LaunchTemplateOverrides ScalingGroupLaunchTemplateOverrideArrayInput
 	// The version number of the launch template. Valid values are the version number, `Latest`, or `Default`, Default value: `Default`.
 	LaunchTemplateVersion pulumi.StringPtrInput
 	// If a Server Load Balancer instance is specified in the scaling group, the scaling group automatically attaches its ECS instances to the Server Load Balancer instance.
@@ -359,19 +364,13 @@ type ScalingGroupState struct {
 	// Minimum number of ECS instances in the scaling group. Value range: [0, 2000].
 	// **NOTE:** From version 1.204.1, `minSize` can be set to `2000`.
 	MinSize pulumi.IntPtrInput
-	// Multi-AZ scaling group ECS instance expansion and contraction strategy. PRIORITY, BALANCE or COST_OPTIMIZED(Available in 1.54.0+).
+	// Multi-AZ scaling group ECS instance expansion and contraction strategy. PRIORITY, BALANCE or COST_OPTIMIZED(Available since v1.54.0).
 	MultiAzPolicy pulumi.StringPtrInput
 	// The minimum amount of the Auto Scaling group's capacity that must be fulfilled by On-Demand Instances. This base portion is provisioned first as your group scales.
 	OnDemandBaseCapacity pulumi.IntPtrInput
 	// Controls the percentages of On-Demand Instances and Spot Instances for your additional capacity beyond OnDemandBaseCapacity.
 	OnDemandPercentageAboveBaseCapacity pulumi.IntPtrInput
 	// Set or unset instances within group into protected status.
-	//
-	// > **NOTE:** When detach loadbalancers, instances in group will be remove from loadbalancer's `Default Server Group`; On the contrary, When attach loadbalancers, instances in group will be added to loadbalancer's `Default Server Group`.
-	//
-	// > **NOTE:** When detach dbInstances, private ip of instances in group will be remove from dbInstance's `WhiteList`; On the contrary, When attach dbInstances, private ip of instances in group will be added to dbInstance's `WhiteList`.
-	//
-	// > **NOTE:** `onDemandBaseCapacity`,`onDemandPercentageAboveBaseCapacity`,`spotInstancePools`,`spotInstanceRemedy` are valid only if `multiAzPolicy` is 'COST_OPTIMIZED'.
 	ProtectedInstances pulumi.StringArrayInput
 	// RemovalPolicy is used to select the ECS instances you want to remove from the scaling group when multiple candidates for removal exist. Optional values:
 	// - OldestInstance: removes the ECS instance that is added to the scaling group at the earliest point in time.
@@ -418,6 +417,8 @@ type scalingGroupArgs struct {
 	HealthCheckType *string `pulumi:"healthCheckType"`
 	// Instance launch template ID, scaling group obtains launch configuration from instance launch template, see [Launch Template](https://www.alibabacloud.com/help/doc-detail/73916.html). Creating scaling group from launch template enable group automatically.
 	LaunchTemplateId *string `pulumi:"launchTemplateId"`
+	// The details of the instance types that are specified by using the Extend Instance Type of Launch Template feature..  See `launchTemplateOverride` below for details.
+	LaunchTemplateOverrides []ScalingGroupLaunchTemplateOverride `pulumi:"launchTemplateOverrides"`
 	// The version number of the launch template. Valid values are the version number, `Latest`, or `Default`, Default value: `Default`.
 	LaunchTemplateVersion *string `pulumi:"launchTemplateVersion"`
 	// If a Server Load Balancer instance is specified in the scaling group, the scaling group automatically attaches its ECS instances to the Server Load Balancer instance.
@@ -433,19 +434,13 @@ type scalingGroupArgs struct {
 	// Minimum number of ECS instances in the scaling group. Value range: [0, 2000].
 	// **NOTE:** From version 1.204.1, `minSize` can be set to `2000`.
 	MinSize int `pulumi:"minSize"`
-	// Multi-AZ scaling group ECS instance expansion and contraction strategy. PRIORITY, BALANCE or COST_OPTIMIZED(Available in 1.54.0+).
+	// Multi-AZ scaling group ECS instance expansion and contraction strategy. PRIORITY, BALANCE or COST_OPTIMIZED(Available since v1.54.0).
 	MultiAzPolicy *string `pulumi:"multiAzPolicy"`
 	// The minimum amount of the Auto Scaling group's capacity that must be fulfilled by On-Demand Instances. This base portion is provisioned first as your group scales.
 	OnDemandBaseCapacity *int `pulumi:"onDemandBaseCapacity"`
 	// Controls the percentages of On-Demand Instances and Spot Instances for your additional capacity beyond OnDemandBaseCapacity.
 	OnDemandPercentageAboveBaseCapacity *int `pulumi:"onDemandPercentageAboveBaseCapacity"`
 	// Set or unset instances within group into protected status.
-	//
-	// > **NOTE:** When detach loadbalancers, instances in group will be remove from loadbalancer's `Default Server Group`; On the contrary, When attach loadbalancers, instances in group will be added to loadbalancer's `Default Server Group`.
-	//
-	// > **NOTE:** When detach dbInstances, private ip of instances in group will be remove from dbInstance's `WhiteList`; On the contrary, When attach dbInstances, private ip of instances in group will be added to dbInstance's `WhiteList`.
-	//
-	// > **NOTE:** `onDemandBaseCapacity`,`onDemandPercentageAboveBaseCapacity`,`spotInstancePools`,`spotInstanceRemedy` are valid only if `multiAzPolicy` is 'COST_OPTIMIZED'.
 	ProtectedInstances []string `pulumi:"protectedInstances"`
 	// RemovalPolicy is used to select the ECS instances you want to remove from the scaling group when multiple candidates for removal exist. Optional values:
 	// - OldestInstance: removes the ECS instance that is added to the scaling group at the earliest point in time.
@@ -489,6 +484,8 @@ type ScalingGroupArgs struct {
 	HealthCheckType pulumi.StringPtrInput
 	// Instance launch template ID, scaling group obtains launch configuration from instance launch template, see [Launch Template](https://www.alibabacloud.com/help/doc-detail/73916.html). Creating scaling group from launch template enable group automatically.
 	LaunchTemplateId pulumi.StringPtrInput
+	// The details of the instance types that are specified by using the Extend Instance Type of Launch Template feature..  See `launchTemplateOverride` below for details.
+	LaunchTemplateOverrides ScalingGroupLaunchTemplateOverrideArrayInput
 	// The version number of the launch template. Valid values are the version number, `Latest`, or `Default`, Default value: `Default`.
 	LaunchTemplateVersion pulumi.StringPtrInput
 	// If a Server Load Balancer instance is specified in the scaling group, the scaling group automatically attaches its ECS instances to the Server Load Balancer instance.
@@ -504,19 +501,13 @@ type ScalingGroupArgs struct {
 	// Minimum number of ECS instances in the scaling group. Value range: [0, 2000].
 	// **NOTE:** From version 1.204.1, `minSize` can be set to `2000`.
 	MinSize pulumi.IntInput
-	// Multi-AZ scaling group ECS instance expansion and contraction strategy. PRIORITY, BALANCE or COST_OPTIMIZED(Available in 1.54.0+).
+	// Multi-AZ scaling group ECS instance expansion and contraction strategy. PRIORITY, BALANCE or COST_OPTIMIZED(Available since v1.54.0).
 	MultiAzPolicy pulumi.StringPtrInput
 	// The minimum amount of the Auto Scaling group's capacity that must be fulfilled by On-Demand Instances. This base portion is provisioned first as your group scales.
 	OnDemandBaseCapacity pulumi.IntPtrInput
 	// Controls the percentages of On-Demand Instances and Spot Instances for your additional capacity beyond OnDemandBaseCapacity.
 	OnDemandPercentageAboveBaseCapacity pulumi.IntPtrInput
 	// Set or unset instances within group into protected status.
-	//
-	// > **NOTE:** When detach loadbalancers, instances in group will be remove from loadbalancer's `Default Server Group`; On the contrary, When attach loadbalancers, instances in group will be added to loadbalancer's `Default Server Group`.
-	//
-	// > **NOTE:** When detach dbInstances, private ip of instances in group will be remove from dbInstance's `WhiteList`; On the contrary, When attach dbInstances, private ip of instances in group will be added to dbInstance's `WhiteList`.
-	//
-	// > **NOTE:** `onDemandBaseCapacity`,`onDemandPercentageAboveBaseCapacity`,`spotInstancePools`,`spotInstanceRemedy` are valid only if `multiAzPolicy` is 'COST_OPTIMIZED'.
 	ProtectedInstances pulumi.StringArrayInput
 	// RemovalPolicy is used to select the ECS instances you want to remove from the scaling group when multiple candidates for removal exist. Optional values:
 	// - OldestInstance: removes the ECS instance that is added to the scaling group at the earliest point in time.
@@ -666,6 +657,11 @@ func (o ScalingGroupOutput) LaunchTemplateId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ScalingGroup) pulumi.StringPtrOutput { return v.LaunchTemplateId }).(pulumi.StringPtrOutput)
 }
 
+// The details of the instance types that are specified by using the Extend Instance Type of Launch Template feature..  See `launchTemplateOverride` below for details.
+func (o ScalingGroupOutput) LaunchTemplateOverrides() ScalingGroupLaunchTemplateOverrideArrayOutput {
+	return o.ApplyT(func(v *ScalingGroup) ScalingGroupLaunchTemplateOverrideArrayOutput { return v.LaunchTemplateOverrides }).(ScalingGroupLaunchTemplateOverrideArrayOutput)
+}
+
 // The version number of the launch template. Valid values are the version number, `Latest`, or `Default`, Default value: `Default`.
 func (o ScalingGroupOutput) LaunchTemplateVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ScalingGroup) pulumi.StringPtrOutput { return v.LaunchTemplateVersion }).(pulumi.StringPtrOutput)
@@ -693,7 +689,7 @@ func (o ScalingGroupOutput) MinSize() pulumi.IntOutput {
 	return o.ApplyT(func(v *ScalingGroup) pulumi.IntOutput { return v.MinSize }).(pulumi.IntOutput)
 }
 
-// Multi-AZ scaling group ECS instance expansion and contraction strategy. PRIORITY, BALANCE or COST_OPTIMIZED(Available in 1.54.0+).
+// Multi-AZ scaling group ECS instance expansion and contraction strategy. PRIORITY, BALANCE or COST_OPTIMIZED(Available since v1.54.0).
 func (o ScalingGroupOutput) MultiAzPolicy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ScalingGroup) pulumi.StringPtrOutput { return v.MultiAzPolicy }).(pulumi.StringPtrOutput)
 }
@@ -709,12 +705,6 @@ func (o ScalingGroupOutput) OnDemandPercentageAboveBaseCapacity() pulumi.IntOutp
 }
 
 // Set or unset instances within group into protected status.
-//
-// > **NOTE:** When detach loadbalancers, instances in group will be remove from loadbalancer's `Default Server Group`; On the contrary, When attach loadbalancers, instances in group will be added to loadbalancer's `Default Server Group`.
-//
-// > **NOTE:** When detach dbInstances, private ip of instances in group will be remove from dbInstance's `WhiteList`; On the contrary, When attach dbInstances, private ip of instances in group will be added to dbInstance's `WhiteList`.
-//
-// > **NOTE:** `onDemandBaseCapacity`,`onDemandPercentageAboveBaseCapacity`,`spotInstancePools`,`spotInstanceRemedy` are valid only if `multiAzPolicy` is 'COST_OPTIMIZED'.
 func (o ScalingGroupOutput) ProtectedInstances() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ScalingGroup) pulumi.StringArrayOutput { return v.ProtectedInstances }).(pulumi.StringArrayOutput)
 }

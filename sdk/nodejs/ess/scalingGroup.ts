@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -20,9 +22,15 @@ import * as utilities from "../utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
+ * import * as random from "@pulumi/random";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "terraform-example";
+ * const defaultRandomInteger = new random.RandomInteger("defaultRandomInteger", {
+ *     min: 10000,
+ *     max: 99999,
+ * });
+ * const myName = pulumi.interpolate`${name}-${defaultRandomInteger.result}`;
  * const defaultZones = alicloud.getZones({
  *     availableDiskCategory: "cloud_efficiency",
  *     availableResourceCreation: "VSwitch",
@@ -38,14 +46,14 @@ import * as utilities from "../utilities";
  *     owners: "system",
  * });
  * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {
- *     vpcName: name,
+ *     vpcName: myName,
  *     cidrBlock: "172.16.0.0/16",
  * });
  * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
  *     vpcId: defaultNetwork.id,
  *     cidrBlock: "172.16.0.0/24",
  *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
- *     vswitchName: name,
+ *     vswitchName: myName,
  * });
  * const defaultSecurityGroup = new alicloud.ecs.SecurityGroup("defaultSecurityGroup", {vpcId: defaultNetwork.id});
  * const defaultSecurityGroupRule = new alicloud.ecs.SecurityGroupRule("defaultSecurityGroupRule", {
@@ -67,7 +75,7 @@ import * as utilities from "../utilities";
  * const defaultScalingGroup = new alicloud.ess.ScalingGroup("defaultScalingGroup", {
  *     minSize: 1,
  *     maxSize: 1,
- *     scalingGroupName: name,
+ *     scalingGroupName: myName,
  *     defaultCooldown: 20,
  *     vswitchIds: [
  *         defaultSwitch.id,
@@ -151,6 +159,10 @@ export class ScalingGroup extends pulumi.CustomResource {
      */
     public readonly launchTemplateId!: pulumi.Output<string | undefined>;
     /**
+     * The details of the instance types that are specified by using the Extend Instance Type of Launch Template feature..  See `launchTemplateOverride` below for details.
+     */
+    public readonly launchTemplateOverrides!: pulumi.Output<outputs.ess.ScalingGroupLaunchTemplateOverride[] | undefined>;
+    /**
      * The version number of the launch template. Valid values are the version number, `Latest`, or `Default`, Default value: `Default`.
      */
     public readonly launchTemplateVersion!: pulumi.Output<string | undefined>;
@@ -174,7 +186,7 @@ export class ScalingGroup extends pulumi.CustomResource {
      */
     public readonly minSize!: pulumi.Output<number>;
     /**
-     * Multi-AZ scaling group ECS instance expansion and contraction strategy. PRIORITY, BALANCE or COST_OPTIMIZED(Available in 1.54.0+).
+     * Multi-AZ scaling group ECS instance expansion and contraction strategy. PRIORITY, BALANCE or COST_OPTIMIZED(Available since v1.54.0).
      */
     public readonly multiAzPolicy!: pulumi.Output<string | undefined>;
     /**
@@ -187,12 +199,6 @@ export class ScalingGroup extends pulumi.CustomResource {
     public readonly onDemandPercentageAboveBaseCapacity!: pulumi.Output<number>;
     /**
      * Set or unset instances within group into protected status.
-     *
-     * > **NOTE:** When detach loadbalancers, instances in group will be remove from loadbalancer's `Default Server Group`; On the contrary, When attach loadbalancers, instances in group will be added to loadbalancer's `Default Server Group`.
-     *
-     * > **NOTE:** When detach dbInstances, private ip of instances in group will be remove from dbInstance's `WhiteList`; On the contrary, When attach dbInstances, private ip of instances in group will be added to dbInstance's `WhiteList`.
-     *
-     * > **NOTE:** `onDemandBaseCapacity`,`onDemandPercentageAboveBaseCapacity`,`spotInstancePools`,`spotInstanceRemedy` are valid only if `multiAzPolicy` is 'COST_OPTIMIZED'.
      */
     public readonly protectedInstances!: pulumi.Output<string[] | undefined>;
     /**
@@ -252,6 +258,7 @@ export class ScalingGroup extends pulumi.CustomResource {
             resourceInputs["groupType"] = state ? state.groupType : undefined;
             resourceInputs["healthCheckType"] = state ? state.healthCheckType : undefined;
             resourceInputs["launchTemplateId"] = state ? state.launchTemplateId : undefined;
+            resourceInputs["launchTemplateOverrides"] = state ? state.launchTemplateOverrides : undefined;
             resourceInputs["launchTemplateVersion"] = state ? state.launchTemplateVersion : undefined;
             resourceInputs["loadbalancerIds"] = state ? state.loadbalancerIds : undefined;
             resourceInputs["maxSize"] = state ? state.maxSize : undefined;
@@ -282,6 +289,7 @@ export class ScalingGroup extends pulumi.CustomResource {
             resourceInputs["groupType"] = args ? args.groupType : undefined;
             resourceInputs["healthCheckType"] = args ? args.healthCheckType : undefined;
             resourceInputs["launchTemplateId"] = args ? args.launchTemplateId : undefined;
+            resourceInputs["launchTemplateOverrides"] = args ? args.launchTemplateOverrides : undefined;
             resourceInputs["launchTemplateVersion"] = args ? args.launchTemplateVersion : undefined;
             resourceInputs["loadbalancerIds"] = args ? args.loadbalancerIds : undefined;
             resourceInputs["maxSize"] = args ? args.maxSize : undefined;
@@ -338,6 +346,10 @@ export interface ScalingGroupState {
      */
     launchTemplateId?: pulumi.Input<string>;
     /**
+     * The details of the instance types that are specified by using the Extend Instance Type of Launch Template feature..  See `launchTemplateOverride` below for details.
+     */
+    launchTemplateOverrides?: pulumi.Input<pulumi.Input<inputs.ess.ScalingGroupLaunchTemplateOverride>[]>;
+    /**
      * The version number of the launch template. Valid values are the version number, `Latest`, or `Default`, Default value: `Default`.
      */
     launchTemplateVersion?: pulumi.Input<string>;
@@ -361,7 +373,7 @@ export interface ScalingGroupState {
      */
     minSize?: pulumi.Input<number>;
     /**
-     * Multi-AZ scaling group ECS instance expansion and contraction strategy. PRIORITY, BALANCE or COST_OPTIMIZED(Available in 1.54.0+).
+     * Multi-AZ scaling group ECS instance expansion and contraction strategy. PRIORITY, BALANCE or COST_OPTIMIZED(Available since v1.54.0).
      */
     multiAzPolicy?: pulumi.Input<string>;
     /**
@@ -374,12 +386,6 @@ export interface ScalingGroupState {
     onDemandPercentageAboveBaseCapacity?: pulumi.Input<number>;
     /**
      * Set or unset instances within group into protected status.
-     *
-     * > **NOTE:** When detach loadbalancers, instances in group will be remove from loadbalancer's `Default Server Group`; On the contrary, When attach loadbalancers, instances in group will be added to loadbalancer's `Default Server Group`.
-     *
-     * > **NOTE:** When detach dbInstances, private ip of instances in group will be remove from dbInstance's `WhiteList`; On the contrary, When attach dbInstances, private ip of instances in group will be added to dbInstance's `WhiteList`.
-     *
-     * > **NOTE:** `onDemandBaseCapacity`,`onDemandPercentageAboveBaseCapacity`,`spotInstancePools`,`spotInstanceRemedy` are valid only if `multiAzPolicy` is 'COST_OPTIMIZED'.
      */
     protectedInstances?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -455,6 +461,10 @@ export interface ScalingGroupArgs {
      */
     launchTemplateId?: pulumi.Input<string>;
     /**
+     * The details of the instance types that are specified by using the Extend Instance Type of Launch Template feature..  See `launchTemplateOverride` below for details.
+     */
+    launchTemplateOverrides?: pulumi.Input<pulumi.Input<inputs.ess.ScalingGroupLaunchTemplateOverride>[]>;
+    /**
      * The version number of the launch template. Valid values are the version number, `Latest`, or `Default`, Default value: `Default`.
      */
     launchTemplateVersion?: pulumi.Input<string>;
@@ -478,7 +488,7 @@ export interface ScalingGroupArgs {
      */
     minSize: pulumi.Input<number>;
     /**
-     * Multi-AZ scaling group ECS instance expansion and contraction strategy. PRIORITY, BALANCE or COST_OPTIMIZED(Available in 1.54.0+).
+     * Multi-AZ scaling group ECS instance expansion and contraction strategy. PRIORITY, BALANCE or COST_OPTIMIZED(Available since v1.54.0).
      */
     multiAzPolicy?: pulumi.Input<string>;
     /**
@@ -491,12 +501,6 @@ export interface ScalingGroupArgs {
     onDemandPercentageAboveBaseCapacity?: pulumi.Input<number>;
     /**
      * Set or unset instances within group into protected status.
-     *
-     * > **NOTE:** When detach loadbalancers, instances in group will be remove from loadbalancer's `Default Server Group`; On the contrary, When attach loadbalancers, instances in group will be added to loadbalancer's `Default Server Group`.
-     *
-     * > **NOTE:** When detach dbInstances, private ip of instances in group will be remove from dbInstance's `WhiteList`; On the contrary, When attach dbInstances, private ip of instances in group will be added to dbInstance's `WhiteList`.
-     *
-     * > **NOTE:** `onDemandBaseCapacity`,`onDemandPercentageAboveBaseCapacity`,`spotInstancePools`,`spotInstanceRemedy` are valid only if `multiAzPolicy` is 'COST_OPTIMIZED'.
      */
     protectedInstances?: pulumi.Input<pulumi.Input<string>[]>;
     /**

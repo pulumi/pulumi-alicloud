@@ -202,7 +202,7 @@ export class ContainerGroup extends pulumi.CustomResource {
     /**
      * The type of the ECS instance.
      */
-    public readonly instanceType!: pulumi.Output<string | undefined>;
+    public readonly instanceType!: pulumi.Output<string>;
     /**
      * (Available since v1.170.0) The Public IP of the container group.
      */
@@ -240,6 +240,14 @@ export class ContainerGroup extends pulumi.CustomResource {
      */
     public readonly securityGroupId!: pulumi.Output<string>;
     /**
+     * The maximum hourly price of the ECI spot instance.
+     */
+    public readonly spotPriceLimit!: pulumi.Output<number>;
+    /**
+     * Filter the results by ECI spot type. Valid values: `NoSpot`, `SpotWithPriceLimit` and `SpotAsPriceGo`. Default to `NoSpot`.
+     */
+    public readonly spotStrategy!: pulumi.Output<string>;
+    /**
      * The status of container group.
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
@@ -249,6 +257,10 @@ export class ContainerGroup extends pulumi.CustomResource {
      * - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
      */
     public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
+    /**
+     * The buffer time during which the program handles operations before the program stops. Unit: seconds.
+     */
+    public readonly terminationGracePeriodSeconds!: pulumi.Output<number | undefined>;
     /**
      * The list of volumes. See `volumes` below.
      */
@@ -299,8 +311,11 @@ export class ContainerGroup extends pulumi.CustomResource {
             resourceInputs["restartPolicy"] = state ? state.restartPolicy : undefined;
             resourceInputs["securityContext"] = state ? state.securityContext : undefined;
             resourceInputs["securityGroupId"] = state ? state.securityGroupId : undefined;
+            resourceInputs["spotPriceLimit"] = state ? state.spotPriceLimit : undefined;
+            resourceInputs["spotStrategy"] = state ? state.spotStrategy : undefined;
             resourceInputs["status"] = state ? state.status : undefined;
             resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["terminationGracePeriodSeconds"] = state ? state.terminationGracePeriodSeconds : undefined;
             resourceInputs["volumes"] = state ? state.volumes : undefined;
             resourceInputs["vswitchId"] = state ? state.vswitchId : undefined;
             resourceInputs["zoneId"] = state ? state.zoneId : undefined;
@@ -339,7 +354,10 @@ export class ContainerGroup extends pulumi.CustomResource {
             resourceInputs["restartPolicy"] = args ? args.restartPolicy : undefined;
             resourceInputs["securityContext"] = args ? args.securityContext : undefined;
             resourceInputs["securityGroupId"] = args ? args.securityGroupId : undefined;
+            resourceInputs["spotPriceLimit"] = args ? args.spotPriceLimit : undefined;
+            resourceInputs["spotStrategy"] = args ? args.spotStrategy : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["terminationGracePeriodSeconds"] = args ? args.terminationGracePeriodSeconds : undefined;
             resourceInputs["volumes"] = args ? args.volumes : undefined;
             resourceInputs["vswitchId"] = args ? args.vswitchId : undefined;
             resourceInputs["zoneId"] = args ? args.zoneId : undefined;
@@ -449,6 +467,14 @@ export interface ContainerGroupState {
      */
     securityGroupId?: pulumi.Input<string>;
     /**
+     * The maximum hourly price of the ECI spot instance.
+     */
+    spotPriceLimit?: pulumi.Input<number>;
+    /**
+     * Filter the results by ECI spot type. Valid values: `NoSpot`, `SpotWithPriceLimit` and `SpotAsPriceGo`. Default to `NoSpot`.
+     */
+    spotStrategy?: pulumi.Input<string>;
+    /**
      * The status of container group.
      */
     status?: pulumi.Input<string>;
@@ -458,6 +484,10 @@ export interface ContainerGroupState {
      * - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
      */
     tags?: pulumi.Input<{[key: string]: any}>;
+    /**
+     * The buffer time during which the program handles operations before the program stops. Unit: seconds.
+     */
+    terminationGracePeriodSeconds?: pulumi.Input<number>;
     /**
      * The list of volumes. See `volumes` below.
      */
@@ -562,11 +592,23 @@ export interface ContainerGroupArgs {
      */
     securityGroupId: pulumi.Input<string>;
     /**
+     * The maximum hourly price of the ECI spot instance.
+     */
+    spotPriceLimit?: pulumi.Input<number>;
+    /**
+     * Filter the results by ECI spot type. Valid values: `NoSpot`, `SpotWithPriceLimit` and `SpotAsPriceGo`. Default to `NoSpot`.
+     */
+    spotStrategy?: pulumi.Input<string>;
+    /**
      * A mapping of tags to assign to the resource.
      * - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
      * - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
      */
     tags?: pulumi.Input<{[key: string]: any}>;
+    /**
+     * The buffer time during which the program handles operations before the program stops. Unit: seconds.
+     */
+    terminationGracePeriodSeconds?: pulumi.Input<number>;
     /**
      * The list of volumes. See `volumes` below.
      */

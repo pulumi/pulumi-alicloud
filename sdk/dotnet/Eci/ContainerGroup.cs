@@ -276,7 +276,7 @@ namespace Pulumi.AliCloud.Eci
         /// The type of the ECS instance.
         /// </summary>
         [Output("instanceType")]
-        public Output<string?> InstanceType { get; private set; } = null!;
+        public Output<string> InstanceType { get; private set; } = null!;
 
         /// <summary>
         /// (Available since v1.170.0) The Public IP of the container group.
@@ -333,6 +333,18 @@ namespace Pulumi.AliCloud.Eci
         public Output<string> SecurityGroupId { get; private set; } = null!;
 
         /// <summary>
+        /// The maximum hourly price of the ECI spot instance.
+        /// </summary>
+        [Output("spotPriceLimit")]
+        public Output<double> SpotPriceLimit { get; private set; } = null!;
+
+        /// <summary>
+        /// Filter the results by ECI spot type. Valid values: `NoSpot`, `SpotWithPriceLimit` and `SpotAsPriceGo`. Default to `NoSpot`.
+        /// </summary>
+        [Output("spotStrategy")]
+        public Output<string> SpotStrategy { get; private set; } = null!;
+
+        /// <summary>
         /// The status of container group.
         /// </summary>
         [Output("status")]
@@ -345,6 +357,12 @@ namespace Pulumi.AliCloud.Eci
         /// </summary>
         [Output("tags")]
         public Output<ImmutableDictionary<string, object>?> Tags { get; private set; } = null!;
+
+        /// <summary>
+        /// The buffer time during which the program handles operations before the program stops. Unit: seconds.
+        /// </summary>
+        [Output("terminationGracePeriodSeconds")]
+        public Output<int?> TerminationGracePeriodSeconds { get; private set; } = null!;
 
         /// <summary>
         /// The list of volumes. See `volumes` below.
@@ -567,6 +585,18 @@ namespace Pulumi.AliCloud.Eci
         [Input("securityGroupId", required: true)]
         public Input<string> SecurityGroupId { get; set; } = null!;
 
+        /// <summary>
+        /// The maximum hourly price of the ECI spot instance.
+        /// </summary>
+        [Input("spotPriceLimit")]
+        public Input<double>? SpotPriceLimit { get; set; }
+
+        /// <summary>
+        /// Filter the results by ECI spot type. Valid values: `NoSpot`, `SpotWithPriceLimit` and `SpotAsPriceGo`. Default to `NoSpot`.
+        /// </summary>
+        [Input("spotStrategy")]
+        public Input<string>? SpotStrategy { get; set; }
+
         [Input("tags")]
         private InputMap<object>? _tags;
 
@@ -580,6 +610,12 @@ namespace Pulumi.AliCloud.Eci
             get => _tags ?? (_tags = new InputMap<object>());
             set => _tags = value;
         }
+
+        /// <summary>
+        /// The buffer time during which the program handles operations before the program stops. Unit: seconds.
+        /// </summary>
+        [Input("terminationGracePeriodSeconds")]
+        public Input<int>? TerminationGracePeriodSeconds { get; set; }
 
         [Input("volumes")]
         private InputList<Inputs.ContainerGroupVolumeArgs>? _volumes;
@@ -783,6 +819,18 @@ namespace Pulumi.AliCloud.Eci
         public Input<string>? SecurityGroupId { get; set; }
 
         /// <summary>
+        /// The maximum hourly price of the ECI spot instance.
+        /// </summary>
+        [Input("spotPriceLimit")]
+        public Input<double>? SpotPriceLimit { get; set; }
+
+        /// <summary>
+        /// Filter the results by ECI spot type. Valid values: `NoSpot`, `SpotWithPriceLimit` and `SpotAsPriceGo`. Default to `NoSpot`.
+        /// </summary>
+        [Input("spotStrategy")]
+        public Input<string>? SpotStrategy { get; set; }
+
+        /// <summary>
         /// The status of container group.
         /// </summary>
         [Input("status")]
@@ -801,6 +849,12 @@ namespace Pulumi.AliCloud.Eci
             get => _tags ?? (_tags = new InputMap<object>());
             set => _tags = value;
         }
+
+        /// <summary>
+        /// The buffer time during which the program handles operations before the program stops. Unit: seconds.
+        /// </summary>
+        [Input("terminationGracePeriodSeconds")]
+        public Input<int>? TerminationGracePeriodSeconds { get; set; }
 
         [Input("volumes")]
         private InputList<Inputs.ContainerGroupVolumeGetArgs>? _volumes;

@@ -24,6 +24,9 @@ class InstanceArgs:
                  vswitch_ids: pulumi.Input[Sequence[pulumi.Input[str]]],
                  zone_ids: pulumi.Input[Sequence[pulumi.Input[str]]],
                  bind_vpcs: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceBindVpcArgs']]]] = None,
+                 log: Optional[pulumi.Input[str]] = None,
+                 log_storage: Optional[pulumi.Input[int]] = None,
+                 period: Optional[pulumi.Input[int]] = None,
                  product_version: Optional[pulumi.Input[str]] = None,
                  renew_period: Optional[pulumi.Input[int]] = None,
                  renew_status: Optional[pulumi.Input[str]] = None):
@@ -37,7 +40,10 @@ class InstanceArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] vswitch_ids: Instance bind vswitches.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] zone_ids: zone id.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceBindVpcArgs']]] bind_vpcs: Aucillary VPCs used to access this KMS instance. See `bind_vpcs` below.
-        :param pulumi.Input[str] product_version: KMS Instance commodity type (software/hardware). Currently, only version 3 is supported.
+        :param pulumi.Input[str] log: Instance Audit Log Switch.
+        :param pulumi.Input[int] log_storage: Instance log capacity.
+        :param pulumi.Input[int] period: Purchase cycle, in months.
+        :param pulumi.Input[str] product_version: KMS Instance commodity type (software/hardware).
         :param pulumi.Input[int] renew_period: Automatic renewal period, in months.
         :param pulumi.Input[str] renew_status: Renewal options (manual renewal, automatic renewal, no renewal).
         """
@@ -50,6 +56,12 @@ class InstanceArgs:
         pulumi.set(__self__, "zone_ids", zone_ids)
         if bind_vpcs is not None:
             pulumi.set(__self__, "bind_vpcs", bind_vpcs)
+        if log is not None:
+            pulumi.set(__self__, "log", log)
+        if log_storage is not None:
+            pulumi.set(__self__, "log_storage", log_storage)
+        if period is not None:
+            pulumi.set(__self__, "period", period)
         if product_version is not None:
             pulumi.set(__self__, "product_version", product_version)
         if renew_period is not None:
@@ -154,10 +166,46 @@ class InstanceArgs:
         pulumi.set(self, "bind_vpcs", value)
 
     @property
+    @pulumi.getter
+    def log(self) -> Optional[pulumi.Input[str]]:
+        """
+        Instance Audit Log Switch.
+        """
+        return pulumi.get(self, "log")
+
+    @log.setter
+    def log(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "log", value)
+
+    @property
+    @pulumi.getter(name="logStorage")
+    def log_storage(self) -> Optional[pulumi.Input[int]]:
+        """
+        Instance log capacity.
+        """
+        return pulumi.get(self, "log_storage")
+
+    @log_storage.setter
+    def log_storage(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "log_storage", value)
+
+    @property
+    @pulumi.getter
+    def period(self) -> Optional[pulumi.Input[int]]:
+        """
+        Purchase cycle, in months.
+        """
+        return pulumi.get(self, "period")
+
+    @period.setter
+    def period(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "period", value)
+
+    @property
     @pulumi.getter(name="productVersion")
     def product_version(self) -> Optional[pulumi.Input[str]]:
         """
-        KMS Instance commodity type (software/hardware). Currently, only version 3 is supported.
+        KMS Instance commodity type (software/hardware).
         """
         return pulumi.get(self, "product_version")
 
@@ -198,6 +246,9 @@ class _InstanceState:
                  create_time: Optional[pulumi.Input[str]] = None,
                  instance_name: Optional[pulumi.Input[str]] = None,
                  key_num: Optional[pulumi.Input[int]] = None,
+                 log: Optional[pulumi.Input[str]] = None,
+                 log_storage: Optional[pulumi.Input[int]] = None,
+                 period: Optional[pulumi.Input[int]] = None,
                  product_version: Optional[pulumi.Input[str]] = None,
                  renew_period: Optional[pulumi.Input[int]] = None,
                  renew_status: Optional[pulumi.Input[str]] = None,
@@ -215,7 +266,10 @@ class _InstanceState:
         :param pulumi.Input[str] create_time: The creation time of the resource.
         :param pulumi.Input[str] instance_name: The name of the resource.
         :param pulumi.Input[int] key_num: Maximum number of stored keys.
-        :param pulumi.Input[str] product_version: KMS Instance commodity type (software/hardware). Currently, only version 3 is supported.
+        :param pulumi.Input[str] log: Instance Audit Log Switch.
+        :param pulumi.Input[int] log_storage: Instance log capacity.
+        :param pulumi.Input[int] period: Purchase cycle, in months.
+        :param pulumi.Input[str] product_version: KMS Instance commodity type (software/hardware).
         :param pulumi.Input[int] renew_period: Automatic renewal period, in months.
         :param pulumi.Input[str] renew_status: Renewal options (manual renewal, automatic renewal, no renewal).
         :param pulumi.Input[int] secret_num: Maximum number of Secrets.
@@ -236,6 +290,12 @@ class _InstanceState:
             pulumi.set(__self__, "instance_name", instance_name)
         if key_num is not None:
             pulumi.set(__self__, "key_num", key_num)
+        if log is not None:
+            pulumi.set(__self__, "log", log)
+        if log_storage is not None:
+            pulumi.set(__self__, "log_storage", log_storage)
+        if period is not None:
+            pulumi.set(__self__, "period", period)
         if product_version is not None:
             pulumi.set(__self__, "product_version", product_version)
         if renew_period is not None:
@@ -318,10 +378,46 @@ class _InstanceState:
         pulumi.set(self, "key_num", value)
 
     @property
+    @pulumi.getter
+    def log(self) -> Optional[pulumi.Input[str]]:
+        """
+        Instance Audit Log Switch.
+        """
+        return pulumi.get(self, "log")
+
+    @log.setter
+    def log(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "log", value)
+
+    @property
+    @pulumi.getter(name="logStorage")
+    def log_storage(self) -> Optional[pulumi.Input[int]]:
+        """
+        Instance log capacity.
+        """
+        return pulumi.get(self, "log_storage")
+
+    @log_storage.setter
+    def log_storage(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "log_storage", value)
+
+    @property
+    @pulumi.getter
+    def period(self) -> Optional[pulumi.Input[int]]:
+        """
+        Purchase cycle, in months.
+        """
+        return pulumi.get(self, "period")
+
+    @period.setter
+    def period(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "period", value)
+
+    @property
     @pulumi.getter(name="productVersion")
     def product_version(self) -> Optional[pulumi.Input[str]]:
         """
-        KMS Instance commodity type (software/hardware). Currently, only version 3 is supported.
+        KMS Instance commodity type (software/hardware).
         """
         return pulumi.get(self, "product_version")
 
@@ -445,6 +541,9 @@ class Instance(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  bind_vpcs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceBindVpcArgs']]]]] = None,
                  key_num: Optional[pulumi.Input[int]] = None,
+                 log: Optional[pulumi.Input[str]] = None,
+                 log_storage: Optional[pulumi.Input[int]] = None,
+                 period: Optional[pulumi.Input[int]] = None,
                  product_version: Optional[pulumi.Input[str]] = None,
                  renew_period: Optional[pulumi.Input[int]] = None,
                  renew_status: Optional[pulumi.Input[str]] = None,
@@ -456,6 +555,12 @@ class Instance(pulumi.CustomResource):
                  zone_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
         """
+        Provides a KMS Instance resource.
+
+        For information about KMS Instance and how to use it, see [What is Instance](https://www.alibabacloud.com/help/zh/key-management-service/latest/kms-instance-management).
+
+        > **NOTE:** Available since v1.210.0.
+
         ## Import
 
         KMS Instance can be imported using the id, e.g.
@@ -468,7 +573,10 @@ class Instance(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceBindVpcArgs']]]] bind_vpcs: Aucillary VPCs used to access this KMS instance. See `bind_vpcs` below.
         :param pulumi.Input[int] key_num: Maximum number of stored keys.
-        :param pulumi.Input[str] product_version: KMS Instance commodity type (software/hardware). Currently, only version 3 is supported.
+        :param pulumi.Input[str] log: Instance Audit Log Switch.
+        :param pulumi.Input[int] log_storage: Instance log capacity.
+        :param pulumi.Input[int] period: Purchase cycle, in months.
+        :param pulumi.Input[str] product_version: KMS Instance commodity type (software/hardware).
         :param pulumi.Input[int] renew_period: Automatic renewal period, in months.
         :param pulumi.Input[str] renew_status: Renewal options (manual renewal, automatic renewal, no renewal).
         :param pulumi.Input[int] secret_num: Maximum number of Secrets.
@@ -485,6 +593,12 @@ class Instance(pulumi.CustomResource):
                  args: InstanceArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Provides a KMS Instance resource.
+
+        For information about KMS Instance and how to use it, see [What is Instance](https://www.alibabacloud.com/help/zh/key-management-service/latest/kms-instance-management).
+
+        > **NOTE:** Available since v1.210.0.
+
         ## Import
 
         KMS Instance can be imported using the id, e.g.
@@ -510,6 +624,9 @@ class Instance(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  bind_vpcs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceBindVpcArgs']]]]] = None,
                  key_num: Optional[pulumi.Input[int]] = None,
+                 log: Optional[pulumi.Input[str]] = None,
+                 log_storage: Optional[pulumi.Input[int]] = None,
+                 period: Optional[pulumi.Input[int]] = None,
                  product_version: Optional[pulumi.Input[str]] = None,
                  renew_period: Optional[pulumi.Input[int]] = None,
                  renew_status: Optional[pulumi.Input[str]] = None,
@@ -532,6 +649,9 @@ class Instance(pulumi.CustomResource):
             if key_num is None and not opts.urn:
                 raise TypeError("Missing required property 'key_num'")
             __props__.__dict__["key_num"] = key_num
+            __props__.__dict__["log"] = log
+            __props__.__dict__["log_storage"] = log_storage
+            __props__.__dict__["period"] = period
             __props__.__dict__["product_version"] = product_version
             __props__.__dict__["renew_period"] = renew_period
             __props__.__dict__["renew_status"] = renew_status
@@ -572,6 +692,9 @@ class Instance(pulumi.CustomResource):
             create_time: Optional[pulumi.Input[str]] = None,
             instance_name: Optional[pulumi.Input[str]] = None,
             key_num: Optional[pulumi.Input[int]] = None,
+            log: Optional[pulumi.Input[str]] = None,
+            log_storage: Optional[pulumi.Input[int]] = None,
+            period: Optional[pulumi.Input[int]] = None,
             product_version: Optional[pulumi.Input[str]] = None,
             renew_period: Optional[pulumi.Input[int]] = None,
             renew_status: Optional[pulumi.Input[str]] = None,
@@ -594,7 +717,10 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] create_time: The creation time of the resource.
         :param pulumi.Input[str] instance_name: The name of the resource.
         :param pulumi.Input[int] key_num: Maximum number of stored keys.
-        :param pulumi.Input[str] product_version: KMS Instance commodity type (software/hardware). Currently, only version 3 is supported.
+        :param pulumi.Input[str] log: Instance Audit Log Switch.
+        :param pulumi.Input[int] log_storage: Instance log capacity.
+        :param pulumi.Input[int] period: Purchase cycle, in months.
+        :param pulumi.Input[str] product_version: KMS Instance commodity type (software/hardware).
         :param pulumi.Input[int] renew_period: Automatic renewal period, in months.
         :param pulumi.Input[str] renew_status: Renewal options (manual renewal, automatic renewal, no renewal).
         :param pulumi.Input[int] secret_num: Maximum number of Secrets.
@@ -614,6 +740,9 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["instance_name"] = instance_name
         __props__.__dict__["key_num"] = key_num
+        __props__.__dict__["log"] = log
+        __props__.__dict__["log_storage"] = log_storage
+        __props__.__dict__["period"] = period
         __props__.__dict__["product_version"] = product_version
         __props__.__dict__["renew_period"] = renew_period
         __props__.__dict__["renew_status"] = renew_status
@@ -667,10 +796,34 @@ class Instance(pulumi.CustomResource):
         return pulumi.get(self, "key_num")
 
     @property
+    @pulumi.getter
+    def log(self) -> pulumi.Output[str]:
+        """
+        Instance Audit Log Switch.
+        """
+        return pulumi.get(self, "log")
+
+    @property
+    @pulumi.getter(name="logStorage")
+    def log_storage(self) -> pulumi.Output[int]:
+        """
+        Instance log capacity.
+        """
+        return pulumi.get(self, "log_storage")
+
+    @property
+    @pulumi.getter
+    def period(self) -> pulumi.Output[Optional[int]]:
+        """
+        Purchase cycle, in months.
+        """
+        return pulumi.get(self, "period")
+
+    @property
     @pulumi.getter(name="productVersion")
     def product_version(self) -> pulumi.Output[Optional[str]]:
         """
-        KMS Instance commodity type (software/hardware). Currently, only version 3 is supported.
+        KMS Instance commodity type (software/hardware).
         """
         return pulumi.get(self, "product_version")
 

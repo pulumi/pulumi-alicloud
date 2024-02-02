@@ -7,6 +7,12 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
+ * Provides a KMS Instance resource.
+ *
+ * For information about KMS Instance and how to use it, see [What is Instance](https://www.alibabacloud.com/help/zh/key-management-service/latest/kms-instance-management).
+ *
+ * > **NOTE:** Available since v1.210.0.
+ *
  * ## Import
  *
  * KMS Instance can be imported using the id, e.g.
@@ -64,7 +70,19 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly keyNum!: pulumi.Output<number>;
     /**
-     * KMS Instance commodity type (software/hardware). Currently, only version 3 is supported.
+     * Instance Audit Log Switch.
+     */
+    public readonly log!: pulumi.Output<string>;
+    /**
+     * Instance log capacity.
+     */
+    public readonly logStorage!: pulumi.Output<number>;
+    /**
+     * Purchase cycle, in months.
+     */
+    public readonly period!: pulumi.Output<number | undefined>;
+    /**
+     * KMS Instance commodity type (software/hardware).
      */
     public readonly productVersion!: pulumi.Output<string | undefined>;
     /**
@@ -122,6 +140,9 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["createTime"] = state ? state.createTime : undefined;
             resourceInputs["instanceName"] = state ? state.instanceName : undefined;
             resourceInputs["keyNum"] = state ? state.keyNum : undefined;
+            resourceInputs["log"] = state ? state.log : undefined;
+            resourceInputs["logStorage"] = state ? state.logStorage : undefined;
+            resourceInputs["period"] = state ? state.period : undefined;
             resourceInputs["productVersion"] = state ? state.productVersion : undefined;
             resourceInputs["renewPeriod"] = state ? state.renewPeriod : undefined;
             resourceInputs["renewStatus"] = state ? state.renewStatus : undefined;
@@ -157,6 +178,9 @@ export class Instance extends pulumi.CustomResource {
             }
             resourceInputs["bindVpcs"] = args ? args.bindVpcs : undefined;
             resourceInputs["keyNum"] = args ? args.keyNum : undefined;
+            resourceInputs["log"] = args ? args.log : undefined;
+            resourceInputs["logStorage"] = args ? args.logStorage : undefined;
+            resourceInputs["period"] = args ? args.period : undefined;
             resourceInputs["productVersion"] = args ? args.productVersion : undefined;
             resourceInputs["renewPeriod"] = args ? args.renewPeriod : undefined;
             resourceInputs["renewStatus"] = args ? args.renewStatus : undefined;
@@ -201,7 +225,19 @@ export interface InstanceState {
      */
     keyNum?: pulumi.Input<number>;
     /**
-     * KMS Instance commodity type (software/hardware). Currently, only version 3 is supported.
+     * Instance Audit Log Switch.
+     */
+    log?: pulumi.Input<string>;
+    /**
+     * Instance log capacity.
+     */
+    logStorage?: pulumi.Input<number>;
+    /**
+     * Purchase cycle, in months.
+     */
+    period?: pulumi.Input<number>;
+    /**
+     * KMS Instance commodity type (software/hardware).
      */
     productVersion?: pulumi.Input<string>;
     /**
@@ -255,7 +291,19 @@ export interface InstanceArgs {
      */
     keyNum: pulumi.Input<number>;
     /**
-     * KMS Instance commodity type (software/hardware). Currently, only version 3 is supported.
+     * Instance Audit Log Switch.
+     */
+    log?: pulumi.Input<string>;
+    /**
+     * Instance log capacity.
+     */
+    logStorage?: pulumi.Input<number>;
+    /**
+     * Purchase cycle, in months.
+     */
+    period?: pulumi.Input<number>;
+    /**
+     * KMS Instance commodity type (software/hardware).
      */
     productVersion?: pulumi.Input<string>;
     /**

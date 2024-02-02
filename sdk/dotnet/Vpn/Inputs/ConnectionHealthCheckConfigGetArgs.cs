@@ -13,31 +13,31 @@ namespace Pulumi.AliCloud.Vpn.Inputs
     public sealed class ConnectionHealthCheckConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The destination IP address.
+        /// Destination IP.
         /// </summary>
         [Input("dip")]
         public Input<string>? Dip { get; set; }
 
         /// <summary>
-        /// Whether to enable Health Check.
+        /// Specifies whether to enable healthcheck.
         /// </summary>
         [Input("enable")]
         public Input<bool>? Enable { get; set; }
 
         /// <summary>
-        /// The interval between two consecutive health checks. Unit: seconds.
+        /// Retry interval.
         /// </summary>
         [Input("interval")]
         public Input<int>? Interval { get; set; }
 
         /// <summary>
-        /// The maximum number of health check retries.
+        /// retry times.
         /// </summary>
         [Input("retry")]
         public Input<int>? Retry { get; set; }
 
         /// <summary>
-        /// The source IP address.
+        /// Source IP.
         /// </summary>
         [Input("sip")]
         public Input<string>? Sip { get; set; }

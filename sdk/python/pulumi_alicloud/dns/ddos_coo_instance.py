@@ -33,19 +33,19 @@ class DdosCooInstanceArgs:
         The set of arguments for constructing a DdosCooInstance resource.
         :param pulumi.Input[str] domain_count: Domain retransmission rule count of the instance. At least 50. Increase 5 per step, such as 55, 60, 65. Only support upgrade.
         :param pulumi.Input[str] port_count: Port retransmission rule count of the instance. At least 50. Increase 5 per step, such as 55, 60, 65. Only support upgrade.
-        :param pulumi.Input[str] address_type: The IP version of the IP address. Default value: `Ipv4`. Valid values: `Ipv4`, `Ipv6`.
-        :param pulumi.Input[str] bandwidth: Elastic defend bandwidth of the instance. This value must be larger than the base defend bandwidth. Valid values: 30, 60, 100, 300, 400, 500, 600. The unit is Gbps. Only support upgrade.
+        :param pulumi.Input[str] address_type: The IP version of the IP address. Default value: `Ipv4`. Valid values: `Ipv4`, `Ipv6`. **NOTE:** `address_type` is valid only when `product_type` is set to `ddoscoo` or `ddoscoo_intl`.
+        :param pulumi.Input[str] bandwidth: Elastic defend bandwidth of the instance. This value must be larger than the base defend bandwidth. Valid values: `30`, `60`, `100`, `300`, `400`, `500`, `600`. The unit is Gbps. Only support upgrade. **NOTE:** `bandwidth` is valid only when `product_type` is set to `ddoscoo` or `ddoscoo_intl`.
         :param pulumi.Input[str] bandwidth_mode: The mitigation plan of the instance. Valid values:
-        :param pulumi.Input[str] base_bandwidth: Base defend bandwidth of the instance. Valid values: `30`, `60`, `100`, `300`, `400`, `500`, `600`. The unit is Gbps. Only support upgrade.
+        :param pulumi.Input[str] base_bandwidth: Base defend bandwidth of the instance. Valid values: `30`, `60`, `100`, `300`, `400`, `500`, `600`. The unit is Gbps. Only support upgrade. **NOTE:** `base_bandwidth` is valid only when `product_type` is set to `ddoscoo` or `ddoscoo_intl`.
         :param pulumi.Input[str] edition_sale: The mitigation plan of the instance. Default value: `coop`. Valid values:
         :param pulumi.Input[str] function_version: The function plan of the instance. Valid values:
-        :param pulumi.Input[str] name: Name of the instance. This name can have a string of 1 to 63 characters.
-        :param pulumi.Input[str] normal_bandwidth: The clean bandwidth provided by the instance.
-        :param pulumi.Input[str] normal_qps: The clean QPS provided by the instance.
+        :param pulumi.Input[str] name: Name of the instance. This name can have a string of `1` to `64` characters.
+        :param pulumi.Input[str] normal_bandwidth: The clean bandwidth provided by the instance. **NOTE:** `normal_bandwidth` is valid only when `product_type` is set to `ddosDip`.
+        :param pulumi.Input[str] normal_qps: The clean QPS provided by the instance. **NOTE:** `normal_qps` is valid only when `product_type` is set to `ddosDip`.
         :param pulumi.Input[int] period: The duration that you will buy DdosCoo instance (in month). Valid values: [1~9], `12`, `24`, `36`. Default value: `1`. At present, the provider does not support modify `period`.
         :param pulumi.Input[str] product_plan: The mitigation plan of the instance. Valid values:
         :param pulumi.Input[str] product_type: The product type for purchasing DDOSCOO instances used to differ different account type. Default value: `ddoscoo`. Valid values:
-        :param pulumi.Input[str] service_bandwidth: Business bandwidth of the instance. At leaset 100. Increased 100 per step, such as 100, 200, 300. The unit is Mbps. Only support upgrade.
+        :param pulumi.Input[str] service_bandwidth: Business bandwidth of the instance. At leaset 100. Increased 100 per step, such as 100, 200, 300. The unit is Mbps. Only support upgrade. **NOTE:** `service_bandwidth` is valid only when `product_type` is set to `ddoscoo` or `ddoscoo_intl`.
         """
         pulumi.set(__self__, "domain_count", domain_count)
         pulumi.set(__self__, "port_count", port_count)
@@ -104,7 +104,7 @@ class DdosCooInstanceArgs:
     @pulumi.getter(name="addressType")
     def address_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The IP version of the IP address. Default value: `Ipv4`. Valid values: `Ipv4`, `Ipv6`.
+        The IP version of the IP address. Default value: `Ipv4`. Valid values: `Ipv4`, `Ipv6`. **NOTE:** `address_type` is valid only when `product_type` is set to `ddoscoo` or `ddoscoo_intl`.
         """
         return pulumi.get(self, "address_type")
 
@@ -116,7 +116,7 @@ class DdosCooInstanceArgs:
     @pulumi.getter
     def bandwidth(self) -> Optional[pulumi.Input[str]]:
         """
-        Elastic defend bandwidth of the instance. This value must be larger than the base defend bandwidth. Valid values: 30, 60, 100, 300, 400, 500, 600. The unit is Gbps. Only support upgrade.
+        Elastic defend bandwidth of the instance. This value must be larger than the base defend bandwidth. Valid values: `30`, `60`, `100`, `300`, `400`, `500`, `600`. The unit is Gbps. Only support upgrade. **NOTE:** `bandwidth` is valid only when `product_type` is set to `ddoscoo` or `ddoscoo_intl`.
         """
         return pulumi.get(self, "bandwidth")
 
@@ -140,7 +140,7 @@ class DdosCooInstanceArgs:
     @pulumi.getter(name="baseBandwidth")
     def base_bandwidth(self) -> Optional[pulumi.Input[str]]:
         """
-        Base defend bandwidth of the instance. Valid values: `30`, `60`, `100`, `300`, `400`, `500`, `600`. The unit is Gbps. Only support upgrade.
+        Base defend bandwidth of the instance. Valid values: `30`, `60`, `100`, `300`, `400`, `500`, `600`. The unit is Gbps. Only support upgrade. **NOTE:** `base_bandwidth` is valid only when `product_type` is set to `ddoscoo` or `ddoscoo_intl`.
         """
         return pulumi.get(self, "base_bandwidth")
 
@@ -176,7 +176,7 @@ class DdosCooInstanceArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of the instance. This name can have a string of 1 to 63 characters.
+        Name of the instance. This name can have a string of `1` to `64` characters.
         """
         return pulumi.get(self, "name")
 
@@ -188,7 +188,7 @@ class DdosCooInstanceArgs:
     @pulumi.getter(name="normalBandwidth")
     def normal_bandwidth(self) -> Optional[pulumi.Input[str]]:
         """
-        The clean bandwidth provided by the instance.
+        The clean bandwidth provided by the instance. **NOTE:** `normal_bandwidth` is valid only when `product_type` is set to `ddosDip`.
         """
         return pulumi.get(self, "normal_bandwidth")
 
@@ -200,7 +200,7 @@ class DdosCooInstanceArgs:
     @pulumi.getter(name="normalQps")
     def normal_qps(self) -> Optional[pulumi.Input[str]]:
         """
-        The clean QPS provided by the instance.
+        The clean QPS provided by the instance. **NOTE:** `normal_qps` is valid only when `product_type` is set to `ddosDip`.
         """
         return pulumi.get(self, "normal_qps")
 
@@ -248,7 +248,7 @@ class DdosCooInstanceArgs:
     @pulumi.getter(name="serviceBandwidth")
     def service_bandwidth(self) -> Optional[pulumi.Input[str]]:
         """
-        Business bandwidth of the instance. At leaset 100. Increased 100 per step, such as 100, 200, 300. The unit is Mbps. Only support upgrade.
+        Business bandwidth of the instance. At leaset 100. Increased 100 per step, such as 100, 200, 300. The unit is Mbps. Only support upgrade. **NOTE:** `service_bandwidth` is valid only when `product_type` is set to `ddoscoo` or `ddoscoo_intl`.
         """
         return pulumi.get(self, "service_bandwidth")
 
@@ -278,22 +278,22 @@ class _DdosCooInstanceState:
                  service_bandwidth: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering DdosCooInstance resources.
-        :param pulumi.Input[str] address_type: The IP version of the IP address. Default value: `Ipv4`. Valid values: `Ipv4`, `Ipv6`.
-        :param pulumi.Input[str] bandwidth: Elastic defend bandwidth of the instance. This value must be larger than the base defend bandwidth. Valid values: 30, 60, 100, 300, 400, 500, 600. The unit is Gbps. Only support upgrade.
+        :param pulumi.Input[str] address_type: The IP version of the IP address. Default value: `Ipv4`. Valid values: `Ipv4`, `Ipv6`. **NOTE:** `address_type` is valid only when `product_type` is set to `ddoscoo` or `ddoscoo_intl`.
+        :param pulumi.Input[str] bandwidth: Elastic defend bandwidth of the instance. This value must be larger than the base defend bandwidth. Valid values: `30`, `60`, `100`, `300`, `400`, `500`, `600`. The unit is Gbps. Only support upgrade. **NOTE:** `bandwidth` is valid only when `product_type` is set to `ddoscoo` or `ddoscoo_intl`.
         :param pulumi.Input[str] bandwidth_mode: The mitigation plan of the instance. Valid values:
-        :param pulumi.Input[str] base_bandwidth: Base defend bandwidth of the instance. Valid values: `30`, `60`, `100`, `300`, `400`, `500`, `600`. The unit is Gbps. Only support upgrade.
+        :param pulumi.Input[str] base_bandwidth: Base defend bandwidth of the instance. Valid values: `30`, `60`, `100`, `300`, `400`, `500`, `600`. The unit is Gbps. Only support upgrade. **NOTE:** `base_bandwidth` is valid only when `product_type` is set to `ddoscoo` or `ddoscoo_intl`.
         :param pulumi.Input[str] domain_count: Domain retransmission rule count of the instance. At least 50. Increase 5 per step, such as 55, 60, 65. Only support upgrade.
         :param pulumi.Input[str] edition_sale: The mitigation plan of the instance. Default value: `coop`. Valid values:
         :param pulumi.Input[str] function_version: The function plan of the instance. Valid values:
         :param pulumi.Input[str] ip: (Available since v1.212.0) The IP address of the instance.
-        :param pulumi.Input[str] name: Name of the instance. This name can have a string of 1 to 63 characters.
-        :param pulumi.Input[str] normal_bandwidth: The clean bandwidth provided by the instance.
-        :param pulumi.Input[str] normal_qps: The clean QPS provided by the instance.
+        :param pulumi.Input[str] name: Name of the instance. This name can have a string of `1` to `64` characters.
+        :param pulumi.Input[str] normal_bandwidth: The clean bandwidth provided by the instance. **NOTE:** `normal_bandwidth` is valid only when `product_type` is set to `ddosDip`.
+        :param pulumi.Input[str] normal_qps: The clean QPS provided by the instance. **NOTE:** `normal_qps` is valid only when `product_type` is set to `ddosDip`.
         :param pulumi.Input[int] period: The duration that you will buy DdosCoo instance (in month). Valid values: [1~9], `12`, `24`, `36`. Default value: `1`. At present, the provider does not support modify `period`.
         :param pulumi.Input[str] port_count: Port retransmission rule count of the instance. At least 50. Increase 5 per step, such as 55, 60, 65. Only support upgrade.
         :param pulumi.Input[str] product_plan: The mitigation plan of the instance. Valid values:
         :param pulumi.Input[str] product_type: The product type for purchasing DDOSCOO instances used to differ different account type. Default value: `ddoscoo`. Valid values:
-        :param pulumi.Input[str] service_bandwidth: Business bandwidth of the instance. At leaset 100. Increased 100 per step, such as 100, 200, 300. The unit is Mbps. Only support upgrade.
+        :param pulumi.Input[str] service_bandwidth: Business bandwidth of the instance. At leaset 100. Increased 100 per step, such as 100, 200, 300. The unit is Mbps. Only support upgrade. **NOTE:** `service_bandwidth` is valid only when `product_type` is set to `ddoscoo` or `ddoscoo_intl`.
         """
         if address_type is not None:
             pulumi.set(__self__, "address_type", address_type)
@@ -332,7 +332,7 @@ class _DdosCooInstanceState:
     @pulumi.getter(name="addressType")
     def address_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The IP version of the IP address. Default value: `Ipv4`. Valid values: `Ipv4`, `Ipv6`.
+        The IP version of the IP address. Default value: `Ipv4`. Valid values: `Ipv4`, `Ipv6`. **NOTE:** `address_type` is valid only when `product_type` is set to `ddoscoo` or `ddoscoo_intl`.
         """
         return pulumi.get(self, "address_type")
 
@@ -344,7 +344,7 @@ class _DdosCooInstanceState:
     @pulumi.getter
     def bandwidth(self) -> Optional[pulumi.Input[str]]:
         """
-        Elastic defend bandwidth of the instance. This value must be larger than the base defend bandwidth. Valid values: 30, 60, 100, 300, 400, 500, 600. The unit is Gbps. Only support upgrade.
+        Elastic defend bandwidth of the instance. This value must be larger than the base defend bandwidth. Valid values: `30`, `60`, `100`, `300`, `400`, `500`, `600`. The unit is Gbps. Only support upgrade. **NOTE:** `bandwidth` is valid only when `product_type` is set to `ddoscoo` or `ddoscoo_intl`.
         """
         return pulumi.get(self, "bandwidth")
 
@@ -368,7 +368,7 @@ class _DdosCooInstanceState:
     @pulumi.getter(name="baseBandwidth")
     def base_bandwidth(self) -> Optional[pulumi.Input[str]]:
         """
-        Base defend bandwidth of the instance. Valid values: `30`, `60`, `100`, `300`, `400`, `500`, `600`. The unit is Gbps. Only support upgrade.
+        Base defend bandwidth of the instance. Valid values: `30`, `60`, `100`, `300`, `400`, `500`, `600`. The unit is Gbps. Only support upgrade. **NOTE:** `base_bandwidth` is valid only when `product_type` is set to `ddoscoo` or `ddoscoo_intl`.
         """
         return pulumi.get(self, "base_bandwidth")
 
@@ -428,7 +428,7 @@ class _DdosCooInstanceState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of the instance. This name can have a string of 1 to 63 characters.
+        Name of the instance. This name can have a string of `1` to `64` characters.
         """
         return pulumi.get(self, "name")
 
@@ -440,7 +440,7 @@ class _DdosCooInstanceState:
     @pulumi.getter(name="normalBandwidth")
     def normal_bandwidth(self) -> Optional[pulumi.Input[str]]:
         """
-        The clean bandwidth provided by the instance.
+        The clean bandwidth provided by the instance. **NOTE:** `normal_bandwidth` is valid only when `product_type` is set to `ddosDip`.
         """
         return pulumi.get(self, "normal_bandwidth")
 
@@ -452,7 +452,7 @@ class _DdosCooInstanceState:
     @pulumi.getter(name="normalQps")
     def normal_qps(self) -> Optional[pulumi.Input[str]]:
         """
-        The clean QPS provided by the instance.
+        The clean QPS provided by the instance. **NOTE:** `normal_qps` is valid only when `product_type` is set to `ddosDip`.
         """
         return pulumi.get(self, "normal_qps")
 
@@ -512,7 +512,7 @@ class _DdosCooInstanceState:
     @pulumi.getter(name="serviceBandwidth")
     def service_bandwidth(self) -> Optional[pulumi.Input[str]]:
         """
-        Business bandwidth of the instance. At leaset 100. Increased 100 per step, such as 100, 200, 300. The unit is Mbps. Only support upgrade.
+        Business bandwidth of the instance. At leaset 100. Increased 100 per step, such as 100, 200, 300. The unit is Mbps. Only support upgrade. **NOTE:** `service_bandwidth` is valid only when `product_type` is set to `ddoscoo` or `ddoscoo_intl`.
         """
         return pulumi.get(self, "service_bandwidth")
 
@@ -590,21 +590,21 @@ class DdosCooInstance(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] address_type: The IP version of the IP address. Default value: `Ipv4`. Valid values: `Ipv4`, `Ipv6`.
-        :param pulumi.Input[str] bandwidth: Elastic defend bandwidth of the instance. This value must be larger than the base defend bandwidth. Valid values: 30, 60, 100, 300, 400, 500, 600. The unit is Gbps. Only support upgrade.
+        :param pulumi.Input[str] address_type: The IP version of the IP address. Default value: `Ipv4`. Valid values: `Ipv4`, `Ipv6`. **NOTE:** `address_type` is valid only when `product_type` is set to `ddoscoo` or `ddoscoo_intl`.
+        :param pulumi.Input[str] bandwidth: Elastic defend bandwidth of the instance. This value must be larger than the base defend bandwidth. Valid values: `30`, `60`, `100`, `300`, `400`, `500`, `600`. The unit is Gbps. Only support upgrade. **NOTE:** `bandwidth` is valid only when `product_type` is set to `ddoscoo` or `ddoscoo_intl`.
         :param pulumi.Input[str] bandwidth_mode: The mitigation plan of the instance. Valid values:
-        :param pulumi.Input[str] base_bandwidth: Base defend bandwidth of the instance. Valid values: `30`, `60`, `100`, `300`, `400`, `500`, `600`. The unit is Gbps. Only support upgrade.
+        :param pulumi.Input[str] base_bandwidth: Base defend bandwidth of the instance. Valid values: `30`, `60`, `100`, `300`, `400`, `500`, `600`. The unit is Gbps. Only support upgrade. **NOTE:** `base_bandwidth` is valid only when `product_type` is set to `ddoscoo` or `ddoscoo_intl`.
         :param pulumi.Input[str] domain_count: Domain retransmission rule count of the instance. At least 50. Increase 5 per step, such as 55, 60, 65. Only support upgrade.
         :param pulumi.Input[str] edition_sale: The mitigation plan of the instance. Default value: `coop`. Valid values:
         :param pulumi.Input[str] function_version: The function plan of the instance. Valid values:
-        :param pulumi.Input[str] name: Name of the instance. This name can have a string of 1 to 63 characters.
-        :param pulumi.Input[str] normal_bandwidth: The clean bandwidth provided by the instance.
-        :param pulumi.Input[str] normal_qps: The clean QPS provided by the instance.
+        :param pulumi.Input[str] name: Name of the instance. This name can have a string of `1` to `64` characters.
+        :param pulumi.Input[str] normal_bandwidth: The clean bandwidth provided by the instance. **NOTE:** `normal_bandwidth` is valid only when `product_type` is set to `ddosDip`.
+        :param pulumi.Input[str] normal_qps: The clean QPS provided by the instance. **NOTE:** `normal_qps` is valid only when `product_type` is set to `ddosDip`.
         :param pulumi.Input[int] period: The duration that you will buy DdosCoo instance (in month). Valid values: [1~9], `12`, `24`, `36`. Default value: `1`. At present, the provider does not support modify `period`.
         :param pulumi.Input[str] port_count: Port retransmission rule count of the instance. At least 50. Increase 5 per step, such as 55, 60, 65. Only support upgrade.
         :param pulumi.Input[str] product_plan: The mitigation plan of the instance. Valid values:
         :param pulumi.Input[str] product_type: The product type for purchasing DDOSCOO instances used to differ different account type. Default value: `ddoscoo`. Valid values:
-        :param pulumi.Input[str] service_bandwidth: Business bandwidth of the instance. At leaset 100. Increased 100 per step, such as 100, 200, 300. The unit is Mbps. Only support upgrade.
+        :param pulumi.Input[str] service_bandwidth: Business bandwidth of the instance. At leaset 100. Increased 100 per step, such as 100, 200, 300. The unit is Mbps. Only support upgrade. **NOTE:** `service_bandwidth` is valid only when `product_type` is set to `ddoscoo` or `ddoscoo_intl`.
         """
         ...
     @overload
@@ -746,22 +746,22 @@ class DdosCooInstance(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] address_type: The IP version of the IP address. Default value: `Ipv4`. Valid values: `Ipv4`, `Ipv6`.
-        :param pulumi.Input[str] bandwidth: Elastic defend bandwidth of the instance. This value must be larger than the base defend bandwidth. Valid values: 30, 60, 100, 300, 400, 500, 600. The unit is Gbps. Only support upgrade.
+        :param pulumi.Input[str] address_type: The IP version of the IP address. Default value: `Ipv4`. Valid values: `Ipv4`, `Ipv6`. **NOTE:** `address_type` is valid only when `product_type` is set to `ddoscoo` or `ddoscoo_intl`.
+        :param pulumi.Input[str] bandwidth: Elastic defend bandwidth of the instance. This value must be larger than the base defend bandwidth. Valid values: `30`, `60`, `100`, `300`, `400`, `500`, `600`. The unit is Gbps. Only support upgrade. **NOTE:** `bandwidth` is valid only when `product_type` is set to `ddoscoo` or `ddoscoo_intl`.
         :param pulumi.Input[str] bandwidth_mode: The mitigation plan of the instance. Valid values:
-        :param pulumi.Input[str] base_bandwidth: Base defend bandwidth of the instance. Valid values: `30`, `60`, `100`, `300`, `400`, `500`, `600`. The unit is Gbps. Only support upgrade.
+        :param pulumi.Input[str] base_bandwidth: Base defend bandwidth of the instance. Valid values: `30`, `60`, `100`, `300`, `400`, `500`, `600`. The unit is Gbps. Only support upgrade. **NOTE:** `base_bandwidth` is valid only when `product_type` is set to `ddoscoo` or `ddoscoo_intl`.
         :param pulumi.Input[str] domain_count: Domain retransmission rule count of the instance. At least 50. Increase 5 per step, such as 55, 60, 65. Only support upgrade.
         :param pulumi.Input[str] edition_sale: The mitigation plan of the instance. Default value: `coop`. Valid values:
         :param pulumi.Input[str] function_version: The function plan of the instance. Valid values:
         :param pulumi.Input[str] ip: (Available since v1.212.0) The IP address of the instance.
-        :param pulumi.Input[str] name: Name of the instance. This name can have a string of 1 to 63 characters.
-        :param pulumi.Input[str] normal_bandwidth: The clean bandwidth provided by the instance.
-        :param pulumi.Input[str] normal_qps: The clean QPS provided by the instance.
+        :param pulumi.Input[str] name: Name of the instance. This name can have a string of `1` to `64` characters.
+        :param pulumi.Input[str] normal_bandwidth: The clean bandwidth provided by the instance. **NOTE:** `normal_bandwidth` is valid only when `product_type` is set to `ddosDip`.
+        :param pulumi.Input[str] normal_qps: The clean QPS provided by the instance. **NOTE:** `normal_qps` is valid only when `product_type` is set to `ddosDip`.
         :param pulumi.Input[int] period: The duration that you will buy DdosCoo instance (in month). Valid values: [1~9], `12`, `24`, `36`. Default value: `1`. At present, the provider does not support modify `period`.
         :param pulumi.Input[str] port_count: Port retransmission rule count of the instance. At least 50. Increase 5 per step, such as 55, 60, 65. Only support upgrade.
         :param pulumi.Input[str] product_plan: The mitigation plan of the instance. Valid values:
         :param pulumi.Input[str] product_type: The product type for purchasing DDOSCOO instances used to differ different account type. Default value: `ddoscoo`. Valid values:
-        :param pulumi.Input[str] service_bandwidth: Business bandwidth of the instance. At leaset 100. Increased 100 per step, such as 100, 200, 300. The unit is Mbps. Only support upgrade.
+        :param pulumi.Input[str] service_bandwidth: Business bandwidth of the instance. At leaset 100. Increased 100 per step, such as 100, 200, 300. The unit is Mbps. Only support upgrade. **NOTE:** `service_bandwidth` is valid only when `product_type` is set to `ddoscoo` or `ddoscoo_intl`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -789,7 +789,7 @@ class DdosCooInstance(pulumi.CustomResource):
     @pulumi.getter(name="addressType")
     def address_type(self) -> pulumi.Output[str]:
         """
-        The IP version of the IP address. Default value: `Ipv4`. Valid values: `Ipv4`, `Ipv6`.
+        The IP version of the IP address. Default value: `Ipv4`. Valid values: `Ipv4`, `Ipv6`. **NOTE:** `address_type` is valid only when `product_type` is set to `ddoscoo` or `ddoscoo_intl`.
         """
         return pulumi.get(self, "address_type")
 
@@ -797,7 +797,7 @@ class DdosCooInstance(pulumi.CustomResource):
     @pulumi.getter
     def bandwidth(self) -> pulumi.Output[str]:
         """
-        Elastic defend bandwidth of the instance. This value must be larger than the base defend bandwidth. Valid values: 30, 60, 100, 300, 400, 500, 600. The unit is Gbps. Only support upgrade.
+        Elastic defend bandwidth of the instance. This value must be larger than the base defend bandwidth. Valid values: `30`, `60`, `100`, `300`, `400`, `500`, `600`. The unit is Gbps. Only support upgrade. **NOTE:** `bandwidth` is valid only when `product_type` is set to `ddoscoo` or `ddoscoo_intl`.
         """
         return pulumi.get(self, "bandwidth")
 
@@ -813,7 +813,7 @@ class DdosCooInstance(pulumi.CustomResource):
     @pulumi.getter(name="baseBandwidth")
     def base_bandwidth(self) -> pulumi.Output[str]:
         """
-        Base defend bandwidth of the instance. Valid values: `30`, `60`, `100`, `300`, `400`, `500`, `600`. The unit is Gbps. Only support upgrade.
+        Base defend bandwidth of the instance. Valid values: `30`, `60`, `100`, `300`, `400`, `500`, `600`. The unit is Gbps. Only support upgrade. **NOTE:** `base_bandwidth` is valid only when `product_type` is set to `ddoscoo` or `ddoscoo_intl`.
         """
         return pulumi.get(self, "base_bandwidth")
 
@@ -853,7 +853,7 @@ class DdosCooInstance(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        Name of the instance. This name can have a string of 1 to 63 characters.
+        Name of the instance. This name can have a string of `1` to `64` characters.
         """
         return pulumi.get(self, "name")
 
@@ -861,7 +861,7 @@ class DdosCooInstance(pulumi.CustomResource):
     @pulumi.getter(name="normalBandwidth")
     def normal_bandwidth(self) -> pulumi.Output[str]:
         """
-        The clean bandwidth provided by the instance.
+        The clean bandwidth provided by the instance. **NOTE:** `normal_bandwidth` is valid only when `product_type` is set to `ddosDip`.
         """
         return pulumi.get(self, "normal_bandwidth")
 
@@ -869,7 +869,7 @@ class DdosCooInstance(pulumi.CustomResource):
     @pulumi.getter(name="normalQps")
     def normal_qps(self) -> pulumi.Output[str]:
         """
-        The clean QPS provided by the instance.
+        The clean QPS provided by the instance. **NOTE:** `normal_qps` is valid only when `product_type` is set to `ddosDip`.
         """
         return pulumi.get(self, "normal_qps")
 
@@ -909,7 +909,7 @@ class DdosCooInstance(pulumi.CustomResource):
     @pulumi.getter(name="serviceBandwidth")
     def service_bandwidth(self) -> pulumi.Output[str]:
         """
-        Business bandwidth of the instance. At leaset 100. Increased 100 per step, such as 100, 200, 300. The unit is Mbps. Only support upgrade.
+        Business bandwidth of the instance. At leaset 100. Increased 100 per step, such as 100, 200, 300. The unit is Mbps. Only support upgrade. **NOTE:** `service_bandwidth` is valid only when `product_type` is set to `ddoscoo` or `ddoscoo_intl`.
         """
         return pulumi.get(self, "service_bandwidth")
 

@@ -112,13 +112,17 @@ class WafDomain(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
         config = pulumi.Config()
         domain_name = config.get("domainName")
         if domain_name is None:
-            domain_name = "example.com"
+            domain_name = "tf-example.com"
+        default = random.RandomInteger("default",
+            min=10000,
+            max=99999)
         example_domain = alicloud.dcdn.Domain("exampleDomain",
-            domain_name=domain_name,
+            domain_name=default.result.apply(lambda result: f"{domain_name}-{result}"),
             scope="overseas",
             sources=[alicloud.dcdn.DomainSourceArgs(
                 content="1.1.1.1",
@@ -165,13 +169,17 @@ class WafDomain(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
         config = pulumi.Config()
         domain_name = config.get("domainName")
         if domain_name is None:
-            domain_name = "example.com"
+            domain_name = "tf-example.com"
+        default = random.RandomInteger("default",
+            min=10000,
+            max=99999)
         example_domain = alicloud.dcdn.Domain("exampleDomain",
-            domain_name=domain_name,
+            domain_name=default.result.apply(lambda result: f"{domain_name}-{result}"),
             scope="overseas",
             sources=[alicloud.dcdn.DomainSourceArgs(
                 content="1.1.1.1",

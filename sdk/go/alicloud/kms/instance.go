@@ -12,6 +12,12 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Provides a KMS Instance resource.
+//
+// For information about KMS Instance and how to use it, see [What is Instance](https://www.alibabacloud.com/help/zh/key-management-service/latest/kms-instance-management).
+//
+// > **NOTE:** Available since v1.210.0.
+//
 // ## Import
 //
 // KMS Instance can be imported using the id, e.g.
@@ -34,7 +40,13 @@ type Instance struct {
 	InstanceName pulumi.StringOutput `pulumi:"instanceName"`
 	// Maximum number of stored keys.
 	KeyNum pulumi.IntOutput `pulumi:"keyNum"`
-	// KMS Instance commodity type (software/hardware). Currently, only version 3 is supported.
+	// Instance Audit Log Switch.
+	Log pulumi.StringOutput `pulumi:"log"`
+	// Instance log capacity.
+	LogStorage pulumi.IntOutput `pulumi:"logStorage"`
+	// Purchase cycle, in months.
+	Period pulumi.IntPtrOutput `pulumi:"period"`
+	// KMS Instance commodity type (software/hardware).
 	ProductVersion pulumi.StringPtrOutput `pulumi:"productVersion"`
 	// Automatic renewal period, in months.
 	RenewPeriod pulumi.IntPtrOutput `pulumi:"renewPeriod"`
@@ -117,7 +129,13 @@ type instanceState struct {
 	InstanceName *string `pulumi:"instanceName"`
 	// Maximum number of stored keys.
 	KeyNum *int `pulumi:"keyNum"`
-	// KMS Instance commodity type (software/hardware). Currently, only version 3 is supported.
+	// Instance Audit Log Switch.
+	Log *string `pulumi:"log"`
+	// Instance log capacity.
+	LogStorage *int `pulumi:"logStorage"`
+	// Purchase cycle, in months.
+	Period *int `pulumi:"period"`
+	// KMS Instance commodity type (software/hardware).
 	ProductVersion *string `pulumi:"productVersion"`
 	// Automatic renewal period, in months.
 	RenewPeriod *int `pulumi:"renewPeriod"`
@@ -150,7 +168,13 @@ type InstanceState struct {
 	InstanceName pulumi.StringPtrInput
 	// Maximum number of stored keys.
 	KeyNum pulumi.IntPtrInput
-	// KMS Instance commodity type (software/hardware). Currently, only version 3 is supported.
+	// Instance Audit Log Switch.
+	Log pulumi.StringPtrInput
+	// Instance log capacity.
+	LogStorage pulumi.IntPtrInput
+	// Purchase cycle, in months.
+	Period pulumi.IntPtrInput
+	// KMS Instance commodity type (software/hardware).
 	ProductVersion pulumi.StringPtrInput
 	// Automatic renewal period, in months.
 	RenewPeriod pulumi.IntPtrInput
@@ -181,7 +205,13 @@ type instanceArgs struct {
 	BindVpcs []InstanceBindVpc `pulumi:"bindVpcs"`
 	// Maximum number of stored keys.
 	KeyNum int `pulumi:"keyNum"`
-	// KMS Instance commodity type (software/hardware). Currently, only version 3 is supported.
+	// Instance Audit Log Switch.
+	Log *string `pulumi:"log"`
+	// Instance log capacity.
+	LogStorage *int `pulumi:"logStorage"`
+	// Purchase cycle, in months.
+	Period *int `pulumi:"period"`
+	// KMS Instance commodity type (software/hardware).
 	ProductVersion *string `pulumi:"productVersion"`
 	// Automatic renewal period, in months.
 	RenewPeriod *int `pulumi:"renewPeriod"`
@@ -207,7 +237,13 @@ type InstanceArgs struct {
 	BindVpcs InstanceBindVpcArrayInput
 	// Maximum number of stored keys.
 	KeyNum pulumi.IntInput
-	// KMS Instance commodity type (software/hardware). Currently, only version 3 is supported.
+	// Instance Audit Log Switch.
+	Log pulumi.StringPtrInput
+	// Instance log capacity.
+	LogStorage pulumi.IntPtrInput
+	// Purchase cycle, in months.
+	Period pulumi.IntPtrInput
+	// KMS Instance commodity type (software/hardware).
 	ProductVersion pulumi.StringPtrInput
 	// Automatic renewal period, in months.
 	RenewPeriod pulumi.IntPtrInput
@@ -339,7 +375,22 @@ func (o InstanceOutput) KeyNum() pulumi.IntOutput {
 	return o.ApplyT(func(v *Instance) pulumi.IntOutput { return v.KeyNum }).(pulumi.IntOutput)
 }
 
-// KMS Instance commodity type (software/hardware). Currently, only version 3 is supported.
+// Instance Audit Log Switch.
+func (o InstanceOutput) Log() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Log }).(pulumi.StringOutput)
+}
+
+// Instance log capacity.
+func (o InstanceOutput) LogStorage() pulumi.IntOutput {
+	return o.ApplyT(func(v *Instance) pulumi.IntOutput { return v.LogStorage }).(pulumi.IntOutput)
+}
+
+// Purchase cycle, in months.
+func (o InstanceOutput) Period() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.IntPtrOutput { return v.Period }).(pulumi.IntPtrOutput)
+}
+
+// KMS Instance commodity type (software/hardware).
 func (o InstanceOutput) ProductVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.ProductVersion }).(pulumi.StringPtrOutput)
 }

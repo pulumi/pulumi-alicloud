@@ -165,6 +165,8 @@ type EciScalingConfigurationContainer struct {
 	Image *string `pulumi:"image"`
 	// The restart policy of the image.
 	ImagePullPolicy *string `pulumi:"imagePullPolicy"`
+	// The commands to be executed in containers when you use the CLI to specify the preStop callback function.
+	LifecyclePreStopHandlerExecs []string `pulumi:"lifecyclePreStopHandlerExecs"`
 	// Commands that you want to run in containers when you use the CLI to perform liveness probes.
 	LivenessProbeExecCommands []string `pulumi:"livenessProbeExecCommands"`
 	// The minimum number of consecutive failures for the liveness probe to be considered failed after having been successful. Default value: 3.
@@ -253,6 +255,8 @@ type EciScalingConfigurationContainerArgs struct {
 	Image pulumi.StringPtrInput `pulumi:"image"`
 	// The restart policy of the image.
 	ImagePullPolicy pulumi.StringPtrInput `pulumi:"imagePullPolicy"`
+	// The commands to be executed in containers when you use the CLI to specify the preStop callback function.
+	LifecyclePreStopHandlerExecs pulumi.StringArrayInput `pulumi:"lifecyclePreStopHandlerExecs"`
 	// Commands that you want to run in containers when you use the CLI to perform liveness probes.
 	LivenessProbeExecCommands pulumi.StringArrayInput `pulumi:"livenessProbeExecCommands"`
 	// The minimum number of consecutive failures for the liveness probe to be considered failed after having been successful. Default value: 3.
@@ -401,6 +405,11 @@ func (o EciScalingConfigurationContainerOutput) Image() pulumi.StringPtrOutput {
 // The restart policy of the image.
 func (o EciScalingConfigurationContainerOutput) ImagePullPolicy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EciScalingConfigurationContainer) *string { return v.ImagePullPolicy }).(pulumi.StringPtrOutput)
+}
+
+// The commands to be executed in containers when you use the CLI to specify the preStop callback function.
+func (o EciScalingConfigurationContainerOutput) LifecyclePreStopHandlerExecs() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v EciScalingConfigurationContainer) []string { return v.LifecyclePreStopHandlerExecs }).(pulumi.StringArrayOutput)
 }
 
 // Commands that you want to run in containers when you use the CLI to perform liveness probes.
@@ -2362,6 +2371,112 @@ func (o ScalingConfigurationInstancePatternInfoArrayOutput) Index(i pulumi.IntIn
 	}).(ScalingConfigurationInstancePatternInfoOutput)
 }
 
+type ScalingConfigurationInstanceTypeOverride struct {
+	// The is specified for an instance type in instanceTypeOverride.
+	InstanceType *string `pulumi:"instanceType"`
+	// The weight of instance type in instanceTypeOverride.
+	WeightedCapacity *int `pulumi:"weightedCapacity"`
+}
+
+// ScalingConfigurationInstanceTypeOverrideInput is an input type that accepts ScalingConfigurationInstanceTypeOverrideArgs and ScalingConfigurationInstanceTypeOverrideOutput values.
+// You can construct a concrete instance of `ScalingConfigurationInstanceTypeOverrideInput` via:
+//
+//	ScalingConfigurationInstanceTypeOverrideArgs{...}
+type ScalingConfigurationInstanceTypeOverrideInput interface {
+	pulumi.Input
+
+	ToScalingConfigurationInstanceTypeOverrideOutput() ScalingConfigurationInstanceTypeOverrideOutput
+	ToScalingConfigurationInstanceTypeOverrideOutputWithContext(context.Context) ScalingConfigurationInstanceTypeOverrideOutput
+}
+
+type ScalingConfigurationInstanceTypeOverrideArgs struct {
+	// The is specified for an instance type in instanceTypeOverride.
+	InstanceType pulumi.StringPtrInput `pulumi:"instanceType"`
+	// The weight of instance type in instanceTypeOverride.
+	WeightedCapacity pulumi.IntPtrInput `pulumi:"weightedCapacity"`
+}
+
+func (ScalingConfigurationInstanceTypeOverrideArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ScalingConfigurationInstanceTypeOverride)(nil)).Elem()
+}
+
+func (i ScalingConfigurationInstanceTypeOverrideArgs) ToScalingConfigurationInstanceTypeOverrideOutput() ScalingConfigurationInstanceTypeOverrideOutput {
+	return i.ToScalingConfigurationInstanceTypeOverrideOutputWithContext(context.Background())
+}
+
+func (i ScalingConfigurationInstanceTypeOverrideArgs) ToScalingConfigurationInstanceTypeOverrideOutputWithContext(ctx context.Context) ScalingConfigurationInstanceTypeOverrideOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ScalingConfigurationInstanceTypeOverrideOutput)
+}
+
+// ScalingConfigurationInstanceTypeOverrideArrayInput is an input type that accepts ScalingConfigurationInstanceTypeOverrideArray and ScalingConfigurationInstanceTypeOverrideArrayOutput values.
+// You can construct a concrete instance of `ScalingConfigurationInstanceTypeOverrideArrayInput` via:
+//
+//	ScalingConfigurationInstanceTypeOverrideArray{ ScalingConfigurationInstanceTypeOverrideArgs{...} }
+type ScalingConfigurationInstanceTypeOverrideArrayInput interface {
+	pulumi.Input
+
+	ToScalingConfigurationInstanceTypeOverrideArrayOutput() ScalingConfigurationInstanceTypeOverrideArrayOutput
+	ToScalingConfigurationInstanceTypeOverrideArrayOutputWithContext(context.Context) ScalingConfigurationInstanceTypeOverrideArrayOutput
+}
+
+type ScalingConfigurationInstanceTypeOverrideArray []ScalingConfigurationInstanceTypeOverrideInput
+
+func (ScalingConfigurationInstanceTypeOverrideArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ScalingConfigurationInstanceTypeOverride)(nil)).Elem()
+}
+
+func (i ScalingConfigurationInstanceTypeOverrideArray) ToScalingConfigurationInstanceTypeOverrideArrayOutput() ScalingConfigurationInstanceTypeOverrideArrayOutput {
+	return i.ToScalingConfigurationInstanceTypeOverrideArrayOutputWithContext(context.Background())
+}
+
+func (i ScalingConfigurationInstanceTypeOverrideArray) ToScalingConfigurationInstanceTypeOverrideArrayOutputWithContext(ctx context.Context) ScalingConfigurationInstanceTypeOverrideArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ScalingConfigurationInstanceTypeOverrideArrayOutput)
+}
+
+type ScalingConfigurationInstanceTypeOverrideOutput struct{ *pulumi.OutputState }
+
+func (ScalingConfigurationInstanceTypeOverrideOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ScalingConfigurationInstanceTypeOverride)(nil)).Elem()
+}
+
+func (o ScalingConfigurationInstanceTypeOverrideOutput) ToScalingConfigurationInstanceTypeOverrideOutput() ScalingConfigurationInstanceTypeOverrideOutput {
+	return o
+}
+
+func (o ScalingConfigurationInstanceTypeOverrideOutput) ToScalingConfigurationInstanceTypeOverrideOutputWithContext(ctx context.Context) ScalingConfigurationInstanceTypeOverrideOutput {
+	return o
+}
+
+// The is specified for an instance type in instanceTypeOverride.
+func (o ScalingConfigurationInstanceTypeOverrideOutput) InstanceType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ScalingConfigurationInstanceTypeOverride) *string { return v.InstanceType }).(pulumi.StringPtrOutput)
+}
+
+// The weight of instance type in instanceTypeOverride.
+func (o ScalingConfigurationInstanceTypeOverrideOutput) WeightedCapacity() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ScalingConfigurationInstanceTypeOverride) *int { return v.WeightedCapacity }).(pulumi.IntPtrOutput)
+}
+
+type ScalingConfigurationInstanceTypeOverrideArrayOutput struct{ *pulumi.OutputState }
+
+func (ScalingConfigurationInstanceTypeOverrideArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ScalingConfigurationInstanceTypeOverride)(nil)).Elem()
+}
+
+func (o ScalingConfigurationInstanceTypeOverrideArrayOutput) ToScalingConfigurationInstanceTypeOverrideArrayOutput() ScalingConfigurationInstanceTypeOverrideArrayOutput {
+	return o
+}
+
+func (o ScalingConfigurationInstanceTypeOverrideArrayOutput) ToScalingConfigurationInstanceTypeOverrideArrayOutputWithContext(ctx context.Context) ScalingConfigurationInstanceTypeOverrideArrayOutput {
+	return o
+}
+
+func (o ScalingConfigurationInstanceTypeOverrideArrayOutput) Index(i pulumi.IntInput) ScalingConfigurationInstanceTypeOverrideOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ScalingConfigurationInstanceTypeOverride {
+		return vs[0].([]ScalingConfigurationInstanceTypeOverride)[vs[1].(int)]
+	}).(ScalingConfigurationInstanceTypeOverrideOutput)
+}
+
 type ScalingConfigurationSpotPriceLimit struct {
 	// Resource type of an ECS instance.
 	InstanceType *string `pulumi:"instanceType"`
@@ -2466,6 +2581,139 @@ func (o ScalingConfigurationSpotPriceLimitArrayOutput) Index(i pulumi.IntInput) 
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ScalingConfigurationSpotPriceLimit {
 		return vs[0].([]ScalingConfigurationSpotPriceLimit)[vs[1].(int)]
 	}).(ScalingConfigurationSpotPriceLimitOutput)
+}
+
+type ScalingGroupLaunchTemplateOverride struct {
+	// The instance type in launchTemplateOverride.
+	InstanceType *string `pulumi:"instanceType"`
+	// The maximum bid price of instance type in launchTemplateOverride.
+	//
+	// > **NOTE:** When detach loadbalancers, instances in group will be remove from loadbalancer's `Default Server Group`; On the contrary, When attach loadbalancers, instances in group will be added to loadbalancer's `Default Server Group`.
+	//
+	// > **NOTE:** When detach dbInstances, private ip of instances in group will be remove from dbInstance's `WhiteList`; On the contrary, When attach dbInstances, private ip of instances in group will be added to dbInstance's `WhiteList`.
+	//
+	// > **NOTE:** `onDemandBaseCapacity`,`onDemandPercentageAboveBaseCapacity`,`spotInstancePools`,`spotInstanceRemedy` are valid only if `multiAzPolicy` is 'COST_OPTIMIZED'.
+	SpotPriceLimit *float64 `pulumi:"spotPriceLimit"`
+	// The weight of the instance type in launchTemplateOverride.
+	WeightedCapacity *int `pulumi:"weightedCapacity"`
+}
+
+// ScalingGroupLaunchTemplateOverrideInput is an input type that accepts ScalingGroupLaunchTemplateOverrideArgs and ScalingGroupLaunchTemplateOverrideOutput values.
+// You can construct a concrete instance of `ScalingGroupLaunchTemplateOverrideInput` via:
+//
+//	ScalingGroupLaunchTemplateOverrideArgs{...}
+type ScalingGroupLaunchTemplateOverrideInput interface {
+	pulumi.Input
+
+	ToScalingGroupLaunchTemplateOverrideOutput() ScalingGroupLaunchTemplateOverrideOutput
+	ToScalingGroupLaunchTemplateOverrideOutputWithContext(context.Context) ScalingGroupLaunchTemplateOverrideOutput
+}
+
+type ScalingGroupLaunchTemplateOverrideArgs struct {
+	// The instance type in launchTemplateOverride.
+	InstanceType pulumi.StringPtrInput `pulumi:"instanceType"`
+	// The maximum bid price of instance type in launchTemplateOverride.
+	//
+	// > **NOTE:** When detach loadbalancers, instances in group will be remove from loadbalancer's `Default Server Group`; On the contrary, When attach loadbalancers, instances in group will be added to loadbalancer's `Default Server Group`.
+	//
+	// > **NOTE:** When detach dbInstances, private ip of instances in group will be remove from dbInstance's `WhiteList`; On the contrary, When attach dbInstances, private ip of instances in group will be added to dbInstance's `WhiteList`.
+	//
+	// > **NOTE:** `onDemandBaseCapacity`,`onDemandPercentageAboveBaseCapacity`,`spotInstancePools`,`spotInstanceRemedy` are valid only if `multiAzPolicy` is 'COST_OPTIMIZED'.
+	SpotPriceLimit pulumi.Float64PtrInput `pulumi:"spotPriceLimit"`
+	// The weight of the instance type in launchTemplateOverride.
+	WeightedCapacity pulumi.IntPtrInput `pulumi:"weightedCapacity"`
+}
+
+func (ScalingGroupLaunchTemplateOverrideArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ScalingGroupLaunchTemplateOverride)(nil)).Elem()
+}
+
+func (i ScalingGroupLaunchTemplateOverrideArgs) ToScalingGroupLaunchTemplateOverrideOutput() ScalingGroupLaunchTemplateOverrideOutput {
+	return i.ToScalingGroupLaunchTemplateOverrideOutputWithContext(context.Background())
+}
+
+func (i ScalingGroupLaunchTemplateOverrideArgs) ToScalingGroupLaunchTemplateOverrideOutputWithContext(ctx context.Context) ScalingGroupLaunchTemplateOverrideOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ScalingGroupLaunchTemplateOverrideOutput)
+}
+
+// ScalingGroupLaunchTemplateOverrideArrayInput is an input type that accepts ScalingGroupLaunchTemplateOverrideArray and ScalingGroupLaunchTemplateOverrideArrayOutput values.
+// You can construct a concrete instance of `ScalingGroupLaunchTemplateOverrideArrayInput` via:
+//
+//	ScalingGroupLaunchTemplateOverrideArray{ ScalingGroupLaunchTemplateOverrideArgs{...} }
+type ScalingGroupLaunchTemplateOverrideArrayInput interface {
+	pulumi.Input
+
+	ToScalingGroupLaunchTemplateOverrideArrayOutput() ScalingGroupLaunchTemplateOverrideArrayOutput
+	ToScalingGroupLaunchTemplateOverrideArrayOutputWithContext(context.Context) ScalingGroupLaunchTemplateOverrideArrayOutput
+}
+
+type ScalingGroupLaunchTemplateOverrideArray []ScalingGroupLaunchTemplateOverrideInput
+
+func (ScalingGroupLaunchTemplateOverrideArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ScalingGroupLaunchTemplateOverride)(nil)).Elem()
+}
+
+func (i ScalingGroupLaunchTemplateOverrideArray) ToScalingGroupLaunchTemplateOverrideArrayOutput() ScalingGroupLaunchTemplateOverrideArrayOutput {
+	return i.ToScalingGroupLaunchTemplateOverrideArrayOutputWithContext(context.Background())
+}
+
+func (i ScalingGroupLaunchTemplateOverrideArray) ToScalingGroupLaunchTemplateOverrideArrayOutputWithContext(ctx context.Context) ScalingGroupLaunchTemplateOverrideArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ScalingGroupLaunchTemplateOverrideArrayOutput)
+}
+
+type ScalingGroupLaunchTemplateOverrideOutput struct{ *pulumi.OutputState }
+
+func (ScalingGroupLaunchTemplateOverrideOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ScalingGroupLaunchTemplateOverride)(nil)).Elem()
+}
+
+func (o ScalingGroupLaunchTemplateOverrideOutput) ToScalingGroupLaunchTemplateOverrideOutput() ScalingGroupLaunchTemplateOverrideOutput {
+	return o
+}
+
+func (o ScalingGroupLaunchTemplateOverrideOutput) ToScalingGroupLaunchTemplateOverrideOutputWithContext(ctx context.Context) ScalingGroupLaunchTemplateOverrideOutput {
+	return o
+}
+
+// The instance type in launchTemplateOverride.
+func (o ScalingGroupLaunchTemplateOverrideOutput) InstanceType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ScalingGroupLaunchTemplateOverride) *string { return v.InstanceType }).(pulumi.StringPtrOutput)
+}
+
+// The maximum bid price of instance type in launchTemplateOverride.
+//
+// > **NOTE:** When detach loadbalancers, instances in group will be remove from loadbalancer's `Default Server Group`; On the contrary, When attach loadbalancers, instances in group will be added to loadbalancer's `Default Server Group`.
+//
+// > **NOTE:** When detach dbInstances, private ip of instances in group will be remove from dbInstance's `WhiteList`; On the contrary, When attach dbInstances, private ip of instances in group will be added to dbInstance's `WhiteList`.
+//
+// > **NOTE:** `onDemandBaseCapacity`,`onDemandPercentageAboveBaseCapacity`,`spotInstancePools`,`spotInstanceRemedy` are valid only if `multiAzPolicy` is 'COST_OPTIMIZED'.
+func (o ScalingGroupLaunchTemplateOverrideOutput) SpotPriceLimit() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v ScalingGroupLaunchTemplateOverride) *float64 { return v.SpotPriceLimit }).(pulumi.Float64PtrOutput)
+}
+
+// The weight of the instance type in launchTemplateOverride.
+func (o ScalingGroupLaunchTemplateOverrideOutput) WeightedCapacity() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ScalingGroupLaunchTemplateOverride) *int { return v.WeightedCapacity }).(pulumi.IntPtrOutput)
+}
+
+type ScalingGroupLaunchTemplateOverrideArrayOutput struct{ *pulumi.OutputState }
+
+func (ScalingGroupLaunchTemplateOverrideArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ScalingGroupLaunchTemplateOverride)(nil)).Elem()
+}
+
+func (o ScalingGroupLaunchTemplateOverrideArrayOutput) ToScalingGroupLaunchTemplateOverrideArrayOutput() ScalingGroupLaunchTemplateOverrideArrayOutput {
+	return o
+}
+
+func (o ScalingGroupLaunchTemplateOverrideArrayOutput) ToScalingGroupLaunchTemplateOverrideArrayOutputWithContext(ctx context.Context) ScalingGroupLaunchTemplateOverrideArrayOutput {
+	return o
+}
+
+func (o ScalingGroupLaunchTemplateOverrideArrayOutput) Index(i pulumi.IntInput) ScalingGroupLaunchTemplateOverrideOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ScalingGroupLaunchTemplateOverride {
+		return vs[0].([]ScalingGroupLaunchTemplateOverride)[vs[1].(int)]
+	}).(ScalingGroupLaunchTemplateOverrideOutput)
 }
 
 type ScalingGroupVServerGroupsVserverGroup struct {
@@ -4716,8 +4964,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ScalingConfigurationDataDiskArrayInput)(nil)).Elem(), ScalingConfigurationDataDiskArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ScalingConfigurationInstancePatternInfoInput)(nil)).Elem(), ScalingConfigurationInstancePatternInfoArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ScalingConfigurationInstancePatternInfoArrayInput)(nil)).Elem(), ScalingConfigurationInstancePatternInfoArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ScalingConfigurationInstanceTypeOverrideInput)(nil)).Elem(), ScalingConfigurationInstanceTypeOverrideArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ScalingConfigurationInstanceTypeOverrideArrayInput)(nil)).Elem(), ScalingConfigurationInstanceTypeOverrideArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ScalingConfigurationSpotPriceLimitInput)(nil)).Elem(), ScalingConfigurationSpotPriceLimitArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ScalingConfigurationSpotPriceLimitArrayInput)(nil)).Elem(), ScalingConfigurationSpotPriceLimitArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ScalingGroupLaunchTemplateOverrideInput)(nil)).Elem(), ScalingGroupLaunchTemplateOverrideArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ScalingGroupLaunchTemplateOverrideArrayInput)(nil)).Elem(), ScalingGroupLaunchTemplateOverrideArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ScalingGroupVServerGroupsVserverGroupInput)(nil)).Elem(), ScalingGroupVServerGroupsVserverGroupArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ScalingGroupVServerGroupsVserverGroupArrayInput)(nil)).Elem(), ScalingGroupVServerGroupsVserverGroupArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ScalingGroupVServerGroupsVserverGroupVserverAttributeInput)(nil)).Elem(), ScalingGroupVServerGroupsVserverGroupVserverAttributeArgs{})
@@ -4774,8 +5026,12 @@ func init() {
 	pulumi.RegisterOutputType(ScalingConfigurationDataDiskArrayOutput{})
 	pulumi.RegisterOutputType(ScalingConfigurationInstancePatternInfoOutput{})
 	pulumi.RegisterOutputType(ScalingConfigurationInstancePatternInfoArrayOutput{})
+	pulumi.RegisterOutputType(ScalingConfigurationInstanceTypeOverrideOutput{})
+	pulumi.RegisterOutputType(ScalingConfigurationInstanceTypeOverrideArrayOutput{})
 	pulumi.RegisterOutputType(ScalingConfigurationSpotPriceLimitOutput{})
 	pulumi.RegisterOutputType(ScalingConfigurationSpotPriceLimitArrayOutput{})
+	pulumi.RegisterOutputType(ScalingGroupLaunchTemplateOverrideOutput{})
+	pulumi.RegisterOutputType(ScalingGroupLaunchTemplateOverrideArrayOutput{})
 	pulumi.RegisterOutputType(ScalingGroupVServerGroupsVserverGroupOutput{})
 	pulumi.RegisterOutputType(ScalingGroupVServerGroupsVserverGroupArrayOutput{})
 	pulumi.RegisterOutputType(ScalingGroupVServerGroupsVserverGroupVserverAttributeOutput{})

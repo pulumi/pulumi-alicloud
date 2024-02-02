@@ -33,24 +33,27 @@ import (
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
 //	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			var defaultRandomInteger []*random.RandomInteger
-//			for index := 0; index < 1 == true; index++ {
-//				key0 := index
-//				_ := index
-//				__res, err := random.NewRandomInteger(ctx, fmt.Sprintf("defaultRandomInteger-%v", key0), &random.RandomIntegerArgs{
-//					Max: pulumi.Int(99999),
-//					Min: pulumi.Int(10000),
-//				})
-//				if err != nil {
-//					return err
-//				}
-//				defaultRandomInteger = append(defaultRandomInteger, __res)
+//			cfg := config.New(ctx, "")
+//			name := "terraform-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
 //			}
+//			defaultRandomInteger, err := random.NewRandomInteger(ctx, "defaultRandomInteger", &random.RandomIntegerArgs{
+//				Min: pulumi.Int(10000),
+//				Max: pulumi.Int(99999),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			myName := defaultRandomInteger.Result.ApplyT(func(result int) (string, error) {
+//				return fmt.Sprintf("%v-%v", name, result), nil
+//			}).(pulumi.StringOutput)
 //			defaultZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
 //				AvailableDiskCategory:     pulumi.StringRef("cloud_efficiency"),
 //				AvailableResourceCreation: pulumi.StringRef("VSwitch"),
@@ -75,18 +78,17 @@ import (
 //				return err
 //			}
 //			defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
+//				VpcName:   pulumi.String(myName),
 //				CidrBlock: pulumi.String("172.16.0.0/16"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
-//				VpcId:     defaultNetwork.ID(),
-//				CidrBlock: pulumi.String("172.16.0.0/24"),
-//				ZoneId:    *pulumi.String(defaultZones.Zones[0].Id),
-//				VswitchName: defaultRandomInteger.Result.ApplyT(func(result *int) (string, error) {
-//					return fmt.Sprintf("terraform-example-%v", result), nil
-//				}).(pulumi.StringOutput),
+//				VpcId:       defaultNetwork.ID(),
+//				CidrBlock:   pulumi.String("172.16.0.0/24"),
+//				ZoneId:      *pulumi.String(defaultZones.Zones[0].Id),
+//				VswitchName: pulumi.String(myName),
 //			})
 //			if err != nil {
 //				return err
@@ -111,11 +113,9 @@ import (
 //				return err
 //			}
 //			defaultScalingGroup, err := ess.NewScalingGroup(ctx, "defaultScalingGroup", &ess.ScalingGroupArgs{
-//				MinSize: pulumi.Int(1),
-//				MaxSize: pulumi.Int(1),
-//				ScalingGroupName: defaultRandomInteger.Result.ApplyT(func(result *int) (string, error) {
-//					return fmt.Sprintf("terraform-example-%v", result), nil
-//				}).(pulumi.StringOutput),
+//				MinSize:          pulumi.Int(1),
+//				MaxSize:          pulumi.Int(1),
+//				ScalingGroupName: pulumi.String(myName),
 //				VswitchIds: pulumi.StringArray{
 //					defaultSwitch.ID(),
 //				},

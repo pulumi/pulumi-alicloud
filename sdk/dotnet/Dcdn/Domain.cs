@@ -29,14 +29,21 @@ namespace Pulumi.AliCloud.Dcdn
     /// using System.Linq;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
+    /// using Random = Pulumi.Random;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     var config = new Config();
-    ///     var domainName = config.Get("domainName") ?? "example.com";
+    ///     var domainName = config.Get("domainName") ?? "tf-example.com";
+    ///     var @default = new Random.RandomInteger("default", new()
+    ///     {
+    ///         Max = 99999,
+    ///         Min = 10000,
+    ///     });
+    /// 
     ///     var example = new AliCloud.Dcdn.Domain("example", new()
     ///     {
-    ///         DomainName = domainName,
+    ///         DomainName = @default.Result.Apply(result =&gt; $"{domainName}-{result}"),
     ///         Scope = "overseas",
     ///         Sources = new[]
     ///         {

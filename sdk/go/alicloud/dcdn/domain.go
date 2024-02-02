@@ -31,7 +31,10 @@ import (
 //
 // import (
 //
+//	"fmt"
+//
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/dcdn"
+//	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
@@ -40,13 +43,22 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			cfg := config.New(ctx, "")
-//			domainName := "example.com"
+//			domainName := "tf-example.com"
 //			if param := cfg.Get("domainName"); param != "" {
 //				domainName = param
 //			}
-//			_, err := dcdn.NewDomain(ctx, "example", &dcdn.DomainArgs{
-//				DomainName: pulumi.String(domainName),
-//				Scope:      pulumi.String("overseas"),
+//			_, err := random.NewRandomInteger(ctx, "default", &random.RandomIntegerArgs{
+//				Max: pulumi.Int(99999),
+//				Min: pulumi.Int(10000),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = dcdn.NewDomain(ctx, "example", &dcdn.DomainArgs{
+//				DomainName: _default.Result.ApplyT(func(result int) (string, error) {
+//					return fmt.Sprintf("%v-%v", domainName, result), nil
+//				}).(pulumi.StringOutput),
+//				Scope: pulumi.String("overseas"),
 //				Sources: dcdn.DomainSourceArray{
 //					&dcdn.DomainSourceArgs{
 //						Content:  pulumi.String("1.1.1.1"),

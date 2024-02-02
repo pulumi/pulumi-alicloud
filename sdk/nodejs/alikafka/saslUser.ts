@@ -5,14 +5,14 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Provides an Alikafka sasl user resource.
+ * Provides an Alikafka Sasl User resource.
  *
  * > **NOTE:** Available since v1.66.0.
  *
- * > **NOTE:**  Only the following regions support create alikafka sasl user.
+ * > **NOTE:**  Only the following regions support create alikafka Sasl User.
  * [`cn-hangzhou`,`cn-beijing`,`cn-shenzhen`,`cn-shanghai`,`cn-qingdao`,`cn-hongkong`,`cn-huhehaote`,`cn-zhangjiakou`,`cn-chengdu`,`cn-heyuan`,`ap-southeast-1`,`ap-southeast-3`,`ap-southeast-5`,`ap-south-1`,`ap-northeast-1`,`eu-central-1`,`eu-west-1`,`us-west-1`,`us-east-1`]
  *
- * For information about Alikafka sasl user and how to use it, see [What is Alikafka sasl user ](https://www.alibabacloud.com/help/en/message-queue-for-apache-kafka/latest/api-alikafka-2019-09-16-createsasluser).
+ * For information about Alikafka Sasl User and how to use it, see [What is Sasl User](https://www.alibabacloud.com/help/en/message-queue-for-apache-kafka/latest/api-alikafka-2019-09-16-createsasluser).
  *
  * ## Example Usage
  *
@@ -46,14 +46,12 @@ import * as utilities from "../utilities";
  *     ioMax: 20,
  *     specType: "professional",
  *     serviceVersion: "2.2.0",
- *     config: "{\"enable.acl\":\"true\"}",
  *     vswitchId: defaultSwitch.id,
  *     securityGroup: defaultSecurityGroup.id,
- * });
- * const defaultTopic = new alicloud.alikafka.Topic("defaultTopic", {
- *     instanceId: defaultInstance.id,
- *     topic: "example-topic",
- *     remark: "topic-remark",
+ *     config: `  {
+ *     "enable.acl": "true"
+ *   }
+ * `,
  * });
  * const defaultSaslUser = new alicloud.alikafka.SaslUser("defaultSaslUser", {
  *     instanceId: defaultInstance.id,
@@ -111,15 +109,15 @@ export class SaslUser extends pulumi.CustomResource {
      */
     public readonly kmsEncryptionContext!: pulumi.Output<{[key: string]: any} | undefined>;
     /**
-     * Operation password. It may consist of letters, digits, or underlines, with a length of 1 to 64 characters. You have to specify one of `password` and `kmsEncryptedPassword` fields.
+     * The password of the SASL user. It may consist of letters, digits, or underlines, with a length of 1 to 64 characters. You have to specify one of `password` and `kmsEncryptedPassword` fields.
      */
     public readonly password!: pulumi.Output<string | undefined>;
     /**
-     * The authentication mechanism. Valid values: `plain`, `scram`. Default value: `plain`.
+     * The authentication mechanism. Default value: `plain`. Valid values: `plain`, `scram`.
      */
-    public readonly type!: pulumi.Output<string | undefined>;
+    public readonly type!: pulumi.Output<string>;
     /**
-     * Username for the sasl user. The length should between 1 to 64 characters. The characters can only contain 'a'-'z', 'A'-'Z', '0'-'9', '_' and '-'.
+     * The name of the SASL user. The length should between `1` to `64` characters. The characters can only contain `a`-`z`, `A`-`Z`, `0`-`9`, `_` and `-`.
      */
     public readonly username!: pulumi.Output<string>;
 
@@ -181,15 +179,15 @@ export interface SaslUserState {
      */
     kmsEncryptionContext?: pulumi.Input<{[key: string]: any}>;
     /**
-     * Operation password. It may consist of letters, digits, or underlines, with a length of 1 to 64 characters. You have to specify one of `password` and `kmsEncryptedPassword` fields.
+     * The password of the SASL user. It may consist of letters, digits, or underlines, with a length of 1 to 64 characters. You have to specify one of `password` and `kmsEncryptedPassword` fields.
      */
     password?: pulumi.Input<string>;
     /**
-     * The authentication mechanism. Valid values: `plain`, `scram`. Default value: `plain`.
+     * The authentication mechanism. Default value: `plain`. Valid values: `plain`, `scram`.
      */
     type?: pulumi.Input<string>;
     /**
-     * Username for the sasl user. The length should between 1 to 64 characters. The characters can only contain 'a'-'z', 'A'-'Z', '0'-'9', '_' and '-'.
+     * The name of the SASL user. The length should between `1` to `64` characters. The characters can only contain `a`-`z`, `A`-`Z`, `0`-`9`, `_` and `-`.
      */
     username?: pulumi.Input<string>;
 }
@@ -211,15 +209,15 @@ export interface SaslUserArgs {
      */
     kmsEncryptionContext?: pulumi.Input<{[key: string]: any}>;
     /**
-     * Operation password. It may consist of letters, digits, or underlines, with a length of 1 to 64 characters. You have to specify one of `password` and `kmsEncryptedPassword` fields.
+     * The password of the SASL user. It may consist of letters, digits, or underlines, with a length of 1 to 64 characters. You have to specify one of `password` and `kmsEncryptedPassword` fields.
      */
     password?: pulumi.Input<string>;
     /**
-     * The authentication mechanism. Valid values: `plain`, `scram`. Default value: `plain`.
+     * The authentication mechanism. Default value: `plain`. Valid values: `plain`, `scram`.
      */
     type?: pulumi.Input<string>;
     /**
-     * Username for the sasl user. The length should between 1 to 64 characters. The characters can only contain 'a'-'z', 'A'-'Z', '0'-'9', '_' and '-'.
+     * The name of the SASL user. The length should between `1` to `64` characters. The characters can only contain `a`-`z`, `A`-`Z`, `0`-`9`, `_` and `-`.
      */
     username: pulumi.Input<string>;
 }

@@ -269,6 +269,12 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? InternetChargeType { get; set; }
 
         /// <summary>
+        /// The elastic ip address
+        /// </summary>
+        [Input("ipAddress")]
+        public Input<string>? IpAddress { get; set; }
+
+        /// <summary>
         /// The line type of the Elastic IP instance. Default to `BGP`. Other type of the isp need to open a whitelist.
         /// </summary>
         [Input("isp")]

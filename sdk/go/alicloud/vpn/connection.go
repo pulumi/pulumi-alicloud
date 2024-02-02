@@ -12,143 +12,67 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// ## Example Usage
-//
-// # Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpn"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			name := "tf-example"
-//			if param := cfg.Get("name"); param != "" {
-//				name = param
-//			}
-//			defaultZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
-//				AvailableResourceCreation: pulumi.StringRef("VSwitch"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			defaultNetworks, err := vpc.GetNetworks(ctx, &vpc.GetNetworksArgs{
-//				NameRegex: pulumi.StringRef("^default-NODELETING$"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			defaultSwitches, err := vpc.GetSwitches(ctx, &vpc.GetSwitchesArgs{
-//				VpcId:  pulumi.StringRef(defaultNetworks.Ids[0]),
-//				ZoneId: pulumi.StringRef(defaultZones.Ids[0]),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			fooGateway, err := vpn.NewGateway(ctx, "fooGateway", &vpn.GatewayArgs{
-//				VpcId:              *pulumi.String(defaultNetworks.Ids[0]),
-//				Bandwidth:          pulumi.Int(10),
-//				EnableSsl:          pulumi.Bool(true),
-//				InstanceChargeType: pulumi.String("PrePaid"),
-//				Description:        pulumi.String("test_create_description"),
-//				VswitchId:          *pulumi.String(defaultSwitches.Ids[0]),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			fooCustomerGateway, err := vpn.NewCustomerGateway(ctx, "fooCustomerGateway", &vpn.CustomerGatewayArgs{
-//				IpAddress:   pulumi.String("42.104.22.210"),
-//				Description: pulumi.String(name),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = vpn.NewConnection(ctx, "fooConnection", &vpn.ConnectionArgs{
-//				VpnGatewayId:      fooGateway.ID(),
-//				CustomerGatewayId: fooCustomerGateway.ID(),
-//				LocalSubnets: pulumi.StringArray{
-//					pulumi.String("172.16.0.0/24"),
-//					pulumi.String("172.16.1.0/24"),
-//				},
-//				RemoteSubnets: pulumi.StringArray{
-//					pulumi.String("10.0.0.0/24"),
-//					pulumi.String("10.0.1.0/24"),
-//				},
-//				EffectImmediately: pulumi.Bool(true),
-//				IkeConfig: &vpn.ConnectionIkeConfigArgs{
-//					IkeAuthAlg:  pulumi.String("md5"),
-//					IkeEncAlg:   pulumi.String("des"),
-//					IkeVersion:  pulumi.String("ikev2"),
-//					IkeMode:     pulumi.String("main"),
-//					IkeLifetime: pulumi.Int(86400),
-//					Psk:         pulumi.String("tf-testvpn2"),
-//					IkePfs:      pulumi.String("group1"),
-//					IkeRemoteId: pulumi.String("testbob2"),
-//					IkeLocalId:  pulumi.String("testalice2"),
-//				},
-//				IpsecConfig: &vpn.ConnectionIpsecConfigArgs{
-//					IpsecPfs:      pulumi.String("group5"),
-//					IpsecEncAlg:   pulumi.String("des"),
-//					IpsecAuthAlg:  pulumi.String("md5"),
-//					IpsecLifetime: pulumi.Int(8640),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // VPN connection can be imported using the id, e.g.
 //
 // ```sh
 //
-//	$ pulumi import alicloud:vpn/connection:Connection example vco-abc123456
+//	$ pulumi import alicloud:vpn/connection:Connection example <id>
 //
 // ```
 type Connection struct {
 	pulumi.CustomResourceState
 
-	// The configurations of the BGP routing protocol. See `bgpConfig` below.
+	// Whether to configure routing automatically. Value:
+	// - **true**: Automatically configure routes.
+	// - **false**: does not automatically configure routes.
+	AutoConfigRoute pulumi.BoolPtrOutput `pulumi:"autoConfigRoute"`
+	// vpnBgp configuration. See `bgpConfig` below.
 	BgpConfig ConnectionBgpConfigOutput `pulumi:"bgpConfig"`
+	// The time when the IPsec-VPN connection was created.
+	CreateTime pulumi.IntOutput `pulumi:"createTime"`
 	// The ID of the customer gateway.
-	CustomerGatewayId pulumi.StringOutput `pulumi:"customerGatewayId"`
-	// Whether to delete a successfully negotiated IPsec tunnel and initiate a negotiation again. Valid value:true,false.
+	CustomerGatewayId pulumi.StringPtrOutput `pulumi:"customerGatewayId"`
+	// Indicates whether IPsec-VPN negotiations are initiated immediately. Valid values.
 	EffectImmediately pulumi.BoolPtrOutput `pulumi:"effectImmediately"`
-	// Specifies whether to enable the dead peer detection (DPD) feature. Valid values: `true`(default), `false`.
+	// Wether enable Dpd detection.
 	EnableDpd pulumi.BoolOutput `pulumi:"enableDpd"`
-	// Specifies whether to enable NAT traversal. Valid values: `true`(default), `false`.
+	// enable nat traversal.
 	EnableNatTraversal pulumi.BoolOutput `pulumi:"enableNatTraversal"`
-	// The health check configurations. See `healthCheckConfig` below.
+	// Enable tunnel bgp.
+	EnableTunnelsBgp pulumi.BoolOutput `pulumi:"enableTunnelsBgp"`
+	// Health Check information. See `healthCheckConfig` below.
 	HealthCheckConfig ConnectionHealthCheckConfigOutput `pulumi:"healthCheckConfig"`
-	// The configurations of phase-one negotiation. See `ikeConfig` below.
+	// The configuration of Phase 1 negotiations. See `ikeConfig` below.
 	IkeConfig ConnectionIkeConfigOutput `pulumi:"ikeConfig"`
-	// The configurations of phase-two negotiation. See `ipsecConfig` below.
+	// IPsec configuration. See `ipsecConfig` below.
 	IpsecConfig ConnectionIpsecConfigOutput `pulumi:"ipsecConfig"`
 	// The CIDR block of the VPC to be connected with the local data center. This parameter is used for phase-two negotiation.
 	LocalSubnets pulumi.StringArrayOutput `pulumi:"localSubnets"`
-	// The name of the IPsec connection.
+	// . Field 'name' has been deprecated from provider version 1.216.0. New field 'vpn_connection_name' instead.
+	//
+	// Deprecated: Field 'name' has been deprecated since provider version 1.216.0. New field 'vpn_connection_name' instead.
 	Name pulumi.StringOutput `pulumi:"name"`
+	// The network type of the IPsec connection. Value:
+	// - **public**: public network, indicating that the IPsec connection establishes an encrypted communication channel through the public network.
+	// - **private**: private network, indicating that the IPsec connection establishes an encrypted communication channel through the private network.
+	NetworkType pulumi.StringPtrOutput `pulumi:"networkType"`
 	// The CIDR block of the local data center. This parameter is used for phase-two negotiation.
 	RemoteSubnets pulumi.StringArrayOutput `pulumi:"remoteSubnets"`
-	// The status of VPN connection.
+	// The ID of the resource group.
+	ResourceGroupId pulumi.StringOutput `pulumi:"resourceGroupId"`
+	// The negotiation status of Tunnel.
 	Status pulumi.StringOutput `pulumi:"status"`
+	// Tags.
+	Tags pulumi.MapOutput `pulumi:"tags"`
+	// The tunnel options of IPsec. See `tunnelOptionsSpecification` below.
+	TunnelOptionsSpecifications ConnectionTunnelOptionsSpecificationArrayOutput `pulumi:"tunnelOptionsSpecifications"`
+	// The name of the IPsec-VPN connection.
+	VpnConnectionName pulumi.StringOutput `pulumi:"vpnConnectionName"`
 	// The ID of the VPN gateway.
+	//
+	// The following arguments will be discarded. Please use new fields as soon as possible:
 	VpnGatewayId pulumi.StringOutput `pulumi:"vpnGatewayId"`
 }
 
@@ -159,9 +83,6 @@ func NewConnection(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.CustomerGatewayId == nil {
-		return nil, errors.New("invalid value for required argument 'CustomerGatewayId'")
-	}
 	if args.LocalSubnets == nil {
 		return nil, errors.New("invalid value for required argument 'LocalSubnets'")
 	}
@@ -194,60 +115,108 @@ func GetConnection(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Connection resources.
 type connectionState struct {
-	// The configurations of the BGP routing protocol. See `bgpConfig` below.
+	// Whether to configure routing automatically. Value:
+	// - **true**: Automatically configure routes.
+	// - **false**: does not automatically configure routes.
+	AutoConfigRoute *bool `pulumi:"autoConfigRoute"`
+	// vpnBgp configuration. See `bgpConfig` below.
 	BgpConfig *ConnectionBgpConfig `pulumi:"bgpConfig"`
+	// The time when the IPsec-VPN connection was created.
+	CreateTime *int `pulumi:"createTime"`
 	// The ID of the customer gateway.
 	CustomerGatewayId *string `pulumi:"customerGatewayId"`
-	// Whether to delete a successfully negotiated IPsec tunnel and initiate a negotiation again. Valid value:true,false.
+	// Indicates whether IPsec-VPN negotiations are initiated immediately. Valid values.
 	EffectImmediately *bool `pulumi:"effectImmediately"`
-	// Specifies whether to enable the dead peer detection (DPD) feature. Valid values: `true`(default), `false`.
+	// Wether enable Dpd detection.
 	EnableDpd *bool `pulumi:"enableDpd"`
-	// Specifies whether to enable NAT traversal. Valid values: `true`(default), `false`.
+	// enable nat traversal.
 	EnableNatTraversal *bool `pulumi:"enableNatTraversal"`
-	// The health check configurations. See `healthCheckConfig` below.
+	// Enable tunnel bgp.
+	EnableTunnelsBgp *bool `pulumi:"enableTunnelsBgp"`
+	// Health Check information. See `healthCheckConfig` below.
 	HealthCheckConfig *ConnectionHealthCheckConfig `pulumi:"healthCheckConfig"`
-	// The configurations of phase-one negotiation. See `ikeConfig` below.
+	// The configuration of Phase 1 negotiations. See `ikeConfig` below.
 	IkeConfig *ConnectionIkeConfig `pulumi:"ikeConfig"`
-	// The configurations of phase-two negotiation. See `ipsecConfig` below.
+	// IPsec configuration. See `ipsecConfig` below.
 	IpsecConfig *ConnectionIpsecConfig `pulumi:"ipsecConfig"`
 	// The CIDR block of the VPC to be connected with the local data center. This parameter is used for phase-two negotiation.
 	LocalSubnets []string `pulumi:"localSubnets"`
-	// The name of the IPsec connection.
+	// . Field 'name' has been deprecated from provider version 1.216.0. New field 'vpn_connection_name' instead.
+	//
+	// Deprecated: Field 'name' has been deprecated since provider version 1.216.0. New field 'vpn_connection_name' instead.
 	Name *string `pulumi:"name"`
+	// The network type of the IPsec connection. Value:
+	// - **public**: public network, indicating that the IPsec connection establishes an encrypted communication channel through the public network.
+	// - **private**: private network, indicating that the IPsec connection establishes an encrypted communication channel through the private network.
+	NetworkType *string `pulumi:"networkType"`
 	// The CIDR block of the local data center. This parameter is used for phase-two negotiation.
 	RemoteSubnets []string `pulumi:"remoteSubnets"`
-	// The status of VPN connection.
+	// The ID of the resource group.
+	ResourceGroupId *string `pulumi:"resourceGroupId"`
+	// The negotiation status of Tunnel.
 	Status *string `pulumi:"status"`
+	// Tags.
+	Tags map[string]interface{} `pulumi:"tags"`
+	// The tunnel options of IPsec. See `tunnelOptionsSpecification` below.
+	TunnelOptionsSpecifications []ConnectionTunnelOptionsSpecification `pulumi:"tunnelOptionsSpecifications"`
+	// The name of the IPsec-VPN connection.
+	VpnConnectionName *string `pulumi:"vpnConnectionName"`
 	// The ID of the VPN gateway.
+	//
+	// The following arguments will be discarded. Please use new fields as soon as possible:
 	VpnGatewayId *string `pulumi:"vpnGatewayId"`
 }
 
 type ConnectionState struct {
-	// The configurations of the BGP routing protocol. See `bgpConfig` below.
+	// Whether to configure routing automatically. Value:
+	// - **true**: Automatically configure routes.
+	// - **false**: does not automatically configure routes.
+	AutoConfigRoute pulumi.BoolPtrInput
+	// vpnBgp configuration. See `bgpConfig` below.
 	BgpConfig ConnectionBgpConfigPtrInput
+	// The time when the IPsec-VPN connection was created.
+	CreateTime pulumi.IntPtrInput
 	// The ID of the customer gateway.
 	CustomerGatewayId pulumi.StringPtrInput
-	// Whether to delete a successfully negotiated IPsec tunnel and initiate a negotiation again. Valid value:true,false.
+	// Indicates whether IPsec-VPN negotiations are initiated immediately. Valid values.
 	EffectImmediately pulumi.BoolPtrInput
-	// Specifies whether to enable the dead peer detection (DPD) feature. Valid values: `true`(default), `false`.
+	// Wether enable Dpd detection.
 	EnableDpd pulumi.BoolPtrInput
-	// Specifies whether to enable NAT traversal. Valid values: `true`(default), `false`.
+	// enable nat traversal.
 	EnableNatTraversal pulumi.BoolPtrInput
-	// The health check configurations. See `healthCheckConfig` below.
+	// Enable tunnel bgp.
+	EnableTunnelsBgp pulumi.BoolPtrInput
+	// Health Check information. See `healthCheckConfig` below.
 	HealthCheckConfig ConnectionHealthCheckConfigPtrInput
-	// The configurations of phase-one negotiation. See `ikeConfig` below.
+	// The configuration of Phase 1 negotiations. See `ikeConfig` below.
 	IkeConfig ConnectionIkeConfigPtrInput
-	// The configurations of phase-two negotiation. See `ipsecConfig` below.
+	// IPsec configuration. See `ipsecConfig` below.
 	IpsecConfig ConnectionIpsecConfigPtrInput
 	// The CIDR block of the VPC to be connected with the local data center. This parameter is used for phase-two negotiation.
 	LocalSubnets pulumi.StringArrayInput
-	// The name of the IPsec connection.
+	// . Field 'name' has been deprecated from provider version 1.216.0. New field 'vpn_connection_name' instead.
+	//
+	// Deprecated: Field 'name' has been deprecated since provider version 1.216.0. New field 'vpn_connection_name' instead.
 	Name pulumi.StringPtrInput
+	// The network type of the IPsec connection. Value:
+	// - **public**: public network, indicating that the IPsec connection establishes an encrypted communication channel through the public network.
+	// - **private**: private network, indicating that the IPsec connection establishes an encrypted communication channel through the private network.
+	NetworkType pulumi.StringPtrInput
 	// The CIDR block of the local data center. This parameter is used for phase-two negotiation.
 	RemoteSubnets pulumi.StringArrayInput
-	// The status of VPN connection.
+	// The ID of the resource group.
+	ResourceGroupId pulumi.StringPtrInput
+	// The negotiation status of Tunnel.
 	Status pulumi.StringPtrInput
+	// Tags.
+	Tags pulumi.MapInput
+	// The tunnel options of IPsec. See `tunnelOptionsSpecification` below.
+	TunnelOptionsSpecifications ConnectionTunnelOptionsSpecificationArrayInput
+	// The name of the IPsec-VPN connection.
+	VpnConnectionName pulumi.StringPtrInput
 	// The ID of the VPN gateway.
+	//
+	// The following arguments will be discarded. Please use new fields as soon as possible:
 	VpnGatewayId pulumi.StringPtrInput
 }
 
@@ -256,57 +225,97 @@ func (ConnectionState) ElementType() reflect.Type {
 }
 
 type connectionArgs struct {
-	// The configurations of the BGP routing protocol. See `bgpConfig` below.
+	// Whether to configure routing automatically. Value:
+	// - **true**: Automatically configure routes.
+	// - **false**: does not automatically configure routes.
+	AutoConfigRoute *bool `pulumi:"autoConfigRoute"`
+	// vpnBgp configuration. See `bgpConfig` below.
 	BgpConfig *ConnectionBgpConfig `pulumi:"bgpConfig"`
 	// The ID of the customer gateway.
-	CustomerGatewayId string `pulumi:"customerGatewayId"`
-	// Whether to delete a successfully negotiated IPsec tunnel and initiate a negotiation again. Valid value:true,false.
+	CustomerGatewayId *string `pulumi:"customerGatewayId"`
+	// Indicates whether IPsec-VPN negotiations are initiated immediately. Valid values.
 	EffectImmediately *bool `pulumi:"effectImmediately"`
-	// Specifies whether to enable the dead peer detection (DPD) feature. Valid values: `true`(default), `false`.
+	// Wether enable Dpd detection.
 	EnableDpd *bool `pulumi:"enableDpd"`
-	// Specifies whether to enable NAT traversal. Valid values: `true`(default), `false`.
+	// enable nat traversal.
 	EnableNatTraversal *bool `pulumi:"enableNatTraversal"`
-	// The health check configurations. See `healthCheckConfig` below.
+	// Enable tunnel bgp.
+	EnableTunnelsBgp *bool `pulumi:"enableTunnelsBgp"`
+	// Health Check information. See `healthCheckConfig` below.
 	HealthCheckConfig *ConnectionHealthCheckConfig `pulumi:"healthCheckConfig"`
-	// The configurations of phase-one negotiation. See `ikeConfig` below.
+	// The configuration of Phase 1 negotiations. See `ikeConfig` below.
 	IkeConfig *ConnectionIkeConfig `pulumi:"ikeConfig"`
-	// The configurations of phase-two negotiation. See `ipsecConfig` below.
+	// IPsec configuration. See `ipsecConfig` below.
 	IpsecConfig *ConnectionIpsecConfig `pulumi:"ipsecConfig"`
 	// The CIDR block of the VPC to be connected with the local data center. This parameter is used for phase-two negotiation.
 	LocalSubnets []string `pulumi:"localSubnets"`
-	// The name of the IPsec connection.
+	// . Field 'name' has been deprecated from provider version 1.216.0. New field 'vpn_connection_name' instead.
+	//
+	// Deprecated: Field 'name' has been deprecated since provider version 1.216.0. New field 'vpn_connection_name' instead.
 	Name *string `pulumi:"name"`
+	// The network type of the IPsec connection. Value:
+	// - **public**: public network, indicating that the IPsec connection establishes an encrypted communication channel through the public network.
+	// - **private**: private network, indicating that the IPsec connection establishes an encrypted communication channel through the private network.
+	NetworkType *string `pulumi:"networkType"`
 	// The CIDR block of the local data center. This parameter is used for phase-two negotiation.
 	RemoteSubnets []string `pulumi:"remoteSubnets"`
+	// Tags.
+	Tags map[string]interface{} `pulumi:"tags"`
+	// The tunnel options of IPsec. See `tunnelOptionsSpecification` below.
+	TunnelOptionsSpecifications []ConnectionTunnelOptionsSpecification `pulumi:"tunnelOptionsSpecifications"`
+	// The name of the IPsec-VPN connection.
+	VpnConnectionName *string `pulumi:"vpnConnectionName"`
 	// The ID of the VPN gateway.
+	//
+	// The following arguments will be discarded. Please use new fields as soon as possible:
 	VpnGatewayId string `pulumi:"vpnGatewayId"`
 }
 
 // The set of arguments for constructing a Connection resource.
 type ConnectionArgs struct {
-	// The configurations of the BGP routing protocol. See `bgpConfig` below.
+	// Whether to configure routing automatically. Value:
+	// - **true**: Automatically configure routes.
+	// - **false**: does not automatically configure routes.
+	AutoConfigRoute pulumi.BoolPtrInput
+	// vpnBgp configuration. See `bgpConfig` below.
 	BgpConfig ConnectionBgpConfigPtrInput
 	// The ID of the customer gateway.
-	CustomerGatewayId pulumi.StringInput
-	// Whether to delete a successfully negotiated IPsec tunnel and initiate a negotiation again. Valid value:true,false.
+	CustomerGatewayId pulumi.StringPtrInput
+	// Indicates whether IPsec-VPN negotiations are initiated immediately. Valid values.
 	EffectImmediately pulumi.BoolPtrInput
-	// Specifies whether to enable the dead peer detection (DPD) feature. Valid values: `true`(default), `false`.
+	// Wether enable Dpd detection.
 	EnableDpd pulumi.BoolPtrInput
-	// Specifies whether to enable NAT traversal. Valid values: `true`(default), `false`.
+	// enable nat traversal.
 	EnableNatTraversal pulumi.BoolPtrInput
-	// The health check configurations. See `healthCheckConfig` below.
+	// Enable tunnel bgp.
+	EnableTunnelsBgp pulumi.BoolPtrInput
+	// Health Check information. See `healthCheckConfig` below.
 	HealthCheckConfig ConnectionHealthCheckConfigPtrInput
-	// The configurations of phase-one negotiation. See `ikeConfig` below.
+	// The configuration of Phase 1 negotiations. See `ikeConfig` below.
 	IkeConfig ConnectionIkeConfigPtrInput
-	// The configurations of phase-two negotiation. See `ipsecConfig` below.
+	// IPsec configuration. See `ipsecConfig` below.
 	IpsecConfig ConnectionIpsecConfigPtrInput
 	// The CIDR block of the VPC to be connected with the local data center. This parameter is used for phase-two negotiation.
 	LocalSubnets pulumi.StringArrayInput
-	// The name of the IPsec connection.
+	// . Field 'name' has been deprecated from provider version 1.216.0. New field 'vpn_connection_name' instead.
+	//
+	// Deprecated: Field 'name' has been deprecated since provider version 1.216.0. New field 'vpn_connection_name' instead.
 	Name pulumi.StringPtrInput
+	// The network type of the IPsec connection. Value:
+	// - **public**: public network, indicating that the IPsec connection establishes an encrypted communication channel through the public network.
+	// - **private**: private network, indicating that the IPsec connection establishes an encrypted communication channel through the private network.
+	NetworkType pulumi.StringPtrInput
 	// The CIDR block of the local data center. This parameter is used for phase-two negotiation.
 	RemoteSubnets pulumi.StringArrayInput
+	// Tags.
+	Tags pulumi.MapInput
+	// The tunnel options of IPsec. See `tunnelOptionsSpecification` below.
+	TunnelOptionsSpecifications ConnectionTunnelOptionsSpecificationArrayInput
+	// The name of the IPsec-VPN connection.
+	VpnConnectionName pulumi.StringPtrInput
 	// The ID of the VPN gateway.
+	//
+	// The following arguments will be discarded. Please use new fields as soon as possible:
 	VpnGatewayId pulumi.StringInput
 }
 
@@ -397,42 +406,59 @@ func (o ConnectionOutput) ToConnectionOutputWithContext(ctx context.Context) Con
 	return o
 }
 
-// The configurations of the BGP routing protocol. See `bgpConfig` below.
+// Whether to configure routing automatically. Value:
+// - **true**: Automatically configure routes.
+// - **false**: does not automatically configure routes.
+func (o ConnectionOutput) AutoConfigRoute() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Connection) pulumi.BoolPtrOutput { return v.AutoConfigRoute }).(pulumi.BoolPtrOutput)
+}
+
+// vpnBgp configuration. See `bgpConfig` below.
 func (o ConnectionOutput) BgpConfig() ConnectionBgpConfigOutput {
 	return o.ApplyT(func(v *Connection) ConnectionBgpConfigOutput { return v.BgpConfig }).(ConnectionBgpConfigOutput)
 }
 
-// The ID of the customer gateway.
-func (o ConnectionOutput) CustomerGatewayId() pulumi.StringOutput {
-	return o.ApplyT(func(v *Connection) pulumi.StringOutput { return v.CustomerGatewayId }).(pulumi.StringOutput)
+// The time when the IPsec-VPN connection was created.
+func (o ConnectionOutput) CreateTime() pulumi.IntOutput {
+	return o.ApplyT(func(v *Connection) pulumi.IntOutput { return v.CreateTime }).(pulumi.IntOutput)
 }
 
-// Whether to delete a successfully negotiated IPsec tunnel and initiate a negotiation again. Valid value:true,false.
+// The ID of the customer gateway.
+func (o ConnectionOutput) CustomerGatewayId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Connection) pulumi.StringPtrOutput { return v.CustomerGatewayId }).(pulumi.StringPtrOutput)
+}
+
+// Indicates whether IPsec-VPN negotiations are initiated immediately. Valid values.
 func (o ConnectionOutput) EffectImmediately() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Connection) pulumi.BoolPtrOutput { return v.EffectImmediately }).(pulumi.BoolPtrOutput)
 }
 
-// Specifies whether to enable the dead peer detection (DPD) feature. Valid values: `true`(default), `false`.
+// Wether enable Dpd detection.
 func (o ConnectionOutput) EnableDpd() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Connection) pulumi.BoolOutput { return v.EnableDpd }).(pulumi.BoolOutput)
 }
 
-// Specifies whether to enable NAT traversal. Valid values: `true`(default), `false`.
+// enable nat traversal.
 func (o ConnectionOutput) EnableNatTraversal() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Connection) pulumi.BoolOutput { return v.EnableNatTraversal }).(pulumi.BoolOutput)
 }
 
-// The health check configurations. See `healthCheckConfig` below.
+// Enable tunnel bgp.
+func (o ConnectionOutput) EnableTunnelsBgp() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Connection) pulumi.BoolOutput { return v.EnableTunnelsBgp }).(pulumi.BoolOutput)
+}
+
+// Health Check information. See `healthCheckConfig` below.
 func (o ConnectionOutput) HealthCheckConfig() ConnectionHealthCheckConfigOutput {
 	return o.ApplyT(func(v *Connection) ConnectionHealthCheckConfigOutput { return v.HealthCheckConfig }).(ConnectionHealthCheckConfigOutput)
 }
 
-// The configurations of phase-one negotiation. See `ikeConfig` below.
+// The configuration of Phase 1 negotiations. See `ikeConfig` below.
 func (o ConnectionOutput) IkeConfig() ConnectionIkeConfigOutput {
 	return o.ApplyT(func(v *Connection) ConnectionIkeConfigOutput { return v.IkeConfig }).(ConnectionIkeConfigOutput)
 }
 
-// The configurations of phase-two negotiation. See `ipsecConfig` below.
+// IPsec configuration. See `ipsecConfig` below.
 func (o ConnectionOutput) IpsecConfig() ConnectionIpsecConfigOutput {
 	return o.ApplyT(func(v *Connection) ConnectionIpsecConfigOutput { return v.IpsecConfig }).(ConnectionIpsecConfigOutput)
 }
@@ -442,9 +468,18 @@ func (o ConnectionOutput) LocalSubnets() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Connection) pulumi.StringArrayOutput { return v.LocalSubnets }).(pulumi.StringArrayOutput)
 }
 
-// The name of the IPsec connection.
+// . Field 'name' has been deprecated from provider version 1.216.0. New field 'vpn_connection_name' instead.
+//
+// Deprecated: Field 'name' has been deprecated since provider version 1.216.0. New field 'vpn_connection_name' instead.
 func (o ConnectionOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Connection) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The network type of the IPsec connection. Value:
+// - **public**: public network, indicating that the IPsec connection establishes an encrypted communication channel through the public network.
+// - **private**: private network, indicating that the IPsec connection establishes an encrypted communication channel through the private network.
+func (o ConnectionOutput) NetworkType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Connection) pulumi.StringPtrOutput { return v.NetworkType }).(pulumi.StringPtrOutput)
 }
 
 // The CIDR block of the local data center. This parameter is used for phase-two negotiation.
@@ -452,12 +487,36 @@ func (o ConnectionOutput) RemoteSubnets() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Connection) pulumi.StringArrayOutput { return v.RemoteSubnets }).(pulumi.StringArrayOutput)
 }
 
-// The status of VPN connection.
+// The ID of the resource group.
+func (o ConnectionOutput) ResourceGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Connection) pulumi.StringOutput { return v.ResourceGroupId }).(pulumi.StringOutput)
+}
+
+// The negotiation status of Tunnel.
 func (o ConnectionOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *Connection) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }
 
+// Tags.
+func (o ConnectionOutput) Tags() pulumi.MapOutput {
+	return o.ApplyT(func(v *Connection) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+}
+
+// The tunnel options of IPsec. See `tunnelOptionsSpecification` below.
+func (o ConnectionOutput) TunnelOptionsSpecifications() ConnectionTunnelOptionsSpecificationArrayOutput {
+	return o.ApplyT(func(v *Connection) ConnectionTunnelOptionsSpecificationArrayOutput {
+		return v.TunnelOptionsSpecifications
+	}).(ConnectionTunnelOptionsSpecificationArrayOutput)
+}
+
+// The name of the IPsec-VPN connection.
+func (o ConnectionOutput) VpnConnectionName() pulumi.StringOutput {
+	return o.ApplyT(func(v *Connection) pulumi.StringOutput { return v.VpnConnectionName }).(pulumi.StringOutput)
+}
+
 // The ID of the VPN gateway.
+//
+// The following arguments will be discarded. Please use new fields as soon as possible:
 func (o ConnectionOutput) VpnGatewayId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Connection) pulumi.StringOutput { return v.VpnGatewayId }).(pulumi.StringOutput)
 }
