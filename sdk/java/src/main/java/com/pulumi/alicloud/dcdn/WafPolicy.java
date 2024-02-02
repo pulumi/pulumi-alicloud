@@ -29,6 +29,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.random.RandomInteger;
+ * import com.pulumi.random.RandomIntegerArgs;
  * import com.pulumi.alicloud.dcdn.WafPolicy;
  * import com.pulumi.alicloud.dcdn.WafPolicyArgs;
  * import java.util.List;
@@ -46,9 +48,14 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf_example&#34;);
+ *         var default_ = new RandomInteger(&#34;default&#34;, RandomIntegerArgs.builder()        
+ *             .max(99999)
+ *             .min(10000)
+ *             .build());
+ * 
  *         var example = new WafPolicy(&#34;example&#34;, WafPolicyArgs.builder()        
  *             .defenseScene(&#34;waf_group&#34;)
- *             .policyName(name)
+ *             .policyName(default_.result().applyValue(result -&gt; String.format(&#34;%s_%s&#34;, name,result)))
  *             .policyType(&#34;custom&#34;)
  *             .status(&#34;on&#34;)
  *             .build());

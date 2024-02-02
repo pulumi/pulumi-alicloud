@@ -13,110 +13,110 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ConnectionIkeConfig {
     /**
-     * @return The authentication algorithm of phase-one negotiation. Valid value: md5 | sha1 . Default value: md5
+     * @return IKE auth Algorithm.
      * 
      */
     private @Nullable String ikeAuthAlg;
     /**
-     * @return The encryption algorithm of phase-one negotiation. Valid value: aes | aes192 | aes256 | des | 3des. Default Valid value: aes
+     * @return IKE encript algorithm.
      * 
      */
     private @Nullable String ikeEncAlg;
     /**
-     * @return The SA lifecycle as the result of phase-one negotiation. The valid value of n is [0, 86400], the unit is second and the default value is 86400.
+     * @return IKE lifetime.
      * 
      */
     private @Nullable Integer ikeLifetime;
     /**
-     * @return The identification of the VPN gateway.
+     * @return The local ID, which supports the FQDN and IP formats, and defaults to the IP address of the selected VPN gateway.
      * 
      */
     private @Nullable String ikeLocalId;
     /**
-     * @return The negotiation mode of IKE V1. Valid value: main (main mode) | aggressive (aggressive mode). Default value: main
+     * @return IKE mode, supports main and aggressive mode. The main mode is highly secure. If NAT traversal is enabled, we recommend that you use the aggressive mode.
      * 
      */
     private @Nullable String ikeMode;
     /**
-     * @return The Diffie-Hellman key exchange algorithm used by phase-one negotiation. Valid value: group1 | group2 | group5 | group14 | group24. Default value: group2
+     * @return DH group.
      * 
      */
     private @Nullable String ikePfs;
     /**
-     * @return The identification of the customer gateway.
+     * @return The peer ID. The FQDN and IP address formats are supported. The default value is the IP address of the selected customer gateway.
      * 
      */
     private @Nullable String ikeRemoteId;
     /**
-     * @return The version of the IKE protocol. Valid value: ikev1 | ikev2. Default value: ikev1
+     * @return IKE version.
      * 
      */
     private @Nullable String ikeVersion;
     /**
-     * @return Used for authentication between the IPsec VPN gateway and the customer gateway.
+     * @return Preshared secret key.
      * 
      */
     private @Nullable String psk;
 
     private ConnectionIkeConfig() {}
     /**
-     * @return The authentication algorithm of phase-one negotiation. Valid value: md5 | sha1 . Default value: md5
+     * @return IKE auth Algorithm.
      * 
      */
     public Optional<String> ikeAuthAlg() {
         return Optional.ofNullable(this.ikeAuthAlg);
     }
     /**
-     * @return The encryption algorithm of phase-one negotiation. Valid value: aes | aes192 | aes256 | des | 3des. Default Valid value: aes
+     * @return IKE encript algorithm.
      * 
      */
     public Optional<String> ikeEncAlg() {
         return Optional.ofNullable(this.ikeEncAlg);
     }
     /**
-     * @return The SA lifecycle as the result of phase-one negotiation. The valid value of n is [0, 86400], the unit is second and the default value is 86400.
+     * @return IKE lifetime.
      * 
      */
     public Optional<Integer> ikeLifetime() {
         return Optional.ofNullable(this.ikeLifetime);
     }
     /**
-     * @return The identification of the VPN gateway.
+     * @return The local ID, which supports the FQDN and IP formats, and defaults to the IP address of the selected VPN gateway.
      * 
      */
     public Optional<String> ikeLocalId() {
         return Optional.ofNullable(this.ikeLocalId);
     }
     /**
-     * @return The negotiation mode of IKE V1. Valid value: main (main mode) | aggressive (aggressive mode). Default value: main
+     * @return IKE mode, supports main and aggressive mode. The main mode is highly secure. If NAT traversal is enabled, we recommend that you use the aggressive mode.
      * 
      */
     public Optional<String> ikeMode() {
         return Optional.ofNullable(this.ikeMode);
     }
     /**
-     * @return The Diffie-Hellman key exchange algorithm used by phase-one negotiation. Valid value: group1 | group2 | group5 | group14 | group24. Default value: group2
+     * @return DH group.
      * 
      */
     public Optional<String> ikePfs() {
         return Optional.ofNullable(this.ikePfs);
     }
     /**
-     * @return The identification of the customer gateway.
+     * @return The peer ID. The FQDN and IP address formats are supported. The default value is the IP address of the selected customer gateway.
      * 
      */
     public Optional<String> ikeRemoteId() {
         return Optional.ofNullable(this.ikeRemoteId);
     }
     /**
-     * @return The version of the IKE protocol. Valid value: ikev1 | ikev2. Default value: ikev1
+     * @return IKE version.
      * 
      */
     public Optional<String> ikeVersion() {
         return Optional.ofNullable(this.ikeVersion);
     }
     /**
-     * @return Used for authentication between the IPsec VPN gateway and the customer gateway.
+     * @return Preshared secret key.
      * 
      */
     public Optional<String> psk() {

@@ -17,14 +17,14 @@ public final class AlarmEscalationsCriticalArgs extends com.pulumi.resources.Res
     public static final AlarmEscalationsCriticalArgs Empty = new AlarmEscalationsCriticalArgs();
 
     /**
-     * Critical level alarm comparison operator. Valid values: [&#34;&lt;=&#34;, &#34;&lt;&#34;, &#34;&gt;&#34;, &#34;&gt;=&#34;, &#34;==&#34;, &#34;!=&#34;]. Default to &#34;==&#34;.
+     * Critical level alarm comparison operator. Default value: `==`. Valid values: [&#34;&lt;=&#34;, &#34;&lt;&#34;, &#34;&gt;&#34;, &#34;&gt;=&#34;, &#34;==&#34;, &#34;!=&#34;].
      * 
      */
     @Import(name="comparisonOperator")
     private @Nullable Output<String> comparisonOperator;
 
     /**
-     * @return Critical level alarm comparison operator. Valid values: [&#34;&lt;=&#34;, &#34;&lt;&#34;, &#34;&gt;&#34;, &#34;&gt;=&#34;, &#34;==&#34;, &#34;!=&#34;]. Default to &#34;==&#34;.
+     * @return Critical level alarm comparison operator. Default value: `==`. Valid values: [&#34;&lt;=&#34;, &#34;&lt;&#34;, &#34;&gt;&#34;, &#34;&gt;=&#34;, &#34;==&#34;, &#34;!=&#34;].
      * 
      */
     public Optional<Output<String>> comparisonOperator() {
@@ -62,14 +62,14 @@ public final class AlarmEscalationsCriticalArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * Critical level alarm retry times. Default to 3.
+     * Critical level alarm retry times. Default value: `3`.
      * 
      */
     @Import(name="times")
     private @Nullable Output<Integer> times;
 
     /**
-     * @return Critical level alarm retry times. Default to 3.
+     * @return Critical level alarm retry times. Default value: `3`.
      * 
      */
     public Optional<Output<Integer>> times() {
@@ -104,7 +104,7 @@ public final class AlarmEscalationsCriticalArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param comparisonOperator Critical level alarm comparison operator. Valid values: [&#34;&lt;=&#34;, &#34;&lt;&#34;, &#34;&gt;&#34;, &#34;&gt;=&#34;, &#34;==&#34;, &#34;!=&#34;]. Default to &#34;==&#34;.
+         * @param comparisonOperator Critical level alarm comparison operator. Default value: `==`. Valid values: [&#34;&lt;=&#34;, &#34;&lt;&#34;, &#34;&gt;&#34;, &#34;&gt;=&#34;, &#34;==&#34;, &#34;!=&#34;].
          * 
          * @return builder
          * 
@@ -115,7 +115,7 @@ public final class AlarmEscalationsCriticalArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param comparisonOperator Critical level alarm comparison operator. Valid values: [&#34;&lt;=&#34;, &#34;&lt;&#34;, &#34;&gt;&#34;, &#34;&gt;=&#34;, &#34;==&#34;, &#34;!=&#34;]. Default to &#34;==&#34;.
+         * @param comparisonOperator Critical level alarm comparison operator. Default value: `==`. Valid values: [&#34;&lt;=&#34;, &#34;&lt;&#34;, &#34;&gt;&#34;, &#34;&gt;=&#34;, &#34;==&#34;, &#34;!=&#34;].
          * 
          * @return builder
          * 
@@ -167,7 +167,7 @@ public final class AlarmEscalationsCriticalArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param times Critical level alarm retry times. Default to 3.
+         * @param times Critical level alarm retry times. Default value: `3`.
          * 
          * @return builder
          * 
@@ -178,7 +178,7 @@ public final class AlarmEscalationsCriticalArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param times Critical level alarm retry times. Default to 3.
+         * @param times Critical level alarm retry times. Default value: `3`.
          * 
          * @return builder
          * 

@@ -24,7 +24,7 @@ import javax.annotation.Nullable;
  * VPN gateway can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:vpn/gateway:Gateway example vpn-abc123456
+ *  $ pulumi import alicloud:vpn/gateway:Gateway example &lt;id&gt;
  * ```
  * 
  */
@@ -45,22 +45,30 @@ public class Gateway extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.autoPay);
     }
     /**
-     * Specifies whether to automatically advertise BGP routes to the virtual private cloud (VPC). Valid values:
+     * Whether to automatically propagate the BGP route to the VPC. Value:  true: Propagate automatically.  false: does not propagate automatically.
      * 
      */
     @Export(name="autoPropagate", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> autoPropagate;
 
     /**
-     * @return Specifies whether to automatically advertise BGP routes to the virtual private cloud (VPC). Valid values:
+     * @return Whether to automatically propagate the BGP route to the VPC. Value:  true: Propagate automatically.  false: does not propagate automatically.
      * 
      */
     public Output<Optional<Boolean>> autoPropagate() {
         return Codegen.optional(this.autoPropagate);
     }
+    /**
+     * The Bandwidth specification of the VPN gateway. Unit: Mbps.  If you want to create a public VPN gateway, the value is 5, 10, 20, 50, 100, 200, 500, or 1000. If you want to create a private VPN gateway, the value is 200 or 1000.
+     * 
+     */
     @Export(name="bandwidth", refs={Integer.class}, tree="[0]")
     private Output<Integer> bandwidth;
 
+    /**
+     * @return The Bandwidth specification of the VPN gateway. Unit: Mbps.  If you want to create a public VPN gateway, the value is 5, 10, 20, 50, 100, 200, 500, or 1000. If you want to create a private VPN gateway, the value is 200 or 1000.
+     * 
+     */
     public Output<Integer> bandwidth() {
         return this.bandwidth;
     }
@@ -79,18 +87,46 @@ public class Gateway extends com.pulumi.resources.CustomResource {
         return this.businessStatus;
     }
     /**
-     * The description of the VPN instance.
+     * The time when the VPN gateway was created.
+     * 
+     */
+    @Export(name="createTime", refs={Integer.class}, tree="[0]")
+    private Output<Integer> createTime;
+
+    /**
+     * @return The time when the VPN gateway was created.
+     * 
+     */
+    public Output<Integer> createTime() {
+        return this.createTime;
+    }
+    /**
+     * The description of the VPN gateway.
      * 
      */
     @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
-     * @return The description of the VPN instance.
+     * @return The description of the VPN gateway.
      * 
      */
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
+    }
+    /**
+     * The ID of the backup VSwitch to which the VPN gateway is attached.
+     * 
+     */
+    @Export(name="disasterRecoveryVswitchId", refs={String.class}, tree="[0]")
+    private Output<String> disasterRecoveryVswitchId;
+
+    /**
+     * @return The ID of the backup VSwitch to which the VPN gateway is attached.
+     * 
+     */
+    public Output<String> disasterRecoveryVswitchId() {
+        return this.disasterRecoveryVswitchId;
     }
     /**
      * Enable or Disable IPSec VPN. At least one type of VPN should be enabled.
@@ -109,6 +145,8 @@ public class Gateway extends com.pulumi.resources.CustomResource {
     /**
      * Enable or Disable SSL VPN.  At least one type of VPN should be enabled.
      * 
+     * The following arguments will be discarded. Please use new fields as soon as possible:
+     * 
      */
     @Export(name="enableSsl", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> enableSsl;
@@ -116,25 +154,29 @@ public class Gateway extends com.pulumi.resources.CustomResource {
     /**
      * @return Enable or Disable SSL VPN.  At least one type of VPN should be enabled.
      * 
+     * The following arguments will be discarded. Please use new fields as soon as possible:
+     * 
      */
     public Output<Optional<Boolean>> enableSsl() {
         return Codegen.optional(this.enableSsl);
     }
     /**
-     * The charge type for instance. If it is an international site account, the valid value is PostPaid, otherwise PrePaid.
-     * Default to PostPaid.
+     * . Field &#39;instance_charge_type&#39; has been deprecated from provider version 1.216.0. New field &#39;payment_type&#39; instead.
+     * 
+     * @deprecated
+     * Field &#39;instance_charge_type&#39; has been deprecated since provider version 1.215.0. New field &#39;payment_type&#39; instead.
      * 
      */
+    @Deprecated /* Field 'instance_charge_type' has been deprecated since provider version 1.215.0. New field 'payment_type' instead. */
     @Export(name="instanceChargeType", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> instanceChargeType;
+    private Output<String> instanceChargeType;
 
     /**
-     * @return The charge type for instance. If it is an international site account, the valid value is PostPaid, otherwise PrePaid.
-     * Default to PostPaid.
+     * @return . Field &#39;instance_charge_type&#39; has been deprecated from provider version 1.216.0. New field &#39;payment_type&#39; instead.
      * 
      */
-    public Output<Optional<String>> instanceChargeType() {
-        return Codegen.optional(this.instanceChargeType);
+    public Output<String> instanceChargeType() {
+        return this.instanceChargeType;
     }
     /**
      * The internet ip of the VPN.
@@ -151,40 +193,50 @@ public class Gateway extends com.pulumi.resources.CustomResource {
         return this.internetIp;
     }
     /**
-     * The name of the VPN. Defaults to null.
+     * . Field &#39;name&#39; has been deprecated from provider version 1.216.0. New field &#39;vpn_gateway_name&#39; instead.
+     * 
+     * @deprecated
+     * Field &#39;name&#39; has been deprecated since provider version 1.215.0. New field &#39;vpn_gateway_name&#39; instead.
      * 
      */
+    @Deprecated /* Field 'name' has been deprecated since provider version 1.215.0. New field 'vpn_gateway_name' instead. */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return The name of the VPN. Defaults to null.
+     * @return . Field &#39;name&#39; has been deprecated from provider version 1.216.0. New field &#39;vpn_gateway_name&#39; instead.
      * 
      */
     public Output<String> name() {
         return this.name;
     }
     /**
-     * The network type of the VPN gateway. Value:
-     * - public (default): Public VPN gateway.
-     * - private: Private VPN gateway.
-     * 
-     * &gt; **NOTE:** Private VPN gateway can only be purchased by white list users, and the bandwidth only supports 200M or 1000M; In addition, SSL is not supported.
+     * The network type of the VPN gateway. Value:  public (default): public VPN gateway. private: private network VPN gateway.
      * 
      */
     @Export(name="networkType", refs={String.class}, tree="[0]")
     private Output<String> networkType;
 
     /**
-     * @return The network type of the VPN gateway. Value:
-     * - public (default): Public VPN gateway.
-     * - private: Private VPN gateway.
-     * 
-     * &gt; **NOTE:** Private VPN gateway can only be purchased by white list users, and the bandwidth only supports 200M or 1000M; In addition, SSL is not supported.
+     * @return The network type of the VPN gateway. Value:  public (default): public VPN gateway. private: private network VPN gateway.
      * 
      */
     public Output<String> networkType() {
         return this.networkType;
+    }
+    /**
+     * Type of payment. Value: Subscription: prepaid PayAsYouGo: Post-paid.
+     * 
+     */
+    @Export(name="paymentType", refs={String.class}, tree="[0]")
+    private Output<String> paymentType;
+
+    /**
+     * @return Type of payment. Value: Subscription: prepaid PayAsYouGo: Post-paid.
+     * 
+     */
+    public Output<String> paymentType() {
+        return this.paymentType;
     }
     /**
      * The filed is only required while the InstanceChargeType is PrePaid. Valid values: [1-9, 12, 24, 36]. Default to 1.
@@ -201,72 +253,112 @@ public class Gateway extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.period);
     }
     /**
-     * The max connections of SSL VPN. Default to 5. The number of connections supported by each account is different.
-     * This field is ignored when enable_ssl is false.
+     * The ID of the resource group.
+     * 
+     */
+    @Export(name="resourceGroupId", refs={String.class}, tree="[0]")
+    private Output<String> resourceGroupId;
+
+    /**
+     * @return The ID of the resource group.
+     * 
+     */
+    public Output<String> resourceGroupId() {
+        return this.resourceGroupId;
+    }
+    /**
+     * Maximum number of clients.
      * 
      */
     @Export(name="sslConnections", refs={Integer.class}, tree="[0]")
-    private Output</* @Nullable */ Integer> sslConnections;
+    private Output<Integer> sslConnections;
 
     /**
-     * @return The max connections of SSL VPN. Default to 5. The number of connections supported by each account is different.
-     * This field is ignored when enable_ssl is false.
+     * @return Maximum number of clients.
      * 
      */
-    public Output<Optional<Integer>> sslConnections() {
-        return Codegen.optional(this.sslConnections);
+    public Output<Integer> sslConnections() {
+        return this.sslConnections;
     }
     /**
-     * The status of the VPN gateway.
+     * The status of the resource.
      * 
      */
     @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
-     * @return The status of the VPN gateway.
+     * @return The status of the resource.
      * 
      */
     public Output<String> status() {
         return this.status;
     }
     /**
-     * The tags of VPN gateway.
+     * The Tag of.
      * 
      */
     @Export(name="tags", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,Object>> tags;
 
     /**
-     * @return The tags of VPN gateway.
+     * @return The Tag of.
      * 
      */
     public Output<Optional<Map<String,Object>>> tags() {
         return Codegen.optional(this.tags);
     }
     /**
-     * The VPN belongs the vpc_id, the field can&#39;t be changed.
+     * The ID of the VPC to which the VPN gateway belongs.
      * 
      */
     @Export(name="vpcId", refs={String.class}, tree="[0]")
     private Output<String> vpcId;
 
     /**
-     * @return The VPN belongs the vpc_id, the field can&#39;t be changed.
+     * @return The ID of the VPC to which the VPN gateway belongs.
      * 
      */
     public Output<String> vpcId() {
         return this.vpcId;
     }
     /**
-     * The VPN belongs the vswitch_id, the field can&#39;t be changed.
+     * The name of the VPN gateway.
+     * 
+     */
+    @Export(name="vpnGatewayName", refs={String.class}, tree="[0]")
+    private Output<String> vpnGatewayName;
+
+    /**
+     * @return The name of the VPN gateway.
+     * 
+     */
+    public Output<String> vpnGatewayName() {
+        return this.vpnGatewayName;
+    }
+    /**
+     * The VPN gateway type. Value:  Normal (default): Normal type. NationalStandard: National Secret type.
+     * 
+     */
+    @Export(name="vpnType", refs={String.class}, tree="[0]")
+    private Output<String> vpnType;
+
+    /**
+     * @return The VPN gateway type. Value:  Normal (default): Normal type. NationalStandard: National Secret type.
+     * 
+     */
+    public Output<String> vpnType() {
+        return this.vpnType;
+    }
+    /**
+     * The ID of the VSwitch to which the VPN gateway is attached.
      * 
      */
     @Export(name="vswitchId", refs={String.class}, tree="[0]")
     private Output<String> vswitchId;
 
     /**
-     * @return The VPN belongs the vswitch_id, the field can&#39;t be changed.
+     * @return The ID of the VSwitch to which the VPN gateway is attached.
      * 
      */
     public Output<String> vswitchId() {

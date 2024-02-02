@@ -35,9 +35,14 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.alicloud.vpc.VpcFunctions;
- * import com.pulumi.alicloud.vpc.inputs.GetNetworksArgs;
- * import com.pulumi.alicloud.vpc.inputs.GetSwitchesArgs;
+ * import com.pulumi.alicloud.AlicloudFunctions;
+ * import com.pulumi.alicloud.inputs.GetZonesArgs;
+ * import com.pulumi.random.RandomInteger;
+ * import com.pulumi.random.RandomIntegerArgs;
+ * import com.pulumi.alicloud.vpc.Network;
+ * import com.pulumi.alicloud.vpc.NetworkArgs;
+ * import com.pulumi.alicloud.vpc.Switch;
+ * import com.pulumi.alicloud.vpc.SwitchArgs;
  * import com.pulumi.alicloud.ecs.SecurityGroup;
  * import com.pulumi.alicloud.ecs.SecurityGroupArgs;
  * import com.pulumi.alicloud.alikafka.Instance;
@@ -58,36 +63,47 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;terraform-example&#34;);
- *         final var defaultNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
- *             .nameRegex(&#34;^default-NODELETING$&#34;)
+ *         final var instanceName = config.get(&#34;instanceName&#34;).orElse(&#34;tf-example&#34;);
+ *         final var defaultZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
+ *             .availableResourceCreation(&#34;VSwitch&#34;)
  *             .build());
  * 
- *         final var defaultSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
- *             .vpcId(defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
+ *         var defaultRandomInteger = new RandomInteger(&#34;defaultRandomInteger&#34;, RandomIntegerArgs.builder()        
+ *             .min(10000)
+ *             .max(99999)
+ *             .build());
+ * 
+ *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
+ *             .cidrBlock(&#34;172.16.0.0/12&#34;)
+ *             .build());
+ * 
+ *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
+ *             .vpcId(defaultNetwork.id())
+ *             .cidrBlock(&#34;172.16.0.0/24&#34;)
+ *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
  *             .build());
  * 
  *         var defaultSecurityGroup = new SecurityGroup(&#34;defaultSecurityGroup&#34;, SecurityGroupArgs.builder()        
- *             .vpcId(defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
+ *             .vpcId(defaultNetwork.id())
  *             .build());
  * 
  *         var defaultInstance = new Instance(&#34;defaultInstance&#34;, InstanceArgs.builder()        
- *             .partitionNum(50)
- *             .diskType(1)
- *             .diskSize(500)
- *             .deployType(5)
- *             .ioMax(20)
- *             .vswitchId(defaultSwitches.applyValue(getSwitchesResult -&gt; getSwitchesResult.ids()[0]))
+ *             .partitionNum(&#34;50&#34;)
+ *             .diskType(&#34;1&#34;)
+ *             .diskSize(&#34;500&#34;)
+ *             .deployType(&#34;5&#34;)
+ *             .ioMax(&#34;20&#34;)
+ *             .vswitchId(defaultSwitch.id())
  *             .securityGroup(defaultSecurityGroup.id())
  *             .build());
  * 
  *         var defaultTopic = new Topic(&#34;defaultTopic&#34;, TopicArgs.builder()        
- *             .remark(&#34;alicloud_alikafka_topic_remark&#34;)
  *             .instanceId(defaultInstance.id())
- *             .topic(name)
+ *             .topic(&#34;example-topic&#34;)
  *             .localTopic(&#34;false&#34;)
  *             .compactTopic(&#34;false&#34;)
- *             .partitionNum(&#34;6&#34;)
+ *             .partitionNum(&#34;12&#34;)
+ *             .remark(&#34;dafault_kafka_topic_remark&#34;)
  *             .build());
  * 
  *     }

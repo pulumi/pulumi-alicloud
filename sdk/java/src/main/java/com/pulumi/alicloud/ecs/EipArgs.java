@@ -144,6 +144,21 @@ public final class EipArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The elastic ip address
+     * 
+     */
+    @Import(name="ipAddress")
+    private @Nullable Output<String> ipAddress;
+
+    /**
+     * @return The elastic ip address
+     * 
+     */
+    public Optional<Output<String>> ipAddress() {
+        return Optional.ofNullable(this.ipAddress);
+    }
+
+    /**
      * The line type of the Elastic IP instance. Default to `BGP`. Other type of the isp need to open a whitelist.
      * 
      */
@@ -304,6 +319,7 @@ public final class EipArgs extends com.pulumi.resources.ResourceArgs {
         this.highDefinitionMonitorLogStatus = $.highDefinitionMonitorLogStatus;
         this.instanceChargeType = $.instanceChargeType;
         this.internetChargeType = $.internetChargeType;
+        this.ipAddress = $.ipAddress;
         this.isp = $.isp;
         this.logProject = $.logProject;
         this.logStore = $.logStore;
@@ -500,6 +516,27 @@ public final class EipArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder internetChargeType(String internetChargeType) {
             return internetChargeType(Output.of(internetChargeType));
+        }
+
+        /**
+         * @param ipAddress The elastic ip address
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipAddress(@Nullable Output<String> ipAddress) {
+            $.ipAddress = ipAddress;
+            return this;
+        }
+
+        /**
+         * @param ipAddress The elastic ip address
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipAddress(String ipAddress) {
+            return ipAddress(Output.of(ipAddress));
         }
 
         /**

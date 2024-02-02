@@ -63,14 +63,14 @@ public final class SaslUserState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Operation password. It may consist of letters, digits, or underlines, with a length of 1 to 64 characters. You have to specify one of `password` and `kms_encrypted_password` fields.
+     * The password of the SASL user. It may consist of letters, digits, or underlines, with a length of 1 to 64 characters. You have to specify one of `password` and `kms_encrypted_password` fields.
      * 
      */
     @Import(name="password")
     private @Nullable Output<String> password;
 
     /**
-     * @return Operation password. It may consist of letters, digits, or underlines, with a length of 1 to 64 characters. You have to specify one of `password` and `kms_encrypted_password` fields.
+     * @return The password of the SASL user. It may consist of letters, digits, or underlines, with a length of 1 to 64 characters. You have to specify one of `password` and `kms_encrypted_password` fields.
      * 
      */
     public Optional<Output<String>> password() {
@@ -78,14 +78,14 @@ public final class SaslUserState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The authentication mechanism. Valid values: `plain`, `scram`. Default value: `plain`.
+     * The authentication mechanism. Default value: `plain`. Valid values: `plain`, `scram`.
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return The authentication mechanism. Valid values: `plain`, `scram`. Default value: `plain`.
+     * @return The authentication mechanism. Default value: `plain`. Valid values: `plain`, `scram`.
      * 
      */
     public Optional<Output<String>> type() {
@@ -93,14 +93,14 @@ public final class SaslUserState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Username for the sasl user. The length should between 1 to 64 characters. The characters can only contain &#39;a&#39;-&#39;z&#39;, &#39;A&#39;-&#39;Z&#39;, &#39;0&#39;-&#39;9&#39;, &#39;_&#39; and &#39;-&#39;.
+     * The name of the SASL user. The length should between `1` to `64` characters. The characters can only contain `a`-`z`, `A`-`Z`, `0`-`9`, `_` and `-`.
      * 
      */
     @Import(name="username")
     private @Nullable Output<String> username;
 
     /**
-     * @return Username for the sasl user. The length should between 1 to 64 characters. The characters can only contain &#39;a&#39;-&#39;z&#39;, &#39;A&#39;-&#39;Z&#39;, &#39;0&#39;-&#39;9&#39;, &#39;_&#39; and &#39;-&#39;.
+     * @return The name of the SASL user. The length should between `1` to `64` characters. The characters can only contain `a`-`z`, `A`-`Z`, `0`-`9`, `_` and `-`.
      * 
      */
     public Optional<Output<String>> username() {
@@ -200,7 +200,7 @@ public final class SaslUserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param password Operation password. It may consist of letters, digits, or underlines, with a length of 1 to 64 characters. You have to specify one of `password` and `kms_encrypted_password` fields.
+         * @param password The password of the SASL user. It may consist of letters, digits, or underlines, with a length of 1 to 64 characters. You have to specify one of `password` and `kms_encrypted_password` fields.
          * 
          * @return builder
          * 
@@ -211,7 +211,7 @@ public final class SaslUserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param password Operation password. It may consist of letters, digits, or underlines, with a length of 1 to 64 characters. You have to specify one of `password` and `kms_encrypted_password` fields.
+         * @param password The password of the SASL user. It may consist of letters, digits, or underlines, with a length of 1 to 64 characters. You have to specify one of `password` and `kms_encrypted_password` fields.
          * 
          * @return builder
          * 
@@ -221,7 +221,7 @@ public final class SaslUserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type The authentication mechanism. Valid values: `plain`, `scram`. Default value: `plain`.
+         * @param type The authentication mechanism. Default value: `plain`. Valid values: `plain`, `scram`.
          * 
          * @return builder
          * 
@@ -232,7 +232,7 @@ public final class SaslUserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type The authentication mechanism. Valid values: `plain`, `scram`. Default value: `plain`.
+         * @param type The authentication mechanism. Default value: `plain`. Valid values: `plain`, `scram`.
          * 
          * @return builder
          * 
@@ -242,7 +242,7 @@ public final class SaslUserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param username Username for the sasl user. The length should between 1 to 64 characters. The characters can only contain &#39;a&#39;-&#39;z&#39;, &#39;A&#39;-&#39;Z&#39;, &#39;0&#39;-&#39;9&#39;, &#39;_&#39; and &#39;-&#39;.
+         * @param username The name of the SASL user. The length should between `1` to `64` characters. The characters can only contain `a`-`z`, `A`-`Z`, `0`-`9`, `_` and `-`.
          * 
          * @return builder
          * 
@@ -253,7 +253,7 @@ public final class SaslUserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param username Username for the sasl user. The length should between 1 to 64 characters. The characters can only contain &#39;a&#39;-&#39;z&#39;, &#39;A&#39;-&#39;Z&#39;, &#39;0&#39;-&#39;9&#39;, &#39;_&#39; and &#39;-&#39;.
+         * @param username The name of the SASL user. The length should between `1` to `64` characters. The characters can only contain `a`-`z`, `A`-`Z`, `0`-`9`, `_` and `-`.
          * 
          * @return builder
          * 

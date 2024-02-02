@@ -13,34 +13,34 @@ import javax.annotation.Nullable;
 @CustomType
 public final class InstanceDataDisk {
     /**
-     * @return Type of dataDisk
-     * - cloud_efficiency：High-efficiency cloud disk
-     * - cloud_ssd：Full flash cloud disk
-     * - local_hdd：Local hdd disk
-     * - local_ssd：Local disk ssd.
+     * @return Data disk type. Optional values:
+     * - cloud_efficiency: Ultra cloud disk
+     * - cloud_ssd: Full Flash cloud disk
+     * - local_hdd: local hdd disk
+     * - local_ssd: local disk ssd.
      * 
      */
     private @Nullable String category;
     /**
-     * @return Data disk size, cloud_efficiency is 20-32000,cloud_ssd/local_hdd/local_ssd is 20-25000, unit: GB.
+     * @return Data disk size, unit: GB.
      * 
      */
     private @Nullable Integer size;
 
     private InstanceDataDisk() {}
     /**
-     * @return Type of dataDisk
-     * - cloud_efficiency：High-efficiency cloud disk
-     * - cloud_ssd：Full flash cloud disk
-     * - local_hdd：Local hdd disk
-     * - local_ssd：Local disk ssd.
+     * @return Data disk type. Optional values:
+     * - cloud_efficiency: Ultra cloud disk
+     * - cloud_ssd: Full Flash cloud disk
+     * - local_hdd: local hdd disk
+     * - local_ssd: local disk ssd.
      * 
      */
     public Optional<String> category() {
         return Optional.ofNullable(this.category);
     }
     /**
-     * @return Data disk size, cloud_efficiency is 20-32000,cloud_ssd/local_hdd/local_ssd is 20-25000, unit: GB.
+     * @return Data disk size, unit: GB.
      * 
      */
     public Optional<Integer> size() {

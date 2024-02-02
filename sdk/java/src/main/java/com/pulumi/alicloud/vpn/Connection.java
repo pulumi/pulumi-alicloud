@@ -10,232 +10,185 @@ import com.pulumi.alicloud.vpn.outputs.ConnectionBgpConfig;
 import com.pulumi.alicloud.vpn.outputs.ConnectionHealthCheckConfig;
 import com.pulumi.alicloud.vpn.outputs.ConnectionIkeConfig;
 import com.pulumi.alicloud.vpn.outputs.ConnectionIpsecConfig;
+import com.pulumi.alicloud.vpn.outputs.ConnectionTunnelOptionsSpecification;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.Boolean;
+import java.lang.Integer;
+import java.lang.Object;
 import java.lang.String;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * ## Example Usage
- * 
- * Basic Usage
- * ```java
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.alicloud.AlicloudFunctions;
- * import com.pulumi.alicloud.inputs.GetZonesArgs;
- * import com.pulumi.alicloud.vpc.VpcFunctions;
- * import com.pulumi.alicloud.vpc.inputs.GetNetworksArgs;
- * import com.pulumi.alicloud.vpc.inputs.GetSwitchesArgs;
- * import com.pulumi.alicloud.vpn.Gateway;
- * import com.pulumi.alicloud.vpn.GatewayArgs;
- * import com.pulumi.alicloud.vpn.CustomerGateway;
- * import com.pulumi.alicloud.vpn.CustomerGatewayArgs;
- * import com.pulumi.alicloud.vpn.Connection;
- * import com.pulumi.alicloud.vpn.ConnectionArgs;
- * import com.pulumi.alicloud.vpn.inputs.ConnectionIkeConfigArgs;
- * import com.pulumi.alicloud.vpn.inputs.ConnectionIpsecConfigArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
- *         final var defaultZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
- *             .availableResourceCreation(&#34;VSwitch&#34;)
- *             .build());
- * 
- *         final var defaultNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
- *             .nameRegex(&#34;^default-NODELETING$&#34;)
- *             .build());
- * 
- *         final var defaultSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
- *             .vpcId(defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
- *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.ids()[0]))
- *             .build());
- * 
- *         var fooGateway = new Gateway(&#34;fooGateway&#34;, GatewayArgs.builder()        
- *             .vpcId(defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
- *             .bandwidth(&#34;10&#34;)
- *             .enableSsl(true)
- *             .instanceChargeType(&#34;PrePaid&#34;)
- *             .description(&#34;test_create_description&#34;)
- *             .vswitchId(defaultSwitches.applyValue(getSwitchesResult -&gt; getSwitchesResult.ids()[0]))
- *             .build());
- * 
- *         var fooCustomerGateway = new CustomerGateway(&#34;fooCustomerGateway&#34;, CustomerGatewayArgs.builder()        
- *             .ipAddress(&#34;42.104.22.210&#34;)
- *             .description(name)
- *             .build());
- * 
- *         var fooConnection = new Connection(&#34;fooConnection&#34;, ConnectionArgs.builder()        
- *             .vpnGatewayId(fooGateway.id())
- *             .customerGatewayId(fooCustomerGateway.id())
- *             .localSubnets(            
- *                 &#34;172.16.0.0/24&#34;,
- *                 &#34;172.16.1.0/24&#34;)
- *             .remoteSubnets(            
- *                 &#34;10.0.0.0/24&#34;,
- *                 &#34;10.0.1.0/24&#34;)
- *             .effectImmediately(true)
- *             .ikeConfig(ConnectionIkeConfigArgs.builder()
- *                 .ikeAuthAlg(&#34;md5&#34;)
- *                 .ikeEncAlg(&#34;des&#34;)
- *                 .ikeVersion(&#34;ikev2&#34;)
- *                 .ikeMode(&#34;main&#34;)
- *                 .ikeLifetime(86400)
- *                 .psk(&#34;tf-testvpn2&#34;)
- *                 .ikePfs(&#34;group1&#34;)
- *                 .ikeRemoteId(&#34;testbob2&#34;)
- *                 .ikeLocalId(&#34;testalice2&#34;)
- *                 .build())
- *             .ipsecConfig(ConnectionIpsecConfigArgs.builder()
- *                 .ipsecPfs(&#34;group5&#34;)
- *                 .ipsecEncAlg(&#34;des&#34;)
- *                 .ipsecAuthAlg(&#34;md5&#34;)
- *                 .ipsecLifetime(8640)
- *                 .build())
- *             .build());
- * 
- *     }
- * }
- * ```
- * 
  * ## Import
  * 
  * VPN connection can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:vpn/connection:Connection example vco-abc123456
+ *  $ pulumi import alicloud:vpn/connection:Connection example &lt;id&gt;
  * ```
  * 
  */
 @ResourceType(type="alicloud:vpn/connection:Connection")
 public class Connection extends com.pulumi.resources.CustomResource {
     /**
-     * The configurations of the BGP routing protocol. See `bgp_config` below.
+     * Whether to configure routing automatically. Value:
+     * - **true**: Automatically configure routes.
+     * - **false**: does not automatically configure routes.
+     * 
+     */
+    @Export(name="autoConfigRoute", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> autoConfigRoute;
+
+    /**
+     * @return Whether to configure routing automatically. Value:
+     * - **true**: Automatically configure routes.
+     * - **false**: does not automatically configure routes.
+     * 
+     */
+    public Output<Optional<Boolean>> autoConfigRoute() {
+        return Codegen.optional(this.autoConfigRoute);
+    }
+    /**
+     * vpnBgp configuration. See `bgp_config` below.
      * 
      */
     @Export(name="bgpConfig", refs={ConnectionBgpConfig.class}, tree="[0]")
     private Output<ConnectionBgpConfig> bgpConfig;
 
     /**
-     * @return The configurations of the BGP routing protocol. See `bgp_config` below.
+     * @return vpnBgp configuration. See `bgp_config` below.
      * 
      */
     public Output<ConnectionBgpConfig> bgpConfig() {
         return this.bgpConfig;
     }
     /**
+     * The time when the IPsec-VPN connection was created.
+     * 
+     */
+    @Export(name="createTime", refs={Integer.class}, tree="[0]")
+    private Output<Integer> createTime;
+
+    /**
+     * @return The time when the IPsec-VPN connection was created.
+     * 
+     */
+    public Output<Integer> createTime() {
+        return this.createTime;
+    }
+    /**
      * The ID of the customer gateway.
      * 
      */
     @Export(name="customerGatewayId", refs={String.class}, tree="[0]")
-    private Output<String> customerGatewayId;
+    private Output</* @Nullable */ String> customerGatewayId;
 
     /**
      * @return The ID of the customer gateway.
      * 
      */
-    public Output<String> customerGatewayId() {
-        return this.customerGatewayId;
+    public Output<Optional<String>> customerGatewayId() {
+        return Codegen.optional(this.customerGatewayId);
     }
     /**
-     * Whether to delete a successfully negotiated IPsec tunnel and initiate a negotiation again. Valid value:true,false.
+     * Indicates whether IPsec-VPN negotiations are initiated immediately. Valid values.
      * 
      */
     @Export(name="effectImmediately", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> effectImmediately;
 
     /**
-     * @return Whether to delete a successfully negotiated IPsec tunnel and initiate a negotiation again. Valid value:true,false.
+     * @return Indicates whether IPsec-VPN negotiations are initiated immediately. Valid values.
      * 
      */
     public Output<Optional<Boolean>> effectImmediately() {
         return Codegen.optional(this.effectImmediately);
     }
     /**
-     * Specifies whether to enable the dead peer detection (DPD) feature. Valid values: `true`(default), `false`.
+     * Wether enable Dpd detection.
      * 
      */
     @Export(name="enableDpd", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> enableDpd;
 
     /**
-     * @return Specifies whether to enable the dead peer detection (DPD) feature. Valid values: `true`(default), `false`.
+     * @return Wether enable Dpd detection.
      * 
      */
     public Output<Boolean> enableDpd() {
         return this.enableDpd;
     }
     /**
-     * Specifies whether to enable NAT traversal. Valid values: `true`(default), `false`.
+     * enable nat traversal.
      * 
      */
     @Export(name="enableNatTraversal", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> enableNatTraversal;
 
     /**
-     * @return Specifies whether to enable NAT traversal. Valid values: `true`(default), `false`.
+     * @return enable nat traversal.
      * 
      */
     public Output<Boolean> enableNatTraversal() {
         return this.enableNatTraversal;
     }
     /**
-     * The health check configurations. See `health_check_config` below.
+     * Enable tunnel bgp.
+     * 
+     */
+    @Export(name="enableTunnelsBgp", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> enableTunnelsBgp;
+
+    /**
+     * @return Enable tunnel bgp.
+     * 
+     */
+    public Output<Boolean> enableTunnelsBgp() {
+        return this.enableTunnelsBgp;
+    }
+    /**
+     * Health Check information. See `health_check_config` below.
      * 
      */
     @Export(name="healthCheckConfig", refs={ConnectionHealthCheckConfig.class}, tree="[0]")
     private Output<ConnectionHealthCheckConfig> healthCheckConfig;
 
     /**
-     * @return The health check configurations. See `health_check_config` below.
+     * @return Health Check information. See `health_check_config` below.
      * 
      */
     public Output<ConnectionHealthCheckConfig> healthCheckConfig() {
         return this.healthCheckConfig;
     }
     /**
-     * The configurations of phase-one negotiation. See `ike_config` below.
+     * The configuration of Phase 1 negotiations. See `ike_config` below.
      * 
      */
     @Export(name="ikeConfig", refs={ConnectionIkeConfig.class}, tree="[0]")
     private Output<ConnectionIkeConfig> ikeConfig;
 
     /**
-     * @return The configurations of phase-one negotiation. See `ike_config` below.
+     * @return The configuration of Phase 1 negotiations. See `ike_config` below.
      * 
      */
     public Output<ConnectionIkeConfig> ikeConfig() {
         return this.ikeConfig;
     }
     /**
-     * The configurations of phase-two negotiation. See `ipsec_config` below.
+     * IPsec configuration. See `ipsec_config` below.
      * 
      */
     @Export(name="ipsecConfig", refs={ConnectionIpsecConfig.class}, tree="[0]")
     private Output<ConnectionIpsecConfig> ipsecConfig;
 
     /**
-     * @return The configurations of phase-two negotiation. See `ipsec_config` below.
+     * @return IPsec configuration. See `ipsec_config` below.
      * 
      */
     public Output<ConnectionIpsecConfig> ipsecConfig() {
@@ -256,18 +209,40 @@ public class Connection extends com.pulumi.resources.CustomResource {
         return this.localSubnets;
     }
     /**
-     * The name of the IPsec connection.
+     * . Field &#39;name&#39; has been deprecated from provider version 1.216.0. New field &#39;vpn_connection_name&#39; instead.
+     * 
+     * @deprecated
+     * Field &#39;name&#39; has been deprecated since provider version 1.216.0. New field &#39;vpn_connection_name&#39; instead.
      * 
      */
+    @Deprecated /* Field 'name' has been deprecated since provider version 1.216.0. New field 'vpn_connection_name' instead. */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return The name of the IPsec connection.
+     * @return . Field &#39;name&#39; has been deprecated from provider version 1.216.0. New field &#39;vpn_connection_name&#39; instead.
      * 
      */
     public Output<String> name() {
         return this.name;
+    }
+    /**
+     * The network type of the IPsec connection. Value:
+     * - **public**: public network, indicating that the IPsec connection establishes an encrypted communication channel through the public network.
+     * - **private**: private network, indicating that the IPsec connection establishes an encrypted communication channel through the private network.
+     * 
+     */
+    @Export(name="networkType", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> networkType;
+
+    /**
+     * @return The network type of the IPsec connection. Value:
+     * - **public**: public network, indicating that the IPsec connection establishes an encrypted communication channel through the public network.
+     * - **private**: private network, indicating that the IPsec connection establishes an encrypted communication channel through the private network.
+     * 
+     */
+    public Output<Optional<String>> networkType() {
+        return Codegen.optional(this.networkType);
     }
     /**
      * The CIDR block of the local data center. This parameter is used for phase-two negotiation.
@@ -284,21 +259,79 @@ public class Connection extends com.pulumi.resources.CustomResource {
         return this.remoteSubnets;
     }
     /**
-     * The status of VPN connection.
+     * The ID of the resource group.
+     * 
+     */
+    @Export(name="resourceGroupId", refs={String.class}, tree="[0]")
+    private Output<String> resourceGroupId;
+
+    /**
+     * @return The ID of the resource group.
+     * 
+     */
+    public Output<String> resourceGroupId() {
+        return this.resourceGroupId;
+    }
+    /**
+     * The negotiation status of Tunnel.
      * 
      */
     @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
-     * @return The status of VPN connection.
+     * @return The negotiation status of Tunnel.
      * 
      */
     public Output<String> status() {
         return this.status;
     }
     /**
+     * Tags.
+     * 
+     */
+    @Export(name="tags", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
+    private Output</* @Nullable */ Map<String,Object>> tags;
+
+    /**
+     * @return Tags.
+     * 
+     */
+    public Output<Optional<Map<String,Object>>> tags() {
+        return Codegen.optional(this.tags);
+    }
+    /**
+     * The tunnel options of IPsec. See `tunnel_options_specification` below.
+     * 
+     */
+    @Export(name="tunnelOptionsSpecifications", refs={List.class,ConnectionTunnelOptionsSpecification.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<ConnectionTunnelOptionsSpecification>> tunnelOptionsSpecifications;
+
+    /**
+     * @return The tunnel options of IPsec. See `tunnel_options_specification` below.
+     * 
+     */
+    public Output<Optional<List<ConnectionTunnelOptionsSpecification>>> tunnelOptionsSpecifications() {
+        return Codegen.optional(this.tunnelOptionsSpecifications);
+    }
+    /**
+     * The name of the IPsec-VPN connection.
+     * 
+     */
+    @Export(name="vpnConnectionName", refs={String.class}, tree="[0]")
+    private Output<String> vpnConnectionName;
+
+    /**
+     * @return The name of the IPsec-VPN connection.
+     * 
+     */
+    public Output<String> vpnConnectionName() {
+        return this.vpnConnectionName;
+    }
+    /**
      * The ID of the VPN gateway.
+     * 
+     * The following arguments will be discarded. Please use new fields as soon as possible:
      * 
      */
     @Export(name="vpnGatewayId", refs={String.class}, tree="[0]")
@@ -306,6 +339,8 @@ public class Connection extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The ID of the VPN gateway.
+     * 
+     * The following arguments will be discarded. Please use new fields as soon as possible:
      * 
      */
     public Output<String> vpnGatewayId() {

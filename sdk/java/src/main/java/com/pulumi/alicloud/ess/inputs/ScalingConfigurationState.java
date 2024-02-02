@@ -5,6 +5,7 @@ package com.pulumi.alicloud.ess.inputs;
 
 import com.pulumi.alicloud.ess.inputs.ScalingConfigurationDataDiskArgs;
 import com.pulumi.alicloud.ess.inputs.ScalingConfigurationInstancePatternInfoArgs;
+import com.pulumi.alicloud.ess.inputs.ScalingConfigurationInstanceTypeOverrideArgs;
 import com.pulumi.alicloud.ess.inputs.ScalingConfigurationSpotPriceLimitArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
@@ -209,6 +210,21 @@ public final class ScalingConfigurationState extends com.pulumi.resources.Resour
      */
     public Optional<Output<String>> instanceType() {
         return Optional.ofNullable(this.instanceType);
+    }
+
+    /**
+     * specify the weight of instance type.  See `instance_type_override` below for details.
+     * 
+     */
+    @Import(name="instanceTypeOverrides")
+    private @Nullable Output<List<ScalingConfigurationInstanceTypeOverrideArgs>> instanceTypeOverrides;
+
+    /**
+     * @return specify the weight of instance type.  See `instance_type_override` below for details.
+     * 
+     */
+    public Optional<Output<List<ScalingConfigurationInstanceTypeOverrideArgs>>> instanceTypeOverrides() {
+        return Optional.ofNullable(this.instanceTypeOverrides);
     }
 
     /**
@@ -716,6 +732,7 @@ public final class ScalingConfigurationState extends com.pulumi.resources.Resour
         this.instanceName = $.instanceName;
         this.instancePatternInfos = $.instancePatternInfos;
         this.instanceType = $.instanceType;
+        this.instanceTypeOverrides = $.instanceTypeOverrides;
         this.instanceTypes = $.instanceTypes;
         this.internetChargeType = $.internetChargeType;
         this.internetMaxBandwidthIn = $.internetMaxBandwidthIn;
@@ -1058,6 +1075,37 @@ public final class ScalingConfigurationState extends com.pulumi.resources.Resour
          */
         public Builder instanceType(String instanceType) {
             return instanceType(Output.of(instanceType));
+        }
+
+        /**
+         * @param instanceTypeOverrides specify the weight of instance type.  See `instance_type_override` below for details.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder instanceTypeOverrides(@Nullable Output<List<ScalingConfigurationInstanceTypeOverrideArgs>> instanceTypeOverrides) {
+            $.instanceTypeOverrides = instanceTypeOverrides;
+            return this;
+        }
+
+        /**
+         * @param instanceTypeOverrides specify the weight of instance type.  See `instance_type_override` below for details.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder instanceTypeOverrides(List<ScalingConfigurationInstanceTypeOverrideArgs> instanceTypeOverrides) {
+            return instanceTypeOverrides(Output.of(instanceTypeOverrides));
+        }
+
+        /**
+         * @param instanceTypeOverrides specify the weight of instance type.  See `instance_type_override` below for details.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder instanceTypeOverrides(ScalingConfigurationInstanceTypeOverrideArgs... instanceTypeOverrides) {
+            return instanceTypeOverrides(List.of(instanceTypeOverrides));
         }
 
         /**

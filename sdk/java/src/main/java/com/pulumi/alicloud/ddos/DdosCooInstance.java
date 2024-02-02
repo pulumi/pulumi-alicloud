@@ -80,28 +80,28 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:ddos/ddosCooInstance:DdosCooInstance")
 public class DdosCooInstance extends com.pulumi.resources.CustomResource {
     /**
-     * The IP version of the IP address. Default value: `Ipv4`. Valid values: `Ipv4`, `Ipv6`.
+     * The IP version of the IP address. Default value: `Ipv4`. Valid values: `Ipv4`, `Ipv6`. **NOTE:** `address_type` is valid only when `product_type` is set to `ddoscoo` or `ddoscoo_intl`.
      * 
      */
     @Export(name="addressType", refs={String.class}, tree="[0]")
     private Output<String> addressType;
 
     /**
-     * @return The IP version of the IP address. Default value: `Ipv4`. Valid values: `Ipv4`, `Ipv6`.
+     * @return The IP version of the IP address. Default value: `Ipv4`. Valid values: `Ipv4`, `Ipv6`. **NOTE:** `address_type` is valid only when `product_type` is set to `ddoscoo` or `ddoscoo_intl`.
      * 
      */
     public Output<String> addressType() {
         return this.addressType;
     }
     /**
-     * Elastic defend bandwidth of the instance. This value must be larger than the base defend bandwidth. Valid values: 30, 60, 100, 300, 400, 500, 600. The unit is Gbps. Only support upgrade.
+     * Elastic defend bandwidth of the instance. This value must be larger than the base defend bandwidth. Valid values: `30`, `60`, `100`, `300`, `400`, `500`, `600`. The unit is Gbps. Only support upgrade. **NOTE:** `bandwidth` is valid only when `product_type` is set to `ddoscoo` or `ddoscoo_intl`.
      * 
      */
     @Export(name="bandwidth", refs={String.class}, tree="[0]")
     private Output<String> bandwidth;
 
     /**
-     * @return Elastic defend bandwidth of the instance. This value must be larger than the base defend bandwidth. Valid values: 30, 60, 100, 300, 400, 500, 600. The unit is Gbps. Only support upgrade.
+     * @return Elastic defend bandwidth of the instance. This value must be larger than the base defend bandwidth. Valid values: `30`, `60`, `100`, `300`, `400`, `500`, `600`. The unit is Gbps. Only support upgrade. **NOTE:** `bandwidth` is valid only when `product_type` is set to `ddoscoo` or `ddoscoo_intl`.
      * 
      */
     public Output<String> bandwidth() {
@@ -122,14 +122,14 @@ public class DdosCooInstance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.bandwidthMode);
     }
     /**
-     * Base defend bandwidth of the instance. Valid values: `30`, `60`, `100`, `300`, `400`, `500`, `600`. The unit is Gbps. Only support upgrade.
+     * Base defend bandwidth of the instance. Valid values: `30`, `60`, `100`, `300`, `400`, `500`, `600`. The unit is Gbps. Only support upgrade. **NOTE:** `base_bandwidth` is valid only when `product_type` is set to `ddoscoo` or `ddoscoo_intl`.
      * 
      */
     @Export(name="baseBandwidth", refs={String.class}, tree="[0]")
     private Output<String> baseBandwidth;
 
     /**
-     * @return Base defend bandwidth of the instance. Valid values: `30`, `60`, `100`, `300`, `400`, `500`, `600`. The unit is Gbps. Only support upgrade.
+     * @return Base defend bandwidth of the instance. Valid values: `30`, `60`, `100`, `300`, `400`, `500`, `600`. The unit is Gbps. Only support upgrade. **NOTE:** `base_bandwidth` is valid only when `product_type` is set to `ddoscoo` or `ddoscoo_intl`.
      * 
      */
     public Output<String> baseBandwidth() {
@@ -192,42 +192,42 @@ public class DdosCooInstance extends com.pulumi.resources.CustomResource {
         return this.ip;
     }
     /**
-     * Name of the instance. This name can have a string of 1 to 63 characters.
+     * Name of the instance. This name can have a string of `1` to `64` characters.
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return Name of the instance. This name can have a string of 1 to 63 characters.
+     * @return Name of the instance. This name can have a string of `1` to `64` characters.
      * 
      */
     public Output<String> name() {
         return this.name;
     }
     /**
-     * The clean bandwidth provided by the instance.
+     * The clean bandwidth provided by the instance. **NOTE:** `normal_bandwidth` is valid only when `product_type` is set to `ddosDip`.
      * 
      */
     @Export(name="normalBandwidth", refs={String.class}, tree="[0]")
     private Output<String> normalBandwidth;
 
     /**
-     * @return The clean bandwidth provided by the instance.
+     * @return The clean bandwidth provided by the instance. **NOTE:** `normal_bandwidth` is valid only when `product_type` is set to `ddosDip`.
      * 
      */
     public Output<String> normalBandwidth() {
         return this.normalBandwidth;
     }
     /**
-     * The clean QPS provided by the instance.
+     * The clean QPS provided by the instance. **NOTE:** `normal_qps` is valid only when `product_type` is set to `ddosDip`.
      * 
      */
     @Export(name="normalQps", refs={String.class}, tree="[0]")
     private Output<String> normalQps;
 
     /**
-     * @return The clean QPS provided by the instance.
+     * @return The clean QPS provided by the instance. **NOTE:** `normal_qps` is valid only when `product_type` is set to `ddosDip`.
      * 
      */
     public Output<String> normalQps() {
@@ -290,14 +290,14 @@ public class DdosCooInstance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.productType);
     }
     /**
-     * Business bandwidth of the instance. At leaset 100. Increased 100 per step, such as 100, 200, 300. The unit is Mbps. Only support upgrade.
+     * Business bandwidth of the instance. At leaset 100. Increased 100 per step, such as 100, 200, 300. The unit is Mbps. Only support upgrade. **NOTE:** `service_bandwidth` is valid only when `product_type` is set to `ddoscoo` or `ddoscoo_intl`.
      * 
      */
     @Export(name="serviceBandwidth", refs={String.class}, tree="[0]")
     private Output<String> serviceBandwidth;
 
     /**
-     * @return Business bandwidth of the instance. At leaset 100. Increased 100 per step, such as 100, 200, 300. The unit is Mbps. Only support upgrade.
+     * @return Business bandwidth of the instance. At leaset 100. Increased 100 per step, such as 100, 200, 300. The unit is Mbps. Only support upgrade. **NOTE:** `service_bandwidth` is valid only when `product_type` is set to `ddoscoo` or `ddoscoo_intl`.
      * 
      */
     public Output<String> serviceBandwidth() {

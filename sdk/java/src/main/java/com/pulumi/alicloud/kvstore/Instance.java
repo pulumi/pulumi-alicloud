@@ -177,14 +177,14 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.capacity;
     }
     /**
-     * The configuration of the KVStore DBInstance. Available parameters can refer to the latest docs [Instance configurations table](https://www.alibabacloud.com/help/doc-detail/61209.htm) .
+     * The configuration of the KVStore DBInstance. Available parameters can refer to the latest docs [Instance configurations table](https://www.alibabacloud.com/help/en/redis/user-guide/supported-parameters).
      * 
      */
     @Export(name="config", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output<Map<String,Object>> config;
 
     /**
-     * @return The configuration of the KVStore DBInstance. Available parameters can refer to the latest docs [Instance configurations table](https://www.alibabacloud.com/help/doc-detail/61209.htm) .
+     * @return The configuration of the KVStore DBInstance. Available parameters can refer to the latest docs [Instance configurations table](https://www.alibabacloud.com/help/en/redis/user-guide/supported-parameters).
      * 
      */
     public Output<Map<String,Object>> config() {
@@ -207,14 +207,6 @@ public class Instance extends com.pulumi.resources.CustomResource {
     /**
      * Indicates whether the address is a private endpoint.
      * 
-     * &gt; **NOTE:** The start time to the end time must be 1 hour. For example, the MaintainStartTime is 01:00Z, then the MaintainEndTime must be 02:00Z.
-     * 
-     * &gt; **NOTE:** You must specify at least one of the `capacity` and `instance_class` parameters when you call create instance operation.
-     * 
-     * &gt; **NOTE:** The `private_ip` must be in the Classless Inter-Domain Routing (CIDR) block of the VSwitch to which the instance belongs.
-     * 
-     * &gt; **NOTE:** If you specify the `srcdb_instance_id` parameter, you must specify the `backup_id` or `restore_time` parameter.
-     * 
      * @deprecated
      * Field &#39;connection_string&#39; has been deprecated from version 1.101.0. Please use resource &#39;alicloud_kvstore_connection&#39; instead.
      * 
@@ -225,14 +217,6 @@ public class Instance extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Indicates whether the address is a private endpoint.
-     * 
-     * &gt; **NOTE:** The start time to the end time must be 1 hour. For example, the MaintainStartTime is 01:00Z, then the MaintainEndTime must be 02:00Z.
-     * 
-     * &gt; **NOTE:** You must specify at least one of the `capacity` and `instance_class` parameters when you call create instance operation.
-     * 
-     * &gt; **NOTE:** The `private_ip` must be in the Classless Inter-Domain Routing (CIDR) block of the VSwitch to which the instance belongs.
-     * 
-     * &gt; **NOTE:** If you specify the `srcdb_instance_id` parameter, you must specify the `backup_id` or `restore_time` parameter.
      * 
      */
     public Output<String> connectionString() {
@@ -257,14 +241,14 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.connectionStringPrefix);
     }
     /**
-     * The coupon code. Default value: `youhuiquan_promotion_option_id_for_blank`.
+     * The coupon code.
      * 
      */
     @Export(name="couponNo", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> couponNo;
 
     /**
-     * @return The coupon code. Default value: `youhuiquan_promotion_option_id_for_blank`.
+     * @return The coupon code.
      * 
      */
     public Output<Optional<String>> couponNo() {
@@ -313,16 +297,14 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.dryRun);
     }
     /**
-     * The time when the database is switched after the instance is migrated,
-     * or when the major version is upgraded, or when the instance class is upgraded. Valid values:
+     * The time when the database is switched after the instance is migrated, or when the major version is upgraded, or when the instance class is upgraded. Valid values:
      * 
      */
     @Export(name="effectiveTime", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> effectiveTime;
 
     /**
-     * @return The time when the database is switched after the instance is migrated,
-     * or when the major version is upgraded, or when the instance class is upgraded. Valid values:
+     * @return The time when the database is switched after the instance is migrated, or when the major version is upgraded, or when the instance class is upgraded. Valid values:
      * 
      */
     public Output<Optional<String>> effectiveTime() {
@@ -597,20 +579,6 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.maintainStartTime;
     }
     /**
-     * The method of modifying the whitelist. Valid values: `0`, `1` and `2`. Default value: `0`. `0` means overwrites the original whitelist. `1` means adds the IP addresses to the whitelist. `2` means deletes the IP addresses from the whitelist.
-     * 
-     */
-    @Export(name="modifyMode", refs={Integer.class}, tree="[0]")
-    private Output</* @Nullable */ Integer> modifyMode;
-
-    /**
-     * @return The method of modifying the whitelist. Valid values: `0`, `1` and `2`. Default value: `0`. `0` means overwrites the original whitelist. `1` means adds the IP addresses to the whitelist. `2` means deletes the IP addresses from the whitelist.
-     * 
-     */
-    public Output<Optional<Integer>> modifyMode() {
-        return Codegen.optional(this.modifyMode);
-    }
-    /**
      * &#34;Field `node_type` has been deprecated from version 1.120.1&#34;. This parameter is determined by the `instance_class`.
      * 
      * @deprecated
@@ -831,14 +799,14 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.secondaryZoneId);
     }
     /**
-     * The ID of security groups.
+     * The ID of security groups. Separate multiple security group IDs with commas (,), such as `sg-***,sg-***,sg-***`.
      * 
      */
     @Export(name="securityGroupId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> securityGroupId;
 
     /**
-     * @return The ID of security groups.
+     * @return The ID of security groups. Separate multiple security group IDs with commas (,), such as `sg-***,sg-***,sg-***`.
      * 
      */
     public Output<Optional<String>> securityGroupId() {
@@ -887,14 +855,14 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.securityIps;
     }
     /**
-     * The number of data shards. This parameter is available only if you create a cluster instance that uses cloud disks. You can use this parameter to specify a custom number of data shards.
+     * The number of data shards. This parameter is available only if you create a cluster instance that uses cloud disks. You can use this parameter to specify a custom number of data shards. **NOTE:** From version 1.216.0, `shard_count` can be modified.
      * 
      */
     @Export(name="shardCount", refs={Integer.class}, tree="[0]")
     private Output<Integer> shardCount;
 
     /**
-     * @return The number of data shards. This parameter is available only if you create a cluster instance that uses cloud disks. You can use this parameter to specify a custom number of data shards.
+     * @return The number of data shards. This parameter is available only if you create a cluster instance that uses cloud disks. You can use this parameter to specify a custom number of data shards. **NOTE:** From version 1.216.0, `shard_count` can be modified.
      * 
      */
     public Output<Integer> shardCount() {
@@ -960,7 +928,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
     }
     /**
      * Specifies whether to enable TDE. Valid values: `Enabled`.
-     * **NOTE:**: TDE cannot be disabled after it is enabled. Before you enable it, evaluate whether this feature affects
+     * **NOTE:**: TDE cannot be disabled after it is enabled. Before you enable it, evaluate whether this feature affects.
      * your business. For more information, see [Enable TDE](https://www.alibabacloud.com/help/en/redis/user-guide/enable-tde).
      * 
      */
@@ -969,7 +937,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Specifies whether to enable TDE. Valid values: `Enabled`.
-     * **NOTE:**: TDE cannot be disabled after it is enabled. Before you enable it, evaluate whether this feature affects
+     * **NOTE:**: TDE cannot be disabled after it is enabled. Before you enable it, evaluate whether this feature affects.
      * your business. For more information, see [Enable TDE](https://www.alibabacloud.com/help/en/redis/user-guide/enable-tde).
      * 
      */

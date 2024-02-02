@@ -36,40 +36,63 @@ public final class GatewayArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Specifies whether to automatically advertise BGP routes to the virtual private cloud (VPC). Valid values:
+     * Whether to automatically propagate the BGP route to the VPC. Value:  true: Propagate automatically.  false: does not propagate automatically.
      * 
      */
     @Import(name="autoPropagate")
     private @Nullable Output<Boolean> autoPropagate;
 
     /**
-     * @return Specifies whether to automatically advertise BGP routes to the virtual private cloud (VPC). Valid values:
+     * @return Whether to automatically propagate the BGP route to the VPC. Value:  true: Propagate automatically.  false: does not propagate automatically.
      * 
      */
     public Optional<Output<Boolean>> autoPropagate() {
         return Optional.ofNullable(this.autoPropagate);
     }
 
+    /**
+     * The Bandwidth specification of the VPN gateway. Unit: Mbps.  If you want to create a public VPN gateway, the value is 5, 10, 20, 50, 100, 200, 500, or 1000. If you want to create a private VPN gateway, the value is 200 or 1000.
+     * 
+     */
     @Import(name="bandwidth", required=true)
     private Output<Integer> bandwidth;
 
+    /**
+     * @return The Bandwidth specification of the VPN gateway. Unit: Mbps.  If you want to create a public VPN gateway, the value is 5, 10, 20, 50, 100, 200, 500, or 1000. If you want to create a private VPN gateway, the value is 200 or 1000.
+     * 
+     */
     public Output<Integer> bandwidth() {
         return this.bandwidth;
     }
 
     /**
-     * The description of the VPN instance.
+     * The description of the VPN gateway.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return The description of the VPN instance.
+     * @return The description of the VPN gateway.
      * 
      */
     public Optional<Output<String>> description() {
         return Optional.ofNullable(this.description);
+    }
+
+    /**
+     * The ID of the backup VSwitch to which the VPN gateway is attached.
+     * 
+     */
+    @Import(name="disasterRecoveryVswitchId")
+    private @Nullable Output<String> disasterRecoveryVswitchId;
+
+    /**
+     * @return The ID of the backup VSwitch to which the VPN gateway is attached.
+     * 
+     */
+    public Optional<Output<String>> disasterRecoveryVswitchId() {
+        return Optional.ofNullable(this.disasterRecoveryVswitchId);
     }
 
     /**
@@ -90,6 +113,8 @@ public final class GatewayArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * Enable or Disable SSL VPN.  At least one type of VPN should be enabled.
      * 
+     * The following arguments will be discarded. Please use new fields as soon as possible:
+     * 
      */
     @Import(name="enableSsl")
     private @Nullable Output<Boolean> enableSsl;
@@ -97,64 +122,87 @@ public final class GatewayArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * @return Enable or Disable SSL VPN.  At least one type of VPN should be enabled.
      * 
+     * The following arguments will be discarded. Please use new fields as soon as possible:
+     * 
      */
     public Optional<Output<Boolean>> enableSsl() {
         return Optional.ofNullable(this.enableSsl);
     }
 
     /**
-     * The charge type for instance. If it is an international site account, the valid value is PostPaid, otherwise PrePaid.
-     * Default to PostPaid.
+     * . Field &#39;instance_charge_type&#39; has been deprecated from provider version 1.216.0. New field &#39;payment_type&#39; instead.
+     * 
+     * @deprecated
+     * Field &#39;instance_charge_type&#39; has been deprecated since provider version 1.215.0. New field &#39;payment_type&#39; instead.
      * 
      */
+    @Deprecated /* Field 'instance_charge_type' has been deprecated since provider version 1.215.0. New field 'payment_type' instead. */
     @Import(name="instanceChargeType")
     private @Nullable Output<String> instanceChargeType;
 
     /**
-     * @return The charge type for instance. If it is an international site account, the valid value is PostPaid, otherwise PrePaid.
-     * Default to PostPaid.
+     * @return . Field &#39;instance_charge_type&#39; has been deprecated from provider version 1.216.0. New field &#39;payment_type&#39; instead.
+     * 
+     * @deprecated
+     * Field &#39;instance_charge_type&#39; has been deprecated since provider version 1.215.0. New field &#39;payment_type&#39; instead.
      * 
      */
+    @Deprecated /* Field 'instance_charge_type' has been deprecated since provider version 1.215.0. New field 'payment_type' instead. */
     public Optional<Output<String>> instanceChargeType() {
         return Optional.ofNullable(this.instanceChargeType);
     }
 
     /**
-     * The name of the VPN. Defaults to null.
+     * . Field &#39;name&#39; has been deprecated from provider version 1.216.0. New field &#39;vpn_gateway_name&#39; instead.
+     * 
+     * @deprecated
+     * Field &#39;name&#39; has been deprecated since provider version 1.215.0. New field &#39;vpn_gateway_name&#39; instead.
      * 
      */
+    @Deprecated /* Field 'name' has been deprecated since provider version 1.215.0. New field 'vpn_gateway_name' instead. */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The name of the VPN. Defaults to null.
+     * @return . Field &#39;name&#39; has been deprecated from provider version 1.216.0. New field &#39;vpn_gateway_name&#39; instead.
+     * 
+     * @deprecated
+     * Field &#39;name&#39; has been deprecated since provider version 1.215.0. New field &#39;vpn_gateway_name&#39; instead.
      * 
      */
+    @Deprecated /* Field 'name' has been deprecated since provider version 1.215.0. New field 'vpn_gateway_name' instead. */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
     }
 
     /**
-     * The network type of the VPN gateway. Value:
-     * - public (default): Public VPN gateway.
-     * - private: Private VPN gateway.
-     * 
-     * &gt; **NOTE:** Private VPN gateway can only be purchased by white list users, and the bandwidth only supports 200M or 1000M; In addition, SSL is not supported.
+     * The network type of the VPN gateway. Value:  public (default): public VPN gateway. private: private network VPN gateway.
      * 
      */
     @Import(name="networkType")
     private @Nullable Output<String> networkType;
 
     /**
-     * @return The network type of the VPN gateway. Value:
-     * - public (default): Public VPN gateway.
-     * - private: Private VPN gateway.
-     * 
-     * &gt; **NOTE:** Private VPN gateway can only be purchased by white list users, and the bandwidth only supports 200M or 1000M; In addition, SSL is not supported.
+     * @return The network type of the VPN gateway. Value:  public (default): public VPN gateway. private: private network VPN gateway.
      * 
      */
     public Optional<Output<String>> networkType() {
         return Optional.ofNullable(this.networkType);
+    }
+
+    /**
+     * Type of payment. Value: Subscription: prepaid PayAsYouGo: Post-paid.
+     * 
+     */
+    @Import(name="paymentType")
+    private @Nullable Output<String> paymentType;
+
+    /**
+     * @return Type of payment. Value: Subscription: prepaid PayAsYouGo: Post-paid.
+     * 
+     */
+    public Optional<Output<String>> paymentType() {
+        return Optional.ofNullable(this.paymentType);
     }
 
     /**
@@ -173,16 +221,29 @@ public final class GatewayArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The max connections of SSL VPN. Default to 5. The number of connections supported by each account is different.
-     * This field is ignored when enable_ssl is false.
+     * The ID of the resource group.
+     * 
+     */
+    @Import(name="resourceGroupId")
+    private @Nullable Output<String> resourceGroupId;
+
+    /**
+     * @return The ID of the resource group.
+     * 
+     */
+    public Optional<Output<String>> resourceGroupId() {
+        return Optional.ofNullable(this.resourceGroupId);
+    }
+
+    /**
+     * Maximum number of clients.
      * 
      */
     @Import(name="sslConnections")
     private @Nullable Output<Integer> sslConnections;
 
     /**
-     * @return The max connections of SSL VPN. Default to 5. The number of connections supported by each account is different.
-     * This field is ignored when enable_ssl is false.
+     * @return Maximum number of clients.
      * 
      */
     public Optional<Output<Integer>> sslConnections() {
@@ -190,14 +251,14 @@ public final class GatewayArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The tags of VPN gateway.
+     * The Tag of.
      * 
      */
     @Import(name="tags")
     private @Nullable Output<Map<String,Object>> tags;
 
     /**
-     * @return The tags of VPN gateway.
+     * @return The Tag of.
      * 
      */
     public Optional<Output<Map<String,Object>>> tags() {
@@ -205,14 +266,14 @@ public final class GatewayArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The VPN belongs the vpc_id, the field can&#39;t be changed.
+     * The ID of the VPC to which the VPN gateway belongs.
      * 
      */
     @Import(name="vpcId", required=true)
     private Output<String> vpcId;
 
     /**
-     * @return The VPN belongs the vpc_id, the field can&#39;t be changed.
+     * @return The ID of the VPC to which the VPN gateway belongs.
      * 
      */
     public Output<String> vpcId() {
@@ -220,14 +281,44 @@ public final class GatewayArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The VPN belongs the vswitch_id, the field can&#39;t be changed.
+     * The name of the VPN gateway.
+     * 
+     */
+    @Import(name="vpnGatewayName")
+    private @Nullable Output<String> vpnGatewayName;
+
+    /**
+     * @return The name of the VPN gateway.
+     * 
+     */
+    public Optional<Output<String>> vpnGatewayName() {
+        return Optional.ofNullable(this.vpnGatewayName);
+    }
+
+    /**
+     * The VPN gateway type. Value:  Normal (default): Normal type. NationalStandard: National Secret type.
+     * 
+     */
+    @Import(name="vpnType")
+    private @Nullable Output<String> vpnType;
+
+    /**
+     * @return The VPN gateway type. Value:  Normal (default): Normal type. NationalStandard: National Secret type.
+     * 
+     */
+    public Optional<Output<String>> vpnType() {
+        return Optional.ofNullable(this.vpnType);
+    }
+
+    /**
+     * The ID of the VSwitch to which the VPN gateway is attached.
      * 
      */
     @Import(name="vswitchId")
     private @Nullable Output<String> vswitchId;
 
     /**
-     * @return The VPN belongs the vswitch_id, the field can&#39;t be changed.
+     * @return The ID of the VSwitch to which the VPN gateway is attached.
      * 
      */
     public Optional<Output<String>> vswitchId() {
@@ -241,15 +332,20 @@ public final class GatewayArgs extends com.pulumi.resources.ResourceArgs {
         this.autoPropagate = $.autoPropagate;
         this.bandwidth = $.bandwidth;
         this.description = $.description;
+        this.disasterRecoveryVswitchId = $.disasterRecoveryVswitchId;
         this.enableIpsec = $.enableIpsec;
         this.enableSsl = $.enableSsl;
         this.instanceChargeType = $.instanceChargeType;
         this.name = $.name;
         this.networkType = $.networkType;
+        this.paymentType = $.paymentType;
         this.period = $.period;
+        this.resourceGroupId = $.resourceGroupId;
         this.sslConnections = $.sslConnections;
         this.tags = $.tags;
         this.vpcId = $.vpcId;
+        this.vpnGatewayName = $.vpnGatewayName;
+        this.vpnType = $.vpnType;
         this.vswitchId = $.vswitchId;
     }
 
@@ -293,7 +389,7 @@ public final class GatewayArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param autoPropagate Specifies whether to automatically advertise BGP routes to the virtual private cloud (VPC). Valid values:
+         * @param autoPropagate Whether to automatically propagate the BGP route to the VPC. Value:  true: Propagate automatically.  false: does not propagate automatically.
          * 
          * @return builder
          * 
@@ -304,7 +400,7 @@ public final class GatewayArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param autoPropagate Specifies whether to automatically advertise BGP routes to the virtual private cloud (VPC). Valid values:
+         * @param autoPropagate Whether to automatically propagate the BGP route to the VPC. Value:  true: Propagate automatically.  false: does not propagate automatically.
          * 
          * @return builder
          * 
@@ -313,17 +409,29 @@ public final class GatewayArgs extends com.pulumi.resources.ResourceArgs {
             return autoPropagate(Output.of(autoPropagate));
         }
 
+        /**
+         * @param bandwidth The Bandwidth specification of the VPN gateway. Unit: Mbps.  If you want to create a public VPN gateway, the value is 5, 10, 20, 50, 100, 200, 500, or 1000. If you want to create a private VPN gateway, the value is 200 or 1000.
+         * 
+         * @return builder
+         * 
+         */
         public Builder bandwidth(Output<Integer> bandwidth) {
             $.bandwidth = bandwidth;
             return this;
         }
 
+        /**
+         * @param bandwidth The Bandwidth specification of the VPN gateway. Unit: Mbps.  If you want to create a public VPN gateway, the value is 5, 10, 20, 50, 100, 200, 500, or 1000. If you want to create a private VPN gateway, the value is 200 or 1000.
+         * 
+         * @return builder
+         * 
+         */
         public Builder bandwidth(Integer bandwidth) {
             return bandwidth(Output.of(bandwidth));
         }
 
         /**
-         * @param description The description of the VPN instance.
+         * @param description The description of the VPN gateway.
          * 
          * @return builder
          * 
@@ -334,13 +442,34 @@ public final class GatewayArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description The description of the VPN instance.
+         * @param description The description of the VPN gateway.
          * 
          * @return builder
          * 
          */
         public Builder description(String description) {
             return description(Output.of(description));
+        }
+
+        /**
+         * @param disasterRecoveryVswitchId The ID of the backup VSwitch to which the VPN gateway is attached.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder disasterRecoveryVswitchId(@Nullable Output<String> disasterRecoveryVswitchId) {
+            $.disasterRecoveryVswitchId = disasterRecoveryVswitchId;
+            return this;
+        }
+
+        /**
+         * @param disasterRecoveryVswitchId The ID of the backup VSwitch to which the VPN gateway is attached.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder disasterRecoveryVswitchId(String disasterRecoveryVswitchId) {
+            return disasterRecoveryVswitchId(Output.of(disasterRecoveryVswitchId));
         }
 
         /**
@@ -367,6 +496,8 @@ public final class GatewayArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param enableSsl Enable or Disable SSL VPN.  At least one type of VPN should be enabled.
          * 
+         * The following arguments will be discarded. Please use new fields as soon as possible:
+         * 
          * @return builder
          * 
          */
@@ -378,6 +509,8 @@ public final class GatewayArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param enableSsl Enable or Disable SSL VPN.  At least one type of VPN should be enabled.
          * 
+         * The following arguments will be discarded. Please use new fields as soon as possible:
+         * 
          * @return builder
          * 
          */
@@ -386,55 +519,65 @@ public final class GatewayArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param instanceChargeType The charge type for instance. If it is an international site account, the valid value is PostPaid, otherwise PrePaid.
-         * Default to PostPaid.
+         * @param instanceChargeType . Field &#39;instance_charge_type&#39; has been deprecated from provider version 1.216.0. New field &#39;payment_type&#39; instead.
          * 
          * @return builder
          * 
+         * @deprecated
+         * Field &#39;instance_charge_type&#39; has been deprecated since provider version 1.215.0. New field &#39;payment_type&#39; instead.
+         * 
          */
+        @Deprecated /* Field 'instance_charge_type' has been deprecated since provider version 1.215.0. New field 'payment_type' instead. */
         public Builder instanceChargeType(@Nullable Output<String> instanceChargeType) {
             $.instanceChargeType = instanceChargeType;
             return this;
         }
 
         /**
-         * @param instanceChargeType The charge type for instance. If it is an international site account, the valid value is PostPaid, otherwise PrePaid.
-         * Default to PostPaid.
+         * @param instanceChargeType . Field &#39;instance_charge_type&#39; has been deprecated from provider version 1.216.0. New field &#39;payment_type&#39; instead.
          * 
          * @return builder
          * 
+         * @deprecated
+         * Field &#39;instance_charge_type&#39; has been deprecated since provider version 1.215.0. New field &#39;payment_type&#39; instead.
+         * 
          */
+        @Deprecated /* Field 'instance_charge_type' has been deprecated since provider version 1.215.0. New field 'payment_type' instead. */
         public Builder instanceChargeType(String instanceChargeType) {
             return instanceChargeType(Output.of(instanceChargeType));
         }
 
         /**
-         * @param name The name of the VPN. Defaults to null.
+         * @param name . Field &#39;name&#39; has been deprecated from provider version 1.216.0. New field &#39;vpn_gateway_name&#39; instead.
          * 
          * @return builder
          * 
+         * @deprecated
+         * Field &#39;name&#39; has been deprecated since provider version 1.215.0. New field &#39;vpn_gateway_name&#39; instead.
+         * 
          */
+        @Deprecated /* Field 'name' has been deprecated since provider version 1.215.0. New field 'vpn_gateway_name' instead. */
         public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
         }
 
         /**
-         * @param name The name of the VPN. Defaults to null.
+         * @param name . Field &#39;name&#39; has been deprecated from provider version 1.216.0. New field &#39;vpn_gateway_name&#39; instead.
          * 
          * @return builder
          * 
+         * @deprecated
+         * Field &#39;name&#39; has been deprecated since provider version 1.215.0. New field &#39;vpn_gateway_name&#39; instead.
+         * 
          */
+        @Deprecated /* Field 'name' has been deprecated since provider version 1.215.0. New field 'vpn_gateway_name' instead. */
         public Builder name(String name) {
             return name(Output.of(name));
         }
 
         /**
-         * @param networkType The network type of the VPN gateway. Value:
-         * - public (default): Public VPN gateway.
-         * - private: Private VPN gateway.
-         * 
-         * &gt; **NOTE:** Private VPN gateway can only be purchased by white list users, and the bandwidth only supports 200M or 1000M; In addition, SSL is not supported.
+         * @param networkType The network type of the VPN gateway. Value:  public (default): public VPN gateway. private: private network VPN gateway.
          * 
          * @return builder
          * 
@@ -445,17 +588,34 @@ public final class GatewayArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param networkType The network type of the VPN gateway. Value:
-         * - public (default): Public VPN gateway.
-         * - private: Private VPN gateway.
-         * 
-         * &gt; **NOTE:** Private VPN gateway can only be purchased by white list users, and the bandwidth only supports 200M or 1000M; In addition, SSL is not supported.
+         * @param networkType The network type of the VPN gateway. Value:  public (default): public VPN gateway. private: private network VPN gateway.
          * 
          * @return builder
          * 
          */
         public Builder networkType(String networkType) {
             return networkType(Output.of(networkType));
+        }
+
+        /**
+         * @param paymentType Type of payment. Value: Subscription: prepaid PayAsYouGo: Post-paid.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder paymentType(@Nullable Output<String> paymentType) {
+            $.paymentType = paymentType;
+            return this;
+        }
+
+        /**
+         * @param paymentType Type of payment. Value: Subscription: prepaid PayAsYouGo: Post-paid.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder paymentType(String paymentType) {
+            return paymentType(Output.of(paymentType));
         }
 
         /**
@@ -480,8 +640,28 @@ public final class GatewayArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sslConnections The max connections of SSL VPN. Default to 5. The number of connections supported by each account is different.
-         * This field is ignored when enable_ssl is false.
+         * @param resourceGroupId The ID of the resource group.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder resourceGroupId(@Nullable Output<String> resourceGroupId) {
+            $.resourceGroupId = resourceGroupId;
+            return this;
+        }
+
+        /**
+         * @param resourceGroupId The ID of the resource group.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder resourceGroupId(String resourceGroupId) {
+            return resourceGroupId(Output.of(resourceGroupId));
+        }
+
+        /**
+         * @param sslConnections Maximum number of clients.
          * 
          * @return builder
          * 
@@ -492,8 +672,7 @@ public final class GatewayArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sslConnections The max connections of SSL VPN. Default to 5. The number of connections supported by each account is different.
-         * This field is ignored when enable_ssl is false.
+         * @param sslConnections Maximum number of clients.
          * 
          * @return builder
          * 
@@ -503,7 +682,7 @@ public final class GatewayArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tags The tags of VPN gateway.
+         * @param tags The Tag of.
          * 
          * @return builder
          * 
@@ -514,7 +693,7 @@ public final class GatewayArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tags The tags of VPN gateway.
+         * @param tags The Tag of.
          * 
          * @return builder
          * 
@@ -524,7 +703,7 @@ public final class GatewayArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vpcId The VPN belongs the vpc_id, the field can&#39;t be changed.
+         * @param vpcId The ID of the VPC to which the VPN gateway belongs.
          * 
          * @return builder
          * 
@@ -535,7 +714,7 @@ public final class GatewayArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vpcId The VPN belongs the vpc_id, the field can&#39;t be changed.
+         * @param vpcId The ID of the VPC to which the VPN gateway belongs.
          * 
          * @return builder
          * 
@@ -545,7 +724,49 @@ public final class GatewayArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vswitchId The VPN belongs the vswitch_id, the field can&#39;t be changed.
+         * @param vpnGatewayName The name of the VPN gateway.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vpnGatewayName(@Nullable Output<String> vpnGatewayName) {
+            $.vpnGatewayName = vpnGatewayName;
+            return this;
+        }
+
+        /**
+         * @param vpnGatewayName The name of the VPN gateway.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vpnGatewayName(String vpnGatewayName) {
+            return vpnGatewayName(Output.of(vpnGatewayName));
+        }
+
+        /**
+         * @param vpnType The VPN gateway type. Value:  Normal (default): Normal type. NationalStandard: National Secret type.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vpnType(@Nullable Output<String> vpnType) {
+            $.vpnType = vpnType;
+            return this;
+        }
+
+        /**
+         * @param vpnType The VPN gateway type. Value:  Normal (default): Normal type. NationalStandard: National Secret type.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vpnType(String vpnType) {
+            return vpnType(Output.of(vpnType));
+        }
+
+        /**
+         * @param vswitchId The ID of the VSwitch to which the VPN gateway is attached.
          * 
          * @return builder
          * 
@@ -556,7 +777,7 @@ public final class GatewayArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vswitchId The VPN belongs the vswitch_id, the field can&#39;t be changed.
+         * @param vswitchId The ID of the VSwitch to which the VPN gateway is attached.
          * 
          * @return builder
          * 

@@ -375,6 +375,36 @@ public final class ContainerGroupState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
+     * The maximum hourly price of the ECI spot instance.
+     * 
+     */
+    @Import(name="spotPriceLimit")
+    private @Nullable Output<Double> spotPriceLimit;
+
+    /**
+     * @return The maximum hourly price of the ECI spot instance.
+     * 
+     */
+    public Optional<Output<Double>> spotPriceLimit() {
+        return Optional.ofNullable(this.spotPriceLimit);
+    }
+
+    /**
+     * Filter the results by ECI spot type. Valid values: `NoSpot`, `SpotWithPriceLimit` and `SpotAsPriceGo`. Default to `NoSpot`.
+     * 
+     */
+    @Import(name="spotStrategy")
+    private @Nullable Output<String> spotStrategy;
+
+    /**
+     * @return Filter the results by ECI spot type. Valid values: `NoSpot`, `SpotWithPriceLimit` and `SpotAsPriceGo`. Default to `NoSpot`.
+     * 
+     */
+    public Optional<Output<String>> spotStrategy() {
+        return Optional.ofNullable(this.spotStrategy);
+    }
+
+    /**
      * The status of container group.
      * 
      */
@@ -406,6 +436,21 @@ public final class ContainerGroupState extends com.pulumi.resources.ResourceArgs
      */
     public Optional<Output<Map<String,Object>>> tags() {
         return Optional.ofNullable(this.tags);
+    }
+
+    /**
+     * The buffer time during which the program handles operations before the program stops. Unit: seconds.
+     * 
+     */
+    @Import(name="terminationGracePeriodSeconds")
+    private @Nullable Output<Integer> terminationGracePeriodSeconds;
+
+    /**
+     * @return The buffer time during which the program handles operations before the program stops. Unit: seconds.
+     * 
+     */
+    public Optional<Output<Integer>> terminationGracePeriodSeconds() {
+        return Optional.ofNullable(this.terminationGracePeriodSeconds);
     }
 
     /**
@@ -481,8 +526,11 @@ public final class ContainerGroupState extends com.pulumi.resources.ResourceArgs
         this.restartPolicy = $.restartPolicy;
         this.securityContext = $.securityContext;
         this.securityGroupId = $.securityGroupId;
+        this.spotPriceLimit = $.spotPriceLimit;
+        this.spotStrategy = $.spotStrategy;
         this.status = $.status;
         this.tags = $.tags;
+        this.terminationGracePeriodSeconds = $.terminationGracePeriodSeconds;
         this.volumes = $.volumes;
         this.vswitchId = $.vswitchId;
         this.zoneId = $.zoneId;
@@ -1040,6 +1088,48 @@ public final class ContainerGroupState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
+         * @param spotPriceLimit The maximum hourly price of the ECI spot instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder spotPriceLimit(@Nullable Output<Double> spotPriceLimit) {
+            $.spotPriceLimit = spotPriceLimit;
+            return this;
+        }
+
+        /**
+         * @param spotPriceLimit The maximum hourly price of the ECI spot instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder spotPriceLimit(Double spotPriceLimit) {
+            return spotPriceLimit(Output.of(spotPriceLimit));
+        }
+
+        /**
+         * @param spotStrategy Filter the results by ECI spot type. Valid values: `NoSpot`, `SpotWithPriceLimit` and `SpotAsPriceGo`. Default to `NoSpot`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder spotStrategy(@Nullable Output<String> spotStrategy) {
+            $.spotStrategy = spotStrategy;
+            return this;
+        }
+
+        /**
+         * @param spotStrategy Filter the results by ECI spot type. Valid values: `NoSpot`, `SpotWithPriceLimit` and `SpotAsPriceGo`. Default to `NoSpot`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder spotStrategy(String spotStrategy) {
+            return spotStrategy(Output.of(spotStrategy));
+        }
+
+        /**
          * @param status The status of container group.
          * 
          * @return builder
@@ -1083,6 +1173,27 @@ public final class ContainerGroupState extends com.pulumi.resources.ResourceArgs
          */
         public Builder tags(Map<String,Object> tags) {
             return tags(Output.of(tags));
+        }
+
+        /**
+         * @param terminationGracePeriodSeconds The buffer time during which the program handles operations before the program stops. Unit: seconds.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder terminationGracePeriodSeconds(@Nullable Output<Integer> terminationGracePeriodSeconds) {
+            $.terminationGracePeriodSeconds = terminationGracePeriodSeconds;
+            return this;
+        }
+
+        /**
+         * @param terminationGracePeriodSeconds The buffer time during which the program handles operations before the program stops. Unit: seconds.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder terminationGracePeriodSeconds(Integer terminationGracePeriodSeconds) {
+            return terminationGracePeriodSeconds(Output.of(terminationGracePeriodSeconds));
         }
 
         /**

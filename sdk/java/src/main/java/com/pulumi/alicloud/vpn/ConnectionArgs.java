@@ -7,12 +7,15 @@ import com.pulumi.alicloud.vpn.inputs.ConnectionBgpConfigArgs;
 import com.pulumi.alicloud.vpn.inputs.ConnectionHealthCheckConfigArgs;
 import com.pulumi.alicloud.vpn.inputs.ConnectionIkeConfigArgs;
 import com.pulumi.alicloud.vpn.inputs.ConnectionIpsecConfigArgs;
+import com.pulumi.alicloud.vpn.inputs.ConnectionTunnelOptionsSpecificationArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
+import java.lang.Object;
 import java.lang.String;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -23,14 +26,33 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
     public static final ConnectionArgs Empty = new ConnectionArgs();
 
     /**
-     * The configurations of the BGP routing protocol. See `bgp_config` below.
+     * Whether to configure routing automatically. Value:
+     * - **true**: Automatically configure routes.
+     * - **false**: does not automatically configure routes.
+     * 
+     */
+    @Import(name="autoConfigRoute")
+    private @Nullable Output<Boolean> autoConfigRoute;
+
+    /**
+     * @return Whether to configure routing automatically. Value:
+     * - **true**: Automatically configure routes.
+     * - **false**: does not automatically configure routes.
+     * 
+     */
+    public Optional<Output<Boolean>> autoConfigRoute() {
+        return Optional.ofNullable(this.autoConfigRoute);
+    }
+
+    /**
+     * vpnBgp configuration. See `bgp_config` below.
      * 
      */
     @Import(name="bgpConfig")
     private @Nullable Output<ConnectionBgpConfigArgs> bgpConfig;
 
     /**
-     * @return The configurations of the BGP routing protocol. See `bgp_config` below.
+     * @return vpnBgp configuration. See `bgp_config` below.
      * 
      */
     public Optional<Output<ConnectionBgpConfigArgs>> bgpConfig() {
@@ -41,26 +63,26 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
      * The ID of the customer gateway.
      * 
      */
-    @Import(name="customerGatewayId", required=true)
-    private Output<String> customerGatewayId;
+    @Import(name="customerGatewayId")
+    private @Nullable Output<String> customerGatewayId;
 
     /**
      * @return The ID of the customer gateway.
      * 
      */
-    public Output<String> customerGatewayId() {
-        return this.customerGatewayId;
+    public Optional<Output<String>> customerGatewayId() {
+        return Optional.ofNullable(this.customerGatewayId);
     }
 
     /**
-     * Whether to delete a successfully negotiated IPsec tunnel and initiate a negotiation again. Valid value:true,false.
+     * Indicates whether IPsec-VPN negotiations are initiated immediately. Valid values.
      * 
      */
     @Import(name="effectImmediately")
     private @Nullable Output<Boolean> effectImmediately;
 
     /**
-     * @return Whether to delete a successfully negotiated IPsec tunnel and initiate a negotiation again. Valid value:true,false.
+     * @return Indicates whether IPsec-VPN negotiations are initiated immediately. Valid values.
      * 
      */
     public Optional<Output<Boolean>> effectImmediately() {
@@ -68,14 +90,14 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Specifies whether to enable the dead peer detection (DPD) feature. Valid values: `true`(default), `false`.
+     * Wether enable Dpd detection.
      * 
      */
     @Import(name="enableDpd")
     private @Nullable Output<Boolean> enableDpd;
 
     /**
-     * @return Specifies whether to enable the dead peer detection (DPD) feature. Valid values: `true`(default), `false`.
+     * @return Wether enable Dpd detection.
      * 
      */
     public Optional<Output<Boolean>> enableDpd() {
@@ -83,14 +105,14 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Specifies whether to enable NAT traversal. Valid values: `true`(default), `false`.
+     * enable nat traversal.
      * 
      */
     @Import(name="enableNatTraversal")
     private @Nullable Output<Boolean> enableNatTraversal;
 
     /**
-     * @return Specifies whether to enable NAT traversal. Valid values: `true`(default), `false`.
+     * @return enable nat traversal.
      * 
      */
     public Optional<Output<Boolean>> enableNatTraversal() {
@@ -98,14 +120,29 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The health check configurations. See `health_check_config` below.
+     * Enable tunnel bgp.
+     * 
+     */
+    @Import(name="enableTunnelsBgp")
+    private @Nullable Output<Boolean> enableTunnelsBgp;
+
+    /**
+     * @return Enable tunnel bgp.
+     * 
+     */
+    public Optional<Output<Boolean>> enableTunnelsBgp() {
+        return Optional.ofNullable(this.enableTunnelsBgp);
+    }
+
+    /**
+     * Health Check information. See `health_check_config` below.
      * 
      */
     @Import(name="healthCheckConfig")
     private @Nullable Output<ConnectionHealthCheckConfigArgs> healthCheckConfig;
 
     /**
-     * @return The health check configurations. See `health_check_config` below.
+     * @return Health Check information. See `health_check_config` below.
      * 
      */
     public Optional<Output<ConnectionHealthCheckConfigArgs>> healthCheckConfig() {
@@ -113,14 +150,14 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The configurations of phase-one negotiation. See `ike_config` below.
+     * The configuration of Phase 1 negotiations. See `ike_config` below.
      * 
      */
     @Import(name="ikeConfig")
     private @Nullable Output<ConnectionIkeConfigArgs> ikeConfig;
 
     /**
-     * @return The configurations of phase-one negotiation. See `ike_config` below.
+     * @return The configuration of Phase 1 negotiations. See `ike_config` below.
      * 
      */
     public Optional<Output<ConnectionIkeConfigArgs>> ikeConfig() {
@@ -128,14 +165,14 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The configurations of phase-two negotiation. See `ipsec_config` below.
+     * IPsec configuration. See `ipsec_config` below.
      * 
      */
     @Import(name="ipsecConfig")
     private @Nullable Output<ConnectionIpsecConfigArgs> ipsecConfig;
 
     /**
-     * @return The configurations of phase-two negotiation. See `ipsec_config` below.
+     * @return IPsec configuration. See `ipsec_config` below.
      * 
      */
     public Optional<Output<ConnectionIpsecConfigArgs>> ipsecConfig() {
@@ -158,18 +195,45 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The name of the IPsec connection.
+     * . Field &#39;name&#39; has been deprecated from provider version 1.216.0. New field &#39;vpn_connection_name&#39; instead.
+     * 
+     * @deprecated
+     * Field &#39;name&#39; has been deprecated since provider version 1.216.0. New field &#39;vpn_connection_name&#39; instead.
      * 
      */
+    @Deprecated /* Field 'name' has been deprecated since provider version 1.216.0. New field 'vpn_connection_name' instead. */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The name of the IPsec connection.
+     * @return . Field &#39;name&#39; has been deprecated from provider version 1.216.0. New field &#39;vpn_connection_name&#39; instead.
+     * 
+     * @deprecated
+     * Field &#39;name&#39; has been deprecated since provider version 1.216.0. New field &#39;vpn_connection_name&#39; instead.
      * 
      */
+    @Deprecated /* Field 'name' has been deprecated since provider version 1.216.0. New field 'vpn_connection_name' instead. */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
+    }
+
+    /**
+     * The network type of the IPsec connection. Value:
+     * - **public**: public network, indicating that the IPsec connection establishes an encrypted communication channel through the public network.
+     * - **private**: private network, indicating that the IPsec connection establishes an encrypted communication channel through the private network.
+     * 
+     */
+    @Import(name="networkType")
+    private @Nullable Output<String> networkType;
+
+    /**
+     * @return The network type of the IPsec connection. Value:
+     * - **public**: public network, indicating that the IPsec connection establishes an encrypted communication channel through the public network.
+     * - **private**: private network, indicating that the IPsec connection establishes an encrypted communication channel through the private network.
+     * 
+     */
+    public Optional<Output<String>> networkType() {
+        return Optional.ofNullable(this.networkType);
     }
 
     /**
@@ -188,7 +252,54 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Tags.
+     * 
+     */
+    @Import(name="tags")
+    private @Nullable Output<Map<String,Object>> tags;
+
+    /**
+     * @return Tags.
+     * 
+     */
+    public Optional<Output<Map<String,Object>>> tags() {
+        return Optional.ofNullable(this.tags);
+    }
+
+    /**
+     * The tunnel options of IPsec. See `tunnel_options_specification` below.
+     * 
+     */
+    @Import(name="tunnelOptionsSpecifications")
+    private @Nullable Output<List<ConnectionTunnelOptionsSpecificationArgs>> tunnelOptionsSpecifications;
+
+    /**
+     * @return The tunnel options of IPsec. See `tunnel_options_specification` below.
+     * 
+     */
+    public Optional<Output<List<ConnectionTunnelOptionsSpecificationArgs>>> tunnelOptionsSpecifications() {
+        return Optional.ofNullable(this.tunnelOptionsSpecifications);
+    }
+
+    /**
+     * The name of the IPsec-VPN connection.
+     * 
+     */
+    @Import(name="vpnConnectionName")
+    private @Nullable Output<String> vpnConnectionName;
+
+    /**
+     * @return The name of the IPsec-VPN connection.
+     * 
+     */
+    public Optional<Output<String>> vpnConnectionName() {
+        return Optional.ofNullable(this.vpnConnectionName);
+    }
+
+    /**
      * The ID of the VPN gateway.
+     * 
+     * The following arguments will be discarded. Please use new fields as soon as possible:
      * 
      */
     @Import(name="vpnGatewayId", required=true)
@@ -196,6 +307,8 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The ID of the VPN gateway.
+     * 
+     * The following arguments will be discarded. Please use new fields as soon as possible:
      * 
      */
     public Output<String> vpnGatewayId() {
@@ -205,17 +318,23 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
     private ConnectionArgs() {}
 
     private ConnectionArgs(ConnectionArgs $) {
+        this.autoConfigRoute = $.autoConfigRoute;
         this.bgpConfig = $.bgpConfig;
         this.customerGatewayId = $.customerGatewayId;
         this.effectImmediately = $.effectImmediately;
         this.enableDpd = $.enableDpd;
         this.enableNatTraversal = $.enableNatTraversal;
+        this.enableTunnelsBgp = $.enableTunnelsBgp;
         this.healthCheckConfig = $.healthCheckConfig;
         this.ikeConfig = $.ikeConfig;
         this.ipsecConfig = $.ipsecConfig;
         this.localSubnets = $.localSubnets;
         this.name = $.name;
+        this.networkType = $.networkType;
         this.remoteSubnets = $.remoteSubnets;
+        this.tags = $.tags;
+        this.tunnelOptionsSpecifications = $.tunnelOptionsSpecifications;
+        this.vpnConnectionName = $.vpnConnectionName;
         this.vpnGatewayId = $.vpnGatewayId;
     }
 
@@ -238,7 +357,32 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param bgpConfig The configurations of the BGP routing protocol. See `bgp_config` below.
+         * @param autoConfigRoute Whether to configure routing automatically. Value:
+         * - **true**: Automatically configure routes.
+         * - **false**: does not automatically configure routes.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder autoConfigRoute(@Nullable Output<Boolean> autoConfigRoute) {
+            $.autoConfigRoute = autoConfigRoute;
+            return this;
+        }
+
+        /**
+         * @param autoConfigRoute Whether to configure routing automatically. Value:
+         * - **true**: Automatically configure routes.
+         * - **false**: does not automatically configure routes.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder autoConfigRoute(Boolean autoConfigRoute) {
+            return autoConfigRoute(Output.of(autoConfigRoute));
+        }
+
+        /**
+         * @param bgpConfig vpnBgp configuration. See `bgp_config` below.
          * 
          * @return builder
          * 
@@ -249,7 +393,7 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param bgpConfig The configurations of the BGP routing protocol. See `bgp_config` below.
+         * @param bgpConfig vpnBgp configuration. See `bgp_config` below.
          * 
          * @return builder
          * 
@@ -264,7 +408,7 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder customerGatewayId(Output<String> customerGatewayId) {
+        public Builder customerGatewayId(@Nullable Output<String> customerGatewayId) {
             $.customerGatewayId = customerGatewayId;
             return this;
         }
@@ -280,7 +424,7 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param effectImmediately Whether to delete a successfully negotiated IPsec tunnel and initiate a negotiation again. Valid value:true,false.
+         * @param effectImmediately Indicates whether IPsec-VPN negotiations are initiated immediately. Valid values.
          * 
          * @return builder
          * 
@@ -291,7 +435,7 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param effectImmediately Whether to delete a successfully negotiated IPsec tunnel and initiate a negotiation again. Valid value:true,false.
+         * @param effectImmediately Indicates whether IPsec-VPN negotiations are initiated immediately. Valid values.
          * 
          * @return builder
          * 
@@ -301,7 +445,7 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enableDpd Specifies whether to enable the dead peer detection (DPD) feature. Valid values: `true`(default), `false`.
+         * @param enableDpd Wether enable Dpd detection.
          * 
          * @return builder
          * 
@@ -312,7 +456,7 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enableDpd Specifies whether to enable the dead peer detection (DPD) feature. Valid values: `true`(default), `false`.
+         * @param enableDpd Wether enable Dpd detection.
          * 
          * @return builder
          * 
@@ -322,7 +466,7 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enableNatTraversal Specifies whether to enable NAT traversal. Valid values: `true`(default), `false`.
+         * @param enableNatTraversal enable nat traversal.
          * 
          * @return builder
          * 
@@ -333,7 +477,7 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enableNatTraversal Specifies whether to enable NAT traversal. Valid values: `true`(default), `false`.
+         * @param enableNatTraversal enable nat traversal.
          * 
          * @return builder
          * 
@@ -343,7 +487,28 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param healthCheckConfig The health check configurations. See `health_check_config` below.
+         * @param enableTunnelsBgp Enable tunnel bgp.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enableTunnelsBgp(@Nullable Output<Boolean> enableTunnelsBgp) {
+            $.enableTunnelsBgp = enableTunnelsBgp;
+            return this;
+        }
+
+        /**
+         * @param enableTunnelsBgp Enable tunnel bgp.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enableTunnelsBgp(Boolean enableTunnelsBgp) {
+            return enableTunnelsBgp(Output.of(enableTunnelsBgp));
+        }
+
+        /**
+         * @param healthCheckConfig Health Check information. See `health_check_config` below.
          * 
          * @return builder
          * 
@@ -354,7 +519,7 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param healthCheckConfig The health check configurations. See `health_check_config` below.
+         * @param healthCheckConfig Health Check information. See `health_check_config` below.
          * 
          * @return builder
          * 
@@ -364,7 +529,7 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ikeConfig The configurations of phase-one negotiation. See `ike_config` below.
+         * @param ikeConfig The configuration of Phase 1 negotiations. See `ike_config` below.
          * 
          * @return builder
          * 
@@ -375,7 +540,7 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ikeConfig The configurations of phase-one negotiation. See `ike_config` below.
+         * @param ikeConfig The configuration of Phase 1 negotiations. See `ike_config` below.
          * 
          * @return builder
          * 
@@ -385,7 +550,7 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ipsecConfig The configurations of phase-two negotiation. See `ipsec_config` below.
+         * @param ipsecConfig IPsec configuration. See `ipsec_config` below.
          * 
          * @return builder
          * 
@@ -396,7 +561,7 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ipsecConfig The configurations of phase-two negotiation. See `ipsec_config` below.
+         * @param ipsecConfig IPsec configuration. See `ipsec_config` below.
          * 
          * @return builder
          * 
@@ -437,24 +602,57 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The name of the IPsec connection.
+         * @param name . Field &#39;name&#39; has been deprecated from provider version 1.216.0. New field &#39;vpn_connection_name&#39; instead.
          * 
          * @return builder
          * 
+         * @deprecated
+         * Field &#39;name&#39; has been deprecated since provider version 1.216.0. New field &#39;vpn_connection_name&#39; instead.
+         * 
          */
+        @Deprecated /* Field 'name' has been deprecated since provider version 1.216.0. New field 'vpn_connection_name' instead. */
         public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
         }
 
         /**
-         * @param name The name of the IPsec connection.
+         * @param name . Field &#39;name&#39; has been deprecated from provider version 1.216.0. New field &#39;vpn_connection_name&#39; instead.
+         * 
+         * @return builder
+         * 
+         * @deprecated
+         * Field &#39;name&#39; has been deprecated since provider version 1.216.0. New field &#39;vpn_connection_name&#39; instead.
+         * 
+         */
+        @Deprecated /* Field 'name' has been deprecated since provider version 1.216.0. New field 'vpn_connection_name' instead. */
+        public Builder name(String name) {
+            return name(Output.of(name));
+        }
+
+        /**
+         * @param networkType The network type of the IPsec connection. Value:
+         * - **public**: public network, indicating that the IPsec connection establishes an encrypted communication channel through the public network.
+         * - **private**: private network, indicating that the IPsec connection establishes an encrypted communication channel through the private network.
          * 
          * @return builder
          * 
          */
-        public Builder name(String name) {
-            return name(Output.of(name));
+        public Builder networkType(@Nullable Output<String> networkType) {
+            $.networkType = networkType;
+            return this;
+        }
+
+        /**
+         * @param networkType The network type of the IPsec connection. Value:
+         * - **public**: public network, indicating that the IPsec connection establishes an encrypted communication channel through the public network.
+         * - **private**: private network, indicating that the IPsec connection establishes an encrypted communication channel through the private network.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder networkType(String networkType) {
+            return networkType(Output.of(networkType));
         }
 
         /**
@@ -489,7 +687,82 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param tags Tags.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(@Nullable Output<Map<String,Object>> tags) {
+            $.tags = tags;
+            return this;
+        }
+
+        /**
+         * @param tags Tags.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(Map<String,Object> tags) {
+            return tags(Output.of(tags));
+        }
+
+        /**
+         * @param tunnelOptionsSpecifications The tunnel options of IPsec. See `tunnel_options_specification` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tunnelOptionsSpecifications(@Nullable Output<List<ConnectionTunnelOptionsSpecificationArgs>> tunnelOptionsSpecifications) {
+            $.tunnelOptionsSpecifications = tunnelOptionsSpecifications;
+            return this;
+        }
+
+        /**
+         * @param tunnelOptionsSpecifications The tunnel options of IPsec. See `tunnel_options_specification` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tunnelOptionsSpecifications(List<ConnectionTunnelOptionsSpecificationArgs> tunnelOptionsSpecifications) {
+            return tunnelOptionsSpecifications(Output.of(tunnelOptionsSpecifications));
+        }
+
+        /**
+         * @param tunnelOptionsSpecifications The tunnel options of IPsec. See `tunnel_options_specification` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tunnelOptionsSpecifications(ConnectionTunnelOptionsSpecificationArgs... tunnelOptionsSpecifications) {
+            return tunnelOptionsSpecifications(List.of(tunnelOptionsSpecifications));
+        }
+
+        /**
+         * @param vpnConnectionName The name of the IPsec-VPN connection.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vpnConnectionName(@Nullable Output<String> vpnConnectionName) {
+            $.vpnConnectionName = vpnConnectionName;
+            return this;
+        }
+
+        /**
+         * @param vpnConnectionName The name of the IPsec-VPN connection.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vpnConnectionName(String vpnConnectionName) {
+            return vpnConnectionName(Output.of(vpnConnectionName));
+        }
+
+        /**
          * @param vpnGatewayId The ID of the VPN gateway.
+         * 
+         * The following arguments will be discarded. Please use new fields as soon as possible:
          * 
          * @return builder
          * 
@@ -502,6 +775,8 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param vpnGatewayId The ID of the VPN gateway.
          * 
+         * The following arguments will be discarded. Please use new fields as soon as possible:
+         * 
          * @return builder
          * 
          */
@@ -510,9 +785,6 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public ConnectionArgs build() {
-            if ($.customerGatewayId == null) {
-                throw new MissingRequiredPropertyException("ConnectionArgs", "customerGatewayId");
-            }
             if ($.localSubnets == null) {
                 throw new MissingRequiredPropertyException("ConnectionArgs", "localSubnets");
             }

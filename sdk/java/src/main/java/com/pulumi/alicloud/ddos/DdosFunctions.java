@@ -525,9 +525,13 @@ public final class DdosFunctions {
         return Deployment.getInstance().invokeAsync("alicloud:ddos/getDdosCooDomainResources:getDdosCooDomainResources", TypeShape.of(GetDdosCooDomainResourcesResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * This data source provides a list of BGP-Line Anti-DDoS Pro instances in an Alibaba Cloud account according to the specified filters.
+     * This data source provides the BGP-Line Anti-DDoS Pro(DdosCoo) instances of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.39.0.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
      * ```java
      * package generated_program;
      * 
@@ -549,11 +553,11 @@ public final class DdosFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var instanceDdosCooInstances = DdosFunctions.getDdosCooInstances(GetDdosCooInstancesArgs.builder()
-     *             .nameRegex(&#34;^ddoscoo&#34;)
+     *         final var default = DdosFunctions.getDdosCooInstances(GetDdosCooInstancesArgs.builder()
+     *             .nameRegex(&#34;tf&#34;)
      *             .build());
      * 
-     *         ctx.export(&#34;instance&#34;, alicloud_ddoscoo_instances.instance().stream().map(element -&gt; element.id()).collect(toList()));
+     *         ctx.export(&#34;instance&#34;, default_.instances().stream().map(element -&gt; element.id()).collect(toList()));
      *     }
      * }
      * ```
@@ -563,9 +567,13 @@ public final class DdosFunctions {
         return getDdosCooInstances(GetDdosCooInstancesArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * This data source provides a list of BGP-Line Anti-DDoS Pro instances in an Alibaba Cloud account according to the specified filters.
+     * This data source provides the BGP-Line Anti-DDoS Pro(DdosCoo) instances of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.39.0.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
      * ```java
      * package generated_program;
      * 
@@ -587,11 +595,11 @@ public final class DdosFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var instanceDdosCooInstances = DdosFunctions.getDdosCooInstances(GetDdosCooInstancesArgs.builder()
-     *             .nameRegex(&#34;^ddoscoo&#34;)
+     *         final var default = DdosFunctions.getDdosCooInstances(GetDdosCooInstancesArgs.builder()
+     *             .nameRegex(&#34;tf&#34;)
      *             .build());
      * 
-     *         ctx.export(&#34;instance&#34;, alicloud_ddoscoo_instances.instance().stream().map(element -&gt; element.id()).collect(toList()));
+     *         ctx.export(&#34;instance&#34;, default_.instances().stream().map(element -&gt; element.id()).collect(toList()));
      *     }
      * }
      * ```
@@ -601,9 +609,13 @@ public final class DdosFunctions {
         return getDdosCooInstancesPlain(GetDdosCooInstancesPlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * This data source provides a list of BGP-Line Anti-DDoS Pro instances in an Alibaba Cloud account according to the specified filters.
+     * This data source provides the BGP-Line Anti-DDoS Pro(DdosCoo) instances of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.39.0.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
      * ```java
      * package generated_program;
      * 
@@ -625,11 +637,11 @@ public final class DdosFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var instanceDdosCooInstances = DdosFunctions.getDdosCooInstances(GetDdosCooInstancesArgs.builder()
-     *             .nameRegex(&#34;^ddoscoo&#34;)
+     *         final var default = DdosFunctions.getDdosCooInstances(GetDdosCooInstancesArgs.builder()
+     *             .nameRegex(&#34;tf&#34;)
      *             .build());
      * 
-     *         ctx.export(&#34;instance&#34;, alicloud_ddoscoo_instances.instance().stream().map(element -&gt; element.id()).collect(toList()));
+     *         ctx.export(&#34;instance&#34;, default_.instances().stream().map(element -&gt; element.id()).collect(toList()));
      *     }
      * }
      * ```
@@ -639,9 +651,13 @@ public final class DdosFunctions {
         return getDdosCooInstances(args, InvokeOptions.Empty);
     }
     /**
-     * This data source provides a list of BGP-Line Anti-DDoS Pro instances in an Alibaba Cloud account according to the specified filters.
+     * This data source provides the BGP-Line Anti-DDoS Pro(DdosCoo) instances of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.39.0.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
      * ```java
      * package generated_program;
      * 
@@ -663,11 +679,11 @@ public final class DdosFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var instanceDdosCooInstances = DdosFunctions.getDdosCooInstances(GetDdosCooInstancesArgs.builder()
-     *             .nameRegex(&#34;^ddoscoo&#34;)
+     *         final var default = DdosFunctions.getDdosCooInstances(GetDdosCooInstancesArgs.builder()
+     *             .nameRegex(&#34;tf&#34;)
      *             .build());
      * 
-     *         ctx.export(&#34;instance&#34;, alicloud_ddoscoo_instances.instance().stream().map(element -&gt; element.id()).collect(toList()));
+     *         ctx.export(&#34;instance&#34;, default_.instances().stream().map(element -&gt; element.id()).collect(toList()));
      *     }
      * }
      * ```
@@ -677,9 +693,13 @@ public final class DdosFunctions {
         return getDdosCooInstancesPlain(args, InvokeOptions.Empty);
     }
     /**
-     * This data source provides a list of BGP-Line Anti-DDoS Pro instances in an Alibaba Cloud account according to the specified filters.
+     * This data source provides the BGP-Line Anti-DDoS Pro(DdosCoo) instances of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.39.0.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
      * ```java
      * package generated_program;
      * 
@@ -701,11 +721,11 @@ public final class DdosFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var instanceDdosCooInstances = DdosFunctions.getDdosCooInstances(GetDdosCooInstancesArgs.builder()
-     *             .nameRegex(&#34;^ddoscoo&#34;)
+     *         final var default = DdosFunctions.getDdosCooInstances(GetDdosCooInstancesArgs.builder()
+     *             .nameRegex(&#34;tf&#34;)
      *             .build());
      * 
-     *         ctx.export(&#34;instance&#34;, alicloud_ddoscoo_instances.instance().stream().map(element -&gt; element.id()).collect(toList()));
+     *         ctx.export(&#34;instance&#34;, default_.instances().stream().map(element -&gt; element.id()).collect(toList()));
      *     }
      * }
      * ```
@@ -715,9 +735,13 @@ public final class DdosFunctions {
         return Deployment.getInstance().invoke("alicloud:ddos/getDdosCooInstances:getDdosCooInstances", TypeShape.of(GetDdosCooInstancesResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * This data source provides a list of BGP-Line Anti-DDoS Pro instances in an Alibaba Cloud account according to the specified filters.
+     * This data source provides the BGP-Line Anti-DDoS Pro(DdosCoo) instances of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.39.0.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
      * ```java
      * package generated_program;
      * 
@@ -739,11 +763,11 @@ public final class DdosFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var instanceDdosCooInstances = DdosFunctions.getDdosCooInstances(GetDdosCooInstancesArgs.builder()
-     *             .nameRegex(&#34;^ddoscoo&#34;)
+     *         final var default = DdosFunctions.getDdosCooInstances(GetDdosCooInstancesArgs.builder()
+     *             .nameRegex(&#34;tf&#34;)
      *             .build());
      * 
-     *         ctx.export(&#34;instance&#34;, alicloud_ddoscoo_instances.instance().stream().map(element -&gt; element.id()).collect(toList()));
+     *         ctx.export(&#34;instance&#34;, default_.instances().stream().map(element -&gt; element.id()).collect(toList()));
      *     }
      * }
      * ```

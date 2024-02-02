@@ -23,7 +23,7 @@ import javax.annotation.Nullable;
  * 
  * &gt; **NOTE:** Before exporting the image, you must authorize the cloud server ECS official service account to write OSS permissions through RAM.
  * 
- * &gt; **NOTE:** Available in 1.68.0+.
+ * &gt; **NOTE:** Available since v1.68.0+.
  * 
  * ## Example Usage
  * ```java
@@ -45,10 +45,10 @@ import javax.annotation.Nullable;
  * import com.pulumi.alicloud.ecs.SecurityGroupArgs;
  * import com.pulumi.alicloud.ecs.Instance;
  * import com.pulumi.alicloud.ecs.InstanceArgs;
- * import com.pulumi.alicloud.ecs.Image;
- * import com.pulumi.alicloud.ecs.ImageArgs;
  * import com.pulumi.random.RandomInteger;
  * import com.pulumi.random.RandomIntegerArgs;
+ * import com.pulumi.alicloud.ecs.Image;
+ * import com.pulumi.alicloud.ecs.ImageArgs;
  * import com.pulumi.alicloud.oss.Bucket;
  * import com.pulumi.alicloud.oss.BucketArgs;
  * import com.pulumi.alicloud.ecs.ImageExport;
@@ -105,15 +105,15 @@ import javax.annotation.Nullable;
  *             .internetMaxBandwidthOut(10)
  *             .build());
  * 
- *         var defaultImage = new Image(&#34;defaultImage&#34;, ImageArgs.builder()        
- *             .instanceId(defaultInstance.id())
- *             .imageName(&#34;terraform-example&#34;)
- *             .description(&#34;terraform-example&#34;)
- *             .build());
- * 
  *         var defaultRandomInteger = new RandomInteger(&#34;defaultRandomInteger&#34;, RandomIntegerArgs.builder()        
  *             .max(99999)
  *             .min(10000)
+ *             .build());
+ * 
+ *         var defaultImage = new Image(&#34;defaultImage&#34;, ImageArgs.builder()        
+ *             .instanceId(defaultInstance.id())
+ *             .imageName(defaultRandomInteger.result().applyValue(result -&gt; String.format(&#34;terraform-example-%s&#34;, result)))
+ *             .description(&#34;terraform-example&#34;)
  *             .build());
  * 
  *         var defaultBucket = new Bucket(&#34;defaultBucket&#34;, BucketArgs.builder()        
@@ -129,11 +129,6 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
- * ## Attributes Reference0
- * 
- *  The following attributes are exported:
- * 
- * * `id` - ID of the image.
  * 
  */
 @ResourceType(type="alicloud:ecs/imageExport:ImageExport")

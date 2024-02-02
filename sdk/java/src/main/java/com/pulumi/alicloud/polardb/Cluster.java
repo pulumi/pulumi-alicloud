@@ -7,6 +7,7 @@ import com.pulumi.alicloud.Utilities;
 import com.pulumi.alicloud.polardb.ClusterArgs;
 import com.pulumi.alicloud.polardb.inputs.ClusterState;
 import com.pulumi.alicloud.polardb.outputs.ClusterDbClusterIpArray;
+import com.pulumi.alicloud.polardb.outputs.ClusterDbRevisionVersionList;
 import com.pulumi.alicloud.polardb.outputs.ClusterParameter;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
@@ -239,6 +240,20 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<Integer>> dbNodeNum() {
         return Codegen.optional(this.dbNodeNum);
+    }
+    /**
+     * (Available since v1.216.0) The db_revision_version_list supports the following:
+     * 
+     */
+    @Export(name="dbRevisionVersionLists", refs={List.class,ClusterDbRevisionVersionList.class}, tree="[0,1]")
+    private Output<List<ClusterDbRevisionVersionList>> dbRevisionVersionLists;
+
+    /**
+     * @return (Available since v1.216.0) The db_revision_version_list supports the following:
+     * 
+     */
+    public Output<List<ClusterDbRevisionVersionList>> dbRevisionVersionLists() {
+        return this.dbRevisionVersionLists;
     }
     /**
      * Database type. Value options: MySQL, Oracle, PostgreSQL.
@@ -927,6 +942,20 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<Map<String,Object>>> tags() {
         return Codegen.optional(this.tags);
+    }
+    /**
+     * The Version Code of the target version, whose parameter values can be obtained from the [DescribeDBClusterVersion](https://www.alibabacloud.com/help/en/polardb/latest/describedbclusterversion) interface.
+     * 
+     */
+    @Export(name="targetDbRevisionVersionCode", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> targetDbRevisionVersionCode;
+
+    /**
+     * @return The Version Code of the target version, whose parameter values can be obtained from the [DescribeDBClusterVersion](https://www.alibabacloud.com/help/en/polardb/latest/describedbclusterversion) interface.
+     * 
+     */
+    public Output<Optional<String>> targetDbRevisionVersionCode() {
+        return Codegen.optional(this.targetDbRevisionVersionCode);
     }
     /**
      * (Available since 1.200.0) The region where the TDE key resides.

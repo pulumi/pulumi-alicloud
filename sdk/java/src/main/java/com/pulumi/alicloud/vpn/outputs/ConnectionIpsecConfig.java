@@ -13,50 +13,50 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ConnectionIpsecConfig {
     /**
-     * @return The authentication algorithm of phase-two negotiation. Valid value: md5 | sha1 | sha256 | sha384 | sha512 |. Default value: sha1
+     * @return IPsec authentication algorithm. sha1 and md5 are supported.
      * 
      */
     private @Nullable String ipsecAuthAlg;
     /**
-     * @return The encryption algorithm of phase-two negotiation. Valid value: aes | aes192 | aes256 | des | 3des. Default value: aes
+     * @return IPsec Encript algorithm.
      * 
      */
     private @Nullable String ipsecEncAlg;
     /**
-     * @return The SA lifecycle as the result of phase-two negotiation. The valid value is [0, 86400], the unit is second and the default value is 86400.
+     * @return IPsec lifetime.
      * 
      */
     private @Nullable Integer ipsecLifetime;
     /**
-     * @return The Diffie-Hellman key exchange algorithm used by phase-two negotiation. Valid value: group1 | group2 | group5 | group14 | group24| disabled. Default value: group2
+     * @return DH Group.
      * 
      */
     private @Nullable String ipsecPfs;
 
     private ConnectionIpsecConfig() {}
     /**
-     * @return The authentication algorithm of phase-two negotiation. Valid value: md5 | sha1 | sha256 | sha384 | sha512 |. Default value: sha1
+     * @return IPsec authentication algorithm. sha1 and md5 are supported.
      * 
      */
     public Optional<String> ipsecAuthAlg() {
         return Optional.ofNullable(this.ipsecAuthAlg);
     }
     /**
-     * @return The encryption algorithm of phase-two negotiation. Valid value: aes | aes192 | aes256 | des | 3des. Default value: aes
+     * @return IPsec Encript algorithm.
      * 
      */
     public Optional<String> ipsecEncAlg() {
         return Optional.ofNullable(this.ipsecEncAlg);
     }
     /**
-     * @return The SA lifecycle as the result of phase-two negotiation. The valid value is [0, 86400], the unit is second and the default value is 86400.
+     * @return IPsec lifetime.
      * 
      */
     public Optional<Integer> ipsecLifetime() {
         return Optional.ofNullable(this.ipsecLifetime);
     }
     /**
-     * @return The Diffie-Hellman key exchange algorithm used by phase-two negotiation. Valid value: group1 | group2 | group5 | group14 | group24| disabled. Default value: group2
+     * @return DH Group.
      * 
      */
     public Optional<String> ipsecPfs() {

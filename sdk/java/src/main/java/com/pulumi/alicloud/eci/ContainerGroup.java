@@ -365,14 +365,14 @@ public class ContainerGroup extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="instanceType", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> instanceType;
+    private Output<String> instanceType;
 
     /**
      * @return The type of the ECS instance.
      * 
      */
-    public Output<Optional<String>> instanceType() {
-        return Codegen.optional(this.instanceType);
+    public Output<String> instanceType() {
+        return this.instanceType;
     }
     /**
      * (Available since v1.170.0) The Public IP of the container group.
@@ -501,6 +501,34 @@ public class ContainerGroup extends com.pulumi.resources.CustomResource {
         return this.securityGroupId;
     }
     /**
+     * The maximum hourly price of the ECI spot instance.
+     * 
+     */
+    @Export(name="spotPriceLimit", refs={Double.class}, tree="[0]")
+    private Output<Double> spotPriceLimit;
+
+    /**
+     * @return The maximum hourly price of the ECI spot instance.
+     * 
+     */
+    public Output<Double> spotPriceLimit() {
+        return this.spotPriceLimit;
+    }
+    /**
+     * Filter the results by ECI spot type. Valid values: `NoSpot`, `SpotWithPriceLimit` and `SpotAsPriceGo`. Default to `NoSpot`.
+     * 
+     */
+    @Export(name="spotStrategy", refs={String.class}, tree="[0]")
+    private Output<String> spotStrategy;
+
+    /**
+     * @return Filter the results by ECI spot type. Valid values: `NoSpot`, `SpotWithPriceLimit` and `SpotAsPriceGo`. Default to `NoSpot`.
+     * 
+     */
+    public Output<String> spotStrategy() {
+        return this.spotStrategy;
+    }
+    /**
      * The status of container group.
      * 
      */
@@ -531,6 +559,20 @@ public class ContainerGroup extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<Map<String,Object>>> tags() {
         return Codegen.optional(this.tags);
+    }
+    /**
+     * The buffer time during which the program handles operations before the program stops. Unit: seconds.
+     * 
+     */
+    @Export(name="terminationGracePeriodSeconds", refs={Integer.class}, tree="[0]")
+    private Output</* @Nullable */ Integer> terminationGracePeriodSeconds;
+
+    /**
+     * @return The buffer time during which the program handles operations before the program stops. Unit: seconds.
+     * 
+     */
+    public Output<Optional<Integer>> terminationGracePeriodSeconds() {
+        return Codegen.optional(this.terminationGracePeriodSeconds);
     }
     /**
      * The list of volumes. See `volumes` below.

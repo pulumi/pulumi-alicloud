@@ -35,15 +35,15 @@ public final class SamlProviderArgs extends com.pulumi.resources.ResourceArgs {
      * The metadata file, which is Base64 encoded. The file is provided by an IdP that supports SAML 2.0.
      * 
      */
-    @Import(name="encodedsamlMetadataDocument")
-    private @Nullable Output<String> encodedsamlMetadataDocument;
+    @Import(name="encodedsamlMetadataDocument", required=true)
+    private Output<String> encodedsamlMetadataDocument;
 
     /**
      * @return The metadata file, which is Base64 encoded. The file is provided by an IdP that supports SAML 2.0.
      * 
      */
-    public Optional<Output<String>> encodedsamlMetadataDocument() {
-        return Optional.ofNullable(this.encodedsamlMetadataDocument);
+    public Output<String> encodedsamlMetadataDocument() {
+        return this.encodedsamlMetadataDocument;
     }
 
     /**
@@ -114,7 +114,7 @@ public final class SamlProviderArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder encodedsamlMetadataDocument(@Nullable Output<String> encodedsamlMetadataDocument) {
+        public Builder encodedsamlMetadataDocument(Output<String> encodedsamlMetadataDocument) {
             $.encodedsamlMetadataDocument = encodedsamlMetadataDocument;
             return this;
         }
@@ -151,6 +151,9 @@ public final class SamlProviderArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public SamlProviderArgs build() {
+            if ($.encodedsamlMetadataDocument == null) {
+                throw new MissingRequiredPropertyException("SamlProviderArgs", "encodedsamlMetadataDocument");
+            }
             if ($.samlProviderName == null) {
                 throw new MissingRequiredPropertyException("SamlProviderArgs", "samlProviderName");
             }
