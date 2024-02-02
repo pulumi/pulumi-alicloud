@@ -338,14 +338,15 @@ func Provider() tfbridge.ProviderInfo {
 	p := shimv1.NewProvider(alicloud.Provider().(*schema.Provider))
 
 	prov := tfbridge.ProviderInfo{
-		P:           p,
-		Name:        "alicloud",
-		Description: "A Pulumi package for creating and managing AliCloud resources.",
-		Keywords:    []string{"pulumi", "alicloud"},
-		Homepage:    "https://pulumi.io",
-		License:     "Apache-2.0",
-		GitHubOrg:   "aliyun",
-		Repository:  "https://github.com/pulumi/pulumi-alicloud",
+		P:            p,
+		Name:         "alicloud",
+		Description:  "A Pulumi package for creating and managing AliCloud resources.",
+		Keywords:     []string{"pulumi", "alicloud"},
+		Homepage:     "https://pulumi.io",
+		License:      "Apache-2.0",
+		GitHubOrg:    "aliyun",
+		Repository:   "https://github.com/pulumi/pulumi-alicloud",
+		MetadataInfo: tfbridge.NewProviderMetadata(metadata),
 		Config: map[string]*tfbridge.SchemaInfo{
 			"ecs_role_name": {
 				Default: &tfbridge.DefaultInfo{
@@ -2557,7 +2558,6 @@ func Provider() tfbridge.ProviderInfo {
 			},
 			Namespaces: namespaceMap,
 		},
-		MetadataInfo: tfbridge.NewProviderMetadata(metadata),
 	}
 	prov.RenameResourceWithAlias("alicloud_ddosbgp_instance", resource(dnsMod, "DdosBgpInstance"),
 		resource(ddosMod, "DdosBgpInstance"), dnsMod, ddosMod, nil)
@@ -2571,26 +2571,9 @@ func Provider() tfbridge.ProviderInfo {
 	prov.RenameDataSource("alicloud_ots_tables", dataSource(ossMod, "getTables"),
 		dataSource(otsMod, "getTables"), ossMod, otsMod, nil)
 
-	mappedModKeys := make([]string, 0, len(mappedMods))
-	for k := range mappedMods {
-		mappedModKeys = append(mappedModKeys, k)
-	}
-
-	moduleNameMap := make(map[string]string, len(mappedMods))
-	for k, v := range mappedMods {
-		k = strings.ReplaceAll(k, "_", "")
-		k = strings.ToLower(k)
-		moduleNameMap[k] = v
-	}
-
-	prov.MustComputeTokens(tks.KnownModules("alicloud_", "", mappedModKeys,
+	prov.MustComputeTokens(tks.MappedModules("alicloud_", "", mappedMods,
 		func(mod, name string) (string, error) {
-			mod = strings.ToLower(mod)
-			m, ok := moduleNameMap[mod]
-			if !ok {
-				return "", fmt.Errorf("unmapped module '%s'", mod)
-			}
-			return resource(m, name).String(), nil
+			return resource(mod, name).String(), nil
 		}))
 
 	prov.SetAutonaming(255, "-")
