@@ -4,8 +4,8 @@
 package com.pulumi.alicloud.polardb;
 
 import com.pulumi.alicloud.Utilities;
-import com.pulumi.alicloud.polardb.EndpointArgs;
-import com.pulumi.alicloud.polardb.inputs.EndpointState;
+import com.pulumi.alicloud.polardb.ClusterEndpointArgs;
+import com.pulumi.alicloud.polardb.inputs.ClusterEndpointState;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
@@ -18,11 +18,11 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a PolarDB endpoint resource to manage custom endpoint of PolarDB cluster.
+ * Provides a PolarDB endpoint resource to manage cluster endpoint of PolarDB cluster.
  * 
- * &gt; **NOTE:** Available since v1.80.0.
- * **NOTE:** After v1.80.0 and before v1.121.0, you can only use this resource to manage the custom endpoint. Since v1.121.0, you also can import the primary endpoint and the cluster endpoint, to modify their ssl status and so on.
- * **NOTE:** The primary endpoint and the default cluster endpoint can not be created or deleted manually.
+ * &gt; **NOTE:** Available since v1.217.0
+ * 
+ * &gt; **NOTE:** The default cluster endpoint can not be created or deleted manually.
  * 
  * ## Example Usage
  * ```java
@@ -39,8 +39,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.alicloud.vpc.SwitchArgs;
  * import com.pulumi.alicloud.polardb.Cluster;
  * import com.pulumi.alicloud.polardb.ClusterArgs;
- * import com.pulumi.alicloud.polardb.Endpoint;
- * import com.pulumi.alicloud.polardb.EndpointArgs;
+ * import com.pulumi.alicloud.polardb.ClusterEndpoint;
+ * import com.pulumi.alicloud.polardb.ClusterEndpointArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -82,9 +82,8 @@ import javax.annotation.Nullable;
  *             .description(&#34;terraform-example&#34;)
  *             .build());
  * 
- *         var defaultEndpoint = new Endpoint(&#34;defaultEndpoint&#34;, EndpointArgs.builder()        
+ *         var defaultClusterEndpoint = new ClusterEndpoint(&#34;defaultClusterEndpoint&#34;, ClusterEndpointArgs.builder()        
  *             .dbClusterId(defaultCluster.id())
- *             .endpointType(&#34;Custom&#34;)
  *             .build());
  * 
  *     }
@@ -96,12 +95,12 @@ import javax.annotation.Nullable;
  * PolarDB endpoint can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:polardb/endpoint:Endpoint example pc-abc123456:pe-abc123456
+ *  $ pulumi import alicloud:polardb/clusterEndpoint:ClusterEndpoint example pc-abc123456:pe-abc123456
  * ```
  * 
  */
-@ResourceType(type="alicloud:polardb/endpoint:Endpoint")
-public class Endpoint extends com.pulumi.resources.CustomResource {
+@ResourceType(type="alicloud:polardb/clusterEndpoint:ClusterEndpoint")
+public class ClusterEndpoint extends com.pulumi.resources.CustomResource {
     /**
      * Whether the new node automatically joins the default cluster address. Valid values are `Enable`, `Disable`. When creating a new custom endpoint, default to `Disable`.
      * 
@@ -159,14 +158,14 @@ public class Endpoint extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.dbEndpointDescription);
     }
     /**
-     * (Available since v1.161.0) The ID of the cluster endpoint.
+     * The ID of the cluster endpoint.
      * 
      */
     @Export(name="dbEndpointId", refs={String.class}, tree="[0]")
     private Output<String> dbEndpointId;
 
     /**
-     * @return (Available since v1.161.0) The ID of the cluster endpoint.
+     * @return The ID of the cluster endpoint.
      * 
      */
     public Output<String> dbEndpointId() {
@@ -187,18 +186,18 @@ public class Endpoint extends com.pulumi.resources.CustomResource {
         return this.endpointConfig;
     }
     /**
-     * Type of the endpoint. Before v1.121.0, it only can be `Custom`. since v1.121.0, `Custom`, `Cluster`, `Primary` are valid, default to `Custom`. However when creating a new endpoint, it also only can be `Custom`.
+     * Type of endpoint.
      * 
      */
     @Export(name="endpointType", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> endpointType;
+    private Output<String> endpointType;
 
     /**
-     * @return Type of the endpoint. Before v1.121.0, it only can be `Custom`. since v1.121.0, `Custom`, `Cluster`, `Primary` are valid, default to `Custom`. However when creating a new endpoint, it also only can be `Custom`.
+     * @return Type of endpoint.
      * 
      */
-    public Output<Optional<String>> endpointType() {
-        return Codegen.optional(this.endpointType);
+    public Output<String> endpointType() {
+        return this.endpointType;
     }
     /**
      * The network type of the endpoint address.
@@ -258,6 +257,8 @@ public class Endpoint extends com.pulumi.resources.CustomResource {
     }
     /**
      * Specifies whether automatic rotation of SSL certificates is enabled. Valid values: `Enable`,`Disable`.
+     * **NOTE:** For a PolarDB for MySQL cluster, this parameter is required, and only one connection string in each endpoint can enable the ssl, for other notes, see [Configure SSL encryption](https://www.alibabacloud.com/help/doc-detail/153182.htm).
+     * For a PolarDB for PostgreSQL cluster or a PolarDB-O cluster, this parameter is not required, by default, SSL encryption is enabled for all endpoints.
      * 
      */
     @Export(name="sslAutoRotate", refs={String.class}, tree="[0]")
@@ -265,38 +266,36 @@ public class Endpoint extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Specifies whether automatic rotation of SSL certificates is enabled. Valid values: `Enable`,`Disable`.
+     * **NOTE:** For a PolarDB for MySQL cluster, this parameter is required, and only one connection string in each endpoint can enable the ssl, for other notes, see [Configure SSL encryption](https://www.alibabacloud.com/help/doc-detail/153182.htm).
+     * For a PolarDB for PostgreSQL cluster or a PolarDB-O cluster, this parameter is not required, by default, SSL encryption is enabled for all endpoints.
      * 
      */
     public Output<Optional<String>> sslAutoRotate() {
         return Codegen.optional(this.sslAutoRotate);
     }
     /**
-     * Specifies SSL certificate download link.\
-     * **NOTE:** For a PolarDB for MySQL cluster, this parameter is required, and only one connection string in each endpoint can enable the ssl, for other notes, see [Configure SSL encryption](https://www.alibabacloud.com/help/doc-detail/153182.htm).
-     * For a PolarDB for PostgreSQL cluster or a PolarDB-O cluster, this parameter is not required, by default, SSL encryption is enabled for all endpoints.
+     * The specifies SSL certificate download link.
      * 
      */
     @Export(name="sslCertificateUrl", refs={String.class}, tree="[0]")
     private Output<String> sslCertificateUrl;
 
     /**
-     * @return Specifies SSL certificate download link.\
-     * **NOTE:** For a PolarDB for MySQL cluster, this parameter is required, and only one connection string in each endpoint can enable the ssl, for other notes, see [Configure SSL encryption](https://www.alibabacloud.com/help/doc-detail/153182.htm).
-     * For a PolarDB for PostgreSQL cluster or a PolarDB-O cluster, this parameter is not required, by default, SSL encryption is enabled for all endpoints.
+     * @return The specifies SSL certificate download link.
      * 
      */
     public Output<String> sslCertificateUrl() {
         return this.sslCertificateUrl;
     }
     /**
-     * (Available since v1.121.0) The SSL connection string.
+     * The SSL connection string.
      * 
      */
     @Export(name="sslConnectionString", refs={String.class}, tree="[0]")
     private Output<String> sslConnectionString;
 
     /**
-     * @return (Available since v1.121.0) The SSL connection string.
+     * @return The SSL connection string.
      * 
      */
     public Output<String> sslConnectionString() {
@@ -317,14 +316,14 @@ public class Endpoint extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.sslEnabled);
     }
     /**
-     * (Available since v1.121.0) The time when the SSL certificate expires. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+     * The time when the SSL certificate expires. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
      * 
      */
     @Export(name="sslExpireTime", refs={String.class}, tree="[0]")
     private Output<String> sslExpireTime;
 
     /**
-     * @return (Available since v1.121.0) The time when the SSL certificate expires. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+     * @return The time when the SSL certificate expires. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
      * 
      */
     public Output<String> sslExpireTime() {
@@ -335,15 +334,15 @@ public class Endpoint extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public Endpoint(String name) {
-        this(name, EndpointArgs.Empty);
+    public ClusterEndpoint(String name) {
+        this(name, ClusterEndpointArgs.Empty);
     }
     /**
      *
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public Endpoint(String name, EndpointArgs args) {
+    public ClusterEndpoint(String name, ClusterEndpointArgs args) {
         this(name, args, null);
     }
     /**
@@ -352,12 +351,12 @@ public class Endpoint extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public Endpoint(String name, EndpointArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:polardb/endpoint:Endpoint", name, args == null ? EndpointArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public ClusterEndpoint(String name, ClusterEndpointArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:polardb/clusterEndpoint:ClusterEndpoint", name, args == null ? ClusterEndpointArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
     }
 
-    private Endpoint(String name, Output<String> id, @Nullable EndpointState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:polardb/endpoint:Endpoint", name, state, makeResourceOptions(options, id));
+    private ClusterEndpoint(String name, Output<String> id, @Nullable ClusterEndpointState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:polardb/clusterEndpoint:ClusterEndpoint", name, state, makeResourceOptions(options, id));
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
@@ -376,7 +375,7 @@ public class Endpoint extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static Endpoint get(String name, Output<String> id, @Nullable EndpointState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        return new Endpoint(name, id, state, options);
+    public static ClusterEndpoint get(String name, Output<String> id, @Nullable ClusterEndpointState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        return new ClusterEndpoint(name, id, state, options);
     }
 }

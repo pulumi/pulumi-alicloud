@@ -19,13 +19,13 @@ class NamespaceArgs:
                  specification: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Namespace resource.
-        :param pulumi.Input[str] namespace: Indicator warehouse name. The namespace can contain lowercase letters, digits, and hyphens (-).
-        :param pulumi.Input[str] description: Description of indicator warehouse.
-        :param pulumi.Input[str] specification: Data storage duration. Valid values: `cms.s1.12xlarge`, `cms.s1.2xlarge`, `cms.s1.3xlarge`, `cms.s1.6xlarge`, `cms.s1.large`, `cms.s1.xlarge`. 
+        :param pulumi.Input[str] namespace: The name of the namespace. The name can contain lowercase letters, digits, and hyphens (-).
+        :param pulumi.Input[str] description: The description of the namespace.
+        :param pulumi.Input[str] specification: The data retention period. Default value: `cms.s1.3xlarge`. Valid values:
                - `cms.s1.large`: Data storage duration is 15 days.
                - `cms.s1.xlarge`: Data storage duration is 32 days.
                - `cms.s1.2xlarge`: Data storage duration 63 days.
-               - `cms.s1.3xlarge`: (Default) Data storage duration 93 days.
+               - `cms.s1.3xlarge`: Data storage duration 93 days.
                - `cms.s1.6xlarge`: Data storage duration 185 days.
                - `cms.s1.12xlarge`: Data storage duration 376 days.
         """
@@ -39,7 +39,7 @@ class NamespaceArgs:
     @pulumi.getter
     def namespace(self) -> pulumi.Input[str]:
         """
-        Indicator warehouse name. The namespace can contain lowercase letters, digits, and hyphens (-).
+        The name of the namespace. The name can contain lowercase letters, digits, and hyphens (-).
         """
         return pulumi.get(self, "namespace")
 
@@ -51,7 +51,7 @@ class NamespaceArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        Description of indicator warehouse.
+        The description of the namespace.
         """
         return pulumi.get(self, "description")
 
@@ -63,11 +63,11 @@ class NamespaceArgs:
     @pulumi.getter
     def specification(self) -> Optional[pulumi.Input[str]]:
         """
-        Data storage duration. Valid values: `cms.s1.12xlarge`, `cms.s1.2xlarge`, `cms.s1.3xlarge`, `cms.s1.6xlarge`, `cms.s1.large`, `cms.s1.xlarge`. 
+        The data retention period. Default value: `cms.s1.3xlarge`. Valid values:
         - `cms.s1.large`: Data storage duration is 15 days.
         - `cms.s1.xlarge`: Data storage duration is 32 days.
         - `cms.s1.2xlarge`: Data storage duration 63 days.
-        - `cms.s1.3xlarge`: (Default) Data storage duration 93 days.
+        - `cms.s1.3xlarge`: Data storage duration 93 days.
         - `cms.s1.6xlarge`: Data storage duration 185 days.
         - `cms.s1.12xlarge`: Data storage duration 376 days.
         """
@@ -86,13 +86,13 @@ class _NamespaceState:
                  specification: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Namespace resources.
-        :param pulumi.Input[str] description: Description of indicator warehouse.
-        :param pulumi.Input[str] namespace: Indicator warehouse name. The namespace can contain lowercase letters, digits, and hyphens (-).
-        :param pulumi.Input[str] specification: Data storage duration. Valid values: `cms.s1.12xlarge`, `cms.s1.2xlarge`, `cms.s1.3xlarge`, `cms.s1.6xlarge`, `cms.s1.large`, `cms.s1.xlarge`. 
+        :param pulumi.Input[str] description: The description of the namespace.
+        :param pulumi.Input[str] namespace: The name of the namespace. The name can contain lowercase letters, digits, and hyphens (-).
+        :param pulumi.Input[str] specification: The data retention period. Default value: `cms.s1.3xlarge`. Valid values:
                - `cms.s1.large`: Data storage duration is 15 days.
                - `cms.s1.xlarge`: Data storage duration is 32 days.
                - `cms.s1.2xlarge`: Data storage duration 63 days.
-               - `cms.s1.3xlarge`: (Default) Data storage duration 93 days.
+               - `cms.s1.3xlarge`: Data storage duration 93 days.
                - `cms.s1.6xlarge`: Data storage duration 185 days.
                - `cms.s1.12xlarge`: Data storage duration 376 days.
         """
@@ -107,7 +107,7 @@ class _NamespaceState:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        Description of indicator warehouse.
+        The description of the namespace.
         """
         return pulumi.get(self, "description")
 
@@ -119,7 +119,7 @@ class _NamespaceState:
     @pulumi.getter
     def namespace(self) -> Optional[pulumi.Input[str]]:
         """
-        Indicator warehouse name. The namespace can contain lowercase letters, digits, and hyphens (-).
+        The name of the namespace. The name can contain lowercase letters, digits, and hyphens (-).
         """
         return pulumi.get(self, "namespace")
 
@@ -131,11 +131,11 @@ class _NamespaceState:
     @pulumi.getter
     def specification(self) -> Optional[pulumi.Input[str]]:
         """
-        Data storage duration. Valid values: `cms.s1.12xlarge`, `cms.s1.2xlarge`, `cms.s1.3xlarge`, `cms.s1.6xlarge`, `cms.s1.large`, `cms.s1.xlarge`. 
+        The data retention period. Default value: `cms.s1.3xlarge`. Valid values:
         - `cms.s1.large`: Data storage duration is 15 days.
         - `cms.s1.xlarge`: Data storage duration is 32 days.
         - `cms.s1.2xlarge`: Data storage duration 63 days.
-        - `cms.s1.3xlarge`: (Default) Data storage duration 93 days.
+        - `cms.s1.3xlarge`: Data storage duration 93 days.
         - `cms.s1.6xlarge`: Data storage duration 185 days.
         - `cms.s1.12xlarge`: Data storage duration 376 days.
         """
@@ -171,7 +171,8 @@ class Namespace(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
 
         example = alicloud.cms.Namespace("example",
-            namespace="tf_example",
+            description="tf-example",
+            namespace="tf-example",
             specification="cms.s1.large")
         ```
 
@@ -180,18 +181,18 @@ class Namespace(pulumi.CustomResource):
         Cloud Monitor Service Namespace can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:cms/namespace:Namespace example <namespace>
+         $ pulumi import alicloud:cms/namespace:Namespace example <id>
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] description: Description of indicator warehouse.
-        :param pulumi.Input[str] namespace: Indicator warehouse name. The namespace can contain lowercase letters, digits, and hyphens (-).
-        :param pulumi.Input[str] specification: Data storage duration. Valid values: `cms.s1.12xlarge`, `cms.s1.2xlarge`, `cms.s1.3xlarge`, `cms.s1.6xlarge`, `cms.s1.large`, `cms.s1.xlarge`. 
+        :param pulumi.Input[str] description: The description of the namespace.
+        :param pulumi.Input[str] namespace: The name of the namespace. The name can contain lowercase letters, digits, and hyphens (-).
+        :param pulumi.Input[str] specification: The data retention period. Default value: `cms.s1.3xlarge`. Valid values:
                - `cms.s1.large`: Data storage duration is 15 days.
                - `cms.s1.xlarge`: Data storage duration is 32 days.
                - `cms.s1.2xlarge`: Data storage duration 63 days.
-               - `cms.s1.3xlarge`: (Default) Data storage duration 93 days.
+               - `cms.s1.3xlarge`: Data storage duration 93 days.
                - `cms.s1.6xlarge`: Data storage duration 185 days.
                - `cms.s1.12xlarge`: Data storage duration 376 days.
         """
@@ -217,7 +218,8 @@ class Namespace(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
 
         example = alicloud.cms.Namespace("example",
-            namespace="tf_example",
+            description="tf-example",
+            namespace="tf-example",
             specification="cms.s1.large")
         ```
 
@@ -226,7 +228,7 @@ class Namespace(pulumi.CustomResource):
         Cloud Monitor Service Namespace can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:cms/namespace:Namespace example <namespace>
+         $ pulumi import alicloud:cms/namespace:Namespace example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -281,13 +283,13 @@ class Namespace(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] description: Description of indicator warehouse.
-        :param pulumi.Input[str] namespace: Indicator warehouse name. The namespace can contain lowercase letters, digits, and hyphens (-).
-        :param pulumi.Input[str] specification: Data storage duration. Valid values: `cms.s1.12xlarge`, `cms.s1.2xlarge`, `cms.s1.3xlarge`, `cms.s1.6xlarge`, `cms.s1.large`, `cms.s1.xlarge`. 
+        :param pulumi.Input[str] description: The description of the namespace.
+        :param pulumi.Input[str] namespace: The name of the namespace. The name can contain lowercase letters, digits, and hyphens (-).
+        :param pulumi.Input[str] specification: The data retention period. Default value: `cms.s1.3xlarge`. Valid values:
                - `cms.s1.large`: Data storage duration is 15 days.
                - `cms.s1.xlarge`: Data storage duration is 32 days.
                - `cms.s1.2xlarge`: Data storage duration 63 days.
-               - `cms.s1.3xlarge`: (Default) Data storage duration 93 days.
+               - `cms.s1.3xlarge`: Data storage duration 93 days.
                - `cms.s1.6xlarge`: Data storage duration 185 days.
                - `cms.s1.12xlarge`: Data storage duration 376 days.
         """
@@ -304,7 +306,7 @@ class Namespace(pulumi.CustomResource):
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[str]]:
         """
-        Description of indicator warehouse.
+        The description of the namespace.
         """
         return pulumi.get(self, "description")
 
@@ -312,7 +314,7 @@ class Namespace(pulumi.CustomResource):
     @pulumi.getter
     def namespace(self) -> pulumi.Output[str]:
         """
-        Indicator warehouse name. The namespace can contain lowercase letters, digits, and hyphens (-).
+        The name of the namespace. The name can contain lowercase letters, digits, and hyphens (-).
         """
         return pulumi.get(self, "namespace")
 
@@ -320,11 +322,11 @@ class Namespace(pulumi.CustomResource):
     @pulumi.getter
     def specification(self) -> pulumi.Output[str]:
         """
-        Data storage duration. Valid values: `cms.s1.12xlarge`, `cms.s1.2xlarge`, `cms.s1.3xlarge`, `cms.s1.6xlarge`, `cms.s1.large`, `cms.s1.xlarge`. 
+        The data retention period. Default value: `cms.s1.3xlarge`. Valid values:
         - `cms.s1.large`: Data storage duration is 15 days.
         - `cms.s1.xlarge`: Data storage duration is 32 days.
         - `cms.s1.2xlarge`: Data storage duration 63 days.
-        - `cms.s1.3xlarge`: (Default) Data storage duration 93 days.
+        - `cms.s1.3xlarge`: Data storage duration 93 days.
         - `cms.s1.6xlarge`: Data storage duration 185 days.
         - `cms.s1.12xlarge`: Data storage duration 376 days.
         """

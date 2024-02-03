@@ -30,7 +30,8 @@ namespace Pulumi.AliCloud.Cms
     /// {
     ///     var example = new AliCloud.Cms.Namespace("example", new()
     ///     {
-    ///         NamespaceName = "tf_example",
+    ///         Description = "tf-example",
+    ///         NamespaceName = "tf-example",
     ///         Specification = "cms.s1.large",
     ///     });
     /// 
@@ -42,30 +43,30 @@ namespace Pulumi.AliCloud.Cms
     /// Cloud Monitor Service Namespace can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:cms/namespace:Namespace example &lt;namespace&gt;
+    ///  $ pulumi import alicloud:cms/namespace:Namespace example &lt;id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:cms/namespace:Namespace")]
     public partial class Namespace : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Description of indicator warehouse.
+        /// The description of the namespace.
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// Indicator warehouse name. The namespace can contain lowercase letters, digits, and hyphens (-).
+        /// The name of the namespace. The name can contain lowercase letters, digits, and hyphens (-).
         /// </summary>
         [Output("namespace")]
         public Output<string> NamespaceName { get; private set; } = null!;
 
         /// <summary>
-        /// Data storage duration. Valid values: `cms.s1.12xlarge`, `cms.s1.2xlarge`, `cms.s1.3xlarge`, `cms.s1.6xlarge`, `cms.s1.large`, `cms.s1.xlarge`. 
+        /// The data retention period. Default value: `cms.s1.3xlarge`. Valid values:
         /// - `cms.s1.large`: Data storage duration is 15 days.
         /// - `cms.s1.xlarge`: Data storage duration is 32 days.
         /// - `cms.s1.2xlarge`: Data storage duration 63 days.
-        /// - `cms.s1.3xlarge`: (Default) Data storage duration 93 days.
+        /// - `cms.s1.3xlarge`: Data storage duration 93 days.
         /// - `cms.s1.6xlarge`: Data storage duration 185 days.
         /// - `cms.s1.12xlarge`: Data storage duration 376 days.
         /// </summary>
@@ -119,23 +120,23 @@ namespace Pulumi.AliCloud.Cms
     public sealed class NamespaceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Description of indicator warehouse.
+        /// The description of the namespace.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Indicator warehouse name. The namespace can contain lowercase letters, digits, and hyphens (-).
+        /// The name of the namespace. The name can contain lowercase letters, digits, and hyphens (-).
         /// </summary>
         [Input("namespace", required: true)]
         public Input<string> NamespaceName { get; set; } = null!;
 
         /// <summary>
-        /// Data storage duration. Valid values: `cms.s1.12xlarge`, `cms.s1.2xlarge`, `cms.s1.3xlarge`, `cms.s1.6xlarge`, `cms.s1.large`, `cms.s1.xlarge`. 
+        /// The data retention period. Default value: `cms.s1.3xlarge`. Valid values:
         /// - `cms.s1.large`: Data storage duration is 15 days.
         /// - `cms.s1.xlarge`: Data storage duration is 32 days.
         /// - `cms.s1.2xlarge`: Data storage duration 63 days.
-        /// - `cms.s1.3xlarge`: (Default) Data storage duration 93 days.
+        /// - `cms.s1.3xlarge`: Data storage duration 93 days.
         /// - `cms.s1.6xlarge`: Data storage duration 185 days.
         /// - `cms.s1.12xlarge`: Data storage duration 376 days.
         /// </summary>
@@ -151,23 +152,23 @@ namespace Pulumi.AliCloud.Cms
     public sealed class NamespaceState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Description of indicator warehouse.
+        /// The description of the namespace.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Indicator warehouse name. The namespace can contain lowercase letters, digits, and hyphens (-).
+        /// The name of the namespace. The name can contain lowercase letters, digits, and hyphens (-).
         /// </summary>
         [Input("namespace")]
         public Input<string>? NamespaceName { get; set; }
 
         /// <summary>
-        /// Data storage duration. Valid values: `cms.s1.12xlarge`, `cms.s1.2xlarge`, `cms.s1.3xlarge`, `cms.s1.6xlarge`, `cms.s1.large`, `cms.s1.xlarge`. 
+        /// The data retention period. Default value: `cms.s1.3xlarge`. Valid values:
         /// - `cms.s1.large`: Data storage duration is 15 days.
         /// - `cms.s1.xlarge`: Data storage duration is 32 days.
         /// - `cms.s1.2xlarge`: Data storage duration 63 days.
-        /// - `cms.s1.3xlarge`: (Default) Data storage duration 93 days.
+        /// - `cms.s1.3xlarge`: Data storage duration 93 days.
         /// - `cms.s1.6xlarge`: Data storage duration 185 days.
         /// - `cms.s1.12xlarge`: Data storage duration 376 days.
         /// </summary>

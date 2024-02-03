@@ -14,7 +14,7 @@ import (
 
 // Provides a PolarDB endpoint address resource to allocate an Internet endpoint address string for PolarDB instance.
 //
-// > **NOTE:** Available in v1.68.0+. Each PolarDB instance will allocate a intranet connection string automatically and its prefix is Cluster ID.
+// > **NOTE:** Available since v1.68.0. Each PolarDB instance will allocate a intranet connection string automatically and its prefix is Cluster ID.
 //
 //	To avoid unnecessary conflict, please specified a internet connection prefix before applying the resource.
 //
@@ -37,6 +37,7 @@ import (
 //				DbType:    pulumi.StringRef("MySQL"),
 //				DbVersion: pulumi.StringRef("8.0"),
 //				PayType:   "PostPaid",
+//				Category:  pulumi.StringRef("Normal"),
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -112,7 +113,7 @@ type EndpointAddress struct {
 	IpAddress pulumi.StringOutput `pulumi:"ipAddress"`
 	// Internet connection net type. Valid value: `Public`. Default to `Public`. Currently supported only `Public`.
 	NetType pulumi.StringPtrOutput `pulumi:"netType"`
-	// Connection cluster or endpoint port.
+	// Port of the specified endpoint. Valid values: 3000 to 5999.
 	Port pulumi.StringOutput `pulumi:"port"`
 }
 
@@ -164,7 +165,7 @@ type endpointAddressState struct {
 	IpAddress *string `pulumi:"ipAddress"`
 	// Internet connection net type. Valid value: `Public`. Default to `Public`. Currently supported only `Public`.
 	NetType *string `pulumi:"netType"`
-	// Connection cluster or endpoint port.
+	// Port of the specified endpoint. Valid values: 3000 to 5999.
 	Port *string `pulumi:"port"`
 }
 
@@ -181,7 +182,7 @@ type EndpointAddressState struct {
 	IpAddress pulumi.StringPtrInput
 	// Internet connection net type. Valid value: `Public`. Default to `Public`. Currently supported only `Public`.
 	NetType pulumi.StringPtrInput
-	// Connection cluster or endpoint port.
+	// Port of the specified endpoint. Valid values: 3000 to 5999.
 	Port pulumi.StringPtrInput
 }
 
@@ -198,6 +199,8 @@ type endpointAddressArgs struct {
 	DbEndpointId string `pulumi:"dbEndpointId"`
 	// Internet connection net type. Valid value: `Public`. Default to `Public`. Currently supported only `Public`.
 	NetType *string `pulumi:"netType"`
+	// Port of the specified endpoint. Valid values: 3000 to 5999.
+	Port *string `pulumi:"port"`
 }
 
 // The set of arguments for constructing a EndpointAddress resource.
@@ -210,6 +213,8 @@ type EndpointAddressArgs struct {
 	DbEndpointId pulumi.StringInput
 	// Internet connection net type. Valid value: `Public`. Default to `Public`. Currently supported only `Public`.
 	NetType pulumi.StringPtrInput
+	// Port of the specified endpoint. Valid values: 3000 to 5999.
+	Port pulumi.StringPtrInput
 }
 
 func (EndpointAddressArgs) ElementType() reflect.Type {
@@ -329,7 +334,7 @@ func (o EndpointAddressOutput) NetType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EndpointAddress) pulumi.StringPtrOutput { return v.NetType }).(pulumi.StringPtrOutput)
 }
 
-// Connection cluster or endpoint port.
+// Port of the specified endpoint. Valid values: 3000 to 5999.
 func (o EndpointAddressOutput) Port() pulumi.StringOutput {
 	return o.ApplyT(func(v *EndpointAddress) pulumi.StringOutput { return v.Port }).(pulumi.StringOutput)
 }

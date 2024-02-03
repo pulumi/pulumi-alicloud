@@ -4,8 +4,8 @@
 package com.pulumi.alicloud.polardb;
 
 import com.pulumi.alicloud.Utilities;
-import com.pulumi.alicloud.polardb.EndpointAddressArgs;
-import com.pulumi.alicloud.polardb.inputs.EndpointAddressState;
+import com.pulumi.alicloud.polardb.PrimaryEndpointArgs;
+import com.pulumi.alicloud.polardb.inputs.PrimaryEndpointState;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
@@ -15,10 +15,11 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a PolarDB endpoint address resource to allocate an Internet endpoint address string for PolarDB instance.
+ * Provides a PolarDB endpoint resource to manage primary endpoint of PolarDB cluster.
  * 
- * &gt; **NOTE:** Available since v1.68.0. Each PolarDB instance will allocate a intranet connection string automatically and its prefix is Cluster ID.
- *  To avoid unnecessary conflict, please specified a internet connection prefix before applying the resource.
+ * &gt; **NOTE:** Available since v1.217.0
+ * 
+ * &gt; **NOTE:** The default primary endpoint can not be created or deleted manually.
  * 
  * ## Example Usage
  * ```java
@@ -35,9 +36,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.alicloud.vpc.SwitchArgs;
  * import com.pulumi.alicloud.polardb.Cluster;
  * import com.pulumi.alicloud.polardb.ClusterArgs;
- * import com.pulumi.alicloud.polardb.inputs.GetEndpointsArgs;
- * import com.pulumi.alicloud.polardb.EndpointAddress;
- * import com.pulumi.alicloud.polardb.EndpointAddressArgs;
+ * import com.pulumi.alicloud.polardb.PrimaryEndpoint;
+ * import com.pulumi.alicloud.polardb.PrimaryEndpointArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -79,15 +79,8 @@ import javax.annotation.Nullable;
  *             .description(&#34;terraform-example&#34;)
  *             .build());
  * 
- *         final var defaultEndpoints = PolardbFunctions.getEndpoints(GetEndpointsArgs.builder()
+ *         var defaultPrimaryEndpoint = new PrimaryEndpoint(&#34;defaultPrimaryEndpoint&#34;, PrimaryEndpointArgs.builder()        
  *             .dbClusterId(defaultCluster.id())
- *             .build());
- * 
- *         var defaultEndpointAddress = new EndpointAddress(&#34;defaultEndpointAddress&#34;, EndpointAddressArgs.builder()        
- *             .dbClusterId(defaultCluster.id())
- *             .dbEndpointId(defaultEndpoints.applyValue(getEndpointsResult -&gt; getEndpointsResult).applyValue(defaultEndpoints -&gt; defaultEndpoints.applyValue(getEndpointsResult -&gt; getEndpointsResult.endpoints()[0].dbEndpointId())))
- *             .connectionPrefix(&#34;polardbexample&#34;)
- *             .netType(&#34;Public&#34;)
  *             .build());
  * 
  *     }
@@ -96,15 +89,15 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * PolarDB endpoint address can be imported using the id, e.g.
+ * PolarDB endpoint can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:polardb/endpointAddress:EndpointAddress example pc-abc123456:pe-abc123456
+ *  $ pulumi import alicloud:polardb/primaryEndpoint:PrimaryEndpoint example pc-abc123456:pe-abc123456
  * ```
  * 
  */
-@ResourceType(type="alicloud:polardb/endpointAddress:EndpointAddress")
-public class EndpointAddress extends com.pulumi.resources.CustomResource {
+@ResourceType(type="alicloud:polardb/primaryEndpoint:PrimaryEndpoint")
+public class PrimaryEndpoint extends com.pulumi.resources.CustomResource {
     /**
      * Prefix of the specified endpoint. The prefix must be 6 to 30 characters in length, and can contain lowercase letters, digits, and hyphens (-), must start with a letter and end with a digit or letter.
      * 
@@ -118,20 +111,6 @@ public class EndpointAddress extends com.pulumi.resources.CustomResource {
      */
     public Output<String> connectionPrefix() {
         return this.connectionPrefix;
-    }
-    /**
-     * Connection cluster or endpoint string.
-     * 
-     */
-    @Export(name="connectionString", refs={String.class}, tree="[0]")
-    private Output<String> connectionString;
-
-    /**
-     * @return Connection cluster or endpoint string.
-     * 
-     */
-    public Output<String> connectionString() {
-        return this.connectionString;
     }
     /**
      * The Id of cluster that can run database.
@@ -148,42 +127,56 @@ public class EndpointAddress extends com.pulumi.resources.CustomResource {
         return this.dbClusterId;
     }
     /**
-     * The Id of endpoint that can run database.
+     * The name of the endpoint.
+     * 
+     */
+    @Export(name="dbEndpointDescription", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> dbEndpointDescription;
+
+    /**
+     * @return The name of the endpoint.
+     * 
+     */
+    public Output<Optional<String>> dbEndpointDescription() {
+        return Codegen.optional(this.dbEndpointDescription);
+    }
+    /**
+     * The ID of the cluster endpoint.
      * 
      */
     @Export(name="dbEndpointId", refs={String.class}, tree="[0]")
     private Output<String> dbEndpointId;
 
     /**
-     * @return The Id of endpoint that can run database.
+     * @return The ID of the cluster endpoint.
      * 
      */
     public Output<String> dbEndpointId() {
         return this.dbEndpointId;
     }
     /**
-     * The ip address of connection string.
+     * Type of endpoint.
      * 
      */
-    @Export(name="ipAddress", refs={String.class}, tree="[0]")
-    private Output<String> ipAddress;
+    @Export(name="endpointType", refs={String.class}, tree="[0]")
+    private Output<String> endpointType;
 
     /**
-     * @return The ip address of connection string.
+     * @return Type of endpoint.
      * 
      */
-    public Output<String> ipAddress() {
-        return this.ipAddress;
+    public Output<String> endpointType() {
+        return this.endpointType;
     }
     /**
-     * Internet connection net type. Valid value: `Public`. Default to `Public`. Currently supported only `Public`.
+     * The network type of the endpoint address.
      * 
      */
     @Export(name="netType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> netType;
 
     /**
-     * @return Internet connection net type. Valid value: `Public`. Default to `Public`. Currently supported only `Public`.
+     * @return The network type of the endpoint address.
      * 
      */
     public Output<Optional<String>> netType() {
@@ -203,20 +196,94 @@ public class EndpointAddress extends com.pulumi.resources.CustomResource {
     public Output<String> port() {
         return this.port;
     }
+    /**
+     * Specifies whether automatic rotation of SSL certificates is enabled. Valid values: `Enable`,`Disable`.
+     * **NOTE:** For a PolarDB for MySQL cluster, this parameter is required, and only one connection string in each endpoint can enable the ssl, for other notes, see [Configure SSL encryption](https://www.alibabacloud.com/help/doc-detail/153182.htm).
+     * For a PolarDB for PostgreSQL cluster or a PolarDB-O cluster, this parameter is not required, by default, SSL encryption is enabled for all endpoints.
+     * 
+     */
+    @Export(name="sslAutoRotate", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> sslAutoRotate;
+
+    /**
+     * @return Specifies whether automatic rotation of SSL certificates is enabled. Valid values: `Enable`,`Disable`.
+     * **NOTE:** For a PolarDB for MySQL cluster, this parameter is required, and only one connection string in each endpoint can enable the ssl, for other notes, see [Configure SSL encryption](https://www.alibabacloud.com/help/doc-detail/153182.htm).
+     * For a PolarDB for PostgreSQL cluster or a PolarDB-O cluster, this parameter is not required, by default, SSL encryption is enabled for all endpoints.
+     * 
+     */
+    public Output<Optional<String>> sslAutoRotate() {
+        return Codegen.optional(this.sslAutoRotate);
+    }
+    /**
+     * The specifies SSL certificate download link.
+     * 
+     */
+    @Export(name="sslCertificateUrl", refs={String.class}, tree="[0]")
+    private Output<String> sslCertificateUrl;
+
+    /**
+     * @return The specifies SSL certificate download link.
+     * 
+     */
+    public Output<String> sslCertificateUrl() {
+        return this.sslCertificateUrl;
+    }
+    /**
+     * The SSL connection string.
+     * 
+     */
+    @Export(name="sslConnectionString", refs={String.class}, tree="[0]")
+    private Output<String> sslConnectionString;
+
+    /**
+     * @return The SSL connection string.
+     * 
+     */
+    public Output<String> sslConnectionString() {
+        return this.sslConnectionString;
+    }
+    /**
+     * Specifies how to modify the SSL encryption status. Valid values: `Disable`, `Enable`, `Update`.
+     * 
+     */
+    @Export(name="sslEnabled", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> sslEnabled;
+
+    /**
+     * @return Specifies how to modify the SSL encryption status. Valid values: `Disable`, `Enable`, `Update`.
+     * 
+     */
+    public Output<Optional<String>> sslEnabled() {
+        return Codegen.optional(this.sslEnabled);
+    }
+    /**
+     * The time when the SSL certificate expires. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+     * 
+     */
+    @Export(name="sslExpireTime", refs={String.class}, tree="[0]")
+    private Output<String> sslExpireTime;
+
+    /**
+     * @return The time when the SSL certificate expires. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+     * 
+     */
+    public Output<String> sslExpireTime() {
+        return this.sslExpireTime;
+    }
 
     /**
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public EndpointAddress(String name) {
-        this(name, EndpointAddressArgs.Empty);
+    public PrimaryEndpoint(String name) {
+        this(name, PrimaryEndpointArgs.Empty);
     }
     /**
      *
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public EndpointAddress(String name, EndpointAddressArgs args) {
+    public PrimaryEndpoint(String name, PrimaryEndpointArgs args) {
         this(name, args, null);
     }
     /**
@@ -225,12 +292,12 @@ public class EndpointAddress extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public EndpointAddress(String name, EndpointAddressArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:polardb/endpointAddress:EndpointAddress", name, args == null ? EndpointAddressArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public PrimaryEndpoint(String name, PrimaryEndpointArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:polardb/primaryEndpoint:PrimaryEndpoint", name, args == null ? PrimaryEndpointArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
     }
 
-    private EndpointAddress(String name, Output<String> id, @Nullable EndpointAddressState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:polardb/endpointAddress:EndpointAddress", name, state, makeResourceOptions(options, id));
+    private PrimaryEndpoint(String name, Output<String> id, @Nullable PrimaryEndpointState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:polardb/primaryEndpoint:PrimaryEndpoint", name, state, makeResourceOptions(options, id));
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
@@ -249,7 +316,7 @@ public class EndpointAddress extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static EndpointAddress get(String name, Output<String> id, @Nullable EndpointAddressState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        return new EndpointAddress(name, id, state, options);
+    public static PrimaryEndpoint get(String name, Output<String> id, @Nullable PrimaryEndpointState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        return new PrimaryEndpoint(name, id, state, options);
     }
 }

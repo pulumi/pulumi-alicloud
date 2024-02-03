@@ -128,7 +128,8 @@ export class EciScalingConfiguration extends pulumi.CustomResource {
      */
     public readonly autoMatchImageCache!: pulumi.Output<boolean | undefined>;
     /**
-     * The name of the container group.
+     * The name of the container group. which must contain 2-128 characters (
+     * English), starting with numbers, English lowercase letters , and can contain number, and hypens `-`.
      */
     public readonly containerGroupName!: pulumi.Output<string | undefined>;
     /**
@@ -380,7 +381,8 @@ export interface EciScalingConfigurationState {
      */
     autoMatchImageCache?: pulumi.Input<boolean>;
     /**
-     * The name of the container group.
+     * The name of the container group. which must contain 2-128 characters (
+     * English), starting with numbers, English lowercase letters , and can contain number, and hypens `-`.
      */
     containerGroupName?: pulumi.Input<string>;
     /**
@@ -539,7 +541,8 @@ export interface EciScalingConfigurationArgs {
      */
     autoMatchImageCache?: pulumi.Input<boolean>;
     /**
-     * The name of the container group.
+     * The name of the container group. which must contain 2-128 characters (
+     * English), starting with numbers, English lowercase letters , and can contain number, and hypens `-`.
      */
     containerGroupName?: pulumi.Input<string>;
     /**

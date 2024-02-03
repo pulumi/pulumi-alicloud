@@ -25,6 +25,11 @@ export type Cluster = import("./cluster").Cluster;
 export const Cluster: typeof import("./cluster").Cluster = null as any;
 utilities.lazyLoad(exports, ["Cluster"], () => require("./cluster"));
 
+export { ClusterEndpointArgs, ClusterEndpointState } from "./clusterEndpoint";
+export type ClusterEndpoint = import("./clusterEndpoint").ClusterEndpoint;
+export const ClusterEndpoint: typeof import("./clusterEndpoint").ClusterEndpoint = null as any;
+utilities.lazyLoad(exports, ["ClusterEndpoint"], () => require("./clusterEndpoint"));
+
 export { DatabaseArgs, DatabaseState } from "./database";
 export type Database = import("./database").Database;
 export const Database: typeof import("./database").Database = null as any;
@@ -90,6 +95,11 @@ export type ParameterGroup = import("./parameterGroup").ParameterGroup;
 export const ParameterGroup: typeof import("./parameterGroup").ParameterGroup = null as any;
 utilities.lazyLoad(exports, ["ParameterGroup"], () => require("./parameterGroup"));
 
+export { PrimaryEndpointArgs, PrimaryEndpointState } from "./primaryEndpoint";
+export type PrimaryEndpoint = import("./primaryEndpoint").PrimaryEndpoint;
+export const PrimaryEndpoint: typeof import("./primaryEndpoint").PrimaryEndpoint = null as any;
+utilities.lazyLoad(exports, ["PrimaryEndpoint"], () => require("./primaryEndpoint"));
+
 
 const _module = {
     version: utilities.getVersion(),
@@ -103,6 +113,8 @@ const _module = {
                 return new BackupPolicy(name, <any>undefined, { urn })
             case "alicloud:polardb/cluster:Cluster":
                 return new Cluster(name, <any>undefined, { urn })
+            case "alicloud:polardb/clusterEndpoint:ClusterEndpoint":
+                return new ClusterEndpoint(name, <any>undefined, { urn })
             case "alicloud:polardb/database:Database":
                 return new Database(name, <any>undefined, { urn })
             case "alicloud:polardb/endpoint:Endpoint":
@@ -113,6 +125,8 @@ const _module = {
                 return new GlobalDatabaseNetwork(name, <any>undefined, { urn })
             case "alicloud:polardb/parameterGroup:ParameterGroup":
                 return new ParameterGroup(name, <any>undefined, { urn })
+            case "alicloud:polardb/primaryEndpoint:PrimaryEndpoint":
+                return new PrimaryEndpoint(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
@@ -122,8 +136,10 @@ pulumi.runtime.registerResourceModule("alicloud", "polardb/account", _module)
 pulumi.runtime.registerResourceModule("alicloud", "polardb/accountPrivilege", _module)
 pulumi.runtime.registerResourceModule("alicloud", "polardb/backupPolicy", _module)
 pulumi.runtime.registerResourceModule("alicloud", "polardb/cluster", _module)
+pulumi.runtime.registerResourceModule("alicloud", "polardb/clusterEndpoint", _module)
 pulumi.runtime.registerResourceModule("alicloud", "polardb/database", _module)
 pulumi.runtime.registerResourceModule("alicloud", "polardb/endpoint", _module)
 pulumi.runtime.registerResourceModule("alicloud", "polardb/endpointAddress", _module)
 pulumi.runtime.registerResourceModule("alicloud", "polardb/globalDatabaseNetwork", _module)
 pulumi.runtime.registerResourceModule("alicloud", "polardb/parameterGroup", _module)
+pulumi.runtime.registerResourceModule("alicloud", "polardb/primaryEndpoint", _module)

@@ -146,7 +146,8 @@ namespace Pulumi.AliCloud.Ess
         public Output<bool?> AutoMatchImageCache { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the container group.
+        /// The name of the container group. which must contain 2-128 characters (
+        /// English), starting with numbers, English lowercase letters , and can contain number, and hypens `-`.
         /// </summary>
         [Output("containerGroupName")]
         public Output<string?> ContainerGroupName { get; private set; } = null!;
@@ -421,7 +422,8 @@ namespace Pulumi.AliCloud.Ess
         public Input<bool>? AutoMatchImageCache { get; set; }
 
         /// <summary>
-        /// The name of the container group.
+        /// The name of the container group. which must contain 2-128 characters (
+        /// English), starting with numbers, English lowercase letters , and can contain number, and hypens `-`.
         /// </summary>
         [Input("containerGroupName")]
         public Input<string>? ContainerGroupName { get; set; }
@@ -694,7 +696,8 @@ namespace Pulumi.AliCloud.Ess
         public Input<bool>? AutoMatchImageCache { get; set; }
 
         /// <summary>
-        /// The name of the container group.
+        /// The name of the container group. which must contain 2-128 characters (
+        /// English), starting with numbers, English lowercase letters , and can contain number, and hypens `-`.
         /// </summary>
         [Input("containerGroupName")]
         public Input<string>? ContainerGroupName { get; set; }

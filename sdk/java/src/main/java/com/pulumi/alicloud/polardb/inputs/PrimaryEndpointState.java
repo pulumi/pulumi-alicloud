@@ -5,33 +5,15 @@ package com.pulumi.alicloud.polardb.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import java.lang.Object;
 import java.lang.String;
-import java.util.List;
-import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
 
-public final class EndpointState extends com.pulumi.resources.ResourceArgs {
+public final class PrimaryEndpointState extends com.pulumi.resources.ResourceArgs {
 
-    public static final EndpointState Empty = new EndpointState();
-
-    /**
-     * Whether the new node automatically joins the default cluster address. Valid values are `Enable`, `Disable`. When creating a new custom endpoint, default to `Disable`.
-     * 
-     */
-    @Import(name="autoAddNewNodes")
-    private @Nullable Output<String> autoAddNewNodes;
-
-    /**
-     * @return Whether the new node automatically joins the default cluster address. Valid values are `Enable`, `Disable`. When creating a new custom endpoint, default to `Disable`.
-     * 
-     */
-    public Optional<Output<String>> autoAddNewNodes() {
-        return Optional.ofNullable(this.autoAddNewNodes);
-    }
+    public static final PrimaryEndpointState Empty = new PrimaryEndpointState();
 
     /**
      * Prefix of the specified endpoint. The prefix must be 6 to 30 characters in length, and can contain lowercase letters, digits, and hyphens (-), must start with a letter and end with a digit or letter.
@@ -79,14 +61,14 @@ public final class EndpointState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * (Available since v1.161.0) The ID of the cluster endpoint.
+     * The ID of the cluster endpoint.
      * 
      */
     @Import(name="dbEndpointId")
     private @Nullable Output<String> dbEndpointId;
 
     /**
-     * @return (Available since v1.161.0) The ID of the cluster endpoint.
+     * @return The ID of the cluster endpoint.
      * 
      */
     public Optional<Output<String>> dbEndpointId() {
@@ -94,29 +76,14 @@ public final class EndpointState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The advanced settings of the endpoint of Apsara PolarDB clusters are in JSON format. Including the settings of consistency level, transaction splitting, connection pool, and offload reads from primary node. For more details, see the [description of EndpointConfig in the Request parameters table for details](https://www.alibabacloud.com/help/doc-detail/116593.htm).
-     * 
-     */
-    @Import(name="endpointConfig")
-    private @Nullable Output<Map<String,Object>> endpointConfig;
-
-    /**
-     * @return The advanced settings of the endpoint of Apsara PolarDB clusters are in JSON format. Including the settings of consistency level, transaction splitting, connection pool, and offload reads from primary node. For more details, see the [description of EndpointConfig in the Request parameters table for details](https://www.alibabacloud.com/help/doc-detail/116593.htm).
-     * 
-     */
-    public Optional<Output<Map<String,Object>>> endpointConfig() {
-        return Optional.ofNullable(this.endpointConfig);
-    }
-
-    /**
-     * Type of the endpoint. Before v1.121.0, it only can be `Custom`. since v1.121.0, `Custom`, `Cluster`, `Primary` are valid, default to `Custom`. However when creating a new endpoint, it also only can be `Custom`.
+     * Type of endpoint.
      * 
      */
     @Import(name="endpointType")
     private @Nullable Output<String> endpointType;
 
     /**
-     * @return Type of the endpoint. Before v1.121.0, it only can be `Custom`. since v1.121.0, `Custom`, `Cluster`, `Primary` are valid, default to `Custom`. However when creating a new endpoint, it also only can be `Custom`.
+     * @return Type of endpoint.
      * 
      */
     public Optional<Output<String>> endpointType() {
@@ -139,21 +106,6 @@ public final class EndpointState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Node id list for endpoint configuration. At least 2 nodes if specified, or if the cluster has more than 3 nodes, read-only endpoint is allowed to mount only one node. Default is all nodes.
-     * 
-     */
-    @Import(name="nodes")
-    private @Nullable Output<List<String>> nodes;
-
-    /**
-     * @return Node id list for endpoint configuration. At least 2 nodes if specified, or if the cluster has more than 3 nodes, read-only endpoint is allowed to mount only one node. Default is all nodes.
-     * 
-     */
-    public Optional<Output<List<String>>> nodes() {
-        return Optional.ofNullable(this.nodes);
-    }
-
-    /**
      * Port of the specified endpoint. Valid values: 3000 to 5999.
      * 
      */
@@ -169,22 +121,9 @@ public final class EndpointState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Read or write mode. Valid values are `ReadWrite`, `ReadOnly`. When creating a new custom endpoint, default to `ReadOnly`.
-     * 
-     */
-    @Import(name="readWriteMode")
-    private @Nullable Output<String> readWriteMode;
-
-    /**
-     * @return Read or write mode. Valid values are `ReadWrite`, `ReadOnly`. When creating a new custom endpoint, default to `ReadOnly`.
-     * 
-     */
-    public Optional<Output<String>> readWriteMode() {
-        return Optional.ofNullable(this.readWriteMode);
-    }
-
-    /**
      * Specifies whether automatic rotation of SSL certificates is enabled. Valid values: `Enable`,`Disable`.
+     * **NOTE:** For a PolarDB for MySQL cluster, this parameter is required, and only one connection string in each endpoint can enable the ssl, for other notes, see [Configure SSL encryption](https://www.alibabacloud.com/help/doc-detail/153182.htm).
+     * For a PolarDB for PostgreSQL cluster or a PolarDB-O cluster, this parameter is not required, by default, SSL encryption is enabled for all endpoints.
      * 
      */
     @Import(name="sslAutoRotate")
@@ -192,6 +131,8 @@ public final class EndpointState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Specifies whether automatic rotation of SSL certificates is enabled. Valid values: `Enable`,`Disable`.
+     * **NOTE:** For a PolarDB for MySQL cluster, this parameter is required, and only one connection string in each endpoint can enable the ssl, for other notes, see [Configure SSL encryption](https://www.alibabacloud.com/help/doc-detail/153182.htm).
+     * For a PolarDB for PostgreSQL cluster or a PolarDB-O cluster, this parameter is not required, by default, SSL encryption is enabled for all endpoints.
      * 
      */
     public Optional<Output<String>> sslAutoRotate() {
@@ -199,18 +140,14 @@ public final class EndpointState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Specifies SSL certificate download link.\
-     * **NOTE:** For a PolarDB for MySQL cluster, this parameter is required, and only one connection string in each endpoint can enable the ssl, for other notes, see [Configure SSL encryption](https://www.alibabacloud.com/help/doc-detail/153182.htm).
-     * For a PolarDB for PostgreSQL cluster or a PolarDB-O cluster, this parameter is not required, by default, SSL encryption is enabled for all endpoints.
+     * The specifies SSL certificate download link.
      * 
      */
     @Import(name="sslCertificateUrl")
     private @Nullable Output<String> sslCertificateUrl;
 
     /**
-     * @return Specifies SSL certificate download link.\
-     * **NOTE:** For a PolarDB for MySQL cluster, this parameter is required, and only one connection string in each endpoint can enable the ssl, for other notes, see [Configure SSL encryption](https://www.alibabacloud.com/help/doc-detail/153182.htm).
-     * For a PolarDB for PostgreSQL cluster or a PolarDB-O cluster, this parameter is not required, by default, SSL encryption is enabled for all endpoints.
+     * @return The specifies SSL certificate download link.
      * 
      */
     public Optional<Output<String>> sslCertificateUrl() {
@@ -218,14 +155,14 @@ public final class EndpointState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * (Available since v1.121.0) The SSL connection string.
+     * The SSL connection string.
      * 
      */
     @Import(name="sslConnectionString")
     private @Nullable Output<String> sslConnectionString;
 
     /**
-     * @return (Available since v1.121.0) The SSL connection string.
+     * @return The SSL connection string.
      * 
      */
     public Optional<Output<String>> sslConnectionString() {
@@ -248,34 +185,30 @@ public final class EndpointState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * (Available since v1.121.0) The time when the SSL certificate expires. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+     * The time when the SSL certificate expires. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
      * 
      */
     @Import(name="sslExpireTime")
     private @Nullable Output<String> sslExpireTime;
 
     /**
-     * @return (Available since v1.121.0) The time when the SSL certificate expires. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+     * @return The time when the SSL certificate expires. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
      * 
      */
     public Optional<Output<String>> sslExpireTime() {
         return Optional.ofNullable(this.sslExpireTime);
     }
 
-    private EndpointState() {}
+    private PrimaryEndpointState() {}
 
-    private EndpointState(EndpointState $) {
-        this.autoAddNewNodes = $.autoAddNewNodes;
+    private PrimaryEndpointState(PrimaryEndpointState $) {
         this.connectionPrefix = $.connectionPrefix;
         this.dbClusterId = $.dbClusterId;
         this.dbEndpointDescription = $.dbEndpointDescription;
         this.dbEndpointId = $.dbEndpointId;
-        this.endpointConfig = $.endpointConfig;
         this.endpointType = $.endpointType;
         this.netType = $.netType;
-        this.nodes = $.nodes;
         this.port = $.port;
-        this.readWriteMode = $.readWriteMode;
         this.sslAutoRotate = $.sslAutoRotate;
         this.sslCertificateUrl = $.sslCertificateUrl;
         this.sslConnectionString = $.sslConnectionString;
@@ -286,40 +219,19 @@ public final class EndpointState extends com.pulumi.resources.ResourceArgs {
     public static Builder builder() {
         return new Builder();
     }
-    public static Builder builder(EndpointState defaults) {
+    public static Builder builder(PrimaryEndpointState defaults) {
         return new Builder(defaults);
     }
 
     public static final class Builder {
-        private EndpointState $;
+        private PrimaryEndpointState $;
 
         public Builder() {
-            $ = new EndpointState();
+            $ = new PrimaryEndpointState();
         }
 
-        public Builder(EndpointState defaults) {
-            $ = new EndpointState(Objects.requireNonNull(defaults));
-        }
-
-        /**
-         * @param autoAddNewNodes Whether the new node automatically joins the default cluster address. Valid values are `Enable`, `Disable`. When creating a new custom endpoint, default to `Disable`.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder autoAddNewNodes(@Nullable Output<String> autoAddNewNodes) {
-            $.autoAddNewNodes = autoAddNewNodes;
-            return this;
-        }
-
-        /**
-         * @param autoAddNewNodes Whether the new node automatically joins the default cluster address. Valid values are `Enable`, `Disable`. When creating a new custom endpoint, default to `Disable`.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder autoAddNewNodes(String autoAddNewNodes) {
-            return autoAddNewNodes(Output.of(autoAddNewNodes));
+        public Builder(PrimaryEndpointState defaults) {
+            $ = new PrimaryEndpointState(Objects.requireNonNull(defaults));
         }
 
         /**
@@ -386,7 +298,7 @@ public final class EndpointState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dbEndpointId (Available since v1.161.0) The ID of the cluster endpoint.
+         * @param dbEndpointId The ID of the cluster endpoint.
          * 
          * @return builder
          * 
@@ -397,7 +309,7 @@ public final class EndpointState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dbEndpointId (Available since v1.161.0) The ID of the cluster endpoint.
+         * @param dbEndpointId The ID of the cluster endpoint.
          * 
          * @return builder
          * 
@@ -407,28 +319,7 @@ public final class EndpointState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param endpointConfig The advanced settings of the endpoint of Apsara PolarDB clusters are in JSON format. Including the settings of consistency level, transaction splitting, connection pool, and offload reads from primary node. For more details, see the [description of EndpointConfig in the Request parameters table for details](https://www.alibabacloud.com/help/doc-detail/116593.htm).
-         * 
-         * @return builder
-         * 
-         */
-        public Builder endpointConfig(@Nullable Output<Map<String,Object>> endpointConfig) {
-            $.endpointConfig = endpointConfig;
-            return this;
-        }
-
-        /**
-         * @param endpointConfig The advanced settings of the endpoint of Apsara PolarDB clusters are in JSON format. Including the settings of consistency level, transaction splitting, connection pool, and offload reads from primary node. For more details, see the [description of EndpointConfig in the Request parameters table for details](https://www.alibabacloud.com/help/doc-detail/116593.htm).
-         * 
-         * @return builder
-         * 
-         */
-        public Builder endpointConfig(Map<String,Object> endpointConfig) {
-            return endpointConfig(Output.of(endpointConfig));
-        }
-
-        /**
-         * @param endpointType Type of the endpoint. Before v1.121.0, it only can be `Custom`. since v1.121.0, `Custom`, `Cluster`, `Primary` are valid, default to `Custom`. However when creating a new endpoint, it also only can be `Custom`.
+         * @param endpointType Type of endpoint.
          * 
          * @return builder
          * 
@@ -439,7 +330,7 @@ public final class EndpointState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param endpointType Type of the endpoint. Before v1.121.0, it only can be `Custom`. since v1.121.0, `Custom`, `Cluster`, `Primary` are valid, default to `Custom`. However when creating a new endpoint, it also only can be `Custom`.
+         * @param endpointType Type of endpoint.
          * 
          * @return builder
          * 
@@ -470,37 +361,6 @@ public final class EndpointState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param nodes Node id list for endpoint configuration. At least 2 nodes if specified, or if the cluster has more than 3 nodes, read-only endpoint is allowed to mount only one node. Default is all nodes.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder nodes(@Nullable Output<List<String>> nodes) {
-            $.nodes = nodes;
-            return this;
-        }
-
-        /**
-         * @param nodes Node id list for endpoint configuration. At least 2 nodes if specified, or if the cluster has more than 3 nodes, read-only endpoint is allowed to mount only one node. Default is all nodes.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder nodes(List<String> nodes) {
-            return nodes(Output.of(nodes));
-        }
-
-        /**
-         * @param nodes Node id list for endpoint configuration. At least 2 nodes if specified, or if the cluster has more than 3 nodes, read-only endpoint is allowed to mount only one node. Default is all nodes.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder nodes(String... nodes) {
-            return nodes(List.of(nodes));
-        }
-
-        /**
          * @param port Port of the specified endpoint. Valid values: 3000 to 5999.
          * 
          * @return builder
@@ -522,28 +382,9 @@ public final class EndpointState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param readWriteMode Read or write mode. Valid values are `ReadWrite`, `ReadOnly`. When creating a new custom endpoint, default to `ReadOnly`.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder readWriteMode(@Nullable Output<String> readWriteMode) {
-            $.readWriteMode = readWriteMode;
-            return this;
-        }
-
-        /**
-         * @param readWriteMode Read or write mode. Valid values are `ReadWrite`, `ReadOnly`. When creating a new custom endpoint, default to `ReadOnly`.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder readWriteMode(String readWriteMode) {
-            return readWriteMode(Output.of(readWriteMode));
-        }
-
-        /**
          * @param sslAutoRotate Specifies whether automatic rotation of SSL certificates is enabled. Valid values: `Enable`,`Disable`.
+         * **NOTE:** For a PolarDB for MySQL cluster, this parameter is required, and only one connection string in each endpoint can enable the ssl, for other notes, see [Configure SSL encryption](https://www.alibabacloud.com/help/doc-detail/153182.htm).
+         * For a PolarDB for PostgreSQL cluster or a PolarDB-O cluster, this parameter is not required, by default, SSL encryption is enabled for all endpoints.
          * 
          * @return builder
          * 
@@ -555,6 +396,8 @@ public final class EndpointState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param sslAutoRotate Specifies whether automatic rotation of SSL certificates is enabled. Valid values: `Enable`,`Disable`.
+         * **NOTE:** For a PolarDB for MySQL cluster, this parameter is required, and only one connection string in each endpoint can enable the ssl, for other notes, see [Configure SSL encryption](https://www.alibabacloud.com/help/doc-detail/153182.htm).
+         * For a PolarDB for PostgreSQL cluster or a PolarDB-O cluster, this parameter is not required, by default, SSL encryption is enabled for all endpoints.
          * 
          * @return builder
          * 
@@ -564,9 +407,7 @@ public final class EndpointState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sslCertificateUrl Specifies SSL certificate download link.\
-         * **NOTE:** For a PolarDB for MySQL cluster, this parameter is required, and only one connection string in each endpoint can enable the ssl, for other notes, see [Configure SSL encryption](https://www.alibabacloud.com/help/doc-detail/153182.htm).
-         * For a PolarDB for PostgreSQL cluster or a PolarDB-O cluster, this parameter is not required, by default, SSL encryption is enabled for all endpoints.
+         * @param sslCertificateUrl The specifies SSL certificate download link.
          * 
          * @return builder
          * 
@@ -577,9 +418,7 @@ public final class EndpointState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sslCertificateUrl Specifies SSL certificate download link.\
-         * **NOTE:** For a PolarDB for MySQL cluster, this parameter is required, and only one connection string in each endpoint can enable the ssl, for other notes, see [Configure SSL encryption](https://www.alibabacloud.com/help/doc-detail/153182.htm).
-         * For a PolarDB for PostgreSQL cluster or a PolarDB-O cluster, this parameter is not required, by default, SSL encryption is enabled for all endpoints.
+         * @param sslCertificateUrl The specifies SSL certificate download link.
          * 
          * @return builder
          * 
@@ -589,7 +428,7 @@ public final class EndpointState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sslConnectionString (Available since v1.121.0) The SSL connection string.
+         * @param sslConnectionString The SSL connection string.
          * 
          * @return builder
          * 
@@ -600,7 +439,7 @@ public final class EndpointState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sslConnectionString (Available since v1.121.0) The SSL connection string.
+         * @param sslConnectionString The SSL connection string.
          * 
          * @return builder
          * 
@@ -631,7 +470,7 @@ public final class EndpointState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sslExpireTime (Available since v1.121.0) The time when the SSL certificate expires. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+         * @param sslExpireTime The time when the SSL certificate expires. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
          * 
          * @return builder
          * 
@@ -642,7 +481,7 @@ public final class EndpointState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sslExpireTime (Available since v1.121.0) The time when the SSL certificate expires. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+         * @param sslExpireTime The time when the SSL certificate expires. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
          * 
          * @return builder
          * 
@@ -651,7 +490,7 @@ public final class EndpointState extends com.pulumi.resources.ResourceArgs {
             return sslExpireTime(Output.of(sslExpireTime));
         }
 
-        public EndpointState build() {
+        public PrimaryEndpointState build() {
             return $;
         }
     }

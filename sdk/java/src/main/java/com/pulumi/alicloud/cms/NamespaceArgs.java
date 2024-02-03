@@ -17,14 +17,14 @@ public final class NamespaceArgs extends com.pulumi.resources.ResourceArgs {
     public static final NamespaceArgs Empty = new NamespaceArgs();
 
     /**
-     * Description of indicator warehouse.
+     * The description of the namespace.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return Description of indicator warehouse.
+     * @return The description of the namespace.
      * 
      */
     public Optional<Output<String>> description() {
@@ -32,14 +32,14 @@ public final class NamespaceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Indicator warehouse name. The namespace can contain lowercase letters, digits, and hyphens (-).
+     * The name of the namespace. The name can contain lowercase letters, digits, and hyphens (-).
      * 
      */
     @Import(name="namespace", required=true)
     private Output<String> namespace;
 
     /**
-     * @return Indicator warehouse name. The namespace can contain lowercase letters, digits, and hyphens (-).
+     * @return The name of the namespace. The name can contain lowercase letters, digits, and hyphens (-).
      * 
      */
     public Output<String> namespace() {
@@ -47,11 +47,11 @@ public final class NamespaceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Data storage duration. Valid values: `cms.s1.12xlarge`, `cms.s1.2xlarge`, `cms.s1.3xlarge`, `cms.s1.6xlarge`, `cms.s1.large`, `cms.s1.xlarge`.
+     * The data retention period. Default value: `cms.s1.3xlarge`. Valid values:
      * - `cms.s1.large`: Data storage duration is 15 days.
      * - `cms.s1.xlarge`: Data storage duration is 32 days.
      * - `cms.s1.2xlarge`: Data storage duration 63 days.
-     * - `cms.s1.3xlarge`: (Default) Data storage duration 93 days.
+     * - `cms.s1.3xlarge`: Data storage duration 93 days.
      * - `cms.s1.6xlarge`: Data storage duration 185 days.
      * - `cms.s1.12xlarge`: Data storage duration 376 days.
      * 
@@ -60,11 +60,11 @@ public final class NamespaceArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> specification;
 
     /**
-     * @return Data storage duration. Valid values: `cms.s1.12xlarge`, `cms.s1.2xlarge`, `cms.s1.3xlarge`, `cms.s1.6xlarge`, `cms.s1.large`, `cms.s1.xlarge`.
+     * @return The data retention period. Default value: `cms.s1.3xlarge`. Valid values:
      * - `cms.s1.large`: Data storage duration is 15 days.
      * - `cms.s1.xlarge`: Data storage duration is 32 days.
      * - `cms.s1.2xlarge`: Data storage duration 63 days.
-     * - `cms.s1.3xlarge`: (Default) Data storage duration 93 days.
+     * - `cms.s1.3xlarge`: Data storage duration 93 days.
      * - `cms.s1.6xlarge`: Data storage duration 185 days.
      * - `cms.s1.12xlarge`: Data storage duration 376 days.
      * 
@@ -100,7 +100,7 @@ public final class NamespaceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description Description of indicator warehouse.
+         * @param description The description of the namespace.
          * 
          * @return builder
          * 
@@ -111,7 +111,7 @@ public final class NamespaceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description Description of indicator warehouse.
+         * @param description The description of the namespace.
          * 
          * @return builder
          * 
@@ -121,7 +121,7 @@ public final class NamespaceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param namespace Indicator warehouse name. The namespace can contain lowercase letters, digits, and hyphens (-).
+         * @param namespace The name of the namespace. The name can contain lowercase letters, digits, and hyphens (-).
          * 
          * @return builder
          * 
@@ -132,7 +132,7 @@ public final class NamespaceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param namespace Indicator warehouse name. The namespace can contain lowercase letters, digits, and hyphens (-).
+         * @param namespace The name of the namespace. The name can contain lowercase letters, digits, and hyphens (-).
          * 
          * @return builder
          * 
@@ -142,11 +142,11 @@ public final class NamespaceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param specification Data storage duration. Valid values: `cms.s1.12xlarge`, `cms.s1.2xlarge`, `cms.s1.3xlarge`, `cms.s1.6xlarge`, `cms.s1.large`, `cms.s1.xlarge`.
+         * @param specification The data retention period. Default value: `cms.s1.3xlarge`. Valid values:
          * - `cms.s1.large`: Data storage duration is 15 days.
          * - `cms.s1.xlarge`: Data storage duration is 32 days.
          * - `cms.s1.2xlarge`: Data storage duration 63 days.
-         * - `cms.s1.3xlarge`: (Default) Data storage duration 93 days.
+         * - `cms.s1.3xlarge`: Data storage duration 93 days.
          * - `cms.s1.6xlarge`: Data storage duration 185 days.
          * - `cms.s1.12xlarge`: Data storage duration 376 days.
          * 
@@ -159,11 +159,11 @@ public final class NamespaceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param specification Data storage duration. Valid values: `cms.s1.12xlarge`, `cms.s1.2xlarge`, `cms.s1.3xlarge`, `cms.s1.6xlarge`, `cms.s1.large`, `cms.s1.xlarge`.
+         * @param specification The data retention period. Default value: `cms.s1.3xlarge`. Valid values:
          * - `cms.s1.large`: Data storage duration is 15 days.
          * - `cms.s1.xlarge`: Data storage duration is 32 days.
          * - `cms.s1.2xlarge`: Data storage duration 63 days.
-         * - `cms.s1.3xlarge`: (Default) Data storage duration 93 days.
+         * - `cms.s1.3xlarge`: Data storage duration 93 days.
          * - `cms.s1.6xlarge`: Data storage duration 185 days.
          * - `cms.s1.12xlarge`: Data storage duration 376 days.
          * 

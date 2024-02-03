@@ -148,7 +148,8 @@ type EciScalingConfiguration struct {
 	AutoCreateEip pulumi.BoolPtrOutput `pulumi:"autoCreateEip"`
 	// Whether to automatically match the image cache.
 	AutoMatchImageCache pulumi.BoolPtrOutput `pulumi:"autoMatchImageCache"`
-	// The name of the container group.
+	// The name of the container group. which must contain 2-128 characters (
+	// English), starting with numbers, English lowercase letters , and can contain number, and hypens `-`.
 	ContainerGroupName pulumi.StringPtrOutput `pulumi:"containerGroupName"`
 	// The list of containers. See `containers` below for details.
 	Containers EciScalingConfigurationContainerArrayOutput `pulumi:"containers"`
@@ -266,7 +267,8 @@ type eciScalingConfigurationState struct {
 	AutoCreateEip *bool `pulumi:"autoCreateEip"`
 	// Whether to automatically match the image cache.
 	AutoMatchImageCache *bool `pulumi:"autoMatchImageCache"`
-	// The name of the container group.
+	// The name of the container group. which must contain 2-128 characters (
+	// English), starting with numbers, English lowercase letters , and can contain number, and hypens `-`.
 	ContainerGroupName *string `pulumi:"containerGroupName"`
 	// The list of containers. See `containers` below for details.
 	Containers []EciScalingConfigurationContainer `pulumi:"containers"`
@@ -352,7 +354,8 @@ type EciScalingConfigurationState struct {
 	AutoCreateEip pulumi.BoolPtrInput
 	// Whether to automatically match the image cache.
 	AutoMatchImageCache pulumi.BoolPtrInput
-	// The name of the container group.
+	// The name of the container group. which must contain 2-128 characters (
+	// English), starting with numbers, English lowercase letters , and can contain number, and hypens `-`.
 	ContainerGroupName pulumi.StringPtrInput
 	// The list of containers. See `containers` below for details.
 	Containers EciScalingConfigurationContainerArrayInput
@@ -442,7 +445,8 @@ type eciScalingConfigurationArgs struct {
 	AutoCreateEip *bool `pulumi:"autoCreateEip"`
 	// Whether to automatically match the image cache.
 	AutoMatchImageCache *bool `pulumi:"autoMatchImageCache"`
-	// The name of the container group.
+	// The name of the container group. which must contain 2-128 characters (
+	// English), starting with numbers, English lowercase letters , and can contain number, and hypens `-`.
 	ContainerGroupName *string `pulumi:"containerGroupName"`
 	// The list of containers. See `containers` below for details.
 	Containers []EciScalingConfigurationContainer `pulumi:"containers"`
@@ -529,7 +533,8 @@ type EciScalingConfigurationArgs struct {
 	AutoCreateEip pulumi.BoolPtrInput
 	// Whether to automatically match the image cache.
 	AutoMatchImageCache pulumi.BoolPtrInput
-	// The name of the container group.
+	// The name of the container group. which must contain 2-128 characters (
+	// English), starting with numbers, English lowercase letters , and can contain number, and hypens `-`.
 	ContainerGroupName pulumi.StringPtrInput
 	// The list of containers. See `containers` below for details.
 	Containers EciScalingConfigurationContainerArrayInput
@@ -718,7 +723,8 @@ func (o EciScalingConfigurationOutput) AutoMatchImageCache() pulumi.BoolPtrOutpu
 	return o.ApplyT(func(v *EciScalingConfiguration) pulumi.BoolPtrOutput { return v.AutoMatchImageCache }).(pulumi.BoolPtrOutput)
 }
 
-// The name of the container group.
+// The name of the container group. which must contain 2-128 characters (
+// English), starting with numbers, English lowercase letters , and can contain number, and hypens `-`.
 func (o EciScalingConfigurationOutput) ContainerGroupName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EciScalingConfiguration) pulumi.StringPtrOutput { return v.ContainerGroupName }).(pulumi.StringPtrOutput)
 }

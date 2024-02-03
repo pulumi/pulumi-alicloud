@@ -46,7 +46,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var example = new Namespace(&#34;example&#34;, NamespaceArgs.builder()        
- *             .namespace(&#34;tf_example&#34;)
+ *             .description(&#34;tf-example&#34;)
+ *             .namespace(&#34;tf-example&#34;)
  *             .specification(&#34;cms.s1.large&#34;)
  *             .build());
  * 
@@ -59,46 +60,46 @@ import javax.annotation.Nullable;
  * Cloud Monitor Service Namespace can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:cms/namespace:Namespace example &lt;namespace&gt;
+ *  $ pulumi import alicloud:cms/namespace:Namespace example &lt;id&gt;
  * ```
  * 
  */
 @ResourceType(type="alicloud:cms/namespace:Namespace")
 public class Namespace extends com.pulumi.resources.CustomResource {
     /**
-     * Description of indicator warehouse.
+     * The description of the namespace.
      * 
      */
     @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
-     * @return Description of indicator warehouse.
+     * @return The description of the namespace.
      * 
      */
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
     }
     /**
-     * Indicator warehouse name. The namespace can contain lowercase letters, digits, and hyphens (-).
+     * The name of the namespace. The name can contain lowercase letters, digits, and hyphens (-).
      * 
      */
     @Export(name="namespace", refs={String.class}, tree="[0]")
     private Output<String> namespace;
 
     /**
-     * @return Indicator warehouse name. The namespace can contain lowercase letters, digits, and hyphens (-).
+     * @return The name of the namespace. The name can contain lowercase letters, digits, and hyphens (-).
      * 
      */
     public Output<String> namespace() {
         return this.namespace;
     }
     /**
-     * Data storage duration. Valid values: `cms.s1.12xlarge`, `cms.s1.2xlarge`, `cms.s1.3xlarge`, `cms.s1.6xlarge`, `cms.s1.large`, `cms.s1.xlarge`.
+     * The data retention period. Default value: `cms.s1.3xlarge`. Valid values:
      * - `cms.s1.large`: Data storage duration is 15 days.
      * - `cms.s1.xlarge`: Data storage duration is 32 days.
      * - `cms.s1.2xlarge`: Data storage duration 63 days.
-     * - `cms.s1.3xlarge`: (Default) Data storage duration 93 days.
+     * - `cms.s1.3xlarge`: Data storage duration 93 days.
      * - `cms.s1.6xlarge`: Data storage duration 185 days.
      * - `cms.s1.12xlarge`: Data storage duration 376 days.
      * 
@@ -107,11 +108,11 @@ public class Namespace extends com.pulumi.resources.CustomResource {
     private Output<String> specification;
 
     /**
-     * @return Data storage duration. Valid values: `cms.s1.12xlarge`, `cms.s1.2xlarge`, `cms.s1.3xlarge`, `cms.s1.6xlarge`, `cms.s1.large`, `cms.s1.xlarge`.
+     * @return The data retention period. Default value: `cms.s1.3xlarge`. Valid values:
      * - `cms.s1.large`: Data storage duration is 15 days.
      * - `cms.s1.xlarge`: Data storage duration is 32 days.
      * - `cms.s1.2xlarge`: Data storage duration 63 days.
-     * - `cms.s1.3xlarge`: (Default) Data storage duration 93 days.
+     * - `cms.s1.3xlarge`: Data storage duration 93 days.
      * - `cms.s1.6xlarge`: Data storage duration 185 days.
      * - `cms.s1.12xlarge`: Data storage duration 376 days.
      * 

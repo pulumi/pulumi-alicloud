@@ -7,7 +7,7 @@ import * as utilities from "../utilities";
 /**
  * Provides a PolarDB endpoint address resource to allocate an Internet endpoint address string for PolarDB instance.
  *
- * > **NOTE:** Available in v1.68.0+. Each PolarDB instance will allocate a intranet connection string automatically and its prefix is Cluster ID.
+ * > **NOTE:** Available since v1.68.0. Each PolarDB instance will allocate a intranet connection string automatically and its prefix is Cluster ID.
  *  To avoid unnecessary conflict, please specified a internet connection prefix before applying the resource.
  *
  * ## Example Usage
@@ -20,6 +20,7 @@ import * as utilities from "../utilities";
  *     dbType: "MySQL",
  *     dbVersion: "8.0",
  *     payType: "PostPaid",
+ *     category: "Normal",
  * });
  * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {
  *     vpcName: "terraform-example",
@@ -111,9 +112,9 @@ export class EndpointAddress extends pulumi.CustomResource {
      */
     public readonly netType!: pulumi.Output<string | undefined>;
     /**
-     * Connection cluster or endpoint port.
+     * Port of the specified endpoint. Valid values: 3000 to 5999.
      */
-    public /*out*/ readonly port!: pulumi.Output<string>;
+    public readonly port!: pulumi.Output<string>;
 
     /**
      * Create a EndpointAddress resource with the given unique name, arguments, and options.
@@ -147,9 +148,9 @@ export class EndpointAddress extends pulumi.CustomResource {
             resourceInputs["dbClusterId"] = args ? args.dbClusterId : undefined;
             resourceInputs["dbEndpointId"] = args ? args.dbEndpointId : undefined;
             resourceInputs["netType"] = args ? args.netType : undefined;
+            resourceInputs["port"] = args ? args.port : undefined;
             resourceInputs["connectionString"] = undefined /*out*/;
             resourceInputs["ipAddress"] = undefined /*out*/;
-            resourceInputs["port"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(EndpointAddress.__pulumiType, name, resourceInputs, opts);
@@ -185,7 +186,7 @@ export interface EndpointAddressState {
      */
     netType?: pulumi.Input<string>;
     /**
-     * Connection cluster or endpoint port.
+     * Port of the specified endpoint. Valid values: 3000 to 5999.
      */
     port?: pulumi.Input<string>;
 }
@@ -210,4 +211,8 @@ export interface EndpointAddressArgs {
      * Internet connection net type. Valid value: `Public`. Default to `Public`. Currently supported only `Public`.
      */
     netType?: pulumi.Input<string>;
+    /**
+     * Port of the specified endpoint. Valid values: 3000 to 5999.
+     */
+    port?: pulumi.Input<string>;
 }

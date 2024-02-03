@@ -10,11 +10,11 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.PolarDB
 {
     /// <summary>
-    /// Provides a PolarDB endpoint resource to manage custom endpoint of PolarDB cluster.
+    /// Provides a PolarDB endpoint resource to manage cluster endpoint of PolarDB cluster.
     /// 
-    /// &gt; **NOTE:** Available since v1.80.0.
-    /// **NOTE:** After v1.80.0 and before v1.121.0, you can only use this resource to manage the custom endpoint. Since v1.121.0, you also can import the primary endpoint and the cluster endpoint, to modify their ssl status and so on.
-    /// **NOTE:** The primary endpoint and the default cluster endpoint can not be created or deleted manually.
+    /// &gt; **NOTE:** Available since v1.217.0
+    /// 
+    /// &gt; **NOTE:** The default cluster endpoint can not be created or deleted manually.
     /// 
     /// ## Example Usage
     /// 
@@ -58,10 +58,9 @@ namespace Pulumi.AliCloud.PolarDB
     ///         Description = "terraform-example",
     ///     });
     /// 
-    ///     var defaultEndpoint = new AliCloud.PolarDB.Endpoint("defaultEndpoint", new()
+    ///     var defaultClusterEndpoint = new AliCloud.PolarDB.ClusterEndpoint("defaultClusterEndpoint", new()
     ///     {
     ///         DbClusterId = defaultCluster.Id,
-    ///         EndpointType = "Custom",
     ///     });
     /// 
     /// });
@@ -72,11 +71,11 @@ namespace Pulumi.AliCloud.PolarDB
     /// PolarDB endpoint can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:polardb/endpoint:Endpoint example pc-abc123456:pe-abc123456
+    ///  $ pulumi import alicloud:polardb/clusterEndpoint:ClusterEndpoint example pc-abc123456:pe-abc123456
     /// ```
     /// </summary>
-    [AliCloudResourceType("alicloud:polardb/endpoint:Endpoint")]
-    public partial class Endpoint : global::Pulumi.CustomResource
+    [AliCloudResourceType("alicloud:polardb/clusterEndpoint:ClusterEndpoint")]
+    public partial class ClusterEndpoint : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Whether the new node automatically joins the default cluster address. Valid values are `Enable`, `Disable`. When creating a new custom endpoint, default to `Disable`.
@@ -103,7 +102,7 @@ namespace Pulumi.AliCloud.PolarDB
         public Output<string?> DbEndpointDescription { get; private set; } = null!;
 
         /// <summary>
-        /// (Available since v1.161.0) The ID of the cluster endpoint.
+        /// The ID of the cluster endpoint.
         /// </summary>
         [Output("dbEndpointId")]
         public Output<string> DbEndpointId { get; private set; } = null!;
@@ -115,10 +114,10 @@ namespace Pulumi.AliCloud.PolarDB
         public Output<ImmutableDictionary<string, object>> EndpointConfig { get; private set; } = null!;
 
         /// <summary>
-        /// Type of the endpoint. Before v1.121.0, it only can be `Custom`. since v1.121.0, `Custom`, `Cluster`, `Primary` are valid, default to `Custom`. However when creating a new endpoint, it also only can be `Custom`.
+        /// Type of endpoint.
         /// </summary>
         [Output("endpointType")]
-        public Output<string?> EndpointType { get; private set; } = null!;
+        public Output<string> EndpointType { get; private set; } = null!;
 
         /// <summary>
         /// The network type of the endpoint address.
@@ -146,20 +145,20 @@ namespace Pulumi.AliCloud.PolarDB
 
         /// <summary>
         /// Specifies whether automatic rotation of SSL certificates is enabled. Valid values: `Enable`,`Disable`.
+        /// **NOTE:** For a PolarDB for MySQL cluster, this parameter is required, and only one connection string in each endpoint can enable the ssl, for other notes, see [Configure SSL encryption](https://www.alibabacloud.com/help/doc-detail/153182.htm).
+        /// For a PolarDB for PostgreSQL cluster or a PolarDB-O cluster, this parameter is not required, by default, SSL encryption is enabled for all endpoints.
         /// </summary>
         [Output("sslAutoRotate")]
         public Output<string?> SslAutoRotate { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies SSL certificate download link.  
-        /// **NOTE:** For a PolarDB for MySQL cluster, this parameter is required, and only one connection string in each endpoint can enable the ssl, for other notes, see [Configure SSL encryption](https://www.alibabacloud.com/help/doc-detail/153182.htm).
-        /// For a PolarDB for PostgreSQL cluster or a PolarDB-O cluster, this parameter is not required, by default, SSL encryption is enabled for all endpoints.
+        /// The specifies SSL certificate download link.
         /// </summary>
         [Output("sslCertificateUrl")]
         public Output<string> SslCertificateUrl { get; private set; } = null!;
 
         /// <summary>
-        /// (Available since v1.121.0) The SSL connection string.
+        /// The SSL connection string.
         /// </summary>
         [Output("sslConnectionString")]
         public Output<string> SslConnectionString { get; private set; } = null!;
@@ -171,26 +170,26 @@ namespace Pulumi.AliCloud.PolarDB
         public Output<string?> SslEnabled { get; private set; } = null!;
 
         /// <summary>
-        /// (Available since v1.121.0) The time when the SSL certificate expires. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+        /// The time when the SSL certificate expires. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         /// </summary>
         [Output("sslExpireTime")]
         public Output<string> SslExpireTime { get; private set; } = null!;
 
 
         /// <summary>
-        /// Create a Endpoint resource with the given unique name, arguments, and options.
+        /// Create a ClusterEndpoint resource with the given unique name, arguments, and options.
         /// </summary>
         ///
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public Endpoint(string name, EndpointArgs args, CustomResourceOptions? options = null)
-            : base("alicloud:polardb/endpoint:Endpoint", name, args ?? new EndpointArgs(), MakeResourceOptions(options, ""))
+        public ClusterEndpoint(string name, ClusterEndpointArgs args, CustomResourceOptions? options = null)
+            : base("alicloud:polardb/clusterEndpoint:ClusterEndpoint", name, args ?? new ClusterEndpointArgs(), MakeResourceOptions(options, ""))
         {
         }
 
-        private Endpoint(string name, Input<string> id, EndpointState? state = null, CustomResourceOptions? options = null)
-            : base("alicloud:polardb/endpoint:Endpoint", name, state, MakeResourceOptions(options, id))
+        private ClusterEndpoint(string name, Input<string> id, ClusterEndpointState? state = null, CustomResourceOptions? options = null)
+            : base("alicloud:polardb/clusterEndpoint:ClusterEndpoint", name, state, MakeResourceOptions(options, id))
         {
         }
 
@@ -206,7 +205,7 @@ namespace Pulumi.AliCloud.PolarDB
             return merged;
         }
         /// <summary>
-        /// Get an existing Endpoint resource's state with the given name, ID, and optional extra
+        /// Get an existing ClusterEndpoint resource's state with the given name, ID, and optional extra
         /// properties used to qualify the lookup.
         /// </summary>
         ///
@@ -214,13 +213,13 @@ namespace Pulumi.AliCloud.PolarDB
         /// <param name="id">The unique provider ID of the resource to lookup.</param>
         /// <param name="state">Any extra arguments used during the lookup.</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public static Endpoint Get(string name, Input<string> id, EndpointState? state = null, CustomResourceOptions? options = null)
+        public static ClusterEndpoint Get(string name, Input<string> id, ClusterEndpointState? state = null, CustomResourceOptions? options = null)
         {
-            return new Endpoint(name, id, state, options);
+            return new ClusterEndpoint(name, id, state, options);
         }
     }
 
-    public sealed class EndpointArgs : global::Pulumi.ResourceArgs
+    public sealed class ClusterEndpointArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Whether the new node automatically joins the default cluster address. Valid values are `Enable`, `Disable`. When creating a new custom endpoint, default to `Disable`.
@@ -259,12 +258,6 @@ namespace Pulumi.AliCloud.PolarDB
         }
 
         /// <summary>
-        /// Type of the endpoint. Before v1.121.0, it only can be `Custom`. since v1.121.0, `Custom`, `Cluster`, `Primary` are valid, default to `Custom`. However when creating a new endpoint, it also only can be `Custom`.
-        /// </summary>
-        [Input("endpointType")]
-        public Input<string>? EndpointType { get; set; }
-
-        /// <summary>
         /// The network type of the endpoint address.
         /// </summary>
         [Input("netType")]
@@ -296,6 +289,8 @@ namespace Pulumi.AliCloud.PolarDB
 
         /// <summary>
         /// Specifies whether automatic rotation of SSL certificates is enabled. Valid values: `Enable`,`Disable`.
+        /// **NOTE:** For a PolarDB for MySQL cluster, this parameter is required, and only one connection string in each endpoint can enable the ssl, for other notes, see [Configure SSL encryption](https://www.alibabacloud.com/help/doc-detail/153182.htm).
+        /// For a PolarDB for PostgreSQL cluster or a PolarDB-O cluster, this parameter is not required, by default, SSL encryption is enabled for all endpoints.
         /// </summary>
         [Input("sslAutoRotate")]
         public Input<string>? SslAutoRotate { get; set; }
@@ -306,13 +301,13 @@ namespace Pulumi.AliCloud.PolarDB
         [Input("sslEnabled")]
         public Input<string>? SslEnabled { get; set; }
 
-        public EndpointArgs()
+        public ClusterEndpointArgs()
         {
         }
-        public static new EndpointArgs Empty => new EndpointArgs();
+        public static new ClusterEndpointArgs Empty => new ClusterEndpointArgs();
     }
 
-    public sealed class EndpointState : global::Pulumi.ResourceArgs
+    public sealed class ClusterEndpointState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Whether the new node automatically joins the default cluster address. Valid values are `Enable`, `Disable`. When creating a new custom endpoint, default to `Disable`.
@@ -339,7 +334,7 @@ namespace Pulumi.AliCloud.PolarDB
         public Input<string>? DbEndpointDescription { get; set; }
 
         /// <summary>
-        /// (Available since v1.161.0) The ID of the cluster endpoint.
+        /// The ID of the cluster endpoint.
         /// </summary>
         [Input("dbEndpointId")]
         public Input<string>? DbEndpointId { get; set; }
@@ -357,7 +352,7 @@ namespace Pulumi.AliCloud.PolarDB
         }
 
         /// <summary>
-        /// Type of the endpoint. Before v1.121.0, it only can be `Custom`. since v1.121.0, `Custom`, `Cluster`, `Primary` are valid, default to `Custom`. However when creating a new endpoint, it also only can be `Custom`.
+        /// Type of endpoint.
         /// </summary>
         [Input("endpointType")]
         public Input<string>? EndpointType { get; set; }
@@ -394,20 +389,20 @@ namespace Pulumi.AliCloud.PolarDB
 
         /// <summary>
         /// Specifies whether automatic rotation of SSL certificates is enabled. Valid values: `Enable`,`Disable`.
+        /// **NOTE:** For a PolarDB for MySQL cluster, this parameter is required, and only one connection string in each endpoint can enable the ssl, for other notes, see [Configure SSL encryption](https://www.alibabacloud.com/help/doc-detail/153182.htm).
+        /// For a PolarDB for PostgreSQL cluster or a PolarDB-O cluster, this parameter is not required, by default, SSL encryption is enabled for all endpoints.
         /// </summary>
         [Input("sslAutoRotate")]
         public Input<string>? SslAutoRotate { get; set; }
 
         /// <summary>
-        /// Specifies SSL certificate download link.  
-        /// **NOTE:** For a PolarDB for MySQL cluster, this parameter is required, and only one connection string in each endpoint can enable the ssl, for other notes, see [Configure SSL encryption](https://www.alibabacloud.com/help/doc-detail/153182.htm).
-        /// For a PolarDB for PostgreSQL cluster or a PolarDB-O cluster, this parameter is not required, by default, SSL encryption is enabled for all endpoints.
+        /// The specifies SSL certificate download link.
         /// </summary>
         [Input("sslCertificateUrl")]
         public Input<string>? SslCertificateUrl { get; set; }
 
         /// <summary>
-        /// (Available since v1.121.0) The SSL connection string.
+        /// The SSL connection string.
         /// </summary>
         [Input("sslConnectionString")]
         public Input<string>? SslConnectionString { get; set; }
@@ -419,14 +414,14 @@ namespace Pulumi.AliCloud.PolarDB
         public Input<string>? SslEnabled { get; set; }
 
         /// <summary>
-        /// (Available since v1.121.0) The time when the SSL certificate expires. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+        /// The time when the SSL certificate expires. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         /// </summary>
         [Input("sslExpireTime")]
         public Input<string>? SslExpireTime { get; set; }
 
-        public EndpointState()
+        public ClusterEndpointState()
         {
         }
-        public static new EndpointState Empty => new EndpointState();
+        public static new ClusterEndpointState Empty => new ClusterEndpointState();
     }
 }

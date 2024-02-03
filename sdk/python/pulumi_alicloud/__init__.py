@@ -5067,6 +5067,14 @@ _utilities.register(
  },
  {
   "pkg": "alicloud",
+  "mod": "polardb/clusterEndpoint",
+  "fqn": "pulumi_alicloud.polardb",
+  "classes": {
+   "alicloud:polardb/clusterEndpoint:ClusterEndpoint": "ClusterEndpoint"
+  }
+ },
+ {
+  "pkg": "alicloud",
   "mod": "polardb/database",
   "fqn": "pulumi_alicloud.polardb",
   "classes": {
@@ -5103,6 +5111,14 @@ _utilities.register(
   "fqn": "pulumi_alicloud.polardb",
   "classes": {
    "alicloud:polardb/parameterGroup:ParameterGroup": "ParameterGroup"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "polardb/primaryEndpoint",
+  "fqn": "pulumi_alicloud.polardb",
+  "classes": {
+   "alicloud:polardb/primaryEndpoint:PrimaryEndpoint": "PrimaryEndpoint"
   }
  },
  {

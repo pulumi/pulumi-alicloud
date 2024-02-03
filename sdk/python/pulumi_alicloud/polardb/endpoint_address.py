@@ -17,13 +17,15 @@ class EndpointAddressArgs:
                  db_cluster_id: pulumi.Input[str],
                  db_endpoint_id: pulumi.Input[str],
                  connection_prefix: Optional[pulumi.Input[str]] = None,
-                 net_type: Optional[pulumi.Input[str]] = None):
+                 net_type: Optional[pulumi.Input[str]] = None,
+                 port: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a EndpointAddress resource.
         :param pulumi.Input[str] db_cluster_id: The Id of cluster that can run database.
         :param pulumi.Input[str] db_endpoint_id: The Id of endpoint that can run database.
         :param pulumi.Input[str] connection_prefix: Prefix of the specified endpoint. The prefix must be 6 to 30 characters in length, and can contain lowercase letters, digits, and hyphens (-), must start with a letter and end with a digit or letter.
         :param pulumi.Input[str] net_type: Internet connection net type. Valid value: `Public`. Default to `Public`. Currently supported only `Public`.
+        :param pulumi.Input[str] port: Port of the specified endpoint. Valid values: 3000 to 5999.
         """
         pulumi.set(__self__, "db_cluster_id", db_cluster_id)
         pulumi.set(__self__, "db_endpoint_id", db_endpoint_id)
@@ -31,6 +33,8 @@ class EndpointAddressArgs:
             pulumi.set(__self__, "connection_prefix", connection_prefix)
         if net_type is not None:
             pulumi.set(__self__, "net_type", net_type)
+        if port is not None:
+            pulumi.set(__self__, "port", port)
 
     @property
     @pulumi.getter(name="dbClusterId")
@@ -80,6 +84,18 @@ class EndpointAddressArgs:
     def net_type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "net_type", value)
 
+    @property
+    @pulumi.getter
+    def port(self) -> Optional[pulumi.Input[str]]:
+        """
+        Port of the specified endpoint. Valid values: 3000 to 5999.
+        """
+        return pulumi.get(self, "port")
+
+    @port.setter
+    def port(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "port", value)
+
 
 @pulumi.input_type
 class _EndpointAddressState:
@@ -99,7 +115,7 @@ class _EndpointAddressState:
         :param pulumi.Input[str] db_endpoint_id: The Id of endpoint that can run database.
         :param pulumi.Input[str] ip_address: The ip address of connection string.
         :param pulumi.Input[str] net_type: Internet connection net type. Valid value: `Public`. Default to `Public`. Currently supported only `Public`.
-        :param pulumi.Input[str] port: Connection cluster or endpoint port.
+        :param pulumi.Input[str] port: Port of the specified endpoint. Valid values: 3000 to 5999.
         """
         if connection_prefix is not None:
             pulumi.set(__self__, "connection_prefix", connection_prefix)
@@ -192,7 +208,7 @@ class _EndpointAddressState:
     @pulumi.getter
     def port(self) -> Optional[pulumi.Input[str]]:
         """
-        Connection cluster or endpoint port.
+        Port of the specified endpoint. Valid values: 3000 to 5999.
         """
         return pulumi.get(self, "port")
 
@@ -210,11 +226,12 @@ class EndpointAddress(pulumi.CustomResource):
                  db_cluster_id: Optional[pulumi.Input[str]] = None,
                  db_endpoint_id: Optional[pulumi.Input[str]] = None,
                  net_type: Optional[pulumi.Input[str]] = None,
+                 port: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         Provides a PolarDB endpoint address resource to allocate an Internet endpoint address string for PolarDB instance.
 
-        > **NOTE:** Available in v1.68.0+. Each PolarDB instance will allocate a intranet connection string automatically and its prefix is Cluster ID.
+        > **NOTE:** Available since v1.68.0. Each PolarDB instance will allocate a intranet connection string automatically and its prefix is Cluster ID.
          To avoid unnecessary conflict, please specified a internet connection prefix before applying the resource.
 
         ## Example Usage
@@ -225,7 +242,8 @@ class EndpointAddress(pulumi.CustomResource):
 
         default_node_classes = alicloud.polardb.get_node_classes(db_type="MySQL",
             db_version="8.0",
-            pay_type="PostPaid")
+            pay_type="PostPaid",
+            category="Normal")
         default_network = alicloud.vpc.Network("defaultNetwork",
             vpc_name="terraform-example",
             cidr_block="172.16.0.0/16")
@@ -263,6 +281,7 @@ class EndpointAddress(pulumi.CustomResource):
         :param pulumi.Input[str] db_cluster_id: The Id of cluster that can run database.
         :param pulumi.Input[str] db_endpoint_id: The Id of endpoint that can run database.
         :param pulumi.Input[str] net_type: Internet connection net type. Valid value: `Public`. Default to `Public`. Currently supported only `Public`.
+        :param pulumi.Input[str] port: Port of the specified endpoint. Valid values: 3000 to 5999.
         """
         ...
     @overload
@@ -273,7 +292,7 @@ class EndpointAddress(pulumi.CustomResource):
         """
         Provides a PolarDB endpoint address resource to allocate an Internet endpoint address string for PolarDB instance.
 
-        > **NOTE:** Available in v1.68.0+. Each PolarDB instance will allocate a intranet connection string automatically and its prefix is Cluster ID.
+        > **NOTE:** Available since v1.68.0. Each PolarDB instance will allocate a intranet connection string automatically and its prefix is Cluster ID.
          To avoid unnecessary conflict, please specified a internet connection prefix before applying the resource.
 
         ## Example Usage
@@ -284,7 +303,8 @@ class EndpointAddress(pulumi.CustomResource):
 
         default_node_classes = alicloud.polardb.get_node_classes(db_type="MySQL",
             db_version="8.0",
-            pay_type="PostPaid")
+            pay_type="PostPaid",
+            category="Normal")
         default_network = alicloud.vpc.Network("defaultNetwork",
             vpc_name="terraform-example",
             cidr_block="172.16.0.0/16")
@@ -335,6 +355,7 @@ class EndpointAddress(pulumi.CustomResource):
                  db_cluster_id: Optional[pulumi.Input[str]] = None,
                  db_endpoint_id: Optional[pulumi.Input[str]] = None,
                  net_type: Optional[pulumi.Input[str]] = None,
+                 port: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -352,9 +373,9 @@ class EndpointAddress(pulumi.CustomResource):
                 raise TypeError("Missing required property 'db_endpoint_id'")
             __props__.__dict__["db_endpoint_id"] = db_endpoint_id
             __props__.__dict__["net_type"] = net_type
+            __props__.__dict__["port"] = port
             __props__.__dict__["connection_string"] = None
             __props__.__dict__["ip_address"] = None
-            __props__.__dict__["port"] = None
         super(EndpointAddress, __self__).__init__(
             'alicloud:polardb/endpointAddress:EndpointAddress',
             resource_name,
@@ -385,7 +406,7 @@ class EndpointAddress(pulumi.CustomResource):
         :param pulumi.Input[str] db_endpoint_id: The Id of endpoint that can run database.
         :param pulumi.Input[str] ip_address: The ip address of connection string.
         :param pulumi.Input[str] net_type: Internet connection net type. Valid value: `Public`. Default to `Public`. Currently supported only `Public`.
-        :param pulumi.Input[str] port: Connection cluster or endpoint port.
+        :param pulumi.Input[str] port: Port of the specified endpoint. Valid values: 3000 to 5999.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -452,7 +473,7 @@ class EndpointAddress(pulumi.CustomResource):
     @pulumi.getter
     def port(self) -> pulumi.Output[str]:
         """
-        Connection cluster or endpoint port.
+        Port of the specified endpoint. Valid values: 3000 to 5999.
         """
         return pulumi.get(self, "port")
 

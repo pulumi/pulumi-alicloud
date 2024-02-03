@@ -15,9 +15,9 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 
-public final class EndpointArgs extends com.pulumi.resources.ResourceArgs {
+public final class ClusterEndpointArgs extends com.pulumi.resources.ResourceArgs {
 
-    public static final EndpointArgs Empty = new EndpointArgs();
+    public static final ClusterEndpointArgs Empty = new ClusterEndpointArgs();
 
     /**
      * Whether the new node automatically joins the default cluster address. Valid values are `Enable`, `Disable`. When creating a new custom endpoint, default to `Disable`.
@@ -95,21 +95,6 @@ public final class EndpointArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Type of the endpoint. Before v1.121.0, it only can be `Custom`. since v1.121.0, `Custom`, `Cluster`, `Primary` are valid, default to `Custom`. However when creating a new endpoint, it also only can be `Custom`.
-     * 
-     */
-    @Import(name="endpointType")
-    private @Nullable Output<String> endpointType;
-
-    /**
-     * @return Type of the endpoint. Before v1.121.0, it only can be `Custom`. since v1.121.0, `Custom`, `Cluster`, `Primary` are valid, default to `Custom`. However when creating a new endpoint, it also only can be `Custom`.
-     * 
-     */
-    public Optional<Output<String>> endpointType() {
-        return Optional.ofNullable(this.endpointType);
-    }
-
-    /**
      * The network type of the endpoint address.
      * 
      */
@@ -171,6 +156,8 @@ public final class EndpointArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Specifies whether automatic rotation of SSL certificates is enabled. Valid values: `Enable`,`Disable`.
+     * **NOTE:** For a PolarDB for MySQL cluster, this parameter is required, and only one connection string in each endpoint can enable the ssl, for other notes, see [Configure SSL encryption](https://www.alibabacloud.com/help/doc-detail/153182.htm).
+     * For a PolarDB for PostgreSQL cluster or a PolarDB-O cluster, this parameter is not required, by default, SSL encryption is enabled for all endpoints.
      * 
      */
     @Import(name="sslAutoRotate")
@@ -178,6 +165,8 @@ public final class EndpointArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Specifies whether automatic rotation of SSL certificates is enabled. Valid values: `Enable`,`Disable`.
+     * **NOTE:** For a PolarDB for MySQL cluster, this parameter is required, and only one connection string in each endpoint can enable the ssl, for other notes, see [Configure SSL encryption](https://www.alibabacloud.com/help/doc-detail/153182.htm).
+     * For a PolarDB for PostgreSQL cluster or a PolarDB-O cluster, this parameter is not required, by default, SSL encryption is enabled for all endpoints.
      * 
      */
     public Optional<Output<String>> sslAutoRotate() {
@@ -199,15 +188,14 @@ public final class EndpointArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.sslEnabled);
     }
 
-    private EndpointArgs() {}
+    private ClusterEndpointArgs() {}
 
-    private EndpointArgs(EndpointArgs $) {
+    private ClusterEndpointArgs(ClusterEndpointArgs $) {
         this.autoAddNewNodes = $.autoAddNewNodes;
         this.connectionPrefix = $.connectionPrefix;
         this.dbClusterId = $.dbClusterId;
         this.dbEndpointDescription = $.dbEndpointDescription;
         this.endpointConfig = $.endpointConfig;
-        this.endpointType = $.endpointType;
         this.netType = $.netType;
         this.nodes = $.nodes;
         this.port = $.port;
@@ -219,19 +207,19 @@ public final class EndpointArgs extends com.pulumi.resources.ResourceArgs {
     public static Builder builder() {
         return new Builder();
     }
-    public static Builder builder(EndpointArgs defaults) {
+    public static Builder builder(ClusterEndpointArgs defaults) {
         return new Builder(defaults);
     }
 
     public static final class Builder {
-        private EndpointArgs $;
+        private ClusterEndpointArgs $;
 
         public Builder() {
-            $ = new EndpointArgs();
+            $ = new ClusterEndpointArgs();
         }
 
-        public Builder(EndpointArgs defaults) {
-            $ = new EndpointArgs(Objects.requireNonNull(defaults));
+        public Builder(ClusterEndpointArgs defaults) {
+            $ = new ClusterEndpointArgs(Objects.requireNonNull(defaults));
         }
 
         /**
@@ -340,27 +328,6 @@ public final class EndpointArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param endpointType Type of the endpoint. Before v1.121.0, it only can be `Custom`. since v1.121.0, `Custom`, `Cluster`, `Primary` are valid, default to `Custom`. However when creating a new endpoint, it also only can be `Custom`.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder endpointType(@Nullable Output<String> endpointType) {
-            $.endpointType = endpointType;
-            return this;
-        }
-
-        /**
-         * @param endpointType Type of the endpoint. Before v1.121.0, it only can be `Custom`. since v1.121.0, `Custom`, `Cluster`, `Primary` are valid, default to `Custom`. However when creating a new endpoint, it also only can be `Custom`.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder endpointType(String endpointType) {
-            return endpointType(Output.of(endpointType));
-        }
-
-        /**
          * @param netType The network type of the endpoint address.
          * 
          * @return builder
@@ -456,6 +423,8 @@ public final class EndpointArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param sslAutoRotate Specifies whether automatic rotation of SSL certificates is enabled. Valid values: `Enable`,`Disable`.
+         * **NOTE:** For a PolarDB for MySQL cluster, this parameter is required, and only one connection string in each endpoint can enable the ssl, for other notes, see [Configure SSL encryption](https://www.alibabacloud.com/help/doc-detail/153182.htm).
+         * For a PolarDB for PostgreSQL cluster or a PolarDB-O cluster, this parameter is not required, by default, SSL encryption is enabled for all endpoints.
          * 
          * @return builder
          * 
@@ -467,6 +436,8 @@ public final class EndpointArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param sslAutoRotate Specifies whether automatic rotation of SSL certificates is enabled. Valid values: `Enable`,`Disable`.
+         * **NOTE:** For a PolarDB for MySQL cluster, this parameter is required, and only one connection string in each endpoint can enable the ssl, for other notes, see [Configure SSL encryption](https://www.alibabacloud.com/help/doc-detail/153182.htm).
+         * For a PolarDB for PostgreSQL cluster or a PolarDB-O cluster, this parameter is not required, by default, SSL encryption is enabled for all endpoints.
          * 
          * @return builder
          * 
@@ -496,9 +467,9 @@ public final class EndpointArgs extends com.pulumi.resources.ResourceArgs {
             return sslEnabled(Output.of(sslEnabled));
         }
 
-        public EndpointArgs build() {
+        public ClusterEndpointArgs build() {
             if ($.dbClusterId == null) {
-                throw new MissingRequiredPropertyException("EndpointArgs", "dbClusterId");
+                throw new MissingRequiredPropertyException("ClusterEndpointArgs", "dbClusterId");
             }
             return $;
         }

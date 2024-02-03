@@ -29,6 +29,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &BackupPolicy{}
 	case "alicloud:polardb/cluster:Cluster":
 		r = &Cluster{}
+	case "alicloud:polardb/clusterEndpoint:ClusterEndpoint":
+		r = &ClusterEndpoint{}
 	case "alicloud:polardb/database:Database":
 		r = &Database{}
 	case "alicloud:polardb/endpoint:Endpoint":
@@ -39,6 +41,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &GlobalDatabaseNetwork{}
 	case "alicloud:polardb/parameterGroup:ParameterGroup":
 		r = &ParameterGroup{}
+	case "alicloud:polardb/primaryEndpoint:PrimaryEndpoint":
+		r = &PrimaryEndpoint{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -74,6 +78,11 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"alicloud",
+		"polardb/clusterEndpoint",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
 		"polardb/database",
 		&module{version},
 	)
@@ -95,6 +104,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"polardb/parameterGroup",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"polardb/primaryEndpoint",
 		&module{version},
 	)
 }

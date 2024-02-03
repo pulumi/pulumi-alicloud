@@ -5,11 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Provides a PolarDB endpoint resource to manage custom endpoint of PolarDB cluster.
+ * Provides a PolarDB endpoint resource to manage cluster endpoint of PolarDB cluster.
  *
- * > **NOTE:** Available since v1.80.0.
- * **NOTE:** After v1.80.0 and before v1.121.0, you can only use this resource to manage the custom endpoint. Since v1.121.0, you also can import the primary endpoint and the cluster endpoint, to modify their ssl status and so on.
- * **NOTE:** The primary endpoint and the default cluster endpoint can not be created or deleted manually.
+ * > **NOTE:** Available since v1.217.0
+ *
+ * > **NOTE:** The default cluster endpoint can not be created or deleted manually.
  *
  * ## Example Usage
  *
@@ -41,10 +41,7 @@ import * as utilities from "../utilities";
  *     vswitchId: defaultSwitch.id,
  *     description: "terraform-example",
  * });
- * const defaultEndpoint = new alicloud.polardb.Endpoint("defaultEndpoint", {
- *     dbClusterId: defaultCluster.id,
- *     endpointType: "Custom",
- * });
+ * const defaultClusterEndpoint = new alicloud.polardb.ClusterEndpoint("defaultClusterEndpoint", {dbClusterId: defaultCluster.id});
  * ```
  *
  * ## Import
@@ -52,12 +49,12 @@ import * as utilities from "../utilities";
  * PolarDB endpoint can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:polardb/endpoint:Endpoint example pc-abc123456:pe-abc123456
+ *  $ pulumi import alicloud:polardb/clusterEndpoint:ClusterEndpoint example pc-abc123456:pe-abc123456
  * ```
  */
-export class Endpoint extends pulumi.CustomResource {
+export class ClusterEndpoint extends pulumi.CustomResource {
     /**
-     * Get an existing Endpoint resource's state with the given name, ID, and optional extra
+     * Get an existing ClusterEndpoint resource's state with the given name, ID, and optional extra
      * properties used to qualify the lookup.
      *
      * @param name The _unique_ name of the resulting resource.
@@ -65,22 +62,22 @@ export class Endpoint extends pulumi.CustomResource {
      * @param state Any extra arguments used during the lookup.
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: EndpointState, opts?: pulumi.CustomResourceOptions): Endpoint {
-        return new Endpoint(name, <any>state, { ...opts, id: id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: ClusterEndpointState, opts?: pulumi.CustomResourceOptions): ClusterEndpoint {
+        return new ClusterEndpoint(name, <any>state, { ...opts, id: id });
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'alicloud:polardb/endpoint:Endpoint';
+    public static readonly __pulumiType = 'alicloud:polardb/clusterEndpoint:ClusterEndpoint';
 
     /**
-     * Returns true if the given object is an instance of Endpoint.  This is designed to work even
+     * Returns true if the given object is an instance of ClusterEndpoint.  This is designed to work even
      * when multiple copies of the Pulumi SDK have been loaded into the same process.
      */
-    public static isInstance(obj: any): obj is Endpoint {
+    public static isInstance(obj: any): obj is ClusterEndpoint {
         if (obj === undefined || obj === null) {
             return false;
         }
-        return obj['__pulumiType'] === Endpoint.__pulumiType;
+        return obj['__pulumiType'] === ClusterEndpoint.__pulumiType;
     }
 
     /**
@@ -100,7 +97,7 @@ export class Endpoint extends pulumi.CustomResource {
      */
     public readonly dbEndpointDescription!: pulumi.Output<string | undefined>;
     /**
-     * (Available since v1.161.0) The ID of the cluster endpoint.
+     * The ID of the cluster endpoint.
      */
     public /*out*/ readonly dbEndpointId!: pulumi.Output<string>;
     /**
@@ -108,9 +105,9 @@ export class Endpoint extends pulumi.CustomResource {
      */
     public readonly endpointConfig!: pulumi.Output<{[key: string]: any}>;
     /**
-     * Type of the endpoint. Before v1.121.0, it only can be `Custom`. since v1.121.0, `Custom`, `Cluster`, `Primary` are valid, default to `Custom`. However when creating a new endpoint, it also only can be `Custom`.
+     * Type of endpoint.
      */
-    public readonly endpointType!: pulumi.Output<string | undefined>;
+    public /*out*/ readonly endpointType!: pulumi.Output<string>;
     /**
      * The network type of the endpoint address.
      */
@@ -129,16 +126,16 @@ export class Endpoint extends pulumi.CustomResource {
     public readonly readWriteMode!: pulumi.Output<string>;
     /**
      * Specifies whether automatic rotation of SSL certificates is enabled. Valid values: `Enable`,`Disable`.
-     */
-    public readonly sslAutoRotate!: pulumi.Output<string | undefined>;
-    /**
-     * Specifies SSL certificate download link.  
      * **NOTE:** For a PolarDB for MySQL cluster, this parameter is required, and only one connection string in each endpoint can enable the ssl, for other notes, see [Configure SSL encryption](https://www.alibabacloud.com/help/doc-detail/153182.htm).
      * For a PolarDB for PostgreSQL cluster or a PolarDB-O cluster, this parameter is not required, by default, SSL encryption is enabled for all endpoints.
      */
+    public readonly sslAutoRotate!: pulumi.Output<string | undefined>;
+    /**
+     * The specifies SSL certificate download link.
+     */
     public /*out*/ readonly sslCertificateUrl!: pulumi.Output<string>;
     /**
-     * (Available since v1.121.0) The SSL connection string.
+     * The SSL connection string.
      */
     public /*out*/ readonly sslConnectionString!: pulumi.Output<string>;
     /**
@@ -146,23 +143,23 @@ export class Endpoint extends pulumi.CustomResource {
      */
     public readonly sslEnabled!: pulumi.Output<string | undefined>;
     /**
-     * (Available since v1.121.0) The time when the SSL certificate expires. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+     * The time when the SSL certificate expires. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
      */
     public /*out*/ readonly sslExpireTime!: pulumi.Output<string>;
 
     /**
-     * Create a Endpoint resource with the given unique name, arguments, and options.
+     * Create a ClusterEndpoint resource with the given unique name, arguments, and options.
      *
      * @param name The _unique_ name of the resource.
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: EndpointArgs, opts?: pulumi.CustomResourceOptions)
-    constructor(name: string, argsOrState?: EndpointArgs | EndpointState, opts?: pulumi.CustomResourceOptions) {
+    constructor(name: string, args: ClusterEndpointArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, argsOrState?: ClusterEndpointArgs | ClusterEndpointState, opts?: pulumi.CustomResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
-            const state = argsOrState as EndpointState | undefined;
+            const state = argsOrState as ClusterEndpointState | undefined;
             resourceInputs["autoAddNewNodes"] = state ? state.autoAddNewNodes : undefined;
             resourceInputs["connectionPrefix"] = state ? state.connectionPrefix : undefined;
             resourceInputs["dbClusterId"] = state ? state.dbClusterId : undefined;
@@ -180,7 +177,7 @@ export class Endpoint extends pulumi.CustomResource {
             resourceInputs["sslEnabled"] = state ? state.sslEnabled : undefined;
             resourceInputs["sslExpireTime"] = state ? state.sslExpireTime : undefined;
         } else {
-            const args = argsOrState as EndpointArgs | undefined;
+            const args = argsOrState as ClusterEndpointArgs | undefined;
             if ((!args || args.dbClusterId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'dbClusterId'");
             }
@@ -189,7 +186,6 @@ export class Endpoint extends pulumi.CustomResource {
             resourceInputs["dbClusterId"] = args ? args.dbClusterId : undefined;
             resourceInputs["dbEndpointDescription"] = args ? args.dbEndpointDescription : undefined;
             resourceInputs["endpointConfig"] = args ? args.endpointConfig : undefined;
-            resourceInputs["endpointType"] = args ? args.endpointType : undefined;
             resourceInputs["netType"] = args ? args.netType : undefined;
             resourceInputs["nodes"] = args ? args.nodes : undefined;
             resourceInputs["port"] = args ? args.port : undefined;
@@ -197,19 +193,20 @@ export class Endpoint extends pulumi.CustomResource {
             resourceInputs["sslAutoRotate"] = args ? args.sslAutoRotate : undefined;
             resourceInputs["sslEnabled"] = args ? args.sslEnabled : undefined;
             resourceInputs["dbEndpointId"] = undefined /*out*/;
+            resourceInputs["endpointType"] = undefined /*out*/;
             resourceInputs["sslCertificateUrl"] = undefined /*out*/;
             resourceInputs["sslConnectionString"] = undefined /*out*/;
             resourceInputs["sslExpireTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(Endpoint.__pulumiType, name, resourceInputs, opts);
+        super(ClusterEndpoint.__pulumiType, name, resourceInputs, opts);
     }
 }
 
 /**
- * Input properties used for looking up and filtering Endpoint resources.
+ * Input properties used for looking up and filtering ClusterEndpoint resources.
  */
-export interface EndpointState {
+export interface ClusterEndpointState {
     /**
      * Whether the new node automatically joins the default cluster address. Valid values are `Enable`, `Disable`. When creating a new custom endpoint, default to `Disable`.
      */
@@ -227,7 +224,7 @@ export interface EndpointState {
      */
     dbEndpointDescription?: pulumi.Input<string>;
     /**
-     * (Available since v1.161.0) The ID of the cluster endpoint.
+     * The ID of the cluster endpoint.
      */
     dbEndpointId?: pulumi.Input<string>;
     /**
@@ -235,7 +232,7 @@ export interface EndpointState {
      */
     endpointConfig?: pulumi.Input<{[key: string]: any}>;
     /**
-     * Type of the endpoint. Before v1.121.0, it only can be `Custom`. since v1.121.0, `Custom`, `Cluster`, `Primary` are valid, default to `Custom`. However when creating a new endpoint, it also only can be `Custom`.
+     * Type of endpoint.
      */
     endpointType?: pulumi.Input<string>;
     /**
@@ -256,16 +253,16 @@ export interface EndpointState {
     readWriteMode?: pulumi.Input<string>;
     /**
      * Specifies whether automatic rotation of SSL certificates is enabled. Valid values: `Enable`,`Disable`.
-     */
-    sslAutoRotate?: pulumi.Input<string>;
-    /**
-     * Specifies SSL certificate download link.  
      * **NOTE:** For a PolarDB for MySQL cluster, this parameter is required, and only one connection string in each endpoint can enable the ssl, for other notes, see [Configure SSL encryption](https://www.alibabacloud.com/help/doc-detail/153182.htm).
      * For a PolarDB for PostgreSQL cluster or a PolarDB-O cluster, this parameter is not required, by default, SSL encryption is enabled for all endpoints.
      */
+    sslAutoRotate?: pulumi.Input<string>;
+    /**
+     * The specifies SSL certificate download link.
+     */
     sslCertificateUrl?: pulumi.Input<string>;
     /**
-     * (Available since v1.121.0) The SSL connection string.
+     * The SSL connection string.
      */
     sslConnectionString?: pulumi.Input<string>;
     /**
@@ -273,15 +270,15 @@ export interface EndpointState {
      */
     sslEnabled?: pulumi.Input<string>;
     /**
-     * (Available since v1.121.0) The time when the SSL certificate expires. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+     * The time when the SSL certificate expires. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
      */
     sslExpireTime?: pulumi.Input<string>;
 }
 
 /**
- * The set of arguments for constructing a Endpoint resource.
+ * The set of arguments for constructing a ClusterEndpoint resource.
  */
-export interface EndpointArgs {
+export interface ClusterEndpointArgs {
     /**
      * Whether the new node automatically joins the default cluster address. Valid values are `Enable`, `Disable`. When creating a new custom endpoint, default to `Disable`.
      */
@@ -303,10 +300,6 @@ export interface EndpointArgs {
      */
     endpointConfig?: pulumi.Input<{[key: string]: any}>;
     /**
-     * Type of the endpoint. Before v1.121.0, it only can be `Custom`. since v1.121.0, `Custom`, `Cluster`, `Primary` are valid, default to `Custom`. However when creating a new endpoint, it also only can be `Custom`.
-     */
-    endpointType?: pulumi.Input<string>;
-    /**
      * The network type of the endpoint address.
      */
     netType?: pulumi.Input<string>;
@@ -324,6 +317,8 @@ export interface EndpointArgs {
     readWriteMode?: pulumi.Input<string>;
     /**
      * Specifies whether automatic rotation of SSL certificates is enabled. Valid values: `Enable`,`Disable`.
+     * **NOTE:** For a PolarDB for MySQL cluster, this parameter is required, and only one connection string in each endpoint can enable the ssl, for other notes, see [Configure SSL encryption](https://www.alibabacloud.com/help/doc-detail/153182.htm).
+     * For a PolarDB for PostgreSQL cluster or a PolarDB-O cluster, this parameter is not required, by default, SSL encryption is enabled for all endpoints.
      */
     sslAutoRotate?: pulumi.Input<string>;
     /**
