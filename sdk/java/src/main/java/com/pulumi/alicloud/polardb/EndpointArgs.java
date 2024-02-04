@@ -19,80 +19,182 @@ public final class EndpointArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final EndpointArgs Empty = new EndpointArgs();
 
+    /**
+     * Whether the new node automatically joins the default cluster address. Valid values are `Enable`, `Disable`. When creating a new custom endpoint, default to `Disable`.
+     * 
+     */
     @Import(name="autoAddNewNodes")
     private @Nullable Output<String> autoAddNewNodes;
 
+    /**
+     * @return Whether the new node automatically joins the default cluster address. Valid values are `Enable`, `Disable`. When creating a new custom endpoint, default to `Disable`.
+     * 
+     */
     public Optional<Output<String>> autoAddNewNodes() {
         return Optional.ofNullable(this.autoAddNewNodes);
     }
 
+    /**
+     * Prefix of the specified endpoint. The prefix must be 6 to 30 characters in length, and can contain lowercase letters, digits, and hyphens (-), must start with a letter and end with a digit or letter.
+     * 
+     */
+    @Import(name="connectionPrefix")
+    private @Nullable Output<String> connectionPrefix;
+
+    /**
+     * @return Prefix of the specified endpoint. The prefix must be 6 to 30 characters in length, and can contain lowercase letters, digits, and hyphens (-), must start with a letter and end with a digit or letter.
+     * 
+     */
+    public Optional<Output<String>> connectionPrefix() {
+        return Optional.ofNullable(this.connectionPrefix);
+    }
+
+    /**
+     * The Id of cluster that can run database.
+     * 
+     */
     @Import(name="dbClusterId", required=true)
     private Output<String> dbClusterId;
 
+    /**
+     * @return The Id of cluster that can run database.
+     * 
+     */
     public Output<String> dbClusterId() {
         return this.dbClusterId;
     }
 
+    /**
+     * The name of the endpoint.
+     * 
+     */
     @Import(name="dbEndpointDescription")
     private @Nullable Output<String> dbEndpointDescription;
 
+    /**
+     * @return The name of the endpoint.
+     * 
+     */
     public Optional<Output<String>> dbEndpointDescription() {
         return Optional.ofNullable(this.dbEndpointDescription);
     }
 
+    /**
+     * The advanced settings of the endpoint of Apsara PolarDB clusters are in JSON format. Including the settings of consistency level, transaction splitting, connection pool, and offload reads from primary node. For more details, see the [description of EndpointConfig in the Request parameters table for details](https://www.alibabacloud.com/help/doc-detail/116593.htm).
+     * 
+     */
     @Import(name="endpointConfig")
     private @Nullable Output<Map<String,Object>> endpointConfig;
 
+    /**
+     * @return The advanced settings of the endpoint of Apsara PolarDB clusters are in JSON format. Including the settings of consistency level, transaction splitting, connection pool, and offload reads from primary node. For more details, see the [description of EndpointConfig in the Request parameters table for details](https://www.alibabacloud.com/help/doc-detail/116593.htm).
+     * 
+     */
     public Optional<Output<Map<String,Object>>> endpointConfig() {
         return Optional.ofNullable(this.endpointConfig);
     }
 
     /**
-     * Type of endpoint.
+     * Type of the endpoint. Before v1.121.0, it only can be `Custom`. since v1.121.0, `Custom`, `Cluster`, `Primary` are valid, default to `Custom`. However when creating a new endpoint, it also only can be `Custom`.
      * 
      */
     @Import(name="endpointType")
     private @Nullable Output<String> endpointType;
 
     /**
-     * @return Type of endpoint.
+     * @return Type of the endpoint. Before v1.121.0, it only can be `Custom`. since v1.121.0, `Custom`, `Cluster`, `Primary` are valid, default to `Custom`. However when creating a new endpoint, it also only can be `Custom`.
      * 
      */
     public Optional<Output<String>> endpointType() {
         return Optional.ofNullable(this.endpointType);
     }
 
+    /**
+     * The network type of the endpoint address.
+     * 
+     */
     @Import(name="netType")
     private @Nullable Output<String> netType;
 
+    /**
+     * @return The network type of the endpoint address.
+     * 
+     */
     public Optional<Output<String>> netType() {
         return Optional.ofNullable(this.netType);
     }
 
+    /**
+     * Node id list for endpoint configuration. At least 2 nodes if specified, or if the cluster has more than 3 nodes, read-only endpoint is allowed to mount only one node. Default is all nodes.
+     * 
+     */
     @Import(name="nodes")
     private @Nullable Output<List<String>> nodes;
 
+    /**
+     * @return Node id list for endpoint configuration. At least 2 nodes if specified, or if the cluster has more than 3 nodes, read-only endpoint is allowed to mount only one node. Default is all nodes.
+     * 
+     */
     public Optional<Output<List<String>>> nodes() {
         return Optional.ofNullable(this.nodes);
     }
 
+    /**
+     * Port of the specified endpoint. Valid values: 3000 to 5999.
+     * 
+     */
+    @Import(name="port")
+    private @Nullable Output<String> port;
+
+    /**
+     * @return Port of the specified endpoint. Valid values: 3000 to 5999.
+     * 
+     */
+    public Optional<Output<String>> port() {
+        return Optional.ofNullable(this.port);
+    }
+
+    /**
+     * Read or write mode. Valid values are `ReadWrite`, `ReadOnly`. When creating a new custom endpoint, default to `ReadOnly`.
+     * 
+     */
     @Import(name="readWriteMode")
     private @Nullable Output<String> readWriteMode;
 
+    /**
+     * @return Read or write mode. Valid values are `ReadWrite`, `ReadOnly`. When creating a new custom endpoint, default to `ReadOnly`.
+     * 
+     */
     public Optional<Output<String>> readWriteMode() {
         return Optional.ofNullable(this.readWriteMode);
     }
 
+    /**
+     * Specifies whether automatic rotation of SSL certificates is enabled. Valid values: `Enable`,`Disable`.
+     * 
+     */
     @Import(name="sslAutoRotate")
     private @Nullable Output<String> sslAutoRotate;
 
+    /**
+     * @return Specifies whether automatic rotation of SSL certificates is enabled. Valid values: `Enable`,`Disable`.
+     * 
+     */
     public Optional<Output<String>> sslAutoRotate() {
         return Optional.ofNullable(this.sslAutoRotate);
     }
 
+    /**
+     * Specifies how to modify the SSL encryption status. Valid values: `Disable`, `Enable`, `Update`.
+     * 
+     */
     @Import(name="sslEnabled")
     private @Nullable Output<String> sslEnabled;
 
+    /**
+     * @return Specifies how to modify the SSL encryption status. Valid values: `Disable`, `Enable`, `Update`.
+     * 
+     */
     public Optional<Output<String>> sslEnabled() {
         return Optional.ofNullable(this.sslEnabled);
     }
@@ -101,12 +203,14 @@ public final class EndpointArgs extends com.pulumi.resources.ResourceArgs {
 
     private EndpointArgs(EndpointArgs $) {
         this.autoAddNewNodes = $.autoAddNewNodes;
+        this.connectionPrefix = $.connectionPrefix;
         this.dbClusterId = $.dbClusterId;
         this.dbEndpointDescription = $.dbEndpointDescription;
         this.endpointConfig = $.endpointConfig;
         this.endpointType = $.endpointType;
         this.netType = $.netType;
         this.nodes = $.nodes;
+        this.port = $.port;
         this.readWriteMode = $.readWriteMode;
         this.sslAutoRotate = $.sslAutoRotate;
         this.sslEnabled = $.sslEnabled;
@@ -130,44 +234,113 @@ public final class EndpointArgs extends com.pulumi.resources.ResourceArgs {
             $ = new EndpointArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param autoAddNewNodes Whether the new node automatically joins the default cluster address. Valid values are `Enable`, `Disable`. When creating a new custom endpoint, default to `Disable`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder autoAddNewNodes(@Nullable Output<String> autoAddNewNodes) {
             $.autoAddNewNodes = autoAddNewNodes;
             return this;
         }
 
+        /**
+         * @param autoAddNewNodes Whether the new node automatically joins the default cluster address. Valid values are `Enable`, `Disable`. When creating a new custom endpoint, default to `Disable`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder autoAddNewNodes(String autoAddNewNodes) {
             return autoAddNewNodes(Output.of(autoAddNewNodes));
         }
 
+        /**
+         * @param connectionPrefix Prefix of the specified endpoint. The prefix must be 6 to 30 characters in length, and can contain lowercase letters, digits, and hyphens (-), must start with a letter and end with a digit or letter.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder connectionPrefix(@Nullable Output<String> connectionPrefix) {
+            $.connectionPrefix = connectionPrefix;
+            return this;
+        }
+
+        /**
+         * @param connectionPrefix Prefix of the specified endpoint. The prefix must be 6 to 30 characters in length, and can contain lowercase letters, digits, and hyphens (-), must start with a letter and end with a digit or letter.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder connectionPrefix(String connectionPrefix) {
+            return connectionPrefix(Output.of(connectionPrefix));
+        }
+
+        /**
+         * @param dbClusterId The Id of cluster that can run database.
+         * 
+         * @return builder
+         * 
+         */
         public Builder dbClusterId(Output<String> dbClusterId) {
             $.dbClusterId = dbClusterId;
             return this;
         }
 
+        /**
+         * @param dbClusterId The Id of cluster that can run database.
+         * 
+         * @return builder
+         * 
+         */
         public Builder dbClusterId(String dbClusterId) {
             return dbClusterId(Output.of(dbClusterId));
         }
 
+        /**
+         * @param dbEndpointDescription The name of the endpoint.
+         * 
+         * @return builder
+         * 
+         */
         public Builder dbEndpointDescription(@Nullable Output<String> dbEndpointDescription) {
             $.dbEndpointDescription = dbEndpointDescription;
             return this;
         }
 
+        /**
+         * @param dbEndpointDescription The name of the endpoint.
+         * 
+         * @return builder
+         * 
+         */
         public Builder dbEndpointDescription(String dbEndpointDescription) {
             return dbEndpointDescription(Output.of(dbEndpointDescription));
         }
 
+        /**
+         * @param endpointConfig The advanced settings of the endpoint of Apsara PolarDB clusters are in JSON format. Including the settings of consistency level, transaction splitting, connection pool, and offload reads from primary node. For more details, see the [description of EndpointConfig in the Request parameters table for details](https://www.alibabacloud.com/help/doc-detail/116593.htm).
+         * 
+         * @return builder
+         * 
+         */
         public Builder endpointConfig(@Nullable Output<Map<String,Object>> endpointConfig) {
             $.endpointConfig = endpointConfig;
             return this;
         }
 
+        /**
+         * @param endpointConfig The advanced settings of the endpoint of Apsara PolarDB clusters are in JSON format. Including the settings of consistency level, transaction splitting, connection pool, and offload reads from primary node. For more details, see the [description of EndpointConfig in the Request parameters table for details](https://www.alibabacloud.com/help/doc-detail/116593.htm).
+         * 
+         * @return builder
+         * 
+         */
         public Builder endpointConfig(Map<String,Object> endpointConfig) {
             return endpointConfig(Output.of(endpointConfig));
         }
 
         /**
-         * @param endpointType Type of endpoint.
+         * @param endpointType Type of the endpoint. Before v1.121.0, it only can be `Custom`. since v1.121.0, `Custom`, `Cluster`, `Primary` are valid, default to `Custom`. However when creating a new endpoint, it also only can be `Custom`.
          * 
          * @return builder
          * 
@@ -178,7 +351,7 @@ public final class EndpointArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param endpointType Type of endpoint.
+         * @param endpointType Type of the endpoint. Before v1.121.0, it only can be `Custom`. since v1.121.0, `Custom`, `Cluster`, `Primary` are valid, default to `Custom`. However when creating a new endpoint, it also only can be `Custom`.
          * 
          * @return builder
          * 
@@ -187,51 +360,138 @@ public final class EndpointArgs extends com.pulumi.resources.ResourceArgs {
             return endpointType(Output.of(endpointType));
         }
 
+        /**
+         * @param netType The network type of the endpoint address.
+         * 
+         * @return builder
+         * 
+         */
         public Builder netType(@Nullable Output<String> netType) {
             $.netType = netType;
             return this;
         }
 
+        /**
+         * @param netType The network type of the endpoint address.
+         * 
+         * @return builder
+         * 
+         */
         public Builder netType(String netType) {
             return netType(Output.of(netType));
         }
 
+        /**
+         * @param nodes Node id list for endpoint configuration. At least 2 nodes if specified, or if the cluster has more than 3 nodes, read-only endpoint is allowed to mount only one node. Default is all nodes.
+         * 
+         * @return builder
+         * 
+         */
         public Builder nodes(@Nullable Output<List<String>> nodes) {
             $.nodes = nodes;
             return this;
         }
 
+        /**
+         * @param nodes Node id list for endpoint configuration. At least 2 nodes if specified, or if the cluster has more than 3 nodes, read-only endpoint is allowed to mount only one node. Default is all nodes.
+         * 
+         * @return builder
+         * 
+         */
         public Builder nodes(List<String> nodes) {
             return nodes(Output.of(nodes));
         }
 
+        /**
+         * @param nodes Node id list for endpoint configuration. At least 2 nodes if specified, or if the cluster has more than 3 nodes, read-only endpoint is allowed to mount only one node. Default is all nodes.
+         * 
+         * @return builder
+         * 
+         */
         public Builder nodes(String... nodes) {
             return nodes(List.of(nodes));
         }
 
+        /**
+         * @param port Port of the specified endpoint. Valid values: 3000 to 5999.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder port(@Nullable Output<String> port) {
+            $.port = port;
+            return this;
+        }
+
+        /**
+         * @param port Port of the specified endpoint. Valid values: 3000 to 5999.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder port(String port) {
+            return port(Output.of(port));
+        }
+
+        /**
+         * @param readWriteMode Read or write mode. Valid values are `ReadWrite`, `ReadOnly`. When creating a new custom endpoint, default to `ReadOnly`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder readWriteMode(@Nullable Output<String> readWriteMode) {
             $.readWriteMode = readWriteMode;
             return this;
         }
 
+        /**
+         * @param readWriteMode Read or write mode. Valid values are `ReadWrite`, `ReadOnly`. When creating a new custom endpoint, default to `ReadOnly`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder readWriteMode(String readWriteMode) {
             return readWriteMode(Output.of(readWriteMode));
         }
 
+        /**
+         * @param sslAutoRotate Specifies whether automatic rotation of SSL certificates is enabled. Valid values: `Enable`,`Disable`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder sslAutoRotate(@Nullable Output<String> sslAutoRotate) {
             $.sslAutoRotate = sslAutoRotate;
             return this;
         }
 
+        /**
+         * @param sslAutoRotate Specifies whether automatic rotation of SSL certificates is enabled. Valid values: `Enable`,`Disable`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder sslAutoRotate(String sslAutoRotate) {
             return sslAutoRotate(Output.of(sslAutoRotate));
         }
 
+        /**
+         * @param sslEnabled Specifies how to modify the SSL encryption status. Valid values: `Disable`, `Enable`, `Update`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder sslEnabled(@Nullable Output<String> sslEnabled) {
             $.sslEnabled = sslEnabled;
             return this;
         }
 
+        /**
+         * @param sslEnabled Specifies how to modify the SSL encryption status. Valid values: `Disable`, `Enable`, `Update`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder sslEnabled(String sslEnabled) {
             return sslEnabled(Output.of(sslEnabled));
         }

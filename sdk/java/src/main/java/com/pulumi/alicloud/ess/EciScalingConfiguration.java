@@ -213,14 +213,16 @@ public class EciScalingConfiguration extends com.pulumi.resources.CustomResource
         return Codegen.optional(this.autoMatchImageCache);
     }
     /**
-     * The name of the container group.
+     * The name of the container group. which must contain 2-128 characters (
+     * English), starting with numbers, English lowercase letters , and can contain number, and hypens `-`.
      * 
      */
     @Export(name="containerGroupName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> containerGroupName;
 
     /**
-     * @return The name of the container group.
+     * @return The name of the container group. which must contain 2-128 characters (
+     * English), starting with numbers, English lowercase letters , and can contain number, and hypens `-`.
      * 
      */
     public Output<Optional<String>> containerGroupName() {

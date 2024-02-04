@@ -18,16 +18,18 @@ class EipAssociationArgs:
                  instance_id: pulumi.Input[str],
                  force: Optional[pulumi.Input[bool]] = None,
                  instance_type: Optional[pulumi.Input[str]] = None,
+                 mode: Optional[pulumi.Input[str]] = None,
                  private_ip_address: Optional[pulumi.Input[str]] = None,
                  vpc_id: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a EipAssociation resource.
-        :param pulumi.Input[str] allocation_id: The allocation EIP ID.
+        :param pulumi.Input[str] allocation_id: The ID of the EIP that you want to associate with an instance.
         :param pulumi.Input[str] instance_id: The ID of the ECS or SLB instance or Nat Gateway or NetworkInterface or HaVip.
-        :param pulumi.Input[bool] force: When EIP is bound to a NAT gateway, and the NAT gateway adds a DNAT or SNAT entry, set it for `true` can unassociation any way. Default to `false`.
-        :param pulumi.Input[str] instance_type: The type of cloud product that the eip instance to bind. Valid values: `EcsInstance`, `SlbInstance`, `Nat`, `NetworkInterface`, `HaVip` and `IpAddress`.
-        :param pulumi.Input[str] private_ip_address: The private IP address in the network segment of the vswitch which has been assigned.
-        :param pulumi.Input[str] vpc_id: The ID of the VPC that has IPv4 gateways enabled and that is deployed in the same region as the EIP. When you associate an EIP with an IP address, the system can enable the IP address to access the Internet based on VPC route configurations. **Note:** This parameter is required if `instance_type` is set to IpAddress. In this case, the EIP is associated with an IP address.
+        :param pulumi.Input[bool] force: When EIP is bound to a NAT gateway, and the NAT gateway adds a DNAT or SNAT entry, set it for `true` can unassociation any way. Default value: `false`. Valid values: `true`, `false`.
+        :param pulumi.Input[str] instance_type: The type of the instance with which you want to associate the EIP. Valid values: `Nat`, `SlbInstance`, `EcsInstance`, `NetworkInterface`, `HaVip` and `IpAddress`.
+        :param pulumi.Input[str] mode: The association mode. Default value: `NAT`. Valid values: `NAT`, `BINDED`, `MULTI_BINDED`. **Note:** This parameter is required only when `instance_type` is set to `NetworkInterface`.
+        :param pulumi.Input[str] private_ip_address: The IP address in the CIDR block of the vSwitch.
+        :param pulumi.Input[str] vpc_id: The ID of the VPC that has IPv4 gateways enabled and that is deployed in the same region as the EIP. When you associate an EIP with an IP address, the system can enable the IP address to access the Internet based on VPC route configurations. **Note:** This parameter is required if `instance_type` is set to `IpAddress`.
         """
         pulumi.set(__self__, "allocation_id", allocation_id)
         pulumi.set(__self__, "instance_id", instance_id)
@@ -35,6 +37,8 @@ class EipAssociationArgs:
             pulumi.set(__self__, "force", force)
         if instance_type is not None:
             pulumi.set(__self__, "instance_type", instance_type)
+        if mode is not None:
+            pulumi.set(__self__, "mode", mode)
         if private_ip_address is not None:
             pulumi.set(__self__, "private_ip_address", private_ip_address)
         if vpc_id is not None:
@@ -44,7 +48,7 @@ class EipAssociationArgs:
     @pulumi.getter(name="allocationId")
     def allocation_id(self) -> pulumi.Input[str]:
         """
-        The allocation EIP ID.
+        The ID of the EIP that you want to associate with an instance.
         """
         return pulumi.get(self, "allocation_id")
 
@@ -68,7 +72,7 @@ class EipAssociationArgs:
     @pulumi.getter
     def force(self) -> Optional[pulumi.Input[bool]]:
         """
-        When EIP is bound to a NAT gateway, and the NAT gateway adds a DNAT or SNAT entry, set it for `true` can unassociation any way. Default to `false`.
+        When EIP is bound to a NAT gateway, and the NAT gateway adds a DNAT or SNAT entry, set it for `true` can unassociation any way. Default value: `false`. Valid values: `true`, `false`.
         """
         return pulumi.get(self, "force")
 
@@ -80,7 +84,7 @@ class EipAssociationArgs:
     @pulumi.getter(name="instanceType")
     def instance_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The type of cloud product that the eip instance to bind. Valid values: `EcsInstance`, `SlbInstance`, `Nat`, `NetworkInterface`, `HaVip` and `IpAddress`.
+        The type of the instance with which you want to associate the EIP. Valid values: `Nat`, `SlbInstance`, `EcsInstance`, `NetworkInterface`, `HaVip` and `IpAddress`.
         """
         return pulumi.get(self, "instance_type")
 
@@ -89,10 +93,22 @@ class EipAssociationArgs:
         pulumi.set(self, "instance_type", value)
 
     @property
+    @pulumi.getter
+    def mode(self) -> Optional[pulumi.Input[str]]:
+        """
+        The association mode. Default value: `NAT`. Valid values: `NAT`, `BINDED`, `MULTI_BINDED`. **Note:** This parameter is required only when `instance_type` is set to `NetworkInterface`.
+        """
+        return pulumi.get(self, "mode")
+
+    @mode.setter
+    def mode(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "mode", value)
+
+    @property
     @pulumi.getter(name="privateIpAddress")
     def private_ip_address(self) -> Optional[pulumi.Input[str]]:
         """
-        The private IP address in the network segment of the vswitch which has been assigned.
+        The IP address in the CIDR block of the vSwitch.
         """
         return pulumi.get(self, "private_ip_address")
 
@@ -104,7 +120,7 @@ class EipAssociationArgs:
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID of the VPC that has IPv4 gateways enabled and that is deployed in the same region as the EIP. When you associate an EIP with an IP address, the system can enable the IP address to access the Internet based on VPC route configurations. **Note:** This parameter is required if `instance_type` is set to IpAddress. In this case, the EIP is associated with an IP address.
+        The ID of the VPC that has IPv4 gateways enabled and that is deployed in the same region as the EIP. When you associate an EIP with an IP address, the system can enable the IP address to access the Internet based on VPC route configurations. **Note:** This parameter is required if `instance_type` is set to `IpAddress`.
         """
         return pulumi.get(self, "vpc_id")
 
@@ -120,16 +136,18 @@ class _EipAssociationState:
                  force: Optional[pulumi.Input[bool]] = None,
                  instance_id: Optional[pulumi.Input[str]] = None,
                  instance_type: Optional[pulumi.Input[str]] = None,
+                 mode: Optional[pulumi.Input[str]] = None,
                  private_ip_address: Optional[pulumi.Input[str]] = None,
                  vpc_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering EipAssociation resources.
-        :param pulumi.Input[str] allocation_id: The allocation EIP ID.
-        :param pulumi.Input[bool] force: When EIP is bound to a NAT gateway, and the NAT gateway adds a DNAT or SNAT entry, set it for `true` can unassociation any way. Default to `false`.
+        :param pulumi.Input[str] allocation_id: The ID of the EIP that you want to associate with an instance.
+        :param pulumi.Input[bool] force: When EIP is bound to a NAT gateway, and the NAT gateway adds a DNAT or SNAT entry, set it for `true` can unassociation any way. Default value: `false`. Valid values: `true`, `false`.
         :param pulumi.Input[str] instance_id: The ID of the ECS or SLB instance or Nat Gateway or NetworkInterface or HaVip.
-        :param pulumi.Input[str] instance_type: The type of cloud product that the eip instance to bind. Valid values: `EcsInstance`, `SlbInstance`, `Nat`, `NetworkInterface`, `HaVip` and `IpAddress`.
-        :param pulumi.Input[str] private_ip_address: The private IP address in the network segment of the vswitch which has been assigned.
-        :param pulumi.Input[str] vpc_id: The ID of the VPC that has IPv4 gateways enabled and that is deployed in the same region as the EIP. When you associate an EIP with an IP address, the system can enable the IP address to access the Internet based on VPC route configurations. **Note:** This parameter is required if `instance_type` is set to IpAddress. In this case, the EIP is associated with an IP address.
+        :param pulumi.Input[str] instance_type: The type of the instance with which you want to associate the EIP. Valid values: `Nat`, `SlbInstance`, `EcsInstance`, `NetworkInterface`, `HaVip` and `IpAddress`.
+        :param pulumi.Input[str] mode: The association mode. Default value: `NAT`. Valid values: `NAT`, `BINDED`, `MULTI_BINDED`. **Note:** This parameter is required only when `instance_type` is set to `NetworkInterface`.
+        :param pulumi.Input[str] private_ip_address: The IP address in the CIDR block of the vSwitch.
+        :param pulumi.Input[str] vpc_id: The ID of the VPC that has IPv4 gateways enabled and that is deployed in the same region as the EIP. When you associate an EIP with an IP address, the system can enable the IP address to access the Internet based on VPC route configurations. **Note:** This parameter is required if `instance_type` is set to `IpAddress`.
         """
         if allocation_id is not None:
             pulumi.set(__self__, "allocation_id", allocation_id)
@@ -139,6 +157,8 @@ class _EipAssociationState:
             pulumi.set(__self__, "instance_id", instance_id)
         if instance_type is not None:
             pulumi.set(__self__, "instance_type", instance_type)
+        if mode is not None:
+            pulumi.set(__self__, "mode", mode)
         if private_ip_address is not None:
             pulumi.set(__self__, "private_ip_address", private_ip_address)
         if vpc_id is not None:
@@ -148,7 +168,7 @@ class _EipAssociationState:
     @pulumi.getter(name="allocationId")
     def allocation_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The allocation EIP ID.
+        The ID of the EIP that you want to associate with an instance.
         """
         return pulumi.get(self, "allocation_id")
 
@@ -160,7 +180,7 @@ class _EipAssociationState:
     @pulumi.getter
     def force(self) -> Optional[pulumi.Input[bool]]:
         """
-        When EIP is bound to a NAT gateway, and the NAT gateway adds a DNAT or SNAT entry, set it for `true` can unassociation any way. Default to `false`.
+        When EIP is bound to a NAT gateway, and the NAT gateway adds a DNAT or SNAT entry, set it for `true` can unassociation any way. Default value: `false`. Valid values: `true`, `false`.
         """
         return pulumi.get(self, "force")
 
@@ -184,7 +204,7 @@ class _EipAssociationState:
     @pulumi.getter(name="instanceType")
     def instance_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The type of cloud product that the eip instance to bind. Valid values: `EcsInstance`, `SlbInstance`, `Nat`, `NetworkInterface`, `HaVip` and `IpAddress`.
+        The type of the instance with which you want to associate the EIP. Valid values: `Nat`, `SlbInstance`, `EcsInstance`, `NetworkInterface`, `HaVip` and `IpAddress`.
         """
         return pulumi.get(self, "instance_type")
 
@@ -193,10 +213,22 @@ class _EipAssociationState:
         pulumi.set(self, "instance_type", value)
 
     @property
+    @pulumi.getter
+    def mode(self) -> Optional[pulumi.Input[str]]:
+        """
+        The association mode. Default value: `NAT`. Valid values: `NAT`, `BINDED`, `MULTI_BINDED`. **Note:** This parameter is required only when `instance_type` is set to `NetworkInterface`.
+        """
+        return pulumi.get(self, "mode")
+
+    @mode.setter
+    def mode(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "mode", value)
+
+    @property
     @pulumi.getter(name="privateIpAddress")
     def private_ip_address(self) -> Optional[pulumi.Input[str]]:
         """
-        The private IP address in the network segment of the vswitch which has been assigned.
+        The IP address in the CIDR block of the vSwitch.
         """
         return pulumi.get(self, "private_ip_address")
 
@@ -208,7 +240,7 @@ class _EipAssociationState:
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID of the VPC that has IPv4 gateways enabled and that is deployed in the same region as the EIP. When you associate an EIP with an IP address, the system can enable the IP address to access the Internet based on VPC route configurations. **Note:** This parameter is required if `instance_type` is set to IpAddress. In this case, the EIP is associated with an IP address.
+        The ID of the VPC that has IPv4 gateways enabled and that is deployed in the same region as the EIP. When you associate an EIP with an IP address, the system can enable the IP address to access the Internet based on VPC route configurations. **Note:** This parameter is required if `instance_type` is set to `IpAddress`.
         """
         return pulumi.get(self, "vpc_id")
 
@@ -226,6 +258,7 @@ class EipAssociation(pulumi.CustomResource):
                  force: Optional[pulumi.Input[bool]] = None,
                  instance_id: Optional[pulumi.Input[str]] = None,
                  instance_type: Optional[pulumi.Input[str]] = None,
+                 mode: Optional[pulumi.Input[str]] = None,
                  private_ip_address: Optional[pulumi.Input[str]] = None,
                  vpc_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -292,17 +325,18 @@ class EipAssociation(pulumi.CustomResource):
         Elastic IP address association can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:ecs/eipAssociation:EipAssociation example eip-abc12345678:i-abc12355
+         $ pulumi import alicloud:ecs/eipAssociation:EipAssociation example <allocation_id>:<instance_id>
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] allocation_id: The allocation EIP ID.
-        :param pulumi.Input[bool] force: When EIP is bound to a NAT gateway, and the NAT gateway adds a DNAT or SNAT entry, set it for `true` can unassociation any way. Default to `false`.
+        :param pulumi.Input[str] allocation_id: The ID of the EIP that you want to associate with an instance.
+        :param pulumi.Input[bool] force: When EIP is bound to a NAT gateway, and the NAT gateway adds a DNAT or SNAT entry, set it for `true` can unassociation any way. Default value: `false`. Valid values: `true`, `false`.
         :param pulumi.Input[str] instance_id: The ID of the ECS or SLB instance or Nat Gateway or NetworkInterface or HaVip.
-        :param pulumi.Input[str] instance_type: The type of cloud product that the eip instance to bind. Valid values: `EcsInstance`, `SlbInstance`, `Nat`, `NetworkInterface`, `HaVip` and `IpAddress`.
-        :param pulumi.Input[str] private_ip_address: The private IP address in the network segment of the vswitch which has been assigned.
-        :param pulumi.Input[str] vpc_id: The ID of the VPC that has IPv4 gateways enabled and that is deployed in the same region as the EIP. When you associate an EIP with an IP address, the system can enable the IP address to access the Internet based on VPC route configurations. **Note:** This parameter is required if `instance_type` is set to IpAddress. In this case, the EIP is associated with an IP address.
+        :param pulumi.Input[str] instance_type: The type of the instance with which you want to associate the EIP. Valid values: `Nat`, `SlbInstance`, `EcsInstance`, `NetworkInterface`, `HaVip` and `IpAddress`.
+        :param pulumi.Input[str] mode: The association mode. Default value: `NAT`. Valid values: `NAT`, `BINDED`, `MULTI_BINDED`. **Note:** This parameter is required only when `instance_type` is set to `NetworkInterface`.
+        :param pulumi.Input[str] private_ip_address: The IP address in the CIDR block of the vSwitch.
+        :param pulumi.Input[str] vpc_id: The ID of the VPC that has IPv4 gateways enabled and that is deployed in the same region as the EIP. When you associate an EIP with an IP address, the system can enable the IP address to access the Internet based on VPC route configurations. **Note:** This parameter is required if `instance_type` is set to `IpAddress`.
         """
         ...
     @overload
@@ -373,7 +407,7 @@ class EipAssociation(pulumi.CustomResource):
         Elastic IP address association can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:ecs/eipAssociation:EipAssociation example eip-abc12345678:i-abc12355
+         $ pulumi import alicloud:ecs/eipAssociation:EipAssociation example <allocation_id>:<instance_id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -395,6 +429,7 @@ class EipAssociation(pulumi.CustomResource):
                  force: Optional[pulumi.Input[bool]] = None,
                  instance_id: Optional[pulumi.Input[str]] = None,
                  instance_type: Optional[pulumi.Input[str]] = None,
+                 mode: Optional[pulumi.Input[str]] = None,
                  private_ip_address: Optional[pulumi.Input[str]] = None,
                  vpc_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -414,6 +449,7 @@ class EipAssociation(pulumi.CustomResource):
                 raise TypeError("Missing required property 'instance_id'")
             __props__.__dict__["instance_id"] = instance_id
             __props__.__dict__["instance_type"] = instance_type
+            __props__.__dict__["mode"] = mode
             __props__.__dict__["private_ip_address"] = private_ip_address
             __props__.__dict__["vpc_id"] = vpc_id
         super(EipAssociation, __self__).__init__(
@@ -430,6 +466,7 @@ class EipAssociation(pulumi.CustomResource):
             force: Optional[pulumi.Input[bool]] = None,
             instance_id: Optional[pulumi.Input[str]] = None,
             instance_type: Optional[pulumi.Input[str]] = None,
+            mode: Optional[pulumi.Input[str]] = None,
             private_ip_address: Optional[pulumi.Input[str]] = None,
             vpc_id: Optional[pulumi.Input[str]] = None) -> 'EipAssociation':
         """
@@ -439,12 +476,13 @@ class EipAssociation(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] allocation_id: The allocation EIP ID.
-        :param pulumi.Input[bool] force: When EIP is bound to a NAT gateway, and the NAT gateway adds a DNAT or SNAT entry, set it for `true` can unassociation any way. Default to `false`.
+        :param pulumi.Input[str] allocation_id: The ID of the EIP that you want to associate with an instance.
+        :param pulumi.Input[bool] force: When EIP is bound to a NAT gateway, and the NAT gateway adds a DNAT or SNAT entry, set it for `true` can unassociation any way. Default value: `false`. Valid values: `true`, `false`.
         :param pulumi.Input[str] instance_id: The ID of the ECS or SLB instance or Nat Gateway or NetworkInterface or HaVip.
-        :param pulumi.Input[str] instance_type: The type of cloud product that the eip instance to bind. Valid values: `EcsInstance`, `SlbInstance`, `Nat`, `NetworkInterface`, `HaVip` and `IpAddress`.
-        :param pulumi.Input[str] private_ip_address: The private IP address in the network segment of the vswitch which has been assigned.
-        :param pulumi.Input[str] vpc_id: The ID of the VPC that has IPv4 gateways enabled and that is deployed in the same region as the EIP. When you associate an EIP with an IP address, the system can enable the IP address to access the Internet based on VPC route configurations. **Note:** This parameter is required if `instance_type` is set to IpAddress. In this case, the EIP is associated with an IP address.
+        :param pulumi.Input[str] instance_type: The type of the instance with which you want to associate the EIP. Valid values: `Nat`, `SlbInstance`, `EcsInstance`, `NetworkInterface`, `HaVip` and `IpAddress`.
+        :param pulumi.Input[str] mode: The association mode. Default value: `NAT`. Valid values: `NAT`, `BINDED`, `MULTI_BINDED`. **Note:** This parameter is required only when `instance_type` is set to `NetworkInterface`.
+        :param pulumi.Input[str] private_ip_address: The IP address in the CIDR block of the vSwitch.
+        :param pulumi.Input[str] vpc_id: The ID of the VPC that has IPv4 gateways enabled and that is deployed in the same region as the EIP. When you associate an EIP with an IP address, the system can enable the IP address to access the Internet based on VPC route configurations. **Note:** This parameter is required if `instance_type` is set to `IpAddress`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -454,6 +492,7 @@ class EipAssociation(pulumi.CustomResource):
         __props__.__dict__["force"] = force
         __props__.__dict__["instance_id"] = instance_id
         __props__.__dict__["instance_type"] = instance_type
+        __props__.__dict__["mode"] = mode
         __props__.__dict__["private_ip_address"] = private_ip_address
         __props__.__dict__["vpc_id"] = vpc_id
         return EipAssociation(resource_name, opts=opts, __props__=__props__)
@@ -462,7 +501,7 @@ class EipAssociation(pulumi.CustomResource):
     @pulumi.getter(name="allocationId")
     def allocation_id(self) -> pulumi.Output[str]:
         """
-        The allocation EIP ID.
+        The ID of the EIP that you want to associate with an instance.
         """
         return pulumi.get(self, "allocation_id")
 
@@ -470,7 +509,7 @@ class EipAssociation(pulumi.CustomResource):
     @pulumi.getter
     def force(self) -> pulumi.Output[Optional[bool]]:
         """
-        When EIP is bound to a NAT gateway, and the NAT gateway adds a DNAT or SNAT entry, set it for `true` can unassociation any way. Default to `false`.
+        When EIP is bound to a NAT gateway, and the NAT gateway adds a DNAT or SNAT entry, set it for `true` can unassociation any way. Default value: `false`. Valid values: `true`, `false`.
         """
         return pulumi.get(self, "force")
 
@@ -486,15 +525,23 @@ class EipAssociation(pulumi.CustomResource):
     @pulumi.getter(name="instanceType")
     def instance_type(self) -> pulumi.Output[str]:
         """
-        The type of cloud product that the eip instance to bind. Valid values: `EcsInstance`, `SlbInstance`, `Nat`, `NetworkInterface`, `HaVip` and `IpAddress`.
+        The type of the instance with which you want to associate the EIP. Valid values: `Nat`, `SlbInstance`, `EcsInstance`, `NetworkInterface`, `HaVip` and `IpAddress`.
         """
         return pulumi.get(self, "instance_type")
 
     @property
-    @pulumi.getter(name="privateIpAddress")
-    def private_ip_address(self) -> pulumi.Output[str]:
+    @pulumi.getter
+    def mode(self) -> pulumi.Output[str]:
         """
-        The private IP address in the network segment of the vswitch which has been assigned.
+        The association mode. Default value: `NAT`. Valid values: `NAT`, `BINDED`, `MULTI_BINDED`. **Note:** This parameter is required only when `instance_type` is set to `NetworkInterface`.
+        """
+        return pulumi.get(self, "mode")
+
+    @property
+    @pulumi.getter(name="privateIpAddress")
+    def private_ip_address(self) -> pulumi.Output[Optional[str]]:
+        """
+        The IP address in the CIDR block of the vSwitch.
         """
         return pulumi.get(self, "private_ip_address")
 
@@ -502,7 +549,7 @@ class EipAssociation(pulumi.CustomResource):
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> pulumi.Output[Optional[str]]:
         """
-        The ID of the VPC that has IPv4 gateways enabled and that is deployed in the same region as the EIP. When you associate an EIP with an IP address, the system can enable the IP address to access the Internet based on VPC route configurations. **Note:** This parameter is required if `instance_type` is set to IpAddress. In this case, the EIP is associated with an IP address.
+        The ID of the VPC that has IPv4 gateways enabled and that is deployed in the same region as the EIP. When you associate an EIP with an IP address, the system can enable the IP address to access the Internet based on VPC route configurations. **Note:** This parameter is required if `instance_type` is set to `IpAddress`.
         """
         return pulumi.get(self, "vpc_id")
 

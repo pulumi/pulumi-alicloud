@@ -5510,6 +5510,14 @@
                     }
                 }
             },
+            "alicloud_polardb_cluster_endpoint": {
+                "current": "alicloud:polardb/clusterEndpoint:ClusterEndpoint",
+                "fields": {
+                    "nodes": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "alicloud_polardb_database": {
                 "current": "alicloud:polardb/database:Database"
             },
@@ -5534,6 +5542,9 @@
                         "maxItemsOne": false
                     }
                 }
+            },
+            "alicloud_polardb_primary_endpoint": {
+                "current": "alicloud:polardb/primaryEndpoint:PrimaryEndpoint"
             },
             "alicloud_privatelink_vpc_endpoint": {
                 "current": "alicloud:privatelink/vpcEndpoint:VpcEndpoint",
@@ -19619,11 +19630,13 @@
             "alicloud:polardb/accountPrivilege:AccountPrivilege": "alicloud_polardb_account_privilege",
             "alicloud:polardb/backupPolicy:BackupPolicy": "alicloud_polardb_backup_policy",
             "alicloud:polardb/cluster:Cluster": "alicloud_polardb_cluster",
+            "alicloud:polardb/clusterEndpoint:ClusterEndpoint": "alicloud_polardb_cluster_endpoint",
             "alicloud:polardb/database:Database": "alicloud_polardb_database",
             "alicloud:polardb/endpoint:Endpoint": "alicloud_polardb_endpoint",
             "alicloud:polardb/endpointAddress:EndpointAddress": "alicloud_polardb_endpoint_address",
             "alicloud:polardb/globalDatabaseNetwork:GlobalDatabaseNetwork": "alicloud_polardb_global_database_network",
             "alicloud:polardb/parameterGroup:ParameterGroup": "alicloud_polardb_parameter_group",
+            "alicloud:polardb/primaryEndpoint:PrimaryEndpoint": "alicloud_polardb_primary_endpoint",
             "alicloud:privatelink/vpcEndpoint:VpcEndpoint": "alicloud_privatelink_vpc_endpoint",
             "alicloud:privatelink/vpcEndpointService:VpcEndpointService": "alicloud_privatelink_vpc_endpoint_service",
             "alicloud:privatelink/vpcEndpointServiceConnection:VpcEndpointServiceConnection": "alicloud_privatelink_vpc_endpoint_connection",
@@ -37433,6 +37446,22 @@
                 "vswitchId": "vswitch_id",
                 "zoneId": "zone_id"
             },
+            "alicloud:polardb/clusterEndpoint:ClusterEndpoint": {
+                "autoAddNewNodes": "auto_add_new_nodes",
+                "connectionPrefix": "connection_prefix",
+                "dbClusterId": "db_cluster_id",
+                "dbEndpointDescription": "db_endpoint_description",
+                "dbEndpointId": "db_endpoint_id",
+                "endpointConfig": "endpoint_config",
+                "endpointType": "endpoint_type",
+                "netType": "net_type",
+                "readWriteMode": "read_write_mode",
+                "sslAutoRotate": "ssl_auto_rotate",
+                "sslCertificateUrl": "ssl_certificate_url",
+                "sslConnectionString": "ssl_connection_string",
+                "sslEnabled": "ssl_enabled",
+                "sslExpireTime": "ssl_expire_time"
+            },
             "alicloud:polardb/database:Database": {
                 "accountName": "account_name",
                 "characterSetName": "character_set_name",
@@ -37442,6 +37471,7 @@
             },
             "alicloud:polardb/endpoint:Endpoint": {
                 "autoAddNewNodes": "auto_add_new_nodes",
+                "connectionPrefix": "connection_prefix",
                 "dbClusterId": "db_cluster_id",
                 "dbEndpointDescription": "db_endpoint_description",
                 "dbEndpointId": "db_endpoint_id",
@@ -37613,6 +37643,19 @@
             "alicloud:polardb/parameterGroup:ParameterGroup": {
                 "dbType": "db_type",
                 "dbVersion": "db_version"
+            },
+            "alicloud:polardb/primaryEndpoint:PrimaryEndpoint": {
+                "connectionPrefix": "connection_prefix",
+                "dbClusterId": "db_cluster_id",
+                "dbEndpointDescription": "db_endpoint_description",
+                "dbEndpointId": "db_endpoint_id",
+                "endpointType": "endpoint_type",
+                "netType": "net_type",
+                "sslAutoRotate": "ssl_auto_rotate",
+                "sslCertificateUrl": "ssl_certificate_url",
+                "sslConnectionString": "ssl_connection_string",
+                "sslEnabled": "ssl_enabled",
+                "sslExpireTime": "ssl_expire_time"
             },
             "alicloud:privatelink/getVpcEndpointConnections:getVpcEndpointConnections": {
                 "endpointId": "endpoint_id",

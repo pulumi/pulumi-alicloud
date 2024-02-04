@@ -18,11 +18,11 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a PolarDB endpoint resource to manage endpoint of PolarDB cluster.
+ * Provides a PolarDB endpoint resource to manage custom endpoint of PolarDB cluster.
  * 
- * &gt; **NOTE:** After v1.80.0 and before v1.121.0, you can only use this resource to manage the custom endpoint. Since v1.121.0, you also can import the primary endpoint and the cluster endpoint, to modify their ssl status and so on.
- * 
- * &gt; **NOTE:** The primary endpoint and the default cluster endpoint can not be created or deleted manually.
+ * &gt; **NOTE:** Available since v1.80.0.
+ * **NOTE:** After v1.80.0 and before v1.121.0, you can only use this resource to manage the custom endpoint. Since v1.121.0, you also can import the primary endpoint and the cluster endpoint, to modify their ssl status and so on.
+ * **NOTE:** The primary endpoint and the default cluster endpoint can not be created or deleted manually.
  * 
  * ## Example Usage
  * ```java
@@ -58,6 +58,7 @@ import javax.annotation.Nullable;
  *             .dbType(&#34;MySQL&#34;)
  *             .dbVersion(&#34;8.0&#34;)
  *             .payType(&#34;PostPaid&#34;)
+ *             .category(&#34;Normal&#34;)
  *             .build());
  * 
  *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
@@ -89,23 +90,6 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
- * ## Argument Reference
- * 
- * The following arguments are supported:
- * 
- * * `db_cluster_id` - (Required, ForceNew) The Id of cluster that can run database.
- * * `endpoint_type` - (Optional, ForceNew) Type of the endpoint. Before v1.121.0, it only can be `Custom`. since v1.121.0, `Custom`, `Cluster`, `Primary` are valid, default to `Custom`. However when creating a new endpoint, it also only can be `Custom`.
- * * `read_write_mode` - (Optional) Read or write mode. Valid values are `ReadWrite`, `ReadOnly`. When creating a new custom endpoint, default to `ReadOnly`.
- * * `nodes` - (Optional) Node id list for endpoint configuration. At least 2 nodes if specified, or if the cluster has more than 3 nodes, read-only endpoint is allowed to mount only one node. Default is all nodes.
- * * `auto_add_new_nodes` - (Optional) Whether the new node automatically joins the default cluster address. Valid values are `Enable`, `Disable`. When creating a new custom endpoint, default to `Disable`.
- * * `endpoint_config` - (Optional) The advanced settings of the endpoint of Apsara PolarDB clusters are in JSON format. Including the settings of consistency level, transaction splitting, connection pool, and offload reads from primary node. For more details, see the [description of EndpointConfig in the Request parameters table for details](https://www.alibabacloud.com/help/doc-detail/116593.htm).
- * * `ssl_enabled` - (Optional, Available in v1.121.0+) Specifies how to modify the SSL encryption status. Valid values: `Disable`, `Enable`, `Update`.
- * * `net_type` - (Optional, Available in v1.121.0+) The network type of the endpoint address.
- * * `ssl_auto_rotate` - (Available in v1.132.0+) Specifies whether automatic rotation of SSL certificates is enabled. Valid values: `Enable`,`Disable`.
- * * `ssl_certificate_url` - (Available in v1.132.0+) Specifies SSL certificate download link.\
- *     **NOTE:** For a PolarDB for MySQL cluster, this parameter is required, and only one connection string in each endpoint can enable the ssl, for other notes, see [Configure SSL encryption](https://www.alibabacloud.com/help/doc-detail/153182.htm).\
- *     For a PolarDB for PostgreSQL cluster or a PolarDB-O cluster, this parameter is not required, by default, SSL encryption is enabled for all endpoints.
- * * `db_endpoint_description` - (Optional, Available in v1.201.0+) The name of the endpoint.
  * 
  * ## Import
  * 
@@ -118,117 +102,229 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="alicloud:polardb/endpoint:Endpoint")
 public class Endpoint extends com.pulumi.resources.CustomResource {
+    /**
+     * Whether the new node automatically joins the default cluster address. Valid values are `Enable`, `Disable`. When creating a new custom endpoint, default to `Disable`.
+     * 
+     */
     @Export(name="autoAddNewNodes", refs={String.class}, tree="[0]")
     private Output<String> autoAddNewNodes;
 
+    /**
+     * @return Whether the new node automatically joins the default cluster address. Valid values are `Enable`, `Disable`. When creating a new custom endpoint, default to `Disable`.
+     * 
+     */
     public Output<String> autoAddNewNodes() {
         return this.autoAddNewNodes;
     }
+    /**
+     * Prefix of the specified endpoint. The prefix must be 6 to 30 characters in length, and can contain lowercase letters, digits, and hyphens (-), must start with a letter and end with a digit or letter.
+     * 
+     */
+    @Export(name="connectionPrefix", refs={String.class}, tree="[0]")
+    private Output<String> connectionPrefix;
+
+    /**
+     * @return Prefix of the specified endpoint. The prefix must be 6 to 30 characters in length, and can contain lowercase letters, digits, and hyphens (-), must start with a letter and end with a digit or letter.
+     * 
+     */
+    public Output<String> connectionPrefix() {
+        return this.connectionPrefix;
+    }
+    /**
+     * The Id of cluster that can run database.
+     * 
+     */
     @Export(name="dbClusterId", refs={String.class}, tree="[0]")
     private Output<String> dbClusterId;
 
+    /**
+     * @return The Id of cluster that can run database.
+     * 
+     */
     public Output<String> dbClusterId() {
         return this.dbClusterId;
     }
+    /**
+     * The name of the endpoint.
+     * 
+     */
     @Export(name="dbEndpointDescription", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> dbEndpointDescription;
 
+    /**
+     * @return The name of the endpoint.
+     * 
+     */
     public Output<Optional<String>> dbEndpointDescription() {
         return Codegen.optional(this.dbEndpointDescription);
     }
     /**
-     * (Available in v1.161.0+) The ID of the cluster endpoint.
+     * (Available since v1.161.0) The ID of the cluster endpoint.
      * 
      */
     @Export(name="dbEndpointId", refs={String.class}, tree="[0]")
     private Output<String> dbEndpointId;
 
     /**
-     * @return (Available in v1.161.0+) The ID of the cluster endpoint.
+     * @return (Available since v1.161.0) The ID of the cluster endpoint.
      * 
      */
     public Output<String> dbEndpointId() {
         return this.dbEndpointId;
     }
+    /**
+     * The advanced settings of the endpoint of Apsara PolarDB clusters are in JSON format. Including the settings of consistency level, transaction splitting, connection pool, and offload reads from primary node. For more details, see the [description of EndpointConfig in the Request parameters table for details](https://www.alibabacloud.com/help/doc-detail/116593.htm).
+     * 
+     */
     @Export(name="endpointConfig", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output<Map<String,Object>> endpointConfig;
 
+    /**
+     * @return The advanced settings of the endpoint of Apsara PolarDB clusters are in JSON format. Including the settings of consistency level, transaction splitting, connection pool, and offload reads from primary node. For more details, see the [description of EndpointConfig in the Request parameters table for details](https://www.alibabacloud.com/help/doc-detail/116593.htm).
+     * 
+     */
     public Output<Map<String,Object>> endpointConfig() {
         return this.endpointConfig;
     }
     /**
-     * Type of endpoint.
+     * Type of the endpoint. Before v1.121.0, it only can be `Custom`. since v1.121.0, `Custom`, `Cluster`, `Primary` are valid, default to `Custom`. However when creating a new endpoint, it also only can be `Custom`.
      * 
      */
     @Export(name="endpointType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> endpointType;
 
     /**
-     * @return Type of endpoint.
+     * @return Type of the endpoint. Before v1.121.0, it only can be `Custom`. since v1.121.0, `Custom`, `Cluster`, `Primary` are valid, default to `Custom`. However when creating a new endpoint, it also only can be `Custom`.
      * 
      */
     public Output<Optional<String>> endpointType() {
         return Codegen.optional(this.endpointType);
     }
+    /**
+     * The network type of the endpoint address.
+     * 
+     */
     @Export(name="netType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> netType;
 
+    /**
+     * @return The network type of the endpoint address.
+     * 
+     */
     public Output<Optional<String>> netType() {
         return Codegen.optional(this.netType);
     }
+    /**
+     * Node id list for endpoint configuration. At least 2 nodes if specified, or if the cluster has more than 3 nodes, read-only endpoint is allowed to mount only one node. Default is all nodes.
+     * 
+     */
     @Export(name="nodes", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> nodes;
 
+    /**
+     * @return Node id list for endpoint configuration. At least 2 nodes if specified, or if the cluster has more than 3 nodes, read-only endpoint is allowed to mount only one node. Default is all nodes.
+     * 
+     */
     public Output<List<String>> nodes() {
         return this.nodes;
     }
+    /**
+     * Port of the specified endpoint. Valid values: 3000 to 5999.
+     * 
+     */
+    @Export(name="port", refs={String.class}, tree="[0]")
+    private Output<String> port;
+
+    /**
+     * @return Port of the specified endpoint. Valid values: 3000 to 5999.
+     * 
+     */
+    public Output<String> port() {
+        return this.port;
+    }
+    /**
+     * Read or write mode. Valid values are `ReadWrite`, `ReadOnly`. When creating a new custom endpoint, default to `ReadOnly`.
+     * 
+     */
     @Export(name="readWriteMode", refs={String.class}, tree="[0]")
     private Output<String> readWriteMode;
 
+    /**
+     * @return Read or write mode. Valid values are `ReadWrite`, `ReadOnly`. When creating a new custom endpoint, default to `ReadOnly`.
+     * 
+     */
     public Output<String> readWriteMode() {
         return this.readWriteMode;
     }
+    /**
+     * Specifies whether automatic rotation of SSL certificates is enabled. Valid values: `Enable`,`Disable`.
+     * 
+     */
     @Export(name="sslAutoRotate", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> sslAutoRotate;
 
+    /**
+     * @return Specifies whether automatic rotation of SSL certificates is enabled. Valid values: `Enable`,`Disable`.
+     * 
+     */
     public Output<Optional<String>> sslAutoRotate() {
         return Codegen.optional(this.sslAutoRotate);
     }
+    /**
+     * Specifies SSL certificate download link.\
+     * **NOTE:** For a PolarDB for MySQL cluster, this parameter is required, and only one connection string in each endpoint can enable the ssl, for other notes, see [Configure SSL encryption](https://www.alibabacloud.com/help/doc-detail/153182.htm).
+     * For a PolarDB for PostgreSQL cluster or a PolarDB-O cluster, this parameter is not required, by default, SSL encryption is enabled for all endpoints.
+     * 
+     */
     @Export(name="sslCertificateUrl", refs={String.class}, tree="[0]")
     private Output<String> sslCertificateUrl;
 
+    /**
+     * @return Specifies SSL certificate download link.\
+     * **NOTE:** For a PolarDB for MySQL cluster, this parameter is required, and only one connection string in each endpoint can enable the ssl, for other notes, see [Configure SSL encryption](https://www.alibabacloud.com/help/doc-detail/153182.htm).
+     * For a PolarDB for PostgreSQL cluster or a PolarDB-O cluster, this parameter is not required, by default, SSL encryption is enabled for all endpoints.
+     * 
+     */
     public Output<String> sslCertificateUrl() {
         return this.sslCertificateUrl;
     }
     /**
-     * (Available in v1.121.0+) The SSL connection string.
+     * (Available since v1.121.0) The SSL connection string.
      * 
      */
     @Export(name="sslConnectionString", refs={String.class}, tree="[0]")
     private Output<String> sslConnectionString;
 
     /**
-     * @return (Available in v1.121.0+) The SSL connection string.
+     * @return (Available since v1.121.0) The SSL connection string.
      * 
      */
     public Output<String> sslConnectionString() {
         return this.sslConnectionString;
     }
+    /**
+     * Specifies how to modify the SSL encryption status. Valid values: `Disable`, `Enable`, `Update`.
+     * 
+     */
     @Export(name="sslEnabled", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> sslEnabled;
 
+    /**
+     * @return Specifies how to modify the SSL encryption status. Valid values: `Disable`, `Enable`, `Update`.
+     * 
+     */
     public Output<Optional<String>> sslEnabled() {
         return Codegen.optional(this.sslEnabled);
     }
     /**
-     * (Available in v1.121.0+) The time when the SSL certificate expires. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+     * (Available since v1.121.0) The time when the SSL certificate expires. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
      * 
      */
     @Export(name="sslExpireTime", refs={String.class}, tree="[0]")
     private Output<String> sslExpireTime;
 
     /**
-     * @return (Available in v1.121.0+) The time when the SSL certificate expires. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+     * @return (Available since v1.121.0) The time when the SSL certificate expires. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
      * 
      */
     public Output<String> sslExpireTime() {

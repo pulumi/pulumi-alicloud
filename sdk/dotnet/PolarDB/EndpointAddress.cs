@@ -12,7 +12,7 @@ namespace Pulumi.AliCloud.PolarDB
     /// <summary>
     /// Provides a PolarDB endpoint address resource to allocate an Internet endpoint address string for PolarDB instance.
     /// 
-    /// &gt; **NOTE:** Available in v1.68.0+. Each PolarDB instance will allocate a intranet connection string automatically and its prefix is Cluster ID.
+    /// &gt; **NOTE:** Available since v1.68.0. Each PolarDB instance will allocate a intranet connection string automatically and its prefix is Cluster ID.
     ///  To avoid unnecessary conflict, please specified a internet connection prefix before applying the resource.
     /// 
     /// ## Example Usage
@@ -30,6 +30,7 @@ namespace Pulumi.AliCloud.PolarDB
     ///         DbType = "MySQL",
     ///         DbVersion = "8.0",
     ///         PayType = "PostPaid",
+    ///         Category = "Normal",
     ///     });
     /// 
     ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
@@ -120,7 +121,7 @@ namespace Pulumi.AliCloud.PolarDB
         public Output<string?> NetType { get; private set; } = null!;
 
         /// <summary>
-        /// Connection cluster or endpoint port.
+        /// Port of the specified endpoint. Valid values: 3000 to 5999.
         /// </summary>
         [Output("port")]
         public Output<string> Port { get; private set; } = null!;
@@ -195,6 +196,12 @@ namespace Pulumi.AliCloud.PolarDB
         [Input("netType")]
         public Input<string>? NetType { get; set; }
 
+        /// <summary>
+        /// Port of the specified endpoint. Valid values: 3000 to 5999.
+        /// </summary>
+        [Input("port")]
+        public Input<string>? Port { get; set; }
+
         public EndpointAddressArgs()
         {
         }
@@ -240,7 +247,7 @@ namespace Pulumi.AliCloud.PolarDB
         public Input<string>? NetType { get; set; }
 
         /// <summary>
-        /// Connection cluster or endpoint port.
+        /// Port of the specified endpoint. Valid values: 3000 to 5999.
         /// </summary>
         [Input("port")]
         public Input<string>? Port { get; set; }

@@ -35,7 +35,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cms.NewNamespace(ctx, "example", &cms.NamespaceArgs{
-//				Namespace:     pulumi.String("tf_example"),
+//				Description:   pulumi.String("tf-example"),
+//				Namespace:     pulumi.String("tf-example"),
 //				Specification: pulumi.String("cms.s1.large"),
 //			})
 //			if err != nil {
@@ -53,21 +54,21 @@ import (
 //
 // ```sh
 //
-//	$ pulumi import alicloud:cms/namespace:Namespace example <namespace>
+//	$ pulumi import alicloud:cms/namespace:Namespace example <id>
 //
 // ```
 type Namespace struct {
 	pulumi.CustomResourceState
 
-	// Description of indicator warehouse.
+	// The description of the namespace.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// Indicator warehouse name. The namespace can contain lowercase letters, digits, and hyphens (-).
+	// The name of the namespace. The name can contain lowercase letters, digits, and hyphens (-).
 	Namespace pulumi.StringOutput `pulumi:"namespace"`
-	// Data storage duration. Valid values: `cms.s1.12xlarge`, `cms.s1.2xlarge`, `cms.s1.3xlarge`, `cms.s1.6xlarge`, `cms.s1.large`, `cms.s1.xlarge`.
+	// The data retention period. Default value: `cms.s1.3xlarge`. Valid values:
 	// - `cms.s1.large`: Data storage duration is 15 days.
 	// - `cms.s1.xlarge`: Data storage duration is 32 days.
 	// - `cms.s1.2xlarge`: Data storage duration 63 days.
-	// - `cms.s1.3xlarge`: (Default) Data storage duration 93 days.
+	// - `cms.s1.3xlarge`: Data storage duration 93 days.
 	// - `cms.s1.6xlarge`: Data storage duration 185 days.
 	// - `cms.s1.12xlarge`: Data storage duration 376 days.
 	Specification pulumi.StringOutput `pulumi:"specification"`
@@ -106,30 +107,30 @@ func GetNamespace(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Namespace resources.
 type namespaceState struct {
-	// Description of indicator warehouse.
+	// The description of the namespace.
 	Description *string `pulumi:"description"`
-	// Indicator warehouse name. The namespace can contain lowercase letters, digits, and hyphens (-).
+	// The name of the namespace. The name can contain lowercase letters, digits, and hyphens (-).
 	Namespace *string `pulumi:"namespace"`
-	// Data storage duration. Valid values: `cms.s1.12xlarge`, `cms.s1.2xlarge`, `cms.s1.3xlarge`, `cms.s1.6xlarge`, `cms.s1.large`, `cms.s1.xlarge`.
+	// The data retention period. Default value: `cms.s1.3xlarge`. Valid values:
 	// - `cms.s1.large`: Data storage duration is 15 days.
 	// - `cms.s1.xlarge`: Data storage duration is 32 days.
 	// - `cms.s1.2xlarge`: Data storage duration 63 days.
-	// - `cms.s1.3xlarge`: (Default) Data storage duration 93 days.
+	// - `cms.s1.3xlarge`: Data storage duration 93 days.
 	// - `cms.s1.6xlarge`: Data storage duration 185 days.
 	// - `cms.s1.12xlarge`: Data storage duration 376 days.
 	Specification *string `pulumi:"specification"`
 }
 
 type NamespaceState struct {
-	// Description of indicator warehouse.
+	// The description of the namespace.
 	Description pulumi.StringPtrInput
-	// Indicator warehouse name. The namespace can contain lowercase letters, digits, and hyphens (-).
+	// The name of the namespace. The name can contain lowercase letters, digits, and hyphens (-).
 	Namespace pulumi.StringPtrInput
-	// Data storage duration. Valid values: `cms.s1.12xlarge`, `cms.s1.2xlarge`, `cms.s1.3xlarge`, `cms.s1.6xlarge`, `cms.s1.large`, `cms.s1.xlarge`.
+	// The data retention period. Default value: `cms.s1.3xlarge`. Valid values:
 	// - `cms.s1.large`: Data storage duration is 15 days.
 	// - `cms.s1.xlarge`: Data storage duration is 32 days.
 	// - `cms.s1.2xlarge`: Data storage duration 63 days.
-	// - `cms.s1.3xlarge`: (Default) Data storage duration 93 days.
+	// - `cms.s1.3xlarge`: Data storage duration 93 days.
 	// - `cms.s1.6xlarge`: Data storage duration 185 days.
 	// - `cms.s1.12xlarge`: Data storage duration 376 days.
 	Specification pulumi.StringPtrInput
@@ -140,15 +141,15 @@ func (NamespaceState) ElementType() reflect.Type {
 }
 
 type namespaceArgs struct {
-	// Description of indicator warehouse.
+	// The description of the namespace.
 	Description *string `pulumi:"description"`
-	// Indicator warehouse name. The namespace can contain lowercase letters, digits, and hyphens (-).
+	// The name of the namespace. The name can contain lowercase letters, digits, and hyphens (-).
 	Namespace string `pulumi:"namespace"`
-	// Data storage duration. Valid values: `cms.s1.12xlarge`, `cms.s1.2xlarge`, `cms.s1.3xlarge`, `cms.s1.6xlarge`, `cms.s1.large`, `cms.s1.xlarge`.
+	// The data retention period. Default value: `cms.s1.3xlarge`. Valid values:
 	// - `cms.s1.large`: Data storage duration is 15 days.
 	// - `cms.s1.xlarge`: Data storage duration is 32 days.
 	// - `cms.s1.2xlarge`: Data storage duration 63 days.
-	// - `cms.s1.3xlarge`: (Default) Data storage duration 93 days.
+	// - `cms.s1.3xlarge`: Data storage duration 93 days.
 	// - `cms.s1.6xlarge`: Data storage duration 185 days.
 	// - `cms.s1.12xlarge`: Data storage duration 376 days.
 	Specification *string `pulumi:"specification"`
@@ -156,15 +157,15 @@ type namespaceArgs struct {
 
 // The set of arguments for constructing a Namespace resource.
 type NamespaceArgs struct {
-	// Description of indicator warehouse.
+	// The description of the namespace.
 	Description pulumi.StringPtrInput
-	// Indicator warehouse name. The namespace can contain lowercase letters, digits, and hyphens (-).
+	// The name of the namespace. The name can contain lowercase letters, digits, and hyphens (-).
 	Namespace pulumi.StringInput
-	// Data storage duration. Valid values: `cms.s1.12xlarge`, `cms.s1.2xlarge`, `cms.s1.3xlarge`, `cms.s1.6xlarge`, `cms.s1.large`, `cms.s1.xlarge`.
+	// The data retention period. Default value: `cms.s1.3xlarge`. Valid values:
 	// - `cms.s1.large`: Data storage duration is 15 days.
 	// - `cms.s1.xlarge`: Data storage duration is 32 days.
 	// - `cms.s1.2xlarge`: Data storage duration 63 days.
-	// - `cms.s1.3xlarge`: (Default) Data storage duration 93 days.
+	// - `cms.s1.3xlarge`: Data storage duration 93 days.
 	// - `cms.s1.6xlarge`: Data storage duration 185 days.
 	// - `cms.s1.12xlarge`: Data storage duration 376 days.
 	Specification pulumi.StringPtrInput
@@ -257,21 +258,21 @@ func (o NamespaceOutput) ToNamespaceOutputWithContext(ctx context.Context) Names
 	return o
 }
 
-// Description of indicator warehouse.
+// The description of the namespace.
 func (o NamespaceOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Namespace) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// Indicator warehouse name. The namespace can contain lowercase letters, digits, and hyphens (-).
+// The name of the namespace. The name can contain lowercase letters, digits, and hyphens (-).
 func (o NamespaceOutput) Namespace() pulumi.StringOutput {
 	return o.ApplyT(func(v *Namespace) pulumi.StringOutput { return v.Namespace }).(pulumi.StringOutput)
 }
 
-// Data storage duration. Valid values: `cms.s1.12xlarge`, `cms.s1.2xlarge`, `cms.s1.3xlarge`, `cms.s1.6xlarge`, `cms.s1.large`, `cms.s1.xlarge`.
+// The data retention period. Default value: `cms.s1.3xlarge`. Valid values:
 // - `cms.s1.large`: Data storage duration is 15 days.
 // - `cms.s1.xlarge`: Data storage duration is 32 days.
 // - `cms.s1.2xlarge`: Data storage duration 63 days.
-// - `cms.s1.3xlarge`: (Default) Data storage duration 93 days.
+// - `cms.s1.3xlarge`: Data storage duration 93 days.
 // - `cms.s1.6xlarge`: Data storage duration 185 days.
 // - `cms.s1.12xlarge`: Data storage duration 376 days.
 func (o NamespaceOutput) Specification() pulumi.StringOutput {

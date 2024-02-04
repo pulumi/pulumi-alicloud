@@ -106,14 +106,14 @@ public final class EndpointAddressState extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Connection cluster or endpoint port.
+     * Port of the specified endpoint. Valid values: 3000 to 5999.
      * 
      */
     @Import(name="port")
     private @Nullable Output<String> port;
 
     /**
-     * @return Connection cluster or endpoint port.
+     * @return Port of the specified endpoint. Valid values: 3000 to 5999.
      * 
      */
     public Optional<Output<String>> port() {
@@ -277,7 +277,7 @@ public final class EndpointAddressState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param port Connection cluster or endpoint port.
+         * @param port Port of the specified endpoint. Valid values: 3000 to 5999.
          * 
          * @return builder
          * 
@@ -288,7 +288,7 @@ public final class EndpointAddressState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param port Connection cluster or endpoint port.
+         * @param port Port of the specified endpoint. Valid values: 3000 to 5999.
          * 
          * @return builder
          * 

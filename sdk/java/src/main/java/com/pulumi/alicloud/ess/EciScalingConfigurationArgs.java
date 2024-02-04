@@ -106,14 +106,16 @@ public final class EciScalingConfigurationArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * The name of the container group.
+     * The name of the container group. which must contain 2-128 characters (
+     * English), starting with numbers, English lowercase letters , and can contain number, and hypens `-`.
      * 
      */
     @Import(name="containerGroupName")
     private @Nullable Output<String> containerGroupName;
 
     /**
-     * @return The name of the container group.
+     * @return The name of the container group. which must contain 2-128 characters (
+     * English), starting with numbers, English lowercase letters , and can contain number, and hypens `-`.
      * 
      */
     public Optional<Output<String>> containerGroupName() {
@@ -755,7 +757,8 @@ public final class EciScalingConfigurationArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param containerGroupName The name of the container group.
+         * @param containerGroupName The name of the container group. which must contain 2-128 characters (
+         * English), starting with numbers, English lowercase letters , and can contain number, and hypens `-`.
          * 
          * @return builder
          * 
@@ -766,7 +769,8 @@ public final class EciScalingConfigurationArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param containerGroupName The name of the container group.
+         * @param containerGroupName The name of the container group. which must contain 2-128 characters (
+         * English), starting with numbers, English lowercase letters , and can contain number, and hypens `-`.
          * 
          * @return builder
          * 

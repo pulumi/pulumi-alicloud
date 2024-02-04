@@ -17,7 +17,7 @@ import javax.annotation.Nullable;
 /**
  * Provides a PolarDB endpoint address resource to allocate an Internet endpoint address string for PolarDB instance.
  * 
- * &gt; **NOTE:** Available in v1.68.0+. Each PolarDB instance will allocate a intranet connection string automatically and its prefix is Cluster ID.
+ * &gt; **NOTE:** Available since v1.68.0. Each PolarDB instance will allocate a intranet connection string automatically and its prefix is Cluster ID.
  *  To avoid unnecessary conflict, please specified a internet connection prefix before applying the resource.
  * 
  * ## Example Usage
@@ -55,6 +55,7 @@ import javax.annotation.Nullable;
  *             .dbType(&#34;MySQL&#34;)
  *             .dbVersion(&#34;8.0&#34;)
  *             .payType(&#34;PostPaid&#34;)
+ *             .category(&#34;Normal&#34;)
  *             .build());
  * 
  *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
@@ -189,14 +190,14 @@ public class EndpointAddress extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.netType);
     }
     /**
-     * Connection cluster or endpoint port.
+     * Port of the specified endpoint. Valid values: 3000 to 5999.
      * 
      */
     @Export(name="port", refs={String.class}, tree="[0]")
     private Output<String> port;
 
     /**
-     * @return Connection cluster or endpoint port.
+     * @return Port of the specified endpoint. Valid values: 3000 to 5999.
      * 
      */
     public Output<String> port() {

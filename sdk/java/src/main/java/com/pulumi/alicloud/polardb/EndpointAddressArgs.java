@@ -76,6 +76,21 @@ public final class EndpointAddressArgs extends com.pulumi.resources.ResourceArgs
         return Optional.ofNullable(this.netType);
     }
 
+    /**
+     * Port of the specified endpoint. Valid values: 3000 to 5999.
+     * 
+     */
+    @Import(name="port")
+    private @Nullable Output<String> port;
+
+    /**
+     * @return Port of the specified endpoint. Valid values: 3000 to 5999.
+     * 
+     */
+    public Optional<Output<String>> port() {
+        return Optional.ofNullable(this.port);
+    }
+
     private EndpointAddressArgs() {}
 
     private EndpointAddressArgs(EndpointAddressArgs $) {
@@ -83,6 +98,7 @@ public final class EndpointAddressArgs extends com.pulumi.resources.ResourceArgs
         this.dbClusterId = $.dbClusterId;
         this.dbEndpointId = $.dbEndpointId;
         this.netType = $.netType;
+        this.port = $.port;
     }
 
     public static Builder builder() {
@@ -185,6 +201,27 @@ public final class EndpointAddressArgs extends com.pulumi.resources.ResourceArgs
          */
         public Builder netType(String netType) {
             return netType(Output.of(netType));
+        }
+
+        /**
+         * @param port Port of the specified endpoint. Valid values: 3000 to 5999.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder port(@Nullable Output<String> port) {
+            $.port = port;
+            return this;
+        }
+
+        /**
+         * @param port Port of the specified endpoint. Valid values: 3000 to 5999.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder port(String port) {
+            return port(Output.of(port));
         }
 
         public EndpointAddressArgs build() {

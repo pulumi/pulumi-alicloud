@@ -20,7 +20,8 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const example = new alicloud.cms.Namespace("example", {
- *     namespace: "tf_example",
+ *     description: "tf-example",
+ *     namespace: "tf-example",
  *     specification: "cms.s1.large",
  * });
  * ```
@@ -30,7 +31,7 @@ import * as utilities from "../utilities";
  * Cloud Monitor Service Namespace can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:cms/namespace:Namespace example <namespace>
+ *  $ pulumi import alicloud:cms/namespace:Namespace example <id>
  * ```
  */
 export class Namespace extends pulumi.CustomResource {
@@ -62,19 +63,19 @@ export class Namespace extends pulumi.CustomResource {
     }
 
     /**
-     * Description of indicator warehouse.
+     * The description of the namespace.
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * Indicator warehouse name. The namespace can contain lowercase letters, digits, and hyphens (-).
+     * The name of the namespace. The name can contain lowercase letters, digits, and hyphens (-).
      */
     public readonly namespace!: pulumi.Output<string>;
     /**
-     * Data storage duration. Valid values: `cms.s1.12xlarge`, `cms.s1.2xlarge`, `cms.s1.3xlarge`, `cms.s1.6xlarge`, `cms.s1.large`, `cms.s1.xlarge`. 
+     * The data retention period. Default value: `cms.s1.3xlarge`. Valid values:
      * - `cms.s1.large`: Data storage duration is 15 days.
      * - `cms.s1.xlarge`: Data storage duration is 32 days.
      * - `cms.s1.2xlarge`: Data storage duration 63 days.
-     * - `cms.s1.3xlarge`: (Default) Data storage duration 93 days.
+     * - `cms.s1.3xlarge`: Data storage duration 93 days.
      * - `cms.s1.6xlarge`: Data storage duration 185 days.
      * - `cms.s1.12xlarge`: Data storage duration 376 days.
      */
@@ -115,19 +116,19 @@ export class Namespace extends pulumi.CustomResource {
  */
 export interface NamespaceState {
     /**
-     * Description of indicator warehouse.
+     * The description of the namespace.
      */
     description?: pulumi.Input<string>;
     /**
-     * Indicator warehouse name. The namespace can contain lowercase letters, digits, and hyphens (-).
+     * The name of the namespace. The name can contain lowercase letters, digits, and hyphens (-).
      */
     namespace?: pulumi.Input<string>;
     /**
-     * Data storage duration. Valid values: `cms.s1.12xlarge`, `cms.s1.2xlarge`, `cms.s1.3xlarge`, `cms.s1.6xlarge`, `cms.s1.large`, `cms.s1.xlarge`. 
+     * The data retention period. Default value: `cms.s1.3xlarge`. Valid values:
      * - `cms.s1.large`: Data storage duration is 15 days.
      * - `cms.s1.xlarge`: Data storage duration is 32 days.
      * - `cms.s1.2xlarge`: Data storage duration 63 days.
-     * - `cms.s1.3xlarge`: (Default) Data storage duration 93 days.
+     * - `cms.s1.3xlarge`: Data storage duration 93 days.
      * - `cms.s1.6xlarge`: Data storage duration 185 days.
      * - `cms.s1.12xlarge`: Data storage duration 376 days.
      */
@@ -139,19 +140,19 @@ export interface NamespaceState {
  */
 export interface NamespaceArgs {
     /**
-     * Description of indicator warehouse.
+     * The description of the namespace.
      */
     description?: pulumi.Input<string>;
     /**
-     * Indicator warehouse name. The namespace can contain lowercase letters, digits, and hyphens (-).
+     * The name of the namespace. The name can contain lowercase letters, digits, and hyphens (-).
      */
     namespace: pulumi.Input<string>;
     /**
-     * Data storage duration. Valid values: `cms.s1.12xlarge`, `cms.s1.2xlarge`, `cms.s1.3xlarge`, `cms.s1.6xlarge`, `cms.s1.large`, `cms.s1.xlarge`. 
+     * The data retention period. Default value: `cms.s1.3xlarge`. Valid values:
      * - `cms.s1.large`: Data storage duration is 15 days.
      * - `cms.s1.xlarge`: Data storage duration is 32 days.
      * - `cms.s1.2xlarge`: Data storage duration 63 days.
-     * - `cms.s1.3xlarge`: (Default) Data storage duration 93 days.
+     * - `cms.s1.3xlarge`: Data storage duration 93 days.
      * - `cms.s1.6xlarge`: Data storage duration 185 days.
      * - `cms.s1.12xlarge`: Data storage duration 376 days.
      */

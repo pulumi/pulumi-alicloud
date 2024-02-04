@@ -9,6 +9,7 @@ from .account import *
 from .account_privilege import *
 from .backup_policy import *
 from .cluster import *
+from .cluster_endpoint import *
 from .database import *
 from .endpoint import *
 from .endpoint_address import *
@@ -22,5 +23,6 @@ from .get_parameter_groups import *
 from .get_zones import *
 from .global_database_network import *
 from .parameter_group import *
+from .primary_endpoint import *
 from ._inputs import *
 from . import outputs
