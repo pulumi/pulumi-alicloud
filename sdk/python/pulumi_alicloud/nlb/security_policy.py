@@ -267,7 +267,7 @@ class SecurityPolicy(pulumi.CustomResource):
         NLB Security Policy can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:nlb/securityPolicy:SecurityPolicy example <id>
+        $ pulumi import alicloud:nlb/securityPolicy:SecurityPolicy example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -330,7 +330,7 @@ class SecurityPolicy(pulumi.CustomResource):
         NLB Security Policy can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:nlb/securityPolicy:SecurityPolicy example <id>
+        $ pulumi import alicloud:nlb/securityPolicy:SecurityPolicy example <id>
         ```
 
         :param str resource_name: The name of the resource.

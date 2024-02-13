@@ -73,7 +73,7 @@ import javax.annotation.Nullable;
  * DTS Migration Instance can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:dts/migrationInstance:MigrationInstance example &lt;id&gt;
+ * $ pulumi import alicloud:dts/migrationInstance:MigrationInstance example &lt;id&gt;
  * ```
  * 
  */

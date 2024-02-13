@@ -279,7 +279,7 @@ class DeliveryChannel(pulumi.CustomResource):
         Alicloud Config Delivery Channel can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:cfg/deliveryChannel:DeliveryChannel example cdc-49a2ad756057********
+        $ pulumi import alicloud:cfg/deliveryChannel:DeliveryChannel example cdc-49a2ad756057********
         ```
 
         :param str resource_name: The name of the resource.
@@ -307,7 +307,7 @@ class DeliveryChannel(pulumi.CustomResource):
         Alicloud Config Delivery Channel can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:cfg/deliveryChannel:DeliveryChannel example cdc-49a2ad756057********
+        $ pulumi import alicloud:cfg/deliveryChannel:DeliveryChannel example cdc-49a2ad756057********
         ```
 
         :param str resource_name: The name of the resource.

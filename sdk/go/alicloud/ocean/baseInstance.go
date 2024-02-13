@@ -79,9 +79,7 @@ import (
 // Ocean Base Instance can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:ocean/baseInstance:BaseInstance example <id>
-//
+// $ pulumi import alicloud:ocean/baseInstance:BaseInstance example <id>
 // ```
 type BaseInstance struct {
 	pulumi.CustomResourceState

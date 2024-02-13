@@ -27,7 +27,7 @@ import javax.annotation.Nullable;
  * Cen Transit Router Multicast Domain Member can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:cen/transitRouterMulticastDomainMember:TransitRouterMulticastDomainMember example &lt;transit_router_multicast_domain_id&gt;:&lt;group_ip_address&gt;:&lt;network_interface_id&gt;
+ * $ pulumi import alicloud:cen/transitRouterMulticastDomainMember:TransitRouterMulticastDomainMember example &lt;transit_router_multicast_domain_id&gt;:&lt;group_ip_address&gt;:&lt;network_interface_id&gt;
  * ```
  * 
  */

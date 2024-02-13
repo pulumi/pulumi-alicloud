@@ -31,7 +31,7 @@ import * as utilities from "../utilities";
  * Ga Accelerator can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:ga/accelerator:Accelerator example <id>
+ * $ pulumi import alicloud:ga/accelerator:Accelerator example <id>
  * ```
  */
 export class Accelerator extends pulumi.CustomResource {

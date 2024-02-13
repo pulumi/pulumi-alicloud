@@ -41,7 +41,7 @@ import * as utilities from "../utilities";
  * OOS State Configuration can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:oos/stateConfiguration:StateConfiguration example <id>
+ * $ pulumi import alicloud:oos/stateConfiguration:StateConfiguration example <id>
  * ```
  */
 export class StateConfiguration extends pulumi.CustomResource {

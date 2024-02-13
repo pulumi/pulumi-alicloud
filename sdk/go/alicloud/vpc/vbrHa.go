@@ -23,9 +23,7 @@ import (
 // VPC Vbr Ha can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:vpc/vbrHa:VbrHa example <id>
-//
+// $ pulumi import alicloud:vpc/vbrHa:VbrHa example <id>
 // ```
 type VbrHa struct {
 	pulumi.CustomResourceState

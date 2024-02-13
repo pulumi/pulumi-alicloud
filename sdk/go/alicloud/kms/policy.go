@@ -23,9 +23,7 @@ import (
 // KMS Policy can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:kms/policy:Policy example <id>
-//
+// $ pulumi import alicloud:kms/policy:Policy example <id>
 // ```
 type Policy struct {
 	pulumi.CustomResourceState

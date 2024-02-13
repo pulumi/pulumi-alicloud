@@ -80,7 +80,7 @@ import * as utilities from "../utilities";
  * ECS Snapshot Group can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:ecs/ecsSnapshotGroup:EcsSnapshotGroup example <id>
+ * $ pulumi import alicloud:ecs/ecsSnapshotGroup:EcsSnapshotGroup example <id>
  * ```
  */
 export class EcsSnapshotGroup extends pulumi.CustomResource {

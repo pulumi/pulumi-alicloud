@@ -40,7 +40,7 @@ import * as utilities from "../utilities";
  * ENS Snapshot can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:ens/snapshot:Snapshot example <id>
+ * $ pulumi import alicloud:ens/snapshot:Snapshot example <id>
  * ```
  */
 export class Snapshot extends pulumi.CustomResource {

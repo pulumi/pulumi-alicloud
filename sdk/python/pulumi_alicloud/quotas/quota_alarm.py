@@ -356,7 +356,7 @@ class QuotaAlarm(pulumi.CustomResource):
         Quotas Quota Alarm can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:quotas/quotaAlarm:QuotaAlarm example <id>
+        $ pulumi import alicloud:quotas/quotaAlarm:QuotaAlarm example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -414,7 +414,7 @@ class QuotaAlarm(pulumi.CustomResource):
         Quotas Quota Alarm can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:quotas/quotaAlarm:QuotaAlarm example <id>
+        $ pulumi import alicloud:quotas/quotaAlarm:QuotaAlarm example <id>
         ```
 
         :param str resource_name: The name of the resource.

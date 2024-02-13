@@ -111,7 +111,7 @@ import * as utilities from "../utilities";
  * NLB Listener can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:nlb/listener:Listener example <id>
+ * $ pulumi import alicloud:nlb/listener:Listener example <id>
  * ```
  */
 export class Listener extends pulumi.CustomResource {

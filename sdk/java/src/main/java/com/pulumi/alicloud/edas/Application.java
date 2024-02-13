@@ -92,7 +92,7 @@ import javax.annotation.Nullable;
  * EDAS application can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:edas/application:Application app app_Id
+ * $ pulumi import alicloud:edas/application:Application app app_Id
  * ```
  * 
  */

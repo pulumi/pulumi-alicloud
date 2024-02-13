@@ -23,7 +23,7 @@ namespace Pulumi.AliCloud.CloudAuth
     /// Cloudauth Face Config can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:cloudauth/faceConfig:FaceConfig example &lt;lang&gt;
+    /// $ pulumi import alicloud:cloudauth/faceConfig:FaceConfig example &lt;lang&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:cloudauth/faceConfig:FaceConfig")]

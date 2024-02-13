@@ -63,9 +63,7 @@ import (
 // WAF Certificate can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:waf/certificate:Certificate example <instance_id>:<domain>:<certificate_id>
-//
+// $ pulumi import alicloud:waf/certificate:Certificate example <instance_id>:<domain>:<certificate_id>
 // ```
 type Certificate struct {
 	pulumi.CustomResourceState

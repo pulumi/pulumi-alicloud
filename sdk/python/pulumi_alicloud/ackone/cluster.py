@@ -204,7 +204,7 @@ class Cluster(pulumi.CustomResource):
         Ack One Cluster can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:ackone/cluster:Cluster example <id>
+        $ pulumi import alicloud:ackone/cluster:Cluster example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -258,7 +258,7 @@ class Cluster(pulumi.CustomResource):
         Ack One Cluster can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:ackone/cluster:Cluster example <id>
+        $ pulumi import alicloud:ackone/cluster:Cluster example <id>
         ```
 
         :param str resource_name: The name of the resource.

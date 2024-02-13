@@ -110,9 +110,7 @@ import (
 // ECD Image can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:eds/image:Image example <id>
-//
+// $ pulumi import alicloud:eds/image:Image example <id>
 // ```
 type Image struct {
 	pulumi.CustomResourceState

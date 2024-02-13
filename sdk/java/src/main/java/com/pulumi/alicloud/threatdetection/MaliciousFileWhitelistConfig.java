@@ -66,7 +66,7 @@ import javax.annotation.Nullable;
  * Threat Detection Malicious File Whitelist Config can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:threatdetection/maliciousFileWhitelistConfig:MaliciousFileWhitelistConfig example &lt;id&gt;
+ * $ pulumi import alicloud:threatdetection/maliciousFileWhitelistConfig:MaliciousFileWhitelistConfig example &lt;id&gt;
  * ```
  * 
  */

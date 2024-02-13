@@ -124,7 +124,7 @@ import javax.annotation.Nullable;
  * Ess lifecycle hook can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:ess/lifecycleHook:LifecycleHook example ash-l12345
+ * $ pulumi import alicloud:ess/lifecycleHook:LifecycleHook example ash-l12345
  * ```
  * 
  */

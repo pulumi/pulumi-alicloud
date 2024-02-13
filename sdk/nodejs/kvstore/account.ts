@@ -65,7 +65,7 @@ import * as utilities from "../utilities";
  * KVStore account can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:kvstore/account:Account example <instance_id>:<account_name>
+ * $ pulumi import alicloud:kvstore/account:Account example <instance_id>:<account_name>
  * ```
  */
 export class Account extends pulumi.CustomResource {

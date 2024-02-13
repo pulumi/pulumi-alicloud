@@ -69,9 +69,7 @@ import (
 // EDAS Namespace can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:edas/namespace:Namespace example <id>
-//
+// $ pulumi import alicloud:edas/namespace:Namespace example <id>
 // ```
 type Namespace struct {
 	pulumi.CustomResourceState

@@ -713,7 +713,7 @@ class Desktop(pulumi.CustomResource):
         ECD Desktop can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:eds/desktop:Desktop example <id>
+        $ pulumi import alicloud:eds/desktop:Desktop example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -800,7 +800,7 @@ class Desktop(pulumi.CustomResource):
         ECD Desktop can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:eds/desktop:Desktop example <id>
+        $ pulumi import alicloud:eds/desktop:Desktop example <id>
         ```
 
         :param str resource_name: The name of the resource.

@@ -16,7 +16,7 @@ import * as utilities from "../utilities";
  * Cloud Storage Gateway Express Sync can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:cloudstoragegateway/expressSync:ExpressSync example <id>
+ * $ pulumi import alicloud:cloudstoragegateway/expressSync:ExpressSync example <id>
  * ```
  */
 export class ExpressSync extends pulumi.CustomResource {

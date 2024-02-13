@@ -79,9 +79,7 @@ import (
 // EBS Enterprise Snapshot Policy can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:ebs/enterpriseSnapshotPolicy:EnterpriseSnapshotPolicy example <id>
-//
+// $ pulumi import alicloud:ebs/enterpriseSnapshotPolicy:EnterpriseSnapshotPolicy example <id>
 // ```
 type EnterpriseSnapshotPolicy struct {
 	pulumi.CustomResourceState

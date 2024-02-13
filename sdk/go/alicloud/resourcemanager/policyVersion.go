@@ -86,9 +86,7 @@ import (
 // Resource Manager Policy Version can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:resourcemanager/policyVersion:PolicyVersion example tftest:v2
-//
+// $ pulumi import alicloud:resourcemanager/policyVersion:PolicyVersion example tftest:v2
 // ```
 type PolicyVersion struct {
 	pulumi.CustomResourceState

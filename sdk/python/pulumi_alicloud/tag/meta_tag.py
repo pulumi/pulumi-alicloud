@@ -125,7 +125,7 @@ class MetaTag(pulumi.CustomResource):
         Tag Meta Tag can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:tag/metaTag:MetaTag example <regionId>:<key>
+        $ pulumi import alicloud:tag/metaTag:MetaTag example <regionId>:<key>
         ```
 
         :param str resource_name: The name of the resource.
@@ -167,7 +167,7 @@ class MetaTag(pulumi.CustomResource):
         Tag Meta Tag can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:tag/metaTag:MetaTag example <regionId>:<key>
+        $ pulumi import alicloud:tag/metaTag:MetaTag example <regionId>:<key>
         ```
 
         :param str resource_name: The name of the resource.

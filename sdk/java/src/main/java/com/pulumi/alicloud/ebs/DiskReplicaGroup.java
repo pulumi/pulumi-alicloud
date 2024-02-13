@@ -27,7 +27,7 @@ import javax.annotation.Nullable;
  * EBS Disk Replica Group can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:ebs/diskReplicaGroup:DiskReplicaGroup example &lt;id&gt;
+ * $ pulumi import alicloud:ebs/diskReplicaGroup:DiskReplicaGroup example &lt;id&gt;
  * ```
  * 
  */

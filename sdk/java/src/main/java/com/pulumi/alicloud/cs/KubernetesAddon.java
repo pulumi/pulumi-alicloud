@@ -26,7 +26,7 @@ import javax.annotation.Nullable;
  * Cluster addon can be imported by cluster id and addon name. Then write the addon.tf file according to the result of `pulumi preview`.
  * 
  * ```sh
- *  $ pulumi import alicloud:cs/kubernetesAddon:KubernetesAddon my_addon &lt;cluster_id&gt;:&lt;addon_name&gt;
+ * $ pulumi import alicloud:cs/kubernetesAddon:KubernetesAddon my_addon &lt;cluster_id&gt;:&lt;addon_name&gt;
  * ```
  * 
  */

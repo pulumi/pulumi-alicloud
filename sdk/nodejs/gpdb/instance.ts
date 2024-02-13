@@ -58,7 +58,7 @@ import * as utilities from "../utilities";
  * AnalyticDB for PostgreSQL can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:gpdb/instance:Instance example <id>
+ * $ pulumi import alicloud:gpdb/instance:Instance example <id>
  * ```
  */
 export class Instance extends pulumi.CustomResource {

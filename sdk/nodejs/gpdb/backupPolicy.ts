@@ -10,7 +10,7 @@ import * as utilities from "../utilities";
  * GPDB Backup Policy can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:gpdb/backupPolicy:BackupPolicy example <id>
+ * $ pulumi import alicloud:gpdb/backupPolicy:BackupPolicy example <id>
  * ```
  */
 export class BackupPolicy extends pulumi.CustomResource {

@@ -435,7 +435,7 @@ class ImageCopy(pulumi.CustomResource):
         image can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:ecs/imageCopy:ImageCopy default m-uf66871ape***yg1q***
+        $ pulumi import alicloud:ecs/imageCopy:ImageCopy default m-uf66871ape***yg1q***
         ```
 
         :param str resource_name: The name of the resource.
@@ -527,7 +527,7 @@ class ImageCopy(pulumi.CustomResource):
         image can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:ecs/imageCopy:ImageCopy default m-uf66871ape***yg1q***
+        $ pulumi import alicloud:ecs/imageCopy:ImageCopy default m-uf66871ape***yg1q***
         ```
 
         :param str resource_name: The name of the resource.

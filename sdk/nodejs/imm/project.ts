@@ -51,7 +51,7 @@ import * as utilities from "../utilities";
  * Intelligent Media Management Project can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:imm/project:Project example <project>
+ * $ pulumi import alicloud:imm/project:Project example <project>
  * ```
  */
 export class Project extends pulumi.CustomResource {

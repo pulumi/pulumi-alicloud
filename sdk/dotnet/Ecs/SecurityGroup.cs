@@ -73,7 +73,7 @@ namespace Pulumi.AliCloud.Ecs
     /// Security Group can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:ecs/securityGroup:SecurityGroup example sg-abc123456
+    /// $ pulumi import alicloud:ecs/securityGroup:SecurityGroup example sg-abc123456
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:ecs/securityGroup:SecurityGroup")]

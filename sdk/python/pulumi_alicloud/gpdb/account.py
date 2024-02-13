@@ -272,7 +272,7 @@ class Account(pulumi.CustomResource):
         GPDB Account can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:gpdb/account:Account example <db_instance_id>:<account_name>
+        $ pulumi import alicloud:gpdb/account:Account example <db_instance_id>:<account_name>
         ```
 
         :param str resource_name: The name of the resource.
@@ -358,7 +358,7 @@ class Account(pulumi.CustomResource):
         GPDB Account can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:gpdb/account:Account example <db_instance_id>:<account_name>
+        $ pulumi import alicloud:gpdb/account:Account example <db_instance_id>:<account_name>
         ```
 
         :param str resource_name: The name of the resource.

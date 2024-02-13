@@ -28,7 +28,7 @@ import javax.annotation.Nullable;
  * Cloud Storage Gateway Gateway Block Volume can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:cloudstoragegateway/gatewayBlockVolume:GatewayBlockVolume example &lt;gateway_id&gt;:&lt;index_id&gt;
+ * $ pulumi import alicloud:cloudstoragegateway/gatewayBlockVolume:GatewayBlockVolume example &lt;gateway_id&gt;:&lt;index_id&gt;
  * ```
  * 
  */

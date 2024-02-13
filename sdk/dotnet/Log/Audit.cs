@@ -219,7 +219,7 @@ namespace Pulumi.AliCloud.Log
     /// Log audit can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:log/audit:Audit example tf-audit-example
+    /// $ pulumi import alicloud:log/audit:Audit example tf-audit-example
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:log/audit:Audit")]

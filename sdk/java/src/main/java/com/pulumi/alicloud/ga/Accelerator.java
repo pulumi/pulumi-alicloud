@@ -64,7 +64,7 @@ import javax.annotation.Nullable;
  * Ga Accelerator can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:ga/accelerator:Accelerator example &lt;id&gt;
+ * $ pulumi import alicloud:ga/accelerator:Accelerator example &lt;id&gt;
  * ```
  * 
  */

@@ -54,9 +54,7 @@ import (
 // Cloud Monitor Service Enterprise Public can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:cloudmonitor/serviceEnterprisePublic:ServiceEnterprisePublic example <id>
-//
+// $ pulumi import alicloud:cloudmonitor/serviceEnterprisePublic:ServiceEnterprisePublic example <id>
 // ```
 type ServiceEnterprisePublic struct {
 	pulumi.CustomResourceState

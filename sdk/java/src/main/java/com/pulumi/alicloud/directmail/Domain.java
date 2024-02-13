@@ -59,7 +59,7 @@ import javax.annotation.Nullable;
  * Direct Mail Domain can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:directmail/domain:Domain example &lt;id&gt;
+ * $ pulumi import alicloud:directmail/domain:Domain example &lt;id&gt;
  * ```
  * 
  */

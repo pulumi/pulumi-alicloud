@@ -190,7 +190,7 @@ class EnvPodMonitor(pulumi.CustomResource):
         ARMS Env Pod Monitor can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:arms/envPodMonitor:EnvPodMonitor example <environment_id>:<namespace>:<env_pod_monitor_name>
+        $ pulumi import alicloud:arms/envPodMonitor:EnvPodMonitor example <environment_id>:<namespace>:<env_pod_monitor_name>
         ```
 
         :param str resource_name: The name of the resource.
@@ -217,7 +217,7 @@ class EnvPodMonitor(pulumi.CustomResource):
         ARMS Env Pod Monitor can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:arms/envPodMonitor:EnvPodMonitor example <environment_id>:<namespace>:<env_pod_monitor_name>
+        $ pulumi import alicloud:arms/envPodMonitor:EnvPodMonitor example <environment_id>:<namespace>:<env_pod_monitor_name>
         ```
 
         :param str resource_name: The name of the resource.

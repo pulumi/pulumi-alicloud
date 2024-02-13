@@ -56,7 +56,7 @@ import javax.annotation.Nullable;
  * Cloud Monitor Service Basic Public can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:cloudmonitor/serviceBasicPublic:ServiceBasicPublic example &lt;id&gt;
+ * $ pulumi import alicloud:cloudmonitor/serviceBasicPublic:ServiceBasicPublic example &lt;id&gt;
  * ```
  * 
  */

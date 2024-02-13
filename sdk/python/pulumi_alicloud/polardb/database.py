@@ -236,7 +236,7 @@ class Database(pulumi.CustomResource):
         PolarDB database can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:polardb/database:Database example "pc-12345:tf_database"
+        $ pulumi import alicloud:polardb/database:Database example "pc-12345:tf_database"
         ```
 
         :param str resource_name: The name of the resource.
@@ -293,7 +293,7 @@ class Database(pulumi.CustomResource):
         PolarDB database can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:polardb/database:Database example "pc-12345:tf_database"
+        $ pulumi import alicloud:polardb/database:Database example "pc-12345:tf_database"
         ```
 
         :param str resource_name: The name of the resource.

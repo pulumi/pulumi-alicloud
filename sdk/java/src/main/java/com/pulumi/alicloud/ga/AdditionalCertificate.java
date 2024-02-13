@@ -25,7 +25,7 @@ import javax.annotation.Nullable;
  * Global Accelerator (GA) Additional Certificate can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:ga/additionalCertificate:AdditionalCertificate example &lt;accelerator_id&gt;:&lt;listener_id&gt;:&lt;domain&gt;
+ * $ pulumi import alicloud:ga/additionalCertificate:AdditionalCertificate example &lt;accelerator_id&gt;:&lt;listener_id&gt;:&lt;domain&gt;
  * ```
  * 
  */

@@ -73,7 +73,7 @@ import * as utilities from "../utilities";
  * ECS Image Pipeline can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:ecs/ecsImagePipeline:EcsImagePipeline example <id>
+ * $ pulumi import alicloud:ecs/ecsImagePipeline:EcsImagePipeline example <id>
  * ```
  */
 export class EcsImagePipeline extends pulumi.CustomResource {

@@ -121,9 +121,7 @@ import (
 // Hybrid Backup Recovery (HBR) Server Backup Plan can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:hbr/serverBackupPlan:ServerBackupPlan example <id>
-//
+// $ pulumi import alicloud:hbr/serverBackupPlan:ServerBackupPlan example <id>
 // ```
 type ServerBackupPlan struct {
 	pulumi.CustomResourceState

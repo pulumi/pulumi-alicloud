@@ -166,7 +166,7 @@ import javax.annotation.Nullable;
  * Global Accelerator (GA) Basic Accelerate Ip Endpoint Relation can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:ga/basicAccelerateIpEndpointRelation:BasicAccelerateIpEndpointRelation example &lt;accelerator_id&gt;:&lt;accelerate_ip_id&gt;:&lt;endpoint_id&gt;
+ * $ pulumi import alicloud:ga/basicAccelerateIpEndpointRelation:BasicAccelerateIpEndpointRelation example &lt;accelerator_id&gt;:&lt;accelerate_ip_id&gt;:&lt;endpoint_id&gt;
  * ```
  * 
  */

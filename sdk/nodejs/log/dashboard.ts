@@ -75,7 +75,7 @@ import * as utilities from "../utilities";
  * Log Dashboard can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:log/dashboard:Dashboard example <project_name>:<dashboard_name>
+ * $ pulumi import alicloud:log/dashboard:Dashboard example <project_name>:<dashboard_name>
  * ```
  */
 export class Dashboard extends pulumi.CustomResource {

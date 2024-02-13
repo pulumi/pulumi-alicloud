@@ -625,7 +625,7 @@ class ClientUserDefineRule(pulumi.CustomResource):
         Threat Detection Client User Define Rule can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:threatdetection/clientUserDefineRule:ClientUserDefineRule example <id>
+        $ pulumi import alicloud:threatdetection/clientUserDefineRule:ClientUserDefineRule example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -701,7 +701,7 @@ class ClientUserDefineRule(pulumi.CustomResource):
         Threat Detection Client User Define Rule can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:threatdetection/clientUserDefineRule:ClientUserDefineRule example <id>
+        $ pulumi import alicloud:threatdetection/clientUserDefineRule:ClientUserDefineRule example <id>
         ```
 
         :param str resource_name: The name of the resource.

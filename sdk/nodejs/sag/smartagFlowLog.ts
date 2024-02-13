@@ -32,7 +32,7 @@ import * as utilities from "../utilities";
  * Smartag Flow Log can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:sag/smartagFlowLog:SmartagFlowLog example <id>
+ * $ pulumi import alicloud:sag/smartagFlowLog:SmartagFlowLog example <id>
  * ```
  */
 export class SmartagFlowLog extends pulumi.CustomResource {

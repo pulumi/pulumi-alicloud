@@ -23,9 +23,7 @@ import (
 // ARMS Environment can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:arms/environment:Environment example <id>
-//
+// $ pulumi import alicloud:arms/environment:Environment example <id>
 // ```
 type Environment struct {
 	pulumi.CustomResourceState

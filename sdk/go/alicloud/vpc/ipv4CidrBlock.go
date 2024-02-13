@@ -64,9 +64,7 @@ import (
 // VPC Ipv4 Cidr Block can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:vpc/ipv4CidrBlock:Ipv4CidrBlock example <vpc_id>:<secondary_cidr_block>
-//
+// $ pulumi import alicloud:vpc/ipv4CidrBlock:Ipv4CidrBlock example <vpc_id>:<secondary_cidr_block>
 // ```
 type Ipv4CidrBlock struct {
 	pulumi.CustomResourceState

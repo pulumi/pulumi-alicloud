@@ -290,7 +290,7 @@ class InterRegionTrafficQosQueue(pulumi.CustomResource):
         Cen Inter Region Traffic Qos Queue can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:cen/interRegionTrafficQosQueue:InterRegionTrafficQosQueue example <id>
+        $ pulumi import alicloud:cen/interRegionTrafficQosQueue:InterRegionTrafficQosQueue example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -386,7 +386,7 @@ class InterRegionTrafficQosQueue(pulumi.CustomResource):
         Cen Inter Region Traffic Qos Queue can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:cen/interRegionTrafficQosQueue:InterRegionTrafficQosQueue example <id>
+        $ pulumi import alicloud:cen/interRegionTrafficQosQueue:InterRegionTrafficQosQueue example <id>
         ```
 
         :param str resource_name: The name of the resource.

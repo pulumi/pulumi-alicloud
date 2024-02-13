@@ -49,7 +49,7 @@ namespace Pulumi.AliCloud.Ecs
     /// Cloud disk can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:ecs/disk:Disk example d-abc12345678
+    /// $ pulumi import alicloud:ecs/disk:Disk example d-abc12345678
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:ecs/disk:Disk")]

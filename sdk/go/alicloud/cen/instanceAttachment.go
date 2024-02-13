@@ -74,9 +74,7 @@ import (
 // CEN instance can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:cen/instanceAttachment:InstanceAttachment example cen-m7i7pjmkon********:vpc-2ze2w07mcy9nz********:VPC:cn-beijing
-//
+// $ pulumi import alicloud:cen/instanceAttachment:InstanceAttachment example cen-m7i7pjmkon********:vpc-2ze2w07mcy9nz********:VPC:cn-beijing
 // ```
 type InstanceAttachment struct {
 	pulumi.CustomResourceState

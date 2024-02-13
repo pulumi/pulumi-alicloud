@@ -354,7 +354,7 @@ class Project(pulumi.CustomResource):
         SLS Project can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:log/project:Project example <id>
+        $ pulumi import alicloud:log/project:Project example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -445,7 +445,7 @@ class Project(pulumi.CustomResource):
         SLS Project can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:log/project:Project example <id>
+        $ pulumi import alicloud:log/project:Project example <id>
         ```
 
         :param str resource_name: The name of the resource.

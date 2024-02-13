@@ -298,7 +298,7 @@ namespace Pulumi.AliCloud.CR
     /// CR Chain can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:cr/chain:Chain example &lt;instance_id&gt;:&lt;chain_id&gt;
+    /// $ pulumi import alicloud:cr/chain:Chain example &lt;instance_id&gt;:&lt;chain_id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:cr/chain:Chain")]

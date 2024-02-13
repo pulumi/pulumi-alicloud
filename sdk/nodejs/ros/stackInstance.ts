@@ -54,7 +54,7 @@ import * as utilities from "../utilities";
  * ROS Stack Instance can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:ros/stackInstance:StackInstance example <stack_group_name>:<stack_instance_account_id>:<stack_instance_region_id>
+ * $ pulumi import alicloud:ros/stackInstance:StackInstance example <stack_group_name>:<stack_instance_account_id>:<stack_instance_region_id>
  * ```
  */
 export class StackInstance extends pulumi.CustomResource {

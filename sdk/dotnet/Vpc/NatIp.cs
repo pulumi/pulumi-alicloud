@@ -83,7 +83,7 @@ namespace Pulumi.AliCloud.Vpc
     /// VPC Nat Ip can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:vpc/natIp:NatIp example &lt;nat_gateway_id&gt;:&lt;nat_ip_id&gt;
+    /// $ pulumi import alicloud:vpc/natIp:NatIp example &lt;nat_gateway_id&gt;:&lt;nat_ip_id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:vpc/natIp:NatIp")]

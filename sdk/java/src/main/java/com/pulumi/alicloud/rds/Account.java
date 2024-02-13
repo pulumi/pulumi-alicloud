@@ -95,7 +95,7 @@ import javax.annotation.Nullable;
  * RDS account can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:rds/account:Account example &#34;rm-12345:tf_account&#34;
+ * $ pulumi import alicloud:rds/account:Account example &#34;rm-12345:tf_account&#34;
  * ```
  * 
  */

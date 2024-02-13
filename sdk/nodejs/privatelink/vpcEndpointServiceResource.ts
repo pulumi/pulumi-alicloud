@@ -64,7 +64,7 @@ import * as utilities from "../utilities";
  * Private Link Vpc Endpoint Service Resource can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:privatelink/vpcEndpointServiceResource:VpcEndpointServiceResource example <service_id>:<resource_id>:<zone_id>
+ * $ pulumi import alicloud:privatelink/vpcEndpointServiceResource:VpcEndpointServiceResource example <service_id>:<resource_id>:<zone_id>
  * ```
  */
 export class VpcEndpointServiceResource extends pulumi.CustomResource {

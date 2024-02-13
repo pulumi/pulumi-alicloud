@@ -25,9 +25,7 @@ import (
 // Cloud SSO User Attachment can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:cloudsso/userAttachment:UserAttachment example <directory_id>:<group_id>:<user_id>
-//
+// $ pulumi import alicloud:cloudsso/userAttachment:UserAttachment example <directory_id>:<group_id>:<user_id>
 // ```
 type UserAttachment struct {
 	pulumi.CustomResourceState

@@ -289,7 +289,7 @@ class FcTrigger(pulumi.CustomResource):
         CDN Fc Trigger can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:cdn/fcTrigger:FcTrigger example <trigger_arn>
+        $ pulumi import alicloud:cdn/fcTrigger:FcTrigger example <trigger_arn>
         ```
 
         :param str resource_name: The name of the resource.
@@ -339,7 +339,7 @@ class FcTrigger(pulumi.CustomResource):
         CDN Fc Trigger can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:cdn/fcTrigger:FcTrigger example <trigger_arn>
+        $ pulumi import alicloud:cdn/fcTrigger:FcTrigger example <trigger_arn>
         ```
 
         :param str resource_name: The name of the resource.

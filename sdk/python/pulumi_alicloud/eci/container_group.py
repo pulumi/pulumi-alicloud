@@ -1124,7 +1124,7 @@ class ContainerGroup(pulumi.CustomResource):
         ECI Container Group can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:eci/containerGroup:ContainerGroup example <container_group_id>
+        $ pulumi import alicloud:eci/containerGroup:ContainerGroup example <container_group_id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -1276,7 +1276,7 @@ class ContainerGroup(pulumi.CustomResource):
         ECI Container Group can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:eci/containerGroup:ContainerGroup example <container_group_id>
+        $ pulumi import alicloud:eci/containerGroup:ContainerGroup example <container_group_id>
         ```
 
         :param str resource_name: The name of the resource.

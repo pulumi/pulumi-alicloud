@@ -141,7 +141,7 @@ import javax.annotation.Nullable;
  * Global Accelerator (GA) Access Log can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:ga/accessLog:AccessLog example &lt;accelerator_id&gt;:&lt;listener_id&gt;:&lt;endpoint_group_id&gt;
+ * $ pulumi import alicloud:ga/accessLog:AccessLog example &lt;accelerator_id&gt;:&lt;listener_id&gt;:&lt;endpoint_group_id&gt;
  * ```
  * 
  */

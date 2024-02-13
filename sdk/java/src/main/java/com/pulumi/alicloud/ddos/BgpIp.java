@@ -28,7 +28,7 @@ import javax.annotation.Nullable;
  * Ddos Bgp Ip can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:ddos/bgpIp:BgpIp example &lt;instance_id&gt;:&lt;ip&gt;
+ * $ pulumi import alicloud:ddos/bgpIp:BgpIp example &lt;instance_id&gt;:&lt;ip&gt;
  * ```
  * 
  */

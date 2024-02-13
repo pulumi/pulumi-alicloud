@@ -67,9 +67,7 @@ import (
 // OOS Application can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:oos/application:Application example <id>
-//
+// $ pulumi import alicloud:oos/application:Application example <id>
 // ```
 type Application struct {
 	pulumi.CustomResourceState

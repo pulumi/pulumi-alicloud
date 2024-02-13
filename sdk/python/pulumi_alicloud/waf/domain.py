@@ -672,7 +672,7 @@ class Domain(pulumi.CustomResource):
         WAF domain can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:waf/domain:Domain domain waf-132435:www.domain.com
+        $ pulumi import alicloud:waf/domain:Domain domain waf-132435:www.domain.com
         ```
 
         :param str resource_name: The name of the resource.
@@ -742,7 +742,7 @@ class Domain(pulumi.CustomResource):
         WAF domain can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:waf/domain:Domain domain waf-132435:www.domain.com
+        $ pulumi import alicloud:waf/domain:Domain domain waf-132435:www.domain.com
         ```
 
         :param str resource_name: The name of the resource.

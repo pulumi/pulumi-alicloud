@@ -79,9 +79,7 @@ import (
 // Function Compute Layer Version can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:fc/layerVersion:LayerVersion example my_function
-//
+// $ pulumi import alicloud:fc/layerVersion:LayerVersion example my_function
 // ```
 type LayerVersion struct {
 	pulumi.CustomResourceState

@@ -21,7 +21,7 @@ namespace Pulumi.AliCloud.Wafv3
     /// Wafv3 Domain can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:wafv3/domain:Domain example &lt;instance_id&gt;:&lt;domain&gt;
+    /// $ pulumi import alicloud:wafv3/domain:Domain example &lt;instance_id&gt;:&lt;domain&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:wafv3/domain:Domain")]

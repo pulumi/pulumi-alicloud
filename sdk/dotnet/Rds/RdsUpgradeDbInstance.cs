@@ -98,7 +98,7 @@ namespace Pulumi.AliCloud.Rds
     /// RDS Upgrade DB Instance can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:rds/rdsUpgradeDbInstance:RdsUpgradeDbInstance example &lt;id&gt;
+    /// $ pulumi import alicloud:rds/rdsUpgradeDbInstance:RdsUpgradeDbInstance example &lt;id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:rds/rdsUpgradeDbInstance:RdsUpgradeDbInstance")]

@@ -44,7 +44,7 @@ import * as utilities from "../utilities";
  * Serverless Workflow Schedule can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:fnf/schedule:Schedule example <schedule_name>:<flow_name>
+ * $ pulumi import alicloud:fnf/schedule:Schedule example <schedule_name>:<flow_name>
  * ```
  */
 export class Schedule extends pulumi.CustomResource {

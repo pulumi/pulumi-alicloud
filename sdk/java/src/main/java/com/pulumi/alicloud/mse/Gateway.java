@@ -30,7 +30,7 @@ import javax.annotation.Nullable;
  * Microservice Engine (MSE) Gateway can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:mse/gateway:Gateway example &lt;id&gt;
+ * $ pulumi import alicloud:mse/gateway:Gateway example &lt;id&gt;
  * ```
  * 
  */

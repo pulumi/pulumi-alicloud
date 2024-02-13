@@ -111,9 +111,7 @@ import (
 // Log ingestion can be imported using the id or name, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:log/ingestion:Ingestion example tf-log-project:tf-log-logstore:ingestion_name
-//
+// $ pulumi import alicloud:log/ingestion:Ingestion example tf-log-project:tf-log-logstore:ingestion_name
 // ```
 type Ingestion struct {
 	pulumi.CustomResourceState

@@ -44,7 +44,7 @@ namespace Pulumi.AliCloud.Eds
     /// ECD Simple Office Site can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:eds/simpleOfficeSite:SimpleOfficeSite example &lt;id&gt;
+    /// $ pulumi import alicloud:eds/simpleOfficeSite:SimpleOfficeSite example &lt;id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:eds/simpleOfficeSite:SimpleOfficeSite")]

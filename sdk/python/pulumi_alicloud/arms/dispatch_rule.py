@@ -309,7 +309,7 @@ class DispatchRule(pulumi.CustomResource):
         Application Real-Time Monitoring Service (ARMS) Alert Contact can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:arms/dispatchRule:DispatchRule example <id>
+        $ pulumi import alicloud:arms/dispatchRule:DispatchRule example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -391,7 +391,7 @@ class DispatchRule(pulumi.CustomResource):
         Application Real-Time Monitoring Service (ARMS) Alert Contact can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:arms/dispatchRule:DispatchRule example <id>
+        $ pulumi import alicloud:arms/dispatchRule:DispatchRule example <id>
         ```
 
         :param str resource_name: The name of the resource.

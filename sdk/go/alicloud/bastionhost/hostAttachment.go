@@ -120,9 +120,7 @@ import (
 // Bastion Host Host Attachment can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:bastionhost/hostAttachment:HostAttachment example <instance_id>:<host_group_id>:<host_id>
-//
+// $ pulumi import alicloud:bastionhost/hostAttachment:HostAttachment example <instance_id>:<host_group_id>:<host_id>
 // ```
 type HostAttachment struct {
 	pulumi.CustomResourceState

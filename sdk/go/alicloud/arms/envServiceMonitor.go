@@ -23,9 +23,7 @@ import (
 // ARMS Env Service Monitor can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:arms/envServiceMonitor:EnvServiceMonitor example <environment_id>:<namespace>:<env_service_monitor_name>
-//
+// $ pulumi import alicloud:arms/envServiceMonitor:EnvServiceMonitor example <environment_id>:<namespace>:<env_service_monitor_name>
 // ```
 type EnvServiceMonitor struct {
 	pulumi.CustomResourceState

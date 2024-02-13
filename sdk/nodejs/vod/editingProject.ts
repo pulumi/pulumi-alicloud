@@ -50,7 +50,7 @@ import * as utilities from "../utilities";
  * VOD Editing Project can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:vod/editingProject:EditingProject example <id>
+ * $ pulumi import alicloud:vod/editingProject:EditingProject example <id>
  * ```
  */
 export class EditingProject extends pulumi.CustomResource {

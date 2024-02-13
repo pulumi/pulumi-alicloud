@@ -173,7 +173,7 @@ class LogConfig(pulumi.CustomResource):
         Api Gateway Log Config can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:apigateway/logConfig:LogConfig example <log_type>
+        $ pulumi import alicloud:apigateway/logConfig:LogConfig example <log_type>
         ```
 
         :param str resource_name: The name of the resource.
@@ -232,7 +232,7 @@ class LogConfig(pulumi.CustomResource):
         Api Gateway Log Config can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:apigateway/logConfig:LogConfig example <log_type>
+        $ pulumi import alicloud:apigateway/logConfig:LogConfig example <log_type>
         ```
 
         :param str resource_name: The name of the resource.

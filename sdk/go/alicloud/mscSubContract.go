@@ -58,9 +58,7 @@ import (
 // Msc Sub Contact can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:index/mscSubContract:MscSubContract example <id>
-//
+// $ pulumi import alicloud:index/mscSubContract:MscSubContract example <id>
 // ```
 type MscSubContract struct {
 	pulumi.CustomResourceState

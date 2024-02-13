@@ -37,7 +37,7 @@ import * as utilities from "../utilities";
  * Dcdn Kv can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:dcdn/kv:Kv example <namespace>:<key>
+ * $ pulumi import alicloud:dcdn/kv:Kv example <namespace>:<key>
  * ```
  */
 export class Kv extends pulumi.CustomResource {

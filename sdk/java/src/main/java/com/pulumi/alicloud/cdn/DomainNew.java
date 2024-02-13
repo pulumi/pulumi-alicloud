@@ -75,7 +75,7 @@ import javax.annotation.Nullable;
  * CDN Domain can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:cdn/domainNew:DomainNew example &lt;id&gt;
+ * $ pulumi import alicloud:cdn/domainNew:DomainNew example &lt;id&gt;
  * ```
  * 
  */

@@ -55,9 +55,7 @@ import (
 // DMS Enterprise Logic Database can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:dms/enterpriseLogicDatabase:EnterpriseLogicDatabase example <id>
-//
+// $ pulumi import alicloud:dms/enterpriseLogicDatabase:EnterpriseLogicDatabase example <id>
 // ```
 type EnterpriseLogicDatabase struct {
 	pulumi.CustomResourceState

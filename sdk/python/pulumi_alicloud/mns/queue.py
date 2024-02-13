@@ -253,7 +253,7 @@ class Queue(pulumi.CustomResource):
         MNS QUEUE can be imported using the id or name, e.g.
 
         ```sh
-         $ pulumi import alicloud:mns/queue:Queue queue queuename
+        $ pulumi import alicloud:mns/queue:Queue queue queuename
         ```
 
         :param str resource_name: The name of the resource.
@@ -293,7 +293,7 @@ class Queue(pulumi.CustomResource):
         MNS QUEUE can be imported using the id or name, e.g.
 
         ```sh
-         $ pulumi import alicloud:mns/queue:Queue queue queuename
+        $ pulumi import alicloud:mns/queue:Queue queue queuename
         ```
 
         :param str resource_name: The name of the resource.

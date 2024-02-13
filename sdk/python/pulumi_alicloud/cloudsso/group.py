@@ -158,7 +158,7 @@ class Group(pulumi.CustomResource):
         Cloud SSO Group can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:cloudsso/group:Group example <directory_id>:<group_id>
+        $ pulumi import alicloud:cloudsso/group:Group example <directory_id>:<group_id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -185,7 +185,7 @@ class Group(pulumi.CustomResource):
         Cloud SSO Group can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:cloudsso/group:Group example <directory_id>:<group_id>
+        $ pulumi import alicloud:cloudsso/group:Group example <directory_id>:<group_id>
         ```
 
         :param str resource_name: The name of the resource.

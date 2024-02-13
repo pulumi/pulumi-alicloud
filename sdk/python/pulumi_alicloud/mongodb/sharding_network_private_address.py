@@ -299,7 +299,7 @@ class ShardingNetworkPrivateAddress(pulumi.CustomResource):
         MongoDB Sharding Network Private Address can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:mongodb/shardingNetworkPrivateAddress:ShardingNetworkPrivateAddress example <db_instance_id>:<node_id>
+        $ pulumi import alicloud:mongodb/shardingNetworkPrivateAddress:ShardingNetworkPrivateAddress example <db_instance_id>:<node_id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -387,7 +387,7 @@ class ShardingNetworkPrivateAddress(pulumi.CustomResource):
         MongoDB Sharding Network Private Address can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:mongodb/shardingNetworkPrivateAddress:ShardingNetworkPrivateAddress example <db_instance_id>:<node_id>
+        $ pulumi import alicloud:mongodb/shardingNetworkPrivateAddress:ShardingNetworkPrivateAddress example <db_instance_id>:<node_id>
         ```
 
         :param str resource_name: The name of the resource.

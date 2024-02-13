@@ -28,9 +28,7 @@ import (
 // Resource Manager Resource Directory can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:resourcemanager/resourceDirectory:ResourceDirectory example rd-s3****
-//
+// $ pulumi import alicloud:resourcemanager/resourceDirectory:ResourceDirectory example rd-s3****
 // ```
 type ResourceDirectory struct {
 	pulumi.CustomResourceState

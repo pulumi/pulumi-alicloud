@@ -38,7 +38,7 @@ import * as utilities from "../utilities";
  * DTS Synchronization Instance can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:dts/synchronizationInstance:SynchronizationInstance example <id>
+ * $ pulumi import alicloud:dts/synchronizationInstance:SynchronizationInstance example <id>
  * ```
  */
 export class SynchronizationInstance extends pulumi.CustomResource {

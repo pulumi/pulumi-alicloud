@@ -72,7 +72,7 @@ namespace Pulumi.AliCloud.PolarDB
     /// PolarDB account can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:polardb/account:Account example "pc-12345:tf_account"
+    /// $ pulumi import alicloud:polardb/account:Account example "pc-12345:tf_account"
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:polardb/account:Account")]

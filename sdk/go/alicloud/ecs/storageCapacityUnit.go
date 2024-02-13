@@ -53,9 +53,7 @@ import (
 // ECS Storage Capacity Unit can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:ecs/storageCapacityUnit:StorageCapacityUnit example <id>
-//
+// $ pulumi import alicloud:ecs/storageCapacityUnit:StorageCapacityUnit example <id>
 // ```
 type StorageCapacityUnit struct {
 	pulumi.CustomResourceState

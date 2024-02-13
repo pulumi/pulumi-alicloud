@@ -135,7 +135,7 @@ namespace Pulumi.AliCloud.Dms
     /// DMS Enterprise can be imported using host and port, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:dms/enterpriseInstance:EnterpriseInstance example rm-uf648hgs7874xxxx.mysql.rds.aliyuncs.com:3306
+    /// $ pulumi import alicloud:dms/enterpriseInstance:EnterpriseInstance example rm-uf648hgs7874xxxx.mysql.rds.aliyuncs.com:3306
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:dms/enterpriseInstance:EnterpriseInstance")]

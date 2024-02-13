@@ -48,7 +48,7 @@ import * as utilities from "../utilities";
  * CR Endpoint Acl Policy can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:cr/endpointAclPolicy:EndpointAclPolicy example <instance_id>:<endpoint_type>:<entry>
+ * $ pulumi import alicloud:cr/endpointAclPolicy:EndpointAclPolicy example <instance_id>:<endpoint_type>:<entry>
  * ```
  */
 export class EndpointAclPolicy extends pulumi.CustomResource {

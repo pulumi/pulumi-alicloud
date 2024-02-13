@@ -58,7 +58,7 @@ namespace Pulumi.AliCloud.FNF
     /// Serverless Workflow Schedule can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:fnf/schedule:Schedule example &lt;schedule_name&gt;:&lt;flow_name&gt;
+    /// $ pulumi import alicloud:fnf/schedule:Schedule example &lt;schedule_name&gt;:&lt;flow_name&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:fnf/schedule:Schedule")]

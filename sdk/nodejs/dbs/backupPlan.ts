@@ -16,7 +16,7 @@ import * as utilities from "../utilities";
  * DBS Backup Plan can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:dbs/backupPlan:BackupPlan example <id>
+ * $ pulumi import alicloud:dbs/backupPlan:BackupPlan example <id>
  * ```
  */
 export class BackupPlan extends pulumi.CustomResource {

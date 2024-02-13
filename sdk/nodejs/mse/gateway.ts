@@ -18,7 +18,7 @@ import * as utilities from "../utilities";
  * Microservice Engine (MSE) Gateway can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:mse/gateway:Gateway example <id>
+ * $ pulumi import alicloud:mse/gateway:Gateway example <id>
  * ```
  */
 export class Gateway extends pulumi.CustomResource {

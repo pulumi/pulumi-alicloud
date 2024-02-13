@@ -102,7 +102,7 @@ import javax.annotation.Nullable;
  * Dcdn Waf Rule can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:dcdn/wafRule:WafRule example &lt;id&gt;
+ * $ pulumi import alicloud:dcdn/wafRule:WafRule example &lt;id&gt;
  * ```
  * 
  */

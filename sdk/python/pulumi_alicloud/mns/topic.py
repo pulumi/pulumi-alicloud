@@ -151,7 +151,7 @@ class Topic(pulumi.CustomResource):
         MNS Topic can be imported using the id or name, e.g.
 
         ```sh
-         $ pulumi import alicloud:mns/topic:Topic topic topicName
+        $ pulumi import alicloud:mns/topic:Topic topic topicName
         ```
 
         :param str resource_name: The name of the resource.
@@ -185,7 +185,7 @@ class Topic(pulumi.CustomResource):
         MNS Topic can be imported using the id or name, e.g.
 
         ```sh
-         $ pulumi import alicloud:mns/topic:Topic topic topicName
+        $ pulumi import alicloud:mns/topic:Topic topic topicName
         ```
 
         :param str resource_name: The name of the resource.

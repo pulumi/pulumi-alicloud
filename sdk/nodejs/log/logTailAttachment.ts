@@ -73,7 +73,7 @@ import * as utilities from "../utilities";
  * Logtial to machine group can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:log/logTailAttachment:LogTailAttachment example tf-log:tf-log-config:tf-log-machine-group
+ * $ pulumi import alicloud:log/logTailAttachment:LogTailAttachment example tf-log:tf-log-config:tf-log-machine-group
  * ```
  */
 export class LogTailAttachment extends pulumi.CustomResource {

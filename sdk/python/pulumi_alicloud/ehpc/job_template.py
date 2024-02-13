@@ -617,7 +617,7 @@ class JobTemplate(pulumi.CustomResource):
         Ehpc Job Template can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:ehpc/jobTemplate:JobTemplate example <id>
+        $ pulumi import alicloud:ehpc/jobTemplate:JobTemplate example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -671,7 +671,7 @@ class JobTemplate(pulumi.CustomResource):
         Ehpc Job Template can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:ehpc/jobTemplate:JobTemplate example <id>
+        $ pulumi import alicloud:ehpc/jobTemplate:JobTemplate example <id>
         ```
 
         :param str resource_name: The name of the resource.

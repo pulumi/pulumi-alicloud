@@ -68,9 +68,7 @@ import (
 // CDN Domain can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:cdn/domainNew:DomainNew example <id>
-//
+// $ pulumi import alicloud:cdn/domainNew:DomainNew example <id>
 // ```
 type DomainNew struct {
 	pulumi.CustomResourceState

@@ -131,7 +131,7 @@ import javax.annotation.Nullable;
  * Hybrid Backup Recovery (HBR) Restore Job can be imported using the id. Format to `&lt;restore_job_id&gt;:&lt;restore_type&gt;`, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:hbr/restoreJob:RestoreJob example your_restore_job_id:your_restore_type
+ * $ pulumi import alicloud:hbr/restoreJob:RestoreJob example your_restore_job_id:your_restore_type
  * ```
  * 
  */

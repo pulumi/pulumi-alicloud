@@ -910,7 +910,7 @@ class OssExport(pulumi.CustomResource):
         Log oss export can be imported using the id or name, e.g.
 
         ```sh
-         $ pulumi import alicloud:log/ossExport:OssExport example tf-log-project:tf-log-logstore:tf-log-export
+        $ pulumi import alicloud:log/ossExport:OssExport example tf-log-project:tf-log-logstore:tf-log-export
         ```
 
         :param str resource_name: The name of the resource.
@@ -1003,7 +1003,7 @@ class OssExport(pulumi.CustomResource):
         Log oss export can be imported using the id or name, e.g.
 
         ```sh
-         $ pulumi import alicloud:log/ossExport:OssExport example tf-log-project:tf-log-logstore:tf-log-export
+        $ pulumi import alicloud:log/ossExport:OssExport example tf-log-project:tf-log-logstore:tf-log-export
         ```
 
         :param str resource_name: The name of the resource.

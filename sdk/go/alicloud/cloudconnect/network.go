@@ -61,9 +61,7 @@ import (
 // The cloud connect network instance can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:cloudconnect/network:Network example ccn-abc123456
-//
+// $ pulumi import alicloud:cloudconnect/network:Network example ccn-abc123456
 // ```
 type Network struct {
 	pulumi.CustomResourceState

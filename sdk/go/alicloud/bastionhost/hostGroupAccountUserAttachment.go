@@ -146,9 +146,7 @@ import (
 // Bastion Host Host Account can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:bastionhost/hostGroupAccountUserAttachment:HostGroupAccountUserAttachment example <instance_id>:<user_id>:<host_group_id>
-//
+// $ pulumi import alicloud:bastionhost/hostGroupAccountUserAttachment:HostGroupAccountUserAttachment example <instance_id>:<user_id>:<host_group_id>
 // ```
 type HostGroupAccountUserAttachment struct {
 	pulumi.CustomResourceState

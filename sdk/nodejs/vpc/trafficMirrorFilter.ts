@@ -61,7 +61,7 @@ import * as utilities from "../utilities";
  * VPC Traffic Mirror Filter can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:vpc/trafficMirrorFilter:TrafficMirrorFilter example <id>
+ * $ pulumi import alicloud:vpc/trafficMirrorFilter:TrafficMirrorFilter example <id>
  * ```
  */
 export class TrafficMirrorFilter extends pulumi.CustomResource {

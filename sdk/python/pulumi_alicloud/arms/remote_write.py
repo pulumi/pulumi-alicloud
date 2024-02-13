@@ -175,7 +175,7 @@ class RemoteWrite(pulumi.CustomResource):
         Application Real-Time Monitoring Service (ARMS) Remote Write can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:arms/remoteWrite:RemoteWrite example <cluster_id>:<remote_write_name>
+        $ pulumi import alicloud:arms/remoteWrite:RemoteWrite example <cluster_id>:<remote_write_name>
         ```
 
         :param str resource_name: The name of the resource.
@@ -251,7 +251,7 @@ class RemoteWrite(pulumi.CustomResource):
         Application Real-Time Monitoring Service (ARMS) Remote Write can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:arms/remoteWrite:RemoteWrite example <cluster_id>:<remote_write_name>
+        $ pulumi import alicloud:arms/remoteWrite:RemoteWrite example <cluster_id>:<remote_write_name>
         ```
 
         :param str resource_name: The name of the resource.

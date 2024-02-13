@@ -58,9 +58,7 @@ import (
 // Service Catalog Portfolio can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:servicecatalog/portfolio:Portfolio example <id>
-//
+// $ pulumi import alicloud:servicecatalog/portfolio:Portfolio example <id>
 // ```
 type Portfolio struct {
 	pulumi.CustomResourceState

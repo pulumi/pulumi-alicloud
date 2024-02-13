@@ -373,7 +373,7 @@ class Disk(pulumi.CustomResource):
         ENS Disk can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:ens/disk:Disk example <id>
+        $ pulumi import alicloud:ens/disk:Disk example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -428,7 +428,7 @@ class Disk(pulumi.CustomResource):
         ENS Disk can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:ens/disk:Disk example <id>
+        $ pulumi import alicloud:ens/disk:Disk example <id>
         ```
 
         :param str resource_name: The name of the resource.

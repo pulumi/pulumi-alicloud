@@ -68,9 +68,7 @@ import (
 // Resource Manager Shared Target can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:resourcemanager/sharedTarget:SharedTarget example <resource_share_id>:<target_id>
-//
+// $ pulumi import alicloud:resourcemanager/sharedTarget:SharedTarget example <resource_share_id>:<target_id>
 // ```
 type SharedTarget struct {
 	pulumi.CustomResourceState

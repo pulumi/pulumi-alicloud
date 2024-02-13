@@ -91,7 +91,7 @@ import javax.annotation.Nullable;
  * DRDS Polardb X Instance can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:drds/polardbxInstance:PolardbxInstance example &lt;id&gt;
+ * $ pulumi import alicloud:drds/polardbxInstance:PolardbxInstance example &lt;id&gt;
  * ```
  * 
  */

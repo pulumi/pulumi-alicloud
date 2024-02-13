@@ -16,7 +16,7 @@ import * as utilities from "../utilities";
  * Cluster addon can be imported by cluster id and addon name. Then write the addon.tf file according to the result of `pulumi preview`.
  *
  * ```sh
- *  $ pulumi import alicloud:cs/kubernetesAddon:KubernetesAddon my_addon <cluster_id>:<addon_name>
+ * $ pulumi import alicloud:cs/kubernetesAddon:KubernetesAddon my_addon <cluster_id>:<addon_name>
  * ```
  */
 export class KubernetesAddon extends pulumi.CustomResource {

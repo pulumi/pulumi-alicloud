@@ -352,7 +352,7 @@ class RdsInstanceCrossBackupPolicy(pulumi.CustomResource):
         RDS remote disaster recovery policies can be imported using id or instance id, e.g.
 
         ```sh
-         $ pulumi import alicloud:rds/rdsInstanceCrossBackupPolicy:RdsInstanceCrossBackupPolicy example "rm-12345678"
+        $ pulumi import alicloud:rds/rdsInstanceCrossBackupPolicy:RdsInstanceCrossBackupPolicy example "rm-12345678"
         ```
 
         :param str resource_name: The name of the resource.
@@ -425,7 +425,7 @@ class RdsInstanceCrossBackupPolicy(pulumi.CustomResource):
         RDS remote disaster recovery policies can be imported using id or instance id, e.g.
 
         ```sh
-         $ pulumi import alicloud:rds/rdsInstanceCrossBackupPolicy:RdsInstanceCrossBackupPolicy example "rm-12345678"
+        $ pulumi import alicloud:rds/rdsInstanceCrossBackupPolicy:RdsInstanceCrossBackupPolicy example "rm-12345678"
         ```
 
         :param str resource_name: The name of the resource.

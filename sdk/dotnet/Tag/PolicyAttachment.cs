@@ -56,7 +56,7 @@ namespace Pulumi.AliCloud.Tag
     /// Tag Policy Attachment can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:tag/policyAttachment:PolicyAttachment example &lt;policy_id&gt;:&lt;target_id&gt;:&lt;target_type&gt;
+    /// $ pulumi import alicloud:tag/policyAttachment:PolicyAttachment example &lt;policy_id&gt;:&lt;target_id&gt;:&lt;target_type&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:tag/policyAttachment:PolicyAttachment")]

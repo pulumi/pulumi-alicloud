@@ -90,7 +90,7 @@ namespace Pulumi.AliCloud.Das
     /// DAS Switch Das Pro can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:das/switchDasPro:SwitchDasPro example &lt;id&gt;
+    /// $ pulumi import alicloud:das/switchDasPro:SwitchDasPro example &lt;id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:das/switchDasPro:SwitchDasPro")]

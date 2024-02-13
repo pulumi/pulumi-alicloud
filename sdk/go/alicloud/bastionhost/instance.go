@@ -17,9 +17,7 @@ import (
 // Yundun_bastionhost instance can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:bastionhost/instance:Instance example bastionhost-exampe123456
-//
+// $ pulumi import alicloud:bastionhost/instance:Instance example bastionhost-exampe123456
 // ```
 type Instance struct {
 	pulumi.CustomResourceState

@@ -219,9 +219,7 @@ import (
 // Aliclioud E-MapReduce cluster can be imported using the id e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:emrv2/cluster:Cluster default <id>
-//
+// $ pulumi import alicloud:emrv2/cluster:Cluster default <id>
 // ```
 type Cluster struct {
 	pulumi.CustomResourceState

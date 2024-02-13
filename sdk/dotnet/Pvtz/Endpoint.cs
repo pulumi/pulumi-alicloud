@@ -21,7 +21,7 @@ namespace Pulumi.AliCloud.Pvtz
     /// Private Zone Endpoint can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:pvtz/endpoint:Endpoint example &lt;id&gt;
+    /// $ pulumi import alicloud:pvtz/endpoint:Endpoint example &lt;id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:pvtz/endpoint:Endpoint")]

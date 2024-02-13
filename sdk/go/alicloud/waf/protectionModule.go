@@ -89,9 +89,7 @@ import (
 // Web Application Firewall(WAF) Protection Module can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:waf/protectionModule:ProtectionModule example <instance_id>:<domain>:<defense_type>
-//
+// $ pulumi import alicloud:waf/protectionModule:ProtectionModule example <instance_id>:<domain>:<defense_type>
 // ```
 type ProtectionModule struct {
 	pulumi.CustomResourceState

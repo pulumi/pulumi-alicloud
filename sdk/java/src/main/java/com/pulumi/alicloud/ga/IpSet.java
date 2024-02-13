@@ -90,7 +90,7 @@ import javax.annotation.Nullable;
  * Ga Ip Set can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:ga/ipSet:IpSet example &lt;id&gt;
+ * $ pulumi import alicloud:ga/ipSet:IpSet example &lt;id&gt;
  * ```
  * 
  */

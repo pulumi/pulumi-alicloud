@@ -10,7 +10,7 @@ import * as utilities from "../utilities";
  * Container Registry Enterprise Edition instance can be imported using the `id`, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:cr/registryEnterpriseInstance:RegistryEnterpriseInstance default cri-test
+ * $ pulumi import alicloud:cr/registryEnterpriseInstance:RegistryEnterpriseInstance default cri-test
  * ```
  */
 export class RegistryEnterpriseInstance extends pulumi.CustomResource {

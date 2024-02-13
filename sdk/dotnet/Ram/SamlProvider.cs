@@ -45,7 +45,7 @@ namespace Pulumi.AliCloud.Ram
     /// RAM SAML Provider can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:ram/samlProvider:SamlProvider example &lt;saml_provider_name&gt;
+    /// $ pulumi import alicloud:ram/samlProvider:SamlProvider example &lt;saml_provider_name&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:ram/samlProvider:SamlProvider")]

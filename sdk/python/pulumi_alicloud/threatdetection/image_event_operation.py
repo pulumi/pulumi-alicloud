@@ -277,7 +277,7 @@ class ImageEventOperation(pulumi.CustomResource):
         Threat Detection Image Event Operation can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:threatdetection/imageEventOperation:ImageEventOperation example <id>
+        $ pulumi import alicloud:threatdetection/imageEventOperation:ImageEventOperation example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -341,7 +341,7 @@ class ImageEventOperation(pulumi.CustomResource):
         Threat Detection Image Event Operation can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:threatdetection/imageEventOperation:ImageEventOperation example <id>
+        $ pulumi import alicloud:threatdetection/imageEventOperation:ImageEventOperation example <id>
         ```
 
         :param str resource_name: The name of the resource.

@@ -65,9 +65,7 @@ import (
 // can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:cen/transitRouterRouteTable:TransitRouterRouteTable default tr-*********:vtb-********
-//
+// $ pulumi import alicloud:cen/transitRouterRouteTable:TransitRouterRouteTable default tr-*********:vtb-********
 // ```
 type TransitRouterRouteTable struct {
 	pulumi.CustomResourceState

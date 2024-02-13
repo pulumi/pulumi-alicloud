@@ -125,7 +125,7 @@ import javax.annotation.Nullable;
  * RDS Upgrade DB Instance can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:rds/rdsUpgradeDbInstance:RdsUpgradeDbInstance example &lt;id&gt;
+ * $ pulumi import alicloud:rds/rdsUpgradeDbInstance:RdsUpgradeDbInstance example &lt;id&gt;
  * ```
  * 
  */

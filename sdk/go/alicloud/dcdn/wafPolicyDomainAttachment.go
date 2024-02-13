@@ -108,9 +108,7 @@ import (
 // DCDN Waf Policy Domain Attachment can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:dcdn/wafPolicyDomainAttachment:WafPolicyDomainAttachment example policy_id:domain_name
-//
+// $ pulumi import alicloud:dcdn/wafPolicyDomainAttachment:WafPolicyDomainAttachment example policy_id:domain_name
 // ```
 type WafPolicyDomainAttachment struct {
 	pulumi.CustomResourceState

@@ -63,7 +63,7 @@ import * as utilities from "../utilities";
  * ECS auto provisioning group can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:ecs/autoProvisioningGroup:AutoProvisioningGroup example asg-abc123456
+ * $ pulumi import alicloud:ecs/autoProvisioningGroup:AutoProvisioningGroup example asg-abc123456
  * ```
  */
 export class AutoProvisioningGroup extends pulumi.CustomResource {

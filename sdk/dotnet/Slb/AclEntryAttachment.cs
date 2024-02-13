@@ -46,7 +46,7 @@ namespace Pulumi.AliCloud.Slb
     /// Acl entry attachment can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:slb/aclEntryAttachment:AclEntryAttachment example &lt;acl_id&gt;:&lt;entry&gt;
+    /// $ pulumi import alicloud:slb/aclEntryAttachment:AclEntryAttachment example &lt;acl_id&gt;:&lt;entry&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:slb/aclEntryAttachment:AclEntryAttachment")]

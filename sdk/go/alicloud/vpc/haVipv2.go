@@ -101,9 +101,7 @@ import (
 // Vpc Ha Vip can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:vpc/haVipv2:HaVipv2 example <id>
-//
+// $ pulumi import alicloud:vpc/haVipv2:HaVipv2 example <id>
 // ```
 type HaVipv2 struct {
 	pulumi.CustomResourceState

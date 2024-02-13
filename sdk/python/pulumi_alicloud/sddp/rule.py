@@ -557,7 +557,7 @@ class Rule(pulumi.CustomResource):
         Data Security Center Rule can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:sddp/rule:Rule example <id>
+        $ pulumi import alicloud:sddp/rule:Rule example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -616,7 +616,7 @@ class Rule(pulumi.CustomResource):
         Data Security Center Rule can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:sddp/rule:Rule example <id>
+        $ pulumi import alicloud:sddp/rule:Rule example <id>
         ```
 
         :param str resource_name: The name of the resource.

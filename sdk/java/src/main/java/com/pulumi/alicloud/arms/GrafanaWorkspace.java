@@ -74,7 +74,7 @@ import javax.annotation.Nullable;
  * ARMS Grafana Workspace can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:arms/grafanaWorkspace:GrafanaWorkspace example &lt;id&gt;
+ * $ pulumi import alicloud:arms/grafanaWorkspace:GrafanaWorkspace example &lt;id&gt;
  * ```
  * 
  */

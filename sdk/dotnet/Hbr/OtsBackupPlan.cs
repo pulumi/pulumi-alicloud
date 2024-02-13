@@ -132,7 +132,7 @@ namespace Pulumi.AliCloud.Hbr
     /// HBR Ots Backup Plan can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:hbr/otsBackupPlan:OtsBackupPlan example &lt;id&gt;
+    /// $ pulumi import alicloud:hbr/otsBackupPlan:OtsBackupPlan example &lt;id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:hbr/otsBackupPlan:OtsBackupPlan")]

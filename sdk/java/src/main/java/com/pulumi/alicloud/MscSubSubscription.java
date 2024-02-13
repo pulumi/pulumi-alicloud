@@ -63,7 +63,7 @@ import javax.annotation.Nullable;
  * Msc Sub Subscription can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:index/mscSubSubscription:MscSubSubscription example &lt;id&gt;
+ * $ pulumi import alicloud:index/mscSubSubscription:MscSubSubscription example &lt;id&gt;
  * ```
  * 
  */

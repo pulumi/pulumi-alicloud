@@ -700,7 +700,7 @@ class EndpointGroup(pulumi.CustomResource):
         Ga Endpoint Group can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:ga/endpointGroup:EndpointGroup example <id>
+        $ pulumi import alicloud:ga/endpointGroup:EndpointGroup example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -796,7 +796,7 @@ class EndpointGroup(pulumi.CustomResource):
         Ga Endpoint Group can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:ga/endpointGroup:EndpointGroup example <id>
+        $ pulumi import alicloud:ga/endpointGroup:EndpointGroup example <id>
         ```
 
         :param str resource_name: The name of the resource.

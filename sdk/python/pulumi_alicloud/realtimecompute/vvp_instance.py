@@ -430,7 +430,7 @@ class VvpInstance(pulumi.CustomResource):
         Realtime Compute Vvp Instance can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:realtimecompute/vvpInstance:VvpInstance example <id>
+        $ pulumi import alicloud:realtimecompute/vvpInstance:VvpInstance example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -459,7 +459,7 @@ class VvpInstance(pulumi.CustomResource):
         Realtime Compute Vvp Instance can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:realtimecompute/vvpInstance:VvpInstance example <id>
+        $ pulumi import alicloud:realtimecompute/vvpInstance:VvpInstance example <id>
         ```
 
         :param str resource_name: The name of the resource.

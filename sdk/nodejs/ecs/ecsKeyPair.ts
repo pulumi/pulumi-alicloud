@@ -34,7 +34,7 @@ import * as utilities from "../utilities";
  * ECS Key Pair can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:ecs/ecsKeyPair:EcsKeyPair example <key_name>
+ * $ pulumi import alicloud:ecs/ecsKeyPair:EcsKeyPair example <key_name>
  * ```
  */
 export class EcsKeyPair extends pulumi.CustomResource {

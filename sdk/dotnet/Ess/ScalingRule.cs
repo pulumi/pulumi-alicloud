@@ -132,7 +132,7 @@ namespace Pulumi.AliCloud.Ess
     /// ESS scaling rule can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:ess/scalingRule:ScalingRule example abc123456
+    /// $ pulumi import alicloud:ess/scalingRule:ScalingRule example abc123456
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:ess/scalingRule:ScalingRule")]

@@ -111,9 +111,7 @@ import (
 // ECD Snapshot can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:eds/snapshot:Snapshot example <id>
-//
+// $ pulumi import alicloud:eds/snapshot:Snapshot example <id>
 // ```
 type Snapshot struct {
 	pulumi.CustomResourceState

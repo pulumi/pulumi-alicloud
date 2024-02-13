@@ -82,7 +82,7 @@ namespace Pulumi.AliCloud.Vpc
     /// VPC Bgp Peer can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:vpc/bgpPeer:BgpPeer example &lt;id&gt;
+    /// $ pulumi import alicloud:vpc/bgpPeer:BgpPeer example &lt;id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:vpc/bgpPeer:BgpPeer")]

@@ -234,7 +234,7 @@ class Activation(pulumi.CustomResource):
         ECS Activation can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:ecs/activation:Activation example <id>
+        $ pulumi import alicloud:ecs/activation:Activation example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -281,7 +281,7 @@ class Activation(pulumi.CustomResource):
         ECS Activation can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:ecs/activation:Activation example <id>
+        $ pulumi import alicloud:ecs/activation:Activation example <id>
         ```
 
         :param str resource_name: The name of the resource.

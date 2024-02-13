@@ -51,7 +51,7 @@ import * as utilities from "../utilities";
  * EBS Enterprise Snapshot Policy can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:ebs/enterpriseSnapshotPolicy:EnterpriseSnapshotPolicy example <id>
+ * $ pulumi import alicloud:ebs/enterpriseSnapshotPolicy:EnterpriseSnapshotPolicy example <id>
  * ```
  */
 export class EnterpriseSnapshotPolicy extends pulumi.CustomResource {

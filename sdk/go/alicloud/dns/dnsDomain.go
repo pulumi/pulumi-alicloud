@@ -56,9 +56,7 @@ import (
 // DNS domain can be imported using the id or domain name, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:dns/dnsDomain:DnsDomain example aliyun.com
-//
+// $ pulumi import alicloud:dns/dnsDomain:DnsDomain example aliyun.com
 // ```
 type DnsDomain struct {
 	pulumi.CustomResourceState

@@ -111,9 +111,7 @@ import (
 // RDS Clone DB Instance can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:rds/rdsCloneDbInstance:RdsCloneDbInstance example <id>
-//
+// $ pulumi import alicloud:rds/rdsCloneDbInstance:RdsCloneDbInstance example <id>
 // ```
 type RdsCloneDbInstance struct {
 	pulumi.CustomResourceState

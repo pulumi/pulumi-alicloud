@@ -249,7 +249,7 @@ class Account(pulumi.CustomResource):
         MongoDB Account can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:mongodb/account:Account example <instance_id>:<account_name>
+        $ pulumi import alicloud:mongodb/account:Account example <instance_id>:<account_name>
         ```
 
         :param str resource_name: The name of the resource.
@@ -324,7 +324,7 @@ class Account(pulumi.CustomResource):
         MongoDB Account can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:mongodb/account:Account example <instance_id>:<account_name>
+        $ pulumi import alicloud:mongodb/account:Account example <instance_id>:<account_name>
         ```
 
         :param str resource_name: The name of the resource.

@@ -84,7 +84,7 @@ import javax.annotation.Nullable;
  * RAM policy can be imported using the id or name, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:ram/policy:Policy example my-policy
+ * $ pulumi import alicloud:ram/policy:Policy example my-policy
  * ```
  * 
  */

@@ -55,9 +55,7 @@ import (
 // ROS Change Set can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:ros/changeSet:ChangeSet example <change_set_id>
-//
+// $ pulumi import alicloud:ros/changeSet:ChangeSet example <change_set_id>
 // ```
 type ChangeSet struct {
 	pulumi.CustomResourceState

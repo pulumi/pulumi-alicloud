@@ -18,7 +18,7 @@ import * as utilities from "../utilities";
  * Cloudauth Face Config can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:cloudauth/faceConfig:FaceConfig example <lang>
+ * $ pulumi import alicloud:cloudauth/faceConfig:FaceConfig example <lang>
  * ```
  */
 export class FaceConfig extends pulumi.CustomResource {

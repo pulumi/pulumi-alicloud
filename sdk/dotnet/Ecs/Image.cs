@@ -103,7 +103,7 @@ namespace Pulumi.AliCloud.Ecs
     ///  image can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:ecs/image:Image default m-uf66871ape***yg1q***
+    /// $ pulumi import alicloud:ecs/image:Image default m-uf66871ape***yg1q***
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:ecs/image:Image")]

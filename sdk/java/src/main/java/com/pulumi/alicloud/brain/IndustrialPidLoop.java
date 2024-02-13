@@ -62,7 +62,7 @@ import javax.annotation.Nullable;
  * Brain Industrial Pid Loop can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:brain/industrialPidLoop:IndustrialPidLoop example &lt;id&gt;
+ * $ pulumi import alicloud:brain/industrialPidLoop:IndustrialPidLoop example &lt;id&gt;
  * ```
  * 
  */

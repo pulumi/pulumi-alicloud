@@ -69,11 +69,11 @@ namespace Pulumi.AliCloud.Cdn
     /// CDN domain config can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:cdn/domainConfig:DomainConfig example &lt;domain_name&gt;:&lt;function_name&gt;:&lt;config_id&gt;
+    /// $ pulumi import alicloud:cdn/domainConfig:DomainConfig example &lt;domain_name&gt;:&lt;function_name&gt;:&lt;config_id&gt;
     /// ```
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:cdn/domainConfig:DomainConfig example &lt;domain_name&gt;:&lt;function_name&gt;
+    /// $ pulumi import alicloud:cdn/domainConfig:DomainConfig example &lt;domain_name&gt;:&lt;function_name&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:cdn/domainConfig:DomainConfig")]

@@ -2139,7 +2139,7 @@ class RdsUpgradeDbInstance(pulumi.CustomResource):
         RDS Upgrade DB Instance can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:rds/rdsUpgradeDbInstance:RdsUpgradeDbInstance example <id>
+        $ pulumi import alicloud:rds/rdsUpgradeDbInstance:RdsUpgradeDbInstance example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -2331,7 +2331,7 @@ class RdsUpgradeDbInstance(pulumi.CustomResource):
         RDS Upgrade DB Instance can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:rds/rdsUpgradeDbInstance:RdsUpgradeDbInstance example <id>
+        $ pulumi import alicloud:rds/rdsUpgradeDbInstance:RdsUpgradeDbInstance example <id>
         ```
 
         :param str resource_name: The name of the resource.

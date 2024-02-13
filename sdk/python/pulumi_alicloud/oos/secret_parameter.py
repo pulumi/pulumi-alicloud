@@ -333,7 +333,7 @@ class SecretParameter(pulumi.CustomResource):
         OOS Secret Parameter can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:oos/secretParameter:SecretParameter example <secret_parameter_name>
+        $ pulumi import alicloud:oos/secretParameter:SecretParameter example <secret_parameter_name>
         ```
 
         :param str resource_name: The name of the resource.
@@ -391,7 +391,7 @@ class SecretParameter(pulumi.CustomResource):
         OOS Secret Parameter can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:oos/secretParameter:SecretParameter example <secret_parameter_name>
+        $ pulumi import alicloud:oos/secretParameter:SecretParameter example <secret_parameter_name>
         ```
 
         :param str resource_name: The name of the resource.

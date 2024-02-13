@@ -18,7 +18,7 @@ import * as utilities from "../utilities";
  * GPDB DB Instance Plan can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:gpdb/dbInstancePlan:DbInstancePlan example <db_instance_id>:<plan_id>
+ * $ pulumi import alicloud:gpdb/dbInstancePlan:DbInstancePlan example <db_instance_id>:<plan_id>
  * ```
  */
 export class DbInstancePlan extends pulumi.CustomResource {

@@ -141,7 +141,7 @@ class GatewaySmbUser(pulumi.CustomResource):
         Cloud Storage Gateway Gateway SMB User can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:cloudstoragegateway/gatewaySmbUser:GatewaySmbUser example <gateway_id>:<username>
+        $ pulumi import alicloud:cloudstoragegateway/gatewaySmbUser:GatewaySmbUser example <gateway_id>:<username>
         ```
 
         :param str resource_name: The name of the resource.
@@ -168,7 +168,7 @@ class GatewaySmbUser(pulumi.CustomResource):
         Cloud Storage Gateway Gateway SMB User can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:cloudstoragegateway/gatewaySmbUser:GatewaySmbUser example <gateway_id>:<username>
+        $ pulumi import alicloud:cloudstoragegateway/gatewaySmbUser:GatewaySmbUser example <gateway_id>:<username>
         ```
 
         :param str resource_name: The name of the resource.

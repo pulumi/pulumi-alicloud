@@ -15,7 +15,7 @@ namespace Pulumi.AliCloud.SimpleApplicationServer
     /// Simple Application Server Instance can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:simpleapplicationserver/instance:Instance example &lt;id&gt;
+    /// $ pulumi import alicloud:simpleapplicationserver/instance:Instance example &lt;id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:simpleapplicationserver/instance:Instance")]

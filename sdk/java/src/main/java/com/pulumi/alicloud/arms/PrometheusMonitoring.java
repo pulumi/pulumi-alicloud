@@ -25,7 +25,7 @@ import javax.annotation.Nullable;
  * ARMS Prometheus Monitoring can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:arms/prometheusMonitoring:PrometheusMonitoring example &lt;cluster_id&gt;:&lt;monitoring_name&gt;:&lt;type&gt;
+ * $ pulumi import alicloud:arms/prometheusMonitoring:PrometheusMonitoring example &lt;cluster_id&gt;:&lt;monitoring_name&gt;:&lt;type&gt;
  * ```
  * 
  */

@@ -103,7 +103,7 @@ namespace Pulumi.AliCloud.Ecs
     /// ECS Image Pipeline can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:ecs/ecsImagePipeline:EcsImagePipeline example &lt;id&gt;
+    /// $ pulumi import alicloud:ecs/ecsImagePipeline:EcsImagePipeline example &lt;id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:ecs/ecsImagePipeline:EcsImagePipeline")]

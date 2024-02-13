@@ -954,7 +954,7 @@ class DBCluster(pulumi.CustomResource):
         AnalyticDB for MySQL (ADB) DBCluster can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:adb/dBCluster:DBCluster example <id>
+        $ pulumi import alicloud:adb/dBCluster:DBCluster example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -1002,7 +1002,7 @@ class DBCluster(pulumi.CustomResource):
         AnalyticDB for MySQL (ADB) DBCluster can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:adb/dBCluster:DBCluster example <id>
+        $ pulumi import alicloud:adb/dBCluster:DBCluster example <id>
         ```
 
         :param str resource_name: The name of the resource.

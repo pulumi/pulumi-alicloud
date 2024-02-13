@@ -116,7 +116,7 @@ import * as utilities from "../utilities";
  * ECI Container Group can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:eci/containerGroup:ContainerGroup example <container_group_id>
+ * $ pulumi import alicloud:eci/containerGroup:ContainerGroup example <container_group_id>
  * ```
  */
 export class ContainerGroup extends pulumi.CustomResource {

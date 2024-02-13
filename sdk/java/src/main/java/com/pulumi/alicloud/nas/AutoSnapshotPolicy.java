@@ -69,7 +69,7 @@ import javax.annotation.Nullable;
  * Network Attached Storage (NAS) Auto Snapshot Policy can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:nas/autoSnapshotPolicy:AutoSnapshotPolicy example &lt;id&gt;
+ * $ pulumi import alicloud:nas/autoSnapshotPolicy:AutoSnapshotPolicy example &lt;id&gt;
  * ```
  * 
  */

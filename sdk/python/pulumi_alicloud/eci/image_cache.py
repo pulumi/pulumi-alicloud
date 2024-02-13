@@ -443,7 +443,7 @@ class ImageCache(pulumi.CustomResource):
         ECI Image Cache can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:eci/imageCache:ImageCache example abc123456
+        $ pulumi import alicloud:eci/imageCache:ImageCache example abc123456
         ```
 
         :param str resource_name: The name of the resource.
@@ -515,7 +515,7 @@ class ImageCache(pulumi.CustomResource):
         ECI Image Cache can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:eci/imageCache:ImageCache example abc123456
+        $ pulumi import alicloud:eci/imageCache:ImageCache example abc123456
         ```
 
         :param str resource_name: The name of the resource.

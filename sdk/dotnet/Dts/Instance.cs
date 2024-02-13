@@ -58,7 +58,7 @@ namespace Pulumi.AliCloud.Dts
     /// Dts Instance can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:dts/instance:Instance example &lt;id&gt;
+    /// $ pulumi import alicloud:dts/instance:Instance example &lt;id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:dts/instance:Instance")]

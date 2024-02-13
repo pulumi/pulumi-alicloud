@@ -698,7 +698,7 @@ class ServerlessInstance(pulumi.CustomResource):
         MongoDB Serverless Instance can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:mongodb/serverlessInstance:ServerlessInstance example <id>
+        $ pulumi import alicloud:mongodb/serverlessInstance:ServerlessInstance example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -782,7 +782,7 @@ class ServerlessInstance(pulumi.CustomResource):
         MongoDB Serverless Instance can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:mongodb/serverlessInstance:ServerlessInstance example <id>
+        $ pulumi import alicloud:mongodb/serverlessInstance:ServerlessInstance example <id>
         ```
 
         :param str resource_name: The name of the resource.

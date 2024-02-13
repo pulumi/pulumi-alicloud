@@ -73,9 +73,7 @@ import (
 // OOS Service Setting can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:oos/serviceSetting:ServiceSetting example <id>
-//
+// $ pulumi import alicloud:oos/serviceSetting:ServiceSetting example <id>
 // ```
 type ServiceSetting struct {
 	pulumi.CustomResourceState

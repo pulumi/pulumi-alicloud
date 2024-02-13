@@ -47,7 +47,7 @@ import * as utilities from "../utilities";
  * Ack One Cluster can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:ackone/cluster:Cluster example <id>
+ * $ pulumi import alicloud:ackone/cluster:Cluster example <id>
  * ```
  */
 export class Cluster extends pulumi.CustomResource {

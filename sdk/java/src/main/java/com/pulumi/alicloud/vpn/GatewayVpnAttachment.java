@@ -115,7 +115,7 @@ import javax.annotation.Nullable;
  * VPN Gateway Vpn Attachment can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:vpn/gatewayVpnAttachment:GatewayVpnAttachment example &lt;id&gt;
+ * $ pulumi import alicloud:vpn/gatewayVpnAttachment:GatewayVpnAttachment example &lt;id&gt;
  * ```
  * 
  */

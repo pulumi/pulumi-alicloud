@@ -166,7 +166,7 @@ class ControlPolicyOrder(pulumi.CustomResource):
         Cloud Firewall Control Policy Order can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:cloudfirewall/controlPolicyOrder:ControlPolicyOrder example <acl_uuid>:<direction>
+        $ pulumi import alicloud:cloudfirewall/controlPolicyOrder:ControlPolicyOrder example <acl_uuid>:<direction>
         ```
 
         :param str resource_name: The name of the resource.
@@ -217,7 +217,7 @@ class ControlPolicyOrder(pulumi.CustomResource):
         Cloud Firewall Control Policy Order can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:cloudfirewall/controlPolicyOrder:ControlPolicyOrder example <acl_uuid>:<direction>
+        $ pulumi import alicloud:cloudfirewall/controlPolicyOrder:ControlPolicyOrder example <acl_uuid>:<direction>
         ```
 
         :param str resource_name: The name of the resource.

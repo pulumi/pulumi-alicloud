@@ -16,7 +16,7 @@ import * as utilities from "../utilities";
  * Data Security Center Data Limit can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:sddp/dataLimit:DataLimit example <id>
+ * $ pulumi import alicloud:sddp/dataLimit:DataLimit example <id>
  * ```
  */
 export class DataLimit extends pulumi.CustomResource {

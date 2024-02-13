@@ -64,9 +64,7 @@ import (
 // Cloud Monitor Service Monitor Group can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:cms/monitorGroup:MonitorGroup example <id>
-//
+// $ pulumi import alicloud:cms/monitorGroup:MonitorGroup example <id>
 // ```
 type MonitorGroup struct {
 	pulumi.CustomResourceState

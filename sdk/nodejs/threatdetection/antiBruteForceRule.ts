@@ -33,7 +33,7 @@ import * as utilities from "../utilities";
  * Threat Detection Anti Brute Force Rule can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:threatdetection/antiBruteForceRule:AntiBruteForceRule example <id>
+ * $ pulumi import alicloud:threatdetection/antiBruteForceRule:AntiBruteForceRule example <id>
  * ```
  */
 export class AntiBruteForceRule extends pulumi.CustomResource {

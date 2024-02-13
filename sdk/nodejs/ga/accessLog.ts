@@ -84,7 +84,7 @@ import * as utilities from "../utilities";
  * Global Accelerator (GA) Access Log can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:ga/accessLog:AccessLog example <accelerator_id>:<listener_id>:<endpoint_group_id>
+ * $ pulumi import alicloud:ga/accessLog:AccessLog example <accelerator_id>:<listener_id>:<endpoint_group_id>
  * ```
  */
 export class AccessLog extends pulumi.CustomResource {

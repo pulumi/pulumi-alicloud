@@ -59,9 +59,7 @@ import (
 // OOS Patch Baseline can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:oos/patchBaseline:PatchBaseline example <id>
-//
+// $ pulumi import alicloud:oos/patchBaseline:PatchBaseline example <id>
 // ```
 type PatchBaseline struct {
 	pulumi.CustomResourceState

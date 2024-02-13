@@ -2003,7 +2003,7 @@ class NodePool(pulumi.CustomResource):
         Cluster nodepool can be imported using the id, e.g. Then complete the nodepool.tf accords to the result of `pulumi preview`.
 
         ```sh
-         $ pulumi import alicloud:cs/nodePool:NodePool custom_nodepool cluster_id:nodepool_id
+        $ pulumi import alicloud:cs/nodePool:NodePool custom_nodepool cluster_id:nodepool_id
         ```
 
         :param str resource_name: The name of the resource.
@@ -2079,7 +2079,7 @@ class NodePool(pulumi.CustomResource):
         Cluster nodepool can be imported using the id, e.g. Then complete the nodepool.tf accords to the result of `pulumi preview`.
 
         ```sh
-         $ pulumi import alicloud:cs/nodePool:NodePool custom_nodepool cluster_id:nodepool_id
+        $ pulumi import alicloud:cs/nodePool:NodePool custom_nodepool cluster_id:nodepool_id
         ```
 
         :param str resource_name: The name of the resource.

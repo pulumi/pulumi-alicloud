@@ -555,7 +555,7 @@ class CommonBandwithPackage(pulumi.CustomResource):
         CBWP Common Bandwidth Package can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:vpc/commonBandwithPackage:CommonBandwithPackage example <id>
+        $ pulumi import alicloud:vpc/commonBandwithPackage:CommonBandwithPackage example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -593,7 +593,7 @@ class CommonBandwithPackage(pulumi.CustomResource):
         CBWP Common Bandwidth Package can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:vpc/commonBandwithPackage:CommonBandwithPackage example <id>
+        $ pulumi import alicloud:vpc/commonBandwithPackage:CommonBandwithPackage example <id>
         ```
 
         :param str resource_name: The name of the resource.

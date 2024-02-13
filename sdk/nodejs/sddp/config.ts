@@ -30,7 +30,7 @@ import * as utilities from "../utilities";
  * Data Security Center Config can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:sddp/config:Config example <code>
+ * $ pulumi import alicloud:sddp/config:Config example <code>
  * ```
  */
 export class Config extends pulumi.CustomResource {

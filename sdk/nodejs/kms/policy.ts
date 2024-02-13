@@ -16,7 +16,7 @@ import * as utilities from "../utilities";
  * KMS Policy can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:kms/policy:Policy example <id>
+ * $ pulumi import alicloud:kms/policy:Policy example <id>
  * ```
  */
 export class Policy extends pulumi.CustomResource {

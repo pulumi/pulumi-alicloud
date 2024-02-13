@@ -250,7 +250,7 @@ class AutoSnapshotPolicy(pulumi.CustomResource):
         Network Attached Storage (NAS) Auto Snapshot Policy can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:nas/autoSnapshotPolicy:AutoSnapshotPolicy example <id>
+        $ pulumi import alicloud:nas/autoSnapshotPolicy:AutoSnapshotPolicy example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -310,7 +310,7 @@ class AutoSnapshotPolicy(pulumi.CustomResource):
         Network Attached Storage (NAS) Auto Snapshot Policy can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:nas/autoSnapshotPolicy:AutoSnapshotPolicy example <id>
+        $ pulumi import alicloud:nas/autoSnapshotPolicy:AutoSnapshotPolicy example <id>
         ```
 
         :param str resource_name: The name of the resource.

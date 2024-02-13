@@ -298,7 +298,7 @@ class Schedule(pulumi.CustomResource):
         Serverless Workflow Schedule can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:fnf/schedule:Schedule example <schedule_name>:<flow_name>
+        $ pulumi import alicloud:fnf/schedule:Schedule example <schedule_name>:<flow_name>
         ```
 
         :param str resource_name: The name of the resource.
@@ -354,7 +354,7 @@ class Schedule(pulumi.CustomResource):
         Serverless Workflow Schedule can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:fnf/schedule:Schedule example <schedule_name>:<flow_name>
+        $ pulumi import alicloud:fnf/schedule:Schedule example <schedule_name>:<flow_name>
         ```
 
         :param str resource_name: The name of the resource.

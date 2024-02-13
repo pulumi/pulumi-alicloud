@@ -783,7 +783,7 @@ class Alarm(pulumi.CustomResource):
         Cloud Monitor Service Alarm can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:cms/alarm:Alarm example <id>
+        $ pulumi import alicloud:cms/alarm:Alarm example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -883,7 +883,7 @@ class Alarm(pulumi.CustomResource):
         Cloud Monitor Service Alarm can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:cms/alarm:Alarm example <id>
+        $ pulumi import alicloud:cms/alarm:Alarm example <id>
         ```
 
         :param str resource_name: The name of the resource.

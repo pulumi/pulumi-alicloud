@@ -48,9 +48,7 @@ import (
 // SecurityCenter service-linked roles(SLR) can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:securitycenter/serviceLinkedRole:ServiceLinkedRole example <product_name>
-//
+// $ pulumi import alicloud:securitycenter/serviceLinkedRole:ServiceLinkedRole example <product_name>
 // ```
 type ServiceLinkedRole struct {
 	pulumi.CustomResourceState

@@ -132,7 +132,7 @@ class AlidnsDomainAttachment(pulumi.CustomResource):
         DNS domain attachment can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:dns/alidnsDomainAttachment:AlidnsDomainAttachment example dns-cn-v0h1ldjhxxx
+        $ pulumi import alicloud:dns/alidnsDomainAttachment:AlidnsDomainAttachment example dns-cn-v0h1ldjhxxx
         ```
 
         :param str resource_name: The name of the resource.
@@ -181,7 +181,7 @@ class AlidnsDomainAttachment(pulumi.CustomResource):
         DNS domain attachment can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:dns/alidnsDomainAttachment:AlidnsDomainAttachment example dns-cn-v0h1ldjhxxx
+        $ pulumi import alicloud:dns/alidnsDomainAttachment:AlidnsDomainAttachment example dns-cn-v0h1ldjhxxx
         ```
 
         :param str resource_name: The name of the resource.

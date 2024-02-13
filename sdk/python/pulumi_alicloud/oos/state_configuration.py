@@ -395,7 +395,7 @@ class StateConfiguration(pulumi.CustomResource):
         OOS State Configuration can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:oos/stateConfiguration:StateConfiguration example <id>
+        $ pulumi import alicloud:oos/stateConfiguration:StateConfiguration example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -453,7 +453,7 @@ class StateConfiguration(pulumi.CustomResource):
         OOS State Configuration can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:oos/stateConfiguration:StateConfiguration example <id>
+        $ pulumi import alicloud:oos/stateConfiguration:StateConfiguration example <id>
         ```
 
         :param str resource_name: The name of the resource.

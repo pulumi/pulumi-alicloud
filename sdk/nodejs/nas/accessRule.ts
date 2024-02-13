@@ -38,7 +38,7 @@ import * as utilities from "../utilities";
  * Nas Access Rule can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:nas/accessRule:AccessRule foo tf-testAccNasConfigName:1
+ * $ pulumi import alicloud:nas/accessRule:AccessRule foo tf-testAccNasConfigName:1
  * ```
  */
 export class AccessRule extends pulumi.CustomResource {

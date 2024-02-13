@@ -86,7 +86,7 @@ import javax.annotation.Nullable;
  * Ack One Cluster can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:ackone/cluster:Cluster example &lt;id&gt;
+ * $ pulumi import alicloud:ackone/cluster:Cluster example &lt;id&gt;
  * ```
  * 
  */

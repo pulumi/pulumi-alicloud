@@ -837,7 +837,7 @@ class Rule(pulumi.CustomResource):
         Config Rule can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:cfg/rule:Rule example <id>
+        $ pulumi import alicloud:cfg/rule:Rule example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -909,7 +909,7 @@ class Rule(pulumi.CustomResource):
         Config Rule can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:cfg/rule:Rule example <id>
+        $ pulumi import alicloud:cfg/rule:Rule example <id>
         ```
 
         :param str resource_name: The name of the resource.

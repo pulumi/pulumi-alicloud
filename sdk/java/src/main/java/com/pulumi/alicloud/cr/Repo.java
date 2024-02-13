@@ -71,7 +71,7 @@ import javax.annotation.Nullable;
  * Container Registry repository can be imported using the `namespace/repository`, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:cr/repo:Repo default `my-namespace/my-repo`
+ * $ pulumi import alicloud:cr/repo:Repo default `my-namespace/my-repo`
  * ```
  * 
  */

@@ -15,7 +15,7 @@ namespace Pulumi.AliCloud.AliKafka
     /// AliKafka instance can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:alikafka/instance:Instance instance &lt;id&gt;
+    /// $ pulumi import alicloud:alikafka/instance:Instance instance &lt;id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:alikafka/instance:Instance")]

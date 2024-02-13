@@ -607,7 +607,7 @@ class Alarm(pulumi.CustomResource):
         Ess alarm can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:ess/alarm:Alarm example asg-2ze500_045efffe-4d05
+        $ pulumi import alicloud:ess/alarm:Alarm example asg-2ze500_045efffe-4d05
         ```
 
         :param str resource_name: The name of the resource.
@@ -727,7 +727,7 @@ class Alarm(pulumi.CustomResource):
         Ess alarm can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:ess/alarm:Alarm example asg-2ze500_045efffe-4d05
+        $ pulumi import alicloud:ess/alarm:Alarm example asg-2ze500_045efffe-4d05
         ```
 
         :param str resource_name: The name of the resource.

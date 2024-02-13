@@ -97,7 +97,7 @@ import * as utilities from "../utilities";
  * Function Compute function can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:fc/function:Function foo my-fc-service:hello-world
+ * $ pulumi import alicloud:fc/function:Function foo my-fc-service:hello-world
  * ```
  */
 export class Function extends pulumi.CustomResource {

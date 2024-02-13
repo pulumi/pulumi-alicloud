@@ -59,7 +59,7 @@ import * as utilities from "../utilities";
  * MongoDB Audit Policy can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:mongodb/auditPolicy:AuditPolicy example <db_instance_id>
+ * $ pulumi import alicloud:mongodb/auditPolicy:AuditPolicy example <db_instance_id>
  * ```
  */
 export class AuditPolicy extends pulumi.CustomResource {

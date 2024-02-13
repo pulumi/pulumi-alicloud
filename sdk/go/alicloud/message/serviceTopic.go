@@ -59,9 +59,7 @@ import (
 // Message Notification Service Topic can be imported using the id or topic_name, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:message/serviceTopic:ServiceTopic example <topic_name>
-//
+// $ pulumi import alicloud:message/serviceTopic:ServiceTopic example <topic_name>
 // ```
 type ServiceTopic struct {
 	pulumi.CustomResourceState

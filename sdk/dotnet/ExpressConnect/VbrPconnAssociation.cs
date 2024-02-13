@@ -81,7 +81,7 @@ namespace Pulumi.AliCloud.ExpressConnect
     /// Express Connect Vbr Pconn Association can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:expressconnect/vbrPconnAssociation:VbrPconnAssociation example &lt;VbrId&gt;:&lt;PhysicalConnectionId&gt;
+    /// $ pulumi import alicloud:expressconnect/vbrPconnAssociation:VbrPconnAssociation example &lt;VbrId&gt;:&lt;PhysicalConnectionId&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:expressconnect/vbrPconnAssociation:VbrPconnAssociation")]

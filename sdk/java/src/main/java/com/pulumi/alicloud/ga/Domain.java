@@ -66,7 +66,7 @@ import javax.annotation.Nullable;
  * Ga Domain can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:ga/domain:Domain example &lt;accelerator_id&gt;:&lt;domain&gt;
+ * $ pulumi import alicloud:ga/domain:Domain example &lt;accelerator_id&gt;:&lt;domain&gt;
  * ```
  * 
  */

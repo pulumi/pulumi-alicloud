@@ -41,7 +41,7 @@ namespace Pulumi.AliCloud.Rds
     /// RDS Service Linked Role can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:rds/rdsServiceLinkedRole:RdsServiceLinkedRole default &lt;service_name&gt;
+    /// $ pulumi import alicloud:rds/rdsServiceLinkedRole:RdsServiceLinkedRole default &lt;service_name&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:rds/rdsServiceLinkedRole:RdsServiceLinkedRole")]

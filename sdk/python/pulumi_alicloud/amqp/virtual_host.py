@@ -130,7 +130,7 @@ class VirtualHost(pulumi.CustomResource):
         RabbitMQ (AMQP) Virtual Host can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:amqp/virtualHost:VirtualHost example <instance_id>:<virtual_host_name>
+        $ pulumi import alicloud:amqp/virtualHost:VirtualHost example <instance_id>:<virtual_host_name>
         ```
 
         :param str resource_name: The name of the resource.
@@ -177,7 +177,7 @@ class VirtualHost(pulumi.CustomResource):
         RabbitMQ (AMQP) Virtual Host can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:amqp/virtualHost:VirtualHost example <instance_id>:<virtual_host_name>
+        $ pulumi import alicloud:amqp/virtualHost:VirtualHost example <instance_id>:<virtual_host_name>
         ```
 
         :param str resource_name: The name of the resource.

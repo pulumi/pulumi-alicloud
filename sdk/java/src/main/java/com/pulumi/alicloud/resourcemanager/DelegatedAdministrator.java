@@ -74,7 +74,7 @@ import javax.annotation.Nullable;
  * Resource Manager Delegated Administrator can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:resourcemanager/delegatedAdministrator:DelegatedAdministrator example &lt;account_id&gt;:&lt;service_principal&gt;
+ * $ pulumi import alicloud:resourcemanager/delegatedAdministrator:DelegatedAdministrator example &lt;account_id&gt;:&lt;service_principal&gt;
  * ```
  * 
  */

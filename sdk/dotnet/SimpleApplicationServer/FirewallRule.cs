@@ -60,7 +60,7 @@ namespace Pulumi.AliCloud.SimpleApplicationServer
     /// Simple Application Server Firewall Rule can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:simpleapplicationserver/firewallRule:FirewallRule example &lt;instance_id&gt;:&lt;firewall_rule_id&gt;
+    /// $ pulumi import alicloud:simpleapplicationserver/firewallRule:FirewallRule example &lt;instance_id&gt;:&lt;firewall_rule_id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:simpleapplicationserver/firewallRule:FirewallRule")]

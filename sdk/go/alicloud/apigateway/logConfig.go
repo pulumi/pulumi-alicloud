@@ -92,9 +92,7 @@ import (
 // Api Gateway Log Config can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:apigateway/logConfig:LogConfig example <log_type>
-//
+// $ pulumi import alicloud:apigateway/logConfig:LogConfig example <log_type>
 // ```
 type LogConfig struct {
 	pulumi.CustomResourceState

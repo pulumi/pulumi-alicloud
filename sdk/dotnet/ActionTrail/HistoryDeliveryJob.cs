@@ -81,7 +81,7 @@ namespace Pulumi.AliCloud.ActionTrail
     /// Actiontrail History Delivery Job can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:actiontrail/historyDeliveryJob:HistoryDeliveryJob example &lt;id&gt;
+    /// $ pulumi import alicloud:actiontrail/historyDeliveryJob:HistoryDeliveryJob example &lt;id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:actiontrail/historyDeliveryJob:HistoryDeliveryJob")]

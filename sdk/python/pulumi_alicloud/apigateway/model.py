@@ -190,7 +190,7 @@ class Model(pulumi.CustomResource):
         Api Gateway Model can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:apigateway/model:Model example <group_id>:<model_name>
+        $ pulumi import alicloud:apigateway/model:Model example <group_id>:<model_name>
         ```
 
         :param str resource_name: The name of the resource.
@@ -234,7 +234,7 @@ class Model(pulumi.CustomResource):
         Api Gateway Model can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:apigateway/model:Model example <group_id>:<model_name>
+        $ pulumi import alicloud:apigateway/model:Model example <group_id>:<model_name>
         ```
 
         :param str resource_name: The name of the resource.

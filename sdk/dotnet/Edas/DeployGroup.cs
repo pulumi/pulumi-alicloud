@@ -76,7 +76,7 @@ namespace Pulumi.AliCloud.Edas
     /// EDAS deploy group can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:edas/deployGroup:DeployGroup group app_id:group_name:group_id
+    /// $ pulumi import alicloud:edas/deployGroup:DeployGroup group app_id:group_name:group_id
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:edas/deployGroup:DeployGroup")]

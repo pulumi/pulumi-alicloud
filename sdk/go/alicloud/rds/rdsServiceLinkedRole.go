@@ -51,9 +51,7 @@ import (
 // RDS Service Linked Role can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:rds/rdsServiceLinkedRole:RdsServiceLinkedRole default <service_name>
-//
+// $ pulumi import alicloud:rds/rdsServiceLinkedRole:RdsServiceLinkedRole default <service_name>
 // ```
 type RdsServiceLinkedRole struct {
 	pulumi.CustomResourceState

@@ -15,7 +15,7 @@ namespace Pulumi.AliCloud.Adb
     /// AnalyticDB for MySQL (ADB) DBCluster can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:adb/dBCluster:DBCluster example &lt;id&gt;
+    /// $ pulumi import alicloud:adb/dBCluster:DBCluster example &lt;id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:adb/dBCluster:DBCluster")]

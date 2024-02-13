@@ -27,7 +27,7 @@ import * as utilities from "../utilities";
  * Cloud Storage Gateway Storage Bundle can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:cloudstoragegateway/storageBundle:StorageBundle example <id>
+ * $ pulumi import alicloud:cloudstoragegateway/storageBundle:StorageBundle example <id>
  * ```
  */
 export class StorageBundle extends pulumi.CustomResource {

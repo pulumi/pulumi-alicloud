@@ -68,7 +68,7 @@ import javax.annotation.Nullable;
  * Message Notification Service Queue can be imported using the id or queue_name, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:message/serviceQueue:ServiceQueue example &lt;queue_name&gt;
+ * $ pulumi import alicloud:message/serviceQueue:ServiceQueue example &lt;queue_name&gt;
  * ```
  * 
  */

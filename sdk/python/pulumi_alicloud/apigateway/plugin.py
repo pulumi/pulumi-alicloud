@@ -250,7 +250,7 @@ class Plugin(pulumi.CustomResource):
         Api Gateway Plugin can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:apigateway/plugin:Plugin example <id>
+        $ pulumi import alicloud:apigateway/plugin:Plugin example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -304,7 +304,7 @@ class Plugin(pulumi.CustomResource):
         Api Gateway Plugin can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:apigateway/plugin:Plugin example <id>
+        $ pulumi import alicloud:apigateway/plugin:Plugin example <id>
         ```
 
         :param str resource_name: The name of the resource.

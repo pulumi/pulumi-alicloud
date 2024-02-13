@@ -75,9 +75,7 @@ import (
 // Event Bridge Event Source can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:eventbridge/eventSource:EventSource example <event_source_name>
-//
+// $ pulumi import alicloud:eventbridge/eventSource:EventSource example <event_source_name>
 // ```
 type EventSource struct {
 	pulumi.CustomResourceState

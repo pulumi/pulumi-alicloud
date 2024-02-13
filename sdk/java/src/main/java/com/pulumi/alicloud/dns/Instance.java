@@ -64,7 +64,7 @@ import javax.annotation.Nullable;
  * DNS instance be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:dns/instance:Instance example dns-cn-v0h1ldjhfff
+ * $ pulumi import alicloud:dns/instance:Instance example dns-cn-v0h1ldjhfff
  * ```
  * 
  */

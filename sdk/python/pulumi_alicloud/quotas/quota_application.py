@@ -552,7 +552,7 @@ class QuotaApplication(pulumi.CustomResource):
         Quotas Quota Application can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:quotas/quotaApplication:QuotaApplication example <id>
+        $ pulumi import alicloud:quotas/quotaApplication:QuotaApplication example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -589,7 +589,7 @@ class QuotaApplication(pulumi.CustomResource):
         Quotas Quota Application can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:quotas/quotaApplication:QuotaApplication example <id>
+        $ pulumi import alicloud:quotas/quotaApplication:QuotaApplication example <id>
         ```
 
         :param str resource_name: The name of the resource.

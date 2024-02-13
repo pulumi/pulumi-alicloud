@@ -2507,7 +2507,7 @@ class Application(pulumi.CustomResource):
         Serverless App Engine (SAE) Application can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:sae/application:Application example <id>
+        $ pulumi import alicloud:sae/application:Application example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -2651,7 +2651,7 @@ class Application(pulumi.CustomResource):
         Serverless App Engine (SAE) Application can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:sae/application:Application example <id>
+        $ pulumi import alicloud:sae/application:Application example <id>
         ```
 
         :param str resource_name: The name of the resource.

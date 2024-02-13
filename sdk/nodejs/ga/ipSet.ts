@@ -50,7 +50,7 @@ import * as utilities from "../utilities";
  * Ga Ip Set can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:ga/ipSet:IpSet example <id>
+ * $ pulumi import alicloud:ga/ipSet:IpSet example <id>
  * ```
  */
 export class IpSet extends pulumi.CustomResource {

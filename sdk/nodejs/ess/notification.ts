@@ -67,7 +67,7 @@ import * as utilities from "../utilities";
  * Ess notification can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:ess/notification:Notification example 'scaling_group_id:notification_arn'
+ * $ pulumi import alicloud:ess/notification:Notification example 'scaling_group_id:notification_arn'
  * ```
  */
 export class Notification extends pulumi.CustomResource {

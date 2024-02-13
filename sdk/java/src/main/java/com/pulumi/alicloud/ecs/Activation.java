@@ -63,7 +63,7 @@ import javax.annotation.Nullable;
  * ECS Activation can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:ecs/activation:Activation example &lt;id&gt;
+ * $ pulumi import alicloud:ecs/activation:Activation example &lt;id&gt;
  * ```
  * 
  */

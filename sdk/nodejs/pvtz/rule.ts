@@ -18,7 +18,7 @@ import * as utilities from "../utilities";
  * Private Zone Rule can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:pvtz/rule:Rule example <id>
+ * $ pulumi import alicloud:pvtz/rule:Rule example <id>
  * ```
  */
 export class Rule extends pulumi.CustomResource {

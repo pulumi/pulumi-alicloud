@@ -494,7 +494,7 @@ class PhysicalConnection(pulumi.CustomResource):
         Express Connect Physical Connection can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:expressconnect/physicalConnection:PhysicalConnection example <id>
+        $ pulumi import alicloud:expressconnect/physicalConnection:PhysicalConnection example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -572,7 +572,7 @@ class PhysicalConnection(pulumi.CustomResource):
         Express Connect Physical Connection can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:expressconnect/physicalConnection:PhysicalConnection example <id>
+        $ pulumi import alicloud:expressconnect/physicalConnection:PhysicalConnection example <id>
         ```
 
         :param str resource_name: The name of the resource.

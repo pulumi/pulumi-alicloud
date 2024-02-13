@@ -276,7 +276,7 @@ class Snapshot(pulumi.CustomResource):
         DBFS Snapshot can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:databasefilesystem/snapshot:Snapshot example <id>
+        $ pulumi import alicloud:databasefilesystem/snapshot:Snapshot example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -356,7 +356,7 @@ class Snapshot(pulumi.CustomResource):
         DBFS Snapshot can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:databasefilesystem/snapshot:Snapshot example <id>
+        $ pulumi import alicloud:databasefilesystem/snapshot:Snapshot example <id>
         ```
 
         :param str resource_name: The name of the resource.

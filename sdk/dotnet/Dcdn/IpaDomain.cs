@@ -59,7 +59,7 @@ namespace Pulumi.AliCloud.Dcdn
     /// DCDN Ipa Domain can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:dcdn/ipaDomain:IpaDomain example &lt;domain_name&gt;
+    /// $ pulumi import alicloud:dcdn/ipaDomain:IpaDomain example &lt;domain_name&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:dcdn/ipaDomain:IpaDomain")]

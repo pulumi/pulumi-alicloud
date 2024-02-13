@@ -630,7 +630,7 @@ class Cluster(pulumi.CustomResource):
         Aliclioud E-MapReduce cluster can be imported using the id e.g.
 
         ```sh
-         $ pulumi import alicloud:emrv2/cluster:Cluster default <id>
+        $ pulumi import alicloud:emrv2/cluster:Cluster default <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -795,7 +795,7 @@ class Cluster(pulumi.CustomResource):
         Aliclioud E-MapReduce cluster can be imported using the id e.g.
 
         ```sh
-         $ pulumi import alicloud:emrv2/cluster:Cluster default <id>
+        $ pulumi import alicloud:emrv2/cluster:Cluster default <id>
         ```
 
         :param str resource_name: The name of the resource.

@@ -71,7 +71,7 @@ import * as utilities from "../utilities";
  * Vpc Peer Connection Accepter can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:vpc/peerConnectionAccepter:PeerConnectionAccepter example <id>
+ * $ pulumi import alicloud:vpc/peerConnectionAccepter:PeerConnectionAccepter example <id>
  * ```
  */
 export class PeerConnectionAccepter extends pulumi.CustomResource {

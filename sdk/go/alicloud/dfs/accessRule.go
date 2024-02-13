@@ -69,9 +69,7 @@ import (
 // DFS Access Rule can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:dfs/accessRule:AccessRule example <access_group_id>:<access_rule_id>
-//
+// $ pulumi import alicloud:dfs/accessRule:AccessRule example <access_group_id>:<access_rule_id>
 // ```
 type AccessRule struct {
 	pulumi.CustomResourceState

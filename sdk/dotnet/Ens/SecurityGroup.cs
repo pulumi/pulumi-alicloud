@@ -44,7 +44,7 @@ namespace Pulumi.AliCloud.Ens
     /// ENS Security Group can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:ens/securityGroup:SecurityGroup example &lt;id&gt;
+    /// $ pulumi import alicloud:ens/securityGroup:SecurityGroup example &lt;id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:ens/securityGroup:SecurityGroup")]

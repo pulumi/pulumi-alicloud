@@ -49,7 +49,7 @@ import * as utilities from "../utilities";
  * Threat Detection Image Event Operation can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:threatdetection/imageEventOperation:ImageEventOperation example <id>
+ * $ pulumi import alicloud:threatdetection/imageEventOperation:ImageEventOperation example <id>
  * ```
  */
 export class ImageEventOperation extends pulumi.CustomResource {

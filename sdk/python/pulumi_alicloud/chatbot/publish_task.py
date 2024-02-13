@@ -205,7 +205,7 @@ class PublishTask(pulumi.CustomResource):
         Chatbot Publish Task can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:chatbot/publishTask:PublishTask example <id>
+        $ pulumi import alicloud:chatbot/publishTask:PublishTask example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -246,7 +246,7 @@ class PublishTask(pulumi.CustomResource):
         Chatbot Publish Task can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:chatbot/publishTask:PublishTask example <id>
+        $ pulumi import alicloud:chatbot/publishTask:PublishTask example <id>
         ```
 
         :param str resource_name: The name of the resource.

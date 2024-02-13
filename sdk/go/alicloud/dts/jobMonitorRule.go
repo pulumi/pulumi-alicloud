@@ -23,9 +23,7 @@ import (
 // DTS Job Monitor Rule can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:dts/jobMonitorRule:JobMonitorRule example <dts_job_id>
-//
+// $ pulumi import alicloud:dts/jobMonitorRule:JobMonitorRule example <dts_job_id>
 // ```
 type JobMonitorRule struct {
 	pulumi.CustomResourceState

@@ -88,7 +88,7 @@ namespace Pulumi.AliCloud.ApiGateway
     /// Api gateway app can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:apigateway/vpcAccess:VpcAccess example "APiGatewayVpc:vpc-aswcj19ajsz:i-ajdjfsdlf:8080"
+    /// $ pulumi import alicloud:apigateway/vpcAccess:VpcAccess example "APiGatewayVpc:vpc-aswcj19ajsz:i-ajdjfsdlf:8080"
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:apigateway/vpcAccess:VpcAccess")]

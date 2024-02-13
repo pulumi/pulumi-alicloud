@@ -227,7 +227,7 @@ class EcsPrefixList(pulumi.CustomResource):
         ECS Prefix List can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:ecs/ecsPrefixList:EcsPrefixList example <id>
+        $ pulumi import alicloud:ecs/ecsPrefixList:EcsPrefixList example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -275,7 +275,7 @@ class EcsPrefixList(pulumi.CustomResource):
         ECS Prefix List can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:ecs/ecsPrefixList:EcsPrefixList example <id>
+        $ pulumi import alicloud:ecs/ecsPrefixList:EcsPrefixList example <id>
         ```
 
         :param str resource_name: The name of the resource.

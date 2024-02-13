@@ -23,9 +23,7 @@ import (
 // DBS Backup Plan can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:dbs/backupPlan:BackupPlan example <id>
-//
+// $ pulumi import alicloud:dbs/backupPlan:BackupPlan example <id>
 // ```
 type BackupPlan struct {
 	pulumi.CustomResourceState

@@ -191,7 +191,7 @@ class DeviceGroup(pulumi.CustomResource):
         Iot Device Group can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:iot/deviceGroup:DeviceGroup example <id>
+        $ pulumi import alicloud:iot/deviceGroup:DeviceGroup example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -234,7 +234,7 @@ class DeviceGroup(pulumi.CustomResource):
         Iot Device Group can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:iot/deviceGroup:DeviceGroup example <id>
+        $ pulumi import alicloud:iot/deviceGroup:DeviceGroup example <id>
         ```
 
         :param str resource_name: The name of the resource.

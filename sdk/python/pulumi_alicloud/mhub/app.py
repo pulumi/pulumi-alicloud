@@ -295,7 +295,7 @@ class App(pulumi.CustomResource):
         MHUB App can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:mhub/app:App example <product_id>:<app_key>
+        $ pulumi import alicloud:mhub/app:App example <product_id>:<app_key>
         ```
 
         :param str resource_name: The name of the resource.
@@ -348,7 +348,7 @@ class App(pulumi.CustomResource):
         MHUB App can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:mhub/app:App example <product_id>:<app_key>
+        $ pulumi import alicloud:mhub/app:App example <product_id>:<app_key>
         ```
 
         :param str resource_name: The name of the resource.

@@ -79,7 +79,7 @@ namespace Pulumi.AliCloud.Eds
     /// ECD Ad Connector Directory can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:eds/adConnectorDirectory:AdConnectorDirectory example &lt;id&gt;
+    /// $ pulumi import alicloud:eds/adConnectorDirectory:AdConnectorDirectory example &lt;id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:eds/adConnectorDirectory:AdConnectorDirectory")]

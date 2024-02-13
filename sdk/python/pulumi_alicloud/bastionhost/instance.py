@@ -611,7 +611,7 @@ class Instance(pulumi.CustomResource):
         Yundun_bastionhost instance can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:bastionhost/instance:Instance example bastionhost-exampe123456
+        $ pulumi import alicloud:bastionhost/instance:Instance example bastionhost-exampe123456
         ```
 
         :param str resource_name: The name of the resource.
@@ -651,7 +651,7 @@ class Instance(pulumi.CustomResource):
         Yundun_bastionhost instance can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:bastionhost/instance:Instance example bastionhost-exampe123456
+        $ pulumi import alicloud:bastionhost/instance:Instance example bastionhost-exampe123456
         ```
 
         :param str resource_name: The name of the resource.

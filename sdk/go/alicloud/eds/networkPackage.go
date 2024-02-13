@@ -67,9 +67,7 @@ import (
 // ECD Network Package can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:eds/networkPackage:NetworkPackage example <id>
-//
+// $ pulumi import alicloud:eds/networkPackage:NetworkPackage example <id>
 // ```
 type NetworkPackage struct {
 	pulumi.CustomResourceState

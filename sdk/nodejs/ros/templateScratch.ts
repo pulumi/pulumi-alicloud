@@ -41,7 +41,7 @@ import * as utilities from "../utilities";
  * ROS Template Scratch can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:ros/templateScratch:TemplateScratch example <id>
+ * $ pulumi import alicloud:ros/templateScratch:TemplateScratch example <id>
  * ```
  */
 export class TemplateScratch extends pulumi.CustomResource {

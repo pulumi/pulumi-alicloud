@@ -585,7 +585,7 @@ class DdosCooInstance(pulumi.CustomResource):
         DdosCoo instance can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:dns/ddosCooInstance:DdosCooInstance example ddoscoo-cn-123456
+        $ pulumi import alicloud:dns/ddosCooInstance:DdosCooInstance example ddoscoo-cn-123456
         ```
 
         :param str resource_name: The name of the resource.
@@ -650,7 +650,7 @@ class DdosCooInstance(pulumi.CustomResource):
         DdosCoo instance can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:dns/ddosCooInstance:DdosCooInstance example ddoscoo-cn-123456
+        $ pulumi import alicloud:dns/ddosCooInstance:DdosCooInstance example ddoscoo-cn-123456
         ```
 
         :param str resource_name: The name of the resource.

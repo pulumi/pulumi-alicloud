@@ -72,7 +72,7 @@ import javax.annotation.Nullable;
  * DFS File System can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:dfs/fileSystem:FileSystem example &lt;id&gt;
+ * $ pulumi import alicloud:dfs/fileSystem:FileSystem example &lt;id&gt;
  * ```
  * 
  */

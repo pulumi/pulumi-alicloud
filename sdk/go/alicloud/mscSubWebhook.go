@@ -21,9 +21,7 @@ import (
 // Msc Sub Webhook can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:index/mscSubWebhook:MscSubWebhook example <id>
-//
+// $ pulumi import alicloud:index/mscSubWebhook:MscSubWebhook example <id>
 // ```
 type MscSubWebhook struct {
 	pulumi.CustomResourceState

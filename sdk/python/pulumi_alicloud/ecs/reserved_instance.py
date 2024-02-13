@@ -685,7 +685,7 @@ class ReservedInstance(pulumi.CustomResource):
         reservedInstance can be imported using id, e.g.
 
         ```sh
-         $ pulumi import alicloud:ecs/reservedInstance:ReservedInstance default ecsri-uf6df4xm0h3licit****
+        $ pulumi import alicloud:ecs/reservedInstance:ReservedInstance default ecsri-uf6df4xm0h3licit****
         ```
 
         :param str resource_name: The name of the resource.
@@ -745,7 +745,7 @@ class ReservedInstance(pulumi.CustomResource):
         reservedInstance can be imported using id, e.g.
 
         ```sh
-         $ pulumi import alicloud:ecs/reservedInstance:ReservedInstance default ecsri-uf6df4xm0h3licit****
+        $ pulumi import alicloud:ecs/reservedInstance:ReservedInstance default ecsri-uf6df4xm0h3licit****
         ```
 
         :param str resource_name: The name of the resource.

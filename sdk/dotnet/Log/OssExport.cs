@@ -82,7 +82,7 @@ namespace Pulumi.AliCloud.Log
     /// Log oss export can be imported using the id or name, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:log/ossExport:OssExport example tf-log-project:tf-log-logstore:tf-log-export
+    /// $ pulumi import alicloud:log/ossExport:OssExport example tf-log-project:tf-log-logstore:tf-log-export
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:log/ossExport:OssExport")]

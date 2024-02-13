@@ -174,7 +174,7 @@ class TlsCipherPolicy(pulumi.CustomResource):
         SLB Tls Cipher Policy can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:slb/tlsCipherPolicy:TlsCipherPolicy example <id>
+        $ pulumi import alicloud:slb/tlsCipherPolicy:TlsCipherPolicy example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -218,7 +218,7 @@ class TlsCipherPolicy(pulumi.CustomResource):
         SLB Tls Cipher Policy can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:slb/tlsCipherPolicy:TlsCipherPolicy example <id>
+        $ pulumi import alicloud:slb/tlsCipherPolicy:TlsCipherPolicy example <id>
         ```
 
         :param str resource_name: The name of the resource.

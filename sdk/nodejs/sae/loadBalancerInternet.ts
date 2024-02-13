@@ -88,7 +88,7 @@ import * as utilities from "../utilities";
  * The resource can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:sae/loadBalancerInternet:LoadBalancerInternet example <id>
+ * $ pulumi import alicloud:sae/loadBalancerInternet:LoadBalancerInternet example <id>
  * ```
  */
 export class LoadBalancerInternet extends pulumi.CustomResource {

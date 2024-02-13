@@ -71,9 +71,7 @@ import (
 // Dts Instance can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:dts/instance:Instance example <id>
-//
+// $ pulumi import alicloud:dts/instance:Instance example <id>
 // ```
 type Instance struct {
 	pulumi.CustomResourceState

@@ -35,7 +35,7 @@ import * as utilities from "../utilities";
  * ROS Change Set can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:ros/changeSet:ChangeSet example <change_set_id>
+ * $ pulumi import alicloud:ros/changeSet:ChangeSet example <change_set_id>
  * ```
  */
 export class ChangeSet extends pulumi.CustomResource {

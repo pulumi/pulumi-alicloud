@@ -16,7 +16,7 @@ import * as utilities from "../utilities";
  * Cloud SSO Group can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:cloudsso/group:Group example <directory_id>:<group_id>
+ * $ pulumi import alicloud:cloudsso/group:Group example <directory_id>:<group_id>
  * ```
  */
 export class Group extends pulumi.CustomResource {

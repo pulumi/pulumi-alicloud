@@ -199,7 +199,7 @@ class Policy(pulumi.CustomResource):
         Tag Policy can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:tag/policy:Policy example <id>
+        $ pulumi import alicloud:tag/policy:Policy example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -248,7 +248,7 @@ class Policy(pulumi.CustomResource):
         Tag Policy can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:tag/policy:Policy example <id>
+        $ pulumi import alicloud:tag/policy:Policy example <id>
         ```
 
         :param str resource_name: The name of the resource.

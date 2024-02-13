@@ -190,7 +190,7 @@ class SamlProvider(pulumi.CustomResource):
         RAM SAML Provider can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:ram/samlProvider:SamlProvider example <saml_provider_name>
+        $ pulumi import alicloud:ram/samlProvider:SamlProvider example <saml_provider_name>
         ```
 
         :param str resource_name: The name of the resource.
@@ -233,7 +233,7 @@ class SamlProvider(pulumi.CustomResource):
         RAM SAML Provider can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:ram/samlProvider:SamlProvider example <saml_provider_name>
+        $ pulumi import alicloud:ram/samlProvider:SamlProvider example <saml_provider_name>
         ```
 
         :param str resource_name: The name of the resource.

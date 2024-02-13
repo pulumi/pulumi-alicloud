@@ -62,9 +62,7 @@ import (
 // VPC Traffic Mirror Filter Egress Rule can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:vpc/trafficMirrorFilterEgressRule:TrafficMirrorFilterEgressRule example <traffic_mirror_filter_id>:<traffic_mirror_filter_egress_rule_id>
-//
+// $ pulumi import alicloud:vpc/trafficMirrorFilterEgressRule:TrafficMirrorFilterEgressRule example <traffic_mirror_filter_id>:<traffic_mirror_filter_egress_rule_id>
 // ```
 type TrafficMirrorFilterEgressRule struct {
 	pulumi.CustomResourceState

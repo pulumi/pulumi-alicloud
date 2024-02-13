@@ -70,7 +70,7 @@ import * as utilities from "../utilities";
  * Application Real-Time Monitoring Service (ARMS) Remote Write can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:arms/remoteWrite:RemoteWrite example <cluster_id>:<remote_write_name>
+ * $ pulumi import alicloud:arms/remoteWrite:RemoteWrite example <cluster_id>:<remote_write_name>
  * ```
  */
 export class RemoteWrite extends pulumi.CustomResource {

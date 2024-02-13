@@ -236,7 +236,7 @@ class DbNode(pulumi.CustomResource):
         RDS MySQL database cluster node agent function can be imported using id, e.g.
 
         ```sh
-         $ pulumi import alicloud:rds/dbNode:DbNode example <db_instance_id>:<node_id>
+        $ pulumi import alicloud:rds/dbNode:DbNode example <db_instance_id>:<node_id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -310,7 +310,7 @@ class DbNode(pulumi.CustomResource):
         RDS MySQL database cluster node agent function can be imported using id, e.g.
 
         ```sh
-         $ pulumi import alicloud:rds/dbNode:DbNode example <db_instance_id>:<node_id>
+        $ pulumi import alicloud:rds/dbNode:DbNode example <db_instance_id>:<node_id>
         ```
 
         :param str resource_name: The name of the resource.

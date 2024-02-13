@@ -24,9 +24,7 @@ import (
 // Cloud SSO Directory can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:cloudsso/directory:Directory example <id>
-//
+// $ pulumi import alicloud:cloudsso/directory:Directory example <id>
 // ```
 type Directory struct {
 	pulumi.CustomResourceState

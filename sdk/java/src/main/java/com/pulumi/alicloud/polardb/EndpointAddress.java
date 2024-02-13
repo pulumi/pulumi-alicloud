@@ -99,7 +99,7 @@ import javax.annotation.Nullable;
  * PolarDB endpoint address can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:polardb/endpointAddress:EndpointAddress example pc-abc123456:pe-abc123456
+ * $ pulumi import alicloud:polardb/endpointAddress:EndpointAddress example pc-abc123456:pe-abc123456
  * ```
  * 
  */

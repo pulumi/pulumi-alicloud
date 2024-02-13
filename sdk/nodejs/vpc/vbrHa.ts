@@ -16,7 +16,7 @@ import * as utilities from "../utilities";
  * VPC Vbr Ha can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:vpc/vbrHa:VbrHa example <id>
+ * $ pulumi import alicloud:vpc/vbrHa:VbrHa example <id>
  * ```
  */
 export class VbrHa extends pulumi.CustomResource {

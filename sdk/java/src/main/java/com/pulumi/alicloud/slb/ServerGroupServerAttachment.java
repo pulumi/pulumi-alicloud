@@ -27,7 +27,7 @@ import javax.annotation.Nullable;
  * Load balancer backend server group server attachment can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:slb/serverGroupServerAttachment:ServerGroupServerAttachment example &lt;server_group_id&gt;:&lt;server_id&gt;:&lt;port&gt;
+ * $ pulumi import alicloud:slb/serverGroupServerAttachment:ServerGroupServerAttachment example &lt;server_group_id&gt;:&lt;server_id&gt;:&lt;port&gt;
  * ```
  * 
  */

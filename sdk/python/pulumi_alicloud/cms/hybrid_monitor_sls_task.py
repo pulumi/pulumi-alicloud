@@ -274,7 +274,7 @@ class HybridMonitorSlsTask(pulumi.CustomResource):
         Cloud Monitor Service Hybrid Monitor Sls Task can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:cms/hybridMonitorSlsTask:HybridMonitorSlsTask example <id>
+        $ pulumi import alicloud:cms/hybridMonitorSlsTask:HybridMonitorSlsTask example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -305,7 +305,7 @@ class HybridMonitorSlsTask(pulumi.CustomResource):
         Cloud Monitor Service Hybrid Monitor Sls Task can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:cms/hybridMonitorSlsTask:HybridMonitorSlsTask example <id>
+        $ pulumi import alicloud:cms/hybridMonitorSlsTask:HybridMonitorSlsTask example <id>
         ```
 
         :param str resource_name: The name of the resource.

@@ -320,7 +320,7 @@ class Tunnel(pulumi.CustomResource):
         OTS tunnel can be imported using id, e.g.
 
         ```sh
-         $ pulumi import alicloud:ots/tunnel:Tunnel foo <instance_name>:<table_name>:<tunnel_name>
+        $ pulumi import alicloud:ots/tunnel:Tunnel foo <instance_name>:<table_name>:<tunnel_name>
         ```
 
         :param str resource_name: The name of the resource.
@@ -397,7 +397,7 @@ class Tunnel(pulumi.CustomResource):
         OTS tunnel can be imported using id, e.g.
 
         ```sh
-         $ pulumi import alicloud:ots/tunnel:Tunnel foo <instance_name>:<table_name>:<tunnel_name>
+        $ pulumi import alicloud:ots/tunnel:Tunnel foo <instance_name>:<table_name>:<tunnel_name>
         ```
 
         :param str resource_name: The name of the resource.

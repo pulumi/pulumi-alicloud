@@ -332,7 +332,7 @@ class DomainResource(pulumi.CustomResource):
         Anti-DDoS Pro Domain Resource can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:ddos/domainResource:DomainResource example <domain>
+        $ pulumi import alicloud:ddos/domainResource:DomainResource example <domain>
         ```
 
         :param str resource_name: The name of the resource.
@@ -400,7 +400,7 @@ class DomainResource(pulumi.CustomResource):
         Anti-DDoS Pro Domain Resource can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:ddos/domainResource:DomainResource example <domain>
+        $ pulumi import alicloud:ddos/domainResource:DomainResource example <domain>
         ```
 
         :param str resource_name: The name of the resource.

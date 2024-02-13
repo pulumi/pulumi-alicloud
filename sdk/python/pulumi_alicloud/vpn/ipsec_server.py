@@ -405,7 +405,7 @@ class IpsecServer(pulumi.CustomResource):
         VPN Ipsec Server can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:vpn/ipsecServer:IpsecServer example <id>
+        $ pulumi import alicloud:vpn/ipsecServer:IpsecServer example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -470,7 +470,7 @@ class IpsecServer(pulumi.CustomResource):
         VPN Ipsec Server can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:vpn/ipsecServer:IpsecServer example <id>
+        $ pulumi import alicloud:vpn/ipsecServer:IpsecServer example <id>
         ```
 
         :param str resource_name: The name of the resource.

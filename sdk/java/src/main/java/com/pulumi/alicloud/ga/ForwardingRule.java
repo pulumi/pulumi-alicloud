@@ -182,7 +182,7 @@ import javax.annotation.Nullable;
  * Ga Forwarding Rule can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:ga/forwardingRule:ForwardingRule example &lt;accelerator_id&gt;:&lt;listener_id&gt;:&lt;forwarding_rule_id&gt;
+ * $ pulumi import alicloud:ga/forwardingRule:ForwardingRule example &lt;accelerator_id&gt;:&lt;listener_id&gt;:&lt;forwarding_rule_id&gt;
  * ```
  * 
  */

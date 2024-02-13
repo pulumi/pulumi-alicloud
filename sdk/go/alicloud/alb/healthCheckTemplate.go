@@ -51,9 +51,7 @@ import (
 // Application Load Balancer (ALB) Health Check Template can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:alb/healthCheckTemplate:HealthCheckTemplate example <id>
-//
+// $ pulumi import alicloud:alb/healthCheckTemplate:HealthCheckTemplate example <id>
 // ```
 type HealthCheckTemplate struct {
 	pulumi.CustomResourceState

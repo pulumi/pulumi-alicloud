@@ -716,7 +716,7 @@ class Connection(pulumi.CustomResource):
         VPN connection can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:vpn/connection:Connection example <id>
+        $ pulumi import alicloud:vpn/connection:Connection example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -758,7 +758,7 @@ class Connection(pulumi.CustomResource):
         VPN connection can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:vpn/connection:Connection example <id>
+        $ pulumi import alicloud:vpn/connection:Connection example <id>
         ```
 
         :param str resource_name: The name of the resource.

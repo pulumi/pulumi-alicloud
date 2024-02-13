@@ -77,7 +77,7 @@ import javax.annotation.Nullable;
  * Cloud Enterprise Network (CEN) Transit Router Cidr can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:cen/transitRouterCidr:TransitRouterCidr default &lt;transit_router_id&gt;:&lt;transit_router_cidr_id&gt;.
+ * $ pulumi import alicloud:cen/transitRouterCidr:TransitRouterCidr default &lt;transit_router_id&gt;:&lt;transit_router_cidr_id&gt;.
  * ```
  * 
  */

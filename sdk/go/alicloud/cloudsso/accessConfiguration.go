@@ -25,9 +25,7 @@ import (
 // Cloud SSO Access Configuration can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:cloudsso/accessConfiguration:AccessConfiguration example <directory_id>:<access_configuration_id>
-//
+// $ pulumi import alicloud:cloudsso/accessConfiguration:AccessConfiguration example <directory_id>:<access_configuration_id>
 // ```
 type AccessConfiguration struct {
 	pulumi.CustomResourceState

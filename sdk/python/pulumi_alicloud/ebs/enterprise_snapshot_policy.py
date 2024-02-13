@@ -455,7 +455,7 @@ class EnterpriseSnapshotPolicy(pulumi.CustomResource):
         EBS Enterprise Snapshot Policy can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:ebs/enterpriseSnapshotPolicy:EnterpriseSnapshotPolicy example <id>
+        $ pulumi import alicloud:ebs/enterpriseSnapshotPolicy:EnterpriseSnapshotPolicy example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -523,7 +523,7 @@ class EnterpriseSnapshotPolicy(pulumi.CustomResource):
         EBS Enterprise Snapshot Policy can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:ebs/enterpriseSnapshotPolicy:EnterpriseSnapshotPolicy example <id>
+        $ pulumi import alicloud:ebs/enterpriseSnapshotPolicy:EnterpriseSnapshotPolicy example <id>
         ```
 
         :param str resource_name: The name of the resource.

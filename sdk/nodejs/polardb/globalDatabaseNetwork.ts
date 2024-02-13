@@ -54,7 +54,7 @@ import * as utilities from "../utilities";
  * PolarDB Global Database Network can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:polardb/globalDatabaseNetwork:GlobalDatabaseNetwork example <id>
+ * $ pulumi import alicloud:polardb/globalDatabaseNetwork:GlobalDatabaseNetwork example <id>
  * ```
  */
 export class GlobalDatabaseNetwork extends pulumi.CustomResource {

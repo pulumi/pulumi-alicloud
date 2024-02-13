@@ -57,9 +57,7 @@ import (
 // Cloud Firewall Instance can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:cloudfirewall/instance:Instance example <id>
-//
+// $ pulumi import alicloud:cloudfirewall/instance:Instance example <id>
 // ```
 type Instance struct {
 	pulumi.CustomResourceState

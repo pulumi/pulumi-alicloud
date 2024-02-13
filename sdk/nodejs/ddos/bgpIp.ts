@@ -43,7 +43,7 @@ import * as utilities from "../utilities";
  * Ddos Bgp Ip can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:ddos/bgpIp:BgpIp example <instance_id>:<ip>
+ * $ pulumi import alicloud:ddos/bgpIp:BgpIp example <instance_id>:<ip>
  * ```
  */
 export class BgpIp extends pulumi.CustomResource {

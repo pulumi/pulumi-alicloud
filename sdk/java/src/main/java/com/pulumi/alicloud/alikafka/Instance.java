@@ -24,7 +24,7 @@ import javax.annotation.Nullable;
  * AliKafka instance can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:alikafka/instance:Instance instance &lt;id&gt;
+ * $ pulumi import alicloud:alikafka/instance:Instance instance &lt;id&gt;
  * ```
  * 
  */

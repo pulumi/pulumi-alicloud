@@ -27,7 +27,7 @@ import javax.annotation.Nullable;
  * Cloudauth Face Config can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:cloudauth/faceConfig:FaceConfig example &lt;lang&gt;
+ * $ pulumi import alicloud:cloudauth/faceConfig:FaceConfig example &lt;lang&gt;
  * ```
  * 
  */

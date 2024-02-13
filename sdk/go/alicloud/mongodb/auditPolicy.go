@@ -98,9 +98,7 @@ import (
 // MongoDB Audit Policy can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:mongodb/auditPolicy:AuditPolicy example <db_instance_id>
-//
+// $ pulumi import alicloud:mongodb/auditPolicy:AuditPolicy example <db_instance_id>
 // ```
 type AuditPolicy struct {
 	pulumi.CustomResourceState

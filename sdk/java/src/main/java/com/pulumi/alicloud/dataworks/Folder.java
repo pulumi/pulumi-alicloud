@@ -59,7 +59,7 @@ import javax.annotation.Nullable;
  * Data Works Folder can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:dataworks/folder:Folder example &lt;folder_id&gt;:&lt;$.ProjectId&gt;
+ * $ pulumi import alicloud:dataworks/folder:Folder example &lt;folder_id&gt;:&lt;$.ProjectId&gt;
  * ```
  * 
  */

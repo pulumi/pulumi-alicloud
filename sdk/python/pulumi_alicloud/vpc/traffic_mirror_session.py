@@ -558,7 +558,7 @@ class TrafficMirrorSession(pulumi.CustomResource):
         VPC Traffic Mirror Session can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:vpc/trafficMirrorSession:TrafficMirrorSession example <id>
+        $ pulumi import alicloud:vpc/trafficMirrorSession:TrafficMirrorSession example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -662,7 +662,7 @@ class TrafficMirrorSession(pulumi.CustomResource):
         VPC Traffic Mirror Session can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:vpc/trafficMirrorSession:TrafficMirrorSession example <id>
+        $ pulumi import alicloud:vpc/trafficMirrorSession:TrafficMirrorSession example <id>
         ```
 
         :param str resource_name: The name of the resource.

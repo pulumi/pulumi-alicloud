@@ -81,7 +81,7 @@ namespace Pulumi.AliCloud.Nlb
     /// NLB Server Group can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:nlb/serverGroup:ServerGroup example &lt;id&gt;
+    /// $ pulumi import alicloud:nlb/serverGroup:ServerGroup example &lt;id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:nlb/serverGroup:ServerGroup")]

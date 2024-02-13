@@ -142,7 +142,7 @@ class Domain(pulumi.CustomResource):
         Ga Domain can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:ga/domain:Domain example <accelerator_id>:<domain>
+        $ pulumi import alicloud:ga/domain:Domain example <accelerator_id>:<domain>
         ```
 
         :param str resource_name: The name of the resource.
@@ -185,7 +185,7 @@ class Domain(pulumi.CustomResource):
         Ga Domain can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:ga/domain:Domain example <accelerator_id>:<domain>
+        $ pulumi import alicloud:ga/domain:Domain example <accelerator_id>:<domain>
         ```
 
         :param str resource_name: The name of the resource.

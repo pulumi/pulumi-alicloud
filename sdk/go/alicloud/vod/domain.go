@@ -63,9 +63,7 @@ import (
 // VOD Domain can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:vod/domain:Domain example <domain_name>
-//
+// $ pulumi import alicloud:vod/domain:Domain example <domain_name>
 // ```
 type Domain struct {
 	pulumi.CustomResourceState

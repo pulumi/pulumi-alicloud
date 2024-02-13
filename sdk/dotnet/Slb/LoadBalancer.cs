@@ -80,7 +80,7 @@ namespace Pulumi.AliCloud.Slb
     /// Load balancer can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:slb/loadBalancer:LoadBalancer example lb-abc123456
+    /// $ pulumi import alicloud:slb/loadBalancer:LoadBalancer example lb-abc123456
     /// ```
     /// </summary>
     [Obsolete(@"This resource has been deprecated in favour of the ApplicationLoadBalancer resource")]

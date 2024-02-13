@@ -64,9 +64,7 @@ import (
 // Eflo Vpd can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:eflo/vpd:Vpd example <id>
-//
+// $ pulumi import alicloud:eflo/vpd:Vpd example <id>
 // ```
 type Vpd struct {
 	pulumi.CustomResourceState

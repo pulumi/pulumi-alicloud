@@ -21,7 +21,7 @@ namespace Pulumi.AliCloud.Cassandra
     /// Cassandra Backup Plan can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:cassandra/backupPlan:BackupPlan example &lt;cluster_id&gt;:&lt;data_center_id&gt;
+    /// $ pulumi import alicloud:cassandra/backupPlan:BackupPlan example &lt;cluster_id&gt;:&lt;data_center_id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:cassandra/backupPlan:BackupPlan")]

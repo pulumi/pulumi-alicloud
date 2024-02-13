@@ -36,7 +36,7 @@ import * as utilities from "../utilities";
  * Ga Bandwidth Package can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:ga/bandwidthPackage:BandwidthPackage example <id>
+ * $ pulumi import alicloud:ga/bandwidthPackage:BandwidthPackage example <id>
  * ```
  */
 export class BandwidthPackage extends pulumi.CustomResource {

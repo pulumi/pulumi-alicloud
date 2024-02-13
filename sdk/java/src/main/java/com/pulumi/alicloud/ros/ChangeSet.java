@@ -66,7 +66,7 @@ import javax.annotation.Nullable;
  * ROS Change Set can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:ros/changeSet:ChangeSet example &lt;change_set_id&gt;
+ * $ pulumi import alicloud:ros/changeSet:ChangeSet example &lt;change_set_id&gt;
  * ```
  * 
  */

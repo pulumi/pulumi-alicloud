@@ -56,7 +56,7 @@ namespace Pulumi.AliCloud.Message
     /// Message Notification Service Subscription can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:message/serviceSubscription:ServiceSubscription example &lt;topic_name&gt;:&lt;subscription_name&gt;
+    /// $ pulumi import alicloud:message/serviceSubscription:ServiceSubscription example &lt;topic_name&gt;:&lt;subscription_name&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:message/serviceSubscription:ServiceSubscription")]

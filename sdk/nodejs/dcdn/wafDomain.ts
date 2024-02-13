@@ -48,7 +48,7 @@ import * as utilities from "../utilities";
  * DCDN Waf Domain can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:dcdn/wafDomain:WafDomain example <domain_name>
+ * $ pulumi import alicloud:dcdn/wafDomain:WafDomain example <domain_name>
  * ```
  */
 export class WafDomain extends pulumi.CustomResource {

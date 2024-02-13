@@ -228,7 +228,7 @@ class EcsDedicatedHostCluster(pulumi.CustomResource):
         ECS Dedicated Host Cluster can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:ecs/ecsDedicatedHostCluster:EcsDedicatedHostCluster example <id>
+        $ pulumi import alicloud:ecs/ecsDedicatedHostCluster:EcsDedicatedHostCluster example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -276,7 +276,7 @@ class EcsDedicatedHostCluster(pulumi.CustomResource):
         ECS Dedicated Host Cluster can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:ecs/ecsDedicatedHostCluster:EcsDedicatedHostCluster example <id>
+        $ pulumi import alicloud:ecs/ecsDedicatedHostCluster:EcsDedicatedHostCluster example <id>
         ```
 
         :param str resource_name: The name of the resource.

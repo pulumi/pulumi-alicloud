@@ -163,7 +163,7 @@ class DomainGroup(pulumi.CustomResource):
         Alidns domain group can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:dns/domainGroup:DomainGroup example 0932eb3ddee7499085c4d13d45*****
+        $ pulumi import alicloud:dns/domainGroup:DomainGroup example 0932eb3ddee7499085c4d13d45*****
         ```
 
         :param str resource_name: The name of the resource.
@@ -197,7 +197,7 @@ class DomainGroup(pulumi.CustomResource):
         Alidns domain group can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:dns/domainGroup:DomainGroup example 0932eb3ddee7499085c4d13d45*****
+        $ pulumi import alicloud:dns/domainGroup:DomainGroup example 0932eb3ddee7499085c4d13d45*****
         ```
 
         :param str resource_name: The name of the resource.

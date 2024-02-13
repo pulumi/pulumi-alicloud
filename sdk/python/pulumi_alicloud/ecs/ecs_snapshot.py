@@ -495,7 +495,7 @@ class EcsSnapshot(pulumi.CustomResource):
         ECS Snapshot can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:ecs/ecsSnapshot:EcsSnapshot example <id>
+        $ pulumi import alicloud:ecs/ecsSnapshot:EcsSnapshot example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -584,7 +584,7 @@ class EcsSnapshot(pulumi.CustomResource):
         ECS Snapshot can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:ecs/ecsSnapshot:EcsSnapshot example <id>
+        $ pulumi import alicloud:ecs/ecsSnapshot:EcsSnapshot example <id>
         ```
 
         :param str resource_name: The name of the resource.

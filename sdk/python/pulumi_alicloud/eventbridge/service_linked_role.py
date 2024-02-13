@@ -94,7 +94,7 @@ class ServiceLinkedRole(pulumi.CustomResource):
         Event Bridge service-linked roles(SLR) can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:eventbridge/serviceLinkedRole:ServiceLinkedRole example <product_name>
+        $ pulumi import alicloud:eventbridge/serviceLinkedRole:ServiceLinkedRole example <product_name>
         ```
 
         :param str resource_name: The name of the resource.
@@ -130,7 +130,7 @@ class ServiceLinkedRole(pulumi.CustomResource):
         Event Bridge service-linked roles(SLR) can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:eventbridge/serviceLinkedRole:ServiceLinkedRole example <product_name>
+        $ pulumi import alicloud:eventbridge/serviceLinkedRole:ServiceLinkedRole example <product_name>
         ```
 
         :param str resource_name: The name of the resource.

@@ -92,7 +92,7 @@ namespace Pulumi.AliCloud.Sae
     /// Serverless App Engine (SAE) Application can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:sae/application:Application example &lt;id&gt;
+    /// $ pulumi import alicloud:sae/application:Application example &lt;id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:sae/application:Application")]

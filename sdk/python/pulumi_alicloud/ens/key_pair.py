@@ -126,7 +126,7 @@ class KeyPair(pulumi.CustomResource):
         ENS Key Pair can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:ens/keyPair:KeyPair example <key_pair_name>:<version>
+        $ pulumi import alicloud:ens/keyPair:KeyPair example <key_pair_name>:<version>
         ```
 
         :param str resource_name: The name of the resource.
@@ -169,7 +169,7 @@ class KeyPair(pulumi.CustomResource):
         ENS Key Pair can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:ens/keyPair:KeyPair example <key_pair_name>:<version>
+        $ pulumi import alicloud:ens/keyPair:KeyPair example <key_pair_name>:<version>
         ```
 
         :param str resource_name: The name of the resource.

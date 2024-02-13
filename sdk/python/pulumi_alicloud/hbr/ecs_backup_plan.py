@@ -677,7 +677,7 @@ class EcsBackupPlan(pulumi.CustomResource):
         HBR Ecs Backup Plan can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:hbr/ecsBackupPlan:EcsBackupPlan example <id>
+        $ pulumi import alicloud:hbr/ecsBackupPlan:EcsBackupPlan example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -783,7 +783,7 @@ class EcsBackupPlan(pulumi.CustomResource):
         HBR Ecs Backup Plan can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:hbr/ecsBackupPlan:EcsBackupPlan example <id>
+        $ pulumi import alicloud:hbr/ecsBackupPlan:EcsBackupPlan example <id>
         ```
 
         :param str resource_name: The name of the resource.

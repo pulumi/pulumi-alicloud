@@ -48,7 +48,7 @@ import * as utilities from "../utilities";
  * ECD Ad Connector Office Site can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:eds/adConnectorOfficeSite:AdConnectorOfficeSite example <id>
+ * $ pulumi import alicloud:eds/adConnectorOfficeSite:AdConnectorOfficeSite example <id>
  * ```
  */
 export class AdConnectorOfficeSite extends pulumi.CustomResource {

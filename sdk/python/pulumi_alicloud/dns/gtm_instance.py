@@ -737,7 +737,7 @@ class GtmInstance(pulumi.CustomResource):
         Alidns Gtm Instance can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:dns/gtmInstance:GtmInstance example <id>
+        $ pulumi import alicloud:dns/gtmInstance:GtmInstance example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -817,7 +817,7 @@ class GtmInstance(pulumi.CustomResource):
         Alidns Gtm Instance can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:dns/gtmInstance:GtmInstance example <id>
+        $ pulumi import alicloud:dns/gtmInstance:GtmInstance example <id>
         ```
 
         :param str resource_name: The name of the resource.

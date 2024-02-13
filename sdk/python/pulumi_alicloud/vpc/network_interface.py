@@ -708,7 +708,7 @@ class NetworkInterface(pulumi.CustomResource):
         ENI can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:vpc/networkInterface:NetworkInterface eni eni-abc1234567890000
+        $ pulumi import alicloud:vpc/networkInterface:NetworkInterface eni eni-abc1234567890000
         ```
 
         :param str resource_name: The name of the resource.
@@ -770,7 +770,7 @@ class NetworkInterface(pulumi.CustomResource):
         ENI can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:vpc/networkInterface:NetworkInterface eni eni-abc1234567890000
+        $ pulumi import alicloud:vpc/networkInterface:NetworkInterface eni eni-abc1234567890000
         ```
 
         :param str resource_name: The name of the resource.

@@ -18,7 +18,7 @@ import * as utilities from "../utilities";
  * Cloud SSO User Attachment can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:cloudsso/userAttachment:UserAttachment example <directory_id>:<group_id>:<user_id>
+ * $ pulumi import alicloud:cloudsso/userAttachment:UserAttachment example <directory_id>:<group_id>:<user_id>
  * ```
  */
 export class UserAttachment extends pulumi.CustomResource {

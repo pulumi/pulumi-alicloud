@@ -116,9 +116,7 @@ import (
 // RDS Upgrade DB Instance can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:rds/rdsUpgradeDbInstance:RdsUpgradeDbInstance example <id>
-//
+// $ pulumi import alicloud:rds/rdsUpgradeDbInstance:RdsUpgradeDbInstance example <id>
 // ```
 type RdsUpgradeDbInstance struct {
 	pulumi.CustomResourceState

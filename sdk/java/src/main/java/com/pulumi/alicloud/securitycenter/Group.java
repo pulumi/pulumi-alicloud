@@ -60,7 +60,7 @@ import javax.annotation.Nullable;
  * Security Center Group can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:securitycenter/group:Group example &lt;group_id&gt;
+ * $ pulumi import alicloud:securitycenter/group:Group example &lt;group_id&gt;
  * ```
  * 
  */

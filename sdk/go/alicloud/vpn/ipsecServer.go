@@ -93,9 +93,7 @@ import (
 // VPN Ipsec Server can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:vpn/ipsecServer:IpsecServer example <id>
-//
+// $ pulumi import alicloud:vpn/ipsecServer:IpsecServer example <id>
 // ```
 type IpsecServer struct {
 	pulumi.CustomResourceState

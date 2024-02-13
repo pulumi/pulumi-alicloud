@@ -67,9 +67,7 @@ import (
 // Cloud Architect Design Tools Application can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:bp/studioApplication:StudioApplication example <id>
-//
+// $ pulumi import alicloud:bp/studioApplication:StudioApplication example <id>
 // ```
 type StudioApplication struct {
 	pulumi.CustomResourceState

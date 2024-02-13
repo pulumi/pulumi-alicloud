@@ -56,7 +56,7 @@ import * as utilities from "../utilities";
  * CR Vpc Endpoint Linked Vpc can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:cr/vpcEndpointLinkedVpc:VpcEndpointLinkedVpc example <instance_id>:<vpc_id>:<vswitch_id>:<module_name>
+ * $ pulumi import alicloud:cr/vpcEndpointLinkedVpc:VpcEndpointLinkedVpc example <instance_id>:<vpc_id>:<vswitch_id>:<module_name>
  * ```
  */
 export class VpcEndpointLinkedVpc extends pulumi.CustomResource {

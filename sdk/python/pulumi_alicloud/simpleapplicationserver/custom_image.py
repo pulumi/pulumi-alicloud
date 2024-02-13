@@ -248,7 +248,7 @@ class CustomImage(pulumi.CustomResource):
         Simple Application Server Custom Image can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:simpleapplicationserver/customImage:CustomImage example <id>
+        $ pulumi import alicloud:simpleapplicationserver/customImage:CustomImage example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -312,7 +312,7 @@ class CustomImage(pulumi.CustomResource):
         Simple Application Server Custom Image can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:simpleapplicationserver/customImage:CustomImage example <id>
+        $ pulumi import alicloud:simpleapplicationserver/customImage:CustomImage example <id>
         ```
 
         :param str resource_name: The name of the resource.

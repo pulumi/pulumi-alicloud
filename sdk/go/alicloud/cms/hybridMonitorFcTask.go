@@ -91,9 +91,7 @@ import (
 // Cloud Monitor Service Hybrid Monitor Fc Task can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:cms/hybridMonitorFcTask:HybridMonitorFcTask example <hybrid_monitor_fc_task_id>:<namespace>
-//
+// $ pulumi import alicloud:cms/hybridMonitorFcTask:HybridMonitorFcTask example <hybrid_monitor_fc_task_id>:<namespace>
 // ```
 type HybridMonitorFcTask struct {
 	pulumi.CustomResourceState

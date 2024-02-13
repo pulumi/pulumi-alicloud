@@ -232,7 +232,7 @@ class MachineGroup(pulumi.CustomResource):
         Log machine group can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:log/machineGroup:MachineGroup example tf-log:tf-machine-group
+        $ pulumi import alicloud:log/machineGroup:MachineGroup example tf-log:tf-machine-group
         ```
 
         :param str resource_name: The name of the resource.
@@ -285,7 +285,7 @@ class MachineGroup(pulumi.CustomResource):
         Log machine group can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:log/machineGroup:MachineGroup example tf-log:tf-machine-group
+        $ pulumi import alicloud:log/machineGroup:MachineGroup example tf-log:tf-machine-group
         ```
 
         :param str resource_name: The name of the resource.

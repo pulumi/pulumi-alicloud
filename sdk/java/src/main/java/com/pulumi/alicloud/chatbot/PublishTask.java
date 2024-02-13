@@ -64,7 +64,7 @@ import javax.annotation.Nullable;
  * Chatbot Publish Task can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:chatbot/publishTask:PublishTask example &lt;id&gt;
+ * $ pulumi import alicloud:chatbot/publishTask:PublishTask example &lt;id&gt;
  * ```
  * 
  */

@@ -108,7 +108,7 @@ namespace Pulumi.AliCloud.Cen
     /// CEN instance can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:cen/transitRouterPeerAttachment:TransitRouterPeerAttachment example tr-********:tr-attach-*******
+    /// $ pulumi import alicloud:cen/transitRouterPeerAttachment:TransitRouterPeerAttachment example tr-********:tr-attach-*******
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:cen/transitRouterPeerAttachment:TransitRouterPeerAttachment")]

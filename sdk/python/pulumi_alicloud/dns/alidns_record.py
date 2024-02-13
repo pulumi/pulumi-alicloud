@@ -427,7 +427,7 @@ class AlidnsRecord(pulumi.CustomResource):
         Alidns Domain Record can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:dns/alidnsRecord:AlidnsRecord example abc123456
+        $ pulumi import alicloud:dns/alidnsRecord:AlidnsRecord example abc123456
         ```
 
         :param str resource_name: The name of the resource.
@@ -485,7 +485,7 @@ class AlidnsRecord(pulumi.CustomResource):
         Alidns Domain Record can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:dns/alidnsRecord:AlidnsRecord example abc123456
+        $ pulumi import alicloud:dns/alidnsRecord:AlidnsRecord example abc123456
         ```
 
         :param str resource_name: The name of the resource.

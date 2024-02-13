@@ -158,7 +158,7 @@ import javax.annotation.Nullable;
  * Cloud Enterprise Network (CEN) Transit Router Vpn Attachment can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:cen/transitRouterVpnAttachment:TransitRouterVpnAttachment example &lt;id&gt;
+ * $ pulumi import alicloud:cen/transitRouterVpnAttachment:TransitRouterVpnAttachment example &lt;id&gt;
  * ```
  * 
  */

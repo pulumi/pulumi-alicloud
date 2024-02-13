@@ -89,7 +89,7 @@ namespace Pulumi.AliCloud.AliKafka
     /// ALIKAFKA TOPIC can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:alikafka/topic:Topic topic alikafka_post-cn-123455abc:topicName
+    /// $ pulumi import alicloud:alikafka/topic:Topic topic alikafka_post-cn-123455abc:topicName
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:alikafka/topic:Topic")]

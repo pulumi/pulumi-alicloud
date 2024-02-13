@@ -169,7 +169,7 @@ import javax.annotation.Nullable;
  * ECS Launch Template can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:ecs/ecsLaunchTemplate:EcsLaunchTemplate example &lt;id&gt;
+ * $ pulumi import alicloud:ecs/ecsLaunchTemplate:EcsLaunchTemplate example &lt;id&gt;
  * ```
  * 
  */

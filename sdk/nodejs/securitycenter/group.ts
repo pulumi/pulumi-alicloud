@@ -29,7 +29,7 @@ import * as utilities from "../utilities";
  * Security Center Group can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:securitycenter/group:Group example <group_id>
+ * $ pulumi import alicloud:securitycenter/group:Group example <group_id>
  * ```
  */
 export class Group extends pulumi.CustomResource {

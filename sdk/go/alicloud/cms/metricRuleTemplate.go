@@ -73,9 +73,7 @@ import (
 // Cloud Monitor Service Metric Rule Template can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:cms/metricRuleTemplate:MetricRuleTemplate example <id>
-//
+// $ pulumi import alicloud:cms/metricRuleTemplate:MetricRuleTemplate example <id>
 // ```
 type MetricRuleTemplate struct {
 	pulumi.CustomResourceState

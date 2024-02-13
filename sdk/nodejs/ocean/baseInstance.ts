@@ -45,7 +45,7 @@ import * as utilities from "../utilities";
  * Ocean Base Instance can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:ocean/baseInstance:BaseInstance example <id>
+ * $ pulumi import alicloud:ocean/baseInstance:BaseInstance example <id>
  * ```
  */
 export class BaseInstance extends pulumi.CustomResource {

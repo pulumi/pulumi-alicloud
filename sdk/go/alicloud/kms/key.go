@@ -50,9 +50,7 @@ import (
 // Alikms key can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:kms/key:Key example <id>
-//
+// $ pulumi import alicloud:kms/key:Key example <id>
 // ```
 type Key struct {
 	pulumi.CustomResourceState

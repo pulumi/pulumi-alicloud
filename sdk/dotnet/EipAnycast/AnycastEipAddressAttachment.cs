@@ -276,7 +276,7 @@ namespace Pulumi.AliCloud.EipAnycast
     /// Eipanycast Anycast Eip Address Attachment can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:eipanycast/anycastEipAddressAttachment:AnycastEipAddressAttachment example &lt;anycast_id&gt;:&lt;bind_instance_id&gt;:&lt;bind_instance_region_id&gt;:&lt;bind_instance_type&gt;
+    /// $ pulumi import alicloud:eipanycast/anycastEipAddressAttachment:AnycastEipAddressAttachment example &lt;anycast_id&gt;:&lt;bind_instance_id&gt;:&lt;bind_instance_region_id&gt;:&lt;bind_instance_type&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:eipanycast/anycastEipAddressAttachment:AnycastEipAddressAttachment")]

@@ -106,7 +106,7 @@ import javax.annotation.Nullable;
  * KVStore connection can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:kvstore/connection:Connection example r-abc12345678
+ * $ pulumi import alicloud:kvstore/connection:Connection example r-abc12345678
  * ```
  * 
  */

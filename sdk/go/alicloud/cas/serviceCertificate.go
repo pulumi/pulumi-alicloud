@@ -108,9 +108,7 @@ import (
 // SSL Certificates Certificate can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:cas/serviceCertificate:ServiceCertificate example <id>
-//
+// $ pulumi import alicloud:cas/serviceCertificate:ServiceCertificate example <id>
 // ```
 type ServiceCertificate struct {
 	pulumi.CustomResourceState

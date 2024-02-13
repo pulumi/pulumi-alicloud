@@ -106,7 +106,7 @@ import * as utilities from "../utilities";
  * Load balancer forwarding rule can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:slb/rule:Rule example rule-abc123456
+ * $ pulumi import alicloud:slb/rule:Rule example rule-abc123456
  * ```
  */
 export class Rule extends pulumi.CustomResource {

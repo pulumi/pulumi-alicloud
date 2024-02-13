@@ -146,9 +146,7 @@ import (
 // SLS Log Store can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:log/store:Store example <project_name>:<logstore_name>
-//
+// $ pulumi import alicloud:log/store:Store example <project_name>:<logstore_name>
 // ```
 type Store struct {
 	pulumi.CustomResourceState

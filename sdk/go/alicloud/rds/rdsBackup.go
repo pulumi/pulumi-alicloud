@@ -62,9 +62,7 @@ import (
 // RDS Backup can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:rds/rdsBackup:RdsBackup example <db_instance_id>:<backup_id>
-//
+// $ pulumi import alicloud:rds/rdsBackup:RdsBackup example <db_instance_id>:<backup_id>
 // ```
 type RdsBackup struct {
 	pulumi.CustomResourceState

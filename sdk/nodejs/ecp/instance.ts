@@ -57,7 +57,7 @@ import * as utilities from "../utilities";
  * Elastic Cloud Phone (ECP) Instance can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:ecp/instance:Instance example <id>
+ * $ pulumi import alicloud:ecp/instance:Instance example <id>
  * ```
  */
 export class Instance extends pulumi.CustomResource {

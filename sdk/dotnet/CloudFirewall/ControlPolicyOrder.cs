@@ -56,7 +56,7 @@ namespace Pulumi.AliCloud.CloudFirewall
     /// Cloud Firewall Control Policy Order can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:cloudfirewall/controlPolicyOrder:ControlPolicyOrder example &lt;acl_uuid&gt;:&lt;direction&gt;
+    /// $ pulumi import alicloud:cloudfirewall/controlPolicyOrder:ControlPolicyOrder example &lt;acl_uuid&gt;:&lt;direction&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:cloudfirewall/controlPolicyOrder:ControlPolicyOrder")]

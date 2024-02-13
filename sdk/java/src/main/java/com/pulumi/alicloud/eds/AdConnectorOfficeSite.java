@@ -83,7 +83,7 @@ import javax.annotation.Nullable;
  * ECD Ad Connector Office Site can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:eds/adConnectorOfficeSite:AdConnectorOfficeSite example &lt;id&gt;
+ * $ pulumi import alicloud:eds/adConnectorOfficeSite:AdConnectorOfficeSite example &lt;id&gt;
  * ```
  * 
  */

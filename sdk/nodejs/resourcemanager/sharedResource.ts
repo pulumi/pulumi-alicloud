@@ -47,7 +47,7 @@ import * as utilities from "../utilities";
  * Resource Manager Shared Resource can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:resourcemanager/sharedResource:SharedResource example <resource_share_id>:<resource_id>:<resource_type>
+ * $ pulumi import alicloud:resourcemanager/sharedResource:SharedResource example <resource_share_id>:<resource_id>:<resource_type>
  * ```
  */
 export class SharedResource extends pulumi.CustomResource {

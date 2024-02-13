@@ -68,7 +68,7 @@ import javax.annotation.Nullable;
  * Threat Detection Backup Policy can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:threatdetection/backupPolicy:BackupPolicy example &lt;id&gt;
+ * $ pulumi import alicloud:threatdetection/backupPolicy:BackupPolicy example &lt;id&gt;
  * ```
  * 
  */

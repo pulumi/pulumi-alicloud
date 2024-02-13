@@ -74,7 +74,7 @@ namespace Pulumi.AliCloud.Ros
     /// ROS Stack Instance can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:ros/stackInstance:StackInstance example &lt;stack_group_name&gt;:&lt;stack_instance_account_id&gt;:&lt;stack_instance_region_id&gt;
+    /// $ pulumi import alicloud:ros/stackInstance:StackInstance example &lt;stack_group_name&gt;:&lt;stack_instance_account_id&gt;:&lt;stack_instance_region_id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:ros/stackInstance:StackInstance")]

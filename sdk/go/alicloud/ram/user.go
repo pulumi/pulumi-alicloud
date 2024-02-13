@@ -55,9 +55,7 @@ import (
 // RAM User can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:ram/user:User example 123456789xxx
-//
+// $ pulumi import alicloud:ram/user:User example 123456789xxx
 // ```
 type User struct {
 	pulumi.CustomResourceState

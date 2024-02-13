@@ -73,7 +73,7 @@ import * as utilities from "../utilities";
  * Bastion Host User can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:bastionhost/user:User example <instance_id>:<user_id>
+ * $ pulumi import alicloud:bastionhost/user:User example <instance_id>:<user_id>
  * ```
  */
 export class User extends pulumi.CustomResource {

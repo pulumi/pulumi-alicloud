@@ -21,7 +21,7 @@ namespace Pulumi.AliCloud.DirectMail
     /// Direct Mail Receivers can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:directmail/receivers:Receivers example &lt;id&gt;
+    /// $ pulumi import alicloud:directmail/receivers:Receivers example &lt;id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:directmail/receivers:Receivers")]

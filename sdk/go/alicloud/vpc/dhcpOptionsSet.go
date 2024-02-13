@@ -63,9 +63,7 @@ import (
 // VPC Dhcp Options Set can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:vpc/dhcpOptionsSet:DhcpOptionsSet example <id>
-//
+// $ pulumi import alicloud:vpc/dhcpOptionsSet:DhcpOptionsSet example <id>
 // ```
 type DhcpOptionsSet struct {
 	pulumi.CustomResourceState

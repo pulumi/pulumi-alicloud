@@ -191,7 +191,7 @@ class UserGroup(pulumi.CustomResource):
         Bastion Host User Group can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:bastionhost/userGroup:UserGroup example <instance_id>:<user_group_id>
+        $ pulumi import alicloud:bastionhost/userGroup:UserGroup example <instance_id>:<user_group_id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -251,7 +251,7 @@ class UserGroup(pulumi.CustomResource):
         Bastion Host User Group can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:bastionhost/userGroup:UserGroup example <instance_id>:<user_group_id>
+        $ pulumi import alicloud:bastionhost/userGroup:UserGroup example <instance_id>:<user_group_id>
         ```
 
         :param str resource_name: The name of the resource.

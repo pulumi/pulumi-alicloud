@@ -64,9 +64,7 @@ import (
 // VPC Route Table can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:vpc/routeTable:RouteTable example <id>
-//
+// $ pulumi import alicloud:vpc/routeTable:RouteTable example <id>
 // ```
 type RouteTable struct {
 	pulumi.CustomResourceState

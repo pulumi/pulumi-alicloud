@@ -38,7 +38,7 @@ import * as utilities from "../utilities";
  * CDN Fc Trigger can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:cdn/fcTrigger:FcTrigger example <trigger_arn>
+ * $ pulumi import alicloud:cdn/fcTrigger:FcTrigger example <trigger_arn>
  * ```
  */
 export class FcTrigger extends pulumi.CustomResource {

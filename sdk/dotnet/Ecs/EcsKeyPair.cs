@@ -54,7 +54,7 @@ namespace Pulumi.AliCloud.Ecs
     /// ECS Key Pair can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:ecs/ecsKeyPair:EcsKeyPair example &lt;key_name&gt;
+    /// $ pulumi import alicloud:ecs/ecsKeyPair:EcsKeyPair example &lt;key_name&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:ecs/ecsKeyPair:EcsKeyPair")]

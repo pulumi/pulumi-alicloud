@@ -282,7 +282,7 @@ class AlbServerGroupAttachment(pulumi.CustomResource):
         ESS alb server groups can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:ess/albServerGroupAttachment:AlbServerGroupAttachment example asg-xxx:sgp-xxx:5000
+        $ pulumi import alicloud:ess/albServerGroupAttachment:AlbServerGroupAttachment example asg-xxx:sgp-xxx:5000
         ```
 
         :param str resource_name: The name of the resource.
@@ -384,7 +384,7 @@ class AlbServerGroupAttachment(pulumi.CustomResource):
         ESS alb server groups can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:ess/albServerGroupAttachment:AlbServerGroupAttachment example asg-xxx:sgp-xxx:5000
+        $ pulumi import alicloud:ess/albServerGroupAttachment:AlbServerGroupAttachment example asg-xxx:sgp-xxx:5000
         ```
 
         :param str resource_name: The name of the resource.

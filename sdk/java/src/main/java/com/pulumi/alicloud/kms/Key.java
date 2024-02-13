@@ -62,7 +62,7 @@ import javax.annotation.Nullable;
  * Alikms key can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:kms/key:Key example &lt;id&gt;
+ * $ pulumi import alicloud:kms/key:Key example &lt;id&gt;
  * ```
  * 
  */

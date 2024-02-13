@@ -239,7 +239,7 @@ class Fileset(pulumi.CustomResource):
         Network Attached Storage (NAS) Fileset can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:nas/fileset:Fileset example <file_system_id>:<fileset_id>
+        $ pulumi import alicloud:nas/fileset:Fileset example <file_system_id>:<fileset_id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -299,7 +299,7 @@ class Fileset(pulumi.CustomResource):
         Network Attached Storage (NAS) Fileset can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:nas/fileset:Fileset example <file_system_id>:<fileset_id>
+        $ pulumi import alicloud:nas/fileset:Fileset example <file_system_id>:<fileset_id>
         ```
 
         :param str resource_name: The name of the resource.

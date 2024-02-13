@@ -664,7 +664,7 @@ class GroupMetricRule(pulumi.CustomResource):
         Cloud Monitor Service Group Metric Rule can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:cms/groupMetricRule:GroupMetricRule example <rule_id>
+        $ pulumi import alicloud:cms/groupMetricRule:GroupMetricRule example <rule_id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -751,7 +751,7 @@ class GroupMetricRule(pulumi.CustomResource):
         Cloud Monitor Service Group Metric Rule can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:cms/groupMetricRule:GroupMetricRule example <rule_id>
+        $ pulumi import alicloud:cms/groupMetricRule:GroupMetricRule example <rule_id>
         ```
 
         :param str resource_name: The name of the resource.

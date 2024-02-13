@@ -82,9 +82,7 @@ import (
 // Ddos Bgp Ip can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:ddos/bgpIp:BgpIp example <instance_id>:<ip>
-//
+// $ pulumi import alicloud:ddos/bgpIp:BgpIp example <instance_id>:<ip>
 // ```
 type BgpIp struct {
 	pulumi.CustomResourceState

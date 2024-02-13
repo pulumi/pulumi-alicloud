@@ -294,7 +294,7 @@ class Parameter(pulumi.CustomResource):
         OOS Parameter can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:oos/parameter:Parameter example <parameter_name>
+        $ pulumi import alicloud:oos/parameter:Parameter example <parameter_name>
         ```
 
         :param str resource_name: The name of the resource.
@@ -346,7 +346,7 @@ class Parameter(pulumi.CustomResource):
         OOS Parameter can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:oos/parameter:Parameter example <parameter_name>
+        $ pulumi import alicloud:oos/parameter:Parameter example <parameter_name>
         ```
 
         :param str resource_name: The name of the resource.

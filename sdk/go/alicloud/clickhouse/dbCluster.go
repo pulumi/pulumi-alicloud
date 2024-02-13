@@ -89,9 +89,7 @@ import (
 // Click House DBCluster can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:clickhouse/dbCluster:DbCluster example <id>
-//
+// $ pulumi import alicloud:clickhouse/dbCluster:DbCluster example <id>
 // ```
 type DbCluster struct {
 	pulumi.CustomResourceState

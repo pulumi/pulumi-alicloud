@@ -226,7 +226,7 @@ class HostAccountUserAttachment(pulumi.CustomResource):
         Bastion Host Host Account can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:bastionhost/hostAccountUserAttachment:HostAccountUserAttachment example <instance_id>:<user_id>:<host_id>
+        $ pulumi import alicloud:bastionhost/hostAccountUserAttachment:HostAccountUserAttachment example <instance_id>:<user_id>:<host_id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -307,7 +307,7 @@ class HostAccountUserAttachment(pulumi.CustomResource):
         Bastion Host Host Account can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:bastionhost/hostAccountUserAttachment:HostAccountUserAttachment example <instance_id>:<user_id>:<host_id>
+        $ pulumi import alicloud:bastionhost/hostAccountUserAttachment:HostAccountUserAttachment example <instance_id>:<user_id>:<host_id>
         ```
 
         :param str resource_name: The name of the resource.

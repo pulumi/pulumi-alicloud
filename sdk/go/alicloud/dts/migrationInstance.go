@@ -64,9 +64,7 @@ import (
 // DTS Migration Instance can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:dts/migrationInstance:MigrationInstance example <id>
-//
+// $ pulumi import alicloud:dts/migrationInstance:MigrationInstance example <id>
 // ```
 type MigrationInstance struct {
 	pulumi.CustomResourceState

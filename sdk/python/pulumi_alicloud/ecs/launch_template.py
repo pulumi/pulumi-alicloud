@@ -1606,7 +1606,7 @@ class LaunchTemplate(pulumi.CustomResource):
         Launch Template can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:ecs/launchTemplate:LaunchTemplate lt lt-abc1234567890000
+        $ pulumi import alicloud:ecs/launchTemplate:LaunchTemplate lt lt-abc1234567890000
         ```
 
         :param str resource_name: The name of the resource.
@@ -1735,7 +1735,7 @@ class LaunchTemplate(pulumi.CustomResource):
         Launch Template can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:ecs/launchTemplate:LaunchTemplate lt lt-abc1234567890000
+        $ pulumi import alicloud:ecs/launchTemplate:LaunchTemplate lt lt-abc1234567890000
         ```
 
         :param str resource_name: The name of the resource.

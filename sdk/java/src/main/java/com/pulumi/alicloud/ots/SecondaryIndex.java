@@ -30,7 +30,7 @@ import javax.annotation.Nullable;
  * OTS secondary index can be imported using id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:ots/secondaryIndex:SecondaryIndex index1 &lt;instance_name&gt;:&lt;table_name&gt;:&lt;index_name&gt;:&lt;index_type&gt;
+ * $ pulumi import alicloud:ots/secondaryIndex:SecondaryIndex index1 &lt;instance_name&gt;:&lt;table_name&gt;:&lt;index_name&gt;:&lt;index_type&gt;
  * ```
  * 
  */

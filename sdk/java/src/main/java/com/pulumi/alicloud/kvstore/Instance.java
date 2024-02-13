@@ -26,7 +26,7 @@ import javax.annotation.Nullable;
  * KVStore instance can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:kvstore/instance:Instance example r-abc12345678
+ * $ pulumi import alicloud:kvstore/instance:Instance example r-abc12345678
  * ```
  * 
  */

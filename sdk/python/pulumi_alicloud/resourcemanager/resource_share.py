@@ -124,7 +124,7 @@ class ResourceShare(pulumi.CustomResource):
         Resource Manager Resource Share can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:resourcemanager/resourceShare:ResourceShare example <id>
+        $ pulumi import alicloud:resourcemanager/resourceShare:ResourceShare example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -164,7 +164,7 @@ class ResourceShare(pulumi.CustomResource):
         Resource Manager Resource Share can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:resourcemanager/resourceShare:ResourceShare example <id>
+        $ pulumi import alicloud:resourcemanager/resourceShare:ResourceShare example <id>
         ```
 
         :param str resource_name: The name of the resource.

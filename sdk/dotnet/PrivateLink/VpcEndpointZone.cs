@@ -102,7 +102,7 @@ namespace Pulumi.AliCloud.PrivateLink
     /// Private Link Vpc Endpoint Zone can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:privatelink/vpcEndpointZone:VpcEndpointZone example &lt;endpoint_id&gt;:&lt;zone_id&gt;
+    /// $ pulumi import alicloud:privatelink/vpcEndpointZone:VpcEndpointZone example &lt;endpoint_id&gt;:&lt;zone_id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:privatelink/vpcEndpointZone:VpcEndpointZone")]

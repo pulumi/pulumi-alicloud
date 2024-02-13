@@ -209,7 +209,7 @@ class Vpd(pulumi.CustomResource):
         Eflo Vpd can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:eflo/vpd:Vpd example <id>
+        $ pulumi import alicloud:eflo/vpd:Vpd example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -255,7 +255,7 @@ class Vpd(pulumi.CustomResource):
         Eflo Vpd can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:eflo/vpd:Vpd example <id>
+        $ pulumi import alicloud:eflo/vpd:Vpd example <id>
         ```
 
         :param str resource_name: The name of the resource.

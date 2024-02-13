@@ -62,7 +62,7 @@ import javax.annotation.Nullable;
  * Resource Manager Saved Query can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:resourcemanager/savedQuery:SavedQuery example &lt;id&gt;
+ * $ pulumi import alicloud:resourcemanager/savedQuery:SavedQuery example &lt;id&gt;
  * ```
  * 
  */

@@ -59,9 +59,7 @@ import (
 // PolarDB Parameter Group can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:polardb/parameterGroup:ParameterGroup example <id>
-//
+// $ pulumi import alicloud:polardb/parameterGroup:ParameterGroup example <id>
 // ```
 type ParameterGroup struct {
 	pulumi.CustomResourceState

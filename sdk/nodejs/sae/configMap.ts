@@ -49,7 +49,7 @@ import * as utilities from "../utilities";
  * Serverless App Engine (SAE) Config Map can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:sae/configMap:ConfigMap example <id>
+ * $ pulumi import alicloud:sae/configMap:ConfigMap example <id>
  * ```
  */
 export class ConfigMap extends pulumi.CustomResource {

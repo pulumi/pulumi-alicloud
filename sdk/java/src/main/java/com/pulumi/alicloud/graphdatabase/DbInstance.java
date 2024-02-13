@@ -70,7 +70,7 @@ import javax.annotation.Nullable;
  * Graph Database Db Instance can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:graphdatabase/dbInstance:DbInstance example &lt;id&gt;
+ * $ pulumi import alicloud:graphdatabase/dbInstance:DbInstance example &lt;id&gt;
  * ```
  * 
  */

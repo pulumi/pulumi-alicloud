@@ -15,7 +15,7 @@ namespace Pulumi.AliCloud.PolarDB
     /// PolarDB cluster can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:polardb/cluster:Cluster example pc-abc12345678
+    /// $ pulumi import alicloud:polardb/cluster:Cluster example pc-abc12345678
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:polardb/cluster:Cluster")]

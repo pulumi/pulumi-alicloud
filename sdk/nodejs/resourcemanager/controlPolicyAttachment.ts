@@ -54,7 +54,7 @@ import * as utilities from "../utilities";
  * Resource Manager Control Policy Attachment can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:resourcemanager/controlPolicyAttachment:ControlPolicyAttachment example <policy_id>:<target_id>
+ * $ pulumi import alicloud:resourcemanager/controlPolicyAttachment:ControlPolicyAttachment example <policy_id>:<target_id>
  * ```
  */
 export class ControlPolicyAttachment extends pulumi.CustomResource {

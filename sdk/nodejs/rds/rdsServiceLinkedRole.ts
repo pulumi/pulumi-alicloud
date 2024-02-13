@@ -27,7 +27,7 @@ import * as utilities from "../utilities";
  * RDS Service Linked Role can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:rds/rdsServiceLinkedRole:RdsServiceLinkedRole default <service_name>
+ * $ pulumi import alicloud:rds/rdsServiceLinkedRole:RdsServiceLinkedRole default <service_name>
  * ```
  */
 export class RdsServiceLinkedRole extends pulumi.CustomResource {

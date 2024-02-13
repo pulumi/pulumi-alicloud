@@ -26,7 +26,7 @@ import javax.annotation.Nullable;
  * Realtime Compute Vvp Instance can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:realtimecompute/vvpInstance:VvpInstance example &lt;id&gt;
+ * $ pulumi import alicloud:realtimecompute/vvpInstance:VvpInstance example &lt;id&gt;
  * ```
  * 
  */

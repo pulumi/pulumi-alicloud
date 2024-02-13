@@ -66,7 +66,7 @@ import javax.annotation.Nullable;
  * Eflo Vpd can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:eflo/vpd:Vpd example &lt;id&gt;
+ * $ pulumi import alicloud:eflo/vpd:Vpd example &lt;id&gt;
  * ```
  * 
  */

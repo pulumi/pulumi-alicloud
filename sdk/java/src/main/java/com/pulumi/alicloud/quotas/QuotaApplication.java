@@ -24,7 +24,7 @@ import javax.annotation.Nullable;
  * Quotas Quota Application can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:quotas/quotaApplication:QuotaApplication example &lt;id&gt;
+ * $ pulumi import alicloud:quotas/quotaApplication:QuotaApplication example &lt;id&gt;
  * ```
  * 
  */

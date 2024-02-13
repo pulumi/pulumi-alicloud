@@ -43,7 +43,7 @@ import * as utilities from "../utilities";
  * Container Registry Enterprise Edition namespace can be imported using the `{instance_id}:{namespace}`, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:cs/registryEnterpriseNamespace:RegistryEnterpriseNamespace default cri-xxx:my-namespace
+ * $ pulumi import alicloud:cs/registryEnterpriseNamespace:RegistryEnterpriseNamespace default cri-xxx:my-namespace
  * ```
  */
 export class RegistryEnterpriseNamespace extends pulumi.CustomResource {

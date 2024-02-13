@@ -280,7 +280,7 @@ class StorageCapacityUnit(pulumi.CustomResource):
         ECS Storage Capacity Unit can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:ecs/storageCapacityUnit:StorageCapacityUnit example <id>
+        $ pulumi import alicloud:ecs/storageCapacityUnit:StorageCapacityUnit example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -326,7 +326,7 @@ class StorageCapacityUnit(pulumi.CustomResource):
         ECS Storage Capacity Unit can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:ecs/storageCapacityUnit:StorageCapacityUnit example <id>
+        $ pulumi import alicloud:ecs/storageCapacityUnit:StorageCapacityUnit example <id>
         ```
 
         :param str resource_name: The name of the resource.

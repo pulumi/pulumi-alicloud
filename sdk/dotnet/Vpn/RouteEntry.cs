@@ -86,7 +86,7 @@ namespace Pulumi.AliCloud.Vpn
     /// VPN route entry can be imported using the id(VpnGatewayId +":"+ NextHop +":"+ RouteDest), e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:vpn/routeEntry:RouteEntry example vpn-abc123456:vco-abc123456:10.0.0.10/24
+    /// $ pulumi import alicloud:vpn/routeEntry:RouteEntry example vpn-abc123456:vco-abc123456:10.0.0.10/24
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:vpn/routeEntry:RouteEntry")]

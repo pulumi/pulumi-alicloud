@@ -410,7 +410,7 @@ class DbInstanceEndpoint(pulumi.CustomResource):
         RDS database endpoint feature can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:rds/dbInstanceEndpoint:DbInstanceEndpoint example <db_instance_id>:<db_instance_endpoint_id>
+        $ pulumi import alicloud:rds/dbInstanceEndpoint:DbInstanceEndpoint example <db_instance_id>:<db_instance_endpoint_id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -499,7 +499,7 @@ class DbInstanceEndpoint(pulumi.CustomResource):
         RDS database endpoint feature can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:rds/dbInstanceEndpoint:DbInstanceEndpoint example <db_instance_id>:<db_instance_endpoint_id>
+        $ pulumi import alicloud:rds/dbInstanceEndpoint:DbInstanceEndpoint example <db_instance_id>:<db_instance_endpoint_id>
         ```
 
         :param str resource_name: The name of the resource.

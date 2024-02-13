@@ -33,7 +33,7 @@ import * as utilities from "../utilities";
  * Api Gateway Model can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:apigateway/model:Model example <group_id>:<model_name>
+ * $ pulumi import alicloud:apigateway/model:Model example <group_id>:<model_name>
  * ```
  */
 export class Model extends pulumi.CustomResource {

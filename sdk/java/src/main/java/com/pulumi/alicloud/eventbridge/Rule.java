@@ -85,7 +85,7 @@ import javax.annotation.Nullable;
  * Event Bridge Rule can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:eventbridge/rule:Rule example &lt;event_bus_name&gt;:&lt;rule_name&gt;
+ * $ pulumi import alicloud:eventbridge/rule:Rule example &lt;event_bus_name&gt;:&lt;rule_name&gt;
  * ```
  * 
  */

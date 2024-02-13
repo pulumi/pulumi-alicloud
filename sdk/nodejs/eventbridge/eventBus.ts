@@ -29,7 +29,7 @@ import * as utilities from "../utilities";
  * Event Bridge Event Bus can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:eventbridge/eventBus:EventBus example <event_bus_name>
+ * $ pulumi import alicloud:eventbridge/eventBus:EventBus example <event_bus_name>
  * ```
  */
 export class EventBus extends pulumi.CustomResource {

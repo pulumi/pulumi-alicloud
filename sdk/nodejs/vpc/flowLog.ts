@@ -16,7 +16,7 @@ import * as utilities from "../utilities";
  * Vpc Flow Log can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:vpc/flowLog:FlowLog example <id>
+ * $ pulumi import alicloud:vpc/flowLog:FlowLog example <id>
  * ```
  */
 export class FlowLog extends pulumi.CustomResource {

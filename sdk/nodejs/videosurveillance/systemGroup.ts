@@ -33,7 +33,7 @@ import * as utilities from "../utilities";
  * Video Surveillance System Group can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:videosurveillance/systemGroup:SystemGroup example <id>
+ * $ pulumi import alicloud:videosurveillance/systemGroup:SystemGroup example <id>
  * ```
  */
 export class SystemGroup extends pulumi.CustomResource {

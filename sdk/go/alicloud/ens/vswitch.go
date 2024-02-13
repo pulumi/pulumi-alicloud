@@ -70,9 +70,7 @@ import (
 // ENS Vswitch can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:ens/vswitch:Vswitch example <id>
-//
+// $ pulumi import alicloud:ens/vswitch:Vswitch example <id>
 // ```
 type Vswitch struct {
 	pulumi.CustomResourceState

@@ -93,7 +93,7 @@ import javax.annotation.Nullable;
  * Hybrid Backup Recovery (HBR) Hana Backup Plan can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:hbr/hanaBackupPlan:HanaBackupPlan example &lt;plan_id&gt;:&lt;vault_id&gt;:&lt;cluster_id&gt;
+ * $ pulumi import alicloud:hbr/hanaBackupPlan:HanaBackupPlan example &lt;plan_id&gt;:&lt;vault_id&gt;:&lt;cluster_id&gt;
  * ```
  * 
  */

@@ -107,7 +107,7 @@ import * as utilities from "../utilities";
  * DMS Enterprise Proxy can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:dms/enterpriseProxy:EnterpriseProxy example <id>
+ * $ pulumi import alicloud:dms/enterpriseProxy:EnterpriseProxy example <id>
  * ```
  */
 export class EnterpriseProxy extends pulumi.CustomResource {

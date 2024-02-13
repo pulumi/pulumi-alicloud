@@ -59,7 +59,7 @@ import javax.annotation.Nullable;
  * Direct Mail Tag can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:directmail/tag:Tag example &lt;id&gt;
+ * $ pulumi import alicloud:directmail/tag:Tag example &lt;id&gt;
  * ```
  * 
  */

@@ -49,7 +49,7 @@ namespace Pulumi.AliCloud.CS
     /// Kubernetes cluster can be imported using the id, e.g. Then complete the main.tf accords to the result of `pulumi preview`.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:cs/kubernetes:Kubernetes main cluster-id
+    /// $ pulumi import alicloud:cs/kubernetes:Kubernetes main cluster-id
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:cs/kubernetes:Kubernetes")]

@@ -37,7 +37,7 @@ import * as utilities from "../utilities";
  * DBFS Dbfs Instance can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:databasefilesystem/instance:Instance example <id>
+ * $ pulumi import alicloud:databasefilesystem/instance:Instance example <id>
  * ```
  */
 export class Instance extends pulumi.CustomResource {

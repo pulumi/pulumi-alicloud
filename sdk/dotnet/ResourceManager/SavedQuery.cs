@@ -45,7 +45,7 @@ namespace Pulumi.AliCloud.ResourceManager
     /// Resource Manager Saved Query can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:resourcemanager/savedQuery:SavedQuery example &lt;id&gt;
+    /// $ pulumi import alicloud:resourcemanager/savedQuery:SavedQuery example &lt;id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:resourcemanager/savedQuery:SavedQuery")]

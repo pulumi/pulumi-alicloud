@@ -29,7 +29,7 @@ import * as utilities from "../utilities";
  * Alikms key can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:kms/key:Key example <id>
+ * $ pulumi import alicloud:kms/key:Key example <id>
  * ```
  */
 export class Key extends pulumi.CustomResource {

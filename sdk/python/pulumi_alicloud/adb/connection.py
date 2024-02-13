@@ -204,7 +204,7 @@ class Connection(pulumi.CustomResource):
         ADB connection can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:adb/connection:Connection example am-12345678
+        $ pulumi import alicloud:adb/connection:Connection example am-12345678
         ```
 
         :param str resource_name: The name of the resource.
@@ -276,7 +276,7 @@ class Connection(pulumi.CustomResource):
         ADB connection can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:adb/connection:Connection example am-12345678
+        $ pulumi import alicloud:adb/connection:Connection example am-12345678
         ```
 
         :param str resource_name: The name of the resource.

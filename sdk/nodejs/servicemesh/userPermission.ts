@@ -18,7 +18,7 @@ import * as utilities from "../utilities";
  * Service Mesh User Permission can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:servicemesh/userPermission:UserPermission example <id>
+ * $ pulumi import alicloud:servicemesh/userPermission:UserPermission example <id>
  * ```
  */
 export class UserPermission extends pulumi.CustomResource {

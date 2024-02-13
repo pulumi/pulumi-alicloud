@@ -40,7 +40,7 @@ import * as utilities from "../utilities";
  * ARMS Grafana Workspace can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:arms/grafanaWorkspace:GrafanaWorkspace example <id>
+ * $ pulumi import alicloud:arms/grafanaWorkspace:GrafanaWorkspace example <id>
  * ```
  */
 export class GrafanaWorkspace extends pulumi.CustomResource {

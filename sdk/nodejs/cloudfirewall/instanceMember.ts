@@ -33,7 +33,7 @@ import * as utilities from "../utilities";
  * Cloud Firewall Instance Member can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:cloudfirewall/instanceMember:InstanceMember example <id>
+ * $ pulumi import alicloud:cloudfirewall/instanceMember:InstanceMember example <id>
  * ```
  */
 export class InstanceMember extends pulumi.CustomResource {

@@ -71,7 +71,7 @@ import javax.annotation.Nullable;
  * Cloud Monitor Service Monitor Group can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:cms/monitorGroup:MonitorGroup example &lt;id&gt;
+ * $ pulumi import alicloud:cms/monitorGroup:MonitorGroup example &lt;id&gt;
  * ```
  * 
  */

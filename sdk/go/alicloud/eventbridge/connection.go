@@ -139,9 +139,7 @@ import (
 // Event Bridge Connection can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:eventbridge/connection:Connection example <id>
-//
+// $ pulumi import alicloud:eventbridge/connection:Connection example <id>
 // ```
 type Connection struct {
 	pulumi.CustomResourceState

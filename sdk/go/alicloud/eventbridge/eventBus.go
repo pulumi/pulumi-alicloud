@@ -57,9 +57,7 @@ import (
 // Event Bridge Event Bus can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:eventbridge/eventBus:EventBus example <event_bus_name>
-//
+// $ pulumi import alicloud:eventbridge/eventBus:EventBus example <event_bus_name>
 // ```
 type EventBus struct {
 	pulumi.CustomResourceState

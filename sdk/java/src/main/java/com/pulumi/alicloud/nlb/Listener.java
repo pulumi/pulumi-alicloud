@@ -167,7 +167,7 @@ import javax.annotation.Nullable;
  * NLB Listener can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:nlb/listener:Listener example &lt;id&gt;
+ * $ pulumi import alicloud:nlb/listener:Listener example &lt;id&gt;
  * ```
  * 
  */

@@ -63,7 +63,7 @@ import javax.annotation.Nullable;
  * The Sag SnatEntry can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:rocketmq/snatEntry:SnatEntry example sag-abc123456:snat-abc123456
+ * $ pulumi import alicloud:rocketmq/snatEntry:SnatEntry example sag-abc123456:snat-abc123456
  * ```
  * 
  */

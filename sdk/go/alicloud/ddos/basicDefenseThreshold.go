@@ -71,9 +71,7 @@ import (
 // Ddos Basic Antiddos can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:ddos/basicDefenseThreshold:BasicDefenseThreshold example <instance_id>:<instance_type>:<ddos_type>
-//
+// $ pulumi import alicloud:ddos/basicDefenseThreshold:BasicDefenseThreshold example <instance_id>:<instance_type>:<ddos_type>
 // ```
 type BasicDefenseThreshold struct {
 	pulumi.CustomResourceState

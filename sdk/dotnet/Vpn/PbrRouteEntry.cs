@@ -69,7 +69,7 @@ namespace Pulumi.AliCloud.Vpn
     /// VPN Pbr route entry can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:vpn/pbrRouteEntry:PbrRouteEntry example &lt;vpn_gateway_id&gt;:&lt;next_hop&gt;:&lt;route_source&gt;:&lt;route_dest&gt;
+    /// $ pulumi import alicloud:vpn/pbrRouteEntry:PbrRouteEntry example &lt;vpn_gateway_id&gt;:&lt;next_hop&gt;:&lt;route_source&gt;:&lt;route_dest&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:vpn/pbrRouteEntry:PbrRouteEntry")]

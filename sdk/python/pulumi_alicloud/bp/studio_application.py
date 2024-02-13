@@ -318,7 +318,7 @@ class StudioApplication(pulumi.CustomResource):
         Cloud Architect Design Tools Application can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:bp/studioApplication:StudioApplication example <id>
+        $ pulumi import alicloud:bp/studioApplication:StudioApplication example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -375,7 +375,7 @@ class StudioApplication(pulumi.CustomResource):
         Cloud Architect Design Tools Application can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:bp/studioApplication:StudioApplication example <id>
+        $ pulumi import alicloud:bp/studioApplication:StudioApplication example <id>
         ```
 
         :param str resource_name: The name of the resource.

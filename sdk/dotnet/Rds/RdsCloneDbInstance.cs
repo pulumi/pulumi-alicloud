@@ -94,7 +94,7 @@ namespace Pulumi.AliCloud.Rds
     /// RDS Clone DB Instance can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:rds/rdsCloneDbInstance:RdsCloneDbInstance example &lt;id&gt;
+    /// $ pulumi import alicloud:rds/rdsCloneDbInstance:RdsCloneDbInstance example &lt;id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:rds/rdsCloneDbInstance:RdsCloneDbInstance")]

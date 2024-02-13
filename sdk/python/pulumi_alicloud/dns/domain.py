@@ -191,7 +191,7 @@ class Domain(pulumi.CustomResource):
         DNS can be imported using the id or domain name, e.g.
 
         ```sh
-         $ pulumi import alicloud:dns/domain:Domain example "aliyun.com"
+        $ pulumi import alicloud:dns/domain:Domain example "aliyun.com"
         ```
 
         :param str resource_name: The name of the resource.
@@ -228,7 +228,7 @@ class Domain(pulumi.CustomResource):
         DNS can be imported using the id or domain name, e.g.
 
         ```sh
-         $ pulumi import alicloud:dns/domain:Domain example "aliyun.com"
+        $ pulumi import alicloud:dns/domain:Domain example "aliyun.com"
         ```
 
         :param str resource_name: The name of the resource.

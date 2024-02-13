@@ -12,7 +12,7 @@ import * as utilities from "../utilities";
  * Hologram Instance can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:hologram/instance:Instance example <id>
+ * $ pulumi import alicloud:hologram/instance:Instance example <id>
  * ```
  */
 export class Instance extends pulumi.CustomResource {

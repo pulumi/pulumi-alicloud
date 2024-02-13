@@ -61,7 +61,7 @@ import javax.annotation.Nullable;
  * Container Registry namespace can be imported using the namespace, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:cr/namespace:Namespace default my-namespace
+ * $ pulumi import alicloud:cr/namespace:Namespace default my-namespace
  * ```
  * 
  */

@@ -217,7 +217,7 @@ class Aggregator(pulumi.CustomResource):
         Cloud Config Aggregator can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:cfg/aggregator:Aggregator example <id>
+        $ pulumi import alicloud:cfg/aggregator:Aggregator example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -269,7 +269,7 @@ class Aggregator(pulumi.CustomResource):
         Cloud Config Aggregator can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:cfg/aggregator:Aggregator example <id>
+        $ pulumi import alicloud:cfg/aggregator:Aggregator example <id>
         ```
 
         :param str resource_name: The name of the resource.

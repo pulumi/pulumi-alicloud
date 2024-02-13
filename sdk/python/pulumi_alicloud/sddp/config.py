@@ -190,7 +190,7 @@ class Config(pulumi.CustomResource):
         Data Security Center Config can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:sddp/config:Config example <code>
+        $ pulumi import alicloud:sddp/config:Config example <code>
         ```
 
         :param str resource_name: The name of the resource.
@@ -231,7 +231,7 @@ class Config(pulumi.CustomResource):
         Data Security Center Config can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:sddp/config:Config example <code>
+        $ pulumi import alicloud:sddp/config:Config example <code>
         ```
 
         :param str resource_name: The name of the resource.

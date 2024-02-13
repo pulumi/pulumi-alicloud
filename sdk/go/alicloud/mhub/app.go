@@ -68,9 +68,7 @@ import (
 // MHUB App can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:mhub/app:App example <product_id>:<app_key>
-//
+// $ pulumi import alicloud:mhub/app:App example <product_id>:<app_key>
 // ```
 type App struct {
 	pulumi.CustomResourceState

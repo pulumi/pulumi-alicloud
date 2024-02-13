@@ -63,9 +63,7 @@ import (
 // ECS Key Pair can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:ecs/ecsKeyPair:EcsKeyPair example <key_name>
-//
+// $ pulumi import alicloud:ecs/ecsKeyPair:EcsKeyPair example <key_name>
 // ```
 type EcsKeyPair struct {
 	pulumi.CustomResourceState

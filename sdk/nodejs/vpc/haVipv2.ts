@@ -56,7 +56,7 @@ import * as utilities from "../utilities";
  * Vpc Ha Vip can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:vpc/haVipv2:HaVipv2 example <id>
+ * $ pulumi import alicloud:vpc/haVipv2:HaVipv2 example <id>
  * ```
  */
 export class HaVipv2 extends pulumi.CustomResource {

@@ -120,9 +120,7 @@ import (
 // RocketMQ Consumer Group can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:rocketmq/consumerGroup:ConsumerGroup example <instance_id>:<consumer_group_id>
-//
+// $ pulumi import alicloud:rocketmq/consumerGroup:ConsumerGroup example <instance_id>:<consumer_group_id>
 // ```
 type ConsumerGroup struct {
 	pulumi.CustomResourceState

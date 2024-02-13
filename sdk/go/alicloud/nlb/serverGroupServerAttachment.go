@@ -91,9 +91,7 @@ import (
 // NLB Server Group Server Attachment can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:nlb/serverGroupServerAttachment:ServerGroupServerAttachment example <server_group_id>:<server_id>:<server_type>:<port>
-//
+// $ pulumi import alicloud:nlb/serverGroupServerAttachment:ServerGroupServerAttachment example <server_group_id>:<server_id>:<server_type>:<port>
 // ```
 type ServerGroupServerAttachment struct {
 	pulumi.CustomResourceState

@@ -107,9 +107,7 @@ import (
 // ECS Network Interface can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:ecs/ecsNetworkInterface:EcsNetworkInterface example eni-abcd12345
-//
+// $ pulumi import alicloud:ecs/ecsNetworkInterface:EcsNetworkInterface example eni-abcd12345
 // ```
 type EcsNetworkInterface struct {
 	pulumi.CustomResourceState

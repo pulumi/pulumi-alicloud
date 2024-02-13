@@ -600,7 +600,7 @@ class Domain(pulumi.CustomResource):
         DCDN Domain can be imported using the id or DCDN Domain name, e.g.
 
         ```sh
-         $ pulumi import alicloud:dcdn/domain:Domain example <id>
+        $ pulumi import alicloud:dcdn/domain:Domain example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -674,7 +674,7 @@ class Domain(pulumi.CustomResource):
         DCDN Domain can be imported using the id or DCDN Domain name, e.g.
 
         ```sh
-         $ pulumi import alicloud:dcdn/domain:Domain example <id>
+        $ pulumi import alicloud:dcdn/domain:Domain example <id>
         ```
 
         :param str resource_name: The name of the resource.

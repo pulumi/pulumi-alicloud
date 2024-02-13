@@ -242,7 +242,7 @@ import javax.annotation.Nullable;
  * ARMS Synthetic Task can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:arms/syntheticTask:SyntheticTask example &lt;id&gt;
+ * $ pulumi import alicloud:arms/syntheticTask:SyntheticTask example &lt;id&gt;
  * ```
  * 
  */

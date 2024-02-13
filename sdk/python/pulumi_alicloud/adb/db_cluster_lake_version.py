@@ -740,7 +740,7 @@ class DBClusterLakeVersion(pulumi.CustomResource):
         AnalyticDB for MySQL (ADB) DB Cluster Lake Version can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:adb/dBClusterLakeVersion:DBClusterLakeVersion example <id>
+        $ pulumi import alicloud:adb/dBClusterLakeVersion:DBClusterLakeVersion example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -804,7 +804,7 @@ class DBClusterLakeVersion(pulumi.CustomResource):
         AnalyticDB for MySQL (ADB) DB Cluster Lake Version can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:adb/dBClusterLakeVersion:DBClusterLakeVersion example <id>
+        $ pulumi import alicloud:adb/dBClusterLakeVersion:DBClusterLakeVersion example <id>
         ```
 
         :param str resource_name: The name of the resource.

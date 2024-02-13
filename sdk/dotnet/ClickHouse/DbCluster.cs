@@ -71,7 +71,7 @@ namespace Pulumi.AliCloud.ClickHouse
     /// Click House DBCluster can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:clickhouse/dbCluster:DbCluster example &lt;id&gt;
+    /// $ pulumi import alicloud:clickhouse/dbCluster:DbCluster example &lt;id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:clickhouse/dbCluster:DbCluster")]

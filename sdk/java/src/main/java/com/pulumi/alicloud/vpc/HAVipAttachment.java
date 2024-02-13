@@ -121,7 +121,7 @@ import javax.annotation.Nullable;
  * VPC Ha Vip Attachment can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:vpc/hAVipAttachment:HAVipAttachment example &lt;ha_vip_id&gt;:&lt;instance_id&gt;
+ * $ pulumi import alicloud:vpc/hAVipAttachment:HAVipAttachment example &lt;ha_vip_id&gt;:&lt;instance_id&gt;
  * ```
  * 
  */

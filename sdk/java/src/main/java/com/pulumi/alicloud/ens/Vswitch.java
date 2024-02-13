@@ -73,7 +73,7 @@ import javax.annotation.Nullable;
  * ENS Vswitch can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:ens/vswitch:Vswitch example &lt;id&gt;
+ * $ pulumi import alicloud:ens/vswitch:Vswitch example &lt;id&gt;
  * ```
  * 
  */

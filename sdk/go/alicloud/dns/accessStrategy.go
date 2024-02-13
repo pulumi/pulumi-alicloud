@@ -23,9 +23,7 @@ import (
 // DNS Access Strategy can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:dns/accessStrategy:AccessStrategy example <id>
-//
+// $ pulumi import alicloud:dns/accessStrategy:AccessStrategy example <id>
 // ```
 type AccessStrategy struct {
 	pulumi.CustomResourceState

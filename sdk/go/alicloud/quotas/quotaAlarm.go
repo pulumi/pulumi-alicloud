@@ -67,9 +67,7 @@ import (
 // Quotas Quota Alarm can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:quotas/quotaAlarm:QuotaAlarm example <id>
-//
+// $ pulumi import alicloud:quotas/quotaAlarm:QuotaAlarm example <id>
 // ```
 type QuotaAlarm struct {
 	pulumi.CustomResourceState

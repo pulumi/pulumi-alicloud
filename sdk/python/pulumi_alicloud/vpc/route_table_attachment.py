@@ -152,7 +152,7 @@ class RouteTableAttachment(pulumi.CustomResource):
         VPC Route Table Attachment can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:vpc/routeTableAttachment:RouteTableAttachment example <route_table_id>:<vswitch_id>
+        $ pulumi import alicloud:vpc/routeTableAttachment:RouteTableAttachment example <route_table_id>:<vswitch_id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -205,7 +205,7 @@ class RouteTableAttachment(pulumi.CustomResource):
         VPC Route Table Attachment can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:vpc/routeTableAttachment:RouteTableAttachment example <route_table_id>:<vswitch_id>
+        $ pulumi import alicloud:vpc/routeTableAttachment:RouteTableAttachment example <route_table_id>:<vswitch_id>
         ```
 
         :param str resource_name: The name of the resource.

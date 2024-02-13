@@ -204,7 +204,7 @@ class PolicyAttachment(pulumi.CustomResource):
         Resource Manager Policy Attachment can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:resourcemanager/policyAttachment:PolicyAttachment example tf-testaccrdpolicy:Custom:tf-testaccrdpolicy@11827252********.onaliyun.com:IMSUser:rg******
+        $ pulumi import alicloud:resourcemanager/policyAttachment:PolicyAttachment example tf-testaccrdpolicy:Custom:tf-testaccrdpolicy@11827252********.onaliyun.com:IMSUser:rg******
         ```
 
         :param str resource_name: The name of the resource.
@@ -232,7 +232,7 @@ class PolicyAttachment(pulumi.CustomResource):
         Resource Manager Policy Attachment can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:resourcemanager/policyAttachment:PolicyAttachment example tf-testaccrdpolicy:Custom:tf-testaccrdpolicy@11827252********.onaliyun.com:IMSUser:rg******
+        $ pulumi import alicloud:resourcemanager/policyAttachment:PolicyAttachment example tf-testaccrdpolicy:Custom:tf-testaccrdpolicy@11827252********.onaliyun.com:IMSUser:rg******
         ```
 
         :param str resource_name: The name of the resource.

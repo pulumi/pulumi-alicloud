@@ -656,7 +656,7 @@ class RocketMQInstance(pulumi.CustomResource):
         RocketMQ Instance can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:rocketmq/rocketMQInstance:RocketMQInstance example <id>
+        $ pulumi import alicloud:rocketmq/rocketMQInstance:RocketMQInstance example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -705,7 +705,7 @@ class RocketMQInstance(pulumi.CustomResource):
         RocketMQ Instance can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:rocketmq/rocketMQInstance:RocketMQInstance example <id>
+        $ pulumi import alicloud:rocketmq/rocketMQInstance:RocketMQInstance example <id>
         ```
 
         :param str resource_name: The name of the resource.

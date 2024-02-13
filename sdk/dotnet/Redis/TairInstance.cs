@@ -15,7 +15,7 @@ namespace Pulumi.AliCloud.Redis
     /// Redis Tair Instance can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:redis/tairInstance:TairInstance example &lt;id&gt;
+    /// $ pulumi import alicloud:redis/tairInstance:TairInstance example &lt;id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:redis/tairInstance:TairInstance")]

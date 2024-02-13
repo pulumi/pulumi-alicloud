@@ -112,7 +112,7 @@ class K8sSlbAttachment(pulumi.CustomResource):
         Slb information of EDAS k8s application can be imported using the ID of an EDAS k8s application. e.g.
 
         ```sh
-         $ pulumi import alicloud:edas/k8sSlbAttachment:K8sSlbAttachment example <EDAS k8s app id>
+        $ pulumi import alicloud:edas/k8sSlbAttachment:K8sSlbAttachment example <EDAS k8s app id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -138,7 +138,7 @@ class K8sSlbAttachment(pulumi.CustomResource):
         Slb information of EDAS k8s application can be imported using the ID of an EDAS k8s application. e.g.
 
         ```sh
-         $ pulumi import alicloud:edas/k8sSlbAttachment:K8sSlbAttachment example <EDAS k8s app id>
+        $ pulumi import alicloud:edas/k8sSlbAttachment:K8sSlbAttachment example <EDAS k8s app id>
         ```
 
         :param str resource_name: The name of the resource.

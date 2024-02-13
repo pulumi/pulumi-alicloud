@@ -63,7 +63,7 @@ namespace Pulumi.AliCloud.Nas
     /// Network Attached Storage (NAS) Snapshot can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:nas/snapshot:Snapshot example &lt;id&gt;
+    /// $ pulumi import alicloud:nas/snapshot:Snapshot example &lt;id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:nas/snapshot:Snapshot")]

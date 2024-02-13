@@ -81,7 +81,7 @@ import javax.annotation.Nullable;
  * ROS Stack can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:ros/stack:Stack example &lt;stack_id&gt;
+ * $ pulumi import alicloud:ros/stack:Stack example &lt;stack_id&gt;
  * ```
  * 
  */

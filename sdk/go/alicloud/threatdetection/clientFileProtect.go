@@ -70,9 +70,7 @@ import (
 // Threat Detection Client File Protect can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:threatdetection/clientFileProtect:ClientFileProtect example <id>
-//
+// $ pulumi import alicloud:threatdetection/clientFileProtect:ClientFileProtect example <id>
 // ```
 type ClientFileProtect struct {
 	pulumi.CustomResourceState

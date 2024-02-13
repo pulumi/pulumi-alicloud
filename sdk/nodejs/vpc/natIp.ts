@@ -61,7 +61,7 @@ import * as utilities from "../utilities";
  * VPC Nat Ip can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:vpc/natIp:NatIp example <nat_gateway_id>:<nat_ip_id>
+ * $ pulumi import alicloud:vpc/natIp:NatIp example <nat_gateway_id>:<nat_ip_id>
  * ```
  */
 export class NatIp extends pulumi.CustomResource {

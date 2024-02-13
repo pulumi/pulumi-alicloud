@@ -151,7 +151,7 @@ class BackupPolicy(pulumi.CustomResource):
         ADB backup policy can be imported using the id or cluster id, e.g.
 
         ```sh
-         $ pulumi import alicloud:adb/backupPolicy:BackupPolicy example "am-12345678"
+        $ pulumi import alicloud:adb/backupPolicy:BackupPolicy example "am-12345678"
         ```
 
         :param str resource_name: The name of the resource.
@@ -172,7 +172,7 @@ class BackupPolicy(pulumi.CustomResource):
         ADB backup policy can be imported using the id or cluster id, e.g.
 
         ```sh
-         $ pulumi import alicloud:adb/backupPolicy:BackupPolicy example "am-12345678"
+        $ pulumi import alicloud:adb/backupPolicy:BackupPolicy example "am-12345678"
         ```
 
         :param str resource_name: The name of the resource.

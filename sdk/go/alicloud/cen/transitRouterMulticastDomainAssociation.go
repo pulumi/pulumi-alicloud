@@ -116,9 +116,7 @@ import (
 // Cloud Enterprise Network (CEN) Transit Router Multicast Domain Association can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:cen/transitRouterMulticastDomainAssociation:TransitRouterMulticastDomainAssociation example <transit_router_multicast_domain_id>:<transit_router_attachment_id>:<vswitch_id>
-//
+// $ pulumi import alicloud:cen/transitRouterMulticastDomainAssociation:TransitRouterMulticastDomainAssociation example <transit_router_multicast_domain_id>:<transit_router_attachment_id>:<vswitch_id>
 // ```
 type TransitRouterMulticastDomainAssociation struct {
 	pulumi.CustomResourceState

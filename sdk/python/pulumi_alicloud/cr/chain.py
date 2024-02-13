@@ -404,7 +404,7 @@ class Chain(pulumi.CustomResource):
         CR Chain can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:cr/chain:Chain example <instance_id>:<chain_id>
+        $ pulumi import alicloud:cr/chain:Chain example <instance_id>:<chain_id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -579,7 +579,7 @@ class Chain(pulumi.CustomResource):
         CR Chain can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:cr/chain:Chain example <instance_id>:<chain_id>
+        $ pulumi import alicloud:cr/chain:Chain example <instance_id>:<chain_id>
         ```
 
         :param str resource_name: The name of the resource.

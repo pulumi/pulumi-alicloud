@@ -75,7 +75,7 @@ namespace Pulumi.AliCloud.Dns
     /// Alidns Gtm Instance can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:dns/gtmInstance:GtmInstance example &lt;id&gt;
+    /// $ pulumi import alicloud:dns/gtmInstance:GtmInstance example &lt;id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:dns/gtmInstance:GtmInstance")]

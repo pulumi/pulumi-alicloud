@@ -21,7 +21,7 @@ namespace Pulumi.AliCloud.Dns
     /// Alidns Address Pool can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:dns/addressPool:AddressPool example &lt;id&gt;
+    /// $ pulumi import alicloud:dns/addressPool:AddressPool example &lt;id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:dns/addressPool:AddressPool")]

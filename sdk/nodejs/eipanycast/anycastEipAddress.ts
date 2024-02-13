@@ -36,7 +36,7 @@ import * as utilities from "../utilities";
  * Eipanycast Anycast Eip Address can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:eipanycast/anycastEipAddress:AnycastEipAddress example <id>
+ * $ pulumi import alicloud:eipanycast/anycastEipAddress:AnycastEipAddress example <id>
  * ```
  */
 export class AnycastEipAddress extends pulumi.CustomResource {

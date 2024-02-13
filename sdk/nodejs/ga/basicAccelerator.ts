@@ -35,7 +35,7 @@ import * as utilities from "../utilities";
  * Global Accelerator (GA) Basic Accelerator can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:ga/basicAccelerator:BasicAccelerator example <id>
+ * $ pulumi import alicloud:ga/basicAccelerator:BasicAccelerator example <id>
  * ```
  */
 export class BasicAccelerator extends pulumi.CustomResource {

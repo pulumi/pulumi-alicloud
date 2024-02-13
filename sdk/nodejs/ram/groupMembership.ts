@@ -14,7 +14,7 @@ import * as utilities from "../utilities";
  * RAM Group membership can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:ram/groupMembership:GroupMembership example my-group
+ * $ pulumi import alicloud:ram/groupMembership:GroupMembership example my-group
  * ```
  */
 export class GroupMembership extends pulumi.CustomResource {

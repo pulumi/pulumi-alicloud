@@ -46,7 +46,7 @@ import * as utilities from "../utilities";
  * Global Accelerator (GA) Basic Accelerate IP can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:ga/basicAccelerateIp:BasicAccelerateIp example <id>
+ * $ pulumi import alicloud:ga/basicAccelerateIp:BasicAccelerateIp example <id>
  * ```
  */
 export class BasicAccelerateIp extends pulumi.CustomResource {

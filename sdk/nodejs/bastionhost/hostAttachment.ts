@@ -66,7 +66,7 @@ import * as utilities from "../utilities";
  * Bastion Host Host Attachment can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:bastionhost/hostAttachment:HostAttachment example <instance_id>:<host_group_id>:<host_id>
+ * $ pulumi import alicloud:bastionhost/hostAttachment:HostAttachment example <instance_id>:<host_group_id>:<host_id>
  * ```
  */
 export class HostAttachment extends pulumi.CustomResource {

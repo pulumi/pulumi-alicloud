@@ -329,7 +329,7 @@ class MountPoint(pulumi.CustomResource):
         DFS Mount Point can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:dfs/mountPoint:MountPoint example <file_system_id>:<mount_point_id>
+        $ pulumi import alicloud:dfs/mountPoint:MountPoint example <file_system_id>:<mount_point_id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -402,7 +402,7 @@ class MountPoint(pulumi.CustomResource):
         DFS Mount Point can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:dfs/mountPoint:MountPoint example <file_system_id>:<mount_point_id>
+        $ pulumi import alicloud:dfs/mountPoint:MountPoint example <file_system_id>:<mount_point_id>
         ```
 
         :param str resource_name: The name of the resource.

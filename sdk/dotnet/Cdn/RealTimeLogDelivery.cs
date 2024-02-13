@@ -88,7 +88,7 @@ namespace Pulumi.AliCloud.Cdn
     /// CDN Real Time Log Delivery can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:cdn/realTimeLogDelivery:RealTimeLogDelivery example &lt;domain&gt;
+    /// $ pulumi import alicloud:cdn/realTimeLogDelivery:RealTimeLogDelivery example &lt;domain&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:cdn/realTimeLogDelivery:RealTimeLogDelivery")]

@@ -1144,7 +1144,7 @@ class GatewayFileShare(pulumi.CustomResource):
         Cloud Storage Gateway Gateway File Share can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:cloudstoragegateway/gatewayFileShare:GatewayFileShare example <gateway_id>:<index_id>
+        $ pulumi import alicloud:cloudstoragegateway/gatewayFileShare:GatewayFileShare example <gateway_id>:<index_id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -1201,7 +1201,7 @@ class GatewayFileShare(pulumi.CustomResource):
         Cloud Storage Gateway Gateway File Share can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:cloudstoragegateway/gatewayFileShare:GatewayFileShare example <gateway_id>:<index_id>
+        $ pulumi import alicloud:cloudstoragegateway/gatewayFileShare:GatewayFileShare example <gateway_id>:<index_id>
         ```
 
         :param str resource_name: The name of the resource.

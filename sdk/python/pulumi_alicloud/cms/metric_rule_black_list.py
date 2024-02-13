@@ -500,7 +500,7 @@ class MetricRuleBlackList(pulumi.CustomResource):
         Cloud Monitor Service Metric Rule Black List can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:cms/metricRuleBlackList:MetricRuleBlackList example <id>
+        $ pulumi import alicloud:cms/metricRuleBlackList:MetricRuleBlackList example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -581,7 +581,7 @@ class MetricRuleBlackList(pulumi.CustomResource):
         Cloud Monitor Service Metric Rule Black List can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:cms/metricRuleBlackList:MetricRuleBlackList example <id>
+        $ pulumi import alicloud:cms/metricRuleBlackList:MetricRuleBlackList example <id>
         ```
 
         :param str resource_name: The name of the resource.

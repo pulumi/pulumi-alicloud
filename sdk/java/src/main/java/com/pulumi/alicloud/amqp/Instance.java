@@ -22,7 +22,7 @@ import javax.annotation.Nullable;
  * RabbitMQ (AMQP) Instance can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:amqp/instance:Instance example &lt;id&gt;
+ * $ pulumi import alicloud:amqp/instance:Instance example &lt;id&gt;
  * ```
  * 
  */

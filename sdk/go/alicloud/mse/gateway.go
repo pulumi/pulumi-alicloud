@@ -23,9 +23,7 @@ import (
 // Microservice Engine (MSE) Gateway can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:mse/gateway:Gateway example <id>
-//
+// $ pulumi import alicloud:mse/gateway:Gateway example <id>
 // ```
 type Gateway struct {
 	pulumi.CustomResourceState

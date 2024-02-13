@@ -193,7 +193,7 @@ class LogTailAttachment(pulumi.CustomResource):
         Logtial to machine group can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:log/logTailAttachment:LogTailAttachment example tf-log:tf-log-config:tf-log-machine-group
+        $ pulumi import alicloud:log/logTailAttachment:LogTailAttachment example tf-log:tf-log-config:tf-log-machine-group
         ```
 
         :param str resource_name: The name of the resource.
@@ -272,7 +272,7 @@ class LogTailAttachment(pulumi.CustomResource):
         Logtial to machine group can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:log/logTailAttachment:LogTailAttachment example tf-log:tf-log-config:tf-log-machine-group
+        $ pulumi import alicloud:log/logTailAttachment:LogTailAttachment example tf-log:tf-log-config:tf-log-machine-group
         ```
 
         :param str resource_name: The name of the resource.

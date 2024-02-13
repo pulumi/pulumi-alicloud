@@ -171,7 +171,7 @@ class ShortUrl(pulumi.CustomResource):
         SMS Short Url can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:sms/shortUrl:ShortUrl example <id>
+        $ pulumi import alicloud:sms/shortUrl:ShortUrl example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -212,7 +212,7 @@ class ShortUrl(pulumi.CustomResource):
         SMS Short Url can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:sms/shortUrl:ShortUrl example <id>
+        $ pulumi import alicloud:sms/shortUrl:ShortUrl example <id>
         ```
 
         :param str resource_name: The name of the resource.

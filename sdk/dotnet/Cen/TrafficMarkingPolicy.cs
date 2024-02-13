@@ -56,7 +56,7 @@ namespace Pulumi.AliCloud.Cen
     /// Cloud Enterprise Network (CEN) Traffic Marking Policy can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:cen/trafficMarkingPolicy:TrafficMarkingPolicy example &lt;transit_router_id&gt;:&lt;traffic_marking_policy_id&gt;
+    /// $ pulumi import alicloud:cen/trafficMarkingPolicy:TrafficMarkingPolicy example &lt;transit_router_id&gt;:&lt;traffic_marking_policy_id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:cen/trafficMarkingPolicy:TrafficMarkingPolicy")]

@@ -113,7 +113,7 @@ namespace Pulumi.AliCloud.Cen
     /// Cloud Enterprise Network (CEN) Inter Region Traffic Qos Policy can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:cen/interRegionTrafficQosPolicy:InterRegionTrafficQosPolicy example &lt;id&gt;
+    /// $ pulumi import alicloud:cen/interRegionTrafficQosPolicy:InterRegionTrafficQosPolicy example &lt;id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:cen/interRegionTrafficQosPolicy:InterRegionTrafficQosPolicy")]

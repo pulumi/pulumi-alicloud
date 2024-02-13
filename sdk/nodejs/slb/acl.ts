@@ -51,7 +51,7 @@ import * as utilities from "../utilities";
  * Server Load balancer access control list can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:slb/acl:Acl example acl-abc123456
+ * $ pulumi import alicloud:slb/acl:Acl example acl-abc123456
  * ```
  */
 export class Acl extends pulumi.CustomResource {

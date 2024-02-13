@@ -122,9 +122,7 @@ import (
 // SLS Project can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:log/project:Project example <id>
-//
+// $ pulumi import alicloud:log/project:Project example <id>
 // ```
 type Project struct {
 	pulumi.CustomResourceState

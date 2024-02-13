@@ -95,7 +95,7 @@ import * as utilities from "../utilities";
  * ESS scaling rule can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:ess/scalingRule:ScalingRule example abc123456
+ * $ pulumi import alicloud:ess/scalingRule:ScalingRule example abc123456
  * ```
  */
 export class ScalingRule extends pulumi.CustomResource {

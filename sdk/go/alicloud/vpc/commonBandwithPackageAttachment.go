@@ -69,9 +69,7 @@ import (
 // cbwp Common Bandwidth Package Attachment can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:vpc/commonBandwithPackageAttachment:CommonBandwithPackageAttachment example <bandwidth_package_id>:<instance_id>
-//
+// $ pulumi import alicloud:vpc/commonBandwithPackageAttachment:CommonBandwithPackageAttachment example <bandwidth_package_id>:<instance_id>
 // ```
 type CommonBandwithPackageAttachment struct {
 	pulumi.CustomResourceState

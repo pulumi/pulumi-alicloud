@@ -138,7 +138,7 @@ class MonitorGroupInstances(pulumi.CustomResource):
         Cloud Monitor Service Monitor Group Instances can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:cms/monitorGroupInstances:MonitorGroupInstances example <group_id>
+        $ pulumi import alicloud:cms/monitorGroupInstances:MonitorGroupInstances example <group_id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -191,7 +191,7 @@ class MonitorGroupInstances(pulumi.CustomResource):
         Cloud Monitor Service Monitor Group Instances can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:cms/monitorGroupInstances:MonitorGroupInstances example <group_id>
+        $ pulumi import alicloud:cms/monitorGroupInstances:MonitorGroupInstances example <group_id>
         ```
 
         :param str resource_name: The name of the resource.

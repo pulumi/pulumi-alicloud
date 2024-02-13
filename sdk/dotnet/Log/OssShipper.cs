@@ -76,7 +76,7 @@ namespace Pulumi.AliCloud.Log
     /// Log oss shipper can be imported using the id or name, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:log/ossShipper:OssShipper example tf-log-project:tf-log-logstore:tf-log-shipper
+    /// $ pulumi import alicloud:log/ossShipper:OssShipper example tf-log-project:tf-log-logstore:tf-log-shipper
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:log/ossShipper:OssShipper")]

@@ -40,7 +40,7 @@ import * as utilities from "../utilities";
  * Ecs Image Component can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:ecs/ecsImageComponent:EcsImageComponent example <id>
+ * $ pulumi import alicloud:ecs/ecsImageComponent:EcsImageComponent example <id>
  * ```
  */
 export class EcsImageComponent extends pulumi.CustomResource {

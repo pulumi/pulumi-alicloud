@@ -35,7 +35,7 @@ import * as utilities from "../utilities";
  * Data Security Center Rule can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:sddp/rule:Rule example <id>
+ * $ pulumi import alicloud:sddp/rule:Rule example <id>
  * ```
  */
 export class Rule extends pulumi.CustomResource {

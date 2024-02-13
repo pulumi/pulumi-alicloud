@@ -147,7 +147,7 @@ namespace Pulumi.AliCloud.FC
     /// Function Compute custom domain can be imported using the id or the domain name, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:fc/customDomain:CustomDomain foo my-fc-custom-domain
+    /// $ pulumi import alicloud:fc/customDomain:CustomDomain foo my-fc-custom-domain
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:fc/customDomain:CustomDomain")]

@@ -12,7 +12,7 @@ import * as utilities from "../utilities";
  * PolarDB cluster can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:polardb/cluster:Cluster example pc-abc12345678
+ * $ pulumi import alicloud:polardb/cluster:Cluster example pc-abc12345678
  * ```
  */
 export class Cluster extends pulumi.CustomResource {

@@ -225,7 +225,7 @@ class HoneypotNode(pulumi.CustomResource):
         Threat Detection Honeypot Node can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:threatdetection/honeypotNode:HoneypotNode example <id>
+        $ pulumi import alicloud:threatdetection/honeypotNode:HoneypotNode example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -271,7 +271,7 @@ class HoneypotNode(pulumi.CustomResource):
         Threat Detection Honeypot Node can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:threatdetection/honeypotNode:HoneypotNode example <id>
+        $ pulumi import alicloud:threatdetection/honeypotNode:HoneypotNode example <id>
         ```
 
         :param str resource_name: The name of the resource.

@@ -31,7 +31,7 @@ import * as utilities from "../utilities";
  * MNS Topic subscription can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:mns/topicSubscription:TopicSubscription subscription tf-example-mnstopic:tf-example-mnstopic-sub
+ * $ pulumi import alicloud:mns/topicSubscription:TopicSubscription subscription tf-example-mnstopic:tf-example-mnstopic-sub
  * ```
  */
 export class TopicSubscription extends pulumi.CustomResource {

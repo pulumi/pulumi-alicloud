@@ -180,7 +180,7 @@ import javax.annotation.Nullable;
  * Serverless App Engine (SAE) Application Scaling Rule can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:sae/applicationScalingRule:ApplicationScalingRule example &lt;app_id&gt;:&lt;scaling_rule_name&gt;
+ * $ pulumi import alicloud:sae/applicationScalingRule:ApplicationScalingRule example &lt;app_id&gt;:&lt;scaling_rule_name&gt;
  * ```
  * 
  */

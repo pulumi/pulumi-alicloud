@@ -141,9 +141,7 @@ import (
 // image can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:ecs/imageCopy:ImageCopy default m-uf66871ape***yg1q***
-//
+// $ pulumi import alicloud:ecs/imageCopy:ImageCopy default m-uf66871ape***yg1q***
 // ```
 type ImageCopy struct {
 	pulumi.CustomResourceState

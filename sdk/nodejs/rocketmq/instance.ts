@@ -32,7 +32,7 @@ import * as utilities from "../utilities";
  * ONS INSTANCE can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:rocketmq/instance:Instance instance MQ_INST_1234567890_Baso1234567
+ * $ pulumi import alicloud:rocketmq/instance:Instance instance MQ_INST_1234567890_Baso1234567
  * ```
  */
 export class Instance extends pulumi.CustomResource {

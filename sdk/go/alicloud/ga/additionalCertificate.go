@@ -23,9 +23,7 @@ import (
 // Global Accelerator (GA) Additional Certificate can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:ga/additionalCertificate:AdditionalCertificate example <accelerator_id>:<listener_id>:<domain>
-//
+// $ pulumi import alicloud:ga/additionalCertificate:AdditionalCertificate example <accelerator_id>:<listener_id>:<domain>
 // ```
 type AdditionalCertificate struct {
 	pulumi.CustomResourceState

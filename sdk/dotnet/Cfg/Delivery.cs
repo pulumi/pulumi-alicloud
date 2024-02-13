@@ -69,7 +69,7 @@ namespace Pulumi.AliCloud.Cfg
     /// Cloud Config Delivery can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:cfg/delivery:Delivery example &lt;id&gt;
+    /// $ pulumi import alicloud:cfg/delivery:Delivery example &lt;id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:cfg/delivery:Delivery")]

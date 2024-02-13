@@ -40,7 +40,7 @@ import * as utilities from "../utilities";
  * Graph Database Db Instance can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:graphdatabase/dbInstance:DbInstance example <id>
+ * $ pulumi import alicloud:graphdatabase/dbInstance:DbInstance example <id>
  * ```
  */
 export class DbInstance extends pulumi.CustomResource {

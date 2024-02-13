@@ -108,9 +108,7 @@ import (
 // Alikafka Sasl User can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:alikafka/saslUser:SaslUser example <instance_id>:<username>
-//
+// $ pulumi import alicloud:alikafka/saslUser:SaslUser example <instance_id>:<username>
 // ```
 type SaslUser struct {
 	pulumi.CustomResourceState

@@ -77,7 +77,7 @@ import javax.annotation.Nullable;
  * Threat Detection Honey Pot can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:threatdetection/honeyPot:HoneyPot example &lt;id&gt;
+ * $ pulumi import alicloud:threatdetection/honeyPot:HoneyPot example &lt;id&gt;
  * ```
  * 
  */

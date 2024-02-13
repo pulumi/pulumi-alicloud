@@ -63,7 +63,7 @@ namespace Pulumi.AliCloud.Amqp
     /// RabbitMQ (AMQP) Exchange can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:amqp/exchange:Exchange example &lt;instance_id&gt;:&lt;virtual_host_name&gt;:&lt;exchange_name&gt;
+    /// $ pulumi import alicloud:amqp/exchange:Exchange example &lt;instance_id&gt;:&lt;virtual_host_name&gt;:&lt;exchange_name&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:amqp/exchange:Exchange")]

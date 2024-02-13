@@ -101,7 +101,7 @@ namespace Pulumi.AliCloud.AliKafka
     /// ALIKAFKA GROUP can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:alikafka/saslAcl:SaslAcl acl alikafka_post-cn-123455abc:username:Topic:test-topic:LITERAL:Write
+    /// $ pulumi import alicloud:alikafka/saslAcl:SaslAcl acl alikafka_post-cn-123455abc:username:Topic:test-topic:LITERAL:Write
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:alikafka/saslAcl:SaslAcl")]

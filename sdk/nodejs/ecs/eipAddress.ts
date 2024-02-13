@@ -10,7 +10,7 @@ import * as utilities from "../utilities";
  * EIP Address can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:ecs/eipAddress:EipAddress example <id>
+ * $ pulumi import alicloud:ecs/eipAddress:EipAddress example <id>
  * ```
  */
 export class EipAddress extends pulumi.CustomResource {

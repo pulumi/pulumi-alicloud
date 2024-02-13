@@ -53,9 +53,7 @@ import (
 // Threat Detection Vul Whitelist can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:threatdetection/vulWhitelist:VulWhitelist example <id>
-//
+// $ pulumi import alicloud:threatdetection/vulWhitelist:VulWhitelist example <id>
 // ```
 type VulWhitelist struct {
 	pulumi.CustomResourceState

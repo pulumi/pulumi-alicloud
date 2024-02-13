@@ -117,7 +117,7 @@ namespace Pulumi.AliCloud.Arms
     /// Application Real-Time Monitoring Service (ARMS) Alert Contact can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:arms/dispatchRule:DispatchRule example &lt;id&gt;
+    /// $ pulumi import alicloud:arms/dispatchRule:DispatchRule example &lt;id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:arms/dispatchRule:DispatchRule")]

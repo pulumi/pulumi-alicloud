@@ -145,7 +145,7 @@ namespace Pulumi.AliCloud.Slb
     /// Load balancer forwarding rule can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:slb/rule:Rule example rule-abc123456
+    /// $ pulumi import alicloud:slb/rule:Rule example rule-abc123456
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:slb/rule:Rule")]

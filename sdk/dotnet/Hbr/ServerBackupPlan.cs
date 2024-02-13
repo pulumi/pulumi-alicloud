@@ -104,7 +104,7 @@ namespace Pulumi.AliCloud.Hbr
     /// Hybrid Backup Recovery (HBR) Server Backup Plan can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:hbr/serverBackupPlan:ServerBackupPlan example &lt;id&gt;
+    /// $ pulumi import alicloud:hbr/serverBackupPlan:ServerBackupPlan example &lt;id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:hbr/serverBackupPlan:ServerBackupPlan")]

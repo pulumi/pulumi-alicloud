@@ -83,7 +83,7 @@ import * as utilities from "../utilities";
  * RDS database endpoint feature can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:rds/dbInstanceEndpoint:DbInstanceEndpoint example <db_instance_id>:<db_instance_endpoint_id>
+ * $ pulumi import alicloud:rds/dbInstanceEndpoint:DbInstanceEndpoint example <db_instance_id>:<db_instance_endpoint_id>
  * ```
  */
 export class DbInstanceEndpoint extends pulumi.CustomResource {

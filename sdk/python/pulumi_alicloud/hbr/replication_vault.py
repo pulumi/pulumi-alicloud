@@ -249,7 +249,7 @@ class ReplicationVault(pulumi.CustomResource):
         Hybrid Backup Recovery (HBR) Replication Vault can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:hbr/replicationVault:ReplicationVault example <id>
+        $ pulumi import alicloud:hbr/replicationVault:ReplicationVault example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -304,7 +304,7 @@ class ReplicationVault(pulumi.CustomResource):
         Hybrid Backup Recovery (HBR) Replication Vault can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:hbr/replicationVault:ReplicationVault example <id>
+        $ pulumi import alicloud:hbr/replicationVault:ReplicationVault example <id>
         ```
 
         :param str resource_name: The name of the resource.

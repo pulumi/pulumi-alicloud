@@ -128,7 +128,7 @@ class ScimServerCredential(pulumi.CustomResource):
         Cloud SSO SCIM Server Credential can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:cloudsso/scimServerCredential:ScimServerCredential example <directory_id>:<credential_id>
+        $ pulumi import alicloud:cloudsso/scimServerCredential:ScimServerCredential example <directory_id>:<credential_id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -156,7 +156,7 @@ class ScimServerCredential(pulumi.CustomResource):
         Cloud SSO SCIM Server Credential can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:cloudsso/scimServerCredential:ScimServerCredential example <directory_id>:<credential_id>
+        $ pulumi import alicloud:cloudsso/scimServerCredential:ScimServerCredential example <directory_id>:<credential_id>
         ```
 
         :param str resource_name: The name of the resource.

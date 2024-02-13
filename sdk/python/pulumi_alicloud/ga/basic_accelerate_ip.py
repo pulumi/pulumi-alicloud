@@ -170,7 +170,7 @@ class BasicAccelerateIp(pulumi.CustomResource):
         Global Accelerator (GA) Basic Accelerate IP can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:ga/basicAccelerateIp:BasicAccelerateIp example <id>
+        $ pulumi import alicloud:ga/basicAccelerateIp:BasicAccelerateIp example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -225,7 +225,7 @@ class BasicAccelerateIp(pulumi.CustomResource):
         Global Accelerator (GA) Basic Accelerate IP can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:ga/basicAccelerateIp:BasicAccelerateIp example <id>
+        $ pulumi import alicloud:ga/basicAccelerateIp:BasicAccelerateIp example <id>
         ```
 
         :param str resource_name: The name of the resource.

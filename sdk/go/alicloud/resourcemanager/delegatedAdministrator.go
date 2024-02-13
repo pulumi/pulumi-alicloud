@@ -75,9 +75,7 @@ import (
 // Resource Manager Delegated Administrator can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:resourcemanager/delegatedAdministrator:DelegatedAdministrator example <account_id>:<service_principal>
-//
+// $ pulumi import alicloud:resourcemanager/delegatedAdministrator:DelegatedAdministrator example <account_id>:<service_principal>
 // ```
 type DelegatedAdministrator struct {
 	pulumi.CustomResourceState

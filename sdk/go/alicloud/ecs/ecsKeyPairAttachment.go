@@ -119,9 +119,7 @@ import (
 // ECS Key Pair Attachment can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:ecs/ecsKeyPairAttachment:EcsKeyPairAttachment example <key_pair_name>:<instance_ids>
-//
+// $ pulumi import alicloud:ecs/ecsKeyPairAttachment:EcsKeyPairAttachment example <key_pair_name>:<instance_ids>
 // ```
 type EcsKeyPairAttachment struct {
 	pulumi.CustomResourceState

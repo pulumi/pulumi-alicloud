@@ -183,7 +183,7 @@ class DhcpOptionsSetAttachment(pulumi.CustomResource):
         VPC Dhcp Options Set Attachment can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:vpc/dhcpOptionsSetAttachment:DhcpOptionsSetAttachment example <id>
+        $ pulumi import alicloud:vpc/dhcpOptionsSetAttachment:DhcpOptionsSetAttachment example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -235,7 +235,7 @@ class DhcpOptionsSetAttachment(pulumi.CustomResource):
         VPC Dhcp Options Set Attachment can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:vpc/dhcpOptionsSetAttachment:DhcpOptionsSetAttachment example <id>
+        $ pulumi import alicloud:vpc/dhcpOptionsSetAttachment:DhcpOptionsSetAttachment example <id>
         ```
 
         :param str resource_name: The name of the resource.

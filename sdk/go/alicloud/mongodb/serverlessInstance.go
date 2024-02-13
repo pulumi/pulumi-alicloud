@@ -99,9 +99,7 @@ import (
 // MongoDB Serverless Instance can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:mongodb/serverlessInstance:ServerlessInstance example <id>
-//
+// $ pulumi import alicloud:mongodb/serverlessInstance:ServerlessInstance example <id>
 // ```
 type ServerlessInstance struct {
 	pulumi.CustomResourceState

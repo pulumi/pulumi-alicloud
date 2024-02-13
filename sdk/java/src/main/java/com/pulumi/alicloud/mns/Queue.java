@@ -57,7 +57,7 @@ import javax.annotation.Nullable;
  * MNS QUEUE can be imported using the id or name, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:mns/queue:Queue queue queuename
+ * $ pulumi import alicloud:mns/queue:Queue queue queuename
  * ```
  * 
  */

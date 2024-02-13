@@ -342,7 +342,7 @@ class FirewallVpcFirewall(pulumi.CustomResource):
         Cloud Firewall Vpc Firewall can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:cloudfirewall/firewallVpcFirewall:FirewallVpcFirewall example <id>
+        $ pulumi import alicloud:cloudfirewall/firewallVpcFirewall:FirewallVpcFirewall example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -409,7 +409,7 @@ class FirewallVpcFirewall(pulumi.CustomResource):
         Cloud Firewall Vpc Firewall can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:cloudfirewall/firewallVpcFirewall:FirewallVpcFirewall example <id>
+        $ pulumi import alicloud:cloudfirewall/firewallVpcFirewall:FirewallVpcFirewall example <id>
         ```
 
         :param str resource_name: The name of the resource.

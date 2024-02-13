@@ -107,7 +107,7 @@ class GroupMembership(pulumi.CustomResource):
         RAM Group membership can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:ram/groupMembership:GroupMembership example my-group
+        $ pulumi import alicloud:ram/groupMembership:GroupMembership example my-group
         ```
 
         :param str resource_name: The name of the resource.
@@ -131,7 +131,7 @@ class GroupMembership(pulumi.CustomResource):
         RAM Group membership can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:ram/groupMembership:GroupMembership example my-group
+        $ pulumi import alicloud:ram/groupMembership:GroupMembership example my-group
         ```
 
         :param str resource_name: The name of the resource.

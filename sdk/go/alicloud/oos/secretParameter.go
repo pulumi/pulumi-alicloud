@@ -74,9 +74,7 @@ import (
 // OOS Secret Parameter can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:oos/secretParameter:SecretParameter example <secret_parameter_name>
-//
+// $ pulumi import alicloud:oos/secretParameter:SecretParameter example <secret_parameter_name>
 // ```
 type SecretParameter struct {
 	pulumi.CustomResourceState

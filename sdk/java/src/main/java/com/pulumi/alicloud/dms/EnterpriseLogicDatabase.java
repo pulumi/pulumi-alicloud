@@ -62,7 +62,7 @@ import javax.annotation.Nullable;
  * DMS Enterprise Logic Database can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:dms/enterpriseLogicDatabase:EnterpriseLogicDatabase example &lt;id&gt;
+ * $ pulumi import alicloud:dms/enterpriseLogicDatabase:EnterpriseLogicDatabase example &lt;id&gt;
  * ```
  * 
  */

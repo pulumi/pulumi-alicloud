@@ -26,7 +26,7 @@ import javax.annotation.Nullable;
  * Cloud Storage Gateway Gateway Cache Disk can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:cloudstoragegateway/gatewayCacheDisk:GatewayCacheDisk example &lt;gateway_id&gt;:&lt;cache_id&gt;:&lt;local_file_path&gt;
+ * $ pulumi import alicloud:cloudstoragegateway/gatewayCacheDisk:GatewayCacheDisk example &lt;gateway_id&gt;:&lt;cache_id&gt;:&lt;local_file_path&gt;
  * ```
  * 
  */

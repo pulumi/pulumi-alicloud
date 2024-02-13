@@ -28,7 +28,7 @@ import javax.annotation.Nullable;
  * Cloud Storage Gateway Gateway can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:cloudstoragegateway/gateway:Gateway example &lt;id&gt;
+ * $ pulumi import alicloud:cloudstoragegateway/gateway:Gateway example &lt;id&gt;
  * ```
  * 
  */

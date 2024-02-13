@@ -66,7 +66,7 @@ import * as utilities from "../utilities";
  * Cloud Config Aggregate Compliance Pack can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:cfg/aggregateCompliancePack:AggregateCompliancePack example <aggregator_id>:<aggregator_compliance_pack_id>
+ * $ pulumi import alicloud:cfg/aggregateCompliancePack:AggregateCompliancePack example <aggregator_id>:<aggregator_compliance_pack_id>
  * ```
  */
 export class AggregateCompliancePack extends pulumi.CustomResource {

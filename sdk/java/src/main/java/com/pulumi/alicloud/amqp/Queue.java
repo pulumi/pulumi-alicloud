@@ -93,7 +93,7 @@ import javax.annotation.Nullable;
  * RabbitMQ (AMQP) Queue can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:amqp/queue:Queue example &lt;instance_id&gt;:&lt;virtual_host_name&gt;:&lt;queue_name&gt;
+ * $ pulumi import alicloud:amqp/queue:Queue example &lt;instance_id&gt;:&lt;virtual_host_name&gt;:&lt;queue_name&gt;
  * ```
  * 
  */

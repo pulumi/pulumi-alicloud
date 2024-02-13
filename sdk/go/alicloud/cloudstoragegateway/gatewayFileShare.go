@@ -23,9 +23,7 @@ import (
 // Cloud Storage Gateway Gateway File Share can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:cloudstoragegateway/gatewayFileShare:GatewayFileShare example <gateway_id>:<index_id>
-//
+// $ pulumi import alicloud:cloudstoragegateway/gatewayFileShare:GatewayFileShare example <gateway_id>:<index_id>
 // ```
 type GatewayFileShare struct {
 	pulumi.CustomResourceState

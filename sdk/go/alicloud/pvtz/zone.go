@@ -44,9 +44,7 @@ import (
 // Private Zone can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:pvtz/zone:Zone example abc123456
-//
+// $ pulumi import alicloud:pvtz/zone:Zone example abc123456
 // ```
 type Zone struct {
 	pulumi.CustomResourceState

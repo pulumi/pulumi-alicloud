@@ -91,7 +91,7 @@ import * as utilities from "../utilities";
  * HBR Ecs Backup Plan can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:hbr/ecsBackupPlan:EcsBackupPlan example <id>
+ * $ pulumi import alicloud:hbr/ecsBackupPlan:EcsBackupPlan example <id>
  * ```
  */
 export class EcsBackupPlan extends pulumi.CustomResource {

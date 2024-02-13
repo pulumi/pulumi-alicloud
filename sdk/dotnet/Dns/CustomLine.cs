@@ -50,7 +50,7 @@ namespace Pulumi.AliCloud.Dns
     /// Alidns Custom Line can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:dns/customLine:CustomLine example &lt;id&gt;
+    /// $ pulumi import alicloud:dns/customLine:CustomLine example &lt;id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:dns/customLine:CustomLine")]

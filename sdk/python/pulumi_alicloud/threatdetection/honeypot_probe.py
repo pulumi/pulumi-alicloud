@@ -463,7 +463,7 @@ class HoneypotProbe(pulumi.CustomResource):
         Threat Detection Honeypot Probe can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:threatdetection/honeypotProbe:HoneypotProbe example <id>
+        $ pulumi import alicloud:threatdetection/honeypotProbe:HoneypotProbe example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -522,7 +522,7 @@ class HoneypotProbe(pulumi.CustomResource):
         Threat Detection Honeypot Probe can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:threatdetection/honeypotProbe:HoneypotProbe example <id>
+        $ pulumi import alicloud:threatdetection/honeypotProbe:HoneypotProbe example <id>
         ```
 
         :param str resource_name: The name of the resource.

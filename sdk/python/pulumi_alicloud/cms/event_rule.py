@@ -469,7 +469,7 @@ class EventRule(pulumi.CustomResource):
         Cloud Monitor Service Event Rule can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:cms/eventRule:EventRule example <rule_name>
+        $ pulumi import alicloud:cms/eventRule:EventRule example <rule_name>
         ```
 
         :param str resource_name: The name of the resource.
@@ -533,7 +533,7 @@ class EventRule(pulumi.CustomResource):
         Cloud Monitor Service Event Rule can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:cms/eventRule:EventRule example <rule_name>
+        $ pulumi import alicloud:cms/eventRule:EventRule example <rule_name>
         ```
 
         :param str resource_name: The name of the resource.

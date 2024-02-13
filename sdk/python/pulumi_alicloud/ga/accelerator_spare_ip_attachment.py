@@ -190,7 +190,7 @@ class AcceleratorSpareIpAttachment(pulumi.CustomResource):
         Global Accelerator (GA) Accelerator Spare Ip Attachment can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:ga/acceleratorSpareIpAttachment:AcceleratorSpareIpAttachment example <accelerator_id>:<spare_ip>
+        $ pulumi import alicloud:ga/acceleratorSpareIpAttachment:AcceleratorSpareIpAttachment example <accelerator_id>:<spare_ip>
         ```
 
         :param str resource_name: The name of the resource.
@@ -249,7 +249,7 @@ class AcceleratorSpareIpAttachment(pulumi.CustomResource):
         Global Accelerator (GA) Accelerator Spare Ip Attachment can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:ga/acceleratorSpareIpAttachment:AcceleratorSpareIpAttachment example <accelerator_id>:<spare_ip>
+        $ pulumi import alicloud:ga/acceleratorSpareIpAttachment:AcceleratorSpareIpAttachment example <accelerator_id>:<spare_ip>
         ```
 
         :param str resource_name: The name of the resource.

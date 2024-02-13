@@ -532,7 +532,7 @@ class Trail(pulumi.CustomResource):
         Action trail can be imported using the id or trail_name, e.g.
 
         ```sh
-         $ pulumi import alicloud:actiontrail/trail:Trail default abc12345678
+        $ pulumi import alicloud:actiontrail/trail:Trail default abc12345678
         ```
 
         :param str resource_name: The name of the resource.
@@ -591,7 +591,7 @@ class Trail(pulumi.CustomResource):
         Action trail can be imported using the id or trail_name, e.g.
 
         ```sh
-         $ pulumi import alicloud:actiontrail/trail:Trail default abc12345678
+        $ pulumi import alicloud:actiontrail/trail:Trail default abc12345678
         ```
 
         :param str resource_name: The name of the resource.

@@ -52,9 +52,7 @@ import (
 // ROS Template can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:ros/template:Template example <template_id>
-//
+// $ pulumi import alicloud:ros/template:Template example <template_id>
 // ```
 type Template struct {
 	pulumi.CustomResourceState

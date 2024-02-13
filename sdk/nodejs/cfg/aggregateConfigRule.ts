@@ -54,7 +54,7 @@ import * as utilities from "../utilities";
  * Cloud Config Aggregate Config Rule can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:cfg/aggregateConfigRule:AggregateConfigRule example "<aggregator_id>:<config_rule_id>"
+ * $ pulumi import alicloud:cfg/aggregateConfigRule:AggregateConfigRule example "<aggregator_id>:<config_rule_id>"
  * ```
  */
 export class AggregateConfigRule extends pulumi.CustomResource {

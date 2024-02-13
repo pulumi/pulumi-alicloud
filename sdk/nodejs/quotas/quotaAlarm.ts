@@ -41,7 +41,7 @@ import * as utilities from "../utilities";
  * Quotas Quota Alarm can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:quotas/quotaAlarm:QuotaAlarm example <id>
+ * $ pulumi import alicloud:quotas/quotaAlarm:QuotaAlarm example <id>
  * ```
  */
 export class QuotaAlarm extends pulumi.CustomResource {

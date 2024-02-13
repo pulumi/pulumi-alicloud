@@ -23,9 +23,7 @@ import (
 // EBS Disk Replica Group can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:ebs/diskReplicaGroup:DiskReplicaGroup example <id>
-//
+// $ pulumi import alicloud:ebs/diskReplicaGroup:DiskReplicaGroup example <id>
 // ```
 type DiskReplicaGroup struct {
 	pulumi.CustomResourceState

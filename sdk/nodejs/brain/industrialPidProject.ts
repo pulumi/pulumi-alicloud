@@ -28,7 +28,7 @@ import * as utilities from "../utilities";
  * Brain Industrial Pid Project can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:brain/industrialPidProject:IndustrialPidProject example <id>
+ * $ pulumi import alicloud:brain/industrialPidProject:IndustrialPidProject example <id>
  * ```
  */
 export class IndustrialPidProject extends pulumi.CustomResource {

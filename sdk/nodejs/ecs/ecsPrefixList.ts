@@ -38,7 +38,7 @@ import * as utilities from "../utilities";
  * ECS Prefix List can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:ecs/ecsPrefixList:EcsPrefixList example <id>
+ * $ pulumi import alicloud:ecs/ecsPrefixList:EcsPrefixList example <id>
  * ```
  */
 export class EcsPrefixList extends pulumi.CustomResource {

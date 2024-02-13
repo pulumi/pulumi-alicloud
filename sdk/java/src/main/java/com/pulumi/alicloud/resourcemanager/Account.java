@@ -76,7 +76,7 @@ import javax.annotation.Nullable;
  * Resource Manager Account can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:resourcemanager/account:Account example 13148890145*****
+ * $ pulumi import alicloud:resourcemanager/account:Account example 13148890145*****
  * ```
  * 
  */

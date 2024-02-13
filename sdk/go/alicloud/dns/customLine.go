@@ -58,9 +58,7 @@ import (
 // Alidns Custom Line can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:dns/customLine:CustomLine example <id>
-//
+// $ pulumi import alicloud:dns/customLine:CustomLine example <id>
 // ```
 type CustomLine struct {
 	pulumi.CustomResourceState

@@ -72,9 +72,7 @@ import (
 // Express Connect Ec Failover Test Job can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:expressconnect/ecFailoverTestJob:EcFailoverTestJob example <id>
-//
+// $ pulumi import alicloud:expressconnect/ecFailoverTestJob:EcFailoverTestJob example <id>
 // ```
 type EcFailoverTestJob struct {
 	pulumi.CustomResourceState

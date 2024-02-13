@@ -130,9 +130,7 @@ import (
 // DNS Monitor Config can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:dns/monitorConfig:MonitorConfig example <id>
-//
+// $ pulumi import alicloud:dns/monitorConfig:MonitorConfig example <id>
 // ```
 type MonitorConfig struct {
 	pulumi.CustomResourceState

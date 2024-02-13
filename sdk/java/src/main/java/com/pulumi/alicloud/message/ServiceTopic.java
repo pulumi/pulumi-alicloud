@@ -64,7 +64,7 @@ import javax.annotation.Nullable;
  * Message Notification Service Topic can be imported using the id or topic_name, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:message/serviceTopic:ServiceTopic example &lt;topic_name&gt;
+ * $ pulumi import alicloud:message/serviceTopic:ServiceTopic example &lt;topic_name&gt;
  * ```
  * 
  */

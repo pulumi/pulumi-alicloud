@@ -474,7 +474,7 @@ class PeerConnection(pulumi.CustomResource):
         VPC Peer Connection can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:vpc/peerConnection:PeerConnection example <id>
+        $ pulumi import alicloud:vpc/peerConnection:PeerConnection example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -547,7 +547,7 @@ class PeerConnection(pulumi.CustomResource):
         VPC Peer Connection can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:vpc/peerConnection:PeerConnection example <id>
+        $ pulumi import alicloud:vpc/peerConnection:PeerConnection example <id>
         ```
 
         :param str resource_name: The name of the resource.

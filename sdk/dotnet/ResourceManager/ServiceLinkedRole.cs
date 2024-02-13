@@ -41,7 +41,7 @@ namespace Pulumi.AliCloud.ResourceManager
     /// Resource Manager Service Linked Role can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:resourcemanager/serviceLinkedRole:ServiceLinkedRole default &lt;service_name&gt;:&lt;role_name&gt;
+    /// $ pulumi import alicloud:resourcemanager/serviceLinkedRole:ServiceLinkedRole default &lt;service_name&gt;:&lt;role_name&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:resourcemanager/serviceLinkedRole:ServiceLinkedRole")]

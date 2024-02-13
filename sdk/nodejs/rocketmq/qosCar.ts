@@ -40,7 +40,7 @@ import * as utilities from "../utilities";
  * The Sag Qos Car can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:rocketmq/qosCar:QosCar example <qos_id>:<qos_car_id>
+ * $ pulumi import alicloud:rocketmq/qosCar:QosCar example <qos_id>:<qos_car_id>
  * ```
  */
 export class QosCar extends pulumi.CustomResource {

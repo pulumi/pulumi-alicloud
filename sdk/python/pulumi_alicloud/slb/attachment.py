@@ -285,7 +285,7 @@ class Attachment(pulumi.CustomResource):
         Load balancer attachment can be imported using the id or load balancer id, e.g.
 
         ```sh
-         $ pulumi import alicloud:slb/attachment:Attachment example lb-abc123456
+        $ pulumi import alicloud:slb/attachment:Attachment example lb-abc123456
         ```
 
         :param str resource_name: The name of the resource.
@@ -359,7 +359,7 @@ class Attachment(pulumi.CustomResource):
         Load balancer attachment can be imported using the id or load balancer id, e.g.
 
         ```sh
-         $ pulumi import alicloud:slb/attachment:Attachment example lb-abc123456
+        $ pulumi import alicloud:slb/attachment:Attachment example lb-abc123456
         ```
 
         :param str resource_name: The name of the resource.

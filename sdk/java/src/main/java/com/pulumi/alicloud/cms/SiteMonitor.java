@@ -86,7 +86,7 @@ import javax.annotation.Nullable;
  * Cloud Monitor Service Site Monitor can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:cms/siteMonitor:SiteMonitor example &lt;id&gt;
+ * $ pulumi import alicloud:cms/siteMonitor:SiteMonitor example &lt;id&gt;
  * ```
  * 
  */

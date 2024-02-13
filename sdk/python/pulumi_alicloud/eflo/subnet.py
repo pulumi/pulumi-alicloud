@@ -339,7 +339,7 @@ class Subnet(pulumi.CustomResource):
         Eflo Subnet can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:eflo/subnet:Subnet example <vpd_id>:<subnet_id>
+        $ pulumi import alicloud:eflo/subnet:Subnet example <vpd_id>:<subnet_id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -396,7 +396,7 @@ class Subnet(pulumi.CustomResource):
         Eflo Subnet can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:eflo/subnet:Subnet example <vpd_id>:<subnet_id>
+        $ pulumi import alicloud:eflo/subnet:Subnet example <vpd_id>:<subnet_id>
         ```
 
         :param str resource_name: The name of the resource.

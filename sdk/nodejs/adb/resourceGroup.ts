@@ -73,7 +73,7 @@ import * as utilities from "../utilities";
  * Adb Resource Group can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:adb/resourceGroup:ResourceGroup example <db_cluster_id>:<group_name>
+ * $ pulumi import alicloud:adb/resourceGroup:ResourceGroup example <db_cluster_id>:<group_name>
  * ```
  */
 export class ResourceGroup extends pulumi.CustomResource {

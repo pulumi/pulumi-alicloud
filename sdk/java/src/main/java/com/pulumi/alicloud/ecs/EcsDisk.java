@@ -24,7 +24,7 @@ import javax.annotation.Nullable;
  * ECS Disk can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:ecs/ecsDisk:EcsDisk example d-abcd12345
+ * $ pulumi import alicloud:ecs/ecsDisk:EcsDisk example d-abcd12345
  * ```
  * 
  */

@@ -34,7 +34,7 @@ import * as utilities from "../utilities";
  * Acl entry attachment can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:alb/aclEntryAttachment:AclEntryAttachment example <acl_id>:<entry>
+ * $ pulumi import alicloud:alb/aclEntryAttachment:AclEntryAttachment example <acl_id>:<entry>
  * ```
  */
 export class AclEntryAttachment extends pulumi.CustomResource {

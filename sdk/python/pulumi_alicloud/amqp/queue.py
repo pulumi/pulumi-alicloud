@@ -490,7 +490,7 @@ class Queue(pulumi.CustomResource):
         RabbitMQ (AMQP) Queue can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:amqp/queue:Queue example <instance_id>:<virtual_host_name>:<queue_name>
+        $ pulumi import alicloud:amqp/queue:Queue example <instance_id>:<virtual_host_name>:<queue_name>
         ```
 
         :param str resource_name: The name of the resource.
@@ -571,7 +571,7 @@ class Queue(pulumi.CustomResource):
         RabbitMQ (AMQP) Queue can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:amqp/queue:Queue example <instance_id>:<virtual_host_name>:<queue_name>
+        $ pulumi import alicloud:amqp/queue:Queue example <instance_id>:<virtual_host_name>:<queue_name>
         ```
 
         :param str resource_name: The name of the resource.

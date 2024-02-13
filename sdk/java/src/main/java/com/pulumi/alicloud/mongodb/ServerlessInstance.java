@@ -108,7 +108,7 @@ import javax.annotation.Nullable;
  * MongoDB Serverless Instance can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:mongodb/serverlessInstance:ServerlessInstance example &lt;id&gt;
+ * $ pulumi import alicloud:mongodb/serverlessInstance:ServerlessInstance example &lt;id&gt;
  * ```
  * 
  */

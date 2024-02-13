@@ -935,7 +935,7 @@ class RestoreJob(pulumi.CustomResource):
         Hybrid Backup Recovery (HBR) Restore Job can be imported using the id. Format to `<restore_job_id>:<restore_type>`, e.g.
 
         ```sh
-         $ pulumi import alicloud:hbr/restoreJob:RestoreJob example your_restore_job_id:your_restore_type
+        $ pulumi import alicloud:hbr/restoreJob:RestoreJob example your_restore_job_id:your_restore_type
         ```
 
         :param str resource_name: The name of the resource.
@@ -1036,7 +1036,7 @@ class RestoreJob(pulumi.CustomResource):
         Hybrid Backup Recovery (HBR) Restore Job can be imported using the id. Format to `<restore_job_id>:<restore_type>`, e.g.
 
         ```sh
-         $ pulumi import alicloud:hbr/restoreJob:RestoreJob example your_restore_job_id:your_restore_type
+        $ pulumi import alicloud:hbr/restoreJob:RestoreJob example your_restore_job_id:your_restore_type
         ```
 
         :param str resource_name: The name of the resource.

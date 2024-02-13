@@ -142,7 +142,7 @@ import javax.annotation.Nullable;
  * ECS Snapshot Group can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:ecs/ecsSnapshotGroup:EcsSnapshotGroup example &lt;id&gt;
+ * $ pulumi import alicloud:ecs/ecsSnapshotGroup:EcsSnapshotGroup example &lt;id&gt;
  * ```
  * 
  */

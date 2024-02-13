@@ -23,9 +23,7 @@ import (
 // Ebs Dedicated Block Storage Cluster can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:ebs/dedicatedBlockStorageCluster:DedicatedBlockStorageCluster example <id>
-//
+// $ pulumi import alicloud:ebs/dedicatedBlockStorageCluster:DedicatedBlockStorageCluster example <id>
 // ```
 type DedicatedBlockStorageCluster struct {
 	pulumi.CustomResourceState

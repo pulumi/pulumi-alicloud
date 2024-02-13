@@ -98,7 +98,7 @@ import javax.annotation.Nullable;
  * Microservice Engine (MSE) Znode can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:mse/znode:Znode example &lt;cluster_id&gt;:&lt;path&gt;
+ * $ pulumi import alicloud:mse/znode:Znode example &lt;cluster_id&gt;:&lt;path&gt;
  * ```
  * 
  */

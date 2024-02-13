@@ -32,7 +32,7 @@ import * as utilities from "../utilities";
  * ECS Command can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:ecs/command:Command example <id>
+ * $ pulumi import alicloud:ecs/command:Command example <id>
  * ```
  */
 export class Command extends pulumi.CustomResource {

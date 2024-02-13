@@ -172,7 +172,7 @@ class Er(pulumi.CustomResource):
         DCDN Er can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:dcdn/er:Er example <id>
+        $ pulumi import alicloud:dcdn/er:Er example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -226,7 +226,7 @@ class Er(pulumi.CustomResource):
         DCDN Er can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:dcdn/er:Er example <id>
+        $ pulumi import alicloud:dcdn/er:Er example <id>
         ```
 
         :param str resource_name: The name of the resource.

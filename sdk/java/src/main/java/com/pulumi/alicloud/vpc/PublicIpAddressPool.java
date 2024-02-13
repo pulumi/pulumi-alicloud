@@ -73,7 +73,7 @@ import javax.annotation.Nullable;
  * Vpc Public Ip Address Pool can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:vpc/publicIpAddressPool:PublicIpAddressPool example &lt;id&gt;
+ * $ pulumi import alicloud:vpc/publicIpAddressPool:PublicIpAddressPool example &lt;id&gt;
  * ```
  * 
  */

@@ -222,7 +222,7 @@ import javax.annotation.Nullable;
  * NLB Listener Additional Certificate Attachment can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:nlb/listenerAdditionalCertificateAttachment:ListenerAdditionalCertificateAttachment example &lt;listener_id&gt;:&lt;certificate_id&gt;
+ * $ pulumi import alicloud:nlb/listenerAdditionalCertificateAttachment:ListenerAdditionalCertificateAttachment example &lt;listener_id&gt;:&lt;certificate_id&gt;
  * ```
  * 
  */

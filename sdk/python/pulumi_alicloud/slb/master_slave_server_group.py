@@ -282,7 +282,7 @@ class MasterSlaveServerGroup(pulumi.CustomResource):
         Load balancer master slave server group can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:slb/masterSlaveServerGroup:MasterSlaveServerGroup example abc123456
+        $ pulumi import alicloud:slb/masterSlaveServerGroup:MasterSlaveServerGroup example abc123456
         ```
 
         :param str resource_name: The name of the resource.
@@ -414,7 +414,7 @@ class MasterSlaveServerGroup(pulumi.CustomResource):
         Load balancer master slave server group can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:slb/masterSlaveServerGroup:MasterSlaveServerGroup example abc123456
+        $ pulumi import alicloud:slb/masterSlaveServerGroup:MasterSlaveServerGroup example abc123456
         ```
 
         :param str resource_name: The name of the resource.

@@ -33,7 +33,7 @@ import * as utilities from "../utilities";
  * Resource Manager Saved Query can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:resourcemanager/savedQuery:SavedQuery example <id>
+ * $ pulumi import alicloud:resourcemanager/savedQuery:SavedQuery example <id>
  * ```
  */
 export class SavedQuery extends pulumi.CustomResource {

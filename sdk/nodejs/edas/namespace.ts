@@ -37,7 +37,7 @@ import * as utilities from "../utilities";
  * EDAS Namespace can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:edas/namespace:Namespace example <id>
+ * $ pulumi import alicloud:edas/namespace:Namespace example <id>
  * ```
  */
 export class Namespace extends pulumi.CustomResource {

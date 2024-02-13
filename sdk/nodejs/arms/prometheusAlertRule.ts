@@ -18,7 +18,7 @@ import * as utilities from "../utilities";
  * Application Real-Time Monitoring Service (ARMS) Prometheus Alert Rule can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:arms/prometheusAlertRule:PrometheusAlertRule example <cluster_id>:<prometheus_alert_rule_id>
+ * $ pulumi import alicloud:arms/prometheusAlertRule:PrometheusAlertRule example <cluster_id>:<prometheus_alert_rule_id>
  * ```
  */
 export class PrometheusAlertRule extends pulumi.CustomResource {

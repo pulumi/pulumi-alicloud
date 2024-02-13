@@ -21,7 +21,7 @@ namespace Pulumi.AliCloud.Ecs
     /// Ecs Elasticity Assurance can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:ecs/elasticityAssurance:ElasticityAssurance example &lt;id&gt;
+    /// $ pulumi import alicloud:ecs/elasticityAssurance:ElasticityAssurance example &lt;id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:ecs/elasticityAssurance:ElasticityAssurance")]

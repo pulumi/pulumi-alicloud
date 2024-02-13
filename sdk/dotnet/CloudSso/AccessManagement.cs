@@ -25,7 +25,7 @@ namespace Pulumi.AliCloud.CloudSso
     /// Cloud SSO Access Assignment can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:cloudsso/accessManagement:AccessManagement example &lt;directory_id&gt;:&lt;access_configuration_id&gt;:&lt;target_type&gt;:&lt;target_id&gt;:&lt;principal_type&gt;:&lt;principal_id&gt;
+    /// $ pulumi import alicloud:cloudsso/accessManagement:AccessManagement example &lt;directory_id&gt;:&lt;access_configuration_id&gt;:&lt;target_type&gt;:&lt;target_id&gt;:&lt;principal_type&gt;:&lt;principal_id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:cloudsso/accessManagement:AccessManagement")]

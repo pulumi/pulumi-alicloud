@@ -95,7 +95,7 @@ namespace Pulumi.AliCloud.PrivateLink
     /// Private Link Vpc Endpoint Service Resource can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:privatelink/vpcEndpointServiceResource:VpcEndpointServiceResource example &lt;service_id&gt;:&lt;resource_id&gt;:&lt;zone_id&gt;
+    /// $ pulumi import alicloud:privatelink/vpcEndpointServiceResource:VpcEndpointServiceResource example &lt;service_id&gt;:&lt;resource_id&gt;:&lt;zone_id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:privatelink/vpcEndpointServiceResource:VpcEndpointServiceResource")]

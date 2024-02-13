@@ -109,7 +109,7 @@ import javax.annotation.Nullable;
  * PolarDB account privilege can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:polardb/accountPrivilege:AccountPrivilege example &#34;pc-12345:tf_account:ReadOnly&#34;
+ * $ pulumi import alicloud:polardb/accountPrivilege:AccountPrivilege example &#34;pc-12345:tf_account:ReadOnly&#34;
  * ```
  * 
  */

@@ -288,7 +288,7 @@ class RegistryEnterpriseRepo(pulumi.CustomResource):
         Container Registry Enterprise Edition repository can be imported using the `{instance_id}:{namespace}:{repository}`, e.g.
 
         ```sh
-         $ pulumi import alicloud:cs/registryEnterpriseRepo:RegistryEnterpriseRepo default `cri-xxx:my-namespace:my-repo`
+        $ pulumi import alicloud:cs/registryEnterpriseRepo:RegistryEnterpriseRepo default `cri-xxx:my-namespace:my-repo`
         ```
 
         :param str resource_name: The name of the resource.
@@ -351,7 +351,7 @@ class RegistryEnterpriseRepo(pulumi.CustomResource):
         Container Registry Enterprise Edition repository can be imported using the `{instance_id}:{namespace}:{repository}`, e.g.
 
         ```sh
-         $ pulumi import alicloud:cs/registryEnterpriseRepo:RegistryEnterpriseRepo default `cri-xxx:my-namespace:my-repo`
+        $ pulumi import alicloud:cs/registryEnterpriseRepo:RegistryEnterpriseRepo default `cri-xxx:my-namespace:my-repo`
         ```
 
         :param str resource_name: The name of the resource.

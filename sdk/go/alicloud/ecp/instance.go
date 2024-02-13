@@ -105,9 +105,7 @@ import (
 // Elastic Cloud Phone (ECP) Instance can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:ecp/instance:Instance example <id>
-//
+// $ pulumi import alicloud:ecp/instance:Instance example <id>
 // ```
 type Instance struct {
 	pulumi.CustomResourceState

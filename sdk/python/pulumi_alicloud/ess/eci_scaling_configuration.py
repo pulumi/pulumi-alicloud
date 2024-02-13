@@ -1309,7 +1309,7 @@ class EciScalingConfiguration(pulumi.CustomResource):
         ESS eci scaling configuration can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:ess/eciScalingConfiguration:EciScalingConfiguration example asc-abc123456
+        $ pulumi import alicloud:ess/eciScalingConfiguration:EciScalingConfiguration example asc-abc123456
         ```
 
         :param str resource_name: The name of the resource.
@@ -1434,7 +1434,7 @@ class EciScalingConfiguration(pulumi.CustomResource):
         ESS eci scaling configuration can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:ess/eciScalingConfiguration:EciScalingConfiguration example asc-abc123456
+        $ pulumi import alicloud:ess/eciScalingConfiguration:EciScalingConfiguration example asc-abc123456
         ```
 
         :param str resource_name: The name of the resource.

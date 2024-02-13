@@ -98,7 +98,7 @@ namespace Pulumi.AliCloud.Rds
     /// RDS MySQL database cluster node agent function can be imported using id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:rds/dbNode:DbNode example &lt;db_instance_id&gt;:&lt;node_id&gt;
+    /// $ pulumi import alicloud:rds/dbNode:DbNode example &lt;db_instance_id&gt;:&lt;node_id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:rds/dbNode:DbNode")]

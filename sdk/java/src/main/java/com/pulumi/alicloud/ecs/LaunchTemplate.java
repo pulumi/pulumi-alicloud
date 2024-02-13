@@ -121,7 +121,7 @@ import javax.annotation.Nullable;
  * Launch Template can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:ecs/launchTemplate:LaunchTemplate lt lt-abc1234567890000
+ * $ pulumi import alicloud:ecs/launchTemplate:LaunchTemplate lt lt-abc1234567890000
  * ```
  * 
  */

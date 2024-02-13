@@ -190,7 +190,7 @@ class ServiceHybridDoubleWrite(pulumi.CustomResource):
         Cloud Monitor Service Hybrid Double Write can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:cloudmonitor/serviceHybridDoubleWrite:ServiceHybridDoubleWrite example <source_namespace>:<source_user_id>
+        $ pulumi import alicloud:cloudmonitor/serviceHybridDoubleWrite:ServiceHybridDoubleWrite example <source_namespace>:<source_user_id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -235,7 +235,7 @@ class ServiceHybridDoubleWrite(pulumi.CustomResource):
         Cloud Monitor Service Hybrid Double Write can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:cloudmonitor/serviceHybridDoubleWrite:ServiceHybridDoubleWrite example <source_namespace>:<source_user_id>
+        $ pulumi import alicloud:cloudmonitor/serviceHybridDoubleWrite:ServiceHybridDoubleWrite example <source_namespace>:<source_user_id>
         ```
 
         :param str resource_name: The name of the resource.

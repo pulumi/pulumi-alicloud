@@ -160,7 +160,7 @@ import * as utilities from "../utilities";
  * NLB Listener Additional Certificate Attachment can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:nlb/listenerAdditionalCertificateAttachment:ListenerAdditionalCertificateAttachment example <listener_id>:<certificate_id>
+ * $ pulumi import alicloud:nlb/listenerAdditionalCertificateAttachment:ListenerAdditionalCertificateAttachment example <listener_id>:<certificate_id>
  * ```
  */
 export class ListenerAdditionalCertificateAttachment extends pulumi.CustomResource {

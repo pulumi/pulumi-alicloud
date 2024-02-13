@@ -110,7 +110,7 @@ import javax.annotation.Nullable;
  * RDS remote disaster recovery policies can be imported using id or instance id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:rds/rdsInstanceCrossBackupPolicy:RdsInstanceCrossBackupPolicy example &#34;rm-12345678&#34;
+ * $ pulumi import alicloud:rds/rdsInstanceCrossBackupPolicy:RdsInstanceCrossBackupPolicy example &#34;rm-12345678&#34;
  * ```
  * 
  */

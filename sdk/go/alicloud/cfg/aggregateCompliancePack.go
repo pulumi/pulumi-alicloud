@@ -106,9 +106,7 @@ import (
 // Cloud Config Aggregate Compliance Pack can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:cfg/aggregateCompliancePack:AggregateCompliancePack example <aggregator_id>:<aggregator_compliance_pack_id>
-//
+// $ pulumi import alicloud:cfg/aggregateCompliancePack:AggregateCompliancePack example <aggregator_id>:<aggregator_compliance_pack_id>
 // ```
 type AggregateCompliancePack struct {
 	pulumi.CustomResourceState

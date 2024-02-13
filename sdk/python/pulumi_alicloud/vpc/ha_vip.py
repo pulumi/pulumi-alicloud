@@ -435,7 +435,7 @@ class HAVip(pulumi.CustomResource):
         The havip can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:vpc/hAVip:HAVip foo havip-abc123456
+        $ pulumi import alicloud:vpc/hAVip:HAVip foo havip-abc123456
         ```
 
         :param str resource_name: The name of the resource.
@@ -486,7 +486,7 @@ class HAVip(pulumi.CustomResource):
         The havip can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:vpc/hAVip:HAVip foo havip-abc123456
+        $ pulumi import alicloud:vpc/hAVip:HAVip foo havip-abc123456
         ```
 
         :param str resource_name: The name of the resource.

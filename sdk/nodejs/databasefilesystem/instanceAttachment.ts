@@ -69,7 +69,7 @@ import * as utilities from "../utilities";
  * DBFS Instance Attachment can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:databasefilesystem/instanceAttachment:InstanceAttachment example <instance_id>:<ecs_id>
+ * $ pulumi import alicloud:databasefilesystem/instanceAttachment:InstanceAttachment example <instance_id>:<ecs_id>
  * ```
  */
 export class InstanceAttachment extends pulumi.CustomResource {

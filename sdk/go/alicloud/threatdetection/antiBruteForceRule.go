@@ -57,9 +57,7 @@ import (
 // Threat Detection Anti Brute Force Rule can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:threatdetection/antiBruteForceRule:AntiBruteForceRule example <id>
-//
+// $ pulumi import alicloud:threatdetection/antiBruteForceRule:AntiBruteForceRule example <id>
 // ```
 type AntiBruteForceRule struct {
 	pulumi.CustomResourceState

@@ -281,7 +281,7 @@ class NasFileSystem(pulumi.CustomResource):
         ECD Nas File System can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:eds/nasFileSystem:NasFileSystem example <id>
+        $ pulumi import alicloud:eds/nasFileSystem:NasFileSystem example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -334,7 +334,7 @@ class NasFileSystem(pulumi.CustomResource):
         ECD Nas File System can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:eds/nasFileSystem:NasFileSystem example <id>
+        $ pulumi import alicloud:eds/nasFileSystem:NasFileSystem example <id>
         ```
 
         :param str resource_name: The name of the resource.

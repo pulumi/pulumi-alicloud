@@ -25,7 +25,7 @@ import * as utilities from "../utilities";
  * Event Bridge service-linked roles(SLR) can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:eventbridge/serviceLinkedRole:ServiceLinkedRole example <product_name>
+ * $ pulumi import alicloud:eventbridge/serviceLinkedRole:ServiceLinkedRole example <product_name>
  * ```
  */
 export class ServiceLinkedRole extends pulumi.CustomResource {

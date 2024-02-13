@@ -64,9 +64,7 @@ import (
 // Network Attached Storage (NAS) Lifecycle Policy can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:nas/lifecyclePolicy:LifecyclePolicy example <file_system_id>:<lifecycle_policy_name>
-//
+// $ pulumi import alicloud:nas/lifecyclePolicy:LifecyclePolicy example <file_system_id>:<lifecycle_policy_name>
 // ```
 type LifecyclePolicy struct {
 	pulumi.CustomResourceState

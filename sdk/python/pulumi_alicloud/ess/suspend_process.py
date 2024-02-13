@@ -161,7 +161,7 @@ class SuspendProcess(pulumi.CustomResource):
         ESS suspend process can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:ess/suspendProcess:SuspendProcess example asg-xxx:sgp-xxx:5000
+        $ pulumi import alicloud:ess/suspendProcess:SuspendProcess example asg-xxx:sgp-xxx:5000
         ```
 
         :param str resource_name: The name of the resource.
@@ -239,7 +239,7 @@ class SuspendProcess(pulumi.CustomResource):
         ESS suspend process can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:ess/suspendProcess:SuspendProcess example asg-xxx:sgp-xxx:5000
+        $ pulumi import alicloud:ess/suspendProcess:SuspendProcess example asg-xxx:sgp-xxx:5000
         ```
 
         :param str resource_name: The name of the resource.

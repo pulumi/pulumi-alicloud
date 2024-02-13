@@ -141,7 +141,7 @@ class ExpressSyncShareAttachment(pulumi.CustomResource):
         Cloud Storage Gateway Express Sync Share Attachment can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:cloudstoragegateway/expressSyncShareAttachment:ExpressSyncShareAttachment example <express_sync_id>:<gateway_id>:<share_name>
+        $ pulumi import alicloud:cloudstoragegateway/expressSyncShareAttachment:ExpressSyncShareAttachment example <express_sync_id>:<gateway_id>:<share_name>
         ```
 
         :param str resource_name: The name of the resource.
@@ -168,7 +168,7 @@ class ExpressSyncShareAttachment(pulumi.CustomResource):
         Cloud Storage Gateway Express Sync Share Attachment can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:cloudstoragegateway/expressSyncShareAttachment:ExpressSyncShareAttachment example <express_sync_id>:<gateway_id>:<share_name>
+        $ pulumi import alicloud:cloudstoragegateway/expressSyncShareAttachment:ExpressSyncShareAttachment example <express_sync_id>:<gateway_id>:<share_name>
         ```
 
         :param str resource_name: The name of the resource.

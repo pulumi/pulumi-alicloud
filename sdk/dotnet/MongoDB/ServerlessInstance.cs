@@ -84,7 +84,7 @@ namespace Pulumi.AliCloud.MongoDB
     /// MongoDB Serverless Instance can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:mongodb/serverlessInstance:ServerlessInstance example &lt;id&gt;
+    /// $ pulumi import alicloud:mongodb/serverlessInstance:ServerlessInstance example &lt;id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:mongodb/serverlessInstance:ServerlessInstance")]

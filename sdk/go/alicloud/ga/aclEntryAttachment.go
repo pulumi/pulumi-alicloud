@@ -60,9 +60,7 @@ import (
 // Global Accelerator (GA) Acl entry attachment can be imported using the id.Format to `<acl_id>:<entry>`, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:ga/aclEntryAttachment:AclEntryAttachment example your_acl_id:your_entry
-//
+// $ pulumi import alicloud:ga/aclEntryAttachment:AclEntryAttachment example your_acl_id:your_entry
 // ```
 type AclEntryAttachment struct {
 	pulumi.CustomResourceState

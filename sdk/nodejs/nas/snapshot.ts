@@ -47,7 +47,7 @@ import * as utilities from "../utilities";
  * Network Attached Storage (NAS) Snapshot can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:nas/snapshot:Snapshot example <id>
+ * $ pulumi import alicloud:nas/snapshot:Snapshot example <id>
  * ```
  */
 export class Snapshot extends pulumi.CustomResource {

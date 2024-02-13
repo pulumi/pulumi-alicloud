@@ -44,7 +44,7 @@ namespace Pulumi.AliCloud
     /// Msc Sub Contact can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:index/mscSubContract:MscSubContract example &lt;id&gt;
+    /// $ pulumi import alicloud:index/mscSubContract:MscSubContract example &lt;id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:index/mscSubContract:MscSubContract")]

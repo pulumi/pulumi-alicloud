@@ -17,9 +17,7 @@ import (
 // AnalyticDB for MySQL (ADB) DBCluster can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:adb/dBCluster:DBCluster example <id>
-//
+// $ pulumi import alicloud:adb/dBCluster:DBCluster example <id>
 // ```
 type DBCluster struct {
 	pulumi.CustomResourceState

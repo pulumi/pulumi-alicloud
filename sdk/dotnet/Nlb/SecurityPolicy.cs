@@ -62,7 +62,7 @@ namespace Pulumi.AliCloud.Nlb
     /// NLB Security Policy can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:nlb/securityPolicy:SecurityPolicy example &lt;id&gt;
+    /// $ pulumi import alicloud:nlb/securityPolicy:SecurityPolicy example &lt;id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:nlb/securityPolicy:SecurityPolicy")]

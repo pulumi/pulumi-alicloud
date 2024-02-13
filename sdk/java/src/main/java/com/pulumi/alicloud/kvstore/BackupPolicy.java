@@ -103,7 +103,7 @@ import javax.annotation.Nullable;
  * KVStore backup policy can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:kvstore/backupPolicy:BackupPolicy example r-abc12345678
+ * $ pulumi import alicloud:kvstore/backupPolicy:BackupPolicy example r-abc12345678
  * ```
  * 
  */

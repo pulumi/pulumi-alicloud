@@ -405,7 +405,7 @@ class ApplicationScalingRule(pulumi.CustomResource):
         Serverless App Engine (SAE) Application Scaling Rule can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:sae/applicationScalingRule:ApplicationScalingRule example <app_id>:<scaling_rule_name>
+        $ pulumi import alicloud:sae/applicationScalingRule:ApplicationScalingRule example <app_id>:<scaling_rule_name>
         ```
 
         :param str resource_name: The name of the resource.
@@ -534,7 +534,7 @@ class ApplicationScalingRule(pulumi.CustomResource):
         Serverless App Engine (SAE) Application Scaling Rule can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:sae/applicationScalingRule:ApplicationScalingRule example <app_id>:<scaling_rule_name>
+        $ pulumi import alicloud:sae/applicationScalingRule:ApplicationScalingRule example <app_id>:<scaling_rule_name>
         ```
 
         :param str resource_name: The name of the resource.

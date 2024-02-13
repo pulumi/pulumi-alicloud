@@ -151,7 +151,7 @@ import javax.annotation.Nullable;
  * Serverless App Engine (SAE) GreyTagRoute can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:sae/greyTagRoute:GreyTagRoute example &lt;id&gt;
+ * $ pulumi import alicloud:sae/greyTagRoute:GreyTagRoute example &lt;id&gt;
  * ```
  * 
  */

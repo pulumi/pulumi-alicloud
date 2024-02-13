@@ -77,7 +77,7 @@ import javax.annotation.Nullable;
  * Resource Manager can be imported using the id or role_name, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:resourcemanager/role:Role example testrd
+ * $ pulumi import alicloud:resourcemanager/role:Role example testrd
  * ```
  * 
  */

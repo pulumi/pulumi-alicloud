@@ -453,7 +453,7 @@ class Gateway(pulumi.CustomResource):
         Cloud Storage Gateway Gateway can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:cloudstoragegateway/gateway:Gateway example <id>
+        $ pulumi import alicloud:cloudstoragegateway/gateway:Gateway example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -489,7 +489,7 @@ class Gateway(pulumi.CustomResource):
         Cloud Storage Gateway Gateway can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:cloudstoragegateway/gateway:Gateway example <id>
+        $ pulumi import alicloud:cloudstoragegateway/gateway:Gateway example <id>
         ```
 
         :param str resource_name: The name of the resource.

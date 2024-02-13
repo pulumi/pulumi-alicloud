@@ -243,7 +243,7 @@ class Resource(pulumi.CustomResource):
         Log resource can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:log/resource:Resource example <id>
+        $ pulumi import alicloud:log/resource:Resource example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -307,7 +307,7 @@ class Resource(pulumi.CustomResource):
         Log resource can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:log/resource:Resource example <id>
+        $ pulumi import alicloud:log/resource:Resource example <id>
         ```
 
         :param str resource_name: The name of the resource.

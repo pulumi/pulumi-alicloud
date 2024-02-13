@@ -379,7 +379,7 @@ import javax.annotation.Nullable;
  * Log alert can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:log/alert:Alert example tf-log:tf-log-alert
+ * $ pulumi import alicloud:log/alert:Alert example tf-log:tf-log-alert
  * ```
  * 
  */

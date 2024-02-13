@@ -40,7 +40,7 @@ namespace Pulumi.AliCloud.Brain
     /// Brain Industrial Pid Project can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:brain/industrialPidProject:IndustrialPidProject example &lt;id&gt;
+    /// $ pulumi import alicloud:brain/industrialPidProject:IndustrialPidProject example &lt;id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:brain/industrialPidProject:IndustrialPidProject")]

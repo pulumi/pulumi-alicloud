@@ -61,7 +61,7 @@ import javax.annotation.Nullable;
  * DFS Access Group can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:dfs/accessGroup:AccessGroup example &lt;id&gt;
+ * $ pulumi import alicloud:dfs/accessGroup:AccessGroup example &lt;id&gt;
  * ```
  * 
  */

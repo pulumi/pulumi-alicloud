@@ -53,7 +53,7 @@ namespace Pulumi.AliCloud.CloudFirewall
     /// Cloud Firewall Address Book can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:cloudfirewall/addressBook:AddressBook example &lt;id&gt;
+    /// $ pulumi import alicloud:cloudfirewall/addressBook:AddressBook example &lt;id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:cloudfirewall/addressBook:AddressBook")]

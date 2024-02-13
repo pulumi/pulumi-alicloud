@@ -208,7 +208,7 @@ class JobMonitorRule(pulumi.CustomResource):
         DTS Job Monitor Rule can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:dts/jobMonitorRule:JobMonitorRule example <dts_job_id>
+        $ pulumi import alicloud:dts/jobMonitorRule:JobMonitorRule example <dts_job_id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -237,7 +237,7 @@ class JobMonitorRule(pulumi.CustomResource):
         DTS Job Monitor Rule can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:dts/jobMonitorRule:JobMonitorRule example <dts_job_id>
+        $ pulumi import alicloud:dts/jobMonitorRule:JobMonitorRule example <dts_job_id>
         ```
 
         :param str resource_name: The name of the resource.

@@ -61,7 +61,7 @@ namespace Pulumi.AliCloud.ExpressConnect
     /// Express Connect Router Interface can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:expressconnect/routerInterface:RouterInterface example &lt;id&gt;
+    /// $ pulumi import alicloud:expressconnect/routerInterface:RouterInterface example &lt;id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:expressconnect/routerInterface:RouterInterface")]

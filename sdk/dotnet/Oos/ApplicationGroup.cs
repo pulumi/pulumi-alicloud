@@ -66,7 +66,7 @@ namespace Pulumi.AliCloud.Oos
     /// OOS Application Group can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:oos/applicationGroup:ApplicationGroup example &lt;application_name&gt;:&lt;application_group_name&gt;
+    /// $ pulumi import alicloud:oos/applicationGroup:ApplicationGroup example &lt;application_name&gt;:&lt;application_group_name&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:oos/applicationGroup:ApplicationGroup")]

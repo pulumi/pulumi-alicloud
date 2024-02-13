@@ -312,7 +312,7 @@ class EcsImageComponent(pulumi.CustomResource):
         Ecs Image Component can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:ecs/ecsImageComponent:EcsImageComponent example <id>
+        $ pulumi import alicloud:ecs/ecsImageComponent:EcsImageComponent example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -364,7 +364,7 @@ class EcsImageComponent(pulumi.CustomResource):
         Ecs Image Component can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:ecs/ecsImageComponent:EcsImageComponent example <id>
+        $ pulumi import alicloud:ecs/ecsImageComponent:EcsImageComponent example <id>
         ```
 
         :param str resource_name: The name of the resource.

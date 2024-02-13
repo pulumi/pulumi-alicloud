@@ -103,9 +103,7 @@ import (
 // DFS Mount Point can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:dfs/mountPoint:MountPoint example <file_system_id>:<mount_point_id>
-//
+// $ pulumi import alicloud:dfs/mountPoint:MountPoint example <file_system_id>:<mount_point_id>
 // ```
 type MountPoint struct {
 	pulumi.CustomResourceState

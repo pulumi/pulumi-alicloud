@@ -48,7 +48,7 @@ namespace Pulumi.AliCloud.Tag
     /// Tag Meta Tag can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:tag/metaTag:MetaTag example &lt;regionId&gt;:&lt;key&gt;
+    /// $ pulumi import alicloud:tag/metaTag:MetaTag example &lt;regionId&gt;:&lt;key&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:tag/metaTag:MetaTag")]

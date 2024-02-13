@@ -57,7 +57,7 @@ namespace Pulumi.AliCloud.CS
     /// Container Registry Enterprise Edition namespace can be imported using the `{instance_id}:{namespace}`, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:cs/registryEnterpriseNamespace:RegistryEnterpriseNamespace default cri-xxx:my-namespace
+    /// $ pulumi import alicloud:cs/registryEnterpriseNamespace:RegistryEnterpriseNamespace default cri-xxx:my-namespace
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:cs/registryEnterpriseNamespace:RegistryEnterpriseNamespace")]

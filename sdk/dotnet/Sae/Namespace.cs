@@ -63,7 +63,7 @@ namespace Pulumi.AliCloud.Sae
     /// Serverless App Engine (SAE) Namespace can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:sae/namespace:Namespace example &lt;namespace_id&gt;
+    /// $ pulumi import alicloud:sae/namespace:Namespace example &lt;namespace_id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:sae/namespace:Namespace")]

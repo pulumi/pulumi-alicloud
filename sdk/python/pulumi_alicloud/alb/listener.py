@@ -707,7 +707,7 @@ class Listener(pulumi.CustomResource):
         Application Load Balancer (ALB) Listener can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:alb/listener:Listener example <id>
+        $ pulumi import alicloud:alb/listener:Listener example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -756,7 +756,7 @@ class Listener(pulumi.CustomResource):
         Application Load Balancer (ALB) Listener can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:alb/listener:Listener example <id>
+        $ pulumi import alicloud:alb/listener:Listener example <id>
         ```
 
         :param str resource_name: The name of the resource.

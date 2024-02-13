@@ -27,7 +27,7 @@ import * as utilities from "../utilities";
  * Resource Manager Service Linked Role can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:resourcemanager/serviceLinkedRole:ServiceLinkedRole default <service_name>:<role_name>
+ * $ pulumi import alicloud:resourcemanager/serviceLinkedRole:ServiceLinkedRole default <service_name>:<role_name>
  * ```
  */
 export class ServiceLinkedRole extends pulumi.CustomResource {

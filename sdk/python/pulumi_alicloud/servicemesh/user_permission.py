@@ -112,7 +112,7 @@ class UserPermission(pulumi.CustomResource):
         Service Mesh User Permission can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:servicemesh/userPermission:UserPermission example <id>
+        $ pulumi import alicloud:servicemesh/userPermission:UserPermission example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -138,7 +138,7 @@ class UserPermission(pulumi.CustomResource):
         Service Mesh User Permission can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:servicemesh/userPermission:UserPermission example <id>
+        $ pulumi import alicloud:servicemesh/userPermission:UserPermission example <id>
         ```
 
         :param str resource_name: The name of the resource.

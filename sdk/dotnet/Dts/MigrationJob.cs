@@ -30,7 +30,7 @@ namespace Pulumi.AliCloud.Dts
     /// DTS Migration Job can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:dts/migrationJob:MigrationJob example &lt;id&gt;
+    /// $ pulumi import alicloud:dts/migrationJob:MigrationJob example &lt;id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:dts/migrationJob:MigrationJob")]

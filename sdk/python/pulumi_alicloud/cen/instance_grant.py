@@ -192,7 +192,7 @@ class InstanceGrant(pulumi.CustomResource):
         CEN instance can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:cen/instanceGrant:InstanceGrant example cen-abc123456:vpc-abc123456:uid123456
+        $ pulumi import alicloud:cen/instanceGrant:InstanceGrant example cen-abc123456:vpc-abc123456:uid123456
         ```
 
         :param str resource_name: The name of the resource.
@@ -270,7 +270,7 @@ class InstanceGrant(pulumi.CustomResource):
         CEN instance can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:cen/instanceGrant:InstanceGrant example cen-abc123456:vpc-abc123456:uid123456
+        $ pulumi import alicloud:cen/instanceGrant:InstanceGrant example cen-abc123456:vpc-abc123456:uid123456
         ```
 
         :param str resource_name: The name of the resource.

@@ -249,7 +249,7 @@ class Connection(pulumi.CustomResource):
         RDS connection can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:rds/connection:Connection example abc12345678
+        $ pulumi import alicloud:rds/connection:Connection example abc12345678
         ```
 
         :param str resource_name: The name of the resource.
@@ -312,7 +312,7 @@ class Connection(pulumi.CustomResource):
         RDS connection can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:rds/connection:Connection example abc12345678
+        $ pulumi import alicloud:rds/connection:Connection example abc12345678
         ```
 
         :param str resource_name: The name of the resource.

@@ -63,7 +63,7 @@ import javax.annotation.Nullable;
  * Api Gateway Backend can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:apigateway/backend:Backend example &lt;id&gt;
+ * $ pulumi import alicloud:apigateway/backend:Backend example &lt;id&gt;
  * ```
  * 
  */

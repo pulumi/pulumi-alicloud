@@ -148,9 +148,7 @@ import (
 // Cloud Enterprise Network (CEN) Transit Router Vpn Attachment can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:cen/transitRouterVpnAttachment:TransitRouterVpnAttachment example <id>
-//
+// $ pulumi import alicloud:cen/transitRouterVpnAttachment:TransitRouterVpnAttachment example <id>
 // ```
 type TransitRouterVpnAttachment struct {
 	pulumi.CustomResourceState

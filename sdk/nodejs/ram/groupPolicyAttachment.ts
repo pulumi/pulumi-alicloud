@@ -49,7 +49,7 @@ import * as utilities from "../utilities";
  * RAM Group Policy attachment can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:ram/groupPolicyAttachment:GroupPolicyAttachment example group:my-policy:Custom:my-group
+ * $ pulumi import alicloud:ram/groupPolicyAttachment:GroupPolicyAttachment example group:my-policy:Custom:my-group
  * ```
  */
 export class GroupPolicyAttachment extends pulumi.CustomResource {

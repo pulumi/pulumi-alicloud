@@ -10,7 +10,7 @@ import * as utilities from "../utilities";
  * Redis Tair Instance can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:redis/tairInstance:TairInstance example <id>
+ * $ pulumi import alicloud:redis/tairInstance:TairInstance example <id>
  * ```
  */
 export class TairInstance extends pulumi.CustomResource {

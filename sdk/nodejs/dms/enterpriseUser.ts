@@ -36,7 +36,7 @@ import * as utilities from "../utilities";
  * DMS Enterprise User can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:dms/enterpriseUser:EnterpriseUser example 24356xxx
+ * $ pulumi import alicloud:dms/enterpriseUser:EnterpriseUser example 24356xxx
  * ```
  */
 export class EnterpriseUser extends pulumi.CustomResource {

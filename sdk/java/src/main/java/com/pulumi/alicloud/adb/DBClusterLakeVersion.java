@@ -82,7 +82,7 @@ import javax.annotation.Nullable;
  * AnalyticDB for MySQL (ADB) DB Cluster Lake Version can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:adb/dBClusterLakeVersion:DBClusterLakeVersion example &lt;id&gt;
+ * $ pulumi import alicloud:adb/dBClusterLakeVersion:DBClusterLakeVersion example &lt;id&gt;
  * ```
  * 
  */

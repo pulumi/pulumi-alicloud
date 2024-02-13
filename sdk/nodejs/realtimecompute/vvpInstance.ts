@@ -12,7 +12,7 @@ import * as utilities from "../utilities";
  * Realtime Compute Vvp Instance can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:realtimecompute/vvpInstance:VvpInstance example <id>
+ * $ pulumi import alicloud:realtimecompute/vvpInstance:VvpInstance example <id>
  * ```
  */
 export class VvpInstance extends pulumi.CustomResource {

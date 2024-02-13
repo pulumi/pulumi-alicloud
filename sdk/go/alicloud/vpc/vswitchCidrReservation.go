@@ -87,9 +87,7 @@ import (
 // Vpc Vswitch Cidr Reservation can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:vpc/vswitchCidrReservation:VswitchCidrReservation example <vswitch_id>:<vswitch_cidr_reservation_id>
-//
+// $ pulumi import alicloud:vpc/vswitchCidrReservation:VswitchCidrReservation example <vswitch_id>:<vswitch_cidr_reservation_id>
 // ```
 type VswitchCidrReservation struct {
 	pulumi.CustomResourceState

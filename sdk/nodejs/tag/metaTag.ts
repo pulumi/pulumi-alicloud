@@ -33,7 +33,7 @@ import * as utilities from "../utilities";
  * Tag Meta Tag can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:tag/metaTag:MetaTag example <regionId>:<key>
+ * $ pulumi import alicloud:tag/metaTag:MetaTag example <regionId>:<key>
  * ```
  */
 export class MetaTag extends pulumi.CustomResource {

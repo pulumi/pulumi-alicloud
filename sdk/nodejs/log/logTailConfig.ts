@@ -59,7 +59,7 @@ import * as utilities from "../utilities";
  * Logtial config can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:log/logTailConfig:LogTailConfig example tf-log:tf-log-store:tf-log-config
+ * $ pulumi import alicloud:log/logTailConfig:LogTailConfig example tf-log:tf-log-store:tf-log-config
  * ```
  */
 export class LogTailConfig extends pulumi.CustomResource {

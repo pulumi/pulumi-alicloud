@@ -231,7 +231,7 @@ class AclAttachment(pulumi.CustomResource):
         Global Accelerator (GA) Acl Attachment can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:ga/aclAttachment:AclAttachment example <listener_id>:<acl_id>
+        $ pulumi import alicloud:ga/aclAttachment:AclAttachment example <listener_id>:<acl_id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -300,7 +300,7 @@ class AclAttachment(pulumi.CustomResource):
         Global Accelerator (GA) Acl Attachment can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:ga/aclAttachment:AclAttachment example <listener_id>:<acl_id>
+        $ pulumi import alicloud:ga/aclAttachment:AclAttachment example <listener_id>:<acl_id>
         ```
 
         :param str resource_name: The name of the resource.

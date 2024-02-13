@@ -152,9 +152,7 @@ import (
 // Nas File System can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:nas/fileSystem:FileSystem foo 1337849c59
-//
+// $ pulumi import alicloud:nas/fileSystem:FileSystem foo 1337849c59
 // ```
 type FileSystem struct {
 	pulumi.CustomResourceState

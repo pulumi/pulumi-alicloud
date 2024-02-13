@@ -256,7 +256,7 @@ class Acl(pulumi.CustomResource):
         Global Accelerator (GA) Acl can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:ga/acl:Acl example <id>
+        $ pulumi import alicloud:ga/acl:Acl example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -302,7 +302,7 @@ class Acl(pulumi.CustomResource):
         Global Accelerator (GA) Acl can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:ga/acl:Acl example <id>
+        $ pulumi import alicloud:ga/acl:Acl example <id>
         ```
 
         :param str resource_name: The name of the resource.

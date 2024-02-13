@@ -230,7 +230,7 @@ class Alias(pulumi.CustomResource):
         Function Compute alias can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:fc/alias:Alias example my_alias_id
+        $ pulumi import alicloud:fc/alias:Alias example my_alias_id
         ```
 
         :param str resource_name: The name of the resource.
@@ -280,7 +280,7 @@ class Alias(pulumi.CustomResource):
         Function Compute alias can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:fc/alias:Alias example my_alias_id
+        $ pulumi import alicloud:fc/alias:Alias example my_alias_id
         ```
 
         :param str resource_name: The name of the resource.

@@ -149,7 +149,7 @@ namespace Pulumi.AliCloud.Ots
     /// OTS search index can be imported using id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:ots/searchIndex:SearchIndex index1 &lt;instance_name&gt;:&lt;table_name&gt;:&lt;index_name&gt;:&lt;index_type&gt;
+    /// $ pulumi import alicloud:ots/searchIndex:SearchIndex index1 &lt;instance_name&gt;:&lt;table_name&gt;:&lt;index_name&gt;:&lt;index_type&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:ots/searchIndex:SearchIndex")]

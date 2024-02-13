@@ -29,7 +29,7 @@ import * as utilities from "../utilities";
  * Cloud Monitor Service Enterprise Public can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:cloudmonitor/serviceEnterprisePublic:ServiceEnterprisePublic example <id>
+ * $ pulumi import alicloud:cloudmonitor/serviceEnterprisePublic:ServiceEnterprisePublic example <id>
  * ```
  */
 export class ServiceEnterprisePublic extends pulumi.CustomResource {

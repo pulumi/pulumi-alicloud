@@ -367,7 +367,7 @@ class Ipv4Gateway(pulumi.CustomResource):
         Vpc Ipv4 Gateway can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:vpc/ipv4Gateway:Ipv4Gateway example <id>
+        $ pulumi import alicloud:vpc/ipv4Gateway:Ipv4Gateway example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -426,7 +426,7 @@ class Ipv4Gateway(pulumi.CustomResource):
         Vpc Ipv4 Gateway can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:vpc/ipv4Gateway:Ipv4Gateway example <id>
+        $ pulumi import alicloud:vpc/ipv4Gateway:Ipv4Gateway example <id>
         ```
 
         :param str resource_name: The name of the resource.

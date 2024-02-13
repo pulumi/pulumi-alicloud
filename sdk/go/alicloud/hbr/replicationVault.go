@@ -84,9 +84,7 @@ import (
 // Hybrid Backup Recovery (HBR) Replication Vault can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:hbr/replicationVault:ReplicationVault example <id>
-//
+// $ pulumi import alicloud:hbr/replicationVault:ReplicationVault example <id>
 // ```
 type ReplicationVault struct {
 	pulumi.CustomResourceState

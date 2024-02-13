@@ -68,7 +68,7 @@ import javax.annotation.Nullable;
  * Global Accelerator (GA) Basic Accelerator can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:ga/basicAccelerator:BasicAccelerator example &lt;id&gt;
+ * $ pulumi import alicloud:ga/basicAccelerator:BasicAccelerator example &lt;id&gt;
  * ```
  * 
  */

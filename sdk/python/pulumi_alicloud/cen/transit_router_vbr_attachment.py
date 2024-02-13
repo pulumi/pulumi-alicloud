@@ -512,7 +512,7 @@ class TransitRouterVbrAttachment(pulumi.CustomResource):
         CEN transit router VBR attachment can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:cen/transitRouterVbrAttachment:TransitRouterVbrAttachment example tr-********:tr-attach-********
+        $ pulumi import alicloud:cen/transitRouterVbrAttachment:TransitRouterVbrAttachment example tr-********:tr-attach-********
         ```
 
         :param str resource_name: The name of the resource.
@@ -583,7 +583,7 @@ class TransitRouterVbrAttachment(pulumi.CustomResource):
         CEN transit router VBR attachment can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:cen/transitRouterVbrAttachment:TransitRouterVbrAttachment example tr-********:tr-attach-********
+        $ pulumi import alicloud:cen/transitRouterVbrAttachment:TransitRouterVbrAttachment example tr-********:tr-attach-********
         ```
 
         :param str resource_name: The name of the resource.

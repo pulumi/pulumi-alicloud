@@ -30,7 +30,7 @@ import * as utilities from "../utilities";
  * Ehpc Job Template can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:ehpc/jobTemplate:JobTemplate example <id>
+ * $ pulumi import alicloud:ehpc/jobTemplate:JobTemplate example <id>
  * ```
  */
 export class JobTemplate extends pulumi.CustomResource {

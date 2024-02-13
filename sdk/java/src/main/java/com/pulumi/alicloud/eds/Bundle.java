@@ -84,7 +84,7 @@ import javax.annotation.Nullable;
  * ECD Bundle can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:eds/bundle:Bundle example &lt;id&gt;
+ * $ pulumi import alicloud:eds/bundle:Bundle example &lt;id&gt;
  * ```
  * 
  */

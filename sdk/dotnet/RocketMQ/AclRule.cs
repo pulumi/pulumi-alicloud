@@ -56,7 +56,7 @@ namespace Pulumi.AliCloud.RocketMQ
     /// The Sag Acl Rule can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:rocketmq/aclRule:AclRule example acr-abc123456
+    /// $ pulumi import alicloud:rocketmq/aclRule:AclRule example acr-abc123456
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:rocketmq/aclRule:AclRule")]

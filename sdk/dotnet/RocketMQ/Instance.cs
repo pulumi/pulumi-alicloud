@@ -44,7 +44,7 @@ namespace Pulumi.AliCloud.RocketMQ
     /// ONS INSTANCE can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:rocketmq/instance:Instance instance MQ_INST_1234567890_Baso1234567
+    /// $ pulumi import alicloud:rocketmq/instance:Instance instance MQ_INST_1234567890_Baso1234567
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:rocketmq/instance:Instance")]

@@ -53,9 +53,7 @@ import (
 // RAM account alias can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:ram/accountAlias:AccountAlias example my-alias
-//
+// $ pulumi import alicloud:ram/accountAlias:AccountAlias example my-alias
 // ```
 type AccountAlias struct {
 	pulumi.CustomResourceState

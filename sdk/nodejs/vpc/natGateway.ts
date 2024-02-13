@@ -10,7 +10,7 @@ import * as utilities from "../utilities";
  * Nat gateway can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:vpc/natGateway:NatGateway example <id>
+ * $ pulumi import alicloud:vpc/natGateway:NatGateway example <id>
  * ```
  */
 export class NatGateway extends pulumi.CustomResource {

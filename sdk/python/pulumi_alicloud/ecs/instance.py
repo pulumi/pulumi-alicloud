@@ -2726,7 +2726,7 @@ class Instance(pulumi.CustomResource):
         Instance can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:ecs/instance:Instance example i-abc12345678
+        $ pulumi import alicloud:ecs/instance:Instance example i-abc12345678
         ```
 
         :param str resource_name: The name of the resource.
@@ -2919,7 +2919,7 @@ class Instance(pulumi.CustomResource):
         Instance can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:ecs/instance:Instance example i-abc12345678
+        $ pulumi import alicloud:ecs/instance:Instance example i-abc12345678
         ```
 
         :param str resource_name: The name of the resource.

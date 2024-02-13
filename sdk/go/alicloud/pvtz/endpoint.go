@@ -23,9 +23,7 @@ import (
 // Private Zone Endpoint can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:pvtz/endpoint:Endpoint example <id>
-//
+// $ pulumi import alicloud:pvtz/endpoint:Endpoint example <id>
 // ```
 type Endpoint struct {
 	pulumi.CustomResourceState

@@ -57,7 +57,7 @@ namespace Pulumi.AliCloud.Kms
     /// KMS Client Key can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:kms/clientKey:ClientKey example &lt;id&gt;
+    /// $ pulumi import alicloud:kms/clientKey:ClientKey example &lt;id&gt;
     /// ```
     /// 
     ///  Resource attributes such as `password`, `private_key_data_file` are not available for imported resources as this information cannot be read from the KMS API.

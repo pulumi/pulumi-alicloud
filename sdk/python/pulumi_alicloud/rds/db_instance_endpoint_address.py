@@ -286,7 +286,7 @@ class DbInstanceEndpointAddress(pulumi.CustomResource):
         RDS database endpoint public address feature can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:rds/dbInstanceEndpointAddress:DbInstanceEndpointAddress example <db_instance_id>:<db_instance_endpoint_id>
+        $ pulumi import alicloud:rds/dbInstanceEndpointAddress:DbInstanceEndpointAddress example <db_instance_id>:<db_instance_endpoint_id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -379,7 +379,7 @@ class DbInstanceEndpointAddress(pulumi.CustomResource):
         RDS database endpoint public address feature can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:rds/dbInstanceEndpointAddress:DbInstanceEndpointAddress example <db_instance_id>:<db_instance_endpoint_id>
+        $ pulumi import alicloud:rds/dbInstanceEndpointAddress:DbInstanceEndpointAddress example <db_instance_id>:<db_instance_endpoint_id>
         ```
 
         :param str resource_name: The name of the resource.

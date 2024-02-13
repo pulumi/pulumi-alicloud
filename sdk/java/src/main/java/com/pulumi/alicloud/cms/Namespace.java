@@ -60,7 +60,7 @@ import javax.annotation.Nullable;
  * Cloud Monitor Service Namespace can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:cms/namespace:Namespace example &lt;id&gt;
+ * $ pulumi import alicloud:cms/namespace:Namespace example &lt;id&gt;
  * ```
  * 
  */

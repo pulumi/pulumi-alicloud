@@ -43,7 +43,7 @@ namespace Pulumi.AliCloud.Cms
     /// Cloud Monitor Service Namespace can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:cms/namespace:Namespace example &lt;id&gt;
+    /// $ pulumi import alicloud:cms/namespace:Namespace example &lt;id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:cms/namespace:Namespace")]

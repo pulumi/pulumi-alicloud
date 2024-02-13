@@ -32,7 +32,7 @@ import * as utilities from "./utilities";
  * Msc Sub Contact can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:index/mscSubContract:MscSubContract example <id>
+ * $ pulumi import alicloud:index/mscSubContract:MscSubContract example <id>
  * ```
  */
 export class MscSubContract extends pulumi.CustomResource {

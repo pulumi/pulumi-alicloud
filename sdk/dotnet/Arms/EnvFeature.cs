@@ -21,7 +21,7 @@ namespace Pulumi.AliCloud.Arms
     /// ARMS Env Feature can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:arms/envFeature:EnvFeature example &lt;environment_id&gt;:&lt;env_feature_name&gt;
+    /// $ pulumi import alicloud:arms/envFeature:EnvFeature example &lt;environment_id&gt;:&lt;env_feature_name&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:arms/envFeature:EnvFeature")]

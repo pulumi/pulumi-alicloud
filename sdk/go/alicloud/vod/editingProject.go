@@ -82,9 +82,7 @@ import (
 // VOD Editing Project can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:vod/editingProject:EditingProject example <id>
-//
+// $ pulumi import alicloud:vod/editingProject:EditingProject example <id>
 // ```
 type EditingProject struct {
 	pulumi.CustomResourceState

@@ -62,9 +62,7 @@ import (
 // ECS Dedicated Host Cluster can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:ecs/ecsDedicatedHostCluster:EcsDedicatedHostCluster example <id>
-//
+// $ pulumi import alicloud:ecs/ecsDedicatedHostCluster:EcsDedicatedHostCluster example <id>
 // ```
 type EcsDedicatedHostCluster struct {
 	pulumi.CustomResourceState

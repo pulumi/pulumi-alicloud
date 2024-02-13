@@ -46,7 +46,7 @@ namespace Pulumi.AliCloud.Ens
     /// ENS Network can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:ens/network:Network example &lt;id&gt;
+    /// $ pulumi import alicloud:ens/network:Network example &lt;id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:ens/network:Network")]

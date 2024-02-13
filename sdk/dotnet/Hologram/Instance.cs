@@ -15,7 +15,7 @@ namespace Pulumi.AliCloud.Hologram
     /// Hologram Instance can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:hologram/instance:Instance example &lt;id&gt;
+    /// $ pulumi import alicloud:hologram/instance:Instance example &lt;id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:hologram/instance:Instance")]

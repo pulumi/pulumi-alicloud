@@ -20,7 +20,7 @@ import javax.annotation.Nullable;
  * ADB backup policy can be imported using the id or cluster id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:adb/backupPolicy:BackupPolicy example &#34;am-12345678&#34;
+ * $ pulumi import alicloud:adb/backupPolicy:BackupPolicy example &#34;am-12345678&#34;
  * ```
  * 
  */

@@ -28,7 +28,7 @@ namespace Pulumi.AliCloud.Slb
     /// Load balancer backend server can be imported using the load balancer id.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:slb/backendServer:BackendServer example &lt;load_balancer_id&gt;
+    /// $ pulumi import alicloud:slb/backendServer:BackendServer example &lt;load_balancer_id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:slb/backendServer:BackendServer")]

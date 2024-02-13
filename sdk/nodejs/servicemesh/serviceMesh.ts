@@ -18,7 +18,7 @@ import * as utilities from "../utilities";
  * Service Mesh Service Mesh can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:servicemesh/serviceMesh:ServiceMesh example <id>
+ * $ pulumi import alicloud:servicemesh/serviceMesh:ServiceMesh example <id>
  * ```
  */
 export class ServiceMesh extends pulumi.CustomResource {

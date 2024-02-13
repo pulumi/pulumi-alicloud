@@ -56,9 +56,7 @@ import (
 // MNS Topic subscription can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:mns/topicSubscription:TopicSubscription subscription tf-example-mnstopic:tf-example-mnstopic-sub
-//
+// $ pulumi import alicloud:mns/topicSubscription:TopicSubscription subscription tf-example-mnstopic:tf-example-mnstopic-sub
 // ```
 type TopicSubscription struct {
 	pulumi.CustomResourceState

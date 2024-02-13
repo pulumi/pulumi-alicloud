@@ -23,9 +23,7 @@ import (
 // ARMS Env Pod Monitor can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:arms/envPodMonitor:EnvPodMonitor example <environment_id>:<namespace>:<env_pod_monitor_name>
-//
+// $ pulumi import alicloud:arms/envPodMonitor:EnvPodMonitor example <environment_id>:<namespace>:<env_pod_monitor_name>
 // ```
 type EnvPodMonitor struct {
 	pulumi.CustomResourceState

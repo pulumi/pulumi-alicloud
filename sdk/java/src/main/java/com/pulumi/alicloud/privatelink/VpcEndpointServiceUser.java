@@ -79,7 +79,7 @@ import javax.annotation.Nullable;
  * Private Link Vpc Endpoint Service User can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:privatelink/vpcEndpointServiceUser:VpcEndpointServiceUser example &lt;service_id&gt;:&lt;user_id&gt;
+ * $ pulumi import alicloud:privatelink/vpcEndpointServiceUser:VpcEndpointServiceUser example &lt;service_id&gt;:&lt;user_id&gt;
  * ```
  * 
  */

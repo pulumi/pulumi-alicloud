@@ -928,7 +928,7 @@ class ShardingInstance(pulumi.CustomResource):
         MongoDB Sharding Instance can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:mongodb/shardingInstance:ShardingInstance example dds-bp1291daeda44195
+        $ pulumi import alicloud:mongodb/shardingInstance:ShardingInstance example dds-bp1291daeda44195
         ```
 
         :param str resource_name: The name of the resource.
@@ -1033,7 +1033,7 @@ class ShardingInstance(pulumi.CustomResource):
         MongoDB Sharding Instance can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:mongodb/shardingInstance:ShardingInstance example dds-bp1291daeda44195
+        $ pulumi import alicloud:mongodb/shardingInstance:ShardingInstance example dds-bp1291daeda44195
         ```
 
         :param str resource_name: The name of the resource.

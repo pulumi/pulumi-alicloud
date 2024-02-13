@@ -69,7 +69,7 @@ import javax.annotation.Nullable;
  * Threat Detection Web Lock Config can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:threatdetection/webLockConfig:WebLockConfig example &lt;id&gt;
+ * $ pulumi import alicloud:threatdetection/webLockConfig:WebLockConfig example &lt;id&gt;
  * ```
  * 
  */

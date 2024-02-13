@@ -98,9 +98,7 @@ import (
 // AnalyticDB for PostgreSQL can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:gpdb/instance:Instance example <id>
-//
+// $ pulumi import alicloud:gpdb/instance:Instance example <id>
 // ```
 type Instance struct {
 	pulumi.CustomResourceState

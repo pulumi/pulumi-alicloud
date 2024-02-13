@@ -71,7 +71,7 @@ import javax.annotation.Nullable;
  * DdosCoo instance can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:dns/ddosCooInstance:DdosCooInstance example ddoscoo-cn-123456
+ * $ pulumi import alicloud:dns/ddosCooInstance:DdosCooInstance example ddoscoo-cn-123456
  * ```
  * 
  * @deprecated

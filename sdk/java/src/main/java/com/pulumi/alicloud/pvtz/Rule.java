@@ -28,7 +28,7 @@ import javax.annotation.Nullable;
  * Private Zone Rule can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:pvtz/rule:Rule example &lt;id&gt;
+ * $ pulumi import alicloud:pvtz/rule:Rule example &lt;id&gt;
  * ```
  * 
  */

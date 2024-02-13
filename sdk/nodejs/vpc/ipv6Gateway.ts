@@ -46,7 +46,7 @@ import * as utilities from "../utilities";
  * Vpc Ipv6 Gateway can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:vpc/ipv6Gateway:Ipv6Gateway example <id>
+ * $ pulumi import alicloud:vpc/ipv6Gateway:Ipv6Gateway example <id>
  * ```
  */
 export class Ipv6Gateway extends pulumi.CustomResource {

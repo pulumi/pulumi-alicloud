@@ -75,9 +75,7 @@ import (
 // HBR Nas Backup Plan can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:hbr/nasBackupPlan:NasBackupPlan example <id>
-//
+// $ pulumi import alicloud:hbr/nasBackupPlan:NasBackupPlan example <id>
 // ```
 type NasBackupPlan struct {
 	pulumi.CustomResourceState

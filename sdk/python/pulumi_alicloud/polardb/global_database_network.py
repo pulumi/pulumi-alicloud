@@ -158,7 +158,7 @@ class GlobalDatabaseNetwork(pulumi.CustomResource):
         PolarDB Global Database Network can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:polardb/globalDatabaseNetwork:GlobalDatabaseNetwork example <id>
+        $ pulumi import alicloud:polardb/globalDatabaseNetwork:GlobalDatabaseNetwork example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -216,7 +216,7 @@ class GlobalDatabaseNetwork(pulumi.CustomResource):
         PolarDB Global Database Network can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:polardb/globalDatabaseNetwork:GlobalDatabaseNetwork example <id>
+        $ pulumi import alicloud:polardb/globalDatabaseNetwork:GlobalDatabaseNetwork example <id>
         ```
 
         :param str resource_name: The name of the resource.

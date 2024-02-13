@@ -53,9 +53,7 @@ import (
 // SMS Short Url can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:sms/shortUrl:ShortUrl example <id>
-//
+// $ pulumi import alicloud:sms/shortUrl:ShortUrl example <id>
 // ```
 type ShortUrl struct {
 	pulumi.CustomResourceState

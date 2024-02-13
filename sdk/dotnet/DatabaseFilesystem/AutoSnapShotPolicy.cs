@@ -50,7 +50,7 @@ namespace Pulumi.AliCloud.DatabaseFilesystem
     /// Dbfs Auto Snap Shot Policy can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:databasefilesystem/autoSnapShotPolicy:AutoSnapShotPolicy example &lt;id&gt;
+    /// $ pulumi import alicloud:databasefilesystem/autoSnapShotPolicy:AutoSnapShotPolicy example &lt;id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:databasefilesystem/autoSnapShotPolicy:AutoSnapShotPolicy")]

@@ -40,7 +40,7 @@ import * as utilities from "../utilities";
  * Cloud Enterprise Network (CEN) Transit Router Multicast Domain can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:cen/transitRouterMulticastDomain:TransitRouterMulticastDomain example <id>
+ * $ pulumi import alicloud:cen/transitRouterMulticastDomain:TransitRouterMulticastDomain example <id>
  * ```
  */
 export class TransitRouterMulticastDomain extends pulumi.CustomResource {

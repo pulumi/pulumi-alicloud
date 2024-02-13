@@ -57,9 +57,7 @@ import (
 // Direct Mail Tag can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:directmail/tag:Tag example <id>
-//
+// $ pulumi import alicloud:directmail/tag:Tag example <id>
 // ```
 type Tag struct {
 	pulumi.CustomResourceState

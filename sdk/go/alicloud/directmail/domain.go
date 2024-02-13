@@ -57,9 +57,7 @@ import (
 // Direct Mail Domain can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:directmail/domain:Domain example <id>
-//
+// $ pulumi import alicloud:directmail/domain:Domain example <id>
 // ```
 type Domain struct {
 	pulumi.CustomResourceState

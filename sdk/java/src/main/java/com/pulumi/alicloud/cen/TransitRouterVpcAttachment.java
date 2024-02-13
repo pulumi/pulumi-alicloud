@@ -122,7 +122,7 @@ import javax.annotation.Nullable;
  * CEN Transit Router VPC Attachment can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:cen/transitRouterVpcAttachment:TransitRouterVpcAttachment example &lt;cen_id&gt;:&lt;transit_router_attachment_id&gt;
+ * $ pulumi import alicloud:cen/transitRouterVpcAttachment:TransitRouterVpcAttachment example &lt;cen_id&gt;:&lt;transit_router_attachment_id&gt;
  * ```
  * 
  */

@@ -56,7 +56,7 @@ namespace Pulumi.AliCloud.Vpc
     /// Vpc Vpc can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:vpc/network:Network example &lt;id&gt;
+    /// $ pulumi import alicloud:vpc/network:Network example &lt;id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:vpc/network:Network")]

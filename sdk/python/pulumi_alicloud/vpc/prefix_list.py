@@ -388,7 +388,7 @@ class PrefixList(pulumi.CustomResource):
         Vpc Prefix List can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:vpc/prefixList:PrefixList example <id>
+        $ pulumi import alicloud:vpc/prefixList:PrefixList example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -449,7 +449,7 @@ class PrefixList(pulumi.CustomResource):
         Vpc Prefix List can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:vpc/prefixList:PrefixList example <id>
+        $ pulumi import alicloud:vpc/prefixList:PrefixList example <id>
         ```
 
         :param str resource_name: The name of the resource.

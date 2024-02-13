@@ -72,7 +72,7 @@ import * as utilities from "../utilities";
  * Threat Detection Oss Scan Config can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:threatdetection/ossScanConfig:OssScanConfig example <id>
+ * $ pulumi import alicloud:threatdetection/ossScanConfig:OssScanConfig example <id>
  * ```
  */
 export class OssScanConfig extends pulumi.CustomResource {

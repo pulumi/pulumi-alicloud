@@ -69,9 +69,7 @@ import (
 // The Sag Qos Car can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:rocketmq/qosCar:QosCar example <qos_id>:<qos_car_id>
-//
+// $ pulumi import alicloud:rocketmq/qosCar:QosCar example <qos_id>:<qos_car_id>
 // ```
 type QosCar struct {
 	pulumi.CustomResourceState

@@ -36,7 +36,7 @@ import * as utilities from "../utilities";
  * ROS Stack Group can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:ros/stackGroup:StackGroup example <stack_group_name>
+ * $ pulumi import alicloud:ros/stackGroup:StackGroup example <stack_group_name>
  * ```
  */
 export class StackGroup extends pulumi.CustomResource {

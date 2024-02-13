@@ -82,7 +82,7 @@ import javax.annotation.Nullable;
  * Ocean Base Instance can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:ocean/baseInstance:BaseInstance example &lt;id&gt;
+ * $ pulumi import alicloud:ocean/baseInstance:BaseInstance example &lt;id&gt;
  * ```
  * 
  */

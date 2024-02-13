@@ -63,7 +63,7 @@ import javax.annotation.Nullable;
  * Quick BI User can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:quickbi/user:User example &lt;id&gt;
+ * $ pulumi import alicloud:quickbi/user:User example &lt;id&gt;
  * ```
  * 
  */

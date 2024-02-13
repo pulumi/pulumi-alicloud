@@ -409,7 +409,7 @@ class NetworkAcl(pulumi.CustomResource):
         VPC Network Acl can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:vpc/networkAcl:NetworkAcl example <id>
+        $ pulumi import alicloud:vpc/networkAcl:NetworkAcl example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -490,7 +490,7 @@ class NetworkAcl(pulumi.CustomResource):
         VPC Network Acl can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:vpc/networkAcl:NetworkAcl example <id>
+        $ pulumi import alicloud:vpc/networkAcl:NetworkAcl example <id>
         ```
 
         :param str resource_name: The name of the resource.

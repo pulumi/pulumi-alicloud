@@ -37,7 +37,7 @@ import * as utilities from "../utilities";
  * VPC Dhcp Options Set can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:vpc/dhcpOptionsSet:DhcpOptionsSet example <id>
+ * $ pulumi import alicloud:vpc/dhcpOptionsSet:DhcpOptionsSet example <id>
  * ```
  */
 export class DhcpOptionsSet extends pulumi.CustomResource {

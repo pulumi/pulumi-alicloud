@@ -110,9 +110,7 @@ import (
 // Bastion Host Share Key can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:bastionhost/hostShareKey:HostShareKey example <instance_id>:<host_share_key_id>
-//
+// $ pulumi import alicloud:bastionhost/hostShareKey:HostShareKey example <instance_id>:<host_share_key_id>
 // ```
 type HostShareKey struct {
 	pulumi.CustomResourceState

@@ -296,7 +296,7 @@ class ListenerAdditionalCertificateAttachment(pulumi.CustomResource):
         NLB Listener Additional Certificate Attachment can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:nlb/listenerAdditionalCertificateAttachment:ListenerAdditionalCertificateAttachment example <listener_id>:<certificate_id>
+        $ pulumi import alicloud:nlb/listenerAdditionalCertificateAttachment:ListenerAdditionalCertificateAttachment example <listener_id>:<certificate_id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -461,7 +461,7 @@ class ListenerAdditionalCertificateAttachment(pulumi.CustomResource):
         NLB Listener Additional Certificate Attachment can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:nlb/listenerAdditionalCertificateAttachment:ListenerAdditionalCertificateAttachment example <listener_id>:<certificate_id>
+        $ pulumi import alicloud:nlb/listenerAdditionalCertificateAttachment:ListenerAdditionalCertificateAttachment example <listener_id>:<certificate_id>
         ```
 
         :param str resource_name: The name of the resource.

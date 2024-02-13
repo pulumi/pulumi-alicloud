@@ -633,7 +633,7 @@ class Instance(pulumi.CustomResource):
         Data Security Center Instance can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:sddp/instance:Instance example <id>
+        $ pulumi import alicloud:sddp/instance:Instance example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -692,7 +692,7 @@ class Instance(pulumi.CustomResource):
         Data Security Center Instance can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:sddp/instance:Instance example <id>
+        $ pulumi import alicloud:sddp/instance:Instance example <id>
         ```
 
         :param str resource_name: The name of the resource.

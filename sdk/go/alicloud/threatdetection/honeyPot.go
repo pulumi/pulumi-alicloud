@@ -76,9 +76,7 @@ import (
 // Threat Detection Honey Pot can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:threatdetection/honeyPot:HoneyPot example <id>
-//
+// $ pulumi import alicloud:threatdetection/honeyPot:HoneyPot example <id>
 // ```
 type HoneyPot struct {
 	pulumi.CustomResourceState

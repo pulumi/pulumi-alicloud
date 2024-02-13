@@ -81,7 +81,7 @@ namespace Pulumi.AliCloud.Log
     /// Log store index can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:log/storeIndex:StoreIndex example tf-log:tf-log-store
+    /// $ pulumi import alicloud:log/storeIndex:StoreIndex example tf-log:tf-log-store
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:log/storeIndex:StoreIndex")]

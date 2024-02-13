@@ -123,7 +123,7 @@ import * as utilities from "../utilities";
  * Serverless App Engine (SAE) Application Scaling Rule can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:sae/applicationScalingRule:ApplicationScalingRule example <app_id>:<scaling_rule_name>
+ * $ pulumi import alicloud:sae/applicationScalingRule:ApplicationScalingRule example <app_id>:<scaling_rule_name>
  * ```
  */
 export class ApplicationScalingRule extends pulumi.CustomResource {

@@ -435,7 +435,7 @@ class Application(pulumi.CustomResource):
         EDAS application can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:edas/application:Application app app_Id
+        $ pulumi import alicloud:edas/application:Application app app_Id
         ```
 
         :param str resource_name: The name of the resource.
@@ -500,7 +500,7 @@ class Application(pulumi.CustomResource):
         EDAS application can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:edas/application:Application app app_Id
+        $ pulumi import alicloud:edas/application:Application app app_Id
         ```
 
         :param str resource_name: The name of the resource.

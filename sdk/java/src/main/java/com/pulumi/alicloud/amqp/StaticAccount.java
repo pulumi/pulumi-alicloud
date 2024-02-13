@@ -77,7 +77,7 @@ import javax.annotation.Nullable;
  * Amqp Static Account can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:amqp/staticAccount:StaticAccount example &lt;instance_id&gt;:&lt;access_key&gt;
+ * $ pulumi import alicloud:amqp/staticAccount:StaticAccount example &lt;instance_id&gt;:&lt;access_key&gt;
  * ```
  * 
  */

@@ -158,7 +158,7 @@ class UserVpcAuthorization(pulumi.CustomResource):
         Private Zone User Vpc Authorization can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:pvtz/userVpcAuthorization:UserVpcAuthorization example <authorized_user_id>:<auth_type>
+        $ pulumi import alicloud:pvtz/userVpcAuthorization:UserVpcAuthorization example <authorized_user_id>:<auth_type>
         ```
 
         :param str resource_name: The name of the resource.
@@ -200,7 +200,7 @@ class UserVpcAuthorization(pulumi.CustomResource):
         Private Zone User Vpc Authorization can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:pvtz/userVpcAuthorization:UserVpcAuthorization example <authorized_user_id>:<auth_type>
+        $ pulumi import alicloud:pvtz/userVpcAuthorization:UserVpcAuthorization example <authorized_user_id>:<auth_type>
         ```
 
         :param str resource_name: The name of the resource.

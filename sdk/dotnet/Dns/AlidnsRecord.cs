@@ -60,7 +60,7 @@ namespace Pulumi.AliCloud.Dns
     /// Alidns Domain Record can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:dns/alidnsRecord:AlidnsRecord example abc123456
+    /// $ pulumi import alicloud:dns/alidnsRecord:AlidnsRecord example abc123456
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:dns/alidnsRecord:AlidnsRecord")]

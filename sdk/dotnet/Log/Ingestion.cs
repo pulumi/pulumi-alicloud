@@ -97,7 +97,7 @@ namespace Pulumi.AliCloud.Log
     /// Log ingestion can be imported using the id or name, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:log/ingestion:Ingestion example tf-log-project:tf-log-logstore:ingestion_name
+    /// $ pulumi import alicloud:log/ingestion:Ingestion example tf-log-project:tf-log-logstore:ingestion_name
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:log/ingestion:Ingestion")]

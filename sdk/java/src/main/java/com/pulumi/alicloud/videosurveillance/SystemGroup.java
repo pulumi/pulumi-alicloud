@@ -64,7 +64,7 @@ import javax.annotation.Nullable;
  * Video Surveillance System Group can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:videosurveillance/systemGroup:SystemGroup example &lt;id&gt;
+ * $ pulumi import alicloud:videosurveillance/systemGroup:SystemGroup example &lt;id&gt;
  * ```
  * 
  */

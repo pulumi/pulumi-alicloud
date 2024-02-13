@@ -33,7 +33,7 @@ import * as utilities from "../utilities";
  * Quick BI User can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:quickbi/user:User example <id>
+ * $ pulumi import alicloud:quickbi/user:User example <id>
  * ```
  */
 export class User extends pulumi.CustomResource {

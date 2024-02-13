@@ -96,7 +96,7 @@ import javax.annotation.Nullable;
  * PolarDB account can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:polardb/account:Account example &#34;pc-12345:tf_account&#34;
+ * $ pulumi import alicloud:polardb/account:Account example &#34;pc-12345:tf_account&#34;
  * ```
  * 
  */

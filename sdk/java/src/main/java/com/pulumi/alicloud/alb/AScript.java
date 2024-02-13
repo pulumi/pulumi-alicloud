@@ -28,7 +28,7 @@ import javax.annotation.Nullable;
  * Alb AScript can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:alb/aScript:AScript example &lt;id&gt;
+ * $ pulumi import alicloud:alb/aScript:AScript example &lt;id&gt;
  * ```
  * 
  */

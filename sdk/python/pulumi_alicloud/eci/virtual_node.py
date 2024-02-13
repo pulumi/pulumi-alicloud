@@ -438,7 +438,7 @@ class VirtualNode(pulumi.CustomResource):
         ECI Virtual Node can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:eci/virtualNode:VirtualNode example <id>
+        $ pulumi import alicloud:eci/virtualNode:VirtualNode example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -520,7 +520,7 @@ class VirtualNode(pulumi.CustomResource):
         ECI Virtual Node can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:eci/virtualNode:VirtualNode example <id>
+        $ pulumi import alicloud:eci/virtualNode:VirtualNode example <id>
         ```
 
         :param str resource_name: The name of the resource.

@@ -118,9 +118,7 @@ import (
 // CEN instance can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:cen/transitRouterPeerAttachment:TransitRouterPeerAttachment example tr-********:tr-attach-*******
-//
+// $ pulumi import alicloud:cen/transitRouterPeerAttachment:TransitRouterPeerAttachment example tr-********:tr-attach-*******
 // ```
 type TransitRouterPeerAttachment struct {
 	pulumi.CustomResourceState

@@ -57,9 +57,7 @@ import (
 // Resource Manager Resource Share can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:resourcemanager/resourceShare:ResourceShare example <id>
-//
+// $ pulumi import alicloud:resourcemanager/resourceShare:ResourceShare example <id>
 // ```
 type ResourceShare struct {
 	pulumi.CustomResourceState

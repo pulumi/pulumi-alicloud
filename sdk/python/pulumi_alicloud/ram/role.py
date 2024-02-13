@@ -405,7 +405,7 @@ class Role(pulumi.CustomResource):
         RAM role can be imported using the id or name, e.g.
 
         ```sh
-         $ pulumi import alicloud:ram/role:Role example my-role
+        $ pulumi import alicloud:ram/role:Role example my-role
         ```
 
         :param str resource_name: The name of the resource.
@@ -465,7 +465,7 @@ class Role(pulumi.CustomResource):
         RAM role can be imported using the id or name, e.g.
 
         ```sh
-         $ pulumi import alicloud:ram/role:Role example my-role
+        $ pulumi import alicloud:ram/role:Role example my-role
         ```
 
         :param str resource_name: The name of the resource.

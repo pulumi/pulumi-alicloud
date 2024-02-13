@@ -54,7 +54,7 @@ namespace Pulumi.AliCloud.Arms
     /// ARMS Grafana Workspace can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:arms/grafanaWorkspace:GrafanaWorkspace example &lt;id&gt;
+    /// $ pulumi import alicloud:arms/grafanaWorkspace:GrafanaWorkspace example &lt;id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:arms/grafanaWorkspace:GrafanaWorkspace")]

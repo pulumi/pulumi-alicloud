@@ -224,7 +224,7 @@ class VbrHa(pulumi.CustomResource):
         VPC Vbr Ha can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:vpc/vbrHa:VbrHa example <id>
+        $ pulumi import alicloud:vpc/vbrHa:VbrHa example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -253,7 +253,7 @@ class VbrHa(pulumi.CustomResource):
         VPC Vbr Ha can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:vpc/vbrHa:VbrHa example <id>
+        $ pulumi import alicloud:vpc/vbrHa:VbrHa example <id>
         ```
 
         :param str resource_name: The name of the resource.

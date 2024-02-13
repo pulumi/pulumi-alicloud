@@ -189,7 +189,7 @@ import javax.annotation.Nullable;
  * VPC Vswitch can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:vpc/switch:Switch example &lt;id&gt;
+ * $ pulumi import alicloud:vpc/switch:Switch example &lt;id&gt;
  * ```
  * 
  */

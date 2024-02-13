@@ -17,9 +17,7 @@ import (
 // RocketMQ Instance can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:rocketmq/rocketMQInstance:RocketMQInstance example <id>
-//
+// $ pulumi import alicloud:rocketmq/rocketMQInstance:RocketMQInstance example <id>
 // ```
 type RocketMQInstance struct {
 	pulumi.CustomResourceState

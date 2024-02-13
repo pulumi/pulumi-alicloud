@@ -306,7 +306,7 @@ class AlarmContact(pulumi.CustomResource):
         Alarm contact can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:cms/alarmContact:AlarmContact example abc12345
+        $ pulumi import alicloud:cms/alarmContact:AlarmContact example abc12345
         ```
 
         :param str resource_name: The name of the resource.
@@ -363,7 +363,7 @@ class AlarmContact(pulumi.CustomResource):
         Alarm contact can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:cms/alarmContact:AlarmContact example abc12345
+        $ pulumi import alicloud:cms/alarmContact:AlarmContact example abc12345
         ```
 
         :param str resource_name: The name of the resource.

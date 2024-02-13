@@ -23,9 +23,7 @@ import (
 // Cen Transit Router Multicast Domain Source can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:cen/transitRouterMulticastDomainSource:TransitRouterMulticastDomainSource example <transit_router_multicast_domain_id>:<group_ip_address>:<network_interface_id>
-//
+// $ pulumi import alicloud:cen/transitRouterMulticastDomainSource:TransitRouterMulticastDomainSource example <transit_router_multicast_domain_id>:<group_ip_address>:<network_interface_id>
 // ```
 type TransitRouterMulticastDomainSource struct {
 	pulumi.CustomResourceState

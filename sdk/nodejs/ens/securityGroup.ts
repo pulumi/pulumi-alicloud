@@ -32,7 +32,7 @@ import * as utilities from "../utilities";
  * ENS Security Group can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:ens/securityGroup:SecurityGroup example <id>
+ * $ pulumi import alicloud:ens/securityGroup:SecurityGroup example <id>
  * ```
  */
 export class SecurityGroup extends pulumi.CustomResource {

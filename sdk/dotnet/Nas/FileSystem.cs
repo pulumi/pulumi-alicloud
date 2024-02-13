@@ -120,7 +120,7 @@ namespace Pulumi.AliCloud.Nas
     /// Nas File System can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:nas/fileSystem:FileSystem foo 1337849c59
+    /// $ pulumi import alicloud:nas/fileSystem:FileSystem foo 1337849c59
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:nas/fileSystem:FileSystem")]

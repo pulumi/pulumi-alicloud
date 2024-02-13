@@ -83,7 +83,7 @@ import * as utilities from "../utilities";
  * Cen Child Instance Route Entry To Attachment can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:cen/childInstanceRouteEntryToAttachment:ChildInstanceRouteEntryToAttachment example <cen_id>:<child_instance_route_table_id>:<transit_router_attachment_id>:<destination_cidr_block>
+ * $ pulumi import alicloud:cen/childInstanceRouteEntryToAttachment:ChildInstanceRouteEntryToAttachment example <cen_id>:<child_instance_route_table_id>:<transit_router_attachment_id>:<destination_cidr_block>
  * ```
  */
 export class ChildInstanceRouteEntryToAttachment extends pulumi.CustomResource {

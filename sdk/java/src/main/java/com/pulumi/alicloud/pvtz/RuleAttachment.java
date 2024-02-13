@@ -27,7 +27,7 @@ import javax.annotation.Nullable;
  * Private Zone Rule Attachment can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:pvtz/ruleAttachment:RuleAttachment example &lt;rule_id&gt;
+ * $ pulumi import alicloud:pvtz/ruleAttachment:RuleAttachment example &lt;rule_id&gt;
  * ```
  * 
  */

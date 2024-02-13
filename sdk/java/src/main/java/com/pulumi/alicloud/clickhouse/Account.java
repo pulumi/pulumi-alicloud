@@ -101,7 +101,7 @@ import javax.annotation.Nullable;
  * Click House Account can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:clickhouse/account:Account example &lt;db_cluster_id&gt;:&lt;account_name&gt;
+ * $ pulumi import alicloud:clickhouse/account:Account example &lt;db_cluster_id&gt;:&lt;account_name&gt;
  * ```
  * 
  */

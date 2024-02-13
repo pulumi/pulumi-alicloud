@@ -115,7 +115,7 @@ import javax.annotation.Nullable;
  * ALIKAFKA TOPIC can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:alikafka/topic:Topic topic alikafka_post-cn-123455abc:topicName
+ * $ pulumi import alicloud:alikafka/topic:Topic topic alikafka_post-cn-123455abc:topicName
  * ```
  * 
  */

@@ -206,7 +206,7 @@ class AccessConfigurationProvisioning(pulumi.CustomResource):
         Cloud SSO Access Configuration Provisioning can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:cloudsso/accessConfigurationProvisioning:AccessConfigurationProvisioning example <directory_id>:<access_configuration_id>:<target_type>:<target_id>
+        $ pulumi import alicloud:cloudsso/accessConfigurationProvisioning:AccessConfigurationProvisioning example <directory_id>:<access_configuration_id>:<target_type>:<target_id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -235,7 +235,7 @@ class AccessConfigurationProvisioning(pulumi.CustomResource):
         Cloud SSO Access Configuration Provisioning can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:cloudsso/accessConfigurationProvisioning:AccessConfigurationProvisioning example <directory_id>:<access_configuration_id>:<target_type>:<target_id>
+        $ pulumi import alicloud:cloudsso/accessConfigurationProvisioning:AccessConfigurationProvisioning example <directory_id>:<access_configuration_id>:<target_type>:<target_id>
         ```
 
         :param str resource_name: The name of the resource.

@@ -50,7 +50,7 @@ namespace Pulumi.AliCloud.Kms
     /// KMS Application Access Point can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:kms/applicationAccessPoint:ApplicationAccessPoint example &lt;id&gt;
+    /// $ pulumi import alicloud:kms/applicationAccessPoint:ApplicationAccessPoint example &lt;id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:kms/applicationAccessPoint:ApplicationAccessPoint")]

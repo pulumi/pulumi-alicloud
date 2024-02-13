@@ -49,7 +49,7 @@ namespace Pulumi.AliCloud.Ga
     /// Global Accelerator (GA) Acl can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:ga/acl:Acl example &lt;id&gt;
+    /// $ pulumi import alicloud:ga/acl:Acl example &lt;id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:ga/acl:Acl")]

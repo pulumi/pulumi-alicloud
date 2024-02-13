@@ -740,7 +740,7 @@ class DbCluster(pulumi.CustomResource):
         Click House DBCluster can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:clickhouse/dbCluster:DbCluster example <id>
+        $ pulumi import alicloud:clickhouse/dbCluster:DbCluster example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -819,7 +819,7 @@ class DbCluster(pulumi.CustomResource):
         Click House DBCluster can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:clickhouse/dbCluster:DbCluster example <id>
+        $ pulumi import alicloud:clickhouse/dbCluster:DbCluster example <id>
         ```
 
         :param str resource_name: The name of the resource.

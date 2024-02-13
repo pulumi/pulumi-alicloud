@@ -134,7 +134,7 @@ import javax.annotation.Nullable;
  * SLS Project can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:log/project:Project example &lt;id&gt;
+ * $ pulumi import alicloud:log/project:Project example &lt;id&gt;
  * ```
  * 
  */

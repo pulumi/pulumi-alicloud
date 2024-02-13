@@ -20,7 +20,7 @@ namespace Pulumi.AliCloud.ResourceManager
     /// Resource Manager Policy Attachment can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:resourcemanager/policyAttachment:PolicyAttachment example tf-testaccrdpolicy:Custom:tf-testaccrdpolicy@11827252********.onaliyun.com:IMSUser:rg******
+    /// $ pulumi import alicloud:resourcemanager/policyAttachment:PolicyAttachment example tf-testaccrdpolicy:Custom:tf-testaccrdpolicy@11827252********.onaliyun.com:IMSUser:rg******
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:resourcemanager/policyAttachment:PolicyAttachment")]

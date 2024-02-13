@@ -83,9 +83,7 @@ import (
 // Vpc Prefix List can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:vpc/prefixList:PrefixList example <id>
-//
+// $ pulumi import alicloud:vpc/prefixList:PrefixList example <id>
 // ```
 type PrefixList struct {
 	pulumi.CustomResourceState

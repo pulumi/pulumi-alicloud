@@ -198,7 +198,7 @@ class MscSubContract(pulumi.CustomResource):
         Msc Sub Contact can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:index/mscSubContract:MscSubContract example <id>
+        $ pulumi import alicloud:index/mscSubContract:MscSubContract example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -245,7 +245,7 @@ class MscSubContract(pulumi.CustomResource):
         Msc Sub Contact can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:index/mscSubContract:MscSubContract example <id>
+        $ pulumi import alicloud:index/mscSubContract:MscSubContract example <id>
         ```
 
         :param str resource_name: The name of the resource.

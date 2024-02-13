@@ -17,9 +17,7 @@ import (
 // Redis Tair Instance can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:redis/tairInstance:TairInstance example <id>
-//
+// $ pulumi import alicloud:redis/tairInstance:TairInstance example <id>
 // ```
 type TairInstance struct {
 	pulumi.CustomResourceState

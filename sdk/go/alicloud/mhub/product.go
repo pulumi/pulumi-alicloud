@@ -53,9 +53,7 @@ import (
 // MHUB Product can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:mhub/product:Product example <id>
-//
+// $ pulumi import alicloud:mhub/product:Product example <id>
 // ```
 type Product struct {
 	pulumi.CustomResourceState

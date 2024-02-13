@@ -771,7 +771,7 @@ class Cluster(pulumi.CustomResource):
         Cassandra cluster can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:cassandra/cluster:Cluster example cds-wz9sr400dd7xxxxx
+        $ pulumi import alicloud:cassandra/cluster:Cluster example cds-wz9sr400dd7xxxxx
         ```
 
         :param str resource_name: The name of the resource.
@@ -846,7 +846,7 @@ class Cluster(pulumi.CustomResource):
         Cassandra cluster can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:cassandra/cluster:Cluster example cds-wz9sr400dd7xxxxx
+        $ pulumi import alicloud:cassandra/cluster:Cluster example cds-wz9sr400dd7xxxxx
         ```
 
         :param str resource_name: The name of the resource.

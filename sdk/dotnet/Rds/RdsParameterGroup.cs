@@ -59,7 +59,7 @@ namespace Pulumi.AliCloud.Rds
     /// RDS Parameter Group can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:rds/rdsParameterGroup:RdsParameterGroup example &lt;id&gt;
+    /// $ pulumi import alicloud:rds/rdsParameterGroup:RdsParameterGroup example &lt;id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:rds/rdsParameterGroup:RdsParameterGroup")]

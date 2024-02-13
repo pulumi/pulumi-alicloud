@@ -58,9 +58,7 @@ import (
 // Dbfs Auto Snap Shot Policy can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:databasefilesystem/autoSnapShotPolicy:AutoSnapShotPolicy example <id>
-//
+// $ pulumi import alicloud:databasefilesystem/autoSnapShotPolicy:AutoSnapShotPolicy example <id>
 // ```
 type AutoSnapShotPolicy struct {
 	pulumi.CustomResourceState

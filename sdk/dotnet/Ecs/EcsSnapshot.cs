@@ -115,7 +115,7 @@ namespace Pulumi.AliCloud.Ecs
     /// ECS Snapshot can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:ecs/ecsSnapshot:EcsSnapshot example &lt;id&gt;
+    /// $ pulumi import alicloud:ecs/ecsSnapshot:EcsSnapshot example &lt;id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:ecs/ecsSnapshot:EcsSnapshot")]

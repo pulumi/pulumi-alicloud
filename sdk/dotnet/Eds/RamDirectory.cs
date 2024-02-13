@@ -66,7 +66,7 @@ namespace Pulumi.AliCloud.Eds
     /// ECD Ram Directory can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:eds/ramDirectory:RamDirectory example &lt;id&gt;
+    /// $ pulumi import alicloud:eds/ramDirectory:RamDirectory example &lt;id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:eds/ramDirectory:RamDirectory")]

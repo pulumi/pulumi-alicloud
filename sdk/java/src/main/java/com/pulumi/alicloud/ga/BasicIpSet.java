@@ -75,7 +75,7 @@ import javax.annotation.Nullable;
  * Global Accelerator (GA) Basic Ip Set can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:ga/basicIpSet:BasicIpSet example &lt;id&gt;
+ * $ pulumi import alicloud:ga/basicIpSet:BasicIpSet example &lt;id&gt;
  * ```
  * 
  */

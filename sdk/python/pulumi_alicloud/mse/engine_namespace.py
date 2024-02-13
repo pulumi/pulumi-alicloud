@@ -209,7 +209,7 @@ class EngineNamespace(pulumi.CustomResource):
         Microservice Engine (MSE) Engine Namespace can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:mse/engineNamespace:EngineNamespace example <cluster_id>:<namespace_id>
+        $ pulumi import alicloud:mse/engineNamespace:EngineNamespace example <cluster_id>:<namespace_id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -272,7 +272,7 @@ class EngineNamespace(pulumi.CustomResource):
         Microservice Engine (MSE) Engine Namespace can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:mse/engineNamespace:EngineNamespace example <cluster_id>:<namespace_id>
+        $ pulumi import alicloud:mse/engineNamespace:EngineNamespace example <cluster_id>:<namespace_id>
         ```
 
         :param str resource_name: The name of the resource.

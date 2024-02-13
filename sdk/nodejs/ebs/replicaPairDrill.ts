@@ -29,7 +29,7 @@ import * as utilities from "../utilities";
  * EBS Replica Pair Drill can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:ebs/replicaPairDrill:ReplicaPairDrill example <pair_id>:<replica_pair_drill_id>
+ * $ pulumi import alicloud:ebs/replicaPairDrill:ReplicaPairDrill example <pair_id>:<replica_pair_drill_id>
  * ```
  */
 export class ReplicaPairDrill extends pulumi.CustomResource {

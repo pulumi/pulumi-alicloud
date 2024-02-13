@@ -15,7 +15,7 @@ namespace Pulumi.AliCloud.PolarDB
     /// PolarDB backup policy can be imported using the id or cluster id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:polardb/backupPolicy:BackupPolicy example "rm-12345678"
+    /// $ pulumi import alicloud:polardb/backupPolicy:BackupPolicy example "rm-12345678"
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:polardb/backupPolicy:BackupPolicy")]

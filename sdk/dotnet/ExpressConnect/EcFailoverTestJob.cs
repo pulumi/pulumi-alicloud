@@ -58,7 +58,7 @@ namespace Pulumi.AliCloud.ExpressConnect
     /// Express Connect Ec Failover Test Job can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:expressconnect/ecFailoverTestJob:EcFailoverTestJob example &lt;id&gt;
+    /// $ pulumi import alicloud:expressconnect/ecFailoverTestJob:EcFailoverTestJob example &lt;id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:expressconnect/ecFailoverTestJob:EcFailoverTestJob")]

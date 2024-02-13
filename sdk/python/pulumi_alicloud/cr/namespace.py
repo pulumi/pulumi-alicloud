@@ -159,7 +159,7 @@ class Namespace(pulumi.CustomResource):
         Container Registry namespace can be imported using the namespace, e.g.
 
         ```sh
-         $ pulumi import alicloud:cr/namespace:Namespace default my-namespace
+        $ pulumi import alicloud:cr/namespace:Namespace default my-namespace
         ```
 
         :param str resource_name: The name of the resource.
@@ -203,7 +203,7 @@ class Namespace(pulumi.CustomResource):
         Container Registry namespace can be imported using the namespace, e.g.
 
         ```sh
-         $ pulumi import alicloud:cr/namespace:Namespace default my-namespace
+        $ pulumi import alicloud:cr/namespace:Namespace default my-namespace
         ```
 
         :param str resource_name: The name of the resource.

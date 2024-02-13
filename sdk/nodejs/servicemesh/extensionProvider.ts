@@ -16,7 +16,7 @@ import * as utilities from "../utilities";
  * Service Mesh Extension Provider can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:servicemesh/extensionProvider:ExtensionProvider example <service_mesh_id>:<type>:<extension_provider_name>
+ * $ pulumi import alicloud:servicemesh/extensionProvider:ExtensionProvider example <service_mesh_id>:<type>:<extension_provider_name>
  * ```
  */
 export class ExtensionProvider extends pulumi.CustomResource {

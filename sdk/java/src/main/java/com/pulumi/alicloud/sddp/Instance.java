@@ -69,7 +69,7 @@ import javax.annotation.Nullable;
  * Data Security Center Instance can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:sddp/instance:Instance example &lt;id&gt;
+ * $ pulumi import alicloud:sddp/instance:Instance example &lt;id&gt;
  * ```
  * 
  */

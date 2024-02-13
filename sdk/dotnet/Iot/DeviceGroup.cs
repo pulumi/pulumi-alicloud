@@ -43,7 +43,7 @@ namespace Pulumi.AliCloud.Iot
     /// Iot Device Group can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:iot/deviceGroup:DeviceGroup example &lt;id&gt;
+    /// $ pulumi import alicloud:iot/deviceGroup:DeviceGroup example &lt;id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:iot/deviceGroup:DeviceGroup")]

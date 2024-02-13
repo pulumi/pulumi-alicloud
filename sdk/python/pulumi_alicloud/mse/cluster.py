@@ -642,7 +642,7 @@ class Cluster(pulumi.CustomResource):
         MSE Cluster can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:mse/cluster:Cluster example mse-cn-0d9xxxx
+        $ pulumi import alicloud:mse/cluster:Cluster example mse-cn-0d9xxxx
         ```
 
         :param str resource_name: The name of the resource.
@@ -709,7 +709,7 @@ class Cluster(pulumi.CustomResource):
         MSE Cluster can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:mse/cluster:Cluster example mse-cn-0d9xxxx
+        $ pulumi import alicloud:mse/cluster:Cluster example mse-cn-0d9xxxx
         ```
 
         :param str resource_name: The name of the resource.

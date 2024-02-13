@@ -59,7 +59,7 @@ import javax.annotation.Nullable;
  * EBS Replica Group Drill can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:ebs/replicaGroupDrill:ReplicaGroupDrill example &lt;group_id&gt;:&lt;replica_group_drill_id&gt;
+ * $ pulumi import alicloud:ebs/replicaGroupDrill:ReplicaGroupDrill example &lt;group_id&gt;:&lt;replica_group_drill_id&gt;
  * ```
  * 
  */

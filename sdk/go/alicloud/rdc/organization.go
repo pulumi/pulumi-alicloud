@@ -52,9 +52,7 @@ import (
 // RDC Organization can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:rdc/organization:Organization example <id>
-//
+// $ pulumi import alicloud:rdc/organization:Organization example <id>
 // ```
 type Organization struct {
 	pulumi.CustomResourceState

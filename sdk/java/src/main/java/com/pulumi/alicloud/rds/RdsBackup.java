@@ -70,7 +70,7 @@ import javax.annotation.Nullable;
  * RDS Backup can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:rds/rdsBackup:RdsBackup example &lt;db_instance_id&gt;:&lt;backup_id&gt;
+ * $ pulumi import alicloud:rds/rdsBackup:RdsBackup example &lt;db_instance_id&gt;:&lt;backup_id&gt;
  * ```
  * 
  */

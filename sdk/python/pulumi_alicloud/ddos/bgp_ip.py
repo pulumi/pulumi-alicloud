@@ -185,7 +185,7 @@ class BgpIp(pulumi.CustomResource):
         Ddos Bgp Ip can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:ddos/bgpIp:BgpIp example <instance_id>:<ip>
+        $ pulumi import alicloud:ddos/bgpIp:BgpIp example <instance_id>:<ip>
         ```
 
         :param str resource_name: The name of the resource.
@@ -239,7 +239,7 @@ class BgpIp(pulumi.CustomResource):
         Ddos Bgp Ip can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:ddos/bgpIp:BgpIp example <instance_id>:<ip>
+        $ pulumi import alicloud:ddos/bgpIp:BgpIp example <instance_id>:<ip>
         ```
 
         :param str resource_name: The name of the resource.

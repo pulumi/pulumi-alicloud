@@ -113,7 +113,7 @@ namespace Pulumi.AliCloud.Dns
     /// DNS Monitor Config can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:dns/monitorConfig:MonitorConfig example &lt;id&gt;
+    /// $ pulumi import alicloud:dns/monitorConfig:MonitorConfig example &lt;id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:dns/monitorConfig:MonitorConfig")]

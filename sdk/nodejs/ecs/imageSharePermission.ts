@@ -74,7 +74,7 @@ import * as utilities from "../utilities";
  * image can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:ecs/imageSharePermission:ImageSharePermission default m-uf66yg1q:123456789
+ * $ pulumi import alicloud:ecs/imageSharePermission:ImageSharePermission default m-uf66yg1q:123456789
  * ```
  */
 export class ImageSharePermission extends pulumi.CustomResource {

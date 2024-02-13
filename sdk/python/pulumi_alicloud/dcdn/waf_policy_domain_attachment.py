@@ -151,7 +151,7 @@ class WafPolicyDomainAttachment(pulumi.CustomResource):
         DCDN Waf Policy Domain Attachment can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:dcdn/wafPolicyDomainAttachment:WafPolicyDomainAttachment example policy_id:domain_name
+        $ pulumi import alicloud:dcdn/wafPolicyDomainAttachment:WafPolicyDomainAttachment example policy_id:domain_name
         ```
 
         :param str resource_name: The name of the resource.
@@ -219,7 +219,7 @@ class WafPolicyDomainAttachment(pulumi.CustomResource):
         DCDN Waf Policy Domain Attachment can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:dcdn/wafPolicyDomainAttachment:WafPolicyDomainAttachment example policy_id:domain_name
+        $ pulumi import alicloud:dcdn/wafPolicyDomainAttachment:WafPolicyDomainAttachment example policy_id:domain_name
         ```
 
         :param str resource_name: The name of the resource.

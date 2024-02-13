@@ -23,9 +23,7 @@ import (
 // Wafv3 Domain can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:wafv3/domain:Domain example <instance_id>:<domain>
-//
+// $ pulumi import alicloud:wafv3/domain:Domain example <instance_id>:<domain>
 // ```
 type Domain struct {
 	pulumi.CustomResourceState

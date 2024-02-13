@@ -336,7 +336,7 @@ class RouteTable(pulumi.CustomResource):
         VPC Route Table can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:vpc/routeTable:RouteTable example <id>
+        $ pulumi import alicloud:vpc/routeTable:RouteTable example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -388,7 +388,7 @@ class RouteTable(pulumi.CustomResource):
         VPC Route Table can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:vpc/routeTable:RouteTable example <id>
+        $ pulumi import alicloud:vpc/routeTable:RouteTable example <id>
         ```
 
         :param str resource_name: The name of the resource.

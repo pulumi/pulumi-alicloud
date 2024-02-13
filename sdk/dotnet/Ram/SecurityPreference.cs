@@ -42,7 +42,7 @@ namespace Pulumi.AliCloud.Ram
     /// RAM Security Preference can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:ram/securityPreference:SecurityPreference example &lt;id&gt;
+    /// $ pulumi import alicloud:ram/securityPreference:SecurityPreference example &lt;id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:ram/securityPreference:SecurityPreference")]

@@ -93,7 +93,7 @@ import javax.annotation.Nullable;
  * VPC Gateway Endpoint Route Table Attachment can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:vpc/gatewayEndpointRouteTableAttachment:GatewayEndpointRouteTableAttachment example &lt;gateway_endpoint_id&gt;:&lt;route_table_id&gt;
+ * $ pulumi import alicloud:vpc/gatewayEndpointRouteTableAttachment:GatewayEndpointRouteTableAttachment example &lt;gateway_endpoint_id&gt;:&lt;route_table_id&gt;
  * ```
  * 
  */

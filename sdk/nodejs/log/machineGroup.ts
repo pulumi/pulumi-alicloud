@@ -42,7 +42,7 @@ import * as utilities from "../utilities";
  * Log machine group can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:log/machineGroup:MachineGroup example tf-log:tf-machine-group
+ * $ pulumi import alicloud:log/machineGroup:MachineGroup example tf-log:tf-machine-group
  * ```
  */
 export class MachineGroup extends pulumi.CustomResource {

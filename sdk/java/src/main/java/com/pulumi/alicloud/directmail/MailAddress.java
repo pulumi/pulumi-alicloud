@@ -26,7 +26,7 @@ import javax.annotation.Nullable;
  * Direct Mail Mail Address can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:directmail/mailAddress:MailAddress example &lt;id&gt;
+ * $ pulumi import alicloud:directmail/mailAddress:MailAddress example &lt;id&gt;
  * ```
  * 
  */

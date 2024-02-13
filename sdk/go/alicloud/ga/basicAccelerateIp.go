@@ -78,9 +78,7 @@ import (
 // Global Accelerator (GA) Basic Accelerate IP can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:ga/basicAccelerateIp:BasicAccelerateIp example <id>
-//
+// $ pulumi import alicloud:ga/basicAccelerateIp:BasicAccelerateIp example <id>
 // ```
 type BasicAccelerateIp struct {
 	pulumi.CustomResourceState

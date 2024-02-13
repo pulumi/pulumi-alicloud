@@ -490,7 +490,7 @@ class Policy(pulumi.CustomResource):
         RAM policy can be imported using the id or name, e.g.
 
         ```sh
-         $ pulumi import alicloud:ram/policy:Policy example my-policy
+        $ pulumi import alicloud:ram/policy:Policy example my-policy
         ```
 
         :param str resource_name: The name of the resource.
@@ -557,7 +557,7 @@ class Policy(pulumi.CustomResource):
         RAM policy can be imported using the id or name, e.g.
 
         ```sh
-         $ pulumi import alicloud:ram/policy:Policy example my-policy
+        $ pulumi import alicloud:ram/policy:Policy example my-policy
         ```
 
         :param str resource_name: The name of the resource.

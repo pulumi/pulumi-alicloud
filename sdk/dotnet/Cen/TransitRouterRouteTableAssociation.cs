@@ -109,7 +109,7 @@ namespace Pulumi.AliCloud.Cen
     /// CEN transit router route table association can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:cen/transitRouterRouteTableAssociation:TransitRouterRouteTableAssociation default tr-********:tr-attach-********
+    /// $ pulumi import alicloud:cen/transitRouterRouteTableAssociation:TransitRouterRouteTableAssociation default tr-********:tr-attach-********
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:cen/transitRouterRouteTableAssociation:TransitRouterRouteTableAssociation")]

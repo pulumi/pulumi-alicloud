@@ -126,7 +126,7 @@ import javax.annotation.Nullable;
  * Ga Endpoint Group can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:ga/endpointGroup:EndpointGroup example &lt;id&gt;
+ * $ pulumi import alicloud:ga/endpointGroup:EndpointGroup example &lt;id&gt;
  * ```
  * 
  */

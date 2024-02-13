@@ -70,7 +70,7 @@ namespace Pulumi.AliCloud.Ram
     /// RAM User Policy attachment can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:ram/userPolicyAttachment:UserPolicyAttachment example user:my-policy:Custom:my-user
+    /// $ pulumi import alicloud:ram/userPolicyAttachment:UserPolicyAttachment example user:my-policy:Custom:my-user
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:ram/userPolicyAttachment:UserPolicyAttachment")]

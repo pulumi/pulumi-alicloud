@@ -65,9 +65,7 @@ import (
 // DMS Enterprise Authority Template can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:dms/enterpriseAuthorityTemplate:EnterpriseAuthorityTemplate example <tid>:<authority_template_id>
-//
+// $ pulumi import alicloud:dms/enterpriseAuthorityTemplate:EnterpriseAuthorityTemplate example <tid>:<authority_template_id>
 // ```
 type EnterpriseAuthorityTemplate struct {
 	pulumi.CustomResourceState

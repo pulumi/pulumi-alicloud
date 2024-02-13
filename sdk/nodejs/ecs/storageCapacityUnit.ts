@@ -31,7 +31,7 @@ import * as utilities from "../utilities";
  * ECS Storage Capacity Unit can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:ecs/storageCapacityUnit:StorageCapacityUnit example <id>
+ * $ pulumi import alicloud:ecs/storageCapacityUnit:StorageCapacityUnit example <id>
  * ```
  */
 export class StorageCapacityUnit extends pulumi.CustomResource {

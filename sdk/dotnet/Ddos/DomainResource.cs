@@ -76,7 +76,7 @@ namespace Pulumi.AliCloud.Ddos
     /// Anti-DDoS Pro Domain Resource can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:ddos/domainResource:DomainResource example &lt;domain&gt;
+    /// $ pulumi import alicloud:ddos/domainResource:DomainResource example &lt;domain&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:ddos/domainResource:DomainResource")]

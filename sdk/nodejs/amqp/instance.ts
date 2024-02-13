@@ -10,7 +10,7 @@ import * as utilities from "../utilities";
  * RabbitMQ (AMQP) Instance can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:amqp/instance:Instance example <id>
+ * $ pulumi import alicloud:amqp/instance:Instance example <id>
  * ```
  */
 export class Instance extends pulumi.CustomResource {

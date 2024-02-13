@@ -110,9 +110,7 @@ import (
 // ECD Command can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:eds/command:Command example <id>
-//
+// $ pulumi import alicloud:eds/command:Command example <id>
 // ```
 type Command struct {
 	pulumi.CustomResourceState

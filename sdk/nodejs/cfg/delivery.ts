@@ -42,7 +42,7 @@ import * as utilities from "../utilities";
  * Cloud Config Delivery can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:cfg/delivery:Delivery example <id>
+ * $ pulumi import alicloud:cfg/delivery:Delivery example <id>
  * ```
  */
 export class Delivery extends pulumi.CustomResource {

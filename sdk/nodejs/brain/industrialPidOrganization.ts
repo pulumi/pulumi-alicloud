@@ -25,7 +25,7 @@ import * as utilities from "../utilities";
  * Brain Industrial Pid Organization can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:brain/industrialPidOrganization:IndustrialPidOrganization example <id>
+ * $ pulumi import alicloud:brain/industrialPidOrganization:IndustrialPidOrganization example <id>
  * ```
  */
 export class IndustrialPidOrganization extends pulumi.CustomResource {

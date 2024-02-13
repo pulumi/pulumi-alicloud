@@ -94,7 +94,7 @@ import * as utilities from "../utilities";
  * Serverless App Engine (SAE) Ingress can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:sae/ingress:Ingress example <id>
+ * $ pulumi import alicloud:sae/ingress:Ingress example <id>
  * ```
  */
 export class Ingress extends pulumi.CustomResource {

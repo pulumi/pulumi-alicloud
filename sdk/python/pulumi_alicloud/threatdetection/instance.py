@@ -1124,7 +1124,7 @@ class Instance(pulumi.CustomResource):
         Threat Detection Instance can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:threatdetection/instance:Instance example <id>
+        $ pulumi import alicloud:threatdetection/instance:Instance example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -1207,7 +1207,7 @@ class Instance(pulumi.CustomResource):
         Threat Detection Instance can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:threatdetection/instance:Instance example <id>
+        $ pulumi import alicloud:threatdetection/instance:Instance example <id>
         ```
 
         :param str resource_name: The name of the resource.

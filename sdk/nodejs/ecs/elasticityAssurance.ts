@@ -16,7 +16,7 @@ import * as utilities from "../utilities";
  * Ecs Elasticity Assurance can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:ecs/elasticityAssurance:ElasticityAssurance example <id>
+ * $ pulumi import alicloud:ecs/elasticityAssurance:ElasticityAssurance example <id>
  * ```
  */
 export class ElasticityAssurance extends pulumi.CustomResource {

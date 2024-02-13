@@ -85,9 +85,7 @@ import (
 // PolarDB database can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:polardb/database:Database example "pc-12345:tf_database"
-//
+// $ pulumi import alicloud:polardb/database:Database example "pc-12345:tf_database"
 // ```
 type Database struct {
 	pulumi.CustomResourceState

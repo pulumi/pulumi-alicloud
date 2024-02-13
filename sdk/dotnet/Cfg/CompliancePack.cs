@@ -100,7 +100,7 @@ namespace Pulumi.AliCloud.Cfg
     /// Cloud Config Compliance Pack can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:cfg/compliancePack:CompliancePack example &lt;id&gt;
+    /// $ pulumi import alicloud:cfg/compliancePack:CompliancePack example &lt;id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:cfg/compliancePack:CompliancePack")]

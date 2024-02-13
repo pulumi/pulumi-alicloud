@@ -67,7 +67,7 @@ namespace Pulumi.AliCloud.Oos
     /// OOS Template can be imported using the id or template_name, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:oos/template:Template example template_name
+    /// $ pulumi import alicloud:oos/template:Template example template_name
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:oos/template:Template")]

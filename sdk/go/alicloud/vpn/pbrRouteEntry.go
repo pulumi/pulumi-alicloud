@@ -85,9 +85,7 @@ import (
 // VPN Pbr route entry can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:vpn/pbrRouteEntry:PbrRouteEntry example <vpn_gateway_id>:<next_hop>:<route_source>:<route_dest>
-//
+// $ pulumi import alicloud:vpn/pbrRouteEntry:PbrRouteEntry example <vpn_gateway_id>:<next_hop>:<route_source>:<route_dest>
 // ```
 type PbrRouteEntry struct {
 	pulumi.CustomResourceState

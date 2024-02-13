@@ -71,9 +71,7 @@ import (
 // Serverless Workflow Schedule can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:fnf/schedule:Schedule example <schedule_name>:<flow_name>
-//
+// $ pulumi import alicloud:fnf/schedule:Schedule example <schedule_name>:<flow_name>
 // ```
 type Schedule struct {
 	pulumi.CustomResourceState

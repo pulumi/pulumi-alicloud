@@ -271,7 +271,7 @@ class Command(pulumi.CustomResource):
         ECD Command can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:eds/command:Command example <id>
+        $ pulumi import alicloud:eds/command:Command example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -348,7 +348,7 @@ class Command(pulumi.CustomResource):
         ECD Command can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:eds/command:Command example <id>
+        $ pulumi import alicloud:eds/command:Command example <id>
         ```
 
         :param str resource_name: The name of the resource.

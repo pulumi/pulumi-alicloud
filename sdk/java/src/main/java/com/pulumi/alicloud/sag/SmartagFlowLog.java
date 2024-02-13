@@ -62,7 +62,7 @@ import javax.annotation.Nullable;
  * Smartag Flow Log can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:sag/smartagFlowLog:SmartagFlowLog example &lt;id&gt;
+ * $ pulumi import alicloud:sag/smartagFlowLog:SmartagFlowLog example &lt;id&gt;
  * ```
  * 
  */

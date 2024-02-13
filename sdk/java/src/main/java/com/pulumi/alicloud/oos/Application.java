@@ -69,7 +69,7 @@ import javax.annotation.Nullable;
  * OOS Application can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:oos/application:Application example &lt;id&gt;
+ * $ pulumi import alicloud:oos/application:Application example &lt;id&gt;
  * ```
  * 
  */

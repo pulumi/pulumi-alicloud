@@ -21,7 +21,7 @@ namespace Pulumi.AliCloud.Mse
     /// Microservice Engine (MSE) Gateway can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:mse/gateway:Gateway example &lt;id&gt;
+    /// $ pulumi import alicloud:mse/gateway:Gateway example &lt;id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:mse/gateway:Gateway")]

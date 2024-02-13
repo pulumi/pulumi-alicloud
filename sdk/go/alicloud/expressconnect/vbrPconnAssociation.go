@@ -100,9 +100,7 @@ import (
 // Express Connect Vbr Pconn Association can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:expressconnect/vbrPconnAssociation:VbrPconnAssociation example <VbrId>:<PhysicalConnectionId>
-//
+// $ pulumi import alicloud:expressconnect/vbrPconnAssociation:VbrPconnAssociation example <VbrId>:<PhysicalConnectionId>
 // ```
 type VbrPconnAssociation struct {
 	pulumi.CustomResourceState

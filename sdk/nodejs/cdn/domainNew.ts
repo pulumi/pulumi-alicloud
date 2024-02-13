@@ -42,7 +42,7 @@ import * as utilities from "../utilities";
  * CDN Domain can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:cdn/domainNew:DomainNew example <id>
+ * $ pulumi import alicloud:cdn/domainNew:DomainNew example <id>
  * ```
  */
 export class DomainNew extends pulumi.CustomResource {

@@ -31,7 +31,7 @@ import * as utilities from "../utilities";
  * Threat Detection Sas Trail can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:threatdetection/sasTrail:SasTrail example
+ * $ pulumi import alicloud:threatdetection/sasTrail:SasTrail example
  * ```
  */
 export class SasTrail extends pulumi.CustomResource {

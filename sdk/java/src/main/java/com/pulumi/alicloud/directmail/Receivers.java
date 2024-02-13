@@ -27,7 +27,7 @@ import javax.annotation.Nullable;
  * Direct Mail Receivers can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:directmail/receivers:Receivers example &lt;id&gt;
+ * $ pulumi import alicloud:directmail/receivers:Receivers example &lt;id&gt;
  * ```
  * 
  */

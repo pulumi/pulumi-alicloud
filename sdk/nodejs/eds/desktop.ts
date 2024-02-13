@@ -63,7 +63,7 @@ import * as utilities from "../utilities";
  * ECD Desktop can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:eds/desktop:Desktop example <id>
+ * $ pulumi import alicloud:eds/desktop:Desktop example <id>
  * ```
  */
 export class Desktop extends pulumi.CustomResource {

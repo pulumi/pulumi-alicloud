@@ -30,7 +30,7 @@ import * as utilities from "../utilities";
  * Elastic Cloud Phone (ECP) Key Pair can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:ecp/keyPair:KeyPair example <key_pair_name>
+ * $ pulumi import alicloud:ecp/keyPair:KeyPair example <key_pair_name>
  * ```
  */
 export class KeyPair extends pulumi.CustomResource {

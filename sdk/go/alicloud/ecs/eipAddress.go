@@ -16,9 +16,7 @@ import (
 // EIP Address can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:ecs/eipAddress:EipAddress example <id>
-//
+// $ pulumi import alicloud:ecs/eipAddress:EipAddress example <id>
 // ```
 type EipAddress struct {
 	pulumi.CustomResourceState

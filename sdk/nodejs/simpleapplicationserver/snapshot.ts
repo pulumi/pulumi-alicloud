@@ -45,7 +45,7 @@ import * as utilities from "../utilities";
  * Simple Application Server Snapshot can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:simpleapplicationserver/snapshot:Snapshot example <id>
+ * $ pulumi import alicloud:simpleapplicationserver/snapshot:Snapshot example <id>
  * ```
  */
 export class Snapshot extends pulumi.CustomResource {

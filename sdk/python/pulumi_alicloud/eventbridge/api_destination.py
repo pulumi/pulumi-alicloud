@@ -222,7 +222,7 @@ class ApiDestination(pulumi.CustomResource):
         Event Bridge Api Destination can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:eventbridge/apiDestination:ApiDestination example <id>
+        $ pulumi import alicloud:eventbridge/apiDestination:ApiDestination example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -280,7 +280,7 @@ class ApiDestination(pulumi.CustomResource):
         Event Bridge Api Destination can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:eventbridge/apiDestination:ApiDestination example <id>
+        $ pulumi import alicloud:eventbridge/apiDestination:ApiDestination example <id>
         ```
 
         :param str resource_name: The name of the resource.

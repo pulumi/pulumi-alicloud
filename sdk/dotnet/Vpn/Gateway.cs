@@ -15,7 +15,7 @@ namespace Pulumi.AliCloud.Vpn
     /// VPN gateway can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:vpn/gateway:Gateway example &lt;id&gt;
+    /// $ pulumi import alicloud:vpn/gateway:Gateway example &lt;id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:vpn/gateway:Gateway")]

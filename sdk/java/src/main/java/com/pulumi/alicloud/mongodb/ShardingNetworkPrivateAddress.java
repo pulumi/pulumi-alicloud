@@ -117,7 +117,7 @@ import javax.annotation.Nullable;
  * MongoDB Sharding Network Private Address can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:mongodb/shardingNetworkPrivateAddress:ShardingNetworkPrivateAddress example &lt;db_instance_id&gt;:&lt;node_id&gt;
+ * $ pulumi import alicloud:mongodb/shardingNetworkPrivateAddress:ShardingNetworkPrivateAddress example &lt;db_instance_id&gt;:&lt;node_id&gt;
  * ```
  * 
  */

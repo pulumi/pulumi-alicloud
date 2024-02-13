@@ -21,7 +21,7 @@ namespace Pulumi.AliCloud.Ecs
     /// ECS Network Interface Permission can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:ecs/ecsNetworkInterfacePermission:EcsNetworkInterfacePermission example &lt;id&gt;
+    /// $ pulumi import alicloud:ecs/ecsNetworkInterfacePermission:EcsNetworkInterfacePermission example &lt;id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:ecs/ecsNetworkInterfacePermission:EcsNetworkInterfacePermission")]

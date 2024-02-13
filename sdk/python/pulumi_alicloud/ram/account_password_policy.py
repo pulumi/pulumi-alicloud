@@ -361,10 +361,12 @@ class AccountPasswordPolicy(pulumi.CustomResource):
 
         ## Import
 
-        RAM account password policy can be imported using the `id`, e.g. bash
+        RAM account password policy can be imported using the `id`, e.g.
+
+         bash
 
         ```sh
-         $ pulumi import alicloud:ram/accountPasswordPolicy:AccountPasswordPolicy example ram-account-password-policy
+        $ pulumi import alicloud:ram/accountPasswordPolicy:AccountPasswordPolicy example ram-account-password-policy
         ```
 
         :param str resource_name: The name of the resource.
@@ -416,10 +418,12 @@ class AccountPasswordPolicy(pulumi.CustomResource):
 
         ## Import
 
-        RAM account password policy can be imported using the `id`, e.g. bash
+        RAM account password policy can be imported using the `id`, e.g.
+
+         bash
 
         ```sh
-         $ pulumi import alicloud:ram/accountPasswordPolicy:AccountPasswordPolicy example ram-account-password-policy
+        $ pulumi import alicloud:ram/accountPasswordPolicy:AccountPasswordPolicy example ram-account-password-policy
         ```
 
         :param str resource_name: The name of the resource.

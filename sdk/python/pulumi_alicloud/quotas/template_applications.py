@@ -466,7 +466,7 @@ class TemplateApplications(pulumi.CustomResource):
         Quotas Template Applications can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:quotas/templateApplications:TemplateApplications example <id>
+        $ pulumi import alicloud:quotas/templateApplications:TemplateApplications example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -508,7 +508,7 @@ class TemplateApplications(pulumi.CustomResource):
         Quotas Template Applications can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:quotas/templateApplications:TemplateApplications example <id>
+        $ pulumi import alicloud:quotas/templateApplications:TemplateApplications example <id>
         ```
 
         :param str resource_name: The name of the resource.

@@ -172,7 +172,7 @@ class GroupPolicyAttachment(pulumi.CustomResource):
         RAM Group Policy attachment can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:ram/groupPolicyAttachment:GroupPolicyAttachment example group:my-policy:Custom:my-group
+        $ pulumi import alicloud:ram/groupPolicyAttachment:GroupPolicyAttachment example group:my-policy:Custom:my-group
         ```
 
         :param str resource_name: The name of the resource.
@@ -230,7 +230,7 @@ class GroupPolicyAttachment(pulumi.CustomResource):
         RAM Group Policy attachment can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:ram/groupPolicyAttachment:GroupPolicyAttachment example group:my-policy:Custom:my-group
+        $ pulumi import alicloud:ram/groupPolicyAttachment:GroupPolicyAttachment example group:my-policy:Custom:my-group
         ```
 
         :param str resource_name: The name of the resource.

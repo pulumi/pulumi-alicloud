@@ -16,7 +16,7 @@ import * as utilities from "../utilities";
  * Cloud Storage Gateway Gateway Block Volume can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:cloudstoragegateway/gatewayBlockVolume:GatewayBlockVolume example <gateway_id>:<index_id>
+ * $ pulumi import alicloud:cloudstoragegateway/gatewayBlockVolume:GatewayBlockVolume example <gateway_id>:<index_id>
  * ```
  */
 export class GatewayBlockVolume extends pulumi.CustomResource {

@@ -84,9 +84,7 @@ import (
 // Log resource record can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:log/resourceRecord:ResourceRecord example <resource_name>:<record_id>
-//
+// $ pulumi import alicloud:log/resourceRecord:ResourceRecord example <resource_name>:<record_id>
 // ```
 type ResourceRecord struct {
 	pulumi.CustomResourceState

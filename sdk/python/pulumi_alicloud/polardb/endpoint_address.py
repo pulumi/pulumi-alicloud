@@ -272,7 +272,7 @@ class EndpointAddress(pulumi.CustomResource):
         PolarDB endpoint address can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:polardb/endpointAddress:EndpointAddress example pc-abc123456:pe-abc123456
+        $ pulumi import alicloud:polardb/endpointAddress:EndpointAddress example pc-abc123456:pe-abc123456
         ```
 
         :param str resource_name: The name of the resource.
@@ -333,7 +333,7 @@ class EndpointAddress(pulumi.CustomResource):
         PolarDB endpoint address can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:polardb/endpointAddress:EndpointAddress example pc-abc123456:pe-abc123456
+        $ pulumi import alicloud:polardb/endpointAddress:EndpointAddress example pc-abc123456:pe-abc123456
         ```
 
         :param str resource_name: The name of the resource.

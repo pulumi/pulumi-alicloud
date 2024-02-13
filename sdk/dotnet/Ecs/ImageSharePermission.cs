@@ -107,7 +107,7 @@ namespace Pulumi.AliCloud.Ecs
     /// image can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:ecs/imageSharePermission:ImageSharePermission default m-uf66yg1q:123456789
+    /// $ pulumi import alicloud:ecs/imageSharePermission:ImageSharePermission default m-uf66yg1q:123456789
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:ecs/imageSharePermission:ImageSharePermission")]

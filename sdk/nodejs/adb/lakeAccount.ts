@@ -91,7 +91,7 @@ import * as utilities from "../utilities";
  * ADB Lake Account can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:adb/lakeAccount:LakeAccount example <db_cluster_id>:<account_name>
+ * $ pulumi import alicloud:adb/lakeAccount:LakeAccount example <db_cluster_id>:<account_name>
  * ```
  */
 export class LakeAccount extends pulumi.CustomResource {

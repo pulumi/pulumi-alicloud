@@ -17,9 +17,7 @@ import (
 // Simple Application Server Instance can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:simpleapplicationserver/instance:Instance example <id>
-//
+// $ pulumi import alicloud:simpleapplicationserver/instance:Instance example <id>
 // ```
 type Instance struct {
 	pulumi.CustomResourceState

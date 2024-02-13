@@ -66,7 +66,7 @@ namespace Pulumi.AliCloud.Dcdn
     /// DCDN Domain can be imported using the id or DCDN Domain name, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:dcdn/domain:Domain example &lt;id&gt;
+    /// $ pulumi import alicloud:dcdn/domain:Domain example &lt;id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:dcdn/domain:Domain")]

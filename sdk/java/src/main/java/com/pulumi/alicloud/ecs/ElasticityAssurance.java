@@ -90,7 +90,7 @@ import javax.annotation.Nullable;
  * Ecs Elasticity Assurance can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:ecs/elasticityAssurance:ElasticityAssurance example &lt;id&gt;
+ * $ pulumi import alicloud:ecs/elasticityAssurance:ElasticityAssurance example &lt;id&gt;
  * ```
  * 
  */

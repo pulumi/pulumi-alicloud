@@ -108,7 +108,7 @@ import javax.annotation.Nullable;
  * ECD Desktop can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:eds/desktop:Desktop example &lt;id&gt;
+ * $ pulumi import alicloud:eds/desktop:Desktop example &lt;id&gt;
  * ```
  * 
  */

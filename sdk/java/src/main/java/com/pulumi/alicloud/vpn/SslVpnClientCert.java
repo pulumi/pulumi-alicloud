@@ -20,7 +20,7 @@ import javax.annotation.Nullable;
  * SSL-VPN client certificates can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:vpn/sslVpnClientCert:SslVpnClientCert example vsc-abc123456
+ * $ pulumi import alicloud:vpn/sslVpnClientCert:SslVpnClientCert example vsc-abc123456
  * ```
  * 
  */

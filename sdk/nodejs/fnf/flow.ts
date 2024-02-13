@@ -52,7 +52,7 @@ import * as utilities from "../utilities";
  * Serverless Workflow Flow can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:fnf/flow:Flow example <name>
+ * $ pulumi import alicloud:fnf/flow:Flow example <name>
  * ```
  */
 export class Flow extends pulumi.CustomResource {

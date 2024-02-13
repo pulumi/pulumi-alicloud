@@ -90,7 +90,7 @@ import javax.annotation.Nullable;
  * EBS Enterprise Snapshot Policy can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:ebs/enterpriseSnapshotPolicy:EnterpriseSnapshotPolicy example &lt;id&gt;
+ * $ pulumi import alicloud:ebs/enterpriseSnapshotPolicy:EnterpriseSnapshotPolicy example &lt;id&gt;
  * ```
  * 
  */

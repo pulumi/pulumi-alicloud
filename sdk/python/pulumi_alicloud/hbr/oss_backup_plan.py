@@ -426,7 +426,7 @@ class OssBackupPlan(pulumi.CustomResource):
         HBR Oss Backup Plan can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:hbr/ossBackupPlan:OssBackupPlan example <id>
+        $ pulumi import alicloud:hbr/ossBackupPlan:OssBackupPlan example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -485,7 +485,7 @@ class OssBackupPlan(pulumi.CustomResource):
         HBR Oss Backup Plan can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:hbr/ossBackupPlan:OssBackupPlan example <id>
+        $ pulumi import alicloud:hbr/ossBackupPlan:OssBackupPlan example <id>
         ```
 
         :param str resource_name: The name of the resource.

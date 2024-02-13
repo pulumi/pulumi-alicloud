@@ -261,7 +261,7 @@ class Certificate(pulumi.CustomResource):
         WAF Certificate can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:waf/certificate:Certificate example <instance_id>:<domain>:<certificate_id>
+        $ pulumi import alicloud:waf/certificate:Certificate example <instance_id>:<domain>:<certificate_id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -311,7 +311,7 @@ class Certificate(pulumi.CustomResource):
         WAF Certificate can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:waf/certificate:Certificate example <instance_id>:<domain>:<certificate_id>
+        $ pulumi import alicloud:waf/certificate:Certificate example <instance_id>:<domain>:<certificate_id>
         ```
 
         :param str resource_name: The name of the resource.

@@ -75,7 +75,7 @@ import * as utilities from "../utilities";
  * CEN transit router route table association can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:cen/transitRouterRouteTableAssociation:TransitRouterRouteTableAssociation default tr-********:tr-attach-********
+ * $ pulumi import alicloud:cen/transitRouterRouteTableAssociation:TransitRouterRouteTableAssociation default tr-********:tr-attach-********
  * ```
  */
 export class TransitRouterRouteTableAssociation extends pulumi.CustomResource {

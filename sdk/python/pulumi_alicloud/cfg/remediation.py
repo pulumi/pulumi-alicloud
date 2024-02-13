@@ -301,7 +301,7 @@ class Remediation(pulumi.CustomResource):
         Config Remediation can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:cfg/remediation:Remediation example <id>
+        $ pulumi import alicloud:cfg/remediation:Remediation example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -372,7 +372,7 @@ class Remediation(pulumi.CustomResource):
         Config Remediation can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:cfg/remediation:Remediation example <id>
+        $ pulumi import alicloud:cfg/remediation:Remediation example <id>
         ```
 
         :param str resource_name: The name of the resource.

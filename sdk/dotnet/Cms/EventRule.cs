@@ -69,7 +69,7 @@ namespace Pulumi.AliCloud.Cms
     /// Cloud Monitor Service Event Rule can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:cms/eventRule:EventRule example &lt;rule_name&gt;
+    /// $ pulumi import alicloud:cms/eventRule:EventRule example &lt;rule_name&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:cms/eventRule:EventRule")]

@@ -70,7 +70,7 @@ import javax.annotation.Nullable;
  * Alidns domain can be imported using the id or domain name, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:dns/alidnsDomain:AlidnsDomain example aliyun.com
+ * $ pulumi import alicloud:dns/alidnsDomain:AlidnsDomain example aliyun.com
  * ```
  * 
  */

@@ -69,9 +69,7 @@ import (
 // CR Chart Namespace can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:cr/chartNamespace:ChartNamespace example <instance_id>:<namespace_name>
-//
+// $ pulumi import alicloud:cr/chartNamespace:ChartNamespace example <instance_id>:<namespace_name>
 // ```
 type ChartNamespace struct {
 	pulumi.CustomResourceState

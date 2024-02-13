@@ -58,9 +58,7 @@ import (
 // Api Gateway Plugin can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:apigateway/plugin:Plugin example <id>
-//
+// $ pulumi import alicloud:apigateway/plugin:Plugin example <id>
 // ```
 type Plugin struct {
 	pulumi.CustomResourceState

@@ -26,7 +26,7 @@ import javax.annotation.Nullable;
  * Cloud SSO Group can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:cloudsso/group:Group example &lt;directory_id&gt;:&lt;group_id&gt;
+ * $ pulumi import alicloud:cloudsso/group:Group example &lt;directory_id&gt;:&lt;group_id&gt;
  * ```
  * 
  */

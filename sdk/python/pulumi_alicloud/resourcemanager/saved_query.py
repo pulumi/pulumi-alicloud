@@ -176,7 +176,7 @@ class SavedQuery(pulumi.CustomResource):
         Resource Manager Saved Query can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:resourcemanager/savedQuery:SavedQuery example <id>
+        $ pulumi import alicloud:resourcemanager/savedQuery:SavedQuery example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -221,7 +221,7 @@ class SavedQuery(pulumi.CustomResource):
         Resource Manager Saved Query can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:resourcemanager/savedQuery:SavedQuery example <id>
+        $ pulumi import alicloud:resourcemanager/savedQuery:SavedQuery example <id>
         ```
 
         :param str resource_name: The name of the resource.

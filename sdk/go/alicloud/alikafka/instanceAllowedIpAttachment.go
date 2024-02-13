@@ -111,9 +111,7 @@ import (
 // AliKafka Instance Allowed Ip Attachment can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:alikafka/instanceAllowedIpAttachment:InstanceAllowedIpAttachment example <instance_id>:<allowed_type>:<port_range>:<allowed_ip>
-//
+// $ pulumi import alicloud:alikafka/instanceAllowedIpAttachment:InstanceAllowedIpAttachment example <instance_id>:<allowed_type>:<port_range>:<allowed_ip>
 // ```
 type InstanceAllowedIpAttachment struct {
 	pulumi.CustomResourceState

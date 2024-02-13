@@ -85,9 +85,7 @@ import (
 // Ga Ip Set can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:ga/ipSet:IpSet example <id>
-//
+// $ pulumi import alicloud:ga/ipSet:IpSet example <id>
 // ```
 type IpSet struct {
 	pulumi.CustomResourceState

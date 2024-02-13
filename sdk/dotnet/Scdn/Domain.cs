@@ -54,7 +54,7 @@ namespace Pulumi.AliCloud.Scdn
     /// SCDN Domain can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:scdn/domain:Domain example &lt;domain_name&gt;
+    /// $ pulumi import alicloud:scdn/domain:Domain example &lt;domain_name&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:scdn/domain:Domain")]

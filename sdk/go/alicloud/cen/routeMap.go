@@ -168,9 +168,7 @@ import (
 // CEN RouteMap can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:cen/routeMap:RouteMap default <cen_id>:<route_map_id>.
-//
+// $ pulumi import alicloud:cen/routeMap:RouteMap default <cen_id>:<route_map_id>.
 // ```
 type RouteMap struct {
 	pulumi.CustomResourceState

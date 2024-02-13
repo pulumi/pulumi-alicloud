@@ -30,7 +30,7 @@ namespace Pulumi.AliCloud.Dts
     /// DTS Synchronization Job can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:dts/synchronizationJob:SynchronizationJob example &lt;id&gt;
+    /// $ pulumi import alicloud:dts/synchronizationJob:SynchronizationJob example &lt;id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:dts/synchronizationJob:SynchronizationJob")]

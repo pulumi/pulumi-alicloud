@@ -67,7 +67,7 @@ namespace Pulumi.AliCloud.Vpc
     /// Vpc Vswitch Cidr Reservation can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:vpc/vswitchCidrReservation:VswitchCidrReservation example &lt;vswitch_id&gt;:&lt;vswitch_cidr_reservation_id&gt;
+    /// $ pulumi import alicloud:vpc/vswitchCidrReservation:VswitchCidrReservation example &lt;vswitch_id&gt;:&lt;vswitch_cidr_reservation_id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:vpc/vswitchCidrReservation:VswitchCidrReservation")]

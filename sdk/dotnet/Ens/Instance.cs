@@ -15,7 +15,7 @@ namespace Pulumi.AliCloud.Ens
     /// ENS Instance can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:ens/instance:Instance example &lt;id&gt;
+    /// $ pulumi import alicloud:ens/instance:Instance example &lt;id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:ens/instance:Instance")]

@@ -122,7 +122,7 @@ import javax.annotation.Nullable;
  * Ddos Basic Threshold can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:ddos/basicThreshold:BasicThreshold example &lt;instance_type&gt;:&lt;instance_id&gt;:&lt;internet_ip&gt;
+ * $ pulumi import alicloud:ddos/basicThreshold:BasicThreshold example &lt;instance_type&gt;:&lt;instance_id&gt;:&lt;internet_ip&gt;
  * ```
  * 
  */

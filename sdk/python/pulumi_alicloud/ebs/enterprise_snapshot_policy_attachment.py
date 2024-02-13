@@ -146,7 +146,7 @@ class EnterpriseSnapshotPolicyAttachment(pulumi.CustomResource):
         EBS Enterprise Snapshot Policy Attachment can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:ebs/enterpriseSnapshotPolicyAttachment:EnterpriseSnapshotPolicyAttachment example <policy_id>:<disk_id>
+        $ pulumi import alicloud:ebs/enterpriseSnapshotPolicyAttachment:EnterpriseSnapshotPolicyAttachment example <policy_id>:<disk_id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -208,7 +208,7 @@ class EnterpriseSnapshotPolicyAttachment(pulumi.CustomResource):
         EBS Enterprise Snapshot Policy Attachment can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:ebs/enterpriseSnapshotPolicyAttachment:EnterpriseSnapshotPolicyAttachment example <policy_id>:<disk_id>
+        $ pulumi import alicloud:ebs/enterpriseSnapshotPolicyAttachment:EnterpriseSnapshotPolicyAttachment example <policy_id>:<disk_id>
         ```
 
         :param str resource_name: The name of the resource.

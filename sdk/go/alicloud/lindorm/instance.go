@@ -90,9 +90,7 @@ import (
 // Lindorm Instance can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:lindorm/instance:Instance example <id>
-//
+// $ pulumi import alicloud:lindorm/instance:Instance example <id>
 // ```
 type Instance struct {
 	pulumi.CustomResourceState

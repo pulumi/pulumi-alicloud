@@ -88,7 +88,7 @@ import javax.annotation.Nullable;
  * Cloud Config Delivery can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:cfg/delivery:Delivery example &lt;id&gt;
+ * $ pulumi import alicloud:cfg/delivery:Delivery example &lt;id&gt;
  * ```
  * 
  */

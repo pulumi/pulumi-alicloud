@@ -67,9 +67,7 @@ import (
 // Resource Manager Policy can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:resourcemanager/policy:Policy example abc12345
-//
+// $ pulumi import alicloud:resourcemanager/policy:Policy example abc12345
 // ```
 type Policy struct {
 	pulumi.CustomResourceState

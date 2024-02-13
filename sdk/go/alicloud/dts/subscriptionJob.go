@@ -182,9 +182,7 @@ import (
 // DTS Subscription Job can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:dts/subscriptionJob:SubscriptionJob example <id>
-//
+// $ pulumi import alicloud:dts/subscriptionJob:SubscriptionJob example <id>
 // ```
 type SubscriptionJob struct {
 	pulumi.CustomResourceState

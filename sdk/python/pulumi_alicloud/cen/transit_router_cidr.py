@@ -246,7 +246,7 @@ class TransitRouterCidr(pulumi.CustomResource):
         Cloud Enterprise Network (CEN) Transit Router Cidr can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:cen/transitRouterCidr:TransitRouterCidr default <transit_router_id>:<transit_router_cidr_id>.
+        $ pulumi import alicloud:cen/transitRouterCidr:TransitRouterCidr default <transit_router_id>:<transit_router_cidr_id>.
         ```
 
         :param str resource_name: The name of the resource.
@@ -297,7 +297,7 @@ class TransitRouterCidr(pulumi.CustomResource):
         Cloud Enterprise Network (CEN) Transit Router Cidr can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:cen/transitRouterCidr:TransitRouterCidr default <transit_router_id>:<transit_router_cidr_id>.
+        $ pulumi import alicloud:cen/transitRouterCidr:TransitRouterCidr default <transit_router_id>:<transit_router_cidr_id>.
         ```
 
         :param str resource_name: The name of the resource.

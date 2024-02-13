@@ -21,7 +21,7 @@ namespace Pulumi.AliCloud.DirectMail
     /// Direct Mail Mail Address can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:directmail/mailAddress:MailAddress example &lt;id&gt;
+    /// $ pulumi import alicloud:directmail/mailAddress:MailAddress example &lt;id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:directmail/mailAddress:MailAddress")]

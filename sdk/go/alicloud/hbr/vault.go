@@ -51,9 +51,7 @@ import (
 // HBR Vault can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:hbr/vault:Vault example <id>
-//
+// $ pulumi import alicloud:hbr/vault:Vault example <id>
 // ```
 type Vault struct {
 	pulumi.CustomResourceState

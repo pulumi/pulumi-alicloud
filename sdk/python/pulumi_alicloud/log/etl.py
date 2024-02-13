@@ -863,7 +863,7 @@ class Etl(pulumi.CustomResource):
         Log etl can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:log/etl:Etl example tf-log-project:tf-log-etl-name
+        $ pulumi import alicloud:log/etl:Etl example tf-log-project:tf-log-etl-name
         ```
 
         :param str resource_name: The name of the resource.
@@ -973,7 +973,7 @@ class Etl(pulumi.CustomResource):
         Log etl can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:log/etl:Etl example tf-log-project:tf-log-etl-name
+        $ pulumi import alicloud:log/etl:Etl example tf-log-project:tf-log-etl-name
         ```
 
         :param str resource_name: The name of the resource.

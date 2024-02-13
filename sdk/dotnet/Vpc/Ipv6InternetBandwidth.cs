@@ -112,7 +112,7 @@ namespace Pulumi.AliCloud.Vpc
     /// VPC Ipv6 Internet Bandwidth can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:vpc/ipv6InternetBandwidth:Ipv6InternetBandwidth example &lt;id&gt;
+    /// $ pulumi import alicloud:vpc/ipv6InternetBandwidth:Ipv6InternetBandwidth example &lt;id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:vpc/ipv6InternetBandwidth:Ipv6InternetBandwidth")]

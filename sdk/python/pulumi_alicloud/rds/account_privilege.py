@@ -242,7 +242,7 @@ class AccountPrivilege(pulumi.CustomResource):
         RDS account privilege can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:rds/accountPrivilege:AccountPrivilege example "rm-12345:tf_account:ReadOnly"
+        $ pulumi import alicloud:rds/accountPrivilege:AccountPrivilege example "rm-12345:tf_account:ReadOnly"
         ```
 
         :param str resource_name: The name of the resource.
@@ -320,7 +320,7 @@ class AccountPrivilege(pulumi.CustomResource):
         RDS account privilege can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:rds/accountPrivilege:AccountPrivilege example "rm-12345:tf_account:ReadOnly"
+        $ pulumi import alicloud:rds/accountPrivilege:AccountPrivilege example "rm-12345:tf_account:ReadOnly"
         ```
 
         :param str resource_name: The name of the resource.

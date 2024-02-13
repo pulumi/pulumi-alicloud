@@ -122,7 +122,7 @@ class EcsSessionManagerStatus(pulumi.CustomResource):
         ECS Session Manager Status can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:ecs/ecsSessionManagerStatus:EcsSessionManagerStatus example <session_manager_status_name>
+        $ pulumi import alicloud:ecs/ecsSessionManagerStatus:EcsSessionManagerStatus example <session_manager_status_name>
         ```
 
         :param str resource_name: The name of the resource.
@@ -161,7 +161,7 @@ class EcsSessionManagerStatus(pulumi.CustomResource):
         ECS Session Manager Status can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:ecs/ecsSessionManagerStatus:EcsSessionManagerStatus example <session_manager_status_name>
+        $ pulumi import alicloud:ecs/ecsSessionManagerStatus:EcsSessionManagerStatus example <session_manager_status_name>
         ```
 
         :param str resource_name: The name of the resource.

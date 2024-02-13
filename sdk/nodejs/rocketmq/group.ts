@@ -35,7 +35,7 @@ import * as utilities from "../utilities";
  * ONS GROUP can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:rocketmq/group:Group group MQ_INST_1234567890_Baso1234567:GID-onsGroupDemo
+ * $ pulumi import alicloud:rocketmq/group:Group group MQ_INST_1234567890_Baso1234567:GID-onsGroupDemo
  * ```
  */
 export class Group extends pulumi.CustomResource {

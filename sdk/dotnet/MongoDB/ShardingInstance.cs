@@ -98,7 +98,7 @@ namespace Pulumi.AliCloud.MongoDB
     /// MongoDB Sharding Instance can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:mongodb/shardingInstance:ShardingInstance example dds-bp1291daeda44195
+    /// $ pulumi import alicloud:mongodb/shardingInstance:ShardingInstance example dds-bp1291daeda44195
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:mongodb/shardingInstance:ShardingInstance")]

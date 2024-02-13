@@ -274,7 +274,7 @@ class ServiceGroupMonitoringAgentProcess(pulumi.CustomResource):
         Cloud Monitor Service Group Monitoring Agent Process can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:cloudmonitor/serviceGroupMonitoringAgentProcess:ServiceGroupMonitoringAgentProcess example <group_id>:<group_monitoring_agent_process_id>
+        $ pulumi import alicloud:cloudmonitor/serviceGroupMonitoringAgentProcess:ServiceGroupMonitoringAgentProcess example <group_id>:<group_monitoring_agent_process_id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -352,7 +352,7 @@ class ServiceGroupMonitoringAgentProcess(pulumi.CustomResource):
         Cloud Monitor Service Group Monitoring Agent Process can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:cloudmonitor/serviceGroupMonitoringAgentProcess:ServiceGroupMonitoringAgentProcess example <group_id>:<group_monitoring_agent_process_id>
+        $ pulumi import alicloud:cloudmonitor/serviceGroupMonitoringAgentProcess:ServiceGroupMonitoringAgentProcess example <group_id>:<group_monitoring_agent_process_id>
         ```
 
         :param str resource_name: The name of the resource.

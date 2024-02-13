@@ -660,7 +660,7 @@ namespace Pulumi.AliCloud.FC
     /// Function Compute trigger can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:fc/trigger:Trigger foo my-fc-service:hello-world:hello-trigger
+    /// $ pulumi import alicloud:fc/trigger:Trigger foo my-fc-service:hello-world:hello-trigger
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:fc/trigger:Trigger")]

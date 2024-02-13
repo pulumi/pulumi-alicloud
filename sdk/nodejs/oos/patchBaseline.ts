@@ -33,7 +33,7 @@ import * as utilities from "../utilities";
  * OOS Patch Baseline can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:oos/patchBaseline:PatchBaseline example <id>
+ * $ pulumi import alicloud:oos/patchBaseline:PatchBaseline example <id>
  * ```
  */
 export class PatchBaseline extends pulumi.CustomResource {

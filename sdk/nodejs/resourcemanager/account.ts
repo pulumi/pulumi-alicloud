@@ -39,7 +39,7 @@ import * as utilities from "../utilities";
  * Resource Manager Account can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:resourcemanager/account:Account example 13148890145*****
+ * $ pulumi import alicloud:resourcemanager/account:Account example 13148890145*****
  * ```
  */
 export class Account extends pulumi.CustomResource {

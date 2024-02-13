@@ -68,7 +68,7 @@ namespace Pulumi.AliCloud.FNF
     /// Serverless Workflow Flow can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:fnf/flow:Flow example &lt;name&gt;
+    /// $ pulumi import alicloud:fnf/flow:Flow example &lt;name&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:fnf/flow:Flow")]

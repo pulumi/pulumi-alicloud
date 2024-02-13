@@ -60,7 +60,7 @@ import javax.annotation.Nullable;
  * RDC Organization can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:rdc/organization:Organization example &lt;id&gt;
+ * $ pulumi import alicloud:rdc/organization:Organization example &lt;id&gt;
  * ```
  * 
  */

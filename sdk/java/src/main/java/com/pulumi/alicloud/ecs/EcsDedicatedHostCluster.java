@@ -71,7 +71,7 @@ import javax.annotation.Nullable;
  * ECS Dedicated Host Cluster can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:ecs/ecsDedicatedHostCluster:EcsDedicatedHostCluster example &lt;id&gt;
+ * $ pulumi import alicloud:ecs/ecsDedicatedHostCluster:EcsDedicatedHostCluster example &lt;id&gt;
  * ```
  * 
  */

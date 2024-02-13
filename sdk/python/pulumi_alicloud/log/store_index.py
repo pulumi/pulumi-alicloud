@@ -214,7 +214,7 @@ class StoreIndex(pulumi.CustomResource):
         Log store index can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:log/storeIndex:StoreIndex example tf-log:tf-log-store
+        $ pulumi import alicloud:log/storeIndex:StoreIndex example tf-log:tf-log-store
         ```
 
         :param str resource_name: The name of the resource.
@@ -279,7 +279,7 @@ class StoreIndex(pulumi.CustomResource):
         Log store index can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:log/storeIndex:StoreIndex example tf-log:tf-log-store
+        $ pulumi import alicloud:log/storeIndex:StoreIndex example tf-log:tf-log-store
         ```
 
         :param str resource_name: The name of the resource.

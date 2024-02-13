@@ -83,7 +83,7 @@ import javax.annotation.Nullable;
  * VOD Editing Project can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:vod/editingProject:EditingProject example &lt;id&gt;
+ * $ pulumi import alicloud:vod/editingProject:EditingProject example &lt;id&gt;
  * ```
  * 
  */

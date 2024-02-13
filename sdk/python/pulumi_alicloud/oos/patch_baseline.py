@@ -274,7 +274,7 @@ class PatchBaseline(pulumi.CustomResource):
         OOS Patch Baseline can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:oos/patchBaseline:PatchBaseline example <id>
+        $ pulumi import alicloud:oos/patchBaseline:PatchBaseline example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -322,7 +322,7 @@ class PatchBaseline(pulumi.CustomResource):
         OOS Patch Baseline can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:oos/patchBaseline:PatchBaseline example <id>
+        $ pulumi import alicloud:oos/patchBaseline:PatchBaseline example <id>
         ```
 
         :param str resource_name: The name of the resource.

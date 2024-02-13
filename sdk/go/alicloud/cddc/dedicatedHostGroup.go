@@ -72,9 +72,7 @@ import (
 // ApsaraDB for MyBase Dedicated Host Group can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:cddc/dedicatedHostGroup:DedicatedHostGroup example <id>
-//
+// $ pulumi import alicloud:cddc/dedicatedHostGroup:DedicatedHostGroup example <id>
 // ```
 type DedicatedHostGroup struct {
 	pulumi.CustomResourceState

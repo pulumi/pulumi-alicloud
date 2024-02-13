@@ -39,7 +39,7 @@ import * as utilities from "../utilities";
  * DCDN Waf Policy can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:dcdn/wafPolicy:WafPolicy example <id>
+ * $ pulumi import alicloud:dcdn/wafPolicy:WafPolicy example <id>
  * ```
  */
 export class WafPolicy extends pulumi.CustomResource {

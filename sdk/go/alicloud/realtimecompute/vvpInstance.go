@@ -17,9 +17,7 @@ import (
 // Realtime Compute Vvp Instance can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:realtimecompute/vvpInstance:VvpInstance example <id>
-//
+// $ pulumi import alicloud:realtimecompute/vvpInstance:VvpInstance example <id>
 // ```
 type VvpInstance struct {
 	pulumi.CustomResourceState

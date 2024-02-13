@@ -32,7 +32,7 @@ import * as utilities from "../utilities";
  * Brain Industrial Pid Loop can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:brain/industrialPidLoop:IndustrialPidLoop example <id>
+ * $ pulumi import alicloud:brain/industrialPidLoop:IndustrialPidLoop example <id>
  * ```
  */
 export class IndustrialPidLoop extends pulumi.CustomResource {

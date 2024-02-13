@@ -82,7 +82,7 @@ import javax.annotation.Nullable;
  * Log resource can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:log/resource:Resource example &lt;id&gt;
+ * $ pulumi import alicloud:log/resource:Resource example &lt;id&gt;
  * ```
  * 
  */

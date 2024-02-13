@@ -760,7 +760,7 @@ class Gateway(pulumi.CustomResource):
         VPN gateway can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:vpn/gateway:Gateway example <id>
+        $ pulumi import alicloud:vpn/gateway:Gateway example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -799,7 +799,7 @@ class Gateway(pulumi.CustomResource):
         VPN gateway can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:vpn/gateway:Gateway example <id>
+        $ pulumi import alicloud:vpn/gateway:Gateway example <id>
         ```
 
         :param str resource_name: The name of the resource.

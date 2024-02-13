@@ -157,9 +157,7 @@ import (
 // Serverless App Engine (SAE) Ingress can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:sae/ingress:Ingress example <id>
-//
+// $ pulumi import alicloud:sae/ingress:Ingress example <id>
 // ```
 type Ingress struct {
 	pulumi.CustomResourceState

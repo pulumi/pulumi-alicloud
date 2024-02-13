@@ -84,9 +84,7 @@ import (
 // ECD Ram Directory can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:eds/ramDirectory:RamDirectory example <id>
-//
+// $ pulumi import alicloud:eds/ramDirectory:RamDirectory example <id>
 // ```
 type RamDirectory struct {
 	pulumi.CustomResourceState

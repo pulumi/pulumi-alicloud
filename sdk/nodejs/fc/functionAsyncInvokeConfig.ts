@@ -118,7 +118,7 @@ import * as utilities from "../utilities";
  * Function Compute Function Async Invoke Configs can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:fc/functionAsyncInvokeConfig:FunctionAsyncInvokeConfig example my_function
+ * $ pulumi import alicloud:fc/functionAsyncInvokeConfig:FunctionAsyncInvokeConfig example my_function
  * ```
  */
 export class FunctionAsyncInvokeConfig extends pulumi.CustomResource {

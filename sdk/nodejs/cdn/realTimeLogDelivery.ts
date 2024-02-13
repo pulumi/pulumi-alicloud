@@ -60,7 +60,7 @@ import * as utilities from "../utilities";
  * CDN Real Time Log Delivery can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:cdn/realTimeLogDelivery:RealTimeLogDelivery example <domain>
+ * $ pulumi import alicloud:cdn/realTimeLogDelivery:RealTimeLogDelivery example <domain>
  * ```
  */
 export class RealTimeLogDelivery extends pulumi.CustomResource {

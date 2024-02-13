@@ -172,7 +172,7 @@ import javax.annotation.Nullable;
  * Load balancer listener can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:slb/listener:Listener example &#34;lb-abc123456:tcp:22&#34;
+ * $ pulumi import alicloud:slb/listener:Listener example &#34;lb-abc123456:tcp:22&#34;
  * ```
  * 
  */

@@ -91,7 +91,7 @@ import javax.annotation.Nullable;
  * Ecs Capacity Reservation can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:ecs/capacityReservation:CapacityReservation example &lt;id&gt;
+ * $ pulumi import alicloud:ecs/capacityReservation:CapacityReservation example &lt;id&gt;
  * ```
  * 
  */

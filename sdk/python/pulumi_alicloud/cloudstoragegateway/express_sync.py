@@ -207,7 +207,7 @@ class ExpressSync(pulumi.CustomResource):
         Cloud Storage Gateway Express Sync can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:cloudstoragegateway/expressSync:ExpressSync example <id>
+        $ pulumi import alicloud:cloudstoragegateway/expressSync:ExpressSync example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -236,7 +236,7 @@ class ExpressSync(pulumi.CustomResource):
         Cloud Storage Gateway Express Sync can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:cloudstoragegateway/expressSync:ExpressSync example <id>
+        $ pulumi import alicloud:cloudstoragegateway/expressSync:ExpressSync example <id>
         ```
 
         :param str resource_name: The name of the resource.

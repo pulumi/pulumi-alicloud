@@ -146,9 +146,7 @@ import (
 // HBR Ecs Backup Plan can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:hbr/ecsBackupPlan:EcsBackupPlan example <id>
-//
+// $ pulumi import alicloud:hbr/ecsBackupPlan:EcsBackupPlan example <id>
 // ```
 type EcsBackupPlan struct {
 	pulumi.CustomResourceState

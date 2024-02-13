@@ -124,7 +124,7 @@ class ReplicaPairDrill(pulumi.CustomResource):
         EBS Replica Pair Drill can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:ebs/replicaPairDrill:ReplicaPairDrill example <pair_id>:<replica_pair_drill_id>
+        $ pulumi import alicloud:ebs/replicaPairDrill:ReplicaPairDrill example <pair_id>:<replica_pair_drill_id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -164,7 +164,7 @@ class ReplicaPairDrill(pulumi.CustomResource):
         EBS Replica Pair Drill can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:ebs/replicaPairDrill:ReplicaPairDrill example <pair_id>:<replica_pair_drill_id>
+        $ pulumi import alicloud:ebs/replicaPairDrill:ReplicaPairDrill example <pair_id>:<replica_pair_drill_id>
         ```
 
         :param str resource_name: The name of the resource.

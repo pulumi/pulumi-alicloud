@@ -62,7 +62,7 @@ namespace Pulumi.AliCloud.Ddos
     /// Anti-DDoS Pro Port can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:ddos/port:Port example &lt;instance_id&gt;:&lt;frontend_port&gt;:&lt;frontend_protocol&gt;
+    /// $ pulumi import alicloud:ddos/port:Port example &lt;instance_id&gt;:&lt;frontend_port&gt;:&lt;frontend_protocol&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:ddos/port:Port")]

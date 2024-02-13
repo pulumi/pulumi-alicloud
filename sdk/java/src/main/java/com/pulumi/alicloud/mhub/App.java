@@ -71,7 +71,7 @@ import javax.annotation.Nullable;
  * MHUB App can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:mhub/app:App example &lt;product_id&gt;:&lt;app_key&gt;
+ * $ pulumi import alicloud:mhub/app:App example &lt;product_id&gt;:&lt;app_key&gt;
  * ```
  * 
  */

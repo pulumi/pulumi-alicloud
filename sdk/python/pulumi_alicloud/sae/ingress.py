@@ -440,7 +440,7 @@ class Ingress(pulumi.CustomResource):
         Serverless App Engine (SAE) Ingress can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:sae/ingress:Ingress example <id>
+        $ pulumi import alicloud:sae/ingress:Ingress example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -541,7 +541,7 @@ class Ingress(pulumi.CustomResource):
         Serverless App Engine (SAE) Ingress can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:sae/ingress:Ingress example <id>
+        $ pulumi import alicloud:sae/ingress:Ingress example <id>
         ```
 
         :param str resource_name: The name of the resource.

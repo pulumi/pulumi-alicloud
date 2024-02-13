@@ -42,7 +42,7 @@ namespace Pulumi.AliCloud.Pvtz
     /// Private Zone User Vpc Authorization can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:pvtz/userVpcAuthorization:UserVpcAuthorization example &lt;authorized_user_id&gt;:&lt;auth_type&gt;
+    /// $ pulumi import alicloud:pvtz/userVpcAuthorization:UserVpcAuthorization example &lt;authorized_user_id&gt;:&lt;auth_type&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:pvtz/userVpcAuthorization:UserVpcAuthorization")]

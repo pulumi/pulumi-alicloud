@@ -53,7 +53,7 @@ import * as utilities from "../utilities";
  * ECD Ad Connector Directory can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:eds/adConnectorDirectory:AdConnectorDirectory example <id>
+ * $ pulumi import alicloud:eds/adConnectorDirectory:AdConnectorDirectory example <id>
  * ```
  */
 export class AdConnectorDirectory extends pulumi.CustomResource {

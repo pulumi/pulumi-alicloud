@@ -73,7 +73,7 @@ import javax.annotation.Nullable;
  * Cloud Architect Design Tools Application can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:bp/studioApplication:StudioApplication example &lt;id&gt;
+ * $ pulumi import alicloud:bp/studioApplication:StudioApplication example &lt;id&gt;
  * ```
  * 
  */

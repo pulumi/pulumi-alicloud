@@ -40,7 +40,7 @@ import * as utilities from "../utilities";
  * EDAS cluster can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:edas/cluster:Cluster cluster cluster_id
+ * $ pulumi import alicloud:edas/cluster:Cluster cluster cluster_id
  * ```
  */
 export class Cluster extends pulumi.CustomResource {

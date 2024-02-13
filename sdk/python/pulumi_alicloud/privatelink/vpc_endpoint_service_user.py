@@ -176,7 +176,7 @@ class VpcEndpointServiceUser(pulumi.CustomResource):
         Private Link Vpc Endpoint Service User can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:privatelink/vpcEndpointServiceUser:VpcEndpointServiceUser example <service_id>:<user_id>
+        $ pulumi import alicloud:privatelink/vpcEndpointServiceUser:VpcEndpointServiceUser example <service_id>:<user_id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -231,7 +231,7 @@ class VpcEndpointServiceUser(pulumi.CustomResource):
         Private Link Vpc Endpoint Service User can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:privatelink/vpcEndpointServiceUser:VpcEndpointServiceUser example <service_id>:<user_id>
+        $ pulumi import alicloud:privatelink/vpcEndpointServiceUser:VpcEndpointServiceUser example <service_id>:<user_id>
         ```
 
         :param str resource_name: The name of the resource.

@@ -18,7 +18,7 @@ import * as utilities from "../utilities";
  * Alb AScript can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:alb/aScript:AScript example <id>
+ * $ pulumi import alicloud:alb/aScript:AScript example <id>
  * ```
  */
 export class AScript extends pulumi.CustomResource {

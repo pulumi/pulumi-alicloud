@@ -83,9 +83,7 @@ import (
 // AnalyticDB for PostgreSQL can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:gpdb/elasticInstance:ElasticInstance adb_pg_instance gp-bpxxxxxxxxxxxxxx
-//
+// $ pulumi import alicloud:gpdb/elasticInstance:ElasticInstance adb_pg_instance gp-bpxxxxxxxxxxxxxx
 // ```
 type ElasticInstance struct {
 	pulumi.CustomResourceState

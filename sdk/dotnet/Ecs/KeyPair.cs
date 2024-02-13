@@ -52,7 +52,7 @@ namespace Pulumi.AliCloud.Ecs
     /// Key pair can be imported using the name, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:ecs/keyPair:KeyPair example my_public_key
+    /// $ pulumi import alicloud:ecs/keyPair:KeyPair example my_public_key
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:ecs/keyPair:KeyPair")]

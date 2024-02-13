@@ -68,7 +68,7 @@ import * as utilities from "../utilities";
  * ECI Virtual Node can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:eci/virtualNode:VirtualNode example <id>
+ * $ pulumi import alicloud:eci/virtualNode:VirtualNode example <id>
  * ```
  */
 export class VirtualNode extends pulumi.CustomResource {

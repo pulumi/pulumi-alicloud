@@ -66,9 +66,7 @@ import (
 // OTS instance can be imported using instance id or name, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:ots/instance:Instance foo "my-ots-instance"
-//
+// $ pulumi import alicloud:ots/instance:Instance foo "my-ots-instance"
 // ```
 type Instance struct {
 	pulumi.CustomResourceState

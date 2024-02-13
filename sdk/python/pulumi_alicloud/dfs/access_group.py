@@ -159,7 +159,7 @@ class AccessGroup(pulumi.CustomResource):
         DFS Access Group can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:dfs/accessGroup:AccessGroup example <id>
+        $ pulumi import alicloud:dfs/accessGroup:AccessGroup example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -203,7 +203,7 @@ class AccessGroup(pulumi.CustomResource):
         DFS Access Group can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:dfs/accessGroup:AccessGroup example <id>
+        $ pulumi import alicloud:dfs/accessGroup:AccessGroup example <id>
         ```
 
         :param str resource_name: The name of the resource.

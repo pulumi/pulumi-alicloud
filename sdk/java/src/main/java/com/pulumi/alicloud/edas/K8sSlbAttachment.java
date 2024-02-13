@@ -27,7 +27,7 @@ import javax.annotation.Nullable;
  * Slb information of EDAS k8s application can be imported using the ID of an EDAS k8s application. e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:edas/k8sSlbAttachment:K8sSlbAttachment example &lt;EDAS k8s app id&gt;
+ * $ pulumi import alicloud:edas/k8sSlbAttachment:K8sSlbAttachment example &lt;EDAS k8s app id&gt;
  * ```
  * 
  */

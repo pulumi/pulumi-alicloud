@@ -63,7 +63,7 @@ import * as utilities from "../utilities";
  * Redis And Memcache (KVStore) Audit Log Config can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:kvstore/auditLogConfig:AuditLogConfig example <instance_id>
+ * $ pulumi import alicloud:kvstore/auditLogConfig:AuditLogConfig example <instance_id>
  * ```
  */
 export class AuditLogConfig extends pulumi.CustomResource {

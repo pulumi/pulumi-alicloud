@@ -173,9 +173,7 @@ import (
 // VPC Vswitch can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:vpc/switch:Switch example <id>
-//
+// $ pulumi import alicloud:vpc/switch:Switch example <id>
 // ```
 type Switch struct {
 	pulumi.CustomResourceState

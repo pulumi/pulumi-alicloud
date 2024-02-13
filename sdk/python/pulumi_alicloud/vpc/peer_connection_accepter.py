@@ -291,7 +291,7 @@ class PeerConnectionAccepter(pulumi.CustomResource):
         Vpc Peer Connection Accepter can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:vpc/peerConnectionAccepter:PeerConnectionAccepter example <id>
+        $ pulumi import alicloud:vpc/peerConnectionAccepter:PeerConnectionAccepter example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -370,7 +370,7 @@ class PeerConnectionAccepter(pulumi.CustomResource):
         Vpc Peer Connection Accepter can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:vpc/peerConnectionAccepter:PeerConnectionAccepter example <id>
+        $ pulumi import alicloud:vpc/peerConnectionAccepter:PeerConnectionAccepter example <id>
         ```
 
         :param str resource_name: The name of the resource.

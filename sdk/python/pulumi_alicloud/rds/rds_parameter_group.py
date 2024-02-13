@@ -237,7 +237,7 @@ class RdsParameterGroup(pulumi.CustomResource):
         RDS Parameter Group can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:rds/rdsParameterGroup:RdsParameterGroup example <id>
+        $ pulumi import alicloud:rds/rdsParameterGroup:RdsParameterGroup example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -295,7 +295,7 @@ class RdsParameterGroup(pulumi.CustomResource):
         RDS Parameter Group can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:rds/rdsParameterGroup:RdsParameterGroup example <id>
+        $ pulumi import alicloud:rds/rdsParameterGroup:RdsParameterGroup example <id>
         ```
 
         :param str resource_name: The name of the resource.

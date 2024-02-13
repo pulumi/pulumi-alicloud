@@ -24,7 +24,7 @@ import * as utilities from "../utilities";
  * MNS Topic can be imported using the id or name, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:mns/topic:Topic topic topicName
+ * $ pulumi import alicloud:mns/topic:Topic topic topicName
  * ```
  */
 export class Topic extends pulumi.CustomResource {

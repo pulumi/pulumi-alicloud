@@ -127,7 +127,7 @@ import javax.annotation.Nullable;
  * RocketMQ Consumer Group can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:rocketmq/consumerGroup:ConsumerGroup example &lt;instance_id&gt;:&lt;consumer_group_id&gt;
+ * $ pulumi import alicloud:rocketmq/consumerGroup:ConsumerGroup example &lt;instance_id&gt;:&lt;consumer_group_id&gt;
  * ```
  * 
  */

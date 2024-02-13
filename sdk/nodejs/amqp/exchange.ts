@@ -47,7 +47,7 @@ import * as utilities from "../utilities";
  * RabbitMQ (AMQP) Exchange can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:amqp/exchange:Exchange example <instance_id>:<virtual_host_name>:<exchange_name>
+ * $ pulumi import alicloud:amqp/exchange:Exchange example <instance_id>:<virtual_host_name>:<exchange_name>
  * ```
  */
 export class Exchange extends pulumi.CustomResource {

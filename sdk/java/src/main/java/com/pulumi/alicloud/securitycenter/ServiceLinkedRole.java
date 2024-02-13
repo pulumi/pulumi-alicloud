@@ -54,7 +54,7 @@ import javax.annotation.Nullable;
  * SecurityCenter service-linked roles(SLR) can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:securitycenter/serviceLinkedRole:ServiceLinkedRole example &lt;product_name&gt;
+ * $ pulumi import alicloud:securitycenter/serviceLinkedRole:ServiceLinkedRole example &lt;product_name&gt;
  * ```
  * 
  */

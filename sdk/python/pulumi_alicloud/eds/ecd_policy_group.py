@@ -719,7 +719,7 @@ class EcdPolicyGroup(pulumi.CustomResource):
         Elastic Desktop Service (ECD) Policy Group can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:eds/ecdPolicyGroup:EcdPolicyGroup example <id>
+        $ pulumi import alicloud:eds/ecdPolicyGroup:EcdPolicyGroup example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -791,7 +791,7 @@ class EcdPolicyGroup(pulumi.CustomResource):
         Elastic Desktop Service (ECD) Policy Group can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:eds/ecdPolicyGroup:EcdPolicyGroup example <id>
+        $ pulumi import alicloud:eds/ecdPolicyGroup:EcdPolicyGroup example <id>
         ```
 
         :param str resource_name: The name of the resource.

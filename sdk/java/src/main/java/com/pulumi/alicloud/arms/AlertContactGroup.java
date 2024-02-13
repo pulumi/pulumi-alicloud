@@ -69,7 +69,7 @@ import javax.annotation.Nullable;
  * Application Real-Time Monitoring Service (ARMS) Alert Contact Group can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:arms/alertContactGroup:AlertContactGroup example &lt;id&gt;
+ * $ pulumi import alicloud:arms/alertContactGroup:AlertContactGroup example &lt;id&gt;
  * ```
  * 
  */

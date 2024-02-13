@@ -21,7 +21,7 @@ namespace Pulumi.AliCloud.Ebs
     /// EBS Disk Replica Group can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:ebs/diskReplicaGroup:DiskReplicaGroup example &lt;id&gt;
+    /// $ pulumi import alicloud:ebs/diskReplicaGroup:DiskReplicaGroup example &lt;id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:ebs/diskReplicaGroup:DiskReplicaGroup")]

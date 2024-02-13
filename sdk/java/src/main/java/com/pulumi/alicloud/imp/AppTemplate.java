@@ -65,7 +65,7 @@ import javax.annotation.Nullable;
  * Apsara Agile Live (IMP) App Template can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:imp/appTemplate:AppTemplate example &lt;id&gt;
+ * $ pulumi import alicloud:imp/appTemplate:AppTemplate example &lt;id&gt;
  * ```
  * 
  */

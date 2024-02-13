@@ -27,7 +27,7 @@ import javax.annotation.Nullable;
  * Private Zone Endpoint can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:pvtz/endpoint:Endpoint example &lt;id&gt;
+ * $ pulumi import alicloud:pvtz/endpoint:Endpoint example &lt;id&gt;
  * ```
  * 
  */

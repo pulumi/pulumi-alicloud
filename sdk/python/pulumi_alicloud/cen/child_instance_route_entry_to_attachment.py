@@ -299,7 +299,7 @@ class ChildInstanceRouteEntryToAttachment(pulumi.CustomResource):
         Cen Child Instance Route Entry To Attachment can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:cen/childInstanceRouteEntryToAttachment:ChildInstanceRouteEntryToAttachment example <cen_id>:<child_instance_route_table_id>:<transit_router_attachment_id>:<destination_cidr_block>
+        $ pulumi import alicloud:cen/childInstanceRouteEntryToAttachment:ChildInstanceRouteEntryToAttachment example <cen_id>:<child_instance_route_table_id>:<transit_router_attachment_id>:<destination_cidr_block>
         ```
 
         :param str resource_name: The name of the resource.
@@ -389,7 +389,7 @@ class ChildInstanceRouteEntryToAttachment(pulumi.CustomResource):
         Cen Child Instance Route Entry To Attachment can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:cen/childInstanceRouteEntryToAttachment:ChildInstanceRouteEntryToAttachment example <cen_id>:<child_instance_route_table_id>:<transit_router_attachment_id>:<destination_cidr_block>
+        $ pulumi import alicloud:cen/childInstanceRouteEntryToAttachment:ChildInstanceRouteEntryToAttachment example <cen_id>:<child_instance_route_table_id>:<transit_router_attachment_id>:<destination_cidr_block>
         ```
 
         :param str resource_name: The name of the resource.

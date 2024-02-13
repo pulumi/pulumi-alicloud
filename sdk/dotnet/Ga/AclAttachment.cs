@@ -92,7 +92,7 @@ namespace Pulumi.AliCloud.Ga
     /// Global Accelerator (GA) Acl Attachment can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:ga/aclAttachment:AclAttachment example &lt;listener_id&gt;:&lt;acl_id&gt;
+    /// $ pulumi import alicloud:ga/aclAttachment:AclAttachment example &lt;listener_id&gt;:&lt;acl_id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:ga/aclAttachment:AclAttachment")]

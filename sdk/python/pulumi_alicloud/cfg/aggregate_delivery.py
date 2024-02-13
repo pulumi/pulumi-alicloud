@@ -441,7 +441,7 @@ class AggregateDelivery(pulumi.CustomResource):
         Cloud Config Aggregate Delivery can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:cfg/aggregateDelivery:AggregateDelivery example <aggregator_id>:<delivery_channel_id>
+        $ pulumi import alicloud:cfg/aggregateDelivery:AggregateDelivery example <aggregator_id>:<delivery_channel_id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -481,7 +481,7 @@ class AggregateDelivery(pulumi.CustomResource):
         Cloud Config Aggregate Delivery can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:cfg/aggregateDelivery:AggregateDelivery example <aggregator_id>:<delivery_channel_id>
+        $ pulumi import alicloud:cfg/aggregateDelivery:AggregateDelivery example <aggregator_id>:<delivery_channel_id>
         ```
 
         :param str resource_name: The name of the resource.

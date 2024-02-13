@@ -70,7 +70,7 @@ import javax.annotation.Nullable;
  * VPC Dhcp Options Set can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:vpc/dhcpOptionsSet:DhcpOptionsSet example &lt;id&gt;
+ * $ pulumi import alicloud:vpc/dhcpOptionsSet:DhcpOptionsSet example &lt;id&gt;
  * ```
  * 
  */

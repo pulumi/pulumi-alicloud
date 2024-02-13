@@ -64,9 +64,7 @@ import (
 // DTS Synchronization Instance can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:dts/synchronizationInstance:SynchronizationInstance example <id>
-//
+// $ pulumi import alicloud:dts/synchronizationInstance:SynchronizationInstance example <id>
 // ```
 type SynchronizationInstance struct {
 	pulumi.CustomResourceState

@@ -42,7 +42,7 @@ import * as utilities from "../utilities";
  * Function Compute alias can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:fc/alias:Alias example my_alias_id
+ * $ pulumi import alicloud:fc/alias:Alias example my_alias_id
  * ```
  */
 export class Alias extends pulumi.CustomResource {

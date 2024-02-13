@@ -342,7 +342,7 @@ class Exchange(pulumi.CustomResource):
         RabbitMQ (AMQP) Exchange can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:amqp/exchange:Exchange example <instance_id>:<virtual_host_name>:<exchange_name>
+        $ pulumi import alicloud:amqp/exchange:Exchange example <instance_id>:<virtual_host_name>:<exchange_name>
         ```
 
         :param str resource_name: The name of the resource.
@@ -412,7 +412,7 @@ class Exchange(pulumi.CustomResource):
         RabbitMQ (AMQP) Exchange can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:amqp/exchange:Exchange example <instance_id>:<virtual_host_name>:<exchange_name>
+        $ pulumi import alicloud:amqp/exchange:Exchange example <instance_id>:<virtual_host_name>:<exchange_name>
         ```
 
         :param str resource_name: The name of the resource.

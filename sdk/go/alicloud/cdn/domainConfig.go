@@ -75,15 +75,11 @@ import (
 // CDN domain config can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:cdn/domainConfig:DomainConfig example <domain_name>:<function_name>:<config_id>
-//
+// $ pulumi import alicloud:cdn/domainConfig:DomainConfig example <domain_name>:<function_name>:<config_id>
 // ```
 //
 // ```sh
-//
-//	$ pulumi import alicloud:cdn/domainConfig:DomainConfig example <domain_name>:<function_name>
-//
+// $ pulumi import alicloud:cdn/domainConfig:DomainConfig example <domain_name>:<function_name>
 // ```
 type DomainConfig struct {
 	pulumi.CustomResourceState

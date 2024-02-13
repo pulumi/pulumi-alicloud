@@ -92,7 +92,7 @@ namespace Pulumi.AliCloud.Nlb
     /// NLB Load Balancer can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:nlb/loadBalancer:LoadBalancer example &lt;id&gt;
+    /// $ pulumi import alicloud:nlb/loadBalancer:LoadBalancer example &lt;id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:nlb/loadBalancer:LoadBalancer")]
