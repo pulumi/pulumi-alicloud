@@ -63,7 +63,7 @@ import * as utilities from "../utilities";
  * ECS Auto Snapshot Policy Attachment can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:ecs/ecsAutoSnapshotPolicyAttachment:EcsAutoSnapshotPolicyAttachment example s-abcd12345:d-abcd12345
+ * $ pulumi import alicloud:ecs/ecsAutoSnapshotPolicyAttachment:EcsAutoSnapshotPolicyAttachment example s-abcd12345:d-abcd12345
  * ```
  */
 export class EcsAutoSnapshotPolicyAttachment extends pulumi.CustomResource {

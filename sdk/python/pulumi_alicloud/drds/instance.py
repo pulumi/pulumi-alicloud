@@ -399,7 +399,7 @@ class Instance(pulumi.CustomResource):
         Distributed Relational Database Service (DRDS) can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:drds/instance:Instance example drds-abc123456
+        $ pulumi import alicloud:drds/instance:Instance example drds-abc123456
         ```
 
         :param str resource_name: The name of the resource.
@@ -461,7 +461,7 @@ class Instance(pulumi.CustomResource):
         Distributed Relational Database Service (DRDS) can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:drds/instance:Instance example drds-abc123456
+        $ pulumi import alicloud:drds/instance:Instance example drds-abc123456
         ```
 
         :param str resource_name: The name of the resource.

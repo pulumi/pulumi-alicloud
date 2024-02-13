@@ -51,9 +51,7 @@ import (
 // Database Gateway Gateway can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:databasegateway/gateway:Gateway example <id>
-//
+// $ pulumi import alicloud:databasegateway/gateway:Gateway example <id>
 // ```
 type Gateway struct {
 	pulumi.CustomResourceState

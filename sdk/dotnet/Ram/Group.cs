@@ -40,7 +40,7 @@ namespace Pulumi.AliCloud.Ram
     /// RAM group can be imported using the id or name, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:ram/group:Group example my-group
+    /// $ pulumi import alicloud:ram/group:Group example my-group
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:ram/group:Group")]

@@ -75,7 +75,7 @@ import * as utilities from "../utilities";
  * Elastic IP address association can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:ecs/eipAssociation:EipAssociation example <allocation_id>:<instance_id>
+ * $ pulumi import alicloud:ecs/eipAssociation:EipAssociation example <allocation_id>:<instance_id>
  * ```
  */
 export class EipAssociation extends pulumi.CustomResource {

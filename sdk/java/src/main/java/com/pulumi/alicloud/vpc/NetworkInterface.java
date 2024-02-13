@@ -95,7 +95,7 @@ import javax.annotation.Nullable;
  * ENI can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:vpc/networkInterface:NetworkInterface eni eni-abc1234567890000
+ * $ pulumi import alicloud:vpc/networkInterface:NetworkInterface eni eni-abc1234567890000
  * ```
  * 
  */

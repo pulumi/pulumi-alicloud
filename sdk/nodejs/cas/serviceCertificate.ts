@@ -82,7 +82,7 @@ import * as utilities from "../utilities";
  * SSL Certificates Certificate can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:cas/serviceCertificate:ServiceCertificate example <id>
+ * $ pulumi import alicloud:cas/serviceCertificate:ServiceCertificate example <id>
  * ```
  */
 export class ServiceCertificate extends pulumi.CustomResource {

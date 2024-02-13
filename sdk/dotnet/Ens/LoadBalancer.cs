@@ -65,7 +65,7 @@ namespace Pulumi.AliCloud.Ens
     /// ENS Load Balancer can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:ens/loadBalancer:LoadBalancer example &lt;id&gt;
+    /// $ pulumi import alicloud:ens/loadBalancer:LoadBalancer example &lt;id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:ens/loadBalancer:LoadBalancer")]

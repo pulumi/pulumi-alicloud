@@ -229,7 +229,7 @@ class Cluster(pulumi.CustomResource):
         EDAS cluster can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:edas/cluster:Cluster cluster cluster_id
+        $ pulumi import alicloud:edas/cluster:Cluster cluster cluster_id
         ```
 
         :param str resource_name: The name of the resource.
@@ -280,7 +280,7 @@ class Cluster(pulumi.CustomResource):
         EDAS cluster can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:edas/cluster:Cluster cluster cluster_id
+        $ pulumi import alicloud:edas/cluster:Cluster cluster cluster_id
         ```
 
         :param str resource_name: The name of the resource.

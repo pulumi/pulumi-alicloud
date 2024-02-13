@@ -188,9 +188,7 @@ import (
 // Ga Forwarding Rule can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:ga/forwardingRule:ForwardingRule example <accelerator_id>:<listener_id>:<forwarding_rule_id>
-//
+// $ pulumi import alicloud:ga/forwardingRule:ForwardingRule example <accelerator_id>:<listener_id>:<forwarding_rule_id>
 // ```
 type ForwardingRule struct {
 	pulumi.CustomResourceState

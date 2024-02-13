@@ -211,7 +211,7 @@ class AccountPrivilege(pulumi.CustomResource):
         PolarDB account privilege can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:polardb/accountPrivilege:AccountPrivilege example "pc-12345:tf_account:ReadOnly"
+        $ pulumi import alicloud:polardb/accountPrivilege:AccountPrivilege example "pc-12345:tf_account:ReadOnly"
         ```
 
         :param str resource_name: The name of the resource.
@@ -276,7 +276,7 @@ class AccountPrivilege(pulumi.CustomResource):
         PolarDB account privilege can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:polardb/accountPrivilege:AccountPrivilege example "pc-12345:tf_account:ReadOnly"
+        $ pulumi import alicloud:polardb/accountPrivilege:AccountPrivilege example "pc-12345:tf_account:ReadOnly"
         ```
 
         :param str resource_name: The name of the resource.

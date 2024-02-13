@@ -40,7 +40,7 @@ import * as utilities from "../utilities";
  * Open Search App Group can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:opensearch/appGroup:AppGroup example <id>
+ * $ pulumi import alicloud:opensearch/appGroup:AppGroup example <id>
  * ```
  */
 export class AppGroup extends pulumi.CustomResource {

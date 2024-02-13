@@ -63,7 +63,7 @@ import * as utilities from "../utilities";
  * Express Connect Vbr Pconn Association can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:expressconnect/vbrPconnAssociation:VbrPconnAssociation example <VbrId>:<PhysicalConnectionId>
+ * $ pulumi import alicloud:expressconnect/vbrPconnAssociation:VbrPconnAssociation example <VbrId>:<PhysicalConnectionId>
  * ```
  */
 export class VbrPconnAssociation extends pulumi.CustomResource {

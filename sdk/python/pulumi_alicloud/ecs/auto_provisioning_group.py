@@ -743,7 +743,7 @@ class AutoProvisioningGroup(pulumi.CustomResource):
         ECS auto provisioning group can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:ecs/autoProvisioningGroup:AutoProvisioningGroup example asg-abc123456
+        $ pulumi import alicloud:ecs/autoProvisioningGroup:AutoProvisioningGroup example asg-abc123456
         ```
 
         :param str resource_name: The name of the resource.
@@ -826,7 +826,7 @@ class AutoProvisioningGroup(pulumi.CustomResource):
         ECS auto provisioning group can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:ecs/autoProvisioningGroup:AutoProvisioningGroup example asg-abc123456
+        $ pulumi import alicloud:ecs/autoProvisioningGroup:AutoProvisioningGroup example asg-abc123456
         ```
 
         :param str resource_name: The name of the resource.

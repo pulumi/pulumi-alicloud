@@ -1316,7 +1316,7 @@ class Instance(pulumi.CustomResource):
         ENS Instance can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:ens/instance:Instance example <id>
+        $ pulumi import alicloud:ens/instance:Instance example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -1400,7 +1400,7 @@ class Instance(pulumi.CustomResource):
         ENS Instance can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:ens/instance:Instance example <id>
+        $ pulumi import alicloud:ens/instance:Instance example <id>
         ```
 
         :param str resource_name: The name of the resource.

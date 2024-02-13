@@ -163,7 +163,7 @@ class NetworkPackage(pulumi.CustomResource):
         ECD Network Package can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:eds/networkPackage:NetworkPackage example <id>
+        $ pulumi import alicloud:eds/networkPackage:NetworkPackage example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -211,7 +211,7 @@ class NetworkPackage(pulumi.CustomResource):
         ECD Network Package can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:eds/networkPackage:NetworkPackage example <id>
+        $ pulumi import alicloud:eds/networkPackage:NetworkPackage example <id>
         ```
 
         :param str resource_name: The name of the resource.

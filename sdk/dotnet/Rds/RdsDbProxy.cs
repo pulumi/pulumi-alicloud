@@ -112,7 +112,7 @@ namespace Pulumi.AliCloud.Rds
     /// RDS database proxy feature can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:rds/rdsDbProxy:RdsDbProxy example abc12345678
+    /// $ pulumi import alicloud:rds/rdsDbProxy:RdsDbProxy example abc12345678
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:rds/rdsDbProxy:RdsDbProxy")]

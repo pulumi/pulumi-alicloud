@@ -25,7 +25,7 @@ import * as utilities from "../utilities";
  * DTS Synchronization Job can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:dts/synchronizationJob:SynchronizationJob example <id>
+ * $ pulumi import alicloud:dts/synchronizationJob:SynchronizationJob example <id>
  * ```
  */
 export class SynchronizationJob extends pulumi.CustomResource {

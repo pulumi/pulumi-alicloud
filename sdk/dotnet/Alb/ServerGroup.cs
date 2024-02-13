@@ -141,7 +141,7 @@ namespace Pulumi.AliCloud.Alb
     /// ALB Server Group can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:alb/serverGroup:ServerGroup example &lt;id&gt;
+    /// $ pulumi import alicloud:alb/serverGroup:ServerGroup example &lt;id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:alb/serverGroup:ServerGroup")]

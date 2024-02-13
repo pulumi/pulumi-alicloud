@@ -304,7 +304,7 @@ class AlidnsInstance(pulumi.CustomResource):
         DNS instance be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:dns/alidnsInstance:AlidnsInstance example dns-cn-v0h1ldjhfff
+        $ pulumi import alicloud:dns/alidnsInstance:AlidnsInstance example dns-cn-v0h1ldjhfff
         ```
 
         :param str resource_name: The name of the resource.
@@ -350,7 +350,7 @@ class AlidnsInstance(pulumi.CustomResource):
         DNS instance be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:dns/alidnsInstance:AlidnsInstance example dns-cn-v0h1ldjhfff
+        $ pulumi import alicloud:dns/alidnsInstance:AlidnsInstance example dns-cn-v0h1ldjhfff
         ```
 
         :param str resource_name: The name of the resource.

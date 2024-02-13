@@ -50,7 +50,7 @@ import * as utilities from "../utilities";
  * DRDS Polardb X Instance can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:drds/polardbxInstance:PolardbxInstance example <id>
+ * $ pulumi import alicloud:drds/polardbxInstance:PolardbxInstance example <id>
  * ```
  */
 export class PolardbxInstance extends pulumi.CustomResource {

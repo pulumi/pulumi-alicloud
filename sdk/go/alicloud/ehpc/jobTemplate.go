@@ -52,9 +52,7 @@ import (
 // Ehpc Job Template can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:ehpc/jobTemplate:JobTemplate example <id>
-//
+// $ pulumi import alicloud:ehpc/jobTemplate:JobTemplate example <id>
 // ```
 type JobTemplate struct {
 	pulumi.CustomResourceState

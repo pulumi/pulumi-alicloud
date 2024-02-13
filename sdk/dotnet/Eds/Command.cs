@@ -96,7 +96,7 @@ namespace Pulumi.AliCloud.Eds
     /// ECD Command can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:eds/command:Command example &lt;id&gt;
+    /// $ pulumi import alicloud:eds/command:Command example &lt;id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:eds/command:Command")]

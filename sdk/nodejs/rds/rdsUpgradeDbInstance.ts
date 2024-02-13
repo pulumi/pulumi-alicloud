@@ -77,7 +77,7 @@ import * as utilities from "../utilities";
  * RDS Upgrade DB Instance can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:rds/rdsUpgradeDbInstance:RdsUpgradeDbInstance example <id>
+ * $ pulumi import alicloud:rds/rdsUpgradeDbInstance:RdsUpgradeDbInstance example <id>
  * ```
  */
 export class RdsUpgradeDbInstance extends pulumi.CustomResource {

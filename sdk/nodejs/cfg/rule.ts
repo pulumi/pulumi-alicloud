@@ -49,7 +49,7 @@ import * as utilities from "../utilities";
  * Config Rule can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:cfg/rule:Rule example <id>
+ * $ pulumi import alicloud:cfg/rule:Rule example <id>
  * ```
  */
 export class Rule extends pulumi.CustomResource {

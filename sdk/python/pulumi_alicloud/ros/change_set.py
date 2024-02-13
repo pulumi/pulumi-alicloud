@@ -672,7 +672,7 @@ class ChangeSet(pulumi.CustomResource):
         ROS Change Set can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:ros/changeSet:ChangeSet example <change_set_id>
+        $ pulumi import alicloud:ros/changeSet:ChangeSet example <change_set_id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -730,7 +730,7 @@ class ChangeSet(pulumi.CustomResource):
         ROS Change Set can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:ros/changeSet:ChangeSet example <change_set_id>
+        $ pulumi import alicloud:ros/changeSet:ChangeSet example <change_set_id>
         ```
 
         :param str resource_name: The name of the resource.

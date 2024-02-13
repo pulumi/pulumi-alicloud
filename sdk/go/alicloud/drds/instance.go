@@ -58,9 +58,7 @@ import (
 // Distributed Relational Database Service (DRDS) can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:drds/instance:Instance example drds-abc123456
-//
+// $ pulumi import alicloud:drds/instance:Instance example drds-abc123456
 // ```
 type Instance struct {
 	pulumi.CustomResourceState

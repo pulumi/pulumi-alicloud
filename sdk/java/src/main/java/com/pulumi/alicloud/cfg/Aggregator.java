@@ -75,7 +75,7 @@ import javax.annotation.Nullable;
  * Cloud Config Aggregator can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:cfg/aggregator:Aggregator example &lt;id&gt;
+ * $ pulumi import alicloud:cfg/aggregator:Aggregator example &lt;id&gt;
  * ```
  * 
  */

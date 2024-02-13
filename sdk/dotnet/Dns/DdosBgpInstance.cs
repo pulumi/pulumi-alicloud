@@ -48,7 +48,7 @@ namespace Pulumi.AliCloud.Dns
     /// Ddosbgp instance can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:dns/ddosBgpInstance:DdosBgpInstance example ddosbgp-abc123456
+    /// $ pulumi import alicloud:dns/ddosBgpInstance:DdosBgpInstance example ddosbgp-abc123456
     /// ```
     /// </summary>
     [Obsolete(@"alicloud.dns.DdosBgpInstance has been deprecated in favor of alicloud.ddos.DdosBgpInstance")]

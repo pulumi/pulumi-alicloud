@@ -439,7 +439,7 @@ class ServerCertificate(pulumi.CustomResource):
         Server Load balancer Server Certificate can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:slb/serverCertificate:ServerCertificate example abc123456
+        $ pulumi import alicloud:slb/serverCertificate:ServerCertificate example abc123456
         ```
 
         :param str resource_name: The name of the resource.
@@ -527,7 +527,7 @@ class ServerCertificate(pulumi.CustomResource):
         Server Load balancer Server Certificate can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:slb/serverCertificate:ServerCertificate example abc123456
+        $ pulumi import alicloud:slb/serverCertificate:ServerCertificate example abc123456
         ```
 
         :param str resource_name: The name of the resource.

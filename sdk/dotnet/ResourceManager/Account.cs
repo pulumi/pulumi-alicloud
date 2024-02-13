@@ -55,7 +55,7 @@ namespace Pulumi.AliCloud.ResourceManager
     /// Resource Manager Account can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:resourcemanager/account:Account example 13148890145*****
+    /// $ pulumi import alicloud:resourcemanager/account:Account example 13148890145*****
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:resourcemanager/account:Account")]

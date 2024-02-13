@@ -68,7 +68,7 @@ namespace Pulumi.AliCloud.Ga
     /// Ga Ip Set can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:ga/ipSet:IpSet example &lt;id&gt;
+    /// $ pulumi import alicloud:ga/ipSet:IpSet example &lt;id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:ga/ipSet:IpSet")]

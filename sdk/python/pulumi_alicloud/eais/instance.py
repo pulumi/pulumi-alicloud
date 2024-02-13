@@ -253,7 +253,7 @@ class Instance(pulumi.CustomResource):
         EAIS Instance can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:eais/instance:Instance example <id>
+        $ pulumi import alicloud:eais/instance:Instance example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -312,7 +312,7 @@ class Instance(pulumi.CustomResource):
         EAIS Instance can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:eais/instance:Instance example <id>
+        $ pulumi import alicloud:eais/instance:Instance example <id>
         ```
 
         :param str resource_name: The name of the resource.

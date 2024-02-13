@@ -27,7 +27,7 @@ import * as utilities from "../utilities";
  * ECS Hpc Cluster can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:ecs/hpcCluster:HpcCluster example <id>
+ * $ pulumi import alicloud:ecs/hpcCluster:HpcCluster example <id>
  * ```
  */
 export class HpcCluster extends pulumi.CustomResource {

@@ -16,7 +16,7 @@ import * as utilities from "../utilities";
  * Cloud SSO Access Configuration Provisioning can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:cloudsso/accessConfigurationProvisioning:AccessConfigurationProvisioning example <directory_id>:<access_configuration_id>:<target_type>:<target_id>
+ * $ pulumi import alicloud:cloudsso/accessConfigurationProvisioning:AccessConfigurationProvisioning example <directory_id>:<access_configuration_id>:<target_type>:<target_id>
  * ```
  */
 export class AccessConfigurationProvisioning extends pulumi.CustomResource {

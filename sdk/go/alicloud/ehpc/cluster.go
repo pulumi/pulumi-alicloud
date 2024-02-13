@@ -131,9 +131,7 @@ import (
 // Ehpc Cluster can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:ehpc/cluster:Cluster example <id>
-//
+// $ pulumi import alicloud:ehpc/cluster:Cluster example <id>
 // ```
 type Cluster struct {
 	pulumi.CustomResourceState

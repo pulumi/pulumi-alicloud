@@ -401,7 +401,7 @@ class Snapshot(pulumi.CustomResource):
         Snapshot can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:ecs/snapshot:Snapshot snapshot s-abc1234567890000
+        $ pulumi import alicloud:ecs/snapshot:Snapshot snapshot s-abc1234567890000
         ```
 
         :param str resource_name: The name of the resource.
@@ -445,7 +445,7 @@ class Snapshot(pulumi.CustomResource):
         Snapshot can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:ecs/snapshot:Snapshot snapshot s-abc1234567890000
+        $ pulumi import alicloud:ecs/snapshot:Snapshot snapshot s-abc1234567890000
         ```
 
         :param str resource_name: The name of the resource.

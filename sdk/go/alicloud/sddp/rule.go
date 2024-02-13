@@ -61,9 +61,7 @@ import (
 // Data Security Center Rule can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:sddp/rule:Rule example <id>
-//
+// $ pulumi import alicloud:sddp/rule:Rule example <id>
 // ```
 type Rule struct {
 	pulumi.CustomResourceState

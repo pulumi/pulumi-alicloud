@@ -114,7 +114,7 @@ import javax.annotation.Nullable;
  * Ess notification can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:ess/notification:Notification example &#39;scaling_group_id:notification_arn&#39;
+ * $ pulumi import alicloud:ess/notification:Notification example &#39;scaling_group_id:notification_arn&#39;
  * ```
  * 
  */

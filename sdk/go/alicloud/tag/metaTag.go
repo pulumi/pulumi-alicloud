@@ -57,9 +57,7 @@ import (
 // Tag Meta Tag can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:tag/metaTag:MetaTag example <regionId>:<key>
-//
+// $ pulumi import alicloud:tag/metaTag:MetaTag example <regionId>:<key>
 // ```
 type MetaTag struct {
 	pulumi.CustomResourceState

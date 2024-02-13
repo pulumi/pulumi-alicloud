@@ -131,9 +131,7 @@ import (
 // DBFS Snapshot can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:databasefilesystem/snapshot:Snapshot example <id>
-//
+// $ pulumi import alicloud:databasefilesystem/snapshot:Snapshot example <id>
 // ```
 type Snapshot struct {
 	pulumi.CustomResourceState

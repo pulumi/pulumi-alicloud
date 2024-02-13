@@ -78,7 +78,7 @@ import * as utilities from "../utilities";
  * ESS suspend process can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:ess/suspendProcess:SuspendProcess example asg-xxx:sgp-xxx:5000
+ * $ pulumi import alicloud:ess/suspendProcess:SuspendProcess example asg-xxx:sgp-xxx:5000
  * ```
  */
 export class SuspendProcess extends pulumi.CustomResource {

@@ -291,7 +291,7 @@ class KeyPair(pulumi.CustomResource):
         Key pair can be imported using the name, e.g.
 
         ```sh
-         $ pulumi import alicloud:ecs/keyPair:KeyPair example my_public_key
+        $ pulumi import alicloud:ecs/keyPair:KeyPair example my_public_key
         ```
 
         :param str resource_name: The name of the resource.
@@ -334,7 +334,7 @@ class KeyPair(pulumi.CustomResource):
         Key pair can be imported using the name, e.g.
 
         ```sh
-         $ pulumi import alicloud:ecs/keyPair:KeyPair example my_public_key
+        $ pulumi import alicloud:ecs/keyPair:KeyPair example my_public_key
         ```
 
         :param str resource_name: The name of the resource.

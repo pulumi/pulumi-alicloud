@@ -120,7 +120,7 @@ import javax.annotation.Nullable;
  * Service Mesh User Permission can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:servicemesh/userPermission:UserPermission example &lt;id&gt;
+ * $ pulumi import alicloud:servicemesh/userPermission:UserPermission example &lt;id&gt;
  * ```
  * 
  */

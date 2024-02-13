@@ -70,7 +70,7 @@ import * as utilities from "../utilities";
  * CEN instance can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:cen/transitRouterRouteEntry:TransitRouterRouteEntry default vtb-*********:rte-*******
+ * $ pulumi import alicloud:cen/transitRouterRouteEntry:TransitRouterRouteEntry default vtb-*********:rte-*******
  * ```
  */
 export class TransitRouterRouteEntry extends pulumi.CustomResource {

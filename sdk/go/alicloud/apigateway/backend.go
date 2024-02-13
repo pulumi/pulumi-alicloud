@@ -59,9 +59,7 @@ import (
 // Api Gateway Backend can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:apigateway/backend:Backend example <id>
-//
+// $ pulumi import alicloud:apigateway/backend:Backend example <id>
 // ```
 type Backend struct {
 	pulumi.CustomResourceState

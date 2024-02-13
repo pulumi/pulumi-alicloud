@@ -54,9 +54,7 @@ import (
 // ECS Deployment Set can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:ecs/ecsDeploymentSet:EcsDeploymentSet example <id>
-//
+// $ pulumi import alicloud:ecs/ecsDeploymentSet:EcsDeploymentSet example <id>
 // ```
 type EcsDeploymentSet struct {
 	pulumi.CustomResourceState

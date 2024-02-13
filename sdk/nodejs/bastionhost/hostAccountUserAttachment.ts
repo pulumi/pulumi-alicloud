@@ -78,7 +78,7 @@ import * as utilities from "../utilities";
  * Bastion Host Host Account can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:bastionhost/hostAccountUserAttachment:HostAccountUserAttachment example <instance_id>:<user_id>:<host_id>
+ * $ pulumi import alicloud:bastionhost/hostAccountUserAttachment:HostAccountUserAttachment example <instance_id>:<user_id>:<host_id>
  * ```
  */
 export class HostAccountUserAttachment extends pulumi.CustomResource {

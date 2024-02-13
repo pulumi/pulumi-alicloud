@@ -191,7 +191,7 @@ class PolicyVersion(pulumi.CustomResource):
         Resource Manager Policy Version can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:resourcemanager/policyVersion:PolicyVersion example tftest:v2
+        $ pulumi import alicloud:resourcemanager/policyVersion:PolicyVersion example tftest:v2
         ```
 
         :param str resource_name: The name of the resource.
@@ -255,7 +255,7 @@ class PolicyVersion(pulumi.CustomResource):
         Resource Manager Policy Version can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:resourcemanager/policyVersion:PolicyVersion example tftest:v2
+        $ pulumi import alicloud:resourcemanager/policyVersion:PolicyVersion example tftest:v2
         ```
 
         :param str resource_name: The name of the resource.

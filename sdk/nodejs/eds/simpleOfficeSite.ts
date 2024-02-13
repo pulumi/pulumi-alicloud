@@ -32,7 +32,7 @@ import * as utilities from "../utilities";
  * ECD Simple Office Site can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:eds/simpleOfficeSite:SimpleOfficeSite example <id>
+ * $ pulumi import alicloud:eds/simpleOfficeSite:SimpleOfficeSite example <id>
  * ```
  */
 export class SimpleOfficeSite extends pulumi.CustomResource {

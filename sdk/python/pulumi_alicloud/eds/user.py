@@ -223,7 +223,7 @@ class User(pulumi.CustomResource):
         ECD User can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:eds/user:User example <end_user_id>
+        $ pulumi import alicloud:eds/user:User example <end_user_id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -267,7 +267,7 @@ class User(pulumi.CustomResource):
         ECD User can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:eds/user:User example <end_user_id>
+        $ pulumi import alicloud:eds/user:User example <end_user_id>
         ```
 
         :param str resource_name: The name of the resource.

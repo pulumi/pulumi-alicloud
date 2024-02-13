@@ -65,7 +65,7 @@ import * as utilities from "../utilities";
  * ADB account can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:adb/account:Account example am-12345:tf_account
+ * $ pulumi import alicloud:adb/account:Account example am-12345:tf_account
  * ```
  */
 export class Account extends pulumi.CustomResource {

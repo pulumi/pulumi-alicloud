@@ -218,7 +218,7 @@ class HoneypotPreset(pulumi.CustomResource):
         Threat Detection Honeypot Preset can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:threatdetection/honeypotPreset:HoneypotPreset example <id>
+        $ pulumi import alicloud:threatdetection/honeypotPreset:HoneypotPreset example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -273,7 +273,7 @@ class HoneypotPreset(pulumi.CustomResource):
         Threat Detection Honeypot Preset can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:threatdetection/honeypotPreset:HoneypotPreset example <id>
+        $ pulumi import alicloud:threatdetection/honeypotPreset:HoneypotPreset example <id>
         ```
 
         :param str resource_name: The name of the resource.

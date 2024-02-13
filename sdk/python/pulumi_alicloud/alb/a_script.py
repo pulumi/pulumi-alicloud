@@ -305,7 +305,7 @@ class AScript(pulumi.CustomResource):
         Alb AScript can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:alb/aScript:AScript example <id>
+        $ pulumi import alicloud:alb/aScript:AScript example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -336,7 +336,7 @@ class AScript(pulumi.CustomResource):
         Alb AScript can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:alb/aScript:AScript example <id>
+        $ pulumi import alicloud:alb/aScript:AScript example <id>
         ```
 
         :param str resource_name: The name of the resource.

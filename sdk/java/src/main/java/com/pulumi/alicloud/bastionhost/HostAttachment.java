@@ -116,7 +116,7 @@ import javax.annotation.Nullable;
  * Bastion Host Host Attachment can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:bastionhost/hostAttachment:HostAttachment example &lt;instance_id&gt;:&lt;host_group_id&gt;:&lt;host_id&gt;
+ * $ pulumi import alicloud:bastionhost/hostAttachment:HostAttachment example &lt;instance_id&gt;:&lt;host_group_id&gt;:&lt;host_id&gt;
  * ```
  * 
  */

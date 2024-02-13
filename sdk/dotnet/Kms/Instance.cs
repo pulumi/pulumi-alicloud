@@ -21,7 +21,7 @@ namespace Pulumi.AliCloud.Kms
     /// KMS Instance can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:kms/instance:Instance example &lt;id&gt;
+    /// $ pulumi import alicloud:kms/instance:Instance example &lt;id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:kms/instance:Instance")]

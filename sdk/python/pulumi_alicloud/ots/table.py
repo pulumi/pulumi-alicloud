@@ -398,7 +398,7 @@ class Table(pulumi.CustomResource):
         OTS table can be imported using id, e.g.
 
         ```sh
-         $ pulumi import alicloud:ots/table:Table table my-ots:ots_table
+        $ pulumi import alicloud:ots/table:Table table my-ots:ots_table
         ```
 
         :param str resource_name: The name of the resource.
@@ -490,7 +490,7 @@ class Table(pulumi.CustomResource):
         OTS table can be imported using id, e.g.
 
         ```sh
-         $ pulumi import alicloud:ots/table:Table table my-ots:ots_table
+        $ pulumi import alicloud:ots/table:Table table my-ots:ots_table
         ```
 
         :param str resource_name: The name of the resource.

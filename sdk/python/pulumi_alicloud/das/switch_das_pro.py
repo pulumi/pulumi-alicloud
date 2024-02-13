@@ -203,7 +203,7 @@ class SwitchDasPro(pulumi.CustomResource):
         DAS Switch Das Pro can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:das/switchDasPro:SwitchDasPro example <id>
+        $ pulumi import alicloud:das/switchDasPro:SwitchDasPro example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -274,7 +274,7 @@ class SwitchDasPro(pulumi.CustomResource):
         DAS Switch Das Pro can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:das/switchDasPro:SwitchDasPro example <id>
+        $ pulumi import alicloud:das/switchDasPro:SwitchDasPro example <id>
         ```
 
         :param str resource_name: The name of the resource.

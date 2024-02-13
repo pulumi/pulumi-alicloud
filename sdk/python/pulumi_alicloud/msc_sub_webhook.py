@@ -107,7 +107,7 @@ class MscSubWebhook(pulumi.CustomResource):
         Msc Sub Webhook can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:index/mscSubWebhook:MscSubWebhook example <id>
+        $ pulumi import alicloud:index/mscSubWebhook:MscSubWebhook example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -131,7 +131,7 @@ class MscSubWebhook(pulumi.CustomResource):
         Msc Sub Webhook can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:index/mscSubWebhook:MscSubWebhook example <id>
+        $ pulumi import alicloud:index/mscSubWebhook:MscSubWebhook example <id>
         ```
 
         :param str resource_name: The name of the resource.

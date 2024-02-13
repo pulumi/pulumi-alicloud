@@ -105,7 +105,7 @@ namespace Pulumi.AliCloud.BastionHost
     /// Bastion Host User can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:bastionhost/user:User example &lt;instance_id&gt;:&lt;user_id&gt;
+    /// $ pulumi import alicloud:bastionhost/user:User example &lt;instance_id&gt;:&lt;user_id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:bastionhost/user:User")]

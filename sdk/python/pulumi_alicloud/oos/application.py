@@ -198,7 +198,7 @@ class Application(pulumi.CustomResource):
         OOS Application can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:oos/application:Application example <id>
+        $ pulumi import alicloud:oos/application:Application example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -248,7 +248,7 @@ class Application(pulumi.CustomResource):
         OOS Application can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:oos/application:Application example <id>
+        $ pulumi import alicloud:oos/application:Application example <id>
         ```
 
         :param str resource_name: The name of the resource.

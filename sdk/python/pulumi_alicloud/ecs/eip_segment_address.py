@@ -313,7 +313,7 @@ class EipSegmentAddress(pulumi.CustomResource):
         EIP Segment Address can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:ecs/eipSegmentAddress:EipSegmentAddress example <id>
+        $ pulumi import alicloud:ecs/eipSegmentAddress:EipSegmentAddress example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -375,7 +375,7 @@ class EipSegmentAddress(pulumi.CustomResource):
         EIP Segment Address can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:ecs/eipSegmentAddress:EipSegmentAddress example <id>
+        $ pulumi import alicloud:ecs/eipSegmentAddress:EipSegmentAddress example <id>
         ```
 
         :param str resource_name: The name of the resource.

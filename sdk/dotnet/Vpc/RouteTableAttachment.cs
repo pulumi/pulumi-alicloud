@@ -68,7 +68,7 @@ namespace Pulumi.AliCloud.Vpc
     /// VPC Route Table Attachment can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:vpc/routeTableAttachment:RouteTableAttachment example &lt;route_table_id&gt;:&lt;vswitch_id&gt;
+    /// $ pulumi import alicloud:vpc/routeTableAttachment:RouteTableAttachment example &lt;route_table_id&gt;:&lt;vswitch_id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:vpc/routeTableAttachment:RouteTableAttachment")]

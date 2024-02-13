@@ -267,7 +267,7 @@ class FlowLog(pulumi.CustomResource):
         CEN flowlog can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:cen/flowLog:FlowLog default flowlog-tig1xxxxxx
+        $ pulumi import alicloud:cen/flowLog:FlowLog default flowlog-tig1xxxxxx
         ```
 
         :param str resource_name: The name of the resource.
@@ -324,7 +324,7 @@ class FlowLog(pulumi.CustomResource):
         CEN flowlog can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:cen/flowLog:FlowLog default flowlog-tig1xxxxxx
+        $ pulumi import alicloud:cen/flowLog:FlowLog default flowlog-tig1xxxxxx
         ```
 
         :param str resource_name: The name of the resource.

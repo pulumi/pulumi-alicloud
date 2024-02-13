@@ -119,7 +119,7 @@ import javax.annotation.Nullable;
  * ECI Virtual Node can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:eci/virtualNode:VirtualNode example &lt;id&gt;
+ * $ pulumi import alicloud:eci/virtualNode:VirtualNode example &lt;id&gt;
  * ```
  * 
  */

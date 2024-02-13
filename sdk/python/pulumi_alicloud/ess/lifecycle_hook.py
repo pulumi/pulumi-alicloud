@@ -327,7 +327,7 @@ class LifecycleHook(pulumi.CustomResource):
         Ess lifecycle hook can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:ess/lifecycleHook:LifecycleHook example ash-l12345
+        $ pulumi import alicloud:ess/lifecycleHook:LifecycleHook example ash-l12345
         ```
 
         :param str resource_name: The name of the resource.
@@ -411,7 +411,7 @@ class LifecycleHook(pulumi.CustomResource):
         Ess lifecycle hook can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:ess/lifecycleHook:LifecycleHook example ash-l12345
+        $ pulumi import alicloud:ess/lifecycleHook:LifecycleHook example ash-l12345
         ```
 
         :param str resource_name: The name of the resource.

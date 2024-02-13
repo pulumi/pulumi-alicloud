@@ -1066,7 +1066,7 @@ class RouteMap(pulumi.CustomResource):
         CEN RouteMap can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:cen/routeMap:RouteMap default <cen_id>:<route_map_id>.
+        $ pulumi import alicloud:cen/routeMap:RouteMap default <cen_id>:<route_map_id>.
         ```
 
         :param str resource_name: The name of the resource.
@@ -1188,7 +1188,7 @@ class RouteMap(pulumi.CustomResource):
         CEN RouteMap can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:cen/routeMap:RouteMap default <cen_id>:<route_map_id>.
+        $ pulumi import alicloud:cen/routeMap:RouteMap default <cen_id>:<route_map_id>.
         ```
 
         :param str resource_name: The name of the resource.

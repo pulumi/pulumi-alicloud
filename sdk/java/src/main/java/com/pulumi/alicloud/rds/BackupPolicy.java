@@ -95,7 +95,7 @@ import javax.annotation.Nullable;
  * RDS backup policy can be imported using the id or instance id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:rds/backupPolicy:BackupPolicy example &#34;rm-12345678&#34;
+ * $ pulumi import alicloud:rds/backupPolicy:BackupPolicy example &#34;rm-12345678&#34;
  * ```
  * 
  */

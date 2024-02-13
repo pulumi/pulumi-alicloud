@@ -60,7 +60,7 @@ import javax.annotation.Nullable;
  * VPN customer gateway can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:vpn/customerGateway:CustomerGateway example &lt;id&gt;
+ * $ pulumi import alicloud:vpn/customerGateway:CustomerGateway example &lt;id&gt;
  * ```
  * 
  */

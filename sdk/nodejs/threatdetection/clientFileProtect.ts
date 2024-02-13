@@ -38,7 +38,7 @@ import * as utilities from "../utilities";
  * Threat Detection Client File Protect can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:threatdetection/clientFileProtect:ClientFileProtect example <id>
+ * $ pulumi import alicloud:threatdetection/clientFileProtect:ClientFileProtect example <id>
  * ```
  */
 export class ClientFileProtect extends pulumi.CustomResource {

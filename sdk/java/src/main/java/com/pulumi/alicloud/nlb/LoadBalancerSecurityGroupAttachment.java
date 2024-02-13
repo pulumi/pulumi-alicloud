@@ -124,7 +124,7 @@ import javax.annotation.Nullable;
  * Nlb Load Balancer Security Group Attachment can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:nlb/loadBalancerSecurityGroupAttachment:LoadBalancerSecurityGroupAttachment example &lt;LoadBalancerId&gt;:&lt;SecurityGroupId&gt;
+ * $ pulumi import alicloud:nlb/loadBalancerSecurityGroupAttachment:LoadBalancerSecurityGroupAttachment example &lt;LoadBalancerId&gt;:&lt;SecurityGroupId&gt;
  * ```
  * 
  */

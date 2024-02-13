@@ -35,7 +35,7 @@ import * as utilities from "../utilities";
  * EIP Segment Address can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:ecs/eipSegmentAddress:EipSegmentAddress example <id>
+ * $ pulumi import alicloud:ecs/eipSegmentAddress:EipSegmentAddress example <id>
  * ```
  */
 export class EipSegmentAddress extends pulumi.CustomResource {

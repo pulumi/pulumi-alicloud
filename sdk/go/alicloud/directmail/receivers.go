@@ -23,9 +23,7 @@ import (
 // Direct Mail Receivers can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:directmail/receivers:Receivers example <id>
-//
+// $ pulumi import alicloud:directmail/receivers:Receivers example <id>
 // ```
 type Receivers struct {
 	pulumi.CustomResourceState

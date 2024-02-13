@@ -90,7 +90,7 @@ import * as utilities from "../utilities";
  * Compute Nest Service Instance can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:compute/nestServiceInstance:NestServiceInstance example <id>
+ * $ pulumi import alicloud:compute/nestServiceInstance:NestServiceInstance example <id>
  * ```
  */
 export class NestServiceInstance extends pulumi.CustomResource {

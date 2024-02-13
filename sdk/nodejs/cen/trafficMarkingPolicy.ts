@@ -40,7 +40,7 @@ import * as utilities from "../utilities";
  * Cloud Enterprise Network (CEN) Traffic Marking Policy can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:cen/trafficMarkingPolicy:TrafficMarkingPolicy example <transit_router_id>:<traffic_marking_policy_id>
+ * $ pulumi import alicloud:cen/trafficMarkingPolicy:TrafficMarkingPolicy example <transit_router_id>:<traffic_marking_policy_id>
  * ```
  */
 export class TrafficMarkingPolicy extends pulumi.CustomResource {

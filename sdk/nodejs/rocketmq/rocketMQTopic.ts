@@ -76,7 +76,7 @@ import * as utilities from "../utilities";
  * RocketMQ Topic can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:rocketmq/rocketMQTopic:RocketMQTopic example <instance_id>:<topic_name>
+ * $ pulumi import alicloud:rocketmq/rocketMQTopic:RocketMQTopic example <instance_id>:<topic_name>
  * ```
  */
 export class RocketMQTopic extends pulumi.CustomResource {

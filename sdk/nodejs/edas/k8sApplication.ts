@@ -14,7 +14,7 @@ import * as utilities from "../utilities";
  * EDAS k8s application can be imported as below, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:edas/k8sApplication:K8sApplication new_k8s_application application_id
+ * $ pulumi import alicloud:edas/k8sApplication:K8sApplication new_k8s_application application_id
  * ```
  */
 export class K8sApplication extends pulumi.CustomResource {

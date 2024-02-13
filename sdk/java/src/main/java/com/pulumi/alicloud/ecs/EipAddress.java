@@ -25,7 +25,7 @@ import javax.annotation.Nullable;
  * EIP Address can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:ecs/eipAddress:EipAddress example &lt;id&gt;
+ * $ pulumi import alicloud:ecs/eipAddress:EipAddress example &lt;id&gt;
  * ```
  * 
  */

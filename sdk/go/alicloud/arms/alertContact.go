@@ -53,9 +53,7 @@ import (
 // Application Real-Time Monitoring Service (ARMS) Alert Contact can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:arms/alertContact:AlertContact example <id>
-//
+// $ pulumi import alicloud:arms/alertContact:AlertContact example <id>
 // ```
 type AlertContact struct {
 	pulumi.CustomResourceState

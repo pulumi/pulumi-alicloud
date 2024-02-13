@@ -141,7 +141,7 @@ class WafDomain(pulumi.CustomResource):
         DCDN Waf Domain can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:dcdn/wafDomain:WafDomain example <domain_name>
+        $ pulumi import alicloud:dcdn/wafDomain:WafDomain example <domain_name>
         ```
 
         :param str resource_name: The name of the resource.
@@ -198,7 +198,7 @@ class WafDomain(pulumi.CustomResource):
         DCDN Waf Domain can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:dcdn/wafDomain:WafDomain example <domain_name>
+        $ pulumi import alicloud:dcdn/wafDomain:WafDomain example <domain_name>
         ```
 
         :param str resource_name: The name of the resource.

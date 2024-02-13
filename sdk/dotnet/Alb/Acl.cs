@@ -44,7 +44,7 @@ namespace Pulumi.AliCloud.Alb
     /// ALB Acl can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:alb/acl:Acl example &lt;id&gt;
+    /// $ pulumi import alicloud:alb/acl:Acl example &lt;id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:alb/acl:Acl")]

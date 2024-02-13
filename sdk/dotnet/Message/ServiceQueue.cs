@@ -49,7 +49,7 @@ namespace Pulumi.AliCloud.Message
     /// Message Notification Service Queue can be imported using the id or queue_name, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:message/serviceQueue:ServiceQueue example &lt;queue_name&gt;
+    /// $ pulumi import alicloud:message/serviceQueue:ServiceQueue example &lt;queue_name&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:message/serviceQueue:ServiceQueue")]

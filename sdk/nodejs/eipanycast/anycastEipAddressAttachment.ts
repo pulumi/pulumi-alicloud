@@ -184,7 +184,7 @@ import * as utilities from "../utilities";
  * Eipanycast Anycast Eip Address Attachment can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:eipanycast/anycastEipAddressAttachment:AnycastEipAddressAttachment example <anycast_id>:<bind_instance_id>:<bind_instance_region_id>:<bind_instance_type>
+ * $ pulumi import alicloud:eipanycast/anycastEipAddressAttachment:AnycastEipAddressAttachment example <anycast_id>:<bind_instance_id>:<bind_instance_region_id>:<bind_instance_type>
  * ```
  */
 export class AnycastEipAddressAttachment extends pulumi.CustomResource {

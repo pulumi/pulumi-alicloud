@@ -58,7 +58,7 @@ import javax.annotation.Nullable;
  * Schedulerx Namespace can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:schedulerx/namespace:Namespace example &lt;id&gt;
+ * $ pulumi import alicloud:schedulerx/namespace:Namespace example &lt;id&gt;
  * ```
  * 
  */

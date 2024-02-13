@@ -58,9 +58,7 @@ import (
 // SLB Tls Cipher Policy can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:slb/tlsCipherPolicy:TlsCipherPolicy example <id>
-//
+// $ pulumi import alicloud:slb/tlsCipherPolicy:TlsCipherPolicy example <id>
 // ```
 type TlsCipherPolicy struct {
 	pulumi.CustomResourceState

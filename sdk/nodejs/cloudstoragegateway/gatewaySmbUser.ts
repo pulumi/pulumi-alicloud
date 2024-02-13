@@ -16,7 +16,7 @@ import * as utilities from "../utilities";
  * Cloud Storage Gateway Gateway SMB User can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:cloudstoragegateway/gatewaySmbUser:GatewaySmbUser example <gateway_id>:<username>
+ * $ pulumi import alicloud:cloudstoragegateway/gatewaySmbUser:GatewaySmbUser example <gateway_id>:<username>
  * ```
  */
 export class GatewaySmbUser extends pulumi.CustomResource {

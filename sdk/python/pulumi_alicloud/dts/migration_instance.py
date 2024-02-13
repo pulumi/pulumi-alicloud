@@ -421,7 +421,7 @@ class MigrationInstance(pulumi.CustomResource):
         DTS Migration Instance can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:dts/migrationInstance:MigrationInstance example <id>
+        $ pulumi import alicloud:dts/migrationInstance:MigrationInstance example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -474,7 +474,7 @@ class MigrationInstance(pulumi.CustomResource):
         DTS Migration Instance can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:dts/migrationInstance:MigrationInstance example <id>
+        $ pulumi import alicloud:dts/migrationInstance:MigrationInstance example <id>
         ```
 
         :param str resource_name: The name of the resource.

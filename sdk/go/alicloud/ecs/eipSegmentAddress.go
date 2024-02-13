@@ -61,9 +61,7 @@ import (
 // EIP Segment Address can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:ecs/eipSegmentAddress:EipSegmentAddress example <id>
-//
+// $ pulumi import alicloud:ecs/eipSegmentAddress:EipSegmentAddress example <id>
 // ```
 type EipSegmentAddress struct {
 	pulumi.CustomResourceState

@@ -82,7 +82,7 @@ namespace Pulumi.AliCloud.Waf
     /// Web Application Firewall(WAF) Protection Module can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:waf/protectionModule:ProtectionModule example &lt;instance_id&gt;:&lt;domain&gt;:&lt;defense_type&gt;
+    /// $ pulumi import alicloud:waf/protectionModule:ProtectionModule example &lt;instance_id&gt;:&lt;domain&gt;:&lt;defense_type&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:waf/protectionModule:ProtectionModule")]

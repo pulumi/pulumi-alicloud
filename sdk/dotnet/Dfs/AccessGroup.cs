@@ -44,7 +44,7 @@ namespace Pulumi.AliCloud.Dfs
     /// DFS Access Group can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:dfs/accessGroup:AccessGroup example &lt;id&gt;
+    /// $ pulumi import alicloud:dfs/accessGroup:AccessGroup example &lt;id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:dfs/accessGroup:AccessGroup")]

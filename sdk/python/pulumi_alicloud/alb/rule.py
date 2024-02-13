@@ -291,7 +291,7 @@ class Rule(pulumi.CustomResource):
         Application Load Balancer (ALB) Rule can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:alb/rule:Rule example <id>
+        $ pulumi import alicloud:alb/rule:Rule example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -324,7 +324,7 @@ class Rule(pulumi.CustomResource):
         Application Load Balancer (ALB) Rule can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:alb/rule:Rule example <id>
+        $ pulumi import alicloud:alb/rule:Rule example <id>
         ```
 
         :param str resource_name: The name of the resource.

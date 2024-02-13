@@ -56,7 +56,7 @@ import * as utilities from "../utilities";
  * ENS Disk Instance Attachment can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:ens/diskInstanceAttachment:DiskInstanceAttachment example <disk_id>:<instance_id>
+ * $ pulumi import alicloud:ens/diskInstanceAttachment:DiskInstanceAttachment example <disk_id>:<instance_id>
  * ```
  */
 export class DiskInstanceAttachment extends pulumi.CustomResource {

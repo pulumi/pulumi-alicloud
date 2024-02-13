@@ -667,7 +667,7 @@ class Store(pulumi.CustomResource):
         SLS Log Store can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:log/store:Store example <project_name>:<logstore_name>
+        $ pulumi import alicloud:log/store:Store example <project_name>:<logstore_name>
         ```
 
         :param str resource_name: The name of the resource.
@@ -769,7 +769,7 @@ class Store(pulumi.CustomResource):
         SLS Log Store can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:log/store:Store example <project_name>:<logstore_name>
+        $ pulumi import alicloud:log/store:Store example <project_name>:<logstore_name>
         ```
 
         :param str resource_name: The name of the resource.

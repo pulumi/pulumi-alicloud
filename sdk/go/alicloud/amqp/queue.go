@@ -84,9 +84,7 @@ import (
 // RabbitMQ (AMQP) Queue can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:amqp/queue:Queue example <instance_id>:<virtual_host_name>:<queue_name>
-//
+// $ pulumi import alicloud:amqp/queue:Queue example <instance_id>:<virtual_host_name>:<queue_name>
 // ```
 type Queue struct {
 	pulumi.CustomResourceState

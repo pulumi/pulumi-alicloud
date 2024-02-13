@@ -107,9 +107,7 @@ import (
 // Bastion Host Host can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:bastionhost/host:Host example <instance_id>:<host_id>
-//
+// $ pulumi import alicloud:bastionhost/host:Host example <instance_id>:<host_id>
 // ```
 type Host struct {
 	pulumi.CustomResourceState

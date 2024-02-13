@@ -537,7 +537,7 @@ class SynchronizationInstance(pulumi.CustomResource):
         DTS Synchronization Instance can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:dts/synchronizationInstance:SynchronizationInstance example <id>
+        $ pulumi import alicloud:dts/synchronizationInstance:SynchronizationInstance example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -594,7 +594,7 @@ class SynchronizationInstance(pulumi.CustomResource):
         DTS Synchronization Instance can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:dts/synchronizationInstance:SynchronizationInstance example <id>
+        $ pulumi import alicloud:dts/synchronizationInstance:SynchronizationInstance example <id>
         ```
 
         :param str resource_name: The name of the resource.

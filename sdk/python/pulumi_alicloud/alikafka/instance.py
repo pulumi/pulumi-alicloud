@@ -935,7 +935,7 @@ class Instance(pulumi.CustomResource):
         AliKafka instance can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:alikafka/instance:Instance instance <id>
+        $ pulumi import alicloud:alikafka/instance:Instance instance <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -990,7 +990,7 @@ class Instance(pulumi.CustomResource):
         AliKafka instance can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:alikafka/instance:Instance instance <id>
+        $ pulumi import alicloud:alikafka/instance:Instance instance <id>
         ```
 
         :param str resource_name: The name of the resource.

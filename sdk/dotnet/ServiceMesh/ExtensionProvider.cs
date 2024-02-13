@@ -21,7 +21,7 @@ namespace Pulumi.AliCloud.ServiceMesh
     /// Service Mesh Extension Provider can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:servicemesh/extensionProvider:ExtensionProvider example &lt;service_mesh_id&gt;:&lt;type&gt;:&lt;extension_provider_name&gt;
+    /// $ pulumi import alicloud:servicemesh/extensionProvider:ExtensionProvider example &lt;service_mesh_id&gt;:&lt;type&gt;:&lt;extension_provider_name&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:servicemesh/extensionProvider:ExtensionProvider")]

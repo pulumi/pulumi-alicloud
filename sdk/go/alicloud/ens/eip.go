@@ -63,9 +63,7 @@ import (
 // ENS Eip can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:ens/eip:Eip example <id>
-//
+// $ pulumi import alicloud:ens/eip:Eip example <id>
 // ```
 type Eip struct {
 	pulumi.CustomResourceState

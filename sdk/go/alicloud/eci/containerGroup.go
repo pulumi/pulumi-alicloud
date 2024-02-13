@@ -182,9 +182,7 @@ import (
 // ECI Container Group can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:eci/containerGroup:ContainerGroup example <container_group_id>
-//
+// $ pulumi import alicloud:eci/containerGroup:ContainerGroup example <container_group_id>
 // ```
 type ContainerGroup struct {
 	pulumi.CustomResourceState

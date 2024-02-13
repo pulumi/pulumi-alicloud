@@ -23,7 +23,7 @@ namespace Pulumi.AliCloud.Alb
     /// Application Load Balancer (ALB) Rule can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:alb/rule:Rule example &lt;id&gt;
+    /// $ pulumi import alicloud:alb/rule:Rule example &lt;id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:alb/rule:Rule")]

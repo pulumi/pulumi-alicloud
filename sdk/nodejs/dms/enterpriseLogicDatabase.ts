@@ -33,7 +33,7 @@ import * as utilities from "../utilities";
  * DMS Enterprise Logic Database can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:dms/enterpriseLogicDatabase:EnterpriseLogicDatabase example <id>
+ * $ pulumi import alicloud:dms/enterpriseLogicDatabase:EnterpriseLogicDatabase example <id>
  * ```
  */
 export class EnterpriseLogicDatabase extends pulumi.CustomResource {

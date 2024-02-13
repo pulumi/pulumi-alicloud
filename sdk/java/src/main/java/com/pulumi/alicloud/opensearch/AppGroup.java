@@ -71,7 +71,7 @@ import javax.annotation.Nullable;
  * Open Search App Group can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:opensearch/appGroup:AppGroup example &lt;id&gt;
+ * $ pulumi import alicloud:opensearch/appGroup:AppGroup example &lt;id&gt;
  * ```
  * 
  */

@@ -72,7 +72,7 @@ import javax.annotation.Nullable;
  * Quotas Quota Alarm can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:quotas/quotaAlarm:QuotaAlarm example &lt;id&gt;
+ * $ pulumi import alicloud:quotas/quotaAlarm:QuotaAlarm example &lt;id&gt;
  * ```
  * 
  */

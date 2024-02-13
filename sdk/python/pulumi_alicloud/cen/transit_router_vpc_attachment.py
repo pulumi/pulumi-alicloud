@@ -616,7 +616,7 @@ class TransitRouterVpcAttachment(pulumi.CustomResource):
         CEN Transit Router VPC Attachment can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:cen/transitRouterVpcAttachment:TransitRouterVpcAttachment example <cen_id>:<transit_router_attachment_id>
+        $ pulumi import alicloud:cen/transitRouterVpcAttachment:TransitRouterVpcAttachment example <cen_id>:<transit_router_attachment_id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -705,7 +705,7 @@ class TransitRouterVpcAttachment(pulumi.CustomResource):
         CEN Transit Router VPC Attachment can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:cen/transitRouterVpcAttachment:TransitRouterVpcAttachment example <cen_id>:<transit_router_attachment_id>
+        $ pulumi import alicloud:cen/transitRouterVpcAttachment:TransitRouterVpcAttachment example <cen_id>:<transit_router_attachment_id>
         ```
 
         :param str resource_name: The name of the resource.

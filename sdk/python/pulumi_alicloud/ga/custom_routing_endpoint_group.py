@@ -264,7 +264,7 @@ class CustomRoutingEndpointGroup(pulumi.CustomResource):
         Global Accelerator (GA) Custom Routing Endpoint Group can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:ga/customRoutingEndpointGroup:CustomRoutingEndpointGroup example <id>
+        $ pulumi import alicloud:ga/customRoutingEndpointGroup:CustomRoutingEndpointGroup example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -334,7 +334,7 @@ class CustomRoutingEndpointGroup(pulumi.CustomResource):
         Global Accelerator (GA) Custom Routing Endpoint Group can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:ga/customRoutingEndpointGroup:CustomRoutingEndpointGroup example <id>
+        $ pulumi import alicloud:ga/customRoutingEndpointGroup:CustomRoutingEndpointGroup example <id>
         ```
 
         :param str resource_name: The name of the resource.

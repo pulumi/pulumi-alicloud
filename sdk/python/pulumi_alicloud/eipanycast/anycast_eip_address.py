@@ -361,7 +361,7 @@ class AnycastEipAddress(pulumi.CustomResource):
         Eipanycast Anycast Eip Address can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:eipanycast/anycastEipAddress:AnycastEipAddress example <id>
+        $ pulumi import alicloud:eipanycast/anycastEipAddress:AnycastEipAddress example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -414,7 +414,7 @@ class AnycastEipAddress(pulumi.CustomResource):
         Eipanycast Anycast Eip Address can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:eipanycast/anycastEipAddress:AnycastEipAddress example <id>
+        $ pulumi import alicloud:eipanycast/anycastEipAddress:AnycastEipAddress example <id>
         ```
 
         :param str resource_name: The name of the resource.

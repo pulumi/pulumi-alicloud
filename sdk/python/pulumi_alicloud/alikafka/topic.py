@@ -314,7 +314,7 @@ class Topic(pulumi.CustomResource):
         ALIKAFKA TOPIC can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:alikafka/topic:Topic topic alikafka_post-cn-123455abc:topicName
+        $ pulumi import alicloud:alikafka/topic:Topic topic alikafka_post-cn-123455abc:topicName
         ```
 
         :param str resource_name: The name of the resource.
@@ -386,7 +386,7 @@ class Topic(pulumi.CustomResource):
         ALIKAFKA TOPIC can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:alikafka/topic:Topic topic alikafka_post-cn-123455abc:topicName
+        $ pulumi import alicloud:alikafka/topic:Topic topic alikafka_post-cn-123455abc:topicName
         ```
 
         :param str resource_name: The name of the resource.

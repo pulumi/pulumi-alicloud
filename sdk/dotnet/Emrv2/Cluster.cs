@@ -210,7 +210,7 @@ namespace Pulumi.AliCloud.Emrv2
     /// Aliclioud E-MapReduce cluster can be imported using the id e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:emrv2/cluster:Cluster default &lt;id&gt;
+    /// $ pulumi import alicloud:emrv2/cluster:Cluster default &lt;id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:emrv2/cluster:Cluster")]

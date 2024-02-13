@@ -122,9 +122,7 @@ import (
 // Bastion Host User Attachment can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:bastionhost/userAttachment:UserAttachment example <instance_id>:<user_group_id>:<user_id>
-//
+// $ pulumi import alicloud:bastionhost/userAttachment:UserAttachment example <instance_id>:<user_group_id>:<user_id>
 // ```
 type UserAttachment struct {
 	pulumi.CustomResourceState

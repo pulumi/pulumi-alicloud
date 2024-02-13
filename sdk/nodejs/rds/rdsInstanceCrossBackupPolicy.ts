@@ -65,7 +65,7 @@ import * as utilities from "../utilities";
  * RDS remote disaster recovery policies can be imported using id or instance id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:rds/rdsInstanceCrossBackupPolicy:RdsInstanceCrossBackupPolicy example "rm-12345678"
+ * $ pulumi import alicloud:rds/rdsInstanceCrossBackupPolicy:RdsInstanceCrossBackupPolicy example "rm-12345678"
  * ```
  */
 export class RdsInstanceCrossBackupPolicy extends pulumi.CustomResource {

@@ -27,7 +27,7 @@ import * as utilities from "../utilities";
  * Database Gateway Gateway can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:databasegateway/gateway:Gateway example <id>
+ * $ pulumi import alicloud:databasegateway/gateway:Gateway example <id>
  * ```
  */
 export class Gateway extends pulumi.CustomResource {

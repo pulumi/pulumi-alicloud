@@ -70,7 +70,7 @@ namespace Pulumi.AliCloud.Hbr
     /// Hybrid Backup Recovery (HBR) Replication Vault can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:hbr/replicationVault:ReplicationVault example &lt;id&gt;
+    /// $ pulumi import alicloud:hbr/replicationVault:ReplicationVault example &lt;id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:hbr/replicationVault:ReplicationVault")]

@@ -573,7 +573,7 @@ class Execution(pulumi.CustomResource):
         OOS Execution can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:oos/execution:Execution example exec-ef6xxxx
+        $ pulumi import alicloud:oos/execution:Execution example exec-ef6xxxx
         ```
 
         :param str resource_name: The name of the resource.
@@ -646,7 +646,7 @@ class Execution(pulumi.CustomResource):
         OOS Execution can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:oos/execution:Execution example exec-ef6xxxx
+        $ pulumi import alicloud:oos/execution:Execution example exec-ef6xxxx
         ```
 
         :param str resource_name: The name of the resource.

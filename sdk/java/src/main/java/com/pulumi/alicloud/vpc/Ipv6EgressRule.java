@@ -148,7 +148,7 @@ import javax.annotation.Nullable;
  * VPC Ipv6 Egress Rule can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:vpc/ipv6EgressRule:Ipv6EgressRule example &lt;ipv6_gateway_id&gt;:&lt;ipv6_egress_rule_id&gt;
+ * $ pulumi import alicloud:vpc/ipv6EgressRule:Ipv6EgressRule example &lt;ipv6_gateway_id&gt;:&lt;ipv6_egress_rule_id&gt;
  * ```
  * 
  */

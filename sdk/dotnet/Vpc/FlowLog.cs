@@ -21,7 +21,7 @@ namespace Pulumi.AliCloud.Vpc
     /// Vpc Flow Log can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:vpc/flowLog:FlowLog example &lt;id&gt;
+    /// $ pulumi import alicloud:vpc/flowLog:FlowLog example &lt;id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:vpc/flowLog:FlowLog")]

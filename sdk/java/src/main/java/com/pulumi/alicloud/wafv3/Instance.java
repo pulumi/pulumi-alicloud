@@ -54,7 +54,7 @@ import javax.annotation.Nullable;
  * Wafv3 Instance can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:wafv3/instance:Instance example &lt;id&gt;
+ * $ pulumi import alicloud:wafv3/instance:Instance example &lt;id&gt;
  * ```
  * 
  */

@@ -205,7 +205,7 @@ import javax.annotation.Nullable;
  * Private Zone attachment can be imported using the id(same with `zone_id`), e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:pvtz/zoneAttachment:ZoneAttachment example abc123456
+ * $ pulumi import alicloud:pvtz/zoneAttachment:ZoneAttachment example abc123456
  * ```
  * 
  */

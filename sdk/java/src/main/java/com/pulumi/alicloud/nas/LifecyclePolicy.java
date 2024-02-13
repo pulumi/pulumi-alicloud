@@ -69,7 +69,7 @@ import javax.annotation.Nullable;
  * Network Attached Storage (NAS) Lifecycle Policy can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:nas/lifecyclePolicy:LifecyclePolicy example &lt;file_system_id&gt;:&lt;lifecycle_policy_name&gt;
+ * $ pulumi import alicloud:nas/lifecyclePolicy:LifecyclePolicy example &lt;file_system_id&gt;:&lt;lifecycle_policy_name&gt;
  * ```
  * 
  */

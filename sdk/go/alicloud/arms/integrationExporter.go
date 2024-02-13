@@ -115,9 +115,7 @@ import (
 // Application Real-Time Monitoring Service (ARMS) Integration Exporter can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:arms/integrationExporter:IntegrationExporter example <cluster_id>:<integration_type>:<instance_id>
-//
+// $ pulumi import alicloud:arms/integrationExporter:IntegrationExporter example <cluster_id>:<integration_type>:<instance_id>
 // ```
 type IntegrationExporter struct {
 	pulumi.CustomResourceState

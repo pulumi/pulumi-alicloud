@@ -72,7 +72,7 @@ import * as utilities from "../utilities";
  * RDS Clone DB Instance can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:rds/rdsCloneDbInstance:RdsCloneDbInstance example <id>
+ * $ pulumi import alicloud:rds/rdsCloneDbInstance:RdsCloneDbInstance example <id>
  * ```
  */
 export class RdsCloneDbInstance extends pulumi.CustomResource {

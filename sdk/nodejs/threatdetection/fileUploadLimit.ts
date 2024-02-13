@@ -10,7 +10,7 @@ import * as utilities from "../utilities";
  * Threat Detection File Upload Limit can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:threatdetection/fileUploadLimit:FileUploadLimit example
+ * $ pulumi import alicloud:threatdetection/fileUploadLimit:FileUploadLimit example
  * ```
  */
 export class FileUploadLimit extends pulumi.CustomResource {

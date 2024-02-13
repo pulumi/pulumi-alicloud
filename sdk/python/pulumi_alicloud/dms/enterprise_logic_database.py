@@ -270,7 +270,7 @@ class EnterpriseLogicDatabase(pulumi.CustomResource):
         DMS Enterprise Logic Database can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:dms/enterpriseLogicDatabase:EnterpriseLogicDatabase example <id>
+        $ pulumi import alicloud:dms/enterpriseLogicDatabase:EnterpriseLogicDatabase example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -313,7 +313,7 @@ class EnterpriseLogicDatabase(pulumi.CustomResource):
         DMS Enterprise Logic Database can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:dms/enterpriseLogicDatabase:EnterpriseLogicDatabase example <id>
+        $ pulumi import alicloud:dms/enterpriseLogicDatabase:EnterpriseLogicDatabase example <id>
         ```
 
         :param str resource_name: The name of the resource.

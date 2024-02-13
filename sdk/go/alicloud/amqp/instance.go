@@ -17,9 +17,7 @@ import (
 // RabbitMQ (AMQP) Instance can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:amqp/instance:Instance example <id>
-//
+// $ pulumi import alicloud:amqp/instance:Instance example <id>
 // ```
 type Instance struct {
 	pulumi.CustomResourceState

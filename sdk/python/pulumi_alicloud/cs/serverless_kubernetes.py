@@ -1177,7 +1177,7 @@ class ServerlessKubernetes(pulumi.CustomResource):
         Serverless Kubernetes cluster can be imported using the id, e.g. Then complete the main.tf accords to the result of `pulumi preview`.
 
         ```sh
-         $ pulumi import alicloud:cs/serverlessKubernetes:ServerlessKubernetes main ce4273f9156874b46bb
+        $ pulumi import alicloud:cs/serverlessKubernetes:ServerlessKubernetes main ce4273f9156874b46bb
         ```
 
         :param str resource_name: The name of the resource.
@@ -1300,7 +1300,7 @@ class ServerlessKubernetes(pulumi.CustomResource):
         Serverless Kubernetes cluster can be imported using the id, e.g. Then complete the main.tf accords to the result of `pulumi preview`.
 
         ```sh
-         $ pulumi import alicloud:cs/serverlessKubernetes:ServerlessKubernetes main ce4273f9156874b46bb
+        $ pulumi import alicloud:cs/serverlessKubernetes:ServerlessKubernetes main ce4273f9156874b46bb
         ```
 
         :param str resource_name: The name of the resource.

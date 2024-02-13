@@ -224,7 +224,7 @@ class LifecyclePolicy(pulumi.CustomResource):
         Network Attached Storage (NAS) Lifecycle Policy can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:nas/lifecyclePolicy:LifecyclePolicy example <file_system_id>:<lifecycle_policy_name>
+        $ pulumi import alicloud:nas/lifecyclePolicy:LifecyclePolicy example <file_system_id>:<lifecycle_policy_name>
         ```
 
         :param str resource_name: The name of the resource.
@@ -272,7 +272,7 @@ class LifecyclePolicy(pulumi.CustomResource):
         Network Attached Storage (NAS) Lifecycle Policy can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:nas/lifecyclePolicy:LifecyclePolicy example <file_system_id>:<lifecycle_policy_name>
+        $ pulumi import alicloud:nas/lifecyclePolicy:LifecyclePolicy example <file_system_id>:<lifecycle_policy_name>
         ```
 
         :param str resource_name: The name of the resource.

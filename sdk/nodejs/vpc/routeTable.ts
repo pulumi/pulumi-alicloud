@@ -33,7 +33,7 @@ import * as utilities from "../utilities";
  * VPC Route Table can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:vpc/routeTable:RouteTable example <id>
+ * $ pulumi import alicloud:vpc/routeTable:RouteTable example <id>
  * ```
  */
 export class RouteTable extends pulumi.CustomResource {

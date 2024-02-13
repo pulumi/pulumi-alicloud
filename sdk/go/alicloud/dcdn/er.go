@@ -72,9 +72,7 @@ import (
 // DCDN Er can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:dcdn/er:Er example <id>
-//
+// $ pulumi import alicloud:dcdn/er:Er example <id>
 // ```
 type Er struct {
 	pulumi.CustomResourceState

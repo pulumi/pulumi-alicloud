@@ -121,7 +121,7 @@ namespace Pulumi.AliCloud.Cen
     /// CEN instance can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:cen/routeEntry:RouteEntry example cen-abc123456:vtb-abc123:192.168.0.0/24
+    /// $ pulumi import alicloud:cen/routeEntry:RouteEntry example cen-abc123456:vtb-abc123:192.168.0.0/24
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:cen/routeEntry:RouteEntry")]

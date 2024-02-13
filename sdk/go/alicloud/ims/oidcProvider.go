@@ -71,9 +71,7 @@ import (
 // IMS Oidc Provider can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:ims/oidcProvider:OidcProvider example <id>
-//
+// $ pulumi import alicloud:ims/oidcProvider:OidcProvider example <id>
 // ```
 type OidcProvider struct {
 	pulumi.CustomResourceState

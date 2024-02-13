@@ -147,9 +147,7 @@ import (
 // Cloud Monitor Service Alarm can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:cms/alarm:Alarm example <id>
-//
+// $ pulumi import alicloud:cms/alarm:Alarm example <id>
 // ```
 type Alarm struct {
 	pulumi.CustomResourceState

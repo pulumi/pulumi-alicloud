@@ -39,7 +39,7 @@ namespace Pulumi.AliCloud.EventBridge
     /// Event Bridge service-linked roles(SLR) can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:eventbridge/serviceLinkedRole:ServiceLinkedRole example &lt;product_name&gt;
+    /// $ pulumi import alicloud:eventbridge/serviceLinkedRole:ServiceLinkedRole example &lt;product_name&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:eventbridge/serviceLinkedRole:ServiceLinkedRole")]

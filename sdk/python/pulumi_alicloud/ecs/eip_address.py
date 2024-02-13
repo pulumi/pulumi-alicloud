@@ -894,7 +894,7 @@ class EipAddress(pulumi.CustomResource):
         EIP Address can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:ecs/eipAddress:EipAddress example <id>
+        $ pulumi import alicloud:ecs/eipAddress:EipAddress example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -945,7 +945,7 @@ class EipAddress(pulumi.CustomResource):
         EIP Address can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:ecs/eipAddress:EipAddress example <id>
+        $ pulumi import alicloud:ecs/eipAddress:EipAddress example <id>
         ```
 
         :param str resource_name: The name of the resource.

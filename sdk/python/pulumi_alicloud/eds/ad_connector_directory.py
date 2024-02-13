@@ -487,7 +487,7 @@ class AdConnectorDirectory(pulumi.CustomResource):
         ECD Ad Connector Directory can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:eds/adConnectorDirectory:AdConnectorDirectory example <id>
+        $ pulumi import alicloud:eds/adConnectorDirectory:AdConnectorDirectory example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -559,7 +559,7 @@ class AdConnectorDirectory(pulumi.CustomResource):
         ECD Ad Connector Directory can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:eds/adConnectorDirectory:AdConnectorDirectory example <id>
+        $ pulumi import alicloud:eds/adConnectorDirectory:AdConnectorDirectory example <id>
         ```
 
         :param str resource_name: The name of the resource.

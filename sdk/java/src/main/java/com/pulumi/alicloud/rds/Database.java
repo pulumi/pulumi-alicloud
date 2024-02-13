@@ -90,7 +90,7 @@ import javax.annotation.Nullable;
  * RDS database can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:rds/database:Database example &#34;rm-12345:tf_database&#34;
+ * $ pulumi import alicloud:rds/database:Database example &#34;rm-12345:tf_database&#34;
  * ```
  * 
  */

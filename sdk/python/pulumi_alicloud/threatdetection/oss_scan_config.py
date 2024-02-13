@@ -389,7 +389,7 @@ class OssScanConfig(pulumi.CustomResource):
         Threat Detection Oss Scan Config can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:threatdetection/ossScanConfig:OssScanConfig example <id>
+        $ pulumi import alicloud:threatdetection/ossScanConfig:OssScanConfig example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -475,7 +475,7 @@ class OssScanConfig(pulumi.CustomResource):
         Threat Detection Oss Scan Config can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:threatdetection/ossScanConfig:OssScanConfig example <id>
+        $ pulumi import alicloud:threatdetection/ossScanConfig:OssScanConfig example <id>
         ```
 
         :param str resource_name: The name of the resource.

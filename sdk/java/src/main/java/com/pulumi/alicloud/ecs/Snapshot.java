@@ -62,7 +62,7 @@ import javax.annotation.Nullable;
  * Snapshot can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:ecs/snapshot:Snapshot snapshot s-abc1234567890000
+ * $ pulumi import alicloud:ecs/snapshot:Snapshot snapshot s-abc1234567890000
  * ```
  * 
  */

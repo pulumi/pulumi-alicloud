@@ -90,7 +90,7 @@ namespace Pulumi.AliCloud.Ots
     /// OTS tunnel can be imported using id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:ots/tunnel:Tunnel foo &lt;instance_name&gt;:&lt;table_name&gt;:&lt;tunnel_name&gt;
+    /// $ pulumi import alicloud:ots/tunnel:Tunnel foo &lt;instance_name&gt;:&lt;table_name&gt;:&lt;tunnel_name&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:ots/tunnel:Tunnel")]

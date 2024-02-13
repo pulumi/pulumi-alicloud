@@ -201,7 +201,7 @@ class RegistryEnterpriseNamespace(pulumi.CustomResource):
         Container Registry Enterprise Edition namespace can be imported using the `{instance_id}:{namespace}`, e.g.
 
         ```sh
-         $ pulumi import alicloud:cs/registryEnterpriseNamespace:RegistryEnterpriseNamespace default cri-xxx:my-namespace
+        $ pulumi import alicloud:cs/registryEnterpriseNamespace:RegistryEnterpriseNamespace default cri-xxx:my-namespace
         ```
 
         :param str resource_name: The name of the resource.
@@ -256,7 +256,7 @@ class RegistryEnterpriseNamespace(pulumi.CustomResource):
         Container Registry Enterprise Edition namespace can be imported using the `{instance_id}:{namespace}`, e.g.
 
         ```sh
-         $ pulumi import alicloud:cs/registryEnterpriseNamespace:RegistryEnterpriseNamespace default cri-xxx:my-namespace
+        $ pulumi import alicloud:cs/registryEnterpriseNamespace:RegistryEnterpriseNamespace default cri-xxx:my-namespace
         ```
 
         :param str resource_name: The name of the resource.

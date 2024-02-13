@@ -525,7 +525,7 @@ class Switch(pulumi.CustomResource):
         VPC Vswitch can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:vpc/switch:Switch example <id>
+        $ pulumi import alicloud:vpc/switch:Switch example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -627,7 +627,7 @@ class Switch(pulumi.CustomResource):
         VPC Vswitch can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:vpc/switch:Switch example <id>
+        $ pulumi import alicloud:vpc/switch:Switch example <id>
         ```
 
         :param str resource_name: The name of the resource.

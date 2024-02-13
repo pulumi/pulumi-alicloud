@@ -305,7 +305,7 @@ class EcsKeyPair(pulumi.CustomResource):
         ECS Key Pair can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:ecs/ecsKeyPair:EcsKeyPair example <key_name>
+        $ pulumi import alicloud:ecs/ecsKeyPair:EcsKeyPair example <key_name>
         ```
 
         :param str resource_name: The name of the resource.
@@ -351,7 +351,7 @@ class EcsKeyPair(pulumi.CustomResource):
         ECS Key Pair can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:ecs/ecsKeyPair:EcsKeyPair example <key_name>
+        $ pulumi import alicloud:ecs/ecsKeyPair:EcsKeyPair example <key_name>
         ```
 
         :param str resource_name: The name of the resource.

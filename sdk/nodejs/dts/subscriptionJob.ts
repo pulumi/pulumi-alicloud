@@ -102,7 +102,7 @@ import * as utilities from "../utilities";
  * DTS Subscription Job can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:dts/subscriptionJob:SubscriptionJob example <id>
+ * $ pulumi import alicloud:dts/subscriptionJob:SubscriptionJob example <id>
  * ```
  */
 export class SubscriptionJob extends pulumi.CustomResource {

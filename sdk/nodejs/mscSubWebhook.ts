@@ -14,7 +14,7 @@ import * as utilities from "./utilities";
  * Msc Sub Webhook can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:index/mscSubWebhook:MscSubWebhook example <id>
+ * $ pulumi import alicloud:index/mscSubWebhook:MscSubWebhook example <id>
  * ```
  */
 export class MscSubWebhook extends pulumi.CustomResource {

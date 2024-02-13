@@ -30,7 +30,7 @@ import * as utilities from "../utilities";
  * RDC Organization can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:rdc/organization:Organization example <id>
+ * $ pulumi import alicloud:rdc/organization:Organization example <id>
  * ```
  */
 export class Organization extends pulumi.CustomResource {

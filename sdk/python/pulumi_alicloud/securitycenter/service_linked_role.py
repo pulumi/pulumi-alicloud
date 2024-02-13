@@ -73,7 +73,7 @@ class ServiceLinkedRole(pulumi.CustomResource):
         SecurityCenter service-linked roles(SLR) can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:securitycenter/serviceLinkedRole:ServiceLinkedRole example <product_name>
+        $ pulumi import alicloud:securitycenter/serviceLinkedRole:ServiceLinkedRole example <product_name>
         ```
 
         :param str resource_name: The name of the resource.
@@ -108,7 +108,7 @@ class ServiceLinkedRole(pulumi.CustomResource):
         SecurityCenter service-linked roles(SLR) can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:securitycenter/serviceLinkedRole:ServiceLinkedRole example <product_name>
+        $ pulumi import alicloud:securitycenter/serviceLinkedRole:ServiceLinkedRole example <product_name>
         ```
 
         :param str resource_name: The name of the resource.

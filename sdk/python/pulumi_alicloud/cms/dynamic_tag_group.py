@@ -246,7 +246,7 @@ class DynamicTagGroup(pulumi.CustomResource):
         Cloud Monitor Service Dynamic Tag Group can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:cms/dynamicTagGroup:DynamicTagGroup example <id>
+        $ pulumi import alicloud:cms/dynamicTagGroup:DynamicTagGroup example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -296,7 +296,7 @@ class DynamicTagGroup(pulumi.CustomResource):
         Cloud Monitor Service Dynamic Tag Group can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:cms/dynamicTagGroup:DynamicTagGroup example <id>
+        $ pulumi import alicloud:cms/dynamicTagGroup:DynamicTagGroup example <id>
         ```
 
         :param str resource_name: The name of the resource.

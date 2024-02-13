@@ -274,7 +274,7 @@ class TransitRouterRouteTable(pulumi.CustomResource):
         can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:cen/transitRouterRouteTable:TransitRouterRouteTable default tr-*********:vtb-********
+        $ pulumi import alicloud:cen/transitRouterRouteTable:TransitRouterRouteTable default tr-*********:vtb-********
         ```
 
         :param str resource_name: The name of the resource.
@@ -320,7 +320,7 @@ class TransitRouterRouteTable(pulumi.CustomResource):
         can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:cen/transitRouterRouteTable:TransitRouterRouteTable default tr-*********:vtb-********
+        $ pulumi import alicloud:cen/transitRouterRouteTable:TransitRouterRouteTable default tr-*********:vtb-********
         ```
 
         :param str resource_name: The name of the resource.

@@ -604,7 +604,7 @@ class RdsAccount(pulumi.CustomResource):
         RDS Account can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:rds/rdsAccount:RdsAccount example <db_instance_id>:<account_name>
+        $ pulumi import alicloud:rds/rdsAccount:RdsAccount example <db_instance_id>:<account_name>
         ```
 
         :param str resource_name: The name of the resource.
@@ -683,7 +683,7 @@ class RdsAccount(pulumi.CustomResource):
         RDS Account can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:rds/rdsAccount:RdsAccount example <db_instance_id>:<account_name>
+        $ pulumi import alicloud:rds/rdsAccount:RdsAccount example <db_instance_id>:<account_name>
         ```
 
         :param str resource_name: The name of the resource.

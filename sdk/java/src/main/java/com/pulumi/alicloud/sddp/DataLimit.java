@@ -27,7 +27,7 @@ import javax.annotation.Nullable;
  * Data Security Center Data Limit can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:sddp/dataLimit:DataLimit example &lt;id&gt;
+ * $ pulumi import alicloud:sddp/dataLimit:DataLimit example &lt;id&gt;
  * ```
  * 
  */

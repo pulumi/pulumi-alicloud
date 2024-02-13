@@ -257,7 +257,7 @@ class Acl(pulumi.CustomResource):
         ALB Acl can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:alb/acl:Acl example <id>
+        $ pulumi import alicloud:alb/acl:Acl example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -301,7 +301,7 @@ class Acl(pulumi.CustomResource):
         ALB Acl can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:alb/acl:Acl example <id>
+        $ pulumi import alicloud:alb/acl:Acl example <id>
         ```
 
         :param str resource_name: The name of the resource.

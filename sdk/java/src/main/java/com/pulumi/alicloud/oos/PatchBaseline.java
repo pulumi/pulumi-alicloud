@@ -63,7 +63,7 @@ import javax.annotation.Nullable;
  * OOS Patch Baseline can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:oos/patchBaseline:PatchBaseline example &lt;id&gt;
+ * $ pulumi import alicloud:oos/patchBaseline:PatchBaseline example &lt;id&gt;
  * ```
  * 
  */

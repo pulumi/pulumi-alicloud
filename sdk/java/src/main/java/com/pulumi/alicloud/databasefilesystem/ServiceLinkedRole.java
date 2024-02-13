@@ -56,7 +56,7 @@ import javax.annotation.Nullable;
  * Dbfs service-linked roles(SLR) can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:databasefilesystem/serviceLinkedRole:ServiceLinkedRole example &lt;product_name&gt;
+ * $ pulumi import alicloud:databasefilesystem/serviceLinkedRole:ServiceLinkedRole example &lt;product_name&gt;
  * ```
  * 
  */

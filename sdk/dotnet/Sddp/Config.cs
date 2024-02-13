@@ -42,7 +42,7 @@ namespace Pulumi.AliCloud.Sddp
     /// Data Security Center Config can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:sddp/config:Config example &lt;code&gt;
+    /// $ pulumi import alicloud:sddp/config:Config example &lt;code&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:sddp/config:Config")]

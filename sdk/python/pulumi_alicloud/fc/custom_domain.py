@@ -325,7 +325,7 @@ class CustomDomain(pulumi.CustomResource):
         Function Compute custom domain can be imported using the id or the domain name, e.g.
 
         ```sh
-         $ pulumi import alicloud:fc/customDomain:CustomDomain foo my-fc-custom-domain
+        $ pulumi import alicloud:fc/customDomain:CustomDomain foo my-fc-custom-domain
         ```
 
         :param str resource_name: The name of the resource.
@@ -437,7 +437,7 @@ class CustomDomain(pulumi.CustomResource):
         Function Compute custom domain can be imported using the id or the domain name, e.g.
 
         ```sh
-         $ pulumi import alicloud:fc/customDomain:CustomDomain foo my-fc-custom-domain
+        $ pulumi import alicloud:fc/customDomain:CustomDomain foo my-fc-custom-domain
         ```
 
         :param str resource_name: The name of the resource.

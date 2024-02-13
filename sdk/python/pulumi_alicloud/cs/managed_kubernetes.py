@@ -1381,7 +1381,7 @@ class ManagedKubernetes(pulumi.CustomResource):
         Kubernetes managed cluster can be imported using the id, e.g. Then complete the main.tf accords to the result of `pulumi preview`.
 
         ```sh
-         $ pulumi import alicloud:cs/managedKubernetes:ManagedKubernetes main cluster_id
+        $ pulumi import alicloud:cs/managedKubernetes:ManagedKubernetes main cluster_id
         ```
 
         :param str resource_name: The name of the resource.
@@ -1469,7 +1469,7 @@ class ManagedKubernetes(pulumi.CustomResource):
         Kubernetes managed cluster can be imported using the id, e.g. Then complete the main.tf accords to the result of `pulumi preview`.
 
         ```sh
-         $ pulumi import alicloud:cs/managedKubernetes:ManagedKubernetes main cluster_id
+        $ pulumi import alicloud:cs/managedKubernetes:ManagedKubernetes main cluster_id
         ```
 
         :param str resource_name: The name of the resource.

@@ -96,7 +96,7 @@ import * as utilities from "../utilities";
  * VPN Gateway Vco Route can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:vpn/gatewayVcoRoute:GatewayVcoRoute example <vpn_connection_id>:<route_dest>:<next_hop>:<weight>
+ * $ pulumi import alicloud:vpn/gatewayVcoRoute:GatewayVcoRoute example <vpn_connection_id>:<route_dest>:<next_hop>:<weight>
  * ```
  */
 export class GatewayVcoRoute extends pulumi.CustomResource {

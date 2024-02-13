@@ -91,7 +91,7 @@ import javax.annotation.Nullable;
  * PolarDB database can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:polardb/database:Database example &#34;pc-12345:tf_database&#34;
+ * $ pulumi import alicloud:polardb/database:Database example &#34;pc-12345:tf_database&#34;
  * ```
  * 
  */

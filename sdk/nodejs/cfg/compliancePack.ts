@@ -73,7 +73,7 @@ import * as utilities from "../utilities";
  * Cloud Config Compliance Pack can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:cfg/compliancePack:CompliancePack example <id>
+ * $ pulumi import alicloud:cfg/compliancePack:CompliancePack example <id>
  * ```
  */
 export class CompliancePack extends pulumi.CustomResource {

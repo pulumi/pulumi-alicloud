@@ -35,7 +35,7 @@ import * as utilities from "../utilities";
  * can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:cen/transitRouterRouteTable:TransitRouterRouteTable default tr-*********:vtb-********
+ * $ pulumi import alicloud:cen/transitRouterRouteTable:TransitRouterRouteTable default tr-*********:vtb-********
  * ```
  */
 export class TransitRouterRouteTable extends pulumi.CustomResource {

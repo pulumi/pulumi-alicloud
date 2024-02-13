@@ -358,7 +358,7 @@ class StackInstance(pulumi.CustomResource):
         ROS Stack Instance can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:ros/stackInstance:StackInstance example <stack_group_name>:<stack_instance_account_id>:<stack_instance_region_id>
+        $ pulumi import alicloud:ros/stackInstance:StackInstance example <stack_group_name>:<stack_instance_account_id>:<stack_instance_region_id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -424,7 +424,7 @@ class StackInstance(pulumi.CustomResource):
         ROS Stack Instance can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:ros/stackInstance:StackInstance example <stack_group_name>:<stack_instance_account_id>:<stack_instance_region_id>
+        $ pulumi import alicloud:ros/stackInstance:StackInstance example <stack_group_name>:<stack_instance_account_id>:<stack_instance_region_id>
         ```
 
         :param str resource_name: The name of the resource.

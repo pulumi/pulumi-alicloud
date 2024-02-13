@@ -89,7 +89,7 @@ namespace Pulumi.AliCloud.Gpdb
     /// AnalyticDB for PostgreSQL's connection can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:gpdb/connection:Connection example abc12345678
+    /// $ pulumi import alicloud:gpdb/connection:Connection example abc12345678
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:gpdb/connection:Connection")]

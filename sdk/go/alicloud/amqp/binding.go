@@ -96,9 +96,7 @@ import (
 // RabbitMQ (AMQP) Binding can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:amqp/binding:Binding example <instance_id>:<virtual_host_name>:<source_exchange>:<destination_name>
-//
+// $ pulumi import alicloud:amqp/binding:Binding example <instance_id>:<virtual_host_name>:<source_exchange>:<destination_name>
 // ```
 type Binding struct {
 	pulumi.CustomResourceState

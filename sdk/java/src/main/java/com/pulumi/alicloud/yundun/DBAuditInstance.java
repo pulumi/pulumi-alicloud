@@ -23,7 +23,7 @@ import javax.annotation.Nullable;
  * Yundun_dbaudit instance can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:yundun/dBAuditInstance:DBAuditInstance example dbaudit-exampe123456
+ * $ pulumi import alicloud:yundun/dBAuditInstance:DBAuditInstance example dbaudit-exampe123456
  * ```
  * 
  */

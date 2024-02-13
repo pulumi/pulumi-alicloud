@@ -75,7 +75,7 @@ import javax.annotation.Nullable;
  * RDS Parameter Group can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:rds/rdsParameterGroup:RdsParameterGroup example &lt;id&gt;
+ * $ pulumi import alicloud:rds/rdsParameterGroup:RdsParameterGroup example &lt;id&gt;
  * ```
  * 
  */

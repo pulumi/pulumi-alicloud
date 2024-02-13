@@ -97,7 +97,7 @@ import * as utilities from "../utilities";
  * Serverless App Engine (SAE) GreyTagRoute can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:sae/greyTagRoute:GreyTagRoute example <id>
+ * $ pulumi import alicloud:sae/greyTagRoute:GreyTagRoute example <id>
  * ```
  */
 export class GreyTagRoute extends pulumi.CustomResource {

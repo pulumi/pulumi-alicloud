@@ -331,7 +331,7 @@ class DdosBgpInstance(pulumi.CustomResource):
         Ddosbgp instance can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:dns/ddosBgpInstance:DdosBgpInstance example ddosbgp-abc123456
+        $ pulumi import alicloud:dns/ddosBgpInstance:DdosBgpInstance example ddosbgp-abc123456
         ```
 
         :param str resource_name: The name of the resource.
@@ -384,7 +384,7 @@ class DdosBgpInstance(pulumi.CustomResource):
         Ddosbgp instance can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:dns/ddosBgpInstance:DdosBgpInstance example ddosbgp-abc123456
+        $ pulumi import alicloud:dns/ddosBgpInstance:DdosBgpInstance example ddosbgp-abc123456
         ```
 
         :param str resource_name: The name of the resource.

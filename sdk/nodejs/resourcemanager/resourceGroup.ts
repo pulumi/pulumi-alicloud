@@ -33,7 +33,7 @@ import * as utilities from "../utilities";
  * Resource Manager Resource Group can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:resourcemanager/resourceGroup:ResourceGroup example abc123456
+ * $ pulumi import alicloud:resourcemanager/resourceGroup:ResourceGroup example abc123456
  * ```
  */
 export class ResourceGroup extends pulumi.CustomResource {

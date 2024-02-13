@@ -107,7 +107,7 @@ import javax.annotation.Nullable;
  * Cloud Config Compliance Pack can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:cfg/compliancePack:CompliancePack example &lt;id&gt;
+ * $ pulumi import alicloud:cfg/compliancePack:CompliancePack example &lt;id&gt;
  * ```
  * 
  */

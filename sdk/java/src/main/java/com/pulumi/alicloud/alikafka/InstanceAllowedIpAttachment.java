@@ -109,7 +109,7 @@ import javax.annotation.Nullable;
  * AliKafka Instance Allowed Ip Attachment can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:alikafka/instanceAllowedIpAttachment:InstanceAllowedIpAttachment example &lt;instance_id&gt;:&lt;allowed_type&gt;:&lt;port_range&gt;:&lt;allowed_ip&gt;
+ * $ pulumi import alicloud:alikafka/instanceAllowedIpAttachment:InstanceAllowedIpAttachment example &lt;instance_id&gt;:&lt;allowed_type&gt;:&lt;port_range&gt;:&lt;allowed_ip&gt;
  * ```
  * 
  */

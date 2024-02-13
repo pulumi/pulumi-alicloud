@@ -47,7 +47,7 @@ import * as utilities from "../utilities";
  * RDS database can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:rds/database:Database example "rm-12345:tf_database"
+ * $ pulumi import alicloud:rds/database:Database example "rm-12345:tf_database"
  * ```
  */
 export class Database extends pulumi.CustomResource {

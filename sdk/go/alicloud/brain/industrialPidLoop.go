@@ -54,9 +54,7 @@ import (
 // Brain Industrial Pid Loop can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:brain/industrialPidLoop:IndustrialPidLoop example <id>
-//
+// $ pulumi import alicloud:brain/industrialPidLoop:IndustrialPidLoop example <id>
 // ```
 type IndustrialPidLoop struct {
 	pulumi.CustomResourceState

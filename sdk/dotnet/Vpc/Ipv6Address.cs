@@ -70,7 +70,7 @@ namespace Pulumi.AliCloud.Vpc
     /// VPC Ipv6 Address can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:vpc/ipv6Address:Ipv6Address example &lt;id&gt;
+    /// $ pulumi import alicloud:vpc/ipv6Address:Ipv6Address example &lt;id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:vpc/ipv6Address:Ipv6Address")]

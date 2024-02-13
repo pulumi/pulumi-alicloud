@@ -49,7 +49,7 @@ namespace Pulumi.AliCloud.Ga
     /// Ga Domain can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:ga/domain:Domain example &lt;accelerator_id&gt;:&lt;domain&gt;
+    /// $ pulumi import alicloud:ga/domain:Domain example &lt;accelerator_id&gt;:&lt;domain&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:ga/domain:Domain")]

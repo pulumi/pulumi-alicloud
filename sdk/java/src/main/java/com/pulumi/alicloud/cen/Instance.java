@@ -61,7 +61,7 @@ import javax.annotation.Nullable;
  * CEN instance can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:cen/instance:Instance example cen-abc123456
+ * $ pulumi import alicloud:cen/instance:Instance example cen-abc123456
  * ```
  * 
  */

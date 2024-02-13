@@ -26,7 +26,7 @@ import javax.annotation.Nullable;
  * ARMS Addon Release can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:arms/addonRelease:AddonRelease example &lt;environment_id&gt;:&lt;addon_release_name&gt;
+ * $ pulumi import alicloud:arms/addonRelease:AddonRelease example &lt;environment_id&gt;:&lt;addon_release_name&gt;
  * ```
  * 
  */

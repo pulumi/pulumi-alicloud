@@ -12,7 +12,7 @@ import * as utilities from "../utilities";
  * RocketMQ Instance can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:rocketmq/rocketMQInstance:RocketMQInstance example <id>
+ * $ pulumi import alicloud:rocketmq/rocketMQInstance:RocketMQInstance example <id>
  * ```
  */
 export class RocketMQInstance extends pulumi.CustomResource {

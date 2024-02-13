@@ -76,9 +76,7 @@ import (
 // NLB Security Policy can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:nlb/securityPolicy:SecurityPolicy example <id>
-//
+// $ pulumi import alicloud:nlb/securityPolicy:SecurityPolicy example <id>
 // ```
 type SecurityPolicy struct {
 	pulumi.CustomResourceState

@@ -365,7 +365,7 @@ class Audit(pulumi.CustomResource):
         Log audit can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:log/audit:Audit example tf-audit-example
+        $ pulumi import alicloud:log/audit:Audit example tf-audit-example
         ```
 
         :param str resource_name: The name of the resource.
@@ -551,7 +551,7 @@ class Audit(pulumi.CustomResource):
         Log audit can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:log/audit:Audit example tf-audit-example
+        $ pulumi import alicloud:log/audit:Audit example tf-audit-example
         ```
 
         :param str resource_name: The name of the resource.

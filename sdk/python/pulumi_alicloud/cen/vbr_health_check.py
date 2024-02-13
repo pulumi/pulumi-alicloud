@@ -360,7 +360,7 @@ class VbrHealthCheck(pulumi.CustomResource):
         CEN VBR HealthCheck can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:cen/vbrHealthCheck:VbrHealthCheck example vbr-xxxxx:cn-hangzhou
+        $ pulumi import alicloud:cen/vbrHealthCheck:VbrHealthCheck example vbr-xxxxx:cn-hangzhou
         ```
 
         :param str resource_name: The name of the resource.
@@ -441,7 +441,7 @@ class VbrHealthCheck(pulumi.CustomResource):
         CEN VBR HealthCheck can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:cen/vbrHealthCheck:VbrHealthCheck example vbr-xxxxx:cn-hangzhou
+        $ pulumi import alicloud:cen/vbrHealthCheck:VbrHealthCheck example vbr-xxxxx:cn-hangzhou
         ```
 
         :param str resource_name: The name of the resource.

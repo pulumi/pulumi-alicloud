@@ -66,9 +66,7 @@ import (
 // Ecs Image Component can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:ecs/ecsImageComponent:EcsImageComponent example <id>
-//
+// $ pulumi import alicloud:ecs/ecsImageComponent:EcsImageComponent example <id>
 // ```
 type EcsImageComponent struct {
 	pulumi.CustomResourceState

@@ -71,7 +71,7 @@ import javax.annotation.Nullable;
  * OTS instance can be imported using instance id or name, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:ots/instance:Instance foo &#34;my-ots-instance&#34;
+ * $ pulumi import alicloud:ots/instance:Instance foo &#34;my-ots-instance&#34;
  * ```
  * 
  */

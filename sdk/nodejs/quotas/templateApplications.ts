@@ -12,7 +12,7 @@ import * as utilities from "../utilities";
  * Quotas Template Applications can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:quotas/templateApplications:TemplateApplications example <id>
+ * $ pulumi import alicloud:quotas/templateApplications:TemplateApplications example <id>
  * ```
  */
 export class TemplateApplications extends pulumi.CustomResource {

@@ -56,7 +56,7 @@ namespace Pulumi.AliCloud.Quotas
     /// Quotas Template Quota can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:quotas/templateQuota:TemplateQuota example &lt;id&gt;
+    /// $ pulumi import alicloud:quotas/templateQuota:TemplateQuota example &lt;id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:quotas/templateQuota:TemplateQuota")]

@@ -73,7 +73,7 @@ import * as utilities from "../utilities";
  * Application Real-Time Monitoring Service (ARMS) Alert Contact can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:arms/dispatchRule:DispatchRule example <id>
+ * $ pulumi import alicloud:arms/dispatchRule:DispatchRule example <id>
  * ```
  */
 export class DispatchRule extends pulumi.CustomResource {

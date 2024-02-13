@@ -98,7 +98,7 @@ import javax.annotation.Nullable;
  * CR Vpc Endpoint Linked Vpc can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:cr/vpcEndpointLinkedVpc:VpcEndpointLinkedVpc example &lt;instance_id&gt;:&lt;vpc_id&gt;:&lt;vswitch_id&gt;:&lt;module_name&gt;
+ * $ pulumi import alicloud:cr/vpcEndpointLinkedVpc:VpcEndpointLinkedVpc example &lt;instance_id&gt;:&lt;vpc_id&gt;:&lt;vswitch_id&gt;:&lt;module_name&gt;
  * ```
  * 
  */

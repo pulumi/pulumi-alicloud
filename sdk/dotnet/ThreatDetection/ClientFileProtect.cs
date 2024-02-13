@@ -59,7 +59,7 @@ namespace Pulumi.AliCloud.ThreatDetection
     /// Threat Detection Client File Protect can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:threatdetection/clientFileProtect:ClientFileProtect example &lt;id&gt;
+    /// $ pulumi import alicloud:threatdetection/clientFileProtect:ClientFileProtect example &lt;id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:threatdetection/clientFileProtect:ClientFileProtect")]

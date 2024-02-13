@@ -43,7 +43,7 @@ namespace Pulumi.AliCloud.Ebs
     /// EBS Replica Pair Drill can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:ebs/replicaPairDrill:ReplicaPairDrill example &lt;pair_id&gt;:&lt;replica_pair_drill_id&gt;
+    /// $ pulumi import alicloud:ebs/replicaPairDrill:ReplicaPairDrill example &lt;pair_id&gt;:&lt;replica_pair_drill_id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:ebs/replicaPairDrill:ReplicaPairDrill")]

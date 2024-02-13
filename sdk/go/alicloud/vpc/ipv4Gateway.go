@@ -84,9 +84,7 @@ import (
 // Vpc Ipv4 Gateway can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:vpc/ipv4Gateway:Ipv4Gateway example <id>
-//
+// $ pulumi import alicloud:vpc/ipv4Gateway:Ipv4Gateway example <id>
 // ```
 type Ipv4Gateway struct {
 	pulumi.CustomResourceState

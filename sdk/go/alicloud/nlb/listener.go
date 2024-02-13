@@ -166,9 +166,7 @@ import (
 // NLB Listener can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:nlb/listener:Listener example <id>
-//
+// $ pulumi import alicloud:nlb/listener:Listener example <id>
 // ```
 type Listener struct {
 	pulumi.CustomResourceState

@@ -27,7 +27,7 @@ import * as utilities from "../utilities";
  * Schedulerx Namespace can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:schedulerx/namespace:Namespace example <id>
+ * $ pulumi import alicloud:schedulerx/namespace:Namespace example <id>
  * ```
  */
 export class Namespace extends pulumi.CustomResource {

@@ -64,7 +64,7 @@ import * as utilities from "../utilities";
  * Global Accelerator (GA) Acl Attachment can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:ga/aclAttachment:AclAttachment example <listener_id>:<acl_id>
+ * $ pulumi import alicloud:ga/aclAttachment:AclAttachment example <listener_id>:<acl_id>
  * ```
  */
 export class AclAttachment extends pulumi.CustomResource {

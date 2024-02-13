@@ -136,7 +136,7 @@ namespace Pulumi.AliCloud.Ga
     /// Global Accelerator (GA) Custom Routing Endpoint Traffic Policy can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:ga/customRoutingEndpointTrafficPolicy:CustomRoutingEndpointTrafficPolicy example &lt;endpoint_id&gt;:&lt;custom_routing_endpoint_traffic_policy_id&gt;
+    /// $ pulumi import alicloud:ga/customRoutingEndpointTrafficPolicy:CustomRoutingEndpointTrafficPolicy example &lt;endpoint_id&gt;:&lt;custom_routing_endpoint_traffic_policy_id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:ga/customRoutingEndpointTrafficPolicy:CustomRoutingEndpointTrafficPolicy")]

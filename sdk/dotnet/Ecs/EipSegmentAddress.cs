@@ -47,7 +47,7 @@ namespace Pulumi.AliCloud.Ecs
     /// EIP Segment Address can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:ecs/eipSegmentAddress:EipSegmentAddress example &lt;id&gt;
+    /// $ pulumi import alicloud:ecs/eipSegmentAddress:EipSegmentAddress example &lt;id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:ecs/eipSegmentAddress:EipSegmentAddress")]

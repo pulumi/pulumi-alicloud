@@ -46,7 +46,7 @@ import * as utilities from "../utilities";
  * Express Connect Physical Connection can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:expressconnect/physicalConnection:PhysicalConnection example <id>
+ * $ pulumi import alicloud:expressconnect/physicalConnection:PhysicalConnection example <id>
  * ```
  */
 export class PhysicalConnection extends pulumi.CustomResource {

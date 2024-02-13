@@ -51,7 +51,7 @@ import * as utilities from "../utilities";
  * VPC Gateway Endpoint can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:vpc/gatewayEndpoint:GatewayEndpoint example <id>
+ * $ pulumi import alicloud:vpc/gatewayEndpoint:GatewayEndpoint example <id>
  * ```
  */
 export class GatewayEndpoint extends pulumi.CustomResource {

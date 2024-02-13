@@ -46,7 +46,7 @@ import * as utilities from "../utilities";
  * NLB Security Policy can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:nlb/securityPolicy:SecurityPolicy example <id>
+ * $ pulumi import alicloud:nlb/securityPolicy:SecurityPolicy example <id>
  * ```
  */
 export class SecurityPolicy extends pulumi.CustomResource {

@@ -60,7 +60,7 @@ import * as utilities from "../utilities";
  * HBase can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:hbase/instance:Instance example hb-wz96815u13k659fvd
+ * $ pulumi import alicloud:hbase/instance:Instance example hb-wz96815u13k659fvd
  * ```
  */
 export class Instance extends pulumi.CustomResource {

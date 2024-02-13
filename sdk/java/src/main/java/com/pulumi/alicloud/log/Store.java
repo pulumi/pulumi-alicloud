@@ -154,7 +154,7 @@ import javax.annotation.Nullable;
  * SLS Log Store can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:log/store:Store example &lt;project_name&gt;:&lt;logstore_name&gt;
+ * $ pulumi import alicloud:log/store:Store example &lt;project_name&gt;:&lt;logstore_name&gt;
  * ```
  * 
  */

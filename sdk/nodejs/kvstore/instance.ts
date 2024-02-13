@@ -12,7 +12,7 @@ import * as utilities from "../utilities";
  * KVStore instance can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:kvstore/instance:Instance example r-abc12345678
+ * $ pulumi import alicloud:kvstore/instance:Instance example r-abc12345678
  * ```
  */
 export class Instance extends pulumi.CustomResource {

@@ -47,7 +47,7 @@ import * as utilities from "../utilities";
  * Express Connect Virtual Border Router can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:expressconnect/virtualBorderRouter:VirtualBorderRouter example <id>
+ * $ pulumi import alicloud:expressconnect/virtualBorderRouter:VirtualBorderRouter example <id>
  * ```
  */
 export class VirtualBorderRouter extends pulumi.CustomResource {

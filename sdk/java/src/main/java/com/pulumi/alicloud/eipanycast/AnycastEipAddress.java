@@ -68,7 +68,7 @@ import javax.annotation.Nullable;
  * Eipanycast Anycast Eip Address can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:eipanycast/anycastEipAddress:AnycastEipAddress example &lt;id&gt;
+ * $ pulumi import alicloud:eipanycast/anycastEipAddress:AnycastEipAddress example &lt;id&gt;
  * ```
  * 
  */

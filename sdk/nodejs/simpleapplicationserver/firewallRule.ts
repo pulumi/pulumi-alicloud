@@ -44,7 +44,7 @@ import * as utilities from "../utilities";
  * Simple Application Server Firewall Rule can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:simpleapplicationserver/firewallRule:FirewallRule example <instance_id>:<firewall_rule_id>
+ * $ pulumi import alicloud:simpleapplicationserver/firewallRule:FirewallRule example <instance_id>:<firewall_rule_id>
  * ```
  */
 export class FirewallRule extends pulumi.CustomResource {

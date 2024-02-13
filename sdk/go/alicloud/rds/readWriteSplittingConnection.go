@@ -132,9 +132,7 @@ import (
 // RDS read write splitting connection can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:rds/readWriteSplittingConnection:ReadWriteSplittingConnection example abc12345678
-//
+// $ pulumi import alicloud:rds/readWriteSplittingConnection:ReadWriteSplittingConnection example abc12345678
 // ```
 type ReadWriteSplittingConnection struct {
 	pulumi.CustomResourceState

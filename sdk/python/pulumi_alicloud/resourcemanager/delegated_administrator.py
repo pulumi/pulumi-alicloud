@@ -133,7 +133,7 @@ class DelegatedAdministrator(pulumi.CustomResource):
         Resource Manager Delegated Administrator can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:resourcemanager/delegatedAdministrator:DelegatedAdministrator example <account_id>:<service_principal>
+        $ pulumi import alicloud:resourcemanager/delegatedAdministrator:DelegatedAdministrator example <account_id>:<service_principal>
         ```
 
         :param str resource_name: The name of the resource.
@@ -183,7 +183,7 @@ class DelegatedAdministrator(pulumi.CustomResource):
         Resource Manager Delegated Administrator can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:resourcemanager/delegatedAdministrator:DelegatedAdministrator example <account_id>:<service_principal>
+        $ pulumi import alicloud:resourcemanager/delegatedAdministrator:DelegatedAdministrator example <account_id>:<service_principal>
         ```
 
         :param str resource_name: The name of the resource.

@@ -114,7 +114,7 @@ namespace Pulumi.AliCloud.DatabaseFilesystem
     /// DBFS Snapshot can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:databasefilesystem/snapshot:Snapshot example &lt;id&gt;
+    /// $ pulumi import alicloud:databasefilesystem/snapshot:Snapshot example &lt;id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:databasefilesystem/snapshot:Snapshot")]

@@ -145,7 +145,7 @@ class Project(pulumi.CustomResource):
         Intelligent Media Management Project can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:imm/project:Project example <project>
+        $ pulumi import alicloud:imm/project:Project example <project>
         ```
 
         :param str resource_name: The name of the resource.
@@ -206,7 +206,7 @@ class Project(pulumi.CustomResource):
         Intelligent Media Management Project can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:imm/project:Project example <project>
+        $ pulumi import alicloud:imm/project:Project example <project>
         ```
 
         :param str resource_name: The name of the resource.

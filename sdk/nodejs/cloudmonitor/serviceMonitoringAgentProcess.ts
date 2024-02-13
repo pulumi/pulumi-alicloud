@@ -69,7 +69,7 @@ import * as utilities from "../utilities";
  * Cloud Monitor Service Monitoring Agent Process can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:cloudmonitor/serviceMonitoringAgentProcess:ServiceMonitoringAgentProcess example <instance_id>:<process_id>
+ * $ pulumi import alicloud:cloudmonitor/serviceMonitoringAgentProcess:ServiceMonitoringAgentProcess example <instance_id>:<process_id>
  * ```
  */
 export class ServiceMonitoringAgentProcess extends pulumi.CustomResource {

@@ -66,7 +66,7 @@ namespace Pulumi.AliCloud.Eds
     /// Elastic Desktop Service (ECD) Policy Group can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:eds/ecdPolicyGroup:EcdPolicyGroup example &lt;id&gt;
+    /// $ pulumi import alicloud:eds/ecdPolicyGroup:EcdPolicyGroup example &lt;id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:eds/ecdPolicyGroup:EcdPolicyGroup")]

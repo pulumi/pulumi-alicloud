@@ -144,9 +144,7 @@ import (
 // ESS suspend process can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:ess/suspendProcess:SuspendProcess example asg-xxx:sgp-xxx:5000
-//
+// $ pulumi import alicloud:ess/suspendProcess:SuspendProcess example asg-xxx:sgp-xxx:5000
 // ```
 type SuspendProcess struct {
 	pulumi.CustomResourceState

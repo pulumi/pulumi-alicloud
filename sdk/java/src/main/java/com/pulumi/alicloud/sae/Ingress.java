@@ -154,7 +154,7 @@ import javax.annotation.Nullable;
  * Serverless App Engine (SAE) Ingress can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:sae/ingress:Ingress example &lt;id&gt;
+ * $ pulumi import alicloud:sae/ingress:Ingress example &lt;id&gt;
  * ```
  * 
  */

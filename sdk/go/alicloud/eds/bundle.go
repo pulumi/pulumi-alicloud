@@ -82,9 +82,7 @@ import (
 // ECD Bundle can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:eds/bundle:Bundle example <id>
-//
+// $ pulumi import alicloud:eds/bundle:Bundle example <id>
 // ```
 type Bundle struct {
 	pulumi.CustomResourceState

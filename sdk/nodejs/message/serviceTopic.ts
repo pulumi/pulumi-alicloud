@@ -33,7 +33,7 @@ import * as utilities from "../utilities";
  * Message Notification Service Topic can be imported using the id or topic_name, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:message/serviceTopic:ServiceTopic example <topic_name>
+ * $ pulumi import alicloud:message/serviceTopic:ServiceTopic example <topic_name>
  * ```
  */
 export class ServiceTopic extends pulumi.CustomResource {

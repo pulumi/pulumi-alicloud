@@ -72,7 +72,7 @@ import * as utilities from "../utilities";
  * CEN Transit Router VPC Attachment can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:cen/transitRouterVpcAttachment:TransitRouterVpcAttachment example <cen_id>:<transit_router_attachment_id>
+ * $ pulumi import alicloud:cen/transitRouterVpcAttachment:TransitRouterVpcAttachment example <cen_id>:<transit_router_attachment_id>
  * ```
  */
 export class TransitRouterVpcAttachment extends pulumi.CustomResource {

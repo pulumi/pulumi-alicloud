@@ -301,7 +301,7 @@ class SecurityPreference(pulumi.CustomResource):
         RAM Security Preference can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:ram/securityPreference:SecurityPreference example <id>
+        $ pulumi import alicloud:ram/securityPreference:SecurityPreference example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -348,7 +348,7 @@ class SecurityPreference(pulumi.CustomResource):
         RAM Security Preference can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:ram/securityPreference:SecurityPreference example <id>
+        $ pulumi import alicloud:ram/securityPreference:SecurityPreference example <id>
         ```
 
         :param str resource_name: The name of the resource.

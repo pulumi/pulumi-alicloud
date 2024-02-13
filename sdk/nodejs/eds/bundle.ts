@@ -48,7 +48,7 @@ import * as utilities from "../utilities";
  * ECD Bundle can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:eds/bundle:Bundle example <id>
+ * $ pulumi import alicloud:eds/bundle:Bundle example <id>
  * ```
  */
 export class Bundle extends pulumi.CustomResource {

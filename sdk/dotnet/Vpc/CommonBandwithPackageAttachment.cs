@@ -52,7 +52,7 @@ namespace Pulumi.AliCloud.Vpc
     /// cbwp Common Bandwidth Package Attachment can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:vpc/commonBandwithPackageAttachment:CommonBandwithPackageAttachment example &lt;bandwidth_package_id&gt;:&lt;instance_id&gt;
+    /// $ pulumi import alicloud:vpc/commonBandwithPackageAttachment:CommonBandwithPackageAttachment example &lt;bandwidth_package_id&gt;:&lt;instance_id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:vpc/commonBandwithPackageAttachment:CommonBandwithPackageAttachment")]

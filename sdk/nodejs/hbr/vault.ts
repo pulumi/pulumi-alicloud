@@ -27,7 +27,7 @@ import * as utilities from "../utilities";
  * HBR Vault can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:hbr/vault:Vault example <id>
+ * $ pulumi import alicloud:hbr/vault:Vault example <id>
  * ```
  */
 export class Vault extends pulumi.CustomResource {

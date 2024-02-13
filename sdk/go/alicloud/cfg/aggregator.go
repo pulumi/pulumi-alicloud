@@ -73,9 +73,7 @@ import (
 // Cloud Config Aggregator can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:cfg/aggregator:Aggregator example <id>
-//
+// $ pulumi import alicloud:cfg/aggregator:Aggregator example <id>
 // ```
 type Aggregator struct {
 	pulumi.CustomResourceState

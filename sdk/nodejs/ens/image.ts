@@ -49,7 +49,7 @@ import * as utilities from "../utilities";
  * ENS Image can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:ens/image:Image example <id>
+ * $ pulumi import alicloud:ens/image:Image example <id>
  * ```
  */
 export class Image extends pulumi.CustomResource {

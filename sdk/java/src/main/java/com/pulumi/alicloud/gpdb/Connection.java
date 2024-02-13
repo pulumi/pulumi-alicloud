@@ -110,7 +110,7 @@ import javax.annotation.Nullable;
  * AnalyticDB for PostgreSQL&#39;s connection can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:gpdb/connection:Connection example abc12345678
+ * $ pulumi import alicloud:gpdb/connection:Connection example abc12345678
  * ```
  * 
  */

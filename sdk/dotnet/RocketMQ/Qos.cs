@@ -40,7 +40,7 @@ namespace Pulumi.AliCloud.RocketMQ
     /// The Sag Qos can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:rocketmq/qos:Qos example qos-abc123456
+    /// $ pulumi import alicloud:rocketmq/qos:Qos example qos-abc123456
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:rocketmq/qos:Qos")]

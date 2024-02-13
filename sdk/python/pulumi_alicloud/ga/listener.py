@@ -462,7 +462,7 @@ class Listener(pulumi.CustomResource):
         Ga Listener can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:ga/listener:Listener example <id>
+        $ pulumi import alicloud:ga/listener:Listener example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -529,7 +529,7 @@ class Listener(pulumi.CustomResource):
         Ga Listener can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:ga/listener:Listener example <id>
+        $ pulumi import alicloud:ga/listener:Listener example <id>
         ```
 
         :param str resource_name: The name of the resource.

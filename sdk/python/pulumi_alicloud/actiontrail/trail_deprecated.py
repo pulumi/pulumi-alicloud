@@ -489,7 +489,7 @@ class TrailDeprecated(pulumi.CustomResource):
         Action trail can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:actiontrail/trailDeprecated:TrailDeprecated foo abc12345678
+        $ pulumi import alicloud:actiontrail/trailDeprecated:TrailDeprecated foo abc12345678
         ```
 
         :param str resource_name: The name of the resource.
@@ -536,7 +536,7 @@ class TrailDeprecated(pulumi.CustomResource):
         Action trail can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:actiontrail/trailDeprecated:TrailDeprecated foo abc12345678
+        $ pulumi import alicloud:actiontrail/trailDeprecated:TrailDeprecated foo abc12345678
         ```
 
         :param str resource_name: The name of the resource.

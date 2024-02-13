@@ -253,7 +253,7 @@ class EnterpriseProxy(pulumi.CustomResource):
         DMS Enterprise Proxy can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:dms/enterpriseProxy:EnterpriseProxy example <id>
+        $ pulumi import alicloud:dms/enterpriseProxy:EnterpriseProxy example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -360,7 +360,7 @@ class EnterpriseProxy(pulumi.CustomResource):
         DMS Enterprise Proxy can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:dms/enterpriseProxy:EnterpriseProxy example <id>
+        $ pulumi import alicloud:dms/enterpriseProxy:EnterpriseProxy example <id>
         ```
 
         :param str resource_name: The name of the resource.

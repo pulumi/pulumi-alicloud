@@ -147,7 +147,7 @@ class ControlPolicyAttachment(pulumi.CustomResource):
         Resource Manager Control Policy Attachment can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:resourcemanager/controlPolicyAttachment:ControlPolicyAttachment example <policy_id>:<target_id>
+        $ pulumi import alicloud:resourcemanager/controlPolicyAttachment:ControlPolicyAttachment example <policy_id>:<target_id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -211,7 +211,7 @@ class ControlPolicyAttachment(pulumi.CustomResource):
         Resource Manager Control Policy Attachment can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:resourcemanager/controlPolicyAttachment:ControlPolicyAttachment example <policy_id>:<target_id>
+        $ pulumi import alicloud:resourcemanager/controlPolicyAttachment:ControlPolicyAttachment example <policy_id>:<target_id>
         ```
 
         :param str resource_name: The name of the resource.

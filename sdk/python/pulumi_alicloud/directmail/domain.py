@@ -108,7 +108,7 @@ class Domain(pulumi.CustomResource):
         Direct Mail Domain can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:directmail/domain:Domain example <id>
+        $ pulumi import alicloud:directmail/domain:Domain example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -148,7 +148,7 @@ class Domain(pulumi.CustomResource):
         Direct Mail Domain can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:directmail/domain:Domain example <id>
+        $ pulumi import alicloud:directmail/domain:Domain example <id>
         ```
 
         :param str resource_name: The name of the resource.

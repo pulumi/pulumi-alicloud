@@ -66,7 +66,7 @@ import javax.annotation.Nullable;
  * ROS Template can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:ros/template:Template example &lt;template_id&gt;
+ * $ pulumi import alicloud:ros/template:Template example &lt;template_id&gt;
  * ```
  * 
  */

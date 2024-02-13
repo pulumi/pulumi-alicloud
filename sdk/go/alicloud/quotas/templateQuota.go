@@ -68,9 +68,7 @@ import (
 // Quotas Template Quota can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:quotas/templateQuota:TemplateQuota example <id>
-//
+// $ pulumi import alicloud:quotas/templateQuota:TemplateQuota example <id>
 // ```
 type TemplateQuota struct {
 	pulumi.CustomResourceState

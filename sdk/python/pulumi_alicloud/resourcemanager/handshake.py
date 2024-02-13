@@ -250,7 +250,7 @@ class Handshake(pulumi.CustomResource):
         Resource Manager handshake can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:resourcemanager/handshake:Handshake example h-QmdexeFm1kE*****
+        $ pulumi import alicloud:resourcemanager/handshake:Handshake example h-QmdexeFm1kE*****
         ```
 
         :param str resource_name: The name of the resource.
@@ -289,7 +289,7 @@ class Handshake(pulumi.CustomResource):
         Resource Manager handshake can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:resourcemanager/handshake:Handshake example h-QmdexeFm1kE*****
+        $ pulumi import alicloud:resourcemanager/handshake:Handshake example h-QmdexeFm1kE*****
         ```
 
         :param str resource_name: The name of the resource.

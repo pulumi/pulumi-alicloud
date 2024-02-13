@@ -403,7 +403,7 @@ class EcsInvocation(pulumi.CustomResource):
         ECS Invocation can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:ecs/ecsInvocation:EcsInvocation example <id>
+        $ pulumi import alicloud:ecs/ecsInvocation:EcsInvocation example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -497,7 +497,7 @@ class EcsInvocation(pulumi.CustomResource):
         ECS Invocation can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:ecs/ecsInvocation:EcsInvocation example <id>
+        $ pulumi import alicloud:ecs/ecsInvocation:EcsInvocation example <id>
         ```
 
         :param str resource_name: The name of the resource.

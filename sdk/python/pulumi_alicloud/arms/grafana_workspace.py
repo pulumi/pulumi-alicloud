@@ -300,7 +300,7 @@ class GrafanaWorkspace(pulumi.CustomResource):
         ARMS Grafana Workspace can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:arms/grafanaWorkspace:GrafanaWorkspace example <id>
+        $ pulumi import alicloud:arms/grafanaWorkspace:GrafanaWorkspace example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -355,7 +355,7 @@ class GrafanaWorkspace(pulumi.CustomResource):
         ARMS Grafana Workspace can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:arms/grafanaWorkspace:GrafanaWorkspace example <id>
+        $ pulumi import alicloud:arms/grafanaWorkspace:GrafanaWorkspace example <id>
         ```
 
         :param str resource_name: The name of the resource.

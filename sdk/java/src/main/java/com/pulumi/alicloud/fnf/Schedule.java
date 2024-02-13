@@ -78,7 +78,7 @@ import javax.annotation.Nullable;
  * Serverless Workflow Schedule can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:fnf/schedule:Schedule example &lt;schedule_name&gt;:&lt;flow_name&gt;
+ * $ pulumi import alicloud:fnf/schedule:Schedule example &lt;schedule_name&gt;:&lt;flow_name&gt;
  * ```
  * 
  */

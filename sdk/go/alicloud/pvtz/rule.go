@@ -23,9 +23,7 @@ import (
 // Private Zone Rule can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:pvtz/rule:Rule example <id>
-//
+// $ pulumi import alicloud:pvtz/rule:Rule example <id>
 // ```
 type Rule struct {
 	pulumi.CustomResourceState

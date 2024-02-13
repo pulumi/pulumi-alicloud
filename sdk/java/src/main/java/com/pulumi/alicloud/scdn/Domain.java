@@ -71,7 +71,7 @@ import javax.annotation.Nullable;
  * SCDN Domain can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:scdn/domain:Domain example &lt;domain_name&gt;
+ * $ pulumi import alicloud:scdn/domain:Domain example &lt;domain_name&gt;
  * ```
  * 
  */

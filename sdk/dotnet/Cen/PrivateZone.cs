@@ -71,7 +71,7 @@ namespace Pulumi.AliCloud.Cen
     /// CEN Private Zone can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:cen/privateZone:PrivateZone example cen-abc123456:cn-hangzhou
+    /// $ pulumi import alicloud:cen/privateZone:PrivateZone example cen-abc123456:cn-hangzhou
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:cen/privateZone:PrivateZone")]

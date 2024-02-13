@@ -348,7 +348,7 @@ class TemplateScratch(pulumi.CustomResource):
         ROS Template Scratch can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:ros/templateScratch:TemplateScratch example <id>
+        $ pulumi import alicloud:ros/templateScratch:TemplateScratch example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -402,7 +402,7 @@ class TemplateScratch(pulumi.CustomResource):
         ROS Template Scratch can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:ros/templateScratch:TemplateScratch example <id>
+        $ pulumi import alicloud:ros/templateScratch:TemplateScratch example <id>
         ```
 
         :param str resource_name: The name of the resource.

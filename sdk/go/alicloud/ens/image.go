@@ -78,9 +78,7 @@ import (
 // ENS Image can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:ens/image:Image example <id>
-//
+// $ pulumi import alicloud:ens/image:Image example <id>
 // ```
 type Image struct {
 	pulumi.CustomResourceState

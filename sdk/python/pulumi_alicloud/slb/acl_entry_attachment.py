@@ -155,7 +155,7 @@ class AclEntryAttachment(pulumi.CustomResource):
         Acl entry attachment can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:slb/aclEntryAttachment:AclEntryAttachment example <acl_id>:<entry>
+        $ pulumi import alicloud:slb/aclEntryAttachment:AclEntryAttachment example <acl_id>:<entry>
         ```
 
         :param str resource_name: The name of the resource.
@@ -195,7 +195,7 @@ class AclEntryAttachment(pulumi.CustomResource):
         Acl entry attachment can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:slb/aclEntryAttachment:AclEntryAttachment example <acl_id>:<entry>
+        $ pulumi import alicloud:slb/aclEntryAttachment:AclEntryAttachment example <acl_id>:<entry>
         ```
 
         :param str resource_name: The name of the resource.

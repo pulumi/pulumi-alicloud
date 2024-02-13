@@ -35,7 +35,7 @@ import * as utilities from "../utilities";
  * Threat Detection Backup Policy can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:threatdetection/backupPolicy:BackupPolicy example <id>
+ * $ pulumi import alicloud:threatdetection/backupPolicy:BackupPolicy example <id>
  * ```
  */
 export class BackupPolicy extends pulumi.CustomResource {

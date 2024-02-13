@@ -16,7 +16,7 @@ import * as utilities from "../utilities";
  * Ebs Disk Replica Pair can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:ebs/diskReplicaPair:DiskReplicaPair example <id>
+ * $ pulumi import alicloud:ebs/diskReplicaPair:DiskReplicaPair example <id>
  * ```
  */
 export class DiskReplicaPair extends pulumi.CustomResource {

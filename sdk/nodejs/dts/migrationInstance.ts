@@ -38,7 +38,7 @@ import * as utilities from "../utilities";
  * DTS Migration Instance can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:dts/migrationInstance:MigrationInstance example <id>
+ * $ pulumi import alicloud:dts/migrationInstance:MigrationInstance example <id>
  * ```
  */
 export class MigrationInstance extends pulumi.CustomResource {

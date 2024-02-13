@@ -244,7 +244,7 @@ class AccessRule(pulumi.CustomResource):
         Nas Access Rule can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:nas/accessRule:AccessRule foo tf-testAccNasConfigName:1
+        $ pulumi import alicloud:nas/accessRule:AccessRule foo tf-testAccNasConfigName:1
         ```
 
         :param str resource_name: The name of the resource.
@@ -293,7 +293,7 @@ class AccessRule(pulumi.CustomResource):
         Nas Access Rule can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:nas/accessRule:AccessRule foo tf-testAccNasConfigName:1
+        $ pulumi import alicloud:nas/accessRule:AccessRule foo tf-testAccNasConfigName:1
         ```
 
         :param str resource_name: The name of the resource.

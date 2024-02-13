@@ -169,9 +169,7 @@ import (
 // VPC Traffic Mirror Session can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:vpc/trafficMirrorSession:TrafficMirrorSession example <id>
-//
+// $ pulumi import alicloud:vpc/trafficMirrorSession:TrafficMirrorSession example <id>
 // ```
 type TrafficMirrorSession struct {
 	pulumi.CustomResourceState

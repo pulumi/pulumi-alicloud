@@ -154,7 +154,7 @@ class Group(pulumi.CustomResource):
         RAM group can be imported using the id or name, e.g.
 
         ```sh
-         $ pulumi import alicloud:ram/group:Group example my-group
+        $ pulumi import alicloud:ram/group:Group example my-group
         ```
 
         :param str resource_name: The name of the resource.
@@ -191,7 +191,7 @@ class Group(pulumi.CustomResource):
         RAM group can be imported using the id or name, e.g.
 
         ```sh
-         $ pulumi import alicloud:ram/group:Group example my-group
+        $ pulumi import alicloud:ram/group:Group example my-group
         ```
 
         :param str resource_name: The name of the resource.

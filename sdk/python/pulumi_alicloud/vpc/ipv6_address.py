@@ -289,7 +289,7 @@ class Ipv6Address(pulumi.CustomResource):
         VPC Ipv6 Address can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:vpc/ipv6Address:Ipv6Address example <id>
+        $ pulumi import alicloud:vpc/ipv6Address:Ipv6Address example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -350,7 +350,7 @@ class Ipv6Address(pulumi.CustomResource):
         VPC Ipv6 Address can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:vpc/ipv6Address:Ipv6Address example <id>
+        $ pulumi import alicloud:vpc/ipv6Address:Ipv6Address example <id>
         ```
 
         :param str resource_name: The name of the resource.

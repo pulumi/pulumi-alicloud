@@ -82,7 +82,7 @@ import * as utilities from "../utilities";
  * Cloud Monitor Service Alarm can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:cms/alarm:Alarm example <id>
+ * $ pulumi import alicloud:cms/alarm:Alarm example <id>
  * ```
  */
 export class Alarm extends pulumi.CustomResource {

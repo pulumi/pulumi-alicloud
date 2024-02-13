@@ -63,9 +63,7 @@ import (
 // The router interface can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:vpc/routerInterface:RouterInterface interface ri-abc123456
-//
+// $ pulumi import alicloud:vpc/routerInterface:RouterInterface interface ri-abc123456
 // ```
 type RouterInterface struct {
 	pulumi.CustomResourceState

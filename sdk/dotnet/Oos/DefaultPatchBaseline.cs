@@ -49,7 +49,7 @@ namespace Pulumi.AliCloud.Oos
     /// Oos Default Patch Baseline can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:oos/defaultPatchBaseline:DefaultPatchBaseline example &lt;id&gt;
+    /// $ pulumi import alicloud:oos/defaultPatchBaseline:DefaultPatchBaseline example &lt;id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:oos/defaultPatchBaseline:DefaultPatchBaseline")]

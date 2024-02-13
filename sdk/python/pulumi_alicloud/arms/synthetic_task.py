@@ -621,7 +621,7 @@ class SyntheticTask(pulumi.CustomResource):
         ARMS Synthetic Task can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:arms/syntheticTask:SyntheticTask example <id>
+        $ pulumi import alicloud:arms/syntheticTask:SyntheticTask example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -841,7 +841,7 @@ class SyntheticTask(pulumi.CustomResource):
         ARMS Synthetic Task can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:arms/syntheticTask:SyntheticTask example <id>
+        $ pulumi import alicloud:arms/syntheticTask:SyntheticTask example <id>
         ```
 
         :param str resource_name: The name of the resource.

@@ -187,7 +187,7 @@ class AlarmContactGroup(pulumi.CustomResource):
         CMS Alarm Contact Group can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:cms/alarmContactGroup:AlarmContactGroup example tf-testacc123
+        $ pulumi import alicloud:cms/alarmContactGroup:AlarmContactGroup example tf-testacc123
         ```
 
         :param str resource_name: The name of the resource.
@@ -226,7 +226,7 @@ class AlarmContactGroup(pulumi.CustomResource):
         CMS Alarm Contact Group can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:cms/alarmContactGroup:AlarmContactGroup example tf-testacc123
+        $ pulumi import alicloud:cms/alarmContactGroup:AlarmContactGroup example tf-testacc123
         ```
 
         :param str resource_name: The name of the resource.

@@ -659,7 +659,7 @@ class NatGateway(pulumi.CustomResource):
         Nat gateway can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:vpc/natGateway:NatGateway example <id>
+        $ pulumi import alicloud:vpc/natGateway:NatGateway example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -697,7 +697,7 @@ class NatGateway(pulumi.CustomResource):
         Nat gateway can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:vpc/natGateway:NatGateway example <id>
+        $ pulumi import alicloud:vpc/natGateway:NatGateway example <id>
         ```
 
         :param str resource_name: The name of the resource.

@@ -16,7 +16,7 @@ import * as utilities from "../utilities";
  * ARMS Env Service Monitor can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:arms/envServiceMonitor:EnvServiceMonitor example <environment_id>:<namespace>:<env_service_monitor_name>
+ * $ pulumi import alicloud:arms/envServiceMonitor:EnvServiceMonitor example <environment_id>:<namespace>:<env_service_monitor_name>
  * ```
  */
 export class EnvServiceMonitor extends pulumi.CustomResource {

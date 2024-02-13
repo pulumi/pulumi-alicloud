@@ -43,7 +43,7 @@ namespace Pulumi.AliCloud.ActionTrail
     /// Action trail can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:actiontrail/trailDeprecated:TrailDeprecated foo abc12345678
+    /// $ pulumi import alicloud:actiontrail/trailDeprecated:TrailDeprecated foo abc12345678
     /// ```
     /// </summary>
     [Obsolete(@"Resource renamed to `Trail`")]

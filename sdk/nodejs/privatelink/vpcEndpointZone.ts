@@ -69,7 +69,7 @@ import * as utilities from "../utilities";
  * Private Link Vpc Endpoint Zone can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:privatelink/vpcEndpointZone:VpcEndpointZone example <endpoint_id>:<zone_id>
+ * $ pulumi import alicloud:privatelink/vpcEndpointZone:VpcEndpointZone example <endpoint_id>:<zone_id>
  * ```
  */
 export class VpcEndpointZone extends pulumi.CustomResource {

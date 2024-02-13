@@ -33,7 +33,7 @@ import * as utilities from "../utilities";
  * ECS Activation can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:ecs/activation:Activation example <id>
+ * $ pulumi import alicloud:ecs/activation:Activation example <id>
  * ```
  */
 export class Activation extends pulumi.CustomResource {

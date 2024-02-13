@@ -58,7 +58,7 @@ import javax.annotation.Nullable;
  * Cloud Storage Gateway Storage Bundle can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:cloudstoragegateway/storageBundle:StorageBundle example &lt;id&gt;
+ * $ pulumi import alicloud:cloudstoragegateway/storageBundle:StorageBundle example &lt;id&gt;
  * ```
  * 
  */

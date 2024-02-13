@@ -84,7 +84,7 @@ import javax.annotation.Nullable;
  * Vpc Ipv6 Gateway can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:vpc/ipv6Gateway:Ipv6Gateway example &lt;id&gt;
+ * $ pulumi import alicloud:vpc/ipv6Gateway:Ipv6Gateway example &lt;id&gt;
  * ```
  * 
  */

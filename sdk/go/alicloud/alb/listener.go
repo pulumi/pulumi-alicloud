@@ -23,9 +23,7 @@ import (
 // Application Load Balancer (ALB) Listener can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:alb/listener:Listener example <id>
-//
+// $ pulumi import alicloud:alb/listener:Listener example <id>
 // ```
 type Listener struct {
 	pulumi.CustomResourceState

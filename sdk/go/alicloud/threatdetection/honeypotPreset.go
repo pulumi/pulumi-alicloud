@@ -79,9 +79,7 @@ import (
 // Threat Detection Honeypot Preset can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:threatdetection/honeypotPreset:HoneypotPreset example <id>
-//
+// $ pulumi import alicloud:threatdetection/honeypotPreset:HoneypotPreset example <id>
 // ```
 type HoneypotPreset struct {
 	pulumi.CustomResourceState

@@ -98,7 +98,7 @@ import javax.annotation.Nullable;
  * CEN transit router VBR attachment can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:cen/transitRouterVbrAttachment:TransitRouterVbrAttachment example tr-********:tr-attach-********
+ * $ pulumi import alicloud:cen/transitRouterVbrAttachment:TransitRouterVbrAttachment example tr-********:tr-attach-********
  * ```
  * 
  */

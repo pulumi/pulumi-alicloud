@@ -55,7 +55,7 @@ import * as utilities from "../utilities";
  * Click House DBCluster can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:clickhouse/dbCluster:DbCluster example <id>
+ * $ pulumi import alicloud:clickhouse/dbCluster:DbCluster example <id>
  * ```
  */
 export class DbCluster extends pulumi.CustomResource {

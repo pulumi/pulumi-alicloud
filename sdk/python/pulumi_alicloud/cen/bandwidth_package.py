@@ -456,7 +456,7 @@ class BandwidthPackage(pulumi.CustomResource):
         CEN bandwidth package can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:cen/bandwidthPackage:BandwidthPackage example cenbwp-abc123456
+        $ pulumi import alicloud:cen/bandwidthPackage:BandwidthPackage example cenbwp-abc123456
         ```
 
         :param str resource_name: The name of the resource.
@@ -489,7 +489,7 @@ class BandwidthPackage(pulumi.CustomResource):
         CEN bandwidth package can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:cen/bandwidthPackage:BandwidthPackage example cenbwp-abc123456
+        $ pulumi import alicloud:cen/bandwidthPackage:BandwidthPackage example cenbwp-abc123456
         ```
 
         :param str resource_name: The name of the resource.

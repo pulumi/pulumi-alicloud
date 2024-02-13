@@ -358,7 +358,7 @@ class SiteMonitor(pulumi.CustomResource):
         Cloud Monitor Service Site Monitor can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:cms/siteMonitor:SiteMonitor example <id>
+        $ pulumi import alicloud:cms/siteMonitor:SiteMonitor example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -424,7 +424,7 @@ class SiteMonitor(pulumi.CustomResource):
         Cloud Monitor Service Site Monitor can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:cms/siteMonitor:SiteMonitor example <id>
+        $ pulumi import alicloud:cms/siteMonitor:SiteMonitor example <id>
         ```
 
         :param str resource_name: The name of the resource.

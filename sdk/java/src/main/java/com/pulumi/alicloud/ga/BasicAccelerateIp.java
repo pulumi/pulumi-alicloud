@@ -80,7 +80,7 @@ import javax.annotation.Nullable;
  * Global Accelerator (GA) Basic Accelerate IP can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:ga/basicAccelerateIp:BasicAccelerateIp example &lt;id&gt;
+ * $ pulumi import alicloud:ga/basicAccelerateIp:BasicAccelerateIp example &lt;id&gt;
  * ```
  * 
  */

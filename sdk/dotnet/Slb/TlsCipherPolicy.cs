@@ -50,7 +50,7 @@ namespace Pulumi.AliCloud.Slb
     /// SLB Tls Cipher Policy can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:slb/tlsCipherPolicy:TlsCipherPolicy example &lt;id&gt;
+    /// $ pulumi import alicloud:slb/tlsCipherPolicy:TlsCipherPolicy example &lt;id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:slb/tlsCipherPolicy:TlsCipherPolicy")]

@@ -69,9 +69,7 @@ import (
 // Cloud Enterprise Network (CEN) Transit Router Cidr can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:cen/transitRouterCidr:TransitRouterCidr default <transit_router_id>:<transit_router_cidr_id>.
-//
+// $ pulumi import alicloud:cen/transitRouterCidr:TransitRouterCidr default <transit_router_id>:<transit_router_cidr_id>.
 // ```
 type TransitRouterCidr struct {
 	pulumi.CustomResourceState

@@ -64,7 +64,7 @@ import javax.annotation.Nullable;
  * Threat Detection Baseline Strategy can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:threatdetection/baselineStrategy:BaselineStrategy example &lt;id&gt;
+ * $ pulumi import alicloud:threatdetection/baselineStrategy:BaselineStrategy example &lt;id&gt;
  * ```
  * 
  */

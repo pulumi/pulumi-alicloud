@@ -69,7 +69,7 @@ namespace Pulumi.AliCloud.Vpc
     /// VPC Bgp Network can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:vpc/bgpNetwork:BgpNetwork example &lt;router_id&gt;:&lt;dst_cidr_block&gt;
+    /// $ pulumi import alicloud:vpc/bgpNetwork:BgpNetwork example &lt;router_id&gt;:&lt;dst_cidr_block&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:vpc/bgpNetwork:BgpNetwork")]

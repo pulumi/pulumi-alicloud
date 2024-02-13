@@ -23,9 +23,7 @@ import (
 // Alidns Address Pool can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:dns/addressPool:AddressPool example <id>
-//
+// $ pulumi import alicloud:dns/addressPool:AddressPool example <id>
 // ```
 type AddressPool struct {
 	pulumi.CustomResourceState

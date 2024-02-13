@@ -61,9 +61,7 @@ import (
 // ECS Auto Snapshot Policy can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:ecs/autoSnapshotPolicy:AutoSnapshotPolicy example <id>
-//
+// $ pulumi import alicloud:ecs/autoSnapshotPolicy:AutoSnapshotPolicy example <id>
 // ```
 type AutoSnapshotPolicy struct {
 	pulumi.CustomResourceState

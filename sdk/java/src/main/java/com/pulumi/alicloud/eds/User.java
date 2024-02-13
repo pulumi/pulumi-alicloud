@@ -62,7 +62,7 @@ import javax.annotation.Nullable;
  * ECD User can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:eds/user:User example &lt;end_user_id&gt;
+ * $ pulumi import alicloud:eds/user:User example &lt;end_user_id&gt;
  * ```
  * 
  */

@@ -85,9 +85,7 @@ import (
 // Ecs Capacity Reservation can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:ecs/capacityReservation:CapacityReservation example <id>
-//
+// $ pulumi import alicloud:ecs/capacityReservation:CapacityReservation example <id>
 // ```
 type CapacityReservation struct {
 	pulumi.CustomResourceState

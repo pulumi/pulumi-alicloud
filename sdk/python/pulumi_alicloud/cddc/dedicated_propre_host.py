@@ -976,7 +976,7 @@ class DedicatedPropreHost(pulumi.CustomResource):
         CDDC Dedicated Propre Host can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:cddc/dedicatedPropreHost:DedicatedPropreHost example <dedicated_host_group_id>:<ecs_instance_id>
+        $ pulumi import alicloud:cddc/dedicatedPropreHost:DedicatedPropreHost example <dedicated_host_group_id>:<ecs_instance_id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -1037,7 +1037,7 @@ class DedicatedPropreHost(pulumi.CustomResource):
         CDDC Dedicated Propre Host can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:cddc/dedicatedPropreHost:DedicatedPropreHost example <dedicated_host_group_id>:<ecs_instance_id>
+        $ pulumi import alicloud:cddc/dedicatedPropreHost:DedicatedPropreHost example <dedicated_host_group_id>:<ecs_instance_id>
         ```
 
         :param str resource_name: The name of the resource.

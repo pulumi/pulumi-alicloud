@@ -172,7 +172,7 @@ import javax.annotation.Nullable;
  * ECI Container Group can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:eci/containerGroup:ContainerGroup example &lt;container_group_id&gt;
+ * $ pulumi import alicloud:eci/containerGroup:ContainerGroup example &lt;container_group_id&gt;
  * ```
  * 
  */

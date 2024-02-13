@@ -96,7 +96,7 @@ namespace Pulumi.AliCloud.Vpc
     /// VPC Network Acl can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:vpc/networkAcl:NetworkAcl example &lt;id&gt;
+    /// $ pulumi import alicloud:vpc/networkAcl:NetworkAcl example &lt;id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:vpc/networkAcl:NetworkAcl")]

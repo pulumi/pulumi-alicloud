@@ -151,9 +151,7 @@ import (
 // The resource can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:sae/loadBalancerInternet:LoadBalancerInternet example <id>
-//
+// $ pulumi import alicloud:sae/loadBalancerInternet:LoadBalancerInternet example <id>
 // ```
 type LoadBalancerInternet struct {
 	pulumi.CustomResourceState

@@ -99,7 +99,7 @@ import javax.annotation.Nullable;
  * Api gateway api can be imported using the id.Format to `&lt;API Group Id&gt;:&lt;API Id&gt;` e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:apigateway/api:Api example &#34;ab2351f2ce904edaa8d92a0510832b91:e4f728fca5a94148b023b99a3e5d0b62&#34;
+ * $ pulumi import alicloud:apigateway/api:Api example &#34;ab2351f2ce904edaa8d92a0510832b91:e4f728fca5a94148b023b99a3e5d0b62&#34;
  * ```
  * 
  */

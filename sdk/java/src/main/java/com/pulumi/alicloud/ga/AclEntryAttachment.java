@@ -67,7 +67,7 @@ import javax.annotation.Nullable;
  * Global Accelerator (GA) Acl entry attachment can be imported using the id.Format to `&lt;acl_id&gt;:&lt;entry&gt;`, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:ga/aclEntryAttachment:AclEntryAttachment example your_acl_id:your_entry
+ * $ pulumi import alicloud:ga/aclEntryAttachment:AclEntryAttachment example your_acl_id:your_entry
  * ```
  * 
  */

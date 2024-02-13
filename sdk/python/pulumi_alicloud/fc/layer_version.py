@@ -369,7 +369,7 @@ class LayerVersion(pulumi.CustomResource):
         Function Compute Layer Version can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:fc/layerVersion:LayerVersion example my_function
+        $ pulumi import alicloud:fc/layerVersion:LayerVersion example my_function
         ```
 
         :param str resource_name: The name of the resource.
@@ -425,7 +425,7 @@ class LayerVersion(pulumi.CustomResource):
         Function Compute Layer Version can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:fc/layerVersion:LayerVersion example my_function
+        $ pulumi import alicloud:fc/layerVersion:LayerVersion example my_function
         ```
 
         :param str resource_name: The name of the resource.

@@ -410,7 +410,7 @@ class Prometheus(pulumi.CustomResource):
         Application Real-Time Monitoring Service (ARMS) Prometheus can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:arms/prometheus:Prometheus example <id>
+        $ pulumi import alicloud:arms/prometheus:Prometheus example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -481,7 +481,7 @@ class Prometheus(pulumi.CustomResource):
         Application Real-Time Monitoring Service (ARMS) Prometheus can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:arms/prometheus:Prometheus example <id>
+        $ pulumi import alicloud:arms/prometheus:Prometheus example <id>
         ```
 
         :param str resource_name: The name of the resource.

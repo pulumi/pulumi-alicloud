@@ -10,7 +10,7 @@ import * as utilities from "../utilities";
  * AliKafka instance can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:alikafka/instance:Instance instance <id>
+ * $ pulumi import alicloud:alikafka/instance:Instance instance <id>
  * ```
  */
 export class Instance extends pulumi.CustomResource {

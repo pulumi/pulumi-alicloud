@@ -25,7 +25,7 @@ import * as utilities from "../utilities";
  * RAM account alias can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:ram/accountAlias:AccountAlias example my-alias
+ * $ pulumi import alicloud:ram/accountAlias:AccountAlias example my-alias
  * ```
  */
 export class AccountAlias extends pulumi.CustomResource {

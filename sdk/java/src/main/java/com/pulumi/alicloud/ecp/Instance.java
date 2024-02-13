@@ -108,7 +108,7 @@ import javax.annotation.Nullable;
  * Elastic Cloud Phone (ECP) Instance can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:ecp/instance:Instance example &lt;id&gt;
+ * $ pulumi import alicloud:ecp/instance:Instance example &lt;id&gt;
  * ```
  * 
  */

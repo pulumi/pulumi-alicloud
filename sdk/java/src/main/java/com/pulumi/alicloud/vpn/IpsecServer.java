@@ -97,7 +97,7 @@ import javax.annotation.Nullable;
  * VPN Ipsec Server can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:vpn/ipsecServer:IpsecServer example &lt;id&gt;
+ * $ pulumi import alicloud:vpn/ipsecServer:IpsecServer example &lt;id&gt;
  * ```
  * 
  */

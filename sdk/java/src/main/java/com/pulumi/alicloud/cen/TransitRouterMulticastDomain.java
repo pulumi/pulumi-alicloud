@@ -77,7 +77,7 @@ import javax.annotation.Nullable;
  * Cloud Enterprise Network (CEN) Transit Router Multicast Domain can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:cen/transitRouterMulticastDomain:TransitRouterMulticastDomain example &lt;id&gt;
+ * $ pulumi import alicloud:cen/transitRouterMulticastDomain:TransitRouterMulticastDomain example &lt;id&gt;
  * ```
  * 
  */

@@ -25,7 +25,7 @@ import javax.annotation.Nullable;
  * Application Load Balancer (ALB) Listener Additional Certificate Attachment can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:alb/listenerAdditionalCertificateAttachment:ListenerAdditionalCertificateAttachment example &lt;listener_id&gt;:&lt;certificate_id&gt;
+ * $ pulumi import alicloud:alb/listenerAdditionalCertificateAttachment:ListenerAdditionalCertificateAttachment example &lt;listener_id&gt;:&lt;certificate_id&gt;
  * ```
  * 
  */

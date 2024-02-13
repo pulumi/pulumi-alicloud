@@ -123,9 +123,7 @@ import (
 // Server Load balancer Server Certificate can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:slb/serverCertificate:ServerCertificate example abc123456
-//
+// $ pulumi import alicloud:slb/serverCertificate:ServerCertificate example abc123456
 // ```
 type ServerCertificate struct {
 	pulumi.CustomResourceState

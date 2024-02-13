@@ -55,7 +55,7 @@ namespace Pulumi.AliCloud.Ecs
     /// Ecs Image Component can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:ecs/ecsImageComponent:EcsImageComponent example &lt;id&gt;
+    /// $ pulumi import alicloud:ecs/ecsImageComponent:EcsImageComponent example &lt;id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:ecs/ecsImageComponent:EcsImageComponent")]

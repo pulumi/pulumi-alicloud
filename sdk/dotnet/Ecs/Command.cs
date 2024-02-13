@@ -44,7 +44,7 @@ namespace Pulumi.AliCloud.Ecs
     /// ECS Command can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:ecs/command:Command example &lt;id&gt;
+    /// $ pulumi import alicloud:ecs/command:Command example &lt;id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:ecs/command:Command")]

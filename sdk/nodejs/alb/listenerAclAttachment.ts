@@ -20,7 +20,7 @@ import * as utilities from "../utilities";
  * ALB Listener Acl Attachment can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:alb/listenerAclAttachment:ListenerAclAttachment example <listener_id>:<acl_id>
+ * $ pulumi import alicloud:alb/listenerAclAttachment:ListenerAclAttachment example <listener_id>:<acl_id>
  * ```
  */
 export class ListenerAclAttachment extends pulumi.CustomResource {

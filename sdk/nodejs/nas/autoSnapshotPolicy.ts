@@ -40,7 +40,7 @@ import * as utilities from "../utilities";
  * Network Attached Storage (NAS) Auto Snapshot Policy can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:nas/autoSnapshotPolicy:AutoSnapshotPolicy example <id>
+ * $ pulumi import alicloud:nas/autoSnapshotPolicy:AutoSnapshotPolicy example <id>
  * ```
  */
 export class AutoSnapshotPolicy extends pulumi.CustomResource {

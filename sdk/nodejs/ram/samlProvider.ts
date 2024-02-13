@@ -33,7 +33,7 @@ import * as utilities from "../utilities";
  * RAM SAML Provider can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:ram/samlProvider:SamlProvider example <saml_provider_name>
+ * $ pulumi import alicloud:ram/samlProvider:SamlProvider example <saml_provider_name>
  * ```
  */
 export class SamlProvider extends pulumi.CustomResource {

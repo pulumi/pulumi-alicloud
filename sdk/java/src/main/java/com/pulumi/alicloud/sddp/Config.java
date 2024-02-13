@@ -59,7 +59,7 @@ import javax.annotation.Nullable;
  * Data Security Center Config can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:sddp/config:Config example &lt;code&gt;
+ * $ pulumi import alicloud:sddp/config:Config example &lt;code&gt;
  * ```
  * 
  */

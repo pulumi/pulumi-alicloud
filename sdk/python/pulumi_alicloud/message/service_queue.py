@@ -297,7 +297,7 @@ class ServiceQueue(pulumi.CustomResource):
         Message Notification Service Queue can be imported using the id or queue_name, e.g.
 
         ```sh
-         $ pulumi import alicloud:message/serviceQueue:ServiceQueue example <queue_name>
+        $ pulumi import alicloud:message/serviceQueue:ServiceQueue example <queue_name>
         ```
 
         :param str resource_name: The name of the resource.
@@ -350,7 +350,7 @@ class ServiceQueue(pulumi.CustomResource):
         Message Notification Service Queue can be imported using the id or queue_name, e.g.
 
         ```sh
-         $ pulumi import alicloud:message/serviceQueue:ServiceQueue example <queue_name>
+        $ pulumi import alicloud:message/serviceQueue:ServiceQueue example <queue_name>
         ```
 
         :param str resource_name: The name of the resource.

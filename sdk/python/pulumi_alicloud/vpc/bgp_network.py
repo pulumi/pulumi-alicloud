@@ -157,7 +157,7 @@ class BgpNetwork(pulumi.CustomResource):
         VPC Bgp Network can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:vpc/bgpNetwork:BgpNetwork example <router_id>:<dst_cidr_block>
+        $ pulumi import alicloud:vpc/bgpNetwork:BgpNetwork example <router_id>:<dst_cidr_block>
         ```
 
         :param str resource_name: The name of the resource.
@@ -215,7 +215,7 @@ class BgpNetwork(pulumi.CustomResource):
         VPC Bgp Network can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:vpc/bgpNetwork:BgpNetwork example <router_id>:<dst_cidr_block>
+        $ pulumi import alicloud:vpc/bgpNetwork:BgpNetwork example <router_id>:<dst_cidr_block>
         ```
 
         :param str resource_name: The name of the resource.

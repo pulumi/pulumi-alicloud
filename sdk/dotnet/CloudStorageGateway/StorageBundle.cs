@@ -41,7 +41,7 @@ namespace Pulumi.AliCloud.CloudStorageGateway
     /// Cloud Storage Gateway Storage Bundle can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:cloudstoragegateway/storageBundle:StorageBundle example &lt;id&gt;
+    /// $ pulumi import alicloud:cloudstoragegateway/storageBundle:StorageBundle example &lt;id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:cloudstoragegateway/storageBundle:StorageBundle")]

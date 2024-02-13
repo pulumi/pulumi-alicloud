@@ -226,7 +226,7 @@ class PrivateZone(pulumi.CustomResource):
         CEN Private Zone can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:cen/privateZone:PrivateZone example cen-abc123456:cn-hangzhou
+        $ pulumi import alicloud:cen/privateZone:PrivateZone example cen-abc123456:cn-hangzhou
         ```
 
         :param str resource_name: The name of the resource.
@@ -285,7 +285,7 @@ class PrivateZone(pulumi.CustomResource):
         CEN Private Zone can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:cen/privateZone:PrivateZone example cen-abc123456:cn-hangzhou
+        $ pulumi import alicloud:cen/privateZone:PrivateZone example cen-abc123456:cn-hangzhou
         ```
 
         :param str resource_name: The name of the resource.

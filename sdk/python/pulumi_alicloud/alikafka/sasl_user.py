@@ -286,7 +286,7 @@ class SaslUser(pulumi.CustomResource):
         Alikafka Sasl User can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:alikafka/saslUser:SaslUser example <instance_id>:<username>
+        $ pulumi import alicloud:alikafka/saslUser:SaslUser example <instance_id>:<username>
         ```
 
         :param str resource_name: The name of the resource.
@@ -361,7 +361,7 @@ class SaslUser(pulumi.CustomResource):
         Alikafka Sasl User can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:alikafka/saslUser:SaslUser example <instance_id>:<username>
+        $ pulumi import alicloud:alikafka/saslUser:SaslUser example <instance_id>:<username>
         ```
 
         :param str resource_name: The name of the resource.

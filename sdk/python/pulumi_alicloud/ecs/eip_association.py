@@ -325,7 +325,7 @@ class EipAssociation(pulumi.CustomResource):
         Elastic IP address association can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:ecs/eipAssociation:EipAssociation example <allocation_id>:<instance_id>
+        $ pulumi import alicloud:ecs/eipAssociation:EipAssociation example <allocation_id>:<instance_id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -407,7 +407,7 @@ class EipAssociation(pulumi.CustomResource):
         Elastic IP address association can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:ecs/eipAssociation:EipAssociation example <allocation_id>:<instance_id>
+        $ pulumi import alicloud:ecs/eipAssociation:EipAssociation example <allocation_id>:<instance_id>
         ```
 
         :param str resource_name: The name of the resource.

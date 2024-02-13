@@ -26,7 +26,7 @@ import javax.annotation.Nullable;
  * Ebs Disk Replica Pair can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:ebs/diskReplicaPair:DiskReplicaPair example &lt;id&gt;
+ * $ pulumi import alicloud:ebs/diskReplicaPair:DiskReplicaPair example &lt;id&gt;
  * ```
  * 
  */

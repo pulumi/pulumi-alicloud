@@ -58,7 +58,7 @@ import * as utilities from "../utilities";
  * Config Remediation can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:cfg/remediation:Remediation example <id>
+ * $ pulumi import alicloud:cfg/remediation:Remediation example <id>
  * ```
  */
 export class Remediation extends pulumi.CustomResource {

@@ -106,7 +106,7 @@ namespace Pulumi.AliCloud.DatabaseFilesystem
     /// DBFS Instance Attachment can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:databasefilesystem/instanceAttachment:InstanceAttachment example &lt;instance_id&gt;:&lt;ecs_id&gt;
+    /// $ pulumi import alicloud:databasefilesystem/instanceAttachment:InstanceAttachment example &lt;instance_id&gt;:&lt;ecs_id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:databasefilesystem/instanceAttachment:InstanceAttachment")]

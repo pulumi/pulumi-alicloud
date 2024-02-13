@@ -75,7 +75,7 @@ import * as utilities from "../utilities";
  * DBFS Snapshot can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:databasefilesystem/snapshot:Snapshot example <id>
+ * $ pulumi import alicloud:databasefilesystem/snapshot:Snapshot example <id>
  * ```
  */
 export class Snapshot extends pulumi.CustomResource {

@@ -395,7 +395,7 @@ class AppGroup(pulumi.CustomResource):
         Open Search App Group can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:opensearch/appGroup:AppGroup example <id>
+        $ pulumi import alicloud:opensearch/appGroup:AppGroup example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -451,7 +451,7 @@ class AppGroup(pulumi.CustomResource):
         Open Search App Group can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:opensearch/appGroup:AppGroup example <id>
+        $ pulumi import alicloud:opensearch/appGroup:AppGroup example <id>
         ```
 
         :param str resource_name: The name of the resource.

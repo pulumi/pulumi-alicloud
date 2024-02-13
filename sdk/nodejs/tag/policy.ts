@@ -35,7 +35,7 @@ import * as utilities from "../utilities";
  * Tag Policy can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:tag/policy:Policy example <id>
+ * $ pulumi import alicloud:tag/policy:Policy example <id>
  * ```
  */
 export class Policy extends pulumi.CustomResource {

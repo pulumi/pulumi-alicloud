@@ -53,7 +53,7 @@ namespace Pulumi.AliCloud.Amqp
     /// RabbitMQ (AMQP) Virtual Host can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:amqp/virtualHost:VirtualHost example &lt;instance_id&gt;:&lt;virtual_host_name&gt;
+    /// $ pulumi import alicloud:amqp/virtualHost:VirtualHost example &lt;instance_id&gt;:&lt;virtual_host_name&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:amqp/virtualHost:VirtualHost")]

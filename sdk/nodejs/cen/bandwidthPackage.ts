@@ -10,7 +10,7 @@ import * as utilities from "../utilities";
  * CEN bandwidth package can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:cen/bandwidthPackage:BandwidthPackage example cenbwp-abc123456
+ * $ pulumi import alicloud:cen/bandwidthPackage:BandwidthPackage example cenbwp-abc123456
  * ```
  */
 export class BandwidthPackage extends pulumi.CustomResource {

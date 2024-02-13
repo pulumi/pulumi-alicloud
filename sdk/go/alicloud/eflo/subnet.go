@@ -78,9 +78,7 @@ import (
 // Eflo Subnet can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:eflo/subnet:Subnet example <vpd_id>:<subnet_id>
-//
+// $ pulumi import alicloud:eflo/subnet:Subnet example <vpd_id>:<subnet_id>
 // ```
 type Subnet struct {
 	pulumi.CustomResourceState

@@ -40,7 +40,7 @@ import * as utilities from "../utilities";
  * SCDN Domain can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:scdn/domain:Domain example <domain_name>
+ * $ pulumi import alicloud:scdn/domain:Domain example <domain_name>
  * ```
  */
 export class Domain extends pulumi.CustomResource {

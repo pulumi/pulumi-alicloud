@@ -72,7 +72,7 @@ import javax.annotation.Nullable;
  * OOS Parameter can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:oos/parameter:Parameter example &lt;parameter_name&gt;
+ * $ pulumi import alicloud:oos/parameter:Parameter example &lt;parameter_name&gt;
  * ```
  * 
  */

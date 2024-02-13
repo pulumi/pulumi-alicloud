@@ -315,7 +315,7 @@ class AccessLog(pulumi.CustomResource):
         Global Accelerator (GA) Access Log can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:ga/accessLog:AccessLog example <accelerator_id>:<listener_id>:<endpoint_group_id>
+        $ pulumi import alicloud:ga/accessLog:AccessLog example <accelerator_id>:<listener_id>:<endpoint_group_id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -407,7 +407,7 @@ class AccessLog(pulumi.CustomResource):
         Global Accelerator (GA) Access Log can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:ga/accessLog:AccessLog example <accelerator_id>:<listener_id>:<endpoint_group_id>
+        $ pulumi import alicloud:ga/accessLog:AccessLog example <accelerator_id>:<listener_id>:<endpoint_group_id>
         ```
 
         :param str resource_name: The name of the resource.

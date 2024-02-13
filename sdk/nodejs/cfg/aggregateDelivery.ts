@@ -16,7 +16,7 @@ import * as utilities from "../utilities";
  * Cloud Config Aggregate Delivery can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:cfg/aggregateDelivery:AggregateDelivery example <aggregator_id>:<delivery_channel_id>
+ * $ pulumi import alicloud:cfg/aggregateDelivery:AggregateDelivery example <aggregator_id>:<delivery_channel_id>
  * ```
  */
 export class AggregateDelivery extends pulumi.CustomResource {

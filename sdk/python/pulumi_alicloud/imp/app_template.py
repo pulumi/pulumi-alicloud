@@ -252,7 +252,7 @@ class AppTemplate(pulumi.CustomResource):
         Apsara Agile Live (IMP) App Template can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:imp/appTemplate:AppTemplate example <id>
+        $ pulumi import alicloud:imp/appTemplate:AppTemplate example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -301,7 +301,7 @@ class AppTemplate(pulumi.CustomResource):
         Apsara Agile Live (IMP) App Template can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:imp/appTemplate:AppTemplate example <id>
+        $ pulumi import alicloud:imp/appTemplate:AppTemplate example <id>
         ```
 
         :param str resource_name: The name of the resource.

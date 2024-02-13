@@ -75,9 +75,7 @@ import (
 // Cloud Enterprise Network (CEN) Transit Route Table Aggregation can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:cen/transitRouteTableAggregation:TransitRouteTableAggregation example <transit_route_table_id>:<transit_route_table_aggregation_cidr>
-//
+// $ pulumi import alicloud:cen/transitRouteTableAggregation:TransitRouteTableAggregation example <transit_route_table_id>:<transit_route_table_aggregation_cidr>
 // ```
 type TransitRouteTableAggregation struct {
 	pulumi.CustomResourceState

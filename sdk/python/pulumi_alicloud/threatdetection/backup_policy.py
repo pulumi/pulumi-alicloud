@@ -238,7 +238,7 @@ class BackupPolicy(pulumi.CustomResource):
         Threat Detection Backup Policy can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:threatdetection/backupPolicy:BackupPolicy example <id>
+        $ pulumi import alicloud:threatdetection/backupPolicy:BackupPolicy example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -283,7 +283,7 @@ class BackupPolicy(pulumi.CustomResource):
         Threat Detection Backup Policy can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:threatdetection/backupPolicy:BackupPolicy example <id>
+        $ pulumi import alicloud:threatdetection/backupPolicy:BackupPolicy example <id>
         ```
 
         :param str resource_name: The name of the resource.

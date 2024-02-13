@@ -59,7 +59,7 @@ import javax.annotation.Nullable;
  * KMS alias can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:kms/alias:Alias example alias/test_kms_alias
+ * $ pulumi import alicloud:kms/alias:Alias example alias/test_kms_alias
  * ```
  * 
  */

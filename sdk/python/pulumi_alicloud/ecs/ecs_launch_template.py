@@ -1713,7 +1713,7 @@ class EcsLaunchTemplate(pulumi.CustomResource):
         ECS Launch Template can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:ecs/ecsLaunchTemplate:EcsLaunchTemplate example <id>
+        $ pulumi import alicloud:ecs/ecsLaunchTemplate:EcsLaunchTemplate example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -1873,7 +1873,7 @@ class EcsLaunchTemplate(pulumi.CustomResource):
         ECS Launch Template can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:ecs/ecsLaunchTemplate:EcsLaunchTemplate example <id>
+        $ pulumi import alicloud:ecs/ecsLaunchTemplate:EcsLaunchTemplate example <id>
         ```
 
         :param str resource_name: The name of the resource.

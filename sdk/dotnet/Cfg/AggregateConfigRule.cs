@@ -78,7 +78,7 @@ namespace Pulumi.AliCloud.Cfg
     /// Cloud Config Aggregate Config Rule can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:cfg/aggregateConfigRule:AggregateConfigRule example "&lt;aggregator_id&gt;:&lt;config_rule_id&gt;"
+    /// $ pulumi import alicloud:cfg/aggregateConfigRule:AggregateConfigRule example "&lt;aggregator_id&gt;:&lt;config_rule_id&gt;"
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:cfg/aggregateConfigRule:AggregateConfigRule")]

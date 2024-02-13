@@ -455,7 +455,7 @@ class SmartagFlowLog(pulumi.CustomResource):
         Smartag Flow Log can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:sag/smartagFlowLog:SmartagFlowLog example <id>
+        $ pulumi import alicloud:sag/smartagFlowLog:SmartagFlowLog example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -506,7 +506,7 @@ class SmartagFlowLog(pulumi.CustomResource):
         Smartag Flow Log can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:sag/smartagFlowLog:SmartagFlowLog example <id>
+        $ pulumi import alicloud:sag/smartagFlowLog:SmartagFlowLog example <id>
         ```
 
         :param str resource_name: The name of the resource.

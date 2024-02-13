@@ -115,9 +115,7 @@ import (
 // DCDN domain config can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:dcdn/domainConfig:DomainConfig example <domain_name>:<function_name>:<config_id>
-//
+// $ pulumi import alicloud:dcdn/domainConfig:DomainConfig example <domain_name>:<function_name>:<config_id>
 // ```
 type DomainConfig struct {
 	pulumi.CustomResourceState

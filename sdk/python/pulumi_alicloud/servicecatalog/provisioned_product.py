@@ -558,7 +558,7 @@ class ProvisionedProduct(pulumi.CustomResource):
         Service Catalog Provisioned Product can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:servicecatalog/provisionedProduct:ProvisionedProduct example <id>
+        $ pulumi import alicloud:servicecatalog/provisionedProduct:ProvisionedProduct example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -617,7 +617,7 @@ class ProvisionedProduct(pulumi.CustomResource):
         Service Catalog Provisioned Product can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:servicecatalog/provisionedProduct:ProvisionedProduct example <id>
+        $ pulumi import alicloud:servicecatalog/provisionedProduct:ProvisionedProduct example <id>
         ```
 
         :param str resource_name: The name of the resource.

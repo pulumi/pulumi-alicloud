@@ -97,7 +97,7 @@ import javax.annotation.Nullable;
  * Lindorm Instance can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:lindorm/instance:Instance example &lt;id&gt;
+ * $ pulumi import alicloud:lindorm/instance:Instance example &lt;id&gt;
  * ```
  * 
  */

@@ -83,9 +83,7 @@ import (
 // DCDN Domain can be imported using the id or DCDN Domain name, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:dcdn/domain:Domain example <id>
-//
+// $ pulumi import alicloud:dcdn/domain:Domain example <id>
 // ```
 type Domain struct {
 	pulumi.CustomResourceState

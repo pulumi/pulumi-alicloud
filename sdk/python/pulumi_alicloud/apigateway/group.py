@@ -180,7 +180,7 @@ class Group(pulumi.CustomResource):
         Api gateway group can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:apigateway/group:Group example "ab2351f2ce904edaa8d92a0510832b91"
+        $ pulumi import alicloud:apigateway/group:Group example "ab2351f2ce904edaa8d92a0510832b91"
         ```
 
         :param str resource_name: The name of the resource.
@@ -212,7 +212,7 @@ class Group(pulumi.CustomResource):
         Api gateway group can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:apigateway/group:Group example "ab2351f2ce904edaa8d92a0510832b91"
+        $ pulumi import alicloud:apigateway/group:Group example "ab2351f2ce904edaa8d92a0510832b91"
         ```
 
         :param str resource_name: The name of the resource.

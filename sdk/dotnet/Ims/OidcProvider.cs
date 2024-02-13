@@ -56,7 +56,7 @@ namespace Pulumi.AliCloud.Ims
     /// IMS Oidc Provider can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:ims/oidcProvider:OidcProvider example &lt;id&gt;
+    /// $ pulumi import alicloud:ims/oidcProvider:OidcProvider example &lt;id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:ims/oidcProvider:OidcProvider")]

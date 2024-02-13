@@ -108,7 +108,7 @@ import javax.annotation.Nullable;
  * Cloud Config Aggregate Compliance Pack can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:cfg/aggregateCompliancePack:AggregateCompliancePack example &lt;aggregator_id&gt;:&lt;aggregator_compliance_pack_id&gt;
+ * $ pulumi import alicloud:cfg/aggregateCompliancePack:AggregateCompliancePack example &lt;aggregator_id&gt;:&lt;aggregator_compliance_pack_id&gt;
  * ```
  * 
  */

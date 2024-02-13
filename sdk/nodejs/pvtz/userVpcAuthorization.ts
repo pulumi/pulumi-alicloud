@@ -30,7 +30,7 @@ import * as utilities from "../utilities";
  * Private Zone User Vpc Authorization can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:pvtz/userVpcAuthorization:UserVpcAuthorization example <authorized_user_id>:<auth_type>
+ * $ pulumi import alicloud:pvtz/userVpcAuthorization:UserVpcAuthorization example <authorized_user_id>:<auth_type>
  * ```
  */
 export class UserVpcAuthorization extends pulumi.CustomResource {

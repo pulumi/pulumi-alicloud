@@ -17,9 +17,7 @@ import (
 // Quotas Template Applications can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:quotas/templateApplications:TemplateApplications example <id>
-//
+// $ pulumi import alicloud:quotas/templateApplications:TemplateApplications example <id>
 // ```
 type TemplateApplications struct {
 	pulumi.CustomResourceState

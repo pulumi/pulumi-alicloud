@@ -95,7 +95,7 @@ import javax.annotation.Nullable;
  * ADB cluster can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:adb/cluster:Cluster example am-abc12345678
+ * $ pulumi import alicloud:adb/cluster:Cluster example am-abc12345678
  * ```
  * 
  */

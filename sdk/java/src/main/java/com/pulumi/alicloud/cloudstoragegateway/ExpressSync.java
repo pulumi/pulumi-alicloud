@@ -26,7 +26,7 @@ import javax.annotation.Nullable;
  * Cloud Storage Gateway Express Sync can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:cloudstoragegateway/expressSync:ExpressSync example &lt;id&gt;
+ * $ pulumi import alicloud:cloudstoragegateway/expressSync:ExpressSync example &lt;id&gt;
  * ```
  * 
  */

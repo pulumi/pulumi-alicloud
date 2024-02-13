@@ -43,7 +43,7 @@ namespace Pulumi.AliCloud.Sms
     /// SMS Short Url can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:sms/shortUrl:ShortUrl example &lt;id&gt;
+    /// $ pulumi import alicloud:sms/shortUrl:ShortUrl example &lt;id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:sms/shortUrl:ShortUrl")]

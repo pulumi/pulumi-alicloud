@@ -229,7 +229,7 @@ class MonitorGroup(pulumi.CustomResource):
         Cloud Monitor Service Monitor Group can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:cms/monitorGroup:MonitorGroup example <id>
+        $ pulumi import alicloud:cms/monitorGroup:MonitorGroup example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -277,7 +277,7 @@ class MonitorGroup(pulumi.CustomResource):
         Cloud Monitor Service Monitor Group can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:cms/monitorGroup:MonitorGroup example <id>
+        $ pulumi import alicloud:cms/monitorGroup:MonitorGroup example <id>
         ```
 
         :param str resource_name: The name of the resource.

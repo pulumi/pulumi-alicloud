@@ -523,7 +523,7 @@ class ServiceMesh(pulumi.CustomResource):
         Service Mesh Service Mesh can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:servicemesh/serviceMesh:ServiceMesh example <id>
+        $ pulumi import alicloud:servicemesh/serviceMesh:ServiceMesh example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -564,7 +564,7 @@ class ServiceMesh(pulumi.CustomResource):
         Service Mesh Service Mesh can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:servicemesh/serviceMesh:ServiceMesh example <id>
+        $ pulumi import alicloud:servicemesh/serviceMesh:ServiceMesh example <id>
         ```
 
         :param str resource_name: The name of the resource.

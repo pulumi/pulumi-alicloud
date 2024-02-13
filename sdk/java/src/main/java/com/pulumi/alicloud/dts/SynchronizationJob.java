@@ -36,7 +36,7 @@ import javax.annotation.Nullable;
  * DTS Synchronization Job can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:dts/synchronizationJob:SynchronizationJob example &lt;id&gt;
+ * $ pulumi import alicloud:dts/synchronizationJob:SynchronizationJob example &lt;id&gt;
  * ```
  * 
  */

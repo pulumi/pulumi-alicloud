@@ -39,7 +39,7 @@ namespace Pulumi.AliCloud.Mns
     /// MNS QUEUE can be imported using the id or name, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:mns/queue:Queue queue queuename
+    /// $ pulumi import alicloud:mns/queue:Queue queue queuename
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:mns/queue:Queue")]

@@ -60,7 +60,7 @@ namespace Pulumi.AliCloud.Ros
     /// ROS Template Scratch can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:ros/templateScratch:TemplateScratch example &lt;id&gt;
+    /// $ pulumi import alicloud:ros/templateScratch:TemplateScratch example &lt;id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:ros/templateScratch:TemplateScratch")]

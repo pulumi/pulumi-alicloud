@@ -43,7 +43,7 @@ namespace Pulumi.AliCloud.Ecs
     /// ECS Storage Capacity Unit can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:ecs/storageCapacityUnit:StorageCapacityUnit example &lt;id&gt;
+    /// $ pulumi import alicloud:ecs/storageCapacityUnit:StorageCapacityUnit example &lt;id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:ecs/storageCapacityUnit:StorageCapacityUnit")]

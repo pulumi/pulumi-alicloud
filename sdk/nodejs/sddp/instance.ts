@@ -38,7 +38,7 @@ import * as utilities from "../utilities";
  * Data Security Center Instance can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:sddp/instance:Instance example <id>
+ * $ pulumi import alicloud:sddp/instance:Instance example <id>
  * ```
  */
 export class Instance extends pulumi.CustomResource {

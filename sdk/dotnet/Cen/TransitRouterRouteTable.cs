@@ -53,7 +53,7 @@ namespace Pulumi.AliCloud.Cen
     /// can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:cen/transitRouterRouteTable:TransitRouterRouteTable default tr-*********:vtb-********
+    /// $ pulumi import alicloud:cen/transitRouterRouteTable:TransitRouterRouteTable default tr-*********:vtb-********
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:cen/transitRouterRouteTable:TransitRouterRouteTable")]

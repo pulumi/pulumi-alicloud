@@ -62,7 +62,7 @@ import * as utilities from "../utilities";
  * KVStore backup policy can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:kvstore/backupPolicy:BackupPolicy example r-abc12345678
+ * $ pulumi import alicloud:kvstore/backupPolicy:BackupPolicy example r-abc12345678
  * ```
  */
 export class BackupPolicy extends pulumi.CustomResource {

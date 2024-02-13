@@ -50,7 +50,7 @@ namespace Pulumi.AliCloud.GraphDatabase
     /// Graph Database Db Instance can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:graphdatabase/dbInstance:DbInstance example &lt;id&gt;
+    /// $ pulumi import alicloud:graphdatabase/dbInstance:DbInstance example &lt;id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:graphdatabase/dbInstance:DbInstance")]

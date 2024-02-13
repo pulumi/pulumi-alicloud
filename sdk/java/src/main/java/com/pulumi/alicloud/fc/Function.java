@@ -155,7 +155,7 @@ import javax.annotation.Nullable;
  * Function Compute function can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:fc/function:Function foo my-fc-service:hello-world
+ * $ pulumi import alicloud:fc/function:Function foo my-fc-service:hello-world
  * ```
  * 
  */

@@ -65,7 +65,7 @@ import javax.annotation.Nullable;
  * ENS Disk can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:ens/disk:Disk example &lt;id&gt;
+ * $ pulumi import alicloud:ens/disk:Disk example &lt;id&gt;
  * ```
  * 
  */

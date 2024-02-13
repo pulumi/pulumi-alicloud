@@ -23,9 +23,7 @@ import (
 // ARMS Prometheus Monitoring can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:arms/prometheusMonitoring:PrometheusMonitoring example <cluster_id>:<monitoring_name>:<type>
-//
+// $ pulumi import alicloud:arms/prometheusMonitoring:PrometheusMonitoring example <cluster_id>:<monitoring_name>:<type>
 // ```
 type PrometheusMonitoring struct {
 	pulumi.CustomResourceState

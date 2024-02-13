@@ -569,10 +569,12 @@ class DataCenter(pulumi.CustomResource):
 
         ## Import
 
-        If you need full function, please import Cassandra cluster first. Cassandra dataCenter can be imported using the dcId:clusterId, e.g.
+        If you need full function, please import Cassandra cluster first.
+
+         Cassandra dataCenter can be imported using the dcId:clusterId, e.g.
 
         ```sh
-         $ pulumi import alicloud:cassandra/dataCenter:DataCenter dc_2 cn-shenxxxx-x:cds-wz933ryoaurxxxxx
+        $ pulumi import alicloud:cassandra/dataCenter:DataCenter dc_2 cn-shenxxxx-x:cds-wz933ryoaurxxxxx
         ```
 
         :param str resource_name: The name of the resource.
@@ -650,10 +652,12 @@ class DataCenter(pulumi.CustomResource):
 
         ## Import
 
-        If you need full function, please import Cassandra cluster first. Cassandra dataCenter can be imported using the dcId:clusterId, e.g.
+        If you need full function, please import Cassandra cluster first.
+
+         Cassandra dataCenter can be imported using the dcId:clusterId, e.g.
 
         ```sh
-         $ pulumi import alicloud:cassandra/dataCenter:DataCenter dc_2 cn-shenxxxx-x:cds-wz933ryoaurxxxxx
+        $ pulumi import alicloud:cassandra/dataCenter:DataCenter dc_2 cn-shenxxxx-x:cds-wz933ryoaurxxxxx
         ```
 
         :param str resource_name: The name of the resource.

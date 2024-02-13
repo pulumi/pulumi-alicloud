@@ -27,7 +27,7 @@ import javax.annotation.Nullable;
  * Cloud SSO User Attachment can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:cloudsso/userAttachment:UserAttachment example &lt;directory_id&gt;:&lt;group_id&gt;:&lt;user_id&gt;
+ * $ pulumi import alicloud:cloudsso/userAttachment:UserAttachment example &lt;directory_id&gt;:&lt;group_id&gt;:&lt;user_id&gt;
  * ```
  * 
  */

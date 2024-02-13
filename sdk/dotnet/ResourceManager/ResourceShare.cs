@@ -43,7 +43,7 @@ namespace Pulumi.AliCloud.ResourceManager
     /// Resource Manager Resource Share can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:resourcemanager/resourceShare:ResourceShare example &lt;id&gt;
+    /// $ pulumi import alicloud:resourcemanager/resourceShare:ResourceShare example &lt;id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:resourcemanager/resourceShare:ResourceShare")]

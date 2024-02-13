@@ -61,7 +61,7 @@ namespace Pulumi.AliCloud.Cms
     /// Alarm contact can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:cms/alarmContact:AlarmContact example abc12345
+    /// $ pulumi import alicloud:cms/alarmContact:AlarmContact example abc12345
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:cms/alarmContact:AlarmContact")]

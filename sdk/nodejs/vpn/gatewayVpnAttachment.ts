@@ -76,7 +76,7 @@ import * as utilities from "../utilities";
  * VPN Gateway Vpn Attachment can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:vpn/gatewayVpnAttachment:GatewayVpnAttachment example <id>
+ * $ pulumi import alicloud:vpn/gatewayVpnAttachment:GatewayVpnAttachment example <id>
  * ```
  */
 export class GatewayVpnAttachment extends pulumi.CustomResource {

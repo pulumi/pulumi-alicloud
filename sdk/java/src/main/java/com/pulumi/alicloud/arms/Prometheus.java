@@ -104,7 +104,7 @@ import javax.annotation.Nullable;
  * Application Real-Time Monitoring Service (ARMS) Prometheus can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:arms/prometheus:Prometheus example &lt;id&gt;
+ * $ pulumi import alicloud:arms/prometheus:Prometheus example &lt;id&gt;
  * ```
  * 
  */

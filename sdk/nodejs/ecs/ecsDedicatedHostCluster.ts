@@ -36,7 +36,7 @@ import * as utilities from "../utilities";
  * ECS Dedicated Host Cluster can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:ecs/ecsDedicatedHostCluster:EcsDedicatedHostCluster example <id>
+ * $ pulumi import alicloud:ecs/ecsDedicatedHostCluster:EcsDedicatedHostCluster example <id>
  * ```
  */
 export class EcsDedicatedHostCluster extends pulumi.CustomResource {

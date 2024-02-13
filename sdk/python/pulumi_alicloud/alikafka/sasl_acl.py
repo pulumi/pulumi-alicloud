@@ -304,7 +304,7 @@ class SaslAcl(pulumi.CustomResource):
         ALIKAFKA GROUP can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:alikafka/saslAcl:SaslAcl acl alikafka_post-cn-123455abc:username:Topic:test-topic:LITERAL:Write
+        $ pulumi import alicloud:alikafka/saslAcl:SaslAcl acl alikafka_post-cn-123455abc:username:Topic:test-topic:LITERAL:Write
         ```
 
         :param str resource_name: The name of the resource.
@@ -385,7 +385,7 @@ class SaslAcl(pulumi.CustomResource):
         ALIKAFKA GROUP can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:alikafka/saslAcl:SaslAcl acl alikafka_post-cn-123455abc:username:Topic:test-topic:LITERAL:Write
+        $ pulumi import alicloud:alikafka/saslAcl:SaslAcl acl alikafka_post-cn-123455abc:username:Topic:test-topic:LITERAL:Write
         ```
 
         :param str resource_name: The name of the resource.

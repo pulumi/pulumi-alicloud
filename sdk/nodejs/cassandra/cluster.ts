@@ -47,7 +47,7 @@ import * as utilities from "../utilities";
  * Cassandra cluster can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:cassandra/cluster:Cluster example cds-wz9sr400dd7xxxxx
+ * $ pulumi import alicloud:cassandra/cluster:Cluster example cds-wz9sr400dd7xxxxx
  * ```
  */
 export class Cluster extends pulumi.CustomResource {

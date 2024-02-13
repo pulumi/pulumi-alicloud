@@ -282,7 +282,7 @@ class GreyTagRoute(pulumi.CustomResource):
         Serverless App Engine (SAE) GreyTagRoute can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:sae/greyTagRoute:GreyTagRoute example <id>
+        $ pulumi import alicloud:sae/greyTagRoute:GreyTagRoute example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -383,7 +383,7 @@ class GreyTagRoute(pulumi.CustomResource):
         Serverless App Engine (SAE) GreyTagRoute can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:sae/greyTagRoute:GreyTagRoute example <id>
+        $ pulumi import alicloud:sae/greyTagRoute:GreyTagRoute example <id>
         ```
 
         :param str resource_name: The name of the resource.

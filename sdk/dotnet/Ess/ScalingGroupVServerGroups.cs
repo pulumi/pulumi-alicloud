@@ -35,7 +35,7 @@ namespace Pulumi.AliCloud.Ess
     /// ESS vserver groups can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:ess/scalingGroupVServerGroups:ScalingGroupVServerGroups example abc123456
+    /// $ pulumi import alicloud:ess/scalingGroupVServerGroups:ScalingGroupVServerGroups example abc123456
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:ess/scalingGroupVServerGroups:ScalingGroupVServerGroups")]

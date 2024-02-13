@@ -46,7 +46,7 @@ import * as utilities from "../utilities";
  * ECD Ram Directory can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:eds/ramDirectory:RamDirectory example <id>
+ * $ pulumi import alicloud:eds/ramDirectory:RamDirectory example <id>
  * ```
  */
 export class RamDirectory extends pulumi.CustomResource {

@@ -16,7 +16,7 @@ import * as utilities from "../utilities";
  * Direct Mail Mail Address can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:directmail/mailAddress:MailAddress example <id>
+ * $ pulumi import alicloud:directmail/mailAddress:MailAddress example <id>
  * ```
  */
 export class MailAddress extends pulumi.CustomResource {

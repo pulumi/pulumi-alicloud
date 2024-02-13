@@ -110,7 +110,7 @@ namespace Pulumi.AliCloud.BastionHost
     /// Bastion Host Host Account can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:bastionhost/hostAccountUserGroupAttachment:HostAccountUserGroupAttachment example &lt;instance_id&gt;:&lt;user_group_id&gt;:&lt;host_id&gt;
+    /// $ pulumi import alicloud:bastionhost/hostAccountUserGroupAttachment:HostAccountUserGroupAttachment example &lt;instance_id&gt;:&lt;user_group_id&gt;:&lt;host_id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:bastionhost/hostAccountUserGroupAttachment:HostAccountUserGroupAttachment")]

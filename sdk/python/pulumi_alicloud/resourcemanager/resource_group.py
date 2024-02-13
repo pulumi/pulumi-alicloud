@@ -221,7 +221,7 @@ class ResourceGroup(pulumi.CustomResource):
         Resource Manager Resource Group can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:resourcemanager/resourceGroup:ResourceGroup example abc123456
+        $ pulumi import alicloud:resourcemanager/resourceGroup:ResourceGroup example abc123456
         ```
 
         :param str resource_name: The name of the resource.
@@ -264,7 +264,7 @@ class ResourceGroup(pulumi.CustomResource):
         Resource Manager Resource Group can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:resourcemanager/resourceGroup:ResourceGroup example abc123456
+        $ pulumi import alicloud:resourcemanager/resourceGroup:ResourceGroup example abc123456
         ```
 
         :param str resource_name: The name of the resource.

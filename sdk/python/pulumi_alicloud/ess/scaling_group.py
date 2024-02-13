@@ -945,7 +945,7 @@ class ScalingGroup(pulumi.CustomResource):
         ESS scaling group can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:ess/scalingGroup:ScalingGroup example asg-abc123456
+        $ pulumi import alicloud:ess/scalingGroup:ScalingGroup example asg-abc123456
         ```
 
         :param str resource_name: The name of the resource.
@@ -1076,7 +1076,7 @@ class ScalingGroup(pulumi.CustomResource):
         ESS scaling group can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:ess/scalingGroup:ScalingGroup example asg-abc123456
+        $ pulumi import alicloud:ess/scalingGroup:ScalingGroup example asg-abc123456
         ```
 
         :param str resource_name: The name of the resource.

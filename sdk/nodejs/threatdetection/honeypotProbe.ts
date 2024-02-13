@@ -43,7 +43,7 @@ import * as utilities from "../utilities";
  * Threat Detection Honeypot Probe can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:threatdetection/honeypotProbe:HoneypotProbe example <id>
+ * $ pulumi import alicloud:threatdetection/honeypotProbe:HoneypotProbe example <id>
  * ```
  */
 export class HoneypotProbe extends pulumi.CustomResource {

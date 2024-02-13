@@ -64,7 +64,7 @@ namespace Pulumi.AliCloud.Vod
     /// VOD Editing Project can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:vod/editingProject:EditingProject example &lt;id&gt;
+    /// $ pulumi import alicloud:vod/editingProject:EditingProject example &lt;id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:vod/editingProject:EditingProject")]

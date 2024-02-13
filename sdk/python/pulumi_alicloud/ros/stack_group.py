@@ -491,7 +491,7 @@ class StackGroup(pulumi.CustomResource):
         ROS Stack Group can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:ros/stackGroup:StackGroup example <stack_group_name>
+        $ pulumi import alicloud:ros/stackGroup:StackGroup example <stack_group_name>
         ```
 
         :param str resource_name: The name of the resource.
@@ -544,7 +544,7 @@ class StackGroup(pulumi.CustomResource):
         ROS Stack Group can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:ros/stackGroup:StackGroup example <stack_group_name>
+        $ pulumi import alicloud:ros/stackGroup:StackGroup example <stack_group_name>
         ```
 
         :param str resource_name: The name of the resource.

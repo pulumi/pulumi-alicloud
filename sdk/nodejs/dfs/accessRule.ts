@@ -40,7 +40,7 @@ import * as utilities from "../utilities";
  * DFS Access Rule can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:dfs/accessRule:AccessRule example <access_group_id>:<access_rule_id>
+ * $ pulumi import alicloud:dfs/accessRule:AccessRule example <access_group_id>:<access_rule_id>
  * ```
  */
 export class AccessRule extends pulumi.CustomResource {

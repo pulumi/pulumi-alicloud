@@ -23,9 +23,7 @@ import (
 // Cloud Config Aggregate Delivery can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:cfg/aggregateDelivery:AggregateDelivery example <aggregator_id>:<delivery_channel_id>
-//
+// $ pulumi import alicloud:cfg/aggregateDelivery:AggregateDelivery example <aggregator_id>:<delivery_channel_id>
 // ```
 type AggregateDelivery struct {
 	pulumi.CustomResourceState

@@ -163,7 +163,7 @@ import javax.annotation.Nullable;
  * ESS alb server groups can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:ess/albServerGroupAttachment:AlbServerGroupAttachment example asg-xxx:sgp-xxx:5000
+ * $ pulumi import alicloud:ess/albServerGroupAttachment:AlbServerGroupAttachment example asg-xxx:sgp-xxx:5000
  * ```
  * 
  */

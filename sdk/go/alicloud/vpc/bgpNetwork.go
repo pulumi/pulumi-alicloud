@@ -87,9 +87,7 @@ import (
 // VPC Bgp Network can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:vpc/bgpNetwork:BgpNetwork example <router_id>:<dst_cidr_block>
-//
+// $ pulumi import alicloud:vpc/bgpNetwork:BgpNetwork example <router_id>:<dst_cidr_block>
 // ```
 type BgpNetwork struct {
 	pulumi.CustomResourceState

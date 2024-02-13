@@ -65,7 +65,7 @@ import javax.annotation.Nullable;
  * Threat Detection Honeypot Node can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:threatdetection/honeypotNode:HoneypotNode example &lt;id&gt;
+ * $ pulumi import alicloud:threatdetection/honeypotNode:HoneypotNode example &lt;id&gt;
  * ```
  * 
  */

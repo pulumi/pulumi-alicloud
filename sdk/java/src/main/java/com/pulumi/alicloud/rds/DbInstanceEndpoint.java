@@ -134,7 +134,7 @@ import javax.annotation.Nullable;
  * RDS database endpoint feature can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:rds/dbInstanceEndpoint:DbInstanceEndpoint example &lt;db_instance_id&gt;:&lt;db_instance_endpoint_id&gt;
+ * $ pulumi import alicloud:rds/dbInstanceEndpoint:DbInstanceEndpoint example &lt;db_instance_id&gt;:&lt;db_instance_endpoint_id&gt;
  * ```
  * 
  */

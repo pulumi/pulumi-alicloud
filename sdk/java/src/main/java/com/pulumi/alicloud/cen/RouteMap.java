@@ -142,7 +142,7 @@ import javax.annotation.Nullable;
  * CEN RouteMap can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:cen/routeMap:RouteMap default &lt;cen_id&gt;:&lt;route_map_id&gt;.
+ * $ pulumi import alicloud:cen/routeMap:RouteMap default &lt;cen_id&gt;:&lt;route_map_id&gt;.
  * ```
  * 
  */

@@ -41,7 +41,7 @@ namespace Pulumi.AliCloud.SchedulerX
     /// Schedulerx Namespace can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:schedulerx/namespace:Namespace example &lt;id&gt;
+    /// $ pulumi import alicloud:schedulerx/namespace:Namespace example &lt;id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:schedulerx/namespace:Namespace")]

@@ -17,9 +17,7 @@ import (
 // Quotas Quota Application can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:quotas/quotaApplication:QuotaApplication example <id>
-//
+// $ pulumi import alicloud:quotas/quotaApplication:QuotaApplication example <id>
 // ```
 type QuotaApplication struct {
 	pulumi.CustomResourceState

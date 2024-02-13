@@ -92,9 +92,7 @@ import (
 // Simple Application Server Custom Image can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:simpleapplicationserver/customImage:CustomImage example <id>
-//
+// $ pulumi import alicloud:simpleapplicationserver/customImage:CustomImage example <id>
 // ```
 type CustomImage struct {
 	pulumi.CustomResourceState

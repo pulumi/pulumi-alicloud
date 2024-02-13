@@ -70,9 +70,7 @@ import (
 // RDS Parameter Group can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:rds/rdsParameterGroup:RdsParameterGroup example <id>
-//
+// $ pulumi import alicloud:rds/rdsParameterGroup:RdsParameterGroup example <id>
 // ```
 type RdsParameterGroup struct {
 	pulumi.CustomResourceState

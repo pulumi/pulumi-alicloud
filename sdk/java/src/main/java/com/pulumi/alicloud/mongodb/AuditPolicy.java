@@ -102,7 +102,7 @@ import javax.annotation.Nullable;
  * MongoDB Audit Policy can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:mongodb/auditPolicy:AuditPolicy example &lt;db_instance_id&gt;
+ * $ pulumi import alicloud:mongodb/auditPolicy:AuditPolicy example &lt;db_instance_id&gt;
  * ```
  * 
  */

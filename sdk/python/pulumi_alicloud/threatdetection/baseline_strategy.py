@@ -368,7 +368,7 @@ class BaselineStrategy(pulumi.CustomResource):
         Threat Detection Baseline Strategy can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:threatdetection/baselineStrategy:BaselineStrategy example <id>
+        $ pulumi import alicloud:threatdetection/baselineStrategy:BaselineStrategy example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -426,7 +426,7 @@ class BaselineStrategy(pulumi.CustomResource):
         Threat Detection Baseline Strategy can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:threatdetection/baselineStrategy:BaselineStrategy example <id>
+        $ pulumi import alicloud:threatdetection/baselineStrategy:BaselineStrategy example <id>
         ```
 
         :param str resource_name: The name of the resource.

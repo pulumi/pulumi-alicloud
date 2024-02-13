@@ -30,7 +30,7 @@ import javax.annotation.Nullable;
  * VPN connection can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:vpn/connection:Connection example &lt;id&gt;
+ * $ pulumi import alicloud:vpn/connection:Connection example &lt;id&gt;
  * ```
  * 
  */

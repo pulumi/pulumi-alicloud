@@ -69,9 +69,7 @@ import (
 // ENS Snapshot can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:ens/snapshot:Snapshot example <id>
-//
+// $ pulumi import alicloud:ens/snapshot:Snapshot example <id>
 // ```
 type Snapshot struct {
 	pulumi.CustomResourceState

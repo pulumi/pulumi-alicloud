@@ -94,7 +94,7 @@ import javax.annotation.Nullable;
  * Ga Listener can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:ga/listener:Listener example &lt;id&gt;
+ * $ pulumi import alicloud:ga/listener:Listener example &lt;id&gt;
  * ```
  * 
  */

@@ -71,7 +71,7 @@ import * as utilities from "../utilities";
  * Hybrid Backup Recovery (HBR) Server Backup Plan can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:hbr/serverBackupPlan:ServerBackupPlan example <id>
+ * $ pulumi import alicloud:hbr/serverBackupPlan:ServerBackupPlan example <id>
  * ```
  */
 export class ServerBackupPlan extends pulumi.CustomResource {

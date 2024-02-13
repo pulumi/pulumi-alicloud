@@ -81,7 +81,7 @@ import * as utilities from "../utilities";
  * Hybrid Backup Recovery (HBR) Hana Backup Client can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:hbr/hanaBackupClient:HanaBackupClient example <vault_id>:<client_id>
+ * $ pulumi import alicloud:hbr/hanaBackupClient:HanaBackupClient example <vault_id>:<client_id>
  * ```
  */
 export class HanaBackupClient extends pulumi.CustomResource {

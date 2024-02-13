@@ -65,7 +65,7 @@ import * as utilities from "../utilities";
  * Cloud Monitor Service Group Metric Rule can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:cms/groupMetricRule:GroupMetricRule example <rule_id>
+ * $ pulumi import alicloud:cms/groupMetricRule:GroupMetricRule example <rule_id>
  * ```
  */
 export class GroupMetricRule extends pulumi.CustomResource {

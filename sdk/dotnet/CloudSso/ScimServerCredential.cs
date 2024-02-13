@@ -23,7 +23,7 @@ namespace Pulumi.AliCloud.CloudSso
     /// Cloud SSO SCIM Server Credential can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:cloudsso/scimServerCredential:ScimServerCredential example &lt;directory_id&gt;:&lt;credential_id&gt;
+    /// $ pulumi import alicloud:cloudsso/scimServerCredential:ScimServerCredential example &lt;directory_id&gt;:&lt;credential_id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:cloudsso/scimServerCredential:ScimServerCredential")]

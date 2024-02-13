@@ -17,9 +17,7 @@ import (
 // AliKafka instance can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:alikafka/instance:Instance instance <id>
-//
+// $ pulumi import alicloud:alikafka/instance:Instance instance <id>
 // ```
 type Instance struct {
 	pulumi.CustomResourceState

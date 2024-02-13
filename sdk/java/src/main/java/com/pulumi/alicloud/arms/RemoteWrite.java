@@ -119,7 +119,7 @@ import javax.annotation.Nullable;
  * Application Real-Time Monitoring Service (ARMS) Remote Write can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:arms/remoteWrite:RemoteWrite example &lt;cluster_id&gt;:&lt;remote_write_name&gt;
+ * $ pulumi import alicloud:arms/remoteWrite:RemoteWrite example &lt;cluster_id&gt;:&lt;remote_write_name&gt;
  * ```
  * 
  */

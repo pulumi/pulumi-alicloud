@@ -139,9 +139,7 @@ import (
 // Global Accelerator (GA) Basic Endpoint can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:ga/basicEndpoint:BasicEndpoint example <endpoint_group_id>:<endpoint_id>
-//
+// $ pulumi import alicloud:ga/basicEndpoint:BasicEndpoint example <endpoint_group_id>:<endpoint_id>
 // ```
 type BasicEndpoint struct {
 	pulumi.CustomResourceState

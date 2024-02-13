@@ -69,9 +69,7 @@ import (
 // Function Compute alias can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:fc/alias:Alias example my_alias_id
-//
+// $ pulumi import alicloud:fc/alias:Alias example my_alias_id
 // ```
 type Alias struct {
 	pulumi.CustomResourceState

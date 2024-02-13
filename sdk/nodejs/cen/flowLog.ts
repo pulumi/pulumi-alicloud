@@ -45,7 +45,7 @@ import * as utilities from "../utilities";
  * CEN flowlog can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:cen/flowLog:FlowLog default flowlog-tig1xxxxxx
+ * $ pulumi import alicloud:cen/flowLog:FlowLog default flowlog-tig1xxxxxx
  * ```
  */
 export class FlowLog extends pulumi.CustomResource {

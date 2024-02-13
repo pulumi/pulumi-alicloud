@@ -42,7 +42,7 @@ import * as utilities from "../utilities";
  * HBR Oss Backup Plan can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:hbr/ossBackupPlan:OssBackupPlan example <id>
+ * $ pulumi import alicloud:hbr/ossBackupPlan:OssBackupPlan example <id>
  * ```
  */
 export class OssBackupPlan extends pulumi.CustomResource {

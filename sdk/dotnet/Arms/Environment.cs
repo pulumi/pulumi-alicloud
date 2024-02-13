@@ -21,7 +21,7 @@ namespace Pulumi.AliCloud.Arms
     /// ARMS Environment can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:arms/environment:Environment example &lt;id&gt;
+    /// $ pulumi import alicloud:arms/environment:Environment example &lt;id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:arms/environment:Environment")]

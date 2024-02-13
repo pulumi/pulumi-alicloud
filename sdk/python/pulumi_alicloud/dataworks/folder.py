@@ -160,7 +160,7 @@ class Folder(pulumi.CustomResource):
         Data Works Folder can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:dataworks/folder:Folder example <folder_id>:<$.ProjectId>
+        $ pulumi import alicloud:dataworks/folder:Folder example <folder_id>:<$.ProjectId>
         ```
 
         :param str resource_name: The name of the resource.
@@ -199,7 +199,7 @@ class Folder(pulumi.CustomResource):
         Data Works Folder can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:dataworks/folder:Folder example <folder_id>:<$.ProjectId>
+        $ pulumi import alicloud:dataworks/folder:Folder example <folder_id>:<$.ProjectId>
         ```
 
         :param str resource_name: The name of the resource.

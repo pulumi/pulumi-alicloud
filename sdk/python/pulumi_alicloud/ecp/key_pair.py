@@ -122,7 +122,7 @@ class KeyPair(pulumi.CustomResource):
         Elastic Cloud Phone (ECP) Key Pair can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:ecp/keyPair:KeyPair example <key_pair_name>
+        $ pulumi import alicloud:ecp/keyPair:KeyPair example <key_pair_name>
         ```
 
         :param str resource_name: The name of the resource.
@@ -161,7 +161,7 @@ class KeyPair(pulumi.CustomResource):
         Elastic Cloud Phone (ECP) Key Pair can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:ecp/keyPair:KeyPair example <key_pair_name>
+        $ pulumi import alicloud:ecp/keyPair:KeyPair example <key_pair_name>
         ```
 
         :param str resource_name: The name of the resource.

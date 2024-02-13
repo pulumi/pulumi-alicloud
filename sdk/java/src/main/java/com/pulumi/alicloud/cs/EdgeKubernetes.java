@@ -227,7 +227,7 @@ import javax.annotation.Nullable;
  * Kubernetes edge cluster can be imported using the id, e.g. Then complete the main.tf accords to the result of `pulumi preview`.
  * 
  * ```sh
- *  $ pulumi import alicloud:cs/edgeKubernetes:EdgeKubernetes main cluster-id
+ * $ pulumi import alicloud:cs/edgeKubernetes:EdgeKubernetes main cluster-id
  * ```
  * 
  */

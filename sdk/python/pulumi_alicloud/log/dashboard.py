@@ -267,7 +267,7 @@ class Dashboard(pulumi.CustomResource):
         Log Dashboard can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:log/dashboard:Dashboard example <project_name>:<dashboard_name>
+        $ pulumi import alicloud:log/dashboard:Dashboard example <project_name>:<dashboard_name>
         ```
 
         :param str resource_name: The name of the resource.
@@ -353,7 +353,7 @@ class Dashboard(pulumi.CustomResource):
         Log Dashboard can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:log/dashboard:Dashboard example <project_name>:<dashboard_name>
+        $ pulumi import alicloud:log/dashboard:Dashboard example <project_name>:<dashboard_name>
         ```
 
         :param str resource_name: The name of the resource.

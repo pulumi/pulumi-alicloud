@@ -85,7 +85,7 @@ namespace Pulumi.AliCloud.Cms
     /// Cloud Monitor Service Group Metric Rule can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:cms/groupMetricRule:GroupMetricRule example &lt;rule_id&gt;
+    /// $ pulumi import alicloud:cms/groupMetricRule:GroupMetricRule example &lt;rule_id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:cms/groupMetricRule:GroupMetricRule")]

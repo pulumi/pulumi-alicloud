@@ -32,9 +32,7 @@ import (
 // DTS Migration Job can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:dts/migrationJob:MigrationJob example <id>
-//
+// $ pulumi import alicloud:dts/migrationJob:MigrationJob example <id>
 // ```
 type MigrationJob struct {
 	pulumi.CustomResourceState

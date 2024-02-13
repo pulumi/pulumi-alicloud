@@ -226,7 +226,7 @@ class Template(pulumi.CustomResource):
         ROS Template can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:ros/template:Template example <template_id>
+        $ pulumi import alicloud:ros/template:Template example <template_id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -272,7 +272,7 @@ class Template(pulumi.CustomResource):
         ROS Template can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:ros/template:Template example <template_id>
+        $ pulumi import alicloud:ros/template:Template example <template_id>
         ```
 
         :param str resource_name: The name of the resource.

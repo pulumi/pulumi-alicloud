@@ -83,7 +83,7 @@ import javax.annotation.Nullable;
  * DCDN Waf Domain can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:dcdn/wafDomain:WafDomain example &lt;domain_name&gt;
+ * $ pulumi import alicloud:dcdn/wafDomain:WafDomain example &lt;domain_name&gt;
  * ```
  * 
  */

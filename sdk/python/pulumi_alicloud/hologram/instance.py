@@ -735,7 +735,7 @@ class Instance(pulumi.CustomResource):
         Hologram Instance can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:hologram/instance:Instance example <id>
+        $ pulumi import alicloud:hologram/instance:Instance example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -793,7 +793,7 @@ class Instance(pulumi.CustomResource):
         Hologram Instance can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:hologram/instance:Instance example <id>
+        $ pulumi import alicloud:hologram/instance:Instance example <id>
         ```
 
         :param str resource_name: The name of the resource.

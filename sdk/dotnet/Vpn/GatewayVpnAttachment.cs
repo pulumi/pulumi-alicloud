@@ -92,7 +92,7 @@ namespace Pulumi.AliCloud.Vpn
     /// VPN Gateway Vpn Attachment can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:vpn/gatewayVpnAttachment:GatewayVpnAttachment example &lt;id&gt;
+    /// $ pulumi import alicloud:vpn/gatewayVpnAttachment:GatewayVpnAttachment example &lt;id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:vpn/gatewayVpnAttachment:GatewayVpnAttachment")]

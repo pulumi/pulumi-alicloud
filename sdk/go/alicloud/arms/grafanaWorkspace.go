@@ -69,9 +69,7 @@ import (
 // ARMS Grafana Workspace can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:arms/grafanaWorkspace:GrafanaWorkspace example <id>
-//
+// $ pulumi import alicloud:arms/grafanaWorkspace:GrafanaWorkspace example <id>
 // ```
 type GrafanaWorkspace struct {
 	pulumi.CustomResourceState

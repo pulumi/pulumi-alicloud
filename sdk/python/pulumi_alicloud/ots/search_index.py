@@ -366,7 +366,7 @@ class SearchIndex(pulumi.CustomResource):
         OTS search index can be imported using id, e.g.
 
         ```sh
-         $ pulumi import alicloud:ots/searchIndex:SearchIndex index1 <instance_name>:<table_name>:<index_name>:<index_type>
+        $ pulumi import alicloud:ots/searchIndex:SearchIndex index1 <instance_name>:<table_name>:<index_name>:<index_type>
         ```
 
         :param str resource_name: The name of the resource.
@@ -486,7 +486,7 @@ class SearchIndex(pulumi.CustomResource):
         OTS search index can be imported using id, e.g.
 
         ```sh
-         $ pulumi import alicloud:ots/searchIndex:SearchIndex index1 <instance_name>:<table_name>:<index_name>:<index_type>
+        $ pulumi import alicloud:ots/searchIndex:SearchIndex index1 <instance_name>:<table_name>:<index_name>:<index_type>
         ```
 
         :param str resource_name: The name of the resource.

@@ -69,7 +69,7 @@ import * as utilities from "../utilities";
  * OTS tunnel can be imported using id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:ots/tunnel:Tunnel foo <instance_name>:<table_name>:<tunnel_name>
+ * $ pulumi import alicloud:ots/tunnel:Tunnel foo <instance_name>:<table_name>:<tunnel_name>
  * ```
  */
 export class Tunnel extends pulumi.CustomResource {

@@ -92,7 +92,7 @@ import * as utilities from "../utilities";
  * OTS secondary index can be imported using id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:ots/secondaryIndex:SecondaryIndex index1 <instance_name>:<table_name>:<index_name>:<index_type>
+ * $ pulumi import alicloud:ots/secondaryIndex:SecondaryIndex index1 <instance_name>:<table_name>:<index_name>:<index_type>
  * ```
  */
 export class SecondaryIndex extends pulumi.CustomResource {

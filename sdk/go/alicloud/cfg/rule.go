@@ -75,9 +75,7 @@ import (
 // Config Rule can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:cfg/rule:Rule example <id>
-//
+// $ pulumi import alicloud:cfg/rule:Rule example <id>
 // ```
 type Rule struct {
 	pulumi.CustomResourceState

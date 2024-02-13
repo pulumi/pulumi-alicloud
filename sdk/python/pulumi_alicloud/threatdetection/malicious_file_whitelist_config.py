@@ -318,7 +318,7 @@ class MaliciousFileWhitelistConfig(pulumi.CustomResource):
         Threat Detection Malicious File Whitelist Config can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:threatdetection/maliciousFileWhitelistConfig:MaliciousFileWhitelistConfig example <id>
+        $ pulumi import alicloud:threatdetection/maliciousFileWhitelistConfig:MaliciousFileWhitelistConfig example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -372,7 +372,7 @@ class MaliciousFileWhitelistConfig(pulumi.CustomResource):
         Threat Detection Malicious File Whitelist Config can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:threatdetection/maliciousFileWhitelistConfig:MaliciousFileWhitelistConfig example <id>
+        $ pulumi import alicloud:threatdetection/maliciousFileWhitelistConfig:MaliciousFileWhitelistConfig example <id>
         ```
 
         :param str resource_name: The name of the resource.

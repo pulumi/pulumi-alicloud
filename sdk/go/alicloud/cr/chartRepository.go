@@ -77,9 +77,7 @@ import (
 // CR Chart Repository can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:cr/chartRepository:ChartRepository example <instance_id>:<repo_namespace_name>:<repo_name>
-//
+// $ pulumi import alicloud:cr/chartRepository:ChartRepository example <instance_id>:<repo_namespace_name>:<repo_name>
 // ```
 type ChartRepository struct {
 	pulumi.CustomResourceState

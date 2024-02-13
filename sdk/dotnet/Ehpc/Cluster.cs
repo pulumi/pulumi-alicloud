@@ -106,7 +106,7 @@ namespace Pulumi.AliCloud.Ehpc
     /// Ehpc Cluster can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:ehpc/cluster:Cluster example &lt;id&gt;
+    /// $ pulumi import alicloud:ehpc/cluster:Cluster example &lt;id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:ehpc/cluster:Cluster")]

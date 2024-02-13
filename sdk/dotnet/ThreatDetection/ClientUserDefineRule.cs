@@ -52,7 +52,7 @@ namespace Pulumi.AliCloud.ThreatDetection
     /// Threat Detection Client User Define Rule can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:threatdetection/clientUserDefineRule:ClientUserDefineRule example &lt;id&gt;
+    /// $ pulumi import alicloud:threatdetection/clientUserDefineRule:ClientUserDefineRule example &lt;id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:threatdetection/clientUserDefineRule:ClientUserDefineRule")]

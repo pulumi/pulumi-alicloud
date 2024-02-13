@@ -28,7 +28,7 @@ import javax.annotation.Nullable;
  * Cloud Monitor Service Sls Group can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:cms/slsGroup:SlsGroup example &lt;sls_group_name&gt;
+ * $ pulumi import alicloud:cms/slsGroup:SlsGroup example &lt;sls_group_name&gt;
  * ```
  * 
  */

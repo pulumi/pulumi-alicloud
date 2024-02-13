@@ -12,7 +12,7 @@ import * as utilities from "../utilities";
  * RDS ddr instance can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:rds/ddrInstance:DdrInstance example rm-abc12345678
+ * $ pulumi import alicloud:rds/ddrInstance:DdrInstance example rm-abc12345678
  * ```
  */
 export class DdrInstance extends pulumi.CustomResource {

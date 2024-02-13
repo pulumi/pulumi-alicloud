@@ -74,7 +74,7 @@ namespace Pulumi.AliCloud.PolarDB
     /// PolarDB Global Database Network can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:polardb/globalDatabaseNetwork:GlobalDatabaseNetwork example &lt;id&gt;
+    /// $ pulumi import alicloud:polardb/globalDatabaseNetwork:GlobalDatabaseNetwork example &lt;id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:polardb/globalDatabaseNetwork:GlobalDatabaseNetwork")]

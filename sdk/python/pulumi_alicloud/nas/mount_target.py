@@ -290,7 +290,7 @@ class MountTarget(pulumi.CustomResource):
         NAS MountTarget can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:nas/mountTarget:MountTarget foo 192094b415:192094b415-luw38.cn-beijing.nas.aliyuncs.com
+        $ pulumi import alicloud:nas/mountTarget:MountTarget foo 192094b415:192094b415-luw38.cn-beijing.nas.aliyuncs.com
         ```
 
         :param str resource_name: The name of the resource.
@@ -320,7 +320,7 @@ class MountTarget(pulumi.CustomResource):
         NAS MountTarget can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:nas/mountTarget:MountTarget foo 192094b415:192094b415-luw38.cn-beijing.nas.aliyuncs.com
+        $ pulumi import alicloud:nas/mountTarget:MountTarget foo 192094b415:192094b415-luw38.cn-beijing.nas.aliyuncs.com
         ```
 
         :param str resource_name: The name of the resource.

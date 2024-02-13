@@ -64,9 +64,7 @@ import (
 // Open Search App Group can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:opensearch/appGroup:AppGroup example <id>
-//
+// $ pulumi import alicloud:opensearch/appGroup:AppGroup example <id>
 // ```
 type AppGroup struct {
 	pulumi.CustomResourceState

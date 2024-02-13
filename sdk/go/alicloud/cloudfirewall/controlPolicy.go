@@ -59,9 +59,7 @@ import (
 // Cloud Firewall Control Policy can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:cloudfirewall/controlPolicy:ControlPolicy example <acl_uuid>:<direction>
-//
+// $ pulumi import alicloud:cloudfirewall/controlPolicy:ControlPolicy example <acl_uuid>:<direction>
 // ```
 type ControlPolicy struct {
 	pulumi.CustomResourceState

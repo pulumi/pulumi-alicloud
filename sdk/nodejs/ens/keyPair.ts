@@ -32,7 +32,7 @@ import * as utilities from "../utilities";
  * ENS Key Pair can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:ens/keyPair:KeyPair example <key_pair_name>:<version>
+ * $ pulumi import alicloud:ens/keyPair:KeyPair example <key_pair_name>:<version>
  * ```
  */
 export class KeyPair extends pulumi.CustomResource {

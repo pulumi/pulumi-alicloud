@@ -54,7 +54,7 @@ import javax.annotation.Nullable;
  * Api gateway app can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:apigateway/app:App example &#34;7379660&#34;
+ * $ pulumi import alicloud:apigateway/app:App example &#34;7379660&#34;
  * ```
  * 
  */

@@ -57,9 +57,7 @@ import (
 // EBS Replica Pair Drill can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:ebs/replicaPairDrill:ReplicaPairDrill example <pair_id>:<replica_pair_drill_id>
-//
+// $ pulumi import alicloud:ebs/replicaPairDrill:ReplicaPairDrill example <pair_id>:<replica_pair_drill_id>
 // ```
 type ReplicaPairDrill struct {
 	pulumi.CustomResourceState

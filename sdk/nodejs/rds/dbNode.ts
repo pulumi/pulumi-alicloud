@@ -69,7 +69,7 @@ import * as utilities from "../utilities";
  * RDS MySQL database cluster node agent function can be imported using id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:rds/dbNode:DbNode example <db_instance_id>:<node_id>
+ * $ pulumi import alicloud:rds/dbNode:DbNode example <db_instance_id>:<node_id>
  * ```
  */
 export class DbNode extends pulumi.CustomResource {

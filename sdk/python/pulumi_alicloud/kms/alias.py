@@ -145,7 +145,7 @@ class Alias(pulumi.CustomResource):
         KMS alias can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:kms/alias:Alias example alias/test_kms_alias
+        $ pulumi import alicloud:kms/alias:Alias example alias/test_kms_alias
         ```
 
         :param str resource_name: The name of the resource.
@@ -189,7 +189,7 @@ class Alias(pulumi.CustomResource):
         KMS alias can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:kms/alias:Alias example alias/test_kms_alias
+        $ pulumi import alicloud:kms/alias:Alias example alias/test_kms_alias
         ```
 
         :param str resource_name: The name of the resource.

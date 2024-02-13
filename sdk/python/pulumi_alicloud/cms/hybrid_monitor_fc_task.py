@@ -198,7 +198,7 @@ class HybridMonitorFcTask(pulumi.CustomResource):
         Cloud Monitor Service Hybrid Monitor Fc Task can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:cms/hybridMonitorFcTask:HybridMonitorFcTask example <hybrid_monitor_fc_task_id>:<namespace>
+        $ pulumi import alicloud:cms/hybridMonitorFcTask:HybridMonitorFcTask example <hybrid_monitor_fc_task_id>:<namespace>
         ```
 
         :param str resource_name: The name of the resource.
@@ -265,7 +265,7 @@ class HybridMonitorFcTask(pulumi.CustomResource):
         Cloud Monitor Service Hybrid Monitor Fc Task can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:cms/hybridMonitorFcTask:HybridMonitorFcTask example <hybrid_monitor_fc_task_id>:<namespace>
+        $ pulumi import alicloud:cms/hybridMonitorFcTask:HybridMonitorFcTask example <hybrid_monitor_fc_task_id>:<namespace>
         ```
 
         :param str resource_name: The name of the resource.

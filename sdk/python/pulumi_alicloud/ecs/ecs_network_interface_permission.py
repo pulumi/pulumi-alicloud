@@ -190,7 +190,7 @@ class EcsNetworkInterfacePermission(pulumi.CustomResource):
         ECS Network Interface Permission can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:ecs/ecsNetworkInterfacePermission:EcsNetworkInterfacePermission example <id>
+        $ pulumi import alicloud:ecs/ecsNetworkInterfacePermission:EcsNetworkInterfacePermission example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -218,7 +218,7 @@ class EcsNetworkInterfacePermission(pulumi.CustomResource):
         ECS Network Interface Permission can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:ecs/ecsNetworkInterfacePermission:EcsNetworkInterfacePermission example <id>
+        $ pulumi import alicloud:ecs/ecsNetworkInterfacePermission:EcsNetworkInterfacePermission example <id>
         ```
 
         :param str resource_name: The name of the resource.

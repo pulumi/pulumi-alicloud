@@ -50,9 +50,7 @@ import (
 // The Sag Qos can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:rocketmq/qos:Qos example qos-abc123456
-//
+// $ pulumi import alicloud:rocketmq/qos:Qos example qos-abc123456
 // ```
 type Qos struct {
 	pulumi.CustomResourceState

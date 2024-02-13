@@ -92,7 +92,7 @@ class Tag(pulumi.CustomResource):
         Direct Mail Tag can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:directmail/tag:Tag example <id>
+        $ pulumi import alicloud:directmail/tag:Tag example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -132,7 +132,7 @@ class Tag(pulumi.CustomResource):
         Direct Mail Tag can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:directmail/tag:Tag example <id>
+        $ pulumi import alicloud:directmail/tag:Tag example <id>
         ```
 
         :param str resource_name: The name of the resource.

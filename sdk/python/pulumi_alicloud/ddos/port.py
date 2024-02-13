@@ -237,7 +237,7 @@ class Port(pulumi.CustomResource):
         Anti-DDoS Pro Port can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:ddos/port:Port example <instance_id>:<frontend_port>:<frontend_protocol>
+        $ pulumi import alicloud:ddos/port:Port example <instance_id>:<frontend_port>:<frontend_protocol>
         ```
 
         :param str resource_name: The name of the resource.
@@ -297,7 +297,7 @@ class Port(pulumi.CustomResource):
         Anti-DDoS Pro Port can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:ddos/port:Port example <instance_id>:<frontend_port>:<frontend_protocol>
+        $ pulumi import alicloud:ddos/port:Port example <instance_id>:<frontend_port>:<frontend_protocol>
         ```
 
         :param str resource_name: The name of the resource.

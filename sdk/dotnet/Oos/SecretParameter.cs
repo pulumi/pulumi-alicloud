@@ -60,7 +60,7 @@ namespace Pulumi.AliCloud.Oos
     /// OOS Secret Parameter can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:oos/secretParameter:SecretParameter example &lt;secret_parameter_name&gt;
+    /// $ pulumi import alicloud:oos/secretParameter:SecretParameter example &lt;secret_parameter_name&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:oos/secretParameter:SecretParameter")]

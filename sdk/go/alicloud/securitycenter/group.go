@@ -56,9 +56,7 @@ import (
 // Security Center Group can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:securitycenter/group:Group example <group_id>
-//
+// $ pulumi import alicloud:securitycenter/group:Group example <group_id>
 // ```
 type Group struct {
 	pulumi.CustomResourceState

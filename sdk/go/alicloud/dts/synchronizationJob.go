@@ -32,9 +32,7 @@ import (
 // DTS Synchronization Job can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:dts/synchronizationJob:SynchronizationJob example <id>
-//
+// $ pulumi import alicloud:dts/synchronizationJob:SynchronizationJob example <id>
 // ```
 type SynchronizationJob struct {
 	pulumi.CustomResourceState

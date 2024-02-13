@@ -32,7 +32,7 @@ import * as utilities from "../utilities";
  * Key pair can be imported using the name, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:ecs/keyPair:KeyPair example my_public_key
+ * $ pulumi import alicloud:ecs/keyPair:KeyPair example my_public_key
  * ```
  */
 export class KeyPair extends pulumi.CustomResource {

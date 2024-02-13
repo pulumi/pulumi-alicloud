@@ -55,7 +55,7 @@ import * as utilities from "../utilities";
  * VPN Ipsec Server can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:vpn/ipsecServer:IpsecServer example <id>
+ * $ pulumi import alicloud:vpn/ipsecServer:IpsecServer example <id>
  * ```
  */
 export class IpsecServer extends pulumi.CustomResource {

@@ -78,7 +78,7 @@ namespace Pulumi.AliCloud.Gpdb
     /// AnalyticDB for PostgreSQL can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:gpdb/instance:Instance example &lt;id&gt;
+    /// $ pulumi import alicloud:gpdb/instance:Instance example &lt;id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:gpdb/instance:Instance")]

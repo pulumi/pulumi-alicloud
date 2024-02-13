@@ -327,7 +327,7 @@ class FileSystem(pulumi.CustomResource):
         DFS File System can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:dfs/fileSystem:FileSystem example <id>
+        $ pulumi import alicloud:dfs/fileSystem:FileSystem example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -382,7 +382,7 @@ class FileSystem(pulumi.CustomResource):
         DFS File System can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:dfs/fileSystem:FileSystem example <id>
+        $ pulumi import alicloud:dfs/fileSystem:FileSystem example <id>
         ```
 
         :param str resource_name: The name of the resource.

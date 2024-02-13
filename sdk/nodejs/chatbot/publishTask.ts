@@ -31,7 +31,7 @@ import * as utilities from "../utilities";
  * Chatbot Publish Task can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:chatbot/publishTask:PublishTask example <id>
+ * $ pulumi import alicloud:chatbot/publishTask:PublishTask example <id>
  * ```
  */
 export class PublishTask extends pulumi.CustomResource {

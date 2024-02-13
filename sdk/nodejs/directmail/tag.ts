@@ -29,7 +29,7 @@ import * as utilities from "../utilities";
  * Direct Mail Tag can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:directmail/tag:Tag example <id>
+ * $ pulumi import alicloud:directmail/tag:Tag example <id>
  * ```
  */
 export class Tag extends pulumi.CustomResource {

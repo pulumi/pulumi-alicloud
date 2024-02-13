@@ -113,9 +113,7 @@ import (
 // GPDB Account can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:gpdb/account:Account example <db_instance_id>:<account_name>
-//
+// $ pulumi import alicloud:gpdb/account:Account example <db_instance_id>:<account_name>
 // ```
 type Account struct {
 	pulumi.CustomResourceState

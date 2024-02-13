@@ -84,9 +84,7 @@ import (
 // Serverless Workflow Flow can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:fnf/flow:Flow example <name>
-//
+// $ pulumi import alicloud:fnf/flow:Flow example <name>
 // ```
 type Flow struct {
 	pulumi.CustomResourceState

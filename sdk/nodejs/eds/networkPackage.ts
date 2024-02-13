@@ -38,7 +38,7 @@ import * as utilities from "../utilities";
  * ECD Network Package can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:eds/networkPackage:NetworkPackage example <id>
+ * $ pulumi import alicloud:eds/networkPackage:NetworkPackage example <id>
  * ```
  */
 export class NetworkPackage extends pulumi.CustomResource {

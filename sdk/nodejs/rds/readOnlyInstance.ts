@@ -63,7 +63,7 @@ import * as utilities from "../utilities";
  * RDS readonly instance can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:rds/readOnlyInstance:ReadOnlyInstance example rm-abc12345678
+ * $ pulumi import alicloud:rds/readOnlyInstance:ReadOnlyInstance example rm-abc12345678
  * ```
  */
 export class ReadOnlyInstance extends pulumi.CustomResource {

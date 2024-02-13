@@ -264,7 +264,7 @@ import * as utilities from "../utilities";
  * Log alert can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:log/alert:Alert example tf-log:tf-log-alert
+ * $ pulumi import alicloud:log/alert:Alert example tf-log:tf-log-alert
  * ```
  */
 export class Alert extends pulumi.CustomResource {

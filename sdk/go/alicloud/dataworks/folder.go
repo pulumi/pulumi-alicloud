@@ -52,9 +52,7 @@ import (
 // Data Works Folder can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:dataworks/folder:Folder example <folder_id>:<$.ProjectId>
-//
+// $ pulumi import alicloud:dataworks/folder:Folder example <folder_id>:<$.ProjectId>
 // ```
 type Folder struct {
 	pulumi.CustomResourceState

@@ -146,7 +146,7 @@ class RecycleBin(pulumi.CustomResource):
         Network Attached Storage (NAS) Recycle Bin can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:nas/recycleBin:RecycleBin example <file_system_id>
+        $ pulumi import alicloud:nas/recycleBin:RecycleBin example <file_system_id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -192,7 +192,7 @@ class RecycleBin(pulumi.CustomResource):
         Network Attached Storage (NAS) Recycle Bin can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:nas/recycleBin:RecycleBin example <file_system_id>
+        $ pulumi import alicloud:nas/recycleBin:RecycleBin example <file_system_id>
         ```
 
         :param str resource_name: The name of the resource.

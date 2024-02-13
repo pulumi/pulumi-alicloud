@@ -97,9 +97,7 @@ import (
 // NLB Server Group can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:nlb/serverGroup:ServerGroup example <id>
-//
+// $ pulumi import alicloud:nlb/serverGroup:ServerGroup example <id>
 // ```
 type ServerGroup struct {
 	pulumi.CustomResourceState

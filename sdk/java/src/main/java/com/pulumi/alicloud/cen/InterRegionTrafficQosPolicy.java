@@ -128,7 +128,7 @@ import javax.annotation.Nullable;
  * Cloud Enterprise Network (CEN) Inter Region Traffic Qos Policy can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:cen/interRegionTrafficQosPolicy:InterRegionTrafficQosPolicy example &lt;id&gt;
+ * $ pulumi import alicloud:cen/interRegionTrafficQosPolicy:InterRegionTrafficQosPolicy example &lt;id&gt;
  * ```
  * 
  */

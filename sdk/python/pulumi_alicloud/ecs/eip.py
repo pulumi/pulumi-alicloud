@@ -812,7 +812,7 @@ class Eip(pulumi.CustomResource):
         Elastic IP address can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:ecs/eip:Eip example eip-abc12345678
+        $ pulumi import alicloud:ecs/eip:Eip example eip-abc12345678
         ```
 
         :param str resource_name: The name of the resource.
@@ -871,7 +871,7 @@ class Eip(pulumi.CustomResource):
         Elastic IP address can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:ecs/eip:Eip example eip-abc12345678
+        $ pulumi import alicloud:ecs/eip:Eip example eip-abc12345678
         ```
 
         :param str resource_name: The name of the resource.

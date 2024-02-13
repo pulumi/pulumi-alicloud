@@ -59,7 +59,7 @@ import * as utilities from "../utilities";
  * Log oss shipper can be imported using the id or name, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:log/ossShipper:OssShipper example tf-log-project:tf-log-logstore:tf-log-shipper
+ * $ pulumi import alicloud:log/ossShipper:OssShipper example tf-log-project:tf-log-logstore:tf-log-shipper
  * ```
  */
 export class OssShipper extends pulumi.CustomResource {

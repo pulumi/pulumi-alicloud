@@ -46,7 +46,7 @@ namespace Pulumi.AliCloud.Cen
     /// CEN instance can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:cen/transitRouter:TransitRouter default cen-*****:tr-*******
+    /// $ pulumi import alicloud:cen/transitRouter:TransitRouter default cen-*****:tr-*******
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:cen/transitRouter:TransitRouter")]

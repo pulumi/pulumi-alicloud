@@ -64,7 +64,7 @@ namespace Pulumi.AliCloud.Hbr
     /// HBR Oss Backup Plan can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:hbr/ossBackupPlan:OssBackupPlan example &lt;id&gt;
+    /// $ pulumi import alicloud:hbr/ossBackupPlan:OssBackupPlan example &lt;id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:hbr/ossBackupPlan:OssBackupPlan")]

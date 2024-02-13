@@ -42,7 +42,7 @@ import * as utilities from "../utilities";
  * Dts Instance can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:dts/instance:Instance example <id>
+ * $ pulumi import alicloud:dts/instance:Instance example <id>
  * ```
  */
 export class Instance extends pulumi.CustomResource {

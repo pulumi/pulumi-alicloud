@@ -18,7 +18,7 @@ import * as utilities from "../utilities";
  * Alidns Address Pool can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:dns/addressPool:AddressPool example <id>
+ * $ pulumi import alicloud:dns/addressPool:AddressPool example <id>
  * ```
  */
 export class AddressPool extends pulumi.CustomResource {

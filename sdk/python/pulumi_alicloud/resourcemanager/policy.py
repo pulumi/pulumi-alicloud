@@ -227,7 +227,7 @@ class Policy(pulumi.CustomResource):
         Resource Manager Policy can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:resourcemanager/policy:Policy example abc12345
+        $ pulumi import alicloud:resourcemanager/policy:Policy example abc12345
         ```
 
         :param str resource_name: The name of the resource.
@@ -279,7 +279,7 @@ class Policy(pulumi.CustomResource):
         Resource Manager Policy can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:resourcemanager/policy:Policy example abc12345
+        $ pulumi import alicloud:resourcemanager/policy:Policy example abc12345
         ```
 
         :param str resource_name: The name of the resource.

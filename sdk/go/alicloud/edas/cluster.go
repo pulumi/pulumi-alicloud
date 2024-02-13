@@ -74,9 +74,7 @@ import (
 // EDAS cluster can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:edas/cluster:Cluster cluster cluster_id
-//
+// $ pulumi import alicloud:edas/cluster:Cluster cluster cluster_id
 // ```
 type Cluster struct {
 	pulumi.CustomResourceState

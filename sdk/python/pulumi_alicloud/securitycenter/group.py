@@ -126,7 +126,7 @@ class Group(pulumi.CustomResource):
         Security Center Group can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:securitycenter/group:Group example <group_id>
+        $ pulumi import alicloud:securitycenter/group:Group example <group_id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -167,7 +167,7 @@ class Group(pulumi.CustomResource):
         Security Center Group can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:securitycenter/group:Group example <group_id>
+        $ pulumi import alicloud:securitycenter/group:Group example <group_id>
         ```
 
         :param str resource_name: The name of the resource.

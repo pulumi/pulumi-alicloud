@@ -110,9 +110,7 @@ import (
 // DAS Switch Das Pro can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:das/switchDasPro:SwitchDasPro example <id>
-//
+// $ pulumi import alicloud:das/switchDasPro:SwitchDasPro example <id>
 // ```
 type SwitchDasPro struct {
 	pulumi.CustomResourceState

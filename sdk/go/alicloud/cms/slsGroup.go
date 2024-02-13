@@ -23,9 +23,7 @@ import (
 // Cloud Monitor Service Sls Group can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:cms/slsGroup:SlsGroup example <sls_group_name>
-//
+// $ pulumi import alicloud:cms/slsGroup:SlsGroup example <sls_group_name>
 // ```
 type SlsGroup struct {
 	pulumi.CustomResourceState

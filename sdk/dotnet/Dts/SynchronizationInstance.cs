@@ -52,7 +52,7 @@ namespace Pulumi.AliCloud.Dts
     /// DTS Synchronization Instance can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:dts/synchronizationInstance:SynchronizationInstance example &lt;id&gt;
+    /// $ pulumi import alicloud:dts/synchronizationInstance:SynchronizationInstance example &lt;id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:dts/synchronizationInstance:SynchronizationInstance")]

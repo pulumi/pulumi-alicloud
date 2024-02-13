@@ -66,7 +66,7 @@ import javax.annotation.Nullable;
  * Cloud Firewall Control Policy can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:cloudfirewall/controlPolicy:ControlPolicy example &lt;acl_uuid&gt;:&lt;direction&gt;
+ * $ pulumi import alicloud:cloudfirewall/controlPolicy:ControlPolicy example &lt;acl_uuid&gt;:&lt;direction&gt;
  * ```
  * 
  */

@@ -23,9 +23,7 @@ import (
 // Service Mesh Service Mesh can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:servicemesh/serviceMesh:ServiceMesh example <id>
-//
+// $ pulumi import alicloud:servicemesh/serviceMesh:ServiceMesh example <id>
 // ```
 type ServiceMesh struct {
 	pulumi.CustomResourceState

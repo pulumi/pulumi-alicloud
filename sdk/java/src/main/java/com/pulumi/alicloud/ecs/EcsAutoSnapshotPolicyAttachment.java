@@ -27,7 +27,7 @@ import javax.annotation.Nullable;
  * ECS Auto Snapshot Policy Attachment can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:ecs/ecsAutoSnapshotPolicyAttachment:EcsAutoSnapshotPolicyAttachment example s-abcd12345:d-abcd12345
+ * $ pulumi import alicloud:ecs/ecsAutoSnapshotPolicyAttachment:EcsAutoSnapshotPolicyAttachment example s-abcd12345:d-abcd12345
  * ```
  * 
  */

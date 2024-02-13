@@ -16,7 +16,7 @@ import * as utilities from "../utilities";
  * EBS Disk Replica Group can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:ebs/diskReplicaGroup:DiskReplicaGroup example <id>
+ * $ pulumi import alicloud:ebs/diskReplicaGroup:DiskReplicaGroup example <id>
  * ```
  */
 export class DiskReplicaGroup extends pulumi.CustomResource {

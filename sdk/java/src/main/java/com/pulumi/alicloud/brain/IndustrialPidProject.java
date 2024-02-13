@@ -57,7 +57,7 @@ import javax.annotation.Nullable;
  * Brain Industrial Pid Project can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:brain/industrialPidProject:IndustrialPidProject example &lt;id&gt;
+ * $ pulumi import alicloud:brain/industrialPidProject:IndustrialPidProject example &lt;id&gt;
  * ```
  * 
  */

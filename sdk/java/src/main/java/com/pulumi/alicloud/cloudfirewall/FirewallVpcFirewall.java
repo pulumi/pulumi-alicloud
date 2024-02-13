@@ -90,7 +90,7 @@ import javax.annotation.Nullable;
  * Cloud Firewall Vpc Firewall can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:cloudfirewall/firewallVpcFirewall:FirewallVpcFirewall example &lt;id&gt;
+ * $ pulumi import alicloud:cloudfirewall/firewallVpcFirewall:FirewallVpcFirewall example &lt;id&gt;
  * ```
  * 
  */

@@ -183,7 +183,7 @@ class AuditPolicy(pulumi.CustomResource):
         MongoDB Audit Policy can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:mongodb/auditPolicy:AuditPolicy example <db_instance_id>
+        $ pulumi import alicloud:mongodb/auditPolicy:AuditPolicy example <db_instance_id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -251,7 +251,7 @@ class AuditPolicy(pulumi.CustomResource):
         MongoDB Audit Policy can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:mongodb/auditPolicy:AuditPolicy example <db_instance_id>
+        $ pulumi import alicloud:mongodb/auditPolicy:AuditPolicy example <db_instance_id>
         ```
 
         :param str resource_name: The name of the resource.

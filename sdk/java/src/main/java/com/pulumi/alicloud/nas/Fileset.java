@@ -96,7 +96,7 @@ import javax.annotation.Nullable;
  * Network Attached Storage (NAS) Fileset can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:nas/fileset:Fileset example &lt;file_system_id&gt;:&lt;fileset_id&gt;
+ * $ pulumi import alicloud:nas/fileset:Fileset example &lt;file_system_id&gt;:&lt;fileset_id&gt;
  * ```
  * 
  */

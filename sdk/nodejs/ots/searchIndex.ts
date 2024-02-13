@@ -109,7 +109,7 @@ import * as utilities from "../utilities";
  * OTS search index can be imported using id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:ots/searchIndex:SearchIndex index1 <instance_name>:<table_name>:<index_name>:<index_type>
+ * $ pulumi import alicloud:ots/searchIndex:SearchIndex index1 <instance_name>:<table_name>:<index_name>:<index_type>
  * ```
  */
 export class SearchIndex extends pulumi.CustomResource {

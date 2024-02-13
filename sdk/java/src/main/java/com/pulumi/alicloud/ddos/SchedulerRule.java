@@ -78,7 +78,7 @@ import javax.annotation.Nullable;
  * DdosCoo Scheduler Rule can be imported using the id or the rule name, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:ddos/schedulerRule:SchedulerRule example fbb20dc77e8fc******
+ * $ pulumi import alicloud:ddos/schedulerRule:SchedulerRule example fbb20dc77e8fc******
  * ```
  * 
  */

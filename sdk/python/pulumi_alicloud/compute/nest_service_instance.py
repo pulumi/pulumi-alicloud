@@ -554,7 +554,7 @@ class NestServiceInstance(pulumi.CustomResource):
         Compute Nest Service Instance can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:compute/nestServiceInstance:NestServiceInstance example <id>
+        $ pulumi import alicloud:compute/nestServiceInstance:NestServiceInstance example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -655,7 +655,7 @@ class NestServiceInstance(pulumi.CustomResource):
         Compute Nest Service Instance can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:compute/nestServiceInstance:NestServiceInstance example <id>
+        $ pulumi import alicloud:compute/nestServiceInstance:NestServiceInstance example <id>
         ```
 
         :param str resource_name: The name of the resource.

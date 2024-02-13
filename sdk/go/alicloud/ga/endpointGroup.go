@@ -120,9 +120,7 @@ import (
 // Ga Endpoint Group can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:ga/endpointGroup:EndpointGroup example <id>
-//
+// $ pulumi import alicloud:ga/endpointGroup:EndpointGroup example <id>
 // ```
 type EndpointGroup struct {
 	pulumi.CustomResourceState

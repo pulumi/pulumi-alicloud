@@ -149,7 +149,7 @@ import javax.annotation.Nullable;
  * Compute Nest Service Instance can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:compute/nestServiceInstance:NestServiceInstance example &lt;id&gt;
+ * $ pulumi import alicloud:compute/nestServiceInstance:NestServiceInstance example &lt;id&gt;
  * ```
  * 
  */

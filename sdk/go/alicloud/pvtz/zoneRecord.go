@@ -53,9 +53,7 @@ import (
 // Private Zone Record can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:pvtz/zoneRecord:ZoneRecord example abc123456
-//
+// $ pulumi import alicloud:pvtz/zoneRecord:ZoneRecord example abc123456
 // ```
 type ZoneRecord struct {
 	pulumi.CustomResourceState

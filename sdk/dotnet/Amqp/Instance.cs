@@ -15,7 +15,7 @@ namespace Pulumi.AliCloud.Amqp
     /// RabbitMQ (AMQP) Instance can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:amqp/instance:Instance example &lt;id&gt;
+    /// $ pulumi import alicloud:amqp/instance:Instance example &lt;id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:amqp/instance:Instance")]

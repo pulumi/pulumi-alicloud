@@ -38,7 +38,7 @@ namespace Pulumi.AliCloud.Wafv3
     /// Wafv3 Instance can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:wafv3/instance:Instance example &lt;id&gt;
+    /// $ pulumi import alicloud:wafv3/instance:Instance example &lt;id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:wafv3/instance:Instance")]

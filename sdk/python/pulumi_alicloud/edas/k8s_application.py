@@ -1120,7 +1120,7 @@ class K8sApplication(pulumi.CustomResource):
         EDAS k8s application can be imported as below, e.g.
 
         ```sh
-         $ pulumi import alicloud:edas/k8sApplication:K8sApplication new_k8s_application application_id
+        $ pulumi import alicloud:edas/k8sApplication:K8sApplication new_k8s_application application_id
         ```
 
         :param str resource_name: The name of the resource.
@@ -1175,7 +1175,7 @@ class K8sApplication(pulumi.CustomResource):
         EDAS k8s application can be imported as below, e.g.
 
         ```sh
-         $ pulumi import alicloud:edas/k8sApplication:K8sApplication new_k8s_application application_id
+        $ pulumi import alicloud:edas/k8sApplication:K8sApplication new_k8s_application application_id
         ```
 
         :param str resource_name: The name of the resource.

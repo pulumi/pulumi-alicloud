@@ -23,7 +23,7 @@ namespace Pulumi.AliCloud.CloudSso
     /// Cloud SSO Directory can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:cloudsso/directory:Directory example &lt;id&gt;
+    /// $ pulumi import alicloud:cloudsso/directory:Directory example &lt;id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:cloudsso/directory:Directory")]

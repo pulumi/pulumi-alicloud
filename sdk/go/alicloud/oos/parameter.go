@@ -64,9 +64,7 @@ import (
 // OOS Parameter can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:oos/parameter:Parameter example <parameter_name>
-//
+// $ pulumi import alicloud:oos/parameter:Parameter example <parameter_name>
 // ```
 type Parameter struct {
 	pulumi.CustomResourceState

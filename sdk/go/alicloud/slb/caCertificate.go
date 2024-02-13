@@ -112,9 +112,7 @@ import (
 // Server Load balancer CA Certificate can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:slb/caCertificate:CaCertificate example abc123456
-//
+// $ pulumi import alicloud:slb/caCertificate:CaCertificate example abc123456
 // ```
 type CaCertificate struct {
 	pulumi.CustomResourceState

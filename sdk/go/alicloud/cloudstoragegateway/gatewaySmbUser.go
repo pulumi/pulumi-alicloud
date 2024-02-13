@@ -23,9 +23,7 @@ import (
 // Cloud Storage Gateway Gateway SMB User can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:cloudstoragegateway/gatewaySmbUser:GatewaySmbUser example <gateway_id>:<username>
-//
+// $ pulumi import alicloud:cloudstoragegateway/gatewaySmbUser:GatewaySmbUser example <gateway_id>:<username>
 // ```
 type GatewaySmbUser struct {
 	pulumi.CustomResourceState

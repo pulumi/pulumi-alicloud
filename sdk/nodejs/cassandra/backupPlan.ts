@@ -16,7 +16,7 @@ import * as utilities from "../utilities";
  * Cassandra Backup Plan can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:cassandra/backupPlan:BackupPlan example <cluster_id>:<data_center_id>
+ * $ pulumi import alicloud:cassandra/backupPlan:BackupPlan example <cluster_id>:<data_center_id>
  * ```
  */
 export class BackupPlan extends pulumi.CustomResource {

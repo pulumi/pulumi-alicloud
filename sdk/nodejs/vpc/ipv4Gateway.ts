@@ -46,7 +46,7 @@ import * as utilities from "../utilities";
  * Vpc Ipv4 Gateway can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:vpc/ipv4Gateway:Ipv4Gateway example <id>
+ * $ pulumi import alicloud:vpc/ipv4Gateway:Ipv4Gateway example <id>
  * ```
  */
 export class Ipv4Gateway extends pulumi.CustomResource {

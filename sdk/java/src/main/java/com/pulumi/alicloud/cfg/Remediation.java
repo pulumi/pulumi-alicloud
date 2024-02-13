@@ -93,7 +93,7 @@ import javax.annotation.Nullable;
  * Config Remediation can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:cfg/remediation:Remediation example &lt;id&gt;
+ * $ pulumi import alicloud:cfg/remediation:Remediation example &lt;id&gt;
  * ```
  * 
  */

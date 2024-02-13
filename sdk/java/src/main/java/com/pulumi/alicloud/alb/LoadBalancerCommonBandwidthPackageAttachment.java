@@ -27,7 +27,7 @@ import javax.annotation.Nullable;
  * Alb Load Balancer Common Bandwidth Package Attachment can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:alb/loadBalancerCommonBandwidthPackageAttachment:LoadBalancerCommonBandwidthPackageAttachment example &lt;load_balancer_id&gt;:&lt;bandwidth_package_id&gt;
+ * $ pulumi import alicloud:alb/loadBalancerCommonBandwidthPackageAttachment:LoadBalancerCommonBandwidthPackageAttachment example &lt;load_balancer_id&gt;:&lt;bandwidth_package_id&gt;
  * ```
  * 
  */

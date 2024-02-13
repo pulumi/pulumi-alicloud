@@ -78,9 +78,7 @@ import (
 // Event Bridge Rule can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:eventbridge/rule:Rule example <event_bus_name>:<rule_name>
-//
+// $ pulumi import alicloud:eventbridge/rule:Rule example <event_bus_name>:<rule_name>
 // ```
 type Rule struct {
 	pulumi.CustomResourceState

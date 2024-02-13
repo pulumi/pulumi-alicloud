@@ -16,7 +16,7 @@ import * as utilities from "../utilities";
  * Cloud Storage Gateway Gateway Logging can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:cloudstoragegateway/gatewayLogging:GatewayLogging example <gateway_id>
+ * $ pulumi import alicloud:cloudstoragegateway/gatewayLogging:GatewayLogging example <gateway_id>
  * ```
  */
 export class GatewayLogging extends pulumi.CustomResource {

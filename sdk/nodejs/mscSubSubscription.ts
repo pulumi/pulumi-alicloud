@@ -32,7 +32,7 @@ import * as utilities from "./utilities";
  * Msc Sub Subscription can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:index/mscSubSubscription:MscSubSubscription example <id>
+ * $ pulumi import alicloud:index/mscSubSubscription:MscSubSubscription example <id>
  * ```
  */
 export class MscSubSubscription extends pulumi.CustomResource {

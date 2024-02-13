@@ -51,9 +51,7 @@ import (
 // RAM Security Preference can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:ram/securityPreference:SecurityPreference example <id>
-//
+// $ pulumi import alicloud:ram/securityPreference:SecurityPreference example <id>
 // ```
 type SecurityPreference struct {
 	pulumi.CustomResourceState

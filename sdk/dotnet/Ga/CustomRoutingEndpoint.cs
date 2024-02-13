@@ -111,7 +111,7 @@ namespace Pulumi.AliCloud.Ga
     /// Global Accelerator (GA) Custom Routing Endpoint can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:ga/customRoutingEndpoint:CustomRoutingEndpoint example &lt;endpoint_group_id&gt;:&lt;custom_routing_endpoint_id&gt;
+    /// $ pulumi import alicloud:ga/customRoutingEndpoint:CustomRoutingEndpoint example &lt;endpoint_group_id&gt;:&lt;custom_routing_endpoint_id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:ga/customRoutingEndpoint:CustomRoutingEndpoint")]

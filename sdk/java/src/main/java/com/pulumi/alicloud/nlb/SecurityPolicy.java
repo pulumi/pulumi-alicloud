@@ -79,7 +79,7 @@ import javax.annotation.Nullable;
  * NLB Security Policy can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:nlb/securityPolicy:SecurityPolicy example &lt;id&gt;
+ * $ pulumi import alicloud:nlb/securityPolicy:SecurityPolicy example &lt;id&gt;
  * ```
  * 
  */

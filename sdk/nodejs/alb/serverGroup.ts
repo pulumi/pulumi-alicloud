@@ -105,7 +105,7 @@ import * as utilities from "../utilities";
  * ALB Server Group can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:alb/serverGroup:ServerGroup example <id>
+ * $ pulumi import alicloud:alb/serverGroup:ServerGroup example <id>
  * ```
  */
 export class ServerGroup extends pulumi.CustomResource {

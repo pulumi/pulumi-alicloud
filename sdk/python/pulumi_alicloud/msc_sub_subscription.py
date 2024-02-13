@@ -367,7 +367,7 @@ class MscSubSubscription(pulumi.CustomResource):
         Msc Sub Subscription can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:index/mscSubSubscription:MscSubSubscription example <id>
+        $ pulumi import alicloud:index/mscSubSubscription:MscSubSubscription example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -417,7 +417,7 @@ class MscSubSubscription(pulumi.CustomResource):
         Msc Sub Subscription can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:index/mscSubSubscription:MscSubSubscription example <id>
+        $ pulumi import alicloud:index/mscSubSubscription:MscSubSubscription example <id>
         ```
 
         :param str resource_name: The name of the resource.

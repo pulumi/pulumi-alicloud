@@ -41,7 +41,7 @@ import * as utilities from "../utilities";
  * Alidns Domain Record can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:dns/alidnsRecord:AlidnsRecord example abc123456
+ * $ pulumi import alicloud:dns/alidnsRecord:AlidnsRecord example abc123456
  * ```
  */
 export class AlidnsRecord extends pulumi.CustomResource {

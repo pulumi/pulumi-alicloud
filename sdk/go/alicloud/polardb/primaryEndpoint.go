@@ -86,9 +86,7 @@ import (
 // PolarDB endpoint can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:polardb/primaryEndpoint:PrimaryEndpoint example pc-abc123456:pe-abc123456
-//
+// $ pulumi import alicloud:polardb/primaryEndpoint:PrimaryEndpoint example pc-abc123456:pe-abc123456
 // ```
 type PrimaryEndpoint struct {
 	pulumi.CustomResourceState

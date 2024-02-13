@@ -10,7 +10,7 @@ import * as utilities from "../utilities";
  * ECS Disk can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:ecs/ecsDisk:EcsDisk example d-abcd12345
+ * $ pulumi import alicloud:ecs/ecsDisk:EcsDisk example d-abcd12345
  * ```
  */
 export class EcsDisk extends pulumi.CustomResource {

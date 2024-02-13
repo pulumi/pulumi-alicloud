@@ -143,7 +143,7 @@ class UserAttachment(pulumi.CustomResource):
         Cloud SSO User Attachment can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:cloudsso/userAttachment:UserAttachment example <directory_id>:<group_id>:<user_id>
+        $ pulumi import alicloud:cloudsso/userAttachment:UserAttachment example <directory_id>:<group_id>:<user_id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -172,7 +172,7 @@ class UserAttachment(pulumi.CustomResource):
         Cloud SSO User Attachment can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:cloudsso/userAttachment:UserAttachment example <directory_id>:<group_id>:<user_id>
+        $ pulumi import alicloud:cloudsso/userAttachment:UserAttachment example <directory_id>:<group_id>:<user_id>
         ```
 
         :param str resource_name: The name of the resource.

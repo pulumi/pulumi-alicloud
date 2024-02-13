@@ -51,7 +51,7 @@ namespace Pulumi.AliCloud.Dcdn
     /// Dcdn Kv can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:dcdn/kv:Kv example &lt;namespace&gt;:&lt;key&gt;
+    /// $ pulumi import alicloud:dcdn/kv:Kv example &lt;namespace&gt;:&lt;key&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:dcdn/kv:Kv")]

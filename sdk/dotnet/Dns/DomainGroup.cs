@@ -37,7 +37,7 @@ namespace Pulumi.AliCloud.Dns
     /// Alidns domain group can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:dns/domainGroup:DomainGroup example 0932eb3ddee7499085c4d13d45*****
+    /// $ pulumi import alicloud:dns/domainGroup:DomainGroup example 0932eb3ddee7499085c4d13d45*****
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:dns/domainGroup:DomainGroup")]

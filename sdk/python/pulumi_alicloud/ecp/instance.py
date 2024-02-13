@@ -673,7 +673,7 @@ class Instance(pulumi.CustomResource):
         Elastic Cloud Phone (ECP) Instance can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:ecp/instance:Instance example <id>
+        $ pulumi import alicloud:ecp/instance:Instance example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -761,7 +761,7 @@ class Instance(pulumi.CustomResource):
         Elastic Cloud Phone (ECP) Instance can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:ecp/instance:Instance example <id>
+        $ pulumi import alicloud:ecp/instance:Instance example <id>
         ```
 
         :param str resource_name: The name of the resource.

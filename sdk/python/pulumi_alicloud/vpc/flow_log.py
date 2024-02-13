@@ -484,7 +484,7 @@ class FlowLog(pulumi.CustomResource):
         Vpc Flow Log can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:vpc/flowLog:FlowLog example <id>
+        $ pulumi import alicloud:vpc/flowLog:FlowLog example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -520,7 +520,7 @@ class FlowLog(pulumi.CustomResource):
         Vpc Flow Log can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:vpc/flowLog:FlowLog example <id>
+        $ pulumi import alicloud:vpc/flowLog:FlowLog example <id>
         ```
 
         :param str resource_name: The name of the resource.

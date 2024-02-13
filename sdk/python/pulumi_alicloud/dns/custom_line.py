@@ -193,7 +193,7 @@ class CustomLine(pulumi.CustomResource):
         Alidns Custom Line can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:dns/customLine:CustomLine example <id>
+        $ pulumi import alicloud:dns/customLine:CustomLine example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -238,7 +238,7 @@ class CustomLine(pulumi.CustomResource):
         Alidns Custom Line can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:dns/customLine:CustomLine example <id>
+        $ pulumi import alicloud:dns/customLine:CustomLine example <id>
         ```
 
         :param str resource_name: The name of the resource.

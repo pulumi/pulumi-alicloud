@@ -89,7 +89,7 @@ import * as utilities from "../utilities";
  * RDS database endpoint public address feature can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:rds/dbInstanceEndpointAddress:DbInstanceEndpointAddress example <db_instance_id>:<db_instance_endpoint_id>
+ * $ pulumi import alicloud:rds/dbInstanceEndpointAddress:DbInstanceEndpointAddress example <db_instance_id>:<db_instance_endpoint_id>
  * ```
  */
 export class DbInstanceEndpointAddress extends pulumi.CustomResource {

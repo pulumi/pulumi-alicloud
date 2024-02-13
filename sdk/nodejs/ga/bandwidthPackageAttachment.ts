@@ -43,7 +43,7 @@ import * as utilities from "../utilities";
  * Ga Bandwidth Package Attachment can be imported using the id. Format to `<accelerator_id>:<bandwidth_package_id>`, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:ga/bandwidthPackageAttachment:BandwidthPackageAttachment example your_accelerator_id:your_bandwidth_package_id
+ * $ pulumi import alicloud:ga/bandwidthPackageAttachment:BandwidthPackageAttachment example your_accelerator_id:your_bandwidth_package_id
  * ```
  */
 export class BandwidthPackageAttachment extends pulumi.CustomResource {

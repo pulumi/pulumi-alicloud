@@ -210,7 +210,7 @@ class Znode(pulumi.CustomResource):
         Microservice Engine (MSE) Znode can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:mse/znode:Znode example <cluster_id>:<path>
+        $ pulumi import alicloud:mse/znode:Znode example <cluster_id>:<path>
         ```
 
         :param str resource_name: The name of the resource.
@@ -273,7 +273,7 @@ class Znode(pulumi.CustomResource):
         Microservice Engine (MSE) Znode can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:mse/znode:Znode example <cluster_id>:<path>
+        $ pulumi import alicloud:mse/znode:Znode example <cluster_id>:<path>
         ```
 
         :param str resource_name: The name of the resource.

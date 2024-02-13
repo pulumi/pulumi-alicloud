@@ -196,7 +196,7 @@ class LoadBalancerSecurityGroupAttachment(pulumi.CustomResource):
         Nlb Load Balancer Security Group Attachment can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:nlb/loadBalancerSecurityGroupAttachment:LoadBalancerSecurityGroupAttachment example <LoadBalancerId>:<SecurityGroupId>
+        $ pulumi import alicloud:nlb/loadBalancerSecurityGroupAttachment:LoadBalancerSecurityGroupAttachment example <LoadBalancerId>:<SecurityGroupId>
         ```
 
         :param str resource_name: The name of the resource.
@@ -277,7 +277,7 @@ class LoadBalancerSecurityGroupAttachment(pulumi.CustomResource):
         Nlb Load Balancer Security Group Attachment can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:nlb/loadBalancerSecurityGroupAttachment:LoadBalancerSecurityGroupAttachment example <LoadBalancerId>:<SecurityGroupId>
+        $ pulumi import alicloud:nlb/loadBalancerSecurityGroupAttachment:LoadBalancerSecurityGroupAttachment example <LoadBalancerId>:<SecurityGroupId>
         ```
 
         :param str resource_name: The name of the resource.

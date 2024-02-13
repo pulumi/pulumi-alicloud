@@ -31,7 +31,7 @@ import javax.annotation.Nullable;
  * DNS Access Strategy can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:dns/accessStrategy:AccessStrategy example &lt;id&gt;
+ * $ pulumi import alicloud:dns/accessStrategy:AccessStrategy example &lt;id&gt;
  * ```
  * 
  */

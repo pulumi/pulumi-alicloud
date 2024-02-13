@@ -82,7 +82,7 @@ import * as utilities from "../utilities";
  * RocketMQ Consumer Group can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:rocketmq/consumerGroup:ConsumerGroup example <instance_id>:<consumer_group_id>
+ * $ pulumi import alicloud:rocketmq/consumerGroup:ConsumerGroup example <instance_id>:<consumer_group_id>
  * ```
  */
 export class ConsumerGroup extends pulumi.CustomResource {

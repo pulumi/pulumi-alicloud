@@ -116,9 +116,7 @@ import (
 // CEN VBR HealthCheck can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:cen/vbrHealthCheck:VbrHealthCheck example vbr-xxxxx:cn-hangzhou
-//
+// $ pulumi import alicloud:cen/vbrHealthCheck:VbrHealthCheck example vbr-xxxxx:cn-hangzhou
 // ```
 type VbrHealthCheck struct {
 	pulumi.CustomResourceState

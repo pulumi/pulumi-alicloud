@@ -79,9 +79,7 @@ import (
 // Serverless App Engine (SAE) Namespace can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:sae/namespace:Namespace example <namespace_id>
-//
+// $ pulumi import alicloud:sae/namespace:Namespace example <namespace_id>
 // ```
 type Namespace struct {
 	pulumi.CustomResourceState

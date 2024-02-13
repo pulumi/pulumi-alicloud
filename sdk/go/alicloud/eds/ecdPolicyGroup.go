@@ -71,9 +71,7 @@ import (
 // Elastic Desktop Service (ECD) Policy Group can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:eds/ecdPolicyGroup:EcdPolicyGroup example <id>
-//
+// $ pulumi import alicloud:eds/ecdPolicyGroup:EcdPolicyGroup example <id>
 // ```
 type EcdPolicyGroup struct {
 	pulumi.CustomResourceState

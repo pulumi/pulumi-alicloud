@@ -75,7 +75,7 @@ import javax.annotation.Nullable;
  * Service Catalog Provisioned Product can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:servicecatalog/provisionedProduct:ProvisionedProduct example &lt;id&gt;
+ * $ pulumi import alicloud:servicecatalog/provisionedProduct:ProvisionedProduct example &lt;id&gt;
  * ```
  * 
  */

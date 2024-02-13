@@ -89,7 +89,7 @@ import * as utilities from "../utilities";
  * Event Bridge Connection can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:eventbridge/connection:Connection example <id>
+ * $ pulumi import alicloud:eventbridge/connection:Connection example <id>
  * ```
  */
 export class Connection extends pulumi.CustomResource {

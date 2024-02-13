@@ -75,7 +75,7 @@ import javax.annotation.Nullable;
  * DCDN Er can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:dcdn/er:Er example &lt;id&gt;
+ * $ pulumi import alicloud:dcdn/er:Er example &lt;id&gt;
  * ```
  * 
  */

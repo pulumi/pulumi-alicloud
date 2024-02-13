@@ -43,7 +43,7 @@ import * as utilities from "../utilities";
  * Cloud Config Aggregator can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:cfg/aggregator:Aggregator example <id>
+ * $ pulumi import alicloud:cfg/aggregator:Aggregator example <id>
  * ```
  */
 export class Aggregator extends pulumi.CustomResource {

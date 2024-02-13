@@ -39,7 +39,7 @@ import * as utilities from "../utilities";
  * Resource Manager Policy can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:resourcemanager/policy:Policy example abc12345
+ * $ pulumi import alicloud:resourcemanager/policy:Policy example abc12345
  * ```
  */
 export class Policy extends pulumi.CustomResource {

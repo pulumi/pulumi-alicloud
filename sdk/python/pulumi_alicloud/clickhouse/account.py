@@ -443,7 +443,7 @@ class Account(pulumi.CustomResource):
         Click House Account can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:clickhouse/account:Account example <db_cluster_id>:<account_name>
+        $ pulumi import alicloud:clickhouse/account:Account example <db_cluster_id>:<account_name>
         ```
 
         :param str resource_name: The name of the resource.
@@ -516,7 +516,7 @@ class Account(pulumi.CustomResource):
         Click House Account can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:clickhouse/account:Account example <db_cluster_id>:<account_name>
+        $ pulumi import alicloud:clickhouse/account:Account example <db_cluster_id>:<account_name>
         ```
 
         :param str resource_name: The name of the resource.

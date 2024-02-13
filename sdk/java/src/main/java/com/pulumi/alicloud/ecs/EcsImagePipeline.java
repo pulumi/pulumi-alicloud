@@ -124,7 +124,7 @@ import javax.annotation.Nullable;
  * ECS Image Pipeline can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:ecs/ecsImagePipeline:EcsImagePipeline example &lt;id&gt;
+ * $ pulumi import alicloud:ecs/ecsImagePipeline:EcsImagePipeline example &lt;id&gt;
  * ```
  * 
  */

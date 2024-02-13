@@ -264,7 +264,7 @@ class GatewayVcoRoute(pulumi.CustomResource):
         VPN Gateway Vco Route can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:vpn/gatewayVcoRoute:GatewayVcoRoute example <vpn_connection_id>:<route_dest>:<next_hop>:<weight>
+        $ pulumi import alicloud:vpn/gatewayVcoRoute:GatewayVcoRoute example <vpn_connection_id>:<route_dest>:<next_hop>:<weight>
         ```
 
         :param str resource_name: The name of the resource.
@@ -367,7 +367,7 @@ class GatewayVcoRoute(pulumi.CustomResource):
         VPN Gateway Vco Route can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:vpn/gatewayVcoRoute:GatewayVcoRoute example <vpn_connection_id>:<route_dest>:<next_hop>:<weight>
+        $ pulumi import alicloud:vpn/gatewayVcoRoute:GatewayVcoRoute example <vpn_connection_id>:<route_dest>:<next_hop>:<weight>
         ```
 
         :param str resource_name: The name of the resource.

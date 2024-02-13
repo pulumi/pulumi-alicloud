@@ -1068,7 +1068,7 @@ class MigrationJob(pulumi.CustomResource):
         DTS Migration Job can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:dts/migrationJob:MigrationJob example <id>
+        $ pulumi import alicloud:dts/migrationJob:MigrationJob example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -1132,7 +1132,7 @@ class MigrationJob(pulumi.CustomResource):
         DTS Migration Job can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:dts/migrationJob:MigrationJob example <id>
+        $ pulumi import alicloud:dts/migrationJob:MigrationJob example <id>
         ```
 
         :param str resource_name: The name of the resource.

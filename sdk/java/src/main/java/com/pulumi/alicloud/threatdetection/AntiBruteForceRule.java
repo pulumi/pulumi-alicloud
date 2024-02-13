@@ -64,7 +64,7 @@ import javax.annotation.Nullable;
  * Threat Detection Anti Brute Force Rule can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:threatdetection/antiBruteForceRule:AntiBruteForceRule example &lt;id&gt;
+ * $ pulumi import alicloud:threatdetection/antiBruteForceRule:AntiBruteForceRule example &lt;id&gt;
  * ```
  * 
  */

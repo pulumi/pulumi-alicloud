@@ -196,7 +196,7 @@ class WafPolicy(pulumi.CustomResource):
         DCDN Waf Policy can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:dcdn/wafPolicy:WafPolicy example <id>
+        $ pulumi import alicloud:dcdn/wafPolicy:WafPolicy example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -247,7 +247,7 @@ class WafPolicy(pulumi.CustomResource):
         DCDN Waf Policy can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:dcdn/wafPolicy:WafPolicy example <id>
+        $ pulumi import alicloud:dcdn/wafPolicy:WafPolicy example <id>
         ```
 
         :param str resource_name: The name of the resource.

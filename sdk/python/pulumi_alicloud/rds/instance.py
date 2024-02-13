@@ -3130,7 +3130,7 @@ class Instance(pulumi.CustomResource):
         RDS instance can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:rds/instance:Instance example rm-abc12345678
+        $ pulumi import alicloud:rds/instance:Instance example rm-abc12345678
         ```
 
         :param str resource_name: The name of the resource.
@@ -3366,7 +3366,7 @@ class Instance(pulumi.CustomResource):
         RDS instance can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:rds/instance:Instance example rm-abc12345678
+        $ pulumi import alicloud:rds/instance:Instance example rm-abc12345678
         ```
 
         :param str resource_name: The name of the resource.

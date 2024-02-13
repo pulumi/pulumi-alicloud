@@ -235,7 +235,7 @@ class StaticAccount(pulumi.CustomResource):
         Amqp Static Account can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:amqp/staticAccount:StaticAccount example <instance_id>:<access_key>
+        $ pulumi import alicloud:amqp/staticAccount:StaticAccount example <instance_id>:<access_key>
         ```
 
         :param str resource_name: The name of the resource.
@@ -292,7 +292,7 @@ class StaticAccount(pulumi.CustomResource):
         Amqp Static Account can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:amqp/staticAccount:StaticAccount example <instance_id>:<access_key>
+        $ pulumi import alicloud:amqp/staticAccount:StaticAccount example <instance_id>:<access_key>
         ```
 
         :param str resource_name: The name of the resource.

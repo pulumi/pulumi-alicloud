@@ -241,7 +241,7 @@ class ServerGroupServerAttachment(pulumi.CustomResource):
         Load balancer backend server group server attachment can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:slb/serverGroupServerAttachment:ServerGroupServerAttachment example <server_group_id>:<server_id>:<port>
+        $ pulumi import alicloud:slb/serverGroupServerAttachment:ServerGroupServerAttachment example <server_group_id>:<server_id>:<port>
         ```
 
         :param str resource_name: The name of the resource.
@@ -272,7 +272,7 @@ class ServerGroupServerAttachment(pulumi.CustomResource):
         Load balancer backend server group server attachment can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:slb/serverGroupServerAttachment:ServerGroupServerAttachment example <server_group_id>:<server_id>:<port>
+        $ pulumi import alicloud:slb/serverGroupServerAttachment:ServerGroupServerAttachment example <server_group_id>:<server_id>:<port>
         ```
 
         :param str resource_name: The name of the resource.

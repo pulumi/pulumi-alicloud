@@ -89,7 +89,7 @@ namespace Pulumi.AliCloud.Eci
     /// ECI Image Cache can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:eci/imageCache:ImageCache example abc123456
+    /// $ pulumi import alicloud:eci/imageCache:ImageCache example abc123456
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:eci/imageCache:ImageCache")]

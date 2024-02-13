@@ -18,7 +18,7 @@ import * as utilities from "../utilities";
  * DNS Access Strategy can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:dns/accessStrategy:AccessStrategy example <id>
+ * $ pulumi import alicloud:dns/accessStrategy:AccessStrategy example <id>
  * ```
  */
 export class AccessStrategy extends pulumi.CustomResource {

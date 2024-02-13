@@ -237,7 +237,7 @@ class DBAuditInstance(pulumi.CustomResource):
         Yundun_dbaudit instance can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:yundun/dBAuditInstance:DBAuditInstance example dbaudit-exampe123456
+        $ pulumi import alicloud:yundun/dBAuditInstance:DBAuditInstance example dbaudit-exampe123456
         ```
 
         :param str resource_name: The name of the resource.
@@ -262,7 +262,7 @@ class DBAuditInstance(pulumi.CustomResource):
         Yundun_dbaudit instance can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:yundun/dBAuditInstance:DBAuditInstance example dbaudit-exampe123456
+        $ pulumi import alicloud:yundun/dBAuditInstance:DBAuditInstance example dbaudit-exampe123456
         ```
 
         :param str resource_name: The name of the resource.

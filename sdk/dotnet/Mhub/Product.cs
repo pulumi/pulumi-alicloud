@@ -43,7 +43,7 @@ namespace Pulumi.AliCloud.Mhub
     /// MHUB Product can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:mhub/product:Product example &lt;id&gt;
+    /// $ pulumi import alicloud:mhub/product:Product example &lt;id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:mhub/product:Product")]

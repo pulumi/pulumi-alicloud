@@ -44,7 +44,7 @@ namespace Pulumi.AliCloud.Sag
     /// Smartag Flow Log can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:sag/smartagFlowLog:SmartagFlowLog example &lt;id&gt;
+    /// $ pulumi import alicloud:sag/smartagFlowLog:SmartagFlowLog example &lt;id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:sag/smartagFlowLog:SmartagFlowLog")]

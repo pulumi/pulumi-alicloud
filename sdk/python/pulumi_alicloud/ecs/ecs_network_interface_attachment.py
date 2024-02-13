@@ -229,7 +229,7 @@ class EcsNetworkInterfaceAttachment(pulumi.CustomResource):
         ECS Network Interface Attachment can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:ecs/ecsNetworkInterfaceAttachment:EcsNetworkInterfaceAttachment example eni-abcd1234:i-abcd1234
+        $ pulumi import alicloud:ecs/ecsNetworkInterfaceAttachment:EcsNetworkInterfaceAttachment example eni-abcd1234:i-abcd1234
         ```
 
         :param str resource_name: The name of the resource.
@@ -311,7 +311,7 @@ class EcsNetworkInterfaceAttachment(pulumi.CustomResource):
         ECS Network Interface Attachment can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:ecs/ecsNetworkInterfaceAttachment:EcsNetworkInterfaceAttachment example eni-abcd1234:i-abcd1234
+        $ pulumi import alicloud:ecs/ecsNetworkInterfaceAttachment:EcsNetworkInterfaceAttachment example eni-abcd1234:i-abcd1234
         ```
 
         :param str resource_name: The name of the resource.

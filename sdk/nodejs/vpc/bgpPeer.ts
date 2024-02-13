@@ -62,7 +62,7 @@ import * as utilities from "../utilities";
  * VPC Bgp Peer can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:vpc/bgpPeer:BgpPeer example <id>
+ * $ pulumi import alicloud:vpc/bgpPeer:BgpPeer example <id>
  * ```
  */
 export class BgpPeer extends pulumi.CustomResource {

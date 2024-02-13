@@ -63,7 +63,7 @@ import * as utilities from "../utilities";
  * MongoDB Serverless Instance can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:mongodb/serverlessInstance:ServerlessInstance example <id>
+ * $ pulumi import alicloud:mongodb/serverlessInstance:ServerlessInstance example <id>
  * ```
  */
 export class ServerlessInstance extends pulumi.CustomResource {

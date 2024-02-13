@@ -144,7 +144,7 @@ namespace Pulumi.AliCloud.Dms
     /// DMS Enterprise Proxy can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:dms/enterpriseProxy:EnterpriseProxy example &lt;id&gt;
+    /// $ pulumi import alicloud:dms/enterpriseProxy:EnterpriseProxy example &lt;id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:dms/enterpriseProxy:EnterpriseProxy")]

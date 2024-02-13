@@ -322,7 +322,7 @@ class CompliancePack(pulumi.CustomResource):
         Cloud Config Compliance Pack can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:cfg/compliancePack:CompliancePack example <id>
+        $ pulumi import alicloud:cfg/compliancePack:CompliancePack example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -404,7 +404,7 @@ class CompliancePack(pulumi.CustomResource):
         Cloud Config Compliance Pack can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:cfg/compliancePack:CompliancePack example <id>
+        $ pulumi import alicloud:cfg/compliancePack:CompliancePack example <id>
         ```
 
         :param str resource_name: The name of the resource.

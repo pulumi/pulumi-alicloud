@@ -162,7 +162,7 @@ class Kv(pulumi.CustomResource):
         Dcdn Kv can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:dcdn/kv:Kv example <namespace>:<key>
+        $ pulumi import alicloud:dcdn/kv:Kv example <namespace>:<key>
         ```
 
         :param str resource_name: The name of the resource.
@@ -210,7 +210,7 @@ class Kv(pulumi.CustomResource):
         Dcdn Kv can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:dcdn/kv:Kv example <namespace>:<key>
+        $ pulumi import alicloud:dcdn/kv:Kv example <namespace>:<key>
         ```
 
         :param str resource_name: The name of the resource.

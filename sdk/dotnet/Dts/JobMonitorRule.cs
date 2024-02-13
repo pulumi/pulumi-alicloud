@@ -21,7 +21,7 @@ namespace Pulumi.AliCloud.Dts
     /// DTS Job Monitor Rule can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:dts/jobMonitorRule:JobMonitorRule example &lt;dts_job_id&gt;
+    /// $ pulumi import alicloud:dts/jobMonitorRule:JobMonitorRule example &lt;dts_job_id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:dts/jobMonitorRule:JobMonitorRule")]

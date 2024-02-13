@@ -36,7 +36,7 @@ import * as utilities from "../utilities";
  * Application Real-Time Monitoring Service (ARMS) Alert Contact Group can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:arms/alertContactGroup:AlertContactGroup example <id>
+ * $ pulumi import alicloud:arms/alertContactGroup:AlertContactGroup example <id>
  * ```
  */
 export class AlertContactGroup extends pulumi.CustomResource {

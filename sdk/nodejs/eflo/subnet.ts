@@ -41,7 +41,7 @@ import * as utilities from "../utilities";
  * Eflo Subnet can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:eflo/subnet:Subnet example <vpd_id>:<subnet_id>
+ * $ pulumi import alicloud:eflo/subnet:Subnet example <vpd_id>:<subnet_id>
  * ```
  */
 export class Subnet extends pulumi.CustomResource {

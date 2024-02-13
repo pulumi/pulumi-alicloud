@@ -22,7 +22,7 @@ import javax.annotation.Nullable;
  * SSL-VPN server can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:vpn/sslVpnServer:SslVpnServer example vss-abc123456
+ * $ pulumi import alicloud:vpn/sslVpnServer:SslVpnServer example vss-abc123456
  * ```
  * 
  */

@@ -451,7 +451,7 @@ class DhcpOptionsSet(pulumi.CustomResource):
         VPC Dhcp Options Set can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:vpc/dhcpOptionsSet:DhcpOptionsSet example <id>
+        $ pulumi import alicloud:vpc/dhcpOptionsSet:DhcpOptionsSet example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -509,7 +509,7 @@ class DhcpOptionsSet(pulumi.CustomResource):
         VPC Dhcp Options Set can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:vpc/dhcpOptionsSet:DhcpOptionsSet example <id>
+        $ pulumi import alicloud:vpc/dhcpOptionsSet:DhcpOptionsSet example <id>
         ```
 
         :param str resource_name: The name of the resource.

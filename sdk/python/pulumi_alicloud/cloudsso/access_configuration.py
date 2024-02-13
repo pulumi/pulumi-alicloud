@@ -302,7 +302,7 @@ class AccessConfiguration(pulumi.CustomResource):
         Cloud SSO Access Configuration can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:cloudsso/accessConfiguration:AccessConfiguration example <directory_id>:<access_configuration_id>
+        $ pulumi import alicloud:cloudsso/accessConfiguration:AccessConfiguration example <directory_id>:<access_configuration_id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -337,7 +337,7 @@ class AccessConfiguration(pulumi.CustomResource):
         Cloud SSO Access Configuration can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:cloudsso/accessConfiguration:AccessConfiguration example <directory_id>:<access_configuration_id>
+        $ pulumi import alicloud:cloudsso/accessConfiguration:AccessConfiguration example <directory_id>:<access_configuration_id>
         ```
 
         :param str resource_name: The name of the resource.

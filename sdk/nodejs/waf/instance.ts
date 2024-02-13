@@ -18,7 +18,7 @@ import * as utilities from "../utilities";
  * WAF instance can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:waf/instance:Instance default waf-cn-132435
+ * $ pulumi import alicloud:waf/instance:Instance default waf-cn-132435
  * ```
  */
 export class Instance extends pulumi.CustomResource {

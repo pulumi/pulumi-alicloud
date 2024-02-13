@@ -79,7 +79,7 @@ import * as utilities from "../utilities";
  * SLS Project can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:log/project:Project example <id>
+ * $ pulumi import alicloud:log/project:Project example <id>
  * ```
  */
 export class Project extends pulumi.CustomResource {

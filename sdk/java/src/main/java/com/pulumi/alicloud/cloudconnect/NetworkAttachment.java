@@ -71,7 +71,7 @@ import javax.annotation.Nullable;
  * The Cloud Connect Network Attachment can be imported using the instance_id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:cloudconnect/networkAttachment:NetworkAttachment example ccn-abc123456:sag-abc123456
+ * $ pulumi import alicloud:cloudconnect/networkAttachment:NetworkAttachment example ccn-abc123456:sag-abc123456
  * ```
  * 
  */

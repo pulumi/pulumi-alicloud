@@ -85,7 +85,7 @@ namespace Pulumi.AliCloud.AliKafka
     /// ALIKAFKA GROUP can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:alikafka/consumerGroup:ConsumerGroup group alikafka_post-cn-123455abc:consumerId
+    /// $ pulumi import alicloud:alikafka/consumerGroup:ConsumerGroup group alikafka_post-cn-123455abc:consumerId
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:alikafka/consumerGroup:ConsumerGroup")]

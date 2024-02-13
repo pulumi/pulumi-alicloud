@@ -66,9 +66,7 @@ import (
 // Vpc Public Ip Address Pool can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:vpc/publicIpAddressPool:PublicIpAddressPool example <id>
-//
+// $ pulumi import alicloud:vpc/publicIpAddressPool:PublicIpAddressPool example <id>
 // ```
 type PublicIpAddressPool struct {
 	pulumi.CustomResourceState

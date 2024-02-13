@@ -57,7 +57,7 @@ import * as utilities from "../utilities";
  * Microservice Engine (MSE) Engine Namespace can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:mse/engineNamespace:EngineNamespace example <cluster_id>:<namespace_id>
+ * $ pulumi import alicloud:mse/engineNamespace:EngineNamespace example <cluster_id>:<namespace_id>
  * ```
  */
 export class EngineNamespace extends pulumi.CustomResource {

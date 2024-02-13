@@ -29,7 +29,7 @@ import * as utilities from "../utilities";
  * Resource Manager Resource Share can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:resourcemanager/resourceShare:ResourceShare example <id>
+ * $ pulumi import alicloud:resourcemanager/resourceShare:ResourceShare example <id>
  * ```
  */
 export class ResourceShare extends pulumi.CustomResource {

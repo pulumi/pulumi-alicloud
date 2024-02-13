@@ -18,7 +18,7 @@ import * as utilities from "../utilities";
  * Application Load Balancer (ALB) Listener can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:alb/listener:Listener example <id>
+ * $ pulumi import alicloud:alb/listener:Listener example <id>
  * ```
  */
 export class Listener extends pulumi.CustomResource {

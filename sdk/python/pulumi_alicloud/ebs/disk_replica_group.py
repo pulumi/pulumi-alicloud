@@ -288,7 +288,7 @@ class DiskReplicaGroup(pulumi.CustomResource):
         EBS Disk Replica Group can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:ebs/diskReplicaGroup:DiskReplicaGroup example <id>
+        $ pulumi import alicloud:ebs/diskReplicaGroup:DiskReplicaGroup example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -319,7 +319,7 @@ class DiskReplicaGroup(pulumi.CustomResource):
         EBS Disk Replica Group can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:ebs/diskReplicaGroup:DiskReplicaGroup example <id>
+        $ pulumi import alicloud:ebs/diskReplicaGroup:DiskReplicaGroup example <id>
         ```
 
         :param str resource_name: The name of the resource.

@@ -16,7 +16,7 @@ import * as utilities from "../utilities";
  * VPC Network Acl Attachment can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:vpc/vpcNetworkAclAttachment:VpcNetworkAclAttachment example <network_acl_id>:<resource_id>
+ * $ pulumi import alicloud:vpc/vpcNetworkAclAttachment:VpcNetworkAclAttachment example <network_acl_id>:<resource_id>
  * ```
  */
 export class VpcNetworkAclAttachment extends pulumi.CustomResource {

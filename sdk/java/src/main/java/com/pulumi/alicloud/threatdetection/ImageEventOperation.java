@@ -80,7 +80,7 @@ import javax.annotation.Nullable;
  * Threat Detection Image Event Operation can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:threatdetection/imageEventOperation:ImageEventOperation example &lt;id&gt;
+ * $ pulumi import alicloud:threatdetection/imageEventOperation:ImageEventOperation example &lt;id&gt;
  * ```
  * 
  */

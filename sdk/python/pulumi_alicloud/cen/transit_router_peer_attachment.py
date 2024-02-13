@@ -584,7 +584,7 @@ class TransitRouterPeerAttachment(pulumi.CustomResource):
         CEN instance can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:cen/transitRouterPeerAttachment:TransitRouterPeerAttachment example tr-********:tr-attach-*******
+        $ pulumi import alicloud:cen/transitRouterPeerAttachment:TransitRouterPeerAttachment example tr-********:tr-attach-*******
         ```
 
         :param str resource_name: The name of the resource.
@@ -670,7 +670,7 @@ class TransitRouterPeerAttachment(pulumi.CustomResource):
         CEN instance can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:cen/transitRouterPeerAttachment:TransitRouterPeerAttachment example tr-********:tr-attach-*******
+        $ pulumi import alicloud:cen/transitRouterPeerAttachment:TransitRouterPeerAttachment example tr-********:tr-attach-*******
         ```
 
         :param str resource_name: The name of the resource.

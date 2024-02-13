@@ -86,9 +86,7 @@ import (
 // DCDN Waf Domain can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:dcdn/wafDomain:WafDomain example <domain_name>
-//
+// $ pulumi import alicloud:dcdn/wafDomain:WafDomain example <domain_name>
 // ```
 type WafDomain struct {
 	pulumi.CustomResourceState

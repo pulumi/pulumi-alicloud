@@ -69,7 +69,7 @@ import javax.annotation.Nullable;
  * DCDN Waf Policy can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:dcdn/wafPolicy:WafPolicy example &lt;id&gt;
+ * $ pulumi import alicloud:dcdn/wafPolicy:WafPolicy example &lt;id&gt;
  * ```
  * 
  */

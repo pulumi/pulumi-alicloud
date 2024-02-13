@@ -102,7 +102,7 @@ import javax.annotation.Nullable;
  * RabbitMQ (AMQP) Binding can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:amqp/binding:Binding example &lt;instance_id&gt;:&lt;virtual_host_name&gt;:&lt;source_exchange&gt;:&lt;destination_name&gt;
+ * $ pulumi import alicloud:amqp/binding:Binding example &lt;instance_id&gt;:&lt;virtual_host_name&gt;:&lt;source_exchange&gt;:&lt;destination_name&gt;
  * ```
  * 
  */

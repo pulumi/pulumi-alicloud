@@ -304,7 +304,7 @@ class DomainExtension(pulumi.CustomResource):
         Load balancer domain_extension can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:slb/domainExtension:DomainExtension example de-abc123456
+        $ pulumi import alicloud:slb/domainExtension:DomainExtension example de-abc123456
         ```
 
         :param str resource_name: The name of the resource.
@@ -431,7 +431,7 @@ class DomainExtension(pulumi.CustomResource):
         Load balancer domain_extension can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:slb/domainExtension:DomainExtension example de-abc123456
+        $ pulumi import alicloud:slb/domainExtension:DomainExtension example de-abc123456
         ```
 
         :param str resource_name: The name of the resource.

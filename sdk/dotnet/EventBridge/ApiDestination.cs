@@ -60,7 +60,7 @@ namespace Pulumi.AliCloud.EventBridge
     /// Event Bridge Api Destination can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:eventbridge/apiDestination:ApiDestination example &lt;id&gt;
+    /// $ pulumi import alicloud:eventbridge/apiDestination:ApiDestination example &lt;id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:eventbridge/apiDestination:ApiDestination")]

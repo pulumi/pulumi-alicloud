@@ -1527,7 +1527,7 @@ class Instance(pulumi.CustomResource):
         MongoDB instance can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:mongodb/instance:Instance example dds-bp1291daeda44194
+        $ pulumi import alicloud:mongodb/instance:Instance example dds-bp1291daeda44194
         ```
 
         :param str resource_name: The name of the resource.
@@ -1643,7 +1643,7 @@ class Instance(pulumi.CustomResource):
         MongoDB instance can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:mongodb/instance:Instance example dds-bp1291daeda44194
+        $ pulumi import alicloud:mongodb/instance:Instance example dds-bp1291daeda44194
         ```
 
         :param str resource_name: The name of the resource.

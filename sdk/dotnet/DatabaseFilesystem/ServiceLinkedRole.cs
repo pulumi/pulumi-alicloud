@@ -39,7 +39,7 @@ namespace Pulumi.AliCloud.DatabaseFilesystem
     /// Dbfs service-linked roles(SLR) can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:databasefilesystem/serviceLinkedRole:ServiceLinkedRole example &lt;product_name&gt;
+    /// $ pulumi import alicloud:databasefilesystem/serviceLinkedRole:ServiceLinkedRole example &lt;product_name&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:databasefilesystem/serviceLinkedRole:ServiceLinkedRole")]

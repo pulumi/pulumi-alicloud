@@ -80,7 +80,7 @@ import javax.annotation.Nullable;
  * CR Chart Repository can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:cr/chartRepository:ChartRepository example &lt;instance_id&gt;:&lt;repo_namespace_name&gt;:&lt;repo_name&gt;
+ * $ pulumi import alicloud:cr/chartRepository:ChartRepository example &lt;instance_id&gt;:&lt;repo_namespace_name&gt;:&lt;repo_name&gt;
  * ```
  * 
  */

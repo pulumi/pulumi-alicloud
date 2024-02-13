@@ -152,7 +152,7 @@ class BackendServer(pulumi.CustomResource):
         Load balancer backend server can be imported using the load balancer id.
 
         ```sh
-         $ pulumi import alicloud:slb/backendServer:BackendServer example <load_balancer_id>
+        $ pulumi import alicloud:slb/backendServer:BackendServer example <load_balancer_id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -186,7 +186,7 @@ class BackendServer(pulumi.CustomResource):
         Load balancer backend server can be imported using the load balancer id.
 
         ```sh
-         $ pulumi import alicloud:slb/backendServer:BackendServer example <load_balancer_id>
+        $ pulumi import alicloud:slb/backendServer:BackendServer example <load_balancer_id>
         ```
 
         :param str resource_name: The name of the resource.

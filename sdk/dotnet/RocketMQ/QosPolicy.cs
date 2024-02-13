@@ -24,7 +24,7 @@ namespace Pulumi.AliCloud.RocketMQ
     /// The Sag Qos Policy can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:rocketmq/qosPolicy:QosPolicy example qos-abc123456:qospy-abc123456
+    /// $ pulumi import alicloud:rocketmq/qosPolicy:QosPolicy example qos-abc123456:qospy-abc123456
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:rocketmq/qosPolicy:QosPolicy")]

@@ -132,7 +132,7 @@ import javax.annotation.Nullable;
  * Elastic IP address association can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:ecs/eipAssociation:EipAssociation example &lt;allocation_id&gt;:&lt;instance_id&gt;
+ * $ pulumi import alicloud:ecs/eipAssociation:EipAssociation example &lt;allocation_id&gt;:&lt;instance_id&gt;
  * ```
  * 
  */

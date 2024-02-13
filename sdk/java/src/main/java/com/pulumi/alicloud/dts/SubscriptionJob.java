@@ -174,7 +174,7 @@ import javax.annotation.Nullable;
  * DTS Subscription Job can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:dts/subscriptionJob:SubscriptionJob example &lt;id&gt;
+ * $ pulumi import alicloud:dts/subscriptionJob:SubscriptionJob example &lt;id&gt;
  * ```
  * 
  */

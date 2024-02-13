@@ -302,7 +302,7 @@ class Environment(pulumi.CustomResource):
         ARMS Environment can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:arms/environment:Environment example <id>
+        $ pulumi import alicloud:arms/environment:Environment example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -336,7 +336,7 @@ class Environment(pulumi.CustomResource):
         ARMS Environment can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:arms/environment:Environment example <id>
+        $ pulumi import alicloud:arms/environment:Environment example <id>
         ```
 
         :param str resource_name: The name of the resource.

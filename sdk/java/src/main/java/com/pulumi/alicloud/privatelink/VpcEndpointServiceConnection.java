@@ -126,7 +126,7 @@ import javax.annotation.Nullable;
  * Private Link Vpc Endpoint Connection can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:privatelink/vpcEndpointServiceConnection:VpcEndpointServiceConnection example &lt;service_id&gt;:&lt;endpoint_id&gt;
+ * $ pulumi import alicloud:privatelink/vpcEndpointServiceConnection:VpcEndpointServiceConnection example &lt;service_id&gt;:&lt;endpoint_id&gt;
  * ```
  * 
  */

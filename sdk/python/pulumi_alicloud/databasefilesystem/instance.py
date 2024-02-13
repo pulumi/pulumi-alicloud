@@ -721,7 +721,7 @@ class Instance(pulumi.CustomResource):
         DBFS Dbfs Instance can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:databasefilesystem/instance:Instance example <id>
+        $ pulumi import alicloud:databasefilesystem/instance:Instance example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -792,7 +792,7 @@ class Instance(pulumi.CustomResource):
         DBFS Dbfs Instance can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:databasefilesystem/instance:Instance example <id>
+        $ pulumi import alicloud:databasefilesystem/instance:Instance example <id>
         ```
 
         :param str resource_name: The name of the resource.

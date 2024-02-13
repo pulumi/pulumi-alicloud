@@ -44,7 +44,7 @@ import * as utilities from "../utilities";
  * DCDN Ipa Domain can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:dcdn/ipaDomain:IpaDomain example <domain_name>
+ * $ pulumi import alicloud:dcdn/ipaDomain:IpaDomain example <domain_name>
  * ```
  */
 export class IpaDomain extends pulumi.CustomResource {

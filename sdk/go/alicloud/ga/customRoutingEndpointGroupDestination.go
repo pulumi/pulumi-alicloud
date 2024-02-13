@@ -111,9 +111,7 @@ import (
 // Global Accelerator (GA) Custom Routing Endpoint Group Destination can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:ga/customRoutingEndpointGroupDestination:CustomRoutingEndpointGroupDestination example <endpoint_group_id>:<custom_routing_endpoint_group_destination_id>
-//
+// $ pulumi import alicloud:ga/customRoutingEndpointGroupDestination:CustomRoutingEndpointGroupDestination example <endpoint_group_id>:<custom_routing_endpoint_group_destination_id>
 // ```
 type CustomRoutingEndpointGroupDestination struct {
 	pulumi.CustomResourceState

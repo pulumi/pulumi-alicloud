@@ -74,7 +74,7 @@ import javax.annotation.Nullable;
  * Ddos Basic Antiddos can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:ddos/basicDefenseThreshold:BasicDefenseThreshold example &lt;instance_id&gt;:&lt;instance_type&gt;:&lt;ddos_type&gt;
+ * $ pulumi import alicloud:ddos/basicDefenseThreshold:BasicDefenseThreshold example &lt;instance_id&gt;:&lt;instance_type&gt;:&lt;ddos_type&gt;
  * ```
  * 
  */

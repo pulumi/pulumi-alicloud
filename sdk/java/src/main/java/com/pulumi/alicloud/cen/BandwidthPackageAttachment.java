@@ -72,7 +72,7 @@ import javax.annotation.Nullable;
  * CEN bandwidth package attachment resource can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:cen/bandwidthPackageAttachment:BandwidthPackageAttachment example bwp-abc123456
+ * $ pulumi import alicloud:cen/bandwidthPackageAttachment:BandwidthPackageAttachment example bwp-abc123456
  * ```
  * 
  */

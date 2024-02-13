@@ -16,7 +16,7 @@ import * as utilities from "../utilities";
  * ARMS Prometheus Monitoring can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:arms/prometheusMonitoring:PrometheusMonitoring example <cluster_id>:<monitoring_name>:<type>
+ * $ pulumi import alicloud:arms/prometheusMonitoring:PrometheusMonitoring example <cluster_id>:<monitoring_name>:<type>
  * ```
  */
 export class PrometheusMonitoring extends pulumi.CustomResource {

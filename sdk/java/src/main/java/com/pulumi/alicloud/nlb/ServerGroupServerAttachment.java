@@ -94,7 +94,7 @@ import javax.annotation.Nullable;
  * NLB Server Group Server Attachment can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:nlb/serverGroupServerAttachment:ServerGroupServerAttachment example &lt;server_group_id&gt;:&lt;server_id&gt;:&lt;server_type&gt;:&lt;port&gt;
+ * $ pulumi import alicloud:nlb/serverGroupServerAttachment:ServerGroupServerAttachment example &lt;server_group_id&gt;:&lt;server_id&gt;:&lt;server_type&gt;:&lt;port&gt;
  * ```
  * 
  */

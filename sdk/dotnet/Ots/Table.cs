@@ -101,7 +101,7 @@ namespace Pulumi.AliCloud.Ots
     /// OTS table can be imported using id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:ots/table:Table table my-ots:ots_table
+    /// $ pulumi import alicloud:ots/table:Table table my-ots:ots_table
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:ots/table:Table")]

@@ -25,7 +25,7 @@ import * as utilities from "../utilities";
  * DTS Migration Job can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:dts/migrationJob:MigrationJob example <id>
+ * $ pulumi import alicloud:dts/migrationJob:MigrationJob example <id>
  * ```
  */
 export class MigrationJob extends pulumi.CustomResource {

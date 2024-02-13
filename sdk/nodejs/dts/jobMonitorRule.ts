@@ -16,7 +16,7 @@ import * as utilities from "../utilities";
  * DTS Job Monitor Rule can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:dts/jobMonitorRule:JobMonitorRule example <dts_job_id>
+ * $ pulumi import alicloud:dts/jobMonitorRule:JobMonitorRule example <dts_job_id>
  * ```
  */
 export class JobMonitorRule extends pulumi.CustomResource {

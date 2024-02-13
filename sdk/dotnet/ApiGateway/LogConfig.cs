@@ -68,7 +68,7 @@ namespace Pulumi.AliCloud.ApiGateway
     /// Api Gateway Log Config can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:apigateway/logConfig:LogConfig example &lt;log_type&gt;
+    /// $ pulumi import alicloud:apigateway/logConfig:LogConfig example &lt;log_type&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:apigateway/logConfig:LogConfig")]

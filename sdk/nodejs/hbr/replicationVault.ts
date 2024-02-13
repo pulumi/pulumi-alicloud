@@ -43,7 +43,7 @@ import * as utilities from "../utilities";
  * Hybrid Backup Recovery (HBR) Replication Vault can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:hbr/replicationVault:ReplicationVault example <id>
+ * $ pulumi import alicloud:hbr/replicationVault:ReplicationVault example <id>
  * ```
  */
 export class ReplicationVault extends pulumi.CustomResource {

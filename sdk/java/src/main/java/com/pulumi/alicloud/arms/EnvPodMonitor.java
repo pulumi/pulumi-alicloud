@@ -26,7 +26,7 @@ import javax.annotation.Nullable;
  * ARMS Env Pod Monitor can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:arms/envPodMonitor:EnvPodMonitor example &lt;environment_id&gt;:&lt;namespace&gt;:&lt;env_pod_monitor_name&gt;
+ * $ pulumi import alicloud:arms/envPodMonitor:EnvPodMonitor example &lt;environment_id&gt;:&lt;namespace&gt;:&lt;env_pod_monitor_name&gt;
  * ```
  * 
  */

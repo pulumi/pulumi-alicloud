@@ -54,7 +54,7 @@ namespace Pulumi.AliCloud.Dfs
     /// DFS Access Rule can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:dfs/accessRule:AccessRule example &lt;access_group_id&gt;:&lt;access_rule_id&gt;
+    /// $ pulumi import alicloud:dfs/accessRule:AccessRule example &lt;access_group_id&gt;:&lt;access_rule_id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:dfs/accessRule:AccessRule")]

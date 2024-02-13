@@ -103,9 +103,7 @@ import (
 // VPN Gateway Vpn Attachment can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:vpn/gatewayVpnAttachment:GatewayVpnAttachment example <id>
-//
+// $ pulumi import alicloud:vpn/gatewayVpnAttachment:GatewayVpnAttachment example <id>
 // ```
 type GatewayVpnAttachment struct {
 	pulumi.CustomResourceState

@@ -53,7 +53,7 @@ import * as utilities from "../utilities";
  * RabbitMQ (AMQP) Queue can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:amqp/queue:Queue example <instance_id>:<virtual_host_name>:<queue_name>
+ * $ pulumi import alicloud:amqp/queue:Queue example <instance_id>:<virtual_host_name>:<queue_name>
  * ```
  */
 export class Queue extends pulumi.CustomResource {

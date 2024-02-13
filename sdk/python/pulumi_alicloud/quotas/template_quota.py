@@ -394,7 +394,7 @@ class TemplateQuota(pulumi.CustomResource):
         Quotas Template Quota can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:quotas/templateQuota:TemplateQuota example <id>
+        $ pulumi import alicloud:quotas/templateQuota:TemplateQuota example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -459,7 +459,7 @@ class TemplateQuota(pulumi.CustomResource):
         Quotas Template Quota can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:quotas/templateQuota:TemplateQuota example <id>
+        $ pulumi import alicloud:quotas/templateQuota:TemplateQuota example <id>
         ```
 
         :param str resource_name: The name of the resource.

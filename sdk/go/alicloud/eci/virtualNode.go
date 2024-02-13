@@ -119,9 +119,7 @@ import (
 // ECI Virtual Node can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:eci/virtualNode:VirtualNode example <id>
-//
+// $ pulumi import alicloud:eci/virtualNode:VirtualNode example <id>
 // ```
 type VirtualNode struct {
 	pulumi.CustomResourceState

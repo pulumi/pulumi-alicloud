@@ -332,7 +332,7 @@ class AddressBook(pulumi.CustomResource):
         Cloud Firewall Address Book can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:cloudfirewall/addressBook:AddressBook example <id>
+        $ pulumi import alicloud:cloudfirewall/addressBook:AddressBook example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -385,7 +385,7 @@ class AddressBook(pulumi.CustomResource):
         Cloud Firewall Address Book can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:cloudfirewall/addressBook:AddressBook example <id>
+        $ pulumi import alicloud:cloudfirewall/addressBook:AddressBook example <id>
         ```
 
         :param str resource_name: The name of the resource.

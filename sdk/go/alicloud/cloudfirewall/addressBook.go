@@ -61,9 +61,7 @@ import (
 // Cloud Firewall Address Book can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:cloudfirewall/addressBook:AddressBook example <id>
-//
+// $ pulumi import alicloud:cloudfirewall/addressBook:AddressBook example <id>
 // ```
 type AddressBook struct {
 	pulumi.CustomResourceState

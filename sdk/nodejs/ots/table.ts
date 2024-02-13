@@ -78,7 +78,7 @@ import * as utilities from "../utilities";
  * OTS table can be imported using id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:ots/table:Table table my-ots:ots_table
+ * $ pulumi import alicloud:ots/table:Table table my-ots:ots_table
  * ```
  */
 export class Table extends pulumi.CustomResource {

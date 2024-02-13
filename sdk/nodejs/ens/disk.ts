@@ -34,7 +34,7 @@ import * as utilities from "../utilities";
  * ENS Disk can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:ens/disk:Disk example <id>
+ * $ pulumi import alicloud:ens/disk:Disk example <id>
  * ```
  */
 export class Disk extends pulumi.CustomResource {

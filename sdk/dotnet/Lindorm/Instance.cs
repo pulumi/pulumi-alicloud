@@ -73,7 +73,7 @@ namespace Pulumi.AliCloud.Lindorm
     /// Lindorm Instance can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:lindorm/instance:Instance example &lt;id&gt;
+    /// $ pulumi import alicloud:lindorm/instance:Instance example &lt;id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:lindorm/instance:Instance")]

@@ -21,7 +21,7 @@ namespace Pulumi.AliCloud.CloudStorageGateway
     /// Cloud Storage Gateway Express Sync Share Attachment can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:cloudstoragegateway/expressSyncShareAttachment:ExpressSyncShareAttachment example &lt;express_sync_id&gt;:&lt;gateway_id&gt;:&lt;share_name&gt;
+    /// $ pulumi import alicloud:cloudstoragegateway/expressSyncShareAttachment:ExpressSyncShareAttachment example &lt;express_sync_id&gt;:&lt;gateway_id&gt;:&lt;share_name&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:cloudstoragegateway/expressSyncShareAttachment:ExpressSyncShareAttachment")]

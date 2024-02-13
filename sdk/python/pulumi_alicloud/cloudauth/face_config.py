@@ -127,7 +127,7 @@ class FaceConfig(pulumi.CustomResource):
         Cloudauth Face Config can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:cloudauth/faceConfig:FaceConfig example <lang>
+        $ pulumi import alicloud:cloudauth/faceConfig:FaceConfig example <lang>
         ```
 
         :param str resource_name: The name of the resource.
@@ -155,7 +155,7 @@ class FaceConfig(pulumi.CustomResource):
         Cloudauth Face Config can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:cloudauth/faceConfig:FaceConfig example <lang>
+        $ pulumi import alicloud:cloudauth/faceConfig:FaceConfig example <lang>
         ```
 
         :param str resource_name: The name of the resource.

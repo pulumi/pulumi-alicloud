@@ -134,7 +134,7 @@ import javax.annotation.Nullable;
  * ESS eci scaling configuration can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:ess/eciScalingConfiguration:EciScalingConfiguration example asc-abc123456
+ * $ pulumi import alicloud:ess/eciScalingConfiguration:EciScalingConfiguration example asc-abc123456
  * ```
  * 
  */

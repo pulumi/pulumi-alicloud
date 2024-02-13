@@ -51,7 +51,7 @@ import javax.annotation.Nullable;
  * Api gateway group can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:apigateway/group:Group example &#34;ab2351f2ce904edaa8d92a0510832b91&#34;
+ * $ pulumi import alicloud:apigateway/group:Group example &#34;ab2351f2ce904edaa8d92a0510832b91&#34;
  * ```
  * 
  */

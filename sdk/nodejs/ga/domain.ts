@@ -35,7 +35,7 @@ import * as utilities from "../utilities";
  * Ga Domain can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:ga/domain:Domain example <accelerator_id>:<domain>
+ * $ pulumi import alicloud:ga/domain:Domain example <accelerator_id>:<domain>
  * ```
  */
 export class Domain extends pulumi.CustomResource {

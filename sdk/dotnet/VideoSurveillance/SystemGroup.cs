@@ -45,7 +45,7 @@ namespace Pulumi.AliCloud.VideoSurveillance
     /// Video Surveillance System Group can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:videosurveillance/systemGroup:SystemGroup example &lt;id&gt;
+    /// $ pulumi import alicloud:videosurveillance/systemGroup:SystemGroup example &lt;id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:videosurveillance/systemGroup:SystemGroup")]

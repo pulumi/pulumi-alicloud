@@ -38,7 +38,7 @@ import * as utilities from "../utilities";
  * DFS File System can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:dfs/fileSystem:FileSystem example <id>
+ * $ pulumi import alicloud:dfs/fileSystem:FileSystem example <id>
  * ```
  */
 export class FileSystem extends pulumi.CustomResource {

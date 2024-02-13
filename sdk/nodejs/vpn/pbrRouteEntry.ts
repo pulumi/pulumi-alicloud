@@ -44,7 +44,7 @@ import * as utilities from "../utilities";
  * VPN Pbr route entry can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:vpn/pbrRouteEntry:PbrRouteEntry example <vpn_gateway_id>:<next_hop>:<route_source>:<route_dest>
+ * $ pulumi import alicloud:vpn/pbrRouteEntry:PbrRouteEntry example <vpn_gateway_id>:<next_hop>:<route_source>:<route_dest>
  * ```
  */
 export class PbrRouteEntry extends pulumi.CustomResource {

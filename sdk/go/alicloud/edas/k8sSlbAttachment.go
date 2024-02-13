@@ -23,9 +23,7 @@ import (
 // Slb information of EDAS k8s application can be imported using the ID of an EDAS k8s application. e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:edas/k8sSlbAttachment:K8sSlbAttachment example <EDAS k8s app id>
-//
+// $ pulumi import alicloud:edas/k8sSlbAttachment:K8sSlbAttachment example <EDAS k8s app id>
 // ```
 type K8sSlbAttachment struct {
 	pulumi.CustomResourceState

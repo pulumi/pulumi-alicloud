@@ -72,7 +72,7 @@ namespace Pulumi.AliCloud.EventBridge
     /// Event Bridge Rule can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:eventbridge/rule:Rule example &lt;event_bus_name&gt;:&lt;rule_name&gt;
+    /// $ pulumi import alicloud:eventbridge/rule:Rule example &lt;event_bus_name&gt;:&lt;rule_name&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:eventbridge/rule:Rule")]

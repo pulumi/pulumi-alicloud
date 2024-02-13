@@ -113,7 +113,7 @@ import javax.annotation.Nullable;
  * SSL Certificates Certificate can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:cas/serviceCertificate:ServiceCertificate example &lt;id&gt;
+ * $ pulumi import alicloud:cas/serviceCertificate:ServiceCertificate example &lt;id&gt;
  * ```
  * 
  */

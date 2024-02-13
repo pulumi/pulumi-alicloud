@@ -345,7 +345,7 @@ class NatIp(pulumi.CustomResource):
         VPC Nat Ip can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:vpc/natIp:NatIp example <nat_gateway_id>:<nat_ip_id>
+        $ pulumi import alicloud:vpc/natIp:NatIp example <nat_gateway_id>:<nat_ip_id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -414,7 +414,7 @@ class NatIp(pulumi.CustomResource):
         VPC Nat Ip can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:vpc/natIp:NatIp example <nat_gateway_id>:<nat_ip_id>
+        $ pulumi import alicloud:vpc/natIp:NatIp example <nat_gateway_id>:<nat_ip_id>
         ```
 
         :param str resource_name: The name of the resource.

@@ -1405,7 +1405,7 @@ class SubscriptionJob(pulumi.CustomResource):
         DTS Subscription Job can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:dts/subscriptionJob:SubscriptionJob example <id>
+        $ pulumi import alicloud:dts/subscriptionJob:SubscriptionJob example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -1545,7 +1545,7 @@ class SubscriptionJob(pulumi.CustomResource):
         DTS Subscription Job can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:dts/subscriptionJob:SubscriptionJob example <id>
+        $ pulumi import alicloud:dts/subscriptionJob:SubscriptionJob example <id>
         ```
 
         :param str resource_name: The name of the resource.

@@ -327,7 +327,7 @@ class ClientFileProtect(pulumi.CustomResource):
         Threat Detection Client File Protect can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:threatdetection/clientFileProtect:ClientFileProtect example <id>
+        $ pulumi import alicloud:threatdetection/clientFileProtect:ClientFileProtect example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -382,7 +382,7 @@ class ClientFileProtect(pulumi.CustomResource):
         Threat Detection Client File Protect can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:threatdetection/clientFileProtect:ClientFileProtect example <id>
+        $ pulumi import alicloud:threatdetection/clientFileProtect:ClientFileProtect example <id>
         ```
 
         :param str resource_name: The name of the resource.

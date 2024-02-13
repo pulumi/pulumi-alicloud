@@ -126,7 +126,7 @@ namespace Pulumi.AliCloud.Ess
     /// ESS scaling configuration can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:ess/scalingConfiguration:ScalingConfiguration example asg-abc123456
+    /// $ pulumi import alicloud:ess/scalingConfiguration:ScalingConfiguration example asg-abc123456
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:ess/scalingConfiguration:ScalingConfiguration")]

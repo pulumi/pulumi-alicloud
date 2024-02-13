@@ -53,7 +53,7 @@ import * as utilities from "../utilities";
  * Hybrid Backup Recovery (HBR) Hana Backup Plan can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:hbr/hanaBackupPlan:HanaBackupPlan example <plan_id>:<vault_id>:<cluster_id>
+ * $ pulumi import alicloud:hbr/hanaBackupPlan:HanaBackupPlan example <plan_id>:<vault_id>:<cluster_id>
  * ```
  */
 export class HanaBackupPlan extends pulumi.CustomResource {

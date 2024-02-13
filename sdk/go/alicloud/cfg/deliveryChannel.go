@@ -17,9 +17,7 @@ import (
 // Alicloud Config Delivery Channel can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:cfg/deliveryChannel:DeliveryChannel example cdc-49a2ad756057********
-//
+// $ pulumi import alicloud:cfg/deliveryChannel:DeliveryChannel example cdc-49a2ad756057********
 // ```
 type DeliveryChannel struct {
 	pulumi.CustomResourceState

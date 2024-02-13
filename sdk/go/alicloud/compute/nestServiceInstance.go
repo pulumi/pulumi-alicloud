@@ -152,9 +152,7 @@ import (
 // Compute Nest Service Instance can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:compute/nestServiceInstance:NestServiceInstance example <id>
-//
+// $ pulumi import alicloud:compute/nestServiceInstance:NestServiceInstance example <id>
 // ```
 type NestServiceInstance struct {
 	pulumi.CustomResourceState

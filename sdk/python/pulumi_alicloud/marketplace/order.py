@@ -318,7 +318,7 @@ class Order(pulumi.CustomResource):
         Market order can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:marketplace/order:Order order your-order-id
+        $ pulumi import alicloud:marketplace/order:Order order your-order-id
         ```
 
         :param str resource_name: The name of the resource.
@@ -362,7 +362,7 @@ class Order(pulumi.CustomResource):
         Market order can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:marketplace/order:Order order your-order-id
+        $ pulumi import alicloud:marketplace/order:Order order your-order-id
         ```
 
         :param str resource_name: The name of the resource.

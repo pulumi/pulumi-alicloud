@@ -269,7 +269,7 @@ class Vault(pulumi.CustomResource):
         HBR Vault can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:hbr/vault:Vault example <id>
+        $ pulumi import alicloud:hbr/vault:Vault example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -310,7 +310,7 @@ class Vault(pulumi.CustomResource):
         HBR Vault can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:hbr/vault:Vault example <id>
+        $ pulumi import alicloud:hbr/vault:Vault example <id>
         ```
 
         :param str resource_name: The name of the resource.

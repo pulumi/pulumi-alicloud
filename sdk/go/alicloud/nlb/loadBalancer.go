@@ -111,9 +111,7 @@ import (
 // NLB Load Balancer can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:nlb/loadBalancer:LoadBalancer example <id>
-//
+// $ pulumi import alicloud:nlb/loadBalancer:LoadBalancer example <id>
 // ```
 type LoadBalancer struct {
 	pulumi.CustomResourceState

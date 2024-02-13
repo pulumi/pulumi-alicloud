@@ -59,7 +59,7 @@ import * as utilities from "../utilities";
  * Click House Account can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:clickhouse/account:Account example <db_cluster_id>:<account_name>
+ * $ pulumi import alicloud:clickhouse/account:Account example <db_cluster_id>:<account_name>
  * ```
  */
 export class Account extends pulumi.CustomResource {

@@ -344,7 +344,7 @@ class SecondaryIndex(pulumi.CustomResource):
         OTS secondary index can be imported using id, e.g.
 
         ```sh
-         $ pulumi import alicloud:ots/secondaryIndex:SecondaryIndex index1 <instance_name>:<table_name>:<index_name>:<index_type>
+        $ pulumi import alicloud:ots/secondaryIndex:SecondaryIndex index1 <instance_name>:<table_name>:<index_name>:<index_type>
         ```
 
         :param str resource_name: The name of the resource.
@@ -449,7 +449,7 @@ class SecondaryIndex(pulumi.CustomResource):
         OTS secondary index can be imported using id, e.g.
 
         ```sh
-         $ pulumi import alicloud:ots/secondaryIndex:SecondaryIndex index1 <instance_name>:<table_name>:<index_name>:<index_type>
+        $ pulumi import alicloud:ots/secondaryIndex:SecondaryIndex index1 <instance_name>:<table_name>:<index_name>:<index_type>
         ```
 
         :param str resource_name: The name of the resource.

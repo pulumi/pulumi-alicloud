@@ -42,7 +42,7 @@ namespace Pulumi.AliCloud.Ecs
     /// ECS Session Manager Status can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:ecs/ecsSessionManagerStatus:EcsSessionManagerStatus example &lt;session_manager_status_name&gt;
+    /// $ pulumi import alicloud:ecs/ecsSessionManagerStatus:EcsSessionManagerStatus example &lt;session_manager_status_name&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:ecs/ecsSessionManagerStatus:EcsSessionManagerStatus")]

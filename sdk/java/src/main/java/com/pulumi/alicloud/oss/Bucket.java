@@ -39,7 +39,7 @@ import javax.annotation.Nullable;
  * OSS bucket can be imported using the bucket name, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:oss/bucket:Bucket bucket bucket-12345678
+ * $ pulumi import alicloud:oss/bucket:Bucket bucket bucket-12345678
  * ```
  * 
  */

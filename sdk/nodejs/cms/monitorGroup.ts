@@ -36,7 +36,7 @@ import * as utilities from "../utilities";
  * Cloud Monitor Service Monitor Group can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:cms/monitorGroup:MonitorGroup example <id>
+ * $ pulumi import alicloud:cms/monitorGroup:MonitorGroup example <id>
  * ```
  */
 export class MonitorGroup extends pulumi.CustomResource {

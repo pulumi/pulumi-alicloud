@@ -61,9 +61,7 @@ import (
 // DBFS Dbfs Instance can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:databasefilesystem/instance:Instance example <id>
-//
+// $ pulumi import alicloud:databasefilesystem/instance:Instance example <id>
 // ```
 type Instance struct {
 	pulumi.CustomResourceState

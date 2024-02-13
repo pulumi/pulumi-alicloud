@@ -82,7 +82,7 @@ namespace Pulumi.AliCloud.Dfs
     /// DFS Mount Point can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:dfs/mountPoint:MountPoint example &lt;file_system_id&gt;:&lt;mount_point_id&gt;
+    /// $ pulumi import alicloud:dfs/mountPoint:MountPoint example &lt;file_system_id&gt;:&lt;mount_point_id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:dfs/mountPoint:MountPoint")]

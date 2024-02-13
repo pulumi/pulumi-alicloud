@@ -86,7 +86,7 @@ import * as utilities from "../utilities";
  * Log etl can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:log/etl:Etl example tf-log-project:tf-log-etl-name
+ * $ pulumi import alicloud:log/etl:Etl example tf-log-project:tf-log-etl-name
  * ```
  */
 export class Etl extends pulumi.CustomResource {

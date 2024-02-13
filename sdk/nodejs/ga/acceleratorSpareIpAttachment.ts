@@ -52,7 +52,7 @@ import * as utilities from "../utilities";
  * Global Accelerator (GA) Accelerator Spare Ip Attachment can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:ga/acceleratorSpareIpAttachment:AcceleratorSpareIpAttachment example <accelerator_id>:<spare_ip>
+ * $ pulumi import alicloud:ga/acceleratorSpareIpAttachment:AcceleratorSpareIpAttachment example <accelerator_id>:<spare_ip>
  * ```
  */
 export class AcceleratorSpareIpAttachment extends pulumi.CustomResource {

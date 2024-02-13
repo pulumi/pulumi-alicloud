@@ -64,7 +64,7 @@ namespace Pulumi.AliCloud.Vpc
     /// Vpc Ipv4 Gateway can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:vpc/ipv4Gateway:Ipv4Gateway example &lt;id&gt;
+    /// $ pulumi import alicloud:vpc/ipv4Gateway:Ipv4Gateway example &lt;id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:vpc/ipv4Gateway:Ipv4Gateway")]

@@ -136,9 +136,7 @@ import (
 // VPC Ipv6 Internet Bandwidth can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:vpc/ipv6InternetBandwidth:Ipv6InternetBandwidth example <id>
-//
+// $ pulumi import alicloud:vpc/ipv6InternetBandwidth:Ipv6InternetBandwidth example <id>
 // ```
 type Ipv6InternetBandwidth struct {
 	pulumi.CustomResourceState

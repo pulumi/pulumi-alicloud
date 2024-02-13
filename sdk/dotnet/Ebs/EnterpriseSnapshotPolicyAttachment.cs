@@ -71,7 +71,7 @@ namespace Pulumi.AliCloud.Ebs
     /// EBS Enterprise Snapshot Policy Attachment can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:ebs/enterpriseSnapshotPolicyAttachment:EnterpriseSnapshotPolicyAttachment example &lt;policy_id&gt;:&lt;disk_id&gt;
+    /// $ pulumi import alicloud:ebs/enterpriseSnapshotPolicyAttachment:EnterpriseSnapshotPolicyAttachment example &lt;policy_id&gt;:&lt;disk_id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:ebs/enterpriseSnapshotPolicyAttachment:EnterpriseSnapshotPolicyAttachment")]

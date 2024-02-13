@@ -71,9 +71,7 @@ import (
 // Message Notification Service Subscription can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:message/serviceSubscription:ServiceSubscription example <topic_name>:<subscription_name>
-//
+// $ pulumi import alicloud:message/serviceSubscription:ServiceSubscription example <topic_name>:<subscription_name>
 // ```
 type ServiceSubscription struct {
 	pulumi.CustomResourceState

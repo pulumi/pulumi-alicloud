@@ -54,9 +54,7 @@ import (
 // ECD Simple Office Site can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:eds/simpleOfficeSite:SimpleOfficeSite example <id>
-//
+// $ pulumi import alicloud:eds/simpleOfficeSite:SimpleOfficeSite example <id>
 // ```
 type SimpleOfficeSite struct {
 	pulumi.CustomResourceState

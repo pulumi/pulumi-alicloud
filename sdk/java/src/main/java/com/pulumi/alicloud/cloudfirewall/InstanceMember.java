@@ -68,7 +68,7 @@ import javax.annotation.Nullable;
  * Cloud Firewall Instance Member can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:cloudfirewall/instanceMember:InstanceMember example &lt;id&gt;
+ * $ pulumi import alicloud:cloudfirewall/instanceMember:InstanceMember example &lt;id&gt;
  * ```
  * 
  */

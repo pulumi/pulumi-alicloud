@@ -110,7 +110,7 @@ namespace Pulumi.AliCloud.Hbr
     /// Hybrid Backup Recovery (HBR) Ecs Backup Client can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:hbr/ecsBackupClient:EcsBackupClient example &lt;id&gt;
+    /// $ pulumi import alicloud:hbr/ecsBackupClient:EcsBackupClient example &lt;id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:hbr/ecsBackupClient:EcsBackupClient")]

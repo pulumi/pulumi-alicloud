@@ -53,7 +53,7 @@ import * as utilities from "../utilities";
  * VPC Gateway Endpoint Route Table Attachment can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:vpc/gatewayEndpointRouteTableAttachment:GatewayEndpointRouteTableAttachment example <gateway_endpoint_id>:<route_table_id>
+ * $ pulumi import alicloud:vpc/gatewayEndpointRouteTableAttachment:GatewayEndpointRouteTableAttachment example <gateway_endpoint_id>:<route_table_id>
  * ```
  */
 export class GatewayEndpointRouteTableAttachment extends pulumi.CustomResource {

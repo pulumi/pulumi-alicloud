@@ -206,7 +206,7 @@ class ConfigMap(pulumi.CustomResource):
         Serverless App Engine (SAE) Config Map can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:sae/configMap:ConfigMap example <id>
+        $ pulumi import alicloud:sae/configMap:ConfigMap example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -265,7 +265,7 @@ class ConfigMap(pulumi.CustomResource):
         Serverless App Engine (SAE) Config Map can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:sae/configMap:ConfigMap example <id>
+        $ pulumi import alicloud:sae/configMap:ConfigMap example <id>
         ```
 
         :param str resource_name: The name of the resource.

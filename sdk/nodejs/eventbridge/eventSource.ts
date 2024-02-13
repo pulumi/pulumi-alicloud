@@ -40,7 +40,7 @@ import * as utilities from "../utilities";
  * Event Bridge Event Source can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:eventbridge/eventSource:EventSource example <event_source_name>
+ * $ pulumi import alicloud:eventbridge/eventSource:EventSource example <event_source_name>
  * ```
  */
 export class EventSource extends pulumi.CustomResource {

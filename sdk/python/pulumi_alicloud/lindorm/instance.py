@@ -1575,7 +1575,7 @@ class Instance(pulumi.CustomResource):
         Lindorm Instance can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:lindorm/instance:Instance example <id>
+        $ pulumi import alicloud:lindorm/instance:Instance example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -1674,7 +1674,7 @@ class Instance(pulumi.CustomResource):
         Lindorm Instance can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:lindorm/instance:Instance example <id>
+        $ pulumi import alicloud:lindorm/instance:Instance example <id>
         ```
 
         :param str resource_name: The name of the resource.

@@ -91,9 +91,7 @@ import (
 // Alidns Gtm Instance can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:dns/gtmInstance:GtmInstance example <id>
-//
+// $ pulumi import alicloud:dns/gtmInstance:GtmInstance example <id>
 // ```
 type GtmInstance struct {
 	pulumi.CustomResourceState

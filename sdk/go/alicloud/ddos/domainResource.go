@@ -89,9 +89,7 @@ import (
 // Anti-DDoS Pro Domain Resource can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:ddos/domainResource:DomainResource example <domain>
-//
+// $ pulumi import alicloud:ddos/domainResource:DomainResource example <domain>
 // ```
 type DomainResource struct {
 	pulumi.CustomResourceState

@@ -34,7 +34,7 @@ import * as utilities from "../utilities";
  * ROS Template can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:ros/template:Template example <template_id>
+ * $ pulumi import alicloud:ros/template:Template example <template_id>
  * ```
  */
 export class Template extends pulumi.CustomResource {

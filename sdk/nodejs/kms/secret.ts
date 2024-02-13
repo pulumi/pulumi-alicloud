@@ -31,7 +31,7 @@ import * as utilities from "../utilities";
  * KMS secret can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:kms/secret:Secret default <id>
+ * $ pulumi import alicloud:kms/secret:Secret default <id>
  * ```
  */
 export class Secret extends pulumi.CustomResource {

@@ -97,7 +97,7 @@ import * as utilities from "../utilities";
  * ESS scaling group can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:ess/scalingGroup:ScalingGroup example asg-abc123456
+ * $ pulumi import alicloud:ess/scalingGroup:ScalingGroup example asg-abc123456
  * ```
  */
 export class ScalingGroup extends pulumi.CustomResource {

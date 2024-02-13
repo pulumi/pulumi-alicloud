@@ -30,7 +30,7 @@ import * as utilities from "../utilities";
  * CEN instance can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:cen/instance:Instance example cen-abc123456
+ * $ pulumi import alicloud:cen/instance:Instance example cen-abc123456
  * ```
  */
 export class Instance extends pulumi.CustomResource {

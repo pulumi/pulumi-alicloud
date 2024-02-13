@@ -2304,7 +2304,7 @@ class Cluster(pulumi.CustomResource):
         PolarDB cluster can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:polardb/cluster:Cluster example pc-abc12345678
+        $ pulumi import alicloud:polardb/cluster:Cluster example pc-abc12345678
         ```
 
         :param str resource_name: The name of the resource.
@@ -2414,7 +2414,7 @@ class Cluster(pulumi.CustomResource):
         PolarDB cluster can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:polardb/cluster:Cluster example pc-abc12345678
+        $ pulumi import alicloud:polardb/cluster:Cluster example pc-abc12345678
         ```
 
         :param str resource_name: The name of the resource.

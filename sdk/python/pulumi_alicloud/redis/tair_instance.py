@@ -759,7 +759,7 @@ class TairInstance(pulumi.CustomResource):
         Redis Tair Instance can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:redis/tairInstance:TairInstance example <id>
+        $ pulumi import alicloud:redis/tairInstance:TairInstance example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -798,7 +798,7 @@ class TairInstance(pulumi.CustomResource):
         Redis Tair Instance can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:redis/tairInstance:TairInstance example <id>
+        $ pulumi import alicloud:redis/tairInstance:TairInstance example <id>
         ```
 
         :param str resource_name: The name of the resource.

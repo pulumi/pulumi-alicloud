@@ -54,9 +54,7 @@ import (
 // VPN customer gateway can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:vpn/customerGateway:CustomerGateway example <id>
-//
+// $ pulumi import alicloud:vpn/customerGateway:CustomerGateway example <id>
 // ```
 type CustomerGateway struct {
 	pulumi.CustomResourceState

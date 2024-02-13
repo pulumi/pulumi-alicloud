@@ -105,7 +105,7 @@ class Instance(pulumi.CustomResource):
         Wafv3 Instance can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:wafv3/instance:Instance example <id>
+        $ pulumi import alicloud:wafv3/instance:Instance example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -140,7 +140,7 @@ class Instance(pulumi.CustomResource):
         Wafv3 Instance can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:wafv3/instance:Instance example <id>
+        $ pulumi import alicloud:wafv3/instance:Instance example <id>
         ```
 
         :param str resource_name: The name of the resource.

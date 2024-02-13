@@ -635,7 +635,7 @@ class AccessStrategy(pulumi.CustomResource):
         DNS Access Strategy can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:dns/accessStrategy:AccessStrategy example <id>
+        $ pulumi import alicloud:dns/accessStrategy:AccessStrategy example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -677,7 +677,7 @@ class AccessStrategy(pulumi.CustomResource):
         DNS Access Strategy can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:dns/accessStrategy:AccessStrategy example <id>
+        $ pulumi import alicloud:dns/accessStrategy:AccessStrategy example <id>
         ```
 
         :param str resource_name: The name of the resource.

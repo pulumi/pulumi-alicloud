@@ -58,7 +58,7 @@ namespace Pulumi.AliCloud.Vpc
     /// VPC Public Ip Address Pool Cidr Block can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:vpc/publicIpAddressPoolCidrBlock:PublicIpAddressPoolCidrBlock example &lt;public_ip_address_pool_id&gt;:&lt;cidr_block&gt;
+    /// $ pulumi import alicloud:vpc/publicIpAddressPoolCidrBlock:PublicIpAddressPoolCidrBlock example &lt;public_ip_address_pool_id&gt;:&lt;cidr_block&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:vpc/publicIpAddressPoolCidrBlock:PublicIpAddressPoolCidrBlock")]

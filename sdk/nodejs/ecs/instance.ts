@@ -77,7 +77,7 @@ import * as utilities from "../utilities";
  * Instance can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:ecs/instance:Instance example i-abc12345678
+ * $ pulumi import alicloud:ecs/instance:Instance example i-abc12345678
  * ```
  */
 export class Instance extends pulumi.CustomResource {

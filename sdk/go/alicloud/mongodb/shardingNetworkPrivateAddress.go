@@ -113,9 +113,7 @@ import (
 // MongoDB Sharding Network Private Address can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:mongodb/shardingNetworkPrivateAddress:ShardingNetworkPrivateAddress example <db_instance_id>:<node_id>
-//
+// $ pulumi import alicloud:mongodb/shardingNetworkPrivateAddress:ShardingNetworkPrivateAddress example <db_instance_id>:<node_id>
 // ```
 type ShardingNetworkPrivateAddress struct {
 	pulumi.CustomResourceState

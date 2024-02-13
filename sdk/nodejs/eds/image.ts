@@ -68,7 +68,7 @@ import * as utilities from "../utilities";
  * ECD Image can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:eds/image:Image example <id>
+ * $ pulumi import alicloud:eds/image:Image example <id>
  * ```
  */
 export class Image extends pulumi.CustomResource {

@@ -32,7 +32,7 @@ import * as utilities from "../utilities";
  * Container Registry namespace can be imported using the namespace, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:cr/namespace:Namespace default my-namespace
+ * $ pulumi import alicloud:cr/namespace:Namespace default my-namespace
  * ```
  */
 export class Namespace extends pulumi.CustomResource {

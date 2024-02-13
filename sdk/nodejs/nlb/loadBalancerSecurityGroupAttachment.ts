@@ -73,7 +73,7 @@ import * as utilities from "../utilities";
  * Nlb Load Balancer Security Group Attachment can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:nlb/loadBalancerSecurityGroupAttachment:LoadBalancerSecurityGroupAttachment example <LoadBalancerId>:<SecurityGroupId>
+ * $ pulumi import alicloud:nlb/loadBalancerSecurityGroupAttachment:LoadBalancerSecurityGroupAttachment example <LoadBalancerId>:<SecurityGroupId>
  * ```
  */
 export class LoadBalancerSecurityGroupAttachment extends pulumi.CustomResource {

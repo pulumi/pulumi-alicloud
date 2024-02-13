@@ -290,7 +290,7 @@ class BackupPolicy(pulumi.CustomResource):
         GPDB Backup Policy can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:gpdb/backupPolicy:BackupPolicy example <id>
+        $ pulumi import alicloud:gpdb/backupPolicy:BackupPolicy example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -328,7 +328,7 @@ class BackupPolicy(pulumi.CustomResource):
         GPDB Backup Policy can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:gpdb/backupPolicy:BackupPolicy example <id>
+        $ pulumi import alicloud:gpdb/backupPolicy:BackupPolicy example <id>
         ```
 
         :param str resource_name: The name of the resource.

@@ -225,7 +225,7 @@ class EcsKeyPairAttachment(pulumi.CustomResource):
         ECS Key Pair Attachment can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:ecs/ecsKeyPairAttachment:EcsKeyPairAttachment example <key_pair_name>:<instance_ids>
+        $ pulumi import alicloud:ecs/ecsKeyPairAttachment:EcsKeyPairAttachment example <key_pair_name>:<instance_ids>
         ```
 
         :param str resource_name: The name of the resource.
@@ -290,7 +290,7 @@ class EcsKeyPairAttachment(pulumi.CustomResource):
         ECS Key Pair Attachment can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:ecs/ecsKeyPairAttachment:EcsKeyPairAttachment example <key_pair_name>:<instance_ids>
+        $ pulumi import alicloud:ecs/ecsKeyPairAttachment:EcsKeyPairAttachment example <key_pair_name>:<instance_ids>
         ```
 
         :param str resource_name: The name of the resource.

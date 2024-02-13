@@ -21,7 +21,7 @@ namespace Pulumi.AliCloud.ServiceMesh
     /// Service Mesh Service Mesh can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:servicemesh/serviceMesh:ServiceMesh example &lt;id&gt;
+    /// $ pulumi import alicloud:servicemesh/serviceMesh:ServiceMesh example &lt;id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:servicemesh/serviceMesh:ServiceMesh")]

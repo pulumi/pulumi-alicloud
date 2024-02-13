@@ -104,7 +104,7 @@ import * as utilities from "../utilities";
  * ESS attachment can be imported using the id or scaling group id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:ess/attachment:Attachment example asg-abc123456
+ * $ pulumi import alicloud:ess/attachment:Attachment example asg-abc123456
  * ```
  */
 export class Attachment extends pulumi.CustomResource {

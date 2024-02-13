@@ -16,7 +16,7 @@ import * as utilities from "../utilities";
  * ARMS Environment can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:arms/environment:Environment example <id>
+ * $ pulumi import alicloud:arms/environment:Environment example <id>
  * ```
  */
 export class Environment extends pulumi.CustomResource {

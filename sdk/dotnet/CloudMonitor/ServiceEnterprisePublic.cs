@@ -40,7 +40,7 @@ namespace Pulumi.AliCloud.CloudMonitor
     /// Cloud Monitor Service Enterprise Public can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:cloudmonitor/serviceEnterprisePublic:ServiceEnterprisePublic example &lt;id&gt;
+    /// $ pulumi import alicloud:cloudmonitor/serviceEnterprisePublic:ServiceEnterprisePublic example &lt;id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:cloudmonitor/serviceEnterprisePublic:ServiceEnterprisePublic")]

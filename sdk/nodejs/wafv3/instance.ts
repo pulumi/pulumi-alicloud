@@ -27,7 +27,7 @@ import * as utilities from "../utilities";
  * Wafv3 Instance can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:wafv3/instance:Instance example <id>
+ * $ pulumi import alicloud:wafv3/instance:Instance example <id>
  * ```
  */
 export class Instance extends pulumi.CustomResource {

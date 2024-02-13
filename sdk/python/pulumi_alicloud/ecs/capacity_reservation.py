@@ -545,7 +545,7 @@ class CapacityReservation(pulumi.CustomResource):
         Ecs Capacity Reservation can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:ecs/capacityReservation:CapacityReservation example <id>
+        $ pulumi import alicloud:ecs/capacityReservation:CapacityReservation example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -608,7 +608,7 @@ class CapacityReservation(pulumi.CustomResource):
         Ecs Capacity Reservation can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:ecs/capacityReservation:CapacityReservation example <id>
+        $ pulumi import alicloud:ecs/capacityReservation:CapacityReservation example <id>
         ```
 
         :param str resource_name: The name of the resource.

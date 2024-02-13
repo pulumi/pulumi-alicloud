@@ -53,9 +53,7 @@ import (
 // KMS secret can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:kms/secret:Secret default <id>
-//
+// $ pulumi import alicloud:kms/secret:Secret default <id>
 // ```
 type Secret struct {
 	pulumi.CustomResourceState

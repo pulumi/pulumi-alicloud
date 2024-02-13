@@ -63,7 +63,7 @@ namespace Pulumi.AliCloud.Hbr
     /// HBR Nas Backup Plan can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:hbr/nasBackupPlan:NasBackupPlan example &lt;id&gt;
+    /// $ pulumi import alicloud:hbr/nasBackupPlan:NasBackupPlan example &lt;id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:hbr/nasBackupPlan:NasBackupPlan")]

@@ -57,7 +57,7 @@ import javax.annotation.Nullable;
  * Resource Manager handshake can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:resourcemanager/handshake:Handshake example h-QmdexeFm1kE*****
+ * $ pulumi import alicloud:resourcemanager/handshake:Handshake example h-QmdexeFm1kE*****
  * ```
  * 
  */

@@ -284,7 +284,7 @@ class AutoSnapShotPolicy(pulumi.CustomResource):
         Dbfs Auto Snap Shot Policy can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:databasefilesystem/autoSnapShotPolicy:AutoSnapShotPolicy example <id>
+        $ pulumi import alicloud:databasefilesystem/autoSnapShotPolicy:AutoSnapShotPolicy example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -327,7 +327,7 @@ class AutoSnapShotPolicy(pulumi.CustomResource):
         Dbfs Auto Snap Shot Policy can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:databasefilesystem/autoSnapShotPolicy:AutoSnapShotPolicy example <id>
+        $ pulumi import alicloud:databasefilesystem/autoSnapShotPolicy:AutoSnapShotPolicy example <id>
         ```
 
         :param str resource_name: The name of the resource.

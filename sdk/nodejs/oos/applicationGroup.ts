@@ -48,7 +48,7 @@ import * as utilities from "../utilities";
  * OOS Application Group can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:oos/applicationGroup:ApplicationGroup example <application_name>:<application_group_name>
+ * $ pulumi import alicloud:oos/applicationGroup:ApplicationGroup example <application_name>:<application_group_name>
  * ```
  */
 export class ApplicationGroup extends pulumi.CustomResource {

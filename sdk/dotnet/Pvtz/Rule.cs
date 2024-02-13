@@ -21,7 +21,7 @@ namespace Pulumi.AliCloud.Pvtz
     /// Private Zone Rule can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:pvtz/rule:Rule example &lt;id&gt;
+    /// $ pulumi import alicloud:pvtz/rule:Rule example &lt;id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:pvtz/rule:Rule")]

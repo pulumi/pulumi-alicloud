@@ -153,7 +153,7 @@ class IndustrialPidProject(pulumi.CustomResource):
         Brain Industrial Pid Project can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:brain/industrialPidProject:IndustrialPidProject example <id>
+        $ pulumi import alicloud:brain/industrialPidProject:IndustrialPidProject example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -191,7 +191,7 @@ class IndustrialPidProject(pulumi.CustomResource):
         Brain Industrial Pid Project can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:brain/industrialPidProject:IndustrialPidProject example <id>
+        $ pulumi import alicloud:brain/industrialPidProject:IndustrialPidProject example <id>
         ```
 
         :param str resource_name: The name of the resource.

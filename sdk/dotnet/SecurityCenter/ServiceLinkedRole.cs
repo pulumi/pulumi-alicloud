@@ -38,7 +38,7 @@ namespace Pulumi.AliCloud.SecurityCenter
     /// SecurityCenter service-linked roles(SLR) can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:securitycenter/serviceLinkedRole:ServiceLinkedRole example &lt;product_name&gt;
+    /// $ pulumi import alicloud:securitycenter/serviceLinkedRole:ServiceLinkedRole example &lt;product_name&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:securitycenter/serviceLinkedRole:ServiceLinkedRole")]

@@ -190,7 +190,7 @@ class LoginProfile(pulumi.CustomResource):
         RAM login profile can be imported using the id or user name, e.g.
 
         ```sh
-         $ pulumi import alicloud:ram/loginProfile:LoginProfile example my-login
+        $ pulumi import alicloud:ram/loginProfile:LoginProfile example my-login
         ```
 
         :param str resource_name: The name of the resource.
@@ -233,7 +233,7 @@ class LoginProfile(pulumi.CustomResource):
         RAM login profile can be imported using the id or user name, e.g.
 
         ```sh
-         $ pulumi import alicloud:ram/loginProfile:LoginProfile example my-login
+        $ pulumi import alicloud:ram/loginProfile:LoginProfile example my-login
         ```
 
         :param str resource_name: The name of the resource.

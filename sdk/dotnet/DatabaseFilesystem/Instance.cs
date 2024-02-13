@@ -47,7 +47,7 @@ namespace Pulumi.AliCloud.DatabaseFilesystem
     /// DBFS Dbfs Instance can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:databasefilesystem/instance:Instance example &lt;id&gt;
+    /// $ pulumi import alicloud:databasefilesystem/instance:Instance example &lt;id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:databasefilesystem/instance:Instance")]

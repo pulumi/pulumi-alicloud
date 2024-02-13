@@ -67,7 +67,7 @@ import javax.annotation.Nullable;
  * ENS Eip can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:ens/eip:Eip example &lt;id&gt;
+ * $ pulumi import alicloud:ens/eip:Eip example &lt;id&gt;
  * ```
  * 
  */

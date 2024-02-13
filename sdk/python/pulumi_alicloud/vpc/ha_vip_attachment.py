@@ -299,7 +299,7 @@ class HAVipAttachment(pulumi.CustomResource):
         VPC Ha Vip Attachment can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:vpc/hAVipAttachment:HAVipAttachment example <ha_vip_id>:<instance_id>
+        $ pulumi import alicloud:vpc/hAVipAttachment:HAVipAttachment example <ha_vip_id>:<instance_id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -375,7 +375,7 @@ class HAVipAttachment(pulumi.CustomResource):
         VPC Ha Vip Attachment can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:vpc/hAVipAttachment:HAVipAttachment example <ha_vip_id>:<instance_id>
+        $ pulumi import alicloud:vpc/hAVipAttachment:HAVipAttachment example <ha_vip_id>:<instance_id>
         ```
 
         :param str resource_name: The name of the resource.

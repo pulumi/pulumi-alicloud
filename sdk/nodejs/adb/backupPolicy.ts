@@ -10,7 +10,7 @@ import * as utilities from "../utilities";
  * ADB backup policy can be imported using the id or cluster id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:adb/backupPolicy:BackupPolicy example "am-12345678"
+ * $ pulumi import alicloud:adb/backupPolicy:BackupPolicy example "am-12345678"
  * ```
  */
 export class BackupPolicy extends pulumi.CustomResource {

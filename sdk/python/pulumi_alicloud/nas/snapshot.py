@@ -225,7 +225,7 @@ class Snapshot(pulumi.CustomResource):
         Network Attached Storage (NAS) Snapshot can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:nas/snapshot:Snapshot example <id>
+        $ pulumi import alicloud:nas/snapshot:Snapshot example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -283,7 +283,7 @@ class Snapshot(pulumi.CustomResource):
         Network Attached Storage (NAS) Snapshot can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:nas/snapshot:Snapshot example <id>
+        $ pulumi import alicloud:nas/snapshot:Snapshot example <id>
         ```
 
         :param str resource_name: The name of the resource.

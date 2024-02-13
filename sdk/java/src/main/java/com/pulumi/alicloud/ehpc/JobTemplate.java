@@ -61,7 +61,7 @@ import javax.annotation.Nullable;
  * Ehpc Job Template can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:ehpc/jobTemplate:JobTemplate example &lt;id&gt;
+ * $ pulumi import alicloud:ehpc/jobTemplate:JobTemplate example &lt;id&gt;
  * ```
  * 
  */

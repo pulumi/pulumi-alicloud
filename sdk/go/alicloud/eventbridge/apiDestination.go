@@ -76,9 +76,7 @@ import (
 // Event Bridge Api Destination can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:eventbridge/apiDestination:ApiDestination example <id>
-//
+// $ pulumi import alicloud:eventbridge/apiDestination:ApiDestination example <id>
 // ```
 type ApiDestination struct {
 	pulumi.CustomResourceState

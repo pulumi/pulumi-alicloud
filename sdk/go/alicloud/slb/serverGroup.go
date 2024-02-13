@@ -98,9 +98,7 @@ import (
 // Load balancer backend server group can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:slb/serverGroup:ServerGroup example abc123456
-//
+// $ pulumi import alicloud:slb/serverGroup:ServerGroup example abc123456
 // ```
 type ServerGroup struct {
 	pulumi.CustomResourceState

@@ -193,7 +193,7 @@ class EnterpriseAuthorityTemplate(pulumi.CustomResource):
         DMS Enterprise Authority Template can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:dms/enterpriseAuthorityTemplate:EnterpriseAuthorityTemplate example <tid>:<authority_template_id>
+        $ pulumi import alicloud:dms/enterpriseAuthorityTemplate:EnterpriseAuthorityTemplate example <tid>:<authority_template_id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -239,7 +239,7 @@ class EnterpriseAuthorityTemplate(pulumi.CustomResource):
         DMS Enterprise Authority Template can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:dms/enterpriseAuthorityTemplate:EnterpriseAuthorityTemplate example <tid>:<authority_template_id>
+        $ pulumi import alicloud:dms/enterpriseAuthorityTemplate:EnterpriseAuthorityTemplate example <tid>:<authority_template_id>
         ```
 
         :param str resource_name: The name of the resource.

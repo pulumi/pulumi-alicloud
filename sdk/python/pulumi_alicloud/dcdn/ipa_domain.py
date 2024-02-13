@@ -237,7 +237,7 @@ class IpaDomain(pulumi.CustomResource):
         DCDN Ipa Domain can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:dcdn/ipaDomain:IpaDomain example <domain_name>
+        $ pulumi import alicloud:dcdn/ipaDomain:IpaDomain example <domain_name>
         ```
 
         :param str resource_name: The name of the resource.
@@ -293,7 +293,7 @@ class IpaDomain(pulumi.CustomResource):
         DCDN Ipa Domain can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:dcdn/ipaDomain:IpaDomain example <domain_name>
+        $ pulumi import alicloud:dcdn/ipaDomain:IpaDomain example <domain_name>
         ```
 
         :param str resource_name: The name of the resource.

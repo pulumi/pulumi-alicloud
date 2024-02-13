@@ -92,9 +92,7 @@ import (
 // RDS account can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:rds/account:Account example "rm-12345:tf_account"
-//
+// $ pulumi import alicloud:rds/account:Account example "rm-12345:tf_account"
 // ```
 type Account struct {
 	pulumi.CustomResourceState

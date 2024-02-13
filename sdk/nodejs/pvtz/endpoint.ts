@@ -18,7 +18,7 @@ import * as utilities from "../utilities";
  * Private Zone Endpoint can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:pvtz/endpoint:Endpoint example <id>
+ * $ pulumi import alicloud:pvtz/endpoint:Endpoint example <id>
  * ```
  */
 export class Endpoint extends pulumi.CustomResource {

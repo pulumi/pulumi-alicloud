@@ -32,7 +32,7 @@ import * as utilities from "../utilities";
  * ECD User can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:eds/user:User example <end_user_id>
+ * $ pulumi import alicloud:eds/user:User example <end_user_id>
  * ```
  */
 export class User extends pulumi.CustomResource {

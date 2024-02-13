@@ -51,9 +51,7 @@ import (
 // Schedulerx Namespace can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:schedulerx/namespace:Namespace example <id>
-//
+// $ pulumi import alicloud:schedulerx/namespace:Namespace example <id>
 // ```
 type Namespace struct {
 	pulumi.CustomResourceState

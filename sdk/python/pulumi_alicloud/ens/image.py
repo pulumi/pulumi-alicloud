@@ -208,7 +208,7 @@ class Image(pulumi.CustomResource):
         ENS Image can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:ens/image:Image example <id>
+        $ pulumi import alicloud:ens/image:Image example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -268,7 +268,7 @@ class Image(pulumi.CustomResource):
         ENS Image can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:ens/image:Image example <id>
+        $ pulumi import alicloud:ens/image:Image example <id>
         ```
 
         :param str resource_name: The name of the resource.

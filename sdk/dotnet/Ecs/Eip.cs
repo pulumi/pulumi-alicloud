@@ -48,7 +48,7 @@ namespace Pulumi.AliCloud.Ecs
     /// Elastic IP address can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:ecs/eip:Eip example eip-abc12345678
+    /// $ pulumi import alicloud:ecs/eip:Eip example eip-abc12345678
     /// ```
     /// </summary>
     [Obsolete(@"This resource has been deprecated in favour of the EipAddress resource")]

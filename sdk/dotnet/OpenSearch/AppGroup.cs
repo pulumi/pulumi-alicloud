@@ -51,7 +51,7 @@ namespace Pulumi.AliCloud.OpenSearch
     /// Open Search App Group can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:opensearch/appGroup:AppGroup example &lt;id&gt;
+    /// $ pulumi import alicloud:opensearch/appGroup:AppGroup example &lt;id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:opensearch/appGroup:AppGroup")]

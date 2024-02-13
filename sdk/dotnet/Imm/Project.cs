@@ -65,7 +65,7 @@ namespace Pulumi.AliCloud.Imm
     /// Intelligent Media Management Project can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:imm/project:Project example &lt;project&gt;
+    /// $ pulumi import alicloud:imm/project:Project example &lt;project&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:imm/project:Project")]

@@ -34,7 +34,7 @@ import * as utilities from "../utilities";
  * DNS instance be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:dns/instance:Instance example dns-cn-v0h1ldjhfff
+ * $ pulumi import alicloud:dns/instance:Instance example dns-cn-v0h1ldjhfff
  * ```
  */
 export class Instance extends pulumi.CustomResource {

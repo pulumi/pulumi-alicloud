@@ -15,7 +15,7 @@ namespace Pulumi.AliCloud.Gpdb
     /// GPDB Backup Policy can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:gpdb/backupPolicy:BackupPolicy example &lt;id&gt;
+    /// $ pulumi import alicloud:gpdb/backupPolicy:BackupPolicy example &lt;id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:gpdb/backupPolicy:BackupPolicy")]

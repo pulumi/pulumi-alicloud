@@ -60,7 +60,7 @@ namespace Pulumi.AliCloud.Cms
     /// Cloud Monitor Service Dynamic Tag Group can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:cms/dynamicTagGroup:DynamicTagGroup example &lt;id&gt;
+    /// $ pulumi import alicloud:cms/dynamicTagGroup:DynamicTagGroup example &lt;id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:cms/dynamicTagGroup:DynamicTagGroup")]

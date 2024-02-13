@@ -115,7 +115,7 @@ import javax.annotation.Nullable;
  * NLB Load Balancer can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:nlb/loadBalancer:LoadBalancer example &lt;id&gt;
+ * $ pulumi import alicloud:nlb/loadBalancer:LoadBalancer example &lt;id&gt;
  * ```
  * 
  */

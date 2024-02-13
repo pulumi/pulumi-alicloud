@@ -53,7 +53,7 @@ namespace Pulumi.AliCloud.Dns
     /// DdosCoo instance can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:dns/ddosCooInstance:DdosCooInstance example ddoscoo-cn-123456
+    /// $ pulumi import alicloud:dns/ddosCooInstance:DdosCooInstance example ddoscoo-cn-123456
     /// ```
     /// </summary>
     [Obsolete(@"alicloud.dns.DdosCooInstance has been deprecated in favor of alicloud.ddos.DdosCooInstance")]

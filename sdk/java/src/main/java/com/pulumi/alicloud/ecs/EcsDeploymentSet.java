@@ -62,7 +62,7 @@ import javax.annotation.Nullable;
  * ECS Deployment Set can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:ecs/ecsDeploymentSet:EcsDeploymentSet example &lt;id&gt;
+ * $ pulumi import alicloud:ecs/ecsDeploymentSet:EcsDeploymentSet example &lt;id&gt;
  * ```
  * 
  */

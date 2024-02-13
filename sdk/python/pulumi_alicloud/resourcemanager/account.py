@@ -380,7 +380,7 @@ class Account(pulumi.CustomResource):
         Resource Manager Account can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:resourcemanager/account:Account example 13148890145*****
+        $ pulumi import alicloud:resourcemanager/account:Account example 13148890145*****
         ```
 
         :param str resource_name: The name of the resource.
@@ -440,7 +440,7 @@ class Account(pulumi.CustomResource):
         Resource Manager Account can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:resourcemanager/account:Account example 13148890145*****
+        $ pulumi import alicloud:resourcemanager/account:Account example 13148890145*****
         ```
 
         :param str resource_name: The name of the resource.

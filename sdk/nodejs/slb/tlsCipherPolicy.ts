@@ -34,7 +34,7 @@ import * as utilities from "../utilities";
  * SLB Tls Cipher Policy can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:slb/tlsCipherPolicy:TlsCipherPolicy example <id>
+ * $ pulumi import alicloud:slb/tlsCipherPolicy:TlsCipherPolicy example <id>
  * ```
  */
 export class TlsCipherPolicy extends pulumi.CustomResource {

@@ -158,7 +158,7 @@ class Project(pulumi.CustomResource):
         Datahub project can be imported using the *name* or ID, e.g.
 
         ```sh
-         $ pulumi import alicloud:datahub/project:Project example tf_datahub_project
+        $ pulumi import alicloud:datahub/project:Project example tf_datahub_project
         ```
 
         :param str resource_name: The name of the resource.
@@ -199,7 +199,7 @@ class Project(pulumi.CustomResource):
         Datahub project can be imported using the *name* or ID, e.g.
 
         ```sh
-         $ pulumi import alicloud:datahub/project:Project example tf_datahub_project
+        $ pulumi import alicloud:datahub/project:Project example tf_datahub_project
         ```
 
         :param str resource_name: The name of the resource.

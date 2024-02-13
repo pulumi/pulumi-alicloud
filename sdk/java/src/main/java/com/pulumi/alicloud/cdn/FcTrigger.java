@@ -71,7 +71,7 @@ import javax.annotation.Nullable;
  * CDN Fc Trigger can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:cdn/fcTrigger:FcTrigger example &lt;trigger_arn&gt;
+ * $ pulumi import alicloud:cdn/fcTrigger:FcTrigger example &lt;trigger_arn&gt;
  * ```
  * 
  */

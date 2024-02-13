@@ -47,7 +47,7 @@ namespace Pulumi.AliCloud.Eflo
     /// Eflo Vpd can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:eflo/vpd:Vpd example &lt;id&gt;
+    /// $ pulumi import alicloud:eflo/vpd:Vpd example &lt;id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:eflo/vpd:Vpd")]

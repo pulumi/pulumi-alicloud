@@ -678,7 +678,7 @@ class VirtualPhysicalConnection(pulumi.CustomResource):
         Express Connect Virtual Physical Connection can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:expressconnect/virtualPhysicalConnection:VirtualPhysicalConnection example <id>
+        $ pulumi import alicloud:expressconnect/virtualPhysicalConnection:VirtualPhysicalConnection example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -742,7 +742,7 @@ class VirtualPhysicalConnection(pulumi.CustomResource):
         Express Connect Virtual Physical Connection can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:expressconnect/virtualPhysicalConnection:VirtualPhysicalConnection example <id>
+        $ pulumi import alicloud:expressconnect/virtualPhysicalConnection:VirtualPhysicalConnection example <id>
         ```
 
         :param str resource_name: The name of the resource.

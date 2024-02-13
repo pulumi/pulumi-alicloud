@@ -33,7 +33,7 @@ import * as utilities from "../utilities";
  * Api Gateway Backend can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:apigateway/backend:Backend example <id>
+ * $ pulumi import alicloud:apigateway/backend:Backend example <id>
  * ```
  */
 export class Backend extends pulumi.CustomResource {

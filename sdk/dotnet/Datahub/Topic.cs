@@ -67,7 +67,7 @@ namespace Pulumi.AliCloud.Datahub
     /// Datahub topic can be imported using the ID, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:datahub/topic:Topic example tf_datahub_project:tf_datahub_topic
+    /// $ pulumi import alicloud:datahub/topic:Topic example tf_datahub_project:tf_datahub_topic
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:datahub/topic:Topic")]

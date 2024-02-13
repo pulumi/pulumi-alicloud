@@ -18,7 +18,7 @@ import * as utilities from "../utilities";
  * Cloud SSO User can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:cloudsso/user:User example <directory_id>:<user_id>
+ * $ pulumi import alicloud:cloudsso/user:User example <directory_id>:<user_id>
  * ```
  */
 export class User extends pulumi.CustomResource {

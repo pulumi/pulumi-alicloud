@@ -143,9 +143,7 @@ import (
 // ECS Invocation can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:ecs/ecsInvocation:EcsInvocation example <id>
-//
+// $ pulumi import alicloud:ecs/ecsInvocation:EcsInvocation example <id>
 // ```
 type EcsInvocation struct {
 	pulumi.CustomResourceState

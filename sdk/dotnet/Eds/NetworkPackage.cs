@@ -52,7 +52,7 @@ namespace Pulumi.AliCloud.Eds
     /// ECD Network Package can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:eds/networkPackage:NetworkPackage example &lt;id&gt;
+    /// $ pulumi import alicloud:eds/networkPackage:NetworkPackage example &lt;id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:eds/networkPackage:NetworkPackage")]

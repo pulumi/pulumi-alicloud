@@ -12,7 +12,7 @@ import * as utilities from "../utilities";
  * VPN connection can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:vpn/connection:Connection example <id>
+ * $ pulumi import alicloud:vpn/connection:Connection example <id>
  * ```
  */
 export class Connection extends pulumi.CustomResource {

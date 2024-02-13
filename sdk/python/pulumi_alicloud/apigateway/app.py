@@ -149,7 +149,7 @@ class App(pulumi.CustomResource):
         Api gateway app can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:apigateway/app:App example "7379660"
+        $ pulumi import alicloud:apigateway/app:App example "7379660"
         ```
 
         :param str resource_name: The name of the resource.
@@ -181,7 +181,7 @@ class App(pulumi.CustomResource):
         Api gateway app can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:apigateway/app:App example "7379660"
+        $ pulumi import alicloud:apigateway/app:App example "7379660"
         ```
 
         :param str resource_name: The name of the resource.

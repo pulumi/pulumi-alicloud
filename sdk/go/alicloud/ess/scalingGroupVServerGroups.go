@@ -37,9 +37,7 @@ import (
 // ESS vserver groups can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:ess/scalingGroupVServerGroups:ScalingGroupVServerGroups example abc123456
-//
+// $ pulumi import alicloud:ess/scalingGroupVServerGroups:ScalingGroupVServerGroups example abc123456
 // ```
 type ScalingGroupVServerGroups struct {
 	pulumi.CustomResourceState

@@ -188,7 +188,7 @@ class Organization(pulumi.CustomResource):
         RDC Organization can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:rdc/organization:Organization example <id>
+        $ pulumi import alicloud:rdc/organization:Organization example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -229,7 +229,7 @@ class Organization(pulumi.CustomResource):
         RDC Organization can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:rdc/organization:Organization example <id>
+        $ pulumi import alicloud:rdc/organization:Organization example <id>
         ```
 
         :param str resource_name: The name of the resource.

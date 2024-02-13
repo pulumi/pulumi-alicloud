@@ -16,9 +16,7 @@ import (
 // Load balancer can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:slb/applicationLoadBalancer:ApplicationLoadBalancer example lb-abc123456
-//
+// $ pulumi import alicloud:slb/applicationLoadBalancer:ApplicationLoadBalancer example lb-abc123456
 // ```
 type ApplicationLoadBalancer struct {
 	pulumi.CustomResourceState

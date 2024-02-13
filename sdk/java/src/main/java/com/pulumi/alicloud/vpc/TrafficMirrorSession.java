@@ -160,7 +160,7 @@ import javax.annotation.Nullable;
  * VPC Traffic Mirror Session can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:vpc/trafficMirrorSession:TrafficMirrorSession example &lt;id&gt;
+ * $ pulumi import alicloud:vpc/trafficMirrorSession:TrafficMirrorSession example &lt;id&gt;
  * ```
  * 
  */

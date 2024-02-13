@@ -70,7 +70,7 @@ import javax.annotation.Nullable;
  * DMS Enterprise User can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:dms/enterpriseUser:EnterpriseUser example 24356xxx
+ * $ pulumi import alicloud:dms/enterpriseUser:EnterpriseUser example 24356xxx
  * ```
  * 
  */

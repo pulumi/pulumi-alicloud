@@ -149,7 +149,7 @@ import javax.annotation.Nullable;
  * Cen Inter Region Traffic Qos Queue can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:cen/interRegionTrafficQosQueue:InterRegionTrafficQosQueue example &lt;id&gt;
+ * $ pulumi import alicloud:cen/interRegionTrafficQosQueue:InterRegionTrafficQosQueue example &lt;id&gt;
  * ```
  * 
  */

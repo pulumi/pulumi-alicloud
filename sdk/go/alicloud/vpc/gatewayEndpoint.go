@@ -91,9 +91,7 @@ import (
 // VPC Gateway Endpoint can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:vpc/gatewayEndpoint:GatewayEndpoint example <id>
-//
+// $ pulumi import alicloud:vpc/gatewayEndpoint:GatewayEndpoint example <id>
 // ```
 type GatewayEndpoint struct {
 	pulumi.CustomResourceState

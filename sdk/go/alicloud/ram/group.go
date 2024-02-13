@@ -48,9 +48,7 @@ import (
 // RAM group can be imported using the id or name, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:ram/group:Group example my-group
-//
+// $ pulumi import alicloud:ram/group:Group example my-group
 // ```
 type Group struct {
 	pulumi.CustomResourceState

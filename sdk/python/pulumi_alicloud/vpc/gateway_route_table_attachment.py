@@ -211,7 +211,7 @@ class GatewayRouteTableAttachment(pulumi.CustomResource):
         VPC Gateway Route Table Attachment can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:vpc/gatewayRouteTableAttachment:GatewayRouteTableAttachment example <route_table_id>:<ipv4_gateway_id>
+        $ pulumi import alicloud:vpc/gatewayRouteTableAttachment:GatewayRouteTableAttachment example <route_table_id>:<ipv4_gateway_id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -263,7 +263,7 @@ class GatewayRouteTableAttachment(pulumi.CustomResource):
         VPC Gateway Route Table Attachment can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:vpc/gatewayRouteTableAttachment:GatewayRouteTableAttachment example <route_table_id>:<ipv4_gateway_id>
+        $ pulumi import alicloud:vpc/gatewayRouteTableAttachment:GatewayRouteTableAttachment example <route_table_id>:<ipv4_gateway_id>
         ```
 
         :param str resource_name: The name of the resource.

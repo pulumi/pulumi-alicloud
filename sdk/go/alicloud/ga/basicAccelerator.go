@@ -56,9 +56,7 @@ import (
 // Global Accelerator (GA) Basic Accelerator can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:ga/basicAccelerator:BasicAccelerator example <id>
-//
+// $ pulumi import alicloud:ga/basicAccelerator:BasicAccelerator example <id>
 // ```
 type BasicAccelerator struct {
 	pulumi.CustomResourceState

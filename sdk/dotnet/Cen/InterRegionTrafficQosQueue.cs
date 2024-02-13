@@ -132,7 +132,7 @@ namespace Pulumi.AliCloud.Cen
     /// Cen Inter Region Traffic Qos Queue can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:cen/interRegionTrafficQosQueue:InterRegionTrafficQosQueue example &lt;id&gt;
+    /// $ pulumi import alicloud:cen/interRegionTrafficQosQueue:InterRegionTrafficQosQueue example &lt;id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:cen/interRegionTrafficQosQueue:InterRegionTrafficQosQueue")]

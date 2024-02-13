@@ -91,7 +91,7 @@ import javax.annotation.Nullable;
  * Resource Manager Control Policy Attachment can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:resourcemanager/controlPolicyAttachment:ControlPolicyAttachment example &lt;policy_id&gt;:&lt;target_id&gt;
+ * $ pulumi import alicloud:resourcemanager/controlPolicyAttachment:ControlPolicyAttachment example &lt;policy_id&gt;:&lt;target_id&gt;
  * ```
  * 
  */

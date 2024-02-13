@@ -57,9 +57,7 @@ import (
 // Apsara Agile Live (IMP) App Template can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:imp/appTemplate:AppTemplate example <id>
-//
+// $ pulumi import alicloud:imp/appTemplate:AppTemplate example <id>
 // ```
 type AppTemplate struct {
 	pulumi.CustomResourceState

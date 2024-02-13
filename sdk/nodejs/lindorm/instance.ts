@@ -53,7 +53,7 @@ import * as utilities from "../utilities";
  * Lindorm Instance can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:lindorm/instance:Instance example <id>
+ * $ pulumi import alicloud:lindorm/instance:Instance example <id>
  * ```
  */
 export class Instance extends pulumi.CustomResource {

@@ -244,7 +244,7 @@ class Ipv6InternetBandwidth(pulumi.CustomResource):
         VPC Ipv6 Internet Bandwidth can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:vpc/ipv6InternetBandwidth:Ipv6InternetBandwidth example <id>
+        $ pulumi import alicloud:vpc/ipv6InternetBandwidth:Ipv6InternetBandwidth example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -326,7 +326,7 @@ class Ipv6InternetBandwidth(pulumi.CustomResource):
         VPC Ipv6 Internet Bandwidth can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:vpc/ipv6InternetBandwidth:Ipv6InternetBandwidth example <id>
+        $ pulumi import alicloud:vpc/ipv6InternetBandwidth:Ipv6InternetBandwidth example <id>
         ```
 
         :param str resource_name: The name of the resource.

@@ -311,7 +311,7 @@ class LogTailConfig(pulumi.CustomResource):
         Logtial config can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:log/logTailConfig:LogTailConfig example tf-log:tf-log-store:tf-log-config
+        $ pulumi import alicloud:log/logTailConfig:LogTailConfig example tf-log:tf-log-store:tf-log-config
         ```
 
         :param str resource_name: The name of the resource.
@@ -382,7 +382,7 @@ class LogTailConfig(pulumi.CustomResource):
         Logtial config can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:log/logTailConfig:LogTailConfig example tf-log:tf-log-store:tf-log-config
+        $ pulumi import alicloud:log/logTailConfig:LogTailConfig example tf-log:tf-log-store:tf-log-config
         ```
 
         :param str resource_name: The name of the resource.

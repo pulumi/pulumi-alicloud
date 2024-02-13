@@ -49,9 +49,7 @@ import (
 // Brain Industrial Pid Organization can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:brain/industrialPidOrganization:IndustrialPidOrganization example <id>
-//
+// $ pulumi import alicloud:brain/industrialPidOrganization:IndustrialPidOrganization example <id>
 // ```
 type IndustrialPidOrganization struct {
 	pulumi.CustomResourceState

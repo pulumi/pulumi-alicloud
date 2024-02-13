@@ -69,9 +69,7 @@ import (
 // ONS GROUP can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:rocketmq/group:Group group MQ_INST_1234567890_Baso1234567:GID-onsGroupDemo
-//
+// $ pulumi import alicloud:rocketmq/group:Group group MQ_INST_1234567890_Baso1234567:GID-onsGroupDemo
 // ```
 type Group struct {
 	pulumi.CustomResourceState

@@ -52,7 +52,7 @@ import * as utilities from "../utilities";
  * Actiontrail History Delivery Job can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:actiontrail/historyDeliveryJob:HistoryDeliveryJob example <id>
+ * $ pulumi import alicloud:actiontrail/historyDeliveryJob:HistoryDeliveryJob example <id>
  * ```
  */
 export class HistoryDeliveryJob extends pulumi.CustomResource {

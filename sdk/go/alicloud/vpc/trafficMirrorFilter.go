@@ -97,9 +97,7 @@ import (
 // VPC Traffic Mirror Filter can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:vpc/trafficMirrorFilter:TrafficMirrorFilter example <id>
-//
+// $ pulumi import alicloud:vpc/trafficMirrorFilter:TrafficMirrorFilter example <id>
 // ```
 type TrafficMirrorFilter struct {
 	pulumi.CustomResourceState

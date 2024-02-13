@@ -458,7 +458,7 @@ class HaVipv2(pulumi.CustomResource):
         Vpc Ha Vip can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:vpc/haVipv2:HaVipv2 example <id>
+        $ pulumi import alicloud:vpc/haVipv2:HaVipv2 example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -526,7 +526,7 @@ class HaVipv2(pulumi.CustomResource):
         Vpc Ha Vip can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:vpc/haVipv2:HaVipv2 example <id>
+        $ pulumi import alicloud:vpc/haVipv2:HaVipv2 example <id>
         ```
 
         :param str resource_name: The name of the resource.

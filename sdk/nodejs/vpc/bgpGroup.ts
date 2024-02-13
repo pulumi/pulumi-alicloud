@@ -55,7 +55,7 @@ import * as utilities from "../utilities";
  * VPC Bgp Group can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:vpc/bgpGroup:BgpGroup example <id>
+ * $ pulumi import alicloud:vpc/bgpGroup:BgpGroup example <id>
  * ```
  */
 export class BgpGroup extends pulumi.CustomResource {

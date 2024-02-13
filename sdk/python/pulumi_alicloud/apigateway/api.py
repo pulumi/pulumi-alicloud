@@ -589,7 +589,7 @@ class Api(pulumi.CustomResource):
         Api gateway api can be imported using the id.Format to `<API Group Id>:<API Id>` e.g.
 
         ```sh
-         $ pulumi import alicloud:apigateway/api:Api example "ab2351f2ce904edaa8d92a0510832b91:e4f728fca5a94148b023b99a3e5d0b62"
+        $ pulumi import alicloud:apigateway/api:Api example "ab2351f2ce904edaa8d92a0510832b91:e4f728fca5a94148b023b99a3e5d0b62"
         ```
 
         :param str resource_name: The name of the resource.
@@ -664,7 +664,7 @@ class Api(pulumi.CustomResource):
         Api gateway api can be imported using the id.Format to `<API Group Id>:<API Id>` e.g.
 
         ```sh
-         $ pulumi import alicloud:apigateway/api:Api example "ab2351f2ce904edaa8d92a0510832b91:e4f728fca5a94148b023b99a3e5d0b62"
+        $ pulumi import alicloud:apigateway/api:Api example "ab2351f2ce904edaa8d92a0510832b91:e4f728fca5a94148b023b99a3e5d0b62"
         ```
 
         :param str resource_name: The name of the resource.

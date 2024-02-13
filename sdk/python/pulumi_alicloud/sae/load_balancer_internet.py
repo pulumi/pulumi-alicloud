@@ -221,7 +221,7 @@ class LoadBalancerInternet(pulumi.CustomResource):
         The resource can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:sae/loadBalancerInternet:LoadBalancerInternet example <id>
+        $ pulumi import alicloud:sae/loadBalancerInternet:LoadBalancerInternet example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -309,7 +309,7 @@ class LoadBalancerInternet(pulumi.CustomResource):
         The resource can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:sae/loadBalancerInternet:LoadBalancerInternet example <id>
+        $ pulumi import alicloud:sae/loadBalancerInternet:LoadBalancerInternet example <id>
         ```
 
         :param str resource_name: The name of the resource.

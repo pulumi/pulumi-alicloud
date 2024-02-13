@@ -111,7 +111,7 @@ import javax.annotation.Nullable;
  * ECD Image can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:eds/image:Image example &lt;id&gt;
+ * $ pulumi import alicloud:eds/image:Image example &lt;id&gt;
  * ```
  * 
  */

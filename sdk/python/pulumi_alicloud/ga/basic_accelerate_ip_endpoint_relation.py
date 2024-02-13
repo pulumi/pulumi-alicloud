@@ -226,7 +226,7 @@ class BasicAccelerateIpEndpointRelation(pulumi.CustomResource):
         Global Accelerator (GA) Basic Accelerate Ip Endpoint Relation can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:ga/basicAccelerateIpEndpointRelation:BasicAccelerateIpEndpointRelation example <accelerator_id>:<accelerate_ip_id>:<endpoint_id>
+        $ pulumi import alicloud:ga/basicAccelerateIpEndpointRelation:BasicAccelerateIpEndpointRelation example <accelerator_id>:<accelerate_ip_id>:<endpoint_id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -322,7 +322,7 @@ class BasicAccelerateIpEndpointRelation(pulumi.CustomResource):
         Global Accelerator (GA) Basic Accelerate Ip Endpoint Relation can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:ga/basicAccelerateIpEndpointRelation:BasicAccelerateIpEndpointRelation example <accelerator_id>:<accelerate_ip_id>:<endpoint_id>
+        $ pulumi import alicloud:ga/basicAccelerateIpEndpointRelation:BasicAccelerateIpEndpointRelation example <accelerator_id>:<accelerate_ip_id>:<endpoint_id>
         ```
 
         :param str resource_name: The name of the resource.

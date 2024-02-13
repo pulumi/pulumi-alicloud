@@ -76,9 +76,7 @@ import (
 // AnalyticDB for MySQL (ADB) DB Cluster Lake Version can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:adb/dBClusterLakeVersion:DBClusterLakeVersion example <id>
-//
+// $ pulumi import alicloud:adb/dBClusterLakeVersion:DBClusterLakeVersion example <id>
 // ```
 type DBClusterLakeVersion struct {
 	pulumi.CustomResourceState

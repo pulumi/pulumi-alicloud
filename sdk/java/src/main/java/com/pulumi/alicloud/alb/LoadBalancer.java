@@ -34,7 +34,7 @@ import javax.annotation.Nullable;
  * Alb Load Balancer can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:alb/loadBalancer:LoadBalancer example &lt;id&gt;
+ * $ pulumi import alicloud:alb/loadBalancer:LoadBalancer example &lt;id&gt;
  * ```
  * 
  */

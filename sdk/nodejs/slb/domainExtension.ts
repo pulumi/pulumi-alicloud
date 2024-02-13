@@ -119,7 +119,7 @@ import * as utilities from "../utilities";
  * Load balancer domain_extension can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:slb/domainExtension:DomainExtension example de-abc123456
+ * $ pulumi import alicloud:slb/domainExtension:DomainExtension example de-abc123456
  * ```
  */
 export class DomainExtension extends pulumi.CustomResource {

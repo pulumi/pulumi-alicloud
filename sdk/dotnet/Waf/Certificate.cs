@@ -52,7 +52,7 @@ namespace Pulumi.AliCloud.Waf
     /// WAF Certificate can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:waf/certificate:Certificate example &lt;instance_id&gt;:&lt;domain&gt;:&lt;certificate_id&gt;
+    /// $ pulumi import alicloud:waf/certificate:Certificate example &lt;instance_id&gt;:&lt;domain&gt;:&lt;certificate_id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:waf/certificate:Certificate")]

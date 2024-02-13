@@ -103,7 +103,7 @@ namespace Pulumi.AliCloud.Vpc
     /// Vpc Peer Connection Accepter can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:vpc/peerConnectionAccepter:PeerConnectionAccepter example &lt;id&gt;
+    /// $ pulumi import alicloud:vpc/peerConnectionAccepter:PeerConnectionAccepter example &lt;id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:vpc/peerConnectionAccepter:PeerConnectionAccepter")]

@@ -52,7 +52,7 @@ import * as utilities from "../utilities";
  * Log resource can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:log/resource:Resource example <id>
+ * $ pulumi import alicloud:log/resource:Resource example <id>
  * ```
  */
 export class Resource extends pulumi.CustomResource {

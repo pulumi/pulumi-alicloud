@@ -234,7 +234,7 @@ class ServiceSetting(pulumi.CustomResource):
         OOS Service Setting can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:oos/serviceSetting:ServiceSetting example <id>
+        $ pulumi import alicloud:oos/serviceSetting:ServiceSetting example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -287,7 +287,7 @@ class ServiceSetting(pulumi.CustomResource):
         OOS Service Setting can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:oos/serviceSetting:ServiceSetting example <id>
+        $ pulumi import alicloud:oos/serviceSetting:ServiceSetting example <id>
         ```
 
         :param str resource_name: The name of the resource.

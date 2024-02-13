@@ -355,7 +355,7 @@ class WebLockConfig(pulumi.CustomResource):
         Threat Detection Web Lock Config can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:threatdetection/webLockConfig:WebLockConfig example <id>
+        $ pulumi import alicloud:threatdetection/webLockConfig:WebLockConfig example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -406,7 +406,7 @@ class WebLockConfig(pulumi.CustomResource):
         Threat Detection Web Lock Config can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:threatdetection/webLockConfig:WebLockConfig example <id>
+        $ pulumi import alicloud:threatdetection/webLockConfig:WebLockConfig example <id>
         ```
 
         :param str resource_name: The name of the resource.

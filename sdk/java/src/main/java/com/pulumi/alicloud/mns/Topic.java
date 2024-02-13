@@ -55,7 +55,7 @@ import javax.annotation.Nullable;
  * MNS Topic can be imported using the id or name, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:mns/topic:Topic topic topicName
+ * $ pulumi import alicloud:mns/topic:Topic topic topicName
  * ```
  * 
  */

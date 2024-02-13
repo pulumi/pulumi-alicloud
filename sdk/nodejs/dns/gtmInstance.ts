@@ -53,7 +53,7 @@ import * as utilities from "../utilities";
  * Alidns Gtm Instance can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:dns/gtmInstance:GtmInstance example <id>
+ * $ pulumi import alicloud:dns/gtmInstance:GtmInstance example <id>
  * ```
  */
 export class GtmInstance extends pulumi.CustomResource {

@@ -276,7 +276,7 @@ class IpSet(pulumi.CustomResource):
         Ga Ip Set can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:ga/ipSet:IpSet example <id>
+        $ pulumi import alicloud:ga/ipSet:IpSet example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -338,7 +338,7 @@ class IpSet(pulumi.CustomResource):
         Ga Ip Set can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:ga/ipSet:IpSet example <id>
+        $ pulumi import alicloud:ga/ipSet:IpSet example <id>
         ```
 
         :param str resource_name: The name of the resource.

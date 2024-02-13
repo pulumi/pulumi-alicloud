@@ -31,7 +31,7 @@ import * as utilities from "../utilities";
  * SMS Short Url can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:sms/shortUrl:ShortUrl example <id>
+ * $ pulumi import alicloud:sms/shortUrl:ShortUrl example <id>
  * ```
  */
 export class ShortUrl extends pulumi.CustomResource {

@@ -46,7 +46,7 @@ namespace Pulumi.AliCloud.Ros
     /// ROS Stack Group can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:ros/stackGroup:StackGroup example &lt;stack_group_name&gt;
+    /// $ pulumi import alicloud:ros/stackGroup:StackGroup example &lt;stack_group_name&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:ros/stackGroup:StackGroup")]

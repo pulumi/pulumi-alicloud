@@ -592,7 +592,7 @@ class EcsImagePipeline(pulumi.CustomResource):
         ECS Image Pipeline can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:ecs/ecsImagePipeline:EcsImagePipeline example <id>
+        $ pulumi import alicloud:ecs/ecsImagePipeline:EcsImagePipeline example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -679,7 +679,7 @@ class EcsImagePipeline(pulumi.CustomResource):
         ECS Image Pipeline can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:ecs/ecsImagePipeline:EcsImagePipeline example <id>
+        $ pulumi import alicloud:ecs/ecsImagePipeline:EcsImagePipeline example <id>
         ```
 
         :param str resource_name: The name of the resource.

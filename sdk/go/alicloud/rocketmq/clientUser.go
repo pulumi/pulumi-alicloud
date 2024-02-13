@@ -68,9 +68,7 @@ import (
 // The Sag ClientUser can be imported using the name, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:rocketmq/clientUser:ClientUser example sag-abc123456:tf-username-abc123456
-//
+// $ pulumi import alicloud:rocketmq/clientUser:ClientUser example sag-abc123456:tf-username-abc123456
 // ```
 type ClientUser struct {
 	pulumi.CustomResourceState

@@ -33,7 +33,7 @@ import * as utilities from "../utilities";
  * ALB Acl can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:alb/acl:Acl example <id>
+ * $ pulumi import alicloud:alb/acl:Acl example <id>
  * ```
  */
 export class Acl extends pulumi.CustomResource {

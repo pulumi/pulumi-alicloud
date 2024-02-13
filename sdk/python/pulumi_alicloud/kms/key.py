@@ -735,7 +735,7 @@ class Key(pulumi.CustomResource):
         Alikms key can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:kms/key:Key example <id>
+        $ pulumi import alicloud:kms/key:Key example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -798,7 +798,7 @@ class Key(pulumi.CustomResource):
         Alikms key can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:kms/key:Key example <id>
+        $ pulumi import alicloud:kms/key:Key example <id>
         ```
 
         :param str resource_name: The name of the resource.

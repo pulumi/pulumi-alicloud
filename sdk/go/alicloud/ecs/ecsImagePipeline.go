@@ -121,9 +121,7 @@ import (
 // ECS Image Pipeline can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:ecs/ecsImagePipeline:EcsImagePipeline example <id>
-//
+// $ pulumi import alicloud:ecs/ecsImagePipeline:EcsImagePipeline example <id>
 // ```
 type EcsImagePipeline struct {
 	pulumi.CustomResourceState

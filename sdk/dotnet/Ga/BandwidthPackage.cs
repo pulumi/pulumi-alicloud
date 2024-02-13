@@ -48,7 +48,7 @@ namespace Pulumi.AliCloud.Ga
     /// Ga Bandwidth Package can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:ga/bandwidthPackage:BandwidthPackage example &lt;id&gt;
+    /// $ pulumi import alicloud:ga/bandwidthPackage:BandwidthPackage example &lt;id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:ga/bandwidthPackage:BandwidthPackage")]

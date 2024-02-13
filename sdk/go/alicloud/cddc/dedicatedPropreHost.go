@@ -17,9 +17,7 @@ import (
 // CDDC Dedicated Propre Host can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:cddc/dedicatedPropreHost:DedicatedPropreHost example <dedicated_host_group_id>:<ecs_instance_id>
-//
+// $ pulumi import alicloud:cddc/dedicatedPropreHost:DedicatedPropreHost example <dedicated_host_group_id>:<ecs_instance_id>
 // ```
 type DedicatedPropreHost struct {
 	pulumi.CustomResourceState

@@ -29,7 +29,7 @@ import javax.annotation.Nullable;
  * Cloud SSO Directory can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:cloudsso/directory:Directory example &lt;id&gt;
+ * $ pulumi import alicloud:cloudsso/directory:Directory example &lt;id&gt;
  * ```
  * 
  */

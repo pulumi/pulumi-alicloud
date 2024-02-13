@@ -266,7 +266,7 @@ class TopicSubscription(pulumi.CustomResource):
         MNS Topic subscription can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:mns/topicSubscription:TopicSubscription subscription tf-example-mnstopic:tf-example-mnstopic-sub
+        $ pulumi import alicloud:mns/topicSubscription:TopicSubscription subscription tf-example-mnstopic:tf-example-mnstopic-sub
         ```
 
         :param str resource_name: The name of the resource.
@@ -312,7 +312,7 @@ class TopicSubscription(pulumi.CustomResource):
         MNS Topic subscription can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:mns/topicSubscription:TopicSubscription subscription tf-example-mnstopic:tf-example-mnstopic-sub
+        $ pulumi import alicloud:mns/topicSubscription:TopicSubscription subscription tf-example-mnstopic:tf-example-mnstopic-sub
         ```
 
         :param str resource_name: The name of the resource.

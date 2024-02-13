@@ -93,7 +93,7 @@ import javax.annotation.Nullable;
  * CEN Route Service can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:cen/routeService:RouteService example cen-ahixm0efqh********:cn-shanghai:100.118.28.52/32:cn-shanghai
+ * $ pulumi import alicloud:cen/routeService:RouteService example cen-ahixm0efqh********:cn-shanghai:100.118.28.52/32:cn-shanghai
  * ```
  * 
  */

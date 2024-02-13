@@ -621,7 +621,7 @@ class WafRule(pulumi.CustomResource):
         Dcdn Waf Rule can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:dcdn/wafRule:WafRule example <id>
+        $ pulumi import alicloud:dcdn/wafRule:WafRule example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -709,7 +709,7 @@ class WafRule(pulumi.CustomResource):
         Dcdn Waf Rule can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:dcdn/wafRule:WafRule example <id>
+        $ pulumi import alicloud:dcdn/wafRule:WafRule example <id>
         ```
 
         :param str resource_name: The name of the resource.

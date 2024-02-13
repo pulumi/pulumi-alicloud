@@ -68,7 +68,7 @@ import * as utilities from "../utilities";
  * Serverless App Engine (SAE) Application can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:sae/application:Application example <id>
+ * $ pulumi import alicloud:sae/application:Application example <id>
  * ```
  */
 export class Application extends pulumi.CustomResource {

@@ -68,7 +68,7 @@ import * as utilities from "../utilities";
  * ECD Command can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:eds/command:Command example <id>
+ * $ pulumi import alicloud:eds/command:Command example <id>
  * ```
  */
 export class Command extends pulumi.CustomResource {

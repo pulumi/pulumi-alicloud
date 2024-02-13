@@ -40,7 +40,7 @@ import * as utilities from "../utilities";
  * Threat Detection Client User Define Rule can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:threatdetection/clientUserDefineRule:ClientUserDefineRule example <id>
+ * $ pulumi import alicloud:threatdetection/clientUserDefineRule:ClientUserDefineRule example <id>
  * ```
  */
 export class ClientUserDefineRule extends pulumi.CustomResource {

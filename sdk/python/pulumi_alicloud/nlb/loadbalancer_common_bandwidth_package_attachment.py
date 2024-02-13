@@ -184,7 +184,7 @@ class LoadbalancerCommonBandwidthPackageAttachment(pulumi.CustomResource):
         NLB Loadbalancer Common Bandwidth Package Attachment can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:nlb/loadbalancerCommonBandwidthPackageAttachment:LoadbalancerCommonBandwidthPackageAttachment example <load_balancer_id>:<bandwidth_package_id>
+        $ pulumi import alicloud:nlb/loadbalancerCommonBandwidthPackageAttachment:LoadbalancerCommonBandwidthPackageAttachment example <load_balancer_id>:<bandwidth_package_id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -269,7 +269,7 @@ class LoadbalancerCommonBandwidthPackageAttachment(pulumi.CustomResource):
         NLB Loadbalancer Common Bandwidth Package Attachment can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:nlb/loadbalancerCommonBandwidthPackageAttachment:LoadbalancerCommonBandwidthPackageAttachment example <load_balancer_id>:<bandwidth_package_id>
+        $ pulumi import alicloud:nlb/loadbalancerCommonBandwidthPackageAttachment:LoadbalancerCommonBandwidthPackageAttachment example <load_balancer_id>:<bandwidth_package_id>
         ```
 
         :param str resource_name: The name of the resource.

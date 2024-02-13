@@ -81,7 +81,7 @@ namespace Pulumi.AliCloud.Ecp
     /// Elastic Cloud Phone (ECP) Instance can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:ecp/instance:Instance example &lt;id&gt;
+    /// $ pulumi import alicloud:ecp/instance:Instance example &lt;id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:ecp/instance:Instance")]

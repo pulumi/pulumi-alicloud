@@ -226,7 +226,7 @@ class Network(pulumi.CustomResource):
         ENS Network can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:ens/network:Network example <id>
+        $ pulumi import alicloud:ens/network:Network example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -273,7 +273,7 @@ class Network(pulumi.CustomResource):
         ENS Network can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:ens/network:Network example <id>
+        $ pulumi import alicloud:ens/network:Network example <id>
         ```
 
         :param str resource_name: The name of the resource.

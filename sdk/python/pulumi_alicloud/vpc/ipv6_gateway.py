@@ -378,7 +378,7 @@ class Ipv6Gateway(pulumi.CustomResource):
         Vpc Ipv6 Gateway can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:vpc/ipv6Gateway:Ipv6Gateway example <id>
+        $ pulumi import alicloud:vpc/ipv6Gateway:Ipv6Gateway example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -436,7 +436,7 @@ class Ipv6Gateway(pulumi.CustomResource):
         Vpc Ipv6 Gateway can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:vpc/ipv6Gateway:Ipv6Gateway example <id>
+        $ pulumi import alicloud:vpc/ipv6Gateway:Ipv6Gateway example <id>
         ```
 
         :param str resource_name: The name of the resource.

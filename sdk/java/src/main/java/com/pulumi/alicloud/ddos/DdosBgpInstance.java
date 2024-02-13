@@ -31,7 +31,7 @@ import javax.annotation.Nullable;
  * Ddosbgp instance can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:ddos/ddosBgpInstance:DdosBgpInstance example ddosbgp-abc123456
+ * $ pulumi import alicloud:ddos/ddosBgpInstance:DdosBgpInstance example ddosbgp-abc123456
  * ```
  * 
  */

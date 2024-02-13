@@ -73,7 +73,7 @@ import * as utilities from "../utilities";
  * MongoDB Sharding Network Public Address can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:mongodb/shardingNetworkPublicAddress:ShardingNetworkPublicAddress example <db_instance_id>:<node_id>
+ * $ pulumi import alicloud:mongodb/shardingNetworkPublicAddress:ShardingNetworkPublicAddress example <db_instance_id>:<node_id>
  * ```
  */
 export class ShardingNetworkPublicAddress extends pulumi.CustomResource {

@@ -375,7 +375,7 @@ class Bundle(pulumi.CustomResource):
         ECD Bundle can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:eds/bundle:Bundle example <id>
+        $ pulumi import alicloud:eds/bundle:Bundle example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -439,7 +439,7 @@ class Bundle(pulumi.CustomResource):
         ECD Bundle can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:eds/bundle:Bundle example <id>
+        $ pulumi import alicloud:eds/bundle:Bundle example <id>
         ```
 
         :param str resource_name: The name of the resource.

@@ -444,7 +444,7 @@ class ZoneRecord(pulumi.CustomResource):
         Private Zone Record can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:pvtz/zoneRecord:ZoneRecord example abc123456
+        $ pulumi import alicloud:pvtz/zoneRecord:ZoneRecord example abc123456
         ```
 
         :param str resource_name: The name of the resource.
@@ -491,7 +491,7 @@ class ZoneRecord(pulumi.CustomResource):
         Private Zone Record can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:pvtz/zoneRecord:ZoneRecord example abc123456
+        $ pulumi import alicloud:pvtz/zoneRecord:ZoneRecord example abc123456
         ```
 
         :param str resource_name: The name of the resource.

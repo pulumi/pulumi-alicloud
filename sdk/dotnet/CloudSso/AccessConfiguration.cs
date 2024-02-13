@@ -23,7 +23,7 @@ namespace Pulumi.AliCloud.CloudSso
     /// Cloud SSO Access Configuration can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:cloudsso/accessConfiguration:AccessConfiguration example &lt;directory_id&gt;:&lt;access_configuration_id&gt;
+    /// $ pulumi import alicloud:cloudsso/accessConfiguration:AccessConfiguration example &lt;directory_id&gt;:&lt;access_configuration_id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:cloudsso/accessConfiguration:AccessConfiguration")]

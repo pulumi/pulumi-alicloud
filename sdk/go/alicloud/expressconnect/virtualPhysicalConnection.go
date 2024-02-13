@@ -82,9 +82,7 @@ import (
 // Express Connect Virtual Physical Connection can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:expressconnect/virtualPhysicalConnection:VirtualPhysicalConnection example <id>
-//
+// $ pulumi import alicloud:expressconnect/virtualPhysicalConnection:VirtualPhysicalConnection example <id>
 // ```
 type VirtualPhysicalConnection struct {
 	pulumi.CustomResourceState

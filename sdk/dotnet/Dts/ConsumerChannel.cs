@@ -152,7 +152,7 @@ namespace Pulumi.AliCloud.Dts
     /// DTS Consumer Channel can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:dts/consumerChannel:ConsumerChannel example &lt;dts_instance_id&gt;:&lt;consumer_group_id&gt;
+    /// $ pulumi import alicloud:dts/consumerChannel:ConsumerChannel example &lt;dts_instance_id&gt;:&lt;consumer_group_id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:dts/consumerChannel:ConsumerChannel")]

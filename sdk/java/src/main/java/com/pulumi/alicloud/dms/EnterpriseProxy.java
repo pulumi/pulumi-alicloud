@@ -168,7 +168,7 @@ import javax.annotation.Nullable;
  * DMS Enterprise Proxy can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:dms/enterpriseProxy:EnterpriseProxy example &lt;id&gt;
+ * $ pulumi import alicloud:dms/enterpriseProxy:EnterpriseProxy example &lt;id&gt;
  * ```
  * 
  */

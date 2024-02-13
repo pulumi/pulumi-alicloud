@@ -23,9 +23,7 @@ import (
 // Ecs Elasticity Assurance can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:ecs/elasticityAssurance:ElasticityAssurance example <id>
-//
+// $ pulumi import alicloud:ecs/elasticityAssurance:ElasticityAssurance example <id>
 // ```
 type ElasticityAssurance struct {
 	pulumi.CustomResourceState

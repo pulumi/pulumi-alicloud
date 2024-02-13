@@ -33,7 +33,7 @@ import * as utilities from "../utilities";
  * ECS Deployment Set can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:ecs/ecsDeploymentSet:EcsDeploymentSet example <id>
+ * $ pulumi import alicloud:ecs/ecsDeploymentSet:EcsDeploymentSet example <id>
  * ```
  */
 export class EcsDeploymentSet extends pulumi.CustomResource {

@@ -90,7 +90,7 @@ class Product(pulumi.CustomResource):
         MHUB Product can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:mhub/product:Product example <id>
+        $ pulumi import alicloud:mhub/product:Product example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -128,7 +128,7 @@ class Product(pulumi.CustomResource):
         MHUB Product can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:mhub/product:Product example <id>
+        $ pulumi import alicloud:mhub/product:Product example <id>
         ```
 
         :param str resource_name: The name of the resource.

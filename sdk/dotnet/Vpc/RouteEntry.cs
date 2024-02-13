@@ -113,7 +113,7 @@ namespace Pulumi.AliCloud.Vpc
     /// Router entry can be imported using the id, e.g (formatted as&lt;route_table_id:router_id:destination_cidrblock:nexthop_type:nexthop_id&gt;).
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:vpc/routeEntry:RouteEntry example vtb-123456:vrt-123456:0.0.0.0/0:NatGateway:ngw-123456
+    /// $ pulumi import alicloud:vpc/routeEntry:RouteEntry example vtb-123456:vrt-123456:0.0.0.0/0:NatGateway:ngw-123456
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:vpc/routeEntry:RouteEntry")]

@@ -136,9 +136,7 @@ import (
 // RDS database endpoint feature can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:rds/dbInstanceEndpoint:DbInstanceEndpoint example <db_instance_id>:<db_instance_endpoint_id>
-//
+// $ pulumi import alicloud:rds/dbInstanceEndpoint:DbInstanceEndpoint example <db_instance_id>:<db_instance_endpoint_id>
 // ```
 type DbInstanceEndpoint struct {
 	pulumi.CustomResourceState

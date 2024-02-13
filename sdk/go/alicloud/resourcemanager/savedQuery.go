@@ -59,9 +59,7 @@ import (
 // Resource Manager Saved Query can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:resourcemanager/savedQuery:SavedQuery example <id>
-//
+// $ pulumi import alicloud:resourcemanager/savedQuery:SavedQuery example <id>
 // ```
 type SavedQuery struct {
 	pulumi.CustomResourceState

@@ -105,7 +105,7 @@ namespace Pulumi.AliCloud.Ess
     /// Ess notification can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:ess/notification:Notification example 'scaling_group_id:notification_arn'
+    /// $ pulumi import alicloud:ess/notification:Notification example 'scaling_group_id:notification_arn'
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:ess/notification:Notification")]

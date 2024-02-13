@@ -42,7 +42,7 @@ namespace Pulumi.AliCloud.Ecp
     /// Elastic Cloud Phone (ECP) Key Pair can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:ecp/keyPair:KeyPair example &lt;key_pair_name&gt;
+    /// $ pulumi import alicloud:ecp/keyPair:KeyPair example &lt;key_pair_name&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:ecp/keyPair:KeyPair")]

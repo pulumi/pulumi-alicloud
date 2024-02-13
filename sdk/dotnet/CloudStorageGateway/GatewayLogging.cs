@@ -21,7 +21,7 @@ namespace Pulumi.AliCloud.CloudStorageGateway
     /// Cloud Storage Gateway Gateway Logging can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:cloudstoragegateway/gatewayLogging:GatewayLogging example &lt;gateway_id&gt;
+    /// $ pulumi import alicloud:cloudstoragegateway/gatewayLogging:GatewayLogging example &lt;gateway_id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:cloudstoragegateway/gatewayLogging:GatewayLogging")]

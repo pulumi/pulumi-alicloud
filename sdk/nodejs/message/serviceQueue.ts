@@ -37,7 +37,7 @@ import * as utilities from "../utilities";
  * Message Notification Service Queue can be imported using the id or queue_name, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:message/serviceQueue:ServiceQueue example <queue_name>
+ * $ pulumi import alicloud:message/serviceQueue:ServiceQueue example <queue_name>
  * ```
  */
 export class ServiceQueue extends pulumi.CustomResource {

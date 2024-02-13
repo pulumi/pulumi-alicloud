@@ -587,7 +587,7 @@ class RouterInterface(pulumi.CustomResource):
         The router interface can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:vpc/routerInterface:RouterInterface interface ri-abc123456
+        $ pulumi import alicloud:vpc/routerInterface:RouterInterface interface ri-abc123456
         ```
 
         :param str resource_name: The name of the resource.
@@ -645,7 +645,7 @@ class RouterInterface(pulumi.CustomResource):
         The router interface can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:vpc/routerInterface:RouterInterface interface ri-abc123456
+        $ pulumi import alicloud:vpc/routerInterface:RouterInterface interface ri-abc123456
         ```
 
         :param str resource_name: The name of the resource.

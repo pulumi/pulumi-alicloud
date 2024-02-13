@@ -85,7 +85,7 @@ import * as utilities from "../utilities";
  * Hybrid Backup Recovery (HBR) Restore Job can be imported using the id. Format to `<restore_job_id>:<restore_type>`, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:hbr/restoreJob:RestoreJob example your_restore_job_id:your_restore_type
+ * $ pulumi import alicloud:hbr/restoreJob:RestoreJob example your_restore_job_id:your_restore_type
  * ```
  */
 export class RestoreJob extends pulumi.CustomResource {

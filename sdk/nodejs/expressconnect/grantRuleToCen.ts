@@ -54,7 +54,7 @@ import * as utilities from "../utilities";
  * Express Connect Grant Rule To Cen can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:expressconnect/grantRuleToCen:GrantRuleToCen example <cen_id>:<cen_owner_id>:<instance_id>
+ * $ pulumi import alicloud:expressconnect/grantRuleToCen:GrantRuleToCen example <cen_id>:<cen_owner_id>:<instance_id>
  * ```
  */
 export class GrantRuleToCen extends pulumi.CustomResource {

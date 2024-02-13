@@ -16,7 +16,7 @@ import * as utilities from "../utilities";
  * ARMS Env Feature can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:arms/envFeature:EnvFeature example <environment_id>:<env_feature_name>
+ * $ pulumi import alicloud:arms/envFeature:EnvFeature example <environment_id>:<env_feature_name>
  * ```
  */
 export class EnvFeature extends pulumi.CustomResource {

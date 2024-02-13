@@ -47,7 +47,7 @@ namespace Pulumi.AliCloud.Ram
     /// RAM User can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:ram/user:User example 123456789xxx
+    /// $ pulumi import alicloud:ram/user:User example 123456789xxx
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:ram/user:User")]

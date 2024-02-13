@@ -25,7 +25,7 @@ import javax.annotation.Nullable;
  * CBWP Common Bandwidth Package can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:vpc/commonBandwithPackage:CommonBandwithPackage example &lt;id&gt;
+ * $ pulumi import alicloud:vpc/commonBandwithPackage:CommonBandwithPackage example &lt;id&gt;
  * ```
  * 
  */

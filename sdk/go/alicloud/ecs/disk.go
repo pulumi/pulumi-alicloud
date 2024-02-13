@@ -56,9 +56,7 @@ import (
 // Cloud disk can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:ecs/disk:Disk example d-abc12345678
-//
+// $ pulumi import alicloud:ecs/disk:Disk example d-abc12345678
 // ```
 type Disk struct {
 	pulumi.CustomResourceState

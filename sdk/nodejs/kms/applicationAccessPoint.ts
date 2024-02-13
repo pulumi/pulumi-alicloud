@@ -37,7 +37,7 @@ import * as utilities from "../utilities";
  * KMS Application Access Point can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:kms/applicationAccessPoint:ApplicationAccessPoint example <id>
+ * $ pulumi import alicloud:kms/applicationAccessPoint:ApplicationAccessPoint example <id>
  * ```
  */
 export class ApplicationAccessPoint extends pulumi.CustomResource {

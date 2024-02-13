@@ -54,7 +54,7 @@ namespace Pulumi.AliCloud.CloudMonitor
     /// Cloud Monitor Service Hybrid Double Write can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:cloudmonitor/serviceHybridDoubleWrite:ServiceHybridDoubleWrite example &lt;source_namespace&gt;:&lt;source_user_id&gt;
+    /// $ pulumi import alicloud:cloudmonitor/serviceHybridDoubleWrite:ServiceHybridDoubleWrite example &lt;source_namespace&gt;:&lt;source_user_id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:cloudmonitor/serviceHybridDoubleWrite:ServiceHybridDoubleWrite")]

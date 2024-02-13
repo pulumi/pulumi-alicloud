@@ -22,7 +22,7 @@ import javax.annotation.Nullable;
  * PolarDB backup policy can be imported using the id or cluster id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:polardb/backupPolicy:BackupPolicy example &#34;rm-12345678&#34;
+ * $ pulumi import alicloud:polardb/backupPolicy:BackupPolicy example &#34;rm-12345678&#34;
  * ```
  * 
  */

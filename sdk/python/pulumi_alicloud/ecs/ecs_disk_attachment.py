@@ -312,7 +312,7 @@ class EcsDiskAttachment(pulumi.CustomResource):
         The disk attachment can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:ecs/ecsDiskAttachment:EcsDiskAttachment example d-abc12345678:i-abc12355
+        $ pulumi import alicloud:ecs/ecsDiskAttachment:EcsDiskAttachment example d-abc12345678:i-abc12355
         ```
 
         :param str resource_name: The name of the resource.
@@ -397,7 +397,7 @@ class EcsDiskAttachment(pulumi.CustomResource):
         The disk attachment can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:ecs/ecsDiskAttachment:EcsDiskAttachment example d-abc12345678:i-abc12355
+        $ pulumi import alicloud:ecs/ecsDiskAttachment:EcsDiskAttachment example d-abc12345678:i-abc12355
         ```
 
         :param str resource_name: The name of the resource.

@@ -57,9 +57,7 @@ import (
 // Acl entry attachment can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:slb/aclEntryAttachment:AclEntryAttachment example <acl_id>:<entry>
-//
+// $ pulumi import alicloud:slb/aclEntryAttachment:AclEntryAttachment example <acl_id>:<entry>
 // ```
 type AclEntryAttachment struct {
 	pulumi.CustomResourceState

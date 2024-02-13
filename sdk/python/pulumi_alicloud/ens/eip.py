@@ -327,7 +327,7 @@ class Eip(pulumi.CustomResource):
         ENS Eip can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:ens/eip:Eip example <id>
+        $ pulumi import alicloud:ens/eip:Eip example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -380,7 +380,7 @@ class Eip(pulumi.CustomResource):
         ENS Eip can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:ens/eip:Eip example <id>
+        $ pulumi import alicloud:ens/eip:Eip example <id>
         ```
 
         :param str resource_name: The name of the resource.

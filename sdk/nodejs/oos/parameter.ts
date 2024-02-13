@@ -38,7 +38,7 @@ import * as utilities from "../utilities";
  * OOS Parameter can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:oos/parameter:Parameter example <parameter_name>
+ * $ pulumi import alicloud:oos/parameter:Parameter example <parameter_name>
  * ```
  */
 export class Parameter extends pulumi.CustomResource {

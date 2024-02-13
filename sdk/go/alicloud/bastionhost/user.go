@@ -133,9 +133,7 @@ import (
 // Bastion Host User can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:bastionhost/user:User example <instance_id>:<user_id>
-//
+// $ pulumi import alicloud:bastionhost/user:User example <instance_id>:<user_id>
 // ```
 type User struct {
 	pulumi.CustomResourceState

@@ -172,9 +172,7 @@ import (
 // DMS Enterprise Proxy can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:dms/enterpriseProxy:EnterpriseProxy example <id>
-//
+// $ pulumi import alicloud:dms/enterpriseProxy:EnterpriseProxy example <id>
 // ```
 type EnterpriseProxy struct {
 	pulumi.CustomResourceState

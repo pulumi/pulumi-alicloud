@@ -16,7 +16,7 @@ import * as utilities from "../utilities";
  * Network Attached Storage (NAS) Data Flow can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:nas/dataFlow:DataFlow example <file_system_id>:<data_flow_id>
+ * $ pulumi import alicloud:nas/dataFlow:DataFlow example <file_system_id>:<data_flow_id>
  * ```
  */
 export class DataFlow extends pulumi.CustomResource {

@@ -55,7 +55,7 @@ namespace Pulumi.AliCloud.Quotas
     /// Quotas Quota Alarm can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:quotas/quotaAlarm:QuotaAlarm example &lt;id&gt;
+    /// $ pulumi import alicloud:quotas/quotaAlarm:QuotaAlarm example &lt;id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:quotas/quotaAlarm:QuotaAlarm")]

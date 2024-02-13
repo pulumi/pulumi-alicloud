@@ -60,7 +60,7 @@ import * as utilities from "../utilities";
  * Serverless Workflow Execution can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:fnf/execution:Execution example <flow_name>:<execution_name>
+ * $ pulumi import alicloud:fnf/execution:Execution example <flow_name>:<execution_name>
  * ```
  */
 export class Execution extends pulumi.CustomResource {

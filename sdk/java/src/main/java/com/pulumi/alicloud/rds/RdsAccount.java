@@ -107,7 +107,7 @@ import javax.annotation.Nullable;
  * RDS Account can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:rds/rdsAccount:RdsAccount example &lt;db_instance_id&gt;:&lt;account_name&gt;
+ * $ pulumi import alicloud:rds/rdsAccount:RdsAccount example &lt;db_instance_id&gt;:&lt;account_name&gt;
  * ```
  * 
  */

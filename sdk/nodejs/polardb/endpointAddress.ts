@@ -56,7 +56,7 @@ import * as utilities from "../utilities";
  * PolarDB endpoint address can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:polardb/endpointAddress:EndpointAddress example pc-abc123456:pe-abc123456
+ * $ pulumi import alicloud:polardb/endpointAddress:EndpointAddress example pc-abc123456:pe-abc123456
  * ```
  */
 export class EndpointAddress extends pulumi.CustomResource {

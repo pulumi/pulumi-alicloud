@@ -83,9 +83,7 @@ import (
 // Intelligent Media Management Project can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:imm/project:Project example <project>
-//
+// $ pulumi import alicloud:imm/project:Project example <project>
 // ```
 type Project struct {
 	pulumi.CustomResourceState

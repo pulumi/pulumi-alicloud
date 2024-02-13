@@ -63,9 +63,7 @@ import (
 // KMS Network Rule can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:kms/networkRule:NetworkRule example <id>
-//
+// $ pulumi import alicloud:kms/networkRule:NetworkRule example <id>
 // ```
 type NetworkRule struct {
 	pulumi.CustomResourceState

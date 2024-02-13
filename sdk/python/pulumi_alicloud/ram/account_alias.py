@@ -88,7 +88,7 @@ class AccountAlias(pulumi.CustomResource):
         RAM account alias can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:ram/accountAlias:AccountAlias example my-alias
+        $ pulumi import alicloud:ram/accountAlias:AccountAlias example my-alias
         ```
 
         :param str resource_name: The name of the resource.
@@ -124,7 +124,7 @@ class AccountAlias(pulumi.CustomResource):
         RAM account alias can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:ram/accountAlias:AccountAlias example my-alias
+        $ pulumi import alicloud:ram/accountAlias:AccountAlias example my-alias
         ```
 
         :param str resource_name: The name of the resource.

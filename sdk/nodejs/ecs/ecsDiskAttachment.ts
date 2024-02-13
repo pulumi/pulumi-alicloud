@@ -83,7 +83,7 @@ import * as utilities from "../utilities";
  * The disk attachment can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:ecs/ecsDiskAttachment:EcsDiskAttachment example d-abc12345678:i-abc12355
+ * $ pulumi import alicloud:ecs/ecsDiskAttachment:EcsDiskAttachment example d-abc12345678:i-abc12355
  * ```
  */
 export class EcsDiskAttachment extends pulumi.CustomResource {

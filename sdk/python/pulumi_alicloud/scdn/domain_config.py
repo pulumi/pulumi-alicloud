@@ -177,7 +177,7 @@ class DomainConfig(pulumi.CustomResource):
         SCDN domain config can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:scdn/domainConfig:DomainConfig example <domain_name>:<function_name>:<config_id>
+        $ pulumi import alicloud:scdn/domainConfig:DomainConfig example <domain_name>:<function_name>:<config_id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -206,7 +206,7 @@ class DomainConfig(pulumi.CustomResource):
         SCDN domain config can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:scdn/domainConfig:DomainConfig example <domain_name>:<function_name>:<config_id>
+        $ pulumi import alicloud:scdn/domainConfig:DomainConfig example <domain_name>:<function_name>:<config_id>
         ```
 
         :param str resource_name: The name of the resource.

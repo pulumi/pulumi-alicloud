@@ -165,7 +165,7 @@ class NetworkRule(pulumi.CustomResource):
         KMS Network Rule can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:kms/networkRule:NetworkRule example <id>
+        $ pulumi import alicloud:kms/networkRule:NetworkRule example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -214,7 +214,7 @@ class NetworkRule(pulumi.CustomResource):
         KMS Network Rule can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:kms/networkRule:NetworkRule example <id>
+        $ pulumi import alicloud:kms/networkRule:NetworkRule example <id>
         ```
 
         :param str resource_name: The name of the resource.

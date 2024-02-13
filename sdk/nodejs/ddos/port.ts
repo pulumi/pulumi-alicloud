@@ -47,7 +47,7 @@ import * as utilities from "../utilities";
  * Anti-DDoS Pro Port can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:ddos/port:Port example <instance_id>:<frontend_port>:<frontend_protocol>
+ * $ pulumi import alicloud:ddos/port:Port example <instance_id>:<frontend_port>:<frontend_protocol>
  * ```
  */
 export class Port extends pulumi.CustomResource {

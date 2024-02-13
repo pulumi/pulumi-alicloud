@@ -61,7 +61,7 @@ import * as utilities from "../utilities";
  * MongoDB Account can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:mongodb/account:Account example <instance_id>:<account_name>
+ * $ pulumi import alicloud:mongodb/account:Account example <instance_id>:<account_name>
  * ```
  */
 export class Account extends pulumi.CustomResource {

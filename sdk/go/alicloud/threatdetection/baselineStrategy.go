@@ -57,9 +57,7 @@ import (
 // Threat Detection Baseline Strategy can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:threatdetection/baselineStrategy:BaselineStrategy example <id>
-//
+// $ pulumi import alicloud:threatdetection/baselineStrategy:BaselineStrategy example <id>
 // ```
 type BaselineStrategy struct {
 	pulumi.CustomResourceState

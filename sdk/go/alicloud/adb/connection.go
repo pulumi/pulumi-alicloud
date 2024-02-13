@@ -110,9 +110,7 @@ import (
 // ADB connection can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:adb/connection:Connection example am-12345678
-//
+// $ pulumi import alicloud:adb/connection:Connection example am-12345678
 // ```
 type Connection struct {
 	pulumi.CustomResourceState

@@ -40,7 +40,7 @@ import * as utilities from "../utilities";
  * Tag Policy Attachment can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:tag/policyAttachment:PolicyAttachment example <policy_id>:<target_id>:<target_type>
+ * $ pulumi import alicloud:tag/policyAttachment:PolicyAttachment example <policy_id>:<target_id>:<target_type>
  * ```
  */
 export class PolicyAttachment extends pulumi.CustomResource {

@@ -66,7 +66,7 @@ import javax.annotation.Nullable;
  * Tag Policy can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:tag/policy:Policy example &lt;id&gt;
+ * $ pulumi import alicloud:tag/policy:Policy example &lt;id&gt;
  * ```
  * 
  */

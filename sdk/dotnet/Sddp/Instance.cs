@@ -50,7 +50,7 @@ namespace Pulumi.AliCloud.Sddp
     /// Data Security Center Instance can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:sddp/instance:Instance example &lt;id&gt;
+    /// $ pulumi import alicloud:sddp/instance:Instance example &lt;id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:sddp/instance:Instance")]

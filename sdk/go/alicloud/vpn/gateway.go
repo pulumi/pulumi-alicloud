@@ -17,9 +17,7 @@ import (
 // VPN gateway can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:vpn/gateway:Gateway example <id>
-//
+// $ pulumi import alicloud:vpn/gateway:Gateway example <id>
 // ```
 type Gateway struct {
 	pulumi.CustomResourceState

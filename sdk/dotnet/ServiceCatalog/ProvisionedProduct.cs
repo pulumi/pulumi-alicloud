@@ -59,7 +59,7 @@ namespace Pulumi.AliCloud.ServiceCatalog
     /// Service Catalog Provisioned Product can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:servicecatalog/provisionedProduct:ProvisionedProduct example &lt;id&gt;
+    /// $ pulumi import alicloud:servicecatalog/provisionedProduct:ProvisionedProduct example &lt;id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:servicecatalog/provisionedProduct:ProvisionedProduct")]

@@ -15,7 +15,7 @@ namespace Pulumi.AliCloud.Cddc
     /// ApsaraDB for MyBase Dedicated Host can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:cddc/dedicatedHost:DedicatedHost example &lt;dedicated_host_group_id&gt;:&lt;dedicated_host_id&gt;
+    /// $ pulumi import alicloud:cddc/dedicatedHost:DedicatedHost example &lt;dedicated_host_group_id&gt;:&lt;dedicated_host_id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:cddc/dedicatedHost:DedicatedHost")]

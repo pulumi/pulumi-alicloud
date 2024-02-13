@@ -76,9 +76,7 @@ import (
 // Hybrid Backup Recovery (HBR) Hana Instance can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:hbr/hanaInstance:HanaInstance example <vault_id>:<hana_instance_id>
-//
+// $ pulumi import alicloud:hbr/hanaInstance:HanaInstance example <vault_id>:<hana_instance_id>
 // ```
 type HanaInstance struct {
 	pulumi.CustomResourceState

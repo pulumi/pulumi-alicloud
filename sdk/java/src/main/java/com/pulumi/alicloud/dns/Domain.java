@@ -57,7 +57,7 @@ import javax.annotation.Nullable;
  * DNS can be imported using the id or domain name, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:dns/domain:Domain example &#34;aliyun.com&#34;
+ * $ pulumi import alicloud:dns/domain:Domain example &#34;aliyun.com&#34;
  * ```
  * 
  * @deprecated

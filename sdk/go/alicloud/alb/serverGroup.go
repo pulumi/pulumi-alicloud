@@ -161,9 +161,7 @@ import (
 // ALB Server Group can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:alb/serverGroup:ServerGroup example <id>
-//
+// $ pulumi import alicloud:alb/serverGroup:ServerGroup example <id>
 // ```
 type ServerGroup struct {
 	pulumi.CustomResourceState

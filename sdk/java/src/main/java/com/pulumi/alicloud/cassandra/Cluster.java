@@ -81,7 +81,7 @@ import javax.annotation.Nullable;
  * Cassandra cluster can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:cassandra/cluster:Cluster example cds-wz9sr400dd7xxxxx
+ * $ pulumi import alicloud:cassandra/cluster:Cluster example cds-wz9sr400dd7xxxxx
  * ```
  * 
  */

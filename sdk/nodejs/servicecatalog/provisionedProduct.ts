@@ -44,7 +44,7 @@ import * as utilities from "../utilities";
  * Service Catalog Provisioned Product can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:servicecatalog/provisionedProduct:ProvisionedProduct example <id>
+ * $ pulumi import alicloud:servicecatalog/provisionedProduct:ProvisionedProduct example <id>
  * ```
  */
 export class ProvisionedProduct extends pulumi.CustomResource {

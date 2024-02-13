@@ -72,7 +72,7 @@ namespace Pulumi.AliCloud.SimpleApplicationServer
     /// Simple Application Server Custom Image can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:simpleapplicationserver/customImage:CustomImage example &lt;id&gt;
+    /// $ pulumi import alicloud:simpleapplicationserver/customImage:CustomImage example &lt;id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:simpleapplicationserver/customImage:CustomImage")]

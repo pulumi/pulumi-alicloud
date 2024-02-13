@@ -67,7 +67,7 @@ import javax.annotation.Nullable;
  * PolarDB Parameter Group can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:polardb/parameterGroup:ParameterGroup example &lt;id&gt;
+ * $ pulumi import alicloud:polardb/parameterGroup:ParameterGroup example &lt;id&gt;
  * ```
  * 
  */

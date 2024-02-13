@@ -54,10 +54,12 @@ namespace Pulumi.AliCloud.Ram
     /// 
     /// ## Import
     /// 
-    /// RAM account password policy can be imported using the `id`, e.g. bash
+    /// RAM account password policy can be imported using the `id`, e.g.
+    /// 
+    ///  bash
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:ram/accountPasswordPolicy:AccountPasswordPolicy example ram-account-password-policy
+    /// $ pulumi import alicloud:ram/accountPasswordPolicy:AccountPasswordPolicy example ram-account-password-policy
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:ram/accountPasswordPolicy:AccountPasswordPolicy")]

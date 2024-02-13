@@ -56,7 +56,7 @@ namespace Pulumi.AliCloud.Vod
     /// VOD Domain can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:vod/domain:Domain example &lt;domain_name&gt;
+    /// $ pulumi import alicloud:vod/domain:Domain example &lt;domain_name&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:vod/domain:Domain")]

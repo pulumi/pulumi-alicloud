@@ -84,7 +84,7 @@ import javax.annotation.Nullable;
  * Express Connect Virtual Physical Connection can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:expressconnect/virtualPhysicalConnection:VirtualPhysicalConnection example &lt;id&gt;
+ * $ pulumi import alicloud:expressconnect/virtualPhysicalConnection:VirtualPhysicalConnection example &lt;id&gt;
  * ```
  * 
  */

@@ -32,7 +32,7 @@ import * as utilities from "../utilities";
  * DFS Access Group can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:dfs/accessGroup:AccessGroup example <id>
+ * $ pulumi import alicloud:dfs/accessGroup:AccessGroup example <id>
  * ```
  */
 export class AccessGroup extends pulumi.CustomResource {

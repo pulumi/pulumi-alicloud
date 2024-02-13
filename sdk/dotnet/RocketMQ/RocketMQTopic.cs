@@ -100,7 +100,7 @@ namespace Pulumi.AliCloud.RocketMQ
     /// RocketMQ Topic can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:rocketmq/rocketMQTopic:RocketMQTopic example &lt;instance_id&gt;:&lt;topic_name&gt;
+    /// $ pulumi import alicloud:rocketmq/rocketMQTopic:RocketMQTopic example &lt;instance_id&gt;:&lt;topic_name&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:rocketmq/rocketMQTopic:RocketMQTopic")]

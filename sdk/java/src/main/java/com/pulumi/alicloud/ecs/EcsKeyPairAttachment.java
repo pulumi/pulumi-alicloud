@@ -121,7 +121,7 @@ import javax.annotation.Nullable;
  * ECS Key Pair Attachment can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:ecs/ecsKeyPairAttachment:EcsKeyPairAttachment example &lt;key_pair_name&gt;:&lt;instance_ids&gt;
+ * $ pulumi import alicloud:ecs/ecsKeyPairAttachment:EcsKeyPairAttachment example &lt;key_pair_name&gt;:&lt;instance_ids&gt;
  * ```
  * 
  */

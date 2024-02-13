@@ -530,7 +530,7 @@ class GatewayVpnAttachment(pulumi.CustomResource):
         VPN Gateway Vpn Attachment can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:vpn/gatewayVpnAttachment:GatewayVpnAttachment example <id>
+        $ pulumi import alicloud:vpn/gatewayVpnAttachment:GatewayVpnAttachment example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -624,7 +624,7 @@ class GatewayVpnAttachment(pulumi.CustomResource):
         VPN Gateway Vpn Attachment can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:vpn/gatewayVpnAttachment:GatewayVpnAttachment example <id>
+        $ pulumi import alicloud:vpn/gatewayVpnAttachment:GatewayVpnAttachment example <id>
         ```
 
         :param str resource_name: The name of the resource.

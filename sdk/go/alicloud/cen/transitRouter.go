@@ -57,9 +57,7 @@ import (
 // CEN instance can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:cen/transitRouter:TransitRouter default cen-*****:tr-*******
-//
+// $ pulumi import alicloud:cen/transitRouter:TransitRouter default cen-*****:tr-*******
 // ```
 type TransitRouter struct {
 	pulumi.CustomResourceState

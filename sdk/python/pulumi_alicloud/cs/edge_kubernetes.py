@@ -1657,7 +1657,7 @@ class EdgeKubernetes(pulumi.CustomResource):
         Kubernetes edge cluster can be imported using the id, e.g. Then complete the main.tf accords to the result of `pulumi preview`.
 
         ```sh
-         $ pulumi import alicloud:cs/edgeKubernetes:EdgeKubernetes main cluster-id
+        $ pulumi import alicloud:cs/edgeKubernetes:EdgeKubernetes main cluster-id
         ```
 
         :param str resource_name: The name of the resource.
@@ -1843,7 +1843,7 @@ class EdgeKubernetes(pulumi.CustomResource):
         Kubernetes edge cluster can be imported using the id, e.g. Then complete the main.tf accords to the result of `pulumi preview`.
 
         ```sh
-         $ pulumi import alicloud:cs/edgeKubernetes:EdgeKubernetes main cluster-id
+        $ pulumi import alicloud:cs/edgeKubernetes:EdgeKubernetes main cluster-id
         ```
 
         :param str resource_name: The name of the resource.

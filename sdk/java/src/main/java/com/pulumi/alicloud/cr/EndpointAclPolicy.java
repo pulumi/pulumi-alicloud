@@ -83,7 +83,7 @@ import javax.annotation.Nullable;
  * CR Endpoint Acl Policy can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:cr/endpointAclPolicy:EndpointAclPolicy example &lt;instance_id&gt;:&lt;endpoint_type&gt;:&lt;entry&gt;
+ * $ pulumi import alicloud:cr/endpointAclPolicy:EndpointAclPolicy example &lt;instance_id&gt;:&lt;endpoint_type&gt;:&lt;entry&gt;
  * ```
  * 
  */

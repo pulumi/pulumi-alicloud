@@ -103,9 +103,7 @@ import (
 // Bastion Host User Group can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:bastionhost/userGroup:UserGroup example <instance_id>:<user_group_id>
-//
+// $ pulumi import alicloud:bastionhost/userGroup:UserGroup example <instance_id>:<user_group_id>
 // ```
 type UserGroup struct {
 	pulumi.CustomResourceState

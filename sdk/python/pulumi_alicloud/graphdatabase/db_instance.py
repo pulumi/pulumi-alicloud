@@ -507,7 +507,7 @@ class DbInstance(pulumi.CustomResource):
         Graph Database Db Instance can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:graphdatabase/dbInstance:DbInstance example <id>
+        $ pulumi import alicloud:graphdatabase/dbInstance:DbInstance example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -566,7 +566,7 @@ class DbInstance(pulumi.CustomResource):
         Graph Database Db Instance can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:graphdatabase/dbInstance:DbInstance example <id>
+        $ pulumi import alicloud:graphdatabase/dbInstance:DbInstance example <id>
         ```
 
         :param str resource_name: The name of the resource.

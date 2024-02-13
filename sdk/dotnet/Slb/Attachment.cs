@@ -106,7 +106,7 @@ namespace Pulumi.AliCloud.Slb
     /// Load balancer attachment can be imported using the id or load balancer id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:slb/attachment:Attachment example lb-abc123456
+    /// $ pulumi import alicloud:slb/attachment:Attachment example lb-abc123456
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:slb/attachment:Attachment")]

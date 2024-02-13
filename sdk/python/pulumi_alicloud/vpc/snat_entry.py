@@ -275,7 +275,7 @@ class SnatEntry(pulumi.CustomResource):
         Snat Entry can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:vpc/snatEntry:SnatEntry foo stb-1aece3:snat-232ce2
+        $ pulumi import alicloud:vpc/snatEntry:SnatEntry foo stb-1aece3:snat-232ce2
         ```
 
         :param str resource_name: The name of the resource.
@@ -339,7 +339,7 @@ class SnatEntry(pulumi.CustomResource):
         Snat Entry can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:vpc/snatEntry:SnatEntry foo stb-1aece3:snat-232ce2
+        $ pulumi import alicloud:vpc/snatEntry:SnatEntry foo stb-1aece3:snat-232ce2
         ```
 
         :param str resource_name: The name of the resource.

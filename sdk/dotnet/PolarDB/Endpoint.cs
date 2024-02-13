@@ -72,7 +72,7 @@ namespace Pulumi.AliCloud.PolarDB
     /// PolarDB endpoint can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:polardb/endpoint:Endpoint example pc-abc123456:pe-abc123456
+    /// $ pulumi import alicloud:polardb/endpoint:Endpoint example pc-abc123456:pe-abc123456
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:polardb/endpoint:Endpoint")]

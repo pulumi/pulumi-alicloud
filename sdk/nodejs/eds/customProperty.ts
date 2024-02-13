@@ -36,7 +36,7 @@ import * as utilities from "../utilities";
  * ECD Custom Property can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:eds/customProperty:CustomProperty example <id>
+ * $ pulumi import alicloud:eds/customProperty:CustomProperty example <id>
  * ```
  */
 export class CustomProperty extends pulumi.CustomResource {

@@ -114,9 +114,7 @@ import (
 // CEN instance can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:cen/instanceGrant:InstanceGrant example cen-abc123456:vpc-abc123456:uid123456
-//
+// $ pulumi import alicloud:cen/instanceGrant:InstanceGrant example cen-abc123456:vpc-abc123456:uid123456
 // ```
 type InstanceGrant struct {
 	pulumi.CustomResourceState

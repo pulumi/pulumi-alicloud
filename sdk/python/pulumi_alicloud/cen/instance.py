@@ -251,7 +251,7 @@ class Instance(pulumi.CustomResource):
         CEN instance can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:cen/instance:Instance example cen-abc123456
+        $ pulumi import alicloud:cen/instance:Instance example cen-abc123456
         ```
 
         :param str resource_name: The name of the resource.
@@ -293,7 +293,7 @@ class Instance(pulumi.CustomResource):
         CEN instance can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:cen/instance:Instance example cen-abc123456
+        $ pulumi import alicloud:cen/instance:Instance example cen-abc123456
         ```
 
         :param str resource_name: The name of the resource.

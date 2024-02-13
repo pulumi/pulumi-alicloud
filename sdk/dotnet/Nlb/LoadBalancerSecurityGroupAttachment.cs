@@ -103,7 +103,7 @@ namespace Pulumi.AliCloud.Nlb
     /// Nlb Load Balancer Security Group Attachment can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:nlb/loadBalancerSecurityGroupAttachment:LoadBalancerSecurityGroupAttachment example &lt;LoadBalancerId&gt;:&lt;SecurityGroupId&gt;
+    /// $ pulumi import alicloud:nlb/loadBalancerSecurityGroupAttachment:LoadBalancerSecurityGroupAttachment example &lt;LoadBalancerId&gt;:&lt;SecurityGroupId&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:nlb/loadBalancerSecurityGroupAttachment:LoadBalancerSecurityGroupAttachment")]

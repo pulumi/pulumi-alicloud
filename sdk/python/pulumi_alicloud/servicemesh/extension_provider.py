@@ -173,7 +173,7 @@ class ExtensionProvider(pulumi.CustomResource):
         Service Mesh Extension Provider can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:servicemesh/extensionProvider:ExtensionProvider example <service_mesh_id>:<type>:<extension_provider_name>
+        $ pulumi import alicloud:servicemesh/extensionProvider:ExtensionProvider example <service_mesh_id>:<type>:<extension_provider_name>
         ```
 
         :param str resource_name: The name of the resource.
@@ -201,7 +201,7 @@ class ExtensionProvider(pulumi.CustomResource):
         Service Mesh Extension Provider can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:servicemesh/extensionProvider:ExtensionProvider example <service_mesh_id>:<type>:<extension_provider_name>
+        $ pulumi import alicloud:servicemesh/extensionProvider:ExtensionProvider example <service_mesh_id>:<type>:<extension_provider_name>
         ```
 
         :param str resource_name: The name of the resource.

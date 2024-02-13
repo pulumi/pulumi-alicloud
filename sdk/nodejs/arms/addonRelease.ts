@@ -16,7 +16,7 @@ import * as utilities from "../utilities";
  * ARMS Addon Release can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:arms/addonRelease:AddonRelease example <environment_id>:<addon_release_name>
+ * $ pulumi import alicloud:arms/addonRelease:AddonRelease example <environment_id>:<addon_release_name>
  * ```
  */
 export class AddonRelease extends pulumi.CustomResource {

@@ -30,7 +30,7 @@ import * as utilities from "../utilities";
  * RAM Security Preference can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:ram/securityPreference:SecurityPreference example <id>
+ * $ pulumi import alicloud:ram/securityPreference:SecurityPreference example <id>
  * ```
  */
 export class SecurityPreference extends pulumi.CustomResource {

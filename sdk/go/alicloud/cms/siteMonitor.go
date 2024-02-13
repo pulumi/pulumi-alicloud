@@ -77,9 +77,7 @@ import (
 // Cloud Monitor Service Site Monitor can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:cms/siteMonitor:SiteMonitor example <id>
-//
+// $ pulumi import alicloud:cms/siteMonitor:SiteMonitor example <id>
 // ```
 type SiteMonitor struct {
 	pulumi.CustomResourceState

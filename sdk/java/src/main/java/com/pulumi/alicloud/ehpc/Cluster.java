@@ -135,7 +135,7 @@ import javax.annotation.Nullable;
  * Ehpc Cluster can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:ehpc/cluster:Cluster example &lt;id&gt;
+ * $ pulumi import alicloud:ehpc/cluster:Cluster example &lt;id&gt;
  * ```
  * 
  */

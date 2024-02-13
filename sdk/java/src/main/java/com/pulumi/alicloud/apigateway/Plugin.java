@@ -67,7 +67,7 @@ import javax.annotation.Nullable;
  * Api Gateway Plugin can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:apigateway/plugin:Plugin example &lt;id&gt;
+ * $ pulumi import alicloud:apigateway/plugin:Plugin example &lt;id&gt;
  * ```
  * 
  */

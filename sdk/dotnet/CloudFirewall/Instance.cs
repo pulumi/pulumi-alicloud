@@ -47,7 +47,7 @@ namespace Pulumi.AliCloud.CloudFirewall
     /// Cloud Firewall Instance can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:cloudfirewall/instance:Instance example &lt;id&gt;
+    /// $ pulumi import alicloud:cloudfirewall/instance:Instance example &lt;id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:cloudfirewall/instance:Instance")]

@@ -69,7 +69,7 @@ import javax.annotation.Nullable;
  * ECS Prefix List can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:ecs/ecsPrefixList:EcsPrefixList example &lt;id&gt;
+ * $ pulumi import alicloud:ecs/ecsPrefixList:EcsPrefixList example &lt;id&gt;
  * ```
  * 
  */

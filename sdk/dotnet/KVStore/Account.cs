@@ -91,7 +91,7 @@ namespace Pulumi.AliCloud.KVStore
     /// KVStore account can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:kvstore/account:Account example &lt;instance_id&gt;:&lt;account_name&gt;
+    /// $ pulumi import alicloud:kvstore/account:Account example &lt;instance_id&gt;:&lt;account_name&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:kvstore/account:Account")]

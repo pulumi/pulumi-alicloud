@@ -84,9 +84,7 @@ import (
 // ENS Instance Security Group Attachment can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:ens/instanceSecurityGroupAttachment:InstanceSecurityGroupAttachment example <instance_id>:<security_group_id>
-//
+// $ pulumi import alicloud:ens/instanceSecurityGroupAttachment:InstanceSecurityGroupAttachment example <instance_id>:<security_group_id>
 // ```
 type InstanceSecurityGroupAttachment struct {
 	pulumi.CustomResourceState

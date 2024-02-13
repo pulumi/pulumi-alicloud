@@ -60,7 +60,7 @@ namespace Pulumi.AliCloud.Tsdb
     /// TSDB Instance can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:tsdb/instance:Instance example &lt;id&gt;
+    /// $ pulumi import alicloud:tsdb/instance:Instance example &lt;id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:tsdb/instance:Instance")]

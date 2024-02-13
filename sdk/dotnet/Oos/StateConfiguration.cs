@@ -55,7 +55,7 @@ namespace Pulumi.AliCloud.Oos
     /// OOS State Configuration can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:oos/stateConfiguration:StateConfiguration example &lt;id&gt;
+    /// $ pulumi import alicloud:oos/stateConfiguration:StateConfiguration example &lt;id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:oos/stateConfiguration:StateConfiguration")]

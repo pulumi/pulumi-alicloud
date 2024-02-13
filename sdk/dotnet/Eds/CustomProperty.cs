@@ -50,7 +50,7 @@ namespace Pulumi.AliCloud.Eds
     /// ECD Custom Property can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:eds/customProperty:CustomProperty example &lt;id&gt;
+    /// $ pulumi import alicloud:eds/customProperty:CustomProperty example &lt;id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:eds/customProperty:CustomProperty")]

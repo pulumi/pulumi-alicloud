@@ -26,7 +26,7 @@ import * as utilities from "../utilities";
  * DNS can be imported using the id or domain name, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:dns/domain:Domain example "aliyun.com"
+ * $ pulumi import alicloud:dns/domain:Domain example "aliyun.com"
  * ```
  *
  * @deprecated This resource has been deprecated in favour of DnsDomain

@@ -394,7 +394,7 @@ class BasicEndpoint(pulumi.CustomResource):
         Global Accelerator (GA) Basic Endpoint can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:ga/basicEndpoint:BasicEndpoint example <endpoint_group_id>:<endpoint_id>
+        $ pulumi import alicloud:ga/basicEndpoint:BasicEndpoint example <endpoint_group_id>:<endpoint_id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -483,7 +483,7 @@ class BasicEndpoint(pulumi.CustomResource):
         Global Accelerator (GA) Basic Endpoint can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:ga/basicEndpoint:BasicEndpoint example <endpoint_group_id>:<endpoint_id>
+        $ pulumi import alicloud:ga/basicEndpoint:BasicEndpoint example <endpoint_group_id>:<endpoint_id>
         ```
 
         :param str resource_name: The name of the resource.

@@ -138,7 +138,7 @@ import javax.annotation.Nullable;
  * ECS Network Interface Attachment can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:ecs/ecsNetworkInterfaceAttachment:EcsNetworkInterfaceAttachment example eni-abcd1234:i-abcd1234
+ * $ pulumi import alicloud:ecs/ecsNetworkInterfaceAttachment:EcsNetworkInterfaceAttachment example eni-abcd1234:i-abcd1234
  * ```
  * 
  */

@@ -101,9 +101,7 @@ import (
 // VPC Bgp Peer can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:vpc/bgpPeer:BgpPeer example <id>
-//
+// $ pulumi import alicloud:vpc/bgpPeer:BgpPeer example <id>
 // ```
 type BgpPeer struct {
 	pulumi.CustomResourceState

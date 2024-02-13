@@ -49,7 +49,7 @@ import * as utilities from "../utilities";
  * ENS Load Balancer can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:ens/loadBalancer:LoadBalancer example <id>
+ * $ pulumi import alicloud:ens/loadBalancer:LoadBalancer example <id>
  * ```
  */
 export class LoadBalancer extends pulumi.CustomResource {

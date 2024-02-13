@@ -58,7 +58,7 @@ import javax.annotation.Nullable;
  * Private Zone can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:pvtz/zone:Zone example abc123456
+ * $ pulumi import alicloud:pvtz/zone:Zone example abc123456
  * ```
  * 
  */

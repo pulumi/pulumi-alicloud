@@ -63,7 +63,7 @@ import javax.annotation.Nullable;
  * RAM SAML Provider can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:ram/samlProvider:SamlProvider example &lt;saml_provider_name&gt;
+ * $ pulumi import alicloud:ram/samlProvider:SamlProvider example &lt;saml_provider_name&gt;
  * ```
  * 
  */

@@ -42,7 +42,7 @@ import * as utilities from "../utilities";
  * VPC Dhcp Options Set Attachment can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:vpc/dhcpOptionsSetAttachment:DhcpOptionsSetAttachment example <id>
+ * $ pulumi import alicloud:vpc/dhcpOptionsSetAttachment:DhcpOptionsSetAttachment example <id>
  * ```
  */
 export class DhcpOptionsSetAttachment extends pulumi.CustomResource {

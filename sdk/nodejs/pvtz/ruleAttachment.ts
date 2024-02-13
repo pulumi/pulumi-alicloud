@@ -18,7 +18,7 @@ import * as utilities from "../utilities";
  * Private Zone Rule Attachment can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:pvtz/ruleAttachment:RuleAttachment example <rule_id>
+ * $ pulumi import alicloud:pvtz/ruleAttachment:RuleAttachment example <rule_id>
  * ```
  */
 export class RuleAttachment extends pulumi.CustomResource {

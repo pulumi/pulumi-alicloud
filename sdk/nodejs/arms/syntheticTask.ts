@@ -201,7 +201,7 @@ import * as utilities from "../utilities";
  * ARMS Synthetic Task can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:arms/syntheticTask:SyntheticTask example <id>
+ * $ pulumi import alicloud:arms/syntheticTask:SyntheticTask example <id>
  * ```
  */
 export class SyntheticTask extends pulumi.CustomResource {

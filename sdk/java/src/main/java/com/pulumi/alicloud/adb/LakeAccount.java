@@ -132,7 +132,7 @@ import javax.annotation.Nullable;
  * ADB Lake Account can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:adb/lakeAccount:LakeAccount example &lt;db_cluster_id&gt;:&lt;account_name&gt;
+ * $ pulumi import alicloud:adb/lakeAccount:LakeAccount example &lt;db_cluster_id&gt;:&lt;account_name&gt;
  * ```
  * 
  */

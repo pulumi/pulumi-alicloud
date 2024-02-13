@@ -23,9 +23,7 @@ import (
 // ECS Network Interface Permission can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:ecs/ecsNetworkInterfacePermission:EcsNetworkInterfacePermission example <id>
-//
+// $ pulumi import alicloud:ecs/ecsNetworkInterfacePermission:EcsNetworkInterfacePermission example <id>
 // ```
 type EcsNetworkInterfacePermission struct {
 	pulumi.CustomResourceState

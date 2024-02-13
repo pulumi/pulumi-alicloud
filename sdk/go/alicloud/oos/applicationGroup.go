@@ -85,9 +85,7 @@ import (
 // OOS Application Group can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:oos/applicationGroup:ApplicationGroup example <application_name>:<application_group_name>
-//
+// $ pulumi import alicloud:oos/applicationGroup:ApplicationGroup example <application_name>:<application_group_name>
 // ```
 type ApplicationGroup struct {
 	pulumi.CustomResourceState

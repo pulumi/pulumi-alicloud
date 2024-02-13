@@ -27,7 +27,7 @@ import javax.annotation.Nullable;
  * GPDB DB Instance Plan can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:gpdb/dbInstancePlan:DbInstancePlan example &lt;db_instance_id&gt;:&lt;plan_id&gt;
+ * $ pulumi import alicloud:gpdb/dbInstancePlan:DbInstancePlan example &lt;db_instance_id&gt;:&lt;plan_id&gt;
  * ```
  * 
  */

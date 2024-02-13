@@ -40,7 +40,7 @@ namespace Pulumi.AliCloud.ThreatDetection
     /// Threat Detection Sas Trail can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:threatdetection/sasTrail:SasTrail example
+    /// $ pulumi import alicloud:threatdetection/sasTrail:SasTrail example
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:threatdetection/sasTrail:SasTrail")]

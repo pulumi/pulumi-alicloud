@@ -21,7 +21,7 @@ namespace Pulumi.AliCloud.DBS
     /// DBS Backup Plan can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:dbs/backupPlan:BackupPlan example &lt;id&gt;
+    /// $ pulumi import alicloud:dbs/backupPlan:BackupPlan example &lt;id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:dbs/backupPlan:BackupPlan")]

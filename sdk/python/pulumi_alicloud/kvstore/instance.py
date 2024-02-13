@@ -2198,7 +2198,7 @@ class Instance(pulumi.CustomResource):
         KVStore instance can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:kvstore/instance:Instance example r-abc12345678
+        $ pulumi import alicloud:kvstore/instance:Instance example r-abc12345678
         ```
 
         :param str resource_name: The name of the resource.
@@ -2281,7 +2281,7 @@ class Instance(pulumi.CustomResource):
         KVStore instance can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:kvstore/instance:Instance example r-abc12345678
+        $ pulumi import alicloud:kvstore/instance:Instance example r-abc12345678
         ```
 
         :param str resource_name: The name of the resource.

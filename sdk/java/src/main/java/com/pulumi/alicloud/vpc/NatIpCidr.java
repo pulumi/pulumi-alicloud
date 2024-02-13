@@ -95,7 +95,7 @@ import javax.annotation.Nullable;
  * VPC Nat Ip Cidr can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:vpc/natIpCidr:NatIpCidr example &lt;nat_gateway_id&gt;:&lt;nat_ip_cidr&gt;
+ * $ pulumi import alicloud:vpc/natIpCidr:NatIpCidr example &lt;nat_gateway_id&gt;:&lt;nat_ip_cidr&gt;
  * ```
  * 
  */

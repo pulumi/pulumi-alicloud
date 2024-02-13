@@ -34,7 +34,7 @@ import javax.annotation.Nullable;
  * Cluster nodepool can be imported using the id, e.g. Then complete the nodepool.tf accords to the result of `pulumi preview`.
  * 
  * ```sh
- *  $ pulumi import alicloud:cs/nodePool:NodePool custom_nodepool cluster_id:nodepool_id
+ * $ pulumi import alicloud:cs/nodePool:NodePool custom_nodepool cluster_id:nodepool_id
  * ```
  * 
  */

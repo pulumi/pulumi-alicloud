@@ -652,7 +652,7 @@ class LoadBalancer(pulumi.CustomResource):
         NLB Load Balancer can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:nlb/loadBalancer:LoadBalancer example <id>
+        $ pulumi import alicloud:nlb/loadBalancer:LoadBalancer example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -744,7 +744,7 @@ class LoadBalancer(pulumi.CustomResource):
         NLB Load Balancer can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:nlb/loadBalancer:LoadBalancer example <id>
+        $ pulumi import alicloud:nlb/loadBalancer:LoadBalancer example <id>
         ```
 
         :param str resource_name: The name of the resource.

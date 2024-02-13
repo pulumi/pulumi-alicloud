@@ -343,7 +343,7 @@ class GatewayEndpoint(pulumi.CustomResource):
         VPC Gateway Endpoint can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:vpc/gatewayEndpoint:GatewayEndpoint example <id>
+        $ pulumi import alicloud:vpc/gatewayEndpoint:GatewayEndpoint example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -411,7 +411,7 @@ class GatewayEndpoint(pulumi.CustomResource):
         VPC Gateway Endpoint can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:vpc/gatewayEndpoint:GatewayEndpoint example <id>
+        $ pulumi import alicloud:vpc/gatewayEndpoint:GatewayEndpoint example <id>
         ```
 
         :param str resource_name: The name of the resource.

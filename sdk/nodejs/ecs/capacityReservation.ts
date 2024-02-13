@@ -50,7 +50,7 @@ import * as utilities from "../utilities";
  * Ecs Capacity Reservation can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:ecs/capacityReservation:CapacityReservation example <id>
+ * $ pulumi import alicloud:ecs/capacityReservation:CapacityReservation example <id>
  * ```
  */
 export class CapacityReservation extends pulumi.CustomResource {

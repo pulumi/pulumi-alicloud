@@ -25,7 +25,7 @@ import javax.annotation.Nullable;
  * EDAS cluster can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:edas/k8sCluster:K8sCluster cluster cluster_id
+ * $ pulumi import alicloud:edas/k8sCluster:K8sCluster cluster cluster_id
  * ```
  * 
  */

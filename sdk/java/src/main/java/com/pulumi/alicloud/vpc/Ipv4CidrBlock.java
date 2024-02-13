@@ -66,7 +66,7 @@ import javax.annotation.Nullable;
  * VPC Ipv4 Cidr Block can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:vpc/ipv4CidrBlock:Ipv4CidrBlock example &lt;vpc_id&gt;:&lt;secondary_cidr_block&gt;
+ * $ pulumi import alicloud:vpc/ipv4CidrBlock:Ipv4CidrBlock example &lt;vpc_id&gt;:&lt;secondary_cidr_block&gt;
  * ```
  * 
  */

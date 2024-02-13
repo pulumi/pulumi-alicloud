@@ -1536,7 +1536,7 @@ class SynchronizationJob(pulumi.CustomResource):
         DTS Synchronization Job can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:dts/synchronizationJob:SynchronizationJob example <id>
+        $ pulumi import alicloud:dts/synchronizationJob:SynchronizationJob example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -1623,7 +1623,7 @@ class SynchronizationJob(pulumi.CustomResource):
         DTS Synchronization Job can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:dts/synchronizationJob:SynchronizationJob example <id>
+        $ pulumi import alicloud:dts/synchronizationJob:SynchronizationJob example <id>
         ```
 
         :param str resource_name: The name of the resource.

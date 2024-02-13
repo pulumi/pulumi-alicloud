@@ -77,7 +77,7 @@ import javax.annotation.Nullable;
  * Event Bridge Event Source can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:eventbridge/eventSource:EventSource example &lt;event_source_name&gt;
+ * $ pulumi import alicloud:eventbridge/eventSource:EventSource example &lt;event_source_name&gt;
  * ```
  * 
  */

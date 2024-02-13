@@ -87,7 +87,7 @@ namespace Pulumi.AliCloud.KVStore
     /// KVStore backup policy can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:kvstore/backupPolicy:BackupPolicy example r-abc12345678
+    /// $ pulumi import alicloud:kvstore/backupPolicy:BackupPolicy example r-abc12345678
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:kvstore/backupPolicy:BackupPolicy")]

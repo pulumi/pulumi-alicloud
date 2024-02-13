@@ -58,9 +58,7 @@ import (
 // ECD Custom Property can be imported using the id, e.g.
 //
 // ```sh
-//
-//	$ pulumi import alicloud:eds/customProperty:CustomProperty example <id>
-//
+// $ pulumi import alicloud:eds/customProperty:CustomProperty example <id>
 // ```
 type CustomProperty struct {
 	pulumi.CustomResourceState

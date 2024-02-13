@@ -81,7 +81,7 @@ namespace Pulumi.AliCloud.Vpc
     /// VPC Peer Connection can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:vpc/peerConnection:PeerConnection example &lt;id&gt;
+    /// $ pulumi import alicloud:vpc/peerConnection:PeerConnection example &lt;id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:vpc/peerConnection:PeerConnection")]

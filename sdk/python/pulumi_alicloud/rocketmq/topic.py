@@ -337,7 +337,7 @@ class Topic(pulumi.CustomResource):
         ONS TOPIC can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:rocketmq/topic:Topic topic MQ_INST_1234567890_Baso1234567:onsTopicDemo
+        $ pulumi import alicloud:rocketmq/topic:Topic topic MQ_INST_1234567890_Baso1234567:onsTopicDemo
         ```
 
         :param str resource_name: The name of the resource.
@@ -395,7 +395,7 @@ class Topic(pulumi.CustomResource):
         ONS TOPIC can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:rocketmq/topic:Topic topic MQ_INST_1234567890_Baso1234567:onsTopicDemo
+        $ pulumi import alicloud:rocketmq/topic:Topic topic MQ_INST_1234567890_Baso1234567:onsTopicDemo
         ```
 
         :param str resource_name: The name of the resource.
