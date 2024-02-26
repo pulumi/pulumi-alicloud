@@ -35,6 +35,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			// In conjunction with a VPC
 //			primaryVpcDs, err := vpc.NewNetwork(ctx, "primaryVpcDs", nil)
 //			if err != nil {
 //				return err

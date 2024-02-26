@@ -31,6 +31,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Create a new RAM Role.
 //			_, err := ram.NewRole(ctx, "role", &ram.RoleArgs{
 //				Description: pulumi.String("this is a role test."),
 //				Document: pulumi.String(`  {

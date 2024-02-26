@@ -84,7 +84,7 @@ import * as utilities from "../utilities";
  *     sourceEndpointDatabaseName: exampleDatabase.name,
  *     sourceEndpointUserName: exampleRdsAccount.accountName,
  *     sourceEndpointPassword: exampleRdsAccount.accountPassword,
- *     dbList: pulumi.all([exampleDatabase.name, exampleDatabase.name]).apply(([exampleDatabaseName, exampleDatabaseName1]) => JSON.stringify({
+ *     dbList: pulumi.jsonStringify(pulumi.all([exampleDatabase.name, exampleDatabase.name]).apply(([exampleDatabaseName, exampleDatabaseName1]) => {
  *         [exampleDatabaseName]: {
  *             name: exampleDatabaseName1,
  *             all: true,

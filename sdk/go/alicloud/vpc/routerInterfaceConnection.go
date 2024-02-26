@@ -95,6 +95,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			// A integrated router interface connection tunnel requires both InitiatingSide and AcceptingSide configuring opposite router interface.
 //			_, err = vpc.NewRouterInterfaceConnection(ctx, "fooRouterInterfaceConnection", &vpc.RouterInterfaceConnectionArgs{
 //				InterfaceId:         initiate.ID(),
 //				OppositeInterfaceId: opposite.ID(),

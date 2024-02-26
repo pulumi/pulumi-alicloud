@@ -30,6 +30,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Create a RAM User Policy attachment.
 //			user, err := ram.NewUser(ctx, "user", &ram.UserArgs{
 //				DisplayName: pulumi.String("user_display_name"),
 //				Mobile:      pulumi.String("86-18688888888"),
