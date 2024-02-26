@@ -30,6 +30,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Create a RAM Role Policy attachment.
 //			role, err := ram.NewRole(ctx, "role", &ram.RoleArgs{
 //				Document: pulumi.String(`    {
 //	      "Statement": [

@@ -47,6 +47,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Add a new Certificate.
 //			_, err := cas.NewCertificate(ctx, "cert", &cas.CertificateArgs{
 //				Cert: readFileOrPanic(fmt.Sprintf("%v/test.crt", path.Module)),
 //				Key:  readFileOrPanic(fmt.Sprintf("%v/test.key", path.Module)),

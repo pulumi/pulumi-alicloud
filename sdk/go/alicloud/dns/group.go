@@ -29,6 +29,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Add a new Domain group.
 //			_, err := dns.NewGroup(ctx, "group", nil)
 //			if err != nil {
 //				return err

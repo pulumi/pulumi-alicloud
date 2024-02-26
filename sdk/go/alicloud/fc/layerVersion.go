@@ -47,6 +47,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			// If you upload the function by OSS Bucket, you need to specify path can't upload by content.
 //			defaultBucketObject, err := oss.NewBucketObject(ctx, "defaultBucketObject", &oss.BucketObjectArgs{
 //				Bucket:  defaultBucket.ID(),
 //				Key:     pulumi.String("index.py"),

@@ -1388,7 +1388,7 @@ class SubscriptionJob(pulumi.CustomResource):
             source_endpoint_database_name=example_database.name,
             source_endpoint_user_name=example_rds_account.account_name,
             source_endpoint_password=example_rds_account.account_password,
-            db_list=pulumi.Output.all(example_database.name, example_database.name).apply(lambda exampleDatabaseName, exampleDatabaseName1: json.dumps({
+            db_list=pulumi.Output.json_dumps(pulumi.Output.all(example_database.name, example_database.name).apply(lambda exampleDatabaseName, exampleDatabaseName1: {
                 example_database_name: {
                     "name": example_database_name1,
                     "all": True,
@@ -1528,7 +1528,7 @@ class SubscriptionJob(pulumi.CustomResource):
             source_endpoint_database_name=example_database.name,
             source_endpoint_user_name=example_rds_account.account_name,
             source_endpoint_password=example_rds_account.account_password,
-            db_list=pulumi.Output.all(example_database.name, example_database.name).apply(lambda exampleDatabaseName, exampleDatabaseName1: json.dumps({
+            db_list=pulumi.Output.json_dumps(pulumi.Output.all(example_database.name, example_database.name).apply(lambda exampleDatabaseName, exampleDatabaseName1: {
                 example_database_name: {
                     "name": example_database_name1,
                     "all": True,

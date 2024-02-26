@@ -37,6 +37,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Create a cen flowlog resource and use it to publish a route entry pointing to an ECS.
 //			defaultInstance, err := cen.NewInstance(ctx, "defaultInstance", nil)
 //			if err != nil {
 //				return err

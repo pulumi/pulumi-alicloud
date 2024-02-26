@@ -33,6 +33,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// create a server certificate
 //			_, err := slb.NewServerCertificate(ctx, "foo", &slb.ServerCertificateArgs{
 //				PrivateKey: pulumi.String(`-----BEGIN RSA PRIVATE KEY-----
 //
@@ -105,6 +106,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// create a server certificate
 //			_, err := slb.NewServerCertificate(ctx, "foo", &slb.ServerCertificateArgs{
 //				ServerCertificate: readFileOrPanic(fmt.Sprintf("%v/server_certificate.pem", path.Module)),
 //				PrivateKey:        readFileOrPanic(fmt.Sprintf("%v/private_key.pem", path.Module)),

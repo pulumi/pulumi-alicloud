@@ -51,6 +51,7 @@ import (
 //			if param := cfg.Get("acceptUid"); param != "" {
 //				acceptUid = param
 //			}
+//			// Method 1: Use assume_role to operate resources in the target account, detail see https://registry.terraform.io/providers/aliyun/alicloud/latest/docs#assume-role
 //			_, err := alicloud.NewProvider(ctx, "accepting", &alicloud.ProviderArgs{
 //				Region: pulumi.String(acceptingRegion),
 //				AssumeRole: &alicloud.ProviderAssumeRoleArgs{
