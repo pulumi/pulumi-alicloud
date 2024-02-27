@@ -34,6 +34,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Create a new EIP.
 //			_, err := ecs.NewEip(ctx, "example", &ecs.EipArgs{
 //				Bandwidth:          pulumi.String("10"),
 //				InternetChargeType: pulumi.String("PayByBandwidth"),

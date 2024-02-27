@@ -39,6 +39,7 @@ import (
 // if param := cfg.Get("name"); param != ""{
 // name = param
 // }
+// // Create a new ECS instance for VPC
 // vpc, err := vpc.NewNetwork(ctx, "vpc", &vpc.NetworkArgs{
 // VpcName: pulumi.String(name),
 // CidrBlock: pulumi.String("172.16.0.0/16"),
@@ -46,6 +47,7 @@ import (
 // if err != nil {
 // return err
 // }
+// // Create a new ECS instance for a VPC
 // group, err := ecs.NewSecurityGroup(ctx, "group", &ecs.SecurityGroupArgs{
 // Description: pulumi.String("foo"),
 // VpcId: vpc.ID(),

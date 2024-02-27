@@ -32,6 +32,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// If you use this template, you need to activate the link before you can return to the alarm contact information, otherwise diff will appear in terraform. So please confirm the activation link as soon as possible.
 //			_, err := cms.NewAlarmContact(ctx, "example", &cms.AlarmContactArgs{
 //				AlarmContactName: pulumi.String("terraform-example"),
 //				ChannelsMail:     pulumi.String("terraform@test.com"),
@@ -58,6 +59,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// If you use this template, you can ignore the diff of the alarm contact information by `lifestyle`. We recommend the above usage and activate the link in time.
 //			_, err := cms.NewAlarmContact(ctx, "example", &cms.AlarmContactArgs{
 //				AlarmContactName: pulumi.String("tf-example"),
 //				Describe:         pulumi.String("For example"),

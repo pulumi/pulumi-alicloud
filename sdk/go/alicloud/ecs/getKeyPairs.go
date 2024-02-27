@@ -29,6 +29,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Declare the data source
 //			defaultKeyPair, err := ecs.NewKeyPair(ctx, "defaultKeyPair", &ecs.KeyPairArgs{
 //				KeyName: pulumi.String("keyPairDatasource"),
 //			})

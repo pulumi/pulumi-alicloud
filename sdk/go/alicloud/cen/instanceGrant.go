@@ -44,6 +44,7 @@ import (
 //			if param := cfg.Get("anotherUid"); param != "" {
 //				anotherUid = param
 //			}
+//			// Method 1: Use assume_role to operate resources in the target cen account, detail see https://registry.terraform.io/providers/aliyun/alicloud/latest/docs#assume-role
 //			_, err := alicloud.NewProvider(ctx, "childAccount", &alicloud.ProviderArgs{
 //				Region: pulumi.String("cn-hangzhou"),
 //				AssumeRole: &alicloud.ProviderAssumeRoleArgs{

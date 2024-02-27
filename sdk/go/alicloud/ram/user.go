@@ -35,6 +35,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Create a new RAM user.
 //			_, err := ram.NewUser(ctx, "user", &ram.UserArgs{
 //				Comments:    pulumi.String("yoyoyo"),
 //				DisplayName: pulumi.String("user_display_name"),

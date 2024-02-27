@@ -32,6 +32,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Create a new ECS disk-attachment and use it attach one disk to a new instance.
 //			ecsSg, err := ecs.NewSecurityGroup(ctx, "ecsSg", &ecs.SecurityGroupArgs{
 //				Description: pulumi.String("New security group"),
 //			})

@@ -37,12 +37,14 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			// Using name prefix to build key pair
 //			_, err = ecs.NewKeyPair(ctx, "prefix", &ecs.KeyPairArgs{
 //				KeyNamePrefix: pulumi.String("terraform-test-key-pair-prefix"),
 //			})
 //			if err != nil {
 //				return err
 //			}
+//			// Import an existing public key to build a alicloud key pair
 //			_, err = ecs.NewKeyPair(ctx, "publickey", &ecs.KeyPairArgs{
 //				KeyName:   pulumi.String("my_public_key"),
 //				PublicKey: pulumi.String("ssh-rsa AAAAB3Nza12345678qwertyuudsfsg"),
