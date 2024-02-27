@@ -56,6 +56,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			// Method 1: Use assume_role to operate resources in the target cen account, detail see https://registry.terraform.io/providers/aliyun/alicloud/latest/docs#assume-role
 //			_, err = alicloud.NewProvider(ctx, "cenAccount", &alicloud.ProviderArgs{
 //				Region: pulumi.String("cn-hangzhou"),
 //				AssumeRole: &alicloud.ProviderAssumeRoleArgs{

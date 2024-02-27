@@ -31,6 +31,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Create a new RAM Group.
 //			_, err := ram.NewGroup(ctx, "group", &ram.GroupArgs{
 //				Comments: pulumi.String("this is a group comments."),
 //			})

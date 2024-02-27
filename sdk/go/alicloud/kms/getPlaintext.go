@@ -32,6 +32,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			// Encrypt plaintext 'example'
 //			encrypted, err := kms.NewCiphertext(ctx, "encrypted", &kms.CiphertextArgs{
 //				KeyId:     key.ID(),
 //				Plaintext: pulumi.String("example"),

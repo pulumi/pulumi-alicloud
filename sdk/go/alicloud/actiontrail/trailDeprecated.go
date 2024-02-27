@@ -31,6 +31,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Create a new action trail.
 //			_, err := actiontrail.NewTrailDeprecated(ctx, "foo", &actiontrail.TrailDeprecatedArgs{
 //				EventRw:       pulumi.String("Write-test"),
 //				OssBucketName: pulumi.Any(alicloud_oss_bucket.Bucket.Id),

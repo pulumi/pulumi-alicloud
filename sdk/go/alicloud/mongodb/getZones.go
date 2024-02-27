@@ -33,6 +33,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			// Create an mongoDB instance with the first matched zone
 //			_, err = mongodb.NewInstance(ctx, "mongodb", &mongodb.InstanceArgs{
 //				ZoneId: *pulumi.String(zonesIds.Zones[0].Id),
 //			})

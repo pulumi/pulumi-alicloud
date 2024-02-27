@@ -34,6 +34,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Add a new Domain.
 //			_, err := dns.NewDnsDomain(ctx, "dns", &dns.DnsDomainArgs{
 //				DomainName: pulumi.String("starmove.com"),
 //				GroupId:    pulumi.String("85ab8713-4a30-4de4-9d20-155ff830****"),

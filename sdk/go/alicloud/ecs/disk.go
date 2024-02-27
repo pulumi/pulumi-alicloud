@@ -31,6 +31,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Create a new ECS disk.
 //			_, err := ecs.NewDisk(ctx, "ecsDisk", &ecs.DiskArgs{
 //				AvailabilityZone: pulumi.String("cn-beijing-b"),
 //				Category:         pulumi.String("cloud_efficiency"),
