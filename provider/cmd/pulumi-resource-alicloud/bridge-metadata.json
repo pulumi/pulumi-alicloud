@@ -5156,6 +5156,15 @@
             "alicloud_nlb_load_balancer": {
                 "current": "alicloud:nlb/loadBalancer:LoadBalancer",
                 "fields": {
+                    "deletion_protection_config": {
+                        "maxItemsOne": true
+                    },
+                    "modification_protection_config": {
+                        "maxItemsOne": true
+                    },
+                    "security_group_ids": {
+                        "maxItemsOne": false
+                    },
                     "zone_mappings": {
                         "maxItemsOne": false
                     }
@@ -18687,6 +18696,22 @@
                                 },
                                 "ipsec_config": {
                                     "maxItemsOne": false
+                                },
+                                "tunnel_options_specification": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "tunnel_bgp_config": {
+                                                "maxItemsOne": true
+                                            },
+                                            "tunnel_ike_config": {
+                                                "maxItemsOne": true
+                                            },
+                                            "tunnel_ipsec_config": {
+                                                "maxItemsOne": true
+                                            }
+                                        }
+                                    }
                                 },
                                 "vco_health_check": {
                                     "maxItemsOne": false
