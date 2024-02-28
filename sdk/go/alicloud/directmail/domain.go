@@ -27,21 +27,27 @@ import (
 //
 // import (
 //
+//	"fmt"
+//
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/directmail"
+//	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			domainName := "alicloud-provider.online"
-//			if param := cfg.Get("domainName"); param != "" {
-//				domainName = param
+//			_, err := random.NewRandomInteger(ctx, "default", &random.RandomIntegerArgs{
+//				Max: pulumi.Int(99999),
+//				Min: pulumi.Int(10000),
+//			})
+//			if err != nil {
+//				return err
 //			}
-//			_, err := directmail.NewDomain(ctx, "example", &directmail.DomainArgs{
-//				DomainName: pulumi.String(domainName),
+//			_, err = directmail.NewDomain(ctx, "example", &directmail.DomainArgs{
+//				DomainName: _default.Result.ApplyT(func(result int) (string, error) {
+//					return fmt.Sprintf("alicloud-provider-%v.online", result), nil
+//				}).(pulumi.StringOutput),
 //			})
 //			if err != nil {
 //				return err

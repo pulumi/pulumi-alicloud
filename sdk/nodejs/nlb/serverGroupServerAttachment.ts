@@ -112,7 +112,7 @@ export class ServerGroupServerAttachment extends pulumi.CustomResource {
      */
     public readonly serverType!: pulumi.Output<string>;
     /**
-     * Status of the server.
+     * The status of the resource.
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
     /**
@@ -148,9 +148,6 @@ export class ServerGroupServerAttachment extends pulumi.CustomResource {
             resourceInputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
             const args = argsOrState as ServerGroupServerAttachmentArgs | undefined;
-            if ((!args || args.port === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'port'");
-            }
             if ((!args || args.serverGroupId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'serverGroupId'");
             }
@@ -206,7 +203,7 @@ export interface ServerGroupServerAttachmentState {
      */
     serverType?: pulumi.Input<string>;
     /**
-     * Status of the server.
+     * The status of the resource.
      */
     status?: pulumi.Input<string>;
     /**
@@ -230,7 +227,7 @@ export interface ServerGroupServerAttachmentArgs {
     /**
      * The port used by the backend server. Valid values: 1 to 65535.
      */
-    port: pulumi.Input<number>;
+    port?: pulumi.Input<number>;
     /**
      * The ID of the server group.
      */

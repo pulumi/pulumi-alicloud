@@ -110,7 +110,7 @@ type ServerGroupServerAttachment struct {
 	ServerIp pulumi.StringOutput `pulumi:"serverIp"`
 	// The type of the backend server. Valid values: `Ecs`, `Eni`, `Eci`, `Ip`.
 	ServerType pulumi.StringOutput `pulumi:"serverType"`
-	// Status of the server.
+	// The status of the resource.
 	Status pulumi.StringOutput `pulumi:"status"`
 	// The weight of the backend server. Valid values: 0 to 100. Default value: 100. If the weight of a backend server is set to 0, no requests are forwarded to the backend server.
 	Weight pulumi.IntOutput `pulumi:"weight"`
@@ -125,9 +125,6 @@ func NewServerGroupServerAttachment(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.Port == nil {
-		return nil, errors.New("invalid value for required argument 'Port'")
-	}
 	if args.ServerGroupId == nil {
 		return nil, errors.New("invalid value for required argument 'ServerGroupId'")
 	}
@@ -174,7 +171,7 @@ type serverGroupServerAttachmentState struct {
 	ServerIp *string `pulumi:"serverIp"`
 	// The type of the backend server. Valid values: `Ecs`, `Eni`, `Eci`, `Ip`.
 	ServerType *string `pulumi:"serverType"`
-	// Status of the server.
+	// The status of the resource.
 	Status *string `pulumi:"status"`
 	// The weight of the backend server. Valid values: 0 to 100. Default value: 100. If the weight of a backend server is set to 0, no requests are forwarded to the backend server.
 	Weight *int `pulumi:"weight"`
@@ -197,7 +194,7 @@ type ServerGroupServerAttachmentState struct {
 	ServerIp pulumi.StringPtrInput
 	// The type of the backend server. Valid values: `Ecs`, `Eni`, `Eci`, `Ip`.
 	ServerType pulumi.StringPtrInput
-	// Status of the server.
+	// The status of the resource.
 	Status pulumi.StringPtrInput
 	// The weight of the backend server. Valid values: 0 to 100. Default value: 100. If the weight of a backend server is set to 0, no requests are forwarded to the backend server.
 	Weight pulumi.IntPtrInput
@@ -213,7 +210,7 @@ type serverGroupServerAttachmentArgs struct {
 	// The description of the servers. The description must be 2 to 256 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs (@), underscores (_), and hyphens (-).
 	Description *string `pulumi:"description"`
 	// The port used by the backend server. Valid values: 1 to 65535.
-	Port int `pulumi:"port"`
+	Port *int `pulumi:"port"`
 	// The ID of the server group.
 	ServerGroupId string `pulumi:"serverGroupId"`
 	// The ID of the server.
@@ -233,7 +230,7 @@ type ServerGroupServerAttachmentArgs struct {
 	// The description of the servers. The description must be 2 to 256 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs (@), underscores (_), and hyphens (-).
 	Description pulumi.StringPtrInput
 	// The port used by the backend server. Valid values: 1 to 65535.
-	Port pulumi.IntInput
+	Port pulumi.IntPtrInput
 	// The ID of the server group.
 	ServerGroupId pulumi.StringInput
 	// The ID of the server.
@@ -367,7 +364,7 @@ func (o ServerGroupServerAttachmentOutput) ServerType() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServerGroupServerAttachment) pulumi.StringOutput { return v.ServerType }).(pulumi.StringOutput)
 }
 
-// Status of the server.
+// The status of the resource.
 func (o ServerGroupServerAttachmentOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServerGroupServerAttachment) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }

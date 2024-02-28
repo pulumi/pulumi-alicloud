@@ -18,12 +18,12 @@ public final class GetConnectionsConnectionVpnBgpConfig {
      */
     private @Nullable String authKey;
     /**
-     * @return The ali cloud side autonomous system.
+     * @return Local asn.
      * 
      */
     private @Nullable Integer localAsn;
     /**
-     * @return The ali cloud side BGP address.
+     * @return Local bgp IP.
      * 
      */
     private @Nullable String localBgpIp;
@@ -43,7 +43,7 @@ public final class GetConnectionsConnectionVpnBgpConfig {
      */
     private @Nullable String status;
     /**
-     * @return The ipsec tunnel segments.
+     * @return BGP Tunnel CIDR.
      * 
      */
     private @Nullable String tunnelCidr;
@@ -57,14 +57,14 @@ public final class GetConnectionsConnectionVpnBgpConfig {
         return Optional.ofNullable(this.authKey);
     }
     /**
-     * @return The ali cloud side autonomous system.
+     * @return Local asn.
      * 
      */
     public Optional<Integer> localAsn() {
         return Optional.ofNullable(this.localAsn);
     }
     /**
-     * @return The ali cloud side BGP address.
+     * @return Local bgp IP.
      * 
      */
     public Optional<String> localBgpIp() {
@@ -92,7 +92,7 @@ public final class GetConnectionsConnectionVpnBgpConfig {
         return Optional.ofNullable(this.status);
     }
     /**
-     * @return The ipsec tunnel segments.
+     * @return BGP Tunnel CIDR.
      * 
      */
     public Optional<String> tunnelCidr() {

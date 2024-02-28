@@ -59,7 +59,7 @@ class ApplicationLoadBalancerArgs:
         :param pulumi.Input[str] slave_zone_id: The standby zone ID of the SLB instance. If not specified, the system will be randomly assigned. You can query the primary and standby zones in a region by calling the DescribeZone API.
         :param pulumi.Input[str] specification: Field `specification` has been deprecated from provider version 1.123.1 New field `load_balancer_spec` instead.
         :param pulumi.Input[str] status: The status of slb load balancer. Valid values: `active` and `inactice`. The system default value is `active`.
-        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource. The `tags` can have a maximum of 10 tag for every load balancer instance.
+        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource. The `tags` can have a maximum of 10 tag for every load balancer instance. This filed mark as `Computed` since v1.217.1.
         :param pulumi.Input[str] vswitch_id: The VSwitch ID to launch in. **Note:** Required for a VPC SLB. If `address_type` is internet, it will be ignored.
         """
         if address is not None:
@@ -350,7 +350,7 @@ class ApplicationLoadBalancerArgs:
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
         """
-        A mapping of tags to assign to the resource. The `tags` can have a maximum of 10 tag for every load balancer instance.
+        A mapping of tags to assign to the resource. The `tags` can have a maximum of 10 tag for every load balancer instance. This filed mark as `Computed` since v1.217.1.
         """
         return pulumi.get(self, "tags")
 
@@ -419,7 +419,7 @@ class _ApplicationLoadBalancerState:
         :param pulumi.Input[str] slave_zone_id: The standby zone ID of the SLB instance. If not specified, the system will be randomly assigned. You can query the primary and standby zones in a region by calling the DescribeZone API.
         :param pulumi.Input[str] specification: Field `specification` has been deprecated from provider version 1.123.1 New field `load_balancer_spec` instead.
         :param pulumi.Input[str] status: The status of slb load balancer. Valid values: `active` and `inactice`. The system default value is `active`.
-        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource. The `tags` can have a maximum of 10 tag for every load balancer instance.
+        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource. The `tags` can have a maximum of 10 tag for every load balancer instance. This filed mark as `Computed` since v1.217.1.
         :param pulumi.Input[str] vswitch_id: The VSwitch ID to launch in. **Note:** Required for a VPC SLB. If `address_type` is internet, it will be ignored.
         """
         if address is not None:
@@ -710,7 +710,7 @@ class _ApplicationLoadBalancerState:
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
         """
-        A mapping of tags to assign to the resource. The `tags` can have a maximum of 10 tag for every load balancer instance.
+        A mapping of tags to assign to the resource. The `tags` can have a maximum of 10 tag for every load balancer instance. This filed mark as `Computed` since v1.217.1.
         """
         return pulumi.get(self, "tags")
 
@@ -791,7 +791,7 @@ class ApplicationLoadBalancer(pulumi.CustomResource):
         :param pulumi.Input[str] slave_zone_id: The standby zone ID of the SLB instance. If not specified, the system will be randomly assigned. You can query the primary and standby zones in a region by calling the DescribeZone API.
         :param pulumi.Input[str] specification: Field `specification` has been deprecated from provider version 1.123.1 New field `load_balancer_spec` instead.
         :param pulumi.Input[str] status: The status of slb load balancer. Valid values: `active` and `inactice`. The system default value is `active`.
-        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource. The `tags` can have a maximum of 10 tag for every load balancer instance.
+        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource. The `tags` can have a maximum of 10 tag for every load balancer instance. This filed mark as `Computed` since v1.217.1.
         :param pulumi.Input[str] vswitch_id: The VSwitch ID to launch in. **Note:** Required for a VPC SLB. If `address_type` is internet, it will be ignored.
         """
         ...
@@ -935,7 +935,7 @@ class ApplicationLoadBalancer(pulumi.CustomResource):
         :param pulumi.Input[str] slave_zone_id: The standby zone ID of the SLB instance. If not specified, the system will be randomly assigned. You can query the primary and standby zones in a region by calling the DescribeZone API.
         :param pulumi.Input[str] specification: Field `specification` has been deprecated from provider version 1.123.1 New field `load_balancer_spec` instead.
         :param pulumi.Input[str] status: The status of slb load balancer. Valid values: `active` and `inactice`. The system default value is `active`.
-        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource. The `tags` can have a maximum of 10 tag for every load balancer instance.
+        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource. The `tags` can have a maximum of 10 tag for every load balancer instance. This filed mark as `Computed` since v1.217.1.
         :param pulumi.Input[str] vswitch_id: The VSwitch ID to launch in. **Note:** Required for a VPC SLB. If `address_type` is internet, it will be ignored.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -1126,9 +1126,9 @@ class ApplicationLoadBalancer(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tags(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+    def tags(self) -> pulumi.Output[Mapping[str, Any]]:
         """
-        A mapping of tags to assign to the resource. The `tags` can have a maximum of 10 tag for every load balancer instance.
+        A mapping of tags to assign to the resource. The `tags` can have a maximum of 10 tag for every load balancer instance. This filed mark as `Computed` since v1.217.1.
         """
         return pulumi.get(self, "tags")
 

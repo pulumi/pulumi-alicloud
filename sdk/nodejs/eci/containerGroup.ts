@@ -158,7 +158,7 @@ export class ContainerGroup extends pulumi.CustomResource {
     /**
      * Specifies whether to automatically match the image cache. Default value: `false`. Valid values: `true` and `false`.
      */
-    public readonly autoMatchImageCache!: pulumi.Output<boolean | undefined>;
+    public readonly autoMatchImageCache!: pulumi.Output<boolean>;
     /**
      * The name of the container group.
      */

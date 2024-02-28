@@ -397,9 +397,13 @@ class Trigger(pulumi.CustomResource):
         default_random_integer = random.RandomInteger("defaultRandomInteger",
             max=99999,
             min=10000)
-        default_project = alicloud.log.Project("defaultProject")
-        default_store = alicloud.log.Store("defaultStore", project=default_project.name)
-        source_store = alicloud.log.Store("sourceStore", project=default_project.name)
+        default_project = alicloud.log.Project("defaultProject", project_name=default_random_integer.result.apply(lambda result: f"example-value-{result}"))
+        default_store = alicloud.log.Store("defaultStore",
+            project_name=default_project.name,
+            logstore_name="example-value")
+        source_store = alicloud.log.Store("sourceStore",
+            project_name=default_project.name,
+            logstore_name="example-source-store")
         default_role = alicloud.ram.Role("defaultRole",
             document=\"\"\"  {
               "Statement": [
@@ -855,9 +859,13 @@ class Trigger(pulumi.CustomResource):
         default_random_integer = random.RandomInteger("defaultRandomInteger",
             max=99999,
             min=10000)
-        default_project = alicloud.log.Project("defaultProject")
-        default_store = alicloud.log.Store("defaultStore", project=default_project.name)
-        source_store = alicloud.log.Store("sourceStore", project=default_project.name)
+        default_project = alicloud.log.Project("defaultProject", project_name=default_random_integer.result.apply(lambda result: f"example-value-{result}"))
+        default_store = alicloud.log.Store("defaultStore",
+            project_name=default_project.name,
+            logstore_name="example-value")
+        source_store = alicloud.log.Store("sourceStore",
+            project_name=default_project.name,
+            logstore_name="example-source-store")
         default_role = alicloud.ram.Role("defaultRole",
             document=\"\"\"  {
               "Statement": [

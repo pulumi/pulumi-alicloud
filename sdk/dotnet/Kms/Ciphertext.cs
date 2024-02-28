@@ -23,7 +23,8 @@ namespace Pulumi.AliCloud.Kms
     ///     var key = new AliCloud.Kms.Key("key", new()
     ///     {
     ///         Description = "example key",
-    ///         IsEnabled = true,
+    ///         Status = "Enabled",
+    ///         PendingWindowInDays = 7,
     ///     });
     /// 
     ///     var encrypted = new AliCloud.Kms.Ciphertext("encrypted", new()

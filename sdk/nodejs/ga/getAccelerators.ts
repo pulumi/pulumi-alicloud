@@ -30,6 +30,7 @@ export function getAccelerators(args?: GetAcceleratorsArgs, opts?: pulumi.Invoke
 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:ga/getAccelerators:getAccelerators", {
+        "bandwidthBillingType": args.bandwidthBillingType,
         "ids": args.ids,
         "nameRegex": args.nameRegex,
         "outputFile": args.outputFile,
@@ -41,6 +42,10 @@ export function getAccelerators(args?: GetAcceleratorsArgs, opts?: pulumi.Invoke
  * A collection of arguments for invoking getAccelerators.
  */
 export interface GetAcceleratorsArgs {
+    /**
+     * The bandwidth billing method. Default value: `BandwidthPackage`. Valid values:
+     */
+    bandwidthBillingType?: string;
     /**
      * A list of Accelerator IDs.
      */
@@ -67,6 +72,7 @@ export interface GetAcceleratorsResult {
      * A list of Ga Accelerators. Each element contains the following attributes:
      */
     readonly accelerators: outputs.ga.GetAcceleratorsAccelerator[];
+    readonly bandwidthBillingType?: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
@@ -110,6 +116,10 @@ export function getAcceleratorsOutput(args?: GetAcceleratorsOutputArgs, opts?: p
  * A collection of arguments for invoking getAccelerators.
  */
 export interface GetAcceleratorsOutputArgs {
+    /**
+     * The bandwidth billing method. Default value: `BandwidthPackage`. Valid values:
+     */
+    bandwidthBillingType?: pulumi.Input<string>;
     /**
      * A list of Accelerator IDs.
      */

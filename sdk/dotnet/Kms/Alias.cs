@@ -12,7 +12,7 @@ namespace Pulumi.AliCloud.Kms
     /// <summary>
     /// Create an alias for the master key (CMK).
     /// 
-    /// &gt; **NOTE:** Available in v1.77.0+.
+    /// &gt; **NOTE:** Available since v1.77.0+.
     /// 
     /// ## Example Usage
     /// 
@@ -26,11 +26,14 @@ namespace Pulumi.AliCloud.Kms
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var thisKey = new AliCloud.Kms.Key("thisKey");
+    ///     var thisKey = new AliCloud.Kms.Key("thisKey", new()
+    ///     {
+    ///         PendingWindowInDays = 7,
+    ///     });
     /// 
     ///     var thisAlias = new AliCloud.Kms.Alias("thisAlias", new()
     ///     {
-    ///         AliasName = "alias/test_kms_alias",
+    ///         AliasName = "alias/example_kms_alias",
     ///         KeyId = thisKey.Id,
     ///     });
     /// 

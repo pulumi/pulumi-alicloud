@@ -136,7 +136,7 @@ import javax.annotation.Nullable;
  * 
  *         var defaultEnterpriseInstance = new EnterpriseInstance(&#34;defaultEnterpriseInstance&#34;, EnterpriseInstanceArgs.builder()        
  *             .tid(defaultUserTenants.applyValue(getUserTenantsResult -&gt; getUserTenantsResult.ids()[0]))
- *             .instanceType(&#34;MySQL&#34;)
+ *             .instanceType(&#34;mysql&#34;)
  *             .instanceSource(&#34;RDS&#34;)
  *             .networkType(&#34;VPC&#34;)
  *             .envType(&#34;dev&#34;)

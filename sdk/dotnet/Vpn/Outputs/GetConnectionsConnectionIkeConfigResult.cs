@@ -14,15 +14,15 @@ namespace Pulumi.AliCloud.Vpn.Outputs
     public sealed class GetConnectionsConnectionIkeConfigResult
     {
         /// <summary>
-        /// The authentication algorithm of phase-one negotiation.
+        /// IKE auth Algorithm.
         /// </summary>
         public readonly string? IkeAuthAlg;
         /// <summary>
-        /// The encryption algorithm of phase-one negotiation.
+        /// IKE encript algorithm.
         /// </summary>
         public readonly string? IkeEncAlg;
         /// <summary>
-        /// The SA lifecycle as the result of phase-one negotiation.
+        /// IKE lifetime.
         /// </summary>
         public readonly int? IkeLifetime;
         /// <summary>
@@ -30,11 +30,11 @@ namespace Pulumi.AliCloud.Vpn.Outputs
         /// </summary>
         public readonly string? IkeLocalId;
         /// <summary>
-        /// The negotiation mode of IKE phase-one.
+        /// IKE Mode.
         /// </summary>
         public readonly string? IkeMode;
         /// <summary>
-        /// The Diffie-Hellman key exchange algorithm used by phase-one negotiation.
+        /// DH Group.
         /// </summary>
         public readonly string? IkePfs;
         /// <summary>
@@ -42,11 +42,11 @@ namespace Pulumi.AliCloud.Vpn.Outputs
         /// </summary>
         public readonly string? IkeRemoteId;
         /// <summary>
-        /// The version of the IKE protocol.
+        /// IKE Version.
         /// </summary>
         public readonly string? IkeVersion;
         /// <summary>
-        /// Used for authentication between the IPsec VPN gateway and the customer gateway.
+        /// Preshared secret key.
         /// </summary>
         public readonly string? Psk;
 

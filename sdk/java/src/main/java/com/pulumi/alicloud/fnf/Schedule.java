@@ -20,7 +20,7 @@ import javax.annotation.Nullable;
  * 
  * For information about Serverless Workflow Schedule and how to use it, see [What is Schedule](https://www.alibabacloud.com/help/en/doc-detail/168934.htm).
  * 
- * &gt; **NOTE:** Available in v1.105.0+.
+ * &gt; **NOTE:** Available since v1.105.0+.
  * 
  * ## Example Usage
  * 
@@ -56,17 +56,17 @@ import javax.annotation.Nullable;
  *     - type: pass
  *       name: helloworld
  *             &#34;&#34;&#34;)
- *             .description(&#34;tf-testaccFnFFlow983041&#34;)
+ *             .description(&#34;tf-exampleFnFFlow983041&#34;)
  *             .type(&#34;FDL&#34;)
  *             .build());
  * 
  *         var exampleSchedule = new Schedule(&#34;exampleSchedule&#34;, ScheduleArgs.builder()        
  *             .cronExpression(&#34;30 9 * * * *&#34;)
- *             .description(&#34;tf-testaccFnFSchedule983041&#34;)
+ *             .description(&#34;tf-exampleFnFSchedule983041&#34;)
  *             .enable(&#34;true&#34;)
  *             .flowName(exampleFlow.name())
- *             .payload(&#34;{\&#34;tf-test\&#34;: \&#34;test success\&#34;}&#34;)
- *             .scheduleName(&#34;tf-testaccFnFSchedule983041&#34;)
+ *             .payload(&#34;{\&#34;tf-example\&#34;: \&#34;example success\&#34;}&#34;)
+ *             .scheduleName(&#34;tf-exampleFnFSchedule983041&#34;)
  *             .build());
  * 
  *     }

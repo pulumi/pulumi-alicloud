@@ -111,14 +111,14 @@ public final class ServerGroupServerAttachmentState extends com.pulumi.resources
     }
 
     /**
-     * Status of the server.
+     * The status of the resource.
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return Status of the server.
+     * @return The status of the resource.
      * 
      */
     public Optional<Output<String>> status() {
@@ -318,7 +318,7 @@ public final class ServerGroupServerAttachmentState extends com.pulumi.resources
         }
 
         /**
-         * @param status Status of the server.
+         * @param status The status of the resource.
          * 
          * @return builder
          * 
@@ -329,7 +329,7 @@ public final class ServerGroupServerAttachmentState extends com.pulumi.resources
         }
 
         /**
-         * @param status Status of the server.
+         * @param status The status of the resource.
          * 
          * @return builder
          * 

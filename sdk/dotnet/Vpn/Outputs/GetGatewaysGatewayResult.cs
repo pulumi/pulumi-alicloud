@@ -30,6 +30,10 @@ namespace Pulumi.AliCloud.Vpn.Outputs
         /// </summary>
         public readonly string Description;
         /// <summary>
+        /// - The ID of the backup VSwitch to which the VPN gateway is attached.
+        /// </summary>
+        public readonly string DisasterRecoveryVswitchId;
+        /// <summary>
         /// Indicates whether the IPsec-VPN feature is enabled.
         /// </summary>
         public readonly string EnableIpsec;
@@ -62,6 +66,10 @@ namespace Pulumi.AliCloud.Vpn.Outputs
         /// </summary>
         public readonly string NetworkType;
         /// <summary>
+        /// The ID of the resource group.
+        /// </summary>
+        public readonly string ResourceGroupId;
+        /// <summary>
         /// The Specification of the VPN
         /// </summary>
         public readonly string Specification;
@@ -70,13 +78,29 @@ namespace Pulumi.AliCloud.Vpn.Outputs
         /// </summary>
         public readonly int SslConnections;
         /// <summary>
+        /// The IP address of the SSL-VPN connection. This parameter is returned only when the VPN gateway is a public VPN gateway and supports only the single-tunnel mode. In addition, the VPN gateway must have the SSL-VPN feature enabled.
+        /// </summary>
+        public readonly string SslVpnInternetIp;
+        /// <summary>
         /// Limit search to specific status - valid value is "Init", "Provisioning", "Active", "Updating", "Deleting".
         /// </summary>
         public readonly string Status;
         /// <summary>
+        /// The Tag of.
+        /// </summary>
+        public readonly ImmutableDictionary<string, object> Tags;
+        /// <summary>
         /// Use the VPC ID as the search key.
         /// </summary>
         public readonly string VpcId;
+        /// <summary>
+        /// - The VPN gateway type. Value:  Normal (default): Normal type. NationalStandard: National Secret type.
+        /// </summary>
+        public readonly string VpnType;
+        /// <summary>
+        /// - The ID of the VSwitch to which the VPN gateway is attached.
+        /// </summary>
+        public readonly string VswitchId;
 
         [OutputConstructor]
         private GetGatewaysGatewayResult(
@@ -87,6 +111,8 @@ namespace Pulumi.AliCloud.Vpn.Outputs
             string createTime,
 
             string description,
+
+            string disasterRecoveryVswitchId,
 
             string enableIpsec,
 
@@ -104,18 +130,29 @@ namespace Pulumi.AliCloud.Vpn.Outputs
 
             string networkType,
 
+            string resourceGroupId,
+
             string specification,
 
             int sslConnections,
 
+            string sslVpnInternetIp,
+
             string status,
 
-            string vpcId)
+            ImmutableDictionary<string, object> tags,
+
+            string vpcId,
+
+            string vpnType,
+
+            string vswitchId)
         {
             AutoPropagate = autoPropagate;
             BusinessStatus = businessStatus;
             CreateTime = createTime;
             Description = description;
+            DisasterRecoveryVswitchId = disasterRecoveryVswitchId;
             EnableIpsec = enableIpsec;
             EnableSsl = enableSsl;
             EndTime = endTime;
@@ -124,10 +161,15 @@ namespace Pulumi.AliCloud.Vpn.Outputs
             InternetIp = internetIp;
             Name = name;
             NetworkType = networkType;
+            ResourceGroupId = resourceGroupId;
             Specification = specification;
             SslConnections = sslConnections;
+            SslVpnInternetIp = sslVpnInternetIp;
             Status = status;
+            Tags = tags;
             VpcId = vpcId;
+            VpnType = vpnType;
+            VswitchId = vswitchId;
         }
     }
 }

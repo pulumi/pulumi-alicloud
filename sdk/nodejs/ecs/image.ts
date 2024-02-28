@@ -15,13 +15,14 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:**  If you want to combine snapshots of multiple disks into an image template, you can specify DiskDeviceMapping to create a custom image.
  *
- * > **NOTE:**  Available in 1.64.0+
+ * > **NOTE:** Available since v1.64.0.
  *
  * ## Example Usage
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
+ * import * as random from "@pulumi/random";
  *
  * const defaultZones = alicloud.getZones({
  *     availableResourceCreation: "Instance",
@@ -54,12 +55,15 @@ import * as utilities from "../utilities";
  *     internetMaxBandwidthOut: 10,
  * });
  * const defaultResourceGroups = alicloud.resourcemanager.getResourceGroups({});
+ * const defaultRandomInteger = new random.RandomInteger("defaultRandomInteger", {
+ *     min: 10000,
+ *     max: 99999,
+ * });
  * const defaultImage = new alicloud.ecs.Image("defaultImage", {
  *     instanceId: defaultInstance.id,
- *     imageName: "terraform-example",
+ *     imageName: pulumi.interpolate`terraform-example-${defaultRandomInteger.result}`,
  *     description: "terraform-example",
  *     architecture: "x86_64",
- *     platform: "CentOS",
  *     resourceGroupId: defaultResourceGroups.then(defaultResourceGroups => defaultResourceGroups.ids?.[0]),
  *     tags: {
  *         FinanceDept: "FinanceDeptJoshua",

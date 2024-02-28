@@ -28,6 +28,10 @@ __all__ = [
     'GetConnectionsConnectionResult',
     'GetConnectionsConnectionIkeConfigResult',
     'GetConnectionsConnectionIpsecConfigResult',
+    'GetConnectionsConnectionTunnelOptionsSpecificationResult',
+    'GetConnectionsConnectionTunnelOptionsSpecificationTunnelBgpConfigResult',
+    'GetConnectionsConnectionTunnelOptionsSpecificationTunnelIkeConfigResult',
+    'GetConnectionsConnectionTunnelOptionsSpecificationTunnelIpsecConfigResult',
     'GetConnectionsConnectionVcoHealthCheckResult',
     'GetConnectionsConnectionVpnBgpConfigResult',
     'GetCustomerGatewaysGatewayResult',
@@ -1533,11 +1537,13 @@ class GetConnectionsConnectionResult(dict):
                  effect_immediately: bool,
                  enable_dpd: bool,
                  enable_nat_traversal: bool,
+                 enable_tunnels_bgp: bool,
                  id: str,
                  local_subnet: str,
                  name: str,
                  remote_subnet: str,
                  status: str,
+                 tunnel_options_specifications: Sequence['outputs.GetConnectionsConnectionTunnelOptionsSpecificationResult'],
                  vpn_gateway_id: str,
                  ike_configs: Optional[Sequence['outputs.GetConnectionsConnectionIkeConfigResult']] = None,
                  ipsec_configs: Optional[Sequence['outputs.GetConnectionsConnectionIpsecConfigResult']] = None,
@@ -1545,28 +1551,32 @@ class GetConnectionsConnectionResult(dict):
                  vpn_bgp_configs: Optional[Sequence['outputs.GetConnectionsConnectionVpnBgpConfigResult']] = None):
         """
         :param str customer_gateway_id: Use the VPN customer gateway ID as the search key.
-        :param bool enable_dpd: Specifies whether to enable the dead peer detection (DPD) feature.
-        :param bool enable_nat_traversal: Specifies whether to enable NAT traversal.
+        :param bool enable_dpd: Wether enable Dpd detection.
+        :param bool enable_nat_traversal: enable nat traversal.
+        :param bool enable_tunnels_bgp: Enable tunnel bgp.
         :param str id: ID of the VPN connection.
         :param str local_subnet: The local subnet of the VPN connection.
         :param str name: The name of the VPN connection.
         :param str remote_subnet: The remote subnet of the VPN connection.
         :param str status: The negotiation status of the BGP routing protocol. Valid values: `success`, `false`.
+        :param Sequence['GetConnectionsConnectionTunnelOptionsSpecificationArgs'] tunnel_options_specifications: The tunnel_options_specification supports the following:
         :param str vpn_gateway_id: Use the VPN gateway ID as the search key.
-        :param Sequence['GetConnectionsConnectionIkeConfigArgs'] ike_configs: The configurations of phase-one negotiation.
-        :param Sequence['GetConnectionsConnectionIpsecConfigArgs'] ipsec_configs: The configurations of phase-two negotiation.
-        :param Sequence['GetConnectionsConnectionVpnBgpConfigArgs'] vpn_bgp_configs: The configuration information for BGP.
+        :param Sequence['GetConnectionsConnectionIkeConfigArgs'] ike_configs: The ike_config mapping supports the following:
+        :param Sequence['GetConnectionsConnectionIpsecConfigArgs'] ipsec_configs: The ipsec_config mapping supports the following:
+        :param Sequence['GetConnectionsConnectionVpnBgpConfigArgs'] vpn_bgp_configs: The vpn_bgp_config mapping supports the following:
         """
         pulumi.set(__self__, "create_time", create_time)
         pulumi.set(__self__, "customer_gateway_id", customer_gateway_id)
         pulumi.set(__self__, "effect_immediately", effect_immediately)
         pulumi.set(__self__, "enable_dpd", enable_dpd)
         pulumi.set(__self__, "enable_nat_traversal", enable_nat_traversal)
+        pulumi.set(__self__, "enable_tunnels_bgp", enable_tunnels_bgp)
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "local_subnet", local_subnet)
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "remote_subnet", remote_subnet)
         pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "tunnel_options_specifications", tunnel_options_specifications)
         pulumi.set(__self__, "vpn_gateway_id", vpn_gateway_id)
         if ike_configs is not None:
             pulumi.set(__self__, "ike_configs", ike_configs)
@@ -1599,7 +1609,7 @@ class GetConnectionsConnectionResult(dict):
     @pulumi.getter(name="enableDpd")
     def enable_dpd(self) -> bool:
         """
-        Specifies whether to enable the dead peer detection (DPD) feature.
+        Wether enable Dpd detection.
         """
         return pulumi.get(self, "enable_dpd")
 
@@ -1607,9 +1617,17 @@ class GetConnectionsConnectionResult(dict):
     @pulumi.getter(name="enableNatTraversal")
     def enable_nat_traversal(self) -> bool:
         """
-        Specifies whether to enable NAT traversal.
+        enable nat traversal.
         """
         return pulumi.get(self, "enable_nat_traversal")
+
+    @property
+    @pulumi.getter(name="enableTunnelsBgp")
+    def enable_tunnels_bgp(self) -> bool:
+        """
+        Enable tunnel bgp.
+        """
+        return pulumi.get(self, "enable_tunnels_bgp")
 
     @property
     @pulumi.getter
@@ -1652,6 +1670,14 @@ class GetConnectionsConnectionResult(dict):
         return pulumi.get(self, "status")
 
     @property
+    @pulumi.getter(name="tunnelOptionsSpecifications")
+    def tunnel_options_specifications(self) -> Sequence['outputs.GetConnectionsConnectionTunnelOptionsSpecificationResult']:
+        """
+        The tunnel_options_specification supports the following:
+        """
+        return pulumi.get(self, "tunnel_options_specifications")
+
+    @property
     @pulumi.getter(name="vpnGatewayId")
     def vpn_gateway_id(self) -> str:
         """
@@ -1663,7 +1689,7 @@ class GetConnectionsConnectionResult(dict):
     @pulumi.getter(name="ikeConfigs")
     def ike_configs(self) -> Optional[Sequence['outputs.GetConnectionsConnectionIkeConfigResult']]:
         """
-        The configurations of phase-one negotiation.
+        The ike_config mapping supports the following:
         """
         return pulumi.get(self, "ike_configs")
 
@@ -1671,7 +1697,7 @@ class GetConnectionsConnectionResult(dict):
     @pulumi.getter(name="ipsecConfigs")
     def ipsec_configs(self) -> Optional[Sequence['outputs.GetConnectionsConnectionIpsecConfigResult']]:
         """
-        The configurations of phase-two negotiation.
+        The ipsec_config mapping supports the following:
         """
         return pulumi.get(self, "ipsec_configs")
 
@@ -1684,7 +1710,7 @@ class GetConnectionsConnectionResult(dict):
     @pulumi.getter(name="vpnBgpConfigs")
     def vpn_bgp_configs(self) -> Optional[Sequence['outputs.GetConnectionsConnectionVpnBgpConfigResult']]:
         """
-        The configuration information for BGP.
+        The vpn_bgp_config mapping supports the following:
         """
         return pulumi.get(self, "vpn_bgp_configs")
 
@@ -1702,15 +1728,15 @@ class GetConnectionsConnectionIkeConfigResult(dict):
                  ike_version: Optional[str] = None,
                  psk: Optional[str] = None):
         """
-        :param str ike_auth_alg: The authentication algorithm of phase-one negotiation.
-        :param str ike_enc_alg: The encryption algorithm of phase-one negotiation.
-        :param int ike_lifetime: The SA lifecycle as the result of phase-one negotiation.
+        :param str ike_auth_alg: IKE auth Algorithm.
+        :param str ike_enc_alg: IKE encript algorithm.
+        :param int ike_lifetime: IKE lifetime.
         :param str ike_local_id: The identification of the VPN gateway.
-        :param str ike_mode: The negotiation mode of IKE phase-one.
-        :param str ike_pfs: The Diffie-Hellman key exchange algorithm used by phase-one negotiation.
+        :param str ike_mode: IKE Mode.
+        :param str ike_pfs: DH Group.
         :param str ike_remote_id: The identification of the customer gateway.
-        :param str ike_version: The version of the IKE protocol.
-        :param str psk: Used for authentication between the IPsec VPN gateway and the customer gateway.
+        :param str ike_version: IKE Version.
+        :param str psk: Preshared secret key.
         """
         if ike_auth_alg is not None:
             pulumi.set(__self__, "ike_auth_alg", ike_auth_alg)
@@ -1735,7 +1761,7 @@ class GetConnectionsConnectionIkeConfigResult(dict):
     @pulumi.getter(name="ikeAuthAlg")
     def ike_auth_alg(self) -> Optional[str]:
         """
-        The authentication algorithm of phase-one negotiation.
+        IKE auth Algorithm.
         """
         return pulumi.get(self, "ike_auth_alg")
 
@@ -1743,7 +1769,7 @@ class GetConnectionsConnectionIkeConfigResult(dict):
     @pulumi.getter(name="ikeEncAlg")
     def ike_enc_alg(self) -> Optional[str]:
         """
-        The encryption algorithm of phase-one negotiation.
+        IKE encript algorithm.
         """
         return pulumi.get(self, "ike_enc_alg")
 
@@ -1751,7 +1777,7 @@ class GetConnectionsConnectionIkeConfigResult(dict):
     @pulumi.getter(name="ikeLifetime")
     def ike_lifetime(self) -> Optional[int]:
         """
-        The SA lifecycle as the result of phase-one negotiation.
+        IKE lifetime.
         """
         return pulumi.get(self, "ike_lifetime")
 
@@ -1767,7 +1793,7 @@ class GetConnectionsConnectionIkeConfigResult(dict):
     @pulumi.getter(name="ikeMode")
     def ike_mode(self) -> Optional[str]:
         """
-        The negotiation mode of IKE phase-one.
+        IKE Mode.
         """
         return pulumi.get(self, "ike_mode")
 
@@ -1775,7 +1801,7 @@ class GetConnectionsConnectionIkeConfigResult(dict):
     @pulumi.getter(name="ikePfs")
     def ike_pfs(self) -> Optional[str]:
         """
-        The Diffie-Hellman key exchange algorithm used by phase-one negotiation.
+        DH Group.
         """
         return pulumi.get(self, "ike_pfs")
 
@@ -1791,7 +1817,7 @@ class GetConnectionsConnectionIkeConfigResult(dict):
     @pulumi.getter(name="ikeVersion")
     def ike_version(self) -> Optional[str]:
         """
-        The version of the IKE protocol.
+        IKE Version.
         """
         return pulumi.get(self, "ike_version")
 
@@ -1799,7 +1825,7 @@ class GetConnectionsConnectionIkeConfigResult(dict):
     @pulumi.getter
     def psk(self) -> Optional[str]:
         """
-        Used for authentication between the IPsec VPN gateway and the customer gateway.
+        Preshared secret key.
         """
         return pulumi.get(self, "psk")
 
@@ -1812,10 +1838,10 @@ class GetConnectionsConnectionIpsecConfigResult(dict):
                  ipsec_lifetime: Optional[int] = None,
                  ipsec_pfs: Optional[str] = None):
         """
-        :param str ipsec_auth_alg: The authentication algorithm of phase-two negotiation.
-        :param str ipsec_enc_alg: The encryption algorithm of phase-two negotiation.
-        :param int ipsec_lifetime: The SA lifecycle as the result of phase-two negotiation.
-        :param str ipsec_pfs: The Diffie-Hellman key exchange algorithm used by phase-two negotiation.
+        :param str ipsec_auth_alg: IPsec Auth algorithm.
+        :param str ipsec_enc_alg: IPsec Encript algorithm.
+        :param int ipsec_lifetime: IPsec lifetime.
+        :param str ipsec_pfs: DH Group.
         """
         if ipsec_auth_alg is not None:
             pulumi.set(__self__, "ipsec_auth_alg", ipsec_auth_alg)
@@ -1830,7 +1856,7 @@ class GetConnectionsConnectionIpsecConfigResult(dict):
     @pulumi.getter(name="ipsecAuthAlg")
     def ipsec_auth_alg(self) -> Optional[str]:
         """
-        The authentication algorithm of phase-two negotiation.
+        IPsec Auth algorithm.
         """
         return pulumi.get(self, "ipsec_auth_alg")
 
@@ -1838,7 +1864,7 @@ class GetConnectionsConnectionIpsecConfigResult(dict):
     @pulumi.getter(name="ipsecEncAlg")
     def ipsec_enc_alg(self) -> Optional[str]:
         """
-        The encryption algorithm of phase-two negotiation.
+        IPsec Encript algorithm.
         """
         return pulumi.get(self, "ipsec_enc_alg")
 
@@ -1846,7 +1872,7 @@ class GetConnectionsConnectionIpsecConfigResult(dict):
     @pulumi.getter(name="ipsecLifetime")
     def ipsec_lifetime(self) -> Optional[int]:
         """
-        The SA lifecycle as the result of phase-two negotiation.
+        IPsec lifetime.
         """
         return pulumi.get(self, "ipsec_lifetime")
 
@@ -1854,7 +1880,356 @@ class GetConnectionsConnectionIpsecConfigResult(dict):
     @pulumi.getter(name="ipsecPfs")
     def ipsec_pfs(self) -> Optional[str]:
         """
-        The Diffie-Hellman key exchange algorithm used by phase-two negotiation.
+        DH Group.
+        """
+        return pulumi.get(self, "ipsec_pfs")
+
+
+@pulumi.output_type
+class GetConnectionsConnectionTunnelOptionsSpecificationResult(dict):
+    def __init__(__self__, *,
+                 customer_gateway_id: str,
+                 enable_dpd: bool,
+                 enable_nat_traversal: bool,
+                 internet_ip: str,
+                 role: str,
+                 state: str,
+                 status: str,
+                 tunnel_bgp_config: 'outputs.GetConnectionsConnectionTunnelOptionsSpecificationTunnelBgpConfigResult',
+                 tunnel_id: str,
+                 tunnel_ike_config: 'outputs.GetConnectionsConnectionTunnelOptionsSpecificationTunnelIkeConfigResult',
+                 tunnel_ipsec_config: 'outputs.GetConnectionsConnectionTunnelOptionsSpecificationTunnelIpsecConfigResult',
+                 zone_no: str):
+        """
+        :param str customer_gateway_id: Use the VPN customer gateway ID as the search key.
+        :param bool enable_dpd: Wether enable Dpd detection.
+        :param bool enable_nat_traversal: enable nat traversal.
+        :param str role: The role of Tunnel.
+        :param str status: The negotiation status of the BGP routing protocol. Valid values: `success`, `false`.
+        :param 'GetConnectionsConnectionTunnelOptionsSpecificationTunnelBgpConfigArgs' tunnel_bgp_config: The bgp config of Tunnel.
+        :param 'GetConnectionsConnectionTunnelOptionsSpecificationTunnelIkeConfigArgs' tunnel_ike_config: The configuration of Phase 1 negotiations in Tunnel.
+        :param 'GetConnectionsConnectionTunnelOptionsSpecificationTunnelIpsecConfigArgs' tunnel_ipsec_config: IPsec configuration in Tunnel.
+        """
+        pulumi.set(__self__, "customer_gateway_id", customer_gateway_id)
+        pulumi.set(__self__, "enable_dpd", enable_dpd)
+        pulumi.set(__self__, "enable_nat_traversal", enable_nat_traversal)
+        pulumi.set(__self__, "internet_ip", internet_ip)
+        pulumi.set(__self__, "role", role)
+        pulumi.set(__self__, "state", state)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "tunnel_bgp_config", tunnel_bgp_config)
+        pulumi.set(__self__, "tunnel_id", tunnel_id)
+        pulumi.set(__self__, "tunnel_ike_config", tunnel_ike_config)
+        pulumi.set(__self__, "tunnel_ipsec_config", tunnel_ipsec_config)
+        pulumi.set(__self__, "zone_no", zone_no)
+
+    @property
+    @pulumi.getter(name="customerGatewayId")
+    def customer_gateway_id(self) -> str:
+        """
+        Use the VPN customer gateway ID as the search key.
+        """
+        return pulumi.get(self, "customer_gateway_id")
+
+    @property
+    @pulumi.getter(name="enableDpd")
+    def enable_dpd(self) -> bool:
+        """
+        Wether enable Dpd detection.
+        """
+        return pulumi.get(self, "enable_dpd")
+
+    @property
+    @pulumi.getter(name="enableNatTraversal")
+    def enable_nat_traversal(self) -> bool:
+        """
+        enable nat traversal.
+        """
+        return pulumi.get(self, "enable_nat_traversal")
+
+    @property
+    @pulumi.getter(name="internetIp")
+    def internet_ip(self) -> str:
+        return pulumi.get(self, "internet_ip")
+
+    @property
+    @pulumi.getter
+    def role(self) -> str:
+        """
+        The role of Tunnel.
+        """
+        return pulumi.get(self, "role")
+
+    @property
+    @pulumi.getter
+    def state(self) -> str:
+        return pulumi.get(self, "state")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        """
+        The negotiation status of the BGP routing protocol. Valid values: `success`, `false`.
+        """
+        return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter(name="tunnelBgpConfig")
+    def tunnel_bgp_config(self) -> 'outputs.GetConnectionsConnectionTunnelOptionsSpecificationTunnelBgpConfigResult':
+        """
+        The bgp config of Tunnel.
+        """
+        return pulumi.get(self, "tunnel_bgp_config")
+
+    @property
+    @pulumi.getter(name="tunnelId")
+    def tunnel_id(self) -> str:
+        return pulumi.get(self, "tunnel_id")
+
+    @property
+    @pulumi.getter(name="tunnelIkeConfig")
+    def tunnel_ike_config(self) -> 'outputs.GetConnectionsConnectionTunnelOptionsSpecificationTunnelIkeConfigResult':
+        """
+        The configuration of Phase 1 negotiations in Tunnel.
+        """
+        return pulumi.get(self, "tunnel_ike_config")
+
+    @property
+    @pulumi.getter(name="tunnelIpsecConfig")
+    def tunnel_ipsec_config(self) -> 'outputs.GetConnectionsConnectionTunnelOptionsSpecificationTunnelIpsecConfigResult':
+        """
+        IPsec configuration in Tunnel.
+        """
+        return pulumi.get(self, "tunnel_ipsec_config")
+
+    @property
+    @pulumi.getter(name="zoneNo")
+    def zone_no(self) -> str:
+        return pulumi.get(self, "zone_no")
+
+
+@pulumi.output_type
+class GetConnectionsConnectionTunnelOptionsSpecificationTunnelBgpConfigResult(dict):
+    def __init__(__self__, *,
+                 bgp_status: str,
+                 local_asn: str,
+                 local_bgp_ip: str,
+                 peer_asn: str,
+                 peer_bgp_ip: str,
+                 tunnel_cidr: str):
+        """
+        :param str local_asn: Local asn.
+        :param str local_bgp_ip: Local bgp IP.
+        :param str peer_asn: The counterpart autonomous system number.
+        :param str peer_bgp_ip: The BGP address on the other side.
+        :param str tunnel_cidr: BGP Tunnel CIDR.
+        """
+        pulumi.set(__self__, "bgp_status", bgp_status)
+        pulumi.set(__self__, "local_asn", local_asn)
+        pulumi.set(__self__, "local_bgp_ip", local_bgp_ip)
+        pulumi.set(__self__, "peer_asn", peer_asn)
+        pulumi.set(__self__, "peer_bgp_ip", peer_bgp_ip)
+        pulumi.set(__self__, "tunnel_cidr", tunnel_cidr)
+
+    @property
+    @pulumi.getter(name="bgpStatus")
+    def bgp_status(self) -> str:
+        return pulumi.get(self, "bgp_status")
+
+    @property
+    @pulumi.getter(name="localAsn")
+    def local_asn(self) -> str:
+        """
+        Local asn.
+        """
+        return pulumi.get(self, "local_asn")
+
+    @property
+    @pulumi.getter(name="localBgpIp")
+    def local_bgp_ip(self) -> str:
+        """
+        Local bgp IP.
+        """
+        return pulumi.get(self, "local_bgp_ip")
+
+    @property
+    @pulumi.getter(name="peerAsn")
+    def peer_asn(self) -> str:
+        """
+        The counterpart autonomous system number.
+        """
+        return pulumi.get(self, "peer_asn")
+
+    @property
+    @pulumi.getter(name="peerBgpIp")
+    def peer_bgp_ip(self) -> str:
+        """
+        The BGP address on the other side.
+        """
+        return pulumi.get(self, "peer_bgp_ip")
+
+    @property
+    @pulumi.getter(name="tunnelCidr")
+    def tunnel_cidr(self) -> str:
+        """
+        BGP Tunnel CIDR.
+        """
+        return pulumi.get(self, "tunnel_cidr")
+
+
+@pulumi.output_type
+class GetConnectionsConnectionTunnelOptionsSpecificationTunnelIkeConfigResult(dict):
+    def __init__(__self__, *,
+                 ike_auth_alg: str,
+                 ike_enc_alg: str,
+                 ike_lifetime: int,
+                 ike_mode: str,
+                 ike_pfs: str,
+                 ike_version: str,
+                 local_id: str,
+                 psk: str,
+                 remote_id: str):
+        """
+        :param str ike_auth_alg: IKE auth Algorithm.
+        :param str ike_enc_alg: IKE encript algorithm.
+        :param int ike_lifetime: IKE lifetime.
+        :param str ike_mode: IKE Mode.
+        :param str ike_pfs: DH Group.
+        :param str ike_version: IKE Version.
+        :param str local_id: The local Id.
+        :param str psk: Preshared secret key.
+        :param str remote_id: Remote ID.
+        """
+        pulumi.set(__self__, "ike_auth_alg", ike_auth_alg)
+        pulumi.set(__self__, "ike_enc_alg", ike_enc_alg)
+        pulumi.set(__self__, "ike_lifetime", ike_lifetime)
+        pulumi.set(__self__, "ike_mode", ike_mode)
+        pulumi.set(__self__, "ike_pfs", ike_pfs)
+        pulumi.set(__self__, "ike_version", ike_version)
+        pulumi.set(__self__, "local_id", local_id)
+        pulumi.set(__self__, "psk", psk)
+        pulumi.set(__self__, "remote_id", remote_id)
+
+    @property
+    @pulumi.getter(name="ikeAuthAlg")
+    def ike_auth_alg(self) -> str:
+        """
+        IKE auth Algorithm.
+        """
+        return pulumi.get(self, "ike_auth_alg")
+
+    @property
+    @pulumi.getter(name="ikeEncAlg")
+    def ike_enc_alg(self) -> str:
+        """
+        IKE encript algorithm.
+        """
+        return pulumi.get(self, "ike_enc_alg")
+
+    @property
+    @pulumi.getter(name="ikeLifetime")
+    def ike_lifetime(self) -> int:
+        """
+        IKE lifetime.
+        """
+        return pulumi.get(self, "ike_lifetime")
+
+    @property
+    @pulumi.getter(name="ikeMode")
+    def ike_mode(self) -> str:
+        """
+        IKE Mode.
+        """
+        return pulumi.get(self, "ike_mode")
+
+    @property
+    @pulumi.getter(name="ikePfs")
+    def ike_pfs(self) -> str:
+        """
+        DH Group.
+        """
+        return pulumi.get(self, "ike_pfs")
+
+    @property
+    @pulumi.getter(name="ikeVersion")
+    def ike_version(self) -> str:
+        """
+        IKE Version.
+        """
+        return pulumi.get(self, "ike_version")
+
+    @property
+    @pulumi.getter(name="localId")
+    def local_id(self) -> str:
+        """
+        The local Id.
+        """
+        return pulumi.get(self, "local_id")
+
+    @property
+    @pulumi.getter
+    def psk(self) -> str:
+        """
+        Preshared secret key.
+        """
+        return pulumi.get(self, "psk")
+
+    @property
+    @pulumi.getter(name="remoteId")
+    def remote_id(self) -> str:
+        """
+        Remote ID.
+        """
+        return pulumi.get(self, "remote_id")
+
+
+@pulumi.output_type
+class GetConnectionsConnectionTunnelOptionsSpecificationTunnelIpsecConfigResult(dict):
+    def __init__(__self__, *,
+                 ipsec_auth_alg: str,
+                 ipsec_enc_alg: str,
+                 ipsec_lifetime: int,
+                 ipsec_pfs: str):
+        """
+        :param str ipsec_auth_alg: IPsec Auth algorithm.
+        :param str ipsec_enc_alg: IPsec Encript algorithm.
+        :param int ipsec_lifetime: IPsec lifetime.
+        :param str ipsec_pfs: DH Group.
+        """
+        pulumi.set(__self__, "ipsec_auth_alg", ipsec_auth_alg)
+        pulumi.set(__self__, "ipsec_enc_alg", ipsec_enc_alg)
+        pulumi.set(__self__, "ipsec_lifetime", ipsec_lifetime)
+        pulumi.set(__self__, "ipsec_pfs", ipsec_pfs)
+
+    @property
+    @pulumi.getter(name="ipsecAuthAlg")
+    def ipsec_auth_alg(self) -> str:
+        """
+        IPsec Auth algorithm.
+        """
+        return pulumi.get(self, "ipsec_auth_alg")
+
+    @property
+    @pulumi.getter(name="ipsecEncAlg")
+    def ipsec_enc_alg(self) -> str:
+        """
+        IPsec Encript algorithm.
+        """
+        return pulumi.get(self, "ipsec_enc_alg")
+
+    @property
+    @pulumi.getter(name="ipsecLifetime")
+    def ipsec_lifetime(self) -> int:
+        """
+        IPsec lifetime.
+        """
+        return pulumi.get(self, "ipsec_lifetime")
+
+    @property
+    @pulumi.getter(name="ipsecPfs")
+    def ipsec_pfs(self) -> str:
+        """
+        DH Group.
         """
         return pulumi.get(self, "ipsec_pfs")
 
@@ -1950,12 +2325,12 @@ class GetConnectionsConnectionVpnBgpConfigResult(dict):
                  tunnel_cidr: Optional[str] = None):
         """
         :param str auth_key: The authentication keys for BGP routing protocols.
-        :param int local_asn: The ali cloud side autonomous system.
-        :param str local_bgp_ip: The ali cloud side BGP address.
+        :param int local_asn: Local asn.
+        :param str local_bgp_ip: Local bgp IP.
         :param int peer_asn: The counterpart autonomous system number.
         :param str peer_bgp_ip: The BGP address on the other side.
         :param str status: The negotiation status of the BGP routing protocol. Valid values: `success`, `false`.
-        :param str tunnel_cidr: The ipsec tunnel segments.
+        :param str tunnel_cidr: BGP Tunnel CIDR.
         """
         if auth_key is not None:
             pulumi.set(__self__, "auth_key", auth_key)
@@ -1984,7 +2359,7 @@ class GetConnectionsConnectionVpnBgpConfigResult(dict):
     @pulumi.getter(name="localAsn")
     def local_asn(self) -> Optional[int]:
         """
-        The ali cloud side autonomous system.
+        Local asn.
         """
         return pulumi.get(self, "local_asn")
 
@@ -1992,7 +2367,7 @@ class GetConnectionsConnectionVpnBgpConfigResult(dict):
     @pulumi.getter(name="localBgpIp")
     def local_bgp_ip(self) -> Optional[str]:
         """
-        The ali cloud side BGP address.
+        Local bgp IP.
         """
         return pulumi.get(self, "local_bgp_ip")
 
@@ -2024,7 +2399,7 @@ class GetConnectionsConnectionVpnBgpConfigResult(dict):
     @pulumi.getter(name="tunnelCidr")
     def tunnel_cidr(self) -> Optional[str]:
         """
-        The ipsec tunnel segments.
+        BGP Tunnel CIDR.
         """
         return pulumi.get(self, "tunnel_cidr")
 
@@ -2719,6 +3094,7 @@ class GetGatewaysGatewayResult(dict):
                  business_status: str,
                  create_time: str,
                  description: str,
+                 disaster_recovery_vswitch_id: str,
                  enable_ipsec: str,
                  enable_ssl: str,
                  end_time: str,
@@ -2727,15 +3103,21 @@ class GetGatewaysGatewayResult(dict):
                  internet_ip: str,
                  name: str,
                  network_type: str,
+                 resource_group_id: str,
                  specification: str,
                  ssl_connections: int,
+                 ssl_vpn_internet_ip: str,
                  status: str,
-                 vpc_id: str):
+                 tags: Mapping[str, Any],
+                 vpc_id: str,
+                 vpn_type: str,
+                 vswitch_id: str):
         """
         :param str auto_propagate: Whether to automatically propagate BGP routes to the VPC. Valid values: `true`, `false`.
         :param str business_status: Limit search to specific business status - valid value is "Normal", "FinancialLocked".
         :param str create_time: The creation time of the VPN gateway.
         :param str description: The description of the VPN
+        :param str disaster_recovery_vswitch_id: - The ID of the backup VSwitch to which the VPN gateway is attached.
         :param str enable_ipsec: Indicates whether the IPsec-VPN feature is enabled.
         :param str enable_ssl: Whether the ssl function is enabled.
         :param str end_time: The expiration time of the VPN gateway.
@@ -2744,15 +3126,21 @@ class GetGatewaysGatewayResult(dict):
         :param str internet_ip: The internet ip of the VPN.
         :param str name: The name of the VPN.
         :param str network_type: The network type of the VPN gateway.
+        :param str resource_group_id: The ID of the resource group.
         :param str specification: The Specification of the VPN
         :param int ssl_connections: Total count of ssl vpn connections.
+        :param str ssl_vpn_internet_ip: The IP address of the SSL-VPN connection. This parameter is returned only when the VPN gateway is a public VPN gateway and supports only the single-tunnel mode. In addition, the VPN gateway must have the SSL-VPN feature enabled.
         :param str status: Limit search to specific status - valid value is "Init", "Provisioning", "Active", "Updating", "Deleting".
+        :param Mapping[str, Any] tags: The Tag of.
         :param str vpc_id: Use the VPC ID as the search key.
+        :param str vpn_type: - The VPN gateway type. Value:  Normal (default): Normal type. NationalStandard: National Secret type.
+        :param str vswitch_id: - The ID of the VSwitch to which the VPN gateway is attached.
         """
         pulumi.set(__self__, "auto_propagate", auto_propagate)
         pulumi.set(__self__, "business_status", business_status)
         pulumi.set(__self__, "create_time", create_time)
         pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "disaster_recovery_vswitch_id", disaster_recovery_vswitch_id)
         pulumi.set(__self__, "enable_ipsec", enable_ipsec)
         pulumi.set(__self__, "enable_ssl", enable_ssl)
         pulumi.set(__self__, "end_time", end_time)
@@ -2761,10 +3149,15 @@ class GetGatewaysGatewayResult(dict):
         pulumi.set(__self__, "internet_ip", internet_ip)
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "network_type", network_type)
+        pulumi.set(__self__, "resource_group_id", resource_group_id)
         pulumi.set(__self__, "specification", specification)
         pulumi.set(__self__, "ssl_connections", ssl_connections)
+        pulumi.set(__self__, "ssl_vpn_internet_ip", ssl_vpn_internet_ip)
         pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "tags", tags)
         pulumi.set(__self__, "vpc_id", vpc_id)
+        pulumi.set(__self__, "vpn_type", vpn_type)
+        pulumi.set(__self__, "vswitch_id", vswitch_id)
 
     @property
     @pulumi.getter(name="autoPropagate")
@@ -2797,6 +3190,14 @@ class GetGatewaysGatewayResult(dict):
         The description of the VPN
         """
         return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="disasterRecoveryVswitchId")
+    def disaster_recovery_vswitch_id(self) -> str:
+        """
+        - The ID of the backup VSwitch to which the VPN gateway is attached.
+        """
+        return pulumi.get(self, "disaster_recovery_vswitch_id")
 
     @property
     @pulumi.getter(name="enableIpsec")
@@ -2863,6 +3264,14 @@ class GetGatewaysGatewayResult(dict):
         return pulumi.get(self, "network_type")
 
     @property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> str:
+        """
+        The ID of the resource group.
+        """
+        return pulumi.get(self, "resource_group_id")
+
+    @property
     @pulumi.getter
     def specification(self) -> str:
         """
@@ -2879,6 +3288,14 @@ class GetGatewaysGatewayResult(dict):
         return pulumi.get(self, "ssl_connections")
 
     @property
+    @pulumi.getter(name="sslVpnInternetIp")
+    def ssl_vpn_internet_ip(self) -> str:
+        """
+        The IP address of the SSL-VPN connection. This parameter is returned only when the VPN gateway is a public VPN gateway and supports only the single-tunnel mode. In addition, the VPN gateway must have the SSL-VPN feature enabled.
+        """
+        return pulumi.get(self, "ssl_vpn_internet_ip")
+
+    @property
     @pulumi.getter
     def status(self) -> str:
         """
@@ -2887,11 +3304,35 @@ class GetGatewaysGatewayResult(dict):
         return pulumi.get(self, "status")
 
     @property
+    @pulumi.getter
+    def tags(self) -> Mapping[str, Any]:
+        """
+        The Tag of.
+        """
+        return pulumi.get(self, "tags")
+
+    @property
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> str:
         """
         Use the VPC ID as the search key.
         """
         return pulumi.get(self, "vpc_id")
+
+    @property
+    @pulumi.getter(name="vpnType")
+    def vpn_type(self) -> str:
+        """
+        - The VPN gateway type. Value:  Normal (default): Normal type. NationalStandard: National Secret type.
+        """
+        return pulumi.get(self, "vpn_type")
+
+    @property
+    @pulumi.getter(name="vswitchId")
+    def vswitch_id(self) -> str:
+        """
+        - The ID of the VSwitch to which the VPN gateway is attached.
+        """
+        return pulumi.get(self, "vswitch_id")
 
 

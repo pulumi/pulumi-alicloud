@@ -66,7 +66,7 @@ type ApplicationLoadBalancer struct {
 	Specification pulumi.StringOutput `pulumi:"specification"`
 	// The status of slb load balancer. Valid values: `active` and `inactice`. The system default value is `active`.
 	Status pulumi.StringOutput `pulumi:"status"`
-	// A mapping of tags to assign to the resource. The `tags` can have a maximum of 10 tag for every load balancer instance.
+	// A mapping of tags to assign to the resource. The `tags` can have a maximum of 10 tag for every load balancer instance. This filed mark as `Computed` since v1.217.1.
 	Tags pulumi.MapOutput `pulumi:"tags"`
 	// The VSwitch ID to launch in. **Note:** Required for a VPC SLB. If `addressType` is internet, it will be ignored.
 	VswitchId pulumi.StringPtrOutput `pulumi:"vswitchId"`
@@ -147,7 +147,7 @@ type applicationLoadBalancerState struct {
 	Specification *string `pulumi:"specification"`
 	// The status of slb load balancer. Valid values: `active` and `inactice`. The system default value is `active`.
 	Status *string `pulumi:"status"`
-	// A mapping of tags to assign to the resource. The `tags` can have a maximum of 10 tag for every load balancer instance.
+	// A mapping of tags to assign to the resource. The `tags` can have a maximum of 10 tag for every load balancer instance. This filed mark as `Computed` since v1.217.1.
 	Tags map[string]interface{} `pulumi:"tags"`
 	// The VSwitch ID to launch in. **Note:** Required for a VPC SLB. If `addressType` is internet, it will be ignored.
 	VswitchId *string `pulumi:"vswitchId"`
@@ -199,7 +199,7 @@ type ApplicationLoadBalancerState struct {
 	Specification pulumi.StringPtrInput
 	// The status of slb load balancer. Valid values: `active` and `inactice`. The system default value is `active`.
 	Status pulumi.StringPtrInput
-	// A mapping of tags to assign to the resource. The `tags` can have a maximum of 10 tag for every load balancer instance.
+	// A mapping of tags to assign to the resource. The `tags` can have a maximum of 10 tag for every load balancer instance. This filed mark as `Computed` since v1.217.1.
 	Tags pulumi.MapInput
 	// The VSwitch ID to launch in. **Note:** Required for a VPC SLB. If `addressType` is internet, it will be ignored.
 	VswitchId pulumi.StringPtrInput
@@ -255,7 +255,7 @@ type applicationLoadBalancerArgs struct {
 	Specification *string `pulumi:"specification"`
 	// The status of slb load balancer. Valid values: `active` and `inactice`. The system default value is `active`.
 	Status *string `pulumi:"status"`
-	// A mapping of tags to assign to the resource. The `tags` can have a maximum of 10 tag for every load balancer instance.
+	// A mapping of tags to assign to the resource. The `tags` can have a maximum of 10 tag for every load balancer instance. This filed mark as `Computed` since v1.217.1.
 	Tags map[string]interface{} `pulumi:"tags"`
 	// The VSwitch ID to launch in. **Note:** Required for a VPC SLB. If `addressType` is internet, it will be ignored.
 	VswitchId *string `pulumi:"vswitchId"`
@@ -308,7 +308,7 @@ type ApplicationLoadBalancerArgs struct {
 	Specification pulumi.StringPtrInput
 	// The status of slb load balancer. Valid values: `active` and `inactice`. The system default value is `active`.
 	Status pulumi.StringPtrInput
-	// A mapping of tags to assign to the resource. The `tags` can have a maximum of 10 tag for every load balancer instance.
+	// A mapping of tags to assign to the resource. The `tags` can have a maximum of 10 tag for every load balancer instance. This filed mark as `Computed` since v1.217.1.
 	Tags pulumi.MapInput
 	// The VSwitch ID to launch in. **Note:** Required for a VPC SLB. If `addressType` is internet, it will be ignored.
 	VswitchId pulumi.StringPtrInput
@@ -503,7 +503,7 @@ func (o ApplicationLoadBalancerOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *ApplicationLoadBalancer) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }
 
-// A mapping of tags to assign to the resource. The `tags` can have a maximum of 10 tag for every load balancer instance.
+// A mapping of tags to assign to the resource. The `tags` can have a maximum of 10 tag for every load balancer instance. This filed mark as `Computed` since v1.217.1.
 func (o ApplicationLoadBalancerOutput) Tags() pulumi.MapOutput {
 	return o.ApplyT(func(v *ApplicationLoadBalancer) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
 }

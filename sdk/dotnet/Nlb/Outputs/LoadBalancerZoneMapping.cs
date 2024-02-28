@@ -14,31 +14,35 @@ namespace Pulumi.AliCloud.Nlb.Outputs
     public sealed class LoadBalancerZoneMapping
     {
         /// <summary>
-        /// The ID of the EIP associated with the Internet-facing NLB instance.
+        /// The ID of the elastic IP address.
         /// </summary>
         public readonly string? AllocationId;
         /// <summary>
-        /// The ID of the elastic network interface (ENI).
+        /// The ID of ENI.
         /// </summary>
         public readonly string? EniId;
         /// <summary>
-        /// The IPv6 address of the NLB instance.
+        /// The IPv6 address of a network-based server load balancer instance.
         /// </summary>
         public readonly string? Ipv6Address;
         /// <summary>
-        /// The private IPv4 address of the NLB instance.
+        /// The private IPv4 address of a network-based server load balancer instance.
         /// </summary>
         public readonly string? PrivateIpv4Address;
         /// <summary>
-        /// The public IPv4 address of the NLB instance.
+        /// Public IPv4 address of a network-based server load balancer instance.
         /// </summary>
         public readonly string? PublicIpv4Address;
         /// <summary>
-        /// The vSwitch in the zone. You can specify only one vSwitch (subnet) in each zone of an NLB instance.
+        /// Zone Status.
+        /// </summary>
+        public readonly string? Status;
+        /// <summary>
+        /// The switch corresponding to the zone. Each zone uses one switch and one subnet by default.
         /// </summary>
         public readonly string VswitchId;
         /// <summary>
-        /// The ID of the zone of the NLB instance.
+        /// The name of the zone. You can call the DescribeZones operation to obtain the name of the zone.
         /// </summary>
         public readonly string ZoneId;
 
@@ -54,6 +58,8 @@ namespace Pulumi.AliCloud.Nlb.Outputs
 
             string? publicIpv4Address,
 
+            string? status,
+
             string vswitchId,
 
             string zoneId)
@@ -63,6 +69,7 @@ namespace Pulumi.AliCloud.Nlb.Outputs
             Ipv6Address = ipv6Address;
             PrivateIpv4Address = privateIpv4Address;
             PublicIpv4Address = publicIpv4Address;
+            Status = status;
             VswitchId = vswitchId;
             ZoneId = zoneId;
         }

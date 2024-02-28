@@ -20,18 +20,21 @@ import * as utilities from "../utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
+ * import * as random from "@pulumi/random";
  *
- * const config = new pulumi.Config();
- * const domainName = config.get("domainName") || "mycdndomain.alicloud-provider.cn";
- * const _default = new alicloud.cdn.DomainNew("default", {
- *     scope: "overseas",
- *     domainName: domainName,
+ * const defaultRandomInteger = new random.RandomInteger("defaultRandomInteger", {
+ *     max: 99999,
+ *     min: 10000,
+ * });
+ * const defaultDomainNew = new alicloud.cdn.DomainNew("defaultDomainNew", {
  *     cdnType: "web",
+ *     domainName: pulumi.interpolate`mycdndomain-${defaultRandomInteger.result}.alicloud-provider.cn`,
+ *     scope: "overseas",
  *     sources: [{
- *         type: "ipaddr",
  *         content: "1.1.1.1",
- *         priority: 20,
  *         port: 80,
+ *         priority: 20,
+ *         type: "ipaddr",
  *         weight: 15,
  *     }],
  * });

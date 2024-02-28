@@ -313,7 +313,7 @@ class EnterpriseProxyAccess(pulumi.CustomResource):
 
         For information about DMS Enterprise Proxy Access and how to use it, see [What is Proxy Access](https://next.api.alibabacloud.com/document/dms-enterprise/2018-11-01/CreateProxyAccess).
 
-        > **NOTE:** Available in v1.195.0+.
+        > **NOTE:** Available since v1.195.0+.
 
         ## Example Usage
 
@@ -323,11 +323,12 @@ class EnterpriseProxyAccess(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
+        dms_enterprise_users_ds = alicloud.dms.get_enterprise_users(role="USER",
+            status="NORMAL")
+        ids = alicloud.dms.get_enterprise_proxies()
         default = alicloud.dms.EnterpriseProxyAccess("default",
-            indep_account="dmstest",
-            indep_password="PASSWORD-DEMO",
-            proxy_id="1881",
-            user_id="104442")
+            proxy_id=ids.proxies[0].id,
+            user_id=dms_enterprise_users_ds.users[0].user_id)
         ```
 
         ## Import
@@ -357,7 +358,7 @@ class EnterpriseProxyAccess(pulumi.CustomResource):
 
         For information about DMS Enterprise Proxy Access and how to use it, see [What is Proxy Access](https://next.api.alibabacloud.com/document/dms-enterprise/2018-11-01/CreateProxyAccess).
 
-        > **NOTE:** Available in v1.195.0+.
+        > **NOTE:** Available since v1.195.0+.
 
         ## Example Usage
 
@@ -367,11 +368,12 @@ class EnterpriseProxyAccess(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
+        dms_enterprise_users_ds = alicloud.dms.get_enterprise_users(role="USER",
+            status="NORMAL")
+        ids = alicloud.dms.get_enterprise_proxies()
         default = alicloud.dms.EnterpriseProxyAccess("default",
-            indep_account="dmstest",
-            indep_password="PASSWORD-DEMO",
-            proxy_id="1881",
-            user_id="104442")
+            proxy_id=ids.proxies[0].id,
+            user_id=dms_enterprise_users_ds.users[0].user_id)
         ```
 
         ## Import

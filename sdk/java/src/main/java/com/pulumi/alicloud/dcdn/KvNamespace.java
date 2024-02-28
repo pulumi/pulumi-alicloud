@@ -29,6 +29,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.random.RandomInteger;
+ * import com.pulumi.random.RandomIntegerArgs;
  * import com.pulumi.alicloud.dcdn.KvNamespace;
  * import com.pulumi.alicloud.dcdn.KvNamespaceArgs;
  * import java.util.List;
@@ -45,10 +47,15 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
- *         var default_ = new KvNamespace(&#34;default&#34;, KvNamespaceArgs.builder()        
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;terraform-example&#34;);
+ *         var defaultRandomInteger = new RandomInteger(&#34;defaultRandomInteger&#34;, RandomIntegerArgs.builder()        
+ *             .min(10000)
+ *             .max(99999)
+ *             .build());
+ * 
+ *         var defaultKvNamespace = new KvNamespace(&#34;defaultKvNamespace&#34;, KvNamespaceArgs.builder()        
  *             .description(name)
- *             .namespace(name)
+ *             .namespace(defaultRandomInteger.result().applyValue(result -&gt; String.format(&#34;%s-%s&#34;, name,result)))
  *             .build());
  * 
  *     }

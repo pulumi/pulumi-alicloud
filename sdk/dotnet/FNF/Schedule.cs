@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.FNF
     /// 
     /// For information about Serverless Workflow Schedule and how to use it, see [What is Schedule](https://www.alibabacloud.com/help/en/doc-detail/168934.htm).
     /// 
-    /// &gt; **NOTE:** Available in v1.105.0+.
+    /// &gt; **NOTE:** Available since v1.105.0+.
     /// 
     /// ## Example Usage
     /// 
@@ -36,18 +36,18 @@ namespace Pulumi.AliCloud.FNF
     ///     - type: pass
     ///       name: helloworld
     /// ",
-    ///         Description = "tf-testaccFnFFlow983041",
+    ///         Description = "tf-exampleFnFFlow983041",
     ///         Type = "FDL",
     ///     });
     /// 
     ///     var exampleSchedule = new AliCloud.FNF.Schedule("exampleSchedule", new()
     ///     {
     ///         CronExpression = "30 9 * * * *",
-    ///         Description = "tf-testaccFnFSchedule983041",
+    ///         Description = "tf-exampleFnFSchedule983041",
     ///         Enable = true,
     ///         FlowName = exampleFlow.Name,
-    ///         Payload = "{\"tf-test\": \"test success\"}",
-    ///         ScheduleName = "tf-testaccFnFSchedule983041",
+    ///         Payload = "{\"tf-example\": \"example success\"}",
+    ///         ScheduleName = "tf-exampleFnFSchedule983041",
     ///     });
     /// 
     /// });

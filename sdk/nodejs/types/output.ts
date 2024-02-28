@@ -35813,33 +35813,67 @@ export namespace nlb {
         zoneId: string;
     }
 
+    export interface LoadBalancerDeletionProtectionConfig {
+        /**
+         * Delete protection enable.
+         */
+        enabled: boolean;
+        /**
+         * Opening time.
+         */
+        enabledTime: string;
+        /**
+         * Reason for opening.
+         */
+        reason: string;
+    }
+
+    export interface LoadBalancerModificationProtectionConfig {
+        /**
+         * Opening time.
+         */
+        enabledTime: string;
+        /**
+         * Reason for opening.
+         */
+        reason: string;
+        /**
+         * ON.
+         */
+        status: string;
+    }
+
     export interface LoadBalancerZoneMapping {
         /**
-         * The ID of the EIP associated with the Internet-facing NLB instance.
+         * The ID of the elastic IP address.
          */
         allocationId: string;
         /**
-         * The ID of the elastic network interface (ENI).
+         * The ID of ENI.
          */
         eniId: string;
         /**
-         * The IPv6 address of the NLB instance.
+         * The IPv6 address of a network-based server load balancer instance.
          */
         ipv6Address: string;
         /**
-         * The private IPv4 address of the NLB instance.
+         * The private IPv4 address of a network-based server load balancer instance.
          */
         privateIpv4Address: string;
         /**
-         * The public IPv4 address of the NLB instance.
+         * Public IPv4 address of a network-based server load balancer instance.
          */
         publicIpv4Address: string;
         /**
-         * The vSwitch in the zone. You can specify only one vSwitch (subnet) in each zone of an NLB instance.
+         * Zone Status.
+         */
+        status: string;
+        /**
+         * The switch corresponding to the zone. Each zone uses one switch and one subnet by default.
          */
         vswitchId: string;
         /**
-         * The ID of the zone of the NLB instance.
+         * The name of the zone. You can call the DescribeZones operation to obtain the name of the zone.
          */
         zoneId: string;
     }
@@ -49242,23 +49276,27 @@ export namespace vpn {
         customerGatewayId: string;
         effectImmediately: boolean;
         /**
-         * Specifies whether to enable the dead peer detection (DPD) feature.
+         * Wether enable Dpd detection.
          */
         enableDpd: boolean;
         /**
-         * Specifies whether to enable NAT traversal.
+         * enable nat traversal.
          */
         enableNatTraversal: boolean;
+        /**
+         * Enable tunnel bgp.
+         */
+        enableTunnelsBgp: boolean;
         /**
          * ID of the VPN connection.
          */
         id: string;
         /**
-         * The configurations of phase-one negotiation.
+         * The ikeConfig mapping supports the following:
          */
         ikeConfigs?: outputs.vpn.GetConnectionsConnectionIkeConfig[];
         /**
-         * The configurations of phase-two negotiation.
+         * The ipsecConfig mapping supports the following:
          */
         ipsecConfigs?: outputs.vpn.GetConnectionsConnectionIpsecConfig[];
         /**
@@ -49277,9 +49315,13 @@ export namespace vpn {
          * The negotiation status of the BGP routing protocol. Valid values: `success`, `false`.
          */
         status: string;
+        /**
+         * The tunnelOptionsSpecification supports the following:
+         */
+        tunnelOptionsSpecifications: outputs.vpn.GetConnectionsConnectionTunnelOptionsSpecification[];
         vcoHealthChecks?: outputs.vpn.GetConnectionsConnectionVcoHealthCheck[];
         /**
-         * The configuration information for BGP.
+         * The vpnBgpConfig mapping supports the following:
          */
         vpnBgpConfigs?: outputs.vpn.GetConnectionsConnectionVpnBgpConfig[];
         /**
@@ -49290,15 +49332,15 @@ export namespace vpn {
 
     export interface GetConnectionsConnectionIkeConfig {
         /**
-         * The authentication algorithm of phase-one negotiation.
+         * IKE auth Algorithm.
          */
         ikeAuthAlg?: string;
         /**
-         * The encryption algorithm of phase-one negotiation.
+         * IKE encript algorithm.
          */
         ikeEncAlg?: string;
         /**
-         * The SA lifecycle as the result of phase-one negotiation.
+         * IKE lifetime.
          */
         ikeLifetime?: number;
         /**
@@ -49306,11 +49348,11 @@ export namespace vpn {
          */
         ikeLocalId?: string;
         /**
-         * The negotiation mode of IKE phase-one.
+         * IKE Mode.
          */
         ikeMode?: string;
         /**
-         * The Diffie-Hellman key exchange algorithm used by phase-one negotiation.
+         * DH Group.
          */
         ikePfs?: string;
         /**
@@ -49318,32 +49360,153 @@ export namespace vpn {
          */
         ikeRemoteId?: string;
         /**
-         * The version of the IKE protocol.
+         * IKE Version.
          */
         ikeVersion?: string;
         /**
-         * Used for authentication between the IPsec VPN gateway and the customer gateway.
+         * Preshared secret key.
          */
         psk?: string;
     }
 
     export interface GetConnectionsConnectionIpsecConfig {
         /**
-         * The authentication algorithm of phase-two negotiation.
+         * IPsec Auth algorithm.
          */
         ipsecAuthAlg?: string;
         /**
-         * The encryption algorithm of phase-two negotiation.
+         * IPsec Encript algorithm.
          */
         ipsecEncAlg?: string;
         /**
-         * The SA lifecycle as the result of phase-two negotiation.
+         * IPsec lifetime.
          */
         ipsecLifetime?: number;
         /**
-         * The Diffie-Hellman key exchange algorithm used by phase-two negotiation.
+         * DH Group.
          */
         ipsecPfs?: string;
+    }
+
+    export interface GetConnectionsConnectionTunnelOptionsSpecification {
+        /**
+         * Use the VPN customer gateway ID as the search key.
+         */
+        customerGatewayId: string;
+        /**
+         * Wether enable Dpd detection.
+         */
+        enableDpd: boolean;
+        /**
+         * enable nat traversal.
+         */
+        enableNatTraversal: boolean;
+        internetIp: string;
+        /**
+         * The role of Tunnel.
+         */
+        role: string;
+        state: string;
+        /**
+         * The negotiation status of the BGP routing protocol. Valid values: `success`, `false`.
+         */
+        status: string;
+        /**
+         * The bgp config of Tunnel.
+         */
+        tunnelBgpConfig: outputs.vpn.GetConnectionsConnectionTunnelOptionsSpecificationTunnelBgpConfig;
+        tunnelId: string;
+        /**
+         * The configuration of Phase 1 negotiations in Tunnel.
+         */
+        tunnelIkeConfig: outputs.vpn.GetConnectionsConnectionTunnelOptionsSpecificationTunnelIkeConfig;
+        /**
+         * IPsec configuration in Tunnel.
+         */
+        tunnelIpsecConfig: outputs.vpn.GetConnectionsConnectionTunnelOptionsSpecificationTunnelIpsecConfig;
+        zoneNo: string;
+    }
+
+    export interface GetConnectionsConnectionTunnelOptionsSpecificationTunnelBgpConfig {
+        bgpStatus: string;
+        /**
+         * Local asn.
+         */
+        localAsn: string;
+        /**
+         * Local bgp IP.
+         */
+        localBgpIp: string;
+        /**
+         * The counterpart autonomous system number.
+         */
+        peerAsn: string;
+        /**
+         * The BGP address on the other side.
+         */
+        peerBgpIp: string;
+        /**
+         * BGP Tunnel CIDR.
+         */
+        tunnelCidr: string;
+    }
+
+    export interface GetConnectionsConnectionTunnelOptionsSpecificationTunnelIkeConfig {
+        /**
+         * IKE auth Algorithm.
+         */
+        ikeAuthAlg: string;
+        /**
+         * IKE encript algorithm.
+         */
+        ikeEncAlg: string;
+        /**
+         * IKE lifetime.
+         */
+        ikeLifetime: number;
+        /**
+         * IKE Mode.
+         */
+        ikeMode: string;
+        /**
+         * DH Group.
+         */
+        ikePfs: string;
+        /**
+         * IKE Version.
+         */
+        ikeVersion: string;
+        /**
+         * The local Id.
+         */
+        localId: string;
+        /**
+         * Preshared secret key.
+         */
+        psk: string;
+        /**
+         * Remote ID.
+         */
+        remoteId: string;
+    }
+
+    export interface GetConnectionsConnectionTunnelOptionsSpecificationTunnelIpsecConfig {
+        /**
+         * IPsec Auth algorithm.
+         */
+        ipsecAuthAlg: string;
+        /**
+         * IPsec Encript algorithm.
+         */
+        ipsecEncAlg: string;
+        /**
+         * IPsec lifetime.
+         */
+        ipsecLifetime: number;
+        /**
+         * DH Group.
+         */
+        ipsecPfs: string;
     }
 
     export interface GetConnectionsConnectionVcoHealthCheck {
@@ -49379,11 +49542,11 @@ export namespace vpn {
          */
         authKey?: string;
         /**
-         * The ali cloud side autonomous system.
+         * Local asn.
          */
         localAsn?: number;
         /**
-         * The ali cloud side BGP address.
+         * Local bgp IP.
          */
         localBgpIp?: string;
         /**
@@ -49399,7 +49562,7 @@ export namespace vpn {
          */
         status?: string;
         /**
-         * The ipsec tunnel segments.
+         * BGP Tunnel CIDR.
          */
         tunnelCidr?: string;
     }
@@ -49674,6 +49837,10 @@ export namespace vpn {
          */
         description: string;
         /**
+         * - The ID of the backup VSwitch to which the VPN gateway is attached.
+         */
+        disasterRecoveryVswitchId: string;
+        /**
          * Indicates whether the IPsec-VPN feature is enabled.
          */
         enableIpsec: string;
@@ -49706,6 +49873,10 @@ export namespace vpn {
          */
         networkType: string;
         /**
+         * The ID of the resource group.
+         */
+        resourceGroupId: string;
+        /**
          * The Specification of the VPN
          */
         specification: string;
@@ -49714,13 +49885,29 @@ export namespace vpn {
          */
         sslConnections: number;
         /**
+         * The IP address of the SSL-VPN connection. This parameter is returned only when the VPN gateway is a public VPN gateway and supports only the single-tunnel mode. In addition, the VPN gateway must have the SSL-VPN feature enabled.
+         */
+        sslVpnInternetIp: string;
+        /**
          * Limit search to specific status - valid value is "Init", "Provisioning", "Active", "Updating", "Deleting".
          */
         status: string;
         /**
+         * The Tag of.
+         */
+        tags: {[key: string]: any};
+        /**
          * Use the VPC ID as the search key.
          */
         vpcId: string;
+        /**
+         * - The VPN gateway type. Value:  Normal (default): Normal type. NationalStandard: National Secret type.
+         */
+        vpnType: string;
+        /**
+         * - The ID of the VSwitch to which the VPN gateway is attached.
+         */
+        vswitchId: string;
     }
 
     export interface IpsecServerIkeConfig {

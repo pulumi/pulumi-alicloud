@@ -25,15 +25,22 @@ namespace Pulumi.AliCloud.Dcdn
     /// using System.Linq;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
+    /// using Random = Pulumi.Random;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     var config = new Config();
-    ///     var name = config.Get("name") ?? "tf-example";
-    ///     var @default = new AliCloud.Dcdn.KvNamespace("default", new()
+    ///     var name = config.Get("name") ?? "terraform-example";
+    ///     var defaultRandomInteger = new Random.RandomInteger("defaultRandomInteger", new()
+    ///     {
+    ///         Min = 10000,
+    ///         Max = 99999,
+    ///     });
+    /// 
+    ///     var defaultKvNamespace = new AliCloud.Dcdn.KvNamespace("defaultKvNamespace", new()
     ///     {
     ///         Description = name,
-    ///         Namespace = name,
+    ///         Namespace = defaultRandomInteger.Result.Apply(result =&gt; $"{name}-{result}"),
     ///     });
     /// 
     /// });

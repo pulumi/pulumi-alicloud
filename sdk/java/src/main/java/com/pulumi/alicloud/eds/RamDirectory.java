@@ -71,7 +71,6 @@ import javax.annotation.Nullable;
  *         var defaultRamDirectory = new RamDirectory(&#34;defaultRamDirectory&#34;, RamDirectoryArgs.builder()        
  *             .desktopAccessType(&#34;INTERNET&#34;)
  *             .enableAdminAccess(true)
- *             .enableInternetAccess(true)
  *             .ramDirectoryName(name)
  *             .vswitchIds(defaultSwitch.id())
  *             .build());

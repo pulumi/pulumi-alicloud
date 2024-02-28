@@ -161,16 +161,20 @@ class Image(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
             name = "terraform-example"
+        default_random_integer = random.RandomInteger("defaultRandomInteger",
+            min=10000,
+            max=99999)
         default_simple_office_site = alicloud.eds.SimpleOfficeSite("defaultSimpleOfficeSite",
             cidr_block="172.16.0.0/12",
             enable_admin_access=True,
             desktop_access_type="Internet",
-            office_site_name=name)
+            office_site_name=default_random_integer.result.apply(lambda result: f"{name}-{result}"))
         default_ecd_policy_group = alicloud.eds.EcdPolicyGroup("defaultEcdPolicyGroup",
             policy_group_name=name,
             clipboard="read",
@@ -236,16 +240,20 @@ class Image(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
             name = "terraform-example"
+        default_random_integer = random.RandomInteger("defaultRandomInteger",
+            min=10000,
+            max=99999)
         default_simple_office_site = alicloud.eds.SimpleOfficeSite("defaultSimpleOfficeSite",
             cidr_block="172.16.0.0/12",
             enable_admin_access=True,
             desktop_access_type="Internet",
-            office_site_name=name)
+            office_site_name=default_random_integer.result.apply(lambda result: f"{name}-{result}"))
         default_ecd_policy_group = alicloud.eds.EcdPolicyGroup("defaultEcdPolicyGroup",
             policy_group_name=name,
             clipboard="read",

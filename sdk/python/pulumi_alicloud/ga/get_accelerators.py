@@ -22,10 +22,13 @@ class GetAcceleratorsResult:
     """
     A collection of values returned by getAccelerators.
     """
-    def __init__(__self__, accelerators=None, id=None, ids=None, name_regex=None, names=None, output_file=None, status=None):
+    def __init__(__self__, accelerators=None, bandwidth_billing_type=None, id=None, ids=None, name_regex=None, names=None, output_file=None, status=None):
         if accelerators and not isinstance(accelerators, list):
             raise TypeError("Expected argument 'accelerators' to be a list")
         pulumi.set(__self__, "accelerators", accelerators)
+        if bandwidth_billing_type and not isinstance(bandwidth_billing_type, str):
+            raise TypeError("Expected argument 'bandwidth_billing_type' to be a str")
+        pulumi.set(__self__, "bandwidth_billing_type", bandwidth_billing_type)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -52,6 +55,11 @@ class GetAcceleratorsResult:
         A list of Ga Accelerators. Each element contains the following attributes:
         """
         return pulumi.get(self, "accelerators")
+
+    @property
+    @pulumi.getter(name="bandwidthBillingType")
+    def bandwidth_billing_type(self) -> Optional[str]:
+        return pulumi.get(self, "bandwidth_billing_type")
 
     @property
     @pulumi.getter
@@ -100,6 +108,7 @@ class AwaitableGetAcceleratorsResult(GetAcceleratorsResult):
             yield self
         return GetAcceleratorsResult(
             accelerators=self.accelerators,
+            bandwidth_billing_type=self.bandwidth_billing_type,
             id=self.id,
             ids=self.ids,
             name_regex=self.name_regex,
@@ -108,7 +117,8 @@ class AwaitableGetAcceleratorsResult(GetAcceleratorsResult):
             status=self.status)
 
 
-def get_accelerators(ids: Optional[Sequence[str]] = None,
+def get_accelerators(bandwidth_billing_type: Optional[str] = None,
+                     ids: Optional[Sequence[str]] = None,
                      name_regex: Optional[str] = None,
                      output_file: Optional[str] = None,
                      status: Optional[str] = None,
@@ -131,12 +141,14 @@ def get_accelerators(ids: Optional[Sequence[str]] = None,
     ```
 
 
+    :param str bandwidth_billing_type: The bandwidth billing method. Default value: `BandwidthPackage`. Valid values:
     :param Sequence[str] ids: A list of Accelerator IDs.
     :param str name_regex: A regex string to filter results by Accelerator name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str status: The status of the GA instance. Valid values: `active`, `binding`, `configuring`, `deleting`, `finacialLocked`, `init`, `unbinding`.
     """
     __args__ = dict()
+    __args__['bandwidthBillingType'] = bandwidth_billing_type
     __args__['ids'] = ids
     __args__['nameRegex'] = name_regex
     __args__['outputFile'] = output_file
@@ -146,6 +158,7 @@ def get_accelerators(ids: Optional[Sequence[str]] = None,
 
     return AwaitableGetAcceleratorsResult(
         accelerators=pulumi.get(__ret__, 'accelerators'),
+        bandwidth_billing_type=pulumi.get(__ret__, 'bandwidth_billing_type'),
         id=pulumi.get(__ret__, 'id'),
         ids=pulumi.get(__ret__, 'ids'),
         name_regex=pulumi.get(__ret__, 'name_regex'),
@@ -155,7 +168,8 @@ def get_accelerators(ids: Optional[Sequence[str]] = None,
 
 
 @_utilities.lift_output_func(get_accelerators)
-def get_accelerators_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+def get_accelerators_output(bandwidth_billing_type: Optional[pulumi.Input[Optional[str]]] = None,
+                            ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                             name_regex: Optional[pulumi.Input[Optional[str]]] = None,
                             output_file: Optional[pulumi.Input[Optional[str]]] = None,
                             status: Optional[pulumi.Input[Optional[str]]] = None,
@@ -178,6 +192,7 @@ def get_accelerators_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]]
     ```
 
 
+    :param str bandwidth_billing_type: The bandwidth billing method. Default value: `BandwidthPackage`. Valid values:
     :param Sequence[str] ids: A list of Accelerator IDs.
     :param str name_regex: A regex string to filter results by Accelerator name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).

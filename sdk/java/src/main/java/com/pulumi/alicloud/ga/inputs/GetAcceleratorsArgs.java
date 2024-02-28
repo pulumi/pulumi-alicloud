@@ -17,6 +17,21 @@ public final class GetAcceleratorsArgs extends com.pulumi.resources.InvokeArgs {
     public static final GetAcceleratorsArgs Empty = new GetAcceleratorsArgs();
 
     /**
+     * The bandwidth billing method. Default value: `BandwidthPackage`. Valid values:
+     * 
+     */
+    @Import(name="bandwidthBillingType")
+    private @Nullable Output<String> bandwidthBillingType;
+
+    /**
+     * @return The bandwidth billing method. Default value: `BandwidthPackage`. Valid values:
+     * 
+     */
+    public Optional<Output<String>> bandwidthBillingType() {
+        return Optional.ofNullable(this.bandwidthBillingType);
+    }
+
+    /**
      * A list of Accelerator IDs.
      * 
      */
@@ -79,6 +94,7 @@ public final class GetAcceleratorsArgs extends com.pulumi.resources.InvokeArgs {
     private GetAcceleratorsArgs() {}
 
     private GetAcceleratorsArgs(GetAcceleratorsArgs $) {
+        this.bandwidthBillingType = $.bandwidthBillingType;
         this.ids = $.ids;
         this.nameRegex = $.nameRegex;
         this.outputFile = $.outputFile;
@@ -101,6 +117,27 @@ public final class GetAcceleratorsArgs extends com.pulumi.resources.InvokeArgs {
 
         public Builder(GetAcceleratorsArgs defaults) {
             $ = new GetAcceleratorsArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param bandwidthBillingType The bandwidth billing method. Default value: `BandwidthPackage`. Valid values:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder bandwidthBillingType(@Nullable Output<String> bandwidthBillingType) {
+            $.bandwidthBillingType = bandwidthBillingType;
+            return this;
+        }
+
+        /**
+         * @param bandwidthBillingType The bandwidth billing method. Default value: `BandwidthPackage`. Valid values:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder bandwidthBillingType(String bandwidthBillingType) {
+            return bandwidthBillingType(Output.of(bandwidthBillingType));
         }
 
         /**

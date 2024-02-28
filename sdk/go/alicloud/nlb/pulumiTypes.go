@@ -13,20 +13,372 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type LoadBalancerDeletionProtectionConfig struct {
+	// Delete protection enable.
+	Enabled *bool `pulumi:"enabled"`
+	// Opening time.
+	EnabledTime *string `pulumi:"enabledTime"`
+	// Reason for opening.
+	Reason *string `pulumi:"reason"`
+}
+
+// LoadBalancerDeletionProtectionConfigInput is an input type that accepts LoadBalancerDeletionProtectionConfigArgs and LoadBalancerDeletionProtectionConfigOutput values.
+// You can construct a concrete instance of `LoadBalancerDeletionProtectionConfigInput` via:
+//
+//	LoadBalancerDeletionProtectionConfigArgs{...}
+type LoadBalancerDeletionProtectionConfigInput interface {
+	pulumi.Input
+
+	ToLoadBalancerDeletionProtectionConfigOutput() LoadBalancerDeletionProtectionConfigOutput
+	ToLoadBalancerDeletionProtectionConfigOutputWithContext(context.Context) LoadBalancerDeletionProtectionConfigOutput
+}
+
+type LoadBalancerDeletionProtectionConfigArgs struct {
+	// Delete protection enable.
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	// Opening time.
+	EnabledTime pulumi.StringPtrInput `pulumi:"enabledTime"`
+	// Reason for opening.
+	Reason pulumi.StringPtrInput `pulumi:"reason"`
+}
+
+func (LoadBalancerDeletionProtectionConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LoadBalancerDeletionProtectionConfig)(nil)).Elem()
+}
+
+func (i LoadBalancerDeletionProtectionConfigArgs) ToLoadBalancerDeletionProtectionConfigOutput() LoadBalancerDeletionProtectionConfigOutput {
+	return i.ToLoadBalancerDeletionProtectionConfigOutputWithContext(context.Background())
+}
+
+func (i LoadBalancerDeletionProtectionConfigArgs) ToLoadBalancerDeletionProtectionConfigOutputWithContext(ctx context.Context) LoadBalancerDeletionProtectionConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoadBalancerDeletionProtectionConfigOutput)
+}
+
+func (i LoadBalancerDeletionProtectionConfigArgs) ToLoadBalancerDeletionProtectionConfigPtrOutput() LoadBalancerDeletionProtectionConfigPtrOutput {
+	return i.ToLoadBalancerDeletionProtectionConfigPtrOutputWithContext(context.Background())
+}
+
+func (i LoadBalancerDeletionProtectionConfigArgs) ToLoadBalancerDeletionProtectionConfigPtrOutputWithContext(ctx context.Context) LoadBalancerDeletionProtectionConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoadBalancerDeletionProtectionConfigOutput).ToLoadBalancerDeletionProtectionConfigPtrOutputWithContext(ctx)
+}
+
+// LoadBalancerDeletionProtectionConfigPtrInput is an input type that accepts LoadBalancerDeletionProtectionConfigArgs, LoadBalancerDeletionProtectionConfigPtr and LoadBalancerDeletionProtectionConfigPtrOutput values.
+// You can construct a concrete instance of `LoadBalancerDeletionProtectionConfigPtrInput` via:
+//
+//	        LoadBalancerDeletionProtectionConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type LoadBalancerDeletionProtectionConfigPtrInput interface {
+	pulumi.Input
+
+	ToLoadBalancerDeletionProtectionConfigPtrOutput() LoadBalancerDeletionProtectionConfigPtrOutput
+	ToLoadBalancerDeletionProtectionConfigPtrOutputWithContext(context.Context) LoadBalancerDeletionProtectionConfigPtrOutput
+}
+
+type loadBalancerDeletionProtectionConfigPtrType LoadBalancerDeletionProtectionConfigArgs
+
+func LoadBalancerDeletionProtectionConfigPtr(v *LoadBalancerDeletionProtectionConfigArgs) LoadBalancerDeletionProtectionConfigPtrInput {
+	return (*loadBalancerDeletionProtectionConfigPtrType)(v)
+}
+
+func (*loadBalancerDeletionProtectionConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**LoadBalancerDeletionProtectionConfig)(nil)).Elem()
+}
+
+func (i *loadBalancerDeletionProtectionConfigPtrType) ToLoadBalancerDeletionProtectionConfigPtrOutput() LoadBalancerDeletionProtectionConfigPtrOutput {
+	return i.ToLoadBalancerDeletionProtectionConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *loadBalancerDeletionProtectionConfigPtrType) ToLoadBalancerDeletionProtectionConfigPtrOutputWithContext(ctx context.Context) LoadBalancerDeletionProtectionConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoadBalancerDeletionProtectionConfigPtrOutput)
+}
+
+type LoadBalancerDeletionProtectionConfigOutput struct{ *pulumi.OutputState }
+
+func (LoadBalancerDeletionProtectionConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LoadBalancerDeletionProtectionConfig)(nil)).Elem()
+}
+
+func (o LoadBalancerDeletionProtectionConfigOutput) ToLoadBalancerDeletionProtectionConfigOutput() LoadBalancerDeletionProtectionConfigOutput {
+	return o
+}
+
+func (o LoadBalancerDeletionProtectionConfigOutput) ToLoadBalancerDeletionProtectionConfigOutputWithContext(ctx context.Context) LoadBalancerDeletionProtectionConfigOutput {
+	return o
+}
+
+func (o LoadBalancerDeletionProtectionConfigOutput) ToLoadBalancerDeletionProtectionConfigPtrOutput() LoadBalancerDeletionProtectionConfigPtrOutput {
+	return o.ToLoadBalancerDeletionProtectionConfigPtrOutputWithContext(context.Background())
+}
+
+func (o LoadBalancerDeletionProtectionConfigOutput) ToLoadBalancerDeletionProtectionConfigPtrOutputWithContext(ctx context.Context) LoadBalancerDeletionProtectionConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LoadBalancerDeletionProtectionConfig) *LoadBalancerDeletionProtectionConfig {
+		return &v
+	}).(LoadBalancerDeletionProtectionConfigPtrOutput)
+}
+
+// Delete protection enable.
+func (o LoadBalancerDeletionProtectionConfigOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v LoadBalancerDeletionProtectionConfig) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+// Opening time.
+func (o LoadBalancerDeletionProtectionConfigOutput) EnabledTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LoadBalancerDeletionProtectionConfig) *string { return v.EnabledTime }).(pulumi.StringPtrOutput)
+}
+
+// Reason for opening.
+func (o LoadBalancerDeletionProtectionConfigOutput) Reason() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LoadBalancerDeletionProtectionConfig) *string { return v.Reason }).(pulumi.StringPtrOutput)
+}
+
+type LoadBalancerDeletionProtectionConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (LoadBalancerDeletionProtectionConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LoadBalancerDeletionProtectionConfig)(nil)).Elem()
+}
+
+func (o LoadBalancerDeletionProtectionConfigPtrOutput) ToLoadBalancerDeletionProtectionConfigPtrOutput() LoadBalancerDeletionProtectionConfigPtrOutput {
+	return o
+}
+
+func (o LoadBalancerDeletionProtectionConfigPtrOutput) ToLoadBalancerDeletionProtectionConfigPtrOutputWithContext(ctx context.Context) LoadBalancerDeletionProtectionConfigPtrOutput {
+	return o
+}
+
+func (o LoadBalancerDeletionProtectionConfigPtrOutput) Elem() LoadBalancerDeletionProtectionConfigOutput {
+	return o.ApplyT(func(v *LoadBalancerDeletionProtectionConfig) LoadBalancerDeletionProtectionConfig {
+		if v != nil {
+			return *v
+		}
+		var ret LoadBalancerDeletionProtectionConfig
+		return ret
+	}).(LoadBalancerDeletionProtectionConfigOutput)
+}
+
+// Delete protection enable.
+func (o LoadBalancerDeletionProtectionConfigPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *LoadBalancerDeletionProtectionConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Opening time.
+func (o LoadBalancerDeletionProtectionConfigPtrOutput) EnabledTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LoadBalancerDeletionProtectionConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EnabledTime
+	}).(pulumi.StringPtrOutput)
+}
+
+// Reason for opening.
+func (o LoadBalancerDeletionProtectionConfigPtrOutput) Reason() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LoadBalancerDeletionProtectionConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Reason
+	}).(pulumi.StringPtrOutput)
+}
+
+type LoadBalancerModificationProtectionConfig struct {
+	// Opening time.
+	EnabledTime *string `pulumi:"enabledTime"`
+	// Reason for opening.
+	Reason *string `pulumi:"reason"`
+	// ON.
+	Status *string `pulumi:"status"`
+}
+
+// LoadBalancerModificationProtectionConfigInput is an input type that accepts LoadBalancerModificationProtectionConfigArgs and LoadBalancerModificationProtectionConfigOutput values.
+// You can construct a concrete instance of `LoadBalancerModificationProtectionConfigInput` via:
+//
+//	LoadBalancerModificationProtectionConfigArgs{...}
+type LoadBalancerModificationProtectionConfigInput interface {
+	pulumi.Input
+
+	ToLoadBalancerModificationProtectionConfigOutput() LoadBalancerModificationProtectionConfigOutput
+	ToLoadBalancerModificationProtectionConfigOutputWithContext(context.Context) LoadBalancerModificationProtectionConfigOutput
+}
+
+type LoadBalancerModificationProtectionConfigArgs struct {
+	// Opening time.
+	EnabledTime pulumi.StringPtrInput `pulumi:"enabledTime"`
+	// Reason for opening.
+	Reason pulumi.StringPtrInput `pulumi:"reason"`
+	// ON.
+	Status pulumi.StringPtrInput `pulumi:"status"`
+}
+
+func (LoadBalancerModificationProtectionConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LoadBalancerModificationProtectionConfig)(nil)).Elem()
+}
+
+func (i LoadBalancerModificationProtectionConfigArgs) ToLoadBalancerModificationProtectionConfigOutput() LoadBalancerModificationProtectionConfigOutput {
+	return i.ToLoadBalancerModificationProtectionConfigOutputWithContext(context.Background())
+}
+
+func (i LoadBalancerModificationProtectionConfigArgs) ToLoadBalancerModificationProtectionConfigOutputWithContext(ctx context.Context) LoadBalancerModificationProtectionConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoadBalancerModificationProtectionConfigOutput)
+}
+
+func (i LoadBalancerModificationProtectionConfigArgs) ToLoadBalancerModificationProtectionConfigPtrOutput() LoadBalancerModificationProtectionConfigPtrOutput {
+	return i.ToLoadBalancerModificationProtectionConfigPtrOutputWithContext(context.Background())
+}
+
+func (i LoadBalancerModificationProtectionConfigArgs) ToLoadBalancerModificationProtectionConfigPtrOutputWithContext(ctx context.Context) LoadBalancerModificationProtectionConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoadBalancerModificationProtectionConfigOutput).ToLoadBalancerModificationProtectionConfigPtrOutputWithContext(ctx)
+}
+
+// LoadBalancerModificationProtectionConfigPtrInput is an input type that accepts LoadBalancerModificationProtectionConfigArgs, LoadBalancerModificationProtectionConfigPtr and LoadBalancerModificationProtectionConfigPtrOutput values.
+// You can construct a concrete instance of `LoadBalancerModificationProtectionConfigPtrInput` via:
+//
+//	        LoadBalancerModificationProtectionConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type LoadBalancerModificationProtectionConfigPtrInput interface {
+	pulumi.Input
+
+	ToLoadBalancerModificationProtectionConfigPtrOutput() LoadBalancerModificationProtectionConfigPtrOutput
+	ToLoadBalancerModificationProtectionConfigPtrOutputWithContext(context.Context) LoadBalancerModificationProtectionConfigPtrOutput
+}
+
+type loadBalancerModificationProtectionConfigPtrType LoadBalancerModificationProtectionConfigArgs
+
+func LoadBalancerModificationProtectionConfigPtr(v *LoadBalancerModificationProtectionConfigArgs) LoadBalancerModificationProtectionConfigPtrInput {
+	return (*loadBalancerModificationProtectionConfigPtrType)(v)
+}
+
+func (*loadBalancerModificationProtectionConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**LoadBalancerModificationProtectionConfig)(nil)).Elem()
+}
+
+func (i *loadBalancerModificationProtectionConfigPtrType) ToLoadBalancerModificationProtectionConfigPtrOutput() LoadBalancerModificationProtectionConfigPtrOutput {
+	return i.ToLoadBalancerModificationProtectionConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *loadBalancerModificationProtectionConfigPtrType) ToLoadBalancerModificationProtectionConfigPtrOutputWithContext(ctx context.Context) LoadBalancerModificationProtectionConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoadBalancerModificationProtectionConfigPtrOutput)
+}
+
+type LoadBalancerModificationProtectionConfigOutput struct{ *pulumi.OutputState }
+
+func (LoadBalancerModificationProtectionConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LoadBalancerModificationProtectionConfig)(nil)).Elem()
+}
+
+func (o LoadBalancerModificationProtectionConfigOutput) ToLoadBalancerModificationProtectionConfigOutput() LoadBalancerModificationProtectionConfigOutput {
+	return o
+}
+
+func (o LoadBalancerModificationProtectionConfigOutput) ToLoadBalancerModificationProtectionConfigOutputWithContext(ctx context.Context) LoadBalancerModificationProtectionConfigOutput {
+	return o
+}
+
+func (o LoadBalancerModificationProtectionConfigOutput) ToLoadBalancerModificationProtectionConfigPtrOutput() LoadBalancerModificationProtectionConfigPtrOutput {
+	return o.ToLoadBalancerModificationProtectionConfigPtrOutputWithContext(context.Background())
+}
+
+func (o LoadBalancerModificationProtectionConfigOutput) ToLoadBalancerModificationProtectionConfigPtrOutputWithContext(ctx context.Context) LoadBalancerModificationProtectionConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LoadBalancerModificationProtectionConfig) *LoadBalancerModificationProtectionConfig {
+		return &v
+	}).(LoadBalancerModificationProtectionConfigPtrOutput)
+}
+
+// Opening time.
+func (o LoadBalancerModificationProtectionConfigOutput) EnabledTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LoadBalancerModificationProtectionConfig) *string { return v.EnabledTime }).(pulumi.StringPtrOutput)
+}
+
+// Reason for opening.
+func (o LoadBalancerModificationProtectionConfigOutput) Reason() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LoadBalancerModificationProtectionConfig) *string { return v.Reason }).(pulumi.StringPtrOutput)
+}
+
+// ON.
+func (o LoadBalancerModificationProtectionConfigOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LoadBalancerModificationProtectionConfig) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+type LoadBalancerModificationProtectionConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (LoadBalancerModificationProtectionConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LoadBalancerModificationProtectionConfig)(nil)).Elem()
+}
+
+func (o LoadBalancerModificationProtectionConfigPtrOutput) ToLoadBalancerModificationProtectionConfigPtrOutput() LoadBalancerModificationProtectionConfigPtrOutput {
+	return o
+}
+
+func (o LoadBalancerModificationProtectionConfigPtrOutput) ToLoadBalancerModificationProtectionConfigPtrOutputWithContext(ctx context.Context) LoadBalancerModificationProtectionConfigPtrOutput {
+	return o
+}
+
+func (o LoadBalancerModificationProtectionConfigPtrOutput) Elem() LoadBalancerModificationProtectionConfigOutput {
+	return o.ApplyT(func(v *LoadBalancerModificationProtectionConfig) LoadBalancerModificationProtectionConfig {
+		if v != nil {
+			return *v
+		}
+		var ret LoadBalancerModificationProtectionConfig
+		return ret
+	}).(LoadBalancerModificationProtectionConfigOutput)
+}
+
+// Opening time.
+func (o LoadBalancerModificationProtectionConfigPtrOutput) EnabledTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LoadBalancerModificationProtectionConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EnabledTime
+	}).(pulumi.StringPtrOutput)
+}
+
+// Reason for opening.
+func (o LoadBalancerModificationProtectionConfigPtrOutput) Reason() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LoadBalancerModificationProtectionConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Reason
+	}).(pulumi.StringPtrOutput)
+}
+
+// ON.
+func (o LoadBalancerModificationProtectionConfigPtrOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LoadBalancerModificationProtectionConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Status
+	}).(pulumi.StringPtrOutput)
+}
+
 type LoadBalancerZoneMapping struct {
-	// The ID of the EIP associated with the Internet-facing NLB instance.
+	// The ID of the elastic IP address.
 	AllocationId *string `pulumi:"allocationId"`
-	// The ID of the elastic network interface (ENI).
+	// The ID of ENI.
 	EniId *string `pulumi:"eniId"`
-	// The IPv6 address of the NLB instance.
+	// The IPv6 address of a network-based server load balancer instance.
 	Ipv6Address *string `pulumi:"ipv6Address"`
-	// The private IPv4 address of the NLB instance.
+	// The private IPv4 address of a network-based server load balancer instance.
 	PrivateIpv4Address *string `pulumi:"privateIpv4Address"`
-	// The public IPv4 address of the NLB instance.
+	// Public IPv4 address of a network-based server load balancer instance.
 	PublicIpv4Address *string `pulumi:"publicIpv4Address"`
-	// The vSwitch in the zone. You can specify only one vSwitch (subnet) in each zone of an NLB instance.
+	// Zone Status.
+	Status *string `pulumi:"status"`
+	// The switch corresponding to the zone. Each zone uses one switch and one subnet by default.
 	VswitchId string `pulumi:"vswitchId"`
-	// The ID of the zone of the NLB instance.
+	// The name of the zone. You can call the DescribeZones operation to obtain the name of the zone.
 	ZoneId string `pulumi:"zoneId"`
 }
 
@@ -42,19 +394,21 @@ type LoadBalancerZoneMappingInput interface {
 }
 
 type LoadBalancerZoneMappingArgs struct {
-	// The ID of the EIP associated with the Internet-facing NLB instance.
+	// The ID of the elastic IP address.
 	AllocationId pulumi.StringPtrInput `pulumi:"allocationId"`
-	// The ID of the elastic network interface (ENI).
+	// The ID of ENI.
 	EniId pulumi.StringPtrInput `pulumi:"eniId"`
-	// The IPv6 address of the NLB instance.
+	// The IPv6 address of a network-based server load balancer instance.
 	Ipv6Address pulumi.StringPtrInput `pulumi:"ipv6Address"`
-	// The private IPv4 address of the NLB instance.
+	// The private IPv4 address of a network-based server load balancer instance.
 	PrivateIpv4Address pulumi.StringPtrInput `pulumi:"privateIpv4Address"`
-	// The public IPv4 address of the NLB instance.
+	// Public IPv4 address of a network-based server load balancer instance.
 	PublicIpv4Address pulumi.StringPtrInput `pulumi:"publicIpv4Address"`
-	// The vSwitch in the zone. You can specify only one vSwitch (subnet) in each zone of an NLB instance.
+	// Zone Status.
+	Status pulumi.StringPtrInput `pulumi:"status"`
+	// The switch corresponding to the zone. Each zone uses one switch and one subnet by default.
 	VswitchId pulumi.StringInput `pulumi:"vswitchId"`
-	// The ID of the zone of the NLB instance.
+	// The name of the zone. You can call the DescribeZones operation to obtain the name of the zone.
 	ZoneId pulumi.StringInput `pulumi:"zoneId"`
 }
 
@@ -109,37 +463,42 @@ func (o LoadBalancerZoneMappingOutput) ToLoadBalancerZoneMappingOutputWithContex
 	return o
 }
 
-// The ID of the EIP associated with the Internet-facing NLB instance.
+// The ID of the elastic IP address.
 func (o LoadBalancerZoneMappingOutput) AllocationId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LoadBalancerZoneMapping) *string { return v.AllocationId }).(pulumi.StringPtrOutput)
 }
 
-// The ID of the elastic network interface (ENI).
+// The ID of ENI.
 func (o LoadBalancerZoneMappingOutput) EniId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LoadBalancerZoneMapping) *string { return v.EniId }).(pulumi.StringPtrOutput)
 }
 
-// The IPv6 address of the NLB instance.
+// The IPv6 address of a network-based server load balancer instance.
 func (o LoadBalancerZoneMappingOutput) Ipv6Address() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LoadBalancerZoneMapping) *string { return v.Ipv6Address }).(pulumi.StringPtrOutput)
 }
 
-// The private IPv4 address of the NLB instance.
+// The private IPv4 address of a network-based server load balancer instance.
 func (o LoadBalancerZoneMappingOutput) PrivateIpv4Address() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LoadBalancerZoneMapping) *string { return v.PrivateIpv4Address }).(pulumi.StringPtrOutput)
 }
 
-// The public IPv4 address of the NLB instance.
+// Public IPv4 address of a network-based server load balancer instance.
 func (o LoadBalancerZoneMappingOutput) PublicIpv4Address() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LoadBalancerZoneMapping) *string { return v.PublicIpv4Address }).(pulumi.StringPtrOutput)
 }
 
-// The vSwitch in the zone. You can specify only one vSwitch (subnet) in each zone of an NLB instance.
+// Zone Status.
+func (o LoadBalancerZoneMappingOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LoadBalancerZoneMapping) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+// The switch corresponding to the zone. Each zone uses one switch and one subnet by default.
 func (o LoadBalancerZoneMappingOutput) VswitchId() pulumi.StringOutput {
 	return o.ApplyT(func(v LoadBalancerZoneMapping) string { return v.VswitchId }).(pulumi.StringOutput)
 }
 
-// The ID of the zone of the NLB instance.
+// The name of the zone. You can call the DescribeZones operation to obtain the name of the zone.
 func (o LoadBalancerZoneMappingOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v LoadBalancerZoneMapping) string { return v.ZoneId }).(pulumi.StringOutput)
 }
@@ -2180,6 +2539,10 @@ func (o GetZonesZoneArrayOutput) Index(i pulumi.IntInput) GetZonesZoneOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*LoadBalancerDeletionProtectionConfigInput)(nil)).Elem(), LoadBalancerDeletionProtectionConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LoadBalancerDeletionProtectionConfigPtrInput)(nil)).Elem(), LoadBalancerDeletionProtectionConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LoadBalancerModificationProtectionConfigInput)(nil)).Elem(), LoadBalancerModificationProtectionConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LoadBalancerModificationProtectionConfigPtrInput)(nil)).Elem(), LoadBalancerModificationProtectionConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LoadBalancerZoneMappingInput)(nil)).Elem(), LoadBalancerZoneMappingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LoadBalancerZoneMappingArrayInput)(nil)).Elem(), LoadBalancerZoneMappingArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServerGroupHealthCheckInput)(nil)).Elem(), ServerGroupHealthCheckArgs{})
@@ -2202,6 +2565,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServerGroupsGroupHealthCheckArrayInput)(nil)).Elem(), GetServerGroupsGroupHealthCheckArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetZonesZoneInput)(nil)).Elem(), GetZonesZoneArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetZonesZoneArrayInput)(nil)).Elem(), GetZonesZoneArray{})
+	pulumi.RegisterOutputType(LoadBalancerDeletionProtectionConfigOutput{})
+	pulumi.RegisterOutputType(LoadBalancerDeletionProtectionConfigPtrOutput{})
+	pulumi.RegisterOutputType(LoadBalancerModificationProtectionConfigOutput{})
+	pulumi.RegisterOutputType(LoadBalancerModificationProtectionConfigPtrOutput{})
 	pulumi.RegisterOutputType(LoadBalancerZoneMappingOutput{})
 	pulumi.RegisterOutputType(LoadBalancerZoneMappingArrayOutput{})
 	pulumi.RegisterOutputType(ServerGroupHealthCheckOutput{})

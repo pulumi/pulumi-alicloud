@@ -561,6 +561,36 @@ class Instance(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.210.0.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default_networks = alicloud.vpc.get_networks(name_regex="^default-NODELETING$",
+            cidr_block="172.16.0.0/16")
+        default_switches = alicloud.vpc.get_switches(vpc_id=default_networks.ids[0],
+            zone_id="cn-hangzhou-k")
+        default_instance = alicloud.kms.Instance("defaultInstance",
+            product_version="3",
+            vpc_id=default_networks.ids[0],
+            zone_ids=[
+                "cn-hangzhou-k",
+                "cn-hangzhou-j",
+            ],
+            vswitch_ids=[default_switches.ids[0]],
+            vpc_num=1,
+            key_num=1000,
+            secret_num=0,
+            spec=1000)
+        ```
+
         ## Import
 
         KMS Instance can be imported using the id, e.g.
@@ -598,6 +628,36 @@ class Instance(pulumi.CustomResource):
         For information about KMS Instance and how to use it, see [What is Instance](https://www.alibabacloud.com/help/zh/key-management-service/latest/kms-instance-management).
 
         > **NOTE:** Available since v1.210.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default_networks = alicloud.vpc.get_networks(name_regex="^default-NODELETING$",
+            cidr_block="172.16.0.0/16")
+        default_switches = alicloud.vpc.get_switches(vpc_id=default_networks.ids[0],
+            zone_id="cn-hangzhou-k")
+        default_instance = alicloud.kms.Instance("defaultInstance",
+            product_version="3",
+            vpc_id=default_networks.ids[0],
+            zone_ids=[
+                "cn-hangzhou-k",
+                "cn-hangzhou-j",
+            ],
+            vswitch_ids=[default_switches.ids[0]],
+            vpc_num=1,
+            key_num=1000,
+            secret_num=0,
+            spec=1000)
+        ```
 
         ## Import
 

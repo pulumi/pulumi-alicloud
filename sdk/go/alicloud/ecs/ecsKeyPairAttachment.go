@@ -27,9 +27,12 @@ import (
 //
 // import (
 //
+//	"fmt"
+//
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -93,8 +96,17 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			_, err = random.NewRandomInteger(ctx, "default", &random.RandomIntegerArgs{
+//				Min: pulumi.Int(10000),
+//				Max: pulumi.Int(99999),
+//			})
+//			if err != nil {
+//				return err
+//			}
 //			exampleEcsKeyPair, err := ecs.NewEcsKeyPair(ctx, "exampleEcsKeyPair", &ecs.EcsKeyPairArgs{
-//				KeyPairName: pulumi.String("tf-example"),
+//				KeyPairName: _default.Result.ApplyT(func(result int) (string, error) {
+//					return fmt.Sprintf("tf-example-%v", result), nil
+//				}).(pulumi.StringOutput),
 //			})
 //			if err != nil {
 //				return err

@@ -19,7 +19,7 @@ import javax.annotation.Nullable;
  * 
  * For information about Serverless Workflow Execution and how to use it, see [What is Execution](https://www.alibabacloud.com/help/en/doc-detail/122628.html).
  * 
- * &gt; **NOTE:** Available in v1.149.0+.
+ * &gt; **NOTE:** Available since v1.149.0+.
  * 
  * ## Example Usage
  * 
@@ -50,7 +50,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-testacc-fnfflow&#34;);
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example-fnfflow&#34;);
  *         var defaultRole = new Role(&#34;defaultRole&#34;, RoleArgs.builder()        
  *             .document(&#34;&#34;&#34;
  *   {

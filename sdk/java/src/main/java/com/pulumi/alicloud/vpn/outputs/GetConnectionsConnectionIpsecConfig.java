@@ -13,50 +13,50 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetConnectionsConnectionIpsecConfig {
     /**
-     * @return The authentication algorithm of phase-two negotiation.
+     * @return IPsec Auth algorithm.
      * 
      */
     private @Nullable String ipsecAuthAlg;
     /**
-     * @return The encryption algorithm of phase-two negotiation.
+     * @return IPsec Encript algorithm.
      * 
      */
     private @Nullable String ipsecEncAlg;
     /**
-     * @return The SA lifecycle as the result of phase-two negotiation.
+     * @return IPsec lifetime.
      * 
      */
     private @Nullable Integer ipsecLifetime;
     /**
-     * @return The Diffie-Hellman key exchange algorithm used by phase-two negotiation.
+     * @return DH Group.
      * 
      */
     private @Nullable String ipsecPfs;
 
     private GetConnectionsConnectionIpsecConfig() {}
     /**
-     * @return The authentication algorithm of phase-two negotiation.
+     * @return IPsec Auth algorithm.
      * 
      */
     public Optional<String> ipsecAuthAlg() {
         return Optional.ofNullable(this.ipsecAuthAlg);
     }
     /**
-     * @return The encryption algorithm of phase-two negotiation.
+     * @return IPsec Encript algorithm.
      * 
      */
     public Optional<String> ipsecEncAlg() {
         return Optional.ofNullable(this.ipsecEncAlg);
     }
     /**
-     * @return The SA lifecycle as the result of phase-two negotiation.
+     * @return IPsec lifetime.
      * 
      */
     public Optional<Integer> ipsecLifetime() {
         return Optional.ofNullable(this.ipsecLifetime);
     }
     /**
-     * @return The Diffie-Hellman key exchange algorithm used by phase-two negotiation.
+     * @return DH Group.
      * 
      */
     public Optional<String> ipsecPfs() {

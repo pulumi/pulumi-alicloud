@@ -25,6 +25,7 @@ namespace Pulumi.AliCloud.Eds
     /// using System.Linq;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
+    /// using Random = Pulumi.Random;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
@@ -46,9 +47,15 @@ namespace Pulumi.AliCloud.Eds
     ///         VswitchName = name,
     ///     });
     /// 
+    ///     var defaultRandomInteger = new Random.RandomInteger("defaultRandomInteger", new()
+    ///     {
+    ///         Min = 10000,
+    ///         Max = 99999,
+    ///     });
+    /// 
     ///     var defaultAdConnectorDirectory = new AliCloud.Eds.AdConnectorDirectory("defaultAdConnectorDirectory", new()
     ///     {
-    ///         DirectoryName = name,
+    ///         DirectoryName = defaultRandomInteger.Result.Apply(result =&gt; $"{name}-{result}"),
     ///         DesktopAccessType = "INTERNET",
     ///         DnsAddresses = new[]
     ///         {

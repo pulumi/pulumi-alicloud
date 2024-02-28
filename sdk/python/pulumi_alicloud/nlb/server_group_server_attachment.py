@@ -14,47 +14,36 @@ __all__ = ['ServerGroupServerAttachmentArgs', 'ServerGroupServerAttachment']
 @pulumi.input_type
 class ServerGroupServerAttachmentArgs:
     def __init__(__self__, *,
-                 port: pulumi.Input[int],
                  server_group_id: pulumi.Input[str],
                  server_id: pulumi.Input[str],
                  server_type: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
+                 port: Optional[pulumi.Input[int]] = None,
                  server_ip: Optional[pulumi.Input[str]] = None,
                  weight: Optional[pulumi.Input[int]] = None):
         """
         The set of arguments for constructing a ServerGroupServerAttachment resource.
-        :param pulumi.Input[int] port: The port used by the backend server. Valid values: 1 to 65535.
         :param pulumi.Input[str] server_group_id: The ID of the server group.
         :param pulumi.Input[str] server_id: The ID of the server.
                - If the server group type is Instance, set the ServerId parameter to the ID of an Elastic Compute Service (ECS) instance, an elastic network interface (ENI), or an elastic container instance. These backend servers are specified by Ecs, Eni, or Eci.
                - If the server group type is Ip, set the ServerId parameter to an IP address.
         :param pulumi.Input[str] server_type: The type of the backend server. Valid values: `Ecs`, `Eni`, `Eci`, `Ip`.
         :param pulumi.Input[str] description: The description of the servers. The description must be 2 to 256 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs (@), underscores (_), and hyphens (-).
+        :param pulumi.Input[int] port: The port used by the backend server. Valid values: 1 to 65535.
         :param pulumi.Input[str] server_ip: The IP address of the server. If the server group type is Ip, set the ServerId parameter to an IP address.
         :param pulumi.Input[int] weight: The weight of the backend server. Valid values: 0 to 100. Default value: 100. If the weight of a backend server is set to 0, no requests are forwarded to the backend server.
         """
-        pulumi.set(__self__, "port", port)
         pulumi.set(__self__, "server_group_id", server_group_id)
         pulumi.set(__self__, "server_id", server_id)
         pulumi.set(__self__, "server_type", server_type)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if port is not None:
+            pulumi.set(__self__, "port", port)
         if server_ip is not None:
             pulumi.set(__self__, "server_ip", server_ip)
         if weight is not None:
             pulumi.set(__self__, "weight", weight)
-
-    @property
-    @pulumi.getter
-    def port(self) -> pulumi.Input[int]:
-        """
-        The port used by the backend server. Valid values: 1 to 65535.
-        """
-        return pulumi.get(self, "port")
-
-    @port.setter
-    def port(self, value: pulumi.Input[int]):
-        pulumi.set(self, "port", value)
 
     @property
     @pulumi.getter(name="serverGroupId")
@@ -107,6 +96,18 @@ class ServerGroupServerAttachmentArgs:
         pulumi.set(self, "description", value)
 
     @property
+    @pulumi.getter
+    def port(self) -> Optional[pulumi.Input[int]]:
+        """
+        The port used by the backend server. Valid values: 1 to 65535.
+        """
+        return pulumi.get(self, "port")
+
+    @port.setter
+    def port(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "port", value)
+
+    @property
     @pulumi.getter(name="serverIp")
     def server_ip(self) -> Optional[pulumi.Input[str]]:
         """
@@ -153,7 +154,7 @@ class _ServerGroupServerAttachmentState:
                - If the server group type is Ip, set the ServerId parameter to an IP address.
         :param pulumi.Input[str] server_ip: The IP address of the server. If the server group type is Ip, set the ServerId parameter to an IP address.
         :param pulumi.Input[str] server_type: The type of the backend server. Valid values: `Ecs`, `Eni`, `Eci`, `Ip`.
-        :param pulumi.Input[str] status: Status of the server.
+        :param pulumi.Input[str] status: The status of the resource.
         :param pulumi.Input[int] weight: The weight of the backend server. Valid values: 0 to 100. Default value: 100. If the weight of a backend server is set to 0, no requests are forwarded to the backend server.
         :param pulumi.Input[str] zone_id: The zoneId of the server.
         """
@@ -254,7 +255,7 @@ class _ServerGroupServerAttachmentState:
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[str]]:
         """
-        Status of the server.
+        The status of the resource.
         """
         return pulumi.get(self, "status")
 
@@ -454,8 +455,6 @@ class ServerGroupServerAttachment(pulumi.CustomResource):
             __props__ = ServerGroupServerAttachmentArgs.__new__(ServerGroupServerAttachmentArgs)
 
             __props__.__dict__["description"] = description
-            if port is None and not opts.urn:
-                raise TypeError("Missing required property 'port'")
             __props__.__dict__["port"] = port
             if server_group_id is None and not opts.urn:
                 raise TypeError("Missing required property 'server_group_id'")
@@ -504,7 +503,7 @@ class ServerGroupServerAttachment(pulumi.CustomResource):
                - If the server group type is Ip, set the ServerId parameter to an IP address.
         :param pulumi.Input[str] server_ip: The IP address of the server. If the server group type is Ip, set the ServerId parameter to an IP address.
         :param pulumi.Input[str] server_type: The type of the backend server. Valid values: `Ecs`, `Eni`, `Eci`, `Ip`.
-        :param pulumi.Input[str] status: Status of the server.
+        :param pulumi.Input[str] status: The status of the resource.
         :param pulumi.Input[int] weight: The weight of the backend server. Valid values: 0 to 100. Default value: 100. If the weight of a backend server is set to 0, no requests are forwarded to the backend server.
         :param pulumi.Input[str] zone_id: The zoneId of the server.
         """
@@ -577,7 +576,7 @@ class ServerGroupServerAttachment(pulumi.CustomResource):
     @pulumi.getter
     def status(self) -> pulumi.Output[str]:
         """
-        Status of the server.
+        The status of the resource.
         """
         return pulumi.get(self, "status")
 

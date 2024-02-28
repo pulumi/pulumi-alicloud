@@ -95,12 +95,12 @@ class Domain(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
-        config = pulumi.Config()
-        domain_name = config.get("domainName")
-        if domain_name is None:
-            domain_name = "alicloud-provider.online"
-        example = alicloud.directmail.Domain("example", domain_name=domain_name)
+        default = random.RandomInteger("default",
+            max=99999,
+            min=10000)
+        example = alicloud.directmail.Domain("example", domain_name=default.result.apply(lambda result: f"alicloud-provider-{result}.online"))
         ```
 
         ## Import
@@ -135,12 +135,12 @@ class Domain(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
-        config = pulumi.Config()
-        domain_name = config.get("domainName")
-        if domain_name is None:
-            domain_name = "alicloud-provider.online"
-        example = alicloud.directmail.Domain("example", domain_name=domain_name)
+        default = random.RandomInteger("default",
+            max=99999,
+            min=10000)
+        example = alicloud.directmail.Domain("example", domain_name=default.result.apply(lambda result: f"alicloud-provider-{result}.online"))
         ```
 
         ## Import

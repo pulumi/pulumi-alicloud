@@ -33,6 +33,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.random.RandomInteger;
+ * import com.pulumi.random.RandomIntegerArgs;
  * import com.pulumi.alicloud.dcdn.WafPolicy;
  * import com.pulumi.alicloud.dcdn.WafPolicyArgs;
  * import com.pulumi.alicloud.dcdn.WafRule;
@@ -55,9 +57,14 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf_example&#34;);
+ *         var default_ = new RandomInteger(&#34;default&#34;, RandomIntegerArgs.builder()        
+ *             .min(10000)
+ *             .max(99999)
+ *             .build());
+ * 
  *         var exampleWafPolicy = new WafPolicy(&#34;exampleWafPolicy&#34;, WafPolicyArgs.builder()        
  *             .defenseScene(&#34;waf_group&#34;)
- *             .policyName(name)
+ *             .policyName(default_.result().applyValue(result -&gt; String.format(&#34;%s_%s&#34;, name,result)))
  *             .policyType(&#34;custom&#34;)
  *             .status(&#34;on&#34;)
  *             .build());
@@ -78,9 +85,7 @@ import javax.annotation.Nullable;
  *                     .values(&#34;b&#34;)
  *                     .build())
  *             .status(&#34;on&#34;)
- *             .ccStatus(&#34;on&#34;)
  *             .action(&#34;monitor&#34;)
- *             .effect(&#34;rule&#34;)
  *             .rateLimit(WafRuleRateLimitArgs.builder()
  *                 .target(&#34;IP&#34;)
  *                 .interval(&#34;5&#34;)

@@ -124,7 +124,7 @@ class Alias(pulumi.CustomResource):
         """
         Create an alias for the master key (CMK).
 
-        > **NOTE:** Available in v1.77.0+.
+        > **NOTE:** Available since v1.77.0+.
 
         ## Example Usage
 
@@ -134,9 +134,9 @@ class Alias(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        this_key = alicloud.kms.Key("thisKey")
+        this_key = alicloud.kms.Key("thisKey", pending_window_in_days=7)
         this_alias = alicloud.kms.Alias("thisAlias",
-            alias_name="alias/test_kms_alias",
+            alias_name="alias/example_kms_alias",
             key_id=this_key.id)
         ```
 
@@ -168,7 +168,7 @@ class Alias(pulumi.CustomResource):
         """
         Create an alias for the master key (CMK).
 
-        > **NOTE:** Available in v1.77.0+.
+        > **NOTE:** Available since v1.77.0+.
 
         ## Example Usage
 
@@ -178,9 +178,9 @@ class Alias(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        this_key = alicloud.kms.Key("thisKey")
+        this_key = alicloud.kms.Key("thisKey", pending_window_in_days=7)
         this_alias = alicloud.kms.Alias("thisAlias",
-            alias_name="alias/test_kms_alias",
+            alias_name="alias/example_kms_alias",
             key_id=this_key.id)
         ```
 

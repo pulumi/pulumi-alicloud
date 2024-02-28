@@ -266,7 +266,7 @@ class App(pulumi.CustomResource):
 
         For information about MHUB App and how to use it, see [What is App](https://help.aliyun.com/product/65109.html).
 
-        > **NOTE:** Available in v1.138.0+.
+        > **NOTE:** Available since v1.138.0+.
 
         > **NOTE:** At present, the resource only supports cn-shanghai region.
 
@@ -286,7 +286,7 @@ class App(pulumi.CustomResource):
         default_app = alicloud.mhub.App("defaultApp",
             app_name=name,
             product_id=default_product.id,
-            package_name="com.test.android",
+            package_name="com.example.android",
             type="Android")
         ```
 
@@ -319,7 +319,7 @@ class App(pulumi.CustomResource):
 
         For information about MHUB App and how to use it, see [What is App](https://help.aliyun.com/product/65109.html).
 
-        > **NOTE:** Available in v1.138.0+.
+        > **NOTE:** Available since v1.138.0+.
 
         > **NOTE:** At present, the resource only supports cn-shanghai region.
 
@@ -339,7 +339,7 @@ class App(pulumi.CustomResource):
         default_app = alicloud.mhub.App("defaultApp",
             app_name=name,
             product_id=default_product.id,
-            package_name="com.test.android",
+            package_name="com.example.android",
             type="Android")
         ```
 

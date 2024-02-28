@@ -295,6 +295,21 @@ public final class GatewayState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The IP address of the SSL-VPN connection. This parameter is returned only when the VPN gateway is a public VPN gateway and supports only the single-tunnel mode. In addition, the VPN gateway must have the SSL-VPN feature enabled.
+     * 
+     */
+    @Import(name="sslVpnInternetIp")
+    private @Nullable Output<String> sslVpnInternetIp;
+
+    /**
+     * @return The IP address of the SSL-VPN connection. This parameter is returned only when the VPN gateway is a public VPN gateway and supports only the single-tunnel mode. In addition, the VPN gateway must have the SSL-VPN feature enabled.
+     * 
+     */
+    public Optional<Output<String>> sslVpnInternetIp() {
+        return Optional.ofNullable(this.sslVpnInternetIp);
+    }
+
+    /**
      * The status of the resource.
      * 
      */
@@ -404,6 +419,7 @@ public final class GatewayState extends com.pulumi.resources.ResourceArgs {
         this.period = $.period;
         this.resourceGroupId = $.resourceGroupId;
         this.sslConnections = $.sslConnections;
+        this.sslVpnInternetIp = $.sslVpnInternetIp;
         this.status = $.status;
         this.tags = $.tags;
         this.vpcId = $.vpcId;
@@ -805,6 +821,27 @@ public final class GatewayState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder sslConnections(Integer sslConnections) {
             return sslConnections(Output.of(sslConnections));
+        }
+
+        /**
+         * @param sslVpnInternetIp The IP address of the SSL-VPN connection. This parameter is returned only when the VPN gateway is a public VPN gateway and supports only the single-tunnel mode. In addition, the VPN gateway must have the SSL-VPN feature enabled.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sslVpnInternetIp(@Nullable Output<String> sslVpnInternetIp) {
+            $.sslVpnInternetIp = sslVpnInternetIp;
+            return this;
+        }
+
+        /**
+         * @param sslVpnInternetIp The IP address of the SSL-VPN connection. This parameter is returned only when the VPN gateway is a public VPN gateway and supports only the single-tunnel mode. In addition, the VPN gateway must have the SSL-VPN feature enabled.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sslVpnInternetIp(String sslVpnInternetIp) {
+            return sslVpnInternetIp(Output.of(sslVpnInternetIp));
         }
 
         /**

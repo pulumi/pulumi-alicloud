@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
  *
  * For information about DMS Enterprise Proxy Access and how to use it, see [What is Proxy Access](https://next.api.alibabacloud.com/document/dms-enterprise/2018-11-01/CreateProxyAccess).
  *
- * > **NOTE:** Available in v1.195.0+.
+ * > **NOTE:** Available since v1.195.0+.
  *
  * ## Example Usage
  *
@@ -19,11 +19,14 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
+ * const dmsEnterpriseUsersDs = alicloud.dms.getEnterpriseUsers({
+ *     role: "USER",
+ *     status: "NORMAL",
+ * });
+ * const ids = alicloud.dms.getEnterpriseProxies({});
  * const _default = new alicloud.dms.EnterpriseProxyAccess("default", {
- *     indepAccount: "dmstest",
- *     indepPassword: "PASSWORD-DEMO",
- *     proxyId: "1881",
- *     userId: "104442",
+ *     proxyId: ids.then(ids => ids.proxies?.[0]?.id),
+ *     userId: dmsEnterpriseUsersDs.then(dmsEnterpriseUsersDs => dmsEnterpriseUsersDs.users?.[0]?.userId),
  * });
  * ```
  *

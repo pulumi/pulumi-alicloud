@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
  *
  * For information about MHUB Product and how to use it, see [What is Product](https://help.aliyun.com/product/65109.html).
  *
- * > **NOTE:** Available in v1.138.0+.
+ * > **NOTE:** Available since v1.138.0+.
  *
  * > **NOTE:** At present, the resource only supports cn-shanghai region.
  *

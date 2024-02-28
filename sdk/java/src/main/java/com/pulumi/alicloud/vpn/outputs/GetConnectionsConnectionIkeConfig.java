@@ -13,17 +13,17 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetConnectionsConnectionIkeConfig {
     /**
-     * @return The authentication algorithm of phase-one negotiation.
+     * @return IKE auth Algorithm.
      * 
      */
     private @Nullable String ikeAuthAlg;
     /**
-     * @return The encryption algorithm of phase-one negotiation.
+     * @return IKE encript algorithm.
      * 
      */
     private @Nullable String ikeEncAlg;
     /**
-     * @return The SA lifecycle as the result of phase-one negotiation.
+     * @return IKE lifetime.
      * 
      */
     private @Nullable Integer ikeLifetime;
@@ -33,12 +33,12 @@ public final class GetConnectionsConnectionIkeConfig {
      */
     private @Nullable String ikeLocalId;
     /**
-     * @return The negotiation mode of IKE phase-one.
+     * @return IKE Mode.
      * 
      */
     private @Nullable String ikeMode;
     /**
-     * @return The Diffie-Hellman key exchange algorithm used by phase-one negotiation.
+     * @return DH Group.
      * 
      */
     private @Nullable String ikePfs;
@@ -48,33 +48,33 @@ public final class GetConnectionsConnectionIkeConfig {
      */
     private @Nullable String ikeRemoteId;
     /**
-     * @return The version of the IKE protocol.
+     * @return IKE Version.
      * 
      */
     private @Nullable String ikeVersion;
     /**
-     * @return Used for authentication between the IPsec VPN gateway and the customer gateway.
+     * @return Preshared secret key.
      * 
      */
     private @Nullable String psk;
 
     private GetConnectionsConnectionIkeConfig() {}
     /**
-     * @return The authentication algorithm of phase-one negotiation.
+     * @return IKE auth Algorithm.
      * 
      */
     public Optional<String> ikeAuthAlg() {
         return Optional.ofNullable(this.ikeAuthAlg);
     }
     /**
-     * @return The encryption algorithm of phase-one negotiation.
+     * @return IKE encript algorithm.
      * 
      */
     public Optional<String> ikeEncAlg() {
         return Optional.ofNullable(this.ikeEncAlg);
     }
     /**
-     * @return The SA lifecycle as the result of phase-one negotiation.
+     * @return IKE lifetime.
      * 
      */
     public Optional<Integer> ikeLifetime() {
@@ -88,14 +88,14 @@ public final class GetConnectionsConnectionIkeConfig {
         return Optional.ofNullable(this.ikeLocalId);
     }
     /**
-     * @return The negotiation mode of IKE phase-one.
+     * @return IKE Mode.
      * 
      */
     public Optional<String> ikeMode() {
         return Optional.ofNullable(this.ikeMode);
     }
     /**
-     * @return The Diffie-Hellman key exchange algorithm used by phase-one negotiation.
+     * @return DH Group.
      * 
      */
     public Optional<String> ikePfs() {
@@ -109,14 +109,14 @@ public final class GetConnectionsConnectionIkeConfig {
         return Optional.ofNullable(this.ikeRemoteId);
     }
     /**
-     * @return The version of the IKE protocol.
+     * @return IKE Version.
      * 
      */
     public Optional<String> ikeVersion() {
         return Optional.ofNullable(this.ikeVersion);
     }
     /**
-     * @return Used for authentication between the IPsec VPN gateway and the customer gateway.
+     * @return Preshared secret key.
      * 
      */
     public Optional<String> psk() {

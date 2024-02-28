@@ -189,7 +189,7 @@ export class LoadBalancer extends pulumi.CustomResource {
     /**
      * A mapping of tags to assign to the resource. The `tags` can have a maximum of 10 tag for every load balancer instance.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly tags!: pulumi.Output<{[key: string]: any}>;
     /**
      * The VSwitch ID to launch in. If `addressType` is internet, it will be ignore.
      */

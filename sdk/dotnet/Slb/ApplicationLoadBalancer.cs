@@ -137,10 +137,10 @@ namespace Pulumi.AliCloud.Slb
         public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
-        /// A mapping of tags to assign to the resource. The `tags` can have a maximum of 10 tag for every load balancer instance.
+        /// A mapping of tags to assign to the resource. The `tags` can have a maximum of 10 tag for every load balancer instance. This filed mark as `Computed` since v1.217.1.
         /// </summary>
         [Output("tags")]
-        public Output<ImmutableDictionary<string, object>?> Tags { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, object>> Tags { get; private set; } = null!;
 
         /// <summary>
         /// The VSwitch ID to launch in. **Note:** Required for a VPC SLB. If `address_type` is internet, it will be ignored.
@@ -313,7 +313,7 @@ namespace Pulumi.AliCloud.Slb
         private InputMap<object>? _tags;
 
         /// <summary>
-        /// A mapping of tags to assign to the resource. The `tags` can have a maximum of 10 tag for every load balancer instance.
+        /// A mapping of tags to assign to the resource. The `tags` can have a maximum of 10 tag for every load balancer instance. This filed mark as `Computed` since v1.217.1.
         /// </summary>
         public InputMap<object> Tags
         {
@@ -454,7 +454,7 @@ namespace Pulumi.AliCloud.Slb
         private InputMap<object>? _tags;
 
         /// <summary>
-        /// A mapping of tags to assign to the resource. The `tags` can have a maximum of 10 tag for every load balancer instance.
+        /// A mapping of tags to assign to the resource. The `tags` can have a maximum of 10 tag for every load balancer instance. This filed mark as `Computed` since v1.217.1.
         /// </summary>
         public InputMap<object> Tags
         {

@@ -27,8 +27,9 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			key, err := kms.NewKey(ctx, "key", &kms.KeyArgs{
-//				Description: pulumi.String("example key"),
-//				IsEnabled:   pulumi.Bool(true),
+//				Description:         pulumi.String("example key"),
+//				Status:              pulumi.String("Enabled"),
+//				PendingWindowInDays: pulumi.Int(7),
 //			})
 //			if err != nil {
 //				return err

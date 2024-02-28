@@ -395,7 +395,7 @@ class OssBackupPlan(pulumi.CustomResource):
 
         For information about HBR Oss Backup Plan and how to use it, see [What is Oss Backup Plan](https://www.alibabacloud.com/help/doc-detail/130040.htm).
 
-        > **NOTE:** Available in v1.131.0+.
+        > **NOTE:** Available since v1.131.0+.
 
         ## Example Usage
 
@@ -413,7 +413,7 @@ class OssBackupPlan(pulumi.CustomResource):
         default_bucket = alicloud.oss.Bucket("defaultBucket", bucket=default_random_integer.result.apply(lambda result: f"terraform-example-{result}"))
         default_oss_backup_plan = alicloud.hbr.OssBackupPlan("defaultOssBackupPlan",
             oss_backup_plan_name="terraform-example",
-            prefix="/",
+            prefix="/example",
             bucket=default_bucket.bucket,
             vault_id=default_vault.id,
             schedule="I|1602673264|PT2H",
@@ -454,7 +454,7 @@ class OssBackupPlan(pulumi.CustomResource):
 
         For information about HBR Oss Backup Plan and how to use it, see [What is Oss Backup Plan](https://www.alibabacloud.com/help/doc-detail/130040.htm).
 
-        > **NOTE:** Available in v1.131.0+.
+        > **NOTE:** Available since v1.131.0+.
 
         ## Example Usage
 
@@ -472,7 +472,7 @@ class OssBackupPlan(pulumi.CustomResource):
         default_bucket = alicloud.oss.Bucket("defaultBucket", bucket=default_random_integer.result.apply(lambda result: f"terraform-example-{result}"))
         default_oss_backup_plan = alicloud.hbr.OssBackupPlan("defaultOssBackupPlan",
             oss_backup_plan_name="terraform-example",
-            prefix="/",
+            prefix="/example",
             bucket=default_bucket.bucket,
             vault_id=default_vault.id,
             schedule="I|1602673264|PT2H",

@@ -17,14 +17,18 @@ public final class LoadBalancerSecurityGroupAttachmentState extends com.pulumi.r
     public static final LoadBalancerSecurityGroupAttachmentState Empty = new LoadBalancerSecurityGroupAttachmentState();
 
     /**
-     * Whether to PreCheck this request only. Value:-**true**: sends a check request and does not bind a security group to the instance. Check items include whether required parameters, request format, and business restrictions have been filled in. If the check fails, the corresponding error is returned. If the check passes, the error code &#39;DryRunOperation&#39; is returned &#39;.-**false** (default): Sends a normal request, returns the HTTP 2xx status code after the check, and directly performs the operation.
+     * Whether to PreCheck this request only. Value:
+     * - **true**: sends a check request and does not bind a security group to the instance. Check items include whether required parameters, request format, and business restrictions have been filled in. If the check fails, the corresponding error is returned. If the check passes, the error code &#39;DryRunOperation&#39; is returned &#39;.
+     * - **false** (default): Sends a normal request, returns the HTTP 2xx status code after the check, and directly performs the operation.
      * 
      */
     @Import(name="dryRun")
     private @Nullable Output<Boolean> dryRun;
 
     /**
-     * @return Whether to PreCheck this request only. Value:-**true**: sends a check request and does not bind a security group to the instance. Check items include whether required parameters, request format, and business restrictions have been filled in. If the check fails, the corresponding error is returned. If the check passes, the error code &#39;DryRunOperation&#39; is returned &#39;.-**false** (default): Sends a normal request, returns the HTTP 2xx status code after the check, and directly performs the operation.
+     * @return Whether to PreCheck this request only. Value:
+     * - **true**: sends a check request and does not bind a security group to the instance. Check items include whether required parameters, request format, and business restrictions have been filled in. If the check fails, the corresponding error is returned. If the check passes, the error code &#39;DryRunOperation&#39; is returned &#39;.
+     * - **false** (default): Sends a normal request, returns the HTTP 2xx status code after the check, and directly performs the operation.
      * 
      */
     public Optional<Output<Boolean>> dryRun() {
@@ -47,14 +51,14 @@ public final class LoadBalancerSecurityGroupAttachmentState extends com.pulumi.r
     }
 
     /**
-     * The ID of security groups.
+     * The ID of the security group.
      * 
      */
     @Import(name="securityGroupId")
     private @Nullable Output<String> securityGroupId;
 
     /**
-     * @return The ID of security groups.
+     * @return The ID of the security group.
      * 
      */
     public Optional<Output<String>> securityGroupId() {
@@ -88,7 +92,9 @@ public final class LoadBalancerSecurityGroupAttachmentState extends com.pulumi.r
         }
 
         /**
-         * @param dryRun Whether to PreCheck this request only. Value:-**true**: sends a check request and does not bind a security group to the instance. Check items include whether required parameters, request format, and business restrictions have been filled in. If the check fails, the corresponding error is returned. If the check passes, the error code &#39;DryRunOperation&#39; is returned &#39;.-**false** (default): Sends a normal request, returns the HTTP 2xx status code after the check, and directly performs the operation.
+         * @param dryRun Whether to PreCheck this request only. Value:
+         * - **true**: sends a check request and does not bind a security group to the instance. Check items include whether required parameters, request format, and business restrictions have been filled in. If the check fails, the corresponding error is returned. If the check passes, the error code &#39;DryRunOperation&#39; is returned &#39;.
+         * - **false** (default): Sends a normal request, returns the HTTP 2xx status code after the check, and directly performs the operation.
          * 
          * @return builder
          * 
@@ -99,7 +105,9 @@ public final class LoadBalancerSecurityGroupAttachmentState extends com.pulumi.r
         }
 
         /**
-         * @param dryRun Whether to PreCheck this request only. Value:-**true**: sends a check request and does not bind a security group to the instance. Check items include whether required parameters, request format, and business restrictions have been filled in. If the check fails, the corresponding error is returned. If the check passes, the error code &#39;DryRunOperation&#39; is returned &#39;.-**false** (default): Sends a normal request, returns the HTTP 2xx status code after the check, and directly performs the operation.
+         * @param dryRun Whether to PreCheck this request only. Value:
+         * - **true**: sends a check request and does not bind a security group to the instance. Check items include whether required parameters, request format, and business restrictions have been filled in. If the check fails, the corresponding error is returned. If the check passes, the error code &#39;DryRunOperation&#39; is returned &#39;.
+         * - **false** (default): Sends a normal request, returns the HTTP 2xx status code after the check, and directly performs the operation.
          * 
          * @return builder
          * 
@@ -130,7 +138,7 @@ public final class LoadBalancerSecurityGroupAttachmentState extends com.pulumi.r
         }
 
         /**
-         * @param securityGroupId The ID of security groups.
+         * @param securityGroupId The ID of the security group.
          * 
          * @return builder
          * 
@@ -141,7 +149,7 @@ public final class LoadBalancerSecurityGroupAttachmentState extends com.pulumi.r
         }
 
         /**
-         * @param securityGroupId The ID of security groups.
+         * @param securityGroupId The ID of the security group.
          * 
          * @return builder
          * 

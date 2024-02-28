@@ -18,6 +18,7 @@ import * as utilities from "../utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
+ * import * as random from "@pulumi/random";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "terraform-example";
@@ -32,8 +33,12 @@ import * as utilities from "../utilities";
  *     zoneId: defaultZones.then(defaultZones => defaultZones.ids?.[0]),
  *     vswitchName: name,
  * });
+ * const defaultRandomInteger = new random.RandomInteger("defaultRandomInteger", {
+ *     min: 10000,
+ *     max: 99999,
+ * });
  * const defaultAdConnectorDirectory = new alicloud.eds.AdConnectorDirectory("defaultAdConnectorDirectory", {
- *     directoryName: name,
+ *     directoryName: pulumi.interpolate`${name}-${defaultRandomInteger.result}`,
  *     desktopAccessType: "INTERNET",
  *     dnsAddresses: ["127.0.0.2"],
  *     domainName: "corp.example.com",

@@ -121,24 +121,28 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Nlb Load Balancer Security Group Attachment can be imported using the id, e.g.
+ * NLB Load Balancer Security Group Attachment can be imported using the id, e.g.
  * 
  * ```sh
- * $ pulumi import alicloud:nlb/loadBalancerSecurityGroupAttachment:LoadBalancerSecurityGroupAttachment example &lt;LoadBalancerId&gt;:&lt;SecurityGroupId&gt;
+ * $ pulumi import alicloud:nlb/loadBalancerSecurityGroupAttachment:LoadBalancerSecurityGroupAttachment example &lt;load_balancer_id&gt;:&lt;security_group_id&gt;
  * ```
  * 
  */
 @ResourceType(type="alicloud:nlb/loadBalancerSecurityGroupAttachment:LoadBalancerSecurityGroupAttachment")
 public class LoadBalancerSecurityGroupAttachment extends com.pulumi.resources.CustomResource {
     /**
-     * Whether to PreCheck this request only. Value:-**true**: sends a check request and does not bind a security group to the instance. Check items include whether required parameters, request format, and business restrictions have been filled in. If the check fails, the corresponding error is returned. If the check passes, the error code &#39;DryRunOperation&#39; is returned &#39;.-**false** (default): Sends a normal request, returns the HTTP 2xx status code after the check, and directly performs the operation.
+     * Whether to PreCheck this request only. Value:
+     * - **true**: sends a check request and does not bind a security group to the instance. Check items include whether required parameters, request format, and business restrictions have been filled in. If the check fails, the corresponding error is returned. If the check passes, the error code &#39;DryRunOperation&#39; is returned &#39;.
+     * - **false** (default): Sends a normal request, returns the HTTP 2xx status code after the check, and directly performs the operation.
      * 
      */
     @Export(name="dryRun", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> dryRun;
 
     /**
-     * @return Whether to PreCheck this request only. Value:-**true**: sends a check request and does not bind a security group to the instance. Check items include whether required parameters, request format, and business restrictions have been filled in. If the check fails, the corresponding error is returned. If the check passes, the error code &#39;DryRunOperation&#39; is returned &#39;.-**false** (default): Sends a normal request, returns the HTTP 2xx status code after the check, and directly performs the operation.
+     * @return Whether to PreCheck this request only. Value:
+     * - **true**: sends a check request and does not bind a security group to the instance. Check items include whether required parameters, request format, and business restrictions have been filled in. If the check fails, the corresponding error is returned. If the check passes, the error code &#39;DryRunOperation&#39; is returned &#39;.
+     * - **false** (default): Sends a normal request, returns the HTTP 2xx status code after the check, and directly performs the operation.
      * 
      */
     public Output<Optional<Boolean>> dryRun() {
@@ -159,14 +163,14 @@ public class LoadBalancerSecurityGroupAttachment extends com.pulumi.resources.Cu
         return this.loadBalancerId;
     }
     /**
-     * The ID of security groups.
+     * The ID of the security group.
      * 
      */
     @Export(name="securityGroupId", refs={String.class}, tree="[0]")
     private Output<String> securityGroupId;
 
     /**
-     * @return The ID of security groups.
+     * @return The ID of the security group.
      * 
      */
     public Output<String> securityGroupId() {

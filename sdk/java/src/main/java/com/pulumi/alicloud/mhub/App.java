@@ -19,7 +19,7 @@ import javax.annotation.Nullable;
  * 
  * For information about MHUB App and how to use it, see [What is App](https://help.aliyun.com/product/65109.html).
  * 
- * &gt; **NOTE:** Available in v1.138.0+.
+ * &gt; **NOTE:** Available since v1.138.0+.
  * 
  * &gt; **NOTE:** At present, the resource only supports cn-shanghai region.
  * 
@@ -58,7 +58,7 @@ import javax.annotation.Nullable;
  *         var defaultApp = new App(&#34;defaultApp&#34;, AppArgs.builder()        
  *             .appName(name)
  *             .productId(defaultProduct.id())
- *             .packageName(&#34;com.test.android&#34;)
+ *             .packageName(&#34;com.example.android&#34;)
  *             .type(&#34;Android&#34;)
  *             .build());
  * 

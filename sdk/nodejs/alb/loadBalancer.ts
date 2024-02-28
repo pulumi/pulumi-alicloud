@@ -118,7 +118,7 @@ export class LoadBalancer extends pulumi.CustomResource {
     /**
      * The tag of the resource.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly tags!: pulumi.Output<{[key: string]: any}>;
     /**
      * The ID of the virtual private cloud (VPC) where the SLB instance is deployed.
      */

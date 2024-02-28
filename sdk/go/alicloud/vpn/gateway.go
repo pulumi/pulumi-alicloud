@@ -62,6 +62,8 @@ type Gateway struct {
 	ResourceGroupId pulumi.StringOutput `pulumi:"resourceGroupId"`
 	// Maximum number of clients.
 	SslConnections pulumi.IntOutput `pulumi:"sslConnections"`
+	// The IP address of the SSL-VPN connection. This parameter is returned only when the VPN gateway is a public VPN gateway and supports only the single-tunnel mode. In addition, the VPN gateway must have the SSL-VPN feature enabled.
+	SslVpnInternetIp pulumi.StringOutput `pulumi:"sslVpnInternetIp"`
 	// The status of the resource.
 	Status pulumi.StringOutput `pulumi:"status"`
 	// The Tag of.
@@ -152,6 +154,8 @@ type gatewayState struct {
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// Maximum number of clients.
 	SslConnections *int `pulumi:"sslConnections"`
+	// The IP address of the SSL-VPN connection. This parameter is returned only when the VPN gateway is a public VPN gateway and supports only the single-tunnel mode. In addition, the VPN gateway must have the SSL-VPN feature enabled.
+	SslVpnInternetIp *string `pulumi:"sslVpnInternetIp"`
 	// The status of the resource.
 	Status *string `pulumi:"status"`
 	// The Tag of.
@@ -207,6 +211,8 @@ type GatewayState struct {
 	ResourceGroupId pulumi.StringPtrInput
 	// Maximum number of clients.
 	SslConnections pulumi.IntPtrInput
+	// The IP address of the SSL-VPN connection. This parameter is returned only when the VPN gateway is a public VPN gateway and supports only the single-tunnel mode. In addition, the VPN gateway must have the SSL-VPN feature enabled.
+	SslVpnInternetIp pulumi.StringPtrInput
 	// The status of the resource.
 	Status pulumi.StringPtrInput
 	// The Tag of.
@@ -496,6 +502,11 @@ func (o GatewayOutput) ResourceGroupId() pulumi.StringOutput {
 // Maximum number of clients.
 func (o GatewayOutput) SslConnections() pulumi.IntOutput {
 	return o.ApplyT(func(v *Gateway) pulumi.IntOutput { return v.SslConnections }).(pulumi.IntOutput)
+}
+
+// The IP address of the SSL-VPN connection. This parameter is returned only when the VPN gateway is a public VPN gateway and supports only the single-tunnel mode. In addition, the VPN gateway must have the SSL-VPN feature enabled.
+func (o GatewayOutput) SslVpnInternetIp() pulumi.StringOutput {
+	return o.ApplyT(func(v *Gateway) pulumi.StringOutput { return v.SslVpnInternetIp }).(pulumi.StringOutput)
 }
 
 // The status of the resource.

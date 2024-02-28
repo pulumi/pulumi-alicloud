@@ -18,6 +18,7 @@ import * as utilities from "../utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
+ * import * as random from "@pulumi/random";
  *
  * const exampleZones = alicloud.getZones({
  *     availableResourceCreation: "Instance",
@@ -51,7 +52,11 @@ import * as utilities from "../utilities";
  *     internetChargeType: "PayByBandwidth",
  *     vswitchId: exampleSwitch.id,
  * });
- * const exampleEcsKeyPair = new alicloud.ecs.EcsKeyPair("exampleEcsKeyPair", {keyPairName: "tf-example"});
+ * const _default = new random.RandomInteger("default", {
+ *     min: 10000,
+ *     max: 99999,
+ * });
+ * const exampleEcsKeyPair = new alicloud.ecs.EcsKeyPair("exampleEcsKeyPair", {keyPairName: pulumi.interpolate`tf-example-${_default.result}`});
  * const exampleEcsKeyPairAttachment = new alicloud.ecs.EcsKeyPairAttachment("exampleEcsKeyPairAttachment", {
  *     keyPairName: exampleEcsKeyPair.keyPairName,
  *     instanceIds: [exampleInstance.id],

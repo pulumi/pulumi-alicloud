@@ -60,18 +60,24 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			defaultProject, err := log.NewProject(ctx, "defaultProject", nil)
+//			defaultProject, err := log.NewProject(ctx, "defaultProject", &log.ProjectArgs{
+//				ProjectName: defaultRandomInteger.Result.ApplyT(func(result int) (string, error) {
+//					return fmt.Sprintf("example-value-%v", result), nil
+//				}).(pulumi.StringOutput),
+//			})
 //			if err != nil {
 //				return err
 //			}
 //			defaultStore, err := log.NewStore(ctx, "defaultStore", &log.StoreArgs{
-//				Project: defaultProject.Name,
+//				ProjectName:  defaultProject.Name,
+//				LogstoreName: pulumi.String("example-value"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			sourceStore, err := log.NewStore(ctx, "sourceStore", &log.StoreArgs{
-//				Project: defaultProject.Name,
+//				ProjectName:  defaultProject.Name,
+//				LogstoreName: pulumi.String("example-source-store"),
 //			})
 //			if err != nil {
 //				return err

@@ -29,11 +29,11 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.random.RandomInteger;
+ * import com.pulumi.random.RandomIntegerArgs;
  * import com.pulumi.alicloud.cdn.DomainNew;
  * import com.pulumi.alicloud.cdn.DomainNewArgs;
  * import com.pulumi.alicloud.cdn.inputs.DomainNewSourceArgs;
- * import com.pulumi.random.RandomInteger;
- * import com.pulumi.random.RandomIntegerArgs;
  * import com.pulumi.alicloud.log.Project;
  * import com.pulumi.alicloud.log.ProjectArgs;
  * import com.pulumi.alicloud.log.Store;
@@ -55,9 +55,14 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         var defaultRandomInteger = new RandomInteger(&#34;defaultRandomInteger&#34;, RandomIntegerArgs.builder()        
+ *             .max(99999)
+ *             .min(10000)
+ *             .build());
+ * 
  *         var defaultDomainNew = new DomainNew(&#34;defaultDomainNew&#34;, DomainNewArgs.builder()        
  *             .scope(&#34;overseas&#34;)
- *             .domainName(&#34;mycdndomain.alicloud-provider.cn&#34;)
+ *             .domainName(defaultRandomInteger.result().applyValue(result -&gt; String.format(&#34;mycdndomain-%s.alicloud-provider.cn&#34;, result)))
  *             .cdnType(&#34;web&#34;)
  *             .sources(DomainNewSourceArgs.builder()
  *                 .type(&#34;ipaddr&#34;)
@@ -68,17 +73,14 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var defaultRandomInteger = new RandomInteger(&#34;defaultRandomInteger&#34;, RandomIntegerArgs.builder()        
- *             .max(99999)
- *             .min(10000)
- *             .build());
- * 
  *         var defaultProject = new Project(&#34;defaultProject&#34;, ProjectArgs.builder()        
+ *             .projectName(defaultRandomInteger.result().applyValue(result -&gt; String.format(&#34;terraform-example-%s&#34;, result)))
  *             .description(&#34;terraform-example&#34;)
  *             .build());
  * 
  *         var defaultStore = new Store(&#34;defaultStore&#34;, StoreArgs.builder()        
- *             .project(defaultProject.name())
+ *             .projectName(defaultProject.name())
+ *             .logstoreName(&#34;example-store&#34;)
  *             .shardCount(3)
  *             .autoSplit(true)
  *             .maxSplitShardCount(60)
@@ -91,8 +93,8 @@ import javax.annotation.Nullable;
  * 
  *         var defaultRealTimeLogDelivery = new RealTimeLogDelivery(&#34;defaultRealTimeLogDelivery&#34;, RealTimeLogDeliveryArgs.builder()        
  *             .domain(defaultDomainNew.domainName())
- *             .logstore(defaultProject.name())
- *             .project(defaultStore.name())
+ *             .logstore(defaultStore.logstoreName())
+ *             .project(defaultProject.projectName())
  *             .slsRegion(defaultRegions.applyValue(getRegionsResult -&gt; getRegionsResult.regions()[0].id()))
  *             .build());
  * 

@@ -18,7 +18,7 @@ namespace Pulumi.AliCloud.Ecs
     /// 
     /// &gt; **NOTE:**  If you want to combine snapshots of multiple disks into an image template, you can specify DiskDeviceMapping to create a custom image.
     /// 
-    /// &gt; **NOTE:**  Available in 1.64.0+
+    /// &gt; **NOTE:** Available since v1.64.0.
     /// 
     /// ## Example Usage
     /// 
@@ -27,6 +27,7 @@ namespace Pulumi.AliCloud.Ecs
     /// using System.Linq;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
+    /// using Random = Pulumi.Random;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
@@ -81,13 +82,18 @@ namespace Pulumi.AliCloud.Ecs
     /// 
     ///     var defaultResourceGroups = AliCloud.ResourceManager.GetResourceGroups.Invoke();
     /// 
+    ///     var defaultRandomInteger = new Random.RandomInteger("defaultRandomInteger", new()
+    ///     {
+    ///         Min = 10000,
+    ///         Max = 99999,
+    ///     });
+    /// 
     ///     var defaultImage = new AliCloud.Ecs.Image("defaultImage", new()
     ///     {
     ///         InstanceId = defaultInstance.Id,
-    ///         ImageName = "terraform-example",
+    ///         ImageName = defaultRandomInteger.Result.Apply(result =&gt; $"terraform-example-{result}"),
     ///         Description = "terraform-example",
     ///         Architecture = "x86_64",
-    ///         Platform = "CentOS",
     ///         ResourceGroupId = defaultResourceGroups.Apply(getResourceGroupsResult =&gt; getResourceGroupsResult.Ids[0]),
     ///         Tags = 
     ///         {

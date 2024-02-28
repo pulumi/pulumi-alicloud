@@ -10,9 +10,121 @@ from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
+    'LoadBalancerDeletionProtectionConfigArgs',
+    'LoadBalancerModificationProtectionConfigArgs',
     'LoadBalancerZoneMappingArgs',
     'ServerGroupHealthCheckArgs',
 ]
+
+@pulumi.input_type
+class LoadBalancerDeletionProtectionConfigArgs:
+    def __init__(__self__, *,
+                 enabled: Optional[pulumi.Input[bool]] = None,
+                 enabled_time: Optional[pulumi.Input[str]] = None,
+                 reason: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[bool] enabled: Delete protection enable.
+        :param pulumi.Input[str] enabled_time: Opening time.
+        :param pulumi.Input[str] reason: Reason for opening.
+        """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if enabled_time is not None:
+            pulumi.set(__self__, "enabled_time", enabled_time)
+        if reason is not None:
+            pulumi.set(__self__, "reason", reason)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Delete protection enable.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enabled", value)
+
+    @property
+    @pulumi.getter(name="enabledTime")
+    def enabled_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        Opening time.
+        """
+        return pulumi.get(self, "enabled_time")
+
+    @enabled_time.setter
+    def enabled_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "enabled_time", value)
+
+    @property
+    @pulumi.getter
+    def reason(self) -> Optional[pulumi.Input[str]]:
+        """
+        Reason for opening.
+        """
+        return pulumi.get(self, "reason")
+
+    @reason.setter
+    def reason(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "reason", value)
+
+
+@pulumi.input_type
+class LoadBalancerModificationProtectionConfigArgs:
+    def __init__(__self__, *,
+                 enabled_time: Optional[pulumi.Input[str]] = None,
+                 reason: Optional[pulumi.Input[str]] = None,
+                 status: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] enabled_time: Opening time.
+        :param pulumi.Input[str] reason: Reason for opening.
+        :param pulumi.Input[str] status: ON.
+        """
+        if enabled_time is not None:
+            pulumi.set(__self__, "enabled_time", enabled_time)
+        if reason is not None:
+            pulumi.set(__self__, "reason", reason)
+        if status is not None:
+            pulumi.set(__self__, "status", status)
+
+    @property
+    @pulumi.getter(name="enabledTime")
+    def enabled_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        Opening time.
+        """
+        return pulumi.get(self, "enabled_time")
+
+    @enabled_time.setter
+    def enabled_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "enabled_time", value)
+
+    @property
+    @pulumi.getter
+    def reason(self) -> Optional[pulumi.Input[str]]:
+        """
+        Reason for opening.
+        """
+        return pulumi.get(self, "reason")
+
+    @reason.setter
+    def reason(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "reason", value)
+
+    @property
+    @pulumi.getter
+    def status(self) -> Optional[pulumi.Input[str]]:
+        """
+        ON.
+        """
+        return pulumi.get(self, "status")
+
+    @status.setter
+    def status(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "status", value)
+
 
 @pulumi.input_type
 class LoadBalancerZoneMappingArgs:
@@ -23,15 +135,17 @@ class LoadBalancerZoneMappingArgs:
                  eni_id: Optional[pulumi.Input[str]] = None,
                  ipv6_address: Optional[pulumi.Input[str]] = None,
                  private_ipv4_address: Optional[pulumi.Input[str]] = None,
-                 public_ipv4_address: Optional[pulumi.Input[str]] = None):
+                 public_ipv4_address: Optional[pulumi.Input[str]] = None,
+                 status: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] vswitch_id: The vSwitch in the zone. You can specify only one vSwitch (subnet) in each zone of an NLB instance.
-        :param pulumi.Input[str] zone_id: The ID of the zone of the NLB instance.
-        :param pulumi.Input[str] allocation_id: The ID of the EIP associated with the Internet-facing NLB instance.
-        :param pulumi.Input[str] eni_id: The ID of the elastic network interface (ENI).
-        :param pulumi.Input[str] ipv6_address: The IPv6 address of the NLB instance.
-        :param pulumi.Input[str] private_ipv4_address: The private IPv4 address of the NLB instance.
-        :param pulumi.Input[str] public_ipv4_address: The public IPv4 address of the NLB instance.
+        :param pulumi.Input[str] vswitch_id: The switch corresponding to the zone. Each zone uses one switch and one subnet by default.
+        :param pulumi.Input[str] zone_id: The name of the zone. You can call the DescribeZones operation to obtain the name of the zone.
+        :param pulumi.Input[str] allocation_id: The ID of the elastic IP address.
+        :param pulumi.Input[str] eni_id: The ID of ENI.
+        :param pulumi.Input[str] ipv6_address: The IPv6 address of a network-based server load balancer instance.
+        :param pulumi.Input[str] private_ipv4_address: The private IPv4 address of a network-based server load balancer instance.
+        :param pulumi.Input[str] public_ipv4_address: Public IPv4 address of a network-based server load balancer instance.
+        :param pulumi.Input[str] status: Zone Status.
         """
         pulumi.set(__self__, "vswitch_id", vswitch_id)
         pulumi.set(__self__, "zone_id", zone_id)
@@ -45,12 +159,14 @@ class LoadBalancerZoneMappingArgs:
             pulumi.set(__self__, "private_ipv4_address", private_ipv4_address)
         if public_ipv4_address is not None:
             pulumi.set(__self__, "public_ipv4_address", public_ipv4_address)
+        if status is not None:
+            pulumi.set(__self__, "status", status)
 
     @property
     @pulumi.getter(name="vswitchId")
     def vswitch_id(self) -> pulumi.Input[str]:
         """
-        The vSwitch in the zone. You can specify only one vSwitch (subnet) in each zone of an NLB instance.
+        The switch corresponding to the zone. Each zone uses one switch and one subnet by default.
         """
         return pulumi.get(self, "vswitch_id")
 
@@ -62,7 +178,7 @@ class LoadBalancerZoneMappingArgs:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Input[str]:
         """
-        The ID of the zone of the NLB instance.
+        The name of the zone. You can call the DescribeZones operation to obtain the name of the zone.
         """
         return pulumi.get(self, "zone_id")
 
@@ -74,7 +190,7 @@ class LoadBalancerZoneMappingArgs:
     @pulumi.getter(name="allocationId")
     def allocation_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID of the EIP associated with the Internet-facing NLB instance.
+        The ID of the elastic IP address.
         """
         return pulumi.get(self, "allocation_id")
 
@@ -86,7 +202,7 @@ class LoadBalancerZoneMappingArgs:
     @pulumi.getter(name="eniId")
     def eni_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID of the elastic network interface (ENI).
+        The ID of ENI.
         """
         return pulumi.get(self, "eni_id")
 
@@ -98,7 +214,7 @@ class LoadBalancerZoneMappingArgs:
     @pulumi.getter(name="ipv6Address")
     def ipv6_address(self) -> Optional[pulumi.Input[str]]:
         """
-        The IPv6 address of the NLB instance.
+        The IPv6 address of a network-based server load balancer instance.
         """
         return pulumi.get(self, "ipv6_address")
 
@@ -110,7 +226,7 @@ class LoadBalancerZoneMappingArgs:
     @pulumi.getter(name="privateIpv4Address")
     def private_ipv4_address(self) -> Optional[pulumi.Input[str]]:
         """
-        The private IPv4 address of the NLB instance.
+        The private IPv4 address of a network-based server load balancer instance.
         """
         return pulumi.get(self, "private_ipv4_address")
 
@@ -122,13 +238,25 @@ class LoadBalancerZoneMappingArgs:
     @pulumi.getter(name="publicIpv4Address")
     def public_ipv4_address(self) -> Optional[pulumi.Input[str]]:
         """
-        The public IPv4 address of the NLB instance.
+        Public IPv4 address of a network-based server load balancer instance.
         """
         return pulumi.get(self, "public_ipv4_address")
 
     @public_ipv4_address.setter
     def public_ipv4_address(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "public_ipv4_address", value)
+
+    @property
+    @pulumi.getter
+    def status(self) -> Optional[pulumi.Input[str]]:
+        """
+        Zone Status.
+        """
+        return pulumi.get(self, "status")
+
+    @status.setter
+    def status(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "status", value)
 
 
 @pulumi.input_type

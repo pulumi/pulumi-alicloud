@@ -210,7 +210,7 @@ namespace Pulumi.AliCloud.Eci
         /// Specifies whether to automatically match the image cache. Default value: `false`. Valid values: `true` and `false`.
         /// </summary>
         [Output("autoMatchImageCache")]
-        public Output<bool?> AutoMatchImageCache { get; private set; } = null!;
+        public Output<bool> AutoMatchImageCache { get; private set; } = null!;
 
         /// <summary>
         /// The name of the container group.

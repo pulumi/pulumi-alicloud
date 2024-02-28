@@ -16,7 +16,7 @@ import (
 //
 // For information about MHUB App and how to use it, see [What is App](https://help.aliyun.com/product/65109.html).
 //
-// > **NOTE:** Available in v1.138.0+.
+// > **NOTE:** Available since v1.138.0+.
 //
 // > **NOTE:** At present, the resource only supports cn-shanghai region.
 //
@@ -51,7 +51,7 @@ import (
 //			_, err = mhub.NewApp(ctx, "defaultApp", &mhub.AppArgs{
 //				AppName:     pulumi.String(name),
 //				ProductId:   defaultProduct.ID(),
-//				PackageName: pulumi.String("com.test.android"),
+//				PackageName: pulumi.String("com.example.android"),
 //				Type:        pulumi.String("Android"),
 //			})
 //			if err != nil {

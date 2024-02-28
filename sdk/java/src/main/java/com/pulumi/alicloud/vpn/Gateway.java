@@ -281,6 +281,20 @@ public class Gateway extends com.pulumi.resources.CustomResource {
         return this.sslConnections;
     }
     /**
+     * The IP address of the SSL-VPN connection. This parameter is returned only when the VPN gateway is a public VPN gateway and supports only the single-tunnel mode. In addition, the VPN gateway must have the SSL-VPN feature enabled.
+     * 
+     */
+    @Export(name="sslVpnInternetIp", refs={String.class}, tree="[0]")
+    private Output<String> sslVpnInternetIp;
+
+    /**
+     * @return The IP address of the SSL-VPN connection. This parameter is returned only when the VPN gateway is a public VPN gateway and supports only the single-tunnel mode. In addition, the VPN gateway must have the SSL-VPN feature enabled.
+     * 
+     */
+    public Output<String> sslVpnInternetIp() {
+        return this.sslVpnInternetIp;
+    }
+    /**
      * The status of the resource.
      * 
      */

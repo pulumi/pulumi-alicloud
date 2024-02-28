@@ -320,14 +320,14 @@ public final class ApplicationLoadBalancerArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * A mapping of tags to assign to the resource. The `tags` can have a maximum of 10 tag for every load balancer instance.
+     * A mapping of tags to assign to the resource. The `tags` can have a maximum of 10 tag for every load balancer instance. This filed mark as `Computed` since v1.217.1.
      * 
      */
     @Import(name="tags")
     private @Nullable Output<Map<String,Object>> tags;
 
     /**
-     * @return A mapping of tags to assign to the resource. The `tags` can have a maximum of 10 tag for every load balancer instance.
+     * @return A mapping of tags to assign to the resource. The `tags` can have a maximum of 10 tag for every load balancer instance. This filed mark as `Computed` since v1.217.1.
      * 
      */
     public Optional<Output<Map<String,Object>>> tags() {
@@ -805,7 +805,7 @@ public final class ApplicationLoadBalancerArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param tags A mapping of tags to assign to the resource. The `tags` can have a maximum of 10 tag for every load balancer instance.
+         * @param tags A mapping of tags to assign to the resource. The `tags` can have a maximum of 10 tag for every load balancer instance. This filed mark as `Computed` since v1.217.1.
          * 
          * @return builder
          * 
@@ -816,7 +816,7 @@ public final class ApplicationLoadBalancerArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param tags A mapping of tags to assign to the resource. The `tags` can have a maximum of 10 tag for every load balancer instance.
+         * @param tags A mapping of tags to assign to the resource. The `tags` can have a maximum of 10 tag for every load balancer instance. This filed mark as `Computed` since v1.217.1.
          * 
          * @return builder
          * 

@@ -168,7 +168,7 @@ class Execution(pulumi.CustomResource):
 
         For information about Serverless Workflow Execution and how to use it, see [What is Execution](https://www.alibabacloud.com/help/en/doc-detail/122628.html).
 
-        > **NOTE:** Available in v1.149.0+.
+        > **NOTE:** Available since v1.149.0+.
 
         ## Example Usage
 
@@ -181,7 +181,7 @@ class Execution(pulumi.CustomResource):
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
-            name = "tf-testacc-fnfflow"
+            name = "tf-example-fnfflow"
         default_role = alicloud.ram.Role("defaultRole", document=\"\"\"  {
             "Statement": [
               {
@@ -240,7 +240,7 @@ class Execution(pulumi.CustomResource):
 
         For information about Serverless Workflow Execution and how to use it, see [What is Execution](https://www.alibabacloud.com/help/en/doc-detail/122628.html).
 
-        > **NOTE:** Available in v1.149.0+.
+        > **NOTE:** Available since v1.149.0+.
 
         ## Example Usage
 
@@ -253,7 +253,7 @@ class Execution(pulumi.CustomResource):
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
-            name = "tf-testacc-fnfflow"
+            name = "tf-example-fnfflow"
         default_role = alicloud.ram.Role("defaultRole", document=\"\"\"  {
             "Statement": [
               {

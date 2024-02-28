@@ -18,11 +18,11 @@ namespace Pulumi.AliCloud.Vpn.Outputs
         /// </summary>
         public readonly string? AuthKey;
         /// <summary>
-        /// The ali cloud side autonomous system.
+        /// Local asn.
         /// </summary>
         public readonly int? LocalAsn;
         /// <summary>
-        /// The ali cloud side BGP address.
+        /// Local bgp IP.
         /// </summary>
         public readonly string? LocalBgpIp;
         /// <summary>
@@ -38,7 +38,7 @@ namespace Pulumi.AliCloud.Vpn.Outputs
         /// </summary>
         public readonly string? Status;
         /// <summary>
-        /// The ipsec tunnel segments.
+        /// BGP Tunnel CIDR.
         /// </summary>
         public readonly string? TunnelCidr;
 

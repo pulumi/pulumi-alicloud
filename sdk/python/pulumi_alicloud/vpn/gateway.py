@@ -357,6 +357,7 @@ class _GatewayState:
                  period: Optional[pulumi.Input[int]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  ssl_connections: Optional[pulumi.Input[int]] = None,
+                 ssl_vpn_internet_ip: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  vpc_id: Optional[pulumi.Input[str]] = None,
@@ -384,6 +385,7 @@ class _GatewayState:
         :param pulumi.Input[int] period: The filed is only required while the InstanceChargeType is PrePaid. Valid values: [1-9, 12, 24, 36]. Default to 1.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group.
         :param pulumi.Input[int] ssl_connections: Maximum number of clients.
+        :param pulumi.Input[str] ssl_vpn_internet_ip: The IP address of the SSL-VPN connection. This parameter is returned only when the VPN gateway is a public VPN gateway and supports only the single-tunnel mode. In addition, the VPN gateway must have the SSL-VPN feature enabled.
         :param pulumi.Input[str] status: The status of the resource.
         :param pulumi.Input[Mapping[str, Any]] tags: The Tag of.
         :param pulumi.Input[str] vpc_id: The ID of the VPC to which the VPN gateway belongs.
@@ -431,6 +433,8 @@ class _GatewayState:
             pulumi.set(__self__, "resource_group_id", resource_group_id)
         if ssl_connections is not None:
             pulumi.set(__self__, "ssl_connections", ssl_connections)
+        if ssl_vpn_internet_ip is not None:
+            pulumi.set(__self__, "ssl_vpn_internet_ip", ssl_vpn_internet_ip)
         if status is not None:
             pulumi.set(__self__, "status", status)
         if tags is not None:
@@ -657,6 +661,18 @@ class _GatewayState:
         pulumi.set(self, "ssl_connections", value)
 
     @property
+    @pulumi.getter(name="sslVpnInternetIp")
+    def ssl_vpn_internet_ip(self) -> Optional[pulumi.Input[str]]:
+        """
+        The IP address of the SSL-VPN connection. This parameter is returned only when the VPN gateway is a public VPN gateway and supports only the single-tunnel mode. In addition, the VPN gateway must have the SSL-VPN feature enabled.
+        """
+        return pulumi.get(self, "ssl_vpn_internet_ip")
+
+    @ssl_vpn_internet_ip.setter
+    def ssl_vpn_internet_ip(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ssl_vpn_internet_ip", value)
+
+    @property
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[str]]:
         """
@@ -871,6 +887,7 @@ class Gateway(pulumi.CustomResource):
             __props__.__dict__["business_status"] = None
             __props__.__dict__["create_time"] = None
             __props__.__dict__["internet_ip"] = None
+            __props__.__dict__["ssl_vpn_internet_ip"] = None
             __props__.__dict__["status"] = None
         super(Gateway, __self__).__init__(
             'alicloud:vpn/gateway:Gateway',
@@ -899,6 +916,7 @@ class Gateway(pulumi.CustomResource):
             period: Optional[pulumi.Input[int]] = None,
             resource_group_id: Optional[pulumi.Input[str]] = None,
             ssl_connections: Optional[pulumi.Input[int]] = None,
+            ssl_vpn_internet_ip: Optional[pulumi.Input[str]] = None,
             status: Optional[pulumi.Input[str]] = None,
             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             vpc_id: Optional[pulumi.Input[str]] = None,
@@ -931,6 +949,7 @@ class Gateway(pulumi.CustomResource):
         :param pulumi.Input[int] period: The filed is only required while the InstanceChargeType is PrePaid. Valid values: [1-9, 12, 24, 36]. Default to 1.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group.
         :param pulumi.Input[int] ssl_connections: Maximum number of clients.
+        :param pulumi.Input[str] ssl_vpn_internet_ip: The IP address of the SSL-VPN connection. This parameter is returned only when the VPN gateway is a public VPN gateway and supports only the single-tunnel mode. In addition, the VPN gateway must have the SSL-VPN feature enabled.
         :param pulumi.Input[str] status: The status of the resource.
         :param pulumi.Input[Mapping[str, Any]] tags: The Tag of.
         :param pulumi.Input[str] vpc_id: The ID of the VPC to which the VPN gateway belongs.
@@ -959,6 +978,7 @@ class Gateway(pulumi.CustomResource):
         __props__.__dict__["period"] = period
         __props__.__dict__["resource_group_id"] = resource_group_id
         __props__.__dict__["ssl_connections"] = ssl_connections
+        __props__.__dict__["ssl_vpn_internet_ip"] = ssl_vpn_internet_ip
         __props__.__dict__["status"] = status
         __props__.__dict__["tags"] = tags
         __props__.__dict__["vpc_id"] = vpc_id
@@ -1110,6 +1130,14 @@ class Gateway(pulumi.CustomResource):
         Maximum number of clients.
         """
         return pulumi.get(self, "ssl_connections")
+
+    @property
+    @pulumi.getter(name="sslVpnInternetIp")
+    def ssl_vpn_internet_ip(self) -> pulumi.Output[str]:
+        """
+        The IP address of the SSL-VPN connection. This parameter is returned only when the VPN gateway is a public VPN gateway and supports only the single-tunnel mode. In addition, the VPN gateway must have the SSL-VPN feature enabled.
+        """
+        return pulumi.get(self, "ssl_vpn_internet_ip")
 
     @property
     @pulumi.getter

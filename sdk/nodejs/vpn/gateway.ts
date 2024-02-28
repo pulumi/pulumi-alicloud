@@ -116,6 +116,10 @@ export class Gateway extends pulumi.CustomResource {
      */
     public readonly sslConnections!: pulumi.Output<number>;
     /**
+     * The IP address of the SSL-VPN connection. This parameter is returned only when the VPN gateway is a public VPN gateway and supports only the single-tunnel mode. In addition, the VPN gateway must have the SSL-VPN feature enabled.
+     */
+    public /*out*/ readonly sslVpnInternetIp!: pulumi.Output<string>;
+    /**
      * The status of the resource.
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
@@ -170,6 +174,7 @@ export class Gateway extends pulumi.CustomResource {
             resourceInputs["period"] = state ? state.period : undefined;
             resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
             resourceInputs["sslConnections"] = state ? state.sslConnections : undefined;
+            resourceInputs["sslVpnInternetIp"] = state ? state.sslVpnInternetIp : undefined;
             resourceInputs["status"] = state ? state.status : undefined;
             resourceInputs["tags"] = state ? state.tags : undefined;
             resourceInputs["vpcId"] = state ? state.vpcId : undefined;
@@ -206,6 +211,7 @@ export class Gateway extends pulumi.CustomResource {
             resourceInputs["businessStatus"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["internetIp"] = undefined /*out*/;
+            resourceInputs["sslVpnInternetIp"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -291,6 +297,10 @@ export interface GatewayState {
      * Maximum number of clients.
      */
     sslConnections?: pulumi.Input<number>;
+    /**
+     * The IP address of the SSL-VPN connection. This parameter is returned only when the VPN gateway is a public VPN gateway and supports only the single-tunnel mode. In addition, the VPN gateway must have the SSL-VPN feature enabled.
+     */
+    sslVpnInternetIp?: pulumi.Input<string>;
     /**
      * The status of the resource.
      */

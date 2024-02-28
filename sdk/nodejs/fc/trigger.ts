@@ -29,9 +29,15 @@ import * as utilities from "../utilities";
  *     max: 99999,
  *     min: 10000,
  * });
- * const defaultProject = new alicloud.log.Project("defaultProject", {});
- * const defaultStore = new alicloud.log.Store("defaultStore", {project: defaultProject.name});
- * const sourceStore = new alicloud.log.Store("sourceStore", {project: defaultProject.name});
+ * const defaultProject = new alicloud.log.Project("defaultProject", {projectName: pulumi.interpolate`example-value-${defaultRandomInteger.result}`});
+ * const defaultStore = new alicloud.log.Store("defaultStore", {
+ *     projectName: defaultProject.name,
+ *     logstoreName: "example-value",
+ * });
+ * const sourceStore = new alicloud.log.Store("sourceStore", {
+ *     projectName: defaultProject.name,
+ *     logstoreName: "example-source-store",
+ * });
  * const defaultRole = new alicloud.ram.Role("defaultRole", {
  *     document: `  {
  *       "Statement": [
