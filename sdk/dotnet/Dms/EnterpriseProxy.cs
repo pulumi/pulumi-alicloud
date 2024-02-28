@@ -112,7 +112,7 @@ namespace Pulumi.AliCloud.Dms
     ///     var defaultEnterpriseInstance = new AliCloud.Dms.EnterpriseInstance("defaultEnterpriseInstance", new()
     ///     {
     ///         Tid = defaultUserTenants.Apply(getUserTenantsResult =&gt; getUserTenantsResult.Ids[0]),
-    ///         InstanceType = "MySQL",
+    ///         InstanceType = "mysql",
     ///         InstanceSource = "RDS",
     ///         NetworkType = "VPC",
     ///         EnvType = "dev",

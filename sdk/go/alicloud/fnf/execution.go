@@ -16,7 +16,7 @@ import (
 //
 // For information about Serverless Workflow Execution and how to use it, see [What is Execution](https://www.alibabacloud.com/help/en/doc-detail/122628.html).
 //
-// > **NOTE:** Available in v1.149.0+.
+// > **NOTE:** Available since v1.149.0+.
 //
 // ## Example Usage
 //
@@ -37,7 +37,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			cfg := config.New(ctx, "")
-//			name := "tf-testacc-fnfflow"
+//			name := "tf-example-fnfflow"
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}

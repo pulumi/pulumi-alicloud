@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Hbr
     /// 
     /// For information about HBR Oss Backup Plan and how to use it, see [What is Oss Backup Plan](https://www.alibabacloud.com/help/doc-detail/130040.htm).
     /// 
-    /// &gt; **NOTE:** Available in v1.131.0+.
+    /// &gt; **NOTE:** Available since v1.131.0+.
     /// 
     /// ## Example Usage
     /// 
@@ -48,7 +48,7 @@ namespace Pulumi.AliCloud.Hbr
     ///     var defaultOssBackupPlan = new AliCloud.Hbr.OssBackupPlan("defaultOssBackupPlan", new()
     ///     {
     ///         OssBackupPlanName = "terraform-example",
-    ///         Prefix = "/",
+    ///         Prefix = "/example",
     ///         Bucket = defaultBucket.BucketName,
     ///         VaultId = defaultVault.Id,
     ///         Schedule = "I|1602673264|PT2H",

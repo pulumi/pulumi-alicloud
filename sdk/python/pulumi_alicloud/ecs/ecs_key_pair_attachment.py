@@ -190,6 +190,7 @@ class EcsKeyPairAttachment(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
         example_zones = alicloud.get_zones(available_resource_creation="Instance")
         example_instance_types = alicloud.ecs.get_instance_types(availability_zone=example_zones.zones[0].id,
@@ -214,7 +215,10 @@ class EcsKeyPairAttachment(pulumi.CustomResource):
             instance_name="terraform-example",
             internet_charge_type="PayByBandwidth",
             vswitch_id=example_switch.id)
-        example_ecs_key_pair = alicloud.ecs.EcsKeyPair("exampleEcsKeyPair", key_pair_name="tf-example")
+        default = random.RandomInteger("default",
+            min=10000,
+            max=99999)
+        example_ecs_key_pair = alicloud.ecs.EcsKeyPair("exampleEcsKeyPair", key_pair_name=default.result.apply(lambda result: f"tf-example-{result}"))
         example_ecs_key_pair_attachment = alicloud.ecs.EcsKeyPairAttachment("exampleEcsKeyPairAttachment",
             key_pair_name=example_ecs_key_pair.key_pair_name,
             instance_ids=[example_instance.id])
@@ -255,6 +259,7 @@ class EcsKeyPairAttachment(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
         example_zones = alicloud.get_zones(available_resource_creation="Instance")
         example_instance_types = alicloud.ecs.get_instance_types(availability_zone=example_zones.zones[0].id,
@@ -279,7 +284,10 @@ class EcsKeyPairAttachment(pulumi.CustomResource):
             instance_name="terraform-example",
             internet_charge_type="PayByBandwidth",
             vswitch_id=example_switch.id)
-        example_ecs_key_pair = alicloud.ecs.EcsKeyPair("exampleEcsKeyPair", key_pair_name="tf-example")
+        default = random.RandomInteger("default",
+            min=10000,
+            max=99999)
+        example_ecs_key_pair = alicloud.ecs.EcsKeyPair("exampleEcsKeyPair", key_pair_name=default.result.apply(lambda result: f"tf-example-{result}"))
         example_ecs_key_pair_attachment = alicloud.ecs.EcsKeyPairAttachment("exampleEcsKeyPairAttachment",
             key_pair_name=example_ecs_key_pair.key_pair_name,
             instance_ids=[example_instance.id])

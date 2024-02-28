@@ -29,10 +29,16 @@ namespace Pulumi.AliCloud.Cdn
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
+    ///     var defaultRandomInteger = new Random.RandomInteger("defaultRandomInteger", new()
+    ///     {
+    ///         Max = 99999,
+    ///         Min = 10000,
+    ///     });
+    /// 
     ///     var defaultDomainNew = new AliCloud.Cdn.DomainNew("defaultDomainNew", new()
     ///     {
     ///         Scope = "overseas",
-    ///         DomainName = "mycdndomain.alicloud-provider.cn",
+    ///         DomainName = defaultRandomInteger.Result.Apply(result =&gt; $"mycdndomain-{result}.alicloud-provider.cn"),
     ///         CdnType = "web",
     ///         Sources = new[]
     ///         {
@@ -47,20 +53,16 @@ namespace Pulumi.AliCloud.Cdn
     ///         },
     ///     });
     /// 
-    ///     var defaultRandomInteger = new Random.RandomInteger("defaultRandomInteger", new()
-    ///     {
-    ///         Max = 99999,
-    ///         Min = 10000,
-    ///     });
-    /// 
     ///     var defaultProject = new AliCloud.Log.Project("defaultProject", new()
     ///     {
+    ///         ProjectName = defaultRandomInteger.Result.Apply(result =&gt; $"terraform-example-{result}"),
     ///         Description = "terraform-example",
     ///     });
     /// 
     ///     var defaultStore = new AliCloud.Log.Store("defaultStore", new()
     ///     {
-    ///         Project = defaultProject.Name,
+    ///         ProjectName = defaultProject.Name,
+    ///         LogstoreName = "example-store",
     ///         ShardCount = 3,
     ///         AutoSplit = true,
     ///         MaxSplitShardCount = 60,
@@ -75,8 +77,8 @@ namespace Pulumi.AliCloud.Cdn
     ///     var defaultRealTimeLogDelivery = new AliCloud.Cdn.RealTimeLogDelivery("defaultRealTimeLogDelivery", new()
     ///     {
     ///         Domain = defaultDomainNew.DomainName,
-    ///         Logstore = defaultProject.Name,
-    ///         Project = defaultStore.Name,
+    ///         Logstore = defaultStore.LogstoreName,
+    ///         Project = defaultProject.ProjectName,
     ///         SlsRegion = defaultRegions.Apply(getRegionsResult =&gt; getRegionsResult.Regions[0]?.Id),
     ///     });
     /// 

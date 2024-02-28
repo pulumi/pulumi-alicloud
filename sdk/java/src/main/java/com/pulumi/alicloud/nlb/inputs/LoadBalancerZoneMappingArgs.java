@@ -17,14 +17,14 @@ public final class LoadBalancerZoneMappingArgs extends com.pulumi.resources.Reso
     public static final LoadBalancerZoneMappingArgs Empty = new LoadBalancerZoneMappingArgs();
 
     /**
-     * The ID of the EIP associated with the Internet-facing NLB instance.
+     * The ID of the elastic IP address.
      * 
      */
     @Import(name="allocationId")
     private @Nullable Output<String> allocationId;
 
     /**
-     * @return The ID of the EIP associated with the Internet-facing NLB instance.
+     * @return The ID of the elastic IP address.
      * 
      */
     public Optional<Output<String>> allocationId() {
@@ -32,14 +32,14 @@ public final class LoadBalancerZoneMappingArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * The ID of the elastic network interface (ENI).
+     * The ID of ENI.
      * 
      */
     @Import(name="eniId")
     private @Nullable Output<String> eniId;
 
     /**
-     * @return The ID of the elastic network interface (ENI).
+     * @return The ID of ENI.
      * 
      */
     public Optional<Output<String>> eniId() {
@@ -47,14 +47,14 @@ public final class LoadBalancerZoneMappingArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * The IPv6 address of the NLB instance.
+     * The IPv6 address of a network-based server load balancer instance.
      * 
      */
     @Import(name="ipv6Address")
     private @Nullable Output<String> ipv6Address;
 
     /**
-     * @return The IPv6 address of the NLB instance.
+     * @return The IPv6 address of a network-based server load balancer instance.
      * 
      */
     public Optional<Output<String>> ipv6Address() {
@@ -62,14 +62,14 @@ public final class LoadBalancerZoneMappingArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * The private IPv4 address of the NLB instance.
+     * The private IPv4 address of a network-based server load balancer instance.
      * 
      */
     @Import(name="privateIpv4Address")
     private @Nullable Output<String> privateIpv4Address;
 
     /**
-     * @return The private IPv4 address of the NLB instance.
+     * @return The private IPv4 address of a network-based server load balancer instance.
      * 
      */
     public Optional<Output<String>> privateIpv4Address() {
@@ -77,14 +77,14 @@ public final class LoadBalancerZoneMappingArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * The public IPv4 address of the NLB instance.
+     * Public IPv4 address of a network-based server load balancer instance.
      * 
      */
     @Import(name="publicIpv4Address")
     private @Nullable Output<String> publicIpv4Address;
 
     /**
-     * @return The public IPv4 address of the NLB instance.
+     * @return Public IPv4 address of a network-based server load balancer instance.
      * 
      */
     public Optional<Output<String>> publicIpv4Address() {
@@ -92,14 +92,29 @@ public final class LoadBalancerZoneMappingArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * The vSwitch in the zone. You can specify only one vSwitch (subnet) in each zone of an NLB instance.
+     * Zone Status.
+     * 
+     */
+    @Import(name="status")
+    private @Nullable Output<String> status;
+
+    /**
+     * @return Zone Status.
+     * 
+     */
+    public Optional<Output<String>> status() {
+        return Optional.ofNullable(this.status);
+    }
+
+    /**
+     * The switch corresponding to the zone. Each zone uses one switch and one subnet by default.
      * 
      */
     @Import(name="vswitchId", required=true)
     private Output<String> vswitchId;
 
     /**
-     * @return The vSwitch in the zone. You can specify only one vSwitch (subnet) in each zone of an NLB instance.
+     * @return The switch corresponding to the zone. Each zone uses one switch and one subnet by default.
      * 
      */
     public Output<String> vswitchId() {
@@ -107,14 +122,14 @@ public final class LoadBalancerZoneMappingArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * The ID of the zone of the NLB instance.
+     * The name of the zone. You can call the DescribeZones operation to obtain the name of the zone.
      * 
      */
     @Import(name="zoneId", required=true)
     private Output<String> zoneId;
 
     /**
-     * @return The ID of the zone of the NLB instance.
+     * @return The name of the zone. You can call the DescribeZones operation to obtain the name of the zone.
      * 
      */
     public Output<String> zoneId() {
@@ -129,6 +144,7 @@ public final class LoadBalancerZoneMappingArgs extends com.pulumi.resources.Reso
         this.ipv6Address = $.ipv6Address;
         this.privateIpv4Address = $.privateIpv4Address;
         this.publicIpv4Address = $.publicIpv4Address;
+        this.status = $.status;
         this.vswitchId = $.vswitchId;
         this.zoneId = $.zoneId;
     }
@@ -152,7 +168,7 @@ public final class LoadBalancerZoneMappingArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param allocationId The ID of the EIP associated with the Internet-facing NLB instance.
+         * @param allocationId The ID of the elastic IP address.
          * 
          * @return builder
          * 
@@ -163,7 +179,7 @@ public final class LoadBalancerZoneMappingArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param allocationId The ID of the EIP associated with the Internet-facing NLB instance.
+         * @param allocationId The ID of the elastic IP address.
          * 
          * @return builder
          * 
@@ -173,7 +189,7 @@ public final class LoadBalancerZoneMappingArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param eniId The ID of the elastic network interface (ENI).
+         * @param eniId The ID of ENI.
          * 
          * @return builder
          * 
@@ -184,7 +200,7 @@ public final class LoadBalancerZoneMappingArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param eniId The ID of the elastic network interface (ENI).
+         * @param eniId The ID of ENI.
          * 
          * @return builder
          * 
@@ -194,7 +210,7 @@ public final class LoadBalancerZoneMappingArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param ipv6Address The IPv6 address of the NLB instance.
+         * @param ipv6Address The IPv6 address of a network-based server load balancer instance.
          * 
          * @return builder
          * 
@@ -205,7 +221,7 @@ public final class LoadBalancerZoneMappingArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param ipv6Address The IPv6 address of the NLB instance.
+         * @param ipv6Address The IPv6 address of a network-based server load balancer instance.
          * 
          * @return builder
          * 
@@ -215,7 +231,7 @@ public final class LoadBalancerZoneMappingArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param privateIpv4Address The private IPv4 address of the NLB instance.
+         * @param privateIpv4Address The private IPv4 address of a network-based server load balancer instance.
          * 
          * @return builder
          * 
@@ -226,7 +242,7 @@ public final class LoadBalancerZoneMappingArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param privateIpv4Address The private IPv4 address of the NLB instance.
+         * @param privateIpv4Address The private IPv4 address of a network-based server load balancer instance.
          * 
          * @return builder
          * 
@@ -236,7 +252,7 @@ public final class LoadBalancerZoneMappingArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param publicIpv4Address The public IPv4 address of the NLB instance.
+         * @param publicIpv4Address Public IPv4 address of a network-based server load balancer instance.
          * 
          * @return builder
          * 
@@ -247,7 +263,7 @@ public final class LoadBalancerZoneMappingArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param publicIpv4Address The public IPv4 address of the NLB instance.
+         * @param publicIpv4Address Public IPv4 address of a network-based server load balancer instance.
          * 
          * @return builder
          * 
@@ -257,7 +273,28 @@ public final class LoadBalancerZoneMappingArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param vswitchId The vSwitch in the zone. You can specify only one vSwitch (subnet) in each zone of an NLB instance.
+         * @param status Zone Status.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder status(@Nullable Output<String> status) {
+            $.status = status;
+            return this;
+        }
+
+        /**
+         * @param status Zone Status.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder status(String status) {
+            return status(Output.of(status));
+        }
+
+        /**
+         * @param vswitchId The switch corresponding to the zone. Each zone uses one switch and one subnet by default.
          * 
          * @return builder
          * 
@@ -268,7 +305,7 @@ public final class LoadBalancerZoneMappingArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param vswitchId The vSwitch in the zone. You can specify only one vSwitch (subnet) in each zone of an NLB instance.
+         * @param vswitchId The switch corresponding to the zone. Each zone uses one switch and one subnet by default.
          * 
          * @return builder
          * 
@@ -278,7 +315,7 @@ public final class LoadBalancerZoneMappingArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param zoneId The ID of the zone of the NLB instance.
+         * @param zoneId The name of the zone. You can call the DescribeZones operation to obtain the name of the zone.
          * 
          * @return builder
          * 
@@ -289,7 +326,7 @@ public final class LoadBalancerZoneMappingArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param zoneId The ID of the zone of the NLB instance.
+         * @param zoneId The name of the zone. You can call the DescribeZones operation to obtain the name of the zone.
          * 
          * @return builder
          * 

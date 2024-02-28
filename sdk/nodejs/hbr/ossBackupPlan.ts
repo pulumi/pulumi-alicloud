@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
  *
  * For information about HBR Oss Backup Plan and how to use it, see [What is Oss Backup Plan](https://www.alibabacloud.com/help/doc-detail/130040.htm).
  *
- * > **NOTE:** Available in v1.131.0+.
+ * > **NOTE:** Available since v1.131.0+.
  *
  * ## Example Usage
  *
@@ -28,7 +28,7 @@ import * as utilities from "../utilities";
  * const defaultBucket = new alicloud.oss.Bucket("defaultBucket", {bucket: pulumi.interpolate`terraform-example-${defaultRandomInteger.result}`});
  * const defaultOssBackupPlan = new alicloud.hbr.OssBackupPlan("defaultOssBackupPlan", {
  *     ossBackupPlanName: "terraform-example",
- *     prefix: "/",
+ *     prefix: "/example",
  *     bucket: defaultBucket.bucket,
  *     vaultId: defaultVault.id,
  *     schedule: "I|1602673264|PT2H",

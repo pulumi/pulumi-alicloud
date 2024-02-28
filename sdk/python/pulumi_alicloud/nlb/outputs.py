@@ -11,6 +11,8 @@ from .. import _utilities
 from . import outputs
 
 __all__ = [
+    'LoadBalancerDeletionProtectionConfig',
+    'LoadBalancerModificationProtectionConfig',
     'LoadBalancerZoneMapping',
     'ServerGroupHealthCheck',
     'GetListenersListenerResult',
@@ -23,6 +25,126 @@ __all__ = [
     'GetServerGroupsGroupHealthCheckResult',
     'GetZonesZoneResult',
 ]
+
+@pulumi.output_type
+class LoadBalancerDeletionProtectionConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "enabledTime":
+            suggest = "enabled_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in LoadBalancerDeletionProtectionConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        LoadBalancerDeletionProtectionConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        LoadBalancerDeletionProtectionConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 enabled: Optional[bool] = None,
+                 enabled_time: Optional[str] = None,
+                 reason: Optional[str] = None):
+        """
+        :param bool enabled: Delete protection enable.
+        :param str enabled_time: Opening time.
+        :param str reason: Reason for opening.
+        """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if enabled_time is not None:
+            pulumi.set(__self__, "enabled_time", enabled_time)
+        if reason is not None:
+            pulumi.set(__self__, "reason", reason)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[bool]:
+        """
+        Delete protection enable.
+        """
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter(name="enabledTime")
+    def enabled_time(self) -> Optional[str]:
+        """
+        Opening time.
+        """
+        return pulumi.get(self, "enabled_time")
+
+    @property
+    @pulumi.getter
+    def reason(self) -> Optional[str]:
+        """
+        Reason for opening.
+        """
+        return pulumi.get(self, "reason")
+
+
+@pulumi.output_type
+class LoadBalancerModificationProtectionConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "enabledTime":
+            suggest = "enabled_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in LoadBalancerModificationProtectionConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        LoadBalancerModificationProtectionConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        LoadBalancerModificationProtectionConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 enabled_time: Optional[str] = None,
+                 reason: Optional[str] = None,
+                 status: Optional[str] = None):
+        """
+        :param str enabled_time: Opening time.
+        :param str reason: Reason for opening.
+        :param str status: ON.
+        """
+        if enabled_time is not None:
+            pulumi.set(__self__, "enabled_time", enabled_time)
+        if reason is not None:
+            pulumi.set(__self__, "reason", reason)
+        if status is not None:
+            pulumi.set(__self__, "status", status)
+
+    @property
+    @pulumi.getter(name="enabledTime")
+    def enabled_time(self) -> Optional[str]:
+        """
+        Opening time.
+        """
+        return pulumi.get(self, "enabled_time")
+
+    @property
+    @pulumi.getter
+    def reason(self) -> Optional[str]:
+        """
+        Reason for opening.
+        """
+        return pulumi.get(self, "reason")
+
+    @property
+    @pulumi.getter
+    def status(self) -> Optional[str]:
+        """
+        ON.
+        """
+        return pulumi.get(self, "status")
+
 
 @pulumi.output_type
 class LoadBalancerZoneMapping(dict):
@@ -62,15 +184,17 @@ class LoadBalancerZoneMapping(dict):
                  eni_id: Optional[str] = None,
                  ipv6_address: Optional[str] = None,
                  private_ipv4_address: Optional[str] = None,
-                 public_ipv4_address: Optional[str] = None):
+                 public_ipv4_address: Optional[str] = None,
+                 status: Optional[str] = None):
         """
-        :param str vswitch_id: The vSwitch in the zone. You can specify only one vSwitch (subnet) in each zone of an NLB instance.
-        :param str zone_id: The ID of the zone of the NLB instance.
-        :param str allocation_id: The ID of the EIP associated with the Internet-facing NLB instance.
-        :param str eni_id: The ID of the elastic network interface (ENI).
-        :param str ipv6_address: The IPv6 address of the NLB instance.
-        :param str private_ipv4_address: The private IPv4 address of the NLB instance.
-        :param str public_ipv4_address: The public IPv4 address of the NLB instance.
+        :param str vswitch_id: The switch corresponding to the zone. Each zone uses one switch and one subnet by default.
+        :param str zone_id: The name of the zone. You can call the DescribeZones operation to obtain the name of the zone.
+        :param str allocation_id: The ID of the elastic IP address.
+        :param str eni_id: The ID of ENI.
+        :param str ipv6_address: The IPv6 address of a network-based server load balancer instance.
+        :param str private_ipv4_address: The private IPv4 address of a network-based server load balancer instance.
+        :param str public_ipv4_address: Public IPv4 address of a network-based server load balancer instance.
+        :param str status: Zone Status.
         """
         pulumi.set(__self__, "vswitch_id", vswitch_id)
         pulumi.set(__self__, "zone_id", zone_id)
@@ -84,12 +208,14 @@ class LoadBalancerZoneMapping(dict):
             pulumi.set(__self__, "private_ipv4_address", private_ipv4_address)
         if public_ipv4_address is not None:
             pulumi.set(__self__, "public_ipv4_address", public_ipv4_address)
+        if status is not None:
+            pulumi.set(__self__, "status", status)
 
     @property
     @pulumi.getter(name="vswitchId")
     def vswitch_id(self) -> str:
         """
-        The vSwitch in the zone. You can specify only one vSwitch (subnet) in each zone of an NLB instance.
+        The switch corresponding to the zone. Each zone uses one switch and one subnet by default.
         """
         return pulumi.get(self, "vswitch_id")
 
@@ -97,7 +223,7 @@ class LoadBalancerZoneMapping(dict):
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> str:
         """
-        The ID of the zone of the NLB instance.
+        The name of the zone. You can call the DescribeZones operation to obtain the name of the zone.
         """
         return pulumi.get(self, "zone_id")
 
@@ -105,7 +231,7 @@ class LoadBalancerZoneMapping(dict):
     @pulumi.getter(name="allocationId")
     def allocation_id(self) -> Optional[str]:
         """
-        The ID of the EIP associated with the Internet-facing NLB instance.
+        The ID of the elastic IP address.
         """
         return pulumi.get(self, "allocation_id")
 
@@ -113,7 +239,7 @@ class LoadBalancerZoneMapping(dict):
     @pulumi.getter(name="eniId")
     def eni_id(self) -> Optional[str]:
         """
-        The ID of the elastic network interface (ENI).
+        The ID of ENI.
         """
         return pulumi.get(self, "eni_id")
 
@@ -121,7 +247,7 @@ class LoadBalancerZoneMapping(dict):
     @pulumi.getter(name="ipv6Address")
     def ipv6_address(self) -> Optional[str]:
         """
-        The IPv6 address of the NLB instance.
+        The IPv6 address of a network-based server load balancer instance.
         """
         return pulumi.get(self, "ipv6_address")
 
@@ -129,7 +255,7 @@ class LoadBalancerZoneMapping(dict):
     @pulumi.getter(name="privateIpv4Address")
     def private_ipv4_address(self) -> Optional[str]:
         """
-        The private IPv4 address of the NLB instance.
+        The private IPv4 address of a network-based server load balancer instance.
         """
         return pulumi.get(self, "private_ipv4_address")
 
@@ -137,9 +263,17 @@ class LoadBalancerZoneMapping(dict):
     @pulumi.getter(name="publicIpv4Address")
     def public_ipv4_address(self) -> Optional[str]:
         """
-        The public IPv4 address of the NLB instance.
+        Public IPv4 address of a network-based server load balancer instance.
         """
         return pulumi.get(self, "public_ipv4_address")
+
+    @property
+    @pulumi.getter
+    def status(self) -> Optional[str]:
+        """
+        Zone Status.
+        """
+        return pulumi.get(self, "status")
 
 
 @pulumi.output_type

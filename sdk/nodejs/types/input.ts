@@ -9646,33 +9646,67 @@ export namespace nas {
 }
 
 export namespace nlb {
+    export interface LoadBalancerDeletionProtectionConfig {
+        /**
+         * Delete protection enable.
+         */
+        enabled?: pulumi.Input<boolean>;
+        /**
+         * Opening time.
+         */
+        enabledTime?: pulumi.Input<string>;
+        /**
+         * Reason for opening.
+         */
+        reason?: pulumi.Input<string>;
+    }
+
+    export interface LoadBalancerModificationProtectionConfig {
+        /**
+         * Opening time.
+         */
+        enabledTime?: pulumi.Input<string>;
+        /**
+         * Reason for opening.
+         */
+        reason?: pulumi.Input<string>;
+        /**
+         * ON.
+         */
+        status?: pulumi.Input<string>;
+    }
+
     export interface LoadBalancerZoneMapping {
         /**
-         * The ID of the EIP associated with the Internet-facing NLB instance.
+         * The ID of the elastic IP address.
          */
         allocationId?: pulumi.Input<string>;
         /**
-         * The ID of the elastic network interface (ENI).
+         * The ID of ENI.
          */
         eniId?: pulumi.Input<string>;
         /**
-         * The IPv6 address of the NLB instance.
+         * The IPv6 address of a network-based server load balancer instance.
          */
         ipv6Address?: pulumi.Input<string>;
         /**
-         * The private IPv4 address of the NLB instance.
+         * The private IPv4 address of a network-based server load balancer instance.
          */
         privateIpv4Address?: pulumi.Input<string>;
         /**
-         * The public IPv4 address of the NLB instance.
+         * Public IPv4 address of a network-based server load balancer instance.
          */
         publicIpv4Address?: pulumi.Input<string>;
         /**
-         * The vSwitch in the zone. You can specify only one vSwitch (subnet) in each zone of an NLB instance.
+         * Zone Status.
+         */
+        status?: pulumi.Input<string>;
+        /**
+         * The switch corresponding to the zone. Each zone uses one switch and one subnet by default.
          */
         vswitchId: pulumi.Input<string>;
         /**
-         * The ID of the zone of the NLB instance.
+         * The name of the zone. You can call the DescribeZones operation to obtain the name of the zone.
          */
         zoneId: pulumi.Input<string>;
     }

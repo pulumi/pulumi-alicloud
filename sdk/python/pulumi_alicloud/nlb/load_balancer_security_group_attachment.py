@@ -20,8 +20,10 @@ class LoadBalancerSecurityGroupAttachmentArgs:
         """
         The set of arguments for constructing a LoadBalancerSecurityGroupAttachment resource.
         :param pulumi.Input[str] load_balancer_id: The ID of the network-based server load balancer instance to be bound to the security group.
-        :param pulumi.Input[str] security_group_id: The ID of security groups.
-        :param pulumi.Input[bool] dry_run: Whether to PreCheck this request only. Value:-**true**: sends a check request and does not bind a security group to the instance. Check items include whether required parameters, request format, and business restrictions have been filled in. If the check fails, the corresponding error is returned. If the check passes, the error code 'DryRunOperation' is returned '.-**false** (default): Sends a normal request, returns the HTTP 2xx status code after the check, and directly performs the operation.
+        :param pulumi.Input[str] security_group_id: The ID of the security group.
+        :param pulumi.Input[bool] dry_run: Whether to PreCheck this request only. Value:
+               - **true**: sends a check request and does not bind a security group to the instance. Check items include whether required parameters, request format, and business restrictions have been filled in. If the check fails, the corresponding error is returned. If the check passes, the error code 'DryRunOperation' is returned '.
+               - **false** (default): Sends a normal request, returns the HTTP 2xx status code after the check, and directly performs the operation.
         """
         pulumi.set(__self__, "load_balancer_id", load_balancer_id)
         pulumi.set(__self__, "security_group_id", security_group_id)
@@ -44,7 +46,7 @@ class LoadBalancerSecurityGroupAttachmentArgs:
     @pulumi.getter(name="securityGroupId")
     def security_group_id(self) -> pulumi.Input[str]:
         """
-        The ID of security groups.
+        The ID of the security group.
         """
         return pulumi.get(self, "security_group_id")
 
@@ -56,7 +58,9 @@ class LoadBalancerSecurityGroupAttachmentArgs:
     @pulumi.getter(name="dryRun")
     def dry_run(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether to PreCheck this request only. Value:-**true**: sends a check request and does not bind a security group to the instance. Check items include whether required parameters, request format, and business restrictions have been filled in. If the check fails, the corresponding error is returned. If the check passes, the error code 'DryRunOperation' is returned '.-**false** (default): Sends a normal request, returns the HTTP 2xx status code after the check, and directly performs the operation.
+        Whether to PreCheck this request only. Value:
+        - **true**: sends a check request and does not bind a security group to the instance. Check items include whether required parameters, request format, and business restrictions have been filled in. If the check fails, the corresponding error is returned. If the check passes, the error code 'DryRunOperation' is returned '.
+        - **false** (default): Sends a normal request, returns the HTTP 2xx status code after the check, and directly performs the operation.
         """
         return pulumi.get(self, "dry_run")
 
@@ -73,9 +77,11 @@ class _LoadBalancerSecurityGroupAttachmentState:
                  security_group_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering LoadBalancerSecurityGroupAttachment resources.
-        :param pulumi.Input[bool] dry_run: Whether to PreCheck this request only. Value:-**true**: sends a check request and does not bind a security group to the instance. Check items include whether required parameters, request format, and business restrictions have been filled in. If the check fails, the corresponding error is returned. If the check passes, the error code 'DryRunOperation' is returned '.-**false** (default): Sends a normal request, returns the HTTP 2xx status code after the check, and directly performs the operation.
+        :param pulumi.Input[bool] dry_run: Whether to PreCheck this request only. Value:
+               - **true**: sends a check request and does not bind a security group to the instance. Check items include whether required parameters, request format, and business restrictions have been filled in. If the check fails, the corresponding error is returned. If the check passes, the error code 'DryRunOperation' is returned '.
+               - **false** (default): Sends a normal request, returns the HTTP 2xx status code after the check, and directly performs the operation.
         :param pulumi.Input[str] load_balancer_id: The ID of the network-based server load balancer instance to be bound to the security group.
-        :param pulumi.Input[str] security_group_id: The ID of security groups.
+        :param pulumi.Input[str] security_group_id: The ID of the security group.
         """
         if dry_run is not None:
             pulumi.set(__self__, "dry_run", dry_run)
@@ -88,7 +94,9 @@ class _LoadBalancerSecurityGroupAttachmentState:
     @pulumi.getter(name="dryRun")
     def dry_run(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether to PreCheck this request only. Value:-**true**: sends a check request and does not bind a security group to the instance. Check items include whether required parameters, request format, and business restrictions have been filled in. If the check fails, the corresponding error is returned. If the check passes, the error code 'DryRunOperation' is returned '.-**false** (default): Sends a normal request, returns the HTTP 2xx status code after the check, and directly performs the operation.
+        Whether to PreCheck this request only. Value:
+        - **true**: sends a check request and does not bind a security group to the instance. Check items include whether required parameters, request format, and business restrictions have been filled in. If the check fails, the corresponding error is returned. If the check passes, the error code 'DryRunOperation' is returned '.
+        - **false** (default): Sends a normal request, returns the HTTP 2xx status code after the check, and directly performs the operation.
         """
         return pulumi.get(self, "dry_run")
 
@@ -112,7 +120,7 @@ class _LoadBalancerSecurityGroupAttachmentState:
     @pulumi.getter(name="securityGroupId")
     def security_group_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID of security groups.
+        The ID of the security group.
         """
         return pulumi.get(self, "security_group_id")
 
@@ -193,17 +201,19 @@ class LoadBalancerSecurityGroupAttachment(pulumi.CustomResource):
 
         ## Import
 
-        Nlb Load Balancer Security Group Attachment can be imported using the id, e.g.
+        NLB Load Balancer Security Group Attachment can be imported using the id, e.g.
 
         ```sh
-        $ pulumi import alicloud:nlb/loadBalancerSecurityGroupAttachment:LoadBalancerSecurityGroupAttachment example <LoadBalancerId>:<SecurityGroupId>
+        $ pulumi import alicloud:nlb/loadBalancerSecurityGroupAttachment:LoadBalancerSecurityGroupAttachment example <load_balancer_id>:<security_group_id>
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[bool] dry_run: Whether to PreCheck this request only. Value:-**true**: sends a check request and does not bind a security group to the instance. Check items include whether required parameters, request format, and business restrictions have been filled in. If the check fails, the corresponding error is returned. If the check passes, the error code 'DryRunOperation' is returned '.-**false** (default): Sends a normal request, returns the HTTP 2xx status code after the check, and directly performs the operation.
+        :param pulumi.Input[bool] dry_run: Whether to PreCheck this request only. Value:
+               - **true**: sends a check request and does not bind a security group to the instance. Check items include whether required parameters, request format, and business restrictions have been filled in. If the check fails, the corresponding error is returned. If the check passes, the error code 'DryRunOperation' is returned '.
+               - **false** (default): Sends a normal request, returns the HTTP 2xx status code after the check, and directly performs the operation.
         :param pulumi.Input[str] load_balancer_id: The ID of the network-based server load balancer instance to be bound to the security group.
-        :param pulumi.Input[str] security_group_id: The ID of security groups.
+        :param pulumi.Input[str] security_group_id: The ID of the security group.
         """
         ...
     @overload
@@ -274,10 +284,10 @@ class LoadBalancerSecurityGroupAttachment(pulumi.CustomResource):
 
         ## Import
 
-        Nlb Load Balancer Security Group Attachment can be imported using the id, e.g.
+        NLB Load Balancer Security Group Attachment can be imported using the id, e.g.
 
         ```sh
-        $ pulumi import alicloud:nlb/loadBalancerSecurityGroupAttachment:LoadBalancerSecurityGroupAttachment example <LoadBalancerId>:<SecurityGroupId>
+        $ pulumi import alicloud:nlb/loadBalancerSecurityGroupAttachment:LoadBalancerSecurityGroupAttachment example <load_balancer_id>:<security_group_id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -334,9 +344,11 @@ class LoadBalancerSecurityGroupAttachment(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[bool] dry_run: Whether to PreCheck this request only. Value:-**true**: sends a check request and does not bind a security group to the instance. Check items include whether required parameters, request format, and business restrictions have been filled in. If the check fails, the corresponding error is returned. If the check passes, the error code 'DryRunOperation' is returned '.-**false** (default): Sends a normal request, returns the HTTP 2xx status code after the check, and directly performs the operation.
+        :param pulumi.Input[bool] dry_run: Whether to PreCheck this request only. Value:
+               - **true**: sends a check request and does not bind a security group to the instance. Check items include whether required parameters, request format, and business restrictions have been filled in. If the check fails, the corresponding error is returned. If the check passes, the error code 'DryRunOperation' is returned '.
+               - **false** (default): Sends a normal request, returns the HTTP 2xx status code after the check, and directly performs the operation.
         :param pulumi.Input[str] load_balancer_id: The ID of the network-based server load balancer instance to be bound to the security group.
-        :param pulumi.Input[str] security_group_id: The ID of security groups.
+        :param pulumi.Input[str] security_group_id: The ID of the security group.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -351,7 +363,9 @@ class LoadBalancerSecurityGroupAttachment(pulumi.CustomResource):
     @pulumi.getter(name="dryRun")
     def dry_run(self) -> pulumi.Output[Optional[bool]]:
         """
-        Whether to PreCheck this request only. Value:-**true**: sends a check request and does not bind a security group to the instance. Check items include whether required parameters, request format, and business restrictions have been filled in. If the check fails, the corresponding error is returned. If the check passes, the error code 'DryRunOperation' is returned '.-**false** (default): Sends a normal request, returns the HTTP 2xx status code after the check, and directly performs the operation.
+        Whether to PreCheck this request only. Value:
+        - **true**: sends a check request and does not bind a security group to the instance. Check items include whether required parameters, request format, and business restrictions have been filled in. If the check fails, the corresponding error is returned. If the check passes, the error code 'DryRunOperation' is returned '.
+        - **false** (default): Sends a normal request, returns the HTTP 2xx status code after the check, and directly performs the operation.
         """
         return pulumi.get(self, "dry_run")
 
@@ -367,7 +381,7 @@ class LoadBalancerSecurityGroupAttachment(pulumi.CustomResource):
     @pulumi.getter(name="securityGroupId")
     def security_group_id(self) -> pulumi.Output[str]:
         """
-        The ID of security groups.
+        The ID of the security group.
         """
         return pulumi.get(self, "security_group_id")
 

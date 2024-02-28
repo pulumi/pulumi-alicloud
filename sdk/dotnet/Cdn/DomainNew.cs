@@ -25,24 +25,29 @@ namespace Pulumi.AliCloud.Cdn
     /// using System.Linq;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
+    /// using Random = Pulumi.Random;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var config = new Config();
-    ///     var domainName = config.Get("domainName") ?? "mycdndomain.alicloud-provider.cn";
-    ///     var @default = new AliCloud.Cdn.DomainNew("default", new()
+    ///     var defaultRandomInteger = new Random.RandomInteger("defaultRandomInteger", new()
     ///     {
-    ///         Scope = "overseas",
-    ///         DomainName = domainName,
+    ///         Max = 99999,
+    ///         Min = 10000,
+    ///     });
+    /// 
+    ///     var defaultDomainNew = new AliCloud.Cdn.DomainNew("defaultDomainNew", new()
+    ///     {
     ///         CdnType = "web",
+    ///         DomainName = defaultRandomInteger.Result.Apply(result =&gt; $"mycdndomain-{result}.alicloud-provider.cn"),
+    ///         Scope = "overseas",
     ///         Sources = new[]
     ///         {
     ///             new AliCloud.Cdn.Inputs.DomainNewSourceArgs
     ///             {
-    ///                 Type = "ipaddr",
     ///                 Content = "1.1.1.1",
-    ///                 Priority = 20,
     ///                 Port = 80,
+    ///                 Priority = 20,
+    ///                 Type = "ipaddr",
     ///                 Weight = 15,
     ///             },
     ///         },

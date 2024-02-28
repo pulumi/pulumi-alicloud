@@ -27,6 +27,8 @@ import (
 //
 // import (
 //
+//	"fmt"
+//
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cdn"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/log"
@@ -37,10 +39,19 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			defaultRandomInteger, err := random.NewRandomInteger(ctx, "defaultRandomInteger", &random.RandomIntegerArgs{
+//				Max: pulumi.Int(99999),
+//				Min: pulumi.Int(10000),
+//			})
+//			if err != nil {
+//				return err
+//			}
 //			defaultDomainNew, err := cdn.NewDomainNew(ctx, "defaultDomainNew", &cdn.DomainNewArgs{
-//				Scope:      pulumi.String("overseas"),
-//				DomainName: pulumi.String("mycdndomain.alicloud-provider.cn"),
-//				CdnType:    pulumi.String("web"),
+//				Scope: pulumi.String("overseas"),
+//				DomainName: defaultRandomInteger.Result.ApplyT(func(result int) (string, error) {
+//					return fmt.Sprintf("mycdndomain-%v.alicloud-provider.cn", result), nil
+//				}).(pulumi.StringOutput),
+//				CdnType: pulumi.String("web"),
 //				Sources: cdn.DomainNewSourceArray{
 //					&cdn.DomainNewSourceArgs{
 //						Type:     pulumi.String("ipaddr"),
@@ -54,21 +65,18 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = random.NewRandomInteger(ctx, "defaultRandomInteger", &random.RandomIntegerArgs{
-//				Max: pulumi.Int(99999),
-//				Min: pulumi.Int(10000),
-//			})
-//			if err != nil {
-//				return err
-//			}
 //			defaultProject, err := log.NewProject(ctx, "defaultProject", &log.ProjectArgs{
+//				ProjectName: defaultRandomInteger.Result.ApplyT(func(result int) (string, error) {
+//					return fmt.Sprintf("terraform-example-%v", result), nil
+//				}).(pulumi.StringOutput),
 //				Description: pulumi.String("terraform-example"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			defaultStore, err := log.NewStore(ctx, "defaultStore", &log.StoreArgs{
-//				Project:            defaultProject.Name,
+//				ProjectName:        defaultProject.Name,
+//				LogstoreName:       pulumi.String("example-store"),
 //				ShardCount:         pulumi.Int(3),
 //				AutoSplit:          pulumi.Bool(true),
 //				MaxSplitShardCount: pulumi.Int(60),
@@ -85,8 +93,8 @@ import (
 //			}
 //			_, err = cdn.NewRealTimeLogDelivery(ctx, "defaultRealTimeLogDelivery", &cdn.RealTimeLogDeliveryArgs{
 //				Domain:    defaultDomainNew.DomainName,
-//				Logstore:  defaultProject.Name,
-//				Project:   defaultStore.Name,
+//				Logstore:  defaultStore.LogstoreName,
+//				Project:   defaultProject.ProjectName,
 //				SlsRegion: *pulumi.String(defaultRegions.Regions[0].Id),
 //			})
 //			if err != nil {

@@ -453,6 +453,7 @@ class AdConnectorDirectory(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
         config = pulumi.Config()
         name = config.get("name")
@@ -467,8 +468,11 @@ class AdConnectorDirectory(pulumi.CustomResource):
             cidr_block="172.16.0.0/24",
             zone_id=default_zones.ids[0],
             vswitch_name=name)
+        default_random_integer = random.RandomInteger("defaultRandomInteger",
+            min=10000,
+            max=99999)
         default_ad_connector_directory = alicloud.eds.AdConnectorDirectory("defaultAdConnectorDirectory",
-            directory_name=name,
+            directory_name=default_random_integer.result.apply(lambda result: f"{name}-{result}"),
             desktop_access_type="INTERNET",
             dns_addresses=["127.0.0.2"],
             domain_name="corp.example.com",
@@ -525,6 +529,7 @@ class AdConnectorDirectory(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
         config = pulumi.Config()
         name = config.get("name")
@@ -539,8 +544,11 @@ class AdConnectorDirectory(pulumi.CustomResource):
             cidr_block="172.16.0.0/24",
             zone_id=default_zones.ids[0],
             vswitch_name=name)
+        default_random_integer = random.RandomInteger("defaultRandomInteger",
+            min=10000,
+            max=99999)
         default_ad_connector_directory = alicloud.eds.AdConnectorDirectory("defaultAdConnectorDirectory",
-            directory_name=name,
+            directory_name=default_random_integer.result.apply(lambda result: f"{name}-{result}"),
             desktop_access_type="INTERNET",
             dns_addresses=["127.0.0.2"],
             domain_name="corp.example.com",

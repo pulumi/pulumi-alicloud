@@ -9,6 +9,8 @@ import * as utilities from "../utilities";
 /**
  * The VPN connections data source lists lots of VPN connections resource information owned by an Alicloud account.
  *
+ * > **NOTE:** Available since v1.18.0.
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -71,7 +73,7 @@ export interface GetConnectionsResult {
      */
     readonly connections: outputs.vpn.GetConnectionsConnection[];
     /**
-     * ID of the VPN customer gateway.
+     * The ID of the customer gateway in Tunnel.
      */
     readonly customerGatewayId?: string;
     /**
@@ -95,6 +97,8 @@ export interface GetConnectionsResult {
 }
 /**
  * The VPN connections data source lists lots of VPN connections resource information owned by an Alicloud account.
+ *
+ * > **NOTE:** Available since v1.18.0.
  *
  * ## Example Usage
  *

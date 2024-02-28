@@ -14,7 +14,7 @@ import (
 
 // Create an alias for the master key (CMK).
 //
-// > **NOTE:** Available in v1.77.0+.
+// > **NOTE:** Available since v1.77.0+.
 //
 // ## Example Usage
 //
@@ -32,12 +32,14 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			thisKey, err := kms.NewKey(ctx, "thisKey", nil)
+//			thisKey, err := kms.NewKey(ctx, "thisKey", &kms.KeyArgs{
+//				PendingWindowInDays: pulumi.Int(7),
+//			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = kms.NewAlias(ctx, "thisAlias", &kms.AliasArgs{
-//				AliasName: pulumi.String("alias/test_kms_alias"),
+//				AliasName: pulumi.String("alias/example_kms_alias"),
 //				KeyId:     thisKey.ID(),
 //			})
 //			if err != nil {

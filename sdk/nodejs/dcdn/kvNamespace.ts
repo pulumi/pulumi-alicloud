@@ -18,12 +18,17 @@ import * as utilities from "../utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
+ * import * as random from "@pulumi/random";
  *
  * const config = new pulumi.Config();
- * const name = config.get("name") || "tf-example";
- * const _default = new alicloud.dcdn.KvNamespace("default", {
+ * const name = config.get("name") || "terraform-example";
+ * const defaultRandomInteger = new random.RandomInteger("defaultRandomInteger", {
+ *     min: 10000,
+ *     max: 99999,
+ * });
+ * const defaultKvNamespace = new alicloud.dcdn.KvNamespace("defaultKvNamespace", {
  *     description: name,
- *     namespace: name,
+ *     namespace: pulumi.interpolate`${name}-${defaultRandomInteger.result}`,
  * });
  * ```
  *

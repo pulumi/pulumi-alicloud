@@ -13,43 +13,49 @@ namespace Pulumi.AliCloud.Nlb.Inputs
     public sealed class LoadBalancerZoneMappingArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The ID of the EIP associated with the Internet-facing NLB instance.
+        /// The ID of the elastic IP address.
         /// </summary>
         [Input("allocationId")]
         public Input<string>? AllocationId { get; set; }
 
         /// <summary>
-        /// The ID of the elastic network interface (ENI).
+        /// The ID of ENI.
         /// </summary>
         [Input("eniId")]
         public Input<string>? EniId { get; set; }
 
         /// <summary>
-        /// The IPv6 address of the NLB instance.
+        /// The IPv6 address of a network-based server load balancer instance.
         /// </summary>
         [Input("ipv6Address")]
         public Input<string>? Ipv6Address { get; set; }
 
         /// <summary>
-        /// The private IPv4 address of the NLB instance.
+        /// The private IPv4 address of a network-based server load balancer instance.
         /// </summary>
         [Input("privateIpv4Address")]
         public Input<string>? PrivateIpv4Address { get; set; }
 
         /// <summary>
-        /// The public IPv4 address of the NLB instance.
+        /// Public IPv4 address of a network-based server load balancer instance.
         /// </summary>
         [Input("publicIpv4Address")]
         public Input<string>? PublicIpv4Address { get; set; }
 
         /// <summary>
-        /// The vSwitch in the zone. You can specify only one vSwitch (subnet) in each zone of an NLB instance.
+        /// Zone Status.
+        /// </summary>
+        [Input("status")]
+        public Input<string>? Status { get; set; }
+
+        /// <summary>
+        /// The switch corresponding to the zone. Each zone uses one switch and one subnet by default.
         /// </summary>
         [Input("vswitchId", required: true)]
         public Input<string> VswitchId { get; set; } = null!;
 
         /// <summary>
-        /// The ID of the zone of the NLB instance.
+        /// The name of the zone. You can call the DescribeZones operation to obtain the name of the zone.
         /// </summary>
         [Input("zoneId", required: true)]
         public Input<string> ZoneId { get; set; } = null!;

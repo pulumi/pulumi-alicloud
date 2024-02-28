@@ -216,7 +216,7 @@ namespace Pulumi.AliCloud.Slb
         /// A mapping of tags to assign to the resource. The `tags` can have a maximum of 10 tag for every load balancer instance.
         /// </summary>
         [Output("tags")]
-        public Output<ImmutableDictionary<string, object>?> Tags { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, object>> Tags { get; private set; } = null!;
 
         /// <summary>
         /// The VSwitch ID to launch in. If `address_type` is internet, it will be ignore.

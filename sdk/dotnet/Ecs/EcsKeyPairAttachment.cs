@@ -25,6 +25,7 @@ namespace Pulumi.AliCloud.Ecs
     /// using System.Linq;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
+    /// using Random = Pulumi.Random;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
@@ -79,9 +80,15 @@ namespace Pulumi.AliCloud.Ecs
     ///         VswitchId = exampleSwitch.Id,
     ///     });
     /// 
+    ///     var @default = new Random.RandomInteger("default", new()
+    ///     {
+    ///         Min = 10000,
+    ///         Max = 99999,
+    ///     });
+    /// 
     ///     var exampleEcsKeyPair = new AliCloud.Ecs.EcsKeyPair("exampleEcsKeyPair", new()
     ///     {
-    ///         KeyPairName = "tf-example",
+    ///         KeyPairName = @default.Result.Apply(result =&gt; $"tf-example-{result}"),
     ///     });
     /// 
     ///     var exampleEcsKeyPairAttachment = new AliCloud.Ecs.EcsKeyPairAttachment("exampleEcsKeyPairAttachment", new()

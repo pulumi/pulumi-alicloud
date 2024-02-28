@@ -55,6 +55,8 @@ func GetAccelerators(ctx *pulumi.Context, args *GetAcceleratorsArgs, opts ...pul
 
 // A collection of arguments for invoking getAccelerators.
 type GetAcceleratorsArgs struct {
+	// The bandwidth billing method. Default value: `BandwidthPackage`. Valid values:
+	BandwidthBillingType *string `pulumi:"bandwidthBillingType"`
 	// A list of Accelerator IDs.
 	Ids []string `pulumi:"ids"`
 	// A regex string to filter results by Accelerator name.
@@ -68,7 +70,8 @@ type GetAcceleratorsArgs struct {
 // A collection of values returned by getAccelerators.
 type GetAcceleratorsResult struct {
 	// A list of Ga Accelerators. Each element contains the following attributes:
-	Accelerators []GetAcceleratorsAccelerator `pulumi:"accelerators"`
+	Accelerators         []GetAcceleratorsAccelerator `pulumi:"accelerators"`
+	BandwidthBillingType *string                      `pulumi:"bandwidthBillingType"`
 	// The provider-assigned unique ID for this managed resource.
 	Id        string   `pulumi:"id"`
 	Ids       []string `pulumi:"ids"`
@@ -95,6 +98,8 @@ func GetAcceleratorsOutput(ctx *pulumi.Context, args GetAcceleratorsOutputArgs, 
 
 // A collection of arguments for invoking getAccelerators.
 type GetAcceleratorsOutputArgs struct {
+	// The bandwidth billing method. Default value: `BandwidthPackage`. Valid values:
+	BandwidthBillingType pulumi.StringPtrInput `pulumi:"bandwidthBillingType"`
 	// A list of Accelerator IDs.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
 	// A regex string to filter results by Accelerator name.
@@ -127,6 +132,10 @@ func (o GetAcceleratorsResultOutput) ToGetAcceleratorsResultOutputWithContext(ct
 // A list of Ga Accelerators. Each element contains the following attributes:
 func (o GetAcceleratorsResultOutput) Accelerators() GetAcceleratorsAcceleratorArrayOutput {
 	return o.ApplyT(func(v GetAcceleratorsResult) []GetAcceleratorsAccelerator { return v.Accelerators }).(GetAcceleratorsAcceleratorArrayOutput)
+}
+
+func (o GetAcceleratorsResultOutput) BandwidthBillingType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAcceleratorsResult) *string { return v.BandwidthBillingType }).(pulumi.StringPtrOutput)
 }
 
 // The provider-assigned unique ID for this managed resource.

@@ -16,7 +16,7 @@ import (
 //
 // For information about DMS Enterprise Proxy Access and how to use it, see [What is Proxy Access](https://next.api.alibabacloud.com/document/dms-enterprise/2018-11-01/CreateProxyAccess).
 //
-// > **NOTE:** Available in v1.195.0+.
+// > **NOTE:** Available since v1.195.0+.
 //
 // ## Example Usage
 //
@@ -34,11 +34,20 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := dms.NewEnterpriseProxyAccess(ctx, "default", &dms.EnterpriseProxyAccessArgs{
-//				IndepAccount:  pulumi.String("dmstest"),
-//				IndepPassword: pulumi.String("PASSWORD-DEMO"),
-//				ProxyId:       pulumi.String("1881"),
-//				UserId:        pulumi.String("104442"),
+//			dmsEnterpriseUsersDs, err := dms.GetEnterpriseUsers(ctx, &dms.GetEnterpriseUsersArgs{
+//				Role:   pulumi.StringRef("USER"),
+//				Status: pulumi.StringRef("NORMAL"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ids, err := dms.GetEnterpriseProxies(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = dms.NewEnterpriseProxyAccess(ctx, "default", &dms.EnterpriseProxyAccessArgs{
+//				ProxyId: *pulumi.String(ids.Proxies[0].Id),
+//				UserId:  *pulumi.String(dmsEnterpriseUsersDs.Users[0].UserId),
 //			})
 //			if err != nil {
 //				return err

@@ -32,14 +32,14 @@ public final class DomainConfigArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The args of the domain config.
+     * The args of the domain config. See `function_args` below.
      * 
      */
     @Import(name="functionArgs", required=true)
     private Output<List<DomainConfigFunctionArgArgs>> functionArgs;
 
     /**
-     * @return The args of the domain config.
+     * @return The args of the domain config. See `function_args` below.
      * 
      */
     public Output<List<DomainConfigFunctionArgArgs>> functionArgs() {
@@ -109,7 +109,7 @@ public final class DomainConfigArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param functionArgs The args of the domain config.
+         * @param functionArgs The args of the domain config. See `function_args` below.
          * 
          * @return builder
          * 
@@ -120,7 +120,7 @@ public final class DomainConfigArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param functionArgs The args of the domain config.
+         * @param functionArgs The args of the domain config. See `function_args` below.
          * 
          * @return builder
          * 
@@ -130,7 +130,7 @@ public final class DomainConfigArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param functionArgs The args of the domain config.
+         * @param functionArgs The args of the domain config. See `function_args` below.
          * 
          * @return builder
          * 

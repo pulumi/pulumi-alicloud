@@ -11,7 +11,7 @@ import * as utilities from "../utilities";
  *
  * For information about domain config and how to use it, see [Batch set config](https://www.alibabacloud.com/help/zh/doc-detail/90915.htm)
  *
- * > **NOTE:** Available in v1.34.0+.
+ * > **NOTE:** Available since v1.34.0+.
  *
  * ## Example Usage
  *
@@ -20,10 +20,15 @@ import * as utilities from "../utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
+ * import * as random from "@pulumi/random";
  *
+ * const _default = new random.RandomInteger("default", {
+ *     min: 10000,
+ *     max: 99999,
+ * });
  * // Create a new Domain config.
  * const domain = new alicloud.cdn.DomainNew("domain", {
- *     domainName: "mycdndomain.alicloud-provider.cn",
+ *     domainName: pulumi.interpolate`mycdndomain-${_default.result}.alicloud-provider.cn`,
  *     cdnType: "web",
  *     scope: "overseas",
  *     sources: [{
@@ -93,7 +98,7 @@ export class DomainConfig extends pulumi.CustomResource {
      */
     public readonly domainName!: pulumi.Output<string>;
     /**
-     * The args of the domain config.
+     * The args of the domain config. See `functionArgs` below.
      */
     public readonly functionArgs!: pulumi.Output<outputs.cdn.DomainConfigFunctionArg[]>;
     /**
@@ -158,7 +163,7 @@ export interface DomainConfigState {
      */
     domainName?: pulumi.Input<string>;
     /**
-     * The args of the domain config.
+     * The args of the domain config. See `functionArgs` below.
      */
     functionArgs?: pulumi.Input<pulumi.Input<inputs.cdn.DomainConfigFunctionArg>[]>;
     /**
@@ -180,7 +185,7 @@ export interface DomainConfigArgs {
      */
     domainName: pulumi.Input<string>;
     /**
-     * The args of the domain config.
+     * The args of the domain config. See `functionArgs` below.
      */
     functionArgs: pulumi.Input<pulumi.Input<inputs.cdn.DomainConfigFunctionArg>[]>;
     /**

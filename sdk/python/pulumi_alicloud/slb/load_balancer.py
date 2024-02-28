@@ -1298,7 +1298,7 @@ class LoadBalancer(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tags(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+    def tags(self) -> pulumi.Output[Mapping[str, Any]]:
         """
         A mapping of tags to assign to the resource. The `tags` can have a maximum of 10 tag for every load balancer instance.
         """

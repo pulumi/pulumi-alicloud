@@ -13,7 +13,8 @@ import * as utilities from "../utilities";
  *
  * const key = new alicloud.kms.Key("key", {
  *     description: "example key",
- *     isEnabled: true,
+ *     status: "Enabled",
+ *     pendingWindowInDays: 7,
  * });
  * const encrypted = new alicloud.kms.Ciphertext("encrypted", {
  *     keyId: key.id,

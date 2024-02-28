@@ -16,7 +16,7 @@ import (
 //
 // For information about HBR Oss Backup Plan and how to use it, see [What is Oss Backup Plan](https://www.alibabacloud.com/help/doc-detail/130040.htm).
 //
-// > **NOTE:** Available in v1.131.0+.
+// > **NOTE:** Available since v1.131.0+.
 //
 // ## Example Usage
 //
@@ -63,7 +63,7 @@ import (
 //			}
 //			_, err = hbr.NewOssBackupPlan(ctx, "defaultOssBackupPlan", &hbr.OssBackupPlanArgs{
 //				OssBackupPlanName: pulumi.String("terraform-example"),
-//				Prefix:            pulumi.String("/"),
+//				Prefix:            pulumi.String("/example"),
 //				Bucket:            defaultBucket.Bucket,
 //				VaultId:           defaultVault.ID(),
 //				Schedule:          pulumi.String("I|1602673264|PT2H"),

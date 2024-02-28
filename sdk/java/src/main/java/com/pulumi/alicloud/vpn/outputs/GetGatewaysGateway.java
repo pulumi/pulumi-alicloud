@@ -6,7 +6,9 @@ package com.pulumi.alicloud.vpn.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
+import java.lang.Object;
 import java.lang.String;
+import java.util.Map;
 import java.util.Objects;
 
 @CustomType
@@ -31,6 +33,11 @@ public final class GetGatewaysGateway {
      * 
      */
     private String description;
+    /**
+     * @return - The ID of the backup VSwitch to which the VPN gateway is attached.
+     * 
+     */
+    private String disasterRecoveryVswitchId;
     /**
      * @return Indicates whether the IPsec-VPN feature is enabled.
      * 
@@ -72,6 +79,11 @@ public final class GetGatewaysGateway {
      */
     private String networkType;
     /**
+     * @return The ID of the resource group.
+     * 
+     */
+    private String resourceGroupId;
+    /**
      * @return The Specification of the VPN
      * 
      */
@@ -82,15 +94,35 @@ public final class GetGatewaysGateway {
      */
     private Integer sslConnections;
     /**
+     * @return The IP address of the SSL-VPN connection. This parameter is returned only when the VPN gateway is a public VPN gateway and supports only the single-tunnel mode. In addition, the VPN gateway must have the SSL-VPN feature enabled.
+     * 
+     */
+    private String sslVpnInternetIp;
+    /**
      * @return Limit search to specific status - valid value is &#34;Init&#34;, &#34;Provisioning&#34;, &#34;Active&#34;, &#34;Updating&#34;, &#34;Deleting&#34;.
      * 
      */
     private String status;
     /**
+     * @return The Tag of.
+     * 
+     */
+    private Map<String,Object> tags;
+    /**
      * @return Use the VPC ID as the search key.
      * 
      */
     private String vpcId;
+    /**
+     * @return - The VPN gateway type. Value:  Normal (default): Normal type. NationalStandard: National Secret type.
+     * 
+     */
+    private String vpnType;
+    /**
+     * @return - The ID of the VSwitch to which the VPN gateway is attached.
+     * 
+     */
+    private String vswitchId;
 
     private GetGatewaysGateway() {}
     /**
@@ -120,6 +152,13 @@ public final class GetGatewaysGateway {
      */
     public String description() {
         return this.description;
+    }
+    /**
+     * @return - The ID of the backup VSwitch to which the VPN gateway is attached.
+     * 
+     */
+    public String disasterRecoveryVswitchId() {
+        return this.disasterRecoveryVswitchId;
     }
     /**
      * @return Indicates whether the IPsec-VPN feature is enabled.
@@ -178,6 +217,13 @@ public final class GetGatewaysGateway {
         return this.networkType;
     }
     /**
+     * @return The ID of the resource group.
+     * 
+     */
+    public String resourceGroupId() {
+        return this.resourceGroupId;
+    }
+    /**
      * @return The Specification of the VPN
      * 
      */
@@ -192,6 +238,13 @@ public final class GetGatewaysGateway {
         return this.sslConnections;
     }
     /**
+     * @return The IP address of the SSL-VPN connection. This parameter is returned only when the VPN gateway is a public VPN gateway and supports only the single-tunnel mode. In addition, the VPN gateway must have the SSL-VPN feature enabled.
+     * 
+     */
+    public String sslVpnInternetIp() {
+        return this.sslVpnInternetIp;
+    }
+    /**
      * @return Limit search to specific status - valid value is &#34;Init&#34;, &#34;Provisioning&#34;, &#34;Active&#34;, &#34;Updating&#34;, &#34;Deleting&#34;.
      * 
      */
@@ -199,11 +252,32 @@ public final class GetGatewaysGateway {
         return this.status;
     }
     /**
+     * @return The Tag of.
+     * 
+     */
+    public Map<String,Object> tags() {
+        return this.tags;
+    }
+    /**
      * @return Use the VPC ID as the search key.
      * 
      */
     public String vpcId() {
         return this.vpcId;
+    }
+    /**
+     * @return - The VPN gateway type. Value:  Normal (default): Normal type. NationalStandard: National Secret type.
+     * 
+     */
+    public String vpnType() {
+        return this.vpnType;
+    }
+    /**
+     * @return - The ID of the VSwitch to which the VPN gateway is attached.
+     * 
+     */
+    public String vswitchId() {
+        return this.vswitchId;
     }
 
     public static Builder builder() {
@@ -219,6 +293,7 @@ public final class GetGatewaysGateway {
         private String businessStatus;
         private String createTime;
         private String description;
+        private String disasterRecoveryVswitchId;
         private String enableIpsec;
         private String enableSsl;
         private String endTime;
@@ -227,10 +302,15 @@ public final class GetGatewaysGateway {
         private String internetIp;
         private String name;
         private String networkType;
+        private String resourceGroupId;
         private String specification;
         private Integer sslConnections;
+        private String sslVpnInternetIp;
         private String status;
+        private Map<String,Object> tags;
         private String vpcId;
+        private String vpnType;
+        private String vswitchId;
         public Builder() {}
         public Builder(GetGatewaysGateway defaults) {
     	      Objects.requireNonNull(defaults);
@@ -238,6 +318,7 @@ public final class GetGatewaysGateway {
     	      this.businessStatus = defaults.businessStatus;
     	      this.createTime = defaults.createTime;
     	      this.description = defaults.description;
+    	      this.disasterRecoveryVswitchId = defaults.disasterRecoveryVswitchId;
     	      this.enableIpsec = defaults.enableIpsec;
     	      this.enableSsl = defaults.enableSsl;
     	      this.endTime = defaults.endTime;
@@ -246,10 +327,15 @@ public final class GetGatewaysGateway {
     	      this.internetIp = defaults.internetIp;
     	      this.name = defaults.name;
     	      this.networkType = defaults.networkType;
+    	      this.resourceGroupId = defaults.resourceGroupId;
     	      this.specification = defaults.specification;
     	      this.sslConnections = defaults.sslConnections;
+    	      this.sslVpnInternetIp = defaults.sslVpnInternetIp;
     	      this.status = defaults.status;
+    	      this.tags = defaults.tags;
     	      this.vpcId = defaults.vpcId;
+    	      this.vpnType = defaults.vpnType;
+    	      this.vswitchId = defaults.vswitchId;
         }
 
         @CustomType.Setter
@@ -282,6 +368,14 @@ public final class GetGatewaysGateway {
               throw new MissingRequiredPropertyException("GetGatewaysGateway", "description");
             }
             this.description = description;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder disasterRecoveryVswitchId(String disasterRecoveryVswitchId) {
+            if (disasterRecoveryVswitchId == null) {
+              throw new MissingRequiredPropertyException("GetGatewaysGateway", "disasterRecoveryVswitchId");
+            }
+            this.disasterRecoveryVswitchId = disasterRecoveryVswitchId;
             return this;
         }
         @CustomType.Setter
@@ -349,6 +443,14 @@ public final class GetGatewaysGateway {
             return this;
         }
         @CustomType.Setter
+        public Builder resourceGroupId(String resourceGroupId) {
+            if (resourceGroupId == null) {
+              throw new MissingRequiredPropertyException("GetGatewaysGateway", "resourceGroupId");
+            }
+            this.resourceGroupId = resourceGroupId;
+            return this;
+        }
+        @CustomType.Setter
         public Builder specification(String specification) {
             if (specification == null) {
               throw new MissingRequiredPropertyException("GetGatewaysGateway", "specification");
@@ -365,11 +467,27 @@ public final class GetGatewaysGateway {
             return this;
         }
         @CustomType.Setter
+        public Builder sslVpnInternetIp(String sslVpnInternetIp) {
+            if (sslVpnInternetIp == null) {
+              throw new MissingRequiredPropertyException("GetGatewaysGateway", "sslVpnInternetIp");
+            }
+            this.sslVpnInternetIp = sslVpnInternetIp;
+            return this;
+        }
+        @CustomType.Setter
         public Builder status(String status) {
             if (status == null) {
               throw new MissingRequiredPropertyException("GetGatewaysGateway", "status");
             }
             this.status = status;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder tags(Map<String,Object> tags) {
+            if (tags == null) {
+              throw new MissingRequiredPropertyException("GetGatewaysGateway", "tags");
+            }
+            this.tags = tags;
             return this;
         }
         @CustomType.Setter
@@ -380,12 +498,29 @@ public final class GetGatewaysGateway {
             this.vpcId = vpcId;
             return this;
         }
+        @CustomType.Setter
+        public Builder vpnType(String vpnType) {
+            if (vpnType == null) {
+              throw new MissingRequiredPropertyException("GetGatewaysGateway", "vpnType");
+            }
+            this.vpnType = vpnType;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder vswitchId(String vswitchId) {
+            if (vswitchId == null) {
+              throw new MissingRequiredPropertyException("GetGatewaysGateway", "vswitchId");
+            }
+            this.vswitchId = vswitchId;
+            return this;
+        }
         public GetGatewaysGateway build() {
             final var _resultValue = new GetGatewaysGateway();
             _resultValue.autoPropagate = autoPropagate;
             _resultValue.businessStatus = businessStatus;
             _resultValue.createTime = createTime;
             _resultValue.description = description;
+            _resultValue.disasterRecoveryVswitchId = disasterRecoveryVswitchId;
             _resultValue.enableIpsec = enableIpsec;
             _resultValue.enableSsl = enableSsl;
             _resultValue.endTime = endTime;
@@ -394,10 +529,15 @@ public final class GetGatewaysGateway {
             _resultValue.internetIp = internetIp;
             _resultValue.name = name;
             _resultValue.networkType = networkType;
+            _resultValue.resourceGroupId = resourceGroupId;
             _resultValue.specification = specification;
             _resultValue.sslConnections = sslConnections;
+            _resultValue.sslVpnInternetIp = sslVpnInternetIp;
             _resultValue.status = status;
+            _resultValue.tags = tags;
             _resultValue.vpcId = vpcId;
+            _resultValue.vpnType = vpnType;
+            _resultValue.vswitchId = vswitchId;
             return _resultValue;
         }
     }

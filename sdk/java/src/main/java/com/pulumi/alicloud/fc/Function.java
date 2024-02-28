@@ -39,6 +39,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.random.RandomInteger;
  * import com.pulumi.random.RandomIntegerArgs;
  * import com.pulumi.alicloud.log.Project;
+ * import com.pulumi.alicloud.log.ProjectArgs;
  * import com.pulumi.alicloud.log.Store;
  * import com.pulumi.alicloud.log.StoreArgs;
  * import com.pulumi.alicloud.ram.Role;
@@ -72,10 +73,13 @@ import javax.annotation.Nullable;
  *             .min(10000)
  *             .build());
  * 
- *         var defaultProject = new Project(&#34;defaultProject&#34;);
+ *         var defaultProject = new Project(&#34;defaultProject&#34;, ProjectArgs.builder()        
+ *             .projectName(defaultRandomInteger.result().applyValue(result -&gt; String.format(&#34;example-value-%s&#34;, result)))
+ *             .build());
  * 
  *         var defaultStore = new Store(&#34;defaultStore&#34;, StoreArgs.builder()        
- *             .project(defaultProject.name())
+ *             .projectName(defaultProject.name())
+ *             .logstoreName(&#34;example-value&#34;)
  *             .build());
  * 
  *         var defaultRole = new Role(&#34;defaultRole&#34;, RoleArgs.builder()        

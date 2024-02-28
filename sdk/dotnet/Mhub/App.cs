@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Mhub
     /// 
     /// For information about MHUB App and how to use it, see [What is App](https://help.aliyun.com/product/65109.html).
     /// 
-    /// &gt; **NOTE:** Available in v1.138.0+.
+    /// &gt; **NOTE:** Available since v1.138.0+.
     /// 
     /// &gt; **NOTE:** At present, the resource only supports cn-shanghai region.
     /// 
@@ -41,7 +41,7 @@ namespace Pulumi.AliCloud.Mhub
     ///     {
     ///         AppName = name,
     ///         ProductId = defaultProduct.Id,
-    ///         PackageName = "com.test.android",
+    ///         PackageName = "com.example.android",
     ///         Type = "Android",
     ///     });
     /// 

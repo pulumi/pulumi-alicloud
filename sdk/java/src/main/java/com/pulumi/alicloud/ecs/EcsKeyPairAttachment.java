@@ -45,6 +45,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.alicloud.ecs.SecurityGroupArgs;
  * import com.pulumi.alicloud.ecs.Instance;
  * import com.pulumi.alicloud.ecs.InstanceArgs;
+ * import com.pulumi.random.RandomInteger;
+ * import com.pulumi.random.RandomIntegerArgs;
  * import com.pulumi.alicloud.ecs.EcsKeyPair;
  * import com.pulumi.alicloud.ecs.EcsKeyPairArgs;
  * import com.pulumi.alicloud.ecs.EcsKeyPairAttachment;
@@ -103,8 +105,13 @@ import javax.annotation.Nullable;
  *             .vswitchId(exampleSwitch.id())
  *             .build());
  * 
+ *         var default_ = new RandomInteger(&#34;default&#34;, RandomIntegerArgs.builder()        
+ *             .min(10000)
+ *             .max(99999)
+ *             .build());
+ * 
  *         var exampleEcsKeyPair = new EcsKeyPair(&#34;exampleEcsKeyPair&#34;, EcsKeyPairArgs.builder()        
- *             .keyPairName(&#34;tf-example&#34;)
+ *             .keyPairName(default_.result().applyValue(result -&gt; String.format(&#34;tf-example-%s&#34;, result)))
  *             .build());
  * 
  *         var exampleEcsKeyPairAttachment = new EcsKeyPairAttachment(&#34;exampleEcsKeyPairAttachment&#34;, EcsKeyPairAttachmentArgs.builder()        

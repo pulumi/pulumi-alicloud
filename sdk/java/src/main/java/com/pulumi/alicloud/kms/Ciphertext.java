@@ -43,7 +43,8 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var key = new Key(&#34;key&#34;, KeyArgs.builder()        
  *             .description(&#34;example key&#34;)
- *             .isEnabled(true)
+ *             .status(&#34;Enabled&#34;)
+ *             .pendingWindowInDays(7)
  *             .build());
  * 
  *         var encrypted = new Ciphertext(&#34;encrypted&#34;, CiphertextArgs.builder()        

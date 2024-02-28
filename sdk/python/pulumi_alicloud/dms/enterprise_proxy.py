@@ -227,7 +227,7 @@ class EnterpriseProxy(pulumi.CustomResource):
             account_type="Normal")
         default_enterprise_instance = alicloud.dms.EnterpriseInstance("defaultEnterpriseInstance",
             tid=default_user_tenants.ids[0],
-            instance_type="MySQL",
+            instance_type="mysql",
             instance_source="RDS",
             network_type="VPC",
             env_type="dev",
@@ -334,7 +334,7 @@ class EnterpriseProxy(pulumi.CustomResource):
             account_type="Normal")
         default_enterprise_instance = alicloud.dms.EnterpriseInstance("defaultEnterpriseInstance",
             tid=default_user_tenants.ids[0],
-            instance_type="MySQL",
+            instance_type="mysql",
             instance_source="RDS",
             network_type="VPC",
             env_type="dev",

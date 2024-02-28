@@ -143,17 +143,21 @@ class Kv(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
-            name = "tf-example"
+            name = "terraform-example"
+        default_random_integer = random.RandomInteger("defaultRandomInteger",
+            min=10000,
+            max=99999)
         default_kv_namespace = alicloud.dcdn.KvNamespace("defaultKvNamespace",
             description=name,
-            namespace=name)
+            namespace=default_random_integer.result.apply(lambda result: f"{name}-{result}"))
         default_kv = alicloud.dcdn.Kv("defaultKv",
             value="example-value",
-            key=name,
+            key=default_random_integer.result.apply(lambda result: f"{name}-{result}"),
             namespace=default_kv_namespace.namespace)
         ```
 
@@ -191,17 +195,21 @@ class Kv(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
-            name = "tf-example"
+            name = "terraform-example"
+        default_random_integer = random.RandomInteger("defaultRandomInteger",
+            min=10000,
+            max=99999)
         default_kv_namespace = alicloud.dcdn.KvNamespace("defaultKvNamespace",
             description=name,
-            namespace=name)
+            namespace=default_random_integer.result.apply(lambda result: f"{name}-{result}"))
         default_kv = alicloud.dcdn.Kv("defaultKv",
             value="example-value",
-            key=name,
+            key=default_random_integer.result.apply(lambda result: f"{name}-{result}"),
             namespace=default_kv_namespace.namespace)
         ```
 

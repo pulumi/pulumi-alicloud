@@ -50,7 +50,6 @@ namespace Pulumi.AliCloud.Eds
     ///     {
     ///         DesktopAccessType = "INTERNET",
     ///         EnableAdminAccess = true,
-    ///         EnableInternetAccess = true,
     ///         RamDirectoryName = name,
     ///         VswitchIds = new[]
     ///         {

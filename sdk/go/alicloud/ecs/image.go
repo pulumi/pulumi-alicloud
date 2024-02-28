@@ -19,7 +19,7 @@ import (
 //
 // > **NOTE:**  If you want to combine snapshots of multiple disks into an image template, you can specify DiskDeviceMapping to create a custom image.
 //
-// > **NOTE:**  Available in 1.64.0+
+// > **NOTE:** Available since v1.64.0.
 //
 // ## Example Usage
 //
@@ -28,10 +28,13 @@ import (
 //
 // import (
 //
+//	"fmt"
+//
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/resourcemanager"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -97,12 +100,20 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			defaultRandomInteger, err := random.NewRandomInteger(ctx, "defaultRandomInteger", &random.RandomIntegerArgs{
+//				Min: pulumi.Int(10000),
+//				Max: pulumi.Int(99999),
+//			})
+//			if err != nil {
+//				return err
+//			}
 //			_, err = ecs.NewImage(ctx, "defaultImage", &ecs.ImageArgs{
-//				InstanceId:      defaultInstance.ID(),
-//				ImageName:       pulumi.String("terraform-example"),
+//				InstanceId: defaultInstance.ID(),
+//				ImageName: defaultRandomInteger.Result.ApplyT(func(result int) (string, error) {
+//					return fmt.Sprintf("terraform-example-%v", result), nil
+//				}).(pulumi.StringOutput),
 //				Description:     pulumi.String("terraform-example"),
 //				Architecture:    pulumi.String("x86_64"),
-//				Platform:        pulumi.String("CentOS"),
 //				ResourceGroupId: *pulumi.String(defaultResourceGroups.Ids[0]),
 //				Tags: pulumi.Map{
 //					"FinanceDept": pulumi.Any("FinanceDeptJoshua"),

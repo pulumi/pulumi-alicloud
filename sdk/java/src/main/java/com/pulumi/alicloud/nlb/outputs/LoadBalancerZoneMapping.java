@@ -13,86 +13,98 @@ import javax.annotation.Nullable;
 @CustomType
 public final class LoadBalancerZoneMapping {
     /**
-     * @return The ID of the EIP associated with the Internet-facing NLB instance.
+     * @return The ID of the elastic IP address.
      * 
      */
     private @Nullable String allocationId;
     /**
-     * @return The ID of the elastic network interface (ENI).
+     * @return The ID of ENI.
      * 
      */
     private @Nullable String eniId;
     /**
-     * @return The IPv6 address of the NLB instance.
+     * @return The IPv6 address of a network-based server load balancer instance.
      * 
      */
     private @Nullable String ipv6Address;
     /**
-     * @return The private IPv4 address of the NLB instance.
+     * @return The private IPv4 address of a network-based server load balancer instance.
      * 
      */
     private @Nullable String privateIpv4Address;
     /**
-     * @return The public IPv4 address of the NLB instance.
+     * @return Public IPv4 address of a network-based server load balancer instance.
      * 
      */
     private @Nullable String publicIpv4Address;
     /**
-     * @return The vSwitch in the zone. You can specify only one vSwitch (subnet) in each zone of an NLB instance.
+     * @return Zone Status.
+     * 
+     */
+    private @Nullable String status;
+    /**
+     * @return The switch corresponding to the zone. Each zone uses one switch and one subnet by default.
      * 
      */
     private String vswitchId;
     /**
-     * @return The ID of the zone of the NLB instance.
+     * @return The name of the zone. You can call the DescribeZones operation to obtain the name of the zone.
      * 
      */
     private String zoneId;
 
     private LoadBalancerZoneMapping() {}
     /**
-     * @return The ID of the EIP associated with the Internet-facing NLB instance.
+     * @return The ID of the elastic IP address.
      * 
      */
     public Optional<String> allocationId() {
         return Optional.ofNullable(this.allocationId);
     }
     /**
-     * @return The ID of the elastic network interface (ENI).
+     * @return The ID of ENI.
      * 
      */
     public Optional<String> eniId() {
         return Optional.ofNullable(this.eniId);
     }
     /**
-     * @return The IPv6 address of the NLB instance.
+     * @return The IPv6 address of a network-based server load balancer instance.
      * 
      */
     public Optional<String> ipv6Address() {
         return Optional.ofNullable(this.ipv6Address);
     }
     /**
-     * @return The private IPv4 address of the NLB instance.
+     * @return The private IPv4 address of a network-based server load balancer instance.
      * 
      */
     public Optional<String> privateIpv4Address() {
         return Optional.ofNullable(this.privateIpv4Address);
     }
     /**
-     * @return The public IPv4 address of the NLB instance.
+     * @return Public IPv4 address of a network-based server load balancer instance.
      * 
      */
     public Optional<String> publicIpv4Address() {
         return Optional.ofNullable(this.publicIpv4Address);
     }
     /**
-     * @return The vSwitch in the zone. You can specify only one vSwitch (subnet) in each zone of an NLB instance.
+     * @return Zone Status.
+     * 
+     */
+    public Optional<String> status() {
+        return Optional.ofNullable(this.status);
+    }
+    /**
+     * @return The switch corresponding to the zone. Each zone uses one switch and one subnet by default.
      * 
      */
     public String vswitchId() {
         return this.vswitchId;
     }
     /**
-     * @return The ID of the zone of the NLB instance.
+     * @return The name of the zone. You can call the DescribeZones operation to obtain the name of the zone.
      * 
      */
     public String zoneId() {
@@ -113,6 +125,7 @@ public final class LoadBalancerZoneMapping {
         private @Nullable String ipv6Address;
         private @Nullable String privateIpv4Address;
         private @Nullable String publicIpv4Address;
+        private @Nullable String status;
         private String vswitchId;
         private String zoneId;
         public Builder() {}
@@ -123,6 +136,7 @@ public final class LoadBalancerZoneMapping {
     	      this.ipv6Address = defaults.ipv6Address;
     	      this.privateIpv4Address = defaults.privateIpv4Address;
     	      this.publicIpv4Address = defaults.publicIpv4Address;
+    	      this.status = defaults.status;
     	      this.vswitchId = defaults.vswitchId;
     	      this.zoneId = defaults.zoneId;
         }
@@ -158,6 +172,12 @@ public final class LoadBalancerZoneMapping {
             return this;
         }
         @CustomType.Setter
+        public Builder status(@Nullable String status) {
+
+            this.status = status;
+            return this;
+        }
+        @CustomType.Setter
         public Builder vswitchId(String vswitchId) {
             if (vswitchId == null) {
               throw new MissingRequiredPropertyException("LoadBalancerZoneMapping", "vswitchId");
@@ -180,6 +200,7 @@ public final class LoadBalancerZoneMapping {
             _resultValue.ipv6Address = ipv6Address;
             _resultValue.privateIpv4Address = privateIpv4Address;
             _resultValue.publicIpv4Address = publicIpv4Address;
+            _resultValue.status = status;
             _resultValue.vswitchId = vswitchId;
             _resultValue.zoneId = zoneId;
             return _resultValue;

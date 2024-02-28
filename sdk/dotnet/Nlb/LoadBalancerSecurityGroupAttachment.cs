@@ -100,17 +100,19 @@ namespace Pulumi.AliCloud.Nlb
     /// 
     /// ## Import
     /// 
-    /// Nlb Load Balancer Security Group Attachment can be imported using the id, e.g.
+    /// NLB Load Balancer Security Group Attachment can be imported using the id, e.g.
     /// 
     /// ```sh
-    /// $ pulumi import alicloud:nlb/loadBalancerSecurityGroupAttachment:LoadBalancerSecurityGroupAttachment example &lt;LoadBalancerId&gt;:&lt;SecurityGroupId&gt;
+    /// $ pulumi import alicloud:nlb/loadBalancerSecurityGroupAttachment:LoadBalancerSecurityGroupAttachment example &lt;load_balancer_id&gt;:&lt;security_group_id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:nlb/loadBalancerSecurityGroupAttachment:LoadBalancerSecurityGroupAttachment")]
     public partial class LoadBalancerSecurityGroupAttachment : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Whether to PreCheck this request only. Value:-**true**: sends a check request and does not bind a security group to the instance. Check items include whether required parameters, request format, and business restrictions have been filled in. If the check fails, the corresponding error is returned. If the check passes, the error code 'DryRunOperation' is returned '.-**false** (default): Sends a normal request, returns the HTTP 2xx status code after the check, and directly performs the operation.
+        /// Whether to PreCheck this request only. Value:
+        /// - **true**: sends a check request and does not bind a security group to the instance. Check items include whether required parameters, request format, and business restrictions have been filled in. If the check fails, the corresponding error is returned. If the check passes, the error code 'DryRunOperation' is returned '.
+        /// - **false** (default): Sends a normal request, returns the HTTP 2xx status code after the check, and directly performs the operation.
         /// </summary>
         [Output("dryRun")]
         public Output<bool?> DryRun { get; private set; } = null!;
@@ -122,7 +124,7 @@ namespace Pulumi.AliCloud.Nlb
         public Output<string> LoadBalancerId { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of security groups.
+        /// The ID of the security group.
         /// </summary>
         [Output("securityGroupId")]
         public Output<string> SecurityGroupId { get; private set; } = null!;
@@ -174,7 +176,9 @@ namespace Pulumi.AliCloud.Nlb
     public sealed class LoadBalancerSecurityGroupAttachmentArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Whether to PreCheck this request only. Value:-**true**: sends a check request and does not bind a security group to the instance. Check items include whether required parameters, request format, and business restrictions have been filled in. If the check fails, the corresponding error is returned. If the check passes, the error code 'DryRunOperation' is returned '.-**false** (default): Sends a normal request, returns the HTTP 2xx status code after the check, and directly performs the operation.
+        /// Whether to PreCheck this request only. Value:
+        /// - **true**: sends a check request and does not bind a security group to the instance. Check items include whether required parameters, request format, and business restrictions have been filled in. If the check fails, the corresponding error is returned. If the check passes, the error code 'DryRunOperation' is returned '.
+        /// - **false** (default): Sends a normal request, returns the HTTP 2xx status code after the check, and directly performs the operation.
         /// </summary>
         [Input("dryRun")]
         public Input<bool>? DryRun { get; set; }
@@ -186,7 +190,7 @@ namespace Pulumi.AliCloud.Nlb
         public Input<string> LoadBalancerId { get; set; } = null!;
 
         /// <summary>
-        /// The ID of security groups.
+        /// The ID of the security group.
         /// </summary>
         [Input("securityGroupId", required: true)]
         public Input<string> SecurityGroupId { get; set; } = null!;
@@ -200,7 +204,9 @@ namespace Pulumi.AliCloud.Nlb
     public sealed class LoadBalancerSecurityGroupAttachmentState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Whether to PreCheck this request only. Value:-**true**: sends a check request and does not bind a security group to the instance. Check items include whether required parameters, request format, and business restrictions have been filled in. If the check fails, the corresponding error is returned. If the check passes, the error code 'DryRunOperation' is returned '.-**false** (default): Sends a normal request, returns the HTTP 2xx status code after the check, and directly performs the operation.
+        /// Whether to PreCheck this request only. Value:
+        /// - **true**: sends a check request and does not bind a security group to the instance. Check items include whether required parameters, request format, and business restrictions have been filled in. If the check fails, the corresponding error is returned. If the check passes, the error code 'DryRunOperation' is returned '.
+        /// - **false** (default): Sends a normal request, returns the HTTP 2xx status code after the check, and directly performs the operation.
         /// </summary>
         [Input("dryRun")]
         public Input<bool>? DryRun { get; set; }
@@ -212,7 +218,7 @@ namespace Pulumi.AliCloud.Nlb
         public Input<string>? LoadBalancerId { get; set; }
 
         /// <summary>
-        /// The ID of security groups.
+        /// The ID of the security group.
         /// </summary>
         [Input("securityGroupId")]
         public Input<string>? SecurityGroupId { get; set; }

@@ -28,7 +28,7 @@ import javax.annotation.Nullable;
  * 
  * &gt; **NOTE:**  If you want to combine snapshots of multiple disks into an image template, you can specify DiskDeviceMapping to create a custom image.
  * 
- * &gt; **NOTE:**  Available in 1.64.0+
+ * &gt; **NOTE:** Available since v1.64.0.
  * 
  * ## Example Usage
  * ```java
@@ -52,6 +52,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.alicloud.ecs.InstanceArgs;
  * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
  * import com.pulumi.alicloud.resourcemanager.inputs.GetResourceGroupsArgs;
+ * import com.pulumi.random.RandomInteger;
+ * import com.pulumi.random.RandomIntegerArgs;
  * import com.pulumi.alicloud.ecs.Image;
  * import com.pulumi.alicloud.ecs.ImageArgs;
  * import java.util.List;
@@ -108,12 +110,16 @@ import javax.annotation.Nullable;
  * 
  *         final var defaultResourceGroups = ResourcemanagerFunctions.getResourceGroups();
  * 
+ *         var defaultRandomInteger = new RandomInteger(&#34;defaultRandomInteger&#34;, RandomIntegerArgs.builder()        
+ *             .min(10000)
+ *             .max(99999)
+ *             .build());
+ * 
  *         var defaultImage = new Image(&#34;defaultImage&#34;, ImageArgs.builder()        
  *             .instanceId(defaultInstance.id())
- *             .imageName(&#34;terraform-example&#34;)
+ *             .imageName(defaultRandomInteger.result().applyValue(result -&gt; String.format(&#34;terraform-example-%s&#34;, result)))
  *             .description(&#34;terraform-example&#34;)
  *             .architecture(&#34;x86_64&#34;)
- *             .platform(&#34;CentOS&#34;)
  *             .resourceGroupId(defaultResourceGroups.applyValue(getResourceGroupsResult -&gt; getResourceGroupsResult.ids()[0]))
  *             .tags(Map.of(&#34;FinanceDept&#34;, &#34;FinanceDeptJoshua&#34;))
  *             .build());

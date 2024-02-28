@@ -21,7 +21,7 @@ import javax.annotation.Nullable;
  * 
  * For information about HBR Oss Backup Plan and how to use it, see [What is Oss Backup Plan](https://www.alibabacloud.com/help/doc-detail/130040.htm).
  * 
- * &gt; **NOTE:** Available in v1.131.0+.
+ * &gt; **NOTE:** Available since v1.131.0+.
  * 
  * ## Example Usage
  * 
@@ -68,7 +68,7 @@ import javax.annotation.Nullable;
  * 
  *         var defaultOssBackupPlan = new OssBackupPlan(&#34;defaultOssBackupPlan&#34;, OssBackupPlanArgs.builder()        
  *             .ossBackupPlanName(&#34;terraform-example&#34;)
- *             .prefix(&#34;/&#34;)
+ *             .prefix(&#34;/example&#34;)
  *             .bucket(defaultBucket.bucket())
  *             .vaultId(defaultVault.id())
  *             .schedule(&#34;I|1602673264|PT2H&#34;)

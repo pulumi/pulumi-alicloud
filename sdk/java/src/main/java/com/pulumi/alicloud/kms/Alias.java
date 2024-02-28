@@ -16,7 +16,7 @@ import javax.annotation.Nullable;
 /**
  * Create an alias for the master key (CMK).
  * 
- * &gt; **NOTE:** Available in v1.77.0+.
+ * &gt; **NOTE:** Available since v1.77.0+.
  * 
  * ## Example Usage
  * 
@@ -28,6 +28,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
  * import com.pulumi.alicloud.kms.Key;
+ * import com.pulumi.alicloud.kms.KeyArgs;
  * import com.pulumi.alicloud.kms.Alias;
  * import com.pulumi.alicloud.kms.AliasArgs;
  * import java.util.List;
@@ -43,10 +44,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var thisKey = new Key(&#34;thisKey&#34;);
+ *         var thisKey = new Key(&#34;thisKey&#34;, KeyArgs.builder()        
+ *             .pendingWindowInDays(7)
+ *             .build());
  * 
  *         var thisAlias = new Alias(&#34;thisAlias&#34;, AliasArgs.builder()        
- *             .aliasName(&#34;alias/test_kms_alias&#34;)
+ *             .aliasName(&#34;alias/example_kms_alias&#34;)
  *             .keyId(thisKey.id())
  *             .build());
  * 

@@ -20,12 +20,17 @@ import * as utilities from "../utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
+ * import * as random from "@pulumi/random";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "tf_example";
+ * const _default = new random.RandomInteger("default", {
+ *     min: 10000,
+ *     max: 99999,
+ * });
  * const exampleWafPolicy = new alicloud.dcdn.WafPolicy("exampleWafPolicy", {
  *     defenseScene: "waf_group",
- *     policyName: name,
+ *     policyName: pulumi.interpolate`${name}_${_default.result}`,
  *     policyType: "custom",
  *     status: "on",
  * });
@@ -46,9 +51,7 @@ import * as utilities from "../utilities";
  *         },
  *     ],
  *     status: "on",
- *     ccStatus: "on",
  *     action: "monitor",
- *     effect: "rule",
  *     rateLimit: {
  *         target: "IP",
  *         interval: 5,

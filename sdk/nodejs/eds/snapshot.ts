@@ -18,14 +18,19 @@ import * as utilities from "../utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
+ * import * as random from "@pulumi/random";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "terraform-example";
+ * const defaultRandomInteger = new random.RandomInteger("defaultRandomInteger", {
+ *     min: 10000,
+ *     max: 99999,
+ * });
  * const defaultSimpleOfficeSite = new alicloud.eds.SimpleOfficeSite("defaultSimpleOfficeSite", {
  *     cidrBlock: "172.16.0.0/12",
  *     enableAdminAccess: true,
  *     desktopAccessType: "Internet",
- *     officeSiteName: name,
+ *     officeSiteName: pulumi.interpolate`${name}-${defaultRandomInteger.result}`,
  * });
  * const defaultEcdPolicyGroup = new alicloud.eds.EcdPolicyGroup("defaultEcdPolicyGroup", {
  *     policyGroupName: name,

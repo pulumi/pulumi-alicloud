@@ -32,30 +32,46 @@ class ListenerArgs:
                  sec_sensor_enabled: Optional[pulumi.Input[bool]] = None,
                  security_policy_id: Optional[pulumi.Input[str]] = None,
                  start_port: Optional[pulumi.Input[int]] = None,
-                 status: Optional[pulumi.Input[str]] = None):
+                 status: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None):
         """
         The set of arguments for constructing a Listener resource.
-        :param pulumi.Input[int] listener_port: Listening port. Valid values: 0 ~ 65535. `0`: indicates that full port listening is used. When set to `0`, you must configure `StartPort` and `EndPort`.
-        :param pulumi.Input[str] listener_protocol: The listening protocol. Valid values: `TCP`, `UDP`, or `TCPSSL`.
+        :param pulumi.Input[int] listener_port: Listening port. Valid values: **0** ~ **65535 * *. **0**: indicates that full port listening is used. When set to **0**, you must configure **StartPort** and **EndPort**.
+        :param pulumi.Input[str] listener_protocol: The listening protocol. Valid values: **TCP**, **UDP**, or **TCPSSL**.
         :param pulumi.Input[str] load_balancer_id: The ID of the network-based server load balancer instance.
         :param pulumi.Input[str] server_group_id: The ID of the server group.
-        :param pulumi.Input[bool] alpn_enabled: Specifies whether to enable Application-Layer Protocol Negotiation (ALPN).
-        :param pulumi.Input[str] alpn_policy: The ALPN policy.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] ca_certificate_ids: The list of certificate authority (CA) certificates. This parameter takes effect only for listeners that use SSL over TCP. **Note:** Only one CA certificate is supported.
-        :param pulumi.Input[bool] ca_enabled: Specifies whether to enable mutual authentication.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] certificate_ids: The list of server certificates. This parameter takes effect only for listeners that use SSL over TCP. **Note:** Only one server certificate is supported.
-        :param pulumi.Input[int] cps: The maximum number of connections that can be created per second on the NLB instance. Valid values: 0 to 1000000. 0 specifies that the number of connections is unlimited.
-        :param pulumi.Input[int] end_port: Full port listening end port. Valid values: `0` ~ `65535`. The value of the end port is less than the start port.
-        :param pulumi.Input[int] idle_timeout: The timeout period of an idle connection. Unit: seconds. Valid values: `1` to `900`. Default value: `900`.
-        :param pulumi.Input[str] listener_description: Custom listener name. The length is limited to 2 to 256 characters, supports Chinese and English letters, and can include numbers, commas (,), half-width periods (.), half-width semicolons (;), forward slashes (/), at(@), underscores (_), and dashes (-).
-        :param pulumi.Input[int] mss: The maximum size of a TCP segment. Unit: bytes. Valid values: 0 to 1500. 0 specifies that the maximum segment size remains unchanged. **Note:** This parameter is supported only by listeners that use SSL over TCP.
-        :param pulumi.Input[bool] proxy_protocol_enabled: Specifies whether to use the Proxy protocol to pass client IP addresses to backend servers.
-        :param pulumi.Input[bool] sec_sensor_enabled: Specifies whether to enable fine-grained monitoring.
-        :param pulumi.Input[str] security_policy_id: The ID of the security policy. System security policies and custom security policies are supported. 
-               System security policies valid values: `tls_cipher_policy_1_0` (default), `tls_cipher_policy_1_1,` `tls_cipher_policy_1_2`, `tls_cipher_policy_1_2_strict`, and `tls_cipher_policy_1_2_strict_with_1_3`.
-               Custom security policies can be created by resource `nlb.SecurityPolicy`.
-        :param pulumi.Input[int] start_port: Full Port listens to the starting port. Valid values: `0` ~ `65535`.
-        :param pulumi.Input[str] status: The status of the resource. Valid values: `Running`, `Stopped`.
+        :param pulumi.Input[bool] alpn_enabled: Whether ALPN is turned on. Value:
+               - **true**: on.
+               - **false**: closed.
+        :param pulumi.Input[str] alpn_policy: ALPN policy. Value:
+               - **HTTP1Only**
+               - **HTTP2Only**
+               - **HTTP2Preferred**
+               - **HTTP2Optional**.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ca_certificate_ids: CA certificate list information. Currently, only one CA certificate can be added.
+               > **NOTE:**  This parameter only takes effect for TCPSSL listeners.
+        :param pulumi.Input[bool] ca_enabled: Whether to start two-way authentication. Value:
+               - **true**: start.
+               - **false**: closed.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] certificate_ids: Server certificate list information. Currently, only one server certificate can be added.
+               > **NOTE:**  This parameter only takes effect for TCPSSL listeners.
+        :param pulumi.Input[int] cps: The new connection speed limit for a network-based load balancing instance per second. Valid values: **0** ~ **1000000**. **0** indicates unlimited speed.
+        :param pulumi.Input[int] end_port: Full port listening end port. Valid values: **0** ~ **65535 * *. The value of the end port is less than the start port.
+        :param pulumi.Input[int] idle_timeout: Connection idle timeout time. Unit: seconds. Valid values: **1** ~ **900**.
+        :param pulumi.Input[str] listener_description: Custom listener name.The length is limited to 2 to 256 characters, supports Chinese and English letters, and can include numbers, commas (,), half-width periods (.), half-width semicolons (;), forward slashes (/), at(@), underscores (_), and dashes (-).
+        :param pulumi.Input[int] mss: The maximum segment size of the TCP message. Unit: Bytes. Valid values: **0** ~ **1500**. **0** indicates that the MSS value of the TCP message is not modified.
+               > **NOTE:**  only TCP and TCPSSL listeners support this field value.
+        :param pulumi.Input[bool] proxy_protocol_enabled: Whether to enable the Proxy Protocol to carry the source address of the client to the backend server. Value:
+               - **true**: on.
+               - **false**: closed.
+        :param pulumi.Input[bool] sec_sensor_enabled: Whether to turn on the second-level monitoring function. Value:
+               - **true**: on.
+               - **false**: closed.
+        :param pulumi.Input[str] security_policy_id: Security policy ID. Support system security policies and custom security policies. Valid values: **tls_cipher_policy_1_0**, **tls_cipher_policy_1_1**, **tls_cipher_policy_1_2**, **tls_cipher_policy_1_2_strict**, or **tls_cipher_policy_1_2_strict_with_1_3**.
+               > **NOTE:**  This parameter only takes effect for TCPSSL listeners.
+        :param pulumi.Input[int] start_port: Full Port listens to the starting port. Valid values: **0** ~ **65535**.
+        :param pulumi.Input[str] status: The status of the resource.
+        :param pulumi.Input[Mapping[str, Any]] tags: The tag of the resource.
         """
         pulumi.set(__self__, "listener_port", listener_port)
         pulumi.set(__self__, "listener_protocol", listener_protocol)
@@ -91,12 +107,14 @@ class ListenerArgs:
             pulumi.set(__self__, "start_port", start_port)
         if status is not None:
             pulumi.set(__self__, "status", status)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
 
     @property
     @pulumi.getter(name="listenerPort")
     def listener_port(self) -> pulumi.Input[int]:
         """
-        Listening port. Valid values: 0 ~ 65535. `0`: indicates that full port listening is used. When set to `0`, you must configure `StartPort` and `EndPort`.
+        Listening port. Valid values: **0** ~ **65535 * *. **0**: indicates that full port listening is used. When set to **0**, you must configure **StartPort** and **EndPort**.
         """
         return pulumi.get(self, "listener_port")
 
@@ -108,7 +126,7 @@ class ListenerArgs:
     @pulumi.getter(name="listenerProtocol")
     def listener_protocol(self) -> pulumi.Input[str]:
         """
-        The listening protocol. Valid values: `TCP`, `UDP`, or `TCPSSL`.
+        The listening protocol. Valid values: **TCP**, **UDP**, or **TCPSSL**.
         """
         return pulumi.get(self, "listener_protocol")
 
@@ -144,7 +162,9 @@ class ListenerArgs:
     @pulumi.getter(name="alpnEnabled")
     def alpn_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        Specifies whether to enable Application-Layer Protocol Negotiation (ALPN).
+        Whether ALPN is turned on. Value:
+        - **true**: on.
+        - **false**: closed.
         """
         return pulumi.get(self, "alpn_enabled")
 
@@ -156,7 +176,11 @@ class ListenerArgs:
     @pulumi.getter(name="alpnPolicy")
     def alpn_policy(self) -> Optional[pulumi.Input[str]]:
         """
-        The ALPN policy.
+        ALPN policy. Value:
+        - **HTTP1Only**
+        - **HTTP2Only**
+        - **HTTP2Preferred**
+        - **HTTP2Optional**.
         """
         return pulumi.get(self, "alpn_policy")
 
@@ -168,7 +192,8 @@ class ListenerArgs:
     @pulumi.getter(name="caCertificateIds")
     def ca_certificate_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        The list of certificate authority (CA) certificates. This parameter takes effect only for listeners that use SSL over TCP. **Note:** Only one CA certificate is supported.
+        CA certificate list information. Currently, only one CA certificate can be added.
+        > **NOTE:**  This parameter only takes effect for TCPSSL listeners.
         """
         return pulumi.get(self, "ca_certificate_ids")
 
@@ -180,7 +205,9 @@ class ListenerArgs:
     @pulumi.getter(name="caEnabled")
     def ca_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        Specifies whether to enable mutual authentication.
+        Whether to start two-way authentication. Value:
+        - **true**: start.
+        - **false**: closed.
         """
         return pulumi.get(self, "ca_enabled")
 
@@ -192,7 +219,8 @@ class ListenerArgs:
     @pulumi.getter(name="certificateIds")
     def certificate_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        The list of server certificates. This parameter takes effect only for listeners that use SSL over TCP. **Note:** Only one server certificate is supported.
+        Server certificate list information. Currently, only one server certificate can be added.
+        > **NOTE:**  This parameter only takes effect for TCPSSL listeners.
         """
         return pulumi.get(self, "certificate_ids")
 
@@ -204,7 +232,7 @@ class ListenerArgs:
     @pulumi.getter
     def cps(self) -> Optional[pulumi.Input[int]]:
         """
-        The maximum number of connections that can be created per second on the NLB instance. Valid values: 0 to 1000000. 0 specifies that the number of connections is unlimited.
+        The new connection speed limit for a network-based load balancing instance per second. Valid values: **0** ~ **1000000**. **0** indicates unlimited speed.
         """
         return pulumi.get(self, "cps")
 
@@ -216,7 +244,7 @@ class ListenerArgs:
     @pulumi.getter(name="endPort")
     def end_port(self) -> Optional[pulumi.Input[int]]:
         """
-        Full port listening end port. Valid values: `0` ~ `65535`. The value of the end port is less than the start port.
+        Full port listening end port. Valid values: **0** ~ **65535 * *. The value of the end port is less than the start port.
         """
         return pulumi.get(self, "end_port")
 
@@ -228,7 +256,7 @@ class ListenerArgs:
     @pulumi.getter(name="idleTimeout")
     def idle_timeout(self) -> Optional[pulumi.Input[int]]:
         """
-        The timeout period of an idle connection. Unit: seconds. Valid values: `1` to `900`. Default value: `900`.
+        Connection idle timeout time. Unit: seconds. Valid values: **1** ~ **900**.
         """
         return pulumi.get(self, "idle_timeout")
 
@@ -240,7 +268,7 @@ class ListenerArgs:
     @pulumi.getter(name="listenerDescription")
     def listener_description(self) -> Optional[pulumi.Input[str]]:
         """
-        Custom listener name. The length is limited to 2 to 256 characters, supports Chinese and English letters, and can include numbers, commas (,), half-width periods (.), half-width semicolons (;), forward slashes (/), at(@), underscores (_), and dashes (-).
+        Custom listener name.The length is limited to 2 to 256 characters, supports Chinese and English letters, and can include numbers, commas (,), half-width periods (.), half-width semicolons (;), forward slashes (/), at(@), underscores (_), and dashes (-).
         """
         return pulumi.get(self, "listener_description")
 
@@ -252,7 +280,8 @@ class ListenerArgs:
     @pulumi.getter
     def mss(self) -> Optional[pulumi.Input[int]]:
         """
-        The maximum size of a TCP segment. Unit: bytes. Valid values: 0 to 1500. 0 specifies that the maximum segment size remains unchanged. **Note:** This parameter is supported only by listeners that use SSL over TCP.
+        The maximum segment size of the TCP message. Unit: Bytes. Valid values: **0** ~ **1500**. **0** indicates that the MSS value of the TCP message is not modified.
+        > **NOTE:**  only TCP and TCPSSL listeners support this field value.
         """
         return pulumi.get(self, "mss")
 
@@ -264,7 +293,9 @@ class ListenerArgs:
     @pulumi.getter(name="proxyProtocolEnabled")
     def proxy_protocol_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        Specifies whether to use the Proxy protocol to pass client IP addresses to backend servers.
+        Whether to enable the Proxy Protocol to carry the source address of the client to the backend server. Value:
+        - **true**: on.
+        - **false**: closed.
         """
         return pulumi.get(self, "proxy_protocol_enabled")
 
@@ -276,7 +307,9 @@ class ListenerArgs:
     @pulumi.getter(name="secSensorEnabled")
     def sec_sensor_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        Specifies whether to enable fine-grained monitoring.
+        Whether to turn on the second-level monitoring function. Value:
+        - **true**: on.
+        - **false**: closed.
         """
         return pulumi.get(self, "sec_sensor_enabled")
 
@@ -288,9 +321,8 @@ class ListenerArgs:
     @pulumi.getter(name="securityPolicyId")
     def security_policy_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID of the security policy. System security policies and custom security policies are supported. 
-        System security policies valid values: `tls_cipher_policy_1_0` (default), `tls_cipher_policy_1_1,` `tls_cipher_policy_1_2`, `tls_cipher_policy_1_2_strict`, and `tls_cipher_policy_1_2_strict_with_1_3`.
-        Custom security policies can be created by resource `nlb.SecurityPolicy`.
+        Security policy ID. Support system security policies and custom security policies. Valid values: **tls_cipher_policy_1_0**, **tls_cipher_policy_1_1**, **tls_cipher_policy_1_2**, **tls_cipher_policy_1_2_strict**, or **tls_cipher_policy_1_2_strict_with_1_3**.
+        > **NOTE:**  This parameter only takes effect for TCPSSL listeners.
         """
         return pulumi.get(self, "security_policy_id")
 
@@ -302,7 +334,7 @@ class ListenerArgs:
     @pulumi.getter(name="startPort")
     def start_port(self) -> Optional[pulumi.Input[int]]:
         """
-        Full Port listens to the starting port. Valid values: `0` ~ `65535`.
+        Full Port listens to the starting port. Valid values: **0** ~ **65535**.
         """
         return pulumi.get(self, "start_port")
 
@@ -314,13 +346,25 @@ class ListenerArgs:
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[str]]:
         """
-        The status of the resource. Valid values: `Running`, `Stopped`.
+        The status of the resource.
         """
         return pulumi.get(self, "status")
 
     @status.setter
     def status(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "status", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        The tag of the resource.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "tags", value)
 
 
 @pulumi.input_type
@@ -344,30 +388,46 @@ class _ListenerState:
                  security_policy_id: Optional[pulumi.Input[str]] = None,
                  server_group_id: Optional[pulumi.Input[str]] = None,
                  start_port: Optional[pulumi.Input[int]] = None,
-                 status: Optional[pulumi.Input[str]] = None):
+                 status: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None):
         """
         Input properties used for looking up and filtering Listener resources.
-        :param pulumi.Input[bool] alpn_enabled: Specifies whether to enable Application-Layer Protocol Negotiation (ALPN).
-        :param pulumi.Input[str] alpn_policy: The ALPN policy.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] ca_certificate_ids: The list of certificate authority (CA) certificates. This parameter takes effect only for listeners that use SSL over TCP. **Note:** Only one CA certificate is supported.
-        :param pulumi.Input[bool] ca_enabled: Specifies whether to enable mutual authentication.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] certificate_ids: The list of server certificates. This parameter takes effect only for listeners that use SSL over TCP. **Note:** Only one server certificate is supported.
-        :param pulumi.Input[int] cps: The maximum number of connections that can be created per second on the NLB instance. Valid values: 0 to 1000000. 0 specifies that the number of connections is unlimited.
-        :param pulumi.Input[int] end_port: Full port listening end port. Valid values: `0` ~ `65535`. The value of the end port is less than the start port.
-        :param pulumi.Input[int] idle_timeout: The timeout period of an idle connection. Unit: seconds. Valid values: `1` to `900`. Default value: `900`.
-        :param pulumi.Input[str] listener_description: Custom listener name. The length is limited to 2 to 256 characters, supports Chinese and English letters, and can include numbers, commas (,), half-width periods (.), half-width semicolons (;), forward slashes (/), at(@), underscores (_), and dashes (-).
-        :param pulumi.Input[int] listener_port: Listening port. Valid values: 0 ~ 65535. `0`: indicates that full port listening is used. When set to `0`, you must configure `StartPort` and `EndPort`.
-        :param pulumi.Input[str] listener_protocol: The listening protocol. Valid values: `TCP`, `UDP`, or `TCPSSL`.
+        :param pulumi.Input[bool] alpn_enabled: Whether ALPN is turned on. Value:
+               - **true**: on.
+               - **false**: closed.
+        :param pulumi.Input[str] alpn_policy: ALPN policy. Value:
+               - **HTTP1Only**
+               - **HTTP2Only**
+               - **HTTP2Preferred**
+               - **HTTP2Optional**.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ca_certificate_ids: CA certificate list information. Currently, only one CA certificate can be added.
+               > **NOTE:**  This parameter only takes effect for TCPSSL listeners.
+        :param pulumi.Input[bool] ca_enabled: Whether to start two-way authentication. Value:
+               - **true**: start.
+               - **false**: closed.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] certificate_ids: Server certificate list information. Currently, only one server certificate can be added.
+               > **NOTE:**  This parameter only takes effect for TCPSSL listeners.
+        :param pulumi.Input[int] cps: The new connection speed limit for a network-based load balancing instance per second. Valid values: **0** ~ **1000000**. **0** indicates unlimited speed.
+        :param pulumi.Input[int] end_port: Full port listening end port. Valid values: **0** ~ **65535 * *. The value of the end port is less than the start port.
+        :param pulumi.Input[int] idle_timeout: Connection idle timeout time. Unit: seconds. Valid values: **1** ~ **900**.
+        :param pulumi.Input[str] listener_description: Custom listener name.The length is limited to 2 to 256 characters, supports Chinese and English letters, and can include numbers, commas (,), half-width periods (.), half-width semicolons (;), forward slashes (/), at(@), underscores (_), and dashes (-).
+        :param pulumi.Input[int] listener_port: Listening port. Valid values: **0** ~ **65535 * *. **0**: indicates that full port listening is used. When set to **0**, you must configure **StartPort** and **EndPort**.
+        :param pulumi.Input[str] listener_protocol: The listening protocol. Valid values: **TCP**, **UDP**, or **TCPSSL**.
         :param pulumi.Input[str] load_balancer_id: The ID of the network-based server load balancer instance.
-        :param pulumi.Input[int] mss: The maximum size of a TCP segment. Unit: bytes. Valid values: 0 to 1500. 0 specifies that the maximum segment size remains unchanged. **Note:** This parameter is supported only by listeners that use SSL over TCP.
-        :param pulumi.Input[bool] proxy_protocol_enabled: Specifies whether to use the Proxy protocol to pass client IP addresses to backend servers.
-        :param pulumi.Input[bool] sec_sensor_enabled: Specifies whether to enable fine-grained monitoring.
-        :param pulumi.Input[str] security_policy_id: The ID of the security policy. System security policies and custom security policies are supported. 
-               System security policies valid values: `tls_cipher_policy_1_0` (default), `tls_cipher_policy_1_1,` `tls_cipher_policy_1_2`, `tls_cipher_policy_1_2_strict`, and `tls_cipher_policy_1_2_strict_with_1_3`.
-               Custom security policies can be created by resource `nlb.SecurityPolicy`.
+        :param pulumi.Input[int] mss: The maximum segment size of the TCP message. Unit: Bytes. Valid values: **0** ~ **1500**. **0** indicates that the MSS value of the TCP message is not modified.
+               > **NOTE:**  only TCP and TCPSSL listeners support this field value.
+        :param pulumi.Input[bool] proxy_protocol_enabled: Whether to enable the Proxy Protocol to carry the source address of the client to the backend server. Value:
+               - **true**: on.
+               - **false**: closed.
+        :param pulumi.Input[bool] sec_sensor_enabled: Whether to turn on the second-level monitoring function. Value:
+               - **true**: on.
+               - **false**: closed.
+        :param pulumi.Input[str] security_policy_id: Security policy ID. Support system security policies and custom security policies. Valid values: **tls_cipher_policy_1_0**, **tls_cipher_policy_1_1**, **tls_cipher_policy_1_2**, **tls_cipher_policy_1_2_strict**, or **tls_cipher_policy_1_2_strict_with_1_3**.
+               > **NOTE:**  This parameter only takes effect for TCPSSL listeners.
         :param pulumi.Input[str] server_group_id: The ID of the server group.
-        :param pulumi.Input[int] start_port: Full Port listens to the starting port. Valid values: `0` ~ `65535`.
-        :param pulumi.Input[str] status: The status of the resource. Valid values: `Running`, `Stopped`.
+        :param pulumi.Input[int] start_port: Full Port listens to the starting port. Valid values: **0** ~ **65535**.
+        :param pulumi.Input[str] status: The status of the resource.
+        :param pulumi.Input[Mapping[str, Any]] tags: The tag of the resource.
         """
         if alpn_enabled is not None:
             pulumi.set(__self__, "alpn_enabled", alpn_enabled)
@@ -407,12 +467,16 @@ class _ListenerState:
             pulumi.set(__self__, "start_port", start_port)
         if status is not None:
             pulumi.set(__self__, "status", status)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
 
     @property
     @pulumi.getter(name="alpnEnabled")
     def alpn_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        Specifies whether to enable Application-Layer Protocol Negotiation (ALPN).
+        Whether ALPN is turned on. Value:
+        - **true**: on.
+        - **false**: closed.
         """
         return pulumi.get(self, "alpn_enabled")
 
@@ -424,7 +488,11 @@ class _ListenerState:
     @pulumi.getter(name="alpnPolicy")
     def alpn_policy(self) -> Optional[pulumi.Input[str]]:
         """
-        The ALPN policy.
+        ALPN policy. Value:
+        - **HTTP1Only**
+        - **HTTP2Only**
+        - **HTTP2Preferred**
+        - **HTTP2Optional**.
         """
         return pulumi.get(self, "alpn_policy")
 
@@ -436,7 +504,8 @@ class _ListenerState:
     @pulumi.getter(name="caCertificateIds")
     def ca_certificate_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        The list of certificate authority (CA) certificates. This parameter takes effect only for listeners that use SSL over TCP. **Note:** Only one CA certificate is supported.
+        CA certificate list information. Currently, only one CA certificate can be added.
+        > **NOTE:**  This parameter only takes effect for TCPSSL listeners.
         """
         return pulumi.get(self, "ca_certificate_ids")
 
@@ -448,7 +517,9 @@ class _ListenerState:
     @pulumi.getter(name="caEnabled")
     def ca_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        Specifies whether to enable mutual authentication.
+        Whether to start two-way authentication. Value:
+        - **true**: start.
+        - **false**: closed.
         """
         return pulumi.get(self, "ca_enabled")
 
@@ -460,7 +531,8 @@ class _ListenerState:
     @pulumi.getter(name="certificateIds")
     def certificate_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        The list of server certificates. This parameter takes effect only for listeners that use SSL over TCP. **Note:** Only one server certificate is supported.
+        Server certificate list information. Currently, only one server certificate can be added.
+        > **NOTE:**  This parameter only takes effect for TCPSSL listeners.
         """
         return pulumi.get(self, "certificate_ids")
 
@@ -472,7 +544,7 @@ class _ListenerState:
     @pulumi.getter
     def cps(self) -> Optional[pulumi.Input[int]]:
         """
-        The maximum number of connections that can be created per second on the NLB instance. Valid values: 0 to 1000000. 0 specifies that the number of connections is unlimited.
+        The new connection speed limit for a network-based load balancing instance per second. Valid values: **0** ~ **1000000**. **0** indicates unlimited speed.
         """
         return pulumi.get(self, "cps")
 
@@ -484,7 +556,7 @@ class _ListenerState:
     @pulumi.getter(name="endPort")
     def end_port(self) -> Optional[pulumi.Input[int]]:
         """
-        Full port listening end port. Valid values: `0` ~ `65535`. The value of the end port is less than the start port.
+        Full port listening end port. Valid values: **0** ~ **65535 * *. The value of the end port is less than the start port.
         """
         return pulumi.get(self, "end_port")
 
@@ -496,7 +568,7 @@ class _ListenerState:
     @pulumi.getter(name="idleTimeout")
     def idle_timeout(self) -> Optional[pulumi.Input[int]]:
         """
-        The timeout period of an idle connection. Unit: seconds. Valid values: `1` to `900`. Default value: `900`.
+        Connection idle timeout time. Unit: seconds. Valid values: **1** ~ **900**.
         """
         return pulumi.get(self, "idle_timeout")
 
@@ -508,7 +580,7 @@ class _ListenerState:
     @pulumi.getter(name="listenerDescription")
     def listener_description(self) -> Optional[pulumi.Input[str]]:
         """
-        Custom listener name. The length is limited to 2 to 256 characters, supports Chinese and English letters, and can include numbers, commas (,), half-width periods (.), half-width semicolons (;), forward slashes (/), at(@), underscores (_), and dashes (-).
+        Custom listener name.The length is limited to 2 to 256 characters, supports Chinese and English letters, and can include numbers, commas (,), half-width periods (.), half-width semicolons (;), forward slashes (/), at(@), underscores (_), and dashes (-).
         """
         return pulumi.get(self, "listener_description")
 
@@ -520,7 +592,7 @@ class _ListenerState:
     @pulumi.getter(name="listenerPort")
     def listener_port(self) -> Optional[pulumi.Input[int]]:
         """
-        Listening port. Valid values: 0 ~ 65535. `0`: indicates that full port listening is used. When set to `0`, you must configure `StartPort` and `EndPort`.
+        Listening port. Valid values: **0** ~ **65535 * *. **0**: indicates that full port listening is used. When set to **0**, you must configure **StartPort** and **EndPort**.
         """
         return pulumi.get(self, "listener_port")
 
@@ -532,7 +604,7 @@ class _ListenerState:
     @pulumi.getter(name="listenerProtocol")
     def listener_protocol(self) -> Optional[pulumi.Input[str]]:
         """
-        The listening protocol. Valid values: `TCP`, `UDP`, or `TCPSSL`.
+        The listening protocol. Valid values: **TCP**, **UDP**, or **TCPSSL**.
         """
         return pulumi.get(self, "listener_protocol")
 
@@ -556,7 +628,8 @@ class _ListenerState:
     @pulumi.getter
     def mss(self) -> Optional[pulumi.Input[int]]:
         """
-        The maximum size of a TCP segment. Unit: bytes. Valid values: 0 to 1500. 0 specifies that the maximum segment size remains unchanged. **Note:** This parameter is supported only by listeners that use SSL over TCP.
+        The maximum segment size of the TCP message. Unit: Bytes. Valid values: **0** ~ **1500**. **0** indicates that the MSS value of the TCP message is not modified.
+        > **NOTE:**  only TCP and TCPSSL listeners support this field value.
         """
         return pulumi.get(self, "mss")
 
@@ -568,7 +641,9 @@ class _ListenerState:
     @pulumi.getter(name="proxyProtocolEnabled")
     def proxy_protocol_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        Specifies whether to use the Proxy protocol to pass client IP addresses to backend servers.
+        Whether to enable the Proxy Protocol to carry the source address of the client to the backend server. Value:
+        - **true**: on.
+        - **false**: closed.
         """
         return pulumi.get(self, "proxy_protocol_enabled")
 
@@ -580,7 +655,9 @@ class _ListenerState:
     @pulumi.getter(name="secSensorEnabled")
     def sec_sensor_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        Specifies whether to enable fine-grained monitoring.
+        Whether to turn on the second-level monitoring function. Value:
+        - **true**: on.
+        - **false**: closed.
         """
         return pulumi.get(self, "sec_sensor_enabled")
 
@@ -592,9 +669,8 @@ class _ListenerState:
     @pulumi.getter(name="securityPolicyId")
     def security_policy_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID of the security policy. System security policies and custom security policies are supported. 
-        System security policies valid values: `tls_cipher_policy_1_0` (default), `tls_cipher_policy_1_1,` `tls_cipher_policy_1_2`, `tls_cipher_policy_1_2_strict`, and `tls_cipher_policy_1_2_strict_with_1_3`.
-        Custom security policies can be created by resource `nlb.SecurityPolicy`.
+        Security policy ID. Support system security policies and custom security policies. Valid values: **tls_cipher_policy_1_0**, **tls_cipher_policy_1_1**, **tls_cipher_policy_1_2**, **tls_cipher_policy_1_2_strict**, or **tls_cipher_policy_1_2_strict_with_1_3**.
+        > **NOTE:**  This parameter only takes effect for TCPSSL listeners.
         """
         return pulumi.get(self, "security_policy_id")
 
@@ -618,7 +694,7 @@ class _ListenerState:
     @pulumi.getter(name="startPort")
     def start_port(self) -> Optional[pulumi.Input[int]]:
         """
-        Full Port listens to the starting port. Valid values: `0` ~ `65535`.
+        Full Port listens to the starting port. Valid values: **0** ~ **65535**.
         """
         return pulumi.get(self, "start_port")
 
@@ -630,13 +706,25 @@ class _ListenerState:
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[str]]:
         """
-        The status of the resource. Valid values: `Running`, `Stopped`.
+        The status of the resource.
         """
         return pulumi.get(self, "status")
 
     @status.setter
     def status(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "status", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        The tag of the resource.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "tags", value)
 
 
 class Listener(pulumi.CustomResource):
@@ -663,11 +751,12 @@ class Listener(pulumi.CustomResource):
                  server_group_id: Optional[pulumi.Input[str]] = None,
                  start_port: Optional[pulumi.Input[int]] = None,
                  status: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  __props__=None):
         """
         Provides a NLB Listener resource.
 
-        For information about NLB Listener and how to use it, see [What is Listener](https://www.alibabacloud.com/help/en/server-load-balancer/latest/createlistener-nl).
+        For information about NLB Listener and how to use it, see [What is Listener](https://www.alibabacloud.com/help/en/server-load-balancer/latest/api-nlb-2022-04-30-createlistener).
 
         > **NOTE:** Available since v1.191.0.
 
@@ -772,27 +861,42 @@ class Listener(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[bool] alpn_enabled: Specifies whether to enable Application-Layer Protocol Negotiation (ALPN).
-        :param pulumi.Input[str] alpn_policy: The ALPN policy.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] ca_certificate_ids: The list of certificate authority (CA) certificates. This parameter takes effect only for listeners that use SSL over TCP. **Note:** Only one CA certificate is supported.
-        :param pulumi.Input[bool] ca_enabled: Specifies whether to enable mutual authentication.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] certificate_ids: The list of server certificates. This parameter takes effect only for listeners that use SSL over TCP. **Note:** Only one server certificate is supported.
-        :param pulumi.Input[int] cps: The maximum number of connections that can be created per second on the NLB instance. Valid values: 0 to 1000000. 0 specifies that the number of connections is unlimited.
-        :param pulumi.Input[int] end_port: Full port listening end port. Valid values: `0` ~ `65535`. The value of the end port is less than the start port.
-        :param pulumi.Input[int] idle_timeout: The timeout period of an idle connection. Unit: seconds. Valid values: `1` to `900`. Default value: `900`.
-        :param pulumi.Input[str] listener_description: Custom listener name. The length is limited to 2 to 256 characters, supports Chinese and English letters, and can include numbers, commas (,), half-width periods (.), half-width semicolons (;), forward slashes (/), at(@), underscores (_), and dashes (-).
-        :param pulumi.Input[int] listener_port: Listening port. Valid values: 0 ~ 65535. `0`: indicates that full port listening is used. When set to `0`, you must configure `StartPort` and `EndPort`.
-        :param pulumi.Input[str] listener_protocol: The listening protocol. Valid values: `TCP`, `UDP`, or `TCPSSL`.
+        :param pulumi.Input[bool] alpn_enabled: Whether ALPN is turned on. Value:
+               - **true**: on.
+               - **false**: closed.
+        :param pulumi.Input[str] alpn_policy: ALPN policy. Value:
+               - **HTTP1Only**
+               - **HTTP2Only**
+               - **HTTP2Preferred**
+               - **HTTP2Optional**.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ca_certificate_ids: CA certificate list information. Currently, only one CA certificate can be added.
+               > **NOTE:**  This parameter only takes effect for TCPSSL listeners.
+        :param pulumi.Input[bool] ca_enabled: Whether to start two-way authentication. Value:
+               - **true**: start.
+               - **false**: closed.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] certificate_ids: Server certificate list information. Currently, only one server certificate can be added.
+               > **NOTE:**  This parameter only takes effect for TCPSSL listeners.
+        :param pulumi.Input[int] cps: The new connection speed limit for a network-based load balancing instance per second. Valid values: **0** ~ **1000000**. **0** indicates unlimited speed.
+        :param pulumi.Input[int] end_port: Full port listening end port. Valid values: **0** ~ **65535 * *. The value of the end port is less than the start port.
+        :param pulumi.Input[int] idle_timeout: Connection idle timeout time. Unit: seconds. Valid values: **1** ~ **900**.
+        :param pulumi.Input[str] listener_description: Custom listener name.The length is limited to 2 to 256 characters, supports Chinese and English letters, and can include numbers, commas (,), half-width periods (.), half-width semicolons (;), forward slashes (/), at(@), underscores (_), and dashes (-).
+        :param pulumi.Input[int] listener_port: Listening port. Valid values: **0** ~ **65535 * *. **0**: indicates that full port listening is used. When set to **0**, you must configure **StartPort** and **EndPort**.
+        :param pulumi.Input[str] listener_protocol: The listening protocol. Valid values: **TCP**, **UDP**, or **TCPSSL**.
         :param pulumi.Input[str] load_balancer_id: The ID of the network-based server load balancer instance.
-        :param pulumi.Input[int] mss: The maximum size of a TCP segment. Unit: bytes. Valid values: 0 to 1500. 0 specifies that the maximum segment size remains unchanged. **Note:** This parameter is supported only by listeners that use SSL over TCP.
-        :param pulumi.Input[bool] proxy_protocol_enabled: Specifies whether to use the Proxy protocol to pass client IP addresses to backend servers.
-        :param pulumi.Input[bool] sec_sensor_enabled: Specifies whether to enable fine-grained monitoring.
-        :param pulumi.Input[str] security_policy_id: The ID of the security policy. System security policies and custom security policies are supported. 
-               System security policies valid values: `tls_cipher_policy_1_0` (default), `tls_cipher_policy_1_1,` `tls_cipher_policy_1_2`, `tls_cipher_policy_1_2_strict`, and `tls_cipher_policy_1_2_strict_with_1_3`.
-               Custom security policies can be created by resource `nlb.SecurityPolicy`.
+        :param pulumi.Input[int] mss: The maximum segment size of the TCP message. Unit: Bytes. Valid values: **0** ~ **1500**. **0** indicates that the MSS value of the TCP message is not modified.
+               > **NOTE:**  only TCP and TCPSSL listeners support this field value.
+        :param pulumi.Input[bool] proxy_protocol_enabled: Whether to enable the Proxy Protocol to carry the source address of the client to the backend server. Value:
+               - **true**: on.
+               - **false**: closed.
+        :param pulumi.Input[bool] sec_sensor_enabled: Whether to turn on the second-level monitoring function. Value:
+               - **true**: on.
+               - **false**: closed.
+        :param pulumi.Input[str] security_policy_id: Security policy ID. Support system security policies and custom security policies. Valid values: **tls_cipher_policy_1_0**, **tls_cipher_policy_1_1**, **tls_cipher_policy_1_2**, **tls_cipher_policy_1_2_strict**, or **tls_cipher_policy_1_2_strict_with_1_3**.
+               > **NOTE:**  This parameter only takes effect for TCPSSL listeners.
         :param pulumi.Input[str] server_group_id: The ID of the server group.
-        :param pulumi.Input[int] start_port: Full Port listens to the starting port. Valid values: `0` ~ `65535`.
-        :param pulumi.Input[str] status: The status of the resource. Valid values: `Running`, `Stopped`.
+        :param pulumi.Input[int] start_port: Full Port listens to the starting port. Valid values: **0** ~ **65535**.
+        :param pulumi.Input[str] status: The status of the resource.
+        :param pulumi.Input[Mapping[str, Any]] tags: The tag of the resource.
         """
         ...
     @overload
@@ -803,7 +907,7 @@ class Listener(pulumi.CustomResource):
         """
         Provides a NLB Listener resource.
 
-        For information about NLB Listener and how to use it, see [What is Listener](https://www.alibabacloud.com/help/en/server-load-balancer/latest/createlistener-nl).
+        For information about NLB Listener and how to use it, see [What is Listener](https://www.alibabacloud.com/help/en/server-load-balancer/latest/api-nlb-2022-04-30-createlistener).
 
         > **NOTE:** Available since v1.191.0.
 
@@ -940,6 +1044,7 @@ class Listener(pulumi.CustomResource):
                  server_group_id: Optional[pulumi.Input[str]] = None,
                  start_port: Optional[pulumi.Input[int]] = None,
                  status: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -976,6 +1081,7 @@ class Listener(pulumi.CustomResource):
             __props__.__dict__["server_group_id"] = server_group_id
             __props__.__dict__["start_port"] = start_port
             __props__.__dict__["status"] = status
+            __props__.__dict__["tags"] = tags
         super(Listener, __self__).__init__(
             'alicloud:nlb/listener:Listener',
             resource_name,
@@ -1004,7 +1110,8 @@ class Listener(pulumi.CustomResource):
             security_policy_id: Optional[pulumi.Input[str]] = None,
             server_group_id: Optional[pulumi.Input[str]] = None,
             start_port: Optional[pulumi.Input[int]] = None,
-            status: Optional[pulumi.Input[str]] = None) -> 'Listener':
+            status: Optional[pulumi.Input[str]] = None,
+            tags: Optional[pulumi.Input[Mapping[str, Any]]] = None) -> 'Listener':
         """
         Get an existing Listener resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -1012,27 +1119,42 @@ class Listener(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[bool] alpn_enabled: Specifies whether to enable Application-Layer Protocol Negotiation (ALPN).
-        :param pulumi.Input[str] alpn_policy: The ALPN policy.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] ca_certificate_ids: The list of certificate authority (CA) certificates. This parameter takes effect only for listeners that use SSL over TCP. **Note:** Only one CA certificate is supported.
-        :param pulumi.Input[bool] ca_enabled: Specifies whether to enable mutual authentication.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] certificate_ids: The list of server certificates. This parameter takes effect only for listeners that use SSL over TCP. **Note:** Only one server certificate is supported.
-        :param pulumi.Input[int] cps: The maximum number of connections that can be created per second on the NLB instance. Valid values: 0 to 1000000. 0 specifies that the number of connections is unlimited.
-        :param pulumi.Input[int] end_port: Full port listening end port. Valid values: `0` ~ `65535`. The value of the end port is less than the start port.
-        :param pulumi.Input[int] idle_timeout: The timeout period of an idle connection. Unit: seconds. Valid values: `1` to `900`. Default value: `900`.
-        :param pulumi.Input[str] listener_description: Custom listener name. The length is limited to 2 to 256 characters, supports Chinese and English letters, and can include numbers, commas (,), half-width periods (.), half-width semicolons (;), forward slashes (/), at(@), underscores (_), and dashes (-).
-        :param pulumi.Input[int] listener_port: Listening port. Valid values: 0 ~ 65535. `0`: indicates that full port listening is used. When set to `0`, you must configure `StartPort` and `EndPort`.
-        :param pulumi.Input[str] listener_protocol: The listening protocol. Valid values: `TCP`, `UDP`, or `TCPSSL`.
+        :param pulumi.Input[bool] alpn_enabled: Whether ALPN is turned on. Value:
+               - **true**: on.
+               - **false**: closed.
+        :param pulumi.Input[str] alpn_policy: ALPN policy. Value:
+               - **HTTP1Only**
+               - **HTTP2Only**
+               - **HTTP2Preferred**
+               - **HTTP2Optional**.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ca_certificate_ids: CA certificate list information. Currently, only one CA certificate can be added.
+               > **NOTE:**  This parameter only takes effect for TCPSSL listeners.
+        :param pulumi.Input[bool] ca_enabled: Whether to start two-way authentication. Value:
+               - **true**: start.
+               - **false**: closed.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] certificate_ids: Server certificate list information. Currently, only one server certificate can be added.
+               > **NOTE:**  This parameter only takes effect for TCPSSL listeners.
+        :param pulumi.Input[int] cps: The new connection speed limit for a network-based load balancing instance per second. Valid values: **0** ~ **1000000**. **0** indicates unlimited speed.
+        :param pulumi.Input[int] end_port: Full port listening end port. Valid values: **0** ~ **65535 * *. The value of the end port is less than the start port.
+        :param pulumi.Input[int] idle_timeout: Connection idle timeout time. Unit: seconds. Valid values: **1** ~ **900**.
+        :param pulumi.Input[str] listener_description: Custom listener name.The length is limited to 2 to 256 characters, supports Chinese and English letters, and can include numbers, commas (,), half-width periods (.), half-width semicolons (;), forward slashes (/), at(@), underscores (_), and dashes (-).
+        :param pulumi.Input[int] listener_port: Listening port. Valid values: **0** ~ **65535 * *. **0**: indicates that full port listening is used. When set to **0**, you must configure **StartPort** and **EndPort**.
+        :param pulumi.Input[str] listener_protocol: The listening protocol. Valid values: **TCP**, **UDP**, or **TCPSSL**.
         :param pulumi.Input[str] load_balancer_id: The ID of the network-based server load balancer instance.
-        :param pulumi.Input[int] mss: The maximum size of a TCP segment. Unit: bytes. Valid values: 0 to 1500. 0 specifies that the maximum segment size remains unchanged. **Note:** This parameter is supported only by listeners that use SSL over TCP.
-        :param pulumi.Input[bool] proxy_protocol_enabled: Specifies whether to use the Proxy protocol to pass client IP addresses to backend servers.
-        :param pulumi.Input[bool] sec_sensor_enabled: Specifies whether to enable fine-grained monitoring.
-        :param pulumi.Input[str] security_policy_id: The ID of the security policy. System security policies and custom security policies are supported. 
-               System security policies valid values: `tls_cipher_policy_1_0` (default), `tls_cipher_policy_1_1,` `tls_cipher_policy_1_2`, `tls_cipher_policy_1_2_strict`, and `tls_cipher_policy_1_2_strict_with_1_3`.
-               Custom security policies can be created by resource `nlb.SecurityPolicy`.
+        :param pulumi.Input[int] mss: The maximum segment size of the TCP message. Unit: Bytes. Valid values: **0** ~ **1500**. **0** indicates that the MSS value of the TCP message is not modified.
+               > **NOTE:**  only TCP and TCPSSL listeners support this field value.
+        :param pulumi.Input[bool] proxy_protocol_enabled: Whether to enable the Proxy Protocol to carry the source address of the client to the backend server. Value:
+               - **true**: on.
+               - **false**: closed.
+        :param pulumi.Input[bool] sec_sensor_enabled: Whether to turn on the second-level monitoring function. Value:
+               - **true**: on.
+               - **false**: closed.
+        :param pulumi.Input[str] security_policy_id: Security policy ID. Support system security policies and custom security policies. Valid values: **tls_cipher_policy_1_0**, **tls_cipher_policy_1_1**, **tls_cipher_policy_1_2**, **tls_cipher_policy_1_2_strict**, or **tls_cipher_policy_1_2_strict_with_1_3**.
+               > **NOTE:**  This parameter only takes effect for TCPSSL listeners.
         :param pulumi.Input[str] server_group_id: The ID of the server group.
-        :param pulumi.Input[int] start_port: Full Port listens to the starting port. Valid values: `0` ~ `65535`.
-        :param pulumi.Input[str] status: The status of the resource. Valid values: `Running`, `Stopped`.
+        :param pulumi.Input[int] start_port: Full Port listens to the starting port. Valid values: **0** ~ **65535**.
+        :param pulumi.Input[str] status: The status of the resource.
+        :param pulumi.Input[Mapping[str, Any]] tags: The tag of the resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1057,13 +1179,16 @@ class Listener(pulumi.CustomResource):
         __props__.__dict__["server_group_id"] = server_group_id
         __props__.__dict__["start_port"] = start_port
         __props__.__dict__["status"] = status
+        __props__.__dict__["tags"] = tags
         return Listener(resource_name, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter(name="alpnEnabled")
     def alpn_enabled(self) -> pulumi.Output[bool]:
         """
-        Specifies whether to enable Application-Layer Protocol Negotiation (ALPN).
+        Whether ALPN is turned on. Value:
+        - **true**: on.
+        - **false**: closed.
         """
         return pulumi.get(self, "alpn_enabled")
 
@@ -1071,7 +1196,11 @@ class Listener(pulumi.CustomResource):
     @pulumi.getter(name="alpnPolicy")
     def alpn_policy(self) -> pulumi.Output[Optional[str]]:
         """
-        The ALPN policy.
+        ALPN policy. Value:
+        - **HTTP1Only**
+        - **HTTP2Only**
+        - **HTTP2Preferred**
+        - **HTTP2Optional**.
         """
         return pulumi.get(self, "alpn_policy")
 
@@ -1079,7 +1208,8 @@ class Listener(pulumi.CustomResource):
     @pulumi.getter(name="caCertificateIds")
     def ca_certificate_ids(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
-        The list of certificate authority (CA) certificates. This parameter takes effect only for listeners that use SSL over TCP. **Note:** Only one CA certificate is supported.
+        CA certificate list information. Currently, only one CA certificate can be added.
+        > **NOTE:**  This parameter only takes effect for TCPSSL listeners.
         """
         return pulumi.get(self, "ca_certificate_ids")
 
@@ -1087,7 +1217,9 @@ class Listener(pulumi.CustomResource):
     @pulumi.getter(name="caEnabled")
     def ca_enabled(self) -> pulumi.Output[bool]:
         """
-        Specifies whether to enable mutual authentication.
+        Whether to start two-way authentication. Value:
+        - **true**: start.
+        - **false**: closed.
         """
         return pulumi.get(self, "ca_enabled")
 
@@ -1095,7 +1227,8 @@ class Listener(pulumi.CustomResource):
     @pulumi.getter(name="certificateIds")
     def certificate_ids(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
-        The list of server certificates. This parameter takes effect only for listeners that use SSL over TCP. **Note:** Only one server certificate is supported.
+        Server certificate list information. Currently, only one server certificate can be added.
+        > **NOTE:**  This parameter only takes effect for TCPSSL listeners.
         """
         return pulumi.get(self, "certificate_ids")
 
@@ -1103,7 +1236,7 @@ class Listener(pulumi.CustomResource):
     @pulumi.getter
     def cps(self) -> pulumi.Output[Optional[int]]:
         """
-        The maximum number of connections that can be created per second on the NLB instance. Valid values: 0 to 1000000. 0 specifies that the number of connections is unlimited.
+        The new connection speed limit for a network-based load balancing instance per second. Valid values: **0** ~ **1000000**. **0** indicates unlimited speed.
         """
         return pulumi.get(self, "cps")
 
@@ -1111,7 +1244,7 @@ class Listener(pulumi.CustomResource):
     @pulumi.getter(name="endPort")
     def end_port(self) -> pulumi.Output[Optional[int]]:
         """
-        Full port listening end port. Valid values: `0` ~ `65535`. The value of the end port is less than the start port.
+        Full port listening end port. Valid values: **0** ~ **65535 * *. The value of the end port is less than the start port.
         """
         return pulumi.get(self, "end_port")
 
@@ -1119,7 +1252,7 @@ class Listener(pulumi.CustomResource):
     @pulumi.getter(name="idleTimeout")
     def idle_timeout(self) -> pulumi.Output[int]:
         """
-        The timeout period of an idle connection. Unit: seconds. Valid values: `1` to `900`. Default value: `900`.
+        Connection idle timeout time. Unit: seconds. Valid values: **1** ~ **900**.
         """
         return pulumi.get(self, "idle_timeout")
 
@@ -1127,7 +1260,7 @@ class Listener(pulumi.CustomResource):
     @pulumi.getter(name="listenerDescription")
     def listener_description(self) -> pulumi.Output[Optional[str]]:
         """
-        Custom listener name. The length is limited to 2 to 256 characters, supports Chinese and English letters, and can include numbers, commas (,), half-width periods (.), half-width semicolons (;), forward slashes (/), at(@), underscores (_), and dashes (-).
+        Custom listener name.The length is limited to 2 to 256 characters, supports Chinese and English letters, and can include numbers, commas (,), half-width periods (.), half-width semicolons (;), forward slashes (/), at(@), underscores (_), and dashes (-).
         """
         return pulumi.get(self, "listener_description")
 
@@ -1135,7 +1268,7 @@ class Listener(pulumi.CustomResource):
     @pulumi.getter(name="listenerPort")
     def listener_port(self) -> pulumi.Output[int]:
         """
-        Listening port. Valid values: 0 ~ 65535. `0`: indicates that full port listening is used. When set to `0`, you must configure `StartPort` and `EndPort`.
+        Listening port. Valid values: **0** ~ **65535 * *. **0**: indicates that full port listening is used. When set to **0**, you must configure **StartPort** and **EndPort**.
         """
         return pulumi.get(self, "listener_port")
 
@@ -1143,7 +1276,7 @@ class Listener(pulumi.CustomResource):
     @pulumi.getter(name="listenerProtocol")
     def listener_protocol(self) -> pulumi.Output[str]:
         """
-        The listening protocol. Valid values: `TCP`, `UDP`, or `TCPSSL`.
+        The listening protocol. Valid values: **TCP**, **UDP**, or **TCPSSL**.
         """
         return pulumi.get(self, "listener_protocol")
 
@@ -1159,7 +1292,8 @@ class Listener(pulumi.CustomResource):
     @pulumi.getter
     def mss(self) -> pulumi.Output[Optional[int]]:
         """
-        The maximum size of a TCP segment. Unit: bytes. Valid values: 0 to 1500. 0 specifies that the maximum segment size remains unchanged. **Note:** This parameter is supported only by listeners that use SSL over TCP.
+        The maximum segment size of the TCP message. Unit: Bytes. Valid values: **0** ~ **1500**. **0** indicates that the MSS value of the TCP message is not modified.
+        > **NOTE:**  only TCP and TCPSSL listeners support this field value.
         """
         return pulumi.get(self, "mss")
 
@@ -1167,7 +1301,9 @@ class Listener(pulumi.CustomResource):
     @pulumi.getter(name="proxyProtocolEnabled")
     def proxy_protocol_enabled(self) -> pulumi.Output[bool]:
         """
-        Specifies whether to use the Proxy protocol to pass client IP addresses to backend servers.
+        Whether to enable the Proxy Protocol to carry the source address of the client to the backend server. Value:
+        - **true**: on.
+        - **false**: closed.
         """
         return pulumi.get(self, "proxy_protocol_enabled")
 
@@ -1175,7 +1311,9 @@ class Listener(pulumi.CustomResource):
     @pulumi.getter(name="secSensorEnabled")
     def sec_sensor_enabled(self) -> pulumi.Output[bool]:
         """
-        Specifies whether to enable fine-grained monitoring.
+        Whether to turn on the second-level monitoring function. Value:
+        - **true**: on.
+        - **false**: closed.
         """
         return pulumi.get(self, "sec_sensor_enabled")
 
@@ -1183,9 +1321,8 @@ class Listener(pulumi.CustomResource):
     @pulumi.getter(name="securityPolicyId")
     def security_policy_id(self) -> pulumi.Output[str]:
         """
-        The ID of the security policy. System security policies and custom security policies are supported. 
-        System security policies valid values: `tls_cipher_policy_1_0` (default), `tls_cipher_policy_1_1,` `tls_cipher_policy_1_2`, `tls_cipher_policy_1_2_strict`, and `tls_cipher_policy_1_2_strict_with_1_3`.
-        Custom security policies can be created by resource `nlb.SecurityPolicy`.
+        Security policy ID. Support system security policies and custom security policies. Valid values: **tls_cipher_policy_1_0**, **tls_cipher_policy_1_1**, **tls_cipher_policy_1_2**, **tls_cipher_policy_1_2_strict**, or **tls_cipher_policy_1_2_strict_with_1_3**.
+        > **NOTE:**  This parameter only takes effect for TCPSSL listeners.
         """
         return pulumi.get(self, "security_policy_id")
 
@@ -1201,7 +1338,7 @@ class Listener(pulumi.CustomResource):
     @pulumi.getter(name="startPort")
     def start_port(self) -> pulumi.Output[Optional[int]]:
         """
-        Full Port listens to the starting port. Valid values: `0` ~ `65535`.
+        Full Port listens to the starting port. Valid values: **0** ~ **65535**.
         """
         return pulumi.get(self, "start_port")
 
@@ -1209,7 +1346,15 @@ class Listener(pulumi.CustomResource):
     @pulumi.getter
     def status(self) -> pulumi.Output[str]:
         """
-        The status of the resource. Valid values: `Running`, `Stopped`.
+        The status of the resource.
         """
         return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+        """
+        The tag of the resource.
+        """
+        return pulumi.get(self, "tags")
 

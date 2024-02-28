@@ -79,7 +79,7 @@ import * as utilities from "../utilities";
  * });
  * const defaultEnterpriseInstance = new alicloud.dms.EnterpriseInstance("defaultEnterpriseInstance", {
  *     tid: defaultUserTenants.then(defaultUserTenants => defaultUserTenants.ids?.[0]),
- *     instanceType: "MySQL",
+ *     instanceType: "mysql",
  *     instanceSource: "RDS",
  *     networkType: "VPC",
  *     envType: "dev",

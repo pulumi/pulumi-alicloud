@@ -16,7 +16,7 @@ import (
 //
 // For information about Serverless Workflow Schedule and how to use it, see [What is Schedule](https://www.alibabacloud.com/help/en/doc-detail/168934.htm).
 //
-// > **NOTE:** Available in v1.105.0+.
+// > **NOTE:** Available since v1.105.0+.
 //
 // ## Example Usage
 //
@@ -43,7 +43,7 @@ import (
 //
 // `),
 //
-//				Description: pulumi.String("tf-testaccFnFFlow983041"),
+//				Description: pulumi.String("tf-exampleFnFFlow983041"),
 //				Type:        pulumi.String("FDL"),
 //			})
 //			if err != nil {
@@ -51,11 +51,11 @@ import (
 //			}
 //			_, err = fnf.NewSchedule(ctx, "exampleSchedule", &fnf.ScheduleArgs{
 //				CronExpression: pulumi.String("30 9 * * * *"),
-//				Description:    pulumi.String("tf-testaccFnFSchedule983041"),
+//				Description:    pulumi.String("tf-exampleFnFSchedule983041"),
 //				Enable:         pulumi.Bool(true),
 //				FlowName:       exampleFlow.Name,
-//				Payload:        pulumi.String("{\"tf-test\": \"test success\"}"),
-//				ScheduleName:   pulumi.String("tf-testaccFnFSchedule983041"),
+//				Payload:        pulumi.String("{\"tf-example\": \"example success\"}"),
+//				ScheduleName:   pulumi.String("tf-exampleFnFSchedule983041"),
 //			})
 //			if err != nil {
 //				return err

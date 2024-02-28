@@ -134,7 +134,7 @@ import (
 //			}
 //			defaultEnterpriseInstance, err := dms.NewEnterpriseInstance(ctx, "defaultEnterpriseInstance", &dms.EnterpriseInstanceArgs{
 //				Tid:              *pulumi.String(defaultUserTenants.Ids[0]),
-//				InstanceType:     pulumi.String("MySQL"),
+//				InstanceType:     pulumi.String("mysql"),
 //				InstanceSource:   pulumi.String("RDS"),
 //				NetworkType:      pulumi.String("VPC"),
 //				EnvType:          pulumi.String("dev"),

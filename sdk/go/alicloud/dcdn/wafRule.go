@@ -27,7 +27,10 @@ import (
 //
 // import (
 //
+//	"fmt"
+//
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/dcdn"
+//	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
@@ -40,11 +43,20 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
+//			_, err := random.NewRandomInteger(ctx, "default", &random.RandomIntegerArgs{
+//				Min: pulumi.Int(10000),
+//				Max: pulumi.Int(99999),
+//			})
+//			if err != nil {
+//				return err
+//			}
 //			exampleWafPolicy, err := dcdn.NewWafPolicy(ctx, "exampleWafPolicy", &dcdn.WafPolicyArgs{
 //				DefenseScene: pulumi.String("waf_group"),
-//				PolicyName:   pulumi.String(name),
-//				PolicyType:   pulumi.String("custom"),
-//				Status:       pulumi.String("on"),
+//				PolicyName: _default.Result.ApplyT(func(result int) (string, error) {
+//					return fmt.Sprintf("%v_%v", name, result), nil
+//				}).(pulumi.StringOutput),
+//				PolicyType: pulumi.String("custom"),
+//				Status:     pulumi.String("on"),
 //			})
 //			if err != nil {
 //				return err
@@ -65,10 +77,8 @@ import (
 //						Values:  pulumi.String("b"),
 //					},
 //				},
-//				Status:   pulumi.String("on"),
-//				CcStatus: pulumi.String("on"),
-//				Action:   pulumi.String("monitor"),
-//				Effect:   pulumi.String("rule"),
+//				Status: pulumi.String("on"),
+//				Action: pulumi.String("monitor"),
 //				RateLimit: &dcdn.WafRuleRateLimitArgs{
 //					Target:    pulumi.String("IP"),
 //					Interval:  pulumi.Int(5),

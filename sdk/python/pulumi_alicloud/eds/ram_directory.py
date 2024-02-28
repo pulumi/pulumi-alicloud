@@ -243,7 +243,6 @@ class RamDirectory(pulumi.CustomResource):
         default_ram_directory = alicloud.eds.RamDirectory("defaultRamDirectory",
             desktop_access_type="INTERNET",
             enable_admin_access=True,
-            enable_internet_access=True,
             ram_directory_name=name,
             vswitch_ids=[default_switch.id])
         ```
@@ -301,7 +300,6 @@ class RamDirectory(pulumi.CustomResource):
         default_ram_directory = alicloud.eds.RamDirectory("defaultRamDirectory",
             desktop_access_type="INTERNET",
             enable_admin_access=True,
-            enable_internet_access=True,
             ram_directory_name=name,
             vswitch_ids=[default_switch.id])
         ```

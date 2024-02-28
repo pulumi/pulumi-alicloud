@@ -265,7 +265,7 @@ class Schedule(pulumi.CustomResource):
 
         For information about Serverless Workflow Schedule and how to use it, see [What is Schedule](https://www.alibabacloud.com/help/en/doc-detail/168934.htm).
 
-        > **NOTE:** Available in v1.105.0+.
+        > **NOTE:** Available since v1.105.0+.
 
         ## Example Usage
 
@@ -282,15 +282,15 @@ class Schedule(pulumi.CustomResource):
             - type: pass
               name: helloworld
         \"\"\",
-            description="tf-testaccFnFFlow983041",
+            description="tf-exampleFnFFlow983041",
             type="FDL")
         example_schedule = alicloud.fnf.Schedule("exampleSchedule",
             cron_expression="30 9 * * * *",
-            description="tf-testaccFnFSchedule983041",
+            description="tf-exampleFnFSchedule983041",
             enable=True,
             flow_name=example_flow.name,
-            payload="{\\"tf-test\\": \\"test success\\"}",
-            schedule_name="tf-testaccFnFSchedule983041")
+            payload="{\\"tf-example\\": \\"example success\\"}",
+            schedule_name="tf-exampleFnFSchedule983041")
         ```
 
         ## Import
@@ -321,7 +321,7 @@ class Schedule(pulumi.CustomResource):
 
         For information about Serverless Workflow Schedule and how to use it, see [What is Schedule](https://www.alibabacloud.com/help/en/doc-detail/168934.htm).
 
-        > **NOTE:** Available in v1.105.0+.
+        > **NOTE:** Available since v1.105.0+.
 
         ## Example Usage
 
@@ -338,15 +338,15 @@ class Schedule(pulumi.CustomResource):
             - type: pass
               name: helloworld
         \"\"\",
-            description="tf-testaccFnFFlow983041",
+            description="tf-exampleFnFFlow983041",
             type="FDL")
         example_schedule = alicloud.fnf.Schedule("exampleSchedule",
             cron_expression="30 9 * * * *",
-            description="tf-testaccFnFSchedule983041",
+            description="tf-exampleFnFSchedule983041",
             enable=True,
             flow_name=example_flow.name,
-            payload="{\\"tf-test\\": \\"test success\\"}",
-            schedule_name="tf-testaccFnFSchedule983041")
+            payload="{\\"tf-example\\": \\"example success\\"}",
+            schedule_name="tf-exampleFnFSchedule983041")
         ```
 
         ## Import

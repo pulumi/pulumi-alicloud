@@ -20,7 +20,7 @@ import javax.annotation.Nullable;
  * 
  * For information about DMS Enterprise Proxy Access and how to use it, see [What is Proxy Access](https://next.api.alibabacloud.com/document/dms-enterprise/2018-11-01/CreateProxyAccess).
  * 
- * &gt; **NOTE:** Available in v1.195.0+.
+ * &gt; **NOTE:** Available since v1.195.0+.
  * 
  * ## Example Usage
  * 
@@ -31,6 +31,9 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.dms.DmsFunctions;
+ * import com.pulumi.alicloud.dms.inputs.GetEnterpriseUsersArgs;
+ * import com.pulumi.alicloud.dms.inputs.GetEnterpriseProxiesArgs;
  * import com.pulumi.alicloud.dms.EnterpriseProxyAccess;
  * import com.pulumi.alicloud.dms.EnterpriseProxyAccessArgs;
  * import java.util.List;
@@ -46,11 +49,16 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         final var dmsEnterpriseUsersDs = DmsFunctions.getEnterpriseUsers(GetEnterpriseUsersArgs.builder()
+ *             .role(&#34;USER&#34;)
+ *             .status(&#34;NORMAL&#34;)
+ *             .build());
+ * 
+ *         final var ids = DmsFunctions.getEnterpriseProxies();
+ * 
  *         var default_ = new EnterpriseProxyAccess(&#34;default&#34;, EnterpriseProxyAccessArgs.builder()        
- *             .indepAccount(&#34;dmstest&#34;)
- *             .indepPassword(&#34;PASSWORD-DEMO&#34;)
- *             .proxyId(1881)
- *             .userId(104442)
+ *             .proxyId(ids.applyValue(getEnterpriseProxiesResult -&gt; getEnterpriseProxiesResult.proxies()[0].id()))
+ *             .userId(dmsEnterpriseUsersDs.applyValue(getEnterpriseUsersResult -&gt; getEnterpriseUsersResult.users()[0].userId()))
  *             .build());
  * 
  *     }

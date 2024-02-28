@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Dms
     /// 
     /// For information about DMS Enterprise Proxy Access and how to use it, see [What is Proxy Access](https://next.api.alibabacloud.com/document/dms-enterprise/2018-11-01/CreateProxyAccess).
     /// 
-    /// &gt; **NOTE:** Available in v1.195.0+.
+    /// &gt; **NOTE:** Available since v1.195.0+.
     /// 
     /// ## Example Usage
     /// 
@@ -28,12 +28,18 @@ namespace Pulumi.AliCloud.Dms
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
+    ///     var dmsEnterpriseUsersDs = AliCloud.Dms.GetEnterpriseUsers.Invoke(new()
+    ///     {
+    ///         Role = "USER",
+    ///         Status = "NORMAL",
+    ///     });
+    /// 
+    ///     var ids = AliCloud.Dms.GetEnterpriseProxies.Invoke();
+    /// 
     ///     var @default = new AliCloud.Dms.EnterpriseProxyAccess("default", new()
     ///     {
-    ///         IndepAccount = "dmstest",
-    ///         IndepPassword = "PASSWORD-DEMO",
-    ///         ProxyId = "1881",
-    ///         UserId = "104442",
+    ///         ProxyId = ids.Apply(getEnterpriseProxiesResult =&gt; getEnterpriseProxiesResult.Proxies[0]?.Id),
+    ///         UserId = dmsEnterpriseUsersDs.Apply(getEnterpriseUsersResult =&gt; getEnterpriseUsersResult.Users[0]?.UserId),
     ///     });
     /// 
     /// });

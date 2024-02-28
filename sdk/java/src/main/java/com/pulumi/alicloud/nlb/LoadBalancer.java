@@ -6,6 +6,8 @@ package com.pulumi.alicloud.nlb;
 import com.pulumi.alicloud.Utilities;
 import com.pulumi.alicloud.nlb.LoadBalancerArgs;
 import com.pulumi.alicloud.nlb.inputs.LoadBalancerState;
+import com.pulumi.alicloud.nlb.outputs.LoadBalancerDeletionProtectionConfig;
+import com.pulumi.alicloud.nlb.outputs.LoadBalancerModificationProtectionConfig;
 import com.pulumi.alicloud.nlb.outputs.LoadBalancerZoneMapping;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
@@ -122,82 +124,100 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:nlb/loadBalancer:LoadBalancer")
 public class LoadBalancer extends com.pulumi.resources.CustomResource {
     /**
-     * The protocol version. Valid values:
-     * - ipv4 (default): IPv4
-     * - DualStack: dual stack
+     * Protocol version. Value:
+     * - **ipv4**:IPv4 type.
+     * - **DualStack**: Double Stack type.
      * 
      */
     @Export(name="addressIpVersion", refs={String.class}, tree="[0]")
     private Output<String> addressIpVersion;
 
     /**
-     * @return The protocol version. Valid values:
-     * - ipv4 (default): IPv4
-     * - DualStack: dual stack
+     * @return Protocol version. Value:
+     * - **ipv4**:IPv4 type.
+     * - **DualStack**: Double Stack type.
      * 
      */
     public Output<String> addressIpVersion() {
         return this.addressIpVersion;
     }
     /**
-     * The type of IPv4 address used by the NLB instance. Valid values:
-     * - Internet: The NLB instance uses a public IP address. The domain name of the NLB instance is resolved to the public IP address. Therefore, the NLB instance can be accessed over the Internet.
-     * - Intranet: The NLB instance uses a private IP address. The domain name of the NLB instance is resolved to the private IP address. Therefore, the NLB instance can be accessed over the virtual private cloud (VPC) where the NLB instance is deployed.
+     * The network address type of IPv4 for network load balancing. Value:
+     * - **Internet**: public network. Load balancer has a public network IP address, and the DNS domain name is resolved to a public network IP address, so it can be accessed in a public network environment.
+     * - **Intranet**: private network. The server load balancer only has a private IP address, and the DNS domain name is resolved to the private IP address, so it can only be accessed by the intranet environment of the VPC where the server load balancer is located.
      * 
      */
     @Export(name="addressType", refs={String.class}, tree="[0]")
     private Output<String> addressType;
 
     /**
-     * @return The type of IPv4 address used by the NLB instance. Valid values:
-     * - Internet: The NLB instance uses a public IP address. The domain name of the NLB instance is resolved to the public IP address. Therefore, the NLB instance can be accessed over the Internet.
-     * - Intranet: The NLB instance uses a private IP address. The domain name of the NLB instance is resolved to the private IP address. Therefore, the NLB instance can be accessed over the virtual private cloud (VPC) where the NLB instance is deployed.
+     * @return The network address type of IPv4 for network load balancing. Value:
+     * - **Internet**: public network. Load balancer has a public network IP address, and the DNS domain name is resolved to a public network IP address, so it can be accessed in a public network environment.
+     * - **Intranet**: private network. The server load balancer only has a private IP address, and the DNS domain name is resolved to the private IP address, so it can only be accessed by the intranet environment of the VPC where the server load balancer is located.
      * 
      */
     public Output<String> addressType() {
         return this.addressType;
     }
     /**
-     * The ID of the EIP bandwidth plan that is associated with the NLB instance if the NLB instance uses a public IP address.
+     * The ID of the shared bandwidth package associated with the public network instance.
      * 
      */
     @Export(name="bandwidthPackageId", refs={String.class}, tree="[0]")
     private Output<String> bandwidthPackageId;
 
     /**
-     * @return The ID of the EIP bandwidth plan that is associated with the NLB instance if the NLB instance uses a public IP address.
+     * @return The ID of the shared bandwidth package associated with the public network instance.
      * 
      */
     public Output<String> bandwidthPackageId() {
         return this.bandwidthPackageId;
     }
     /**
-     * The time when the resource was created. The time is displayed in UTC in `yyyy-MM-ddTHH:mm:ssZ` format.
+     * Resource creation time, using Greenwich Mean Time, formating&#39; yyyy-MM-ddTHH:mm:ssZ &#39;.
      * 
      */
     @Export(name="createTime", refs={String.class}, tree="[0]")
     private Output<String> createTime;
 
     /**
-     * @return The time when the resource was created. The time is displayed in UTC in `yyyy-MM-ddTHH:mm:ssZ` format.
+     * @return Resource creation time, using Greenwich Mean Time, formating&#39; yyyy-MM-ddTHH:mm:ssZ &#39;.
      * 
      */
     public Output<String> createTime() {
         return this.createTime;
     }
     /**
-     * Specifies whether to enable cross-zone load balancing for the NLB instance.
+     * Whether cross-zone is enabled for a network-based load balancing instance. Value:
+     * - **true**: on.
+     * - **false**: closed.
      * 
      */
     @Export(name="crossZoneEnabled", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> crossZoneEnabled;
 
     /**
-     * @return Specifies whether to enable cross-zone load balancing for the NLB instance.
+     * @return Whether cross-zone is enabled for a network-based load balancing instance. Value:
+     * - **true**: on.
+     * - **false**: closed.
      * 
      */
     public Output<Boolean> crossZoneEnabled() {
         return this.crossZoneEnabled;
+    }
+    /**
+     * Delete protection. See `deletion_protection_config` below.
+     * 
+     */
+    @Export(name="deletionProtectionConfig", refs={LoadBalancerDeletionProtectionConfig.class}, tree="[0]")
+    private Output<LoadBalancerDeletionProtectionConfig> deletionProtectionConfig;
+
+    /**
+     * @return Delete protection. See `deletion_protection_config` below.
+     * 
+     */
+    public Output<LoadBalancerDeletionProtectionConfig> deletionProtectionConfig() {
+        return this.deletionProtectionConfig;
     }
     /**
      * Specifies whether to enable deletion protection. Default value: `false`. Valid values:
@@ -242,14 +262,18 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
         return this.dnsName;
     }
     /**
-     * The type of IPv6 address used by the NLB instance.
+     * The IPv6 address type of network load balancing. Value:
+     * - **Internet**: Server Load Balancer has a public IP address, and the DNS domain name is resolved to a public IP address, so it can be accessed in a public network environment.
+     * - **Intranet**: SLB only has the private IP address, and the DNS domain name is resolved to the private IP address, so it can only be accessed by the Intranet environment of the VPC where SLB is located.
      * 
      */
     @Export(name="ipv6AddressType", refs={String.class}, tree="[0]")
     private Output<String> ipv6AddressType;
 
     /**
-     * @return The type of IPv6 address used by the NLB instance.
+     * @return The IPv6 address type of network load balancing. Value:
+     * - **Internet**: Server Load Balancer has a public IP address, and the DNS domain name is resolved to a public IP address, so it can be accessed in a public network environment.
+     * - **Intranet**: SLB only has the private IP address, and the DNS domain name is resolved to the private IP address, so it can only be accessed by the Intranet environment of the VPC where SLB is located.
      * 
      */
     public Output<String> ipv6AddressType() {
@@ -270,32 +294,46 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
         return this.loadBalancerBusinessStatus;
     }
     /**
-     * The name of the NLB instance. The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
+     * The name of the network-based load balancing instance.  2 to 128 English or Chinese characters in length, which must start with a letter or Chinese, and can contain numbers, half-width periods (.), underscores (_), and dashes (-).
      * 
      */
     @Export(name="loadBalancerName", refs={String.class}, tree="[0]")
-    private Output<String> loadBalancerName;
+    private Output</* @Nullable */ String> loadBalancerName;
 
     /**
-     * @return The name of the NLB instance. The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
+     * @return The name of the network-based load balancing instance.  2 to 128 English or Chinese characters in length, which must start with a letter or Chinese, and can contain numbers, half-width periods (.), underscores (_), and dashes (-).
      * 
      */
-    public Output<String> loadBalancerName() {
-        return this.loadBalancerName;
+    public Output<Optional<String>> loadBalancerName() {
+        return Codegen.optional(this.loadBalancerName);
     }
     /**
-     * The type of the instance. Set the value to `Network`, which specifies an NLB instance.
+     * Load balancing type. Only value: **network**, which indicates network-based load balancing.
      * 
      */
     @Export(name="loadBalancerType", refs={String.class}, tree="[0]")
     private Output<String> loadBalancerType;
 
     /**
-     * @return The type of the instance. Set the value to `Network`, which specifies an NLB instance.
+     * @return Load balancing type. Only value: **network**, which indicates network-based load balancing.
      * 
      */
     public Output<String> loadBalancerType() {
         return this.loadBalancerType;
+    }
+    /**
+     * Modify protection. See `modification_protection_config` below.
+     * 
+     */
+    @Export(name="modificationProtectionConfig", refs={LoadBalancerModificationProtectionConfig.class}, tree="[0]")
+    private Output<LoadBalancerModificationProtectionConfig> modificationProtectionConfig;
+
+    /**
+     * @return Modify protection. See `modification_protection_config` below.
+     * 
+     */
+    public Output<LoadBalancerModificationProtectionConfig> modificationProtectionConfig() {
+        return this.modificationProtectionConfig;
     }
     /**
      * The reason why the configuration read-only mode is enabled. The `modification_protection_reason` takes effect only when `modification_protection_status` is set to `ConsoleProtection`.
@@ -340,56 +378,70 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
         return this.resourceGroupId;
     }
     /**
-     * The status of the NLB instance.
+     * The security group to which the network-based SLB instance belongs.
+     * 
+     */
+    @Export(name="securityGroupIds", refs={List.class,String.class}, tree="[0,1]")
+    private Output<List<String>> securityGroupIds;
+
+    /**
+     * @return The security group to which the network-based SLB instance belongs.
+     * 
+     */
+    public Output<List<String>> securityGroupIds() {
+        return this.securityGroupIds;
+    }
+    /**
+     * ON.
      * 
      */
     @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
-     * @return The status of the NLB instance.
+     * @return ON.
      * 
      */
     public Output<String> status() {
         return this.status;
     }
     /**
-     * A mapping of tags to assign to the resource.
+     * List of labels.
      * 
      */
     @Export(name="tags", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,Object>> tags;
 
     /**
-     * @return A mapping of tags to assign to the resource.
+     * @return List of labels.
      * 
      */
     public Output<Optional<Map<String,Object>>> tags() {
         return Codegen.optional(this.tags);
     }
     /**
-     * The ID of the VPC where the NLB instance is deployed.
+     * The ID of the network-based SLB instance.
      * 
      */
     @Export(name="vpcId", refs={String.class}, tree="[0]")
     private Output<String> vpcId;
 
     /**
-     * @return The ID of the VPC where the NLB instance is deployed.
+     * @return The ID of the network-based SLB instance.
      * 
      */
     public Output<String> vpcId() {
         return this.vpcId;
     }
     /**
-     * Available Area Configuration List. You must add at least two zones. You can add a maximum of 10 zones. See `zone_mappings` below.
+     * The list of zones and vSwitch mappings. You must add at least two zones and a maximum of 10 zones. See `zone_mappings` below.
      * 
      */
     @Export(name="zoneMappings", refs={List.class,LoadBalancerZoneMapping.class}, tree="[0,1]")
     private Output<List<LoadBalancerZoneMapping>> zoneMappings;
 
     /**
-     * @return Available Area Configuration List. You must add at least two zones. You can add a maximum of 10 zones. See `zone_mappings` below.
+     * @return The list of zones and vSwitch mappings. You must add at least two zones and a maximum of 10 zones. See `zone_mappings` below.
      * 
      */
     public Output<List<LoadBalancerZoneMapping>> zoneMappings() {

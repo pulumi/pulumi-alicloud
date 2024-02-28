@@ -155,7 +155,8 @@ class Ciphertext(pulumi.CustomResource):
 
         key = alicloud.kms.Key("key",
             description="example key",
-            is_enabled=True)
+            status="Enabled",
+            pending_window_in_days=7)
         encrypted = alicloud.kms.Ciphertext("encrypted",
             key_id=key.id,
             plaintext="example")
@@ -182,7 +183,8 @@ class Ciphertext(pulumi.CustomResource):
 
         key = alicloud.kms.Key("key",
             description="example key",
-            is_enabled=True)
+            status="Enabled",
+            pending_window_in_days=7)
         encrypted = alicloud.kms.Ciphertext("encrypted",
             key_id=key.id,
             plaintext="example")

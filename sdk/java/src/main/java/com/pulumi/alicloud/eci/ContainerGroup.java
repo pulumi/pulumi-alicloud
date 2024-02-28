@@ -211,14 +211,14 @@ public class ContainerGroup extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="autoMatchImageCache", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> autoMatchImageCache;
+    private Output<Boolean> autoMatchImageCache;
 
     /**
      * @return Specifies whether to automatically match the image cache. Default value: `false`. Valid values: `true` and `false`.
      * 
      */
-    public Output<Optional<Boolean>> autoMatchImageCache() {
-        return Codegen.optional(this.autoMatchImageCache);
+    public Output<Boolean> autoMatchImageCache() {
+        return this.autoMatchImageCache;
     }
     /**
      * The name of the container group.

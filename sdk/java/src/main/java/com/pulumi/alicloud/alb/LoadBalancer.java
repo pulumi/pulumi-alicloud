@@ -273,14 +273,14 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="tags", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
-    private Output</* @Nullable */ Map<String,Object>> tags;
+    private Output<Map<String,Object>> tags;
 
     /**
      * @return The tag of the resource.
      * 
      */
-    public Output<Optional<Map<String,Object>>> tags() {
-        return Codegen.optional(this.tags);
+    public Output<Map<String,Object>> tags() {
+        return this.tags;
     }
     /**
      * The ID of the virtual private cloud (VPC) where the SLB instance is deployed.

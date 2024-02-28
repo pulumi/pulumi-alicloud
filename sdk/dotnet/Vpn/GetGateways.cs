@@ -15,67 +15,6 @@ namespace Pulumi.AliCloud.Vpn
         /// The VPNs data source lists a number of VPNs resource information owned by an Alicloud account.
         /// 
         /// &gt; **NOTE:** Available since v1.18.0.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var config = new Config();
-        ///     var name = config.Get("name") ?? "tf-example";
-        ///     var defaultZones = AliCloud.GetZones.Invoke(new()
-        ///     {
-        ///         AvailableResourceCreation = "VSwitch",
-        ///     });
-        /// 
-        ///     var defaultNetworks = AliCloud.Vpc.GetNetworks.Invoke(new()
-        ///     {
-        ///         NameRegex = "^default-NODELETING$",
-        ///     });
-        /// 
-        ///     var defaultSwitches = AliCloud.Vpc.GetSwitches.Invoke(new()
-        ///     {
-        ///         VpcId = defaultNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
-        ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
-        ///     });
-        /// 
-        ///     var defaultGateway = new AliCloud.Vpn.Gateway("defaultGateway", new()
-        ///     {
-        ///         VpcId = defaultNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
-        ///         Bandwidth = 10,
-        ///         EnableSsl = true,
-        ///         EnableIpsec = true,
-        ///         InstanceChargeType = "PrePaid",
-        ///         Description = name,
-        ///         VswitchId = defaultSwitches.Apply(getSwitchesResult =&gt; getSwitchesResult.Ids[0]),
-        ///         NetworkType = "public",
-        ///     });
-        /// 
-        ///     var vpnGateways = AliCloud.Vpn.GetGateways.Invoke(new()
-        ///     {
-        ///         VpcId = defaultNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
-        ///         Ids = new[]
-        ///         {
-        ///             defaultGateway.Id,
-        ///         },
-        ///         Status = "Active",
-        ///         BusinessStatus = "Normal",
-        ///         NameRegex = "tf-example",
-        ///         IncludeReservationData = true,
-        ///         OutputFile = "/tmp/vpns",
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetGatewaysResult> InvokeAsync(GetGatewaysArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetGatewaysResult>("alicloud:vpn/getGateways:getGateways", args ?? new GetGatewaysArgs(), options.WithDefaults());
@@ -84,67 +23,6 @@ namespace Pulumi.AliCloud.Vpn
         /// The VPNs data source lists a number of VPNs resource information owned by an Alicloud account.
         /// 
         /// &gt; **NOTE:** Available since v1.18.0.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var config = new Config();
-        ///     var name = config.Get("name") ?? "tf-example";
-        ///     var defaultZones = AliCloud.GetZones.Invoke(new()
-        ///     {
-        ///         AvailableResourceCreation = "VSwitch",
-        ///     });
-        /// 
-        ///     var defaultNetworks = AliCloud.Vpc.GetNetworks.Invoke(new()
-        ///     {
-        ///         NameRegex = "^default-NODELETING$",
-        ///     });
-        /// 
-        ///     var defaultSwitches = AliCloud.Vpc.GetSwitches.Invoke(new()
-        ///     {
-        ///         VpcId = defaultNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
-        ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
-        ///     });
-        /// 
-        ///     var defaultGateway = new AliCloud.Vpn.Gateway("defaultGateway", new()
-        ///     {
-        ///         VpcId = defaultNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
-        ///         Bandwidth = 10,
-        ///         EnableSsl = true,
-        ///         EnableIpsec = true,
-        ///         InstanceChargeType = "PrePaid",
-        ///         Description = name,
-        ///         VswitchId = defaultSwitches.Apply(getSwitchesResult =&gt; getSwitchesResult.Ids[0]),
-        ///         NetworkType = "public",
-        ///     });
-        /// 
-        ///     var vpnGateways = AliCloud.Vpn.GetGateways.Invoke(new()
-        ///     {
-        ///         VpcId = defaultNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
-        ///         Ids = new[]
-        ///         {
-        ///             defaultGateway.Id,
-        ///         },
-        ///         Status = "Active",
-        ///         BusinessStatus = "Normal",
-        ///         NameRegex = "tf-example",
-        ///         IncludeReservationData = true,
-        ///         OutputFile = "/tmp/vpns",
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetGatewaysResult> Invoke(GetGatewaysInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetGatewaysResult>("alicloud:vpn/getGateways:getGateways", args ?? new GetGatewaysInvokeArgs(), options.WithDefaults());

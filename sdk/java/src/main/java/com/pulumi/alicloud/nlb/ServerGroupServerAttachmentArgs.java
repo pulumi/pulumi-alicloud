@@ -36,15 +36,15 @@ public final class ServerGroupServerAttachmentArgs extends com.pulumi.resources.
      * The port used by the backend server. Valid values: 1 to 65535.
      * 
      */
-    @Import(name="port", required=true)
-    private Output<Integer> port;
+    @Import(name="port")
+    private @Nullable Output<Integer> port;
 
     /**
      * @return The port used by the backend server. Valid values: 1 to 65535.
      * 
      */
-    public Output<Integer> port() {
-        return this.port;
+    public Optional<Output<Integer>> port() {
+        return Optional.ofNullable(this.port);
     }
 
     /**
@@ -183,7 +183,7 @@ public final class ServerGroupServerAttachmentArgs extends com.pulumi.resources.
          * @return builder
          * 
          */
-        public Builder port(Output<Integer> port) {
+        public Builder port(@Nullable Output<Integer> port) {
             $.port = port;
             return this;
         }
@@ -308,9 +308,6 @@ public final class ServerGroupServerAttachmentArgs extends com.pulumi.resources.
         }
 
         public ServerGroupServerAttachmentArgs build() {
-            if ($.port == null) {
-                throw new MissingRequiredPropertyException("ServerGroupServerAttachmentArgs", "port");
-            }
             if ($.serverGroupId == null) {
                 throw new MissingRequiredPropertyException("ServerGroupServerAttachmentArgs", "serverGroupId");
             }

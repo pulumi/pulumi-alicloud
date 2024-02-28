@@ -62,10 +62,9 @@ import (
 //				return err
 //			}
 //			_, err = eds.NewRamDirectory(ctx, "defaultRamDirectory", &eds.RamDirectoryArgs{
-//				DesktopAccessType:    pulumi.String("INTERNET"),
-//				EnableAdminAccess:    pulumi.Bool(true),
-//				EnableInternetAccess: pulumi.Bool(true),
-//				RamDirectoryName:     pulumi.String(name),
+//				DesktopAccessType: pulumi.String("INTERNET"),
+//				EnableAdminAccess: pulumi.Bool(true),
+//				RamDirectoryName:  pulumi.String(name),
 //				VswitchIds: pulumi.StringArray{
 //					defaultSwitch.ID(),
 //				},

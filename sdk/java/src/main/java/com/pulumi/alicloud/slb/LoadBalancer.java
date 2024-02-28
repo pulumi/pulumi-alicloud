@@ -411,14 +411,14 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="tags", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
-    private Output</* @Nullable */ Map<String,Object>> tags;
+    private Output<Map<String,Object>> tags;
 
     /**
      * @return A mapping of tags to assign to the resource. The `tags` can have a maximum of 10 tag for every load balancer instance.
      * 
      */
-    public Output<Optional<Map<String,Object>>> tags() {
-        return Codegen.optional(this.tags);
+    public Output<Map<String,Object>> tags() {
+        return this.tags;
     }
     /**
      * The VSwitch ID to launch in. If `address_type` is internet, it will be ignore.

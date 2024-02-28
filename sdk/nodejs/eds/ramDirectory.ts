@@ -35,7 +35,6 @@ import * as utilities from "../utilities";
  * const defaultRamDirectory = new alicloud.eds.RamDirectory("defaultRamDirectory", {
  *     desktopAccessType: "INTERNET",
  *     enableAdminAccess: true,
- *     enableInternetAccess: true,
  *     ramDirectoryName: name,
  *     vswitchIds: [defaultSwitch.id],
  * });

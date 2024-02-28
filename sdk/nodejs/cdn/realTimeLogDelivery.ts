@@ -20,9 +20,13 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  * import * as random from "@pulumi/random";
  *
+ * const defaultRandomInteger = new random.RandomInteger("defaultRandomInteger", {
+ *     max: 99999,
+ *     min: 10000,
+ * });
  * const defaultDomainNew = new alicloud.cdn.DomainNew("defaultDomainNew", {
  *     scope: "overseas",
- *     domainName: "mycdndomain.alicloud-provider.cn",
+ *     domainName: pulumi.interpolate`mycdndomain-${defaultRandomInteger.result}.alicloud-provider.cn`,
  *     cdnType: "web",
  *     sources: [{
  *         type: "ipaddr",
@@ -32,13 +36,13 @@ import * as utilities from "../utilities";
  *         weight: 15,
  *     }],
  * });
- * const defaultRandomInteger = new random.RandomInteger("defaultRandomInteger", {
- *     max: 99999,
- *     min: 10000,
+ * const defaultProject = new alicloud.log.Project("defaultProject", {
+ *     projectName: pulumi.interpolate`terraform-example-${defaultRandomInteger.result}`,
+ *     description: "terraform-example",
  * });
- * const defaultProject = new alicloud.log.Project("defaultProject", {description: "terraform-example"});
  * const defaultStore = new alicloud.log.Store("defaultStore", {
- *     project: defaultProject.name,
+ *     projectName: defaultProject.name,
+ *     logstoreName: "example-store",
  *     shardCount: 3,
  *     autoSplit: true,
  *     maxSplitShardCount: 60,
@@ -49,8 +53,8 @@ import * as utilities from "../utilities";
  * });
  * const defaultRealTimeLogDelivery = new alicloud.cdn.RealTimeLogDelivery("defaultRealTimeLogDelivery", {
  *     domain: defaultDomainNew.domainName,
- *     logstore: defaultProject.name,
- *     project: defaultStore.name,
+ *     logstore: defaultStore.logstoreName,
+ *     project: defaultProject.projectName,
  *     slsRegion: defaultRegions.then(defaultRegions => defaultRegions.regions?.[0]?.id),
  * });
  * ```

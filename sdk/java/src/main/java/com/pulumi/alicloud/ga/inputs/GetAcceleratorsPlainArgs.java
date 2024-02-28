@@ -16,6 +16,21 @@ public final class GetAcceleratorsPlainArgs extends com.pulumi.resources.InvokeA
     public static final GetAcceleratorsPlainArgs Empty = new GetAcceleratorsPlainArgs();
 
     /**
+     * The bandwidth billing method. Default value: `BandwidthPackage`. Valid values:
+     * 
+     */
+    @Import(name="bandwidthBillingType")
+    private @Nullable String bandwidthBillingType;
+
+    /**
+     * @return The bandwidth billing method. Default value: `BandwidthPackage`. Valid values:
+     * 
+     */
+    public Optional<String> bandwidthBillingType() {
+        return Optional.ofNullable(this.bandwidthBillingType);
+    }
+
+    /**
      * A list of Accelerator IDs.
      * 
      */
@@ -78,6 +93,7 @@ public final class GetAcceleratorsPlainArgs extends com.pulumi.resources.InvokeA
     private GetAcceleratorsPlainArgs() {}
 
     private GetAcceleratorsPlainArgs(GetAcceleratorsPlainArgs $) {
+        this.bandwidthBillingType = $.bandwidthBillingType;
         this.ids = $.ids;
         this.nameRegex = $.nameRegex;
         this.outputFile = $.outputFile;
@@ -100,6 +116,17 @@ public final class GetAcceleratorsPlainArgs extends com.pulumi.resources.InvokeA
 
         public Builder(GetAcceleratorsPlainArgs defaults) {
             $ = new GetAcceleratorsPlainArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param bandwidthBillingType The bandwidth billing method. Default value: `BandwidthPackage`. Valid values:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder bandwidthBillingType(@Nullable String bandwidthBillingType) {
+            $.bandwidthBillingType = bandwidthBillingType;
+            return this;
         }
 
         /**

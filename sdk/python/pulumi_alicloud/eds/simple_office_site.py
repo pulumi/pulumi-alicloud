@@ -449,12 +449,16 @@ class SimpleOfficeSite(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
-        default = alicloud.eds.SimpleOfficeSite("default",
+        default_random_integer = random.RandomInteger("defaultRandomInteger",
+            max=99999,
+            min=10000)
+        default_simple_office_site = alicloud.eds.SimpleOfficeSite("defaultSimpleOfficeSite",
             cidr_block="172.16.0.0/12",
             desktop_access_type="Internet",
             enable_admin_access=True,
-            office_site_name="terraform-example")
+            office_site_name=default_random_integer.result.apply(lambda result: f"terraform-example-{result}"))
         ```
 
         ## Import
@@ -499,12 +503,16 @@ class SimpleOfficeSite(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
-        default = alicloud.eds.SimpleOfficeSite("default",
+        default_random_integer = random.RandomInteger("defaultRandomInteger",
+            max=99999,
+            min=10000)
+        default_simple_office_site = alicloud.eds.SimpleOfficeSite("defaultSimpleOfficeSite",
             cidr_block="172.16.0.0/12",
             desktop_access_type="Internet",
             enable_admin_access=True,
-            office_site_name="terraform-example")
+            office_site_name=default_random_integer.result.apply(lambda result: f"terraform-example-{result}"))
         ```
 
         ## Import

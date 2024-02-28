@@ -20,7 +20,7 @@ import javax.annotation.Nullable;
  * 
  * For information about domain config and how to use it, see [Batch set config](https://www.alibabacloud.com/help/zh/doc-detail/90915.htm)
  * 
- * &gt; **NOTE:** Available in v1.34.0+.
+ * &gt; **NOTE:** Available since v1.34.0+.
  * 
  * ## Example Usage
  * 
@@ -31,6 +31,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.random.RandomInteger;
+ * import com.pulumi.random.RandomIntegerArgs;
  * import com.pulumi.alicloud.cdn.DomainNew;
  * import com.pulumi.alicloud.cdn.DomainNewArgs;
  * import com.pulumi.alicloud.cdn.inputs.DomainNewSourceArgs;
@@ -50,8 +52,13 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         var default_ = new RandomInteger(&#34;default&#34;, RandomIntegerArgs.builder()        
+ *             .min(10000)
+ *             .max(99999)
+ *             .build());
+ * 
  *         var domain = new DomainNew(&#34;domain&#34;, DomainNewArgs.builder()        
- *             .domainName(&#34;mycdndomain.alicloud-provider.cn&#34;)
+ *             .domainName(default_.result().applyValue(result -&gt; String.format(&#34;mycdndomain-%s.alicloud-provider.cn&#34;, result)))
  *             .cdnType(&#34;web&#34;)
  *             .scope(&#34;overseas&#34;)
  *             .sources(DomainNewSourceArgs.builder()
@@ -120,14 +127,14 @@ public class DomainConfig extends com.pulumi.resources.CustomResource {
         return this.domainName;
     }
     /**
-     * The args of the domain config.
+     * The args of the domain config. See `function_args` below.
      * 
      */
     @Export(name="functionArgs", refs={List.class,DomainConfigFunctionArg.class}, tree="[0,1]")
     private Output<List<DomainConfigFunctionArg>> functionArgs;
 
     /**
-     * @return The args of the domain config.
+     * @return The args of the domain config. See `function_args` below.
      * 
      */
     public Output<List<DomainConfigFunctionArg>> functionArgs() {

@@ -13,6 +13,8 @@ import (
 
 // The VPN connections data source lists lots of VPN connections resource information owned by an Alicloud account.
 //
+// > **NOTE:** Available since v1.18.0.
+//
 // ## Example Usage
 //
 // ```go
@@ -71,7 +73,7 @@ type GetConnectionsArgs struct {
 type GetConnectionsResult struct {
 	// A list of VPN connections. Each element contains the following attributes:
 	Connections []GetConnectionsConnection `pulumi:"connections"`
-	// ID of the VPN customer gateway.
+	// The ID of the customer gateway in Tunnel.
 	CustomerGatewayId *string `pulumi:"customerGatewayId"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
@@ -136,7 +138,7 @@ func (o GetConnectionsResultOutput) Connections() GetConnectionsConnectionArrayO
 	return o.ApplyT(func(v GetConnectionsResult) []GetConnectionsConnection { return v.Connections }).(GetConnectionsConnectionArrayOutput)
 }
 
-// ID of the VPN customer gateway.
+// The ID of the customer gateway in Tunnel.
 func (o GetConnectionsResultOutput) CustomerGatewayId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetConnectionsResult) *string { return v.CustomerGatewayId }).(pulumi.StringPtrOutput)
 }

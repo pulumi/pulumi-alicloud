@@ -5,6 +5,7 @@ package com.pulumi.alicloud.vpn.outputs;
 
 import com.pulumi.alicloud.vpn.outputs.GetConnectionsConnectionIkeConfig;
 import com.pulumi.alicloud.vpn.outputs.GetConnectionsConnectionIpsecConfig;
+import com.pulumi.alicloud.vpn.outputs.GetConnectionsConnectionTunnelOptionsSpecification;
 import com.pulumi.alicloud.vpn.outputs.GetConnectionsConnectionVcoHealthCheck;
 import com.pulumi.alicloud.vpn.outputs.GetConnectionsConnectionVpnBgpConfig;
 import com.pulumi.core.annotations.CustomType;
@@ -25,27 +26,32 @@ public final class GetConnectionsConnection {
     private String customerGatewayId;
     private Boolean effectImmediately;
     /**
-     * @return Specifies whether to enable the dead peer detection (DPD) feature.
+     * @return Wether enable Dpd detection.
      * 
      */
     private Boolean enableDpd;
     /**
-     * @return Specifies whether to enable NAT traversal.
+     * @return enable nat traversal.
      * 
      */
     private Boolean enableNatTraversal;
+    /**
+     * @return Enable tunnel bgp.
+     * 
+     */
+    private Boolean enableTunnelsBgp;
     /**
      * @return ID of the VPN connection.
      * 
      */
     private String id;
     /**
-     * @return The configurations of phase-one negotiation.
+     * @return The ike_config mapping supports the following:
      * 
      */
     private @Nullable List<GetConnectionsConnectionIkeConfig> ikeConfigs;
     /**
-     * @return The configurations of phase-two negotiation.
+     * @return The ipsec_config mapping supports the following:
      * 
      */
     private @Nullable List<GetConnectionsConnectionIpsecConfig> ipsecConfigs;
@@ -69,9 +75,14 @@ public final class GetConnectionsConnection {
      * 
      */
     private String status;
+    /**
+     * @return The tunnel_options_specification supports the following:
+     * 
+     */
+    private List<GetConnectionsConnectionTunnelOptionsSpecification> tunnelOptionsSpecifications;
     private @Nullable List<GetConnectionsConnectionVcoHealthCheck> vcoHealthChecks;
     /**
-     * @return The configuration information for BGP.
+     * @return The vpn_bgp_config mapping supports the following:
      * 
      */
     private @Nullable List<GetConnectionsConnectionVpnBgpConfig> vpnBgpConfigs;
@@ -96,18 +107,25 @@ public final class GetConnectionsConnection {
         return this.effectImmediately;
     }
     /**
-     * @return Specifies whether to enable the dead peer detection (DPD) feature.
+     * @return Wether enable Dpd detection.
      * 
      */
     public Boolean enableDpd() {
         return this.enableDpd;
     }
     /**
-     * @return Specifies whether to enable NAT traversal.
+     * @return enable nat traversal.
      * 
      */
     public Boolean enableNatTraversal() {
         return this.enableNatTraversal;
+    }
+    /**
+     * @return Enable tunnel bgp.
+     * 
+     */
+    public Boolean enableTunnelsBgp() {
+        return this.enableTunnelsBgp;
     }
     /**
      * @return ID of the VPN connection.
@@ -117,14 +135,14 @@ public final class GetConnectionsConnection {
         return this.id;
     }
     /**
-     * @return The configurations of phase-one negotiation.
+     * @return The ike_config mapping supports the following:
      * 
      */
     public List<GetConnectionsConnectionIkeConfig> ikeConfigs() {
         return this.ikeConfigs == null ? List.of() : this.ikeConfigs;
     }
     /**
-     * @return The configurations of phase-two negotiation.
+     * @return The ipsec_config mapping supports the following:
      * 
      */
     public List<GetConnectionsConnectionIpsecConfig> ipsecConfigs() {
@@ -158,11 +176,18 @@ public final class GetConnectionsConnection {
     public String status() {
         return this.status;
     }
+    /**
+     * @return The tunnel_options_specification supports the following:
+     * 
+     */
+    public List<GetConnectionsConnectionTunnelOptionsSpecification> tunnelOptionsSpecifications() {
+        return this.tunnelOptionsSpecifications;
+    }
     public List<GetConnectionsConnectionVcoHealthCheck> vcoHealthChecks() {
         return this.vcoHealthChecks == null ? List.of() : this.vcoHealthChecks;
     }
     /**
-     * @return The configuration information for BGP.
+     * @return The vpn_bgp_config mapping supports the following:
      * 
      */
     public List<GetConnectionsConnectionVpnBgpConfig> vpnBgpConfigs() {
@@ -190,6 +215,7 @@ public final class GetConnectionsConnection {
         private Boolean effectImmediately;
         private Boolean enableDpd;
         private Boolean enableNatTraversal;
+        private Boolean enableTunnelsBgp;
         private String id;
         private @Nullable List<GetConnectionsConnectionIkeConfig> ikeConfigs;
         private @Nullable List<GetConnectionsConnectionIpsecConfig> ipsecConfigs;
@@ -197,6 +223,7 @@ public final class GetConnectionsConnection {
         private String name;
         private String remoteSubnet;
         private String status;
+        private List<GetConnectionsConnectionTunnelOptionsSpecification> tunnelOptionsSpecifications;
         private @Nullable List<GetConnectionsConnectionVcoHealthCheck> vcoHealthChecks;
         private @Nullable List<GetConnectionsConnectionVpnBgpConfig> vpnBgpConfigs;
         private String vpnGatewayId;
@@ -208,6 +235,7 @@ public final class GetConnectionsConnection {
     	      this.effectImmediately = defaults.effectImmediately;
     	      this.enableDpd = defaults.enableDpd;
     	      this.enableNatTraversal = defaults.enableNatTraversal;
+    	      this.enableTunnelsBgp = defaults.enableTunnelsBgp;
     	      this.id = defaults.id;
     	      this.ikeConfigs = defaults.ikeConfigs;
     	      this.ipsecConfigs = defaults.ipsecConfigs;
@@ -215,6 +243,7 @@ public final class GetConnectionsConnection {
     	      this.name = defaults.name;
     	      this.remoteSubnet = defaults.remoteSubnet;
     	      this.status = defaults.status;
+    	      this.tunnelOptionsSpecifications = defaults.tunnelOptionsSpecifications;
     	      this.vcoHealthChecks = defaults.vcoHealthChecks;
     	      this.vpnBgpConfigs = defaults.vpnBgpConfigs;
     	      this.vpnGatewayId = defaults.vpnGatewayId;
@@ -258,6 +287,14 @@ public final class GetConnectionsConnection {
               throw new MissingRequiredPropertyException("GetConnectionsConnection", "enableNatTraversal");
             }
             this.enableNatTraversal = enableNatTraversal;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder enableTunnelsBgp(Boolean enableTunnelsBgp) {
+            if (enableTunnelsBgp == null) {
+              throw new MissingRequiredPropertyException("GetConnectionsConnection", "enableTunnelsBgp");
+            }
+            this.enableTunnelsBgp = enableTunnelsBgp;
             return this;
         }
         @CustomType.Setter
@@ -319,6 +356,17 @@ public final class GetConnectionsConnection {
             return this;
         }
         @CustomType.Setter
+        public Builder tunnelOptionsSpecifications(List<GetConnectionsConnectionTunnelOptionsSpecification> tunnelOptionsSpecifications) {
+            if (tunnelOptionsSpecifications == null) {
+              throw new MissingRequiredPropertyException("GetConnectionsConnection", "tunnelOptionsSpecifications");
+            }
+            this.tunnelOptionsSpecifications = tunnelOptionsSpecifications;
+            return this;
+        }
+        public Builder tunnelOptionsSpecifications(GetConnectionsConnectionTunnelOptionsSpecification... tunnelOptionsSpecifications) {
+            return tunnelOptionsSpecifications(List.of(tunnelOptionsSpecifications));
+        }
+        @CustomType.Setter
         public Builder vcoHealthChecks(@Nullable List<GetConnectionsConnectionVcoHealthCheck> vcoHealthChecks) {
 
             this.vcoHealthChecks = vcoHealthChecks;
@@ -351,6 +399,7 @@ public final class GetConnectionsConnection {
             _resultValue.effectImmediately = effectImmediately;
             _resultValue.enableDpd = enableDpd;
             _resultValue.enableNatTraversal = enableNatTraversal;
+            _resultValue.enableTunnelsBgp = enableTunnelsBgp;
             _resultValue.id = id;
             _resultValue.ikeConfigs = ikeConfigs;
             _resultValue.ipsecConfigs = ipsecConfigs;
@@ -358,6 +407,7 @@ public final class GetConnectionsConnection {
             _resultValue.name = name;
             _resultValue.remoteSubnet = remoteSubnet;
             _resultValue.status = status;
+            _resultValue.tunnelOptionsSpecifications = tunnelOptionsSpecifications;
             _resultValue.vcoHealthChecks = vcoHealthChecks;
             _resultValue.vpnBgpConfigs = vpnBgpConfigs;
             _resultValue.vpnGatewayId = vpnGatewayId;

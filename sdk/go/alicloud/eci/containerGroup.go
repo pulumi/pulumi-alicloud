@@ -192,7 +192,7 @@ type ContainerGroup struct {
 	// Specifies whether to automatically create an EIP and bind the EIP to the elastic container instance.
 	AutoCreateEip pulumi.BoolPtrOutput `pulumi:"autoCreateEip"`
 	// Specifies whether to automatically match the image cache. Default value: `false`. Valid values: `true` and `false`.
-	AutoMatchImageCache pulumi.BoolPtrOutput `pulumi:"autoMatchImageCache"`
+	AutoMatchImageCache pulumi.BoolOutput `pulumi:"autoMatchImageCache"`
 	// The name of the container group.
 	ContainerGroupName pulumi.StringOutput `pulumi:"containerGroupName"`
 	// The list of containers. See `containers` below.
@@ -658,8 +658,8 @@ func (o ContainerGroupOutput) AutoCreateEip() pulumi.BoolPtrOutput {
 }
 
 // Specifies whether to automatically match the image cache. Default value: `false`. Valid values: `true` and `false`.
-func (o ContainerGroupOutput) AutoMatchImageCache() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *ContainerGroup) pulumi.BoolPtrOutput { return v.AutoMatchImageCache }).(pulumi.BoolPtrOutput)
+func (o ContainerGroupOutput) AutoMatchImageCache() pulumi.BoolOutput {
+	return o.ApplyT(func(v *ContainerGroup) pulumi.BoolOutput { return v.AutoMatchImageCache }).(pulumi.BoolOutput)
 }
 
 // The name of the container group.

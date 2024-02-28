@@ -36,11 +36,15 @@ namespace Pulumi.AliCloud.FC
     ///         Min = 10000,
     ///     });
     /// 
-    ///     var defaultProject = new AliCloud.Log.Project("defaultProject");
+    ///     var defaultProject = new AliCloud.Log.Project("defaultProject", new()
+    ///     {
+    ///         ProjectName = defaultRandomInteger.Result.Apply(result =&gt; $"example-value-{result}"),
+    ///     });
     /// 
     ///     var defaultStore = new AliCloud.Log.Store("defaultStore", new()
     ///     {
-    ///         Project = defaultProject.Name,
+    ///         ProjectName = defaultProject.Name,
+    ///         LogstoreName = "example-value",
     ///     });
     /// 
     ///     var defaultRole = new AliCloud.Ram.Role("defaultRole", new()

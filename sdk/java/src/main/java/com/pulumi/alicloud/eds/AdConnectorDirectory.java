@@ -39,6 +39,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.alicloud.vpc.NetworkArgs;
  * import com.pulumi.alicloud.vpc.Switch;
  * import com.pulumi.alicloud.vpc.SwitchArgs;
+ * import com.pulumi.random.RandomInteger;
+ * import com.pulumi.random.RandomIntegerArgs;
  * import com.pulumi.alicloud.eds.AdConnectorDirectory;
  * import com.pulumi.alicloud.eds.AdConnectorDirectoryArgs;
  * import java.util.List;
@@ -70,8 +72,13 @@ import javax.annotation.Nullable;
  *             .vswitchName(name)
  *             .build());
  * 
+ *         var defaultRandomInteger = new RandomInteger(&#34;defaultRandomInteger&#34;, RandomIntegerArgs.builder()        
+ *             .min(10000)
+ *             .max(99999)
+ *             .build());
+ * 
  *         var defaultAdConnectorDirectory = new AdConnectorDirectory(&#34;defaultAdConnectorDirectory&#34;, AdConnectorDirectoryArgs.builder()        
- *             .directoryName(name)
+ *             .directoryName(defaultRandomInteger.result().applyValue(result -&gt; String.format(&#34;%s-%s&#34;, name,result)))
  *             .desktopAccessType(&#34;INTERNET&#34;)
  *             .dnsAddresses(&#34;127.0.0.2&#34;)
  *             .domainName(&#34;corp.example.com&#34;)

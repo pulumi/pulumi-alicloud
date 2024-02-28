@@ -358,20 +358,20 @@ class DomainNew(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
-        config = pulumi.Config()
-        domain_name = config.get("domainName")
-        if domain_name is None:
-            domain_name = "mycdndomain.alicloud-provider.cn"
-        default = alicloud.cdn.DomainNew("default",
-            scope="overseas",
-            domain_name=domain_name,
+        default_random_integer = random.RandomInteger("defaultRandomInteger",
+            max=99999,
+            min=10000)
+        default_domain_new = alicloud.cdn.DomainNew("defaultDomainNew",
             cdn_type="web",
+            domain_name=default_random_integer.result.apply(lambda result: f"mycdndomain-{result}.alicloud-provider.cn"),
+            scope="overseas",
             sources=[alicloud.cdn.DomainNewSourceArgs(
-                type="ipaddr",
                 content="1.1.1.1",
-                priority=20,
                 port=80,
+                priority=20,
+                type="ipaddr",
                 weight=15,
             )])
         ```
@@ -419,20 +419,20 @@ class DomainNew(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
-        config = pulumi.Config()
-        domain_name = config.get("domainName")
-        if domain_name is None:
-            domain_name = "mycdndomain.alicloud-provider.cn"
-        default = alicloud.cdn.DomainNew("default",
-            scope="overseas",
-            domain_name=domain_name,
+        default_random_integer = random.RandomInteger("defaultRandomInteger",
+            max=99999,
+            min=10000)
+        default_domain_new = alicloud.cdn.DomainNew("defaultDomainNew",
             cdn_type="web",
+            domain_name=default_random_integer.result.apply(lambda result: f"mycdndomain-{result}.alicloud-provider.cn"),
+            scope="overseas",
             sources=[alicloud.cdn.DomainNewSourceArgs(
-                type="ipaddr",
                 content="1.1.1.1",
-                priority=20,
                 port=80,
+                priority=20,
+                type="ipaddr",
                 weight=15,
             )])
         ```

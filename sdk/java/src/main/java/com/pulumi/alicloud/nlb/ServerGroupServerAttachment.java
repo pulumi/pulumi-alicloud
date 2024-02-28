@@ -189,14 +189,14 @@ public class ServerGroupServerAttachment extends com.pulumi.resources.CustomReso
         return this.serverType;
     }
     /**
-     * Status of the server.
+     * The status of the resource.
      * 
      */
     @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
-     * @return Status of the server.
+     * @return The status of the resource.
      * 
      */
     public Output<String> status() {

@@ -60,7 +60,7 @@ class GetConnectionsResult:
     @pulumi.getter(name="customerGatewayId")
     def customer_gateway_id(self) -> Optional[str]:
         """
-        ID of the VPN customer gateway.
+        The ID of the customer gateway in Tunnel.
         """
         return pulumi.get(self, "customer_gateway_id")
 
@@ -132,6 +132,8 @@ def get_connections(customer_gateway_id: Optional[str] = None,
     """
     The VPN connections data source lists lots of VPN connections resource information owned by an Alicloud account.
 
+    > **NOTE:** Available since v1.18.0.
+
     ## Example Usage
 
     ```python
@@ -180,6 +182,8 @@ def get_connections_output(customer_gateway_id: Optional[pulumi.Input[Optional[s
                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetConnectionsResult]:
     """
     The VPN connections data source lists lots of VPN connections resource information owned by an Alicloud account.
+
+    > **NOTE:** Available since v1.18.0.
 
     ## Example Usage
 

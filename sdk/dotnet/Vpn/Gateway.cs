@@ -126,6 +126,12 @@ namespace Pulumi.AliCloud.Vpn
         public Output<int> SslConnections { get; private set; } = null!;
 
         /// <summary>
+        /// The IP address of the SSL-VPN connection. This parameter is returned only when the VPN gateway is a public VPN gateway and supports only the single-tunnel mode. In addition, the VPN gateway must have the SSL-VPN feature enabled.
+        /// </summary>
+        [Output("sslVpnInternetIp")]
+        public Output<string> SslVpnInternetIp { get; private set; } = null!;
+
+        /// <summary>
         /// The status of the resource.
         /// </summary>
         [Output("status")]
@@ -440,6 +446,12 @@ namespace Pulumi.AliCloud.Vpn
         /// </summary>
         [Input("sslConnections")]
         public Input<int>? SslConnections { get; set; }
+
+        /// <summary>
+        /// The IP address of the SSL-VPN connection. This parameter is returned only when the VPN gateway is a public VPN gateway and supports only the single-tunnel mode. In addition, the VPN gateway must have the SSL-VPN feature enabled.
+        /// </summary>
+        [Input("sslVpnInternetIp")]
+        public Input<string>? SslVpnInternetIp { get; set; }
 
         /// <summary>
         /// The status of the resource.

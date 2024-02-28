@@ -460,13 +460,14 @@ class Image(pulumi.CustomResource):
 
         > **NOTE:**  If you want to combine snapshots of multiple disks into an image template, you can specify DiskDeviceMapping to create a custom image.
 
-        > **NOTE:**  Available in 1.64.0+
+        > **NOTE:** Available since v1.64.0.
 
         ## Example Usage
 
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
         default_zones = alicloud.get_zones(available_resource_creation="Instance")
         default_instance_types = alicloud.ecs.get_instance_types(instance_type_family="ecs.sn1ne")
@@ -490,12 +491,14 @@ class Image(pulumi.CustomResource):
             image_id=default_images.ids[0],
             internet_max_bandwidth_out=10)
         default_resource_groups = alicloud.resourcemanager.get_resource_groups()
+        default_random_integer = random.RandomInteger("defaultRandomInteger",
+            min=10000,
+            max=99999)
         default_image = alicloud.ecs.Image("defaultImage",
             instance_id=default_instance.id,
-            image_name="terraform-example",
+            image_name=default_random_integer.result.apply(lambda result: f"terraform-example-{result}"),
             description="terraform-example",
             architecture="x86_64",
-            platform="CentOS",
             resource_group_id=default_resource_groups.ids[0],
             tags={
                 "FinanceDept": "FinanceDeptJoshua",
@@ -544,13 +547,14 @@ class Image(pulumi.CustomResource):
 
         > **NOTE:**  If you want to combine snapshots of multiple disks into an image template, you can specify DiskDeviceMapping to create a custom image.
 
-        > **NOTE:**  Available in 1.64.0+
+        > **NOTE:** Available since v1.64.0.
 
         ## Example Usage
 
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
         default_zones = alicloud.get_zones(available_resource_creation="Instance")
         default_instance_types = alicloud.ecs.get_instance_types(instance_type_family="ecs.sn1ne")
@@ -574,12 +578,14 @@ class Image(pulumi.CustomResource):
             image_id=default_images.ids[0],
             internet_max_bandwidth_out=10)
         default_resource_groups = alicloud.resourcemanager.get_resource_groups()
+        default_random_integer = random.RandomInteger("defaultRandomInteger",
+            min=10000,
+            max=99999)
         default_image = alicloud.ecs.Image("defaultImage",
             instance_id=default_instance.id,
-            image_name="terraform-example",
+            image_name=default_random_integer.result.apply(lambda result: f"terraform-example-{result}"),
             description="terraform-example",
             architecture="x86_64",
-            platform="CentOS",
             resource_group_id=default_resource_groups.ids[0],
             tags={
                 "FinanceDept": "FinanceDeptJoshua",

@@ -12,7 +12,7 @@ namespace Pulumi.AliCloud.Nlb
     /// <summary>
     /// Provides a NLB Listener resource.
     /// 
-    /// For information about NLB Listener and how to use it, see [What is Listener](https://www.alibabacloud.com/help/en/server-load-balancer/latest/createlistener-nl).
+    /// For information about NLB Listener and how to use it, see [What is Listener](https://www.alibabacloud.com/help/en/server-load-balancer/latest/api-nlb-2022-04-30-createlistener).
     /// 
     /// &gt; **NOTE:** Available since v1.191.0.
     /// 
@@ -153,67 +153,77 @@ namespace Pulumi.AliCloud.Nlb
     public partial class Listener : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Specifies whether to enable Application-Layer Protocol Negotiation (ALPN).
+        /// Whether ALPN is turned on. Value:
+        /// - **true**: on.
+        /// - **false**: closed.
         /// </summary>
         [Output("alpnEnabled")]
         public Output<bool> AlpnEnabled { get; private set; } = null!;
 
         /// <summary>
-        /// The ALPN policy.
+        /// ALPN policy. Value:
+        /// - **HTTP1Only**
+        /// - **HTTP2Only**
+        /// - **HTTP2Preferred**
+        /// - **HTTP2Optional**.
         /// </summary>
         [Output("alpnPolicy")]
         public Output<string?> AlpnPolicy { get; private set; } = null!;
 
         /// <summary>
-        /// The list of certificate authority (CA) certificates. This parameter takes effect only for listeners that use SSL over TCP. **Note:** Only one CA certificate is supported.
+        /// CA certificate list information. Currently, only one CA certificate can be added.
+        /// &gt; **NOTE:**  This parameter only takes effect for TCPSSL listeners.
         /// </summary>
         [Output("caCertificateIds")]
         public Output<ImmutableArray<string>> CaCertificateIds { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies whether to enable mutual authentication.
+        /// Whether to start two-way authentication. Value:
+        /// - **true**: start.
+        /// - **false**: closed.
         /// </summary>
         [Output("caEnabled")]
         public Output<bool> CaEnabled { get; private set; } = null!;
 
         /// <summary>
-        /// The list of server certificates. This parameter takes effect only for listeners that use SSL over TCP. **Note:** Only one server certificate is supported.
+        /// Server certificate list information. Currently, only one server certificate can be added.
+        /// &gt; **NOTE:**  This parameter only takes effect for TCPSSL listeners.
         /// </summary>
         [Output("certificateIds")]
         public Output<ImmutableArray<string>> CertificateIds { get; private set; } = null!;
 
         /// <summary>
-        /// The maximum number of connections that can be created per second on the NLB instance. Valid values: 0 to 1000000. 0 specifies that the number of connections is unlimited.
+        /// The new connection speed limit for a network-based load balancing instance per second. Valid values: **0** ~ **1000000**. **0** indicates unlimited speed.
         /// </summary>
         [Output("cps")]
         public Output<int?> Cps { get; private set; } = null!;
 
         /// <summary>
-        /// Full port listening end port. Valid values: `0` ~ `65535`. The value of the end port is less than the start port.
+        /// Full port listening end port. Valid values: **0** ~ **65535 * *. The value of the end port is less than the start port.
         /// </summary>
         [Output("endPort")]
         public Output<int?> EndPort { get; private set; } = null!;
 
         /// <summary>
-        /// The timeout period of an idle connection. Unit: seconds. Valid values: `1` to `900`. Default value: `900`.
+        /// Connection idle timeout time. Unit: seconds. Valid values: **1** ~ **900**.
         /// </summary>
         [Output("idleTimeout")]
         public Output<int> IdleTimeout { get; private set; } = null!;
 
         /// <summary>
-        /// Custom listener name. The length is limited to 2 to 256 characters, supports Chinese and English letters, and can include numbers, commas (,), half-width periods (.), half-width semicolons (;), forward slashes (/), at(@), underscores (_), and dashes (-).
+        /// Custom listener name.The length is limited to 2 to 256 characters, supports Chinese and English letters, and can include numbers, commas (,), half-width periods (.), half-width semicolons (;), forward slashes (/), at(@), underscores (_), and dashes (-).
         /// </summary>
         [Output("listenerDescription")]
         public Output<string?> ListenerDescription { get; private set; } = null!;
 
         /// <summary>
-        /// Listening port. Valid values: 0 ~ 65535. `0`: indicates that full port listening is used. When set to `0`, you must configure `StartPort` and `EndPort`.
+        /// Listening port. Valid values: **0** ~ **65535 * *. **0**: indicates that full port listening is used. When set to **0**, you must configure **StartPort** and **EndPort**.
         /// </summary>
         [Output("listenerPort")]
         public Output<int> ListenerPort { get; private set; } = null!;
 
         /// <summary>
-        /// The listening protocol. Valid values: `TCP`, `UDP`, or `TCPSSL`.
+        /// The listening protocol. Valid values: **TCP**, **UDP**, or **TCPSSL**.
         /// </summary>
         [Output("listenerProtocol")]
         public Output<string> ListenerProtocol { get; private set; } = null!;
@@ -225,27 +235,31 @@ namespace Pulumi.AliCloud.Nlb
         public Output<string> LoadBalancerId { get; private set; } = null!;
 
         /// <summary>
-        /// The maximum size of a TCP segment. Unit: bytes. Valid values: 0 to 1500. 0 specifies that the maximum segment size remains unchanged. **Note:** This parameter is supported only by listeners that use SSL over TCP.
+        /// The maximum segment size of the TCP message. Unit: Bytes. Valid values: **0** ~ **1500**. **0** indicates that the MSS value of the TCP message is not modified.
+        /// &gt; **NOTE:**  only TCP and TCPSSL listeners support this field value.
         /// </summary>
         [Output("mss")]
         public Output<int?> Mss { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies whether to use the Proxy protocol to pass client IP addresses to backend servers.
+        /// Whether to enable the Proxy Protocol to carry the source address of the client to the backend server. Value:
+        /// - **true**: on.
+        /// - **false**: closed.
         /// </summary>
         [Output("proxyProtocolEnabled")]
         public Output<bool> ProxyProtocolEnabled { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies whether to enable fine-grained monitoring.
+        /// Whether to turn on the second-level monitoring function. Value:
+        /// - **true**: on.
+        /// - **false**: closed.
         /// </summary>
         [Output("secSensorEnabled")]
         public Output<bool> SecSensorEnabled { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the security policy. System security policies and custom security policies are supported. 
-        /// System security policies valid values: `tls_cipher_policy_1_0` (default), `tls_cipher_policy_1_1,` `tls_cipher_policy_1_2`, `tls_cipher_policy_1_2_strict`, and `tls_cipher_policy_1_2_strict_with_1_3`.
-        /// Custom security policies can be created by resource `alicloud.nlb.SecurityPolicy`.
+        /// Security policy ID. Support system security policies and custom security policies. Valid values: **tls_cipher_policy_1_0**, **tls_cipher_policy_1_1**, **tls_cipher_policy_1_2**, **tls_cipher_policy_1_2_strict**, or **tls_cipher_policy_1_2_strict_with_1_3**.
+        /// &gt; **NOTE:**  This parameter only takes effect for TCPSSL listeners.
         /// </summary>
         [Output("securityPolicyId")]
         public Output<string> SecurityPolicyId { get; private set; } = null!;
@@ -257,16 +271,22 @@ namespace Pulumi.AliCloud.Nlb
         public Output<string> ServerGroupId { get; private set; } = null!;
 
         /// <summary>
-        /// Full Port listens to the starting port. Valid values: `0` ~ `65535`.
+        /// Full Port listens to the starting port. Valid values: **0** ~ **65535**.
         /// </summary>
         [Output("startPort")]
         public Output<int?> StartPort { get; private set; } = null!;
 
         /// <summary>
-        /// The status of the resource. Valid values: `Running`, `Stopped`.
+        /// The status of the resource.
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
+
+        /// <summary>
+        /// The tag of the resource.
+        /// </summary>
+        [Output("tags")]
+        public Output<ImmutableDictionary<string, object>?> Tags { get; private set; } = null!;
 
 
         /// <summary>
@@ -315,13 +335,19 @@ namespace Pulumi.AliCloud.Nlb
     public sealed class ListenerArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Specifies whether to enable Application-Layer Protocol Negotiation (ALPN).
+        /// Whether ALPN is turned on. Value:
+        /// - **true**: on.
+        /// - **false**: closed.
         /// </summary>
         [Input("alpnEnabled")]
         public Input<bool>? AlpnEnabled { get; set; }
 
         /// <summary>
-        /// The ALPN policy.
+        /// ALPN policy. Value:
+        /// - **HTTP1Only**
+        /// - **HTTP2Only**
+        /// - **HTTP2Preferred**
+        /// - **HTTP2Optional**.
         /// </summary>
         [Input("alpnPolicy")]
         public Input<string>? AlpnPolicy { get; set; }
@@ -330,7 +356,8 @@ namespace Pulumi.AliCloud.Nlb
         private InputList<string>? _caCertificateIds;
 
         /// <summary>
-        /// The list of certificate authority (CA) certificates. This parameter takes effect only for listeners that use SSL over TCP. **Note:** Only one CA certificate is supported.
+        /// CA certificate list information. Currently, only one CA certificate can be added.
+        /// &gt; **NOTE:**  This parameter only takes effect for TCPSSL listeners.
         /// </summary>
         public InputList<string> CaCertificateIds
         {
@@ -339,7 +366,9 @@ namespace Pulumi.AliCloud.Nlb
         }
 
         /// <summary>
-        /// Specifies whether to enable mutual authentication.
+        /// Whether to start two-way authentication. Value:
+        /// - **true**: start.
+        /// - **false**: closed.
         /// </summary>
         [Input("caEnabled")]
         public Input<bool>? CaEnabled { get; set; }
@@ -348,7 +377,8 @@ namespace Pulumi.AliCloud.Nlb
         private InputList<string>? _certificateIds;
 
         /// <summary>
-        /// The list of server certificates. This parameter takes effect only for listeners that use SSL over TCP. **Note:** Only one server certificate is supported.
+        /// Server certificate list information. Currently, only one server certificate can be added.
+        /// &gt; **NOTE:**  This parameter only takes effect for TCPSSL listeners.
         /// </summary>
         public InputList<string> CertificateIds
         {
@@ -357,37 +387,37 @@ namespace Pulumi.AliCloud.Nlb
         }
 
         /// <summary>
-        /// The maximum number of connections that can be created per second on the NLB instance. Valid values: 0 to 1000000. 0 specifies that the number of connections is unlimited.
+        /// The new connection speed limit for a network-based load balancing instance per second. Valid values: **0** ~ **1000000**. **0** indicates unlimited speed.
         /// </summary>
         [Input("cps")]
         public Input<int>? Cps { get; set; }
 
         /// <summary>
-        /// Full port listening end port. Valid values: `0` ~ `65535`. The value of the end port is less than the start port.
+        /// Full port listening end port. Valid values: **0** ~ **65535 * *. The value of the end port is less than the start port.
         /// </summary>
         [Input("endPort")]
         public Input<int>? EndPort { get; set; }
 
         /// <summary>
-        /// The timeout period of an idle connection. Unit: seconds. Valid values: `1` to `900`. Default value: `900`.
+        /// Connection idle timeout time. Unit: seconds. Valid values: **1** ~ **900**.
         /// </summary>
         [Input("idleTimeout")]
         public Input<int>? IdleTimeout { get; set; }
 
         /// <summary>
-        /// Custom listener name. The length is limited to 2 to 256 characters, supports Chinese and English letters, and can include numbers, commas (,), half-width periods (.), half-width semicolons (;), forward slashes (/), at(@), underscores (_), and dashes (-).
+        /// Custom listener name.The length is limited to 2 to 256 characters, supports Chinese and English letters, and can include numbers, commas (,), half-width periods (.), half-width semicolons (;), forward slashes (/), at(@), underscores (_), and dashes (-).
         /// </summary>
         [Input("listenerDescription")]
         public Input<string>? ListenerDescription { get; set; }
 
         /// <summary>
-        /// Listening port. Valid values: 0 ~ 65535. `0`: indicates that full port listening is used. When set to `0`, you must configure `StartPort` and `EndPort`.
+        /// Listening port. Valid values: **0** ~ **65535 * *. **0**: indicates that full port listening is used. When set to **0**, you must configure **StartPort** and **EndPort**.
         /// </summary>
         [Input("listenerPort", required: true)]
         public Input<int> ListenerPort { get; set; } = null!;
 
         /// <summary>
-        /// The listening protocol. Valid values: `TCP`, `UDP`, or `TCPSSL`.
+        /// The listening protocol. Valid values: **TCP**, **UDP**, or **TCPSSL**.
         /// </summary>
         [Input("listenerProtocol", required: true)]
         public Input<string> ListenerProtocol { get; set; } = null!;
@@ -399,27 +429,31 @@ namespace Pulumi.AliCloud.Nlb
         public Input<string> LoadBalancerId { get; set; } = null!;
 
         /// <summary>
-        /// The maximum size of a TCP segment. Unit: bytes. Valid values: 0 to 1500. 0 specifies that the maximum segment size remains unchanged. **Note:** This parameter is supported only by listeners that use SSL over TCP.
+        /// The maximum segment size of the TCP message. Unit: Bytes. Valid values: **0** ~ **1500**. **0** indicates that the MSS value of the TCP message is not modified.
+        /// &gt; **NOTE:**  only TCP and TCPSSL listeners support this field value.
         /// </summary>
         [Input("mss")]
         public Input<int>? Mss { get; set; }
 
         /// <summary>
-        /// Specifies whether to use the Proxy protocol to pass client IP addresses to backend servers.
+        /// Whether to enable the Proxy Protocol to carry the source address of the client to the backend server. Value:
+        /// - **true**: on.
+        /// - **false**: closed.
         /// </summary>
         [Input("proxyProtocolEnabled")]
         public Input<bool>? ProxyProtocolEnabled { get; set; }
 
         /// <summary>
-        /// Specifies whether to enable fine-grained monitoring.
+        /// Whether to turn on the second-level monitoring function. Value:
+        /// - **true**: on.
+        /// - **false**: closed.
         /// </summary>
         [Input("secSensorEnabled")]
         public Input<bool>? SecSensorEnabled { get; set; }
 
         /// <summary>
-        /// The ID of the security policy. System security policies and custom security policies are supported. 
-        /// System security policies valid values: `tls_cipher_policy_1_0` (default), `tls_cipher_policy_1_1,` `tls_cipher_policy_1_2`, `tls_cipher_policy_1_2_strict`, and `tls_cipher_policy_1_2_strict_with_1_3`.
-        /// Custom security policies can be created by resource `alicloud.nlb.SecurityPolicy`.
+        /// Security policy ID. Support system security policies and custom security policies. Valid values: **tls_cipher_policy_1_0**, **tls_cipher_policy_1_1**, **tls_cipher_policy_1_2**, **tls_cipher_policy_1_2_strict**, or **tls_cipher_policy_1_2_strict_with_1_3**.
+        /// &gt; **NOTE:**  This parameter only takes effect for TCPSSL listeners.
         /// </summary>
         [Input("securityPolicyId")]
         public Input<string>? SecurityPolicyId { get; set; }
@@ -431,16 +465,28 @@ namespace Pulumi.AliCloud.Nlb
         public Input<string> ServerGroupId { get; set; } = null!;
 
         /// <summary>
-        /// Full Port listens to the starting port. Valid values: `0` ~ `65535`.
+        /// Full Port listens to the starting port. Valid values: **0** ~ **65535**.
         /// </summary>
         [Input("startPort")]
         public Input<int>? StartPort { get; set; }
 
         /// <summary>
-        /// The status of the resource. Valid values: `Running`, `Stopped`.
+        /// The status of the resource.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
+
+        [Input("tags")]
+        private InputMap<object>? _tags;
+
+        /// <summary>
+        /// The tag of the resource.
+        /// </summary>
+        public InputMap<object> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<object>());
+            set => _tags = value;
+        }
 
         public ListenerArgs()
         {
@@ -451,13 +497,19 @@ namespace Pulumi.AliCloud.Nlb
     public sealed class ListenerState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Specifies whether to enable Application-Layer Protocol Negotiation (ALPN).
+        /// Whether ALPN is turned on. Value:
+        /// - **true**: on.
+        /// - **false**: closed.
         /// </summary>
         [Input("alpnEnabled")]
         public Input<bool>? AlpnEnabled { get; set; }
 
         /// <summary>
-        /// The ALPN policy.
+        /// ALPN policy. Value:
+        /// - **HTTP1Only**
+        /// - **HTTP2Only**
+        /// - **HTTP2Preferred**
+        /// - **HTTP2Optional**.
         /// </summary>
         [Input("alpnPolicy")]
         public Input<string>? AlpnPolicy { get; set; }
@@ -466,7 +518,8 @@ namespace Pulumi.AliCloud.Nlb
         private InputList<string>? _caCertificateIds;
 
         /// <summary>
-        /// The list of certificate authority (CA) certificates. This parameter takes effect only for listeners that use SSL over TCP. **Note:** Only one CA certificate is supported.
+        /// CA certificate list information. Currently, only one CA certificate can be added.
+        /// &gt; **NOTE:**  This parameter only takes effect for TCPSSL listeners.
         /// </summary>
         public InputList<string> CaCertificateIds
         {
@@ -475,7 +528,9 @@ namespace Pulumi.AliCloud.Nlb
         }
 
         /// <summary>
-        /// Specifies whether to enable mutual authentication.
+        /// Whether to start two-way authentication. Value:
+        /// - **true**: start.
+        /// - **false**: closed.
         /// </summary>
         [Input("caEnabled")]
         public Input<bool>? CaEnabled { get; set; }
@@ -484,7 +539,8 @@ namespace Pulumi.AliCloud.Nlb
         private InputList<string>? _certificateIds;
 
         /// <summary>
-        /// The list of server certificates. This parameter takes effect only for listeners that use SSL over TCP. **Note:** Only one server certificate is supported.
+        /// Server certificate list information. Currently, only one server certificate can be added.
+        /// &gt; **NOTE:**  This parameter only takes effect for TCPSSL listeners.
         /// </summary>
         public InputList<string> CertificateIds
         {
@@ -493,37 +549,37 @@ namespace Pulumi.AliCloud.Nlb
         }
 
         /// <summary>
-        /// The maximum number of connections that can be created per second on the NLB instance. Valid values: 0 to 1000000. 0 specifies that the number of connections is unlimited.
+        /// The new connection speed limit for a network-based load balancing instance per second. Valid values: **0** ~ **1000000**. **0** indicates unlimited speed.
         /// </summary>
         [Input("cps")]
         public Input<int>? Cps { get; set; }
 
         /// <summary>
-        /// Full port listening end port. Valid values: `0` ~ `65535`. The value of the end port is less than the start port.
+        /// Full port listening end port. Valid values: **0** ~ **65535 * *. The value of the end port is less than the start port.
         /// </summary>
         [Input("endPort")]
         public Input<int>? EndPort { get; set; }
 
         /// <summary>
-        /// The timeout period of an idle connection. Unit: seconds. Valid values: `1` to `900`. Default value: `900`.
+        /// Connection idle timeout time. Unit: seconds. Valid values: **1** ~ **900**.
         /// </summary>
         [Input("idleTimeout")]
         public Input<int>? IdleTimeout { get; set; }
 
         /// <summary>
-        /// Custom listener name. The length is limited to 2 to 256 characters, supports Chinese and English letters, and can include numbers, commas (,), half-width periods (.), half-width semicolons (;), forward slashes (/), at(@), underscores (_), and dashes (-).
+        /// Custom listener name.The length is limited to 2 to 256 characters, supports Chinese and English letters, and can include numbers, commas (,), half-width periods (.), half-width semicolons (;), forward slashes (/), at(@), underscores (_), and dashes (-).
         /// </summary>
         [Input("listenerDescription")]
         public Input<string>? ListenerDescription { get; set; }
 
         /// <summary>
-        /// Listening port. Valid values: 0 ~ 65535. `0`: indicates that full port listening is used. When set to `0`, you must configure `StartPort` and `EndPort`.
+        /// Listening port. Valid values: **0** ~ **65535 * *. **0**: indicates that full port listening is used. When set to **0**, you must configure **StartPort** and **EndPort**.
         /// </summary>
         [Input("listenerPort")]
         public Input<int>? ListenerPort { get; set; }
 
         /// <summary>
-        /// The listening protocol. Valid values: `TCP`, `UDP`, or `TCPSSL`.
+        /// The listening protocol. Valid values: **TCP**, **UDP**, or **TCPSSL**.
         /// </summary>
         [Input("listenerProtocol")]
         public Input<string>? ListenerProtocol { get; set; }
@@ -535,27 +591,31 @@ namespace Pulumi.AliCloud.Nlb
         public Input<string>? LoadBalancerId { get; set; }
 
         /// <summary>
-        /// The maximum size of a TCP segment. Unit: bytes. Valid values: 0 to 1500. 0 specifies that the maximum segment size remains unchanged. **Note:** This parameter is supported only by listeners that use SSL over TCP.
+        /// The maximum segment size of the TCP message. Unit: Bytes. Valid values: **0** ~ **1500**. **0** indicates that the MSS value of the TCP message is not modified.
+        /// &gt; **NOTE:**  only TCP and TCPSSL listeners support this field value.
         /// </summary>
         [Input("mss")]
         public Input<int>? Mss { get; set; }
 
         /// <summary>
-        /// Specifies whether to use the Proxy protocol to pass client IP addresses to backend servers.
+        /// Whether to enable the Proxy Protocol to carry the source address of the client to the backend server. Value:
+        /// - **true**: on.
+        /// - **false**: closed.
         /// </summary>
         [Input("proxyProtocolEnabled")]
         public Input<bool>? ProxyProtocolEnabled { get; set; }
 
         /// <summary>
-        /// Specifies whether to enable fine-grained monitoring.
+        /// Whether to turn on the second-level monitoring function. Value:
+        /// - **true**: on.
+        /// - **false**: closed.
         /// </summary>
         [Input("secSensorEnabled")]
         public Input<bool>? SecSensorEnabled { get; set; }
 
         /// <summary>
-        /// The ID of the security policy. System security policies and custom security policies are supported. 
-        /// System security policies valid values: `tls_cipher_policy_1_0` (default), `tls_cipher_policy_1_1,` `tls_cipher_policy_1_2`, `tls_cipher_policy_1_2_strict`, and `tls_cipher_policy_1_2_strict_with_1_3`.
-        /// Custom security policies can be created by resource `alicloud.nlb.SecurityPolicy`.
+        /// Security policy ID. Support system security policies and custom security policies. Valid values: **tls_cipher_policy_1_0**, **tls_cipher_policy_1_1**, **tls_cipher_policy_1_2**, **tls_cipher_policy_1_2_strict**, or **tls_cipher_policy_1_2_strict_with_1_3**.
+        /// &gt; **NOTE:**  This parameter only takes effect for TCPSSL listeners.
         /// </summary>
         [Input("securityPolicyId")]
         public Input<string>? SecurityPolicyId { get; set; }
@@ -567,16 +627,28 @@ namespace Pulumi.AliCloud.Nlb
         public Input<string>? ServerGroupId { get; set; }
 
         /// <summary>
-        /// Full Port listens to the starting port. Valid values: `0` ~ `65535`.
+        /// Full Port listens to the starting port. Valid values: **0** ~ **65535**.
         /// </summary>
         [Input("startPort")]
         public Input<int>? StartPort { get; set; }
 
         /// <summary>
-        /// The status of the resource. Valid values: `Running`, `Stopped`.
+        /// The status of the resource.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
+
+        [Input("tags")]
+        private InputMap<object>? _tags;
+
+        /// <summary>
+        /// The tag of the resource.
+        /// </summary>
+        public InputMap<object> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<object>());
+            set => _tags = value;
+        }
 
         public ListenerState()
         {

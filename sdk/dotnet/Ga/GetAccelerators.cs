@@ -87,6 +87,12 @@ namespace Pulumi.AliCloud.Ga
 
     public sealed class GetAcceleratorsArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The bandwidth billing method. Default value: `BandwidthPackage`. Valid values:
+        /// </summary>
+        [Input("bandwidthBillingType")]
+        public string? BandwidthBillingType { get; set; }
+
         [Input("ids")]
         private List<string>? _ids;
 
@@ -125,6 +131,12 @@ namespace Pulumi.AliCloud.Ga
 
     public sealed class GetAcceleratorsInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The bandwidth billing method. Default value: `BandwidthPackage`. Valid values:
+        /// </summary>
+        [Input("bandwidthBillingType")]
+        public Input<string>? BandwidthBillingType { get; set; }
+
         [Input("ids")]
         private InputList<string>? _ids;
 
@@ -169,6 +181,7 @@ namespace Pulumi.AliCloud.Ga
         /// A list of Ga Accelerators. Each element contains the following attributes:
         /// </summary>
         public readonly ImmutableArray<Outputs.GetAcceleratorsAcceleratorResult> Accelerators;
+        public readonly string? BandwidthBillingType;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
@@ -189,6 +202,8 @@ namespace Pulumi.AliCloud.Ga
         private GetAcceleratorsResult(
             ImmutableArray<Outputs.GetAcceleratorsAcceleratorResult> accelerators,
 
+            string? bandwidthBillingType,
+
             string id,
 
             ImmutableArray<string> ids,
@@ -202,6 +217,7 @@ namespace Pulumi.AliCloud.Ga
             string? status)
         {
             Accelerators = accelerators;
+            BandwidthBillingType = bandwidthBillingType;
             Id = id;
             Ids = ids;
             NameRegex = nameRegex;

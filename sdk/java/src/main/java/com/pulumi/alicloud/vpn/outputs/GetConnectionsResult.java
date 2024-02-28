@@ -20,7 +20,7 @@ public final class GetConnectionsResult {
      */
     private List<GetConnectionsConnection> connections;
     /**
-     * @return ID of the VPN customer gateway.
+     * @return The ID of the customer gateway in Tunnel.
      * 
      */
     private @Nullable String customerGatewayId;
@@ -56,7 +56,7 @@ public final class GetConnectionsResult {
         return this.connections;
     }
     /**
-     * @return ID of the VPN customer gateway.
+     * @return The ID of the customer gateway in Tunnel.
      * 
      */
     public Optional<String> customerGatewayId() {

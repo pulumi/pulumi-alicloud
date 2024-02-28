@@ -129,7 +129,7 @@ namespace Pulumi.AliCloud.Alb
         /// The tag of the resource.
         /// </summary>
         [Output("tags")]
-        public Output<ImmutableDictionary<string, object>?> Tags { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, object>> Tags { get; private set; } = null!;
 
         /// <summary>
         /// The ID of the virtual private cloud (VPC) where the SLB instance is deployed.

@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Cdn
     /// 
     /// For information about domain config and how to use it, see [Batch set config](https://www.alibabacloud.com/help/zh/doc-detail/90915.htm)
     /// 
-    /// &gt; **NOTE:** Available in v1.34.0+.
+    /// &gt; **NOTE:** Available since v1.34.0+.
     /// 
     /// ## Example Usage
     /// 
@@ -25,13 +25,20 @@ namespace Pulumi.AliCloud.Cdn
     /// using System.Linq;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
+    /// using Random = Pulumi.Random;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
+    ///     var @default = new Random.RandomInteger("default", new()
+    ///     {
+    ///         Min = 10000,
+    ///         Max = 99999,
+    ///     });
+    /// 
     ///     // Create a new Domain config.
     ///     var domain = new AliCloud.Cdn.DomainNew("domain", new()
     ///     {
-    ///         DomainName = "mycdndomain.alicloud-provider.cn",
+    ///         DomainName = @default.Result.Apply(result =&gt; $"mycdndomain-{result}.alicloud-provider.cn"),
     ///         CdnType = "web",
     ///         Scope = "overseas",
     ///         Sources = new[]
@@ -92,7 +99,7 @@ namespace Pulumi.AliCloud.Cdn
         public Output<string> DomainName { get; private set; } = null!;
 
         /// <summary>
-        /// The args of the domain config.
+        /// The args of the domain config. See `function_args` below.
         /// </summary>
         [Output("functionArgs")]
         public Output<ImmutableArray<Outputs.DomainConfigFunctionArg>> FunctionArgs { get; private set; } = null!;
@@ -165,7 +172,7 @@ namespace Pulumi.AliCloud.Cdn
         private InputList<Inputs.DomainConfigFunctionArgArgs>? _functionArgs;
 
         /// <summary>
-        /// The args of the domain config.
+        /// The args of the domain config. See `function_args` below.
         /// </summary>
         public InputList<Inputs.DomainConfigFunctionArgArgs> FunctionArgs
         {
@@ -203,7 +210,7 @@ namespace Pulumi.AliCloud.Cdn
         private InputList<Inputs.DomainConfigFunctionArgGetArgs>? _functionArgs;
 
         /// <summary>
-        /// The args of the domain config.
+        /// The args of the domain config. See `function_args` below.
         /// </summary>
         public InputList<Inputs.DomainConfigFunctionArgGetArgs> FunctionArgs
         {

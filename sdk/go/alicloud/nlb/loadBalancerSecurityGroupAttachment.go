@@ -122,19 +122,21 @@ import (
 //
 // ## Import
 //
-// Nlb Load Balancer Security Group Attachment can be imported using the id, e.g.
+// NLB Load Balancer Security Group Attachment can be imported using the id, e.g.
 //
 // ```sh
-// $ pulumi import alicloud:nlb/loadBalancerSecurityGroupAttachment:LoadBalancerSecurityGroupAttachment example <LoadBalancerId>:<SecurityGroupId>
+// $ pulumi import alicloud:nlb/loadBalancerSecurityGroupAttachment:LoadBalancerSecurityGroupAttachment example <load_balancer_id>:<security_group_id>
 // ```
 type LoadBalancerSecurityGroupAttachment struct {
 	pulumi.CustomResourceState
 
-	// Whether to PreCheck this request only. Value:-**true**: sends a check request and does not bind a security group to the instance. Check items include whether required parameters, request format, and business restrictions have been filled in. If the check fails, the corresponding error is returned. If the check passes, the error code 'DryRunOperation' is returned '.-**false** (default): Sends a normal request, returns the HTTP 2xx status code after the check, and directly performs the operation.
+	// Whether to PreCheck this request only. Value:
+	// - **true**: sends a check request and does not bind a security group to the instance. Check items include whether required parameters, request format, and business restrictions have been filled in. If the check fails, the corresponding error is returned. If the check passes, the error code 'DryRunOperation' is returned '.
+	// - **false** (default): Sends a normal request, returns the HTTP 2xx status code after the check, and directly performs the operation.
 	DryRun pulumi.BoolPtrOutput `pulumi:"dryRun"`
 	// The ID of the network-based server load balancer instance to be bound to the security group.
 	LoadBalancerId pulumi.StringOutput `pulumi:"loadBalancerId"`
-	// The ID of security groups.
+	// The ID of the security group.
 	SecurityGroupId pulumi.StringOutput `pulumi:"securityGroupId"`
 }
 
@@ -174,20 +176,24 @@ func GetLoadBalancerSecurityGroupAttachment(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering LoadBalancerSecurityGroupAttachment resources.
 type loadBalancerSecurityGroupAttachmentState struct {
-	// Whether to PreCheck this request only. Value:-**true**: sends a check request and does not bind a security group to the instance. Check items include whether required parameters, request format, and business restrictions have been filled in. If the check fails, the corresponding error is returned. If the check passes, the error code 'DryRunOperation' is returned '.-**false** (default): Sends a normal request, returns the HTTP 2xx status code after the check, and directly performs the operation.
+	// Whether to PreCheck this request only. Value:
+	// - **true**: sends a check request and does not bind a security group to the instance. Check items include whether required parameters, request format, and business restrictions have been filled in. If the check fails, the corresponding error is returned. If the check passes, the error code 'DryRunOperation' is returned '.
+	// - **false** (default): Sends a normal request, returns the HTTP 2xx status code after the check, and directly performs the operation.
 	DryRun *bool `pulumi:"dryRun"`
 	// The ID of the network-based server load balancer instance to be bound to the security group.
 	LoadBalancerId *string `pulumi:"loadBalancerId"`
-	// The ID of security groups.
+	// The ID of the security group.
 	SecurityGroupId *string `pulumi:"securityGroupId"`
 }
 
 type LoadBalancerSecurityGroupAttachmentState struct {
-	// Whether to PreCheck this request only. Value:-**true**: sends a check request and does not bind a security group to the instance. Check items include whether required parameters, request format, and business restrictions have been filled in. If the check fails, the corresponding error is returned. If the check passes, the error code 'DryRunOperation' is returned '.-**false** (default): Sends a normal request, returns the HTTP 2xx status code after the check, and directly performs the operation.
+	// Whether to PreCheck this request only. Value:
+	// - **true**: sends a check request and does not bind a security group to the instance. Check items include whether required parameters, request format, and business restrictions have been filled in. If the check fails, the corresponding error is returned. If the check passes, the error code 'DryRunOperation' is returned '.
+	// - **false** (default): Sends a normal request, returns the HTTP 2xx status code after the check, and directly performs the operation.
 	DryRun pulumi.BoolPtrInput
 	// The ID of the network-based server load balancer instance to be bound to the security group.
 	LoadBalancerId pulumi.StringPtrInput
-	// The ID of security groups.
+	// The ID of the security group.
 	SecurityGroupId pulumi.StringPtrInput
 }
 
@@ -196,21 +202,25 @@ func (LoadBalancerSecurityGroupAttachmentState) ElementType() reflect.Type {
 }
 
 type loadBalancerSecurityGroupAttachmentArgs struct {
-	// Whether to PreCheck this request only. Value:-**true**: sends a check request and does not bind a security group to the instance. Check items include whether required parameters, request format, and business restrictions have been filled in. If the check fails, the corresponding error is returned. If the check passes, the error code 'DryRunOperation' is returned '.-**false** (default): Sends a normal request, returns the HTTP 2xx status code after the check, and directly performs the operation.
+	// Whether to PreCheck this request only. Value:
+	// - **true**: sends a check request and does not bind a security group to the instance. Check items include whether required parameters, request format, and business restrictions have been filled in. If the check fails, the corresponding error is returned. If the check passes, the error code 'DryRunOperation' is returned '.
+	// - **false** (default): Sends a normal request, returns the HTTP 2xx status code after the check, and directly performs the operation.
 	DryRun *bool `pulumi:"dryRun"`
 	// The ID of the network-based server load balancer instance to be bound to the security group.
 	LoadBalancerId string `pulumi:"loadBalancerId"`
-	// The ID of security groups.
+	// The ID of the security group.
 	SecurityGroupId string `pulumi:"securityGroupId"`
 }
 
 // The set of arguments for constructing a LoadBalancerSecurityGroupAttachment resource.
 type LoadBalancerSecurityGroupAttachmentArgs struct {
-	// Whether to PreCheck this request only. Value:-**true**: sends a check request and does not bind a security group to the instance. Check items include whether required parameters, request format, and business restrictions have been filled in. If the check fails, the corresponding error is returned. If the check passes, the error code 'DryRunOperation' is returned '.-**false** (default): Sends a normal request, returns the HTTP 2xx status code after the check, and directly performs the operation.
+	// Whether to PreCheck this request only. Value:
+	// - **true**: sends a check request and does not bind a security group to the instance. Check items include whether required parameters, request format, and business restrictions have been filled in. If the check fails, the corresponding error is returned. If the check passes, the error code 'DryRunOperation' is returned '.
+	// - **false** (default): Sends a normal request, returns the HTTP 2xx status code after the check, and directly performs the operation.
 	DryRun pulumi.BoolPtrInput
 	// The ID of the network-based server load balancer instance to be bound to the security group.
 	LoadBalancerId pulumi.StringInput
-	// The ID of security groups.
+	// The ID of the security group.
 	SecurityGroupId pulumi.StringInput
 }
 
@@ -301,7 +311,9 @@ func (o LoadBalancerSecurityGroupAttachmentOutput) ToLoadBalancerSecurityGroupAt
 	return o
 }
 
-// Whether to PreCheck this request only. Value:-**true**: sends a check request and does not bind a security group to the instance. Check items include whether required parameters, request format, and business restrictions have been filled in. If the check fails, the corresponding error is returned. If the check passes, the error code 'DryRunOperation' is returned '.-**false** (default): Sends a normal request, returns the HTTP 2xx status code after the check, and directly performs the operation.
+// Whether to PreCheck this request only. Value:
+// - **true**: sends a check request and does not bind a security group to the instance. Check items include whether required parameters, request format, and business restrictions have been filled in. If the check fails, the corresponding error is returned. If the check passes, the error code 'DryRunOperation' is returned '.
+// - **false** (default): Sends a normal request, returns the HTTP 2xx status code after the check, and directly performs the operation.
 func (o LoadBalancerSecurityGroupAttachmentOutput) DryRun() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *LoadBalancerSecurityGroupAttachment) pulumi.BoolPtrOutput { return v.DryRun }).(pulumi.BoolPtrOutput)
 }
@@ -311,7 +323,7 @@ func (o LoadBalancerSecurityGroupAttachmentOutput) LoadBalancerId() pulumi.Strin
 	return o.ApplyT(func(v *LoadBalancerSecurityGroupAttachment) pulumi.StringOutput { return v.LoadBalancerId }).(pulumi.StringOutput)
 }
 
-// The ID of security groups.
+// The ID of the security group.
 func (o LoadBalancerSecurityGroupAttachmentOutput) SecurityGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v *LoadBalancerSecurityGroupAttachment) pulumi.StringOutput { return v.SecurityGroupId }).(pulumi.StringOutput)
 }

@@ -1508,7 +1508,7 @@ class ContainerGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="autoMatchImageCache")
-    def auto_match_image_cache(self) -> pulumi.Output[Optional[bool]]:
+    def auto_match_image_cache(self) -> pulumi.Output[bool]:
         """
         Specifies whether to automatically match the image cache. Default value: `false`. Valid values: `true` and `false`.
         """

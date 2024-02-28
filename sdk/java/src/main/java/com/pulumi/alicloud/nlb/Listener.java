@@ -12,15 +12,17 @@ import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.Boolean;
 import java.lang.Integer;
+import java.lang.Object;
 import java.lang.String;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
  * Provides a NLB Listener resource.
  * 
- * For information about NLB Listener and how to use it, see [What is Listener](https://www.alibabacloud.com/help/en/server-load-balancer/latest/createlistener-nl).
+ * For information about NLB Listener and how to use it, see [What is Listener](https://www.alibabacloud.com/help/en/server-load-balancer/latest/api-nlb-2022-04-30-createlistener).
  * 
  * &gt; **NOTE:** Available since v1.191.0.
  * 
@@ -174,154 +176,174 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:nlb/listener:Listener")
 public class Listener extends com.pulumi.resources.CustomResource {
     /**
-     * Specifies whether to enable Application-Layer Protocol Negotiation (ALPN).
+     * Whether ALPN is turned on. Value:
+     * - **true**: on.
+     * - **false**: closed.
      * 
      */
     @Export(name="alpnEnabled", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> alpnEnabled;
 
     /**
-     * @return Specifies whether to enable Application-Layer Protocol Negotiation (ALPN).
+     * @return Whether ALPN is turned on. Value:
+     * - **true**: on.
+     * - **false**: closed.
      * 
      */
     public Output<Boolean> alpnEnabled() {
         return this.alpnEnabled;
     }
     /**
-     * The ALPN policy.
+     * ALPN policy. Value:
+     * - **HTTP1Only**
+     * - **HTTP2Only**
+     * - **HTTP2Preferred**
+     * - **HTTP2Optional**.
      * 
      */
     @Export(name="alpnPolicy", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> alpnPolicy;
 
     /**
-     * @return The ALPN policy.
+     * @return ALPN policy. Value:
+     * - **HTTP1Only**
+     * - **HTTP2Only**
+     * - **HTTP2Preferred**
+     * - **HTTP2Optional**.
      * 
      */
     public Output<Optional<String>> alpnPolicy() {
         return Codegen.optional(this.alpnPolicy);
     }
     /**
-     * The list of certificate authority (CA) certificates. This parameter takes effect only for listeners that use SSL over TCP. **Note:** Only one CA certificate is supported.
+     * CA certificate list information. Currently, only one CA certificate can be added.
+     * &gt; **NOTE:**  This parameter only takes effect for TCPSSL listeners.
      * 
      */
     @Export(name="caCertificateIds", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> caCertificateIds;
 
     /**
-     * @return The list of certificate authority (CA) certificates. This parameter takes effect only for listeners that use SSL over TCP. **Note:** Only one CA certificate is supported.
+     * @return CA certificate list information. Currently, only one CA certificate can be added.
+     * &gt; **NOTE:**  This parameter only takes effect for TCPSSL listeners.
      * 
      */
     public Output<Optional<List<String>>> caCertificateIds() {
         return Codegen.optional(this.caCertificateIds);
     }
     /**
-     * Specifies whether to enable mutual authentication.
+     * Whether to start two-way authentication. Value:
+     * - **true**: start.
+     * - **false**: closed.
      * 
      */
     @Export(name="caEnabled", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> caEnabled;
 
     /**
-     * @return Specifies whether to enable mutual authentication.
+     * @return Whether to start two-way authentication. Value:
+     * - **true**: start.
+     * - **false**: closed.
      * 
      */
     public Output<Boolean> caEnabled() {
         return this.caEnabled;
     }
     /**
-     * The list of server certificates. This parameter takes effect only for listeners that use SSL over TCP. **Note:** Only one server certificate is supported.
+     * Server certificate list information. Currently, only one server certificate can be added.
+     * &gt; **NOTE:**  This parameter only takes effect for TCPSSL listeners.
      * 
      */
     @Export(name="certificateIds", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> certificateIds;
 
     /**
-     * @return The list of server certificates. This parameter takes effect only for listeners that use SSL over TCP. **Note:** Only one server certificate is supported.
+     * @return Server certificate list information. Currently, only one server certificate can be added.
+     * &gt; **NOTE:**  This parameter only takes effect for TCPSSL listeners.
      * 
      */
     public Output<Optional<List<String>>> certificateIds() {
         return Codegen.optional(this.certificateIds);
     }
     /**
-     * The maximum number of connections that can be created per second on the NLB instance. Valid values: 0 to 1000000. 0 specifies that the number of connections is unlimited.
+     * The new connection speed limit for a network-based load balancing instance per second. Valid values: **0** ~ **1000000**. **0** indicates unlimited speed.
      * 
      */
     @Export(name="cps", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> cps;
 
     /**
-     * @return The maximum number of connections that can be created per second on the NLB instance. Valid values: 0 to 1000000. 0 specifies that the number of connections is unlimited.
+     * @return The new connection speed limit for a network-based load balancing instance per second. Valid values: **0** ~ **1000000**. **0** indicates unlimited speed.
      * 
      */
     public Output<Optional<Integer>> cps() {
         return Codegen.optional(this.cps);
     }
     /**
-     * Full port listening end port. Valid values: `0` ~ `65535`. The value of the end port is less than the start port.
+     * Full port listening end port. Valid values: **0** ~ **65535 * *. The value of the end port is less than the start port.
      * 
      */
     @Export(name="endPort", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> endPort;
 
     /**
-     * @return Full port listening end port. Valid values: `0` ~ `65535`. The value of the end port is less than the start port.
+     * @return Full port listening end port. Valid values: **0** ~ **65535 * *. The value of the end port is less than the start port.
      * 
      */
     public Output<Optional<Integer>> endPort() {
         return Codegen.optional(this.endPort);
     }
     /**
-     * The timeout period of an idle connection. Unit: seconds. Valid values: `1` to `900`. Default value: `900`.
+     * Connection idle timeout time. Unit: seconds. Valid values: **1** ~ **900**.
      * 
      */
     @Export(name="idleTimeout", refs={Integer.class}, tree="[0]")
     private Output<Integer> idleTimeout;
 
     /**
-     * @return The timeout period of an idle connection. Unit: seconds. Valid values: `1` to `900`. Default value: `900`.
+     * @return Connection idle timeout time. Unit: seconds. Valid values: **1** ~ **900**.
      * 
      */
     public Output<Integer> idleTimeout() {
         return this.idleTimeout;
     }
     /**
-     * Custom listener name. The length is limited to 2 to 256 characters, supports Chinese and English letters, and can include numbers, commas (,), half-width periods (.), half-width semicolons (;), forward slashes (/), at(@), underscores (_), and dashes (-).
+     * Custom listener name.The length is limited to 2 to 256 characters, supports Chinese and English letters, and can include numbers, commas (,), half-width periods (.), half-width semicolons (;), forward slashes (/), at(@), underscores (_), and dashes (-).
      * 
      */
     @Export(name="listenerDescription", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> listenerDescription;
 
     /**
-     * @return Custom listener name. The length is limited to 2 to 256 characters, supports Chinese and English letters, and can include numbers, commas (,), half-width periods (.), half-width semicolons (;), forward slashes (/), at(@), underscores (_), and dashes (-).
+     * @return Custom listener name.The length is limited to 2 to 256 characters, supports Chinese and English letters, and can include numbers, commas (,), half-width periods (.), half-width semicolons (;), forward slashes (/), at(@), underscores (_), and dashes (-).
      * 
      */
     public Output<Optional<String>> listenerDescription() {
         return Codegen.optional(this.listenerDescription);
     }
     /**
-     * Listening port. Valid values: 0 ~ 65535. `0`: indicates that full port listening is used. When set to `0`, you must configure `StartPort` and `EndPort`.
+     * Listening port. Valid values: **0** ~ **65535 * *. **0**: indicates that full port listening is used. When set to **0**, you must configure **StartPort** and **EndPort**.
      * 
      */
     @Export(name="listenerPort", refs={Integer.class}, tree="[0]")
     private Output<Integer> listenerPort;
 
     /**
-     * @return Listening port. Valid values: 0 ~ 65535. `0`: indicates that full port listening is used. When set to `0`, you must configure `StartPort` and `EndPort`.
+     * @return Listening port. Valid values: **0** ~ **65535 * *. **0**: indicates that full port listening is used. When set to **0**, you must configure **StartPort** and **EndPort**.
      * 
      */
     public Output<Integer> listenerPort() {
         return this.listenerPort;
     }
     /**
-     * The listening protocol. Valid values: `TCP`, `UDP`, or `TCPSSL`.
+     * The listening protocol. Valid values: **TCP**, **UDP**, or **TCPSSL**.
      * 
      */
     @Export(name="listenerProtocol", refs={String.class}, tree="[0]")
     private Output<String> listenerProtocol;
 
     /**
-     * @return The listening protocol. Valid values: `TCP`, `UDP`, or `TCPSSL`.
+     * @return The listening protocol. Valid values: **TCP**, **UDP**, or **TCPSSL**.
      * 
      */
     public Output<String> listenerProtocol() {
@@ -342,60 +364,68 @@ public class Listener extends com.pulumi.resources.CustomResource {
         return this.loadBalancerId;
     }
     /**
-     * The maximum size of a TCP segment. Unit: bytes. Valid values: 0 to 1500. 0 specifies that the maximum segment size remains unchanged. **Note:** This parameter is supported only by listeners that use SSL over TCP.
+     * The maximum segment size of the TCP message. Unit: Bytes. Valid values: **0** ~ **1500**. **0** indicates that the MSS value of the TCP message is not modified.
+     * &gt; **NOTE:**  only TCP and TCPSSL listeners support this field value.
      * 
      */
     @Export(name="mss", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> mss;
 
     /**
-     * @return The maximum size of a TCP segment. Unit: bytes. Valid values: 0 to 1500. 0 specifies that the maximum segment size remains unchanged. **Note:** This parameter is supported only by listeners that use SSL over TCP.
+     * @return The maximum segment size of the TCP message. Unit: Bytes. Valid values: **0** ~ **1500**. **0** indicates that the MSS value of the TCP message is not modified.
+     * &gt; **NOTE:**  only TCP and TCPSSL listeners support this field value.
      * 
      */
     public Output<Optional<Integer>> mss() {
         return Codegen.optional(this.mss);
     }
     /**
-     * Specifies whether to use the Proxy protocol to pass client IP addresses to backend servers.
+     * Whether to enable the Proxy Protocol to carry the source address of the client to the backend server. Value:
+     * - **true**: on.
+     * - **false**: closed.
      * 
      */
     @Export(name="proxyProtocolEnabled", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> proxyProtocolEnabled;
 
     /**
-     * @return Specifies whether to use the Proxy protocol to pass client IP addresses to backend servers.
+     * @return Whether to enable the Proxy Protocol to carry the source address of the client to the backend server. Value:
+     * - **true**: on.
+     * - **false**: closed.
      * 
      */
     public Output<Boolean> proxyProtocolEnabled() {
         return this.proxyProtocolEnabled;
     }
     /**
-     * Specifies whether to enable fine-grained monitoring.
+     * Whether to turn on the second-level monitoring function. Value:
+     * - **true**: on.
+     * - **false**: closed.
      * 
      */
     @Export(name="secSensorEnabled", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> secSensorEnabled;
 
     /**
-     * @return Specifies whether to enable fine-grained monitoring.
+     * @return Whether to turn on the second-level monitoring function. Value:
+     * - **true**: on.
+     * - **false**: closed.
      * 
      */
     public Output<Boolean> secSensorEnabled() {
         return this.secSensorEnabled;
     }
     /**
-     * The ID of the security policy. System security policies and custom security policies are supported.
-     * System security policies valid values: `tls_cipher_policy_1_0` (default), `tls_cipher_policy_1_1,` `tls_cipher_policy_1_2`, `tls_cipher_policy_1_2_strict`, and `tls_cipher_policy_1_2_strict_with_1_3`.
-     * Custom security policies can be created by resource `alicloud.nlb.SecurityPolicy`.
+     * Security policy ID. Support system security policies and custom security policies. Valid values: **tls_cipher_policy_1_0**, **tls_cipher_policy_1_1**, **tls_cipher_policy_1_2**, **tls_cipher_policy_1_2_strict**, or **tls_cipher_policy_1_2_strict_with_1_3**.
+     * &gt; **NOTE:**  This parameter only takes effect for TCPSSL listeners.
      * 
      */
     @Export(name="securityPolicyId", refs={String.class}, tree="[0]")
     private Output<String> securityPolicyId;
 
     /**
-     * @return The ID of the security policy. System security policies and custom security policies are supported.
-     * System security policies valid values: `tls_cipher_policy_1_0` (default), `tls_cipher_policy_1_1,` `tls_cipher_policy_1_2`, `tls_cipher_policy_1_2_strict`, and `tls_cipher_policy_1_2_strict_with_1_3`.
-     * Custom security policies can be created by resource `alicloud.nlb.SecurityPolicy`.
+     * @return Security policy ID. Support system security policies and custom security policies. Valid values: **tls_cipher_policy_1_0**, **tls_cipher_policy_1_1**, **tls_cipher_policy_1_2**, **tls_cipher_policy_1_2_strict**, or **tls_cipher_policy_1_2_strict_with_1_3**.
+     * &gt; **NOTE:**  This parameter only takes effect for TCPSSL listeners.
      * 
      */
     public Output<String> securityPolicyId() {
@@ -416,32 +446,46 @@ public class Listener extends com.pulumi.resources.CustomResource {
         return this.serverGroupId;
     }
     /**
-     * Full Port listens to the starting port. Valid values: `0` ~ `65535`.
+     * Full Port listens to the starting port. Valid values: **0** ~ **65535**.
      * 
      */
     @Export(name="startPort", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> startPort;
 
     /**
-     * @return Full Port listens to the starting port. Valid values: `0` ~ `65535`.
+     * @return Full Port listens to the starting port. Valid values: **0** ~ **65535**.
      * 
      */
     public Output<Optional<Integer>> startPort() {
         return Codegen.optional(this.startPort);
     }
     /**
-     * The status of the resource. Valid values: `Running`, `Stopped`.
+     * The status of the resource.
      * 
      */
     @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
-     * @return The status of the resource. Valid values: `Running`, `Stopped`.
+     * @return The status of the resource.
      * 
      */
     public Output<String> status() {
         return this.status;
+    }
+    /**
+     * The tag of the resource.
+     * 
+     */
+    @Export(name="tags", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
+    private Output</* @Nullable */ Map<String,Object>> tags;
+
+    /**
+     * @return The tag of the resource.
+     * 
+     */
+    public Output<Optional<Map<String,Object>>> tags() {
+        return Codegen.optional(this.tags);
     }
 
     /**

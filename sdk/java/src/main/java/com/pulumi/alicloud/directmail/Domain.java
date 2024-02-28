@@ -29,6 +29,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.random.RandomInteger;
+ * import com.pulumi.random.RandomIntegerArgs;
  * import com.pulumi.alicloud.directmail.Domain;
  * import com.pulumi.alicloud.directmail.DomainArgs;
  * import java.util.List;
@@ -44,10 +46,13 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var config = ctx.config();
- *         final var domainName = config.get(&#34;domainName&#34;).orElse(&#34;alicloud-provider.online&#34;);
+ *         var default_ = new RandomInteger(&#34;default&#34;, RandomIntegerArgs.builder()        
+ *             .max(99999)
+ *             .min(10000)
+ *             .build());
+ * 
  *         var example = new Domain(&#34;example&#34;, DomainArgs.builder()        
- *             .domainName(domainName)
+ *             .domainName(default_.result().applyValue(result -&gt; String.format(&#34;alicloud-provider-%s.online&#34;, result)))
  *             .build());
  * 
  *     }

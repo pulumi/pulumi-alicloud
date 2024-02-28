@@ -14,6 +14,8 @@ namespace Pulumi.AliCloud.Vpn
         /// <summary>
         /// The VPN connections data source lists lots of VPN connections resource information owned by an Alicloud account.
         /// 
+        /// &gt; **NOTE:** Available since v1.18.0.
+        /// 
         /// {{% examples %}}
         /// ## Example Usage
         /// {{% example %}}
@@ -47,6 +49,8 @@ namespace Pulumi.AliCloud.Vpn
 
         /// <summary>
         /// The VPN connections data source lists lots of VPN connections resource information owned by an Alicloud account.
+        /// 
+        /// &gt; **NOTE:** Available since v1.18.0.
         /// 
         /// {{% examples %}}
         /// ## Example Usage
@@ -178,7 +182,7 @@ namespace Pulumi.AliCloud.Vpn
         /// </summary>
         public readonly ImmutableArray<Outputs.GetConnectionsConnectionResult> Connections;
         /// <summary>
-        /// ID of the VPN customer gateway.
+        /// The ID of the customer gateway in Tunnel.
         /// </summary>
         public readonly string? CustomerGatewayId;
         /// <summary>

@@ -20,23 +20,27 @@ namespace Pulumi.AliCloud.Vpn.Outputs
         public readonly string CustomerGatewayId;
         public readonly bool EffectImmediately;
         /// <summary>
-        /// Specifies whether to enable the dead peer detection (DPD) feature.
+        /// Wether enable Dpd detection.
         /// </summary>
         public readonly bool EnableDpd;
         /// <summary>
-        /// Specifies whether to enable NAT traversal.
+        /// enable nat traversal.
         /// </summary>
         public readonly bool EnableNatTraversal;
+        /// <summary>
+        /// Enable tunnel bgp.
+        /// </summary>
+        public readonly bool EnableTunnelsBgp;
         /// <summary>
         /// ID of the VPN connection.
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// The configurations of phase-one negotiation.
+        /// The ike_config mapping supports the following:
         /// </summary>
         public readonly ImmutableArray<Outputs.GetConnectionsConnectionIkeConfigResult> IkeConfigs;
         /// <summary>
-        /// The configurations of phase-two negotiation.
+        /// The ipsec_config mapping supports the following:
         /// </summary>
         public readonly ImmutableArray<Outputs.GetConnectionsConnectionIpsecConfigResult> IpsecConfigs;
         /// <summary>
@@ -55,9 +59,13 @@ namespace Pulumi.AliCloud.Vpn.Outputs
         /// The negotiation status of the BGP routing protocol. Valid values: `success`, `false`.
         /// </summary>
         public readonly string Status;
+        /// <summary>
+        /// The tunnel_options_specification supports the following:
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetConnectionsConnectionTunnelOptionsSpecificationResult> TunnelOptionsSpecifications;
         public readonly ImmutableArray<Outputs.GetConnectionsConnectionVcoHealthCheckResult> VcoHealthChecks;
         /// <summary>
-        /// The configuration information for BGP.
+        /// The vpn_bgp_config mapping supports the following:
         /// </summary>
         public readonly ImmutableArray<Outputs.GetConnectionsConnectionVpnBgpConfigResult> VpnBgpConfigs;
         /// <summary>
@@ -77,6 +85,8 @@ namespace Pulumi.AliCloud.Vpn.Outputs
 
             bool enableNatTraversal,
 
+            bool enableTunnelsBgp,
+
             string id,
 
             ImmutableArray<Outputs.GetConnectionsConnectionIkeConfigResult> ikeConfigs,
@@ -91,6 +101,8 @@ namespace Pulumi.AliCloud.Vpn.Outputs
 
             string status,
 
+            ImmutableArray<Outputs.GetConnectionsConnectionTunnelOptionsSpecificationResult> tunnelOptionsSpecifications,
+
             ImmutableArray<Outputs.GetConnectionsConnectionVcoHealthCheckResult> vcoHealthChecks,
 
             ImmutableArray<Outputs.GetConnectionsConnectionVpnBgpConfigResult> vpnBgpConfigs,
@@ -102,6 +114,7 @@ namespace Pulumi.AliCloud.Vpn.Outputs
             EffectImmediately = effectImmediately;
             EnableDpd = enableDpd;
             EnableNatTraversal = enableNatTraversal;
+            EnableTunnelsBgp = enableTunnelsBgp;
             Id = id;
             IkeConfigs = ikeConfigs;
             IpsecConfigs = ipsecConfigs;
@@ -109,6 +122,7 @@ namespace Pulumi.AliCloud.Vpn.Outputs
             Name = name;
             RemoteSubnet = remoteSubnet;
             Status = status;
+            TunnelOptionsSpecifications = tunnelOptionsSpecifications;
             VcoHealthChecks = vcoHealthChecks;
             VpnBgpConfigs = vpnBgpConfigs;
             VpnGatewayId = vpnGatewayId;

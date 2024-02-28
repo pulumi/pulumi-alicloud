@@ -117,7 +117,7 @@ namespace Pulumi.AliCloud.Nlb
         public Output<string> ServerType { get; private set; } = null!;
 
         /// <summary>
-        /// Status of the server.
+        /// The status of the resource.
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
@@ -189,8 +189,8 @@ namespace Pulumi.AliCloud.Nlb
         /// <summary>
         /// The port used by the backend server. Valid values: 1 to 65535.
         /// </summary>
-        [Input("port", required: true)]
-        public Input<int> Port { get; set; } = null!;
+        [Input("port")]
+        public Input<int>? Port { get; set; }
 
         /// <summary>
         /// The ID of the server group.
@@ -271,7 +271,7 @@ namespace Pulumi.AliCloud.Nlb
         public Input<string>? ServerType { get; set; }
 
         /// <summary>
-        /// Status of the server.
+        /// The status of the resource.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
