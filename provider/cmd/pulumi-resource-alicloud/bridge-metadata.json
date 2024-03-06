@@ -559,6 +559,9 @@
             "alicloud_api_gateway_group": {
                 "current": "alicloud:apigateway/group:Group"
             },
+            "alicloud_api_gateway_instance": {
+                "current": "alicloud:apigateway/instance:Instance"
+            },
             "alicloud_api_gateway_log_config": {
                 "current": "alicloud:apigateway/logConfig:LogConfig"
             },
@@ -2657,6 +2660,21 @@
             "alicloud_dfs_mount_point": {
                 "current": "alicloud:dfs/mountPoint:MountPoint"
             },
+            "alicloud_dfs_vsc_mount_point": {
+                "current": "alicloud:dfs/vscMountPoint:VscMountPoint",
+                "fields": {
+                    "instances": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "vscs": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
             "alicloud_direct_mail_domain": {
                 "current": "alicloud:directmail/domain:Domain"
             },
@@ -2826,6 +2844,14 @@
             },
             "alicloud_ebs_replica_pair_drill": {
                 "current": "alicloud:ebs/replicaPairDrill:ReplicaPairDrill"
+            },
+            "alicloud_ebs_solution_instance": {
+                "current": "alicloud:ebs/solutionInstance:SolutionInstance",
+                "fields": {
+                    "parameters": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "alicloud_ecd_ad_connector_directory": {
                 "current": "alicloud:eds/adConnectorDirectory:AdConnectorDirectory",
@@ -7029,6 +7055,9 @@
             },
             "alicloud_waf_protection_module": {
                 "current": "alicloud:waf/protectionModule:ProtectionModule"
+            },
+            "alicloud_wafv3_defense_template": {
+                "current": "alicloud:wafv3/defenseTemplate:DefenseTemplate"
             },
             "alicloud_wafv3_domain": {
                 "current": "alicloud:wafv3/domain:Domain",
@@ -19057,6 +19086,11 @@
             "alicloud_db_instance": {
                 "maxItemsOneOverrides": {
                     "serverless_config": false
+                }
+            },
+            "alicloud_gpdb_db_instance_plan": {
+                "maxItemsOneOverrides": {
+                    "plan_config": false
                 }
             },
             "alicloud_rds_clone_db_instance": {
