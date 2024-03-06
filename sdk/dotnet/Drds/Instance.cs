@@ -30,14 +30,31 @@ namespace Pulumi.AliCloud.Drds
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var @default = new AliCloud.Drds.Instance("default", new()
+    ///     var defaultZones = AliCloud.GetZones.Invoke(new()
+    ///     {
+    ///         AvailableResourceCreation = "VSwitch",
+    ///     });
+    /// 
+    ///     var config = new Config();
+    ///     var instanceSeries = config.Get("instanceSeries") ?? "drds.sn1.4c8g";
+    ///     var defaultNetworks = AliCloud.Vpc.GetNetworks.Invoke(new()
+    ///     {
+    ///         NameRegex = "default-NODELETING",
+    ///     });
+    /// 
+    ///     var defaultSwitches = AliCloud.Vpc.GetSwitches.Invoke(new()
+    ///     {
+    ///         VpcId = defaultNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
+    ///     });
+    /// 
+    ///     var defaultInstance = new AliCloud.Drds.Instance("defaultInstance", new()
     ///     {
     ///         Description = "drds instance",
     ///         InstanceChargeType = "PostPaid",
-    ///         InstanceSeries = "drds.sn1.4c8g",
+    ///         ZoneId = defaultSwitches.Apply(getSwitchesResult =&gt; getSwitchesResult.Vswitches[0]?.ZoneId),
+    ///         VswitchId = defaultSwitches.Apply(getSwitchesResult =&gt; getSwitchesResult.Vswitches[0]?.Id),
+    ///         InstanceSeries = instanceSeries,
     ///         Specification = "drds.sn1.4c8g.8C16G",
-    ///         VswitchId = "vsw-bp1jlu3swk8rq2yoi40ey",
-    ///         ZoneId = "cn-hangzhou-e",
     ///     });
     /// 
     /// });

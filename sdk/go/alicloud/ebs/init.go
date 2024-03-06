@@ -35,6 +35,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ReplicaGroupDrill{}
 	case "alicloud:ebs/replicaPairDrill:ReplicaPairDrill":
 		r = &ReplicaPairDrill{}
+	case "alicloud:ebs/solutionInstance:SolutionInstance":
+		r = &SolutionInstance{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -81,6 +83,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"ebs/replicaPairDrill",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"ebs/solutionInstance",
 		&module{version},
 	)
 }

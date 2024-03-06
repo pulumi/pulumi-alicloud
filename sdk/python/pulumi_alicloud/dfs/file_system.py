@@ -19,29 +19,43 @@ class FileSystemArgs:
                  space_capacity: pulumi.Input[int],
                  storage_type: pulumi.Input[str],
                  zone_id: pulumi.Input[str],
+                 data_redundancy_type: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 partition_number: Optional[pulumi.Input[int]] = None,
                  provisioned_throughput_in_mi_bps: Optional[pulumi.Input[int]] = None,
+                 storage_set_name: Optional[pulumi.Input[str]] = None,
                  throughput_mode: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a FileSystem resource.
-        :param pulumi.Input[str] file_system_name: The name of the File system.
-        :param pulumi.Input[str] protocol_type: The protocol type. Valid values: `HDFS`.
-        :param pulumi.Input[int] space_capacity: The capacity budget of the File system. **NOTE:** When the actual data storage reaches the file system capacity budget, the data cannot be written. The file system capacity budget does not support shrinking.
-        :param pulumi.Input[str] storage_type: The storage specifications of the File system. Valid values: `PERFORMANCE`, `STANDARD`.
-        :param pulumi.Input[str] zone_id: The zone ID of the File system.
-        :param pulumi.Input[str] description: The description of the File system.
-        :param pulumi.Input[int] provisioned_throughput_in_mi_bps: The preset throughput of the File system. Valid values: `1` to `1024`, Unit: MB/s. **NOTE:** Only when `throughput_mode` is `Provisioned`, this param is valid.
-        :param pulumi.Input[str] throughput_mode: The throughput mode of the File system. Valid values: `Provisioned`, `Standard`.
+        :param pulumi.Input[str] file_system_name: The file system name. The naming rules are as follows: The length is 6~64 characters. Globally unique and cannot be an empty string. English letters are supported and can contain numbers, underscores (_), and dashes (-).
+        :param pulumi.Input[str] protocol_type: The protocol type.  Only HDFS(Hadoop Distributed File System) is supported.
+        :param pulumi.Input[int] space_capacity: File system capacity.  When the actual amount of data stored reaches the capacity of the file system, data cannot be written.  Unit: GiB.
+        :param pulumi.Input[str] storage_type: The storage media type. Value: STANDARD (default): STANDARD PERFORMANCE: PERFORMANCE type.
+        :param pulumi.Input[str] zone_id: Zone Id, which is used to create file system resources to the specified zone.
+        :param pulumi.Input[str] data_redundancy_type: Redundancy mode of the file system. Value:
+               - LRS (default): Local redundancy.
+               - ZRS: Same-City redundancy. When ZRS is selected, zoneId is a string consisting of multiple zones that are expected to be redundant in the same city, for example,  'zoneId1,zoneId2 '.
+        :param pulumi.Input[str] description: The description of the file system resource. No more than 32 characters in length.
+        :param pulumi.Input[int] partition_number: Save set sequence number, the user selects the content of the specified sequence number in the Save set.
+        :param pulumi.Input[int] provisioned_throughput_in_mi_bps: Provisioned throughput. This parameter is required when ThroughputMode is set to Provisioned. Unit: MB/s Value range: 1~5120.
+        :param pulumi.Input[str] storage_set_name: Save set identity, used to select a user-specified save set.
+        :param pulumi.Input[str] throughput_mode: The throughput mode. Value: Standard (default): Standard throughput Provisioned: preset throughput.
         """
         pulumi.set(__self__, "file_system_name", file_system_name)
         pulumi.set(__self__, "protocol_type", protocol_type)
         pulumi.set(__self__, "space_capacity", space_capacity)
         pulumi.set(__self__, "storage_type", storage_type)
         pulumi.set(__self__, "zone_id", zone_id)
+        if data_redundancy_type is not None:
+            pulumi.set(__self__, "data_redundancy_type", data_redundancy_type)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if partition_number is not None:
+            pulumi.set(__self__, "partition_number", partition_number)
         if provisioned_throughput_in_mi_bps is not None:
             pulumi.set(__self__, "provisioned_throughput_in_mi_bps", provisioned_throughput_in_mi_bps)
+        if storage_set_name is not None:
+            pulumi.set(__self__, "storage_set_name", storage_set_name)
         if throughput_mode is not None:
             pulumi.set(__self__, "throughput_mode", throughput_mode)
 
@@ -49,7 +63,7 @@ class FileSystemArgs:
     @pulumi.getter(name="fileSystemName")
     def file_system_name(self) -> pulumi.Input[str]:
         """
-        The name of the File system.
+        The file system name. The naming rules are as follows: The length is 6~64 characters. Globally unique and cannot be an empty string. English letters are supported and can contain numbers, underscores (_), and dashes (-).
         """
         return pulumi.get(self, "file_system_name")
 
@@ -61,7 +75,7 @@ class FileSystemArgs:
     @pulumi.getter(name="protocolType")
     def protocol_type(self) -> pulumi.Input[str]:
         """
-        The protocol type. Valid values: `HDFS`.
+        The protocol type.  Only HDFS(Hadoop Distributed File System) is supported.
         """
         return pulumi.get(self, "protocol_type")
 
@@ -73,7 +87,7 @@ class FileSystemArgs:
     @pulumi.getter(name="spaceCapacity")
     def space_capacity(self) -> pulumi.Input[int]:
         """
-        The capacity budget of the File system. **NOTE:** When the actual data storage reaches the file system capacity budget, the data cannot be written. The file system capacity budget does not support shrinking.
+        File system capacity.  When the actual amount of data stored reaches the capacity of the file system, data cannot be written.  Unit: GiB.
         """
         return pulumi.get(self, "space_capacity")
 
@@ -85,7 +99,7 @@ class FileSystemArgs:
     @pulumi.getter(name="storageType")
     def storage_type(self) -> pulumi.Input[str]:
         """
-        The storage specifications of the File system. Valid values: `PERFORMANCE`, `STANDARD`.
+        The storage media type. Value: STANDARD (default): STANDARD PERFORMANCE: PERFORMANCE type.
         """
         return pulumi.get(self, "storage_type")
 
@@ -97,7 +111,7 @@ class FileSystemArgs:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Input[str]:
         """
-        The zone ID of the File system.
+        Zone Id, which is used to create file system resources to the specified zone.
         """
         return pulumi.get(self, "zone_id")
 
@@ -106,10 +120,24 @@ class FileSystemArgs:
         pulumi.set(self, "zone_id", value)
 
     @property
+    @pulumi.getter(name="dataRedundancyType")
+    def data_redundancy_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Redundancy mode of the file system. Value:
+        - LRS (default): Local redundancy.
+        - ZRS: Same-City redundancy. When ZRS is selected, zoneId is a string consisting of multiple zones that are expected to be redundant in the same city, for example,  'zoneId1,zoneId2 '.
+        """
+        return pulumi.get(self, "data_redundancy_type")
+
+    @data_redundancy_type.setter
+    def data_redundancy_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "data_redundancy_type", value)
+
+    @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        The description of the File system.
+        The description of the file system resource. No more than 32 characters in length.
         """
         return pulumi.get(self, "description")
 
@@ -118,10 +146,22 @@ class FileSystemArgs:
         pulumi.set(self, "description", value)
 
     @property
+    @pulumi.getter(name="partitionNumber")
+    def partition_number(self) -> Optional[pulumi.Input[int]]:
+        """
+        Save set sequence number, the user selects the content of the specified sequence number in the Save set.
+        """
+        return pulumi.get(self, "partition_number")
+
+    @partition_number.setter
+    def partition_number(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "partition_number", value)
+
+    @property
     @pulumi.getter(name="provisionedThroughputInMiBps")
     def provisioned_throughput_in_mi_bps(self) -> Optional[pulumi.Input[int]]:
         """
-        The preset throughput of the File system. Valid values: `1` to `1024`, Unit: MB/s. **NOTE:** Only when `throughput_mode` is `Provisioned`, this param is valid.
+        Provisioned throughput. This parameter is required when ThroughputMode is set to Provisioned. Unit: MB/s Value range: 1~5120.
         """
         return pulumi.get(self, "provisioned_throughput_in_mi_bps")
 
@@ -130,10 +170,22 @@ class FileSystemArgs:
         pulumi.set(self, "provisioned_throughput_in_mi_bps", value)
 
     @property
+    @pulumi.getter(name="storageSetName")
+    def storage_set_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Save set identity, used to select a user-specified save set.
+        """
+        return pulumi.get(self, "storage_set_name")
+
+    @storage_set_name.setter
+    def storage_set_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "storage_set_name", value)
+
+    @property
     @pulumi.getter(name="throughputMode")
     def throughput_mode(self) -> Optional[pulumi.Input[str]]:
         """
-        The throughput mode of the File system. Valid values: `Provisioned`, `Standard`.
+        The throughput mode. Value: Standard (default): Standard throughput Provisioned: preset throughput.
         """
         return pulumi.get(self, "throughput_mode")
 
@@ -145,35 +197,53 @@ class FileSystemArgs:
 @pulumi.input_type
 class _FileSystemState:
     def __init__(__self__, *,
+                 create_time: Optional[pulumi.Input[str]] = None,
+                 data_redundancy_type: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  file_system_name: Optional[pulumi.Input[str]] = None,
+                 partition_number: Optional[pulumi.Input[int]] = None,
                  protocol_type: Optional[pulumi.Input[str]] = None,
                  provisioned_throughput_in_mi_bps: Optional[pulumi.Input[int]] = None,
                  space_capacity: Optional[pulumi.Input[int]] = None,
+                 storage_set_name: Optional[pulumi.Input[str]] = None,
                  storage_type: Optional[pulumi.Input[str]] = None,
                  throughput_mode: Optional[pulumi.Input[str]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering FileSystem resources.
-        :param pulumi.Input[str] description: The description of the File system.
-        :param pulumi.Input[str] file_system_name: The name of the File system.
-        :param pulumi.Input[str] protocol_type: The protocol type. Valid values: `HDFS`.
-        :param pulumi.Input[int] provisioned_throughput_in_mi_bps: The preset throughput of the File system. Valid values: `1` to `1024`, Unit: MB/s. **NOTE:** Only when `throughput_mode` is `Provisioned`, this param is valid.
-        :param pulumi.Input[int] space_capacity: The capacity budget of the File system. **NOTE:** When the actual data storage reaches the file system capacity budget, the data cannot be written. The file system capacity budget does not support shrinking.
-        :param pulumi.Input[str] storage_type: The storage specifications of the File system. Valid values: `PERFORMANCE`, `STANDARD`.
-        :param pulumi.Input[str] throughput_mode: The throughput mode of the File system. Valid values: `Provisioned`, `Standard`.
-        :param pulumi.Input[str] zone_id: The zone ID of the File system.
+        :param pulumi.Input[str] create_time: The creation time of the file system instance.
+        :param pulumi.Input[str] data_redundancy_type: Redundancy mode of the file system. Value:
+               - LRS (default): Local redundancy.
+               - ZRS: Same-City redundancy. When ZRS is selected, zoneId is a string consisting of multiple zones that are expected to be redundant in the same city, for example,  'zoneId1,zoneId2 '.
+        :param pulumi.Input[str] description: The description of the file system resource. No more than 32 characters in length.
+        :param pulumi.Input[str] file_system_name: The file system name. The naming rules are as follows: The length is 6~64 characters. Globally unique and cannot be an empty string. English letters are supported and can contain numbers, underscores (_), and dashes (-).
+        :param pulumi.Input[int] partition_number: Save set sequence number, the user selects the content of the specified sequence number in the Save set.
+        :param pulumi.Input[str] protocol_type: The protocol type.  Only HDFS(Hadoop Distributed File System) is supported.
+        :param pulumi.Input[int] provisioned_throughput_in_mi_bps: Provisioned throughput. This parameter is required when ThroughputMode is set to Provisioned. Unit: MB/s Value range: 1~5120.
+        :param pulumi.Input[int] space_capacity: File system capacity.  When the actual amount of data stored reaches the capacity of the file system, data cannot be written.  Unit: GiB.
+        :param pulumi.Input[str] storage_set_name: Save set identity, used to select a user-specified save set.
+        :param pulumi.Input[str] storage_type: The storage media type. Value: STANDARD (default): STANDARD PERFORMANCE: PERFORMANCE type.
+        :param pulumi.Input[str] throughput_mode: The throughput mode. Value: Standard (default): Standard throughput Provisioned: preset throughput.
+        :param pulumi.Input[str] zone_id: Zone Id, which is used to create file system resources to the specified zone.
         """
+        if create_time is not None:
+            pulumi.set(__self__, "create_time", create_time)
+        if data_redundancy_type is not None:
+            pulumi.set(__self__, "data_redundancy_type", data_redundancy_type)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if file_system_name is not None:
             pulumi.set(__self__, "file_system_name", file_system_name)
+        if partition_number is not None:
+            pulumi.set(__self__, "partition_number", partition_number)
         if protocol_type is not None:
             pulumi.set(__self__, "protocol_type", protocol_type)
         if provisioned_throughput_in_mi_bps is not None:
             pulumi.set(__self__, "provisioned_throughput_in_mi_bps", provisioned_throughput_in_mi_bps)
         if space_capacity is not None:
             pulumi.set(__self__, "space_capacity", space_capacity)
+        if storage_set_name is not None:
+            pulumi.set(__self__, "storage_set_name", storage_set_name)
         if storage_type is not None:
             pulumi.set(__self__, "storage_type", storage_type)
         if throughput_mode is not None:
@@ -182,10 +252,36 @@ class _FileSystemState:
             pulumi.set(__self__, "zone_id", zone_id)
 
     @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        The creation time of the file system instance.
+        """
+        return pulumi.get(self, "create_time")
+
+    @create_time.setter
+    def create_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "create_time", value)
+
+    @property
+    @pulumi.getter(name="dataRedundancyType")
+    def data_redundancy_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Redundancy mode of the file system. Value:
+        - LRS (default): Local redundancy.
+        - ZRS: Same-City redundancy. When ZRS is selected, zoneId is a string consisting of multiple zones that are expected to be redundant in the same city, for example,  'zoneId1,zoneId2 '.
+        """
+        return pulumi.get(self, "data_redundancy_type")
+
+    @data_redundancy_type.setter
+    def data_redundancy_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "data_redundancy_type", value)
+
+    @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        The description of the File system.
+        The description of the file system resource. No more than 32 characters in length.
         """
         return pulumi.get(self, "description")
 
@@ -197,7 +293,7 @@ class _FileSystemState:
     @pulumi.getter(name="fileSystemName")
     def file_system_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the File system.
+        The file system name. The naming rules are as follows: The length is 6~64 characters. Globally unique and cannot be an empty string. English letters are supported and can contain numbers, underscores (_), and dashes (-).
         """
         return pulumi.get(self, "file_system_name")
 
@@ -206,10 +302,22 @@ class _FileSystemState:
         pulumi.set(self, "file_system_name", value)
 
     @property
+    @pulumi.getter(name="partitionNumber")
+    def partition_number(self) -> Optional[pulumi.Input[int]]:
+        """
+        Save set sequence number, the user selects the content of the specified sequence number in the Save set.
+        """
+        return pulumi.get(self, "partition_number")
+
+    @partition_number.setter
+    def partition_number(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "partition_number", value)
+
+    @property
     @pulumi.getter(name="protocolType")
     def protocol_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The protocol type. Valid values: `HDFS`.
+        The protocol type.  Only HDFS(Hadoop Distributed File System) is supported.
         """
         return pulumi.get(self, "protocol_type")
 
@@ -221,7 +329,7 @@ class _FileSystemState:
     @pulumi.getter(name="provisionedThroughputInMiBps")
     def provisioned_throughput_in_mi_bps(self) -> Optional[pulumi.Input[int]]:
         """
-        The preset throughput of the File system. Valid values: `1` to `1024`, Unit: MB/s. **NOTE:** Only when `throughput_mode` is `Provisioned`, this param is valid.
+        Provisioned throughput. This parameter is required when ThroughputMode is set to Provisioned. Unit: MB/s Value range: 1~5120.
         """
         return pulumi.get(self, "provisioned_throughput_in_mi_bps")
 
@@ -233,7 +341,7 @@ class _FileSystemState:
     @pulumi.getter(name="spaceCapacity")
     def space_capacity(self) -> Optional[pulumi.Input[int]]:
         """
-        The capacity budget of the File system. **NOTE:** When the actual data storage reaches the file system capacity budget, the data cannot be written. The file system capacity budget does not support shrinking.
+        File system capacity.  When the actual amount of data stored reaches the capacity of the file system, data cannot be written.  Unit: GiB.
         """
         return pulumi.get(self, "space_capacity")
 
@@ -242,10 +350,22 @@ class _FileSystemState:
         pulumi.set(self, "space_capacity", value)
 
     @property
+    @pulumi.getter(name="storageSetName")
+    def storage_set_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Save set identity, used to select a user-specified save set.
+        """
+        return pulumi.get(self, "storage_set_name")
+
+    @storage_set_name.setter
+    def storage_set_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "storage_set_name", value)
+
+    @property
     @pulumi.getter(name="storageType")
     def storage_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The storage specifications of the File system. Valid values: `PERFORMANCE`, `STANDARD`.
+        The storage media type. Value: STANDARD (default): STANDARD PERFORMANCE: PERFORMANCE type.
         """
         return pulumi.get(self, "storage_type")
 
@@ -257,7 +377,7 @@ class _FileSystemState:
     @pulumi.getter(name="throughputMode")
     def throughput_mode(self) -> Optional[pulumi.Input[str]]:
         """
-        The throughput mode of the File system. Valid values: `Provisioned`, `Standard`.
+        The throughput mode. Value: Standard (default): Standard throughput Provisioned: preset throughput.
         """
         return pulumi.get(self, "throughput_mode")
 
@@ -269,7 +389,7 @@ class _FileSystemState:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The zone ID of the File system.
+        Zone Id, which is used to create file system resources to the specified zone.
         """
         return pulumi.get(self, "zone_id")
 
@@ -283,11 +403,14 @@ class FileSystem(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 data_redundancy_type: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  file_system_name: Optional[pulumi.Input[str]] = None,
+                 partition_number: Optional[pulumi.Input[int]] = None,
                  protocol_type: Optional[pulumi.Input[str]] = None,
                  provisioned_throughput_in_mi_bps: Optional[pulumi.Input[int]] = None,
                  space_capacity: Optional[pulumi.Input[int]] = None,
+                 storage_set_name: Optional[pulumi.Input[str]] = None,
                  storage_type: Optional[pulumi.Input[str]] = None,
                  throughput_mode: Optional[pulumi.Input[str]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None,
@@ -295,7 +418,7 @@ class FileSystem(pulumi.CustomResource):
         """
         Provides a DFS File System resource.
 
-        For information about DFS File System and how to use it, see [What is File System](https://www.alibabacloud.com/help/doc-detail/207144.htm).
+        For information about DFS File System and how to use it, see [What is File System](https://www.alibabacloud.com/help/en/aibaba-cloud-storage-services/latest/apsara-file-storage-for-hdfs).
 
         > **NOTE:** Available since v1.140.0.
 
@@ -306,20 +429,27 @@ class FileSystem(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
-            name = "tf-example"
+            name = "terraform-example"
+        default_random_integer = random.RandomInteger("defaultRandomInteger",
+            min=10000,
+            max=99999)
         default_zones = alicloud.dfs.get_zones()
+        zone_id = default_zones.zones[0].zone_id
+        storage_type = default_zones.zones[0].options[0].storage_type
         default_file_system = alicloud.dfs.FileSystem("defaultFileSystem",
-            storage_type=default_zones.zones[0].options[0].storage_type,
-            zone_id=default_zones.zones[0].zone_id,
             protocol_type="HDFS",
             description=name,
-            file_system_name=name,
-            throughput_mode="Standard",
-            space_capacity=1024)
+            file_system_name=default_random_integer.result.apply(lambda result: f"{name}-{result}"),
+            space_capacity=1024,
+            throughput_mode="Provisioned",
+            provisioned_throughput_in_mi_bps=512,
+            storage_type=storage_type,
+            zone_id=zone_id)
         ```
 
         ## Import
@@ -332,14 +462,19 @@ class FileSystem(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] description: The description of the File system.
-        :param pulumi.Input[str] file_system_name: The name of the File system.
-        :param pulumi.Input[str] protocol_type: The protocol type. Valid values: `HDFS`.
-        :param pulumi.Input[int] provisioned_throughput_in_mi_bps: The preset throughput of the File system. Valid values: `1` to `1024`, Unit: MB/s. **NOTE:** Only when `throughput_mode` is `Provisioned`, this param is valid.
-        :param pulumi.Input[int] space_capacity: The capacity budget of the File system. **NOTE:** When the actual data storage reaches the file system capacity budget, the data cannot be written. The file system capacity budget does not support shrinking.
-        :param pulumi.Input[str] storage_type: The storage specifications of the File system. Valid values: `PERFORMANCE`, `STANDARD`.
-        :param pulumi.Input[str] throughput_mode: The throughput mode of the File system. Valid values: `Provisioned`, `Standard`.
-        :param pulumi.Input[str] zone_id: The zone ID of the File system.
+        :param pulumi.Input[str] data_redundancy_type: Redundancy mode of the file system. Value:
+               - LRS (default): Local redundancy.
+               - ZRS: Same-City redundancy. When ZRS is selected, zoneId is a string consisting of multiple zones that are expected to be redundant in the same city, for example,  'zoneId1,zoneId2 '.
+        :param pulumi.Input[str] description: The description of the file system resource. No more than 32 characters in length.
+        :param pulumi.Input[str] file_system_name: The file system name. The naming rules are as follows: The length is 6~64 characters. Globally unique and cannot be an empty string. English letters are supported and can contain numbers, underscores (_), and dashes (-).
+        :param pulumi.Input[int] partition_number: Save set sequence number, the user selects the content of the specified sequence number in the Save set.
+        :param pulumi.Input[str] protocol_type: The protocol type.  Only HDFS(Hadoop Distributed File System) is supported.
+        :param pulumi.Input[int] provisioned_throughput_in_mi_bps: Provisioned throughput. This parameter is required when ThroughputMode is set to Provisioned. Unit: MB/s Value range: 1~5120.
+        :param pulumi.Input[int] space_capacity: File system capacity.  When the actual amount of data stored reaches the capacity of the file system, data cannot be written.  Unit: GiB.
+        :param pulumi.Input[str] storage_set_name: Save set identity, used to select a user-specified save set.
+        :param pulumi.Input[str] storage_type: The storage media type. Value: STANDARD (default): STANDARD PERFORMANCE: PERFORMANCE type.
+        :param pulumi.Input[str] throughput_mode: The throughput mode. Value: Standard (default): Standard throughput Provisioned: preset throughput.
+        :param pulumi.Input[str] zone_id: Zone Id, which is used to create file system resources to the specified zone.
         """
         ...
     @overload
@@ -350,7 +485,7 @@ class FileSystem(pulumi.CustomResource):
         """
         Provides a DFS File System resource.
 
-        For information about DFS File System and how to use it, see [What is File System](https://www.alibabacloud.com/help/doc-detail/207144.htm).
+        For information about DFS File System and how to use it, see [What is File System](https://www.alibabacloud.com/help/en/aibaba-cloud-storage-services/latest/apsara-file-storage-for-hdfs).
 
         > **NOTE:** Available since v1.140.0.
 
@@ -361,20 +496,27 @@ class FileSystem(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
-            name = "tf-example"
+            name = "terraform-example"
+        default_random_integer = random.RandomInteger("defaultRandomInteger",
+            min=10000,
+            max=99999)
         default_zones = alicloud.dfs.get_zones()
+        zone_id = default_zones.zones[0].zone_id
+        storage_type = default_zones.zones[0].options[0].storage_type
         default_file_system = alicloud.dfs.FileSystem("defaultFileSystem",
-            storage_type=default_zones.zones[0].options[0].storage_type,
-            zone_id=default_zones.zones[0].zone_id,
             protocol_type="HDFS",
             description=name,
-            file_system_name=name,
-            throughput_mode="Standard",
-            space_capacity=1024)
+            file_system_name=default_random_integer.result.apply(lambda result: f"{name}-{result}"),
+            space_capacity=1024,
+            throughput_mode="Provisioned",
+            provisioned_throughput_in_mi_bps=512,
+            storage_type=storage_type,
+            zone_id=zone_id)
         ```
 
         ## Import
@@ -400,11 +542,14 @@ class FileSystem(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 data_redundancy_type: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  file_system_name: Optional[pulumi.Input[str]] = None,
+                 partition_number: Optional[pulumi.Input[int]] = None,
                  protocol_type: Optional[pulumi.Input[str]] = None,
                  provisioned_throughput_in_mi_bps: Optional[pulumi.Input[int]] = None,
                  space_capacity: Optional[pulumi.Input[int]] = None,
+                 storage_set_name: Optional[pulumi.Input[str]] = None,
                  storage_type: Optional[pulumi.Input[str]] = None,
                  throughput_mode: Optional[pulumi.Input[str]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None,
@@ -417,10 +562,12 @@ class FileSystem(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = FileSystemArgs.__new__(FileSystemArgs)
 
+            __props__.__dict__["data_redundancy_type"] = data_redundancy_type
             __props__.__dict__["description"] = description
             if file_system_name is None and not opts.urn:
                 raise TypeError("Missing required property 'file_system_name'")
             __props__.__dict__["file_system_name"] = file_system_name
+            __props__.__dict__["partition_number"] = partition_number
             if protocol_type is None and not opts.urn:
                 raise TypeError("Missing required property 'protocol_type'")
             __props__.__dict__["protocol_type"] = protocol_type
@@ -428,15 +575,15 @@ class FileSystem(pulumi.CustomResource):
             if space_capacity is None and not opts.urn:
                 raise TypeError("Missing required property 'space_capacity'")
             __props__.__dict__["space_capacity"] = space_capacity
+            __props__.__dict__["storage_set_name"] = storage_set_name
             if storage_type is None and not opts.urn:
                 raise TypeError("Missing required property 'storage_type'")
             __props__.__dict__["storage_type"] = storage_type
-            __props__.__dict__["throughput_mode"] = None if throughput_mode is None else pulumi.Output.secret(throughput_mode)
+            __props__.__dict__["throughput_mode"] = throughput_mode
             if zone_id is None and not opts.urn:
                 raise TypeError("Missing required property 'zone_id'")
             __props__.__dict__["zone_id"] = zone_id
-        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["throughputMode"])
-        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
+            __props__.__dict__["create_time"] = None
         super(FileSystem, __self__).__init__(
             'alicloud:dfs/fileSystem:FileSystem',
             resource_name,
@@ -447,11 +594,15 @@ class FileSystem(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            create_time: Optional[pulumi.Input[str]] = None,
+            data_redundancy_type: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             file_system_name: Optional[pulumi.Input[str]] = None,
+            partition_number: Optional[pulumi.Input[int]] = None,
             protocol_type: Optional[pulumi.Input[str]] = None,
             provisioned_throughput_in_mi_bps: Optional[pulumi.Input[int]] = None,
             space_capacity: Optional[pulumi.Input[int]] = None,
+            storage_set_name: Optional[pulumi.Input[str]] = None,
             storage_type: Optional[pulumi.Input[str]] = None,
             throughput_mode: Optional[pulumi.Input[str]] = None,
             zone_id: Optional[pulumi.Input[str]] = None) -> 'FileSystem':
@@ -462,34 +613,62 @@ class FileSystem(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] description: The description of the File system.
-        :param pulumi.Input[str] file_system_name: The name of the File system.
-        :param pulumi.Input[str] protocol_type: The protocol type. Valid values: `HDFS`.
-        :param pulumi.Input[int] provisioned_throughput_in_mi_bps: The preset throughput of the File system. Valid values: `1` to `1024`, Unit: MB/s. **NOTE:** Only when `throughput_mode` is `Provisioned`, this param is valid.
-        :param pulumi.Input[int] space_capacity: The capacity budget of the File system. **NOTE:** When the actual data storage reaches the file system capacity budget, the data cannot be written. The file system capacity budget does not support shrinking.
-        :param pulumi.Input[str] storage_type: The storage specifications of the File system. Valid values: `PERFORMANCE`, `STANDARD`.
-        :param pulumi.Input[str] throughput_mode: The throughput mode of the File system. Valid values: `Provisioned`, `Standard`.
-        :param pulumi.Input[str] zone_id: The zone ID of the File system.
+        :param pulumi.Input[str] create_time: The creation time of the file system instance.
+        :param pulumi.Input[str] data_redundancy_type: Redundancy mode of the file system. Value:
+               - LRS (default): Local redundancy.
+               - ZRS: Same-City redundancy. When ZRS is selected, zoneId is a string consisting of multiple zones that are expected to be redundant in the same city, for example,  'zoneId1,zoneId2 '.
+        :param pulumi.Input[str] description: The description of the file system resource. No more than 32 characters in length.
+        :param pulumi.Input[str] file_system_name: The file system name. The naming rules are as follows: The length is 6~64 characters. Globally unique and cannot be an empty string. English letters are supported and can contain numbers, underscores (_), and dashes (-).
+        :param pulumi.Input[int] partition_number: Save set sequence number, the user selects the content of the specified sequence number in the Save set.
+        :param pulumi.Input[str] protocol_type: The protocol type.  Only HDFS(Hadoop Distributed File System) is supported.
+        :param pulumi.Input[int] provisioned_throughput_in_mi_bps: Provisioned throughput. This parameter is required when ThroughputMode is set to Provisioned. Unit: MB/s Value range: 1~5120.
+        :param pulumi.Input[int] space_capacity: File system capacity.  When the actual amount of data stored reaches the capacity of the file system, data cannot be written.  Unit: GiB.
+        :param pulumi.Input[str] storage_set_name: Save set identity, used to select a user-specified save set.
+        :param pulumi.Input[str] storage_type: The storage media type. Value: STANDARD (default): STANDARD PERFORMANCE: PERFORMANCE type.
+        :param pulumi.Input[str] throughput_mode: The throughput mode. Value: Standard (default): Standard throughput Provisioned: preset throughput.
+        :param pulumi.Input[str] zone_id: Zone Id, which is used to create file system resources to the specified zone.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _FileSystemState.__new__(_FileSystemState)
 
+        __props__.__dict__["create_time"] = create_time
+        __props__.__dict__["data_redundancy_type"] = data_redundancy_type
         __props__.__dict__["description"] = description
         __props__.__dict__["file_system_name"] = file_system_name
+        __props__.__dict__["partition_number"] = partition_number
         __props__.__dict__["protocol_type"] = protocol_type
         __props__.__dict__["provisioned_throughput_in_mi_bps"] = provisioned_throughput_in_mi_bps
         __props__.__dict__["space_capacity"] = space_capacity
+        __props__.__dict__["storage_set_name"] = storage_set_name
         __props__.__dict__["storage_type"] = storage_type
         __props__.__dict__["throughput_mode"] = throughput_mode
         __props__.__dict__["zone_id"] = zone_id
         return FileSystem(resource_name, opts=opts, __props__=__props__)
 
     @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> pulumi.Output[str]:
+        """
+        The creation time of the file system instance.
+        """
+        return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter(name="dataRedundancyType")
+    def data_redundancy_type(self) -> pulumi.Output[Optional[str]]:
+        """
+        Redundancy mode of the file system. Value:
+        - LRS (default): Local redundancy.
+        - ZRS: Same-City redundancy. When ZRS is selected, zoneId is a string consisting of multiple zones that are expected to be redundant in the same city, for example,  'zoneId1,zoneId2 '.
+        """
+        return pulumi.get(self, "data_redundancy_type")
+
+    @property
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[str]]:
         """
-        The description of the File system.
+        The description of the file system resource. No more than 32 characters in length.
         """
         return pulumi.get(self, "description")
 
@@ -497,15 +676,23 @@ class FileSystem(pulumi.CustomResource):
     @pulumi.getter(name="fileSystemName")
     def file_system_name(self) -> pulumi.Output[str]:
         """
-        The name of the File system.
+        The file system name. The naming rules are as follows: The length is 6~64 characters. Globally unique and cannot be an empty string. English letters are supported and can contain numbers, underscores (_), and dashes (-).
         """
         return pulumi.get(self, "file_system_name")
+
+    @property
+    @pulumi.getter(name="partitionNumber")
+    def partition_number(self) -> pulumi.Output[Optional[int]]:
+        """
+        Save set sequence number, the user selects the content of the specified sequence number in the Save set.
+        """
+        return pulumi.get(self, "partition_number")
 
     @property
     @pulumi.getter(name="protocolType")
     def protocol_type(self) -> pulumi.Output[str]:
         """
-        The protocol type. Valid values: `HDFS`.
+        The protocol type.  Only HDFS(Hadoop Distributed File System) is supported.
         """
         return pulumi.get(self, "protocol_type")
 
@@ -513,7 +700,7 @@ class FileSystem(pulumi.CustomResource):
     @pulumi.getter(name="provisionedThroughputInMiBps")
     def provisioned_throughput_in_mi_bps(self) -> pulumi.Output[Optional[int]]:
         """
-        The preset throughput of the File system. Valid values: `1` to `1024`, Unit: MB/s. **NOTE:** Only when `throughput_mode` is `Provisioned`, this param is valid.
+        Provisioned throughput. This parameter is required when ThroughputMode is set to Provisioned. Unit: MB/s Value range: 1~5120.
         """
         return pulumi.get(self, "provisioned_throughput_in_mi_bps")
 
@@ -521,23 +708,31 @@ class FileSystem(pulumi.CustomResource):
     @pulumi.getter(name="spaceCapacity")
     def space_capacity(self) -> pulumi.Output[int]:
         """
-        The capacity budget of the File system. **NOTE:** When the actual data storage reaches the file system capacity budget, the data cannot be written. The file system capacity budget does not support shrinking.
+        File system capacity.  When the actual amount of data stored reaches the capacity of the file system, data cannot be written.  Unit: GiB.
         """
         return pulumi.get(self, "space_capacity")
+
+    @property
+    @pulumi.getter(name="storageSetName")
+    def storage_set_name(self) -> pulumi.Output[Optional[str]]:
+        """
+        Save set identity, used to select a user-specified save set.
+        """
+        return pulumi.get(self, "storage_set_name")
 
     @property
     @pulumi.getter(name="storageType")
     def storage_type(self) -> pulumi.Output[str]:
         """
-        The storage specifications of the File system. Valid values: `PERFORMANCE`, `STANDARD`.
+        The storage media type. Value: STANDARD (default): STANDARD PERFORMANCE: PERFORMANCE type.
         """
         return pulumi.get(self, "storage_type")
 
     @property
     @pulumi.getter(name="throughputMode")
-    def throughput_mode(self) -> pulumi.Output[Optional[str]]:
+    def throughput_mode(self) -> pulumi.Output[str]:
         """
-        The throughput mode of the File system. Valid values: `Provisioned`, `Standard`.
+        The throughput mode. Value: Standard (default): Standard throughput Provisioned: preset throughput.
         """
         return pulumi.get(self, "throughput_mode")
 
@@ -545,7 +740,7 @@ class FileSystem(pulumi.CustomResource):
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Output[str]:
         """
-        The zone ID of the File system.
+        Zone Id, which is used to create file system resources to the specified zone.
         """
         return pulumi.get(self, "zone_id")
 

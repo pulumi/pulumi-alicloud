@@ -33,6 +33,11 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.AlicloudFunctions;
+ * import com.pulumi.alicloud.inputs.GetZonesArgs;
+ * import com.pulumi.alicloud.vpc.VpcFunctions;
+ * import com.pulumi.alicloud.vpc.inputs.GetNetworksArgs;
+ * import com.pulumi.alicloud.vpc.inputs.GetSwitchesArgs;
  * import com.pulumi.alicloud.drds.Instance;
  * import com.pulumi.alicloud.drds.InstanceArgs;
  * import java.util.List;
@@ -48,13 +53,27 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Instance(&#34;default&#34;, InstanceArgs.builder()        
+ *         final var config = ctx.config();
+ *         final var defaultZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
+ *             .availableResourceCreation(&#34;VSwitch&#34;)
+ *             .build());
+ * 
+ *         final var instanceSeries = config.get(&#34;instanceSeries&#34;).orElse(&#34;drds.sn1.4c8g&#34;);
+ *         final var defaultNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
+ *             .nameRegex(&#34;default-NODELETING&#34;)
+ *             .build());
+ * 
+ *         final var defaultSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
+ *             .vpcId(defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
+ *             .build());
+ * 
+ *         var defaultInstance = new Instance(&#34;defaultInstance&#34;, InstanceArgs.builder()        
  *             .description(&#34;drds instance&#34;)
  *             .instanceChargeType(&#34;PostPaid&#34;)
- *             .instanceSeries(&#34;drds.sn1.4c8g&#34;)
+ *             .zoneId(defaultSwitches.applyValue(getSwitchesResult -&gt; getSwitchesResult.vswitches()[0].zoneId()))
+ *             .vswitchId(defaultSwitches.applyValue(getSwitchesResult -&gt; getSwitchesResult.vswitches()[0].id()))
+ *             .instanceSeries(instanceSeries)
  *             .specification(&#34;drds.sn1.4c8g.8C16G&#34;)
- *             .vswitchId(&#34;vsw-bp1jlu3swk8rq2yoi40ey&#34;)
- *             .zoneId(&#34;cn-hangzhou-e&#34;)
  *             .build());
  * 
  *     }

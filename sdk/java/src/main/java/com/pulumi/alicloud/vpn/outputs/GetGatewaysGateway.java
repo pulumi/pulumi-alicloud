@@ -34,6 +34,11 @@ public final class GetGatewaysGateway {
      */
     private String description;
     /**
+     * @return The backup public IP address of the VPN gateway. The second IP address assigned by the system to create an IPsec-VPN connection. This parameter is returned only when the VPN gateway supports the dual-tunnel mode.
+     * 
+     */
+    private String disasterRecoveryInternetIp;
+    /**
      * @return - The ID of the backup VSwitch to which the VPN gateway is attached.
      * 
      */
@@ -152,6 +157,13 @@ public final class GetGatewaysGateway {
      */
     public String description() {
         return this.description;
+    }
+    /**
+     * @return The backup public IP address of the VPN gateway. The second IP address assigned by the system to create an IPsec-VPN connection. This parameter is returned only when the VPN gateway supports the dual-tunnel mode.
+     * 
+     */
+    public String disasterRecoveryInternetIp() {
+        return this.disasterRecoveryInternetIp;
     }
     /**
      * @return - The ID of the backup VSwitch to which the VPN gateway is attached.
@@ -293,6 +305,7 @@ public final class GetGatewaysGateway {
         private String businessStatus;
         private String createTime;
         private String description;
+        private String disasterRecoveryInternetIp;
         private String disasterRecoveryVswitchId;
         private String enableIpsec;
         private String enableSsl;
@@ -318,6 +331,7 @@ public final class GetGatewaysGateway {
     	      this.businessStatus = defaults.businessStatus;
     	      this.createTime = defaults.createTime;
     	      this.description = defaults.description;
+    	      this.disasterRecoveryInternetIp = defaults.disasterRecoveryInternetIp;
     	      this.disasterRecoveryVswitchId = defaults.disasterRecoveryVswitchId;
     	      this.enableIpsec = defaults.enableIpsec;
     	      this.enableSsl = defaults.enableSsl;
@@ -368,6 +382,14 @@ public final class GetGatewaysGateway {
               throw new MissingRequiredPropertyException("GetGatewaysGateway", "description");
             }
             this.description = description;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder disasterRecoveryInternetIp(String disasterRecoveryInternetIp) {
+            if (disasterRecoveryInternetIp == null) {
+              throw new MissingRequiredPropertyException("GetGatewaysGateway", "disasterRecoveryInternetIp");
+            }
+            this.disasterRecoveryInternetIp = disasterRecoveryInternetIp;
             return this;
         }
         @CustomType.Setter
@@ -520,6 +542,7 @@ public final class GetGatewaysGateway {
             _resultValue.businessStatus = businessStatus;
             _resultValue.createTime = createTime;
             _resultValue.description = description;
+            _resultValue.disasterRecoveryInternetIp = disasterRecoveryInternetIp;
             _resultValue.disasterRecoveryVswitchId = disasterRecoveryVswitchId;
             _resultValue.enableIpsec = enableIpsec;
             _resultValue.enableSsl = enableSsl;

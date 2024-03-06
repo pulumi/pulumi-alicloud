@@ -16,14 +16,14 @@ public final class AccessGroupState extends com.pulumi.resources.ResourceArgs {
     public static final AccessGroupState Empty = new AccessGroupState();
 
     /**
-     * The Name of Access Group.The length of `access_group_name` does not exceed 100 bytes.
+     * The permission group name. The naming rules are as follows: The length is 6~64 characters. Globally unique and cannot be an empty string. English letters are supported and can contain numbers, underscores (_), and dashes (-).
      * 
      */
     @Import(name="accessGroupName")
     private @Nullable Output<String> accessGroupName;
 
     /**
-     * @return The Name of Access Group.The length of `access_group_name` does not exceed 100 bytes.
+     * @return The permission group name. The naming rules are as follows: The length is 6~64 characters. Globally unique and cannot be an empty string. English letters are supported and can contain numbers, underscores (_), and dashes (-).
      * 
      */
     public Optional<Output<String>> accessGroupName() {
@@ -31,14 +31,29 @@ public final class AccessGroupState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The Description of Access Group. The length of `description` does not exceed 100 bytes.
+     * The creation time of the permission group resource.
+     * 
+     */
+    @Import(name="createTime")
+    private @Nullable Output<String> createTime;
+
+    /**
+     * @return The creation time of the permission group resource.
+     * 
+     */
+    public Optional<Output<String>> createTime() {
+        return Optional.ofNullable(this.createTime);
+    }
+
+    /**
+     * The permission group description.  No more than 32 characters in length.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return The Description of Access Group. The length of `description` does not exceed 100 bytes.
+     * @return The permission group description.  No more than 32 characters in length.
      * 
      */
     public Optional<Output<String>> description() {
@@ -46,14 +61,14 @@ public final class AccessGroupState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The NetworkType of Access Group. Valid values: `VPC`.
+     * The permission group type. Only VPC (VPC) is supported.
      * 
      */
     @Import(name="networkType")
     private @Nullable Output<String> networkType;
 
     /**
-     * @return The NetworkType of Access Group. Valid values: `VPC`.
+     * @return The permission group type. Only VPC (VPC) is supported.
      * 
      */
     public Optional<Output<String>> networkType() {
@@ -64,6 +79,7 @@ public final class AccessGroupState extends com.pulumi.resources.ResourceArgs {
 
     private AccessGroupState(AccessGroupState $) {
         this.accessGroupName = $.accessGroupName;
+        this.createTime = $.createTime;
         this.description = $.description;
         this.networkType = $.networkType;
     }
@@ -87,7 +103,7 @@ public final class AccessGroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accessGroupName The Name of Access Group.The length of `access_group_name` does not exceed 100 bytes.
+         * @param accessGroupName The permission group name. The naming rules are as follows: The length is 6~64 characters. Globally unique and cannot be an empty string. English letters are supported and can contain numbers, underscores (_), and dashes (-).
          * 
          * @return builder
          * 
@@ -98,7 +114,7 @@ public final class AccessGroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accessGroupName The Name of Access Group.The length of `access_group_name` does not exceed 100 bytes.
+         * @param accessGroupName The permission group name. The naming rules are as follows: The length is 6~64 characters. Globally unique and cannot be an empty string. English letters are supported and can contain numbers, underscores (_), and dashes (-).
          * 
          * @return builder
          * 
@@ -108,7 +124,28 @@ public final class AccessGroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description The Description of Access Group. The length of `description` does not exceed 100 bytes.
+         * @param createTime The creation time of the permission group resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createTime(@Nullable Output<String> createTime) {
+            $.createTime = createTime;
+            return this;
+        }
+
+        /**
+         * @param createTime The creation time of the permission group resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createTime(String createTime) {
+            return createTime(Output.of(createTime));
+        }
+
+        /**
+         * @param description The permission group description.  No more than 32 characters in length.
          * 
          * @return builder
          * 
@@ -119,7 +156,7 @@ public final class AccessGroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description The Description of Access Group. The length of `description` does not exceed 100 bytes.
+         * @param description The permission group description.  No more than 32 characters in length.
          * 
          * @return builder
          * 
@@ -129,7 +166,7 @@ public final class AccessGroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param networkType The NetworkType of Access Group. Valid values: `VPC`.
+         * @param networkType The permission group type. Only VPC (VPC) is supported.
          * 
          * @return builder
          * 
@@ -140,7 +177,7 @@ public final class AccessGroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param networkType The NetworkType of Access Group. Valid values: `VPC`.
+         * @param networkType The permission group type. Only VPC (VPC) is supported.
          * 
          * @return builder
          * 

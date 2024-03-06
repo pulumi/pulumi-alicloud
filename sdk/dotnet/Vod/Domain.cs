@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Vod
     /// 
     /// For information about VOD Domain and how to use it, see [What is Domain](https://www.alibabacloud.com/help/product/29932.html).
     /// 
-    /// &gt; **NOTE:** Available in v1.136.0+.
+    /// &gt; **NOTE:** Available since v1.136.0+.
     /// 
     /// ## Example Usage
     /// 
@@ -25,26 +25,33 @@ namespace Pulumi.AliCloud.Vod
     /// using System.Linq;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
+    /// using Random = Pulumi.Random;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var @default = new AliCloud.Vod.Domain("default", new()
+    ///     var defaultRandomInteger = new Random.RandomInteger("defaultRandomInteger", new()
     ///     {
-    ///         DomainName = "your_domain_name",
+    ///         Max = 99999,
+    ///         Min = 10000,
+    ///     });
+    /// 
+    ///     var defaultDomain = new AliCloud.Vod.Domain("defaultDomain", new()
+    ///     {
+    ///         DomainName = defaultRandomInteger.Result.Apply(result =&gt; $"example-{result}.com"),
     ///         Scope = "domestic",
     ///         Sources = new[]
     ///         {
     ///             new AliCloud.Vod.Inputs.DomainSourceArgs
     ///             {
-    ///                 SourceContent = "your_source_content",
-    ///                 SourcePort = "80",
+    ///                 SourceContent = "outin-c7405446108111ec9a7100163e0eb78b.oss-cn-beijing.aliyuncs.com",
+    ///                 SourcePort = "443",
     ///                 SourceType = "domain",
     ///             },
     ///         },
     ///         Tags = 
     ///         {
-    ///             { "key1", "value1" },
-    ///             { "key2", "value2" },
+    ///             { "Created", "terraform" },
+    ///             { "For", "example" },
     ///         },
     ///     });
     /// 

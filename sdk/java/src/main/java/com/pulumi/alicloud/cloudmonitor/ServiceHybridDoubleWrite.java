@@ -29,6 +29,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.AlicloudFunctions;
  * import com.pulumi.alicloud.cms.Namespace;
  * import com.pulumi.alicloud.cms.NamespaceArgs;
  * import com.pulumi.alicloud.cloudmonitor.ServiceHybridDoubleWrite;
@@ -46,19 +47,23 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
+ *         final var defaultAccount = AlicloudFunctions.getAccount();
+ * 
  *         var source = new Namespace(&#34;source&#34;, NamespaceArgs.builder()        
- *             .namespace(&#34;your_source_namespace&#34;)
+ *             .namespace(name)
  *             .build());
  * 
  *         var defaultNamespace = new Namespace(&#34;defaultNamespace&#34;, NamespaceArgs.builder()        
- *             .namespace(&#34;your_namespace&#34;)
+ *             .namespace(String.format(&#34;%s-source&#34;, name))
  *             .build());
  * 
  *         var defaultServiceHybridDoubleWrite = new ServiceHybridDoubleWrite(&#34;defaultServiceHybridDoubleWrite&#34;, ServiceHybridDoubleWriteArgs.builder()        
  *             .sourceNamespace(source.id())
- *             .sourceUserId(&#34;your_source_account&#34;)
+ *             .sourceUserId(defaultAccount.applyValue(getAccountResult -&gt; getAccountResult.id()))
  *             .namespace(defaultNamespace.id())
- *             .userId(&#34;your_account&#34;)
+ *             .userId(defaultAccount.applyValue(getAccountResult -&gt; getAccountResult.id()))
  *             .build());
  * 
  *     }

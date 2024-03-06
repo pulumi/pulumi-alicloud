@@ -11,38 +11,38 @@ import java.util.Objects;
 @CustomType
 public final class GetRulesRuleRuleActionInsertHeaderConfig {
     /**
-     * @return The key of the header field. The key must be 1 to 40 characters in length, and can contain letters, digits, hyphens (-) and underscores (_). The key does not support Cookie or Host.
+     * @return The key of the query string.
      * 
      */
     private String key;
     /**
-     * @return The value must be 1 to 128 characters in length, and can contain lowercase letters, printable characters, asterisks (*), and question marks (?). The value cannot contain spaces or the following special characters: # [ ] { } \ | &lt; &gt; &amp;.
+     * @return The value of the query string.
      * 
      */
     private String value;
     /**
-     * @return Valid values:  UserDefined: a custom value ReferenceHeader: uses a field of the user request header. SystemDefined: a system value.
+     * @return The value type of the inserted header field.
      * 
      */
     private String valueType;
 
     private GetRulesRuleRuleActionInsertHeaderConfig() {}
     /**
-     * @return The key of the header field. The key must be 1 to 40 characters in length, and can contain letters, digits, hyphens (-) and underscores (_). The key does not support Cookie or Host.
+     * @return The key of the query string.
      * 
      */
     public String key() {
         return this.key;
     }
     /**
-     * @return The value must be 1 to 128 characters in length, and can contain lowercase letters, printable characters, asterisks (*), and question marks (?). The value cannot contain spaces or the following special characters: # [ ] { } \ | &lt; &gt; &amp;.
+     * @return The value of the query string.
      * 
      */
     public String value() {
         return this.value;
     }
     /**
-     * @return Valid values:  UserDefined: a custom value ReferenceHeader: uses a field of the user request header. SystemDefined: a system value.
+     * @return The value type of the inserted header field.
      * 
      */
     public String valueType() {

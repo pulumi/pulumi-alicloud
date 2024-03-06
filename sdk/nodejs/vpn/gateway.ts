@@ -66,6 +66,10 @@ export class Gateway extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
+     * The backup public IP address of the VPN gateway. The second IP address assigned by the system to create an IPsec-VPN connection. This parameter is returned only when the VPN gateway supports the dual-tunnel mode.
+     */
+    public /*out*/ readonly disasterRecoveryInternetIp!: pulumi.Output<string>;
+    /**
      * The ID of the backup VSwitch to which the VPN gateway is attached.
      */
     public readonly disasterRecoveryVswitchId!: pulumi.Output<string>;
@@ -163,6 +167,7 @@ export class Gateway extends pulumi.CustomResource {
             resourceInputs["businessStatus"] = state ? state.businessStatus : undefined;
             resourceInputs["createTime"] = state ? state.createTime : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["disasterRecoveryInternetIp"] = state ? state.disasterRecoveryInternetIp : undefined;
             resourceInputs["disasterRecoveryVswitchId"] = state ? state.disasterRecoveryVswitchId : undefined;
             resourceInputs["enableIpsec"] = state ? state.enableIpsec : undefined;
             resourceInputs["enableSsl"] = state ? state.enableSsl : undefined;
@@ -210,6 +215,7 @@ export class Gateway extends pulumi.CustomResource {
             resourceInputs["vswitchId"] = args ? args.vswitchId : undefined;
             resourceInputs["businessStatus"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["disasterRecoveryInternetIp"] = undefined /*out*/;
             resourceInputs["internetIp"] = undefined /*out*/;
             resourceInputs["sslVpnInternetIp"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
@@ -247,6 +253,10 @@ export interface GatewayState {
      * The description of the VPN gateway.
      */
     description?: pulumi.Input<string>;
+    /**
+     * The backup public IP address of the VPN gateway. The second IP address assigned by the system to create an IPsec-VPN connection. This parameter is returned only when the VPN gateway supports the dual-tunnel mode.
+     */
+    disasterRecoveryInternetIp?: pulumi.Input<string>;
     /**
      * The ID of the backup VSwitch to which the VPN gateway is attached.
      */

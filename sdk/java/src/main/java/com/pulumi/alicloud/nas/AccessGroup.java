@@ -15,12 +15,12 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a NAS Access Group resource.
+ * Provides a NAS Access Group resource. File system Access Group.
  * 
  * In NAS, the permission group acts as a whitelist that allows you to restrict file system access. You can allow specified IP addresses or CIDR blocks to access the file system, and assign different levels of access permission to different IP addresses or CIDR blocks by adding rules to the permission group.
  * For information about NAS Access Group and how to use it, see [What is NAS Access Group](https://www.alibabacloud.com/help/en/nas/developer-reference/api-nas-2017-06-26-createaccessgroup)
  * 
- * &gt; **NOTE:** Available in v1.33.0+.
+ * &gt; **NOTE:** Available since v1.33.0.
  * 
  * ## Example Usage
  * 
@@ -62,91 +62,119 @@ import javax.annotation.Nullable;
  * NAS Access Group can be imported using the id, e.g.
  * 
  * ```sh
- * $ pulumi import alicloud:nas/accessGroup:AccessGroup foo tf_testAccNasConfig:standard
+ * $ pulumi import alicloud:nas/accessGroup:AccessGroup example &lt;access_group_name&gt;:&lt;file_system_type&gt;
  * ```
  * 
  */
 @ResourceType(type="alicloud:nas/accessGroup:AccessGroup")
 public class AccessGroup extends com.pulumi.resources.CustomResource {
     /**
-     * A Name of one Access Group.
+     * The name of the permission group.
      * 
      */
     @Export(name="accessGroupName", refs={String.class}, tree="[0]")
     private Output<String> accessGroupName;
 
     /**
-     * @return A Name of one Access Group.
+     * @return The name of the permission group.
      * 
      */
     public Output<String> accessGroupName() {
         return this.accessGroupName;
     }
     /**
-     * A Type of one Access Group. Valid values: `Vpc` and `Classic`.
+     * Permission group types, including Vpc.
      * 
      */
     @Export(name="accessGroupType", refs={String.class}, tree="[0]")
     private Output<String> accessGroupType;
 
     /**
-     * @return A Type of one Access Group. Valid values: `Vpc` and `Classic`.
+     * @return Permission group types, including Vpc.
      * 
      */
     public Output<String> accessGroupType() {
         return this.accessGroupType;
     }
     /**
-     * The Access Group description.
+     * Creation time.
+     * 
+     */
+    @Export(name="createTime", refs={String.class}, tree="[0]")
+    private Output<String> createTime;
+
+    /**
+     * @return Creation time.
+     * 
+     */
+    public Output<String> createTime() {
+        return this.createTime;
+    }
+    /**
+     * Permission group description information.
      * 
      */
     @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
-     * @return The Access Group description.
+     * @return Permission group description information.
      * 
      */
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
     }
     /**
-     * The type of file system. Valid values: `standard` and `extreme`. Default to `standard`. Note that the extreme only support Vpc Network.
+     * File system type. Value:
+     * - standard (default): Universal NAS
+     * - extreme: extreme NAS
+     *   The following arguments will be discarded. Please use new fields as soon as possible:
      * 
      */
     @Export(name="fileSystemType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> fileSystemType;
 
     /**
-     * @return The type of file system. Valid values: `standard` and `extreme`. Default to `standard`. Note that the extreme only support Vpc Network.
+     * @return File system type. Value:
+     * - standard (default): Universal NAS
+     * - extreme: extreme NAS
+     *   The following arguments will be discarded. Please use new fields as soon as possible:
      * 
      */
     public Output<Optional<String>> fileSystemType() {
         return Codegen.optional(this.fileSystemType);
     }
     /**
-     * Replaced by `access_group_name` after version 1.92.0.
+     * . Field &#39;name&#39; has been deprecated from provider version 1.218.0. New field &#39;access_group_name&#39; instead.
+     * 
+     * @deprecated
+     * Field &#39;name&#39; has been deprecated since provider version 1.218.0. New field &#39;access_group_name&#39; instead.
      * 
      */
+    @Deprecated /* Field 'name' has been deprecated since provider version 1.218.0. New field 'access_group_name' instead. */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return Replaced by `access_group_name` after version 1.92.0.
+     * @return . Field &#39;name&#39; has been deprecated from provider version 1.218.0. New field &#39;access_group_name&#39; instead.
      * 
      */
     public Output<String> name() {
         return this.name;
     }
     /**
-     * Replaced by `access_group_type` after version 1.92.0.
+     * . Field &#39;type&#39; has been deprecated from provider version 1.218.0. New field &#39;access_group_type&#39; instead.
+     * 
+     * @deprecated
+     * Field &#39;type&#39; has been deprecated since provider version 1.218.0. New field &#39;access_group_type&#39; instead.
      * 
      */
+    @Deprecated /* Field 'type' has been deprecated since provider version 1.218.0. New field 'access_group_type' instead. */
     @Export(name="type", refs={String.class}, tree="[0]")
     private Output<String> type;
 
     /**
-     * @return Replaced by `access_group_type` after version 1.92.0.
+     * @return . Field &#39;type&#39; has been deprecated from provider version 1.218.0. New field &#39;access_group_type&#39; instead.
      * 
      */
     public Output<String> type() {

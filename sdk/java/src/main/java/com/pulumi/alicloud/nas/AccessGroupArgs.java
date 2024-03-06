@@ -16,14 +16,14 @@ public final class AccessGroupArgs extends com.pulumi.resources.ResourceArgs {
     public static final AccessGroupArgs Empty = new AccessGroupArgs();
 
     /**
-     * A Name of one Access Group.
+     * The name of the permission group.
      * 
      */
     @Import(name="accessGroupName")
     private @Nullable Output<String> accessGroupName;
 
     /**
-     * @return A Name of one Access Group.
+     * @return The name of the permission group.
      * 
      */
     public Optional<Output<String>> accessGroupName() {
@@ -31,14 +31,14 @@ public final class AccessGroupArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * A Type of one Access Group. Valid values: `Vpc` and `Classic`.
+     * Permission group types, including Vpc.
      * 
      */
     @Import(name="accessGroupType")
     private @Nullable Output<String> accessGroupType;
 
     /**
-     * @return A Type of one Access Group. Valid values: `Vpc` and `Classic`.
+     * @return Permission group types, including Vpc.
      * 
      */
     public Optional<Output<String>> accessGroupType() {
@@ -46,14 +46,14 @@ public final class AccessGroupArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The Access Group description.
+     * Permission group description information.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return The Access Group description.
+     * @return Permission group description information.
      * 
      */
     public Optional<Output<String>> description() {
@@ -61,14 +61,20 @@ public final class AccessGroupArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The type of file system. Valid values: `standard` and `extreme`. Default to `standard`. Note that the extreme only support Vpc Network.
+     * File system type. Value:
+     * - standard (default): Universal NAS
+     * - extreme: extreme NAS
+     *   The following arguments will be discarded. Please use new fields as soon as possible:
      * 
      */
     @Import(name="fileSystemType")
     private @Nullable Output<String> fileSystemType;
 
     /**
-     * @return The type of file system. Valid values: `standard` and `extreme`. Default to `standard`. Note that the extreme only support Vpc Network.
+     * @return File system type. Value:
+     * - standard (default): Universal NAS
+     * - extreme: extreme NAS
+     *   The following arguments will be discarded. Please use new fields as soon as possible:
      * 
      */
     public Optional<Output<String>> fileSystemType() {
@@ -76,31 +82,47 @@ public final class AccessGroupArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Replaced by `access_group_name` after version 1.92.0.
+     * . Field &#39;name&#39; has been deprecated from provider version 1.218.0. New field &#39;access_group_name&#39; instead.
+     * 
+     * @deprecated
+     * Field &#39;name&#39; has been deprecated since provider version 1.218.0. New field &#39;access_group_name&#39; instead.
      * 
      */
+    @Deprecated /* Field 'name' has been deprecated since provider version 1.218.0. New field 'access_group_name' instead. */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Replaced by `access_group_name` after version 1.92.0.
+     * @return . Field &#39;name&#39; has been deprecated from provider version 1.218.0. New field &#39;access_group_name&#39; instead.
+     * 
+     * @deprecated
+     * Field &#39;name&#39; has been deprecated since provider version 1.218.0. New field &#39;access_group_name&#39; instead.
      * 
      */
+    @Deprecated /* Field 'name' has been deprecated since provider version 1.218.0. New field 'access_group_name' instead. */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
     }
 
     /**
-     * Replaced by `access_group_type` after version 1.92.0.
+     * . Field &#39;type&#39; has been deprecated from provider version 1.218.0. New field &#39;access_group_type&#39; instead.
+     * 
+     * @deprecated
+     * Field &#39;type&#39; has been deprecated since provider version 1.218.0. New field &#39;access_group_type&#39; instead.
      * 
      */
+    @Deprecated /* Field 'type' has been deprecated since provider version 1.218.0. New field 'access_group_type' instead. */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return Replaced by `access_group_type` after version 1.92.0.
+     * @return . Field &#39;type&#39; has been deprecated from provider version 1.218.0. New field &#39;access_group_type&#39; instead.
+     * 
+     * @deprecated
+     * Field &#39;type&#39; has been deprecated since provider version 1.218.0. New field &#39;access_group_type&#39; instead.
      * 
      */
+    @Deprecated /* Field 'type' has been deprecated since provider version 1.218.0. New field 'access_group_type' instead. */
     public Optional<Output<String>> type() {
         return Optional.ofNullable(this.type);
     }
@@ -135,7 +157,7 @@ public final class AccessGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accessGroupName A Name of one Access Group.
+         * @param accessGroupName The name of the permission group.
          * 
          * @return builder
          * 
@@ -146,7 +168,7 @@ public final class AccessGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accessGroupName A Name of one Access Group.
+         * @param accessGroupName The name of the permission group.
          * 
          * @return builder
          * 
@@ -156,7 +178,7 @@ public final class AccessGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accessGroupType A Type of one Access Group. Valid values: `Vpc` and `Classic`.
+         * @param accessGroupType Permission group types, including Vpc.
          * 
          * @return builder
          * 
@@ -167,7 +189,7 @@ public final class AccessGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accessGroupType A Type of one Access Group. Valid values: `Vpc` and `Classic`.
+         * @param accessGroupType Permission group types, including Vpc.
          * 
          * @return builder
          * 
@@ -177,7 +199,7 @@ public final class AccessGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description The Access Group description.
+         * @param description Permission group description information.
          * 
          * @return builder
          * 
@@ -188,7 +210,7 @@ public final class AccessGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description The Access Group description.
+         * @param description Permission group description information.
          * 
          * @return builder
          * 
@@ -198,7 +220,10 @@ public final class AccessGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param fileSystemType The type of file system. Valid values: `standard` and `extreme`. Default to `standard`. Note that the extreme only support Vpc Network.
+         * @param fileSystemType File system type. Value:
+         * - standard (default): Universal NAS
+         * - extreme: extreme NAS
+         *   The following arguments will be discarded. Please use new fields as soon as possible:
          * 
          * @return builder
          * 
@@ -209,7 +234,10 @@ public final class AccessGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param fileSystemType The type of file system. Valid values: `standard` and `extreme`. Default to `standard`. Note that the extreme only support Vpc Network.
+         * @param fileSystemType File system type. Value:
+         * - standard (default): Universal NAS
+         * - extreme: extreme NAS
+         *   The following arguments will be discarded. Please use new fields as soon as possible:
          * 
          * @return builder
          * 
@@ -219,43 +247,59 @@ public final class AccessGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Replaced by `access_group_name` after version 1.92.0.
+         * @param name . Field &#39;name&#39; has been deprecated from provider version 1.218.0. New field &#39;access_group_name&#39; instead.
          * 
          * @return builder
          * 
+         * @deprecated
+         * Field &#39;name&#39; has been deprecated since provider version 1.218.0. New field &#39;access_group_name&#39; instead.
+         * 
          */
+        @Deprecated /* Field 'name' has been deprecated since provider version 1.218.0. New field 'access_group_name' instead. */
         public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
         }
 
         /**
-         * @param name Replaced by `access_group_name` after version 1.92.0.
+         * @param name . Field &#39;name&#39; has been deprecated from provider version 1.218.0. New field &#39;access_group_name&#39; instead.
          * 
          * @return builder
          * 
+         * @deprecated
+         * Field &#39;name&#39; has been deprecated since provider version 1.218.0. New field &#39;access_group_name&#39; instead.
+         * 
          */
+        @Deprecated /* Field 'name' has been deprecated since provider version 1.218.0. New field 'access_group_name' instead. */
         public Builder name(String name) {
             return name(Output.of(name));
         }
 
         /**
-         * @param type Replaced by `access_group_type` after version 1.92.0.
+         * @param type . Field &#39;type&#39; has been deprecated from provider version 1.218.0. New field &#39;access_group_type&#39; instead.
          * 
          * @return builder
          * 
+         * @deprecated
+         * Field &#39;type&#39; has been deprecated since provider version 1.218.0. New field &#39;access_group_type&#39; instead.
+         * 
          */
+        @Deprecated /* Field 'type' has been deprecated since provider version 1.218.0. New field 'access_group_type' instead. */
         public Builder type(@Nullable Output<String> type) {
             $.type = type;
             return this;
         }
 
         /**
-         * @param type Replaced by `access_group_type` after version 1.92.0.
+         * @param type . Field &#39;type&#39; has been deprecated from provider version 1.218.0. New field &#39;access_group_type&#39; instead.
          * 
          * @return builder
          * 
+         * @deprecated
+         * Field &#39;type&#39; has been deprecated since provider version 1.218.0. New field &#39;access_group_type&#39; instead.
+         * 
          */
+        @Deprecated /* Field 'type' has been deprecated since provider version 1.218.0. New field 'access_group_type' instead. */
         public Builder type(String type) {
             return type(Output.of(type));
         }

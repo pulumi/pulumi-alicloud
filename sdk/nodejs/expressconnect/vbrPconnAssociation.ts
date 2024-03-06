@@ -18,24 +18,19 @@ import * as utilities from "../utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
- * import * as random from "@pulumi/random";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "tf-example";
  * const examplePhysicalConnections = alicloud.expressconnect.getPhysicalConnections({
  *     nameRegex: "^preserved-NODELETING",
  * });
- * const vlanId = new random.RandomInteger("vlanId", {
- *     max: 2999,
- *     min: 1,
- * });
- * const exampleVirtualBorderRouter = new alicloud.expressconnect.VirtualBorderRouter("exampleVirtualBorderRouter", {
+ * const _default = new alicloud.expressconnect.VirtualBorderRouter("default", {
  *     localGatewayIp: "10.0.0.1",
  *     peerGatewayIp: "10.0.0.2",
  *     peeringSubnetMask: "255.255.255.252",
  *     physicalConnectionId: examplePhysicalConnections.then(examplePhysicalConnections => examplePhysicalConnections.connections?.[0]?.id),
  *     virtualBorderRouterName: name,
- *     vlanId: vlanId.id,
+ *     vlanId: 110,
  *     minRxInterval: 1000,
  *     minTxInterval: 1000,
  *     detectMultiplier: 10,
@@ -48,9 +43,9 @@ import * as utilities from "../utilities";
  *     peerGatewayIp: "10.0.0.6",
  *     localGatewayIp: "10.0.0.5",
  *     physicalConnectionId: examplePhysicalConnections.then(examplePhysicalConnections => examplePhysicalConnections.connections?.[2]?.id),
- *     vbrId: exampleVirtualBorderRouter.id,
+ *     vbrId: _default.id,
  *     peeringSubnetMask: "255.255.255.252",
- *     vlanId: vlanId.id.apply(id => id + 2),
+ *     vlanId: 1122,
  *     enableIpv6: true,
  *     localIpv6GatewayIp: "2408:4004:cc::3",
  *     peerIpv6GatewayIp: "2408:4004:cc::4",

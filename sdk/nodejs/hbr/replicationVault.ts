@@ -18,13 +18,18 @@ import * as utilities from "../utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
+ * import * as random from "@pulumi/random";
  *
  * const config = new pulumi.Config();
  * const sourceRegion = config.get("sourceRegion") || "cn-hangzhou";
  * const source = new alicloud.Provider("source", {region: sourceRegion});
  * const defaultReplicationVaultRegions = alicloud.hbr.getReplicationVaultRegions({});
  * const replication = new alicloud.Provider("replication", {region: defaultReplicationVaultRegions.then(defaultReplicationVaultRegions => defaultReplicationVaultRegions.regions?.[0]?.replicationRegionId)});
- * const defaultVault = new alicloud.hbr.Vault("defaultVault", {vaultName: "terraform-example"}, {
+ * const defaultRandomInteger = new random.RandomInteger("defaultRandomInteger", {
+ *     min: 10000,
+ *     max: 99999,
+ * });
+ * const defaultVault = new alicloud.hbr.Vault("defaultVault", {vaultName: pulumi.interpolate`terraform-example-${defaultRandomInteger.result}`}, {
  *     provider: alicloud.source,
  * });
  * const defaultReplicationVault = new alicloud.hbr.ReplicationVault("defaultReplicationVault", {

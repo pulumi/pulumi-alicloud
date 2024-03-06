@@ -16,14 +16,14 @@ public final class MountPointState extends com.pulumi.resources.ResourceArgs {
     public static final MountPointState Empty = new MountPointState();
 
     /**
-     * The ID of the Access Group.
+     * The id of the permission group associated with the Mount point, which is used to set the access permissions of the Mount point.
      * 
      */
     @Import(name="accessGroupId")
     private @Nullable Output<String> accessGroupId;
 
     /**
-     * @return The ID of the Access Group.
+     * @return The id of the permission group associated with the Mount point, which is used to set the access permissions of the Mount point.
      * 
      */
     public Optional<Output<String>> accessGroupId() {
@@ -31,14 +31,44 @@ public final class MountPointState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The description of the Mount Point.
+     * The mount point alias prefix, which specifies the mount point alias prefix.
+     * 
+     */
+    @Import(name="aliasPrefix")
+    private @Nullable Output<String> aliasPrefix;
+
+    /**
+     * @return The mount point alias prefix, which specifies the mount point alias prefix.
+     * 
+     */
+    public Optional<Output<String>> aliasPrefix() {
+        return Optional.ofNullable(this.aliasPrefix);
+    }
+
+    /**
+     * The creation time of the Mount point resource.
+     * 
+     */
+    @Import(name="createTime")
+    private @Nullable Output<String> createTime;
+
+    /**
+     * @return The creation time of the Mount point resource.
+     * 
+     */
+    public Optional<Output<String>> createTime() {
+        return Optional.ofNullable(this.createTime);
+    }
+
+    /**
+     * The description of the Mount point.  No more than 32 characters in length.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return The description of the Mount Point.
+     * @return The description of the Mount point.  No more than 32 characters in length.
      * 
      */
     public Optional<Output<String>> description() {
@@ -46,14 +76,14 @@ public final class MountPointState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The ID of the File System.
+     * Unique file system identifier, used to retrieve specified file system resources.
      * 
      */
     @Import(name="fileSystemId")
     private @Nullable Output<String> fileSystemId;
 
     /**
-     * @return The ID of the File System.
+     * @return Unique file system identifier, used to retrieve specified file system resources.
      * 
      */
     public Optional<Output<String>> fileSystemId() {
@@ -61,14 +91,14 @@ public final class MountPointState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The ID of the Mount Point.
+     * The unique identifier of the Mount point, which is used to retrieve the specified mount point resources.
      * 
      */
     @Import(name="mountPointId")
     private @Nullable Output<String> mountPointId;
 
     /**
-     * @return The ID of the Mount Point.
+     * @return The unique identifier of the Mount point, which is used to retrieve the specified mount point resources.
      * 
      */
     public Optional<Output<String>> mountPointId() {
@@ -76,14 +106,14 @@ public final class MountPointState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The network type of the Mount Point. Valid values: `VPC`.
+     * The network type of the Mount point.  Only VPC (VPC) is supported.
      * 
      */
     @Import(name="networkType")
     private @Nullable Output<String> networkType;
 
     /**
-     * @return The network type of the Mount Point. Valid values: `VPC`.
+     * @return The network type of the Mount point.  Only VPC (VPC) is supported.
      * 
      */
     public Optional<Output<String>> networkType() {
@@ -91,14 +121,14 @@ public final class MountPointState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The status of the Mount Point. Valid values: `Active`, `Inactive`.
+     * Mount point status. Value: Inactive: Disable mount points Active: Activate the mount point.
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return The status of the Mount Point. Valid values: `Active`, `Inactive`.
+     * @return Mount point status. Value: Inactive: Disable mount points Active: Activate the mount point.
      * 
      */
     public Optional<Output<String>> status() {
@@ -106,14 +136,14 @@ public final class MountPointState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The vpc id.
+     * The ID of the VPC. Specifies the VPC environment to which the mount point belongs.
      * 
      */
     @Import(name="vpcId")
     private @Nullable Output<String> vpcId;
 
     /**
-     * @return The vpc id.
+     * @return The ID of the VPC. Specifies the VPC environment to which the mount point belongs.
      * 
      */
     public Optional<Output<String>> vpcId() {
@@ -121,14 +151,14 @@ public final class MountPointState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The vswitch id.
+     * VSwitch ID, which specifies the VSwitch resource used to create the mount point.
      * 
      */
     @Import(name="vswitchId")
     private @Nullable Output<String> vswitchId;
 
     /**
-     * @return The vswitch id.
+     * @return VSwitch ID, which specifies the VSwitch resource used to create the mount point.
      * 
      */
     public Optional<Output<String>> vswitchId() {
@@ -139,6 +169,8 @@ public final class MountPointState extends com.pulumi.resources.ResourceArgs {
 
     private MountPointState(MountPointState $) {
         this.accessGroupId = $.accessGroupId;
+        this.aliasPrefix = $.aliasPrefix;
+        this.createTime = $.createTime;
         this.description = $.description;
         this.fileSystemId = $.fileSystemId;
         this.mountPointId = $.mountPointId;
@@ -167,7 +199,7 @@ public final class MountPointState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accessGroupId The ID of the Access Group.
+         * @param accessGroupId The id of the permission group associated with the Mount point, which is used to set the access permissions of the Mount point.
          * 
          * @return builder
          * 
@@ -178,7 +210,7 @@ public final class MountPointState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accessGroupId The ID of the Access Group.
+         * @param accessGroupId The id of the permission group associated with the Mount point, which is used to set the access permissions of the Mount point.
          * 
          * @return builder
          * 
@@ -188,7 +220,49 @@ public final class MountPointState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description The description of the Mount Point.
+         * @param aliasPrefix The mount point alias prefix, which specifies the mount point alias prefix.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder aliasPrefix(@Nullable Output<String> aliasPrefix) {
+            $.aliasPrefix = aliasPrefix;
+            return this;
+        }
+
+        /**
+         * @param aliasPrefix The mount point alias prefix, which specifies the mount point alias prefix.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder aliasPrefix(String aliasPrefix) {
+            return aliasPrefix(Output.of(aliasPrefix));
+        }
+
+        /**
+         * @param createTime The creation time of the Mount point resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createTime(@Nullable Output<String> createTime) {
+            $.createTime = createTime;
+            return this;
+        }
+
+        /**
+         * @param createTime The creation time of the Mount point resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createTime(String createTime) {
+            return createTime(Output.of(createTime));
+        }
+
+        /**
+         * @param description The description of the Mount point.  No more than 32 characters in length.
          * 
          * @return builder
          * 
@@ -199,7 +273,7 @@ public final class MountPointState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description The description of the Mount Point.
+         * @param description The description of the Mount point.  No more than 32 characters in length.
          * 
          * @return builder
          * 
@@ -209,7 +283,7 @@ public final class MountPointState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param fileSystemId The ID of the File System.
+         * @param fileSystemId Unique file system identifier, used to retrieve specified file system resources.
          * 
          * @return builder
          * 
@@ -220,7 +294,7 @@ public final class MountPointState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param fileSystemId The ID of the File System.
+         * @param fileSystemId Unique file system identifier, used to retrieve specified file system resources.
          * 
          * @return builder
          * 
@@ -230,7 +304,7 @@ public final class MountPointState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param mountPointId The ID of the Mount Point.
+         * @param mountPointId The unique identifier of the Mount point, which is used to retrieve the specified mount point resources.
          * 
          * @return builder
          * 
@@ -241,7 +315,7 @@ public final class MountPointState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param mountPointId The ID of the Mount Point.
+         * @param mountPointId The unique identifier of the Mount point, which is used to retrieve the specified mount point resources.
          * 
          * @return builder
          * 
@@ -251,7 +325,7 @@ public final class MountPointState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param networkType The network type of the Mount Point. Valid values: `VPC`.
+         * @param networkType The network type of the Mount point.  Only VPC (VPC) is supported.
          * 
          * @return builder
          * 
@@ -262,7 +336,7 @@ public final class MountPointState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param networkType The network type of the Mount Point. Valid values: `VPC`.
+         * @param networkType The network type of the Mount point.  Only VPC (VPC) is supported.
          * 
          * @return builder
          * 
@@ -272,7 +346,7 @@ public final class MountPointState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param status The status of the Mount Point. Valid values: `Active`, `Inactive`.
+         * @param status Mount point status. Value: Inactive: Disable mount points Active: Activate the mount point.
          * 
          * @return builder
          * 
@@ -283,7 +357,7 @@ public final class MountPointState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param status The status of the Mount Point. Valid values: `Active`, `Inactive`.
+         * @param status Mount point status. Value: Inactive: Disable mount points Active: Activate the mount point.
          * 
          * @return builder
          * 
@@ -293,7 +367,7 @@ public final class MountPointState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vpcId The vpc id.
+         * @param vpcId The ID of the VPC. Specifies the VPC environment to which the mount point belongs.
          * 
          * @return builder
          * 
@@ -304,7 +378,7 @@ public final class MountPointState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vpcId The vpc id.
+         * @param vpcId The ID of the VPC. Specifies the VPC environment to which the mount point belongs.
          * 
          * @return builder
          * 
@@ -314,7 +388,7 @@ public final class MountPointState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vswitchId The vswitch id.
+         * @param vswitchId VSwitch ID, which specifies the VSwitch resource used to create the mount point.
          * 
          * @return builder
          * 
@@ -325,7 +399,7 @@ public final class MountPointState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vswitchId The vswitch id.
+         * @param vswitchId VSwitch ID, which specifies the VSwitch resource used to create the mount point.
          * 
          * @return builder
          * 

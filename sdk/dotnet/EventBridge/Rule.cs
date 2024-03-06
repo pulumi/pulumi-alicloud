@@ -16,57 +16,6 @@ namespace Pulumi.AliCloud.EventBridge
     /// 
     /// &gt; **NOTE:** Available since v1.129.0.
     /// 
-    /// ## Example Usage
-    /// 
-    /// Basic Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var exampleEventBus = new AliCloud.EventBridge.EventBus("exampleEventBus", new()
-    ///     {
-    ///         EventBusName = "example_value",
-    ///     });
-    /// 
-    ///     var exampleRule = new AliCloud.EventBridge.Rule("exampleRule", new()
-    ///     {
-    ///         EventBusName = exampleEventBus.Id,
-    ///         RuleName = @var.Name,
-    ///         Description = "test",
-    ///         FilterPattern = "{\"source\":[\"crmabc.newsletter\"],\"type\":[\"UserSignUp\", \"UserLogin\"]}",
-    ///         Targets = new[]
-    ///         {
-    ///             new AliCloud.EventBridge.Inputs.RuleTargetArgs
-    ///             {
-    ///                 TargetId = "tf-test",
-    ///                 Endpoint = "acs:mns:cn-hangzhou:118938335****:queues/tf-test",
-    ///                 Type = "acs.mns.queue",
-    ///                 ParamLists = new[]
-    ///                 {
-    ///                     new AliCloud.EventBridge.Inputs.RuleTargetParamListArgs
-    ///                     {
-    ///                         ResourceKey = "queue",
-    ///                         Form = "CONSTANT",
-    ///                         Value = "tf-testaccEbRule",
-    ///                     },
-    ///                     new AliCloud.EventBridge.Inputs.RuleTargetParamListArgs
-    ///                     {
-    ///                         ResourceKey = "Body",
-    ///                         Form = "ORIGINAL",
-    ///                     },
-    ///                 },
-    ///             },
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// Event Bridge Rule can be imported using the id, e.g.

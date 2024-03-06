@@ -16,5 +16,6 @@ from .get_disk_replica_pairs import *
 from .get_regions import *
 from .replica_group_drill import *
 from .replica_pair_drill import *
+from .solution_instance import *
 from ._inputs import *
 from . import outputs

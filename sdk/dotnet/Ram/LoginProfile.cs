@@ -12,9 +12,13 @@ namespace Pulumi.AliCloud.Ram
     /// <summary>
     /// Provides a RAM User Login Profile resource.
     /// 
-    /// &gt; **NOTE:** Available since v1.0.0+.
+    /// For information about RAM User Login Profile and how to use it, see [What is Login Profile](https://www.alibabacloud.com/help/en/ram/developer-reference/api-ram-2015-05-01-createloginprofile).
+    /// 
+    /// &gt; **NOTE:** Available since v1.0.0.
     /// 
     /// ## Example Usage
+    /// 
+    /// Basic Usage
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -44,35 +48,35 @@ namespace Pulumi.AliCloud.Ram
     /// 
     /// ## Import
     /// 
-    /// RAM login profile can be imported using the id or user name, e.g.
+    /// RAM login profile can be imported using the id, e.g.
     /// 
     /// ```sh
-    /// $ pulumi import alicloud:ram/loginProfile:LoginProfile example my-login
+    /// $ pulumi import alicloud:ram/loginProfile:LoginProfile example &lt;id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:ram/loginProfile:LoginProfile")]
     public partial class LoginProfile : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// This parameter indicates whether the MFA needs to be bind when the user first logs in. Default value is `false`.
+        /// Specifies whether an MFA device must be attached to the RAM user upon logon. Default value: `false`. Valid values: `true`, `false`.
         /// </summary>
         [Output("mfaBindRequired")]
         public Output<bool?> MfaBindRequired { get; private set; } = null!;
 
         /// <summary>
-        /// Password of the RAM user.
+        /// The logon password of the RAM user. The password must meet the password strength requirements.
         /// </summary>
         [Output("password")]
         public Output<string> Password { get; private set; } = null!;
 
         /// <summary>
-        /// This parameter indicates whether the password needs to be reset when the user first logs in. Default value is `false`.
+        /// Specifies whether the RAM user must change the password upon logon. Default value: `false`. Valid values: `true`, `false`.
         /// </summary>
         [Output("passwordResetRequired")]
         public Output<bool?> PasswordResetRequired { get; private set; } = null!;
 
         /// <summary>
-        /// Name of the RAM user. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin with a hyphen.
+        /// The name of the RAM user. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin with a hyphen.
         /// </summary>
         [Output("userName")]
         public Output<string> UserName { get; private set; } = null!;
@@ -128,7 +132,7 @@ namespace Pulumi.AliCloud.Ram
     public sealed class LoginProfileArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// This parameter indicates whether the MFA needs to be bind when the user first logs in. Default value is `false`.
+        /// Specifies whether an MFA device must be attached to the RAM user upon logon. Default value: `false`. Valid values: `true`, `false`.
         /// </summary>
         [Input("mfaBindRequired")]
         public Input<bool>? MfaBindRequired { get; set; }
@@ -137,7 +141,7 @@ namespace Pulumi.AliCloud.Ram
         private Input<string>? _password;
 
         /// <summary>
-        /// Password of the RAM user.
+        /// The logon password of the RAM user. The password must meet the password strength requirements.
         /// </summary>
         public Input<string>? Password
         {
@@ -150,13 +154,13 @@ namespace Pulumi.AliCloud.Ram
         }
 
         /// <summary>
-        /// This parameter indicates whether the password needs to be reset when the user first logs in. Default value is `false`.
+        /// Specifies whether the RAM user must change the password upon logon. Default value: `false`. Valid values: `true`, `false`.
         /// </summary>
         [Input("passwordResetRequired")]
         public Input<bool>? PasswordResetRequired { get; set; }
 
         /// <summary>
-        /// Name of the RAM user. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin with a hyphen.
+        /// The name of the RAM user. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin with a hyphen.
         /// </summary>
         [Input("userName", required: true)]
         public Input<string> UserName { get; set; } = null!;
@@ -170,7 +174,7 @@ namespace Pulumi.AliCloud.Ram
     public sealed class LoginProfileState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// This parameter indicates whether the MFA needs to be bind when the user first logs in. Default value is `false`.
+        /// Specifies whether an MFA device must be attached to the RAM user upon logon. Default value: `false`. Valid values: `true`, `false`.
         /// </summary>
         [Input("mfaBindRequired")]
         public Input<bool>? MfaBindRequired { get; set; }
@@ -179,7 +183,7 @@ namespace Pulumi.AliCloud.Ram
         private Input<string>? _password;
 
         /// <summary>
-        /// Password of the RAM user.
+        /// The logon password of the RAM user. The password must meet the password strength requirements.
         /// </summary>
         public Input<string>? Password
         {
@@ -192,13 +196,13 @@ namespace Pulumi.AliCloud.Ram
         }
 
         /// <summary>
-        /// This parameter indicates whether the password needs to be reset when the user first logs in. Default value is `false`.
+        /// Specifies whether the RAM user must change the password upon logon. Default value: `false`. Valid values: `true`, `false`.
         /// </summary>
         [Input("passwordResetRequired")]
         public Input<bool>? PasswordResetRequired { get; set; }
 
         /// <summary>
-        /// Name of the RAM user. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin with a hyphen.
+        /// The name of the RAM user. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin with a hyphen.
         /// </summary>
         [Input("userName")]
         public Input<string>? UserName { get; set; }

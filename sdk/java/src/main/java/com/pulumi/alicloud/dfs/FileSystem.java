@@ -12,14 +12,13 @@ import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.Integer;
 import java.lang.String;
-import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
  * Provides a DFS File System resource.
  * 
- * For information about DFS File System and how to use it, see [What is File System](https://www.alibabacloud.com/help/doc-detail/207144.htm).
+ * For information about DFS File System and how to use it, see [What is File System](https://www.alibabacloud.com/help/en/aibaba-cloud-storage-services/latest/apsara-file-storage-for-hdfs).
  * 
  * &gt; **NOTE:** Available since v1.140.0.
  * 
@@ -32,6 +31,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.random.RandomInteger;
+ * import com.pulumi.random.RandomIntegerArgs;
  * import com.pulumi.alicloud.dfs.DfsFunctions;
  * import com.pulumi.alicloud.dfs.inputs.GetZonesArgs;
  * import com.pulumi.alicloud.dfs.FileSystem;
@@ -50,17 +51,27 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;terraform-example&#34;);
+ *         var defaultRandomInteger = new RandomInteger(&#34;defaultRandomInteger&#34;, RandomIntegerArgs.builder()        
+ *             .min(10000)
+ *             .max(99999)
+ *             .build());
+ * 
  *         final var defaultZones = DfsFunctions.getZones();
  * 
+ *         final var zoneId = defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].zoneId());
+ * 
+ *         final var storageType = defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].options()[0].storageType());
+ * 
  *         var defaultFileSystem = new FileSystem(&#34;defaultFileSystem&#34;, FileSystemArgs.builder()        
- *             .storageType(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].options()[0].storageType()))
- *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].zoneId()))
  *             .protocolType(&#34;HDFS&#34;)
  *             .description(name)
- *             .fileSystemName(name)
- *             .throughputMode(&#34;Standard&#34;)
+ *             .fileSystemName(defaultRandomInteger.result().applyValue(result -&gt; String.format(&#34;%s-%s&#34;, name,result)))
  *             .spaceCapacity(&#34;1024&#34;)
+ *             .throughputMode(&#34;Provisioned&#34;)
+ *             .provisionedThroughputInMiBps(&#34;512&#34;)
+ *             .storageType(storageType)
+ *             .zoneId(zoneId)
  *             .build());
  * 
  *     }
@@ -79,112 +90,172 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:dfs/fileSystem:FileSystem")
 public class FileSystem extends com.pulumi.resources.CustomResource {
     /**
-     * The description of the File system.
+     * The creation time of the file system instance.
+     * 
+     */
+    @Export(name="createTime", refs={String.class}, tree="[0]")
+    private Output<String> createTime;
+
+    /**
+     * @return The creation time of the file system instance.
+     * 
+     */
+    public Output<String> createTime() {
+        return this.createTime;
+    }
+    /**
+     * Redundancy mode of the file system. Value:
+     * - LRS (default): Local redundancy.
+     * - ZRS: Same-City redundancy. When ZRS is selected, zoneId is a string consisting of multiple zones that are expected to be redundant in the same city, for example,  &#39;zoneId1,zoneId2 &#39;.
+     * 
+     */
+    @Export(name="dataRedundancyType", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> dataRedundancyType;
+
+    /**
+     * @return Redundancy mode of the file system. Value:
+     * - LRS (default): Local redundancy.
+     * - ZRS: Same-City redundancy. When ZRS is selected, zoneId is a string consisting of multiple zones that are expected to be redundant in the same city, for example,  &#39;zoneId1,zoneId2 &#39;.
+     * 
+     */
+    public Output<Optional<String>> dataRedundancyType() {
+        return Codegen.optional(this.dataRedundancyType);
+    }
+    /**
+     * The description of the file system resource. No more than 32 characters in length.
      * 
      */
     @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
-     * @return The description of the File system.
+     * @return The description of the file system resource. No more than 32 characters in length.
      * 
      */
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
     }
     /**
-     * The name of the File system.
+     * The file system name. The naming rules are as follows: The length is 6~64 characters. Globally unique and cannot be an empty string. English letters are supported and can contain numbers, underscores (_), and dashes (-).
      * 
      */
     @Export(name="fileSystemName", refs={String.class}, tree="[0]")
     private Output<String> fileSystemName;
 
     /**
-     * @return The name of the File system.
+     * @return The file system name. The naming rules are as follows: The length is 6~64 characters. Globally unique and cannot be an empty string. English letters are supported and can contain numbers, underscores (_), and dashes (-).
      * 
      */
     public Output<String> fileSystemName() {
         return this.fileSystemName;
     }
     /**
-     * The protocol type. Valid values: `HDFS`.
+     * Save set sequence number, the user selects the content of the specified sequence number in the Save set.
+     * 
+     */
+    @Export(name="partitionNumber", refs={Integer.class}, tree="[0]")
+    private Output</* @Nullable */ Integer> partitionNumber;
+
+    /**
+     * @return Save set sequence number, the user selects the content of the specified sequence number in the Save set.
+     * 
+     */
+    public Output<Optional<Integer>> partitionNumber() {
+        return Codegen.optional(this.partitionNumber);
+    }
+    /**
+     * The protocol type.  Only HDFS(Hadoop Distributed File System) is supported.
      * 
      */
     @Export(name="protocolType", refs={String.class}, tree="[0]")
     private Output<String> protocolType;
 
     /**
-     * @return The protocol type. Valid values: `HDFS`.
+     * @return The protocol type.  Only HDFS(Hadoop Distributed File System) is supported.
      * 
      */
     public Output<String> protocolType() {
         return this.protocolType;
     }
     /**
-     * The preset throughput of the File system. Valid values: `1` to `1024`, Unit: MB/s. **NOTE:** Only when `throughput_mode` is `Provisioned`, this param is valid.
+     * Provisioned throughput. This parameter is required when ThroughputMode is set to Provisioned. Unit: MB/s Value range: 1~5120.
      * 
      */
     @Export(name="provisionedThroughputInMiBps", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> provisionedThroughputInMiBps;
 
     /**
-     * @return The preset throughput of the File system. Valid values: `1` to `1024`, Unit: MB/s. **NOTE:** Only when `throughput_mode` is `Provisioned`, this param is valid.
+     * @return Provisioned throughput. This parameter is required when ThroughputMode is set to Provisioned. Unit: MB/s Value range: 1~5120.
      * 
      */
     public Output<Optional<Integer>> provisionedThroughputInMiBps() {
         return Codegen.optional(this.provisionedThroughputInMiBps);
     }
     /**
-     * The capacity budget of the File system. **NOTE:** When the actual data storage reaches the file system capacity budget, the data cannot be written. The file system capacity budget does not support shrinking.
+     * File system capacity.  When the actual amount of data stored reaches the capacity of the file system, data cannot be written.  Unit: GiB.
      * 
      */
     @Export(name="spaceCapacity", refs={Integer.class}, tree="[0]")
     private Output<Integer> spaceCapacity;
 
     /**
-     * @return The capacity budget of the File system. **NOTE:** When the actual data storage reaches the file system capacity budget, the data cannot be written. The file system capacity budget does not support shrinking.
+     * @return File system capacity.  When the actual amount of data stored reaches the capacity of the file system, data cannot be written.  Unit: GiB.
      * 
      */
     public Output<Integer> spaceCapacity() {
         return this.spaceCapacity;
     }
     /**
-     * The storage specifications of the File system. Valid values: `PERFORMANCE`, `STANDARD`.
+     * Save set identity, used to select a user-specified save set.
+     * 
+     */
+    @Export(name="storageSetName", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> storageSetName;
+
+    /**
+     * @return Save set identity, used to select a user-specified save set.
+     * 
+     */
+    public Output<Optional<String>> storageSetName() {
+        return Codegen.optional(this.storageSetName);
+    }
+    /**
+     * The storage media type. Value: STANDARD (default): STANDARD PERFORMANCE: PERFORMANCE type.
      * 
      */
     @Export(name="storageType", refs={String.class}, tree="[0]")
     private Output<String> storageType;
 
     /**
-     * @return The storage specifications of the File system. Valid values: `PERFORMANCE`, `STANDARD`.
+     * @return The storage media type. Value: STANDARD (default): STANDARD PERFORMANCE: PERFORMANCE type.
      * 
      */
     public Output<String> storageType() {
         return this.storageType;
     }
     /**
-     * The throughput mode of the File system. Valid values: `Provisioned`, `Standard`.
+     * The throughput mode. Value: Standard (default): Standard throughput Provisioned: preset throughput.
      * 
      */
     @Export(name="throughputMode", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> throughputMode;
+    private Output<String> throughputMode;
 
     /**
-     * @return The throughput mode of the File system. Valid values: `Provisioned`, `Standard`.
+     * @return The throughput mode. Value: Standard (default): Standard throughput Provisioned: preset throughput.
      * 
      */
-    public Output<Optional<String>> throughputMode() {
-        return Codegen.optional(this.throughputMode);
+    public Output<String> throughputMode() {
+        return this.throughputMode;
     }
     /**
-     * The zone ID of the File system.
+     * Zone Id, which is used to create file system resources to the specified zone.
      * 
      */
     @Export(name="zoneId", refs={String.class}, tree="[0]")
     private Output<String> zoneId;
 
     /**
-     * @return The zone ID of the File system.
+     * @return Zone Id, which is used to create file system resources to the specified zone.
      * 
      */
     public Output<String> zoneId() {
@@ -223,9 +294,6 @@ public class FileSystem extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
-            .additionalSecretOutputs(List.of(
-                "throughputMode"
-            ))
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

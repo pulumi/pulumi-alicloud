@@ -276,11 +276,15 @@ class SearchIndex(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
             name = "tf-example"
+        default_random_integer = random.RandomInteger("defaultRandomInteger",
+            min=10000,
+            max=99999)
         default_instance = alicloud.ots.Instance("defaultInstance",
             description=name,
             accessed_by="Any",
@@ -396,11 +400,15 @@ class SearchIndex(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
             name = "tf-example"
+        default_random_integer = random.RandomInteger("defaultRandomInteger",
+            min=10000,
+            max=99999)
         default_instance = alicloud.ots.Instance("defaultInstance",
             description=name,
             accessed_by="Any",

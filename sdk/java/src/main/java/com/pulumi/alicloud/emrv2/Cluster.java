@@ -40,12 +40,16 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
  * import com.pulumi.alicloud.resourcemanager.inputs.GetResourceGroupsArgs;
+ * import com.pulumi.alicloud.kms.KmsFunctions;
+ * import com.pulumi.alicloud.kms.inputs.GetKeysArgs;
  * import com.pulumi.alicloud.AlicloudFunctions;
  * import com.pulumi.alicloud.inputs.GetZonesArgs;
  * import com.pulumi.alicloud.vpc.Network;
  * import com.pulumi.alicloud.vpc.NetworkArgs;
  * import com.pulumi.alicloud.vpc.Switch;
  * import com.pulumi.alicloud.vpc.SwitchArgs;
+ * import com.pulumi.random.RandomInteger;
+ * import com.pulumi.random.RandomIntegerArgs;
  * import com.pulumi.alicloud.ecs.EcsKeyPair;
  * import com.pulumi.alicloud.ecs.EcsKeyPairArgs;
  * import com.pulumi.alicloud.ecs.SecurityGroup;
@@ -54,10 +58,9 @@ import javax.annotation.Nullable;
  * import com.pulumi.alicloud.ram.RoleArgs;
  * import com.pulumi.alicloud.emrv2.Cluster;
  * import com.pulumi.alicloud.emrv2.ClusterArgs;
- * import com.pulumi.alicloud.emrv2.inputs.ClusterApplicationConfigArgs;
- * import com.pulumi.alicloud.emrv2.inputs.ClusterNodeAttributeArgs;
  * import com.pulumi.alicloud.emrv2.inputs.ClusterNodeGroupArgs;
  * import com.pulumi.alicloud.emrv2.inputs.ClusterNodeGroupSystemDiskArgs;
+ * import com.pulumi.alicloud.emrv2.inputs.ClusterNodeAttributeArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -72,8 +75,14 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;terraform-example&#34;);
- *         final var defaultResourceGroups = ResourcemanagerFunctions.getResourceGroups();
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
+ *         final var defaultResourceGroups = ResourcemanagerFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
+ *             .status(&#34;OK&#34;)
+ *             .build());
+ * 
+ *         final var defaultKeys = KmsFunctions.getKeys(GetKeysArgs.builder()
+ *             .status(&#34;Enabled&#34;)
+ *             .build());
  * 
  *         final var defaultZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
  *             .availableInstanceType(&#34;ecs.g7.xlarge&#34;)
@@ -91,8 +100,13 @@ import javax.annotation.Nullable;
  *             .vswitchName(name)
  *             .build());
  * 
+ *         var defaultRandomInteger = new RandomInteger(&#34;defaultRandomInteger&#34;, RandomIntegerArgs.builder()        
+ *             .max(99999)
+ *             .min(10000)
+ *             .build());
+ * 
  *         var defaultEcsKeyPair = new EcsKeyPair(&#34;defaultEcsKeyPair&#34;, EcsKeyPairArgs.builder()        
- *             .keyPairName(name)
+ *             .keyPairName(defaultRandomInteger.result().applyValue(result -&gt; String.format(&#34;%s-%s&#34;, name,result)))
  *             .build());
  * 
  *         var defaultSecurityGroup = new SecurityGroup(&#34;defaultSecurityGroup&#34;, SecurityGroupArgs.builder()        
@@ -122,82 +136,76 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var defaultCluster = new Cluster(&#34;defaultCluster&#34;, ClusterArgs.builder()        
- *             .paymentType(&#34;PayAsYouGo&#34;)
- *             .clusterType(&#34;DATALAKE&#34;)
- *             .releaseVersion(&#34;EMR-5.10.0&#34;)
- *             .clusterName(name)
+ *             .nodeGroups(            
+ *                 ClusterNodeGroupArgs.builder()
+ *                     .vswitchIds(defaultSwitch.id())
+ *                     .instanceTypes(&#34;ecs.g7.xlarge&#34;)
+ *                     .nodeCount(&#34;1&#34;)
+ *                     .spotInstanceRemedy(&#34;false&#34;)
+ *                     .dataDisks(ClusterNodeGroupDataDiskArgs.builder()
+ *                         .count(&#34;3&#34;)
+ *                         .category(&#34;cloud_essd&#34;)
+ *                         .size(&#34;80&#34;)
+ *                         .performanceLevel(&#34;PL0&#34;)
+ *                         .build())
+ *                     .nodeGroupName(&#34;emr-master&#34;)
+ *                     .paymentType(&#34;PayAsYouGo&#34;)
+ *                     .withPublicIp(&#34;false&#34;)
+ *                     .gracefulShutdown(&#34;false&#34;)
+ *                     .systemDisk(ClusterNodeGroupSystemDiskArgs.builder()
+ *                         .category(&#34;cloud_essd&#34;)
+ *                         .size(&#34;80&#34;)
+ *                         .performanceLevel(&#34;PL0&#34;)
+ *                         .count(&#34;1&#34;)
+ *                         .build())
+ *                     .nodeGroupType(&#34;MASTER&#34;)
+ *                     .build(),
+ *                 ClusterNodeGroupArgs.builder()
+ *                     .spotInstanceRemedy(&#34;false&#34;)
+ *                     .nodeGroupType(&#34;CORE&#34;)
+ *                     .vswitchIds(defaultSwitch.id())
+ *                     .nodeCount(&#34;2&#34;)
+ *                     .gracefulShutdown(&#34;false&#34;)
+ *                     .systemDisk(ClusterNodeGroupSystemDiskArgs.builder()
+ *                         .performanceLevel(&#34;PL0&#34;)
+ *                         .count(&#34;1&#34;)
+ *                         .category(&#34;cloud_essd&#34;)
+ *                         .size(&#34;80&#34;)
+ *                         .build())
+ *                     .dataDisks(ClusterNodeGroupDataDiskArgs.builder()
+ *                         .count(&#34;3&#34;)
+ *                         .performanceLevel(&#34;PL0&#34;)
+ *                         .category(&#34;cloud_essd&#34;)
+ *                         .size(&#34;80&#34;)
+ *                         .build())
+ *                     .nodeGroupName(&#34;emr-core&#34;)
+ *                     .paymentType(&#34;PayAsYouGo&#34;)
+ *                     .instanceTypes(&#34;ecs.g7.xlarge&#34;)
+ *                     .withPublicIp(&#34;false&#34;)
+ *                     .build())
  *             .deployMode(&#34;NORMAL&#34;)
- *             .securityMode(&#34;NORMAL&#34;)
+ *             .tags(Map.ofEntries(
+ *                 Map.entry(&#34;Created&#34;, &#34;TF&#34;),
+ *                 Map.entry(&#34;For&#34;, &#34;example&#34;)
+ *             ))
+ *             .releaseVersion(&#34;EMR-5.10.0&#34;)
  *             .applications(            
  *                 &#34;HADOOP-COMMON&#34;,
  *                 &#34;HDFS&#34;,
- *                 &#34;YARN&#34;,
- *                 &#34;HIVE&#34;,
- *                 &#34;SPARK3&#34;,
- *                 &#34;TEZ&#34;)
- *             .applicationConfigs(            
- *                 ClusterApplicationConfigArgs.builder()
- *                     .applicationName(&#34;HIVE&#34;)
- *                     .configFileName(&#34;hivemetastore-site.xml&#34;)
- *                     .configItemKey(&#34;hive.metastore.type&#34;)
- *                     .configItemValue(&#34;DLF&#34;)
- *                     .configScope(&#34;CLUSTER&#34;)
- *                     .build(),
- *                 ClusterApplicationConfigArgs.builder()
- *                     .applicationName(&#34;SPARK3&#34;)
- *                     .configFileName(&#34;hive-site.xml&#34;)
- *                     .configItemKey(&#34;hive.metastore.type&#34;)
- *                     .configItemValue(&#34;DLF&#34;)
- *                     .configScope(&#34;CLUSTER&#34;)
- *                     .build())
+ *                 &#34;YARN&#34;)
  *             .nodeAttributes(ClusterNodeAttributeArgs.builder()
- *                 .ramRole(defaultRole.name())
- *                 .securityGroupId(defaultSecurityGroup.id())
- *                 .vpcId(defaultNetwork.id())
  *                 .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
  *                 .keyPairName(defaultEcsKeyPair.id())
+ *                 .dataDiskEncrypted(&#34;true&#34;)
+ *                 .dataDiskKmsKeyId(defaultKeys.applyValue(getKeysResult -&gt; getKeysResult.ids()[0]))
+ *                 .vpcId(defaultNetwork.id())
+ *                 .ramRole(defaultRole.name())
+ *                 .securityGroupId(defaultSecurityGroup.id())
  *                 .build())
- *             .tags(Map.of(&#34;created&#34;, &#34;tf&#34;))
- *             .nodeGroups(            
- *                 ClusterNodeGroupArgs.builder()
- *                     .nodeGroupType(&#34;MASTER&#34;)
- *                     .nodeGroupName(&#34;emr-master&#34;)
- *                     .paymentType(&#34;PayAsYouGo&#34;)
- *                     .vswitchIds(defaultSwitch.id())
- *                     .withPublicIp(false)
- *                     .instanceTypes(&#34;ecs.g7.xlarge&#34;)
- *                     .nodeCount(1)
- *                     .systemDisk(ClusterNodeGroupSystemDiskArgs.builder()
- *                         .category(&#34;cloud_essd&#34;)
- *                         .size(80)
- *                         .count(1)
- *                         .build())
- *                     .dataDisks(ClusterNodeGroupDataDiskArgs.builder()
- *                         .category(&#34;cloud_essd&#34;)
- *                         .size(80)
- *                         .count(3)
- *                         .build())
- *                     .build(),
- *                 ClusterNodeGroupArgs.builder()
- *                     .nodeGroupType(&#34;CORE&#34;)
- *                     .nodeGroupName(&#34;emr-core&#34;)
- *                     .paymentType(&#34;PayAsYouGo&#34;)
- *                     .vswitchIds(defaultSwitch.id())
- *                     .withPublicIp(false)
- *                     .instanceTypes(&#34;ecs.g7.xlarge&#34;)
- *                     .nodeCount(3)
- *                     .systemDisk(ClusterNodeGroupSystemDiskArgs.builder()
- *                         .category(&#34;cloud_essd&#34;)
- *                         .size(80)
- *                         .count(1)
- *                         .build())
- *                     .dataDisks(ClusterNodeGroupDataDiskArgs.builder()
- *                         .category(&#34;cloud_essd&#34;)
- *                         .size(80)
- *                         .count(3)
- *                         .build())
- *                     .build())
  *             .resourceGroupId(defaultResourceGroups.applyValue(getResourceGroupsResult -&gt; getResourceGroupsResult.ids()[0]))
+ *             .clusterName(name)
+ *             .paymentType(&#34;PayAsYouGo&#34;)
+ *             .clusterType(&#34;DATAFLOW&#34;)
  *             .build());
  * 
  *     }

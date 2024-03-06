@@ -747,6 +747,14 @@ _utilities.register(
  },
  {
   "pkg": "alicloud",
+  "mod": "apigateway/instance",
+  "fqn": "pulumi_alicloud.apigateway",
+  "classes": {
+   "alicloud:apigateway/instance:Instance": "Instance"
+  }
+ },
+ {
+  "pkg": "alicloud",
   "mod": "apigateway/logConfig",
   "fqn": "pulumi_alicloud.apigateway",
   "classes": {
@@ -2403,6 +2411,14 @@ _utilities.register(
  },
  {
   "pkg": "alicloud",
+  "mod": "dfs/vscMountPoint",
+  "fqn": "pulumi_alicloud.dfs",
+  "classes": {
+   "alicloud:dfs/vscMountPoint:VscMountPoint": "VscMountPoint"
+  }
+ },
+ {
+  "pkg": "alicloud",
   "mod": "directmail/domain",
   "fqn": "pulumi_alicloud.directmail",
   "classes": {
@@ -2767,6 +2783,14 @@ _utilities.register(
   "fqn": "pulumi_alicloud.ebs",
   "classes": {
    "alicloud:ebs/replicaPairDrill:ReplicaPairDrill": "ReplicaPairDrill"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "ebs/solutionInstance",
+  "fqn": "pulumi_alicloud.ebs",
+  "classes": {
+   "alicloud:ebs/solutionInstance:SolutionInstance": "SolutionInstance"
   }
  },
  {
@@ -6927,6 +6951,14 @@ _utilities.register(
   "fqn": "pulumi_alicloud.waf",
   "classes": {
    "alicloud:waf/protectionModule:ProtectionModule": "ProtectionModule"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "wafv3/defenseTemplate",
+  "fqn": "pulumi_alicloud.wafv3",
+  "classes": {
+   "alicloud:wafv3/defenseTemplate:DefenseTemplate": "DefenseTemplate"
   }
  },
  {

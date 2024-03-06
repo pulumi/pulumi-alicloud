@@ -15,24 +15,33 @@ __all__ = ['AccessRuleArgs', 'AccessRule']
 class AccessRuleArgs:
     def __init__(__self__, *,
                  access_group_name: pulumi.Input[str],
-                 source_cidr_ip: pulumi.Input[str],
+                 file_system_type: Optional[pulumi.Input[str]] = None,
+                 ipv6_source_cidr_ip: Optional[pulumi.Input[str]] = None,
                  priority: Optional[pulumi.Input[int]] = None,
                  rw_access_type: Optional[pulumi.Input[str]] = None,
+                 source_cidr_ip: Optional[pulumi.Input[str]] = None,
                  user_access_type: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a AccessRule resource.
-        :param pulumi.Input[str] access_group_name: Permission group name.
-        :param pulumi.Input[str] source_cidr_ip: Address or address segment.
-        :param pulumi.Input[int] priority: Priority level. Range: 1-100. Default value: `1`.
-        :param pulumi.Input[str] rw_access_type: Read-write permission type: `RDWR` (default), `RDONLY`.
-        :param pulumi.Input[str] user_access_type: User permission type: `no_squash` (default), `root_squash`, `all_squash`.
+        :param pulumi.Input[str] access_group_name: AccessGroupName.
+        :param pulumi.Input[str] file_system_type: filesystem type. include standard, extreme.
+        :param pulumi.Input[str] ipv6_source_cidr_ip: Ipv6SourceCidrIp.
+        :param pulumi.Input[int] priority: Priority.
+        :param pulumi.Input[str] rw_access_type: RWAccess.
+        :param pulumi.Input[str] source_cidr_ip: SourceCidrIp.
+        :param pulumi.Input[str] user_access_type: UserAccess.
         """
         pulumi.set(__self__, "access_group_name", access_group_name)
-        pulumi.set(__self__, "source_cidr_ip", source_cidr_ip)
+        if file_system_type is not None:
+            pulumi.set(__self__, "file_system_type", file_system_type)
+        if ipv6_source_cidr_ip is not None:
+            pulumi.set(__self__, "ipv6_source_cidr_ip", ipv6_source_cidr_ip)
         if priority is not None:
             pulumi.set(__self__, "priority", priority)
         if rw_access_type is not None:
             pulumi.set(__self__, "rw_access_type", rw_access_type)
+        if source_cidr_ip is not None:
+            pulumi.set(__self__, "source_cidr_ip", source_cidr_ip)
         if user_access_type is not None:
             pulumi.set(__self__, "user_access_type", user_access_type)
 
@@ -40,7 +49,7 @@ class AccessRuleArgs:
     @pulumi.getter(name="accessGroupName")
     def access_group_name(self) -> pulumi.Input[str]:
         """
-        Permission group name.
+        AccessGroupName.
         """
         return pulumi.get(self, "access_group_name")
 
@@ -49,22 +58,34 @@ class AccessRuleArgs:
         pulumi.set(self, "access_group_name", value)
 
     @property
-    @pulumi.getter(name="sourceCidrIp")
-    def source_cidr_ip(self) -> pulumi.Input[str]:
+    @pulumi.getter(name="fileSystemType")
+    def file_system_type(self) -> Optional[pulumi.Input[str]]:
         """
-        Address or address segment.
+        filesystem type. include standard, extreme.
         """
-        return pulumi.get(self, "source_cidr_ip")
+        return pulumi.get(self, "file_system_type")
 
-    @source_cidr_ip.setter
-    def source_cidr_ip(self, value: pulumi.Input[str]):
-        pulumi.set(self, "source_cidr_ip", value)
+    @file_system_type.setter
+    def file_system_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "file_system_type", value)
+
+    @property
+    @pulumi.getter(name="ipv6SourceCidrIp")
+    def ipv6_source_cidr_ip(self) -> Optional[pulumi.Input[str]]:
+        """
+        Ipv6SourceCidrIp.
+        """
+        return pulumi.get(self, "ipv6_source_cidr_ip")
+
+    @ipv6_source_cidr_ip.setter
+    def ipv6_source_cidr_ip(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ipv6_source_cidr_ip", value)
 
     @property
     @pulumi.getter
     def priority(self) -> Optional[pulumi.Input[int]]:
         """
-        Priority level. Range: 1-100. Default value: `1`.
+        Priority.
         """
         return pulumi.get(self, "priority")
 
@@ -76,7 +97,7 @@ class AccessRuleArgs:
     @pulumi.getter(name="rwAccessType")
     def rw_access_type(self) -> Optional[pulumi.Input[str]]:
         """
-        Read-write permission type: `RDWR` (default), `RDONLY`.
+        RWAccess.
         """
         return pulumi.get(self, "rw_access_type")
 
@@ -85,10 +106,22 @@ class AccessRuleArgs:
         pulumi.set(self, "rw_access_type", value)
 
     @property
+    @pulumi.getter(name="sourceCidrIp")
+    def source_cidr_ip(self) -> Optional[pulumi.Input[str]]:
+        """
+        SourceCidrIp.
+        """
+        return pulumi.get(self, "source_cidr_ip")
+
+    @source_cidr_ip.setter
+    def source_cidr_ip(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "source_cidr_ip", value)
+
+    @property
     @pulumi.getter(name="userAccessType")
     def user_access_type(self) -> Optional[pulumi.Input[str]]:
         """
-        User permission type: `no_squash` (default), `root_squash`, `all_squash`.
+        UserAccess.
         """
         return pulumi.get(self, "user_access_type")
 
@@ -102,23 +135,31 @@ class _AccessRuleState:
     def __init__(__self__, *,
                  access_group_name: Optional[pulumi.Input[str]] = None,
                  access_rule_id: Optional[pulumi.Input[str]] = None,
+                 file_system_type: Optional[pulumi.Input[str]] = None,
+                 ipv6_source_cidr_ip: Optional[pulumi.Input[str]] = None,
                  priority: Optional[pulumi.Input[int]] = None,
                  rw_access_type: Optional[pulumi.Input[str]] = None,
                  source_cidr_ip: Optional[pulumi.Input[str]] = None,
                  user_access_type: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering AccessRule resources.
-        :param pulumi.Input[str] access_group_name: Permission group name.
-        :param pulumi.Input[str] access_rule_id: The nas access rule ID.
-        :param pulumi.Input[int] priority: Priority level. Range: 1-100. Default value: `1`.
-        :param pulumi.Input[str] rw_access_type: Read-write permission type: `RDWR` (default), `RDONLY`.
-        :param pulumi.Input[str] source_cidr_ip: Address or address segment.
-        :param pulumi.Input[str] user_access_type: User permission type: `no_squash` (default), `root_squash`, `all_squash`.
+        :param pulumi.Input[str] access_group_name: AccessGroupName.
+        :param pulumi.Input[str] access_rule_id: The first ID of the resource.
+        :param pulumi.Input[str] file_system_type: filesystem type. include standard, extreme.
+        :param pulumi.Input[str] ipv6_source_cidr_ip: Ipv6SourceCidrIp.
+        :param pulumi.Input[int] priority: Priority.
+        :param pulumi.Input[str] rw_access_type: RWAccess.
+        :param pulumi.Input[str] source_cidr_ip: SourceCidrIp.
+        :param pulumi.Input[str] user_access_type: UserAccess.
         """
         if access_group_name is not None:
             pulumi.set(__self__, "access_group_name", access_group_name)
         if access_rule_id is not None:
             pulumi.set(__self__, "access_rule_id", access_rule_id)
+        if file_system_type is not None:
+            pulumi.set(__self__, "file_system_type", file_system_type)
+        if ipv6_source_cidr_ip is not None:
+            pulumi.set(__self__, "ipv6_source_cidr_ip", ipv6_source_cidr_ip)
         if priority is not None:
             pulumi.set(__self__, "priority", priority)
         if rw_access_type is not None:
@@ -132,7 +173,7 @@ class _AccessRuleState:
     @pulumi.getter(name="accessGroupName")
     def access_group_name(self) -> Optional[pulumi.Input[str]]:
         """
-        Permission group name.
+        AccessGroupName.
         """
         return pulumi.get(self, "access_group_name")
 
@@ -144,7 +185,7 @@ class _AccessRuleState:
     @pulumi.getter(name="accessRuleId")
     def access_rule_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The nas access rule ID.
+        The first ID of the resource.
         """
         return pulumi.get(self, "access_rule_id")
 
@@ -153,10 +194,34 @@ class _AccessRuleState:
         pulumi.set(self, "access_rule_id", value)
 
     @property
+    @pulumi.getter(name="fileSystemType")
+    def file_system_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        filesystem type. include standard, extreme.
+        """
+        return pulumi.get(self, "file_system_type")
+
+    @file_system_type.setter
+    def file_system_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "file_system_type", value)
+
+    @property
+    @pulumi.getter(name="ipv6SourceCidrIp")
+    def ipv6_source_cidr_ip(self) -> Optional[pulumi.Input[str]]:
+        """
+        Ipv6SourceCidrIp.
+        """
+        return pulumi.get(self, "ipv6_source_cidr_ip")
+
+    @ipv6_source_cidr_ip.setter
+    def ipv6_source_cidr_ip(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ipv6_source_cidr_ip", value)
+
+    @property
     @pulumi.getter
     def priority(self) -> Optional[pulumi.Input[int]]:
         """
-        Priority level. Range: 1-100. Default value: `1`.
+        Priority.
         """
         return pulumi.get(self, "priority")
 
@@ -168,7 +233,7 @@ class _AccessRuleState:
     @pulumi.getter(name="rwAccessType")
     def rw_access_type(self) -> Optional[pulumi.Input[str]]:
         """
-        Read-write permission type: `RDWR` (default), `RDONLY`.
+        RWAccess.
         """
         return pulumi.get(self, "rw_access_type")
 
@@ -180,7 +245,7 @@ class _AccessRuleState:
     @pulumi.getter(name="sourceCidrIp")
     def source_cidr_ip(self) -> Optional[pulumi.Input[str]]:
         """
-        Address or address segment.
+        SourceCidrIp.
         """
         return pulumi.get(self, "source_cidr_ip")
 
@@ -192,7 +257,7 @@ class _AccessRuleState:
     @pulumi.getter(name="userAccessType")
     def user_access_type(self) -> Optional[pulumi.Input[str]]:
         """
-        User permission type: `no_squash` (default), `root_squash`, `all_squash`.
+        UserAccess.
         """
         return pulumi.get(self, "user_access_type")
 
@@ -207,17 +272,19 @@ class AccessRule(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  access_group_name: Optional[pulumi.Input[str]] = None,
+                 file_system_type: Optional[pulumi.Input[str]] = None,
+                 ipv6_source_cidr_ip: Optional[pulumi.Input[str]] = None,
                  priority: Optional[pulumi.Input[int]] = None,
                  rw_access_type: Optional[pulumi.Input[str]] = None,
                  source_cidr_ip: Optional[pulumi.Input[str]] = None,
                  user_access_type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Provides a Nas Access Rule resource.
+        Provides a NAS Access Rule resource.
 
-        When NAS is activated, the Default VPC Permission Group is automatically generated. It allows all IP addresses in a VPC to access the mount point with full permissions. Full permissions include Read/Write permission with no restriction on root users.
+        For information about NAS Access Rule and how to use it, see [What is Access Rule](https://www.alibabacloud.com/help/en/nas/developer-reference/api-nas-2017-06-26-createaccessrule).
 
-        > **NOTE:** Available in v1.34.0+.
+        > **NOTE:** Available since v1.34.0.
 
         ## Example Usage
 
@@ -241,19 +308,21 @@ class AccessRule(pulumi.CustomResource):
 
         ## Import
 
-        Nas Access Rule can be imported using the id, e.g.
+        NAS Access Rule can be imported using the id, e.g.
 
         ```sh
-        $ pulumi import alicloud:nas/accessRule:AccessRule foo tf-testAccNasConfigName:1
+        $ pulumi import alicloud:nas/accessRule:AccessRule example <access_group_name>:<file_system_type>:<access_rule_id>
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] access_group_name: Permission group name.
-        :param pulumi.Input[int] priority: Priority level. Range: 1-100. Default value: `1`.
-        :param pulumi.Input[str] rw_access_type: Read-write permission type: `RDWR` (default), `RDONLY`.
-        :param pulumi.Input[str] source_cidr_ip: Address or address segment.
-        :param pulumi.Input[str] user_access_type: User permission type: `no_squash` (default), `root_squash`, `all_squash`.
+        :param pulumi.Input[str] access_group_name: AccessGroupName.
+        :param pulumi.Input[str] file_system_type: filesystem type. include standard, extreme.
+        :param pulumi.Input[str] ipv6_source_cidr_ip: Ipv6SourceCidrIp.
+        :param pulumi.Input[int] priority: Priority.
+        :param pulumi.Input[str] rw_access_type: RWAccess.
+        :param pulumi.Input[str] source_cidr_ip: SourceCidrIp.
+        :param pulumi.Input[str] user_access_type: UserAccess.
         """
         ...
     @overload
@@ -262,11 +331,11 @@ class AccessRule(pulumi.CustomResource):
                  args: AccessRuleArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a Nas Access Rule resource.
+        Provides a NAS Access Rule resource.
 
-        When NAS is activated, the Default VPC Permission Group is automatically generated. It allows all IP addresses in a VPC to access the mount point with full permissions. Full permissions include Read/Write permission with no restriction on root users.
+        For information about NAS Access Rule and how to use it, see [What is Access Rule](https://www.alibabacloud.com/help/en/nas/developer-reference/api-nas-2017-06-26-createaccessrule).
 
-        > **NOTE:** Available in v1.34.0+.
+        > **NOTE:** Available since v1.34.0.
 
         ## Example Usage
 
@@ -290,10 +359,10 @@ class AccessRule(pulumi.CustomResource):
 
         ## Import
 
-        Nas Access Rule can be imported using the id, e.g.
+        NAS Access Rule can be imported using the id, e.g.
 
         ```sh
-        $ pulumi import alicloud:nas/accessRule:AccessRule foo tf-testAccNasConfigName:1
+        $ pulumi import alicloud:nas/accessRule:AccessRule example <access_group_name>:<file_system_type>:<access_rule_id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -312,6 +381,8 @@ class AccessRule(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  access_group_name: Optional[pulumi.Input[str]] = None,
+                 file_system_type: Optional[pulumi.Input[str]] = None,
+                 ipv6_source_cidr_ip: Optional[pulumi.Input[str]] = None,
                  priority: Optional[pulumi.Input[int]] = None,
                  rw_access_type: Optional[pulumi.Input[str]] = None,
                  source_cidr_ip: Optional[pulumi.Input[str]] = None,
@@ -328,10 +399,10 @@ class AccessRule(pulumi.CustomResource):
             if access_group_name is None and not opts.urn:
                 raise TypeError("Missing required property 'access_group_name'")
             __props__.__dict__["access_group_name"] = access_group_name
+            __props__.__dict__["file_system_type"] = file_system_type
+            __props__.__dict__["ipv6_source_cidr_ip"] = ipv6_source_cidr_ip
             __props__.__dict__["priority"] = priority
             __props__.__dict__["rw_access_type"] = rw_access_type
-            if source_cidr_ip is None and not opts.urn:
-                raise TypeError("Missing required property 'source_cidr_ip'")
             __props__.__dict__["source_cidr_ip"] = source_cidr_ip
             __props__.__dict__["user_access_type"] = user_access_type
             __props__.__dict__["access_rule_id"] = None
@@ -347,6 +418,8 @@ class AccessRule(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             access_group_name: Optional[pulumi.Input[str]] = None,
             access_rule_id: Optional[pulumi.Input[str]] = None,
+            file_system_type: Optional[pulumi.Input[str]] = None,
+            ipv6_source_cidr_ip: Optional[pulumi.Input[str]] = None,
             priority: Optional[pulumi.Input[int]] = None,
             rw_access_type: Optional[pulumi.Input[str]] = None,
             source_cidr_ip: Optional[pulumi.Input[str]] = None,
@@ -358,12 +431,14 @@ class AccessRule(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] access_group_name: Permission group name.
-        :param pulumi.Input[str] access_rule_id: The nas access rule ID.
-        :param pulumi.Input[int] priority: Priority level. Range: 1-100. Default value: `1`.
-        :param pulumi.Input[str] rw_access_type: Read-write permission type: `RDWR` (default), `RDONLY`.
-        :param pulumi.Input[str] source_cidr_ip: Address or address segment.
-        :param pulumi.Input[str] user_access_type: User permission type: `no_squash` (default), `root_squash`, `all_squash`.
+        :param pulumi.Input[str] access_group_name: AccessGroupName.
+        :param pulumi.Input[str] access_rule_id: The first ID of the resource.
+        :param pulumi.Input[str] file_system_type: filesystem type. include standard, extreme.
+        :param pulumi.Input[str] ipv6_source_cidr_ip: Ipv6SourceCidrIp.
+        :param pulumi.Input[int] priority: Priority.
+        :param pulumi.Input[str] rw_access_type: RWAccess.
+        :param pulumi.Input[str] source_cidr_ip: SourceCidrIp.
+        :param pulumi.Input[str] user_access_type: UserAccess.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -371,6 +446,8 @@ class AccessRule(pulumi.CustomResource):
 
         __props__.__dict__["access_group_name"] = access_group_name
         __props__.__dict__["access_rule_id"] = access_rule_id
+        __props__.__dict__["file_system_type"] = file_system_type
+        __props__.__dict__["ipv6_source_cidr_ip"] = ipv6_source_cidr_ip
         __props__.__dict__["priority"] = priority
         __props__.__dict__["rw_access_type"] = rw_access_type
         __props__.__dict__["source_cidr_ip"] = source_cidr_ip
@@ -381,7 +458,7 @@ class AccessRule(pulumi.CustomResource):
     @pulumi.getter(name="accessGroupName")
     def access_group_name(self) -> pulumi.Output[str]:
         """
-        Permission group name.
+        AccessGroupName.
         """
         return pulumi.get(self, "access_group_name")
 
@@ -389,39 +466,55 @@ class AccessRule(pulumi.CustomResource):
     @pulumi.getter(name="accessRuleId")
     def access_rule_id(self) -> pulumi.Output[str]:
         """
-        The nas access rule ID.
+        The first ID of the resource.
         """
         return pulumi.get(self, "access_rule_id")
+
+    @property
+    @pulumi.getter(name="fileSystemType")
+    def file_system_type(self) -> pulumi.Output[str]:
+        """
+        filesystem type. include standard, extreme.
+        """
+        return pulumi.get(self, "file_system_type")
+
+    @property
+    @pulumi.getter(name="ipv6SourceCidrIp")
+    def ipv6_source_cidr_ip(self) -> pulumi.Output[Optional[str]]:
+        """
+        Ipv6SourceCidrIp.
+        """
+        return pulumi.get(self, "ipv6_source_cidr_ip")
 
     @property
     @pulumi.getter
     def priority(self) -> pulumi.Output[Optional[int]]:
         """
-        Priority level. Range: 1-100. Default value: `1`.
+        Priority.
         """
         return pulumi.get(self, "priority")
 
     @property
     @pulumi.getter(name="rwAccessType")
-    def rw_access_type(self) -> pulumi.Output[Optional[str]]:
+    def rw_access_type(self) -> pulumi.Output[str]:
         """
-        Read-write permission type: `RDWR` (default), `RDONLY`.
+        RWAccess.
         """
         return pulumi.get(self, "rw_access_type")
 
     @property
     @pulumi.getter(name="sourceCidrIp")
-    def source_cidr_ip(self) -> pulumi.Output[str]:
+    def source_cidr_ip(self) -> pulumi.Output[Optional[str]]:
         """
-        Address or address segment.
+        SourceCidrIp.
         """
         return pulumi.get(self, "source_cidr_ip")
 
     @property
     @pulumi.getter(name="userAccessType")
-    def user_access_type(self) -> pulumi.Output[Optional[str]]:
+    def user_access_type(self) -> pulumi.Output[str]:
         """
-        User permission type: `no_squash` (default), `root_squash`, `all_squash`.
+        UserAccess.
         """
         return pulumi.get(self, "user_access_type")
 

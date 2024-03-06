@@ -373,7 +373,7 @@ class DedicatedBlockStorageCluster(pulumi.CustomResource):
         """
         Provides a Ebs Dedicated Block Storage Cluster resource.
 
-        For information about Ebs Dedicated Block Storage Cluster and how to use it, see [What is Dedicated Block Storage Cluster](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/CreateDedicatedBlockStorageCluster).
+        For information about Ebs Dedicated Block Storage Cluster and how to use it, see [What is Dedicated Block Storage Cluster](https://www.alibabacloud.com/help/en/ecs/developer-reference/api-ebs-2021-07-30-creatededicatedblockstoragecluster).
 
         > **NOTE:** Available in v1.195.0+.
 
@@ -402,7 +402,7 @@ class DedicatedBlockStorageCluster(pulumi.CustomResource):
         """
         Provides a Ebs Dedicated Block Storage Cluster resource.
 
-        For information about Ebs Dedicated Block Storage Cluster and how to use it, see [What is Dedicated Block Storage Cluster](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/CreateDedicatedBlockStorageCluster).
+        For information about Ebs Dedicated Block Storage Cluster and how to use it, see [What is Dedicated Block Storage Cluster](https://www.alibabacloud.com/help/en/ecs/developer-reference/api-ebs-2021-07-30-creatededicatedblockstoragecluster).
 
         > **NOTE:** Available in v1.195.0+.
 

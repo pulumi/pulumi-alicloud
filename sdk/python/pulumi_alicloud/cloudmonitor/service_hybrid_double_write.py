@@ -176,13 +176,18 @@ class ServiceHybridDoubleWrite(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        source = alicloud.cms.Namespace("source", namespace="your_source_namespace")
-        default_namespace = alicloud.cms.Namespace("defaultNamespace", namespace="your_namespace")
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        default_account = alicloud.get_account()
+        source = alicloud.cms.Namespace("source", namespace=name)
+        default_namespace = alicloud.cms.Namespace("defaultNamespace", namespace=f"{name}-source")
         default_service_hybrid_double_write = alicloud.cloudmonitor.ServiceHybridDoubleWrite("defaultServiceHybridDoubleWrite",
             source_namespace=source.id,
-            source_user_id="your_source_account",
+            source_user_id=default_account.id,
             namespace=default_namespace.id,
-            user_id="your_account")
+            user_id=default_account.id)
         ```
 
         ## Import
@@ -221,13 +226,18 @@ class ServiceHybridDoubleWrite(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        source = alicloud.cms.Namespace("source", namespace="your_source_namespace")
-        default_namespace = alicloud.cms.Namespace("defaultNamespace", namespace="your_namespace")
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        default_account = alicloud.get_account()
+        source = alicloud.cms.Namespace("source", namespace=name)
+        default_namespace = alicloud.cms.Namespace("defaultNamespace", namespace=f"{name}-source")
         default_service_hybrid_double_write = alicloud.cloudmonitor.ServiceHybridDoubleWrite("defaultServiceHybridDoubleWrite",
             source_namespace=source.id,
-            source_user_id="your_source_account",
+            source_user_id=default_account.id,
             namespace=default_namespace.id,
-            user_id="your_account")
+            user_id=default_account.id)
         ```
 
         ## Import

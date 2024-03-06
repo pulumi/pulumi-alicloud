@@ -283,18 +283,7 @@ class AlarmContact(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        # If you use this template, you need to activate the link before you can return to the alarm contact information, otherwise diff will appear in terraform. So please confirm the activation link as soon as possible.
-        example = alicloud.cms.AlarmContact("example",
-            alarm_contact_name="terraform-example",
-            channels_mail="terraform@test.com",
-            describe="For example")
-        ```
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        # If you use this template, you can ignore the diff of the alarm contact information by `lifestyle`. We recommend the above usage and activate the link in time.
+        # You need to activate the link before you can return to the alarm contact information, otherwise diff will appear in terraform. So please confirm the activation link as soon as possible. Besides, you can ignore the diff of the alarm contact information by `lifestyle`. 
         example = alicloud.cms.AlarmContact("example",
             alarm_contact_name="tf-example",
             describe="For example",
@@ -340,18 +329,7 @@ class AlarmContact(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        # If you use this template, you need to activate the link before you can return to the alarm contact information, otherwise diff will appear in terraform. So please confirm the activation link as soon as possible.
-        example = alicloud.cms.AlarmContact("example",
-            alarm_contact_name="terraform-example",
-            channels_mail="terraform@test.com",
-            describe="For example")
-        ```
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        # If you use this template, you can ignore the diff of the alarm contact information by `lifestyle`. We recommend the above usage and activate the link in time.
+        # You need to activate the link before you can return to the alarm contact information, otherwise diff will appear in terraform. So please confirm the activation link as soon as possible. Besides, you can ignore the diff of the alarm contact information by `lifestyle`. 
         example = alicloud.cms.AlarmContact("example",
             alarm_contact_name="tf-example",
             describe="For example",

@@ -30,7 +30,7 @@ public final class GetRulesRule {
      */
     private String loadBalancerId;
     /**
-     * @return The priority of the rule. Valid values: 1 to 10000. A smaller value indicates a higher priority.  Note The priority of each rule within the same listener must be unique.
+     * @return The priority of the rule.
      * 
      */
     private Integer priority;
@@ -45,17 +45,17 @@ public final class GetRulesRule {
      */
     private List<GetRulesRuleRuleCondition> ruleConditions;
     /**
-     * @return The first ID of the resource.
+     * @return The ID of the Rule.
      * 
      */
     private String ruleId;
     /**
-     * @return The name of the forwarding rule. The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
+     * @return The name of the forwarding rule.
      * 
      */
     private String ruleName;
     /**
-     * @return The status of the resource.
+     * @return The status of the forwarding rule. Valid values: `Provisioning`, `Configuring`, `Available`.
      * 
      */
     private String status;
@@ -83,7 +83,7 @@ public final class GetRulesRule {
         return this.loadBalancerId;
     }
     /**
-     * @return The priority of the rule. Valid values: 1 to 10000. A smaller value indicates a higher priority.  Note The priority of each rule within the same listener must be unique.
+     * @return The priority of the rule.
      * 
      */
     public Integer priority() {
@@ -104,21 +104,21 @@ public final class GetRulesRule {
         return this.ruleConditions;
     }
     /**
-     * @return The first ID of the resource.
+     * @return The ID of the Rule.
      * 
      */
     public String ruleId() {
         return this.ruleId;
     }
     /**
-     * @return The name of the forwarding rule. The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
+     * @return The name of the forwarding rule.
      * 
      */
     public String ruleName() {
         return this.ruleName;
     }
     /**
-     * @return The status of the resource.
+     * @return The status of the forwarding rule. Valid values: `Provisioning`, `Configuring`, `Available`.
      * 
      */
     public String status() {

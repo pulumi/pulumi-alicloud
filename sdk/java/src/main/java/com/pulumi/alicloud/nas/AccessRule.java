@@ -16,11 +16,11 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a Nas Access Rule resource.
+ * Provides a NAS Access Rule resource.
  * 
- * When NAS is activated, the Default VPC Permission Group is automatically generated. It allows all IP addresses in a VPC to access the mount point with full permissions. Full permissions include Read/Write permission with no restriction on root users.
+ * For information about NAS Access Rule and how to use it, see [What is Access Rule](https://www.alibabacloud.com/help/en/nas/developer-reference/api-nas-2017-06-26-createaccessrule).
  * 
- * &gt; **NOTE:** Available in v1.34.0+.
+ * &gt; **NOTE:** Available since v1.34.0.
  * 
  * ## Example Usage
  * 
@@ -68,98 +68,126 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Nas Access Rule can be imported using the id, e.g.
+ * NAS Access Rule can be imported using the id, e.g.
  * 
  * ```sh
- * $ pulumi import alicloud:nas/accessRule:AccessRule foo tf-testAccNasConfigName:1
+ * $ pulumi import alicloud:nas/accessRule:AccessRule example &lt;access_group_name&gt;:&lt;file_system_type&gt;:&lt;access_rule_id&gt;
  * ```
  * 
  */
 @ResourceType(type="alicloud:nas/accessRule:AccessRule")
 public class AccessRule extends com.pulumi.resources.CustomResource {
     /**
-     * Permission group name.
+     * AccessGroupName.
      * 
      */
     @Export(name="accessGroupName", refs={String.class}, tree="[0]")
     private Output<String> accessGroupName;
 
     /**
-     * @return Permission group name.
+     * @return AccessGroupName.
      * 
      */
     public Output<String> accessGroupName() {
         return this.accessGroupName;
     }
     /**
-     * The nas access rule ID.
+     * The first ID of the resource.
      * 
      */
     @Export(name="accessRuleId", refs={String.class}, tree="[0]")
     private Output<String> accessRuleId;
 
     /**
-     * @return The nas access rule ID.
+     * @return The first ID of the resource.
      * 
      */
     public Output<String> accessRuleId() {
         return this.accessRuleId;
     }
     /**
-     * Priority level. Range: 1-100. Default value: `1`.
+     * filesystem type. include standard, extreme.
+     * 
+     */
+    @Export(name="fileSystemType", refs={String.class}, tree="[0]")
+    private Output<String> fileSystemType;
+
+    /**
+     * @return filesystem type. include standard, extreme.
+     * 
+     */
+    public Output<String> fileSystemType() {
+        return this.fileSystemType;
+    }
+    /**
+     * Ipv6SourceCidrIp.
+     * 
+     */
+    @Export(name="ipv6SourceCidrIp", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> ipv6SourceCidrIp;
+
+    /**
+     * @return Ipv6SourceCidrIp.
+     * 
+     */
+    public Output<Optional<String>> ipv6SourceCidrIp() {
+        return Codegen.optional(this.ipv6SourceCidrIp);
+    }
+    /**
+     * Priority.
      * 
      */
     @Export(name="priority", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> priority;
 
     /**
-     * @return Priority level. Range: 1-100. Default value: `1`.
+     * @return Priority.
      * 
      */
     public Output<Optional<Integer>> priority() {
         return Codegen.optional(this.priority);
     }
     /**
-     * Read-write permission type: `RDWR` (default), `RDONLY`.
+     * RWAccess.
      * 
      */
     @Export(name="rwAccessType", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> rwAccessType;
+    private Output<String> rwAccessType;
 
     /**
-     * @return Read-write permission type: `RDWR` (default), `RDONLY`.
+     * @return RWAccess.
      * 
      */
-    public Output<Optional<String>> rwAccessType() {
-        return Codegen.optional(this.rwAccessType);
+    public Output<String> rwAccessType() {
+        return this.rwAccessType;
     }
     /**
-     * Address or address segment.
+     * SourceCidrIp.
      * 
      */
     @Export(name="sourceCidrIp", refs={String.class}, tree="[0]")
-    private Output<String> sourceCidrIp;
+    private Output</* @Nullable */ String> sourceCidrIp;
 
     /**
-     * @return Address or address segment.
+     * @return SourceCidrIp.
      * 
      */
-    public Output<String> sourceCidrIp() {
-        return this.sourceCidrIp;
+    public Output<Optional<String>> sourceCidrIp() {
+        return Codegen.optional(this.sourceCidrIp);
     }
     /**
-     * User permission type: `no_squash` (default), `root_squash`, `all_squash`.
+     * UserAccess.
      * 
      */
     @Export(name="userAccessType", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> userAccessType;
+    private Output<String> userAccessType;
 
     /**
-     * @return User permission type: `no_squash` (default), `root_squash`, `all_squash`.
+     * @return UserAccess.
      * 
      */
-    public Output<Optional<String>> userAccessType() {
-        return Codegen.optional(this.userAccessType);
+    public Output<String> userAccessType() {
+        return this.userAccessType;
     }
 
     /**

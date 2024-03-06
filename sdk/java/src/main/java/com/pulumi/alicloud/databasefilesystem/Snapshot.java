@@ -35,10 +35,9 @@ import javax.annotation.Nullable;
  * import com.pulumi.alicloud.ecs.EcsFunctions;
  * import com.pulumi.alicloud.ecs.inputs.GetInstanceTypesArgs;
  * import com.pulumi.alicloud.ecs.inputs.GetImagesArgs;
- * import com.pulumi.alicloud.vpc.Network;
- * import com.pulumi.alicloud.vpc.NetworkArgs;
- * import com.pulumi.alicloud.vpc.Switch;
- * import com.pulumi.alicloud.vpc.SwitchArgs;
+ * import com.pulumi.alicloud.vpc.VpcFunctions;
+ * import com.pulumi.alicloud.vpc.inputs.GetNetworksArgs;
+ * import com.pulumi.alicloud.vpc.inputs.GetSwitchesArgs;
  * import com.pulumi.alicloud.ecs.SecurityGroup;
  * import com.pulumi.alicloud.ecs.SecurityGroupArgs;
  * import com.pulumi.alicloud.ecs.Instance;
@@ -73,51 +72,48 @@ import javax.annotation.Nullable;
  * 
  *         final var exampleImages = EcsFunctions.getImages(GetImagesArgs.builder()
  *             .instanceType(exampleInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.instanceTypes())[exampleInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.instanceTypes()).length() - 1].id())
- *             .nameRegex(&#34;^aliyun_2&#34;)
+ *             .nameRegex(&#34;^aliyun_2_1903_x64_20G_alibase_20231221.vhd&#34;)
  *             .owners(&#34;system&#34;)
  *             .build());
  * 
- *         var exampleNetwork = new Network(&#34;exampleNetwork&#34;, NetworkArgs.builder()        
- *             .vpcName(name)
- *             .cidrBlock(&#34;10.4.0.0/16&#34;)
+ *         final var defaultNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
+ *             .nameRegex(&#34;^default-NODELETING$&#34;)
  *             .build());
  * 
- *         var exampleSwitch = new Switch(&#34;exampleSwitch&#34;, SwitchArgs.builder()        
- *             .vswitchName(name)
- *             .cidrBlock(&#34;10.4.0.0/24&#34;)
- *             .vpcId(exampleNetwork.id())
+ *         final var defaultSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
+ *             .vpcId(defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
  *             .zoneId(zoneId)
  *             .build());
  * 
  *         var exampleSecurityGroup = new SecurityGroup(&#34;exampleSecurityGroup&#34;, SecurityGroupArgs.builder()        
- *             .vpcId(exampleNetwork.id())
+ *             .vpcId(defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
  *             .build());
  * 
- *         var exampleInstance = new Instance(&#34;exampleInstance&#34;, InstanceArgs.builder()        
+ *         var defaultInstance = new Instance(&#34;defaultInstance&#34;, InstanceArgs.builder()        
  *             .availabilityZone(zoneId)
  *             .instanceName(name)
- *             .imageId(exampleImages.applyValue(getImagesResult -&gt; getImagesResult.images()[1].id()))
+ *             .imageId(exampleImages.applyValue(getImagesResult -&gt; getImagesResult.images()[0].id()))
  *             .instanceType(exampleInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.instanceTypes())[exampleInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.instanceTypes()).length() - 1].id())
  *             .securityGroups(exampleSecurityGroup.id())
- *             .vswitchId(exampleSwitch.id())
+ *             .vswitchId(defaultSwitches.applyValue(getSwitchesResult -&gt; getSwitchesResult.ids()[0]))
  *             .systemDiskCategory(&#34;cloud_essd&#34;)
  *             .build());
  * 
- *         var exampleDatabasefilesystem_instanceInstance = new Instance(&#34;exampleDatabasefilesystem/instanceInstance&#34;, InstanceArgs.builder()        
- *             .category(&#34;standard&#34;)
- *             .zoneId(zoneId)
+ *         var defaultDatabasefilesystem_instanceInstance = new Instance(&#34;defaultDatabasefilesystem/instanceInstance&#34;, InstanceArgs.builder()        
+ *             .category(&#34;enterprise&#34;)
+ *             .zoneId(defaultInstance.availabilityZone())
  *             .performanceLevel(&#34;PL1&#34;)
- *             .instanceName(name)
+ *             .fsName(name)
  *             .size(100)
  *             .build());
  * 
- *         var exampleInstanceAttachment = new InstanceAttachment(&#34;exampleInstanceAttachment&#34;, InstanceAttachmentArgs.builder()        
- *             .ecsId(exampleInstance.id())
- *             .instanceId(exampleDatabasefilesystem / instanceInstance.id())
+ *         var defaultInstanceAttachment = new InstanceAttachment(&#34;defaultInstanceAttachment&#34;, InstanceAttachmentArgs.builder()        
+ *             .ecsId(defaultInstance.id())
+ *             .instanceId(defaultDatabasefilesystem / instanceInstance.id())
  *             .build());
  * 
  *         var exampleSnapshot = new Snapshot(&#34;exampleSnapshot&#34;, SnapshotArgs.builder()        
- *             .instanceId(exampleInstanceAttachment.instanceId())
+ *             .instanceId(defaultInstanceAttachment.instanceId())
  *             .snapshotName(name)
  *             .description(name)
  *             .retentionDays(30)

@@ -60,6 +60,11 @@ export type ReplicaPairDrill = import("./replicaPairDrill").ReplicaPairDrill;
 export const ReplicaPairDrill: typeof import("./replicaPairDrill").ReplicaPairDrill = null as any;
 utilities.lazyLoad(exports, ["ReplicaPairDrill"], () => require("./replicaPairDrill"));
 
+export { SolutionInstanceArgs, SolutionInstanceState } from "./solutionInstance";
+export type SolutionInstance = import("./solutionInstance").SolutionInstance;
+export const SolutionInstance: typeof import("./solutionInstance").SolutionInstance = null as any;
+utilities.lazyLoad(exports, ["SolutionInstance"], () => require("./solutionInstance"));
+
 
 const _module = {
     version: utilities.getVersion(),
@@ -79,6 +84,8 @@ const _module = {
                 return new ReplicaGroupDrill(name, <any>undefined, { urn })
             case "alicloud:ebs/replicaPairDrill:ReplicaPairDrill":
                 return new ReplicaPairDrill(name, <any>undefined, { urn })
+            case "alicloud:ebs/solutionInstance:SolutionInstance":
+                return new SolutionInstance(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
@@ -91,3 +98,4 @@ pulumi.runtime.registerResourceModule("alicloud", "ebs/enterpriseSnapshotPolicy"
 pulumi.runtime.registerResourceModule("alicloud", "ebs/enterpriseSnapshotPolicyAttachment", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ebs/replicaGroupDrill", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ebs/replicaPairDrill", _module)
+pulumi.runtime.registerResourceModule("alicloud", "ebs/solutionInstance", _module)

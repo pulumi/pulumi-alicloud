@@ -14,7 +14,7 @@ import (
 
 // Provides a DFS Access Rule resource.
 //
-// For information about DFS Access Rule and how to use it, see [What is Access Rule](https://www.alibabacloud.com/help/doc-detail/207144.htm).
+// For information about DFS Access Rule and how to use it, see [What is Access Rule](https://www.alibabacloud.com/help/en/aibaba-cloud-storage-services/latest/apsara-file-storage-for-hdfs).
 //
 // > **NOTE:** Available since v1.140.0.
 //
@@ -36,24 +36,24 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			cfg := config.New(ctx, "")
-//			name := "example_name"
+//			name := "terraform-example"
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
 //			defaultAccessGroup, err := dfs.NewAccessGroup(ctx, "defaultAccessGroup", &dfs.AccessGroupArgs{
+//				Description:     pulumi.String("example"),
 //				NetworkType:     pulumi.String("VPC"),
 //				AccessGroupName: pulumi.String(name),
-//				Description:     pulumi.String(name),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = dfs.NewAccessRule(ctx, "defaultAccessRule", &dfs.AccessRuleArgs{
-//				NetworkSegment: pulumi.String("192.0.2.0/24"),
-//				AccessGroupId:  defaultAccessGroup.ID(),
-//				Description:    pulumi.String(name),
+//				Description:    pulumi.String("example"),
 //				RwAccessType:   pulumi.String("RDWR"),
-//				Priority:       pulumi.Int(10),
+//				Priority:       pulumi.Int(1),
+//				NetworkSegment: pulumi.String("192.168.81.1"),
+//				AccessGroupId:  defaultAccessGroup.ID(),
 //			})
 //			if err != nil {
 //				return err
@@ -74,17 +74,19 @@ import (
 type AccessRule struct {
 	pulumi.CustomResourceState
 
-	// The resource ID of Access Group.
+	// Permission group resource ID. You must specify the permission group ID when creating a permission rule.
 	AccessGroupId pulumi.StringOutput `pulumi:"accessGroupId"`
-	// The ID of the Access Rule.
+	// The unique identity of the permission rule, which is used to retrieve the permission rule for a specific day in the permission group.
 	AccessRuleId pulumi.StringOutput `pulumi:"accessRuleId"`
-	// The Description of the Access Rule.
+	// Permission rule resource creation time.
+	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// Permission rule description.  No more than 32 characters in length.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// The NetworkSegment of the Access Rule.
+	// The IP address or network segment of the authorized object.
 	NetworkSegment pulumi.StringOutput `pulumi:"networkSegment"`
-	// The Priority of the Access Rule. Valid values: `1` to `100`. **NOTE:** When multiple rules are matched by the same authorized object, the high-priority rule takes effect. `1` is the highest priority.
+	// Permission rule priority. When the same authorization object matches multiple rules, the high-priority rule takes effect. Value range: 1~100,1 is the highest priority.
 	Priority pulumi.IntOutput `pulumi:"priority"`
-	// The RWAccessType of the Access Rule. Valid values: `RDONLY`, `RDWR`.
+	// The read and write permissions of the authorized object on the file system. Value: RDWR: readable and writable RDONLY: Read only.
 	RwAccessType pulumi.StringOutput `pulumi:"rwAccessType"`
 }
 
@@ -130,32 +132,36 @@ func GetAccessRule(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering AccessRule resources.
 type accessRuleState struct {
-	// The resource ID of Access Group.
+	// Permission group resource ID. You must specify the permission group ID when creating a permission rule.
 	AccessGroupId *string `pulumi:"accessGroupId"`
-	// The ID of the Access Rule.
+	// The unique identity of the permission rule, which is used to retrieve the permission rule for a specific day in the permission group.
 	AccessRuleId *string `pulumi:"accessRuleId"`
-	// The Description of the Access Rule.
+	// Permission rule resource creation time.
+	CreateTime *string `pulumi:"createTime"`
+	// Permission rule description.  No more than 32 characters in length.
 	Description *string `pulumi:"description"`
-	// The NetworkSegment of the Access Rule.
+	// The IP address or network segment of the authorized object.
 	NetworkSegment *string `pulumi:"networkSegment"`
-	// The Priority of the Access Rule. Valid values: `1` to `100`. **NOTE:** When multiple rules are matched by the same authorized object, the high-priority rule takes effect. `1` is the highest priority.
+	// Permission rule priority. When the same authorization object matches multiple rules, the high-priority rule takes effect. Value range: 1~100,1 is the highest priority.
 	Priority *int `pulumi:"priority"`
-	// The RWAccessType of the Access Rule. Valid values: `RDONLY`, `RDWR`.
+	// The read and write permissions of the authorized object on the file system. Value: RDWR: readable and writable RDONLY: Read only.
 	RwAccessType *string `pulumi:"rwAccessType"`
 }
 
 type AccessRuleState struct {
-	// The resource ID of Access Group.
+	// Permission group resource ID. You must specify the permission group ID when creating a permission rule.
 	AccessGroupId pulumi.StringPtrInput
-	// The ID of the Access Rule.
+	// The unique identity of the permission rule, which is used to retrieve the permission rule for a specific day in the permission group.
 	AccessRuleId pulumi.StringPtrInput
-	// The Description of the Access Rule.
+	// Permission rule resource creation time.
+	CreateTime pulumi.StringPtrInput
+	// Permission rule description.  No more than 32 characters in length.
 	Description pulumi.StringPtrInput
-	// The NetworkSegment of the Access Rule.
+	// The IP address or network segment of the authorized object.
 	NetworkSegment pulumi.StringPtrInput
-	// The Priority of the Access Rule. Valid values: `1` to `100`. **NOTE:** When multiple rules are matched by the same authorized object, the high-priority rule takes effect. `1` is the highest priority.
+	// Permission rule priority. When the same authorization object matches multiple rules, the high-priority rule takes effect. Value range: 1~100,1 is the highest priority.
 	Priority pulumi.IntPtrInput
-	// The RWAccessType of the Access Rule. Valid values: `RDONLY`, `RDWR`.
+	// The read and write permissions of the authorized object on the file system. Value: RDWR: readable and writable RDONLY: Read only.
 	RwAccessType pulumi.StringPtrInput
 }
 
@@ -164,29 +170,29 @@ func (AccessRuleState) ElementType() reflect.Type {
 }
 
 type accessRuleArgs struct {
-	// The resource ID of Access Group.
+	// Permission group resource ID. You must specify the permission group ID when creating a permission rule.
 	AccessGroupId string `pulumi:"accessGroupId"`
-	// The Description of the Access Rule.
+	// Permission rule description.  No more than 32 characters in length.
 	Description *string `pulumi:"description"`
-	// The NetworkSegment of the Access Rule.
+	// The IP address or network segment of the authorized object.
 	NetworkSegment string `pulumi:"networkSegment"`
-	// The Priority of the Access Rule. Valid values: `1` to `100`. **NOTE:** When multiple rules are matched by the same authorized object, the high-priority rule takes effect. `1` is the highest priority.
+	// Permission rule priority. When the same authorization object matches multiple rules, the high-priority rule takes effect. Value range: 1~100,1 is the highest priority.
 	Priority int `pulumi:"priority"`
-	// The RWAccessType of the Access Rule. Valid values: `RDONLY`, `RDWR`.
+	// The read and write permissions of the authorized object on the file system. Value: RDWR: readable and writable RDONLY: Read only.
 	RwAccessType string `pulumi:"rwAccessType"`
 }
 
 // The set of arguments for constructing a AccessRule resource.
 type AccessRuleArgs struct {
-	// The resource ID of Access Group.
+	// Permission group resource ID. You must specify the permission group ID when creating a permission rule.
 	AccessGroupId pulumi.StringInput
-	// The Description of the Access Rule.
+	// Permission rule description.  No more than 32 characters in length.
 	Description pulumi.StringPtrInput
-	// The NetworkSegment of the Access Rule.
+	// The IP address or network segment of the authorized object.
 	NetworkSegment pulumi.StringInput
-	// The Priority of the Access Rule. Valid values: `1` to `100`. **NOTE:** When multiple rules are matched by the same authorized object, the high-priority rule takes effect. `1` is the highest priority.
+	// Permission rule priority. When the same authorization object matches multiple rules, the high-priority rule takes effect. Value range: 1~100,1 is the highest priority.
 	Priority pulumi.IntInput
-	// The RWAccessType of the Access Rule. Valid values: `RDONLY`, `RDWR`.
+	// The read and write permissions of the authorized object on the file system. Value: RDWR: readable and writable RDONLY: Read only.
 	RwAccessType pulumi.StringInput
 }
 
@@ -277,32 +283,37 @@ func (o AccessRuleOutput) ToAccessRuleOutputWithContext(ctx context.Context) Acc
 	return o
 }
 
-// The resource ID of Access Group.
+// Permission group resource ID. You must specify the permission group ID when creating a permission rule.
 func (o AccessRuleOutput) AccessGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v *AccessRule) pulumi.StringOutput { return v.AccessGroupId }).(pulumi.StringOutput)
 }
 
-// The ID of the Access Rule.
+// The unique identity of the permission rule, which is used to retrieve the permission rule for a specific day in the permission group.
 func (o AccessRuleOutput) AccessRuleId() pulumi.StringOutput {
 	return o.ApplyT(func(v *AccessRule) pulumi.StringOutput { return v.AccessRuleId }).(pulumi.StringOutput)
 }
 
-// The Description of the Access Rule.
+// Permission rule resource creation time.
+func (o AccessRuleOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *AccessRule) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Permission rule description.  No more than 32 characters in length.
 func (o AccessRuleOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AccessRule) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// The NetworkSegment of the Access Rule.
+// The IP address or network segment of the authorized object.
 func (o AccessRuleOutput) NetworkSegment() pulumi.StringOutput {
 	return o.ApplyT(func(v *AccessRule) pulumi.StringOutput { return v.NetworkSegment }).(pulumi.StringOutput)
 }
 
-// The Priority of the Access Rule. Valid values: `1` to `100`. **NOTE:** When multiple rules are matched by the same authorized object, the high-priority rule takes effect. `1` is the highest priority.
+// Permission rule priority. When the same authorization object matches multiple rules, the high-priority rule takes effect. Value range: 1~100,1 is the highest priority.
 func (o AccessRuleOutput) Priority() pulumi.IntOutput {
 	return o.ApplyT(func(v *AccessRule) pulumi.IntOutput { return v.Priority }).(pulumi.IntOutput)
 }
 
-// The RWAccessType of the Access Rule. Valid values: `RDONLY`, `RDWR`.
+// The read and write permissions of the authorized object on the file system. Value: RDWR: readable and writable RDONLY: Read only.
 func (o AccessRuleOutput) RwAccessType() pulumi.StringOutput {
 	return o.ApplyT(func(v *AccessRule) pulumi.StringOutput { return v.RwAccessType }).(pulumi.StringOutput)
 }

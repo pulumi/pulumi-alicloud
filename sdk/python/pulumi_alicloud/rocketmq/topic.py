@@ -316,6 +316,7 @@ class Topic(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
         config = pulumi.Config()
         name = config.get("name")
@@ -324,6 +325,9 @@ class Topic(pulumi.CustomResource):
         topic = config.get("topic")
         if topic is None:
             topic = "onsTopicName"
+        default_random_integer = random.RandomInteger("defaultRandomInteger",
+            min=10000,
+            max=99999)
         default_instance = alicloud.rocketmq.Instance("defaultInstance", remark="default_ons_instance_remark")
         default_topic = alicloud.rocketmq.Topic("defaultTopic",
             topic_name=topic,
@@ -374,6 +378,7 @@ class Topic(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
         config = pulumi.Config()
         name = config.get("name")
@@ -382,6 +387,9 @@ class Topic(pulumi.CustomResource):
         topic = config.get("topic")
         if topic is None:
             topic = "onsTopicName"
+        default_random_integer = random.RandomInteger("defaultRandomInteger",
+            min=10000,
+            max=99999)
         default_instance = alicloud.rocketmq.Instance("defaultInstance", remark="default_ons_instance_remark")
         default_topic = alicloud.rocketmq.Topic("defaultTopic",
             topic_name=topic,

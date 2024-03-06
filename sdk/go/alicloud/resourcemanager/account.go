@@ -26,7 +26,10 @@ import (
 //
 // import (
 //
+//	"fmt"
+//
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/resourcemanager"
+//	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
@@ -43,15 +46,26 @@ import (
 //			if param := cfg.Get("displayName"); param != "" {
 //				displayName = param
 //			}
+//			_, err := random.NewRandomInteger(ctx, "default", &random.RandomIntegerArgs{
+//				Min: pulumi.Int(10000),
+//				Max: pulumi.Int(99999),
+//			})
+//			if err != nil {
+//				return err
+//			}
 //			exampleFolder, err := resourcemanager.NewFolder(ctx, "exampleFolder", &resourcemanager.FolderArgs{
-//				FolderName: pulumi.String(name),
+//				FolderName: _default.Result.ApplyT(func(result int) (string, error) {
+//					return fmt.Sprintf("%v-%v", name, result), nil
+//				}).(pulumi.StringOutput),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = resourcemanager.NewAccount(ctx, "exampleAccount", &resourcemanager.AccountArgs{
-//				DisplayName: pulumi.String(displayName),
-//				FolderId:    exampleFolder.ID(),
+//				DisplayName: _default.Result.ApplyT(func(result int) (string, error) {
+//					return fmt.Sprintf("%v-%v", displayName, result), nil
+//				}).(pulumi.StringOutput),
+//				FolderId: exampleFolder.ID(),
 //			})
 //			if err != nil {
 //				return err

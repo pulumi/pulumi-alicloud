@@ -19,13 +19,16 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const source = new alicloud.cms.Namespace("source", {namespace: "your_source_namespace"});
- * const defaultNamespace = new alicloud.cms.Namespace("defaultNamespace", {namespace: "your_namespace"});
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf-example";
+ * const defaultAccount = alicloud.getAccount({});
+ * const source = new alicloud.cms.Namespace("source", {namespace: name});
+ * const defaultNamespace = new alicloud.cms.Namespace("defaultNamespace", {namespace: `${name}-source`});
  * const defaultServiceHybridDoubleWrite = new alicloud.cloudmonitor.ServiceHybridDoubleWrite("defaultServiceHybridDoubleWrite", {
  *     sourceNamespace: source.id,
- *     sourceUserId: "your_source_account",
+ *     sourceUserId: defaultAccount.then(defaultAccount => defaultAccount.id),
  *     namespace: defaultNamespace.id,
- *     userId: "your_account",
+ *     userId: defaultAccount.then(defaultAccount => defaultAccount.id),
  * });
  * ```
  *

@@ -19,9 +19,9 @@ class AccessGroupArgs:
                  description: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a AccessGroup resource.
-        :param pulumi.Input[str] access_group_name: The Name of Access Group.The length of `access_group_name` does not exceed 100 bytes.
-        :param pulumi.Input[str] network_type: The NetworkType of Access Group. Valid values: `VPC`.
-        :param pulumi.Input[str] description: The Description of Access Group. The length of `description` does not exceed 100 bytes.
+        :param pulumi.Input[str] access_group_name: The permission group name. The naming rules are as follows: The length is 6~64 characters. Globally unique and cannot be an empty string. English letters are supported and can contain numbers, underscores (_), and dashes (-).
+        :param pulumi.Input[str] network_type: The permission group type. Only VPC (VPC) is supported.
+        :param pulumi.Input[str] description: The permission group description.  No more than 32 characters in length.
         """
         pulumi.set(__self__, "access_group_name", access_group_name)
         pulumi.set(__self__, "network_type", network_type)
@@ -32,7 +32,7 @@ class AccessGroupArgs:
     @pulumi.getter(name="accessGroupName")
     def access_group_name(self) -> pulumi.Input[str]:
         """
-        The Name of Access Group.The length of `access_group_name` does not exceed 100 bytes.
+        The permission group name. The naming rules are as follows: The length is 6~64 characters. Globally unique and cannot be an empty string. English letters are supported and can contain numbers, underscores (_), and dashes (-).
         """
         return pulumi.get(self, "access_group_name")
 
@@ -44,7 +44,7 @@ class AccessGroupArgs:
     @pulumi.getter(name="networkType")
     def network_type(self) -> pulumi.Input[str]:
         """
-        The NetworkType of Access Group. Valid values: `VPC`.
+        The permission group type. Only VPC (VPC) is supported.
         """
         return pulumi.get(self, "network_type")
 
@@ -56,7 +56,7 @@ class AccessGroupArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        The Description of Access Group. The length of `description` does not exceed 100 bytes.
+        The permission group description.  No more than 32 characters in length.
         """
         return pulumi.get(self, "description")
 
@@ -69,16 +69,20 @@ class AccessGroupArgs:
 class _AccessGroupState:
     def __init__(__self__, *,
                  access_group_name: Optional[pulumi.Input[str]] = None,
+                 create_time: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  network_type: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering AccessGroup resources.
-        :param pulumi.Input[str] access_group_name: The Name of Access Group.The length of `access_group_name` does not exceed 100 bytes.
-        :param pulumi.Input[str] description: The Description of Access Group. The length of `description` does not exceed 100 bytes.
-        :param pulumi.Input[str] network_type: The NetworkType of Access Group. Valid values: `VPC`.
+        :param pulumi.Input[str] access_group_name: The permission group name. The naming rules are as follows: The length is 6~64 characters. Globally unique and cannot be an empty string. English letters are supported and can contain numbers, underscores (_), and dashes (-).
+        :param pulumi.Input[str] create_time: The creation time of the permission group resource.
+        :param pulumi.Input[str] description: The permission group description.  No more than 32 characters in length.
+        :param pulumi.Input[str] network_type: The permission group type. Only VPC (VPC) is supported.
         """
         if access_group_name is not None:
             pulumi.set(__self__, "access_group_name", access_group_name)
+        if create_time is not None:
+            pulumi.set(__self__, "create_time", create_time)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if network_type is not None:
@@ -88,7 +92,7 @@ class _AccessGroupState:
     @pulumi.getter(name="accessGroupName")
     def access_group_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The Name of Access Group.The length of `access_group_name` does not exceed 100 bytes.
+        The permission group name. The naming rules are as follows: The length is 6~64 characters. Globally unique and cannot be an empty string. English letters are supported and can contain numbers, underscores (_), and dashes (-).
         """
         return pulumi.get(self, "access_group_name")
 
@@ -97,10 +101,22 @@ class _AccessGroupState:
         pulumi.set(self, "access_group_name", value)
 
     @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        The creation time of the permission group resource.
+        """
+        return pulumi.get(self, "create_time")
+
+    @create_time.setter
+    def create_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "create_time", value)
+
+    @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        The Description of Access Group. The length of `description` does not exceed 100 bytes.
+        The permission group description.  No more than 32 characters in length.
         """
         return pulumi.get(self, "description")
 
@@ -112,7 +128,7 @@ class _AccessGroupState:
     @pulumi.getter(name="networkType")
     def network_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The NetworkType of Access Group. Valid values: `VPC`.
+        The permission group type. Only VPC (VPC) is supported.
         """
         return pulumi.get(self, "network_type")
 
@@ -133,7 +149,7 @@ class AccessGroup(pulumi.CustomResource):
         """
         Provides a DFS Access Group resource.
 
-        For information about DFS Access Group and how to use it, see [What is Access Group](https://www.alibabacloud.com/help/doc-detail/207144.htm).
+        For information about DFS Access Group and how to use it, see [What is Access Group](https://www.alibabacloud.com/help/en/aibaba-cloud-storage-services/latest/apsara-file-storage-for-hdfs).
 
         > **NOTE:** Available since v1.133.0.
 
@@ -148,10 +164,11 @@ class AccessGroup(pulumi.CustomResource):
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
-            name = "tf-example"
+            name = "terraform-example"
         default = alicloud.dfs.AccessGroup("default",
-            access_group_name=name,
-            network_type="VPC")
+            description=name,
+            network_type="VPC",
+            access_group_name=name)
         ```
 
         ## Import
@@ -164,9 +181,9 @@ class AccessGroup(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] access_group_name: The Name of Access Group.The length of `access_group_name` does not exceed 100 bytes.
-        :param pulumi.Input[str] description: The Description of Access Group. The length of `description` does not exceed 100 bytes.
-        :param pulumi.Input[str] network_type: The NetworkType of Access Group. Valid values: `VPC`.
+        :param pulumi.Input[str] access_group_name: The permission group name. The naming rules are as follows: The length is 6~64 characters. Globally unique and cannot be an empty string. English letters are supported and can contain numbers, underscores (_), and dashes (-).
+        :param pulumi.Input[str] description: The permission group description.  No more than 32 characters in length.
+        :param pulumi.Input[str] network_type: The permission group type. Only VPC (VPC) is supported.
         """
         ...
     @overload
@@ -177,7 +194,7 @@ class AccessGroup(pulumi.CustomResource):
         """
         Provides a DFS Access Group resource.
 
-        For information about DFS Access Group and how to use it, see [What is Access Group](https://www.alibabacloud.com/help/doc-detail/207144.htm).
+        For information about DFS Access Group and how to use it, see [What is Access Group](https://www.alibabacloud.com/help/en/aibaba-cloud-storage-services/latest/apsara-file-storage-for-hdfs).
 
         > **NOTE:** Available since v1.133.0.
 
@@ -192,10 +209,11 @@ class AccessGroup(pulumi.CustomResource):
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
-            name = "tf-example"
+            name = "terraform-example"
         default = alicloud.dfs.AccessGroup("default",
-            access_group_name=name,
-            network_type="VPC")
+            description=name,
+            network_type="VPC",
+            access_group_name=name)
         ```
 
         ## Import
@@ -240,6 +258,7 @@ class AccessGroup(pulumi.CustomResource):
             if network_type is None and not opts.urn:
                 raise TypeError("Missing required property 'network_type'")
             __props__.__dict__["network_type"] = network_type
+            __props__.__dict__["create_time"] = None
         super(AccessGroup, __self__).__init__(
             'alicloud:dfs/accessGroup:AccessGroup',
             resource_name,
@@ -251,6 +270,7 @@ class AccessGroup(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             access_group_name: Optional[pulumi.Input[str]] = None,
+            create_time: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             network_type: Optional[pulumi.Input[str]] = None) -> 'AccessGroup':
         """
@@ -260,15 +280,17 @@ class AccessGroup(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] access_group_name: The Name of Access Group.The length of `access_group_name` does not exceed 100 bytes.
-        :param pulumi.Input[str] description: The Description of Access Group. The length of `description` does not exceed 100 bytes.
-        :param pulumi.Input[str] network_type: The NetworkType of Access Group. Valid values: `VPC`.
+        :param pulumi.Input[str] access_group_name: The permission group name. The naming rules are as follows: The length is 6~64 characters. Globally unique and cannot be an empty string. English letters are supported and can contain numbers, underscores (_), and dashes (-).
+        :param pulumi.Input[str] create_time: The creation time of the permission group resource.
+        :param pulumi.Input[str] description: The permission group description.  No more than 32 characters in length.
+        :param pulumi.Input[str] network_type: The permission group type. Only VPC (VPC) is supported.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _AccessGroupState.__new__(_AccessGroupState)
 
         __props__.__dict__["access_group_name"] = access_group_name
+        __props__.__dict__["create_time"] = create_time
         __props__.__dict__["description"] = description
         __props__.__dict__["network_type"] = network_type
         return AccessGroup(resource_name, opts=opts, __props__=__props__)
@@ -277,15 +299,23 @@ class AccessGroup(pulumi.CustomResource):
     @pulumi.getter(name="accessGroupName")
     def access_group_name(self) -> pulumi.Output[str]:
         """
-        The Name of Access Group.The length of `access_group_name` does not exceed 100 bytes.
+        The permission group name. The naming rules are as follows: The length is 6~64 characters. Globally unique and cannot be an empty string. English letters are supported and can contain numbers, underscores (_), and dashes (-).
         """
         return pulumi.get(self, "access_group_name")
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> pulumi.Output[str]:
+        """
+        The creation time of the permission group resource.
+        """
+        return pulumi.get(self, "create_time")
 
     @property
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[str]]:
         """
-        The Description of Access Group. The length of `description` does not exceed 100 bytes.
+        The permission group description.  No more than 32 characters in length.
         """
         return pulumi.get(self, "description")
 
@@ -293,7 +323,7 @@ class AccessGroup(pulumi.CustomResource):
     @pulumi.getter(name="networkType")
     def network_type(self) -> pulumi.Output[str]:
         """
-        The NetworkType of Access Group. Valid values: `VPC`.
+        The permission group type. Only VPC (VPC) is supported.
         """
         return pulumi.get(self, "network_type")
 

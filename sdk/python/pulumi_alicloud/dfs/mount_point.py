@@ -19,23 +19,27 @@ class MountPointArgs:
                  network_type: pulumi.Input[str],
                  vpc_id: pulumi.Input[str],
                  vswitch_id: pulumi.Input[str],
+                 alias_prefix: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a MountPoint resource.
-        :param pulumi.Input[str] access_group_id: The ID of the Access Group.
-        :param pulumi.Input[str] file_system_id: The ID of the File System.
-        :param pulumi.Input[str] network_type: The network type of the Mount Point. Valid values: `VPC`.
-        :param pulumi.Input[str] vpc_id: The vpc id.
-        :param pulumi.Input[str] vswitch_id: The vswitch id.
-        :param pulumi.Input[str] description: The description of the Mount Point.
-        :param pulumi.Input[str] status: The status of the Mount Point. Valid values: `Active`, `Inactive`.
+        :param pulumi.Input[str] access_group_id: The id of the permission group associated with the Mount point, which is used to set the access permissions of the Mount point.
+        :param pulumi.Input[str] file_system_id: Unique file system identifier, used to retrieve specified file system resources.
+        :param pulumi.Input[str] network_type: The network type of the Mount point.  Only VPC (VPC) is supported.
+        :param pulumi.Input[str] vpc_id: The ID of the VPC. Specifies the VPC environment to which the mount point belongs.
+        :param pulumi.Input[str] vswitch_id: VSwitch ID, which specifies the VSwitch resource used to create the mount point.
+        :param pulumi.Input[str] alias_prefix: The mount point alias prefix, which specifies the mount point alias prefix.
+        :param pulumi.Input[str] description: The description of the Mount point.  No more than 32 characters in length.
+        :param pulumi.Input[str] status: Mount point status. Value: Inactive: Disable mount points Active: Activate the mount point.
         """
         pulumi.set(__self__, "access_group_id", access_group_id)
         pulumi.set(__self__, "file_system_id", file_system_id)
         pulumi.set(__self__, "network_type", network_type)
         pulumi.set(__self__, "vpc_id", vpc_id)
         pulumi.set(__self__, "vswitch_id", vswitch_id)
+        if alias_prefix is not None:
+            pulumi.set(__self__, "alias_prefix", alias_prefix)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if status is not None:
@@ -45,7 +49,7 @@ class MountPointArgs:
     @pulumi.getter(name="accessGroupId")
     def access_group_id(self) -> pulumi.Input[str]:
         """
-        The ID of the Access Group.
+        The id of the permission group associated with the Mount point, which is used to set the access permissions of the Mount point.
         """
         return pulumi.get(self, "access_group_id")
 
@@ -57,7 +61,7 @@ class MountPointArgs:
     @pulumi.getter(name="fileSystemId")
     def file_system_id(self) -> pulumi.Input[str]:
         """
-        The ID of the File System.
+        Unique file system identifier, used to retrieve specified file system resources.
         """
         return pulumi.get(self, "file_system_id")
 
@@ -69,7 +73,7 @@ class MountPointArgs:
     @pulumi.getter(name="networkType")
     def network_type(self) -> pulumi.Input[str]:
         """
-        The network type of the Mount Point. Valid values: `VPC`.
+        The network type of the Mount point.  Only VPC (VPC) is supported.
         """
         return pulumi.get(self, "network_type")
 
@@ -81,7 +85,7 @@ class MountPointArgs:
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> pulumi.Input[str]:
         """
-        The vpc id.
+        The ID of the VPC. Specifies the VPC environment to which the mount point belongs.
         """
         return pulumi.get(self, "vpc_id")
 
@@ -93,7 +97,7 @@ class MountPointArgs:
     @pulumi.getter(name="vswitchId")
     def vswitch_id(self) -> pulumi.Input[str]:
         """
-        The vswitch id.
+        VSwitch ID, which specifies the VSwitch resource used to create the mount point.
         """
         return pulumi.get(self, "vswitch_id")
 
@@ -102,10 +106,22 @@ class MountPointArgs:
         pulumi.set(self, "vswitch_id", value)
 
     @property
+    @pulumi.getter(name="aliasPrefix")
+    def alias_prefix(self) -> Optional[pulumi.Input[str]]:
+        """
+        The mount point alias prefix, which specifies the mount point alias prefix.
+        """
+        return pulumi.get(self, "alias_prefix")
+
+    @alias_prefix.setter
+    def alias_prefix(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "alias_prefix", value)
+
+    @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        The description of the Mount Point.
+        The description of the Mount point.  No more than 32 characters in length.
         """
         return pulumi.get(self, "description")
 
@@ -117,7 +133,7 @@ class MountPointArgs:
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[str]]:
         """
-        The status of the Mount Point. Valid values: `Active`, `Inactive`.
+        Mount point status. Value: Inactive: Disable mount points Active: Activate the mount point.
         """
         return pulumi.get(self, "status")
 
@@ -130,6 +146,8 @@ class MountPointArgs:
 class _MountPointState:
     def __init__(__self__, *,
                  access_group_id: Optional[pulumi.Input[str]] = None,
+                 alias_prefix: Optional[pulumi.Input[str]] = None,
+                 create_time: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  file_system_id: Optional[pulumi.Input[str]] = None,
                  mount_point_id: Optional[pulumi.Input[str]] = None,
@@ -139,17 +157,23 @@ class _MountPointState:
                  vswitch_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering MountPoint resources.
-        :param pulumi.Input[str] access_group_id: The ID of the Access Group.
-        :param pulumi.Input[str] description: The description of the Mount Point.
-        :param pulumi.Input[str] file_system_id: The ID of the File System.
-        :param pulumi.Input[str] mount_point_id: The ID of the Mount Point.
-        :param pulumi.Input[str] network_type: The network type of the Mount Point. Valid values: `VPC`.
-        :param pulumi.Input[str] status: The status of the Mount Point. Valid values: `Active`, `Inactive`.
-        :param pulumi.Input[str] vpc_id: The vpc id.
-        :param pulumi.Input[str] vswitch_id: The vswitch id.
+        :param pulumi.Input[str] access_group_id: The id of the permission group associated with the Mount point, which is used to set the access permissions of the Mount point.
+        :param pulumi.Input[str] alias_prefix: The mount point alias prefix, which specifies the mount point alias prefix.
+        :param pulumi.Input[str] create_time: The creation time of the Mount point resource.
+        :param pulumi.Input[str] description: The description of the Mount point.  No more than 32 characters in length.
+        :param pulumi.Input[str] file_system_id: Unique file system identifier, used to retrieve specified file system resources.
+        :param pulumi.Input[str] mount_point_id: The unique identifier of the Mount point, which is used to retrieve the specified mount point resources.
+        :param pulumi.Input[str] network_type: The network type of the Mount point.  Only VPC (VPC) is supported.
+        :param pulumi.Input[str] status: Mount point status. Value: Inactive: Disable mount points Active: Activate the mount point.
+        :param pulumi.Input[str] vpc_id: The ID of the VPC. Specifies the VPC environment to which the mount point belongs.
+        :param pulumi.Input[str] vswitch_id: VSwitch ID, which specifies the VSwitch resource used to create the mount point.
         """
         if access_group_id is not None:
             pulumi.set(__self__, "access_group_id", access_group_id)
+        if alias_prefix is not None:
+            pulumi.set(__self__, "alias_prefix", alias_prefix)
+        if create_time is not None:
+            pulumi.set(__self__, "create_time", create_time)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if file_system_id is not None:
@@ -169,7 +193,7 @@ class _MountPointState:
     @pulumi.getter(name="accessGroupId")
     def access_group_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID of the Access Group.
+        The id of the permission group associated with the Mount point, which is used to set the access permissions of the Mount point.
         """
         return pulumi.get(self, "access_group_id")
 
@@ -178,10 +202,34 @@ class _MountPointState:
         pulumi.set(self, "access_group_id", value)
 
     @property
+    @pulumi.getter(name="aliasPrefix")
+    def alias_prefix(self) -> Optional[pulumi.Input[str]]:
+        """
+        The mount point alias prefix, which specifies the mount point alias prefix.
+        """
+        return pulumi.get(self, "alias_prefix")
+
+    @alias_prefix.setter
+    def alias_prefix(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "alias_prefix", value)
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        The creation time of the Mount point resource.
+        """
+        return pulumi.get(self, "create_time")
+
+    @create_time.setter
+    def create_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "create_time", value)
+
+    @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        The description of the Mount Point.
+        The description of the Mount point.  No more than 32 characters in length.
         """
         return pulumi.get(self, "description")
 
@@ -193,7 +241,7 @@ class _MountPointState:
     @pulumi.getter(name="fileSystemId")
     def file_system_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID of the File System.
+        Unique file system identifier, used to retrieve specified file system resources.
         """
         return pulumi.get(self, "file_system_id")
 
@@ -205,7 +253,7 @@ class _MountPointState:
     @pulumi.getter(name="mountPointId")
     def mount_point_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID of the Mount Point.
+        The unique identifier of the Mount point, which is used to retrieve the specified mount point resources.
         """
         return pulumi.get(self, "mount_point_id")
 
@@ -217,7 +265,7 @@ class _MountPointState:
     @pulumi.getter(name="networkType")
     def network_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The network type of the Mount Point. Valid values: `VPC`.
+        The network type of the Mount point.  Only VPC (VPC) is supported.
         """
         return pulumi.get(self, "network_type")
 
@@ -229,7 +277,7 @@ class _MountPointState:
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[str]]:
         """
-        The status of the Mount Point. Valid values: `Active`, `Inactive`.
+        Mount point status. Value: Inactive: Disable mount points Active: Activate the mount point.
         """
         return pulumi.get(self, "status")
 
@@ -241,7 +289,7 @@ class _MountPointState:
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The vpc id.
+        The ID of the VPC. Specifies the VPC environment to which the mount point belongs.
         """
         return pulumi.get(self, "vpc_id")
 
@@ -253,7 +301,7 @@ class _MountPointState:
     @pulumi.getter(name="vswitchId")
     def vswitch_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The vswitch id.
+        VSwitch ID, which specifies the VSwitch resource used to create the mount point.
         """
         return pulumi.get(self, "vswitch_id")
 
@@ -268,6 +316,7 @@ class MountPoint(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  access_group_id: Optional[pulumi.Input[str]] = None,
+                 alias_prefix: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  file_system_id: Optional[pulumi.Input[str]] = None,
                  network_type: Optional[pulumi.Input[str]] = None,
@@ -278,7 +327,7 @@ class MountPoint(pulumi.CustomResource):
         """
         Provides a DFS Mount Point resource.
 
-        For information about DFS Mount Point and how to use it, see [What is Mount Point](https://www.alibabacloud.com/help/doc-detail/207144.htm).
+        For information about DFS Mount Point and how to use it, see [What is Mount Point](https://www.alibabacloud.com/help/en/aibaba-cloud-storage-services/latest/apsara-file-storage-for-hdfs).
 
         > **NOTE:** Available since v1.140.0.
 
@@ -289,39 +338,49 @@ class MountPoint(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
-            name = "tf-example"
+            name = "terraform-example"
         default_zones = alicloud.dfs.get_zones()
-        default_network = alicloud.vpc.Network("defaultNetwork",
-            vpc_name=name,
-            cidr_block="10.4.0.0/16")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
+        default_random_integer = random.RandomInteger("defaultRandomInteger",
+            min=10000,
+            max=99999)
+        default_vpc = alicloud.vpc.Network("defaultVPC",
+            cidr_block="172.16.0.0/12",
+            vpc_name=name)
+        default_v_switch = alicloud.vpc.Switch("defaultVSwitch",
+            description="example",
+            vpc_id=default_vpc.id,
+            cidr_block="172.16.0.0/24",
             vswitch_name=name,
-            cidr_block="10.4.0.0/24",
-            vpc_id=default_network.id,
             zone_id=default_zones.zones[0].zone_id)
-        default_file_system = alicloud.dfs.FileSystem("defaultFileSystem",
-            storage_type=default_zones.zones[0].options[0].storage_type,
+        default_access_group = alicloud.dfs.AccessGroup("defaultAccessGroup",
+            description="AccessGroup resource manager center example",
+            network_type="VPC",
+            access_group_name=default_random_integer.result.apply(lambda result: f"{name}-{result}"))
+        update_access_group = alicloud.dfs.AccessGroup("updateAccessGroup",
+            description="Second AccessGroup resource manager center example",
+            network_type="VPC",
+            access_group_name=default_random_integer.result.apply(lambda result: f"{name}-update-{result}"))
+        default_fs = alicloud.dfs.FileSystem("defaultFs",
+            space_capacity=1024,
+            description="for mountpoint  example",
+            storage_type="STANDARD",
             zone_id=default_zones.zones[0].zone_id,
             protocol_type="HDFS",
-            description=name,
-            file_system_name=name,
-            throughput_mode="Standard",
-            space_capacity=1024)
-        default_access_group = alicloud.dfs.AccessGroup("defaultAccessGroup",
-            access_group_name=name,
-            description=name,
-            network_type="VPC")
+            data_redundancy_type="LRS",
+            file_system_name=default_random_integer.result.apply(lambda result: f"{name}-{result}"))
         default_mount_point = alicloud.dfs.MountPoint("defaultMountPoint",
-            description=name,
-            vpc_id=default_network.id,
-            file_system_id=default_file_system.id,
-            access_group_id=default_access_group.id,
+            vpc_id=default_vpc.id,
+            description="mountpoint example",
             network_type="VPC",
-            vswitch_id=default_switch.id)
+            vswitch_id=default_v_switch.id,
+            file_system_id=default_fs.id,
+            access_group_id=default_access_group.id,
+            status="Active")
         ```
 
         ## Import
@@ -334,13 +393,14 @@ class MountPoint(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] access_group_id: The ID of the Access Group.
-        :param pulumi.Input[str] description: The description of the Mount Point.
-        :param pulumi.Input[str] file_system_id: The ID of the File System.
-        :param pulumi.Input[str] network_type: The network type of the Mount Point. Valid values: `VPC`.
-        :param pulumi.Input[str] status: The status of the Mount Point. Valid values: `Active`, `Inactive`.
-        :param pulumi.Input[str] vpc_id: The vpc id.
-        :param pulumi.Input[str] vswitch_id: The vswitch id.
+        :param pulumi.Input[str] access_group_id: The id of the permission group associated with the Mount point, which is used to set the access permissions of the Mount point.
+        :param pulumi.Input[str] alias_prefix: The mount point alias prefix, which specifies the mount point alias prefix.
+        :param pulumi.Input[str] description: The description of the Mount point.  No more than 32 characters in length.
+        :param pulumi.Input[str] file_system_id: Unique file system identifier, used to retrieve specified file system resources.
+        :param pulumi.Input[str] network_type: The network type of the Mount point.  Only VPC (VPC) is supported.
+        :param pulumi.Input[str] status: Mount point status. Value: Inactive: Disable mount points Active: Activate the mount point.
+        :param pulumi.Input[str] vpc_id: The ID of the VPC. Specifies the VPC environment to which the mount point belongs.
+        :param pulumi.Input[str] vswitch_id: VSwitch ID, which specifies the VSwitch resource used to create the mount point.
         """
         ...
     @overload
@@ -351,7 +411,7 @@ class MountPoint(pulumi.CustomResource):
         """
         Provides a DFS Mount Point resource.
 
-        For information about DFS Mount Point and how to use it, see [What is Mount Point](https://www.alibabacloud.com/help/doc-detail/207144.htm).
+        For information about DFS Mount Point and how to use it, see [What is Mount Point](https://www.alibabacloud.com/help/en/aibaba-cloud-storage-services/latest/apsara-file-storage-for-hdfs).
 
         > **NOTE:** Available since v1.140.0.
 
@@ -362,39 +422,49 @@ class MountPoint(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
-            name = "tf-example"
+            name = "terraform-example"
         default_zones = alicloud.dfs.get_zones()
-        default_network = alicloud.vpc.Network("defaultNetwork",
-            vpc_name=name,
-            cidr_block="10.4.0.0/16")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
+        default_random_integer = random.RandomInteger("defaultRandomInteger",
+            min=10000,
+            max=99999)
+        default_vpc = alicloud.vpc.Network("defaultVPC",
+            cidr_block="172.16.0.0/12",
+            vpc_name=name)
+        default_v_switch = alicloud.vpc.Switch("defaultVSwitch",
+            description="example",
+            vpc_id=default_vpc.id,
+            cidr_block="172.16.0.0/24",
             vswitch_name=name,
-            cidr_block="10.4.0.0/24",
-            vpc_id=default_network.id,
             zone_id=default_zones.zones[0].zone_id)
-        default_file_system = alicloud.dfs.FileSystem("defaultFileSystem",
-            storage_type=default_zones.zones[0].options[0].storage_type,
+        default_access_group = alicloud.dfs.AccessGroup("defaultAccessGroup",
+            description="AccessGroup resource manager center example",
+            network_type="VPC",
+            access_group_name=default_random_integer.result.apply(lambda result: f"{name}-{result}"))
+        update_access_group = alicloud.dfs.AccessGroup("updateAccessGroup",
+            description="Second AccessGroup resource manager center example",
+            network_type="VPC",
+            access_group_name=default_random_integer.result.apply(lambda result: f"{name}-update-{result}"))
+        default_fs = alicloud.dfs.FileSystem("defaultFs",
+            space_capacity=1024,
+            description="for mountpoint  example",
+            storage_type="STANDARD",
             zone_id=default_zones.zones[0].zone_id,
             protocol_type="HDFS",
-            description=name,
-            file_system_name=name,
-            throughput_mode="Standard",
-            space_capacity=1024)
-        default_access_group = alicloud.dfs.AccessGroup("defaultAccessGroup",
-            access_group_name=name,
-            description=name,
-            network_type="VPC")
+            data_redundancy_type="LRS",
+            file_system_name=default_random_integer.result.apply(lambda result: f"{name}-{result}"))
         default_mount_point = alicloud.dfs.MountPoint("defaultMountPoint",
-            description=name,
-            vpc_id=default_network.id,
-            file_system_id=default_file_system.id,
-            access_group_id=default_access_group.id,
+            vpc_id=default_vpc.id,
+            description="mountpoint example",
             network_type="VPC",
-            vswitch_id=default_switch.id)
+            vswitch_id=default_v_switch.id,
+            file_system_id=default_fs.id,
+            access_group_id=default_access_group.id,
+            status="Active")
         ```
 
         ## Import
@@ -421,6 +491,7 @@ class MountPoint(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  access_group_id: Optional[pulumi.Input[str]] = None,
+                 alias_prefix: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  file_system_id: Optional[pulumi.Input[str]] = None,
                  network_type: Optional[pulumi.Input[str]] = None,
@@ -439,6 +510,7 @@ class MountPoint(pulumi.CustomResource):
             if access_group_id is None and not opts.urn:
                 raise TypeError("Missing required property 'access_group_id'")
             __props__.__dict__["access_group_id"] = access_group_id
+            __props__.__dict__["alias_prefix"] = alias_prefix
             __props__.__dict__["description"] = description
             if file_system_id is None and not opts.urn:
                 raise TypeError("Missing required property 'file_system_id'")
@@ -453,6 +525,7 @@ class MountPoint(pulumi.CustomResource):
             if vswitch_id is None and not opts.urn:
                 raise TypeError("Missing required property 'vswitch_id'")
             __props__.__dict__["vswitch_id"] = vswitch_id
+            __props__.__dict__["create_time"] = None
             __props__.__dict__["mount_point_id"] = None
         super(MountPoint, __self__).__init__(
             'alicloud:dfs/mountPoint:MountPoint',
@@ -465,6 +538,8 @@ class MountPoint(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             access_group_id: Optional[pulumi.Input[str]] = None,
+            alias_prefix: Optional[pulumi.Input[str]] = None,
+            create_time: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             file_system_id: Optional[pulumi.Input[str]] = None,
             mount_point_id: Optional[pulumi.Input[str]] = None,
@@ -479,20 +554,24 @@ class MountPoint(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] access_group_id: The ID of the Access Group.
-        :param pulumi.Input[str] description: The description of the Mount Point.
-        :param pulumi.Input[str] file_system_id: The ID of the File System.
-        :param pulumi.Input[str] mount_point_id: The ID of the Mount Point.
-        :param pulumi.Input[str] network_type: The network type of the Mount Point. Valid values: `VPC`.
-        :param pulumi.Input[str] status: The status of the Mount Point. Valid values: `Active`, `Inactive`.
-        :param pulumi.Input[str] vpc_id: The vpc id.
-        :param pulumi.Input[str] vswitch_id: The vswitch id.
+        :param pulumi.Input[str] access_group_id: The id of the permission group associated with the Mount point, which is used to set the access permissions of the Mount point.
+        :param pulumi.Input[str] alias_prefix: The mount point alias prefix, which specifies the mount point alias prefix.
+        :param pulumi.Input[str] create_time: The creation time of the Mount point resource.
+        :param pulumi.Input[str] description: The description of the Mount point.  No more than 32 characters in length.
+        :param pulumi.Input[str] file_system_id: Unique file system identifier, used to retrieve specified file system resources.
+        :param pulumi.Input[str] mount_point_id: The unique identifier of the Mount point, which is used to retrieve the specified mount point resources.
+        :param pulumi.Input[str] network_type: The network type of the Mount point.  Only VPC (VPC) is supported.
+        :param pulumi.Input[str] status: Mount point status. Value: Inactive: Disable mount points Active: Activate the mount point.
+        :param pulumi.Input[str] vpc_id: The ID of the VPC. Specifies the VPC environment to which the mount point belongs.
+        :param pulumi.Input[str] vswitch_id: VSwitch ID, which specifies the VSwitch resource used to create the mount point.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _MountPointState.__new__(_MountPointState)
 
         __props__.__dict__["access_group_id"] = access_group_id
+        __props__.__dict__["alias_prefix"] = alias_prefix
+        __props__.__dict__["create_time"] = create_time
         __props__.__dict__["description"] = description
         __props__.__dict__["file_system_id"] = file_system_id
         __props__.__dict__["mount_point_id"] = mount_point_id
@@ -506,15 +585,31 @@ class MountPoint(pulumi.CustomResource):
     @pulumi.getter(name="accessGroupId")
     def access_group_id(self) -> pulumi.Output[str]:
         """
-        The ID of the Access Group.
+        The id of the permission group associated with the Mount point, which is used to set the access permissions of the Mount point.
         """
         return pulumi.get(self, "access_group_id")
+
+    @property
+    @pulumi.getter(name="aliasPrefix")
+    def alias_prefix(self) -> pulumi.Output[Optional[str]]:
+        """
+        The mount point alias prefix, which specifies the mount point alias prefix.
+        """
+        return pulumi.get(self, "alias_prefix")
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> pulumi.Output[str]:
+        """
+        The creation time of the Mount point resource.
+        """
+        return pulumi.get(self, "create_time")
 
     @property
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[str]]:
         """
-        The description of the Mount Point.
+        The description of the Mount point.  No more than 32 characters in length.
         """
         return pulumi.get(self, "description")
 
@@ -522,7 +617,7 @@ class MountPoint(pulumi.CustomResource):
     @pulumi.getter(name="fileSystemId")
     def file_system_id(self) -> pulumi.Output[str]:
         """
-        The ID of the File System.
+        Unique file system identifier, used to retrieve specified file system resources.
         """
         return pulumi.get(self, "file_system_id")
 
@@ -530,7 +625,7 @@ class MountPoint(pulumi.CustomResource):
     @pulumi.getter(name="mountPointId")
     def mount_point_id(self) -> pulumi.Output[str]:
         """
-        The ID of the Mount Point.
+        The unique identifier of the Mount point, which is used to retrieve the specified mount point resources.
         """
         return pulumi.get(self, "mount_point_id")
 
@@ -538,7 +633,7 @@ class MountPoint(pulumi.CustomResource):
     @pulumi.getter(name="networkType")
     def network_type(self) -> pulumi.Output[str]:
         """
-        The network type of the Mount Point. Valid values: `VPC`.
+        The network type of the Mount point.  Only VPC (VPC) is supported.
         """
         return pulumi.get(self, "network_type")
 
@@ -546,7 +641,7 @@ class MountPoint(pulumi.CustomResource):
     @pulumi.getter
     def status(self) -> pulumi.Output[str]:
         """
-        The status of the Mount Point. Valid values: `Active`, `Inactive`.
+        Mount point status. Value: Inactive: Disable mount points Active: Activate the mount point.
         """
         return pulumi.get(self, "status")
 
@@ -554,7 +649,7 @@ class MountPoint(pulumi.CustomResource):
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> pulumi.Output[str]:
         """
-        The vpc id.
+        The ID of the VPC. Specifies the VPC environment to which the mount point belongs.
         """
         return pulumi.get(self, "vpc_id")
 
@@ -562,7 +657,7 @@ class MountPoint(pulumi.CustomResource):
     @pulumi.getter(name="vswitchId")
     def vswitch_id(self) -> pulumi.Output[str]:
         """
-        The vswitch id.
+        VSwitch ID, which specifies the VSwitch resource used to create the mount point.
         """
         return pulumi.get(self, "vswitch_id")
 

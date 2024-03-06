@@ -30,8 +30,11 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.Provider;
+ * import com.pulumi.alicloud.ProviderArgs;
  * import com.pulumi.alicloud.expressconnect.PhysicalConnection;
  * import com.pulumi.alicloud.expressconnect.PhysicalConnectionArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -45,27 +48,39 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         var hz = new Provider(&#34;hz&#34;, ProviderArgs.builder()        
+ *             .region(&#34;cn-hangzhou&#34;)
+ *             .build());
+ * 
+ *         var sgp = new Provider(&#34;sgp&#34;, ProviderArgs.builder()        
+ *             .region(&#34;ap-southeast-1&#34;)
+ *             .build());
+ * 
  *         var domestic = new PhysicalConnection(&#34;domestic&#34;, PhysicalConnectionArgs.builder()        
  *             .accessPointId(&#34;ap-cn-hangzhou-yh-B&#34;)
- *             .bandwidth(100)
- *             .description(&#34;my domestic connection&#34;)
  *             .lineOperator(&#34;CT&#34;)
  *             .peerLocation(&#34;example_value&#34;)
  *             .physicalConnectionName(&#34;example_value&#34;)
- *             .portType(&#34;1000Base-LX&#34;)
  *             .type(&#34;VPC&#34;)
- *             .build());
+ *             .description(&#34;my domestic connection&#34;)
+ *             .portType(&#34;1000Base-LX&#34;)
+ *             .bandwidth(100)
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(alicloud.hz())
+ *                 .build());
  * 
  *         var international = new PhysicalConnection(&#34;international&#34;, PhysicalConnectionArgs.builder()        
  *             .accessPointId(&#34;ap-sg-singpore-A&#34;)
- *             .bandwidth(100)
- *             .description(&#34;my domestic connection&#34;)
  *             .lineOperator(&#34;Other&#34;)
  *             .peerLocation(&#34;example_value&#34;)
  *             .physicalConnectionName(&#34;example_value&#34;)
- *             .portType(&#34;1000Base-LX&#34;)
  *             .type(&#34;VPC&#34;)
- *             .build());
+ *             .description(&#34;my domestic connection&#34;)
+ *             .portType(&#34;1000Base-LX&#34;)
+ *             .bandwidth(100)
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(alicloud.sgp())
+ *                 .build());
  * 
  *     }
  * }

@@ -23,63 +23,6 @@ import javax.annotation.Nullable;
  * 
  * &gt; **NOTE:** Available since v1.129.0.
  * 
- * ## Example Usage
- * 
- * Basic Usage
- * ```java
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.alicloud.eventbridge.EventBus;
- * import com.pulumi.alicloud.eventbridge.EventBusArgs;
- * import com.pulumi.alicloud.eventbridge.Rule;
- * import com.pulumi.alicloud.eventbridge.RuleArgs;
- * import com.pulumi.alicloud.eventbridge.inputs.RuleTargetArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var exampleEventBus = new EventBus(&#34;exampleEventBus&#34;, EventBusArgs.builder()        
- *             .eventBusName(&#34;example_value&#34;)
- *             .build());
- * 
- *         var exampleRule = new Rule(&#34;exampleRule&#34;, RuleArgs.builder()        
- *             .eventBusName(exampleEventBus.id())
- *             .ruleName(var_.name())
- *             .description(&#34;test&#34;)
- *             .filterPattern(&#34;{\&#34;source\&#34;:[\&#34;crmabc.newsletter\&#34;],\&#34;type\&#34;:[\&#34;UserSignUp\&#34;, \&#34;UserLogin\&#34;]}&#34;)
- *             .targets(RuleTargetArgs.builder()
- *                 .targetId(&#34;tf-test&#34;)
- *                 .endpoint(&#34;acs:mns:cn-hangzhou:118938335****:queues/tf-test&#34;)
- *                 .type(&#34;acs.mns.queue&#34;)
- *                 .paramLists(                
- *                     RuleTargetParamListArgs.builder()
- *                         .resourceKey(&#34;queue&#34;)
- *                         .form(&#34;CONSTANT&#34;)
- *                         .value(&#34;tf-testaccEbRule&#34;)
- *                         .build(),
- *                     RuleTargetParamListArgs.builder()
- *                         .resourceKey(&#34;Body&#34;)
- *                         .form(&#34;ORIGINAL&#34;)
- *                         .build())
- *                 .build())
- *             .build());
- * 
- *     }
- * }
- * ```
- * 
  * ## Import
  * 
  * Event Bridge Rule can be imported using the id, e.g.

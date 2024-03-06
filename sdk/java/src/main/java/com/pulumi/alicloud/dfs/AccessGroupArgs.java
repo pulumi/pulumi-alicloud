@@ -17,14 +17,14 @@ public final class AccessGroupArgs extends com.pulumi.resources.ResourceArgs {
     public static final AccessGroupArgs Empty = new AccessGroupArgs();
 
     /**
-     * The Name of Access Group.The length of `access_group_name` does not exceed 100 bytes.
+     * The permission group name. The naming rules are as follows: The length is 6~64 characters. Globally unique and cannot be an empty string. English letters are supported and can contain numbers, underscores (_), and dashes (-).
      * 
      */
     @Import(name="accessGroupName", required=true)
     private Output<String> accessGroupName;
 
     /**
-     * @return The Name of Access Group.The length of `access_group_name` does not exceed 100 bytes.
+     * @return The permission group name. The naming rules are as follows: The length is 6~64 characters. Globally unique and cannot be an empty string. English letters are supported and can contain numbers, underscores (_), and dashes (-).
      * 
      */
     public Output<String> accessGroupName() {
@@ -32,14 +32,14 @@ public final class AccessGroupArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The Description of Access Group. The length of `description` does not exceed 100 bytes.
+     * The permission group description.  No more than 32 characters in length.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return The Description of Access Group. The length of `description` does not exceed 100 bytes.
+     * @return The permission group description.  No more than 32 characters in length.
      * 
      */
     public Optional<Output<String>> description() {
@@ -47,14 +47,14 @@ public final class AccessGroupArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The NetworkType of Access Group. Valid values: `VPC`.
+     * The permission group type. Only VPC (VPC) is supported.
      * 
      */
     @Import(name="networkType", required=true)
     private Output<String> networkType;
 
     /**
-     * @return The NetworkType of Access Group. Valid values: `VPC`.
+     * @return The permission group type. Only VPC (VPC) is supported.
      * 
      */
     public Output<String> networkType() {
@@ -88,7 +88,7 @@ public final class AccessGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accessGroupName The Name of Access Group.The length of `access_group_name` does not exceed 100 bytes.
+         * @param accessGroupName The permission group name. The naming rules are as follows: The length is 6~64 characters. Globally unique and cannot be an empty string. English letters are supported and can contain numbers, underscores (_), and dashes (-).
          * 
          * @return builder
          * 
@@ -99,7 +99,7 @@ public final class AccessGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accessGroupName The Name of Access Group.The length of `access_group_name` does not exceed 100 bytes.
+         * @param accessGroupName The permission group name. The naming rules are as follows: The length is 6~64 characters. Globally unique and cannot be an empty string. English letters are supported and can contain numbers, underscores (_), and dashes (-).
          * 
          * @return builder
          * 
@@ -109,7 +109,7 @@ public final class AccessGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description The Description of Access Group. The length of `description` does not exceed 100 bytes.
+         * @param description The permission group description.  No more than 32 characters in length.
          * 
          * @return builder
          * 
@@ -120,7 +120,7 @@ public final class AccessGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description The Description of Access Group. The length of `description` does not exceed 100 bytes.
+         * @param description The permission group description.  No more than 32 characters in length.
          * 
          * @return builder
          * 
@@ -130,7 +130,7 @@ public final class AccessGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param networkType The NetworkType of Access Group. Valid values: `VPC`.
+         * @param networkType The permission group type. Only VPC (VPC) is supported.
          * 
          * @return builder
          * 
@@ -141,7 +141,7 @@ public final class AccessGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param networkType The NetworkType of Access Group. Valid values: `VPC`.
+         * @param networkType The permission group type. Only VPC (VPC) is supported.
          * 
          * @return builder
          * 

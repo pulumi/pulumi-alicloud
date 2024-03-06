@@ -16,7 +16,7 @@ import (
 //
 // For information about VOD Domain and how to use it, see [What is Domain](https://www.alibabacloud.com/help/product/29932.html).
 //
-// > **NOTE:** Available in v1.136.0+.
+// > **NOTE:** Available since v1.136.0+.
 //
 // ## Example Usage
 //
@@ -27,26 +27,38 @@ import (
 //
 // import (
 //
+//	"fmt"
+//
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vod"
+//	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := vod.NewDomain(ctx, "default", &vod.DomainArgs{
-//				DomainName: pulumi.String("your_domain_name"),
-//				Scope:      pulumi.String("domestic"),
+//			defaultRandomInteger, err := random.NewRandomInteger(ctx, "defaultRandomInteger", &random.RandomIntegerArgs{
+//				Max: pulumi.Int(99999),
+//				Min: pulumi.Int(10000),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = vod.NewDomain(ctx, "defaultDomain", &vod.DomainArgs{
+//				DomainName: defaultRandomInteger.Result.ApplyT(func(result int) (string, error) {
+//					return fmt.Sprintf("example-%v.com", result), nil
+//				}).(pulumi.StringOutput),
+//				Scope: pulumi.String("domestic"),
 //				Sources: vod.DomainSourceArray{
 //					&vod.DomainSourceArgs{
-//						SourceContent: pulumi.String("your_source_content"),
-//						SourcePort:    pulumi.String("80"),
+//						SourceContent: pulumi.String("outin-c7405446108111ec9a7100163e0eb78b.oss-cn-beijing.aliyuncs.com"),
+//						SourcePort:    pulumi.String("443"),
 //						SourceType:    pulumi.String("domain"),
 //					},
 //				},
 //				Tags: pulumi.Map{
-//					"key1": pulumi.Any("value1"),
-//					"key2": pulumi.Any("value2"),
+//					"Created": pulumi.Any("terraform"),
+//					"For":     pulumi.Any("example"),
 //				},
 //			})
 //			if err != nil {

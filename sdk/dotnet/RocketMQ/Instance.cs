@@ -27,13 +27,22 @@ namespace Pulumi.AliCloud.RocketMQ
     /// using System.Linq;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
+    /// using Random = Pulumi.Random;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf-example";
+    ///     var @default = new Random.RandomInteger("default", new()
+    ///     {
+    ///         Min = 10000,
+    ///         Max = 99999,
+    ///     });
+    /// 
     ///     var example = new AliCloud.RocketMQ.Instance("example", new()
     ///     {
-    ///         InstanceName = "tf-example-ons-instance",
-    ///         Remark = "tf-example-ons-instance-remark",
+    ///         InstanceName = @default.Result.Apply(result =&gt; $"{name}-{result}"),
+    ///         Remark = name,
     ///     });
     /// 
     /// });

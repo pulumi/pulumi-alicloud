@@ -18,11 +18,16 @@ import * as utilities from "../utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
+ * import * as random from "@pulumi/random";
  *
  * const config = new pulumi.Config();
- * const name = config.get("name") || "onsInstanceName";
- * const groupName = config.get("groupName") || "GID-onsGroupDatasourceName";
- * const defaultInstance = new alicloud.rocketmq.Instance("defaultInstance", {remark: "default_ons_instance_remark"});
+ * const name = config.get("name") || "GID-tf-example";
+ * const groupName = config.get("groupName") || "GID-tf-example";
+ * const defaultRandomInteger = new random.RandomInteger("defaultRandomInteger", {
+ *     min: 10000,
+ *     max: 99999,
+ * });
+ * const defaultInstance = new alicloud.rocketmq.Instance("defaultInstance", {});
  * const defaultGroup = new alicloud.rocketmq.Group("defaultGroup", {
  *     groupName: groupName,
  *     instanceId: defaultInstance.id,

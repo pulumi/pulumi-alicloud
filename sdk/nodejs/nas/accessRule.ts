@@ -5,11 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Provides a Nas Access Rule resource.
+ * Provides a NAS Access Rule resource.
  *
- * When NAS is activated, the Default VPC Permission Group is automatically generated. It allows all IP addresses in a VPC to access the mount point with full permissions. Full permissions include Read/Write permission with no restriction on root users.
+ * For information about NAS Access Rule and how to use it, see [What is Access Rule](https://www.alibabacloud.com/help/en/nas/developer-reference/api-nas-2017-06-26-createaccessrule).
  *
- * > **NOTE:** Available in v1.34.0+.
+ * > **NOTE:** Available since v1.34.0.
  *
  * ## Example Usage
  *
@@ -35,10 +35,10 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * Nas Access Rule can be imported using the id, e.g.
+ * NAS Access Rule can be imported using the id, e.g.
  *
  * ```sh
- * $ pulumi import alicloud:nas/accessRule:AccessRule foo tf-testAccNasConfigName:1
+ * $ pulumi import alicloud:nas/accessRule:AccessRule example <access_group_name>:<file_system_type>:<access_rule_id>
  * ```
  */
 export class AccessRule extends pulumi.CustomResource {
@@ -70,29 +70,37 @@ export class AccessRule extends pulumi.CustomResource {
     }
 
     /**
-     * Permission group name.
+     * AccessGroupName.
      */
     public readonly accessGroupName!: pulumi.Output<string>;
     /**
-     * The nas access rule ID.
+     * The first ID of the resource.
      */
     public /*out*/ readonly accessRuleId!: pulumi.Output<string>;
     /**
-     * Priority level. Range: 1-100. Default value: `1`.
+     * filesystem type. include standard, extreme.
+     */
+    public readonly fileSystemType!: pulumi.Output<string>;
+    /**
+     * Ipv6SourceCidrIp.
+     */
+    public readonly ipv6SourceCidrIp!: pulumi.Output<string | undefined>;
+    /**
+     * Priority.
      */
     public readonly priority!: pulumi.Output<number | undefined>;
     /**
-     * Read-write permission type: `RDWR` (default), `RDONLY`.
+     * RWAccess.
      */
-    public readonly rwAccessType!: pulumi.Output<string | undefined>;
+    public readonly rwAccessType!: pulumi.Output<string>;
     /**
-     * Address or address segment.
+     * SourceCidrIp.
      */
-    public readonly sourceCidrIp!: pulumi.Output<string>;
+    public readonly sourceCidrIp!: pulumi.Output<string | undefined>;
     /**
-     * User permission type: `noSquash` (default), `rootSquash`, `allSquash`.
+     * UserAccess.
      */
-    public readonly userAccessType!: pulumi.Output<string | undefined>;
+    public readonly userAccessType!: pulumi.Output<string>;
 
     /**
      * Create a AccessRule resource with the given unique name, arguments, and options.
@@ -109,6 +117,8 @@ export class AccessRule extends pulumi.CustomResource {
             const state = argsOrState as AccessRuleState | undefined;
             resourceInputs["accessGroupName"] = state ? state.accessGroupName : undefined;
             resourceInputs["accessRuleId"] = state ? state.accessRuleId : undefined;
+            resourceInputs["fileSystemType"] = state ? state.fileSystemType : undefined;
+            resourceInputs["ipv6SourceCidrIp"] = state ? state.ipv6SourceCidrIp : undefined;
             resourceInputs["priority"] = state ? state.priority : undefined;
             resourceInputs["rwAccessType"] = state ? state.rwAccessType : undefined;
             resourceInputs["sourceCidrIp"] = state ? state.sourceCidrIp : undefined;
@@ -118,10 +128,9 @@ export class AccessRule extends pulumi.CustomResource {
             if ((!args || args.accessGroupName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'accessGroupName'");
             }
-            if ((!args || args.sourceCidrIp === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'sourceCidrIp'");
-            }
             resourceInputs["accessGroupName"] = args ? args.accessGroupName : undefined;
+            resourceInputs["fileSystemType"] = args ? args.fileSystemType : undefined;
+            resourceInputs["ipv6SourceCidrIp"] = args ? args.ipv6SourceCidrIp : undefined;
             resourceInputs["priority"] = args ? args.priority : undefined;
             resourceInputs["rwAccessType"] = args ? args.rwAccessType : undefined;
             resourceInputs["sourceCidrIp"] = args ? args.sourceCidrIp : undefined;
@@ -138,27 +147,35 @@ export class AccessRule extends pulumi.CustomResource {
  */
 export interface AccessRuleState {
     /**
-     * Permission group name.
+     * AccessGroupName.
      */
     accessGroupName?: pulumi.Input<string>;
     /**
-     * The nas access rule ID.
+     * The first ID of the resource.
      */
     accessRuleId?: pulumi.Input<string>;
     /**
-     * Priority level. Range: 1-100. Default value: `1`.
+     * filesystem type. include standard, extreme.
+     */
+    fileSystemType?: pulumi.Input<string>;
+    /**
+     * Ipv6SourceCidrIp.
+     */
+    ipv6SourceCidrIp?: pulumi.Input<string>;
+    /**
+     * Priority.
      */
     priority?: pulumi.Input<number>;
     /**
-     * Read-write permission type: `RDWR` (default), `RDONLY`.
+     * RWAccess.
      */
     rwAccessType?: pulumi.Input<string>;
     /**
-     * Address or address segment.
+     * SourceCidrIp.
      */
     sourceCidrIp?: pulumi.Input<string>;
     /**
-     * User permission type: `noSquash` (default), `rootSquash`, `allSquash`.
+     * UserAccess.
      */
     userAccessType?: pulumi.Input<string>;
 }
@@ -168,23 +185,31 @@ export interface AccessRuleState {
  */
 export interface AccessRuleArgs {
     /**
-     * Permission group name.
+     * AccessGroupName.
      */
     accessGroupName: pulumi.Input<string>;
     /**
-     * Priority level. Range: 1-100. Default value: `1`.
+     * filesystem type. include standard, extreme.
+     */
+    fileSystemType?: pulumi.Input<string>;
+    /**
+     * Ipv6SourceCidrIp.
+     */
+    ipv6SourceCidrIp?: pulumi.Input<string>;
+    /**
+     * Priority.
      */
     priority?: pulumi.Input<number>;
     /**
-     * Read-write permission type: `RDWR` (default), `RDONLY`.
+     * RWAccess.
      */
     rwAccessType?: pulumi.Input<string>;
     /**
-     * Address or address segment.
+     * SourceCidrIp.
      */
-    sourceCidrIp: pulumi.Input<string>;
+    sourceCidrIp?: pulumi.Input<string>;
     /**
-     * User permission type: `noSquash` (default), `rootSquash`, `allSquash`.
+     * UserAccess.
      */
     userAccessType?: pulumi.Input<string>;
 }

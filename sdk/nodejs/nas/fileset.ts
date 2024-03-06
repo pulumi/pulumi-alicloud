@@ -37,7 +37,6 @@ import * as utilities from "../utilities";
  *     storageType: "advance_200",
  *     fileSystemType: "cpfs",
  *     capacity: 3600,
- *     description: "terraform-example",
  *     zoneId: exampleZones.then(exampleZones => exampleZones.zones?.[1]?.zoneId),
  *     vpcId: exampleNetwork.id,
  *     vswitchId: exampleSwitch.id,

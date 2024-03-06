@@ -3094,6 +3094,7 @@ class GetGatewaysGatewayResult(dict):
                  business_status: str,
                  create_time: str,
                  description: str,
+                 disaster_recovery_internet_ip: str,
                  disaster_recovery_vswitch_id: str,
                  enable_ipsec: str,
                  enable_ssl: str,
@@ -3117,6 +3118,7 @@ class GetGatewaysGatewayResult(dict):
         :param str business_status: Limit search to specific business status - valid value is "Normal", "FinancialLocked".
         :param str create_time: The creation time of the VPN gateway.
         :param str description: The description of the VPN
+        :param str disaster_recovery_internet_ip: The backup public IP address of the VPN gateway. The second IP address assigned by the system to create an IPsec-VPN connection. This parameter is returned only when the VPN gateway supports the dual-tunnel mode.
         :param str disaster_recovery_vswitch_id: - The ID of the backup VSwitch to which the VPN gateway is attached.
         :param str enable_ipsec: Indicates whether the IPsec-VPN feature is enabled.
         :param str enable_ssl: Whether the ssl function is enabled.
@@ -3140,6 +3142,7 @@ class GetGatewaysGatewayResult(dict):
         pulumi.set(__self__, "business_status", business_status)
         pulumi.set(__self__, "create_time", create_time)
         pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "disaster_recovery_internet_ip", disaster_recovery_internet_ip)
         pulumi.set(__self__, "disaster_recovery_vswitch_id", disaster_recovery_vswitch_id)
         pulumi.set(__self__, "enable_ipsec", enable_ipsec)
         pulumi.set(__self__, "enable_ssl", enable_ssl)
@@ -3190,6 +3193,14 @@ class GetGatewaysGatewayResult(dict):
         The description of the VPN
         """
         return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="disasterRecoveryInternetIp")
+    def disaster_recovery_internet_ip(self) -> str:
+        """
+        The backup public IP address of the VPN gateway. The second IP address assigned by the system to create an IPsec-VPN connection. This parameter is returned only when the VPN gateway supports the dual-tunnel mode.
+        """
+        return pulumi.get(self, "disaster_recovery_internet_ip")
 
     @property
     @pulumi.getter(name="disasterRecoveryVswitchId")

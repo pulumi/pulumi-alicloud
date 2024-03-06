@@ -33,8 +33,9 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.random.RandomInteger;
+ * import com.pulumi.random.RandomIntegerArgs;
  * import com.pulumi.alicloud.rocketmq.Instance;
- * import com.pulumi.alicloud.rocketmq.InstanceArgs;
  * import com.pulumi.alicloud.rocketmq.Group;
  * import com.pulumi.alicloud.rocketmq.GroupArgs;
  * import java.util.List;
@@ -51,11 +52,14 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;onsInstanceName&#34;);
- *         final var groupName = config.get(&#34;groupName&#34;).orElse(&#34;GID-onsGroupDatasourceName&#34;);
- *         var defaultInstance = new Instance(&#34;defaultInstance&#34;, InstanceArgs.builder()        
- *             .remark(&#34;default_ons_instance_remark&#34;)
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;GID-tf-example&#34;);
+ *         final var groupName = config.get(&#34;groupName&#34;).orElse(&#34;GID-tf-example&#34;);
+ *         var defaultRandomInteger = new RandomInteger(&#34;defaultRandomInteger&#34;, RandomIntegerArgs.builder()        
+ *             .min(10000)
+ *             .max(99999)
  *             .build());
+ * 
+ *         var defaultInstance = new Instance(&#34;defaultInstance&#34;);
  * 
  *         var defaultGroup = new Group(&#34;defaultGroup&#34;, GroupArgs.builder()        
  *             .groupName(groupName)

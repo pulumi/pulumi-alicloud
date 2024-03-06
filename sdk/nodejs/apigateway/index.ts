@@ -70,6 +70,11 @@ export type Group = import("./group").Group;
 export const Group: typeof import("./group").Group = null as any;
 utilities.lazyLoad(exports, ["Group"], () => require("./group"));
 
+export { InstanceArgs, InstanceState } from "./instance";
+export type Instance = import("./instance").Instance;
+export const Instance: typeof import("./instance").Instance = null as any;
+utilities.lazyLoad(exports, ["Instance"], () => require("./instance"));
+
 export { LogConfigArgs, LogConfigState } from "./logConfig";
 export type LogConfig = import("./logConfig").LogConfig;
 export const LogConfig: typeof import("./logConfig").LogConfig = null as any;
@@ -105,6 +110,8 @@ const _module = {
                 return new Backend(name, <any>undefined, { urn })
             case "alicloud:apigateway/group:Group":
                 return new Group(name, <any>undefined, { urn })
+            case "alicloud:apigateway/instance:Instance":
+                return new Instance(name, <any>undefined, { urn })
             case "alicloud:apigateway/logConfig:LogConfig":
                 return new LogConfig(name, <any>undefined, { urn })
             case "alicloud:apigateway/model:Model":
@@ -123,6 +130,7 @@ pulumi.runtime.registerResourceModule("alicloud", "apigateway/app", _module)
 pulumi.runtime.registerResourceModule("alicloud", "apigateway/appAttachment", _module)
 pulumi.runtime.registerResourceModule("alicloud", "apigateway/backend", _module)
 pulumi.runtime.registerResourceModule("alicloud", "apigateway/group", _module)
+pulumi.runtime.registerResourceModule("alicloud", "apigateway/instance", _module)
 pulumi.runtime.registerResourceModule("alicloud", "apigateway/logConfig", _module)
 pulumi.runtime.registerResourceModule("alicloud", "apigateway/model", _module)
 pulumi.runtime.registerResourceModule("alicloud", "apigateway/plugin", _module)

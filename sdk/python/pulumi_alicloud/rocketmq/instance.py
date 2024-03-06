@@ -265,10 +265,18 @@ class Instance(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        default = random.RandomInteger("default",
+            min=10000,
+            max=99999)
         example = alicloud.rocketmq.Instance("example",
-            instance_name="tf-example-ons-instance",
-            remark="tf-example-ons-instance-remark")
+            instance_name=default.result.apply(lambda result: f"{name}-{result}"),
+            remark=name)
         ```
 
         ## Import
@@ -310,10 +318,18 @@ class Instance(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        default = random.RandomInteger("default",
+            min=10000,
+            max=99999)
         example = alicloud.rocketmq.Instance("example",
-            instance_name="tf-example-ons-instance",
-            remark="tf-example-ons-instance-remark")
+            instance_name=default.result.apply(lambda result: f"{name}-{result}"),
+            remark=name)
         ```
 
         ## Import

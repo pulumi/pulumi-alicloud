@@ -5,6 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
+export { DefenseTemplateArgs, DefenseTemplateState } from "./defenseTemplate";
+export type DefenseTemplate = import("./defenseTemplate").DefenseTemplate;
+export const DefenseTemplate: typeof import("./defenseTemplate").DefenseTemplate = null as any;
+utilities.lazyLoad(exports, ["DefenseTemplate"], () => require("./defenseTemplate"));
+
 export { DomainArgs, DomainState } from "./domain";
 export type Domain = import("./domain").Domain;
 export const Domain: typeof import("./domain").Domain = null as any;
@@ -30,6 +35,8 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "alicloud:wafv3/defenseTemplate:DefenseTemplate":
+                return new DefenseTemplate(name, <any>undefined, { urn })
             case "alicloud:wafv3/domain:Domain":
                 return new Domain(name, <any>undefined, { urn })
             case "alicloud:wafv3/instance:Instance":
@@ -39,5 +46,6 @@ const _module = {
         }
     },
 };
+pulumi.runtime.registerResourceModule("alicloud", "wafv3/defenseTemplate", _module)
 pulumi.runtime.registerResourceModule("alicloud", "wafv3/domain", _module)
 pulumi.runtime.registerResourceModule("alicloud", "wafv3/instance", _module)

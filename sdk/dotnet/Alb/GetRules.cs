@@ -14,44 +14,7 @@ namespace Pulumi.AliCloud.Alb
         /// <summary>
         /// This data source provides the Alb Rules of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.133.0+.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// Basic Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var ids = AliCloud.Alb.GetRules.Invoke(new()
-        ///     {
-        ///         Ids = new[]
-        ///         {
-        ///             "example_id",
-        ///         },
-        ///     });
-        /// 
-        ///     var nameRegex = AliCloud.Alb.GetRules.Invoke(new()
-        ///     {
-        ///         NameRegex = "^my-Rule",
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["albRuleId1"] = ids.Apply(getRulesResult =&gt; getRulesResult.Rules[0]?.Id),
-        ///         ["albRuleId2"] = nameRegex.Apply(getRulesResult =&gt; getRulesResult.Rules[0]?.Id),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &gt; **NOTE:** Available since v1.133.0.
         /// </summary>
         public static Task<GetRulesResult> InvokeAsync(GetRulesArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetRulesResult>("alicloud:alb/getRules:getRules", args ?? new GetRulesArgs(), options.WithDefaults());
@@ -59,44 +22,7 @@ namespace Pulumi.AliCloud.Alb
         /// <summary>
         /// This data source provides the Alb Rules of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.133.0+.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// Basic Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var ids = AliCloud.Alb.GetRules.Invoke(new()
-        ///     {
-        ///         Ids = new[]
-        ///         {
-        ///             "example_id",
-        ///         },
-        ///     });
-        /// 
-        ///     var nameRegex = AliCloud.Alb.GetRules.Invoke(new()
-        ///     {
-        ///         NameRegex = "^my-Rule",
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["albRuleId1"] = ids.Apply(getRulesResult =&gt; getRulesResult.Rules[0]?.Id),
-        ///         ["albRuleId2"] = nameRegex.Apply(getRulesResult =&gt; getRulesResult.Rules[0]?.Id),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &gt; **NOTE:** Available since v1.133.0.
         /// </summary>
         public static Output<GetRulesResult> Invoke(GetRulesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetRulesResult>("alicloud:alb/getRules:getRules", args ?? new GetRulesInvokeArgs(), options.WithDefaults());
@@ -166,7 +92,7 @@ namespace Pulumi.AliCloud.Alb
         }
 
         /// <summary>
-        /// The status of the resource.
+        /// The status of the forwarding rule. Valid values: `Provisioning`, `Configuring`, `Available`.
         /// </summary>
         [Input("status")]
         public string? Status { get; set; }
@@ -240,7 +166,7 @@ namespace Pulumi.AliCloud.Alb
         }
 
         /// <summary>
-        /// The status of the resource.
+        /// The status of the forwarding rule. Valid values: `Provisioning`, `Configuring`, `Available`.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
@@ -263,10 +189,19 @@ namespace Pulumi.AliCloud.Alb
         public readonly ImmutableArray<string> ListenerIds;
         public readonly ImmutableArray<string> LoadBalancerIds;
         public readonly string? NameRegex;
+        /// <summary>
+        /// A list of Rule names.
+        /// </summary>
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;
         public readonly ImmutableArray<string> RuleIds;
+        /// <summary>
+        /// A list of Alb Rules. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetRulesRuleResult> Rules;
+        /// <summary>
+        /// The status of the forwarding rule.
+        /// </summary>
         public readonly string? Status;
 
         [OutputConstructor]

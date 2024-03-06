@@ -169,24 +169,6 @@ class InstanceMember(pulumi.CustomResource):
 
         > **NOTE:** Available in v1.194.0+.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "AliyunTerraform"
-        default_account = alicloud.resourcemanager.Account("defaultAccount", display_name=name)
-        default_instance_member = alicloud.cloudfirewall.InstanceMember("defaultInstanceMember",
-            member_desc=name,
-            member_uid=default_account.id)
-        ```
-
         ## Import
 
         Cloud Firewall Instance Member can be imported using the id, e.g.
@@ -212,24 +194,6 @@ class InstanceMember(pulumi.CustomResource):
         For information about Cloud Firewall Instance Member and how to use it, see [What is Instance Member](https://www.alibabacloud.com/help/en/server-load-balancer/latest/createloadbalancer).
 
         > **NOTE:** Available in v1.194.0+.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "AliyunTerraform"
-        default_account = alicloud.resourcemanager.Account("defaultAccount", display_name=name)
-        default_instance_member = alicloud.cloudfirewall.InstanceMember("defaultInstanceMember",
-            member_desc=name,
-            member_uid=default_account.id)
-        ```
 
         ## Import
 

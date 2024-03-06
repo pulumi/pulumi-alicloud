@@ -295,19 +295,25 @@ class StudioApplication(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        default = alicloud.bp.StudioApplication("default",
-            application_name="example_value",
-            area_id="example_value",
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        default_resource_groups = alicloud.resourcemanager.get_resource_groups()
+        default_instances = alicloud.ecs.get_instances(status="Running")
+        default_studio_application = alicloud.bp.StudioApplication("defaultStudioApplication",
+            application_name=name,
+            template_id="YAUUQIYRSV1CMFGX",
+            resource_group_id=default_resource_groups.groups[0].id,
+            area_id="cn-hangzhou",
+            instances=[alicloud.bp.StudioApplicationInstanceArgs(
+                id="data.alicloud_instances.default.instances.0.id",
+                node_name="data.alicloud_instances.default.instances.0.name",
+                node_type="ecs",
+            )],
             configuration={
                 "enableMonitor": "1",
             },
-            instances=[alicloud.bp.StudioApplicationInstanceArgs(
-                id="example_value",
-                node_name="example_value",
-                node_type="ecs",
-            )],
-            resource_group_id="example_value",
-            template_id="example_value",
             variables={
                 "test": "1",
             })
@@ -352,19 +358,25 @@ class StudioApplication(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        default = alicloud.bp.StudioApplication("default",
-            application_name="example_value",
-            area_id="example_value",
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        default_resource_groups = alicloud.resourcemanager.get_resource_groups()
+        default_instances = alicloud.ecs.get_instances(status="Running")
+        default_studio_application = alicloud.bp.StudioApplication("defaultStudioApplication",
+            application_name=name,
+            template_id="YAUUQIYRSV1CMFGX",
+            resource_group_id=default_resource_groups.groups[0].id,
+            area_id="cn-hangzhou",
+            instances=[alicloud.bp.StudioApplicationInstanceArgs(
+                id="data.alicloud_instances.default.instances.0.id",
+                node_name="data.alicloud_instances.default.instances.0.name",
+                node_type="ecs",
+            )],
             configuration={
                 "enableMonitor": "1",
             },
-            instances=[alicloud.bp.StudioApplicationInstanceArgs(
-                id="example_value",
-                node_name="example_value",
-                node_type="ecs",
-            )],
-            resource_group_id="example_value",
-            template_id="example_value",
             variables={
                 "test": "1",
             })

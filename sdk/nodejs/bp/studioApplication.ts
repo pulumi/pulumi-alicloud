@@ -21,19 +21,25 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const _default = new alicloud.bp.StudioApplication("default", {
- *     applicationName: "example_value",
- *     areaId: "example_value",
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf-example";
+ * const defaultResourceGroups = alicloud.resourcemanager.getResourceGroups({});
+ * const defaultInstances = alicloud.ecs.getInstances({
+ *     status: "Running",
+ * });
+ * const defaultStudioApplication = new alicloud.bp.StudioApplication("defaultStudioApplication", {
+ *     applicationName: name,
+ *     templateId: "YAUUQIYRSV1CMFGX",
+ *     resourceGroupId: defaultResourceGroups.then(defaultResourceGroups => defaultResourceGroups.groups?.[0]?.id),
+ *     areaId: "cn-hangzhou",
+ *     instances: [{
+ *         id: "data.alicloud_instances.default.instances.0.id",
+ *         nodeName: "data.alicloud_instances.default.instances.0.name",
+ *         nodeType: "ecs",
+ *     }],
  *     configuration: {
  *         enableMonitor: "1",
  *     },
- *     instances: [{
- *         id: "example_value",
- *         nodeName: "example_value",
- *         nodeType: "ecs",
- *     }],
- *     resourceGroupId: "example_value",
- *     templateId: "example_value",
  *     variables: {
  *         test: "1",
  *     },

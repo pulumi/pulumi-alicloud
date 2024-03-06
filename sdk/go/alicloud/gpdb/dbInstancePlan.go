@@ -12,11 +12,102 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a GPDB DB Instance Plan resource.
+// Provides a AnalyticDB for PostgreSQL (GPDB) DB Instance Plan resource.
 //
-// For information about GPDB DB Instance Plan and how to use it, see [What is DB Instance Plan](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/developer-reference/api-gpdb-2016-05-03-createdbinstanceplan).
+// For information about AnalyticDB for PostgreSQL (GPDB) DB Instance Plan and how to use it, see [What is DB Instance Plan](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/developer-reference/api-gpdb-2016-05-03-createdbinstanceplan).
 //
 // > **NOTE:** Available since v1.189.0.
+//
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/gpdb"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "tf-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			defaultZones, err := gpdb.GetZones(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultNetworks, err := vpc.GetNetworks(ctx, &vpc.GetNetworksArgs{
+//				NameRegex: pulumi.StringRef("^default-NODELETING$"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultSwitches, err := vpc.GetSwitches(ctx, &vpc.GetSwitchesArgs{
+//				VpcId:  pulumi.StringRef(defaultNetworks.Ids[0]),
+//				ZoneId: pulumi.StringRef(defaultZones.Ids[0]),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultInstance, err := gpdb.NewInstance(ctx, "defaultInstance", &gpdb.InstanceArgs{
+//				DbInstanceCategory:  pulumi.String("HighAvailability"),
+//				DbInstanceClass:     pulumi.String("gpdb.group.segsdx1"),
+//				DbInstanceMode:      pulumi.String("StorageElastic"),
+//				Description:         pulumi.String(name),
+//				Engine:              pulumi.String("gpdb"),
+//				EngineVersion:       pulumi.String("6.0"),
+//				ZoneId:              *pulumi.String(defaultZones.Ids[0]),
+//				InstanceNetworkType: pulumi.String("VPC"),
+//				InstanceSpec:        pulumi.String("2C16G"),
+//				PaymentType:         pulumi.String("PayAsYouGo"),
+//				SegStorageType:      pulumi.String("cloud_essd"),
+//				SegNodeNum:          pulumi.Int(4),
+//				StorageSize:         pulumi.Int(50),
+//				VpcId:               *pulumi.String(defaultNetworks.Ids[0]),
+//				VswitchId:           *pulumi.String(defaultSwitches.Ids[0]),
+//				IpWhitelists: gpdb.InstanceIpWhitelistArray{
+//					&gpdb.InstanceIpWhitelistArgs{
+//						SecurityIpList: pulumi.String("127.0.0.1"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = gpdb.NewDbInstancePlan(ctx, "defaultDbInstancePlan", &gpdb.DbInstancePlanArgs{
+//				DbInstancePlanName: pulumi.String(name),
+//				PlanDesc:           pulumi.String(name),
+//				PlanType:           pulumi.String("PauseResume"),
+//				PlanScheduleType:   pulumi.String("Regular"),
+//				PlanConfigs: gpdb.DbInstancePlanPlanConfigArray{
+//					&gpdb.DbInstancePlanPlanConfigArgs{
+//						Resume: &gpdb.DbInstancePlanPlanConfigResumeArgs{
+//							PlanCronTime: pulumi.String("0 0 0 1/1 * ? "),
+//						},
+//						Pause: &gpdb.DbInstancePlanPlanConfigPauseArgs{
+//							PlanCronTime: pulumi.String("0 0 10 1/1 * ? "),
+//						},
+//					},
+//				},
+//				DbInstanceId: defaultInstance.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
@@ -28,19 +119,19 @@ import (
 type DbInstancePlan struct {
 	pulumi.CustomResourceState
 
-	// The ID of the Database instance.
+	// The ID of the GPDB instance.
 	DbInstanceId pulumi.StringOutput `pulumi:"dbInstanceId"`
 	// The name of the Plan.
 	DbInstancePlanName pulumi.StringOutput `pulumi:"dbInstancePlanName"`
-	// The plan config. See `planConfig` below.
+	// The execution information of the plan. See `planConfig` below.
 	PlanConfigs DbInstancePlanPlanConfigArrayOutput `pulumi:"planConfigs"`
 	// The description of the Plan.
-	PlanDesc pulumi.StringOutput `pulumi:"planDesc"`
+	PlanDesc pulumi.StringPtrOutput `pulumi:"planDesc"`
 	// The end time of the Plan.
-	PlanEndDate pulumi.StringOutput `pulumi:"planEndDate"`
-	// The ID of DB Instance Plan.
+	PlanEndDate pulumi.StringPtrOutput `pulumi:"planEndDate"`
+	// The ID of the plan.
 	PlanId pulumi.StringOutput `pulumi:"planId"`
-	// Plan scheduling type. Valid values: `Postpone`, `Regular`.
+	// The execution mode of the plan. Valid values: `Postpone`, `Regular`.
 	PlanScheduleType pulumi.StringOutput `pulumi:"planScheduleType"`
 	// The start time of the Plan.
 	PlanStartDate pulumi.StringOutput `pulumi:"planStartDate"`
@@ -95,19 +186,19 @@ func GetDbInstancePlan(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering DbInstancePlan resources.
 type dbInstancePlanState struct {
-	// The ID of the Database instance.
+	// The ID of the GPDB instance.
 	DbInstanceId *string `pulumi:"dbInstanceId"`
 	// The name of the Plan.
 	DbInstancePlanName *string `pulumi:"dbInstancePlanName"`
-	// The plan config. See `planConfig` below.
+	// The execution information of the plan. See `planConfig` below.
 	PlanConfigs []DbInstancePlanPlanConfig `pulumi:"planConfigs"`
 	// The description of the Plan.
 	PlanDesc *string `pulumi:"planDesc"`
 	// The end time of the Plan.
 	PlanEndDate *string `pulumi:"planEndDate"`
-	// The ID of DB Instance Plan.
+	// The ID of the plan.
 	PlanId *string `pulumi:"planId"`
-	// Plan scheduling type. Valid values: `Postpone`, `Regular`.
+	// The execution mode of the plan. Valid values: `Postpone`, `Regular`.
 	PlanScheduleType *string `pulumi:"planScheduleType"`
 	// The start time of the Plan.
 	PlanStartDate *string `pulumi:"planStartDate"`
@@ -118,19 +209,19 @@ type dbInstancePlanState struct {
 }
 
 type DbInstancePlanState struct {
-	// The ID of the Database instance.
+	// The ID of the GPDB instance.
 	DbInstanceId pulumi.StringPtrInput
 	// The name of the Plan.
 	DbInstancePlanName pulumi.StringPtrInput
-	// The plan config. See `planConfig` below.
+	// The execution information of the plan. See `planConfig` below.
 	PlanConfigs DbInstancePlanPlanConfigArrayInput
 	// The description of the Plan.
 	PlanDesc pulumi.StringPtrInput
 	// The end time of the Plan.
 	PlanEndDate pulumi.StringPtrInput
-	// The ID of DB Instance Plan.
+	// The ID of the plan.
 	PlanId pulumi.StringPtrInput
-	// Plan scheduling type. Valid values: `Postpone`, `Regular`.
+	// The execution mode of the plan. Valid values: `Postpone`, `Regular`.
 	PlanScheduleType pulumi.StringPtrInput
 	// The start time of the Plan.
 	PlanStartDate pulumi.StringPtrInput
@@ -145,17 +236,17 @@ func (DbInstancePlanState) ElementType() reflect.Type {
 }
 
 type dbInstancePlanArgs struct {
-	// The ID of the Database instance.
+	// The ID of the GPDB instance.
 	DbInstanceId string `pulumi:"dbInstanceId"`
 	// The name of the Plan.
 	DbInstancePlanName string `pulumi:"dbInstancePlanName"`
-	// The plan config. See `planConfig` below.
+	// The execution information of the plan. See `planConfig` below.
 	PlanConfigs []DbInstancePlanPlanConfig `pulumi:"planConfigs"`
 	// The description of the Plan.
 	PlanDesc *string `pulumi:"planDesc"`
 	// The end time of the Plan.
 	PlanEndDate *string `pulumi:"planEndDate"`
-	// Plan scheduling type. Valid values: `Postpone`, `Regular`.
+	// The execution mode of the plan. Valid values: `Postpone`, `Regular`.
 	PlanScheduleType string `pulumi:"planScheduleType"`
 	// The start time of the Plan.
 	PlanStartDate *string `pulumi:"planStartDate"`
@@ -167,17 +258,17 @@ type dbInstancePlanArgs struct {
 
 // The set of arguments for constructing a DbInstancePlan resource.
 type DbInstancePlanArgs struct {
-	// The ID of the Database instance.
+	// The ID of the GPDB instance.
 	DbInstanceId pulumi.StringInput
 	// The name of the Plan.
 	DbInstancePlanName pulumi.StringInput
-	// The plan config. See `planConfig` below.
+	// The execution information of the plan. See `planConfig` below.
 	PlanConfigs DbInstancePlanPlanConfigArrayInput
 	// The description of the Plan.
 	PlanDesc pulumi.StringPtrInput
 	// The end time of the Plan.
 	PlanEndDate pulumi.StringPtrInput
-	// Plan scheduling type. Valid values: `Postpone`, `Regular`.
+	// The execution mode of the plan. Valid values: `Postpone`, `Regular`.
 	PlanScheduleType pulumi.StringInput
 	// The start time of the Plan.
 	PlanStartDate pulumi.StringPtrInput
@@ -274,7 +365,7 @@ func (o DbInstancePlanOutput) ToDbInstancePlanOutputWithContext(ctx context.Cont
 	return o
 }
 
-// The ID of the Database instance.
+// The ID of the GPDB instance.
 func (o DbInstancePlanOutput) DbInstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *DbInstancePlan) pulumi.StringOutput { return v.DbInstanceId }).(pulumi.StringOutput)
 }
@@ -284,27 +375,27 @@ func (o DbInstancePlanOutput) DbInstancePlanName() pulumi.StringOutput {
 	return o.ApplyT(func(v *DbInstancePlan) pulumi.StringOutput { return v.DbInstancePlanName }).(pulumi.StringOutput)
 }
 
-// The plan config. See `planConfig` below.
+// The execution information of the plan. See `planConfig` below.
 func (o DbInstancePlanOutput) PlanConfigs() DbInstancePlanPlanConfigArrayOutput {
 	return o.ApplyT(func(v *DbInstancePlan) DbInstancePlanPlanConfigArrayOutput { return v.PlanConfigs }).(DbInstancePlanPlanConfigArrayOutput)
 }
 
 // The description of the Plan.
-func (o DbInstancePlanOutput) PlanDesc() pulumi.StringOutput {
-	return o.ApplyT(func(v *DbInstancePlan) pulumi.StringOutput { return v.PlanDesc }).(pulumi.StringOutput)
+func (o DbInstancePlanOutput) PlanDesc() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DbInstancePlan) pulumi.StringPtrOutput { return v.PlanDesc }).(pulumi.StringPtrOutput)
 }
 
 // The end time of the Plan.
-func (o DbInstancePlanOutput) PlanEndDate() pulumi.StringOutput {
-	return o.ApplyT(func(v *DbInstancePlan) pulumi.StringOutput { return v.PlanEndDate }).(pulumi.StringOutput)
+func (o DbInstancePlanOutput) PlanEndDate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DbInstancePlan) pulumi.StringPtrOutput { return v.PlanEndDate }).(pulumi.StringPtrOutput)
 }
 
-// The ID of DB Instance Plan.
+// The ID of the plan.
 func (o DbInstancePlanOutput) PlanId() pulumi.StringOutput {
 	return o.ApplyT(func(v *DbInstancePlan) pulumi.StringOutput { return v.PlanId }).(pulumi.StringOutput)
 }
 
-// Plan scheduling type. Valid values: `Postpone`, `Regular`.
+// The execution mode of the plan. Valid values: `Postpone`, `Regular`.
 func (o DbInstancePlanOutput) PlanScheduleType() pulumi.StringOutput {
 	return o.ApplyT(func(v *DbInstancePlan) pulumi.StringOutput { return v.PlanScheduleType }).(pulumi.StringOutput)
 }

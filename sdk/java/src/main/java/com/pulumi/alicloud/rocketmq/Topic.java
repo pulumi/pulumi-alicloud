@@ -33,6 +33,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.random.RandomInteger;
+ * import com.pulumi.random.RandomIntegerArgs;
  * import com.pulumi.alicloud.rocketmq.Instance;
  * import com.pulumi.alicloud.rocketmq.InstanceArgs;
  * import com.pulumi.alicloud.rocketmq.Topic;
@@ -53,6 +55,11 @@ import javax.annotation.Nullable;
  *         final var config = ctx.config();
  *         final var name = config.get(&#34;name&#34;).orElse(&#34;onsInstanceName&#34;);
  *         final var topic = config.get(&#34;topic&#34;).orElse(&#34;onsTopicName&#34;);
+ *         var defaultRandomInteger = new RandomInteger(&#34;defaultRandomInteger&#34;, RandomIntegerArgs.builder()        
+ *             .min(10000)
+ *             .max(99999)
+ *             .build());
+ * 
  *         var defaultInstance = new Instance(&#34;defaultInstance&#34;, InstanceArgs.builder()        
  *             .remark(&#34;default_ons_instance_remark&#34;)
  *             .build());

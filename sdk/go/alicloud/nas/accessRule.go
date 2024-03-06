@@ -12,11 +12,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a Nas Access Rule resource.
+// Provides a NAS Access Rule resource.
 //
-// When NAS is activated, the Default VPC Permission Group is automatically generated. It allows all IP addresses in a VPC to access the mount point with full permissions. Full permissions include Read/Write permission with no restriction on root users.
+// For information about NAS Access Rule and how to use it, see [What is Access Rule](https://www.alibabacloud.com/help/en/nas/developer-reference/api-nas-2017-06-26-createaccessrule).
 //
-// > **NOTE:** Available in v1.34.0+.
+// > **NOTE:** Available since v1.34.0.
 //
 // ## Example Usage
 //
@@ -60,26 +60,30 @@ import (
 //
 // ## Import
 //
-// Nas Access Rule can be imported using the id, e.g.
+// NAS Access Rule can be imported using the id, e.g.
 //
 // ```sh
-// $ pulumi import alicloud:nas/accessRule:AccessRule foo tf-testAccNasConfigName:1
+// $ pulumi import alicloud:nas/accessRule:AccessRule example <access_group_name>:<file_system_type>:<access_rule_id>
 // ```
 type AccessRule struct {
 	pulumi.CustomResourceState
 
-	// Permission group name.
+	// AccessGroupName.
 	AccessGroupName pulumi.StringOutput `pulumi:"accessGroupName"`
-	// The nas access rule ID.
+	// The first ID of the resource.
 	AccessRuleId pulumi.StringOutput `pulumi:"accessRuleId"`
-	// Priority level. Range: 1-100. Default value: `1`.
+	// filesystem type. include standard, extreme.
+	FileSystemType pulumi.StringOutput `pulumi:"fileSystemType"`
+	// Ipv6SourceCidrIp.
+	Ipv6SourceCidrIp pulumi.StringPtrOutput `pulumi:"ipv6SourceCidrIp"`
+	// Priority.
 	Priority pulumi.IntPtrOutput `pulumi:"priority"`
-	// Read-write permission type: `RDWR` (default), `RDONLY`.
-	RwAccessType pulumi.StringPtrOutput `pulumi:"rwAccessType"`
-	// Address or address segment.
-	SourceCidrIp pulumi.StringOutput `pulumi:"sourceCidrIp"`
-	// User permission type: `noSquash` (default), `rootSquash`, `allSquash`.
-	UserAccessType pulumi.StringPtrOutput `pulumi:"userAccessType"`
+	// RWAccess.
+	RwAccessType pulumi.StringOutput `pulumi:"rwAccessType"`
+	// SourceCidrIp.
+	SourceCidrIp pulumi.StringPtrOutput `pulumi:"sourceCidrIp"`
+	// UserAccess.
+	UserAccessType pulumi.StringOutput `pulumi:"userAccessType"`
 }
 
 // NewAccessRule registers a new resource with the given unique name, arguments, and options.
@@ -91,9 +95,6 @@ func NewAccessRule(ctx *pulumi.Context,
 
 	if args.AccessGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'AccessGroupName'")
-	}
-	if args.SourceCidrIp == nil {
-		return nil, errors.New("invalid value for required argument 'SourceCidrIp'")
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource AccessRule
@@ -118,32 +119,40 @@ func GetAccessRule(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering AccessRule resources.
 type accessRuleState struct {
-	// Permission group name.
+	// AccessGroupName.
 	AccessGroupName *string `pulumi:"accessGroupName"`
-	// The nas access rule ID.
+	// The first ID of the resource.
 	AccessRuleId *string `pulumi:"accessRuleId"`
-	// Priority level. Range: 1-100. Default value: `1`.
+	// filesystem type. include standard, extreme.
+	FileSystemType *string `pulumi:"fileSystemType"`
+	// Ipv6SourceCidrIp.
+	Ipv6SourceCidrIp *string `pulumi:"ipv6SourceCidrIp"`
+	// Priority.
 	Priority *int `pulumi:"priority"`
-	// Read-write permission type: `RDWR` (default), `RDONLY`.
+	// RWAccess.
 	RwAccessType *string `pulumi:"rwAccessType"`
-	// Address or address segment.
+	// SourceCidrIp.
 	SourceCidrIp *string `pulumi:"sourceCidrIp"`
-	// User permission type: `noSquash` (default), `rootSquash`, `allSquash`.
+	// UserAccess.
 	UserAccessType *string `pulumi:"userAccessType"`
 }
 
 type AccessRuleState struct {
-	// Permission group name.
+	// AccessGroupName.
 	AccessGroupName pulumi.StringPtrInput
-	// The nas access rule ID.
+	// The first ID of the resource.
 	AccessRuleId pulumi.StringPtrInput
-	// Priority level. Range: 1-100. Default value: `1`.
+	// filesystem type. include standard, extreme.
+	FileSystemType pulumi.StringPtrInput
+	// Ipv6SourceCidrIp.
+	Ipv6SourceCidrIp pulumi.StringPtrInput
+	// Priority.
 	Priority pulumi.IntPtrInput
-	// Read-write permission type: `RDWR` (default), `RDONLY`.
+	// RWAccess.
 	RwAccessType pulumi.StringPtrInput
-	// Address or address segment.
+	// SourceCidrIp.
 	SourceCidrIp pulumi.StringPtrInput
-	// User permission type: `noSquash` (default), `rootSquash`, `allSquash`.
+	// UserAccess.
 	UserAccessType pulumi.StringPtrInput
 }
 
@@ -152,29 +161,37 @@ func (AccessRuleState) ElementType() reflect.Type {
 }
 
 type accessRuleArgs struct {
-	// Permission group name.
+	// AccessGroupName.
 	AccessGroupName string `pulumi:"accessGroupName"`
-	// Priority level. Range: 1-100. Default value: `1`.
+	// filesystem type. include standard, extreme.
+	FileSystemType *string `pulumi:"fileSystemType"`
+	// Ipv6SourceCidrIp.
+	Ipv6SourceCidrIp *string `pulumi:"ipv6SourceCidrIp"`
+	// Priority.
 	Priority *int `pulumi:"priority"`
-	// Read-write permission type: `RDWR` (default), `RDONLY`.
+	// RWAccess.
 	RwAccessType *string `pulumi:"rwAccessType"`
-	// Address or address segment.
-	SourceCidrIp string `pulumi:"sourceCidrIp"`
-	// User permission type: `noSquash` (default), `rootSquash`, `allSquash`.
+	// SourceCidrIp.
+	SourceCidrIp *string `pulumi:"sourceCidrIp"`
+	// UserAccess.
 	UserAccessType *string `pulumi:"userAccessType"`
 }
 
 // The set of arguments for constructing a AccessRule resource.
 type AccessRuleArgs struct {
-	// Permission group name.
+	// AccessGroupName.
 	AccessGroupName pulumi.StringInput
-	// Priority level. Range: 1-100. Default value: `1`.
+	// filesystem type. include standard, extreme.
+	FileSystemType pulumi.StringPtrInput
+	// Ipv6SourceCidrIp.
+	Ipv6SourceCidrIp pulumi.StringPtrInput
+	// Priority.
 	Priority pulumi.IntPtrInput
-	// Read-write permission type: `RDWR` (default), `RDONLY`.
+	// RWAccess.
 	RwAccessType pulumi.StringPtrInput
-	// Address or address segment.
-	SourceCidrIp pulumi.StringInput
-	// User permission type: `noSquash` (default), `rootSquash`, `allSquash`.
+	// SourceCidrIp.
+	SourceCidrIp pulumi.StringPtrInput
+	// UserAccess.
 	UserAccessType pulumi.StringPtrInput
 }
 
@@ -265,34 +282,44 @@ func (o AccessRuleOutput) ToAccessRuleOutputWithContext(ctx context.Context) Acc
 	return o
 }
 
-// Permission group name.
+// AccessGroupName.
 func (o AccessRuleOutput) AccessGroupName() pulumi.StringOutput {
 	return o.ApplyT(func(v *AccessRule) pulumi.StringOutput { return v.AccessGroupName }).(pulumi.StringOutput)
 }
 
-// The nas access rule ID.
+// The first ID of the resource.
 func (o AccessRuleOutput) AccessRuleId() pulumi.StringOutput {
 	return o.ApplyT(func(v *AccessRule) pulumi.StringOutput { return v.AccessRuleId }).(pulumi.StringOutput)
 }
 
-// Priority level. Range: 1-100. Default value: `1`.
+// filesystem type. include standard, extreme.
+func (o AccessRuleOutput) FileSystemType() pulumi.StringOutput {
+	return o.ApplyT(func(v *AccessRule) pulumi.StringOutput { return v.FileSystemType }).(pulumi.StringOutput)
+}
+
+// Ipv6SourceCidrIp.
+func (o AccessRuleOutput) Ipv6SourceCidrIp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccessRule) pulumi.StringPtrOutput { return v.Ipv6SourceCidrIp }).(pulumi.StringPtrOutput)
+}
+
+// Priority.
 func (o AccessRuleOutput) Priority() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *AccessRule) pulumi.IntPtrOutput { return v.Priority }).(pulumi.IntPtrOutput)
 }
 
-// Read-write permission type: `RDWR` (default), `RDONLY`.
-func (o AccessRuleOutput) RwAccessType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AccessRule) pulumi.StringPtrOutput { return v.RwAccessType }).(pulumi.StringPtrOutput)
+// RWAccess.
+func (o AccessRuleOutput) RwAccessType() pulumi.StringOutput {
+	return o.ApplyT(func(v *AccessRule) pulumi.StringOutput { return v.RwAccessType }).(pulumi.StringOutput)
 }
 
-// Address or address segment.
-func (o AccessRuleOutput) SourceCidrIp() pulumi.StringOutput {
-	return o.ApplyT(func(v *AccessRule) pulumi.StringOutput { return v.SourceCidrIp }).(pulumi.StringOutput)
+// SourceCidrIp.
+func (o AccessRuleOutput) SourceCidrIp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccessRule) pulumi.StringPtrOutput { return v.SourceCidrIp }).(pulumi.StringPtrOutput)
 }
 
-// User permission type: `noSquash` (default), `rootSquash`, `allSquash`.
-func (o AccessRuleOutput) UserAccessType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AccessRule) pulumi.StringPtrOutput { return v.UserAccessType }).(pulumi.StringPtrOutput)
+// UserAccess.
+func (o AccessRuleOutput) UserAccessType() pulumi.StringOutput {
+	return o.ApplyT(func(v *AccessRule) pulumi.StringOutput { return v.UserAccessType }).(pulumi.StringOutput)
 }
 
 type AccessRuleArrayOutput struct{ *pulumi.OutputState }

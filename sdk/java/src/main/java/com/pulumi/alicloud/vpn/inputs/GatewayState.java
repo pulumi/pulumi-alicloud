@@ -110,6 +110,21 @@ public final class GatewayState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The backup public IP address of the VPN gateway. The second IP address assigned by the system to create an IPsec-VPN connection. This parameter is returned only when the VPN gateway supports the dual-tunnel mode.
+     * 
+     */
+    @Import(name="disasterRecoveryInternetIp")
+    private @Nullable Output<String> disasterRecoveryInternetIp;
+
+    /**
+     * @return The backup public IP address of the VPN gateway. The second IP address assigned by the system to create an IPsec-VPN connection. This parameter is returned only when the VPN gateway supports the dual-tunnel mode.
+     * 
+     */
+    public Optional<Output<String>> disasterRecoveryInternetIp() {
+        return Optional.ofNullable(this.disasterRecoveryInternetIp);
+    }
+
+    /**
      * The ID of the backup VSwitch to which the VPN gateway is attached.
      * 
      */
@@ -408,6 +423,7 @@ public final class GatewayState extends com.pulumi.resources.ResourceArgs {
         this.businessStatus = $.businessStatus;
         this.createTime = $.createTime;
         this.description = $.description;
+        this.disasterRecoveryInternetIp = $.disasterRecoveryInternetIp;
         this.disasterRecoveryVswitchId = $.disasterRecoveryVswitchId;
         this.enableIpsec = $.enableIpsec;
         this.enableSsl = $.enableSsl;
@@ -570,6 +586,27 @@ public final class GatewayState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder description(String description) {
             return description(Output.of(description));
+        }
+
+        /**
+         * @param disasterRecoveryInternetIp The backup public IP address of the VPN gateway. The second IP address assigned by the system to create an IPsec-VPN connection. This parameter is returned only when the VPN gateway supports the dual-tunnel mode.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder disasterRecoveryInternetIp(@Nullable Output<String> disasterRecoveryInternetIp) {
+            $.disasterRecoveryInternetIp = disasterRecoveryInternetIp;
+            return this;
+        }
+
+        /**
+         * @param disasterRecoveryInternetIp The backup public IP address of the VPN gateway. The second IP address assigned by the system to create an IPsec-VPN connection. This parameter is returned only when the VPN gateway supports the dual-tunnel mode.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder disasterRecoveryInternetIp(String disasterRecoveryInternetIp) {
+            return disasterRecoveryInternetIp(Output.of(disasterRecoveryInternetIp));
         }
 
         /**

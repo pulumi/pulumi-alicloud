@@ -58,6 +58,12 @@ namespace Pulumi.AliCloud.Vpn
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
+        /// The backup public IP address of the VPN gateway. The second IP address assigned by the system to create an IPsec-VPN connection. This parameter is returned only when the VPN gateway supports the dual-tunnel mode.
+        /// </summary>
+        [Output("disasterRecoveryInternetIp")]
+        public Output<string> DisasterRecoveryInternetIp { get; private set; } = null!;
+
+        /// <summary>
         /// The ID of the backup VSwitch to which the VPN gateway is attached.
         /// </summary>
         [Output("disasterRecoveryVswitchId")]
@@ -378,6 +384,12 @@ namespace Pulumi.AliCloud.Vpn
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
+
+        /// <summary>
+        /// The backup public IP address of the VPN gateway. The second IP address assigned by the system to create an IPsec-VPN connection. This parameter is returned only when the VPN gateway supports the dual-tunnel mode.
+        /// </summary>
+        [Input("disasterRecoveryInternetIp")]
+        public Input<string>? DisasterRecoveryInternetIp { get; set; }
 
         /// <summary>
         /// The ID of the backup VSwitch to which the VPN gateway is attached.

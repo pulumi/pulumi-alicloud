@@ -7,7 +7,7 @@ import * as utilities from "../utilities";
 /**
  * Provides a DFS File System resource.
  *
- * For information about DFS File System and how to use it, see [What is File System](https://www.alibabacloud.com/help/doc-detail/207144.htm).
+ * For information about DFS File System and how to use it, see [What is File System](https://www.alibabacloud.com/help/en/aibaba-cloud-storage-services/latest/apsara-file-storage-for-hdfs).
  *
  * > **NOTE:** Available since v1.140.0.
  *
@@ -18,18 +18,26 @@ import * as utilities from "../utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
+ * import * as random from "@pulumi/random";
  *
  * const config = new pulumi.Config();
- * const name = config.get("name") || "tf-example";
+ * const name = config.get("name") || "terraform-example";
+ * const defaultRandomInteger = new random.RandomInteger("defaultRandomInteger", {
+ *     min: 10000,
+ *     max: 99999,
+ * });
  * const defaultZones = alicloud.dfs.getZones({});
+ * const zoneId = defaultZones.then(defaultZones => defaultZones.zones?.[0]?.zoneId);
+ * const storageType = defaultZones.then(defaultZones => defaultZones.zones?.[0]?.options?.[0]?.storageType);
  * const defaultFileSystem = new alicloud.dfs.FileSystem("defaultFileSystem", {
- *     storageType: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.options?.[0]?.storageType),
- *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.zoneId),
  *     protocolType: "HDFS",
  *     description: name,
- *     fileSystemName: name,
- *     throughputMode: "Standard",
+ *     fileSystemName: pulumi.interpolate`${name}-${defaultRandomInteger.result}`,
  *     spaceCapacity: 1024,
+ *     throughputMode: "Provisioned",
+ *     provisionedThroughputInMiBps: 512,
+ *     storageType: storageType,
+ *     zoneId: zoneId,
  * });
  * ```
  *
@@ -70,35 +78,53 @@ export class FileSystem extends pulumi.CustomResource {
     }
 
     /**
-     * The description of the File system.
+     * The creation time of the file system instance.
+     */
+    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    /**
+     * Redundancy mode of the file system. Value:
+     * - LRS (default): Local redundancy.
+     * - ZRS: Same-City redundancy. When ZRS is selected, zoneId is a string consisting of multiple zones that are expected to be redundant in the same city, for example,  'zoneId1,zoneId2 '.
+     */
+    public readonly dataRedundancyType!: pulumi.Output<string | undefined>;
+    /**
+     * The description of the file system resource. No more than 32 characters in length.
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * The name of the File system.
+     * The file system name. The naming rules are as follows: The length is 6~64 characters. Globally unique and cannot be an empty string. English letters are supported and can contain numbers, underscores (_), and dashes (-).
      */
     public readonly fileSystemName!: pulumi.Output<string>;
     /**
-     * The protocol type. Valid values: `HDFS`.
+     * Save set sequence number, the user selects the content of the specified sequence number in the Save set.
+     */
+    public readonly partitionNumber!: pulumi.Output<number | undefined>;
+    /**
+     * The protocol type.  Only HDFS(Hadoop Distributed File System) is supported.
      */
     public readonly protocolType!: pulumi.Output<string>;
     /**
-     * The preset throughput of the File system. Valid values: `1` to `1024`, Unit: MB/s. **NOTE:** Only when `throughputMode` is `Provisioned`, this param is valid.
+     * Provisioned throughput. This parameter is required when ThroughputMode is set to Provisioned. Unit: MB/s Value range: 1~5120.
      */
     public readonly provisionedThroughputInMiBps!: pulumi.Output<number | undefined>;
     /**
-     * The capacity budget of the File system. **NOTE:** When the actual data storage reaches the file system capacity budget, the data cannot be written. The file system capacity budget does not support shrinking.
+     * File system capacity.  When the actual amount of data stored reaches the capacity of the file system, data cannot be written.  Unit: GiB.
      */
     public readonly spaceCapacity!: pulumi.Output<number>;
     /**
-     * The storage specifications of the File system. Valid values: `PERFORMANCE`, `STANDARD`.
+     * Save set identity, used to select a user-specified save set.
+     */
+    public readonly storageSetName!: pulumi.Output<string | undefined>;
+    /**
+     * The storage media type. Value: STANDARD (default): STANDARD PERFORMANCE: PERFORMANCE type.
      */
     public readonly storageType!: pulumi.Output<string>;
     /**
-     * The throughput mode of the File system. Valid values: `Provisioned`, `Standard`.
+     * The throughput mode. Value: Standard (default): Standard throughput Provisioned: preset throughput.
      */
-    public readonly throughputMode!: pulumi.Output<string | undefined>;
+    public readonly throughputMode!: pulumi.Output<string>;
     /**
-     * The zone ID of the File system.
+     * Zone Id, which is used to create file system resources to the specified zone.
      */
     public readonly zoneId!: pulumi.Output<string>;
 
@@ -115,11 +141,15 @@ export class FileSystem extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as FileSystemState | undefined;
+            resourceInputs["createTime"] = state ? state.createTime : undefined;
+            resourceInputs["dataRedundancyType"] = state ? state.dataRedundancyType : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["fileSystemName"] = state ? state.fileSystemName : undefined;
+            resourceInputs["partitionNumber"] = state ? state.partitionNumber : undefined;
             resourceInputs["protocolType"] = state ? state.protocolType : undefined;
             resourceInputs["provisionedThroughputInMiBps"] = state ? state.provisionedThroughputInMiBps : undefined;
             resourceInputs["spaceCapacity"] = state ? state.spaceCapacity : undefined;
+            resourceInputs["storageSetName"] = state ? state.storageSetName : undefined;
             resourceInputs["storageType"] = state ? state.storageType : undefined;
             resourceInputs["throughputMode"] = state ? state.throughputMode : undefined;
             resourceInputs["zoneId"] = state ? state.zoneId : undefined;
@@ -140,18 +170,20 @@ export class FileSystem extends pulumi.CustomResource {
             if ((!args || args.zoneId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'zoneId'");
             }
+            resourceInputs["dataRedundancyType"] = args ? args.dataRedundancyType : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["fileSystemName"] = args ? args.fileSystemName : undefined;
+            resourceInputs["partitionNumber"] = args ? args.partitionNumber : undefined;
             resourceInputs["protocolType"] = args ? args.protocolType : undefined;
             resourceInputs["provisionedThroughputInMiBps"] = args ? args.provisionedThroughputInMiBps : undefined;
             resourceInputs["spaceCapacity"] = args ? args.spaceCapacity : undefined;
+            resourceInputs["storageSetName"] = args ? args.storageSetName : undefined;
             resourceInputs["storageType"] = args ? args.storageType : undefined;
-            resourceInputs["throughputMode"] = args?.throughputMode ? pulumi.secret(args.throughputMode) : undefined;
+            resourceInputs["throughputMode"] = args ? args.throughputMode : undefined;
             resourceInputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["createTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const secretOpts = { additionalSecretOutputs: ["throughputMode"] };
-        opts = pulumi.mergeOptions(opts, secretOpts);
         super(FileSystem.__pulumiType, name, resourceInputs, opts);
     }
 }
@@ -161,35 +193,53 @@ export class FileSystem extends pulumi.CustomResource {
  */
 export interface FileSystemState {
     /**
-     * The description of the File system.
+     * The creation time of the file system instance.
+     */
+    createTime?: pulumi.Input<string>;
+    /**
+     * Redundancy mode of the file system. Value:
+     * - LRS (default): Local redundancy.
+     * - ZRS: Same-City redundancy. When ZRS is selected, zoneId is a string consisting of multiple zones that are expected to be redundant in the same city, for example,  'zoneId1,zoneId2 '.
+     */
+    dataRedundancyType?: pulumi.Input<string>;
+    /**
+     * The description of the file system resource. No more than 32 characters in length.
      */
     description?: pulumi.Input<string>;
     /**
-     * The name of the File system.
+     * The file system name. The naming rules are as follows: The length is 6~64 characters. Globally unique and cannot be an empty string. English letters are supported and can contain numbers, underscores (_), and dashes (-).
      */
     fileSystemName?: pulumi.Input<string>;
     /**
-     * The protocol type. Valid values: `HDFS`.
+     * Save set sequence number, the user selects the content of the specified sequence number in the Save set.
+     */
+    partitionNumber?: pulumi.Input<number>;
+    /**
+     * The protocol type.  Only HDFS(Hadoop Distributed File System) is supported.
      */
     protocolType?: pulumi.Input<string>;
     /**
-     * The preset throughput of the File system. Valid values: `1` to `1024`, Unit: MB/s. **NOTE:** Only when `throughputMode` is `Provisioned`, this param is valid.
+     * Provisioned throughput. This parameter is required when ThroughputMode is set to Provisioned. Unit: MB/s Value range: 1~5120.
      */
     provisionedThroughputInMiBps?: pulumi.Input<number>;
     /**
-     * The capacity budget of the File system. **NOTE:** When the actual data storage reaches the file system capacity budget, the data cannot be written. The file system capacity budget does not support shrinking.
+     * File system capacity.  When the actual amount of data stored reaches the capacity of the file system, data cannot be written.  Unit: GiB.
      */
     spaceCapacity?: pulumi.Input<number>;
     /**
-     * The storage specifications of the File system. Valid values: `PERFORMANCE`, `STANDARD`.
+     * Save set identity, used to select a user-specified save set.
+     */
+    storageSetName?: pulumi.Input<string>;
+    /**
+     * The storage media type. Value: STANDARD (default): STANDARD PERFORMANCE: PERFORMANCE type.
      */
     storageType?: pulumi.Input<string>;
     /**
-     * The throughput mode of the File system. Valid values: `Provisioned`, `Standard`.
+     * The throughput mode. Value: Standard (default): Standard throughput Provisioned: preset throughput.
      */
     throughputMode?: pulumi.Input<string>;
     /**
-     * The zone ID of the File system.
+     * Zone Id, which is used to create file system resources to the specified zone.
      */
     zoneId?: pulumi.Input<string>;
 }
@@ -199,35 +249,49 @@ export interface FileSystemState {
  */
 export interface FileSystemArgs {
     /**
-     * The description of the File system.
+     * Redundancy mode of the file system. Value:
+     * - LRS (default): Local redundancy.
+     * - ZRS: Same-City redundancy. When ZRS is selected, zoneId is a string consisting of multiple zones that are expected to be redundant in the same city, for example,  'zoneId1,zoneId2 '.
+     */
+    dataRedundancyType?: pulumi.Input<string>;
+    /**
+     * The description of the file system resource. No more than 32 characters in length.
      */
     description?: pulumi.Input<string>;
     /**
-     * The name of the File system.
+     * The file system name. The naming rules are as follows: The length is 6~64 characters. Globally unique and cannot be an empty string. English letters are supported and can contain numbers, underscores (_), and dashes (-).
      */
     fileSystemName: pulumi.Input<string>;
     /**
-     * The protocol type. Valid values: `HDFS`.
+     * Save set sequence number, the user selects the content of the specified sequence number in the Save set.
+     */
+    partitionNumber?: pulumi.Input<number>;
+    /**
+     * The protocol type.  Only HDFS(Hadoop Distributed File System) is supported.
      */
     protocolType: pulumi.Input<string>;
     /**
-     * The preset throughput of the File system. Valid values: `1` to `1024`, Unit: MB/s. **NOTE:** Only when `throughputMode` is `Provisioned`, this param is valid.
+     * Provisioned throughput. This parameter is required when ThroughputMode is set to Provisioned. Unit: MB/s Value range: 1~5120.
      */
     provisionedThroughputInMiBps?: pulumi.Input<number>;
     /**
-     * The capacity budget of the File system. **NOTE:** When the actual data storage reaches the file system capacity budget, the data cannot be written. The file system capacity budget does not support shrinking.
+     * File system capacity.  When the actual amount of data stored reaches the capacity of the file system, data cannot be written.  Unit: GiB.
      */
     spaceCapacity: pulumi.Input<number>;
     /**
-     * The storage specifications of the File system. Valid values: `PERFORMANCE`, `STANDARD`.
+     * Save set identity, used to select a user-specified save set.
+     */
+    storageSetName?: pulumi.Input<string>;
+    /**
+     * The storage media type. Value: STANDARD (default): STANDARD PERFORMANCE: PERFORMANCE type.
      */
     storageType: pulumi.Input<string>;
     /**
-     * The throughput mode of the File system. Valid values: `Provisioned`, `Standard`.
+     * The throughput mode. Value: Standard (default): Standard throughput Provisioned: preset throughput.
      */
     throughputMode?: pulumi.Input<string>;
     /**
-     * The zone ID of the File system.
+     * Zone Id, which is used to create file system resources to the specified zone.
      */
     zoneId: pulumi.Input<string>;
 }

@@ -23,10 +23,22 @@ public final class GetRulesResult {
     private @Nullable List<String> listenerIds;
     private @Nullable List<String> loadBalancerIds;
     private @Nullable String nameRegex;
+    /**
+     * @return A list of Rule names.
+     * 
+     */
     private List<String> names;
     private @Nullable String outputFile;
     private @Nullable List<String> ruleIds;
+    /**
+     * @return A list of Alb Rules. Each element contains the following attributes:
+     * 
+     */
     private List<GetRulesRule> rules;
+    /**
+     * @return The status of the forwarding rule.
+     * 
+     */
     private @Nullable String status;
 
     private GetRulesResult() {}
@@ -49,6 +61,10 @@ public final class GetRulesResult {
     public Optional<String> nameRegex() {
         return Optional.ofNullable(this.nameRegex);
     }
+    /**
+     * @return A list of Rule names.
+     * 
+     */
     public List<String> names() {
         return this.names;
     }
@@ -58,9 +74,17 @@ public final class GetRulesResult {
     public List<String> ruleIds() {
         return this.ruleIds == null ? List.of() : this.ruleIds;
     }
+    /**
+     * @return A list of Alb Rules. Each element contains the following attributes:
+     * 
+     */
     public List<GetRulesRule> rules() {
         return this.rules;
     }
+    /**
+     * @return The status of the forwarding rule.
+     * 
+     */
     public Optional<String> status() {
         return Optional.ofNullable(this.status);
     }

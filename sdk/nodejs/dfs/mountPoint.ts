@@ -7,7 +7,7 @@ import * as utilities from "../utilities";
 /**
  * Provides a DFS Mount Point resource.
  *
- * For information about DFS Mount Point and how to use it, see [What is Mount Point](https://www.alibabacloud.com/help/doc-detail/207144.htm).
+ * For information about DFS Mount Point and how to use it, see [What is Mount Point](https://www.alibabacloud.com/help/en/aibaba-cloud-storage-services/latest/apsara-file-storage-for-hdfs).
  *
  * > **NOTE:** Available since v1.140.0.
  *
@@ -18,41 +18,53 @@ import * as utilities from "../utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
+ * import * as random from "@pulumi/random";
  *
  * const config = new pulumi.Config();
- * const name = config.get("name") || "tf-example";
+ * const name = config.get("name") || "terraform-example";
  * const defaultZones = alicloud.dfs.getZones({});
- * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {
+ * const defaultRandomInteger = new random.RandomInteger("defaultRandomInteger", {
+ *     min: 10000,
+ *     max: 99999,
+ * });
+ * const defaultVPC = new alicloud.vpc.Network("defaultVPC", {
+ *     cidrBlock: "172.16.0.0/12",
  *     vpcName: name,
- *     cidrBlock: "10.4.0.0/16",
  * });
- * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
+ * const defaultVSwitch = new alicloud.vpc.Switch("defaultVSwitch", {
+ *     description: "example",
+ *     vpcId: defaultVPC.id,
+ *     cidrBlock: "172.16.0.0/24",
  *     vswitchName: name,
- *     cidrBlock: "10.4.0.0/24",
- *     vpcId: defaultNetwork.id,
  *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.zoneId),
- * });
- * const defaultFileSystem = new alicloud.dfs.FileSystem("defaultFileSystem", {
- *     storageType: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.options?.[0]?.storageType),
- *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.zoneId),
- *     protocolType: "HDFS",
- *     description: name,
- *     fileSystemName: name,
- *     throughputMode: "Standard",
- *     spaceCapacity: 1024,
  * });
  * const defaultAccessGroup = new alicloud.dfs.AccessGroup("defaultAccessGroup", {
- *     accessGroupName: name,
- *     description: name,
+ *     description: "AccessGroup resource manager center example",
  *     networkType: "VPC",
+ *     accessGroupName: pulumi.interpolate`${name}-${defaultRandomInteger.result}`,
+ * });
+ * const updateAccessGroup = new alicloud.dfs.AccessGroup("updateAccessGroup", {
+ *     description: "Second AccessGroup resource manager center example",
+ *     networkType: "VPC",
+ *     accessGroupName: pulumi.interpolate`${name}-update-${defaultRandomInteger.result}`,
+ * });
+ * const defaultFs = new alicloud.dfs.FileSystem("defaultFs", {
+ *     spaceCapacity: 1024,
+ *     description: "for mountpoint  example",
+ *     storageType: "STANDARD",
+ *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.zoneId),
+ *     protocolType: "HDFS",
+ *     dataRedundancyType: "LRS",
+ *     fileSystemName: pulumi.interpolate`${name}-${defaultRandomInteger.result}`,
  * });
  * const defaultMountPoint = new alicloud.dfs.MountPoint("defaultMountPoint", {
- *     description: name,
- *     vpcId: defaultNetwork.id,
- *     fileSystemId: defaultFileSystem.id,
- *     accessGroupId: defaultAccessGroup.id,
+ *     vpcId: defaultVPC.id,
+ *     description: "mountpoint example",
  *     networkType: "VPC",
- *     vswitchId: defaultSwitch.id,
+ *     vswitchId: defaultVSwitch.id,
+ *     fileSystemId: defaultFs.id,
+ *     accessGroupId: defaultAccessGroup.id,
+ *     status: "Active",
  * });
  * ```
  *
@@ -93,35 +105,43 @@ export class MountPoint extends pulumi.CustomResource {
     }
 
     /**
-     * The ID of the Access Group.
+     * The id of the permission group associated with the Mount point, which is used to set the access permissions of the Mount point.
      */
     public readonly accessGroupId!: pulumi.Output<string>;
     /**
-     * The description of the Mount Point.
+     * The mount point alias prefix, which specifies the mount point alias prefix.
+     */
+    public readonly aliasPrefix!: pulumi.Output<string | undefined>;
+    /**
+     * The creation time of the Mount point resource.
+     */
+    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    /**
+     * The description of the Mount point.  No more than 32 characters in length.
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * The ID of the File System.
+     * Unique file system identifier, used to retrieve specified file system resources.
      */
     public readonly fileSystemId!: pulumi.Output<string>;
     /**
-     * The ID of the Mount Point.
+     * The unique identifier of the Mount point, which is used to retrieve the specified mount point resources.
      */
     public /*out*/ readonly mountPointId!: pulumi.Output<string>;
     /**
-     * The network type of the Mount Point. Valid values: `VPC`.
+     * The network type of the Mount point.  Only VPC (VPC) is supported.
      */
     public readonly networkType!: pulumi.Output<string>;
     /**
-     * The status of the Mount Point. Valid values: `Active`, `Inactive`.
+     * Mount point status. Value: Inactive: Disable mount points Active: Activate the mount point.
      */
     public readonly status!: pulumi.Output<string>;
     /**
-     * The vpc id.
+     * The ID of the VPC. Specifies the VPC environment to which the mount point belongs.
      */
     public readonly vpcId!: pulumi.Output<string>;
     /**
-     * The vswitch id.
+     * VSwitch ID, which specifies the VSwitch resource used to create the mount point.
      */
     public readonly vswitchId!: pulumi.Output<string>;
 
@@ -139,6 +159,8 @@ export class MountPoint extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as MountPointState | undefined;
             resourceInputs["accessGroupId"] = state ? state.accessGroupId : undefined;
+            resourceInputs["aliasPrefix"] = state ? state.aliasPrefix : undefined;
+            resourceInputs["createTime"] = state ? state.createTime : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["fileSystemId"] = state ? state.fileSystemId : undefined;
             resourceInputs["mountPointId"] = state ? state.mountPointId : undefined;
@@ -164,12 +186,14 @@ export class MountPoint extends pulumi.CustomResource {
                 throw new Error("Missing required property 'vswitchId'");
             }
             resourceInputs["accessGroupId"] = args ? args.accessGroupId : undefined;
+            resourceInputs["aliasPrefix"] = args ? args.aliasPrefix : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["fileSystemId"] = args ? args.fileSystemId : undefined;
             resourceInputs["networkType"] = args ? args.networkType : undefined;
             resourceInputs["status"] = args ? args.status : undefined;
             resourceInputs["vpcId"] = args ? args.vpcId : undefined;
             resourceInputs["vswitchId"] = args ? args.vswitchId : undefined;
+            resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["mountPointId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -182,35 +206,43 @@ export class MountPoint extends pulumi.CustomResource {
  */
 export interface MountPointState {
     /**
-     * The ID of the Access Group.
+     * The id of the permission group associated with the Mount point, which is used to set the access permissions of the Mount point.
      */
     accessGroupId?: pulumi.Input<string>;
     /**
-     * The description of the Mount Point.
+     * The mount point alias prefix, which specifies the mount point alias prefix.
+     */
+    aliasPrefix?: pulumi.Input<string>;
+    /**
+     * The creation time of the Mount point resource.
+     */
+    createTime?: pulumi.Input<string>;
+    /**
+     * The description of the Mount point.  No more than 32 characters in length.
      */
     description?: pulumi.Input<string>;
     /**
-     * The ID of the File System.
+     * Unique file system identifier, used to retrieve specified file system resources.
      */
     fileSystemId?: pulumi.Input<string>;
     /**
-     * The ID of the Mount Point.
+     * The unique identifier of the Mount point, which is used to retrieve the specified mount point resources.
      */
     mountPointId?: pulumi.Input<string>;
     /**
-     * The network type of the Mount Point. Valid values: `VPC`.
+     * The network type of the Mount point.  Only VPC (VPC) is supported.
      */
     networkType?: pulumi.Input<string>;
     /**
-     * The status of the Mount Point. Valid values: `Active`, `Inactive`.
+     * Mount point status. Value: Inactive: Disable mount points Active: Activate the mount point.
      */
     status?: pulumi.Input<string>;
     /**
-     * The vpc id.
+     * The ID of the VPC. Specifies the VPC environment to which the mount point belongs.
      */
     vpcId?: pulumi.Input<string>;
     /**
-     * The vswitch id.
+     * VSwitch ID, which specifies the VSwitch resource used to create the mount point.
      */
     vswitchId?: pulumi.Input<string>;
 }
@@ -220,31 +252,35 @@ export interface MountPointState {
  */
 export interface MountPointArgs {
     /**
-     * The ID of the Access Group.
+     * The id of the permission group associated with the Mount point, which is used to set the access permissions of the Mount point.
      */
     accessGroupId: pulumi.Input<string>;
     /**
-     * The description of the Mount Point.
+     * The mount point alias prefix, which specifies the mount point alias prefix.
+     */
+    aliasPrefix?: pulumi.Input<string>;
+    /**
+     * The description of the Mount point.  No more than 32 characters in length.
      */
     description?: pulumi.Input<string>;
     /**
-     * The ID of the File System.
+     * Unique file system identifier, used to retrieve specified file system resources.
      */
     fileSystemId: pulumi.Input<string>;
     /**
-     * The network type of the Mount Point. Valid values: `VPC`.
+     * The network type of the Mount point.  Only VPC (VPC) is supported.
      */
     networkType: pulumi.Input<string>;
     /**
-     * The status of the Mount Point. Valid values: `Active`, `Inactive`.
+     * Mount point status. Value: Inactive: Disable mount points Active: Activate the mount point.
      */
     status?: pulumi.Input<string>;
     /**
-     * The vpc id.
+     * The ID of the VPC. Specifies the VPC environment to which the mount point belongs.
      */
     vpcId: pulumi.Input<string>;
     /**
-     * The vswitch id.
+     * VSwitch ID, which specifies the VSwitch resource used to create the mount point.
      */
     vswitchId: pulumi.Input<string>;
 }

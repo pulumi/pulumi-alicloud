@@ -236,36 +236,31 @@ class Snapshot(pulumi.CustomResource):
         example_instance_types = alicloud.ecs.get_instance_types(availability_zone=zone_id,
             instance_type_family="ecs.g7se")
         example_images = alicloud.ecs.get_images(instance_type=example_instance_types.instance_types[len(example_instance_types.instance_types) - 1].id,
-            name_regex="^aliyun_2",
+            name_regex="^aliyun_2_1903_x64_20G_alibase_20231221.vhd",
             owners="system")
-        example_network = alicloud.vpc.Network("exampleNetwork",
-            vpc_name=name,
-            cidr_block="10.4.0.0/16")
-        example_switch = alicloud.vpc.Switch("exampleSwitch",
-            vswitch_name=name,
-            cidr_block="10.4.0.0/24",
-            vpc_id=example_network.id,
+        default_networks = alicloud.vpc.get_networks(name_regex="^default-NODELETING$")
+        default_switches = alicloud.vpc.get_switches(vpc_id=default_networks.ids[0],
             zone_id=zone_id)
-        example_security_group = alicloud.ecs.SecurityGroup("exampleSecurityGroup", vpc_id=example_network.id)
-        example_instance = alicloud.ecs.Instance("exampleInstance",
+        example_security_group = alicloud.ecs.SecurityGroup("exampleSecurityGroup", vpc_id=default_networks.ids[0])
+        default_instance = alicloud.ecs.Instance("defaultInstance",
             availability_zone=zone_id,
             instance_name=name,
-            image_id=example_images.images[1].id,
+            image_id=example_images.images[0].id,
             instance_type=example_instance_types.instance_types[len(example_instance_types.instance_types) - 1].id,
             security_groups=[example_security_group.id],
-            vswitch_id=example_switch.id,
+            vswitch_id=default_switches.ids[0],
             system_disk_category="cloud_essd")
-        example_databasefilesystem_instance_instance = alicloud.databasefilesystem.Instance("exampleDatabasefilesystem/instanceInstance",
-            category="standard",
-            zone_id=zone_id,
+        default_databasefilesystem_instance_instance = alicloud.databasefilesystem.Instance("defaultDatabasefilesystem/instanceInstance",
+            category="enterprise",
+            zone_id=default_instance.availability_zone,
             performance_level="PL1",
-            instance_name=name,
+            fs_name=name,
             size=100)
-        example_instance_attachment = alicloud.databasefilesystem.InstanceAttachment("exampleInstanceAttachment",
-            ecs_id=example_instance.id,
-            instance_id=example_databasefilesystem / instance_instance["id"])
+        default_instance_attachment = alicloud.databasefilesystem.InstanceAttachment("defaultInstanceAttachment",
+            ecs_id=default_instance.id,
+            instance_id=default_databasefilesystem / instance_instance["id"])
         example_snapshot = alicloud.databasefilesystem.Snapshot("exampleSnapshot",
-            instance_id=example_instance_attachment.instance_id,
+            instance_id=default_instance_attachment.instance_id,
             snapshot_name=name,
             description=name,
             retention_days=30)
@@ -316,36 +311,31 @@ class Snapshot(pulumi.CustomResource):
         example_instance_types = alicloud.ecs.get_instance_types(availability_zone=zone_id,
             instance_type_family="ecs.g7se")
         example_images = alicloud.ecs.get_images(instance_type=example_instance_types.instance_types[len(example_instance_types.instance_types) - 1].id,
-            name_regex="^aliyun_2",
+            name_regex="^aliyun_2_1903_x64_20G_alibase_20231221.vhd",
             owners="system")
-        example_network = alicloud.vpc.Network("exampleNetwork",
-            vpc_name=name,
-            cidr_block="10.4.0.0/16")
-        example_switch = alicloud.vpc.Switch("exampleSwitch",
-            vswitch_name=name,
-            cidr_block="10.4.0.0/24",
-            vpc_id=example_network.id,
+        default_networks = alicloud.vpc.get_networks(name_regex="^default-NODELETING$")
+        default_switches = alicloud.vpc.get_switches(vpc_id=default_networks.ids[0],
             zone_id=zone_id)
-        example_security_group = alicloud.ecs.SecurityGroup("exampleSecurityGroup", vpc_id=example_network.id)
-        example_instance = alicloud.ecs.Instance("exampleInstance",
+        example_security_group = alicloud.ecs.SecurityGroup("exampleSecurityGroup", vpc_id=default_networks.ids[0])
+        default_instance = alicloud.ecs.Instance("defaultInstance",
             availability_zone=zone_id,
             instance_name=name,
-            image_id=example_images.images[1].id,
+            image_id=example_images.images[0].id,
             instance_type=example_instance_types.instance_types[len(example_instance_types.instance_types) - 1].id,
             security_groups=[example_security_group.id],
-            vswitch_id=example_switch.id,
+            vswitch_id=default_switches.ids[0],
             system_disk_category="cloud_essd")
-        example_databasefilesystem_instance_instance = alicloud.databasefilesystem.Instance("exampleDatabasefilesystem/instanceInstance",
-            category="standard",
-            zone_id=zone_id,
+        default_databasefilesystem_instance_instance = alicloud.databasefilesystem.Instance("defaultDatabasefilesystem/instanceInstance",
+            category="enterprise",
+            zone_id=default_instance.availability_zone,
             performance_level="PL1",
-            instance_name=name,
+            fs_name=name,
             size=100)
-        example_instance_attachment = alicloud.databasefilesystem.InstanceAttachment("exampleInstanceAttachment",
-            ecs_id=example_instance.id,
-            instance_id=example_databasefilesystem / instance_instance["id"])
+        default_instance_attachment = alicloud.databasefilesystem.InstanceAttachment("defaultInstanceAttachment",
+            ecs_id=default_instance.id,
+            instance_id=default_databasefilesystem / instance_instance["id"])
         example_snapshot = alicloud.databasefilesystem.Snapshot("exampleSnapshot",
-            instance_id=example_instance_attachment.instance_id,
+            instance_id=default_instance_attachment.instance_id,
             snapshot_name=name,
             description=name,
             retention_days=30)

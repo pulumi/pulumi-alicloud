@@ -19,14 +19,14 @@ public final class DbInstancePlanArgs extends com.pulumi.resources.ResourceArgs 
     public static final DbInstancePlanArgs Empty = new DbInstancePlanArgs();
 
     /**
-     * The ID of the Database instance.
+     * The ID of the GPDB instance.
      * 
      */
     @Import(name="dbInstanceId", required=true)
     private Output<String> dbInstanceId;
 
     /**
-     * @return The ID of the Database instance.
+     * @return The ID of the GPDB instance.
      * 
      */
     public Output<String> dbInstanceId() {
@@ -49,14 +49,14 @@ public final class DbInstancePlanArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The plan config. See `plan_config` below.
+     * The execution information of the plan. See `plan_config` below.
      * 
      */
     @Import(name="planConfigs", required=true)
     private Output<List<DbInstancePlanPlanConfigArgs>> planConfigs;
 
     /**
-     * @return The plan config. See `plan_config` below.
+     * @return The execution information of the plan. See `plan_config` below.
      * 
      */
     public Output<List<DbInstancePlanPlanConfigArgs>> planConfigs() {
@@ -94,14 +94,14 @@ public final class DbInstancePlanArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Plan scheduling type. Valid values: `Postpone`, `Regular`.
+     * The execution mode of the plan. Valid values: `Postpone`, `Regular`.
      * 
      */
     @Import(name="planScheduleType", required=true)
     private Output<String> planScheduleType;
 
     /**
-     * @return Plan scheduling type. Valid values: `Postpone`, `Regular`.
+     * @return The execution mode of the plan. Valid values: `Postpone`, `Regular`.
      * 
      */
     public Output<String> planScheduleType() {
@@ -186,7 +186,7 @@ public final class DbInstancePlanArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param dbInstanceId The ID of the Database instance.
+         * @param dbInstanceId The ID of the GPDB instance.
          * 
          * @return builder
          * 
@@ -197,7 +197,7 @@ public final class DbInstancePlanArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param dbInstanceId The ID of the Database instance.
+         * @param dbInstanceId The ID of the GPDB instance.
          * 
          * @return builder
          * 
@@ -228,7 +228,7 @@ public final class DbInstancePlanArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param planConfigs The plan config. See `plan_config` below.
+         * @param planConfigs The execution information of the plan. See `plan_config` below.
          * 
          * @return builder
          * 
@@ -239,7 +239,7 @@ public final class DbInstancePlanArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param planConfigs The plan config. See `plan_config` below.
+         * @param planConfigs The execution information of the plan. See `plan_config` below.
          * 
          * @return builder
          * 
@@ -249,7 +249,7 @@ public final class DbInstancePlanArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param planConfigs The plan config. See `plan_config` below.
+         * @param planConfigs The execution information of the plan. See `plan_config` below.
          * 
          * @return builder
          * 
@@ -301,7 +301,7 @@ public final class DbInstancePlanArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param planScheduleType Plan scheduling type. Valid values: `Postpone`, `Regular`.
+         * @param planScheduleType The execution mode of the plan. Valid values: `Postpone`, `Regular`.
          * 
          * @return builder
          * 
@@ -312,7 +312,7 @@ public final class DbInstancePlanArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param planScheduleType Plan scheduling type. Valid values: `Postpone`, `Regular`.
+         * @param planScheduleType The execution mode of the plan. Valid values: `Postpone`, `Regular`.
          * 
          * @return builder
          * 

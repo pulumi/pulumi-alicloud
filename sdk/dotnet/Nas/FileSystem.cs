@@ -66,7 +66,6 @@ namespace Pulumi.AliCloud.Nas
     ///         ProtocolType = "NFS",
     ///         ZoneId = example.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.ZoneId),
     ///         StorageType = "standard",
-    ///         Description = "terraform-example",
     ///         Capacity = 100,
     ///     });
     /// 
@@ -106,7 +105,6 @@ namespace Pulumi.AliCloud.Nas
     ///         StorageType = "advance_200",
     ///         FileSystemType = "cpfs",
     ///         Capacity = 3600,
-    ///         Description = "terraform-example",
     ///         ZoneId = exampleZones.Apply(getZonesResult =&gt; getZonesResult.Zones[1]?.ZoneId),
     ///         VpcId = exampleNetwork.Id,
     ///         VswitchId = exampleSwitch.Id,

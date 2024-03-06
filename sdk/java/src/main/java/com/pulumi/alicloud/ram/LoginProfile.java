@@ -19,9 +19,13 @@ import javax.annotation.Nullable;
 /**
  * Provides a RAM User Login Profile resource.
  * 
- * &gt; **NOTE:** Available since v1.0.0+.
+ * For information about RAM User Login Profile and how to use it, see [What is Login Profile](https://www.alibabacloud.com/help/en/ram/developer-reference/api-ram-2015-05-01-createloginprofile).
+ * 
+ * &gt; **NOTE:** Available since v1.0.0.
  * 
  * ## Example Usage
+ * 
+ * Basic Usage
  * ```java
  * package generated_program;
  * 
@@ -64,66 +68,66 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * RAM login profile can be imported using the id or user name, e.g.
+ * RAM login profile can be imported using the id, e.g.
  * 
  * ```sh
- * $ pulumi import alicloud:ram/loginProfile:LoginProfile example my-login
+ * $ pulumi import alicloud:ram/loginProfile:LoginProfile example &lt;id&gt;
  * ```
  * 
  */
 @ResourceType(type="alicloud:ram/loginProfile:LoginProfile")
 public class LoginProfile extends com.pulumi.resources.CustomResource {
     /**
-     * This parameter indicates whether the MFA needs to be bind when the user first logs in. Default value is `false`.
+     * Specifies whether an MFA device must be attached to the RAM user upon logon. Default value: `false`. Valid values: `true`, `false`.
      * 
      */
     @Export(name="mfaBindRequired", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> mfaBindRequired;
 
     /**
-     * @return This parameter indicates whether the MFA needs to be bind when the user first logs in. Default value is `false`.
+     * @return Specifies whether an MFA device must be attached to the RAM user upon logon. Default value: `false`. Valid values: `true`, `false`.
      * 
      */
     public Output<Optional<Boolean>> mfaBindRequired() {
         return Codegen.optional(this.mfaBindRequired);
     }
     /**
-     * Password of the RAM user.
+     * The logon password of the RAM user. The password must meet the password strength requirements.
      * 
      */
     @Export(name="password", refs={String.class}, tree="[0]")
     private Output<String> password;
 
     /**
-     * @return Password of the RAM user.
+     * @return The logon password of the RAM user. The password must meet the password strength requirements.
      * 
      */
     public Output<String> password() {
         return this.password;
     }
     /**
-     * This parameter indicates whether the password needs to be reset when the user first logs in. Default value is `false`.
+     * Specifies whether the RAM user must change the password upon logon. Default value: `false`. Valid values: `true`, `false`.
      * 
      */
     @Export(name="passwordResetRequired", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> passwordResetRequired;
 
     /**
-     * @return This parameter indicates whether the password needs to be reset when the user first logs in. Default value is `false`.
+     * @return Specifies whether the RAM user must change the password upon logon. Default value: `false`. Valid values: `true`, `false`.
      * 
      */
     public Output<Optional<Boolean>> passwordResetRequired() {
         return Codegen.optional(this.passwordResetRequired);
     }
     /**
-     * Name of the RAM user. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as &#34;-&#34;,&#34;.&#34;,&#34;_&#34;, and must not begin with a hyphen.
+     * The name of the RAM user. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as &#34;-&#34;,&#34;.&#34;,&#34;_&#34;, and must not begin with a hyphen.
      * 
      */
     @Export(name="userName", refs={String.class}, tree="[0]")
     private Output<String> userName;
 
     /**
-     * @return Name of the RAM user. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as &#34;-&#34;,&#34;.&#34;,&#34;_&#34;, and must not begin with a hyphen.
+     * @return The name of the RAM user. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as &#34;-&#34;,&#34;.&#34;,&#34;_&#34;, and must not begin with a hyphen.
      * 
      */
     public Output<String> userName() {

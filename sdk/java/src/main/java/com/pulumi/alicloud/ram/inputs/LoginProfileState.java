@@ -17,14 +17,14 @@ public final class LoginProfileState extends com.pulumi.resources.ResourceArgs {
     public static final LoginProfileState Empty = new LoginProfileState();
 
     /**
-     * This parameter indicates whether the MFA needs to be bind when the user first logs in. Default value is `false`.
+     * Specifies whether an MFA device must be attached to the RAM user upon logon. Default value: `false`. Valid values: `true`, `false`.
      * 
      */
     @Import(name="mfaBindRequired")
     private @Nullable Output<Boolean> mfaBindRequired;
 
     /**
-     * @return This parameter indicates whether the MFA needs to be bind when the user first logs in. Default value is `false`.
+     * @return Specifies whether an MFA device must be attached to the RAM user upon logon. Default value: `false`. Valid values: `true`, `false`.
      * 
      */
     public Optional<Output<Boolean>> mfaBindRequired() {
@@ -32,14 +32,14 @@ public final class LoginProfileState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Password of the RAM user.
+     * The logon password of the RAM user. The password must meet the password strength requirements.
      * 
      */
     @Import(name="password")
     private @Nullable Output<String> password;
 
     /**
-     * @return Password of the RAM user.
+     * @return The logon password of the RAM user. The password must meet the password strength requirements.
      * 
      */
     public Optional<Output<String>> password() {
@@ -47,14 +47,14 @@ public final class LoginProfileState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * This parameter indicates whether the password needs to be reset when the user first logs in. Default value is `false`.
+     * Specifies whether the RAM user must change the password upon logon. Default value: `false`. Valid values: `true`, `false`.
      * 
      */
     @Import(name="passwordResetRequired")
     private @Nullable Output<Boolean> passwordResetRequired;
 
     /**
-     * @return This parameter indicates whether the password needs to be reset when the user first logs in. Default value is `false`.
+     * @return Specifies whether the RAM user must change the password upon logon. Default value: `false`. Valid values: `true`, `false`.
      * 
      */
     public Optional<Output<Boolean>> passwordResetRequired() {
@@ -62,14 +62,14 @@ public final class LoginProfileState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Name of the RAM user. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as &#34;-&#34;,&#34;.&#34;,&#34;_&#34;, and must not begin with a hyphen.
+     * The name of the RAM user. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as &#34;-&#34;,&#34;.&#34;,&#34;_&#34;, and must not begin with a hyphen.
      * 
      */
     @Import(name="userName")
     private @Nullable Output<String> userName;
 
     /**
-     * @return Name of the RAM user. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as &#34;-&#34;,&#34;.&#34;,&#34;_&#34;, and must not begin with a hyphen.
+     * @return The name of the RAM user. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as &#34;-&#34;,&#34;.&#34;,&#34;_&#34;, and must not begin with a hyphen.
      * 
      */
     public Optional<Output<String>> userName() {
@@ -104,7 +104,7 @@ public final class LoginProfileState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param mfaBindRequired This parameter indicates whether the MFA needs to be bind when the user first logs in. Default value is `false`.
+         * @param mfaBindRequired Specifies whether an MFA device must be attached to the RAM user upon logon. Default value: `false`. Valid values: `true`, `false`.
          * 
          * @return builder
          * 
@@ -115,7 +115,7 @@ public final class LoginProfileState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param mfaBindRequired This parameter indicates whether the MFA needs to be bind when the user first logs in. Default value is `false`.
+         * @param mfaBindRequired Specifies whether an MFA device must be attached to the RAM user upon logon. Default value: `false`. Valid values: `true`, `false`.
          * 
          * @return builder
          * 
@@ -125,7 +125,7 @@ public final class LoginProfileState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param password Password of the RAM user.
+         * @param password The logon password of the RAM user. The password must meet the password strength requirements.
          * 
          * @return builder
          * 
@@ -136,7 +136,7 @@ public final class LoginProfileState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param password Password of the RAM user.
+         * @param password The logon password of the RAM user. The password must meet the password strength requirements.
          * 
          * @return builder
          * 
@@ -146,7 +146,7 @@ public final class LoginProfileState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param passwordResetRequired This parameter indicates whether the password needs to be reset when the user first logs in. Default value is `false`.
+         * @param passwordResetRequired Specifies whether the RAM user must change the password upon logon. Default value: `false`. Valid values: `true`, `false`.
          * 
          * @return builder
          * 
@@ -157,7 +157,7 @@ public final class LoginProfileState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param passwordResetRequired This parameter indicates whether the password needs to be reset when the user first logs in. Default value is `false`.
+         * @param passwordResetRequired Specifies whether the RAM user must change the password upon logon. Default value: `false`. Valid values: `true`, `false`.
          * 
          * @return builder
          * 
@@ -167,7 +167,7 @@ public final class LoginProfileState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param userName Name of the RAM user. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as &#34;-&#34;,&#34;.&#34;,&#34;_&#34;, and must not begin with a hyphen.
+         * @param userName The name of the RAM user. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as &#34;-&#34;,&#34;.&#34;,&#34;_&#34;, and must not begin with a hyphen.
          * 
          * @return builder
          * 
@@ -178,7 +178,7 @@ public final class LoginProfileState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param userName Name of the RAM user. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as &#34;-&#34;,&#34;.&#34;,&#34;_&#34;, and must not begin with a hyphen.
+         * @param userName The name of the RAM user. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as &#34;-&#34;,&#34;.&#34;,&#34;_&#34;, and must not begin with a hyphen.
          * 
          * @return builder
          * 

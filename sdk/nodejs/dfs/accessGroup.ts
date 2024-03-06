@@ -7,7 +7,7 @@ import * as utilities from "../utilities";
 /**
  * Provides a DFS Access Group resource.
  *
- * For information about DFS Access Group and how to use it, see [What is Access Group](https://www.alibabacloud.com/help/doc-detail/207144.htm).
+ * For information about DFS Access Group and how to use it, see [What is Access Group](https://www.alibabacloud.com/help/en/aibaba-cloud-storage-services/latest/apsara-file-storage-for-hdfs).
  *
  * > **NOTE:** Available since v1.133.0.
  *
@@ -20,10 +20,11 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const config = new pulumi.Config();
- * const name = config.get("name") || "tf-example";
+ * const name = config.get("name") || "terraform-example";
  * const _default = new alicloud.dfs.AccessGroup("default", {
- *     accessGroupName: name,
+ *     description: name,
  *     networkType: "VPC",
+ *     accessGroupName: name,
  * });
  * ```
  *
@@ -64,15 +65,19 @@ export class AccessGroup extends pulumi.CustomResource {
     }
 
     /**
-     * The Name of Access Group.The length of `accessGroupName` does not exceed 100 bytes.
+     * The permission group name. The naming rules are as follows: The length is 6~64 characters. Globally unique and cannot be an empty string. English letters are supported and can contain numbers, underscores (_), and dashes (-).
      */
     public readonly accessGroupName!: pulumi.Output<string>;
     /**
-     * The Description of Access Group. The length of `description` does not exceed 100 bytes.
+     * The creation time of the permission group resource.
+     */
+    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    /**
+     * The permission group description.  No more than 32 characters in length.
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * The NetworkType of Access Group. Valid values: `VPC`.
+     * The permission group type. Only VPC (VPC) is supported.
      */
     public readonly networkType!: pulumi.Output<string>;
 
@@ -90,6 +95,7 @@ export class AccessGroup extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as AccessGroupState | undefined;
             resourceInputs["accessGroupName"] = state ? state.accessGroupName : undefined;
+            resourceInputs["createTime"] = state ? state.createTime : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["networkType"] = state ? state.networkType : undefined;
         } else {
@@ -103,6 +109,7 @@ export class AccessGroup extends pulumi.CustomResource {
             resourceInputs["accessGroupName"] = args ? args.accessGroupName : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["networkType"] = args ? args.networkType : undefined;
+            resourceInputs["createTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(AccessGroup.__pulumiType, name, resourceInputs, opts);
@@ -114,15 +121,19 @@ export class AccessGroup extends pulumi.CustomResource {
  */
 export interface AccessGroupState {
     /**
-     * The Name of Access Group.The length of `accessGroupName` does not exceed 100 bytes.
+     * The permission group name. The naming rules are as follows: The length is 6~64 characters. Globally unique and cannot be an empty string. English letters are supported and can contain numbers, underscores (_), and dashes (-).
      */
     accessGroupName?: pulumi.Input<string>;
     /**
-     * The Description of Access Group. The length of `description` does not exceed 100 bytes.
+     * The creation time of the permission group resource.
+     */
+    createTime?: pulumi.Input<string>;
+    /**
+     * The permission group description.  No more than 32 characters in length.
      */
     description?: pulumi.Input<string>;
     /**
-     * The NetworkType of Access Group. Valid values: `VPC`.
+     * The permission group type. Only VPC (VPC) is supported.
      */
     networkType?: pulumi.Input<string>;
 }
@@ -132,15 +143,15 @@ export interface AccessGroupState {
  */
 export interface AccessGroupArgs {
     /**
-     * The Name of Access Group.The length of `accessGroupName` does not exceed 100 bytes.
+     * The permission group name. The naming rules are as follows: The length is 6~64 characters. Globally unique and cannot be an empty string. English letters are supported and can contain numbers, underscores (_), and dashes (-).
      */
     accessGroupName: pulumi.Input<string>;
     /**
-     * The Description of Access Group. The length of `description` does not exceed 100 bytes.
+     * The permission group description.  No more than 32 characters in length.
      */
     description?: pulumi.Input<string>;
     /**
-     * The NetworkType of Access Group. Valid values: `VPC`.
+     * The permission group type. Only VPC (VPC) is supported.
      */
     networkType: pulumi.Input<string>;
 }

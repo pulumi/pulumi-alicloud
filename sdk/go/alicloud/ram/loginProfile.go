@@ -14,9 +14,13 @@ import (
 
 // Provides a RAM User Login Profile resource.
 //
-// > **NOTE:** Available since v1.0.0+.
+// For information about RAM User Login Profile and how to use it, see [What is Login Profile](https://www.alibabacloud.com/help/en/ram/developer-reference/api-ram-2015-05-01-createloginprofile).
+//
+// > **NOTE:** Available since v1.0.0.
 //
 // ## Example Usage
+//
+// # Basic Usage
 //
 // ```go
 // package main
@@ -55,21 +59,21 @@ import (
 //
 // ## Import
 //
-// RAM login profile can be imported using the id or user name, e.g.
+// RAM login profile can be imported using the id, e.g.
 //
 // ```sh
-// $ pulumi import alicloud:ram/loginProfile:LoginProfile example my-login
+// $ pulumi import alicloud:ram/loginProfile:LoginProfile example <id>
 // ```
 type LoginProfile struct {
 	pulumi.CustomResourceState
 
-	// This parameter indicates whether the MFA needs to be bind when the user first logs in. Default value is `false`.
+	// Specifies whether an MFA device must be attached to the RAM user upon logon. Default value: `false`. Valid values: `true`, `false`.
 	MfaBindRequired pulumi.BoolPtrOutput `pulumi:"mfaBindRequired"`
-	// Password of the RAM user.
+	// The logon password of the RAM user. The password must meet the password strength requirements.
 	Password pulumi.StringOutput `pulumi:"password"`
-	// This parameter indicates whether the password needs to be reset when the user first logs in. Default value is `false`.
+	// Specifies whether the RAM user must change the password upon logon. Default value: `false`. Valid values: `true`, `false`.
 	PasswordResetRequired pulumi.BoolPtrOutput `pulumi:"passwordResetRequired"`
-	// Name of the RAM user. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin with a hyphen.
+	// The name of the RAM user. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin with a hyphen.
 	UserName pulumi.StringOutput `pulumi:"userName"`
 }
 
@@ -116,24 +120,24 @@ func GetLoginProfile(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering LoginProfile resources.
 type loginProfileState struct {
-	// This parameter indicates whether the MFA needs to be bind when the user first logs in. Default value is `false`.
+	// Specifies whether an MFA device must be attached to the RAM user upon logon. Default value: `false`. Valid values: `true`, `false`.
 	MfaBindRequired *bool `pulumi:"mfaBindRequired"`
-	// Password of the RAM user.
+	// The logon password of the RAM user. The password must meet the password strength requirements.
 	Password *string `pulumi:"password"`
-	// This parameter indicates whether the password needs to be reset when the user first logs in. Default value is `false`.
+	// Specifies whether the RAM user must change the password upon logon. Default value: `false`. Valid values: `true`, `false`.
 	PasswordResetRequired *bool `pulumi:"passwordResetRequired"`
-	// Name of the RAM user. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin with a hyphen.
+	// The name of the RAM user. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin with a hyphen.
 	UserName *string `pulumi:"userName"`
 }
 
 type LoginProfileState struct {
-	// This parameter indicates whether the MFA needs to be bind when the user first logs in. Default value is `false`.
+	// Specifies whether an MFA device must be attached to the RAM user upon logon. Default value: `false`. Valid values: `true`, `false`.
 	MfaBindRequired pulumi.BoolPtrInput
-	// Password of the RAM user.
+	// The logon password of the RAM user. The password must meet the password strength requirements.
 	Password pulumi.StringPtrInput
-	// This parameter indicates whether the password needs to be reset when the user first logs in. Default value is `false`.
+	// Specifies whether the RAM user must change the password upon logon. Default value: `false`. Valid values: `true`, `false`.
 	PasswordResetRequired pulumi.BoolPtrInput
-	// Name of the RAM user. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin with a hyphen.
+	// The name of the RAM user. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin with a hyphen.
 	UserName pulumi.StringPtrInput
 }
 
@@ -142,25 +146,25 @@ func (LoginProfileState) ElementType() reflect.Type {
 }
 
 type loginProfileArgs struct {
-	// This parameter indicates whether the MFA needs to be bind when the user first logs in. Default value is `false`.
+	// Specifies whether an MFA device must be attached to the RAM user upon logon. Default value: `false`. Valid values: `true`, `false`.
 	MfaBindRequired *bool `pulumi:"mfaBindRequired"`
-	// Password of the RAM user.
+	// The logon password of the RAM user. The password must meet the password strength requirements.
 	Password string `pulumi:"password"`
-	// This parameter indicates whether the password needs to be reset when the user first logs in. Default value is `false`.
+	// Specifies whether the RAM user must change the password upon logon. Default value: `false`. Valid values: `true`, `false`.
 	PasswordResetRequired *bool `pulumi:"passwordResetRequired"`
-	// Name of the RAM user. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin with a hyphen.
+	// The name of the RAM user. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin with a hyphen.
 	UserName string `pulumi:"userName"`
 }
 
 // The set of arguments for constructing a LoginProfile resource.
 type LoginProfileArgs struct {
-	// This parameter indicates whether the MFA needs to be bind when the user first logs in. Default value is `false`.
+	// Specifies whether an MFA device must be attached to the RAM user upon logon. Default value: `false`. Valid values: `true`, `false`.
 	MfaBindRequired pulumi.BoolPtrInput
-	// Password of the RAM user.
+	// The logon password of the RAM user. The password must meet the password strength requirements.
 	Password pulumi.StringInput
-	// This parameter indicates whether the password needs to be reset when the user first logs in. Default value is `false`.
+	// Specifies whether the RAM user must change the password upon logon. Default value: `false`. Valid values: `true`, `false`.
 	PasswordResetRequired pulumi.BoolPtrInput
-	// Name of the RAM user. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin with a hyphen.
+	// The name of the RAM user. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin with a hyphen.
 	UserName pulumi.StringInput
 }
 
@@ -251,22 +255,22 @@ func (o LoginProfileOutput) ToLoginProfileOutputWithContext(ctx context.Context)
 	return o
 }
 
-// This parameter indicates whether the MFA needs to be bind when the user first logs in. Default value is `false`.
+// Specifies whether an MFA device must be attached to the RAM user upon logon. Default value: `false`. Valid values: `true`, `false`.
 func (o LoginProfileOutput) MfaBindRequired() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *LoginProfile) pulumi.BoolPtrOutput { return v.MfaBindRequired }).(pulumi.BoolPtrOutput)
 }
 
-// Password of the RAM user.
+// The logon password of the RAM user. The password must meet the password strength requirements.
 func (o LoginProfileOutput) Password() pulumi.StringOutput {
 	return o.ApplyT(func(v *LoginProfile) pulumi.StringOutput { return v.Password }).(pulumi.StringOutput)
 }
 
-// This parameter indicates whether the password needs to be reset when the user first logs in. Default value is `false`.
+// Specifies whether the RAM user must change the password upon logon. Default value: `false`. Valid values: `true`, `false`.
 func (o LoginProfileOutput) PasswordResetRequired() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *LoginProfile) pulumi.BoolPtrOutput { return v.PasswordResetRequired }).(pulumi.BoolPtrOutput)
 }
 
-// Name of the RAM user. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin with a hyphen.
+// The name of the RAM user. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin with a hyphen.
 func (o LoginProfileOutput) UserName() pulumi.StringOutput {
 	return o.ApplyT(func(v *LoginProfile) pulumi.StringOutput { return v.UserName }).(pulumi.StringOutput)
 }

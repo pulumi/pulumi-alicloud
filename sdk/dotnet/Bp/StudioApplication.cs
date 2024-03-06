@@ -28,25 +28,34 @@ namespace Pulumi.AliCloud.Bp
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var @default = new AliCloud.Bp.StudioApplication("default", new()
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf-example";
+    ///     var defaultResourceGroups = AliCloud.ResourceManager.GetResourceGroups.Invoke();
+    /// 
+    ///     var defaultInstances = AliCloud.Ecs.GetInstances.Invoke(new()
     ///     {
-    ///         ApplicationName = "example_value",
-    ///         AreaId = "example_value",
-    ///         Configuration = 
-    ///         {
-    ///             { "enableMonitor", "1" },
-    ///         },
+    ///         Status = "Running",
+    ///     });
+    /// 
+    ///     var defaultStudioApplication = new AliCloud.Bp.StudioApplication("defaultStudioApplication", new()
+    ///     {
+    ///         ApplicationName = name,
+    ///         TemplateId = "YAUUQIYRSV1CMFGX",
+    ///         ResourceGroupId = defaultResourceGroups.Apply(getResourceGroupsResult =&gt; getResourceGroupsResult.Groups[0]?.Id),
+    ///         AreaId = "cn-hangzhou",
     ///         Instances = new[]
     ///         {
     ///             new AliCloud.Bp.Inputs.StudioApplicationInstanceArgs
     ///             {
-    ///                 Id = "example_value",
-    ///                 NodeName = "example_value",
+    ///                 Id = "data.alicloud_instances.default.instances.0.id",
+    ///                 NodeName = "data.alicloud_instances.default.instances.0.name",
     ///                 NodeType = "ecs",
     ///             },
     ///         },
-    ///         ResourceGroupId = "example_value",
-    ///         TemplateId = "example_value",
+    ///         Configuration = 
+    ///         {
+    ///             { "enableMonitor", "1" },
+    ///         },
     ///         Variables = 
     ///         {
     ///             { "test", "1" },

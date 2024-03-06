@@ -1684,7 +1684,7 @@ export namespace alb {
          */
         loadBalancerId: string;
         /**
-         * The priority of the rule. Valid values: 1 to 10000. A smaller value indicates a higher priority.  Note The priority of each rule within the same listener must be unique.
+         * The priority of the rule.
          */
         priority: number;
         /**
@@ -1696,15 +1696,15 @@ export namespace alb {
          */
         ruleConditions: outputs.alb.GetRulesRuleRuleCondition[];
         /**
-         * The first ID of the resource.
+         * The ID of the Rule.
          */
         ruleId: string;
         /**
-         * The name of the forwarding rule. The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
+         * The name of the forwarding rule.
          */
         ruleName: string;
         /**
-         * The status of the resource.
+         * The status of the forwarding rule. Valid values: `Provisioning`, `Configuring`, `Available`.
          */
         status: string;
     }
@@ -1723,7 +1723,7 @@ export namespace alb {
          */
         insertHeaderConfigs: outputs.alb.GetRulesRuleRuleActionInsertHeaderConfig[];
         /**
-         * The order of the forwarding rule actions. Valid values:1 to 50000. The actions are performed in ascending order. You cannot leave this parameter empty. Each value must be unique.
+         * The order of the forwarding rule actions.
          */
         order: number;
         /**
@@ -1754,11 +1754,11 @@ export namespace alb {
          */
         content: string;
         /**
-         * The format of the fixed response.  Valid values: text/plain, text/css, text/html, application/javascript, and application/json.
+         * The format of the fixed response.
          */
         contentType: string;
         /**
-         * The redirect method. Valid values:301, 302, 303, 307, and 308.
+         * The redirect method.
          */
         httpCode: string;
     }
@@ -1783,57 +1783,57 @@ export namespace alb {
 
     export interface GetRulesRuleRuleActionInsertHeaderConfig {
         /**
-         * The key of the header field. The key must be 1 to 40 characters in length, and can contain letters, digits, hyphens (-) and underscores (_). The key does not support Cookie or Host.
+         * The key of the query string.
          */
         key: string;
         /**
-         * The value must be 1 to 128 characters in length, and can contain lowercase letters, printable characters, asterisks (*), and question marks (?). The value cannot contain spaces or the following special characters: # [ ] { } \ | < > &.
+         * The value of the query string.
          */
         value: string;
         /**
-         * Valid values:  UserDefined: a custom value ReferenceHeader: uses a field of the user request header. SystemDefined: a system value.
+         * The value type of the inserted header field.
          */
         valueType: string;
     }
 
     export interface GetRulesRuleRuleActionRedirectConfig {
         /**
-         * The host name of the destination to which requests are redirected within ALB.  Valid values:  The host name must be 3 to 128 characters in length, and can contain letters, digits, hyphens (-), periods (.), asterisks (*), and question marks (?). The host name must contain at least one period (.), and cannot start or end with a period (.). The rightmost domain label can contain only letters, asterisks (*) and question marks (?) and cannot contain digits or hyphens (-). Other domain labels cannot start or end with a hyphen (-). You can include asterisks (*) and question marks (?) anywhere in a domain label. Default value: ${host}. You cannot use this value with other characters at the same time.
+         * The host name of the destination to which requests are redirected within ALB.
          */
         host: string;
         /**
-         * The redirect method. Valid values:301, 302, 303, 307, and 308.
+         * The redirect method.
          */
         httpCode: string;
         /**
-         * The path to which requests are to be redirected within ALB.  Valid values: The path must be 1 to 128 characters in length, and start with a forward slash (/). The path can contain letters, digits, asterisks (*), question marks (?)and the following special characters: $ - _ . + / & ~ @ :. It cannot contain the following special characters: " % # ; ! ( ) [ ] ^ , ”. The path is case-sensitive.  Default value: ${path}. This value can be used only once. You can use it with a valid string.
+         * The path to which requests are to be redirected within ALB.
          */
         path: string;
         /**
-         * The port of the destination to which requests are redirected.  Valid values: 1 to 63335.  Default value: ${port}. You cannot use this value together with other characters at the same time.
+         * The port of the destination to which requests are redirected.
          */
         port: string;
         /**
-         * The protocol of the requests to be redirected.  Valid values: HTTP and HTTPS.  Default value: ${protocol}. You cannot use this value together with other characters at the same time.  Note HTTPS listeners can redirect only HTTPS requests.
+         * The protocol of the requests to be redirected.
          */
         protocol: string;
         /**
-         * The query string of the request to be redirected within ALB.  The query string must be 1 to 128 characters in length, can contain letters and printable characters. It cannot contain the following special characters: # [ ] { } \ | < > &.  Default value: ${query}. This value can be used only once. You can use it with a valid string.
+         * The query string of the request to be redirected within ALB.
          */
         query: string;
     }
 
     export interface GetRulesRuleRuleActionRewriteConfig {
         /**
-         * The host name of the destination to which requests are redirected within ALB.  Valid values:  The host name must be 3 to 128 characters in length, and can contain letters, digits, hyphens (-), periods (.), asterisks (*), and question marks (?). The host name must contain at least one period (.), and cannot start or end with a period (.). The rightmost domain label can contain only letters, asterisks (*) and question marks (?) and cannot contain digits or hyphens (-). Other domain labels cannot start or end with a hyphen (-). You can include asterisks (*) and question marks (?) anywhere in a domain label. Default value: ${host}. You cannot use this value with other characters at the same time.
+         * The host name of the destination to which requests are redirected within ALB.
          */
         host: string;
         /**
-         * The path to which requests are to be redirected within ALB.  Valid values: The path must be 1 to 128 characters in length, and start with a forward slash (/). The path can contain letters, digits, asterisks (*), question marks (?)and the following special characters: $ - _ . + / & ~ @ :. It cannot contain the following special characters: " % # ; ! ( ) [ ] ^ , ”. The path is case-sensitive.  Default value: ${path}. This value can be used only once. You can use it with a valid string.
+         * The path to which requests are to be redirected within ALB.
          */
         path: string;
         /**
-         * The query string of the request to be redirected within ALB.  The query string must be 1 to 128 characters in length, can contain letters and printable characters. It cannot contain the following special characters: # [ ] { } \ | < > &.  Default value: ${query}. This value can be used only once. You can use it with a valid string.
+         * The query string of the request to be redirected within ALB.
          */
         query: string;
     }
@@ -1914,18 +1914,18 @@ export namespace alb {
 
     export interface GetRulesRuleRuleConditionCookieConfigValue {
         /**
-         * The key of the header field. The key must be 1 to 40 characters in length, and can contain letters, digits, hyphens (-) and underscores (_). The key does not support Cookie or Host.
+         * The key of the query string.
          */
         key: string;
         /**
-         * The value must be 1 to 128 characters in length, and can contain lowercase letters, printable characters, asterisks (*), and question marks (?). The value cannot contain spaces or the following special characters: # [ ] { } \ | < > &.
+         * The value of the query string.
          */
         value: string;
     }
 
     export interface GetRulesRuleRuleConditionHeaderConfig {
         /**
-         * The key of the header field. The key must be 1 to 40 characters in length, and can contain letters, digits, hyphens (-) and underscores (_). The key does not support Cookie or Host.
+         * The key of the query string.
          */
         key: string;
         /**
@@ -1964,11 +1964,11 @@ export namespace alb {
 
     export interface GetRulesRuleRuleConditionQueryStringConfigValue {
         /**
-         * The key of the header field. The key must be 1 to 40 characters in length, and can contain letters, digits, hyphens (-) and underscores (_). The key does not support Cookie or Host.
+         * The key of the query string.
          */
         key: string;
         /**
-         * The value must be 1 to 128 characters in length, and can contain lowercase letters, printable characters, asterisks (*), and question marks (?). The value cannot contain spaces or the following special characters: # [ ] { } \ | < > &.
+         * The value of the query string.
          */
         value: string;
     }
@@ -16317,6 +16317,36 @@ export namespace dfs {
         storageType: string;
     }
 
+    export interface VscMountPointInstance {
+        /**
+         * The ID of the ECS instance to which the HDFS file system is mounted.
+         */
+        instanceId: string;
+        /**
+         * The status of the ECS instance on which the HDFS file system is mounted.
+         */
+        status: string;
+        /**
+         * The VSC list of mounted HDFS file systems.
+         */
+        vscs: outputs.dfs.VscMountPointInstanceVsc[];
+    }
+
+    export interface VscMountPointInstanceVsc {
+        /**
+         * VSC Channel primary key representation, used to retrieve the specified VSC Channel.
+         */
+        vscId: string;
+        /**
+         * VSC Mount status.
+         */
+        vscStatus: string;
+        /**
+         * The VSC type.
+         */
+        vscType: string;
+    }
+
 }
 
 export namespace directmail {
@@ -18593,6 +18623,17 @@ export namespace ebs {
          * The ID of the zone.
          */
         zoneId: string;
+    }
+
+    export interface SolutionInstanceParameter {
+        /**
+         * Create parameter Key.
+         */
+        parameterKey: string;
+        /**
+         * Create parameter Value.
+         */
+        parameterValue: string;
     }
 
 }
@@ -49836,6 +49877,10 @@ export namespace vpn {
          * The description of the VPN
          */
         description: string;
+        /**
+         * The backup public IP address of the VPN gateway. The second IP address assigned by the system to create an IPsec-VPN connection. This parameter is returned only when the VPN gateway supports the dual-tunnel mode.
+         */
+        disasterRecoveryInternetIp: string;
         /**
          * - The ID of the backup VSwitch to which the VPN gateway is attached.
          */

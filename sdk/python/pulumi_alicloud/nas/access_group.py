@@ -22,12 +22,15 @@ class AccessGroupArgs:
                  type: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a AccessGroup resource.
-        :param pulumi.Input[str] access_group_name: A Name of one Access Group.
-        :param pulumi.Input[str] access_group_type: A Type of one Access Group. Valid values: `Vpc` and `Classic`.
-        :param pulumi.Input[str] description: The Access Group description.
-        :param pulumi.Input[str] file_system_type: The type of file system. Valid values: `standard` and `extreme`. Default to `standard`. Note that the extreme only support Vpc Network.
-        :param pulumi.Input[str] name: Replaced by `access_group_name` after version 1.92.0.
-        :param pulumi.Input[str] type: Replaced by `access_group_type` after version 1.92.0.
+        :param pulumi.Input[str] access_group_name: The name of the permission group.
+        :param pulumi.Input[str] access_group_type: Permission group types, including Vpc.
+        :param pulumi.Input[str] description: Permission group description information.
+        :param pulumi.Input[str] file_system_type: File system type. Value:
+               - standard (default): Universal NAS
+               - extreme: extreme NAS
+               The following arguments will be discarded. Please use new fields as soon as possible:
+        :param pulumi.Input[str] name: . Field 'name' has been deprecated from provider version 1.218.0. New field 'access_group_name' instead.
+        :param pulumi.Input[str] type: . Field 'type' has been deprecated from provider version 1.218.0. New field 'access_group_type' instead.
         """
         if access_group_name is not None:
             pulumi.set(__self__, "access_group_name", access_group_name)
@@ -38,7 +41,13 @@ class AccessGroupArgs:
         if file_system_type is not None:
             pulumi.set(__self__, "file_system_type", file_system_type)
         if name is not None:
+            warnings.warn("""Field 'name' has been deprecated since provider version 1.218.0. New field 'access_group_name' instead.""", DeprecationWarning)
+            pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated since provider version 1.218.0. New field 'access_group_name' instead.""")
+        if name is not None:
             pulumi.set(__self__, "name", name)
+        if type is not None:
+            warnings.warn("""Field 'type' has been deprecated since provider version 1.218.0. New field 'access_group_type' instead.""", DeprecationWarning)
+            pulumi.log.warn("""type is deprecated: Field 'type' has been deprecated since provider version 1.218.0. New field 'access_group_type' instead.""")
         if type is not None:
             pulumi.set(__self__, "type", type)
 
@@ -46,7 +55,7 @@ class AccessGroupArgs:
     @pulumi.getter(name="accessGroupName")
     def access_group_name(self) -> Optional[pulumi.Input[str]]:
         """
-        A Name of one Access Group.
+        The name of the permission group.
         """
         return pulumi.get(self, "access_group_name")
 
@@ -58,7 +67,7 @@ class AccessGroupArgs:
     @pulumi.getter(name="accessGroupType")
     def access_group_type(self) -> Optional[pulumi.Input[str]]:
         """
-        A Type of one Access Group. Valid values: `Vpc` and `Classic`.
+        Permission group types, including Vpc.
         """
         return pulumi.get(self, "access_group_type")
 
@@ -70,7 +79,7 @@ class AccessGroupArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        The Access Group description.
+        Permission group description information.
         """
         return pulumi.get(self, "description")
 
@@ -82,7 +91,10 @@ class AccessGroupArgs:
     @pulumi.getter(name="fileSystemType")
     def file_system_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The type of file system. Valid values: `standard` and `extreme`. Default to `standard`. Note that the extreme only support Vpc Network.
+        File system type. Value:
+        - standard (default): Universal NAS
+        - extreme: extreme NAS
+        The following arguments will be discarded. Please use new fields as soon as possible:
         """
         return pulumi.get(self, "file_system_type")
 
@@ -94,8 +106,11 @@ class AccessGroupArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Replaced by `access_group_name` after version 1.92.0.
+        . Field 'name' has been deprecated from provider version 1.218.0. New field 'access_group_name' instead.
         """
+        warnings.warn("""Field 'name' has been deprecated since provider version 1.218.0. New field 'access_group_name' instead.""", DeprecationWarning)
+        pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated since provider version 1.218.0. New field 'access_group_name' instead.""")
+
         return pulumi.get(self, "name")
 
     @name.setter
@@ -106,8 +121,11 @@ class AccessGroupArgs:
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[str]]:
         """
-        Replaced by `access_group_type` after version 1.92.0.
+        . Field 'type' has been deprecated from provider version 1.218.0. New field 'access_group_type' instead.
         """
+        warnings.warn("""Field 'type' has been deprecated since provider version 1.218.0. New field 'access_group_type' instead.""", DeprecationWarning)
+        pulumi.log.warn("""type is deprecated: Field 'type' has been deprecated since provider version 1.218.0. New field 'access_group_type' instead.""")
+
         return pulumi.get(self, "type")
 
     @type.setter
@@ -120,29 +138,42 @@ class _AccessGroupState:
     def __init__(__self__, *,
                  access_group_name: Optional[pulumi.Input[str]] = None,
                  access_group_type: Optional[pulumi.Input[str]] = None,
+                 create_time: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  file_system_type: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering AccessGroup resources.
-        :param pulumi.Input[str] access_group_name: A Name of one Access Group.
-        :param pulumi.Input[str] access_group_type: A Type of one Access Group. Valid values: `Vpc` and `Classic`.
-        :param pulumi.Input[str] description: The Access Group description.
-        :param pulumi.Input[str] file_system_type: The type of file system. Valid values: `standard` and `extreme`. Default to `standard`. Note that the extreme only support Vpc Network.
-        :param pulumi.Input[str] name: Replaced by `access_group_name` after version 1.92.0.
-        :param pulumi.Input[str] type: Replaced by `access_group_type` after version 1.92.0.
+        :param pulumi.Input[str] access_group_name: The name of the permission group.
+        :param pulumi.Input[str] access_group_type: Permission group types, including Vpc.
+        :param pulumi.Input[str] create_time: Creation time.
+        :param pulumi.Input[str] description: Permission group description information.
+        :param pulumi.Input[str] file_system_type: File system type. Value:
+               - standard (default): Universal NAS
+               - extreme: extreme NAS
+               The following arguments will be discarded. Please use new fields as soon as possible:
+        :param pulumi.Input[str] name: . Field 'name' has been deprecated from provider version 1.218.0. New field 'access_group_name' instead.
+        :param pulumi.Input[str] type: . Field 'type' has been deprecated from provider version 1.218.0. New field 'access_group_type' instead.
         """
         if access_group_name is not None:
             pulumi.set(__self__, "access_group_name", access_group_name)
         if access_group_type is not None:
             pulumi.set(__self__, "access_group_type", access_group_type)
+        if create_time is not None:
+            pulumi.set(__self__, "create_time", create_time)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if file_system_type is not None:
             pulumi.set(__self__, "file_system_type", file_system_type)
         if name is not None:
+            warnings.warn("""Field 'name' has been deprecated since provider version 1.218.0. New field 'access_group_name' instead.""", DeprecationWarning)
+            pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated since provider version 1.218.0. New field 'access_group_name' instead.""")
+        if name is not None:
             pulumi.set(__self__, "name", name)
+        if type is not None:
+            warnings.warn("""Field 'type' has been deprecated since provider version 1.218.0. New field 'access_group_type' instead.""", DeprecationWarning)
+            pulumi.log.warn("""type is deprecated: Field 'type' has been deprecated since provider version 1.218.0. New field 'access_group_type' instead.""")
         if type is not None:
             pulumi.set(__self__, "type", type)
 
@@ -150,7 +181,7 @@ class _AccessGroupState:
     @pulumi.getter(name="accessGroupName")
     def access_group_name(self) -> Optional[pulumi.Input[str]]:
         """
-        A Name of one Access Group.
+        The name of the permission group.
         """
         return pulumi.get(self, "access_group_name")
 
@@ -162,7 +193,7 @@ class _AccessGroupState:
     @pulumi.getter(name="accessGroupType")
     def access_group_type(self) -> Optional[pulumi.Input[str]]:
         """
-        A Type of one Access Group. Valid values: `Vpc` and `Classic`.
+        Permission group types, including Vpc.
         """
         return pulumi.get(self, "access_group_type")
 
@@ -171,10 +202,22 @@ class _AccessGroupState:
         pulumi.set(self, "access_group_type", value)
 
     @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        Creation time.
+        """
+        return pulumi.get(self, "create_time")
+
+    @create_time.setter
+    def create_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "create_time", value)
+
+    @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        The Access Group description.
+        Permission group description information.
         """
         return pulumi.get(self, "description")
 
@@ -186,7 +229,10 @@ class _AccessGroupState:
     @pulumi.getter(name="fileSystemType")
     def file_system_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The type of file system. Valid values: `standard` and `extreme`. Default to `standard`. Note that the extreme only support Vpc Network.
+        File system type. Value:
+        - standard (default): Universal NAS
+        - extreme: extreme NAS
+        The following arguments will be discarded. Please use new fields as soon as possible:
         """
         return pulumi.get(self, "file_system_type")
 
@@ -198,8 +244,11 @@ class _AccessGroupState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Replaced by `access_group_name` after version 1.92.0.
+        . Field 'name' has been deprecated from provider version 1.218.0. New field 'access_group_name' instead.
         """
+        warnings.warn("""Field 'name' has been deprecated since provider version 1.218.0. New field 'access_group_name' instead.""", DeprecationWarning)
+        pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated since provider version 1.218.0. New field 'access_group_name' instead.""")
+
         return pulumi.get(self, "name")
 
     @name.setter
@@ -210,8 +259,11 @@ class _AccessGroupState:
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[str]]:
         """
-        Replaced by `access_group_type` after version 1.92.0.
+        . Field 'type' has been deprecated from provider version 1.218.0. New field 'access_group_type' instead.
         """
+        warnings.warn("""Field 'type' has been deprecated since provider version 1.218.0. New field 'access_group_type' instead.""", DeprecationWarning)
+        pulumi.log.warn("""type is deprecated: Field 'type' has been deprecated since provider version 1.218.0. New field 'access_group_type' instead.""")
+
         return pulumi.get(self, "type")
 
     @type.setter
@@ -232,12 +284,12 @@ class AccessGroup(pulumi.CustomResource):
                  type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Provides a NAS Access Group resource.
+        Provides a NAS Access Group resource. File system Access Group.
 
         In NAS, the permission group acts as a whitelist that allows you to restrict file system access. You can allow specified IP addresses or CIDR blocks to access the file system, and assign different levels of access permission to different IP addresses or CIDR blocks by adding rules to the permission group.
         For information about NAS Access Group and how to use it, see [What is NAS Access Group](https://www.alibabacloud.com/help/en/nas/developer-reference/api-nas-2017-06-26-createaccessgroup)
 
-        > **NOTE:** Available in v1.33.0+.
+        > **NOTE:** Available since v1.33.0.
 
         ## Example Usage
 
@@ -259,17 +311,20 @@ class AccessGroup(pulumi.CustomResource):
         NAS Access Group can be imported using the id, e.g.
 
         ```sh
-        $ pulumi import alicloud:nas/accessGroup:AccessGroup foo tf_testAccNasConfig:standard
+        $ pulumi import alicloud:nas/accessGroup:AccessGroup example <access_group_name>:<file_system_type>
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] access_group_name: A Name of one Access Group.
-        :param pulumi.Input[str] access_group_type: A Type of one Access Group. Valid values: `Vpc` and `Classic`.
-        :param pulumi.Input[str] description: The Access Group description.
-        :param pulumi.Input[str] file_system_type: The type of file system. Valid values: `standard` and `extreme`. Default to `standard`. Note that the extreme only support Vpc Network.
-        :param pulumi.Input[str] name: Replaced by `access_group_name` after version 1.92.0.
-        :param pulumi.Input[str] type: Replaced by `access_group_type` after version 1.92.0.
+        :param pulumi.Input[str] access_group_name: The name of the permission group.
+        :param pulumi.Input[str] access_group_type: Permission group types, including Vpc.
+        :param pulumi.Input[str] description: Permission group description information.
+        :param pulumi.Input[str] file_system_type: File system type. Value:
+               - standard (default): Universal NAS
+               - extreme: extreme NAS
+               The following arguments will be discarded. Please use new fields as soon as possible:
+        :param pulumi.Input[str] name: . Field 'name' has been deprecated from provider version 1.218.0. New field 'access_group_name' instead.
+        :param pulumi.Input[str] type: . Field 'type' has been deprecated from provider version 1.218.0. New field 'access_group_type' instead.
         """
         ...
     @overload
@@ -278,12 +333,12 @@ class AccessGroup(pulumi.CustomResource):
                  args: Optional[AccessGroupArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a NAS Access Group resource.
+        Provides a NAS Access Group resource. File system Access Group.
 
         In NAS, the permission group acts as a whitelist that allows you to restrict file system access. You can allow specified IP addresses or CIDR blocks to access the file system, and assign different levels of access permission to different IP addresses or CIDR blocks by adding rules to the permission group.
         For information about NAS Access Group and how to use it, see [What is NAS Access Group](https://www.alibabacloud.com/help/en/nas/developer-reference/api-nas-2017-06-26-createaccessgroup)
 
-        > **NOTE:** Available in v1.33.0+.
+        > **NOTE:** Available since v1.33.0.
 
         ## Example Usage
 
@@ -305,7 +360,7 @@ class AccessGroup(pulumi.CustomResource):
         NAS Access Group can be imported using the id, e.g.
 
         ```sh
-        $ pulumi import alicloud:nas/accessGroup:AccessGroup foo tf_testAccNasConfig:standard
+        $ pulumi import alicloud:nas/accessGroup:AccessGroup example <access_group_name>:<file_system_type>
         ```
 
         :param str resource_name: The name of the resource.
@@ -344,6 +399,7 @@ class AccessGroup(pulumi.CustomResource):
             __props__.__dict__["file_system_type"] = file_system_type
             __props__.__dict__["name"] = name
             __props__.__dict__["type"] = type
+            __props__.__dict__["create_time"] = None
         super(AccessGroup, __self__).__init__(
             'alicloud:nas/accessGroup:AccessGroup',
             resource_name,
@@ -356,6 +412,7 @@ class AccessGroup(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             access_group_name: Optional[pulumi.Input[str]] = None,
             access_group_type: Optional[pulumi.Input[str]] = None,
+            create_time: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             file_system_type: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
@@ -367,12 +424,16 @@ class AccessGroup(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] access_group_name: A Name of one Access Group.
-        :param pulumi.Input[str] access_group_type: A Type of one Access Group. Valid values: `Vpc` and `Classic`.
-        :param pulumi.Input[str] description: The Access Group description.
-        :param pulumi.Input[str] file_system_type: The type of file system. Valid values: `standard` and `extreme`. Default to `standard`. Note that the extreme only support Vpc Network.
-        :param pulumi.Input[str] name: Replaced by `access_group_name` after version 1.92.0.
-        :param pulumi.Input[str] type: Replaced by `access_group_type` after version 1.92.0.
+        :param pulumi.Input[str] access_group_name: The name of the permission group.
+        :param pulumi.Input[str] access_group_type: Permission group types, including Vpc.
+        :param pulumi.Input[str] create_time: Creation time.
+        :param pulumi.Input[str] description: Permission group description information.
+        :param pulumi.Input[str] file_system_type: File system type. Value:
+               - standard (default): Universal NAS
+               - extreme: extreme NAS
+               The following arguments will be discarded. Please use new fields as soon as possible:
+        :param pulumi.Input[str] name: . Field 'name' has been deprecated from provider version 1.218.0. New field 'access_group_name' instead.
+        :param pulumi.Input[str] type: . Field 'type' has been deprecated from provider version 1.218.0. New field 'access_group_type' instead.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -380,6 +441,7 @@ class AccessGroup(pulumi.CustomResource):
 
         __props__.__dict__["access_group_name"] = access_group_name
         __props__.__dict__["access_group_type"] = access_group_type
+        __props__.__dict__["create_time"] = create_time
         __props__.__dict__["description"] = description
         __props__.__dict__["file_system_type"] = file_system_type
         __props__.__dict__["name"] = name
@@ -390,7 +452,7 @@ class AccessGroup(pulumi.CustomResource):
     @pulumi.getter(name="accessGroupName")
     def access_group_name(self) -> pulumi.Output[str]:
         """
-        A Name of one Access Group.
+        The name of the permission group.
         """
         return pulumi.get(self, "access_group_name")
 
@@ -398,15 +460,23 @@ class AccessGroup(pulumi.CustomResource):
     @pulumi.getter(name="accessGroupType")
     def access_group_type(self) -> pulumi.Output[str]:
         """
-        A Type of one Access Group. Valid values: `Vpc` and `Classic`.
+        Permission group types, including Vpc.
         """
         return pulumi.get(self, "access_group_type")
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> pulumi.Output[str]:
+        """
+        Creation time.
+        """
+        return pulumi.get(self, "create_time")
 
     @property
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[str]]:
         """
-        The Access Group description.
+        Permission group description information.
         """
         return pulumi.get(self, "description")
 
@@ -414,7 +484,10 @@ class AccessGroup(pulumi.CustomResource):
     @pulumi.getter(name="fileSystemType")
     def file_system_type(self) -> pulumi.Output[Optional[str]]:
         """
-        The type of file system. Valid values: `standard` and `extreme`. Default to `standard`. Note that the extreme only support Vpc Network.
+        File system type. Value:
+        - standard (default): Universal NAS
+        - extreme: extreme NAS
+        The following arguments will be discarded. Please use new fields as soon as possible:
         """
         return pulumi.get(self, "file_system_type")
 
@@ -422,15 +495,21 @@ class AccessGroup(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        Replaced by `access_group_name` after version 1.92.0.
+        . Field 'name' has been deprecated from provider version 1.218.0. New field 'access_group_name' instead.
         """
+        warnings.warn("""Field 'name' has been deprecated since provider version 1.218.0. New field 'access_group_name' instead.""", DeprecationWarning)
+        pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated since provider version 1.218.0. New field 'access_group_name' instead.""")
+
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
     def type(self) -> pulumi.Output[str]:
         """
-        Replaced by `access_group_type` after version 1.92.0.
+        . Field 'type' has been deprecated from provider version 1.218.0. New field 'access_group_type' instead.
         """
+        warnings.warn("""Field 'type' has been deprecated since provider version 1.218.0. New field 'access_group_type' instead.""", DeprecationWarning)
+        pulumi.log.warn("""type is deprecated: Field 'type' has been deprecated since provider version 1.218.0. New field 'access_group_type' instead.""")
+
         return pulumi.get(self, "type")
 

@@ -14,7 +14,7 @@ import (
 
 // Provides a DFS Access Group resource.
 //
-// For information about DFS Access Group and how to use it, see [What is Access Group](https://www.alibabacloud.com/help/doc-detail/207144.htm).
+// For information about DFS Access Group and how to use it, see [What is Access Group](https://www.alibabacloud.com/help/en/aibaba-cloud-storage-services/latest/apsara-file-storage-for-hdfs).
 //
 // > **NOTE:** Available since v1.133.0.
 //
@@ -36,13 +36,14 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			cfg := config.New(ctx, "")
-//			name := "tf-example"
+//			name := "terraform-example"
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
 //			_, err := dfs.NewAccessGroup(ctx, "default", &dfs.AccessGroupArgs{
-//				AccessGroupName: pulumi.String(name),
+//				Description:     pulumi.String(name),
 //				NetworkType:     pulumi.String("VPC"),
+//				AccessGroupName: pulumi.String(name),
 //			})
 //			if err != nil {
 //				return err
@@ -63,11 +64,13 @@ import (
 type AccessGroup struct {
 	pulumi.CustomResourceState
 
-	// The Name of Access Group.The length of `accessGroupName` does not exceed 100 bytes.
+	// The permission group name. The naming rules are as follows: The length is 6~64 characters. Globally unique and cannot be an empty string. English letters are supported and can contain numbers, underscores (_), and dashes (-).
 	AccessGroupName pulumi.StringOutput `pulumi:"accessGroupName"`
-	// The Description of Access Group. The length of `description` does not exceed 100 bytes.
+	// The creation time of the permission group resource.
+	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// The permission group description.  No more than 32 characters in length.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// The NetworkType of Access Group. Valid values: `VPC`.
+	// The permission group type. Only VPC (VPC) is supported.
 	NetworkType pulumi.StringOutput `pulumi:"networkType"`
 }
 
@@ -107,20 +110,24 @@ func GetAccessGroup(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering AccessGroup resources.
 type accessGroupState struct {
-	// The Name of Access Group.The length of `accessGroupName` does not exceed 100 bytes.
+	// The permission group name. The naming rules are as follows: The length is 6~64 characters. Globally unique and cannot be an empty string. English letters are supported and can contain numbers, underscores (_), and dashes (-).
 	AccessGroupName *string `pulumi:"accessGroupName"`
-	// The Description of Access Group. The length of `description` does not exceed 100 bytes.
+	// The creation time of the permission group resource.
+	CreateTime *string `pulumi:"createTime"`
+	// The permission group description.  No more than 32 characters in length.
 	Description *string `pulumi:"description"`
-	// The NetworkType of Access Group. Valid values: `VPC`.
+	// The permission group type. Only VPC (VPC) is supported.
 	NetworkType *string `pulumi:"networkType"`
 }
 
 type AccessGroupState struct {
-	// The Name of Access Group.The length of `accessGroupName` does not exceed 100 bytes.
+	// The permission group name. The naming rules are as follows: The length is 6~64 characters. Globally unique and cannot be an empty string. English letters are supported and can contain numbers, underscores (_), and dashes (-).
 	AccessGroupName pulumi.StringPtrInput
-	// The Description of Access Group. The length of `description` does not exceed 100 bytes.
+	// The creation time of the permission group resource.
+	CreateTime pulumi.StringPtrInput
+	// The permission group description.  No more than 32 characters in length.
 	Description pulumi.StringPtrInput
-	// The NetworkType of Access Group. Valid values: `VPC`.
+	// The permission group type. Only VPC (VPC) is supported.
 	NetworkType pulumi.StringPtrInput
 }
 
@@ -129,21 +136,21 @@ func (AccessGroupState) ElementType() reflect.Type {
 }
 
 type accessGroupArgs struct {
-	// The Name of Access Group.The length of `accessGroupName` does not exceed 100 bytes.
+	// The permission group name. The naming rules are as follows: The length is 6~64 characters. Globally unique and cannot be an empty string. English letters are supported and can contain numbers, underscores (_), and dashes (-).
 	AccessGroupName string `pulumi:"accessGroupName"`
-	// The Description of Access Group. The length of `description` does not exceed 100 bytes.
+	// The permission group description.  No more than 32 characters in length.
 	Description *string `pulumi:"description"`
-	// The NetworkType of Access Group. Valid values: `VPC`.
+	// The permission group type. Only VPC (VPC) is supported.
 	NetworkType string `pulumi:"networkType"`
 }
 
 // The set of arguments for constructing a AccessGroup resource.
 type AccessGroupArgs struct {
-	// The Name of Access Group.The length of `accessGroupName` does not exceed 100 bytes.
+	// The permission group name. The naming rules are as follows: The length is 6~64 characters. Globally unique and cannot be an empty string. English letters are supported and can contain numbers, underscores (_), and dashes (-).
 	AccessGroupName pulumi.StringInput
-	// The Description of Access Group. The length of `description` does not exceed 100 bytes.
+	// The permission group description.  No more than 32 characters in length.
 	Description pulumi.StringPtrInput
-	// The NetworkType of Access Group. Valid values: `VPC`.
+	// The permission group type. Only VPC (VPC) is supported.
 	NetworkType pulumi.StringInput
 }
 
@@ -234,17 +241,22 @@ func (o AccessGroupOutput) ToAccessGroupOutputWithContext(ctx context.Context) A
 	return o
 }
 
-// The Name of Access Group.The length of `accessGroupName` does not exceed 100 bytes.
+// The permission group name. The naming rules are as follows: The length is 6~64 characters. Globally unique and cannot be an empty string. English letters are supported and can contain numbers, underscores (_), and dashes (-).
 func (o AccessGroupOutput) AccessGroupName() pulumi.StringOutput {
 	return o.ApplyT(func(v *AccessGroup) pulumi.StringOutput { return v.AccessGroupName }).(pulumi.StringOutput)
 }
 
-// The Description of Access Group. The length of `description` does not exceed 100 bytes.
+// The creation time of the permission group resource.
+func (o AccessGroupOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *AccessGroup) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// The permission group description.  No more than 32 characters in length.
 func (o AccessGroupOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AccessGroup) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// The NetworkType of Access Group. Valid values: `VPC`.
+// The permission group type. Only VPC (VPC) is supported.
 func (o AccessGroupOutput) NetworkType() pulumi.StringOutput {
 	return o.ApplyT(func(v *AccessGroup) pulumi.StringOutput { return v.NetworkType }).(pulumi.StringOutput)
 }

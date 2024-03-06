@@ -5200,6 +5200,35 @@ export namespace dds {
 }
 
 export namespace dfs {
+    export interface VscMountPointInstance {
+        /**
+         * The ID of the ECS instance to which the HDFS file system is mounted.
+         */
+        instanceId?: pulumi.Input<string>;
+        /**
+         * The status of the ECS instance on which the HDFS file system is mounted.
+         */
+        status?: pulumi.Input<string>;
+        /**
+         * The VSC list of mounted HDFS file systems.
+         */
+        vscs?: pulumi.Input<pulumi.Input<inputs.dfs.VscMountPointInstanceVsc>[]>;
+    }
+
+    export interface VscMountPointInstanceVsc {
+        /**
+         * VSC Channel primary key representation, used to retrieve the specified VSC Channel.
+         */
+        vscId?: pulumi.Input<string>;
+        /**
+         * VSC Mount status.
+         */
+        vscStatus?: pulumi.Input<string>;
+        /**
+         * The VSC type.
+         */
+        vscType?: pulumi.Input<string>;
+    }
 }
 
 export namespace directmail {
@@ -5395,6 +5424,16 @@ export namespace ebs {
         enableImmediateAccess?: pulumi.Input<boolean>;
     }
 
+    export interface SolutionInstanceParameter {
+        /**
+         * Create parameter Key.
+         */
+        parameterKey: pulumi.Input<string>;
+        /**
+         * Create parameter Value.
+         */
+        parameterValue: pulumi.Input<string>;
+    }
 }
 
 export namespace eci {

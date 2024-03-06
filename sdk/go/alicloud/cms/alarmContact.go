@@ -32,34 +32,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			// If you use this template, you need to activate the link before you can return to the alarm contact information, otherwise diff will appear in terraform. So please confirm the activation link as soon as possible.
-//			_, err := cms.NewAlarmContact(ctx, "example", &cms.AlarmContactArgs{
-//				AlarmContactName: pulumi.String("terraform-example"),
-//				ChannelsMail:     pulumi.String("terraform@test.com"),
-//				Describe:         pulumi.String("For example"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cms"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			// If you use this template, you can ignore the diff of the alarm contact information by `lifestyle`. We recommend the above usage and activate the link in time.
+//			// You need to activate the link before you can return to the alarm contact information, otherwise diff will appear in terraform. So please confirm the activation link as soon as possible. Besides, you can ignore the diff of the alarm contact information by `lifestyle`.
 //			_, err := cms.NewAlarmContact(ctx, "example", &cms.AlarmContactArgs{
 //				AlarmContactName: pulumi.String("tf-example"),
 //				Describe:         pulumi.String("For example"),

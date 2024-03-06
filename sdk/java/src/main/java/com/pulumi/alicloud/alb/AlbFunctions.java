@@ -1376,45 +1376,7 @@ public final class AlbFunctions {
     /**
      * This data source provides the Alb Rules of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.133.0+.
-     * 
-     * ## Example Usage
-     * 
-     * Basic Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.alicloud.alb.AlbFunctions;
-     * import com.pulumi.alicloud.alb.inputs.GetRulesArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var ids = AlbFunctions.getRules(GetRulesArgs.builder()
-     *             .ids(&#34;example_id&#34;)
-     *             .build());
-     * 
-     *         ctx.export(&#34;albRuleId1&#34;, ids.applyValue(getRulesResult -&gt; getRulesResult.rules()[0].id()));
-     *         final var nameRegex = AlbFunctions.getRules(GetRulesArgs.builder()
-     *             .nameRegex(&#34;^my-Rule&#34;)
-     *             .build());
-     * 
-     *         ctx.export(&#34;albRuleId2&#34;, nameRegex.applyValue(getRulesResult -&gt; getRulesResult.rules()[0].id()));
-     *     }
-     * }
-     * ```
+     * &gt; **NOTE:** Available since v1.133.0.
      * 
      */
     public static Output<GetRulesResult> getRules() {
@@ -1423,45 +1385,7 @@ public final class AlbFunctions {
     /**
      * This data source provides the Alb Rules of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.133.0+.
-     * 
-     * ## Example Usage
-     * 
-     * Basic Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.alicloud.alb.AlbFunctions;
-     * import com.pulumi.alicloud.alb.inputs.GetRulesArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var ids = AlbFunctions.getRules(GetRulesArgs.builder()
-     *             .ids(&#34;example_id&#34;)
-     *             .build());
-     * 
-     *         ctx.export(&#34;albRuleId1&#34;, ids.applyValue(getRulesResult -&gt; getRulesResult.rules()[0].id()));
-     *         final var nameRegex = AlbFunctions.getRules(GetRulesArgs.builder()
-     *             .nameRegex(&#34;^my-Rule&#34;)
-     *             .build());
-     * 
-     *         ctx.export(&#34;albRuleId2&#34;, nameRegex.applyValue(getRulesResult -&gt; getRulesResult.rules()[0].id()));
-     *     }
-     * }
-     * ```
+     * &gt; **NOTE:** Available since v1.133.0.
      * 
      */
     public static CompletableFuture<GetRulesResult> getRulesPlain() {
@@ -1470,45 +1394,7 @@ public final class AlbFunctions {
     /**
      * This data source provides the Alb Rules of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.133.0+.
-     * 
-     * ## Example Usage
-     * 
-     * Basic Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.alicloud.alb.AlbFunctions;
-     * import com.pulumi.alicloud.alb.inputs.GetRulesArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var ids = AlbFunctions.getRules(GetRulesArgs.builder()
-     *             .ids(&#34;example_id&#34;)
-     *             .build());
-     * 
-     *         ctx.export(&#34;albRuleId1&#34;, ids.applyValue(getRulesResult -&gt; getRulesResult.rules()[0].id()));
-     *         final var nameRegex = AlbFunctions.getRules(GetRulesArgs.builder()
-     *             .nameRegex(&#34;^my-Rule&#34;)
-     *             .build());
-     * 
-     *         ctx.export(&#34;albRuleId2&#34;, nameRegex.applyValue(getRulesResult -&gt; getRulesResult.rules()[0].id()));
-     *     }
-     * }
-     * ```
+     * &gt; **NOTE:** Available since v1.133.0.
      * 
      */
     public static Output<GetRulesResult> getRules(GetRulesArgs args) {
@@ -1517,45 +1403,7 @@ public final class AlbFunctions {
     /**
      * This data source provides the Alb Rules of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.133.0+.
-     * 
-     * ## Example Usage
-     * 
-     * Basic Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.alicloud.alb.AlbFunctions;
-     * import com.pulumi.alicloud.alb.inputs.GetRulesArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var ids = AlbFunctions.getRules(GetRulesArgs.builder()
-     *             .ids(&#34;example_id&#34;)
-     *             .build());
-     * 
-     *         ctx.export(&#34;albRuleId1&#34;, ids.applyValue(getRulesResult -&gt; getRulesResult.rules()[0].id()));
-     *         final var nameRegex = AlbFunctions.getRules(GetRulesArgs.builder()
-     *             .nameRegex(&#34;^my-Rule&#34;)
-     *             .build());
-     * 
-     *         ctx.export(&#34;albRuleId2&#34;, nameRegex.applyValue(getRulesResult -&gt; getRulesResult.rules()[0].id()));
-     *     }
-     * }
-     * ```
+     * &gt; **NOTE:** Available since v1.133.0.
      * 
      */
     public static CompletableFuture<GetRulesResult> getRulesPlain(GetRulesPlainArgs args) {
@@ -1564,45 +1412,7 @@ public final class AlbFunctions {
     /**
      * This data source provides the Alb Rules of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.133.0+.
-     * 
-     * ## Example Usage
-     * 
-     * Basic Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.alicloud.alb.AlbFunctions;
-     * import com.pulumi.alicloud.alb.inputs.GetRulesArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var ids = AlbFunctions.getRules(GetRulesArgs.builder()
-     *             .ids(&#34;example_id&#34;)
-     *             .build());
-     * 
-     *         ctx.export(&#34;albRuleId1&#34;, ids.applyValue(getRulesResult -&gt; getRulesResult.rules()[0].id()));
-     *         final var nameRegex = AlbFunctions.getRules(GetRulesArgs.builder()
-     *             .nameRegex(&#34;^my-Rule&#34;)
-     *             .build());
-     * 
-     *         ctx.export(&#34;albRuleId2&#34;, nameRegex.applyValue(getRulesResult -&gt; getRulesResult.rules()[0].id()));
-     *     }
-     * }
-     * ```
+     * &gt; **NOTE:** Available since v1.133.0.
      * 
      */
     public static Output<GetRulesResult> getRules(GetRulesArgs args, InvokeOptions options) {
@@ -1611,45 +1421,7 @@ public final class AlbFunctions {
     /**
      * This data source provides the Alb Rules of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.133.0+.
-     * 
-     * ## Example Usage
-     * 
-     * Basic Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.alicloud.alb.AlbFunctions;
-     * import com.pulumi.alicloud.alb.inputs.GetRulesArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var ids = AlbFunctions.getRules(GetRulesArgs.builder()
-     *             .ids(&#34;example_id&#34;)
-     *             .build());
-     * 
-     *         ctx.export(&#34;albRuleId1&#34;, ids.applyValue(getRulesResult -&gt; getRulesResult.rules()[0].id()));
-     *         final var nameRegex = AlbFunctions.getRules(GetRulesArgs.builder()
-     *             .nameRegex(&#34;^my-Rule&#34;)
-     *             .build());
-     * 
-     *         ctx.export(&#34;albRuleId2&#34;, nameRegex.applyValue(getRulesResult -&gt; getRulesResult.rules()[0].id()));
-     *     }
-     * }
-     * ```
+     * &gt; **NOTE:** Available since v1.133.0.
      * 
      */
     public static CompletableFuture<GetRulesResult> getRulesPlain(GetRulesPlainArgs args, InvokeOptions options) {

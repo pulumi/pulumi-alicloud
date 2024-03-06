@@ -17,65 +17,6 @@ namespace Pulumi.AliCloud.Ecp
     /// 
     /// &gt; **NOTE:** Available since v1.158.0.
     /// 
-    /// ## Example Usage
-    /// 
-    /// Basic Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var config = new Config();
-    ///     var name = config.Get("name") ?? "tf-example";
-    ///     var defaultZones = AliCloud.Ecp.GetZones.Invoke();
-    /// 
-    ///     var defaultInstanceTypes = AliCloud.Ecp.GetInstanceTypes.Invoke();
-    /// 
-    ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
-    ///     {
-    ///         VpcName = name,
-    ///         CidrBlock = "10.0.0.0/8",
-    ///     });
-    /// 
-    ///     var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new()
-    ///     {
-    ///         VswitchName = name,
-    ///         CidrBlock = "10.1.0.0/16",
-    ///         VpcId = defaultNetwork.Id,
-    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.ZoneId),
-    ///     });
-    /// 
-    ///     var defaultSecurityGroup = new AliCloud.Ecs.SecurityGroup("defaultSecurityGroup", new()
-    ///     {
-    ///         VpcId = defaultNetwork.Id,
-    ///     });
-    /// 
-    ///     var defaultKeyPair = new AliCloud.Ecp.KeyPair("defaultKeyPair", new()
-    ///     {
-    ///         KeyPairName = name,
-    ///         PublicKeyBody = "ssh-rsa AAAAB3Nza12345678qwertyuudsfsg",
-    ///     });
-    /// 
-    ///     var defaultInstance = new AliCloud.Ecp.Instance("defaultInstance", new()
-    ///     {
-    ///         InstanceName = name,
-    ///         Description = name,
-    ///         KeyPairName = defaultKeyPair.KeyPairName,
-    ///         SecurityGroupId = defaultSecurityGroup.Id,
-    ///         VswitchId = defaultSwitch.Id,
-    ///         ImageId = "android_9_0_0_release_2851157_20211201.vhd",
-    ///         InstanceType = defaultInstanceTypes.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.InstanceTypes[1]?.InstanceType),
-    ///         VncPassword = "Ecp123",
-    ///         PaymentType = "PayAsYouGo",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// Elastic Cloud Phone (ECP) Instance can be imported using the id, e.g.

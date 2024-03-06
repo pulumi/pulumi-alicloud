@@ -13,6 +13,236 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type VscMountPointInstance struct {
+	// The ID of the ECS instance to which the HDFS file system is mounted.
+	InstanceId *string `pulumi:"instanceId"`
+	// The status of the ECS instance on which the HDFS file system is mounted.
+	Status *string `pulumi:"status"`
+	// The VSC list of mounted HDFS file systems.
+	Vscs []VscMountPointInstanceVsc `pulumi:"vscs"`
+}
+
+// VscMountPointInstanceInput is an input type that accepts VscMountPointInstanceArgs and VscMountPointInstanceOutput values.
+// You can construct a concrete instance of `VscMountPointInstanceInput` via:
+//
+//	VscMountPointInstanceArgs{...}
+type VscMountPointInstanceInput interface {
+	pulumi.Input
+
+	ToVscMountPointInstanceOutput() VscMountPointInstanceOutput
+	ToVscMountPointInstanceOutputWithContext(context.Context) VscMountPointInstanceOutput
+}
+
+type VscMountPointInstanceArgs struct {
+	// The ID of the ECS instance to which the HDFS file system is mounted.
+	InstanceId pulumi.StringPtrInput `pulumi:"instanceId"`
+	// The status of the ECS instance on which the HDFS file system is mounted.
+	Status pulumi.StringPtrInput `pulumi:"status"`
+	// The VSC list of mounted HDFS file systems.
+	Vscs VscMountPointInstanceVscArrayInput `pulumi:"vscs"`
+}
+
+func (VscMountPointInstanceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VscMountPointInstance)(nil)).Elem()
+}
+
+func (i VscMountPointInstanceArgs) ToVscMountPointInstanceOutput() VscMountPointInstanceOutput {
+	return i.ToVscMountPointInstanceOutputWithContext(context.Background())
+}
+
+func (i VscMountPointInstanceArgs) ToVscMountPointInstanceOutputWithContext(ctx context.Context) VscMountPointInstanceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VscMountPointInstanceOutput)
+}
+
+// VscMountPointInstanceArrayInput is an input type that accepts VscMountPointInstanceArray and VscMountPointInstanceArrayOutput values.
+// You can construct a concrete instance of `VscMountPointInstanceArrayInput` via:
+//
+//	VscMountPointInstanceArray{ VscMountPointInstanceArgs{...} }
+type VscMountPointInstanceArrayInput interface {
+	pulumi.Input
+
+	ToVscMountPointInstanceArrayOutput() VscMountPointInstanceArrayOutput
+	ToVscMountPointInstanceArrayOutputWithContext(context.Context) VscMountPointInstanceArrayOutput
+}
+
+type VscMountPointInstanceArray []VscMountPointInstanceInput
+
+func (VscMountPointInstanceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VscMountPointInstance)(nil)).Elem()
+}
+
+func (i VscMountPointInstanceArray) ToVscMountPointInstanceArrayOutput() VscMountPointInstanceArrayOutput {
+	return i.ToVscMountPointInstanceArrayOutputWithContext(context.Background())
+}
+
+func (i VscMountPointInstanceArray) ToVscMountPointInstanceArrayOutputWithContext(ctx context.Context) VscMountPointInstanceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VscMountPointInstanceArrayOutput)
+}
+
+type VscMountPointInstanceOutput struct{ *pulumi.OutputState }
+
+func (VscMountPointInstanceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VscMountPointInstance)(nil)).Elem()
+}
+
+func (o VscMountPointInstanceOutput) ToVscMountPointInstanceOutput() VscMountPointInstanceOutput {
+	return o
+}
+
+func (o VscMountPointInstanceOutput) ToVscMountPointInstanceOutputWithContext(ctx context.Context) VscMountPointInstanceOutput {
+	return o
+}
+
+// The ID of the ECS instance to which the HDFS file system is mounted.
+func (o VscMountPointInstanceOutput) InstanceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VscMountPointInstance) *string { return v.InstanceId }).(pulumi.StringPtrOutput)
+}
+
+// The status of the ECS instance on which the HDFS file system is mounted.
+func (o VscMountPointInstanceOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VscMountPointInstance) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+// The VSC list of mounted HDFS file systems.
+func (o VscMountPointInstanceOutput) Vscs() VscMountPointInstanceVscArrayOutput {
+	return o.ApplyT(func(v VscMountPointInstance) []VscMountPointInstanceVsc { return v.Vscs }).(VscMountPointInstanceVscArrayOutput)
+}
+
+type VscMountPointInstanceArrayOutput struct{ *pulumi.OutputState }
+
+func (VscMountPointInstanceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VscMountPointInstance)(nil)).Elem()
+}
+
+func (o VscMountPointInstanceArrayOutput) ToVscMountPointInstanceArrayOutput() VscMountPointInstanceArrayOutput {
+	return o
+}
+
+func (o VscMountPointInstanceArrayOutput) ToVscMountPointInstanceArrayOutputWithContext(ctx context.Context) VscMountPointInstanceArrayOutput {
+	return o
+}
+
+func (o VscMountPointInstanceArrayOutput) Index(i pulumi.IntInput) VscMountPointInstanceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) VscMountPointInstance {
+		return vs[0].([]VscMountPointInstance)[vs[1].(int)]
+	}).(VscMountPointInstanceOutput)
+}
+
+type VscMountPointInstanceVsc struct {
+	// VSC Channel primary key representation, used to retrieve the specified VSC Channel.
+	VscId *string `pulumi:"vscId"`
+	// VSC Mount status.
+	VscStatus *string `pulumi:"vscStatus"`
+	// The VSC type.
+	VscType *string `pulumi:"vscType"`
+}
+
+// VscMountPointInstanceVscInput is an input type that accepts VscMountPointInstanceVscArgs and VscMountPointInstanceVscOutput values.
+// You can construct a concrete instance of `VscMountPointInstanceVscInput` via:
+//
+//	VscMountPointInstanceVscArgs{...}
+type VscMountPointInstanceVscInput interface {
+	pulumi.Input
+
+	ToVscMountPointInstanceVscOutput() VscMountPointInstanceVscOutput
+	ToVscMountPointInstanceVscOutputWithContext(context.Context) VscMountPointInstanceVscOutput
+}
+
+type VscMountPointInstanceVscArgs struct {
+	// VSC Channel primary key representation, used to retrieve the specified VSC Channel.
+	VscId pulumi.StringPtrInput `pulumi:"vscId"`
+	// VSC Mount status.
+	VscStatus pulumi.StringPtrInput `pulumi:"vscStatus"`
+	// The VSC type.
+	VscType pulumi.StringPtrInput `pulumi:"vscType"`
+}
+
+func (VscMountPointInstanceVscArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VscMountPointInstanceVsc)(nil)).Elem()
+}
+
+func (i VscMountPointInstanceVscArgs) ToVscMountPointInstanceVscOutput() VscMountPointInstanceVscOutput {
+	return i.ToVscMountPointInstanceVscOutputWithContext(context.Background())
+}
+
+func (i VscMountPointInstanceVscArgs) ToVscMountPointInstanceVscOutputWithContext(ctx context.Context) VscMountPointInstanceVscOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VscMountPointInstanceVscOutput)
+}
+
+// VscMountPointInstanceVscArrayInput is an input type that accepts VscMountPointInstanceVscArray and VscMountPointInstanceVscArrayOutput values.
+// You can construct a concrete instance of `VscMountPointInstanceVscArrayInput` via:
+//
+//	VscMountPointInstanceVscArray{ VscMountPointInstanceVscArgs{...} }
+type VscMountPointInstanceVscArrayInput interface {
+	pulumi.Input
+
+	ToVscMountPointInstanceVscArrayOutput() VscMountPointInstanceVscArrayOutput
+	ToVscMountPointInstanceVscArrayOutputWithContext(context.Context) VscMountPointInstanceVscArrayOutput
+}
+
+type VscMountPointInstanceVscArray []VscMountPointInstanceVscInput
+
+func (VscMountPointInstanceVscArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VscMountPointInstanceVsc)(nil)).Elem()
+}
+
+func (i VscMountPointInstanceVscArray) ToVscMountPointInstanceVscArrayOutput() VscMountPointInstanceVscArrayOutput {
+	return i.ToVscMountPointInstanceVscArrayOutputWithContext(context.Background())
+}
+
+func (i VscMountPointInstanceVscArray) ToVscMountPointInstanceVscArrayOutputWithContext(ctx context.Context) VscMountPointInstanceVscArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VscMountPointInstanceVscArrayOutput)
+}
+
+type VscMountPointInstanceVscOutput struct{ *pulumi.OutputState }
+
+func (VscMountPointInstanceVscOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VscMountPointInstanceVsc)(nil)).Elem()
+}
+
+func (o VscMountPointInstanceVscOutput) ToVscMountPointInstanceVscOutput() VscMountPointInstanceVscOutput {
+	return o
+}
+
+func (o VscMountPointInstanceVscOutput) ToVscMountPointInstanceVscOutputWithContext(ctx context.Context) VscMountPointInstanceVscOutput {
+	return o
+}
+
+// VSC Channel primary key representation, used to retrieve the specified VSC Channel.
+func (o VscMountPointInstanceVscOutput) VscId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VscMountPointInstanceVsc) *string { return v.VscId }).(pulumi.StringPtrOutput)
+}
+
+// VSC Mount status.
+func (o VscMountPointInstanceVscOutput) VscStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VscMountPointInstanceVsc) *string { return v.VscStatus }).(pulumi.StringPtrOutput)
+}
+
+// The VSC type.
+func (o VscMountPointInstanceVscOutput) VscType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VscMountPointInstanceVsc) *string { return v.VscType }).(pulumi.StringPtrOutput)
+}
+
+type VscMountPointInstanceVscArrayOutput struct{ *pulumi.OutputState }
+
+func (VscMountPointInstanceVscArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VscMountPointInstanceVsc)(nil)).Elem()
+}
+
+func (o VscMountPointInstanceVscArrayOutput) ToVscMountPointInstanceVscArrayOutput() VscMountPointInstanceVscArrayOutput {
+	return o
+}
+
+func (o VscMountPointInstanceVscArrayOutput) ToVscMountPointInstanceVscArrayOutputWithContext(ctx context.Context) VscMountPointInstanceVscArrayOutput {
+	return o
+}
+
+func (o VscMountPointInstanceVscArrayOutput) Index(i pulumi.IntInput) VscMountPointInstanceVscOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) VscMountPointInstanceVsc {
+		return vs[0].([]VscMountPointInstanceVsc)[vs[1].(int)]
+	}).(VscMountPointInstanceVscOutput)
+}
+
 type GetAccessGroupsGroup struct {
 	// The length of `description` does not exceed 100 bytes.
 	AccessGroupId string `pulumi:"accessGroupId"`
@@ -965,6 +1195,10 @@ func (o GetZonesZoneOptionArrayOutput) Index(i pulumi.IntInput) GetZonesZoneOpti
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*VscMountPointInstanceInput)(nil)).Elem(), VscMountPointInstanceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VscMountPointInstanceArrayInput)(nil)).Elem(), VscMountPointInstanceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VscMountPointInstanceVscInput)(nil)).Elem(), VscMountPointInstanceVscArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VscMountPointInstanceVscArrayInput)(nil)).Elem(), VscMountPointInstanceVscArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAccessGroupsGroupInput)(nil)).Elem(), GetAccessGroupsGroupArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAccessGroupsGroupArrayInput)(nil)).Elem(), GetAccessGroupsGroupArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAccessRulesRuleInput)(nil)).Elem(), GetAccessRulesRuleArgs{})
@@ -977,6 +1211,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetZonesZoneArrayInput)(nil)).Elem(), GetZonesZoneArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetZonesZoneOptionInput)(nil)).Elem(), GetZonesZoneOptionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetZonesZoneOptionArrayInput)(nil)).Elem(), GetZonesZoneOptionArray{})
+	pulumi.RegisterOutputType(VscMountPointInstanceOutput{})
+	pulumi.RegisterOutputType(VscMountPointInstanceArrayOutput{})
+	pulumi.RegisterOutputType(VscMountPointInstanceVscOutput{})
+	pulumi.RegisterOutputType(VscMountPointInstanceVscArrayOutput{})
 	pulumi.RegisterOutputType(GetAccessGroupsGroupOutput{})
 	pulumi.RegisterOutputType(GetAccessGroupsGroupArrayOutput{})
 	pulumi.RegisterOutputType(GetAccessRulesRuleOutput{})

@@ -9,25 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Alb Rules of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.133.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const ids = alicloud.alb.getRules({
- *     ids: ["example_id"],
- * });
- * export const albRuleId1 = ids.then(ids => ids.rules?.[0]?.id);
- * const nameRegex = alicloud.alb.getRules({
- *     nameRegex: "^my-Rule",
- * });
- * export const albRuleId2 = nameRegex.then(nameRegex => nameRegex.rules?.[0]?.id);
- * ```
+ * > **NOTE:** Available since v1.133.0.
  */
 export function getRules(args?: GetRulesArgs, opts?: pulumi.InvokeOptions): Promise<GetRulesResult> {
     args = args || {};
@@ -73,7 +55,7 @@ export interface GetRulesArgs {
      */
     ruleIds?: string[];
     /**
-     * The status of the resource.
+     * The status of the forwarding rule. Valid values: `Provisioning`, `Configuring`, `Available`.
      */
     status?: string;
 }
@@ -90,34 +72,25 @@ export interface GetRulesResult {
     readonly listenerIds?: string[];
     readonly loadBalancerIds?: string[];
     readonly nameRegex?: string;
+    /**
+     * A list of Rule names.
+     */
     readonly names: string[];
     readonly outputFile?: string;
     readonly ruleIds?: string[];
+    /**
+     * A list of Alb Rules. Each element contains the following attributes:
+     */
     readonly rules: outputs.alb.GetRulesRule[];
+    /**
+     * The status of the forwarding rule.
+     */
     readonly status?: string;
 }
 /**
  * This data source provides the Alb Rules of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.133.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const ids = alicloud.alb.getRules({
- *     ids: ["example_id"],
- * });
- * export const albRuleId1 = ids.then(ids => ids.rules?.[0]?.id);
- * const nameRegex = alicloud.alb.getRules({
- *     nameRegex: "^my-Rule",
- * });
- * export const albRuleId2 = nameRegex.then(nameRegex => nameRegex.rules?.[0]?.id);
- * ```
+ * > **NOTE:** Available since v1.133.0.
  */
 export function getRulesOutput(args?: GetRulesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRulesResult> {
     return pulumi.output(args).apply((a: any) => getRules(a, opts))
@@ -152,7 +125,7 @@ export interface GetRulesOutputArgs {
      */
     ruleIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The status of the resource.
+     * The status of the forwarding rule. Valid values: `Provisioning`, `Configuring`, `Available`.
      */
     status?: pulumi.Input<string>;
 }

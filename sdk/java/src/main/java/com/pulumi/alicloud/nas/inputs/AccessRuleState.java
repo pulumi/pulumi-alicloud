@@ -17,14 +17,14 @@ public final class AccessRuleState extends com.pulumi.resources.ResourceArgs {
     public static final AccessRuleState Empty = new AccessRuleState();
 
     /**
-     * Permission group name.
+     * AccessGroupName.
      * 
      */
     @Import(name="accessGroupName")
     private @Nullable Output<String> accessGroupName;
 
     /**
-     * @return Permission group name.
+     * @return AccessGroupName.
      * 
      */
     public Optional<Output<String>> accessGroupName() {
@@ -32,14 +32,14 @@ public final class AccessRuleState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The nas access rule ID.
+     * The first ID of the resource.
      * 
      */
     @Import(name="accessRuleId")
     private @Nullable Output<String> accessRuleId;
 
     /**
-     * @return The nas access rule ID.
+     * @return The first ID of the resource.
      * 
      */
     public Optional<Output<String>> accessRuleId() {
@@ -47,14 +47,44 @@ public final class AccessRuleState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Priority level. Range: 1-100. Default value: `1`.
+     * filesystem type. include standard, extreme.
+     * 
+     */
+    @Import(name="fileSystemType")
+    private @Nullable Output<String> fileSystemType;
+
+    /**
+     * @return filesystem type. include standard, extreme.
+     * 
+     */
+    public Optional<Output<String>> fileSystemType() {
+        return Optional.ofNullable(this.fileSystemType);
+    }
+
+    /**
+     * Ipv6SourceCidrIp.
+     * 
+     */
+    @Import(name="ipv6SourceCidrIp")
+    private @Nullable Output<String> ipv6SourceCidrIp;
+
+    /**
+     * @return Ipv6SourceCidrIp.
+     * 
+     */
+    public Optional<Output<String>> ipv6SourceCidrIp() {
+        return Optional.ofNullable(this.ipv6SourceCidrIp);
+    }
+
+    /**
+     * Priority.
      * 
      */
     @Import(name="priority")
     private @Nullable Output<Integer> priority;
 
     /**
-     * @return Priority level. Range: 1-100. Default value: `1`.
+     * @return Priority.
      * 
      */
     public Optional<Output<Integer>> priority() {
@@ -62,14 +92,14 @@ public final class AccessRuleState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Read-write permission type: `RDWR` (default), `RDONLY`.
+     * RWAccess.
      * 
      */
     @Import(name="rwAccessType")
     private @Nullable Output<String> rwAccessType;
 
     /**
-     * @return Read-write permission type: `RDWR` (default), `RDONLY`.
+     * @return RWAccess.
      * 
      */
     public Optional<Output<String>> rwAccessType() {
@@ -77,14 +107,14 @@ public final class AccessRuleState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Address or address segment.
+     * SourceCidrIp.
      * 
      */
     @Import(name="sourceCidrIp")
     private @Nullable Output<String> sourceCidrIp;
 
     /**
-     * @return Address or address segment.
+     * @return SourceCidrIp.
      * 
      */
     public Optional<Output<String>> sourceCidrIp() {
@@ -92,14 +122,14 @@ public final class AccessRuleState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * User permission type: `no_squash` (default), `root_squash`, `all_squash`.
+     * UserAccess.
      * 
      */
     @Import(name="userAccessType")
     private @Nullable Output<String> userAccessType;
 
     /**
-     * @return User permission type: `no_squash` (default), `root_squash`, `all_squash`.
+     * @return UserAccess.
      * 
      */
     public Optional<Output<String>> userAccessType() {
@@ -111,6 +141,8 @@ public final class AccessRuleState extends com.pulumi.resources.ResourceArgs {
     private AccessRuleState(AccessRuleState $) {
         this.accessGroupName = $.accessGroupName;
         this.accessRuleId = $.accessRuleId;
+        this.fileSystemType = $.fileSystemType;
+        this.ipv6SourceCidrIp = $.ipv6SourceCidrIp;
         this.priority = $.priority;
         this.rwAccessType = $.rwAccessType;
         this.sourceCidrIp = $.sourceCidrIp;
@@ -136,7 +168,7 @@ public final class AccessRuleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accessGroupName Permission group name.
+         * @param accessGroupName AccessGroupName.
          * 
          * @return builder
          * 
@@ -147,7 +179,7 @@ public final class AccessRuleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accessGroupName Permission group name.
+         * @param accessGroupName AccessGroupName.
          * 
          * @return builder
          * 
@@ -157,7 +189,7 @@ public final class AccessRuleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accessRuleId The nas access rule ID.
+         * @param accessRuleId The first ID of the resource.
          * 
          * @return builder
          * 
@@ -168,7 +200,7 @@ public final class AccessRuleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accessRuleId The nas access rule ID.
+         * @param accessRuleId The first ID of the resource.
          * 
          * @return builder
          * 
@@ -178,7 +210,49 @@ public final class AccessRuleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param priority Priority level. Range: 1-100. Default value: `1`.
+         * @param fileSystemType filesystem type. include standard, extreme.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder fileSystemType(@Nullable Output<String> fileSystemType) {
+            $.fileSystemType = fileSystemType;
+            return this;
+        }
+
+        /**
+         * @param fileSystemType filesystem type. include standard, extreme.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder fileSystemType(String fileSystemType) {
+            return fileSystemType(Output.of(fileSystemType));
+        }
+
+        /**
+         * @param ipv6SourceCidrIp Ipv6SourceCidrIp.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipv6SourceCidrIp(@Nullable Output<String> ipv6SourceCidrIp) {
+            $.ipv6SourceCidrIp = ipv6SourceCidrIp;
+            return this;
+        }
+
+        /**
+         * @param ipv6SourceCidrIp Ipv6SourceCidrIp.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipv6SourceCidrIp(String ipv6SourceCidrIp) {
+            return ipv6SourceCidrIp(Output.of(ipv6SourceCidrIp));
+        }
+
+        /**
+         * @param priority Priority.
          * 
          * @return builder
          * 
@@ -189,7 +263,7 @@ public final class AccessRuleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param priority Priority level. Range: 1-100. Default value: `1`.
+         * @param priority Priority.
          * 
          * @return builder
          * 
@@ -199,7 +273,7 @@ public final class AccessRuleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param rwAccessType Read-write permission type: `RDWR` (default), `RDONLY`.
+         * @param rwAccessType RWAccess.
          * 
          * @return builder
          * 
@@ -210,7 +284,7 @@ public final class AccessRuleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param rwAccessType Read-write permission type: `RDWR` (default), `RDONLY`.
+         * @param rwAccessType RWAccess.
          * 
          * @return builder
          * 
@@ -220,7 +294,7 @@ public final class AccessRuleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sourceCidrIp Address or address segment.
+         * @param sourceCidrIp SourceCidrIp.
          * 
          * @return builder
          * 
@@ -231,7 +305,7 @@ public final class AccessRuleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sourceCidrIp Address or address segment.
+         * @param sourceCidrIp SourceCidrIp.
          * 
          * @return builder
          * 
@@ -241,7 +315,7 @@ public final class AccessRuleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param userAccessType User permission type: `no_squash` (default), `root_squash`, `all_squash`.
+         * @param userAccessType UserAccess.
          * 
          * @return builder
          * 
@@ -252,7 +326,7 @@ public final class AccessRuleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param userAccessType User permission type: `no_squash` (default), `root_squash`, `all_squash`.
+         * @param userAccessType UserAccess.
          * 
          * @return builder
          * 

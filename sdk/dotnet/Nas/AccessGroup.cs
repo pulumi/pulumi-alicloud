@@ -10,12 +10,12 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Nas
 {
     /// <summary>
-    /// Provides a NAS Access Group resource.
+    /// Provides a NAS Access Group resource. File system Access Group.
     /// 
     /// In NAS, the permission group acts as a whitelist that allows you to restrict file system access. You can allow specified IP addresses or CIDR blocks to access the file system, and assign different levels of access permission to different IP addresses or CIDR blocks by adding rules to the permission group.
     /// For information about NAS Access Group and how to use it, see [What is NAS Access Group](https://www.alibabacloud.com/help/en/nas/developer-reference/api-nas-2017-06-26-createaccessgroup)
     /// 
-    /// &gt; **NOTE:** Available in v1.33.0+.
+    /// &gt; **NOTE:** Available since v1.33.0.
     /// 
     /// ## Example Usage
     /// 
@@ -45,44 +45,53 @@ namespace Pulumi.AliCloud.Nas
     /// NAS Access Group can be imported using the id, e.g.
     /// 
     /// ```sh
-    /// $ pulumi import alicloud:nas/accessGroup:AccessGroup foo tf_testAccNasConfig:standard
+    /// $ pulumi import alicloud:nas/accessGroup:AccessGroup example &lt;access_group_name&gt;:&lt;file_system_type&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:nas/accessGroup:AccessGroup")]
     public partial class AccessGroup : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// A Name of one Access Group.
+        /// The name of the permission group.
         /// </summary>
         [Output("accessGroupName")]
         public Output<string> AccessGroupName { get; private set; } = null!;
 
         /// <summary>
-        /// A Type of one Access Group. Valid values: `Vpc` and `Classic`.
+        /// Permission group types, including Vpc.
         /// </summary>
         [Output("accessGroupType")]
         public Output<string> AccessGroupType { get; private set; } = null!;
 
         /// <summary>
-        /// The Access Group description.
+        /// Creation time.
+        /// </summary>
+        [Output("createTime")]
+        public Output<string> CreateTime { get; private set; } = null!;
+
+        /// <summary>
+        /// Permission group description information.
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// The type of file system. Valid values: `standard` and `extreme`. Default to `standard`. Note that the extreme only support Vpc Network.
+        /// File system type. Value:
+        /// - standard (default): Universal NAS
+        /// - extreme: extreme NAS
+        /// The following arguments will be discarded. Please use new fields as soon as possible:
         /// </summary>
         [Output("fileSystemType")]
         public Output<string?> FileSystemType { get; private set; } = null!;
 
         /// <summary>
-        /// Replaced by `access_group_name` after version 1.92.0.
+        /// . Field 'name' has been deprecated from provider version 1.218.0. New field 'access_group_name' instead.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Replaced by `access_group_type` after version 1.92.0.
+        /// . Field 'type' has been deprecated from provider version 1.218.0. New field 'access_group_type' instead.
         /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
@@ -134,37 +143,40 @@ namespace Pulumi.AliCloud.Nas
     public sealed class AccessGroupArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// A Name of one Access Group.
+        /// The name of the permission group.
         /// </summary>
         [Input("accessGroupName")]
         public Input<string>? AccessGroupName { get; set; }
 
         /// <summary>
-        /// A Type of one Access Group. Valid values: `Vpc` and `Classic`.
+        /// Permission group types, including Vpc.
         /// </summary>
         [Input("accessGroupType")]
         public Input<string>? AccessGroupType { get; set; }
 
         /// <summary>
-        /// The Access Group description.
+        /// Permission group description information.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The type of file system. Valid values: `standard` and `extreme`. Default to `standard`. Note that the extreme only support Vpc Network.
+        /// File system type. Value:
+        /// - standard (default): Universal NAS
+        /// - extreme: extreme NAS
+        /// The following arguments will be discarded. Please use new fields as soon as possible:
         /// </summary>
         [Input("fileSystemType")]
         public Input<string>? FileSystemType { get; set; }
 
         /// <summary>
-        /// Replaced by `access_group_name` after version 1.92.0.
+        /// . Field 'name' has been deprecated from provider version 1.218.0. New field 'access_group_name' instead.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Replaced by `access_group_type` after version 1.92.0.
+        /// . Field 'type' has been deprecated from provider version 1.218.0. New field 'access_group_type' instead.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
@@ -178,37 +190,46 @@ namespace Pulumi.AliCloud.Nas
     public sealed class AccessGroupState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// A Name of one Access Group.
+        /// The name of the permission group.
         /// </summary>
         [Input("accessGroupName")]
         public Input<string>? AccessGroupName { get; set; }
 
         /// <summary>
-        /// A Type of one Access Group. Valid values: `Vpc` and `Classic`.
+        /// Permission group types, including Vpc.
         /// </summary>
         [Input("accessGroupType")]
         public Input<string>? AccessGroupType { get; set; }
 
         /// <summary>
-        /// The Access Group description.
+        /// Creation time.
+        /// </summary>
+        [Input("createTime")]
+        public Input<string>? CreateTime { get; set; }
+
+        /// <summary>
+        /// Permission group description information.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The type of file system. Valid values: `standard` and `extreme`. Default to `standard`. Note that the extreme only support Vpc Network.
+        /// File system type. Value:
+        /// - standard (default): Universal NAS
+        /// - extreme: extreme NAS
+        /// The following arguments will be discarded. Please use new fields as soon as possible:
         /// </summary>
         [Input("fileSystemType")]
         public Input<string>? FileSystemType { get; set; }
 
         /// <summary>
-        /// Replaced by `access_group_name` after version 1.92.0.
+        /// . Field 'name' has been deprecated from provider version 1.218.0. New field 'access_group_name' instead.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Replaced by `access_group_type` after version 1.92.0.
+        /// . Field 'type' has been deprecated from provider version 1.218.0. New field 'access_group_type' instead.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

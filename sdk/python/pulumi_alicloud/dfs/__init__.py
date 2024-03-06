@@ -14,4 +14,6 @@ from .get_file_systems import *
 from .get_mount_points import *
 from .get_zones import *
 from .mount_point import *
+from .vsc_mount_point import *
+from ._inputs import *
 from . import outputs

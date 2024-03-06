@@ -29,20 +29,46 @@ import (
 //
 // import (
 //
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/drds"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := drds.NewInstance(ctx, "default", &drds.InstanceArgs{
+//			_, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
+//				AvailableResourceCreation: pulumi.StringRef("VSwitch"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			cfg := config.New(ctx, "")
+//			instanceSeries := "drds.sn1.4c8g"
+//			if param := cfg.Get("instanceSeries"); param != "" {
+//				instanceSeries = param
+//			}
+//			defaultNetworks, err := vpc.GetNetworks(ctx, &vpc.GetNetworksArgs{
+//				NameRegex: pulumi.StringRef("default-NODELETING"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultSwitches, err := vpc.GetSwitches(ctx, &vpc.GetSwitchesArgs{
+//				VpcId: pulumi.StringRef(defaultNetworks.Ids[0]),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = drds.NewInstance(ctx, "defaultInstance", &drds.InstanceArgs{
 //				Description:        pulumi.String("drds instance"),
 //				InstanceChargeType: pulumi.String("PostPaid"),
-//				InstanceSeries:     pulumi.String("drds.sn1.4c8g"),
+//				ZoneId:             *pulumi.String(defaultSwitches.Vswitches[0].ZoneId),
+//				VswitchId:          *pulumi.String(defaultSwitches.Vswitches[0].Id),
+//				InstanceSeries:     pulumi.String(instanceSeries),
 //				Specification:      pulumi.String("drds.sn1.4c8g.8C16G"),
-//				VswitchId:          pulumi.String("vsw-bp1jlu3swk8rq2yoi40ey"),
-//				ZoneId:             pulumi.String("cn-hangzhou-e"),
 //			})
 //			if err != nil {
 //				return err

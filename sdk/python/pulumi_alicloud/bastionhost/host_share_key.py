@@ -201,47 +201,6 @@ class HostShareKey(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.165.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf_example"
-        default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
-        default_network = alicloud.vpc.Network("defaultNetwork",
-            vpc_name=name,
-            cidr_block="10.4.0.0/16")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
-            vswitch_name=name,
-            cidr_block="10.4.0.0/24",
-            vpc_id=default_network.id,
-            zone_id=default_zones.zones[0].id)
-        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
-        default_instance = alicloud.bastionhost.Instance("defaultInstance",
-            description=name,
-            license_code="bhah_ent_50_asset",
-            plan_code="cloudbastion",
-            storage="5",
-            bandwidth="5",
-            period=1,
-            vswitch_id=default_switch.id,
-            security_group_ids=[default_security_group.id])
-        private_key = config.get("privateKey")
-        if private_key is None:
-            private_key = "LS0tLS1CR*******"
-        default_host_share_key = alicloud.bastionhost.HostShareKey("defaultHostShareKey",
-            host_share_key_name=name,
-            instance_id=default_instance.id,
-            pass_phrase="NTIxeGlubXU=",
-            private_key=private_key)
-        ```
-
         ## Import
 
         Bastion Host Share Key can be imported using the id, e.g.
@@ -269,47 +228,6 @@ class HostShareKey(pulumi.CustomResource):
         For information about Bastion Host Host Share Key and how to use it, see [What is Host Share Key](https://www.alibabacloud.com/help/en/bastion-host/latest/createhostsharekey).
 
         > **NOTE:** Available since v1.165.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf_example"
-        default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
-        default_network = alicloud.vpc.Network("defaultNetwork",
-            vpc_name=name,
-            cidr_block="10.4.0.0/16")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
-            vswitch_name=name,
-            cidr_block="10.4.0.0/24",
-            vpc_id=default_network.id,
-            zone_id=default_zones.zones[0].id)
-        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
-        default_instance = alicloud.bastionhost.Instance("defaultInstance",
-            description=name,
-            license_code="bhah_ent_50_asset",
-            plan_code="cloudbastion",
-            storage="5",
-            bandwidth="5",
-            period=1,
-            vswitch_id=default_switch.id,
-            security_group_ids=[default_security_group.id])
-        private_key = config.get("privateKey")
-        if private_key is None:
-            private_key = "LS0tLS1CR*******"
-        default_host_share_key = alicloud.bastionhost.HostShareKey("defaultHostShareKey",
-            host_share_key_name=name,
-            instance_id=default_instance.id,
-            pass_phrase="NTIxeGlubXU=",
-            private_key=private_key)
-        ```
 
         ## Import
 
