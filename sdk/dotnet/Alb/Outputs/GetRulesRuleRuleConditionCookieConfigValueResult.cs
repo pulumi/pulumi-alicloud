@@ -14,11 +14,11 @@ namespace Pulumi.AliCloud.Alb.Outputs
     public sealed class GetRulesRuleRuleConditionCookieConfigValueResult
     {
         /// <summary>
-        /// The key of the header field. The key must be 1 to 40 characters in length, and can contain letters, digits, hyphens (-) and underscores (_). The key does not support Cookie or Host.
+        /// The key of the query string.
         /// </summary>
         public readonly string Key;
         /// <summary>
-        /// The value must be 1 to 128 characters in length, and can contain lowercase letters, printable characters, asterisks (*), and question marks (?). The value cannot contain spaces or the following special characters: # [ ] { } \ | &lt; &gt; &amp;.
+        /// The value of the query string.
         /// </summary>
         public readonly string Value;
 

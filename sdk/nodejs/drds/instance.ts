@@ -21,13 +21,24 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const _default = new alicloud.drds.Instance("default", {
+ * const defaultZones = alicloud.getZones({
+ *     availableResourceCreation: "VSwitch",
+ * });
+ * const config = new pulumi.Config();
+ * const instanceSeries = config.get("instanceSeries") || "drds.sn1.4c8g";
+ * const defaultNetworks = alicloud.vpc.getNetworks({
+ *     nameRegex: "default-NODELETING",
+ * });
+ * const defaultSwitches = defaultNetworks.then(defaultNetworks => alicloud.vpc.getSwitches({
+ *     vpcId: defaultNetworks.ids?.[0],
+ * }));
+ * const defaultInstance = new alicloud.drds.Instance("defaultInstance", {
  *     description: "drds instance",
  *     instanceChargeType: "PostPaid",
- *     instanceSeries: "drds.sn1.4c8g",
+ *     zoneId: defaultSwitches.then(defaultSwitches => defaultSwitches.vswitches?.[0]?.zoneId),
+ *     vswitchId: defaultSwitches.then(defaultSwitches => defaultSwitches.vswitches?.[0]?.id),
+ *     instanceSeries: instanceSeries,
  *     specification: "drds.sn1.4c8g.8C16G",
- *     vswitchId: "vsw-bp1jlu3swk8rq2yoi40ey",
- *     zoneId: "cn-hangzhou-e",
  * });
  * ```
  *

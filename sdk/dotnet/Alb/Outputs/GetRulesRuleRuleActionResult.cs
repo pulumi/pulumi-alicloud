@@ -26,7 +26,7 @@ namespace Pulumi.AliCloud.Alb.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.GetRulesRuleRuleActionInsertHeaderConfigResult> InsertHeaderConfigs;
         /// <summary>
-        /// The order of the forwarding rule actions. Valid values:1 to 50000. The actions are performed in ascending order. You cannot leave this parameter empty. Each value must be unique.
+        /// The order of the forwarding rule actions.
         /// </summary>
         public readonly int Order;
         /// <summary>

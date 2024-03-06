@@ -11,23 +11,6 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available in v1.194.0+.
  *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const config = new pulumi.Config();
- * const name = config.get("name") || "AliyunTerraform";
- * const defaultAccount = new alicloud.resourcemanager.Account("defaultAccount", {displayName: name});
- * const defaultInstanceMember = new alicloud.cloudfirewall.InstanceMember("defaultInstanceMember", {
- *     memberDesc: name,
- *     memberUid: defaultAccount.id,
- * });
- * ```
- *
  * ## Import
  *
  * Cloud Firewall Instance Member can be imported using the id, e.g.

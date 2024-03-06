@@ -30,6 +30,10 @@ namespace Pulumi.AliCloud.Vpn.Outputs
         /// </summary>
         public readonly string Description;
         /// <summary>
+        /// The backup public IP address of the VPN gateway. The second IP address assigned by the system to create an IPsec-VPN connection. This parameter is returned only when the VPN gateway supports the dual-tunnel mode.
+        /// </summary>
+        public readonly string DisasterRecoveryInternetIp;
+        /// <summary>
         /// - The ID of the backup VSwitch to which the VPN gateway is attached.
         /// </summary>
         public readonly string DisasterRecoveryVswitchId;
@@ -112,6 +116,8 @@ namespace Pulumi.AliCloud.Vpn.Outputs
 
             string description,
 
+            string disasterRecoveryInternetIp,
+
             string disasterRecoveryVswitchId,
 
             string enableIpsec,
@@ -152,6 +158,7 @@ namespace Pulumi.AliCloud.Vpn.Outputs
             BusinessStatus = businessStatus;
             CreateTime = createTime;
             Description = description;
+            DisasterRecoveryInternetIp = disasterRecoveryInternetIp;
             DisasterRecoveryVswitchId = disasterRecoveryVswitchId;
             EnableIpsec = enableIpsec;
             EnableSsl = enableSsl;

@@ -25,6 +25,7 @@ namespace Pulumi.AliCloud.Hbr
     /// using System.Linq;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
+    /// using Random = Pulumi.Random;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
@@ -42,9 +43,15 @@ namespace Pulumi.AliCloud.Hbr
     ///         Region = defaultReplicationVaultRegions.Apply(getReplicationVaultRegionsResult =&gt; getReplicationVaultRegionsResult.Regions[0]?.ReplicationRegionId),
     ///     });
     /// 
+    ///     var defaultRandomInteger = new Random.RandomInteger("defaultRandomInteger", new()
+    ///     {
+    ///         Min = 10000,
+    ///         Max = 99999,
+    ///     });
+    /// 
     ///     var defaultVault = new AliCloud.Hbr.Vault("defaultVault", new()
     ///     {
-    ///         VaultName = "terraform-example",
+    ///         VaultName = defaultRandomInteger.Result.Apply(result =&gt; $"terraform-example-{result}"),
     ///     }, new CustomResourceOptions
     ///     {
     ///         Provider = alicloud.Source,

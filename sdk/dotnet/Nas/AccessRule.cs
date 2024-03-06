@@ -10,11 +10,11 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Nas
 {
     /// <summary>
-    /// Provides a Nas Access Rule resource.
+    /// Provides a NAS Access Rule resource.
     /// 
-    /// When NAS is activated, the Default VPC Permission Group is automatically generated. It allows all IP addresses in a VPC to access the mount point with full permissions. Full permissions include Read/Write permission with no restriction on root users.
+    /// For information about NAS Access Rule and how to use it, see [What is Access Rule](https://www.alibabacloud.com/help/en/nas/developer-reference/api-nas-2017-06-26-createaccessrule).
     /// 
-    /// &gt; **NOTE:** Available in v1.34.0+.
+    /// &gt; **NOTE:** Available since v1.34.0.
     /// 
     /// ## Example Usage
     /// 
@@ -49,50 +49,62 @@ namespace Pulumi.AliCloud.Nas
     /// 
     /// ## Import
     /// 
-    /// Nas Access Rule can be imported using the id, e.g.
+    /// NAS Access Rule can be imported using the id, e.g.
     /// 
     /// ```sh
-    /// $ pulumi import alicloud:nas/accessRule:AccessRule foo tf-testAccNasConfigName:1
+    /// $ pulumi import alicloud:nas/accessRule:AccessRule example &lt;access_group_name&gt;:&lt;file_system_type&gt;:&lt;access_rule_id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:nas/accessRule:AccessRule")]
     public partial class AccessRule : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Permission group name.
+        /// AccessGroupName.
         /// </summary>
         [Output("accessGroupName")]
         public Output<string> AccessGroupName { get; private set; } = null!;
 
         /// <summary>
-        /// The nas access rule ID.
+        /// The first ID of the resource.
         /// </summary>
         [Output("accessRuleId")]
         public Output<string> AccessRuleId { get; private set; } = null!;
 
         /// <summary>
-        /// Priority level. Range: 1-100. Default value: `1`.
+        /// filesystem type. include standard, extreme.
+        /// </summary>
+        [Output("fileSystemType")]
+        public Output<string> FileSystemType { get; private set; } = null!;
+
+        /// <summary>
+        /// Ipv6SourceCidrIp.
+        /// </summary>
+        [Output("ipv6SourceCidrIp")]
+        public Output<string?> Ipv6SourceCidrIp { get; private set; } = null!;
+
+        /// <summary>
+        /// Priority.
         /// </summary>
         [Output("priority")]
         public Output<int?> Priority { get; private set; } = null!;
 
         /// <summary>
-        /// Read-write permission type: `RDWR` (default), `RDONLY`.
+        /// RWAccess.
         /// </summary>
         [Output("rwAccessType")]
-        public Output<string?> RwAccessType { get; private set; } = null!;
+        public Output<string> RwAccessType { get; private set; } = null!;
 
         /// <summary>
-        /// Address or address segment.
+        /// SourceCidrIp.
         /// </summary>
         [Output("sourceCidrIp")]
-        public Output<string> SourceCidrIp { get; private set; } = null!;
+        public Output<string?> SourceCidrIp { get; private set; } = null!;
 
         /// <summary>
-        /// User permission type: `no_squash` (default), `root_squash`, `all_squash`.
+        /// UserAccess.
         /// </summary>
         [Output("userAccessType")]
-        public Output<string?> UserAccessType { get; private set; } = null!;
+        public Output<string> UserAccessType { get; private set; } = null!;
 
 
         /// <summary>
@@ -141,31 +153,43 @@ namespace Pulumi.AliCloud.Nas
     public sealed class AccessRuleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Permission group name.
+        /// AccessGroupName.
         /// </summary>
         [Input("accessGroupName", required: true)]
         public Input<string> AccessGroupName { get; set; } = null!;
 
         /// <summary>
-        /// Priority level. Range: 1-100. Default value: `1`.
+        /// filesystem type. include standard, extreme.
+        /// </summary>
+        [Input("fileSystemType")]
+        public Input<string>? FileSystemType { get; set; }
+
+        /// <summary>
+        /// Ipv6SourceCidrIp.
+        /// </summary>
+        [Input("ipv6SourceCidrIp")]
+        public Input<string>? Ipv6SourceCidrIp { get; set; }
+
+        /// <summary>
+        /// Priority.
         /// </summary>
         [Input("priority")]
         public Input<int>? Priority { get; set; }
 
         /// <summary>
-        /// Read-write permission type: `RDWR` (default), `RDONLY`.
+        /// RWAccess.
         /// </summary>
         [Input("rwAccessType")]
         public Input<string>? RwAccessType { get; set; }
 
         /// <summary>
-        /// Address or address segment.
+        /// SourceCidrIp.
         /// </summary>
-        [Input("sourceCidrIp", required: true)]
-        public Input<string> SourceCidrIp { get; set; } = null!;
+        [Input("sourceCidrIp")]
+        public Input<string>? SourceCidrIp { get; set; }
 
         /// <summary>
-        /// User permission type: `no_squash` (default), `root_squash`, `all_squash`.
+        /// UserAccess.
         /// </summary>
         [Input("userAccessType")]
         public Input<string>? UserAccessType { get; set; }
@@ -179,37 +203,49 @@ namespace Pulumi.AliCloud.Nas
     public sealed class AccessRuleState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Permission group name.
+        /// AccessGroupName.
         /// </summary>
         [Input("accessGroupName")]
         public Input<string>? AccessGroupName { get; set; }
 
         /// <summary>
-        /// The nas access rule ID.
+        /// The first ID of the resource.
         /// </summary>
         [Input("accessRuleId")]
         public Input<string>? AccessRuleId { get; set; }
 
         /// <summary>
-        /// Priority level. Range: 1-100. Default value: `1`.
+        /// filesystem type. include standard, extreme.
+        /// </summary>
+        [Input("fileSystemType")]
+        public Input<string>? FileSystemType { get; set; }
+
+        /// <summary>
+        /// Ipv6SourceCidrIp.
+        /// </summary>
+        [Input("ipv6SourceCidrIp")]
+        public Input<string>? Ipv6SourceCidrIp { get; set; }
+
+        /// <summary>
+        /// Priority.
         /// </summary>
         [Input("priority")]
         public Input<int>? Priority { get; set; }
 
         /// <summary>
-        /// Read-write permission type: `RDWR` (default), `RDONLY`.
+        /// RWAccess.
         /// </summary>
         [Input("rwAccessType")]
         public Input<string>? RwAccessType { get; set; }
 
         /// <summary>
-        /// Address or address segment.
+        /// SourceCidrIp.
         /// </summary>
         [Input("sourceCidrIp")]
         public Input<string>? SourceCidrIp { get; set; }
 
         /// <summary>
-        /// User permission type: `no_squash` (default), `root_squash`, `all_squash`.
+        /// UserAccess.
         /// </summary>
         [Input("userAccessType")]
         public Input<string>? UserAccessType { get; set; }

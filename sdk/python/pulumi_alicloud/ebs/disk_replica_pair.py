@@ -508,7 +508,7 @@ class DiskReplicaPair(pulumi.CustomResource):
         """
         Provides a Ebs Disk Replica Pair resource.
 
-        For information about Ebs Disk Replica Pair and how to use it, see [What is Disk Replica Pair](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/CreateDiskReplicaPair).
+        For information about Ebs Disk Replica Pair and how to use it, see [What is Disk Replica Pair](https://www.alibabacloud.com/help/en/ecs/developer-reference/api-ebs-2021-07-30-creatediskreplicapair).
 
         > **NOTE:** Available since v1.196.0.
 
@@ -545,7 +545,7 @@ class DiskReplicaPair(pulumi.CustomResource):
         """
         Provides a Ebs Disk Replica Pair resource.
 
-        For information about Ebs Disk Replica Pair and how to use it, see [What is Disk Replica Pair](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/CreateDiskReplicaPair).
+        For information about Ebs Disk Replica Pair and how to use it, see [What is Disk Replica Pair](https://www.alibabacloud.com/help/en/ecs/developer-reference/api-ebs-2021-07-30-creatediskreplicapair).
 
         > **NOTE:** Available since v1.196.0.
 

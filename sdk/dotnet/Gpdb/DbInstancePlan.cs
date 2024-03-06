@@ -10,11 +10,90 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Gpdb
 {
     /// <summary>
-    /// Provides a GPDB DB Instance Plan resource.
+    /// Provides a AnalyticDB for PostgreSQL (GPDB) DB Instance Plan resource.
     /// 
-    /// For information about GPDB DB Instance Plan and how to use it, see [What is DB Instance Plan](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/developer-reference/api-gpdb-2016-05-03-createdbinstanceplan).
+    /// For information about AnalyticDB for PostgreSQL (GPDB) DB Instance Plan and how to use it, see [What is DB Instance Plan](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/developer-reference/api-gpdb-2016-05-03-createdbinstanceplan).
     /// 
     /// &gt; **NOTE:** Available since v1.189.0.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf-example";
+    ///     var defaultZones = AliCloud.Gpdb.GetZones.Invoke();
+    /// 
+    ///     var defaultNetworks = AliCloud.Vpc.GetNetworks.Invoke(new()
+    ///     {
+    ///         NameRegex = "^default-NODELETING$",
+    ///     });
+    /// 
+    ///     var defaultSwitches = AliCloud.Vpc.GetSwitches.Invoke(new()
+    ///     {
+    ///         VpcId = defaultNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
+    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Ids[0]),
+    ///     });
+    /// 
+    ///     var defaultInstance = new AliCloud.Gpdb.Instance("defaultInstance", new()
+    ///     {
+    ///         DbInstanceCategory = "HighAvailability",
+    ///         DbInstanceClass = "gpdb.group.segsdx1",
+    ///         DbInstanceMode = "StorageElastic",
+    ///         Description = name,
+    ///         Engine = "gpdb",
+    ///         EngineVersion = "6.0",
+    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Ids[0]),
+    ///         InstanceNetworkType = "VPC",
+    ///         InstanceSpec = "2C16G",
+    ///         PaymentType = "PayAsYouGo",
+    ///         SegStorageType = "cloud_essd",
+    ///         SegNodeNum = 4,
+    ///         StorageSize = 50,
+    ///         VpcId = defaultNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
+    ///         VswitchId = defaultSwitches.Apply(getSwitchesResult =&gt; getSwitchesResult.Ids[0]),
+    ///         IpWhitelists = new[]
+    ///         {
+    ///             new AliCloud.Gpdb.Inputs.InstanceIpWhitelistArgs
+    ///             {
+    ///                 SecurityIpList = "127.0.0.1",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var defaultDbInstancePlan = new AliCloud.Gpdb.DbInstancePlan("defaultDbInstancePlan", new()
+    ///     {
+    ///         DbInstancePlanName = name,
+    ///         PlanDesc = name,
+    ///         PlanType = "PauseResume",
+    ///         PlanScheduleType = "Regular",
+    ///         PlanConfigs = new[]
+    ///         {
+    ///             new AliCloud.Gpdb.Inputs.DbInstancePlanPlanConfigArgs
+    ///             {
+    ///                 Resume = new AliCloud.Gpdb.Inputs.DbInstancePlanPlanConfigResumeArgs
+    ///                 {
+    ///                     PlanCronTime = "0 0 0 1/1 * ? ",
+    ///                 },
+    ///                 Pause = new AliCloud.Gpdb.Inputs.DbInstancePlanPlanConfigPauseArgs
+    ///                 {
+    ///                     PlanCronTime = "0 0 10 1/1 * ? ",
+    ///                 },
+    ///             },
+    ///         },
+    ///         DbInstanceId = defaultInstance.Id,
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -28,7 +107,7 @@ namespace Pulumi.AliCloud.Gpdb
     public partial class DbInstancePlan : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The ID of the Database instance.
+        /// The ID of the GPDB instance.
         /// </summary>
         [Output("dbInstanceId")]
         public Output<string> DbInstanceId { get; private set; } = null!;
@@ -40,7 +119,7 @@ namespace Pulumi.AliCloud.Gpdb
         public Output<string> DbInstancePlanName { get; private set; } = null!;
 
         /// <summary>
-        /// The plan config. See `plan_config` below.
+        /// The execution information of the plan. See `plan_config` below.
         /// </summary>
         [Output("planConfigs")]
         public Output<ImmutableArray<Outputs.DbInstancePlanPlanConfig>> PlanConfigs { get; private set; } = null!;
@@ -49,22 +128,22 @@ namespace Pulumi.AliCloud.Gpdb
         /// The description of the Plan.
         /// </summary>
         [Output("planDesc")]
-        public Output<string> PlanDesc { get; private set; } = null!;
+        public Output<string?> PlanDesc { get; private set; } = null!;
 
         /// <summary>
         /// The end time of the Plan.
         /// </summary>
         [Output("planEndDate")]
-        public Output<string> PlanEndDate { get; private set; } = null!;
+        public Output<string?> PlanEndDate { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of DB Instance Plan.
+        /// The ID of the plan.
         /// </summary>
         [Output("planId")]
         public Output<string> PlanId { get; private set; } = null!;
 
         /// <summary>
-        /// Plan scheduling type. Valid values: `Postpone`, `Regular`.
+        /// The execution mode of the plan. Valid values: `Postpone`, `Regular`.
         /// </summary>
         [Output("planScheduleType")]
         public Output<string> PlanScheduleType { get; private set; } = null!;
@@ -134,7 +213,7 @@ namespace Pulumi.AliCloud.Gpdb
     public sealed class DbInstancePlanArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The ID of the Database instance.
+        /// The ID of the GPDB instance.
         /// </summary>
         [Input("dbInstanceId", required: true)]
         public Input<string> DbInstanceId { get; set; } = null!;
@@ -149,7 +228,7 @@ namespace Pulumi.AliCloud.Gpdb
         private InputList<Inputs.DbInstancePlanPlanConfigArgs>? _planConfigs;
 
         /// <summary>
-        /// The plan config. See `plan_config` below.
+        /// The execution information of the plan. See `plan_config` below.
         /// </summary>
         public InputList<Inputs.DbInstancePlanPlanConfigArgs> PlanConfigs
         {
@@ -170,7 +249,7 @@ namespace Pulumi.AliCloud.Gpdb
         public Input<string>? PlanEndDate { get; set; }
 
         /// <summary>
-        /// Plan scheduling type. Valid values: `Postpone`, `Regular`.
+        /// The execution mode of the plan. Valid values: `Postpone`, `Regular`.
         /// </summary>
         [Input("planScheduleType", required: true)]
         public Input<string> PlanScheduleType { get; set; } = null!;
@@ -202,7 +281,7 @@ namespace Pulumi.AliCloud.Gpdb
     public sealed class DbInstancePlanState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The ID of the Database instance.
+        /// The ID of the GPDB instance.
         /// </summary>
         [Input("dbInstanceId")]
         public Input<string>? DbInstanceId { get; set; }
@@ -217,7 +296,7 @@ namespace Pulumi.AliCloud.Gpdb
         private InputList<Inputs.DbInstancePlanPlanConfigGetArgs>? _planConfigs;
 
         /// <summary>
-        /// The plan config. See `plan_config` below.
+        /// The execution information of the plan. See `plan_config` below.
         /// </summary>
         public InputList<Inputs.DbInstancePlanPlanConfigGetArgs> PlanConfigs
         {
@@ -238,13 +317,13 @@ namespace Pulumi.AliCloud.Gpdb
         public Input<string>? PlanEndDate { get; set; }
 
         /// <summary>
-        /// The ID of DB Instance Plan.
+        /// The ID of the plan.
         /// </summary>
         [Input("planId")]
         public Input<string>? PlanId { get; set; }
 
         /// <summary>
-        /// Plan scheduling type. Valid values: `Postpone`, `Regular`.
+        /// The execution mode of the plan. Valid values: `Postpone`, `Regular`.
         /// </summary>
         [Input("planScheduleType")]
         public Input<string>? PlanScheduleType { get; set; }

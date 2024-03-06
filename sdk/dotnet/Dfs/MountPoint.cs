@@ -12,7 +12,7 @@ namespace Pulumi.AliCloud.Dfs
     /// <summary>
     /// Provides a DFS Mount Point resource.
     /// 
-    /// For information about DFS Mount Point and how to use it, see [What is Mount Point](https://www.alibabacloud.com/help/doc-detail/207144.htm).
+    /// For information about DFS Mount Point and how to use it, see [What is Mount Point](https://www.alibabacloud.com/help/en/aibaba-cloud-storage-services/latest/apsara-file-storage-for-hdfs).
     /// 
     /// &gt; **NOTE:** Available since v1.140.0.
     /// 
@@ -25,53 +25,69 @@ namespace Pulumi.AliCloud.Dfs
     /// using System.Linq;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
+    /// using Random = Pulumi.Random;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     var config = new Config();
-    ///     var name = config.Get("name") ?? "tf-example";
+    ///     var name = config.Get("name") ?? "terraform-example";
     ///     var defaultZones = AliCloud.Dfs.GetZones.Invoke();
     /// 
-    ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
+    ///     var defaultRandomInteger = new Random.RandomInteger("defaultRandomInteger", new()
     ///     {
+    ///         Min = 10000,
+    ///         Max = 99999,
+    ///     });
+    /// 
+    ///     var defaultVPC = new AliCloud.Vpc.Network("defaultVPC", new()
+    ///     {
+    ///         CidrBlock = "172.16.0.0/12",
     ///         VpcName = name,
-    ///         CidrBlock = "10.4.0.0/16",
     ///     });
     /// 
-    ///     var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new()
+    ///     var defaultVSwitch = new AliCloud.Vpc.Switch("defaultVSwitch", new()
     ///     {
+    ///         Description = "example",
+    ///         VpcId = defaultVPC.Id,
+    ///         CidrBlock = "172.16.0.0/24",
     ///         VswitchName = name,
-    ///         CidrBlock = "10.4.0.0/24",
-    ///         VpcId = defaultNetwork.Id,
     ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.ZoneId),
-    ///     });
-    /// 
-    ///     var defaultFileSystem = new AliCloud.Dfs.FileSystem("defaultFileSystem", new()
-    ///     {
-    ///         StorageType = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Options[0]?.StorageType),
-    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.ZoneId),
-    ///         ProtocolType = "HDFS",
-    ///         Description = name,
-    ///         FileSystemName = name,
-    ///         ThroughputMode = "Standard",
-    ///         SpaceCapacity = 1024,
     ///     });
     /// 
     ///     var defaultAccessGroup = new AliCloud.Dfs.AccessGroup("defaultAccessGroup", new()
     ///     {
-    ///         AccessGroupName = name,
-    ///         Description = name,
+    ///         Description = "AccessGroup resource manager center example",
     ///         NetworkType = "VPC",
+    ///         AccessGroupName = defaultRandomInteger.Result.Apply(result =&gt; $"{name}-{result}"),
+    ///     });
+    /// 
+    ///     var updateAccessGroup = new AliCloud.Dfs.AccessGroup("updateAccessGroup", new()
+    ///     {
+    ///         Description = "Second AccessGroup resource manager center example",
+    ///         NetworkType = "VPC",
+    ///         AccessGroupName = defaultRandomInteger.Result.Apply(result =&gt; $"{name}-update-{result}"),
+    ///     });
+    /// 
+    ///     var defaultFs = new AliCloud.Dfs.FileSystem("defaultFs", new()
+    ///     {
+    ///         SpaceCapacity = 1024,
+    ///         Description = "for mountpoint  example",
+    ///         StorageType = "STANDARD",
+    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.ZoneId),
+    ///         ProtocolType = "HDFS",
+    ///         DataRedundancyType = "LRS",
+    ///         FileSystemName = defaultRandomInteger.Result.Apply(result =&gt; $"{name}-{result}"),
     ///     });
     /// 
     ///     var defaultMountPoint = new AliCloud.Dfs.MountPoint("defaultMountPoint", new()
     ///     {
-    ///         Description = name,
-    ///         VpcId = defaultNetwork.Id,
-    ///         FileSystemId = defaultFileSystem.Id,
-    ///         AccessGroupId = defaultAccessGroup.Id,
+    ///         VpcId = defaultVPC.Id,
+    ///         Description = "mountpoint example",
     ///         NetworkType = "VPC",
-    ///         VswitchId = defaultSwitch.Id,
+    ///         VswitchId = defaultVSwitch.Id,
+    ///         FileSystemId = defaultFs.Id,
+    ///         AccessGroupId = defaultAccessGroup.Id,
+    ///         Status = "Active",
     ///     });
     /// 
     /// });
@@ -89,49 +105,61 @@ namespace Pulumi.AliCloud.Dfs
     public partial class MountPoint : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The ID of the Access Group.
+        /// The id of the permission group associated with the Mount point, which is used to set the access permissions of the Mount point.
         /// </summary>
         [Output("accessGroupId")]
         public Output<string> AccessGroupId { get; private set; } = null!;
 
         /// <summary>
-        /// The description of the Mount Point.
+        /// The mount point alias prefix, which specifies the mount point alias prefix.
+        /// </summary>
+        [Output("aliasPrefix")]
+        public Output<string?> AliasPrefix { get; private set; } = null!;
+
+        /// <summary>
+        /// The creation time of the Mount point resource.
+        /// </summary>
+        [Output("createTime")]
+        public Output<string> CreateTime { get; private set; } = null!;
+
+        /// <summary>
+        /// The description of the Mount point.  No more than 32 characters in length.
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the File System.
+        /// Unique file system identifier, used to retrieve specified file system resources.
         /// </summary>
         [Output("fileSystemId")]
         public Output<string> FileSystemId { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the Mount Point.
+        /// The unique identifier of the Mount point, which is used to retrieve the specified mount point resources.
         /// </summary>
         [Output("mountPointId")]
         public Output<string> MountPointId { get; private set; } = null!;
 
         /// <summary>
-        /// The network type of the Mount Point. Valid values: `VPC`.
+        /// The network type of the Mount point.  Only VPC (VPC) is supported.
         /// </summary>
         [Output("networkType")]
         public Output<string> NetworkType { get; private set; } = null!;
 
         /// <summary>
-        /// The status of the Mount Point. Valid values: `Active`, `Inactive`.
+        /// Mount point status. Value: Inactive: Disable mount points Active: Activate the mount point.
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
-        /// The vpc id.
+        /// The ID of the VPC. Specifies the VPC environment to which the mount point belongs.
         /// </summary>
         [Output("vpcId")]
         public Output<string> VpcId { get; private set; } = null!;
 
         /// <summary>
-        /// The vswitch id.
+        /// VSwitch ID, which specifies the VSwitch resource used to create the mount point.
         /// </summary>
         [Output("vswitchId")]
         public Output<string> VswitchId { get; private set; } = null!;
@@ -183,43 +211,49 @@ namespace Pulumi.AliCloud.Dfs
     public sealed class MountPointArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The ID of the Access Group.
+        /// The id of the permission group associated with the Mount point, which is used to set the access permissions of the Mount point.
         /// </summary>
         [Input("accessGroupId", required: true)]
         public Input<string> AccessGroupId { get; set; } = null!;
 
         /// <summary>
-        /// The description of the Mount Point.
+        /// The mount point alias prefix, which specifies the mount point alias prefix.
+        /// </summary>
+        [Input("aliasPrefix")]
+        public Input<string>? AliasPrefix { get; set; }
+
+        /// <summary>
+        /// The description of the Mount point.  No more than 32 characters in length.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The ID of the File System.
+        /// Unique file system identifier, used to retrieve specified file system resources.
         /// </summary>
         [Input("fileSystemId", required: true)]
         public Input<string> FileSystemId { get; set; } = null!;
 
         /// <summary>
-        /// The network type of the Mount Point. Valid values: `VPC`.
+        /// The network type of the Mount point.  Only VPC (VPC) is supported.
         /// </summary>
         [Input("networkType", required: true)]
         public Input<string> NetworkType { get; set; } = null!;
 
         /// <summary>
-        /// The status of the Mount Point. Valid values: `Active`, `Inactive`.
+        /// Mount point status. Value: Inactive: Disable mount points Active: Activate the mount point.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
 
         /// <summary>
-        /// The vpc id.
+        /// The ID of the VPC. Specifies the VPC environment to which the mount point belongs.
         /// </summary>
         [Input("vpcId", required: true)]
         public Input<string> VpcId { get; set; } = null!;
 
         /// <summary>
-        /// The vswitch id.
+        /// VSwitch ID, which specifies the VSwitch resource used to create the mount point.
         /// </summary>
         [Input("vswitchId", required: true)]
         public Input<string> VswitchId { get; set; } = null!;
@@ -233,49 +267,61 @@ namespace Pulumi.AliCloud.Dfs
     public sealed class MountPointState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The ID of the Access Group.
+        /// The id of the permission group associated with the Mount point, which is used to set the access permissions of the Mount point.
         /// </summary>
         [Input("accessGroupId")]
         public Input<string>? AccessGroupId { get; set; }
 
         /// <summary>
-        /// The description of the Mount Point.
+        /// The mount point alias prefix, which specifies the mount point alias prefix.
+        /// </summary>
+        [Input("aliasPrefix")]
+        public Input<string>? AliasPrefix { get; set; }
+
+        /// <summary>
+        /// The creation time of the Mount point resource.
+        /// </summary>
+        [Input("createTime")]
+        public Input<string>? CreateTime { get; set; }
+
+        /// <summary>
+        /// The description of the Mount point.  No more than 32 characters in length.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The ID of the File System.
+        /// Unique file system identifier, used to retrieve specified file system resources.
         /// </summary>
         [Input("fileSystemId")]
         public Input<string>? FileSystemId { get; set; }
 
         /// <summary>
-        /// The ID of the Mount Point.
+        /// The unique identifier of the Mount point, which is used to retrieve the specified mount point resources.
         /// </summary>
         [Input("mountPointId")]
         public Input<string>? MountPointId { get; set; }
 
         /// <summary>
-        /// The network type of the Mount Point. Valid values: `VPC`.
+        /// The network type of the Mount point.  Only VPC (VPC) is supported.
         /// </summary>
         [Input("networkType")]
         public Input<string>? NetworkType { get; set; }
 
         /// <summary>
-        /// The status of the Mount Point. Valid values: `Active`, `Inactive`.
+        /// Mount point status. Value: Inactive: Disable mount points Active: Activate the mount point.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
 
         /// <summary>
-        /// The vpc id.
+        /// The ID of the VPC. Specifies the VPC environment to which the mount point belongs.
         /// </summary>
         [Input("vpcId")]
         public Input<string>? VpcId { get; set; }
 
         /// <summary>
-        /// The vswitch id.
+        /// VSwitch ID, which specifies the VSwitch resource used to create the mount point.
         /// </summary>
         [Input("vswitchId")]
         public Input<string>? VswitchId { get; set; }

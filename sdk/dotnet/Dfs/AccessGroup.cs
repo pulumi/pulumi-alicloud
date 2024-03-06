@@ -12,7 +12,7 @@ namespace Pulumi.AliCloud.Dfs
     /// <summary>
     /// Provides a DFS Access Group resource.
     /// 
-    /// For information about DFS Access Group and how to use it, see [What is Access Group](https://www.alibabacloud.com/help/doc-detail/207144.htm).
+    /// For information about DFS Access Group and how to use it, see [What is Access Group](https://www.alibabacloud.com/help/en/aibaba-cloud-storage-services/latest/apsara-file-storage-for-hdfs).
     /// 
     /// &gt; **NOTE:** Available since v1.133.0.
     /// 
@@ -29,11 +29,12 @@ namespace Pulumi.AliCloud.Dfs
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     var config = new Config();
-    ///     var name = config.Get("name") ?? "tf-example";
+    ///     var name = config.Get("name") ?? "terraform-example";
     ///     var @default = new AliCloud.Dfs.AccessGroup("default", new()
     ///     {
-    ///         AccessGroupName = name,
+    ///         Description = name,
     ///         NetworkType = "VPC",
+    ///         AccessGroupName = name,
     ///     });
     /// 
     /// });
@@ -51,19 +52,25 @@ namespace Pulumi.AliCloud.Dfs
     public partial class AccessGroup : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The Name of Access Group.The length of `access_group_name` does not exceed 100 bytes.
+        /// The permission group name. The naming rules are as follows: The length is 6~64 characters. Globally unique and cannot be an empty string. English letters are supported and can contain numbers, underscores (_), and dashes (-).
         /// </summary>
         [Output("accessGroupName")]
         public Output<string> AccessGroupName { get; private set; } = null!;
 
         /// <summary>
-        /// The Description of Access Group. The length of `description` does not exceed 100 bytes.
+        /// The creation time of the permission group resource.
+        /// </summary>
+        [Output("createTime")]
+        public Output<string> CreateTime { get; private set; } = null!;
+
+        /// <summary>
+        /// The permission group description.  No more than 32 characters in length.
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// The NetworkType of Access Group. Valid values: `VPC`.
+        /// The permission group type. Only VPC (VPC) is supported.
         /// </summary>
         [Output("networkType")]
         public Output<string> NetworkType { get; private set; } = null!;
@@ -115,19 +122,19 @@ namespace Pulumi.AliCloud.Dfs
     public sealed class AccessGroupArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The Name of Access Group.The length of `access_group_name` does not exceed 100 bytes.
+        /// The permission group name. The naming rules are as follows: The length is 6~64 characters. Globally unique and cannot be an empty string. English letters are supported and can contain numbers, underscores (_), and dashes (-).
         /// </summary>
         [Input("accessGroupName", required: true)]
         public Input<string> AccessGroupName { get; set; } = null!;
 
         /// <summary>
-        /// The Description of Access Group. The length of `description` does not exceed 100 bytes.
+        /// The permission group description.  No more than 32 characters in length.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The NetworkType of Access Group. Valid values: `VPC`.
+        /// The permission group type. Only VPC (VPC) is supported.
         /// </summary>
         [Input("networkType", required: true)]
         public Input<string> NetworkType { get; set; } = null!;
@@ -141,19 +148,25 @@ namespace Pulumi.AliCloud.Dfs
     public sealed class AccessGroupState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The Name of Access Group.The length of `access_group_name` does not exceed 100 bytes.
+        /// The permission group name. The naming rules are as follows: The length is 6~64 characters. Globally unique and cannot be an empty string. English letters are supported and can contain numbers, underscores (_), and dashes (-).
         /// </summary>
         [Input("accessGroupName")]
         public Input<string>? AccessGroupName { get; set; }
 
         /// <summary>
-        /// The Description of Access Group. The length of `description` does not exceed 100 bytes.
+        /// The creation time of the permission group resource.
+        /// </summary>
+        [Input("createTime")]
+        public Input<string>? CreateTime { get; set; }
+
+        /// <summary>
+        /// The permission group description.  No more than 32 characters in length.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The NetworkType of Access Group. Valid values: `VPC`.
+        /// The permission group type. Only VPC (VPC) is supported.
         /// </summary>
         [Input("networkType")]
         public Input<string>? NetworkType { get; set; }

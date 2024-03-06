@@ -14,7 +14,7 @@ import (
 
 // Provides a DFS Mount Point resource.
 //
-// For information about DFS Mount Point and how to use it, see [What is Mount Point](https://www.alibabacloud.com/help/doc-detail/207144.htm).
+// For information about DFS Mount Point and how to use it, see [What is Mount Point](https://www.alibabacloud.com/help/en/aibaba-cloud-storage-services/latest/apsara-file-storage-for-hdfs).
 //
 // > **NOTE:** Available since v1.140.0.
 //
@@ -27,8 +27,11 @@ import (
 //
 // import (
 //
+//	"fmt"
+//
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/dfs"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
@@ -37,7 +40,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			cfg := config.New(ctx, "")
-//			name := "tf-example"
+//			name := "terraform-example"
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
@@ -45,49 +48,72 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
-//				VpcName:   pulumi.String(name),
-//				CidrBlock: pulumi.String("10.4.0.0/16"),
+//			defaultRandomInteger, err := random.NewRandomInteger(ctx, "defaultRandomInteger", &random.RandomIntegerArgs{
+//				Min: pulumi.Int(10000),
+//				Max: pulumi.Int(99999),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
+//			defaultVPC, err := vpc.NewNetwork(ctx, "defaultVPC", &vpc.NetworkArgs{
+//				CidrBlock: pulumi.String("172.16.0.0/12"),
+//				VpcName:   pulumi.String(name),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultVSwitch, err := vpc.NewSwitch(ctx, "defaultVSwitch", &vpc.SwitchArgs{
+//				Description: pulumi.String("example"),
+//				VpcId:       defaultVPC.ID(),
+//				CidrBlock:   pulumi.String("172.16.0.0/24"),
 //				VswitchName: pulumi.String(name),
-//				CidrBlock:   pulumi.String("10.4.0.0/24"),
-//				VpcId:       defaultNetwork.ID(),
 //				ZoneId:      *pulumi.String(defaultZones.Zones[0].ZoneId),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			defaultFileSystem, err := dfs.NewFileSystem(ctx, "defaultFileSystem", &dfs.FileSystemArgs{
-//				StorageType:    *pulumi.String(defaultZones.Zones[0].Options[0].StorageType),
-//				ZoneId:         *pulumi.String(defaultZones.Zones[0].ZoneId),
-//				ProtocolType:   pulumi.String("HDFS"),
-//				Description:    pulumi.String(name),
-//				FileSystemName: pulumi.String(name),
-//				ThroughputMode: pulumi.String("Standard"),
-//				SpaceCapacity:  pulumi.Int(1024),
+//			defaultAccessGroup, err := dfs.NewAccessGroup(ctx, "defaultAccessGroup", &dfs.AccessGroupArgs{
+//				Description: pulumi.String("AccessGroup resource manager center example"),
+//				NetworkType: pulumi.String("VPC"),
+//				AccessGroupName: defaultRandomInteger.Result.ApplyT(func(result int) (string, error) {
+//					return fmt.Sprintf("%v-%v", name, result), nil
+//				}).(pulumi.StringOutput),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			defaultAccessGroup, err := dfs.NewAccessGroup(ctx, "defaultAccessGroup", &dfs.AccessGroupArgs{
-//				AccessGroupName: pulumi.String(name),
-//				Description:     pulumi.String(name),
-//				NetworkType:     pulumi.String("VPC"),
+//			_, err = dfs.NewAccessGroup(ctx, "updateAccessGroup", &dfs.AccessGroupArgs{
+//				Description: pulumi.String("Second AccessGroup resource manager center example"),
+//				NetworkType: pulumi.String("VPC"),
+//				AccessGroupName: defaultRandomInteger.Result.ApplyT(func(result int) (string, error) {
+//					return fmt.Sprintf("%v-update-%v", name, result), nil
+//				}).(pulumi.StringOutput),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultFs, err := dfs.NewFileSystem(ctx, "defaultFs", &dfs.FileSystemArgs{
+//				SpaceCapacity:      pulumi.Int(1024),
+//				Description:        pulumi.String("for mountpoint  example"),
+//				StorageType:        pulumi.String("STANDARD"),
+//				ZoneId:             *pulumi.String(defaultZones.Zones[0].ZoneId),
+//				ProtocolType:       pulumi.String("HDFS"),
+//				DataRedundancyType: pulumi.String("LRS"),
+//				FileSystemName: defaultRandomInteger.Result.ApplyT(func(result int) (string, error) {
+//					return fmt.Sprintf("%v-%v", name, result), nil
+//				}).(pulumi.StringOutput),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = dfs.NewMountPoint(ctx, "defaultMountPoint", &dfs.MountPointArgs{
-//				Description:   pulumi.String(name),
-//				VpcId:         defaultNetwork.ID(),
-//				FileSystemId:  defaultFileSystem.ID(),
-//				AccessGroupId: defaultAccessGroup.ID(),
+//				VpcId:         defaultVPC.ID(),
+//				Description:   pulumi.String("mountpoint example"),
 //				NetworkType:   pulumi.String("VPC"),
-//				VswitchId:     defaultSwitch.ID(),
+//				VswitchId:     defaultVSwitch.ID(),
+//				FileSystemId:  defaultFs.ID(),
+//				AccessGroupId: defaultAccessGroup.ID(),
+//				Status:        pulumi.String("Active"),
 //			})
 //			if err != nil {
 //				return err
@@ -108,21 +134,25 @@ import (
 type MountPoint struct {
 	pulumi.CustomResourceState
 
-	// The ID of the Access Group.
+	// The id of the permission group associated with the Mount point, which is used to set the access permissions of the Mount point.
 	AccessGroupId pulumi.StringOutput `pulumi:"accessGroupId"`
-	// The description of the Mount Point.
+	// The mount point alias prefix, which specifies the mount point alias prefix.
+	AliasPrefix pulumi.StringPtrOutput `pulumi:"aliasPrefix"`
+	// The creation time of the Mount point resource.
+	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// The description of the Mount point.  No more than 32 characters in length.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// The ID of the File System.
+	// Unique file system identifier, used to retrieve specified file system resources.
 	FileSystemId pulumi.StringOutput `pulumi:"fileSystemId"`
-	// The ID of the Mount Point.
+	// The unique identifier of the Mount point, which is used to retrieve the specified mount point resources.
 	MountPointId pulumi.StringOutput `pulumi:"mountPointId"`
-	// The network type of the Mount Point. Valid values: `VPC`.
+	// The network type of the Mount point.  Only VPC (VPC) is supported.
 	NetworkType pulumi.StringOutput `pulumi:"networkType"`
-	// The status of the Mount Point. Valid values: `Active`, `Inactive`.
+	// Mount point status. Value: Inactive: Disable mount points Active: Activate the mount point.
 	Status pulumi.StringOutput `pulumi:"status"`
-	// The vpc id.
+	// The ID of the VPC. Specifies the VPC environment to which the mount point belongs.
 	VpcId pulumi.StringOutput `pulumi:"vpcId"`
-	// The vswitch id.
+	// VSwitch ID, which specifies the VSwitch resource used to create the mount point.
 	VswitchId pulumi.StringOutput `pulumi:"vswitchId"`
 }
 
@@ -171,40 +201,48 @@ func GetMountPoint(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering MountPoint resources.
 type mountPointState struct {
-	// The ID of the Access Group.
+	// The id of the permission group associated with the Mount point, which is used to set the access permissions of the Mount point.
 	AccessGroupId *string `pulumi:"accessGroupId"`
-	// The description of the Mount Point.
+	// The mount point alias prefix, which specifies the mount point alias prefix.
+	AliasPrefix *string `pulumi:"aliasPrefix"`
+	// The creation time of the Mount point resource.
+	CreateTime *string `pulumi:"createTime"`
+	// The description of the Mount point.  No more than 32 characters in length.
 	Description *string `pulumi:"description"`
-	// The ID of the File System.
+	// Unique file system identifier, used to retrieve specified file system resources.
 	FileSystemId *string `pulumi:"fileSystemId"`
-	// The ID of the Mount Point.
+	// The unique identifier of the Mount point, which is used to retrieve the specified mount point resources.
 	MountPointId *string `pulumi:"mountPointId"`
-	// The network type of the Mount Point. Valid values: `VPC`.
+	// The network type of the Mount point.  Only VPC (VPC) is supported.
 	NetworkType *string `pulumi:"networkType"`
-	// The status of the Mount Point. Valid values: `Active`, `Inactive`.
+	// Mount point status. Value: Inactive: Disable mount points Active: Activate the mount point.
 	Status *string `pulumi:"status"`
-	// The vpc id.
+	// The ID of the VPC. Specifies the VPC environment to which the mount point belongs.
 	VpcId *string `pulumi:"vpcId"`
-	// The vswitch id.
+	// VSwitch ID, which specifies the VSwitch resource used to create the mount point.
 	VswitchId *string `pulumi:"vswitchId"`
 }
 
 type MountPointState struct {
-	// The ID of the Access Group.
+	// The id of the permission group associated with the Mount point, which is used to set the access permissions of the Mount point.
 	AccessGroupId pulumi.StringPtrInput
-	// The description of the Mount Point.
+	// The mount point alias prefix, which specifies the mount point alias prefix.
+	AliasPrefix pulumi.StringPtrInput
+	// The creation time of the Mount point resource.
+	CreateTime pulumi.StringPtrInput
+	// The description of the Mount point.  No more than 32 characters in length.
 	Description pulumi.StringPtrInput
-	// The ID of the File System.
+	// Unique file system identifier, used to retrieve specified file system resources.
 	FileSystemId pulumi.StringPtrInput
-	// The ID of the Mount Point.
+	// The unique identifier of the Mount point, which is used to retrieve the specified mount point resources.
 	MountPointId pulumi.StringPtrInput
-	// The network type of the Mount Point. Valid values: `VPC`.
+	// The network type of the Mount point.  Only VPC (VPC) is supported.
 	NetworkType pulumi.StringPtrInput
-	// The status of the Mount Point. Valid values: `Active`, `Inactive`.
+	// Mount point status. Value: Inactive: Disable mount points Active: Activate the mount point.
 	Status pulumi.StringPtrInput
-	// The vpc id.
+	// The ID of the VPC. Specifies the VPC environment to which the mount point belongs.
 	VpcId pulumi.StringPtrInput
-	// The vswitch id.
+	// VSwitch ID, which specifies the VSwitch resource used to create the mount point.
 	VswitchId pulumi.StringPtrInput
 }
 
@@ -213,37 +251,41 @@ func (MountPointState) ElementType() reflect.Type {
 }
 
 type mountPointArgs struct {
-	// The ID of the Access Group.
+	// The id of the permission group associated with the Mount point, which is used to set the access permissions of the Mount point.
 	AccessGroupId string `pulumi:"accessGroupId"`
-	// The description of the Mount Point.
+	// The mount point alias prefix, which specifies the mount point alias prefix.
+	AliasPrefix *string `pulumi:"aliasPrefix"`
+	// The description of the Mount point.  No more than 32 characters in length.
 	Description *string `pulumi:"description"`
-	// The ID of the File System.
+	// Unique file system identifier, used to retrieve specified file system resources.
 	FileSystemId string `pulumi:"fileSystemId"`
-	// The network type of the Mount Point. Valid values: `VPC`.
+	// The network type of the Mount point.  Only VPC (VPC) is supported.
 	NetworkType string `pulumi:"networkType"`
-	// The status of the Mount Point. Valid values: `Active`, `Inactive`.
+	// Mount point status. Value: Inactive: Disable mount points Active: Activate the mount point.
 	Status *string `pulumi:"status"`
-	// The vpc id.
+	// The ID of the VPC. Specifies the VPC environment to which the mount point belongs.
 	VpcId string `pulumi:"vpcId"`
-	// The vswitch id.
+	// VSwitch ID, which specifies the VSwitch resource used to create the mount point.
 	VswitchId string `pulumi:"vswitchId"`
 }
 
 // The set of arguments for constructing a MountPoint resource.
 type MountPointArgs struct {
-	// The ID of the Access Group.
+	// The id of the permission group associated with the Mount point, which is used to set the access permissions of the Mount point.
 	AccessGroupId pulumi.StringInput
-	// The description of the Mount Point.
+	// The mount point alias prefix, which specifies the mount point alias prefix.
+	AliasPrefix pulumi.StringPtrInput
+	// The description of the Mount point.  No more than 32 characters in length.
 	Description pulumi.StringPtrInput
-	// The ID of the File System.
+	// Unique file system identifier, used to retrieve specified file system resources.
 	FileSystemId pulumi.StringInput
-	// The network type of the Mount Point. Valid values: `VPC`.
+	// The network type of the Mount point.  Only VPC (VPC) is supported.
 	NetworkType pulumi.StringInput
-	// The status of the Mount Point. Valid values: `Active`, `Inactive`.
+	// Mount point status. Value: Inactive: Disable mount points Active: Activate the mount point.
 	Status pulumi.StringPtrInput
-	// The vpc id.
+	// The ID of the VPC. Specifies the VPC environment to which the mount point belongs.
 	VpcId pulumi.StringInput
-	// The vswitch id.
+	// VSwitch ID, which specifies the VSwitch resource used to create the mount point.
 	VswitchId pulumi.StringInput
 }
 
@@ -334,42 +376,52 @@ func (o MountPointOutput) ToMountPointOutputWithContext(ctx context.Context) Mou
 	return o
 }
 
-// The ID of the Access Group.
+// The id of the permission group associated with the Mount point, which is used to set the access permissions of the Mount point.
 func (o MountPointOutput) AccessGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v *MountPoint) pulumi.StringOutput { return v.AccessGroupId }).(pulumi.StringOutput)
 }
 
-// The description of the Mount Point.
+// The mount point alias prefix, which specifies the mount point alias prefix.
+func (o MountPointOutput) AliasPrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MountPoint) pulumi.StringPtrOutput { return v.AliasPrefix }).(pulumi.StringPtrOutput)
+}
+
+// The creation time of the Mount point resource.
+func (o MountPointOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *MountPoint) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// The description of the Mount point.  No more than 32 characters in length.
 func (o MountPointOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MountPoint) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// The ID of the File System.
+// Unique file system identifier, used to retrieve specified file system resources.
 func (o MountPointOutput) FileSystemId() pulumi.StringOutput {
 	return o.ApplyT(func(v *MountPoint) pulumi.StringOutput { return v.FileSystemId }).(pulumi.StringOutput)
 }
 
-// The ID of the Mount Point.
+// The unique identifier of the Mount point, which is used to retrieve the specified mount point resources.
 func (o MountPointOutput) MountPointId() pulumi.StringOutput {
 	return o.ApplyT(func(v *MountPoint) pulumi.StringOutput { return v.MountPointId }).(pulumi.StringOutput)
 }
 
-// The network type of the Mount Point. Valid values: `VPC`.
+// The network type of the Mount point.  Only VPC (VPC) is supported.
 func (o MountPointOutput) NetworkType() pulumi.StringOutput {
 	return o.ApplyT(func(v *MountPoint) pulumi.StringOutput { return v.NetworkType }).(pulumi.StringOutput)
 }
 
-// The status of the Mount Point. Valid values: `Active`, `Inactive`.
+// Mount point status. Value: Inactive: Disable mount points Active: Activate the mount point.
 func (o MountPointOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *MountPoint) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }
 
-// The vpc id.
+// The ID of the VPC. Specifies the VPC environment to which the mount point belongs.
 func (o MountPointOutput) VpcId() pulumi.StringOutput {
 	return o.ApplyT(func(v *MountPoint) pulumi.StringOutput { return v.VpcId }).(pulumi.StringOutput)
 }
 
-// The vswitch id.
+// VSwitch ID, which specifies the VSwitch resource used to create the mount point.
 func (o MountPointOutput) VswitchId() pulumi.StringOutput {
 	return o.ApplyT(func(v *MountPoint) pulumi.StringOutput { return v.VswitchId }).(pulumi.StringOutput)
 }

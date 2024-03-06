@@ -11,26 +11,26 @@ import java.util.Objects;
 @CustomType
 public final class GetRulesRuleRuleConditionCookieConfigValue {
     /**
-     * @return The key of the header field. The key must be 1 to 40 characters in length, and can contain letters, digits, hyphens (-) and underscores (_). The key does not support Cookie or Host.
+     * @return The key of the query string.
      * 
      */
     private String key;
     /**
-     * @return The value must be 1 to 128 characters in length, and can contain lowercase letters, printable characters, asterisks (*), and question marks (?). The value cannot contain spaces or the following special characters: # [ ] { } \ | &lt; &gt; &amp;.
+     * @return The value of the query string.
      * 
      */
     private String value;
 
     private GetRulesRuleRuleConditionCookieConfigValue() {}
     /**
-     * @return The key of the header field. The key must be 1 to 40 characters in length, and can contain letters, digits, hyphens (-) and underscores (_). The key does not support Cookie or Host.
+     * @return The key of the query string.
      * 
      */
     public String key() {
         return this.key;
     }
     /**
-     * @return The value must be 1 to 128 characters in length, and can contain lowercase letters, printable characters, asterisks (*), and question marks (?). The value cannot contain spaces or the following special characters: # [ ] { } \ | &lt; &gt; &amp;.
+     * @return The value of the query string.
      * 
      */
     public String value() {

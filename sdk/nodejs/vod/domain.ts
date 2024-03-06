@@ -11,7 +11,7 @@ import * as utilities from "../utilities";
  *
  * For information about VOD Domain and how to use it, see [What is Domain](https://www.alibabacloud.com/help/product/29932.html).
  *
- * > **NOTE:** Available in v1.136.0+.
+ * > **NOTE:** Available since v1.136.0+.
  *
  * ## Example Usage
  *
@@ -20,18 +20,23 @@ import * as utilities from "../utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
+ * import * as random from "@pulumi/random";
  *
- * const _default = new alicloud.vod.Domain("default", {
- *     domainName: "your_domain_name",
+ * const defaultRandomInteger = new random.RandomInteger("defaultRandomInteger", {
+ *     max: 99999,
+ *     min: 10000,
+ * });
+ * const defaultDomain = new alicloud.vod.Domain("defaultDomain", {
+ *     domainName: pulumi.interpolate`example-${defaultRandomInteger.result}.com`,
  *     scope: "domestic",
  *     sources: [{
- *         sourceContent: "your_source_content",
- *         sourcePort: "80",
+ *         sourceContent: "outin-c7405446108111ec9a7100163e0eb78b.oss-cn-beijing.aliyuncs.com",
+ *         sourcePort: "443",
  *         sourceType: "domain",
  *     }],
  *     tags: {
- *         key1: "value1",
- *         key2: "value2",
+ *         Created: "terraform",
+ *         For: "example",
  *     },
  * });
  * ```

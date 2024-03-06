@@ -34,6 +34,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.alicloud.ProviderArgs;
  * import com.pulumi.alicloud.hbr.HbrFunctions;
  * import com.pulumi.alicloud.hbr.inputs.GetReplicationVaultRegionsArgs;
+ * import com.pulumi.random.RandomInteger;
+ * import com.pulumi.random.RandomIntegerArgs;
  * import com.pulumi.alicloud.hbr.Vault;
  * import com.pulumi.alicloud.hbr.VaultArgs;
  * import com.pulumi.alicloud.hbr.ReplicationVault;
@@ -64,8 +66,13 @@ import javax.annotation.Nullable;
  *             .region(defaultReplicationVaultRegions.applyValue(getReplicationVaultRegionsResult -&gt; getReplicationVaultRegionsResult.regions()[0].replicationRegionId()))
  *             .build());
  * 
+ *         var defaultRandomInteger = new RandomInteger(&#34;defaultRandomInteger&#34;, RandomIntegerArgs.builder()        
+ *             .min(10000)
+ *             .max(99999)
+ *             .build());
+ * 
  *         var defaultVault = new Vault(&#34;defaultVault&#34;, VaultArgs.builder()        
- *             .vaultName(&#34;terraform-example&#34;)
+ *             .vaultName(defaultRandomInteger.result().applyValue(result -&gt; String.format(&#34;terraform-example-%s&#34;, result)))
  *             .build(), CustomResourceOptions.builder()
  *                 .provider(alicloud.source())
  *                 .build());

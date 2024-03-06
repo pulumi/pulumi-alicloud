@@ -28,7 +28,6 @@ import (
 // import (
 //
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/expressconnect"
-//	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
@@ -47,20 +46,13 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			vlanId, err := random.NewRandomInteger(ctx, "vlanId", &random.RandomIntegerArgs{
-//				Max: pulumi.Int(2999),
-//				Min: pulumi.Int(1),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			exampleVirtualBorderRouter, err := expressconnect.NewVirtualBorderRouter(ctx, "exampleVirtualBorderRouter", &expressconnect.VirtualBorderRouterArgs{
+//			_, err = expressconnect.NewVirtualBorderRouter(ctx, "default", &expressconnect.VirtualBorderRouterArgs{
 //				LocalGatewayIp:          pulumi.String("10.0.0.1"),
 //				PeerGatewayIp:           pulumi.String("10.0.0.2"),
 //				PeeringSubnetMask:       pulumi.String("255.255.255.252"),
 //				PhysicalConnectionId:    *pulumi.String(examplePhysicalConnections.Connections[0].Id),
 //				VirtualBorderRouterName: pulumi.String(name),
-//				VlanId:                  vlanId.ID(),
+//				VlanId:                  pulumi.Int(110),
 //				MinRxInterval:           pulumi.Int(1000),
 //				MinTxInterval:           pulumi.Int(1000),
 //				DetectMultiplier:        pulumi.Int(10),
@@ -73,14 +65,12 @@ import (
 //				return err
 //			}
 //			_, err = expressconnect.NewVbrPconnAssociation(ctx, "exampleVbrPconnAssociation", &expressconnect.VbrPconnAssociationArgs{
-//				PeerGatewayIp:        pulumi.String("10.0.0.6"),
-//				LocalGatewayIp:       pulumi.String("10.0.0.5"),
-//				PhysicalConnectionId: *pulumi.String(examplePhysicalConnections.Connections[2].Id),
-//				VbrId:                exampleVirtualBorderRouter.ID(),
-//				PeeringSubnetMask:    pulumi.String("255.255.255.252"),
-//				VlanId: vlanId.ID().ApplyT(func(id string) (float64, error) {
-//					return id + 2, nil
-//				}).(pulumi.Float64Output),
+//				PeerGatewayIp:         pulumi.String("10.0.0.6"),
+//				LocalGatewayIp:        pulumi.String("10.0.0.5"),
+//				PhysicalConnectionId:  *pulumi.String(examplePhysicalConnections.Connections[2].Id),
+//				VbrId:                 _default.ID(),
+//				PeeringSubnetMask:     pulumi.String("255.255.255.252"),
+//				VlanId:                pulumi.Int(1122),
 //				EnableIpv6:            pulumi.Bool(true),
 //				LocalIpv6GatewayIp:    pulumi.String("2408:4004:cc::3"),
 //				PeerIpv6GatewayIp:     pulumi.String("2408:4004:cc::4"),

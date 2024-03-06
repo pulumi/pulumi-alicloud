@@ -18,11 +18,11 @@ namespace Pulumi.AliCloud.Alb.Outputs
         /// </summary>
         public readonly string Content;
         /// <summary>
-        /// The format of the fixed response.  Valid values: text/plain, text/css, text/html, application/javascript, and application/json.
+        /// The format of the fixed response.
         /// </summary>
         public readonly string ContentType;
         /// <summary>
-        /// The redirect method. Valid values:301, 302, 303, 307, and 308.
+        /// The redirect method.
         /// </summary>
         public readonly string HttpCode;
 

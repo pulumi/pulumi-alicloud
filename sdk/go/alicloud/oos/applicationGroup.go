@@ -27,9 +27,12 @@ import (
 //
 // import (
 //
+//	"fmt"
+//
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/oos"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/resourcemanager"
+//	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
@@ -42,14 +45,23 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
+//			defaultRandomInteger, err := random.NewRandomInteger(ctx, "defaultRandomInteger", &random.RandomIntegerArgs{
+//				Min: pulumi.Int(10000),
+//				Max: pulumi.Int(99999),
+//			})
+//			if err != nil {
+//				return err
+//			}
 //			defaultResourceGroups, err := resourcemanager.GetResourceGroups(ctx, nil, nil)
 //			if err != nil {
 //				return err
 //			}
 //			defaultApplication, err := oos.NewApplication(ctx, "defaultApplication", &oos.ApplicationArgs{
 //				ResourceGroupId: *pulumi.String(defaultResourceGroups.Groups[0].Id),
-//				ApplicationName: pulumi.String(name),
-//				Description:     pulumi.String(name),
+//				ApplicationName: defaultRandomInteger.Result.ApplyT(func(result int) (string, error) {
+//					return fmt.Sprintf("%v-%v", name, result), nil
+//				}).(pulumi.StringOutput),
+//				Description: pulumi.String(name),
 //				Tags: pulumi.Map{
 //					"Created": pulumi.Any("TF"),
 //				},

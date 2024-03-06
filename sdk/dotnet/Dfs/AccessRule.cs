@@ -12,7 +12,7 @@ namespace Pulumi.AliCloud.Dfs
     /// <summary>
     /// Provides a DFS Access Rule resource.
     /// 
-    /// For information about DFS Access Rule and how to use it, see [What is Access Rule](https://www.alibabacloud.com/help/doc-detail/207144.htm).
+    /// For information about DFS Access Rule and how to use it, see [What is Access Rule](https://www.alibabacloud.com/help/en/aibaba-cloud-storage-services/latest/apsara-file-storage-for-hdfs).
     /// 
     /// &gt; **NOTE:** Available since v1.140.0.
     /// 
@@ -29,21 +29,21 @@ namespace Pulumi.AliCloud.Dfs
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     var config = new Config();
-    ///     var name = config.Get("name") ?? "example_name";
+    ///     var name = config.Get("name") ?? "terraform-example";
     ///     var defaultAccessGroup = new AliCloud.Dfs.AccessGroup("defaultAccessGroup", new()
     ///     {
+    ///         Description = "example",
     ///         NetworkType = "VPC",
     ///         AccessGroupName = name,
-    ///         Description = name,
     ///     });
     /// 
     ///     var defaultAccessRule = new AliCloud.Dfs.AccessRule("defaultAccessRule", new()
     ///     {
-    ///         NetworkSegment = "192.0.2.0/24",
-    ///         AccessGroupId = defaultAccessGroup.Id,
-    ///         Description = name,
+    ///         Description = "example",
     ///         RwAccessType = "RDWR",
-    ///         Priority = 10,
+    ///         Priority = 1,
+    ///         NetworkSegment = "192.168.81.1",
+    ///         AccessGroupId = defaultAccessGroup.Id,
     ///     });
     /// 
     /// });
@@ -61,37 +61,43 @@ namespace Pulumi.AliCloud.Dfs
     public partial class AccessRule : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The resource ID of Access Group.
+        /// Permission group resource ID. You must specify the permission group ID when creating a permission rule.
         /// </summary>
         [Output("accessGroupId")]
         public Output<string> AccessGroupId { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the Access Rule.
+        /// The unique identity of the permission rule, which is used to retrieve the permission rule for a specific day in the permission group.
         /// </summary>
         [Output("accessRuleId")]
         public Output<string> AccessRuleId { get; private set; } = null!;
 
         /// <summary>
-        /// The Description of the Access Rule.
+        /// Permission rule resource creation time.
+        /// </summary>
+        [Output("createTime")]
+        public Output<string> CreateTime { get; private set; } = null!;
+
+        /// <summary>
+        /// Permission rule description.  No more than 32 characters in length.
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// The NetworkSegment of the Access Rule.
+        /// The IP address or network segment of the authorized object.
         /// </summary>
         [Output("networkSegment")]
         public Output<string> NetworkSegment { get; private set; } = null!;
 
         /// <summary>
-        /// The Priority of the Access Rule. Valid values: `1` to `100`. **NOTE:** When multiple rules are matched by the same authorized object, the high-priority rule takes effect. `1` is the highest priority.
+        /// Permission rule priority. When the same authorization object matches multiple rules, the high-priority rule takes effect. Value range: 1~100,1 is the highest priority.
         /// </summary>
         [Output("priority")]
         public Output<int> Priority { get; private set; } = null!;
 
         /// <summary>
-        /// The RWAccessType of the Access Rule. Valid values: `RDONLY`, `RDWR`.
+        /// The read and write permissions of the authorized object on the file system. Value: RDWR: readable and writable RDONLY: Read only.
         /// </summary>
         [Output("rwAccessType")]
         public Output<string> RwAccessType { get; private set; } = null!;
@@ -143,31 +149,31 @@ namespace Pulumi.AliCloud.Dfs
     public sealed class AccessRuleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The resource ID of Access Group.
+        /// Permission group resource ID. You must specify the permission group ID when creating a permission rule.
         /// </summary>
         [Input("accessGroupId", required: true)]
         public Input<string> AccessGroupId { get; set; } = null!;
 
         /// <summary>
-        /// The Description of the Access Rule.
+        /// Permission rule description.  No more than 32 characters in length.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The NetworkSegment of the Access Rule.
+        /// The IP address or network segment of the authorized object.
         /// </summary>
         [Input("networkSegment", required: true)]
         public Input<string> NetworkSegment { get; set; } = null!;
 
         /// <summary>
-        /// The Priority of the Access Rule. Valid values: `1` to `100`. **NOTE:** When multiple rules are matched by the same authorized object, the high-priority rule takes effect. `1` is the highest priority.
+        /// Permission rule priority. When the same authorization object matches multiple rules, the high-priority rule takes effect. Value range: 1~100,1 is the highest priority.
         /// </summary>
         [Input("priority", required: true)]
         public Input<int> Priority { get; set; } = null!;
 
         /// <summary>
-        /// The RWAccessType of the Access Rule. Valid values: `RDONLY`, `RDWR`.
+        /// The read and write permissions of the authorized object on the file system. Value: RDWR: readable and writable RDONLY: Read only.
         /// </summary>
         [Input("rwAccessType", required: true)]
         public Input<string> RwAccessType { get; set; } = null!;
@@ -181,37 +187,43 @@ namespace Pulumi.AliCloud.Dfs
     public sealed class AccessRuleState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The resource ID of Access Group.
+        /// Permission group resource ID. You must specify the permission group ID when creating a permission rule.
         /// </summary>
         [Input("accessGroupId")]
         public Input<string>? AccessGroupId { get; set; }
 
         /// <summary>
-        /// The ID of the Access Rule.
+        /// The unique identity of the permission rule, which is used to retrieve the permission rule for a specific day in the permission group.
         /// </summary>
         [Input("accessRuleId")]
         public Input<string>? AccessRuleId { get; set; }
 
         /// <summary>
-        /// The Description of the Access Rule.
+        /// Permission rule resource creation time.
+        /// </summary>
+        [Input("createTime")]
+        public Input<string>? CreateTime { get; set; }
+
+        /// <summary>
+        /// Permission rule description.  No more than 32 characters in length.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The NetworkSegment of the Access Rule.
+        /// The IP address or network segment of the authorized object.
         /// </summary>
         [Input("networkSegment")]
         public Input<string>? NetworkSegment { get; set; }
 
         /// <summary>
-        /// The Priority of the Access Rule. Valid values: `1` to `100`. **NOTE:** When multiple rules are matched by the same authorized object, the high-priority rule takes effect. `1` is the highest priority.
+        /// Permission rule priority. When the same authorization object matches multiple rules, the high-priority rule takes effect. Value range: 1~100,1 is the highest priority.
         /// </summary>
         [Input("priority")]
         public Input<int>? Priority { get; set; }
 
         /// <summary>
-        /// The RWAccessType of the Access Rule. Valid values: `RDONLY`, `RDWR`.
+        /// The read and write permissions of the authorized object on the file system. Value: RDWR: readable and writable RDONLY: Read only.
         /// </summary>
         [Input("rwAccessType")]
         public Input<string>? RwAccessType { get; set; }

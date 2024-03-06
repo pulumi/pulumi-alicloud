@@ -12,7 +12,7 @@ import java.util.Objects;
 @CustomType
 public final class GetRulesRuleRuleConditionHeaderConfig {
     /**
-     * @return The key of the header field. The key must be 1 to 40 characters in length, and can contain letters, digits, hyphens (-) and underscores (_). The key does not support Cookie or Host.
+     * @return The key of the query string.
      * 
      */
     private String key;
@@ -24,7 +24,7 @@ public final class GetRulesRuleRuleConditionHeaderConfig {
 
     private GetRulesRuleRuleConditionHeaderConfig() {}
     /**
-     * @return The key of the header field. The key must be 1 to 40 characters in length, and can contain letters, digits, hyphens (-) and underscores (_). The key does not support Cookie or Host.
+     * @return The key of the query string.
      * 
      */
     public String key() {

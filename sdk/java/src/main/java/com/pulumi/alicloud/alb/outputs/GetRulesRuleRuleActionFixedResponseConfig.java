@@ -16,12 +16,12 @@ public final class GetRulesRuleRuleActionFixedResponseConfig {
      */
     private String content;
     /**
-     * @return The format of the fixed response.  Valid values: text/plain, text/css, text/html, application/javascript, and application/json.
+     * @return The format of the fixed response.
      * 
      */
     private String contentType;
     /**
-     * @return The redirect method. Valid values:301, 302, 303, 307, and 308.
+     * @return The redirect method.
      * 
      */
     private String httpCode;
@@ -35,14 +35,14 @@ public final class GetRulesRuleRuleActionFixedResponseConfig {
         return this.content;
     }
     /**
-     * @return The format of the fixed response.  Valid values: text/plain, text/css, text/html, application/javascript, and application/json.
+     * @return The format of the fixed response.
      * 
      */
     public String contentType() {
         return this.contentType;
     }
     /**
-     * @return The redirect method. Valid values:301, 302, 303, 307, and 308.
+     * @return The redirect method.
      * 
      */
     public String httpCode() {

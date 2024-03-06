@@ -34,6 +34,8 @@ type Gateway struct {
 	CreateTime pulumi.IntOutput `pulumi:"createTime"`
 	// The description of the VPN gateway.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
+	// The backup public IP address of the VPN gateway. The second IP address assigned by the system to create an IPsec-VPN connection. This parameter is returned only when the VPN gateway supports the dual-tunnel mode.
+	DisasterRecoveryInternetIp pulumi.StringOutput `pulumi:"disasterRecoveryInternetIp"`
 	// The ID of the backup VSwitch to which the VPN gateway is attached.
 	DisasterRecoveryVswitchId pulumi.StringOutput `pulumi:"disasterRecoveryVswitchId"`
 	// Enable or Disable IPSec VPN. At least one type of VPN should be enabled.
@@ -126,6 +128,8 @@ type gatewayState struct {
 	CreateTime *int `pulumi:"createTime"`
 	// The description of the VPN gateway.
 	Description *string `pulumi:"description"`
+	// The backup public IP address of the VPN gateway. The second IP address assigned by the system to create an IPsec-VPN connection. This parameter is returned only when the VPN gateway supports the dual-tunnel mode.
+	DisasterRecoveryInternetIp *string `pulumi:"disasterRecoveryInternetIp"`
 	// The ID of the backup VSwitch to which the VPN gateway is attached.
 	DisasterRecoveryVswitchId *string `pulumi:"disasterRecoveryVswitchId"`
 	// Enable or Disable IPSec VPN. At least one type of VPN should be enabled.
@@ -183,6 +187,8 @@ type GatewayState struct {
 	CreateTime pulumi.IntPtrInput
 	// The description of the VPN gateway.
 	Description pulumi.StringPtrInput
+	// The backup public IP address of the VPN gateway. The second IP address assigned by the system to create an IPsec-VPN connection. This parameter is returned only when the VPN gateway supports the dual-tunnel mode.
+	DisasterRecoveryInternetIp pulumi.StringPtrInput
 	// The ID of the backup VSwitch to which the VPN gateway is attached.
 	DisasterRecoveryVswitchId pulumi.StringPtrInput
 	// Enable or Disable IPSec VPN. At least one type of VPN should be enabled.
@@ -441,6 +447,11 @@ func (o GatewayOutput) CreateTime() pulumi.IntOutput {
 // The description of the VPN gateway.
 func (o GatewayOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Gateway) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The backup public IP address of the VPN gateway. The second IP address assigned by the system to create an IPsec-VPN connection. This parameter is returned only when the VPN gateway supports the dual-tunnel mode.
+func (o GatewayOutput) DisasterRecoveryInternetIp() pulumi.StringOutput {
+	return o.ApplyT(func(v *Gateway) pulumi.StringOutput { return v.DisasterRecoveryInternetIp }).(pulumi.StringOutput)
 }
 
 // The ID of the backup VSwitch to which the VPN gateway is attached.

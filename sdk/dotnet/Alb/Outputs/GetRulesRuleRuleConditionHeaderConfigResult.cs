@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Alb.Outputs
     public sealed class GetRulesRuleRuleConditionHeaderConfigResult
     {
         /// <summary>
-        /// The key of the header field. The key must be 1 to 40 characters in length, and can contain letters, digits, hyphens (-) and underscores (_). The key does not support Cookie or Host.
+        /// The key of the query string.
         /// </summary>
         public readonly string Key;
         /// <summary>

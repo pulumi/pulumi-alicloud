@@ -19,25 +19,31 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
+ * const hz = new alicloud.Provider("hz", {region: "cn-hangzhou"});
+ * const sgp = new alicloud.Provider("sgp", {region: "ap-southeast-1"});
  * const domestic = new alicloud.expressconnect.PhysicalConnection("domestic", {
  *     accessPointId: "ap-cn-hangzhou-yh-B",
- *     bandwidth: "100",
- *     description: "my domestic connection",
  *     lineOperator: "CT",
  *     peerLocation: "example_value",
  *     physicalConnectionName: "example_value",
- *     portType: "1000Base-LX",
  *     type: "VPC",
+ *     description: "my domestic connection",
+ *     portType: "1000Base-LX",
+ *     bandwidth: "100",
+ * }, {
+ *     provider: alicloud.hz,
  * });
  * const international = new alicloud.expressconnect.PhysicalConnection("international", {
  *     accessPointId: "ap-sg-singpore-A",
- *     bandwidth: "100",
- *     description: "my domestic connection",
  *     lineOperator: "Other",
  *     peerLocation: "example_value",
  *     physicalConnectionName: "example_value",
- *     portType: "1000Base-LX",
  *     type: "VPC",
+ *     description: "my domestic connection",
+ *     portType: "1000Base-LX",
+ *     bandwidth: "100",
+ * }, {
+ *     provider: alicloud.sgp,
  * });
  * ```
  *

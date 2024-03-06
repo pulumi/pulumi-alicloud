@@ -99,7 +99,6 @@ import javax.annotation.Nullable;
  *             .protocolType(&#34;NFS&#34;)
  *             .zoneId(example.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].zoneId()))
  *             .storageType(&#34;standard&#34;)
- *             .description(&#34;terraform-example&#34;)
  *             .capacity(&#34;100&#34;)
  *             .build());
  * 
@@ -154,7 +153,6 @@ import javax.annotation.Nullable;
  *             .storageType(&#34;advance_200&#34;)
  *             .fileSystemType(&#34;cpfs&#34;)
  *             .capacity(3600)
- *             .description(&#34;terraform-example&#34;)
  *             .zoneId(exampleZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[1].zoneId()))
  *             .vpcId(exampleNetwork.id())
  *             .vswitchId(exampleSwitch.id())

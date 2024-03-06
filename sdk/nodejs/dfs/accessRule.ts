@@ -7,7 +7,7 @@ import * as utilities from "../utilities";
 /**
  * Provides a DFS Access Rule resource.
  *
- * For information about DFS Access Rule and how to use it, see [What is Access Rule](https://www.alibabacloud.com/help/doc-detail/207144.htm).
+ * For information about DFS Access Rule and how to use it, see [What is Access Rule](https://www.alibabacloud.com/help/en/aibaba-cloud-storage-services/latest/apsara-file-storage-for-hdfs).
  *
  * > **NOTE:** Available since v1.140.0.
  *
@@ -20,18 +20,18 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const config = new pulumi.Config();
- * const name = config.get("name") || "example_name";
+ * const name = config.get("name") || "terraform-example";
  * const defaultAccessGroup = new alicloud.dfs.AccessGroup("defaultAccessGroup", {
+ *     description: "example",
  *     networkType: "VPC",
  *     accessGroupName: name,
- *     description: name,
  * });
  * const defaultAccessRule = new alicloud.dfs.AccessRule("defaultAccessRule", {
- *     networkSegment: "192.0.2.0/24",
- *     accessGroupId: defaultAccessGroup.id,
- *     description: name,
+ *     description: "example",
  *     rwAccessType: "RDWR",
- *     priority: 10,
+ *     priority: 1,
+ *     networkSegment: "192.168.81.1",
+ *     accessGroupId: defaultAccessGroup.id,
  * });
  * ```
  *
@@ -72,27 +72,31 @@ export class AccessRule extends pulumi.CustomResource {
     }
 
     /**
-     * The resource ID of Access Group.
+     * Permission group resource ID. You must specify the permission group ID when creating a permission rule.
      */
     public readonly accessGroupId!: pulumi.Output<string>;
     /**
-     * The ID of the Access Rule.
+     * The unique identity of the permission rule, which is used to retrieve the permission rule for a specific day in the permission group.
      */
     public /*out*/ readonly accessRuleId!: pulumi.Output<string>;
     /**
-     * The Description of the Access Rule.
+     * Permission rule resource creation time.
+     */
+    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    /**
+     * Permission rule description.  No more than 32 characters in length.
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * The NetworkSegment of the Access Rule.
+     * The IP address or network segment of the authorized object.
      */
     public readonly networkSegment!: pulumi.Output<string>;
     /**
-     * The Priority of the Access Rule. Valid values: `1` to `100`. **NOTE:** When multiple rules are matched by the same authorized object, the high-priority rule takes effect. `1` is the highest priority.
+     * Permission rule priority. When the same authorization object matches multiple rules, the high-priority rule takes effect. Value range: 1~100,1 is the highest priority.
      */
     public readonly priority!: pulumi.Output<number>;
     /**
-     * The RWAccessType of the Access Rule. Valid values: `RDONLY`, `RDWR`.
+     * The read and write permissions of the authorized object on the file system. Value: RDWR: readable and writable RDONLY: Read only.
      */
     public readonly rwAccessType!: pulumi.Output<string>;
 
@@ -111,6 +115,7 @@ export class AccessRule extends pulumi.CustomResource {
             const state = argsOrState as AccessRuleState | undefined;
             resourceInputs["accessGroupId"] = state ? state.accessGroupId : undefined;
             resourceInputs["accessRuleId"] = state ? state.accessRuleId : undefined;
+            resourceInputs["createTime"] = state ? state.createTime : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["networkSegment"] = state ? state.networkSegment : undefined;
             resourceInputs["priority"] = state ? state.priority : undefined;
@@ -135,6 +140,7 @@ export class AccessRule extends pulumi.CustomResource {
             resourceInputs["priority"] = args ? args.priority : undefined;
             resourceInputs["rwAccessType"] = args ? args.rwAccessType : undefined;
             resourceInputs["accessRuleId"] = undefined /*out*/;
+            resourceInputs["createTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(AccessRule.__pulumiType, name, resourceInputs, opts);
@@ -146,27 +152,31 @@ export class AccessRule extends pulumi.CustomResource {
  */
 export interface AccessRuleState {
     /**
-     * The resource ID of Access Group.
+     * Permission group resource ID. You must specify the permission group ID when creating a permission rule.
      */
     accessGroupId?: pulumi.Input<string>;
     /**
-     * The ID of the Access Rule.
+     * The unique identity of the permission rule, which is used to retrieve the permission rule for a specific day in the permission group.
      */
     accessRuleId?: pulumi.Input<string>;
     /**
-     * The Description of the Access Rule.
+     * Permission rule resource creation time.
+     */
+    createTime?: pulumi.Input<string>;
+    /**
+     * Permission rule description.  No more than 32 characters in length.
      */
     description?: pulumi.Input<string>;
     /**
-     * The NetworkSegment of the Access Rule.
+     * The IP address or network segment of the authorized object.
      */
     networkSegment?: pulumi.Input<string>;
     /**
-     * The Priority of the Access Rule. Valid values: `1` to `100`. **NOTE:** When multiple rules are matched by the same authorized object, the high-priority rule takes effect. `1` is the highest priority.
+     * Permission rule priority. When the same authorization object matches multiple rules, the high-priority rule takes effect. Value range: 1~100,1 is the highest priority.
      */
     priority?: pulumi.Input<number>;
     /**
-     * The RWAccessType of the Access Rule. Valid values: `RDONLY`, `RDWR`.
+     * The read and write permissions of the authorized object on the file system. Value: RDWR: readable and writable RDONLY: Read only.
      */
     rwAccessType?: pulumi.Input<string>;
 }
@@ -176,23 +186,23 @@ export interface AccessRuleState {
  */
 export interface AccessRuleArgs {
     /**
-     * The resource ID of Access Group.
+     * Permission group resource ID. You must specify the permission group ID when creating a permission rule.
      */
     accessGroupId: pulumi.Input<string>;
     /**
-     * The Description of the Access Rule.
+     * Permission rule description.  No more than 32 characters in length.
      */
     description?: pulumi.Input<string>;
     /**
-     * The NetworkSegment of the Access Rule.
+     * The IP address or network segment of the authorized object.
      */
     networkSegment: pulumi.Input<string>;
     /**
-     * The Priority of the Access Rule. Valid values: `1` to `100`. **NOTE:** When multiple rules are matched by the same authorized object, the high-priority rule takes effect. `1` is the highest priority.
+     * Permission rule priority. When the same authorization object matches multiple rules, the high-priority rule takes effect. Value range: 1~100,1 is the highest priority.
      */
     priority: pulumi.Input<number>;
     /**
-     * The RWAccessType of the Access Rule. Valid values: `RDONLY`, `RDWR`.
+     * The read and write permissions of the authorized object on the file system. Value: RDWR: readable and writable RDONLY: Read only.
      */
     rwAccessType: pulumi.Input<string>;
 }

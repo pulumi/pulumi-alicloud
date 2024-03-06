@@ -45,7 +45,6 @@ import * as utilities from "../utilities";
  *     protocolType: "NFS",
  *     zoneId: example.then(example => example.zones?.[0]?.zoneId),
  *     storageType: "standard",
- *     description: "terraform-example",
  *     capacity: 100,
  * });
  * ```
@@ -72,7 +71,6 @@ import * as utilities from "../utilities";
  *     storageType: "advance_200",
  *     fileSystemType: "cpfs",
  *     capacity: 3600,
- *     description: "terraform-example",
  *     zoneId: exampleZones.then(exampleZones => exampleZones.zones?.[1]?.zoneId),
  *     vpcId: exampleNetwork.id,
  *     vswitchId: exampleSwitch.id,

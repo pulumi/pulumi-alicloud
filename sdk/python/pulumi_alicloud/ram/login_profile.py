@@ -20,10 +20,10 @@ class LoginProfileArgs:
                  password_reset_required: Optional[pulumi.Input[bool]] = None):
         """
         The set of arguments for constructing a LoginProfile resource.
-        :param pulumi.Input[str] password: Password of the RAM user.
-        :param pulumi.Input[str] user_name: Name of the RAM user. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin with a hyphen.
-        :param pulumi.Input[bool] mfa_bind_required: This parameter indicates whether the MFA needs to be bind when the user first logs in. Default value is `false`.
-        :param pulumi.Input[bool] password_reset_required: This parameter indicates whether the password needs to be reset when the user first logs in. Default value is `false`.
+        :param pulumi.Input[str] password: The logon password of the RAM user. The password must meet the password strength requirements.
+        :param pulumi.Input[str] user_name: The name of the RAM user. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin with a hyphen.
+        :param pulumi.Input[bool] mfa_bind_required: Specifies whether an MFA device must be attached to the RAM user upon logon. Default value: `false`. Valid values: `true`, `false`.
+        :param pulumi.Input[bool] password_reset_required: Specifies whether the RAM user must change the password upon logon. Default value: `false`. Valid values: `true`, `false`.
         """
         pulumi.set(__self__, "password", password)
         pulumi.set(__self__, "user_name", user_name)
@@ -36,7 +36,7 @@ class LoginProfileArgs:
     @pulumi.getter
     def password(self) -> pulumi.Input[str]:
         """
-        Password of the RAM user.
+        The logon password of the RAM user. The password must meet the password strength requirements.
         """
         return pulumi.get(self, "password")
 
@@ -48,7 +48,7 @@ class LoginProfileArgs:
     @pulumi.getter(name="userName")
     def user_name(self) -> pulumi.Input[str]:
         """
-        Name of the RAM user. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin with a hyphen.
+        The name of the RAM user. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin with a hyphen.
         """
         return pulumi.get(self, "user_name")
 
@@ -60,7 +60,7 @@ class LoginProfileArgs:
     @pulumi.getter(name="mfaBindRequired")
     def mfa_bind_required(self) -> Optional[pulumi.Input[bool]]:
         """
-        This parameter indicates whether the MFA needs to be bind when the user first logs in. Default value is `false`.
+        Specifies whether an MFA device must be attached to the RAM user upon logon. Default value: `false`. Valid values: `true`, `false`.
         """
         return pulumi.get(self, "mfa_bind_required")
 
@@ -72,7 +72,7 @@ class LoginProfileArgs:
     @pulumi.getter(name="passwordResetRequired")
     def password_reset_required(self) -> Optional[pulumi.Input[bool]]:
         """
-        This parameter indicates whether the password needs to be reset when the user first logs in. Default value is `false`.
+        Specifies whether the RAM user must change the password upon logon. Default value: `false`. Valid values: `true`, `false`.
         """
         return pulumi.get(self, "password_reset_required")
 
@@ -90,10 +90,10 @@ class _LoginProfileState:
                  user_name: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering LoginProfile resources.
-        :param pulumi.Input[bool] mfa_bind_required: This parameter indicates whether the MFA needs to be bind when the user first logs in. Default value is `false`.
-        :param pulumi.Input[str] password: Password of the RAM user.
-        :param pulumi.Input[bool] password_reset_required: This parameter indicates whether the password needs to be reset when the user first logs in. Default value is `false`.
-        :param pulumi.Input[str] user_name: Name of the RAM user. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin with a hyphen.
+        :param pulumi.Input[bool] mfa_bind_required: Specifies whether an MFA device must be attached to the RAM user upon logon. Default value: `false`. Valid values: `true`, `false`.
+        :param pulumi.Input[str] password: The logon password of the RAM user. The password must meet the password strength requirements.
+        :param pulumi.Input[bool] password_reset_required: Specifies whether the RAM user must change the password upon logon. Default value: `false`. Valid values: `true`, `false`.
+        :param pulumi.Input[str] user_name: The name of the RAM user. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin with a hyphen.
         """
         if mfa_bind_required is not None:
             pulumi.set(__self__, "mfa_bind_required", mfa_bind_required)
@@ -108,7 +108,7 @@ class _LoginProfileState:
     @pulumi.getter(name="mfaBindRequired")
     def mfa_bind_required(self) -> Optional[pulumi.Input[bool]]:
         """
-        This parameter indicates whether the MFA needs to be bind when the user first logs in. Default value is `false`.
+        Specifies whether an MFA device must be attached to the RAM user upon logon. Default value: `false`. Valid values: `true`, `false`.
         """
         return pulumi.get(self, "mfa_bind_required")
 
@@ -120,7 +120,7 @@ class _LoginProfileState:
     @pulumi.getter
     def password(self) -> Optional[pulumi.Input[str]]:
         """
-        Password of the RAM user.
+        The logon password of the RAM user. The password must meet the password strength requirements.
         """
         return pulumi.get(self, "password")
 
@@ -132,7 +132,7 @@ class _LoginProfileState:
     @pulumi.getter(name="passwordResetRequired")
     def password_reset_required(self) -> Optional[pulumi.Input[bool]]:
         """
-        This parameter indicates whether the password needs to be reset when the user first logs in. Default value is `false`.
+        Specifies whether the RAM user must change the password upon logon. Default value: `false`. Valid values: `true`, `false`.
         """
         return pulumi.get(self, "password_reset_required")
 
@@ -144,7 +144,7 @@ class _LoginProfileState:
     @pulumi.getter(name="userName")
     def user_name(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of the RAM user. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin with a hyphen.
+        The name of the RAM user. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin with a hyphen.
         """
         return pulumi.get(self, "user_name")
 
@@ -166,9 +166,13 @@ class LoginProfile(pulumi.CustomResource):
         """
         Provides a RAM User Login Profile resource.
 
-        > **NOTE:** Available since v1.0.0+.
+        For information about RAM User Login Profile and how to use it, see [What is Login Profile](https://www.alibabacloud.com/help/en/ram/developer-reference/api-ram-2015-05-01-createloginprofile).
+
+        > **NOTE:** Available since v1.0.0.
 
         ## Example Usage
+
+        Basic Usage
 
         ```python
         import pulumi
@@ -187,18 +191,18 @@ class LoginProfile(pulumi.CustomResource):
 
         ## Import
 
-        RAM login profile can be imported using the id or user name, e.g.
+        RAM login profile can be imported using the id, e.g.
 
         ```sh
-        $ pulumi import alicloud:ram/loginProfile:LoginProfile example my-login
+        $ pulumi import alicloud:ram/loginProfile:LoginProfile example <id>
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[bool] mfa_bind_required: This parameter indicates whether the MFA needs to be bind when the user first logs in. Default value is `false`.
-        :param pulumi.Input[str] password: Password of the RAM user.
-        :param pulumi.Input[bool] password_reset_required: This parameter indicates whether the password needs to be reset when the user first logs in. Default value is `false`.
-        :param pulumi.Input[str] user_name: Name of the RAM user. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin with a hyphen.
+        :param pulumi.Input[bool] mfa_bind_required: Specifies whether an MFA device must be attached to the RAM user upon logon. Default value: `false`. Valid values: `true`, `false`.
+        :param pulumi.Input[str] password: The logon password of the RAM user. The password must meet the password strength requirements.
+        :param pulumi.Input[bool] password_reset_required: Specifies whether the RAM user must change the password upon logon. Default value: `false`. Valid values: `true`, `false`.
+        :param pulumi.Input[str] user_name: The name of the RAM user. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin with a hyphen.
         """
         ...
     @overload
@@ -209,9 +213,13 @@ class LoginProfile(pulumi.CustomResource):
         """
         Provides a RAM User Login Profile resource.
 
-        > **NOTE:** Available since v1.0.0+.
+        For information about RAM User Login Profile and how to use it, see [What is Login Profile](https://www.alibabacloud.com/help/en/ram/developer-reference/api-ram-2015-05-01-createloginprofile).
+
+        > **NOTE:** Available since v1.0.0.
 
         ## Example Usage
+
+        Basic Usage
 
         ```python
         import pulumi
@@ -230,10 +238,10 @@ class LoginProfile(pulumi.CustomResource):
 
         ## Import
 
-        RAM login profile can be imported using the id or user name, e.g.
+        RAM login profile can be imported using the id, e.g.
 
         ```sh
-        $ pulumi import alicloud:ram/loginProfile:LoginProfile example my-login
+        $ pulumi import alicloud:ram/loginProfile:LoginProfile example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -295,10 +303,10 @@ class LoginProfile(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[bool] mfa_bind_required: This parameter indicates whether the MFA needs to be bind when the user first logs in. Default value is `false`.
-        :param pulumi.Input[str] password: Password of the RAM user.
-        :param pulumi.Input[bool] password_reset_required: This parameter indicates whether the password needs to be reset when the user first logs in. Default value is `false`.
-        :param pulumi.Input[str] user_name: Name of the RAM user. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin with a hyphen.
+        :param pulumi.Input[bool] mfa_bind_required: Specifies whether an MFA device must be attached to the RAM user upon logon. Default value: `false`. Valid values: `true`, `false`.
+        :param pulumi.Input[str] password: The logon password of the RAM user. The password must meet the password strength requirements.
+        :param pulumi.Input[bool] password_reset_required: Specifies whether the RAM user must change the password upon logon. Default value: `false`. Valid values: `true`, `false`.
+        :param pulumi.Input[str] user_name: The name of the RAM user. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin with a hyphen.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -314,7 +322,7 @@ class LoginProfile(pulumi.CustomResource):
     @pulumi.getter(name="mfaBindRequired")
     def mfa_bind_required(self) -> pulumi.Output[Optional[bool]]:
         """
-        This parameter indicates whether the MFA needs to be bind when the user first logs in. Default value is `false`.
+        Specifies whether an MFA device must be attached to the RAM user upon logon. Default value: `false`. Valid values: `true`, `false`.
         """
         return pulumi.get(self, "mfa_bind_required")
 
@@ -322,7 +330,7 @@ class LoginProfile(pulumi.CustomResource):
     @pulumi.getter
     def password(self) -> pulumi.Output[str]:
         """
-        Password of the RAM user.
+        The logon password of the RAM user. The password must meet the password strength requirements.
         """
         return pulumi.get(self, "password")
 
@@ -330,7 +338,7 @@ class LoginProfile(pulumi.CustomResource):
     @pulumi.getter(name="passwordResetRequired")
     def password_reset_required(self) -> pulumi.Output[Optional[bool]]:
         """
-        This parameter indicates whether the password needs to be reset when the user first logs in. Default value is `false`.
+        Specifies whether the RAM user must change the password upon logon. Default value: `false`. Valid values: `true`, `false`.
         """
         return pulumi.get(self, "password_reset_required")
 
@@ -338,7 +346,7 @@ class LoginProfile(pulumi.CustomResource):
     @pulumi.getter(name="userName")
     def user_name(self) -> pulumi.Output[str]:
         """
-        Name of the RAM user. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin with a hyphen.
+        The name of the RAM user. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin with a hyphen.
         """
         return pulumi.get(self, "user_name")
 

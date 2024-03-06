@@ -20,18 +20,23 @@ import * as utilities from "../utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
+ * import * as random from "@pulumi/random";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "terraform-example";
- * const _default = new alicloud.quotas.QuotaAlarm("default", {
+ * const defaultRandomInteger = new random.RandomInteger("defaultRandomInteger", {
+ *     max: 99999,
+ *     min: 10000,
+ * });
+ * const defaultQuotaAlarm = new alicloud.quotas.QuotaAlarm("defaultQuotaAlarm", {
+ *     productCode: "gws",
  *     quotaActionCode: "q_desktop-count",
+ *     quotaAlarmName: pulumi.interpolate`${name}-${defaultRandomInteger.result}`,
  *     quotaDimensions: [{
  *         key: "regionId",
  *         value: "cn-hangzhou",
  *     }],
  *     thresholdPercent: 80,
- *     productCode: "gws",
- *     quotaAlarmName: name,
  *     thresholdType: "used",
  * });
  * ```

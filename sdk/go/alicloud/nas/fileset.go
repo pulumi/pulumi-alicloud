@@ -62,7 +62,6 @@ import (
 //				StorageType:    pulumi.String("advance_200"),
 //				FileSystemType: pulumi.String("cpfs"),
 //				Capacity:       pulumi.Int(3600),
-//				Description:    pulumi.String("terraform-example"),
 //				ZoneId:         *pulumi.String(exampleZones.Zones[1].ZoneId),
 //				VpcId:          exampleNetwork.ID(),
 //				VswitchId:      exampleSwitch.ID(),

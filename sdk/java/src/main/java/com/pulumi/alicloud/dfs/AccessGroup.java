@@ -17,7 +17,7 @@ import javax.annotation.Nullable;
 /**
  * Provides a DFS Access Group resource.
  * 
- * For information about DFS Access Group and how to use it, see [What is Access Group](https://www.alibabacloud.com/help/doc-detail/207144.htm).
+ * For information about DFS Access Group and how to use it, see [What is Access Group](https://www.alibabacloud.com/help/en/aibaba-cloud-storage-services/latest/apsara-file-storage-for-hdfs).
  * 
  * &gt; **NOTE:** Available since v1.133.0.
  * 
@@ -46,10 +46,11 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;terraform-example&#34;);
  *         var default_ = new AccessGroup(&#34;default&#34;, AccessGroupArgs.builder()        
- *             .accessGroupName(name)
+ *             .description(name)
  *             .networkType(&#34;VPC&#34;)
+ *             .accessGroupName(name)
  *             .build());
  * 
  *     }
@@ -68,42 +69,56 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:dfs/accessGroup:AccessGroup")
 public class AccessGroup extends com.pulumi.resources.CustomResource {
     /**
-     * The Name of Access Group.The length of `access_group_name` does not exceed 100 bytes.
+     * The permission group name. The naming rules are as follows: The length is 6~64 characters. Globally unique and cannot be an empty string. English letters are supported and can contain numbers, underscores (_), and dashes (-).
      * 
      */
     @Export(name="accessGroupName", refs={String.class}, tree="[0]")
     private Output<String> accessGroupName;
 
     /**
-     * @return The Name of Access Group.The length of `access_group_name` does not exceed 100 bytes.
+     * @return The permission group name. The naming rules are as follows: The length is 6~64 characters. Globally unique and cannot be an empty string. English letters are supported and can contain numbers, underscores (_), and dashes (-).
      * 
      */
     public Output<String> accessGroupName() {
         return this.accessGroupName;
     }
     /**
-     * The Description of Access Group. The length of `description` does not exceed 100 bytes.
+     * The creation time of the permission group resource.
+     * 
+     */
+    @Export(name="createTime", refs={String.class}, tree="[0]")
+    private Output<String> createTime;
+
+    /**
+     * @return The creation time of the permission group resource.
+     * 
+     */
+    public Output<String> createTime() {
+        return this.createTime;
+    }
+    /**
+     * The permission group description.  No more than 32 characters in length.
      * 
      */
     @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
-     * @return The Description of Access Group. The length of `description` does not exceed 100 bytes.
+     * @return The permission group description.  No more than 32 characters in length.
      * 
      */
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
     }
     /**
-     * The NetworkType of Access Group. Valid values: `VPC`.
+     * The permission group type. Only VPC (VPC) is supported.
      * 
      */
     @Export(name="networkType", refs={String.class}, tree="[0]")
     private Output<String> networkType;
 
     /**
-     * @return The NetworkType of Access Group. Valid values: `VPC`.
+     * @return The permission group type. Only VPC (VPC) is supported.
      * 
      */
     public Output<String> networkType() {

@@ -5579,6 +5579,8 @@ type GetGatewaysGateway struct {
 	CreateTime string `pulumi:"createTime"`
 	// The description of the VPN
 	Description string `pulumi:"description"`
+	// The backup public IP address of the VPN gateway. The second IP address assigned by the system to create an IPsec-VPN connection. This parameter is returned only when the VPN gateway supports the dual-tunnel mode.
+	DisasterRecoveryInternetIp string `pulumi:"disasterRecoveryInternetIp"`
 	// - The ID of the backup VSwitch to which the VPN gateway is attached.
 	DisasterRecoveryVswitchId string `pulumi:"disasterRecoveryVswitchId"`
 	// Indicates whether the IPsec-VPN feature is enabled.
@@ -5637,6 +5639,8 @@ type GetGatewaysGatewayArgs struct {
 	CreateTime pulumi.StringInput `pulumi:"createTime"`
 	// The description of the VPN
 	Description pulumi.StringInput `pulumi:"description"`
+	// The backup public IP address of the VPN gateway. The second IP address assigned by the system to create an IPsec-VPN connection. This parameter is returned only when the VPN gateway supports the dual-tunnel mode.
+	DisasterRecoveryInternetIp pulumi.StringInput `pulumi:"disasterRecoveryInternetIp"`
 	// - The ID of the backup VSwitch to which the VPN gateway is attached.
 	DisasterRecoveryVswitchId pulumi.StringInput `pulumi:"disasterRecoveryVswitchId"`
 	// Indicates whether the IPsec-VPN feature is enabled.
@@ -5744,6 +5748,11 @@ func (o GetGatewaysGatewayOutput) CreateTime() pulumi.StringOutput {
 // The description of the VPN
 func (o GetGatewaysGatewayOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGatewaysGateway) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The backup public IP address of the VPN gateway. The second IP address assigned by the system to create an IPsec-VPN connection. This parameter is returned only when the VPN gateway supports the dual-tunnel mode.
+func (o GetGatewaysGatewayOutput) DisasterRecoveryInternetIp() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewaysGateway) string { return v.DisasterRecoveryInternetIp }).(pulumi.StringOutput)
 }
 
 // - The ID of the backup VSwitch to which the VPN gateway is attached.

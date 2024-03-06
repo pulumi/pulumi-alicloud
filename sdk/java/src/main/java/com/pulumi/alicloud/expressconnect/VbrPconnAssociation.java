@@ -34,8 +34,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.alicloud.expressconnect.ExpressconnectFunctions;
  * import com.pulumi.alicloud.expressconnect.inputs.GetPhysicalConnectionsArgs;
- * import com.pulumi.random.RandomInteger;
- * import com.pulumi.random.RandomIntegerArgs;
  * import com.pulumi.alicloud.expressconnect.VirtualBorderRouter;
  * import com.pulumi.alicloud.expressconnect.VirtualBorderRouterArgs;
  * import com.pulumi.alicloud.expressconnect.VbrPconnAssociation;
@@ -59,18 +57,13 @@ import javax.annotation.Nullable;
  *             .nameRegex(&#34;^preserved-NODELETING&#34;)
  *             .build());
  * 
- *         var vlanId = new RandomInteger(&#34;vlanId&#34;, RandomIntegerArgs.builder()        
- *             .max(2999)
- *             .min(1)
- *             .build());
- * 
- *         var exampleVirtualBorderRouter = new VirtualBorderRouter(&#34;exampleVirtualBorderRouter&#34;, VirtualBorderRouterArgs.builder()        
+ *         var default_ = new VirtualBorderRouter(&#34;default&#34;, VirtualBorderRouterArgs.builder()        
  *             .localGatewayIp(&#34;10.0.0.1&#34;)
  *             .peerGatewayIp(&#34;10.0.0.2&#34;)
  *             .peeringSubnetMask(&#34;255.255.255.252&#34;)
  *             .physicalConnectionId(examplePhysicalConnections.applyValue(getPhysicalConnectionsResult -&gt; getPhysicalConnectionsResult.connections()[0].id()))
  *             .virtualBorderRouterName(name)
- *             .vlanId(vlanId.id())
+ *             .vlanId(110)
  *             .minRxInterval(1000)
  *             .minTxInterval(1000)
  *             .detectMultiplier(10)
@@ -84,9 +77,9 @@ import javax.annotation.Nullable;
  *             .peerGatewayIp(&#34;10.0.0.6&#34;)
  *             .localGatewayIp(&#34;10.0.0.5&#34;)
  *             .physicalConnectionId(examplePhysicalConnections.applyValue(getPhysicalConnectionsResult -&gt; getPhysicalConnectionsResult.connections()[2].id()))
- *             .vbrId(exampleVirtualBorderRouter.id())
+ *             .vbrId(default_.id())
  *             .peeringSubnetMask(&#34;255.255.255.252&#34;)
- *             .vlanId(vlanId.id().applyValue(id -&gt; id + 2))
+ *             .vlanId(&#34;1122&#34;)
  *             .enableIpv6(true)
  *             .localIpv6GatewayIp(&#34;2408:4004:cc::3&#34;)
  *             .peerIpv6GatewayIp(&#34;2408:4004:cc::4&#34;)

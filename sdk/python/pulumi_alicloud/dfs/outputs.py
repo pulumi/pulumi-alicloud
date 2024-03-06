@@ -11,6 +11,8 @@ from .. import _utilities
 from . import outputs
 
 __all__ = [
+    'VscMountPointInstance',
+    'VscMountPointInstanceVsc',
     'GetAccessGroupsGroupResult',
     'GetAccessRulesRuleResult',
     'GetFileSystemsSystemResult',
@@ -18,6 +20,130 @@ __all__ = [
     'GetZonesZoneResult',
     'GetZonesZoneOptionResult',
 ]
+
+@pulumi.output_type
+class VscMountPointInstance(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "instanceId":
+            suggest = "instance_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in VscMountPointInstance. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        VscMountPointInstance.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        VscMountPointInstance.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 instance_id: Optional[str] = None,
+                 status: Optional[str] = None,
+                 vscs: Optional[Sequence['outputs.VscMountPointInstanceVsc']] = None):
+        """
+        :param str instance_id: The ID of the ECS instance to which the HDFS file system is mounted.
+        :param str status: The status of the ECS instance on which the HDFS file system is mounted.
+        :param Sequence['VscMountPointInstanceVscArgs'] vscs: The VSC list of mounted HDFS file systems.
+        """
+        if instance_id is not None:
+            pulumi.set(__self__, "instance_id", instance_id)
+        if status is not None:
+            pulumi.set(__self__, "status", status)
+        if vscs is not None:
+            pulumi.set(__self__, "vscs", vscs)
+
+    @property
+    @pulumi.getter(name="instanceId")
+    def instance_id(self) -> Optional[str]:
+        """
+        The ID of the ECS instance to which the HDFS file system is mounted.
+        """
+        return pulumi.get(self, "instance_id")
+
+    @property
+    @pulumi.getter
+    def status(self) -> Optional[str]:
+        """
+        The status of the ECS instance on which the HDFS file system is mounted.
+        """
+        return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter
+    def vscs(self) -> Optional[Sequence['outputs.VscMountPointInstanceVsc']]:
+        """
+        The VSC list of mounted HDFS file systems.
+        """
+        return pulumi.get(self, "vscs")
+
+
+@pulumi.output_type
+class VscMountPointInstanceVsc(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "vscId":
+            suggest = "vsc_id"
+        elif key == "vscStatus":
+            suggest = "vsc_status"
+        elif key == "vscType":
+            suggest = "vsc_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in VscMountPointInstanceVsc. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        VscMountPointInstanceVsc.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        VscMountPointInstanceVsc.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 vsc_id: Optional[str] = None,
+                 vsc_status: Optional[str] = None,
+                 vsc_type: Optional[str] = None):
+        """
+        :param str vsc_id: VSC Channel primary key representation, used to retrieve the specified VSC Channel.
+        :param str vsc_status: VSC Mount status.
+        :param str vsc_type: The VSC type.
+        """
+        if vsc_id is not None:
+            pulumi.set(__self__, "vsc_id", vsc_id)
+        if vsc_status is not None:
+            pulumi.set(__self__, "vsc_status", vsc_status)
+        if vsc_type is not None:
+            pulumi.set(__self__, "vsc_type", vsc_type)
+
+    @property
+    @pulumi.getter(name="vscId")
+    def vsc_id(self) -> Optional[str]:
+        """
+        VSC Channel primary key representation, used to retrieve the specified VSC Channel.
+        """
+        return pulumi.get(self, "vsc_id")
+
+    @property
+    @pulumi.getter(name="vscStatus")
+    def vsc_status(self) -> Optional[str]:
+        """
+        VSC Mount status.
+        """
+        return pulumi.get(self, "vsc_status")
+
+    @property
+    @pulumi.getter(name="vscType")
+    def vsc_type(self) -> Optional[str]:
+        """
+        The VSC type.
+        """
+        return pulumi.get(self, "vsc_type")
+
 
 @pulumi.output_type
 class GetAccessGroupsGroupResult(dict):

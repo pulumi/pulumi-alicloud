@@ -41,34 +41,31 @@ namespace Pulumi.AliCloud.DatabaseFilesystem
     ///     var exampleImages = AliCloud.Ecs.GetImages.Invoke(new()
     ///     {
     ///         InstanceType = exampleInstanceTypes.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.InstanceTypes)[exampleInstanceTypes.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.InstanceTypes).Length - 1].Id,
-    ///         NameRegex = "^aliyun_2",
+    ///         NameRegex = "^aliyun_2_1903_x64_20G_alibase_20231221.vhd",
     ///         Owners = "system",
     ///     });
     /// 
-    ///     var exampleNetwork = new AliCloud.Vpc.Network("exampleNetwork", new()
+    ///     var defaultNetworks = AliCloud.Vpc.GetNetworks.Invoke(new()
     ///     {
-    ///         VpcName = name,
-    ///         CidrBlock = "10.4.0.0/16",
+    ///         NameRegex = "^default-NODELETING$",
     ///     });
     /// 
-    ///     var exampleSwitch = new AliCloud.Vpc.Switch("exampleSwitch", new()
+    ///     var defaultSwitches = AliCloud.Vpc.GetSwitches.Invoke(new()
     ///     {
-    ///         VswitchName = name,
-    ///         CidrBlock = "10.4.0.0/24",
-    ///         VpcId = exampleNetwork.Id,
+    ///         VpcId = defaultNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
     ///         ZoneId = zoneId,
     ///     });
     /// 
     ///     var exampleSecurityGroup = new AliCloud.Ecs.SecurityGroup("exampleSecurityGroup", new()
     ///     {
-    ///         VpcId = exampleNetwork.Id,
+    ///         VpcId = defaultNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
     ///     });
     /// 
-    ///     var exampleInstance = new AliCloud.Ecs.Instance("exampleInstance", new()
+    ///     var defaultInstance = new AliCloud.Ecs.Instance("defaultInstance", new()
     ///     {
     ///         AvailabilityZone = zoneId,
     ///         InstanceName = name,
-    ///         ImageId = exampleImages.Apply(getImagesResult =&gt; getImagesResult.Images[1]?.Id),
+    ///         ImageId = exampleImages.Apply(getImagesResult =&gt; getImagesResult.Images[0]?.Id),
     ///         InstanceType = Output.Tuple(exampleInstanceTypes, exampleInstanceTypes.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.InstanceTypes).Length).Apply(values =&gt;
     ///         {
     ///             var exampleInstanceTypes = values.Item1;
@@ -79,23 +76,23 @@ namespace Pulumi.AliCloud.DatabaseFilesystem
     ///         {
     ///             exampleSecurityGroup.Id,
     ///         },
-    ///         VswitchId = exampleSwitch.Id,
+    ///         VswitchId = defaultSwitches.Apply(getSwitchesResult =&gt; getSwitchesResult.Ids[0]),
     ///         SystemDiskCategory = "cloud_essd",
     ///     });
     /// 
-    ///     var exampleDatabasefilesystem_instanceInstance = new AliCloud.DatabaseFilesystem.Instance("exampleDatabasefilesystem/instanceInstance", new()
+    ///     var defaultDatabasefilesystem_instanceInstance = new AliCloud.DatabaseFilesystem.Instance("defaultDatabasefilesystem/instanceInstance", new()
     ///     {
-    ///         Category = "standard",
-    ///         ZoneId = zoneId,
+    ///         Category = "enterprise",
+    ///         ZoneId = defaultInstance.AvailabilityZone,
     ///         PerformanceLevel = "PL1",
-    ///         InstanceName = name,
+    ///         FsName = name,
     ///         Size = 100,
     ///     });
     /// 
     ///     var exampleInstanceAttachment = new AliCloud.DatabaseFilesystem.InstanceAttachment("exampleInstanceAttachment", new()
     ///     {
-    ///         EcsId = exampleInstance.Id,
-    ///         InstanceId = exampleDatabasefilesystem / instanceInstance.Id,
+    ///         EcsId = defaultInstance.Id,
+    ///         InstanceId = defaultDatabasefilesystem / instanceInstance.Id,
     ///     });
     /// 
     /// });

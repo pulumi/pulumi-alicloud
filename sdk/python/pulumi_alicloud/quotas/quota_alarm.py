@@ -334,20 +334,24 @@ class QuotaAlarm(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
             name = "terraform-example"
-        default = alicloud.quotas.QuotaAlarm("default",
+        default_random_integer = random.RandomInteger("defaultRandomInteger",
+            max=99999,
+            min=10000)
+        default_quota_alarm = alicloud.quotas.QuotaAlarm("defaultQuotaAlarm",
+            product_code="gws",
             quota_action_code="q_desktop-count",
+            quota_alarm_name=default_random_integer.result.apply(lambda result: f"{name}-{result}"),
             quota_dimensions=[alicloud.quotas.QuotaAlarmQuotaDimensionArgs(
                 key="regionId",
                 value="cn-hangzhou",
             )],
             threshold_percent=80,
-            product_code="gws",
-            quota_alarm_name=name,
             threshold_type="used")
         ```
 
@@ -392,20 +396,24 @@ class QuotaAlarm(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
             name = "terraform-example"
-        default = alicloud.quotas.QuotaAlarm("default",
+        default_random_integer = random.RandomInteger("defaultRandomInteger",
+            max=99999,
+            min=10000)
+        default_quota_alarm = alicloud.quotas.QuotaAlarm("defaultQuotaAlarm",
+            product_code="gws",
             quota_action_code="q_desktop-count",
+            quota_alarm_name=default_random_integer.result.apply(lambda result: f"{name}-{result}"),
             quota_dimensions=[alicloud.quotas.QuotaAlarmQuotaDimensionArgs(
                 key="regionId",
                 value="cn-hangzhou",
             )],
             threshold_percent=80,
-            product_code="gws",
-            quota_alarm_name=name,
             threshold_type="used")
         ```
 

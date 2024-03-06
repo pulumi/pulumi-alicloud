@@ -18,6 +18,7 @@ __all__ = [
     'EnterpriseSnapshotPolicySpecialRetainRules',
     'EnterpriseSnapshotPolicySpecialRetainRulesRule',
     'EnterpriseSnapshotPolicyStorageRule',
+    'SolutionInstanceParameter',
     'GetDedicatedBlockStorageClustersClusterResult',
     'GetDiskReplicaGroupsGroupResult',
     'GetDiskReplicaPairsPairResult',
@@ -342,6 +343,54 @@ class EnterpriseSnapshotPolicyStorageRule(dict):
         Snapshot speed available.
         """
         return pulumi.get(self, "enable_immediate_access")
+
+
+@pulumi.output_type
+class SolutionInstanceParameter(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "parameterKey":
+            suggest = "parameter_key"
+        elif key == "parameterValue":
+            suggest = "parameter_value"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SolutionInstanceParameter. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SolutionInstanceParameter.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SolutionInstanceParameter.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 parameter_key: str,
+                 parameter_value: str):
+        """
+        :param str parameter_key: Create parameter Key.
+        :param str parameter_value: Create parameter Value.
+        """
+        pulumi.set(__self__, "parameter_key", parameter_key)
+        pulumi.set(__self__, "parameter_value", parameter_value)
+
+    @property
+    @pulumi.getter(name="parameterKey")
+    def parameter_key(self) -> str:
+        """
+        Create parameter Key.
+        """
+        return pulumi.get(self, "parameter_key")
+
+    @property
+    @pulumi.getter(name="parameterValue")
+    def parameter_value(self) -> str:
+        """
+        Create parameter Value.
+        """
+        return pulumi.get(self, "parameter_value")
 
 
 @pulumi.output_type

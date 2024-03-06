@@ -17,14 +17,14 @@ public final class AccessRuleState extends com.pulumi.resources.ResourceArgs {
     public static final AccessRuleState Empty = new AccessRuleState();
 
     /**
-     * The resource ID of Access Group.
+     * Permission group resource ID. You must specify the permission group ID when creating a permission rule.
      * 
      */
     @Import(name="accessGroupId")
     private @Nullable Output<String> accessGroupId;
 
     /**
-     * @return The resource ID of Access Group.
+     * @return Permission group resource ID. You must specify the permission group ID when creating a permission rule.
      * 
      */
     public Optional<Output<String>> accessGroupId() {
@@ -32,14 +32,14 @@ public final class AccessRuleState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The ID of the Access Rule.
+     * The unique identity of the permission rule, which is used to retrieve the permission rule for a specific day in the permission group.
      * 
      */
     @Import(name="accessRuleId")
     private @Nullable Output<String> accessRuleId;
 
     /**
-     * @return The ID of the Access Rule.
+     * @return The unique identity of the permission rule, which is used to retrieve the permission rule for a specific day in the permission group.
      * 
      */
     public Optional<Output<String>> accessRuleId() {
@@ -47,14 +47,29 @@ public final class AccessRuleState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The Description of the Access Rule.
+     * Permission rule resource creation time.
+     * 
+     */
+    @Import(name="createTime")
+    private @Nullable Output<String> createTime;
+
+    /**
+     * @return Permission rule resource creation time.
+     * 
+     */
+    public Optional<Output<String>> createTime() {
+        return Optional.ofNullable(this.createTime);
+    }
+
+    /**
+     * Permission rule description.  No more than 32 characters in length.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return The Description of the Access Rule.
+     * @return Permission rule description.  No more than 32 characters in length.
      * 
      */
     public Optional<Output<String>> description() {
@@ -62,14 +77,14 @@ public final class AccessRuleState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The NetworkSegment of the Access Rule.
+     * The IP address or network segment of the authorized object.
      * 
      */
     @Import(name="networkSegment")
     private @Nullable Output<String> networkSegment;
 
     /**
-     * @return The NetworkSegment of the Access Rule.
+     * @return The IP address or network segment of the authorized object.
      * 
      */
     public Optional<Output<String>> networkSegment() {
@@ -77,14 +92,14 @@ public final class AccessRuleState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The Priority of the Access Rule. Valid values: `1` to `100`. **NOTE:** When multiple rules are matched by the same authorized object, the high-priority rule takes effect. `1` is the highest priority.
+     * Permission rule priority. When the same authorization object matches multiple rules, the high-priority rule takes effect. Value range: 1~100,1 is the highest priority.
      * 
      */
     @Import(name="priority")
     private @Nullable Output<Integer> priority;
 
     /**
-     * @return The Priority of the Access Rule. Valid values: `1` to `100`. **NOTE:** When multiple rules are matched by the same authorized object, the high-priority rule takes effect. `1` is the highest priority.
+     * @return Permission rule priority. When the same authorization object matches multiple rules, the high-priority rule takes effect. Value range: 1~100,1 is the highest priority.
      * 
      */
     public Optional<Output<Integer>> priority() {
@@ -92,14 +107,14 @@ public final class AccessRuleState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The RWAccessType of the Access Rule. Valid values: `RDONLY`, `RDWR`.
+     * The read and write permissions of the authorized object on the file system. Value: RDWR: readable and writable RDONLY: Read only.
      * 
      */
     @Import(name="rwAccessType")
     private @Nullable Output<String> rwAccessType;
 
     /**
-     * @return The RWAccessType of the Access Rule. Valid values: `RDONLY`, `RDWR`.
+     * @return The read and write permissions of the authorized object on the file system. Value: RDWR: readable and writable RDONLY: Read only.
      * 
      */
     public Optional<Output<String>> rwAccessType() {
@@ -111,6 +126,7 @@ public final class AccessRuleState extends com.pulumi.resources.ResourceArgs {
     private AccessRuleState(AccessRuleState $) {
         this.accessGroupId = $.accessGroupId;
         this.accessRuleId = $.accessRuleId;
+        this.createTime = $.createTime;
         this.description = $.description;
         this.networkSegment = $.networkSegment;
         this.priority = $.priority;
@@ -136,7 +152,7 @@ public final class AccessRuleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accessGroupId The resource ID of Access Group.
+         * @param accessGroupId Permission group resource ID. You must specify the permission group ID when creating a permission rule.
          * 
          * @return builder
          * 
@@ -147,7 +163,7 @@ public final class AccessRuleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accessGroupId The resource ID of Access Group.
+         * @param accessGroupId Permission group resource ID. You must specify the permission group ID when creating a permission rule.
          * 
          * @return builder
          * 
@@ -157,7 +173,7 @@ public final class AccessRuleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accessRuleId The ID of the Access Rule.
+         * @param accessRuleId The unique identity of the permission rule, which is used to retrieve the permission rule for a specific day in the permission group.
          * 
          * @return builder
          * 
@@ -168,7 +184,7 @@ public final class AccessRuleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accessRuleId The ID of the Access Rule.
+         * @param accessRuleId The unique identity of the permission rule, which is used to retrieve the permission rule for a specific day in the permission group.
          * 
          * @return builder
          * 
@@ -178,7 +194,28 @@ public final class AccessRuleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description The Description of the Access Rule.
+         * @param createTime Permission rule resource creation time.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createTime(@Nullable Output<String> createTime) {
+            $.createTime = createTime;
+            return this;
+        }
+
+        /**
+         * @param createTime Permission rule resource creation time.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createTime(String createTime) {
+            return createTime(Output.of(createTime));
+        }
+
+        /**
+         * @param description Permission rule description.  No more than 32 characters in length.
          * 
          * @return builder
          * 
@@ -189,7 +226,7 @@ public final class AccessRuleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description The Description of the Access Rule.
+         * @param description Permission rule description.  No more than 32 characters in length.
          * 
          * @return builder
          * 
@@ -199,7 +236,7 @@ public final class AccessRuleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param networkSegment The NetworkSegment of the Access Rule.
+         * @param networkSegment The IP address or network segment of the authorized object.
          * 
          * @return builder
          * 
@@ -210,7 +247,7 @@ public final class AccessRuleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param networkSegment The NetworkSegment of the Access Rule.
+         * @param networkSegment The IP address or network segment of the authorized object.
          * 
          * @return builder
          * 
@@ -220,7 +257,7 @@ public final class AccessRuleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param priority The Priority of the Access Rule. Valid values: `1` to `100`. **NOTE:** When multiple rules are matched by the same authorized object, the high-priority rule takes effect. `1` is the highest priority.
+         * @param priority Permission rule priority. When the same authorization object matches multiple rules, the high-priority rule takes effect. Value range: 1~100,1 is the highest priority.
          * 
          * @return builder
          * 
@@ -231,7 +268,7 @@ public final class AccessRuleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param priority The Priority of the Access Rule. Valid values: `1` to `100`. **NOTE:** When multiple rules are matched by the same authorized object, the high-priority rule takes effect. `1` is the highest priority.
+         * @param priority Permission rule priority. When the same authorization object matches multiple rules, the high-priority rule takes effect. Value range: 1~100,1 is the highest priority.
          * 
          * @return builder
          * 
@@ -241,7 +278,7 @@ public final class AccessRuleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param rwAccessType The RWAccessType of the Access Rule. Valid values: `RDONLY`, `RDWR`.
+         * @param rwAccessType The read and write permissions of the authorized object on the file system. Value: RDWR: readable and writable RDONLY: Read only.
          * 
          * @return builder
          * 
@@ -252,7 +289,7 @@ public final class AccessRuleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param rwAccessType The RWAccessType of the Access Rule. Valid values: `RDONLY`, `RDWR`.
+         * @param rwAccessType The read and write permissions of the authorized object on the file system. Value: RDWR: readable and writable RDONLY: Read only.
          * 
          * @return builder
          * 

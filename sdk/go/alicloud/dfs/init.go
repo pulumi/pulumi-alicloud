@@ -29,6 +29,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &FileSystem{}
 	case "alicloud:dfs/mountPoint:MountPoint":
 		r = &MountPoint{}
+	case "alicloud:dfs/vscMountPoint:VscMountPoint":
+		r = &VscMountPoint{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -60,6 +62,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"dfs/mountPoint",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"dfs/vscMountPoint",
 		&module{version},
 	)
 }

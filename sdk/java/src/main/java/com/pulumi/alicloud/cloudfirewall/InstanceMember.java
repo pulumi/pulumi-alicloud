@@ -25,12 +25,15 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * Basic Usage
+ * 
  * ```java
  * package generated_program;
  * 
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.random.RandomInteger;
+ * import com.pulumi.random.RandomIntegerArgs;
  * import com.pulumi.alicloud.resourcemanager.Account;
  * import com.pulumi.alicloud.resourcemanager.AccountArgs;
  * import com.pulumi.alicloud.cloudfirewall.InstanceMember;
@@ -50,12 +53,18 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get(&#34;name&#34;).orElse(&#34;AliyunTerraform&#34;);
+ *         var defaultRandomInteger = new RandomInteger(&#34;defaultRandomInteger&#34;, RandomIntegerArgs.builder()        
+ *             .min(10000)
+ *             .max(99999)
+ *             .build());
+ * 
  *         var defaultAccount = new Account(&#34;defaultAccount&#34;, AccountArgs.builder()        
- *             .displayName(name)
+ *             .displayName(defaultRandomInteger.result().applyValue(result -&gt; String.format(&#34;%s-%s&#34;, name,result)))
+ *             .timeouts(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
  *             .build());
  * 
  *         var defaultInstanceMember = new InstanceMember(&#34;defaultInstanceMember&#34;, InstanceMemberArgs.builder()        
- *             .memberDesc(name)
+ *             .memberDesc(defaultRandomInteger.result().applyValue(result -&gt; String.format(&#34;%s-%s&#34;, name,result)))
  *             .memberUid(defaultAccount.id())
  *             .build());
  * 

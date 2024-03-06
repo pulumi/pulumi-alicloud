@@ -7,11 +7,66 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * Provides a GPDB DB Instance Plan resource.
+ * Provides a AnalyticDB for PostgreSQL (GPDB) DB Instance Plan resource.
  *
- * For information about GPDB DB Instance Plan and how to use it, see [What is DB Instance Plan](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/developer-reference/api-gpdb-2016-05-03-createdbinstanceplan).
+ * For information about AnalyticDB for PostgreSQL (GPDB) DB Instance Plan and how to use it, see [What is DB Instance Plan](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/developer-reference/api-gpdb-2016-05-03-createdbinstanceplan).
  *
  * > **NOTE:** Available since v1.189.0.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf-example";
+ * const defaultZones = alicloud.gpdb.getZones({});
+ * const defaultNetworks = alicloud.vpc.getNetworks({
+ *     nameRegex: "^default-NODELETING$",
+ * });
+ * const defaultSwitches = Promise.all([defaultNetworks, defaultZones]).then(([defaultNetworks, defaultZones]) => alicloud.vpc.getSwitches({
+ *     vpcId: defaultNetworks.ids?.[0],
+ *     zoneId: defaultZones.ids?.[0],
+ * }));
+ * const defaultInstance = new alicloud.gpdb.Instance("defaultInstance", {
+ *     dbInstanceCategory: "HighAvailability",
+ *     dbInstanceClass: "gpdb.group.segsdx1",
+ *     dbInstanceMode: "StorageElastic",
+ *     description: name,
+ *     engine: "gpdb",
+ *     engineVersion: "6.0",
+ *     zoneId: defaultZones.then(defaultZones => defaultZones.ids?.[0]),
+ *     instanceNetworkType: "VPC",
+ *     instanceSpec: "2C16G",
+ *     paymentType: "PayAsYouGo",
+ *     segStorageType: "cloud_essd",
+ *     segNodeNum: 4,
+ *     storageSize: 50,
+ *     vpcId: defaultNetworks.then(defaultNetworks => defaultNetworks.ids?.[0]),
+ *     vswitchId: defaultSwitches.then(defaultSwitches => defaultSwitches.ids?.[0]),
+ *     ipWhitelists: [{
+ *         securityIpList: "127.0.0.1",
+ *     }],
+ * });
+ * const defaultDbInstancePlan = new alicloud.gpdb.DbInstancePlan("defaultDbInstancePlan", {
+ *     dbInstancePlanName: name,
+ *     planDesc: name,
+ *     planType: "PauseResume",
+ *     planScheduleType: "Regular",
+ *     planConfigs: [{
+ *         resume: {
+ *             planCronTime: "0 0 0 1/1 * ? ",
+ *         },
+ *         pause: {
+ *             planCronTime: "0 0 10 1/1 * ? ",
+ *         },
+ *     }],
+ *     dbInstanceId: defaultInstance.id,
+ * });
+ * ```
  *
  * ## Import
  *
@@ -50,7 +105,7 @@ export class DbInstancePlan extends pulumi.CustomResource {
     }
 
     /**
-     * The ID of the Database instance.
+     * The ID of the GPDB instance.
      */
     public readonly dbInstanceId!: pulumi.Output<string>;
     /**
@@ -58,23 +113,23 @@ export class DbInstancePlan extends pulumi.CustomResource {
      */
     public readonly dbInstancePlanName!: pulumi.Output<string>;
     /**
-     * The plan config. See `planConfig` below.
+     * The execution information of the plan. See `planConfig` below.
      */
     public readonly planConfigs!: pulumi.Output<outputs.gpdb.DbInstancePlanPlanConfig[]>;
     /**
      * The description of the Plan.
      */
-    public readonly planDesc!: pulumi.Output<string>;
+    public readonly planDesc!: pulumi.Output<string | undefined>;
     /**
      * The end time of the Plan.
      */
-    public readonly planEndDate!: pulumi.Output<string>;
+    public readonly planEndDate!: pulumi.Output<string | undefined>;
     /**
-     * The ID of DB Instance Plan.
+     * The ID of the plan.
      */
     public /*out*/ readonly planId!: pulumi.Output<string>;
     /**
-     * Plan scheduling type. Valid values: `Postpone`, `Regular`.
+     * The execution mode of the plan. Valid values: `Postpone`, `Regular`.
      */
     public readonly planScheduleType!: pulumi.Output<string>;
     /**
@@ -151,7 +206,7 @@ export class DbInstancePlan extends pulumi.CustomResource {
  */
 export interface DbInstancePlanState {
     /**
-     * The ID of the Database instance.
+     * The ID of the GPDB instance.
      */
     dbInstanceId?: pulumi.Input<string>;
     /**
@@ -159,7 +214,7 @@ export interface DbInstancePlanState {
      */
     dbInstancePlanName?: pulumi.Input<string>;
     /**
-     * The plan config. See `planConfig` below.
+     * The execution information of the plan. See `planConfig` below.
      */
     planConfigs?: pulumi.Input<pulumi.Input<inputs.gpdb.DbInstancePlanPlanConfig>[]>;
     /**
@@ -171,11 +226,11 @@ export interface DbInstancePlanState {
      */
     planEndDate?: pulumi.Input<string>;
     /**
-     * The ID of DB Instance Plan.
+     * The ID of the plan.
      */
     planId?: pulumi.Input<string>;
     /**
-     * Plan scheduling type. Valid values: `Postpone`, `Regular`.
+     * The execution mode of the plan. Valid values: `Postpone`, `Regular`.
      */
     planScheduleType?: pulumi.Input<string>;
     /**
@@ -197,7 +252,7 @@ export interface DbInstancePlanState {
  */
 export interface DbInstancePlanArgs {
     /**
-     * The ID of the Database instance.
+     * The ID of the GPDB instance.
      */
     dbInstanceId: pulumi.Input<string>;
     /**
@@ -205,7 +260,7 @@ export interface DbInstancePlanArgs {
      */
     dbInstancePlanName: pulumi.Input<string>;
     /**
-     * The plan config. See `planConfig` below.
+     * The execution information of the plan. See `planConfig` below.
      */
     planConfigs: pulumi.Input<pulumi.Input<inputs.gpdb.DbInstancePlanPlanConfig>[]>;
     /**
@@ -217,7 +272,7 @@ export interface DbInstancePlanArgs {
      */
     planEndDate?: pulumi.Input<string>;
     /**
-     * Plan scheduling type. Valid values: `Postpone`, `Regular`.
+     * The execution mode of the plan. Valid values: `Postpone`, `Regular`.
      */
     planScheduleType: pulumi.Input<string>;
     /**

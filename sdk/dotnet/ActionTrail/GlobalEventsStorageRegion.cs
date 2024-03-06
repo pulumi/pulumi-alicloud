@@ -12,7 +12,7 @@ namespace Pulumi.AliCloud.ActionTrail
     /// <summary>
     /// Provides a Global events storage region resource.
     /// 
-    /// For information about global events storage region and how to use it, see [What is Global Events Storage Region](https://www.alibabacloud.com/help/en/actiontrail/latest/api-actiontrail-2020-07-06-updateglobaleventsstorageregion).
+    /// For information about global events storage region and how to use it, see [What is Global Events Storage Region](https://help.aliyun.com/zh/actiontrail/developer-reference/api-actiontrail-2020-07-06-updateglobaleventsstorageregion).
     /// 
     /// &gt; **NOTE:** Available since v1.201.0.
     /// 

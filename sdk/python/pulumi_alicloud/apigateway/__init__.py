@@ -18,6 +18,7 @@ from .get_models import *
 from .get_plugins import *
 from .get_service import *
 from .group import *
+from .instance import *
 from .log_config import *
 from .model import *
 from .plugin import *

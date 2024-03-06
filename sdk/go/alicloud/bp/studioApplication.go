@@ -28,27 +28,45 @@ import (
 // import (
 //
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/bp"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/resourcemanager"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := bp.NewStudioApplication(ctx, "default", &bp.StudioApplicationArgs{
-//				ApplicationName: pulumi.String("example_value"),
-//				AreaId:          pulumi.String("example_value"),
-//				Configuration: pulumi.Map{
-//					"enableMonitor": pulumi.Any("1"),
-//				},
+//			cfg := config.New(ctx, "")
+//			name := "tf-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			defaultResourceGroups, err := resourcemanager.GetResourceGroups(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = ecs.GetInstances(ctx, &ecs.GetInstancesArgs{
+//				Status: pulumi.StringRef("Running"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = bp.NewStudioApplication(ctx, "defaultStudioApplication", &bp.StudioApplicationArgs{
+//				ApplicationName: pulumi.String(name),
+//				TemplateId:      pulumi.String("YAUUQIYRSV1CMFGX"),
+//				ResourceGroupId: *pulumi.String(defaultResourceGroups.Groups[0].Id),
+//				AreaId:          pulumi.String("cn-hangzhou"),
 //				Instances: bp.StudioApplicationInstanceArray{
 //					&bp.StudioApplicationInstanceArgs{
-//						Id:       pulumi.String("example_value"),
-//						NodeName: pulumi.String("example_value"),
+//						Id:       pulumi.String("data.alicloud_instances.default.instances.0.id"),
+//						NodeName: pulumi.String("data.alicloud_instances.default.instances.0.name"),
 //						NodeType: pulumi.String("ecs"),
 //					},
 //				},
-//				ResourceGroupId: pulumi.String("example_value"),
-//				TemplateId:      pulumi.String("example_value"),
+//				Configuration: pulumi.Map{
+//					"enableMonitor": pulumi.Any("1"),
+//				},
 //				Variables: pulumi.Map{
 //					"test": pulumi.Any("1"),
 //				},

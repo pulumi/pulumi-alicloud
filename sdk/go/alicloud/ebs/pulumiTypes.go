@@ -1016,6 +1016,112 @@ func (o EnterpriseSnapshotPolicyStorageRulePtrOutput) EnableImmediateAccess() pu
 	}).(pulumi.BoolPtrOutput)
 }
 
+type SolutionInstanceParameter struct {
+	// Create parameter Key.
+	ParameterKey string `pulumi:"parameterKey"`
+	// Create parameter Value.
+	ParameterValue string `pulumi:"parameterValue"`
+}
+
+// SolutionInstanceParameterInput is an input type that accepts SolutionInstanceParameterArgs and SolutionInstanceParameterOutput values.
+// You can construct a concrete instance of `SolutionInstanceParameterInput` via:
+//
+//	SolutionInstanceParameterArgs{...}
+type SolutionInstanceParameterInput interface {
+	pulumi.Input
+
+	ToSolutionInstanceParameterOutput() SolutionInstanceParameterOutput
+	ToSolutionInstanceParameterOutputWithContext(context.Context) SolutionInstanceParameterOutput
+}
+
+type SolutionInstanceParameterArgs struct {
+	// Create parameter Key.
+	ParameterKey pulumi.StringInput `pulumi:"parameterKey"`
+	// Create parameter Value.
+	ParameterValue pulumi.StringInput `pulumi:"parameterValue"`
+}
+
+func (SolutionInstanceParameterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SolutionInstanceParameter)(nil)).Elem()
+}
+
+func (i SolutionInstanceParameterArgs) ToSolutionInstanceParameterOutput() SolutionInstanceParameterOutput {
+	return i.ToSolutionInstanceParameterOutputWithContext(context.Background())
+}
+
+func (i SolutionInstanceParameterArgs) ToSolutionInstanceParameterOutputWithContext(ctx context.Context) SolutionInstanceParameterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SolutionInstanceParameterOutput)
+}
+
+// SolutionInstanceParameterArrayInput is an input type that accepts SolutionInstanceParameterArray and SolutionInstanceParameterArrayOutput values.
+// You can construct a concrete instance of `SolutionInstanceParameterArrayInput` via:
+//
+//	SolutionInstanceParameterArray{ SolutionInstanceParameterArgs{...} }
+type SolutionInstanceParameterArrayInput interface {
+	pulumi.Input
+
+	ToSolutionInstanceParameterArrayOutput() SolutionInstanceParameterArrayOutput
+	ToSolutionInstanceParameterArrayOutputWithContext(context.Context) SolutionInstanceParameterArrayOutput
+}
+
+type SolutionInstanceParameterArray []SolutionInstanceParameterInput
+
+func (SolutionInstanceParameterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SolutionInstanceParameter)(nil)).Elem()
+}
+
+func (i SolutionInstanceParameterArray) ToSolutionInstanceParameterArrayOutput() SolutionInstanceParameterArrayOutput {
+	return i.ToSolutionInstanceParameterArrayOutputWithContext(context.Background())
+}
+
+func (i SolutionInstanceParameterArray) ToSolutionInstanceParameterArrayOutputWithContext(ctx context.Context) SolutionInstanceParameterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SolutionInstanceParameterArrayOutput)
+}
+
+type SolutionInstanceParameterOutput struct{ *pulumi.OutputState }
+
+func (SolutionInstanceParameterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SolutionInstanceParameter)(nil)).Elem()
+}
+
+func (o SolutionInstanceParameterOutput) ToSolutionInstanceParameterOutput() SolutionInstanceParameterOutput {
+	return o
+}
+
+func (o SolutionInstanceParameterOutput) ToSolutionInstanceParameterOutputWithContext(ctx context.Context) SolutionInstanceParameterOutput {
+	return o
+}
+
+// Create parameter Key.
+func (o SolutionInstanceParameterOutput) ParameterKey() pulumi.StringOutput {
+	return o.ApplyT(func(v SolutionInstanceParameter) string { return v.ParameterKey }).(pulumi.StringOutput)
+}
+
+// Create parameter Value.
+func (o SolutionInstanceParameterOutput) ParameterValue() pulumi.StringOutput {
+	return o.ApplyT(func(v SolutionInstanceParameter) string { return v.ParameterValue }).(pulumi.StringOutput)
+}
+
+type SolutionInstanceParameterArrayOutput struct{ *pulumi.OutputState }
+
+func (SolutionInstanceParameterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SolutionInstanceParameter)(nil)).Elem()
+}
+
+func (o SolutionInstanceParameterArrayOutput) ToSolutionInstanceParameterArrayOutput() SolutionInstanceParameterArrayOutput {
+	return o
+}
+
+func (o SolutionInstanceParameterArrayOutput) ToSolutionInstanceParameterArrayOutputWithContext(ctx context.Context) SolutionInstanceParameterArrayOutput {
+	return o
+}
+
+func (o SolutionInstanceParameterArrayOutput) Index(i pulumi.IntInput) SolutionInstanceParameterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SolutionInstanceParameter {
+		return vs[0].([]SolutionInstanceParameter)[vs[1].(int)]
+	}).(SolutionInstanceParameterOutput)
+}
+
 type GetDedicatedBlockStorageClustersCluster struct {
 	// The available capacity of the dedicated block storage cluster. Unit: GiB.
 	AvailableCapacity string `pulumi:"availableCapacity"`
@@ -1912,6 +2018,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*EnterpriseSnapshotPolicySpecialRetainRulesRuleArrayInput)(nil)).Elem(), EnterpriseSnapshotPolicySpecialRetainRulesRuleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EnterpriseSnapshotPolicyStorageRuleInput)(nil)).Elem(), EnterpriseSnapshotPolicyStorageRuleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EnterpriseSnapshotPolicyStorageRulePtrInput)(nil)).Elem(), EnterpriseSnapshotPolicyStorageRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SolutionInstanceParameterInput)(nil)).Elem(), SolutionInstanceParameterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SolutionInstanceParameterArrayInput)(nil)).Elem(), SolutionInstanceParameterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDedicatedBlockStorageClustersClusterInput)(nil)).Elem(), GetDedicatedBlockStorageClustersClusterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDedicatedBlockStorageClustersClusterArrayInput)(nil)).Elem(), GetDedicatedBlockStorageClustersClusterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDiskReplicaGroupsGroupInput)(nil)).Elem(), GetDiskReplicaGroupsGroupArgs{})
@@ -1936,6 +2044,8 @@ func init() {
 	pulumi.RegisterOutputType(EnterpriseSnapshotPolicySpecialRetainRulesRuleArrayOutput{})
 	pulumi.RegisterOutputType(EnterpriseSnapshotPolicyStorageRuleOutput{})
 	pulumi.RegisterOutputType(EnterpriseSnapshotPolicyStorageRulePtrOutput{})
+	pulumi.RegisterOutputType(SolutionInstanceParameterOutput{})
+	pulumi.RegisterOutputType(SolutionInstanceParameterArrayOutput{})
 	pulumi.RegisterOutputType(GetDedicatedBlockStorageClustersClusterOutput{})
 	pulumi.RegisterOutputType(GetDedicatedBlockStorageClustersClusterArrayOutput{})
 	pulumi.RegisterOutputType(GetDiskReplicaGroupsGroupOutput{})

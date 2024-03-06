@@ -28,6 +28,7 @@ import (
 // import (
 //
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/rocketmq"
+//	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
@@ -36,17 +37,22 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			cfg := config.New(ctx, "")
-//			name := "onsInstanceName"
+//			name := "GID-tf-example"
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			groupName := "GID-onsGroupDatasourceName"
+//			groupName := "GID-tf-example"
 //			if param := cfg.Get("groupName"); param != "" {
 //				groupName = param
 //			}
-//			defaultInstance, err := rocketmq.NewInstance(ctx, "defaultInstance", &rocketmq.InstanceArgs{
-//				Remark: pulumi.String("default_ons_instance_remark"),
+//			_, err := random.NewRandomInteger(ctx, "defaultRandomInteger", &random.RandomIntegerArgs{
+//				Min: pulumi.Int(10000),
+//				Max: pulumi.Int(99999),
 //			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultInstance, err := rocketmq.NewInstance(ctx, "defaultInstance", nil)
 //			if err != nil {
 //				return err
 //			}

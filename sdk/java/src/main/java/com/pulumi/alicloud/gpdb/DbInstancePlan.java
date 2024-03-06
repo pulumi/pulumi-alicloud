@@ -13,14 +13,104 @@ import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.String;
 import java.util.List;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a GPDB DB Instance Plan resource.
+ * Provides a AnalyticDB for PostgreSQL (GPDB) DB Instance Plan resource.
  * 
- * For information about GPDB DB Instance Plan and how to use it, see [What is DB Instance Plan](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/developer-reference/api-gpdb-2016-05-03-createdbinstanceplan).
+ * For information about AnalyticDB for PostgreSQL (GPDB) DB Instance Plan and how to use it, see [What is DB Instance Plan](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/developer-reference/api-gpdb-2016-05-03-createdbinstanceplan).
  * 
  * &gt; **NOTE:** Available since v1.189.0.
+ * 
+ * ## Example Usage
+ * 
+ * Basic Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.gpdb.GpdbFunctions;
+ * import com.pulumi.alicloud.gpdb.inputs.GetZonesArgs;
+ * import com.pulumi.alicloud.vpc.VpcFunctions;
+ * import com.pulumi.alicloud.vpc.inputs.GetNetworksArgs;
+ * import com.pulumi.alicloud.vpc.inputs.GetSwitchesArgs;
+ * import com.pulumi.alicloud.gpdb.Instance;
+ * import com.pulumi.alicloud.gpdb.InstanceArgs;
+ * import com.pulumi.alicloud.gpdb.inputs.InstanceIpWhitelistArgs;
+ * import com.pulumi.alicloud.gpdb.DbInstancePlan;
+ * import com.pulumi.alicloud.gpdb.DbInstancePlanArgs;
+ * import com.pulumi.alicloud.gpdb.inputs.DbInstancePlanPlanConfigArgs;
+ * import com.pulumi.alicloud.gpdb.inputs.DbInstancePlanPlanConfigResumeArgs;
+ * import com.pulumi.alicloud.gpdb.inputs.DbInstancePlanPlanConfigPauseArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
+ *         final var defaultZones = GpdbFunctions.getZones();
+ * 
+ *         final var defaultNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
+ *             .nameRegex(&#34;^default-NODELETING$&#34;)
+ *             .build());
+ * 
+ *         final var defaultSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
+ *             .vpcId(defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
+ *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.ids()[0]))
+ *             .build());
+ * 
+ *         var defaultInstance = new Instance(&#34;defaultInstance&#34;, InstanceArgs.builder()        
+ *             .dbInstanceCategory(&#34;HighAvailability&#34;)
+ *             .dbInstanceClass(&#34;gpdb.group.segsdx1&#34;)
+ *             .dbInstanceMode(&#34;StorageElastic&#34;)
+ *             .description(name)
+ *             .engine(&#34;gpdb&#34;)
+ *             .engineVersion(&#34;6.0&#34;)
+ *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.ids()[0]))
+ *             .instanceNetworkType(&#34;VPC&#34;)
+ *             .instanceSpec(&#34;2C16G&#34;)
+ *             .paymentType(&#34;PayAsYouGo&#34;)
+ *             .segStorageType(&#34;cloud_essd&#34;)
+ *             .segNodeNum(4)
+ *             .storageSize(50)
+ *             .vpcId(defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
+ *             .vswitchId(defaultSwitches.applyValue(getSwitchesResult -&gt; getSwitchesResult.ids()[0]))
+ *             .ipWhitelists(InstanceIpWhitelistArgs.builder()
+ *                 .securityIpList(&#34;127.0.0.1&#34;)
+ *                 .build())
+ *             .build());
+ * 
+ *         var defaultDbInstancePlan = new DbInstancePlan(&#34;defaultDbInstancePlan&#34;, DbInstancePlanArgs.builder()        
+ *             .dbInstancePlanName(name)
+ *             .planDesc(name)
+ *             .planType(&#34;PauseResume&#34;)
+ *             .planScheduleType(&#34;Regular&#34;)
+ *             .planConfigs(DbInstancePlanPlanConfigArgs.builder()
+ *                 .resume(DbInstancePlanPlanConfigResumeArgs.builder()
+ *                     .planCronTime(&#34;0 0 0 1/1 * ? &#34;)
+ *                     .build())
+ *                 .pause(DbInstancePlanPlanConfigPauseArgs.builder()
+ *                     .planCronTime(&#34;0 0 10 1/1 * ? &#34;)
+ *                     .build())
+ *                 .build())
+ *             .dbInstanceId(defaultInstance.id())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  * ## Import
  * 
@@ -34,14 +124,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:gpdb/dbInstancePlan:DbInstancePlan")
 public class DbInstancePlan extends com.pulumi.resources.CustomResource {
     /**
-     * The ID of the Database instance.
+     * The ID of the GPDB instance.
      * 
      */
     @Export(name="dbInstanceId", refs={String.class}, tree="[0]")
     private Output<String> dbInstanceId;
 
     /**
-     * @return The ID of the Database instance.
+     * @return The ID of the GPDB instance.
      * 
      */
     public Output<String> dbInstanceId() {
@@ -62,14 +152,14 @@ public class DbInstancePlan extends com.pulumi.resources.CustomResource {
         return this.dbInstancePlanName;
     }
     /**
-     * The plan config. See `plan_config` below.
+     * The execution information of the plan. See `plan_config` below.
      * 
      */
     @Export(name="planConfigs", refs={List.class,DbInstancePlanPlanConfig.class}, tree="[0,1]")
     private Output<List<DbInstancePlanPlanConfig>> planConfigs;
 
     /**
-     * @return The plan config. See `plan_config` below.
+     * @return The execution information of the plan. See `plan_config` below.
      * 
      */
     public Output<List<DbInstancePlanPlanConfig>> planConfigs() {
@@ -80,52 +170,52 @@ public class DbInstancePlan extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="planDesc", refs={String.class}, tree="[0]")
-    private Output<String> planDesc;
+    private Output</* @Nullable */ String> planDesc;
 
     /**
      * @return The description of the Plan.
      * 
      */
-    public Output<String> planDesc() {
-        return this.planDesc;
+    public Output<Optional<String>> planDesc() {
+        return Codegen.optional(this.planDesc);
     }
     /**
      * The end time of the Plan.
      * 
      */
     @Export(name="planEndDate", refs={String.class}, tree="[0]")
-    private Output<String> planEndDate;
+    private Output</* @Nullable */ String> planEndDate;
 
     /**
      * @return The end time of the Plan.
      * 
      */
-    public Output<String> planEndDate() {
-        return this.planEndDate;
+    public Output<Optional<String>> planEndDate() {
+        return Codegen.optional(this.planEndDate);
     }
     /**
-     * The ID of DB Instance Plan.
+     * The ID of the plan.
      * 
      */
     @Export(name="planId", refs={String.class}, tree="[0]")
     private Output<String> planId;
 
     /**
-     * @return The ID of DB Instance Plan.
+     * @return The ID of the plan.
      * 
      */
     public Output<String> planId() {
         return this.planId;
     }
     /**
-     * Plan scheduling type. Valid values: `Postpone`, `Regular`.
+     * The execution mode of the plan. Valid values: `Postpone`, `Regular`.
      * 
      */
     @Export(name="planScheduleType", refs={String.class}, tree="[0]")
     private Output<String> planScheduleType;
 
     /**
-     * @return Plan scheduling type. Valid values: `Postpone`, `Regular`.
+     * @return The execution mode of the plan. Valid values: `Postpone`, `Regular`.
      * 
      */
     public Output<String> planScheduleType() {

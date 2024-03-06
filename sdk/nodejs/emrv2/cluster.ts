@@ -20,10 +20,16 @@ import * as utilities from "../utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
+ * import * as random from "@pulumi/random";
  *
  * const config = new pulumi.Config();
- * const name = config.get("name") || "terraform-example";
- * const defaultResourceGroups = alicloud.resourcemanager.getResourceGroups({});
+ * const name = config.get("name") || "tf-example";
+ * const defaultResourceGroups = alicloud.resourcemanager.getResourceGroups({
+ *     status: "OK",
+ * });
+ * const defaultKeys = alicloud.kms.getKeys({
+ *     status: "Enabled",
+ * });
  * const defaultZones = alicloud.getZones({
  *     availableInstanceType: "ecs.g7.xlarge",
  * });
@@ -37,7 +43,11 @@ import * as utilities from "../utilities";
  *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
  *     vswitchName: name,
  * });
- * const defaultEcsKeyPair = new alicloud.ecs.EcsKeyPair("defaultEcsKeyPair", {keyPairName: name});
+ * const defaultRandomInteger = new random.RandomInteger("defaultRandomInteger", {
+ *     max: 99999,
+ *     min: 10000,
+ * });
+ * const defaultEcsKeyPair = new alicloud.ecs.EcsKeyPair("defaultEcsKeyPair", {keyPairName: pulumi.interpolate`${name}-${defaultRandomInteger.result}`});
  * const defaultSecurityGroup = new alicloud.ecs.SecurityGroup("defaultSecurityGroup", {vpcId: defaultNetwork.id});
  * const defaultRole = new alicloud.ram.Role("defaultRole", {
  *     document: `    {
@@ -60,87 +70,78 @@ import * as utilities from "../utilities";
  *     force: true,
  * });
  * const defaultCluster = new alicloud.emrv2.Cluster("defaultCluster", {
- *     paymentType: "PayAsYouGo",
- *     clusterType: "DATALAKE",
- *     releaseVersion: "EMR-5.10.0",
- *     clusterName: name,
+ *     nodeGroups: [
+ *         {
+ *             vswitchIds: [defaultSwitch.id],
+ *             instanceTypes: ["ecs.g7.xlarge"],
+ *             nodeCount: 1,
+ *             spotInstanceRemedy: false,
+ *             dataDisks: [{
+ *                 count: 3,
+ *                 category: "cloud_essd",
+ *                 size: 80,
+ *                 performanceLevel: "PL0",
+ *             }],
+ *             nodeGroupName: "emr-master",
+ *             paymentType: "PayAsYouGo",
+ *             withPublicIp: false,
+ *             gracefulShutdown: false,
+ *             systemDisk: {
+ *                 category: "cloud_essd",
+ *                 size: 80,
+ *                 performanceLevel: "PL0",
+ *                 count: 1,
+ *             },
+ *             nodeGroupType: "MASTER",
+ *         },
+ *         {
+ *             spotInstanceRemedy: false,
+ *             nodeGroupType: "CORE",
+ *             vswitchIds: [defaultSwitch.id],
+ *             nodeCount: 2,
+ *             gracefulShutdown: false,
+ *             systemDisk: {
+ *                 performanceLevel: "PL0",
+ *                 count: 1,
+ *                 category: "cloud_essd",
+ *                 size: 80,
+ *             },
+ *             dataDisks: [{
+ *                 count: 3,
+ *                 performanceLevel: "PL0",
+ *                 category: "cloud_essd",
+ *                 size: 80,
+ *             }],
+ *             nodeGroupName: "emr-core",
+ *             paymentType: "PayAsYouGo",
+ *             instanceTypes: ["ecs.g7.xlarge"],
+ *             withPublicIp: false,
+ *         },
+ *     ],
  *     deployMode: "NORMAL",
- *     securityMode: "NORMAL",
+ *     tags: {
+ *         Created: "TF",
+ *         For: "example",
+ *     },
+ *     releaseVersion: "EMR-5.10.0",
  *     applications: [
  *         "HADOOP-COMMON",
  *         "HDFS",
  *         "YARN",
- *         "HIVE",
- *         "SPARK3",
- *         "TEZ",
- *     ],
- *     applicationConfigs: [
- *         {
- *             applicationName: "HIVE",
- *             configFileName: "hivemetastore-site.xml",
- *             configItemKey: "hive.metastore.type",
- *             configItemValue: "DLF",
- *             configScope: "CLUSTER",
- *         },
- *         {
- *             applicationName: "SPARK3",
- *             configFileName: "hive-site.xml",
- *             configItemKey: "hive.metastore.type",
- *             configItemValue: "DLF",
- *             configScope: "CLUSTER",
- *         },
  *     ],
  *     nodeAttributes: [{
- *         ramRole: defaultRole.name,
- *         securityGroupId: defaultSecurityGroup.id,
- *         vpcId: defaultNetwork.id,
  *         zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
  *         keyPairName: defaultEcsKeyPair.id,
+ *         dataDiskEncrypted: true,
+ *         dataDiskKmsKeyId: defaultKeys.then(defaultKeys => defaultKeys.ids?.[0]),
+ *         vpcId: defaultNetwork.id,
+ *         ramRole: defaultRole.name,
+ *         securityGroupId: defaultSecurityGroup.id,
  *     }],
- *     tags: {
- *         created: "tf",
- *     },
- *     nodeGroups: [
- *         {
- *             nodeGroupType: "MASTER",
- *             nodeGroupName: "emr-master",
- *             paymentType: "PayAsYouGo",
- *             vswitchIds: [defaultSwitch.id],
- *             withPublicIp: false,
- *             instanceTypes: ["ecs.g7.xlarge"],
- *             nodeCount: 1,
- *             systemDisk: {
- *                 category: "cloud_essd",
- *                 size: 80,
- *                 count: 1,
- *             },
- *             dataDisks: [{
- *                 category: "cloud_essd",
- *                 size: 80,
- *                 count: 3,
- *             }],
- *         },
- *         {
- *             nodeGroupType: "CORE",
- *             nodeGroupName: "emr-core",
- *             paymentType: "PayAsYouGo",
- *             vswitchIds: [defaultSwitch.id],
- *             withPublicIp: false,
- *             instanceTypes: ["ecs.g7.xlarge"],
- *             nodeCount: 3,
- *             systemDisk: {
- *                 category: "cloud_essd",
- *                 size: 80,
- *                 count: 1,
- *             },
- *             dataDisks: [{
- *                 category: "cloud_essd",
- *                 size: 80,
- *                 count: 3,
- *             }],
- *         },
- *     ],
  *     resourceGroupId: defaultResourceGroups.then(defaultResourceGroups => defaultResourceGroups.ids?.[0]),
+ *     clusterName: name,
+ *     paymentType: "PayAsYouGo",
+ *     clusterType: "DATAFLOW",
  * });
  * ```
  *

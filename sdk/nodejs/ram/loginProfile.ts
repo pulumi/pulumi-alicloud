@@ -7,9 +7,13 @@ import * as utilities from "../utilities";
 /**
  * Provides a RAM User Login Profile resource.
  *
- * > **NOTE:** Available since v1.0.0+.
+ * For information about RAM User Login Profile and how to use it, see [What is Login Profile](https://www.alibabacloud.com/help/en/ram/developer-reference/api-ram-2015-05-01-createloginprofile).
+ *
+ * > **NOTE:** Available since v1.0.0.
  *
  * ## Example Usage
+ *
+ * Basic Usage
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -30,10 +34,10 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * RAM login profile can be imported using the id or user name, e.g.
+ * RAM login profile can be imported using the id, e.g.
  *
  * ```sh
- * $ pulumi import alicloud:ram/loginProfile:LoginProfile example my-login
+ * $ pulumi import alicloud:ram/loginProfile:LoginProfile example <id>
  * ```
  */
 export class LoginProfile extends pulumi.CustomResource {
@@ -65,19 +69,19 @@ export class LoginProfile extends pulumi.CustomResource {
     }
 
     /**
-     * This parameter indicates whether the MFA needs to be bind when the user first logs in. Default value is `false`.
+     * Specifies whether an MFA device must be attached to the RAM user upon logon. Default value: `false`. Valid values: `true`, `false`.
      */
     public readonly mfaBindRequired!: pulumi.Output<boolean | undefined>;
     /**
-     * Password of the RAM user.
+     * The logon password of the RAM user. The password must meet the password strength requirements.
      */
     public readonly password!: pulumi.Output<string>;
     /**
-     * This parameter indicates whether the password needs to be reset when the user first logs in. Default value is `false`.
+     * Specifies whether the RAM user must change the password upon logon. Default value: `false`. Valid values: `true`, `false`.
      */
     public readonly passwordResetRequired!: pulumi.Output<boolean | undefined>;
     /**
-     * Name of the RAM user. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin with a hyphen.
+     * The name of the RAM user. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin with a hyphen.
      */
     public readonly userName!: pulumi.Output<string>;
 
@@ -123,19 +127,19 @@ export class LoginProfile extends pulumi.CustomResource {
  */
 export interface LoginProfileState {
     /**
-     * This parameter indicates whether the MFA needs to be bind when the user first logs in. Default value is `false`.
+     * Specifies whether an MFA device must be attached to the RAM user upon logon. Default value: `false`. Valid values: `true`, `false`.
      */
     mfaBindRequired?: pulumi.Input<boolean>;
     /**
-     * Password of the RAM user.
+     * The logon password of the RAM user. The password must meet the password strength requirements.
      */
     password?: pulumi.Input<string>;
     /**
-     * This parameter indicates whether the password needs to be reset when the user first logs in. Default value is `false`.
+     * Specifies whether the RAM user must change the password upon logon. Default value: `false`. Valid values: `true`, `false`.
      */
     passwordResetRequired?: pulumi.Input<boolean>;
     /**
-     * Name of the RAM user. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin with a hyphen.
+     * The name of the RAM user. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin with a hyphen.
      */
     userName?: pulumi.Input<string>;
 }
@@ -145,19 +149,19 @@ export interface LoginProfileState {
  */
 export interface LoginProfileArgs {
     /**
-     * This parameter indicates whether the MFA needs to be bind when the user first logs in. Default value is `false`.
+     * Specifies whether an MFA device must be attached to the RAM user upon logon. Default value: `false`. Valid values: `true`, `false`.
      */
     mfaBindRequired?: pulumi.Input<boolean>;
     /**
-     * Password of the RAM user.
+     * The logon password of the RAM user. The password must meet the password strength requirements.
      */
     password: pulumi.Input<string>;
     /**
-     * This parameter indicates whether the password needs to be reset when the user first logs in. Default value is `false`.
+     * Specifies whether the RAM user must change the password upon logon. Default value: `false`. Valid values: `true`, `false`.
      */
     passwordResetRequired?: pulumi.Input<boolean>;
     /**
-     * Name of the RAM user. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin with a hyphen.
+     * The name of the RAM user. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin with a hyphen.
      */
     userName: pulumi.Input<string>;
 }

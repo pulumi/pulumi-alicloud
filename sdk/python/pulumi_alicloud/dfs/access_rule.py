@@ -21,11 +21,11 @@ class AccessRuleArgs:
                  description: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a AccessRule resource.
-        :param pulumi.Input[str] access_group_id: The resource ID of Access Group.
-        :param pulumi.Input[str] network_segment: The NetworkSegment of the Access Rule.
-        :param pulumi.Input[int] priority: The Priority of the Access Rule. Valid values: `1` to `100`. **NOTE:** When multiple rules are matched by the same authorized object, the high-priority rule takes effect. `1` is the highest priority.
-        :param pulumi.Input[str] rw_access_type: The RWAccessType of the Access Rule. Valid values: `RDONLY`, `RDWR`.
-        :param pulumi.Input[str] description: The Description of the Access Rule.
+        :param pulumi.Input[str] access_group_id: Permission group resource ID. You must specify the permission group ID when creating a permission rule.
+        :param pulumi.Input[str] network_segment: The IP address or network segment of the authorized object.
+        :param pulumi.Input[int] priority: Permission rule priority. When the same authorization object matches multiple rules, the high-priority rule takes effect. Value range: 1~100,1 is the highest priority.
+        :param pulumi.Input[str] rw_access_type: The read and write permissions of the authorized object on the file system. Value: RDWR: readable and writable RDONLY: Read only.
+        :param pulumi.Input[str] description: Permission rule description.  No more than 32 characters in length.
         """
         pulumi.set(__self__, "access_group_id", access_group_id)
         pulumi.set(__self__, "network_segment", network_segment)
@@ -38,7 +38,7 @@ class AccessRuleArgs:
     @pulumi.getter(name="accessGroupId")
     def access_group_id(self) -> pulumi.Input[str]:
         """
-        The resource ID of Access Group.
+        Permission group resource ID. You must specify the permission group ID when creating a permission rule.
         """
         return pulumi.get(self, "access_group_id")
 
@@ -50,7 +50,7 @@ class AccessRuleArgs:
     @pulumi.getter(name="networkSegment")
     def network_segment(self) -> pulumi.Input[str]:
         """
-        The NetworkSegment of the Access Rule.
+        The IP address or network segment of the authorized object.
         """
         return pulumi.get(self, "network_segment")
 
@@ -62,7 +62,7 @@ class AccessRuleArgs:
     @pulumi.getter
     def priority(self) -> pulumi.Input[int]:
         """
-        The Priority of the Access Rule. Valid values: `1` to `100`. **NOTE:** When multiple rules are matched by the same authorized object, the high-priority rule takes effect. `1` is the highest priority.
+        Permission rule priority. When the same authorization object matches multiple rules, the high-priority rule takes effect. Value range: 1~100,1 is the highest priority.
         """
         return pulumi.get(self, "priority")
 
@@ -74,7 +74,7 @@ class AccessRuleArgs:
     @pulumi.getter(name="rwAccessType")
     def rw_access_type(self) -> pulumi.Input[str]:
         """
-        The RWAccessType of the Access Rule. Valid values: `RDONLY`, `RDWR`.
+        The read and write permissions of the authorized object on the file system. Value: RDWR: readable and writable RDONLY: Read only.
         """
         return pulumi.get(self, "rw_access_type")
 
@@ -86,7 +86,7 @@ class AccessRuleArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        The Description of the Access Rule.
+        Permission rule description.  No more than 32 characters in length.
         """
         return pulumi.get(self, "description")
 
@@ -100,23 +100,27 @@ class _AccessRuleState:
     def __init__(__self__, *,
                  access_group_id: Optional[pulumi.Input[str]] = None,
                  access_rule_id: Optional[pulumi.Input[str]] = None,
+                 create_time: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  network_segment: Optional[pulumi.Input[str]] = None,
                  priority: Optional[pulumi.Input[int]] = None,
                  rw_access_type: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering AccessRule resources.
-        :param pulumi.Input[str] access_group_id: The resource ID of Access Group.
-        :param pulumi.Input[str] access_rule_id: The ID of the Access Rule.
-        :param pulumi.Input[str] description: The Description of the Access Rule.
-        :param pulumi.Input[str] network_segment: The NetworkSegment of the Access Rule.
-        :param pulumi.Input[int] priority: The Priority of the Access Rule. Valid values: `1` to `100`. **NOTE:** When multiple rules are matched by the same authorized object, the high-priority rule takes effect. `1` is the highest priority.
-        :param pulumi.Input[str] rw_access_type: The RWAccessType of the Access Rule. Valid values: `RDONLY`, `RDWR`.
+        :param pulumi.Input[str] access_group_id: Permission group resource ID. You must specify the permission group ID when creating a permission rule.
+        :param pulumi.Input[str] access_rule_id: The unique identity of the permission rule, which is used to retrieve the permission rule for a specific day in the permission group.
+        :param pulumi.Input[str] create_time: Permission rule resource creation time.
+        :param pulumi.Input[str] description: Permission rule description.  No more than 32 characters in length.
+        :param pulumi.Input[str] network_segment: The IP address or network segment of the authorized object.
+        :param pulumi.Input[int] priority: Permission rule priority. When the same authorization object matches multiple rules, the high-priority rule takes effect. Value range: 1~100,1 is the highest priority.
+        :param pulumi.Input[str] rw_access_type: The read and write permissions of the authorized object on the file system. Value: RDWR: readable and writable RDONLY: Read only.
         """
         if access_group_id is not None:
             pulumi.set(__self__, "access_group_id", access_group_id)
         if access_rule_id is not None:
             pulumi.set(__self__, "access_rule_id", access_rule_id)
+        if create_time is not None:
+            pulumi.set(__self__, "create_time", create_time)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if network_segment is not None:
@@ -130,7 +134,7 @@ class _AccessRuleState:
     @pulumi.getter(name="accessGroupId")
     def access_group_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The resource ID of Access Group.
+        Permission group resource ID. You must specify the permission group ID when creating a permission rule.
         """
         return pulumi.get(self, "access_group_id")
 
@@ -142,7 +146,7 @@ class _AccessRuleState:
     @pulumi.getter(name="accessRuleId")
     def access_rule_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID of the Access Rule.
+        The unique identity of the permission rule, which is used to retrieve the permission rule for a specific day in the permission group.
         """
         return pulumi.get(self, "access_rule_id")
 
@@ -151,10 +155,22 @@ class _AccessRuleState:
         pulumi.set(self, "access_rule_id", value)
 
     @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        Permission rule resource creation time.
+        """
+        return pulumi.get(self, "create_time")
+
+    @create_time.setter
+    def create_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "create_time", value)
+
+    @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        The Description of the Access Rule.
+        Permission rule description.  No more than 32 characters in length.
         """
         return pulumi.get(self, "description")
 
@@ -166,7 +182,7 @@ class _AccessRuleState:
     @pulumi.getter(name="networkSegment")
     def network_segment(self) -> Optional[pulumi.Input[str]]:
         """
-        The NetworkSegment of the Access Rule.
+        The IP address or network segment of the authorized object.
         """
         return pulumi.get(self, "network_segment")
 
@@ -178,7 +194,7 @@ class _AccessRuleState:
     @pulumi.getter
     def priority(self) -> Optional[pulumi.Input[int]]:
         """
-        The Priority of the Access Rule. Valid values: `1` to `100`. **NOTE:** When multiple rules are matched by the same authorized object, the high-priority rule takes effect. `1` is the highest priority.
+        Permission rule priority. When the same authorization object matches multiple rules, the high-priority rule takes effect. Value range: 1~100,1 is the highest priority.
         """
         return pulumi.get(self, "priority")
 
@@ -190,7 +206,7 @@ class _AccessRuleState:
     @pulumi.getter(name="rwAccessType")
     def rw_access_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The RWAccessType of the Access Rule. Valid values: `RDONLY`, `RDWR`.
+        The read and write permissions of the authorized object on the file system. Value: RDWR: readable and writable RDONLY: Read only.
         """
         return pulumi.get(self, "rw_access_type")
 
@@ -213,7 +229,7 @@ class AccessRule(pulumi.CustomResource):
         """
         Provides a DFS Access Rule resource.
 
-        For information about DFS Access Rule and how to use it, see [What is Access Rule](https://www.alibabacloud.com/help/doc-detail/207144.htm).
+        For information about DFS Access Rule and how to use it, see [What is Access Rule](https://www.alibabacloud.com/help/en/aibaba-cloud-storage-services/latest/apsara-file-storage-for-hdfs).
 
         > **NOTE:** Available since v1.140.0.
 
@@ -228,17 +244,17 @@ class AccessRule(pulumi.CustomResource):
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
-            name = "example_name"
+            name = "terraform-example"
         default_access_group = alicloud.dfs.AccessGroup("defaultAccessGroup",
+            description="example",
             network_type="VPC",
-            access_group_name=name,
-            description=name)
+            access_group_name=name)
         default_access_rule = alicloud.dfs.AccessRule("defaultAccessRule",
-            network_segment="192.0.2.0/24",
-            access_group_id=default_access_group.id,
-            description=name,
+            description="example",
             rw_access_type="RDWR",
-            priority=10)
+            priority=1,
+            network_segment="192.168.81.1",
+            access_group_id=default_access_group.id)
         ```
 
         ## Import
@@ -251,11 +267,11 @@ class AccessRule(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] access_group_id: The resource ID of Access Group.
-        :param pulumi.Input[str] description: The Description of the Access Rule.
-        :param pulumi.Input[str] network_segment: The NetworkSegment of the Access Rule.
-        :param pulumi.Input[int] priority: The Priority of the Access Rule. Valid values: `1` to `100`. **NOTE:** When multiple rules are matched by the same authorized object, the high-priority rule takes effect. `1` is the highest priority.
-        :param pulumi.Input[str] rw_access_type: The RWAccessType of the Access Rule. Valid values: `RDONLY`, `RDWR`.
+        :param pulumi.Input[str] access_group_id: Permission group resource ID. You must specify the permission group ID when creating a permission rule.
+        :param pulumi.Input[str] description: Permission rule description.  No more than 32 characters in length.
+        :param pulumi.Input[str] network_segment: The IP address or network segment of the authorized object.
+        :param pulumi.Input[int] priority: Permission rule priority. When the same authorization object matches multiple rules, the high-priority rule takes effect. Value range: 1~100,1 is the highest priority.
+        :param pulumi.Input[str] rw_access_type: The read and write permissions of the authorized object on the file system. Value: RDWR: readable and writable RDONLY: Read only.
         """
         ...
     @overload
@@ -266,7 +282,7 @@ class AccessRule(pulumi.CustomResource):
         """
         Provides a DFS Access Rule resource.
 
-        For information about DFS Access Rule and how to use it, see [What is Access Rule](https://www.alibabacloud.com/help/doc-detail/207144.htm).
+        For information about DFS Access Rule and how to use it, see [What is Access Rule](https://www.alibabacloud.com/help/en/aibaba-cloud-storage-services/latest/apsara-file-storage-for-hdfs).
 
         > **NOTE:** Available since v1.140.0.
 
@@ -281,17 +297,17 @@ class AccessRule(pulumi.CustomResource):
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
-            name = "example_name"
+            name = "terraform-example"
         default_access_group = alicloud.dfs.AccessGroup("defaultAccessGroup",
+            description="example",
             network_type="VPC",
-            access_group_name=name,
-            description=name)
+            access_group_name=name)
         default_access_rule = alicloud.dfs.AccessRule("defaultAccessRule",
-            network_segment="192.0.2.0/24",
-            access_group_id=default_access_group.id,
-            description=name,
+            description="example",
             rw_access_type="RDWR",
-            priority=10)
+            priority=1,
+            network_segment="192.168.81.1",
+            access_group_id=default_access_group.id)
         ```
 
         ## Import
@@ -345,6 +361,7 @@ class AccessRule(pulumi.CustomResource):
                 raise TypeError("Missing required property 'rw_access_type'")
             __props__.__dict__["rw_access_type"] = rw_access_type
             __props__.__dict__["access_rule_id"] = None
+            __props__.__dict__["create_time"] = None
         super(AccessRule, __self__).__init__(
             'alicloud:dfs/accessRule:AccessRule',
             resource_name,
@@ -357,6 +374,7 @@ class AccessRule(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             access_group_id: Optional[pulumi.Input[str]] = None,
             access_rule_id: Optional[pulumi.Input[str]] = None,
+            create_time: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             network_segment: Optional[pulumi.Input[str]] = None,
             priority: Optional[pulumi.Input[int]] = None,
@@ -368,12 +386,13 @@ class AccessRule(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] access_group_id: The resource ID of Access Group.
-        :param pulumi.Input[str] access_rule_id: The ID of the Access Rule.
-        :param pulumi.Input[str] description: The Description of the Access Rule.
-        :param pulumi.Input[str] network_segment: The NetworkSegment of the Access Rule.
-        :param pulumi.Input[int] priority: The Priority of the Access Rule. Valid values: `1` to `100`. **NOTE:** When multiple rules are matched by the same authorized object, the high-priority rule takes effect. `1` is the highest priority.
-        :param pulumi.Input[str] rw_access_type: The RWAccessType of the Access Rule. Valid values: `RDONLY`, `RDWR`.
+        :param pulumi.Input[str] access_group_id: Permission group resource ID. You must specify the permission group ID when creating a permission rule.
+        :param pulumi.Input[str] access_rule_id: The unique identity of the permission rule, which is used to retrieve the permission rule for a specific day in the permission group.
+        :param pulumi.Input[str] create_time: Permission rule resource creation time.
+        :param pulumi.Input[str] description: Permission rule description.  No more than 32 characters in length.
+        :param pulumi.Input[str] network_segment: The IP address or network segment of the authorized object.
+        :param pulumi.Input[int] priority: Permission rule priority. When the same authorization object matches multiple rules, the high-priority rule takes effect. Value range: 1~100,1 is the highest priority.
+        :param pulumi.Input[str] rw_access_type: The read and write permissions of the authorized object on the file system. Value: RDWR: readable and writable RDONLY: Read only.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -381,6 +400,7 @@ class AccessRule(pulumi.CustomResource):
 
         __props__.__dict__["access_group_id"] = access_group_id
         __props__.__dict__["access_rule_id"] = access_rule_id
+        __props__.__dict__["create_time"] = create_time
         __props__.__dict__["description"] = description
         __props__.__dict__["network_segment"] = network_segment
         __props__.__dict__["priority"] = priority
@@ -391,7 +411,7 @@ class AccessRule(pulumi.CustomResource):
     @pulumi.getter(name="accessGroupId")
     def access_group_id(self) -> pulumi.Output[str]:
         """
-        The resource ID of Access Group.
+        Permission group resource ID. You must specify the permission group ID when creating a permission rule.
         """
         return pulumi.get(self, "access_group_id")
 
@@ -399,15 +419,23 @@ class AccessRule(pulumi.CustomResource):
     @pulumi.getter(name="accessRuleId")
     def access_rule_id(self) -> pulumi.Output[str]:
         """
-        The ID of the Access Rule.
+        The unique identity of the permission rule, which is used to retrieve the permission rule for a specific day in the permission group.
         """
         return pulumi.get(self, "access_rule_id")
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> pulumi.Output[str]:
+        """
+        Permission rule resource creation time.
+        """
+        return pulumi.get(self, "create_time")
 
     @property
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[str]]:
         """
-        The Description of the Access Rule.
+        Permission rule description.  No more than 32 characters in length.
         """
         return pulumi.get(self, "description")
 
@@ -415,7 +443,7 @@ class AccessRule(pulumi.CustomResource):
     @pulumi.getter(name="networkSegment")
     def network_segment(self) -> pulumi.Output[str]:
         """
-        The NetworkSegment of the Access Rule.
+        The IP address or network segment of the authorized object.
         """
         return pulumi.get(self, "network_segment")
 
@@ -423,7 +451,7 @@ class AccessRule(pulumi.CustomResource):
     @pulumi.getter
     def priority(self) -> pulumi.Output[int]:
         """
-        The Priority of the Access Rule. Valid values: `1` to `100`. **NOTE:** When multiple rules are matched by the same authorized object, the high-priority rule takes effect. `1` is the highest priority.
+        Permission rule priority. When the same authorization object matches multiple rules, the high-priority rule takes effect. Value range: 1~100,1 is the highest priority.
         """
         return pulumi.get(self, "priority")
 
@@ -431,7 +459,7 @@ class AccessRule(pulumi.CustomResource):
     @pulumi.getter(name="rwAccessType")
     def rw_access_type(self) -> pulumi.Output[str]:
         """
-        The RWAccessType of the Access Rule. Valid values: `RDONLY`, `RDWR`.
+        The read and write permissions of the authorized object on the file system. Value: RDWR: readable and writable RDONLY: Read only.
         """
         return pulumi.get(self, "rw_access_type")
 

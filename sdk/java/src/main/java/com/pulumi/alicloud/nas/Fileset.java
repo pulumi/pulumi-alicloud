@@ -75,7 +75,6 @@ import javax.annotation.Nullable;
  *             .storageType(&#34;advance_200&#34;)
  *             .fileSystemType(&#34;cpfs&#34;)
  *             .capacity(3600)
- *             .description(&#34;terraform-example&#34;)
  *             .zoneId(exampleZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[1].zoneId()))
  *             .vpcId(exampleNetwork.id())
  *             .vswitchId(exampleSwitch.id())

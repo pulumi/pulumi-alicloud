@@ -28,16 +28,34 @@ import (
 //
 // import (
 //
+//	"fmt"
+//
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/rocketmq"
+//	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := rocketmq.NewInstance(ctx, "example", &rocketmq.InstanceArgs{
-//				InstanceName: pulumi.String("tf-example-ons-instance"),
-//				Remark:       pulumi.String("tf-example-ons-instance-remark"),
+//			cfg := config.New(ctx, "")
+//			name := "tf-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			_, err := random.NewRandomInteger(ctx, "default", &random.RandomIntegerArgs{
+//				Min: pulumi.Int(10000),
+//				Max: pulumi.Int(99999),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = rocketmq.NewInstance(ctx, "example", &rocketmq.InstanceArgs{
+//				InstanceName: _default.Result.ApplyT(func(result int) (string, error) {
+//					return fmt.Sprintf("%v-%v", name, result), nil
+//				}).(pulumi.StringOutput),
+//				Remark: pulumi.String(name),
 //			})
 //			if err != nil {
 //				return err

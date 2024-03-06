@@ -27,6 +27,7 @@ import (
 //
 // import (
 //
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/expressconnect"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -34,29 +35,41 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := expressconnect.NewPhysicalConnection(ctx, "domestic", &expressconnect.PhysicalConnectionArgs{
+//			_, err := alicloud.NewProvider(ctx, "hz", &alicloud.ProviderArgs{
+//				Region: pulumi.String("cn-hangzhou"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = alicloud.NewProvider(ctx, "sgp", &alicloud.ProviderArgs{
+//				Region: pulumi.String("ap-southeast-1"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = expressconnect.NewPhysicalConnection(ctx, "domestic", &expressconnect.PhysicalConnectionArgs{
 //				AccessPointId:          pulumi.String("ap-cn-hangzhou-yh-B"),
-//				Bandwidth:              pulumi.String("100"),
-//				Description:            pulumi.String("my domestic connection"),
 //				LineOperator:           pulumi.String("CT"),
 //				PeerLocation:           pulumi.String("example_value"),
 //				PhysicalConnectionName: pulumi.String("example_value"),
-//				PortType:               pulumi.String("1000Base-LX"),
 //				Type:                   pulumi.String("VPC"),
-//			})
+//				Description:            pulumi.String("my domestic connection"),
+//				PortType:               pulumi.String("1000Base-LX"),
+//				Bandwidth:              pulumi.String("100"),
+//			}, pulumi.Provider(alicloud.Hz))
 //			if err != nil {
 //				return err
 //			}
 //			_, err = expressconnect.NewPhysicalConnection(ctx, "international", &expressconnect.PhysicalConnectionArgs{
 //				AccessPointId:          pulumi.String("ap-sg-singpore-A"),
-//				Bandwidth:              pulumi.String("100"),
-//				Description:            pulumi.String("my domestic connection"),
 //				LineOperator:           pulumi.String("Other"),
 //				PeerLocation:           pulumi.String("example_value"),
 //				PhysicalConnectionName: pulumi.String("example_value"),
-//				PortType:               pulumi.String("1000Base-LX"),
 //				Type:                   pulumi.String("VPC"),
-//			})
+//				Description:            pulumi.String("my domestic connection"),
+//				PortType:               pulumi.String("1000Base-LX"),
+//				Bandwidth:              pulumi.String("100"),
+//			}, pulumi.Provider(alicloud.Sgp))
 //			if err != nil {
 //				return err
 //			}

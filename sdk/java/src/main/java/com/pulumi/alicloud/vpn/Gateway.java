@@ -115,6 +115,20 @@ public class Gateway extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.description);
     }
     /**
+     * The backup public IP address of the VPN gateway. The second IP address assigned by the system to create an IPsec-VPN connection. This parameter is returned only when the VPN gateway supports the dual-tunnel mode.
+     * 
+     */
+    @Export(name="disasterRecoveryInternetIp", refs={String.class}, tree="[0]")
+    private Output<String> disasterRecoveryInternetIp;
+
+    /**
+     * @return The backup public IP address of the VPN gateway. The second IP address assigned by the system to create an IPsec-VPN connection. This parameter is returned only when the VPN gateway supports the dual-tunnel mode.
+     * 
+     */
+    public Output<String> disasterRecoveryInternetIp() {
+        return this.disasterRecoveryInternetIp;
+    }
+    /**
      * The ID of the backup VSwitch to which the VPN gateway is attached.
      * 
      */

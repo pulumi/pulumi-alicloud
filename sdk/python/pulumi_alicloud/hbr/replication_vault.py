@@ -225,6 +225,7 @@ class ReplicationVault(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
         config = pulumi.Config()
         source_region = config.get("sourceRegion")
@@ -233,7 +234,10 @@ class ReplicationVault(pulumi.CustomResource):
         source = alicloud.Provider("source", region=source_region)
         default_replication_vault_regions = alicloud.hbr.get_replication_vault_regions()
         replication = alicloud.Provider("replication", region=default_replication_vault_regions.regions[0].replication_region_id)
-        default_vault = alicloud.hbr.Vault("defaultVault", vault_name="terraform-example",
+        default_random_integer = random.RandomInteger("defaultRandomInteger",
+            min=10000,
+            max=99999)
+        default_vault = alicloud.hbr.Vault("defaultVault", vault_name=default_random_integer.result.apply(lambda result: f"terraform-example-{result}"),
         opts=pulumi.ResourceOptions(provider=alicloud["source"]))
         default_replication_vault = alicloud.hbr.ReplicationVault("defaultReplicationVault",
             replication_source_region_id=source_region,
@@ -280,6 +284,7 @@ class ReplicationVault(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
         config = pulumi.Config()
         source_region = config.get("sourceRegion")
@@ -288,7 +293,10 @@ class ReplicationVault(pulumi.CustomResource):
         source = alicloud.Provider("source", region=source_region)
         default_replication_vault_regions = alicloud.hbr.get_replication_vault_regions()
         replication = alicloud.Provider("replication", region=default_replication_vault_regions.regions[0].replication_region_id)
-        default_vault = alicloud.hbr.Vault("defaultVault", vault_name="terraform-example",
+        default_random_integer = random.RandomInteger("defaultRandomInteger",
+            min=10000,
+            max=99999)
+        default_vault = alicloud.hbr.Vault("defaultVault", vault_name=default_random_integer.result.apply(lambda result: f"terraform-example-{result}"),
         opts=pulumi.ResourceOptions(provider=alicloud["source"]))
         default_replication_vault = alicloud.hbr.ReplicationVault("defaultReplicationVault",
             replication_source_region_id=source_region,

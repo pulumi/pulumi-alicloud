@@ -18,48 +18,6 @@ import (
 //
 // > **NOTE:** Available in v1.194.0+.
 //
-// ## Example Usage
-//
-// # Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cloudfirewall"
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/resourcemanager"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			name := "AliyunTerraform"
-//			if param := cfg.Get("name"); param != "" {
-//				name = param
-//			}
-//			defaultAccount, err := resourcemanager.NewAccount(ctx, "defaultAccount", &resourcemanager.AccountArgs{
-//				DisplayName: pulumi.String(name),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = cloudfirewall.NewInstanceMember(ctx, "defaultInstanceMember", &cloudfirewall.InstanceMemberArgs{
-//				MemberDesc: pulumi.String(name),
-//				MemberUid:  defaultAccount.ID(),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // Cloud Firewall Instance Member can be imported using the id, e.g.

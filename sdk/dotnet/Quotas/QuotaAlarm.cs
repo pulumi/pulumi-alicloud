@@ -25,14 +25,23 @@ namespace Pulumi.AliCloud.Quotas
     /// using System.Linq;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
+    /// using Random = Pulumi.Random;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "terraform-example";
-    ///     var @default = new AliCloud.Quotas.QuotaAlarm("default", new()
+    ///     var defaultRandomInteger = new Random.RandomInteger("defaultRandomInteger", new()
     ///     {
+    ///         Max = 99999,
+    ///         Min = 10000,
+    ///     });
+    /// 
+    ///     var defaultQuotaAlarm = new AliCloud.Quotas.QuotaAlarm("defaultQuotaAlarm", new()
+    ///     {
+    ///         ProductCode = "gws",
     ///         QuotaActionCode = "q_desktop-count",
+    ///         QuotaAlarmName = defaultRandomInteger.Result.Apply(result =&gt; $"{name}-{result}"),
     ///         QuotaDimensions = new[]
     ///         {
     ///             new AliCloud.Quotas.Inputs.QuotaAlarmQuotaDimensionArgs
@@ -42,8 +51,6 @@ namespace Pulumi.AliCloud.Quotas
     ///             },
     ///         },
     ///         ThresholdPercent = 80,
-    ///         ProductCode = "gws",
-    ///         QuotaAlarmName = name,
     ///         ThresholdType = "used",
     ///     });
     /// 

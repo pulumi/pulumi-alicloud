@@ -28,28 +28,44 @@ namespace Pulumi.AliCloud.ExpressConnect
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
+    ///     var hz = new AliCloud.Provider("hz", new()
+    ///     {
+    ///         Region = "cn-hangzhou",
+    ///     });
+    /// 
+    ///     var sgp = new AliCloud.Provider("sgp", new()
+    ///     {
+    ///         Region = "ap-southeast-1",
+    ///     });
+    /// 
     ///     var domestic = new AliCloud.ExpressConnect.PhysicalConnection("domestic", new()
     ///     {
     ///         AccessPointId = "ap-cn-hangzhou-yh-B",
-    ///         Bandwidth = "100",
-    ///         Description = "my domestic connection",
     ///         LineOperator = "CT",
     ///         PeerLocation = "example_value",
     ///         PhysicalConnectionName = "example_value",
-    ///         PortType = "1000Base-LX",
     ///         Type = "VPC",
+    ///         Description = "my domestic connection",
+    ///         PortType = "1000Base-LX",
+    ///         Bandwidth = "100",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = alicloud.Hz,
     ///     });
     /// 
     ///     var international = new AliCloud.ExpressConnect.PhysicalConnection("international", new()
     ///     {
     ///         AccessPointId = "ap-sg-singpore-A",
-    ///         Bandwidth = "100",
-    ///         Description = "my domestic connection",
     ///         LineOperator = "Other",
     ///         PeerLocation = "example_value",
     ///         PhysicalConnectionName = "example_value",
-    ///         PortType = "1000Base-LX",
     ///         Type = "VPC",
+    ///         Description = "my domestic connection",
+    ///         PortType = "1000Base-LX",
+    ///         Bandwidth = "100",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = alicloud.Sgp,
     ///     });
     /// 
     /// });

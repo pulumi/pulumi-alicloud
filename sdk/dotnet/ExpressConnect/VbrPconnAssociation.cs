@@ -25,7 +25,6 @@ namespace Pulumi.AliCloud.ExpressConnect
     /// using System.Linq;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
-    /// using Random = Pulumi.Random;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
@@ -36,20 +35,14 @@ namespace Pulumi.AliCloud.ExpressConnect
     ///         NameRegex = "^preserved-NODELETING",
     ///     });
     /// 
-    ///     var vlanId = new Random.RandomInteger("vlanId", new()
-    ///     {
-    ///         Max = 2999,
-    ///         Min = 1,
-    ///     });
-    /// 
-    ///     var exampleVirtualBorderRouter = new AliCloud.ExpressConnect.VirtualBorderRouter("exampleVirtualBorderRouter", new()
+    ///     var @default = new AliCloud.ExpressConnect.VirtualBorderRouter("default", new()
     ///     {
     ///         LocalGatewayIp = "10.0.0.1",
     ///         PeerGatewayIp = "10.0.0.2",
     ///         PeeringSubnetMask = "255.255.255.252",
     ///         PhysicalConnectionId = examplePhysicalConnections.Apply(getPhysicalConnectionsResult =&gt; getPhysicalConnectionsResult.Connections[0]?.Id),
     ///         VirtualBorderRouterName = name,
-    ///         VlanId = vlanId.Id,
+    ///         VlanId = 110,
     ///         MinRxInterval = 1000,
     ///         MinTxInterval = 1000,
     ///         DetectMultiplier = 10,
@@ -64,9 +57,9 @@ namespace Pulumi.AliCloud.ExpressConnect
     ///         PeerGatewayIp = "10.0.0.6",
     ///         LocalGatewayIp = "10.0.0.5",
     ///         PhysicalConnectionId = examplePhysicalConnections.Apply(getPhysicalConnectionsResult =&gt; getPhysicalConnectionsResult.Connections[2]?.Id),
-    ///         VbrId = exampleVirtualBorderRouter.Id,
+    ///         VbrId = @default.Id,
     ///         PeeringSubnetMask = "255.255.255.252",
-    ///         VlanId = vlanId.Id.Apply(id =&gt; id + 2),
+    ///         VlanId = 1122,
     ///         EnableIpv6 = true,
     ///         LocalIpv6GatewayIp = "2408:4004:cc::3",
     ///         PeerIpv6GatewayIp = "2408:4004:cc::4",

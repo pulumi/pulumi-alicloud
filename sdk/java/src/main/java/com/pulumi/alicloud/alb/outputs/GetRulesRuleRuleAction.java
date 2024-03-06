@@ -35,7 +35,7 @@ public final class GetRulesRuleRuleAction {
      */
     private List<GetRulesRuleRuleActionInsertHeaderConfig> insertHeaderConfigs;
     /**
-     * @return The order of the forwarding rule actions. Valid values:1 to 50000. The actions are performed in ascending order. You cannot leave this parameter empty. Each value must be unique.
+     * @return The order of the forwarding rule actions.
      * 
      */
     private Integer order;
@@ -88,7 +88,7 @@ public final class GetRulesRuleRuleAction {
         return this.insertHeaderConfigs;
     }
     /**
-     * @return The order of the forwarding rule actions. Valid values:1 to 50000. The actions are performed in ascending order. You cannot leave this parameter empty. Each value must be unique.
+     * @return The order of the forwarding rule actions.
      * 
      */
     public Integer order() {

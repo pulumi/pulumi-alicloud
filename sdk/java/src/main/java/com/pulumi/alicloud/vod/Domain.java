@@ -23,7 +23,7 @@ import javax.annotation.Nullable;
  * 
  * For information about VOD Domain and how to use it, see [What is Domain](https://www.alibabacloud.com/help/product/29932.html).
  * 
- * &gt; **NOTE:** Available in v1.136.0+.
+ * &gt; **NOTE:** Available since v1.136.0+.
  * 
  * ## Example Usage
  * 
@@ -34,6 +34,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.random.RandomInteger;
+ * import com.pulumi.random.RandomIntegerArgs;
  * import com.pulumi.alicloud.vod.Domain;
  * import com.pulumi.alicloud.vod.DomainArgs;
  * import com.pulumi.alicloud.vod.inputs.DomainSourceArgs;
@@ -50,17 +52,22 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Domain(&#34;default&#34;, DomainArgs.builder()        
- *             .domainName(&#34;your_domain_name&#34;)
+ *         var defaultRandomInteger = new RandomInteger(&#34;defaultRandomInteger&#34;, RandomIntegerArgs.builder()        
+ *             .max(99999)
+ *             .min(10000)
+ *             .build());
+ * 
+ *         var defaultDomain = new Domain(&#34;defaultDomain&#34;, DomainArgs.builder()        
+ *             .domainName(defaultRandomInteger.result().applyValue(result -&gt; String.format(&#34;example-%s.com&#34;, result)))
  *             .scope(&#34;domestic&#34;)
  *             .sources(DomainSourceArgs.builder()
- *                 .sourceContent(&#34;your_source_content&#34;)
- *                 .sourcePort(&#34;80&#34;)
+ *                 .sourceContent(&#34;outin-c7405446108111ec9a7100163e0eb78b.oss-cn-beijing.aliyuncs.com&#34;)
+ *                 .sourcePort(&#34;443&#34;)
  *                 .sourceType(&#34;domain&#34;)
  *                 .build())
  *             .tags(Map.ofEntries(
- *                 Map.entry(&#34;key1&#34;, &#34;value1&#34;),
- *                 Map.entry(&#34;key2&#34;, &#34;value2&#34;)
+ *                 Map.entry(&#34;Created&#34;, &#34;terraform&#34;),
+ *                 Map.entry(&#34;For&#34;, &#34;example&#34;)
  *             ))
  *             .build());
  * 

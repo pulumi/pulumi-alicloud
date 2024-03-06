@@ -85,6 +85,9 @@ class GetRulesResult:
     @property
     @pulumi.getter
     def names(self) -> Sequence[str]:
+        """
+        A list of Rule names.
+        """
         return pulumi.get(self, "names")
 
     @property
@@ -100,11 +103,17 @@ class GetRulesResult:
     @property
     @pulumi.getter
     def rules(self) -> Sequence['outputs.GetRulesRuleResult']:
+        """
+        A list of Alb Rules. Each element contains the following attributes:
+        """
         return pulumi.get(self, "rules")
 
     @property
     @pulumi.getter
     def status(self) -> Optional[str]:
+        """
+        The status of the forwarding rule.
+        """
         return pulumi.get(self, "status")
 
 
@@ -137,21 +146,7 @@ def get_rules(ids: Optional[Sequence[str]] = None,
     """
     This data source provides the Alb Rules of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.133.0+.
-
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    ids = alicloud.alb.get_rules(ids=["example_id"])
-    pulumi.export("albRuleId1", ids.rules[0].id)
-    name_regex = alicloud.alb.get_rules(name_regex="^my-Rule")
-    pulumi.export("albRuleId2", name_regex.rules[0].id)
-    ```
+    > **NOTE:** Available since v1.133.0.
 
 
     :param Sequence[str] ids: A list of Rule IDs.
@@ -160,7 +155,7 @@ def get_rules(ids: Optional[Sequence[str]] = None,
     :param str name_regex: A regex string to filter results by Rule name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param Sequence[str] rule_ids: The rule ids.
-    :param str status: The status of the resource.
+    :param str status: The status of the forwarding rule. Valid values: `Provisioning`, `Configuring`, `Available`.
     """
     __args__ = dict()
     __args__['ids'] = ids
@@ -198,21 +193,7 @@ def get_rules_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None
     """
     This data source provides the Alb Rules of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.133.0+.
-
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    ids = alicloud.alb.get_rules(ids=["example_id"])
-    pulumi.export("albRuleId1", ids.rules[0].id)
-    name_regex = alicloud.alb.get_rules(name_regex="^my-Rule")
-    pulumi.export("albRuleId2", name_regex.rules[0].id)
-    ```
+    > **NOTE:** Available since v1.133.0.
 
 
     :param Sequence[str] ids: A list of Rule IDs.
@@ -221,6 +202,6 @@ def get_rules_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None
     :param str name_regex: A regex string to filter results by Rule name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param Sequence[str] rule_ids: The rule ids.
-    :param str status: The status of the resource.
+    :param str status: The status of the forwarding rule. Valid values: `Provisioning`, `Configuring`, `Available`.
     """
     ...

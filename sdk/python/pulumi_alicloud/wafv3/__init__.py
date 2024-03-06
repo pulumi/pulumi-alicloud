@@ -5,6 +5,7 @@
 from .. import _utilities
 import typing
 # Export this package's modules as members:
+from .defense_template import *
 from .domain import *
 from .get_domains import *
 from .get_instances import *

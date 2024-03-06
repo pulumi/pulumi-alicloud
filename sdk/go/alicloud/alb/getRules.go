@@ -13,45 +13,7 @@ import (
 
 // This data source provides the Alb Rules of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.133.0+.
-//
-// ## Example Usage
-//
-// # Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/alb"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			ids, err := alb.GetRules(ctx, &alb.GetRulesArgs{
-//				Ids: []string{
-//					"example_id",
-//				},
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("albRuleId1", ids.Rules[0].Id)
-//			nameRegex, err := alb.GetRules(ctx, &alb.GetRulesArgs{
-//				NameRegex: pulumi.StringRef("^my-Rule"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("albRuleId2", nameRegex.Rules[0].Id)
-//			return nil
-//		})
-//	}
-//
-// ```
+// > **NOTE:** Available since v1.133.0.
 func GetRules(ctx *pulumi.Context, args *GetRulesArgs, opts ...pulumi.InvokeOption) (*GetRulesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetRulesResult
@@ -76,23 +38,26 @@ type GetRulesArgs struct {
 	OutputFile *string `pulumi:"outputFile"`
 	// The rule ids.
 	RuleIds []string `pulumi:"ruleIds"`
-	// The status of the resource.
+	// The status of the forwarding rule. Valid values: `Provisioning`, `Configuring`, `Available`.
 	Status *string `pulumi:"status"`
 }
 
 // A collection of values returned by getRules.
 type GetRulesResult struct {
 	// The provider-assigned unique ID for this managed resource.
-	Id              string         `pulumi:"id"`
-	Ids             []string       `pulumi:"ids"`
-	ListenerIds     []string       `pulumi:"listenerIds"`
-	LoadBalancerIds []string       `pulumi:"loadBalancerIds"`
-	NameRegex       *string        `pulumi:"nameRegex"`
-	Names           []string       `pulumi:"names"`
-	OutputFile      *string        `pulumi:"outputFile"`
-	RuleIds         []string       `pulumi:"ruleIds"`
-	Rules           []GetRulesRule `pulumi:"rules"`
-	Status          *string        `pulumi:"status"`
+	Id              string   `pulumi:"id"`
+	Ids             []string `pulumi:"ids"`
+	ListenerIds     []string `pulumi:"listenerIds"`
+	LoadBalancerIds []string `pulumi:"loadBalancerIds"`
+	NameRegex       *string  `pulumi:"nameRegex"`
+	// A list of Rule names.
+	Names      []string `pulumi:"names"`
+	OutputFile *string  `pulumi:"outputFile"`
+	RuleIds    []string `pulumi:"ruleIds"`
+	// A list of Alb Rules. Each element contains the following attributes:
+	Rules []GetRulesRule `pulumi:"rules"`
+	// The status of the forwarding rule.
+	Status *string `pulumi:"status"`
 }
 
 func GetRulesOutput(ctx *pulumi.Context, args GetRulesOutputArgs, opts ...pulumi.InvokeOption) GetRulesResultOutput {
@@ -122,7 +87,7 @@ type GetRulesOutputArgs struct {
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The rule ids.
 	RuleIds pulumi.StringArrayInput `pulumi:"ruleIds"`
-	// The status of the resource.
+	// The status of the forwarding rule. Valid values: `Provisioning`, `Configuring`, `Available`.
 	Status pulumi.StringPtrInput `pulumi:"status"`
 }
 
@@ -166,6 +131,7 @@ func (o GetRulesResultOutput) NameRegex() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetRulesResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
 }
 
+// A list of Rule names.
 func (o GetRulesResultOutput) Names() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetRulesResult) []string { return v.Names }).(pulumi.StringArrayOutput)
 }
@@ -178,10 +144,12 @@ func (o GetRulesResultOutput) RuleIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetRulesResult) []string { return v.RuleIds }).(pulumi.StringArrayOutput)
 }
 
+// A list of Alb Rules. Each element contains the following attributes:
 func (o GetRulesResultOutput) Rules() GetRulesRuleArrayOutput {
 	return o.ApplyT(func(v GetRulesResult) []GetRulesRule { return v.Rules }).(GetRulesRuleArrayOutput)
 }
 
+// The status of the forwarding rule.
 func (o GetRulesResultOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetRulesResult) *string { return v.Status }).(pulumi.StringPtrOutput)
 }

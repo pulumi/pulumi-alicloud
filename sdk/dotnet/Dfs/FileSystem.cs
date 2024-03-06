@@ -12,7 +12,7 @@ namespace Pulumi.AliCloud.Dfs
     /// <summary>
     /// Provides a DFS File System resource.
     /// 
-    /// For information about DFS File System and how to use it, see [What is File System](https://www.alibabacloud.com/help/doc-detail/207144.htm).
+    /// For information about DFS File System and how to use it, see [What is File System](https://www.alibabacloud.com/help/en/aibaba-cloud-storage-services/latest/apsara-file-storage-for-hdfs).
     /// 
     /// &gt; **NOTE:** Available since v1.140.0.
     /// 
@@ -25,22 +25,34 @@ namespace Pulumi.AliCloud.Dfs
     /// using System.Linq;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
+    /// using Random = Pulumi.Random;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     var config = new Config();
-    ///     var name = config.Get("name") ?? "tf-example";
+    ///     var name = config.Get("name") ?? "terraform-example";
+    ///     var defaultRandomInteger = new Random.RandomInteger("defaultRandomInteger", new()
+    ///     {
+    ///         Min = 10000,
+    ///         Max = 99999,
+    ///     });
+    /// 
     ///     var defaultZones = AliCloud.Dfs.GetZones.Invoke();
+    /// 
+    ///     var zoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.ZoneId);
+    /// 
+    ///     var storageType = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Options[0]?.StorageType);
     /// 
     ///     var defaultFileSystem = new AliCloud.Dfs.FileSystem("defaultFileSystem", new()
     ///     {
-    ///         StorageType = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Options[0]?.StorageType),
-    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.ZoneId),
     ///         ProtocolType = "HDFS",
     ///         Description = name,
-    ///         FileSystemName = name,
-    ///         ThroughputMode = "Standard",
+    ///         FileSystemName = defaultRandomInteger.Result.Apply(result =&gt; $"{name}-{result}"),
     ///         SpaceCapacity = 1024,
+    ///         ThroughputMode = "Provisioned",
+    ///         ProvisionedThroughputInMiBps = 512,
+    ///         StorageType = storageType,
+    ///         ZoneId = zoneId,
     ///     });
     /// 
     /// });
@@ -58,49 +70,75 @@ namespace Pulumi.AliCloud.Dfs
     public partial class FileSystem : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The description of the File system.
+        /// The creation time of the file system instance.
+        /// </summary>
+        [Output("createTime")]
+        public Output<string> CreateTime { get; private set; } = null!;
+
+        /// <summary>
+        /// Redundancy mode of the file system. Value:
+        /// - LRS (default): Local redundancy.
+        /// - ZRS: Same-City redundancy. When ZRS is selected, zoneId is a string consisting of multiple zones that are expected to be redundant in the same city, for example,  'zoneId1,zoneId2 '.
+        /// </summary>
+        [Output("dataRedundancyType")]
+        public Output<string?> DataRedundancyType { get; private set; } = null!;
+
+        /// <summary>
+        /// The description of the file system resource. No more than 32 characters in length.
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the File system.
+        /// The file system name. The naming rules are as follows: The length is 6~64 characters. Globally unique and cannot be an empty string. English letters are supported and can contain numbers, underscores (_), and dashes (-).
         /// </summary>
         [Output("fileSystemName")]
         public Output<string> FileSystemName { get; private set; } = null!;
 
         /// <summary>
-        /// The protocol type. Valid values: `HDFS`.
+        /// Save set sequence number, the user selects the content of the specified sequence number in the Save set.
+        /// </summary>
+        [Output("partitionNumber")]
+        public Output<int?> PartitionNumber { get; private set; } = null!;
+
+        /// <summary>
+        /// The protocol type.  Only HDFS(Hadoop Distributed File System) is supported.
         /// </summary>
         [Output("protocolType")]
         public Output<string> ProtocolType { get; private set; } = null!;
 
         /// <summary>
-        /// The preset throughput of the File system. Valid values: `1` to `1024`, Unit: MB/s. **NOTE:** Only when `throughput_mode` is `Provisioned`, this param is valid.
+        /// Provisioned throughput. This parameter is required when ThroughputMode is set to Provisioned. Unit: MB/s Value range: 1~5120.
         /// </summary>
         [Output("provisionedThroughputInMiBps")]
         public Output<int?> ProvisionedThroughputInMiBps { get; private set; } = null!;
 
         /// <summary>
-        /// The capacity budget of the File system. **NOTE:** When the actual data storage reaches the file system capacity budget, the data cannot be written. The file system capacity budget does not support shrinking.
+        /// File system capacity.  When the actual amount of data stored reaches the capacity of the file system, data cannot be written.  Unit: GiB.
         /// </summary>
         [Output("spaceCapacity")]
         public Output<int> SpaceCapacity { get; private set; } = null!;
 
         /// <summary>
-        /// The storage specifications of the File system. Valid values: `PERFORMANCE`, `STANDARD`.
+        /// Save set identity, used to select a user-specified save set.
+        /// </summary>
+        [Output("storageSetName")]
+        public Output<string?> StorageSetName { get; private set; } = null!;
+
+        /// <summary>
+        /// The storage media type. Value: STANDARD (default): STANDARD PERFORMANCE: PERFORMANCE type.
         /// </summary>
         [Output("storageType")]
         public Output<string> StorageType { get; private set; } = null!;
 
         /// <summary>
-        /// The throughput mode of the File system. Valid values: `Provisioned`, `Standard`.
+        /// The throughput mode. Value: Standard (default): Standard throughput Provisioned: preset throughput.
         /// </summary>
         [Output("throughputMode")]
-        public Output<string?> ThroughputMode { get; private set; } = null!;
+        public Output<string> ThroughputMode { get; private set; } = null!;
 
         /// <summary>
-        /// The zone ID of the File system.
+        /// Zone Id, which is used to create file system resources to the specified zone.
         /// </summary>
         [Output("zoneId")]
         public Output<string> ZoneId { get; private set; } = null!;
@@ -128,10 +166,6 @@ namespace Pulumi.AliCloud.Dfs
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
-                AdditionalSecretOutputs =
-                {
-                    "throughputMode",
-                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -156,59 +190,69 @@ namespace Pulumi.AliCloud.Dfs
     public sealed class FileSystemArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The description of the File system.
+        /// Redundancy mode of the file system. Value:
+        /// - LRS (default): Local redundancy.
+        /// - ZRS: Same-City redundancy. When ZRS is selected, zoneId is a string consisting of multiple zones that are expected to be redundant in the same city, for example,  'zoneId1,zoneId2 '.
+        /// </summary>
+        [Input("dataRedundancyType")]
+        public Input<string>? DataRedundancyType { get; set; }
+
+        /// <summary>
+        /// The description of the file system resource. No more than 32 characters in length.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The name of the File system.
+        /// The file system name. The naming rules are as follows: The length is 6~64 characters. Globally unique and cannot be an empty string. English letters are supported and can contain numbers, underscores (_), and dashes (-).
         /// </summary>
         [Input("fileSystemName", required: true)]
         public Input<string> FileSystemName { get; set; } = null!;
 
         /// <summary>
-        /// The protocol type. Valid values: `HDFS`.
+        /// Save set sequence number, the user selects the content of the specified sequence number in the Save set.
+        /// </summary>
+        [Input("partitionNumber")]
+        public Input<int>? PartitionNumber { get; set; }
+
+        /// <summary>
+        /// The protocol type.  Only HDFS(Hadoop Distributed File System) is supported.
         /// </summary>
         [Input("protocolType", required: true)]
         public Input<string> ProtocolType { get; set; } = null!;
 
         /// <summary>
-        /// The preset throughput of the File system. Valid values: `1` to `1024`, Unit: MB/s. **NOTE:** Only when `throughput_mode` is `Provisioned`, this param is valid.
+        /// Provisioned throughput. This parameter is required when ThroughputMode is set to Provisioned. Unit: MB/s Value range: 1~5120.
         /// </summary>
         [Input("provisionedThroughputInMiBps")]
         public Input<int>? ProvisionedThroughputInMiBps { get; set; }
 
         /// <summary>
-        /// The capacity budget of the File system. **NOTE:** When the actual data storage reaches the file system capacity budget, the data cannot be written. The file system capacity budget does not support shrinking.
+        /// File system capacity.  When the actual amount of data stored reaches the capacity of the file system, data cannot be written.  Unit: GiB.
         /// </summary>
         [Input("spaceCapacity", required: true)]
         public Input<int> SpaceCapacity { get; set; } = null!;
 
         /// <summary>
-        /// The storage specifications of the File system. Valid values: `PERFORMANCE`, `STANDARD`.
+        /// Save set identity, used to select a user-specified save set.
+        /// </summary>
+        [Input("storageSetName")]
+        public Input<string>? StorageSetName { get; set; }
+
+        /// <summary>
+        /// The storage media type. Value: STANDARD (default): STANDARD PERFORMANCE: PERFORMANCE type.
         /// </summary>
         [Input("storageType", required: true)]
         public Input<string> StorageType { get; set; } = null!;
 
-        [Input("throughputMode")]
-        private Input<string>? _throughputMode;
-
         /// <summary>
-        /// The throughput mode of the File system. Valid values: `Provisioned`, `Standard`.
+        /// The throughput mode. Value: Standard (default): Standard throughput Provisioned: preset throughput.
         /// </summary>
-        public Input<string>? ThroughputMode
-        {
-            get => _throughputMode;
-            set
-            {
-                var emptySecret = Output.CreateSecret(0);
-                _throughputMode = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
-            }
-        }
+        [Input("throughputMode")]
+        public Input<string>? ThroughputMode { get; set; }
 
         /// <summary>
-        /// The zone ID of the File system.
+        /// Zone Id, which is used to create file system resources to the specified zone.
         /// </summary>
         [Input("zoneId", required: true)]
         public Input<string> ZoneId { get; set; } = null!;
@@ -222,59 +266,75 @@ namespace Pulumi.AliCloud.Dfs
     public sealed class FileSystemState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The description of the File system.
+        /// The creation time of the file system instance.
+        /// </summary>
+        [Input("createTime")]
+        public Input<string>? CreateTime { get; set; }
+
+        /// <summary>
+        /// Redundancy mode of the file system. Value:
+        /// - LRS (default): Local redundancy.
+        /// - ZRS: Same-City redundancy. When ZRS is selected, zoneId is a string consisting of multiple zones that are expected to be redundant in the same city, for example,  'zoneId1,zoneId2 '.
+        /// </summary>
+        [Input("dataRedundancyType")]
+        public Input<string>? DataRedundancyType { get; set; }
+
+        /// <summary>
+        /// The description of the file system resource. No more than 32 characters in length.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The name of the File system.
+        /// The file system name. The naming rules are as follows: The length is 6~64 characters. Globally unique and cannot be an empty string. English letters are supported and can contain numbers, underscores (_), and dashes (-).
         /// </summary>
         [Input("fileSystemName")]
         public Input<string>? FileSystemName { get; set; }
 
         /// <summary>
-        /// The protocol type. Valid values: `HDFS`.
+        /// Save set sequence number, the user selects the content of the specified sequence number in the Save set.
+        /// </summary>
+        [Input("partitionNumber")]
+        public Input<int>? PartitionNumber { get; set; }
+
+        /// <summary>
+        /// The protocol type.  Only HDFS(Hadoop Distributed File System) is supported.
         /// </summary>
         [Input("protocolType")]
         public Input<string>? ProtocolType { get; set; }
 
         /// <summary>
-        /// The preset throughput of the File system. Valid values: `1` to `1024`, Unit: MB/s. **NOTE:** Only when `throughput_mode` is `Provisioned`, this param is valid.
+        /// Provisioned throughput. This parameter is required when ThroughputMode is set to Provisioned. Unit: MB/s Value range: 1~5120.
         /// </summary>
         [Input("provisionedThroughputInMiBps")]
         public Input<int>? ProvisionedThroughputInMiBps { get; set; }
 
         /// <summary>
-        /// The capacity budget of the File system. **NOTE:** When the actual data storage reaches the file system capacity budget, the data cannot be written. The file system capacity budget does not support shrinking.
+        /// File system capacity.  When the actual amount of data stored reaches the capacity of the file system, data cannot be written.  Unit: GiB.
         /// </summary>
         [Input("spaceCapacity")]
         public Input<int>? SpaceCapacity { get; set; }
 
         /// <summary>
-        /// The storage specifications of the File system. Valid values: `PERFORMANCE`, `STANDARD`.
+        /// Save set identity, used to select a user-specified save set.
+        /// </summary>
+        [Input("storageSetName")]
+        public Input<string>? StorageSetName { get; set; }
+
+        /// <summary>
+        /// The storage media type. Value: STANDARD (default): STANDARD PERFORMANCE: PERFORMANCE type.
         /// </summary>
         [Input("storageType")]
         public Input<string>? StorageType { get; set; }
 
-        [Input("throughputMode")]
-        private Input<string>? _throughputMode;
-
         /// <summary>
-        /// The throughput mode of the File system. Valid values: `Provisioned`, `Standard`.
+        /// The throughput mode. Value: Standard (default): Standard throughput Provisioned: preset throughput.
         /// </summary>
-        public Input<string>? ThroughputMode
-        {
-            get => _throughputMode;
-            set
-            {
-                var emptySecret = Output.CreateSecret(0);
-                _throughputMode = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
-            }
-        }
+        [Input("throughputMode")]
+        public Input<string>? ThroughputMode { get; set; }
 
         /// <summary>
-        /// The zone ID of the File system.
+        /// Zone Id, which is used to create file system resources to the specified zone.
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }

@@ -26,7 +26,7 @@ namespace Pulumi.AliCloud.Alb.Outputs
         /// </summary>
         public readonly string LoadBalancerId;
         /// <summary>
-        /// The priority of the rule. Valid values: 1 to 10000. A smaller value indicates a higher priority.  Note The priority of each rule within the same listener must be unique.
+        /// The priority of the rule.
         /// </summary>
         public readonly int Priority;
         /// <summary>
@@ -38,15 +38,15 @@ namespace Pulumi.AliCloud.Alb.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.GetRulesRuleRuleConditionResult> RuleConditions;
         /// <summary>
-        /// The first ID of the resource.
+        /// The ID of the Rule.
         /// </summary>
         public readonly string RuleId;
         /// <summary>
-        /// The name of the forwarding rule. The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
+        /// The name of the forwarding rule.
         /// </summary>
         public readonly string RuleName;
         /// <summary>
-        /// The status of the resource.
+        /// The status of the forwarding rule. Valid values: `Provisioning`, `Configuring`, `Available`.
         /// </summary>
         public readonly string Status;
 

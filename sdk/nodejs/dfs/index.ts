@@ -50,6 +50,11 @@ export type MountPoint = import("./mountPoint").MountPoint;
 export const MountPoint: typeof import("./mountPoint").MountPoint = null as any;
 utilities.lazyLoad(exports, ["MountPoint"], () => require("./mountPoint"));
 
+export { VscMountPointArgs, VscMountPointState } from "./vscMountPoint";
+export type VscMountPoint = import("./vscMountPoint").VscMountPoint;
+export const VscMountPoint: typeof import("./vscMountPoint").VscMountPoint = null as any;
+utilities.lazyLoad(exports, ["VscMountPoint"], () => require("./vscMountPoint"));
+
 
 const _module = {
     version: utilities.getVersion(),
@@ -63,6 +68,8 @@ const _module = {
                 return new FileSystem(name, <any>undefined, { urn })
             case "alicloud:dfs/mountPoint:MountPoint":
                 return new MountPoint(name, <any>undefined, { urn })
+            case "alicloud:dfs/vscMountPoint:VscMountPoint":
+                return new VscMountPoint(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
@@ -72,3 +79,4 @@ pulumi.runtime.registerResourceModule("alicloud", "dfs/accessGroup", _module)
 pulumi.runtime.registerResourceModule("alicloud", "dfs/accessRule", _module)
 pulumi.runtime.registerResourceModule("alicloud", "dfs/fileSystem", _module)
 pulumi.runtime.registerResourceModule("alicloud", "dfs/mountPoint", _module)
+pulumi.runtime.registerResourceModule("alicloud", "dfs/vscMountPoint", _module)

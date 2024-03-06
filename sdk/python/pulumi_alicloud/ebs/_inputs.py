@@ -17,6 +17,7 @@ __all__ = [
     'EnterpriseSnapshotPolicySpecialRetainRulesArgs',
     'EnterpriseSnapshotPolicySpecialRetainRulesRuleArgs',
     'EnterpriseSnapshotPolicyStorageRuleArgs',
+    'SolutionInstanceParameterArgs',
 ]
 
 @pulumi.input_type
@@ -299,5 +300,42 @@ class EnterpriseSnapshotPolicyStorageRuleArgs:
     @enable_immediate_access.setter
     def enable_immediate_access(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "enable_immediate_access", value)
+
+
+@pulumi.input_type
+class SolutionInstanceParameterArgs:
+    def __init__(__self__, *,
+                 parameter_key: pulumi.Input[str],
+                 parameter_value: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] parameter_key: Create parameter Key.
+        :param pulumi.Input[str] parameter_value: Create parameter Value.
+        """
+        pulumi.set(__self__, "parameter_key", parameter_key)
+        pulumi.set(__self__, "parameter_value", parameter_value)
+
+    @property
+    @pulumi.getter(name="parameterKey")
+    def parameter_key(self) -> pulumi.Input[str]:
+        """
+        Create parameter Key.
+        """
+        return pulumi.get(self, "parameter_key")
+
+    @parameter_key.setter
+    def parameter_key(self, value: pulumi.Input[str]):
+        pulumi.set(self, "parameter_key", value)
+
+    @property
+    @pulumi.getter(name="parameterValue")
+    def parameter_value(self) -> pulumi.Input[str]:
+        """
+        Create parameter Value.
+        """
+        return pulumi.get(self, "parameter_value")
+
+    @parameter_value.setter
+    def parameter_value(self, value: pulumi.Input[str]):
+        pulumi.set(self, "parameter_value", value)
 
 

@@ -53,7 +53,6 @@ namespace Pulumi.AliCloud.Nas
     ///         StorageType = "advance_200",
     ///         FileSystemType = "cpfs",
     ///         Capacity = 3600,
-    ///         Description = "terraform-example",
     ///         ZoneId = exampleZones.Apply(getZonesResult =&gt; getZonesResult.Zones[1]?.ZoneId),
     ///         VpcId = exampleNetwork.Id,
     ///         VswitchId = exampleSwitch.Id,

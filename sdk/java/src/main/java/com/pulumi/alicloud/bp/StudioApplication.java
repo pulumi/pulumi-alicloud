@@ -34,6 +34,10 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+ * import com.pulumi.alicloud.resourcemanager.inputs.GetResourceGroupsArgs;
+ * import com.pulumi.alicloud.ecs.EcsFunctions;
+ * import com.pulumi.alicloud.ecs.inputs.GetInstancesArgs;
  * import com.pulumi.alicloud.bp.StudioApplication;
  * import com.pulumi.alicloud.bp.StudioApplicationArgs;
  * import com.pulumi.alicloud.bp.inputs.StudioApplicationInstanceArgs;
@@ -50,17 +54,25 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new StudioApplication(&#34;default&#34;, StudioApplicationArgs.builder()        
- *             .applicationName(&#34;example_value&#34;)
- *             .areaId(&#34;example_value&#34;)
- *             .configuration(Map.of(&#34;enableMonitor&#34;, &#34;1&#34;))
+ *         final var config = ctx.config();
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
+ *         final var defaultResourceGroups = ResourcemanagerFunctions.getResourceGroups();
+ * 
+ *         final var defaultInstances = EcsFunctions.getInstances(GetInstancesArgs.builder()
+ *             .status(&#34;Running&#34;)
+ *             .build());
+ * 
+ *         var defaultStudioApplication = new StudioApplication(&#34;defaultStudioApplication&#34;, StudioApplicationArgs.builder()        
+ *             .applicationName(name)
+ *             .templateId(&#34;YAUUQIYRSV1CMFGX&#34;)
+ *             .resourceGroupId(defaultResourceGroups.applyValue(getResourceGroupsResult -&gt; getResourceGroupsResult.groups()[0].id()))
+ *             .areaId(&#34;cn-hangzhou&#34;)
  *             .instances(StudioApplicationInstanceArgs.builder()
- *                 .id(&#34;example_value&#34;)
- *                 .nodeName(&#34;example_value&#34;)
+ *                 .id(&#34;data.alicloud_instances.default.instances.0.id&#34;)
+ *                 .nodeName(&#34;data.alicloud_instances.default.instances.0.name&#34;)
  *                 .nodeType(&#34;ecs&#34;)
  *                 .build())
- *             .resourceGroupId(&#34;example_value&#34;)
- *             .templateId(&#34;example_value&#34;)
+ *             .configuration(Map.of(&#34;enableMonitor&#34;, &#34;1&#34;))
  *             .variables(Map.of(&#34;test&#34;, &#34;1&#34;))
  *             .build());
  * 

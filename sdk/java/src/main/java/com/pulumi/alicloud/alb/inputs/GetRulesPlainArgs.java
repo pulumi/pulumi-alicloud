@@ -106,14 +106,14 @@ public final class GetRulesPlainArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * The status of the resource.
+     * The status of the forwarding rule. Valid values: `Provisioning`, `Configuring`, `Available`.
      * 
      */
     @Import(name="status")
     private @Nullable String status;
 
     /**
-     * @return The status of the resource.
+     * @return The status of the forwarding rule. Valid values: `Provisioning`, `Configuring`, `Available`.
      * 
      */
     public Optional<String> status() {
@@ -257,7 +257,7 @@ public final class GetRulesPlainArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param status The status of the resource.
+         * @param status The status of the forwarding rule. Valid values: `Provisioning`, `Configuring`, `Available`.
          * 
          * @return builder
          * 

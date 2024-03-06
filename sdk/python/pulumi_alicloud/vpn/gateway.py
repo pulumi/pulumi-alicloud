@@ -346,6 +346,7 @@ class _GatewayState:
                  business_status: Optional[pulumi.Input[str]] = None,
                  create_time: Optional[pulumi.Input[int]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 disaster_recovery_internet_ip: Optional[pulumi.Input[str]] = None,
                  disaster_recovery_vswitch_id: Optional[pulumi.Input[str]] = None,
                  enable_ipsec: Optional[pulumi.Input[bool]] = None,
                  enable_ssl: Optional[pulumi.Input[bool]] = None,
@@ -372,6 +373,7 @@ class _GatewayState:
         :param pulumi.Input[str] business_status: The business status of the VPN gateway.
         :param pulumi.Input[int] create_time: The time when the VPN gateway was created.
         :param pulumi.Input[str] description: The description of the VPN gateway.
+        :param pulumi.Input[str] disaster_recovery_internet_ip: The backup public IP address of the VPN gateway. The second IP address assigned by the system to create an IPsec-VPN connection. This parameter is returned only when the VPN gateway supports the dual-tunnel mode.
         :param pulumi.Input[str] disaster_recovery_vswitch_id: The ID of the backup VSwitch to which the VPN gateway is attached.
         :param pulumi.Input[bool] enable_ipsec: Enable or Disable IPSec VPN. At least one type of VPN should be enabled.
         :param pulumi.Input[bool] enable_ssl: Enable or Disable SSL VPN.  At least one type of VPN should be enabled.
@@ -405,6 +407,8 @@ class _GatewayState:
             pulumi.set(__self__, "create_time", create_time)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if disaster_recovery_internet_ip is not None:
+            pulumi.set(__self__, "disaster_recovery_internet_ip", disaster_recovery_internet_ip)
         if disaster_recovery_vswitch_id is not None:
             pulumi.set(__self__, "disaster_recovery_vswitch_id", disaster_recovery_vswitch_id)
         if enable_ipsec is not None:
@@ -519,6 +523,18 @@ class _GatewayState:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="disasterRecoveryInternetIp")
+    def disaster_recovery_internet_ip(self) -> Optional[pulumi.Input[str]]:
+        """
+        The backup public IP address of the VPN gateway. The second IP address assigned by the system to create an IPsec-VPN connection. This parameter is returned only when the VPN gateway supports the dual-tunnel mode.
+        """
+        return pulumi.get(self, "disaster_recovery_internet_ip")
+
+    @disaster_recovery_internet_ip.setter
+    def disaster_recovery_internet_ip(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "disaster_recovery_internet_ip", value)
 
     @property
     @pulumi.getter(name="disasterRecoveryVswitchId")
@@ -886,6 +902,7 @@ class Gateway(pulumi.CustomResource):
             __props__.__dict__["vswitch_id"] = vswitch_id
             __props__.__dict__["business_status"] = None
             __props__.__dict__["create_time"] = None
+            __props__.__dict__["disaster_recovery_internet_ip"] = None
             __props__.__dict__["internet_ip"] = None
             __props__.__dict__["ssl_vpn_internet_ip"] = None
             __props__.__dict__["status"] = None
@@ -905,6 +922,7 @@ class Gateway(pulumi.CustomResource):
             business_status: Optional[pulumi.Input[str]] = None,
             create_time: Optional[pulumi.Input[int]] = None,
             description: Optional[pulumi.Input[str]] = None,
+            disaster_recovery_internet_ip: Optional[pulumi.Input[str]] = None,
             disaster_recovery_vswitch_id: Optional[pulumi.Input[str]] = None,
             enable_ipsec: Optional[pulumi.Input[bool]] = None,
             enable_ssl: Optional[pulumi.Input[bool]] = None,
@@ -936,6 +954,7 @@ class Gateway(pulumi.CustomResource):
         :param pulumi.Input[str] business_status: The business status of the VPN gateway.
         :param pulumi.Input[int] create_time: The time when the VPN gateway was created.
         :param pulumi.Input[str] description: The description of the VPN gateway.
+        :param pulumi.Input[str] disaster_recovery_internet_ip: The backup public IP address of the VPN gateway. The second IP address assigned by the system to create an IPsec-VPN connection. This parameter is returned only when the VPN gateway supports the dual-tunnel mode.
         :param pulumi.Input[str] disaster_recovery_vswitch_id: The ID of the backup VSwitch to which the VPN gateway is attached.
         :param pulumi.Input[bool] enable_ipsec: Enable or Disable IPSec VPN. At least one type of VPN should be enabled.
         :param pulumi.Input[bool] enable_ssl: Enable or Disable SSL VPN.  At least one type of VPN should be enabled.
@@ -967,6 +986,7 @@ class Gateway(pulumi.CustomResource):
         __props__.__dict__["business_status"] = business_status
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["description"] = description
+        __props__.__dict__["disaster_recovery_internet_ip"] = disaster_recovery_internet_ip
         __props__.__dict__["disaster_recovery_vswitch_id"] = disaster_recovery_vswitch_id
         __props__.__dict__["enable_ipsec"] = enable_ipsec
         __props__.__dict__["enable_ssl"] = enable_ssl
@@ -1034,6 +1054,14 @@ class Gateway(pulumi.CustomResource):
         The description of the VPN gateway.
         """
         return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="disasterRecoveryInternetIp")
+    def disaster_recovery_internet_ip(self) -> pulumi.Output[str]:
+        """
+        The backup public IP address of the VPN gateway. The second IP address assigned by the system to create an IPsec-VPN connection. This parameter is returned only when the VPN gateway supports the dual-tunnel mode.
+        """
+        return pulumi.get(self, "disaster_recovery_internet_ip")
 
     @property
     @pulumi.getter(name="disasterRecoveryVswitchId")

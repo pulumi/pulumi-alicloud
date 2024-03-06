@@ -380,7 +380,7 @@ class Domain(pulumi.CustomResource):
 
         For information about VOD Domain and how to use it, see [What is Domain](https://www.alibabacloud.com/help/product/29932.html).
 
-        > **NOTE:** Available in v1.136.0+.
+        > **NOTE:** Available since v1.136.0+.
 
         ## Example Usage
 
@@ -389,18 +389,22 @@ class Domain(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
-        default = alicloud.vod.Domain("default",
-            domain_name="your_domain_name",
+        default_random_integer = random.RandomInteger("defaultRandomInteger",
+            max=99999,
+            min=10000)
+        default_domain = alicloud.vod.Domain("defaultDomain",
+            domain_name=default_random_integer.result.apply(lambda result: f"example-{result}.com"),
             scope="domestic",
             sources=[alicloud.vod.DomainSourceArgs(
-                source_content="your_source_content",
-                source_port="80",
+                source_content="outin-c7405446108111ec9a7100163e0eb78b.oss-cn-beijing.aliyuncs.com",
+                source_port="443",
                 source_type="domain",
             )],
             tags={
-                "key1": "value1",
-                "key2": "value2",
+                "Created": "terraform",
+                "For": "example",
             })
         ```
 
@@ -432,7 +436,7 @@ class Domain(pulumi.CustomResource):
 
         For information about VOD Domain and how to use it, see [What is Domain](https://www.alibabacloud.com/help/product/29932.html).
 
-        > **NOTE:** Available in v1.136.0+.
+        > **NOTE:** Available since v1.136.0+.
 
         ## Example Usage
 
@@ -441,18 +445,22 @@ class Domain(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
-        default = alicloud.vod.Domain("default",
-            domain_name="your_domain_name",
+        default_random_integer = random.RandomInteger("defaultRandomInteger",
+            max=99999,
+            min=10000)
+        default_domain = alicloud.vod.Domain("defaultDomain",
+            domain_name=default_random_integer.result.apply(lambda result: f"example-{result}.com"),
             scope="domestic",
             sources=[alicloud.vod.DomainSourceArgs(
-                source_content="your_source_content",
-                source_port="80",
+                source_content="outin-c7405446108111ec9a7100163e0eb78b.oss-cn-beijing.aliyuncs.com",
+                source_port="443",
                 source_type="domain",
             )],
             tags={
-                "key1": "value1",
-                "key2": "value2",
+                "Created": "terraform",
+                "For": "example",
             })
         ```
 

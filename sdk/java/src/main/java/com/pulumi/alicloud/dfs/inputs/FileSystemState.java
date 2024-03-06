@@ -17,14 +17,48 @@ public final class FileSystemState extends com.pulumi.resources.ResourceArgs {
     public static final FileSystemState Empty = new FileSystemState();
 
     /**
-     * The description of the File system.
+     * The creation time of the file system instance.
+     * 
+     */
+    @Import(name="createTime")
+    private @Nullable Output<String> createTime;
+
+    /**
+     * @return The creation time of the file system instance.
+     * 
+     */
+    public Optional<Output<String>> createTime() {
+        return Optional.ofNullable(this.createTime);
+    }
+
+    /**
+     * Redundancy mode of the file system. Value:
+     * - LRS (default): Local redundancy.
+     * - ZRS: Same-City redundancy. When ZRS is selected, zoneId is a string consisting of multiple zones that are expected to be redundant in the same city, for example,  &#39;zoneId1,zoneId2 &#39;.
+     * 
+     */
+    @Import(name="dataRedundancyType")
+    private @Nullable Output<String> dataRedundancyType;
+
+    /**
+     * @return Redundancy mode of the file system. Value:
+     * - LRS (default): Local redundancy.
+     * - ZRS: Same-City redundancy. When ZRS is selected, zoneId is a string consisting of multiple zones that are expected to be redundant in the same city, for example,  &#39;zoneId1,zoneId2 &#39;.
+     * 
+     */
+    public Optional<Output<String>> dataRedundancyType() {
+        return Optional.ofNullable(this.dataRedundancyType);
+    }
+
+    /**
+     * The description of the file system resource. No more than 32 characters in length.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return The description of the File system.
+     * @return The description of the file system resource. No more than 32 characters in length.
      * 
      */
     public Optional<Output<String>> description() {
@@ -32,14 +66,14 @@ public final class FileSystemState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The name of the File system.
+     * The file system name. The naming rules are as follows: The length is 6~64 characters. Globally unique and cannot be an empty string. English letters are supported and can contain numbers, underscores (_), and dashes (-).
      * 
      */
     @Import(name="fileSystemName")
     private @Nullable Output<String> fileSystemName;
 
     /**
-     * @return The name of the File system.
+     * @return The file system name. The naming rules are as follows: The length is 6~64 characters. Globally unique and cannot be an empty string. English letters are supported and can contain numbers, underscores (_), and dashes (-).
      * 
      */
     public Optional<Output<String>> fileSystemName() {
@@ -47,14 +81,29 @@ public final class FileSystemState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The protocol type. Valid values: `HDFS`.
+     * Save set sequence number, the user selects the content of the specified sequence number in the Save set.
+     * 
+     */
+    @Import(name="partitionNumber")
+    private @Nullable Output<Integer> partitionNumber;
+
+    /**
+     * @return Save set sequence number, the user selects the content of the specified sequence number in the Save set.
+     * 
+     */
+    public Optional<Output<Integer>> partitionNumber() {
+        return Optional.ofNullable(this.partitionNumber);
+    }
+
+    /**
+     * The protocol type.  Only HDFS(Hadoop Distributed File System) is supported.
      * 
      */
     @Import(name="protocolType")
     private @Nullable Output<String> protocolType;
 
     /**
-     * @return The protocol type. Valid values: `HDFS`.
+     * @return The protocol type.  Only HDFS(Hadoop Distributed File System) is supported.
      * 
      */
     public Optional<Output<String>> protocolType() {
@@ -62,14 +111,14 @@ public final class FileSystemState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The preset throughput of the File system. Valid values: `1` to `1024`, Unit: MB/s. **NOTE:** Only when `throughput_mode` is `Provisioned`, this param is valid.
+     * Provisioned throughput. This parameter is required when ThroughputMode is set to Provisioned. Unit: MB/s Value range: 1~5120.
      * 
      */
     @Import(name="provisionedThroughputInMiBps")
     private @Nullable Output<Integer> provisionedThroughputInMiBps;
 
     /**
-     * @return The preset throughput of the File system. Valid values: `1` to `1024`, Unit: MB/s. **NOTE:** Only when `throughput_mode` is `Provisioned`, this param is valid.
+     * @return Provisioned throughput. This parameter is required when ThroughputMode is set to Provisioned. Unit: MB/s Value range: 1~5120.
      * 
      */
     public Optional<Output<Integer>> provisionedThroughputInMiBps() {
@@ -77,14 +126,14 @@ public final class FileSystemState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The capacity budget of the File system. **NOTE:** When the actual data storage reaches the file system capacity budget, the data cannot be written. The file system capacity budget does not support shrinking.
+     * File system capacity.  When the actual amount of data stored reaches the capacity of the file system, data cannot be written.  Unit: GiB.
      * 
      */
     @Import(name="spaceCapacity")
     private @Nullable Output<Integer> spaceCapacity;
 
     /**
-     * @return The capacity budget of the File system. **NOTE:** When the actual data storage reaches the file system capacity budget, the data cannot be written. The file system capacity budget does not support shrinking.
+     * @return File system capacity.  When the actual amount of data stored reaches the capacity of the file system, data cannot be written.  Unit: GiB.
      * 
      */
     public Optional<Output<Integer>> spaceCapacity() {
@@ -92,14 +141,29 @@ public final class FileSystemState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The storage specifications of the File system. Valid values: `PERFORMANCE`, `STANDARD`.
+     * Save set identity, used to select a user-specified save set.
+     * 
+     */
+    @Import(name="storageSetName")
+    private @Nullable Output<String> storageSetName;
+
+    /**
+     * @return Save set identity, used to select a user-specified save set.
+     * 
+     */
+    public Optional<Output<String>> storageSetName() {
+        return Optional.ofNullable(this.storageSetName);
+    }
+
+    /**
+     * The storage media type. Value: STANDARD (default): STANDARD PERFORMANCE: PERFORMANCE type.
      * 
      */
     @Import(name="storageType")
     private @Nullable Output<String> storageType;
 
     /**
-     * @return The storage specifications of the File system. Valid values: `PERFORMANCE`, `STANDARD`.
+     * @return The storage media type. Value: STANDARD (default): STANDARD PERFORMANCE: PERFORMANCE type.
      * 
      */
     public Optional<Output<String>> storageType() {
@@ -107,14 +171,14 @@ public final class FileSystemState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The throughput mode of the File system. Valid values: `Provisioned`, `Standard`.
+     * The throughput mode. Value: Standard (default): Standard throughput Provisioned: preset throughput.
      * 
      */
     @Import(name="throughputMode")
     private @Nullable Output<String> throughputMode;
 
     /**
-     * @return The throughput mode of the File system. Valid values: `Provisioned`, `Standard`.
+     * @return The throughput mode. Value: Standard (default): Standard throughput Provisioned: preset throughput.
      * 
      */
     public Optional<Output<String>> throughputMode() {
@@ -122,14 +186,14 @@ public final class FileSystemState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The zone ID of the File system.
+     * Zone Id, which is used to create file system resources to the specified zone.
      * 
      */
     @Import(name="zoneId")
     private @Nullable Output<String> zoneId;
 
     /**
-     * @return The zone ID of the File system.
+     * @return Zone Id, which is used to create file system resources to the specified zone.
      * 
      */
     public Optional<Output<String>> zoneId() {
@@ -139,11 +203,15 @@ public final class FileSystemState extends com.pulumi.resources.ResourceArgs {
     private FileSystemState() {}
 
     private FileSystemState(FileSystemState $) {
+        this.createTime = $.createTime;
+        this.dataRedundancyType = $.dataRedundancyType;
         this.description = $.description;
         this.fileSystemName = $.fileSystemName;
+        this.partitionNumber = $.partitionNumber;
         this.protocolType = $.protocolType;
         this.provisionedThroughputInMiBps = $.provisionedThroughputInMiBps;
         this.spaceCapacity = $.spaceCapacity;
+        this.storageSetName = $.storageSetName;
         this.storageType = $.storageType;
         this.throughputMode = $.throughputMode;
         this.zoneId = $.zoneId;
@@ -168,7 +236,53 @@ public final class FileSystemState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description The description of the File system.
+         * @param createTime The creation time of the file system instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createTime(@Nullable Output<String> createTime) {
+            $.createTime = createTime;
+            return this;
+        }
+
+        /**
+         * @param createTime The creation time of the file system instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createTime(String createTime) {
+            return createTime(Output.of(createTime));
+        }
+
+        /**
+         * @param dataRedundancyType Redundancy mode of the file system. Value:
+         * - LRS (default): Local redundancy.
+         * - ZRS: Same-City redundancy. When ZRS is selected, zoneId is a string consisting of multiple zones that are expected to be redundant in the same city, for example,  &#39;zoneId1,zoneId2 &#39;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dataRedundancyType(@Nullable Output<String> dataRedundancyType) {
+            $.dataRedundancyType = dataRedundancyType;
+            return this;
+        }
+
+        /**
+         * @param dataRedundancyType Redundancy mode of the file system. Value:
+         * - LRS (default): Local redundancy.
+         * - ZRS: Same-City redundancy. When ZRS is selected, zoneId is a string consisting of multiple zones that are expected to be redundant in the same city, for example,  &#39;zoneId1,zoneId2 &#39;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dataRedundancyType(String dataRedundancyType) {
+            return dataRedundancyType(Output.of(dataRedundancyType));
+        }
+
+        /**
+         * @param description The description of the file system resource. No more than 32 characters in length.
          * 
          * @return builder
          * 
@@ -179,7 +293,7 @@ public final class FileSystemState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description The description of the File system.
+         * @param description The description of the file system resource. No more than 32 characters in length.
          * 
          * @return builder
          * 
@@ -189,7 +303,7 @@ public final class FileSystemState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param fileSystemName The name of the File system.
+         * @param fileSystemName The file system name. The naming rules are as follows: The length is 6~64 characters. Globally unique and cannot be an empty string. English letters are supported and can contain numbers, underscores (_), and dashes (-).
          * 
          * @return builder
          * 
@@ -200,7 +314,7 @@ public final class FileSystemState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param fileSystemName The name of the File system.
+         * @param fileSystemName The file system name. The naming rules are as follows: The length is 6~64 characters. Globally unique and cannot be an empty string. English letters are supported and can contain numbers, underscores (_), and dashes (-).
          * 
          * @return builder
          * 
@@ -210,7 +324,28 @@ public final class FileSystemState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param protocolType The protocol type. Valid values: `HDFS`.
+         * @param partitionNumber Save set sequence number, the user selects the content of the specified sequence number in the Save set.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder partitionNumber(@Nullable Output<Integer> partitionNumber) {
+            $.partitionNumber = partitionNumber;
+            return this;
+        }
+
+        /**
+         * @param partitionNumber Save set sequence number, the user selects the content of the specified sequence number in the Save set.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder partitionNumber(Integer partitionNumber) {
+            return partitionNumber(Output.of(partitionNumber));
+        }
+
+        /**
+         * @param protocolType The protocol type.  Only HDFS(Hadoop Distributed File System) is supported.
          * 
          * @return builder
          * 
@@ -221,7 +356,7 @@ public final class FileSystemState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param protocolType The protocol type. Valid values: `HDFS`.
+         * @param protocolType The protocol type.  Only HDFS(Hadoop Distributed File System) is supported.
          * 
          * @return builder
          * 
@@ -231,7 +366,7 @@ public final class FileSystemState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param provisionedThroughputInMiBps The preset throughput of the File system. Valid values: `1` to `1024`, Unit: MB/s. **NOTE:** Only when `throughput_mode` is `Provisioned`, this param is valid.
+         * @param provisionedThroughputInMiBps Provisioned throughput. This parameter is required when ThroughputMode is set to Provisioned. Unit: MB/s Value range: 1~5120.
          * 
          * @return builder
          * 
@@ -242,7 +377,7 @@ public final class FileSystemState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param provisionedThroughputInMiBps The preset throughput of the File system. Valid values: `1` to `1024`, Unit: MB/s. **NOTE:** Only when `throughput_mode` is `Provisioned`, this param is valid.
+         * @param provisionedThroughputInMiBps Provisioned throughput. This parameter is required when ThroughputMode is set to Provisioned. Unit: MB/s Value range: 1~5120.
          * 
          * @return builder
          * 
@@ -252,7 +387,7 @@ public final class FileSystemState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param spaceCapacity The capacity budget of the File system. **NOTE:** When the actual data storage reaches the file system capacity budget, the data cannot be written. The file system capacity budget does not support shrinking.
+         * @param spaceCapacity File system capacity.  When the actual amount of data stored reaches the capacity of the file system, data cannot be written.  Unit: GiB.
          * 
          * @return builder
          * 
@@ -263,7 +398,7 @@ public final class FileSystemState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param spaceCapacity The capacity budget of the File system. **NOTE:** When the actual data storage reaches the file system capacity budget, the data cannot be written. The file system capacity budget does not support shrinking.
+         * @param spaceCapacity File system capacity.  When the actual amount of data stored reaches the capacity of the file system, data cannot be written.  Unit: GiB.
          * 
          * @return builder
          * 
@@ -273,7 +408,28 @@ public final class FileSystemState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param storageType The storage specifications of the File system. Valid values: `PERFORMANCE`, `STANDARD`.
+         * @param storageSetName Save set identity, used to select a user-specified save set.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder storageSetName(@Nullable Output<String> storageSetName) {
+            $.storageSetName = storageSetName;
+            return this;
+        }
+
+        /**
+         * @param storageSetName Save set identity, used to select a user-specified save set.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder storageSetName(String storageSetName) {
+            return storageSetName(Output.of(storageSetName));
+        }
+
+        /**
+         * @param storageType The storage media type. Value: STANDARD (default): STANDARD PERFORMANCE: PERFORMANCE type.
          * 
          * @return builder
          * 
@@ -284,7 +440,7 @@ public final class FileSystemState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param storageType The storage specifications of the File system. Valid values: `PERFORMANCE`, `STANDARD`.
+         * @param storageType The storage media type. Value: STANDARD (default): STANDARD PERFORMANCE: PERFORMANCE type.
          * 
          * @return builder
          * 
@@ -294,7 +450,7 @@ public final class FileSystemState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param throughputMode The throughput mode of the File system. Valid values: `Provisioned`, `Standard`.
+         * @param throughputMode The throughput mode. Value: Standard (default): Standard throughput Provisioned: preset throughput.
          * 
          * @return builder
          * 
@@ -305,7 +461,7 @@ public final class FileSystemState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param throughputMode The throughput mode of the File system. Valid values: `Provisioned`, `Standard`.
+         * @param throughputMode The throughput mode. Value: Standard (default): Standard throughput Provisioned: preset throughput.
          * 
          * @return builder
          * 
@@ -315,7 +471,7 @@ public final class FileSystemState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param zoneId The zone ID of the File system.
+         * @param zoneId Zone Id, which is used to create file system resources to the specified zone.
          * 
          * @return builder
          * 
@@ -326,7 +482,7 @@ public final class FileSystemState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param zoneId The zone ID of the File system.
+         * @param zoneId Zone Id, which is used to create file system resources to the specified zone.
          * 
          * @return builder
          * 

@@ -5,12 +5,12 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Provides a NAS Access Group resource.
+ * Provides a NAS Access Group resource. File system Access Group.
  *
  * In NAS, the permission group acts as a whitelist that allows you to restrict file system access. You can allow specified IP addresses or CIDR blocks to access the file system, and assign different levels of access permission to different IP addresses or CIDR blocks by adding rules to the permission group.
  * For information about NAS Access Group and how to use it, see [What is NAS Access Group](https://www.alibabacloud.com/help/en/nas/developer-reference/api-nas-2017-06-26-createaccessgroup)
  *
- * > **NOTE:** Available in v1.33.0+.
+ * > **NOTE:** Available since v1.33.0.
  *
  * ## Example Usage
  *
@@ -33,7 +33,7 @@ import * as utilities from "../utilities";
  * NAS Access Group can be imported using the id, e.g.
  *
  * ```sh
- * $ pulumi import alicloud:nas/accessGroup:AccessGroup foo tf_testAccNasConfig:standard
+ * $ pulumi import alicloud:nas/accessGroup:AccessGroup example <access_group_name>:<file_system_type>
  * ```
  */
 export class AccessGroup extends pulumi.CustomResource {
@@ -65,27 +65,38 @@ export class AccessGroup extends pulumi.CustomResource {
     }
 
     /**
-     * A Name of one Access Group.
+     * The name of the permission group.
      */
     public readonly accessGroupName!: pulumi.Output<string>;
     /**
-     * A Type of one Access Group. Valid values: `Vpc` and `Classic`.
+     * Permission group types, including Vpc.
      */
     public readonly accessGroupType!: pulumi.Output<string>;
     /**
-     * The Access Group description.
+     * Creation time.
+     */
+    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    /**
+     * Permission group description information.
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * The type of file system. Valid values: `standard` and `extreme`. Default to `standard`. Note that the extreme only support Vpc Network.
+     * File system type. Value:
+     * - standard (default): Universal NAS
+     * - extreme: extreme NAS
+     * The following arguments will be discarded. Please use new fields as soon as possible:
      */
     public readonly fileSystemType!: pulumi.Output<string | undefined>;
     /**
-     * Replaced by `accessGroupName` after version 1.92.0.
+     * . Field 'name' has been deprecated from provider version 1.218.0. New field 'access_group_name' instead.
+     *
+     * @deprecated Field 'name' has been deprecated since provider version 1.218.0. New field 'access_group_name' instead.
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * Replaced by `accessGroupType` after version 1.92.0.
+     * . Field 'type' has been deprecated from provider version 1.218.0. New field 'access_group_type' instead.
+     *
+     * @deprecated Field 'type' has been deprecated since provider version 1.218.0. New field 'access_group_type' instead.
      */
     public readonly type!: pulumi.Output<string>;
 
@@ -104,6 +115,7 @@ export class AccessGroup extends pulumi.CustomResource {
             const state = argsOrState as AccessGroupState | undefined;
             resourceInputs["accessGroupName"] = state ? state.accessGroupName : undefined;
             resourceInputs["accessGroupType"] = state ? state.accessGroupType : undefined;
+            resourceInputs["createTime"] = state ? state.createTime : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["fileSystemType"] = state ? state.fileSystemType : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
@@ -116,6 +128,7 @@ export class AccessGroup extends pulumi.CustomResource {
             resourceInputs["fileSystemType"] = args ? args.fileSystemType : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["type"] = args ? args.type : undefined;
+            resourceInputs["createTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(AccessGroup.__pulumiType, name, resourceInputs, opts);
@@ -127,27 +140,38 @@ export class AccessGroup extends pulumi.CustomResource {
  */
 export interface AccessGroupState {
     /**
-     * A Name of one Access Group.
+     * The name of the permission group.
      */
     accessGroupName?: pulumi.Input<string>;
     /**
-     * A Type of one Access Group. Valid values: `Vpc` and `Classic`.
+     * Permission group types, including Vpc.
      */
     accessGroupType?: pulumi.Input<string>;
     /**
-     * The Access Group description.
+     * Creation time.
+     */
+    createTime?: pulumi.Input<string>;
+    /**
+     * Permission group description information.
      */
     description?: pulumi.Input<string>;
     /**
-     * The type of file system. Valid values: `standard` and `extreme`. Default to `standard`. Note that the extreme only support Vpc Network.
+     * File system type. Value:
+     * - standard (default): Universal NAS
+     * - extreme: extreme NAS
+     * The following arguments will be discarded. Please use new fields as soon as possible:
      */
     fileSystemType?: pulumi.Input<string>;
     /**
-     * Replaced by `accessGroupName` after version 1.92.0.
+     * . Field 'name' has been deprecated from provider version 1.218.0. New field 'access_group_name' instead.
+     *
+     * @deprecated Field 'name' has been deprecated since provider version 1.218.0. New field 'access_group_name' instead.
      */
     name?: pulumi.Input<string>;
     /**
-     * Replaced by `accessGroupType` after version 1.92.0.
+     * . Field 'type' has been deprecated from provider version 1.218.0. New field 'access_group_type' instead.
+     *
+     * @deprecated Field 'type' has been deprecated since provider version 1.218.0. New field 'access_group_type' instead.
      */
     type?: pulumi.Input<string>;
 }
@@ -157,27 +181,34 @@ export interface AccessGroupState {
  */
 export interface AccessGroupArgs {
     /**
-     * A Name of one Access Group.
+     * The name of the permission group.
      */
     accessGroupName?: pulumi.Input<string>;
     /**
-     * A Type of one Access Group. Valid values: `Vpc` and `Classic`.
+     * Permission group types, including Vpc.
      */
     accessGroupType?: pulumi.Input<string>;
     /**
-     * The Access Group description.
+     * Permission group description information.
      */
     description?: pulumi.Input<string>;
     /**
-     * The type of file system. Valid values: `standard` and `extreme`. Default to `standard`. Note that the extreme only support Vpc Network.
+     * File system type. Value:
+     * - standard (default): Universal NAS
+     * - extreme: extreme NAS
+     * The following arguments will be discarded. Please use new fields as soon as possible:
      */
     fileSystemType?: pulumi.Input<string>;
     /**
-     * Replaced by `accessGroupName` after version 1.92.0.
+     * . Field 'name' has been deprecated from provider version 1.218.0. New field 'access_group_name' instead.
+     *
+     * @deprecated Field 'name' has been deprecated since provider version 1.218.0. New field 'access_group_name' instead.
      */
     name?: pulumi.Input<string>;
     /**
-     * Replaced by `accessGroupType` after version 1.92.0.
+     * . Field 'type' has been deprecated from provider version 1.218.0. New field 'access_group_type' instead.
+     *
+     * @deprecated Field 'type' has been deprecated since provider version 1.218.0. New field 'access_group_type' instead.
      */
     type?: pulumi.Input<string>;
 }

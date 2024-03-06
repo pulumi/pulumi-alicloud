@@ -27,31 +27,44 @@ import (
 //
 // import (
 //
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cloudmonitor"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cms"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "tf-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			defaultAccount, err := alicloud.GetAccount(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
 //			source, err := cms.NewNamespace(ctx, "source", &cms.NamespaceArgs{
-//				Namespace: pulumi.String("your_source_namespace"),
+//				Namespace: pulumi.String(name),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			defaultNamespace, err := cms.NewNamespace(ctx, "defaultNamespace", &cms.NamespaceArgs{
-//				Namespace: pulumi.String("your_namespace"),
+//				Namespace: pulumi.String(fmt.Sprintf("%v-source", name)),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = cloudmonitor.NewServiceHybridDoubleWrite(ctx, "defaultServiceHybridDoubleWrite", &cloudmonitor.ServiceHybridDoubleWriteArgs{
 //				SourceNamespace: source.ID(),
-//				SourceUserId:    pulumi.String("your_source_account"),
+//				SourceUserId:    *pulumi.String(defaultAccount.Id),
 //				Namespace:       defaultNamespace.ID(),
-//				UserId:          pulumi.String("your_account"),
+//				UserId:          *pulumi.String(defaultAccount.Id),
 //			})
 //			if err != nil {
 //				return err

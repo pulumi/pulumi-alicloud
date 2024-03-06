@@ -474,7 +474,6 @@ class FileSystem(pulumi.CustomResource):
             protocol_type="NFS",
             zone_id=example.zones[0].zone_id,
             storage_type="standard",
-            description="terraform-example",
             capacity=100)
         ```
 
@@ -496,7 +495,6 @@ class FileSystem(pulumi.CustomResource):
             storage_type="advance_200",
             file_system_type="cpfs",
             capacity=3600,
-            description="terraform-example",
             zone_id=example_zones.zones[1].zone_id,
             vpc_id=example_network.id,
             vswitch_id=example_switch.id)
@@ -577,7 +575,6 @@ class FileSystem(pulumi.CustomResource):
             protocol_type="NFS",
             zone_id=example.zones[0].zone_id,
             storage_type="standard",
-            description="terraform-example",
             capacity=100)
         ```
 
@@ -599,7 +596,6 @@ class FileSystem(pulumi.CustomResource):
             storage_type="advance_200",
             file_system_type="cpfs",
             capacity=3600,
-            description="terraform-example",
             zone_id=example_zones.zones[1].zone_id,
             vpc_id=example_network.id,
             vswitch_id=example_switch.id)

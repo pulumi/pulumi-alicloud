@@ -18,7 +18,7 @@ import javax.annotation.Nullable;
 /**
  * Provides a DFS Access Rule resource.
  * 
- * For information about DFS Access Rule and how to use it, see [What is Access Rule](https://www.alibabacloud.com/help/doc-detail/207144.htm).
+ * For information about DFS Access Rule and how to use it, see [What is Access Rule](https://www.alibabacloud.com/help/en/aibaba-cloud-storage-services/latest/apsara-file-storage-for-hdfs).
  * 
  * &gt; **NOTE:** Available since v1.140.0.
  * 
@@ -49,19 +49,19 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;example_name&#34;);
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;terraform-example&#34;);
  *         var defaultAccessGroup = new AccessGroup(&#34;defaultAccessGroup&#34;, AccessGroupArgs.builder()        
+ *             .description(&#34;example&#34;)
  *             .networkType(&#34;VPC&#34;)
  *             .accessGroupName(name)
- *             .description(name)
  *             .build());
  * 
  *         var defaultAccessRule = new AccessRule(&#34;defaultAccessRule&#34;, AccessRuleArgs.builder()        
- *             .networkSegment(&#34;192.0.2.0/24&#34;)
- *             .accessGroupId(defaultAccessGroup.id())
- *             .description(name)
+ *             .description(&#34;example&#34;)
  *             .rwAccessType(&#34;RDWR&#34;)
- *             .priority(&#34;10&#34;)
+ *             .priority(&#34;1&#34;)
+ *             .networkSegment(&#34;192.168.81.1&#34;)
+ *             .accessGroupId(defaultAccessGroup.id())
  *             .build());
  * 
  *     }
@@ -80,84 +80,98 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:dfs/accessRule:AccessRule")
 public class AccessRule extends com.pulumi.resources.CustomResource {
     /**
-     * The resource ID of Access Group.
+     * Permission group resource ID. You must specify the permission group ID when creating a permission rule.
      * 
      */
     @Export(name="accessGroupId", refs={String.class}, tree="[0]")
     private Output<String> accessGroupId;
 
     /**
-     * @return The resource ID of Access Group.
+     * @return Permission group resource ID. You must specify the permission group ID when creating a permission rule.
      * 
      */
     public Output<String> accessGroupId() {
         return this.accessGroupId;
     }
     /**
-     * The ID of the Access Rule.
+     * The unique identity of the permission rule, which is used to retrieve the permission rule for a specific day in the permission group.
      * 
      */
     @Export(name="accessRuleId", refs={String.class}, tree="[0]")
     private Output<String> accessRuleId;
 
     /**
-     * @return The ID of the Access Rule.
+     * @return The unique identity of the permission rule, which is used to retrieve the permission rule for a specific day in the permission group.
      * 
      */
     public Output<String> accessRuleId() {
         return this.accessRuleId;
     }
     /**
-     * The Description of the Access Rule.
+     * Permission rule resource creation time.
+     * 
+     */
+    @Export(name="createTime", refs={String.class}, tree="[0]")
+    private Output<String> createTime;
+
+    /**
+     * @return Permission rule resource creation time.
+     * 
+     */
+    public Output<String> createTime() {
+        return this.createTime;
+    }
+    /**
+     * Permission rule description.  No more than 32 characters in length.
      * 
      */
     @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
-     * @return The Description of the Access Rule.
+     * @return Permission rule description.  No more than 32 characters in length.
      * 
      */
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
     }
     /**
-     * The NetworkSegment of the Access Rule.
+     * The IP address or network segment of the authorized object.
      * 
      */
     @Export(name="networkSegment", refs={String.class}, tree="[0]")
     private Output<String> networkSegment;
 
     /**
-     * @return The NetworkSegment of the Access Rule.
+     * @return The IP address or network segment of the authorized object.
      * 
      */
     public Output<String> networkSegment() {
         return this.networkSegment;
     }
     /**
-     * The Priority of the Access Rule. Valid values: `1` to `100`. **NOTE:** When multiple rules are matched by the same authorized object, the high-priority rule takes effect. `1` is the highest priority.
+     * Permission rule priority. When the same authorization object matches multiple rules, the high-priority rule takes effect. Value range: 1~100,1 is the highest priority.
      * 
      */
     @Export(name="priority", refs={Integer.class}, tree="[0]")
     private Output<Integer> priority;
 
     /**
-     * @return The Priority of the Access Rule. Valid values: `1` to `100`. **NOTE:** When multiple rules are matched by the same authorized object, the high-priority rule takes effect. `1` is the highest priority.
+     * @return Permission rule priority. When the same authorization object matches multiple rules, the high-priority rule takes effect. Value range: 1~100,1 is the highest priority.
      * 
      */
     public Output<Integer> priority() {
         return this.priority;
     }
     /**
-     * The RWAccessType of the Access Rule. Valid values: `RDONLY`, `RDWR`.
+     * The read and write permissions of the authorized object on the file system. Value: RDWR: readable and writable RDONLY: Read only.
      * 
      */
     @Export(name="rwAccessType", refs={String.class}, tree="[0]")
     private Output<String> rwAccessType;
 
     /**
-     * @return The RWAccessType of the Access Rule. Valid values: `RDONLY`, `RDWR`.
+     * @return The read and write permissions of the authorized object on the file system. Value: RDWR: readable and writable RDONLY: Read only.
      * 
      */
     public Output<String> rwAccessType() {
