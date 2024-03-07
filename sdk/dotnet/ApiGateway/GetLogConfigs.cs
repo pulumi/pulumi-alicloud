@@ -16,12 +16,11 @@ namespace Pulumi.AliCloud.ApiGateway
         /// 
         /// &gt; **NOTE:** Available in v1.185.0+.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// Basic Usage
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -50,8 +49,7 @@ namespace Pulumi.AliCloud.ApiGateway
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetLogConfigsResult> InvokeAsync(GetLogConfigsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetLogConfigsResult>("alicloud:apigateway/getLogConfigs:getLogConfigs", args ?? new GetLogConfigsArgs(), options.WithDefaults());
@@ -61,12 +59,11 @@ namespace Pulumi.AliCloud.ApiGateway
         /// 
         /// &gt; **NOTE:** Available in v1.185.0+.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// Basic Usage
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -95,8 +92,7 @@ namespace Pulumi.AliCloud.ApiGateway
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetLogConfigsResult> Invoke(GetLogConfigsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetLogConfigsResult>("alicloud:apigateway/getLogConfigs:getLogConfigs", args ?? new GetLogConfigsInvokeArgs(), options.WithDefaults());

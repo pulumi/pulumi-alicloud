@@ -17,6 +17,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -26,6 +27,8 @@ import * as utilities from "../utilities";
  *     nameRegex: "tf-testAcc-snapshot",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
+ *
  * ## Argument Reference
  *
  * The following arguments are supported:
@@ -181,6 +184,7 @@ export interface GetSnapshotsResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -190,6 +194,8 @@ export interface GetSnapshotsResult {
  *     nameRegex: "tf-testAcc-snapshot",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
+ *
  * ## Argument Reference
  *
  * The following arguments are supported:

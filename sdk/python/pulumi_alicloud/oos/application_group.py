@@ -243,6 +243,7 @@ class ApplicationGroup(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -272,6 +273,7 @@ class ApplicationGroup(pulumi.CustomResource):
             import_tag_key="example_key",
             import_tag_value="example_value")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -308,6 +310,7 @@ class ApplicationGroup(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -337,6 +340,7 @@ class ApplicationGroup(pulumi.CustomResource):
             import_tag_key="example_key",
             import_tag_value="example_value")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

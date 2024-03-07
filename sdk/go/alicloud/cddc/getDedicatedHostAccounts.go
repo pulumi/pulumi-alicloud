@@ -19,6 +19,7 @@ import (
 //
 // # Basic Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -41,6 +42,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func GetDedicatedHostAccounts(ctx *pulumi.Context, args *GetDedicatedHostAccountsArgs, opts ...pulumi.InvokeOption) (*GetDedicatedHostAccountsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetDedicatedHostAccountsResult

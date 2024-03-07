@@ -610,6 +610,7 @@ class Cluster(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -636,6 +637,7 @@ class Cluster(pulumi.CustomResource):
             vswitch_id=example_switch.id,
             vpc_id=example_network.id)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -677,6 +679,7 @@ class Cluster(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -703,6 +706,7 @@ class Cluster(pulumi.CustomResource):
             vswitch_id=example_switch.id,
             vpc_id=example_network.id)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

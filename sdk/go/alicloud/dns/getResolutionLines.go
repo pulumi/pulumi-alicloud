@@ -17,6 +17,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -44,6 +45,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func GetResolutionLines(ctx *pulumi.Context, args *GetResolutionLinesArgs, opts ...pulumi.InvokeOption) (*GetResolutionLinesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetResolutionLinesResult

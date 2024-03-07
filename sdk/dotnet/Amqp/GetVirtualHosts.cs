@@ -16,12 +16,11 @@ namespace Pulumi.AliCloud.Amqp
         /// 
         /// &gt; **NOTE:** Available in v1.126.0+.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// Basic Usage
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -53,8 +52,7 @@ namespace Pulumi.AliCloud.Amqp
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetVirtualHostsResult> InvokeAsync(GetVirtualHostsArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetVirtualHostsResult>("alicloud:amqp/getVirtualHosts:getVirtualHosts", args ?? new GetVirtualHostsArgs(), options.WithDefaults());
@@ -64,12 +62,11 @@ namespace Pulumi.AliCloud.Amqp
         /// 
         /// &gt; **NOTE:** Available in v1.126.0+.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// Basic Usage
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -101,8 +98,7 @@ namespace Pulumi.AliCloud.Amqp
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetVirtualHostsResult> Invoke(GetVirtualHostsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetVirtualHostsResult>("alicloud:amqp/getVirtualHosts:getVirtualHosts", args ?? new GetVirtualHostsInvokeArgs(), options.WithDefaults());

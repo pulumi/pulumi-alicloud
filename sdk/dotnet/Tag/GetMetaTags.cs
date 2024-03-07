@@ -16,12 +16,11 @@ namespace Pulumi.AliCloud.Tag
         /// 
         /// &gt; **NOTE:** Available in v1.169.0+.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// Basic Usage
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -41,8 +40,7 @@ namespace Pulumi.AliCloud.Tag
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetMetaTagsResult> InvokeAsync(GetMetaTagsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetMetaTagsResult>("alicloud:tag/getMetaTags:getMetaTags", args ?? new GetMetaTagsArgs(), options.WithDefaults());
@@ -52,12 +50,11 @@ namespace Pulumi.AliCloud.Tag
         /// 
         /// &gt; **NOTE:** Available in v1.169.0+.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// Basic Usage
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -77,8 +74,7 @@ namespace Pulumi.AliCloud.Tag
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetMetaTagsResult> Invoke(GetMetaTagsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetMetaTagsResult>("alicloud:tag/getMetaTags:getMetaTags", args ?? new GetMetaTagsInvokeArgs(), options.WithDefaults());

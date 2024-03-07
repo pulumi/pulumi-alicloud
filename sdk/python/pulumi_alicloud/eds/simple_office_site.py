@@ -446,6 +446,7 @@ class SimpleOfficeSite(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -460,6 +461,7 @@ class SimpleOfficeSite(pulumi.CustomResource):
             enable_admin_access=True,
             office_site_name=default_random_integer.result.apply(lambda result: f"terraform-example-{result}"))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -500,6 +502,7 @@ class SimpleOfficeSite(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -514,6 +517,7 @@ class SimpleOfficeSite(pulumi.CustomResource):
             enable_admin_access=True,
             office_site_name=default_random_integer.result.apply(lambda result: f"terraform-example-{result}"))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

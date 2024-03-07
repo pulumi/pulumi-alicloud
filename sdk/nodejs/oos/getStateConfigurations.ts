@@ -15,6 +15,7 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -22,6 +23,7 @@ import * as utilities from "../utilities";
  * const ids = alicloud.oos.getStateConfigurations({});
  * export const oosStateConfigurationId1 = ids.then(ids => ids.configurations?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getStateConfigurations(args?: GetStateConfigurationsArgs, opts?: pulumi.InvokeOptions): Promise<GetStateConfigurationsResult> {
     args = args || {};
@@ -80,6 +82,7 @@ export interface GetStateConfigurationsResult {
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -87,6 +90,7 @@ export interface GetStateConfigurationsResult {
  * const ids = alicloud.oos.getStateConfigurations({});
  * export const oosStateConfigurationId1 = ids.then(ids => ids.configurations?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getStateConfigurationsOutput(args?: GetStateConfigurationsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetStateConfigurationsResult> {
     return pulumi.output(args).apply((a: any) => getStateConfigurations(a, opts))

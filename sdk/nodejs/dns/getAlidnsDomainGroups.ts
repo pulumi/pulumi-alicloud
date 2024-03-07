@@ -13,6 +13,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -22,6 +23,7 @@ import * as utilities from "../utilities";
  * });
  * export const firstDomainGroupId = example.then(example => example.groups?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getAlidnsDomainGroups(args?: GetAlidnsDomainGroupsArgs, opts?: pulumi.InvokeOptions): Promise<GetAlidnsDomainGroupsResult> {
     args = args || {};
@@ -82,6 +84,7 @@ export interface GetAlidnsDomainGroupsResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -91,6 +94,7 @@ export interface GetAlidnsDomainGroupsResult {
  * });
  * export const firstDomainGroupId = example.then(example => example.groups?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getAlidnsDomainGroupsOutput(args?: GetAlidnsDomainGroupsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAlidnsDomainGroupsResult> {
     return pulumi.output(args).apply((a: any) => getAlidnsDomainGroups(a, opts))

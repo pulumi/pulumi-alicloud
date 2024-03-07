@@ -13,6 +13,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -20,6 +21,7 @@ import * as utilities from "../utilities";
  * const default = alicloud.resourcemanager.getResourceDirectories({});
  * export const resourceDirectoryId = _default.then(_default => _default.directories?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getResourceDirectories(args?: GetResourceDirectoriesArgs, opts?: pulumi.InvokeOptions): Promise<GetResourceDirectoriesResult> {
     args = args || {};
@@ -61,6 +63,7 @@ export interface GetResourceDirectoriesResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -68,6 +71,7 @@ export interface GetResourceDirectoriesResult {
  * const default = alicloud.resourcemanager.getResourceDirectories({});
  * export const resourceDirectoryId = _default.then(_default => _default.directories?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getResourceDirectoriesOutput(args?: GetResourceDirectoriesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetResourceDirectoriesResult> {
     return pulumi.output(args).apply((a: any) => getResourceDirectories(a, opts))

@@ -16,10 +16,9 @@ namespace Pulumi.AliCloud.Hbase
         /// 
         /// &gt; **NOTE:** Available in v1.73.0+.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -38,8 +37,7 @@ namespace Pulumi.AliCloud.Hbase
         ///     // Other properties...
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetZonesResult> InvokeAsync(GetZonesArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetZonesResult>("alicloud:hbase/getZones:getZones", args ?? new GetZonesArgs(), options.WithDefaults());
@@ -49,10 +47,9 @@ namespace Pulumi.AliCloud.Hbase
         /// 
         /// &gt; **NOTE:** Available in v1.73.0+.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -71,8 +68,7 @@ namespace Pulumi.AliCloud.Hbase
         ///     // Other properties...
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetZonesResult> Invoke(GetZonesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetZonesResult>("alicloud:hbase/getZones:getZones", args ?? new GetZonesInvokeArgs(), options.WithDefaults());

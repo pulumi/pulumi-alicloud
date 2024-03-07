@@ -136,6 +136,7 @@ def get_file_systems(description_regex: Optional[str] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -144,6 +145,7 @@ def get_file_systems(description_regex: Optional[str] = None,
         protocol_type="NFS")
     pulumi.export("alicloudNasFileSystemsId", fs.systems[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str description_regex: A regex string to filter the results by the ：FileSystem description.
@@ -190,6 +192,7 @@ def get_file_systems_output(description_regex: Optional[pulumi.Input[Optional[st
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -198,6 +201,7 @@ def get_file_systems_output(description_regex: Optional[pulumi.Input[Optional[st
         protocol_type="NFS")
     pulumi.export("alicloudNasFileSystemsId", fs.systems[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str description_regex: A regex string to filter the results by the ：FileSystem description.

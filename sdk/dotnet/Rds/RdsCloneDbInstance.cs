@@ -17,8 +17,10 @@ namespace Pulumi.AliCloud.Rds
     /// &gt; **NOTE:** Available since v1.149.0+.
     /// 
     /// ## Example Usage
+    /// 
     /// ### Create an RDS MySQL clone instance
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -88,6 +90,7 @@ namespace Pulumi.AliCloud.Rds
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 

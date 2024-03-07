@@ -211,6 +211,7 @@ def get_forward_entries(external_ip: Optional[str] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -247,6 +248,7 @@ def get_forward_entries(external_ip: Optional[str] = None,
         internal_port="8080")
     default_forward_entries = alicloud.vpc.get_forward_entries_output(forward_table_id=default_forward_entry.forward_table_id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str external_ip: The public IP address.
@@ -313,6 +315,7 @@ def get_forward_entries_output(external_ip: Optional[pulumi.Input[Optional[str]]
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -349,6 +352,7 @@ def get_forward_entries_output(external_ip: Optional[pulumi.Input[Optional[str]]
         internal_port="8080")
     default_forward_entries = alicloud.vpc.get_forward_entries_output(forward_table_id=default_forward_entry.forward_table_id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str external_ip: The public IP address.

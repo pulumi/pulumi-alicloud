@@ -15,6 +15,7 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -24,6 +25,7 @@ import * as utilities from "../utilities";
  * });
  * export const saeNamespaceId = nameRegex.then(nameRegex => nameRegex.namespaces?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getNamespaces(args?: GetNamespacesArgs, opts?: pulumi.InvokeOptions): Promise<GetNamespacesResult> {
     args = args || {};
@@ -77,6 +79,7 @@ export interface GetNamespacesResult {
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -86,6 +89,7 @@ export interface GetNamespacesResult {
  * });
  * export const saeNamespaceId = nameRegex.then(nameRegex => nameRegex.namespaces?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getNamespacesOutput(args?: GetNamespacesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNamespacesResult> {
     return pulumi.output(args).apply((a: any) => getNamespaces(a, opts))

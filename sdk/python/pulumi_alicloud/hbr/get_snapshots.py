@@ -194,6 +194,7 @@ def get_snapshots(bucket: Optional[str] = None,
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -217,6 +218,7 @@ def get_snapshots(bucket: Optional[str] = None,
         complete_time_checker="GREATER_THAN_OR_EQUAL")
     pulumi.export("hbrSnapshotId1", nas_snapshots.snapshots[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str bucket: The name of OSS bucket.
@@ -290,6 +292,7 @@ def get_snapshots_output(bucket: Optional[pulumi.Input[Optional[str]]] = None,
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -313,6 +316,7 @@ def get_snapshots_output(bucket: Optional[pulumi.Input[Optional[str]]] = None,
         complete_time_checker="GREATER_THAN_OR_EQUAL")
     pulumi.export("hbrSnapshotId1", nas_snapshots.snapshots[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str bucket: The name of OSS bucket.

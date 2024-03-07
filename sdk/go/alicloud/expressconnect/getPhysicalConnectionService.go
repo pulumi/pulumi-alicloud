@@ -19,6 +19,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -42,6 +43,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func GetPhysicalConnectionService(ctx *pulumi.Context, args *GetPhysicalConnectionServiceArgs, opts ...pulumi.InvokeOption) (*GetPhysicalConnectionServiceResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetPhysicalConnectionServiceResult

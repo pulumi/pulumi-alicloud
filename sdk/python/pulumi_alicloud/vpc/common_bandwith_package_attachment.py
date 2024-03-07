@@ -217,6 +217,7 @@ class CommonBandwithPackageAttachment(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -237,6 +238,7 @@ class CommonBandwithPackageAttachment(pulumi.CustomResource):
             bandwidth_package_bandwidth="2",
             ip_type="EIP")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -265,6 +267,7 @@ class CommonBandwithPackageAttachment(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -285,6 +288,7 @@ class CommonBandwithPackageAttachment(pulumi.CustomResource):
             bandwidth_package_bandwidth="2",
             ip_type="EIP")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

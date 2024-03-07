@@ -21,6 +21,8 @@ import javax.annotation.Nullable;
  * &gt; **NOTE:** Available since v1.13.0.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -114,6 +116,8 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ## Module Support
  * 
  * You can use to the existing autoscaling module

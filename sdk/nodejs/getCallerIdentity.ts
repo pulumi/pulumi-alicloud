@@ -11,6 +11,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -18,6 +19,7 @@ import * as utilities from "./utilities";
  * const current = alicloud.getCallerIdentity({});
  * export const currentUserArn = current.then(current => current.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getCallerIdentity(opts?: pulumi.InvokeOptions): Promise<GetCallerIdentityResult> {
 
@@ -54,6 +56,7 @@ export interface GetCallerIdentityResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -61,6 +64,7 @@ export interface GetCallerIdentityResult {
  * const current = alicloud.getCallerIdentity({});
  * export const currentUserArn = current.then(current => current.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getCallerIdentityOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetCallerIdentityResult> {
     return pulumi.output(getCallerIdentity(opts))

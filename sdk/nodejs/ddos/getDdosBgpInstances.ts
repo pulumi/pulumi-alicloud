@@ -13,6 +13,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -32,6 +33,7 @@ import * as utilities from "../utilities";
  * });
  * export const instance = [instanceDdosBgpInstances].map(__item => __item.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getDdosBgpInstances(args?: GetDdosBgpInstancesArgs, opts?: pulumi.InvokeOptions): Promise<GetDdosBgpInstancesResult> {
     args = args || {};
@@ -92,6 +94,7 @@ export interface GetDdosBgpInstancesResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -111,6 +114,7 @@ export interface GetDdosBgpInstancesResult {
  * });
  * export const instance = [instanceDdosBgpInstances].map(__item => __item.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getDdosBgpInstancesOutput(args?: GetDdosBgpInstancesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDdosBgpInstancesResult> {
     return pulumi.output(args).apply((a: any) => getDdosBgpInstances(a, opts))

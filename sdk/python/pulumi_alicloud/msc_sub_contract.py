@@ -178,6 +178,7 @@ class MscSubContract(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -192,6 +193,7 @@ class MscSubContract(pulumi.CustomResource):
             email="123@163.com",
             mobile="15388888888")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -225,6 +227,7 @@ class MscSubContract(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -239,6 +242,7 @@ class MscSubContract(pulumi.CustomResource):
             email="123@163.com",
             mobile="15388888888")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

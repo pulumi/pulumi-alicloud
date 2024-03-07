@@ -34,6 +34,8 @@ public final class CddcFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -61,6 +63,7 @@ public final class CddcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetDedicatedHostAccountsResult> getDedicatedHostAccounts() {
@@ -74,6 +77,8 @@ public final class CddcFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -101,6 +106,7 @@ public final class CddcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetDedicatedHostAccountsResult> getDedicatedHostAccountsPlain() {
@@ -114,6 +120,8 @@ public final class CddcFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -141,6 +149,7 @@ public final class CddcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetDedicatedHostAccountsResult> getDedicatedHostAccounts(GetDedicatedHostAccountsArgs args) {
@@ -154,6 +163,8 @@ public final class CddcFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -181,6 +192,7 @@ public final class CddcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetDedicatedHostAccountsResult> getDedicatedHostAccountsPlain(GetDedicatedHostAccountsPlainArgs args) {
@@ -194,6 +206,8 @@ public final class CddcFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -221,6 +235,7 @@ public final class CddcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetDedicatedHostAccountsResult> getDedicatedHostAccounts(GetDedicatedHostAccountsArgs args, InvokeOptions options) {
@@ -234,6 +249,8 @@ public final class CddcFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -261,6 +278,7 @@ public final class CddcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetDedicatedHostAccountsResult> getDedicatedHostAccountsPlain(GetDedicatedHostAccountsPlainArgs args, InvokeOptions options) {
@@ -274,6 +292,8 @@ public final class CddcFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -303,6 +323,7 @@ public final class CddcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetDedicatedHostGroupsResult> getDedicatedHostGroups() {
@@ -316,6 +337,8 @@ public final class CddcFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -345,6 +368,7 @@ public final class CddcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetDedicatedHostGroupsResult> getDedicatedHostGroupsPlain() {
@@ -358,6 +382,8 @@ public final class CddcFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -387,6 +413,7 @@ public final class CddcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetDedicatedHostGroupsResult> getDedicatedHostGroups(GetDedicatedHostGroupsArgs args) {
@@ -400,6 +427,8 @@ public final class CddcFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -429,6 +458,7 @@ public final class CddcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetDedicatedHostGroupsResult> getDedicatedHostGroupsPlain(GetDedicatedHostGroupsPlainArgs args) {
@@ -442,6 +472,8 @@ public final class CddcFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -471,6 +503,7 @@ public final class CddcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetDedicatedHostGroupsResult> getDedicatedHostGroups(GetDedicatedHostGroupsArgs args, InvokeOptions options) {
@@ -484,6 +517,8 @@ public final class CddcFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -513,6 +548,7 @@ public final class CddcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetDedicatedHostGroupsResult> getDedicatedHostGroupsPlain(GetDedicatedHostGroupsPlainArgs args, InvokeOptions options) {
@@ -526,6 +562,8 @@ public final class CddcFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -594,6 +632,7 @@ public final class CddcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetDedicatedHostsResult> getDedicatedHosts(GetDedicatedHostsArgs args) {
@@ -607,6 +646,8 @@ public final class CddcFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -675,6 +716,7 @@ public final class CddcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetDedicatedHostsResult> getDedicatedHostsPlain(GetDedicatedHostsPlainArgs args) {
@@ -688,6 +730,8 @@ public final class CddcFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -756,6 +800,7 @@ public final class CddcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetDedicatedHostsResult> getDedicatedHosts(GetDedicatedHostsArgs args, InvokeOptions options) {
@@ -769,6 +814,8 @@ public final class CddcFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -837,6 +884,7 @@ public final class CddcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetDedicatedHostsResult> getDedicatedHostsPlain(GetDedicatedHostsPlainArgs args, InvokeOptions options) {
@@ -886,6 +934,8 @@ public final class CddcFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -913,6 +963,7 @@ public final class CddcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetZonesResult> getZones() {
@@ -926,6 +977,8 @@ public final class CddcFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -953,6 +1006,7 @@ public final class CddcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetZonesResult> getZonesPlain() {
@@ -966,6 +1020,8 @@ public final class CddcFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -993,6 +1049,7 @@ public final class CddcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetZonesResult> getZones(GetZonesArgs args) {
@@ -1006,6 +1063,8 @@ public final class CddcFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1033,6 +1092,7 @@ public final class CddcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetZonesResult> getZonesPlain(GetZonesPlainArgs args) {
@@ -1046,6 +1106,8 @@ public final class CddcFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1073,6 +1135,7 @@ public final class CddcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetZonesResult> getZones(GetZonesArgs args, InvokeOptions options) {
@@ -1086,6 +1149,8 @@ public final class CddcFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1113,6 +1178,7 @@ public final class CddcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetZonesResult> getZonesPlain(GetZonesPlainArgs args, InvokeOptions options) {

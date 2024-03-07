@@ -142,6 +142,7 @@ class NetworkGrant(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -180,6 +181,7 @@ class NetworkGrant(pulumi.CustomResource):
             cen_uid=cen_uid,
             opts=pulumi.ResourceOptions(provider=alicloud["default"]))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -214,6 +216,7 @@ class NetworkGrant(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -252,6 +255,7 @@ class NetworkGrant(pulumi.CustomResource):
             cen_uid=cen_uid,
             opts=pulumi.ResourceOptions(provider=alicloud["default"]))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

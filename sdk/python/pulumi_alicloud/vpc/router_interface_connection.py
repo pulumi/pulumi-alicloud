@@ -220,6 +220,7 @@ class RouterInterfaceConnection(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -265,6 +266,7 @@ class RouterInterfaceConnection(pulumi.CustomResource):
             opts=pulumi.ResourceOptions(depends_on=[bar_router_interface_connection]))
         # The connection must start from the accepting side.
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -306,6 +308,7 @@ class RouterInterfaceConnection(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -351,6 +354,7 @@ class RouterInterfaceConnection(pulumi.CustomResource):
             opts=pulumi.ResourceOptions(depends_on=[bar_router_interface_connection]))
         # The connection must start from the accepting side.
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

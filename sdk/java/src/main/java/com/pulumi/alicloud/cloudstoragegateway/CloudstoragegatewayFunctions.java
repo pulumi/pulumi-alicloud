@@ -46,6 +46,8 @@ public final class CloudstoragegatewayFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -78,6 +80,7 @@ public final class CloudstoragegatewayFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetExpressSyncsResult> getExpressSyncs() {
@@ -91,6 +94,8 @@ public final class CloudstoragegatewayFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -123,6 +128,7 @@ public final class CloudstoragegatewayFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetExpressSyncsResult> getExpressSyncsPlain() {
@@ -136,6 +142,8 @@ public final class CloudstoragegatewayFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -168,6 +176,7 @@ public final class CloudstoragegatewayFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetExpressSyncsResult> getExpressSyncs(GetExpressSyncsArgs args) {
@@ -181,6 +190,8 @@ public final class CloudstoragegatewayFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -213,6 +224,7 @@ public final class CloudstoragegatewayFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetExpressSyncsResult> getExpressSyncsPlain(GetExpressSyncsPlainArgs args) {
@@ -226,6 +238,8 @@ public final class CloudstoragegatewayFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -258,6 +272,7 @@ public final class CloudstoragegatewayFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetExpressSyncsResult> getExpressSyncs(GetExpressSyncsArgs args, InvokeOptions options) {
@@ -271,6 +286,8 @@ public final class CloudstoragegatewayFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -303,6 +320,7 @@ public final class CloudstoragegatewayFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetExpressSyncsResult> getExpressSyncsPlain(GetExpressSyncsPlainArgs args, InvokeOptions options) {
@@ -316,6 +334,8 @@ public final class CloudstoragegatewayFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -354,6 +374,7 @@ public final class CloudstoragegatewayFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetGatewayBlockVolumesResult> getGatewayBlockVolumes(GetGatewayBlockVolumesArgs args) {
@@ -367,6 +388,8 @@ public final class CloudstoragegatewayFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -405,6 +428,7 @@ public final class CloudstoragegatewayFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetGatewayBlockVolumesResult> getGatewayBlockVolumesPlain(GetGatewayBlockVolumesPlainArgs args) {
@@ -418,6 +442,8 @@ public final class CloudstoragegatewayFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -456,6 +482,7 @@ public final class CloudstoragegatewayFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetGatewayBlockVolumesResult> getGatewayBlockVolumes(GetGatewayBlockVolumesArgs args, InvokeOptions options) {
@@ -469,6 +496,8 @@ public final class CloudstoragegatewayFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -507,6 +536,7 @@ public final class CloudstoragegatewayFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetGatewayBlockVolumesResult> getGatewayBlockVolumesPlain(GetGatewayBlockVolumesPlainArgs args, InvokeOptions options) {
@@ -520,6 +550,8 @@ public final class CloudstoragegatewayFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -561,6 +593,7 @@ public final class CloudstoragegatewayFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetGatewayCacheDisksResult> getGatewayCacheDisks(GetGatewayCacheDisksArgs args) {
@@ -574,6 +607,8 @@ public final class CloudstoragegatewayFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -615,6 +650,7 @@ public final class CloudstoragegatewayFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetGatewayCacheDisksResult> getGatewayCacheDisksPlain(GetGatewayCacheDisksPlainArgs args) {
@@ -628,6 +664,8 @@ public final class CloudstoragegatewayFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -669,6 +707,7 @@ public final class CloudstoragegatewayFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetGatewayCacheDisksResult> getGatewayCacheDisks(GetGatewayCacheDisksArgs args, InvokeOptions options) {
@@ -682,6 +721,8 @@ public final class CloudstoragegatewayFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -723,6 +764,7 @@ public final class CloudstoragegatewayFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetGatewayCacheDisksResult> getGatewayCacheDisksPlain(GetGatewayCacheDisksPlainArgs args, InvokeOptions options) {
@@ -736,6 +778,8 @@ public final class CloudstoragegatewayFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -774,6 +818,7 @@ public final class CloudstoragegatewayFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetGatewayFileSharesResult> getGatewayFileShares(GetGatewayFileSharesArgs args) {
@@ -787,6 +832,8 @@ public final class CloudstoragegatewayFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -825,6 +872,7 @@ public final class CloudstoragegatewayFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetGatewayFileSharesResult> getGatewayFileSharesPlain(GetGatewayFileSharesPlainArgs args) {
@@ -838,6 +886,8 @@ public final class CloudstoragegatewayFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -876,6 +926,7 @@ public final class CloudstoragegatewayFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetGatewayFileSharesResult> getGatewayFileShares(GetGatewayFileSharesArgs args, InvokeOptions options) {
@@ -889,6 +940,8 @@ public final class CloudstoragegatewayFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -927,6 +980,7 @@ public final class CloudstoragegatewayFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetGatewayFileSharesResult> getGatewayFileSharesPlain(GetGatewayFileSharesPlainArgs args, InvokeOptions options) {
@@ -940,6 +994,8 @@ public final class CloudstoragegatewayFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1010,6 +1066,7 @@ public final class CloudstoragegatewayFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetGatewaySmbUsersResult> getGatewaySmbUsers(GetGatewaySmbUsersArgs args) {
@@ -1023,6 +1080,8 @@ public final class CloudstoragegatewayFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1093,6 +1152,7 @@ public final class CloudstoragegatewayFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetGatewaySmbUsersResult> getGatewaySmbUsersPlain(GetGatewaySmbUsersPlainArgs args) {
@@ -1106,6 +1166,8 @@ public final class CloudstoragegatewayFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1176,6 +1238,7 @@ public final class CloudstoragegatewayFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetGatewaySmbUsersResult> getGatewaySmbUsers(GetGatewaySmbUsersArgs args, InvokeOptions options) {
@@ -1189,6 +1252,8 @@ public final class CloudstoragegatewayFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1259,6 +1324,7 @@ public final class CloudstoragegatewayFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetGatewaySmbUsersResult> getGatewaySmbUsersPlain(GetGatewaySmbUsersPlainArgs args, InvokeOptions options) {
@@ -1272,6 +1338,8 @@ public final class CloudstoragegatewayFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1308,6 +1376,7 @@ public final class CloudstoragegatewayFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetGatewaysResult> getGateways(GetGatewaysArgs args) {
@@ -1321,6 +1390,8 @@ public final class CloudstoragegatewayFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1357,6 +1428,7 @@ public final class CloudstoragegatewayFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetGatewaysResult> getGatewaysPlain(GetGatewaysPlainArgs args) {
@@ -1370,6 +1442,8 @@ public final class CloudstoragegatewayFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1406,6 +1480,7 @@ public final class CloudstoragegatewayFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetGatewaysResult> getGateways(GetGatewaysArgs args, InvokeOptions options) {
@@ -1419,6 +1494,8 @@ public final class CloudstoragegatewayFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1455,6 +1532,7 @@ public final class CloudstoragegatewayFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetGatewaysResult> getGatewaysPlain(GetGatewaysPlainArgs args, InvokeOptions options) {
@@ -1468,6 +1546,8 @@ public final class CloudstoragegatewayFunctions {
      * &gt; **NOTE:** Available in v1.117.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1496,6 +1576,7 @@ public final class CloudstoragegatewayFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetServiceResult> getService() {
@@ -1509,6 +1590,8 @@ public final class CloudstoragegatewayFunctions {
      * &gt; **NOTE:** Available in v1.117.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1537,6 +1620,7 @@ public final class CloudstoragegatewayFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetServiceResult> getServicePlain() {
@@ -1550,6 +1634,8 @@ public final class CloudstoragegatewayFunctions {
      * &gt; **NOTE:** Available in v1.117.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1578,6 +1664,7 @@ public final class CloudstoragegatewayFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetServiceResult> getService(GetServiceArgs args) {
@@ -1591,6 +1678,8 @@ public final class CloudstoragegatewayFunctions {
      * &gt; **NOTE:** Available in v1.117.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1619,6 +1708,7 @@ public final class CloudstoragegatewayFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetServiceResult> getServicePlain(GetServicePlainArgs args) {
@@ -1632,6 +1722,8 @@ public final class CloudstoragegatewayFunctions {
      * &gt; **NOTE:** Available in v1.117.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1660,6 +1752,7 @@ public final class CloudstoragegatewayFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetServiceResult> getService(GetServiceArgs args, InvokeOptions options) {
@@ -1673,6 +1766,8 @@ public final class CloudstoragegatewayFunctions {
      * &gt; **NOTE:** Available in v1.117.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1701,6 +1796,7 @@ public final class CloudstoragegatewayFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetServiceResult> getServicePlain(GetServicePlainArgs args, InvokeOptions options) {
@@ -1714,6 +1810,8 @@ public final class CloudstoragegatewayFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1743,6 +1841,7 @@ public final class CloudstoragegatewayFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetStocksResult> getStocks() {
@@ -1756,6 +1855,8 @@ public final class CloudstoragegatewayFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1785,6 +1886,7 @@ public final class CloudstoragegatewayFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetStocksResult> getStocksPlain() {
@@ -1798,6 +1900,8 @@ public final class CloudstoragegatewayFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1827,6 +1931,7 @@ public final class CloudstoragegatewayFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetStocksResult> getStocks(GetStocksArgs args) {
@@ -1840,6 +1945,8 @@ public final class CloudstoragegatewayFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1869,6 +1976,7 @@ public final class CloudstoragegatewayFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetStocksResult> getStocksPlain(GetStocksPlainArgs args) {
@@ -1882,6 +1990,8 @@ public final class CloudstoragegatewayFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1911,6 +2021,7 @@ public final class CloudstoragegatewayFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetStocksResult> getStocks(GetStocksArgs args, InvokeOptions options) {
@@ -1924,6 +2035,8 @@ public final class CloudstoragegatewayFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1953,6 +2066,7 @@ public final class CloudstoragegatewayFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetStocksResult> getStocksPlain(GetStocksPlainArgs args, InvokeOptions options) {

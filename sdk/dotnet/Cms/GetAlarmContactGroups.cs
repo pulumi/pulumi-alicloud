@@ -16,12 +16,11 @@ namespace Pulumi.AliCloud.Cms
         /// 
         /// &gt; **NOTE:** Available in v1.101.0+.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// Basic Usage
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -37,8 +36,7 @@ namespace Pulumi.AliCloud.Cms
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetAlarmContactGroupsResult> InvokeAsync(GetAlarmContactGroupsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAlarmContactGroupsResult>("alicloud:cms/getAlarmContactGroups:getAlarmContactGroups", args ?? new GetAlarmContactGroupsArgs(), options.WithDefaults());
@@ -48,12 +46,11 @@ namespace Pulumi.AliCloud.Cms
         /// 
         /// &gt; **NOTE:** Available in v1.101.0+.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// Basic Usage
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -69,8 +66,7 @@ namespace Pulumi.AliCloud.Cms
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetAlarmContactGroupsResult> Invoke(GetAlarmContactGroupsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAlarmContactGroupsResult>("alicloud:cms/getAlarmContactGroups:getAlarmContactGroups", args ?? new GetAlarmContactGroupsInvokeArgs(), options.WithDefaults());

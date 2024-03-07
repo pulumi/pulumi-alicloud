@@ -19,6 +19,7 @@ import (
 //
 // # Basic Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -46,6 +47,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func GetProvisionedProducts(ctx *pulumi.Context, args *GetProvisionedProductsArgs, opts ...pulumi.InvokeOption) (*GetProvisionedProductsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetProvisionedProductsResult

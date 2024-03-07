@@ -16,12 +16,11 @@ namespace Pulumi.AliCloud.Gpdb
         /// 
         /// &gt; **NOTE:** Available in v1.189.0+.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// Basic Usage
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -52,8 +51,7 @@ namespace Pulumi.AliCloud.Gpdb
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetDbInstancePlansResult> InvokeAsync(GetDbInstancePlansArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetDbInstancePlansResult>("alicloud:gpdb/getDbInstancePlans:getDbInstancePlans", args ?? new GetDbInstancePlansArgs(), options.WithDefaults());
@@ -63,12 +61,11 @@ namespace Pulumi.AliCloud.Gpdb
         /// 
         /// &gt; **NOTE:** Available in v1.189.0+.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// Basic Usage
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -99,8 +96,7 @@ namespace Pulumi.AliCloud.Gpdb
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetDbInstancePlansResult> Invoke(GetDbInstancePlansInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDbInstancePlansResult>("alicloud:gpdb/getDbInstancePlans:getDbInstancePlans", args ?? new GetDbInstancePlansInvokeArgs(), options.WithDefaults());

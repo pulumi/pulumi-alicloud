@@ -113,6 +113,7 @@ def get_ad_connector_directories(ids: Optional[Sequence[str]] = None,
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -120,6 +121,7 @@ def get_ad_connector_directories(ids: Optional[Sequence[str]] = None,
     ids = alicloud.eds.get_ad_connector_directories(ids=["example_id"])
     pulumi.export("ecdAdConnectorDirectoryId1", ids.directories[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Ad Connector Directory IDs.
@@ -160,6 +162,7 @@ def get_ad_connector_directories_output(ids: Optional[pulumi.Input[Optional[Sequ
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -167,6 +170,7 @@ def get_ad_connector_directories_output(ids: Optional[pulumi.Input[Optional[Sequ
     ids = alicloud.eds.get_ad_connector_directories(ids=["example_id"])
     pulumi.export("ecdAdConnectorDirectoryId1", ids.directories[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Ad Connector Directory IDs.

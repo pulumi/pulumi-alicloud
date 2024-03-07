@@ -46,6 +46,8 @@ public final class ArmsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -75,6 +77,7 @@ public final class ArmsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetAlertContactGroupsResult> getAlertContactGroups() {
@@ -88,6 +91,8 @@ public final class ArmsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -117,6 +122,7 @@ public final class ArmsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetAlertContactGroupsResult> getAlertContactGroupsPlain() {
@@ -130,6 +136,8 @@ public final class ArmsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -159,6 +167,7 @@ public final class ArmsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetAlertContactGroupsResult> getAlertContactGroups(GetAlertContactGroupsArgs args) {
@@ -172,6 +181,8 @@ public final class ArmsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -201,6 +212,7 @@ public final class ArmsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetAlertContactGroupsResult> getAlertContactGroupsPlain(GetAlertContactGroupsPlainArgs args) {
@@ -214,6 +226,8 @@ public final class ArmsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -243,6 +257,7 @@ public final class ArmsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetAlertContactGroupsResult> getAlertContactGroups(GetAlertContactGroupsArgs args, InvokeOptions options) {
@@ -256,6 +271,8 @@ public final class ArmsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -285,6 +302,7 @@ public final class ArmsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetAlertContactGroupsResult> getAlertContactGroupsPlain(GetAlertContactGroupsPlainArgs args, InvokeOptions options) {
@@ -298,6 +316,8 @@ public final class ArmsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -330,6 +350,7 @@ public final class ArmsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetAlertContactsResult> getAlertContacts() {
@@ -343,6 +364,8 @@ public final class ArmsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -375,6 +398,7 @@ public final class ArmsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetAlertContactsResult> getAlertContactsPlain() {
@@ -388,6 +412,8 @@ public final class ArmsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -420,6 +446,7 @@ public final class ArmsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetAlertContactsResult> getAlertContacts(GetAlertContactsArgs args) {
@@ -433,6 +460,8 @@ public final class ArmsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -465,6 +494,7 @@ public final class ArmsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetAlertContactsResult> getAlertContactsPlain(GetAlertContactsPlainArgs args) {
@@ -478,6 +508,8 @@ public final class ArmsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -510,6 +542,7 @@ public final class ArmsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetAlertContactsResult> getAlertContacts(GetAlertContactsArgs args, InvokeOptions options) {
@@ -523,6 +556,8 @@ public final class ArmsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -555,6 +590,7 @@ public final class ArmsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetAlertContactsResult> getAlertContactsPlain(GetAlertContactsPlainArgs args, InvokeOptions options) {
@@ -568,6 +604,8 @@ public final class ArmsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -600,6 +638,7 @@ public final class ArmsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetDispatchRulesResult> getDispatchRules() {
@@ -613,6 +652,8 @@ public final class ArmsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -645,6 +686,7 @@ public final class ArmsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetDispatchRulesResult> getDispatchRulesPlain() {
@@ -658,6 +700,8 @@ public final class ArmsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -690,6 +734,7 @@ public final class ArmsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetDispatchRulesResult> getDispatchRules(GetDispatchRulesArgs args) {
@@ -703,6 +748,8 @@ public final class ArmsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -735,6 +782,7 @@ public final class ArmsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetDispatchRulesResult> getDispatchRulesPlain(GetDispatchRulesPlainArgs args) {
@@ -748,6 +796,8 @@ public final class ArmsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -780,6 +830,7 @@ public final class ArmsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetDispatchRulesResult> getDispatchRules(GetDispatchRulesArgs args, InvokeOptions options) {
@@ -793,6 +844,8 @@ public final class ArmsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -825,6 +878,7 @@ public final class ArmsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetDispatchRulesResult> getDispatchRulesPlain(GetDispatchRulesPlainArgs args, InvokeOptions options) {
@@ -838,6 +892,8 @@ public final class ArmsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -869,6 +925,7 @@ public final class ArmsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetIntegrationExportersResult> getIntegrationExporters(GetIntegrationExportersArgs args) {
@@ -882,6 +939,8 @@ public final class ArmsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -913,6 +972,7 @@ public final class ArmsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetIntegrationExportersResult> getIntegrationExportersPlain(GetIntegrationExportersPlainArgs args) {
@@ -926,6 +986,8 @@ public final class ArmsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -957,6 +1019,7 @@ public final class ArmsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetIntegrationExportersResult> getIntegrationExporters(GetIntegrationExportersArgs args, InvokeOptions options) {
@@ -970,6 +1033,8 @@ public final class ArmsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1001,6 +1066,7 @@ public final class ArmsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetIntegrationExportersResult> getIntegrationExportersPlain(GetIntegrationExportersPlainArgs args, InvokeOptions options) {
@@ -1016,6 +1082,8 @@ public final class ArmsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1084,6 +1152,7 @@ public final class ArmsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetPrometheisResult> getPrometheis() {
@@ -1099,6 +1168,8 @@ public final class ArmsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1167,6 +1238,7 @@ public final class ArmsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetPrometheisResult> getPrometheisPlain() {
@@ -1182,6 +1254,8 @@ public final class ArmsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1250,6 +1324,7 @@ public final class ArmsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetPrometheisResult> getPrometheis(GetPrometheisArgs args) {
@@ -1265,6 +1340,8 @@ public final class ArmsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1333,6 +1410,7 @@ public final class ArmsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetPrometheisResult> getPrometheisPlain(GetPrometheisPlainArgs args) {
@@ -1348,6 +1426,8 @@ public final class ArmsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1416,6 +1496,7 @@ public final class ArmsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetPrometheisResult> getPrometheis(GetPrometheisArgs args, InvokeOptions options) {
@@ -1431,6 +1512,8 @@ public final class ArmsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1499,6 +1582,7 @@ public final class ArmsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetPrometheisResult> getPrometheisPlain(GetPrometheisPlainArgs args, InvokeOptions options) {
@@ -1512,6 +1596,8 @@ public final class ArmsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1580,6 +1666,7 @@ public final class ArmsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetPrometheusResult> getPrometheus() {
@@ -1593,6 +1680,8 @@ public final class ArmsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1661,6 +1750,7 @@ public final class ArmsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetPrometheusResult> getPrometheusPlain() {
@@ -1674,6 +1764,8 @@ public final class ArmsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1742,6 +1834,7 @@ public final class ArmsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetPrometheusResult> getPrometheus(GetPrometheusArgs args) {
@@ -1755,6 +1848,8 @@ public final class ArmsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1823,6 +1918,7 @@ public final class ArmsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetPrometheusResult> getPrometheusPlain(GetPrometheusPlainArgs args) {
@@ -1836,6 +1932,8 @@ public final class ArmsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1904,6 +2002,7 @@ public final class ArmsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetPrometheusResult> getPrometheus(GetPrometheusArgs args, InvokeOptions options) {
@@ -1917,6 +2016,8 @@ public final class ArmsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1985,6 +2086,7 @@ public final class ArmsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetPrometheusResult> getPrometheusPlain(GetPrometheusPlainArgs args, InvokeOptions options) {
@@ -1998,6 +2100,8 @@ public final class ArmsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2036,6 +2140,7 @@ public final class ArmsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetPrometheusAlertRulesResult> getPrometheusAlertRules(GetPrometheusAlertRulesArgs args) {
@@ -2049,6 +2154,8 @@ public final class ArmsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2087,6 +2194,7 @@ public final class ArmsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetPrometheusAlertRulesResult> getPrometheusAlertRulesPlain(GetPrometheusAlertRulesPlainArgs args) {
@@ -2100,6 +2208,8 @@ public final class ArmsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2138,6 +2248,7 @@ public final class ArmsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetPrometheusAlertRulesResult> getPrometheusAlertRules(GetPrometheusAlertRulesArgs args, InvokeOptions options) {
@@ -2151,6 +2262,8 @@ public final class ArmsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2189,6 +2302,7 @@ public final class ArmsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetPrometheusAlertRulesResult> getPrometheusAlertRulesPlain(GetPrometheusAlertRulesPlainArgs args, InvokeOptions options) {
@@ -2202,6 +2316,8 @@ public final class ArmsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2238,6 +2354,7 @@ public final class ArmsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetPrometheusMonitoringsResult> getPrometheusMonitorings(GetPrometheusMonitoringsArgs args) {
@@ -2251,6 +2368,8 @@ public final class ArmsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2287,6 +2406,7 @@ public final class ArmsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetPrometheusMonitoringsResult> getPrometheusMonitoringsPlain(GetPrometheusMonitoringsPlainArgs args) {
@@ -2300,6 +2420,8 @@ public final class ArmsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2336,6 +2458,7 @@ public final class ArmsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetPrometheusMonitoringsResult> getPrometheusMonitorings(GetPrometheusMonitoringsArgs args, InvokeOptions options) {
@@ -2349,6 +2472,8 @@ public final class ArmsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2385,6 +2510,7 @@ public final class ArmsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetPrometheusMonitoringsResult> getPrometheusMonitoringsPlain(GetPrometheusMonitoringsPlainArgs args, InvokeOptions options) {
@@ -2398,6 +2524,8 @@ public final class ArmsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2434,6 +2562,7 @@ public final class ArmsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetRemoteWritesResult> getRemoteWrites(GetRemoteWritesArgs args) {
@@ -2447,6 +2576,8 @@ public final class ArmsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2483,6 +2614,7 @@ public final class ArmsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetRemoteWritesResult> getRemoteWritesPlain(GetRemoteWritesPlainArgs args) {
@@ -2496,6 +2628,8 @@ public final class ArmsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2532,6 +2666,7 @@ public final class ArmsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetRemoteWritesResult> getRemoteWrites(GetRemoteWritesArgs args, InvokeOptions options) {
@@ -2545,6 +2680,8 @@ public final class ArmsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2581,6 +2718,7 @@ public final class ArmsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetRemoteWritesResult> getRemoteWritesPlain(GetRemoteWritesPlainArgs args, InvokeOptions options) {

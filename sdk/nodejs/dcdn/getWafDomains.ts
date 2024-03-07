@@ -15,6 +15,7 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -22,6 +23,7 @@ import * as utilities from "../utilities";
  * const ids = alicloud.dcdn.getWafDomains({});
  * export const dcdnWafDomainId1 = ids.then(ids => ids.domains?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getWafDomains(args?: GetWafDomainsArgs, opts?: pulumi.InvokeOptions): Promise<GetWafDomainsResult> {
     args = args || {};
@@ -80,6 +82,7 @@ export interface GetWafDomainsResult {
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -87,6 +90,7 @@ export interface GetWafDomainsResult {
  * const ids = alicloud.dcdn.getWafDomains({});
  * export const dcdnWafDomainId1 = ids.then(ids => ids.domains?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getWafDomainsOutput(args?: GetWafDomainsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetWafDomainsResult> {
     return pulumi.output(args).apply((a: any) => getWafDomains(a, opts))

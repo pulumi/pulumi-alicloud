@@ -15,6 +15,7 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -23,6 +24,7 @@ import * as utilities from "../utilities";
  *     direction: "in",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getControlPolicies(args: GetControlPoliciesArgs, opts?: pulumi.InvokeOptions): Promise<GetControlPoliciesResult> {
 
@@ -144,6 +146,7 @@ export interface GetControlPoliciesResult {
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -152,6 +155,7 @@ export interface GetControlPoliciesResult {
  *     direction: "in",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getControlPoliciesOutput(args: GetControlPoliciesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetControlPoliciesResult> {
     return pulumi.output(args).apply((a: any) => getControlPolicies(a, opts))

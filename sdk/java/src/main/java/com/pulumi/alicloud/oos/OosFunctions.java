@@ -43,6 +43,8 @@ public final class OosFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -81,6 +83,7 @@ public final class OosFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetApplicationGroupsResult> getApplicationGroups(GetApplicationGroupsArgs args) {
@@ -94,6 +97,8 @@ public final class OosFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -132,6 +137,7 @@ public final class OosFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetApplicationGroupsResult> getApplicationGroupsPlain(GetApplicationGroupsPlainArgs args) {
@@ -145,6 +151,8 @@ public final class OosFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -183,6 +191,7 @@ public final class OosFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetApplicationGroupsResult> getApplicationGroups(GetApplicationGroupsArgs args, InvokeOptions options) {
@@ -196,6 +205,8 @@ public final class OosFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -234,6 +245,7 @@ public final class OosFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetApplicationGroupsResult> getApplicationGroupsPlain(GetApplicationGroupsPlainArgs args, InvokeOptions options) {
@@ -247,6 +259,8 @@ public final class OosFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -279,6 +293,7 @@ public final class OosFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetApplicationsResult> getApplications() {
@@ -292,6 +307,8 @@ public final class OosFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -324,6 +341,7 @@ public final class OosFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetApplicationsResult> getApplicationsPlain() {
@@ -337,6 +355,8 @@ public final class OosFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -369,6 +389,7 @@ public final class OosFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetApplicationsResult> getApplications(GetApplicationsArgs args) {
@@ -382,6 +403,8 @@ public final class OosFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -414,6 +437,7 @@ public final class OosFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetApplicationsResult> getApplicationsPlain(GetApplicationsPlainArgs args) {
@@ -427,6 +451,8 @@ public final class OosFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -459,6 +485,7 @@ public final class OosFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetApplicationsResult> getApplications(GetApplicationsArgs args, InvokeOptions options) {
@@ -472,6 +499,8 @@ public final class OosFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -504,6 +533,7 @@ public final class OosFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetApplicationsResult> getApplicationsPlain(GetApplicationsPlainArgs args, InvokeOptions options) {
@@ -515,6 +545,8 @@ public final class OosFunctions {
      * &gt; **NOTE:** Available in v1.93.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -546,6 +578,7 @@ public final class OosFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetExecutionsResult> getExecutions() {
@@ -557,6 +590,8 @@ public final class OosFunctions {
      * &gt; **NOTE:** Available in v1.93.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -588,6 +623,7 @@ public final class OosFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetExecutionsResult> getExecutionsPlain() {
@@ -599,6 +635,8 @@ public final class OosFunctions {
      * &gt; **NOTE:** Available in v1.93.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -630,6 +668,7 @@ public final class OosFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetExecutionsResult> getExecutions(GetExecutionsArgs args) {
@@ -641,6 +680,8 @@ public final class OosFunctions {
      * &gt; **NOTE:** Available in v1.93.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -672,6 +713,7 @@ public final class OosFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetExecutionsResult> getExecutionsPlain(GetExecutionsPlainArgs args) {
@@ -683,6 +725,8 @@ public final class OosFunctions {
      * &gt; **NOTE:** Available in v1.93.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -714,6 +758,7 @@ public final class OosFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetExecutionsResult> getExecutions(GetExecutionsArgs args, InvokeOptions options) {
@@ -725,6 +770,8 @@ public final class OosFunctions {
      * &gt; **NOTE:** Available in v1.93.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -756,6 +803,7 @@ public final class OosFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetExecutionsResult> getExecutionsPlain(GetExecutionsPlainArgs args, InvokeOptions options) {
@@ -769,6 +817,8 @@ public final class OosFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -818,6 +868,7 @@ public final class OosFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetParametersResult> getParameters() {
@@ -831,6 +882,8 @@ public final class OosFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -880,6 +933,7 @@ public final class OosFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetParametersResult> getParametersPlain() {
@@ -893,6 +947,8 @@ public final class OosFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -942,6 +998,7 @@ public final class OosFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetParametersResult> getParameters(GetParametersArgs args) {
@@ -955,6 +1012,8 @@ public final class OosFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1004,6 +1063,7 @@ public final class OosFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetParametersResult> getParametersPlain(GetParametersPlainArgs args) {
@@ -1017,6 +1077,8 @@ public final class OosFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1066,6 +1128,7 @@ public final class OosFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetParametersResult> getParameters(GetParametersArgs args, InvokeOptions options) {
@@ -1079,6 +1142,8 @@ public final class OosFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1128,6 +1193,7 @@ public final class OosFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetParametersResult> getParametersPlain(GetParametersPlainArgs args, InvokeOptions options) {
@@ -1249,6 +1315,8 @@ public final class OosFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1276,6 +1344,7 @@ public final class OosFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetStateConfigurationsResult> getStateConfigurations() {
@@ -1289,6 +1358,8 @@ public final class OosFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1316,6 +1387,7 @@ public final class OosFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetStateConfigurationsResult> getStateConfigurationsPlain() {
@@ -1329,6 +1401,8 @@ public final class OosFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1356,6 +1430,7 @@ public final class OosFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetStateConfigurationsResult> getStateConfigurations(GetStateConfigurationsArgs args) {
@@ -1369,6 +1444,8 @@ public final class OosFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1396,6 +1473,7 @@ public final class OosFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetStateConfigurationsResult> getStateConfigurationsPlain(GetStateConfigurationsPlainArgs args) {
@@ -1409,6 +1487,8 @@ public final class OosFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1436,6 +1516,7 @@ public final class OosFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetStateConfigurationsResult> getStateConfigurations(GetStateConfigurationsArgs args, InvokeOptions options) {
@@ -1449,6 +1530,8 @@ public final class OosFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1476,6 +1559,7 @@ public final class OosFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetStateConfigurationsResult> getStateConfigurationsPlain(GetStateConfigurationsPlainArgs args, InvokeOptions options) {
@@ -1487,6 +1571,8 @@ public final class OosFunctions {
      * &gt; **NOTE:** Available in v1.92.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1522,6 +1608,7 @@ public final class OosFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetTemplatesResult> getTemplates() {
@@ -1533,6 +1620,8 @@ public final class OosFunctions {
      * &gt; **NOTE:** Available in v1.92.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1568,6 +1657,7 @@ public final class OosFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetTemplatesResult> getTemplatesPlain() {
@@ -1579,6 +1669,8 @@ public final class OosFunctions {
      * &gt; **NOTE:** Available in v1.92.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1614,6 +1706,7 @@ public final class OosFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetTemplatesResult> getTemplates(GetTemplatesArgs args) {
@@ -1625,6 +1718,8 @@ public final class OosFunctions {
      * &gt; **NOTE:** Available in v1.92.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1660,6 +1755,7 @@ public final class OosFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetTemplatesResult> getTemplatesPlain(GetTemplatesPlainArgs args) {
@@ -1671,6 +1767,8 @@ public final class OosFunctions {
      * &gt; **NOTE:** Available in v1.92.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1706,6 +1804,7 @@ public final class OosFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetTemplatesResult> getTemplates(GetTemplatesArgs args, InvokeOptions options) {
@@ -1717,6 +1816,8 @@ public final class OosFunctions {
      * &gt; **NOTE:** Available in v1.92.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1752,6 +1853,7 @@ public final class OosFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetTemplatesResult> getTemplatesPlain(GetTemplatesPlainArgs args, InvokeOptions options) {

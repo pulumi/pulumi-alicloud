@@ -16,12 +16,11 @@ namespace Pulumi.AliCloud.Arms
         /// 
         /// &gt; **NOTE:** Available in v1.204.0+.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// Basic Usage
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -52,8 +51,7 @@ namespace Pulumi.AliCloud.Arms
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetRemoteWritesResult> InvokeAsync(GetRemoteWritesArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetRemoteWritesResult>("alicloud:arms/getRemoteWrites:getRemoteWrites", args ?? new GetRemoteWritesArgs(), options.WithDefaults());
@@ -63,12 +61,11 @@ namespace Pulumi.AliCloud.Arms
         /// 
         /// &gt; **NOTE:** Available in v1.204.0+.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// Basic Usage
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -99,8 +96,7 @@ namespace Pulumi.AliCloud.Arms
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetRemoteWritesResult> Invoke(GetRemoteWritesInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetRemoteWritesResult>("alicloud:arms/getRemoteWrites:getRemoteWrites", args ?? new GetRemoteWritesInvokeArgs(), options.WithDefaults());

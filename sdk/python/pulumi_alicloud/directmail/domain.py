@@ -92,6 +92,7 @@ class Domain(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -102,6 +103,7 @@ class Domain(pulumi.CustomResource):
             min=10000)
         example = alicloud.directmail.Domain("example", domain_name=default.result.apply(lambda result: f"alicloud-provider-{result}.online"))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -132,6 +134,7 @@ class Domain(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -142,6 +145,7 @@ class Domain(pulumi.CustomResource):
             min=10000)
         example = alicloud.directmail.Domain("example", domain_name=default.result.apply(lambda result: f"alicloud-provider-{result}.online"))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

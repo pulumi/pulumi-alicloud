@@ -34,7 +34,10 @@ import javax.annotation.Nullable;
  * &gt; **NOTE:**  Create MongoDB instance or change instance type and storage would cost 5~10 minutes. Please make full preparation
  * 
  * ## Example Usage
+ * 
  * ### Create a Mongodb instance
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -99,6 +102,8 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ## Module Support
  * 
  * You can use to the existing mongodb module

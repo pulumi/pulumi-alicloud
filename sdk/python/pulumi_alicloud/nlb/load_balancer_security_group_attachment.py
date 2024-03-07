@@ -149,6 +149,7 @@ class LoadBalancerSecurityGroupAttachment(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -198,6 +199,7 @@ class LoadBalancerSecurityGroupAttachment(pulumi.CustomResource):
             security_group_id=default_security_group.id,
             load_balancer_id=default_load_balancer.id)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -232,6 +234,7 @@ class LoadBalancerSecurityGroupAttachment(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -281,6 +284,7 @@ class LoadBalancerSecurityGroupAttachment(pulumi.CustomResource):
             security_group_id=default_security_group.id,
             load_balancer_id=default_load_balancer.id)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

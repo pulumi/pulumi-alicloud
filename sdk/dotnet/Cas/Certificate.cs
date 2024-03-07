@@ -22,6 +22,7 @@ namespace Pulumi.AliCloud.Cas
     /// 
     /// ## Example Usage
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.IO;
@@ -40,6 +41,7 @@ namespace Pulumi.AliCloud.Cas
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// </summary>
     [Obsolete(@"This resource has been deprecated in favour of ServiceCertificate")]
     [AliCloudResourceType("alicloud:cas/certificate:Certificate")]

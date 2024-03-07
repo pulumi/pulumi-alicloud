@@ -17,8 +17,10 @@ import * as utilities from "../utilities";
  * > **NOTE:**  Create Cassandra cluster or change cluster type and storage would cost 30 minutes. Please make full preparation.
  *
  * ## Example Usage
+ *
  * ### Create a cassandra cluster
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -39,6 +41,7 @@ import * as utilities from "../utilities";
  *     vswitchId: "vsw-xxxx",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * This is a example for class netType cluster. You can find more detail with the examples/cassandra_cluster dir.
  *

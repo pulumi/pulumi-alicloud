@@ -17,6 +17,7 @@ import (
 //
 // # Basic Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -49,6 +50,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func GetMscSubContactVerificationMessage(ctx *pulumi.Context, args *GetMscSubContactVerificationMessageArgs, opts ...pulumi.InvokeOption) (*GetMscSubContactVerificationMessageResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetMscSubContactVerificationMessageResult

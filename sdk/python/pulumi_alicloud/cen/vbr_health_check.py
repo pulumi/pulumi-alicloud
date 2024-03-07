@@ -313,6 +313,7 @@ class VbrHealthCheck(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -354,6 +355,7 @@ class VbrHealthCheck(pulumi.CustomResource):
             health_check_interval=2,
             healthy_threshold=8)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -394,6 +396,7 @@ class VbrHealthCheck(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -435,6 +438,7 @@ class VbrHealthCheck(pulumi.CustomResource):
             health_check_interval=2,
             healthy_threshold=8)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

@@ -98,12 +98,14 @@ def get_gateway_zones(ids: Optional[Sequence[str]] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
 
     default = alicloud.vpn.get_gateway_zones(spec="5M")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Zone IDs.
@@ -137,12 +139,14 @@ def get_gateway_zones_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
 
     default = alicloud.vpn.get_gateway_zones(spec="5M")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Zone IDs.

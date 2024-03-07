@@ -139,6 +139,7 @@ def get_agents(agent_name: Optional[str] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -146,6 +147,7 @@ def get_agents(agent_name: Optional[str] = None,
     name_regex = alicloud.chatbot.get_agents(name_regex="^my-Agent")
     pulumi.export("alicloudChatbotAgentsId1", name_regex.agents[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str agent_name: The name of the agent.
@@ -187,6 +189,7 @@ def get_agents_output(agent_name: Optional[pulumi.Input[Optional[str]]] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -194,6 +197,7 @@ def get_agents_output(agent_name: Optional[pulumi.Input[Optional[str]]] = None,
     name_regex = alicloud.chatbot.get_agents(name_regex="^my-Agent")
     pulumi.export("alicloudChatbotAgentsId1", name_regex.agents[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str agent_name: The name of the agent.

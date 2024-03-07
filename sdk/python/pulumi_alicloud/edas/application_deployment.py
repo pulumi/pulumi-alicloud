@@ -187,6 +187,7 @@ class ApplicationDeployment(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -239,6 +240,7 @@ class ApplicationDeployment(pulumi.CustomResource):
             group_id="all",
             war_url="http://edas-sz.oss-cn-shenzhen.aliyuncs.com/prod/demo/SPRING_CLOUD_CONSUMER.jar")
         ```
+        <!--End PulumiCodeChooser -->
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -262,6 +264,7 @@ class ApplicationDeployment(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -314,6 +317,7 @@ class ApplicationDeployment(pulumi.CustomResource):
             group_id="all",
             war_url="http://edas-sz.oss-cn-shenzhen.aliyuncs.com/prod/demo/SPRING_CLOUD_CONSUMER.jar")
         ```
+        <!--End PulumiCodeChooser -->
 
         :param str resource_name: The name of the resource.
         :param ApplicationDeploymentArgs args: The arguments to use to populate this resource's properties.

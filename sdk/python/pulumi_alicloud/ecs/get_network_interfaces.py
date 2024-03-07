@@ -266,6 +266,7 @@ def get_network_interfaces(ids: Optional[Sequence[str]] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -317,6 +318,8 @@ def get_network_interfaces(ids: Optional[Sequence[str]] = None,
         vswitch_id=vswitch.id)
     pulumi.export("eni0Name", default_network_interfaces.interfaces[0].name)
     ```
+    <!--End PulumiCodeChooser -->
+
     ## Argument Reference
 
     The following arguments are supported:
@@ -413,6 +416,7 @@ def get_network_interfaces_output(ids: Optional[pulumi.Input[Optional[Sequence[s
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -464,6 +468,8 @@ def get_network_interfaces_output(ids: Optional[pulumi.Input[Optional[Sequence[s
         vswitch_id=vswitch.id)
     pulumi.export("eni0Name", default_network_interfaces.interfaces[0].name)
     ```
+    <!--End PulumiCodeChooser -->
+
     ## Argument Reference
 
     The following arguments are supported:

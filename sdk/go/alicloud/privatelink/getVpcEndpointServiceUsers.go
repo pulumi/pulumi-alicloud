@@ -19,6 +19,7 @@ import (
 //
 // # Basic Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -43,6 +44,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func GetVpcEndpointServiceUsers(ctx *pulumi.Context, args *GetVpcEndpointServiceUsersArgs, opts ...pulumi.InvokeOption) (*GetVpcEndpointServiceUsersResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetVpcEndpointServiceUsersResult

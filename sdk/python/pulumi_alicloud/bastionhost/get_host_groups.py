@@ -123,6 +123,7 @@ def get_host_groups(host_group_name: Optional[str] = None,
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -137,6 +138,7 @@ def get_host_groups(host_group_name: Optional[str] = None,
         name_regex="^my-HostGroup")
     pulumi.export("bastionhostHostGroupId2", name_regex.groups[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str host_group_name: Specify the New Host Group Name, Supports up to 128 Characters.
@@ -181,6 +183,7 @@ def get_host_groups_output(host_group_name: Optional[pulumi.Input[Optional[str]]
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -195,6 +198,7 @@ def get_host_groups_output(host_group_name: Optional[pulumi.Input[Optional[str]]
         name_regex="^my-HostGroup")
     pulumi.export("bastionhostHostGroupId2", name_regex.groups[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str host_group_name: Specify the New Host Group Name, Supports up to 128 Characters.

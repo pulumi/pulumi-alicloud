@@ -13,6 +13,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -29,6 +30,7 @@ import * as utilities from "../utilities";
  * }));
  * export const firstKvstoreInstanceClass = resourcesInstanceEngines.then(resourcesInstanceEngines => resourcesInstanceEngines.instanceEngines?.[0]?.engine);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getInstanceEngines(args: GetInstanceEnginesArgs, opts?: pulumi.InvokeOptions): Promise<GetInstanceEnginesResult> {
 
@@ -102,6 +104,7 @@ export interface GetInstanceEnginesResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -118,6 +121,7 @@ export interface GetInstanceEnginesResult {
  * }));
  * export const firstKvstoreInstanceClass = resourcesInstanceEngines.then(resourcesInstanceEngines => resourcesInstanceEngines.instanceEngines?.[0]?.engine);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getInstanceEnginesOutput(args: GetInstanceEnginesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstanceEnginesResult> {
     return pulumi.output(args).apply((a: any) => getInstanceEngines(a, opts))

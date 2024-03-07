@@ -239,6 +239,7 @@ class CustomDomain(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -319,6 +320,7 @@ class CustomDomain(pulumi.CustomResource):
         MIICX****n-----END RSA PRIVATE KEY-----\"\"\",
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -351,6 +353,7 @@ class CustomDomain(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -431,6 +434,7 @@ class CustomDomain(pulumi.CustomResource):
         MIICX****n-----END RSA PRIVATE KEY-----\"\"\",
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

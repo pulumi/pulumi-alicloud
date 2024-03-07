@@ -173,6 +173,7 @@ class EngineNamespace(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -203,6 +204,7 @@ class EngineNamespace(pulumi.CustomResource):
             namespace_show_name="terraform-example",
             namespace_id="terraform-example")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -236,6 +238,7 @@ class EngineNamespace(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -266,6 +269,7 @@ class EngineNamespace(pulumi.CustomResource):
             namespace_show_name="terraform-example",
             namespace_id="terraform-example")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

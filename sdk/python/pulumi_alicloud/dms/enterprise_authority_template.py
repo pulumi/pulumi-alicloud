@@ -173,6 +173,7 @@ class EnterpriseAuthorityTemplate(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -187,6 +188,7 @@ class EnterpriseAuthorityTemplate(pulumi.CustomResource):
             authority_template_name=name,
             description=name)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -219,6 +221,7 @@ class EnterpriseAuthorityTemplate(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -233,6 +236,7 @@ class EnterpriseAuthorityTemplate(pulumi.CustomResource):
             authority_template_name=name,
             description=name)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

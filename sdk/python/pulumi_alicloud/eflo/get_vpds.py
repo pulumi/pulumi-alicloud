@@ -192,6 +192,7 @@ def get_vpds(enable_details: Optional[bool] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -201,6 +202,7 @@ def get_vpds(enable_details: Optional[bool] = None,
         vpd_name="RMC-Terraform-Test")
     pulumi.export("alicloudEfloVpdExampleId", default.vpds[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
@@ -261,6 +263,7 @@ def get_vpds_output(enable_details: Optional[pulumi.Input[Optional[bool]]] = Non
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -270,6 +273,7 @@ def get_vpds_output(enable_details: Optional[pulumi.Input[Optional[bool]]] = Non
         vpd_name="RMC-Terraform-Test")
     pulumi.export("alicloudEfloVpdExampleId", default.vpds[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.

@@ -7,6 +7,10 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
+ * ## Example Usage
+ *
+ * The managed cluster configuration,
+ *
  * ## Import
  *
  * Cluster nodepool can be imported using the id, e.g. Then complete the nodepool.tf accords to the result of `pulumi preview`.

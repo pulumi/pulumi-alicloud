@@ -22,6 +22,7 @@ import (
 //
 // # Basic Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -94,6 +95,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
@@ -112,7 +114,7 @@ type Account struct {
 	// The name of the account. Valid values: `root`.
 	AccountName pulumi.StringOutput `pulumi:"accountName"`
 	// The Password of the Account.
-	// * The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!#$%^&*()_+-=`.
+	// * The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!#$%!^(MISSING)&*()_+-=`.
 	// * The password must be `8` to `32` characters in length.
 	AccountPassword pulumi.StringOutput `pulumi:"accountPassword"`
 	// The ID of the instance.
@@ -174,7 +176,7 @@ type accountState struct {
 	// The name of the account. Valid values: `root`.
 	AccountName *string `pulumi:"accountName"`
 	// The Password of the Account.
-	// * The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!#$%^&*()_+-=`.
+	// * The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!#$%!^(MISSING)&*()_+-=`.
 	// * The password must be `8` to `32` characters in length.
 	AccountPassword *string `pulumi:"accountPassword"`
 	// The ID of the instance.
@@ -191,7 +193,7 @@ type AccountState struct {
 	// The name of the account. Valid values: `root`.
 	AccountName pulumi.StringPtrInput
 	// The Password of the Account.
-	// * The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!#$%^&*()_+-=`.
+	// * The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!#$%!^(MISSING)&*()_+-=`.
 	// * The password must be `8` to `32` characters in length.
 	AccountPassword pulumi.StringPtrInput
 	// The ID of the instance.
@@ -212,7 +214,7 @@ type accountArgs struct {
 	// The name of the account. Valid values: `root`.
 	AccountName string `pulumi:"accountName"`
 	// The Password of the Account.
-	// * The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!#$%^&*()_+-=`.
+	// * The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!#$%!^(MISSING)&*()_+-=`.
 	// * The password must be `8` to `32` characters in length.
 	AccountPassword string `pulumi:"accountPassword"`
 	// The ID of the instance.
@@ -228,7 +230,7 @@ type AccountArgs struct {
 	// The name of the account. Valid values: `root`.
 	AccountName pulumi.StringInput
 	// The Password of the Account.
-	// * The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!#$%^&*()_+-=`.
+	// * The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!#$%!^(MISSING)&*()_+-=`.
 	// * The password must be `8` to `32` characters in length.
 	AccountPassword pulumi.StringInput
 	// The ID of the instance.
@@ -335,7 +337,7 @@ func (o AccountOutput) AccountName() pulumi.StringOutput {
 }
 
 // The Password of the Account.
-// * The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!#$%^&*()_+-=`.
+// * The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!#$%!^(MISSING)&*()_+-=`.
 // * The password must be `8` to `32` characters in length.
 func (o AccountOutput) AccountPassword() pulumi.StringOutput {
 	return o.ApplyT(func(v *Account) pulumi.StringOutput { return v.AccountPassword }).(pulumi.StringOutput)

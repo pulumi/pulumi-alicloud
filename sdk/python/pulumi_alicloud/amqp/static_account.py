@@ -204,6 +204,7 @@ class StaticAccount(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -229,6 +230,7 @@ class StaticAccount(pulumi.CustomResource):
             access_key=access_key,
             secret_key=secret_key)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -261,6 +263,7 @@ class StaticAccount(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -286,6 +289,7 @@ class StaticAccount(pulumi.CustomResource):
             access_key=access_key,
             secret_key=secret_key)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

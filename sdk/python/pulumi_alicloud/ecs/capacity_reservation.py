@@ -517,6 +517,7 @@ class CapacityReservation(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -539,6 +540,7 @@ class CapacityReservation(pulumi.CustomResource):
             },
             zone_ids=[default_zones.zones[0].id])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -580,6 +582,7 @@ class CapacityReservation(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -602,6 +605,7 @@ class CapacityReservation(pulumi.CustomResource):
             },
             zone_ids=[default_zones.zones[0].id])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

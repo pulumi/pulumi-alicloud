@@ -12,6 +12,10 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// ## Example Usage
+//
+// The managed cluster configuration,
+//
 // ## Import
 //
 // Cluster nodepool can be imported using the id, e.g. Then complete the nodepool.tf accords to the result of `pulumi preview`.

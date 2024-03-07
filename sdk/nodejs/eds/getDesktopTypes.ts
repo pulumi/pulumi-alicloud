@@ -15,6 +15,7 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -24,6 +25,7 @@ import * as utilities from "../utilities";
  * });
  * export const ecdDesktopTypeId1 = ids.then(ids => ids.types?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getDesktopTypes(args?: GetDesktopTypesArgs, opts?: pulumi.InvokeOptions): Promise<GetDesktopTypesResult> {
     args = args || {};
@@ -100,6 +102,7 @@ export interface GetDesktopTypesResult {
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -109,6 +112,7 @@ export interface GetDesktopTypesResult {
  * });
  * export const ecdDesktopTypeId1 = ids.then(ids => ids.types?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getDesktopTypesOutput(args?: GetDesktopTypesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDesktopTypesResult> {
     return pulumi.output(args).apply((a: any) => getDesktopTypes(a, opts))

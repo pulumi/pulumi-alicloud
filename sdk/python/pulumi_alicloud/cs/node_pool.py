@@ -1998,6 +1998,10 @@ class NodePool(pulumi.CustomResource):
                  vswitch_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
         """
+        ## Example Usage
+
+        The managed cluster configuration,
+
         ## Import
 
         Cluster nodepool can be imported using the id, e.g. Then complete the nodepool.tf accords to the result of `pulumi preview`.
@@ -2074,6 +2078,10 @@ class NodePool(pulumi.CustomResource):
                  args: NodePoolArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        ## Example Usage
+
+        The managed cluster configuration,
+
         ## Import
 
         Cluster nodepool can be imported using the id, e.g. Then complete the nodepool.tf accords to the result of `pulumi preview`.

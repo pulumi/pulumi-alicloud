@@ -231,6 +231,7 @@ class VpcEndpointZone(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -272,6 +273,7 @@ class VpcEndpointZone(pulumi.CustomResource):
             vswitch_id=example_switch.id,
             zone_id=example_zones.zones[0].id)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -308,6 +310,7 @@ class VpcEndpointZone(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -349,6 +352,7 @@ class VpcEndpointZone(pulumi.CustomResource):
             vswitch_id=example_switch.id,
             zone_id=example_zones.zones[0].id)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

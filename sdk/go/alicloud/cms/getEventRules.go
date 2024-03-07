@@ -19,6 +19,7 @@ import (
 //
 // # Basic Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -52,6 +53,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func GetEventRules(ctx *pulumi.Context, args *GetEventRulesArgs, opts ...pulumi.InvokeOption) (*GetEventRulesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetEventRulesResult

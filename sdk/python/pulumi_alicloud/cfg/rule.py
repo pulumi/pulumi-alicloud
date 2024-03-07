@@ -808,6 +808,7 @@ class Rule(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -831,6 +832,7 @@ class Rule(pulumi.CustomResource):
                 "value": "example",
             })
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -880,6 +882,7 @@ class Rule(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -903,6 +906,7 @@ class Rule(pulumi.CustomResource):
                 "value": "example",
             })
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

@@ -438,6 +438,7 @@ class HoneypotProbe(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -457,6 +458,7 @@ class HoneypotProbe(pulumi.CustomResource):
             probe_type="host_probe",
             uuid="032b618f-b220-4a0d-bd37-fbdc6ef58b6a")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -497,6 +499,7 @@ class HoneypotProbe(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -516,6 +519,7 @@ class HoneypotProbe(pulumi.CustomResource):
             probe_type="host_probe",
             uuid="032b618f-b220-4a0d-bd37-fbdc6ef58b6a")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

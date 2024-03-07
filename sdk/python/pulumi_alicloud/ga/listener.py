@@ -431,6 +431,7 @@ class Listener(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -456,6 +457,7 @@ class Listener(pulumi.CustomResource):
                 to_port=80,
             )])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -498,6 +500,7 @@ class Listener(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -523,6 +526,7 @@ class Listener(pulumi.CustomResource):
                 to_port=80,
             )])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

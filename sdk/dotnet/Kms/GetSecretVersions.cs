@@ -16,10 +16,9 @@ namespace Pulumi.AliCloud.Kms
         ///  
         /// &gt; **NOTE:** Available in v1.88.0+.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -40,8 +39,7 @@ namespace Pulumi.AliCloud.Kms
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetSecretVersionsResult> InvokeAsync(GetSecretVersionsArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetSecretVersionsResult>("alicloud:kms/getSecretVersions:getSecretVersions", args ?? new GetSecretVersionsArgs(), options.WithDefaults());
@@ -51,10 +49,9 @@ namespace Pulumi.AliCloud.Kms
         ///  
         /// &gt; **NOTE:** Available in v1.88.0+.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -75,8 +72,7 @@ namespace Pulumi.AliCloud.Kms
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetSecretVersionsResult> Invoke(GetSecretVersionsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetSecretVersionsResult>("alicloud:kms/getSecretVersions:getSecretVersions", args ?? new GetSecretVersionsInvokeArgs(), options.WithDefaults());

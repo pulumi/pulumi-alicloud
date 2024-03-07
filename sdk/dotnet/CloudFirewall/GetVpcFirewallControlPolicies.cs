@@ -16,12 +16,11 @@ namespace Pulumi.AliCloud.CloudFirewall
         /// 
         /// &gt; **NOTE:** Available in v1.194.0+.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// Basic Usage
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -46,8 +45,7 @@ namespace Pulumi.AliCloud.CloudFirewall
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetVpcFirewallControlPoliciesResult> InvokeAsync(GetVpcFirewallControlPoliciesArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetVpcFirewallControlPoliciesResult>("alicloud:cloudfirewall/getVpcFirewallControlPolicies:getVpcFirewallControlPolicies", args ?? new GetVpcFirewallControlPoliciesArgs(), options.WithDefaults());
@@ -57,12 +55,11 @@ namespace Pulumi.AliCloud.CloudFirewall
         /// 
         /// &gt; **NOTE:** Available in v1.194.0+.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// Basic Usage
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -87,8 +84,7 @@ namespace Pulumi.AliCloud.CloudFirewall
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetVpcFirewallControlPoliciesResult> Invoke(GetVpcFirewallControlPoliciesInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetVpcFirewallControlPoliciesResult>("alicloud:cloudfirewall/getVpcFirewallControlPolicies:getVpcFirewallControlPolicies", args ?? new GetVpcFirewallControlPoliciesInvokeArgs(), options.WithDefaults());

@@ -132,6 +132,7 @@ def get_kubernetes_clusters(enable_details: Optional[bool] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -141,6 +142,7 @@ def get_kubernetes_clusters(enable_details: Optional[bool] = None,
         output_file="my-first-k8s-json")
     pulumi.export("output", k8s_clusters.clusters)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: Cluster IDs to filter.
@@ -184,6 +186,7 @@ def get_kubernetes_clusters_output(enable_details: Optional[pulumi.Input[Optiona
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -193,6 +196,7 @@ def get_kubernetes_clusters_output(enable_details: Optional[pulumi.Input[Optiona
         output_file="my-first-k8s-json")
     pulumi.export("output", k8s_clusters.clusters)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: Cluster IDs to filter.

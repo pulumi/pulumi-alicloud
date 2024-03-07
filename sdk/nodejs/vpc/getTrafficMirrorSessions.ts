@@ -15,6 +15,7 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -63,6 +64,7 @@ import * as utilities from "../utilities";
  * });
  * export const vpcTrafficMirrorSessionId9 = status.then(status => status.sessions?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getTrafficMirrorSessions(args?: GetTrafficMirrorSessionsArgs, opts?: pulumi.InvokeOptions): Promise<GetTrafficMirrorSessionsResult> {
     args = args || {};
@@ -158,6 +160,7 @@ export interface GetTrafficMirrorSessionsResult {
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -206,6 +209,7 @@ export interface GetTrafficMirrorSessionsResult {
  * });
  * export const vpcTrafficMirrorSessionId9 = status.then(status => status.sessions?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getTrafficMirrorSessionsOutput(args?: GetTrafficMirrorSessionsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTrafficMirrorSessionsResult> {
     return pulumi.output(args).apply((a: any) => getTrafficMirrorSessions(a, opts))

@@ -16,12 +16,11 @@ namespace Pulumi.AliCloud.Hbr
         /// 
         /// &gt; **NOTE:** Available in v1.152.0+.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// Basic Usage
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -38,8 +37,7 @@ namespace Pulumi.AliCloud.Hbr
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetReplicationVaultRegionsResult> InvokeAsync(GetReplicationVaultRegionsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetReplicationVaultRegionsResult>("alicloud:hbr/getReplicationVaultRegions:getReplicationVaultRegions", args ?? new GetReplicationVaultRegionsArgs(), options.WithDefaults());
@@ -49,12 +47,11 @@ namespace Pulumi.AliCloud.Hbr
         /// 
         /// &gt; **NOTE:** Available in v1.152.0+.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// Basic Usage
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -71,8 +68,7 @@ namespace Pulumi.AliCloud.Hbr
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetReplicationVaultRegionsResult> Invoke(GetReplicationVaultRegionsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetReplicationVaultRegionsResult>("alicloud:hbr/getReplicationVaultRegions:getReplicationVaultRegions", args ?? new GetReplicationVaultRegionsInvokeArgs(), options.WithDefaults());

@@ -210,6 +210,7 @@ public final class GetLoadBalancersPlainArgs extends com.pulumi.resources.Invoke
 
     /**
      * A map of tags assigned to the SLB instances. The `tags` can have a maximum of 5 tag. It must be in the format:
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -241,6 +242,7 @@ public final class GetLoadBalancersPlainArgs extends com.pulumi.resources.Invoke
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     @Import(name="tags")
@@ -248,6 +250,7 @@ public final class GetLoadBalancersPlainArgs extends com.pulumi.resources.Invoke
 
     /**
      * @return A map of tags assigned to the SLB instances. The `tags` can have a maximum of 5 tag. It must be in the format:
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -279,6 +282,7 @@ public final class GetLoadBalancersPlainArgs extends com.pulumi.resources.Invoke
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public Optional<Map<String,Object>> tags() {
@@ -509,6 +513,7 @@ public final class GetLoadBalancersPlainArgs extends com.pulumi.resources.Invoke
 
         /**
          * @param tags A map of tags assigned to the SLB instances. The `tags` can have a maximum of 5 tag. It must be in the format:
+         * &lt;!--Start PulumiCodeChooser --&gt;
          * ```java
          * package generated_program;
          * 
@@ -540,6 +545,7 @@ public final class GetLoadBalancersPlainArgs extends com.pulumi.resources.Invoke
          *     }
          * }
          * ```
+         * &lt;!--End PulumiCodeChooser --&gt;
          * 
          * @return builder
          * 

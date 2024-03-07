@@ -15,6 +15,7 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -25,6 +26,7 @@ import * as utilities from "../utilities";
  * });
  * export const firstEcsNetworkInterfaceId = example.then(example => example.interfaces?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getEcsNetworkInterfaces(args?: GetEcsNetworkInterfacesArgs, opts?: pulumi.InvokeOptions): Promise<GetEcsNetworkInterfacesResult> {
     args = args || {};
@@ -166,6 +168,7 @@ export interface GetEcsNetworkInterfacesResult {
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -176,6 +179,7 @@ export interface GetEcsNetworkInterfacesResult {
  * });
  * export const firstEcsNetworkInterfaceId = example.then(example => example.interfaces?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getEcsNetworkInterfacesOutput(args?: GetEcsNetworkInterfacesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEcsNetworkInterfacesResult> {
     return pulumi.output(args).apply((a: any) => getEcsNetworkInterfaces(a, opts))

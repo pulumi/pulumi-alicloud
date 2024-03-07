@@ -40,6 +40,8 @@ public final class RosFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -71,6 +73,7 @@ public final class RosFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetChangeSetsResult> getChangeSets(GetChangeSetsArgs args) {
@@ -84,6 +87,8 @@ public final class RosFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -115,6 +120,7 @@ public final class RosFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetChangeSetsResult> getChangeSetsPlain(GetChangeSetsPlainArgs args) {
@@ -128,6 +134,8 @@ public final class RosFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -159,6 +167,7 @@ public final class RosFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetChangeSetsResult> getChangeSets(GetChangeSetsArgs args, InvokeOptions options) {
@@ -172,6 +181,8 @@ public final class RosFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -203,6 +214,7 @@ public final class RosFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetChangeSetsResult> getChangeSetsPlain(GetChangeSetsPlainArgs args, InvokeOptions options) {
@@ -216,6 +228,8 @@ public final class RosFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -243,6 +257,7 @@ public final class RosFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetRegionsResult> getRegions() {
@@ -256,6 +271,8 @@ public final class RosFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -283,6 +300,7 @@ public final class RosFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetRegionsResult> getRegionsPlain() {
@@ -296,6 +314,8 @@ public final class RosFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -323,6 +343,7 @@ public final class RosFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetRegionsResult> getRegions(GetRegionsArgs args) {
@@ -336,6 +357,8 @@ public final class RosFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -363,6 +386,7 @@ public final class RosFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetRegionsResult> getRegionsPlain(GetRegionsPlainArgs args) {
@@ -376,6 +400,8 @@ public final class RosFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -403,6 +429,7 @@ public final class RosFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetRegionsResult> getRegions(GetRegionsArgs args, InvokeOptions options) {
@@ -416,6 +443,8 @@ public final class RosFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -443,6 +472,7 @@ public final class RosFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetRegionsResult> getRegionsPlain(GetRegionsPlainArgs args, InvokeOptions options) {
@@ -456,6 +486,8 @@ public final class RosFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -486,6 +518,7 @@ public final class RosFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetStackGroupsResult> getStackGroups() {
@@ -499,6 +532,8 @@ public final class RosFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -529,6 +564,7 @@ public final class RosFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetStackGroupsResult> getStackGroupsPlain() {
@@ -542,6 +578,8 @@ public final class RosFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -572,6 +610,7 @@ public final class RosFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetStackGroupsResult> getStackGroups(GetStackGroupsArgs args) {
@@ -585,6 +624,8 @@ public final class RosFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -615,6 +656,7 @@ public final class RosFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetStackGroupsResult> getStackGroupsPlain(GetStackGroupsPlainArgs args) {
@@ -628,6 +670,8 @@ public final class RosFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -658,6 +702,7 @@ public final class RosFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetStackGroupsResult> getStackGroups(GetStackGroupsArgs args, InvokeOptions options) {
@@ -671,6 +716,8 @@ public final class RosFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -701,6 +748,7 @@ public final class RosFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetStackGroupsResult> getStackGroupsPlain(GetStackGroupsPlainArgs args, InvokeOptions options) {
@@ -714,6 +762,8 @@ public final class RosFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -768,6 +818,7 @@ public final class RosFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetStackInstancesResult> getStackInstances(GetStackInstancesArgs args) {
@@ -781,6 +832,8 @@ public final class RosFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -835,6 +888,7 @@ public final class RosFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetStackInstancesResult> getStackInstancesPlain(GetStackInstancesPlainArgs args) {
@@ -848,6 +902,8 @@ public final class RosFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -902,6 +958,7 @@ public final class RosFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetStackInstancesResult> getStackInstances(GetStackInstancesArgs args, InvokeOptions options) {
@@ -915,6 +972,8 @@ public final class RosFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -969,6 +1028,7 @@ public final class RosFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetStackInstancesResult> getStackInstancesPlain(GetStackInstancesPlainArgs args, InvokeOptions options) {
@@ -982,6 +1042,8 @@ public final class RosFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1012,6 +1074,7 @@ public final class RosFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetStacksResult> getStacks() {
@@ -1025,6 +1088,8 @@ public final class RosFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1055,6 +1120,7 @@ public final class RosFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetStacksResult> getStacksPlain() {
@@ -1068,6 +1134,8 @@ public final class RosFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1098,6 +1166,7 @@ public final class RosFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetStacksResult> getStacks(GetStacksArgs args) {
@@ -1111,6 +1180,8 @@ public final class RosFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1141,6 +1212,7 @@ public final class RosFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetStacksResult> getStacksPlain(GetStacksPlainArgs args) {
@@ -1154,6 +1226,8 @@ public final class RosFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1184,6 +1258,7 @@ public final class RosFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetStacksResult> getStacks(GetStacksArgs args, InvokeOptions options) {
@@ -1197,6 +1272,8 @@ public final class RosFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1227,6 +1304,7 @@ public final class RosFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetStacksResult> getStacksPlain(GetStacksPlainArgs args, InvokeOptions options) {
@@ -1240,6 +1318,8 @@ public final class RosFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1279,6 +1359,7 @@ public final class RosFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetTemplateScratchesResult> getTemplateScratches() {
@@ -1292,6 +1373,8 @@ public final class RosFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1331,6 +1414,7 @@ public final class RosFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetTemplateScratchesResult> getTemplateScratchesPlain() {
@@ -1344,6 +1428,8 @@ public final class RosFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1383,6 +1469,7 @@ public final class RosFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetTemplateScratchesResult> getTemplateScratches(GetTemplateScratchesArgs args) {
@@ -1396,6 +1483,8 @@ public final class RosFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1435,6 +1524,7 @@ public final class RosFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetTemplateScratchesResult> getTemplateScratchesPlain(GetTemplateScratchesPlainArgs args) {
@@ -1448,6 +1538,8 @@ public final class RosFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1487,6 +1579,7 @@ public final class RosFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetTemplateScratchesResult> getTemplateScratches(GetTemplateScratchesArgs args, InvokeOptions options) {
@@ -1500,6 +1593,8 @@ public final class RosFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1539,6 +1634,7 @@ public final class RosFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetTemplateScratchesResult> getTemplateScratchesPlain(GetTemplateScratchesPlainArgs args, InvokeOptions options) {
@@ -1552,6 +1648,8 @@ public final class RosFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1582,6 +1680,7 @@ public final class RosFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetTemplatesResult> getTemplates() {
@@ -1595,6 +1694,8 @@ public final class RosFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1625,6 +1726,7 @@ public final class RosFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetTemplatesResult> getTemplatesPlain() {
@@ -1638,6 +1740,8 @@ public final class RosFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1668,6 +1772,7 @@ public final class RosFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetTemplatesResult> getTemplates(GetTemplatesArgs args) {
@@ -1681,6 +1786,8 @@ public final class RosFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1711,6 +1818,7 @@ public final class RosFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetTemplatesResult> getTemplatesPlain(GetTemplatesPlainArgs args) {
@@ -1724,6 +1832,8 @@ public final class RosFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1754,6 +1864,7 @@ public final class RosFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetTemplatesResult> getTemplates(GetTemplatesArgs args, InvokeOptions options) {
@@ -1767,6 +1878,8 @@ public final class RosFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1797,6 +1910,7 @@ public final class RosFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetTemplatesResult> getTemplatesPlain(GetTemplatesPlainArgs args, InvokeOptions options) {

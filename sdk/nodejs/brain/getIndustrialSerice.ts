@@ -13,6 +13,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -21,6 +22,7 @@ import * as utilities from "../utilities";
  *     enable: "On",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getIndustrialSerice(args?: GetIndustrialSericeArgs, opts?: pulumi.InvokeOptions): Promise<GetIndustrialSericeResult> {
     args = args || {};
@@ -66,6 +68,7 @@ export interface GetIndustrialSericeResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -74,6 +77,7 @@ export interface GetIndustrialSericeResult {
  *     enable: "On",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getIndustrialSericeOutput(args?: GetIndustrialSericeOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetIndustrialSericeResult> {
     return pulumi.output(args).apply((a: any) => getIndustrialSerice(a, opts))

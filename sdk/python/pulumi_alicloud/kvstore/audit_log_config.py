@@ -196,6 +196,7 @@ class AuditLogConfig(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -236,6 +237,7 @@ class AuditLogConfig(pulumi.CustomResource):
             db_audit=True,
             retention=1)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -272,6 +274,7 @@ class AuditLogConfig(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -312,6 +315,7 @@ class AuditLogConfig(pulumi.CustomResource):
             db_audit=True,
             retention=1)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

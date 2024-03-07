@@ -303,10 +303,12 @@ class FunctionAsyncInvokeConfig(pulumi.CustomResource):
         > **NOTE:** Available since v1.100.0.
 
         ## Example Usage
+
         ### Destination Configuration
 
         > **NOTE** Ensure the FC Function RAM Role has necessary permissions for the destination, such as `mns:SendMessage`, `mns:PublishMessage` or `fc:InvokeFunction`, otherwise the API will return a generic error.
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -392,6 +394,7 @@ class FunctionAsyncInvokeConfig(pulumi.CustomResource):
             stateful_invocation=True,
             qualifier="LATEST")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -424,10 +427,12 @@ class FunctionAsyncInvokeConfig(pulumi.CustomResource):
         > **NOTE:** Available since v1.100.0.
 
         ## Example Usage
+
         ### Destination Configuration
 
         > **NOTE** Ensure the FC Function RAM Role has necessary permissions for the destination, such as `mns:SendMessage`, `mns:PublishMessage` or `fc:InvokeFunction`, otherwise the API will return a generic error.
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -513,6 +518,7 @@ class FunctionAsyncInvokeConfig(pulumi.CustomResource):
             stateful_invocation=True,
             qualifier="LATEST")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

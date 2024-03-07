@@ -84,6 +84,7 @@ def get_file_crc64_checksum(filename: Optional[str] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -91,6 +92,7 @@ def get_file_crc64_checksum(filename: Optional[str] = None,
     default = alicloud.get_file_crc64_checksum(filename="exampleFileName")
     pulumi.export("fileCrc64Checksum", data["alicloud_file_crc64_checksum"]["defualt"]["checksum"])
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str filename: The name of the file to be computed crc64 checksum.
@@ -119,6 +121,7 @@ def get_file_crc64_checksum_output(filename: Optional[pulumi.Input[str]] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -126,6 +129,7 @@ def get_file_crc64_checksum_output(filename: Optional[pulumi.Input[str]] = None,
     default = alicloud.get_file_crc64_checksum(filename="exampleFileName")
     pulumi.export("fileCrc64Checksum", data["alicloud_file_crc64_checksum"]["defualt"]["checksum"])
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str filename: The name of the file to be computed crc64 checksum.

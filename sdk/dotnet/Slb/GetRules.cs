@@ -14,10 +14,9 @@ namespace Pulumi.AliCloud.Slb
         /// <summary>
         /// This data source provides the rules associated with a server load balancer listener.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -89,8 +88,7 @@ namespace Pulumi.AliCloud.Slb
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetRulesResult> InvokeAsync(GetRulesArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetRulesResult>("alicloud:slb/getRules:getRules", args ?? new GetRulesArgs(), options.WithDefaults());
@@ -98,10 +96,9 @@ namespace Pulumi.AliCloud.Slb
         /// <summary>
         /// This data source provides the rules associated with a server load balancer listener.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -173,8 +170,7 @@ namespace Pulumi.AliCloud.Slb
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetRulesResult> Invoke(GetRulesInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetRulesResult>("alicloud:slb/getRules:getRules", args ?? new GetRulesInvokeArgs(), options.WithDefaults());

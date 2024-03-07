@@ -16,10 +16,9 @@ namespace Pulumi.AliCloud.Dms
         /// 
         /// &gt; **NOTE:** Available in 1.90.0+
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -44,8 +43,7 @@ namespace Pulumi.AliCloud.Dms
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetEnterpriseUsersResult> InvokeAsync(GetEnterpriseUsersArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetEnterpriseUsersResult>("alicloud:dms/getEnterpriseUsers:getEnterpriseUsers", args ?? new GetEnterpriseUsersArgs(), options.WithDefaults());
@@ -55,10 +53,9 @@ namespace Pulumi.AliCloud.Dms
         /// 
         /// &gt; **NOTE:** Available in 1.90.0+
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -83,8 +80,7 @@ namespace Pulumi.AliCloud.Dms
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetEnterpriseUsersResult> Invoke(GetEnterpriseUsersInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetEnterpriseUsersResult>("alicloud:dms/getEnterpriseUsers:getEnterpriseUsers", args ?? new GetEnterpriseUsersInvokeArgs(), options.WithDefaults());

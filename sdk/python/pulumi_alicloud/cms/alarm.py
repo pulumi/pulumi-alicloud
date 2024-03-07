@@ -726,6 +726,7 @@ class Alarm(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -777,6 +778,7 @@ class Alarm(pulumi.CustomResource):
                 times=2,
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -826,6 +828,7 @@ class Alarm(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -877,6 +880,7 @@ class Alarm(pulumi.CustomResource):
                 times=2,
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

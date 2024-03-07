@@ -113,6 +113,7 @@ def get_virtual_hosts(ids: Optional[Sequence[str]] = None,
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -127,6 +128,7 @@ def get_virtual_hosts(ids: Optional[Sequence[str]] = None,
         name_regex="^my-VirtualHost")
     pulumi.export("amqpVirtualHostId2", name_regex.hosts[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Virtual Host IDs. Its element value is same as Virtual Host Name.
@@ -167,6 +169,7 @@ def get_virtual_hosts_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -181,6 +184,7 @@ def get_virtual_hosts_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]
         name_regex="^my-VirtualHost")
     pulumi.export("amqpVirtualHostId2", name_regex.hosts[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Virtual Host IDs. Its element value is same as Virtual Host Name.

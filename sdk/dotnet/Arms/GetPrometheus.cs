@@ -16,12 +16,11 @@ namespace Pulumi.AliCloud.Arms
         /// 
         /// &gt; **NOTE:** Available since v1.214.0.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// Basic Usage
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -76,8 +75,7 @@ namespace Pulumi.AliCloud.Arms
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetPrometheusResult> InvokeAsync(GetPrometheusArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetPrometheusResult>("alicloud:arms/getPrometheus:getPrometheus", args ?? new GetPrometheusArgs(), options.WithDefaults());
@@ -87,12 +85,11 @@ namespace Pulumi.AliCloud.Arms
         /// 
         /// &gt; **NOTE:** Available since v1.214.0.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// Basic Usage
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -147,8 +144,7 @@ namespace Pulumi.AliCloud.Arms
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetPrometheusResult> Invoke(GetPrometheusInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetPrometheusResult>("alicloud:arms/getPrometheus:getPrometheus", args ?? new GetPrometheusInvokeArgs(), options.WithDefaults());

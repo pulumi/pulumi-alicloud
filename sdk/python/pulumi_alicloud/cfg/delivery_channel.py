@@ -274,6 +274,8 @@ class DeliveryChannel(pulumi.CustomResource):
                  status: Optional[pulumi.Input[int]] = None,
                  __props__=None):
         """
+        ## Example Usage
+
         ## Import
 
         Alicloud Config Delivery Channel can be imported using the id, e.g.
@@ -302,6 +304,8 @@ class DeliveryChannel(pulumi.CustomResource):
                  args: DeliveryChannelArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        ## Example Usage
+
         ## Import
 
         Alicloud Config Delivery Channel can be imported using the id, e.g.

@@ -13,6 +13,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -23,6 +24,7 @@ import * as utilities from "../utilities";
  * });
  * export const firstPolicyVersionId = _default.then(_default => _default.versions?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getPolicyVersions(args: GetPolicyVersionsArgs, opts?: pulumi.InvokeOptions): Promise<GetPolicyVersionsResult> {
 
@@ -90,6 +92,7 @@ export interface GetPolicyVersionsResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -100,6 +103,7 @@ export interface GetPolicyVersionsResult {
  * });
  * export const firstPolicyVersionId = _default.then(_default => _default.versions?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getPolicyVersionsOutput(args: GetPolicyVersionsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPolicyVersionsResult> {
     return pulumi.output(args).apply((a: any) => getPolicyVersions(a, opts))

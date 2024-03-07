@@ -19,6 +19,7 @@ import (
 //
 // # Basic Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -46,6 +47,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func GetAutoSnapshotPolicies(ctx *pulumi.Context, args *GetAutoSnapshotPoliciesArgs, opts ...pulumi.InvokeOption) (*GetAutoSnapshotPoliciesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetAutoSnapshotPoliciesResult

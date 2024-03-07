@@ -174,6 +174,7 @@ class Organization(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -182,6 +183,7 @@ class Organization(pulumi.CustomResource):
             organization_name="example_value",
             source="example_value")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -215,6 +217,7 @@ class Organization(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -223,6 +226,7 @@ class Organization(pulumi.CustomResource):
             organization_name="example_value",
             source="example_value")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

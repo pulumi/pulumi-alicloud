@@ -111,6 +111,7 @@ def get_resource_groups(db_cluster_id: Optional[str] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -119,6 +120,7 @@ def get_resource_groups(db_cluster_id: Optional[str] = None,
         group_name="TESTOPENAPI")
     pulumi.export("alicloudAdbResourceGroupExampleId", default.groups[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str db_cluster_id: DBClusterId
@@ -156,6 +158,7 @@ def get_resource_groups_output(db_cluster_id: Optional[pulumi.Input[str]] = None
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -164,6 +167,7 @@ def get_resource_groups_output(db_cluster_id: Optional[pulumi.Input[str]] = None
         group_name="TESTOPENAPI")
     pulumi.export("alicloudAdbResourceGroupExampleId", default.groups[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str db_cluster_id: DBClusterId

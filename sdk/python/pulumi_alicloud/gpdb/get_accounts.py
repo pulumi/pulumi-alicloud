@@ -123,6 +123,7 @@ def get_accounts(db_instance_id: Optional[str] = None,
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -137,6 +138,7 @@ def get_accounts(db_instance_id: Optional[str] = None,
         name_regex="^my-Account")
     pulumi.export("gpdbAccountId2", name_regex.accounts[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str db_instance_id: The ID of the instance.
@@ -181,6 +183,7 @@ def get_accounts_output(db_instance_id: Optional[pulumi.Input[str]] = None,
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -195,6 +198,7 @@ def get_accounts_output(db_instance_id: Optional[pulumi.Input[str]] = None,
         name_regex="^my-Account")
     pulumi.export("gpdbAccountId2", name_regex.accounts[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str db_instance_id: The ID of the instance.

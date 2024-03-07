@@ -19,6 +19,7 @@ import (
 //
 // # Basic Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -45,6 +46,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func GetDBClusterLakeVersions(ctx *pulumi.Context, args *GetDBClusterLakeVersionsArgs, opts ...pulumi.InvokeOption) (*GetDBClusterLakeVersionsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetDBClusterLakeVersionsResult

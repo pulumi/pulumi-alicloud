@@ -271,6 +271,7 @@ class DnatEntry(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -288,6 +289,7 @@ class DnatEntry(pulumi.CustomResource):
             internal_ip="172.16.0.4",
             internal_port="any")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -326,6 +328,7 @@ class DnatEntry(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -343,6 +346,7 @@ class DnatEntry(pulumi.CustomResource):
             internal_ip="172.16.0.4",
             internal_port="any")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

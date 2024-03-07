@@ -14,6 +14,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -59,6 +60,7 @@ import * as utilities from "../utilities";
  * }));
  * export const account = defaultAccounts.apply(defaultAccounts => defaultAccounts.accounts?.[0]?.accountName);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getAccounts(args: GetAccountsArgs, opts?: pulumi.InvokeOptions): Promise<GetAccountsResult> {
 
@@ -110,6 +112,7 @@ export interface GetAccountsResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -155,6 +158,7 @@ export interface GetAccountsResult {
  * }));
  * export const account = defaultAccounts.apply(defaultAccounts => defaultAccounts.accounts?.[0]?.accountName);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getAccountsOutput(args: GetAccountsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAccountsResult> {
     return pulumi.output(args).apply((a: any) => getAccounts(a, opts))

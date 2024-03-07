@@ -304,6 +304,7 @@ class FirewallVpcFirewallCen(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -318,6 +319,7 @@ class FirewallVpcFirewallCen(pulumi.CustomResource):
             vpc_firewall_name="tf-vpc-firewall-name",
             vpc_region="ap-south-1")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -354,6 +356,7 @@ class FirewallVpcFirewallCen(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -368,6 +371,7 @@ class FirewallVpcFirewallCen(pulumi.CustomResource):
             vpc_firewall_name="tf-vpc-firewall-name",
             vpc_region="ap-south-1")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

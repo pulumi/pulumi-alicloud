@@ -27,7 +27,10 @@ import javax.annotation.Nullable;
  * &gt; **NOTE:**  Available in 1.127.0+
  * 
  * ## Example Usage
+ * 
  * ### Create a AnalyticDB for PostgreSQL instance
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -86,6 +89,7 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 

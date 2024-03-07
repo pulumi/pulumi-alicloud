@@ -307,6 +307,7 @@ def get_instances(architecture_type: Optional[str] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -314,6 +315,7 @@ def get_instances(architecture_type: Optional[str] = None,
     default = alicloud.kvstore.get_instances(name_regex="testname")
     pulumi.export("firstInstanceName", default.instances[0].name)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str architecture_type: The type of the architecture. Valid values: `cluster`, `standard` and `SplitRW`.
@@ -415,6 +417,7 @@ def get_instances_output(architecture_type: Optional[pulumi.Input[Optional[str]]
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -422,6 +425,7 @@ def get_instances_output(architecture_type: Optional[pulumi.Input[Optional[str]]
     default = alicloud.kvstore.get_instances(name_regex="testname")
     pulumi.export("firstInstanceName", default.instances[0].name)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str architecture_type: The type of the architecture. Valid values: `cluster`, `standard` and `SplitRW`.

@@ -46,6 +46,8 @@ public final class CfgFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -77,6 +79,7 @@ public final class CfgFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetAggregateCompliancePacksResult> getAggregateCompliancePacks(GetAggregateCompliancePacksArgs args) {
@@ -90,6 +93,8 @@ public final class CfgFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -121,6 +126,7 @@ public final class CfgFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetAggregateCompliancePacksResult> getAggregateCompliancePacksPlain(GetAggregateCompliancePacksPlainArgs args) {
@@ -134,6 +140,8 @@ public final class CfgFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -165,6 +173,7 @@ public final class CfgFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetAggregateCompliancePacksResult> getAggregateCompliancePacks(GetAggregateCompliancePacksArgs args, InvokeOptions options) {
@@ -178,6 +187,8 @@ public final class CfgFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -209,6 +220,7 @@ public final class CfgFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetAggregateCompliancePacksResult> getAggregateCompliancePacksPlain(GetAggregateCompliancePacksPlainArgs args, InvokeOptions options) {
@@ -222,6 +234,8 @@ public final class CfgFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -253,6 +267,7 @@ public final class CfgFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetAggregateConfigRulesResult> getAggregateConfigRules(GetAggregateConfigRulesArgs args) {
@@ -266,6 +281,8 @@ public final class CfgFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -297,6 +314,7 @@ public final class CfgFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetAggregateConfigRulesResult> getAggregateConfigRulesPlain(GetAggregateConfigRulesPlainArgs args) {
@@ -310,6 +328,8 @@ public final class CfgFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -341,6 +361,7 @@ public final class CfgFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetAggregateConfigRulesResult> getAggregateConfigRules(GetAggregateConfigRulesArgs args, InvokeOptions options) {
@@ -354,6 +375,8 @@ public final class CfgFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -385,6 +408,7 @@ public final class CfgFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetAggregateConfigRulesResult> getAggregateConfigRulesPlain(GetAggregateConfigRulesPlainArgs args, InvokeOptions options) {
@@ -398,6 +422,8 @@ public final class CfgFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -430,6 +456,7 @@ public final class CfgFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetAggregateDeliveriesResult> getAggregateDeliveries(GetAggregateDeliveriesArgs args) {
@@ -443,6 +470,8 @@ public final class CfgFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -475,6 +504,7 @@ public final class CfgFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetAggregateDeliveriesResult> getAggregateDeliveriesPlain(GetAggregateDeliveriesPlainArgs args) {
@@ -488,6 +518,8 @@ public final class CfgFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -520,6 +552,7 @@ public final class CfgFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetAggregateDeliveriesResult> getAggregateDeliveries(GetAggregateDeliveriesArgs args, InvokeOptions options) {
@@ -533,6 +566,8 @@ public final class CfgFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -565,6 +600,7 @@ public final class CfgFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetAggregateDeliveriesResult> getAggregateDeliveriesPlain(GetAggregateDeliveriesPlainArgs args, InvokeOptions options) {
@@ -578,6 +614,8 @@ public final class CfgFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -608,6 +646,7 @@ public final class CfgFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetAggregatorsResult> getAggregators() {
@@ -621,6 +660,8 @@ public final class CfgFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -651,6 +692,7 @@ public final class CfgFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetAggregatorsResult> getAggregatorsPlain() {
@@ -664,6 +706,8 @@ public final class CfgFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -694,6 +738,7 @@ public final class CfgFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetAggregatorsResult> getAggregators(GetAggregatorsArgs args) {
@@ -707,6 +752,8 @@ public final class CfgFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -737,6 +784,7 @@ public final class CfgFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetAggregatorsResult> getAggregatorsPlain(GetAggregatorsPlainArgs args) {
@@ -750,6 +798,8 @@ public final class CfgFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -780,6 +830,7 @@ public final class CfgFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetAggregatorsResult> getAggregators(GetAggregatorsArgs args, InvokeOptions options) {
@@ -793,6 +844,8 @@ public final class CfgFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -823,6 +876,7 @@ public final class CfgFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetAggregatorsResult> getAggregatorsPlain(GetAggregatorsPlainArgs args, InvokeOptions options) {
@@ -836,6 +890,8 @@ public final class CfgFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -866,6 +922,7 @@ public final class CfgFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetCompliancePacksResult> getCompliancePacks() {
@@ -879,6 +936,8 @@ public final class CfgFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -909,6 +968,7 @@ public final class CfgFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetCompliancePacksResult> getCompliancePacksPlain() {
@@ -922,6 +982,8 @@ public final class CfgFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -952,6 +1014,7 @@ public final class CfgFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetCompliancePacksResult> getCompliancePacks(GetCompliancePacksArgs args) {
@@ -965,6 +1028,8 @@ public final class CfgFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -995,6 +1060,7 @@ public final class CfgFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetCompliancePacksResult> getCompliancePacksPlain(GetCompliancePacksPlainArgs args) {
@@ -1008,6 +1074,8 @@ public final class CfgFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1038,6 +1106,7 @@ public final class CfgFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetCompliancePacksResult> getCompliancePacks(GetCompliancePacksArgs args, InvokeOptions options) {
@@ -1051,6 +1120,8 @@ public final class CfgFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1081,6 +1152,7 @@ public final class CfgFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetCompliancePacksResult> getCompliancePacksPlain(GetCompliancePacksPlainArgs args, InvokeOptions options) {
@@ -1094,6 +1166,8 @@ public final class CfgFunctions {
      * &gt; **NOTE:** The Cloud Config region only support `cn-shanghai` and `ap-southeast-1`.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1121,6 +1195,7 @@ public final class CfgFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetConfigurationRecordersResult> getConfigurationRecorders() {
@@ -1134,6 +1209,8 @@ public final class CfgFunctions {
      * &gt; **NOTE:** The Cloud Config region only support `cn-shanghai` and `ap-southeast-1`.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1161,6 +1238,7 @@ public final class CfgFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetConfigurationRecordersResult> getConfigurationRecordersPlain() {
@@ -1174,6 +1252,8 @@ public final class CfgFunctions {
      * &gt; **NOTE:** The Cloud Config region only support `cn-shanghai` and `ap-southeast-1`.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1201,6 +1281,7 @@ public final class CfgFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetConfigurationRecordersResult> getConfigurationRecorders(GetConfigurationRecordersArgs args) {
@@ -1214,6 +1295,8 @@ public final class CfgFunctions {
      * &gt; **NOTE:** The Cloud Config region only support `cn-shanghai` and `ap-southeast-1`.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1241,6 +1324,7 @@ public final class CfgFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetConfigurationRecordersResult> getConfigurationRecordersPlain(GetConfigurationRecordersPlainArgs args) {
@@ -1254,6 +1338,8 @@ public final class CfgFunctions {
      * &gt; **NOTE:** The Cloud Config region only support `cn-shanghai` and `ap-southeast-1`.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1281,6 +1367,7 @@ public final class CfgFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetConfigurationRecordersResult> getConfigurationRecorders(GetConfigurationRecordersArgs args, InvokeOptions options) {
@@ -1294,6 +1381,8 @@ public final class CfgFunctions {
      * &gt; **NOTE:** The Cloud Config region only support `cn-shanghai` and `ap-southeast-1`.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1321,6 +1410,7 @@ public final class CfgFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetConfigurationRecordersResult> getConfigurationRecordersPlain(GetConfigurationRecordersPlainArgs args, InvokeOptions options) {
@@ -1334,6 +1424,8 @@ public final class CfgFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1363,6 +1455,7 @@ public final class CfgFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetDeliveriesResult> getDeliveries() {
@@ -1376,6 +1469,8 @@ public final class CfgFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1405,6 +1500,7 @@ public final class CfgFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetDeliveriesResult> getDeliveriesPlain() {
@@ -1418,6 +1514,8 @@ public final class CfgFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1447,6 +1545,7 @@ public final class CfgFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetDeliveriesResult> getDeliveries(GetDeliveriesArgs args) {
@@ -1460,6 +1559,8 @@ public final class CfgFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1489,6 +1590,7 @@ public final class CfgFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetDeliveriesResult> getDeliveriesPlain(GetDeliveriesPlainArgs args) {
@@ -1502,6 +1604,8 @@ public final class CfgFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1531,6 +1635,7 @@ public final class CfgFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetDeliveriesResult> getDeliveries(GetDeliveriesArgs args, InvokeOptions options) {
@@ -1544,6 +1649,8 @@ public final class CfgFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1573,6 +1680,7 @@ public final class CfgFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetDeliveriesResult> getDeliveriesPlain(GetDeliveriesPlainArgs args, InvokeOptions options) {
@@ -1589,6 +1697,8 @@ public final class CfgFunctions {
      * &gt; **NOTE:** The Cloud Config region only support `cn-shanghai` and `ap-southeast-1`.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1619,6 +1729,7 @@ public final class CfgFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetDeliveryChannelsResult> getDeliveryChannels() {
@@ -1635,6 +1746,8 @@ public final class CfgFunctions {
      * &gt; **NOTE:** The Cloud Config region only support `cn-shanghai` and `ap-southeast-1`.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1665,6 +1778,7 @@ public final class CfgFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetDeliveryChannelsResult> getDeliveryChannelsPlain() {
@@ -1681,6 +1795,8 @@ public final class CfgFunctions {
      * &gt; **NOTE:** The Cloud Config region only support `cn-shanghai` and `ap-southeast-1`.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1711,6 +1827,7 @@ public final class CfgFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetDeliveryChannelsResult> getDeliveryChannels(GetDeliveryChannelsArgs args) {
@@ -1727,6 +1844,8 @@ public final class CfgFunctions {
      * &gt; **NOTE:** The Cloud Config region only support `cn-shanghai` and `ap-southeast-1`.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1757,6 +1876,7 @@ public final class CfgFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetDeliveryChannelsResult> getDeliveryChannelsPlain(GetDeliveryChannelsPlainArgs args) {
@@ -1773,6 +1893,8 @@ public final class CfgFunctions {
      * &gt; **NOTE:** The Cloud Config region only support `cn-shanghai` and `ap-southeast-1`.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1803,6 +1925,7 @@ public final class CfgFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetDeliveryChannelsResult> getDeliveryChannels(GetDeliveryChannelsArgs args, InvokeOptions options) {
@@ -1819,6 +1942,8 @@ public final class CfgFunctions {
      * &gt; **NOTE:** The Cloud Config region only support `cn-shanghai` and `ap-southeast-1`.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1849,6 +1974,7 @@ public final class CfgFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetDeliveryChannelsResult> getDeliveryChannelsPlain(GetDeliveryChannelsPlainArgs args, InvokeOptions options) {
@@ -1862,6 +1988,8 @@ public final class CfgFunctions {
      * &gt; **NOTE:** The Cloud Config region only support `cn-shanghai` and `ap-southeast-1`.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1892,6 +2020,7 @@ public final class CfgFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetRulesResult> getRules() {
@@ -1905,6 +2034,8 @@ public final class CfgFunctions {
      * &gt; **NOTE:** The Cloud Config region only support `cn-shanghai` and `ap-southeast-1`.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1935,6 +2066,7 @@ public final class CfgFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetRulesResult> getRulesPlain() {
@@ -1948,6 +2080,8 @@ public final class CfgFunctions {
      * &gt; **NOTE:** The Cloud Config region only support `cn-shanghai` and `ap-southeast-1`.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1978,6 +2112,7 @@ public final class CfgFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetRulesResult> getRules(GetRulesArgs args) {
@@ -1991,6 +2126,8 @@ public final class CfgFunctions {
      * &gt; **NOTE:** The Cloud Config region only support `cn-shanghai` and `ap-southeast-1`.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2021,6 +2158,7 @@ public final class CfgFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetRulesResult> getRulesPlain(GetRulesPlainArgs args) {
@@ -2034,6 +2172,8 @@ public final class CfgFunctions {
      * &gt; **NOTE:** The Cloud Config region only support `cn-shanghai` and `ap-southeast-1`.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2064,6 +2204,7 @@ public final class CfgFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetRulesResult> getRules(GetRulesArgs args, InvokeOptions options) {
@@ -2077,6 +2218,8 @@ public final class CfgFunctions {
      * &gt; **NOTE:** The Cloud Config region only support `cn-shanghai` and `ap-southeast-1`.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2107,6 +2250,7 @@ public final class CfgFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetRulesResult> getRulesPlain(GetRulesPlainArgs args, InvokeOptions options) {

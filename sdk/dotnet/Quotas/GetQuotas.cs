@@ -16,12 +16,11 @@ namespace Pulumi.AliCloud.Quotas
         /// 
         /// &gt; **NOTE:** Available in v1.115.0+.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// Basic Usage
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -42,8 +41,7 @@ namespace Pulumi.AliCloud.Quotas
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetQuotasResult> InvokeAsync(GetQuotasArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetQuotasResult>("alicloud:quotas/getQuotas:getQuotas", args ?? new GetQuotasArgs(), options.WithDefaults());
@@ -53,12 +51,11 @@ namespace Pulumi.AliCloud.Quotas
         /// 
         /// &gt; **NOTE:** Available in v1.115.0+.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// Basic Usage
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -79,8 +76,7 @@ namespace Pulumi.AliCloud.Quotas
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetQuotasResult> Invoke(GetQuotasInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetQuotasResult>("alicloud:quotas/getQuotas:getQuotas", args ?? new GetQuotasInvokeArgs(), options.WithDefaults());

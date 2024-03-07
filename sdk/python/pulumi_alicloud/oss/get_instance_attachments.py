@@ -122,6 +122,7 @@ def get_instance_attachments(instance_name: Optional[str] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -131,6 +132,7 @@ def get_instance_attachments(instance_name: Optional[str] = None,
         output_file="attachments.txt")
     pulumi.export("firstOtsAttachmentId", attachments_ds.attachments[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str instance_name: The name of OTS instance.
@@ -165,6 +167,7 @@ def get_instance_attachments_output(instance_name: Optional[pulumi.Input[str]] =
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -174,6 +177,7 @@ def get_instance_attachments_output(instance_name: Optional[pulumi.Input[str]] =
         output_file="attachments.txt")
     pulumi.export("firstOtsAttachmentId", attachments_ds.attachments[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str instance_name: The name of OTS instance.

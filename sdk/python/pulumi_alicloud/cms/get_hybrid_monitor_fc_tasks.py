@@ -114,6 +114,7 @@ def get_hybrid_monitor_fc_tasks(ids: Optional[Sequence[str]] = None,
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -121,6 +122,7 @@ def get_hybrid_monitor_fc_tasks(ids: Optional[Sequence[str]] = None,
     ids = alicloud.cms.get_hybrid_monitor_fc_tasks(ids=["example_value"])
     pulumi.export("cmsHybridMonitorFcTaskId1", ids.tasks[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Hybrid Monitor Fc Task IDs.
@@ -162,6 +164,7 @@ def get_hybrid_monitor_fc_tasks_output(ids: Optional[pulumi.Input[Optional[Seque
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -169,6 +172,7 @@ def get_hybrid_monitor_fc_tasks_output(ids: Optional[pulumi.Input[Optional[Seque
     ids = alicloud.cms.get_hybrid_monitor_fc_tasks(ids=["example_value"])
     pulumi.export("cmsHybridMonitorFcTaskId1", ids.tasks[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Hybrid Monitor Fc Task IDs.

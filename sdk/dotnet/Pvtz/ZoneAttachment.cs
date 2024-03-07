@@ -14,6 +14,7 @@ namespace Pulumi.AliCloud.Pvtz
     /// 
     /// Using `vpc_ids` to attach being in same region several vpc instances to a private zone
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -51,9 +52,11 @@ namespace Pulumi.AliCloud.Pvtz
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// Using `vpcs` to attach being in same region several vpc instances to a private zone
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -97,9 +100,11 @@ namespace Pulumi.AliCloud.Pvtz
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// Using `vpcs` to attach being in different regions several vpc instances to a private zone
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -162,6 +167,7 @@ namespace Pulumi.AliCloud.Pvtz
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 

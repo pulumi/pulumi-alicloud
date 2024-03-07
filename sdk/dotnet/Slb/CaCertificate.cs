@@ -20,6 +20,7 @@ namespace Pulumi.AliCloud.Slb
     /// 
     /// * using CA certificate content
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -56,9 +57,11 @@ namespace Pulumi.AliCloud.Slb
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// * using CA certificate file
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.IO;
@@ -76,6 +79,7 @@ namespace Pulumi.AliCloud.Slb
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 

@@ -40,6 +40,8 @@ public final class CloudfirewallFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -83,6 +85,7 @@ public final class CloudfirewallFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetAddressBooksResult> getAddressBooks() {
@@ -96,6 +99,8 @@ public final class CloudfirewallFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -139,6 +144,7 @@ public final class CloudfirewallFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetAddressBooksResult> getAddressBooksPlain() {
@@ -152,6 +158,8 @@ public final class CloudfirewallFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -195,6 +203,7 @@ public final class CloudfirewallFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetAddressBooksResult> getAddressBooks(GetAddressBooksArgs args) {
@@ -208,6 +217,8 @@ public final class CloudfirewallFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -251,6 +262,7 @@ public final class CloudfirewallFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetAddressBooksResult> getAddressBooksPlain(GetAddressBooksPlainArgs args) {
@@ -264,6 +276,8 @@ public final class CloudfirewallFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -307,6 +321,7 @@ public final class CloudfirewallFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetAddressBooksResult> getAddressBooks(GetAddressBooksArgs args, InvokeOptions options) {
@@ -320,6 +335,8 @@ public final class CloudfirewallFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -363,6 +380,7 @@ public final class CloudfirewallFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetAddressBooksResult> getAddressBooksPlain(GetAddressBooksPlainArgs args, InvokeOptions options) {
@@ -376,6 +394,8 @@ public final class CloudfirewallFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -404,6 +424,7 @@ public final class CloudfirewallFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetControlPoliciesResult> getControlPolicies(GetControlPoliciesArgs args) {
@@ -417,6 +438,8 @@ public final class CloudfirewallFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -445,6 +468,7 @@ public final class CloudfirewallFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetControlPoliciesResult> getControlPoliciesPlain(GetControlPoliciesPlainArgs args) {
@@ -458,6 +482,8 @@ public final class CloudfirewallFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -486,6 +512,7 @@ public final class CloudfirewallFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetControlPoliciesResult> getControlPolicies(GetControlPoliciesArgs args, InvokeOptions options) {
@@ -499,6 +526,8 @@ public final class CloudfirewallFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -527,6 +556,7 @@ public final class CloudfirewallFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetControlPoliciesResult> getControlPoliciesPlain(GetControlPoliciesPlainArgs args, InvokeOptions options) {
@@ -538,6 +568,8 @@ public final class CloudfirewallFunctions {
      * &gt; **NOTE:** Available in 1.194.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -567,6 +599,7 @@ public final class CloudfirewallFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetInstanceMembersResult> getInstanceMembers() {
@@ -578,6 +611,8 @@ public final class CloudfirewallFunctions {
      * &gt; **NOTE:** Available in 1.194.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -607,6 +642,7 @@ public final class CloudfirewallFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetInstanceMembersResult> getInstanceMembersPlain() {
@@ -618,6 +654,8 @@ public final class CloudfirewallFunctions {
      * &gt; **NOTE:** Available in 1.194.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -647,6 +685,7 @@ public final class CloudfirewallFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetInstanceMembersResult> getInstanceMembers(GetInstanceMembersArgs args) {
@@ -658,6 +697,8 @@ public final class CloudfirewallFunctions {
      * &gt; **NOTE:** Available in 1.194.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -687,6 +728,7 @@ public final class CloudfirewallFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetInstanceMembersResult> getInstanceMembersPlain(GetInstanceMembersPlainArgs args) {
@@ -698,6 +740,8 @@ public final class CloudfirewallFunctions {
      * &gt; **NOTE:** Available in 1.194.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -727,6 +771,7 @@ public final class CloudfirewallFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetInstanceMembersResult> getInstanceMembers(GetInstanceMembersArgs args, InvokeOptions options) {
@@ -738,6 +783,8 @@ public final class CloudfirewallFunctions {
      * &gt; **NOTE:** Available in 1.194.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -767,6 +814,7 @@ public final class CloudfirewallFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetInstanceMembersResult> getInstanceMembersPlain(GetInstanceMembersPlainArgs args, InvokeOptions options) {
@@ -780,6 +828,8 @@ public final class CloudfirewallFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -807,6 +857,7 @@ public final class CloudfirewallFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetInstancesResult> getInstances() {
@@ -820,6 +871,8 @@ public final class CloudfirewallFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -847,6 +900,7 @@ public final class CloudfirewallFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetInstancesResult> getInstancesPlain() {
@@ -860,6 +914,8 @@ public final class CloudfirewallFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -887,6 +943,7 @@ public final class CloudfirewallFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetInstancesResult> getInstances(GetInstancesArgs args) {
@@ -900,6 +957,8 @@ public final class CloudfirewallFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -927,6 +986,7 @@ public final class CloudfirewallFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetInstancesResult> getInstancesPlain(GetInstancesPlainArgs args) {
@@ -940,6 +1000,8 @@ public final class CloudfirewallFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -967,6 +1029,7 @@ public final class CloudfirewallFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetInstancesResult> getInstances(GetInstancesArgs args, InvokeOptions options) {
@@ -980,6 +1043,8 @@ public final class CloudfirewallFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1007,6 +1072,7 @@ public final class CloudfirewallFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetInstancesResult> getInstancesPlain(GetInstancesPlainArgs args, InvokeOptions options) {
@@ -1018,6 +1084,8 @@ public final class CloudfirewallFunctions {
      * &gt; **NOTE:** Available in 1.194.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1051,6 +1119,7 @@ public final class CloudfirewallFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetVpcFirewallCensResult> getVpcFirewallCens() {
@@ -1062,6 +1131,8 @@ public final class CloudfirewallFunctions {
      * &gt; **NOTE:** Available in 1.194.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1095,6 +1166,7 @@ public final class CloudfirewallFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetVpcFirewallCensResult> getVpcFirewallCensPlain() {
@@ -1106,6 +1178,8 @@ public final class CloudfirewallFunctions {
      * &gt; **NOTE:** Available in 1.194.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1139,6 +1213,7 @@ public final class CloudfirewallFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetVpcFirewallCensResult> getVpcFirewallCens(GetVpcFirewallCensArgs args) {
@@ -1150,6 +1225,8 @@ public final class CloudfirewallFunctions {
      * &gt; **NOTE:** Available in 1.194.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1183,6 +1260,7 @@ public final class CloudfirewallFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetVpcFirewallCensResult> getVpcFirewallCensPlain(GetVpcFirewallCensPlainArgs args) {
@@ -1194,6 +1272,8 @@ public final class CloudfirewallFunctions {
      * &gt; **NOTE:** Available in 1.194.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1227,6 +1307,7 @@ public final class CloudfirewallFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetVpcFirewallCensResult> getVpcFirewallCens(GetVpcFirewallCensArgs args, InvokeOptions options) {
@@ -1238,6 +1319,8 @@ public final class CloudfirewallFunctions {
      * &gt; **NOTE:** Available in 1.194.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1271,6 +1354,7 @@ public final class CloudfirewallFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetVpcFirewallCensResult> getVpcFirewallCensPlain(GetVpcFirewallCensPlainArgs args, InvokeOptions options) {
@@ -1284,6 +1368,8 @@ public final class CloudfirewallFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1316,6 +1402,7 @@ public final class CloudfirewallFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetVpcFirewallControlPoliciesResult> getVpcFirewallControlPolicies(GetVpcFirewallControlPoliciesArgs args) {
@@ -1329,6 +1416,8 @@ public final class CloudfirewallFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1361,6 +1450,7 @@ public final class CloudfirewallFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetVpcFirewallControlPoliciesResult> getVpcFirewallControlPoliciesPlain(GetVpcFirewallControlPoliciesPlainArgs args) {
@@ -1374,6 +1464,8 @@ public final class CloudfirewallFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1406,6 +1498,7 @@ public final class CloudfirewallFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetVpcFirewallControlPoliciesResult> getVpcFirewallControlPolicies(GetVpcFirewallControlPoliciesArgs args, InvokeOptions options) {
@@ -1419,6 +1512,8 @@ public final class CloudfirewallFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1451,6 +1546,7 @@ public final class CloudfirewallFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetVpcFirewallControlPoliciesResult> getVpcFirewallControlPoliciesPlain(GetVpcFirewallControlPoliciesPlainArgs args, InvokeOptions options) {
@@ -1462,6 +1558,8 @@ public final class CloudfirewallFunctions {
      * &gt; **NOTE:** Available in 1.194.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1494,6 +1592,7 @@ public final class CloudfirewallFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetVpcFirewallsResult> getVpcFirewalls() {
@@ -1505,6 +1604,8 @@ public final class CloudfirewallFunctions {
      * &gt; **NOTE:** Available in 1.194.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1537,6 +1638,7 @@ public final class CloudfirewallFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetVpcFirewallsResult> getVpcFirewallsPlain() {
@@ -1548,6 +1650,8 @@ public final class CloudfirewallFunctions {
      * &gt; **NOTE:** Available in 1.194.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1580,6 +1684,7 @@ public final class CloudfirewallFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetVpcFirewallsResult> getVpcFirewalls(GetVpcFirewallsArgs args) {
@@ -1591,6 +1696,8 @@ public final class CloudfirewallFunctions {
      * &gt; **NOTE:** Available in 1.194.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1623,6 +1730,7 @@ public final class CloudfirewallFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetVpcFirewallsResult> getVpcFirewallsPlain(GetVpcFirewallsPlainArgs args) {
@@ -1634,6 +1742,8 @@ public final class CloudfirewallFunctions {
      * &gt; **NOTE:** Available in 1.194.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1666,6 +1776,7 @@ public final class CloudfirewallFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetVpcFirewallsResult> getVpcFirewalls(GetVpcFirewallsArgs args, InvokeOptions options) {
@@ -1677,6 +1788,8 @@ public final class CloudfirewallFunctions {
      * &gt; **NOTE:** Available in 1.194.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1709,6 +1822,7 @@ public final class CloudfirewallFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetVpcFirewallsResult> getVpcFirewallsPlain(GetVpcFirewallsPlainArgs args, InvokeOptions options) {

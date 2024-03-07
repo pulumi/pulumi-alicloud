@@ -75,12 +75,14 @@ class GlobalEventsStorageRegion(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
 
         foo = alicloud.actiontrail.GlobalEventsStorageRegion("foo", storage_region="cn-hangzhou")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -105,12 +107,14 @@ class GlobalEventsStorageRegion(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
 
         foo = alicloud.actiontrail.GlobalEventsStorageRegion("foo", storage_region="cn-hangzhou")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

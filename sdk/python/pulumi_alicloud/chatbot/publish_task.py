@@ -190,6 +190,7 @@ class PublishTask(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -199,6 +200,7 @@ class PublishTask(pulumi.CustomResource):
             biz_type="faq",
             agent_key=default_agents.agents[0].agent_key)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -231,6 +233,7 @@ class PublishTask(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -240,6 +243,7 @@ class PublishTask(pulumi.CustomResource):
             biz_type="faq",
             agent_key=default_agents.agents[0].agent_key)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

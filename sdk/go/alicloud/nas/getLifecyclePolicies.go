@@ -19,6 +19,7 @@ import (
 //
 // # Basic Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -55,6 +56,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func GetLifecyclePolicies(ctx *pulumi.Context, args *GetLifecyclePoliciesArgs, opts ...pulumi.InvokeOption) (*GetLifecyclePoliciesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetLifecyclePoliciesResult

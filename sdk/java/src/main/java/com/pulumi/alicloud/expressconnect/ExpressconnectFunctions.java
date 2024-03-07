@@ -43,6 +43,8 @@ public final class ExpressconnectFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -77,6 +79,7 @@ public final class ExpressconnectFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetAccessPointsResult> getAccessPoints() {
@@ -90,6 +93,8 @@ public final class ExpressconnectFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -124,6 +129,7 @@ public final class ExpressconnectFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetAccessPointsResult> getAccessPointsPlain() {
@@ -137,6 +143,8 @@ public final class ExpressconnectFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -171,6 +179,7 @@ public final class ExpressconnectFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetAccessPointsResult> getAccessPoints(GetAccessPointsArgs args) {
@@ -184,6 +193,8 @@ public final class ExpressconnectFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -218,6 +229,7 @@ public final class ExpressconnectFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetAccessPointsResult> getAccessPointsPlain(GetAccessPointsPlainArgs args) {
@@ -231,6 +243,8 @@ public final class ExpressconnectFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -265,6 +279,7 @@ public final class ExpressconnectFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetAccessPointsResult> getAccessPoints(GetAccessPointsArgs args, InvokeOptions options) {
@@ -278,6 +293,8 @@ public final class ExpressconnectFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -312,6 +329,7 @@ public final class ExpressconnectFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetAccessPointsResult> getAccessPointsPlain(GetAccessPointsPlainArgs args, InvokeOptions options) {
@@ -325,6 +343,8 @@ public final class ExpressconnectFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -355,6 +375,7 @@ public final class ExpressconnectFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetGrantRuleToCensResult> getGrantRuleToCens(GetGrantRuleToCensArgs args) {
@@ -368,6 +389,8 @@ public final class ExpressconnectFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -398,6 +421,7 @@ public final class ExpressconnectFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetGrantRuleToCensResult> getGrantRuleToCensPlain(GetGrantRuleToCensPlainArgs args) {
@@ -411,6 +435,8 @@ public final class ExpressconnectFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -441,6 +467,7 @@ public final class ExpressconnectFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetGrantRuleToCensResult> getGrantRuleToCens(GetGrantRuleToCensArgs args, InvokeOptions options) {
@@ -454,6 +481,8 @@ public final class ExpressconnectFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -484,6 +513,7 @@ public final class ExpressconnectFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetGrantRuleToCensResult> getGrantRuleToCensPlain(GetGrantRuleToCensPlainArgs args, InvokeOptions options) {
@@ -497,6 +527,8 @@ public final class ExpressconnectFunctions {
      * &gt; **NOTE:** Available in v1.132.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -525,6 +557,7 @@ public final class ExpressconnectFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetPhysicalConnectionServiceResult> getPhysicalConnectionService() {
@@ -538,6 +571,8 @@ public final class ExpressconnectFunctions {
      * &gt; **NOTE:** Available in v1.132.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -566,6 +601,7 @@ public final class ExpressconnectFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetPhysicalConnectionServiceResult> getPhysicalConnectionServicePlain() {
@@ -579,6 +615,8 @@ public final class ExpressconnectFunctions {
      * &gt; **NOTE:** Available in v1.132.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -607,6 +645,7 @@ public final class ExpressconnectFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetPhysicalConnectionServiceResult> getPhysicalConnectionService(GetPhysicalConnectionServiceArgs args) {
@@ -620,6 +659,8 @@ public final class ExpressconnectFunctions {
      * &gt; **NOTE:** Available in v1.132.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -648,6 +689,7 @@ public final class ExpressconnectFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetPhysicalConnectionServiceResult> getPhysicalConnectionServicePlain(GetPhysicalConnectionServicePlainArgs args) {
@@ -661,6 +703,8 @@ public final class ExpressconnectFunctions {
      * &gt; **NOTE:** Available in v1.132.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -689,6 +733,7 @@ public final class ExpressconnectFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetPhysicalConnectionServiceResult> getPhysicalConnectionService(GetPhysicalConnectionServiceArgs args, InvokeOptions options) {
@@ -702,6 +747,8 @@ public final class ExpressconnectFunctions {
      * &gt; **NOTE:** Available in v1.132.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -730,6 +777,7 @@ public final class ExpressconnectFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetPhysicalConnectionServiceResult> getPhysicalConnectionServicePlain(GetPhysicalConnectionServicePlainArgs args, InvokeOptions options) {
@@ -743,6 +791,8 @@ public final class ExpressconnectFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -777,6 +827,7 @@ public final class ExpressconnectFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetPhysicalConnectionsResult> getPhysicalConnections() {
@@ -790,6 +841,8 @@ public final class ExpressconnectFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -824,6 +877,7 @@ public final class ExpressconnectFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetPhysicalConnectionsResult> getPhysicalConnectionsPlain() {
@@ -837,6 +891,8 @@ public final class ExpressconnectFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -871,6 +927,7 @@ public final class ExpressconnectFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetPhysicalConnectionsResult> getPhysicalConnections(GetPhysicalConnectionsArgs args) {
@@ -884,6 +941,8 @@ public final class ExpressconnectFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -918,6 +977,7 @@ public final class ExpressconnectFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetPhysicalConnectionsResult> getPhysicalConnectionsPlain(GetPhysicalConnectionsPlainArgs args) {
@@ -931,6 +991,8 @@ public final class ExpressconnectFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -965,6 +1027,7 @@ public final class ExpressconnectFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetPhysicalConnectionsResult> getPhysicalConnections(GetPhysicalConnectionsArgs args, InvokeOptions options) {
@@ -978,6 +1041,8 @@ public final class ExpressconnectFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1012,6 +1077,7 @@ public final class ExpressconnectFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetPhysicalConnectionsResult> getPhysicalConnectionsPlain(GetPhysicalConnectionsPlainArgs args, InvokeOptions options) {
@@ -1023,6 +1089,8 @@ public final class ExpressconnectFunctions {
      * &gt; **NOTE:** Available in 1.199.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1053,6 +1121,7 @@ public final class ExpressconnectFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetRouterInterfacesResult> getRouterInterfaces() {
@@ -1064,6 +1133,8 @@ public final class ExpressconnectFunctions {
      * &gt; **NOTE:** Available in 1.199.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1094,6 +1165,7 @@ public final class ExpressconnectFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetRouterInterfacesResult> getRouterInterfacesPlain() {
@@ -1105,6 +1177,8 @@ public final class ExpressconnectFunctions {
      * &gt; **NOTE:** Available in 1.199.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1135,6 +1209,7 @@ public final class ExpressconnectFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetRouterInterfacesResult> getRouterInterfaces(GetRouterInterfacesArgs args) {
@@ -1146,6 +1221,8 @@ public final class ExpressconnectFunctions {
      * &gt; **NOTE:** Available in 1.199.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1176,6 +1253,7 @@ public final class ExpressconnectFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetRouterInterfacesResult> getRouterInterfacesPlain(GetRouterInterfacesPlainArgs args) {
@@ -1187,6 +1265,8 @@ public final class ExpressconnectFunctions {
      * &gt; **NOTE:** Available in 1.199.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1217,6 +1297,7 @@ public final class ExpressconnectFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetRouterInterfacesResult> getRouterInterfaces(GetRouterInterfacesArgs args, InvokeOptions options) {
@@ -1228,6 +1309,8 @@ public final class ExpressconnectFunctions {
      * &gt; **NOTE:** Available in 1.199.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1258,6 +1341,7 @@ public final class ExpressconnectFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetRouterInterfacesResult> getRouterInterfacesPlain(GetRouterInterfacesPlainArgs args, InvokeOptions options) {
@@ -1269,6 +1353,8 @@ public final class ExpressconnectFunctions {
      * &gt; **NOTE:** Available in 1.196.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1299,6 +1385,7 @@ public final class ExpressconnectFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetVbrPconnAssociationsResult> getVbrPconnAssociations() {
@@ -1310,6 +1397,8 @@ public final class ExpressconnectFunctions {
      * &gt; **NOTE:** Available in 1.196.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1340,6 +1429,7 @@ public final class ExpressconnectFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetVbrPconnAssociationsResult> getVbrPconnAssociationsPlain() {
@@ -1351,6 +1441,8 @@ public final class ExpressconnectFunctions {
      * &gt; **NOTE:** Available in 1.196.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1381,6 +1473,7 @@ public final class ExpressconnectFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetVbrPconnAssociationsResult> getVbrPconnAssociations(GetVbrPconnAssociationsArgs args) {
@@ -1392,6 +1485,8 @@ public final class ExpressconnectFunctions {
      * &gt; **NOTE:** Available in 1.196.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1422,6 +1517,7 @@ public final class ExpressconnectFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetVbrPconnAssociationsResult> getVbrPconnAssociationsPlain(GetVbrPconnAssociationsPlainArgs args) {
@@ -1433,6 +1529,8 @@ public final class ExpressconnectFunctions {
      * &gt; **NOTE:** Available in 1.196.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1463,6 +1561,7 @@ public final class ExpressconnectFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetVbrPconnAssociationsResult> getVbrPconnAssociations(GetVbrPconnAssociationsArgs args, InvokeOptions options) {
@@ -1474,6 +1573,8 @@ public final class ExpressconnectFunctions {
      * &gt; **NOTE:** Available in 1.196.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1504,6 +1605,7 @@ public final class ExpressconnectFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetVbrPconnAssociationsResult> getVbrPconnAssociationsPlain(GetVbrPconnAssociationsPlainArgs args, InvokeOptions options) {
@@ -1517,6 +1619,8 @@ public final class ExpressconnectFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1564,6 +1668,7 @@ public final class ExpressconnectFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetVirtualBorderRoutersResult> getVirtualBorderRouters() {
@@ -1577,6 +1682,8 @@ public final class ExpressconnectFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1624,6 +1731,7 @@ public final class ExpressconnectFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetVirtualBorderRoutersResult> getVirtualBorderRoutersPlain() {
@@ -1637,6 +1745,8 @@ public final class ExpressconnectFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1684,6 +1794,7 @@ public final class ExpressconnectFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetVirtualBorderRoutersResult> getVirtualBorderRouters(GetVirtualBorderRoutersArgs args) {
@@ -1697,6 +1808,8 @@ public final class ExpressconnectFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1744,6 +1857,7 @@ public final class ExpressconnectFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetVirtualBorderRoutersResult> getVirtualBorderRoutersPlain(GetVirtualBorderRoutersPlainArgs args) {
@@ -1757,6 +1871,8 @@ public final class ExpressconnectFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1804,6 +1920,7 @@ public final class ExpressconnectFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetVirtualBorderRoutersResult> getVirtualBorderRouters(GetVirtualBorderRoutersArgs args, InvokeOptions options) {
@@ -1817,6 +1934,8 @@ public final class ExpressconnectFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1864,6 +1983,7 @@ public final class ExpressconnectFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetVirtualBorderRoutersResult> getVirtualBorderRoutersPlain(GetVirtualBorderRoutersPlainArgs args, InvokeOptions options) {
@@ -1876,6 +1996,7 @@ public final class ExpressconnectFunctions {
      * 
      * ## Example Usage
      * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1909,6 +2030,7 @@ public final class ExpressconnectFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetVirtualPhysicalConnectionsResult> getVirtualPhysicalConnections() {
@@ -1921,6 +2043,7 @@ public final class ExpressconnectFunctions {
      * 
      * ## Example Usage
      * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1954,6 +2077,7 @@ public final class ExpressconnectFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetVirtualPhysicalConnectionsResult> getVirtualPhysicalConnectionsPlain() {
@@ -1966,6 +2090,7 @@ public final class ExpressconnectFunctions {
      * 
      * ## Example Usage
      * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1999,6 +2124,7 @@ public final class ExpressconnectFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetVirtualPhysicalConnectionsResult> getVirtualPhysicalConnections(GetVirtualPhysicalConnectionsArgs args) {
@@ -2011,6 +2137,7 @@ public final class ExpressconnectFunctions {
      * 
      * ## Example Usage
      * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2044,6 +2171,7 @@ public final class ExpressconnectFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetVirtualPhysicalConnectionsResult> getVirtualPhysicalConnectionsPlain(GetVirtualPhysicalConnectionsPlainArgs args) {
@@ -2056,6 +2184,7 @@ public final class ExpressconnectFunctions {
      * 
      * ## Example Usage
      * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2089,6 +2218,7 @@ public final class ExpressconnectFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetVirtualPhysicalConnectionsResult> getVirtualPhysicalConnections(GetVirtualPhysicalConnectionsArgs args, InvokeOptions options) {
@@ -2101,6 +2231,7 @@ public final class ExpressconnectFunctions {
      * 
      * ## Example Usage
      * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2134,6 +2265,7 @@ public final class ExpressconnectFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetVirtualPhysicalConnectionsResult> getVirtualPhysicalConnectionsPlain(GetVirtualPhysicalConnectionsPlainArgs args, InvokeOptions options) {

@@ -25,6 +25,10 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * ## Example Usage
+ * 
+ * Basic Usage
+ * 
  * ## Import
  * 
  * VPN connection can be imported using the id, e.g.

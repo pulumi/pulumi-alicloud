@@ -102,6 +102,7 @@ public final class GetSecurityGroupsPlainArgs extends com.pulumi.resources.Invok
 
     /**
      * A map of tags assigned to the ECS instances. It must be in the format:
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -133,6 +134,7 @@ public final class GetSecurityGroupsPlainArgs extends com.pulumi.resources.Invok
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     @Import(name="tags")
@@ -140,6 +142,7 @@ public final class GetSecurityGroupsPlainArgs extends com.pulumi.resources.Invok
 
     /**
      * @return A map of tags assigned to the ECS instances. It must be in the format:
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -171,6 +174,7 @@ public final class GetSecurityGroupsPlainArgs extends com.pulumi.resources.Invok
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public Optional<Map<String,Object>> tags() {
@@ -295,6 +299,7 @@ public final class GetSecurityGroupsPlainArgs extends com.pulumi.resources.Invok
 
         /**
          * @param tags A map of tags assigned to the ECS instances. It must be in the format:
+         * &lt;!--Start PulumiCodeChooser --&gt;
          * ```java
          * package generated_program;
          * 
@@ -326,6 +331,7 @@ public final class GetSecurityGroupsPlainArgs extends com.pulumi.resources.Invok
          *     }
          * }
          * ```
+         * &lt;!--End PulumiCodeChooser --&gt;
          * 
          * @return builder
          * 

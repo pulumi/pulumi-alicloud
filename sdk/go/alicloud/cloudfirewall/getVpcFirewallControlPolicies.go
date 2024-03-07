@@ -19,6 +19,7 @@ import (
 //
 // # Basic Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -47,6 +48,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func GetVpcFirewallControlPolicies(ctx *pulumi.Context, args *GetVpcFirewallControlPoliciesArgs, opts ...pulumi.InvokeOption) (*GetVpcFirewallControlPoliciesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetVpcFirewallControlPoliciesResult

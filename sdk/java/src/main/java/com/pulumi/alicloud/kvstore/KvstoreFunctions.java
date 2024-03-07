@@ -40,6 +40,8 @@ public final class KvstoreFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -69,6 +71,7 @@ public final class KvstoreFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetAccountsResult> getAccounts(GetAccountsArgs args) {
@@ -82,6 +85,8 @@ public final class KvstoreFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -111,6 +116,7 @@ public final class KvstoreFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetAccountsResult> getAccountsPlain(GetAccountsPlainArgs args) {
@@ -124,6 +130,8 @@ public final class KvstoreFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -153,6 +161,7 @@ public final class KvstoreFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetAccountsResult> getAccounts(GetAccountsArgs args, InvokeOptions options) {
@@ -166,6 +175,8 @@ public final class KvstoreFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -195,6 +206,7 @@ public final class KvstoreFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetAccountsResult> getAccountsPlain(GetAccountsPlainArgs args, InvokeOptions options) {
@@ -242,6 +254,8 @@ public final class KvstoreFunctions {
      * &gt; **NOTE:** Available since v1.49.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -281,6 +295,7 @@ public final class KvstoreFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetInstanceClassesResult> getInstanceClasses(GetInstanceClassesArgs args) {
@@ -292,6 +307,8 @@ public final class KvstoreFunctions {
      * &gt; **NOTE:** Available since v1.49.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -331,6 +348,7 @@ public final class KvstoreFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetInstanceClassesResult> getInstanceClassesPlain(GetInstanceClassesPlainArgs args) {
@@ -342,6 +360,8 @@ public final class KvstoreFunctions {
      * &gt; **NOTE:** Available since v1.49.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -381,6 +401,7 @@ public final class KvstoreFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetInstanceClassesResult> getInstanceClasses(GetInstanceClassesArgs args, InvokeOptions options) {
@@ -392,6 +413,8 @@ public final class KvstoreFunctions {
      * &gt; **NOTE:** Available since v1.49.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -431,6 +454,7 @@ public final class KvstoreFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetInstanceClassesResult> getInstanceClassesPlain(GetInstanceClassesPlainArgs args, InvokeOptions options) {
@@ -442,6 +466,8 @@ public final class KvstoreFunctions {
      * &gt; **NOTE:** Available since v1.51.0
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -481,6 +507,7 @@ public final class KvstoreFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetInstanceEnginesResult> getInstanceEngines(GetInstanceEnginesArgs args) {
@@ -492,6 +519,8 @@ public final class KvstoreFunctions {
      * &gt; **NOTE:** Available since v1.51.0
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -531,6 +560,7 @@ public final class KvstoreFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetInstanceEnginesResult> getInstanceEnginesPlain(GetInstanceEnginesPlainArgs args) {
@@ -542,6 +572,8 @@ public final class KvstoreFunctions {
      * &gt; **NOTE:** Available since v1.51.0
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -581,6 +613,7 @@ public final class KvstoreFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetInstanceEnginesResult> getInstanceEngines(GetInstanceEnginesArgs args, InvokeOptions options) {
@@ -592,6 +625,8 @@ public final class KvstoreFunctions {
      * &gt; **NOTE:** Available since v1.51.0
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -631,6 +666,7 @@ public final class KvstoreFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetInstanceEnginesResult> getInstanceEnginesPlain(GetInstanceEnginesPlainArgs args, InvokeOptions options) {
@@ -641,6 +677,8 @@ public final class KvstoreFunctions {
      * Filters support regular expression for the instance name, searches by tags, and other filters which are listed below.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -670,6 +708,7 @@ public final class KvstoreFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetInstancesResult> getInstances() {
@@ -680,6 +719,8 @@ public final class KvstoreFunctions {
      * Filters support regular expression for the instance name, searches by tags, and other filters which are listed below.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -709,6 +750,7 @@ public final class KvstoreFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetInstancesResult> getInstancesPlain() {
@@ -719,6 +761,8 @@ public final class KvstoreFunctions {
      * Filters support regular expression for the instance name, searches by tags, and other filters which are listed below.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -748,6 +792,7 @@ public final class KvstoreFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetInstancesResult> getInstances(GetInstancesArgs args) {
@@ -758,6 +803,8 @@ public final class KvstoreFunctions {
      * Filters support regular expression for the instance name, searches by tags, and other filters which are listed below.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -787,6 +834,7 @@ public final class KvstoreFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetInstancesResult> getInstancesPlain(GetInstancesPlainArgs args) {
@@ -797,6 +845,8 @@ public final class KvstoreFunctions {
      * Filters support regular expression for the instance name, searches by tags, and other filters which are listed below.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -826,6 +876,7 @@ public final class KvstoreFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetInstancesResult> getInstances(GetInstancesArgs args, InvokeOptions options) {
@@ -836,6 +887,8 @@ public final class KvstoreFunctions {
      * Filters support regular expression for the instance name, searches by tags, and other filters which are listed below.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -865,6 +918,7 @@ public final class KvstoreFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetInstancesResult> getInstancesPlain(GetInstancesPlainArgs args, InvokeOptions options) {
@@ -880,6 +934,8 @@ public final class KvstoreFunctions {
      * &gt; **NOTE:** Available since v1.128.0
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -908,6 +964,7 @@ public final class KvstoreFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetPermissionResult> getPermission() {
@@ -923,6 +980,8 @@ public final class KvstoreFunctions {
      * &gt; **NOTE:** Available since v1.128.0
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -951,6 +1010,7 @@ public final class KvstoreFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetPermissionResult> getPermissionPlain() {
@@ -966,6 +1026,8 @@ public final class KvstoreFunctions {
      * &gt; **NOTE:** Available since v1.128.0
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -994,6 +1056,7 @@ public final class KvstoreFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetPermissionResult> getPermission(GetPermissionArgs args) {
@@ -1009,6 +1072,8 @@ public final class KvstoreFunctions {
      * &gt; **NOTE:** Available since v1.128.0
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1037,6 +1102,7 @@ public final class KvstoreFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetPermissionResult> getPermissionPlain(GetPermissionPlainArgs args) {
@@ -1052,6 +1118,8 @@ public final class KvstoreFunctions {
      * &gt; **NOTE:** Available since v1.128.0
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1080,6 +1148,7 @@ public final class KvstoreFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetPermissionResult> getPermission(GetPermissionArgs args, InvokeOptions options) {
@@ -1095,6 +1164,8 @@ public final class KvstoreFunctions {
      * &gt; **NOTE:** Available since v1.128.0
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1123,6 +1194,7 @@ public final class KvstoreFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetPermissionResult> getPermissionPlain(GetPermissionPlainArgs args, InvokeOptions options) {
@@ -1134,6 +1206,8 @@ public final class KvstoreFunctions {
      * &gt; **NOTE:** Available since v1.73.0.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1162,6 +1236,7 @@ public final class KvstoreFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetZonesResult> getZones() {
@@ -1173,6 +1248,8 @@ public final class KvstoreFunctions {
      * &gt; **NOTE:** Available since v1.73.0.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1201,6 +1278,7 @@ public final class KvstoreFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetZonesResult> getZonesPlain() {
@@ -1212,6 +1290,8 @@ public final class KvstoreFunctions {
      * &gt; **NOTE:** Available since v1.73.0.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1240,6 +1320,7 @@ public final class KvstoreFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetZonesResult> getZones(GetZonesArgs args) {
@@ -1251,6 +1332,8 @@ public final class KvstoreFunctions {
      * &gt; **NOTE:** Available since v1.73.0.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1279,6 +1362,7 @@ public final class KvstoreFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetZonesResult> getZonesPlain(GetZonesPlainArgs args) {
@@ -1290,6 +1374,8 @@ public final class KvstoreFunctions {
      * &gt; **NOTE:** Available since v1.73.0.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1318,6 +1404,7 @@ public final class KvstoreFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetZonesResult> getZones(GetZonesArgs args, InvokeOptions options) {
@@ -1329,6 +1416,8 @@ public final class KvstoreFunctions {
      * &gt; **NOTE:** Available since v1.73.0.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1357,6 +1446,7 @@ public final class KvstoreFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetZonesResult> getZonesPlain(GetZonesPlainArgs args, InvokeOptions options) {

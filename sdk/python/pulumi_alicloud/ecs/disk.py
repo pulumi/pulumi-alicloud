@@ -798,6 +798,7 @@ class Disk(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -814,6 +815,7 @@ class Disk(pulumi.CustomResource):
                 "Name": "TerraformTest",
             })
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -856,6 +858,7 @@ class Disk(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -872,6 +875,7 @@ class Disk(pulumi.CustomResource):
                 "Name": "TerraformTest",
             })
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

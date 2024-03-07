@@ -13,6 +13,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -24,7 +25,9 @@ import * as utilities from "../utilities";
  * });
  * export const metadata = _default.then(_default => _default.metadatas);
  * ```
+ * <!--End PulumiCodeChooser -->
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -36,7 +39,9 @@ import * as utilities from "../utilities";
  * });
  * export const metadata = _default.then(_default => _default.metadatas);
  * ```
+ * <!--End PulumiCodeChooser -->
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -48,7 +53,9 @@ import * as utilities from "../utilities";
  * });
  * export const metadata = _default.then(_default => _default.metadatas);
  * ```
+ * <!--End PulumiCodeChooser -->
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -60,6 +67,7 @@ import * as utilities from "../utilities";
  * });
  * export const metadata = _default.then(_default => _default.metadatas);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getKubernetesVersion(args: GetKubernetesVersionArgs, opts?: pulumi.InvokeOptions): Promise<GetKubernetesVersionResult> {
 
@@ -112,6 +120,7 @@ export interface GetKubernetesVersionResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -123,7 +132,9 @@ export interface GetKubernetesVersionResult {
  * });
  * export const metadata = _default.then(_default => _default.metadatas);
  * ```
+ * <!--End PulumiCodeChooser -->
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -135,7 +146,9 @@ export interface GetKubernetesVersionResult {
  * });
  * export const metadata = _default.then(_default => _default.metadatas);
  * ```
+ * <!--End PulumiCodeChooser -->
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -147,7 +160,9 @@ export interface GetKubernetesVersionResult {
  * });
  * export const metadata = _default.then(_default => _default.metadatas);
  * ```
+ * <!--End PulumiCodeChooser -->
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -159,6 +174,7 @@ export interface GetKubernetesVersionResult {
  * });
  * export const metadata = _default.then(_default => _default.metadatas);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getKubernetesVersionOutput(args: GetKubernetesVersionOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetKubernetesVersionResult> {
     return pulumi.output(args).apply((a: any) => getKubernetesVersion(a, opts))

@@ -94,6 +94,7 @@ def get_users(ids: Optional[Sequence[str]] = None,
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -106,6 +107,7 @@ def get_users(ids: Optional[Sequence[str]] = None,
     ids = alicloud.eds.get_users()
     pulumi.export("ecdUserId1", ids.users[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of User IDs.
@@ -141,6 +143,7 @@ def get_users_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -153,6 +156,7 @@ def get_users_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None
     ids = alicloud.eds.get_users()
     pulumi.export("ecdUserId1", ids.users[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of User IDs.

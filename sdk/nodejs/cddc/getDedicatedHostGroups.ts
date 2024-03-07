@@ -15,6 +15,7 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -24,6 +25,7 @@ import * as utilities from "../utilities";
  * });
  * export const cddcDedicatedHostGroupId = _default.then(_default => _default.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getDedicatedHostGroups(args?: GetDedicatedHostGroupsArgs, opts?: pulumi.InvokeOptions): Promise<GetDedicatedHostGroupsResult> {
     args = args || {};
@@ -83,6 +85,7 @@ export interface GetDedicatedHostGroupsResult {
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -92,6 +95,7 @@ export interface GetDedicatedHostGroupsResult {
  * });
  * export const cddcDedicatedHostGroupId = _default.then(_default => _default.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getDedicatedHostGroupsOutput(args?: GetDedicatedHostGroupsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDedicatedHostGroupsResult> {
     return pulumi.output(args).apply((a: any) => getDedicatedHostGroups(a, opts))

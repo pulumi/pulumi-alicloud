@@ -363,6 +363,7 @@ def get_application_load_balancers(address: Optional[str] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -374,6 +375,7 @@ def get_application_load_balancers(address: Optional[str] = None,
         })
     pulumi.export("firstSlbId", example.balancers[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str address: Service address of the SLBs.
@@ -483,6 +485,7 @@ def get_application_load_balancers_output(address: Optional[pulumi.Input[Optiona
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -494,6 +497,7 @@ def get_application_load_balancers_output(address: Optional[pulumi.Input[Optiona
         })
     pulumi.export("firstSlbId", example.balancers[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str address: Service address of the SLBs.

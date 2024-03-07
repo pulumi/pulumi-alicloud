@@ -33,6 +33,8 @@ public final class OssFunctions {
      * This data source provides the objects of an OSS bucket.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -63,6 +65,7 @@ public final class OssFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetBucketObjectsResult> getBucketObjects(GetBucketObjectsArgs args) {
@@ -72,6 +75,8 @@ public final class OssFunctions {
      * This data source provides the objects of an OSS bucket.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -102,6 +107,7 @@ public final class OssFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetBucketObjectsResult> getBucketObjectsPlain(GetBucketObjectsPlainArgs args) {
@@ -111,6 +117,8 @@ public final class OssFunctions {
      * This data source provides the objects of an OSS bucket.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -141,6 +149,7 @@ public final class OssFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetBucketObjectsResult> getBucketObjects(GetBucketObjectsArgs args, InvokeOptions options) {
@@ -150,6 +159,8 @@ public final class OssFunctions {
      * This data source provides the objects of an OSS bucket.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -180,6 +191,7 @@ public final class OssFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetBucketObjectsResult> getBucketObjectsPlain(GetBucketObjectsPlainArgs args, InvokeOptions options) {
@@ -189,6 +201,8 @@ public final class OssFunctions {
      * This data source provides the OSS buckets of the current Alibaba Cloud user.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -218,6 +232,7 @@ public final class OssFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetBucketsResult> getBuckets() {
@@ -227,6 +242,8 @@ public final class OssFunctions {
      * This data source provides the OSS buckets of the current Alibaba Cloud user.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -256,6 +273,7 @@ public final class OssFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetBucketsResult> getBucketsPlain() {
@@ -265,6 +283,8 @@ public final class OssFunctions {
      * This data source provides the OSS buckets of the current Alibaba Cloud user.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -294,6 +314,7 @@ public final class OssFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetBucketsResult> getBuckets(GetBucketsArgs args) {
@@ -303,6 +324,8 @@ public final class OssFunctions {
      * This data source provides the OSS buckets of the current Alibaba Cloud user.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -332,6 +355,7 @@ public final class OssFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetBucketsResult> getBucketsPlain(GetBucketsPlainArgs args) {
@@ -341,6 +365,8 @@ public final class OssFunctions {
      * This data source provides the OSS buckets of the current Alibaba Cloud user.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -370,6 +396,7 @@ public final class OssFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetBucketsResult> getBuckets(GetBucketsArgs args, InvokeOptions options) {
@@ -379,6 +406,8 @@ public final class OssFunctions {
      * This data source provides the OSS buckets of the current Alibaba Cloud user.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -408,6 +437,7 @@ public final class OssFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetBucketsResult> getBucketsPlain(GetBucketsPlainArgs args, InvokeOptions options) {
@@ -417,6 +447,8 @@ public final class OssFunctions {
      * This data source provides the ots instance attachments of the current Alibaba Cloud user.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -448,6 +480,7 @@ public final class OssFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * @deprecated
      * alicloud.oss.getInstanceAttachments has been deprecated in favor of alicloud.ots.getInstanceAttachments
@@ -461,6 +494,8 @@ public final class OssFunctions {
      * This data source provides the ots instance attachments of the current Alibaba Cloud user.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -492,6 +527,7 @@ public final class OssFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * @deprecated
      * alicloud.oss.getInstanceAttachments has been deprecated in favor of alicloud.ots.getInstanceAttachments
@@ -505,6 +541,8 @@ public final class OssFunctions {
      * This data source provides the ots instance attachments of the current Alibaba Cloud user.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -536,6 +574,7 @@ public final class OssFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * @deprecated
      * alicloud.oss.getInstanceAttachments has been deprecated in favor of alicloud.ots.getInstanceAttachments
@@ -549,6 +588,8 @@ public final class OssFunctions {
      * This data source provides the ots instance attachments of the current Alibaba Cloud user.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -580,6 +621,7 @@ public final class OssFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * @deprecated
      * alicloud.oss.getInstanceAttachments has been deprecated in favor of alicloud.ots.getInstanceAttachments
@@ -593,6 +635,8 @@ public final class OssFunctions {
      * This data source provides the ots instances of the current Alibaba Cloud user.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -623,6 +667,7 @@ public final class OssFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * @deprecated
      * alicloud.oss.getInstances has been deprecated in favor of alicloud.ots.getInstances
@@ -636,6 +681,8 @@ public final class OssFunctions {
      * This data source provides the ots instances of the current Alibaba Cloud user.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -666,6 +713,7 @@ public final class OssFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * @deprecated
      * alicloud.oss.getInstances has been deprecated in favor of alicloud.ots.getInstances
@@ -679,6 +727,8 @@ public final class OssFunctions {
      * This data source provides the ots instances of the current Alibaba Cloud user.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -709,6 +759,7 @@ public final class OssFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * @deprecated
      * alicloud.oss.getInstances has been deprecated in favor of alicloud.ots.getInstances
@@ -722,6 +773,8 @@ public final class OssFunctions {
      * This data source provides the ots instances of the current Alibaba Cloud user.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -752,6 +805,7 @@ public final class OssFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * @deprecated
      * alicloud.oss.getInstances has been deprecated in favor of alicloud.ots.getInstances
@@ -765,6 +819,8 @@ public final class OssFunctions {
      * This data source provides the ots instances of the current Alibaba Cloud user.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -795,6 +851,7 @@ public final class OssFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * @deprecated
      * alicloud.oss.getInstances has been deprecated in favor of alicloud.ots.getInstances
@@ -808,6 +865,8 @@ public final class OssFunctions {
      * This data source provides the ots instances of the current Alibaba Cloud user.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -838,6 +897,7 @@ public final class OssFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * @deprecated
      * alicloud.oss.getInstances has been deprecated in favor of alicloud.ots.getInstances
@@ -855,6 +915,8 @@ public final class OssFunctions {
      * &gt; **NOTE:** Available in v1.97.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -883,6 +945,7 @@ public final class OssFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetServiceResult> getService() {
@@ -896,6 +959,8 @@ public final class OssFunctions {
      * &gt; **NOTE:** Available in v1.97.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -924,6 +989,7 @@ public final class OssFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetServiceResult> getServicePlain() {
@@ -937,6 +1003,8 @@ public final class OssFunctions {
      * &gt; **NOTE:** Available in v1.97.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -965,6 +1033,7 @@ public final class OssFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetServiceResult> getService(GetServiceArgs args) {
@@ -978,6 +1047,8 @@ public final class OssFunctions {
      * &gt; **NOTE:** Available in v1.97.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1006,6 +1077,7 @@ public final class OssFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetServiceResult> getServicePlain(GetServicePlainArgs args) {
@@ -1019,6 +1091,8 @@ public final class OssFunctions {
      * &gt; **NOTE:** Available in v1.97.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1047,6 +1121,7 @@ public final class OssFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetServiceResult> getService(GetServiceArgs args, InvokeOptions options) {
@@ -1060,6 +1135,8 @@ public final class OssFunctions {
      * &gt; **NOTE:** Available in v1.97.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1088,6 +1165,7 @@ public final class OssFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetServiceResult> getServicePlain(GetServicePlainArgs args, InvokeOptions options) {
@@ -1099,37 +1177,6 @@ public final class OssFunctions {
      * &gt; **NOTE:** Available in v1.40.0+.
      * 
      * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.alicloud.ots.OtsFunctions;
-     * import com.pulumi.alicloud.ots.inputs.GetTablesArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var tablesDs = OtsFunctions.getTables(GetTablesArgs.builder()
-     *             .instanceName(&#34;sample-instance&#34;)
-     *             .nameRegex(&#34;sample-table&#34;)
-     *             .outputFile(&#34;tables.txt&#34;)
-     *             .build());
-     * 
-     *         ctx.export(&#34;firstTableId&#34;, tablesDs.applyValue(getTablesResult -&gt; getTablesResult.tables()[0].id()));
-     *     }
-     * }
-     * ```
      * 
      * @deprecated
      * alicloud.oss.getTables has been deprecated in favor of alicloud.ots.getTables
@@ -1145,37 +1192,6 @@ public final class OssFunctions {
      * &gt; **NOTE:** Available in v1.40.0+.
      * 
      * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.alicloud.ots.OtsFunctions;
-     * import com.pulumi.alicloud.ots.inputs.GetTablesArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var tablesDs = OtsFunctions.getTables(GetTablesArgs.builder()
-     *             .instanceName(&#34;sample-instance&#34;)
-     *             .nameRegex(&#34;sample-table&#34;)
-     *             .outputFile(&#34;tables.txt&#34;)
-     *             .build());
-     * 
-     *         ctx.export(&#34;firstTableId&#34;, tablesDs.applyValue(getTablesResult -&gt; getTablesResult.tables()[0].id()));
-     *     }
-     * }
-     * ```
      * 
      * @deprecated
      * alicloud.oss.getTables has been deprecated in favor of alicloud.ots.getTables
@@ -1191,37 +1207,6 @@ public final class OssFunctions {
      * &gt; **NOTE:** Available in v1.40.0+.
      * 
      * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.alicloud.ots.OtsFunctions;
-     * import com.pulumi.alicloud.ots.inputs.GetTablesArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var tablesDs = OtsFunctions.getTables(GetTablesArgs.builder()
-     *             .instanceName(&#34;sample-instance&#34;)
-     *             .nameRegex(&#34;sample-table&#34;)
-     *             .outputFile(&#34;tables.txt&#34;)
-     *             .build());
-     * 
-     *         ctx.export(&#34;firstTableId&#34;, tablesDs.applyValue(getTablesResult -&gt; getTablesResult.tables()[0].id()));
-     *     }
-     * }
-     * ```
      * 
      * @deprecated
      * alicloud.oss.getTables has been deprecated in favor of alicloud.ots.getTables
@@ -1237,37 +1222,6 @@ public final class OssFunctions {
      * &gt; **NOTE:** Available in v1.40.0+.
      * 
      * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.alicloud.ots.OtsFunctions;
-     * import com.pulumi.alicloud.ots.inputs.GetTablesArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var tablesDs = OtsFunctions.getTables(GetTablesArgs.builder()
-     *             .instanceName(&#34;sample-instance&#34;)
-     *             .nameRegex(&#34;sample-table&#34;)
-     *             .outputFile(&#34;tables.txt&#34;)
-     *             .build());
-     * 
-     *         ctx.export(&#34;firstTableId&#34;, tablesDs.applyValue(getTablesResult -&gt; getTablesResult.tables()[0].id()));
-     *     }
-     * }
-     * ```
      * 
      * @deprecated
      * alicloud.oss.getTables has been deprecated in favor of alicloud.ots.getTables

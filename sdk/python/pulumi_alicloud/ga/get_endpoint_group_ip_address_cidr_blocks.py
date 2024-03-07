@@ -90,6 +90,7 @@ def get_endpoint_group_ip_address_cidr_blocks(endpoint_group_region: Optional[st
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -97,6 +98,7 @@ def get_endpoint_group_ip_address_cidr_blocks(endpoint_group_region: Optional[st
     default = alicloud.ga.get_endpoint_group_ip_address_cidr_blocks(endpoint_group_region="cn-hangzhou")
     pulumi.export("gaEndpointGroupIpAddressCidrBlocksEndpointGroupRegion", default.endpoint_group_ip_address_cidr_blocks[0].endpoint_group_region)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str endpoint_group_region: The region ID of the endpoint group.
@@ -128,6 +130,7 @@ def get_endpoint_group_ip_address_cidr_blocks_output(endpoint_group_region: Opti
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -135,6 +138,7 @@ def get_endpoint_group_ip_address_cidr_blocks_output(endpoint_group_region: Opti
     default = alicloud.ga.get_endpoint_group_ip_address_cidr_blocks(endpoint_group_region="cn-hangzhou")
     pulumi.export("gaEndpointGroupIpAddressCidrBlocksEndpointGroupRegion", default.endpoint_group_ip_address_cidr_blocks[0].endpoint_group_region)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str endpoint_group_region: The region ID of the endpoint group.

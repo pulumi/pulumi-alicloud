@@ -16,12 +16,11 @@ namespace Pulumi.AliCloud.Hbr
         /// 
         /// &gt; **NOTE:** Available in v1.163.0+.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// Basic Usage
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -41,8 +40,7 @@ namespace Pulumi.AliCloud.Hbr
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetOtsBackupPlansResult> InvokeAsync(GetOtsBackupPlansArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetOtsBackupPlansResult>("alicloud:hbr/getOtsBackupPlans:getOtsBackupPlans", args ?? new GetOtsBackupPlansArgs(), options.WithDefaults());
@@ -52,12 +50,11 @@ namespace Pulumi.AliCloud.Hbr
         /// 
         /// &gt; **NOTE:** Available in v1.163.0+.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// Basic Usage
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -77,8 +74,7 @@ namespace Pulumi.AliCloud.Hbr
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetOtsBackupPlansResult> Invoke(GetOtsBackupPlansInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetOtsBackupPlansResult>("alicloud:hbr/getOtsBackupPlans:getOtsBackupPlans", args ?? new GetOtsBackupPlansInvokeArgs(), options.WithDefaults());

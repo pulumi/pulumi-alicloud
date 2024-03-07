@@ -113,6 +113,7 @@ def get_snapshots(ids: Optional[Sequence[str]] = None,
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -124,6 +125,7 @@ def get_snapshots(ids: Optional[Sequence[str]] = None,
     status = alicloud.databasefilesystem.get_snapshots(status="accomplished")
     pulumi.export("dbfsSnapshotId3", status.snapshots[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Snapshot IDs.
@@ -164,6 +166,7 @@ def get_snapshots_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = 
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -175,6 +178,7 @@ def get_snapshots_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = 
     status = alicloud.databasefilesystem.get_snapshots(status="accomplished")
     pulumi.export("dbfsSnapshotId3", status.snapshots[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Snapshot IDs.

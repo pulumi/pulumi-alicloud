@@ -1605,6 +1605,7 @@ class ReadOnlyInstance(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -1645,6 +1646,7 @@ class ReadOnlyInstance(pulumi.CustomResource):
             instance_name=f"{name}readonly",
             vswitch_id=example_switch.id)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -1767,6 +1769,7 @@ class ReadOnlyInstance(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -1807,6 +1810,7 @@ class ReadOnlyInstance(pulumi.CustomResource):
             instance_name=f"{name}readonly",
             vswitch_id=example_switch.id)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

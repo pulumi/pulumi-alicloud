@@ -19,6 +19,7 @@ namespace Pulumi.AliCloud.Log
     /// 
     /// Basic Usage
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -70,6 +71,7 @@ namespace Pulumi.AliCloud.Log
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
@@ -163,7 +165,7 @@ namespace Pulumi.AliCloud.Log
         public Output<ImmutableArray<Outputs.OssShipperParquetConfig>> ParquetConfigs { get; private set; } = null!;
 
         /// <summary>
-        /// The OSS Bucket directory is dynamically generated according to the creation time of the shipper task, it cannot start with a forward slash `/`, the default value is `%Y/%m/%d/%H/%M`.
+        /// The OSS Bucket directory is dynamically generated according to the creation time of the shipper task, it cannot start with a forward slash `/`, the default value is `%!Y(MISSING)/%!m(MISSING)/%!d(MISSING)/%!H(MISSING)/%!M(MISSING)`.
         /// </summary>
         [Output("pathFormat")]
         public Output<string> PathFormat { get; private set; } = null!;
@@ -323,7 +325,7 @@ namespace Pulumi.AliCloud.Log
         }
 
         /// <summary>
-        /// The OSS Bucket directory is dynamically generated according to the creation time of the shipper task, it cannot start with a forward slash `/`, the default value is `%Y/%m/%d/%H/%M`.
+        /// The OSS Bucket directory is dynamically generated according to the creation time of the shipper task, it cannot start with a forward slash `/`, the default value is `%!Y(MISSING)/%!m(MISSING)/%!d(MISSING)/%!H(MISSING)/%!M(MISSING)`.
         /// </summary>
         [Input("pathFormat", required: true)]
         public Input<string> PathFormat { get; set; } = null!;
@@ -445,7 +447,7 @@ namespace Pulumi.AliCloud.Log
         }
 
         /// <summary>
-        /// The OSS Bucket directory is dynamically generated according to the creation time of the shipper task, it cannot start with a forward slash `/`, the default value is `%Y/%m/%d/%H/%M`.
+        /// The OSS Bucket directory is dynamically generated according to the creation time of the shipper task, it cannot start with a forward slash `/`, the default value is `%!Y(MISSING)/%!m(MISSING)/%!d(MISSING)/%!H(MISSING)/%!M(MISSING)`.
         /// </summary>
         [Input("pathFormat")]
         public Input<string>? PathFormat { get; set; }

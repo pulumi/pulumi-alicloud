@@ -710,6 +710,7 @@ class FirewallVpcFirewallControlPolicy(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -743,6 +744,7 @@ class FirewallVpcFirewallControlPolicy(pulumi.CustomResource):
             member_uid=default_account.id,
             vpc_firewall_id=default_instance.id)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -793,6 +795,7 @@ class FirewallVpcFirewallControlPolicy(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -826,6 +829,7 @@ class FirewallVpcFirewallControlPolicy(pulumi.CustomResource):
             member_uid=default_account.id,
             vpc_firewall_id=default_instance.id)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

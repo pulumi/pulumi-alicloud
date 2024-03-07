@@ -16,12 +16,11 @@ namespace Pulumi.AliCloud.Cms
         /// 
         /// &gt; **NOTE:** Available in v1.113.0+.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// Basic Usage
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -45,8 +44,7 @@ namespace Pulumi.AliCloud.Cms
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetMonitorGroupsResult> InvokeAsync(GetMonitorGroupsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetMonitorGroupsResult>("alicloud:cms/getMonitorGroups:getMonitorGroups", args ?? new GetMonitorGroupsArgs(), options.WithDefaults());
@@ -56,12 +54,11 @@ namespace Pulumi.AliCloud.Cms
         /// 
         /// &gt; **NOTE:** Available in v1.113.0+.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// Basic Usage
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -85,8 +82,7 @@ namespace Pulumi.AliCloud.Cms
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetMonitorGroupsResult> Invoke(GetMonitorGroupsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetMonitorGroupsResult>("alicloud:cms/getMonitorGroups:getMonitorGroups", args ?? new GetMonitorGroupsInvokeArgs(), options.WithDefaults());

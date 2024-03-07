@@ -335,6 +335,7 @@ class OssScanConfig(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -383,6 +384,7 @@ class OssScanConfig(pulumi.CustomResource):
                 "/123",
             ])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -421,6 +423,7 @@ class OssScanConfig(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -469,6 +472,7 @@ class OssScanConfig(pulumi.CustomResource):
                 "/123",
             ])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

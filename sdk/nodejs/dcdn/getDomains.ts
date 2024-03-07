@@ -10,6 +10,20 @@ import * as utilities from "../utilities";
  * Provides a collection of DCDN Domains to the specified filters.
  *
  * > **NOTE:** Available in 1.94.0+.
+ *
+ * ## Example Usage
+ *
+ *  <!--Start PulumiCodeChooser -->
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const example = alicloud.dcdn.getDomains({
+ *     ids: ["example.com"],
+ * });
+ * export const domainId = example.then(example => example.domains?.[0]?.id);
+ * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getDomains(args?: GetDomainsArgs, opts?: pulumi.InvokeOptions): Promise<GetDomainsResult> {
     args = args || {};
@@ -118,6 +132,20 @@ export interface GetDomainsResult {
  * Provides a collection of DCDN Domains to the specified filters.
  *
  * > **NOTE:** Available in 1.94.0+.
+ *
+ * ## Example Usage
+ *
+ *  <!--Start PulumiCodeChooser -->
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const example = alicloud.dcdn.getDomains({
+ *     ids: ["example.com"],
+ * });
+ * export const domainId = example.then(example => example.domains?.[0]?.id);
+ * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getDomainsOutput(args?: GetDomainsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDomainsResult> {
     return pulumi.output(args).apply((a: any) => getDomains(a, opts))

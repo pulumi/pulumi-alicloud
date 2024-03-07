@@ -16,10 +16,9 @@ namespace Pulumi.AliCloud.ThreatDetection
         /// 
         /// &gt; **NOTE:** Available in 1.195.0+
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -45,8 +44,7 @@ namespace Pulumi.AliCloud.ThreatDetection
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetHoneypotPresetsResult> InvokeAsync(GetHoneypotPresetsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetHoneypotPresetsResult>("alicloud:threatdetection/getHoneypotPresets:getHoneypotPresets", args ?? new GetHoneypotPresetsArgs(), options.WithDefaults());
@@ -56,10 +54,9 @@ namespace Pulumi.AliCloud.ThreatDetection
         /// 
         /// &gt; **NOTE:** Available in 1.195.0+
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -85,8 +82,7 @@ namespace Pulumi.AliCloud.ThreatDetection
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetHoneypotPresetsResult> Invoke(GetHoneypotPresetsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetHoneypotPresetsResult>("alicloud:threatdetection/getHoneypotPresets:getHoneypotPresets", args ?? new GetHoneypotPresetsInvokeArgs(), options.WithDefaults());

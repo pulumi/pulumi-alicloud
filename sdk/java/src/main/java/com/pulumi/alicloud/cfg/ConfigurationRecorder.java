@@ -25,6 +25,8 @@ import javax.annotation.Nullable;
  * &gt; **NOTE:** The Cloud Config region only support `cn-shanghai` and `ap-southeast-1`.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -55,6 +57,7 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 

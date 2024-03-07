@@ -154,6 +154,7 @@ class Connection(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -194,6 +195,7 @@ class Connection(pulumi.CustomResource):
             instance_id=default_instance.id,
             port="6370")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -224,6 +226,7 @@ class Connection(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -264,6 +267,7 @@ class Connection(pulumi.CustomResource):
             instance_id=default_instance.id,
             port="6370")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

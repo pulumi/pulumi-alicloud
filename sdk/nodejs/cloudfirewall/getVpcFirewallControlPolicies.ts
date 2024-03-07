@@ -15,6 +15,7 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -28,6 +29,7 @@ import * as utilities from "../utilities";
  * });
  * export const alicloudCloudFirewallVpcFirewallControlPoliciesId1 = ids.then(ids => ids.policies?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getVpcFirewallControlPolicies(args: GetVpcFirewallControlPoliciesArgs, opts?: pulumi.InvokeOptions): Promise<GetVpcFirewallControlPoliciesResult> {
 
@@ -139,6 +141,7 @@ export interface GetVpcFirewallControlPoliciesResult {
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -152,6 +155,7 @@ export interface GetVpcFirewallControlPoliciesResult {
  * });
  * export const alicloudCloudFirewallVpcFirewallControlPoliciesId1 = ids.then(ids => ids.policies?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getVpcFirewallControlPoliciesOutput(args: GetVpcFirewallControlPoliciesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVpcFirewallControlPoliciesResult> {
     return pulumi.output(args).apply((a: any) => getVpcFirewallControlPolicies(a, opts))

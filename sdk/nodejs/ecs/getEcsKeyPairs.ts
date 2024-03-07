@@ -15,6 +15,7 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -25,6 +26,7 @@ import * as utilities from "../utilities";
  * });
  * export const firstEcsKeyPairId = example.then(example => example.pairs?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getEcsKeyPairs(args?: GetEcsKeyPairsArgs, opts?: pulumi.InvokeOptions): Promise<GetEcsKeyPairsResult> {
     args = args || {};
@@ -100,6 +102,7 @@ export interface GetEcsKeyPairsResult {
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -110,6 +113,7 @@ export interface GetEcsKeyPairsResult {
  * });
  * export const firstEcsKeyPairId = example.then(example => example.pairs?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getEcsKeyPairsOutput(args?: GetEcsKeyPairsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEcsKeyPairsResult> {
     return pulumi.output(args).apply((a: any) => getEcsKeyPairs(a, opts))

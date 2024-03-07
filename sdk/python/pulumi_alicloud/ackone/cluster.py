@@ -176,6 +176,7 @@ class Cluster(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -198,6 +199,7 @@ class Cluster(pulumi.CustomResource):
             vswitches=[defaulty_v_switch.id],
         ))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -230,6 +232,7 @@ class Cluster(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -252,6 +255,7 @@ class Cluster(pulumi.CustomResource):
             vswitches=[defaulty_v_switch.id],
         ))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

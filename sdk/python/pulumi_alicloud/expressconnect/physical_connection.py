@@ -465,6 +465,7 @@ class PhysicalConnection(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -492,6 +493,7 @@ class PhysicalConnection(pulumi.CustomResource):
             bandwidth="100",
             opts=pulumi.ResourceOptions(provider=alicloud["sgp"]))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -547,6 +549,7 @@ class PhysicalConnection(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -574,6 +577,7 @@ class PhysicalConnection(pulumi.CustomResource):
             bandwidth="100",
             opts=pulumi.ResourceOptions(provider=alicloud["sgp"]))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

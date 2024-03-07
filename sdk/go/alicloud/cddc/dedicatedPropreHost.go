@@ -65,7 +65,7 @@ type DedicatedPropreHost struct {
 	// Host login password, which can be set later. The password must meet the following requirements:
 	// - Length is 8~30 characters.
 	// - Must contain at least three items: uppercase letters, lowercase letters, numbers, and special characters.
-	// - Special symbol '()\' ~! @#$%^& *-_+ =|{}[]:;',.? /'
+	// - Special symbol '()\' ~! @#$%!^(MISSING)& *-_+ =|{}[]:;',.? /'
 	// > **NOTE:** - If you need to set the host login password later, fill in an empty string for this parameter. If you need to set a host login password, we recommend that you use the HTTPS protocol to send requests to avoid password leakage.
 	OsPassword pulumi.StringPtrOutput `pulumi:"osPassword"`
 	// Whether to use the default password of the image.
@@ -189,7 +189,7 @@ type dedicatedPropreHostState struct {
 	// Host login password, which can be set later. The password must meet the following requirements:
 	// - Length is 8~30 characters.
 	// - Must contain at least three items: uppercase letters, lowercase letters, numbers, and special characters.
-	// - Special symbol '()\' ~! @#$%^& *-_+ =|{}[]:;',.? /'
+	// - Special symbol '()\' ~! @#$%!^(MISSING)& *-_+ =|{}[]:;',.? /'
 	// > **NOTE:** - If you need to set the host login password later, fill in an empty string for this parameter. If you need to set a host login password, we recommend that you use the HTTPS protocol to send requests to avoid password leakage.
 	OsPassword *string `pulumi:"osPassword"`
 	// Whether to use the default password of the image.
@@ -263,7 +263,7 @@ type DedicatedPropreHostState struct {
 	// Host login password, which can be set later. The password must meet the following requirements:
 	// - Length is 8~30 characters.
 	// - Must contain at least three items: uppercase letters, lowercase letters, numbers, and special characters.
-	// - Special symbol '()\' ~! @#$%^& *-_+ =|{}[]:;',.? /'
+	// - Special symbol '()\' ~! @#$%!^(MISSING)& *-_+ =|{}[]:;',.? /'
 	// > **NOTE:** - If you need to set the host login password later, fill in an empty string for this parameter. If you need to set a host login password, we recommend that you use the HTTPS protocol to send requests to avoid password leakage.
 	OsPassword pulumi.StringPtrInput
 	// Whether to use the default password of the image.
@@ -339,7 +339,7 @@ type dedicatedPropreHostArgs struct {
 	// Host login password, which can be set later. The password must meet the following requirements:
 	// - Length is 8~30 characters.
 	// - Must contain at least three items: uppercase letters, lowercase letters, numbers, and special characters.
-	// - Special symbol '()\' ~! @#$%^& *-_+ =|{}[]:;',.? /'
+	// - Special symbol '()\' ~! @#$%!^(MISSING)& *-_+ =|{}[]:;',.? /'
 	// > **NOTE:** - If you need to set the host login password later, fill in an empty string for this parameter. If you need to set a host login password, we recommend that you use the HTTPS protocol to send requests to avoid password leakage.
 	OsPassword *string `pulumi:"osPassword"`
 	// Whether to use the default password of the image.
@@ -412,7 +412,7 @@ type DedicatedPropreHostArgs struct {
 	// Host login password, which can be set later. The password must meet the following requirements:
 	// - Length is 8~30 characters.
 	// - Must contain at least three items: uppercase letters, lowercase letters, numbers, and special characters.
-	// - Special symbol '()\' ~! @#$%^& *-_+ =|{}[]:;',.? /'
+	// - Special symbol '()\' ~! @#$%!^(MISSING)& *-_+ =|{}[]:;',.? /'
 	// > **NOTE:** - If you need to set the host login password later, fill in an empty string for this parameter. If you need to set a host login password, we recommend that you use the HTTPS protocol to send requests to avoid password leakage.
 	OsPassword pulumi.StringPtrInput
 	// Whether to use the default password of the image.
@@ -617,7 +617,7 @@ func (o DedicatedPropreHostOutput) KeyPairName() pulumi.StringPtrOutput {
 // Host login password, which can be set later. The password must meet the following requirements:
 // - Length is 8~30 characters.
 // - Must contain at least three items: uppercase letters, lowercase letters, numbers, and special characters.
-// - Special symbol '()\' ~! @#$%^& *-_+ =|{}[]:;',.? /'
+// - Special symbol '()\' ~! @#$%!^(MISSING)& *-_+ =|{}[]:;',.? /'
 // > **NOTE:** - If you need to set the host login password later, fill in an empty string for this parameter. If you need to set a host login password, we recommend that you use the HTTPS protocol to send requests to avoid password leakage.
 func (o DedicatedPropreHostOutput) OsPassword() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DedicatedPropreHost) pulumi.StringPtrOutput { return v.OsPassword }).(pulumi.StringPtrOutput)

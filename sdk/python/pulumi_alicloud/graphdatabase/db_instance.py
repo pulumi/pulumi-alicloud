@@ -483,6 +483,7 @@ class DbInstance(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -501,6 +502,7 @@ class DbInstance(pulumi.CustomResource):
             payment_type="PayAsYouGo",
             db_instance_description=name)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -542,6 +544,7 @@ class DbInstance(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -560,6 +563,7 @@ class DbInstance(pulumi.CustomResource):
             payment_type="PayAsYouGo",
             db_instance_description=name)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

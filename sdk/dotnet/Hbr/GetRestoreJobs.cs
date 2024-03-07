@@ -16,12 +16,11 @@ namespace Pulumi.AliCloud.Hbr
         /// 
         /// &gt; **NOTE:** Available in v1.133.0+.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// Basic Usage
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -50,8 +49,7 @@ namespace Pulumi.AliCloud.Hbr
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetRestoreJobsResult> InvokeAsync(GetRestoreJobsArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetRestoreJobsResult>("alicloud:hbr/getRestoreJobs:getRestoreJobs", args ?? new GetRestoreJobsArgs(), options.WithDefaults());
@@ -61,12 +59,11 @@ namespace Pulumi.AliCloud.Hbr
         /// 
         /// &gt; **NOTE:** Available in v1.133.0+.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// Basic Usage
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -95,8 +92,7 @@ namespace Pulumi.AliCloud.Hbr
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetRestoreJobsResult> Invoke(GetRestoreJobsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetRestoreJobsResult>("alicloud:hbr/getRestoreJobs:getRestoreJobs", args ?? new GetRestoreJobsInvokeArgs(), options.WithDefaults());

@@ -16,10 +16,9 @@ namespace Pulumi.AliCloud.Dns
         /// 
         /// This data source provides a list of DNS Domains in an Alibaba Cloud account according to the specified filters.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -40,8 +39,7 @@ namespace Pulumi.AliCloud.Dns
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetDomainsResult> InvokeAsync(GetDomainsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetDomainsResult>("alicloud:dns/getDomains:getDomains", args ?? new GetDomainsArgs(), options.WithDefaults());
@@ -51,10 +49,9 @@ namespace Pulumi.AliCloud.Dns
         /// 
         /// This data source provides a list of DNS Domains in an Alibaba Cloud account according to the specified filters.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -75,8 +72,7 @@ namespace Pulumi.AliCloud.Dns
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetDomainsResult> Invoke(GetDomainsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDomainsResult>("alicloud:dns/getDomains:getDomains", args ?? new GetDomainsInvokeArgs(), options.WithDefaults());
@@ -131,7 +127,7 @@ namespace Pulumi.AliCloud.Dns
         public string? InstanceId { get; set; }
 
         /// <summary>
-        /// The keywords are searched according to the `%KeyWord%` mode, which is not case sensitive.
+        /// The keywords are searched according to the `%!K(MISSING)eyWord%!`(MISSING) mode, which is not case sensitive.
         /// </summary>
         [Input("keyWord")]
         public string? KeyWord { get; set; }
@@ -238,7 +234,7 @@ namespace Pulumi.AliCloud.Dns
         public Input<string>? InstanceId { get; set; }
 
         /// <summary>
-        /// The keywords are searched according to the `%KeyWord%` mode, which is not case sensitive.
+        /// The keywords are searched according to the `%!K(MISSING)eyWord%!`(MISSING) mode, which is not case sensitive.
         /// </summary>
         [Input("keyWord")]
         public Input<string>? KeyWord { get; set; }

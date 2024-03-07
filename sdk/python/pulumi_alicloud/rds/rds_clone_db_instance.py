@@ -2345,8 +2345,10 @@ class RdsCloneDbInstance(pulumi.CustomResource):
         > **NOTE:** Available since v1.149.0+.
 
         ## Example Usage
+
         ### Create an RDS MySQL clone instance
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -2388,6 +2390,7 @@ class RdsCloneDbInstance(pulumi.CustomResource):
             payment_type="PayAsYouGo",
             backup_id=example_rds_backup.backup_id)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -2544,8 +2547,10 @@ class RdsCloneDbInstance(pulumi.CustomResource):
         > **NOTE:** Available since v1.149.0+.
 
         ## Example Usage
+
         ### Create an RDS MySQL clone instance
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -2587,6 +2592,7 @@ class RdsCloneDbInstance(pulumi.CustomResource):
             payment_type="PayAsYouGo",
             backup_id=example_rds_backup.backup_id)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

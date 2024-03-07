@@ -13,6 +13,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -23,6 +24,7 @@ import * as utilities from "../utilities";
  * });
  * export const output = k8sClusters.then(k8sClusters => k8sClusters.clusters);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getEdgeKubernetesClusters(args?: GetEdgeKubernetesClustersArgs, opts?: pulumi.InvokeOptions): Promise<GetEdgeKubernetesClustersResult> {
     args = args || {};
@@ -86,6 +88,7 @@ export interface GetEdgeKubernetesClustersResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -96,6 +99,7 @@ export interface GetEdgeKubernetesClustersResult {
  * });
  * export const output = k8sClusters.then(k8sClusters => k8sClusters.clusters);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getEdgeKubernetesClustersOutput(args?: GetEdgeKubernetesClustersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEdgeKubernetesClustersResult> {
     return pulumi.output(args).apply((a: any) => getEdgeKubernetesClusters(a, opts))

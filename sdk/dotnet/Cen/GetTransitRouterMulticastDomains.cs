@@ -16,12 +16,11 @@ namespace Pulumi.AliCloud.Cen
         /// 
         /// &gt; **NOTE:** Available in v1.195.0+.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// Basic Usage
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -52,8 +51,7 @@ namespace Pulumi.AliCloud.Cen
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetTransitRouterMulticastDomainsResult> InvokeAsync(GetTransitRouterMulticastDomainsArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetTransitRouterMulticastDomainsResult>("alicloud:cen/getTransitRouterMulticastDomains:getTransitRouterMulticastDomains", args ?? new GetTransitRouterMulticastDomainsArgs(), options.WithDefaults());
@@ -63,12 +61,11 @@ namespace Pulumi.AliCloud.Cen
         /// 
         /// &gt; **NOTE:** Available in v1.195.0+.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// Basic Usage
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -99,8 +96,7 @@ namespace Pulumi.AliCloud.Cen
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetTransitRouterMulticastDomainsResult> Invoke(GetTransitRouterMulticastDomainsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetTransitRouterMulticastDomainsResult>("alicloud:cen/getTransitRouterMulticastDomains:getTransitRouterMulticastDomains", args ?? new GetTransitRouterMulticastDomainsInvokeArgs(), options.WithDefaults());

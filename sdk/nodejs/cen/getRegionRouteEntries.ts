@@ -11,6 +11,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -21,6 +22,7 @@ import * as utilities from "../utilities";
  * });
  * export const firstRegionRouteEntriesRouteEntryCidrBlock = entry.then(entry => entry.entries?.[0]?.cidrBlock);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getRegionRouteEntries(args: GetRegionRouteEntriesArgs, opts?: pulumi.InvokeOptions): Promise<GetRegionRouteEntriesResult> {
 
@@ -68,6 +70,7 @@ export interface GetRegionRouteEntriesResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -78,6 +81,7 @@ export interface GetRegionRouteEntriesResult {
  * });
  * export const firstRegionRouteEntriesRouteEntryCidrBlock = entry.then(entry => entry.entries?.[0]?.cidrBlock);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getRegionRouteEntriesOutput(args: GetRegionRouteEntriesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRegionRouteEntriesResult> {
     return pulumi.output(args).apply((a: any) => getRegionRouteEntries(a, opts))

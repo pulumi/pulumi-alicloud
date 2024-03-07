@@ -242,6 +242,7 @@ class Acl(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -251,6 +252,7 @@ class Acl(pulumi.CustomResource):
             acl_name="tf_example",
             resource_group_id=default_resource_groups.groups[0].id)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -286,6 +288,7 @@ class Acl(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -295,6 +298,7 @@ class Acl(pulumi.CustomResource):
             acl_name="tf_example",
             resource_group_id=default_resource_groups.groups[0].id)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

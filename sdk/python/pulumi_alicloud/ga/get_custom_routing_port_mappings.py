@@ -149,6 +149,7 @@ def get_custom_routing_port_mappings(accelerator_id: Optional[str] = None,
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -156,6 +157,7 @@ def get_custom_routing_port_mappings(accelerator_id: Optional[str] = None,
     default = alicloud.ga.get_custom_routing_port_mappings(accelerator_id="your_accelerator_id")
     pulumi.export("gaCustomRoutingPortMappingsAcceleratorId1", default.custom_routing_port_mappings[0].accelerator_id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str accelerator_id: The ID of the GA instance.
@@ -205,6 +207,7 @@ def get_custom_routing_port_mappings_output(accelerator_id: Optional[pulumi.Inpu
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -212,6 +215,7 @@ def get_custom_routing_port_mappings_output(accelerator_id: Optional[pulumi.Inpu
     default = alicloud.ga.get_custom_routing_port_mappings(accelerator_id="your_accelerator_id")
     pulumi.export("gaCustomRoutingPortMappingsAcceleratorId1", default.custom_routing_port_mappings[0].accelerator_id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str accelerator_id: The ID of the GA instance.

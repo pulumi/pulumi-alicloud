@@ -127,12 +127,14 @@ def get_zones(engine: Optional[str] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
 
     zones_ids = alicloud.kvstore.get_zones(instance_charge_type="PostPaid")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str engine: Database type. Options are `Redis`, `Memcache`. Default to `Redis`.
@@ -175,12 +177,14 @@ def get_zones_output(engine: Optional[pulumi.Input[Optional[str]]] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
 
     zones_ids = alicloud.kvstore.get_zones(instance_charge_type="PostPaid")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str engine: Database type. Options are `Redis`, `Memcache`. Default to `Redis`.

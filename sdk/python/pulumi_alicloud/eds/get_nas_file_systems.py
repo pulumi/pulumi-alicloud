@@ -123,6 +123,7 @@ def get_nas_file_systems(ids: Optional[Sequence[str]] = None,
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -141,6 +142,7 @@ def get_nas_file_systems(ids: Optional[Sequence[str]] = None,
     name_regex = default_nas_file_system.nas_file_system_name.apply(lambda nas_file_system_name: alicloud.eds.get_nas_file_systems_output(name_regex=nas_file_system_name))
     pulumi.export("ecdNasFileSystemId2", name_regex.systems[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Nas File System IDs.
@@ -185,6 +187,7 @@ def get_nas_file_systems_output(ids: Optional[pulumi.Input[Optional[Sequence[str
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -203,6 +206,7 @@ def get_nas_file_systems_output(ids: Optional[pulumi.Input[Optional[Sequence[str
     name_regex = default_nas_file_system.nas_file_system_name.apply(lambda nas_file_system_name: alicloud.eds.get_nas_file_systems_output(name_regex=nas_file_system_name))
     pulumi.export("ecdNasFileSystemId2", name_regex.systems[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Nas File System IDs.

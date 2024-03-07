@@ -13,6 +13,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -23,6 +24,7 @@ import * as utilities from "../utilities";
  * });
  * export const output = myRepos.then(myRepos => myRepos.repos);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getRepos(args?: GetReposArgs, opts?: pulumi.InvokeOptions): Promise<GetReposResult> {
     args = args || {};
@@ -93,6 +95,7 @@ export interface GetReposResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -103,6 +106,7 @@ export interface GetReposResult {
  * });
  * export const output = myRepos.then(myRepos => myRepos.repos);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getReposOutput(args?: GetReposOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetReposResult> {
     return pulumi.output(args).apply((a: any) => getRepos(a, opts))

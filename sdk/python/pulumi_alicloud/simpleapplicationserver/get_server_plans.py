@@ -144,6 +144,7 @@ def get_server_plans(bandwidth: Optional[int] = None,
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -155,6 +156,7 @@ def get_server_plans(bandwidth: Optional[int] = None,
         core=2)
     pulumi.export("simpleApplicationServerPlanId1", data["alicloud_simple_application_server_plans"]["ids"]["plans"][0]["id"])
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param int bandwidth: The peak bandwidth. Unit: Mbit/s.
@@ -210,6 +212,7 @@ def get_server_plans_output(bandwidth: Optional[pulumi.Input[Optional[int]]] = N
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -221,6 +224,7 @@ def get_server_plans_output(bandwidth: Optional[pulumi.Input[Optional[int]]] = N
         core=2)
     pulumi.export("simpleApplicationServerPlanId1", data["alicloud_simple_application_server_plans"]["ids"]["plans"][0]["id"])
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param int bandwidth: The peak bandwidth. Unit: Mbit/s.

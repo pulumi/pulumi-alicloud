@@ -13,6 +13,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -23,6 +24,7 @@ import * as utilities from "../utilities";
  * });
  * export const alicloudThreatDetectionHoneypotImageExampleId = _default.then(_default => _default.images?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getHoneypotImages(args?: GetHoneypotImagesArgs, opts?: pulumi.InvokeOptions): Promise<GetHoneypotImagesResult> {
     args = args || {};
@@ -86,6 +88,7 @@ export interface GetHoneypotImagesResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -96,6 +99,7 @@ export interface GetHoneypotImagesResult {
  * });
  * export const alicloudThreatDetectionHoneypotImageExampleId = _default.then(_default => _default.images?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getHoneypotImagesOutput(args?: GetHoneypotImagesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetHoneypotImagesResult> {
     return pulumi.output(args).apply((a: any) => getHoneypotImages(a, opts))

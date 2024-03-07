@@ -106,6 +106,7 @@ def get_scim_server_credentials(directory_id: Optional[str] = None,
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -117,6 +118,7 @@ def get_scim_server_credentials(directory_id: Optional[str] = None,
         ])
     pulumi.export("cloudSsoScimServerCredentialId1", ids.credentials[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str directory_id: The ID of the Directory.
@@ -158,6 +160,7 @@ def get_scim_server_credentials_output(directory_id: Optional[pulumi.Input[str]]
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -169,6 +172,7 @@ def get_scim_server_credentials_output(directory_id: Optional[pulumi.Input[str]]
         ])
     pulumi.export("cloudSsoScimServerCredentialId1", ids.credentials[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str directory_id: The ID of the Directory.

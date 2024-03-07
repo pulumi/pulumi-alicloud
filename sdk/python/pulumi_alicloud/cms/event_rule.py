@@ -440,6 +440,7 @@ class EventRule(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -463,6 +464,7 @@ class EventRule(pulumi.CustomResource):
                 event_type_lists=["StatusNotification"],
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -504,6 +506,7 @@ class EventRule(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -527,6 +530,7 @@ class EventRule(pulumi.CustomResource):
                 event_type_lists=["StatusNotification"],
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

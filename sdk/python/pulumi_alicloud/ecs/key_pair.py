@@ -273,6 +273,7 @@ class KeyPair(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -285,6 +286,7 @@ class KeyPair(pulumi.CustomResource):
             key_name="my_public_key",
             public_key="ssh-rsa AAAAB3Nza12345678qwertyuudsfsg")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -316,6 +318,7 @@ class KeyPair(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -328,6 +331,7 @@ class KeyPair(pulumi.CustomResource):
             key_name="my_public_key",
             public_key="ssh-rsa AAAAB3Nza12345678qwertyuudsfsg")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

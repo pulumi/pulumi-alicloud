@@ -16,11 +16,11 @@ namespace Pulumi.AliCloud.Ram
         /// 
         /// &gt; **NOTE:** Available since v1.184.0+.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
+        /// 
         /// ### Basic Example
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -59,22 +59,29 @@ namespace Pulumi.AliCloud.Ram
         /// 
         /// });
         /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// 
         /// `data.alicloud_ram_policy_document.basic_example.document` will evaluate to:
         /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
+        /// ```json
         /// {
-        /// });
+        ///   "Statement": [
+        ///     {
+        ///       "Effect": "Allow",
+        ///       "Action": "oss:*",
+        ///       "Resource": [
+        ///         "acs:oss:*:*:myphotos",
+        ///         "acs:oss:*:*:myphotos/*"
+        ///       ]
+        ///     }
+        ///   ],
+        ///   "Version": "1"
+        /// }
         /// ```
-        /// {{% /example %}}
-        /// {{% example %}}
+        /// 
         /// ### Example Multiple Condition Keys and Values
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -164,22 +171,55 @@ namespace Pulumi.AliCloud.Ram
         /// 
         /// });
         /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// 
         /// `data.alicloud_ram_policy_document.multiple_condition.document` will evaluate to:
         /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
+        /// ```json
         /// {
-        /// });
+        ///   "Statement": [
+        ///     {
+        ///       "Effect": "Allow",
+        ///       "Action": [
+        ///         "oss:ListBuckets",
+        ///         "oss:GetBucketStat",
+        ///         "oss:GetBucketInfo",
+        ///         "oss:GetBucketTagging",
+        ///         "oss:GetBucketAcl"
+        ///       ],
+        ///       "Resource": "acs:oss:*:*:*"
+        ///     },
+        ///     {
+        ///       "Effect": "Allow",
+        ///       "Action": [
+        ///         "oss:GetObject",
+        ///         "oss:GetObjectAcl"
+        ///       ],
+        ///       "Resource": "acs:oss:*:*:myphotos/hangzhou/2015/*"
+        ///     },
+        ///     {
+        ///       "Effect": "Allow",
+        ///       "Action": "oss:ListObjects",
+        ///       "Resource": "acs:oss:*:*:myphotos",
+        ///       "Condition": {
+        ///         "StringLike": {
+        ///           "oss:Delimiter": "/",
+        ///           "oss:Prefix": [
+        ///             "",
+        ///             "hangzhou/",
+        ///             "hangzhou/2015/*"
+        ///           ]
+        ///         }
+        ///       }
+        ///     }
+        ///   ],
+        ///   "Version": "1"
+        /// }
         /// ```
-        /// {{% /example %}}
-        /// {{% example %}}
+        /// 
         /// ### Example Assume-Role Policy with RAM Principal
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -222,22 +262,30 @@ namespace Pulumi.AliCloud.Ram
         /// 
         /// });
         /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// 
         /// `data.alicloud_ram_policy_document.ram_example.document` will evaluate to:
         /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
+        /// ```json
         /// {
-        /// });
+        ///   "Statement": [
+        ///     {
+        ///       "Effect": "Allow",
+        ///       "Action": "sts:AssumeRole",
+        ///       "Principal": {
+        ///         "RAM": [
+        ///           "acs:ram::123456789012****:root"
+        ///         ]
+        ///       }
+        ///     }
+        ///   ],
+        ///   "Version": "1"
+        /// }
         /// ```
-        /// {{% /example %}}
-        /// {{% example %}}
+        /// 
         /// ### Example Assume-Role Policy with Service Principal
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -280,22 +328,30 @@ namespace Pulumi.AliCloud.Ram
         /// 
         /// });
         /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// 
         /// `data.alicloud_ram_policy_document.service_example.document` will evaluate to:
         /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
+        /// ```json
         /// {
-        /// });
+        ///   "Statement": [
+        ///     {
+        ///       "Effect": "Allow",
+        ///       "Action": "sts:AssumeRole",
+        ///       "Principal": {
+        ///         "Service": [
+        ///           "ecs.aliyuncs.com"
+        ///         ]
+        ///       }
+        ///     }
+        ///   ],
+        ///   "Version": "1"
+        /// }
         /// ```
-        /// {{% /example %}}
-        /// {{% example %}}
+        /// 
         /// ### Example Assume-Role Policy with Federated Principal
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -350,20 +406,31 @@ namespace Pulumi.AliCloud.Ram
         /// 
         /// });
         /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// 
         /// `data.alicloud_ram_policy_document.federated_example.document` will evaluate to:
         /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
+        /// ```json
         /// {
-        /// });
+        ///   "Statement": [
+        ///     {
+        ///       "Effect": "Allow",
+        ///       "Action": "sts:AssumeRole",
+        ///       "Principal": {
+        ///         "Federated": [
+        ///           "acs:ram::123456789012****:saml-provider/testprovider"
+        ///         ]
+        ///       },
+        ///       "Condition": {
+        ///         "StringEquals": {
+        ///           "saml:recipient": "https://signin.aliyun.com/saml-role/sso"
+        ///         }
+        ///       }
+        ///     }
+        ///   ],
+        ///   "Version": "1"
+        /// }
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetPolicyDocumentResult> InvokeAsync(GetPolicyDocumentArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetPolicyDocumentResult>("alicloud:ram/getPolicyDocument:getPolicyDocument", args ?? new GetPolicyDocumentArgs(), options.WithDefaults());
@@ -373,11 +440,11 @@ namespace Pulumi.AliCloud.Ram
         /// 
         /// &gt; **NOTE:** Available since v1.184.0+.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
+        /// 
         /// ### Basic Example
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -416,22 +483,29 @@ namespace Pulumi.AliCloud.Ram
         /// 
         /// });
         /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// 
         /// `data.alicloud_ram_policy_document.basic_example.document` will evaluate to:
         /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
+        /// ```json
         /// {
-        /// });
+        ///   "Statement": [
+        ///     {
+        ///       "Effect": "Allow",
+        ///       "Action": "oss:*",
+        ///       "Resource": [
+        ///         "acs:oss:*:*:myphotos",
+        ///         "acs:oss:*:*:myphotos/*"
+        ///       ]
+        ///     }
+        ///   ],
+        ///   "Version": "1"
+        /// }
         /// ```
-        /// {{% /example %}}
-        /// {{% example %}}
+        /// 
         /// ### Example Multiple Condition Keys and Values
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -521,22 +595,55 @@ namespace Pulumi.AliCloud.Ram
         /// 
         /// });
         /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// 
         /// `data.alicloud_ram_policy_document.multiple_condition.document` will evaluate to:
         /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
+        /// ```json
         /// {
-        /// });
+        ///   "Statement": [
+        ///     {
+        ///       "Effect": "Allow",
+        ///       "Action": [
+        ///         "oss:ListBuckets",
+        ///         "oss:GetBucketStat",
+        ///         "oss:GetBucketInfo",
+        ///         "oss:GetBucketTagging",
+        ///         "oss:GetBucketAcl"
+        ///       ],
+        ///       "Resource": "acs:oss:*:*:*"
+        ///     },
+        ///     {
+        ///       "Effect": "Allow",
+        ///       "Action": [
+        ///         "oss:GetObject",
+        ///         "oss:GetObjectAcl"
+        ///       ],
+        ///       "Resource": "acs:oss:*:*:myphotos/hangzhou/2015/*"
+        ///     },
+        ///     {
+        ///       "Effect": "Allow",
+        ///       "Action": "oss:ListObjects",
+        ///       "Resource": "acs:oss:*:*:myphotos",
+        ///       "Condition": {
+        ///         "StringLike": {
+        ///           "oss:Delimiter": "/",
+        ///           "oss:Prefix": [
+        ///             "",
+        ///             "hangzhou/",
+        ///             "hangzhou/2015/*"
+        ///           ]
+        ///         }
+        ///       }
+        ///     }
+        ///   ],
+        ///   "Version": "1"
+        /// }
         /// ```
-        /// {{% /example %}}
-        /// {{% example %}}
+        /// 
         /// ### Example Assume-Role Policy with RAM Principal
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -579,22 +686,30 @@ namespace Pulumi.AliCloud.Ram
         /// 
         /// });
         /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// 
         /// `data.alicloud_ram_policy_document.ram_example.document` will evaluate to:
         /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
+        /// ```json
         /// {
-        /// });
+        ///   "Statement": [
+        ///     {
+        ///       "Effect": "Allow",
+        ///       "Action": "sts:AssumeRole",
+        ///       "Principal": {
+        ///         "RAM": [
+        ///           "acs:ram::123456789012****:root"
+        ///         ]
+        ///       }
+        ///     }
+        ///   ],
+        ///   "Version": "1"
+        /// }
         /// ```
-        /// {{% /example %}}
-        /// {{% example %}}
+        /// 
         /// ### Example Assume-Role Policy with Service Principal
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -637,22 +752,30 @@ namespace Pulumi.AliCloud.Ram
         /// 
         /// });
         /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// 
         /// `data.alicloud_ram_policy_document.service_example.document` will evaluate to:
         /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
+        /// ```json
         /// {
-        /// });
+        ///   "Statement": [
+        ///     {
+        ///       "Effect": "Allow",
+        ///       "Action": "sts:AssumeRole",
+        ///       "Principal": {
+        ///         "Service": [
+        ///           "ecs.aliyuncs.com"
+        ///         ]
+        ///       }
+        ///     }
+        ///   ],
+        ///   "Version": "1"
+        /// }
         /// ```
-        /// {{% /example %}}
-        /// {{% example %}}
+        /// 
         /// ### Example Assume-Role Policy with Federated Principal
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -707,20 +830,31 @@ namespace Pulumi.AliCloud.Ram
         /// 
         /// });
         /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// 
         /// `data.alicloud_ram_policy_document.federated_example.document` will evaluate to:
         /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
+        /// ```json
         /// {
-        /// });
+        ///   "Statement": [
+        ///     {
+        ///       "Effect": "Allow",
+        ///       "Action": "sts:AssumeRole",
+        ///       "Principal": {
+        ///         "Federated": [
+        ///           "acs:ram::123456789012****:saml-provider/testprovider"
+        ///         ]
+        ///       },
+        ///       "Condition": {
+        ///         "StringEquals": {
+        ///           "saml:recipient": "https://signin.aliyun.com/saml-role/sso"
+        ///         }
+        ///       }
+        ///     }
+        ///   ],
+        ///   "Version": "1"
+        /// }
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetPolicyDocumentResult> Invoke(GetPolicyDocumentInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetPolicyDocumentResult>("alicloud:ram/getPolicyDocument:getPolicyDocument", args ?? new GetPolicyDocumentInvokeArgs(), options.WithDefaults());

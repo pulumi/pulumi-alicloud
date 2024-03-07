@@ -104,6 +104,7 @@ def get_traffic_mirror_filter_egress_rules(ids: Optional[Sequence[str]] = None,
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -116,6 +117,7 @@ def get_traffic_mirror_filter_egress_rules(ids: Optional[Sequence[str]] = None,
         status="Created")
     pulumi.export("vpcTrafficMirrorFilterEgressRuleId2", status.rules[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Traffic Mirror Filter Egress Rule IDs.
@@ -155,6 +157,7 @@ def get_traffic_mirror_filter_egress_rules_output(ids: Optional[pulumi.Input[Opt
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -167,6 +170,7 @@ def get_traffic_mirror_filter_egress_rules_output(ids: Optional[pulumi.Input[Opt
         status="Created")
     pulumi.export("vpcTrafficMirrorFilterEgressRuleId2", status.rules[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Traffic Mirror Filter Egress Rule IDs.

@@ -204,6 +204,7 @@ class LifecyclePolicy(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -218,6 +219,7 @@ class LifecyclePolicy(pulumi.CustomResource):
             storage_type="InfrequentAccess",
             paths=["/"])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -252,6 +254,7 @@ class LifecyclePolicy(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -266,6 +269,7 @@ class LifecyclePolicy(pulumi.CustomResource):
             storage_type="InfrequentAccess",
             paths=["/"])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

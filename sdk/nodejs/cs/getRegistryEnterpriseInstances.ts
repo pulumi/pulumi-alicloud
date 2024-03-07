@@ -13,6 +13,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -23,6 +24,7 @@ import * as utilities from "../utilities";
  * });
  * export const output = myInstances.then(myInstances => myInstances.instances);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getRegistryEnterpriseInstances(args?: GetRegistryEnterpriseInstancesArgs, opts?: pulumi.InvokeOptions): Promise<GetRegistryEnterpriseInstancesResult> {
     args = args || {};
@@ -89,6 +91,7 @@ export interface GetRegistryEnterpriseInstancesResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -99,6 +102,7 @@ export interface GetRegistryEnterpriseInstancesResult {
  * });
  * export const output = myInstances.then(myInstances => myInstances.instances);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getRegistryEnterpriseInstancesOutput(args?: GetRegistryEnterpriseInstancesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRegistryEnterpriseInstancesResult> {
     return pulumi.output(args).apply((a: any) => getRegistryEnterpriseInstances(a, opts))

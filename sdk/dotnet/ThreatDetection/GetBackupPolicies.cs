@@ -16,12 +16,11 @@ namespace Pulumi.AliCloud.ThreatDetection
         /// 
         /// &gt; **NOTE:** Available in v1.195.0+.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// Basic Usage
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -50,8 +49,7 @@ namespace Pulumi.AliCloud.ThreatDetection
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetBackupPoliciesResult> InvokeAsync(GetBackupPoliciesArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetBackupPoliciesResult>("alicloud:threatdetection/getBackupPolicies:getBackupPolicies", args ?? new GetBackupPoliciesArgs(), options.WithDefaults());
@@ -61,12 +59,11 @@ namespace Pulumi.AliCloud.ThreatDetection
         /// 
         /// &gt; **NOTE:** Available in v1.195.0+.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// Basic Usage
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -95,8 +92,7 @@ namespace Pulumi.AliCloud.ThreatDetection
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetBackupPoliciesResult> Invoke(GetBackupPoliciesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetBackupPoliciesResult>("alicloud:threatdetection/getBackupPolicies:getBackupPolicies", args ?? new GetBackupPoliciesInvokeArgs(), options.WithDefaults());

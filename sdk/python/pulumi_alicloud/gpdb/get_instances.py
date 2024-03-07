@@ -203,6 +203,7 @@ def get_instances(availability_zone: Optional[str] = None,
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -210,6 +211,7 @@ def get_instances(availability_zone: Optional[str] = None,
     ids = alicloud.gpdb.get_instances()
     pulumi.export("gpdbDbInstanceId1", ids.instances[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str availability_zone: Instance availability zone.
@@ -286,6 +288,7 @@ def get_instances_output(availability_zone: Optional[pulumi.Input[Optional[str]]
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -293,6 +296,7 @@ def get_instances_output(availability_zone: Optional[pulumi.Input[Optional[str]]
     ids = alicloud.gpdb.get_instances()
     pulumi.export("gpdbDbInstanceId1", ids.instances[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str availability_zone: Instance availability zone.

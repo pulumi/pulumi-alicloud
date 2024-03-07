@@ -104,6 +104,7 @@ def get_additional_certificates(accelerator_id: Optional[str] = None,
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -116,6 +117,7 @@ def get_additional_certificates(accelerator_id: Optional[str] = None,
         ])
     pulumi.export("gaAdditionalCertificateId1", ids.certificates[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str accelerator_id: The ID of the GA instance.
@@ -155,6 +157,7 @@ def get_additional_certificates_output(accelerator_id: Optional[pulumi.Input[str
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -167,6 +170,7 @@ def get_additional_certificates_output(accelerator_id: Optional[pulumi.Input[str
         ])
     pulumi.export("gaAdditionalCertificateId1", ids.certificates[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str accelerator_id: The ID of the GA instance.

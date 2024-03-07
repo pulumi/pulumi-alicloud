@@ -83,6 +83,7 @@ def get_zones(output_file: Optional[str] = None,
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -90,6 +91,7 @@ def get_zones(output_file: Optional[str] = None,
     example = alicloud.cddc.get_zones()
     pulumi.export("cddcZonesId1", example.zones[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
@@ -118,6 +120,7 @@ def get_zones_output(output_file: Optional[pulumi.Input[Optional[str]]] = None,
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -125,6 +128,7 @@ def get_zones_output(output_file: Optional[pulumi.Input[Optional[str]]] = None,
     example = alicloud.cddc.get_zones()
     pulumi.export("cddcZonesId1", example.zones[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str output_file: File name where to save data source results (after running `pulumi preview`).

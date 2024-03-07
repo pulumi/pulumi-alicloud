@@ -236,6 +236,7 @@ class Account(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -280,6 +281,7 @@ class Account(pulumi.CustomResource):
             account_password="tf_example123",
             account_description=name)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -311,6 +313,7 @@ class Account(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -355,6 +358,7 @@ class Account(pulumi.CustomResource):
             account_password="tf_example123",
             account_description=name)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

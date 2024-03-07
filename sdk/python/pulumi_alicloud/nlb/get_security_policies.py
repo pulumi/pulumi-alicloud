@@ -143,6 +143,7 @@ def get_security_policies(ids: Optional[Sequence[str]] = None,
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -152,6 +153,7 @@ def get_security_policies(ids: Optional[Sequence[str]] = None,
     name_regex = alicloud.nlb.get_security_policies(name_regex="^my-SecurityPolicy")
     pulumi.export("nlbSecurityPolicyId2", name_regex.policies[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Security Policy IDs.
@@ -204,6 +206,7 @@ def get_security_policies_output(ids: Optional[pulumi.Input[Optional[Sequence[st
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -213,6 +216,7 @@ def get_security_policies_output(ids: Optional[pulumi.Input[Optional[Sequence[st
     name_regex = alicloud.nlb.get_security_policies(name_regex="^my-SecurityPolicy")
     pulumi.export("nlbSecurityPolicyId2", name_regex.policies[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Security Policy IDs.

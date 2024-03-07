@@ -11,6 +11,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -22,6 +23,7 @@ import * as utilities from "../utilities";
  * });
  * export const nasProtocolsProtocol = _default.then(_default => _default.protocols?.[0]);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getProtocols(args: GetProtocolsArgs, opts?: pulumi.InvokeOptions): Promise<GetProtocolsResult> {
 
@@ -74,6 +76,7 @@ export interface GetProtocolsResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -85,6 +88,7 @@ export interface GetProtocolsResult {
  * });
  * export const nasProtocolsProtocol = _default.then(_default => _default.protocols?.[0]);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getProtocolsOutput(args: GetProtocolsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetProtocolsResult> {
     return pulumi.output(args).apply((a: any) => getProtocols(a, opts))

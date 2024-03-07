@@ -14,6 +14,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -32,6 +33,8 @@ import * as utilities from "../utilities";
  *     folderId: exampleFolder.id,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
+ *
  * ### Deleting `alicloud.resourcemanager.Account` or removing it from your configuration
  *
  * Deleting the resource manager account or removing it from your configuration will remove it from your state file and management,

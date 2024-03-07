@@ -15,6 +15,7 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -38,6 +39,7 @@ import * as utilities from "../utilities";
  * });
  * export const vpcIpv6GatewayId4 = status.then(status => status.gateways?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getIpv6Gateways(args?: GetIpv6GatewaysArgs, opts?: pulumi.InvokeOptions): Promise<GetIpv6GatewaysResult> {
     args = args || {};
@@ -109,6 +111,7 @@ export interface GetIpv6GatewaysResult {
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -132,6 +135,7 @@ export interface GetIpv6GatewaysResult {
  * });
  * export const vpcIpv6GatewayId4 = status.then(status => status.gateways?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getIpv6GatewaysOutput(args?: GetIpv6GatewaysOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetIpv6GatewaysResult> {
     return pulumi.output(args).apply((a: any) => getIpv6Gateways(a, opts))

@@ -154,6 +154,7 @@ class InstanceClusterAttachment(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -195,6 +196,7 @@ class InstanceClusterAttachment(pulumi.CustomResource):
             cluster_id=default_cluster.id,
             instance_ids=[default_instance.id])
         ```
+        <!--End PulumiCodeChooser -->
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -216,6 +218,7 @@ class InstanceClusterAttachment(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -257,6 +260,7 @@ class InstanceClusterAttachment(pulumi.CustomResource):
             cluster_id=default_cluster.id,
             instance_ids=[default_instance.id])
         ```
+        <!--End PulumiCodeChooser -->
 
         :param str resource_name: The name of the resource.
         :param InstanceClusterAttachmentArgs args: The arguments to use to populate this resource's properties.

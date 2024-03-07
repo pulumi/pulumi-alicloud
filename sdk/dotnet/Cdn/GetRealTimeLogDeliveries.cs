@@ -16,12 +16,11 @@ namespace Pulumi.AliCloud.Cdn
         /// 
         /// &gt; **NOTE:** Available in v1.134.0+.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// Basic Usage
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -41,8 +40,7 @@ namespace Pulumi.AliCloud.Cdn
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetRealTimeLogDeliveriesResult> InvokeAsync(GetRealTimeLogDeliveriesArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetRealTimeLogDeliveriesResult>("alicloud:cdn/getRealTimeLogDeliveries:getRealTimeLogDeliveries", args ?? new GetRealTimeLogDeliveriesArgs(), options.WithDefaults());
@@ -52,12 +50,11 @@ namespace Pulumi.AliCloud.Cdn
         /// 
         /// &gt; **NOTE:** Available in v1.134.0+.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// Basic Usage
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -77,8 +74,7 @@ namespace Pulumi.AliCloud.Cdn
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetRealTimeLogDeliveriesResult> Invoke(GetRealTimeLogDeliveriesInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetRealTimeLogDeliveriesResult>("alicloud:cdn/getRealTimeLogDeliveries:getRealTimeLogDeliveries", args ?? new GetRealTimeLogDeliveriesInvokeArgs(), options.WithDefaults());

@@ -142,6 +142,7 @@ def get_product_versions(enable_details: Optional[bool] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -150,6 +151,7 @@ def get_product_versions(enable_details: Optional[bool] = None,
         product_id="prod-bp125x4k29wb7q")
     pulumi.export("alicloudServiceCatalogProductVersionExampleId", default.product_versions[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Product Version IDs.
@@ -192,6 +194,7 @@ def get_product_versions_output(enable_details: Optional[pulumi.Input[Optional[b
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -200,6 +203,7 @@ def get_product_versions_output(enable_details: Optional[pulumi.Input[Optional[b
         product_id="prod-bp125x4k29wb7q")
     pulumi.export("alicloudServiceCatalogProductVersionExampleId", default.product_versions[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Product Version IDs.

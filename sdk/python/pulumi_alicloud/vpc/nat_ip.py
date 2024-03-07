@@ -306,6 +306,7 @@ class NatIp(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -339,6 +340,7 @@ class NatIp(pulumi.CustomResource):
             nat_ip_name="example_value",
             nat_ip_cidr=example_nat_ip_cidr.nat_ip_cidr)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -375,6 +377,7 @@ class NatIp(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -408,6 +411,7 @@ class NatIp(pulumi.CustomResource):
             nat_ip_name="example_value",
             nat_ip_cidr=example_nat_ip_cidr.nat_ip_cidr)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

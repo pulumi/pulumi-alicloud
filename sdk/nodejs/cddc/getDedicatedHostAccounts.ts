@@ -15,6 +15,7 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -22,6 +23,7 @@ import * as utilities from "../utilities";
  * const ids = alicloud.cddc.getDedicatedHostAccounts({});
  * export const cddcDedicatedHostAccountId1 = ids.then(ids => ids.accounts?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getDedicatedHostAccounts(args?: GetDedicatedHostAccountsArgs, opts?: pulumi.InvokeOptions): Promise<GetDedicatedHostAccountsResult> {
     args = args || {};
@@ -87,6 +89,7 @@ export interface GetDedicatedHostAccountsResult {
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -94,6 +97,7 @@ export interface GetDedicatedHostAccountsResult {
  * const ids = alicloud.cddc.getDedicatedHostAccounts({});
  * export const cddcDedicatedHostAccountId1 = ids.then(ids => ids.accounts?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getDedicatedHostAccountsOutput(args?: GetDedicatedHostAccountsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDedicatedHostAccountsResult> {
     return pulumi.output(args).apply((a: any) => getDedicatedHostAccounts(a, opts))

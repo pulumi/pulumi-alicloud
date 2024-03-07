@@ -209,6 +209,7 @@ class MonitorGroup(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -223,6 +224,7 @@ class MonitorGroup(pulumi.CustomResource):
                 "For": "Acceptance-example",
             })
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -257,6 +259,7 @@ class MonitorGroup(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -271,6 +274,7 @@ class MonitorGroup(pulumi.CustomResource):
                 "For": "Acceptance-example",
             })
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

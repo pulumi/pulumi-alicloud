@@ -16,10 +16,9 @@ namespace Pulumi.AliCloud.CR
         /// 
         /// &gt; **NOTE:** Available in v1.35.0+
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -40,8 +39,7 @@ namespace Pulumi.AliCloud.CR
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetReposResult> InvokeAsync(GetReposArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetReposResult>("alicloud:cr/getRepos:getRepos", args ?? new GetReposArgs(), options.WithDefaults());
@@ -51,10 +49,9 @@ namespace Pulumi.AliCloud.CR
         /// 
         /// &gt; **NOTE:** Available in v1.35.0+
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -75,8 +72,7 @@ namespace Pulumi.AliCloud.CR
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetReposResult> Invoke(GetReposInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetReposResult>("alicloud:cr/getRepos:getRepos", args ?? new GetReposInvokeArgs(), options.WithDefaults());

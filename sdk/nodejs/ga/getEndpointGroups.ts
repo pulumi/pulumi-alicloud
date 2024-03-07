@@ -15,6 +15,7 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -81,6 +82,7 @@ import * as utilities from "../utilities";
  * });
  * export const firstGaEndpointGroupId = defaultEndpointGroups.apply(defaultEndpointGroups => defaultEndpointGroups.groups?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getEndpointGroups(args: GetEndpointGroupsArgs, opts?: pulumi.InvokeOptions): Promise<GetEndpointGroupsResult> {
 
@@ -169,6 +171,7 @@ export interface GetEndpointGroupsResult {
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -235,6 +238,7 @@ export interface GetEndpointGroupsResult {
  * });
  * export const firstGaEndpointGroupId = defaultEndpointGroups.apply(defaultEndpointGroups => defaultEndpointGroups.groups?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getEndpointGroupsOutput(args: GetEndpointGroupsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEndpointGroupsResult> {
     return pulumi.output(args).apply((a: any) => getEndpointGroups(a, opts))

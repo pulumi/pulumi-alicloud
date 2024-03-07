@@ -292,6 +292,7 @@ class EipSegmentAddress(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -307,6 +308,7 @@ class EipSegmentAddress(pulumi.CustomResource):
             isp="BGP",
             netmode="public")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -354,6 +356,7 @@ class EipSegmentAddress(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -369,6 +372,7 @@ class EipSegmentAddress(pulumi.CustomResource):
             isp="BGP",
             netmode="public")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

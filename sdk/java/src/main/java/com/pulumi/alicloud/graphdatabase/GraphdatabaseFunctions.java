@@ -22,6 +22,8 @@ public final class GraphdatabaseFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -63,6 +65,7 @@ public final class GraphdatabaseFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetDbInstancesResult> getDbInstances() {
@@ -76,6 +79,8 @@ public final class GraphdatabaseFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -117,6 +122,7 @@ public final class GraphdatabaseFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetDbInstancesResult> getDbInstancesPlain() {
@@ -130,6 +136,8 @@ public final class GraphdatabaseFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -171,6 +179,7 @@ public final class GraphdatabaseFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetDbInstancesResult> getDbInstances(GetDbInstancesArgs args) {
@@ -184,6 +193,8 @@ public final class GraphdatabaseFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -225,6 +236,7 @@ public final class GraphdatabaseFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetDbInstancesResult> getDbInstancesPlain(GetDbInstancesPlainArgs args) {
@@ -238,6 +250,8 @@ public final class GraphdatabaseFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -279,6 +293,7 @@ public final class GraphdatabaseFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetDbInstancesResult> getDbInstances(GetDbInstancesArgs args, InvokeOptions options) {
@@ -292,6 +307,8 @@ public final class GraphdatabaseFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -333,6 +350,7 @@ public final class GraphdatabaseFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetDbInstancesResult> getDbInstancesPlain(GetDbInstancesPlainArgs args, InvokeOptions options) {

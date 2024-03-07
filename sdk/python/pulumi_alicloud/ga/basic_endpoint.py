@@ -336,6 +336,7 @@ class BasicEndpoint(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -388,6 +389,7 @@ class BasicEndpoint(pulumi.CustomResource):
             basic_endpoint_name="terraform-example",
             opts=pulumi.ResourceOptions(provider=alicloud["hz"]))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -425,6 +427,7 @@ class BasicEndpoint(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -477,6 +480,7 @@ class BasicEndpoint(pulumi.CustomResource):
             basic_endpoint_name="terraform-example",
             opts=pulumi.ResourceOptions(provider=alicloud["hz"]))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

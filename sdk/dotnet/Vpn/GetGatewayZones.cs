@@ -16,10 +16,9 @@ namespace Pulumi.AliCloud.Vpn
         /// 
         /// &gt; **NOTE:** Available since v1.216.0.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -35,8 +34,7 @@ namespace Pulumi.AliCloud.Vpn
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetGatewayZonesResult> InvokeAsync(GetGatewayZonesArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetGatewayZonesResult>("alicloud:vpn/getGatewayZones:getGatewayZones", args ?? new GetGatewayZonesArgs(), options.WithDefaults());
@@ -46,10 +44,9 @@ namespace Pulumi.AliCloud.Vpn
         /// 
         /// &gt; **NOTE:** Available since v1.216.0.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -65,8 +62,7 @@ namespace Pulumi.AliCloud.Vpn
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetGatewayZonesResult> Invoke(GetGatewayZonesInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetGatewayZonesResult>("alicloud:vpn/getGatewayZones:getGatewayZones", args ?? new GetGatewayZonesInvokeArgs(), options.WithDefaults());

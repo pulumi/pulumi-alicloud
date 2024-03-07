@@ -16,12 +16,11 @@ namespace Pulumi.AliCloud.Ddos
         /// 
         /// &gt; **NOTE:** Available in v1.123.0+.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// Basic Usage
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -44,8 +43,7 @@ namespace Pulumi.AliCloud.Ddos
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetDdosCooDomainResourcesResult> InvokeAsync(GetDdosCooDomainResourcesArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetDdosCooDomainResourcesResult>("alicloud:ddos/getDdosCooDomainResources:getDdosCooDomainResources", args ?? new GetDdosCooDomainResourcesArgs(), options.WithDefaults());
@@ -55,12 +53,11 @@ namespace Pulumi.AliCloud.Ddos
         /// 
         /// &gt; **NOTE:** Available in v1.123.0+.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// Basic Usage
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -83,8 +80,7 @@ namespace Pulumi.AliCloud.Ddos
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetDdosCooDomainResourcesResult> Invoke(GetDdosCooDomainResourcesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDdosCooDomainResourcesResult>("alicloud:ddos/getDdosCooDomainResources:getDdosCooDomainResources", args ?? new GetDdosCooDomainResourcesInvokeArgs(), options.WithDefaults());

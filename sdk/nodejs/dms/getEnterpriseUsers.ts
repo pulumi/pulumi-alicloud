@@ -13,6 +13,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -24,6 +25,7 @@ import * as utilities from "../utilities";
  * });
  * export const firstUserId = dmsEnterpriseUsersDs.then(dmsEnterpriseUsersDs => dmsEnterpriseUsersDs.users?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getEnterpriseUsers(args?: GetEnterpriseUsersArgs, opts?: pulumi.InvokeOptions): Promise<GetEnterpriseUsersResult> {
     args = args || {};
@@ -111,6 +113,7 @@ export interface GetEnterpriseUsersResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -122,6 +125,7 @@ export interface GetEnterpriseUsersResult {
  * });
  * export const firstUserId = dmsEnterpriseUsersDs.then(dmsEnterpriseUsersDs => dmsEnterpriseUsersDs.users?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getEnterpriseUsersOutput(args?: GetEnterpriseUsersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEnterpriseUsersResult> {
     return pulumi.output(args).apply((a: any) => getEnterpriseUsers(a, opts))

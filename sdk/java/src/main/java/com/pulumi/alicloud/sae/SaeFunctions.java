@@ -43,6 +43,8 @@ public final class SaeFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -75,6 +77,7 @@ public final class SaeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetApplicationScalingRulesResult> getApplicationScalingRules(GetApplicationScalingRulesArgs args) {
@@ -88,6 +91,8 @@ public final class SaeFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -120,6 +125,7 @@ public final class SaeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetApplicationScalingRulesResult> getApplicationScalingRulesPlain(GetApplicationScalingRulesPlainArgs args) {
@@ -133,6 +139,8 @@ public final class SaeFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -165,6 +173,7 @@ public final class SaeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetApplicationScalingRulesResult> getApplicationScalingRules(GetApplicationScalingRulesArgs args, InvokeOptions options) {
@@ -178,6 +187,8 @@ public final class SaeFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -210,6 +221,7 @@ public final class SaeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetApplicationScalingRulesResult> getApplicationScalingRulesPlain(GetApplicationScalingRulesPlainArgs args, InvokeOptions options) {
@@ -223,6 +235,8 @@ public final class SaeFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -299,6 +313,7 @@ public final class SaeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetApplicationsResult> getApplications() {
@@ -312,6 +327,8 @@ public final class SaeFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -388,6 +405,7 @@ public final class SaeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetApplicationsResult> getApplicationsPlain() {
@@ -401,6 +419,8 @@ public final class SaeFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -477,6 +497,7 @@ public final class SaeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetApplicationsResult> getApplications(GetApplicationsArgs args) {
@@ -490,6 +511,8 @@ public final class SaeFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -566,6 +589,7 @@ public final class SaeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetApplicationsResult> getApplicationsPlain(GetApplicationsPlainArgs args) {
@@ -579,6 +603,8 @@ public final class SaeFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -655,6 +681,7 @@ public final class SaeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetApplicationsResult> getApplications(GetApplicationsArgs args, InvokeOptions options) {
@@ -668,6 +695,8 @@ public final class SaeFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -744,6 +773,7 @@ public final class SaeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetApplicationsResult> getApplicationsPlain(GetApplicationsPlainArgs args, InvokeOptions options) {
@@ -757,6 +787,8 @@ public final class SaeFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -809,6 +841,7 @@ public final class SaeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetConfigMapsResult> getConfigMaps(GetConfigMapsArgs args) {
@@ -822,6 +855,8 @@ public final class SaeFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -874,6 +909,7 @@ public final class SaeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetConfigMapsResult> getConfigMapsPlain(GetConfigMapsPlainArgs args) {
@@ -887,6 +923,8 @@ public final class SaeFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -939,6 +977,7 @@ public final class SaeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetConfigMapsResult> getConfigMaps(GetConfigMapsArgs args, InvokeOptions options) {
@@ -952,6 +991,8 @@ public final class SaeFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1004,6 +1045,7 @@ public final class SaeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetConfigMapsResult> getConfigMapsPlain(GetConfigMapsPlainArgs args, InvokeOptions options) {
@@ -1017,6 +1059,8 @@ public final class SaeFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1047,6 +1091,7 @@ public final class SaeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetGreyTagRoutesResult> getGreyTagRoutes(GetGreyTagRoutesArgs args) {
@@ -1060,6 +1105,8 @@ public final class SaeFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1090,6 +1137,7 @@ public final class SaeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetGreyTagRoutesResult> getGreyTagRoutesPlain(GetGreyTagRoutesPlainArgs args) {
@@ -1103,6 +1151,8 @@ public final class SaeFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1133,6 +1183,7 @@ public final class SaeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetGreyTagRoutesResult> getGreyTagRoutes(GetGreyTagRoutesArgs args, InvokeOptions options) {
@@ -1146,6 +1197,8 @@ public final class SaeFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1176,6 +1229,7 @@ public final class SaeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetGreyTagRoutesResult> getGreyTagRoutesPlain(GetGreyTagRoutesPlainArgs args, InvokeOptions options) {
@@ -1225,6 +1279,8 @@ public final class SaeFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1252,6 +1308,7 @@ public final class SaeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetInstanceSpecificationsResult> getInstanceSpecifications() {
@@ -1265,6 +1322,8 @@ public final class SaeFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1292,6 +1351,7 @@ public final class SaeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetInstanceSpecificationsResult> getInstanceSpecificationsPlain() {
@@ -1305,6 +1365,8 @@ public final class SaeFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1332,6 +1394,7 @@ public final class SaeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetInstanceSpecificationsResult> getInstanceSpecifications(GetInstanceSpecificationsArgs args) {
@@ -1345,6 +1408,8 @@ public final class SaeFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1372,6 +1437,7 @@ public final class SaeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetInstanceSpecificationsResult> getInstanceSpecificationsPlain(GetInstanceSpecificationsPlainArgs args) {
@@ -1385,6 +1451,8 @@ public final class SaeFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1412,6 +1480,7 @@ public final class SaeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetInstanceSpecificationsResult> getInstanceSpecifications(GetInstanceSpecificationsArgs args, InvokeOptions options) {
@@ -1425,6 +1494,8 @@ public final class SaeFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1452,6 +1523,7 @@ public final class SaeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetInstanceSpecificationsResult> getInstanceSpecificationsPlain(GetInstanceSpecificationsPlainArgs args, InvokeOptions options) {
@@ -1465,6 +1537,8 @@ public final class SaeFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1494,6 +1568,7 @@ public final class SaeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetNamespacesResult> getNamespaces() {
@@ -1507,6 +1582,8 @@ public final class SaeFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1536,6 +1613,7 @@ public final class SaeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetNamespacesResult> getNamespacesPlain() {
@@ -1549,6 +1627,8 @@ public final class SaeFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1578,6 +1658,7 @@ public final class SaeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetNamespacesResult> getNamespaces(GetNamespacesArgs args) {
@@ -1591,6 +1672,8 @@ public final class SaeFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1620,6 +1703,7 @@ public final class SaeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetNamespacesResult> getNamespacesPlain(GetNamespacesPlainArgs args) {
@@ -1633,6 +1717,8 @@ public final class SaeFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1662,6 +1748,7 @@ public final class SaeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetNamespacesResult> getNamespaces(GetNamespacesArgs args, InvokeOptions options) {
@@ -1675,6 +1762,8 @@ public final class SaeFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1704,6 +1793,7 @@ public final class SaeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetNamespacesResult> getNamespacesPlain(GetNamespacesPlainArgs args, InvokeOptions options) {
@@ -1719,6 +1809,8 @@ public final class SaeFunctions {
      * &gt; **NOTE:** The SAE service is not support in the international site.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1747,6 +1839,7 @@ public final class SaeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetServiceResult> getService() {
@@ -1762,6 +1855,8 @@ public final class SaeFunctions {
      * &gt; **NOTE:** The SAE service is not support in the international site.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1790,6 +1885,7 @@ public final class SaeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetServiceResult> getServicePlain() {
@@ -1805,6 +1901,8 @@ public final class SaeFunctions {
      * &gt; **NOTE:** The SAE service is not support in the international site.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1833,6 +1931,7 @@ public final class SaeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetServiceResult> getService(GetServiceArgs args) {
@@ -1848,6 +1947,8 @@ public final class SaeFunctions {
      * &gt; **NOTE:** The SAE service is not support in the international site.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1876,6 +1977,7 @@ public final class SaeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetServiceResult> getServicePlain(GetServicePlainArgs args) {
@@ -1891,6 +1993,8 @@ public final class SaeFunctions {
      * &gt; **NOTE:** The SAE service is not support in the international site.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1919,6 +2023,7 @@ public final class SaeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetServiceResult> getService(GetServiceArgs args, InvokeOptions options) {
@@ -1934,6 +2039,8 @@ public final class SaeFunctions {
      * &gt; **NOTE:** The SAE service is not support in the international site.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1962,6 +2069,7 @@ public final class SaeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetServiceResult> getServicePlain(GetServicePlainArgs args, InvokeOptions options) {

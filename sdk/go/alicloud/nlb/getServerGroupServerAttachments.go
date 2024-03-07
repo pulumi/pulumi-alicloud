@@ -19,6 +19,7 @@ import (
 //
 // # Basic Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -45,6 +46,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func GetServerGroupServerAttachments(ctx *pulumi.Context, args *GetServerGroupServerAttachmentsArgs, opts ...pulumi.InvokeOption) (*GetServerGroupServerAttachmentsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetServerGroupServerAttachmentsResult

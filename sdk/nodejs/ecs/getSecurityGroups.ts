@@ -11,6 +11,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -26,6 +27,7 @@ import * as utilities from "../utilities";
  * });
  * export const firstGroupId = primarySecGroupsDs.apply(primarySecGroupsDs => primarySecGroupsDs.groups?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getSecurityGroups(args?: GetSecurityGroupsArgs, opts?: pulumi.InvokeOptions): Promise<GetSecurityGroupsResult> {
     args = args || {};
@@ -69,6 +71,7 @@ export interface GetSecurityGroupsArgs {
     resourceGroupId?: string;
     /**
      * A map of tags assigned to the ECS instances. It must be in the format:
+     * <!--Start PulumiCodeChooser -->
      * ```typescript
      * import * as pulumi from "@pulumi/pulumi";
      * import * as alicloud from "@pulumi/alicloud";
@@ -80,6 +83,7 @@ export interface GetSecurityGroupsArgs {
      *     },
      * });
      * ```
+     * <!--End PulumiCodeChooser -->
      */
     tags?: {[key: string]: any};
     /**
@@ -132,6 +136,7 @@ export interface GetSecurityGroupsResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -147,6 +152,7 @@ export interface GetSecurityGroupsResult {
  * });
  * export const firstGroupId = primarySecGroupsDs.apply(primarySecGroupsDs => primarySecGroupsDs.groups?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getSecurityGroupsOutput(args?: GetSecurityGroupsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSecurityGroupsResult> {
     return pulumi.output(args).apply((a: any) => getSecurityGroups(a, opts))
@@ -177,6 +183,7 @@ export interface GetSecurityGroupsOutputArgs {
     resourceGroupId?: pulumi.Input<string>;
     /**
      * A map of tags assigned to the ECS instances. It must be in the format:
+     * <!--Start PulumiCodeChooser -->
      * ```typescript
      * import * as pulumi from "@pulumi/pulumi";
      * import * as alicloud from "@pulumi/alicloud";
@@ -188,6 +195,7 @@ export interface GetSecurityGroupsOutputArgs {
      *     },
      * });
      * ```
+     * <!--End PulumiCodeChooser -->
      */
     tags?: pulumi.Input<{[key: string]: any}>;
     /**

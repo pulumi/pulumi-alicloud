@@ -954,6 +954,7 @@ class EnterpriseInstance(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -1024,6 +1025,7 @@ class EnterpriseInstance(pulumi.CustomResource):
             export_timeout=600,
             ecs_region=default_regions.regions[0].id)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -1077,6 +1079,7 @@ class EnterpriseInstance(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -1147,6 +1150,7 @@ class EnterpriseInstance(pulumi.CustomResource):
             export_timeout=600,
             ecs_region=default_regions.regions[0].id)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

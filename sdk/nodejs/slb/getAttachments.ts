@@ -11,6 +11,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -20,6 +21,7 @@ import * as utilities from "../utilities";
  * });
  * export const firstSlbAttachmentInstanceId = sampleDs.then(sampleDs => sampleDs.slbAttachments?.[0]?.instanceId);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getAttachments(args: GetAttachmentsArgs, opts?: pulumi.InvokeOptions): Promise<GetAttachmentsResult> {
 
@@ -70,6 +72,7 @@ export interface GetAttachmentsResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -79,6 +82,7 @@ export interface GetAttachmentsResult {
  * });
  * export const firstSlbAttachmentInstanceId = sampleDs.then(sampleDs => sampleDs.slbAttachments?.[0]?.instanceId);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getAttachmentsOutput(args: GetAttachmentsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAttachmentsResult> {
     return pulumi.output(args).apply((a: any) => getAttachments(a, opts))

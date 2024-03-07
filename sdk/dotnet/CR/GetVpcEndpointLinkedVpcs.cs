@@ -16,12 +16,11 @@ namespace Pulumi.AliCloud.CR
         /// 
         /// &gt; **NOTE:** Available in v1.199.0+.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// Basic Usage
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -46,8 +45,7 @@ namespace Pulumi.AliCloud.CR
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetVpcEndpointLinkedVpcsResult> InvokeAsync(GetVpcEndpointLinkedVpcsArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetVpcEndpointLinkedVpcsResult>("alicloud:cr/getVpcEndpointLinkedVpcs:getVpcEndpointLinkedVpcs", args ?? new GetVpcEndpointLinkedVpcsArgs(), options.WithDefaults());
@@ -57,12 +55,11 @@ namespace Pulumi.AliCloud.CR
         /// 
         /// &gt; **NOTE:** Available in v1.199.0+.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// Basic Usage
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -87,8 +84,7 @@ namespace Pulumi.AliCloud.CR
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetVpcEndpointLinkedVpcsResult> Invoke(GetVpcEndpointLinkedVpcsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetVpcEndpointLinkedVpcsResult>("alicloud:cr/getVpcEndpointLinkedVpcs:getVpcEndpointLinkedVpcs", args ?? new GetVpcEndpointLinkedVpcsInvokeArgs(), options.WithDefaults());

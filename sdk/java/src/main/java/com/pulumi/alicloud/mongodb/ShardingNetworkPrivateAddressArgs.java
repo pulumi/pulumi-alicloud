@@ -39,7 +39,7 @@ public final class ShardingNetworkPrivateAddressArgs extends com.pulumi.resource
 
     /**
      * Account password.
-     * - The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!#$%^&amp;*()_+-=`.
+     * - The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!#$%!^(MISSING)&amp;*()_+-=`.
      * - The password must be 8 to 32 characters in length.
      * 
      */
@@ -48,7 +48,7 @@ public final class ShardingNetworkPrivateAddressArgs extends com.pulumi.resource
 
     /**
      * @return Account password.
-     * - The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!#$%^&amp;*()_+-=`.
+     * - The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!#$%!^(MISSING)&amp;*()_+-=`.
      * - The password must be 8 to 32 characters in length.
      * 
      */
@@ -158,7 +158,7 @@ public final class ShardingNetworkPrivateAddressArgs extends com.pulumi.resource
 
         /**
          * @param accountPassword Account password.
-         * - The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!#$%^&amp;*()_+-=`.
+         * - The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!#$%!^(MISSING)&amp;*()_+-=`.
          * - The password must be 8 to 32 characters in length.
          * 
          * @return builder
@@ -171,7 +171,7 @@ public final class ShardingNetworkPrivateAddressArgs extends com.pulumi.resource
 
         /**
          * @param accountPassword Account password.
-         * - The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!#$%^&amp;*()_+-=`.
+         * - The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!#$%!^(MISSING)&amp;*()_+-=`.
          * - The password must be 8 to 32 characters in length.
          * 
          * @return builder

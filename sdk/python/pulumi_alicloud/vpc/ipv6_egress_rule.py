@@ -223,6 +223,7 @@ class Ipv6EgressRule(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -279,6 +280,7 @@ class Ipv6EgressRule(pulumi.CustomResource):
             ipv6_gateway_id=default_ipv6_internet_bandwidth.ipv6_gateway_id,
             instance_type="Ipv6Address")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -313,6 +315,7 @@ class Ipv6EgressRule(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -369,6 +372,7 @@ class Ipv6EgressRule(pulumi.CustomResource):
             ipv6_gateway_id=default_ipv6_internet_bandwidth.ipv6_gateway_id,
             instance_type="Ipv6Address")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

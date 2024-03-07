@@ -52,7 +52,7 @@ namespace Pulumi.AliCloud.SimpleApplicationServer
         public Output<string?> InstanceName { get; private set; } = null!;
 
         /// <summary>
-        /// The password of the simple application server. The password must be 8 to 30 characters in length. It must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include: `( ) ~ ! @ # $ % ^ &amp; * - + = | { } [ ] : ; &lt; &gt; , . ? /`.
+        /// The password of the simple application server. The password must be 8 to 30 characters in length. It must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include: `( ) ~ ! @ # $ %!^(MISSING) &amp; * - + = | { } [ ] : ; &lt; &gt; , . ? /`.
         /// </summary>
         [Output("password")]
         public Output<string?> Password { get; private set; } = null!;
@@ -158,7 +158,7 @@ namespace Pulumi.AliCloud.SimpleApplicationServer
         public Input<string>? InstanceName { get; set; }
 
         /// <summary>
-        /// The password of the simple application server. The password must be 8 to 30 characters in length. It must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include: `( ) ~ ! @ # $ % ^ &amp; * - + = | { } [ ] : ; &lt; &gt; , . ? /`.
+        /// The password of the simple application server. The password must be 8 to 30 characters in length. It must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include: `( ) ~ ! @ # $ %!^(MISSING) &amp; * - + = | { } [ ] : ; &lt; &gt; , . ? /`.
         /// </summary>
         [Input("password")]
         public Input<string>? Password { get; set; }
@@ -226,7 +226,7 @@ namespace Pulumi.AliCloud.SimpleApplicationServer
         public Input<string>? InstanceName { get; set; }
 
         /// <summary>
-        /// The password of the simple application server. The password must be 8 to 30 characters in length. It must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include: `( ) ~ ! @ # $ % ^ &amp; * - + = | { } [ ] : ; &lt; &gt; , . ? /`.
+        /// The password of the simple application server. The password must be 8 to 30 characters in length. It must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include: `( ) ~ ! @ # $ %!^(MISSING) &amp; * - + = | { } [ ] : ; &lt; &gt; , . ? /`.
         /// </summary>
         [Input("password")]
         public Input<string>? Password { get; set; }

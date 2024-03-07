@@ -133,6 +133,7 @@ def get_scheduled_tasks(ids: Optional[Sequence[str]] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -141,6 +142,7 @@ def get_scheduled_tasks(ids: Optional[Sequence[str]] = None,
         scheduled_task_id="scheduled_task_id")
     pulumi.export("firstScheduledTask", ds.tasks[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of scheduled task IDs.
@@ -183,6 +185,7 @@ def get_scheduled_tasks_output(ids: Optional[pulumi.Input[Optional[Sequence[str]
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -191,6 +194,7 @@ def get_scheduled_tasks_output(ids: Optional[pulumi.Input[Optional[Sequence[str]
         scheduled_task_id="scheduled_task_id")
     pulumi.export("firstScheduledTask", ds.tasks[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of scheduled task IDs.

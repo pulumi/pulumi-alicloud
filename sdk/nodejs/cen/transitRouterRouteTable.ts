@@ -13,6 +13,7 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -27,12 +28,11 @@ import * as utilities from "../utilities";
  * });
  * const exampleTransitRouterRouteTable = new alicloud.cen.TransitRouterRouteTable("exampleTransitRouterRouteTable", {transitRouterId: exampleTransitRouter.transitRouterId});
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
- * CEN transit router route table
- *
- * can be imported using the id, e.g.
+ * CEN transit router route table  can be imported using the id, e.g.
  *
  * ```sh
  * $ pulumi import alicloud:cen/transitRouterRouteTable:TransitRouterRouteTable default tr-*********:vtb-********

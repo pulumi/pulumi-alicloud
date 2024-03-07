@@ -15,6 +15,7 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -53,6 +54,7 @@ import * as utilities from "../utilities";
  *     accountPassword: "Example1234",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
@@ -99,7 +101,7 @@ export class Account extends pulumi.CustomResource {
      */
     public readonly accountName!: pulumi.Output<string>;
     /**
-     * The account password: uppercase letters, lowercase letters, lowercase letters, numbers, and special characters (special character! #$%^& author (s):_+-=) in a length of 8-32 bit.
+     * The account password: uppercase letters, lowercase letters, lowercase letters, numbers, and special characters (special character! #$%!^(MISSING)& author (s):_+-=) in a length of 8-32 bit.
      */
     public readonly accountPassword!: pulumi.Output<string>;
     /**
@@ -206,7 +208,7 @@ export interface AccountState {
      */
     accountName?: pulumi.Input<string>;
     /**
-     * The account password: uppercase letters, lowercase letters, lowercase letters, numbers, and special characters (special character! #$%^& author (s):_+-=) in a length of 8-32 bit.
+     * The account password: uppercase letters, lowercase letters, lowercase letters, numbers, and special characters (special character! #$%!^(MISSING)& author (s):_+-=) in a length of 8-32 bit.
      */
     accountPassword?: pulumi.Input<string>;
     /**
@@ -260,7 +262,7 @@ export interface AccountArgs {
      */
     accountName: pulumi.Input<string>;
     /**
-     * The account password: uppercase letters, lowercase letters, lowercase letters, numbers, and special characters (special character! #$%^& author (s):_+-=) in a length of 8-32 bit.
+     * The account password: uppercase letters, lowercase letters, lowercase letters, numbers, and special characters (special character! #$%!^(MISSING)& author (s):_+-=) in a length of 8-32 bit.
      */
     accountPassword: pulumi.Input<string>;
     /**

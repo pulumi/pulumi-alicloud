@@ -16,10 +16,9 @@ namespace Pulumi.AliCloud.KVStore
         /// 
         /// &gt; **NOTE:** Available since v1.51.0
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -48,8 +47,7 @@ namespace Pulumi.AliCloud.KVStore
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetInstanceEnginesResult> InvokeAsync(GetInstanceEnginesArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetInstanceEnginesResult>("alicloud:kvstore/getInstanceEngines:getInstanceEngines", args ?? new GetInstanceEnginesArgs(), options.WithDefaults());
@@ -59,10 +57,9 @@ namespace Pulumi.AliCloud.KVStore
         /// 
         /// &gt; **NOTE:** Available since v1.51.0
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -91,8 +88,7 @@ namespace Pulumi.AliCloud.KVStore
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetInstanceEnginesResult> Invoke(GetInstanceEnginesInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetInstanceEnginesResult>("alicloud:kvstore/getInstanceEngines:getInstanceEngines", args ?? new GetInstanceEnginesInvokeArgs(), options.WithDefaults());

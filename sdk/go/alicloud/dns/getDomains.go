@@ -17,6 +17,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -42,6 +43,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func GetDomains(ctx *pulumi.Context, args *GetDomainsArgs, opts ...pulumi.InvokeOption) (*GetDomainsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetDomainsResult
@@ -67,7 +69,7 @@ type GetDomainsArgs struct {
 	Ids []string `pulumi:"ids"`
 	// Cloud analysis product ID.
 	InstanceId *string `pulumi:"instanceId"`
-	// The keywords are searched according to the `%KeyWord%` mode, which is not case sensitive.
+	// The keywords are searched according to the `%!K(MISSING)eyWord%!`(MISSING) mode, which is not case sensitive.
 	KeyWord *string `pulumi:"keyWord"`
 	// User language.
 	Lang *string `pulumi:"lang"`
@@ -144,7 +146,7 @@ type GetDomainsOutputArgs struct {
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
 	// Cloud analysis product ID.
 	InstanceId pulumi.StringPtrInput `pulumi:"instanceId"`
-	// The keywords are searched according to the `%KeyWord%` mode, which is not case sensitive.
+	// The keywords are searched according to the `%!K(MISSING)eyWord%!`(MISSING) mode, which is not case sensitive.
 	KeyWord pulumi.StringPtrInput `pulumi:"keyWord"`
 	// User language.
 	Lang pulumi.StringPtrInput `pulumi:"lang"`

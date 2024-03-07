@@ -52,7 +52,7 @@ public final class AccountArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The Password of the Account.
-     * * The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!#$%^&amp;*()_+-=`.
+     * * The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!#$%!^(MISSING)&amp;*()_+-=`.
      * * The password must be `8` to `32` characters in length.
      * 
      */
@@ -61,7 +61,7 @@ public final class AccountArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The Password of the Account.
-     * * The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!#$%^&amp;*()_+-=`.
+     * * The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!#$%!^(MISSING)&amp;*()_+-=`.
      * * The password must be `8` to `32` characters in length.
      * 
      */
@@ -159,7 +159,7 @@ public final class AccountArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param accountPassword The Password of the Account.
-         * * The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!#$%^&amp;*()_+-=`.
+         * * The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!#$%!^(MISSING)&amp;*()_+-=`.
          * * The password must be `8` to `32` characters in length.
          * 
          * @return builder
@@ -172,7 +172,7 @@ public final class AccountArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param accountPassword The Password of the Account.
-         * * The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!#$%^&amp;*()_+-=`.
+         * * The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!#$%!^(MISSING)&amp;*()_+-=`.
          * * The password must be `8` to `32` characters in length.
          * 
          * @return builder

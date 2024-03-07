@@ -15,6 +15,7 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -23,6 +24,7 @@ import * as utilities from "../utilities";
  * export const masterId = data.alicloud_cen_transit_router_available_resources["default"].resources[0].master_zones[0];
  * export const slaveId = data.alicloud_cen_transit_router_available_resources["default"].resources[0].slave_zones[0];
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getTransitRouterAvailableResources(args?: GetTransitRouterAvailableResourcesArgs, opts?: pulumi.InvokeOptions): Promise<GetTransitRouterAvailableResourcesResult> {
     args = args || {};
@@ -63,6 +65,7 @@ export interface GetTransitRouterAvailableResourcesResult {
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -71,6 +74,7 @@ export interface GetTransitRouterAvailableResourcesResult {
  * export const masterId = data.alicloud_cen_transit_router_available_resources["default"].resources[0].master_zones[0];
  * export const slaveId = data.alicloud_cen_transit_router_available_resources["default"].resources[0].slave_zones[0];
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getTransitRouterAvailableResourcesOutput(args?: GetTransitRouterAvailableResourcesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTransitRouterAvailableResourcesResult> {
     return pulumi.output(args).apply((a: any) => getTransitRouterAvailableResources(a, opts))

@@ -371,6 +371,7 @@ class AppGroup(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -389,6 +390,7 @@ class AppGroup(pulumi.CustomResource):
                 spec="opensearch.share.common",
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -427,6 +429,7 @@ class AppGroup(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -445,6 +448,7 @@ class AppGroup(pulumi.CustomResource):
                 spec="opensearch.share.common",
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

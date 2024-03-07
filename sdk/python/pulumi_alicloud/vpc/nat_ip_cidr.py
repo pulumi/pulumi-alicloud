@@ -224,6 +224,7 @@ class NatIpCidr(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -250,6 +251,7 @@ class NatIpCidr(pulumi.CustomResource):
             nat_ip_cidr_name="terraform-example",
             nat_ip_cidr="192.168.0.0/16")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -284,6 +286,7 @@ class NatIpCidr(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -310,6 +313,7 @@ class NatIpCidr(pulumi.CustomResource):
             nat_ip_cidr_name="terraform-example",
             nat_ip_cidr="192.168.0.0/16")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

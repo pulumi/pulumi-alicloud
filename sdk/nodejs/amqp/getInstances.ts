@@ -15,6 +15,7 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -31,6 +32,7 @@ import * as utilities from "../utilities";
  * });
  * export const amqpInstanceId2 = nameRegex.then(nameRegex => nameRegex.instances?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getInstances(args?: GetInstancesArgs, opts?: pulumi.InvokeOptions): Promise<GetInstancesResult> {
     args = args || {};
@@ -96,6 +98,7 @@ export interface GetInstancesResult {
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -112,6 +115,7 @@ export interface GetInstancesResult {
  * });
  * export const amqpInstanceId2 = nameRegex.then(nameRegex => nameRegex.instances?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getInstancesOutput(args?: GetInstancesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstancesResult> {
     return pulumi.output(args).apply((a: any) => getInstances(a, opts))

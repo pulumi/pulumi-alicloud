@@ -238,6 +238,7 @@ def get_instances(connection_mode: Optional[str] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -250,6 +251,7 @@ def get_instances(connection_mode: Optional[str] = None,
         })
     pulumi.export("firstDbInstanceId", db_instances_ds.instances[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str connection_mode: `Standard` for standard access mode and `Safe` for high security access mode.
@@ -325,6 +327,7 @@ def get_instances_output(connection_mode: Optional[pulumi.Input[Optional[str]]] 
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -337,6 +340,7 @@ def get_instances_output(connection_mode: Optional[pulumi.Input[Optional[str]]] 
         })
     pulumi.export("firstDbInstanceId", db_instances_ds.instances[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str connection_mode: `Standard` for standard access mode and `Safe` for high security access mode.

@@ -15,6 +15,7 @@ import * as utilities from "../utilities";
  *
  * The following example shows how to obtain details about a security group rule and how to pass its data to an instance at launch time.
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -33,6 +34,7 @@ import * as utilities from "../utilities";
  * // Pass port_range to the backend service
  * const backend = new alicloud.ecs.Instance("backend", {userData: ingressRulesDs.then(ingressRulesDs => `config_service.sh --portrange=${ingressRulesDs.rules?.[0]?.portRange}`)});
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getSecurityGroupRules(args: GetSecurityGroupRulesArgs, opts?: pulumi.InvokeOptions): Promise<GetSecurityGroupRulesResult> {
 
@@ -125,6 +127,7 @@ export interface GetSecurityGroupRulesResult {
  *
  * The following example shows how to obtain details about a security group rule and how to pass its data to an instance at launch time.
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -143,6 +146,7 @@ export interface GetSecurityGroupRulesResult {
  * // Pass port_range to the backend service
  * const backend = new alicloud.ecs.Instance("backend", {userData: ingressRulesDs.then(ingressRulesDs => `config_service.sh --portrange=${ingressRulesDs.rules?.[0]?.portRange}`)});
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getSecurityGroupRulesOutput(args: GetSecurityGroupRulesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSecurityGroupRulesResult> {
     return pulumi.output(args).apply((a: any) => getSecurityGroupRules(a, opts))

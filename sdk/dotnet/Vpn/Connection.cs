@@ -10,6 +10,10 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Vpn
 {
     /// <summary>
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
     /// ## Import
     /// 
     /// VPN connection can be imported using the id, e.g.

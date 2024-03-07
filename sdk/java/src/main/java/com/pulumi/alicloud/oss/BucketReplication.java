@@ -29,6 +29,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * Set bucket replication configuration
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -162,14 +164,15 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * ### Timeouts
  * 
- *  The `timeouts` block allows you to specify timeouts for certain actions:
+ * The `timeouts` block allows you to specify timeouts for certain actions:
  * 
- *  * `delete` - (Defaults to 30 mins) Used when delete a data replication rule (until the data replication task is cleared).
+ * * `delete` - (Defaults to 30 mins) Used when delete a data replication rule (until the data replication task is cleared).
  * 
  */
 @ResourceType(type="alicloud:oss/bucketReplication:BucketReplication")

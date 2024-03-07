@@ -16,12 +16,11 @@ namespace Pulumi.AliCloud.Hbr
         /// 
         /// &gt; **NOTE:** Available in v1.179.0+.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// Basic Usage
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -46,8 +45,7 @@ namespace Pulumi.AliCloud.Hbr
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetHanaBackupPlansResult> InvokeAsync(GetHanaBackupPlansArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetHanaBackupPlansResult>("alicloud:hbr/getHanaBackupPlans:getHanaBackupPlans", args ?? new GetHanaBackupPlansArgs(), options.WithDefaults());
@@ -57,12 +55,11 @@ namespace Pulumi.AliCloud.Hbr
         /// 
         /// &gt; **NOTE:** Available in v1.179.0+.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// Basic Usage
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -87,8 +84,7 @@ namespace Pulumi.AliCloud.Hbr
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetHanaBackupPlansResult> Invoke(GetHanaBackupPlansInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetHanaBackupPlansResult>("alicloud:hbr/getHanaBackupPlans:getHanaBackupPlans", args ?? new GetHanaBackupPlansInvokeArgs(), options.WithDefaults());

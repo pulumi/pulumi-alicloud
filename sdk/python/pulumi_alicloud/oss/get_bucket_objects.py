@@ -103,6 +103,7 @@ def get_bucket_objects(bucket_name: Optional[str] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -111,6 +112,7 @@ def get_bucket_objects(bucket_name: Optional[str] = None,
         key_regex="sample/sample_object.txt")
     pulumi.export("firstObjectKey", bucket_objects_ds.objects[0].key)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str bucket_name: Name of the bucket that contains the objects to find.
@@ -146,6 +148,7 @@ def get_bucket_objects_output(bucket_name: Optional[pulumi.Input[str]] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -154,6 +157,7 @@ def get_bucket_objects_output(bucket_name: Optional[pulumi.Input[str]] = None,
         key_regex="sample/sample_object.txt")
     pulumi.export("firstObjectKey", bucket_objects_ds.objects[0].key)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str bucket_name: Name of the bucket that contains the objects to find.

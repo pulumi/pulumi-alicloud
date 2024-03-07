@@ -33,7 +33,7 @@ class InstanceArgs:
         :param pulumi.Input[int] auto_renew_period: The auto renew period. Valid values: `1`,`3`, `6`, `12`, `24`, `36`. **NOTE:** The attribute `auto_renew` is valid when the attribute is `true`.
         :param pulumi.Input[int] data_disk_size: The size of the data disk. Unit: GB. Valid values: `0` to `16380`.
         :param pulumi.Input[str] instance_name: The name of the simple application server.
-        :param pulumi.Input[str] password: The password of the simple application server. The password must be 8 to 30 characters in length. It must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include: `( ) ~ ! @ # $ % ^ & * - + = | { } [ ] : ; < > , . ? /`.
+        :param pulumi.Input[str] password: The password of the simple application server. The password must be 8 to 30 characters in length. It must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include: `( ) ~ ! @ # $ %!^(MISSING) & * - + = | { } [ ] : ; < > , . ? /`.
         :param pulumi.Input[str] payment_type: The paymen type of the resource. Valid values: `Subscription`.
         :param pulumi.Input[str] status: The status of the simple application server. Valid values: `Resetting`, `Running`, `Stopped`.
         """
@@ -143,7 +143,7 @@ class InstanceArgs:
     @pulumi.getter
     def password(self) -> Optional[pulumi.Input[str]]:
         """
-        The password of the simple application server. The password must be 8 to 30 characters in length. It must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include: `( ) ~ ! @ # $ % ^ & * - + = | { } [ ] : ; < > , . ? /`.
+        The password of the simple application server. The password must be 8 to 30 characters in length. It must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include: `( ) ~ ! @ # $ %!^(MISSING) & * - + = | { } [ ] : ; < > , . ? /`.
         """
         return pulumi.get(self, "password")
 
@@ -196,7 +196,7 @@ class _InstanceState:
         :param pulumi.Input[int] data_disk_size: The size of the data disk. Unit: GB. Valid values: `0` to `16380`.
         :param pulumi.Input[str] image_id: The ID of the image.  You can use the `simpleapplicationserver_get_images` to query the available images in the specified region. The value must be an integral multiple of 20.
         :param pulumi.Input[str] instance_name: The name of the simple application server.
-        :param pulumi.Input[str] password: The password of the simple application server. The password must be 8 to 30 characters in length. It must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include: `( ) ~ ! @ # $ % ^ & * - + = | { } [ ] : ; < > , . ? /`.
+        :param pulumi.Input[str] password: The password of the simple application server. The password must be 8 to 30 characters in length. It must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include: `( ) ~ ! @ # $ %!^(MISSING) & * - + = | { } [ ] : ; < > , . ? /`.
         :param pulumi.Input[str] payment_type: The paymen type of the resource. Valid values: `Subscription`.
         :param pulumi.Input[int] period: The period. Unit: months. Valid values: `1`,`3`, `6`, `12`, `24`, `36`.
         :param pulumi.Input[str] plan_id: The ID of the plan. You can use the `simpleapplicationserver_get_server_plans`  to query all the plans provided by Simple Application Server in the specified region.
@@ -287,7 +287,7 @@ class _InstanceState:
     @pulumi.getter
     def password(self) -> Optional[pulumi.Input[str]]:
         """
-        The password of the simple application server. The password must be 8 to 30 characters in length. It must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include: `( ) ~ ! @ # $ % ^ & * - + = | { } [ ] : ; < > , . ? /`.
+        The password of the simple application server. The password must be 8 to 30 characters in length. It must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include: `( ) ~ ! @ # $ %!^(MISSING) & * - + = | { } [ ] : ; < > , . ? /`.
         """
         return pulumi.get(self, "password")
 
@@ -376,7 +376,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[int] data_disk_size: The size of the data disk. Unit: GB. Valid values: `0` to `16380`.
         :param pulumi.Input[str] image_id: The ID of the image.  You can use the `simpleapplicationserver_get_images` to query the available images in the specified region. The value must be an integral multiple of 20.
         :param pulumi.Input[str] instance_name: The name of the simple application server.
-        :param pulumi.Input[str] password: The password of the simple application server. The password must be 8 to 30 characters in length. It must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include: `( ) ~ ! @ # $ % ^ & * - + = | { } [ ] : ; < > , . ? /`.
+        :param pulumi.Input[str] password: The password of the simple application server. The password must be 8 to 30 characters in length. It must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include: `( ) ~ ! @ # $ %!^(MISSING) & * - + = | { } [ ] : ; < > , . ? /`.
         :param pulumi.Input[str] payment_type: The paymen type of the resource. Valid values: `Subscription`.
         :param pulumi.Input[int] period: The period. Unit: months. Valid values: `1`,`3`, `6`, `12`, `24`, `36`.
         :param pulumi.Input[str] plan_id: The ID of the plan. You can use the `simpleapplicationserver_get_server_plans`  to query all the plans provided by Simple Application Server in the specified region.
@@ -479,7 +479,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[int] data_disk_size: The size of the data disk. Unit: GB. Valid values: `0` to `16380`.
         :param pulumi.Input[str] image_id: The ID of the image.  You can use the `simpleapplicationserver_get_images` to query the available images in the specified region. The value must be an integral multiple of 20.
         :param pulumi.Input[str] instance_name: The name of the simple application server.
-        :param pulumi.Input[str] password: The password of the simple application server. The password must be 8 to 30 characters in length. It must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include: `( ) ~ ! @ # $ % ^ & * - + = | { } [ ] : ; < > , . ? /`.
+        :param pulumi.Input[str] password: The password of the simple application server. The password must be 8 to 30 characters in length. It must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include: `( ) ~ ! @ # $ %!^(MISSING) & * - + = | { } [ ] : ; < > , . ? /`.
         :param pulumi.Input[str] payment_type: The paymen type of the resource. Valid values: `Subscription`.
         :param pulumi.Input[int] period: The period. Unit: months. Valid values: `1`,`3`, `6`, `12`, `24`, `36`.
         :param pulumi.Input[str] plan_id: The ID of the plan. You can use the `simpleapplicationserver_get_server_plans`  to query all the plans provided by Simple Application Server in the specified region.
@@ -545,7 +545,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter
     def password(self) -> pulumi.Output[Optional[str]]:
         """
-        The password of the simple application server. The password must be 8 to 30 characters in length. It must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include: `( ) ~ ! @ # $ % ^ & * - + = | { } [ ] : ; < > , . ? /`.
+        The password of the simple application server. The password must be 8 to 30 characters in length. It must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include: `( ) ~ ! @ # $ %!^(MISSING) & * - + = | { } [ ] : ; < > , . ? /`.
         """
         return pulumi.get(self, "password")
 

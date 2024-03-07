@@ -19,6 +19,7 @@ import (
 //
 // # Basic Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -57,6 +58,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func GetTrafficMirrorFilterEgressRules(ctx *pulumi.Context, args *GetTrafficMirrorFilterEgressRulesArgs, opts ...pulumi.InvokeOption) (*GetTrafficMirrorFilterEgressRulesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetTrafficMirrorFilterEgressRulesResult

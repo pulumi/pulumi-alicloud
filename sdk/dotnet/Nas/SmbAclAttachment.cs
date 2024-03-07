@@ -19,6 +19,7 @@ namespace Pulumi.AliCloud.Nas
     /// 
     /// Basic Usage
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -51,6 +52,7 @@ namespace Pulumi.AliCloud.Nas
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// </summary>
     [AliCloudResourceType("alicloud:nas/smbAclAttachment:SmbAclAttachment")]
     public partial class SmbAclAttachment : global::Pulumi.CustomResource

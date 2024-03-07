@@ -110,12 +110,14 @@ class HpcCluster(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
 
         example = alicloud.ecs.HpcCluster("example", description="For Terraform Test")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -147,12 +149,14 @@ class HpcCluster(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
 
         example = alicloud.ecs.HpcCluster("example", description="For Terraform Test")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

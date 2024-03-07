@@ -20,6 +20,8 @@ public final class ChatbotFunctions {
      * &gt; **NOTE:** Available in v1.203.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -49,6 +51,7 @@ public final class ChatbotFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetAgentsResult> getAgents() {
@@ -60,6 +63,8 @@ public final class ChatbotFunctions {
      * &gt; **NOTE:** Available in v1.203.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -89,6 +94,7 @@ public final class ChatbotFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetAgentsResult> getAgentsPlain() {
@@ -100,6 +106,8 @@ public final class ChatbotFunctions {
      * &gt; **NOTE:** Available in v1.203.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -129,6 +137,7 @@ public final class ChatbotFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetAgentsResult> getAgents(GetAgentsArgs args) {
@@ -140,6 +149,8 @@ public final class ChatbotFunctions {
      * &gt; **NOTE:** Available in v1.203.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -169,6 +180,7 @@ public final class ChatbotFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetAgentsResult> getAgentsPlain(GetAgentsPlainArgs args) {
@@ -180,6 +192,8 @@ public final class ChatbotFunctions {
      * &gt; **NOTE:** Available in v1.203.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -209,6 +223,7 @@ public final class ChatbotFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetAgentsResult> getAgents(GetAgentsArgs args, InvokeOptions options) {
@@ -220,6 +235,8 @@ public final class ChatbotFunctions {
      * &gt; **NOTE:** Available in v1.203.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -249,6 +266,7 @@ public final class ChatbotFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetAgentsResult> getAgentsPlain(GetAgentsPlainArgs args, InvokeOptions options) {

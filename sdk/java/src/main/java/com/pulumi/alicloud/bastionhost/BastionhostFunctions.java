@@ -40,6 +40,8 @@ public final class BastionhostFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -80,6 +82,7 @@ public final class BastionhostFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetHostAccountsResult> getHostAccounts(GetHostAccountsArgs args) {
@@ -93,6 +96,8 @@ public final class BastionhostFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -133,6 +138,7 @@ public final class BastionhostFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetHostAccountsResult> getHostAccountsPlain(GetHostAccountsPlainArgs args) {
@@ -146,6 +152,8 @@ public final class BastionhostFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -186,6 +194,7 @@ public final class BastionhostFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetHostAccountsResult> getHostAccounts(GetHostAccountsArgs args, InvokeOptions options) {
@@ -199,6 +208,8 @@ public final class BastionhostFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -239,6 +250,7 @@ public final class BastionhostFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetHostAccountsResult> getHostAccountsPlain(GetHostAccountsPlainArgs args, InvokeOptions options) {
@@ -252,6 +264,8 @@ public final class BastionhostFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -290,6 +304,7 @@ public final class BastionhostFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetHostGroupsResult> getHostGroups(GetHostGroupsArgs args) {
@@ -303,6 +318,8 @@ public final class BastionhostFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -341,6 +358,7 @@ public final class BastionhostFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetHostGroupsResult> getHostGroupsPlain(GetHostGroupsPlainArgs args) {
@@ -354,6 +372,8 @@ public final class BastionhostFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -392,6 +412,7 @@ public final class BastionhostFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetHostGroupsResult> getHostGroups(GetHostGroupsArgs args, InvokeOptions options) {
@@ -405,6 +426,8 @@ public final class BastionhostFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -443,6 +466,7 @@ public final class BastionhostFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetHostGroupsResult> getHostGroupsPlain(GetHostGroupsPlainArgs args, InvokeOptions options) {
@@ -456,6 +480,8 @@ public final class BastionhostFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -494,6 +520,7 @@ public final class BastionhostFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetHostShareKeysResult> getHostShareKeys(GetHostShareKeysArgs args) {
@@ -507,6 +534,8 @@ public final class BastionhostFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -545,6 +574,7 @@ public final class BastionhostFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetHostShareKeysResult> getHostShareKeysPlain(GetHostShareKeysPlainArgs args) {
@@ -558,6 +588,8 @@ public final class BastionhostFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -596,6 +628,7 @@ public final class BastionhostFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetHostShareKeysResult> getHostShareKeys(GetHostShareKeysArgs args, InvokeOptions options) {
@@ -609,6 +642,8 @@ public final class BastionhostFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -647,6 +682,7 @@ public final class BastionhostFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetHostShareKeysResult> getHostShareKeysPlain(GetHostShareKeysPlainArgs args, InvokeOptions options) {
@@ -660,6 +696,8 @@ public final class BastionhostFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -698,6 +736,7 @@ public final class BastionhostFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetHostsResult> getHosts(GetHostsArgs args) {
@@ -711,6 +750,8 @@ public final class BastionhostFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -749,6 +790,7 @@ public final class BastionhostFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetHostsResult> getHostsPlain(GetHostsPlainArgs args) {
@@ -762,6 +804,8 @@ public final class BastionhostFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -800,6 +844,7 @@ public final class BastionhostFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetHostsResult> getHosts(GetHostsArgs args, InvokeOptions options) {
@@ -813,6 +858,8 @@ public final class BastionhostFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -851,6 +898,7 @@ public final class BastionhostFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetHostsResult> getHostsPlain(GetHostsPlainArgs args, InvokeOptions options) {
@@ -864,6 +912,8 @@ public final class BastionhostFunctions {
      * &gt; **NOTE:** Available in 1.63.0+ .
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -893,6 +943,7 @@ public final class BastionhostFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetInstancesResult> getInstances() {
@@ -906,6 +957,8 @@ public final class BastionhostFunctions {
      * &gt; **NOTE:** Available in 1.63.0+ .
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -935,6 +988,7 @@ public final class BastionhostFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetInstancesResult> getInstancesPlain() {
@@ -948,6 +1002,8 @@ public final class BastionhostFunctions {
      * &gt; **NOTE:** Available in 1.63.0+ .
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -977,6 +1033,7 @@ public final class BastionhostFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetInstancesResult> getInstances(GetInstancesArgs args) {
@@ -990,6 +1047,8 @@ public final class BastionhostFunctions {
      * &gt; **NOTE:** Available in 1.63.0+ .
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1019,6 +1078,7 @@ public final class BastionhostFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetInstancesResult> getInstancesPlain(GetInstancesPlainArgs args) {
@@ -1032,6 +1092,8 @@ public final class BastionhostFunctions {
      * &gt; **NOTE:** Available in 1.63.0+ .
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1061,6 +1123,7 @@ public final class BastionhostFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetInstancesResult> getInstances(GetInstancesArgs args, InvokeOptions options) {
@@ -1074,6 +1137,8 @@ public final class BastionhostFunctions {
      * &gt; **NOTE:** Available in 1.63.0+ .
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1103,6 +1168,7 @@ public final class BastionhostFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetInstancesResult> getInstancesPlain(GetInstancesPlainArgs args, InvokeOptions options) {
@@ -1116,6 +1182,8 @@ public final class BastionhostFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1154,6 +1222,7 @@ public final class BastionhostFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetUserGroupsResult> getUserGroups(GetUserGroupsArgs args) {
@@ -1167,6 +1236,8 @@ public final class BastionhostFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1205,6 +1276,7 @@ public final class BastionhostFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetUserGroupsResult> getUserGroupsPlain(GetUserGroupsPlainArgs args) {
@@ -1218,6 +1290,8 @@ public final class BastionhostFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1256,6 +1330,7 @@ public final class BastionhostFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetUserGroupsResult> getUserGroups(GetUserGroupsArgs args, InvokeOptions options) {
@@ -1269,6 +1344,8 @@ public final class BastionhostFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1307,6 +1384,7 @@ public final class BastionhostFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetUserGroupsResult> getUserGroupsPlain(GetUserGroupsPlainArgs args, InvokeOptions options) {
@@ -1320,6 +1398,8 @@ public final class BastionhostFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1358,6 +1438,7 @@ public final class BastionhostFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetUsersResult> getUsers(GetUsersArgs args) {
@@ -1371,6 +1452,8 @@ public final class BastionhostFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1409,6 +1492,7 @@ public final class BastionhostFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetUsersResult> getUsersPlain(GetUsersPlainArgs args) {
@@ -1422,6 +1506,8 @@ public final class BastionhostFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1460,6 +1546,7 @@ public final class BastionhostFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetUsersResult> getUsers(GetUsersArgs args, InvokeOptions options) {
@@ -1473,6 +1560,8 @@ public final class BastionhostFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1511,6 +1600,7 @@ public final class BastionhostFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetUsersResult> getUsersPlain(GetUsersPlainArgs args, InvokeOptions options) {

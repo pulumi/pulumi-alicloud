@@ -181,6 +181,7 @@ def get_custom_routing_endpoint_groups(accelerator_id: Optional[str] = None,
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -192,6 +193,7 @@ def get_custom_routing_endpoint_groups(accelerator_id: Optional[str] = None,
         accelerator_id="your_accelerator_id")
     pulumi.export("gaCustomRoutingEndpointGroupsId2", name_regex.groups[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str accelerator_id: The ID of the GA instance.
@@ -250,6 +252,7 @@ def get_custom_routing_endpoint_groups_output(accelerator_id: Optional[pulumi.In
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -261,6 +264,7 @@ def get_custom_routing_endpoint_groups_output(accelerator_id: Optional[pulumi.In
         accelerator_id="your_accelerator_id")
     pulumi.export("gaCustomRoutingEndpointGroupsId2", name_regex.groups[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str accelerator_id: The ID of the GA instance.

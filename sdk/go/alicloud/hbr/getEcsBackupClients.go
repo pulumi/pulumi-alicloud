@@ -19,6 +19,7 @@ import (
 //
 // # Basic Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -54,6 +55,7 @@ import (
 // })
 // }
 // ```
+// <!--End PulumiCodeChooser -->
 func GetEcsBackupClients(ctx *pulumi.Context, args *GetEcsBackupClientsArgs, opts ...pulumi.InvokeOption) (*GetEcsBackupClientsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetEcsBackupClientsResult

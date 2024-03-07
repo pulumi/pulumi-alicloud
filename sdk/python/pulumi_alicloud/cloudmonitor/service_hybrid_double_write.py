@@ -172,6 +172,7 @@ class ServiceHybridDoubleWrite(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -189,6 +190,7 @@ class ServiceHybridDoubleWrite(pulumi.CustomResource):
             namespace=default_namespace.id,
             user_id=default_account.id)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -222,6 +224,7 @@ class ServiceHybridDoubleWrite(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -239,6 +242,7 @@ class ServiceHybridDoubleWrite(pulumi.CustomResource):
             namespace=default_namespace.id,
             user_id=default_account.id)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

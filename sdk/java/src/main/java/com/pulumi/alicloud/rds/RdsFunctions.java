@@ -64,6 +64,8 @@ public final class RdsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -94,6 +96,7 @@ public final class RdsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetAccountsResult> getAccounts(GetAccountsArgs args) {
@@ -107,6 +110,8 @@ public final class RdsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -137,6 +142,7 @@ public final class RdsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetAccountsResult> getAccountsPlain(GetAccountsPlainArgs args) {
@@ -150,6 +156,8 @@ public final class RdsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -180,6 +188,7 @@ public final class RdsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetAccountsResult> getAccounts(GetAccountsArgs args, InvokeOptions options) {
@@ -193,6 +202,8 @@ public final class RdsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -223,6 +234,7 @@ public final class RdsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetAccountsResult> getAccountsPlain(GetAccountsPlainArgs args, InvokeOptions options) {
@@ -234,6 +246,8 @@ public final class RdsFunctions {
      * &gt; **NOTE:** Available in v1.198.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -263,6 +277,7 @@ public final class RdsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetCharacterSetNamesResult> getCharacterSetNames(GetCharacterSetNamesArgs args) {
@@ -274,6 +289,8 @@ public final class RdsFunctions {
      * &gt; **NOTE:** Available in v1.198.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -303,6 +320,7 @@ public final class RdsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetCharacterSetNamesResult> getCharacterSetNamesPlain(GetCharacterSetNamesPlainArgs args) {
@@ -314,6 +332,8 @@ public final class RdsFunctions {
      * &gt; **NOTE:** Available in v1.198.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -343,6 +363,7 @@ public final class RdsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetCharacterSetNamesResult> getCharacterSetNames(GetCharacterSetNamesArgs args, InvokeOptions options) {
@@ -354,6 +375,8 @@ public final class RdsFunctions {
      * &gt; **NOTE:** Available in v1.198.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -383,6 +406,7 @@ public final class RdsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetCharacterSetNamesResult> getCharacterSetNamesPlain(GetCharacterSetNamesPlainArgs args, InvokeOptions options) {
@@ -396,6 +420,8 @@ public final class RdsFunctions {
      * &gt; **NOTE:** Available since v1.209.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -427,6 +453,7 @@ public final class RdsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetClassDetailsResult> getClassDetails(GetClassDetailsArgs args) {
@@ -440,6 +467,8 @@ public final class RdsFunctions {
      * &gt; **NOTE:** Available since v1.209.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -471,6 +500,7 @@ public final class RdsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetClassDetailsResult> getClassDetailsPlain(GetClassDetailsPlainArgs args) {
@@ -484,6 +514,8 @@ public final class RdsFunctions {
      * &gt; **NOTE:** Available since v1.209.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -515,6 +547,7 @@ public final class RdsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetClassDetailsResult> getClassDetails(GetClassDetailsArgs args, InvokeOptions options) {
@@ -528,6 +561,8 @@ public final class RdsFunctions {
      * &gt; **NOTE:** Available since v1.209.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -559,6 +594,7 @@ public final class RdsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetClassDetailsResult> getClassDetailsPlain(GetClassDetailsPlainArgs args, InvokeOptions options) {
@@ -572,6 +608,8 @@ public final class RdsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -601,6 +639,7 @@ public final class RdsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetCollationTimeZonesResult> getCollationTimeZones() {
@@ -614,6 +653,8 @@ public final class RdsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -643,6 +684,7 @@ public final class RdsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetCollationTimeZonesResult> getCollationTimeZonesPlain() {
@@ -656,6 +698,8 @@ public final class RdsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -685,6 +729,7 @@ public final class RdsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetCollationTimeZonesResult> getCollationTimeZones(GetCollationTimeZonesArgs args) {
@@ -698,6 +743,8 @@ public final class RdsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -727,6 +774,7 @@ public final class RdsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetCollationTimeZonesResult> getCollationTimeZonesPlain(GetCollationTimeZonesPlainArgs args) {
@@ -740,6 +788,8 @@ public final class RdsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -769,6 +819,7 @@ public final class RdsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetCollationTimeZonesResult> getCollationTimeZones(GetCollationTimeZonesArgs args, InvokeOptions options) {
@@ -782,6 +833,8 @@ public final class RdsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -811,6 +864,7 @@ public final class RdsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetCollationTimeZonesResult> getCollationTimeZonesPlain(GetCollationTimeZonesPlainArgs args, InvokeOptions options) {
@@ -824,6 +878,8 @@ public final class RdsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -855,6 +911,7 @@ public final class RdsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetCrossRegionBackupsResult> getCrossRegionBackups(GetCrossRegionBackupsArgs args) {
@@ -868,6 +925,8 @@ public final class RdsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -899,6 +958,7 @@ public final class RdsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetCrossRegionBackupsResult> getCrossRegionBackupsPlain(GetCrossRegionBackupsPlainArgs args) {
@@ -912,6 +972,8 @@ public final class RdsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -943,6 +1005,7 @@ public final class RdsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetCrossRegionBackupsResult> getCrossRegionBackups(GetCrossRegionBackupsArgs args, InvokeOptions options) {
@@ -956,6 +1019,8 @@ public final class RdsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -987,6 +1052,7 @@ public final class RdsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetCrossRegionBackupsResult> getCrossRegionBackupsPlain(GetCrossRegionBackupsPlainArgs args, InvokeOptions options) {
@@ -998,6 +1064,8 @@ public final class RdsFunctions {
      * &gt; **NOTE:** Available in v1.193.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1025,6 +1093,7 @@ public final class RdsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetCrossRegionsResult> getCrossRegions() {
@@ -1036,6 +1105,8 @@ public final class RdsFunctions {
      * &gt; **NOTE:** Available in v1.193.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1063,6 +1134,7 @@ public final class RdsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetCrossRegionsResult> getCrossRegionsPlain() {
@@ -1074,6 +1146,8 @@ public final class RdsFunctions {
      * &gt; **NOTE:** Available in v1.193.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1101,6 +1175,7 @@ public final class RdsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetCrossRegionsResult> getCrossRegions(GetCrossRegionsArgs args) {
@@ -1112,6 +1187,8 @@ public final class RdsFunctions {
      * &gt; **NOTE:** Available in v1.193.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1139,6 +1216,7 @@ public final class RdsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetCrossRegionsResult> getCrossRegionsPlain(GetCrossRegionsPlainArgs args) {
@@ -1150,6 +1228,8 @@ public final class RdsFunctions {
      * &gt; **NOTE:** Available in v1.193.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1177,6 +1257,7 @@ public final class RdsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetCrossRegionsResult> getCrossRegions(GetCrossRegionsArgs args, InvokeOptions options) {
@@ -1188,6 +1269,8 @@ public final class RdsFunctions {
      * &gt; **NOTE:** Available in v1.193.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1215,6 +1298,7 @@ public final class RdsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetCrossRegionsResult> getCrossRegionsPlain(GetCrossRegionsPlainArgs args, InvokeOptions options) {
@@ -1226,37 +1310,6 @@ public final class RdsFunctions {
      * &gt; **NOTE:** Available in v1.196.0+
      * 
      * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.alicloud.rds.RdsFunctions;
-     * import com.pulumi.alicloud.rds.inputs.GetInstanceClassInfosArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var resources = RdsFunctions.getInstanceClassInfos(GetInstanceClassInfosArgs.builder()
-     *             .commodityCode(&#34;bards&#34;)
-     *             .orderType(&#34;BUY&#34;)
-     *             .outputFile(&#34;./classes.txt&#34;)
-     *             .build());
-     * 
-     *         ctx.export(&#34;firstDbInstanceClass&#34;, resources.applyValue(getInstanceClassInfosResult -&gt; getInstanceClassInfosResult.infos()[0]));
-     *     }
-     * }
-     * ```
      * 
      */
     public static Output<GetInstanceClassInfosResult> getInstanceClassInfos(GetInstanceClassInfosArgs args) {
@@ -1268,37 +1321,6 @@ public final class RdsFunctions {
      * &gt; **NOTE:** Available in v1.196.0+
      * 
      * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.alicloud.rds.RdsFunctions;
-     * import com.pulumi.alicloud.rds.inputs.GetInstanceClassInfosArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var resources = RdsFunctions.getInstanceClassInfos(GetInstanceClassInfosArgs.builder()
-     *             .commodityCode(&#34;bards&#34;)
-     *             .orderType(&#34;BUY&#34;)
-     *             .outputFile(&#34;./classes.txt&#34;)
-     *             .build());
-     * 
-     *         ctx.export(&#34;firstDbInstanceClass&#34;, resources.applyValue(getInstanceClassInfosResult -&gt; getInstanceClassInfosResult.infos()[0]));
-     *     }
-     * }
-     * ```
      * 
      */
     public static CompletableFuture<GetInstanceClassInfosResult> getInstanceClassInfosPlain(GetInstanceClassInfosPlainArgs args) {
@@ -1310,37 +1332,6 @@ public final class RdsFunctions {
      * &gt; **NOTE:** Available in v1.196.0+
      * 
      * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.alicloud.rds.RdsFunctions;
-     * import com.pulumi.alicloud.rds.inputs.GetInstanceClassInfosArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var resources = RdsFunctions.getInstanceClassInfos(GetInstanceClassInfosArgs.builder()
-     *             .commodityCode(&#34;bards&#34;)
-     *             .orderType(&#34;BUY&#34;)
-     *             .outputFile(&#34;./classes.txt&#34;)
-     *             .build());
-     * 
-     *         ctx.export(&#34;firstDbInstanceClass&#34;, resources.applyValue(getInstanceClassInfosResult -&gt; getInstanceClassInfosResult.infos()[0]));
-     *     }
-     * }
-     * ```
      * 
      */
     public static Output<GetInstanceClassInfosResult> getInstanceClassInfos(GetInstanceClassInfosArgs args, InvokeOptions options) {
@@ -1352,37 +1343,6 @@ public final class RdsFunctions {
      * &gt; **NOTE:** Available in v1.196.0+
      * 
      * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.alicloud.rds.RdsFunctions;
-     * import com.pulumi.alicloud.rds.inputs.GetInstanceClassInfosArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var resources = RdsFunctions.getInstanceClassInfos(GetInstanceClassInfosArgs.builder()
-     *             .commodityCode(&#34;bards&#34;)
-     *             .orderType(&#34;BUY&#34;)
-     *             .outputFile(&#34;./classes.txt&#34;)
-     *             .build());
-     * 
-     *         ctx.export(&#34;firstDbInstanceClass&#34;, resources.applyValue(getInstanceClassInfosResult -&gt; getInstanceClassInfosResult.infos()[0]));
-     *     }
-     * }
-     * ```
      * 
      */
     public static CompletableFuture<GetInstanceClassInfosResult> getInstanceClassInfosPlain(GetInstanceClassInfosPlainArgs args, InvokeOptions options) {
@@ -1394,38 +1354,6 @@ public final class RdsFunctions {
      * &gt; **NOTE:** Available in v1.46.0+
      * 
      * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.alicloud.rds.RdsFunctions;
-     * import com.pulumi.alicloud.rds.inputs.GetInstanceClassesArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var resources = RdsFunctions.getInstanceClasses(GetInstanceClassesArgs.builder()
-     *             .engine(&#34;MySQL&#34;)
-     *             .engineVersion(&#34;5.6&#34;)
-     *             .instanceChargeType(&#34;PostPaid&#34;)
-     *             .outputFile(&#34;./classes.txt&#34;)
-     *             .build());
-     * 
-     *         ctx.export(&#34;firstDbInstanceClass&#34;, resources.applyValue(getInstanceClassesResult -&gt; getInstanceClassesResult.instanceClasses()[0].instanceClass()));
-     *     }
-     * }
-     * ```
      * 
      */
     public static Output<GetInstanceClassesResult> getInstanceClasses() {
@@ -1437,38 +1365,6 @@ public final class RdsFunctions {
      * &gt; **NOTE:** Available in v1.46.0+
      * 
      * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.alicloud.rds.RdsFunctions;
-     * import com.pulumi.alicloud.rds.inputs.GetInstanceClassesArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var resources = RdsFunctions.getInstanceClasses(GetInstanceClassesArgs.builder()
-     *             .engine(&#34;MySQL&#34;)
-     *             .engineVersion(&#34;5.6&#34;)
-     *             .instanceChargeType(&#34;PostPaid&#34;)
-     *             .outputFile(&#34;./classes.txt&#34;)
-     *             .build());
-     * 
-     *         ctx.export(&#34;firstDbInstanceClass&#34;, resources.applyValue(getInstanceClassesResult -&gt; getInstanceClassesResult.instanceClasses()[0].instanceClass()));
-     *     }
-     * }
-     * ```
      * 
      */
     public static CompletableFuture<GetInstanceClassesResult> getInstanceClassesPlain() {
@@ -1480,38 +1376,6 @@ public final class RdsFunctions {
      * &gt; **NOTE:** Available in v1.46.0+
      * 
      * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.alicloud.rds.RdsFunctions;
-     * import com.pulumi.alicloud.rds.inputs.GetInstanceClassesArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var resources = RdsFunctions.getInstanceClasses(GetInstanceClassesArgs.builder()
-     *             .engine(&#34;MySQL&#34;)
-     *             .engineVersion(&#34;5.6&#34;)
-     *             .instanceChargeType(&#34;PostPaid&#34;)
-     *             .outputFile(&#34;./classes.txt&#34;)
-     *             .build());
-     * 
-     *         ctx.export(&#34;firstDbInstanceClass&#34;, resources.applyValue(getInstanceClassesResult -&gt; getInstanceClassesResult.instanceClasses()[0].instanceClass()));
-     *     }
-     * }
-     * ```
      * 
      */
     public static Output<GetInstanceClassesResult> getInstanceClasses(GetInstanceClassesArgs args) {
@@ -1523,38 +1387,6 @@ public final class RdsFunctions {
      * &gt; **NOTE:** Available in v1.46.0+
      * 
      * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.alicloud.rds.RdsFunctions;
-     * import com.pulumi.alicloud.rds.inputs.GetInstanceClassesArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var resources = RdsFunctions.getInstanceClasses(GetInstanceClassesArgs.builder()
-     *             .engine(&#34;MySQL&#34;)
-     *             .engineVersion(&#34;5.6&#34;)
-     *             .instanceChargeType(&#34;PostPaid&#34;)
-     *             .outputFile(&#34;./classes.txt&#34;)
-     *             .build());
-     * 
-     *         ctx.export(&#34;firstDbInstanceClass&#34;, resources.applyValue(getInstanceClassesResult -&gt; getInstanceClassesResult.instanceClasses()[0].instanceClass()));
-     *     }
-     * }
-     * ```
      * 
      */
     public static CompletableFuture<GetInstanceClassesResult> getInstanceClassesPlain(GetInstanceClassesPlainArgs args) {
@@ -1566,38 +1398,6 @@ public final class RdsFunctions {
      * &gt; **NOTE:** Available in v1.46.0+
      * 
      * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.alicloud.rds.RdsFunctions;
-     * import com.pulumi.alicloud.rds.inputs.GetInstanceClassesArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var resources = RdsFunctions.getInstanceClasses(GetInstanceClassesArgs.builder()
-     *             .engine(&#34;MySQL&#34;)
-     *             .engineVersion(&#34;5.6&#34;)
-     *             .instanceChargeType(&#34;PostPaid&#34;)
-     *             .outputFile(&#34;./classes.txt&#34;)
-     *             .build());
-     * 
-     *         ctx.export(&#34;firstDbInstanceClass&#34;, resources.applyValue(getInstanceClassesResult -&gt; getInstanceClassesResult.instanceClasses()[0].instanceClass()));
-     *     }
-     * }
-     * ```
      * 
      */
     public static Output<GetInstanceClassesResult> getInstanceClasses(GetInstanceClassesArgs args, InvokeOptions options) {
@@ -1609,38 +1409,6 @@ public final class RdsFunctions {
      * &gt; **NOTE:** Available in v1.46.0+
      * 
      * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.alicloud.rds.RdsFunctions;
-     * import com.pulumi.alicloud.rds.inputs.GetInstanceClassesArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var resources = RdsFunctions.getInstanceClasses(GetInstanceClassesArgs.builder()
-     *             .engine(&#34;MySQL&#34;)
-     *             .engineVersion(&#34;5.6&#34;)
-     *             .instanceChargeType(&#34;PostPaid&#34;)
-     *             .outputFile(&#34;./classes.txt&#34;)
-     *             .build());
-     * 
-     *         ctx.export(&#34;firstDbInstanceClass&#34;, resources.applyValue(getInstanceClassesResult -&gt; getInstanceClassesResult.instanceClasses()[0].instanceClass()));
-     *     }
-     * }
-     * ```
      * 
      */
     public static CompletableFuture<GetInstanceClassesResult> getInstanceClassesPlain(GetInstanceClassesPlainArgs args, InvokeOptions options) {
@@ -1652,38 +1420,6 @@ public final class RdsFunctions {
      * &gt; **NOTE:** Available in v1.46.0+
      * 
      * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.alicloud.rds.RdsFunctions;
-     * import com.pulumi.alicloud.rds.inputs.GetInstanceEnginesArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var resources = RdsFunctions.getInstanceEngines(GetInstanceEnginesArgs.builder()
-     *             .engine(&#34;MySQL&#34;)
-     *             .engineVersion(&#34;5.6&#34;)
-     *             .instanceChargeType(&#34;PostPaid&#34;)
-     *             .outputFile(&#34;./engines.txt&#34;)
-     *             .build());
-     * 
-     *         ctx.export(&#34;firstDbCategory&#34;, resources.applyValue(getInstanceEnginesResult -&gt; getInstanceEnginesResult.instanceEngines()[0].category()));
-     *     }
-     * }
-     * ```
      * 
      */
     public static Output<GetInstanceEnginesResult> getInstanceEngines() {
@@ -1695,38 +1431,6 @@ public final class RdsFunctions {
      * &gt; **NOTE:** Available in v1.46.0+
      * 
      * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.alicloud.rds.RdsFunctions;
-     * import com.pulumi.alicloud.rds.inputs.GetInstanceEnginesArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var resources = RdsFunctions.getInstanceEngines(GetInstanceEnginesArgs.builder()
-     *             .engine(&#34;MySQL&#34;)
-     *             .engineVersion(&#34;5.6&#34;)
-     *             .instanceChargeType(&#34;PostPaid&#34;)
-     *             .outputFile(&#34;./engines.txt&#34;)
-     *             .build());
-     * 
-     *         ctx.export(&#34;firstDbCategory&#34;, resources.applyValue(getInstanceEnginesResult -&gt; getInstanceEnginesResult.instanceEngines()[0].category()));
-     *     }
-     * }
-     * ```
      * 
      */
     public static CompletableFuture<GetInstanceEnginesResult> getInstanceEnginesPlain() {
@@ -1738,38 +1442,6 @@ public final class RdsFunctions {
      * &gt; **NOTE:** Available in v1.46.0+
      * 
      * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.alicloud.rds.RdsFunctions;
-     * import com.pulumi.alicloud.rds.inputs.GetInstanceEnginesArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var resources = RdsFunctions.getInstanceEngines(GetInstanceEnginesArgs.builder()
-     *             .engine(&#34;MySQL&#34;)
-     *             .engineVersion(&#34;5.6&#34;)
-     *             .instanceChargeType(&#34;PostPaid&#34;)
-     *             .outputFile(&#34;./engines.txt&#34;)
-     *             .build());
-     * 
-     *         ctx.export(&#34;firstDbCategory&#34;, resources.applyValue(getInstanceEnginesResult -&gt; getInstanceEnginesResult.instanceEngines()[0].category()));
-     *     }
-     * }
-     * ```
      * 
      */
     public static Output<GetInstanceEnginesResult> getInstanceEngines(GetInstanceEnginesArgs args) {
@@ -1781,38 +1453,6 @@ public final class RdsFunctions {
      * &gt; **NOTE:** Available in v1.46.0+
      * 
      * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.alicloud.rds.RdsFunctions;
-     * import com.pulumi.alicloud.rds.inputs.GetInstanceEnginesArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var resources = RdsFunctions.getInstanceEngines(GetInstanceEnginesArgs.builder()
-     *             .engine(&#34;MySQL&#34;)
-     *             .engineVersion(&#34;5.6&#34;)
-     *             .instanceChargeType(&#34;PostPaid&#34;)
-     *             .outputFile(&#34;./engines.txt&#34;)
-     *             .build());
-     * 
-     *         ctx.export(&#34;firstDbCategory&#34;, resources.applyValue(getInstanceEnginesResult -&gt; getInstanceEnginesResult.instanceEngines()[0].category()));
-     *     }
-     * }
-     * ```
      * 
      */
     public static CompletableFuture<GetInstanceEnginesResult> getInstanceEnginesPlain(GetInstanceEnginesPlainArgs args) {
@@ -1824,38 +1464,6 @@ public final class RdsFunctions {
      * &gt; **NOTE:** Available in v1.46.0+
      * 
      * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.alicloud.rds.RdsFunctions;
-     * import com.pulumi.alicloud.rds.inputs.GetInstanceEnginesArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var resources = RdsFunctions.getInstanceEngines(GetInstanceEnginesArgs.builder()
-     *             .engine(&#34;MySQL&#34;)
-     *             .engineVersion(&#34;5.6&#34;)
-     *             .instanceChargeType(&#34;PostPaid&#34;)
-     *             .outputFile(&#34;./engines.txt&#34;)
-     *             .build());
-     * 
-     *         ctx.export(&#34;firstDbCategory&#34;, resources.applyValue(getInstanceEnginesResult -&gt; getInstanceEnginesResult.instanceEngines()[0].category()));
-     *     }
-     * }
-     * ```
      * 
      */
     public static Output<GetInstanceEnginesResult> getInstanceEngines(GetInstanceEnginesArgs args, InvokeOptions options) {
@@ -1867,38 +1475,6 @@ public final class RdsFunctions {
      * &gt; **NOTE:** Available in v1.46.0+
      * 
      * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.alicloud.rds.RdsFunctions;
-     * import com.pulumi.alicloud.rds.inputs.GetInstanceEnginesArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var resources = RdsFunctions.getInstanceEngines(GetInstanceEnginesArgs.builder()
-     *             .engine(&#34;MySQL&#34;)
-     *             .engineVersion(&#34;5.6&#34;)
-     *             .instanceChargeType(&#34;PostPaid&#34;)
-     *             .outputFile(&#34;./engines.txt&#34;)
-     *             .build());
-     * 
-     *         ctx.export(&#34;firstDbCategory&#34;, resources.applyValue(getInstanceEnginesResult -&gt; getInstanceEnginesResult.instanceEngines()[0].category()));
-     *     }
-     * }
-     * ```
      * 
      */
     public static CompletableFuture<GetInstanceEnginesResult> getInstanceEnginesPlain(GetInstanceEnginesPlainArgs args, InvokeOptions options) {
@@ -1911,6 +1487,8 @@ public final class RdsFunctions {
      * &gt; **NOTE:** Available since v1.7.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1945,6 +1523,7 @@ public final class RdsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetInstancesResult> getInstances() {
@@ -1957,6 +1536,8 @@ public final class RdsFunctions {
      * &gt; **NOTE:** Available since v1.7.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1991,6 +1572,7 @@ public final class RdsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetInstancesResult> getInstancesPlain() {
@@ -2003,6 +1585,8 @@ public final class RdsFunctions {
      * &gt; **NOTE:** Available since v1.7.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2037,6 +1621,7 @@ public final class RdsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetInstancesResult> getInstances(GetInstancesArgs args) {
@@ -2049,6 +1634,8 @@ public final class RdsFunctions {
      * &gt; **NOTE:** Available since v1.7.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2083,6 +1670,7 @@ public final class RdsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetInstancesResult> getInstancesPlain(GetInstancesPlainArgs args) {
@@ -2095,6 +1683,8 @@ public final class RdsFunctions {
      * &gt; **NOTE:** Available since v1.7.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2129,6 +1719,7 @@ public final class RdsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetInstancesResult> getInstances(GetInstancesArgs args, InvokeOptions options) {
@@ -2141,6 +1732,8 @@ public final class RdsFunctions {
      * &gt; **NOTE:** Available since v1.7.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2175,6 +1768,7 @@ public final class RdsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetInstancesResult> getInstancesPlain(GetInstancesPlainArgs args, InvokeOptions options) {
@@ -2188,6 +1782,8 @@ public final class RdsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2218,6 +1814,7 @@ public final class RdsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetModifyParameterLogsResult> getModifyParameterLogs(GetModifyParameterLogsArgs args) {
@@ -2231,6 +1828,8 @@ public final class RdsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2261,6 +1860,7 @@ public final class RdsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetModifyParameterLogsResult> getModifyParameterLogsPlain(GetModifyParameterLogsPlainArgs args) {
@@ -2274,6 +1874,8 @@ public final class RdsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2304,6 +1906,7 @@ public final class RdsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetModifyParameterLogsResult> getModifyParameterLogs(GetModifyParameterLogsArgs args, InvokeOptions options) {
@@ -2317,6 +1920,8 @@ public final class RdsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2347,6 +1952,7 @@ public final class RdsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetModifyParameterLogsResult> getModifyParameterLogsPlain(GetModifyParameterLogsPlainArgs args, InvokeOptions options) {
@@ -2360,6 +1966,8 @@ public final class RdsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2389,6 +1997,7 @@ public final class RdsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetRdsBackupsResult> getRdsBackups(GetRdsBackupsArgs args) {
@@ -2402,6 +2011,8 @@ public final class RdsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2431,6 +2042,7 @@ public final class RdsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetRdsBackupsResult> getRdsBackupsPlain(GetRdsBackupsPlainArgs args) {
@@ -2444,6 +2056,8 @@ public final class RdsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2473,6 +2087,7 @@ public final class RdsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetRdsBackupsResult> getRdsBackups(GetRdsBackupsArgs args, InvokeOptions options) {
@@ -2486,6 +2101,8 @@ public final class RdsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2515,6 +2132,7 @@ public final class RdsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetRdsBackupsResult> getRdsBackupsPlain(GetRdsBackupsPlainArgs args, InvokeOptions options) {
@@ -2546,6 +2164,8 @@ public final class RdsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2575,6 +2195,7 @@ public final class RdsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetSlotsResult> getSlots(GetSlotsArgs args) {
@@ -2588,6 +2209,8 @@ public final class RdsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2617,6 +2240,7 @@ public final class RdsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetSlotsResult> getSlotsPlain(GetSlotsPlainArgs args) {
@@ -2630,6 +2254,8 @@ public final class RdsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2659,6 +2285,7 @@ public final class RdsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetSlotsResult> getSlots(GetSlotsArgs args, InvokeOptions options) {
@@ -2672,6 +2299,8 @@ public final class RdsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2701,6 +2330,7 @@ public final class RdsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetSlotsResult> getSlotsPlain(GetSlotsPlainArgs args, InvokeOptions options) {

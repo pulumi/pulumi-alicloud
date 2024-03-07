@@ -13,6 +13,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -24,6 +25,7 @@ import * as utilities from "../utilities";
  *     vpnGatewayId: "fake-vpn-id",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getConnections(args?: GetConnectionsArgs, opts?: pulumi.InvokeOptions): Promise<GetConnectionsResult> {
     args = args || {};
@@ -102,6 +104,7 @@ export interface GetConnectionsResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -113,6 +116,7 @@ export interface GetConnectionsResult {
  *     vpnGatewayId: "fake-vpn-id",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getConnectionsOutput(args?: GetConnectionsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetConnectionsResult> {
     return pulumi.output(args).apply((a: any) => getConnections(a, opts))

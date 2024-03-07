@@ -27,6 +27,8 @@ public final class VideosurveillanceFunctions {
      * &gt; **NOTE:** The Video Surveillance System service is not support in the international site.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -55,6 +57,7 @@ public final class VideosurveillanceFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetServiceResult> getService() {
@@ -70,6 +73,8 @@ public final class VideosurveillanceFunctions {
      * &gt; **NOTE:** The Video Surveillance System service is not support in the international site.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -98,6 +103,7 @@ public final class VideosurveillanceFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetServiceResult> getServicePlain() {
@@ -113,6 +119,8 @@ public final class VideosurveillanceFunctions {
      * &gt; **NOTE:** The Video Surveillance System service is not support in the international site.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -141,6 +149,7 @@ public final class VideosurveillanceFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetServiceResult> getService(GetServiceArgs args) {
@@ -156,6 +165,8 @@ public final class VideosurveillanceFunctions {
      * &gt; **NOTE:** The Video Surveillance System service is not support in the international site.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -184,6 +195,7 @@ public final class VideosurveillanceFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetServiceResult> getServicePlain(GetServicePlainArgs args) {
@@ -199,6 +211,8 @@ public final class VideosurveillanceFunctions {
      * &gt; **NOTE:** The Video Surveillance System service is not support in the international site.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -227,6 +241,7 @@ public final class VideosurveillanceFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetServiceResult> getService(GetServiceArgs args, InvokeOptions options) {
@@ -242,6 +257,8 @@ public final class VideosurveillanceFunctions {
      * &gt; **NOTE:** The Video Surveillance System service is not support in the international site.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -270,6 +287,7 @@ public final class VideosurveillanceFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetServiceResult> getServicePlain(GetServicePlainArgs args, InvokeOptions options) {
@@ -283,6 +301,8 @@ public final class VideosurveillanceFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -322,6 +342,7 @@ public final class VideosurveillanceFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetSystemGroupsResult> getSystemGroups() {
@@ -335,6 +356,8 @@ public final class VideosurveillanceFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -374,6 +397,7 @@ public final class VideosurveillanceFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetSystemGroupsResult> getSystemGroupsPlain() {
@@ -387,6 +411,8 @@ public final class VideosurveillanceFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -426,6 +452,7 @@ public final class VideosurveillanceFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetSystemGroupsResult> getSystemGroups(GetSystemGroupsArgs args) {
@@ -439,6 +466,8 @@ public final class VideosurveillanceFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -478,6 +507,7 @@ public final class VideosurveillanceFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetSystemGroupsResult> getSystemGroupsPlain(GetSystemGroupsPlainArgs args) {
@@ -491,6 +521,8 @@ public final class VideosurveillanceFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -530,6 +562,7 @@ public final class VideosurveillanceFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetSystemGroupsResult> getSystemGroups(GetSystemGroupsArgs args, InvokeOptions options) {
@@ -543,6 +576,8 @@ public final class VideosurveillanceFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -582,6 +617,7 @@ public final class VideosurveillanceFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetSystemGroupsResult> getSystemGroupsPlain(GetSystemGroupsPlainArgs args, InvokeOptions options) {

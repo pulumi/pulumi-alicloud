@@ -193,6 +193,7 @@ def get_container_groups(container_group_name: Optional[str] = None,
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -200,6 +201,7 @@ def get_container_groups(container_group_name: Optional[str] = None,
     example = alicloud.eci.get_container_groups(ids=["example_value"])
     pulumi.export("firstEciContainerGroupId", example.groups[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str container_group_name: The name of ContainerGroup.
@@ -271,6 +273,7 @@ def get_container_groups_output(container_group_name: Optional[pulumi.Input[Opti
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -278,6 +281,7 @@ def get_container_groups_output(container_group_name: Optional[pulumi.Input[Opti
     example = alicloud.eci.get_container_groups(ids=["example_value"])
     pulumi.export("firstEciContainerGroupId", example.groups[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str container_group_name: The name of ContainerGroup.

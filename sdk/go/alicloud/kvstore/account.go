@@ -22,6 +22,7 @@ import (
 //
 // # Basic Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -104,6 +105,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
@@ -120,7 +122,7 @@ type Account struct {
 	// * The name can be up to 100 characters in length.
 	// * The name cannot be one of the reserved words in the [Reserved words for Redis account names](https://www.alibabacloud.com/help/zh/doc-detail/92665.htm) section.
 	AccountName pulumi.StringOutput `pulumi:"accountName"`
-	// The password of the account. The password must be 8 to 32 characters in length. It must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!@ # $ % ^ & * ( ) _ + - =`. You have to specify one of `accountPassword` and `kmsEncryptedPassword` fields.
+	// The password of the account. The password must be 8 to 32 characters in length. It must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!@ # $ %!^(MISSING) & * ( ) _ + - =`. You have to specify one of `accountPassword` and `kmsEncryptedPassword` fields.
 	AccountPassword pulumi.StringPtrOutput `pulumi:"accountPassword"`
 	// The privilege of account access database. Default value: `RoleReadWrite`
 	AccountPrivilege pulumi.StringPtrOutput `pulumi:"accountPrivilege"`
@@ -188,7 +190,7 @@ type accountState struct {
 	// * The name can be up to 100 characters in length.
 	// * The name cannot be one of the reserved words in the [Reserved words for Redis account names](https://www.alibabacloud.com/help/zh/doc-detail/92665.htm) section.
 	AccountName *string `pulumi:"accountName"`
-	// The password of the account. The password must be 8 to 32 characters in length. It must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!@ # $ % ^ & * ( ) _ + - =`. You have to specify one of `accountPassword` and `kmsEncryptedPassword` fields.
+	// The password of the account. The password must be 8 to 32 characters in length. It must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!@ # $ %!^(MISSING) & * ( ) _ + - =`. You have to specify one of `accountPassword` and `kmsEncryptedPassword` fields.
 	AccountPassword *string `pulumi:"accountPassword"`
 	// The privilege of account access database. Default value: `RoleReadWrite`
 	AccountPrivilege *string `pulumi:"accountPrivilege"`
@@ -214,7 +216,7 @@ type AccountState struct {
 	// * The name can be up to 100 characters in length.
 	// * The name cannot be one of the reserved words in the [Reserved words for Redis account names](https://www.alibabacloud.com/help/zh/doc-detail/92665.htm) section.
 	AccountName pulumi.StringPtrInput
-	// The password of the account. The password must be 8 to 32 characters in length. It must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!@ # $ % ^ & * ( ) _ + - =`. You have to specify one of `accountPassword` and `kmsEncryptedPassword` fields.
+	// The password of the account. The password must be 8 to 32 characters in length. It must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!@ # $ %!^(MISSING) & * ( ) _ + - =`. You have to specify one of `accountPassword` and `kmsEncryptedPassword` fields.
 	AccountPassword pulumi.StringPtrInput
 	// The privilege of account access database. Default value: `RoleReadWrite`
 	AccountPrivilege pulumi.StringPtrInput
@@ -244,7 +246,7 @@ type accountArgs struct {
 	// * The name can be up to 100 characters in length.
 	// * The name cannot be one of the reserved words in the [Reserved words for Redis account names](https://www.alibabacloud.com/help/zh/doc-detail/92665.htm) section.
 	AccountName string `pulumi:"accountName"`
-	// The password of the account. The password must be 8 to 32 characters in length. It must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!@ # $ % ^ & * ( ) _ + - =`. You have to specify one of `accountPassword` and `kmsEncryptedPassword` fields.
+	// The password of the account. The password must be 8 to 32 characters in length. It must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!@ # $ %!^(MISSING) & * ( ) _ + - =`. You have to specify one of `accountPassword` and `kmsEncryptedPassword` fields.
 	AccountPassword *string `pulumi:"accountPassword"`
 	// The privilege of account access database. Default value: `RoleReadWrite`
 	AccountPrivilege *string `pulumi:"accountPrivilege"`
@@ -269,7 +271,7 @@ type AccountArgs struct {
 	// * The name can be up to 100 characters in length.
 	// * The name cannot be one of the reserved words in the [Reserved words for Redis account names](https://www.alibabacloud.com/help/zh/doc-detail/92665.htm) section.
 	AccountName pulumi.StringInput
-	// The password of the account. The password must be 8 to 32 characters in length. It must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!@ # $ % ^ & * ( ) _ + - =`. You have to specify one of `accountPassword` and `kmsEncryptedPassword` fields.
+	// The password of the account. The password must be 8 to 32 characters in length. It must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!@ # $ %!^(MISSING) & * ( ) _ + - =`. You have to specify one of `accountPassword` and `kmsEncryptedPassword` fields.
 	AccountPassword pulumi.StringPtrInput
 	// The privilege of account access database. Default value: `RoleReadWrite`
 	AccountPrivilege pulumi.StringPtrInput
@@ -382,7 +384,7 @@ func (o AccountOutput) AccountName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Account) pulumi.StringOutput { return v.AccountName }).(pulumi.StringOutput)
 }
 
-// The password of the account. The password must be 8 to 32 characters in length. It must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!@ # $ % ^ & * ( ) _ + - =`. You have to specify one of `accountPassword` and `kmsEncryptedPassword` fields.
+// The password of the account. The password must be 8 to 32 characters in length. It must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!@ # $ %!^(MISSING) & * ( ) _ + - =`. You have to specify one of `accountPassword` and `kmsEncryptedPassword` fields.
 func (o AccountOutput) AccountPassword() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Account) pulumi.StringPtrOutput { return v.AccountPassword }).(pulumi.StringPtrOutput)
 }

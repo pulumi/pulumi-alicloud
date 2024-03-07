@@ -440,6 +440,7 @@ class PeerConnection(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -468,6 +469,7 @@ class PeerConnection(pulumi.CustomResource):
             description="terraform-example",
             opts=pulumi.ResourceOptions(provider=alicloud["local"]))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -513,6 +515,7 @@ class PeerConnection(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -541,6 +544,7 @@ class PeerConnection(pulumi.CustomResource):
             description="terraform-example",
             opts=pulumi.ResourceOptions(provider=alicloud["local"]))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

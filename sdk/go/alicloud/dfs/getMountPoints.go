@@ -19,6 +19,7 @@ import (
 //
 // # Basic Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -47,6 +48,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func GetMountPoints(ctx *pulumi.Context, args *GetMountPointsArgs, opts ...pulumi.InvokeOption) (*GetMountPointsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetMountPointsResult

@@ -54,7 +54,7 @@ class RuleArgs:
         :param pulumi.Input[str] health_check_http_code: Regular health check HTTP status code. Multiple codes are segmented by “,”. It is required when `health_check` is on. Default to `http_2xx`.  Valid values are: `http_2xx`,  `http_3xx`, `http_4xx` and `http_5xx`.
         :param pulumi.Input[int] health_check_interval: Time interval of health checks. It is required when `health_check` is on. Valid value range: [1-50] in seconds. Default to 2.
         :param pulumi.Input[int] health_check_timeout: Maximum timeout of each health check response. It is required when `health_check` is on. Valid value range: [1-300] in seconds. Default to 5. Note: If `health_check_timeout` < `health_check_interval`, its will be replaced by `health_check_interval`.
-        :param pulumi.Input[str] health_check_uri: URI used for health check. When it used to launch TCP listener, `health_check_type` must be "http". Its length is limited to 1-80 and it must start with /. Only characters such as letters, digits, ‘-’, ‘/’, ‘.’, ‘%’, ‘?’, #’ and ‘&’ are allowed.
+        :param pulumi.Input[str] health_check_uri: URI used for health check. When it used to launch TCP listener, `health_check_type` must be "http". Its length is limited to 1-80 and it must start with /. Only characters such as letters, digits, ‘-’, ‘/’, ‘.’, ‘%!’(MISSING), ‘?’, #’ and ‘&’ are allowed.
         :param pulumi.Input[int] healthy_threshold: Threshold determining the result of the health check is success. It is required when `health_check` is on. Valid value range: [1-10] in seconds. Default to 3.
         :param pulumi.Input[str] listener_sync: Indicates whether a forwarding rule inherits the settings of a health check , session persistence, and scheduling algorithm from a listener. Default to on.
         :param pulumi.Input[str] name: Name of the forwarding rule. Our plugin provides a default name: "tf-slb-rule".
@@ -63,7 +63,7 @@ class RuleArgs:
         :param pulumi.Input[str] sticky_session_type: Mode for handling the cookie. If `sticky_session` is "on", it is mandatory. Otherwise, it will be ignored. Valid values are `insert` and `server`. `insert` means it is inserted from Server Load Balancer; `server` means the Server Load Balancer learns from the backend server.
         :param pulumi.Input[int] unhealthy_threshold: Threshold determining the result of the health check is fail. It is required when `health_check` is on. Valid value range: [1-10] in seconds. Default to 3.
         :param pulumi.Input[str] url: Domain of the forwarding rule. It must be 2-80 characters in length. Only letters a-z, numbers 0-9,
-               and characters '-' '/' '?' '%' '#' and '&' are allowed. URLs must be started with the character '/', but cannot be '/' alone.
+               and characters '-' '/' '?' '%!'(MISSING) '#' and '&' are allowed. URLs must be started with the character '/', but cannot be '/' alone.
         """
         pulumi.set(__self__, "frontend_port", frontend_port)
         pulumi.set(__self__, "load_balancer_id", load_balancer_id)
@@ -270,7 +270,7 @@ class RuleArgs:
     @pulumi.getter(name="healthCheckUri")
     def health_check_uri(self) -> Optional[pulumi.Input[str]]:
         """
-        URI used for health check. When it used to launch TCP listener, `health_check_type` must be "http". Its length is limited to 1-80 and it must start with /. Only characters such as letters, digits, ‘-’, ‘/’, ‘.’, ‘%’, ‘?’, #’ and ‘&’ are allowed.
+        URI used for health check. When it used to launch TCP listener, `health_check_type` must be "http". Its length is limited to 1-80 and it must start with /. Only characters such as letters, digits, ‘-’, ‘/’, ‘.’, ‘%!’(MISSING), ‘?’, #’ and ‘&’ are allowed.
         """
         return pulumi.get(self, "health_check_uri")
 
@@ -367,7 +367,7 @@ class RuleArgs:
     def url(self) -> Optional[pulumi.Input[str]]:
         """
         Domain of the forwarding rule. It must be 2-80 characters in length. Only letters a-z, numbers 0-9,
-        and characters '-' '/' '?' '%' '#' and '&' are allowed. URLs must be started with the character '/', but cannot be '/' alone.
+        and characters '-' '/' '?' '%!'(MISSING) '#' and '&' are allowed. URLs must be started with the character '/', but cannot be '/' alone.
         """
         return pulumi.get(self, "url")
 
@@ -417,7 +417,7 @@ class _RuleState:
         :param pulumi.Input[str] health_check_http_code: Regular health check HTTP status code. Multiple codes are segmented by “,”. It is required when `health_check` is on. Default to `http_2xx`.  Valid values are: `http_2xx`,  `http_3xx`, `http_4xx` and `http_5xx`.
         :param pulumi.Input[int] health_check_interval: Time interval of health checks. It is required when `health_check` is on. Valid value range: [1-50] in seconds. Default to 2.
         :param pulumi.Input[int] health_check_timeout: Maximum timeout of each health check response. It is required when `health_check` is on. Valid value range: [1-300] in seconds. Default to 5. Note: If `health_check_timeout` < `health_check_interval`, its will be replaced by `health_check_interval`.
-        :param pulumi.Input[str] health_check_uri: URI used for health check. When it used to launch TCP listener, `health_check_type` must be "http". Its length is limited to 1-80 and it must start with /. Only characters such as letters, digits, ‘-’, ‘/’, ‘.’, ‘%’, ‘?’, #’ and ‘&’ are allowed.
+        :param pulumi.Input[str] health_check_uri: URI used for health check. When it used to launch TCP listener, `health_check_type` must be "http". Its length is limited to 1-80 and it must start with /. Only characters such as letters, digits, ‘-’, ‘/’, ‘.’, ‘%!’(MISSING), ‘?’, #’ and ‘&’ are allowed.
         :param pulumi.Input[int] healthy_threshold: Threshold determining the result of the health check is success. It is required when `health_check` is on. Valid value range: [1-10] in seconds. Default to 3.
         :param pulumi.Input[str] listener_sync: Indicates whether a forwarding rule inherits the settings of a health check , session persistence, and scheduling algorithm from a listener. Default to on.
         :param pulumi.Input[str] load_balancer_id: The Load Balancer ID which is used to launch the new forwarding rule.
@@ -428,7 +428,7 @@ class _RuleState:
         :param pulumi.Input[str] sticky_session_type: Mode for handling the cookie. If `sticky_session` is "on", it is mandatory. Otherwise, it will be ignored. Valid values are `insert` and `server`. `insert` means it is inserted from Server Load Balancer; `server` means the Server Load Balancer learns from the backend server.
         :param pulumi.Input[int] unhealthy_threshold: Threshold determining the result of the health check is fail. It is required when `health_check` is on. Valid value range: [1-10] in seconds. Default to 3.
         :param pulumi.Input[str] url: Domain of the forwarding rule. It must be 2-80 characters in length. Only letters a-z, numbers 0-9,
-               and characters '-' '/' '?' '%' '#' and '&' are allowed. URLs must be started with the character '/', but cannot be '/' alone.
+               and characters '-' '/' '?' '%!'(MISSING) '#' and '&' are allowed. URLs must be started with the character '/', but cannot be '/' alone.
         """
         if cookie is not None:
             pulumi.set(__self__, "cookie", cookie)
@@ -614,7 +614,7 @@ class _RuleState:
     @pulumi.getter(name="healthCheckUri")
     def health_check_uri(self) -> Optional[pulumi.Input[str]]:
         """
-        URI used for health check. When it used to launch TCP listener, `health_check_type` must be "http". Its length is limited to 1-80 and it must start with /. Only characters such as letters, digits, ‘-’, ‘/’, ‘.’, ‘%’, ‘?’, #’ and ‘&’ are allowed.
+        URI used for health check. When it used to launch TCP listener, `health_check_type` must be "http". Its length is limited to 1-80 and it must start with /. Only characters such as letters, digits, ‘-’, ‘/’, ‘.’, ‘%!’(MISSING), ‘?’, #’ and ‘&’ are allowed.
         """
         return pulumi.get(self, "health_check_uri")
 
@@ -735,7 +735,7 @@ class _RuleState:
     def url(self) -> Optional[pulumi.Input[str]]:
         """
         Domain of the forwarding rule. It must be 2-80 characters in length. Only letters a-z, numbers 0-9,
-        and characters '-' '/' '?' '%' '#' and '&' are allowed. URLs must be started with the character '/', but cannot be '/' alone.
+        and characters '-' '/' '?' '%!'(MISSING) '#' and '&' are allowed. URLs must be started with the character '/', but cannot be '/' alone.
         """
         return pulumi.get(self, "url")
 
@@ -788,6 +788,7 @@ class Rule(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -858,6 +859,7 @@ class Rule(pulumi.CustomResource):
             health_check_domain="test",
             health_check="on")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -883,7 +885,7 @@ class Rule(pulumi.CustomResource):
         :param pulumi.Input[str] health_check_http_code: Regular health check HTTP status code. Multiple codes are segmented by “,”. It is required when `health_check` is on. Default to `http_2xx`.  Valid values are: `http_2xx`,  `http_3xx`, `http_4xx` and `http_5xx`.
         :param pulumi.Input[int] health_check_interval: Time interval of health checks. It is required when `health_check` is on. Valid value range: [1-50] in seconds. Default to 2.
         :param pulumi.Input[int] health_check_timeout: Maximum timeout of each health check response. It is required when `health_check` is on. Valid value range: [1-300] in seconds. Default to 5. Note: If `health_check_timeout` < `health_check_interval`, its will be replaced by `health_check_interval`.
-        :param pulumi.Input[str] health_check_uri: URI used for health check. When it used to launch TCP listener, `health_check_type` must be "http". Its length is limited to 1-80 and it must start with /. Only characters such as letters, digits, ‘-’, ‘/’, ‘.’, ‘%’, ‘?’, #’ and ‘&’ are allowed.
+        :param pulumi.Input[str] health_check_uri: URI used for health check. When it used to launch TCP listener, `health_check_type` must be "http". Its length is limited to 1-80 and it must start with /. Only characters such as letters, digits, ‘-’, ‘/’, ‘.’, ‘%!’(MISSING), ‘?’, #’ and ‘&’ are allowed.
         :param pulumi.Input[int] healthy_threshold: Threshold determining the result of the health check is success. It is required when `health_check` is on. Valid value range: [1-10] in seconds. Default to 3.
         :param pulumi.Input[str] listener_sync: Indicates whether a forwarding rule inherits the settings of a health check , session persistence, and scheduling algorithm from a listener. Default to on.
         :param pulumi.Input[str] load_balancer_id: The Load Balancer ID which is used to launch the new forwarding rule.
@@ -894,7 +896,7 @@ class Rule(pulumi.CustomResource):
         :param pulumi.Input[str] sticky_session_type: Mode for handling the cookie. If `sticky_session` is "on", it is mandatory. Otherwise, it will be ignored. Valid values are `insert` and `server`. `insert` means it is inserted from Server Load Balancer; `server` means the Server Load Balancer learns from the backend server.
         :param pulumi.Input[int] unhealthy_threshold: Threshold determining the result of the health check is fail. It is required when `health_check` is on. Valid value range: [1-10] in seconds. Default to 3.
         :param pulumi.Input[str] url: Domain of the forwarding rule. It must be 2-80 characters in length. Only letters a-z, numbers 0-9,
-               and characters '-' '/' '?' '%' '#' and '&' are allowed. URLs must be started with the character '/', but cannot be '/' alone.
+               and characters '-' '/' '?' '%!'(MISSING) '#' and '&' are allowed. URLs must be started with the character '/', but cannot be '/' alone.
         """
         ...
     @overload
@@ -918,6 +920,7 @@ class Rule(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -988,6 +991,7 @@ class Rule(pulumi.CustomResource):
             health_check_domain="test",
             health_check="on")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -1124,7 +1128,7 @@ class Rule(pulumi.CustomResource):
         :param pulumi.Input[str] health_check_http_code: Regular health check HTTP status code. Multiple codes are segmented by “,”. It is required when `health_check` is on. Default to `http_2xx`.  Valid values are: `http_2xx`,  `http_3xx`, `http_4xx` and `http_5xx`.
         :param pulumi.Input[int] health_check_interval: Time interval of health checks. It is required when `health_check` is on. Valid value range: [1-50] in seconds. Default to 2.
         :param pulumi.Input[int] health_check_timeout: Maximum timeout of each health check response. It is required when `health_check` is on. Valid value range: [1-300] in seconds. Default to 5. Note: If `health_check_timeout` < `health_check_interval`, its will be replaced by `health_check_interval`.
-        :param pulumi.Input[str] health_check_uri: URI used for health check. When it used to launch TCP listener, `health_check_type` must be "http". Its length is limited to 1-80 and it must start with /. Only characters such as letters, digits, ‘-’, ‘/’, ‘.’, ‘%’, ‘?’, #’ and ‘&’ are allowed.
+        :param pulumi.Input[str] health_check_uri: URI used for health check. When it used to launch TCP listener, `health_check_type` must be "http". Its length is limited to 1-80 and it must start with /. Only characters such as letters, digits, ‘-’, ‘/’, ‘.’, ‘%!’(MISSING), ‘?’, #’ and ‘&’ are allowed.
         :param pulumi.Input[int] healthy_threshold: Threshold determining the result of the health check is success. It is required when `health_check` is on. Valid value range: [1-10] in seconds. Default to 3.
         :param pulumi.Input[str] listener_sync: Indicates whether a forwarding rule inherits the settings of a health check , session persistence, and scheduling algorithm from a listener. Default to on.
         :param pulumi.Input[str] load_balancer_id: The Load Balancer ID which is used to launch the new forwarding rule.
@@ -1135,7 +1139,7 @@ class Rule(pulumi.CustomResource):
         :param pulumi.Input[str] sticky_session_type: Mode for handling the cookie. If `sticky_session` is "on", it is mandatory. Otherwise, it will be ignored. Valid values are `insert` and `server`. `insert` means it is inserted from Server Load Balancer; `server` means the Server Load Balancer learns from the backend server.
         :param pulumi.Input[int] unhealthy_threshold: Threshold determining the result of the health check is fail. It is required when `health_check` is on. Valid value range: [1-10] in seconds. Default to 3.
         :param pulumi.Input[str] url: Domain of the forwarding rule. It must be 2-80 characters in length. Only letters a-z, numbers 0-9,
-               and characters '-' '/' '?' '%' '#' and '&' are allowed. URLs must be started with the character '/', but cannot be '/' alone.
+               and characters '-' '/' '?' '%!'(MISSING) '#' and '&' are allowed. URLs must be started with the character '/', but cannot be '/' alone.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1260,7 +1264,7 @@ class Rule(pulumi.CustomResource):
     @pulumi.getter(name="healthCheckUri")
     def health_check_uri(self) -> pulumi.Output[Optional[str]]:
         """
-        URI used for health check. When it used to launch TCP listener, `health_check_type` must be "http". Its length is limited to 1-80 and it must start with /. Only characters such as letters, digits, ‘-’, ‘/’, ‘.’, ‘%’, ‘?’, #’ and ‘&’ are allowed.
+        URI used for health check. When it used to launch TCP listener, `health_check_type` must be "http". Its length is limited to 1-80 and it must start with /. Only characters such as letters, digits, ‘-’, ‘/’, ‘.’, ‘%!’(MISSING), ‘?’, #’ and ‘&’ are allowed.
         """
         return pulumi.get(self, "health_check_uri")
 
@@ -1341,7 +1345,7 @@ class Rule(pulumi.CustomResource):
     def url(self) -> pulumi.Output[Optional[str]]:
         """
         Domain of the forwarding rule. It must be 2-80 characters in length. Only letters a-z, numbers 0-9,
-        and characters '-' '/' '?' '%' '#' and '&' are allowed. URLs must be started with the character '/', but cannot be '/' alone.
+        and characters '-' '/' '?' '%!'(MISSING) '#' and '&' are allowed. URLs must be started with the character '/', but cannot be '/' alone.
         """
         return pulumi.get(self, "url")
 

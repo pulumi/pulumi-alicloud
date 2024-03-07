@@ -103,6 +103,7 @@ def get_bindings(instance_id: Optional[str] = None,
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -110,6 +111,7 @@ def get_bindings(instance_id: Optional[str] = None,
     examples = alicloud.amqp.get_bindings(instance_id="amqp-cn-xxxxx",
         virtual_host_name="my-vh")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str instance_id: Instance Id.
@@ -146,6 +148,7 @@ def get_bindings_output(instance_id: Optional[pulumi.Input[str]] = None,
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -153,6 +156,7 @@ def get_bindings_output(instance_id: Optional[pulumi.Input[str]] = None,
     examples = alicloud.amqp.get_bindings(instance_id="amqp-cn-xxxxx",
         virtual_host_name="my-vh")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str instance_id: Instance Id.

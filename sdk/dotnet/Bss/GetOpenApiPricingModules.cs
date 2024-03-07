@@ -16,10 +16,9 @@ namespace Pulumi.AliCloud.Bss
         /// 
         /// &gt; **NOTE:** Available in 1.195.0+
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -42,8 +41,7 @@ namespace Pulumi.AliCloud.Bss
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetOpenApiPricingModulesResult> InvokeAsync(GetOpenApiPricingModulesArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetOpenApiPricingModulesResult>("alicloud:bss/getOpenApiPricingModules:getOpenApiPricingModules", args ?? new GetOpenApiPricingModulesArgs(), options.WithDefaults());
@@ -53,10 +51,9 @@ namespace Pulumi.AliCloud.Bss
         /// 
         /// &gt; **NOTE:** Available in 1.195.0+
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -79,8 +76,7 @@ namespace Pulumi.AliCloud.Bss
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetOpenApiPricingModulesResult> Invoke(GetOpenApiPricingModulesInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetOpenApiPricingModulesResult>("alicloud:bss/getOpenApiPricingModules:getOpenApiPricingModules", args ?? new GetOpenApiPricingModulesInvokeArgs(), options.WithDefaults());

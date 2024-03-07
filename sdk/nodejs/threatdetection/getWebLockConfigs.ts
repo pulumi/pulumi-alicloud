@@ -13,6 +13,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -22,6 +23,7 @@ import * as utilities from "../utilities";
  * });
  * export const alicloudThreatDetectionWebLockConfigExampleId = _default.then(_default => _default.configs?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getWebLockConfigs(args?: GetWebLockConfigsArgs, opts?: pulumi.InvokeOptions): Promise<GetWebLockConfigsResult> {
     args = args || {};
@@ -102,6 +104,7 @@ export interface GetWebLockConfigsResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -111,6 +114,7 @@ export interface GetWebLockConfigsResult {
  * });
  * export const alicloudThreatDetectionWebLockConfigExampleId = _default.then(_default => _default.configs?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getWebLockConfigsOutput(args?: GetWebLockConfigsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetWebLockConfigsResult> {
     return pulumi.output(args).apply((a: any) => getWebLockConfigs(a, opts))

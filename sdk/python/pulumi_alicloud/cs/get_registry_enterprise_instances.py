@@ -120,6 +120,7 @@ def get_registry_enterprise_instances(enable_details: Optional[bool] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -128,6 +129,7 @@ def get_registry_enterprise_instances(enable_details: Optional[bool] = None,
         output_file="my-instances-json")
     pulumi.export("output", my_instances.instances)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param bool enable_details: Default to `true`. Set it to true can output instance authorization token.
@@ -166,6 +168,7 @@ def get_registry_enterprise_instances_output(enable_details: Optional[pulumi.Inp
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -174,6 +177,7 @@ def get_registry_enterprise_instances_output(enable_details: Optional[pulumi.Inp
         output_file="my-instances-json")
     pulumi.export("output", my_instances.instances)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param bool enable_details: Default to `true`. Set it to true can output instance authorization token.

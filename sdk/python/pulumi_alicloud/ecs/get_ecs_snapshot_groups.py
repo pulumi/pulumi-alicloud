@@ -143,6 +143,7 @@ def get_ecs_snapshot_groups(ids: Optional[Sequence[str]] = None,
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -156,6 +157,7 @@ def get_ecs_snapshot_groups(ids: Optional[Sequence[str]] = None,
     instance_id = alicloud.ecs.get_ecs_snapshot_groups(instance_id="example-instance_id")
     pulumi.export("ecsSnapshotGroupId4", instance_id.groups[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Snapshot Group IDs.
@@ -208,6 +210,7 @@ def get_ecs_snapshot_groups_output(ids: Optional[pulumi.Input[Optional[Sequence[
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -221,6 +224,7 @@ def get_ecs_snapshot_groups_output(ids: Optional[pulumi.Input[Optional[Sequence[
     instance_id = alicloud.ecs.get_ecs_snapshot_groups(instance_id="example-instance_id")
     pulumi.export("ecsSnapshotGroupId4", instance_id.groups[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Snapshot Group IDs.

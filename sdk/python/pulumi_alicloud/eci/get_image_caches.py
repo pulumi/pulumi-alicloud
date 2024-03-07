@@ -157,6 +157,18 @@ def get_image_caches(ids: Optional[Sequence[str]] = None,
 
     > **NOTE:** Available in 1.90.0+.
 
+    ## Example Usage
+
+     <!--Start PulumiCodeChooser -->
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    example = alicloud.eci.get_image_caches(ids=["imc-bp1ef0dyp7ldhb1d****"])
+    pulumi.export("imageCache", example.caches[0].id)
+    ```
+    <!--End PulumiCodeChooser -->
+
 
     :param Sequence[str] ids: A list ids of ECI Image Cache.
     :param str image: Find the mirror cache containing it according to the image name.
@@ -203,6 +215,18 @@ def get_image_caches_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]]
     Provides a collection of ECI Image Cache to the specified filters.
 
     > **NOTE:** Available in 1.90.0+.
+
+    ## Example Usage
+
+     <!--Start PulumiCodeChooser -->
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    example = alicloud.eci.get_image_caches(ids=["imc-bp1ef0dyp7ldhb1d****"])
+    pulumi.export("imageCache", example.caches[0].id)
+    ```
+    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list ids of ECI Image Cache.

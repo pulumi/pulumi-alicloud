@@ -123,6 +123,7 @@ def get_gateway_block_volumes(gateway_id: Optional[str] = None,
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -137,6 +138,7 @@ def get_gateway_block_volumes(gateway_id: Optional[str] = None,
         name_regex="^my-GatewayBlockVolume")
     pulumi.export("cloudStorageGatewayGatewayBlockVolumeId2", name_regex.volumes[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str gateway_id: The Gateway ID.
@@ -181,6 +183,7 @@ def get_gateway_block_volumes_output(gateway_id: Optional[pulumi.Input[str]] = N
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -195,6 +198,7 @@ def get_gateway_block_volumes_output(gateway_id: Optional[pulumi.Input[str]] = N
         name_regex="^my-GatewayBlockVolume")
     pulumi.export("cloudStorageGatewayGatewayBlockVolumeId2", name_regex.volumes[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str gateway_id: The Gateway ID.

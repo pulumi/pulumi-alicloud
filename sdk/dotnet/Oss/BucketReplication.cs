@@ -20,6 +20,7 @@ namespace Pulumi.AliCloud.Oss
     /// 
     /// Set bucket replication configuration
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -136,14 +137,15 @@ namespace Pulumi.AliCloud.Oss
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
     /// ### Timeouts
     /// 
-    ///  The `timeouts` block allows you to specify timeouts for certain actions:
+    /// The `timeouts` block allows you to specify timeouts for certain actions:
     /// 
-    ///  * `delete` - (Defaults to 30 mins) Used when delete a data replication rule (until the data replication task is cleared).
+    /// * `delete` - (Defaults to 30 mins) Used when delete a data replication rule (until the data replication task is cleared).
     /// </summary>
     [AliCloudResourceType("alicloud:oss/bucketReplication:BucketReplication")]
     public partial class BucketReplication : global::Pulumi.CustomResource

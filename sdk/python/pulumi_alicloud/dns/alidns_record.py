@@ -401,6 +401,7 @@ class AlidnsRecord(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -421,6 +422,7 @@ class AlidnsRecord(pulumi.CustomResource):
             remark="tf-example",
             status="ENABLE")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -459,6 +461,7 @@ class AlidnsRecord(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -479,6 +482,7 @@ class AlidnsRecord(pulumi.CustomResource):
             remark="tf-example",
             status="ENABLE")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

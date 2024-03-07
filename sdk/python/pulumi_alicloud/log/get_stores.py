@@ -113,6 +113,7 @@ def get_stores(ids: Optional[Sequence[str]] = None,
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -121,6 +122,7 @@ def get_stores(ids: Optional[Sequence[str]] = None,
         ids=["the_store_name"])
     pulumi.export("firstLogStoreId", example.stores[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of store IDs.
@@ -160,6 +162,7 @@ def get_stores_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = Non
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -168,6 +171,7 @@ def get_stores_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = Non
         ids=["the_store_name"])
     pulumi.export("firstLogStoreId", example.stores[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of store IDs.

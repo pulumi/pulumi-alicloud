@@ -94,6 +94,7 @@ def get_enterprise_proxies(ids: Optional[Sequence[str]] = None,
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -101,6 +102,7 @@ def get_enterprise_proxies(ids: Optional[Sequence[str]] = None,
     ids = alicloud.dms.get_enterprise_proxies()
     pulumi.export("dmsEnterpriseProxyId1", ids.proxies[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Proxy IDs.
@@ -136,6 +138,7 @@ def get_enterprise_proxies_output(ids: Optional[pulumi.Input[Optional[Sequence[s
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -143,6 +146,7 @@ def get_enterprise_proxies_output(ids: Optional[pulumi.Input[Optional[Sequence[s
     ids = alicloud.dms.get_enterprise_proxies()
     pulumi.export("dmsEnterpriseProxyId1", ids.proxies[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Proxy IDs.

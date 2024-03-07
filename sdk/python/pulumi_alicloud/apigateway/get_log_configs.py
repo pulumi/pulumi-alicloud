@@ -94,6 +94,7 @@ def get_log_configs(ids: Optional[Sequence[str]] = None,
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -103,6 +104,7 @@ def get_log_configs(ids: Optional[Sequence[str]] = None,
     log_type = alicloud.apigateway.get_log_configs(log_type="PROVIDER")
     pulumi.export("apiGatewayLogConfigId2", log_type.configs[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Log Config IDs.
@@ -138,6 +140,7 @@ def get_log_configs_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] 
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -147,6 +150,7 @@ def get_log_configs_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] 
     log_type = alicloud.apigateway.get_log_configs(log_type="PROVIDER")
     pulumi.export("apiGatewayLogConfigId2", log_type.configs[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Log Config IDs.

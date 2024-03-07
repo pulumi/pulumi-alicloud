@@ -10,6 +10,8 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Cfg
 {
     /// <summary>
+    /// ## Example Usage
+    /// 
     /// ## Import
     /// 
     /// Alicloud Config Delivery Channel can be imported using the id, e.g.

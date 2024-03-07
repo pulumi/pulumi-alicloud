@@ -108,6 +108,7 @@ class EcsAutoSnapshotPolicyAttachment(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -144,6 +145,7 @@ class EcsAutoSnapshotPolicyAttachment(pulumi.CustomResource):
             auto_snapshot_policy_id=example_auto_snapshot_policy.id,
             disk_id=example_ecs_disk.id)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -175,6 +177,7 @@ class EcsAutoSnapshotPolicyAttachment(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -211,6 +214,7 @@ class EcsAutoSnapshotPolicyAttachment(pulumi.CustomResource):
             auto_snapshot_policy_id=example_auto_snapshot_policy.id,
             disk_id=example_ecs_disk.id)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

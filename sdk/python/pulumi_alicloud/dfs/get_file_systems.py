@@ -103,6 +103,7 @@ def get_file_systems(ids: Optional[Sequence[str]] = None,
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -112,6 +113,7 @@ def get_file_systems(ids: Optional[Sequence[str]] = None,
     name_regex = alicloud.dfs.get_file_systems(name_regex="^my-FileSystem")
     pulumi.export("dfsFileSystemId2", name_regex.systems[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of File System IDs.
@@ -148,6 +150,7 @@ def get_file_systems_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]]
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -157,6 +160,7 @@ def get_file_systems_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]]
     name_regex = alicloud.dfs.get_file_systems(name_regex="^my-FileSystem")
     pulumi.export("dfsFileSystemId2", name_regex.systems[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of File System IDs.

@@ -4593,6 +4593,7 @@ type GetInstancesInstance struct {
 	// Instance status. Possible values: `Running`, `Disabled`, `Deleting`.
 	Status string `pulumi:"status"`
 	// A map of tags assigned to the instance. It must be in the format:
+	// <!--Start PulumiCodeChooser -->
 	// ```go
 	// package main
 	//
@@ -4616,6 +4617,7 @@ type GetInstancesInstance struct {
 	// 	})
 	// }
 	// ```
+	// <!--End PulumiCodeChooser -->
 	Tags map[string]interface{} `pulumi:"tags"`
 	// The user id of the instance.
 	UserId string `pulumi:"userId"`
@@ -4654,6 +4656,7 @@ type GetInstancesInstanceArgs struct {
 	// Instance status. Possible values: `Running`, `Disabled`, `Deleting`.
 	Status pulumi.StringInput `pulumi:"status"`
 	// A map of tags assigned to the instance. It must be in the format:
+	// <!--Start PulumiCodeChooser -->
 	// ```go
 	// package main
 	//
@@ -4677,6 +4680,7 @@ type GetInstancesInstanceArgs struct {
 	// 	})
 	// }
 	// ```
+	// <!--End PulumiCodeChooser -->
 	Tags pulumi.MapInput `pulumi:"tags"`
 	// The user id of the instance.
 	UserId pulumi.StringInput `pulumi:"userId"`
@@ -4781,6 +4785,7 @@ func (o GetInstancesInstanceOutput) Status() pulumi.StringOutput {
 }
 
 // A map of tags assigned to the instance. It must be in the format:
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -4807,6 +4812,7 @@ func (o GetInstancesInstanceOutput) Status() pulumi.StringOutput {
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func (o GetInstancesInstanceOutput) Tags() pulumi.MapOutput {
 	return o.ApplyT(func(v GetInstancesInstance) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
 }

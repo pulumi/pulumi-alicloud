@@ -196,6 +196,7 @@ class RealTimeLogDelivery(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -232,6 +233,7 @@ class RealTimeLogDelivery(pulumi.CustomResource):
             project=default_project.project_name,
             sls_region=default_regions.regions[0].id)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -267,6 +269,7 @@ class RealTimeLogDelivery(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -303,6 +306,7 @@ class RealTimeLogDelivery(pulumi.CustomResource):
             project=default_project.project_name,
             sls_region=default_regions.regions[0].id)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

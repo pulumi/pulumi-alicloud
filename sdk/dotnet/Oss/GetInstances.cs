@@ -15,10 +15,9 @@ namespace Pulumi.AliCloud.Oss
         /// <summary>
         /// This data source provides the ots instances of the current Alibaba Cloud user.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -39,8 +38,7 @@ namespace Pulumi.AliCloud.Oss
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetInstancesResult> InvokeAsync(GetInstancesArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetInstancesResult>("alicloud:oss/getInstances:getInstances", args ?? new GetInstancesArgs(), options.WithDefaults());
@@ -48,10 +46,9 @@ namespace Pulumi.AliCloud.Oss
         /// <summary>
         /// This data source provides the ots instances of the current Alibaba Cloud user.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -72,8 +69,7 @@ namespace Pulumi.AliCloud.Oss
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetInstancesResult> Invoke(GetInstancesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetInstancesResult>("alicloud:oss/getInstances:getInstances", args ?? new GetInstancesInvokeArgs(), options.WithDefaults());
@@ -111,6 +107,7 @@ namespace Pulumi.AliCloud.Oss
 
         /// <summary>
         /// A map of tags assigned to the instance. It must be in the format:
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -130,6 +127,7 @@ namespace Pulumi.AliCloud.Oss
         /// 
         /// });
         /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public Dictionary<string, object> Tags
         {
@@ -174,6 +172,7 @@ namespace Pulumi.AliCloud.Oss
 
         /// <summary>
         /// A map of tags assigned to the instance. It must be in the format:
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -193,6 +192,7 @@ namespace Pulumi.AliCloud.Oss
         /// 
         /// });
         /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public InputMap<object> Tags
         {

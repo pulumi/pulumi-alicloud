@@ -22,6 +22,7 @@ import (
 //
 // # Basic Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -107,6 +108,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
@@ -124,7 +126,7 @@ type ShardingNetworkPrivateAddress struct {
 	// - The permissions of this account are fixed to read-only.
 	AccountName pulumi.StringPtrOutput `pulumi:"accountName"`
 	// Account password.
-	// - The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!#$%^&*()_+-=`.
+	// - The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!#$%!^(MISSING)&*()_+-=`.
 	// - The password must be 8 to 32 characters in length.
 	AccountPassword pulumi.StringPtrOutput `pulumi:"accountPassword"`
 	// The db instance id.
@@ -189,7 +191,7 @@ type shardingNetworkPrivateAddressState struct {
 	// - The permissions of this account are fixed to read-only.
 	AccountName *string `pulumi:"accountName"`
 	// Account password.
-	// - The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!#$%^&*()_+-=`.
+	// - The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!#$%!^(MISSING)&*()_+-=`.
 	// - The password must be 8 to 32 characters in length.
 	AccountPassword *string `pulumi:"accountPassword"`
 	// The db instance id.
@@ -209,7 +211,7 @@ type ShardingNetworkPrivateAddressState struct {
 	// - The permissions of this account are fixed to read-only.
 	AccountName pulumi.StringPtrInput
 	// Account password.
-	// - The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!#$%^&*()_+-=`.
+	// - The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!#$%!^(MISSING)&*()_+-=`.
 	// - The password must be 8 to 32 characters in length.
 	AccountPassword pulumi.StringPtrInput
 	// The db instance id.
@@ -233,7 +235,7 @@ type shardingNetworkPrivateAddressArgs struct {
 	// - The permissions of this account are fixed to read-only.
 	AccountName *string `pulumi:"accountName"`
 	// Account password.
-	// - The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!#$%^&*()_+-=`.
+	// - The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!#$%!^(MISSING)&*()_+-=`.
 	// - The password must be 8 to 32 characters in length.
 	AccountPassword *string `pulumi:"accountPassword"`
 	// The db instance id.
@@ -252,7 +254,7 @@ type ShardingNetworkPrivateAddressArgs struct {
 	// - The permissions of this account are fixed to read-only.
 	AccountName pulumi.StringPtrInput
 	// Account password.
-	// - The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!#$%^&*()_+-=`.
+	// - The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!#$%!^(MISSING)&*()_+-=`.
 	// - The password must be 8 to 32 characters in length.
 	AccountPassword pulumi.StringPtrInput
 	// The db instance id.
@@ -359,7 +361,7 @@ func (o ShardingNetworkPrivateAddressOutput) AccountName() pulumi.StringPtrOutpu
 }
 
 // Account password.
-// - The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!#$%^&*()_+-=`.
+// - The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!#$%!^(MISSING)&*()_+-=`.
 // - The password must be 8 to 32 characters in length.
 func (o ShardingNetworkPrivateAddressOutput) AccountPassword() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ShardingNetworkPrivateAddress) pulumi.StringPtrOutput { return v.AccountPassword }).(pulumi.StringPtrOutput)

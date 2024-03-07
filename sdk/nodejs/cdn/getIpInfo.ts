@@ -13,6 +13,7 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -21,6 +22,7 @@ import * as utilities from "../utilities";
  *     ip: "114.114.114.114",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getIpInfo(args: GetIpInfoArgs, opts?: pulumi.InvokeOptions): Promise<GetIpInfoResult> {
 
@@ -64,6 +66,7 @@ export interface GetIpInfoResult {
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -72,6 +75,7 @@ export interface GetIpInfoResult {
  *     ip: "114.114.114.114",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getIpInfoOutput(args: GetIpInfoOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetIpInfoResult> {
     return pulumi.output(args).apply((a: any) => getIpInfo(a, opts))

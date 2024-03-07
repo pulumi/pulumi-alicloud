@@ -372,6 +372,7 @@ class Ingress(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -434,6 +435,7 @@ class Ingress(pulumi.CustomResource):
                 container_port=443,
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -473,6 +475,7 @@ class Ingress(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -535,6 +538,7 @@ class Ingress(pulumi.CustomResource):
                 container_port=443,
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

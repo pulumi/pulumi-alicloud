@@ -142,6 +142,7 @@ def get_aggregate_compliance_packs(aggregator_id: Optional[str] = None,
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -151,6 +152,7 @@ def get_aggregate_compliance_packs(aggregator_id: Optional[str] = None,
         name_regex="the_resource_name")
     pulumi.export("firstConfigAggregateCompliancePackId", example.packs[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str aggregator_id: The ID of aggregator.
@@ -199,6 +201,7 @@ def get_aggregate_compliance_packs_output(aggregator_id: Optional[pulumi.Input[s
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -208,6 +211,7 @@ def get_aggregate_compliance_packs_output(aggregator_id: Optional[pulumi.Input[s
         name_regex="the_resource_name")
     pulumi.export("firstConfigAggregateCompliancePackId", example.packs[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str aggregator_id: The ID of aggregator.

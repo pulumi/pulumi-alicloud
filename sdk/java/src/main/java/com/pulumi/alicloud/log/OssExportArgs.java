@@ -308,14 +308,14 @@ public final class OssExportArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The OSS Bucket directory is dynamically generated according to the creation time of the export task, it cannot start with a forward slash `/`, the default value is `%Y/%m/%d/%H/%M`.
+     * The OSS Bucket directory is dynamically generated according to the creation time of the export task, it cannot start with a forward slash `/`, the default value is `%!Y(MISSING)/%!m(MISSING)/%!d(MISSING)/%!H(MISSING)/%!M(MISSING)`.
      * 
      */
     @Import(name="pathFormat", required=true)
     private Output<String> pathFormat;
 
     /**
-     * @return The OSS Bucket directory is dynamically generated according to the creation time of the export task, it cannot start with a forward slash `/`, the default value is `%Y/%m/%d/%H/%M`.
+     * @return The OSS Bucket directory is dynamically generated according to the creation time of the export task, it cannot start with a forward slash `/`, the default value is `%!Y(MISSING)/%!m(MISSING)/%!d(MISSING)/%!H(MISSING)/%!M(MISSING)`.
      * 
      */
     public Output<String> pathFormat() {
@@ -867,7 +867,7 @@ public final class OssExportArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param pathFormat The OSS Bucket directory is dynamically generated according to the creation time of the export task, it cannot start with a forward slash `/`, the default value is `%Y/%m/%d/%H/%M`.
+         * @param pathFormat The OSS Bucket directory is dynamically generated according to the creation time of the export task, it cannot start with a forward slash `/`, the default value is `%!Y(MISSING)/%!m(MISSING)/%!d(MISSING)/%!H(MISSING)/%!M(MISSING)`.
          * 
          * @return builder
          * 
@@ -878,7 +878,7 @@ public final class OssExportArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param pathFormat The OSS Bucket directory is dynamically generated according to the creation time of the export task, it cannot start with a forward slash `/`, the default value is `%Y/%m/%d/%H/%M`.
+         * @param pathFormat The OSS Bucket directory is dynamically generated according to the creation time of the export task, it cannot start with a forward slash `/`, the default value is `%!Y(MISSING)/%!m(MISSING)/%!d(MISSING)/%!H(MISSING)/%!M(MISSING)`.
          * 
          * @return builder
          * 

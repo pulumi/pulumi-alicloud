@@ -179,6 +179,7 @@ def get_metric_rule_black_lists(category: Optional[str] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -188,6 +189,7 @@ def get_metric_rule_black_lists(category: Optional[str] = None,
         namespace="acs_ecs_dashboard")
     pulumi.export("alicloudCmsRuleBlackListExampleId", data["alicloud_cms_metric_rule_black_lists"]["lists"][0]["id"])
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str category: Cloud service classification. For example, Redis includes kvstore_standard, kvstore_sharding, and kvstore_splitrw.
@@ -243,6 +245,7 @@ def get_metric_rule_black_lists_output(category: Optional[pulumi.Input[Optional[
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -252,6 +255,7 @@ def get_metric_rule_black_lists_output(category: Optional[pulumi.Input[Optional[
         namespace="acs_ecs_dashboard")
     pulumi.export("alicloudCmsRuleBlackListExampleId", data["alicloud_cms_metric_rule_black_lists"]["lists"][0]["id"])
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str category: Cloud service classification. For example, Redis includes kvstore_standard, kvstore_sharding, and kvstore_splitrw.

@@ -256,6 +256,7 @@ class EcsDiskAttachment(pulumi.CustomResource):
 
         Basic usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -306,6 +307,7 @@ class EcsDiskAttachment(pulumi.CustomResource):
             disk_id=default_ecs_disk.id,
             instance_id=default_instance.id)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -341,6 +343,7 @@ class EcsDiskAttachment(pulumi.CustomResource):
 
         Basic usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -391,6 +394,7 @@ class EcsDiskAttachment(pulumi.CustomResource):
             disk_id=default_ecs_disk.id,
             instance_id=default_instance.id)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

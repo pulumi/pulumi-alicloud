@@ -35,6 +35,8 @@ public final class AdbFunctions {
      * &gt; **NOTE:** Available in v1.71.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -65,6 +67,7 @@ public final class AdbFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetClustersResult> getClusters() {
@@ -79,6 +82,8 @@ public final class AdbFunctions {
      * &gt; **NOTE:** Available in v1.71.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -109,6 +114,7 @@ public final class AdbFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetClustersResult> getClustersPlain() {
@@ -123,6 +129,8 @@ public final class AdbFunctions {
      * &gt; **NOTE:** Available in v1.71.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -153,6 +161,7 @@ public final class AdbFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetClustersResult> getClusters(GetClustersArgs args) {
@@ -167,6 +176,8 @@ public final class AdbFunctions {
      * &gt; **NOTE:** Available in v1.71.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -197,6 +208,7 @@ public final class AdbFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetClustersResult> getClustersPlain(GetClustersPlainArgs args) {
@@ -211,6 +223,8 @@ public final class AdbFunctions {
      * &gt; **NOTE:** Available in v1.71.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -241,6 +255,7 @@ public final class AdbFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetClustersResult> getClusters(GetClustersArgs args, InvokeOptions options) {
@@ -255,6 +270,8 @@ public final class AdbFunctions {
      * &gt; **NOTE:** Available in v1.71.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -285,6 +302,7 @@ public final class AdbFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetClustersResult> getClustersPlain(GetClustersPlainArgs args, InvokeOptions options) {
@@ -298,6 +316,8 @@ public final class AdbFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -327,6 +347,7 @@ public final class AdbFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetDBClusterLakeVersionsResult> getDBClusterLakeVersions() {
@@ -340,6 +361,8 @@ public final class AdbFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -369,6 +392,7 @@ public final class AdbFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetDBClusterLakeVersionsResult> getDBClusterLakeVersionsPlain() {
@@ -382,6 +406,8 @@ public final class AdbFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -411,6 +437,7 @@ public final class AdbFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetDBClusterLakeVersionsResult> getDBClusterLakeVersions(GetDBClusterLakeVersionsArgs args) {
@@ -424,6 +451,8 @@ public final class AdbFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -453,6 +482,7 @@ public final class AdbFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetDBClusterLakeVersionsResult> getDBClusterLakeVersionsPlain(GetDBClusterLakeVersionsPlainArgs args) {
@@ -466,6 +496,8 @@ public final class AdbFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -495,6 +527,7 @@ public final class AdbFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetDBClusterLakeVersionsResult> getDBClusterLakeVersions(GetDBClusterLakeVersionsArgs args, InvokeOptions options) {
@@ -508,6 +541,8 @@ public final class AdbFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -537,6 +572,7 @@ public final class AdbFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetDBClusterLakeVersionsResult> getDBClusterLakeVersionsPlain(GetDBClusterLakeVersionsPlainArgs args, InvokeOptions options) {
@@ -550,6 +586,8 @@ public final class AdbFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -579,6 +617,7 @@ public final class AdbFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetDBClustersResult> getDBClusters() {
@@ -592,6 +631,8 @@ public final class AdbFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -621,6 +662,7 @@ public final class AdbFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetDBClustersResult> getDBClustersPlain() {
@@ -634,6 +676,8 @@ public final class AdbFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -663,6 +707,7 @@ public final class AdbFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetDBClustersResult> getDBClusters(GetDBClustersArgs args) {
@@ -676,6 +721,8 @@ public final class AdbFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -705,6 +752,7 @@ public final class AdbFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetDBClustersResult> getDBClustersPlain(GetDBClustersPlainArgs args) {
@@ -718,6 +766,8 @@ public final class AdbFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -747,6 +797,7 @@ public final class AdbFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetDBClustersResult> getDBClusters(GetDBClustersArgs args, InvokeOptions options) {
@@ -760,6 +811,8 @@ public final class AdbFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -789,6 +842,7 @@ public final class AdbFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetDBClustersResult> getDBClustersPlain(GetDBClustersPlainArgs args, InvokeOptions options) {
@@ -800,6 +854,8 @@ public final class AdbFunctions {
      * &gt; **NOTE:** Available since v1.195.0.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -830,6 +886,7 @@ public final class AdbFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetResourceGroupsResult> getResourceGroups(GetResourceGroupsArgs args) {
@@ -841,6 +898,8 @@ public final class AdbFunctions {
      * &gt; **NOTE:** Available since v1.195.0.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -871,6 +930,7 @@ public final class AdbFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetResourceGroupsResult> getResourceGroupsPlain(GetResourceGroupsPlainArgs args) {
@@ -882,6 +942,8 @@ public final class AdbFunctions {
      * &gt; **NOTE:** Available since v1.195.0.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -912,6 +974,7 @@ public final class AdbFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetResourceGroupsResult> getResourceGroups(GetResourceGroupsArgs args, InvokeOptions options) {
@@ -923,6 +986,8 @@ public final class AdbFunctions {
      * &gt; **NOTE:** Available since v1.195.0.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -953,6 +1018,7 @@ public final class AdbFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetResourceGroupsResult> getResourceGroupsPlain(GetResourceGroupsPlainArgs args, InvokeOptions options) {
@@ -964,6 +1030,8 @@ public final class AdbFunctions {
      * &gt; **NOTE:** Available in v1.73.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -990,6 +1058,7 @@ public final class AdbFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetZonesResult> getZones() {
@@ -1001,6 +1070,8 @@ public final class AdbFunctions {
      * &gt; **NOTE:** Available in v1.73.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1027,6 +1098,7 @@ public final class AdbFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetZonesResult> getZonesPlain() {
@@ -1038,6 +1110,8 @@ public final class AdbFunctions {
      * &gt; **NOTE:** Available in v1.73.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1064,6 +1138,7 @@ public final class AdbFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetZonesResult> getZones(GetZonesArgs args) {
@@ -1075,6 +1150,8 @@ public final class AdbFunctions {
      * &gt; **NOTE:** Available in v1.73.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1101,6 +1178,7 @@ public final class AdbFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetZonesResult> getZonesPlain(GetZonesPlainArgs args) {
@@ -1112,6 +1190,8 @@ public final class AdbFunctions {
      * &gt; **NOTE:** Available in v1.73.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1138,6 +1218,7 @@ public final class AdbFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetZonesResult> getZones(GetZonesArgs args, InvokeOptions options) {
@@ -1149,6 +1230,8 @@ public final class AdbFunctions {
      * &gt; **NOTE:** Available in v1.73.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1175,6 +1258,7 @@ public final class AdbFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetZonesResult> getZonesPlain(GetZonesPlainArgs args, InvokeOptions options) {

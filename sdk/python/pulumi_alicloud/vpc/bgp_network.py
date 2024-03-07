@@ -124,6 +124,7 @@ class BgpNetwork(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -151,6 +152,7 @@ class BgpNetwork(pulumi.CustomResource):
             dst_cidr_block="192.168.0.0/24",
             router_id=example_virtual_border_router.id)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -182,6 +184,7 @@ class BgpNetwork(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -209,6 +212,7 @@ class BgpNetwork(pulumi.CustomResource):
             dst_cidr_block="192.168.0.0/24",
             router_id=example_virtual_border_router.id)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

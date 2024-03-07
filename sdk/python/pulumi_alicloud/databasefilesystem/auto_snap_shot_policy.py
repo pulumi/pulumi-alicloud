@@ -268,6 +268,7 @@ class AutoSnapShotPolicy(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -278,6 +279,7 @@ class AutoSnapShotPolicy(pulumi.CustomResource):
             retention_days=1,
             time_points=["01"])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -311,6 +313,7 @@ class AutoSnapShotPolicy(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -321,6 +324,7 @@ class AutoSnapShotPolicy(pulumi.CustomResource):
             retention_days=1,
             time_points=["01"])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

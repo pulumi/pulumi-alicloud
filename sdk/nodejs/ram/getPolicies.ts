@@ -13,6 +13,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -25,6 +26,7 @@ import * as utilities from "../utilities";
  * });
  * export const firstPolicyName = policiesDs.then(policiesDs => policiesDs.policies?.[0]?.name);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getPolicies(args?: GetPoliciesArgs, opts?: pulumi.InvokeOptions): Promise<GetPoliciesResult> {
     args = args || {};
@@ -118,6 +120,7 @@ export interface GetPoliciesResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -130,6 +133,7 @@ export interface GetPoliciesResult {
  * });
  * export const firstPolicyName = policiesDs.then(policiesDs => policiesDs.policies?.[0]?.name);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getPoliciesOutput(args?: GetPoliciesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPoliciesResult> {
     return pulumi.output(args).apply((a: any) => getPolicies(a, opts))

@@ -22,6 +22,8 @@ public final class BpFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -56,6 +58,7 @@ public final class BpFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetStudioApplicationsResult> getStudioApplications() {
@@ -69,6 +72,8 @@ public final class BpFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -103,6 +108,7 @@ public final class BpFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetStudioApplicationsResult> getStudioApplicationsPlain() {
@@ -116,6 +122,8 @@ public final class BpFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -150,6 +158,7 @@ public final class BpFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetStudioApplicationsResult> getStudioApplications(GetStudioApplicationsArgs args) {
@@ -163,6 +172,8 @@ public final class BpFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -197,6 +208,7 @@ public final class BpFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetStudioApplicationsResult> getStudioApplicationsPlain(GetStudioApplicationsPlainArgs args) {
@@ -210,6 +222,8 @@ public final class BpFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -244,6 +258,7 @@ public final class BpFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetStudioApplicationsResult> getStudioApplications(GetStudioApplicationsArgs args, InvokeOptions options) {
@@ -257,6 +272,8 @@ public final class BpFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -291,6 +308,7 @@ public final class BpFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetStudioApplicationsResult> getStudioApplicationsPlain(GetStudioApplicationsPlainArgs args, InvokeOptions options) {

@@ -236,6 +236,7 @@ class Queue(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -247,6 +248,7 @@ class Queue(pulumi.CustomResource):
             polling_wait_seconds=0,
             visibility_timeout=30)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -276,6 +278,7 @@ class Queue(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -287,6 +290,7 @@ class Queue(pulumi.CustomResource):
             polling_wait_seconds=0,
             visibility_timeout=30)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

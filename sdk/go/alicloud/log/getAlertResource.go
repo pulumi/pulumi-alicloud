@@ -19,6 +19,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -50,6 +51,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func GetAlertResource(ctx *pulumi.Context, args *GetAlertResourceArgs, opts ...pulumi.InvokeOption) (*GetAlertResourceResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetAlertResourceResult

@@ -119,6 +119,7 @@ def get_instances(description_regex: Optional[str] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -126,12 +127,14 @@ def get_instances(description_regex: Optional[str] = None,
     instance_instances = alicloud.bastionhost.get_instances(description_regex="^bastionhost")
     pulumi.export("instance", [__item["id"] for __item in alicloud_bastionhost_instances["instance"]])
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str description_regex: A regex string to filter results by the instance description.
     :param Sequence[str] ids: Matched instance IDs to filter data source result.
     :param str output_file: File name to persist data source output.
     :param Mapping[str, Any] tags: A map of tags assigned to the bastionhost instance. It must be in the format:
+           <!--Start PulumiCodeChooser -->
            ```python
            import pulumi
            import pulumi_alicloud as alicloud
@@ -140,6 +143,7 @@ def get_instances(description_regex: Optional[str] = None,
                "tagKey1": "tagValue1",
            })
            ```
+           <!--End PulumiCodeChooser -->
     """
     __args__ = dict()
     __args__['descriptionRegex'] = description_regex
@@ -174,6 +178,7 @@ def get_instances_output(description_regex: Optional[pulumi.Input[Optional[str]]
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -181,12 +186,14 @@ def get_instances_output(description_regex: Optional[pulumi.Input[Optional[str]]
     instance_instances = alicloud.bastionhost.get_instances(description_regex="^bastionhost")
     pulumi.export("instance", [__item["id"] for __item in alicloud_bastionhost_instances["instance"]])
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str description_regex: A regex string to filter results by the instance description.
     :param Sequence[str] ids: Matched instance IDs to filter data source result.
     :param str output_file: File name to persist data source output.
     :param Mapping[str, Any] tags: A map of tags assigned to the bastionhost instance. It must be in the format:
+           <!--Start PulumiCodeChooser -->
            ```python
            import pulumi
            import pulumi_alicloud as alicloud
@@ -195,5 +202,6 @@ def get_instances_output(description_regex: Optional[pulumi.Input[Optional[str]]
                "tagKey1": "tagValue1",
            })
            ```
+           <!--End PulumiCodeChooser -->
     """
     ...

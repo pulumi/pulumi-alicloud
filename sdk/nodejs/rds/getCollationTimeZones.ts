@@ -15,6 +15,7 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -24,6 +25,7 @@ import * as utilities from "../utilities";
  * });
  * export const firstRdsCollationTimeZones = zones.then(zones => zones.collationTimeZones?.[0]);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getCollationTimeZones(args?: GetCollationTimeZonesArgs, opts?: pulumi.InvokeOptions): Promise<GetCollationTimeZonesResult> {
     args = args || {};
@@ -71,6 +73,7 @@ export interface GetCollationTimeZonesResult {
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -80,6 +83,7 @@ export interface GetCollationTimeZonesResult {
  * });
  * export const firstRdsCollationTimeZones = zones.then(zones => zones.collationTimeZones?.[0]);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getCollationTimeZonesOutput(args?: GetCollationTimeZonesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCollationTimeZonesResult> {
     return pulumi.output(args).apply((a: any) => getCollationTimeZones(a, opts))

@@ -164,6 +164,7 @@ def get_dedicated_hosts(allocation_status: Optional[str] = None,
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -203,6 +204,7 @@ def get_dedicated_hosts(allocation_status: Optional[str] = None,
         host_type="dhg_cloud_ssd")
     pulumi.export("cddcDedicatedHostId5", host_type.hosts[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str allocation_status: Specifies whether instances can be created on the host. Valid values: `1` or `0`. `1`: Instances can be created on the host. `0`: Instances cannot be created on the host.
@@ -266,6 +268,7 @@ def get_dedicated_hosts_output(allocation_status: Optional[pulumi.Input[Optional
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -305,6 +308,7 @@ def get_dedicated_hosts_output(allocation_status: Optional[pulumi.Input[Optional
         host_type="dhg_cloud_ssd")
     pulumi.export("cddcDedicatedHostId5", host_type.hosts[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str allocation_status: Specifies whether instances can be created on the host. Valid values: `1` or `0`. `1`: Instances can be created on the host. `0`: Instances cannot be created on the host.

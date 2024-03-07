@@ -144,6 +144,7 @@ def get_bandwidth_packages(ids: Optional[Sequence[str]] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -152,6 +153,7 @@ def get_bandwidth_packages(ids: Optional[Sequence[str]] = None,
         name_regex="^foo")
     pulumi.export("firstCenBandwidthPackageId", example.packages[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: Limit search to a list of specific CEN Bandwidth Package IDs.
@@ -196,6 +198,7 @@ def get_bandwidth_packages_output(ids: Optional[pulumi.Input[Optional[Sequence[s
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -204,6 +207,7 @@ def get_bandwidth_packages_output(ids: Optional[pulumi.Input[Optional[Sequence[s
         name_regex="^foo")
     pulumi.export("firstCenBandwidthPackageId", example.packages[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: Limit search to a list of specific CEN Bandwidth Package IDs.

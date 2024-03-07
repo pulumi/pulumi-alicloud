@@ -15,6 +15,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -62,6 +63,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func GetSwitches(ctx *pulumi.Context, args *GetSwitchesArgs, opts ...pulumi.InvokeOption) (*GetSwitchesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetSwitchesResult

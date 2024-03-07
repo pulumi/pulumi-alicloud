@@ -124,6 +124,7 @@ class RouteTableAttachment(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -146,6 +147,7 @@ class RouteTableAttachment(pulumi.CustomResource):
             vswitch_id=foo_switch.id,
             route_table_id=foo_route_table.id)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -177,6 +179,7 @@ class RouteTableAttachment(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -199,6 +202,7 @@ class RouteTableAttachment(pulumi.CustomResource):
             vswitch_id=foo_switch.id,
             route_table_id=foo_route_table.id)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

@@ -16,12 +16,11 @@ namespace Pulumi.AliCloud.BastionHost
         /// 
         /// &gt; **NOTE:** Available in v1.135.0+.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// Basic Usage
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -55,8 +54,7 @@ namespace Pulumi.AliCloud.BastionHost
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetHostAccountsResult> InvokeAsync(GetHostAccountsArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetHostAccountsResult>("alicloud:bastionhost/getHostAccounts:getHostAccounts", args ?? new GetHostAccountsArgs(), options.WithDefaults());
@@ -66,12 +64,11 @@ namespace Pulumi.AliCloud.BastionHost
         /// 
         /// &gt; **NOTE:** Available in v1.135.0+.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// Basic Usage
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -105,8 +102,7 @@ namespace Pulumi.AliCloud.BastionHost
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetHostAccountsResult> Invoke(GetHostAccountsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetHostAccountsResult>("alicloud:bastionhost/getHostAccounts:getHostAccounts", args ?? new GetHostAccountsInvokeArgs(), options.WithDefaults());

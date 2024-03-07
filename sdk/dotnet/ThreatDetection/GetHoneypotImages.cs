@@ -16,10 +16,9 @@ namespace Pulumi.AliCloud.ThreatDetection
         /// 
         /// &gt; **NOTE:** Available in 1.195.0+
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -43,8 +42,7 @@ namespace Pulumi.AliCloud.ThreatDetection
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetHoneypotImagesResult> InvokeAsync(GetHoneypotImagesArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetHoneypotImagesResult>("alicloud:threatdetection/getHoneypotImages:getHoneypotImages", args ?? new GetHoneypotImagesArgs(), options.WithDefaults());
@@ -54,10 +52,9 @@ namespace Pulumi.AliCloud.ThreatDetection
         /// 
         /// &gt; **NOTE:** Available in 1.195.0+
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -81,8 +78,7 @@ namespace Pulumi.AliCloud.ThreatDetection
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetHoneypotImagesResult> Invoke(GetHoneypotImagesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetHoneypotImagesResult>("alicloud:threatdetection/getHoneypotImages:getHoneypotImages", args ?? new GetHoneypotImagesInvokeArgs(), options.WithDefaults());

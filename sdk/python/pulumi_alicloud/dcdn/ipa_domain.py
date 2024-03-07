@@ -209,6 +209,7 @@ class IpaDomain(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -231,6 +232,7 @@ class IpaDomain(pulumi.CustomResource):
                 weight=10,
             )])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -265,6 +267,7 @@ class IpaDomain(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -287,6 +290,7 @@ class IpaDomain(pulumi.CustomResource):
                 weight=10,
             )])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

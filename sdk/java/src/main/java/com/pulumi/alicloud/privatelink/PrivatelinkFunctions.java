@@ -40,6 +40,8 @@ public final class PrivatelinkFunctions {
      * &gt; **NOTE:** Available in v1.113.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -68,6 +70,7 @@ public final class PrivatelinkFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetServiceResult> getService() {
@@ -81,6 +84,8 @@ public final class PrivatelinkFunctions {
      * &gt; **NOTE:** Available in v1.113.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -109,6 +114,7 @@ public final class PrivatelinkFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetServiceResult> getServicePlain() {
@@ -122,6 +128,8 @@ public final class PrivatelinkFunctions {
      * &gt; **NOTE:** Available in v1.113.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -150,6 +158,7 @@ public final class PrivatelinkFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetServiceResult> getService(GetServiceArgs args) {
@@ -163,6 +172,8 @@ public final class PrivatelinkFunctions {
      * &gt; **NOTE:** Available in v1.113.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -191,6 +202,7 @@ public final class PrivatelinkFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetServiceResult> getServicePlain(GetServicePlainArgs args) {
@@ -204,6 +216,8 @@ public final class PrivatelinkFunctions {
      * &gt; **NOTE:** Available in v1.113.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -232,6 +246,7 @@ public final class PrivatelinkFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetServiceResult> getService(GetServiceArgs args, InvokeOptions options) {
@@ -245,6 +260,8 @@ public final class PrivatelinkFunctions {
      * &gt; **NOTE:** Available in v1.113.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -273,6 +290,7 @@ public final class PrivatelinkFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetServiceResult> getServicePlain(GetServicePlainArgs args, InvokeOptions options) {
@@ -286,6 +304,8 @@ public final class PrivatelinkFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -316,6 +336,7 @@ public final class PrivatelinkFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetVpcEndpointConnectionsResult> getVpcEndpointConnections(GetVpcEndpointConnectionsArgs args) {
@@ -329,6 +350,8 @@ public final class PrivatelinkFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -359,6 +382,7 @@ public final class PrivatelinkFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetVpcEndpointConnectionsResult> getVpcEndpointConnectionsPlain(GetVpcEndpointConnectionsPlainArgs args) {
@@ -372,6 +396,8 @@ public final class PrivatelinkFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -402,6 +428,7 @@ public final class PrivatelinkFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetVpcEndpointConnectionsResult> getVpcEndpointConnections(GetVpcEndpointConnectionsArgs args, InvokeOptions options) {
@@ -415,6 +442,8 @@ public final class PrivatelinkFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -445,6 +474,7 @@ public final class PrivatelinkFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetVpcEndpointConnectionsResult> getVpcEndpointConnectionsPlain(GetVpcEndpointConnectionsPlainArgs args, InvokeOptions options) {
@@ -458,6 +488,8 @@ public final class PrivatelinkFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -487,6 +519,7 @@ public final class PrivatelinkFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetVpcEndpointServiceResourcesResult> getVpcEndpointServiceResources(GetVpcEndpointServiceResourcesArgs args) {
@@ -500,6 +533,8 @@ public final class PrivatelinkFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -529,6 +564,7 @@ public final class PrivatelinkFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetVpcEndpointServiceResourcesResult> getVpcEndpointServiceResourcesPlain(GetVpcEndpointServiceResourcesPlainArgs args) {
@@ -542,6 +578,8 @@ public final class PrivatelinkFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -571,6 +609,7 @@ public final class PrivatelinkFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetVpcEndpointServiceResourcesResult> getVpcEndpointServiceResources(GetVpcEndpointServiceResourcesArgs args, InvokeOptions options) {
@@ -584,6 +623,8 @@ public final class PrivatelinkFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -613,6 +654,7 @@ public final class PrivatelinkFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetVpcEndpointServiceResourcesResult> getVpcEndpointServiceResourcesPlain(GetVpcEndpointServiceResourcesPlainArgs args, InvokeOptions options) {
@@ -626,6 +668,8 @@ public final class PrivatelinkFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -655,6 +699,7 @@ public final class PrivatelinkFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetVpcEndpointServiceUsersResult> getVpcEndpointServiceUsers(GetVpcEndpointServiceUsersArgs args) {
@@ -668,6 +713,8 @@ public final class PrivatelinkFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -697,6 +744,7 @@ public final class PrivatelinkFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetVpcEndpointServiceUsersResult> getVpcEndpointServiceUsersPlain(GetVpcEndpointServiceUsersPlainArgs args) {
@@ -710,6 +758,8 @@ public final class PrivatelinkFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -739,6 +789,7 @@ public final class PrivatelinkFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetVpcEndpointServiceUsersResult> getVpcEndpointServiceUsers(GetVpcEndpointServiceUsersArgs args, InvokeOptions options) {
@@ -752,6 +803,8 @@ public final class PrivatelinkFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -781,6 +834,7 @@ public final class PrivatelinkFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetVpcEndpointServiceUsersResult> getVpcEndpointServiceUsersPlain(GetVpcEndpointServiceUsersPlainArgs args, InvokeOptions options) {
@@ -794,6 +848,8 @@ public final class PrivatelinkFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -824,6 +880,7 @@ public final class PrivatelinkFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetVpcEndpointServicesResult> getVpcEndpointServices() {
@@ -837,6 +894,8 @@ public final class PrivatelinkFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -867,6 +926,7 @@ public final class PrivatelinkFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetVpcEndpointServicesResult> getVpcEndpointServicesPlain() {
@@ -880,6 +940,8 @@ public final class PrivatelinkFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -910,6 +972,7 @@ public final class PrivatelinkFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetVpcEndpointServicesResult> getVpcEndpointServices(GetVpcEndpointServicesArgs args) {
@@ -923,6 +986,8 @@ public final class PrivatelinkFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -953,6 +1018,7 @@ public final class PrivatelinkFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetVpcEndpointServicesResult> getVpcEndpointServicesPlain(GetVpcEndpointServicesPlainArgs args) {
@@ -966,6 +1032,8 @@ public final class PrivatelinkFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -996,6 +1064,7 @@ public final class PrivatelinkFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetVpcEndpointServicesResult> getVpcEndpointServices(GetVpcEndpointServicesArgs args, InvokeOptions options) {
@@ -1009,6 +1078,8 @@ public final class PrivatelinkFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1039,6 +1110,7 @@ public final class PrivatelinkFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetVpcEndpointServicesResult> getVpcEndpointServicesPlain(GetVpcEndpointServicesPlainArgs args, InvokeOptions options) {
@@ -1052,6 +1124,8 @@ public final class PrivatelinkFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1081,6 +1155,7 @@ public final class PrivatelinkFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetVpcEndpointZonesResult> getVpcEndpointZones(GetVpcEndpointZonesArgs args) {
@@ -1094,6 +1169,8 @@ public final class PrivatelinkFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1123,6 +1200,7 @@ public final class PrivatelinkFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetVpcEndpointZonesResult> getVpcEndpointZonesPlain(GetVpcEndpointZonesPlainArgs args) {
@@ -1136,6 +1214,8 @@ public final class PrivatelinkFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1165,6 +1245,7 @@ public final class PrivatelinkFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetVpcEndpointZonesResult> getVpcEndpointZones(GetVpcEndpointZonesArgs args, InvokeOptions options) {
@@ -1178,6 +1259,8 @@ public final class PrivatelinkFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1207,6 +1290,7 @@ public final class PrivatelinkFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetVpcEndpointZonesResult> getVpcEndpointZonesPlain(GetVpcEndpointZonesPlainArgs args, InvokeOptions options) {
@@ -1220,6 +1304,8 @@ public final class PrivatelinkFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1250,6 +1336,7 @@ public final class PrivatelinkFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetVpcEndpointsResult> getVpcEndpoints() {
@@ -1263,6 +1350,8 @@ public final class PrivatelinkFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1293,6 +1382,7 @@ public final class PrivatelinkFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetVpcEndpointsResult> getVpcEndpointsPlain() {
@@ -1306,6 +1396,8 @@ public final class PrivatelinkFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1336,6 +1428,7 @@ public final class PrivatelinkFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetVpcEndpointsResult> getVpcEndpoints(GetVpcEndpointsArgs args) {
@@ -1349,6 +1442,8 @@ public final class PrivatelinkFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1379,6 +1474,7 @@ public final class PrivatelinkFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetVpcEndpointsResult> getVpcEndpointsPlain(GetVpcEndpointsPlainArgs args) {
@@ -1392,6 +1488,8 @@ public final class PrivatelinkFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1422,6 +1520,7 @@ public final class PrivatelinkFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetVpcEndpointsResult> getVpcEndpoints(GetVpcEndpointsArgs args, InvokeOptions options) {
@@ -1435,6 +1534,8 @@ public final class PrivatelinkFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1465,6 +1566,7 @@ public final class PrivatelinkFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetVpcEndpointsResult> getVpcEndpointsPlain(GetVpcEndpointsPlainArgs args, InvokeOptions options) {

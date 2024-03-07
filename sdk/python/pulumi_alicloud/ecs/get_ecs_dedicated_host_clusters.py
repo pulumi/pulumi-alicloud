@@ -143,6 +143,7 @@ def get_ecs_dedicated_host_clusters(dedicated_host_cluster_ids: Optional[Sequenc
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -158,6 +159,7 @@ def get_ecs_dedicated_host_clusters(dedicated_host_cluster_ids: Optional[Sequenc
     cluster_ids = alicloud.ecs.get_ecs_dedicated_host_clusters(dedicated_host_cluster_ids=["example_id"])
     pulumi.export("ecsDedicatedHostClusterId5", cluster_ids.clusters[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] dedicated_host_cluster_ids: The IDs of dedicated host clusters.
@@ -210,6 +212,7 @@ def get_ecs_dedicated_host_clusters_output(dedicated_host_cluster_ids: Optional[
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -225,6 +228,7 @@ def get_ecs_dedicated_host_clusters_output(dedicated_host_cluster_ids: Optional[
     cluster_ids = alicloud.ecs.get_ecs_dedicated_host_clusters(dedicated_host_cluster_ids=["example_id"])
     pulumi.export("ecsDedicatedHostClusterId5", cluster_ids.clusters[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] dedicated_host_cluster_ids: The IDs of dedicated host clusters.

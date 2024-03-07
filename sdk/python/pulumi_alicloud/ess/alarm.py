@@ -522,6 +522,7 @@ class Alarm(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -597,6 +598,8 @@ class Alarm(pulumi.CustomResource):
             comparison_operator=">=",
             evaluation_count=2)
         ```
+        <!--End PulumiCodeChooser -->
+
         ## Module Support
 
         You can use to the existing autoscaling-rule module
@@ -642,6 +645,7 @@ class Alarm(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -717,6 +721,8 @@ class Alarm(pulumi.CustomResource):
             comparison_operator=">=",
             evaluation_count=2)
         ```
+        <!--End PulumiCodeChooser -->
+
         ## Module Support
 
         You can use to the existing autoscaling-rule module

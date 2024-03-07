@@ -11,6 +11,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -21,6 +22,7 @@ import * as utilities from "../utilities";
  * });
  * export const firstObjectKey = bucketObjectsDs.then(bucketObjectsDs => bucketObjectsDs.objects?.[0]?.key);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getBucketObjects(args: GetBucketObjectsArgs, opts?: pulumi.InvokeOptions): Promise<GetBucketObjectsResult> {
 
@@ -77,6 +79,7 @@ export interface GetBucketObjectsResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -87,6 +90,7 @@ export interface GetBucketObjectsResult {
  * });
  * export const firstObjectKey = bucketObjectsDs.then(bucketObjectsDs => bucketObjectsDs.objects?.[0]?.key);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getBucketObjectsOutput(args: GetBucketObjectsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetBucketObjectsResult> {
     return pulumi.output(args).apply((a: any) => getBucketObjects(a, opts))

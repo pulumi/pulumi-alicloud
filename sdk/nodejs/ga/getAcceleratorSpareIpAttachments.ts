@@ -15,6 +15,7 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -28,6 +29,7 @@ import * as utilities from "../utilities";
  * });
  * export const gaAcceleratorSpareIpAttachmentId1 = ids.then(ids => ids.attachments?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getAcceleratorSpareIpAttachments(args: GetAcceleratorSpareIpAttachmentsArgs, opts?: pulumi.InvokeOptions): Promise<GetAcceleratorSpareIpAttachmentsResult> {
 
@@ -85,6 +87,7 @@ export interface GetAcceleratorSpareIpAttachmentsResult {
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -98,6 +101,7 @@ export interface GetAcceleratorSpareIpAttachmentsResult {
  * });
  * export const gaAcceleratorSpareIpAttachmentId1 = ids.then(ids => ids.attachments?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getAcceleratorSpareIpAttachmentsOutput(args: GetAcceleratorSpareIpAttachmentsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAcceleratorSpareIpAttachmentsResult> {
     return pulumi.output(args).apply((a: any) => getAcceleratorSpareIpAttachments(a, opts))

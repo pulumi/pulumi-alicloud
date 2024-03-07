@@ -38,7 +38,7 @@ namespace Pulumi.AliCloud.Alb.Outputs
         /// </summary>
         public readonly string HealthCheckMethod;
         /// <summary>
-        /// The URL that is used for health checks.  The URL must be 1 to 80 characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), percent signs (%), question marks (?), number signs (#), and ampersands (&amp;). The URL can also contain the following extended characters: ` _ ; ~ ! ( )* [ ] @ $ ^ : ' , +. The URL must start with a forward slash (/)`.
+        /// The URL that is used for health checks.  The URL must be 1 to 80 characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), percent signs (%!)(MISSING), question marks (?), number signs (#), and ampersands (&amp;). The URL can also contain the following extended characters: ` _ ; ~ ! ( )* [ ] @ $ ^ : ' , +. The URL must start with a forward slash (/)`.
         /// </summary>
         public readonly string HealthCheckPath;
         /// <summary>

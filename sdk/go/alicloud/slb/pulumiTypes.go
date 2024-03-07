@@ -2963,6 +2963,7 @@ type GetLoadBalancersBalancer struct {
 	// SLB current status. Possible values: `inactive`, `active` and `locked`.
 	Status string `pulumi:"status"`
 	// A map of tags assigned to the SLB instances. The `tags` can have a maximum of 5 tag. It must be in the format:
+	// <!--Start PulumiCodeChooser -->
 	// ```go
 	// package main
 	//
@@ -2986,6 +2987,7 @@ type GetLoadBalancersBalancer struct {
 	// 	})
 	// }
 	// ```
+	// <!--End PulumiCodeChooser -->
 	Tags map[string]interface{} `pulumi:"tags"`
 	// ID of the VPC linked to the SLBs.
 	VpcId string `pulumi:"vpcId"`
@@ -3040,6 +3042,7 @@ type GetLoadBalancersBalancerArgs struct {
 	// SLB current status. Possible values: `inactive`, `active` and `locked`.
 	Status pulumi.StringInput `pulumi:"status"`
 	// A map of tags assigned to the SLB instances. The `tags` can have a maximum of 5 tag. It must be in the format:
+	// <!--Start PulumiCodeChooser -->
 	// ```go
 	// package main
 	//
@@ -3063,6 +3066,7 @@ type GetLoadBalancersBalancerArgs struct {
 	// 	})
 	// }
 	// ```
+	// <!--End PulumiCodeChooser -->
 	Tags pulumi.MapInput `pulumi:"tags"`
 	// ID of the VPC linked to the SLBs.
 	VpcId pulumi.StringInput `pulumi:"vpcId"`
@@ -3247,6 +3251,7 @@ func (o GetLoadBalancersBalancerOutput) Status() pulumi.StringOutput {
 }
 
 // A map of tags assigned to the SLB instances. The `tags` can have a maximum of 5 tag. It must be in the format:
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -3273,6 +3278,7 @@ func (o GetLoadBalancersBalancerOutput) Status() pulumi.StringOutput {
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func (o GetLoadBalancersBalancerOutput) Tags() pulumi.MapOutput {
 	return o.ApplyT(func(v GetLoadBalancersBalancer) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
 }
@@ -3659,6 +3665,7 @@ type GetLoadBalancersSlb struct {
 	// SLB current status. Possible values: `inactive`, `active` and `locked`.
 	Status string `pulumi:"status"`
 	// A map of tags assigned to the SLB instances. The `tags` can have a maximum of 5 tag. It must be in the format:
+	// <!--Start PulumiCodeChooser -->
 	// ```go
 	// package main
 	//
@@ -3682,6 +3689,7 @@ type GetLoadBalancersSlb struct {
 	// 	})
 	// }
 	// ```
+	// <!--End PulumiCodeChooser -->
 	Tags map[string]interface{} `pulumi:"tags"`
 	// ID of the VPC linked to the SLBs.
 	VpcId string `pulumi:"vpcId"`
@@ -3722,6 +3730,7 @@ type GetLoadBalancersSlbArgs struct {
 	// SLB current status. Possible values: `inactive`, `active` and `locked`.
 	Status pulumi.StringInput `pulumi:"status"`
 	// A map of tags assigned to the SLB instances. The `tags` can have a maximum of 5 tag. It must be in the format:
+	// <!--Start PulumiCodeChooser -->
 	// ```go
 	// package main
 	//
@@ -3745,6 +3754,7 @@ type GetLoadBalancersSlbArgs struct {
 	// 	})
 	// }
 	// ```
+	// <!--End PulumiCodeChooser -->
 	Tags pulumi.MapInput `pulumi:"tags"`
 	// ID of the VPC linked to the SLBs.
 	VpcId pulumi.StringInput `pulumi:"vpcId"`
@@ -3854,6 +3864,7 @@ func (o GetLoadBalancersSlbOutput) Status() pulumi.StringOutput {
 }
 
 // A map of tags assigned to the SLB instances. The `tags` can have a maximum of 5 tag. It must be in the format:
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -3880,6 +3891,7 @@ func (o GetLoadBalancersSlbOutput) Status() pulumi.StringOutput {
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func (o GetLoadBalancersSlbOutput) Tags() pulumi.MapOutput {
 	return o.ApplyT(func(v GetLoadBalancersSlb) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
 }

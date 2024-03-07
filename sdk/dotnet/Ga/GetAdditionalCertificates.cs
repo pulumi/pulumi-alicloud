@@ -16,12 +16,11 @@ namespace Pulumi.AliCloud.Ga
         /// 
         /// &gt; **NOTE:** Available in v1.150.0+.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// Basic Usage
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -47,8 +46,7 @@ namespace Pulumi.AliCloud.Ga
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetAdditionalCertificatesResult> InvokeAsync(GetAdditionalCertificatesArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAdditionalCertificatesResult>("alicloud:ga/getAdditionalCertificates:getAdditionalCertificates", args ?? new GetAdditionalCertificatesArgs(), options.WithDefaults());
@@ -58,12 +56,11 @@ namespace Pulumi.AliCloud.Ga
         /// 
         /// &gt; **NOTE:** Available in v1.150.0+.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// Basic Usage
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -89,8 +86,7 @@ namespace Pulumi.AliCloud.Ga
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetAdditionalCertificatesResult> Invoke(GetAdditionalCertificatesInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAdditionalCertificatesResult>("alicloud:ga/getAdditionalCertificates:getAdditionalCertificates", args ?? new GetAdditionalCertificatesInvokeArgs(), options.WithDefaults());

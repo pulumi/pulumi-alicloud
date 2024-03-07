@@ -13,6 +13,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -23,6 +24,7 @@ import * as utilities from "../utilities";
  * });
  * export const allVersions = alicloudKmsKeyVersionsDs.then(alicloudKmsKeyVersionsDs => alicloudKmsKeyVersionsDs.versions);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getKeyVersions(args: GetKeyVersionsArgs, opts?: pulumi.InvokeOptions): Promise<GetKeyVersionsResult> {
 
@@ -81,6 +83,7 @@ export interface GetKeyVersionsResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -91,6 +94,7 @@ export interface GetKeyVersionsResult {
  * });
  * export const allVersions = alicloudKmsKeyVersionsDs.then(alicloudKmsKeyVersionsDs => alicloudKmsKeyVersionsDs.versions);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getKeyVersionsOutput(args: GetKeyVersionsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetKeyVersionsResult> {
     return pulumi.output(args).apply((a: any) => getKeyVersions(a, opts))

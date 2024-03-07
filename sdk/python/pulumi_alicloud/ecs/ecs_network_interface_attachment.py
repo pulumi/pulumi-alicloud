@@ -174,6 +174,7 @@ class EcsNetworkInterfaceAttachment(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -223,6 +224,7 @@ class EcsNetworkInterfaceAttachment(pulumi.CustomResource):
             network_interface_id=default_ecs_network_interface.id,
             instance_id=default_instance.id)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -256,6 +258,7 @@ class EcsNetworkInterfaceAttachment(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -305,6 +308,7 @@ class EcsNetworkInterfaceAttachment(pulumi.CustomResource):
             network_interface_id=default_ecs_network_interface.id,
             instance_id=default_instance.id)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

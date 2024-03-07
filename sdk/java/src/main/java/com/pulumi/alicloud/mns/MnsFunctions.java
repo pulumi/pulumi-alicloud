@@ -29,6 +29,8 @@ public final class MnsFunctions {
      * &gt; **DEPRECATED:**  This datasource has been deprecated from version `1.188.0`. Please use new datasource message_service_queues.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -58,6 +60,7 @@ public final class MnsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetQueuesResult> getQueues() {
@@ -69,6 +72,8 @@ public final class MnsFunctions {
      * &gt; **DEPRECATED:**  This datasource has been deprecated from version `1.188.0`. Please use new datasource message_service_queues.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -98,6 +103,7 @@ public final class MnsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetQueuesResult> getQueuesPlain() {
@@ -109,6 +115,8 @@ public final class MnsFunctions {
      * &gt; **DEPRECATED:**  This datasource has been deprecated from version `1.188.0`. Please use new datasource message_service_queues.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -138,6 +146,7 @@ public final class MnsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetQueuesResult> getQueues(GetQueuesArgs args) {
@@ -149,6 +158,8 @@ public final class MnsFunctions {
      * &gt; **DEPRECATED:**  This datasource has been deprecated from version `1.188.0`. Please use new datasource message_service_queues.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -178,6 +189,7 @@ public final class MnsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetQueuesResult> getQueuesPlain(GetQueuesPlainArgs args) {
@@ -189,6 +201,8 @@ public final class MnsFunctions {
      * &gt; **DEPRECATED:**  This datasource has been deprecated from version `1.188.0`. Please use new datasource message_service_queues.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -218,6 +232,7 @@ public final class MnsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetQueuesResult> getQueues(GetQueuesArgs args, InvokeOptions options) {
@@ -229,6 +244,8 @@ public final class MnsFunctions {
      * &gt; **DEPRECATED:**  This datasource has been deprecated from version `1.188.0`. Please use new datasource message_service_queues.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -258,6 +275,7 @@ public final class MnsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetQueuesResult> getQueuesPlain(GetQueuesPlainArgs args, InvokeOptions options) {
@@ -273,6 +291,8 @@ public final class MnsFunctions {
      * &gt; **NOTE:** The MNS service is not support in the international site.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -301,6 +321,7 @@ public final class MnsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetServiceResult> getService() {
@@ -316,6 +337,8 @@ public final class MnsFunctions {
      * &gt; **NOTE:** The MNS service is not support in the international site.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -344,6 +367,7 @@ public final class MnsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetServiceResult> getServicePlain() {
@@ -359,6 +383,8 @@ public final class MnsFunctions {
      * &gt; **NOTE:** The MNS service is not support in the international site.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -387,6 +413,7 @@ public final class MnsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetServiceResult> getService(GetServiceArgs args) {
@@ -402,6 +429,8 @@ public final class MnsFunctions {
      * &gt; **NOTE:** The MNS service is not support in the international site.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -430,6 +459,7 @@ public final class MnsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetServiceResult> getServicePlain(GetServicePlainArgs args) {
@@ -445,6 +475,8 @@ public final class MnsFunctions {
      * &gt; **NOTE:** The MNS service is not support in the international site.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -473,6 +505,7 @@ public final class MnsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetServiceResult> getService(GetServiceArgs args, InvokeOptions options) {
@@ -488,6 +521,8 @@ public final class MnsFunctions {
      * &gt; **NOTE:** The MNS service is not support in the international site.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -516,6 +551,7 @@ public final class MnsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetServiceResult> getServicePlain(GetServicePlainArgs args, InvokeOptions options) {
@@ -527,6 +563,8 @@ public final class MnsFunctions {
      * &gt; **DEPRECATED:**  This datasource has been deprecated from version `1.188.0`. Please use new datasource message_service_subscriptions.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -557,6 +595,7 @@ public final class MnsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetTopicSubscriptionsResult> getTopicSubscriptions(GetTopicSubscriptionsArgs args) {
@@ -568,6 +607,8 @@ public final class MnsFunctions {
      * &gt; **DEPRECATED:**  This datasource has been deprecated from version `1.188.0`. Please use new datasource message_service_subscriptions.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -598,6 +639,7 @@ public final class MnsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetTopicSubscriptionsResult> getTopicSubscriptionsPlain(GetTopicSubscriptionsPlainArgs args) {
@@ -609,6 +651,8 @@ public final class MnsFunctions {
      * &gt; **DEPRECATED:**  This datasource has been deprecated from version `1.188.0`. Please use new datasource message_service_subscriptions.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -639,6 +683,7 @@ public final class MnsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetTopicSubscriptionsResult> getTopicSubscriptions(GetTopicSubscriptionsArgs args, InvokeOptions options) {
@@ -650,6 +695,8 @@ public final class MnsFunctions {
      * &gt; **DEPRECATED:**  This datasource has been deprecated from version `1.188.0`. Please use new datasource message_service_subscriptions.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -680,6 +727,7 @@ public final class MnsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetTopicSubscriptionsResult> getTopicSubscriptionsPlain(GetTopicSubscriptionsPlainArgs args, InvokeOptions options) {
@@ -691,6 +739,8 @@ public final class MnsFunctions {
      * &gt; **DEPRECATED:**  This datasource has been deprecated from version `1.188.0`. Please use new datasource message_service_topics.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -720,6 +770,7 @@ public final class MnsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetTopicsResult> getTopics() {
@@ -731,6 +782,8 @@ public final class MnsFunctions {
      * &gt; **DEPRECATED:**  This datasource has been deprecated from version `1.188.0`. Please use new datasource message_service_topics.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -760,6 +813,7 @@ public final class MnsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetTopicsResult> getTopicsPlain() {
@@ -771,6 +825,8 @@ public final class MnsFunctions {
      * &gt; **DEPRECATED:**  This datasource has been deprecated from version `1.188.0`. Please use new datasource message_service_topics.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -800,6 +856,7 @@ public final class MnsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetTopicsResult> getTopics(GetTopicsArgs args) {
@@ -811,6 +868,8 @@ public final class MnsFunctions {
      * &gt; **DEPRECATED:**  This datasource has been deprecated from version `1.188.0`. Please use new datasource message_service_topics.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -840,6 +899,7 @@ public final class MnsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetTopicsResult> getTopicsPlain(GetTopicsPlainArgs args) {
@@ -851,6 +911,8 @@ public final class MnsFunctions {
      * &gt; **DEPRECATED:**  This datasource has been deprecated from version `1.188.0`. Please use new datasource message_service_topics.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -880,6 +942,7 @@ public final class MnsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetTopicsResult> getTopics(GetTopicsArgs args, InvokeOptions options) {
@@ -891,6 +954,8 @@ public final class MnsFunctions {
      * &gt; **DEPRECATED:**  This datasource has been deprecated from version `1.188.0`. Please use new datasource message_service_topics.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -920,6 +985,7 @@ public final class MnsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetTopicsResult> getTopicsPlain(GetTopicsPlainArgs args, InvokeOptions options) {

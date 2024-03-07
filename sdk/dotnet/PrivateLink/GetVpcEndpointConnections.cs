@@ -16,12 +16,11 @@ namespace Pulumi.AliCloud.PrivateLink
         /// 
         /// &gt; **NOTE:** Available in v1.110.0+.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// Basic Usage
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -42,8 +41,7 @@ namespace Pulumi.AliCloud.PrivateLink
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetVpcEndpointConnectionsResult> InvokeAsync(GetVpcEndpointConnectionsArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetVpcEndpointConnectionsResult>("alicloud:privatelink/getVpcEndpointConnections:getVpcEndpointConnections", args ?? new GetVpcEndpointConnectionsArgs(), options.WithDefaults());
@@ -53,12 +51,11 @@ namespace Pulumi.AliCloud.PrivateLink
         /// 
         /// &gt; **NOTE:** Available in v1.110.0+.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// Basic Usage
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -79,8 +76,7 @@ namespace Pulumi.AliCloud.PrivateLink
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetVpcEndpointConnectionsResult> Invoke(GetVpcEndpointConnectionsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetVpcEndpointConnectionsResult>("alicloud:privatelink/getVpcEndpointConnections:getVpcEndpointConnections", args ?? new GetVpcEndpointConnectionsInvokeArgs(), options.WithDefaults());

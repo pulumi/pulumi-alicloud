@@ -705,6 +705,7 @@ class DbCluster(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -734,6 +735,7 @@ class DbCluster(pulumi.CustomResource):
             vswitch_id=default_switch.id,
             vpc_id=default_network.id)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -784,6 +786,7 @@ class DbCluster(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -813,6 +816,7 @@ class DbCluster(pulumi.CustomResource):
             vswitch_id=default_switch.id,
             vpc_id=default_network.id)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

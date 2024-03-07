@@ -15,6 +15,7 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -25,6 +26,7 @@ import * as utilities from "../utilities";
  * });
  * export const ecsNetworkInterfacePermissionId1 = ids.then(ids => ids.permissions?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getEcsNetworkInterfacePermissions(args: GetEcsNetworkInterfacePermissionsArgs, opts?: pulumi.InvokeOptions): Promise<GetEcsNetworkInterfacePermissionsResult> {
 
@@ -89,6 +91,7 @@ export interface GetEcsNetworkInterfacePermissionsResult {
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -99,6 +102,7 @@ export interface GetEcsNetworkInterfacePermissionsResult {
  * });
  * export const ecsNetworkInterfacePermissionId1 = ids.then(ids => ids.permissions?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getEcsNetworkInterfacePermissionsOutput(args: GetEcsNetworkInterfacePermissionsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEcsNetworkInterfacePermissionsResult> {
     return pulumi.output(args).apply((a: any) => getEcsNetworkInterfacePermissions(a, opts))

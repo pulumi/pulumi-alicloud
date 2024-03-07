@@ -175,6 +175,7 @@ class CustomLine(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -187,6 +188,7 @@ class CustomLine(pulumi.CustomResource):
                 start_ip="192.0.2.123",
             )])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -220,6 +222,7 @@ class CustomLine(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -232,6 +235,7 @@ class CustomLine(pulumi.CustomResource):
                 start_ip="192.0.2.123",
             )])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

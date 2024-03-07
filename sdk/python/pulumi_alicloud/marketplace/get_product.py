@@ -85,6 +85,7 @@ def get_product(available_region: Optional[str] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -94,6 +95,7 @@ def get_product(available_region: Optional[str] = None,
     pulumi.export("firstProductSkuCode", default.products[0].skuses[0].sku_code)
     pulumi.export("firstProductPackageVersion", default.products[0].skuses[0].package_versions[0].package_version)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str available_region: A available region id used to filter market place Ecs images.
@@ -123,6 +125,7 @@ def get_product_output(available_region: Optional[pulumi.Input[Optional[str]]] =
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -132,6 +135,7 @@ def get_product_output(available_region: Optional[pulumi.Input[Optional[str]]] =
     pulumi.export("firstProductSkuCode", default.products[0].skuses[0].sku_code)
     pulumi.export("firstProductPackageVersion", default.products[0].skuses[0].package_versions[0].package_version)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str available_region: A available region id used to filter market place Ecs images.

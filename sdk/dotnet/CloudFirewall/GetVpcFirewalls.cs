@@ -16,10 +16,9 @@ namespace Pulumi.AliCloud.CloudFirewall
         /// 
         /// &gt; **NOTE:** Available in 1.194.0+
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -45,8 +44,7 @@ namespace Pulumi.AliCloud.CloudFirewall
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetVpcFirewallsResult> InvokeAsync(GetVpcFirewallsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetVpcFirewallsResult>("alicloud:cloudfirewall/getVpcFirewalls:getVpcFirewalls", args ?? new GetVpcFirewallsArgs(), options.WithDefaults());
@@ -56,10 +54,9 @@ namespace Pulumi.AliCloud.CloudFirewall
         /// 
         /// &gt; **NOTE:** Available in 1.194.0+
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -85,8 +82,7 @@ namespace Pulumi.AliCloud.CloudFirewall
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetVpcFirewallsResult> Invoke(GetVpcFirewallsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetVpcFirewallsResult>("alicloud:cloudfirewall/getVpcFirewalls:getVpcFirewalls", args ?? new GetVpcFirewallsInvokeArgs(), options.WithDefaults());

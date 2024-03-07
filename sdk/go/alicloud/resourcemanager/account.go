@@ -21,6 +21,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -75,6 +76,8 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
+//
 // ### Deleting `resourcemanager.Account` or removing it from your configuration
 //
 // Deleting the resource manager account or removing it from your configuration will remove it from your state file and management,

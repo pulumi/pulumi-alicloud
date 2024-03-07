@@ -34,6 +34,194 @@ import javax.annotation.Nullable;
  * 
  * &gt; **NOTE:** Available since v1.2.0.
  * 
+ * ## Example Usage
+ * 
+ * Private Bucket
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.random.RandomInteger;
+ * import com.pulumi.random.RandomIntegerArgs;
+ * import com.pulumi.alicloud.oss.Bucket;
+ * import com.pulumi.alicloud.oss.BucketArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var default_ = new RandomInteger(&#34;default&#34;, RandomIntegerArgs.builder()        
+ *             .max(99999)
+ *             .min(10000)
+ *             .build());
+ * 
+ *         var bucket_acl = new Bucket(&#34;bucket-acl&#34;, BucketArgs.builder()        
+ *             .acl(&#34;private&#34;)
+ *             .bucket(default_.result().applyValue(result -&gt; String.format(&#34;example-value-%s&#34;, result)))
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * Static Website
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.random.RandomInteger;
+ * import com.pulumi.random.RandomIntegerArgs;
+ * import com.pulumi.alicloud.oss.Bucket;
+ * import com.pulumi.alicloud.oss.BucketArgs;
+ * import com.pulumi.alicloud.oss.inputs.BucketWebsiteArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var default_ = new RandomInteger(&#34;default&#34;, RandomIntegerArgs.builder()        
+ *             .max(99999)
+ *             .min(10000)
+ *             .build());
+ * 
+ *         var bucket_website = new Bucket(&#34;bucket-website&#34;, BucketArgs.builder()        
+ *             .bucket(default_.result().applyValue(result -&gt; String.format(&#34;example-value-%s&#34;, result)))
+ *             .website(BucketWebsiteArgs.builder()
+ *                 .errorDocument(&#34;error.html&#34;)
+ *                 .indexDocument(&#34;index.html&#34;)
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * Enable Logging
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.random.RandomInteger;
+ * import com.pulumi.random.RandomIntegerArgs;
+ * import com.pulumi.alicloud.oss.Bucket;
+ * import com.pulumi.alicloud.oss.BucketArgs;
+ * import com.pulumi.alicloud.oss.inputs.BucketLoggingArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var default_ = new RandomInteger(&#34;default&#34;, RandomIntegerArgs.builder()        
+ *             .max(99999)
+ *             .min(10000)
+ *             .build());
+ * 
+ *         var bucket_target = new Bucket(&#34;bucket-target&#34;, BucketArgs.builder()        
+ *             .bucket(default_.result().applyValue(result -&gt; String.format(&#34;example-value-%s&#34;, result)))
+ *             .acl(&#34;public-read&#34;)
+ *             .build());
+ * 
+ *         var bucket_logging = new Bucket(&#34;bucket-logging&#34;, BucketArgs.builder()        
+ *             .bucket(default_.result().applyValue(result -&gt; String.format(&#34;example-logging-%s&#34;, result)))
+ *             .logging(BucketLoggingArgs.builder()
+ *                 .targetBucket(bucket_target.id())
+ *                 .targetPrefix(&#34;log/&#34;)
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * Referer configuration
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.random.RandomInteger;
+ * import com.pulumi.random.RandomIntegerArgs;
+ * import com.pulumi.alicloud.oss.Bucket;
+ * import com.pulumi.alicloud.oss.BucketArgs;
+ * import com.pulumi.alicloud.oss.inputs.BucketRefererConfigArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var default_ = new RandomInteger(&#34;default&#34;, RandomIntegerArgs.builder()        
+ *             .max(99999)
+ *             .min(10000)
+ *             .build());
+ * 
+ *         var bucket_referer = new Bucket(&#34;bucket-referer&#34;, BucketArgs.builder()        
+ *             .acl(&#34;private&#34;)
+ *             .bucket(default_.result().applyValue(result -&gt; String.format(&#34;example-value-%s&#34;, result)))
+ *             .refererConfig(BucketRefererConfigArgs.builder()
+ *                 .allowEmpty(false)
+ *                 .referers(                
+ *                     &#34;http://www.aliyun.com&#34;,
+ *                     &#34;https://www.aliyun.com&#34;)
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * Set lifecycle rule
+ * 
  * ## Import
  * 
  * OSS bucket can be imported using the bucket name, e.g.

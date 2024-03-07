@@ -104,6 +104,7 @@ def get_dynamic_tag_groups(ids: Optional[Sequence[str]] = None,
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -126,6 +127,7 @@ def get_dynamic_tag_groups(ids: Optional[Sequence[str]] = None,
     ids = alicloud.cms.get_dynamic_tag_groups_output(ids=[default_dynamic_tag_group.id])
     pulumi.export("cmsDynamicTagGroupId1", ids.groups[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Dynamic Tag Group IDs.
@@ -165,6 +167,7 @@ def get_dynamic_tag_groups_output(ids: Optional[pulumi.Input[Optional[Sequence[s
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -187,6 +190,7 @@ def get_dynamic_tag_groups_output(ids: Optional[pulumi.Input[Optional[Sequence[s
     ids = alicloud.cms.get_dynamic_tag_groups_output(ids=[default_dynamic_tag_group.id])
     pulumi.export("cmsDynamicTagGroupId1", ids.groups[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Dynamic Tag Group IDs.

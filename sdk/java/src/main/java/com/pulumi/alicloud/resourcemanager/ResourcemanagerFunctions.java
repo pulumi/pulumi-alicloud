@@ -71,6 +71,8 @@ public final class ResourcemanagerFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -100,6 +102,7 @@ public final class ResourcemanagerFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetAccountDeletionCheckTaskResult> getAccountDeletionCheckTask(GetAccountDeletionCheckTaskArgs args) {
@@ -117,6 +120,8 @@ public final class ResourcemanagerFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -146,6 +151,7 @@ public final class ResourcemanagerFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetAccountDeletionCheckTaskResult> getAccountDeletionCheckTaskPlain(GetAccountDeletionCheckTaskPlainArgs args) {
@@ -163,6 +169,8 @@ public final class ResourcemanagerFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -192,6 +200,7 @@ public final class ResourcemanagerFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetAccountDeletionCheckTaskResult> getAccountDeletionCheckTask(GetAccountDeletionCheckTaskArgs args, InvokeOptions options) {
@@ -209,6 +218,8 @@ public final class ResourcemanagerFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -238,6 +249,7 @@ public final class ResourcemanagerFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetAccountDeletionCheckTaskResult> getAccountDeletionCheckTaskPlain(GetAccountDeletionCheckTaskPlainArgs args, InvokeOptions options) {
@@ -249,6 +261,8 @@ public final class ResourcemanagerFunctions {
      * &gt; **NOTE:**  Available in 1.86.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -276,6 +290,7 @@ public final class ResourcemanagerFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetAccountsResult> getAccounts() {
@@ -287,6 +302,8 @@ public final class ResourcemanagerFunctions {
      * &gt; **NOTE:**  Available in 1.86.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -314,6 +331,7 @@ public final class ResourcemanagerFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetAccountsResult> getAccountsPlain() {
@@ -325,6 +343,8 @@ public final class ResourcemanagerFunctions {
      * &gt; **NOTE:**  Available in 1.86.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -352,6 +372,7 @@ public final class ResourcemanagerFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetAccountsResult> getAccounts(GetAccountsArgs args) {
@@ -363,6 +384,8 @@ public final class ResourcemanagerFunctions {
      * &gt; **NOTE:**  Available in 1.86.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -390,6 +413,7 @@ public final class ResourcemanagerFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetAccountsResult> getAccountsPlain(GetAccountsPlainArgs args) {
@@ -401,6 +425,8 @@ public final class ResourcemanagerFunctions {
      * &gt; **NOTE:**  Available in 1.86.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -428,6 +454,7 @@ public final class ResourcemanagerFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetAccountsResult> getAccounts(GetAccountsArgs args, InvokeOptions options) {
@@ -439,6 +466,8 @@ public final class ResourcemanagerFunctions {
      * &gt; **NOTE:**  Available in 1.86.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -466,6 +495,7 @@ public final class ResourcemanagerFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetAccountsResult> getAccountsPlain(GetAccountsPlainArgs args, InvokeOptions options) {
@@ -479,6 +509,8 @@ public final class ResourcemanagerFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -509,6 +541,7 @@ public final class ResourcemanagerFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetControlPoliciesResult> getControlPolicies() {
@@ -522,6 +555,8 @@ public final class ResourcemanagerFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -552,6 +587,7 @@ public final class ResourcemanagerFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetControlPoliciesResult> getControlPoliciesPlain() {
@@ -565,6 +601,8 @@ public final class ResourcemanagerFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -595,6 +633,7 @@ public final class ResourcemanagerFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetControlPoliciesResult> getControlPolicies(GetControlPoliciesArgs args) {
@@ -608,6 +647,8 @@ public final class ResourcemanagerFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -638,6 +679,7 @@ public final class ResourcemanagerFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetControlPoliciesResult> getControlPoliciesPlain(GetControlPoliciesPlainArgs args) {
@@ -651,6 +693,8 @@ public final class ResourcemanagerFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -681,6 +725,7 @@ public final class ResourcemanagerFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetControlPoliciesResult> getControlPolicies(GetControlPoliciesArgs args, InvokeOptions options) {
@@ -694,6 +739,8 @@ public final class ResourcemanagerFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -724,6 +771,7 @@ public final class ResourcemanagerFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetControlPoliciesResult> getControlPoliciesPlain(GetControlPoliciesPlainArgs args, InvokeOptions options) {
@@ -737,6 +785,8 @@ public final class ResourcemanagerFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -766,6 +816,7 @@ public final class ResourcemanagerFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetControlPolicyAttachmentsResult> getControlPolicyAttachments(GetControlPolicyAttachmentsArgs args) {
@@ -779,6 +830,8 @@ public final class ResourcemanagerFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -808,6 +861,7 @@ public final class ResourcemanagerFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetControlPolicyAttachmentsResult> getControlPolicyAttachmentsPlain(GetControlPolicyAttachmentsPlainArgs args) {
@@ -821,6 +875,8 @@ public final class ResourcemanagerFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -850,6 +906,7 @@ public final class ResourcemanagerFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetControlPolicyAttachmentsResult> getControlPolicyAttachments(GetControlPolicyAttachmentsArgs args, InvokeOptions options) {
@@ -863,6 +920,8 @@ public final class ResourcemanagerFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -892,6 +951,7 @@ public final class ResourcemanagerFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetControlPolicyAttachmentsResult> getControlPolicyAttachmentsPlain(GetControlPolicyAttachmentsPlainArgs args, InvokeOptions options) {
@@ -905,6 +965,8 @@ public final class ResourcemanagerFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -934,6 +996,7 @@ public final class ResourcemanagerFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetDelegatedAdministratorsResult> getDelegatedAdministrators() {
@@ -947,6 +1010,8 @@ public final class ResourcemanagerFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -976,6 +1041,7 @@ public final class ResourcemanagerFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetDelegatedAdministratorsResult> getDelegatedAdministratorsPlain() {
@@ -989,6 +1055,8 @@ public final class ResourcemanagerFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1018,6 +1086,7 @@ public final class ResourcemanagerFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetDelegatedAdministratorsResult> getDelegatedAdministrators(GetDelegatedAdministratorsArgs args) {
@@ -1031,6 +1100,8 @@ public final class ResourcemanagerFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1060,6 +1131,7 @@ public final class ResourcemanagerFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetDelegatedAdministratorsResult> getDelegatedAdministratorsPlain(GetDelegatedAdministratorsPlainArgs args) {
@@ -1073,6 +1145,8 @@ public final class ResourcemanagerFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1102,6 +1176,7 @@ public final class ResourcemanagerFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetDelegatedAdministratorsResult> getDelegatedAdministrators(GetDelegatedAdministratorsArgs args, InvokeOptions options) {
@@ -1115,6 +1190,8 @@ public final class ResourcemanagerFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1144,6 +1221,7 @@ public final class ResourcemanagerFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetDelegatedAdministratorsResult> getDelegatedAdministratorsPlain(GetDelegatedAdministratorsPlainArgs args, InvokeOptions options) {
@@ -1157,6 +1235,8 @@ public final class ResourcemanagerFunctions {
      * &gt; **NOTE:**  You can view only the information of the first-level child folders of the specified folder.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1186,6 +1266,7 @@ public final class ResourcemanagerFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetFoldersResult> getFolders() {
@@ -1199,6 +1280,8 @@ public final class ResourcemanagerFunctions {
      * &gt; **NOTE:**  You can view only the information of the first-level child folders of the specified folder.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1228,6 +1311,7 @@ public final class ResourcemanagerFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetFoldersResult> getFoldersPlain() {
@@ -1241,6 +1325,8 @@ public final class ResourcemanagerFunctions {
      * &gt; **NOTE:**  You can view only the information of the first-level child folders of the specified folder.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1270,6 +1356,7 @@ public final class ResourcemanagerFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetFoldersResult> getFolders(GetFoldersArgs args) {
@@ -1283,6 +1370,8 @@ public final class ResourcemanagerFunctions {
      * &gt; **NOTE:**  You can view only the information of the first-level child folders of the specified folder.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1312,6 +1401,7 @@ public final class ResourcemanagerFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetFoldersResult> getFoldersPlain(GetFoldersPlainArgs args) {
@@ -1325,6 +1415,8 @@ public final class ResourcemanagerFunctions {
      * &gt; **NOTE:**  You can view only the information of the first-level child folders of the specified folder.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1354,6 +1446,7 @@ public final class ResourcemanagerFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetFoldersResult> getFolders(GetFoldersArgs args, InvokeOptions options) {
@@ -1367,6 +1460,8 @@ public final class ResourcemanagerFunctions {
      * &gt; **NOTE:**  You can view only the information of the first-level child folders of the specified folder.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1396,6 +1491,7 @@ public final class ResourcemanagerFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetFoldersResult> getFoldersPlain(GetFoldersPlainArgs args, InvokeOptions options) {
@@ -1407,6 +1503,8 @@ public final class ResourcemanagerFunctions {
      * &gt; **NOTE:**  Available in 1.86.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1434,6 +1532,7 @@ public final class ResourcemanagerFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetHandshakesResult> getHandshakes() {
@@ -1445,6 +1544,8 @@ public final class ResourcemanagerFunctions {
      * &gt; **NOTE:**  Available in 1.86.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1472,6 +1573,7 @@ public final class ResourcemanagerFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetHandshakesResult> getHandshakesPlain() {
@@ -1483,6 +1585,8 @@ public final class ResourcemanagerFunctions {
      * &gt; **NOTE:**  Available in 1.86.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1510,6 +1614,7 @@ public final class ResourcemanagerFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetHandshakesResult> getHandshakes(GetHandshakesArgs args) {
@@ -1521,6 +1626,8 @@ public final class ResourcemanagerFunctions {
      * &gt; **NOTE:**  Available in 1.86.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1548,6 +1655,7 @@ public final class ResourcemanagerFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetHandshakesResult> getHandshakesPlain(GetHandshakesPlainArgs args) {
@@ -1559,6 +1667,8 @@ public final class ResourcemanagerFunctions {
      * &gt; **NOTE:**  Available in 1.86.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1586,6 +1696,7 @@ public final class ResourcemanagerFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetHandshakesResult> getHandshakes(GetHandshakesArgs args, InvokeOptions options) {
@@ -1597,6 +1708,8 @@ public final class ResourcemanagerFunctions {
      * &gt; **NOTE:**  Available in 1.86.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1624,6 +1737,7 @@ public final class ResourcemanagerFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetHandshakesResult> getHandshakesPlain(GetHandshakesPlainArgs args, InvokeOptions options) {
@@ -1636,6 +1750,7 @@ public final class ResourcemanagerFunctions {
      * 
      * ## Example Usage
      * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1667,6 +1782,7 @@ public final class ResourcemanagerFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetPoliciesResult> getPolicies() {
@@ -1679,6 +1795,7 @@ public final class ResourcemanagerFunctions {
      * 
      * ## Example Usage
      * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1710,6 +1827,7 @@ public final class ResourcemanagerFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetPoliciesResult> getPoliciesPlain() {
@@ -1722,6 +1840,7 @@ public final class ResourcemanagerFunctions {
      * 
      * ## Example Usage
      * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1753,6 +1872,7 @@ public final class ResourcemanagerFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetPoliciesResult> getPolicies(GetPoliciesArgs args) {
@@ -1765,6 +1885,7 @@ public final class ResourcemanagerFunctions {
      * 
      * ## Example Usage
      * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1796,6 +1917,7 @@ public final class ResourcemanagerFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetPoliciesResult> getPoliciesPlain(GetPoliciesPlainArgs args) {
@@ -1808,6 +1930,7 @@ public final class ResourcemanagerFunctions {
      * 
      * ## Example Usage
      * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1839,6 +1962,7 @@ public final class ResourcemanagerFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetPoliciesResult> getPolicies(GetPoliciesArgs args, InvokeOptions options) {
@@ -1851,6 +1975,7 @@ public final class ResourcemanagerFunctions {
      * 
      * ## Example Usage
      * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1882,6 +2007,7 @@ public final class ResourcemanagerFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetPoliciesResult> getPoliciesPlain(GetPoliciesPlainArgs args, InvokeOptions options) {
@@ -1893,6 +2019,8 @@ public final class ResourcemanagerFunctions {
      * &gt; **NOTE:**  Available in 1.93.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1920,6 +2048,7 @@ public final class ResourcemanagerFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetPolicyAttachmentsResult> getPolicyAttachments() {
@@ -1931,6 +2060,8 @@ public final class ResourcemanagerFunctions {
      * &gt; **NOTE:**  Available in 1.93.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1958,6 +2089,7 @@ public final class ResourcemanagerFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetPolicyAttachmentsResult> getPolicyAttachmentsPlain() {
@@ -1969,6 +2101,8 @@ public final class ResourcemanagerFunctions {
      * &gt; **NOTE:**  Available in 1.93.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1996,6 +2130,7 @@ public final class ResourcemanagerFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetPolicyAttachmentsResult> getPolicyAttachments(GetPolicyAttachmentsArgs args) {
@@ -2007,6 +2142,8 @@ public final class ResourcemanagerFunctions {
      * &gt; **NOTE:**  Available in 1.93.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2034,6 +2171,7 @@ public final class ResourcemanagerFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetPolicyAttachmentsResult> getPolicyAttachmentsPlain(GetPolicyAttachmentsPlainArgs args) {
@@ -2045,6 +2183,8 @@ public final class ResourcemanagerFunctions {
      * &gt; **NOTE:**  Available in 1.93.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2072,6 +2212,7 @@ public final class ResourcemanagerFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetPolicyAttachmentsResult> getPolicyAttachments(GetPolicyAttachmentsArgs args, InvokeOptions options) {
@@ -2083,6 +2224,8 @@ public final class ResourcemanagerFunctions {
      * &gt; **NOTE:**  Available in 1.93.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2110,6 +2253,7 @@ public final class ResourcemanagerFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetPolicyAttachmentsResult> getPolicyAttachmentsPlain(GetPolicyAttachmentsPlainArgs args, InvokeOptions options) {
@@ -2121,6 +2265,8 @@ public final class ResourcemanagerFunctions {
      * &gt; **NOTE:**  Available in 1.85.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2151,6 +2297,7 @@ public final class ResourcemanagerFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetPolicyVersionsResult> getPolicyVersions(GetPolicyVersionsArgs args) {
@@ -2162,6 +2309,8 @@ public final class ResourcemanagerFunctions {
      * &gt; **NOTE:**  Available in 1.85.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2192,6 +2341,7 @@ public final class ResourcemanagerFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetPolicyVersionsResult> getPolicyVersionsPlain(GetPolicyVersionsPlainArgs args) {
@@ -2203,6 +2353,8 @@ public final class ResourcemanagerFunctions {
      * &gt; **NOTE:**  Available in 1.85.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2233,6 +2385,7 @@ public final class ResourcemanagerFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetPolicyVersionsResult> getPolicyVersions(GetPolicyVersionsArgs args, InvokeOptions options) {
@@ -2244,6 +2397,8 @@ public final class ResourcemanagerFunctions {
      * &gt; **NOTE:**  Available in 1.85.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2274,6 +2429,7 @@ public final class ResourcemanagerFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetPolicyVersionsResult> getPolicyVersionsPlain(GetPolicyVersionsPlainArgs args, InvokeOptions options) {
@@ -2285,6 +2441,8 @@ public final class ResourcemanagerFunctions {
      * &gt; **NOTE:**  Available in 1.86.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2312,6 +2470,7 @@ public final class ResourcemanagerFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetResourceDirectoriesResult> getResourceDirectories() {
@@ -2323,6 +2482,8 @@ public final class ResourcemanagerFunctions {
      * &gt; **NOTE:**  Available in 1.86.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2350,6 +2511,7 @@ public final class ResourcemanagerFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetResourceDirectoriesResult> getResourceDirectoriesPlain() {
@@ -2361,6 +2523,8 @@ public final class ResourcemanagerFunctions {
      * &gt; **NOTE:**  Available in 1.86.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2388,6 +2552,7 @@ public final class ResourcemanagerFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetResourceDirectoriesResult> getResourceDirectories(GetResourceDirectoriesArgs args) {
@@ -2399,6 +2564,8 @@ public final class ResourcemanagerFunctions {
      * &gt; **NOTE:**  Available in 1.86.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2426,6 +2593,7 @@ public final class ResourcemanagerFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetResourceDirectoriesResult> getResourceDirectoriesPlain(GetResourceDirectoriesPlainArgs args) {
@@ -2437,6 +2605,8 @@ public final class ResourcemanagerFunctions {
      * &gt; **NOTE:**  Available in 1.86.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2464,6 +2634,7 @@ public final class ResourcemanagerFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetResourceDirectoriesResult> getResourceDirectories(GetResourceDirectoriesArgs args, InvokeOptions options) {
@@ -2475,6 +2646,8 @@ public final class ResourcemanagerFunctions {
      * &gt; **NOTE:**  Available in 1.86.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2502,6 +2675,7 @@ public final class ResourcemanagerFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetResourceDirectoriesResult> getResourceDirectoriesPlain(GetResourceDirectoriesPlainArgs args, InvokeOptions options) {
@@ -2515,6 +2689,8 @@ public final class ResourcemanagerFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2544,6 +2720,7 @@ public final class ResourcemanagerFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetResourceGroupsResult> getResourceGroups() {
@@ -2557,6 +2734,8 @@ public final class ResourcemanagerFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2586,6 +2765,7 @@ public final class ResourcemanagerFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetResourceGroupsResult> getResourceGroupsPlain() {
@@ -2599,6 +2779,8 @@ public final class ResourcemanagerFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2628,6 +2810,7 @@ public final class ResourcemanagerFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetResourceGroupsResult> getResourceGroups(GetResourceGroupsArgs args) {
@@ -2641,6 +2824,8 @@ public final class ResourcemanagerFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2670,6 +2855,7 @@ public final class ResourcemanagerFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetResourceGroupsResult> getResourceGroupsPlain(GetResourceGroupsPlainArgs args) {
@@ -2683,6 +2869,8 @@ public final class ResourcemanagerFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2712,6 +2900,7 @@ public final class ResourcemanagerFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetResourceGroupsResult> getResourceGroups(GetResourceGroupsArgs args, InvokeOptions options) {
@@ -2725,6 +2914,8 @@ public final class ResourcemanagerFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2754,6 +2945,7 @@ public final class ResourcemanagerFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetResourceGroupsResult> getResourceGroupsPlain(GetResourceGroupsPlainArgs args, InvokeOptions options) {
@@ -2767,6 +2959,8 @@ public final class ResourcemanagerFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2798,6 +2992,7 @@ public final class ResourcemanagerFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetResourceSharesResult> getResourceShares(GetResourceSharesArgs args) {
@@ -2811,6 +3006,8 @@ public final class ResourcemanagerFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2842,6 +3039,7 @@ public final class ResourcemanagerFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetResourceSharesResult> getResourceSharesPlain(GetResourceSharesPlainArgs args) {
@@ -2855,6 +3053,8 @@ public final class ResourcemanagerFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2886,6 +3086,7 @@ public final class ResourcemanagerFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetResourceSharesResult> getResourceShares(GetResourceSharesArgs args, InvokeOptions options) {
@@ -2899,6 +3100,8 @@ public final class ResourcemanagerFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2930,6 +3133,7 @@ public final class ResourcemanagerFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetResourceSharesResult> getResourceSharesPlain(GetResourceSharesPlainArgs args, InvokeOptions options) {
@@ -2941,6 +3145,8 @@ public final class ResourcemanagerFunctions {
      * &gt; **NOTE:**  Available in 1.86.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2970,6 +3176,7 @@ public final class ResourcemanagerFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetRolesResult> getRoles() {
@@ -2981,6 +3188,8 @@ public final class ResourcemanagerFunctions {
      * &gt; **NOTE:**  Available in 1.86.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3010,6 +3219,7 @@ public final class ResourcemanagerFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetRolesResult> getRolesPlain() {
@@ -3021,6 +3231,8 @@ public final class ResourcemanagerFunctions {
      * &gt; **NOTE:**  Available in 1.86.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3050,6 +3262,7 @@ public final class ResourcemanagerFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetRolesResult> getRoles(GetRolesArgs args) {
@@ -3061,6 +3274,8 @@ public final class ResourcemanagerFunctions {
      * &gt; **NOTE:**  Available in 1.86.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3090,6 +3305,7 @@ public final class ResourcemanagerFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetRolesResult> getRolesPlain(GetRolesPlainArgs args) {
@@ -3101,6 +3317,8 @@ public final class ResourcemanagerFunctions {
      * &gt; **NOTE:**  Available in 1.86.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3130,6 +3348,7 @@ public final class ResourcemanagerFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetRolesResult> getRoles(GetRolesArgs args, InvokeOptions options) {
@@ -3141,6 +3360,8 @@ public final class ResourcemanagerFunctions {
      * &gt; **NOTE:**  Available in 1.86.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3170,6 +3391,7 @@ public final class ResourcemanagerFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetRolesResult> getRolesPlain(GetRolesPlainArgs args, InvokeOptions options) {
@@ -3237,6 +3459,8 @@ public final class ResourcemanagerFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3289,6 +3513,7 @@ public final class ResourcemanagerFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetSharedTargetsResult> getSharedTargets() {
@@ -3302,6 +3527,8 @@ public final class ResourcemanagerFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3354,6 +3581,7 @@ public final class ResourcemanagerFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetSharedTargetsResult> getSharedTargetsPlain() {
@@ -3367,6 +3595,8 @@ public final class ResourcemanagerFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3419,6 +3649,7 @@ public final class ResourcemanagerFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetSharedTargetsResult> getSharedTargets(GetSharedTargetsArgs args) {
@@ -3432,6 +3663,8 @@ public final class ResourcemanagerFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3484,6 +3717,7 @@ public final class ResourcemanagerFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetSharedTargetsResult> getSharedTargetsPlain(GetSharedTargetsPlainArgs args) {
@@ -3497,6 +3731,8 @@ public final class ResourcemanagerFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3549,6 +3785,7 @@ public final class ResourcemanagerFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetSharedTargetsResult> getSharedTargets(GetSharedTargetsArgs args, InvokeOptions options) {
@@ -3562,6 +3799,8 @@ public final class ResourcemanagerFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3614,6 +3853,7 @@ public final class ResourcemanagerFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetSharedTargetsResult> getSharedTargetsPlain(GetSharedTargetsPlainArgs args, InvokeOptions options) {

@@ -203,6 +203,7 @@ class Database(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -230,6 +231,7 @@ class Database(pulumi.CustomResource):
             db_cluster_id=default_cluster.id,
             db_name="terraform-example")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -260,6 +262,7 @@ class Database(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -287,6 +290,7 @@ class Database(pulumi.CustomResource):
             db_cluster_id=default_cluster.id,
             db_name="terraform-example")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

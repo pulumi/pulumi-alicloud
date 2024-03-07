@@ -94,6 +94,7 @@ def get_versions(edition: Optional[str] = None,
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -101,6 +102,7 @@ def get_versions(edition: Optional[str] = None,
     default = alicloud.servicemesh.get_versions(edition="Default")
     pulumi.export("serviceMeshVersion", data["alicloud_service_mesh_versions"]["versions"][0]["version"])
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str edition: The edition of the ASM instance.
@@ -136,6 +138,7 @@ def get_versions_output(edition: Optional[pulumi.Input[Optional[str]]] = None,
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -143,6 +146,7 @@ def get_versions_output(edition: Optional[pulumi.Input[Optional[str]]] = None,
     default = alicloud.servicemesh.get_versions(edition="Default")
     pulumi.export("serviceMeshVersion", data["alicloud_service_mesh_versions"]["versions"][0]["version"])
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str edition: The edition of the ASM instance.

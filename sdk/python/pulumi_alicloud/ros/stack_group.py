@@ -473,6 +473,7 @@ class StackGroup(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -485,6 +486,7 @@ class StackGroup(pulumi.CustomResource):
             
         \"\"\")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -526,6 +528,7 @@ class StackGroup(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -538,6 +541,7 @@ class StackGroup(pulumi.CustomResource):
             
         \"\"\")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

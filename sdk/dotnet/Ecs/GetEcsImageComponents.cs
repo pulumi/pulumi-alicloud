@@ -16,12 +16,11 @@ namespace Pulumi.AliCloud.Ecs
         /// 
         /// &gt; **NOTE:** Available in v1.159.0+.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// Basic Usage
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -50,8 +49,7 @@ namespace Pulumi.AliCloud.Ecs
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetEcsImageComponentsResult> InvokeAsync(GetEcsImageComponentsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetEcsImageComponentsResult>("alicloud:ecs/getEcsImageComponents:getEcsImageComponents", args ?? new GetEcsImageComponentsArgs(), options.WithDefaults());
@@ -61,12 +59,11 @@ namespace Pulumi.AliCloud.Ecs
         /// 
         /// &gt; **NOTE:** Available in v1.159.0+.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// Basic Usage
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -95,8 +92,7 @@ namespace Pulumi.AliCloud.Ecs
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetEcsImageComponentsResult> Invoke(GetEcsImageComponentsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetEcsImageComponentsResult>("alicloud:ecs/getEcsImageComponents:getEcsImageComponents", args ?? new GetEcsImageComponentsInvokeArgs(), options.WithDefaults());

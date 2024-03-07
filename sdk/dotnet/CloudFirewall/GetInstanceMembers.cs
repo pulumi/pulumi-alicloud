@@ -16,10 +16,9 @@ namespace Pulumi.AliCloud.CloudFirewall
         /// 
         /// &gt; **NOTE:** Available in 1.194.0+
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -42,8 +41,7 @@ namespace Pulumi.AliCloud.CloudFirewall
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetInstanceMembersResult> InvokeAsync(GetInstanceMembersArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetInstanceMembersResult>("alicloud:cloudfirewall/getInstanceMembers:getInstanceMembers", args ?? new GetInstanceMembersArgs(), options.WithDefaults());
@@ -53,10 +51,9 @@ namespace Pulumi.AliCloud.CloudFirewall
         /// 
         /// &gt; **NOTE:** Available in 1.194.0+
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -79,8 +76,7 @@ namespace Pulumi.AliCloud.CloudFirewall
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetInstanceMembersResult> Invoke(GetInstanceMembersInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetInstanceMembersResult>("alicloud:cloudfirewall/getInstanceMembers:getInstanceMembers", args ?? new GetInstanceMembersInvokeArgs(), options.WithDefaults());

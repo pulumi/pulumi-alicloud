@@ -15,6 +15,7 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -25,6 +26,7 @@ import * as utilities from "../utilities";
  * });
  * export const firstVpcFlowLogId = example.then(example => example.logs?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getVpcFlowLogs(args?: GetVpcFlowLogsArgs, opts?: pulumi.InvokeOptions): Promise<GetVpcFlowLogsResult> {
     args = args || {};
@@ -126,6 +128,7 @@ export interface GetVpcFlowLogsResult {
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -136,6 +139,7 @@ export interface GetVpcFlowLogsResult {
  * });
  * export const firstVpcFlowLogId = example.then(example => example.logs?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getVpcFlowLogsOutput(args?: GetVpcFlowLogsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVpcFlowLogsResult> {
     return pulumi.output(args).apply((a: any) => getVpcFlowLogs(a, opts))

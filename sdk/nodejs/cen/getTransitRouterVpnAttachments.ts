@@ -15,6 +15,7 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -24,6 +25,7 @@ import * as utilities from "../utilities";
  * });
  * export const cenTransitRouterVpnAttachmentId1 = ids.then(ids => ids.attachments?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getTransitRouterVpnAttachments(args: GetTransitRouterVpnAttachmentsArgs, opts?: pulumi.InvokeOptions): Promise<GetTransitRouterVpnAttachmentsResult> {
 
@@ -91,6 +93,7 @@ export interface GetTransitRouterVpnAttachmentsResult {
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -100,6 +103,7 @@ export interface GetTransitRouterVpnAttachmentsResult {
  * });
  * export const cenTransitRouterVpnAttachmentId1 = ids.then(ids => ids.attachments?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getTransitRouterVpnAttachmentsOutput(args: GetTransitRouterVpnAttachmentsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTransitRouterVpnAttachmentsResult> {
     return pulumi.output(args).apply((a: any) => getTransitRouterVpnAttachments(a, opts))

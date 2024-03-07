@@ -21,6 +21,7 @@ import (
 //
 // # Basic Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -82,6 +83,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
@@ -129,7 +131,7 @@ type OssShipper struct {
 	// The data synchronized from Log Service to OSS will be stored in this directory of Bucket.
 	OssPrefix      pulumi.StringPtrOutput             `pulumi:"ossPrefix"`
 	ParquetConfigs OssShipperParquetConfigArrayOutput `pulumi:"parquetConfigs"`
-	// The OSS Bucket directory is dynamically generated according to the creation time of the shipper task, it cannot start with a forward slash `/`, the default value is `%Y/%m/%d/%H/%M`.
+	// The OSS Bucket directory is dynamically generated according to the creation time of the shipper task, it cannot start with a forward slash `/`, the default value is `%!Y(MISSING)/%!m(MISSING)/%!d(MISSING)/%!H(MISSING)/%!M(MISSING)`.
 	PathFormat pulumi.StringOutput `pulumi:"pathFormat"`
 	// The name of the log project. It is the only in one Alicloud account.
 	ProjectName pulumi.StringOutput `pulumi:"projectName"`
@@ -229,7 +231,7 @@ type ossShipperState struct {
 	// The data synchronized from Log Service to OSS will be stored in this directory of Bucket.
 	OssPrefix      *string                   `pulumi:"ossPrefix"`
 	ParquetConfigs []OssShipperParquetConfig `pulumi:"parquetConfigs"`
-	// The OSS Bucket directory is dynamically generated according to the creation time of the shipper task, it cannot start with a forward slash `/`, the default value is `%Y/%m/%d/%H/%M`.
+	// The OSS Bucket directory is dynamically generated according to the creation time of the shipper task, it cannot start with a forward slash `/`, the default value is `%!Y(MISSING)/%!m(MISSING)/%!d(MISSING)/%!H(MISSING)/%!M(MISSING)`.
 	PathFormat *string `pulumi:"pathFormat"`
 	// The name of the log project. It is the only in one Alicloud account.
 	ProjectName *string `pulumi:"projectName"`
@@ -276,7 +278,7 @@ type OssShipperState struct {
 	// The data synchronized from Log Service to OSS will be stored in this directory of Bucket.
 	OssPrefix      pulumi.StringPtrInput
 	ParquetConfigs OssShipperParquetConfigArrayInput
-	// The OSS Bucket directory is dynamically generated according to the creation time of the shipper task, it cannot start with a forward slash `/`, the default value is `%Y/%m/%d/%H/%M`.
+	// The OSS Bucket directory is dynamically generated according to the creation time of the shipper task, it cannot start with a forward slash `/`, the default value is `%!Y(MISSING)/%!m(MISSING)/%!d(MISSING)/%!H(MISSING)/%!M(MISSING)`.
 	PathFormat pulumi.StringPtrInput
 	// The name of the log project. It is the only in one Alicloud account.
 	ProjectName pulumi.StringPtrInput
@@ -327,7 +329,7 @@ type ossShipperArgs struct {
 	// The data synchronized from Log Service to OSS will be stored in this directory of Bucket.
 	OssPrefix      *string                   `pulumi:"ossPrefix"`
 	ParquetConfigs []OssShipperParquetConfig `pulumi:"parquetConfigs"`
-	// The OSS Bucket directory is dynamically generated according to the creation time of the shipper task, it cannot start with a forward slash `/`, the default value is `%Y/%m/%d/%H/%M`.
+	// The OSS Bucket directory is dynamically generated according to the creation time of the shipper task, it cannot start with a forward slash `/`, the default value is `%!Y(MISSING)/%!m(MISSING)/%!d(MISSING)/%!H(MISSING)/%!M(MISSING)`.
 	PathFormat string `pulumi:"pathFormat"`
 	// The name of the log project. It is the only in one Alicloud account.
 	ProjectName string `pulumi:"projectName"`
@@ -375,7 +377,7 @@ type OssShipperArgs struct {
 	// The data synchronized from Log Service to OSS will be stored in this directory of Bucket.
 	OssPrefix      pulumi.StringPtrInput
 	ParquetConfigs OssShipperParquetConfigArrayInput
-	// The OSS Bucket directory is dynamically generated according to the creation time of the shipper task, it cannot start with a forward slash `/`, the default value is `%Y/%m/%d/%H/%M`.
+	// The OSS Bucket directory is dynamically generated according to the creation time of the shipper task, it cannot start with a forward slash `/`, the default value is `%!Y(MISSING)/%!m(MISSING)/%!d(MISSING)/%!H(MISSING)/%!M(MISSING)`.
 	PathFormat pulumi.StringInput
 	// The name of the log project. It is the only in one Alicloud account.
 	ProjectName pulumi.StringInput
@@ -553,7 +555,7 @@ func (o OssShipperOutput) ParquetConfigs() OssShipperParquetConfigArrayOutput {
 	return o.ApplyT(func(v *OssShipper) OssShipperParquetConfigArrayOutput { return v.ParquetConfigs }).(OssShipperParquetConfigArrayOutput)
 }
 
-// The OSS Bucket directory is dynamically generated according to the creation time of the shipper task, it cannot start with a forward slash `/`, the default value is `%Y/%m/%d/%H/%M`.
+// The OSS Bucket directory is dynamically generated according to the creation time of the shipper task, it cannot start with a forward slash `/`, the default value is `%!Y(MISSING)/%!m(MISSING)/%!d(MISSING)/%!H(MISSING)/%!M(MISSING)`.
 func (o OssShipperOutput) PathFormat() pulumi.StringOutput {
 	return o.ApplyT(func(v *OssShipper) pulumi.StringOutput { return v.PathFormat }).(pulumi.StringOutput)
 }

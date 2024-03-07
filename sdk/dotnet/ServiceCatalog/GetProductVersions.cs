@@ -16,10 +16,9 @@ namespace Pulumi.AliCloud.ServiceCatalog
         /// 
         /// &gt; **NOTE:** Available in 1.196.0+
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -40,8 +39,7 @@ namespace Pulumi.AliCloud.ServiceCatalog
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetProductVersionsResult> InvokeAsync(GetProductVersionsArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetProductVersionsResult>("alicloud:servicecatalog/getProductVersions:getProductVersions", args ?? new GetProductVersionsArgs(), options.WithDefaults());
@@ -51,10 +49,9 @@ namespace Pulumi.AliCloud.ServiceCatalog
         /// 
         /// &gt; **NOTE:** Available in 1.196.0+
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -75,8 +72,7 @@ namespace Pulumi.AliCloud.ServiceCatalog
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetProductVersionsResult> Invoke(GetProductVersionsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetProductVersionsResult>("alicloud:servicecatalog/getProductVersions:getProductVersions", args ?? new GetProductVersionsInvokeArgs(), options.WithDefaults());

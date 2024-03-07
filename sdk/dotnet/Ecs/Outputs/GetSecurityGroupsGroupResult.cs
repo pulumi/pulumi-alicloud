@@ -43,6 +43,7 @@ namespace Pulumi.AliCloud.Ecs.Outputs
         public readonly string SecurityGroupType;
         /// <summary>
         /// A map of tags assigned to the ECS instances. It must be in the format:
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -62,6 +63,7 @@ namespace Pulumi.AliCloud.Ecs.Outputs
         /// 
         /// });
         /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public readonly ImmutableDictionary<string, object>? Tags;
         /// <summary>

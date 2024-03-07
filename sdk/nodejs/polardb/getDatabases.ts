@@ -14,6 +14,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -57,6 +58,7 @@ import * as utilities from "../utilities";
  * }));
  * export const database = defaultDatabases.apply(defaultDatabases => defaultDatabases.databases?.[0]?.dbName);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getDatabases(args: GetDatabasesArgs, opts?: pulumi.InvokeOptions): Promise<GetDatabasesResult> {
 
@@ -108,6 +110,7 @@ export interface GetDatabasesResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -151,6 +154,7 @@ export interface GetDatabasesResult {
  * }));
  * export const database = defaultDatabases.apply(defaultDatabases => defaultDatabases.databases?.[0]?.dbName);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getDatabasesOutput(args: GetDatabasesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDatabasesResult> {
     return pulumi.output(args).apply((a: any) => getDatabases(a, opts))

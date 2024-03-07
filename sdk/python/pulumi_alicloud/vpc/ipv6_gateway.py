@@ -349,6 +349,7 @@ class Ipv6Gateway(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -372,6 +373,7 @@ class Ipv6Gateway(pulumi.CustomResource):
             vpc_id=default_vpc.id,
             resource_group_id=default_rg.id)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -407,6 +409,7 @@ class Ipv6Gateway(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -430,6 +433,7 @@ class Ipv6Gateway(pulumi.CustomResource):
             vpc_id=default_vpc.id,
             resource_group_id=default_rg.id)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

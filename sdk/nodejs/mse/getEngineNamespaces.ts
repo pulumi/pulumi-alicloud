@@ -15,6 +15,7 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -25,6 +26,7 @@ import * as utilities from "../utilities";
  * });
  * export const mseEngineNamespaceId1 = ids.then(ids => ids.namespaces?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getEngineNamespaces(args: GetEngineNamespacesArgs, opts?: pulumi.InvokeOptions): Promise<GetEngineNamespacesResult> {
 
@@ -82,6 +84,7 @@ export interface GetEngineNamespacesResult {
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -92,6 +95,7 @@ export interface GetEngineNamespacesResult {
  * });
  * export const mseEngineNamespaceId1 = ids.then(ids => ids.namespaces?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getEngineNamespacesOutput(args: GetEngineNamespacesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEngineNamespacesResult> {
     return pulumi.output(args).apply((a: any) => getEngineNamespaces(a, opts))

@@ -133,6 +133,7 @@ def get_snapshots(file_system_id: Optional[str] = None,
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -142,6 +143,7 @@ def get_snapshots(file_system_id: Optional[str] = None,
     name_regex = alicloud.nas.get_snapshots(name_regex="^my-Snapshot")
     pulumi.export("nasSnapshotId2", name_regex.snapshots[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str file_system_id: The ID of the file system.
@@ -190,6 +192,7 @@ def get_snapshots_output(file_system_id: Optional[pulumi.Input[Optional[str]]] =
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -199,6 +202,7 @@ def get_snapshots_output(file_system_id: Optional[pulumi.Input[Optional[str]]] =
     name_regex = alicloud.nas.get_snapshots(name_regex="^my-Snapshot")
     pulumi.export("nasSnapshotId2", name_regex.snapshots[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str file_system_id: The ID of the file system.

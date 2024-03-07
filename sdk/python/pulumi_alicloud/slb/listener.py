@@ -87,7 +87,7 @@ class ListenerArgs:
         :param pulumi.Input[str] health_check_method: HealthCheckMethod used for health check.Valid values: ["head", "get"] `http` and `https` support regions ap-northeast-1, ap-southeast-1, ap-southeast-2, ap-southeast-3, us-east-1, us-west-1, eu-central-1, ap-south-1, me-east-1, cn-huhehaote, cn-zhangjiakou, ap-southeast-5, cn-shenzhen, cn-hongkong, cn-qingdao, cn-chengdu, eu-west-1, cn-hangzhou", cn-beijing, cn-shanghai.This function does not support the TCP protocol .
         :param pulumi.Input[int] health_check_timeout: Maximum timeout of each health check response. It is required when `health_check` is on. Valid value range: [1-300] in seconds. Default to 5. Note: If `health_check_timeout` < `health_check_interval`, its will be replaced by `health_check_interval`.
         :param pulumi.Input[str] health_check_type: Type of health check. Valid values are: `tcp` and `http`. Default to `tcp` . TCP supports TCP and HTTP health check mode, you can select the particular mode depending on your application.
-        :param pulumi.Input[str] health_check_uri: URI used for health check. When it used to launch TCP listener, `health_check_type` must be "http". Its length is limited to 1-80 and it must start with /. Only characters such as letters, digits, ‘-’, ‘/’, ‘.’, ‘%’, ‘?’, #’ and ‘&’ are allowed.
+        :param pulumi.Input[str] health_check_uri: URI used for health check. When it used to launch TCP listener, `health_check_type` must be "http". Its length is limited to 1-80 and it must start with /. Only characters such as letters, digits, ‘-’, ‘/’, ‘.’, ‘%!’(MISSING), ‘?’, #’ and ‘&’ are allowed.
         :param pulumi.Input[int] healthy_threshold: The number of health checks that an unhealthy backend server must consecutively pass before it can be declared healthy. In this case, the health check state is changed from fail to success. It is required when `health_check` is on. Valid value range: [2-10] in seconds. Default to 3. **NOTE:** This parameter takes effect only if the `health_check` parameter is set to `on`.
         :param pulumi.Input[int] idle_timeout: Timeout of http or https listener established connection idle timeout. Valid value range: [1-60] in seconds. Default to 15.
         :param pulumi.Input[str] listener_forward: Whether to enable http redirect to https, Valid values are `on` and `off`. Default to `off`.
@@ -509,7 +509,7 @@ class ListenerArgs:
     @pulumi.getter(name="healthCheckUri")
     def health_check_uri(self) -> Optional[pulumi.Input[str]]:
         """
-        URI used for health check. When it used to launch TCP listener, `health_check_type` must be "http". Its length is limited to 1-80 and it must start with /. Only characters such as letters, digits, ‘-’, ‘/’, ‘.’, ‘%’, ‘?’, #’ and ‘&’ are allowed.
+        URI used for health check. When it used to launch TCP listener, `health_check_type` must be "http". Its length is limited to 1-80 and it must start with /. Only characters such as letters, digits, ‘-’, ‘/’, ‘.’, ‘%!’(MISSING), ‘?’, #’ and ‘&’ are allowed.
         """
         return pulumi.get(self, "health_check_uri")
 
@@ -814,7 +814,7 @@ class _ListenerState:
         :param pulumi.Input[str] health_check_method: HealthCheckMethod used for health check.Valid values: ["head", "get"] `http` and `https` support regions ap-northeast-1, ap-southeast-1, ap-southeast-2, ap-southeast-3, us-east-1, us-west-1, eu-central-1, ap-south-1, me-east-1, cn-huhehaote, cn-zhangjiakou, ap-southeast-5, cn-shenzhen, cn-hongkong, cn-qingdao, cn-chengdu, eu-west-1, cn-hangzhou", cn-beijing, cn-shanghai.This function does not support the TCP protocol .
         :param pulumi.Input[int] health_check_timeout: Maximum timeout of each health check response. It is required when `health_check` is on. Valid value range: [1-300] in seconds. Default to 5. Note: If `health_check_timeout` < `health_check_interval`, its will be replaced by `health_check_interval`.
         :param pulumi.Input[str] health_check_type: Type of health check. Valid values are: `tcp` and `http`. Default to `tcp` . TCP supports TCP and HTTP health check mode, you can select the particular mode depending on your application.
-        :param pulumi.Input[str] health_check_uri: URI used for health check. When it used to launch TCP listener, `health_check_type` must be "http". Its length is limited to 1-80 and it must start with /. Only characters such as letters, digits, ‘-’, ‘/’, ‘.’, ‘%’, ‘?’, #’ and ‘&’ are allowed.
+        :param pulumi.Input[str] health_check_uri: URI used for health check. When it used to launch TCP listener, `health_check_type` must be "http". Its length is limited to 1-80 and it must start with /. Only characters such as letters, digits, ‘-’, ‘/’, ‘.’, ‘%!’(MISSING), ‘?’, #’ and ‘&’ are allowed.
         :param pulumi.Input[int] healthy_threshold: The number of health checks that an unhealthy backend server must consecutively pass before it can be declared healthy. In this case, the health check state is changed from fail to success. It is required when `health_check` is on. Valid value range: [2-10] in seconds. Default to 3. **NOTE:** This parameter takes effect only if the `health_check` parameter is set to `on`.
         :param pulumi.Input[int] idle_timeout: Timeout of http or https listener established connection idle timeout. Valid value range: [1-60] in seconds. Default to 15.
         :param pulumi.Input[str] listener_forward: Whether to enable http redirect to https, Valid values are `on` and `off`. Default to `off`.
@@ -1217,7 +1217,7 @@ class _ListenerState:
     @pulumi.getter(name="healthCheckUri")
     def health_check_uri(self) -> Optional[pulumi.Input[str]]:
         """
-        URI used for health check. When it used to launch TCP listener, `health_check_type` must be "http". Its length is limited to 1-80 and it must start with /. Only characters such as letters, digits, ‘-’, ‘/’, ‘.’, ‘%’, ‘?’, #’ and ‘&’ are allowed.
+        URI used for health check. When it used to launch TCP listener, `health_check_type` must be "http". Its length is limited to 1-80 and it must start with /. Only characters such as letters, digits, ‘-’, ‘/’, ‘.’, ‘%!’(MISSING), ‘?’, #’ and ‘&’ are allowed.
         """
         return pulumi.get(self, "health_check_uri")
 
@@ -1540,6 +1540,7 @@ class Listener(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -1595,6 +1596,8 @@ class Listener(pulumi.CustomResource):
             entry="168.10.10.0/24",
             comment="second")
         ```
+        <!--End PulumiCodeChooser -->
+
         ## Listener fields and protocol mapping
 
         load balance support 4 protocol to listen on, they are `http`,`https`,`tcp`,`udp`, the every listener support which portocal following:
@@ -1670,7 +1673,7 @@ class Listener(pulumi.CustomResource):
         :param pulumi.Input[str] health_check_method: HealthCheckMethod used for health check.Valid values: ["head", "get"] `http` and `https` support regions ap-northeast-1, ap-southeast-1, ap-southeast-2, ap-southeast-3, us-east-1, us-west-1, eu-central-1, ap-south-1, me-east-1, cn-huhehaote, cn-zhangjiakou, ap-southeast-5, cn-shenzhen, cn-hongkong, cn-qingdao, cn-chengdu, eu-west-1, cn-hangzhou", cn-beijing, cn-shanghai.This function does not support the TCP protocol .
         :param pulumi.Input[int] health_check_timeout: Maximum timeout of each health check response. It is required when `health_check` is on. Valid value range: [1-300] in seconds. Default to 5. Note: If `health_check_timeout` < `health_check_interval`, its will be replaced by `health_check_interval`.
         :param pulumi.Input[str] health_check_type: Type of health check. Valid values are: `tcp` and `http`. Default to `tcp` . TCP supports TCP and HTTP health check mode, you can select the particular mode depending on your application.
-        :param pulumi.Input[str] health_check_uri: URI used for health check. When it used to launch TCP listener, `health_check_type` must be "http". Its length is limited to 1-80 and it must start with /. Only characters such as letters, digits, ‘-’, ‘/’, ‘.’, ‘%’, ‘?’, #’ and ‘&’ are allowed.
+        :param pulumi.Input[str] health_check_uri: URI used for health check. When it used to launch TCP listener, `health_check_type` must be "http". Its length is limited to 1-80 and it must start with /. Only characters such as letters, digits, ‘-’, ‘/’, ‘.’, ‘%!’(MISSING), ‘?’, #’ and ‘&’ are allowed.
         :param pulumi.Input[int] healthy_threshold: The number of health checks that an unhealthy backend server must consecutively pass before it can be declared healthy. In this case, the health check state is changed from fail to success. It is required when `health_check` is on. Valid value range: [2-10] in seconds. Default to 3. **NOTE:** This parameter takes effect only if the `health_check` parameter is set to `on`.
         :param pulumi.Input[int] idle_timeout: Timeout of http or https listener established connection idle timeout. Valid value range: [1-60] in seconds. Default to 15.
         :param pulumi.Input[str] listener_forward: Whether to enable http redirect to https, Valid values are `on` and `off`. Default to `off`.
@@ -1717,6 +1720,7 @@ class Listener(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -1772,6 +1776,8 @@ class Listener(pulumi.CustomResource):
             entry="168.10.10.0/24",
             comment="second")
         ```
+        <!--End PulumiCodeChooser -->
+
         ## Listener fields and protocol mapping
 
         load balance support 4 protocol to listen on, they are `http`,`https`,`tcp`,`udp`, the every listener support which portocal following:
@@ -2024,7 +2030,7 @@ class Listener(pulumi.CustomResource):
         :param pulumi.Input[str] health_check_method: HealthCheckMethod used for health check.Valid values: ["head", "get"] `http` and `https` support regions ap-northeast-1, ap-southeast-1, ap-southeast-2, ap-southeast-3, us-east-1, us-west-1, eu-central-1, ap-south-1, me-east-1, cn-huhehaote, cn-zhangjiakou, ap-southeast-5, cn-shenzhen, cn-hongkong, cn-qingdao, cn-chengdu, eu-west-1, cn-hangzhou", cn-beijing, cn-shanghai.This function does not support the TCP protocol .
         :param pulumi.Input[int] health_check_timeout: Maximum timeout of each health check response. It is required when `health_check` is on. Valid value range: [1-300] in seconds. Default to 5. Note: If `health_check_timeout` < `health_check_interval`, its will be replaced by `health_check_interval`.
         :param pulumi.Input[str] health_check_type: Type of health check. Valid values are: `tcp` and `http`. Default to `tcp` . TCP supports TCP and HTTP health check mode, you can select the particular mode depending on your application.
-        :param pulumi.Input[str] health_check_uri: URI used for health check. When it used to launch TCP listener, `health_check_type` must be "http". Its length is limited to 1-80 and it must start with /. Only characters such as letters, digits, ‘-’, ‘/’, ‘.’, ‘%’, ‘?’, #’ and ‘&’ are allowed.
+        :param pulumi.Input[str] health_check_uri: URI used for health check. When it used to launch TCP listener, `health_check_type` must be "http". Its length is limited to 1-80 and it must start with /. Only characters such as letters, digits, ‘-’, ‘/’, ‘.’, ‘%!’(MISSING), ‘?’, #’ and ‘&’ are allowed.
         :param pulumi.Input[int] healthy_threshold: The number of health checks that an unhealthy backend server must consecutively pass before it can be declared healthy. In this case, the health check state is changed from fail to success. It is required when `health_check` is on. Valid value range: [2-10] in seconds. Default to 3. **NOTE:** This parameter takes effect only if the `health_check` parameter is set to `on`.
         :param pulumi.Input[int] idle_timeout: Timeout of http or https listener established connection idle timeout. Valid value range: [1-60] in seconds. Default to 15.
         :param pulumi.Input[str] listener_forward: Whether to enable http redirect to https, Valid values are `on` and `off`. Default to `off`.
@@ -2287,7 +2293,7 @@ class Listener(pulumi.CustomResource):
     @pulumi.getter(name="healthCheckUri")
     def health_check_uri(self) -> pulumi.Output[Optional[str]]:
         """
-        URI used for health check. When it used to launch TCP listener, `health_check_type` must be "http". Its length is limited to 1-80 and it must start with /. Only characters such as letters, digits, ‘-’, ‘/’, ‘.’, ‘%’, ‘?’, #’ and ‘&’ are allowed.
+        URI used for health check. When it used to launch TCP listener, `health_check_type` must be "http". Its length is limited to 1-80 and it must start with /. Only characters such as letters, digits, ‘-’, ‘/’, ‘.’, ‘%!’(MISSING), ‘?’, #’ and ‘&’ are allowed.
         """
         return pulumi.get(self, "health_check_uri")
 

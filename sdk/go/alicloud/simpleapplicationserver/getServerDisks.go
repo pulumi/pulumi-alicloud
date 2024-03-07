@@ -19,6 +19,7 @@ import (
 //
 // # Basic Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -73,6 +74,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func GetServerDisks(ctx *pulumi.Context, args *GetServerDisksArgs, opts ...pulumi.InvokeOption) (*GetServerDisksResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetServerDisksResult

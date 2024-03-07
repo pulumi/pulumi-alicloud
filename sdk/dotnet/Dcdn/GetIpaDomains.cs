@@ -16,12 +16,11 @@ namespace Pulumi.AliCloud.Dcdn
         /// 
         /// &gt; **NOTE:** Available in v1.158.0+.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// Basic Usage
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -52,8 +51,7 @@ namespace Pulumi.AliCloud.Dcdn
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetIpaDomainsResult> InvokeAsync(GetIpaDomainsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetIpaDomainsResult>("alicloud:dcdn/getIpaDomains:getIpaDomains", args ?? new GetIpaDomainsArgs(), options.WithDefaults());
@@ -63,12 +61,11 @@ namespace Pulumi.AliCloud.Dcdn
         /// 
         /// &gt; **NOTE:** Available in v1.158.0+.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// Basic Usage
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -99,8 +96,7 @@ namespace Pulumi.AliCloud.Dcdn
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetIpaDomainsResult> Invoke(GetIpaDomainsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetIpaDomainsResult>("alicloud:dcdn/getIpaDomains:getIpaDomains", args ?? new GetIpaDomainsInvokeArgs(), options.WithDefaults());

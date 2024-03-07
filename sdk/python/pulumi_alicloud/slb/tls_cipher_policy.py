@@ -156,6 +156,7 @@ class TlsCipherPolicy(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -168,6 +169,7 @@ class TlsCipherPolicy(pulumi.CustomResource):
             tls_cipher_policy_name="Test-example_value",
             tls_versions=["TLSv1.2"])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -200,6 +202,7 @@ class TlsCipherPolicy(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -212,6 +215,7 @@ class TlsCipherPolicy(pulumi.CustomResource):
             tls_cipher_policy_name="Test-example_value",
             tls_versions=["TLSv1.2"])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

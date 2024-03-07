@@ -22,15 +22,6 @@ import javax.annotation.Nullable;
  * 
  * &gt; **NOTE:** Available in 1.53.0+
  * 
- * ## Block servers
- * 
- * The servers mapping supports the following:
- * 
- * * `server_id` - (Required) A list backend server ID (ECS instance ID).
- * * `weight` - (Optional) Weight of the backend server. Valid value range: [0-100].
- * * `type` - (Optional) Type of the backend server. Valid value `ecs`, `eni`, `eci`. Default to `ecs`. **NOTE:** From 1.170.0+, The `eci` is valid.
- * * `server_ip` - (Optional, Computed, Available in 1.93.0+) ServerIp of the backend server. This parameter can be specified when the type is `eni`. `ecs` type currently does not support adding `server_ip` parameter.
- * 
  * ## Import
  * 
  * Load balancer backend server can be imported using the load balancer id.

@@ -37,6 +37,8 @@ public final class PvtzFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -71,6 +73,7 @@ public final class PvtzFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetEndpointsResult> getEndpoints() {
@@ -84,6 +87,8 @@ public final class PvtzFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -118,6 +123,7 @@ public final class PvtzFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetEndpointsResult> getEndpointsPlain() {
@@ -131,6 +137,8 @@ public final class PvtzFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -165,6 +173,7 @@ public final class PvtzFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetEndpointsResult> getEndpoints(GetEndpointsArgs args) {
@@ -178,6 +187,8 @@ public final class PvtzFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -212,6 +223,7 @@ public final class PvtzFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetEndpointsResult> getEndpointsPlain(GetEndpointsPlainArgs args) {
@@ -225,6 +237,8 @@ public final class PvtzFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -259,6 +273,7 @@ public final class PvtzFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetEndpointsResult> getEndpoints(GetEndpointsArgs args, InvokeOptions options) {
@@ -272,6 +287,8 @@ public final class PvtzFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -306,6 +323,7 @@ public final class PvtzFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetEndpointsResult> getEndpointsPlain(GetEndpointsPlainArgs args, InvokeOptions options) {
@@ -319,6 +337,8 @@ public final class PvtzFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -348,6 +368,7 @@ public final class PvtzFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetResolverZonesResult> getResolverZones() {
@@ -361,6 +382,8 @@ public final class PvtzFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -390,6 +413,7 @@ public final class PvtzFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetResolverZonesResult> getResolverZonesPlain() {
@@ -403,6 +427,8 @@ public final class PvtzFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -432,6 +458,7 @@ public final class PvtzFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetResolverZonesResult> getResolverZones(GetResolverZonesArgs args) {
@@ -445,6 +472,8 @@ public final class PvtzFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -474,6 +503,7 @@ public final class PvtzFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetResolverZonesResult> getResolverZonesPlain(GetResolverZonesPlainArgs args) {
@@ -487,6 +517,8 @@ public final class PvtzFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -516,6 +548,7 @@ public final class PvtzFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetResolverZonesResult> getResolverZones(GetResolverZonesArgs args, InvokeOptions options) {
@@ -529,6 +562,8 @@ public final class PvtzFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -558,6 +593,7 @@ public final class PvtzFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetResolverZonesResult> getResolverZonesPlain(GetResolverZonesPlainArgs args, InvokeOptions options) {
@@ -571,6 +607,8 @@ public final class PvtzFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -603,6 +641,7 @@ public final class PvtzFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetRulesResult> getRules() {
@@ -616,6 +655,8 @@ public final class PvtzFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -648,6 +689,7 @@ public final class PvtzFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetRulesResult> getRulesPlain() {
@@ -661,6 +703,8 @@ public final class PvtzFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -693,6 +737,7 @@ public final class PvtzFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetRulesResult> getRules(GetRulesArgs args) {
@@ -706,6 +751,8 @@ public final class PvtzFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -738,6 +785,7 @@ public final class PvtzFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetRulesResult> getRulesPlain(GetRulesPlainArgs args) {
@@ -751,6 +799,8 @@ public final class PvtzFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -783,6 +833,7 @@ public final class PvtzFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetRulesResult> getRules(GetRulesArgs args, InvokeOptions options) {
@@ -796,6 +847,8 @@ public final class PvtzFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -828,6 +881,7 @@ public final class PvtzFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetRulesResult> getRulesPlain(GetRulesPlainArgs args, InvokeOptions options) {
@@ -841,6 +895,8 @@ public final class PvtzFunctions {
      * &gt; **NOTE:** Available in v1.114.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -869,6 +925,7 @@ public final class PvtzFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetServiceResult> getService() {
@@ -882,6 +939,8 @@ public final class PvtzFunctions {
      * &gt; **NOTE:** Available in v1.114.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -910,6 +969,7 @@ public final class PvtzFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetServiceResult> getServicePlain() {
@@ -923,6 +983,8 @@ public final class PvtzFunctions {
      * &gt; **NOTE:** Available in v1.114.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -951,6 +1013,7 @@ public final class PvtzFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetServiceResult> getService(GetServiceArgs args) {
@@ -964,6 +1027,8 @@ public final class PvtzFunctions {
      * &gt; **NOTE:** Available in v1.114.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -992,6 +1057,7 @@ public final class PvtzFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetServiceResult> getServicePlain(GetServicePlainArgs args) {
@@ -1005,6 +1071,8 @@ public final class PvtzFunctions {
      * &gt; **NOTE:** Available in v1.114.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1033,6 +1101,7 @@ public final class PvtzFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetServiceResult> getService(GetServiceArgs args, InvokeOptions options) {
@@ -1046,6 +1115,8 @@ public final class PvtzFunctions {
      * &gt; **NOTE:** Available in v1.114.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1074,6 +1145,7 @@ public final class PvtzFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetServiceResult> getServicePlain(GetServicePlainArgs args, InvokeOptions options) {
@@ -1083,6 +1155,8 @@ public final class PvtzFunctions {
      * This data source provides Private Zone Records resource information owned by an Alibaba Cloud account.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1113,6 +1187,7 @@ public final class PvtzFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetZoneRecordsResult> getZoneRecords(GetZoneRecordsArgs args) {
@@ -1122,6 +1197,8 @@ public final class PvtzFunctions {
      * This data source provides Private Zone Records resource information owned by an Alibaba Cloud account.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1152,6 +1229,7 @@ public final class PvtzFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetZoneRecordsResult> getZoneRecordsPlain(GetZoneRecordsPlainArgs args) {
@@ -1161,6 +1239,8 @@ public final class PvtzFunctions {
      * This data source provides Private Zone Records resource information owned by an Alibaba Cloud account.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1191,6 +1271,7 @@ public final class PvtzFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetZoneRecordsResult> getZoneRecords(GetZoneRecordsArgs args, InvokeOptions options) {
@@ -1200,6 +1281,8 @@ public final class PvtzFunctions {
      * This data source provides Private Zone Records resource information owned by an Alibaba Cloud account.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1230,6 +1313,7 @@ public final class PvtzFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetZoneRecordsResult> getZoneRecordsPlain(GetZoneRecordsPlainArgs args, InvokeOptions options) {
@@ -1239,6 +1323,8 @@ public final class PvtzFunctions {
      * This data source lists a number of Private Zones resource information owned by an Alibaba Cloud account.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1268,6 +1354,7 @@ public final class PvtzFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetZonesResult> getZones() {
@@ -1277,6 +1364,8 @@ public final class PvtzFunctions {
      * This data source lists a number of Private Zones resource information owned by an Alibaba Cloud account.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1306,6 +1395,7 @@ public final class PvtzFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetZonesResult> getZonesPlain() {
@@ -1315,6 +1405,8 @@ public final class PvtzFunctions {
      * This data source lists a number of Private Zones resource information owned by an Alibaba Cloud account.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1344,6 +1436,7 @@ public final class PvtzFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetZonesResult> getZones(GetZonesArgs args) {
@@ -1353,6 +1446,8 @@ public final class PvtzFunctions {
      * This data source lists a number of Private Zones resource information owned by an Alibaba Cloud account.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1382,6 +1477,7 @@ public final class PvtzFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetZonesResult> getZonesPlain(GetZonesPlainArgs args) {
@@ -1391,6 +1487,8 @@ public final class PvtzFunctions {
      * This data source lists a number of Private Zones resource information owned by an Alibaba Cloud account.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1420,6 +1518,7 @@ public final class PvtzFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetZonesResult> getZones(GetZonesArgs args, InvokeOptions options) {
@@ -1429,6 +1528,8 @@ public final class PvtzFunctions {
      * This data source lists a number of Private Zones resource information owned by an Alibaba Cloud account.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1458,6 +1559,7 @@ public final class PvtzFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetZonesResult> getZonesPlain(GetZonesPlainArgs args, InvokeOptions options) {

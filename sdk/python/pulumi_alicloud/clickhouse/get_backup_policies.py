@@ -84,6 +84,7 @@ def get_backup_policies(db_cluster_id: Optional[str] = None,
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -91,6 +92,7 @@ def get_backup_policies(db_cluster_id: Optional[str] = None,
     example = alicloud.clickhouse.get_backup_policies(db_cluster_id="example_value")
     pulumi.export("clickHouseBackupPolicyId1", example.policies[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str db_cluster_id: The db cluster id.
@@ -122,6 +124,7 @@ def get_backup_policies_output(db_cluster_id: Optional[pulumi.Input[str]] = None
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -129,6 +132,7 @@ def get_backup_policies_output(db_cluster_id: Optional[pulumi.Input[str]] = None
     example = alicloud.clickhouse.get_backup_policies(db_cluster_id="example_value")
     pulumi.export("clickHouseBackupPolicyId1", example.policies[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str db_cluster_id: The db cluster id.

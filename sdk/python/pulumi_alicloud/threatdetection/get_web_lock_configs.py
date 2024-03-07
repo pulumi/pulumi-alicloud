@@ -148,6 +148,7 @@ def get_web_lock_configs(ids: Optional[Sequence[str]] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -155,6 +156,7 @@ def get_web_lock_configs(ids: Optional[Sequence[str]] = None,
     default = alicloud.threatdetection.get_web_lock_configs(ids=[alicloud_threat_detection_web_lock_config["default"]["id"]])
     pulumi.export("alicloudThreatDetectionWebLockConfigExampleId", default.configs[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Web Lock Config IDs.
@@ -206,6 +208,7 @@ def get_web_lock_configs_output(ids: Optional[pulumi.Input[Optional[Sequence[str
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -213,6 +216,7 @@ def get_web_lock_configs_output(ids: Optional[pulumi.Input[Optional[Sequence[str
     default = alicloud.threatdetection.get_web_lock_configs(ids=[alicloud_threat_detection_web_lock_config["default"]["id"]])
     pulumi.export("alicloudThreatDetectionWebLockConfigExampleId", default.configs[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Web Lock Config IDs.

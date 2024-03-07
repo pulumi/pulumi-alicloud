@@ -13,6 +13,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -23,6 +24,7 @@ import * as utilities from "../utilities";
  * });
  * export const vpnIpsecServerId1 = ids.then(ids => ids.entries?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getPbrRouteEntries(args: GetPbrRouteEntriesArgs, opts?: pulumi.InvokeOptions): Promise<GetPbrRouteEntriesResult> {
 
@@ -78,6 +80,7 @@ export interface GetPbrRouteEntriesResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -88,6 +91,7 @@ export interface GetPbrRouteEntriesResult {
  * });
  * export const vpnIpsecServerId1 = ids.then(ids => ids.entries?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getPbrRouteEntriesOutput(args: GetPbrRouteEntriesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPbrRouteEntriesResult> {
     return pulumi.output(args).apply((a: any) => getPbrRouteEntries(a, opts))

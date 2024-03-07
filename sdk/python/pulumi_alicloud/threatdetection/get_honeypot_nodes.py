@@ -156,6 +156,7 @@ def get_honeypot_nodes(ids: Optional[Sequence[str]] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -163,6 +164,7 @@ def get_honeypot_nodes(ids: Optional[Sequence[str]] = None,
     default = alicloud.threatdetection.get_honeypot_nodes(ids=[alicloud_threat_detection_honeypot_node["default"]["id"]])
     pulumi.export("alicloudThreatDetectionHoneypotNodeExampleId", default.nodes[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Honeypot Node IDs.
@@ -211,6 +213,7 @@ def get_honeypot_nodes_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -218,6 +221,7 @@ def get_honeypot_nodes_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]
     default = alicloud.threatdetection.get_honeypot_nodes(ids=[alicloud_threat_detection_honeypot_node["default"]["id"]])
     pulumi.export("alicloudThreatDetectionHoneypotNodeExampleId", default.nodes[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Honeypot Node IDs.

@@ -16,12 +16,11 @@ namespace Pulumi.AliCloud.Alb
         /// 
         /// &gt; **NOTE:** Available in v1.134.0+.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// Basic Usage
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -50,8 +49,7 @@ namespace Pulumi.AliCloud.Alb
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetHealthCheckTemplatesResult> InvokeAsync(GetHealthCheckTemplatesArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetHealthCheckTemplatesResult>("alicloud:alb/getHealthCheckTemplates:getHealthCheckTemplates", args ?? new GetHealthCheckTemplatesArgs(), options.WithDefaults());
@@ -61,12 +59,11 @@ namespace Pulumi.AliCloud.Alb
         /// 
         /// &gt; **NOTE:** Available in v1.134.0+.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// Basic Usage
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -95,8 +92,7 @@ namespace Pulumi.AliCloud.Alb
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetHealthCheckTemplatesResult> Invoke(GetHealthCheckTemplatesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetHealthCheckTemplatesResult>("alicloud:alb/getHealthCheckTemplates:getHealthCheckTemplates", args ?? new GetHealthCheckTemplatesInvokeArgs(), options.WithDefaults());

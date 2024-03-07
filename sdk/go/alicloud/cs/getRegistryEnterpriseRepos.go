@@ -17,6 +17,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -43,6 +44,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func GetRegistryEnterpriseRepos(ctx *pulumi.Context, args *GetRegistryEnterpriseReposArgs, opts ...pulumi.InvokeOption) (*GetRegistryEnterpriseReposResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetRegistryEnterpriseReposResult

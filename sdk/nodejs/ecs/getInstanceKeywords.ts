@@ -11,6 +11,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -21,6 +22,7 @@ import * as utilities from "../utilities";
  * });
  * export const accountKeywords = resources.then(resources => resources.keywords?.[0]);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getInstanceKeywords(args: GetInstanceKeywordsArgs, opts?: pulumi.InvokeOptions): Promise<GetInstanceKeywordsResult> {
 
@@ -71,6 +73,7 @@ export interface GetInstanceKeywordsResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -81,6 +84,7 @@ export interface GetInstanceKeywordsResult {
  * });
  * export const accountKeywords = resources.then(resources => resources.keywords?.[0]);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getInstanceKeywordsOutput(args: GetInstanceKeywordsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstanceKeywordsResult> {
     return pulumi.output(args).apply((a: any) => getInstanceKeywords(a, opts))

@@ -162,6 +162,7 @@ def get_backup_policies(current_page: Optional[int] = None,
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -171,6 +172,7 @@ def get_backup_policies(current_page: Optional[int] = None,
     name_regex = alicloud.threatdetection.get_backup_policies(name_regex="tf-example")
     pulumi.export("threatDetectionBackupPoliciesId2", name_regex.policies[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Threat Detection Backup Policies IDs.
@@ -225,6 +227,7 @@ def get_backup_policies_output(current_page: Optional[pulumi.Input[Optional[int]
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -234,6 +237,7 @@ def get_backup_policies_output(current_page: Optional[pulumi.Input[Optional[int]
     name_regex = alicloud.threatdetection.get_backup_policies(name_regex="tf-example")
     pulumi.export("threatDetectionBackupPoliciesId2", name_regex.policies[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Threat Detection Backup Policies IDs.

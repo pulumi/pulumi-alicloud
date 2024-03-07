@@ -183,6 +183,7 @@ def get_base_instances(enable_details: Optional[bool] = None,
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -192,6 +193,7 @@ def get_base_instances(enable_details: Optional[bool] = None,
     name_regex = alicloud.ocean.get_base_instances(name_regex="^my-Instance")
     pulumi.export("oceanBaseInstanceId2", name_regex.instances[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Instance IDs.
@@ -257,6 +259,7 @@ def get_base_instances_output(enable_details: Optional[pulumi.Input[Optional[boo
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -266,6 +269,7 @@ def get_base_instances_output(enable_details: Optional[pulumi.Input[Optional[boo
     name_regex = alicloud.ocean.get_base_instances(name_regex="^my-Instance")
     pulumi.export("oceanBaseInstanceId2", name_regex.instances[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Instance IDs.

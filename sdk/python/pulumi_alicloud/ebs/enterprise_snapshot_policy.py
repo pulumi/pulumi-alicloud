@@ -421,6 +421,7 @@ class EnterpriseSnapshotPolicy(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -449,6 +450,7 @@ class EnterpriseSnapshotPolicy(pulumi.CustomResource):
                 time_unit="DAYS",
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -489,6 +491,7 @@ class EnterpriseSnapshotPolicy(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -517,6 +520,7 @@ class EnterpriseSnapshotPolicy(pulumi.CustomResource):
                 time_unit="DAYS",
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

@@ -124,6 +124,7 @@ def get_instance_engines(engine: Optional[str] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -136,6 +137,7 @@ def get_instance_engines(engine: Optional[str] = None,
         zone_id=resources_zones.zones[0].id)
     pulumi.export("firstKvstoreInstanceClass", resources_instance_engines.instance_engines[0].engine)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str engine: Database type. Options are `Redis`, `Memcache`. Default to `Redis`.
@@ -177,6 +179,7 @@ def get_instance_engines_output(engine: Optional[pulumi.Input[Optional[str]]] = 
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -189,6 +192,7 @@ def get_instance_engines_output(engine: Optional[pulumi.Input[Optional[str]]] = 
         zone_id=resources_zones.zones[0].id)
     pulumi.export("firstKvstoreInstanceClass", resources_instance_engines.instance_engines[0].engine)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str engine: Database type. Options are `Redis`, `Memcache`. Default to `Redis`.

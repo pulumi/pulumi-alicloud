@@ -156,6 +156,7 @@ class RouteEntry(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -202,6 +203,7 @@ class RouteEntry(pulumi.CustomResource):
             route_table_id=example_network.route_table_id,
             cidr_block=example_route_entry.destination_cidrblock)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -238,6 +240,7 @@ class RouteEntry(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -284,6 +287,7 @@ class RouteEntry(pulumi.CustomResource):
             route_table_id=example_network.route_table_id,
             cidr_block=example_route_entry.destination_cidrblock)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

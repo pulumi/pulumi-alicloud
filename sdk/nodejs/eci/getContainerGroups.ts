@@ -15,6 +15,7 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -24,6 +25,7 @@ import * as utilities from "../utilities";
  * });
  * export const firstEciContainerGroupId = example.then(example => example.groups?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getContainerGroups(args?: GetContainerGroupsArgs, opts?: pulumi.InvokeOptions): Promise<GetContainerGroupsResult> {
     args = args || {};
@@ -128,6 +130,7 @@ export interface GetContainerGroupsResult {
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -137,6 +140,7 @@ export interface GetContainerGroupsResult {
  * });
  * export const firstEciContainerGroupId = example.then(example => example.groups?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getContainerGroupsOutput(args?: GetContainerGroupsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetContainerGroupsResult> {
     return pulumi.output(args).apply((a: any) => getContainerGroups(a, opts))

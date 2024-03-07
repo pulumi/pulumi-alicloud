@@ -20,6 +20,41 @@ public final class DrdsFunctions {
      * 
      * &gt; **NOTE:** Available in 1.35.0+.
      * 
+     * ## Example Usage
+     * 
+     *  &lt;!--Start PulumiCodeChooser --&gt;
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.drds.DrdsFunctions;
+     * import com.pulumi.alicloud.drds.inputs.GetInstancesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var drdsInstancesDs = DrdsFunctions.getInstances(GetInstancesArgs.builder()
+     *             .ids(&#34;drdsabc123456&#34;)
+     *             .nameRegex(&#34;drds-\\d+&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstDbInstanceId&#34;, drdsInstancesDs.applyValue(getInstancesResult -&gt; getInstancesResult.instances()[0].id()));
+     *     }
+     * }
+     * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static Output<GetInstancesResult> getInstances() {
         return getInstances(GetInstancesArgs.Empty, InvokeOptions.Empty);
@@ -29,6 +64,41 @@ public final class DrdsFunctions {
      * Filters support regular expression for the instance name, searches by tags, and other filters which are listed below.
      * 
      * &gt; **NOTE:** Available in 1.35.0+.
+     * 
+     * ## Example Usage
+     * 
+     *  &lt;!--Start PulumiCodeChooser --&gt;
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.drds.DrdsFunctions;
+     * import com.pulumi.alicloud.drds.inputs.GetInstancesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var drdsInstancesDs = DrdsFunctions.getInstances(GetInstancesArgs.builder()
+     *             .ids(&#34;drdsabc123456&#34;)
+     *             .nameRegex(&#34;drds-\\d+&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstDbInstanceId&#34;, drdsInstancesDs.applyValue(getInstancesResult -&gt; getInstancesResult.instances()[0].id()));
+     *     }
+     * }
+     * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetInstancesResult> getInstancesPlain() {
@@ -40,6 +110,41 @@ public final class DrdsFunctions {
      * 
      * &gt; **NOTE:** Available in 1.35.0+.
      * 
+     * ## Example Usage
+     * 
+     *  &lt;!--Start PulumiCodeChooser --&gt;
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.drds.DrdsFunctions;
+     * import com.pulumi.alicloud.drds.inputs.GetInstancesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var drdsInstancesDs = DrdsFunctions.getInstances(GetInstancesArgs.builder()
+     *             .ids(&#34;drdsabc123456&#34;)
+     *             .nameRegex(&#34;drds-\\d+&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstDbInstanceId&#34;, drdsInstancesDs.applyValue(getInstancesResult -&gt; getInstancesResult.instances()[0].id()));
+     *     }
+     * }
+     * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static Output<GetInstancesResult> getInstances(GetInstancesArgs args) {
         return getInstances(args, InvokeOptions.Empty);
@@ -49,6 +154,41 @@ public final class DrdsFunctions {
      * Filters support regular expression for the instance name, searches by tags, and other filters which are listed below.
      * 
      * &gt; **NOTE:** Available in 1.35.0+.
+     * 
+     * ## Example Usage
+     * 
+     *  &lt;!--Start PulumiCodeChooser --&gt;
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.drds.DrdsFunctions;
+     * import com.pulumi.alicloud.drds.inputs.GetInstancesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var drdsInstancesDs = DrdsFunctions.getInstances(GetInstancesArgs.builder()
+     *             .ids(&#34;drdsabc123456&#34;)
+     *             .nameRegex(&#34;drds-\\d+&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstDbInstanceId&#34;, drdsInstancesDs.applyValue(getInstancesResult -&gt; getInstancesResult.instances()[0].id()));
+     *     }
+     * }
+     * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetInstancesResult> getInstancesPlain(GetInstancesPlainArgs args) {
@@ -60,6 +200,41 @@ public final class DrdsFunctions {
      * 
      * &gt; **NOTE:** Available in 1.35.0+.
      * 
+     * ## Example Usage
+     * 
+     *  &lt;!--Start PulumiCodeChooser --&gt;
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.drds.DrdsFunctions;
+     * import com.pulumi.alicloud.drds.inputs.GetInstancesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var drdsInstancesDs = DrdsFunctions.getInstances(GetInstancesArgs.builder()
+     *             .ids(&#34;drdsabc123456&#34;)
+     *             .nameRegex(&#34;drds-\\d+&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstDbInstanceId&#34;, drdsInstancesDs.applyValue(getInstancesResult -&gt; getInstancesResult.instances()[0].id()));
+     *     }
+     * }
+     * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static Output<GetInstancesResult> getInstances(GetInstancesArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:drds/getInstances:getInstances", TypeShape.of(GetInstancesResult.class), args, Utilities.withVersion(options));
@@ -69,6 +244,41 @@ public final class DrdsFunctions {
      * Filters support regular expression for the instance name, searches by tags, and other filters which are listed below.
      * 
      * &gt; **NOTE:** Available in 1.35.0+.
+     * 
+     * ## Example Usage
+     * 
+     *  &lt;!--Start PulumiCodeChooser --&gt;
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.drds.DrdsFunctions;
+     * import com.pulumi.alicloud.drds.inputs.GetInstancesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var drdsInstancesDs = DrdsFunctions.getInstances(GetInstancesArgs.builder()
+     *             .ids(&#34;drdsabc123456&#34;)
+     *             .nameRegex(&#34;drds-\\d+&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstDbInstanceId&#34;, drdsInstancesDs.applyValue(getInstancesResult -&gt; getInstancesResult.instances()[0].id()));
+     *     }
+     * }
+     * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetInstancesResult> getInstancesPlain(GetInstancesPlainArgs args, InvokeOptions options) {

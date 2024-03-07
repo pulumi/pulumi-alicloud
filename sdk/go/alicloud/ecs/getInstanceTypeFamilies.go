@@ -17,6 +17,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -42,6 +43,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func GetInstanceTypeFamilies(ctx *pulumi.Context, args *GetInstanceTypeFamiliesArgs, opts ...pulumi.InvokeOption) (*GetInstanceTypeFamiliesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetInstanceTypeFamiliesResult

@@ -143,6 +143,7 @@ def get_images(desktop_instance_type: Optional[str] = None,
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -183,6 +184,7 @@ def get_images(desktop_instance_type: Optional[str] = None,
     name_regex = default_image.image_name.apply(lambda image_name: alicloud.eds.get_images_output(name_regex=image_name))
     pulumi.export("ecdImageId2", name_regex.images[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str desktop_instance_type: The desktop type of the image.
@@ -235,6 +237,7 @@ def get_images_output(desktop_instance_type: Optional[pulumi.Input[Optional[str]
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -275,6 +278,7 @@ def get_images_output(desktop_instance_type: Optional[pulumi.Input[Optional[str]
     name_regex = default_image.image_name.apply(lambda image_name: alicloud.eds.get_images_output(name_regex=image_name))
     pulumi.export("ecdImageId2", name_regex.images[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str desktop_instance_type: The desktop type of the image.

@@ -48,6 +48,8 @@ public final class CrFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -86,6 +88,7 @@ public final class CrFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetChainsResult> getChains(GetChainsArgs args) {
@@ -101,6 +104,8 @@ public final class CrFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -139,6 +144,7 @@ public final class CrFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetChainsResult> getChainsPlain(GetChainsPlainArgs args) {
@@ -154,6 +160,8 @@ public final class CrFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -192,6 +200,7 @@ public final class CrFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetChainsResult> getChains(GetChainsArgs args, InvokeOptions options) {
@@ -207,6 +216,8 @@ public final class CrFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -245,6 +256,7 @@ public final class CrFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetChainsResult> getChainsPlain(GetChainsPlainArgs args, InvokeOptions options) {
@@ -294,6 +306,8 @@ public final class CrFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -326,6 +340,7 @@ public final class CrFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetChartRepositoriesResult> getChartRepositories(GetChartRepositoriesArgs args) {
@@ -339,6 +354,8 @@ public final class CrFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -371,6 +388,7 @@ public final class CrFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetChartRepositoriesResult> getChartRepositoriesPlain(GetChartRepositoriesPlainArgs args) {
@@ -384,6 +402,8 @@ public final class CrFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -416,6 +436,7 @@ public final class CrFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetChartRepositoriesResult> getChartRepositories(GetChartRepositoriesArgs args, InvokeOptions options) {
@@ -429,6 +450,8 @@ public final class CrFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -461,6 +484,7 @@ public final class CrFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetChartRepositoriesResult> getChartRepositoriesPlain(GetChartRepositoriesPlainArgs args, InvokeOptions options) {
@@ -474,6 +498,8 @@ public final class CrFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -507,6 +533,7 @@ public final class CrFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetEndpointAclPoliciesResult> getEndpointAclPolicies(GetEndpointAclPoliciesArgs args) {
@@ -520,6 +547,8 @@ public final class CrFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -553,6 +582,7 @@ public final class CrFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetEndpointAclPoliciesResult> getEndpointAclPoliciesPlain(GetEndpointAclPoliciesPlainArgs args) {
@@ -566,6 +596,8 @@ public final class CrFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -599,6 +631,7 @@ public final class CrFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetEndpointAclPoliciesResult> getEndpointAclPolicies(GetEndpointAclPoliciesArgs args, InvokeOptions options) {
@@ -612,6 +645,8 @@ public final class CrFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -645,6 +680,7 @@ public final class CrFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetEndpointAclPoliciesResult> getEndpointAclPoliciesPlain(GetEndpointAclPoliciesPlainArgs args, InvokeOptions options) {
@@ -660,6 +696,8 @@ public final class CrFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -691,6 +729,7 @@ public final class CrFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetEndpointAclServiceResult> getEndpointAclService(GetEndpointAclServiceArgs args) {
@@ -706,6 +745,8 @@ public final class CrFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -737,6 +778,7 @@ public final class CrFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetEndpointAclServiceResult> getEndpointAclServicePlain(GetEndpointAclServicePlainArgs args) {
@@ -752,6 +794,8 @@ public final class CrFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -783,6 +827,7 @@ public final class CrFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetEndpointAclServiceResult> getEndpointAclService(GetEndpointAclServiceArgs args, InvokeOptions options) {
@@ -798,6 +843,8 @@ public final class CrFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -829,6 +876,7 @@ public final class CrFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetEndpointAclServiceResult> getEndpointAclServicePlain(GetEndpointAclServicePlainArgs args, InvokeOptions options) {
@@ -840,6 +888,8 @@ public final class CrFunctions {
      * &gt; **NOTE:** Available in v1.35.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -870,6 +920,7 @@ public final class CrFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetNamespacesResult> getNamespaces() {
@@ -881,6 +932,8 @@ public final class CrFunctions {
      * &gt; **NOTE:** Available in v1.35.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -911,6 +964,7 @@ public final class CrFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetNamespacesResult> getNamespacesPlain() {
@@ -922,6 +976,8 @@ public final class CrFunctions {
      * &gt; **NOTE:** Available in v1.35.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -952,6 +1008,7 @@ public final class CrFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetNamespacesResult> getNamespaces(GetNamespacesArgs args) {
@@ -963,6 +1020,8 @@ public final class CrFunctions {
      * &gt; **NOTE:** Available in v1.35.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -993,6 +1052,7 @@ public final class CrFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetNamespacesResult> getNamespacesPlain(GetNamespacesPlainArgs args) {
@@ -1004,6 +1064,8 @@ public final class CrFunctions {
      * &gt; **NOTE:** Available in v1.35.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1034,6 +1096,7 @@ public final class CrFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetNamespacesResult> getNamespaces(GetNamespacesArgs args, InvokeOptions options) {
@@ -1045,6 +1108,8 @@ public final class CrFunctions {
      * &gt; **NOTE:** Available in v1.35.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1075,6 +1140,7 @@ public final class CrFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetNamespacesResult> getNamespacesPlain(GetNamespacesPlainArgs args, InvokeOptions options) {
@@ -1086,6 +1152,8 @@ public final class CrFunctions {
      * &gt; **NOTE:** Available in v1.35.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1116,6 +1184,7 @@ public final class CrFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetReposResult> getRepos() {
@@ -1127,6 +1196,8 @@ public final class CrFunctions {
      * &gt; **NOTE:** Available in v1.35.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1157,6 +1228,7 @@ public final class CrFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetReposResult> getReposPlain() {
@@ -1168,6 +1240,8 @@ public final class CrFunctions {
      * &gt; **NOTE:** Available in v1.35.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1198,6 +1272,7 @@ public final class CrFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetReposResult> getRepos(GetReposArgs args) {
@@ -1209,6 +1284,8 @@ public final class CrFunctions {
      * &gt; **NOTE:** Available in v1.35.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1239,6 +1316,7 @@ public final class CrFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetReposResult> getReposPlain(GetReposPlainArgs args) {
@@ -1250,6 +1328,8 @@ public final class CrFunctions {
      * &gt; **NOTE:** Available in v1.35.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1280,6 +1360,7 @@ public final class CrFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetReposResult> getRepos(GetReposArgs args, InvokeOptions options) {
@@ -1291,6 +1372,8 @@ public final class CrFunctions {
      * &gt; **NOTE:** Available in v1.35.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1321,6 +1404,7 @@ public final class CrFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetReposResult> getReposPlain(GetReposPlainArgs args, InvokeOptions options) {
@@ -1334,6 +1418,8 @@ public final class CrFunctions {
      * &gt; **NOTE:** Available in v1.116.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1363,6 +1449,7 @@ public final class CrFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetServiceResult> getService(GetServiceArgs args) {
@@ -1376,6 +1463,8 @@ public final class CrFunctions {
      * &gt; **NOTE:** Available in v1.116.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1405,6 +1494,7 @@ public final class CrFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetServiceResult> getServicePlain(GetServicePlainArgs args) {
@@ -1418,6 +1508,8 @@ public final class CrFunctions {
      * &gt; **NOTE:** Available in v1.116.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1447,6 +1539,7 @@ public final class CrFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetServiceResult> getService(GetServiceArgs args, InvokeOptions options) {
@@ -1460,6 +1553,8 @@ public final class CrFunctions {
      * &gt; **NOTE:** Available in v1.116.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1489,6 +1584,7 @@ public final class CrFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetServiceResult> getServicePlain(GetServicePlainArgs args, InvokeOptions options) {
@@ -1502,6 +1598,8 @@ public final class CrFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1533,6 +1631,7 @@ public final class CrFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetVpcEndpointLinkedVpcsResult> getVpcEndpointLinkedVpcs(GetVpcEndpointLinkedVpcsArgs args) {
@@ -1546,6 +1645,8 @@ public final class CrFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1577,6 +1678,7 @@ public final class CrFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetVpcEndpointLinkedVpcsResult> getVpcEndpointLinkedVpcsPlain(GetVpcEndpointLinkedVpcsPlainArgs args) {
@@ -1590,6 +1692,8 @@ public final class CrFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1621,6 +1725,7 @@ public final class CrFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetVpcEndpointLinkedVpcsResult> getVpcEndpointLinkedVpcs(GetVpcEndpointLinkedVpcsArgs args, InvokeOptions options) {
@@ -1634,6 +1739,8 @@ public final class CrFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1665,6 +1772,7 @@ public final class CrFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetVpcEndpointLinkedVpcsResult> getVpcEndpointLinkedVpcsPlain(GetVpcEndpointLinkedVpcsPlainArgs args, InvokeOptions options) {

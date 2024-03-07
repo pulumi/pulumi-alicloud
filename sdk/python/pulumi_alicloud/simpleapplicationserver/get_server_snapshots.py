@@ -133,6 +133,7 @@ def get_server_snapshots(disk_id: Optional[str] = None,
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -148,6 +149,7 @@ def get_server_snapshots(disk_id: Optional[str] = None,
         instance_id="example_value")
     pulumi.export("simpleApplicationServerSnapshotId4", instance_id_conf.snapshots[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str disk_id: The ID of the source disk. This parameter has a value even after the source disk is released.
@@ -196,6 +198,7 @@ def get_server_snapshots_output(disk_id: Optional[pulumi.Input[Optional[str]]] =
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -211,6 +214,7 @@ def get_server_snapshots_output(disk_id: Optional[pulumi.Input[Optional[str]]] =
         instance_id="example_value")
     pulumi.export("simpleApplicationServerSnapshotId4", instance_id_conf.snapshots[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str disk_id: The ID of the source disk. This parameter has a value even after the source disk is released.
